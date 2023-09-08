@@ -11,7 +11,7 @@ import { FixNavigation } from "../../../../../../components/client/FixNavigation
 import styles from "./fix.module.scss";
 import ImageArrowLeft from "./images/icon-arrow-left.svg";
 import ImageArrowRight from "./images/icon-arrow-right.svg";
-import imageClose from "./images/icon-close.svg";
+import ImageClose from "./images/icon-close.svg";
 import stepDataBrokerProfilesIcon from "./images/step-counter-data-broker-profiles.svg";
 import stepHighRiskDataBreachesIcon from "./images/step-counter-high-risk.svg";
 import stepLeakedPasswordsIcon from "./images/step-counter-leaked-passwords.svg";
@@ -19,36 +19,7 @@ import stepSecurityRecommendationsIcon from "./images/step-counter-security-reco
 import { usePathname } from "next/navigation";
 import { GuidedExperienceBreaches } from "../../../../../../functions/server/getUserBreaches";
 import { ScanResult } from "../../../../../../functions/server/onerep";
-
-// TODO:
-// Add logic to protect routes for specific users (premium/not, scan started/not)
-// Question: Can FXA redirect user back to specific URL (for returning upgrade users during fix data broker)
-
-function NavigationClose() {
-  return (
-    <Link href="redesign/user/dashboard" className={styles.navClose}>
-      <Image alt="" src={imageClose} />
-    </Link>
-  );
-}
-
-function NavigationArrowBack() {
-  return (
-    // FIXME: This navigation arrow should point to the previous step in whichever context it is loaded
-    <Link className={styles.navArrowBack} href="/redesign/user/dashboard">
-      <Image alt="" src={ImageArrowLeft} />
-    </Link>
-  );
-}
-
-function NavigationArrowNext() {
-  return (
-    // FIXME: This navigation arrow should point to the next step in whichever context it is loaded
-    <Link className={styles.navArrowNext} href="/redesign/user/dashboard">
-      <Image alt="" src={ImageArrowRight} />
-    </Link>
-  );
-}
+import { useL10n } from "../../../../../../hooks/l10n";
 
 export type FixViewProps = {
   children: ReactNode;
@@ -58,6 +29,7 @@ export type FixViewProps = {
 
 export const FixView = (props: FixViewProps) => {
   const pathname = usePathname();
+  const l10n = useL10n();
   const isHighRiskDataBreach = pathname.includes("high-risk-data-breaches");
   const totalHighRiskBreaches = Object.values(props.breaches.highRisk).reduce(
     (acc, array) => acc + array.length,
@@ -106,6 +78,44 @@ export const FixView = (props: FixViewProps) => {
     },
   ];
 
+  const navigationClose = () => {
+    return (
+      <Link
+        href="/redesign/user/dashboard"
+        className={styles.navClose}
+        aria-label={l10n.getString("guided-resolution-flow-exit")}
+      >
+        <Image alt="" src={ImageClose} />
+      </Link>
+    );
+  };
+
+  // TODO: MNTOR-1700 Add routing logic here
+  const navigationArrowBack = () => {
+    return (
+      <Link
+        className={styles.navArrowBack}
+        href="/redesign/user/dashboard"
+        aria-label={l10n.getString("guided-resolution-flow-back-arrow")}
+      >
+        <Image alt="" src={ImageArrowLeft} />
+      </Link>
+    );
+  };
+
+  // TODO: MNTOR-1700 Add routing logic here
+  const navigationArrowNext = () => {
+    return (
+      <Link
+        className={styles.navArrowNext}
+        href="/redesign/user/dashboard"
+        aria-label={l10n.getString("guided-resolution-flow-next-arrow")}
+      >
+        <Image alt="" src={ImageArrowRight} />
+      </Link>
+    );
+  };
+
   return (
     <div className={styles.fixContainer}>
       <div
@@ -117,10 +127,10 @@ export const FixView = (props: FixViewProps) => {
           navigationItems={navigationItemsContent}
           pathname={pathname}
         />
-        <NavigationClose />
+        {navigationClose()}
         <section className={styles.fixSection}>
-          <NavigationArrowBack />
-          <NavigationArrowNext />
+          {navigationArrowBack()}
+          {navigationArrowNext()}
           {props.children}
         </section>
       </div>
