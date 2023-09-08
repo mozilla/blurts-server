@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
 
   const headerToken = bearerToken(req);
   if (headerToken !== process.env.HIBP_NOTIFY_TOKEN) {
-    return NextResponse.json({ success: "false" }, { status: 401 });
+    return NextResponse.json({ success: false }, { status: 401 });
   }
 
   const json = await req.json();
@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
     console.error(
       "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes."
     );
-    return NextResponse.json({ success: "false" }, { status: 400 });
+    return NextResponse.json({ success: false }, { status: 400 });
   }
 
   const pubsub = new PubSub({ projectId });
@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
       }
     } else {
       console.error("Topic not found:", topicName);
-      return NextResponse.json({ success: "false" }, { status: 500 });
+      return NextResponse.json({ success: false }, { status: 500 });
     }
   }
 
@@ -68,6 +68,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (ex) {
     console.error("Error queueing HIBP breach:", ex);
-    return NextResponse.json({ success: "false" }, { status: 500 });
+    return NextResponse.json({ success: false }, { status: 500 });
   }
 }
