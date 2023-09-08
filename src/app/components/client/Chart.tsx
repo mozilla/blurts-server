@@ -26,8 +26,6 @@ export type Props = {
 export const DoughnutChart = (props: Props) => {
   const l10n = useL10n();
 
-  console.log(props.data);
-
   const explainerDialogState = useOverlayTriggerState({});
   const explainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
