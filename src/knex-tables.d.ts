@@ -150,6 +150,7 @@ declare module "knex/types/tables" {
     onerep_profile_id: number;
     onerep_scan_id: number;
     onerep_scan_results: ScanResult;
+    onerep_scan_reason: "manual" | "initial" | "monitoring";
     created_at: Date;
     updated_at: Date;
   }
