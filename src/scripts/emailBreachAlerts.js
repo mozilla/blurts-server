@@ -92,7 +92,6 @@ async function poll() {
 
     const { breachName, hashPrefix, hashSuffixes } = data;
 
-    // FIXME the script hangs for a ~1 minute after call a DB-related function for the first time.
     const breaches = await getAllBreachesFromDb();
     const breachAlert = getBreachByName(breaches, breachName);
 
