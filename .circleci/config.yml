@@ -7,18 +7,6 @@ executors:
               auth:
                 username: $DOCKER_USER
                 password: $DOCKER_PASS
-    
-    node_with_python:
-        docker:
-            - image: cimg/node:18.12.1
-              auth:
-                username: $DOCKER_USER
-                password: $DOCKER_PASS
-            - image: cimg/python:3.9.7
-              auth:
-                username: $DOCKER_USER
-                password: $DOCKER_PASS
-
     python:
         docker:
             - image: cimg/python:3.9.7
@@ -55,16 +43,17 @@ orbs:
 
 jobs:
     lint:
-        executor: node_with_python
+        executor: node
         steps:
             - checkout
             - node/install-packages
-            - run: sudo apt-get update
-            - run: sudo apt-get install python3.10-venv
-            - run: npm run build-glean
             - run: npm run lint
     deploy:
-        executor: node_with_python
+        docker:
+            - image: docker:stable-git
+              auth:
+                username: $DOCKER_USER
+                password: $DOCKER_PASS
         working_directory: /dockerflow
         steps:
             - checkout
@@ -118,7 +107,7 @@ jobs:
         # is based on:
         # https://github.com/CircleCI-Public/heroku-orb/blob/master/src/jobs/deploy-via-git.yml
         # https://github.com/CircleCI-Public/heroku-orb/blob/master/src/commands/deploy-via-git.yml
-        executor: python/default
+        executor: heroku/default
         parameters:
             app-name:
                 description: "The name of the Heroku App"
