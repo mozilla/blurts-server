@@ -26,21 +26,13 @@ const BreachMockItem = createRandomBreach();
 export const DataBroker: Story = {
   args: {
     exposureImg: FamilyTreeImage,
-    exposureName: ScanMockItem.data_broker,
     exposureData: ScanMockItem,
-    exposureDetailsLink: "linkehere.com",
-    dateFound: new Date(ScanMockItem.created_at),
-    statusPillType: "needAction",
   },
 };
 
 export const DataBreach: Story = {
   args: {
     exposureImg: TwitterImage,
-    exposureName: "Twitter",
     exposureData: BreachMockItem,
-    exposureDetailsLink: "linkehere.com",
-    dateFound: new Date(BreachMockItem.addedDate),
-    statusPillType: "needAction",
   },
 };
