@@ -94,12 +94,15 @@ beforeEach(() => {
 test("rejects invalid messages", async () => {
   const { poll } = await import("./emailBreachAlerts.js");
 
+  const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+
   await poll(subClient, buildReceivedMessages({
     // missing breachName
     "hashPrefix": "test-prefix1",
     "hashSuffixes": ["test-suffix1"]
   }));
   expect(subClient.acknowledge).toBeCalledTimes(0);
+  expect(consoleError).toBeCalledWith("HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.")
 
   await poll(subClient, buildReceivedMessages({
     "breachName": "test1",
@@ -107,6 +110,7 @@ test("rejects invalid messages", async () => {
     "hashSuffixes": ["test-suffix1"]
   }));
   expect(subClient.acknowledge).toBeCalledTimes(0);
+  expect(consoleError).toBeCalledWith("HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.")
 
   await poll(subClient, buildReceivedMessages({
     "breachName": "test1",
@@ -114,6 +118,7 @@ test("rejects invalid messages", async () => {
     // missing hashSuffixes
   }));
   expect(subClient.acknowledge).toBeCalledTimes(0);
+  expect(consoleError).toBeCalledWith("HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.")
 
   await poll(subClient, buildReceivedMessages({
     "breachName": "test1",
@@ -121,6 +126,7 @@ test("rejects invalid messages", async () => {
     "hashSuffixes": "" // hashSuffixes not an array
   }));
   expect(subClient.acknowledge).toBeCalledTimes(0);
+  expect(consoleError).toBeCalledWith("HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.")
 });
 
 test("processes valid messages", async () => {
