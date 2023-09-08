@@ -9,6 +9,7 @@ import { ResolutionContainer } from "../ResolutionContainer";
 import { ResolutionContent } from "../ResolutionContent";
 import { Button } from "../../../../../../../components/server/Button";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
+import { useL10n } from "../../../../../../../hooks/l10n";
 
 export interface SecurityRecommendationsLayoutProps {
   label: string;
@@ -21,6 +22,7 @@ export function SecurityRecommendationsLayout({
   pageData,
   exposedData,
 }: SecurityRecommendationsLayoutProps) {
+  const l10n = useL10n();
   const { title, illustration, content } = pageData;
 
   return (
@@ -40,7 +42,7 @@ export function SecurityRecommendationsLayout({
           }}
           autoFocus={true}
         >
-          Got it!
+          {l10n.getString("security-recommendation-steps-cta-label")}
         </Button>
       }
     >
