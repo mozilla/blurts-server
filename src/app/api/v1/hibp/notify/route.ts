@@ -7,9 +7,9 @@ import { bearerToken } from "../../../utils/auth";
 
 import { PubSub } from "@google-cloud/pubsub";
 
-const projectId = "rhelmer-monitor-local-dev";
-const topicName = "hibp-breaches";
-const subscriptionName = "hibp-cron";
+const projectId = process.env.GCP_PUBSUB_PROJECT_ID;
+const topicName = process.env.GCP_PUBSUB_TOPIC_NAME;
+const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
 
 /**
  * Whenever a breach is detected on the HIBP side, HIBP sends a request to this endpoint.
@@ -18,6 +18,13 @@ const subscriptionName = "hibp-cron";
  * @param req
  */
 export async function POST(req: NextRequest) {
+  if (!projectId) {
+    throw new Error("GCP_PUBSUB_PROJECT_ID env var not set");
+  }
+  if (!topicName) {
+    throw new Error("GCP_PUBSUB_TOPIC_NAME env var not set");
+  }
+
   const headerToken = bearerToken(req);
   if (headerToken !== process.env.HIBP_NOTIFY_TOKEN) {
     return NextResponse.json({ success: "false" }, { status: 401 });
@@ -42,6 +49,9 @@ export async function POST(req: NextRequest) {
   if (!topic || topic.name !== `projects/${projectId}/topics/${topicName}`) {
     if (process.env.NODE_ENV === "development") {
       try {
+        if (!subscriptionName) {
+          throw new Error("GCP_PUBSUB_SUBSCRIPTION_NAME env var not set");
+        }
         await pubsub.createTopic(topicName);
         await pubsub.topic(topicName).createSubscription(subscriptionName);
       } catch (ex) {
