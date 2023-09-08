@@ -111,6 +111,39 @@ async function setOnerepScanResults(
   });
 }
 
+async function isOnerepScanResultForSubscriber(params: {
+  onerepScanResultId: number;
+  subscriberId: number;
+}): Promise<boolean> {
+  const result = await knex("onerep_scan_results")
+    .innerJoin(
+      "onerep_scans",
+      "onerep_scan_results.onerep_scan_id",
+      "onerep_scans.onerep_scan_id"
+    )
+    .innerJoin(
+      "subscribers",
+      "onerep_scans.onerep_profile_id",
+      "subscribers.onerep_profile_id"
+    )
+    .where(
+      "onerep_scan_results.onerep_scan_result_id",
+      params.onerepScanResultId
+    )
+    .andWhere("subscribers.id", params.subscriberId)
+    .first("onerep_scan_result_id");
+
+  return typeof result?.onerep_scan_result_id === "number";
+}
+
+async function markOnerepScanResultAsResolved(
+  onerepScanResultId: number
+): Promise<void> {
+  await knex("onerep_scan_results")
+    .update("manually_resolved", true)
+    .where("onerep_scan_result_id", onerepScanResultId);
+}
+
 async function getScansCount(startDate: string, endDate: string) {
   return await knex("onerep_scans")
     .count("id")
@@ -123,4 +156,6 @@ export {
   setOnerepManualScan,
   setOnerepScanResults,
   getScansCount,
+  isOnerepScanResultForSubscriber,
+  markOnerepScanResultAsResolved,
 };
