@@ -14,31 +14,31 @@ import Meta, {
   None,
 } from "./HighRiskBreachLayout.stories";
 
-it("high risk data breach component passes the axe accessiblity test suite", async () => {
+it("high risk data breach component passes the axe accessibility test suite", async () => {
   const ComposedHighRiskDataBreachComponent = composeStory(CreditCard, Meta);
   const { container } = render(<ComposedHighRiskDataBreachComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("bank account data breach component passes the axe accessiblity test suite", async () => {
+it("bank account data breach component passes the axe accessibility test suite", async () => {
   const ComposedHighRiskDataBreachComponent = composeStory(BankAccount, Meta);
   const { container } = render(<ComposedHighRiskDataBreachComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("SSN data breach component passes the axe accessiblity test suite", async () => {
+it("SSN data breach component passes the axe accessibility test suite", async () => {
   const ComposedHighRiskDataBreachComponent = composeStory(SSN, Meta);
   const { container } = render(<ComposedHighRiskDataBreachComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("PIN data breach component passes the axe accessiblity test suite", async () => {
+it("PIN data breach component passes the axe accessibility test suite", async () => {
   const ComposedHighRiskDataBreachComponent = composeStory(PIN, Meta);
   const { container } = render(<ComposedHighRiskDataBreachComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("Zero state breach component passes the axe accessiblity test suite", async () => {
+it("Zero state breach component passes the axe accessibility test suite", async () => {
   const ComposedHighRiskDataBreachComponent = composeStory(None, Meta);
   const { container } = render(<ComposedHighRiskDataBreachComponent />);
   expect(await axe(container)).toHaveNoViolations();

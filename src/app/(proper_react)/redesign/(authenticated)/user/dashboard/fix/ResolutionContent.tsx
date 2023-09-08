@@ -4,7 +4,7 @@
 
 "use client";
 
-import type { SecurityRecommendationContent } from "./security-recommendations/securityRecommendationsContent";
+import type { SecurityRecommendationContent } from "./security-recommendations/securityRecommendationsData";
 import type { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
 import { useL10n } from "../../../../../../hooks/l10n";
 import styles from "./ResolutionContent.module.scss";
