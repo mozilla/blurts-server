@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     console.error(
       "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes."
     );
-    return NextResponse.json({ success: "false" }, { status: 500 });
+    return NextResponse.json({ success: "false" }, { status: 400 });
   }
 
   const pubsub = new PubSub({ projectId });
