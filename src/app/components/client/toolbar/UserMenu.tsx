@@ -10,7 +10,13 @@ import Link from "next/link";
 import { Session } from "next-auth";
 import { signOut } from "next-auth/react";
 import { Item, useMenuTriggerState, useTreeState } from "react-stately";
-import { mergeProps, useMenuTrigger, useMenu, useMenuItem } from "react-aria";
+import {
+  mergeProps,
+  useMenuTrigger,
+  useMenu,
+  useMenuItem,
+  useButton,
+} from "react-aria";
 
 import type { AriaMenuOptions, AriaMenuTriggerProps } from "react-aria";
 import type { MenuTriggerProps, TreeState } from "react-stately";
@@ -148,10 +154,12 @@ function MenuTrigger(props: MenuTriggerComponentProps) {
 
   const mergedMenuProps = mergeProps(props, { ...menuProps, items });
 
+  const menuTiggerButton = useButton(menuTriggerProps, ref);
+
   return (
     <>
       <button
-        {...menuTriggerProps}
+        {...menuTiggerButton.buttonProps}
         ref={ref}
         className={styles.trigger}
         title={l10n.getString("user-menu-trigger-tooltip")}

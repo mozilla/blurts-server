@@ -15,6 +15,7 @@ import Meta, {
   DashboardFreeUser,
   DashboardPremiumUser,
   DashboardNoSession,
+  DashboardFreeUserAllResolved,
 } from "./Dashboard.stories";
 
 function enablePremium() {
@@ -202,4 +203,27 @@ it("shows the premium upgrade cta if there is no user session", () => {
     name: "Upgrade to ⁨Premium⁩",
   });
   expect(premiumCtas.length).toBe(2);
+});
+
+it("shows returned free user who has resolved all tasks premium upsell and all fixed description", async () => {
+  enablePremium();
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(DashboardFreeUserAllResolved, Meta);
+  render(<ComposedDashboard />);
+
+  // We show a CTA on desktop in the toolbar and in the mobile menu
+  const premiumCtas = screen.queryAllByRole("button", {
+    name: "Upgrade to ⁨Premium⁩",
+  });
+  expect(premiumCtas.length).toBe(2);
+
+  // show banner CTA premium upgrade
+  const bannerPremiumCta = screen.queryAllByRole("button", {
+    name: "Get Continuous Protection",
+  });
+  expect(bannerPremiumCta.length).toBe(1);
+
+  // click on cta
+  await user.click(bannerPremiumCta[0]);
+  expect(screen.getByRole("dialog")).toBeInTheDocument();
 });

@@ -133,7 +133,6 @@ function PremiumUpsellDialogContent() {
         </dd>
       </dl>
       <Button
-        buttonType="link"
         className={styles.productCta}
         href={premiumSubscriptionUrl}
         variant="primary"

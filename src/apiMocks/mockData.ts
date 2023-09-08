@@ -36,6 +36,7 @@ export function mockedOneRepScanResults() {
 export type RandomScanOptions = Partial<{
   createdDate: Date;
   fakerSeed: number;
+  status: RemovalStatus;
 }>;
 
 /**
@@ -53,9 +54,11 @@ export function createRandomScan(options: RandomScanOptions = {}): ScanResult {
     last_name: faker.person.lastName(),
     middle_name: faker.person.middleName(),
     age: faker.number.int({ min: 14, max: 120 }).toString(),
-    status: faker.helpers.arrayElement(
-      Object.values(RemovalStatusMap)
-    ) as RemovalStatus,
+    status:
+      options.status ??
+      (faker.helpers.arrayElement(
+        Object.values(RemovalStatusMap)
+      ) as RemovalStatus),
     addresses: Array.from({ length: 3 }, () => ({
       zip: faker.location.zipCode(),
       city: faker.location.city(),

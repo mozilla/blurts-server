@@ -16,7 +16,7 @@ type HighRiskBreachContentProps = {
 
 export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
   const l10n = useL10n();
-  let title, description, recommendations, breachIllustration, illustrationAlt;
+  let title, description, recommendations, breachIllustration;
   // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
   const emailsMonitored = ["email1@gmail.com", "email2@gmail.com"]; // mocked
   const emailsFormatter = new Intl.ListFormat(props.locale, {
@@ -96,9 +96,6 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
         steps: CreditCardRecommendationSteps,
       };
       breachIllustration = CreditCardIllustration;
-      illustrationAlt = l10n.getString(
-        "high-risk-breach-credit-card-illustration-alt"
-      );
       break;
     case "ssnBreaches":
       title = l10n.getString("high-risk-breach-social-security-title");
@@ -111,9 +108,6 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
         steps: SocialSecurityNumberRecommendationSteps,
       };
       breachIllustration = SocialSecurityNumberIllustration;
-      illustrationAlt = l10n.getString(
-        "high-risk-breach-social-security-illustration-alt"
-      );
       break;
     case "bankAccount":
       title = l10n.getString("high-risk-breach-bank-account-title");
@@ -126,9 +120,6 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
         steps: BankAccountRecommendationSteps,
       };
       breachIllustration = BankAccountIllustration;
-      illustrationAlt = l10n.getString(
-        "high-risk-breach-bank-account-illustration-alt"
-      );
       break;
     case "pin":
       title = l10n.getString("high-risk-breach-pin-title");
@@ -139,7 +130,6 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
         steps: pinRecommendationSteps,
       };
       breachIllustration = pinIllustration;
-      illustrationAlt = l10n.getString("high-risk-breach-pin-illustration-alt");
       break;
     default:
       title = l10n.getString("high-risk-breach-none-title");
@@ -175,9 +165,6 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
         </>
       );
       breachIllustration = NoBreachesIllustration;
-      illustrationAlt = l10n.getString(
-        "high-risk-breach-none-illustration-alt"
-      );
       break;
   }
 
@@ -186,6 +173,5 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
     description,
     recommendations,
     breachIllustration,
-    illustrationAlt,
   };
 };
