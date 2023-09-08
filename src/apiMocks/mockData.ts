@@ -61,6 +61,7 @@ export function createRandomScan(
       (faker.helpers.arrayElement(
         Object.values(RemovalStatusMap)
       ) as RemovalStatus),
+    manually_resolved: faker.datatype.boolean(),
     addresses: Array.from({ length: 3 }, () => ({
       zip: faker.location.zipCode(),
       city: faker.location.city(),
