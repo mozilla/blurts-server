@@ -578,5 +578,6 @@ export {
   removeSubscriberByToken,
   deleteUnverifiedSubscribers,
   deleteSubscriber,
-  deleteResolutionsWithEmail
+  deleteResolutionsWithEmail,
+  knex
 }

@@ -8,8 +8,8 @@ import { acceptedLanguages, negotiateLanguages } from "@fluent/langneg";
 import * as pubsub from "@google-cloud/pubsub";
 import * as grpc from "@grpc/grpc-js";
 
-import { getSubscribersByHashes } from "../db/tables/subscribers.js";
-import { getEmailAddressesByHashes } from "../db/tables/emailAddresses.js";
+import { getSubscribersByHashes, knex as knexSubscribers } from "../db/tables/subscribers.js";
+import { getEmailAddressesByHashes, knex as knexEmailAddresses } from "../db/tables/emailAddresses.js";
 import { getTemplate } from "../views/emails/email2022.js";
 import { breachAlertEmailPartial } from "../views/emails/emailBreachAlert.js";
 
@@ -25,6 +25,7 @@ import {
   getAddressesAndLanguageForEmail,
   getBreachByName,
   getAllBreachesFromDb,
+  knex as knexHibp
 } from "../utils/hibp.js";
 
 const SENTRY_SLUG = "cron-breach-alerts";
@@ -233,4 +234,10 @@ init()
       status: "ok",
     });
   })
-  .catch((err) => console.error(err));
+  .catch((err) => console.error(err))
+  .finally(async() => {
+    // Tear down knex connection pools
+    await knexSubscribers.destroy();
+    await knexEmailAddresses.destroy();
+    await knexHibp.destroy();
+  });
