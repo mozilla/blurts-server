@@ -30,7 +30,11 @@ export type FixViewProps = {
 export const FixView = (props: FixViewProps) => {
   const pathname = usePathname();
   const l10n = useL10n();
-  const isHighRiskDataBreach = pathname.includes("high-risk-data-breaches");
+  const isResolutionLayout = [
+    "high-risk-data-breach",
+    "leaked-passwords",
+    "security-recommendations",
+  ].some((substring) => pathname.includes(substring));
   const totalHighRiskBreaches = Object.values(props.breaches.highRisk).reduce(
     (acc, array) => acc + array.length,
     0
@@ -120,7 +124,7 @@ export const FixView = (props: FixViewProps) => {
     <div className={styles.fixContainer}>
       <div
         className={`${styles.fixWrapper} ${
-          isHighRiskDataBreach ? styles.highRiskDataBreachContentBg : ""
+          isResolutionLayout ? styles.highRiskDataBreachContentBg : ""
         }`}
       >
         <FixNavigation
