@@ -354,7 +354,8 @@ high-risk-breach-none-continue = Continue
 
 # Security recommendations
 
-security-recommendation-steps-title = Here’s your advice:
+security-recommendation-steps-title = Here’s our advice:
+security-recommendation-steps-cta-label = Got it!
 
 # Phone security recommendation
 
