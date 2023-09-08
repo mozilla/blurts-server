@@ -41,8 +41,8 @@ const checkInId = Sentry.captureCheckIn({
   status: "in_progress",
 });
 
-const projectId = "rhelmer-monitor-local-dev";
-const subscriptionName = "hibp-cron";
+const projectId = process.env.GCP_PUBSUB_PROJECT_ID;
+const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
 
 /**
  * Fetch the latest HIBP breach data from GCP PubSub queue.
@@ -228,6 +228,9 @@ async function init() {
 
 init()
   .then(async (_res) => {
+    if (!(projectId && subscriptionName)) {
+      throw new Error("env vars not set: GCP_PUBSUB_PROJECT_ID and GCP_PUBSUB_SUBSCRIPTION_NAME")
+    }
     Sentry.captureCheckIn({
       checkInId,
       monitorSlug: SENTRY_SLUG,
