@@ -92,13 +92,13 @@ fxa-what-to-do-blurb-1 =
     ¿Ehecha peteĩ mba’ete eikuaa’ỹva? Ne mba’ekuaarã ikatu oñevendémara’e 
     térã oñemyasãima. Kóva avei ikatu ha’e mba’ete nderesaráiva emoheñói hag̃ua térã  peteĩ mba’apohaguasu omoambuéva héra.
 fxa-what-to-do-subhead-2 = Anive eipuru ñe’ẽñemi ojekuaareíva ha emoambue opaite tenda eipuruhápe.
-fxa-wtd-blurb-2 = Umi mba’evaiapoha tembiporupyahugua oipurujeykuaa ñe’ẽñemi ojehechakuaáva eike hag̃ua ambue mba’etépe. Emoheñói ñe’ẽñemi pyahu ha ha ha’eñóva peteĩteĩva mba’etépe, ejapokuaáva ne mba’ete banco pegua, ne ñanduti veve ha ambue ñanduti renda eñongatu hague ne maranduete.
+fxa-wtd-blurb-2 = Umi mba’evaiapoha tembiporupyahugua oiporujeykuaa ñe’ẽñemi ojehechakuaáva eike hag̃ua ambue mba’etépe. Emoheñói ñe’ẽñemi pyahu ha ha ha’eñóva peteĩteĩva mba’etépe, ejapokuaáva ne mba’ete banco pegua, ne ñanduti veve ha ambue ñanduti renda eñongatu hague ne maranduete.
 fxa-what-to-do-blurb-3 =
     Heta mba’evai ohechauka ñanduti veve ha ñe’ẽñemi año, hákatu oĩ avei omoinge marandu virugua ñemiguáva.
     Ne mba’ete banco térã kuatia’atã ñemurã papapy ojehechakuaa kuri, emombe’u ne báncope ikatuha oiko mba’evai.
     Ehechajey umi je’epyre eikuaa’ỹva.
 fxa-what-to-do-subhead-4 = Eñepytyvõuka nemandu’a hag̃ua opaite ne ñe’ẽñemíre ha ereko tekorosãme.
-fxa-what-to-do-blurb-4 = Umi ñe’ẽñemi ñangarekoha 1Password, LastPass, Dashlane ha Bitwarden ombyaty ne ñe’ẽñemi tekorosãme ha oike ñanduti rendápe. Oipuru peteĩ ñe’ẽñemi ñangarekoha ne pumbyry ha mohendahápe ani hag̃ua ne mandu’apánte.
+fxa-what-to-do-blurb-4 = Umi ñe’ẽñemi ñangarekoha 1Password, LastPass, Dashlane ha Bitwarden ombyaty ne ñe’ẽñemi tekorosãme ha oike ñanduti rendápe. Oiporu peteĩ ñe’ẽñemi ñangarekoha ne pumbyry ha mohendahápe ani hag̃ua ne mandu’apánte.
 # Alerts is a noun
 sign-up-for-alerts = Eñemboheraguapy og̃uahẽ hag̃ua kyhyjerã
 # Link title
@@ -173,7 +173,7 @@ what-is-data-agg-blurb =
     Umi mba’ekuaarã mbyatyha omono’õ marandu opavave mba’évagui 
     ha avei ojogua ambue mba’apohaguasúgui. Ombojuaju marandu ovende hag̃ua ambue 
     mba’apohaguasúpe jekuaaukarãve. Umi ohupytýva ko’ã ñembyai ndorekói 
-    araka’eve viru ñemonda, hákatu umi hekovaíva ñadutípe ikatu oipuru pe marandu omyendague hag̃ua chupe.
+    araka’eve viru ñemonda, hákatu umi hekovaíva ñadutípe ikatu oiporu pe marandu omyendague hag̃ua chupe.
 protect-your-privacy = Emo’ã ñemigua ñandutípe
 no-pw-to-change = Ñanduti renda juavygua ñembyai, ndaipóri ñe’ẽñemi emoambueva’erã.
 avoid-personal-info = Ani eipuru marandu jehegua ñe’ẽñemíme
@@ -255,11 +255,11 @@ ba-next-step-blurb-1 =
 ba-next-step-2 = Anive eipuru ñe’ẽñemi ojekuaareíva.
 ba-next-step-blurb-2 =
     Umi hekovaíva ñadutípe ikatu ojuhu ne ñe’ẽñemi ñanduti ypytũme 
-    ha oipuru ñepyrũ hag̃ua tembiapo ambue ne mba’etépe. Emo’ãporãve hag̃ua 
+    ha oiporu ñepyrũ hag̃ua tembiapo ambue ne mba’etépe. Emo’ãporãve hag̃ua 
     eipurúke ñe’ẽñemi ha’etéva peteĩteĩvape g̃uarã.
 ba-next-step-3 = Eñepytyvõuka emoheñói hag̃ua ñe’ẽñemi oikóva ha ereko tekorosãme.
 ba-next-step-blurb-3 =
-    Oipuru ñe’ẽñemi ñangarekoha omoheñói hag̃ua ñe’ẽñemi hekorosãva ha ha’eñóva. Ko’ã ñangarekoha ombyaty opaite ne
+    Oiporu ñe’ẽñemi ñangarekoha omoheñói hag̃ua ñe’ẽñemi hekorosãva ha ha’eñóva. Ko’ã ñangarekoha ombyaty opaite ne
     rembiapo ñepyrũ hekorosãva eike hag̃ua opaite ne mba’e’oka guive.
 faq1 = Ndaikuaái ko mba’apohaguasu térã ñanduti renda. ¿Mba’ére aime ko ñembyaípe?
 faq2 = ¿Mba’ére eha’arõite ko ñembyai ñemomarandu?
