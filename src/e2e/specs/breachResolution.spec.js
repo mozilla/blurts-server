@@ -59,12 +59,113 @@ test.describe('Breach Resolution', () => {
     await expect(async () => {
       await expect(updatedResolvedBreachTab).toBeTruthy()
     }).toPass({
-      timeout: 5000
+      timeout: 2000
     })
 
     await testInfo.attach(`${process.env.E2E_TEST_ENV}-breach-resolve-monitor-dashboard.png`, {
       body: await page.screenshot(),
       contentType: 'image/png'
+    })
+  })
+})
+
+test.describe('Breaches Dashboard - Headers', () => {
+  test('Verify that the site header is displayed correctly for signed in users', async ({
+    dataBreachPage,
+  }) => {
+    // link to testrail
+    test.info().annotations.push({
+      type: "testrail",
+      description: "https://testrail.stage.mozaws.net/index.php?/cases/view/2095101",
+    });
+
+    // should go directly to data breach page
+    await dataBreachPage.open()
+
+    // verify logo and profile button
+    await expect(async () => {
+      await expect(await dataBreachPage.dataBreachesLogo).toBeVisible()
+      await expect(await dataBreachPage.dataBreachesNavbarProfile).toBeVisible()
+    }).toPass({
+      timeout: 2000
+    })
+  })
+
+  test('Verify that the site header options work correctly for a signed in user', async ({
+    dataBreachPage,
+    settingsPage,
+    page
+  }) => {
+    // link to testrail
+    test.info().annotations.push({
+      type: "testrail",
+      description: "https://testrail.stage.mozaws.net/index.php?/cases/view/2095102",
+    });
+
+    // should go directly to data breach page
+    await settingsPage.open()
+
+    // verify logo and profile button
+    await expect(async () => {
+      expect(await dataBreachPage.dataBreachesLogoLink.first().getAttribute('href')).toBe("/user/breaches")
+    }).toPass({
+      timeout: 2000
+    })
+
+    await page.waitForLoadState( "networkidle" )
+    await dataBreachPage.dataBreachesNavbarProfile.click()
+
+    // verify mnanage your ff account link, settings option, help and support option, sign out option
+    await expect(async () => {
+      // menu is open
+      expect(await dataBreachPage.profileMenuExpanded()).toBeTruthy()
+
+      // menu header
+      await expect(await dataBreachPage.dataBreachesNavbarProfileMenuHeader).toBeVisible()
+
+      // head text
+      expect(await dataBreachPage.dataBreachesNavbarProfileMenuHeaderSubtitle.textContent()).toEqual('Manage your ⁨Firefox account⁩')
+
+      // check settings
+      await expect(await dataBreachPage.dataBreachesNavbarProfileMenuSettings).toBeVisible()
+
+      // help and support
+      await expect(await dataBreachPage.dataBreachesNavbarProfileMenuHelpAndSupport).toBeVisible()
+
+      // sign out
+      await expect(await dataBreachPage.dataBreachesNavbarProfileMenuSignOut).toBeVisible()
+    }).toPass({
+      timeout: 2000
+    })
+  })
+
+  test(' Verify that the user can navigate through the Monitor dashboard', async ({
+    dataBreachPage,
+  }) => {
+    // link to testrail
+    test.info().annotations.push({
+      type: "testrail",
+      description: "https://testrail.stage.mozaws.net/index.php?/cases/view/2095103",
+    });
+
+    // should go directly to data breach page
+    await dataBreachPage.open()
+
+    // get expected links
+    const links = await dataBreachPage.dashboardLinks()
+
+    // verify the navigation within monitor
+    await expect(async () => {
+      // settings button redirects the user to "Settings" tab
+      expect(await dataBreachPage.settingsNavButton.getAttribute('href')).toBe(links.settingsNavButtonLink)
+
+      // redirects the user to the "Resolve data breaches" tab
+      expect(await dataBreachPage.resolveDataBreachesNavButton.getAttribute('href')).toContain(links.resolveDataBreachesNavButtonLink)
+
+      // opens a new tab in which user is redirected to the "Monitor Help" page
+      expect(await dataBreachPage.helpAndSupportNavButton.getAttribute('href')).toContain(links.helpAndSupportNavButtonLink)
+    }).toPass({
+      timeout: 2000
     })
   })
 })
