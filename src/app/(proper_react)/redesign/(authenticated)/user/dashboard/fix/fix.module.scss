@@ -40,11 +40,11 @@
 
     @media screen and (min-width: $screen-md) {
       // Add horizontal padding to account for next/prev arrow placement on larger screens
-      padding: 0 $spacing-2xl;
+      padding: $spacing-lg $spacing-2xl;
     }
 
     @media screen and (min-width: $screen-xl) {
-      padding: 0;
+      padding: $spacing-xl $spacing-lg $spacing-md $spacing-lg;
     }
 
     .navArrowBack {
