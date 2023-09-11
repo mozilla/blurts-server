@@ -64,7 +64,7 @@ export const BankAccount: Story = {
   args: {
     pageData: {
       type: "bank-account",
-      title: "Credit card",
+      title: "Bank account",
       illustration: bankAccountIllustration,
       exposedData: guidedExperienceBreaches.highRisk.ssnBreaches,
       content,
