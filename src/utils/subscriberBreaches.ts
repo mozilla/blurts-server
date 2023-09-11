@@ -85,23 +85,14 @@ export async function getSubBreaches(
       // strings. Thus, we normalise that to always be a Date object.
       const subscriberBreach: SubscriberBreach = {
         id: breach.Id,
-        addedDate:
-          typeof breach.AddedDate === "string"
-            ? parseIso8601Datetime(breach.AddedDate)
-            : breach.AddedDate,
-        breachDate:
-          typeof breach.BreachDate === "string"
-            ? parseIso8601Datetime(breach.BreachDate)
-            : breach.BreachDate,
+        addedDate: normalizeDate(breach.AddedDate),
+        breachDate: normalizeDate(breach.BreachDate),
         dataClasses: filteredBreachDataClasses,
         description: breach.Description,
         domain: breach.Domain,
         isResolved: breachResolution[breach.Id]?.isResolved || false,
         favIconUrl: breach.FaviconUrl,
-        modifiedDate:
-          typeof breach.ModifiedDate === "string"
-            ? parseIso8601Datetime(breach.ModifiedDate)
-            : breach.ModifiedDate,
+        modifiedDate: normalizeDate(breach.ModifiedDate),
         name: breach.Name,
         title: breach.Title,
         emailsEffected: [email.email],
@@ -136,4 +127,14 @@ export async function getSubBreaches(
   }
 
   return Object.values(uniqueBreaches);
+}
+
+function normalizeDate(date: string | Date): Date {
+  return typeof date === "string"
+    ? // If `date` is a string, it was fetched from the HIBP API, and we should be
+      // able to assume that it is a valid ISO 8601 string, and thus use the
+      // non-null assertion:
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      parseIso8601Datetime(date)!
+    : date;
 }
