@@ -12,11 +12,12 @@ import { useL10n } from "../../../../../../../hooks/l10n";
 type HighRiskBreachContentProps = {
   typeOfBreach: string;
   locale: string;
+  numBreaches: number;
 };
 
 export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
   const l10n = useL10n();
-  let title, secondaryDescription, recommendationSteps, breachIllustration;
+  let title, summary, description, recommendations, illustration;
   // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
   const emailsMonitored = ["email1@gmail.com", "email2@gmail.com"]; // mocked
   const emailsFormatter = new Intl.ListFormat(props.locale, {
@@ -87,39 +88,66 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
   switch (props.typeOfBreach) {
     case "creditCard":
       title = l10n.getString("high-risk-breach-credit-card-title");
-      secondaryDescription = (
+      summary = l10n.getString("high-risk-breach-summary", {
+        num_breaches: props.numBreaches,
+      });
+      description = (
         <p>{l10n.getString("high-risk-breach-credit-card-description")}</p>
       );
-      recommendationSteps = CreditCardRecommendationSteps;
-      breachIllustration = CreditCardIllustration;
+      recommendations = {
+        title: l10n.getString("high-risk-breach-heading"),
+        subtitle: l10n.getString("high-risk-breach-subheading"),
+        steps: CreditCardRecommendationSteps,
+      };
+      illustration = CreditCardIllustration;
       break;
     case "ssnBreaches":
       title = l10n.getString("high-risk-breach-social-security-title");
-      secondaryDescription = (
+      summary = l10n.getString("high-risk-breach-summary", {
+        num_breaches: props.numBreaches,
+      });
+      description = (
         <p>{l10n.getString("high-risk-breach-social-security-description")}</p>
       );
-      recommendationSteps = SocialSecurityNumberRecommendationSteps;
-      breachIllustration = SocialSecurityNumberIllustration;
+      recommendations = {
+        title: l10n.getString("high-risk-breach-heading"),
+        subtitle: l10n.getString("high-risk-breach-subheading"),
+        steps: SocialSecurityNumberRecommendationSteps,
+      };
+      illustration = SocialSecurityNumberIllustration;
       break;
     case "bankAccount":
       title = l10n.getString("high-risk-breach-bank-account-title");
-      secondaryDescription = (
+      summary = l10n.getString("high-risk-breach-summary", {
+        num_breaches: props.numBreaches,
+      });
+      description = (
         <p>{l10n.getString("high-risk-breach-bank-account-description")}</p>
       );
-      recommendationSteps = BankAccountRecommendationSteps;
-      breachIllustration = BankAccountIllustration;
+      recommendations = {
+        title: l10n.getString("high-risk-breach-heading"),
+        subtitle: l10n.getString("high-risk-breach-subheading"),
+        steps: BankAccountRecommendationSteps,
+      };
+      illustration = BankAccountIllustration;
       break;
     case "pin":
       title = l10n.getString("high-risk-breach-pin-title");
-      secondaryDescription = (
-        <p>{l10n.getString("high-risk-breach-pin-description")}</p>
-      );
-      recommendationSteps = pinRecommendationSteps;
-      breachIllustration = pinIllustration;
+      summary = l10n.getString("high-risk-breach-summary", {
+        num_breaches: props.numBreaches,
+      });
+      description = <p>{l10n.getString("high-risk-breach-pin-description")}</p>;
+      recommendations = {
+        title: l10n.getString("high-risk-breach-heading"),
+        subtitle: l10n.getString("high-risk-breach-subheading"),
+        steps: pinRecommendationSteps,
+      };
+      illustration = pinIllustration;
       break;
     default:
       title = l10n.getString("high-risk-breach-none-title");
-      secondaryDescription = (
+      summary = "";
+      description = (
         <>
           <p>
             {l10n.getString("high-risk-breach-none-description", {
@@ -150,14 +178,15 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
           </ul>
         </>
       );
-      breachIllustration = NoBreachesIllustration;
+      illustration = NoBreachesIllustration;
       break;
   }
 
   return {
     title,
-    secondaryDescription,
-    recommendationSteps,
-    breachIllustration,
+    summary,
+    description,
+    recommendations,
+    illustration,
   };
 };

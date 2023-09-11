@@ -1,10 +1,11 @@
-@import "../../../../../../../tokens";
+@import "../../../../../../tokens";
 
 .recommendations {
   padding-top: $spacing-md;
   p {
     font: $text-body-sm;
   }
+  ul,
   ol {
     padding-top: $spacing-md;
     list-style-position: inside;
