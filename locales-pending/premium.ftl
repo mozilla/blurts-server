@@ -286,6 +286,12 @@ false-door-test-phase-2-content-part-two-dashboard = Automatically remove data f
 
 premium-upsell-dialog-title = Choose the level of protection that’s right for you
 
+# Guided Resolution Flow
+
+guided-resolution-flow-exit = Return to dashboard
+guided-resolution-flow-back-arrow = Go to previous step
+guided-resolution-flow-next-arrow = Go to next step
+
 # High Risk Data Breaches
 
 high-risk-breach-heading = Here’s what to do
