@@ -67,7 +67,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
           /* c8 ignore next */
           href="/"
         >
-          {l10n.getString("high-risk-breach-none-continue")}
+          {l10n.getString("high-risk-breach-skip")}
         </Link>
       )}
     </>
