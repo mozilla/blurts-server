@@ -360,7 +360,7 @@ security-recommendation-steps-cta-label = Got it!
 
 # Phone security recommendation
 
-security-recommendation-phone-title = Protect your email address
+security-recommendation-phone-title = Protect your phone number
 security-recommendation-phone-description = Unfortunately you can’t take it back. But there are steps you can take to make sure you stay safe.
 security-recommendation-phone-step-one = Block spam numbers to prevent more junk calls
 security-recommendation-phone-step-two = Don’t click on links in texts from unknown senders; if it appears to be from a trusted source, call directly to confirm
