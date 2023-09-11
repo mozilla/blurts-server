@@ -20,9 +20,6 @@ export default async function HighRiskDataBreaches() {
   }
   const breaches = await getSubscriberBreaches(session.user);
   const guidedExperienceBreaches = getGuidedExperienceBreaches(breaches);
-  console.log("====================================");
-  console.log("guidedExperienceBreaches", guidedExperienceBreaches);
-  console.log("====================================");
 
   const pageData = getHighRiskBreachesByType({
     dataType: "none",

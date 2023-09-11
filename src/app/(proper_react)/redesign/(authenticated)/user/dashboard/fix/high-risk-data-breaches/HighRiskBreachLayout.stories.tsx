@@ -7,7 +7,12 @@ import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreach
 import { createRandomBreach } from "../../../../../../../../apiMocks/mockData";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
 import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
-import { HighRiskBreach } from "./highRiskBreachData";
+
+import creditCardIllustration from "../images/high-risk-data-breach-credit-card.svg";
+import socialSecurityNumberIllustration from "../images/high-risk-data-breach-ssn.svg";
+import bankAccountIllustration from "../images/high-risk-data-breach-bank-account.svg";
+import pinIllustration from "../images/high-risk-data-breach-pin.svg";
+import noBreachesIllustration from "../images/high-risk-breaches-none.svg";
 
 const meta: Meta<typeof HighRiskBreachLayout> = {
   title: "ResolutionLayout",
@@ -22,141 +27,83 @@ const scannedResultsArraySample: SubscriberBreach[] = Array.from(
   () => createRandomBreach({ isHighRiskOnly: true })
 );
 
-const pageDummyDataCreditCard: HighRiskBreach = {
-  type: "credit-card",
-  title: "Credit card",
-  illustration: "",
-  exposedData: getGuidedExperienceBreaches(scannedResultsArraySample).highRisk
-    .ssnBreaches,
-  content: {
-    summary: "It appeared in 2 data breaches:",
-    description: <p>Security recommendation description text.</p>,
-    recommendations: {
-      title: "Here’s what to do",
-      steps: (
-        <ol>
-          <li>Recommendation one</li>
-          <li>Recommendation two</li>
-          <li>Recommendation three</li>
-        </ol>
-      ),
-    },
-  },
+const summaryString = "It appeared in 2 data breaches:";
+const recommendations = {
+  title: "Here’s what to do",
+  steps: (
+    <ol>
+      <li>Recommendation one</li>
+      <li>Recommendation two</li>
+      <li>Recommendation three</li>
+    </ol>
+  ),
+};
+const content = {
+  summary: summaryString,
+  description: <p>Security recommendation description text.</p>,
+  recommendations,
 };
 
-const pageDummyDataBankAccount: HighRiskBreach = {
-  type: "bank-account",
-  title: "Credit card",
-  illustration: "",
-  exposedData: getGuidedExperienceBreaches(scannedResultsArraySample).highRisk
-    .ssnBreaches,
-  content: {
-    summary: "It appeared in 2 data breaches:",
-    description: <p>Security recommendation description text.</p>,
-    recommendations: {
-      title: "Here’s what to do",
-      steps: (
-        <ol>
-          <li>Recommendation one</li>
-          <li>Recommendation two</li>
-          <li>Recommendation three</li>
-        </ol>
-      ),
-    },
-  },
-};
-
-const pageDummyDataSsn: HighRiskBreach = {
-  type: "ssn",
-  title: "SNN",
-  illustration: "",
-  exposedData: getGuidedExperienceBreaches(scannedResultsArraySample).highRisk
-    .ssnBreaches,
-  content: {
-    summary: "It appeared in 2 data breaches:",
-    description: <p>Security recommendation description text.</p>,
-    recommendations: {
-      title: "Here",
-      steps: (
-        <ol>
-          <li>Recommendation one</li>
-          <li>Recommendation two</li>
-          <li>Recommendation three</li>
-        </ol>
-      ),
-    },
-  },
-};
-
-const pageDummyDataPin: HighRiskBreach = {
-  type: "pin",
-  title: "PIN",
-  illustration: "",
-  exposedData: getGuidedExperienceBreaches(scannedResultsArraySample).highRisk
-    .ssnBreaches,
-  content: {
-    summary: "It appeared in 2 data breaches:",
-    description: <p>Security recommendation description text.</p>,
-    recommendations: {
-      title: "Here’s what to do",
-      steps: (
-        <ol>
-          <li>Recommendation one</li>
-          <li>Recommendation two</li>
-          <li>Recommendation three</li>
-        </ol>
-      ),
-    },
-  },
-};
-
-const pageDummyDataNone: HighRiskBreach = {
-  type: "none",
-  title: "No breaches",
-  illustration: "",
-  exposedData: [],
-  content: {
-    summary: "",
-    description: <p>Security recommendation description text.</p>,
-    recommendations: {
-      title: "Here’s what to do",
-      steps: (
-        <ol>
-          <li>Recommendation one</li>
-          <li>Recommendation two</li>
-          <li>Recommendation three</li>
-        </ol>
-      ),
-    },
-  },
-};
+const guidedExperienceBreaches = getGuidedExperienceBreaches(
+  scannedResultsArraySample
+);
 
 export const CreditCard: Story = {
   args: {
-    pageData: pageDummyDataCreditCard,
+    pageData: {
+      type: "credit-card",
+      title: "Credit card",
+      illustration: creditCardIllustration,
+      exposedData: guidedExperienceBreaches.highRisk.ssnBreaches,
+      content,
+    },
   },
 };
 
 export const BankAccount: Story = {
   args: {
-    pageData: pageDummyDataBankAccount,
+    pageData: {
+      type: "bank-account",
+      title: "Credit card",
+      illustration: bankAccountIllustration,
+      exposedData: guidedExperienceBreaches.highRisk.ssnBreaches,
+      content,
+    },
   },
 };
 
 export const SSN: Story = {
   args: {
-    pageData: pageDummyDataSsn,
+    pageData: {
+      type: "ssn",
+      title: "SNN",
+      illustration: socialSecurityNumberIllustration,
+      exposedData: guidedExperienceBreaches.highRisk.ssnBreaches,
+      content,
+    },
   },
 };
 
 export const PIN: Story = {
   args: {
-    pageData: pageDummyDataPin,
+    pageData: {
+      type: "pin",
+      title: "PIN",
+      illustration: pinIllustration,
+      exposedData: guidedExperienceBreaches.highRisk.ssnBreaches,
+      content,
+    },
   },
 };
 
 export const None: Story = {
   args: {
-    pageData: pageDummyDataNone,
+    pageData: {
+      type: "none",
+      title: "No breaches",
+      illustration: noBreachesIllustration,
+      exposedData: [],
+      content,
+    },
   },
 };
