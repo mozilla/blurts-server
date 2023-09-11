@@ -11,7 +11,7 @@ import styles from "./ResolutionContent.module.scss";
 
 interface ResolutionContentProps {
   content: SecurityRecommendationContent;
-  exposedData: SubscriberBreach[];
+  exposedData?: SubscriberBreach[];
   locale: string;
 }
 
@@ -43,11 +43,9 @@ export const ResolutionContent = ({
 
   return (
     <>
-      {listOfBreaches && (
-        <>
-          <p>{summary}</p>
-          <div className={styles.breachItemsWrapper}>{listOfBreaches}</div>
-        </>
+      <p>{summary}</p>
+      {exposedData && (
+        <div className={styles.breachItemsWrapper}>{listOfBreaches}</div>
       )}
       {description}
       {recommendations && (
