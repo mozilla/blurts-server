@@ -98,28 +98,35 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
 
 2. You may receive the error `Required environment variable was not set`. If this is the case, get the required env var(s) from another team member or ask in #fx-monitor-engineering. Otherwise, if the server started successfully, navigate to [localhost:6060](http://localhost:6060/)
 
-### Cloud Functions
+### PubSub
 
-User breach notifications from HIBP are handled by a [GCP Cloud Function](https://cloud.google.com/functions). This can be emulated locally:
+Monitor uses GCP PubSub for processing incoming breach data, this can be tested locally using an emulator: https://cloud.google.com/pubsub/docs/emulator
+
+#### Run the GCP PubSub emulator:
 
 ```sh
-npm run functions
+gcloud beta emulators pubsub start --project=your-project-name
 ```
 
-This function serves the `/api/v1/hibp/notify` route, which is responsible for:
-
-1. receiving HTTP POST payloads with a bearer token from HIBP
-2. emailing any affected users
-
-This can be tested using curl:
+### In a different shell, set the environment to point at the emulator and run Monitor in dev mode:
 
 ```sh
-curl \
-  -H 'Content-Type: application/json' \
-  -H 'Authorization: Bearer unsafe-default-token-for-dev' \
-  -X POST \
-  -d '{"breachName": "Gravatar", "hashPrefix": "...", "hashSuffixes": ["..."]}' \
-  localhost:8080/api/v1/hibp/notify
+$(gcloud beta emulators pubsub env-init)
+npm run dev
+```
+
+### Incoming WebHook requests from HIBP will be of the form:
+
+```sh
+curl -d '{ "breachName": "000webhost", "hashPrefix": "test", "hashSuffixes": ["test"] }' \
+  -H "Authorization: Bearer unsafe-default-token-for-dev" \
+  http://localhost:6060/api/v1/hibp/notify
+```
+
+### This pubsub queue will be consumed by this cron job, which is responsible for looking up and emailing impacted users:
+
+```sh
+node src/scripts/emailBreachAlerts.js
 ```
 
 ### Database

@@ -72,6 +72,8 @@ async function setOnerepManualScan(
     onerep_profile_id: onerepProfileId,
     onerep_scan_id: onerepScanId,
     onerep_scan_reason: "manual",
+    // @ts-ignore knex.fn.now() results in it being set to a date,
+    // even if it's not typed as a JS date object:
     created_at: knex.fn.now(),
   });
 }
@@ -88,7 +90,9 @@ async function setOnerepScanResults(
       .where("onerep_profile_id", onerepProfileId)
       .andWhere("onerep_scan_id", onerepScanId)
       .update({
-        onerep_scan_results: onerepScanResults,
+        onerep_scan_results: onerepScanResults as ScanResult,
+        // @ts-ignore knex.fn.now() results in it being set to a date,
+        // even if it's not typed as a JS date object:
         updated_at: knex.fn.now(),
       });
   } else {
@@ -96,8 +100,10 @@ async function setOnerepScanResults(
     await knex("onerep_scans").insert({
       onerep_profile_id: onerepProfileId,
       onerep_scan_id: onerepScanId,
-      onerep_scan_results: onerepScanResults,
+      onerep_scan_results: onerepScanResults as ScanResult,
       onerep_scan_reason: onerepScanReason,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
       created_at: knex.fn.now(),
     });
   }

@@ -297,4 +297,38 @@ describe("getSubBreaches", () => {
     });
     expect(subBreaches[0].dataClassesEffected[1]).toEqual({ passwords: 1 });
   });
+
+  it("normalises ISO 8601 date strings to Date objects", async () => {
+    (
+      getUserEmails as jest.Mock<
+        ReturnType<typeof getUserEmails>,
+        Parameters<typeof getUserEmails>
+      >
+    )
+      // The only affected email is the user's primary email; they have no
+      // additional email addresses in this test:
+      .mockResolvedValueOnce([]);
+    (
+      getBreachesForEmail as jest.Mock<
+        ReturnType<typeof getBreachesForEmail>,
+        Parameters<typeof getBreachesForEmail>
+      >
+    ).mockResolvedValueOnce(
+      breachesWithNoneResolved.map((breach) => ({
+        ...breach,
+        // Make sure the found breaches have ISO 8601 date strings, rather than
+        // Date objects:
+        BreachDate: "2016-12-01T08:00:00.000Z",
+        AddedDate: "2017-04-15T11:02:35.000Z",
+        ModifiedDate: "2017-04-15T11:02:35.000Z",
+      }))
+    );
+
+    const subBreaches = await getSubBreaches(subscriber, []);
+
+    expect(subBreaches.length).toEqual(1);
+    expect(subBreaches[0].addedDate).toBeInstanceOf(Date);
+    expect(subBreaches[0].breachDate).toBeInstanceOf(Date);
+    expect(subBreaches[0].modifiedDate).toBeInstanceOf(Date);
+  });
 });

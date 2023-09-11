@@ -442,11 +442,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
               {l10n.getString("exposure-card-date-found")}
             </dt>
             <dd className={styles.hideOnMobile}>
-              {dateFormatter.format(
-                // We should be able to result that HIBP's `addedDate` property is a properly-formatted data string
-                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                parseIso8601Datetime(subscriberBreach.addedDate)!
-              )}
+              {dateFormatter.format(subscriberBreach.addedDate)}
             </dd>
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-status")}
