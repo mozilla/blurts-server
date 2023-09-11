@@ -18,20 +18,32 @@ export async function GET(req: NextRequest) {
   const now = new Date();
   const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
 
-  const result = await getScansCount(
-    firstDayOfMonth.toDateString(),
-    now.toDateString()
-  );
-  const scansCount = result[0]["count"];
+  const manualScansCount =
+    (
+      await getScansCount(
+        firstDayOfMonth.toDateString(),
+        now.toDateString(),
+        "manual"
+      )
+    )?.[0]?.["count"] || 0;
+
+  const initialScansCount =
+    (
+      await getScansCount(
+        firstDayOfMonth.toDateString(),
+        now.toDateString(),
+        "initial"
+      )
+    )?.[0]?.["count"] || 0;
 
   const message = {
     scans: {
       quota: monthlyScanQuota,
-      count: scansCount,
+      count: manualScansCount,
     },
     subscribers: {
       quota: monthlySubscriberQuota,
-      count: 0,
+      count: initialScansCount,
     },
   };
 
