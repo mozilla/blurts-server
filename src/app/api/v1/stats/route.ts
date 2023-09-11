@@ -12,7 +12,8 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ success: "false" }, { status: 401 });
   }
 
-  const monthlyQuota = process.env.MONTHLY_SCANS_QUOTA;
+  const monthlyScanQuota = process.env.MONTHLY_SCANS_QUOTA;
+  const monthlySubscriberQuota = process.env.MONTHLY_SUBSCRIBERS_QUOTA;
 
   const now = new Date();
   const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -24,8 +25,14 @@ export async function GET(req: NextRequest) {
   const scansCount = result[0]["count"];
 
   const message = {
-    monthlyQuota,
-    scansCount,
+    scans: {
+      quota: monthlyScanQuota,
+      count: scansCount,
+    },
+    subscribers: {
+      quota: monthlySubscriberQuota,
+      count: 0,
+    },
   };
 
   return NextResponse.json({ success: true, message }, { status: 200 });
