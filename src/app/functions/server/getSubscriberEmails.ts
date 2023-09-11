@@ -14,13 +14,10 @@ import { getUserEmails } from "../../../db/tables/emailAddresses.js";
 export async function getSubscriberEmails(
   user: Session["user"]
 ): Promise<string[]> {
-  const emailArray: string[] = [];
+  const emailArray: string[] = [user.email];
   const subscriber = await getSubscriberByEmail(user.email);
   (await getUserEmails(subscriber.id)).forEach((er) =>
     emailArray.push(er.email)
   );
-
-  // push the primary email
-  emailArray.push(user.email);
   return emailArray;
 }
