@@ -27,6 +27,7 @@ const pageDummyData: SecurityRecommendation = {
   title: "Dummy title",
   illustration: phoneIllustration,
   content: {
+    summary: "It appeared in 2 data breaches:",
     description: <p>Security recommendatino description text.</p>,
     recommendations: {
       title: "Here",

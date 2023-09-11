@@ -22,7 +22,7 @@ export const ResolutionContent = ({
 }: ResolutionContentProps) => {
   const l10n = useL10n();
 
-  const { description, recommendations } = content;
+  const { summary, description, recommendations } = content;
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     dateStyle: "short",
   });
@@ -45,11 +45,7 @@ export const ResolutionContent = ({
     <>
       {listOfBreaches && (
         <>
-          <p>
-            {l10n.getString("high-risk-breach-summary", {
-              num_breaches: exposedData.length,
-            })}
-          </p>
+          <p>{summary}</p>
           <div className={styles.breachItemsWrapper}>{listOfBreaches}</div>
         </>
       )}

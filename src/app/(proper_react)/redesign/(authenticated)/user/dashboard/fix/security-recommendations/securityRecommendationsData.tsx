@@ -9,6 +9,7 @@ import ipIllustration from "../images/security-recommendations-ip.svg";
 import { getL10n } from "../../../../../../../functions/server/l10n";
 
 export type SecurityRecommendationContent = {
+  summary: string;
   description: ReactNode;
   recommendations?: {
     title: string;
@@ -26,7 +27,13 @@ export type SecurityRecommendation = {
   content: SecurityRecommendationContent;
 };
 
-function getSecurityRecommendationsByType(dataType: string) {
+function getSecurityRecommendationsByType({
+  dataType,
+  numBreaches,
+}: {
+  dataType: string;
+  numBreaches: number;
+}) {
   const l10n = getL10n();
 
   const securityRecommendationsData: SecurityRecommendation[] = [
@@ -35,6 +42,9 @@ function getSecurityRecommendationsByType(dataType: string) {
       title: l10n.getString("security-recommendation-phone-title"),
       illustration: phoneIllustration,
       content: {
+        summary: l10n.getString("security-recommendation-phone-summary", {
+          num_breaches: numBreaches,
+        }),
         description: (
           <p>{l10n.getString("security-recommendation-phone-description")}</p>
         ),
@@ -71,6 +81,9 @@ function getSecurityRecommendationsByType(dataType: string) {
       title: l10n.getString("security-recommendation-email-title"),
       illustration: emailIllustration,
       content: {
+        summary: l10n.getString("security-recommendation-email-summary", {
+          num_breaches: numBreaches,
+        }),
         description: (
           <p>{l10n.getString("security-recommendation-email-description")}</p>
         ),
@@ -120,6 +133,9 @@ function getSecurityRecommendationsByType(dataType: string) {
       title: l10n.getString("security-recommendation-ip-title"),
       illustration: ipIllustration,
       content: {
+        summary: l10n.getString("security-recommendation-ip-summary", {
+          num_breaches: numBreaches,
+        }),
         description: (
           <p>{l10n.getString("security-recommendation-ip-description")}</p>
         ),

@@ -12,11 +12,12 @@ import { useL10n } from "../../../../../../../hooks/l10n";
 type HighRiskBreachContentProps = {
   typeOfBreach: string;
   locale: string;
+  numBreaches: number;
 };
 
 export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
   const l10n = useL10n();
-  let title, description, recommendations, illustration;
+  let title, summary, description, recommendations, illustration;
   // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
   const emailsMonitored = ["email1@gmail.com", "email2@gmail.com"]; // mocked
   const emailsFormatter = new Intl.ListFormat(props.locale, {
@@ -87,6 +88,9 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
   switch (props.typeOfBreach) {
     case "creditCard":
       title = l10n.getString("high-risk-breach-credit-card-title");
+      summary = l10n.getString("high-risk-breach-summary", {
+        num_breaches: props.numBreaches,
+      });
       description = (
         <p>{l10n.getString("high-risk-breach-credit-card-description")}</p>
       );
@@ -99,6 +103,9 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
       break;
     case "ssnBreaches":
       title = l10n.getString("high-risk-breach-social-security-title");
+      summary = l10n.getString("high-risk-breach-summary", {
+        num_breaches: props.numBreaches,
+      });
       description = (
         <p>{l10n.getString("high-risk-breach-social-security-description")}</p>
       );
@@ -111,6 +118,9 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
       break;
     case "bankAccount":
       title = l10n.getString("high-risk-breach-bank-account-title");
+      summary = l10n.getString("high-risk-breach-summary", {
+        num_breaches: props.numBreaches,
+      });
       description = (
         <p>{l10n.getString("high-risk-breach-bank-account-description")}</p>
       );
@@ -123,6 +133,9 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
       break;
     case "pin":
       title = l10n.getString("high-risk-breach-pin-title");
+      summary = l10n.getString("high-risk-breach-summary", {
+        num_breaches: props.numBreaches,
+      });
       description = <p>{l10n.getString("high-risk-breach-pin-description")}</p>;
       recommendations = {
         title: l10n.getString("high-risk-breach-heading"),
@@ -133,6 +146,7 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
       break;
     default:
       title = l10n.getString("high-risk-breach-none-title");
+      summary = "";
       description = (
         <>
           <p>
@@ -170,6 +184,7 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
 
   return {
     title,
+    summary,
     description,
     recommendations,
     illustration,

@@ -33,7 +33,10 @@ export default async function SecurityRecommendations({
   const breaches = await getSubscriberBreaches(session.user);
 
   const { type } = params;
-  const pageData = getSecurityRecommendationsByType(type);
+  const pageData = getSecurityRecommendationsByType({
+    dataType: type,
+    numBreaches: breaches.length,
+  });
   if (!pageData) {
     redirect("/redesign/user/dashboard");
   }

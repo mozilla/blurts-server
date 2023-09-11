@@ -361,6 +361,11 @@ security-recommendation-steps-cta-label = Got it!
 # Phone security recommendation
 
 security-recommendation-phone-title = Protect your phone number
+# $num_breaches is the number of breaches where the phone number was found.
+security-recommendation-phone-summary = { $num_breaches ->
+  [one] Your phone number was exposed in { $num_breaches } data breach:
+  *[other] Your phone number was exposed in { $num_breaches } data breaches:
+}
 security-recommendation-phone-description = Unfortunately you can’t take it back. But there are steps you can take to make sure you stay safe.
 security-recommendation-phone-step-one = Block spam numbers to prevent more junk calls
 security-recommendation-phone-step-two = Don’t click on links in texts from unknown senders; if it appears to be from a trusted source, call directly to confirm
@@ -369,6 +374,11 @@ security-recommendation-phone-step-three = Use a <link_to_info>{ -brand-relay } 
 # Email security recommendation
 
 security-recommendation-email-title = Protect your email address
+# $num_breaches is the number of breaches where the email address was found.
+security-recommendation-email-summary = { $num_breaches ->
+  [one] Your email address was exposed in { $num_breaches } data breach:
+  *[other] Your email address was exposed in { $num_breaches } data breaches:
+}
 security-recommendation-email-description = Unfortunately you can’t fix this. But there are steps you can take to protect yourself.
 security-recommendation-email-step-one = Don’t click on links in emails from unknown senders; If it appears to be from trusted source, call directly to confirm
 security-recommendation-email-step-two = Be aware of <link_to_info>phishing scams</link_to_info>
@@ -378,5 +388,10 @@ security-recommendation-email-step-four = Use <link_to_info>{ -brand-relay } ema
 # IP security recommendation
 
 security-recommendation-ip-title = Use a VPN for added privacy
+# $num_breaches is the number of breaches where the IP address was found.
+security-recommendation-ip-summary = { $num_breaches ->
+  [one] Your IP address was exposed in { $num_breaches } data breach:
+  *[other] Your IP address was exposed in { $num_breaches } data breaches:
+}
 security-recommendation-ip-description = Your IP address pinpoints your location and internet service provider. Hackers could use this information to find your location or try to connect to your devices.
 security-recommendation-ip-step-one = Use a VPN (such as <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) to hide your real IP address and use the internet privately.
