@@ -109,7 +109,10 @@ export interface GuidedExperienceBreaches {
     pinBreaches: SubscriberBreach[];
     bankBreaches: SubscriberBreach[];
   };
-  passwordBreaches: SubscriberBreach[];
+  passwordBreaches: {
+    passwords: SubscriberBreach[];
+    securityQuestions: SubscriberBreach[];
+  };
   securityRecommendations: {
     phoneNumber: SubscriberBreach[];
     emailAddress: SubscriberBreach[];
