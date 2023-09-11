@@ -354,6 +354,7 @@ high-risk-breach-none-continue = Continue
 
 # Security recommendations
 
+security-recommendation-steps-label = Security recommendations
 security-recommendation-steps-title = Here’s our advice:
 security-recommendation-steps-cta-label = Got it!
 
