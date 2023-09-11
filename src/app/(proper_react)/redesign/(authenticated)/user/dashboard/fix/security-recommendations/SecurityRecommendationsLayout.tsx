@@ -8,24 +8,21 @@ import type { SecurityRecommendation } from "./securityRecommendationsData";
 import { ResolutionContainer } from "../ResolutionContainer";
 import { ResolutionContent } from "../ResolutionContent";
 import { Button } from "../../../../../../../components/server/Button";
-import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import { useL10n } from "../../../../../../../hooks/l10n";
 
 export interface SecurityRecommendationsLayoutProps {
   label: string;
   pageData: SecurityRecommendation;
-  exposedData: SubscriberBreach[];
   locale: string;
 }
 
 export function SecurityRecommendationsLayout({
   label,
   pageData,
-  exposedData,
   locale,
 }: SecurityRecommendationsLayoutProps) {
   const l10n = useL10n();
-  const { title, illustration, content } = pageData;
+  const { title, illustration, content, exposedData } = pageData;
 
   return (
     <ResolutionContainer

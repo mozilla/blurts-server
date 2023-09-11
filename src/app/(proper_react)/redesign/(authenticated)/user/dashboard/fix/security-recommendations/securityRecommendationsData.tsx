@@ -7,6 +7,8 @@ import emailIllustration from "../images/security-recommendations-email.svg";
 import phoneIllustration from "../images/security-recommendations-phone.svg";
 import ipIllustration from "../images/security-recommendations-ip.svg";
 import { getL10n } from "../../../../../../../functions/server/l10n";
+import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
+import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 
 export type SecurityRecommendationContent = {
   summary: string;
@@ -25,14 +27,15 @@ export type SecurityRecommendation = {
   title: string;
   illustration: string;
   content: SecurityRecommendationContent;
+  exposedData: SubscriberBreach[];
 };
 
 function getSecurityRecommendationsByType({
   dataType,
-  numBreaches,
+  breaches,
 }: {
   dataType: string;
-  numBreaches: number;
+  breaches: GuidedExperienceBreaches;
 }) {
   const l10n = getL10n();
 
@@ -41,9 +44,10 @@ function getSecurityRecommendationsByType({
       type: "phone",
       title: l10n.getString("security-recommendation-phone-title"),
       illustration: phoneIllustration,
+      exposedData: breaches.securityRecommendations.phoneNumber,
       content: {
         summary: l10n.getString("security-recommendation-phone-summary", {
-          num_breaches: numBreaches,
+          num_breaches: breaches.securityRecommendations.phoneNumber.length,
         }),
         description: (
           <p>{l10n.getString("security-recommendation-phone-description")}</p>
@@ -80,9 +84,10 @@ function getSecurityRecommendationsByType({
       type: "email",
       title: l10n.getString("security-recommendation-email-title"),
       illustration: emailIllustration,
+      exposedData: breaches.securityRecommendations.emailAddress,
       content: {
         summary: l10n.getString("security-recommendation-email-summary", {
-          num_breaches: numBreaches,
+          num_breaches: breaches.securityRecommendations.emailAddress.length,
         }),
         description: (
           <p>{l10n.getString("security-recommendation-email-description")}</p>
@@ -132,9 +137,10 @@ function getSecurityRecommendationsByType({
       type: "ip",
       title: l10n.getString("security-recommendation-ip-title"),
       illustration: ipIllustration,
+      exposedData: breaches.securityRecommendations.IPAddress,
       content: {
         summary: l10n.getString("security-recommendation-ip-summary", {
-          num_breaches: numBreaches,
+          num_breaches: breaches.securityRecommendations.IPAddress.length,
         }),
         description: (
           <p>{l10n.getString("security-recommendation-ip-description")}</p>

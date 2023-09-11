@@ -8,6 +8,7 @@ import { SecurityRecommendationsLayout } from "../SecurityRecommendationsLayout"
 import { getSecurityRecommendationsByType } from "../securityRecommendationsData";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
+import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
 import {
   getL10n,
   getLocale,
@@ -28,15 +29,15 @@ export default async function SecurityRecommendations({
     return redirect("/");
   }
   const l10n = getL10n();
-  // TODO: Filter breaches for dataClassesEffected depending on
-  // security recommendation type.
   const breaches = await getSubscriberBreaches(session.user);
+  const guidedExperienceBreaches = getGuidedExperienceBreaches(breaches);
 
   const { type } = params;
   const pageData = getSecurityRecommendationsByType({
     dataType: type,
-    numBreaches: breaches.length,
+    breaches: guidedExperienceBreaches,
   });
+
   if (!pageData) {
     redirect("/redesign/user/dashboard");
   }
@@ -45,7 +46,6 @@ export default async function SecurityRecommendations({
     <SecurityRecommendationsLayout
       label={l10n.getString("security-recommendation-steps-label")}
       pageData={pageData}
-      exposedData={breaches}
       locale={locale}
     />
   );
