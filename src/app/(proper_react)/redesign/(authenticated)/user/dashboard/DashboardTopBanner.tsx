@@ -65,7 +65,6 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       ),
       cta: (
         <Button
-          buttonType="link"
           href={
             "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers"
           }

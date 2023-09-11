@@ -17,6 +17,11 @@ export function getGuidedExperienceBreaches(
       bankBreaches: [],
     },
     passwordBreaches: [],
+    securityRecommendations: {
+      phoneNumber: [],
+      emailAddress: [],
+      IPAddress: [],
+    },
   };
   subscriberBreaches.forEach((b) => {
     // high risks
@@ -41,7 +46,23 @@ export function getGuidedExperienceBreaches(
     if (b.dataClasses.includes(BreachDataTypes.Passwords)) {
       guidedExperienceBreaches.passwordBreaches.push(b);
     }
+
+    // security recommendations
+    // TODO: Add tests when security recs work is merged in
+    /* c8 ignore start */
+    if (b.dataClasses.includes(BreachDataTypes.Phone)) {
+      guidedExperienceBreaches.securityRecommendations.phoneNumber.push(b);
+    }
+
+    if (b.dataClasses.includes(BreachDataTypes.Email)) {
+      guidedExperienceBreaches.securityRecommendations.emailAddress.push(b);
+    }
+
+    if (b.dataClasses.includes(BreachDataTypes.HistoricalPasswords)) {
+      guidedExperienceBreaches.securityRecommendations.IPAddress.push(b);
+    }
   });
+  /* c8 ignore stop */
 
   return guidedExperienceBreaches;
 }

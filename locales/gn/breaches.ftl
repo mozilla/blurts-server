@@ -143,6 +143,9 @@ breach-checklist-sq-header-text = Embopyahu porandu tekorosãgua.
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Emoheñói mba’ete hekorosã ha ha’eñóva oimeraẽva mbaétépe g̃uarã eipurujeyhague ñe’ẽñemi.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = Peteĩ ñe’ẽñemi ñangarekoha ikatúva { $passwordManagerLink } (reigua ha oĩvavoi { -brand-firefox } kundahára ndive) nepytyvõkuaa ehapykueho hag̃ua opaite ñe’ẽñemi ha eike tekorosãme opaite mba’e’oka guive.
 
 ## Prompts the user for changes when there is a breach detected of other types
 

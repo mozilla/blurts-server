@@ -65,7 +65,7 @@ breaches-all-resolved-cta-button = Dodaj e-poštni naslov
 # Variables:
 #   $breachDate (String) - Date of the breach
 #   $companyName (String) - Name of the company where the breach occurred
-breach-description = Dne { $breachDate } je prišlo do kršitve podjetja { $companyName }. Ko je bila kraja odkrita in potrjena, je bila { $addedDate } dodana v našo zbirko podatkov. Ta kraja je vključevala: { $dataClasses }
+breach-description = Dne { $breachDate } je prišlo do kraje podatkov podjetja { $companyName }. Potem ko je bila kraja odkrita in potrjena, je bila dne { $addedDate } dodana v našo zbirko podatkov. Kraja je obsegala naslednje vrste podatkov: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -75,24 +75,24 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-breach-checklist-pw-header-text = Posodobite gesla in omogočite dvofaktorsko overjanje (2FA).
+breach-checklist-pw-header-text = Posodobite gesla in omogočite dvostopenjsko overjanje (2FA).
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-text = V večini primerov vam priporočamo, da spremenite geslo na spletni strani podjetja. Toda <b>njihova spletna stran morda ne deluje ali pa vsebuje zlonamerno vsebino</b>, zato bodite previdni, če <breached-company-link>jo obiščete</breached-company-link>. Za dodatno zaščito poskrbite, da za vse račune uporabljate edinstvena gesla, da razkritih gesel ne bo mogoče uporabiti za dostop do drugih računov. { $passwordManagerLink } vam lahko pomaga pri varnem spremljanju vseh vaših gesel.
+breach-checklist-pw-body-text = V večini primerov vam priporočamo, da spremenite geslo na spletni strani podjetja. Toda <b>njihova spletna stran morda ne deluje ali pa vsebuje zlonamerno vsebino</b>, zato bodite previdni, če <breached-company-link>jo obiščete</breached-company-link>. Za dodatno zaščito poskrbite, da za vsak račun uporabljate edinstveno geslo, da razkritih gesel ne bo mogoče uporabiti za dostop do drugih računov. { $passwordManagerLink } vam lahko pomaga pri varnem spremljanju vseh vaših gesel.
 
 ## Prompts the user for changes when there is a breach detected of email
 
 # Variables:
 #   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
-breach-checklist-email-header-2 = Zaščitite svojo e-pošto s storitvijo za prikrivanje e-pošte, kot je { $firefoxRelayLink }.
+breach-checklist-email-header-2 = Zaščitite svoj e-poštni naslov s storitvijo za prikrivanje e-poštnih naslovov { $firefoxRelayLink }.
 breach-checklist-email-body = To lahko skrije vaš pravi e-poštni naslov in posreduje e-pošto v pravi nabiralnik.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
 # Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
-breach-checklist-ssn-header = Poiščite svoje kreditno poročilo za račune, posojila ali kreditne kartice, ki jih ne prepoznate.
+breach-checklist-ssn-header = Poiščite svoje poročilo o dobroimetju za račune, posojila ali kreditne kartice, ki jih ne prepoznate.
 # A security freeze prevents prospective creditors from accessing your credit file.
 # Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
@@ -101,12 +101,12 @@ breach-checklist-ssn-header = Poiščite svoje kreditno poročilo za račune, po
 #   $equifaxLink (string) - a link to the Equifax website
 #   $experianLink (string) - a link to the Experian website
 #   $transUnionLink (string) - a link to the TransUnion website
-breach-checklist-ssn-body-2 = Razmislite lahko tudi o zamrznitvi svojega dobroimetja na { $equifaxLink }, { $experianLink } in { $transUnionLink } ter preprečite, da bi prevaranti odpirali nove račune v vašem imenu. Je brezplačen in ne bo vplival na vašo bonitetno oceno.
+breach-checklist-ssn-body-2 = Razmislite lahko tudi o zamrznitvi svojega dobroimetja na { $equifaxLink }, { $experianLink } in { $transUnionLink } ter preprečite, da bi prevaranti odpirali nove račune v vašem imenu. Je brezplačno in ne bo vplivalo na vaše dobroimetje.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
 breach-checklist-cc-header = Prijavite to kršitev izdajatelju svoje kreditne kartice in zahtevajte novo kartico z novo številko.
-breach-checklist-cc-body = Preverite tudi izpiske svoje kreditne kartice za morebitne neprepoznane bremenitve.
+breach-checklist-cc-body = Preverite tudi, ali so na izpiskih vaših kreditnih kartic morebitne neprepoznane bremenitve.
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
@@ -145,18 +145,18 @@ breach-checklist-phone-header-2 = Zaščitite svojo telefonsko številko s stori
 
 breach-checklist-sq-header-text = Posodobite varnostna vprašanja.
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
-breach-checklist-sq-body-text = V večini primerov vam priporočamo, da posodobite varnostna vprašanja na spletni strani podjetja. Toda <b>njihova spletna stran morda ne deluje ali pa vsebuje zlonamerno vsebino</b>, zato bodite previdni, če <breached-company-link>jo obiščete</breached-company-link>. Za dodatno zaščito posodobite ta varnostna vprašanja za vse pomembne račune, kjer ste jih uporabljali, in ustvarite edinstvena gesla za vse račune.
+breach-checklist-sq-body-text = V večini primerov vam priporočamo, da posodobite varnostna vprašanja na spletni strani podjetja. Toda <b>njihova spletna stran morda ne deluje ali pa vsebuje zlonamerno vsebino</b>, zato bodite previdni, če <breached-company-link>jo obiščete</breached-company-link>. Za dodatno zaščito posodobite naslednja varnostna vprašanja na vseh pomembnih računih, kjer ste jih uporabljali, in ustvarite edinstvena gesla za vse račune.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
-breach-checklist-hp-header = Ustvarite edinstvena, močna gesla za vse račune, v katerih ste gesla uporabili večkrat.
+breach-checklist-hp-header = Ustvarite edinstveno, močno geslo za vsak račun. v katerem ste uporabljali enako geslo.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-hp-body-2 = Upravitelj gesel, kot je { $passwordManagerLink } (ki je brezplačen in vgrajen v brskalnik { -brand-firefox }), vam lahko pomaga slediti vsem svojim geslom in do njih varno dostopati iz vseh vaših naprav.
+breach-checklist-hp-body-2 = Upravitelj gesel, kot je { $passwordManagerLink } (ki je brezplačen in vgrajen v brskalnik { -brand-firefox }), vam lahko pomaga spremljati vsa vaša gesla in jih varno uporabljati na vseh vaših napravah.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
 # Variables:
 #   $breachDate (String) - Date of the breach
 #   $companyName (String) - Name of the company where the breach occurred
-breach-checklist-general-header = Obrnite se na podjetje { $companyName }, ga obvestite o tej kraji in prosite za konkretne korake, ki jih lahko ukrepate.
+breach-checklist-general-header = Obrnite se na podjetje { $companyName }, ga obvestite o tej kraji in ga prosite za navodila, kako ukrepati.

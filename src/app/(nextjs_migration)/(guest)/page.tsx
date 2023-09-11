@@ -12,6 +12,7 @@ import LaptopImage from "../../../client/images/landing-laptop@2x.webp";
 import LockImage from "../../../client/images/landing-lock@2x.webp";
 import MailImage from "../../../client/images/landing-mail@2x.webp";
 import NaturePhoneImage from "../../../client/images/landing-nature-phone@2x.webp";
+import { getNonce } from "../functions/server/getNonce";
 
 export default function Home() {
   const l10n = getL10n();
@@ -26,8 +27,13 @@ export default function Home() {
         src="/nextjs_migration/client/js/transitionObserver.js"
         rel="preload"
         crossOrigin="anonymous"
+        nonce={getNonce()}
       />
-      <Script type="module" src="/nextjs_migration/client/js/landing.js" />
+      <Script
+        type="module"
+        src="/nextjs_migration/client/js/landing.js"
+        nonce={getNonce()}
+      />
       <section className="hero">
         <div>
           <h1>{l10n.getString("exposure-landing-hero-heading")}</h1>

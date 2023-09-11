@@ -7,6 +7,7 @@ import { setProjectAnnotations } from "@storybook/react";
 import { toHaveNoViolations } from "jest-axe";
 import { expect } from "@jest/globals";
 import { defaultFallbackInView } from "react-intersection-observer";
+import failOnConsole from "jest-fail-on-console";
 
 import * as globalStorybookConfig from "./.storybook/preview";
 
@@ -15,6 +16,11 @@ setProjectAnnotations(
 );
 
 expect.extend(toHaveNoViolations);
+
+// Prevent logs from cluttering up actual problems in our tests:
+failOnConsole({
+  shouldFailOnWarn: true,
+});
 
 // See https://www.benmvp.com/blog/avoiding-react-act-warning-when-accessibility-testing-next-link-jest-axe/
 // If no `IntersectionObserver` exists, Next.js's <Link> will do a state update

@@ -110,4 +110,9 @@ export interface GuidedExperienceBreaches {
     bankBreaches: SubscriberBreach[];
   };
   passwordBreaches: SubscriberBreach[];
+  securityRecommendations: {
+    phoneNumber: SubscriberBreach[];
+    emailAddress: SubscriberBreach[];
+    IPAddress: SubscriberBreach[];
+  };
 }

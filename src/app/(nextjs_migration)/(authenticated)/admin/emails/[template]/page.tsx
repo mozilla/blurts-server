@@ -21,6 +21,7 @@ import { signupReportEmailPartial } from "../../../../../../views/emails/emailSi
 import { authOptions } from "../../../../../api/utils/auth";
 import { getL10n } from "../../../../../functions/server/l10n";
 import { ReactLocalization } from "@fluent/react";
+import { getNonce } from "../../../../functions/server/getNonce";
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -60,8 +61,16 @@ export default async function EmailTemplatePage(props: {
 
   return (
     <div data-partial="emailPreview">
-      <Script type="module" src="/nextjs_migration/client/js/customSelect.js" />
-      <Script type="module" src="/nextjs_migration/client/js/emailPreview.js" />
+      <Script
+        type="module"
+        src="/nextjs_migration/client/js/customSelect.js"
+        nonce={getNonce()}
+      />
+      <Script
+        type="module"
+        src="/nextjs_migration/client/js/emailPreview.js"
+        nonce={getNonce()}
+      />
       <section className="email-preview js-email">
         <h1>Email preview</h1>
         <div className="email-preview-controls">

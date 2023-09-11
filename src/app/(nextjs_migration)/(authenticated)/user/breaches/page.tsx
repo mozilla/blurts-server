@@ -23,6 +23,7 @@ import { BreachesTable } from "../../../components/server/BreachesTable";
 import { getComponentAsString } from "../../../functions/server/getComponentAsString";
 import { getCountryCode } from "../../../../functions/server/getCountryCode";
 import { isUserSubscribed } from "../../../../functions/server/isUserSubscribed";
+import { getNonce } from "../../../functions/server/getNonce";
 
 export function generateMetadata() {
   const l10n = getL10n();
@@ -99,21 +100,28 @@ export default async function UserBreaches() {
         src="/nextjs_migration/client/js/customSelect.js"
         rel="preload"
         crossOrigin="anonymous"
+        nonce={getNonce()}
       />
       <script
         type="module"
         src="/nextjs_migration/client/js/circleChart.js"
         rel="preload"
         crossOrigin="anonymous"
+        nonce={getNonce()}
       />
       <script
         type="module"
         src="/nextjs_migration/client/js/breaches.js"
         rel="preload"
         crossOrigin="anonymous"
+        nonce={getNonce()}
       />
       {/* eslint-enable @next/next/no-sync-scripts */}
-      <Script type="module" src="/nextjs_migration/client/js/dialog.js" />
+      <Script
+        type="module"
+        src="/nextjs_migration/client/js/dialog.js"
+        nonce={getNonce()}
+      />
 
       <main data-partial="breaches">
         {process.env.NEXT_PUBLIC_PREMIUM_ENABLED === "true" &&

@@ -9,6 +9,7 @@ import { getL10n, getLocale } from "../../../functions/server/l10n";
 import { BreachLogo } from "../../../components/server/BreachLogo";
 import { HibpLikeDbBreach } from "../../../../utils/hibp";
 import { Breach } from "../../(authenticated)/user/breaches/breaches";
+import { getNonce } from "../../functions/server/getNonce";
 
 export function generateMetadata() {
   const l10n = getL10n();
@@ -37,7 +38,11 @@ export default async function PublicScan() {
 
   return (
     <div data-partial="allBreaches">
-      <Script type="module" src="/nextjs_migration/client/js/allBreaches.js" />
+      <Script
+        type="module"
+        src="/nextjs_migration/client/js/allBreaches.js"
+        nonce={getNonce()}
+      />
       <div id="breaches-loader" className="ab-bg breaches-loader"></div>
       <main>
         <div className="all-breaches-front-matter">

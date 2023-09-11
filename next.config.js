@@ -45,48 +45,14 @@ const nextConfig = {
       },
     ],
   },
+  /** @type {import('next').NextConfig['headers']} */
   async headers() {
-    /** @type {import('next').NextConfig['headers']} */
     const headers = [
       {
         source: "/:path*",
         headers: [
-          // Most of these values are taken from the Helmet package:
-          // https://www.npmjs.com/package/helmet
-          {
-            key: "Content-Security-Policy",
-            value: [
-              "default-src 'self'",
-              "base-uri 'self'",
-              `script-src 'self' ${
-                process.env.NODE_ENV === "development"
-                  ? "'unsafe-eval' 'unsafe-inline'"
-                  : // See https://github.com/vercel/next.js/discussions/51039
-                    "'unsafe-inline'"
-              } https://*.googletagmanager.com`,
-              "script-src-attr 'none'",
-              `connect-src 'self' ${
-                process.env.NODE_ENV === "development" ? "webpack://*" : ""
-              } https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.ingest.sentry.io`,
-              `img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com https://firefoxusercontent.com https://mozillausercontent.com https://monitor.cdn.mozilla.net ${nextConfig.images.remotePatterns
-                .map(
-                  (pattern) =>
-                    `${
-                      pattern.protocol ?? "https"
-                    }://${pattern.hostname.replace("**", "*")}${
-                      pattern.port ? `:${pattern.port}` : ""
-                    }`
-                )
-                .join(" ")}`,
-              "child-src 'self'",
-              "style-src 'self' 'unsafe-inline'",
-              "font-src 'self'",
-              "form-action 'self'",
-              "frame-ancestors 'self'",
-              "object-src 'none'",
-              "upgrade-insecure-requests",
-            ].join("; "),
-          },
+          // Note: the Content-Security-Policy gets set in /src/middleware.ts
+          //       (because it needs a dynamically-generated nonce).
           {
             key: "Cross-Origin-Opener-Policy",
             value: "same-origin",

@@ -8,6 +8,7 @@ import Image from "next/image";
 import HeroImage from "../../../../client/images/exposure-scan-hero.svg";
 import NoBreachesImage from "../../../../client/images/breaches-none.svg";
 import { getL10n } from "../../../functions/server/l10n";
+import { getNonce } from "../../functions/server/getNonce";
 
 export function generateMetadata() {
   const l10n = getL10n();
@@ -21,7 +22,11 @@ export default function PublicScan() {
 
   return (
     <div data-partial="exposureScan">
-      <Script type="module" src="/nextjs_migration/client/js/scan.js" />
+      <Script
+        type="module"
+        src="/nextjs_migration/client/js/scan.js"
+        nonce={getNonce()}
+      />
       <div hidden id="data"></div>
       <div id="exposure-scan-loading">
         {l10n.getString("exposure-landing-result-loading")}

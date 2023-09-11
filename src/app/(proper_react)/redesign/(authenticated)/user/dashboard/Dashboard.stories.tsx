@@ -32,6 +32,7 @@ const BreachMockItem1: SubscriberBreach = createRandomBreach({
     { "phone-numbers": 1 },
     { passwords: 1 },
   ],
+  isResolved: true,
 });
 
 const BreachMockItem2: SubscriberBreach = createRandomBreach({
@@ -41,6 +42,7 @@ const BreachMockItem2: SubscriberBreach = createRandomBreach({
     { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
     { "ip-addresses": 1 },
   ],
+  isResolved: false,
 });
 
 const BreachMockItem3: SubscriberBreach = createRandomBreach({
@@ -61,10 +63,13 @@ const BreachMockItem4: SubscriberBreach = createRandomBreach({
   ],
 });
 
-const scannedResultsArraySample: ScanResult[] = Array.from(
-  { length: 5 },
-  createRandomScan
-);
+const scannedResultsArraySample: ScanResult[] = [
+  createRandomScan({ status: "removed" }),
+  createRandomScan({ status: "waiting_for_verification" }),
+  createRandomScan({ status: "optout_in_progress" }),
+  createRandomScan({ status: "new" }),
+  createRandomScan(),
+];
 
 const scannedResolvedResultsArraySample: ScanResult[] = Array.from(
   { length: 5 },
