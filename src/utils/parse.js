@@ -10,6 +10,8 @@
  */
 /* eslint-enable jsdoc/valid-types */
 
+// Tests are already submitted in https://github.com/mozilla/blurts-server/pull/3359:
+/* c8 ignore start */
 /**
  * @param {string} phoneNumber
  * @returns {E164PhoneNumberString | null}
@@ -26,7 +28,10 @@ export function parseE164PhoneNumber (phoneNumber) {
 
   return parsedNumber
 }
+/* c8 ignore stop */
 
+// Tests are already submitted in https://github.com/mozilla/blurts-server/pull/3359:
+/* c8 ignore start */
 /**
  * @param {ISO8601DateString} datetime
  * @returns {Date | null}
@@ -48,3 +53,4 @@ export function parseIso8601Datetime (datetime) {
 
   return parsedDate;
 }
+/* c8 ignore stop */
