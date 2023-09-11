@@ -35,7 +35,7 @@ export const ResolutionContent = ({
           elems: { breach_date: <span className={styles.date} /> },
           vars: {
             breach_name: title,
-            breach_date: dateFormatter.format(new Date(breachDate)),
+            breach_date: dateFormatter.format(breachDate),
           },
         })}
       </div>

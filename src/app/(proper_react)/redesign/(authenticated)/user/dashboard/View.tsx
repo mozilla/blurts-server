@@ -29,6 +29,7 @@ import { FeatureFlagsEnabled } from "../../../../../functions/server/featureFlag
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 import { hasPremium } from "../../../../../functions/universal/user";
+import { parseIso8601Datetime } from "../../../../../../utils/parse";
 
 export type Props = {
   bannerData: DashboardSummary;
@@ -67,9 +68,7 @@ export const View = (props: Props) => {
   ];
   const isActionNeededTab = selectedTab === "action-needed";
 
-  const breachesDataArray = props.userBreaches
-    .map((elem: SubscriberBreach) => elem)
-    .flat();
+  const breachesDataArray = props.userBreaches.flat();
   const scannedResultsDataArray =
     // TODO: Add unit test when changing this code:
     /* c8 ignore next */
@@ -81,12 +80,14 @@ export const View = (props: Props) => {
   // Sort in descending order
   const arraySortedByDate = combinedArray.sort((a, b) => {
     const dateA =
-      (a as SubscriberBreach).addedDate || (a as ScanResult).created_at;
+      (a as SubscriberBreach).addedDate ||
+      parseIso8601Datetime((a as ScanResult).created_at);
     const dateB =
-      (b as SubscriberBreach).addedDate || (b as ScanResult).created_at;
+      (b as SubscriberBreach).addedDate ||
+      parseIso8601Datetime((b as ScanResult).created_at);
 
-    const timestampA = new Date(dateA).getTime();
-    const timestampB = new Date(dateB).getTime();
+    const timestampA = dateA.getTime();
+    const timestampB = dateB.getTime();
 
     return timestampB - timestampA;
   });
