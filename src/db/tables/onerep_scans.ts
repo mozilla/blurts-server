@@ -112,12 +112,12 @@ async function setOnerepScanResults(
 async function getScansCount(
   startDate: string,
   endDate: string,
-  type: Scan["reason"]
+  scanReason: Scan["reason"]
 ) {
   return await knex("onerep_scans")
     .count("id")
     .whereBetween("created_at", [startDate, endDate])
-    .andWhere("onerep_scan_reason", type);
+    .andWhere("onerep_scan_reason", scanReason);
 }
 
 export {
