@@ -26,6 +26,7 @@ const pageDummyData: SecurityRecommendation = {
   type: "phone",
   title: "Dummy title",
   illustration: phoneIllustration,
+  exposedData: scannedResultsArraySample,
   content: {
     summary: "It appeared in 2 data breaches:",
     description: <p>Security recommendatino description text.</p>,
@@ -45,7 +46,6 @@ const pageDummyData: SecurityRecommendation = {
 export const Layout: Story = {
   args: {
     label: "Security recommendations",
-    exposedData: scannedResultsArraySample,
     pageData: pageDummyData,
   },
 };
@@ -53,7 +53,6 @@ export const Layout: Story = {
 export const Phone: Story = {
   args: {
     label: "Security recommendations",
-    exposedData: scannedResultsArraySample,
     pageData: pageDummyData,
   },
 };
@@ -61,7 +60,6 @@ export const Phone: Story = {
 export const Email: Story = {
   args: {
     label: "Security recommendations",
-    exposedData: scannedResultsArraySample,
     pageData: { ...pageDummyData, type: "email" },
   },
 };
@@ -69,7 +67,6 @@ export const Email: Story = {
 export const Ip: Story = {
   args: {
     label: "Security recommendations",
-    exposedData: scannedResultsArraySample,
     pageData: { ...pageDummyData, type: "ip" },
   },
 };
