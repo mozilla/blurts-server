@@ -142,7 +142,7 @@ function getSecurityRecommendationsByType({
         recommendations: {
           title: l10n.getString("security-recommendation-steps-title"),
           steps: (
-            <ul>
+            <ul className="noList">
               <li>
                 {l10n.getFragment("security-recommendation-ip-step-one", {
                   elems: {
