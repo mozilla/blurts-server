@@ -386,3 +386,27 @@ export const ClockIcon = (props: SVGProps<SVGSVGElement> & { alt: string }) => {
     </svg>
   );
 };
+
+// Keywords: completed, tick
+export const CheckIcon = (props: SVGProps<SVGSVGElement> & { alt: string }) => {
+  return (
+    <svg
+      width="16"
+      height="17"
+      viewBox="0 0 16 17"
+      role="img"
+      aria-label={props.alt}
+      aria-hidden={props.alt === ""}
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+      className={`${props.className ?? ""} ${styles.colorifyFill}`}
+    >
+      <title>{props.alt}</title>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M5.32504 16.0139C4.97091 16.0139 4.63131 15.8731 4.38094 15.6227L0.374852 11.6166C0.131605 11.3647 -0.00299204 11.0274 5.04803e-05 10.6773C0.003093 10.3272 0.143532 9.99224 0.391119 9.74465C0.638706 9.49706 0.973632 9.35663 1.32376 9.35358C1.67389 9.35054 2.0112 9.48514 2.26306 9.72839L5.14343 12.6088L13.5776 0.55978C13.782 0.273273 14.0913 0.0790529 14.4381 0.0193549C14.785 -0.0403431 15.1414 0.0393084 15.4298 0.240989C15.7183 0.442669 15.9154 0.750069 15.9784 1.09634C16.0414 1.44261 15.9652 1.79976 15.7663 2.09011L6.41871 15.4437C6.30746 15.6046 6.16226 15.739 5.99335 15.8375C5.82445 15.936 5.63596 15.9963 5.44122 16.0139C5.40252 16.0159 5.36375 16.0159 5.32504 16.0139V16.0139Z"
+      />
+    </svg>
+  );
+};
