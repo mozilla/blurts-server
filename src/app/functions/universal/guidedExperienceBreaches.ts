@@ -16,7 +16,10 @@ export function getGuidedExperienceBreaches(
       pinBreaches: [],
       bankBreaches: [],
     },
-    passwordBreaches: [],
+    passwordBreaches: {
+      passwords: [],
+      securityQuestions: [],
+    },
     securityRecommendations: {
       phoneNumber: [],
       emailAddress: [],
@@ -41,11 +44,17 @@ export function getGuidedExperienceBreaches(
       guidedExperienceBreaches.highRisk.bankBreaches.push(b);
     }
 
+    // passwords
+
     // TODO: Add tests when passwords component has been made - MNTOR-1712
-    /* c8 ignore next 3 */
+    /* c8 ignore start */
     if (b.dataClasses.includes(BreachDataTypes.Passwords)) {
-      guidedExperienceBreaches.passwordBreaches.push(b);
+      guidedExperienceBreaches.passwordBreaches.passwords.push(b);
     }
+    if (b.dataClasses.includes(BreachDataTypes.SecurityQuestions)) {
+      guidedExperienceBreaches.passwordBreaches.securityQuestions.push(b);
+    }
+    /* c8 ignore stop */
 
     // security recommendations
     // TODO: Add tests when security recs work is merged in
