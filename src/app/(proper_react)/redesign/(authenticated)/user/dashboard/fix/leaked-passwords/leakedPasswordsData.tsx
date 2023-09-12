@@ -19,7 +19,7 @@ export type LeakedPasswordsContent = {
   };
 };
 
-export type LeakedPasswordsTypes = "password" | "security-questions";
+export type LeakedPasswordsTypes = "password" | "security-question";
 
 export type LeakedPassword = {
   type: LeakedPasswordsTypes;
@@ -37,11 +37,11 @@ function getLeakedPasswords({
 }) {
   const l10n = getL10n();
 
-  const findFirstUnresolvedBreach = (
-    breachClassType: "passwords" | "securityQuestions"
-  ) => {
+  const findFirstUnresolvedBreach = (breachClassType: LeakedPasswordsTypes) => {
+    const leakedPasswordType =
+      breachClassType === "password" ? "passwords" : "securityQuestions";
     for (const breach of Object.values(
-      breaches.passwordBreaches[breachClassType]
+      breaches.passwordBreaches[leakedPasswordType]
     )) {
       if (!breach.isResolved) {
         return breach;
@@ -49,9 +49,9 @@ function getLeakedPasswords({
     }
   };
 
-  const unresolvedPasswordBreach = findFirstUnresolvedBreach("passwords");
+  const unresolvedPasswordBreach = findFirstUnresolvedBreach("password");
   const unresolvedSecurityQuestionsBreach =
-    findFirstUnresolvedBreach("securityQuestions");
+    findFirstUnresolvedBreach("security-question");
 
   const getBreachInfo = (breach?: SubscriberBreach) => ({
     name: breach ? breach.name : "",
@@ -111,7 +111,7 @@ function getLeakedPasswords({
       },
     },
     {
-      type: "security-questions",
+      type: "security-question",
       title: l10n.getString("leaked-security-questions-title"),
       illustration: securityQuestionsIllustration,
       content: {
