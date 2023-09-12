@@ -5,6 +5,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../../../api/utils/auth";
 import { getSubscriberBreaches } from "../../../../../../functions/server/getUserBreaches";
+import { getSubscriberEmails } from "../../../../../../functions/server/getSubscriberEmails";
 import { getGuidedExperienceBreaches } from "../../../../../../functions/universal/guidedExperienceBreaches";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
@@ -21,7 +22,11 @@ export default async function Layout({ children }: { children: ReactNode }) {
     return redirect("/");
   }
   const breaches = await getSubscriberBreaches(session.user);
-  const guidedExperience = getGuidedExperienceBreaches(breaches);
+  const subscriberEmails = await getSubscriberEmails(session.user);
+  const guidedExperience = getGuidedExperienceBreaches(
+    breaches,
+    subscriberEmails
+  );
 
   const headersList = headers();
   const countryCode = getCountryCode(headersList);

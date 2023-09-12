@@ -8,6 +8,7 @@ import { SecurityRecommendationsLayout } from "../SecurityRecommendationsLayout"
 import { getSecurityRecommendationsByType } from "../securityRecommendationsData";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
+import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
 import {
   getL10n,
@@ -30,7 +31,11 @@ export default async function SecurityRecommendations({
   }
   const l10n = getL10n();
   const breaches = await getSubscriberBreaches(session.user);
-  const guidedExperienceBreaches = getGuidedExperienceBreaches(breaches);
+  const subscriberEmails = await getSubscriberEmails(session.user);
+  const guidedExperienceBreaches = getGuidedExperienceBreaches(
+    breaches,
+    subscriberEmails
+  );
 
   const { type } = params;
   const pageData = getSecurityRecommendationsByType({

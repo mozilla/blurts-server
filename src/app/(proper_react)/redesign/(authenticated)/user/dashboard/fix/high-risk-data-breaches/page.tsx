@@ -7,6 +7,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
 import { authOptions } from "../../../../../../../api/utils/auth";
+import { getSubscriberEmails } from "../../../../../../../functions/server/getSubscriberEmails";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
 import { getLocale } from "../../../../../../../functions/server/l10n";
 import { getSubscriberBreaches } from "../../../../../../../functions/server/getUserBreaches";
@@ -19,7 +20,11 @@ export default async function HighRiskDataBreaches() {
     return redirect("/");
   }
   const breaches = await getSubscriberBreaches(session.user);
-  const guidedExperienceBreaches = getGuidedExperienceBreaches(breaches);
+  const subscriberEmails = await getSubscriberEmails(session.user);
+  const guidedExperienceBreaches = getGuidedExperienceBreaches(
+    breaches,
+    subscriberEmails
+  );
 
   const pageData = getHighRiskBreachesByType({
     dataType: "none",

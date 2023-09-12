@@ -118,4 +118,5 @@ export interface GuidedExperienceBreaches {
     emailAddress: SubscriberBreach[];
     IPAddress: SubscriberBreach[];
   };
+  emails: string[];
 }

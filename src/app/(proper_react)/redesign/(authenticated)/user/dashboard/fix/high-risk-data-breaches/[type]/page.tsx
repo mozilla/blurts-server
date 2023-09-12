@@ -4,6 +4,7 @@
 
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
@@ -26,7 +27,11 @@ export default async function SecurityRecommendations({
     return redirect("/");
   }
   const breaches = await getSubscriberBreaches(session.user);
-  const guidedExperienceBreaches = getGuidedExperienceBreaches(breaches);
+  const subscriberEmails = await getSubscriberEmails(session.user);
+  const guidedExperienceBreaches = getGuidedExperienceBreaches(
+    breaches,
+    subscriberEmails
+  );
 
   const { type } = params;
   const pageData = getHighRiskBreachesByType({
