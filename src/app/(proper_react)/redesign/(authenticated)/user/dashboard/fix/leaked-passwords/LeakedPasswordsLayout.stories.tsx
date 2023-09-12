@@ -51,7 +51,7 @@ export const Passwords: Story = {
 export const SecurityQuestions: Story = {
   args: {
     pageData: {
-      type: "security-questions",
+      type: "security-question",
       title: "Security questions",
       illustration: securityQuestionsIllustration,
       content,
