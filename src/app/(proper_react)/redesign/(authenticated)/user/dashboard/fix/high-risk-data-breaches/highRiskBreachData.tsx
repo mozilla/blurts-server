@@ -11,6 +11,7 @@ import bankAccountIllustration from "../images/high-risk-data-breach-bank-accoun
 import pinIllustration from "../images/high-risk-data-breach-pin.svg";
 import noBreachesIllustration from "../images/high-risk-breaches-none.svg";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
+import { FraudAlertModal } from "./FraudAlertModal";
 
 export type HighRiskBreachContent = {
   summary: string;
@@ -114,7 +115,8 @@ function getHighRiskBreachesByType({
                       />
                     ),
                   },
-                })}
+                })}{" "}
+                <FraudAlertModal />
               </li>
               <li>
                 {l10n.getFragment("high-risk-breach-social-security-step-two", {
