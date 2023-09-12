@@ -28,6 +28,11 @@ export const AboutBrokersIcon = () => {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const { buttonProps } = useButton(triggerProps, triggerRef);
 
+  const dataBrokerCount = parseInt(
+    process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+    10
+  );
+
   return (
     <>
       <button
@@ -63,7 +68,10 @@ export const AboutBrokersIcon = () => {
               </p>
               <p>
                 {l10n.getString(
-                  "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph2"
+                  "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph2",
+                  {
+                    data_broker_sites_total_num: dataBrokerCount,
+                  }
                 )}
               </p>
               <div className={styles.confirmButtonWrapper}>
