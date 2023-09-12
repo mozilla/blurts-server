@@ -22,6 +22,10 @@ type ResolutionContainerProps = {
 
 export const ResolutionContainer = (props: ResolutionContainerProps) => {
   const l10n = useL10n();
+  const estimatedTimeString =
+    props.type === "leakedPasswords"
+      ? "leaked-passwords-estimated-time"
+      : "high-risk-breach-estimated-time";
 
   return (
     // TODO: Check with design if toolbar should be on this page
@@ -34,7 +38,7 @@ export const ResolutionContainer = (props: ResolutionContainerProps) => {
         {props.estimatedTime && (
           <div className={styles.estimatedTime}>
             <ClockIcon width="20" height="20" alt="" />
-            {l10n.getString("high-risk-breach-estimated-time", {
+            {l10n.getString(estimatedTimeString, {
               estimated_time: props.estimatedTime,
             })}
           </div>
