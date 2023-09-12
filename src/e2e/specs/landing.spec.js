@@ -59,3 +59,49 @@ test.describe('Landing Page element verification', () => {
     })
   })
 })
+
+test.describe('Landing Page Functionality Verification', () => {
+  test.beforeEach(async ({ landingPage }) => {
+    await landingPage.open()
+  })
+
+  test('Verify landing page elements', async ({ landingPage, scanPage, page }) => {
+    // link to testrail case
+    test.info().annotations.push({
+      type: "testrail",
+      description: "https://testrail.stage.mozaws.net/index.php?/cases/view/2255913",
+    });
+
+    // generate email
+    const randomEmail = `${Date.now()}_@restmail.net`
+
+    // await page.pause()
+    await landingPage.enterScanEmail(randomEmail)
+
+    // wait for page to load
+    await page.waitForSelector('header h1', { state: 'attached', timeout: 2000 })
+
+    // verify scan page items
+    await expect(async () => {
+      // verify hero header text content
+      expect(await scanPage.heroHeader.textContent()).toContain("We found")
+      expect(await scanPage.heroHeader.textContent()).toContain(randomEmail)
+
+      // verify first CTA button
+      await expect(await scanPage.getAlertsAboutBreachesButton).toBeVisible()
+
+      // verify second CTA button
+      await expect(await scanPage.signUpForAlerts).toBeVisible()
+
+      // verify redirect to sign in("/user/breaches")
+      expect(await scanPage.signUpForAlerts.getAttribute("href")).toBe("/user/breaches")
+      expect(await scanPage.getAlertsAboutBreachesButton.getAttribute("href")).toBe("/user/breaches")
+
+      // verify "have i been pwned" website redirect
+      expect(await scanPage.haveIBeenPwnedLink.getAttribute("href")).toBe("https://haveibeenpwned.com/")
+
+    }).toPass({
+      timeout: 2000
+    })
+  })
+})
