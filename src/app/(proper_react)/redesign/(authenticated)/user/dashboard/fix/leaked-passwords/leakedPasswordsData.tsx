@@ -38,34 +38,50 @@ function getLeakedPasswords({
 }) {
   const l10n = getL10n();
 
-  const firstUnresolvedPasswordBreach = () => {
-    for (const breach of Object.values(breaches.passwordBreaches)) {
+  const findFirstUnresolvedBreach = (
+    breachClassType: "passwords" | "securityQuestions"
+  ) => {
+    for (const breach of Object.values(
+      breaches.passwordBreaches[breachClassType]
+    )) {
       if (!breach.isResolved) {
         return breach;
       }
     }
-    return null;
   };
 
-  // TODO: Add a different array for security questions
+  const unresolvedPasswordBreach = findFirstUnresolvedBreach("passwords");
+  const unresolvedSecurityQuestionsBreach =
+    findFirstUnresolvedBreach("securityQuestions");
 
-  const unresolvedBreach = firstUnresolvedPasswordBreach();
-  const breachName = unresolvedBreach ? unresolvedBreach.name : "";
-  const breachDate = unresolvedBreach ? unresolvedBreach.breachDate : "";
-  const breachSite = unresolvedBreach
-    ? `/breach-details/${unresolvedBreach.name}`
-    : "";
+  const getBreachInfo = (breach: SubscriberBreach) => ({
+    name: breach ? breach.name : "",
+    breachDate: breach ? breach.breachDate : "",
+    breachSite: breach ? `/breach-details/${breach.name}` : "",
+  });
+
+  const {
+    name: passwordBreachName,
+    breachDate: passwordBreachDate,
+    breachSite: passwordBreachSite,
+  } = getBreachInfo(unresolvedPasswordBreach!);
+
+  const {
+    name: securityQuestionBreachName,
+    breachDate: securityQuestionBreachDate,
+    breachSite: securityQuestionBreachSite,
+  } = getBreachInfo(unresolvedSecurityQuestionsBreach!);
 
   const leakedPasswordsData: LeakedPassword[] = [
     {
       type: "password",
       title: l10n.getString("leaked-passwords-title", {
-        breach_name: breachName,
+        breach_name: passwordBreachName,
       }),
       illustration: passwordIllustration,
       content: {
         summary: l10n.getString("leaked-passwords-summary", {
-          breach_date: breachDate,
+          breach_date: passwordBreachDate,
         }),
         description: <p>{l10n.getString("leaked-passwords-description")}</p>,
         recommendations: {
@@ -78,14 +94,14 @@ function getLeakedPasswords({
                     // TODO: Find a way  to go to the actual breach site
                     link_to_breach_site: (
                       <a
-                        href={breachSite}
+                        href={passwordBreachSite}
                         target="_blank"
                         rel="noopener noreferrer"
                       />
                     ),
                   },
                   vars: {
-                    breach_name: breachName,
+                    breach_name: passwordBreachName,
                   },
                 })}
               </li>
@@ -101,8 +117,8 @@ function getLeakedPasswords({
       illustration: securityQuestionsIllustration,
       content: {
         summary: l10n.getString("leaked-security-questions-summary", {
-          breach_name: breachName,
-          breach_date: breachDate,
+          breach_name: securityQuestionBreachName,
+          breach_date: securityQuestionBreachDate,
         }),
         description: (
           <p>{l10n.getString("leaked-security-questions-description")}</p>
@@ -117,14 +133,14 @@ function getLeakedPasswords({
                     // TODO: Find a way  to go to the actual breach site
                     link_to_breach_site: (
                       <a
-                        href={breachSite}
+                        href={securityQuestionBreachSite}
                         target="_blank"
                         rel="noopener noreferrer"
                       />
                     ),
                   },
                   vars: {
-                    breach_name: breachName,
+                    breach_name: securityQuestionBreachName,
                   },
                 })}
               </li>

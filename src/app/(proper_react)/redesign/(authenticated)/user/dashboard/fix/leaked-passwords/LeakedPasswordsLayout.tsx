@@ -9,6 +9,7 @@ import { ResolutionContent } from "../ResolutionContent";
 import { Button } from "../../../../../../../components/server/Button";
 import { useL10n } from "../../../../../../../hooks/l10n";
 import { LeakedPassword } from "./leakedPasswordsData";
+import Link from "next/link";
 
 export interface LeakedPasswordsLayoutProps {
   label: string;
@@ -29,18 +30,27 @@ export function LeakedPasswordsLayout({
       title={title}
       illustration={illustration}
       cta={
-        <Button
-          variant="primary"
-          small
-          // TODO: Add test once MNTOR-1700 logic is added
-          /* c8 ignore next 3 */
-          onClick={() => {
-            // TODO: MNTOR-1700 Add routing logic
-          }}
-          autoFocus={true}
-        >
-          {l10n.getString("leaked-passwords-mark-as-fixed")}
-        </Button>
+        <>
+          <Button
+            variant="primary"
+            small
+            // TODO: Add test once MNTOR-1700 logic is added
+            /* c8 ignore next 3 */
+            onClick={() => {
+              // TODO: MNTOR-1700 Add routing logic
+            }}
+            autoFocus={true}
+          >
+            {l10n.getString("leaked-passwords-mark-as-fixed")}
+          </Button>
+          <Link
+            // TODO: Add test once MNTOR-1700 logic is added
+            /* c8 ignore next */
+            href="/"
+          >
+            {l10n.getString("leaked-passwords-skip")}
+          </Link>
+        </>
       }
     >
       <ResolutionContent
