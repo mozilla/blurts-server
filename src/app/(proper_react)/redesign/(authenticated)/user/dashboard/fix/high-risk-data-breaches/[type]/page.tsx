@@ -2,33 +2,47 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../../../../../../../api/utils/auth";
 import { redirect } from "next/navigation";
 import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
+import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
+import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
 import { getLocale } from "../../../../../../../../functions/server/l10n";
+import { getHighRiskBreachesByType } from "../highRiskBreachData";
 
-export default async function SocialSecurityNumberDataBreach() {
-  const locale = getLocale();
+interface SecurityRecommendationsProps {
+  params: {
+    type: string;
+  };
+}
+
+export default async function SecurityRecommendations({
+  params,
+}: SecurityRecommendationsProps) {
   const session = await getServerSession(authOptions);
+  const locale = getLocale();
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
   const breaches = await getSubscriberBreaches(session.user);
   const subscriberEmails = await getSubscriberEmails(session.user);
-  const guidedExperience = getGuidedExperienceBreaches(
+  const guidedExperienceBreaches = getGuidedExperienceBreaches(
     breaches,
     subscriberEmails
   );
 
-  return (
-    <HighRiskBreachLayout
-      breachData={guidedExperience}
-      typeOfBreach="ssnBreaches"
-      locale={locale}
-    />
-  );
+  const { type } = params;
+  const pageData = getHighRiskBreachesByType({
+    dataType: type,
+    breaches: guidedExperienceBreaches,
+    locale,
+  });
+
+  if (!pageData) {
+    redirect("/redesign/user/dashboard");
+  }
+
+  return <HighRiskBreachLayout pageData={pageData} locale={locale} />;
 }
