@@ -45,7 +45,8 @@ const content = {
 };
 
 const guidedExperienceBreaches = getGuidedExperienceBreaches(
-  scannedResultsArraySample
+  scannedResultsArraySample,
+  ["test@mozilla.com"]
 );
 
 export const CreditCard: Story = {
