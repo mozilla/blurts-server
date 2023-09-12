@@ -13,6 +13,7 @@ import {
 } from "../../../../../../../../functions/server/l10n";
 import { LeakedPasswordsLayout } from "../LeakedPasswordsLayout";
 import { getLeakedPasswords } from "../leakedPasswordsData";
+import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 
 interface LeakedPasswordsProps {
   params: {
@@ -30,7 +31,11 @@ export default async function LeakedPasswords({
   }
   const l10n = getL10n();
   const breaches = await getSubscriberBreaches(session.user);
-  const guidedExperienceBreaches = getGuidedExperienceBreaches(breaches);
+  const subscriberEmails = await getSubscriberEmails(session.user);
+  const guidedExperienceBreaches = getGuidedExperienceBreaches(
+    breaches,
+    subscriberEmails
+  );
 
   const { type } = params;
   const pageData = getLeakedPasswords({
