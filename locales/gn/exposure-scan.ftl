@@ -1,5 +1,5 @@
 exposure-landing-hero-heading = Eporandu ne maranduetépa oñembyaikuaára’e
-exposure-landing-hero-lead = Eñemohekorosã { -brand-firefox } rembipuru ñemigua moheñoihára ndive ne mo’ãtava mba’evaiapohágui ha mba’apohaguasu omoherakuã ha ovendéva ne reheguaite. Romomarandúta mba’ekuaarã ñembogua oikóvagui, roheka ha romboguéta ne marandu ivaikuaáva ha roma’ẽmeméta ñembogua pyahúvare.
+exposure-landing-hero-lead = Eñemohekorosã { -brand-firefox } rembiporu ñemigua moheñoihára ndive ne mo’ãtava mba’evaiapohágui ha mba’apohaguasu omoherakuã ha ovendéva ne reheguaite. Romomarandúta mba’ekuaarã ñembogua oikóvagui, roheka ha romboguéta ne marandu ivaikuaáva ha roma’ẽmeméta ñembogua pyahúvare.
 exposure-landing-hero-email-label = Ñanduti veve kundaharape
 exposure-landing-hero-email-placeholder = Ehai ñanduti veve kundaharape
 exposure-landing-hero-cta-label = Ehechajey oĩpa ñembyai
