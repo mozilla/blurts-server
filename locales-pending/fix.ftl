@@ -35,7 +35,7 @@ fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph1 =
 fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph2 = 
   { $data_broker_sites_total_num ->
     [one] We found these profiles by searching { $data_broker_sites_total_num } data broker site for the name, location, and date of birth you provided. These profiles are currently live and available to anyone searching for you. { -brand-mozilla } is not associated with these data broker sites.
-    *[other] We found these profiles by searching { $data_broker_sites_total_num } data broker sites for the name, location, and date of birth you provided. These profiles are currently live and available to anyone searching for you. { -brand-Mozilla } is not associated with these data broker sites.
+    *[other] We found these profiles by searching { $data_broker_sites_total_num } data broker sites for the name, location, and date of birth you provided. These profiles are currently live and available to anyone searching for you. { -brand-mozilla } is not associated with these data broker sites.
   }
 fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-confirm = OK
 fix-flow-data-broker-profiles-view-data-broker-profiles-view-profile = View your profile
