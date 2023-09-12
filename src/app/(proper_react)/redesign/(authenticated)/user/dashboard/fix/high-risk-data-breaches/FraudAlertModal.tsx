@@ -15,6 +15,7 @@ import Image from "next/image";
 import FraudAlertDialogIllustration from "../images/fraud-alert-modal-illustration.svg";
 import { Button } from "../../../../../../../components/server/Button";
 import styles from "./FraudAlertModal.module.scss";
+import Link from "next/link";
 
 export const FraudAlertModal = () => {
   const l10n = useL10n();
@@ -27,6 +28,13 @@ export const FraudAlertModal = () => {
   );
   const triggerRef = useRef<HTMLButtonElement>(null);
   const { buttonProps } = useButton(triggerProps, triggerRef);
+
+  const fraudAlertLink =
+    "https://consumer.ftc.gov/articles/what-know-about-credit-freezes-fraud-alerts";
+  const equifaxLink =
+    "https://www.equifax.com/personal/credit-report-services/";
+  const experianLink = "https://www.experian.com/help/";
+  const transunionLink = "https://www.transunion.com/credit-help";
 
   return (
     <>
@@ -50,21 +58,66 @@ export const FraudAlertModal = () => {
           isDismissable={true}
         >
           <Dialog
-            title={l10n.getString(
-              "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-title"
-            )}
+            title={l10n.getString("ssn-modal-title")}
             illustration={<Image src={FraudAlertDialogIllustration} alt="" />}
           >
             <div className={styles.dialogContents}>
               <p>
-                {l10n.getString(
-                  "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph1"
+                {l10n.getFragment("ssn-modal-description-fraud-part-one", {
+                  elems: {
+                    b: <strong />,
+                  },
+                })}
+                &nbsp;
+                {l10n.getString("ssn-modal-description-fraud-part-two")}
+              </p>
+              <p>
+                {l10n.getFragment(
+                  "ssn-modal-description-freeze-credit-part-one",
+                  {
+                    elems: {
+                      b: <strong />,
+                    },
+                  }
+                )}
+                &nbsp;
+                {l10n.getFragment(
+                  "ssn-modal-description-freeze-credit-part-two",
+                  {
+                    elems: {
+                      link_to_equifax_info: (
+                        <a
+                          href={equifaxLink}
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        />
+                      ),
+                      link_to_experian_info: (
+                        <a
+                          href={experianLink}
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        />
+                      ),
+                      link_to_transunion_info: (
+                        <a
+                          href={transunionLink}
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        />
+                      ),
+                    },
+                  }
                 )}
               </p>
               <p>
-                {l10n.getString(
-                  "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph2"
-                )}
+                <Link
+                  href={fraudAlertLink}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  {l10n.getString("ssn-modal-learn-more")}
+                </Link>
               </p>
               <div className={styles.confirmButtonWrapper}>
                 <Button
