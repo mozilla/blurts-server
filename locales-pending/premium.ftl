@@ -419,6 +419,11 @@ leaked-passwords-step-one = Change your password on <link_to_breach_site>{ $brea
 leaked-passwords-step-two = Change it anywhere else youve used it.
 leaked-passwords-mark-as-fixed = Mark as fixed
 leaked-passwords-skip = Skip for now
+# Variables
+# $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
+# "Est." is shortform for "Estimated".
+# "mins" is shortform for "minutes".
+leaked-passwords-estimated-time = Est. time to complete: { $estimated_time } mins per site
 
 # Leaked Security Questions
 
@@ -435,4 +440,3 @@ leaked-security-questions-steps-subtitle = This requires access to your account,
 # $breach_name is the name of the breach where the security questions were found.
 leaked-security-questions-step-one = Update your security questions on <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
 leaked-security-questions-step-two = Update them on any other site where you used the same security questions. Be sure to use different security questions for every account.
-leaked-security-questions-got-it = Got it!

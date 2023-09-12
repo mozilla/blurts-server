@@ -22,7 +22,7 @@ export function LeakedPasswordsLayout({
   locale,
 }: LeakedPasswordsLayoutProps) {
   const l10n = useL10n();
-  const { title, illustration, content, exposedData } = pageData;
+  const { title, illustration, content } = pageData;
 
   return (
     <ResolutionContainer
@@ -52,12 +52,9 @@ export function LeakedPasswordsLayout({
           </Link>
         </>
       }
+      estimatedTime={4}
     >
-      <ResolutionContent
-        content={content}
-        exposedData={exposedData}
-        locale={locale}
-      />
+      <ResolutionContent content={content} locale={locale} />
     </ResolutionContainer>
   );
 }

@@ -26,7 +26,6 @@ export type LeakedPassword = {
   title: string;
   illustration: string;
   content: LeakedPasswordsContent;
-  exposedData?: SubscriberBreach[];
 };
 
 function getLeakedPasswords({
