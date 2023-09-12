@@ -32,7 +32,7 @@ const content = {
   recommendations,
 };
 
-export const CreditCard: Story = {
+export const Passwords: Story = {
   args: {
     pageData: {
       type: "password",
@@ -43,7 +43,7 @@ export const CreditCard: Story = {
   },
 };
 
-export const BankAccount: Story = {
+export const SecurityQuestions: Story = {
   args: {
     pageData: {
       type: "security-questions",
