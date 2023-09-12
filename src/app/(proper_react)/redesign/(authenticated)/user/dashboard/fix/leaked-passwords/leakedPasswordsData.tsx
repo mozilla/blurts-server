@@ -53,7 +53,7 @@ function getLeakedPasswords({
   const unresolvedSecurityQuestionsBreach =
     findFirstUnresolvedBreach("securityQuestions");
 
-  const getBreachInfo = (breach: SubscriberBreach) => ({
+  const getBreachInfo = (breach?: SubscriberBreach) => ({
     name: breach ? breach.name : "",
     breachDate: breach ? breach.breachDate : "",
     breachSite: breach ? `/breach-details/${breach.name}` : "",
@@ -63,13 +63,13 @@ function getLeakedPasswords({
     name: passwordBreachName,
     breachDate: passwordBreachDate,
     breachSite: passwordBreachSite,
-  } = getBreachInfo(unresolvedPasswordBreach!);
+  } = getBreachInfo(unresolvedPasswordBreach);
 
   const {
     name: securityQuestionBreachName,
     breachDate: securityQuestionBreachDate,
     breachSite: securityQuestionBreachSite,
-  } = getBreachInfo(unresolvedSecurityQuestionsBreach!);
+  } = getBreachInfo(unresolvedSecurityQuestionsBreach);
 
   const leakedPasswordsData: LeakedPassword[] = [
     {
