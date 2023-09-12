@@ -8,6 +8,7 @@ import securityQuestionsIllustration from "../images/security-questions.svg";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { getL10n } from "../../../../../../../functions/server/l10n";
+import AppConstants from "../../../../../../../../appConstants";
 
 export type LeakedPasswordsContent = {
   summary: string;
@@ -48,11 +49,17 @@ function getLeakedPasswords({
   const unresolvedPasswordBreach = findFirstUnresolvedBreach("password");
   const unresolvedSecurityQuestionsBreach =
     findFirstUnresolvedBreach("security-question");
+  const blockList = (AppConstants.HIBP_BREACH_DOMAIN_BLOCKLIST ?? "").split(
+    ","
+  );
 
   const getBreachInfo = (breach?: SubscriberBreach) => ({
     name: breach ? breach.name : "",
     breachDate: breach ? breach.breachDate : "",
-    breachSite: breach ? `https://${breach.domain}` : "",
+    breachSite:
+      breach && !blockList.includes(breach.domain)
+        ? `https://${breach.domain}`
+        : "",
   });
 
   const {
