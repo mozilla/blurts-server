@@ -16,8 +16,6 @@ export async function getSubscriberEmails(
 ): Promise<string[]> {
   const emailArray: string[] = [user.email];
   const subscriber = await getSubscriberByEmail(user.email);
-  (await getUserEmails(subscriber.id)).forEach((er) =>
-    emailArray.push(er.email)
-  );
+  (await getUserEmails(subscriber.id)).forEach((e) => emailArray.push(e.email));
   return emailArray;
 }
