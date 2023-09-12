@@ -10,20 +10,21 @@ import {
   Breach,
   Subscriber,
 } from "../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
+import { parseIso8601Datetime } from "./parse.js";
 
 export type DataClassEffected = {
   [dataType: string]: number | string[];
 };
 export interface SubscriberBreach {
-  addedDate: string;
-  breachDate: string;
+  addedDate: Date;
+  breachDate: Date;
   dataClasses: string[];
   description: string;
   domain: string;
   id: number;
   isResolved?: boolean;
   favIconUrl: string;
-  modifiedDate: string;
+  modifiedDate: Date;
   name: string;
   title: string;
   emailsEffected?: string[];
@@ -77,16 +78,21 @@ export async function getSubBreaches(
       const filteredBreachDataClasses: string[] = filterBreachDataTypes(
         breach.DataClasses
       );
+      // `allBreaches` is generally the return value of `getBreaches`, which
+      // either loads breaches from the database, or fetches them from the HIBP
+      // API. In the former csae, `AddedDate`, `BreachDate` and `ModifiedDate`
+      // are Date objects, but in the latter case, they are ISO 8601 date
+      // strings. Thus, we normalise that to always be a Date object.
       const subscriberBreach: SubscriberBreach = {
         id: breach.Id,
-        addedDate: breach.AddedDate,
-        breachDate: breach.BreachDate,
+        addedDate: normalizeDate(breach.AddedDate),
+        breachDate: normalizeDate(breach.BreachDate),
         dataClasses: filteredBreachDataClasses,
         description: breach.Description,
         domain: breach.Domain,
         isResolved: breachResolution[breach.Id]?.isResolved || false,
         favIconUrl: breach.FaviconUrl,
-        modifiedDate: breach.ModifiedDate,
+        modifiedDate: normalizeDate(breach.ModifiedDate),
         name: breach.Name,
         title: breach.Title,
         emailsEffected: [email.email],
@@ -121,4 +127,14 @@ export async function getSubBreaches(
   }
 
   return Object.values(uniqueBreaches);
+}
+
+function normalizeDate(date: string | Date): Date {
+  return typeof date === "string"
+    ? // If `date` is a string, it was fetched from the HIBP API, and we should be
+      // able to assume that it is a valid ISO 8601 string, and thus use the
+      // non-null assertion:
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      parseIso8601Datetime(date)!
+    : date;
 }
