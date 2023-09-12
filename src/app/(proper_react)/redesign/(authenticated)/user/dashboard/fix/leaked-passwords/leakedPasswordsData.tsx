@@ -40,13 +40,9 @@ function getLeakedPasswords({
   const findFirstUnresolvedBreach = (breachClassType: LeakedPasswordsTypes) => {
     const leakedPasswordType =
       breachClassType === "password" ? "passwords" : "securityQuestions";
-    for (const breach of Object.values(
-      breaches.passwordBreaches[leakedPasswordType]
-    )) {
-      if (!breach.isResolved) {
-        return breach;
-      }
-    }
+    return Object.values(breaches.passwordBreaches[leakedPasswordType]).find(
+      (breach) => !breach.isResolved
+    );
   };
 
   const unresolvedPasswordBreach = findFirstUnresolvedBreach("password");
