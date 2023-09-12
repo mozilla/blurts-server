@@ -40,23 +40,6 @@ export default async function HighRiskDataBreaches() {
     <div>
       {/* TODO: MNTOR-1700 Add routing logic here, currently default to no high risk breach data  */}
       <HighRiskBreachLayout pageData={pageData} locale={locale} />
-
-      {/* TODO: Remove all bottom links  */}
-      <Link href="/redesign/user/dashboard/fix/high-risk-data-breaches/social-security-number">
-        SSN Breaches
-      </Link>
-      <br />
-      <Link href="/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card-number">
-        Credit card
-      </Link>
-      <br />
-      <Link href="/redesign/user/dashboard/fix/high-risk-data-breaches/bank-account">
-        Bank Account
-      </Link>
-      <br />
-      <Link href="/redesign/user/dashboard/fix/high-risk-data-breaches/pin-number">
-        Pin Number
-      </Link>
     </div>
   );
 }

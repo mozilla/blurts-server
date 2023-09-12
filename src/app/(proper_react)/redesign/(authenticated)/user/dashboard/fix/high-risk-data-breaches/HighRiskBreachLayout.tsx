@@ -57,13 +57,11 @@ export function HighRiskBreachLayout({
       }
       estimatedTime={hasBreaches ? 15 : undefined}
     >
-      {hasBreaches && (
-        <ResolutionContent
-          content={content}
-          exposedData={exposedData}
-          locale={locale}
-        />
-      )}
+      <ResolutionContent
+        content={content}
+        exposedData={exposedData}
+        locale={locale}
+      />
     </ResolutionContainer>
   );
 }
