@@ -52,7 +52,7 @@ function getLeakedPasswords({
   const getBreachInfo = (breach?: SubscriberBreach) => ({
     name: breach ? breach.name : "",
     breachDate: breach ? breach.breachDate : "",
-    breachSite: breach ? new URL(`https://${breach.domain}`) : "",
+    breachSite: breach ? `https://${breach.domain}` : "",
   });
 
   const {
