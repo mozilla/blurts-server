@@ -28,7 +28,12 @@ const recommendations = {
 };
 const content = {
   summary: summaryString,
-  description: <p>Security recommendation description text.</p>,
+  description: (
+    <p>
+      Leaked passwords / Security questions leaked recommendation description
+      text.
+    </p>
+  ),
   recommendations,
 };
 
