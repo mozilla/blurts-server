@@ -59,6 +59,7 @@ export async function POST(req: NextRequest) {
       acknowledge: (ackId: string) => console.log("acknowledged:", ackId),
     };
 
+    // @ts-expect-error Mocking SubscriberClient
     await poll(subClient, receivedMessages);
 
     return NextResponse.json({ success: true }, { status: 200 });

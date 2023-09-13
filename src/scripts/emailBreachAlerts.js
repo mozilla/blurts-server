@@ -48,24 +48,31 @@ const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
 
 /**
  * Fetch the latest HIBP breach data from GCP PubSub queue.
- *
+ * 
  * A breach notification contains the following parameters:
  * - breachName
  * - hashPrefix
  * - hashSuffixes
- *
+ * 
  * More about how account identities are anonymized: https://blog.mozilla.org/security/2018/06/25/scanning-breached-accounts-k-anonymity/
+ * @param {pubsub.v1.SubscriberClient} subClient
+ * @param {pubsub.protos.google.pubsub.v1.IReceivedMessage[]} receivedMessages
  */
 export async function poll(subClient, receivedMessages) {
   const formattedSubscription = subClient.subscriptionPath(
-    projectId,
-    subscriptionName
+    projectId ?? "",
+    subscriptionName ?? ""
   );
 
   // Process the messages. Skip any that cannot be processed, and do not mark as acknowledged.
   for (const message of receivedMessages) {
-    console.log(`Received message: ${message.message.data}`);
-    const data = JSON.parse(message.message.data);
+    const messageData = message?.message?.data;
+    if (!messageData) {
+      console.error("HIBP breach notification missing message data");
+      continue;
+    }
+    console.log(`Received message: ${messageData}`);
+    const data = JSON.parse(messageData.toString());
 
     if (!(data.breachName && data.hashPrefix && data.hashSuffixes)) {
       console.error(
@@ -120,6 +127,10 @@ export async function poll(subClient, receivedMessages) {
         reason: `The following conditions were not satisfied: ${conditionLogIds}.`,
       });
 
+      if (typeof message.ackId !== "string") {
+        console.error("No ackID on message:", messageData);
+        continue;
+      }
       subClient.acknowledge({
         subscription: formattedSubscription,
         ackIds: [message.ackId],
@@ -131,7 +142,7 @@ export async function poll(subClient, receivedMessages) {
     try {
       const reqHashPrefix = hashPrefix.toLowerCase();
       const hashes = hashSuffixes.map(
-        (suffix) => reqHashPrefix + suffix.toLowerCase()
+        (/** @type {string} */ suffix) => reqHashPrefix + suffix.toLowerCase()
       );
 
       const subscribers = await getSubscribersByHashes(hashes);
@@ -144,6 +155,9 @@ export async function poll(subClient, receivedMessages) {
       });
 
       const utmCampaignId = "breach-alert";
+      /**
+       * @type {any[]}
+       */
       const notifiedRecipients = [];
 
       for (const recipient of recipients) {
@@ -162,7 +176,7 @@ export async function poll(subClient, receivedMessages) {
           : [];
         /* c8 ignore stop */
 
-        const availableLanguages = process.env.SUPPORTED_LOCALES;
+        const availableLanguages = process.env.SUPPORTED_LOCALES?.split(",") ?? [];
         const supportedLocales = negotiateLanguages(
           requestedLanguage,
           availableLanguages,
@@ -193,6 +207,11 @@ export async function poll(subClient, receivedMessages) {
 
       console.info("notified", { length: notifiedRecipients.length });
 
+      if (typeof message.ackId !== "string") {
+        console.error("No ackID on message:", messageData);
+        continue;
+      }
+
       subClient.acknowledge({
         subscription: formattedSubscription,
         ackIds: [message.ackId],
@@ -206,22 +225,26 @@ export async function poll(subClient, receivedMessages) {
 }
 
 /* c8 ignore start */
+/**
+ * 
+ * @returns []<pubsub.v1.SubscriberClient, pubsub.protos.google.pubsub.v1.IReceivedMessage[]>
+ */
 async function pullMessages() {
-  let options = {};
+  let subClient;
   if (process.env.NODE_ENV === "development") {
     console.debug("Dev mode, connecting to local pubsub emulator");
-    options = {
+    subClient = new pubsub.v1.SubscriberClient({
       servicePath: "localhost",
-      port: "8085",
+      port: 8085,
       sslCreds: grpc.credentials.createInsecure()
-    }
+    });
+  } else {
+    subClient = new pubsub.v1.SubscriberClient();
   }
 
-  const subClient = new pubsub.v1.SubscriberClient(options);
-
   const formattedSubscription = subClient.subscriptionPath(
-    projectId,
-    subscriptionName
+    projectId ?? "",
+    subscriptionName ?? ""
   );
 
   // If there are no messages, this will wait until the default timeout for the pull API.
@@ -239,6 +262,7 @@ async function init() {
   await initEmail();
 
   const [subClient, receivedMessages] = await pullMessages();
+  //@ts-expect-error TODO cast this properly using JSDoc
   await poll(subClient, receivedMessages);
 }
 
