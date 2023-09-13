@@ -13,6 +13,11 @@
     padding-left: 0;
     counter-reset: item;
 
+    /* We're using 'counter-increment' and '::before' to manually add list item numbers instead of default list style styling.
+   This approach allows us to customize the appearance of the numbers and maintain control
+   over their positioning while working with 'display: flex' for list items.
+*/
+
     li {
       counter-increment: item;
       margin-bottom: $spacing-xs;
