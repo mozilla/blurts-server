@@ -85,21 +85,21 @@ export const FraudAlertModal = () => {
                   "ssn-modal-description-freeze-credit-part-two",
                   {
                     elems: {
-                      link_to_equifax_info: (
+                      equifax_link: (
                         <a
                           href={equifaxLink}
                           rel="noopener noreferrer"
                           target="_blank"
                         />
                       ),
-                      link_to_experian_info: (
+                      experian_link: (
                         <a
                           href={experianLink}
                           rel="noopener noreferrer"
                           target="_blank"
                         />
                       ),
-                      link_to_transunion_info: (
+                      transunion_link: (
                         <a
                           href={transunionLink}
                           rel="noopener noreferrer"

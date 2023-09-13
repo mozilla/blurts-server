@@ -343,7 +343,7 @@ ssn-modal-title = About fraud alerts and credit freezes
 ssn-modal-description-fraud-part-one = <b>A fraud alert</b> requires businesses to verify your identity before it issues new credit in your name. It’s free, lasts one year, and won’t negatively affect your credit score. 
 ssn-modal-description-fraud-part-two = To set one up, contact any one of the three credit bureaus. You don’t have to contact all three.
 ssn-modal-description-freeze-credit-part-one = <b>Freezing your credit</b> prevents anyone from opening a new account in your name. It’s free and won’t negatively affect your credit score, but you’ll need to unfreeze it before opening any new accounts. 
-ssn-modal-description-freeze-credit-part-two = To freeze your credit, contact each of the three credit bureaus — <link_to_equifax_info>Equifax</link_to_equifax_info>, <link_to_experian_info>Experian</link_to_experian_info>, and <link_to_transunion_info>TransUnion</link_to_transunion_info>.
+ssn-modal-description-freeze-credit-part-two = To freeze your credit, contact each of the three credit bureaus — <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link>, and <transunion_link>TransUnion</transunion_link>.
 ssn-modal-learn-more = Learn more about fraud alerts and credit freezes
 ssn-modal-ok = OK
 
