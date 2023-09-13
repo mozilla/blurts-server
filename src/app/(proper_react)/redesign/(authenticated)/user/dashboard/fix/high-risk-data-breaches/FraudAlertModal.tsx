@@ -15,7 +15,6 @@ import Image from "next/image";
 import FraudAlertDialogIllustration from "../images/fraud-alert-modal-illustration.svg";
 import { Button } from "../../../../../../../components/server/Button";
 import styles from "./FraudAlertModal.module.scss";
-import Link from "next/link";
 
 export const FraudAlertModal = () => {
   const l10n = useL10n();
@@ -111,13 +110,13 @@ export const FraudAlertModal = () => {
                 )}
               </p>
               <p>
-                <Link
+                <a
                   href={fraudAlertLink}
                   rel="noopener noreferrer"
                   target="_blank"
                 >
                   {l10n.getString("ssn-modal-learn-more")}
-                </Link>
+                </a>
               </p>
               <div className={styles.confirmButtonWrapper}>
                 <Button
