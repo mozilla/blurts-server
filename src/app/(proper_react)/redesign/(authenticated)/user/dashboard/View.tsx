@@ -29,6 +29,7 @@ import { FeatureFlagsEnabled } from "../../../../../functions/server/featureFlag
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 import { hasPremium } from "../../../../../functions/universal/user";
+import { LatestOnerepScanData } from "../../../../../../db/tables/onerep_scans";
 
 export type Props = {
   bannerData: DashboardSummary;
@@ -39,9 +40,9 @@ export type Props = {
   locale: string;
   user: Session["user"];
   userBreaches: SubscriberBreach[];
-  userScannedResults: OnerepScanResultRow[];
+  userScanData: LatestOnerepScanData;
   isEligibleForFreeScan: boolean;
-  countryCode?: string;
+  countryCode: string;
   isAllFixed?: boolean;
 };
 
@@ -71,7 +72,7 @@ export const View = (props: Props) => {
   const breachesDataArray = props.userBreaches.flat();
 
   // Merge exposure cards
-  const combinedArray = [...breachesDataArray, ...props.userScannedResults];
+  const combinedArray = [...breachesDataArray, ...props.userScanData.results];
 
   // Sort in descending order
   const arraySortedByDate = combinedArray.sort((a, b) => {
@@ -115,7 +116,7 @@ export const View = (props: Props) => {
       </li>
     );
   });
-  const isScanResultItemsEmpty = props.userScannedResults.length === 0;
+  const isScanResultItemsEmpty = props.userScanData.results.length === 0;
   const noUnresolvedExposures = exposureCardElems.length === 0;
 
   const TabContentActionNeeded = () => {
@@ -205,13 +206,17 @@ export const View = (props: Props) => {
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           bannerData={props.bannerData}
+          stepDeterminationData={{
+            countryCode: props.countryCode,
+            latestScanData: props.userScanData,
+            subscriberBreaches: props.userBreaches,
+            user: props.user,
+          }}
           content={contentType}
           type={selectedTab as TabType}
           hasRunScan={!isScanResultItemsEmpty}
           isEligibleForFreeScan={props.isEligibleForFreeScan}
-          // TODO: Add unit test when changing this code:
-          /* c8 ignore next 3 */
-          ctaCallback={() => {
+          onShowFixed={() => {
             setSelectedTab("fixed");
           }}
         />
