@@ -11,6 +11,7 @@ import bankAccountIllustration from "../images/high-risk-data-breach-bank-accoun
 import pinIllustration from "../images/high-risk-data-breach-pin.svg";
 import noBreachesIllustration from "../images/high-risk-breaches-none.svg";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
+import { FraudAlertModal } from "./FraudAlertModal";
 
 export type HighRiskBreachContent = {
   summary: string;
@@ -101,7 +102,6 @@ function getHighRiskBreachesByType({
           subtitle: l10n.getString("high-risk-breach-subheading"),
           steps: (
             <ol>
-              {/* TOOD: Add question mark modal explaining the SSN breach resolution - MNTOR-2127 */}
               <li>
                 {l10n.getFragment("high-risk-breach-social-security-step-one", {
                   elems: {
@@ -114,6 +114,7 @@ function getHighRiskBreachesByType({
                     ),
                   },
                 })}
+                <FraudAlertModal />
               </li>
               <li>
                 {l10n.getFragment("high-risk-breach-social-security-step-two", {
