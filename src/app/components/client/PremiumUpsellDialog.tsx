@@ -4,8 +4,7 @@
 
 "use client";
 
-import { Key, useEffect, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
+import { Key, useState } from "react";
 import Image from "next/image";
 import type { OverlayTriggerProps, OverlayTriggerState } from "react-stately";
 import { Dialog } from "./dialog/Dialog";
@@ -155,26 +154,6 @@ function PremiumUpsellDialog({
   ...otherProps
 }: PremiumUpsellDialogProps & OverlayTriggerProps) {
   const l10n = useL10n();
-  const pathname = usePathname();
-
-  const isOpen = useRef(state.isOpen);
-  useEffect(() => {
-    if (!isOpen.current && state.isOpen) {
-      console.log("opened");
-      window.gtag("event", "premium_upsell_modal", {
-        action: "opened",
-        page_location: pathname,
-      });
-    } else if (isOpen.current && !state.isOpen) {
-      console.log("closed");
-      window.gtag("event", "premium_upsell_modal", {
-        action: "closed",
-        page_location: pathname,
-      });
-    }
-
-    isOpen.current = state.isOpen;
-  }, [state, pathname]);
 
   return (
     <div className={styles.modal}>

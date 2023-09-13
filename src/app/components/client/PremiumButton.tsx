@@ -4,6 +4,7 @@
 
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "react-stately";
 import { PremiumUpsellDialog } from "./PremiumUpsellDialog";
@@ -17,7 +18,16 @@ export type Props = {
 export default function PremiumButton({ label }: Props) {
   const l10n = useL10n();
 
-  const dialogState = useOverlayTriggerState({ defaultOpen: false });
+  const pathname = usePathname();
+  const dialogState = useOverlayTriggerState({
+    defaultOpen: false,
+    onOpenChange: (isOpen) => {
+      window.gtag("event", "premium_upsell_modal", {
+        action: isOpen ? "opened" : "closed",
+        page_location: pathname,
+      });
+    },
+  });
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: "dialog" },
     dialogState
