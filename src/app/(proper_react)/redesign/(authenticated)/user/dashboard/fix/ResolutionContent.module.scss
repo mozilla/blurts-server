@@ -8,8 +8,23 @@
   ul,
   ol {
     padding-top: $spacing-md;
+    list-style: none;
     list-style-position: inside;
     padding-left: 0;
+    counter-reset: item;
+
+    li {
+      counter-increment: item;
+      margin-bottom: $spacing-xs;
+      display: flex;
+      align-items: flex-start;
+      gap: $spacing-xs;
+
+      &::before {
+        content: counter(item) ". ";
+        margin-right: $spacing-xs;
+      }
+    }
   }
 }
 
