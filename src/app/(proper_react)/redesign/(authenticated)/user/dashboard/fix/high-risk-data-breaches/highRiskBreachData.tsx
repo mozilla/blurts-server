@@ -49,7 +49,6 @@ function getHighRiskBreachesByType({
   const l10n = getL10n();
 
   // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
-  const emailsMonitored = ["email1@gmail.com", "email2@gmail.com"]; // mocked
   const emailsFormatter = new Intl.ListFormat(locale, {
     style: "long",
     type: "conjunction",
@@ -202,7 +201,7 @@ function getHighRiskBreachesByType({
             <p>
               {l10n.getString("high-risk-breach-none-description", {
                 // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
-                email_list: emailsFormatter.format(emailsMonitored),
+                email_list: emailsFormatter.format(breaches.emails),
               })}
             </p>
             <p>
