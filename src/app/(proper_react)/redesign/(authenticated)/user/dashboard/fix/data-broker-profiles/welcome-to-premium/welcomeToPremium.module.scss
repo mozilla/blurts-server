@@ -1,0 +1,52 @@
+@import "../../../../../../../../tokens";
+
+.main {
+  flex-direction: column;
+}
+
+.contentWrapper {
+  max-width: $content-md;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.buttonsWrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: $spacing-md;
+
+  a {
+    display: block;
+  }
+
+  @media screen and (min-width: $screen-sm) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.content {
+  text-align: left;
+  max-width: $content-md;
+  margin: 0 auto $spacing-2xl;
+
+  h4 {
+    font: $text-title-3xs;
+    margin: 20px 0;
+  }
+
+  p,
+  h4 {
+    margin-block-end: $spacing-md;
+    text-align: left;
+  }
+
+  > a {
+    color: $color-blue-60;
+    display: inline-block;
+    margin-inline-start: $spacing-sm;
+  }
+}
