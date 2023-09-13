@@ -262,7 +262,7 @@ async function init() {
   await initEmail();
 
   const [subClient, receivedMessages] = await pullMessages();
-  //@ts-expect-error TODO cast this properly using JSDoc
+  //@ts-expect-error TODO cast this properly using JSDoc https://github.com/jsdoc/jsdoc/issues/1703
   await poll(subClient, receivedMessages);
 }
 
