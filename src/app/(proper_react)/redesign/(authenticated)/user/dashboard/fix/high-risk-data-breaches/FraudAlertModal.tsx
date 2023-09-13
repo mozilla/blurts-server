@@ -121,7 +121,7 @@ export const FraudAlertModal = () => {
               <div className={styles.confirmButtonWrapper}>
                 <Button
                   variant="primary"
-                  onClick={() => overlayTriggerState.close()}
+                  onPress={() => overlayTriggerState.close()}
                   autoFocus={true}
                 >
                   {l10n.getString(
