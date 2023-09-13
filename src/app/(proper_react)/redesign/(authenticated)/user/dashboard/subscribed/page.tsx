@@ -20,7 +20,7 @@ import { headers } from "next/headers";
 
 export default async function Subscribed() {
   const session = await getServerSession(authOptions);
-  if (!session || !session.user || !session.user.subscriber) {
+  if (!session?.user?.subscriber) {
     throw new Error("No session");
   }
 

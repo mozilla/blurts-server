@@ -41,7 +41,7 @@ export async function POST(
   req: NextRequest
 ): Promise<NextResponse<WelcomeScanBody | unknown>> {
   const session = await getServerSession(authOptions);
-  if (!session || !session.user || !session.user.subscriber) {
+  if (!session?.user?.subscriber) {
     throw new Error("No session");
   }
 
