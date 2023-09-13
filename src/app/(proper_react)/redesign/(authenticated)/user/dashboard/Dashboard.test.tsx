@@ -16,6 +16,7 @@ import Meta, {
   DashboardPremiumUser,
   DashboardNoSession,
   DashboardFreeUserAllResolved,
+  DashboardPremiumUserAllResolved,
 } from "./Dashboard.stories";
 
 function enablePremium() {
@@ -226,4 +227,27 @@ it("shows returned free user who has resolved all tasks premium upsell and all f
   // click on cta
   await user.click(bannerPremiumCta[0]);
   expect(screen.getByRole("dialog")).toBeInTheDocument();
+});
+
+it("shows a returning Premium user who has resolved all tasks a CTA to check out what was fixed", async () => {
+  enablePremium();
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(DashboardPremiumUserAllResolved, Meta);
+  render(<ComposedDashboard />);
+
+  // We show a CTA on desktop in the toolbar and in the mobile menu
+  const premiumBadges = screen.queryAllByText("Premium");
+  expect(premiumBadges.length).toBe(2);
+
+  // show banner CTA premium upgrade
+  const bannerPremiumCta = screen.queryAllByRole("button", {
+    name: "See what’s fixed",
+  });
+  expect(bannerPremiumCta.length).toBe(1);
+
+  // click on cta
+  await user.click(bannerPremiumCta[0]);
+
+  const fixedTab = screen.getByRole("tab", { name: "Fixed" });
+  expect(fixedTab).toHaveAttribute("aria-selected", "true");
 });

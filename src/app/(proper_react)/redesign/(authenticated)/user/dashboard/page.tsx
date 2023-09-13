@@ -57,7 +57,7 @@ export default async function DashboardPage() {
       countryCode={countryCode}
       user={session.user}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
-      userScannedResults={latestScan.results}
+      userScanData={latestScan}
       userBreaches={subBreaches}
       locale={locale}
       bannerData={summary}
