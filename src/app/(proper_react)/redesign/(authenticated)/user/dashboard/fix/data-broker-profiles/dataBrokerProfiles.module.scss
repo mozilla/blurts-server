@@ -201,13 +201,6 @@
   padding-top: $layout-sm;
 
   div {
-    display: flex;
-    flex-direction: row;
-    gap: $spacing-sm;
-    align-items: center;
-    font: $text-body-xs;
-    font-weight: 500;
-    color: $color-grey-50;
-    padding-top: $spacing-md;
+    @include estimated-time;
   }
 }
