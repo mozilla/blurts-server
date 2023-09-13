@@ -227,7 +227,7 @@ export async function poll(subClient, receivedMessages) {
 /* c8 ignore start */
 /**
  * 
- * @returns []<pubsub.v1.SubscriberClient, pubsub.protos.google.pubsub.v1.IReceivedMessage[]>
+ * @returns Promise<[pubsub.v1.SubscriberClient, pubsub.protos.google.pubsub.v1.IReceivedMessage[]]>
  */
 async function pullMessages() {
   let subClient;
