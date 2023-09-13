@@ -4,12 +4,12 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { OnerepScanResultRow } from "knex/types/tables";
+import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
 import { View as DashboardEl } from "./View";
 import { Shell } from "../../../Shell";
 import { getEnL10nSync } from "../../../../../functions/server/mockL10n";
 import {
-  createRandomScan,
+  createRandomScanResult,
   createRandomBreach,
   createUserWithPremiumSubscription,
 } from "../../../../../../apiMocks/mockData";
@@ -63,17 +63,26 @@ const BreachMockItem4: SubscriberBreach = createRandomBreach({
   ],
 });
 
+const scanSample: OnerepScanRow = {
+  created_at: new Date(1998, 2, 31),
+  updated_at: new Date(1998, 2, 31),
+  id: 0,
+  onerep_profile_id: 0,
+  onerep_scan_id: 0,
+  onerep_scan_reason: "initial",
+};
+
 const scannedResultsArraySample: OnerepScanResultRow[] = [
-  createRandomScan({ status: "removed" }),
-  createRandomScan({ status: "waiting_for_verification" }),
-  createRandomScan({ status: "optout_in_progress" }),
-  createRandomScan({ status: "new" }),
-  createRandomScan(),
+  createRandomScanResult({ status: "removed" }),
+  createRandomScanResult({ status: "waiting_for_verification" }),
+  createRandomScanResult({ status: "optout_in_progress" }),
+  createRandomScanResult({ status: "new", manually_resolved: false }),
+  createRandomScanResult({ status: "new", manually_resolved: true }),
 ];
 
 const scannedResolvedResultsArraySample: OnerepScanResultRow[] = Array.from(
   { length: 5 },
-  () => createRandomScan({ status: "removed" })
+  () => createRandomScanResult({ status: "removed" })
 );
 
 const breachItemArraySample: SubscriberBreach[] = [
@@ -180,9 +189,10 @@ export const DashboardWithScan: Story = {
   render: () => (
     <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
+        countryCode="nl"
         user={mockSession.user}
         userBreaches={breachItemArraySample}
-        userScannedResults={scannedResultsArraySample}
+        userScanData={{ scan: scanSample, results: scannedResultsArraySample }}
         isEligibleForFreeScan={false}
         locale={"en"}
         bannerData={dashboardSummaryWithScan}
@@ -203,7 +213,7 @@ export const DashboardWithScanUserFromUs: Story = {
         countryCode="us"
         user={mockSession.user}
         userBreaches={breachItemArraySample}
-        userScannedResults={scannedResultsArraySample}
+        userScanData={{ scan: scanSample, results: scannedResultsArraySample }}
         isEligibleForFreeScan={true}
         locale={"en"}
         bannerData={dashboardSummaryWithScan}
@@ -221,9 +231,10 @@ export const DashboardWithoutScan: Story = {
   render: () => (
     <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
+        countryCode="nl"
         user={mockSession.user}
         userBreaches={breachItemArraySample}
-        userScannedResults={[]}
+        userScanData={{ scan: null, results: [] }}
         isEligibleForFreeScan={false}
         locale={"en"}
         bannerData={dashboardSummaryNoScan}
@@ -241,9 +252,10 @@ export const DashboardWithoutScanUserFromUs: Story = {
   render: () => (
     <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
+        countryCode="us"
         user={{ email: "example@example.com" }}
         userBreaches={breachItemArraySample}
-        userScannedResults={[]}
+        userScanData={{ scan: null, results: [] }}
         isEligibleForFreeScan={true}
         locale={"en"}
         bannerData={dashboardSummaryNoScan}
@@ -260,9 +272,10 @@ export const DashboardEmptyListState: Story = {
   render: () => (
     <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
+        countryCode="us"
         user={mockSession.user}
         userBreaches={breachItemArraySample}
-        userScannedResults={[]}
+        userScanData={{ scan: null, results: [] }}
         isEligibleForFreeScan={true}
         locale={"en"}
         bannerData={dashboardSummaryNoScan}
@@ -282,7 +295,7 @@ export const DashboardFreeUser: Story = {
         countryCode="us"
         user={{ email: "example@example.com" }}
         userBreaches={breachItemArraySample}
-        userScannedResults={scannedResultsArraySample}
+        userScanData={{ scan: scanSample, results: scannedResultsArraySample }}
         isEligibleForFreeScan={true}
         locale={"en"}
         bannerData={dashboardSummaryWithScan}
@@ -302,7 +315,10 @@ export const DashboardFreeUserAllResolved: Story = {
         countryCode="us"
         user={{ email: "example@example.com" }}
         userBreaches={[]}
-        userScannedResults={scannedResolvedResultsArraySample}
+        userScanData={{
+          scan: scanSample,
+          results: scannedResolvedResultsArraySample,
+        }}
         isEligibleForFreeScan={true}
         locale={"en"}
         isAllFixed={true}
@@ -328,7 +344,39 @@ export const DashboardPremiumUser: Story = {
           countryCode="us"
           user={userData}
           userBreaches={breachItemArraySample}
-          userScannedResults={scannedResultsArraySample}
+          userScanData={{
+            scan: scanSample,
+            results: scannedResultsArraySample,
+          }}
+          isEligibleForFreeScan={true}
+          locale={"en"}
+          bannerData={dashboardSummaryWithScan}
+          featureFlagsEnabled={{
+            FreeBrokerScan: true,
+            PremiumBrokerRemoval: true,
+          }}
+        />
+      </Shell>
+    );
+  },
+};
+
+export const DashboardPremiumUserAllResolved: Story = {
+  render: () => {
+    const userData = createUserWithPremiumSubscription();
+    return (
+      <Shell
+        l10n={getEnL10nSync()}
+        session={{ ...mockSession, user: userData }}
+      >
+        <DashboardEl
+          countryCode="us"
+          user={userData}
+          userBreaches={[]}
+          userScanData={{
+            scan: scanSample,
+            results: scannedResolvedResultsArraySample,
+          }}
           isEligibleForFreeScan={true}
           locale={"en"}
           bannerData={dashboardSummaryWithScan}
