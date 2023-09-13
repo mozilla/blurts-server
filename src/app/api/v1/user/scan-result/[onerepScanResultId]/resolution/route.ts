@@ -22,7 +22,7 @@ export async function POST(
   { params }: { params: { onerepScanResultId: string } }
 ): Promise<NextResponse<ResolveScanResultResponse>> {
   const session = await getServerSession(authOptions);
-  if (!session || !session.user || !session.user.subscriber) {
+  if (!session?.user?.subscriber) {
     return new NextResponse<ResolveScanResultResponse>(
       JSON.stringify({ success: false, message: "Unauthenticated" }),
       { status: 401 }
