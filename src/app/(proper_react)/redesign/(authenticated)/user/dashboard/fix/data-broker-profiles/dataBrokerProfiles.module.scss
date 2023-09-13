@@ -195,12 +195,16 @@
 
 .dataBrokerResolutionStats {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: $spacing-md;
   justify-content: center;
   padding-top: $layout-sm;
 
+  @media screen and (min-width: $screen-md) {
+    flex-direction: row;
+  }
   div {
     @include estimated-time;
+    justify-content: center;
   }
 }
