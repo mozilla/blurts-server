@@ -80,7 +80,7 @@ manage-fxa = Eñangareko { -brand-fxa }
 have-an-account = ¿Erekóma mba’ete?
 fxa-pwt-summary-2 =
     Ñe’ẽñemi mbykýva peteĩ ñe’ẽnteva ndahasýi ijeikuaa mba’evai apohápe g̃uarã. 
-    Eipuru sa’ivéramo mokõi ñe’ẽ ha embojopyru tai, papapy ha ambueve.
+    Eiporu sa’ivéramo mokõi ñe’ẽ ha embojopyru tai, papapy ha ambueve.
 fxa-pwt-summary-4 =
     Ñe’ẽñemi ñangarekoha 1Password, LastPass, Dashlane ha Bitwarden oñongatu ne 
     ñe’ẽñemi ha omoinge ñanduti rendápe. Ikatu avei nepytyvõ emoheñói hag̃ua ñe’ẽñemi hekorosãva.
@@ -91,7 +91,7 @@ fxa-what-to-do-blurb-1 =
     Eñepyrũkuaárõ tembiapo, eñe’ẽ ñanduti renda ndive eporandu hag̃ua mba’éichapa embohekopyahúta. 
     ¿Ehecha peteĩ mba’ete eikuaa’ỹva? Ne mba’ekuaarã ikatu oñevendémara’e 
     térã oñemyasãima. Kóva avei ikatu ha’e mba’ete nderesaráiva emoheñói hag̃ua térã  peteĩ mba’apohaguasu omoambuéva héra.
-fxa-what-to-do-subhead-2 = Anive eipuru ñe’ẽñemi ojekuaareíva ha emoambue opaite tenda eipuruhápe.
+fxa-what-to-do-subhead-2 = Anive eiporu ñe’ẽñemi ojekuaareíva ha emoambue opaite tenda eiporuhápe.
 fxa-wtd-blurb-2 = Umi mba’evaiapoha tembiporupyahugua oiporujeykuaa ñe’ẽñemi ojehechakuaáva eike hag̃ua ambue mba’etépe. Emoheñói ñe’ẽñemi pyahu ha ha ha’eñóva peteĩteĩva mba’etépe, ejapokuaáva ne mba’ete banco pegua, ne ñanduti veve ha ambue ñanduti renda eñongatu hague ne maranduete.
 fxa-what-to-do-blurb-3 =
     Heta mba’evai ohechauka ñanduti veve ha ñe’ẽñemi año, hákatu oĩ avei omoinge marandu virugua ñemiguáva.
@@ -176,8 +176,8 @@ what-is-data-agg-blurb =
     araka’eve viru ñemonda, hákatu umi hekovaíva ñadutípe ikatu oiporu pe marandu omyendague hag̃ua chupe.
 protect-your-privacy = Emo’ã ñemigua ñandutípe
 no-pw-to-change = Ñanduti renda juavygua ñembyai, ndaipóri ñe’ẽñemi emoambueva’erã.
-avoid-personal-info = Ani eipuru marandu jehegua ñe’ẽñemíme
-avoid-personal-info-blurb = Ndahasýi aramboty jejuhu, kundaharape ha pehengue réra ñandutípe. Ani eipuru ko’ã ñe’ẽ ne ñe’ẽñemíme.
+avoid-personal-info = Ani eiporu marandu jehegua ñe’ẽñemíme
+avoid-personal-info-blurb = Ndahasýi aramboty jejuhu, kundaharape ha pehengue réra ñandutípe. Ani eiporu ko’ã ñe’ẽ ne ñe’ẽñemíme.
 
 ## What to do after data breach tips
 
@@ -187,7 +187,7 @@ even-for-old = Avei mba’ete itujáva, embohekopyahúke ne ñe’ẽñemi.
 make-new-pw-unique = Ejapo ñe’ẽñemi pyahúgui iñambue ha ha’eñóva
 strength-of-your-pw = Ne ñe’ẽñemi mbaretekue oñomoirũ ne rekorosã ñandutí pegua ndive.
 create-strong-passwords = Mba’éicha emoheñóita ñe’ẽñemi hekorosãva
-stop-reusing-pw = Anive eipuru peteĩ ñe’ẽñemi memete
+stop-reusing-pw = Anive eiporu peteĩ ñe’ẽñemi memete
 create-unique-pw = Emoheñói ñe’ẽñemi ha’etéva ha eñongatu tenda hekorosãvape, peteĩ ñe’ẽñemi ñangarekohápe.
 five-myths = 5 mombe’ugua’u ñe’ẽñemi ñangarekoha rehegua
 create-a-fxa = Emoheñói { -brand-fxa } eñemomarandu hag̃ua ñembyaíre ha og̃uahẽta ndéve kyhyjerã.
@@ -252,7 +252,7 @@ ba-next-step-blurb-1 =
     Ñe’ẽñemi hekorosãva ombojopyru tai’i ha taiguasu, 
     papapy ha ambueve. Ndoguerekói marandu mba’eteéva aichagua 
     kundaharape, arareñói térã ára pehengue rehegua.
-ba-next-step-2 = Anive eipuru ñe’ẽñemi ojekuaareíva.
+ba-next-step-2 = Anive eiporu ñe’ẽñemi ojekuaareíva.
 ba-next-step-blurb-2 =
     Umi hekovaíva ñadutípe ikatu ojuhu ne ñe’ẽñemi ñanduti ypytũme 
     ha oiporu ñepyrũ hag̃ua tembiapo ambue ne mba’etépe. Emo’ãporãve hag̃ua 
@@ -428,7 +428,7 @@ filter-by = Embogua jehechaukaha rupi:
 menu = Poravorã
 to-affected-email = Emondo ñembyai kyhyjerã ñanduti veve imarãkuapavape
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
-join-firefox = Oĩ peteĩ hendáicha emo’ã hag̃ua ne ñemigua. Eipuru { -brand-name }.
+join-firefox = Oĩ peteĩ hendáicha emo’ã hag̃ua ne ñemigua. Eiporu { -brand-name }.
 # Link title
 learn-more-link = Kuaave.
 email-sent = ¡Ñandutiveve mondopyre!
@@ -667,23 +667,23 @@ ad-unit-3-access-more = Eikekuaave
 # ad 4 heading
 ad-unit-4-shopping-with = Emba’ejogua tovara’ãnga reheve ñanduti veve rupive
 ad-unit-4-want-to-buy = Emba’ejoguasépa ñandutí rupive ha ndereikuaái jejoguaha térã nderejeroviái hese
-ad-unit-4-shop-online = Eipuru ñanduti veve rovara’ãnga emba’ejoguávo ñanduti rupive. Erekóta ñemoneĩ ne ñanduti vevépe ha upéi eipe’a tovara’ãnga ejapose vove.
+ad-unit-4-shop-online = Eiporu ñanduti veve rovara’ãnga emba’ejoguávo ñanduti rupive. Erekóta ñemoneĩ ne ñanduti vevépe ha upéi eipe’a tovara’ãnga ejapose vove.
 # ad 5 heading
 ad-unit-5-on-the-go = Pya’eterei { -brand-relay } ndive
 ad-unit-5-instantly-make = ¡Ejapo ñanduti veve rovara’ãnga oimeraẽva tendápe ha eho ehohápe!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Eikékatu pya’e porã
-ad-unit-5-privately-sign-in = Eipuru ñanduti veve rovara’ãnga emoñepyrũnguévo ne rembiapo tekoñemigua ekaruhápe térã Wi-Fi opavave oiporukuaávape
+ad-unit-5-privately-sign-in = Eiporu ñanduti veve rovara’ãnga emoñepyrũnguévo ne rembiapo tekoñemigua ekaruhápe térã Wi-Fi opavave oiporukuaávape
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Og̃uahẽ kuatia ñanduti veve rupive
 ad-unit-5-share-custom-email = Emoherakuã peteĩ ñanduti veve rovara’ãnga nemba’eteéva kuatia ñemba’ejoguakue eme’ẽ’ỹ rehe ne ñanduti veve teete
 # ad 5 subheading 3
-ad-unit-5-use-on-phone = Eipuru ne pumbyrýpe
+ad-unit-5-use-on-phone = Eiporu ne pumbyrýpe
 ad-unit-5-no-matter-where = Tereime reimehápe, emoheñói peteĩ ñanduti veve rovara’ãnga nemba’eteéva sapy’aitépe ejapo hag̃ua ejaposéva uperire
 # ad 6 heading
 ad-unit-6-worry-free = Eñemboheraguapy apañuãi’ỹre
 ad-unit-6-want-to-start = Eñemboheraguapysépa, embohovái pe ñepepirũ térã ejerurekuaa ñemyasãirã ayvu pe spam oñuã’ỹre ne ñe’ẽmondo g̃uahẽha
-ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eipuru ñanduti veve rovara’ãnga ne ñanduti vevetéva rendaguépe emo’ã hag̃ua ne marandu ha ehechamemekuaa hag̃ua ne ñe’ẽmondo g̃uahẽha
+ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eiporu ñanduti veve rovara’ãnga ne ñanduti vevetéva rendaguépe emo’ã hag̃ua ne marandu ha ehechamemekuaa hag̃ua ne ñe’ẽmondo g̃uahẽha
 
 # Monitor V2
 
@@ -721,7 +721,7 @@ site-nav-breaches-link = Emoĩporã mba’ekuaarã ñembogua
 site-nav-settings-link = Ñemboheko
 site-nav-help-link = Ñepytvõ ha Pytyvõha
 # This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
-site-nav-ad-callout = Eipuru ore ambue rembipuru tekorosãrã:
+site-nav-ad-callout = Eiporu ore ambue rembiporu tekorosãrã:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
 

@@ -40,7 +40,9 @@ export const FixView = (props: FixViewProps) => {
     0
   );
   const totalDataBrokerProfiles = props.userScannedResults.length;
-  const totalPasswordBreaches = props.breaches.passwordBreaches.length;
+  const totalPasswordBreaches = Object.values(
+    props.breaches.passwordBreaches
+  ).reduce((acc, array) => acc + array.length, 0);
   const totalSecurityRecommendations = Object.values(
     props.breaches.securityRecommendations
   ).filter((value) => {

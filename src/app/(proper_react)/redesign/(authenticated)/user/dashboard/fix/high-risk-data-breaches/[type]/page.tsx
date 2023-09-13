@@ -4,16 +4,13 @@
 
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { SecurityRecommendationsLayout } from "../SecurityRecommendationsLayout";
-import { getSecurityRecommendationsByType } from "../securityRecommendationsData";
+import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
+import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
-import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
-import {
-  getL10n,
-  getLocale,
-} from "../../../../../../../../functions/server/l10n";
+import { getLocale } from "../../../../../../../../functions/server/l10n";
+import { getHighRiskBreachesByType } from "../highRiskBreachData";
 
 interface SecurityRecommendationsProps {
   params: {
@@ -29,7 +26,6 @@ export default async function SecurityRecommendations({
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
-  const l10n = getL10n();
   const breaches = await getSubscriberBreaches(session.user);
   const subscriberEmails = await getSubscriberEmails(session.user);
   const guidedExperienceBreaches = getGuidedExperienceBreaches(
@@ -38,20 +34,15 @@ export default async function SecurityRecommendations({
   );
 
   const { type } = params;
-  const pageData = getSecurityRecommendationsByType({
+  const pageData = getHighRiskBreachesByType({
     dataType: type,
     breaches: guidedExperienceBreaches,
+    locale,
   });
 
   if (!pageData) {
     redirect("/redesign/user/dashboard");
   }
 
-  return (
-    <SecurityRecommendationsLayout
-      label={l10n.getString("security-recommendation-steps-label")}
-      pageData={pageData}
-      locale={locale}
-    />
-  );
+  return <HighRiskBreachLayout pageData={pageData} locale={locale} />;
 }
