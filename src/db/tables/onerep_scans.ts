@@ -140,7 +140,12 @@ async function markOnerepScanResultAsResolved(
   onerepScanResultId: number
 ): Promise<void> {
   await knex("onerep_scan_results")
-    .update("manually_resolved", true)
+    .update({
+      manually_resolved: true,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
+    })
     .where("onerep_scan_result_id", onerepScanResultId);
 }
 
