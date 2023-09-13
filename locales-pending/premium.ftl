@@ -292,6 +292,22 @@ guided-resolution-flow-exit = Return to dashboard
 guided-resolution-flow-back-arrow = Go to previous step
 guided-resolution-flow-next-arrow = Go to next step
 
+# Welcome to Premium Data Broker Profiles
+
+welcome-to-premium-data-broker-profiles-title-part-one = Welcome to Premium.
+welcome-to-premium-data-broker-profiles-title-part-two = We'll remove those profiles ASAP.
+# Variables: 
+# $profile_total_num is the number of exposures came back from user data broker scans.
+# $exposure_reduction_percentage is the percent by which exposures are reduced
+welcome-to-premium-data-broker-profiles-description-part-one =  
+  { $profile_total_num ->
+    [one] We’ve already started our auto-removal process of 1 profile — which will reduce your exposures by { $exposure_reduction_percentage }%.
+    *[other] We’ve already started our auto-removal process of { $profile_total_num } profiles — which will reduce your exposures by { $exposure_reduction_percentage }%.
+  }
+welcome-to-premium-data-broker-profiles-description-part-two = <link_to_info>Removals typically take 7-14 days</link_to_info>, but some may happen within the hour. No matter how long it takes, we’ll keep working on it.
+welcome-to-premium-data-broker-profiles-description-part-three = Next we’ll guide you through high risk data breaches that require manual steps.
+welcome-to-premium-data-broker-profiles-cta-label = Let's keep going
+
 # High Risk Data Breaches
 
 high-risk-breach-heading = Here’s what to do
