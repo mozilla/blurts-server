@@ -124,9 +124,7 @@ export const FraudAlertModal = () => {
                   onPress={() => overlayTriggerState.close()}
                   autoFocus={true}
                 >
-                  {l10n.getString(
-                    "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-confirm"
-                  )}
+                  {l10n.getString("ssn-modal-ok")}
                 </Button>
               </div>
             </div>
