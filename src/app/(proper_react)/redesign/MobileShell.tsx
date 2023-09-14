@@ -18,7 +18,7 @@ import { PageLink } from "./PageLink";
 
 export type Props = {
   children: ReactNode;
-  session: Session | null;
+  session: Session;
 };
 
 export const MobileShell = (props: Props) => {
