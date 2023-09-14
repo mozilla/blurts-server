@@ -859,7 +859,7 @@ menu-item-logout = Odhlásiť sa
 mozilla = { -brand-Mozilla }
 terms-and-privacy = Podmienky a ochrana súkromia
 github = { -brand-github }
-footer-nav-all-breaches = Všetky únik údajov
+footer-nav-all-breaches = Všetky úniky údajov
 
 ## Error page
 
