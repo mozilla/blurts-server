@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
         now.toDateString(),
         "manual"
       )
-    )?.[0]?.["count"] as number) || 0;
+    )?.[0]?.["count"] as string) || "0";
 
   const initialScansCount =
     ((
@@ -38,16 +38,16 @@ export async function GET(req: NextRequest) {
         now.toDateString(),
         "initial"
       )
-    )?.[0]?.["count"] as number) || 0;
+    )?.[0]?.["count"] as string) || "0";
 
   const message = {
     scans: {
       quota: monthlyScanQuota,
-      count: manualScansCount,
+      count: parseInt(manualScansCount),
     },
     subscribers: {
       quota: monthlySubscriberQuota,
-      count: initialScansCount,
+      count: parseInt(initialScansCount),
     },
   };
 
