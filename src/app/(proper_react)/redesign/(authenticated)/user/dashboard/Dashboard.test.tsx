@@ -165,7 +165,7 @@ it("toggles between the product offerings in the premium upsell dialog", async (
   expect(productTabYearly1?.getAttribute("aria-selected")).toBe("true");
   const productTabMonthly1 = screen.queryByRole("tab", { name: "Monthly" });
   expect(productTabMonthly1?.getAttribute("aria-selected")).toBe("false");
-  const productYearlyCta = screen.queryByRole("button", {
+  const productYearlyCta = screen.queryByRole("link", {
     name: "Select yearly plan",
   });
   expect(productYearlyCta).toBeInTheDocument();
@@ -177,7 +177,7 @@ it("toggles between the product offerings in the premium upsell dialog", async (
   const productTabMonthly2 = screen.queryByRole("tab", { name: "Monthly" });
   expect(productTabMonthly2?.getAttribute("aria-selected")).toBe("true");
 
-  const productMontlyCta = screen.queryByRole("button", {
+  const productMontlyCta = screen.queryByRole("link", {
     name: "Select monthly plan",
   });
   expect(productMontlyCta).toBeInTheDocument();
