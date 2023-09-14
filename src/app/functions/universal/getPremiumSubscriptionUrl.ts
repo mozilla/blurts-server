@@ -9,16 +9,14 @@ interface GetPremiumSubscriptionUrlParams {
 function getPremiumSubscriptionUrl({
   type,
 }: GetPremiumSubscriptionUrlParams): string {
-  const subscriptionUrl = process.env.NEXT_PUBLIC_FXA_SUBSCRIPTIONS_URL;
-  const productId = process.env.NEXT_PUBLIC_PREMIUM_PRODUCT_ID;
-  const planId =
+  const subscriptionUrl = process.env
+    .NEXT_PUBLIC_FXA_SUBSCRIPTIONS_URL as string;
+  const productId = process.env.NEXT_PUBLIC_PREMIUM_PRODUCT_ID as string;
+  const planId = (
     type === "monthly"
       ? process.env.NEXT_PUBLIC_PREMIUM_PLAN_ID_MONTHLY_US
-      : process.env.NEXT_PUBLIC_PREMIUM_PLAN_ID_YEARLY_US;
-
-  if (!subscriptionUrl || !productId || !planId) {
-    return "";
-  }
+      : process.env.NEXT_PUBLIC_PREMIUM_PLAN_ID_YEARLY_US
+  ) as string;
 
   return `${subscriptionUrl}/products/${productId}?plan=${planId}`;
 }

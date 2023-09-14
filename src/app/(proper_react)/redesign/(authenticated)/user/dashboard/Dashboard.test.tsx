@@ -16,6 +16,7 @@ import Meta, {
   DashboardPremiumUser,
   DashboardNoSession,
   DashboardFreeUserAllResolved,
+  DashboardDataIsProtected,
 } from "./Dashboard.stories";
 
 function enablePremium() {
@@ -25,6 +26,10 @@ function enablePremium() {
 function disablePremium() {
   process.env.NEXT_PUBLIC_PREMIUM_ENABLED = "false";
 }
+
+beforeAll(() => {
+  window.gtag = () => null;
+});
 
 beforeEach(() => {
   disablePremium();
@@ -112,7 +117,7 @@ it("shows the premium upgrade cta if the user is not a premium subscriber", () =
   expect(premiumCtas.length).toBe(2);
 });
 
-it("opens and closes the premium upsell dialog", async () => {
+it("opens and closes the premium upsell dialog (premium upsell badge)", async () => {
   enablePremium();
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(DashboardFreeUser, Meta);
@@ -142,6 +147,28 @@ it("opens and closes the premium upsell dialog", async () => {
   ).toBeInTheDocument();
   const closeButtonIcon2 = screen.getByLabelText("Close");
   await user.click(closeButtonIcon2.parentElement as HTMLElement);
+  expect(
+    screen.queryByText("Choose the level of protection that’s right for you")
+  ).not.toBeInTheDocument();
+});
+
+it("opens and closes the premium upsell dialog (continuous protection upsell)", async () => {
+  enablePremium();
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(DashboardDataIsProtected, Meta);
+  render(<ComposedDashboard />);
+
+  const premiumCta = screen.queryByRole("button", {
+    name: "Get Continuous Protection",
+  });
+  expect(premiumCta).toBeInTheDocument();
+
+  await user.click(premiumCta as HTMLElement);
+  expect(
+    screen.getByText("Choose the level of protection that’s right for you")
+  ).toBeInTheDocument();
+  const closeButtonIcon1 = screen.getByLabelText("Close");
+  await user.click(closeButtonIcon1.parentElement as HTMLElement);
   expect(
     screen.queryByText("Choose the level of protection that’s right for you")
   ).not.toBeInTheDocument();

@@ -360,3 +360,23 @@ export const DashboardNoSession: Story = {
     </Shell>
   ),
 };
+
+export const DashboardDataIsProtected: Story = {
+  render: () => (
+    <Shell l10n={getEnL10nSync()} session={null}>
+      <DashboardEl
+        countryCode="us"
+        user={{ email: "example@example.com" }}
+        userBreaches={[]}
+        userScannedResults={scannedResolvedResultsArraySample}
+        isEligibleForFreeScan={false}
+        locale={"en"}
+        bannerData={dashboardSummaryWithScan}
+        featureFlagsEnabled={{
+          FreeBrokerScan: true,
+          PremiumBrokerRemoval: true,
+        }}
+      />
+    </Shell>
+  ),
+};
