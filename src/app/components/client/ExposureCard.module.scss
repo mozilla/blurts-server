@@ -115,8 +115,12 @@
       border-top: 2px solid rgba($color-purple-70, 0.2);
       overflow: auto;
       height: auto;
-      padding: $spacing-lg;
       display: block;
+      padding: $spacing-lg;
+
+      @media screen and (min-width: $screen-lg) {
+        padding: $spacing-xl $layout-xl;
+      }
     }
 
     .exposedInfoContainer {

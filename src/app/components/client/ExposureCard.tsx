@@ -388,7 +388,9 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
 
   const letsFixItBtn = (
     <span className={styles.fixItBtn}>
-      <Button variant={"primary"}>{l10n.getString("exposure-card-cta")}</Button>
+      <Button variant="primary" wide>
+        {l10n.getString("exposure-card-cta")}
+      </Button>
     </span>
   );
 
