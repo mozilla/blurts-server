@@ -52,7 +52,8 @@ export const FindExposures = ({
 
   const maxProgress = 100;
   const labelSwitchThreshold = 50;
-  const percentageSteps = 6;
+  const scanDurationInSeconds = 60;
+  const percentageSteps = maxProgress / scanDurationInSeconds;
   const breachesScannedCount = getCurrentScanCountForRange({
     totalCount: breachesTotalCount,
     currentProgress: scanProgress,
