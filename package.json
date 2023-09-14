@@ -54,7 +54,7 @@
     "@fluent/langneg": "^0.6.2",
     "@fluent/react": "^0.15.0",
     "@leeoniya/ufuzzy": "^1.0.8",
-    "@mozilla/glean": "^2.0.1",
+    "@mozilla/glean": "^2.0.2",
     "@sentry/nextjs": "^7.58.1",
     "@sentry/node": "^7.58.1",
     "@sentry/tracing": "^7.58.1",
