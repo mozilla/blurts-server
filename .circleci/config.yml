@@ -158,7 +158,6 @@ workflows:
                     branches:
                         only:
                             - main
-                            - debug-deploy-with-glean
 
             - deploy_heroku:
                 name: Deploy l10n to Heroku
