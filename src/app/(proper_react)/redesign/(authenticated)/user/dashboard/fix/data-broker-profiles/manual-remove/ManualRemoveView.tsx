@@ -2,13 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { useL10n } from "../../../../../../../../hooks/l10n";
 import styles from "../dataBrokerProfiles.module.scss";
 import buttonStyles from "../../../../../../../../components/server/button.module.scss";
 import Link from "next/link";
+import { getL10n } from "../../../../../../../../functions/server/l10n";
 
 export const ManualRemoveView = () => {
-  const l10n = useL10n();
+  const l10n = getL10n();
 
   return (
     <div className={styles.main}>

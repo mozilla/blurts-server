@@ -14,6 +14,7 @@ import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
 import ModalImage from "../client/assets/premium-upsell-dialog-icon.svg";
 import styles from "./PremiumUpsellDialog.module.scss";
+import getPremiumSubscriptionUrl from "../../functions/universal/getPremiumSubscriptionUrl";
 
 export interface PremiumUpsellDialogProps {
   state: OverlayTriggerState;
@@ -80,11 +81,9 @@ function PremiumUpsellDialogContent() {
     },
   ];
 
-  const premiumSubscriptionUrl =
-    process.env.FXA_SUBSCRIPTIONS_URL &&
-    process.env.PREMIUM_PRODUCT_ID &&
-    process.env.PREMIUM_PLAN_ID_US &&
-    `${process.env.FXA_SUBSCRIPTIONS_URL}/products/${process.env.PREMIUM_PRODUCT_ID}?plan=${process.env.PREMIUM_PLAN_ID_US}`;
+  const premiumSubscriptionUrl = getPremiumSubscriptionUrl({
+    type: isMonthly ? "monthly" : "yearly",
+  });
 
   return (
     <div className={styles.modalContent}>

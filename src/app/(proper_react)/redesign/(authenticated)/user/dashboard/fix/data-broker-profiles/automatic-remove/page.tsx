@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import styles from "../dataBrokerProfiles.module.scss";
 import { Button } from "../../../../../../../../components/server/Button";
 import { useL10n } from "../../../../../../../../hooks/l10n";
+import getPremiumSubscriptionUrl from "../../../../../../../../functions/universal/getPremiumSubscriptionUrl";
 
 export default function AutomaticRemove() {
   const l10n = useL10n();
@@ -132,7 +133,9 @@ export default function AutomaticRemove() {
             </span>
             <Button
               variant="primary"
-              onClick={() => (window.location.href = "../../subscribed")} // TODO replace with final UI
+              href={getPremiumSubscriptionUrl({
+                type: selectedPlanIsYearly ? "yearly" : "monthly",
+              })}
             >
               {selectedPlanIsYearly
                 ? l10n.getString(
