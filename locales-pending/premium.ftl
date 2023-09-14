@@ -126,12 +126,6 @@ exposure-card-credit-card = Credit Card
 exposure-card-password = Password
 exposure-card-ip-address = IP Address
 exposure-card-other = Other
-# Variables:
-# $exposure_num is the number of exposures found for a particular type, e.g. 3 found 
-exposure-card-num-found = 
-  { $exposure_num ->
-     *[other] { $exposure_num } found
-  }
 exposure-card-description-info-for-sale-part-one = This site is selling and publishing <data_broker_link>details about you.</data_broker_link>
 exposure-card-description-info-for-sale-part-two = Remove this profile to protect your privacy.
 # Variables:

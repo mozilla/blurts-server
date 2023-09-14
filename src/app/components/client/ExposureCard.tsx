@@ -321,15 +321,9 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
       <div className={styles.detailsFoundItem}>
         <dt>
           <span className={styles.exposureTypeIcon}>{props.icon}</span>
-          {props.exposureCategoryLabel}
+          {props.exposureCategoryLabel}: {props.count}
         </dt>
-        <dd>
-          {props.emails && emailsList}
-          {props.count &&
-            l10n.getString("exposure-card-num-found", {
-              exposure_num: props.count,
-            })}
-        </dd>
+        <dd>{props.emails && emailsList}</dd>
       </div>
     );
   };
