@@ -67,16 +67,26 @@ export async function POST(req: NextRequest) {
 
   // Otherwise, use pubub or emulator (@see README)
   if (!projectId) {
-    const ex = "GCP_PUBSUB_PROJECT_ID env var not set, message lost";
-    captureMessage(JSON.stringify(breachAlert));
-    captureException(ex);
-    throw new Error(ex);
+    const message = `GCP_PUBSUB_PROJECT_ID env var not set, message not queued: ${JSON.stringify(
+      breachAlert
+    )}`;
+    captureMessage(message);
+    throw new Error(message);
   }
   if (!topicName) {
-    const ex = "GCP_PUBSUB_TOPIC_NAME env var not set, message lost";
-    captureMessage(JSON.stringify(breachAlert));
-    captureException(ex);
-    throw new Error(ex);
+    const message = `GCP_PUBSUB_TOPIC_NAME env var not set, message not queued: ${JSON.stringify(
+      breachAlert
+    )}`;
+    captureMessage(message);
+    throw new Error(message);
+  }
+
+  if (!subscriptionName) {
+    const message = `GCP_PUBSUB_SUBSCRIPTION_NAME env var not set, message not queued: ${JSON.stringify(
+      breachAlert
+    )}`;
+    captureMessage(message);
+    throw new Error(message);
   }
 
   const { PubSub } = await import("@google-cloud/pubsub");
@@ -87,52 +97,53 @@ export async function POST(req: NextRequest) {
     (a) => a.name === `projects/${projectId}/topics/${topicName}`
   );
 
-  if (!topic || topic.name !== `projects/${projectId}/topics/${topicName}`) {
+  console.debug(
+    "topic.name:",
+    topic.name,
+    `projects/${projectId}/topics/${topicName}`
+  );
+  if (topic.name !== `projects/${projectId}/topics/${topicName}`) {
     if (process.env.NODE_ENV === "development") {
       // Try to use emulator for local development.
       try {
         if (!subscriptionName) {
-          captureMessage(
-            `Could not create topic and subscription, message not queued ${JSON.stringify(
-              breachAlert
-            )}`
-          );
-          throw new Error(
-            "GCP_PUBSUB_SUBSCRIPTION_NAME env var not set, message not queued"
-          );
+          throw new Error("No subscr");
         }
+
         await pubsub.createTopic(topicName);
         await pubsub.topic(topicName).createSubscription(subscriptionName);
       } catch (ex) {
-        console.debug(
-          `Could not create topic and subscription, message not queued`,
-          ex
-        );
-        captureMessage(
-          `Could not create topic and subscription, message not queued ${JSON.stringify(
-            breachAlert
-          )}`
-        );
+        const message = `Could not create topic and subscription, message not queued ${JSON.stringify(
+          breachAlert
+        )}`;
+        console.error(message);
+        captureMessage(message);
         captureException(ex);
+        throw ex;
       }
-    }
-  } else {
-    console.error("Topic not found, message not queued:", topicName);
-    captureMessage(JSON.stringify(breachAlert));
-    captureMessage(`Topic not found, message not queued: ${topicName}`);
+    } else {
+      const message = `Topic not found, message not queued: ${topicName}, ${JSON.stringify(
+        breachAlert
+      )}`;
+      console.error(message);
+      captureMessage(message);
 
-    return NextResponse.json({ success: false }, { status: 500 });
+      return NextResponse.json({ success: false }, { status: 500 });
+    }
   }
 
   try {
     // Publish message to GCP PubSub.
     const json = JSON.stringify(breachAlert);
-    await topic.publishMessage({ json });
+    await topic.publishMessage({ data: Buffer.from(json) });
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (ex) {
-    console.error("Error queueing HIBP breach, message not queued:", ex);
-    captureMessage(JSON.stringify(breachAlert));
+    const message = `Error queueing HIBP breach, message not queued ${JSON.stringify(
+      breachAlert
+    )}`;
+    console.error(message, ex);
+    captureMessage(message);
     captureException(ex);
     return NextResponse.json({ success: false }, { status: 500 });
   }
