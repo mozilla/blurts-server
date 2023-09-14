@@ -4,7 +4,7 @@
 
 import initKnex from "knex";
 import knexConfig from "../knexfile.js";
-import { ScanResult } from "../../app/functions/server/onerep.js";
+import { ScanResult, Scan } from "../../app/functions/server/onerep.js";
 import { Subscriber } from "../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 const knex = initKnex(knexConfig);
 
@@ -48,7 +48,7 @@ async function getLatestOnerepScan(
     created_at: number;
     updated_at: number;
     onerep_scan_results: { data: ScanResult[] };
-    onerep_scan_reason: "manual" | "initial" | "monitoring";
+    onerep_scan_reason: Scan["reason"];
   }>;
 }
 
@@ -72,6 +72,8 @@ async function setOnerepManualScan(
     onerep_profile_id: onerepProfileId,
     onerep_scan_id: onerepScanId,
     onerep_scan_reason: "manual",
+    // @ts-ignore knex.fn.now() results in it being set to a date,
+    // even if it's not typed as a JS date object:
     created_at: knex.fn.now(),
   });
 }
@@ -80,7 +82,7 @@ async function setOnerepScanResults(
   onerepProfileId: number,
   onerepScanId: number,
   onerepScanResults: object,
-  onerepScanReason: "manual" | "initial" | "monitoring"
+  onerepScanReason: Scan["reason"]
 ) {
   if (onerepScanReason === "manual") {
     // Manual scans update an existing row.
@@ -88,7 +90,9 @@ async function setOnerepScanResults(
       .where("onerep_profile_id", onerepProfileId)
       .andWhere("onerep_scan_id", onerepScanId)
       .update({
-        onerep_scan_results: onerepScanResults,
+        onerep_scan_results: onerepScanResults as ScanResult,
+        // @ts-ignore knex.fn.now() results in it being set to a date,
+        // even if it's not typed as a JS date object:
         updated_at: knex.fn.now(),
       });
   } else {
@@ -96,17 +100,24 @@ async function setOnerepScanResults(
     await knex("onerep_scans").insert({
       onerep_profile_id: onerepProfileId,
       onerep_scan_id: onerepScanId,
-      onerep_scan_results: onerepScanResults,
+      onerep_scan_results: onerepScanResults as ScanResult,
       onerep_scan_reason: onerepScanReason,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
       created_at: knex.fn.now(),
     });
   }
 }
 
-async function getScansCount(startDate: string, endDate: string) {
+async function getScansCount(
+  startDate: string,
+  endDate: string,
+  scanReason: Scan["reason"]
+) {
   return await knex("onerep_scans")
     .count("id")
-    .whereBetween("created_at", [startDate, endDate]);
+    .whereBetween("created_at", [startDate, endDate])
+    .andWhere("onerep_scan_reason", scanReason);
 }
 
 export {
