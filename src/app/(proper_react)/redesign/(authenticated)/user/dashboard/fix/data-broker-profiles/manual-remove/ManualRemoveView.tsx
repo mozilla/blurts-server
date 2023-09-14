@@ -2,13 +2,44 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { useL10n } from "../../../../../../../../hooks/l10n";
 import styles from "../dataBrokerProfiles.module.scss";
 import buttonStyles from "../../../../../../../../components/server/button.module.scss";
 import Link from "next/link";
+import { getL10n } from "../../../../../../../../functions/server/l10n";
+import {
+  AvatarIcon,
+  ClockIcon,
+} from "../../../../../../../../components/server/Icons";
+import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
+import { getLatestOnerepScan } from "../../../../../../../../../db/tables/onerep_scans";
+import { authOptions } from "../../../../../../../../api/utils/auth";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
+import { dashboardSummary } from "../../../../../../../../functions/server/dashboard";
 
-export const ManualRemoveView = () => {
-  const l10n = useL10n();
+export default async function ManualRemoveView() {
+  const l10n = getL10n();
+
+  const session = await getServerSession(authOptions);
+
+  if (!session?.user?.subscriber?.id) {
+    redirect("/redesign/user/dashboard/");
+  }
+  const result = await getOnerepProfileId(session.user.subscriber.id);
+  const profileId = result[0]["onerep_profile_id"] as number;
+  const scanResult = await getLatestOnerepScan(profileId);
+  const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
+  const subBreaches = await getSubscriberBreaches(session.user);
+  const summary = dashboardSummary(scanResultItems, subBreaches);
+
+  // TODO: Use api to set/query count
+  const countOfDataBrokerProfiles = scanResultItems.length;
+  const estimatedTime = countOfDataBrokerProfiles * 10; // 10 minutes per data broker site.
+  const totalExposures = summary.totalExposures;
+  const exposureReduction = Math.round(
+    (countOfDataBrokerProfiles / totalExposures) * 100
+  );
 
   return (
     <div className={styles.main}>
@@ -95,6 +126,20 @@ export const ManualRemoveView = () => {
           )}
         </Link>
       </div>
+      <div className={styles.dataBrokerResolutionStats}>
+        <div>
+          <ClockIcon width="18" height="18" alt="" />
+          {l10n.getString("data-broker-profiles-estimated-time", {
+            estimated_time: estimatedTime,
+          })}
+        </div>
+        <div>
+          <AvatarIcon width="18" height="18" alt="" />
+          {l10n.getString("data-broker-profiles-exposure-reduction", {
+            exposure_reduction: exposureReduction,
+          })}
+        </div>
+      </div>
     </div>
   );
-};
+}

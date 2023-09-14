@@ -71,13 +71,8 @@
   }
 
   .estimatedTime {
-    display: flex;
-    flex-direction: row;
-    gap: $spacing-xs;
-    align-items: center;
-    font: $text-body-xs;
-    font-weight: 500;
-    padding-top: $spacing-md;
+    @include estimated-time;
+    padding-top: $layout-xs;
   }
 
   .illustrationWrapper {

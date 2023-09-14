@@ -291,6 +291,14 @@ premium-upsell-dialog-title = Choose the level of protection that’s right for 
 guided-resolution-flow-exit = Return to dashboard
 guided-resolution-flow-back-arrow = Go to previous step
 guided-resolution-flow-next-arrow = Go to next step
+# Variables
+# $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
+# "Est." is shortform for "Estimated".
+# "mins" is shortform for "minutes".
+data-broker-profiles-estimated-time = Est. time to complete: { $estimated_time } mins
+# Variables
+# $exposure_reduction is the percentage of exposures that are data brokers.
+data-broker-profiles-exposure-reduction = Exposure reduction: { $exposure_reduction }%
 
 # Welcome to Premium Data Broker Profiles
 
@@ -352,6 +360,16 @@ high-risk-breach-social-security-title = Your social security number was exposed
 high-risk-breach-social-security-description = Scammers can open up new loans or credit cards with your social security number. Act fast to prevent financial harm.
 high-risk-breach-social-security-step-one = Protect yourself by <link_to_info>setting up a fraud alert or freezing your credit.</link_to_info>
 high-risk-breach-social-security-step-two = <link_to_info>Check your credit report</link_to_info> for unrecognized accounts.
+
+# Social Security Number Modal
+
+ssn-modal-title = About fraud alerts and credit freezes
+ssn-modal-description-fraud-part-one = <b>A fraud alert</b> requires businesses to verify your identity before it issues new credit in your name. It’s free, lasts one year, and won’t negatively affect your credit score. 
+ssn-modal-description-fraud-part-two = To set one up, contact any one of the three credit bureaus. You don’t have to contact all three.
+ssn-modal-description-freeze-credit-part-one = <b>Freezing your credit</b> prevents anyone from opening a new account in your name. It’s free and won’t negatively affect your credit score, but you’ll need to unfreeze it before opening any new accounts. 
+ssn-modal-description-freeze-credit-part-two = To freeze your credit, contact each of the three credit bureaus — <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link>, and <transunion_link>TransUnion</transunion_link>.
+ssn-modal-learn-more = Learn more about fraud alerts and credit freezes
+ssn-modal-ok = OK
 
 # PIN Breaches 
 
