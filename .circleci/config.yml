@@ -129,7 +129,7 @@ jobs:
         executor: python/default
         parameters:
             app-name:
-                description: "The name of the Heroku App"
+                description: "Monitor"
                 type: string
         steps:
             - heroku/install
