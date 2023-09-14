@@ -13,12 +13,6 @@ import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
 import { redirect } from "next/navigation";
 import { AboutBrokersIcon } from "./AboutBrokersIcon";
-import {
-  AvatarIcon,
-  ClockIcon,
-} from "../../../../../../../../components/server/Icons";
-import { dashboardSummary } from "../../../../../../../../functions/server/dashboard";
-import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 
 export default async function ViewDataBrokers() {
   const l10n = getL10n();
@@ -33,17 +27,8 @@ export default async function ViewDataBrokers() {
   const scanResult = await getLatestOnerepScan(profileId);
   const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
 
-  // TODO: Find a better way to get totalExposures
-  const subBreaches = await getSubscriberBreaches(session.user);
-  const summary = dashboardSummary(scanResultItems, subBreaches);
-
   // TODO: Use api to set/query count
   const countOfDataBrokerProfiles = scanResultItems.length;
-  const estimatedTime = countOfDataBrokerProfiles * 10; // 10 minutes per data broker site.
-  const totalExposures = summary.totalExposures;
-  const exposureReduction = Math.round(
-    (countOfDataBrokerProfiles / totalExposures) * 100
-  );
 
   return (
     <div>
@@ -88,20 +73,6 @@ export default async function ViewDataBrokers() {
             "fix-flow-data-broker-profiles-view-data-broker-profiles-button-remove-manually"
           )}
         </Link>
-      </div>
-      <div className={styles.dataBrokerResolutionStats}>
-        <div>
-          <ClockIcon width="18" height="18" alt="" />
-          {l10n.getString("data-broker-profiles-estimated-time", {
-            estimated_time: estimatedTime,
-          })}
-        </div>
-        <div>
-          <AvatarIcon width="18" height="18" alt="" />
-          {l10n.getString("data-broker-profiles-exposure-reduction", {
-            exposure_reduction: exposureReduction,
-          })}
-        </div>
       </div>
     </div>
   );
