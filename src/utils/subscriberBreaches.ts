@@ -78,16 +78,18 @@ export async function getSubBreaches(
     const breachResolution = subscriber.breach_resolution?.[email.email] ?? {};
 
     for (const breach of foundBreaches) {
-      const filteredBreachDataClasses: string[] = filterBreachDataTypes(
-        breach.DataClasses
-      );
+      type ArrayOfDataClasses = Array<
+        (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
+      >;
+      const filteredBreachDataClasses: ArrayOfDataClasses =
+        filterBreachDataTypes(breach.DataClasses);
       const subscriberBreach: SubscriberBreach = {
         id: breach.Id,
         addedDate: breach.AddedDate,
         breachDate: breach.BreachDate,
         dataClasses: filteredBreachDataClasses,
-        resolvedDataClasses:
-          breachResolution[breach.Id]?.resolutionsChecked ?? [],
+        resolvedDataClasses: (breachResolution[breach.Id]?.resolutionsChecked ??
+          []) as ArrayOfDataClasses,
         description: breach.Description,
         domain: breach.Domain,
         isResolved: breachResolution[breach.Id]?.isResolved || false,
