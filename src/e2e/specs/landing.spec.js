@@ -60,7 +60,7 @@ test.describe('Landing Page element verification', () => {
   })
 })
 
-test.describe.only('Landing Page Functionality Verification', () => {
+test.describe('Landing Page Functionality Verification', () => {
   test.beforeEach(async ({ landingPage }) => {
     await landingPage.open()
   })
