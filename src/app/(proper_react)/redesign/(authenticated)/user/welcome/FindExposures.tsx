@@ -102,7 +102,13 @@ export const FindExposures = ({
     }
 
     return () => clearTimeout(timeoutId);
-  }, [scanProgress, router, checkingScanProgress, scanFinished]);
+  }, [
+    scanProgress,
+    router,
+    checkingScanProgress,
+    scanFinished,
+    percentageSteps,
+  ]);
 
   function ProgressLabel() {
     return (
