@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { PubSub, Topic } from "@google-cloud/pubsub";
+
 import { captureException, captureMessage } from "@sentry/node";
 
 import { NextRequest, NextResponse } from "next/server";
@@ -16,6 +18,10 @@ type BreachAlert = {
   hashPrefix: string;
   hashSuffixes: string[];
 };
+
+// Cache the PubSub connection and Topic.
+let pubsub: PubSub;
+let topic: Topic;
 
 /**
  * Whenever a breach is detected on the HIBP side, HIBP sends a request to this endpoint.
@@ -89,20 +95,18 @@ export async function POST(req: NextRequest) {
     throw new Error(message);
   }
 
-  const { PubSub } = await import("@google-cloud/pubsub");
-  const pubsub = new PubSub({ projectId });
+  if (!pubsub) {
+    pubsub = new PubSub({ projectId });
+  }
 
-  const [topics] = await pubsub.getTopics();
-  const [topic] = topics.filter(
-    (a) => a.name === `projects/${projectId}/topics/${topicName}`
-  );
+  if (!topic) {
+    const [topics] = await pubsub.getTopics();
+    [topic] = topics.filter(
+      (a) => a.name === `projects/${projectId}/topics/${topicName}`
+    );
+  }
 
-  console.debug(
-    "topic.name:",
-    topic.name,
-    `projects/${projectId}/topics/${topicName}`
-  );
-  if (topic.name !== `projects/${projectId}/topics/${topicName}`) {
+  if (!topic || topic.name !== `projects/${projectId}/topics/${topicName}`) {
     if (process.env.NODE_ENV === "development") {
       // Try to use emulator for local development.
       try {
