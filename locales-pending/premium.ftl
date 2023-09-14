@@ -291,6 +291,14 @@ premium-upsell-dialog-title = Choose the level of protection that’s right for 
 guided-resolution-flow-exit = Return to dashboard
 guided-resolution-flow-back-arrow = Go to previous step
 guided-resolution-flow-next-arrow = Go to next step
+# Variables
+# $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
+# "Est." is shortform for "Estimated".
+# "mins" is shortform for "minutes".
+data-broker-profiles-estimated-time = Est. time to complete: { $estimated_time } mins
+# Variables
+# $exposure_reduction is the percentage of exposures that are data brokers.
+data-broker-profiles-exposure-reduction = Exposure reduction: { $exposure_reduction }%
 
 # High Risk Data Breaches
 
