@@ -60,16 +60,22 @@ test.describe('Landing Page element verification', () => {
   })
 })
 
-test.describe('Landing Page Functionality Verification', () => {
+test.describe.only('Landing Page Functionality Verification', () => {
   test.beforeEach(async ({ landingPage }) => {
     await landingPage.open()
   })
 
-  test('Verify landing page elements @smoke', async ({ landingPage, scanPage, page }) => {
+  test('Verify landing page elements - free scan @smoke', async ({ landingPage, scanPage, page }) => {
     // link to testrail case
     test.info().annotations.push({
       type: "testrail",
       description: "https://testrail.stage.mozaws.net/index.php?/cases/view/2255913",
+    });
+
+    // use a HAR file to respond to the scan api from hibp
+    await page.routeFromHAR('./hars/hibp.har', {
+      url: '**/api/v1/scan',
+      update: false,
     });
 
     // generate email
