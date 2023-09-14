@@ -46,7 +46,7 @@ export type ExposureCardProps = {
 type BreachExposureCategoryProps = {
   exposureCategoryLabel: string;
   icon: ReactElement;
-  count?: number;
+  count: number;
   emails?: string[];
 };
 
@@ -341,6 +341,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           icon={<EmailIcon alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-email")}
           emails={emails} // Only emails get listed
+          count={emails.length}
         />
       );
     } else if (dataClass === "passwords") {
