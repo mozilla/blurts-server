@@ -337,6 +337,16 @@ high-risk-breach-social-security-description = Scammers can open up new loans or
 high-risk-breach-social-security-step-one = Protect yourself by <link_to_info>setting up a fraud alert or freezing your credit.</link_to_info>
 high-risk-breach-social-security-step-two = <link_to_info>Check your credit report</link_to_info> for unrecognized accounts.
 
+# Social Security Number Modal
+
+ssn-modal-title = About fraud alerts and credit freezes
+ssn-modal-description-fraud-part-one = <b>A fraud alert</b> requires businesses to verify your identity before it issues new credit in your name. It’s free, lasts one year, and won’t negatively affect your credit score. 
+ssn-modal-description-fraud-part-two = To set one up, contact any one of the three credit bureaus. You don’t have to contact all three.
+ssn-modal-description-freeze-credit-part-one = <b>Freezing your credit</b> prevents anyone from opening a new account in your name. It’s free and won’t negatively affect your credit score, but you’ll need to unfreeze it before opening any new accounts. 
+ssn-modal-description-freeze-credit-part-two = To freeze your credit, contact each of the three credit bureaus — <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link>, and <transunion_link>TransUnion</transunion_link>.
+ssn-modal-learn-more = Learn more about fraud alerts and credit freezes
+ssn-modal-ok = OK
+
 # PIN Breaches 
 
 high-risk-breach-pin-title = Your PIN was exposed
@@ -357,3 +367,86 @@ high-risk-breach-none-sub-description-bank-account = Bank account info
 high-risk-breach-none-sub-description-cc-number = Credit card numbers
 high-risk-breach-none-sub-description-pin = PINs
 high-risk-breach-none-continue = Continue
+
+# Security recommendations
+
+security-recommendation-steps-label = Security recommendations
+security-recommendation-steps-title = Here’s our advice:
+security-recommendation-steps-cta-label = Got it!
+
+# Phone security recommendation
+
+security-recommendation-phone-title = Protect your phone number
+# $num_breaches is the number of breaches where the phone number was found.
+security-recommendation-phone-summary = { $num_breaches ->
+  [one] Your phone number was exposed in { $num_breaches } data breach:
+  *[other] Your phone number was exposed in { $num_breaches } data breaches:
+}
+security-recommendation-phone-description = Unfortunately you can’t take it back. But there are steps you can take to make sure you stay safe.
+security-recommendation-phone-step-one = Block spam numbers to prevent more junk calls
+security-recommendation-phone-step-two = Don’t click on links in texts from unknown senders; if it appears to be from a trusted source, call directly to confirm
+security-recommendation-phone-step-three = Use a <link_to_info>{ -brand-relay } phone mask</link_to_info> to protect your phone in the future
+
+# Email security recommendation
+
+security-recommendation-email-title = Protect your email address
+# $num_breaches is the number of breaches where the email address was found.
+security-recommendation-email-summary = { $num_breaches ->
+  [one] Your email address was exposed in { $num_breaches } data breach:
+  *[other] Your email address was exposed in { $num_breaches } data breaches:
+}
+security-recommendation-email-description = Unfortunately you can’t fix this. But there are steps you can take to protect yourself.
+security-recommendation-email-step-one = Don’t click on links in emails from unknown senders; If it appears to be from trusted source, call directly to confirm
+security-recommendation-email-step-two = Be aware of <link_to_info>phishing scams</link_to_info>
+security-recommendation-email-step-three = Mark suspicious emails as spam and block the sender
+security-recommendation-email-step-four = Use <link_to_info>{ -brand-relay } email masks</link_to_info> to protect your email in the future
+
+# IP security recommendation
+
+security-recommendation-ip-title = Use a VPN for added privacy
+# $num_breaches is the number of breaches where the IP address was found.
+security-recommendation-ip-summary = { $num_breaches ->
+  [one] Your IP address was exposed in { $num_breaches } data breach:
+  *[other] Your IP address was exposed in { $num_breaches } data breaches:
+}
+security-recommendation-ip-description = Your IP address pinpoints your location and internet service provider. Hackers could use this information to find your location or try to connect to your devices.
+security-recommendation-ip-step-one = Use a VPN (such as <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) to hide your real IP address and use the internet privately.
+
+# Leaked Passwords
+
+# Variables
+# $breach_name is the name of the breach where the leaked password was found.
+leaked-passwords-title = Your { $breach_name } password was exposed.
+# Variables
+# $breach_date is the date when the breach occurred. 
+leaked-passwords-summary = It appeared in a data breach on { $breach_date }.
+leaked-passwords-description = Scammers can access your account and will likely try to use it on other accounts to see if you’ve used the same password. Change it anywhere you’ve used it to protect yourself.
+leaked-passwords-steps-title = Here’s what to do
+leaked-passwords-steps-subtitle = This requires access to your account, so you’ll need to manually fix it.
+# Variables
+# $breach_name is the name of the breach where the leaked password was found.
+leaked-passwords-step-one = Change your password on <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
+leaked-passwords-step-two = Change it anywhere else you’ve used it.
+leaked-passwords-mark-as-fixed = Mark as fixed
+leaked-passwords-skip = Skip for now
+# Variables
+# $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
+# "Est." is shortform for "Estimated".
+# "mins" is shortform for "minutes".
+leaked-passwords-estimated-time = Est. time to complete: { $estimated_time } mins per site
+
+# Leaked Security Questions
+
+leaked-security-questions-title = Your security questions were exposed
+# Variables
+# $breach_name is the name of the breach where the leaked security questions were found.
+# $breach_date is the date when the breach occurred. 
+# An example of this string is Twitter on 13/09/18.
+leaked-security-questions-summary = They appeared in a data breach on { $breach_name } on { $breach_date }.
+leaked-security-questions-description = Scammers can use these to access your accounts, and any other site where you’ve used the same security questions. Update them now to protect your accounts.
+leaked-security-questions-steps-title = Here’s what to do
+leaked-security-questions-steps-subtitle = This requires access to your account, so you’ll need to manually fix it.
+# Variables
+# $breach_name is the name of the breach where the security questions were found.
+leaked-security-questions-step-one = Update your security questions on <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
+leaked-security-questions-step-two = Update them on any other site where you used the same security questions. Be sure to use different security questions for every account.
