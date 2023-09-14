@@ -13,12 +13,12 @@ COPY package-lock.json package-lock.json
 
 COPY --chown=app:app . /app
 
-RUN GLEAN_PYTHON=python GLEAN_PIP=pip npm ci --audit=false && rm -rf ~app/.npm /tmp/*
+RUN npm ci --audit=false && rm -rf ~app/.npm /tmp/*
 
 COPY .env-dist ./.env
 ARG S3_BUCKET
 ENV S3_BUCKET=$S3_BUCKET
-RUN npm run build
+RUN GLEAN_PYTHON=python GLEAN_PIP=pip npm run build
 
 ARG SENTRY_RELEASE
 ENV SENTRY_RELEASE=$SENTRY_RELEASE
