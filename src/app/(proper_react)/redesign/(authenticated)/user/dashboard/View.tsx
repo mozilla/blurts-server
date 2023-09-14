@@ -199,7 +199,7 @@ export const View = (props: Props) => {
         <TabList
           tabs={tabsData}
           onSelectionChange={(selectedKey) => setSelectedTab(selectedKey)}
-          defaultSelectedKey={selectedTab}
+          selectedKey={selectedTab}
         />
       </Toolbar>
       <div className={styles.dashboardContent}>
