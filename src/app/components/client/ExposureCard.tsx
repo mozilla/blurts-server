@@ -71,6 +71,13 @@ const ScanResultCard = (props: ScanResultCardProps) => {
   const l10n = useL10n();
   const [exposureCardExpanded, setExposureCardExpanded] = useState(false);
 
+  const letsFixItBtn = (
+    <span className={styles.fixItBtn}>
+      <Button variant="primary" wide>
+        {l10n.getString("exposure-card-cta")}
+      </Button>
+    </span>
+  );
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
@@ -151,12 +158,6 @@ const ScanResultCard = (props: ScanResultCardProps) => {
       />
     );
   }
-
-  const letsFixItBtn = (
-    <span className={styles.fixItBtn}>
-      <Button variant={"primary"}>{l10n.getString("exposure-card-cta")}</Button>
-    </span>
-  );
 
   const exposureCard = (
     <div>
