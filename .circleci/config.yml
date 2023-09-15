@@ -124,7 +124,7 @@ jobs:
         executor: python/default
         parameters:
             app-name:
-                description: "Monitor"
+                description: "The name of the Heroku App"
                 type: string
         steps:
             - heroku/install
@@ -148,6 +148,7 @@ workflows:
                     branches:
                         only:
                             - main
+                            - debug-deploy-with-glean
 
             - deploy_heroku:
                 name: Deploy main to Heroku
@@ -156,8 +157,7 @@ workflows:
                     - lint
                 filters:
                     branches:
-                        only:
-                            - main
+                        only: main
 
             - deploy_heroku:
                 name: Deploy l10n to Heroku
