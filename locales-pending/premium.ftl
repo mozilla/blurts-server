@@ -69,7 +69,7 @@ modal-active-number-of-exposures-part-one =
 modal-active-number-of-exposures-part-two = For example, if you have 10 exposures of your phone number, that might mean one phone number is exposed across 10 different sites, or it could mean 2 different phone numbers were exposed across 5 different sites.
 modal-active-number-of-exposures-part-three = This chart does not include any exposures that are in-progress of being auto-removed. Once your exposures are fixed, they will be added to your total number of fixed exposures on the Fixed page.
 
-# Here's What We Fixed Progress Card
+# Here’s What We Fixed Progress Card
 
 exposure-card-company-logo = Company logo
 exposure-card-company = Company domain
@@ -87,7 +87,7 @@ progress-card-percentage-complete = { $percentage }% complete
 progress-card-percentage-remaining = { $percentage }% in progress
 full-name = Full name
 
-# Here's What We Fixed Modal
+# Here’s What We Fixed Modal
 
 modal-heres-what-we-fixed-title = About what we fixed
 modal-heres-what-we-fixed-description-part-one = <b>Resolved by you</b> includes anything you have manually fixed. 
@@ -303,7 +303,7 @@ data-broker-profiles-exposure-reduction = Exposure reduction: { $exposure_reduct
 # Welcome to Premium Data Broker Profiles
 
 welcome-to-premium-data-broker-profiles-title-part-one = Welcome to Premium.
-welcome-to-premium-data-broker-profiles-title-part-two = We'll remove those profiles ASAP.
+welcome-to-premium-data-broker-profiles-title-part-two = We’ll remove those profiles ASAP.
 # Variables: 
 # $profile_total_num is the number of exposures came back from user data broker scans.
 # $exposure_reduction_percentage is the percent by which exposures are reduced
@@ -314,7 +314,7 @@ welcome-to-premium-data-broker-profiles-description-part-one =
   }
 welcome-to-premium-data-broker-profiles-description-part-two = <link_to_info>Removals typically take 7-14 days</link_to_info>, but some may happen within the hour. No matter how long it takes, we’ll keep working on it.
 welcome-to-premium-data-broker-profiles-description-part-three = Next we’ll guide you through high risk data breaches that require manual steps.
-welcome-to-premium-data-broker-profiles-cta-label = Let's keep going
+welcome-to-premium-data-broker-profiles-cta-label = Let’s keep going
 
 # High Risk Data Breaches
 
