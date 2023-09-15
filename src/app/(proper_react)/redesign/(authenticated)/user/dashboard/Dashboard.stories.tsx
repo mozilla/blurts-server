@@ -305,6 +305,7 @@ export const DashboardFreeUserAllResolved: Story = {
         userScannedResults={scannedResolvedResultsArraySample}
         isEligibleForFreeScan={true}
         locale={"en"}
+        isAllFixed={true}
         bannerData={dashboardSummaryWithScan}
         featureFlagsEnabled={{
           FreeBrokerScan: true,
