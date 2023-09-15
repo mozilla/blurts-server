@@ -152,6 +152,12 @@ const ScanResultCard = (props: ScanResultCardProps) => {
     );
   }
 
+  const letsFixItBtn = (
+    <span className={styles.fixItBtn}>
+      <Button variant={"primary"}>{l10n.getString("exposure-card-cta")}</Button>
+    </span>
+  );
+
   const exposureCard = (
     <div>
       <div className={styles.exposureCard}>
