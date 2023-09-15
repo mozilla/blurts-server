@@ -65,7 +65,6 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       ),
       cta: (
         <Button
-          disabled
           href={
             "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers"
           }
@@ -151,6 +150,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
             // do something
           }}
           small
+          disabled
           variant="primary"
         >
           {l10n.getString("dashboard-top-banner-lets-keep-protecting-cta")}
