@@ -41,11 +41,14 @@
     display: flex;
     align-items: center;
     padding-left: 0;
-    gap: $layout-md;
     margin: 0;
     width: 100%;
     justify-content: space-between;
     height: 30px; // fixed height to standardize image/icon heights
+
+    @media screen and (min-width: $screen-lg) {
+      gap: $layout-md;
+    }
 
     .fallbackLogo {
       display: flex;
@@ -68,10 +71,18 @@
 
       .exposureCompanyTitle {
         font: $text-body-sm;
-        max-width: 200px;
+        max-width: 150px; // truncate long names for mobile view
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
+
+        @media screen and (min-width: $screen-sm) {
+          max-width: 250px; // truncate long names for mobile view
+        }
+
+        @media screen and (min-width: $screen-md) {
+          max-width: 100%;
+        }
       }
 
       @media screen and (min-width: $screen-lg) {
