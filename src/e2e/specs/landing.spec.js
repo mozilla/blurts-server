@@ -72,20 +72,20 @@ test.describe('Landing Page Functionality Verification', () => {
       description: "https://testrail.stage.mozaws.net/index.php?/cases/view/2255913",
     });
 
-    // use a HAR file to respond to the scan api from hibp
-    await page.routeFromHAR('./hars/hibp.har', {
-      url: '**/api/v1/scan',
-      update: false,
+    // Intercept request and fulfill return
+    await page.route('**/api/v1/scan', async route => {
+      // Fulfill using the original response with the given JSON object.
+      await route.fulfill({
+        status: 200,
+        body: {"success":true,"breaches":[],"total":0,"heading":"We found <span class=\"breach-result-email\">⁨⁩</span> exposed in <span class=\"breach-result-count\">⁨0⁩</span> data breaches.","dataClassStrings":[],"logos":[]}
+      });
     });
 
     // generate email
-    const randomEmail = `${Date.now()}_@restmail.net`
+    const randomEmail = `${Date.now()}_auto@restmail.net`
 
     // await page.pause()
     await landingPage.enterScanEmail(randomEmail)
-
-    // wait for page to load
-    await page.waitForSelector('header h1', { state: 'attached', timeout: 2000 })
 
     // verify scan page items
     await expect(async () => {
