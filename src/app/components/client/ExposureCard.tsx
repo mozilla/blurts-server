@@ -90,17 +90,12 @@ const ScanResultCard = (props: ScanResultCardProps) => {
     icon: ReactElement;
   };
   const ScannedExposureCategory = (props: ScannedExposureCategoryProps) => {
-    const description = l10n.getString("exposure-card-num-found", {
-      exposure_num: props.num,
-    });
-
     return (
       <div className={styles.detailsFoundItem}>
         <dt>
           <span className={styles.exposureTypeIcon}>{props.icon}</span>
           {props.exposureCategoryLabel}
         </dt>
-        <dd>{description}</dd>
       </div>
     );
   };

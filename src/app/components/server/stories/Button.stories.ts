@@ -38,13 +38,13 @@ export const PrimarySmall: Story = {
   },
 };
 
-export const PrimaryWide: Story = {
-  args: {
-    variant: "primary",
-    children: "Button",
-    wide: true,
-  },
-};
+// export const PrimaryWide: Story = {
+//   args: {
+//     variant: "primary",
+//     children: "Button",
+//     wide: true,
+//   },
+// };
 
 export const SecondarySmall: Story = {
   args: {
