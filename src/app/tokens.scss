@@ -260,6 +260,17 @@ $width-first-column-filter-bar: 50px;
   }
 }
 
+// Estimated time
+@mixin estimated-time {
+  display: flex;
+  flex-direction: row;
+  gap: $spacing-sm;
+  align-items: center;
+  font: $text-body-xs;
+  font-weight: 500;
+  color: $color-grey-50;
+}
+
 @mixin visually-hidden {
   // These styles are taken from
   // https://react-spectrum.adobe.com/react-aria/VisuallyHidden.html
