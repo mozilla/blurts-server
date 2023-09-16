@@ -14,9 +14,24 @@ import MailImage from "../../../client/images/landing-mail@2x.webp";
 import NaturePhoneImage from "../../../client/images/landing-nature-phone@2x.webp";
 import { getNonce } from "../functions/server/getNonce";
 import { PageLoadEvent } from "../components/client/PageLoadEvent";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../api/utils/auth";
+import { isFlagEnabled } from "../../functions/server/featureFlags";
 
-export default function Home() {
+export default async function Home() {
   const l10n = getL10n();
+
+  const session = await getServerSession(authOptions);
+  const userId = session?.user?.subscriber?.id; // FIXME what if the user is not logged in? Need a "device ID" or equivalent (cookie, etc)
+
+  // @see https://github.com/mozilla/experimenter/tree/main/cirrus
+  const serverUrl = process.env.SERVER_URL ?? "http://localhost:6060";
+
+  //@ts-ignore TODO this tells us which features to enable.
+  const features = await fetch(`${serverUrl}/v1/features/`, {
+    method: "POST",
+    body: JSON.stringify({ client_id: userId }),
+  });
 
   return (
     <div data-partial="landing">
@@ -35,7 +50,7 @@ export default function Home() {
         src="/nextjs_migration/client/js/landing.js"
         nonce={getNonce()}
       />
-      <PageLoadEvent />
+      <PageLoadEvent userId={userId} />
       <section className="hero">
         <div>
           <h1>{l10n.getString("exposure-landing-hero-heading")}</h1>

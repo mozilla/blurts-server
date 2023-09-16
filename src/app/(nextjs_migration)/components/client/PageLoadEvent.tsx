@@ -9,14 +9,14 @@ import { usePathname } from "next/navigation";
 import { useGlean } from "../../../hooks/useGlean";
 
 // Empty component that records a page view on first load.
-export const PageLoadEvent = () => {
+export const PageLoadEvent = (userId: any) => {
   const { pageEvents } = useGlean();
   const pathname = usePathname();
 
   // On first load of the page, record a page view.
   useEffect(() => {
-    pageEvents.view.record({ path: pathname });
-  }, [pageEvents.view, pathname]);
+    pageEvents.view.record({ path: pathname, userId });
+  }, [pageEvents.view, pathname, userId]);
 
   // This component doesn't render anything.
   return <></>;
