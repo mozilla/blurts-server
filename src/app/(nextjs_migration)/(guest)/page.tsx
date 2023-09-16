@@ -17,12 +17,30 @@ import { PageLoadEvent } from "../components/client/PageLoadEvent";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../api/utils/auth";
 import { isFlagEnabled } from "../../functions/server/featureFlags";
+import { cookies } from "next/headers";
+import { getRandomValues } from "crypto";
 
 export default async function Home() {
   const l10n = getL10n();
 
+  // If the user is logged in, use subscriber ID as Nimbus user ID.
   const session = await getServerSession(authOptions);
-  const userId = session?.user?.subscriber?.id; // FIXME what if the user is not logged in? Need a "device ID" or equivalent (cookie, etc)
+  let userId = session?.user?.subscriber?.id?.toString();
+
+  // if the user is not logged in, use a cookie with a randomly-generated Nimbus user ID.
+  if (!userId) {
+    const cookie = cookies().get("userId");
+    if (cookie) {
+      userId = cookie.toString();
+    } else {
+      const array = new Uint32Array(1);
+      getRandomValues(array);
+      // TODO Cookies can only be set in server action or route handler
+      // @see https://nextjs.org/docs/app/api-reference/functions/cookies#cookiessetname-value-options
+      // cookies().set("userId", uuid);
+      userId = array.toString();
+    }
+  }
 
   // @see https://github.com/mozilla/experimenter/tree/main/cirrus
   const serverUrl = process.env.SERVER_URL ?? "http://localhost:6060";
