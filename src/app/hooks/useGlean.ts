@@ -27,6 +27,9 @@ export const useGlean = () => {
     if (process.env.NEXT_PUBLIC_APP_ENV === "local") {
       // Enable logging pings to the browser console.
       Glean.setLogPings(true);
+      // Tag pings for the Debug Viewer
+      // @see https://debug-ping-preview.firebaseapp.com/pings/fx-monitor-local-dev
+      Glean.setDebugViewTag("fx-monitor-local-dev");
     }
   }, []);
 

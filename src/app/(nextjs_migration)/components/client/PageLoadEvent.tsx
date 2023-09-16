@@ -16,10 +16,11 @@ export type Props = {
 // Empty component that records a page view on first load.
 export const PageLoadEvent = (props: Props) => {
   const [cookies, setCookie] = useCookies(["userId"]);
+  const userId = props.userId;
 
   // TODO decide if we want to do this here or on the server side
   if (!cookies.userId) {
-    setCookie("userId", props.userId.toString());
+    setCookie("userId", userId);
   }
 
   const { pageEvents } = useGlean();
@@ -27,8 +28,8 @@ export const PageLoadEvent = (props: Props) => {
 
   // On first load of the page, record a page view.
   useEffect(() => {
-    pageEvents.view.record({ path: pathname, userId: props.userId });
-  }, [pageEvents.view, pathname, props.userId]);
+    pageEvents.view.record({ path: pathname, user_id: userId });
+  }, [pageEvents.view, pathname, userId]);
 
   // This component doesn't render anything.
   return <></>;

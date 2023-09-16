@@ -17,6 +17,7 @@ import MozillaLogo from "../../../../client/images/moz-logo-1color-white-rgb-01.
 import { getL10n } from "../../../functions/server/l10n";
 import { authOptions } from "../../../api/utils/auth";
 import { getNonce } from "../../functions/server/getNonce";
+import { PageLoadEvent } from "../../components/client/PageLoadEvent";
 export type Props = {
   children: ReactNode;
 };
@@ -27,6 +28,17 @@ const MainLayout = async (props: Props) => {
     return <SignInButton autoSignIn />;
   }
 
+  const userId = session?.user?.subscriber?.id?.toString() ?? "";
+
+  // @see https://github.com/mozilla/experimenter/tree/main/cirrus
+  const serverUrl = process.env.SERVER_URL ?? "http://localhost:6060";
+
+  //@ts-ignore TODO this tells us which features to enable.
+  const features = await fetch(`${serverUrl}/v1/features/`, {
+    method: "POST",
+    body: JSON.stringify({ client_id: userId }),
+  });
+
   const l10n = getL10n();
 
   return (
@@ -36,6 +48,7 @@ const MainLayout = async (props: Props) => {
         src="/nextjs_migration/client/js/nav.js"
         nonce={getNonce()}
       />
+      <PageLoadEvent userId={userId} />
       <header>
         <div className="header-wrapper">
           <a href="/user/breaches">
