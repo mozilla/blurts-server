@@ -31,7 +31,7 @@ export default async function Home() {
   if (!userId) {
     const cookie = cookies().get("userId");
     if (cookie) {
-      userId = cookie.toString();
+      userId = cookie.value;
     } else {
       const array = new Uint32Array(1);
       getRandomValues(array);

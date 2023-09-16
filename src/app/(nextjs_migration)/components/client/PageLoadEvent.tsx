@@ -7,6 +7,7 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useGlean } from "../../../hooks/useGlean";
+import { useCookies } from "react-cookie";
 
 export type Props = {
   userId: string;
@@ -14,6 +15,13 @@ export type Props = {
 
 // Empty component that records a page view on first load.
 export const PageLoadEvent = (props: Props) => {
+  const [cookies, setCookie] = useCookies(["userId"]);
+
+  // TODO decide if we want to do this here or on the server side
+  if (!cookies.userId) {
+    setCookie("userId", props.userId.toString());
+  }
+
   const { pageEvents } = useGlean();
   const pathname = usePathname();
 
