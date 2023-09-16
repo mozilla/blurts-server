@@ -7,7 +7,7 @@ executors:
               auth:
                 username: $DOCKER_USER
                 password: $DOCKER_PASS
-    
+
     node_with_python:
         docker:
             - image: cimg/node:18.12.1
@@ -125,7 +125,7 @@ jobs:
         # is based on:
         # https://github.com/CircleCI-Public/heroku-orb/blob/master/src/jobs/deploy-via-git.yml
         # https://github.com/CircleCI-Public/heroku-orb/blob/master/src/commands/deploy-via-git.yml
-        executor: python/default
+        executor: heroku/default
         parameters:
             app-name:
                 description: "The name of the Heroku App"
