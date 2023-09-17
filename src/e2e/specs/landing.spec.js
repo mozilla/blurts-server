@@ -73,12 +73,11 @@ test.describe('Landing Page Functionality Verification', () => {
     });
 
     // Intercept request and fulfill return
-    await page.route('**/api/v1/scan', async route => {
-      // Fulfill using the original response with the given JSON object.
-      await route.fulfill({
-        status: 200,
-        body: {"success":true,"breaches":[],"total":0,"heading":"We found <span class=\"breach-result-email\">⁨⁩</span> exposed in <span class=\"breach-result-count\">⁨0⁩</span> data breaches.","dataClassStrings":[],"logos":[]}
-      });
+    await page.route('**/api/v1/scan/', (route) => {
+         route.fulfill({
+          status: 200,
+            body: JSON.stringify({"success":true,"breaches":[],"total":0,"heading":"We found (mocked) <span class=\"breach-result-email\">⁨⁩</span> exposed in <span class=\"breach-result-count\">⁨0⁩</span> data breaches.","dataClassStrings":[],"logos":[]}),
+        });
     });
 
     // generate email
