@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { v5 as uuidv5 } from "uuid";
 import { ReactNode } from "react";
 import "../../../client/css/index.css";
 import Image from "next/image";
@@ -9,16 +10,57 @@ import MonitorLogo from "../../../client/images/monitor-logo-transparent@2x.webp
 import MozillaLogo from "../../../client/images/moz-logo-1color-white-rgb-01.svg";
 import { SignInButton } from "../components/client/SignInButton";
 import { getL10n } from "../../functions/server/l10n";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../api/utils/auth";
+import { isFlagEnabled } from "../../functions/server/featureFlags";
+import { cookies } from "next/headers";
+import { randomUUID } from "crypto";
+import { PageLoadEvent } from "../components/client/PageLoadEvent";
 
 export type Props = {
   children: ReactNode;
 };
 
-const GuestLayout = (props: Props) => {
+const GuestLayout = async (props: Props) => {
   const l10n = getL10n();
+
+  // If the user is logged in, use UUID derived from FxA UID as Nimbus user ID.
+  const session = await getServerSession(authOptions);
+  const accountId = session?.user?.subscriber?.fxa_uid;
+  let userId;
+
+  if (accountId) {
+    // If the user is logged in, use a UUID based on the user's subscriber ID.
+    // Note: we may want to use the FxA UID here, but we need approval for that first.
+    if (!process.env.NIMBUS_UUID_NAMESPACE) {
+      throw new Error("env var NIMBUS_UUID_NAMESPACE not set");
+    }
+    userId = uuidv5(accountId.toString(), process.env.NIMBUS_UUID_NAMESPACE);
+  } else {
+    // if the user is not logged in, use a cookie with a randomly-generated Nimbus user ID.
+    const cookie = cookies().get("userId");
+    if (cookie) {
+      userId = cookie.value;
+    } else {
+      // TODO Cookies can only be set in server action or route handler
+      // @see https://nextjs.org/docs/app/api-reference/functions/cookies#cookiessetname-value-options
+      // cookies().set("userId", uuid);
+      userId = `guest-${randomUUID()}`;
+    }
+  }
+
+  // @see https://github.com/mozilla/experimenter/tree/main/cirrus
+  const serverUrl = process.env.SERVER_URL ?? "http://localhost:6060";
+
+  //@ts-ignore TODO this tells us which features to enable, for A/A testing we do nothing.
+  const features = await fetch(`${serverUrl}/v1/features/`, {
+    method: "POST",
+    body: JSON.stringify({ client_id: userId }),
+  });
 
   return (
     <>
+      <PageLoadEvent userId={userId} />
       <header>
         <div className="header-wrapper">
           <a href="/">

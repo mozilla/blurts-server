@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { v5 as uuidv5 } from "uuid";
 import { ReactNode } from "react";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
@@ -28,7 +29,18 @@ const MainLayout = async (props: Props) => {
     return <SignInButton autoSignIn />;
   }
 
-  const userId = session?.user?.subscriber?.id?.toString() ?? "";
+  const accountId = session?.user?.subscriber?.fxa_uid;
+
+  let userId;
+  if (accountId) {
+    // If the user is logged in, use a UUID based on the user's subscriber ID.
+    // Note: we may want to use the FxA UID here, but we need approval for that first.
+    // No need to store in a cookie - this is derived from subscriber ID.
+    if (!process.env.NIMBUS_UUID_NAMESPACE) {
+      throw new Error("env var NIMBUS_UUID_NAMESPACE not set");
+    }
+    userId = uuidv5(accountId.toString(), process.env.NIMBUS_UUID_NAMESPACE);
+  }
 
   // @see https://github.com/mozilla/experimenter/tree/main/cirrus
   const serverUrl = process.env.SERVER_URL ?? "http://localhost:6060";

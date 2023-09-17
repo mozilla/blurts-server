@@ -19,7 +19,7 @@ export const PageLoadEvent = (props: Props) => {
   const userId = props.userId;
 
   // TODO decide if we want to do this here or on the server side
-  if (!cookies.userId) {
+  if (!cookies.userId && !userId.startsWith("guest")) {
     setCookie("userId", userId);
   }
 
