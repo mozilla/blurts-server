@@ -113,10 +113,10 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     }
   }
 
-  const user =
-    props.countryCode === "us" && props.premium
-      ? createUserWithPremiumSubscription()
-      : { email: "example@example.com" };
+  const user = createUserWithPremiumSubscription();
+  if (props.countryCode !== "us" || !props.premium) {
+    user.fxa.subscriptions = [];
+  }
 
   const mockedSession = {
     expires: new Date().toISOString(),
