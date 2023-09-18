@@ -32,13 +32,13 @@ const MainLayout = async (props: Props) => {
   const accountId = session?.user?.subscriber?.fxa_uid;
 
   let userId;
-  if (typeof accountId === "number") {
+  if (accountId && typeof accountId === "number") {
     // If the user is logged in, use a UUID based on the user's subscriber ID.
     // TODO determine if we can collect the FxA UID directly https://mozilla-hub.atlassian.net/browse/MNTOR-2180
     if (!process.env.NIMBUS_UUID_NAMESPACE) {
       throw new Error("env var NIMBUS_UUID_NAMESPACE not set");
     }
-    userId = uuidv5(accountId.toString(), process.env.NIMBUS_UUID_NAMESPACE);
+    userId = uuidv5(accountId, process.env.NIMBUS_UUID_NAMESPACE);
   }
 
   if (!userId) {
@@ -48,7 +48,7 @@ const MainLayout = async (props: Props) => {
   // @see https://github.com/mozilla/experimenter/tree/main/cirrus
   const serverUrl = process.env.SERVER_URL ?? "http://localhost:6060";
 
-  //@ts-ignore TODO this tells us which features to enable, for A/A testing we do nothing.
+  //@ts-ignore TODO this tells us which features to enable, for initial A/A testing this is unused.
   const features = await fetch(`${serverUrl}/v1/features/`, {
     method: "POST",
     body: JSON.stringify({ client_id: userId }),
