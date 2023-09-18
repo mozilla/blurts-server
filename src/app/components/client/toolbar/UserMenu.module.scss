@@ -10,6 +10,7 @@ $button-size: 42px;
   height: $button-size;
   padding: 0;
   width: $button-size;
+  overflow: hidden;
 
   @media screen and (max-width: $screen-md) {
     margin-right: $spacing-sm;
