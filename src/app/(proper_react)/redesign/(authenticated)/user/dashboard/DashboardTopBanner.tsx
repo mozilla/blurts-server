@@ -58,11 +58,32 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   const contentData = {
     ScanInProgressContent: {
       headline: l10n.getString("dashboard-top-banner-scan-in-progress-title"),
-      description: l10n.getString(
-        "dashboard-top-banner-scan-in-progress-description",
-        {
-          data_breach_total_num: props.bannerData.dataBreachTotalNum,
-        }
+      description: (
+        <>
+          <p>
+            {l10n.getFragment(
+              "dashboard-top-banner-scan-in-progress-description",
+              {
+                vars: {
+                  data_breach_total_num: props.bannerData.dataBreachTotalNum,
+                },
+                elems: {
+                  b: <strong />,
+                },
+              }
+            )}
+          </p>
+          <br />
+          <p>
+            {!totalExposures
+              ? l10n.getString(
+                  "dashboard-top-banner-scan-in-progress-fix-later-hint"
+                )
+              : l10n.getString(
+                  "dashboard-top-banner-scan-in-progress-fix-now-hint"
+                )}
+          </p>
+        </>
       ),
       cta: (
         <Button

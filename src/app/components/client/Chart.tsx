@@ -112,7 +112,11 @@ export const DoughnutChart = (props: Props) => {
 
   const scanInProgressPrompt = (
     <div className={styles.prompt}>
-      <p>{l10n.getString("exposure-chart-scan-in-progress-prompt")}</p>
+      <p>
+        {l10n.getFragment("exposure-chart-scan-in-progress-prompt", {
+          elems: { b: <strong /> },
+        })}
+      </p>
     </div>
   );
 
