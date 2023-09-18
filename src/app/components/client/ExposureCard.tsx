@@ -46,8 +46,7 @@ export type ExposureCardProps = {
 type BreachExposureCategoryProps = {
   exposureCategoryLabel: string;
   icon: ReactElement;
-  count: number;
-  emails?: string[];
+  showEmail?: boolean;
 };
 
 export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
@@ -305,11 +304,15 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
   const exposureCategoriesArray: React.ReactElement[] = [];
 
   const BreachExposureCategory = (props: BreachExposureCategoryProps) => {
+    const emailLength = subscriberBreach.emailsEffected.length;
+
     const emailsList = (
       <ul className={styles.emailsList}>
-        {props.emails?.map((email: string, index: number) => (
-          <li key={index}>{email}</li>
-        ))}
+        {subscriberBreach.emailsEffected?.map(
+          (email: string, index: number) => (
+            <li key={index}>{email}</li>
+          )
+        )}
       </ul>
     );
 
@@ -319,19 +322,16 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           <span className={styles.exposureTypeIcon}>{props.icon}</span>
           {l10n.getString("exposure-card-label-and-count", {
             category_label: props.exposureCategoryLabel,
-            count: props.count,
+            count: emailLength,
           })}
         </dt>
-        <dd>{props.emails && emailsList}</dd>
+        <dd>{props.showEmail && emailsList}</dd>
       </div>
     );
   };
 
   subscriberBreach.dataClassesEffected.map((item: DataClassEffected) => {
     const dataClass = Object.keys(item)[0];
-    const value = item[dataClass];
-    const emails = Array.isArray(value) ? value : [];
-    const count = typeof value === "number" ? value : 0;
 
     if (dataClass === "email-addresses") {
       exposureCategoriesArray.push(
@@ -339,8 +339,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           key={dataClass}
           icon={<EmailIcon alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-email")}
-          emails={emails} // Only emails get listed
-          count={emails.length}
+          showEmail
         />
       );
     } else if (dataClass === "passwords") {
@@ -349,7 +348,6 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           key={dataClass}
           icon={<PasswordIcon alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-password")}
-          count={count}
         />
       );
     } else if (dataClass === "phone-numbers") {
@@ -358,7 +356,6 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           key={dataClass}
           icon={<PhoneIcon alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
-          count={count}
         />
       );
     } else if (dataClass === "ip-addresses") {
@@ -367,7 +364,6 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           key={dataClass}
           icon={<QuestionMarkCircle alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-ip-address")}
-          count={count}
         />
       );
       // TODO: Add unit test when changing this code:
@@ -380,7 +376,6 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           key={dataClass}
           icon={<QuestionMarkCircle alt="" width="13" height="13" />} // default icon for categories without a unique one
           exposureCategoryLabel={l10n.getString(dataClass)} // categories are localized in data-classes.ftl
-          count={count}
         />
       );
     }

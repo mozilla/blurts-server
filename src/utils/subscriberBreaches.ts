@@ -27,7 +27,7 @@ export interface SubscriberBreach {
   modifiedDate: Date;
   name: string;
   title: string;
-  emailsEffected?: string[];
+  emailsEffected: string[];
   dataClassesEffected: DataClassEffected[];
 }
 
