@@ -18,7 +18,7 @@ import { PageLink } from "./PageLink";
 
 export type Props = {
   children: ReactNode;
-  session: Session | null;
+  session: Session;
 };
 
 export const MobileShell = (props: Props) => {
@@ -102,7 +102,7 @@ export const MobileShell = (props: Props) => {
             </ul>
             {process.env.NEXT_PUBLIC_PREMIUM_ENABLED === "true" && (
               <div className={styles.premiumCta}>
-                <PremiumBadge user={props.session?.user ?? null} />
+                <PremiumBadge user={props.session.user} />
               </div>
             )}
           </div>

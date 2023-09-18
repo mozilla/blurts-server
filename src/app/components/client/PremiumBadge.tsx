@@ -16,7 +16,7 @@ import ShieldIcon from "./assets/shield-icon.svg";
 import styles from "./PremiumBadge.module.scss";
 
 export type Props = {
-  user: Session["user"] | null;
+  user: Session["user"];
 };
 
 export default function PremiumBadge({ user }: Props) {
