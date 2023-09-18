@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import PremiumButton from "../../../../../components/client/PremiumButton";
 
 export type BannerContent =
+  | "ScanInProgressContent"
   | "LetsFixDataContent"
   | "DataBrokerScanUpsellContent"
   | "NoExposuresFoundContent"
@@ -25,6 +26,7 @@ export type DashboardTopBannerProps = {
   content: BannerContent;
   bannerData: DashboardSummary;
   hasRunScan: boolean;
+  scanInProgress: boolean;
   isEligibleForFreeScan: boolean;
   type: TabType;
   ctaCallback?: () => void;
@@ -54,6 +56,27 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   );
 
   const contentData = {
+    ScanInProgressContent: {
+      headline: l10n.getString("dashboard-top-banner-scan-in-progress-title"),
+      description: l10n.getString(
+        "dashboard-top-banner-scan-in-progress-description",
+        {
+          data_breach_total_num: props.bannerData.dataBreachTotalNum,
+        }
+      ),
+      cta: (
+        <Button
+          href={
+            "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers"
+          }
+          small
+          variant="primary"
+        >
+          {l10n.getString("dashboard-top-banner-scan-in-progress-cta")}
+        </Button>
+      ),
+      learnMore: null,
+    },
     LetsFixDataContent: {
       headline: l10n.getString("dashboard-top-banner-protect-your-data-title"),
       description: l10n.getString(
@@ -237,6 +260,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
             hasRunScan={props.hasRunScan}
             data={chartData}
             isEligibleForFreeScan={props.isEligibleForFreeScan}
+            scanInProgress={props.scanInProgress}
           />
         </div>
       </div>

@@ -57,6 +57,7 @@ exposure-chart-legend-value-nr = { $nr }×
 exposure-chart-caption = This chart shows how many times your info is actively exposed.
 exposure-chart-returning-user-upgrade-prompt = Home address, family members and more are not yet included.
 exposure-chart-returning-user-upgrade-prompt-cta = Start a free scan
+exposure-chart-scan-in-progress-prompt = Scan in progress: address, family members, and more are not yet included.
 
 modal-active-number-of-exposures-title = About your number of active exposures
 # Variables:
@@ -198,7 +199,16 @@ dashboard-exposures-filter-show-results = Show results
 dashboard-exposures-filter-reset = Reset
 
 
-dashboard-top-banner-protect-your-data-title = Let’s protect your data
+dashboard-top-banner-scan-in-progress-title = Your scan is still in progress
+# Variables:
+# $data_breach_total_num is the total number of data breaches the user has.
+# $data_broker_total_num is the total number of data brokers selling the user’s data.
+dashboard-top-banner-scan-in-progress-description = We found { $data_breach_total_num } exposures so far, but we’re still scanning sites that sell your personal info. This should be done within 3 minutes.
+dashboard-top-banner-scan-in-progress-refresh-hint-one = You can refresh this page then, or start fixing your data breaches now.
+dashboard-top-banner-scan-in-progress-refresh-hint-two = You can refresh this page then or come back later.
+dashboard-top-banner-scan-in-progress-cta = See what’s ready now
+
+dashboard-top-banner-scan-in-progress-title = Let’s protect your data
 # Variables:
 # $data_breach_total_num is the total number of data breaches the user has.
 # $data_broker_total_num is the total number of data brokers selling the user’s data.
@@ -251,15 +261,23 @@ dashboard-top-banner-your-data-is-protected-all-fixed-description =
   }
 dashboard-top-banner-your-data-is-protected-all-fixed-cta = Get Continuous Protection
 
-dashboard-exposures-area-headline = View all sites where your info is exposed
-dashboard-fixed-area-headline = View all exposures that are fixed or in-progress
-
 # Variables: 
 # $exposures_total_num is the total number of exposures the user has.
 # $data_breach_total_num is the total number of data breaches the user has.
 # $data_broker_total_num is the total number of data brokers selling the user’s data.
 dashboard-exposures-area-description = We found your information exposed { $exposures_total_num } times over { $data_breach_total_num } data breaches and { $data_broker_total_num } data broker sites that are selling your personal info.
 dashboard-exposures-all-fixed-label = All fixed here!
+
+
+dashboard-exposures-area-headline = View all sites where your info is exposed
+dashboard-fixed-area-headline = View all exposures that are fixed or in-progress
+
+# Variables:
+# $exposures_total_num is the total number of exposures the user has.
+# $data_breach_total_num is the total number of data breaches the user has.
+dashboard-exposures-breaches-scan-progress-description = We found your information exposed { $exposures_total_num } times in { $data_breach_total_num } data breaches. We’re still scanning sites that may be selling your personal info.
+dashboard-exposures-no-breaches-scan-progress-description = We didn’t find any data breaches, but we’re still scanning sites that may be selling your personal info.
+dashboard-exposures-scan-progress-label = Scan in progress
 
 # Variables: 
 # $data_broker_total_num is the total number of data brokers selling the user’s data.

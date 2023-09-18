@@ -21,6 +21,7 @@ export type Props = {
   data: Array<[string, number]>;
   hasRunScan: boolean;
   isEligibleForFreeScan: boolean;
+  scanInProgress: boolean;
 };
 
 export const DoughnutChart = (props: Props) => {
@@ -100,12 +101,18 @@ export const DoughnutChart = (props: Props) => {
     </div>
   );
 
-  const prompt = (
+  const freescanPrompt = (
     <div className={styles.prompt}>
       <p>{l10n.getString("exposure-chart-returning-user-upgrade-prompt")}</p>
       <Link href="/redesign/user/welcome">
         {l10n.getString("exposure-chart-returning-user-upgrade-prompt-cta")}
       </Link>
+    </div>
+  );
+
+  const scanInProgressPrompt = (
+    <div className={styles.prompt}>
+      <p>{l10n.getString("exposure-chart-scan-in-progress-prompt")}</p>
     </div>
   );
 
@@ -191,7 +198,8 @@ export const DoughnutChart = (props: Props) => {
                 ))}
               </tbody>
             </table>
-            {!props.hasRunScan && props.isEligibleForFreeScan && prompt}
+            {!props.hasRunScan && props.isEligibleForFreeScan && freescanPrompt}
+            {props.scanInProgress && scanInProgressPrompt}
           </div>
         </div>
         <figcaption>
