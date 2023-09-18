@@ -7,7 +7,6 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { View } from "./View";
 import { authOptions } from "../../../../../api/utils/auth";
-import { getDashboardSummary } from "../../../../../functions/server/dashboard";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../functions/server/getUserBreaches";
 import { getLocale } from "../../../../../functions/server/l10n";
@@ -37,7 +36,6 @@ export default async function DashboardPage() {
 
   const latestScan = await getLatestOnerepScanResults(profileId);
   const subBreaches = await getSubscriberBreaches(session.user);
-  const summary = getDashboardSummary(latestScan.results, subBreaches);
   const locale = getLocale();
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(
@@ -60,7 +58,6 @@ export default async function DashboardPage() {
       userScanData={latestScan}
       userBreaches={subBreaches}
       locale={locale}
-      bannerData={summary}
       featureFlagsEnabled={featureFlagsEnabled}
     />
   );
