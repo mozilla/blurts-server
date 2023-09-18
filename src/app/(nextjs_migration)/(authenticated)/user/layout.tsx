@@ -34,8 +34,7 @@ const MainLayout = async (props: Props) => {
   let userId;
   if (typeof accountId === "number") {
     // If the user is logged in, use a UUID based on the user's subscriber ID.
-    // Note: we may want to use the FxA UID here, but we need approval for that first.
-    // No need to store in a cookie - this is derived from subscriber ID.
+    // TODO determine if we can collect the FxA UID directly https://mozilla-hub.atlassian.net/browse/MNTOR-2180
     if (!process.env.NIMBUS_UUID_NAMESPACE) {
       throw new Error("env var NIMBUS_UUID_NAMESPACE not set");
     }
