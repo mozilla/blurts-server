@@ -270,6 +270,5 @@ function sanitizeExposures(
     totalExposures
   );
   sanitizedExposures.push({ "other-data-class": other });
-  console.debug({ sanitizedExposures });
   return sanitizedExposures;
 }
