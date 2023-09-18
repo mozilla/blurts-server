@@ -32,7 +32,7 @@ import HelpIcon from "./images/menu-icon-help.svg";
 import SignOutIcon from "./images/menu-icon-signout.svg";
 
 export type UserMenuProps = {
-  user?: Session["user"];
+  user: Session["user"];
 };
 
 export const UserMenu = (props: UserMenuProps) => {
@@ -42,10 +42,6 @@ export const UserMenu = (props: UserMenuProps) => {
   const settingsItemRef = useRef<HTMLAnchorElement>(null);
   const helpItemRef = useRef<HTMLAnchorElement>(null);
   const signOutItemRef = useRef<HTMLButtonElement>(null);
-
-  if (!props.user) {
-    return null;
-  }
 
   const itemKeys = {
     fxa: "fxa",
