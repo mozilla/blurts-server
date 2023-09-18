@@ -204,7 +204,7 @@ dashboard-top-banner-scan-in-progress-title = Your scan is still in progress
 # $data_breach_total_num is the total number of data breaches the user has.
 # $data_broker_total_num is the total number of data brokers selling the user’s data.
 dashboard-top-banner-scan-in-progress-description =
-  { $data_breach_total_num
+  { $data_breach_total_num ->
       [one] We found <b>{ $data_breach_total_num }</b> exposure so far, but we’re still scanning sites that sell your personal info. This should be done within 3 minutes.
       *[other] We found <b>{ $data_breach_total_num }</b> exposures so far, but we’re still scanning sites that sell your personal info. This should be done within 3 minutes.
   }
@@ -212,7 +212,7 @@ dashboard-top-banner-scan-in-progress-fix-now-hint = You can refresh this page t
 dashboard-top-banner-scan-in-progress-fix-later-hint = You can refresh this page then or come back later.
 dashboard-top-banner-scan-in-progress-cta = See what’s ready now
 
-dashboard-top-banner-scan-in-progress-title = Let’s protect your data
+dashboard-top-banner-protect-your-data-title = Let’s protect your data
 # Variables:
 # $data_breach_total_num is the total number of data breaches the user has.
 # $data_broker_total_num is the total number of data brokers selling the user’s data.

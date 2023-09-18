@@ -181,19 +181,13 @@ export const View = (props: Props) => {
 
   let contentType: BannerContent = "NoContent";
   if (featureFlagsEnabled) {
-    // Data broker scan is pending
-    if (scanInProgress) {
+    if (isScanResultItemsEmpty && !scanInProgress) {
+      contentType = "DataBrokerScanUpsellContent";
+    } else if (scanInProgress) {
       contentType = "ScanInProgressContent";
+    } else if ((!noUnresolvedExposures || !props.isAllFixed) && isUserFromUs) {
+      contentType = "LetsFixDataContent";
     }
-
-    // if (isScanResultItemsEmpty) {
-    //   contentType = "DataBrokerScanUpsellContent";
-    // } else if (
-    //   (!noUnresolvedExposures || !props.isAllFixed) &&
-    //   isUserFromUs
-    // ) {
-    //   contentType = "LetsFixDataContent";
-    // }
   }
 
   // MNTOR-1940: US user who is returning to the experience, free, and has resolved all their tasks
