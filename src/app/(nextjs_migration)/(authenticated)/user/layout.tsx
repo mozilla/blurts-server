@@ -45,14 +45,9 @@ const MainLayout = async (props: Props) => {
     throw new Error("No user ID for Nimbus telemetry");
   }
 
-  // @see https://github.com/mozilla/experimenter/tree/main/cirrus
-  const serverUrl = process.env.SERVER_URL ?? "http://localhost:6060";
-
-  //@ts-ignore TODO this tells us which features to enable, for initial A/A testing this is unused.
-  const features = await fetch(`${serverUrl}/v1/features/`, {
-    method: "POST",
-    body: JSON.stringify({ client_id: userId }),
-  });
+  // TODO For initial A/A testing `features` is unused.
+  //@ts-ignore TODO features is declared but its value is never read
+  const features = await getExperiments(userId);
 
   const l10n = getL10n();
 

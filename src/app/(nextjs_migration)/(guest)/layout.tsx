@@ -15,7 +15,7 @@ import { authOptions } from "../../api/utils/auth";
 import { cookies } from "next/headers";
 import { randomUUID } from "crypto";
 import { PageLoadEvent } from "../components/client/PageLoadEvent";
-import { captureException } from "@sentry/node";
+import { getExperiments } from "../../functions/server/getExperiments";
 
 export type Props = {
   children: ReactNode;
@@ -49,22 +49,9 @@ const GuestLayout = async (props: Props) => {
     }
   }
 
-  // @see https://github.com/mozilla/experimenter/tree/main/cirrus
-  const serverUrl = process.env.NIMBUS_SIDECAR_URL ?? process.env.SERVER_URL;
-  if (!serverUrl) {
-    throw new Error("env vars NIMBUS_SERVER_URL and SERVER_URL not set");
-  }
-
-  try {
-    //@ts-ignore TODO this tells us which features to enable, for initial A/A testing this is unused.
-    const features = await fetch(`${serverUrl}/v1/features/`, {
-      method: "POST",
-      body: JSON.stringify({ client_id: userId }),
-    });
-  } catch (ex) {
-    console.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
-    captureException(ex);
-  }
+  // TODO For initial A/A testing `features` is unused.
+  //@ts-ignore TODO features is declared but its value is never read
+  const features = await getExperiments(userId);
 
   return (
     <>
