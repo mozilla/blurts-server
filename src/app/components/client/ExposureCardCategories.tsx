@@ -8,8 +8,10 @@ import { ReactElement } from "react";
 import styles from "./ExposureCard.module.scss";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { useL10n } from "../../hooks/l10n";
+import { ScanResult } from "../../functions/server/onerep";
 
 type ScannedExposureCategoryProps = {
+  scanResultData: ScanResult;
   exposureCategoryLabel: string;
   num: number;
   icon: ReactElement;
@@ -18,31 +20,37 @@ type ScannedExposureCategoryProps = {
 export const ScannedExposureCategory = (
   props: ScannedExposureCategoryProps
 ) => {
+  const emailsList = (
+    <ul className={styles.emailsList}>
+      {props.scanResultData.emails.map((email: string, index: number) => (
+        <li key={index}>{email}</li>
+      ))}
+    </ul>
+  );
+
   return (
-    <div className={styles.detailsFoundItem}>
-      <dt>
-        <span className={styles.exposureTypeIcon}>{props.icon}</span>
-        {props.exposureCategoryLabel}
-      </dt>
-      <dd></dd>
-    </div>
+    <ExposureCardDataClassLayout
+      type="broker"
+      icon={props.icon}
+      label={props.exposureCategoryLabel}
+      count={props.num}
+      emailData={props.scanResultData.emails && emailsList}
+    />
   );
 };
 
 type BreachExposureCategoryProps = {
-  subscriberBreach: SubscriberBreach;
+  subscriberBreachData: SubscriberBreach;
   exposureCategoryLabel: string;
   icon: ReactElement;
-  showEmail?: boolean;
 };
 
 export const BreachExposureCategory = (props: BreachExposureCategoryProps) => {
-  const l10n = useL10n();
-  const emailLength = props.subscriberBreach.emailsEffected.length;
+  const emailLength = props.subscriberBreachData.emailsEffected.length;
 
   const emailsList = (
     <ul className={styles.emailsList}>
-      {props.subscriberBreach.emailsEffected?.map(
+      {props.subscriberBreachData.emailsEffected.map(
         (email: string, index: number) => (
           <li key={index}>{email}</li>
         )
@@ -51,15 +59,42 @@ export const BreachExposureCategory = (props: BreachExposureCategoryProps) => {
   );
 
   return (
+    <ExposureCardDataClassLayout
+      type="breach"
+      icon={props.icon}
+      label={props.exposureCategoryLabel}
+      count={emailLength}
+      emailData={emailsList}
+    />
+  );
+};
+
+type ExposureCardDataClassLayoutProps = {
+  type: "breach" | "broker";
+  icon: ReactElement;
+  label: string;
+  count: number;
+  emailData?: ReactElement;
+};
+
+const ExposureCardDataClassLayout = (
+  props: ExposureCardDataClassLayoutProps
+) => {
+  const l10n = useL10n();
+
+  return (
     <div className={styles.detailsFoundItem}>
       <dt>
         <span className={styles.exposureTypeIcon}>{props.icon}</span>
         {l10n.getString("exposure-card-label-and-count", {
-          category_label: props.exposureCategoryLabel,
-          count: emailLength,
+          category_label: props.label,
+          count: props.count,
         })}
       </dt>
-      <dd>{props.showEmail && emailsList}</dd>
+      <dd>
+        {props.label === l10n.getString("exposure-card-email") &&
+          props.emailData}
+      </dd>
     </div>
   );
 };

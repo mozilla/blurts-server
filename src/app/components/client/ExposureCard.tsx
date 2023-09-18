@@ -85,6 +85,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
   if (scanResult.relatives.length > 0) {
     exposureCategoriesArray.push(
       <ScannedExposureCategory
+        scanResultData={scanResult}
         key="relatives"
         icon={<MultipleUsersIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-family-members")}
@@ -95,6 +96,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
   if (scanResult.phones.length > 0) {
     exposureCategoriesArray.push(
       <ScannedExposureCategory
+        scanResultData={scanResult}
         key="phones"
         icon={<PhoneIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
@@ -105,6 +107,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
   if (scanResult.emails.length > 0) {
     exposureCategoriesArray.push(
       <ScannedExposureCategory
+        scanResultData={scanResult}
         key="emails"
         icon={<EmailIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-email")}
@@ -115,6 +118,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
   if (scanResult.addresses.length > 0) {
     exposureCategoriesArray.push(
       <ScannedExposureCategory
+        scanResultData={scanResult}
         key="addresses"
         icon={<LocationPinIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-address")}
@@ -127,6 +131,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
     // "Other" item when none of the conditions above are met
     exposureCategoriesArray.push(
       <ScannedExposureCategory
+        scanResultData={scanResult}
         key="other"
         icon={<QuestionMarkCircle alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-other")}
@@ -291,17 +296,16 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
     if (dataClass === "email-addresses") {
       exposureCategoriesArray.push(
         <BreachExposureCategory
-          subscriberBreach={props.subscriberBreach}
+          subscriberBreachData={subscriberBreach}
           key={dataClass}
           icon={<EmailIcon alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-email")}
-          showEmail
         />
       );
     } else if (dataClass === "passwords") {
       exposureCategoriesArray.push(
         <BreachExposureCategory
-          subscriberBreach={props.subscriberBreach}
+          subscriberBreachData={subscriberBreach}
           key={dataClass}
           icon={<PasswordIcon alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-password")}
@@ -310,7 +314,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
     } else if (dataClass === "phone-numbers") {
       exposureCategoriesArray.push(
         <BreachExposureCategory
-          subscriberBreach={props.subscriberBreach}
+          subscriberBreachData={subscriberBreach}
           key={dataClass}
           icon={<PhoneIcon alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
@@ -319,7 +323,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
     } else if (dataClass === "ip-addresses") {
       exposureCategoriesArray.push(
         <BreachExposureCategory
-          subscriberBreach={props.subscriberBreach}
+          subscriberBreachData={subscriberBreach}
           key={dataClass}
           icon={<QuestionMarkCircle alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-ip-address")}
@@ -332,7 +336,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
     else {
       exposureCategoriesArray.push(
         <BreachExposureCategory
-          subscriberBreach={props.subscriberBreach}
+          subscriberBreachData={subscriberBreach}
           key={dataClass}
           icon={<QuestionMarkCircle alt="" width="13" height="13" />} // default icon for categories without a unique one
           exposureCategoryLabel={l10n.getString(dataClass)} // categories are localized in data-classes.ftl
