@@ -126,12 +126,6 @@ exposure-card-credit-card = Credit Card
 exposure-card-password = Password
 exposure-card-ip-address = IP Address
 exposure-card-other = Other
-# Variables:
-# $exposure_num is the number of exposures found for a particular type, e.g. 3 found 
-exposure-card-num-found = 
-  { $exposure_num ->
-     *[other] { $exposure_num } found
-  }
 exposure-card-description-info-for-sale-part-one = This site is selling and publishing <data_broker_link>details about you.</data_broker_link>
 exposure-card-description-info-for-sale-part-two = Remove this profile to protect your privacy.
 # Variables:
@@ -149,6 +143,10 @@ exposure-card-label-exposure-type = Exposure type
 exposure-card-label-date-found = Date found
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Status
+# Variables: 
+# $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.
+# $count is the number of times that the data type was leaked.
+exposure-card-label-and-count = { $category_label }: { $count }
 
 # About Exposure Types Modal
 
@@ -291,6 +289,14 @@ premium-upsell-dialog-title = Choose the level of protection that’s right for 
 guided-resolution-flow-exit = Return to dashboard
 guided-resolution-flow-back-arrow = Go to previous step
 guided-resolution-flow-next-arrow = Go to next step
+# Variables
+# $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
+# "Est." is shortform for "Estimated".
+# "mins" is shortform for "minutes".
+data-broker-profiles-estimated-time = Est. time to complete: { $estimated_time } mins
+# Variables
+# $exposure_reduction is the percentage of exposures that are data brokers.
+data-broker-profiles-exposure-reduction = Exposure reduction: { $exposure_reduction }%
 
 # High Risk Data Breaches
 
