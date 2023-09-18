@@ -32,7 +32,7 @@ export const DataBrokerDataClass = (props: DataBrokerDataClassProps) => {
       icon={props.icon}
       label={props.exposureCategoryLabel}
       count={props.num}
-      emailData={props.scanResultData.emails && emailsList}
+      emailData={emailsList}
     />
   );
 };
@@ -72,7 +72,7 @@ type ExposureCardDataClassLayoutProps = {
   icon: ReactElement;
   label: string;
   count: number;
-  emailData?: ReactElement;
+  emailData: ReactElement;
 };
 
 const ExposureCardDataClassLayout = (
