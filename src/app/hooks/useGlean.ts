@@ -17,9 +17,15 @@ export const useGlean = () => {
     // Enable upload only if the user has not opted out of tracking.
     const uploadEnabled = navigator.doNotTrack !== "1";
 
+    const channel = process.env.NEXT_PUBLIC_APP_ENV;
+    if (!channel) {
+      console.warn("No channel defined in env var NEXT_PUBLIC_APP_ENV");
+    }
+
     Glean.initialize("monitor.frontend", uploadEnabled, {
       // This will submit an events ping every time an event is recorded.
       maxEvents: 1,
+      channel,
     });
 
     // Glean debugging options can be found here:
