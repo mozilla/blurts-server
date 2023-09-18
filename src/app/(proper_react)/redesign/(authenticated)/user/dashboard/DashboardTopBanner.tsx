@@ -37,8 +37,13 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   const router = useRouter();
 
   const isFixedTab = props.type === "fixed";
-  const { totalExposures, dataBrokerFixedNum, dataBreachFixedNum } =
-    props.bannerData;
+  const {
+    totalExposures,
+    dataBrokerFixedNum,
+    dataBreachFixedNum,
+    dataBreachTotalNum,
+    dataBrokerTotalNum,
+  } = props.bannerData;
 
   const chartDataKey = isFixedTab
     ? "fixedSanitizedExposures"
@@ -65,7 +70,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
               "dashboard-top-banner-scan-in-progress-description",
               {
                 vars: {
-                  data_breach_total_num: props.bannerData.dataBreachTotalNum,
+                  data_breach_total_num: totalExposures,
                 },
                 elems: {
                   b: <strong />,
@@ -103,8 +108,8 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       description: l10n.getString(
         "dashboard-top-banner-protect-your-data-description",
         {
-          data_breach_total_num: props.bannerData.dataBreachTotalNum,
-          data_broker_total_num: props.bannerData.dataBrokerTotalNum,
+          data_breach_total_num: dataBreachTotalNum,
+          data_broker_total_num: dataBrokerTotalNum,
         }
       ),
       cta: (

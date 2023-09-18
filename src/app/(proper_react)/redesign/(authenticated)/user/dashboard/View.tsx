@@ -45,11 +45,10 @@ export type Props = {
   isEligibleForFreeScan: boolean;
   countryCode?: string;
   isAllFixed?: boolean;
+  scanInProgress: boolean;
 };
 
 export type TabType = "action-needed" | "fixed";
-
-const scanInProgress = true;
 
 export const View = (props: Props) => {
   const l10n = useL10n();
@@ -141,7 +140,7 @@ export const View = (props: Props) => {
       }
     );
 
-    if (scanInProgress && !noUnresolvedExposures) {
+    if (props.scanInProgress && !noUnresolvedExposures) {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-breaches-scan-progress-description",
         {
@@ -149,7 +148,7 @@ export const View = (props: Props) => {
           data_breach_total_num: dataBreachTotalNum,
         }
       );
-    } else if (scanInProgress) {
+    } else if (props.scanInProgress) {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-no-breaches-scan-progress-description"
       );
@@ -180,12 +179,15 @@ export const View = (props: Props) => {
     props.featureFlagsEnabled?.PremiumBrokerRemoval;
 
   let contentType: BannerContent = "NoContent";
-  if (featureFlagsEnabled) {
-    if (isScanResultItemsEmpty && !scanInProgress) {
+  if (featureFlagsEnabled && isUserFromUs) {
+    if (isScanResultItemsEmpty && !props.scanInProgress) {
       contentType = "DataBrokerScanUpsellContent";
-    } else if (scanInProgress) {
+    } else if (isScanResultItemsEmpty && props.scanInProgress) {
       contentType = "ScanInProgressContent";
-    } else if ((!noUnresolvedExposures || !props.isAllFixed) && isUserFromUs) {
+    } else if (
+      (!noUnresolvedExposures || !props.isAllFixed) &&
+      !props.scanInProgress
+    ) {
       contentType = "LetsFixDataContent";
     }
   }
@@ -220,17 +222,17 @@ export const View = (props: Props) => {
     ""
   );
 
-  const getZeroStateIndicator = (type: "fixed" | "scan") => {
+  const getZeroStateIndicator = () => {
     return (
       <div className={styles.zeroStateIndicator}>
         <Image
-          src={type === "fixed" ? AllFixedLogo : ScanProgressIllustration}
+          src={props.scanInProgress ? ScanProgressIllustration : AllFixedLogo}
           alt=""
         />
         <strong>
-          {type === "fixed"
-            ? l10n.getString("dashboard-exposures-all-fixed-label")
-            : l10n.getString("dashboard-exposures-scan-progress-label")}
+          {props.scanInProgress
+            ? l10n.getString("dashboard-exposures-scan-progress-label")
+            : l10n.getString("dashboard-exposures-all-fixed-label")}
         </strong>
         {freeScanCta}
       </div>
@@ -252,7 +254,7 @@ export const View = (props: Props) => {
           content={contentType}
           type={selectedTab as TabType}
           hasRunScan={!isScanResultItemsEmpty}
-          scanInProgress={scanInProgress}
+          scanInProgress={props.scanInProgress}
           isEligibleForFreeScan={props.isEligibleForFreeScan}
           // TODO: Add unit test when changing this code:
           /* c8 ignore next 3 */
@@ -271,7 +273,7 @@ export const View = (props: Props) => {
           />
         </div>
         {noUnresolvedExposures ? (
-          getZeroStateIndicator("scan")
+          getZeroStateIndicator()
         ) : (
           <ul className={styles.exposureList}>{exposureCardElems}</ul>
         )}
