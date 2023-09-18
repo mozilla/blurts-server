@@ -15,6 +15,7 @@ import Meta, {
   DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
   DashboardUsPremiumNoScanNoBreaches,
   DashboardUsPremiumResolvedScanResolvedBreaches,
+  DashboardUsPremiumResolvedScanUnresolvedBreaches,
 } from "./Dashboard.stories";
 
 function enablePremium() {
@@ -55,7 +56,7 @@ it("passes the axe accessibility test suite 2", async () => {
 
 it("passes the axe accessibility test suite 3", async () => {
   const ComposedDashboard = composeStory(
-    DashboardUsPremiumResolvedScanResolvedBreaches,
+    DashboardUsPremiumResolvedScanUnresolvedBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
