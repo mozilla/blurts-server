@@ -28,7 +28,7 @@ import {
 } from "../../../utils/subscriberBreaches";
 import { parseIso8601Datetime } from "../../../utils/parse";
 import { FallbackLogo } from "../server/BreachLogo";
-import { BreachDataClass, DataBrokerDataClass } from "./ExposureCardCategories";
+import { BreachDataClass, DataBrokerDataClass } from "./ExposureCardDataClass";
 
 export type Exposure = ScanResult | SubscriberBreach;
 
