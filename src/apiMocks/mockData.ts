@@ -127,7 +127,7 @@ export function createUserWithPremiumSubscription() {
       locale: "us",
       twoFactorAuthentication: false,
       metricsEnabled: false,
-      avatar: "",
+      avatar: "https://profile.stage.mozaws.net/v1/avatar/e",
       avatarDefault: true,
       subscriptions: ["monitor"],
     },
