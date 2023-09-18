@@ -52,7 +52,7 @@ const GuestLayout = async (props: Props) => {
   // @see https://github.com/mozilla/experimenter/tree/main/cirrus
   const serverUrl = process.env.SERVER_URL ?? "http://localhost:6060";
 
-  //@ts-ignore TODO this tells us which features to enable, for A/A testing we do nothing.
+  //@ts-ignore TODO this tells us which features to enable, for initial A/A testing this is unused.
   const features = await fetch(`${serverUrl}/v1/features/`, {
     method: "POST",
     body: JSON.stringify({ client_id: userId }),
