@@ -42,6 +42,10 @@ const MainLayout = async (props: Props) => {
     userId = uuidv5(accountId.toString(), process.env.NIMBUS_UUID_NAMESPACE);
   }
 
+  if (!userId) {
+    throw new Error("No user ID for Nimbus telemetry");
+  }
+
   // @see https://github.com/mozilla/experimenter/tree/main/cirrus
   const serverUrl = process.env.SERVER_URL ?? "http://localhost:6060";
 
