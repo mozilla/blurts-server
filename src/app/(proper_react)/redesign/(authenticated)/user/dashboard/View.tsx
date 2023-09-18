@@ -21,7 +21,7 @@ import {
   ExposuresFilter,
   FilterState,
 } from "../../../../../components/client/ExposuresFilter";
-import { DashboardSummary } from "../../../../../functions/server/dashboard";
+import { getDashboardSummary } from "../../../../../functions/server/dashboard";
 import { getExposureStatus } from "../../../../../components/server/StatusPill";
 import { TabList } from "../../../../../components/client/TabList";
 import AllFixedLogo from "./images/dashboard-all-fixed.svg";
@@ -32,7 +32,6 @@ import { hasPremium } from "../../../../../functions/universal/user";
 import { LatestOnerepScanData } from "../../../../../../db/tables/onerep_scans";
 
 export type Props = {
-  bannerData: DashboardSummary;
   featureFlagsEnabled: Pick<
     FeatureFlagsEnabled,
     "FreeBrokerScan" | "PremiumBrokerRemoval"
@@ -120,7 +119,7 @@ export const View = (props: Props) => {
 
   const TabContentActionNeeded = () => {
     const { dataBreachTotalNum, dataBrokerTotalNum, totalExposures } =
-      props.bannerData;
+      getDashboardSummary(props.userScanData.results, props.userBreaches);
     return (
       <>
         <h2 className={styles.exposuresAreaHeadline}>
@@ -203,7 +202,10 @@ export const View = (props: Props) => {
       </Toolbar>
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
-          bannerData={props.bannerData}
+          bannerData={getDashboardSummary(
+            props.userScanData.results,
+            props.userBreaches
+          )}
           stepDeterminationData={{
             countryCode: props.countryCode,
             latestScanData: props.userScanData,

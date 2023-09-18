@@ -13,398 +13,381 @@ import {
   createRandomBreach,
   createUserWithPremiumSubscription,
 } from "../../../../../../apiMocks/mockData";
-import { DashboardSummary } from "../../../../../functions/server/dashboard";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
+import { LatestOnerepScanData } from "../../../../../../db/tables/onerep_scans";
 
-const meta: Meta<typeof DashboardEl> = {
+type DashboardWrapperProps = (
+  | {
+      countryCode: "us";
+      brokers: "no-scan" | "empty" | "unresolved" | "resolved";
+      premium: boolean;
+    }
+  | {
+      countryCode: "nl";
+    }
+) & { breaches: "empty" | "unresolved" | "resolved" };
+const DashboardWrapper = (props: DashboardWrapperProps) => {
+  const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
+    dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
+    addedDate: new Date("2023-06-18T14:48:00.000Z"),
+    dataClassesEffected: [
+      { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
+      { "ip-addresses": 1 },
+      { "phone-numbers": 1 },
+      { passwords: 1 },
+    ],
+    isResolved: true,
+  });
+
+  const mockedUnresolvedBreach: SubscriberBreach = createRandomBreach({
+    dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
+    addedDate: new Date("2023-06-18T14:48:00.000Z"),
+    dataClassesEffected: [
+      { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
+      { "ip-addresses": 1 },
+    ],
+    isResolved: false,
+  });
+
+  let breaches: SubscriberBreach[] = [];
+  if (props.breaches === "resolved") {
+    breaches = [mockedResolvedBreach];
+  }
+  if (props.breaches === "unresolved") {
+    breaches = [mockedResolvedBreach, mockedUnresolvedBreach];
+  }
+
+  const mockedScan: OnerepScanRow = {
+    created_at: new Date(1998, 2, 31),
+    updated_at: new Date(1998, 2, 31),
+    id: 0,
+    onerep_profile_id: 0,
+    onerep_scan_id: 0,
+    onerep_scan_reason: "initial",
+  };
+
+  const mockedResolvedScanResults: OnerepScanResultRow[] = [
+    createRandomScanResult({ status: "removed" }),
+    createRandomScanResult({ status: "waiting_for_verification" }),
+    createRandomScanResult({ status: "optout_in_progress" }),
+  ];
+
+  const mockedUnresolvedScanResults: OnerepScanResultRow[] = [
+    ...mockedResolvedScanResults,
+    createRandomScanResult({ status: "new", manually_resolved: false }),
+    createRandomScanResult({ status: "new", manually_resolved: true }),
+  ];
+
+  const scanData: LatestOnerepScanData = { scan: null, results: [] };
+
+  if (props.countryCode === "us") {
+    if (props.brokers !== "no-scan") {
+      scanData.scan = mockedScan;
+
+      if (props.brokers === "resolved") {
+        scanData.results = mockedResolvedScanResults;
+      }
+      if (props.brokers === "unresolved") {
+        scanData.results = mockedUnresolvedScanResults;
+      }
+    }
+  }
+
+  const user =
+    props.countryCode === "us" && props.premium
+      ? createUserWithPremiumSubscription()
+      : { email: "example@example.com" };
+
+  const mockedSession = {
+    expires: new Date().toISOString(),
+    user: user,
+  };
+
+  return (
+    <Shell l10n={getEnL10nSync()} session={mockedSession}>
+      <DashboardEl
+        countryCode={props.countryCode}
+        user={user}
+        userBreaches={breaches}
+        userScanData={scanData}
+        isEligibleForFreeScan={props.countryCode === "us"}
+        locale={"en"}
+        featureFlagsEnabled={{
+          FreeBrokerScan: true,
+          PremiumBrokerRemoval: true,
+        }}
+      />
+    </Shell>
+  );
+};
+
+const meta: Meta<typeof DashboardWrapper> = {
   title: "Pages/Dashboard",
-  component: DashboardEl,
+  component: DashboardWrapper,
 };
 export default meta;
-type Story = StoryObj<typeof DashboardEl>;
+type Story = StoryObj<typeof DashboardWrapper>;
 
-const BreachMockItem1: SubscriberBreach = createRandomBreach({
-  dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
-  addedDate: new Date("2023-06-18T14:48:00.000Z"),
-  dataClassesEffected: [
-    { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
-    { "ip-addresses": 1 },
-    { "phone-numbers": 1 },
-    { passwords: 1 },
-  ],
-  isResolved: true,
-});
-
-const BreachMockItem2: SubscriberBreach = createRandomBreach({
-  dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
-  addedDate: new Date("2023-06-18T14:48:00.000Z"),
-  dataClassesEffected: [
-    { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
-    { "ip-addresses": 1 },
-  ],
-  isResolved: false,
-});
-
-const BreachMockItem3: SubscriberBreach = createRandomBreach({
-  dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
-  addedDate: new Date("2023-06-18T14:48:00.000Z"),
-  dataClassesEffected: [
-    { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
-    { "ip-addresses": 1 },
-  ],
-});
-
-const BreachMockItem4: SubscriberBreach = createRandomBreach({
-  dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
-  addedDate: new Date("2023-06-18T14:48:00.000Z"),
-  dataClassesEffected: [
-    { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
-    { "ip-addresses": 1 },
-  ],
-});
-
-const scanSample: OnerepScanRow = {
-  created_at: new Date(1998, 2, 31),
-  updated_at: new Date(1998, 2, 31),
-  id: 0,
-  onerep_profile_id: 0,
-  onerep_scan_id: 0,
-  onerep_scan_reason: "initial",
-};
-
-const scannedResultsArraySample: OnerepScanResultRow[] = [
-  createRandomScanResult({ status: "removed" }),
-  createRandomScanResult({ status: "waiting_for_verification" }),
-  createRandomScanResult({ status: "optout_in_progress" }),
-  createRandomScanResult({ status: "new", manually_resolved: false }),
-  createRandomScanResult({ status: "new", manually_resolved: true }),
-];
-
-const scannedResolvedResultsArraySample: OnerepScanResultRow[] = Array.from(
-  { length: 5 },
-  () => createRandomScanResult({ status: "removed" })
-);
-
-const breachItemArraySample: SubscriberBreach[] = [
-  BreachMockItem1,
-  BreachMockItem2,
-  BreachMockItem3,
-  BreachMockItem4,
-];
-
-const dashboardSummaryNoScan: DashboardSummary = {
-  dataBreachTotalNum: 20,
-  dataBreachFixedNum: 0,
-  dataBrokerFixedNum: 0,
-  dataBrokerInProgressNum: 0,
-  dataBrokerTotalNum: 0,
-  totalExposures: 51,
-  allExposures: {
-    emailAddresses: 30,
-    phoneNumbers: 19,
-    addresses: 0,
-    familyMembers: 0,
-    fullNames: 0,
-    socialSecurityNumbers: 2,
-    ipAddresses: 0,
-    passwords: 0,
-    creditCardNumbers: 0,
-    pins: 0,
-    securityQuestions: 0,
-    bankAccountNumbers: 0,
-  },
-  fixedExposures: {
-    emailAddresses: 0,
-    phoneNumbers: 0,
-    addresses: 0,
-    familyMembers: 0,
-    fullNames: 0,
-    socialSecurityNumbers: 0,
-    ipAddresses: 0,
-    passwords: 0,
-    creditCardNumbers: 0,
-    pins: 0,
-    securityQuestions: 0,
-    bankAccountNumbers: 0,
-  },
-  sanitizedExposures: [
-    { "email-addresses": 30 },
-    { "phone-numbers": 19 },
-    { "social-security-numbers": 2 },
-  ],
-  fixedSanitizedExposures: [],
-};
-
-const dashboardSummaryWithScan: DashboardSummary = {
-  dataBreachTotalNum: 88,
-  dataBrokerTotalNum: 217,
-  dataBreachFixedNum: 0,
-  dataBrokerFixedNum: 0,
-  dataBrokerInProgressNum: 0,
-  totalExposures: 1000,
-  allExposures: {
-    emailAddresses: 0,
-    phoneNumbers: 8,
-    addresses: 90,
-    familyMembers: 29,
-    fullNames: 98,
-    socialSecurityNumbers: 0,
-    ipAddresses: 0,
-    passwords: 0,
-    creditCardNumbers: 40,
-    pins: 0,
-    securityQuestions: 40,
-    bankAccountNumbers: 0,
-  },
-  sanitizedExposures: [
-    { "physical-addresses": 90 },
-    { "family-members-names": 29 },
-    { "full-name": 98 },
-    { "phone-numbers": 8 },
-    { "other-data-class": 80 },
-  ],
-  fixedExposures: {
-    emailAddresses: 0,
-    phoneNumbers: 0,
-    addresses: 0,
-    familyMembers: 0,
-    fullNames: 0,
-    socialSecurityNumbers: 0,
-    ipAddresses: 0,
-    passwords: 0,
-    creditCardNumbers: 0,
-    pins: 0,
-    securityQuestions: 0,
-    bankAccountNumbers: 0,
-  },
-  fixedSanitizedExposures: [],
-};
-
-const mockSession = {
-  expires: new Date().toISOString(),
-  user: { email: "example@example.com" },
-};
-
-export const DashboardWithScan: Story = {
-  render: () => (
-    <Shell l10n={getEnL10nSync()} session={mockSession}>
-      <DashboardEl
-        countryCode="nl"
-        user={mockSession.user}
-        userBreaches={breachItemArraySample}
-        userScanData={{ scan: scanSample, results: scannedResultsArraySample }}
-        isEligibleForFreeScan={false}
-        locale={"en"}
-        bannerData={dashboardSummaryWithScan}
-        featureFlagsEnabled={{
-          FreeBrokerScan: true,
-          PremiumBrokerRemoval: true,
-        }}
-      />
-    </Shell>
-  ),
-};
-
-export const DashboardWithScanUserFromUs: Story = {
-  name: "Dashboard with scan, user from US",
-  render: () => (
-    <Shell l10n={getEnL10nSync()} session={mockSession}>
-      <DashboardEl
-        countryCode="us"
-        user={mockSession.user}
-        userBreaches={breachItemArraySample}
-        userScanData={{ scan: scanSample, results: scannedResultsArraySample }}
-        isEligibleForFreeScan={true}
-        locale={"en"}
-        bannerData={dashboardSummaryWithScan}
-        featureFlagsEnabled={{
-          FreeBrokerScan: true,
-          PremiumBrokerRemoval: true,
-        }}
-      />
-    </Shell>
-  ),
-};
-
-export const DashboardWithoutScan: Story = {
-  name: "Dashboard without scan",
-  render: () => (
-    <Shell l10n={getEnL10nSync()} session={mockSession}>
-      <DashboardEl
-        countryCode="nl"
-        user={mockSession.user}
-        userBreaches={breachItemArraySample}
-        userScanData={{ scan: null, results: [] }}
-        isEligibleForFreeScan={false}
-        locale={"en"}
-        bannerData={dashboardSummaryNoScan}
-        featureFlagsEnabled={{
-          FreeBrokerScan: true,
-          PremiumBrokerRemoval: true,
-        }}
-      />
-    </Shell>
-  ),
-};
-
-export const DashboardWithoutScanUserFromUs: Story = {
-  name: "Dashboard without scan, user from US",
-  render: () => (
-    <Shell l10n={getEnL10nSync()} session={mockSession}>
-      <DashboardEl
-        countryCode="us"
-        user={{ email: "example@example.com" }}
-        userBreaches={breachItemArraySample}
-        userScanData={{ scan: null, results: [] }}
-        isEligibleForFreeScan={true}
-        locale={"en"}
-        bannerData={dashboardSummaryNoScan}
-        featureFlagsEnabled={{
-          FreeBrokerScan: true,
-          PremiumBrokerRemoval: true,
-        }}
-      />
-    </Shell>
-  ),
-};
-
-export const DashboardEmptyListState: Story = {
-  render: () => (
-    <Shell l10n={getEnL10nSync()} session={mockSession}>
-      <DashboardEl
-        countryCode="us"
-        user={mockSession.user}
-        userBreaches={breachItemArraySample}
-        userScanData={{ scan: null, results: [] }}
-        isEligibleForFreeScan={true}
-        locale={"en"}
-        bannerData={dashboardSummaryNoScan}
-        featureFlagsEnabled={{
-          FreeBrokerScan: true,
-          PremiumBrokerRemoval: true,
-        }}
-      />
-    </Shell>
-  ),
-};
-
-export const DashboardFreeUser: Story = {
-  render: () => (
-    <Shell l10n={getEnL10nSync()} session={mockSession}>
-      <DashboardEl
-        countryCode="us"
-        user={{ email: "example@example.com" }}
-        userBreaches={breachItemArraySample}
-        userScanData={{ scan: scanSample, results: scannedResultsArraySample }}
-        isEligibleForFreeScan={true}
-        locale={"en"}
-        bannerData={dashboardSummaryWithScan}
-        featureFlagsEnabled={{
-          FreeBrokerScan: true,
-          PremiumBrokerRemoval: true,
-        }}
-      />
-    </Shell>
-  ),
-};
-
-export const DashboardFreeUserAllResolved: Story = {
-  render: () => (
-    <Shell l10n={getEnL10nSync()} session={mockSession}>
-      <DashboardEl
-        countryCode="us"
-        user={{ email: "example@example.com" }}
-        userBreaches={[]}
-        userScanData={{
-          scan: scanSample,
-          results: scannedResolvedResultsArraySample,
-        }}
-        isEligibleForFreeScan={true}
-        locale={"en"}
-        bannerData={dashboardSummaryWithScan}
-        featureFlagsEnabled={{
-          FreeBrokerScan: true,
-          PremiumBrokerRemoval: true,
-        }}
-      />
-    </Shell>
-  ),
-};
-
-export const DashboardPremiumUser: Story = {
-  render: () => {
-    const userData = createUserWithPremiumSubscription();
-    return (
-      <Shell
-        l10n={getEnL10nSync()}
-        session={{ ...mockSession, user: userData }}
-      >
-        <DashboardEl
-          countryCode="us"
-          user={userData}
-          userBreaches={breachItemArraySample}
-          userScanData={{
-            scan: scanSample,
-            results: scannedResultsArraySample,
-          }}
-          isEligibleForFreeScan={true}
-          locale={"en"}
-          bannerData={dashboardSummaryWithScan}
-          featureFlagsEnabled={{
-            FreeBrokerScan: true,
-            PremiumBrokerRemoval: true,
-          }}
-        />
-      </Shell>
-    );
+export const DashboardNonUsNoBreaches: Story = {
+  name: "Non-US user, with 0 breaches",
+  args: {
+    countryCode: "nl",
+    breaches: "empty",
   },
 };
 
-export const DashboardPremiumUserAllResolved: Story = {
-  render: () => {
-    const userData = createUserWithPremiumSubscription();
-    return (
-      <Shell
-        l10n={getEnL10nSync()}
-        session={{ ...mockSession, user: userData }}
-      >
-        <DashboardEl
-          countryCode="us"
-          user={userData}
-          userBreaches={[]}
-          userScanData={{
-            scan: scanSample,
-            results: scannedResolvedResultsArraySample,
-          }}
-          isEligibleForFreeScan={true}
-          locale={"en"}
-          bannerData={dashboardSummaryWithScan}
-          featureFlagsEnabled={{
-            FreeBrokerScan: true,
-            PremiumBrokerRemoval: true,
-          }}
-        />
-      </Shell>
-    );
+export const DashboardNonUsUnresolvedBreaches: Story = {
+  name: "Non-US user, with unresolved breaches",
+  args: {
+    countryCode: "nl",
+    breaches: "unresolved",
   },
 };
 
-export const DashboardNoSession: Story = {
-  render: () => (
-    <Shell l10n={getEnL10nSync()} session={null}>
-      <DashboardEl
-        countryCode="us"
-        user={{ email: "example@example.com" }}
-        userBreaches={breachItemArraySample}
-        userScanData={{ scan: scanSample, results: scannedResultsArraySample }}
-        isEligibleForFreeScan={false}
-        locale={"en"}
-        bannerData={dashboardSummaryWithScan}
-        featureFlagsEnabled={{
-          FreeBrokerScan: true,
-          PremiumBrokerRemoval: true,
-        }}
-      />
-    </Shell>
-  ),
+export const DashboardNonUsResolvedBreaches: Story = {
+  name: "Non-US user, with all breaches resolved",
+  args: {
+    countryCode: "nl",
+    breaches: "resolved",
+  },
+};
+
+export const DashboardUsNoPremiumNoScanNoBreaches: Story = {
+  name: "US user, without Premium, without scan, with 0 breaches",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "empty",
+    brokers: "no-scan",
+  },
+};
+
+export const DashboardUsNoPremiumNoScanUnresolvedBreaches: Story = {
+  name: "US user, without Premium, without scan, with unresolved breaches",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "unresolved",
+    brokers: "no-scan",
+  },
+};
+
+export const DashboardUsNoPremiumNoScanResolvedBreaches: Story = {
+  name: "US user, without Premium, without scan, with all breaches resolved",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "resolved",
+    brokers: "no-scan",
+  },
+};
+
+export const DashboardUsNoPremiumEmptyScanNoBreaches: Story = {
+  name: "US user, without Premium, with 0 scan results, with 0 breaches",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "empty",
+    brokers: "empty",
+  },
+};
+
+export const DashboardUsNoPremiumEmptyScanUnresolvedBreaches: Story = {
+  name: "US user, without Premium, with 0 scan results, with unresolved breaches",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "unresolved",
+    brokers: "empty",
+  },
+};
+
+export const DashboardUsNoPremiumEmptyScanResolvedBreaches: Story = {
+  name: "US user, without Premium, with 0 scan results, with all breaches resolved",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "resolved",
+    brokers: "empty",
+  },
+};
+
+export const DashboardUsNoPremiumUnresolvedScanNoBreaches: Story = {
+  name: "US user, without Premium, with unresolved scan results, with 0 breaches",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "empty",
+    brokers: "unresolved",
+  },
+};
+
+export const DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches: Story = {
+  name: "US user, without Premium, with unresolved scan results, with unresolved breaches",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "unresolved",
+    brokers: "unresolved",
+  },
+};
+
+export const DashboardUsNoPremiumUnresolvedScanResolvedBreaches: Story = {
+  name: "US user, without Premium, with unresolved scan results, with all breaches resolved",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "resolved",
+    brokers: "unresolved",
+  },
+};
+
+export const DashboardUsNoPremiumResolvedScanNoBreaches: Story = {
+  name: "US user, without Premium, with all scan results resolved, with 0 breaches",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "empty",
+    brokers: "resolved",
+  },
+};
+
+export const DashboardUsNoPremiumResolvedScanUnresolvedBreaches: Story = {
+  name: "US user, without Premium, with all scan results resolved, with unresolved breaches",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "unresolved",
+    brokers: "resolved",
+  },
+};
+
+export const DashboardUsNoPremiumResolvedScanResolvedBreaches: Story = {
+  name: "US user, without Premium, with all scan results resolved, with all breaches resolved",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "resolved",
+    brokers: "resolved",
+  },
+};
+
+export const DashboardUsPremiumNoScanNoBreaches: Story = {
+  name: "US user, with Premium, without scan, with 0 breaches",
+  args: {
+    countryCode: "us",
+    premium: true,
+    breaches: "empty",
+    brokers: "no-scan",
+  },
+};
+
+export const DashboardUsPremiumNoScanUnresolvedBreaches: Story = {
+  name: "US user, with Premium, without scan, with unresolved breaches",
+  args: {
+    countryCode: "us",
+    premium: true,
+    breaches: "unresolved",
+    brokers: "no-scan",
+  },
+};
+
+export const DashboardUsPremiumNoScanResolvedBreaches: Story = {
+  name: "US user, with Premium, without scan, with all breaches resolved",
+  args: {
+    countryCode: "us",
+    premium: true,
+    breaches: "resolved",
+    brokers: "no-scan",
+  },
+};
+
+export const DashboardUsPremiumEmptyScanNoBreaches: Story = {
+  name: "US user, with Premium, with 0 scan results, with 0 breaches",
+  args: {
+    countryCode: "us",
+    premium: true,
+    breaches: "empty",
+    brokers: "empty",
+  },
+};
+
+export const DashboardUsPremiumEmptyScanUnresolvedBreaches: Story = {
+  name: "US user, with Premium, with 0 scan results, with unresolved breaches",
+  args: {
+    countryCode: "us",
+    premium: true,
+    breaches: "unresolved",
+    brokers: "empty",
+  },
+};
+
+export const DashboardUsPremiumEmptyScanResolvedBreaches: Story = {
+  name: "US user, with Premium, with 0 scan results, with all breaches resolved",
+  args: {
+    countryCode: "us",
+    premium: true,
+    breaches: "resolved",
+    brokers: "empty",
+  },
+};
+
+export const DashboardUsPremiumUnresolvedScanNoBreaches: Story = {
+  name: "US user, with Premium, with unresolved scan results, with 0 breaches",
+  args: {
+    countryCode: "us",
+    premium: true,
+    breaches: "empty",
+    brokers: "unresolved",
+  },
+};
+
+export const DashboardUsPremiumUnresolvedScanUnresolvedBreaches: Story = {
+  name: "US user, with Premium, with unresolved scan results, with unresolved breaches",
+  args: {
+    countryCode: "us",
+    premium: true,
+    breaches: "unresolved",
+    brokers: "unresolved",
+  },
+};
+
+export const DashboardUsPremiumUnresolvedScanResolvedBreaches: Story = {
+  name: "US user, with Premium, with unresolved scan results, with all breaches resolved",
+  args: {
+    countryCode: "us",
+    premium: true,
+    breaches: "resolved",
+    brokers: "unresolved",
+  },
+};
+
+export const DashboardUsPremiumResolvedScanNoBreaches: Story = {
+  name: "US user, with Premium, with all scan results resolved, with 0 breaches",
+  args: {
+    countryCode: "us",
+    premium: true,
+    breaches: "empty",
+    brokers: "resolved",
+  },
+};
+
+export const DashboardUsPremiumResolvedScanUnresolvedBreaches: Story = {
+  name: "US user, with Premium, with all scan results resolved, with unresolved breaches",
+  args: {
+    countryCode: "us",
+    premium: true,
+    breaches: "unresolved",
+    brokers: "resolved",
+  },
+};
+
+export const DashboardUsPremiumResolvedScanResolvedBreaches: Story = {
+  name: "US user, with Premium, with all scan results resolved, with all breaches resolved",
+  args: {
+    countryCode: "us",
+    premium: true,
+    breaches: "resolved",
+    brokers: "resolved",
+  },
 };

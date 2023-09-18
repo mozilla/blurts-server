@@ -60,7 +60,7 @@ const exposureKeyMap: Record<string, string> = {
   bankAccountNumbers: "bank-account-numbers",
 };
 
-export function dashboardSummary(
+export function getDashboardSummary(
   scannedResults: OnerepScanResultRow[],
   subscriberBreaches: SubscriberBreach[]
 ): DashboardSummary {
