@@ -10,16 +10,14 @@ import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { useL10n } from "../../hooks/l10n";
 import { ScanResult } from "../../functions/server/onerep";
 
-type ScannedExposureCategoryProps = {
+type DataBrokerDataClassProps = {
   scanResultData: ScanResult;
   exposureCategoryLabel: string;
   num: number;
   icon: ReactElement;
 };
 
-export const ScannedExposureCategory = (
-  props: ScannedExposureCategoryProps
-) => {
+export const DataBrokerDataClass = (props: DataBrokerDataClassProps) => {
   const emailsList = (
     <ul className={styles.emailsList}>
       {props.scanResultData.emails.map((email: string, index: number) => (
@@ -39,13 +37,13 @@ export const ScannedExposureCategory = (
   );
 };
 
-type BreachExposureCategoryProps = {
+type BreachDataClassProps = {
   subscriberBreachData: SubscriberBreach;
   exposureCategoryLabel: string;
   icon: ReactElement;
 };
 
-export const BreachExposureCategory = (props: BreachExposureCategoryProps) => {
+export const BreachDataClass = (props: BreachDataClassProps) => {
   const emailLength = props.subscriberBreachData.emailsEffected.length;
 
   const emailsList = (
