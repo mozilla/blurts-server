@@ -50,7 +50,7 @@ const GuestLayout = async (props: Props) => {
   }
 
   // TODO For initial A/A testing `features` is unused.
-  //@ts-ignore TODO features is declared but its value is never read
+  // @ts-ignore TODO features is declared but its value is never read
   const features = await getExperiments(userId);
 
   return (

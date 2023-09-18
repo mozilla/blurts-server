@@ -19,6 +19,7 @@ import { getL10n } from "../../../functions/server/l10n";
 import { authOptions } from "../../../api/utils/auth";
 import { getNonce } from "../../functions/server/getNonce";
 import { PageLoadEvent } from "../../components/client/PageLoadEvent";
+import { getExperiments } from "../../../functions/server/getExperiments";
 export type Props = {
   children: ReactNode;
 };
@@ -46,7 +47,7 @@ const MainLayout = async (props: Props) => {
   }
 
   // TODO For initial A/A testing `features` is unused.
-  //@ts-ignore TODO features is declared but its value is never read
+  // @ts-ignore TODO features is declared but its value is never read
   const features = await getExperiments(userId);
 
   const l10n = getL10n();
