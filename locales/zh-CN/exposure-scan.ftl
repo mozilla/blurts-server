@@ -20,5 +20,5 @@ exposure-landing-result-some-hero-lead = 登录以获取关于如何解决这些
 exposure-landing-result-some-hero-cta-label = 登录以解决数据泄漏问题
 exposure-landing-result-some-footer-cta-label = 登录以解决数据泄漏问题
 exposure-landing-result-none-hero-lead = 好消息！没有发现已知的数据泄漏问题。通过注册接收新的数据泄漏警报来保持安全。我们将继续监控此电子邮件地址，如果它出现在新的数据泄漏事件中，就会通知您。
-exposure-landing-result-none-hero-cta-label = 在有新的数据外泄事件时，接收警报。
+exposure-landing-result-none-hero-cta-label = 接收新外泄事件警报
 exposure-landing-result-none-footer-cta-label = 订阅警报
