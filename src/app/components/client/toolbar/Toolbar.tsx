@@ -10,7 +10,7 @@ import { AppPicker } from "./AppPicker";
 import PremiumBadge from "../../client/PremiumBadge";
 
 export type Props = {
-  user: Session["user"] | null;
+  user: Session["user"];
   children?: ReactNode;
 };
 
