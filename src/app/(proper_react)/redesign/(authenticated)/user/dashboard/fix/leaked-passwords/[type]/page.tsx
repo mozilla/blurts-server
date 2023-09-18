@@ -4,26 +4,26 @@
 
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { SecurityRecommendationsLayout } from "../SecurityRecommendationsLayout";
-import { getSecurityRecommendationsByType } from "../securityRecommendationsData";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
-import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
 import {
   getL10n,
   getLocale,
 } from "../../../../../../../../functions/server/l10n";
+import { LeakedPasswordsLayout } from "../LeakedPasswordsLayout";
+import { getLeakedPasswords } from "../leakedPasswordsData";
+import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 
-interface SecurityRecommendationsProps {
+interface LeakedPasswordsProps {
   params: {
     type: string;
   };
 }
 
-export default async function SecurityRecommendations({
+export default async function LeakedPasswords({
   params,
-}: SecurityRecommendationsProps) {
+}: LeakedPasswordsProps) {
   const session = await getServerSession(authOptions);
   const locale = getLocale();
   if (!session?.user?.subscriber?.id) {
@@ -38,7 +38,7 @@ export default async function SecurityRecommendations({
   );
 
   const { type } = params;
-  const pageData = getSecurityRecommendationsByType({
+  const pageData = getLeakedPasswords({
     dataType: type,
     breaches: guidedExperienceBreaches,
   });
@@ -48,7 +48,7 @@ export default async function SecurityRecommendations({
   }
 
   return (
-    <SecurityRecommendationsLayout
+    <LeakedPasswordsLayout
       label={l10n.getString("security-recommendation-steps-label")}
       pageData={pageData}
       locale={locale}

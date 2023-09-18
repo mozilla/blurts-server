@@ -43,6 +43,7 @@ export type Props = {
   userScannedResults: ScanResult[];
   isEligibleForFreeScan: boolean;
   countryCode?: string;
+  isAllFixed?: boolean;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -158,7 +159,7 @@ export const View = (props: Props) => {
     if (isScanResultItemsEmpty) {
       contentType = "DataBrokerScanUpsellContent";
     } else if (
-      !noUnresolvedExposures &&
+      (!noUnresolvedExposures || !props.isAllFixed) &&
       props.countryCode &&
       props.countryCode.toLocaleLowerCase() === "us"
     ) {
@@ -172,6 +173,7 @@ export const View = (props: Props) => {
     props.countryCode?.toLocaleLowerCase() === "us" &&
     noUnresolvedExposures &&
     !isScanResultItemsEmpty &&
+    props.isAllFixed &&
     !hasPremium(props.user)
   ) {
     contentType = "YourDataIsProtectedAllFixedContent";

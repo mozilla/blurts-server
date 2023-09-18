@@ -4,96 +4,64 @@
 
 "use client";
 
-import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
-import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
-import { useL10n } from "../../../../../../../hooks/l10n";
+import Link from "next/link";
 import { ResolutionContainer } from "../ResolutionContainer";
-import { HighRiskBreachContent } from "./HighRiskBreachContent";
 import { ResolutionContent } from "../ResolutionContent";
 import { Button } from "../../../../../../../components/server/Button";
-import Link from "next/link";
+import { useL10n } from "../../../../../../../hooks/l10n";
+import { HighRiskBreach } from "./highRiskBreachData";
 
-type HighRiskBreachLayoutProps = {
-  typeOfBreach: "creditCard" | "ssnBreaches" | "bankAccount" | "pin" | "none";
-  breachData: GuidedExperienceBreaches;
+export type HighRiskBreachLayoutProps = {
   locale: string;
+  pageData: HighRiskBreach;
 };
 
-export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
+export function HighRiskBreachLayout({
+  pageData,
+  locale,
+}: HighRiskBreachLayoutProps) {
   const l10n = useL10n();
-  const highRiskDataBreaches = props.breachData.highRisk;
-  let exposedData: SubscriberBreach[] = [];
-
-  if (props.breachData) {
-    switch (props.typeOfBreach) {
-      case "ssnBreaches":
-        exposedData = highRiskDataBreaches.ssnBreaches;
-        break;
-      case "creditCard":
-        exposedData = highRiskDataBreaches.creditCardBreaches;
-        break;
-      case "bankAccount":
-        exposedData = highRiskDataBreaches.bankBreaches;
-        break;
-      case "pin":
-        exposedData = highRiskDataBreaches.pinBreaches;
-        break;
-      case "none":
-      default:
-        exposedData = [];
-        break;
-    }
-  }
-
-  const hasBreaches = props.typeOfBreach !== "none";
-  const cta = (
-    <>
-      <Button
-        variant="primary"
-        small
-        // TODO: Add test once MNTOR-1700 logic is added
-        /* c8 ignore next 3 */
-        onClick={() => {
-          // TODO: MNTOR-1700 Add routing logic + fix event here
-        }}
-      >
-        {hasBreaches
-          ? l10n.getString("high-risk-breach-mark-as-fixed")
-          : l10n.getString("high-risk-breach-none-continue")}
-      </Button>
-      {hasBreaches && (
-        <Link
-          // TODO: Add test once MNTOR-1700 logic is added
-          /* c8 ignore next */
-          href="/"
-        >
-          {l10n.getString("high-risk-breach-skip")}
-        </Link>
-      )}
-    </>
-  );
-
-  const highRiskBreachContent = HighRiskBreachContent({
-    locale: props.locale,
-    typeOfBreach: props.typeOfBreach,
-    numBreaches: exposedData.length,
-  });
+  const { title, illustration, content, exposedData, type } = pageData;
+  const hasBreaches = type !== "none";
 
   return (
     <ResolutionContainer
-      type="highRisk"
-      title={highRiskBreachContent.title}
-      illustration={highRiskBreachContent.illustration}
-      cta={cta}
+      type="securityRecommendations"
+      title={title}
+      illustration={illustration}
+      cta={
+        <>
+          <Button
+            variant="primary"
+            small
+            // TODO: Add test once MNTOR-1700 logic is added
+            /* c8 ignore next 3 */
+            onClick={() => {
+              // TODO: MNTOR-1700 Add routing logic + fix event here
+            }}
+          >
+            {hasBreaches
+              ? l10n.getString("high-risk-breach-mark-as-fixed")
+              : l10n.getString("high-risk-breach-none-continue")}
+          </Button>
+          {hasBreaches && (
+            <Link
+              // TODO: Add test once MNTOR-1700 logic is added
+              /* c8 ignore next */
+              href="/"
+            >
+              {l10n.getString("high-risk-breach-skip")}
+            </Link>
+          )}
+        </>
+      }
       estimatedTime={hasBreaches ? 15 : undefined}
     >
-      {hasBreaches && (
-        <ResolutionContent
-          content={highRiskBreachContent}
-          exposedData={exposedData}
-          locale={props.locale}
-        />
-      )}
+      <ResolutionContent
+        content={content}
+        exposedData={exposedData}
+        locale={locale}
+      />
     </ResolutionContainer>
   );
-};
+}

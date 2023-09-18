@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Knex } from "knex";
-import { ScanResult } from "./app/functions/server/onerep";
+import { ScanResult, Scan } from "./app/functions/server/onerep";
 import { StateAbbr } from "./utils/states";
 
 // See https://knexjs.org/guide/#typescript
@@ -150,7 +150,7 @@ declare module "knex/types/tables" {
     onerep_profile_id: number;
     onerep_scan_id: number;
     onerep_scan_results: ScanResult;
-    onerep_scan_reason: "manual" | "initial" | "monitoring";
+    onerep_scan_reason: Scan["reason"];
     created_at: Date;
     updated_at: Date;
   }
