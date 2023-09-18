@@ -32,7 +32,7 @@ const MainLayout = async (props: Props) => {
   const accountId = session?.user?.subscriber?.fxa_uid;
 
   let userId;
-  if (accountId) {
+  if (typeof accountId === "number") {
     // If the user is logged in, use a UUID based on the user's subscriber ID.
     // Note: we may want to use the FxA UID here, but we need approval for that first.
     // No need to store in a cookie - this is derived from subscriber ID.
