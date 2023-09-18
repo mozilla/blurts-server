@@ -54,6 +54,10 @@
     padding: $spacing-sm $spacing-md;
   }
 
+  &.wide {
+    padding: $spacing-md $spacing-2xl;
+  }
+
   &.disabled {
     opacity: 0.3;
     pointer-events: none;
