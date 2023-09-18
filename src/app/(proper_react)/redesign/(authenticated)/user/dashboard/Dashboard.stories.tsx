@@ -16,16 +16,27 @@ import {
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 import { LatestOnerepScanData } from "../../../../../../db/tables/onerep_scans";
 
+const brokerOptions = {
+  "no-scan": "No scan started",
+  empty: "No scan results",
+  unresolved: "With unresolved scan results",
+  resolved: "All scan results resolved",
+};
+const breachOptions = {
+  empty: "No data breaches",
+  unresolved: "With unresolved data breaches",
+  resolved: "All data breaches resolved",
+};
 type DashboardWrapperProps = (
   | {
       countryCode: "us";
-      brokers: "no-scan" | "empty" | "unresolved" | "resolved";
+      brokers: keyof typeof brokerOptions;
       premium: boolean;
     }
   | {
       countryCode: "nl";
     }
-) & { breaches: "empty" | "unresolved" | "resolved" };
+) & { breaches: keyof typeof breachOptions };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
     dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
@@ -124,6 +135,23 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
 const meta: Meta<typeof DashboardWrapper> = {
   title: "Pages/Dashboard",
   component: DashboardWrapper,
+  argTypes: {
+    brokers: {
+      options: Object.keys(brokerOptions),
+      description: "Scan results",
+      control: {
+        type: "radio",
+        labels: brokerOptions,
+      },
+    },
+    breaches: {
+      options: Object.keys(breachOptions),
+      control: {
+        type: "radio",
+        labels: breachOptions,
+      },
+    },
+  },
 };
 export default meta;
 type Story = StoryObj<typeof DashboardWrapper>;
