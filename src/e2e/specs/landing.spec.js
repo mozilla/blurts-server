@@ -76,7 +76,7 @@ test.describe('Landing Page Functionality Verification', () => {
     await page.route('**/api/v1/scan/', (route) => {
          route.fulfill({
           status: 200,
-            body: JSON.stringify({"success":true,"breaches":[],"total":0,"heading":"We found (mocked) <span class=\"breach-result-email\">⁨⁩</span> exposed in <span class=\"breach-result-count\">⁨0⁩</span> data breaches.","dataClassStrings":[],"logos":[]}),
+            body: JSON.stringify({"success":true,"breaches":[],"total":0,"heading":"We found (mocked) <span class=\"breach-result-email\"></span> exposed in <span class=\"breach-result-count\"></span> data breaches.","dataClassStrings":[],"logos":[]}),
         });
     });
 
