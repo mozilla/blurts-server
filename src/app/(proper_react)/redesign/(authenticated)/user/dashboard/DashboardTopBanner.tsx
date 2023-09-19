@@ -150,6 +150,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
             // do something
           }}
           small
+          disabled
           variant="primary"
         >
           {l10n.getString("dashboard-top-banner-lets-keep-protecting-cta")}

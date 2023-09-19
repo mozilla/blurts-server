@@ -8,7 +8,7 @@ import { captureException } from "@sentry/node";
 import crypto from "crypto";
 
 import { setOnerepScanResults } from "../../../../db/tables/onerep_scans";
-import { getAllScanResults } from "../../../functions/server/onerep";
+import { getAllScanResults, Scan } from "../../../functions/server/onerep";
 
 interface OnerepWebhookRequest {
   id: number;
@@ -19,7 +19,7 @@ interface OnerepWebhookRequest {
       id: number;
       profile_id: number;
       status: "finished";
-      reason: "manual" | "initial" | "monitoring";
+      reason: Scan["reason"];
       created_at: string;
       updated_at: string;
       url: string;

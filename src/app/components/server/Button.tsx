@@ -16,6 +16,7 @@ export interface Props extends ComponentProps<"button"> {
   href?: string;
   isLoading?: boolean;
   small?: boolean;
+  wide?: boolean;
 }
 
 export const Button = (
@@ -30,6 +31,7 @@ export const Button = (
     href,
     isLoading,
     small,
+    wide,
     ...otherProps
   } = props;
 
@@ -49,6 +51,7 @@ export const Button = (
     // Ignored for test coverage; not used in tested pages yet:
     /* c8 ignore next */
     disabled && styles.disabled,
+    wide && styles.wide,
     className,
   ]
     .filter(Boolean)

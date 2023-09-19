@@ -80,11 +80,11 @@ function PremiumUpsellDialogContent() {
     },
   ];
 
-  const premiumSubscriptionUrl =
-    process.env.FXA_SUBSCRIPTIONS_URL &&
-    process.env.PREMIUM_PRODUCT_ID &&
-    process.env.PREMIUM_PLAN_ID_US &&
-    `${process.env.FXA_SUBSCRIPTIONS_URL}/products/${process.env.PREMIUM_PRODUCT_ID}?plan=${process.env.PREMIUM_PLAN_ID_US}`;
+  const premiumSubscriptionUrl = `${
+    process.env.FXA_SUBSCRIPTIONS_URL as string
+  }/products/${process.env.PREMIUM_PRODUCT_ID as string}?plan=${
+    process.env.PREMIUM_PLAN_ID_US as string
+  }`;
 
   return (
     <div className={styles.modalContent}>

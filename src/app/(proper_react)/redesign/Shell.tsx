@@ -15,7 +15,7 @@ import { ExtendedReactLocalization } from "../../hooks/l10n";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
-  session: Session | null;
+  session: Session;
   children: ReactNode;
 };
 

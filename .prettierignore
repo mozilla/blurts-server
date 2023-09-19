@@ -20,3 +20,6 @@ src/middleware/
 # These should be ignored anyway
 coverage/
 playwright-report/
+
+# Ignore Glean generated files
+src/telemetry/generated/

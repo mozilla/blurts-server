@@ -57,11 +57,15 @@ function generateCspData() {
   const cspHeaderParts = [
     "default-src 'self'",
     "base-uri 'self'",
-    `script-src 'self' 'nonce-${nonce}' https://*.googletagmanager.com`,
+    `script-src 'self' ` +
+      (process.env.NODE_ENV === "development"
+        ? "'unsafe-eval' 'unsafe-inline'"
+        : `'nonce-${nonce}'`) +
+      ` https://*.googletagmanager.com`,
     "script-src-attr 'none'",
     `connect-src 'self' ${
       process.env.NODE_ENV === "development" ? "webpack://*" : ""
-    } https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.ingest.sentry.io`,
+    } https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.ingest.sentry.io https://incoming.telemetry.mozilla.org`,
     // `withSentryConfig` in next.config.js messes up the type, but we know that
     // it's a valid NextConfig with `images.remotePatterns` set:
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion

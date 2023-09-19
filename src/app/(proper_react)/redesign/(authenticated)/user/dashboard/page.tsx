@@ -52,6 +52,9 @@ export default async function DashboardPage() {
     session.user
   );
   const featureFlagsEnabled = { FreeBrokerScan, PremiumBrokerRemoval };
+  const isAllFixed =
+    summary.dataBreachFixedNum === summary.dataBreachTotalNum &&
+    summary.dataBrokerFixedNum === summary.dataBrokerTotalNum;
 
   return (
     <View
@@ -63,6 +66,7 @@ export default async function DashboardPage() {
       locale={locale}
       bannerData={summary}
       featureFlagsEnabled={featureFlagsEnabled}
+      isAllFixed={isAllFixed}
     />
   );
 }

@@ -22,13 +22,14 @@ import {
 } from "../../../../../components/client/ExposuresFilter";
 import { ScanResult } from "../../../../../functions/server/onerep";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
-import { StatusPillType } from "../../../../../components/server/StatusPill";
+import { getExposureStatus } from "../../../../../components/server/StatusPill";
 import { TabList } from "../../../../../components/client/TabList";
 import AllFixedLogo from "./images/dashboard-all-fixed.svg";
 import { FeatureFlagsEnabled } from "../../../../../functions/server/featureFlags";
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 import { hasPremium } from "../../../../../functions/universal/user";
+import { parseIso8601Datetime } from "../../../../../../utils/parse";
 
 export type Props = {
   bannerData: DashboardSummary;
@@ -42,6 +43,7 @@ export type Props = {
   userScannedResults: ScanResult[];
   isEligibleForFreeScan: boolean;
   countryCode?: string;
+  isAllFixed?: boolean;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -67,13 +69,7 @@ export const View = (props: Props) => {
   ];
   const isActionNeededTab = selectedTab === "action-needed";
 
-  const dateObject = (isoString: string): Date => {
-    return new Date(isoString);
-  };
-
-  const breachesDataArray = props.userBreaches
-    .map((elem: SubscriberBreach) => elem)
-    .flat();
+  const breachesDataArray = props.userBreaches.flat();
   const scannedResultsDataArray =
     // TODO: Add unit test when changing this code:
     /* c8 ignore next */
@@ -85,36 +81,17 @@ export const View = (props: Props) => {
   // Sort in descending order
   const arraySortedByDate = combinedArray.sort((a, b) => {
     const dateA =
-      (a as SubscriberBreach).addedDate || (a as ScanResult).created_at;
+      (a as SubscriberBreach).addedDate ||
+      parseIso8601Datetime((a as ScanResult).created_at);
     const dateB =
-      (b as SubscriberBreach).addedDate || (b as ScanResult).created_at;
+      (b as SubscriberBreach).addedDate ||
+      parseIso8601Datetime((b as ScanResult).created_at);
 
-    const timestampA = new Date(dateA).getTime();
-    const timestampB = new Date(dateB).getTime();
+    const timestampA = dateA.getTime();
+    const timestampB = dateB.getTime();
 
     return timestampB - timestampA;
   });
-
-  const getExposureStatus = (exposure: Exposure): StatusPillType => {
-    if (isScanResult(exposure)) {
-      switch (exposure.status) {
-        // TODO: Add unit test when changing this code:
-        /* c8 ignore next 2 */
-        case "removed":
-          return "fixed";
-        // TODO: Add unit test when changing this code:
-        /* c8 ignore next 2 */
-        case "waiting_for_verification":
-          return "progress";
-        default:
-          return "needAction";
-      }
-    }
-
-    // TODO: Add unit test when changing this code:
-    /* c8 ignore next */
-    return exposure.isResolved ? "fixed" : "needAction";
-  };
 
   const tabSpecificExposures = arraySortedByDate.filter(
     (exposure: Exposure) => {
@@ -128,34 +105,17 @@ export const View = (props: Props) => {
   const filteredExposures = filterExposures(tabSpecificExposures, filters);
 
   const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
-    const status = getExposureStatus(exposure);
-
-    return isScanResult(exposure) ? (
-      // Scanned result
-      <li key={`scan-${exposure.id}`} className={styles.exposureListItem}>
+    return (
+      <li
+        key={`${isScanResult(exposure) ? "scan" : "breach"}-${exposure.id}`}
+        className={styles.exposureListItem}
+      >
         <ExposureCard
           exposureData={exposure}
-          exposureName={exposure.data_broker}
-          exposureDetailsLink={exposure.link}
-          dateFound={dateObject(exposure.created_at)}
-          statusPillType={status}
           locale={props.locale}
-          color={getRandomLightNebulaColor(exposure.data_broker)}
-          featureFlagsEnabled={props.featureFlagsEnabled}
-        />
-      </li>
-    ) : (
-      // Breaches result
-      <li key={`breach-${exposure.id}`} className={styles.exposureListItem}>
-        <ExposureCard
-          exposureData={exposure}
-          exposureName={exposure.title}
-          exposureDetailsLink={`/breach-details/${exposure.name}`}
-          dateFound={dateObject(exposure.addedDate)}
-          statusPillType={status}
-          locale={props.locale}
-          color={getRandomLightNebulaColor(exposure.name)}
-          featureFlagsEnabled={props.featureFlagsEnabled}
+          isPremiumBrokerRemovalEnabled={
+            props.featureFlagsEnabled.PremiumBrokerRemoval
+          }
         />
       </li>
     );
@@ -199,7 +159,7 @@ export const View = (props: Props) => {
     if (isScanResultItemsEmpty) {
       contentType = "DataBrokerScanUpsellContent";
     } else if (
-      !noUnresolvedExposures &&
+      (!noUnresolvedExposures || !props.isAllFixed) &&
       props.countryCode &&
       props.countryCode.toLocaleLowerCase() === "us"
     ) {
@@ -213,6 +173,7 @@ export const View = (props: Props) => {
     props.countryCode?.toLocaleLowerCase() === "us" &&
     noUnresolvedExposures &&
     !isScanResultItemsEmpty &&
+    props.isAllFixed &&
     !hasPremium(props.user)
   ) {
     contentType = "YourDataIsProtectedAllFixedContent";
@@ -288,53 +249,3 @@ export const View = (props: Props) => {
     </div>
   );
 };
-
-// Same logic as breachLogo.js
-function getRandomLightNebulaColor(name: string) {
-  const colors = [
-    "#C689FF",
-    "#D9BFFF",
-    "#AB71FF",
-    "#E7DFFF",
-    "#AB71FF",
-    "#3FE1B0",
-    "#54FFBD",
-    "#88FFD1",
-    "#B3FFE3",
-    "#D1FFEE",
-    "#F770FF",
-    "#F68FFF",
-    "#F6B8FF",
-    "#00B3F4",
-    "#00DDFF",
-    "#80EBFF",
-    "#FF8450",
-    "#FFA266",
-    "#FFB587",
-    "#FFD5B2",
-    "#FF848B",
-    "#FF9AA2",
-    "#FFBDC5",
-    "#FF8AC5",
-    "#FFB4DB",
-  ];
-
-  const charValues = name.split("").map((letter) => letter.codePointAt(0));
-
-  const charSum = charValues.reduce((sum: number | undefined, codePoint) => {
-    // TODO: Add unit test when changing this code:
-    /* c8 ignore next */
-    if (codePoint === undefined) return sum;
-    if (sum === undefined) return codePoint;
-    return sum + codePoint;
-  }, undefined);
-
-  // TODO: Add unit test when changing this code:
-  /* c8 ignore next 3 */
-  if (charSum === undefined) {
-    return colors[0];
-  }
-
-  const colorIndex = charSum % colors.length;
-  return colors[colorIndex];
-}

@@ -240,7 +240,6 @@ export async function POST(request: NextRequest) {
         const oneRepProfileId = result?.[0]?.["onerep_profile_id"] as number;
 
         console.debug("fxa_subscription_change", JSON.stringify(result));
-        console.debug("fxa_subscription_change", { oneRepProfileId });
 
         // MNTOR-2103: if one rep profile id doesn't exist in the db, fail silently
         if (!oneRepProfileId) {
@@ -259,23 +258,31 @@ export async function POST(request: NextRequest) {
           break;
         }
 
-        if (
-          updatedSubscriptionFromEvent.isActive &&
-          updatedSubscriptionFromEvent.capabilities.includes(
-            MONITOR_PREMIUM_CAPABILITY
-          )
-        ) {
-          // activate and opt out profiles
-          await activateProfile(oneRepProfileId);
-          await optoutProfile(oneRepProfileId);
-        } else if (
-          !updatedSubscriptionFromEvent.isActive &&
-          updatedSubscriptionFromEvent.capabilities.includes(
-            MONITOR_PREMIUM_CAPABILITY
-          )
-        ) {
-          // deactivation stops opt out process
-          await deactivateProfile(oneRepProfileId);
+        try {
+          if (
+            updatedSubscriptionFromEvent.isActive &&
+            updatedSubscriptionFromEvent.capabilities.includes(
+              MONITOR_PREMIUM_CAPABILITY
+            )
+          ) {
+            // activate and opt out profiles
+            await activateProfile(oneRepProfileId);
+            await optoutProfile(oneRepProfileId);
+          } else if (
+            !updatedSubscriptionFromEvent.isActive &&
+            updatedSubscriptionFromEvent.capabilities.includes(
+              MONITOR_PREMIUM_CAPABILITY
+            )
+          ) {
+            // deactivation stops opt out process
+            await deactivateProfile(oneRepProfileId);
+          }
+        } catch (e) {
+          captureException(
+            new Error(`${(e as Error).message}\n
+          Event: ${event}\n
+          updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`)
+          );
         }
         break;
       }
