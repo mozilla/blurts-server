@@ -7,6 +7,7 @@
 import Image from "next/image";
 import ShieldIcon from "./assets/shield-icon.svg";
 import ShieldOutlineIcon from "./assets/shield-outline-icon.svg";
+import MozillaMonitorLogo from "../../../(proper_react)/images/mozilla-monitor-logo.webp";
 import styles from "./FalseDoorBanner.module.scss";
 import { CloseBtn } from "../../../components/server/Icons";
 import { useEffect, useState } from "react";
@@ -34,7 +35,7 @@ export const HandleFalseDoorTest = (props: HandleFalseDoorBanner) => {
     utmParams: {
       utm_source: "monitor",
       utm_medium: "monitor-product",
-      utm_content: `banner-phase-2-us_${pathname}`,
+      utm_content: `banner-phase-3-us_${pathname}`,
     },
   });
 
@@ -82,26 +83,23 @@ type FalseDoorBanner = {
 };
 export const FalseDoorBanner = (props: FalseDoorBanner) => {
   const l10n = useL10n();
-
-  const icon = props.checkIsOnDashboard ? ShieldOutlineIcon : ShieldIcon;
-
   const content = (
     <p>
-      {l10n.getString("false-door-test-phase-2-content-part-one")}
+      {l10n.getString("false-door-test-phase-3-content-part-one")}
       <br />
       {props.checkIsOnDashboard
-        ? l10n.getString("false-door-test-phase-2-content-part-two-dashboard")
-        : l10n.getString("false-door-test-phase-2-content-part-two")}
+        ? l10n.getString("false-door-test-phase-3-content-part-two-dashboard")
+        : l10n.getString("false-door-test-phase-3-content-part-two")}
     </p>
   );
 
   return (
     <div className={styles.falseDoorTestWrapper}>
       <div className={styles.content}>
-        <div className={styles.imageAndCopy}>
-          <Image src={icon} alt="" className={styles.logo} />
-          {content}
-        </div>
+        <span className={styles.logoWrapper}>
+          <Image src={MozillaMonitorLogo} alt="" className={styles.logo} />
+        </span>
+        {content}
         <Link
           id="open-button"
           className={styles.cta}
