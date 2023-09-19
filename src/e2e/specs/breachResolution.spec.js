@@ -87,6 +87,7 @@ test.describe('Breaches Dashboard - Headers', () => {
       await expect(await dataBreachPage.dataBreachesLogo).toBeVisible()
       await expect(await dataBreachPage.dataBreachesNavbarProfile).toBeVisible()
     }).toPass({
+      // this is a fluent assert timeout, used to provide quick fail if needed
       timeout: 2000
     })
   })
@@ -124,7 +125,7 @@ test.describe('Breaches Dashboard - Headers', () => {
       await expect(await dataBreachPage.dataBreachesNavbarProfileMenuHeader).toBeVisible()
 
       // head text
-      expect(await dataBreachPage.dataBreachesNavbarProfileMenuHeaderSubtitle.textContent()).toEqual('Manage your ⁨Firefox account⁩')
+      expect(await dataBreachPage.dataBreachesNavbarProfileMenuHeaderSubtitle.textContent()).toEqual('Manage your Firefox account')
 
       // check settings
       await expect(await dataBreachPage.dataBreachesNavbarProfileMenuSettings).toBeVisible()
