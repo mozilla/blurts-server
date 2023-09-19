@@ -27,7 +27,7 @@ export const PageLoadEvent = (props: Props) => {
       setCookie("userId", userId);
     }
     pageEvents.view.record({ path: pathname, user_id: userId });
-  }, [pageEvents.view, pathname, userId]);
+  }, [cookies.userId, setCookie, pageEvents.view, pathname, userId]);
 
   // This component doesn't render anything.
   return <></>;
