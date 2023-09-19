@@ -19,7 +19,7 @@ export async function setProfileDetails(
     last_name: profileData.last_name,
     city_name: profileData.addresses[0]["city"],
     state_code: profileData.addresses[0]["state"],
-    // TODO: Validate input:
+    // TODO: MNTOR-2157 Validate input:
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     date_of_birth: parseIso8601Datetime(profileData.birth_date!)!,
     // @ts-ignore knex.fn.now() results in it being set to a date,
