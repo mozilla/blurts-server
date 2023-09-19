@@ -14,7 +14,6 @@ import Meta, {
   DashboardWithoutScanUserFromUs,
   DashboardFreeUser,
   DashboardPremiumUser,
-  DashboardNoSession,
   DashboardFreeUserAllResolved,
 } from "./Dashboard.stories";
 
@@ -191,18 +190,6 @@ it("shows the premium badge if the user is a premium subscriber", () => {
   // We show a CTA on desktop in the toolbar and in the mobile menu
   const premiumBadges = screen.queryAllByText("Premium");
   expect(premiumBadges.length).toBe(2);
-});
-
-it("shows the premium upgrade cta if there is no user session", () => {
-  enablePremium();
-  const ComposedDashboard = composeStory(DashboardNoSession, Meta);
-  render(<ComposedDashboard />);
-
-  // We show a CTA on desktop in the toolbar and in the mobile menu
-  const premiumCtas = screen.queryAllByRole("button", {
-    name: "Upgrade to ⁨Premium⁩",
-  });
-  expect(premiumCtas.length).toBe(2);
 });
 
 it("shows returned free user who has resolved all tasks premium upsell and all fixed description", async () => {
