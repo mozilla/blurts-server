@@ -16,7 +16,7 @@ import HelpIcon from "../../../../client/images/icon-help.svg";
 import SignOutIcon from "../../../../client/images/icon-signout.svg";
 
 export type Props = {
-  session: Session | null;
+  session: Session;
   fxaSettingsUrl: string;
   nonce: string | undefined;
 };

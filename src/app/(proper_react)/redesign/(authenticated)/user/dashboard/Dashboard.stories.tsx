@@ -305,6 +305,7 @@ export const DashboardFreeUserAllResolved: Story = {
         userScannedResults={scannedResolvedResultsArraySample}
         isEligibleForFreeScan={true}
         locale={"en"}
+        isAllFixed={true}
         bannerData={dashboardSummaryWithScan}
         featureFlagsEnabled={{
           FreeBrokerScan: true,
@@ -339,24 +340,4 @@ export const DashboardPremiumUser: Story = {
       </Shell>
     );
   },
-};
-
-export const DashboardNoSession: Story = {
-  render: () => (
-    <Shell l10n={getEnL10nSync()} session={null}>
-      <DashboardEl
-        countryCode="us"
-        user={{ email: "example@example.com" }}
-        userBreaches={breachItemArraySample}
-        userScannedResults={scannedResultsArraySample}
-        isEligibleForFreeScan={false}
-        locale={"en"}
-        bannerData={dashboardSummaryWithScan}
-        featureFlagsEnabled={{
-          FreeBrokerScan: true,
-          PremiumBrokerRemoval: true,
-        }}
-      />
-    </Shell>
-  ),
 };

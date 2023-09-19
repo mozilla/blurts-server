@@ -5,7 +5,7 @@ rec-ssn-cta = Ejerure marandu’i viruguáva
 rec-ssn =
     Eguereko mbohapy marandu’i ñemurã reigua arýpe léipe he’iháicha. 
     ejerure ha ehechajey nombyaíri ne ñemurã. 
-    Eheka mba’ete, virujepuru térã kuatia’atã ñemurã eikuaa’ỹva.
+    Eheka mba’ete, virujeporu térã kuatia’atã ñemurã eikuaa’ỹva.
 # Recommendation subhead
 rec-pw-1-subhead = Emoambue ne ñe’ẽñemi
 # Link title
