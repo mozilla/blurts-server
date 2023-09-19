@@ -20,8 +20,8 @@ import { Scan } from "../../functions/server/onerep";
 
 export type Props = {
   data: Array<[string, number]>;
-  scanStatus: Scan["status"];
   isEligibleForFreeScan: boolean;
+  scanStatus?: Scan["status"];
 };
 
 export const DoughnutChart = ({

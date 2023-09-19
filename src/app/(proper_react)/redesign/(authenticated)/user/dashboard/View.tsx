@@ -44,7 +44,7 @@ export type Props = {
   userScannedResults: ScanResult[];
   isEligibleForFreeScan: boolean;
   countryCode?: string;
-  scanStatus: Scan["status"];
+  scanStatus?: Scan["status"];
   isAllFixed?: boolean;
 };
 

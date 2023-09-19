@@ -233,7 +233,6 @@ export const DashboardWithoutScan: Story = {
           FreeBrokerScan: true,
           PremiumBrokerRemoval: true,
         }}
-        scanStatus="finished"
       />
     </Shell>
   ),
@@ -254,7 +253,6 @@ export const DashboardWithoutScanUserFromUs: Story = {
           FreeBrokerScan: true,
           PremiumBrokerRemoval: true,
         }}
-        scanStatus="finished"
       />
     </Shell>
   ),
@@ -359,18 +357,18 @@ export const DashboardNoBreachesScanInProgress: Story = {
         session={{ ...mockSession, user: userData }}
       >
         <DashboardEl
-          scanStatus="in_progress"
           countryCode="us"
           user={userData}
           userBreaches={[]}
           userScannedResults={[]}
           isEligibleForFreeScan={false}
           locale={"en"}
-          bannerData={dashboardSummaryWithScan}
+          bannerData={{ ...dashboardSummaryNoScan, totalExposures: 0 }}
           featureFlagsEnabled={{
             FreeBrokerScan: true,
             PremiumBrokerRemoval: true,
           }}
+          scanStatus="in_progress"
         />
       </Shell>
     );
@@ -386,18 +384,18 @@ export const DashboardWithBreachesScanInProgress: Story = {
         session={{ ...mockSession, user: userData }}
       >
         <DashboardEl
-          scanStatus="in_progress"
           countryCode="us"
           user={userData}
           userBreaches={breachItemArraySample}
           userScannedResults={[]}
           isEligibleForFreeScan={false}
           locale={"en"}
-          bannerData={dashboardSummaryWithScan}
+          bannerData={dashboardSummaryNoScan}
           featureFlagsEnabled={{
             FreeBrokerScan: true,
             PremiumBrokerRemoval: true,
           }}
+          scanStatus="in_progress"
         />
       </Shell>
     );

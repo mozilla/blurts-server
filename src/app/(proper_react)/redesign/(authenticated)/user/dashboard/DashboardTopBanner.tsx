@@ -26,9 +26,9 @@ export type BannerContent =
 export type DashboardTopBannerProps = {
   content: BannerContent;
   bannerData: DashboardSummary;
-  scanStatus: Scan["status"];
   isEligibleForFreeScan: boolean;
   type: TabType;
+  scanStatus?: Scan["status"];
   ctaCallback?: () => void;
 };
 
@@ -65,29 +65,26 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       headline: l10n.getString("dashboard-top-banner-scan-in-progress-title"),
       description: (
         <>
-          <p>
-            {l10n.getFragment(
-              "dashboard-top-banner-scan-in-progress-description",
-              {
-                vars: {
-                  data_breach_total_num: totalExposures,
-                },
-                elems: {
-                  b: <strong />,
-                },
-              }
-            )}
-          </p>
+          {l10n.getFragment(
+            "dashboard-top-banner-scan-in-progress-description",
+            {
+              vars: {
+                data_breach_total_num: totalExposures,
+              },
+              elems: {
+                b: <strong />,
+              },
+            }
+          )}
           <br />
-          <p>
-            {!totalExposures
-              ? l10n.getString(
-                  "dashboard-top-banner-scan-in-progress-fix-later-hint"
-                )
-              : l10n.getString(
-                  "dashboard-top-banner-scan-in-progress-fix-now-hint"
-                )}
-          </p>
+          <br />
+          {!totalExposures
+            ? l10n.getString(
+                "dashboard-top-banner-scan-in-progress-fix-later-hint"
+              )
+            : l10n.getString(
+                "dashboard-top-banner-scan-in-progress-fix-now-hint"
+              )}
         </>
       ),
       cta: (

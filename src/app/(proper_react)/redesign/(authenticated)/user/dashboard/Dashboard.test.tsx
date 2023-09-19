@@ -15,6 +15,8 @@ import Meta, {
   DashboardFreeUser,
   DashboardPremiumUser,
   DashboardFreeUserAllResolved,
+  DashboardNoBreachesScanInProgress,
+  DashboardWithBreachesScanInProgress,
 } from "./Dashboard.stories";
 
 function enablePremium() {
@@ -213,4 +215,42 @@ it("shows returned free user who has resolved all tasks premium upsell and all f
   // click on cta
   await user.click(bannerPremiumCta[0]);
   expect(screen.getByRole("dialog")).toBeInTheDocument();
+});
+
+it("shows scan in progress indicators on the dashboard for users with breaches", () => {
+  enablePremium();
+  const ComposedDashboard = composeStory(
+    DashboardNoBreachesScanInProgress,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const bannerContent = screen.getByText("Your scan is still in progress");
+  expect(bannerContent).toBeInTheDocument();
+  const bannerContentCta = screen.getByRole("link", {
+    name: "See what’s ready now",
+  });
+  expect(bannerContentCta).toBeInTheDocument();
+  const chartPrompt = screen.getByText("Scan in progress:");
+  expect(chartPrompt).toBeInTheDocument();
+  const exposuresTableZeroStateIndicator = screen.getByText("Scan in progress");
+  expect(exposuresTableZeroStateIndicator).toBeInTheDocument();
+});
+
+it("shows scan in progress indicators on the dashboard with no breaches", () => {
+  enablePremium();
+  const ComposedDashboard = composeStory(
+    DashboardNoBreachesScanInProgress,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const bannerContent = screen.getByText("Your scan is still in progress");
+  expect(bannerContent).toBeInTheDocument();
+  const bannerContentCta = screen.getByRole("link", {
+    name: "See what’s ready now",
+  });
+  expect(bannerContentCta).toBeInTheDocument();
+  const chartPrompt = screen.getByText("Scan in progress:");
+  expect(chartPrompt).toBeInTheDocument();
 });
