@@ -55,7 +55,7 @@ async function setOnerepManualScan(
   });
 }
 
-async function setOnerepScanResults(
+async function addOnerepScanResults(
   onerepProfileId: number,
   onerepScanId: number,
   onerepScanResults: Array<ScanResult>,
@@ -118,6 +118,6 @@ export {
   getLatestOnerepScanResults,
   setOnerepProfileId,
   setOnerepManualScan,
-  setOnerepScanResults,
+  addOnerepScanResults,
   getScansCount,
 };
