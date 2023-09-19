@@ -29,7 +29,7 @@ const GuestLayout = async (props: Props) => {
   const accountId = session?.user?.subscriber?.fxa_uid;
   let userId = "";
 
-  if (accountId) {
+  if (accountId && typeof accountId === "string") {
     // If the user is logged in, use a UUID based on the user's subscriber ID.
     // Note: we may want to use the FxA UID here, but we need approval for that first.
     if (process.env.NIMBUS_UUID_NAMESPACE) {
