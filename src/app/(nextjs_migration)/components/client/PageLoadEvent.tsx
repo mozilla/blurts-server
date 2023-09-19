@@ -18,16 +18,14 @@ export const PageLoadEvent = (props: Props) => {
   const [cookies, setCookie] = useCookies(["userId"]);
   const userId = props.userId;
 
-  // TODO decide if we want to do this here or on the server side
-  if (!cookies.userId && userId.startsWith("guest")) {
-    setCookie("userId", userId);
-  }
-
   const { pageEvents } = useGlean();
   const pathname = usePathname();
 
   // On first load of the page, record a page view.
   useEffect(() => {
+    if (!cookies.userId && userId.startsWith("guest")) {
+      setCookie("userId", userId);
+    }
     pageEvents.view.record({ path: pathname, user_id: userId });
   }, [pageEvents.view, pathname, userId]);
 
