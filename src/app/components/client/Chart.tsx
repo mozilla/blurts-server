@@ -24,7 +24,11 @@ export type Props = {
   isEligibleForFreeScan: boolean;
 };
 
-export const DoughnutChart = (props: Props) => {
+export const DoughnutChart = ({
+  data,
+  isEligibleForFreeScan,
+  scanStatus,
+}: Props) => {
   const l10n = useL10n();
 
   const explainerDialogState = useOverlayTriggerState({});
@@ -33,11 +37,11 @@ export const DoughnutChart = (props: Props) => {
     explainerDialogState
   );
 
-  const sumOfFixedExposures = props.data.reduce(
+  const sumOfFixedExposures = data.reduce(
     (total, [_label, num]) => total + num,
     0
   );
-  const percentages = props.data.map(([label, num]) => {
+  const percentages = data.map(([label, num]) => {
     return [label, num / sumOfFixedExposures] as const;
   });
 
@@ -101,24 +105,32 @@ export const DoughnutChart = (props: Props) => {
     </div>
   );
 
-  const freescanPrompt = (
-    <div className={styles.prompt}>
-      <p>{l10n.getString("exposure-chart-returning-user-upgrade-prompt")}</p>
-      <Link href="/redesign/user/welcome">
-        {l10n.getString("exposure-chart-returning-user-upgrade-prompt-cta")}
-      </Link>
-    </div>
-  );
+  const scanInProgressPrompt = <div className={styles.prompt}></div>;
 
-  const scanInProgressPrompt = (
-    <div className={styles.prompt}>
-      <p>
-        {l10n.getFragment("exposure-chart-scan-in-progress-prompt", {
-          elems: { b: <strong /> },
-        })}
-      </p>
-    </div>
-  );
+  const getPrompt = () => {
+    if (!scanStatus && isEligibleForFreeScan) {
+      return (
+        <>
+          <p>
+            {l10n.getString("exposure-chart-returning-user-upgrade-prompt")}
+          </p>
+          <Link href="/redesign/user/welcome">
+            {l10n.getString("exposure-chart-returning-user-upgrade-prompt-cta")}
+          </Link>
+        </>
+      );
+    }
+
+    if (scanStatus === "in_progress" && scanInProgressPrompt) {
+      return (
+        <p>
+          {l10n.getFragment("exposure-chart-scan-in-progress-prompt", {
+            elems: { b: <strong /> },
+          })}
+        </p>
+      );
+    }
+  };
 
   return (
     <>
@@ -185,7 +197,7 @@ export const DoughnutChart = (props: Props) => {
                 </tr>
               </thead>
               <tbody>
-                {props.data.map(([label, num]) => (
+                {data.map(([label, num]) => (
                   <tr key={label}>
                     <td aria-hidden={true}>
                       <svg viewBox="0 0 10 10">
@@ -202,8 +214,7 @@ export const DoughnutChart = (props: Props) => {
                 ))}
               </tbody>
             </table>
-            {!props.scanStatus && props.isEligibleForFreeScan && freescanPrompt}
-            {props.scanStatus === "in_progress" && scanInProgressPrompt}
+            {getPrompt() && <div className={styles.prompt}>{getPrompt()}</div>}
           </div>
         </div>
         <figcaption>

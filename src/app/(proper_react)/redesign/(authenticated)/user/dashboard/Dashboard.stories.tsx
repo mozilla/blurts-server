@@ -190,6 +190,7 @@ export const DashboardWithScan: Story = {
           FreeBrokerScan: true,
           PremiumBrokerRemoval: true,
         }}
+        scanStatus="finished"
       />
     </Shell>
   ),
@@ -211,6 +212,7 @@ export const DashboardWithScanUserFromUs: Story = {
           FreeBrokerScan: true,
           PremiumBrokerRemoval: true,
         }}
+        scanStatus="finished"
       />
     </Shell>
   ),
@@ -231,6 +233,7 @@ export const DashboardWithoutScan: Story = {
           FreeBrokerScan: true,
           PremiumBrokerRemoval: true,
         }}
+        scanStatus="finished"
       />
     </Shell>
   ),
@@ -251,6 +254,7 @@ export const DashboardWithoutScanUserFromUs: Story = {
           FreeBrokerScan: true,
           PremiumBrokerRemoval: true,
         }}
+        scanStatus="finished"
       />
     </Shell>
   ),
@@ -270,6 +274,7 @@ export const DashboardEmptyListState: Story = {
           FreeBrokerScan: true,
           PremiumBrokerRemoval: true,
         }}
+        scanStatus="finished"
       />
     </Shell>
   ),
@@ -290,6 +295,7 @@ export const DashboardFreeUser: Story = {
           FreeBrokerScan: true,
           PremiumBrokerRemoval: true,
         }}
+        scanStatus="finished"
       />
     </Shell>
   ),
@@ -311,6 +317,7 @@ export const DashboardFreeUserAllResolved: Story = {
           FreeBrokerScan: true,
           PremiumBrokerRemoval: true,
         }}
+        scanStatus="finished"
       />
     </Shell>
   ),
@@ -330,6 +337,61 @@ export const DashboardPremiumUser: Story = {
           userBreaches={breachItemArraySample}
           userScannedResults={scannedResultsArraySample}
           isEligibleForFreeScan={true}
+          locale={"en"}
+          bannerData={dashboardSummaryWithScan}
+          featureFlagsEnabled={{
+            FreeBrokerScan: true,
+            PremiumBrokerRemoval: true,
+          }}
+          scanStatus="finished"
+        />
+      </Shell>
+    );
+  },
+};
+
+export const DashboardNoBreachesScanInProgress: Story = {
+  render: () => {
+    const userData = createUserWithPremiumSubscription();
+    return (
+      <Shell
+        l10n={getEnL10nSync()}
+        session={{ ...mockSession, user: userData }}
+      >
+        <DashboardEl
+          scanStatus="in_progress"
+          countryCode="us"
+          user={userData}
+          userBreaches={[]}
+          userScannedResults={[]}
+          isEligibleForFreeScan={false}
+          locale={"en"}
+          bannerData={dashboardSummaryWithScan}
+          featureFlagsEnabled={{
+            FreeBrokerScan: true,
+            PremiumBrokerRemoval: true,
+          }}
+        />
+      </Shell>
+    );
+  },
+};
+
+export const DashboardWithBreachesScanInProgress: Story = {
+  render: () => {
+    const userData = createUserWithPremiumSubscription();
+    return (
+      <Shell
+        l10n={getEnL10nSync()}
+        session={{ ...mockSession, user: userData }}
+      >
+        <DashboardEl
+          scanStatus="in_progress"
+          countryCode="us"
+          user={userData}
+          userBreaches={breachItemArraySample}
+          userScannedResults={[]}
+          isEligibleForFreeScan={false}
           locale={"en"}
           bannerData={dashboardSummaryWithScan}
           featureFlagsEnabled={{
