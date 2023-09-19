@@ -39,8 +39,6 @@ export const HandleFalseDoorTest = (props: HandleFalseDoorBanner) => {
 
   const handleDismiss = (event?: Event) => {
     setCookie("falseDoorDismissedPhase3", "true", { path: "/" });
-
-    console.debug("event.target:", event?.target);
     if (event && event.target && "id" in event.target) {
       let action;
       if (event?.target.id === "close-button") {
@@ -81,10 +79,25 @@ type FalseDoorBanner = {
 };
 export const FalseDoorBanner = (props: FalseDoorBanner) => {
   const l10n = useL10n();
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  const handleResize = () => {
+    // 1024px is equivalent to $screen-lg
+    if (window.innerWidth > 1024) {
+      setIsLargeScreen(true);
+    } else {
+      setIsLargeScreen(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+  });
+
   const content = (
     <p>
       {l10n.getString("false-door-test-phase-3-content-part-one")}
-      <br />
+      {isLargeScreen ? <br /> : " "}
       {props.checkIsOnDashboard
         ? l10n.getString("false-door-test-phase-3-content-part-two-dashboard")
         : l10n.getString("false-door-test-phase-3-content-part-two")}

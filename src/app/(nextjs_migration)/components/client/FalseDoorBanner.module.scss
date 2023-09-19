@@ -49,14 +49,19 @@
     gap: $spacing-md;
     width: 100%;
     justify-content: center;
-    padding: $spacing-sm;
+    padding-block: $spacing-sm;
+    padding-inline: $spacing-sm;
     text-align: center;
+
+    @media screen and (min-width: $screen-sm) {
+      padding-inline: $spacing-xl;
+    }
 
     @media screen and (min-width: $screen-md) {
       display: grid;
       text-align: start;
       grid-template-columns: 1fr 3fr 1fr;
-      padding: $spacing-sm $spacing-lg;
+      padding-inline: $spacing-lg;
 
       @media screen and (min-width: $screen-xl) {
         gap: $spacing-lg;
