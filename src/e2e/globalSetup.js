@@ -13,7 +13,7 @@ async function globalSetup () {
   const page = await browser.newPage()
 
   // generate email and set env variables
-  setEnvVariables(process.env.E2E_TEST_ACCOUNT_EMAIL)
+  await setEnvVariables(process.env.E2E_TEST_ACCOUNT_EMAIL)
 
   // commenting out as this its not needed for now
   // // go to sign up page
