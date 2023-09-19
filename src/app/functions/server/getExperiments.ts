@@ -14,9 +14,9 @@ import { captureException } from "@sentry/node";
 export async function getExperiments(
   userId: string | undefined
 ): Promise<unknown> {
-  const serverUrl = process.env.NIMBUS_SIDECAR_URL ?? process.env.SERVER_URL;
+  const serverUrl = process.env.NIMBUS_SIDECAR_URL;
   if (!serverUrl) {
-    throw new Error("env vars NIMBUS_SERVER_URL and/or SERVER_URL not set");
+    throw new Error("env vars NIMBUS_SERVER_URL");
   }
 
   let features;
