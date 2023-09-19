@@ -82,17 +82,17 @@ const ExposureCardDataClassLayout = (
 
   return (
     <div className={styles.detailsFoundItem}>
-      <dt>
+      <div className={styles.label}>
         <span className={styles.exposureTypeIcon}>{props.icon}</span>
         {l10n.getString("exposure-card-label-and-count", {
           category_label: props.label,
           count: props.count,
         })}
-      </dt>
-      <dd>
+      </div>
+      <div className={styles.emails}>
         {props.label === l10n.getString("exposure-card-email") &&
           props.emailData}
-      </dd>
+      </div>
     </div>
   );
 };

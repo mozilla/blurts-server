@@ -205,7 +205,7 @@
         }
 
         .detailsFoundItem {
-          dt {
+          .label {
             display: flex;
             align-items: center;
 
@@ -217,7 +217,7 @@
             }
           }
 
-          dd {
+          .emails {
             padding-inline-start: var(--exposureDetailsIconWidth);
             font: $text-body-xs;
             font-weight: 600;
