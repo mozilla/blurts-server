@@ -65,7 +65,7 @@ test.describe('Landing Page Functionality Verification', () => {
     await landingPage.open()
   })
 
-  test('Verify landing page elements - free scan @smoke', async ({ landingPage, scanPage, page }) => {
+  test('Verify landing page elements - free scan', async ({ landingPage, scanPage, page }) => {
     // link to testrail case
     test.info().annotations.push({
       type: "testrail",
