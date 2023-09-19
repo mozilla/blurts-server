@@ -4,7 +4,7 @@
 
 "use client";
 
-import React, { ReactElement, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import styles from "./ExposureCard.module.scss";
 import { StatusPill } from "../server/StatusPill";
@@ -28,6 +28,7 @@ import {
 } from "../../../utils/subscriberBreaches";
 import { parseIso8601Datetime } from "../../../utils/parse";
 import { FallbackLogo } from "../server/BreachLogo";
+import { BreachDataClass, DataBrokerDataClass } from "./ExposureCardDataClass";
 
 export type Exposure = ScanResult | SubscriberBreach;
 
@@ -41,13 +42,6 @@ export type ExposureCardProps = {
   exposureData: Exposure;
   locale: string;
   isPremiumBrokerRemovalEnabled: boolean;
-};
-
-type BreachExposureCategoryProps = {
-  exposureCategoryLabel: string;
-  icon: ReactElement;
-  count: number;
-  emails?: string[];
 };
 
 export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
@@ -84,26 +78,11 @@ const ScanResultCard = (props: ScanResultCardProps) => {
   });
   const exposureCategoriesArray: React.ReactElement[] = [];
 
-  type ScannedExposureCategoryProps = {
-    exposureCategoryLabel: string;
-    num: number;
-    icon: ReactElement;
-  };
-  const ScannedExposureCategory = (props: ScannedExposureCategoryProps) => {
-    return (
-      <div className={styles.detailsFoundItem}>
-        <dt>
-          <span className={styles.exposureTypeIcon}>{props.icon}</span>
-          {props.exposureCategoryLabel}
-        </dt>
-      </div>
-    );
-  };
-
   // Scan Result Categories
   if (scanResult.relatives.length > 0) {
     exposureCategoriesArray.push(
-      <ScannedExposureCategory
+      <DataBrokerDataClass
+        scanResultData={scanResult}
         key="relatives"
         icon={<MultipleUsersIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-family-members")}
@@ -113,7 +92,8 @@ const ScanResultCard = (props: ScanResultCardProps) => {
   }
   if (scanResult.phones.length > 0) {
     exposureCategoriesArray.push(
-      <ScannedExposureCategory
+      <DataBrokerDataClass
+        scanResultData={scanResult}
         key="phones"
         icon={<PhoneIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
@@ -123,7 +103,8 @@ const ScanResultCard = (props: ScanResultCardProps) => {
   }
   if (scanResult.emails.length > 0) {
     exposureCategoriesArray.push(
-      <ScannedExposureCategory
+      <DataBrokerDataClass
+        scanResultData={scanResult}
         key="emails"
         icon={<EmailIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-email")}
@@ -133,7 +114,8 @@ const ScanResultCard = (props: ScanResultCardProps) => {
   }
   if (scanResult.addresses.length > 0) {
     exposureCategoriesArray.push(
-      <ScannedExposureCategory
+      <DataBrokerDataClass
+        scanResultData={scanResult}
         key="addresses"
         icon={<LocationPinIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-address")}
@@ -141,11 +123,12 @@ const ScanResultCard = (props: ScanResultCardProps) => {
       />
     );
     // TODO: Add unit test when changing this code:
-    /* c8 ignore next 11 */
+    /* c8 ignore next 12 */
   } else {
     // "Other" item when none of the conditions above are met
     exposureCategoriesArray.push(
-      <ScannedExposureCategory
+      <DataBrokerDataClass
+        scanResultData={scanResult}
         key="other"
         icon={<QuestionMarkCircle alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-other")}
@@ -269,11 +252,11 @@ const ScanResultCard = (props: ScanResultCardProps) => {
               <p className={styles.exposedInfoTitle}>
                 {l10n.getString("exposure-card-your-exposed-info")}
               </p>
-              <dl className={styles.dataClassesList}>
+              <div className={styles.dataClassesList}>
                 {exposureCategoriesArray.map((item) => (
                   <React.Fragment key={item.key}>{item}</React.Fragment>
                 ))}
-              </dl>
+              </div>
             </div>
             {isPremiumBrokerRemovalEnabled && props.scanResult.status === "new"
               ? letsFixItBtn
@@ -304,70 +287,43 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
   });
   const exposureCategoriesArray: React.ReactElement[] = [];
 
-  const BreachExposureCategory = (props: BreachExposureCategoryProps) => {
-    const emailsList = (
-      <ul className={styles.emailsList}>
-        {props.emails?.map((email: string, index: number) => (
-          <li key={index}>{email}</li>
-        ))}
-      </ul>
-    );
-
-    return (
-      <div className={styles.detailsFoundItem}>
-        <dt>
-          <span className={styles.exposureTypeIcon}>{props.icon}</span>
-          {l10n.getString("exposure-card-label-and-count", {
-            category_label: props.exposureCategoryLabel,
-            count: props.count,
-          })}
-        </dt>
-        <dd>{props.emails && emailsList}</dd>
-      </div>
-    );
-  };
-
   subscriberBreach.dataClassesEffected.map((item: DataClassEffected) => {
     const dataClass = Object.keys(item)[0];
-    const value = item[dataClass];
-    const emails = Array.isArray(value) ? value : [];
-    const count = typeof value === "number" ? value : 0;
 
     if (dataClass === "email-addresses") {
       exposureCategoriesArray.push(
-        <BreachExposureCategory
+        <BreachDataClass
+          subscriberBreachData={subscriberBreach}
           key={dataClass}
           icon={<EmailIcon alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-email")}
-          emails={emails} // Only emails get listed
-          count={emails.length}
         />
       );
     } else if (dataClass === "passwords") {
       exposureCategoriesArray.push(
-        <BreachExposureCategory
+        <BreachDataClass
+          subscriberBreachData={subscriberBreach}
           key={dataClass}
           icon={<PasswordIcon alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-password")}
-          count={count}
         />
       );
     } else if (dataClass === "phone-numbers") {
       exposureCategoriesArray.push(
-        <BreachExposureCategory
+        <BreachDataClass
+          subscriberBreachData={subscriberBreach}
           key={dataClass}
           icon={<PhoneIcon alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
-          count={count}
         />
       );
     } else if (dataClass === "ip-addresses") {
       exposureCategoriesArray.push(
-        <BreachExposureCategory
+        <BreachDataClass
+          subscriberBreachData={subscriberBreach}
           key={dataClass}
           icon={<QuestionMarkCircle alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-ip-address")}
-          count={count}
         />
       );
       // TODO: Add unit test when changing this code:
@@ -376,11 +332,11 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
     // Handle all other breach categories
     else {
       exposureCategoriesArray.push(
-        <BreachExposureCategory
+        <BreachDataClass
+          subscriberBreachData={subscriberBreach}
           key={dataClass}
           icon={<QuestionMarkCircle alt="" width="13" height="13" />} // default icon for categories without a unique one
           exposureCategoryLabel={l10n.getString(dataClass)} // categories are localized in data-classes.ftl
-          count={count}
         />
       );
     }
@@ -510,11 +466,11 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
               <p className={styles.exposedInfoTitle}>
                 {l10n.getString("exposure-card-your-exposed-info")}
               </p>
-              <dl className={styles.dataClassesList}>
+              <div className={styles.dataClassesList}>
                 {exposureCategoriesArray.map((item) => (
                   <React.Fragment key={item.key}>{item}</React.Fragment>
                 ))}
-              </dl>
+              </div>
             </div>
             {
               // TODO: Add unit test when changing this code:
