@@ -10,7 +10,7 @@ import {
   ISO8601DateString,
 } from "../../../utils/parse.js";
 import { StateAbbr } from "../../../utils/states.js";
-import { getLatestOnerepScan } from "../../../db/tables/onerep_scans";
+import { getLatestOnerepScanResults } from "../../../db/tables/onerep_scans";
 import { isFlagEnabled } from "./featureFlags";
 import { RemovalStatus } from "../universal/scanResult.js";
 const log = mozlog("external.onerep");
@@ -51,6 +51,7 @@ export type ListScansResponse = {
 };
 export type ScanResult = {
   id: number;
+  scan_id: number;
   url: string;
   link: string;
   profile_id: number;
@@ -294,9 +295,9 @@ export async function isEligibleForFreeScan(
 
   const result = await getOnerepProfileId(user.subscriber.id);
   const profileId = result[0]["onerep_profile_id"] as number;
-  const scanResult = await getLatestOnerepScan(profileId);
+  const scanResult = await getLatestOnerepScanResults(profileId);
 
-  if (scanResult?.onerep_scan_results?.data?.length) {
+  if (scanResult.results.length) {
     console.warn("User has already used free scan");
     return false;
   }

@@ -4,8 +4,8 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { OnerepScanResultRow } from "knex/types/tables";
 import { View as DashboardEl } from "./View";
-import { ScanResult } from "../../../../../functions/server/onerep";
 import { Shell } from "../../../Shell";
 import { getEnL10nSync } from "../../../../../functions/server/mockL10n";
 import {
@@ -63,7 +63,7 @@ const BreachMockItem4: SubscriberBreach = createRandomBreach({
   ],
 });
 
-const scannedResultsArraySample: ScanResult[] = [
+const scannedResultsArraySample: OnerepScanResultRow[] = [
   createRandomScan({ status: "removed" }),
   createRandomScan({ status: "waiting_for_verification" }),
   createRandomScan({ status: "optout_in_progress" }),
@@ -71,7 +71,7 @@ const scannedResultsArraySample: ScanResult[] = [
   createRandomScan(),
 ];
 
-const scannedResolvedResultsArraySample: ScanResult[] = Array.from(
+const scannedResolvedResultsArraySample: OnerepScanResultRow[] = Array.from(
   { length: 5 },
   () => createRandomScan({ status: "removed" })
 );
