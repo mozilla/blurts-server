@@ -40,6 +40,8 @@ const MainLayout = async (props: Props) => {
       throw new Error("env var NIMBUS_UUID_NAMESPACE not set");
     }
     userId = uuidv5(accountId, process.env.NIMBUS_UUID_NAMESPACE);
+  } else {
+    userId = "";
   }
 
   if (!userId) {
