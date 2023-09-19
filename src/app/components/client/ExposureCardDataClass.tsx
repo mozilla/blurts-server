@@ -28,7 +28,6 @@ export const DataBrokerDataClass = (props: DataBrokerDataClassProps) => {
 
   return (
     <ExposureCardDataClassLayout
-      type="broker"
       icon={props.icon}
       label={props.exposureCategoryLabel}
       count={props.num}
@@ -58,7 +57,6 @@ export const BreachDataClass = (props: BreachDataClassProps) => {
 
   return (
     <ExposureCardDataClassLayout
-      type="breach"
       icon={props.icon}
       label={props.exposureCategoryLabel}
       count={emailLength}
@@ -68,7 +66,6 @@ export const BreachDataClass = (props: BreachDataClassProps) => {
 };
 
 type ExposureCardDataClassLayoutProps = {
-  type: "breach" | "broker";
   icon: ReactElement;
   label: string;
   count: number;
