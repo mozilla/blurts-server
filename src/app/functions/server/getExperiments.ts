@@ -7,7 +7,7 @@ import { captureException } from "@sentry/node";
 /**
  * Call the Cirrus sidecar, which returns a list of eligible experiments for the current user.
  *
-  @see https://github.com/mozilla/experimenter/tree/main/cirrus
+ * @see https://github.com/mozilla/experimenter/tree/main/cirrus
  * @param userId Persistent ID for user, either guest or authenticated
  * @returns {object}
  */

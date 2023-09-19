@@ -35,7 +35,7 @@ const GuestLayout = async (props: Props) => {
     if (!process.env.NIMBUS_UUID_NAMESPACE) {
       throw new Error("env var NIMBUS_UUID_NAMESPACE not set");
     }
-    userId = uuidv5(accountId.toString(), process.env.NIMBUS_UUID_NAMESPACE);
+    userId = uuidv5(accountId, process.env.NIMBUS_UUID_NAMESPACE);
   } else {
     // if the user is not logged in, use a cookie with a randomly-generated Nimbus user ID.
     const cookie = cookies().get("userId");
@@ -47,6 +47,10 @@ const GuestLayout = async (props: Props) => {
       // cookies().set("userId", uuid);
       userId = `guest-${randomUUID()}`;
     }
+  }
+
+  if (!userId) {
+    console.error("No user ID for Nimbus telemetry");
   }
 
   // TODO For initial A/A testing `features` is unused.

@@ -33,7 +33,7 @@ const MainLayout = async (props: Props) => {
   const accountId = session?.user?.subscriber?.fxa_uid;
 
   let userId;
-  if (accountId && typeof accountId === "number") {
+  if (accountId && typeof accountId === "string") {
     // If the user is logged in, use a UUID based on the user's subscriber ID.
     // TODO determine if we can collect the FxA UID directly https://mozilla-hub.atlassian.net/browse/MNTOR-2180
     if (!process.env.NIMBUS_UUID_NAMESPACE) {
@@ -43,7 +43,7 @@ const MainLayout = async (props: Props) => {
   }
 
   if (!userId) {
-    throw new Error("No user ID for Nimbus telemetry");
+    console.error("No user ID for Nimbus telemetry");
   }
 
   // TODO For initial A/A testing `features` is unused.
