@@ -5,8 +5,6 @@
 "use client";
 
 import Image from "next/image";
-import ShieldIcon from "./assets/shield-icon.svg";
-import ShieldOutlineIcon from "./assets/shield-outline-icon.svg";
 import MozillaMonitorLogo from "../../../(proper_react)/images/mozilla-monitor-logo.webp";
 import styles from "./FalseDoorBanner.module.scss";
 import { CloseBtn } from "../../../components/server/Icons";
@@ -25,7 +23,7 @@ type HandleFalseDoorBanner = {
 // TODO: MNTOR-2043
 /* c8 ignore start */
 export const HandleFalseDoorTest = (props: HandleFalseDoorBanner) => {
-  const [cookies, setCookie] = useCookies(["falseDoorDismissedPhase2"]);
+  const [cookies, setCookie] = useCookies(["falseDoorDismissedPhase3"]);
   const [shouldShowFalseDoor, setShouldShowFalseDoor] = useState(false);
   const pathname = usePathname();
   const isOnDashboard = pathname === "/user/breaches";
@@ -40,7 +38,7 @@ export const HandleFalseDoorTest = (props: HandleFalseDoorBanner) => {
   });
 
   const handleDismiss = (event?: Event) => {
-    setCookie("falseDoorDismissedPhase2", "true", { path: "/" });
+    setCookie("falseDoorDismissedPhase3", "true", { path: "/" });
 
     console.debug("event.target:", event?.target);
     if (event && event.target && "id" in event.target) {
@@ -59,8 +57,8 @@ export const HandleFalseDoorTest = (props: HandleFalseDoorBanner) => {
   };
 
   useEffect(() => {
-    setShouldShowFalseDoor(!cookies.falseDoorDismissedPhase2);
-  }, [cookies.falseDoorDismissedPhase2]);
+    setShouldShowFalseDoor(!cookies.falseDoorDismissedPhase3);
+  }, [cookies.falseDoorDismissedPhase3]);
 
   return (
     <>
