@@ -5,6 +5,8 @@
 "use client";
 
 import { CSSProperties } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { useL10n } from "../../hooks/l10n";
 import styles from "./Chart.module.scss";
 import { QuestionMarkCircle } from "../server/Icons";
@@ -14,14 +16,12 @@ import { Button } from "../server/Button";
 import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import ModalImage from "../client/assets/modal-default-img.svg";
-import Image from "next/image";
-import Link from "next/link";
+import { Scan } from "../../functions/server/onerep";
 
 export type Props = {
   data: Array<[string, number]>;
-  hasRunScan: boolean;
+  scanStatus: Scan["status"];
   isEligibleForFreeScan: boolean;
-  scanInProgress: boolean;
 };
 
 export const DoughnutChart = (props: Props) => {
@@ -202,8 +202,8 @@ export const DoughnutChart = (props: Props) => {
                 ))}
               </tbody>
             </table>
-            {!props.hasRunScan && props.isEligibleForFreeScan && freescanPrompt}
-            {props.scanInProgress && scanInProgressPrompt}
+            {!props.scanStatus && props.isEligibleForFreeScan && freescanPrompt}
+            {props.scanStatus === "in_progress" && scanInProgressPrompt}
           </div>
         </div>
         <figcaption>

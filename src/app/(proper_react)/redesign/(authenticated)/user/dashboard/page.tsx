@@ -38,7 +38,8 @@ export default async function DashboardPage() {
   const scanResult = await getLatestOnerepScan(profileId);
   const scanResults = scanResult?.onerep_scan_results;
   const scanResultItems = scanResults?.data ?? [];
-  const scanInProgress = typeof scanResults === undefined;
+  const scanStatus =
+    typeof scanResults === undefined ? "in_progress" : "finished";
   const subBreaches = await getSubscriberBreaches(session.user);
   const summary = dashboardSummary(scanResultItems, subBreaches);
   const locale = getLocale();
@@ -69,7 +70,7 @@ export default async function DashboardPage() {
       bannerData={summary}
       featureFlagsEnabled={featureFlagsEnabled}
       isAllFixed={isAllFixed}
-      scanInProgress={scanInProgress}
+      scanStatus={scanStatus}
     />
   );
 }

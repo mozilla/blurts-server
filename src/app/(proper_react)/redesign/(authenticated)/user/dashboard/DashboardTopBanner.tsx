@@ -11,6 +11,7 @@ import { ProgressCard } from "../../../../../components/client/ProgressCard";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
 import { useRouter } from "next/navigation";
 import PremiumButton from "../../../../../components/client/PremiumButton";
+import { Scan } from "../../../../../functions/server/onerep";
 
 export type BannerContent =
   | "ScanInProgressContent"
@@ -25,8 +26,7 @@ export type BannerContent =
 export type DashboardTopBannerProps = {
   content: BannerContent;
   bannerData: DashboardSummary;
-  hasRunScan: boolean;
-  scanInProgress: boolean;
+  scanStatus: Scan["status"];
   isEligibleForFreeScan: boolean;
   type: TabType;
   ctaCallback?: () => void;
@@ -262,16 +262,8 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
             <div className={styles.explainerContent}>
               <h3>{content.headline}</h3>
               <p>{content.description}</p>
-              {
-                // TODO: Add unit test when changing this code:
-                /* c8 ignore next 4 */
-                content.cta ? (
-                  <span className={styles.cta}>{content.cta}</span>
-                ) : (
-                  ""
-                )
-              }
-              {content.learnMore ? <p>{content.learnMore}</p> : ""}
+              {content.cta && <span className={styles.cta}>{content.cta}</span>}
+              {content.learnMore && <p>{content.learnMore}</p>}
             </div>
           )}
           {isFixedTab && (
@@ -284,10 +276,9 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         </div>
         <div className={styles.chart}>
           <Chart
-            hasRunScan={props.hasRunScan}
+            scanStatus={props.scanStatus}
             data={chartData}
             isEligibleForFreeScan={props.isEligibleForFreeScan}
-            scanInProgress={props.scanInProgress}
           />
         </div>
       </div>

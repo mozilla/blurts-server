@@ -20,7 +20,7 @@ import {
   ExposuresFilter,
   FilterState,
 } from "../../../../../components/client/ExposuresFilter";
-import { ScanResult } from "../../../../../functions/server/onerep";
+import { Scan, ScanResult } from "../../../../../functions/server/onerep";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
 import { getExposureStatus } from "../../../../../components/server/StatusPill";
 import { TabList } from "../../../../../components/client/TabList";
@@ -44,13 +44,24 @@ export type Props = {
   userScannedResults: ScanResult[];
   isEligibleForFreeScan: boolean;
   countryCode?: string;
+  scanStatus: Scan["status"];
   isAllFixed?: boolean;
-  scanInProgress: boolean;
 };
 
 export type TabType = "action-needed" | "fixed";
 
-export const View = (props: Props) => {
+export const View = ({
+  bannerData,
+  countryCode,
+  featureFlagsEnabled,
+  isAllFixed,
+  isEligibleForFreeScan,
+  locale,
+  scanStatus,
+  user,
+  userBreaches,
+  userScannedResults,
+}: Props) => {
   const l10n = useL10n();
 
   const initialFilterState: FilterState = {
@@ -70,12 +81,13 @@ export const View = (props: Props) => {
     },
   ];
   const isActionNeededTab = selectedTab === "action-needed";
+  const isScanInProgress = scanStatus === "in_progress";
 
-  const breachesDataArray = props.userBreaches.flat();
+  const breachesDataArray = userBreaches.flat();
   const scannedResultsDataArray =
     // TODO: Add unit test when changing this code:
     /* c8 ignore next */
-    props.userScannedResults.map((elem: ScanResult) => elem) || [];
+    userScannedResults.map((elem: ScanResult) => elem) || [];
 
   // Merge exposure cards
   const combinedArray = [...breachesDataArray, ...scannedResultsDataArray];
@@ -114,22 +126,21 @@ export const View = (props: Props) => {
       >
         <ExposureCard
           exposureData={exposure}
-          locale={props.locale}
+          locale={locale}
           isPremiumBrokerRemovalEnabled={
-            props.featureFlagsEnabled.PremiumBrokerRemoval
+            featureFlagsEnabled.PremiumBrokerRemoval
           }
         />
       </li>
     );
   });
-  const isScanResultItemsEmpty = props.userScannedResults.length === 0;
+  const isScanResultItemsEmpty = userScannedResults.length === 0;
   const noUnresolvedExposures = exposureCardElems.length === 0;
-  const isUserFromUs =
-    props.countryCode && props.countryCode.toLocaleLowerCase() === "us";
+  const isUserFromUs = countryCode && countryCode.toLocaleLowerCase() === "us";
 
   const TabContentActionNeeded = () => {
     const { dataBreachTotalNum, dataBrokerTotalNum, totalExposures } =
-      props.bannerData;
+      bannerData;
 
     let exposuresAreaDescription = l10n.getString(
       "dashboard-exposures-area-description",
@@ -140,7 +151,7 @@ export const View = (props: Props) => {
       }
     );
 
-    if (props.scanInProgress && !noUnresolvedExposures) {
+    if (isScanInProgress && !noUnresolvedExposures) {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-breaches-scan-progress-description",
         {
@@ -148,7 +159,7 @@ export const View = (props: Props) => {
           data_breach_total_num: dataBreachTotalNum,
         }
       );
-    } else if (props.scanInProgress) {
+    } else if (isScanInProgress) {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-no-breaches-scan-progress-description"
       );
@@ -174,20 +185,17 @@ export const View = (props: Props) => {
     </>
   );
 
-  const featureFlagsEnabled =
-    props.featureFlagsEnabled?.FreeBrokerScan &&
-    props.featureFlagsEnabled?.PremiumBrokerRemoval;
-
   let contentType: BannerContent = "NoContent";
-  if (featureFlagsEnabled && isUserFromUs) {
-    if (isScanResultItemsEmpty && !props.scanInProgress) {
+  if (
+    featureFlagsEnabled?.FreeBrokerScan &&
+    featureFlagsEnabled?.PremiumBrokerRemoval &&
+    isUserFromUs
+  ) {
+    if (isScanResultItemsEmpty && !isScanInProgress) {
       contentType = "DataBrokerScanUpsellContent";
-    } else if (isScanResultItemsEmpty && props.scanInProgress) {
+    } else if (isScanResultItemsEmpty && isScanInProgress) {
       contentType = "ScanInProgressContent";
-    } else if (
-      (!noUnresolvedExposures || !props.isAllFixed) &&
-      !props.scanInProgress
-    ) {
+    } else if ((!noUnresolvedExposures || !isAllFixed) && !isScanInProgress) {
       contentType = "LetsFixDataContent";
     }
   }
@@ -197,14 +205,13 @@ export const View = (props: Props) => {
     isUserFromUs &&
     noUnresolvedExposures &&
     !isScanResultItemsEmpty &&
-    props.isAllFixed &&
-    !hasPremium(props.user)
+    isAllFixed &&
+    !hasPremium(user)
   ) {
     contentType = "YourDataIsProtectedAllFixedContent";
   }
 
-  // Fixed in: MNTOR-2011
-  const freeScanCta = isScanResultItemsEmpty ? (
+  const freeScanCta = isScanResultItemsEmpty && (
     <p>
       {l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
         vars: {
@@ -218,19 +225,17 @@ export const View = (props: Props) => {
         },
       })}
     </p>
-  ) : (
-    ""
   );
 
   const getZeroStateIndicator = () => {
     return (
       <div className={styles.zeroStateIndicator}>
         <Image
-          src={props.scanInProgress ? ScanProgressIllustration : AllFixedLogo}
+          src={isScanInProgress ? ScanProgressIllustration : AllFixedLogo}
           alt=""
         />
         <strong>
-          {props.scanInProgress
+          {isScanInProgress
             ? l10n.getString("dashboard-exposures-scan-progress-label")
             : l10n.getString("dashboard-exposures-all-fixed-label")}
         </strong>
@@ -241,7 +246,7 @@ export const View = (props: Props) => {
 
   return (
     <div className={styles.wrapper}>
-      <Toolbar user={props.user}>
+      <Toolbar user={user}>
         <TabList
           tabs={tabsData}
           onSelectionChange={(selectedKey) => setSelectedTab(selectedKey)}
@@ -250,14 +255,11 @@ export const View = (props: Props) => {
       </Toolbar>
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
-          bannerData={props.bannerData}
+          bannerData={bannerData}
           content={contentType}
           type={selectedTab as TabType}
-          hasRunScan={!isScanResultItemsEmpty}
-          scanInProgress={props.scanInProgress}
-          isEligibleForFreeScan={props.isEligibleForFreeScan}
-          // TODO: Add unit test when changing this code:
-          /* c8 ignore next 3 */
+          scanStatus={scanStatus}
+          isEligibleForFreeScan={isEligibleForFreeScan}
           ctaCallback={() => {
             setSelectedTab("fixed");
           }}
