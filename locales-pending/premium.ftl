@@ -300,6 +300,13 @@ data-broker-profiles-exposure-reduction = Exposure reduction: { $exposure_reduct
 
 # Welcome to Premium Data Broker Profiles
 
+# Exposure reduction chart
+# The number inside <nr> will be displayed in a large font,
+# the label inside <label> will be shown in a smaller font.
+# Variables:
+#   $nr (number) - % of exposures reduced for the user
+exposure-reduction-chart-heading = <nr>{ $nr }</nr> <label>% exposures will be reduced</label>
+
 welcome-to-premium-data-broker-profiles-title-part-one = Welcome to Premium.
 welcome-to-premium-data-broker-profiles-title-part-two = We’ll remove those profiles ASAP.
 # Variables: 

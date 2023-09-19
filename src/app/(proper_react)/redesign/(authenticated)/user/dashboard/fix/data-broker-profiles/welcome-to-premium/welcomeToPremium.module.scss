@@ -24,14 +24,14 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
   }
 }
 
 .content {
   text-align: left;
-  max-width: $content-md;
+  max-width: $content-md / 1.3;
   margin: 0 auto $spacing-2xl;
+  display: inline-block;
 
   h4 {
     font: $text-title-3xs;
@@ -49,4 +49,9 @@
     display: inline-block;
     margin-inline-start: $spacing-sm;
   }
+}
+
+.chart {
+  display: inline-block;
+  margin: 50px;
 }

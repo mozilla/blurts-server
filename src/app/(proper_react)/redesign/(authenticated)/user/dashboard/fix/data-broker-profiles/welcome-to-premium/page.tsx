@@ -11,7 +11,9 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
 import { redirect } from "next/navigation";
-import { DoughnutChart } from "../../../../../../../../components/client/Chart";
+import { WelcomeToPremiumDonutChart } from "../../../../../../../../components/client/Chart";
+import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
+import { dashboardSummary } from "../../../../../../../../functions/server/dashboard";
 
 export default async function WelcomeToPremium() {
   const l10n = getL10n();
@@ -26,16 +28,22 @@ export default async function WelcomeToPremium() {
   const scanResult = await getLatestOnerepScan(profileId);
   const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
   const countOfDataBrokerProfiles = scanResultItems.length;
+  const subBreaches = await getSubscriberBreaches(session.user);
+  const summary = dashboardSummary(scanResultItems, subBreaches);
+  const totalExposures = summary.totalExposures;
+  const exposureReduction = Math.round(
+    (countOfDataBrokerProfiles / totalExposures) * 100
+  );
 
   const chartData: Array<[string, number]> = [
-    ["Exposure", 97],
-    ["Other", 3],
+    ["reduction", exposureReduction],
+    ["Other", 100 - exposureReduction],
   ];
 
   return (
     <>
       <div>
-        <div className={`${styles.content}`}>
+        <div className={styles.content}>
           <h4>
             {l10n.getString(
               "welcome-to-premium-data-broker-profiles-title-part-one"
@@ -50,7 +58,7 @@ export default async function WelcomeToPremium() {
               "welcome-to-premium-data-broker-profiles-description-part-one",
               {
                 profile_total_num: countOfDataBrokerProfiles,
-                exposure_reduction_percentage: 90,
+                exposure_reduction_percentage: exposureReduction,
               }
             )}
           </p>
@@ -71,25 +79,23 @@ export default async function WelcomeToPremium() {
               "welcome-to-premium-data-broker-profiles-description-part-three"
             )}
           </p>
+          <div className={styles.buttonsWrapper}>
+            <Link
+              className={`${buttonStyles.button} ${buttonStyles.primary}`}
+              href="/redesign/user/dashboard/fix/high-risk-data-breaches"
+            >
+              {l10n.getString(
+                "welcome-to-premium-data-broker-profiles-cta-label"
+              )}
+            </Link>
+          </div>
         </div>
-        <div className={styles.content}></div>
-        <div className={styles.buttonsWrapper}>
-          <Link
-            className={`${buttonStyles.button} ${buttonStyles.primary}`}
-            href="/redesign/user/dashboard/fix/high-risk-data-breaches"
-          >
-            {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-cta-label"
-            )}
-          </Link>
+        <div className={styles.chart}>
+          <WelcomeToPremiumDonutChart
+            data={chartData}
+            exposureReduction={exposureReduction}
+          />
         </div>
-      </div>
-      <div>
-        <DoughnutChart
-          hasRunScan={true}
-          data={chartData}
-          isEligibleForFreeScan={true}
-        />
       </div>
     </>
   );
