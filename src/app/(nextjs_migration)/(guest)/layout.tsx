@@ -27,7 +27,7 @@ const GuestLayout = async (props: Props) => {
   // If the user is logged in, use UUID derived from FxA UID as Nimbus user ID.
   const session = await getServerSession(authOptions);
   const accountId = session?.user?.subscriber?.fxa_uid;
-  let userId;
+  let userId = "";
 
   if (accountId) {
     // If the user is logged in, use a UUID based on the user's subscriber ID.
