@@ -13,7 +13,7 @@ import {
 } from "../../../../../../functions/server/onerep";
 import {
   getLatestOnerepScanResults,
-  setOnerepScanResults,
+  addOnerepScanResults,
 } from "../../../../../../../db/tables/onerep_scans";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
@@ -50,7 +50,7 @@ export default async function Subscribed() {
   // In dev mode, record scans every time this page is reloaded.
   // The webhoook does this in production.
   if (dev) {
-    await setOnerepScanResults(
+    await addOnerepScanResults(
       profileId,
       latestScan.scan.onerep_scan_id,
       scans,

@@ -14,7 +14,7 @@ import {
 
 import {
   getLatestOnerepScanResults,
-  setOnerepScanResults,
+  addOnerepScanResults,
 } from "../../../../../../db/tables/onerep_scans";
 import {
   ListScanResultsResponse,
@@ -57,7 +57,7 @@ export async function GET(
           process.env.APP_ENV === "heroku"
         ) {
           const allScanResults = await getAllScanResults(profileId);
-          await setOnerepScanResults(
+          await addOnerepScanResults(
             profileId,
             scan.id,
             allScanResults,
