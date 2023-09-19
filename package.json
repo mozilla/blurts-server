@@ -84,7 +84,7 @@
     "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
     "react-stately": "^3.23.0",
-    "requests": "^0.3.0",
+    "request": "^2.88.2",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
