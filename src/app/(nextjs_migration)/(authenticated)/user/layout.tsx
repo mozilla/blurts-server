@@ -36,10 +36,11 @@ const MainLayout = async (props: Props) => {
   if (accountId && typeof accountId === "string") {
     // If the user is logged in, use a UUID based on the user's subscriber ID.
     // TODO determine if we can collect the FxA UID directly https://mozilla-hub.atlassian.net/browse/MNTOR-2180
-    if (!process.env.NIMBUS_UUID_NAMESPACE) {
-      throw new Error("env var NIMBUS_UUID_NAMESPACE not set");
+    if (process.env.NIMBUS_UUID_NAMESPACE) {
+      userId = uuidv5(accountId, process.env.NIMBUS_UUID_NAMESPACE);
+    } else {
+      console.error("NIMBUS_UUID_NAMESPACE env var not set");
     }
-    userId = uuidv5(accountId, process.env.NIMBUS_UUID_NAMESPACE);
   } else {
     userId = "";
   }

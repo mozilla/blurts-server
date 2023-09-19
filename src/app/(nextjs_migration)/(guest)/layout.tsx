@@ -32,10 +32,11 @@ const GuestLayout = async (props: Props) => {
   if (accountId) {
     // If the user is logged in, use a UUID based on the user's subscriber ID.
     // Note: we may want to use the FxA UID here, but we need approval for that first.
-    if (!process.env.NIMBUS_UUID_NAMESPACE) {
-      throw new Error("env var NIMBUS_UUID_NAMESPACE not set");
+    if (process.env.NIMBUS_UUID_NAMESPACE) {
+      userId = uuidv5(accountId, process.env.NIMBUS_UUID_NAMESPACE);
+    } else {
+      console.error("NIMBUS_UUID_NAMESPACE env var not set");
     }
-    userId = uuidv5(accountId, process.env.NIMBUS_UUID_NAMESPACE);
   } else {
     // if the user is not logged in, use a cookie with a randomly-generated Nimbus user ID.
     const cookie = cookies().get("userId");
