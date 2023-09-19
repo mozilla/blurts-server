@@ -30,12 +30,13 @@ export const useGlean = () => {
 
     // Glean debugging options can be found here:
     // https://mozilla.github.io/glean/book/reference/debug/index.html
-    if (process.env.NEXT_PUBLIC_APP_ENV === "local") {
+    const appEnv = process.env.NEXT_PUBLIC_APP_ENV;
+    if (appEnv && ["local", "heroku"].includes(appEnv)) {
       // Enable logging pings to the browser console.
       Glean.setLogPings(true);
       // Tag pings for the Debug Viewer
       // @see https://debug-ping-preview.firebaseapp.com/pings/fx-monitor-local-dev
-      Glean.setDebugViewTag("fx-monitor-local-dev");
+      Glean.setDebugViewTag(`fx-monitor-${appEnv}-dev`);
     }
   }, []);
 
