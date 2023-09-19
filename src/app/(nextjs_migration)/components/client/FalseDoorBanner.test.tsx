@@ -15,7 +15,7 @@ it("shows false door test variant on dashboard", () => {
   render(<ComposedFalseDoorBanner />);
   // substring match https://testing-library.com/docs/queries/about/#textmatch
   const bannerElem = screen.getByText(
-    "Automatically remove data from broker sites",
+    "Automatically remove data from broker sites with Monitor",
     { exact: false }
   );
   expect(bannerElem).toBeInTheDocument();
@@ -26,7 +26,7 @@ it("shows false door test", () => {
   render(<ComposedFalseDoorBanner />);
   // substring match https://testing-library.com/docs/queries/about/#textmatch
   const bannerElem = screen.getByText(
-    "Automatically remove data from sketchy sites",
+    "Automatically remove data from sketchy sites with Monitor",
     { exact: false }
   );
   expect(bannerElem).toBeInTheDocument();
