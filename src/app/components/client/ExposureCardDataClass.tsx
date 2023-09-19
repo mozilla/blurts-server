@@ -44,11 +44,11 @@ type BreachDataClassProps = {
 };
 
 export const BreachDataClass = (props: BreachDataClassProps) => {
-  const emailLength = props.subscriberBreachData.emailsAffected?.length ?? 0;
+  const emailLength = props.subscriberBreachData.emailsAffected.length;
 
   const emailsList = (
     <ul className={styles.emailsList}>
-      {props.subscriberBreachData.emailsAffected?.map(
+      {props.subscriberBreachData.emailsAffected.map(
         (email: string, index: number) => (
           <li key={index}>{email}</li>
         )

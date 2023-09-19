@@ -111,6 +111,7 @@ export function createRandomBreach(
     modifiedDate: faker.date.recent(),
     name: faker.word.noun(),
     title: faker.word.noun(),
+    emailsAffected: Array.from({ length: 3 }, () => faker.internet.email()),
     isResolved: options.isResolved ?? faker.datatype.boolean(),
     dataClassesEffected: options.dataClassesEffected ?? [],
   };
