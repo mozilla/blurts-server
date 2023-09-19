@@ -7,6 +7,9 @@ import { bearerToken } from "../../../utils/auth";
 
 import { PubSub } from "@google-cloud/pubsub";
 
+// NextJS reports `Error: Dynamic server usage: headers` during build without this.
+export const dynamic = "force-dynamic";
+
 const projectId = process.env.GCP_PUBSUB_PROJECT_ID;
 const topicName = process.env.GCP_PUBSUB_TOPIC_NAME;
 const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
