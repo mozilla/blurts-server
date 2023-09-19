@@ -24,7 +24,7 @@ export default meta;
 type Story = StoryObj<typeof DashboardEl>;
 
 const BreachMockItem1: SubscriberBreach = createRandomBreach({
-  dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
+  dataClasses: ["email-addresses", "ip-addresses", "phone-numbers", "pins"],
   addedDate: new Date("2023-06-18T14:48:00.000Z"),
   dataClassesEffected: [
     { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
