@@ -27,7 +27,7 @@ export interface SubscriberBreach {
   modifiedDate: Date;
   name: string;
   title: string;
-  emailsEffected: string[];
+  emailsAffected: string[];
   dataClassesEffected: DataClassEffected[];
 }
 
@@ -95,7 +95,7 @@ export async function getSubBreaches(
         modifiedDate: normalizeDate(breach.ModifiedDate),
         name: breach.Name,
         title: breach.Title,
-        emailsEffected: [email.email],
+        emailsAffected: [email.email],
         dataClassesEffected: filteredBreachDataClasses.map((c) => {
           if (c === BreachDataTypes.Email) {
             return { [c]: [email.email] };
@@ -111,7 +111,7 @@ export async function getSubBreaches(
       } else {
         // append email & other data classes counts
         const curBreach = uniqueBreaches[subscriberBreach.id];
-        curBreach.emailsEffected?.push(email.email);
+        curBreach.emailsAffected?.push(email.email);
         curBreach.dataClassesEffected.forEach((d, index) => {
           const key = Object.keys(d)[0];
           if (key === BreachDataTypes.Email) {
