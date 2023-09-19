@@ -11,7 +11,9 @@ import { captureException } from "@sentry/node";
  * @param userId Persistent ID for user, either guest or authenticated
  * @returns {Promise<any>}
  */
-export async function getExperiments(userId: string | undefined): Promise<any> {
+export async function getExperiments(
+  userId: string | undefined
+): Promise<unknown> {
   const serverUrl = process.env.NIMBUS_SIDECAR_URL ?? process.env.SERVER_URL;
   if (!serverUrl) {
     throw new Error("env vars NIMBUS_SERVER_URL and/or SERVER_URL not set");
