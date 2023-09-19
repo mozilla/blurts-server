@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { it, expect } from "@jest/globals";
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
@@ -13,9 +13,10 @@ import Meta, {
   DashboardUsNoPremiumResolvedScanResolvedBreaches,
   DashboardUsNoPremiumUnresolvedScanNoBreaches,
   DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
-  DashboardUsPremiumNoScanNoBreaches,
   DashboardUsPremiumResolvedScanResolvedBreaches,
   DashboardUsPremiumResolvedScanUnresolvedBreaches,
+  breachOptions,
+  brokerOptions,
 } from "./Dashboard.stories";
 
 function enablePremium() {
@@ -74,6 +75,193 @@ it("shows the “let’s fix it” banner content", () => {
   expect(letsFixItBannerContent).toBeInTheDocument();
 });
 
+/**
+ * Verify that a property holds in (nearly) all dashboard states
+ *
+ * The dashboard has a lot of invariants:
+ * - Where is the user located?
+ * - Do they have a Premium subscription?
+ * - Have they been in, and resolved, data breaches?
+ * - Have they run a data broker scan, find results, and resolved them?
+ *
+ * Some properties have to hold in all or most of these invariants. For example,
+ * a "get Premium" button should never be shown for a user who already has
+ * Premium, regardless of e.g. whether they have already run a scan and what the
+ * results are.
+ *
+ * This function makes it easier to write a test that verifies that.
+ *
+ * Usage example:
+ *
+ *     it("does not show 'Get Premium" for Premium users", () => {
+ *       runTestPermutations(
+ *         {
+ *           staticPermutation: ["premium", true],
+ *           // There is one `expect` call in the function below:
+ *           nrAssertions: 1,
+ *         },
+ *         () => {
+ *           const premiumButton = screen.queryByRole("link", "Get Premium");
+ *           expect(premiumButton).not.toBeInTheDocument();
+ *         },
+ *       );
+ *     });
+ *
+ * @param config
+ * @param config.staticPermutation the specific config that you're testing and
+ *                                 thus do _not_ want to vary. Example:
+ *                                     ["premium", true]
+ * @param config.nrAssertions the number of `expect` calls you make in your
+ *                            `test` function. This ensures that the test
+ *                            doesn't pass even though it never actually ran.
+ * @param test the actual test function, without the setup part (i.e. no
+ *             `render` call).
+ */
+function runTestPermutations(
+  config: {
+    nrAssertions: number;
+    staticPermutation?:
+      | ["premium", boolean]
+      | ["us", boolean]
+      | ["scanResult", keyof typeof brokerOptions]
+      | ["breach", keyof typeof breachOptions];
+  },
+  test: () => void
+): void {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta
+  );
+
+  const staticPermutation = config.staticPermutation;
+  const testPermutations: Array<() => void> = [];
+  (["us", "nl"] as const).forEach((countryCode) => {
+    if (
+      staticPermutation?.[0] === "us" &&
+      staticPermutation[1] !== (countryCode === "us")
+    ) {
+      // If we're keeping the country code static,
+      // skip the test that isn't the given country code (US or non-US):
+      return;
+    }
+    if (countryCode !== "us") {
+      if (
+        staticPermutation?.[0] === "premium" &&
+        staticPermutation[1] === true
+      ) {
+        // If we're testing in Premium situations, the user can't be from
+        // outside the US:
+        return;
+      }
+
+      if (
+        staticPermutation?.[0] === "scanResult" &&
+        staticPermutation[1] !== "no-scan"
+      ) {
+        // If we're testing scan result options, the user can't be from
+        // outside the US, where broker scanning is not available:
+        return;
+      }
+    }
+
+    (Object.keys(breachOptions) as Array<keyof typeof breachOptions>).forEach(
+      (breachOption) => {
+        if (
+          staticPermutation?.[0] === "breach" &&
+          staticPermutation[1] !== breachOption
+        ) {
+          // If we're keeping the breach data static,
+          // skip the tests that aren't the given type of breach data:
+          return;
+        }
+
+        if (countryCode !== "us") {
+          // Outside the US, Premium and broker scanning isn't available,
+          // so we only need to test the different types of breach data:
+          testPermutations.push(() => {
+            render(
+              <ComposedDashboard
+                countryCode={countryCode}
+                breaches={breachOption}
+              />
+            );
+            try {
+              test();
+            } catch (e) {
+              console.error("Failure with permutation:", {
+                countryCode,
+                breachOption,
+              });
+              throw e;
+            }
+            cleanup();
+          });
+          return;
+        }
+
+        [true, false].forEach((premium) => {
+          if (
+            staticPermutation?.[0] === "premium" &&
+            staticPermutation[1] !== premium
+          ) {
+            // If we're keeping whether the user has Premium static,
+            // skip the tests where the user does/does not have Premium:
+            return;
+          }
+
+          (
+            Object.keys(brokerOptions) as Array<keyof typeof brokerOptions>
+          ).forEach((brokerOption) => {
+            if (
+              staticPermutation?.[0] === "scanResult" &&
+              staticPermutation[1] !== brokerOption
+            ) {
+              // If we're keeping the type of the scan results static,
+              // skip the tests that aren't the given type of scan results:
+              return;
+            }
+            if (
+              countryCode !== "us" &&
+              (premium || brokerOption !== "no-scan")
+            ) {
+              // Premium and data broker scanning is not available outside the US:
+              return;
+            }
+
+            testPermutations.push(() => {
+              render(
+                <ComposedDashboard
+                  premium={premium}
+                  countryCode={countryCode}
+                  breaches={breachOption}
+                  brokers={brokerOption}
+                />
+              );
+              try {
+                test();
+              } catch (e) {
+                console.error("Failure with permutation:", {
+                  premium,
+                  countryCode,
+                  breachOption,
+                  brokerOption,
+                });
+                throw e;
+              }
+              cleanup();
+            });
+            return;
+          });
+        });
+      }
+    );
+  });
+
+  expect.hasAssertions();
+  expect.assertions(testPermutations.length * config.nrAssertions);
+  testPermutations.forEach((runTest) => runTest());
+}
+
 it("shows the 'Start a free scan' CTA to free US-based users who haven't performed a scan yet", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
@@ -86,11 +274,15 @@ it("shows the 'Start a free scan' CTA to free US-based users who haven't perform
 });
 
 it("does not show the 'Start a free scan' CTA for non-US users", () => {
-  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
-  render(<ComposedDashboard />);
-
-  const freeScanCta = screen.queryByRole("link", { name: "Start a free scan" });
-  expect(freeScanCta).not.toBeInTheDocument();
+  runTestPermutations(
+    { staticPermutation: ["us", false], nrAssertions: 1 },
+    () => {
+      const freeScanCta = screen.queryByRole("link", {
+        name: "Start a free scan",
+      });
+      expect(freeScanCta).not.toBeInTheDocument();
+    }
+  );
 });
 
 it("switches between tab panels", async () => {
@@ -117,17 +309,19 @@ it("switches between tab panels", async () => {
 
 it("shows the premium upgrade cta if the user is not a premium subscriber", () => {
   enablePremium();
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumNoScanNoBreaches,
-    Meta
+  runTestPermutations(
+    {
+      staticPermutation: ["premium", false],
+      nrAssertions: 1,
+    },
+    () => {
+      // We show a CTA on desktop in the toolbar and in the mobile menu
+      const premiumCtas = screen.queryAllByRole("button", {
+        name: "Upgrade to ⁨Premium⁩",
+      });
+      expect(premiumCtas.length).toBe(2);
+    }
   );
-  render(<ComposedDashboard />);
-
-  // We show a CTA on desktop in the toolbar and in the mobile menu
-  const premiumCtas = screen.queryAllByRole("button", {
-    name: "Upgrade to ⁨Premium⁩",
-  });
-  expect(premiumCtas.length).toBe(2);
 });
 
 it("opens and closes the premium upsell dialog", async () => {
@@ -209,15 +403,14 @@ it("toggles between the product offerings in the premium upsell dialog", async (
 
 it("shows the premium badge if the user is a premium subscriber", () => {
   enablePremium();
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumNoScanNoBreaches,
-    Meta
+  runTestPermutations(
+    { staticPermutation: ["premium", true], nrAssertions: 1 },
+    () => {
+      // We show a CTA on desktop in the toolbar and in the mobile menu
+      const premiumBadges = screen.queryAllByText("Premium");
+      expect(premiumBadges.length).toBe(2);
+    }
   );
-  render(<ComposedDashboard />);
-
-  // We show a CTA on desktop in the toolbar and in the mobile menu
-  const premiumBadges = screen.queryAllByText("Premium");
-  expect(premiumBadges.length).toBe(2);
 });
 
 it("shows returned free user who has resolved all tasks premium upsell and all fixed description", async () => {

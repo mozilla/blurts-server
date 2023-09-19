@@ -16,13 +16,13 @@ import {
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 import { LatestOnerepScanData } from "../../../../../../db/tables/onerep_scans";
 
-const brokerOptions = {
+export const brokerOptions = {
   "no-scan": "No scan started",
   empty: "No scan results",
   unresolved: "With unresolved scan results",
   resolved: "All scan results resolved",
 };
-const breachOptions = {
+export const breachOptions = {
   empty: "No data breaches",
   unresolved: "With unresolved data breaches",
   resolved: "All data breaches resolved",
