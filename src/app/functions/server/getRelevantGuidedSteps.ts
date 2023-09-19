@@ -68,6 +68,10 @@ export const stepLinks = [
 ] as const satisfies ReadonlyArray<{ href: string; id: string }>;
 
 export type StepLink = (typeof stepLinks)[number];
+export type StepLinkWithStatus = (typeof stepLinks)[number] & {
+  eligible: boolean;
+  completed: boolean;
+};
 
 export type OutputData = {
   current: StepLink | null;
@@ -76,43 +80,60 @@ export type OutputData = {
 
 export function getRelevantGuidedSteps(
   data: InputData,
-  stepsToSkip: Array<StepLink["id"]> = []
+  afterStep?: StepLink["id"]
 ): OutputData {
-  const current = getNextGuidedStep(data, stepsToSkip);
+  const current = getNextGuidedStep(data, afterStep);
 
-  // There should be a relevant next step for every user (even if it's just
+  // There should be a relevant current step for every user (even if it's just
   // going back to the dashbord), so we can't hit this line in tests (and
   // shouldn't be able to in production either):
-  /* c8 ignore next 6 */
+  /* c8 ignore next 11 */
   if (current === null) {
+    console.error(
+      typeof afterStep === "string"
+        ? `Could not determine the current step for the current user, coming from step [${afterStep}].`
+        : "Could not determine the current step for the current user."
+    );
     return {
       current: null,
       skipTarget: null,
     };
   }
 
-  const nextStepsToSkip = [...stepsToSkip];
-  nextStepsToSkip.push(current.id);
   return {
     current: current,
-    skipTarget: getNextGuidedStep(data, nextStepsToSkip),
+    skipTarget: getNextGuidedStep(data, current.id),
   };
 }
 
 function getNextGuidedStep(
   data: InputData,
-  stepsToSkip: Array<StepLink["id"]> = []
+  afterStep?: StepLink["id"]
 ): StepLink | null {
   // Resisting the urge to add a state machine... ^.^
-  const nextStep = stepLinks.find((stepLink) => {
-    return (
-      !stepsToSkip.includes(stepLink.id) &&
-      isEligibleFor(data, stepLink.id) &&
-      !hasCompleted(data, stepLink.id)
-    );
+  const stepLinkStatuses = getGuidedStepStatuses(data);
+  const fromIndex =
+    stepLinkStatuses.findIndex((step) => step.id === afterStep) + 1;
+  const nextStep = stepLinkStatuses.slice(fromIndex).find((stepLink) => {
+    return stepLink.eligible && !stepLink.completed;
   });
 
   return nextStep ?? null;
+}
+
+export function getGuidedStepStatuses(data: InputData): StepLinkWithStatus[] {
+  return stepLinks.map((stepLink) => getStepWithStatus(data, stepLink));
+}
+
+function getStepWithStatus(
+  data: InputData,
+  stepLink: StepLink
+): StepLinkWithStatus {
+  return {
+    ...stepLink,
+    eligible: isEligibleFor(data, stepLink.id),
+    completed: hasCompleted(data, stepLink.id),
+  };
 }
 
 function isEligibleFor(data: InputData, stepId: StepLink["id"]): boolean {
