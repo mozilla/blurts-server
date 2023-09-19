@@ -150,7 +150,7 @@ export function dashboardSummary(
   // TODO: Modify after MNTOR-1947: Refactor user breaches object
   subscriberBreaches.forEach((b) => {
     const dataClasses = b.dataClasses ?? [];
-    const increment = b.emailsAffected?.length ?? 0;
+    const increment = b.emailsAffected.length ?? 0;
 
     // count emails
     if (dataClasses.includes(BreachDataTypes.Email)) {

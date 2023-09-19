@@ -111,7 +111,7 @@ export async function getSubBreaches(
       } else {
         // append email & other data classes counts
         const curBreach = uniqueBreaches[subscriberBreach.id];
-        curBreach.emailsAffected?.push(email.email);
+        curBreach.emailsAffected.push(email.email);
         curBreach.dataClassesEffected.forEach((d, index) => {
           const key = Object.keys(d)[0];
           if (key === BreachDataTypes.Email) {
