@@ -123,7 +123,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
       />
     );
     // TODO: Add unit test when changing this code:
-    /* c8 ignore next 11 */
+    /* c8 ignore next 12 */
   } else {
     // "Other" item when none of the conditions above are met
     exposureCategoriesArray.push(
