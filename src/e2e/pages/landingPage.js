@@ -23,6 +23,8 @@ export class LandingPage {
     this.seeAllFAQsLink = page.locator('footer a:has-text("See all FAQs")')
     this.falseDoorBanner = page.locator('//div[starts-with(@class, "FalseDoorBanner_falseDoorTest")]')
     this.falseBannerCloseButton = page.locator('#close-button')
+    this.scanEmailAddressInput = page.locator('#scan-email-address')
+    this.checkForBreachesButton =  page.getByRole('button', {name: 'Check for breaches'})
   }
 
   async open () {
@@ -74,5 +76,10 @@ export class LandingPage {
     if(await this.falseDoorBanner.isVisible()){
       await this.falseBannerCloseButton.click()
     }
+  }
+
+  async enterScanEmail(email){
+    await this.scanEmailAddressInput.fill(email)
+    await this.checkForBreachesButton.click()
   }
 }
