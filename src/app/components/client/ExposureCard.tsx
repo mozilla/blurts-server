@@ -46,7 +46,7 @@ export type ExposureCardProps = {
 type BreachExposureCategoryProps = {
   exposureCategoryLabel: string;
   icon: ReactElement;
-  count?: number;
+  count: number;
   emails?: string[];
 };
 
@@ -71,6 +71,13 @@ const ScanResultCard = (props: ScanResultCardProps) => {
   const l10n = useL10n();
   const [exposureCardExpanded, setExposureCardExpanded] = useState(false);
 
+  const letsFixItBtn = (
+    <span className={styles.fixItBtn}>
+      <Button variant="primary" wide>
+        {l10n.getString("exposure-card-cta")}
+      </Button>
+    </span>
+  );
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
@@ -83,17 +90,12 @@ const ScanResultCard = (props: ScanResultCardProps) => {
     icon: ReactElement;
   };
   const ScannedExposureCategory = (props: ScannedExposureCategoryProps) => {
-    const description = l10n.getString("exposure-card-num-found", {
-      exposure_num: props.num,
-    });
-
     return (
       <div className={styles.detailsFoundItem}>
         <dt>
           <span className={styles.exposureTypeIcon}>{props.icon}</span>
           {props.exposureCategoryLabel}
         </dt>
-        <dd>{description}</dd>
       </div>
     );
   };
@@ -151,12 +153,6 @@ const ScanResultCard = (props: ScanResultCardProps) => {
       />
     );
   }
-
-  const letsFixItBtn = (
-    <span className={styles.fixItBtn}>
-      <Button variant={"primary"}>{l10n.getString("exposure-card-cta")}</Button>
-    </span>
-  );
 
   const exposureCard = (
     <div>
@@ -321,15 +317,12 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
       <div className={styles.detailsFoundItem}>
         <dt>
           <span className={styles.exposureTypeIcon}>{props.icon}</span>
-          {props.exposureCategoryLabel}
+          {l10n.getString("exposure-card-label-and-count", {
+            category_label: props.exposureCategoryLabel,
+            count: props.count,
+          })}
         </dt>
-        <dd>
-          {props.emails && emailsList}
-          {props.count &&
-            l10n.getString("exposure-card-num-found", {
-              exposure_num: props.count,
-            })}
-        </dd>
+        <dd>{props.emails && emailsList}</dd>
       </div>
     );
   };
@@ -347,6 +340,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           icon={<EmailIcon alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-email")}
           emails={emails} // Only emails get listed
+          count={emails.length}
         />
       );
     } else if (dataClass === "passwords") {
@@ -394,7 +388,9 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
 
   const letsFixItBtn = (
     <span className={styles.fixItBtn}>
-      <Button variant={"primary"}>{l10n.getString("exposure-card-cta")}</Button>
+      <Button variant="primary" wide>
+        {l10n.getString("exposure-card-cta")}
+      </Button>
     </span>
   );
 
@@ -442,11 +438,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
               {l10n.getString("exposure-card-date-found")}
             </dt>
             <dd className={styles.hideOnMobile}>
-              {dateFormatter.format(
-                // We should be able to result that HIBP's `addedDate` property is a properly-formatted data string
-                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                parseIso8601Datetime(subscriberBreach.addedDate)!
-              )}
+              {dateFormatter.format(subscriberBreach.addedDate)}
             </dd>
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-status")}

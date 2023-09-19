@@ -12,20 +12,43 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ success: "false" }, { status: 401 });
   }
 
-  const monthlyQuota = process.env.MONTHLY_SCANS_QUOTA;
+  const monthlyScanQuota = parseInt(
+    (process.env.MONTHLY_SCANS_QUOTA as string) || "0"
+  );
+  const monthlySubscriberQuota = parseInt(
+    (process.env.MONTHLY_SUBSCRIBERS_QUOTA as string) || "0"
+  );
 
   const now = new Date();
   const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
 
-  const result = await getScansCount(
-    firstDayOfMonth.toDateString(),
-    now.toDateString()
-  );
-  const scansCount = result[0]["count"];
+  const manualScansCount =
+    ((
+      await getScansCount(
+        firstDayOfMonth.toDateString(),
+        now.toDateString(),
+        "manual"
+      )
+    )?.[0]?.["count"] as string) || "0";
+
+  const initialScansCount =
+    ((
+      await getScansCount(
+        firstDayOfMonth.toDateString(),
+        now.toDateString(),
+        "initial"
+      )
+    )?.[0]?.["count"] as string) || "0";
 
   const message = {
-    monthlyQuota,
-    scansCount,
+    scans: {
+      quota: monthlyScanQuota,
+      count: parseInt(manualScansCount),
+    },
+    subscribers: {
+      quota: monthlySubscriberQuota,
+      count: parseInt(initialScansCount),
+    },
   };
 
   return NextResponse.json({ success: true, message }, { status: 200 });
