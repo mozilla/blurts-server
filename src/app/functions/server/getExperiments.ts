@@ -27,6 +27,5 @@ export async function getExperiments(userId: string) {
   } catch (ex) {
     console.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
     captureException(ex);
-    throw ex;
   }
 }
