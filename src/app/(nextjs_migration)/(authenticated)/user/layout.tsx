@@ -46,9 +46,14 @@ const MainLayout = async (props: Props) => {
     console.error("No user ID for Nimbus telemetry");
   }
 
-  // TODO For initial A/A testing `features` is unused.
-  // @ts-ignore TODO features is declared but its value is never read
-  const features = await getExperiments(userId);
+  try {
+    // TODO For initial A/A testing `features` is unused. https://mozilla-hub.atlassian.net/browse/MNTOR-2182
+    const features = await getExperiments(userId);
+    // TODO remove debug for A/A testing https://mozilla-hub.atlassian.net/browse/MNTOR-2182
+    console.debug("Nimbus features in authenticated session:", features);
+  } catch (ex) {
+    console.error("Could not fetch Nimbus features:", ex);
+  }
 
   const l10n = getL10n();
 

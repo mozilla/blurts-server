@@ -9,23 +9,24 @@ import { captureException } from "@sentry/node";
  *
  * @see https://github.com/mozilla/experimenter/tree/main/cirrus
  * @param userId Persistent ID for user, either guest or authenticated
- * @returns {object}
+ * @returns {Promise<any>}
  */
-export async function getExperiments(userId: string) {
+export async function getExperiments(userId: string | undefined): Promise<any> {
   const serverUrl = process.env.NIMBUS_SIDECAR_URL ?? process.env.SERVER_URL;
   if (!serverUrl) {
-    throw new Error("env vars NIMBUS_SERVER_URL and SERVER_URL not set");
+    throw new Error("env vars NIMBUS_SERVER_URL and/or SERVER_URL not set");
   }
 
+  let features;
   try {
-    const features = await fetch(`${serverUrl}/v1/features/`, {
+    features = await fetch(`${serverUrl}/v1/features/`, {
       method: "POST",
       body: JSON.stringify({ client_id: userId }),
     });
-
-    return features;
   } catch (ex) {
     console.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
     captureException(ex);
   }
+
+  return features?.json();
 }
