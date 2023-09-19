@@ -16,7 +16,7 @@ export async function getExperiments(
 ): Promise<unknown> {
   const serverUrl = process.env.NIMBUS_SIDECAR_URL ?? process.env.SERVER_URL;
   if (!serverUrl) {
-    throw new Error("env vars NIMBUS_SERVER_URL and/or SERVER_URL not set");
+    throw new Error("env vars NIMBUS_SIDECAR_URL and/or SERVER_URL not set");
   }
 
   let features;
