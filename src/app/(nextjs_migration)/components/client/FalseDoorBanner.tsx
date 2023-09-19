@@ -70,7 +70,6 @@ export const HandleFalseDoorTest = (props: HandleFalseDoorBanner) => {
     </>
   );
 };
-/* c8 ignore stop */
 
 type FalseDoorBanner = {
   onDismiss?: () => void;
@@ -89,6 +88,8 @@ export const FalseDoorBanner = (props: FalseDoorBanner) => {
       setIsLargeScreen(false);
     }
   };
+
+  /* c8 ignore stop */
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
