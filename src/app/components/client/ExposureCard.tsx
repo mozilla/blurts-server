@@ -252,11 +252,11 @@ const ScanResultCard = (props: ScanResultCardProps) => {
               <p className={styles.exposedInfoTitle}>
                 {l10n.getString("exposure-card-your-exposed-info")}
               </p>
-              <dl className={styles.dataClassesList}>
+              <div className={styles.dataClassesList}>
                 {exposureCategoriesArray.map((item) => (
                   <React.Fragment key={item.key}>{item}</React.Fragment>
                 ))}
-              </dl>
+              </div>
             </div>
             {isPremiumBrokerRemovalEnabled && props.scanResult.status === "new"
               ? letsFixItBtn
@@ -466,11 +466,11 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
               <p className={styles.exposedInfoTitle}>
                 {l10n.getString("exposure-card-your-exposed-info")}
               </p>
-              <dl className={styles.dataClassesList}>
+              <div className={styles.dataClassesList}>
                 {exposureCategoriesArray.map((item) => (
                   <React.Fragment key={item.key}>{item}</React.Fragment>
                 ))}
-              </dl>
+              </div>
             </div>
             {
               // TODO: Add unit test when changing this code:
