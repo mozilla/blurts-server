@@ -217,26 +217,6 @@ it("shows returned free user who has resolved all tasks premium upsell and all f
   expect(screen.getByRole("dialog")).toBeInTheDocument();
 });
 
-it("shows scan in progress indicators on the dashboard for users with breaches", () => {
-  enablePremium();
-  const ComposedDashboard = composeStory(
-    DashboardNoBreachesScanInProgress,
-    Meta
-  );
-  render(<ComposedDashboard />);
-
-  const bannerContent = screen.getByText("Your scan is still in progress");
-  expect(bannerContent).toBeInTheDocument();
-  const bannerContentCta = screen.getByRole("link", {
-    name: "See what’s ready now",
-  });
-  expect(bannerContentCta).toBeInTheDocument();
-  const chartPrompt = screen.getByText("Scan in progress:");
-  expect(chartPrompt).toBeInTheDocument();
-  const exposuresTableZeroStateIndicator = screen.getByText("Scan in progress");
-  expect(exposuresTableZeroStateIndicator).toBeInTheDocument();
-});
-
 it("shows scan in progress indicators on the dashboard with no breaches", () => {
   enablePremium();
   const ComposedDashboard = composeStory(
@@ -247,10 +227,41 @@ it("shows scan in progress indicators on the dashboard with no breaches", () => 
 
   const bannerContent = screen.getByText("Your scan is still in progress");
   expect(bannerContent).toBeInTheDocument();
+
   const bannerContentCta = screen.getByRole("link", {
     name: "See what’s ready now",
   });
   expect(bannerContentCta).toBeInTheDocument();
+
   const chartPrompt = screen.getByText("Scan in progress:");
   expect(chartPrompt).toBeInTheDocument();
+
+  const exposureTableDescription = screen.getByText(
+    "We didn’t find any data breaches, but we’re still scanning sites that may be selling your personal info."
+  );
+  expect(exposureTableDescription).toBeInTheDocument();
+});
+
+it("shows scan in progress indicators on the dashboard for users with breaches", () => {
+  enablePremium();
+  const ComposedDashboard = composeStory(
+    DashboardWithBreachesScanInProgress,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const bannerContent = screen.getByText("Your scan is still in progress");
+  expect(bannerContent).toBeInTheDocument();
+  const bannerContentCta = screen.getByRole("link", {
+    name: "See what’s ready now",
+  });
+  expect(bannerContentCta).toBeInTheDocument();
+
+  const chartPrompt = screen.getByText("Scan in progress:");
+  expect(chartPrompt).toBeInTheDocument();
+
+  const exposureTableDescription = screen.getByText(
+    "We found your information exposed ⁨51⁩ times in ⁨20⁩ data breaches. We’re still scanning sites that may be selling your personal info."
+  );
+  expect(exposureTableDescription).toBeInTheDocument();
 });

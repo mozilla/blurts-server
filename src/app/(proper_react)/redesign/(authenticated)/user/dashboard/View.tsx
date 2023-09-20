@@ -193,7 +193,7 @@ export const View = ({
   ) {
     if (isScanResultItemsEmpty && !isScanInProgress) {
       contentType = "DataBrokerScanUpsellContent";
-    } else if (isScanResultItemsEmpty && isScanInProgress) {
+    } else if (isScanResultItemsEmpty) {
       contentType = "ScanInProgressContent";
     } else if ((!noUnresolvedExposures || !isAllFixed) && !isScanInProgress) {
       contentType = "LetsFixDataContent";
@@ -260,6 +260,8 @@ export const View = ({
           type={selectedTab as TabType}
           scanStatus={scanStatus}
           isEligibleForFreeScan={isEligibleForFreeScan}
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next 3 */
           ctaCallback={() => {
             setSelectedTab("fixed");
           }}

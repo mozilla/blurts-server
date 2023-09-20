@@ -243,6 +243,7 @@ export const DashboardWithoutScanUserFromUs: Story = {
   render: () => (
     <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
+        countryCode="us"
         user={{ email: "example@example.com" }}
         userBreaches={breachItemArraySample}
         userScannedResults={[]}

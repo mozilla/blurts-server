@@ -279,12 +279,16 @@ dashboard-fixed-area-headline = View all exposures that are fixed or in-progress
 # $data_breach_total_num is the total number of data breaches the user has.
 dashboard-exposures-breaches-scan-progress-description = {
   $exposures_total_num ->
-    [one] $data_breach_total_num ->
-      [one] We found your information exposed { $exposures_total_num } time in { $data_breach_total_num } data breach. We’re still scanning sites that may be selling your personal info.
-      *[other] We found your information exposed { $exposures_total_num } time in { $data_breach_total_num } data breaches. We’re still scanning sites that may be selling your personal info.
-    *[other] $data_breach_total_num ->
-      [one] We found your information exposed { $exposures_total_num } times in { $data_breach_total_num } data breach. We’re still scanning sites that may be selling your personal info.
-      *[other] We found your information exposed { $exposures_total_num } times in { $data_breach_total_num } data breaches. We’re still scanning sites that may be selling your personal info.
+    [one] {
+      $data_breach_total_num ->
+        [one] We found your information exposed { $exposures_total_num } time in { $data_breach_total_num } data breach. We’re still scanning sites that may be selling your personal info.
+        *[other] We found your information exposed { $exposures_total_num } time in { $data_breach_total_num } data breaches. We’re still scanning sites that may be selling your personal info.
+    }
+    *[other] {
+      $data_breach_total_num ->
+        [one] We found your information exposed { $exposures_total_num } times in { $data_breach_total_num } data breach. We’re still scanning sites that may be selling your personal info.
+        *[other] We found your information exposed { $exposures_total_num } times in { $data_breach_total_num } data breaches. We’re still scanning sites that may be selling your personal info.
+    }
 }
 dashboard-exposures-no-breaches-scan-progress-description = We didn’t find any data breaches, but we’re still scanning sites that may be selling your personal info.
 dashboard-exposures-scan-progress-label = Scan in progress
