@@ -72,12 +72,11 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] }
-    }
-
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] }
-    // }
+    },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] }
+    },
 
     /* Test against mobile viewports. */
     // {
@@ -104,10 +103,10 @@ export default defineConfig({
   outputDir: 'src/e2e/test-results/',
 
   /* Run your local dev server before starting the tests */
-  webServer: {
-    command: 'npm run build; npm start',
-    port: 6060,
-    // Building the app can take some time:
-    timeout: 1_800_000,
-  }
+  // webServer: {
+  //   command: 'npm run build; npm start',
+  //   port: 6060,
+  //   // Building the app can take some time:
+  //   timeout: 1_800_000,
+  // }
 })
