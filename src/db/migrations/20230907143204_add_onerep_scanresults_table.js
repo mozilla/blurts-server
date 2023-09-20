@@ -71,10 +71,7 @@ export async function up(knex) {
 
   if (scanResultRows.length > 0) {
     await knex("onerep_scan_results")
-      .insert(scanResultRows)
-      // On Heroku, we have multiple rows with the same `onerep_scan_id`:
-      .onConflict("onerep_scan_result_id")
-      .ignore();
+      .insert(scanResultRows);
   }
 
 
