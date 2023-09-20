@@ -11,7 +11,7 @@ import {
   ClockIcon,
 } from "../../../../../../../../components/server/Icons";
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
-import { getLatestOnerepScan } from "../../../../../../../../../db/tables/onerep_scans";
+import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
@@ -28,8 +28,8 @@ export default async function ManualRemoveView() {
   }
   const result = await getOnerepProfileId(session.user.subscriber.id);
   const profileId = result[0]["onerep_profile_id"] as number;
-  const scanResult = await getLatestOnerepScan(profileId);
-  const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
+  const scanResult = await getLatestOnerepScanResults(profileId);
+  const scanResultItems = scanResult.results;
   const subBreaches = await getSubscriberBreaches(session.user);
   const summary = dashboardSummary(scanResultItems, subBreaches);
 
