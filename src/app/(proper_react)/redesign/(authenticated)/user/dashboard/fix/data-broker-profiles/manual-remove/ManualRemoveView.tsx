@@ -3,8 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import styles from "../dataBrokerProfiles.module.scss";
-import buttonStyles from "../../../../../../../../components/server/button.module.scss";
-import Link from "next/link";
 import { getL10n } from "../../../../../../../../functions/server/l10n";
 import {
   AvatarIcon,
@@ -17,6 +15,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { dashboardSummary } from "../../../../../../../../functions/server/dashboard";
+import { Button } from "../../../../../../../../components/server/Button";
 
 export default async function ManualRemoveView() {
   const l10n = getL10n();
@@ -109,22 +108,22 @@ export default async function ManualRemoveView() {
         {/* TODO: Add exposure cards table as seen on the dashboard */}
       </div>
       <div className={styles.buttonsWrapper}>
-        <Link
-          className={`${buttonStyles.button} ${buttonStyles.primary}`}
+        <Button
+          variant="primary"
           href="/redesign/user/dashboard/fix/data-broker-profiles/automatic-remove"
         >
           {l10n.getString(
             "fix-flow-data-broker-profiles-manual-remove-button-remove-for-me"
           )}
-        </Link>
-        <Link
-          className={`${buttonStyles.button} ${buttonStyles.secondary}`}
+        </Button>
+        <Button
+          variant="secondary"
           href="/" // TODO: MNTOR-1700 Add routing logic here
         >
           {l10n.getString(
             "fix-flow-data-broker-profiles-manual-remove-button-skip"
           )}
-        </Link>
+        </Button>
       </div>
       <div className={styles.dataBrokerResolutionStats}>
         <div>
