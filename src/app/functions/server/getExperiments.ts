@@ -9,7 +9,7 @@ import { captureException } from "@sentry/node";
  *
  * @see https://github.com/mozilla/experimenter/tree/main/cirrus
  * @param userId Persistent ID for user, either guest or authenticated
- * @returns {Promise<any>}
+ * @returns
  */
 export async function getExperiments(
   userId: string | undefined
