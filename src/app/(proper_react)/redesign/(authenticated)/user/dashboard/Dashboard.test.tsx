@@ -116,7 +116,7 @@ it("shows the premium upgrade cta if the user is not a premium subscriber", () =
   expect(premiumCtas.length).toBe(2);
 });
 
-it("opens and closes the premium upsell dialog (premium upsell badge)", async () => {
+it("opens and closes the premium upsell dialog via the Premium upsell badge)", async () => {
   enablePremium();
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(DashboardFreeUser, Meta);
@@ -151,7 +151,7 @@ it("opens and closes the premium upsell dialog (premium upsell badge)", async ()
   ).not.toBeInTheDocument();
 });
 
-it("opens and closes the premium upsell dialog (continuous protection upsell)", async () => {
+it("opens and closes the premium upsell dialog via the Premium upsell button)", async () => {
   enablePremium();
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(DashboardDataIsProtected, Meta);
