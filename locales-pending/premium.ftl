@@ -307,7 +307,7 @@ data-broker-profiles-exposure-reduction = Exposure reduction: { $exposure_reduct
 #   $nr (number) - % of exposures reduced for the user
 exposure-reduction-chart-heading = <nr>{ $nr }</nr><percent>%</percent> <label_line_1>exposures will</label_line_1><label_line_2>be reduced</label_line_2>
 
-welcome-to-premium-data-broker-profiles-title-part-one = Welcome to Premium.
+welcome-to-premium-data-broker-profiles-title-part-one = Welcome to { -brand-premium }.
 welcome-to-premium-data-broker-profiles-title-part-two = We’ll remove those profiles ASAP.
 # Variables: 
 # $profile_total_num is the number of exposures came back from user data broker scans.
