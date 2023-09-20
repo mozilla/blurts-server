@@ -89,8 +89,6 @@ export const FalseDoorBanner = (props: FalseDoorBanner) => {
     }
   };
 
-  /* c8 ignore stop */
-
   useEffect(() => {
     window.addEventListener("resize", handleResize);
   });
@@ -104,6 +102,7 @@ export const FalseDoorBanner = (props: FalseDoorBanner) => {
         : l10n.getString("false-door-test-phase-3-content-part-two")}
     </p>
   );
+  /* c8 ignore stop */
 
   return (
     <div className={styles.falseDoorTestWrapper}>
