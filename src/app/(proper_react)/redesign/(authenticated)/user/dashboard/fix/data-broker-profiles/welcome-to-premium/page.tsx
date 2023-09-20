@@ -6,7 +6,7 @@ import Link from "next/link";
 import buttonStyles from "../../../../../../../../components/server/button.module.scss";
 import styles from "./welcomeToPremium.module.scss";
 import { getL10n } from "../../../../../../../../functions/server/l10n";
-import { getLatestOnerepScan } from "../../../../../../../../../db/tables/onerep_scans";
+import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
@@ -25,8 +25,8 @@ export default async function WelcomeToPremium() {
 
   const result = await getOnerepProfileId(session.user.subscriber.id);
   const profileId = result[0]["onerep_profile_id"] as number;
-  const scanResult = await getLatestOnerepScan(profileId);
-  const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
+  const scanResultItems =
+    (await getLatestOnerepScanResults(profileId))?.results ?? [];
   const countOfDataBrokerProfiles = scanResultItems.length;
   const subBreaches = await getSubscriberBreaches(session.user);
   const summary = dashboardSummary(scanResultItems, subBreaches);
