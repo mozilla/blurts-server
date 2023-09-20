@@ -29,12 +29,12 @@
 
 .content {
   text-align: left;
-  max-width: $content-md / 1.3;
+  max-width: $content-md / 1.5;
   margin: 0 auto $spacing-2xl;
   display: inline-block;
 
   h4 {
-    font: $text-title-3xs;
+    font: $text-title-2xs;
     margin: 20px 0;
   }
 
@@ -54,4 +54,5 @@
 .chart {
   display: inline-block;
   margin: 50px;
+  vertical-align: text-bottom;
 }

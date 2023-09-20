@@ -314,8 +314,17 @@ export const WelcomeToPremiumDonutChart = (props: WelcomeToPremiumProps) => {
                 nr: (
                   <text
                     className={styles.percentageHeadingNr}
+                    fontSize={headingNumberSize + 3}
+                    x={diameter / 2 - 5}
+                    y={diameter / 2 - headingGap / 2}
+                    textAnchor="middle"
+                  />
+                ),
+                percent: (
+                  <text
+                    className={styles.percent}
                     fontSize={headingNumberSize}
-                    x={diameter / 2}
+                    x={diameter / 2 + 5}
                     y={diameter / 2 - headingGap / 2}
                     textAnchor="middle"
                   />
