@@ -313,19 +313,28 @@ export const WelcomeToPremiumDonutChart = (props: WelcomeToPremiumProps) => {
               elems: {
                 nr: (
                   <text
-                    className={styles.headingNr}
+                    className={styles.percentageHeadingNr}
                     fontSize={headingNumberSize}
                     x={diameter / 2}
                     y={diameter / 2 - headingGap / 2}
                     textAnchor="middle"
                   />
                 ),
-                label: (
+                label1: (
                   <text
                     className={styles.headingLabel}
                     fontSize={headingLabelSize}
                     x={diameter / 2}
                     y={diameter / 2 + headingLabelSize + headingGap / 2}
+                    textAnchor="middle"
+                  />
+                ),
+                label2: (
+                  <text
+                    className={styles.headingLabel}
+                    fontSize={headingLabelSize}
+                    x={diameter / 2}
+                    y={diameter / 2 + (headingLabelSize + headingGap / 2) * 2}
                     textAnchor="middle"
                   />
                 ),
