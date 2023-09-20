@@ -105,9 +105,7 @@ export const DoughnutChart = ({
     </div>
   );
 
-  const scanInProgressPrompt = <div className={styles.prompt}></div>;
-
-  const getPrompt = () => {
+  const getPromptContent = () => {
     if (!scanStatus && isEligibleForFreeScan) {
       return (
         <>
@@ -121,7 +119,7 @@ export const DoughnutChart = ({
       );
     }
 
-    if (scanStatus === "in_progress" && scanInProgressPrompt) {
+    if (scanStatus === "in_progress") {
       return (
         <p>
           {l10n.getFragment("exposure-chart-scan-in-progress-prompt", {
@@ -131,6 +129,8 @@ export const DoughnutChart = ({
       );
     }
   };
+
+  const promptContent = getPromptContent();
 
   return (
     <>
@@ -214,7 +214,9 @@ export const DoughnutChart = ({
                 ))}
               </tbody>
             </table>
-            {getPrompt() && <div className={styles.prompt}>{getPrompt()}</div>}
+            {promptContent && (
+              <div className={styles.prompt}>{promptContent}</div>
+            )}
           </div>
         </div>
         <figcaption>
