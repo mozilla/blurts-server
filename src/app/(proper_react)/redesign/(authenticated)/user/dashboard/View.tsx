@@ -239,7 +239,7 @@ export const View = ({
             ? l10n.getString("dashboard-exposures-scan-progress-label")
             : l10n.getString("dashboard-exposures-all-fixed-label")}
         </strong>
-        {freeScanCta}
+        {!isScanInProgress && freeScanCta}
       </div>
     );
   };
