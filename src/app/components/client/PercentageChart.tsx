@@ -66,19 +66,11 @@ export const PercentageChart = (props: WelcomeToPremiumProps) => {
 
   return (
     <>
-      <figure className={styles.chartContainer}>
+      <figure className={styles.chartContainer} aria-hidden={true}>
         <div className={styles.chartAndLegendWrapper}>
           <svg
             // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/img_role#svg_and_roleimg
             role="img"
-            aria-label={l10n
-              .getString("exposure-reduction-chart-heading", {
-                nr: props.exposureReduction,
-              })
-              .replace("<nr>", "")
-              .replace("</nr>", "")
-              .replace("<label>", "")
-              .replace("</label>", "")}
             viewBox={`0 0 ${diameter} ${diameter}`}
             className={styles.chart}
           >
