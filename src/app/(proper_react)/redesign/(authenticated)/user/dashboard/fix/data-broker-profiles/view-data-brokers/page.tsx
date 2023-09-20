@@ -7,7 +7,7 @@ import buttonStyles from "../../../../../../../../components/server/button.modul
 import styles from "../dataBrokerProfiles.module.scss";
 import { getL10n } from "../../../../../../../../functions/server/l10n";
 import { DataBrokerProfiles } from "../../../../../../../../components/client/DataBrokerProfiles";
-import { getLatestOnerepScan } from "../../../../../../../../../db/tables/onerep_scans";
+import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
@@ -24,11 +24,10 @@ export default async function ViewDataBrokers() {
 
   const result = await getOnerepProfileId(session.user.subscriber.id);
   const profileId = result[0]["onerep_profile_id"] as number;
-  const scanResult = await getLatestOnerepScan(profileId);
-  const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
+  const latestScan = await getLatestOnerepScanResults(profileId);
 
   // TODO: Use api to set/query count
-  const countOfDataBrokerProfiles = scanResultItems.length;
+  const countOfDataBrokerProfiles = latestScan.results.length;
 
   return (
     <div>
@@ -52,7 +51,7 @@ export default async function ViewDataBrokers() {
           )}
           <AboutBrokersIcon />
         </h4>
-        <DataBrokerProfiles data={scanResultItems} />
+        <DataBrokerProfiles data={latestScan.results} />
       </div>
       <div className={styles.buttonsWrapper}>
         <Link

@@ -41,11 +41,14 @@
     display: flex;
     align-items: center;
     padding-left: 0;
-    gap: $layout-md;
     margin: 0;
     width: 100%;
     justify-content: space-between;
     height: 30px; // fixed height to standardize image/icon heights
+
+    @media screen and (min-width: $screen-lg) {
+      gap: $layout-md;
+    }
 
     .fallbackLogo {
       display: flex;
@@ -68,10 +71,18 @@
 
       .exposureCompanyTitle {
         font: $text-body-sm;
-        max-width: 200px;
+        max-width: 150px; // truncate long names for mobile view
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
+
+        @media screen and (min-width: $screen-sm) {
+          max-width: 250px; // truncate long names for mobile view
+        }
+
+        @media screen and (min-width: $screen-md) {
+          max-width: 100%;
+        }
       }
 
       @media screen and (min-width: $screen-lg) {
@@ -115,8 +126,12 @@
       border-top: 2px solid rgba($color-purple-70, 0.2);
       overflow: auto;
       height: auto;
-      padding: $spacing-lg;
       display: block;
+      padding: $spacing-lg;
+
+      @media screen and (min-width: $screen-lg) {
+        padding: $spacing-xl $layout-xl;
+      }
     }
 
     .exposedInfoContainer {
@@ -129,10 +144,6 @@
         display: flex;
         flex-direction: column;
         gap: $spacing-md;
-
-        .dataClassesList {
-          align-items: start;
-        }
 
         @media screen and (min-width: $screen-lg) {
           flex: 1 1 0;
@@ -167,7 +178,7 @@
         }
       }
 
-      dl {
+      .dataClassesList {
         font: $text-body-sm;
         justify-content: space-between;
         margin-left: 0;
@@ -183,14 +194,14 @@
         @media screen and (min-width: $screen-lg) {
           display: flex;
           flex-direction: row;
-          align-items: center;
+          align-items: start;
           gap: $layout-xs;
           flex-wrap: wrap;
           justify-content: flex-start;
         }
 
         .detailsFoundItem {
-          dt {
+          .label {
             display: flex;
             align-items: center;
 
@@ -202,7 +213,7 @@
             }
           }
 
-          dd {
+          .emails {
             padding-inline-start: var(--exposureDetailsIconWidth);
             font: $text-body-xs;
             font-weight: 600;

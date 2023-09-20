@@ -4,8 +4,8 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { OnerepScanResultRow } from "knex/types/tables";
 import { View as DashboardEl } from "./View";
-import { ScanResult } from "../../../../../functions/server/onerep";
 import { Shell } from "../../../Shell";
 import { getEnL10nSync } from "../../../../../functions/server/mockL10n";
 import {
@@ -63,7 +63,7 @@ const BreachMockItem4: SubscriberBreach = createRandomBreach({
   ],
 });
 
-const scannedResultsArraySample: ScanResult[] = [
+const scannedResultsArraySample: OnerepScanResultRow[] = [
   createRandomScan({ status: "removed" }),
   createRandomScan({ status: "waiting_for_verification" }),
   createRandomScan({ status: "optout_in_progress" }),
@@ -71,7 +71,7 @@ const scannedResultsArraySample: ScanResult[] = [
   createRandomScan(),
 ];
 
-const scannedResolvedResultsArraySample: ScanResult[] = Array.from(
+const scannedResolvedResultsArraySample: OnerepScanResultRow[] = Array.from(
   { length: 5 },
   () => createRandomScan({ status: "removed" })
 );
@@ -305,6 +305,7 @@ export const DashboardFreeUserAllResolved: Story = {
         userScannedResults={scannedResolvedResultsArraySample}
         isEligibleForFreeScan={true}
         locale={"en"}
+        isAllFixed={true}
         bannerData={dashboardSummaryWithScan}
         featureFlagsEnabled={{
           FreeBrokerScan: true,
@@ -339,44 +340,4 @@ export const DashboardPremiumUser: Story = {
       </Shell>
     );
   },
-};
-
-export const DashboardNoSession: Story = {
-  render: () => (
-    <Shell l10n={getEnL10nSync()} session={null}>
-      <DashboardEl
-        countryCode="us"
-        user={{ email: "example@example.com" }}
-        userBreaches={breachItemArraySample}
-        userScannedResults={scannedResultsArraySample}
-        isEligibleForFreeScan={false}
-        locale={"en"}
-        bannerData={dashboardSummaryWithScan}
-        featureFlagsEnabled={{
-          FreeBrokerScan: true,
-          PremiumBrokerRemoval: true,
-        }}
-      />
-    </Shell>
-  ),
-};
-
-export const DashboardDataIsProtected: Story = {
-  render: () => (
-    <Shell l10n={getEnL10nSync()} session={null}>
-      <DashboardEl
-        countryCode="us"
-        user={{ email: "example@example.com" }}
-        userBreaches={[]}
-        userScannedResults={scannedResolvedResultsArraySample}
-        isEligibleForFreeScan={false}
-        locale={"en"}
-        bannerData={dashboardSummaryWithScan}
-        featureFlagsEnabled={{
-          FreeBrokerScan: true,
-          PremiumBrokerRemoval: true,
-        }}
-      />
-    </Shell>
-  ),
 };

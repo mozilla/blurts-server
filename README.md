@@ -80,6 +80,12 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
    pip3 install -r .github/requirements.txt
    ```
 
+5. Generate required Glean files (needs re-ran anytime Glean `.yaml` files are updated):
+
+   ```sh
+   npm run build-glean
+   ```
+
 ### Run
 
 1. To run the server similar to production using a build phase, which includes minified and bundled assets:
@@ -174,7 +180,7 @@ At the beginning of a test suite run, the `test-blurts` database will be populat
 
 At the end of a test suite run in CircleCI, coverage info will be sent to [Coveralls](https://coveralls.io/) to assess coverage changes and provide a neat badge. To upload coverage locally, you need a root `.coveralls.yml` which contains a token – get this from another member of the Monitor team.
 
-End-to-End tests use Playwright and can be run via `npm run e2e`.
+End-to-End tests use Playwright and can be run via `npm run e2e`. [E2E-How-To](https://github.com/mozilla/blurts-server/src/e2e) for more info.
 
 #### Test Firefox Integration
 

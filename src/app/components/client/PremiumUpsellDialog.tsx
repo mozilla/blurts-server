@@ -81,9 +81,11 @@ function PremiumUpsellDialogContent() {
     },
   ];
 
-  const premiumSubscriptionUrl = getPremiumSubscriptionUrl({
-    type: isMonthly ? "monthly" : "yearly",
-  });
+  const premiumSubscriptionUrl = `${
+    process.env.FXA_SUBSCRIPTIONS_URL as string
+  }/products/${process.env.PREMIUM_PRODUCT_ID as string}?plan=${
+    process.env.PREMIUM_PLAN_ID_US as string
+  }`;
 
   return (
     <div className={styles.modalContent}>
