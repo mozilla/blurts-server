@@ -39,7 +39,6 @@ export class LandingPage {
     this.howItWorksSection = page.locator('.how-it-works')
     this.yourPrivacyIsSafeWithUsSection = page.locator('.safe-with-us')
     this.landingFAQSection = page.locator('.top-questions-about-monitor')
-    this.landingFAQSectionButtons = page.locator('.top-questions-about-monitor details summary')
     this.seeIfDataBreachSection = page.locator('.see-if-data-breach')
   }
 
