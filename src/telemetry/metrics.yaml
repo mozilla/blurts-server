@@ -26,3 +26,6 @@ page:
       path:
         description: The path of the page.
         type: string
+      user_id:
+        description: User ID for Nimbus. Derived from subscriber ID or randomly-generated if not logged in.
+        type: string
