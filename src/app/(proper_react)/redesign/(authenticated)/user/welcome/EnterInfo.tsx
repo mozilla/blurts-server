@@ -361,9 +361,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         <div className={styles.stepButtonWrapper}>
           <Button
             variant="secondary"
-            // TODO: Add unit test when changing this code:
-            /* c8 ignore next */
-            onClick={() => onGoBack()}
+            onPress={() => onGoBack()}
             className={styles.startButton}
             type="button"
           >

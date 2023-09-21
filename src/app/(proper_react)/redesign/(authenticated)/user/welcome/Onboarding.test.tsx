@@ -72,6 +72,29 @@ it("passes the axe accessibility test suite on step 2", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
+it("can go back to step 1 after moving on to step 2", async () => {
+  const user = userEvent.setup();
+  const ComposedOnboarding = composeStory(Onboarding, Meta);
+  render(<ComposedOnboarding stepId="enterInfo" />);
+
+  expect(
+    screen.queryByRole("heading", {
+      name: "Welcome to ⁨Monitor⁩. Let’s find your exposed information.",
+    })
+  ).not.toBeInTheDocument();
+
+  const backButton = screen.getByRole("button", {
+    name: "Go back",
+  });
+  await user.click(backButton);
+
+  expect(
+    screen.getByRole("heading", {
+      name: "Welcome to ⁨Monitor⁩. Let’s find your exposed information.",
+    })
+  ).toBeInTheDocument();
+});
+
 it("explainer dialog shows on step 2", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
