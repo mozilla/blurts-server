@@ -61,7 +61,8 @@ export async function GET(
             profileId,
             scan.id,
             allScanResults,
-            "manual"
+            "manual",
+            scan.status
           );
         }
 

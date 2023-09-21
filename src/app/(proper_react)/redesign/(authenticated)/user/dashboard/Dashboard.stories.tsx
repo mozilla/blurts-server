@@ -84,6 +84,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     onerep_profile_id: 0,
     onerep_scan_id: 0,
     onerep_scan_reason: "initial",
+    onerep_scan_status: "finished",
   };
 
   const mockedResolvedScanResults: OnerepScanResultRow[] = [
