@@ -14,8 +14,8 @@ import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
-import { dashboardSummary } from "../../../../../../../../functions/server/dashboard";
 import { Button } from "../../../../../../../../components/server/Button";
+import { getDashboardSummary } from "../../../../../../../../functions/server/dashboard";
 
 export default async function ManualRemoveView() {
   const l10n = getL10n();
@@ -30,7 +30,7 @@ export default async function ManualRemoveView() {
   const scanResult = await getLatestOnerepScanResults(profileId);
   const scanResultItems = scanResult.results;
   const subBreaches = await getSubscriberBreaches(session.user);
-  const summary = dashboardSummary(scanResultItems, subBreaches);
+  const summary = getDashboardSummary(scanResultItems, subBreaches);
 
   // TODO: Use api to set/query count
   const countOfDataBrokerProfiles = scanResultItems.length;

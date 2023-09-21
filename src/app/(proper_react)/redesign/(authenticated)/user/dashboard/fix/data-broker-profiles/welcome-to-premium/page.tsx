@@ -9,7 +9,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
 import { redirect } from "next/navigation";
-import { WelcomeToPremiumDonutChart } from "../../../../../../../../components/client/Chart";
+import { PercentageChart } from "../../../../../../../../components/client/PercentageChart";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { dashboardSummary } from "../../../../../../../../functions/server/dashboard";
 import { Button } from "../../../../../../../../components/server/Button";
@@ -33,11 +33,6 @@ export default async function WelcomeToPremium() {
   const exposureReduction = Math.round(
     (countOfDataBrokerProfiles / totalExposures) * 100
   );
-
-  const chartData: Array<[string, number]> = [
-    ["reduction", exposureReduction],
-    ["Other", 100 - exposureReduction],
-  ];
 
   return (
     <>
@@ -90,10 +85,7 @@ export default async function WelcomeToPremium() {
           </div>
         </div>
         <div className={styles.chart}>
-          <WelcomeToPremiumDonutChart
-            data={chartData}
-            exposureReduction={exposureReduction}
-          />
+          <PercentageChart exposureReduction={exposureReduction} />
         </div>
       </div>
     </>

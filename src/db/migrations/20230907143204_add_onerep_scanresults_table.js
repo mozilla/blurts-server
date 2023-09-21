@@ -7,6 +7,16 @@
  * @returns { Promise<void> }
  */
 export async function up(knex) {
+  // During some of our tests, we inserted scans with duplicate IDs.
+  // Delete those:
+  const duplicateScanIdSubQuery = knex("onerep_scans")
+    .select("onerep_scan_id")
+    .groupBy("onerep_scan_id")
+    .havingRaw("COUNT(*) > ?", [1]);
+  await knex("onerep_scans")
+    .delete()
+    .whereIn("onerep_scan_id", duplicateScanIdSubQuery);
+
   await knex.schema.alterTable("onerep_scans", table => {
     table.unique("onerep_scan_id");
   });
@@ -38,7 +48,7 @@ export async function up(knex) {
     .select("id", "onerep_scan_id", "onerep_scan_results");
 
   const scanResultRows = scanRows.map(scan => {
-    return scan.onerep_scan_results.data.map(scanResult => {
+    return scan.onerep_scan_results?.data.map(scanResult => {
       const rowToInsert = {
         onerep_scan_result_id: scanResult.id,
         onerep_scan_id: scan.onerep_scan_id,
@@ -56,15 +66,12 @@ export async function up(knex) {
         status: scanResult.status,
       };
       return rowToInsert
-    });
+    }) ?? [];
   }).flat();
 
   if (scanResultRows.length > 0) {
     await knex("onerep_scan_results")
-      .insert(scanResultRows)
-      // On Heroku, we have multiple rows with the same `onerep_scan_id`:
-      .onConflict("onerep_scan_result_id")
-      .ignore();
+      .insert(scanResultRows);
   }
 
 
