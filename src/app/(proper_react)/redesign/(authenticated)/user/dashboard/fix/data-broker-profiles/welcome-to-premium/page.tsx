@@ -2,8 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import Link from "next/link";
-import buttonStyles from "../../../../../../../../components/server/button.module.scss";
 import styles from "./welcomeToPremium.module.scss";
 import { getL10n } from "../../../../../../../../functions/server/l10n";
 import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
@@ -14,6 +12,7 @@ import { redirect } from "next/navigation";
 import { PercentageChart } from "../../../../../../../../components/client/PercentageChart";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { dashboardSummary } from "../../../../../../../../functions/server/dashboard";
+import { Button } from "../../../../../../../../components/server/Button";
 
 export default async function WelcomeToPremium() {
   const l10n = getL10n();
@@ -75,14 +74,14 @@ export default async function WelcomeToPremium() {
             )}
           </p>
           <div className={styles.buttonsWrapper}>
-            <Link
-              className={`${buttonStyles.button} ${buttonStyles.primary}`}
+            <Button
+              variant="primary"
               href="/redesign/user/dashboard/fix/high-risk-data-breaches"
             >
               {l10n.getString(
                 "welcome-to-premium-data-broker-profiles-cta-label"
               )}
-            </Link>
+            </Button>
           </div>
         </div>
         <div className={styles.chart}>

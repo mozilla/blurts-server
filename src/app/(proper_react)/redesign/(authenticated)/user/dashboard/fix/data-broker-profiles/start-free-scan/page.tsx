@@ -5,11 +5,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import ImageCityScape from "./images/city-scape.svg";
-import buttonStyles from "../../../../../../../../components/server/button.module.scss";
 import styles from "../dataBrokerProfiles.module.scss";
 import { useL10n } from "../../../../../../../../hooks/l10n";
+import { Button } from "../../../../../../../../components/server/Button";
 
 export default function StartFreeScan() {
   const l10n = useL10n();
@@ -46,8 +45,8 @@ export default function StartFreeScan() {
         </p>
       </div>
       <div className={styles.buttonsWrapper}>
-        <Link
-          className={`${buttonStyles.button} ${buttonStyles.primary}`}
+        <Button
+          variant="primary"
           href={
             "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers"
           }
@@ -55,15 +54,15 @@ export default function StartFreeScan() {
           {l10n.getString(
             "fix-flow-data-broker-profiles-start-free-scan-button-start-scan"
           )}
-        </Link>
-        <Link
-          className={`${buttonStyles.button} ${buttonStyles.secondary}`}
+        </Button>
+        <Button
+          variant="secondary"
           href={"/redesign/user/dashboard/fix/high-risk-data-breaches"}
         >
           {l10n.getString(
             "fix-flow-data-broker-profiles-start-free-scan-button-skip"
           )}
-        </Link>
+        </Button>
       </div>
     </div>
   );
