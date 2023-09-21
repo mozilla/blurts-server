@@ -9,6 +9,8 @@ import { getMessage } from './fluent.js'
  * Equivalent of Typescript "enum"
  * These enum types map to HIBP's breach data types, defined in HIBP's API
  * Always reference enum instead of strings to avoid spelling error / typos (ie. BreachDataTypes.Passwords)
+ *
+ * @deprecated Use the object with the same name from /src/app/functions/universal/breach.ts instead.
  */
 const BreachDataTypes = {
   Passwords: 'passwords',

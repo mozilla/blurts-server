@@ -8,7 +8,7 @@ import FamilyTreeImage from "../assets/familytree.png";
 import TwitterImage from "../assets/twitter-icon.png";
 import {
   createRandomBreach,
-  createRandomScan,
+  createRandomScanResult,
 } from "../../../../apiMocks/mockData";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
@@ -20,7 +20,7 @@ const meta: Meta<typeof ExposureCard> = {
 export default meta;
 type Story = StoryObj<typeof ExposureCard>;
 
-const ScanMockItem = createRandomScan();
+const ScanMockItem = createRandomScanResult();
 const BreachMockItem = createRandomBreach();
 
 export const DataBroker: Story = {

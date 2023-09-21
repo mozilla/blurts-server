@@ -7,6 +7,7 @@
 import { Key, useState } from "react";
 import Image from "next/image";
 import { Session } from "next-auth";
+import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import { BannerContent, DashboardTopBanner } from "./DashboardTopBanner";
@@ -20,20 +21,18 @@ import {
   ExposuresFilter,
   FilterState,
 } from "../../../../../components/client/ExposuresFilter";
-import { Scan, ScanResult } from "../../../../../functions/server/onerep";
-import { DashboardSummary } from "../../../../../functions/server/dashboard";
+import { getDashboardSummary } from "../../../../../functions/server/dashboard";
 import { getExposureStatus } from "../../../../../components/server/StatusPill";
 import { TabList } from "../../../../../components/client/TabList";
 import { FeatureFlagsEnabled } from "../../../../../functions/server/featureFlags";
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 import { hasPremium } from "../../../../../functions/universal/user";
-import { parseIso8601Datetime } from "../../../../../../utils/parse";
+import { LatestOnerepScanData } from "../../../../../../db/tables/onerep_scans";
 import AllFixedLogo from "./images/dashboard-all-fixed.svg";
 import ScanProgressIllustration from "./images/scan-illustration.svg";
 
 export type Props = {
-  bannerData: DashboardSummary;
   featureFlagsEnabled: Pick<
     FeatureFlagsEnabled,
     "FreeBrokerScan" | "PremiumBrokerRemoval"
@@ -41,27 +40,15 @@ export type Props = {
   locale: string;
   user: Session["user"];
   userBreaches: SubscriberBreach[];
-  userScannedResults: ScanResult[];
+  userScanData: LatestOnerepScanData;
   isEligibleForFreeScan: boolean;
-  countryCode?: string;
-  scanStatus?: Scan["status"];
-  isAllFixed?: boolean;
+  countryCode: string;
+  scanInProgress: boolean;
 };
 
 export type TabType = "action-needed" | "fixed";
 
-export const View = ({
-  bannerData,
-  countryCode,
-  featureFlagsEnabled,
-  isAllFixed,
-  isEligibleForFreeScan,
-  locale,
-  scanStatus,
-  user,
-  userBreaches,
-  userScannedResults,
-}: Props) => {
+export const View = (props: Props) => {
   const l10n = useL10n();
 
   const initialFilterState: FilterState = {
@@ -81,25 +68,19 @@ export const View = ({
     },
   ];
   const isActionNeededTab = selectedTab === "action-needed";
-  const isScanInProgress = scanStatus === "in_progress";
-
-  const breachesDataArray = userBreaches.flat();
-  const scannedResultsDataArray =
-    // TODO: Add unit test when changing this code:
-    /* c8 ignore next */
-    userScannedResults.map((elem: ScanResult) => elem) || [];
+  const breachesDataArray = props.userBreaches.flat();
 
   // Merge exposure cards
-  const combinedArray = [...breachesDataArray, ...scannedResultsDataArray];
+  const combinedArray = [...breachesDataArray, ...props.userScanData.results];
 
   // Sort in descending order
   const arraySortedByDate = combinedArray.sort((a, b) => {
     const dateA =
       (a as SubscriberBreach).addedDate ||
-      parseIso8601Datetime((a as ScanResult).created_at);
+      (a as OnerepScanResultRow).created_at;
     const dateB =
       (b as SubscriberBreach).addedDate ||
-      parseIso8601Datetime((b as ScanResult).created_at);
+      (b as OnerepScanResultRow).created_at;
 
     const timestampA = dateA.getTime();
     const timestampB = dateB.getTime();
@@ -126,21 +107,27 @@ export const View = ({
       >
         <ExposureCard
           exposureData={exposure}
-          locale={locale}
+          locale={props.locale}
           isPremiumBrokerRemovalEnabled={
-            featureFlagsEnabled.PremiumBrokerRemoval
+            props.featureFlagsEnabled.PremiumBrokerRemoval
           }
         />
       </li>
     );
   });
-  const isScanResultItemsEmpty = userScannedResults.length === 0;
+  const isScanResultItemsEmpty = props.userScanData.results.length === 0;
   const noUnresolvedExposures = exposureCardElems.length === 0;
-  const isUserFromUs = countryCode && countryCode.toLocaleLowerCase() === "us";
+  const dataSummary = getDashboardSummary(
+    props.userScanData.results,
+    props.userBreaches
+  );
+  const isAllFixed =
+    dataSummary.dataBreachFixedNum === dataSummary.dataBreachTotalNum &&
+    dataSummary.dataBrokerFixedNum === dataSummary.dataBrokerTotalNum;
 
   const TabContentActionNeeded = () => {
     const { dataBreachTotalNum, dataBrokerTotalNum, totalExposures } =
-      bannerData;
+      dataSummary;
 
     let exposuresAreaDescription = l10n.getString(
       "dashboard-exposures-area-description",
@@ -151,7 +138,7 @@ export const View = ({
       }
     );
 
-    if (isScanInProgress && !noUnresolvedExposures) {
+    if (props.scanInProgress && !noUnresolvedExposures) {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-breaches-scan-progress-description",
         {
@@ -159,7 +146,7 @@ export const View = ({
           data_breach_total_num: dataBreachTotalNum,
         }
       );
-    } else if (isScanInProgress) {
+    } else if (props.scanInProgress) {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-no-breaches-scan-progress-description"
       );
@@ -187,26 +174,33 @@ export const View = ({
 
   let contentType: BannerContent = "NoContent";
   if (
-    featureFlagsEnabled?.FreeBrokerScan &&
-    featureFlagsEnabled?.PremiumBrokerRemoval &&
-    isUserFromUs
+    props.featureFlagsEnabled?.FreeBrokerScan &&
+    props.featureFlagsEnabled?.PremiumBrokerRemoval &&
+    props.isUserFromUs
   ) {
-    if (isScanResultItemsEmpty && !isScanInProgress) {
+    if (isScanResultItemsEmpty && !props.scanInProgress) {
       contentType = "DataBrokerScanUpsellContent";
-    } else if (isScanResultItemsEmpty) {
+    } else if (isScanResultItemsEmpty && props.scanInProgress) {
       contentType = "ScanInProgressContent";
-    } else if ((!noUnresolvedExposures || !isAllFixed) && !isScanInProgress) {
+    } else if (
+      (!noUnresolvedExposures || !isAllFixed) &&
+      props.countryCode &&
+      props.countryCode.toLocaleLowerCase() === "us"
+    ) {
       contentType = "LetsFixDataContent";
     }
   }
 
   // MNTOR-1940: US user who is returning to the experience, free, and has resolved all their tasks
   if (
-    isUserFromUs &&
+    props.isUserFromUs &&
     noUnresolvedExposures &&
     !isScanResultItemsEmpty &&
-    isAllFixed &&
-    !hasPremium(user)
+    !hasPremium(props.user) &&
+    // TODO: A bug causes `isAllFixed` to not be `true` when it should be:
+    // https://mozilla-hub.atlassian.net/browse/MNTOR-2192
+    /* c8 ignore next 4 */
+    isAllFixed
   ) {
     contentType = "YourDataIsProtectedAllFixedContent";
   }
@@ -231,38 +225,46 @@ export const View = ({
     return (
       <div className={styles.zeroStateIndicator}>
         <Image
-          src={isScanInProgress ? ScanProgressIllustration : AllFixedLogo}
+          src={props.scanInProgress ? ScanProgressIllustration : AllFixedLogo}
           alt=""
         />
         <strong>
-          {isScanInProgress
+          {props.scanInProgress
             ? l10n.getString("dashboard-exposures-scan-progress-label")
             : l10n.getString("dashboard-exposures-all-fixed-label")}
         </strong>
-        {!isScanInProgress && freeScanCta}
+        {!props.scanInProgress && freeScanCta}
       </div>
     );
   };
 
   return (
     <div className={styles.wrapper}>
-      <Toolbar user={user}>
+      <Toolbar user={props.user}>
         <TabList
           tabs={tabsData}
           onSelectionChange={(selectedKey) => setSelectedTab(selectedKey)}
-          defaultSelectedKey={selectedTab}
+          selectedKey={selectedTab}
         />
       </Toolbar>
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
-          bannerData={bannerData}
+          bannerData={getDashboardSummary(
+            props.userScanData.results,
+            props.userBreaches
+          )}
+          stepDeterminationData={{
+            countryCode: props.countryCode,
+            latestScanData: props.userScanData,
+            subscriberBreaches: props.userBreaches,
+            user: props.user,
+          }}
           content={contentType}
           type={selectedTab as TabType}
-          scanStatus={scanStatus}
-          isEligibleForFreeScan={isEligibleForFreeScan}
-          // TODO: Add unit test when changing this code:
-          /* c8 ignore next 3 */
-          ctaCallback={() => {
+          hasRunScan={!isScanResultItemsEmpty}
+          scanInProgress={props.scanInProgress}
+          isEligibleForFreeScan={props.isEligibleForFreeScan}
+          onShowFixed={() => {
             setSelectedTab("fixed");
           }}
         />

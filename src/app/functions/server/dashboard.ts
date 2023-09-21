@@ -2,8 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { BreachDataTypes } from "../../../utils/breachResolution";
-import { ScanResult } from "./onerep";
+import { OnerepScanResultRow } from "knex/types/tables";
+import { BreachDataTypes } from "../universal/breach";
 import { RemovalStatusMap } from "../universal/scanResult";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 
@@ -60,8 +60,8 @@ const exposureKeyMap: Record<string, string> = {
   bankAccountNumbers: "bank-account-numbers",
 };
 
-export function dashboardSummary(
-  scannedResults: ScanResult[],
+export function getDashboardSummary(
+  scannedResults: OnerepScanResultRow[],
   subscriberBreaches: SubscriberBreach[]
 ): DashboardSummary {
   const summary: DashboardSummary = {
@@ -149,8 +149,17 @@ export function dashboardSummary(
   // calculate breaches summary from breaches data
   // TODO: Modify after MNTOR-1947: Refactor user breaches object
   subscriberBreaches.forEach((b) => {
+    // According to the type, b.dataClasses should always be defined, so unit
+    // tests always define it. That said, since the type was added later, I'd
+    // rather not remove the `?? []` just in case it is wrong, hence:
+    /* c8 ignore next */
     const dataClasses = b.dataClasses ?? [];
-    const increment = b.emailsEffected?.length ?? 0;
+    // b.emailsAffected *should* always be non-empty, since `subscriberBreaches`
+    // was specifically constructed to contain all breaches that affect the
+    // user. However, some basic `git blame` archeology doesn't turn up any info
+    // on why the `?? 0` was added, so I'm leaving it in place for now:
+    /* c8 ignore next */
+    const increment = b.emailsAffected.length ?? 0;
 
     // count emails
     if (dataClasses.includes(BreachDataTypes.Email)) {
@@ -270,6 +279,5 @@ function sanitizeExposures(
     totalExposures
   );
   sanitizedExposures.push({ "other-data-class": other });
-  console.debug({ sanitizedExposures });
   return sanitizedExposures;
 }
