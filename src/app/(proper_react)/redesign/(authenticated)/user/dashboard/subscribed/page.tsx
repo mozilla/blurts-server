@@ -48,13 +48,14 @@ export default async function Subscribed() {
   const scans = await getAllScanResults(profileId);
 
   // In dev mode, record scans every time this page is reloaded.
-  // The webhoook does this in production.
+  // The webhook does this in production.
   if (dev) {
     await addOnerepScanResults(
       profileId,
       latestScan.scan.onerep_scan_id,
       scans,
-      "initial"
+      "initial",
+      latestScan.scan.onerep_scan_status
     );
   }
 
