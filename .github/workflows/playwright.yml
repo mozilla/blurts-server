@@ -46,7 +46,9 @@ jobs:
           node-version: 18.12.1
 
       - name: Install dependencies
-        run: npx playwright install-deps
+        run: |
+          npm ci
+          npx playwright install-deps safari
       - name: Copy env var
         run: cp .env-dist .env
       - name: Setting up postgres
