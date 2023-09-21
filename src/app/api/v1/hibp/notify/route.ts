@@ -18,52 +18,52 @@ const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
  * @param req
  */
 export async function POST(req: NextRequest) {
-  if (!projectId) {
-    throw new Error("GCP_PUBSUB_PROJECT_ID env var not set");
-  }
-  if (!topicName) {
-    throw new Error("GCP_PUBSUB_TOPIC_NAME env var not set");
-  }
-
-  const headerToken = bearerToken(req);
-  if (headerToken !== process.env.HIBP_NOTIFY_TOKEN) {
-    return NextResponse.json({ success: false }, { status: 401 });
-  }
-
-  const json = await req.json();
-
-  if (!(json.breachName && json.hashPrefix && json.hashSuffixes)) {
-    console.error(
-      "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes."
-    );
-    return NextResponse.json({ success: false }, { status: 400 });
-  }
-
-  const pubsub = new PubSub({ projectId });
-
-  const [topics] = await pubsub.getTopics();
-  const [topic] = topics.filter(
-    (a) => a.name === `projects/${projectId}/topics/${topicName}`
-  );
-
-  if (!topic || topic.name !== `projects/${projectId}/topics/${topicName}`) {
-    if (process.env.NODE_ENV === "development") {
-      try {
-        if (!subscriptionName) {
-          throw new Error("GCP_PUBSUB_SUBSCRIPTION_NAME env var not set");
-        }
-        await pubsub.createTopic(topicName);
-        await pubsub.topic(topicName).createSubscription(subscriptionName);
-      } catch (ex) {
-        console.debug(ex);
-      }
-    } else {
-      console.error("Topic not found:", topicName);
-      return NextResponse.json({ success: false }, { status: 500 });
-    }
-  }
-
   try {
+    if (!projectId) {
+      throw new Error("GCP_PUBSUB_PROJECT_ID env var not set");
+    }
+    if (!topicName) {
+      throw new Error("GCP_PUBSUB_TOPIC_NAME env var not set");
+    }
+
+    const headerToken = bearerToken(req);
+    if (headerToken !== process.env.HIBP_NOTIFY_TOKEN) {
+      return NextResponse.json({ success: false }, { status: 401 });
+    }
+
+    const json = await req.json();
+
+    if (!(json.breachName && json.hashPrefix && json.hashSuffixes)) {
+      console.error(
+        "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes."
+      );
+      return NextResponse.json({ success: false }, { status: 400 });
+    }
+
+    const pubsub = new PubSub({ projectId });
+
+    const [topics] = await pubsub.getTopics();
+    const [topic] = topics.filter(
+      (a) => a.name === `projects/${projectId}/topics/${topicName}`
+    );
+
+    if (!topic || topic.name !== `projects/${projectId}/topics/${topicName}`) {
+      if (process.env.NODE_ENV === "development") {
+        try {
+          if (!subscriptionName) {
+            throw new Error("GCP_PUBSUB_SUBSCRIPTION_NAME env var not set");
+          }
+          await pubsub.createTopic(topicName);
+          await pubsub.topic(topicName).createSubscription(subscriptionName);
+        } catch (ex) {
+          console.debug(ex);
+        }
+      } else {
+        console.error("Topic not found:", topicName);
+        return NextResponse.json({ success: false }, { status: 500 });
+      }
+    }
+
     await topic.publishMessage({ json });
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (ex) {
