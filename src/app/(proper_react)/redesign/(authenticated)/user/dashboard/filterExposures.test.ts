@@ -5,7 +5,7 @@
 import { it, expect } from "@jest/globals";
 import {
   createRandomBreach,
-  createRandomScan,
+  createRandomScanResult,
 } from "../../../../../../apiMocks/mockData";
 import { filterExposures } from "./filterExposures";
 
@@ -29,19 +29,19 @@ const breachOld = createRandomBreach({
   addedDate: getDateDaysAgo(1000),
 });
 
-const scanResultThisWeek = createRandomScan({
+const scanResultThisWeek = createRandomScanResult({
   fakerSeed: 1234,
   createdDate: getDateDaysAgo(2),
 });
-const scanResultThisMonth = createRandomScan({
+const scanResultThisMonth = createRandomScanResult({
   fakerSeed: 1234,
   createdDate: getDateDaysAgo(10),
 });
-const scanResultThisYear = createRandomScan({
+const scanResultThisYear = createRandomScanResult({
   fakerSeed: 1234,
   createdDate: getDateDaysAgo(100),
 });
-const scanResultOld = createRandomScan({
+const scanResultOld = createRandomScanResult({
   fakerSeed: 1234,
   createdDate: getDateDaysAgo(1000),
 });
