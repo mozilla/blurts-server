@@ -72,6 +72,29 @@ it("passes the axe accessibility test suite on step 2", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
+it("can go to step 2 from step 1", async () => {
+  const user = userEvent.setup();
+  const ComposedOnboarding = composeStory(Onboarding, Meta);
+  render(<ComposedOnboarding />);
+
+  expect(
+    screen.queryByRole("heading", {
+      name: "Enter the details you want to protect",
+    })
+  ).not.toBeInTheDocument();
+
+  const startButton = screen.getByRole("button", {
+    name: "Start my free scan",
+  });
+  await user.click(startButton);
+
+  expect(
+    screen.getByRole("heading", {
+      name: "Enter the details you want to protect",
+    })
+  ).toBeInTheDocument();
+});
+
 it("can go back to step 1 after moving on to step 2", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
