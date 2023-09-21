@@ -6,7 +6,7 @@
 
 import { CSSProperties } from "react";
 import { useL10n } from "../../hooks/l10n";
-import styles from "./Chart.module.scss";
+import styles from "./PercentageChart.module.scss";
 
 export type WelcomeToPremiumProps = {
   exposureReduction: number;

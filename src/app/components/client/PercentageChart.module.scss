@@ -63,6 +63,15 @@
       font-family: var(--font-inter);
     }
 
+    .percentageHeadingNr {
+      font-family: var(--font-inter);
+      font-weight: 600;
+    }
+    .percent {
+      font-family: var(--font-inter);
+      font-weight: 300;
+    }
+
     .slice {
       @media (prefers-reduced-motion: no-preference) {
         transition: stroke-dashoffset 1s ease;
