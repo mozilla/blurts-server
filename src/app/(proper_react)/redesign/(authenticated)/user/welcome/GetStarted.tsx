@@ -129,14 +129,7 @@ export const GetStarted = (props: Props) => {
         )}
       </p>
       <div className={styles.stepButtonWrapper}>
-        <Button
-          variant="primary"
-          onClick={
-            // TODO: Add unit test when changing this code:
-            /* c8 ignore next */
-            () => props.onStart()
-          }
-        >
+        <Button variant="primary" onPress={() => props.onStart()}>
           {l10n.getString("onboarding-get-started-cta-label")}
         </Button>
       </div>
