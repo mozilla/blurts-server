@@ -235,9 +235,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         <div className={styles.confirmButtonWrapper}>
           <Button
             variant="primary"
-            // TODO: Add unit test when changing this code:
-            /* c8 ignore next */
-            onClick={() => explainerDialogState.close()}
+            onPress={() => explainerDialogState.close()}
             autoFocus={true}
             className={styles.startButton}
           >
@@ -270,9 +268,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       <div className={styles.stepButtonWrapper}>
         <Button
           variant="secondary"
-          // TODO: Add unit test when changing this code:
-          /* c8 ignore next */
-          onClick={() => confirmDialogState.close()}
+          onPress={() => confirmDialogState.close()}
           className={styles.startButton}
         >
           {l10n.getString(
@@ -281,9 +277,9 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         </Button>
         <Button
           variant="primary"
-          // TODO: Add unit test when changing this code:
+          // TODO: Figure out how to intercept the fetch request in a test:
           /* c8 ignore next */
-          onClick={() => handleRequestScan()}
+          onPress={() => handleRequestScan()}
           autoFocus={true}
           className={styles.startButton}
           isLoading={requestingScan}

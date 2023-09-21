@@ -83,6 +83,13 @@ it("explainer dialog shows on step 2", async () => {
   });
   await user.click(explainerTrigger);
   expect(screen.getByRole("dialog")).toBeInTheDocument();
+
+  const confirmButton = screen.getByRole("button", {
+    name: "OK",
+  });
+  await user.click(confirmButton);
+
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
 });
 
 it("confirm dialog is showing on step 2", async () => {
@@ -98,6 +105,13 @@ it("confirm dialog is showing on step 2", async () => {
   await user.click(proceedButton);
 
   expect(screen.getByText("Is this correct?")).toBeInTheDocument();
+
+  const cancelButton = screen.getByRole("button", {
+    name: "Edit",
+  });
+  await user.click(cancelButton);
+
+  expect(screen.queryByText("Is this correct?")).not.toBeInTheDocument();
 });
 
 it("form input elements have invalid state if left empty on step 2", async () => {
