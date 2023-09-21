@@ -48,7 +48,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
-          npx playwright install-deps safari
+          npx playwright install-deps webkit
       - name: Copy env var
         run: cp .env-dist .env
       - name: Setting up postgres
