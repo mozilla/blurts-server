@@ -14,8 +14,8 @@ export const useGlean = () => {
   // Initialize Glean only on the first render
   // of our custom hook.
   useEffect(() => {
-    // Enable upload only if the user opted into tracking.
-    const uploadEnabled = navigator.doNotTrack === "0";
+    // Enable upload only if the user has not opted out of tracking.
+    const uploadEnabled = navigator.doNotTrack !== "1";
 
     const channel = process.env.NEXT_PUBLIC_APP_ENV;
     if (!channel) {
@@ -57,21 +57,9 @@ interface InitGaProps {
   debugMode: boolean;
 }
 
-export const initGa4 = ({ ga4MeasurementId, debugMode }: InitGaProps) => {
-  if (typeof window === undefined) {
-    return;
-  }
-
+const initGa4 = ({ ga4MeasurementId, debugMode }: InitGaProps) => {
   if (debugMode) {
     console.info("Initialize GA4");
-  }
-
-  const uploadEnabled = navigator.doNotTrack !== "0";
-  if (!uploadEnabled) {
-    if (debugMode) {
-      console.info("Cound not initialize GA4 due to DNT.");
-    }
-    return;
   }
 
   // GA4 setup
@@ -95,21 +83,31 @@ type Ga4EventOptions = {
   params: object;
 };
 
-export const useGtag = (): {
+export const useGa = (): {
   gtag: {
     record: (options: Ga4EventOptions) => void;
   };
 } => {
   const debugMode = process.env.NEXT_PUBLIC_NODE_ENV !== "production";
+
   useEffect(() => {
+    // Enable upload only if the user has not opted out of tracking.
+    const uploadEnabled = navigator.doNotTrack !== "1";
+
+    if (!uploadEnabled) {
+      if (debugMode) {
+        console.warn("Do not initialize GA4 due to DNT.");
+      }
+      return;
+    }
+
     if (!window.gtag) {
-      if (process.env.NEXT_PUBLIC_NODE_ENV !== "production") {
+      if (debugMode) {
         console.warn("GA4 is not initialized.");
       }
 
       const ga4MeasurementId =
-        process.env.NEXT_PUBLIC_NEXT_PUBLIC_GA4_MEASUREMENT_ID ||
-        "G-CXG8K4KW4P";
+        process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID || "G-CXG8K4KW4P";
       initGa4({ ga4MeasurementId, debugMode });
     }
   }, [debugMode]);

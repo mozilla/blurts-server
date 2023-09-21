@@ -51,6 +51,7 @@ export const getExposureStatus = (exposure: Exposure): StatusPillType => {
       case "removed":
         return "fixed";
       case "waiting_for_verification":
+      case "optout_in_progress":
         return "progress";
       default:
         return "needAction";

@@ -13,7 +13,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();
 
   const ga4MeasurementId =
-    process.env.NEXT_PUBLIC_NEXT_PUBLIC_GA4_MEASUREMENT_ID || "G-CXG8K4KW4P";
+    process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID || "G-CXG8K4KW4P";
   const nonce = getNonce() || "";
 
   return (
