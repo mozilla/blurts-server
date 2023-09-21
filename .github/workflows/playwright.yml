@@ -46,7 +46,7 @@ jobs:
           node-version: 18.12.1
 
       - name: Install dependencies
-        run: npm ci
+        run: npx playwright install-deps
       - name: Copy env var
         run: cp .env-dist .env
       - name: Setting up postgres
