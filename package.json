@@ -4,7 +4,7 @@
   "description": "Firefox Monitor",
   "engines": {
     "node": "18.12.x",
-    "npm": "8.x"
+    "npm": "9.6.5"
   },
   "type": "module",
   "scripts": {
@@ -15,6 +15,7 @@
     "fix": "prettier --write './src' && next lint --fix && stylelint --fix '**/*.scss'",
     "test": "jest",
     "e2e": "playwright test src/e2e/",
+    "e2e:debug": "playwright test src/e2e/ --ui",
     "e2e:smoke": "playwright test src/e2e/ --grep @smoke",
     "functions": "nodemon --exec 'functions-framework --target=app --signature-type=http --source=src/cloud-functions'",
     "db:migrate": "node -r dotenv/config node_modules/knex/bin/cli.js migrate:latest --knexfile src/db/knexfile.js",
@@ -45,7 +46,7 @@
   "license": "MPL-2.0",
   "volta": {
     "node": "18.12.1",
-    "npm": "8.19.3"
+    "npm": "9.6.5"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.360.0",

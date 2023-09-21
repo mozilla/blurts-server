@@ -21,8 +21,8 @@ export const BreachDataTypes = {
 } as const;
 
 export const HighRiskDataTypes = {
-  SSN: "social-security-numbers",
-  CreditCard: "partial-credit-card-data",
-  BankAccount: "bank-account-numbers",
-  PIN: "pins",
+  SSN: BreachDataTypes.SSN,
+  CreditCard: BreachDataTypes.CreditCard,
+  BankAccount: BreachDataTypes.BankAccount,
+  PIN: BreachDataTypes.PIN,
 } as const;

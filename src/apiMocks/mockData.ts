@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { faker } from "@faker-js/faker";
-import { ScanResult } from "../app/functions/server/onerep";
+import { OnerepScanResultRow } from "knex/types/tables";
 import {
   RemovalStatus,
   RemovalStatusMap,
@@ -24,41 +24,45 @@ import {
 const fakerSeed = 123;
 
 // This is a full list of scan results, all pages, and would normally be
-// stored in the `onerep_scan_results.onerep_scan_results` column
-// as `jsonb`.
+// stored in the `onerep_scan_results` table.
 export function mockedOneRepScanResults() {
   faker.seed(fakerSeed);
   return {
-    data: Array.from({ length: 3 }, () => createRandomScan()),
+    data: Array.from({ length: 3 }, () => createRandomScanResult()),
   };
 }
 
-export type RandomScanOptions = Partial<{
+export type RandomScanResultOptions = Partial<{
   createdDate: Date;
   fakerSeed: number;
   status: RemovalStatus;
+  manually_resolved: boolean;
 }>;
 
 /**
  * Generates scan result with randomly-generated mock data.
  *
  * @param options
- * @returns {ScanResult} - A single scan result.
+ * @returns A single scan result.
  */
-export function createRandomScan(options: RandomScanOptions = {}): ScanResult {
+export function createRandomScanResult(
+  options: RandomScanResultOptions = {}
+): OnerepScanResultRow {
   faker.seed(options.fakerSeed);
   return {
     id: faker.number.int(),
-    profile_id: faker.number.int(),
+    onerep_scan_result_id: faker.number.int(),
+    onerep_scan_id: faker.number.int(),
     first_name: faker.person.firstName(),
     last_name: faker.person.lastName(),
     middle_name: faker.person.middleName(),
-    age: faker.number.int({ min: 14, max: 120 }).toString(),
+    age: faker.number.int({ min: 14, max: 120 }),
     status:
       options.status ??
       (faker.helpers.arrayElement(
         Object.values(RemovalStatusMap)
       ) as RemovalStatus),
+    manually_resolved: options.manually_resolved ?? faker.datatype.boolean(),
     addresses: Array.from({ length: 3 }, () => ({
       zip: faker.location.zipCode(),
       city: faker.location.city(),
@@ -71,11 +75,8 @@ export function createRandomScan(options: RandomScanOptions = {}): ScanResult {
     link: faker.internet.url(),
     data_broker: faker.internet.domainName(),
     data_broker_id: faker.number.int(),
-    created_at:
-      options.createdDate?.toISOString() ??
-      faker.date.recent({ days: 2 }).toISOString(),
-    updated_at: faker.date.recent({ days: 1 }).toISOString(),
-    url: faker.internet.url(),
+    created_at: options.createdDate ?? faker.date.recent({ days: 2 }),
+    updated_at: faker.date.recent({ days: 1 }),
   };
 }
 
@@ -100,10 +101,12 @@ export function createRandomBreach(
   );
 
   faker.seed(options.fakerSeed);
+  const isResolved = options.isResolved ?? faker.datatype.boolean();
   return {
     addedDate: options.addedDate ?? faker.date.recent(),
     breachDate: faker.date.recent(),
     dataClasses: dataClasses,
+    resolvedDataClasses: isResolved ? dataClasses : [],
     description: faker.word.words(),
     domain: faker.internet.domainName(),
     id: faker.number.int(),
@@ -111,7 +114,8 @@ export function createRandomBreach(
     modifiedDate: faker.date.recent(),
     name: faker.word.noun(),
     title: faker.word.noun(),
-    isResolved: options.isResolved ?? faker.datatype.boolean(),
+    emailsAffected: Array.from({ length: 3 }, () => faker.internet.email()),
+    isResolved: isResolved,
     dataClassesEffected: options.dataClassesEffected ?? [],
   };
 }
@@ -123,7 +127,7 @@ export function createUserWithPremiumSubscription() {
       locale: "us",
       twoFactorAuthentication: false,
       metricsEnabled: false,
-      avatar: "",
+      avatar: "https://profile.stage.mozaws.net/v1/avatar/e",
       avatarDefault: true,
       subscriptions: ["monitor"],
     },

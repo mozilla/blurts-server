@@ -12,15 +12,15 @@ import {
   optoutProfile,
 } from "../../../../../../functions/server/onerep";
 import {
-  getLatestOnerepScan,
-  setOnerepScanResults,
+  getLatestOnerepScanResults,
+  addOnerepScanResults,
 } from "../../../../../../../db/tables/onerep_scans";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
 
 export default async function Subscribed() {
   const session = await getServerSession(authOptions);
-  if (!session || !session.user || !session.user.subscriber) {
+  if (!session?.user?.subscriber) {
     throw new Error("No session");
   }
 
@@ -40,8 +40,8 @@ export default async function Subscribed() {
 
   const dev =
     process.env.NODE_ENV === "development" || process.env.APP_ENV === "heroku";
-  const latestScan = await getLatestOnerepScan(profileId);
-  if (!latestScan) {
+  const latestScan = await getLatestOnerepScanResults(profileId);
+  if (!latestScan.scan) {
     throw new Error("Must have performed manual scan");
   }
 
@@ -50,10 +50,10 @@ export default async function Subscribed() {
   // In dev mode, record scans every time this page is reloaded.
   // The webhoook does this in production.
   if (dev) {
-    await setOnerepScanResults(
+    await addOnerepScanResults(
       profileId,
-      latestScan.onerep_scan_id,
-      { data: scans },
+      latestScan.scan.onerep_scan_id,
+      scans,
       "initial"
     );
   }

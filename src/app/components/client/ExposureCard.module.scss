@@ -145,10 +145,6 @@
         flex-direction: column;
         gap: $spacing-md;
 
-        .dataClassesList {
-          align-items: start;
-        }
-
         @media screen and (min-width: $screen-lg) {
           flex: 1 1 0;
 
@@ -182,7 +178,7 @@
         }
       }
 
-      dl {
+      .dataClassesList {
         font: $text-body-sm;
         justify-content: space-between;
         margin-left: 0;
@@ -198,14 +194,14 @@
         @media screen and (min-width: $screen-lg) {
           display: flex;
           flex-direction: row;
-          align-items: center;
+          align-items: start;
           gap: $layout-xs;
           flex-wrap: wrap;
           justify-content: flex-start;
         }
 
         .detailsFoundItem {
-          dt {
+          .label {
             display: flex;
             align-items: center;
 
@@ -217,7 +213,7 @@
             }
           }
 
-          dd {
+          .emails {
             padding-inline-start: var(--exposureDetailsIconWidth);
             font: $text-body-xs;
             font-weight: 600;

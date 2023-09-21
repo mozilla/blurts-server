@@ -5,12 +5,13 @@
 import { getUserEmails } from "../db/tables/emailAddresses.js";
 import { HibpLikeDbBreach, getBreachesForEmail } from "./hibp.js";
 import { getSha1 } from "./fxa.js";
-import { BreachDataTypes, filterBreachDataTypes } from "./breachResolution.js";
+import { filterBreachDataTypes } from "./breachResolution.js";
 import {
   Breach,
   Subscriber,
 } from "../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 import { parseIso8601Datetime } from "./parse.js";
+import { BreachDataTypes } from "../app/functions/universal/breach";
 
 export type DataClassEffected = {
   [dataType: string]: number | string[];
@@ -18,7 +19,10 @@ export type DataClassEffected = {
 export interface SubscriberBreach {
   addedDate: Date;
   breachDate: Date;
-  dataClasses: string[];
+  dataClasses: Array<(typeof BreachDataTypes)[keyof typeof BreachDataTypes]>;
+  resolvedDataClasses: Array<
+    (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
+  >;
   description: string;
   domain: string;
   id: number;
@@ -27,7 +31,7 @@ export interface SubscriberBreach {
   modifiedDate: Date;
   name: string;
   title: string;
-  emailsEffected?: string[];
+  emailsAffected: string[];
   dataClassesEffected: DataClassEffected[];
 }
 
@@ -75,9 +79,11 @@ export async function getSubBreaches(
     const breachResolution = subscriber.breach_resolution?.[email.email] ?? {};
 
     for (const breach of foundBreaches) {
-      const filteredBreachDataClasses: string[] = filterBreachDataTypes(
-        breach.DataClasses
-      );
+      type ArrayOfDataClasses = Array<
+        (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
+      >;
+      const filteredBreachDataClasses: ArrayOfDataClasses =
+        filterBreachDataTypes(breach.DataClasses);
       // `allBreaches` is generally the return value of `getBreaches`, which
       // either loads breaches from the database, or fetches them from the HIBP
       // API. In the former csae, `AddedDate`, `BreachDate` and `ModifiedDate`
@@ -88,6 +94,8 @@ export async function getSubBreaches(
         addedDate: normalizeDate(breach.AddedDate),
         breachDate: normalizeDate(breach.BreachDate),
         dataClasses: filteredBreachDataClasses,
+        resolvedDataClasses: (breachResolution[breach.Id]?.resolutionsChecked ??
+          []) as ArrayOfDataClasses,
         description: breach.Description,
         domain: breach.Domain,
         isResolved: breachResolution[breach.Id]?.isResolved || false,
@@ -95,7 +103,7 @@ export async function getSubBreaches(
         modifiedDate: normalizeDate(breach.ModifiedDate),
         name: breach.Name,
         title: breach.Title,
-        emailsEffected: [email.email],
+        emailsAffected: [email.email],
         dataClassesEffected: filteredBreachDataClasses.map((c) => {
           if (c === BreachDataTypes.Email) {
             return { [c]: [email.email] };
@@ -111,7 +119,7 @@ export async function getSubBreaches(
       } else {
         // append email & other data classes counts
         const curBreach = uniqueBreaches[subscriberBreach.id];
-        curBreach.emailsEffected?.push(email.email);
+        curBreach.emailsAffected.push(email.email);
         curBreach.dataClassesEffected.forEach((d, index) => {
           const key = Object.keys(d)[0];
           if (key === BreachDataTypes.Email) {

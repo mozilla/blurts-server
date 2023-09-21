@@ -7,6 +7,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ReactNode } from "react";
+import { OnerepScanResultRow } from "knex/types/tables";
 import { FixNavigation } from "../../../../../../components/client/FixNavigation";
 import styles from "./fix.module.scss";
 import ImageArrowLeft from "./images/icon-arrow-left.svg";
@@ -18,13 +19,12 @@ import stepLeakedPasswordsIcon from "./images/step-counter-leaked-passwords.svg"
 import stepSecurityRecommendationsIcon from "./images/step-counter-security-recommendations.svg";
 import { usePathname } from "next/navigation";
 import { GuidedExperienceBreaches } from "../../../../../../functions/server/getUserBreaches";
-import { ScanResult } from "../../../../../../functions/server/onerep";
 import { useL10n } from "../../../../../../hooks/l10n";
 
 export type FixViewProps = {
   children: ReactNode;
   breaches: GuidedExperienceBreaches;
-  userScannedResults: ScanResult[];
+  userScannedResults: OnerepScanResultRow[];
 };
 
 export const FixView = (props: FixViewProps) => {
