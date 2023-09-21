@@ -59,7 +59,7 @@ export default async function DashboardPage() {
       userBreaches={subBreaches}
       locale={locale}
       featureFlagsEnabled={featureFlagsEnabled}
-      scanInProgress={scanInProgress}
+      scanInProgress={true}
     />
   );
 }

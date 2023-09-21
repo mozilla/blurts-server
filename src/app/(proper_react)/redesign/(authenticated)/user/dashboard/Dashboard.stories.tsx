@@ -32,12 +32,14 @@ type DashboardWrapperProps = (
       countryCode: "us";
       brokers: keyof typeof brokerOptions;
       premium: boolean;
-      scanInProgress: boolean;
     }
   | {
       countryCode: "nl";
     }
-) & { breaches: keyof typeof breachOptions };
+) & {
+  breaches: keyof typeof breachOptions;
+  scanInProgress: boolean;
+};
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
     dataClasses: [
@@ -172,7 +174,6 @@ export const DashboardNonUsNoBreaches: Story = {
   args: {
     countryCode: "nl",
     breaches: "empty",
-    scanInProgress: false,
   },
 };
 
@@ -181,7 +182,6 @@ export const DashboardNonUsUnresolvedBreaches: Story = {
   args: {
     countryCode: "nl",
     breaches: "unresolved",
-    scanInProgress: false,
   },
 };
 
@@ -190,7 +190,6 @@ export const DashboardNonUsResolvedBreaches: Story = {
   args: {
     countryCode: "nl",
     breaches: "resolved",
-    scanInProgress: false,
   },
 };
 
@@ -200,8 +199,8 @@ export const DashboardUsNoPremiumNoScanNoBreaches: Story = {
     countryCode: "us",
     premium: false,
     breaches: "empty",
-    scanInProgress: false,
     brokers: "no-scan",
+    scanInProgress: false,
   },
 };
 
@@ -211,8 +210,8 @@ export const DashboardUsNoPremiumNoScanUnresolvedBreaches: Story = {
     countryCode: "us",
     premium: false,
     breaches: "unresolved",
-    scanInProgress: false,
     brokers: "no-scan",
+    scanInProgress: false,
   },
 };
 
@@ -222,8 +221,8 @@ export const DashboardUsNoPremiumNoScanResolvedBreaches: Story = {
     countryCode: "us",
     premium: false,
     breaches: "resolved",
-    scanInProgress: false,
     brokers: "no-scan",
+    scanInProgress: false,
   },
 };
 
@@ -233,8 +232,8 @@ export const DashboardUsNoPremiumEmptyScanNoBreaches: Story = {
     countryCode: "us",
     premium: false,
     breaches: "empty",
-    scanInProgress: false,
     brokers: "empty",
+    scanInProgress: false,
   },
 };
 
@@ -244,8 +243,8 @@ export const DashboardUsNoPremiumEmptyScanUnresolvedBreaches: Story = {
     countryCode: "us",
     premium: false,
     breaches: "unresolved",
-    scanInProgress: false,
     brokers: "empty",
+    scanInProgress: false,
   },
 };
 
@@ -255,8 +254,8 @@ export const DashboardUsNoPremiumEmptyScanResolvedBreaches: Story = {
     countryCode: "us",
     premium: false,
     breaches: "resolved",
-    scanInProgress: false,
     brokers: "empty",
+    scanInProgress: false,
   },
 };
 
@@ -266,8 +265,8 @@ export const DashboardUsNoPremiumUnresolvedScanNoBreaches: Story = {
     countryCode: "us",
     premium: false,
     breaches: "empty",
-    scanInProgress: false,
     brokers: "unresolved",
+    scanInProgress: false,
   },
 };
 
@@ -277,8 +276,8 @@ export const DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches: Story = {
     countryCode: "us",
     premium: false,
     breaches: "unresolved",
-    scanInProgress: false,
     brokers: "unresolved",
+    scanInProgress: false,
   },
 };
 
@@ -288,8 +287,8 @@ export const DashboardUsNoPremiumUnresolvedScanResolvedBreaches: Story = {
     countryCode: "us",
     premium: false,
     breaches: "resolved",
-    scanInProgress: false,
     brokers: "unresolved",
+    scanInProgress: false,
   },
 };
 
@@ -299,8 +298,8 @@ export const DashboardUsNoPremiumResolvedScanNoBreaches: Story = {
     countryCode: "us",
     premium: false,
     breaches: "empty",
-    scanInProgress: false,
     brokers: "resolved",
+    scanInProgress: false,
   },
 };
 
@@ -310,8 +309,8 @@ export const DashboardUsNoPremiumResolvedScanUnresolvedBreaches: Story = {
     countryCode: "us",
     premium: false,
     breaches: "unresolved",
-    scanInProgress: false,
     brokers: "resolved",
+    scanInProgress: false,
   },
 };
 
@@ -321,8 +320,8 @@ export const DashboardUsNoPremiumResolvedScanResolvedBreaches: Story = {
     countryCode: "us",
     premium: false,
     breaches: "resolved",
-    scanInProgress: false,
     brokers: "resolved",
+    scanInProgress: false,
   },
 };
 
@@ -332,8 +331,8 @@ export const DashboardUsPremiumNoScanNoBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "empty",
-    scanInProgress: false,
     brokers: "no-scan",
+    scanInProgress: false,
   },
 };
 
@@ -343,8 +342,8 @@ export const DashboardUsPremiumNoScanUnresolvedBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "unresolved",
-    scanInProgress: false,
     brokers: "no-scan",
+    scanInProgress: false,
   },
 };
 
@@ -354,8 +353,8 @@ export const DashboardUsPremiumNoScanResolvedBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "resolved",
-    scanInProgress: false,
     brokers: "no-scan",
+    scanInProgress: false,
   },
 };
 
@@ -365,8 +364,8 @@ export const DashboardUsPremiumEmptyScanNoBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "empty",
-    scanInProgress: false,
     brokers: "empty",
+    scanInProgress: false,
   },
 };
 
@@ -376,8 +375,8 @@ export const DashboardUsPremiumEmptyScanUnresolvedBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "unresolved",
-    scanInProgress: false,
     brokers: "empty",
+    scanInProgress: false,
   },
 };
 
@@ -387,8 +386,8 @@ export const DashboardUsPremiumEmptyScanResolvedBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "resolved",
-    scanInProgress: false,
     brokers: "empty",
+    scanInProgress: false,
   },
 };
 
@@ -398,8 +397,8 @@ export const DashboardUsPremiumUnresolvedScanNoBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "empty",
-    scanInProgress: false,
     brokers: "unresolved",
+    scanInProgress: false,
   },
 };
 
@@ -409,8 +408,8 @@ export const DashboardUsPremiumUnresolvedScanUnresolvedBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "unresolved",
-    scanInProgress: false,
     brokers: "unresolved",
+    scanInProgress: false,
   },
 };
 
@@ -420,8 +419,8 @@ export const DashboardUsPremiumUnresolvedScanResolvedBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "resolved",
-    scanInProgress: false,
     brokers: "unresolved",
+    scanInProgress: false,
   },
 };
 
@@ -431,8 +430,8 @@ export const DashboardUsPremiumResolvedScanNoBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "empty",
-    scanInProgress: false,
     brokers: "resolved",
+    scanInProgress: false,
   },
 };
 
@@ -442,8 +441,8 @@ export const DashboardUsPremiumScanInProgressNoUnresolvedBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "unresolved",
-    scanInProgress: true,
     brokers: "resolved",
+    scanInProgress: true,
   },
 };
 
@@ -453,7 +452,7 @@ export const DashboardUsPremiumScanInProgressUnresolvedBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "resolved",
-    scanInProgress: true,
     brokers: "resolved",
+    scanInProgress: true,
   },
 };

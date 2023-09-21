@@ -27,6 +27,6 @@ export const FixedExposures: Story = {
   args: {
     data: data,
     isEligibleForFreeScan: true,
-    scanStatus: "finished",
+    scanInProgress: false,
   },
 };

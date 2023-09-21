@@ -16,18 +16,17 @@ import { Button } from "../server/Button";
 import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import ModalImage from "../client/assets/modal-default-img.svg";
-import { Scan } from "../../functions/server/onerep";
 
 export type Props = {
   data: Array<[string, number]>;
   isEligibleForFreeScan: boolean;
-  scanStatus?: Scan["status"];
+  scanInProgress: boolean;
 };
 
 export const DoughnutChart = ({
   data,
   isEligibleForFreeScan,
-  scanStatus,
+  scanInProgress,
 }: Props) => {
   const l10n = useL10n();
 
@@ -106,7 +105,7 @@ export const DoughnutChart = ({
   );
 
   const getPromptContent = () => {
-    if (!scanStatus && isEligibleForFreeScan) {
+    if (!scanInProgress && isEligibleForFreeScan) {
       return (
         <>
           <p>
@@ -119,7 +118,7 @@ export const DoughnutChart = ({
       );
     }
 
-    if (scanStatus === "in_progress") {
+    if (scanInProgress) {
       return (
         <p>
           {l10n.getFragment("exposure-chart-scan-in-progress-prompt", {

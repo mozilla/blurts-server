@@ -175,8 +175,7 @@ export const View = (props: Props) => {
   let contentType: BannerContent = "NoContent";
   if (
     props.featureFlagsEnabled?.FreeBrokerScan &&
-    props.featureFlagsEnabled?.PremiumBrokerRemoval &&
-    props.isUserFromUs
+    props.featureFlagsEnabled?.PremiumBrokerRemoval
   ) {
     if (isScanResultItemsEmpty && !props.scanInProgress) {
       contentType = "DataBrokerScanUpsellContent";
@@ -193,7 +192,6 @@ export const View = (props: Props) => {
 
   // MNTOR-1940: US user who is returning to the experience, free, and has resolved all their tasks
   if (
-    props.isUserFromUs &&
     noUnresolvedExposures &&
     !isScanResultItemsEmpty &&
     !hasPremium(props.user) &&
