@@ -12,6 +12,7 @@ export type FeatureFlagsEnabled = {
   FreeBrokerScan: boolean;
   PremiumBrokerRemoval: boolean;
   FalseDoorTest: boolean;
+  HibpBreachNotifications: boolean;
 };
 
 // This function is specifically meant to not execute in tests:
