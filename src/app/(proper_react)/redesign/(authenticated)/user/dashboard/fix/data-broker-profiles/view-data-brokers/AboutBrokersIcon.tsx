@@ -77,7 +77,7 @@ export const AboutBrokersIcon = () => {
               <div className={styles.confirmButtonWrapper}>
                 <Button
                   variant="primary"
-                  onClick={() => overlayTriggerState.close()}
+                  onPress={() => overlayTriggerState.close()}
                   autoFocus={true}
                   className={styles.startButton}
                 >
