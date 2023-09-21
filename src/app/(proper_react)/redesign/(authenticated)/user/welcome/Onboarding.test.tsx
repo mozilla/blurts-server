@@ -72,6 +72,26 @@ it("passes the axe accessibility test suite on step 2", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
+it("can open the explainer dialog shows on step 1", async () => {
+  const user = userEvent.setup();
+  const ComposedOnboarding = composeStory(Onboarding, Meta);
+  render(<ComposedOnboarding />);
+
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  const explainerTrigger = screen.getByRole("button", {
+    name: "See how we protect your data",
+  });
+  await user.click(explainerTrigger);
+  expect(screen.getByRole("dialog")).toBeInTheDocument();
+
+  const confirmButton = screen.getByRole("button", {
+    name: "OK",
+  });
+  await user.click(confirmButton);
+
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+});
+
 it("can go to step 2 from step 1", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
