@@ -19,6 +19,8 @@ const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
  * @param req
  */
 export async function POST(req: NextRequest) {
+  let pubsub;
+  let json;
   try {
     if (!(await isFlagEnabled("HibpBreachNotifications"))) {
       console.info("Feature flag not enabled: HibpBreachNotifications");
@@ -36,7 +38,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false }, { status: 401 });
     }
 
-    const json = await req.json();
+    json = await req.json();
 
     if (!(json.breachName && json.hashPrefix && json.hashSuffixes)) {
       console.error(
@@ -45,34 +47,29 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false }, { status: 400 });
     }
 
-    const pubsub = new PubSub({ projectId });
+    pubsub = new PubSub({ projectId });
+  } catch (ex) {
+    console.error("Error connecting to PubSub:", ex);
+    return NextResponse.json({ success: false }, { status: 500 });
+  }
 
-    const [topics] = await pubsub.getTopics();
-    const [topic] = topics.filter(
-      (a) => a.name === `projects/${projectId}/topics/${topicName}`
-    );
-
-    if (!topic || topic.name !== `projects/${projectId}/topics/${topicName}`) {
-      if (process.env.NODE_ENV === "development") {
-        try {
-          if (!subscriptionName) {
-            throw new Error("GCP_PUBSUB_SUBSCRIPTION_NAME env var not set");
-          }
-          await pubsub.createTopic(topicName);
-          await pubsub.topic(topicName).createSubscription(subscriptionName);
-        } catch (ex) {
-          console.debug(ex);
-        }
-      } else {
-        console.error("Topic not found:", topicName);
-        return NextResponse.json({ success: false }, { status: 500 });
-      }
-    }
-
+  let topic;
+  try {
+    topic = pubsub.topic(topicName);
     await topic.publishMessage({ json });
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (ex) {
-    console.error("Error queueing HIBP breach:", ex);
+    if (process.env.NODE_ENV === "development") {
+      if (!subscriptionName) {
+        throw new Error("GCP_PUBSUB_SUBSCRIPTION_NAME env var not set");
+      }
+      await pubsub.createTopic(topicName);
+      await pubsub.topic(topicName).createSubscription(subscriptionName);
+    } else {
+      console.error("Topic not found:", topicName);
+      return NextResponse.json({ success: false }, { status: 500 });
+    }
+    console.error("Error queuing HIBP breach:", topicName);
     return NextResponse.json({ success: false }, { status: 500 });
   }
 }
