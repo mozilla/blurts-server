@@ -6,7 +6,7 @@
   text-align: center;
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: $spacing-xl;
   @media screen and (max-width: $screen-xl) {
     display: flex;
     flex-direction: column;
@@ -38,7 +38,6 @@
 
   h3 {
     font: $text-title-2xs;
-    margin: 20px 0;
   }
 
   p,
