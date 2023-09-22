@@ -305,7 +305,8 @@ data-broker-profiles-exposure-reduction = Exposure reduction: { $exposure_reduct
 # the label inside <label_line_1> and <label_line_2> will be shown in a smaller font. <label_line_1> and <label_line_2> spread the label over two lines, ideally of similar length.
 # Variables:
 #   $nr (number) - % of exposures reduced for the user
-exposure-reduction-chart-heading = <nr>{ $nr }</nr><percent>%</percent> <label_line_1>exposures will</label_line_1><label_line_2>be reduced</label_line_2>
+exposure-reduction-chart-heading = <nr>{ $nr }</nr><percent>%</percent>
+exposure-reduction-chart-explanation = <label_line_1>exposures will</label_line_1><label_line_2>be reduced</label_line_2>
 
 welcome-to-premium-data-broker-profiles-title-part-one = Welcome to { -brand-premium }.
 welcome-to-premium-data-broker-profiles-title-part-two = We’ll remove those profiles ASAP.

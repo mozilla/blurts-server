@@ -39,7 +39,7 @@
   stroke: $color-white;
 }
 
-.chartAndLegendWrapper {
+.chartWrapper {
   display: flex;
   flex-direction: column;
   gap: $spacing-md;
@@ -59,10 +59,6 @@
       font-family: var(--font-inter);
       font-weight: 600;
     }
-    .headingLabel {
-      font-family: var(--font-inter);
-    }
-
     .percentageHeadingNr {
       font-family: var(--font-inter);
       font-weight: 600;
@@ -70,6 +66,10 @@
     .percent {
       font-family: var(--font-inter);
       font-weight: 300;
+    }
+
+    .headingLabel {
+      font-family: var(--font-inter);
     }
 
     .slice {
@@ -80,55 +80,6 @@
       stroke-dashoffset: var(--sliceLength);
     }
   }
-
-  .legend {
-    align-self: center;
-    flex-direction: column;
-    display: flex;
-    gap: $spacing-sm;
-
-    .prompt {
-      font: $text-body-xs;
-      display: flex;
-      text-align: start;
-      flex-direction: column;
-      gap: $spacing-xs;
-      border: 1px solid $color-purple-70;
-      padding: $spacing-sm;
-      align-items: flex-start;
-    }
-
-    thead {
-      // These styles are taken from
-      // https://react-spectrum.adobe.com/react-aria/VisuallyHidden.html
-      border: 0;
-      clip: rect(0 0 0 0);
-      clip-path: inset(50%);
-      height: 1px;
-      margin: 0 -1px -1px 0;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      width: 1px;
-      white-space: nowrap;
-    }
-
-    tbody tr {
-      text-align: start;
-      color: $color-grey-40;
-      font: $text-body-xs;
-
-      td {
-        padding-block: $spacing-xs;
-        padding-inline: $spacing-xs;
-      }
-
-      svg {
-        width: 15px;
-        height: 15px;
-      }
-    }
-  }
 }
 
 /* stylelint-disable no-descending-specificity */
@@ -136,121 +87,32 @@
 .slice:nth-child(2) {
   stroke: $color-purple-90;
 }
-.legend tbody tr:nth-child(1) {
-  .chartAndLegendWrapper:has(.slice:nth-child(2):hover) & {
-    color: $color-purple-90;
-  }
 
-  rect {
-    fill: $color-purple-90;
-  }
-}
 .slice:nth-child(3) {
   stroke: $color-purple-70;
-}
-.legend tbody tr:nth-child(2) {
-  .chartAndLegendWrapper:has(.slice:nth-child(3):hover) & {
-    color: $color-purple-70;
-  }
-
-  rect {
-    fill: $color-purple-70;
-  }
 }
 .slice:nth-child(4) {
   stroke: $color-purple-50;
 }
-.legend tbody tr:nth-child(3) {
-  .chartAndLegendWrapper:has(.slice:nth-child(4):hover) & {
-    color: $color-purple-50;
-  }
-
-  rect {
-    fill: $color-purple-50;
-  }
-}
 .slice:nth-child(5) {
   stroke: $color-purple-30;
-}
-.legend tbody tr:nth-child(4) {
-  .chartAndLegendWrapper:has(.slice:nth-child(5):hover) & {
-    color: $color-purple-30;
-  }
-
-  rect {
-    fill: $color-purple-30;
-  }
 }
 .slice:nth-child(6) {
   stroke: $color-purple-10;
 }
-.legend tbody tr:nth-child(5) {
-  .chartAndLegendWrapper:has(.slice:nth-child(6):hover) & {
-    color: $color-purple-10;
-  }
-
-  rect {
-    fill: $color-purple-10;
-  }
-}
 .slice:nth-child(7) {
   stroke: $color-purple-80;
-}
-.legend tbody tr:nth-child(6) {
-  .chartAndLegendWrapper:has(.slice:nth-child(7):hover) & {
-    color: $color-purple-80;
-  }
-
-  rect {
-    fill: $color-purple-80;
-  }
 }
 .slice:nth-child(8) {
   stroke: $color-purple-60;
 }
-.legend tbody tr:nth-child(7) {
-  .chartAndLegendWrapper:has(.slice:nth-child(8):hover) & {
-    color: $color-purple-60;
-  }
-
-  rect {
-    fill: $color-purple-60;
-  }
-}
 .slice:nth-child(9) {
   stroke: $color-purple-40;
-}
-.legend tbody tr:nth-child(8) {
-  .chartAndLegendWrapper:has(.slice:nth-child(9):hover) & {
-    color: $color-purple-40;
-  }
-
-  rect {
-    fill: $color-purple-40;
-  }
 }
 .slice:nth-child(10) {
   stroke: $color-purple-20;
 }
-.legend tbody tr:nth-child(9) {
-  .chartAndLegendWrapper:has(.slice:nth-child(10):hover) & {
-    color: $color-purple-20;
-  }
-
-  rect {
-    fill: $color-purple-20;
-  }
-}
 .slice:nth-child(11) {
   stroke: $color-violet-90;
-}
-.legend tbody tr:nth-child(10) {
-  .chartAndLegendWrapper:has(.slice:nth-child(11):hover) & {
-    color: $color-violet-90;
-  }
-
-  rect {
-    fill: $color-violet-90;
-  }
 }
 /* stylelint-enable no-descending-specificity */

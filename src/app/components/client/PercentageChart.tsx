@@ -62,7 +62,7 @@ export const PercentageChart = (props: WelcomeToPremiumProps) => {
 
   return (
     <figure className={styles.chartContainer} aria-hidden={true}>
-      <div className={styles.chartAndLegendWrapper}>
+      <div className={styles.chartWrapper}>
         <svg
           // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/img_role#svg_and_roleimg
           role="img"
@@ -98,6 +98,11 @@ export const PercentageChart = (props: WelcomeToPremiumProps) => {
                   textAnchor="middle"
                 />
               ),
+            },
+            vars: { nr: props.exposureReduction },
+          })}
+          {l10n.getFragment("exposure-reduction-chart-explanation", {
+            elems: {
               label_line_1: (
                 <text
                   className={styles.headingLabel}
