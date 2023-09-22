@@ -11,6 +11,7 @@ export type Props = {
 };
 
 export const GaScript = ({ nonce }: Props) => {
+  /* c8 ignore next 2 */
   const ga4MeasurementId =
     process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID || "G-CXG8K4KW4P";
 
