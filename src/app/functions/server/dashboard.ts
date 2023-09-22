@@ -281,3 +281,12 @@ function sanitizeExposures(
   sanitizedExposures.push({ "other-data-class": other });
   return sanitizedExposures;
 }
+
+export function getExposureReduction(
+  summary: DashboardSummary,
+  scanResultItems: OnerepScanResultRow[]
+): number {
+  const countOfDataBrokerProfiles = scanResultItems.length;
+  const totalExposures = summary.totalExposures;
+  return Math.round((countOfDataBrokerProfiles / totalExposures) * 100);
+}

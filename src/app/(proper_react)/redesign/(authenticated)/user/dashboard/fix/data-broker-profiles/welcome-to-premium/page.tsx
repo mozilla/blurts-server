@@ -12,7 +12,10 @@ import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscri
 import { redirect } from "next/navigation";
 import { PercentageChart } from "../../../../../../../../components/client/PercentageChart";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
-import { getDashboardSummary } from "../../../../../../../../functions/server/dashboard";
+import {
+  getDashboardSummary,
+  getExposureReduction,
+} from "../../../../../../../../functions/server/dashboard";
 import { Button } from "../../../../../../../../components/server/Button";
 
 export default async function WelcomeToPremium() {
@@ -30,10 +33,7 @@ export default async function WelcomeToPremium() {
   const countOfDataBrokerProfiles = scanResultItems.length;
   const subBreaches = await getSubscriberBreaches(session.user);
   const summary = getDashboardSummary(scanResultItems, subBreaches);
-  const totalExposures = summary.totalExposures;
-  const exposureReduction = Math.round(
-    (countOfDataBrokerProfiles / totalExposures) * 100
-  );
+  const exposureReduction = getExposureReduction(summary, scanResultItems);
 
   return (
     <div>
