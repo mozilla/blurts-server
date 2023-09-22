@@ -70,6 +70,7 @@ export default async function WelcomeToPremium() {
             variant="primary"
             href="/redesign/user/dashboard/fix/high-risk-data-breaches"
             disabled
+            wide
           >
             {l10n.getString(
               "welcome-to-premium-data-broker-profiles-cta-label"
