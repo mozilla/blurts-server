@@ -87,6 +87,12 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     onerep_profile_id: 0,
     onerep_scan_id: 0,
     onerep_scan_reason: "initial",
+    onerep_scan_status: "finished",
+  };
+
+  const mockedScanInProgress: OnerepScanRow = {
+    ...mockedScan,
+    onerep_scan_status: "in_progress",
   };
 
   const mockedResolvedScanResults: OnerepScanResultRow[] = [
@@ -105,7 +111,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
 
   if (props.countryCode === "us") {
     if (props.brokers !== "no-scan") {
-      scanData.scan = mockedScan;
+      scanData.scan = props.scanInProgress ? mockedScanInProgress : mockedScan;
 
       if (props.brokers === "resolved") {
         scanData.results = mockedResolvedScanResults;
@@ -435,24 +441,24 @@ export const DashboardUsPremiumResolvedScanNoBreaches: Story = {
   },
 };
 
-export const DashboardUsPremiumScanInProgressNoUnresolvedBreaches: Story = {
-  name: "US user, with Premium, with a scan in progress, with no unresolved breaches",
+export const DashboardUsPremiumScanInProgressNoBreaches: Story = {
+  name: "US user, with Premium, with a scan in progress, with no breaches",
   args: {
     countryCode: "us",
     premium: true,
-    breaches: "unresolved",
-    brokers: "resolved",
+    breaches: "empty",
+    brokers: "empty",
     scanInProgress: true,
   },
 };
 
-export const DashboardUsPremiumScanInProgressUnresolvedBreaches: Story = {
+export const DashboardUsPremiumScanInProgressWithBreaches: Story = {
   name: "US user, with Premium, with a scan in progress, with unresolved breaches",
   args: {
     countryCode: "us",
     premium: true,
-    breaches: "resolved",
-    brokers: "resolved",
+    breaches: "unresolved",
+    brokers: "empty",
     scanInProgress: true,
   },
 };

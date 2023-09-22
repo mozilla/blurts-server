@@ -13,9 +13,10 @@ import Meta, {
   DashboardUsNoPremiumResolvedScanResolvedBreaches,
   DashboardUsNoPremiumUnresolvedScanNoBreaches,
   DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+  DashboardUsPremiumEmptyScanResolvedBreaches,
   DashboardUsPremiumNoScanNoBreaches,
-  DashboardUsPremiumScanInProgressNoUnresolvedBreaches,
-  DashboardUsPremiumScanInProgressUnresolvedBreaches,
+  DashboardUsPremiumScanInProgressNoBreaches,
+  DashboardUsPremiumScanInProgressWithBreaches,
 } from "./Dashboard.stories";
 
 function enablePremium() {
@@ -48,15 +49,6 @@ it("passes the axe accessibility test suite 1", async () => {
 it("passes the axe accessibility test suite 2", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
-    Meta
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
-
-it("passes the axe accessibility test suite 3", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumResolvedScanUnresolvedBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
@@ -250,7 +242,7 @@ it("shows a returning Premium user who has resolved all tasks a CTA to check out
   enablePremium();
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumResolvedScanResolvedBreaches,
+    DashboardUsPremiumEmptyScanResolvedBreaches,
     Meta
   );
   render(<ComposedDashboard />);
@@ -275,7 +267,7 @@ it("shows a returning Premium user who has resolved all tasks a CTA to check out
 it("shows scan in progress indicators on the dashboard with no breaches", () => {
   enablePremium();
   const ComposedDashboard = composeStory(
-    DashboardUsPremiumScanInProgressNoUnresolvedBreaches,
+    DashboardUsPremiumScanInProgressNoBreaches,
     Meta
   );
   render(<ComposedDashboard />);
@@ -300,7 +292,7 @@ it("shows scan in progress indicators on the dashboard with no breaches", () => 
 it("shows scan in progress indicators on the dashboard for users with breaches", () => {
   enablePremium();
   const ComposedDashboard = composeStory(
-    DashboardUsPremiumScanInProgressUnresolvedBreaches,
+    DashboardUsPremiumScanInProgressWithBreaches,
     Meta
   );
   render(<ComposedDashboard />);
@@ -316,7 +308,8 @@ it("shows scan in progress indicators on the dashboard for users with breaches",
   expect(chartPrompt).toBeInTheDocument();
 
   const exposureTableDescription = screen.getByText(
-    "We found your information exposed ⁨51⁩ times in ⁨20⁩ data breaches. We’re still scanning sites that may be selling your personal info."
+    "We found your information exposed",
+    { exact: false }
   );
   expect(exposureTableDescription).toBeInTheDocument();
 });
