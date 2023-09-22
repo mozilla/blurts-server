@@ -36,7 +36,7 @@ esbuild.build({
   define: {
     buildConstants: JSON.stringify({
       NODE_ENV: AppConstants.NODE_ENV,
-      GA4_MEASUREMENT_ID: AppConstants.GA4_MEASUREMENT_ID
+      NEXT_PUBLIC_GA4_MEASUREMENT_ID: AppConstants.NEXT_PUBLIC_GA4_MEASUREMENT_ID
     })
   }
 })
