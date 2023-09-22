@@ -37,7 +37,7 @@ export default async function WelcomeToPremium() {
   return (
     <div>
       <div className={styles.content}>
-        <h4>
+        <h3>
           {l10n.getString(
             "welcome-to-premium-data-broker-profiles-title-part-one"
           )}
@@ -45,7 +45,7 @@ export default async function WelcomeToPremium() {
           {l10n.getString(
             "welcome-to-premium-data-broker-profiles-title-part-two"
           )}
-        </h4>
+        </h3>
         <p>
           {l10n.getString(
             "welcome-to-premium-data-broker-profiles-description-part-one",
