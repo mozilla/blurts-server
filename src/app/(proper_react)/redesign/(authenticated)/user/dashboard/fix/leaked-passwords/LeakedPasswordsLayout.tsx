@@ -10,16 +10,15 @@ import { Button } from "../../../../../../../components/server/Button";
 import { useL10n } from "../../../../../../../hooks/l10n";
 import { LeakedPassword } from "./leakedPasswordsData";
 import Link from "next/link";
+import { getLocale } from "../../../../../../../functions/universal/getLocale";
 
 export interface LeakedPasswordsLayoutProps {
   label: string;
   pageData: LeakedPassword;
-  locale: string;
 }
 
 export function LeakedPasswordsLayout({
   pageData,
-  locale,
 }: LeakedPasswordsLayoutProps) {
   const l10n = useL10n();
   const { title, illustration, content } = pageData;
@@ -53,7 +52,7 @@ export function LeakedPasswordsLayout({
       }
       estimatedTime={4}
     >
-      <ResolutionContent content={content} locale={locale} />
+      <ResolutionContent content={content} locale={getLocale(l10n)} />
     </ResolutionContainer>
   );
 }

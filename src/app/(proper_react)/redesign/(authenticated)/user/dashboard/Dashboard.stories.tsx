@@ -149,7 +149,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
         userBreaches={breaches}
         userScanData={scanData}
         isEligibleForFreeScan={props.countryCode === "us"}
-        locale={"en"}
         featureFlagsEnabled={{
           FreeBrokerScan: true,
           PremiumBrokerRemoval: true,
