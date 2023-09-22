@@ -43,7 +43,6 @@ export type Props = {
   userScanData: LatestOnerepScanData;
   isEligibleForFreeScan: boolean;
   countryCode: string;
-  scanInProgress: boolean;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -69,6 +68,8 @@ export const View = (props: Props) => {
   ];
   const isActionNeededTab = selectedTab === "action-needed";
   const breachesDataArray = props.userBreaches.flat();
+  const scanInProgress =
+    props.userScanData.scan?.onerep_scan_status === "in_progress";
 
   // Merge exposure cards
   const combinedArray = [...breachesDataArray, ...props.userScanData.results];
@@ -138,7 +139,7 @@ export const View = (props: Props) => {
       }
     );
 
-    if (props.scanInProgress && !noUnresolvedExposures) {
+    if (scanInProgress && !noUnresolvedExposures) {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-breaches-scan-progress-description",
         {
@@ -146,7 +147,7 @@ export const View = (props: Props) => {
           data_breach_total_num: dataBreachTotalNum,
         }
       );
-    } else if (props.scanInProgress) {
+    } else if (scanInProgress) {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-no-breaches-scan-progress-description"
       );
@@ -177,9 +178,9 @@ export const View = (props: Props) => {
     props.featureFlagsEnabled?.FreeBrokerScan &&
     props.featureFlagsEnabled?.PremiumBrokerRemoval
   ) {
-    if (isScanResultItemsEmpty && !props.scanInProgress) {
+    if (isScanResultItemsEmpty && !scanInProgress) {
       contentType = "DataBrokerScanUpsellContent";
-    } else if (isScanResultItemsEmpty && props.scanInProgress) {
+    } else if (isScanResultItemsEmpty && scanInProgress) {
       contentType = "ScanInProgressContent";
     } else if (
       (!noUnresolvedExposures || !isAllFixed) &&
@@ -225,15 +226,15 @@ export const View = (props: Props) => {
     return (
       <div className={styles.zeroStateIndicator}>
         <Image
-          src={props.scanInProgress ? ScanProgressIllustration : AllFixedLogo}
+          src={scanInProgress ? ScanProgressIllustration : AllFixedLogo}
           alt=""
         />
         <strong>
-          {props.scanInProgress
+          {scanInProgress
             ? l10n.getString("dashboard-exposures-scan-progress-label")
             : l10n.getString("dashboard-exposures-all-fixed-label")}
         </strong>
-        {!props.scanInProgress && freeScanCta}
+        {!scanInProgress && freeScanCta}
       </div>
     );
   };
@@ -261,7 +262,7 @@ export const View = (props: Props) => {
           }}
           content={contentType}
           type={selectedTab as TabType}
-          scanInProgress={props.scanInProgress}
+          scanInProgress={scanInProgress}
           isEligibleForFreeScan={props.isEligibleForFreeScan}
           onShowFixed={() => {
             setSelectedTab("fixed");

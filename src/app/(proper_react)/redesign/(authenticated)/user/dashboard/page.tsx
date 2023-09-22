@@ -59,9 +59,6 @@ export default async function DashboardPage() {
       userBreaches={subBreaches}
       locale={locale}
       featureFlagsEnabled={featureFlagsEnabled}
-      // TODO: Check if scan is in progress. Functionality to do so will
-      // be added with https://github.com/mozilla/blurts-server/pull/3436.
-      scanInProgress={false}
     />
   );
 }

@@ -279,7 +279,6 @@ it("shows a returning Premium user who has resolved all tasks a CTA to check out
 });
 
 it("shows a returning Premium user who has zero scan results and resolved breaches a CTA to check out what was fixed", async () => {
-  enablePremium();
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanResolvedBreaches,
@@ -305,7 +304,6 @@ it("shows a returning Premium user who has zero scan results and resolved breach
 });
 
 it("shows scan in progress indicators on the dashboard with no breaches", () => {
-  enablePremium();
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanInProgressNoBreaches,
     Meta
@@ -330,7 +328,6 @@ it("shows scan in progress indicators on the dashboard with no breaches", () => 
 });
 
 it("shows scan in progress indicators on the dashboard for users with breaches", () => {
-  enablePremium();
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanInProgressWithBreaches,
     Meta

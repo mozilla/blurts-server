@@ -149,7 +149,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           FreeBrokerScan: true,
           PremiumBrokerRemoval: true,
         }}
-        scanInProgress={props.brokers === "scan-in-progress"}
       />
     </Shell>
   );
