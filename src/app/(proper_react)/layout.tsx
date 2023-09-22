@@ -18,10 +18,12 @@ export default function Layout({ children }: { children: ReactNode }) {
 
   return (
     <L10nProvider bundleSources={l10nBundles}>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${ga4MeasurementId}`}
-        nonce={nonce}
-      />
+      {navigator.doNotTrack !== "1" && (
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${ga4MeasurementId}`}
+          nonce={nonce}
+        />
+      )}
       <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
         {children}
       </ReactAriaI18nProvider>
