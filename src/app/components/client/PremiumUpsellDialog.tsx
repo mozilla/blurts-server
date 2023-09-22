@@ -81,12 +81,6 @@ function PremiumUpsellDialogContent() {
     },
   ];
 
-  const premiumSubscriptionUrl = `${
-    process.env.FXA_SUBSCRIPTIONS_URL as string
-  }/products/${process.env.PREMIUM_PRODUCT_ID as string}?plan=${
-    process.env.PREMIUM_PLAN_ID_US as string
-  }`;
-
   return (
     <div className={styles.modalContent}>
       <div className={styles.productPlans}>
@@ -135,7 +129,9 @@ function PremiumUpsellDialogContent() {
       </dl>
       <Button
         className={styles.productCta}
-        href={premiumSubscriptionUrl}
+        href={getPremiumSubscriptionUrl({
+          type: isMonthly ? "monthly" : "yearly",
+        })}
         variant="primary"
       >
         {isMonthly
