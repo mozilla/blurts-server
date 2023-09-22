@@ -47,7 +47,6 @@ export function HighRiskBreachLayout({
           {hasBreaches && (
             <Link
               // TODO: Add test once MNTOR-1700 logic is added
-              /* c8 ignore next */
               href="/"
             >
               {l10n.getString("high-risk-breach-skip")}

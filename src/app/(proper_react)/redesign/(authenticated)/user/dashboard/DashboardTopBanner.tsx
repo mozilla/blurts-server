@@ -30,7 +30,6 @@ export type DashboardTopBannerProps = {
   content: BannerContent;
   bannerData: DashboardSummary;
   stepDeterminationData: StepDeterminationData;
-  hasRunScan: boolean;
   isEligibleForFreeScan: boolean;
   type: TabType;
   scanInProgress: boolean;

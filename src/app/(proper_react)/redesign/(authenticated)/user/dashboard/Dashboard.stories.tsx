@@ -423,6 +423,26 @@ export const DashboardUsPremiumResolvedScanNoBreaches: Story = {
   },
 };
 
+export const DashboardUsPremiumResolvedScanUnresolvedBreaches: Story = {
+  name: "US user, with Premium, with all scan results resolved, with unresolved breaches",
+  args: {
+    countryCode: "us",
+    premium: true,
+    breaches: "unresolved",
+    brokers: "resolved",
+  },
+};
+
+export const DashboardUsPremiumResolvedScanResolvedBreaches: Story = {
+  name: "US user, with Premium, with all scan results resolved, with all breaches resolved",
+  args: {
+    countryCode: "us",
+    premium: true,
+    breaches: "resolved",
+    brokers: "resolved",
+  },
+};
+
 export const DashboardUsPremiumScanInProgressNoBreaches: Story = {
   name: "US user, with Premium, with a scan in progress, with no breaches",
   args: {

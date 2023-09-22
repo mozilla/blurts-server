@@ -45,7 +45,6 @@ export function LeakedPasswordsLayout({
           </Button>
           <Link
             // TODO: Add test once MNTOR-1700 logic is added
-            /* c8 ignore next */
             href="/"
           >
             {l10n.getString("leaked-passwords-skip")}

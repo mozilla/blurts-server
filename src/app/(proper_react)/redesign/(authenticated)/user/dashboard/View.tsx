@@ -192,6 +192,8 @@ export const View = (props: Props) => {
 
   // MNTOR-1940: US user who is returning to the experience, free, and has resolved all their tasks
   if (
+    props.countryCode &&
+    props.countryCode?.toLocaleLowerCase() === "us" &&
     noUnresolvedExposures &&
     !isScanResultItemsEmpty &&
     !hasPremium(props.user) &&
@@ -259,7 +261,6 @@ export const View = (props: Props) => {
           }}
           content={contentType}
           type={selectedTab as TabType}
-          hasRunScan={!isScanResultItemsEmpty}
           scanInProgress={props.scanInProgress}
           isEligibleForFreeScan={props.isEligibleForFreeScan}
           onShowFixed={() => {

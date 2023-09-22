@@ -15,6 +15,8 @@ import Meta, {
   DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
   DashboardUsPremiumEmptyScanResolvedBreaches,
   DashboardUsPremiumNoScanNoBreaches,
+  DashboardUsPremiumResolvedScanResolvedBreaches,
+  DashboardUsPremiumResolvedScanUnresolvedBreaches,
   DashboardUsPremiumScanInProgressNoBreaches,
   DashboardUsPremiumScanInProgressWithBreaches,
 } from "./Dashboard.stories";
@@ -49,6 +51,15 @@ it("passes the axe accessibility test suite 1", async () => {
 it("passes the axe accessibility test suite 2", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 3", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanUnresolvedBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
@@ -239,6 +250,32 @@ it("shows returned free user who has resolved all tasks premium upsell and all f
 });
 
 it("shows a returning Premium user who has resolved all tasks a CTA to check out what was fixed", async () => {
+  enablePremium();
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  // We show a CTA on desktop in the toolbar and in the mobile menu
+  const premiumBadges = screen.queryAllByText("Premium");
+  expect(premiumBadges.length).toBe(2);
+
+  // show banner CTA premium upgrade
+  const bannerPremiumCta = screen.queryAllByRole("button", {
+    name: "See what’s fixed",
+  });
+  expect(bannerPremiumCta.length).toBe(1);
+
+  // click on cta
+  await user.click(bannerPremiumCta[0]);
+
+  const fixedTab = screen.getByRole("tab", { name: "Fixed" });
+  expect(fixedTab).toHaveAttribute("aria-selected", "true");
+});
+
+it("shows a returning Premium user who has zero scan results and resolved breaches a CTA to check out what was fixed", async () => {
   enablePremium();
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
