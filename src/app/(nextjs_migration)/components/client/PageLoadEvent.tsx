@@ -6,17 +6,28 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { useGlean } from "../../../hooks/useGlean";
+import { useGlean } from "../../../hooks/useAnalytics";
+import { useCookies } from "react-cookie";
+
+export type Props = {
+  userId: string;
+};
 
 // Empty component that records a page view on first load.
-export const PageLoadEvent = () => {
+export const PageLoadEvent = (props: Props) => {
+  const [cookies, setCookie] = useCookies(["userId"]);
+  const userId = props.userId;
+
   const { pageEvents } = useGlean();
   const pathname = usePathname();
 
   // On first load of the page, record a page view.
   useEffect(() => {
-    pageEvents.view.record({ path: pathname });
-  }, [pageEvents.view, pathname]);
+    if (!cookies.userId && userId.startsWith("guest")) {
+      setCookie("userId", userId);
+    }
+    pageEvents.view.record({ path: pathname, user_id: userId });
+  }, [cookies.userId, setCookie, pageEvents.view, pathname, userId]);
 
   // This component doesn't render anything.
   return <></>;

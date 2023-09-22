@@ -136,6 +136,7 @@ export default function AutomaticRemove() {
               href={getPremiumSubscriptionUrl({
                 type: selectedPlanIsYearly ? "yearly" : "monthly",
               })}
+              onPress={() => (window.location.href = "../../subscribed")} // TODO replace with final UI
             >
               {selectedPlanIsYearly
                 ? l10n.getString(

@@ -8,14 +8,14 @@ import userEvent from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import Meta, {
-  DashboardWithScan,
-  DashboardWithScanUserFromUs,
-  DashboardWithoutScan,
-  DashboardWithoutScanUserFromUs,
-  DashboardFreeUser,
-  DashboardPremiumUser,
-  DashboardFreeUserAllResolved,
-  DashboardDataIsProtected,
+  DashboardNonUsNoBreaches,
+  DashboardUsNoPremiumNoScanNoBreaches,
+  DashboardUsNoPremiumResolvedScanResolvedBreaches,
+  DashboardUsNoPremiumUnresolvedScanNoBreaches,
+  DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+  DashboardUsPremiumNoScanNoBreaches,
+  DashboardUsPremiumResolvedScanResolvedBreaches,
+  DashboardUsPremiumResolvedScanUnresolvedBreaches,
 } from "./Dashboard.stories";
 
 function enablePremium() {
@@ -44,25 +44,34 @@ jest.mock("next/navigation", () => ({
 }));
 
 it("passes the axe accessibility test suite 1", async () => {
-  const ComposedDashboard = composeStory(DashboardWithScan, Meta);
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("passes the axe accessibility test suite 2", async () => {
-  const ComposedDashboard = composeStory(DashboardWithScanUserFromUs, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+    Meta
+  );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("passes the axe accessibility test suite 3", async () => {
-  const ComposedDashboard = composeStory(DashboardWithoutScanUserFromUs, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanUnresolvedBreaches,
+    Meta
+  );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("shows the “let’s fix it” banner content", () => {
-  const ComposedDashboard = composeStory(DashboardWithScanUserFromUs, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanNoBreaches,
+    Meta
+  );
   render(<ComposedDashboard />);
 
   const letsFixItBannerContent = screen.getByText("Let’s protect your data");
@@ -70,7 +79,10 @@ it("shows the “let’s fix it” banner content", () => {
 });
 
 it("shows the 'Start a free scan' CTA to free US-based users who haven't performed a scan yet", () => {
-  const ComposedDashboard = composeStory(DashboardWithoutScanUserFromUs, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta
+  );
   render(<ComposedDashboard />);
 
   const freeScanCta = screen.getByRole("link", { name: "Start a free scan" });
@@ -78,7 +90,7 @@ it("shows the 'Start a free scan' CTA to free US-based users who haven't perform
 });
 
 it("does not show the 'Start a free scan' CTA for non-US users", () => {
-  const ComposedDashboard = composeStory(DashboardWithoutScan, Meta);
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
   render(<ComposedDashboard />);
 
   const freeScanCta = screen.queryByRole("link", { name: "Start a free scan" });
@@ -87,7 +99,10 @@ it("does not show the 'Start a free scan' CTA for non-US users", () => {
 
 it("switches between tab panels", async () => {
   const user = userEvent.setup();
-  const ComposedDashboard = composeStory(DashboardWithoutScanUserFromUs, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta
+  );
   render(<ComposedDashboard />);
 
   const tabActionNeededTrigger = screen.getByRole("tab", {
@@ -106,7 +121,10 @@ it("switches between tab panels", async () => {
 
 it("shows the premium upgrade cta if the user is not a premium subscriber", () => {
   enablePremium();
-  const ComposedDashboard = composeStory(DashboardFreeUser, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta
+  );
   render(<ComposedDashboard />);
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
@@ -119,7 +137,10 @@ it("shows the premium upgrade cta if the user is not a premium subscriber", () =
 it("opens and closes the premium upsell dialog via the Premium upsell badge)", async () => {
   enablePremium();
   const user = userEvent.setup();
-  const ComposedDashboard = composeStory(DashboardFreeUser, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta
+  );
   render(<ComposedDashboard />);
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
@@ -176,7 +197,10 @@ it("opens and closes the premium upsell dialog via the Premium upsell button)", 
 it("toggles between the product offerings in the premium upsell dialog", async () => {
   enablePremium();
   const user = userEvent.setup();
-  const ComposedDashboard = composeStory(DashboardFreeUser, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta
+  );
   render(<ComposedDashboard />);
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
@@ -211,7 +235,10 @@ it("toggles between the product offerings in the premium upsell dialog", async (
 
 it("shows the premium badge if the user is a premium subscriber", () => {
   enablePremium();
-  const ComposedDashboard = composeStory(DashboardPremiumUser, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumNoScanNoBreaches,
+    Meta
+  );
   render(<ComposedDashboard />);
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
@@ -222,7 +249,10 @@ it("shows the premium badge if the user is a premium subscriber", () => {
 it("shows returned free user who has resolved all tasks premium upsell and all fixed description", async () => {
   enablePremium();
   const user = userEvent.setup();
-  const ComposedDashboard = composeStory(DashboardFreeUserAllResolved, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumResolvedScanResolvedBreaches,
+    Meta
+  );
   render(<ComposedDashboard />);
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
@@ -240,4 +270,30 @@ it("shows returned free user who has resolved all tasks premium upsell and all f
   // click on cta
   await user.click(bannerPremiumCta[0]);
   expect(screen.getByRole("dialog")).toBeInTheDocument();
+});
+
+it("shows a returning Premium user who has resolved all tasks a CTA to check out what was fixed", async () => {
+  enablePremium();
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  // We show a CTA on desktop in the toolbar and in the mobile menu
+  const premiumBadges = screen.queryAllByText("Premium");
+  expect(premiumBadges.length).toBe(2);
+
+  // show banner CTA premium upgrade
+  const bannerPremiumCta = screen.queryAllByRole("button", {
+    name: "See what’s fixed",
+  });
+  expect(bannerPremiumCta.length).toBe(1);
+
+  // click on cta
+  await user.click(bannerPremiumCta[0]);
+
+  const fixedTab = screen.getByRole("tab", { name: "Fixed" });
+  expect(fixedTab).toHaveAttribute("aria-selected", "true");
 });

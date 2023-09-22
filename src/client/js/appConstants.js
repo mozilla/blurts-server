@@ -20,7 +20,7 @@ if (typeof buildConstants === 'object') {
 } else {
   // Build-phase was not run (npm run dev). Assign fallbacks for testing if needed.
   Object.assign(AppConstants, {
-    GA4_MEASUREMENT_ID: 'G-CXG8K4KW4P'
+    NEXT_PUBLIC_GA4_MEASUREMENT_ID: 'G-CXG8K4KW4P'
   })
   console.log('Running dev-mode with fallback values for AppConstants.')
 }

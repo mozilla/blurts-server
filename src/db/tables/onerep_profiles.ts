@@ -4,14 +4,14 @@
 
 import initKnex from "knex";
 import knexConfig from "../knexfile.js";
-import { ProfileData } from "../../app/functions/server/onerep.js";
+import { CreateProfileRequest } from "../../app/functions/server/onerep.js";
 import { parseIso8601Datetime } from "../../utils/parse.js";
 
 const knex = initKnex(knexConfig);
 
 export async function setProfileDetails(
   onerepProfileId: number,
-  profileData: ProfileData
+  profileData: CreateProfileRequest
 ) {
   await knex("onerep_profiles").insert({
     onerep_profile_id: onerepProfileId,

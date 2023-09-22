@@ -6,6 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { bearerToken } from "../../../utils/auth";
 
 import { PubSub } from "@google-cloud/pubsub";
+import { isFlagEnabled } from "../../../../functions/server/featureFlags";
 
 const projectId = process.env.GCP_PUBSUB_PROJECT_ID;
 const topicName = process.env.GCP_PUBSUB_TOPIC_NAME;
@@ -18,56 +19,57 @@ const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
  * @param req
  */
 export async function POST(req: NextRequest) {
-  if (!projectId) {
-    throw new Error("GCP_PUBSUB_PROJECT_ID env var not set");
+  let pubsub;
+  let json;
+  try {
+    if (!(await isFlagEnabled("HibpBreachNotifications"))) {
+      console.info("Feature flag not enabled: HibpBreachNotifications");
+      return NextResponse.json({}, { status: 429 });
+    }
+    if (!projectId) {
+      throw new Error("GCP_PUBSUB_PROJECT_ID env var not set");
+    }
+    if (!topicName) {
+      throw new Error("GCP_PUBSUB_TOPIC_NAME env var not set");
+    }
+
+    const headerToken = bearerToken(req);
+    if (headerToken !== process.env.HIBP_NOTIFY_TOKEN) {
+      return NextResponse.json({ success: false }, { status: 401 });
+    }
+
+    json = await req.json();
+
+    if (!(json.breachName && json.hashPrefix && json.hashSuffixes)) {
+      console.error(
+        "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes."
+      );
+      return NextResponse.json({ success: false }, { status: 400 });
+    }
+
+    pubsub = new PubSub({ projectId });
+  } catch (ex) {
+    console.error("Error connecting to PubSub:", ex);
+    return NextResponse.json({ success: false }, { status: 500 });
   }
-  if (!topicName) {
-    throw new Error("GCP_PUBSUB_TOPIC_NAME env var not set");
-  }
 
-  const headerToken = bearerToken(req);
-  if (headerToken !== process.env.HIBP_NOTIFY_TOKEN) {
-    return NextResponse.json({ success: false }, { status: 401 });
-  }
-
-  const json = await req.json();
-
-  if (!(json.breachName && json.hashPrefix && json.hashSuffixes)) {
-    console.error(
-      "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes."
-    );
-    return NextResponse.json({ success: false }, { status: 400 });
-  }
-
-  const pubsub = new PubSub({ projectId });
-
-  const [topics] = await pubsub.getTopics();
-  const [topic] = topics.filter(
-    (a) => a.name === `projects/${projectId}/topics/${topicName}`
-  );
-
-  if (!topic || topic.name !== `projects/${projectId}/topics/${topicName}`) {
+  let topic;
+  try {
+    topic = pubsub.topic(topicName);
+    await topic.publishMessage({ json });
+    return NextResponse.json({ success: true }, { status: 200 });
+  } catch (ex) {
     if (process.env.NODE_ENV === "development") {
-      try {
-        if (!subscriptionName) {
-          throw new Error("GCP_PUBSUB_SUBSCRIPTION_NAME env var not set");
-        }
-        await pubsub.createTopic(topicName);
-        await pubsub.topic(topicName).createSubscription(subscriptionName);
-      } catch (ex) {
-        console.debug(ex);
+      if (!subscriptionName) {
+        throw new Error("GCP_PUBSUB_SUBSCRIPTION_NAME env var not set");
       }
+      await pubsub.createTopic(topicName);
+      await pubsub.topic(topicName).createSubscription(subscriptionName);
     } else {
       console.error("Topic not found:", topicName);
       return NextResponse.json({ success: false }, { status: 500 });
     }
-  }
-
-  try {
-    await topic.publishMessage({ json });
-    return NextResponse.json({ success: true }, { status: 200 });
-  } catch (ex) {
-    console.error("Error queueing HIBP breach:", ex);
+    console.error("Error queuing HIBP breach:", topicName);
     return NextResponse.json({ success: false }, { status: 500 });
   }
 }
