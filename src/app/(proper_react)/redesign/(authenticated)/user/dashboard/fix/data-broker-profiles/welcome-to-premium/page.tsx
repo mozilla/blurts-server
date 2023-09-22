@@ -35,60 +35,58 @@ export default async function WelcomeToPremium() {
   );
 
   return (
-    <>
-      <div>
-        <div className={styles.content}>
-          <h4>
+    <div>
+      <div className={styles.content}>
+        <h4>
+          {l10n.getString(
+            "welcome-to-premium-data-broker-profiles-title-part-one"
+          )}
+          <br />
+          {l10n.getString(
+            "welcome-to-premium-data-broker-profiles-title-part-two"
+          )}
+        </h4>
+        <p>
+          {l10n.getString(
+            "welcome-to-premium-data-broker-profiles-description-part-one",
+            {
+              profile_total_num: countOfDataBrokerProfiles,
+              exposure_reduction_percentage: exposureReduction,
+            }
+          )}
+        </p>
+        <p>
+          {l10n.getFragment(
+            "welcome-to-premium-data-broker-profiles-description-part-two",
+            {
+              elems: {
+                link_to_info: (
+                  <a href="/" target="_blank" rel="noopener noreferrer" />
+                ),
+              },
+            }
+          )}
+        </p>
+        <p>
+          {l10n.getString(
+            "welcome-to-premium-data-broker-profiles-description-part-three"
+          )}
+        </p>
+        <div className={styles.buttonsWrapper}>
+          <Button
+            variant="primary"
+            href="/redesign/user/dashboard/fix/high-risk-data-breaches"
+            disabled
+          >
             {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-title-part-one"
+              "welcome-to-premium-data-broker-profiles-cta-label"
             )}
-            <br />
-            {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-title-part-two"
-            )}
-          </h4>
-          <p>
-            {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-description-part-one",
-              {
-                profile_total_num: countOfDataBrokerProfiles,
-                exposure_reduction_percentage: exposureReduction,
-              }
-            )}
-          </p>
-          <p>
-            {l10n.getFragment(
-              "welcome-to-premium-data-broker-profiles-description-part-two",
-              {
-                elems: {
-                  link_to_info: (
-                    <a href="/" target="_blank" rel="noopener noreferrer" />
-                  ),
-                },
-              }
-            )}
-          </p>
-          <p>
-            {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-description-part-three"
-            )}
-          </p>
-          <div className={styles.buttonsWrapper}>
-            <Button
-              variant="primary"
-              href="/redesign/user/dashboard/fix/high-risk-data-breaches"
-              disabled
-            >
-              {l10n.getString(
-                "welcome-to-premium-data-broker-profiles-cta-label"
-              )}
-            </Button>
-          </div>
-        </div>
-        <div className={styles.chart}>
-          <PercentageChart exposureReduction={exposureReduction} />
+          </Button>
         </div>
       </div>
-    </>
+      <div className={styles.chart}>
+        <PercentageChart exposureReduction={exposureReduction} />
+      </div>
+    </div>
   );
 }
