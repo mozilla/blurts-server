@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import styles from "./welcomeToPremium.module.scss";
+import Link from "next/link";
 import { getL10n } from "../../../../../../../../functions/server/l10n";
 import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
 import { getServerSession } from "next-auth";
@@ -61,7 +62,7 @@ export default async function WelcomeToPremium() {
             {
               elems: {
                 link_to_info: (
-                  <a href="/" target="_blank" rel="noopener noreferrer" />
+                  <Link href="/" target="_blank" rel="noopener noreferrer" />
                 ),
               },
             }
