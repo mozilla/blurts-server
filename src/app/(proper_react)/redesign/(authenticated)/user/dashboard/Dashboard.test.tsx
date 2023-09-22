@@ -19,26 +19,6 @@ import Meta, {
   DashboardUsPremiumResolvedScanUnresolvedBreaches,
 } from "./Dashboard.stories";
 
-function enablePremium() {
-  process.env.NEXT_PUBLIC_PREMIUM_ENABLED = "true";
-}
-
-function disablePremium() {
-  process.env.NEXT_PUBLIC_PREMIUM_ENABLED = "false";
-}
-
-beforeAll(() => {
-  window.gtag = () => null;
-});
-
-beforeEach(() => {
-  disablePremium();
-});
-
-afterAll(() => {
-  disablePremium();
-});
-
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
   usePathname: jest.fn(),
@@ -121,7 +101,6 @@ it("switches between tab panels", async () => {
 });
 
 it("shows the premium upgrade cta if the user is not a premium subscriber", () => {
-  enablePremium();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
     Meta
@@ -136,7 +115,6 @@ it("shows the premium upgrade cta if the user is not a premium subscriber", () =
 });
 
 it("opens and closes the premium upsell dialog via the Premium upsell badge)", async () => {
-  enablePremium();
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
@@ -174,7 +152,6 @@ it("opens and closes the premium upsell dialog via the Premium upsell badge)", a
 });
 
 it("opens and closes the premium upsell dialog via the Premium upsell button)", async () => {
-  enablePremium();
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanResolvedBreaches,
@@ -199,7 +176,6 @@ it("opens and closes the premium upsell dialog via the Premium upsell button)", 
 });
 
 it("toggles between the product offerings in the premium upsell dialog", async () => {
-  enablePremium();
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
@@ -238,7 +214,6 @@ it("toggles between the product offerings in the premium upsell dialog", async (
 });
 
 it("shows the premium badge if the user is a premium subscriber", () => {
-  enablePremium();
   const ComposedDashboard = composeStory(
     DashboardUsPremiumNoScanNoBreaches,
     Meta
@@ -251,7 +226,6 @@ it("shows the premium badge if the user is a premium subscriber", () => {
 });
 
 it("shows returned free user who has resolved all tasks premium upsell and all fixed description", async () => {
-  enablePremium();
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanResolvedBreaches,
@@ -277,7 +251,6 @@ it("shows returned free user who has resolved all tasks premium upsell and all f
 });
 
 it("shows a returning Premium user who has resolved all tasks a CTA to check out what was fixed", async () => {
-  enablePremium();
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanResolvedBreaches,

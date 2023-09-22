@@ -100,11 +100,9 @@ export const MobileShell = (props: Props) => {
                 </a>
               </li>
             </ul>
-            {process.env.NEXT_PUBLIC_PREMIUM_ENABLED === "true" && (
-              <div className={styles.premiumCta}>
-                <PremiumBadge user={props.session.user} />
-              </div>
-            )}
+            <div className={styles.premiumCta}>
+              <PremiumBadge user={props.session.user} />
+            </div>
           </div>
         </nav>
         <div className={styles.content}>{props.children}</div>
