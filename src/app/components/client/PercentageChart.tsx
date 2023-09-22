@@ -59,68 +59,66 @@ export const PercentageChart = (props: WelcomeToPremiumProps) => {
   console.log({ slices });
 
   return (
-    <>
-      <figure className={styles.chartContainer} aria-hidden={true}>
-        <div className={styles.chartAndLegendWrapper}>
-          <svg
-            // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/img_role#svg_and_roleimg
-            role="img"
-            viewBox={`0 0 ${diameter} ${diameter}`}
-            className={styles.chart}
-          >
-            <circle
-              cx={diameter / 2}
-              cy={diameter / 2}
-              r={radius}
-              fill="none"
-              strokeWidth={ringWidth}
-              className={styles.gutter}
-            />
-            {slices}
-            {l10n.getFragment("exposure-reduction-chart-heading", {
-              elems: {
-                nr: (
-                  <text
-                    className={styles.percentageHeadingNr}
-                    fontSize={headingNumberSize + 3}
-                    x={diameter / 2 - 5}
-                    y={diameter / 2 - headingGap / 2}
-                    textAnchor="middle"
-                  />
-                ),
-                percent: (
-                  <text
-                    className={styles.percent}
-                    fontSize={headingNumberSize}
-                    x={diameter / 2 + 5}
-                    y={diameter / 2 - headingGap / 2}
-                    textAnchor="middle"
-                  />
-                ),
-                label_line_1: (
-                  <text
-                    className={styles.headingLabel}
-                    fontSize={headingLabelSize}
-                    x={diameter / 2}
-                    y={diameter / 2 + headingLabelSize + headingGap / 2}
-                    textAnchor="middle"
-                  />
-                ),
-                label_line_2: (
-                  <text
-                    className={styles.headingLabel}
-                    fontSize={headingLabelSize}
-                    x={diameter / 2}
-                    y={diameter / 2 + (headingLabelSize + headingGap / 2) * 2}
-                    textAnchor="middle"
-                  />
-                ),
-              },
-              vars: { nr: props.exposureReduction },
-            })}
-          </svg>
-        </div>
-      </figure>
-    </>
+    <figure className={styles.chartContainer} aria-hidden={true}>
+      <div className={styles.chartAndLegendWrapper}>
+        <svg
+          // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/img_role#svg_and_roleimg
+          role="img"
+          viewBox={`0 0 ${diameter} ${diameter}`}
+          className={styles.chart}
+        >
+          <circle
+            cx={diameter / 2}
+            cy={diameter / 2}
+            r={radius}
+            fill="none"
+            strokeWidth={ringWidth}
+            className={styles.gutter}
+          />
+          {slices}
+          {l10n.getFragment("exposure-reduction-chart-heading", {
+            elems: {
+              nr: (
+                <text
+                  className={styles.percentageHeadingNr}
+                  fontSize={headingNumberSize + 3}
+                  x={diameter / 2 - 5}
+                  y={diameter / 2 - headingGap / 2}
+                  textAnchor="middle"
+                />
+              ),
+              percent: (
+                <text
+                  className={styles.percent}
+                  fontSize={headingNumberSize}
+                  x={diameter / 2 + 5}
+                  y={diameter / 2 - headingGap / 2}
+                  textAnchor="middle"
+                />
+              ),
+              label_line_1: (
+                <text
+                  className={styles.headingLabel}
+                  fontSize={headingLabelSize}
+                  x={diameter / 2}
+                  y={diameter / 2 + headingLabelSize + headingGap / 2}
+                  textAnchor="middle"
+                />
+              ),
+              label_line_2: (
+                <text
+                  className={styles.headingLabel}
+                  fontSize={headingLabelSize}
+                  x={diameter / 2}
+                  y={diameter / 2 + (headingLabelSize + headingGap / 2) * 2}
+                  textAnchor="middle"
+                />
+              ),
+            },
+            vars: { nr: props.exposureReduction },
+          })}
+        </svg>
+      </div>
+    </figure>
   );
 };
