@@ -96,16 +96,12 @@ export const useGa = (): {
 
     if (!uploadEnabled) {
       if (debugMode) {
-        console.warn("Do not initialize GA4 due to DNT.");
+        console.warn("Did not initialize GA4 due to DoNotTrack.");
       }
       return;
     }
 
     if (!window.gtag) {
-      if (debugMode) {
-        console.warn("GA4 is not initialized.");
-      }
-
       const ga4MeasurementId =
         process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID || "G-CXG8K4KW4P";
       initGa4({ ga4MeasurementId, debugMode });
@@ -118,7 +114,7 @@ export const useGa = (): {
         if (window.gtag) {
           window.gtag(options);
         } else if (!window.gtag && debugMode) {
-          console.warn("Could not find gtag.");
+          console.warn("GA4 is not initialized.");
         }
       },
     },
