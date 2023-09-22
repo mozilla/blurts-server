@@ -132,7 +132,7 @@ export default function AutomaticRemove() {
             </span>
             <Button
               variant="primary"
-              onClick={() => (window.location.href = "../../subscribed")} // TODO replace with final UI
+              onPress={() => (window.location.href = "../../subscribed")} // TODO replace with final UI
             >
               {selectedPlanIsYearly
                 ? l10n.getString(
