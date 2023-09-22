@@ -23,11 +23,7 @@ export type Props = {
   scanInProgress: boolean;
 };
 
-export const DoughnutChart = ({
-  data,
-  isEligibleForFreeScan,
-  scanInProgress,
-}: Props) => {
+export const DoughnutChart = (props: Props) => {
   const l10n = useL10n();
 
   const explainerDialogState = useOverlayTriggerState({});
@@ -36,11 +32,11 @@ export const DoughnutChart = ({
     explainerDialogState
   );
 
-  const sumOfFixedExposures = data.reduce(
+  const sumOfFixedExposures = props.data.reduce(
     (total, [_label, num]) => total + num,
     0
   );
-  const percentages = data.map(([label, num]) => {
+  const percentages = props.data.map(([label, num]) => {
     return [label, num / sumOfFixedExposures] as const;
   });
 
@@ -105,7 +101,7 @@ export const DoughnutChart = ({
   );
 
   const getPromptContent = () => {
-    if (!scanInProgress && isEligibleForFreeScan) {
+    if (!props.scanInProgress && props.isEligibleForFreeScan) {
       return (
         <>
           <p>
@@ -118,7 +114,7 @@ export const DoughnutChart = ({
       );
     }
 
-    if (scanInProgress) {
+    if (props.scanInProgress) {
       return (
         <p>
           {l10n.getFragment("exposure-chart-scan-in-progress-prompt", {
@@ -196,7 +192,7 @@ export const DoughnutChart = ({
                 </tr>
               </thead>
               <tbody>
-                {data.map(([label, num]) => (
+                {props.data.map(([label, num]) => (
                   <tr key={label}>
                     <td aria-hidden={true}>
                       <svg viewBox="0 0 10 10">
