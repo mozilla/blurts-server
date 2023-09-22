@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import styles from "./welcomeToPremium.module.scss";
-import Link from "next/link";
 import { getL10n } from "../../../../../../../../functions/server/l10n";
 import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
 import { getServerSession } from "next-auth";
@@ -57,15 +56,8 @@ export default async function WelcomeToPremium() {
           )}
         </p>
         <p>
-          {l10n.getFragment(
-            "welcome-to-premium-data-broker-profiles-description-part-two",
-            {
-              elems: {
-                link_to_info: (
-                  <Link href="/" target="_blank" rel="noopener noreferrer" />
-                ),
-              },
-            }
+          {l10n.getString(
+            "welcome-to-premium-data-broker-profiles-description-part-two"
           )}
         </p>
         <p>

@@ -317,7 +317,7 @@ welcome-to-premium-data-broker-profiles-description-part-one =
     [one] We’ve already started our auto-removal process of 1 profile — which will reduce your exposures by { $exposure_reduction_percentage }%.
     *[other] We’ve already started our auto-removal process of { $profile_total_num } profiles — which will reduce your exposures by { $exposure_reduction_percentage }%.
   }
-welcome-to-premium-data-broker-profiles-description-part-two = <link_to_info>Removals typically take 7-14 days</link_to_info>, but some may happen within the hour. No matter how long it takes, we’ll keep working on it.
+welcome-to-premium-data-broker-profiles-description-part-two = Removals typically take 7-14 days, but some may happen within the hour. No matter how long it takes, we’ll keep working on it.
 welcome-to-premium-data-broker-profiles-description-part-three = Next we’ll guide you through high risk data breaches that require manual steps.
 welcome-to-premium-data-broker-profiles-cta-label = Let’s keep going
 
