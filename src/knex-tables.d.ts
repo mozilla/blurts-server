@@ -99,7 +99,7 @@ declare module "knex/types/tables" {
     db_migration_1: null | unknown;
     // TODO: Find unknown type
     db_migration_2: null | unknown;
-    onerep_profile_id: null | OnerepProfileRow.onerep_profile_id;
+    onerep_profile_id: null | number;
     email_addresses: SubscriberEmail[];
   }
   type SubscriberOptionalColumns = Extract<
@@ -228,7 +228,7 @@ declare module "knex/types/tables" {
 
   interface OnerepProfileRow {
     id: number;
-    onerep_profile_id: null | SubscriberRow["onerep_profile_id"];
+    onerep_profile_id: null | number;
     first_name: string;
     last_name: string;
     city_name: string;
