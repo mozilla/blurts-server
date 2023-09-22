@@ -5,7 +5,8 @@
 import { getBreaches } from "../../../functions/server/getBreaches";
 import Script from "next/script";
 import "../../../../client/css/partials/allBreaches.css";
-import { getL10n, getLocale } from "../../../functions/server/l10n";
+import { getL10n } from "../../../functions/server/l10n";
+import { getLocale } from "../../../functions/universal/getLocale";
 import { BreachLogo } from "../../../components/server/BreachLogo";
 import { HibpLikeDbBreach } from "../../../../utils/hibp";
 import { Breach } from "../../(authenticated)/user/breaches/breaches";
@@ -117,18 +118,22 @@ function BreachCard(props: { breach: HibpLikeDbBreach | Breach }) {
           <div>
             <dt>{l10n.getString("breach-added-label")}</dt>
             <dd>
-              {new Date(props.breach.AddedDate).toLocaleString(getLocale(), {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
+              {new Date(props.breach.AddedDate).toLocaleString(
+                getLocale(l10n),
+                {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                }
+              )}
             </dd>
           </div>
           <div>
             <dt>{l10n.getString("exposed-data")}</dt>
             <dd>
               {formatList(
-                props.breach.DataClasses.map((a: string) => l10n.getString(a))
+                props.breach.DataClasses.map((a: string) => l10n.getString(a)),
+                getLocale(l10n)
               )}
             </dd>
           </div>
@@ -141,12 +146,12 @@ function BreachCard(props: { breach: HibpLikeDbBreach | Breach }) {
   );
 }
 
-function formatList(list: string[]) {
+function formatList(list: string[], locale: string) {
   if (typeof Intl.ListFormat === "undefined") {
     return list.join(", ");
   }
 
-  return new Intl.ListFormat(getLocale(), {
+  return new Intl.ListFormat(locale, {
     type: "unit",
     style: "short",
   }).format(list);

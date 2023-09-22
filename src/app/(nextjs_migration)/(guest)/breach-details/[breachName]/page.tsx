@@ -5,7 +5,8 @@
 import Image, { StaticImageData } from "next/image";
 import BreachDetailScanImage from "../../../../../client/images/breach-detail-scan.svg";
 import "../../../../../client/css/partials/breachDetail.css";
-import { getL10n, getLocale } from "../../../../functions/server/l10n";
+import { getL10n } from "../../../../functions/server/l10n";
+import { getLocale } from "../../../../functions/universal/getLocale";
 import { HibpLikeDbBreach, getBreachByName } from "../../../../../utils/hibp";
 import {
   getAllPriorityDataClasses,
@@ -119,7 +120,7 @@ export default async function BreachDetail(props: {
           <div>
             {l10n.getString("breach-overview-new", {
               breachDate: (breach.BreachDate as unknown as Date).toLocaleString(
-                getLocale(),
+                getLocale(l10n),
                 {
                   year: "numeric",
                   month: "long",
@@ -128,7 +129,7 @@ export default async function BreachDetail(props: {
               ),
               breachTitle: breach.Title,
               addedDate: (breach.AddedDate as unknown as Date).toLocaleString(
-                getLocale(),
+                getLocale(l10n),
                 {
                   year: "numeric",
                   month: "long",

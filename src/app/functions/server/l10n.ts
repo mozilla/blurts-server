@@ -20,10 +20,6 @@ export type LocaleData = {
   bundleSources: string[];
 };
 
-export function getLocale(localeData: LocaleData[] = getL10nBundles()): string {
-  return localeData[0]?.locale ?? "en";
-}
-
 // `require` isn't usually valid JS, so skip type checking for that:
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const translationsContext = (require as any).context(
