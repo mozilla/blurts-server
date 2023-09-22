@@ -25,9 +25,11 @@ export const PercentageChart = (props: WelcomeToPremiumProps) => {
   const radius = (diameter - ringWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const sliceBorderWidth = 0;
-  const headingNumberSize = diameter / 8;
-  const headingLabelSize = headingNumberSize / 2;
+  const headingNumberSize = diameter / 6;
+  const headingPercentageSize = diameter / 8;
+  const headingLabelSize = headingPercentageSize / 2;
   const headingGap = 4;
+  const headingXOffset = 5;
 
   const slices = percentages.map(([label, percent], index) => {
     const percentOffset = percentages
@@ -81,8 +83,8 @@ export const PercentageChart = (props: WelcomeToPremiumProps) => {
               nr: (
                 <text
                   className={styles.percentageHeadingNr}
-                  fontSize={headingNumberSize + 3}
-                  x={diameter / 2 - 5}
+                  fontSize={headingNumberSize}
+                  x={diameter / 2 - headingXOffset}
                   y={diameter / 2 - headingGap / 2}
                   textAnchor="middle"
                 />
@@ -90,8 +92,8 @@ export const PercentageChart = (props: WelcomeToPremiumProps) => {
               percent: (
                 <text
                   className={styles.percent}
-                  fontSize={headingNumberSize}
-                  x={diameter / 2 + 5}
+                  fontSize={headingPercentageSize}
+                  x={diameter / 2 + headingXOffset}
                   y={diameter / 2 - headingGap / 2}
                   textAnchor="middle"
                 />
