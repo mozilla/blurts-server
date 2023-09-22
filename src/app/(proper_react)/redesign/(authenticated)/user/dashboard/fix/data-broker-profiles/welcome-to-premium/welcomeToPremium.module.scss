@@ -1,13 +1,21 @@
 @import "../../../../../../../../tokens";
 
-.main {
-  flex-direction: column;
-}
+// .main {
+//   flex-direction: column;
+// }
 
 .contentWrapper {
   max-width: $content-md;
   margin: 0 auto;
   text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  @media screen and (max-width: $screen-xl) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .buttonsWrapper {
@@ -30,8 +38,7 @@
 .content {
   text-align: left;
   max-width: $content-md / 1.5;
-  margin: 0 auto $spacing-2xl;
-  display: inline-block;
+  margin: 0 auto;
 
   h3 {
     font: $text-title-2xs;
@@ -52,7 +59,5 @@
 }
 
 .chart {
-  display: inline-block;
-  margin: 50px;
   vertical-align: text-bottom;
 }

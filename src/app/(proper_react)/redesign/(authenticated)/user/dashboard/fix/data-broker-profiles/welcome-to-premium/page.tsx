@@ -35,7 +35,7 @@ export default async function WelcomeToPremium() {
   const exposureReduction = getExposureReduction(summary, scanResultItems);
 
   return (
-    <div>
+    <div className={styles.contentWrapper}>
       <div className={styles.content}>
         <h3>
           {l10n.getString(
