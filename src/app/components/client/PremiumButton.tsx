@@ -10,7 +10,7 @@ import { useOverlayTriggerState } from "react-stately";
 import { PremiumUpsellDialog } from "./PremiumUpsellDialog";
 import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
-import { useGa } from "../../hooks/useAnalytics";
+import { useGa } from "../../hooks/useGa";
 
 export type Props = {
   label: string;

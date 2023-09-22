@@ -15,7 +15,7 @@ import { useL10n } from "../../hooks/l10n";
 import { hasPremium } from "../../functions/universal/user";
 import ShieldIcon from "./assets/shield-icon.svg";
 import styles from "./PremiumBadge.module.scss";
-import { useGa } from "../../hooks/useAnalytics";
+import { useGa } from "../../hooks/useGa";
 
 export type Props = {
   user: Session["user"];

@@ -56,11 +56,9 @@ export function getGuidedExperienceBreaches(
     if (b.dataClasses.includes(BreachDataTypes.SecurityQuestions)) {
       guidedExperienceBreaches.passwordBreaches.securityQuestions.push(b);
     }
-    /* c8 ignore stop */
 
     // security recommendations
     // TODO: Add tests when security recs work is merged in
-    /* c8 ignore start */
     if (b.dataClasses.includes(BreachDataTypes.Phone)) {
       guidedExperienceBreaches.securityRecommendations.phoneNumber.push(b);
     }
@@ -72,8 +70,8 @@ export function getGuidedExperienceBreaches(
     if (b.dataClasses.includes(BreachDataTypes.HistoricalPasswords)) {
       guidedExperienceBreaches.securityRecommendations.IPAddress.push(b);
     }
+    /* c8 ignore stop */
   });
-  /* c8 ignore stop */
 
   return guidedExperienceBreaches;
 }
