@@ -13,17 +13,10 @@ export type WelcomeToPremiumProps = {
 };
 export const PercentageChart = (props: WelcomeToPremiumProps) => {
   const l10n = useL10n();
-  // const sumOfReduction = props.data.reduce(
-  //   (total, [_label, num]) => total + num,
-  //   0
-  // );
-  // const percentages = props.data.map(([label, num]) => {
-  //   return [label, num / sumOfReduction] as const;
-  // });
 
   const percentages: Array<[string, number]> = [
-    ["reduction", props.exposureReduction],
-    ["other", 100 - props.exposureReduction],
+    ["reduction", props.exposureReduction / 100],
+    ["other", (100 - props.exposureReduction) / 100],
   ];
   console.log({ percentages });
 
@@ -63,6 +56,7 @@ export const PercentageChart = (props: WelcomeToPremiumProps) => {
       />
     );
   });
+  console.log({ slices });
 
   return (
     <>

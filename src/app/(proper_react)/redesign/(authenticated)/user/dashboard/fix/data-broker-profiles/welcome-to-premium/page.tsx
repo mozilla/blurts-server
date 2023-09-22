@@ -77,6 +77,7 @@ export default async function WelcomeToPremium() {
             <Button
               variant="primary"
               href="/redesign/user/dashboard/fix/high-risk-data-breaches"
+              disabled
             >
               {l10n.getString(
                 "welcome-to-premium-data-broker-profiles-cta-label"
