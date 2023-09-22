@@ -21,7 +21,7 @@ import {
   sendEmail,
 } from "../utils/email.js";
 
-import { initFluentBundles, getMessageWithLocale } from "../utils/fluent.js";
+import { initFluentBundles, getMessage } from "../utils/fluent.js";
 import {
   getAddressesAndLanguageForEmail,
   getBreachByName,
@@ -179,7 +179,7 @@ export async function poll(subClient, receivedMessages) {
                 breachLogos: [], // FIXME this appears to be unused?
                 breachedEmail,
                 ctaHref: getEmailCtaHref(utmCampaignId, "dashboard-cta"),
-                heading: getMessageWithLocale("email-spotted-new-breach", supportedLocales),
+                heading: getMessage("email-spotted-new-breach"),
                 recipientEmail,
                 subscriberId,
                 supportedLocales,
@@ -187,7 +187,7 @@ export async function poll(subClient, receivedMessages) {
               };
 
               const emailTemplate = getTemplate(data, breachAlertEmailPartial);
-              const subject = getMessageWithLocale("breach-alert-subject", supportedLocales);
+              const subject = getMessage("breach-alert-subject");
 
               await sendEmail(data.recipientEmail, subject, emailTemplate);
 
