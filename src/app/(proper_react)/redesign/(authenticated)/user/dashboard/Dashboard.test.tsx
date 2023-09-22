@@ -9,6 +9,7 @@ import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import Meta, {
   DashboardNonUsNoBreaches,
+  DashboardUsNoPremiumEmptyScanResolvedBreaches,
   DashboardUsNoPremiumNoScanNoBreaches,
   DashboardUsNoPremiumResolvedScanResolvedBreaches,
   DashboardUsNoPremiumUnresolvedScanNoBreaches,
@@ -175,7 +176,10 @@ it("opens and closes the premium upsell dialog via the Premium upsell badge)", a
 it("opens and closes the premium upsell dialog via the Premium upsell button)", async () => {
   enablePremium();
   const user = userEvent.setup();
-  const ComposedDashboard = composeStory(DashboardDataIsProtected, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanResolvedBreaches,
+    Meta
+  );
   render(<ComposedDashboard />);
 
   const premiumCta = screen.queryByRole("button", {

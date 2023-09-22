@@ -13,12 +13,12 @@ import Link from "next/link";
 import { PageLink } from "./PageLink";
 import { ExtendedReactLocalization } from "../../hooks/l10n";
 import { GaScript } from "./GaScript";
-import { headers } from "next/headers";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
   session: Session;
   children: ReactNode;
+  nonce: string;
 };
 
 export const Shell = (props: Props) => {
@@ -26,7 +26,7 @@ export const Shell = (props: Props) => {
 
   return (
     <>
-      <GaScript nonce={headers().get("x-nonce") ?? ""} />
+      <GaScript nonce={props.nonce} />
       <MobileShell session={props.session}>
         <div className={styles.wrapper}>
           <nav
