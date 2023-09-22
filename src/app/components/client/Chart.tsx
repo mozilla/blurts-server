@@ -90,7 +90,7 @@ export const DoughnutChart = (props: Props) => {
           variant="primary"
           // TODO: Add unit test when changing this code:
           /* c8 ignore next */
-          onClick={() => explainerDialogState.close()}
+          onPress={() => explainerDialogState.close()}
           autoFocus={true}
           className={styles.startButton}
         >

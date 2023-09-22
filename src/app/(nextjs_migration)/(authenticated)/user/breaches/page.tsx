@@ -22,7 +22,6 @@ import ImageIconEmail from "../../../../../client/images/icon-email.svg";
 import { BreachesTable } from "../../../components/server/BreachesTable";
 import { getComponentAsString } from "../../../functions/server/getComponentAsString";
 import { getCountryCode } from "../../../../functions/server/getCountryCode";
-import { isUserSubscribed } from "../../../../functions/server/isUserSubscribed";
 import { getNonce } from "../../../functions/server/getNonce";
 
 export function generateMetadata() {
@@ -82,14 +81,6 @@ export default async function UserBreaches() {
     },
   });
 
-  type FxaSubscriptionResponse = {
-    subscriptions: Array<{
-      product_id: string;
-      plan_id: string;
-      status: "active";
-    }>;
-  };
-
   return (
     <>
       {/* These scripts predate the use of React and thus shouldn’t wait for
@@ -124,21 +115,6 @@ export default async function UserBreaches() {
       />
 
       <main data-partial="breaches">
-        {process.env.NEXT_PUBLIC_PREMIUM_ENABLED === "true" &&
-        !(await isUserSubscribed()) ? (
-          <section>
-            <a
-              className="button primary"
-              href={`${process.env.FXA_SUBSCRIPTIONS_URL!}/products/${process
-                .env.PREMIUM_PRODUCT_ID!}?plan=${process.env
-                .PREMIUM_PLAN_ID_US!}`}
-            >
-              Subscribe to Premium
-            </a>
-          </section>
-        ) : (
-          ""
-        )}
         <section>
           <header className="breaches-header">
             <h1
