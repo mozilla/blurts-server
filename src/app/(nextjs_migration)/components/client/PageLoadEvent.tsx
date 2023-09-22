@@ -6,7 +6,7 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { useGlean } from "../../../hooks/useGlean";
+import { useGlean } from "../../../hooks/useAnalytics";
 import { useCookies } from "react-cookie";
 
 export type Props = {

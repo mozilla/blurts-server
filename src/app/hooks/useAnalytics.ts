@@ -45,3 +45,78 @@ export const useGlean = () => {
     pageEvents,
   };
 };
+
+declare global {
+  interface Window {
+    dataLayer: unknown[];
+  }
+}
+
+interface InitGaProps {
+  ga4MeasurementId: string;
+  debugMode: boolean;
+}
+
+const initGa4 = ({ ga4MeasurementId, debugMode }: InitGaProps) => {
+  if (debugMode) {
+    console.info("Initialize GA4");
+  }
+
+  // GA4 setup
+  window.dataLayer = window.dataLayer || [];
+  if (!window.gtag) {
+    window.gtag = function (...args: unknown[]) {
+      window.dataLayer.push(args);
+    };
+    window.gtag("js", new Date());
+    window.gtag("config", ga4MeasurementId, {
+      cookie_domain: window.location.hostname,
+      cookie_flags: "SameSite=None;Secure",
+      debug_mode: debugMode,
+    });
+  }
+};
+
+type Ga4EventOptions = {
+  type: "event";
+  name: string;
+  params: object;
+};
+
+export const useGa = (): {
+  gtag: {
+    record: (options: Ga4EventOptions) => void;
+  };
+} => {
+  const debugMode = process.env.NEXT_PUBLIC_NODE_ENV !== "production";
+
+  useEffect(() => {
+    // Enable upload only if the user has not opted out of tracking.
+    const uploadEnabled = navigator.doNotTrack !== "1";
+
+    if (!uploadEnabled) {
+      if (debugMode) {
+        console.warn("Did not initialize GA4 due to DoNotTrack.");
+      }
+      return;
+    }
+
+    if (!window.gtag) {
+      const ga4MeasurementId =
+        process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID || "G-CXG8K4KW4P";
+      initGa4({ ga4MeasurementId, debugMode });
+    }
+  }, [debugMode]);
+
+  return {
+    gtag: {
+      record: (options) => {
+        if (window.gtag) {
+          window.gtag(options);
+        } else if (!window.gtag && debugMode) {
+          console.warn("GA4 is not initialized.");
+        }
+      },
+    },
+  };
+};
