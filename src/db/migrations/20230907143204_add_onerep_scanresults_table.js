@@ -7,6 +7,7 @@
  * @returns { Promise<void> }
  */
 export async function up(knex) {
+  /* FIXME we know these have already been run, remove after npm run db:migrate
   // During some of our tests, we inserted scans with duplicate IDs.
   // Delete those:
   const duplicateScanIdSubQuery = knex("onerep_scans")
@@ -78,6 +79,7 @@ export async function up(knex) {
   await knex.schema.alterTable("onerep_scans", table => {
     table.dropColumn('onerep_scan_results');
   });
+  */
 }
 
 /**

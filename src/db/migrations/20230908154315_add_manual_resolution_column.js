@@ -3,13 +3,17 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 /**
+/**
+ *
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
 export async function up(knex) {
+  /* FIXME we know these have already been run, remove after npm run db:migrate
   return knex.schema.alterTable("onerep_scan_results", table => {
     table.boolean("manually_resolved").notNullable().defaultTo(false);
   });
+  */
 }
 
 /**
