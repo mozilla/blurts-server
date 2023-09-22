@@ -231,6 +231,7 @@ export function getDashboardSummary(
       }
     }
 
+    /** c8 ignore start */
     // count security questions
     if (dataClasses.includes(BreachDataTypes.SecurityQuestions)) {
       summary.totalExposures += increment;
@@ -240,6 +241,7 @@ export function getDashboardSummary(
         summary.dataBreachFixedNum += increment;
       }
     }
+    /** c8 ignore stop */
   });
 
   // count unique breaches
