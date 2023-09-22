@@ -9,6 +9,7 @@ import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import Meta, {
   DashboardNonUsNoBreaches,
+  DashboardUsNoPremiumEmptyScanResolvedBreaches,
   DashboardUsNoPremiumNoScanNoBreaches,
   DashboardUsNoPremiumResolvedScanResolvedBreaches,
   DashboardUsNoPremiumUnresolvedScanNoBreaches,
@@ -113,7 +114,7 @@ it("shows the premium upgrade cta if the user is not a premium subscriber", () =
   expect(premiumCtas.length).toBe(2);
 });
 
-it("opens and closes the premium upsell dialog", async () => {
+it("opens and closes the premium upsell dialog via the Premium upsell badge)", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
@@ -145,6 +146,30 @@ it("opens and closes the premium upsell dialog", async () => {
   ).toBeInTheDocument();
   const closeButtonIcon2 = screen.getByLabelText("Close");
   await user.click(closeButtonIcon2.parentElement as HTMLElement);
+  expect(
+    screen.queryByText("Choose the level of protection that’s right for you")
+  ).not.toBeInTheDocument();
+});
+
+it("opens and closes the premium upsell dialog via the Premium upsell button)", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const premiumCta = screen.queryByRole("button", {
+    name: "Get Continuous Protection",
+  });
+  expect(premiumCta).toBeInTheDocument();
+
+  await user.click(premiumCta as HTMLElement);
+  expect(
+    screen.getByText("Choose the level of protection that’s right for you")
+  ).toBeInTheDocument();
+  const closeButtonIcon1 = screen.getByLabelText("Close");
+  await user.click(closeButtonIcon1.parentElement as HTMLElement);
   expect(
     screen.queryByText("Choose the level of protection that’s right for you")
   ).not.toBeInTheDocument();
