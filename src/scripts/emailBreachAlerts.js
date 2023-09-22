@@ -176,7 +176,6 @@ export async function poll(subClient, receivedMessages) {
             if (!notifiedRecipients.includes(breachedEmail)) {
               const data = {
                 breachData: breachAlert,
-                breachLogos: [], // FIXME this appears to be unused?
                 breachedEmail,
                 ctaHref: getEmailCtaHref(utmCampaignId, "dashboard-cta"),
                 heading: getMessage("email-spotted-new-breach"),
