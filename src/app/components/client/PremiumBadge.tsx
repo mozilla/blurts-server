@@ -15,6 +15,7 @@ import { useL10n } from "../../hooks/l10n";
 import { hasPremium } from "../../functions/universal/user";
 import ShieldIcon from "./assets/shield-icon.svg";
 import styles from "./PremiumBadge.module.scss";
+import { useGa } from "../../hooks/useAnalytics";
 
 export type Props = {
   user: Session["user"];
@@ -22,14 +23,19 @@ export type Props = {
 
 export default function PremiumBadge({ user }: Props) {
   const l10n = useL10n();
+  const { gtag } = useGa();
 
   const pathname = usePathname();
   const dialogState = useOverlayTriggerState({
     defaultOpen: false,
     onOpenChange: (isOpen) => {
-      window.gtag("event", "premium_upsell_modal", {
-        action: isOpen ? "opened" : "closed",
-        page_location: pathname,
+      gtag.record({
+        type: "event",
+        name: "premium_upsell_modal",
+        params: {
+          action: isOpen ? "opened" : "closed",
+          page_location: pathname,
+        },
       });
     },
   });

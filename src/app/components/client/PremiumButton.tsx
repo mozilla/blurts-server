@@ -10,6 +10,7 @@ import { useOverlayTriggerState } from "react-stately";
 import { PremiumUpsellDialog } from "./PremiumUpsellDialog";
 import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
+import { useGa } from "../../hooks/useAnalytics";
 
 export type Props = {
   label: string;
@@ -17,14 +18,19 @@ export type Props = {
 
 export default function PremiumButton({ label }: Props) {
   const l10n = useL10n();
+  const { gtag } = useGa();
 
   const pathname = usePathname();
   const dialogState = useOverlayTriggerState({
     defaultOpen: false,
     onOpenChange: (isOpen) => {
-      window.gtag("event", "premium_upsell_modal", {
-        action: isOpen ? "opened" : "closed",
-        page_location: pathname,
+      gtag.record({
+        type: "event",
+        name: "premium_upsell_modal",
+        params: {
+          action: isOpen ? "opened" : "closed",
+          page_location: pathname,
+        },
       });
     },
   });
