@@ -15,7 +15,10 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { Button } from "../../../../../../../../components/server/Button";
-import { getDashboardSummary } from "../../../../../../../../functions/server/dashboard";
+import {
+  getDashboardSummary,
+  getExposureReduction,
+} from "../../../../../../../../functions/server/dashboard";
 
 export default async function ManualRemoveView() {
   const l10n = getL10n();
@@ -35,10 +38,7 @@ export default async function ManualRemoveView() {
   // TODO: Use api to set/query count
   const countOfDataBrokerProfiles = scanResultItems.length;
   const estimatedTime = countOfDataBrokerProfiles * 10; // 10 minutes per data broker site.
-  const totalExposures = summary.totalExposures;
-  const exposureReduction = Math.round(
-    (countOfDataBrokerProfiles / totalExposures) * 100
-  );
+  const exposureReduction = getExposureReduction(summary, scanResultItems);
 
   return (
     <div className={styles.main}>
