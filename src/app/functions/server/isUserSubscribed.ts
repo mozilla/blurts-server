@@ -37,8 +37,12 @@ export const isUserSubscribed = async () => {
       subscriptions = await result.json();
       for (const subscription of subscriptions.subscriptions) {
         if (
-          subscription.product_id === process.env.PREMIUM_PRODUCT_ID &&
-          subscription.plan_id === process.env.PREMIUM_PLAN_ID_US &&
+          subscription.product_id ===
+            process.env.NEXT_PUBLIC_PREMIUM_PRODUCT_ID &&
+          (subscription.plan_id ===
+            process.env.NEXT_PUBLIC_PREMIUM_PLAN_ID_MONTHLY_US ||
+            subscription.plan_id ===
+              process.env.NEXT_PUBLIC_PREMIUM_PLAN_ID_YEARLY_US) &&
           subscription.status === "active"
         ) {
           return true;

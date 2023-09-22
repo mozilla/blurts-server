@@ -137,7 +137,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   };
 
   return (
-    <Shell l10n={getEnL10nSync()} session={mockedSession}>
+    <Shell l10n={getEnL10nSync()} session={mockedSession} nonce="">
       <DashboardEl
         countryCode={props.countryCode}
         user={user}
