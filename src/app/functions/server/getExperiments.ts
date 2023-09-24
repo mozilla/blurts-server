@@ -22,8 +22,14 @@ export async function getExperiments(
   let features;
   try {
     features = await fetch(`${serverUrl}/v1/features/`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
       method: "POST",
-      body: JSON.stringify({ client_id: userId, context: {} }),
+      body: JSON.stringify({
+        client_id: userId,
+        context: { key: "example-key" },
+      }),
     });
   } catch (ex) {
     console.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
