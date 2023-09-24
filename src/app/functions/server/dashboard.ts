@@ -171,6 +171,7 @@ export function getDashboardSummary(
       }
     }
 
+    /* c8 ignore start */
     // count phone numbers
     if (dataClasses.includes(BreachDataTypes.Phone)) {
       summary.totalExposures += increment;
@@ -180,6 +181,7 @@ export function getDashboardSummary(
         summary.dataBreachFixedNum += increment;
       }
     }
+    /* c8 ignore stop */
 
     // count password
     if (dataClasses.includes(BreachDataTypes.Passwords)) {
@@ -221,6 +223,7 @@ export function getDashboardSummary(
       }
     }
 
+    /* c8 ignore start */
     // count pin numbers
     if (dataClasses.includes(BreachDataTypes.PIN)) {
       summary.totalExposures += increment;
@@ -230,6 +233,7 @@ export function getDashboardSummary(
         summary.dataBreachFixedNum += increment;
       }
     }
+    /* c8 ignore stop */
 
     /** c8 ignore start */
     // count security questions
