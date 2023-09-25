@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Knex } from "knex";
+import { Profile } from "next-auth";
 import { Scan } from "./app/functions/server/onerep";
 import { StateAbbr } from "./utils/states";
 import { RemovalStatus } from "./app/functions/universal/scanResult";
@@ -60,11 +61,14 @@ declare module "knex/types/tables" {
     fxa_profile_json: null | Profile;
     fxa_uid: null | string;
     // TODO: Find unknown type
+    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     breaches_last_shown: null | unknown;
     all_emails_to_primary: boolean;
     // TODO: Find unknown type
+    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     breaches_resolved: null | unknown;
     // TODO: Find unknown type
+    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     waitlists_joined: null | unknown;
     breach_stats: null | {
       passwords: { count: number; numResolved: number };
@@ -76,8 +80,10 @@ declare module "knex/types/tables" {
       monitoredEmails: { count: number };
     };
     // TODO: Find unknown type
+    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     monthly_email_at: null | unknown;
     // TODO: Find unknown type
+    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     monthly_email_optout: null | unknown;
     breach_resolution:
       | null
@@ -96,10 +102,12 @@ declare module "knex/types/tables" {
           >
         >);
     // TODO: Find unknown type
+    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     db_migration_1: null | unknown;
     // TODO: Find unknown type
+    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     db_migration_2: null | unknown;
-    onerep_profile_id: null | OnerepProfileRow.onerep_profile_id;
+    onerep_profile_id: null | number;
     email_addresses: SubscriberEmail[];
   }
   type SubscriberOptionalColumns = Extract<
@@ -261,15 +269,17 @@ declare module "knex/types/tables" {
 
     subscribers: Knex.CompositeTableType<
       SubscriberRow,
-      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
+      // On inserts, auto-generated columns cannot be set, and nullable columns are optional.
       Omit<
         SubscriberRow,
         SubscriberAutoInsertedColumns | SubscriberOptionalColumns
       > &
         Partial<Pick<SubscriberRow, SubscriberOptionalColumns>>,
-      // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
-      Partial<Omit<SubscriberRow, "id" | "created_at">> &
-        Pick<SubscriberRow, "updated_at">
+      // On updates, don't allow updating the ID and created date; all
+      // otherfields are optional, except updated_at. Also, fxa_profile_json
+      // takes the data as a serialised string:
+      Partial<Omit<SubscriberRow, "id" | "created_at" | "fxa_profile_json">> &
+        Pick<SubscriberRow, "updated_at"> & { fxa_profile_json: string | null }
     >;
 
     email_addresses: Knex.CompositeTableType<

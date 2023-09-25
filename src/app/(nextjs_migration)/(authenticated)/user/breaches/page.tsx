@@ -75,7 +75,7 @@ export default async function UserBreaches() {
     // `(authenticated)/layout.tsx` ensures that `session` is not undefined,
     // so the type assertion should be safe:
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    user: session!.user as any,
+    user: session!.user,
     options: {
       countryCode: getCountryCode(headerList),
     },
