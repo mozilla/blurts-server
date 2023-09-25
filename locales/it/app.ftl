@@ -553,7 +553,7 @@ promo-fpn-cta = Installa { -brand-fpn }
 monitor-promo-headline = Scopri le nuove violazioni di dati
 monitor-promo-body = Ricevi una notifica la prossima volta che le tue informazioni personali vengono esposte in una violazione di dati conosciuta.
 ecosystem-promo-headline = Proteggi la tua vita in rete con prodotti che mettono la privacy al primo posto
-ecosystem-promo-body = Tutti i prodotti { -brand-name } rispettano la nostra “Garanzia sui dati personali”: raccogli meno dati, mantienili al sicuro, nessun segreto.
+ecosystem-promo-body = Tutti i prodotti { -brand-name } rispettano il nostro “Impegno per i dati personali”: raccogli meno dati, mantienili al sicuro, nessun segreto.
 promo-ecosystem-cta = Vedi tutti i prodotti
 steps-to-resolve-headline = Passaggi per risolvere questa violazione
 vpn-promo-headline = È il momento di aumentare la tua sicurezza online.
@@ -721,14 +721,3 @@ breach-detail-cta-signup = Cerca nelle violazioni
 floating-banner-text = Migliora la tua sicurezza online con notizie, suggerimenti e aggiornamenti da { -brand-Mozilla }.
 floating-banner-link-label = Iscriviti
 floating-banner-dismiss-button-label = No grazie
-
-## False door test
-
-
-# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
-
-false-door-test-content-part-one = Nessuno dovrebbe essere in grado di acquistare le tue informazioni personali.
-false-door-test-content-part-two = Rimuovi automaticamente i tuoi dati dai siti che cercano di venderli.
-false-door-test-content-part-two-dashboard = Elimina automaticamente i tuoi dati dai siti che cercano di venderli.
-false-door-test-cta = Sono interessato
-false-door-test-popup-close = Chiudi
