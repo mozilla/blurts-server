@@ -199,17 +199,14 @@ function hasCompleted(data: InputData, stepId: StepLink["id"]): boolean {
     return data.latestScanData?.scan !== null;
   }
 
-  if (stepId === "ScanInProgress") {
-    return data.latestScanData?.scan?.onerep_scan_status === "finished";
-  }
-
   if (stepId === "ScanResult") {
     return (
-      data.latestScanData !== null &&
-      Array.isArray(data.latestScanData?.results) &&
-      !data.latestScanData.results.some((scanResult) => {
-        return scanResult.status === "new" && !scanResult.manually_resolved;
-      })
+      (data.latestScanData !== null &&
+        Array.isArray(data.latestScanData?.results) &&
+        !data.latestScanData.results.some((scanResult) => {
+          return scanResult.status === "new" && !scanResult.manually_resolved;
+        })) ||
+      data.latestScanData?.scan?.onerep_scan_status === "finished"
     );
   }
 
