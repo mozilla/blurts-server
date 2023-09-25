@@ -4,7 +4,7 @@
 
 import { it, expect } from "@jest/globals";
 import { render, screen, within } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import Meta, {

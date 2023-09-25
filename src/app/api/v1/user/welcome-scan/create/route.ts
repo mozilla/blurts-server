@@ -39,7 +39,7 @@ export interface UserInfo {
 
 export async function POST(
   req: NextRequest
-): Promise<NextResponse<WelcomeScanBody | unknown>> {
+): Promise<NextResponse<WelcomeScanBody> | NextResponse<unknown>> {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber) {
     throw new Error("No session");
