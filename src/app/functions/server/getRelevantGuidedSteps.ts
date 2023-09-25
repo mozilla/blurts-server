@@ -23,10 +23,6 @@ export const stepLinks = [
   },
   {
     href: "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers",
-    id: "ScanInProgress",
-  },
-  {
-    href: "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers",
     id: "ScanResult",
   },
   {
@@ -145,10 +141,6 @@ function isEligibleFor(data: InputData, stepId: StepLink["id"]): boolean {
     return data.countryCode === "us";
   }
 
-  if (stepId === "ScanInProgress") {
-    return data.countryCode === "us";
-  }
-
   if (stepId === "ScanResult") {
     return data.countryCode === "us";
   }
@@ -199,17 +191,14 @@ function hasCompleted(data: InputData, stepId: StepLink["id"]): boolean {
     return data.latestScanData?.scan !== null;
   }
 
-  if (stepId === "ScanInProgress") {
-    return data.latestScanData?.scan?.onerep_scan_status === "finished";
-  }
-
   if (stepId === "ScanResult") {
     return (
       data.latestScanData !== null &&
       Array.isArray(data.latestScanData?.results) &&
       !data.latestScanData.results.some((scanResult) => {
         return scanResult.status === "new" && !scanResult.manually_resolved;
-      })
+      }) &&
+      data.latestScanData?.scan?.onerep_scan_status === "finished"
     );
   }
 

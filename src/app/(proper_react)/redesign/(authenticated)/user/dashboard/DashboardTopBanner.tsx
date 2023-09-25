@@ -142,7 +142,11 @@ const Content = (props: {
     );
   }
 
-  if (relevantGuidedStep.id === "ScanInProgress") {
+  if (
+    relevantGuidedStep.id === "ScanResult" &&
+    props.stepDeterminationData.latestScanData?.scan?.onerep_scan_status ===
+      "in_progress"
+  ) {
     // If the user has started a broker scan and it’s not finished yet.
     return (
       <div className={styles.explainerContent}>
