@@ -42,7 +42,9 @@ const checkInId = Sentry.captureCheckIn({
 });
 
 // Only process this many messages before exiting.
-const maxMessages = 1000;
+/* c8 ignore start */
+const maxMessages = parseInt(process.env.EMAIL_BREACH_ALERT_MAX_MESSAGES || 10000);
+/* c8 ignore stop */
 const projectId = process.env.GCP_PUBSUB_PROJECT_ID;
 const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
 
