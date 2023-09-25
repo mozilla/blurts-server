@@ -58,7 +58,6 @@ export const PercentageChart = (props: WelcomeToPremiumProps) => {
       />
     );
   });
-  console.log({ slices });
 
   return (
     <figure className={styles.chartContainer} aria-hidden={true}>
