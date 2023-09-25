@@ -2,8 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import Link from "next/link";
-import buttonStyles from "../../../../../../../../components/server/button.module.scss";
 import styles from "../dataBrokerProfiles.module.scss";
 import { getL10n } from "../../../../../../../../functions/server/l10n";
 import { DataBrokerProfiles } from "../../../../../../../../components/client/DataBrokerProfiles";
@@ -13,6 +11,7 @@ import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
 import { redirect } from "next/navigation";
 import { AboutBrokersIcon } from "./AboutBrokersIcon";
+import { Button } from "../../../../../../../../components/server/Button";
 
 export default async function ViewDataBrokers() {
   const l10n = getL10n();
@@ -54,16 +53,16 @@ export default async function ViewDataBrokers() {
         <DataBrokerProfiles data={latestScan.results} />
       </div>
       <div className={styles.buttonsWrapper}>
-        <Link
-          className={`${buttonStyles.button} ${buttonStyles.primary}`}
+        <Button
+          variant="primary"
           href="/redesign/user/dashboard/fix/data-broker-profiles/automatic-remove"
         >
           {l10n.getString(
             "fix-flow-data-broker-profiles-view-data-broker-profiles-button-remove-for-me"
           )}
-        </Link>
-        <Link
-          className={`${buttonStyles.button} ${buttonStyles.secondary}`}
+        </Button>
+        <Button
+          variant="secondary"
           href={
             "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove"
           }
@@ -71,7 +70,7 @@ export default async function ViewDataBrokers() {
           {l10n.getString(
             "fix-flow-data-broker-profiles-view-data-broker-profiles-button-remove-manually"
           )}
-        </Link>
+        </Button>
       </div>
     </div>
   );

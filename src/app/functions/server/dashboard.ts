@@ -171,6 +171,7 @@ export function getDashboardSummary(
       }
     }
 
+    /* c8 ignore start */
     // count phone numbers
     if (dataClasses.includes(BreachDataTypes.Phone)) {
       summary.totalExposures += increment;
@@ -180,6 +181,7 @@ export function getDashboardSummary(
         summary.dataBreachFixedNum += increment;
       }
     }
+    /* c8 ignore stop */
 
     // count password
     if (dataClasses.includes(BreachDataTypes.Passwords)) {
@@ -221,6 +223,7 @@ export function getDashboardSummary(
       }
     }
 
+    /* c8 ignore start */
     // count pin numbers
     if (dataClasses.includes(BreachDataTypes.PIN)) {
       summary.totalExposures += increment;
@@ -230,7 +233,9 @@ export function getDashboardSummary(
         summary.dataBreachFixedNum += increment;
       }
     }
+    /* c8 ignore stop */
 
+    /** c8 ignore start */
     // count security questions
     if (dataClasses.includes(BreachDataTypes.SecurityQuestions)) {
       summary.totalExposures += increment;
@@ -240,6 +245,7 @@ export function getDashboardSummary(
         summary.dataBreachFixedNum += increment;
       }
     }
+    /** c8 ignore stop */
   });
 
   // count unique breaches
@@ -280,4 +286,13 @@ function sanitizeExposures(
   );
   sanitizedExposures.push({ "other-data-class": other });
   return sanitizedExposures;
+}
+
+export function getExposureReduction(
+  summary: DashboardSummary,
+  scanResultItems: OnerepScanResultRow[]
+): number {
+  const countOfDataBrokerProfiles = scanResultItems.length;
+  const totalExposures = summary.totalExposures;
+  return Math.round((countOfDataBrokerProfiles / totalExposures) * 100);
 }

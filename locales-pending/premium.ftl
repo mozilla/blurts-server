@@ -69,7 +69,7 @@ modal-active-number-of-exposures-part-one =
 modal-active-number-of-exposures-part-two = For example, if you have 10 exposures of your phone number, that might mean one phone number is exposed across 10 different sites, or it could mean 2 different phone numbers were exposed across 5 different sites.
 modal-active-number-of-exposures-part-three = This chart does not include any exposures that are in-progress of being auto-removed. Once your exposures are fixed, they will be added to your total number of fixed exposures on the Fixed page.
 
-# Here's What We Fixed Progress Card
+# Here’s What We Fixed Progress Card
 
 exposure-card-company-logo = Company logo
 exposure-card-company = Company domain
@@ -87,7 +87,7 @@ progress-card-percentage-complete = { $percentage }% complete
 progress-card-percentage-remaining = { $percentage }% in progress
 full-name = Full name
 
-# Here's What We Fixed Modal
+# Here’s What We Fixed Modal
 
 modal-heres-what-we-fixed-title = About what we fixed
 modal-heres-what-we-fixed-description-part-one = <b>Resolved by you</b> includes anything you have manually fixed. 
@@ -297,6 +297,31 @@ data-broker-profiles-estimated-time = Est. time to complete: { $estimated_time }
 # Variables
 # $exposure_reduction is the percentage of exposures that are data brokers.
 data-broker-profiles-exposure-reduction = Exposure reduction: { $exposure_reduction }%
+
+# Welcome to Premium Data Broker Profiles
+
+# Exposure reduction chart
+# The number inside <nr> will be displayed in a large font,
+# the label inside <label_line_1> will be shown in a smaller font. First line of the label
+# the label inside <label_line_2>  will be shown in smaller font. Second line of the label
+# Variables:
+#   $nr (number) - % of exposures reduced for the user
+exposure-reduction-chart-heading = <nr>{ $nr }</nr><percent>%</percent>
+exposure-reduction-chart-explanation = <label_line_1>exposures will</label_line_1><label_line_2>be reduced</label_line_2>
+
+welcome-to-premium-data-broker-profiles-title-part-one = Welcome to { -brand-premium }.
+welcome-to-premium-data-broker-profiles-title-part-two = We’ll remove those profiles ASAP.
+# Variables: 
+# $profile_total_num is the number of exposures came back from user data broker scans.
+# $exposure_reduction_percentage is the percent by which exposures are reduced
+welcome-to-premium-data-broker-profiles-description-part-one =  
+  { $profile_total_num ->
+    [one] We’ve already started our auto-removal process of 1 profile — which will reduce your exposures by { $exposure_reduction_percentage }%.
+    *[other] We’ve already started our auto-removal process of { $profile_total_num } profiles — which will reduce your exposures by { $exposure_reduction_percentage }%.
+  }
+welcome-to-premium-data-broker-profiles-description-part-two = Removals typically take 7-14 days, but some may happen within the hour. No matter how long it takes, we’ll keep working on it.
+welcome-to-premium-data-broker-profiles-description-part-three = Next we’ll guide you through high risk data breaches that require manual steps.
+welcome-to-premium-data-broker-profiles-cta-label = Let’s keep going
 
 # High Risk Data Breaches
 

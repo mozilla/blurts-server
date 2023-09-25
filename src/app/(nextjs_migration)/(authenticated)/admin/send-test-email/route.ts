@@ -94,11 +94,11 @@ export async function POST(req: NextRequest) {
 
 // Leaving the `async` for now because of the commented-out `await`:
 // eslint-disable-next-line @typescript-eslint/require-await
-async function sendTestNotification(req: NextRequest, res: NextResponse) {
+async function sendTestNotification(_req: NextRequest, _res: NextResponse) {
   // The test breach notification can be viewed in the public Mailinator inbox
   // as documented in the README:
   // https://github.com/mozilla/blurts-server#trigger-breach-alert-email
-  const breachNotificationData = {
+  const _breachNotificationData = {
     breachName: "Adobe",
     // Hash for dummy email `localmonitor20200827@mailinator.com`
     hashPrefix: "365050",
