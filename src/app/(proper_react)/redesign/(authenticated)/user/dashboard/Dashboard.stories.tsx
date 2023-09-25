@@ -109,12 +109,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     createRandomScanResult({ status: "new", manually_resolved: true }),
   ];
 
-  const mockedOnlyUnresolvedScanResults: OnerepScanResultRow[] = [
-    createRandomScanResult({ status: "new", manually_resolved: false }),
-    createRandomScanResult({ status: "new", manually_resolved: false }),
-    createRandomScanResult({ status: "new", manually_resolved: false }),
-  ];
-
   const scanData: LatestOnerepScanData = { scan: null, results: [] };
 
   if (props.countryCode === "us") {
@@ -126,7 +120,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           : mockedScan;
 
       if (props.brokers === "unresolved-scan-in-progress") {
-        scanData.results = mockedOnlyUnresolvedScanResults;
+        scanData.results = mockedUnresolvedScanResults;
       }
       if (props.brokers === "resolved") {
         scanData.results = mockedResolvedScanResults;
