@@ -18,7 +18,6 @@ export const PercentageChart = (props: WelcomeToPremiumProps) => {
     ["reduction", props.exposureReduction / 100],
     ["other", (100 - props.exposureReduction) / 100],
   ];
-  console.log({ percentages });
 
   const diameter = 100;
   const ringWidth = 15;
