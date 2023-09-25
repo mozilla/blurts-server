@@ -302,7 +302,8 @@ data-broker-profiles-exposure-reduction = Exposure reduction: { $exposure_reduct
 
 # Exposure reduction chart
 # The number inside <nr> will be displayed in a large font,
-# the label inside <label_line_1> and <label_line_2> will be shown in a smaller font. <label_line_1> and <label_line_2> spread the label over two lines, ideally of similar length.
+# the label inside <label_line_1> will be shown in a smaller font. First line of the label
+# the label inside <label_line_2>  will be shown in smaller font. Second line of the label
 # Variables:
 #   $nr (number) - % of exposures reduced for the user
 exposure-reduction-chart-heading = <nr>{ $nr }</nr><percent>%</percent>
