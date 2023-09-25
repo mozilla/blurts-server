@@ -297,7 +297,7 @@ function getSortedDataClasses(
   breach: HibpLikeDbBreach,
   isUserBrowserFirefox = false,
   isUserLocaleEnUs = false,
-  isUserLocalEn = false,
+  _isUserLocalEn = false,
   changePWLink = false
 ) {
   const l10n = getL10n();

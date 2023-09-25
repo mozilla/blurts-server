@@ -35,7 +35,7 @@ export interface ScanProgressBody {
 // @see the onerep-events route and https://docs.onerep.com/#section/Webhooks-Endpoints
 export async function GET(
   _req: NextRequest
-): Promise<NextResponse<ScanProgressBody | unknown>> {
+): Promise<NextResponse<ScanProgressBody> | NextResponse<unknown>> {
   const session = await getServerSession(authOptions);
   if (typeof session?.user?.email === "string") {
     try {

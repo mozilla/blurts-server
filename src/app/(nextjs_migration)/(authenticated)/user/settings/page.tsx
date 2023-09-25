@@ -165,6 +165,9 @@ export default async function Settings() {
     sha1: session.user.subscriber.primary_sha1,
     primary: true,
     verified: true,
+    // This is old code that mixed objects with different structure in the same
+    // array, hence the need to assert `any`:
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } as any);
 
   const breachCounts = new Map();
