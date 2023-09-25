@@ -26,7 +26,7 @@ export default async function WelcomeToPremium() {
   }
 
   const result = await getOnerepProfileId(session.user.subscriber.id);
-  const profileId = result[0]["onerep_profile_id"] || -1;
+  const profileId = result[0]["onerep_profile_id"] ?? -1;
   const scanResultItems =
     (await getLatestOnerepScanResults(profileId))?.results ?? [];
   const countOfDataBrokerProfiles = scanResultItems.length;
