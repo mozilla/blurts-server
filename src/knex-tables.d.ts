@@ -236,7 +236,7 @@ declare module "knex/types/tables" {
 
   interface OnerepProfileRow {
     id: number;
-    onerep_profile_id: null | SubscriberRow["onerep_profile_id"];
+    onerep_profile_id: null | number;
     first_name: string;
     last_name: string;
     city_name: string;
