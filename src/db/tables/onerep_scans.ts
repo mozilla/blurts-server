@@ -62,7 +62,7 @@ async function setOnerepManualScan(
   });
 }
 
-async function updateOnerepManualScan(
+async function updateOnerepScanStatus(
   onerepScanId: number,
   onerepScanStatus: Scan["status"]
 ) {
@@ -177,7 +177,7 @@ export {
   getLatestOnerepScanResults,
   setOnerepProfileId,
   setOnerepManualScan,
-  updateOnerepManualScan,
+  updateOnerepScanStatus,
   addOnerepScanResults,
   getScansCount,
   isOnerepScanResultForSubscriber,
