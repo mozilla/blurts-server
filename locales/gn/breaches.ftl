@@ -80,7 +80,7 @@ breach-checklist-pw-header-text = Embohekopyahu ñe’ẽñemi ha embojuruja mok
 
 # Variables:
 #   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
-breach-checklist-email-header-2 = Emo’ã ñanduti veve mba’epuru rovamo’ãha ndive { $firefoxRelayLink } ichagua.
+breach-checklist-email-header-2 = Emo’ã ñanduti veve mba’eporu rovamo’ãha ndive { $firefoxRelayLink } ichagua.
 breach-checklist-email-body = Kóva oñomikuaa ne ñanduti veve kundaharape omondojeývo ñanduti veve ig̃uahẽhaitépe.
 
 ## Prompts the user for changes when there is a breach detected of social security number
@@ -118,7 +118,7 @@ breach-checklist-pin-body = Aníke ne PIN pyahu, térã oimeraẽva ambue PIN, n
 # Variables:
 #   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
 breach-checklist-ip-header-2 = Eiporu ñanduti tekoñemíme VPN ndive, { $mozillaVpnLink } ojapoháicha.
-breach-checklist-ip-body = Nde IP kundaharape (Ñanduti rapereko kundaharape) ohechauka ne rendaite ha Ñanduti mba’epuru me’ẽhára. VPN omokañykuaa nde IP kundaharape eiporukuaa hag̃ua Ñanduti teko ñemíme.
+breach-checklist-ip-body = Nde IP kundaharape (Ñanduti rapereko kundaharape) ohechauka ne rendaite ha Ñanduti mba’eporu me’ẽhára. VPN omokañykuaa nde IP kundaharape eiporukuaa hag̃ua Ñanduti teko ñemíme.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
@@ -134,7 +134,7 @@ breach-checklist-dob-body = Umi teñoihague ára ndahasýi ijejuhu teraguapyháp
 
 # Variables:
 #   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
-breach-checklist-phone-header-2 = Emo’ã ne pumbyry papapy mba’epuru rovamo’ãha { $firefoxRelayLink } ndive, oñomíva añetehápe ne pumbyry papapyete.
+breach-checklist-phone-header-2 = Emo’ã ne pumbyry papapy mba’eporu rovamo’ãha { $firefoxRelayLink } ndive, oñomíva añetehápe ne pumbyry papapyete.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
