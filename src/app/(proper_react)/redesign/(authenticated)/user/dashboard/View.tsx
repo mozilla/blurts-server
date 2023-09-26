@@ -121,8 +121,10 @@ export const View = (props: Props) => {
     props.userBreaches
   );
   const isAllFixed =
-    dataSummary.dataBreachFixedNum === dataSummary.dataBreachTotalNum &&
-    dataSummary.dataBrokerFixedNum === dataSummary.dataBrokerTotalNum;
+    dataSummary.dataBreachFixedExposuresNum ===
+      dataSummary.dataBreachTotalExposuresNum &&
+    dataSummary.dataBrokerFixedExposuresNum ===
+      dataSummary.dataBrokerTotalExposuresNum;
 
   const TabContentActionNeeded = () => {
     const { dataBreachTotalNum, dataBrokerTotalNum, totalExposures } =
@@ -175,9 +177,6 @@ export const View = (props: Props) => {
     noUnresolvedExposures &&
     !isScanResultItemsEmpty &&
     !hasPremium(props.user) &&
-    // TODO: A bug causes `isAllFixed` to not be `true` when it should be:
-    // https://mozilla-hub.atlassian.net/browse/MNTOR-2192
-    /* c8 ignore next 4 */
     isAllFixed
   ) {
     contentType = "YourDataIsProtectedAllFixedContent";
