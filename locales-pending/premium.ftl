@@ -206,7 +206,7 @@ dashboard-top-banner-scan-in-progress-description =
       *[other] We found <b>{ $data_breach_total_num }</b> exposures so far, but we’re still scanning sites that sell your personal info. This should be done within 3 minutes.
   }
 dashboard-top-banner-scan-in-progress-fix-now-hint = You can refresh this page then, or start fixing your data breaches now.
-dashboard-top-banner-scan-in-progress-fix-later-hint = You can refresh this page then or come back later.
+dashboard-top-banner-scan-in-progress-fix-later-hint = You can refresh this page then, or come back later.
 dashboard-top-banner-scan-in-progress-cta = See what’s ready now
 
 dashboard-top-banner-protect-your-data-title = Let’s protect your data
