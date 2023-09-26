@@ -15,6 +15,7 @@ import {
 import {
   getLatestOnerepScanResults,
   addOnerepScanResults,
+  updateOnerepManualScan,
 } from "../../../../../../db/tables/onerep_scans";
 import {
   ListScanResultsResponse,
@@ -64,6 +65,7 @@ export async function GET(
             "manual",
             scan.status
           );
+          await updateOnerepManualScan(scan.id, scan.status);
         }
 
         return NextResponse.json(

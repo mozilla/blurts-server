@@ -62,6 +62,18 @@ async function setOnerepManualScan(
   });
 }
 
+async function updateOnerepManualScan(
+  onerepScanId: number,
+  onerepScanStatus: Scan["status"]
+) {
+  await knex("onerep_scans").where("onerep_scan_id", onerepScanId).update({
+    onerep_scan_status: onerepScanStatus,
+    // @ts-ignore knex.fn.now() results in it being set to a date,
+    // even if it's not typed as a JS date object:
+    updated_at: knex.fn.now(),
+  });
+}
+
 async function addOnerepScanResults(
   onerepProfileId: number,
   onerepScanId: number,
@@ -165,6 +177,7 @@ export {
   getLatestOnerepScanResults,
   setOnerepProfileId,
   setOnerepManualScan,
+  updateOnerepManualScan,
   addOnerepScanResults,
   getScansCount,
   isOnerepScanResultForSubscriber,
