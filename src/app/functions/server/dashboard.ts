@@ -29,13 +29,13 @@ type Exposures = {
 
 type SanitizedExposures = Array<Record<string, number>>;
 export interface DashboardSummary {
-  dataBreachTotalNum: number;
-  dataBreachTotalExposuresNum: number;
-  dataBreachFixedExposuresNum: number;
-  dataBrokerTotalNum: number;
-  dataBrokerTotalExposuresNum: number;
-  dataBrokerFixedExposuresNum: number;
-  dataBrokerInProgressNum: number;
+  dataBreachTotalNum: number; // total number of user data breaches
+  dataBreachTotalExposuresNum: number; // total number of exposures from user breaches
+  dataBreachFixedExposuresNum: number; // total number of fixed exposures from user breaches
+  dataBrokerTotalNum: number; // total number of user data broker scanned results
+  dataBrokerTotalExposuresNum: number; // total number of exposures from user data broker scanned results
+  dataBrokerFixedExposuresNum: number; // total number of fixed exposures from user data broker scanned results
+  dataBrokerInProgressExposuresNum: number; // total number of in-progress exposures from user data broker scanned results
   totalExposures: number;
   allExposures: Exposures;
   sanitizedExposures: SanitizedExposures;
@@ -73,7 +73,7 @@ export function getDashboardSummary(
     dataBrokerTotalNum: scannedResults.length,
     dataBrokerTotalExposuresNum: 0,
     dataBrokerFixedExposuresNum: 0,
-    dataBrokerInProgressNum: 0,
+    dataBrokerInProgressExposuresNum: 0,
     totalExposures: 0,
     allExposures: {
       emailAddresses: 0,
@@ -120,7 +120,7 @@ export function getDashboardSummary(
         r.status === RemovalStatusMap.OptOutInProgress ||
         r.status === RemovalStatusMap.WaitingForVerification;
       if (isInProgress) {
-        summary.dataBrokerInProgressNum++;
+        summary.dataBrokerInProgressExposuresNum++;
       } else if (isFixed) {
         summary.dataBrokerFixedExposuresNum++;
       }
