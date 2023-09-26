@@ -128,27 +128,27 @@ export function getDashboardSummary(
       }
       // total exposure: add email, phones, addresses, relatives, full name (1)
       const exposureIncrement =
-        r.emails?.length +
-        r.phones?.length +
-        r.addresses?.length +
-        r.relatives?.length +
+        r.emails.length +
+        r.phones.length +
+        r.addresses.length +
+        r.relatives.length +
         1;
       summary.totalExposures += exposureIncrement;
       summary.dataBrokerTotalExposuresNum += exposureIncrement;
 
       // for all exposures: email, phones, addresses, relatives, full name (1)
-      summary.allExposures.emailAddresses += r.emails?.length;
-      summary.allExposures.phoneNumbers += r.phones?.length;
-      summary.allExposures.addresses += r.addresses?.length;
-      summary.allExposures.familyMembers += r.relatives?.length;
+      summary.allExposures.emailAddresses += r.emails.length;
+      summary.allExposures.phoneNumbers += r.phones.length;
+      summary.allExposures.addresses += r.addresses.length;
+      summary.allExposures.familyMembers += r.relatives.length;
       summary.allExposures.fullNames++;
 
       // for fixed exposures: email, phones, addresses, relatives, full name (1)
       if (isFixed) {
-        summary.fixedExposures.emailAddresses += r.emails?.length;
-        summary.fixedExposures.phoneNumbers += r.phones?.length;
-        summary.fixedExposures.addresses += r.addresses?.length;
-        summary.fixedExposures.familyMembers += r.relatives?.length;
+        summary.fixedExposures.emailAddresses += r.emails.length;
+        summary.fixedExposures.phoneNumbers += r.phones.length;
+        summary.fixedExposures.addresses += r.addresses.length;
+        summary.fixedExposures.familyMembers += r.relatives.length;
         summary.fixedExposures.fullNames++;
         summary.dataBrokerFixedExposuresNum += exposureIncrement;
       }
