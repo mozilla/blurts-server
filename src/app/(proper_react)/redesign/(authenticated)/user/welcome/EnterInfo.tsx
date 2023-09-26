@@ -24,6 +24,7 @@ import {
   WelcomeScanBody,
 } from "../../../../../api/v1/user/welcome-scan/create/route";
 import { meetsAgeRequirement } from "../../../../../functions/universal/user";
+import { getLocale } from "../../../../../functions/universal/getLocale";
 
 import styles from "./EnterInfo.module.scss";
 
@@ -128,7 +129,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       type: "date",
       placeholder: "",
       value: dateOfBirth,
-      displayValue: new Date(dateOfBirth).toLocaleDateString("en-US", {
+      displayValue: new Date(dateOfBirth).toLocaleDateString(getLocale(l10n), {
         dateStyle: "medium",
         timeZone: "UTC",
       }),

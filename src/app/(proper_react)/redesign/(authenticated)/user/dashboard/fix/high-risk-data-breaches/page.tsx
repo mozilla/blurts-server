@@ -8,13 +8,11 @@ import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
 import { authOptions } from "../../../../../../../api/utils/auth";
 import { getSubscriberEmails } from "../../../../../../../functions/server/getSubscriberEmails";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
-import { getLocale } from "../../../../../../../functions/server/l10n";
 import { getSubscriberBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { getHighRiskBreachesByType } from "./highRiskBreachData";
 
 export default async function HighRiskDataBreaches() {
   const session = await getServerSession(authOptions);
-  const locale = getLocale();
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
@@ -28,7 +26,6 @@ export default async function HighRiskDataBreaches() {
   const pageData = getHighRiskBreachesByType({
     dataType: "none",
     breaches: guidedExperienceBreaches,
-    locale,
   });
 
   if (!pageData) {
@@ -38,7 +35,7 @@ export default async function HighRiskDataBreaches() {
   return (
     <div>
       {/* TODO: MNTOR-1700 Add routing logic here, currently default to no high risk breach data  */}
-      <HighRiskBreachLayout pageData={pageData} locale={locale} />
+      <HighRiskBreachLayout pageData={pageData} />
     </div>
   );
 }
