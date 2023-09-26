@@ -126,9 +126,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       label: l10n.getString("onboarding-enter-details-label-date-of-birth"),
       key: "dateOfBirth",
       type: "date",
-      placeholder: l10n.getString(
-        "onboarding-enter-details-placeholder-date-of-birth"
-      ),
+      placeholder: "",
       value: dateOfBirth,
       displayValue: new Date(dateOfBirth).toLocaleDateString("en-US", {
         dateStyle: "medium",

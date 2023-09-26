@@ -88,42 +88,18 @@
 
   input {
     min-height: 3rem;
+
+    &::placeholder {
+      // overwrite default opacity for placeholders in Firefox
+      opacity: 1;
+    }
   }
 
   input[type="date"] {
+    // remove grey background and align date input value on iOS
     background: transparent;
-
     &::-webkit-date-and-time-value {
       text-align: left;
-    }
-
-    &::before {
-      position: absolute;
-    }
-
-    &[value=""] {
-      color: transparent;
-
-      &::before {
-        content: attr(placeholder);
-        color: $color-grey-40;
-      }
-
-      &:focus {
-        color: $color-grey-40;
-
-        &::before {
-          content: "";
-        }
-      }
-    }
-
-    &:not([value=""]) {
-      color: var(--$color-black);
-
-      &:focus {
-        color: var(--$color-black);
-      }
     }
   }
 }
