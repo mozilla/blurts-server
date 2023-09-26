@@ -200,7 +200,6 @@ dashboard-exposures-filter-reset = Reset
 dashboard-top-banner-scan-in-progress-title = Your scan is still in progress
 # Variables:
 # $data_breach_total_num is the total number of data breaches the user has.
-# $data_broker_total_num is the total number of data brokers selling the user’s data.
 dashboard-top-banner-scan-in-progress-description =
   { $data_breach_total_num ->
       [one] We found <b>{ $data_breach_total_num }</b> exposure so far, but we’re still scanning sites that sell your personal info. This should be done within 3 minutes.
