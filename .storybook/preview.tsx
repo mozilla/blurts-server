@@ -5,6 +5,8 @@
 import React, { useEffect } from "react";
 import { Inter } from "next/font/google";
 import type { Preview } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
+import { linkTo } from "@storybook/addon-links";
 import "../src/app/globals.css";
 import { L10nProvider } from "../src/contextProviders/localization";
 import { metropolis } from "../src/app/fonts/Metropolis/metropolis";
@@ -49,6 +51,28 @@ const preview: Preview = {
     nextjs: {
       // See https://storybook.js.org/blog/integrate-nextjs-and-storybook-automatically/#nextnavigation
       appDirectory: true,
+      navigation: {
+        push(path: string, ...otherArgs: unknown[]) {
+          action("nextNavigation.push")(path, ...otherArgs);
+
+          if (path === "/redesign/user/dashboard") {
+            linkTo(
+              "Pages/Dashboard",
+              "US user, without Premium, with unresolved scan results, with unresolved breaches"
+            )();
+          }
+
+          if (
+            path ===
+            "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers"
+          ) {
+            linkTo(
+              "Pages/Guided resolution/1b. Scan results",
+              "With a few unresolved scan results (free)"
+            )();
+          }
+        },
+      },
     },
   },
   decorators: [AppDecorator],
