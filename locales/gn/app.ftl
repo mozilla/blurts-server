@@ -272,7 +272,7 @@ new-breaches-found =
        *[other] { $breachCount } ÑEMBYAI PYAHU JUHUPYRE
     }
 sign-up-headline-1 = Og̃uahẽta kyhyjerã { -brand-fxa } ndive.
-account-not-required = Kundahára { -brand-name } natekotevẽi { -brand-fxa } peg̃uarã. Eñemomarandukuaa { -brand-Mozilla } mba’epuru rehegua.
+account-not-required = Kundahára { -brand-name } natekotevẽi { -brand-fxa } peg̃uarã. Eñemomarandukuaa { -brand-Mozilla } mba’eporu rehegua.
 
 ## Variables:
 ##   $breachName (String) - Number of the breach

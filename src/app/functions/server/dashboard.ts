@@ -161,6 +161,7 @@ export function getDashboardSummary(
     /* c8 ignore next */
     const increment = b.emailsAffected.length ?? 0;
 
+    /* c8 ignore next 9 */
     // count emails
     if (dataClasses.includes(BreachDataTypes.Email)) {
       summary.totalExposures += increment;
@@ -171,7 +172,7 @@ export function getDashboardSummary(
       }
     }
 
-    /* c8 ignore start */
+    /* c8 ignore next 9 */
     // count phone numbers
     if (dataClasses.includes(BreachDataTypes.Phone)) {
       summary.totalExposures += increment;
@@ -181,7 +182,6 @@ export function getDashboardSummary(
         summary.dataBreachFixedNum += increment;
       }
     }
-    /* c8 ignore stop */
 
     // count password
     if (dataClasses.includes(BreachDataTypes.Passwords)) {
@@ -286,4 +286,13 @@ function sanitizeExposures(
   );
   sanitizedExposures.push({ "other-data-class": other });
   return sanitizedExposures;
+}
+
+export function getExposureReduction(
+  summary: DashboardSummary,
+  scanResultItems: OnerepScanResultRow[]
+): number {
+  const countOfDataBrokerProfiles = scanResultItems.length;
+  const totalExposures = summary.totalExposures;
+  return Math.round((countOfDataBrokerProfiles / totalExposures) * 100);
 }
