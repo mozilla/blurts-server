@@ -32,10 +32,11 @@ export interface DashboardSummary {
   dataBreachTotalNum: number; // total number of user data breaches
   dataBreachTotalExposuresNum: number; // total number of exposures from user breaches
   dataBreachFixedExposuresNum: number; // total number of fixed exposures from user breaches
-  dataBrokerTotalNum: number; // total number of user data broker scanned results
+  dataBrokerTotalNum: number; // total number of user data broker scans
   dataBrokerTotalExposuresNum: number; // total number of exposures from user data broker scanned results
+  dataBrokerFixedNum: number; // total number of fixed scans from user data broker scanned results
   dataBrokerFixedExposuresNum: number; // total number of fixed exposures from user data broker scanned results
-  dataBrokerInProgressExposuresNum: number; // total number of in-progress exposures from user data broker scanned results
+  dataBrokerInProgressNum: number; // total number of in-progress scans from user data broker scanned results
   totalExposures: number;
   allExposures: Exposures;
   sanitizedExposures: SanitizedExposures;
@@ -72,8 +73,9 @@ export function getDashboardSummary(
     dataBreachFixedExposuresNum: 0,
     dataBrokerTotalNum: scannedResults.length,
     dataBrokerTotalExposuresNum: 0,
+    dataBrokerFixedNum: 0,
     dataBrokerFixedExposuresNum: 0,
-    dataBrokerInProgressExposuresNum: 0,
+    dataBrokerInProgressNum: 0,
     totalExposures: 0,
     allExposures: {
       emailAddresses: 0,
@@ -120,9 +122,9 @@ export function getDashboardSummary(
         r.status === RemovalStatusMap.OptOutInProgress ||
         r.status === RemovalStatusMap.WaitingForVerification;
       if (isInProgress) {
-        summary.dataBrokerInProgressExposuresNum++;
+        summary.dataBrokerInProgressNum++;
       } else if (isFixed) {
-        summary.dataBrokerFixedExposuresNum++;
+        summary.dataBrokerFixedNum++;
       }
       // total exposure: add email, phones, addresses, relatives, full name (1)
       const exposureIncrement =
@@ -148,6 +150,7 @@ export function getDashboardSummary(
         summary.fixedExposures.addresses += r.addresses?.length;
         summary.fixedExposures.familyMembers += r.relatives?.length;
         summary.fixedExposures.fullNames++;
+        summary.dataBrokerFixedExposuresNum += exposureIncrement;
       }
     });
   }
@@ -272,7 +275,7 @@ export function getDashboardSummary(
   );
   summary.fixedSanitizedExposures = sanitizeExposures(
     summary.fixedExposures,
-    summary.dataBreachFixedExposuresNum + summary.dataBrokerFixedExposuresNum,
+    summary.dataBreachFixedExposuresNum + summary.dataBrokerFixedNum,
     isBreachesOnly
   );
   return summary;
