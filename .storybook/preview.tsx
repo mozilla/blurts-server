@@ -89,6 +89,13 @@ const preview: Preview = {
               "With a few unresolved scan results (free)"
             )();
           }
+
+          if (
+            path ===
+            "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove"
+          ) {
+            linkTo("Pages/Guided resolution/1c. Manually resolve brokers")();
+          }
         },
       },
     },

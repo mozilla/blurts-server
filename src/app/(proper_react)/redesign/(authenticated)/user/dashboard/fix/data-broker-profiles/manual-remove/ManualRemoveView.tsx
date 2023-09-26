@@ -8,37 +8,30 @@ import {
   AvatarIcon,
   ClockIcon,
 } from "../../../../../../../../components/server/Icons";
-import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
-import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
-import { authOptions } from "../../../../../../../../api/utils/auth";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
+import { LatestOnerepScanData } from "../../../../../../../../../db/tables/onerep_scans";
 import { Button } from "../../../../../../../../components/server/Button";
 import {
   getDashboardSummary,
   getExposureReduction,
 } from "../../../../../../../../functions/server/dashboard";
+import { SubscriberBreach } from "../../../../../../../../../utils/subscriberBreaches";
 
-export default async function ManualRemoveView() {
+export type Props = {
+  scanData: LatestOnerepScanData;
+  breaches: SubscriberBreach[];
+};
+
+export function ManualRemoveView(props: Props) {
   const l10n = getL10n();
 
-  const session = await getServerSession(authOptions);
+  const summary = getDashboardSummary(props.scanData.results, props.breaches);
 
-  if (!session?.user?.subscriber?.id) {
-    redirect("/redesign/user/dashboard/");
-  }
-  const result = await getOnerepProfileId(session.user.subscriber.id);
-  const profileId = result[0]["onerep_profile_id"] as number;
-  const scanResult = await getLatestOnerepScanResults(profileId);
-  const scanResultItems = scanResult.results;
-  const subBreaches = await getSubscriberBreaches(session.user);
-  const summary = getDashboardSummary(scanResultItems, subBreaches);
-
-  // TODO: Use api to set/query count
-  const countOfDataBrokerProfiles = scanResultItems.length;
+  const countOfDataBrokerProfiles = props.scanData.results.length;
   const estimatedTime = countOfDataBrokerProfiles * 10; // 10 minutes per data broker site.
-  const exposureReduction = getExposureReduction(summary, scanResultItems);
+  const exposureReduction = getExposureReduction(
+    summary,
+    props.scanData.results
+  );
 
   return (
     <div className={styles.main}>
