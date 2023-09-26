@@ -10,7 +10,7 @@ import { getGuidedExperienceBreaches } from "../../../../../../functions/univers
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 import { FixView } from "./FixView";
-import { getLatestOnerepScan } from "../../../../../../../db/tables/onerep_scans";
+import { getLatestOnerepScanResults } from "../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../db/tables/subscribers";
 import { canSubscribeToPremium } from "../../../../../../functions/universal/user";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
@@ -39,8 +39,8 @@ export default async function Layout({ children }: { children: ReactNode }) {
     return redirect("/redesign/user/welcome/");
   }
 
-  const scanResult = await getLatestOnerepScan(profileId);
-  const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
+  const scanResult = await getLatestOnerepScanResults(profileId);
+  const scanResultItems = scanResult.results;
 
   return (
     <FixView breaches={guidedExperience} userScannedResults={scanResultItems}>

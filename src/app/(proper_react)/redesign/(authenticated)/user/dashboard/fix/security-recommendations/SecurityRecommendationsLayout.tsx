@@ -9,17 +9,16 @@ import { ResolutionContainer } from "../ResolutionContainer";
 import { ResolutionContent } from "../ResolutionContent";
 import { Button } from "../../../../../../../components/server/Button";
 import { useL10n } from "../../../../../../../hooks/l10n";
+import { getLocale } from "../../../../../../../functions/universal/getLocale";
 
 export interface SecurityRecommendationsLayoutProps {
   label: string;
   pageData: SecurityRecommendation;
-  locale: string;
 }
 
 export function SecurityRecommendationsLayout({
   label,
   pageData,
-  locale,
 }: SecurityRecommendationsLayoutProps) {
   const l10n = useL10n();
   const { title, illustration, content, exposedData } = pageData;
@@ -36,7 +35,7 @@ export function SecurityRecommendationsLayout({
           small
           // TODO: Add test once MNTOR-1700 logic is added
           /* c8 ignore next 3 */
-          onClick={() => {
+          onPress={() => {
             // TODO: MNTOR-1700 Add routing logic
           }}
           autoFocus={true}
@@ -48,7 +47,7 @@ export function SecurityRecommendationsLayout({
       <ResolutionContent
         content={content}
         exposedData={exposedData}
-        locale={locale}
+        locale={getLocale(l10n)}
       />
     </ResolutionContainer>
   );

@@ -9,10 +9,10 @@ import styles from "./DataBrokerProfiles.module.scss";
 import { useL10n } from "../../hooks/l10n";
 import IconChevronDown from "./assets/icon-chevron-down.svg";
 import { useState } from "react";
-import { ScanResult } from "../../functions/server/onerep";
+import { OnerepScanResultRow } from "knex/types/tables";
 
 export type Props = {
-  data: ScanResult[];
+  data: OnerepScanResultRow[];
 };
 
 export const DataBrokerProfiles = (props: Props) => {
@@ -54,7 +54,7 @@ export const DataBrokerProfiles = (props: Props) => {
 };
 
 export type DataBrokerProfileCardProps = {
-  data: ScanResult;
+  data: OnerepScanResultRow;
 };
 
 export const DataBrokerProfileCard = (props: DataBrokerProfileCardProps) => {

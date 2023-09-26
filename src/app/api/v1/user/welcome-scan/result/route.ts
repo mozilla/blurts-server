@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getServerSession } from "next-auth";
+import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
 import { authOptions } from "../../../../utils/auth";
 import { NextResponse } from "next/server";
 
@@ -12,7 +13,14 @@ import {
   getSubscriberByEmail,
 } from "../../../../../../db/tables/subscribers";
 
-import { getLatestOnerepScan } from "../../../../../../db/tables/onerep_scans";
+import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
+
+export type WelcomeScanResultResponse =
+  | {
+      success: true;
+      scan_results: { scan?: OnerepScanRow; results: OnerepScanResultRow[] };
+    }
+  | { success: false };
 
 export async function GET() {
   const session = await getServerSession(authOptions);
@@ -23,7 +31,7 @@ export async function GET() {
         "onerep_profile_id"
       ] as number;
 
-      const scanResults = await getLatestOnerepScan(profileId);
+      const scanResults = await getLatestOnerepScanResults(profileId);
       return NextResponse.json(
         { success: true, scan_results: scanResults },
         { status: 200 }

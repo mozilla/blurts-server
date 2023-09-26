@@ -7,12 +7,10 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { View } from "./View";
 import { authOptions } from "../../../../../api/utils/auth";
-import { dashboardSummary } from "../../../../../functions/server/dashboard";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../functions/server/getUserBreaches";
-import { getLocale } from "../../../../../functions/server/l10n";
 import { canSubscribeToPremium } from "../../../../../functions/universal/user";
-import { getLatestOnerepScan } from "../../../../../../db/tables/onerep_scans";
+import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 
 import { isFlagEnabled } from "../../../../../functions/server/featureFlags";
@@ -35,11 +33,8 @@ export default async function DashboardPage() {
     return redirect("/redesign/user/welcome/");
   }
 
-  const scanResult = await getLatestOnerepScan(profileId);
-  const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
+  const latestScan = await getLatestOnerepScanResults(profileId);
   const subBreaches = await getSubscriberBreaches(session.user);
-  const summary = dashboardSummary(scanResultItems, subBreaches);
-  const locale = getLocale();
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(
     session.user,
@@ -52,21 +47,15 @@ export default async function DashboardPage() {
     session.user
   );
   const featureFlagsEnabled = { FreeBrokerScan, PremiumBrokerRemoval };
-  const isAllFixed =
-    summary.dataBreachFixedNum === summary.dataBreachTotalNum &&
-    summary.dataBrokerFixedNum === summary.dataBrokerTotalNum;
 
   return (
     <View
       countryCode={countryCode}
       user={session.user}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
-      userScannedResults={scanResultItems}
+      userScanData={latestScan}
       userBreaches={subBreaches}
-      locale={locale}
-      bannerData={summary}
       featureFlagsEnabled={featureFlagsEnabled}
-      isAllFixed={isAllFixed}
     />
   );
 }

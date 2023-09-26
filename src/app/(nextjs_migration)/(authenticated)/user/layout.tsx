@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { v5 as uuidv5 } from "uuid";
 import { ReactNode } from "react";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
@@ -17,6 +18,8 @@ import MozillaLogo from "../../../../client/images/moz-logo-1color-white-rgb-01.
 import { getL10n } from "../../../functions/server/l10n";
 import { authOptions } from "../../../api/utils/auth";
 import { getNonce } from "../../functions/server/getNonce";
+import { PageLoadEvent } from "../../components/client/PageLoadEvent";
+import { getExperiments } from "../../../functions/server/getExperiments";
 export type Props = {
   children: ReactNode;
 };
@@ -25,6 +28,32 @@ const MainLayout = async (props: Props) => {
   const session = await getServerSession(authOptions);
   if (!session) {
     return <SignInButton autoSignIn />;
+  }
+
+  const accountId = session?.user?.subscriber?.fxa_uid;
+
+  let userId = "";
+  if (accountId && typeof accountId === "string") {
+    // If the user is logged in, use a UUID based on the user's subscriber ID.
+    // TODO determine if we can collect the FxA UID directly https://mozilla-hub.atlassian.net/browse/MNTOR-2180
+    if (process.env.NIMBUS_UUID_NAMESPACE) {
+      userId = uuidv5(accountId, process.env.NIMBUS_UUID_NAMESPACE);
+    } else {
+      console.error("NIMBUS_UUID_NAMESPACE env var not set");
+    }
+  }
+
+  if (!userId) {
+    console.error("No user ID for Nimbus telemetry");
+  }
+
+  try {
+    // TODO For initial A/A testing `features` is unused. https://mozilla-hub.atlassian.net/browse/MNTOR-2182
+    const features = await getExperiments(userId);
+    // TODO remove debug for A/A testing https://mozilla-hub.atlassian.net/browse/MNTOR-2182
+    console.debug("Nimbus features in authenticated session:", features);
+  } catch (ex) {
+    console.error("Could not fetch Nimbus features:", ex);
   }
 
   const l10n = getL10n();
@@ -36,6 +65,7 @@ const MainLayout = async (props: Props) => {
         src="/nextjs_migration/client/js/nav.js"
         nonce={getNonce()}
       />
+      <PageLoadEvent userId={userId} />
       <header>
         <div className="header-wrapper">
           <a href="/user/breaches">

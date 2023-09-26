@@ -3,8 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Knex } from "knex";
-import { ScanResult, Scan } from "./app/functions/server/onerep";
+import { Profile } from "next-auth";
+import { Scan } from "./app/functions/server/onerep";
 import { StateAbbr } from "./utils/states";
+import { RemovalStatus } from "./app/functions/universal/scanResult";
+import { BreachDataTypes } from "./app/functions/universal/breach";
 
 // See https://knexjs.org/guide/#typescript
 declare module "knex/types/tables" {
@@ -38,6 +41,11 @@ declare module "knex/types/tables" {
     "name" | "created_at" | "modified_at"
   >;
 
+  interface SubscriberEmail {
+    id: number;
+    email: string;
+  }
+
   interface SubscriberRow {
     id: number;
     primary_sha1: string;
@@ -50,31 +58,57 @@ declare module "knex/types/tables" {
     signup_language: string;
     fxa_refresh_token: null | string;
     fxa_access_token: null | string;
-    fxa_profile_json: null | unknown;
+    fxa_profile_json: null | Profile;
     fxa_uid: null | string;
     // TODO: Find unknown type
+    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     breaches_last_shown: null | unknown;
     all_emails_to_primary: boolean;
     // TODO: Find unknown type
+    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     breaches_resolved: null | unknown;
     // TODO: Find unknown type
+    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     waitlists_joined: null | unknown;
+    breach_stats: null | {
+      passwords: { count: number; numResolved: number };
+      numBreaches: {
+        count: number;
+        numResolved: number;
+        numUnresolved: number;
+      };
+      monitoredEmails: { count: number };
+    };
     // TODO: Find unknown type
-    breach_stats: null | unknown;
-    // TODO: Find unknown type
+    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     monthly_email_at: null | unknown;
     // TODO: Find unknown type
+    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     monthly_email_optout: null | unknown;
+    breach_resolution:
+      | null
+      | ({
+          useBreachId: boolean;
+        } & Record<
+          SubscriberEmail.email,
+          Record<
+            BreachRow.id,
+            {
+              isResolved: boolean;
+              resolutionsChecked: Array<
+                (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
+              >;
+            }
+          >
+        >);
     // TODO: Find unknown type
-    breach_resolution: null | unknown;
-    // TODO: Find unknown type
+    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     db_migration_1: null | unknown;
     // TODO: Find unknown type
+    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     db_migration_2: null | unknown;
-    // TODO: Find unknown type
-    onerep_profile_id: null | unknown;
-    // TODO: Find unknown type
-    email_addresses: unknown[];
+    onerep_profile_id: null | number;
+    email_addresses: SubscriberEmail[];
   }
   type SubscriberOptionalColumns = Extract<
     keyof SubscriberRow,
@@ -149,8 +183,8 @@ declare module "knex/types/tables" {
     id: number;
     onerep_profile_id: number;
     onerep_scan_id: number;
-    onerep_scan_results: ScanResult;
     onerep_scan_reason: Scan["reason"];
+    onerep_scan_status: Scan["status"];
     created_at: Date;
     updated_at: Date;
   }
@@ -163,9 +197,47 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "updated_at"
   >;
 
+  interface OnerepScanResultRow {
+    id: number;
+    onerep_scan_result_id: number;
+    onerep_scan_id: OnerepScanRow["onerep_scan_id"];
+    link: string;
+    age?: number;
+    data_broker: string;
+    data_broker_id: number;
+    emails: string[];
+    phones: string[];
+    addresses: Array<{
+      city: string;
+      state: StateAbbr;
+      street?: string;
+      zip?: string;
+    }>;
+    relatives: string[];
+    first_name: string;
+    middle_name?: string;
+    last_name: string;
+    status: RemovalStatus;
+    manually_resolved: boolean;
+    created_at: Date;
+    updated_at: Date;
+  }
+  type OnerepScanResultOptionalColumns = Extract<
+    keyof OnerepScanResultRow,
+    "manually_resolved" | "middle_name"
+  >;
+  type OnerepScanResultSerializedColumns = Extract<
+    keyof OnerepScanResultRow,
+    "emails" | "phones" | "addresses" | "relatives"
+  >;
+  type OnerepScanResultAutoInsertedColumns = Extract<
+    keyof OnerepScanResultRow,
+    "id" | "created_at" | "updated_at"
+  >;
+
   interface OnerepProfileRow {
     id: number;
-    onerep_profile_id: null | SubscriberRow["onerep_profile_id"];
+    onerep_profile_id: null | number;
     first_name: string;
     last_name: string;
     city_name: string;
@@ -198,15 +270,17 @@ declare module "knex/types/tables" {
 
     subscribers: Knex.CompositeTableType<
       SubscriberRow,
-      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
+      // On inserts, auto-generated columns cannot be set, and nullable columns are optional.
       Omit<
         SubscriberRow,
         SubscriberAutoInsertedColumns | SubscriberOptionalColumns
       > &
         Partial<Pick<SubscriberRow, SubscriberOptionalColumns>>,
-      // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
-      Partial<Omit<SubscriberRow, "id" | "created_at">> &
-        Pick<SubscriberRow, "updated_at">
+      // On updates, don't allow updating the ID and created date; all
+      // otherfields are optional, except updated_at. Also, fxa_profile_json
+      // takes the data as a serialised string:
+      Partial<Omit<SubscriberRow, "id" | "created_at" | "fxa_profile_json">> &
+        Pick<SubscriberRow, "updated_at"> & { fxa_profile_json: string | null }
     >;
 
     email_addresses: Knex.CompositeTableType<
@@ -238,6 +312,23 @@ declare module "knex/types/tables" {
       // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
       Partial<Omit<OnerepScanRow, "id" | "created_at">> &
         Pick<OnerepScanRow, "updated_at">
+    >;
+
+    onerep_scan_results: Knex.CompositeTableType<
+      OnerepScanResultRow,
+      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
+      Omit<
+        OnerepScanResultRow,
+        | OnerepScanResultAutoInsertedColumns
+        | OnerepScanResultOptionalColumns
+        | OnerepScanResultSerializedColumns
+      > &
+        Partial<Pick<OnerepScanResultRow, OnerepScanResultOptionalColumns>> &
+        Record<OnerepScanResultSerializedColumns, string>,
+      // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
+      Partial<Omit<OnerepScanResultRow, "id" | "created_at">> &
+        Pick<OnerepScanResultRow, "updated_at"> &
+        Record<OnerepScanResultSerializedColumns, string>
     >;
 
     onerep_profiles: Knex.CompositeTableType<

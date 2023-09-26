@@ -4,7 +4,7 @@
 
 import { it, expect } from "@jest/globals";
 import { fireEvent, render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import Meta, { Onboarding } from "./Onboarding.stories";
@@ -72,6 +72,72 @@ it("passes the axe accessibility test suite on step 2", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
+it("can open the explainer dialog shows on step 1", async () => {
+  const user = userEvent.setup();
+  const ComposedOnboarding = composeStory(Onboarding, Meta);
+  render(<ComposedOnboarding />);
+
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  const explainerTrigger = screen.getByRole("button", {
+    name: "See how we protect your data",
+  });
+  await user.click(explainerTrigger);
+  expect(screen.getByRole("dialog")).toBeInTheDocument();
+
+  const confirmButton = screen.getByRole("button", {
+    name: "OK",
+  });
+  await user.click(confirmButton);
+
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+});
+
+it("can go to step 2 from step 1", async () => {
+  const user = userEvent.setup();
+  const ComposedOnboarding = composeStory(Onboarding, Meta);
+  render(<ComposedOnboarding />);
+
+  expect(
+    screen.queryByRole("heading", {
+      name: "Enter the details you want to protect",
+    })
+  ).not.toBeInTheDocument();
+
+  const startButton = screen.getByRole("button", {
+    name: "Start my free scan",
+  });
+  await user.click(startButton);
+
+  expect(
+    screen.getByRole("heading", {
+      name: "Enter the details you want to protect",
+    })
+  ).toBeInTheDocument();
+});
+
+it("can go back to step 1 after moving on to step 2", async () => {
+  const user = userEvent.setup();
+  const ComposedOnboarding = composeStory(Onboarding, Meta);
+  render(<ComposedOnboarding stepId="enterInfo" />);
+
+  expect(
+    screen.queryByRole("heading", {
+      name: "Welcome to ⁨Monitor⁩. Let’s find your exposed information.",
+    })
+  ).not.toBeInTheDocument();
+
+  const backButton = screen.getByRole("button", {
+    name: "Go back",
+  });
+  await user.click(backButton);
+
+  expect(
+    screen.getByRole("heading", {
+      name: "Welcome to ⁨Monitor⁩. Let’s find your exposed information.",
+    })
+  ).toBeInTheDocument();
+});
+
 it("explainer dialog shows on step 2", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
@@ -83,6 +149,13 @@ it("explainer dialog shows on step 2", async () => {
   });
   await user.click(explainerTrigger);
   expect(screen.getByRole("dialog")).toBeInTheDocument();
+
+  const confirmButton = screen.getByRole("button", {
+    name: "OK",
+  });
+  await user.click(confirmButton);
+
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
 });
 
 it("confirm dialog is showing on step 2", async () => {
@@ -98,6 +171,13 @@ it("confirm dialog is showing on step 2", async () => {
   await user.click(proceedButton);
 
   expect(screen.getByText("Is this correct?")).toBeInTheDocument();
+
+  const cancelButton = screen.getByRole("button", {
+    name: "Edit",
+  });
+  await user.click(cancelButton);
+
+  expect(screen.queryByText("Is this correct?")).not.toBeInTheDocument();
 });
 
 it("form input elements have invalid state if left empty on step 2", async () => {

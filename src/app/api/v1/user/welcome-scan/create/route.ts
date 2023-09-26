@@ -11,7 +11,7 @@ import {
   createScan,
   isEligibleForFreeScan,
 } from "../../../../../functions/server/onerep";
-import type { ProfileData } from "../../../../../functions/server/onerep";
+import type { CreateProfileRequest } from "../../../../../functions/server/onerep";
 import { meetsAgeRequirement } from "../../../../../functions/universal/user";
 import AppConstants from "../../../../../../appConstants";
 import { getSubscriberByEmail } from "../../../../../../db/tables/subscribers";
@@ -39,9 +39,9 @@ export interface UserInfo {
 
 export async function POST(
   req: NextRequest
-): Promise<NextResponse<WelcomeScanBody | unknown>> {
+): Promise<NextResponse<WelcomeScanBody> | NextResponse<unknown>> {
   const session = await getServerSession(authOptions);
-  if (!session || !session.user || !session.user.subscriber) {
+  if (!session?.user?.subscriber) {
     throw new Error("No session");
   }
 
@@ -71,7 +71,7 @@ export async function POST(
   if (!meetsAgeRequirement(dateOfBirth)) {
     throw new Error(`User does not meet the age requirement: ${dateOfBirth}`);
   }
-  const profileData: ProfileData = {
+  const profileData: CreateProfileRequest = {
     first_name: firstName,
     last_name: lastName,
     addresses: [{ city, state }],

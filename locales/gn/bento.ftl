@@ -12,7 +12,7 @@ fx-mobile = { -brand-name } Kundaha pumbyrygua
 ##
 
 # Aria label for the Bento button
-bento-button-title = { -brand-name } tembiporu’i ha mba’epururãva
+bento-button-title = { -brand-name } tembiporu’i ha mba’eporurãva
 # Bento headline
 fx-makes-tech = { -brand-name } tembiporupyahu oñeha’ãha ne ñemigua ñandutípe.
 # A link at the bottom of the Bento menu
