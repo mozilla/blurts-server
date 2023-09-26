@@ -85,6 +85,47 @@
   @media screen and (max-width: $screen-lg) {
     grid-template-columns: 1fr;
   }
+
+  input {
+    min-height: 3rem;
+  }
+
+  input[type="date"] {
+    background: transparent;
+
+    &::-webkit-date-and-time-value {
+      text-align: left;
+    }
+
+    &::before {
+      position: absolute;
+    }
+
+    &[value=""] {
+      color: transparent;
+
+      &::before {
+        content: attr(placeholder);
+        color: $color-grey-40;
+      }
+
+      &:focus {
+        color: $color-grey-40;
+
+        &::before {
+          content: "";
+        }
+      }
+    }
+
+    &:not([value=""]) {
+      color: var(--$color-black);
+
+      &:focus {
+        color: var(--$color-black);
+      }
+    }
+  }
 }
 
 .infoList {
