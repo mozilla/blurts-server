@@ -4,6 +4,7 @@
 
 import Sentry from "@sentry/nextjs"
 import { acceptedLanguages, negotiateLanguages } from "@fluent/langneg";
+import { localStorage } from '../utils/localStorage.js'
 
 import * as pubsub from "@google-cloud/pubsub";
 import * as grpc from "@grpc/grpc-js";
@@ -164,33 +165,37 @@ export async function poll(subClient, receivedMessages) {
           : [];
         /* c8 ignore stop */
 
-        const availableLanguages = process.env.SUPPORTED_LOCALES;
+        const availableLanguages = process.env.SUPPORTED_LOCALES.split(",");
         const supportedLocales = negotiateLanguages(
           requestedLanguage,
           availableLanguages,
           { defaultLocale: "en" }
         );
 
-        if (!notifiedRecipients.includes(breachedEmail)) {
-          const data = {
-            breachData: breachAlert,
-            breachLogos: [], // FIXME this appears to be unused?
-            breachedEmail,
-            ctaHref: getEmailCtaHref(utmCampaignId, "dashboard-cta"),
-            heading: getMessage("email-spotted-new-breach"),
-            recipientEmail,
-            subscriberId,
-            supportedLocales,
-            utmCampaign: utmCampaignId,
-          };
+        await localStorage.run(new Map(), async () => {
+          localStorage.getStore().set('locale', supportedLocales);
+          await (async () => {
+            if (!notifiedRecipients.includes(breachedEmail)) {
+              const data = {
+                breachData: breachAlert,
+                breachedEmail,
+                ctaHref: getEmailCtaHref(utmCampaignId, "dashboard-cta"),
+                heading: getMessage("email-spotted-new-breach"),
+                recipientEmail,
+                subscriberId,
+                supportedLocales,
+                utmCampaign: utmCampaignId,
+              };
 
-          const emailTemplate = getTemplate(data, breachAlertEmailPartial);
-          const subject = getMessage("breach-alert-subject");
+              const emailTemplate = getTemplate(data, breachAlertEmailPartial);
+              const subject = getMessage("breach-alert-subject");
 
-          await sendEmail(data.recipientEmail, subject, emailTemplate);
+              await sendEmail(data.recipientEmail, subject, emailTemplate);
 
-          notifiedRecipients.push(breachedEmail);
-        }
+              notifiedRecipients.push(breachedEmail);
+            }
+          })();
+        });
       }
 
       console.info("notified", { length: notifiedRecipients.length });

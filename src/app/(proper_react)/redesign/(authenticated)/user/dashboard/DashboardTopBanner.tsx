@@ -17,6 +17,7 @@ import {
 import { hasPremium } from "../../../../../functions/universal/user";
 
 export type BannerContent =
+  | "ScanInProgressContent"
   | "LetsFixDataContent"
   | "DataBrokerScanUpsellContent"
   | "NoExposuresFoundContent"
@@ -29,9 +30,9 @@ export type DashboardTopBannerProps = {
   content: BannerContent;
   bannerData: DashboardSummary;
   stepDeterminationData: StepDeterminationData;
-  hasRunScan: boolean;
   isEligibleForFreeScan: boolean;
   type: TabType;
+  scanInProgress: boolean;
   onShowFixed: () => void;
 };
 
@@ -60,7 +61,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         </div>
         <div className={styles.chart}>
           <Chart
-            hasRunScan={props.hasRunScan}
+            scanInProgress={props.scanInProgress}
             data={chartData}
             isEligibleForFreeScan={props.isEligibleForFreeScan}
           />
@@ -137,6 +138,52 @@ const Content = (props: {
             )}
           </a>
         </p>
+      </div>
+    );
+  }
+
+  if (
+    relevantGuidedStep.id === "ScanResult" &&
+    props.stepDeterminationData.latestScanData?.scan?.onerep_scan_status ===
+      "in_progress"
+  ) {
+    // If the user has started a broker scan and it’s not finished yet.
+    return (
+      <div className={styles.explainerContent}>
+        <h3>{l10n.getString("dashboard-top-banner-scan-in-progress-title")}</h3>
+        <p>
+          {l10n.getFragment(
+            "dashboard-top-banner-scan-in-progress-description",
+            {
+              vars: {
+                data_breach_total_num: props.bannerData.totalExposures,
+              },
+              elems: {
+                b: <strong />,
+              },
+            }
+          )}
+          <br />
+          <br />
+          {!props.bannerData.totalExposures
+            ? l10n.getString(
+                "dashboard-top-banner-scan-in-progress-fix-later-hint"
+              )
+            : l10n.getString(
+                "dashboard-top-banner-scan-in-progress-fix-now-hint"
+              )}
+        </p>
+        <div className={styles.cta}>
+          <Button
+            href={
+              "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers"
+            }
+            small
+            variant="primary"
+          >
+            {l10n.getString("dashboard-top-banner-scan-in-progress-cta")}
+          </Button>
+        </div>
       </div>
     );
   }

@@ -167,6 +167,7 @@ export function getDashboardSummary(
     /* c8 ignore next */
     const increment = b.emailsAffected.length ?? 0;
 
+    /* c8 ignore next 9 */
     // count emails
     if (dataClasses.includes(BreachDataTypes.Email)) {
       summary.totalExposures += increment;
@@ -178,7 +179,7 @@ export function getDashboardSummary(
       }
     }
 
-    /* c8 ignore start */
+    /* c8 ignore next 9 */
     // count phone numbers
     if (dataClasses.includes(BreachDataTypes.Phone)) {
       summary.totalExposures += increment;
@@ -189,7 +190,6 @@ export function getDashboardSummary(
         summary.dataBreachFixedExposuresNum += increment;
       }
     }
-    /* c8 ignore stop */
 
     // count password
     if (dataClasses.includes(BreachDataTypes.Passwords)) {

@@ -12,6 +12,7 @@ import pinIllustration from "../images/high-risk-data-breach-pin.svg";
 import noBreachesIllustration from "../images/high-risk-breaches-none.svg";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { FraudAlertModal } from "./FraudAlertModal";
+import { getLocale } from "../../../../../../../functions/universal/getLocale";
 
 export type HighRiskBreachContent = {
   summary: string;
@@ -41,16 +42,14 @@ export type HighRiskBreach = {
 function getHighRiskBreachesByType({
   dataType,
   breaches,
-  locale,
 }: {
   dataType: string;
   breaches: GuidedExperienceBreaches;
-  locale: string;
 }) {
   const l10n = getL10n();
 
   // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
-  const emailsFormatter = new Intl.ListFormat(locale, {
+  const emailsFormatter = new Intl.ListFormat(getLocale(l10n), {
     style: "long",
     type: "conjunction",
   });

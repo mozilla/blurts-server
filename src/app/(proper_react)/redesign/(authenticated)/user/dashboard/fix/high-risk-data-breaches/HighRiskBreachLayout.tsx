@@ -10,16 +10,13 @@ import { ResolutionContent } from "../ResolutionContent";
 import { Button } from "../../../../../../../components/server/Button";
 import { useL10n } from "../../../../../../../hooks/l10n";
 import { HighRiskBreach } from "./highRiskBreachData";
+import { getLocale } from "../../../../../../../functions/universal/getLocale";
 
 export type HighRiskBreachLayoutProps = {
-  locale: string;
   pageData: HighRiskBreach;
 };
 
-export function HighRiskBreachLayout({
-  pageData,
-  locale,
-}: HighRiskBreachLayoutProps) {
+export function HighRiskBreachLayout({ pageData }: HighRiskBreachLayoutProps) {
   const l10n = useL10n();
   const { title, illustration, content, exposedData, type } = pageData;
   const hasBreaches = type !== "none";
@@ -47,7 +44,6 @@ export function HighRiskBreachLayout({
           {hasBreaches && (
             <Link
               // TODO: Add test once MNTOR-1700 logic is added
-              /* c8 ignore next */
               href="/"
             >
               {l10n.getString("high-risk-breach-skip")}
@@ -60,7 +56,7 @@ export function HighRiskBreachLayout({
       <ResolutionContent
         content={content}
         exposedData={exposedData}
-        locale={locale}
+        locale={getLocale(l10n)}
       />
     </ResolutionContainer>
   );

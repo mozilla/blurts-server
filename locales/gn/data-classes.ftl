@@ -79,7 +79,7 @@ job-titles = Nerenda mba’apohápe
 licence-plates = Ñe’ẽmboguapy
 living-costs = Tekove repy
 # This string refers to financial loans.
-loan-information = Ñemba’epuru marandu
+loan-information = Ñemba’eporu marandu
 login-histories = Tembiapo ñepyrũ rembiasakue
 mac-addresses = MAC kundaharape
 marital-statuses = Emendávapa
@@ -146,7 +146,7 @@ travel-habits = Jehokuévo ejapomeméva
 user-statuses = Poruhára rekotee
 user-website-urls = Poruhára ñanduti renda URLs
 usernames = Poruhára réra
-utility-bills = Mba’epurupyre kuatia
+utility-bills = Mba’eporupyre kuatia
 vehicle-details = Mba’yruguata mba’emimi
 vehicle-identification-numbers-vins = Papapy mba’yrumýi jekuaarã (VINs)
 website-activity = Ñanduti renda rembiapo
