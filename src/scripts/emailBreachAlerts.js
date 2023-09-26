@@ -236,7 +236,7 @@ async function pullMessages() {
   console.debug("polling pubsub...");
   const [response] = await subClient.pull({
     subscription: formattedSubscription,
-    maxMessages,
+    maxMessages
   });
 
   return [subClient, response.receivedMessages];
