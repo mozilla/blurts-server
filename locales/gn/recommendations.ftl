@@ -62,7 +62,7 @@ rec-ip-subhead-2 = Eiporu VPN emoñemi hag̃ua nde IP kundaharape
 rec-moz-vpn-cta = Eñe’ẽ { -brand-mozilla-vpn }
 rec-moz-vpn-update-2 =
     Ne kundaharape ñandutigua (IP kundaharape) ohechauka ne rendaite
-    ha ñanduti me’ẽha. Pe mba’epuru { -brand-mozilla-vpn } rehegua
+    ha ñanduti me’ẽha. Pe mba’eporu { -brand-mozilla-vpn } rehegua
     omoypytũ nde IP kundaharape oñomi hag̃ua ne rendaite.
 rec-hist-pw-subhead = Aníke eiporujo’a ñe’ẽñemi
 # Link title
@@ -77,7 +77,7 @@ rec-sec-qa =
 rec-phone-num-subhead = Aníke emoherakuã ne pumbyry papapy
 rec-phone-num =
     Ani eme’ẽ ne pumbyry papapy eñemboheraguapývo mba’ete
-    ipyahúvape térã mba’epururãme. Nereikotevẽiramo pumbyry papapy, anínte emoinge.
+    ipyahúvape térã mba’eporurãme. Nereikotevẽiramo pumbyry papapy, anínte emoinge.
 # Recommendation subhead
 rec-dob-subhead = Aníke eiporu nde jehegua PINs-pe
 rec-dob =
