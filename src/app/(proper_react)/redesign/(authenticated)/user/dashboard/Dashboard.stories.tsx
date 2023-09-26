@@ -22,7 +22,8 @@ const brokerOptions = {
   "emtpy-scan-in-progress": "Scan is in progress with no results",
   unresolved: "With unresolved scan results",
   "unresolved-scan-in-progress": "Scan is in progress with unresolved results",
-  resolved: "All scan results resolved",
+  resolved: "Some scan results resolved",
+  allResolved: "All scan results resolved",
 };
 const breachOptions = {
   empty: "No data breaches",
@@ -103,6 +104,11 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     createRandomScanResult({ status: "optout_in_progress" }),
   ];
 
+  const mockedAllResolvedScanResults: OnerepScanResultRow[] = [
+    createRandomScanResult({ status: "removed" }),
+    createRandomScanResult({ status: "removed" }),
+  ];
+
   const mockedUnresolvedScanResults: OnerepScanResultRow[] = [
     ...mockedResolvedScanResults,
     createRandomScanResult({ status: "new", manually_resolved: false }),
@@ -124,6 +130,9 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
       }
       if (props.brokers === "resolved") {
         scanData.results = mockedResolvedScanResults;
+      }
+      if (props.brokers === "allResolved") {
+        scanData.results = mockedAllResolvedScanResults;
       }
       if (props.brokers === "unresolved") {
         scanData.results = mockedUnresolvedScanResults;
@@ -322,7 +331,7 @@ export const DashboardUsNoPremiumResolvedScanResolvedBreaches: Story = {
     countryCode: "us",
     premium: false,
     breaches: "resolved",
-    brokers: "resolved",
+    brokers: "allResolved",
   },
 };
 
