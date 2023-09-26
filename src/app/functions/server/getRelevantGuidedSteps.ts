@@ -197,7 +197,8 @@ function hasCompleted(data: InputData, stepId: StepLink["id"]): boolean {
       Array.isArray(data.latestScanData?.results) &&
       !data.latestScanData.results.some((scanResult) => {
         return scanResult.status === "new" && !scanResult.manually_resolved;
-      })
+      }) &&
+      data.latestScanData?.scan?.onerep_scan_status === "finished"
     );
   }
 

@@ -5,6 +5,8 @@
 "use client";
 
 import { CSSProperties } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { useL10n } from "../../hooks/l10n";
 import styles from "./Chart.module.scss";
 import { QuestionMarkCircle } from "../server/Icons";
@@ -14,13 +16,11 @@ import { Button } from "../server/Button";
 import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import ModalImage from "../client/assets/modal-default-img.svg";
-import Image from "next/image";
-import Link from "next/link";
 
 export type Props = {
   data: Array<[string, number]>;
-  hasRunScan: boolean;
   isEligibleForFreeScan: boolean;
+  scanInProgress: boolean;
 };
 
 export const DoughnutChart = (props: Props) => {
@@ -100,14 +100,32 @@ export const DoughnutChart = (props: Props) => {
     </div>
   );
 
-  const prompt = (
-    <div className={styles.prompt}>
-      <p>{l10n.getString("exposure-chart-returning-user-upgrade-prompt")}</p>
-      <Link href="/redesign/user/welcome">
-        {l10n.getString("exposure-chart-returning-user-upgrade-prompt-cta")}
-      </Link>
-    </div>
-  );
+  const getPromptContent = () => {
+    if (!props.scanInProgress && props.isEligibleForFreeScan) {
+      return (
+        <>
+          <p>
+            {l10n.getString("exposure-chart-returning-user-upgrade-prompt")}
+          </p>
+          <Link href="/redesign/user/welcome">
+            {l10n.getString("exposure-chart-returning-user-upgrade-prompt-cta")}
+          </Link>
+        </>
+      );
+    }
+
+    if (props.scanInProgress) {
+      return (
+        <p>
+          {l10n.getFragment("exposure-chart-scan-in-progress-prompt", {
+            elems: { b: <strong /> },
+          })}
+        </p>
+      );
+    }
+  };
+
+  const promptContent = getPromptContent();
 
   return (
     <>
@@ -191,7 +209,9 @@ export const DoughnutChart = (props: Props) => {
                 ))}
               </tbody>
             </table>
-            {!props.hasRunScan && props.isEligibleForFreeScan && prompt}
+            {promptContent && (
+              <div className={styles.prompt}>{promptContent}</div>
+            )}
           </div>
         </div>
         <figcaption>
