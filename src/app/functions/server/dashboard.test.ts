@@ -1128,7 +1128,6 @@ it("get: scanned results only all fixed summary", () => {
   ];
   const testUserBreaches: SubscriberBreach[] = [];
   const summary = getDashboardSummary(testScannedResults, testUserBreaches);
-  console.log({ summary });
   expect(summary.dataBreachTotalNum).toBe(0);
   expect(summary.dataBreachTotalExposuresNum).toBe(0);
   expect(summary.dataBreachFixedExposuresNum).toBe(0);
