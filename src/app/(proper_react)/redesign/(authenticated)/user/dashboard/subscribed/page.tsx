@@ -54,7 +54,7 @@ export default async function Subscribed() {
       profileId,
       latestScan.scan.onerep_scan_id,
       scans,
-      "initial",
+      "manual",
       latestScan.scan.onerep_scan_status
     );
   }
