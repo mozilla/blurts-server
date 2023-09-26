@@ -82,8 +82,8 @@ const Content = (props: {
   if (props.isOnFixedTab) {
     return (
       <ProgressCard
-        resolvedByYou={props.bannerData.dataBreachFixedNum}
-        autoRemoved={props.bannerData.dataBrokerFixedNum}
+        resolvedByYou={props.bannerData.dataBreachFixedExposuresNum}
+        autoRemoved={props.bannerData.dataBrokerFixedExposuresNum}
         totalNumExposures={props.bannerData.totalExposures}
       />
     );
@@ -321,7 +321,7 @@ const Content = (props: {
           {
             remaining_exposures_total_num:
               props.bannerData.totalExposures -
-              props.bannerData.dataBrokerFixedNum,
+              props.bannerData.dataBrokerFixedExposuresNum,
           }
         )}
       </p>
