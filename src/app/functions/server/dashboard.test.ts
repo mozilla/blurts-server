@@ -1054,115 +1054,119 @@ const allResolvedBreaches: SubscriberBreach[] = [
     ],
   },
 ];
+describe("getExposureReduction", () => {
+  it("gets exposure reduction number", () => {
+    const testExposure = {
+      // shared
+      emailAddresses: 0,
+      phoneNumbers: 0,
 
-it("getExposureReduction: get exposure reduction number", () => {
-  const testExposure = {
-    // shared
-    emailAddresses: 0,
-    phoneNumbers: 0,
+      // data brokers
+      addresses: 0,
+      familyMembers: 0,
+      fullNames: 0,
 
-    // data brokers
-    addresses: 0,
-    familyMembers: 0,
-    fullNames: 0,
+      // data breaches
+      socialSecurityNumbers: 0,
+      ipAddresses: 0,
+      passwords: 0,
+      creditCardNumbers: 0,
+      pins: 0,
+      securityQuestions: 0,
+      bankAccountNumbers: 0,
+    };
+    const testSummary: DashboardSummary = {
+      dataBreachTotalNum: 10,
+      dataBreachTotalExposuresNum: 10,
+      dataBreachFixedExposuresNum: 10,
+      dataBrokerTotalNum: 10,
+      dataBrokerTotalExposuresNum: 10,
+      dataBrokerFixedExposuresNum: 10,
+      dataBrokerFixedNum: 10,
+      dataBrokerInProgressNum: 10,
+      totalExposures: 10,
+      allExposures: testExposure,
+      sanitizedExposures: [],
+      fixedExposures: testExposure,
+      fixedSanitizedExposures: [],
+    };
 
-    // data breaches
-    socialSecurityNumbers: 0,
-    ipAddresses: 0,
-    passwords: 0,
-    creditCardNumbers: 0,
-    pins: 0,
-    securityQuestions: 0,
-    bankAccountNumbers: 0,
-  };
-  const testSummary: DashboardSummary = {
-    dataBreachTotalNum: 10,
-    dataBreachTotalExposuresNum: 10,
-    dataBreachFixedExposuresNum: 10,
-    dataBrokerTotalNum: 10,
-    dataBrokerTotalExposuresNum: 10,
-    dataBrokerFixedNum: 10,
-    dataBrokerInProgressNum: 10,
-    totalExposures: 10,
-    allExposures: testExposure,
-    sanitizedExposures: [],
-    fixedExposures: testExposure,
-    fixedSanitizedExposures: [],
-  };
-
-  const exposureReduction = getExposureReduction(testSummary, []);
-  expect(exposureReduction).toBe(0);
+    const exposureReduction = getExposureReduction(testSummary, []);
+    expect(exposureReduction).toBe(0);
+  });
 });
 
-it("getDashboardSummary: get breaches only summary", () => {
-  const summary = getDashboardSummary([], unresolvedBreaches);
-  expect(summary.dataBreachTotalNum).toBe(3);
-  expect(summary.dataBreachFixedExposuresNum).toBe(0);
-  expect(summary.dataBrokerTotalNum).toBe(0);
-  expect(summary.dataBrokerTotalExposuresNum).toBe(0);
-  expect(summary.dataBrokerFixedNum).toBe(0);
-  expect(summary.totalExposures).toBe(summary.dataBreachTotalExposuresNum);
-});
+describe("getDashboardSummary", () => {
+  it("gets breaches only summary", () => {
+    const summary = getDashboardSummary([], unresolvedBreaches);
+    expect(summary.dataBreachTotalNum).toBe(3);
+    expect(summary.dataBreachFixedExposuresNum).toBe(0);
+    expect(summary.dataBrokerTotalNum).toBe(0);
+    expect(summary.dataBrokerTotalExposuresNum).toBe(0);
+    expect(summary.dataBrokerFixedNum).toBe(0);
+    expect(summary.totalExposures).toBe(summary.dataBreachTotalExposuresNum);
+  });
 
-it("getDashboardSummary: get breaches only all fixed summary", () => {
-  const summary = getDashboardSummary([], allResolvedBreaches);
-  expect(summary.dataBreachTotalNum).toBe(3);
-  expect(summary.dataBrokerTotalNum).toBe(0);
-  expect(summary.dataBrokerTotalExposuresNum).toBe(0);
-  expect(summary.dataBrokerFixedNum).toBe(0);
-  expect(summary.totalExposures).toBe(summary.dataBreachTotalExposuresNum);
-  expect(summary.totalExposures).toBe(summary.dataBreachFixedExposuresNum);
-});
+  it("gets breaches only all fixed summary", () => {
+    const summary = getDashboardSummary([], allResolvedBreaches);
+    expect(summary.dataBreachTotalNum).toBe(3);
+    expect(summary.dataBrokerTotalNum).toBe(0);
+    expect(summary.dataBrokerTotalExposuresNum).toBe(0);
+    expect(summary.dataBrokerFixedNum).toBe(0);
+    expect(summary.totalExposures).toBe(summary.dataBreachTotalExposuresNum);
+    expect(summary.totalExposures).toBe(summary.dataBreachFixedExposuresNum);
+  });
 
-it("getDashboardSummary: get scanned results only summary", () => {
-  const summary = getDashboardSummary(unresolvedScannedResults, []);
-  expect(summary.dataBreachTotalNum).toBe(0);
-  expect(summary.dataBreachTotalExposuresNum).toBe(0);
-  expect(summary.dataBreachFixedExposuresNum).toBe(0);
-  expect(summary.dataBrokerTotalNum).toBe(10);
-  expect(summary.dataBrokerFixedNum).toBe(0);
-  expect(summary.totalExposures).toBe(summary.dataBrokerTotalExposuresNum);
-});
+  it("gets scanned results only summary", () => {
+    const summary = getDashboardSummary(unresolvedScannedResults, []);
+    expect(summary.dataBreachTotalNum).toBe(0);
+    expect(summary.dataBreachTotalExposuresNum).toBe(0);
+    expect(summary.dataBreachFixedExposuresNum).toBe(0);
+    expect(summary.dataBrokerTotalNum).toBe(10);
+    expect(summary.dataBrokerFixedNum).toBe(0);
+    expect(summary.totalExposures).toBe(summary.dataBrokerTotalExposuresNum);
+  });
 
-it("getDashboardSummary: get scanned results only all fixed summary", () => {
-  const summary = getDashboardSummary(allResolvedScannedResults, []);
-  expect(summary.dataBreachTotalNum).toBe(0);
-  expect(summary.dataBreachTotalExposuresNum).toBe(0);
-  expect(summary.dataBreachFixedExposuresNum).toBe(0);
-  expect(summary.dataBrokerTotalNum).toBe(10);
-  expect(summary.totalExposures).toBe(summary.dataBrokerTotalExposuresNum);
-  expect(summary.dataBrokerFixedExposuresNum).toBe(
-    summary.dataBrokerTotalExposuresNum
-  );
-});
+  it("gets scanned results only all fixed summary", () => {
+    const summary = getDashboardSummary(allResolvedScannedResults, []);
+    expect(summary.dataBreachTotalNum).toBe(0);
+    expect(summary.dataBreachTotalExposuresNum).toBe(0);
+    expect(summary.dataBreachFixedExposuresNum).toBe(0);
+    expect(summary.dataBrokerTotalNum).toBe(10);
+    expect(summary.totalExposures).toBe(summary.dataBrokerTotalExposuresNum);
+    expect(summary.dataBrokerFixedExposuresNum).toBe(
+      summary.dataBrokerTotalExposuresNum
+    );
+  });
 
-it("getDashboardSummary: get mix scanned results & breaches summary", () => {
-  const summary = getDashboardSummary(
-    unresolvedScannedResults,
-    unresolvedBreaches
-  );
-  expect(summary.dataBreachTotalNum).toBe(3);
-  expect(summary.dataBreachTotalExposuresNum).toBe(8);
-  expect(summary.dataBreachFixedExposuresNum).toBe(0);
-  expect(summary.dataBrokerTotalNum).toBe(10);
-  expect(summary.dataBrokerTotalExposuresNum).toBe(130);
-  expect(summary.totalExposures).toBe(
-    summary.dataBrokerTotalExposuresNum + summary.dataBreachTotalExposuresNum
-  );
-});
+  it("gets mix scanned results & breaches summary", () => {
+    const summary = getDashboardSummary(
+      unresolvedScannedResults,
+      unresolvedBreaches
+    );
+    expect(summary.dataBreachTotalNum).toBe(3);
+    expect(summary.dataBreachTotalExposuresNum).toBe(8);
+    expect(summary.dataBreachFixedExposuresNum).toBe(0);
+    expect(summary.dataBrokerTotalNum).toBe(10);
+    expect(summary.dataBrokerTotalExposuresNum).toBe(130);
+    expect(summary.totalExposures).toBe(
+      summary.dataBrokerTotalExposuresNum + summary.dataBreachTotalExposuresNum
+    );
+  });
 
-it("getDashboardSummary: get mix scanned results & breaches all resolved summary", () => {
-  const summary = getDashboardSummary(
-    allResolvedScannedResults,
-    allResolvedBreaches
-  );
-  expect(summary.dataBreachTotalNum).toBe(3);
-  expect(summary.dataBreachTotalExposuresNum).toBe(8);
-  expect(summary.dataBreachFixedExposuresNum).toBe(8);
-  expect(summary.dataBrokerTotalNum).toBe(10);
-  expect(summary.dataBrokerTotalExposuresNum).toBe(130);
-  expect(summary.dataBrokerFixedExposuresNum).toBe(130);
-  expect(summary.totalExposures).toBe(
-    summary.dataBreachFixedExposuresNum + summary.dataBrokerFixedExposuresNum
-  );
+  it("gets mix scanned results & breaches all resolved summary", () => {
+    const summary = getDashboardSummary(
+      allResolvedScannedResults,
+      allResolvedBreaches
+    );
+    expect(summary.dataBreachTotalNum).toBe(3);
+    expect(summary.dataBreachTotalExposuresNum).toBe(8);
+    expect(summary.dataBreachFixedExposuresNum).toBe(8);
+    expect(summary.dataBrokerTotalNum).toBe(10);
+    expect(summary.dataBrokerTotalExposuresNum).toBe(130);
+    expect(summary.dataBrokerFixedExposuresNum).toBe(130);
+    expect(summary.totalExposures).toBe(
+      summary.dataBreachFixedExposuresNum + summary.dataBrokerFixedExposuresNum
+    );
+  });
 });
