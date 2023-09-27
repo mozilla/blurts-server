@@ -321,7 +321,8 @@ const Content = (props: {
           {
             remaining_exposures_total_num:
               props.bannerData.totalExposures -
-              props.bannerData.dataBrokerFixedNum,
+              props.bannerData.dataBrokerFixedExposuresNum -
+              props.bannerData.dataBreachFixedExposuresNum,
           }
         )}
       </p>
