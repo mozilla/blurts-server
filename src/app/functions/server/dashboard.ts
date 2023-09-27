@@ -31,13 +31,20 @@ type SanitizedExposures = Array<Record<string, number>>;
 export interface DashboardSummary {
   /** total number of user data breaches */
   dataBreachTotalNum: number;
-  dataBreachTotalExposuresNum: number; // total number of exposures from user breaches
-  dataBreachFixedExposuresNum: number; // total number of fixed exposures from user breaches
-  dataBrokerTotalNum: number; // total number of user data broker scans
-  dataBrokerTotalExposuresNum: number; // total number of exposures from user data broker scanned results
-  dataBrokerFixedNum: number; // total number of fixed scans from user data broker scanned results
-  dataBrokerFixedExposuresNum: number; // total number of fixed exposures from user data broker scanned results
-  dataBrokerInProgressNum: number; // total number of in-progress scans from user data broker scanned results
+  /** total number of exposures from user breaches */
+  dataBreachTotalExposuresNum: number;
+  /**total number of fixed exposures from user breaches */
+  dataBreachFixedExposuresNum: number;
+  /** total number of user data broker scans */
+  dataBrokerTotalNum: number;
+  /** total number of exposures from user data broker scanned results */
+  dataBrokerTotalExposuresNum: number;
+  /** total number of fixed scans from user data broker scanned results */
+  dataBrokerFixedNum: number;
+  /** total number of fixed exposures from user data broker scanned results */
+  dataBrokerFixedExposuresNum: number;
+  /** total number of in-progress scans from user data broker scanned results */
+  dataBrokerInProgressNum: number;
   totalExposures: number;
   allExposures: Exposures;
   sanitizedExposures: SanitizedExposures;
