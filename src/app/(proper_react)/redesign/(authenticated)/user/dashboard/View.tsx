@@ -50,7 +50,9 @@ export type TabType = "action-needed" | "fixed";
 
 export const View = (props: Props) => {
   const l10n = useL10n();
-  const { data: update } = useSession();
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { data: session, status, update } = useSession();
 
   const initialFilterState: FilterState = {
     exposureType: "show-all-exposure-type",
@@ -245,6 +247,7 @@ export const View = (props: Props) => {
     update()
       .then((res) => console.info(res))
       .catch((err) => console.error(err));
+    location.reload();
   }
 
   return (
