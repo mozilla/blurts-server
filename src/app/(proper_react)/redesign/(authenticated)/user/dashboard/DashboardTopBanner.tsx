@@ -12,27 +12,24 @@ import { DashboardSummary } from "../../../../../functions/server/dashboard";
 import PremiumButton from "../../../../../components/client/PremiumButton";
 import {
   InputData as StepDeterminationData,
+  StepLink,
   getRelevantGuidedSteps,
 } from "../../../../../functions/server/getRelevantGuidedSteps";
-import { hasPremium } from "../../../../../functions/universal/user";
-
-export type BannerContent =
-  | "ScanInProgressContent"
-  | "LetsFixDataContent"
-  | "DataBrokerScanUpsellContent"
-  | "NoExposuresFoundContent"
-  | "ResumeBreachResolutionContent"
-  | "YourDataIsProtectedContent"
-  | "YourDataIsProtectedAllFixedContent"
-  | "NoContent";
+import {
+  canSubscribeToPremium,
+  hasPremium,
+} from "../../../../../functions/universal/user";
 
 export type DashboardTopBannerProps = {
-  content: BannerContent;
   bannerData: DashboardSummary;
   stepDeterminationData: StepDeterminationData;
+  isPremiumUser: boolean;
+  isEligibleForPremium: boolean;
   isEligibleForFreeScan: boolean;
-  type: TabType;
   scanInProgress: boolean;
+  hasExposures: boolean;
+  hasUnresolvedExposures: boolean;
+  type: TabType;
   onShowFixed: () => void;
 };
 
@@ -57,6 +54,11 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
             isOnFixedTab={props.type === "fixed"}
             onShowFixed={props.onShowFixed}
             stepDeterminationData={props.stepDeterminationData}
+            isPremiumUser={props.isPremiumUser}
+            isEligibleForPremium={props.isEligibleForPremium}
+            isEligibleForFreeScan={props.isEligibleForFreeScan}
+            hasUnresolvedExposures={props.hasUnresolvedExposures}
+            hasExposures={props.hasExposures}
           />
         </div>
         <div className={styles.chart}>
@@ -71,10 +73,93 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   );
 };
 
+export type BannerContentType =
+  | "NoExposuresContent"
+  | "LetsFixContent"
+  | "ProtectedContent"
+  // | "FreeScanContent"
+  // | "ScanInProgressContent"
+  // | "ScanInProgressExposuresFoundContent"
+  // | "DataBrokerScanUpsellContent"
+  // | "NoExposuresFoundContent"
+  // | "ResumeBreachResolutionContent"
+  // | "YourDataIsProtectedContent"
+  // | "YourDataIsProtectedAllFixedContent"
+  | "NoContent";
+
+interface ContentProps {
+  stepId: StepLink["id"];
+  isPremiumUser: boolean;
+  isEligibleForPremium: boolean;
+  isEligibleForFreeScan: boolean;
+  hasExposures: boolean;
+  hasUnresolvedExposures: boolean;
+  scanInProgress: boolean;
+}
+
+const getContentType = ({
+  stepId,
+  isPremiumUser,
+  isEligibleForPremium,
+  isEligibleForFreeScan,
+  hasExposures,
+  hasUnresolvedExposures,
+  scanInProgress,
+}: ContentProps) => {
+  const contentType: BannerContentType = "NoContent";
+
+  // Free user that is not eligible for Premium (non-US user).
+  if (!isPremiumUser && !isEligibleForPremium) {
+    if (!hasExposures) {
+      return "NoExposuresContent";
+    }
+
+    if (hasUnresolvedExposures) {
+      return "LetsFixContent";
+    }
+
+    if (!hasUnresolvedExposures) {
+      return "ProtectedContent";
+    }
+  }
+
+  // User that has is eligible for Premium or already has Premium.
+
+  // User that has Premium eligible for a free broker scan.
+  if (isEligibleForFreeScan) {
+    //
+  }
+
+  // If the user hasn't run a data broker scan yet (and is able to),
+  // encourage them to run one.
+  if (stepId === "StartScan") {
+    // "StartScan"
+  }
+  // If the user has run a data broker scan, their data was found at a data
+  // broker, and they have not yet addressed that, encourage them to do that.
+  if (stepId === "ScanResult" && !scanInProgress) {
+    // "ScanResult"
+  }
+  // If the user has started a broker scan and it’s not finished yet.
+  if (stepId === "ScanResult" && scanInProgress) {
+    return "ScanInProgressContent";
+  }
+  if (stepId === "Done") {
+    // "Done"
+  }
+
+  return contentType;
+};
+
 const Content = (props: {
   stepDeterminationData: StepDeterminationData;
   bannerData: DashboardSummary;
   isOnFixedTab: boolean;
+  isPremiumUser: boolean;
+  isEligibleForPremium: boolean;
+  isEligibleForFreeScan: boolean;
+  hasExposures: boolean;
+  hasUnresolvedExposures: boolean;
   onShowFixed: () => void;
 }) => {
   const l10n = useL10n();
@@ -104,6 +189,33 @@ const Content = (props: {
   const dataBrokerCount = parseInt(
     process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
     10
+  );
+
+  const contentProps = {
+    stepId: relevantGuidedStep.id,
+    isPremiumUser: props.isPremiumUser,
+    isEligibleForPremium: props.isEligibleForPremium,
+    isEligibleForFreeScan: props.isEligibleForFreeScan,
+    scanInProgress:
+      relevantGuidedStep.id === "ScanResult" &&
+      props.stepDeterminationData.latestScanData?.scan?.onerep_scan_status ===
+        "in_progress",
+    hasExposures: props.hasExposures,
+    hasUnresolvedExposures: props.hasUnresolvedExposures,
+  };
+
+  return (
+    <pre>
+      {JSON.stringify(
+        {
+          stepId: relevantGuidedStep.id,
+          contentProps,
+          resultingContentType: getContentType(contentProps),
+        },
+        null,
+        2
+      )}
+    </pre>
   );
 
   if (relevantGuidedStep.id === "StartScan") {
@@ -142,11 +254,11 @@ const Content = (props: {
     );
   }
 
-  if (
+  const scanInProgress =
     relevantGuidedStep.id === "ScanResult" &&
     props.stepDeterminationData.latestScanData?.scan?.onerep_scan_status ===
-      "in_progress"
-  ) {
+      "in_progress";
+  if (scanInProgress) {
     // If the user has started a broker scan and it’s not finished yet.
     return (
       <div className={styles.explainerContent}>
@@ -286,24 +398,41 @@ const Content = (props: {
       );
     }
 
+    if (
+      canSubscribeToPremium({
+        user: props.stepDeterminationData.user,
+        countryCode: props.stepDeterminationData.countryCode,
+      })
+    ) {
+      return (
+        <div className={styles.explainerContent}>
+          <h3>
+            {l10n.getString(
+              "dashboard-top-banner-your-data-is-protected-title"
+            )}
+          </h3>
+          <p>
+            {l10n.getString(
+              "dashboard-top-banner-your-data-is-protected-all-fixed-description",
+              {
+                starting_exposure_total_num: props.bannerData.totalExposures,
+              }
+            )}
+          </p>
+          <div className={styles.cta}>
+            <PremiumButton
+              label={
+                "dashboard-top-banner-your-data-is-protected-all-fixed-cta"
+              }
+            />
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className={styles.explainerContent}>
-        <h3>
-          {l10n.getString("dashboard-top-banner-your-data-is-protected-title")}
-        </h3>
-        <p>
-          {l10n.getString(
-            "dashboard-top-banner-your-data-is-protected-all-fixed-description",
-            {
-              starting_exposure_total_num: props.bannerData.totalExposures,
-            }
-          )}
-        </p>
-        <div className={styles.cta}>
-          <PremiumButton
-            label={"dashboard-top-banner-your-data-is-protected-all-fixed-cta"}
-          />
-        </div>
+        <h3>Step: Done</h3>
       </div>
     );
   }

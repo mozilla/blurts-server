@@ -10,7 +10,7 @@ import { Session } from "next-auth";
 import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
-import { BannerContent, DashboardTopBanner } from "./DashboardTopBanner";
+import { DashboardTopBanner } from "./DashboardTopBanner";
 import { useL10n } from "../../../../../hooks/l10n";
 import {
   Exposure,
@@ -44,6 +44,7 @@ export type Props = {
   userBreaches: SubscriberBreach[];
   userScanData: LatestOnerepScanData;
   isEligibleForFreeScan: boolean;
+  isEligibleForPremium: boolean;
   countryCode: string;
 };
 
@@ -130,10 +131,8 @@ export const View = (props: Props) => {
     props.userScanData.results,
     props.userBreaches
   );
-  const isAllFixed =
-    dataSummary.dataBreachFixedNum === dataSummary.dataBreachTotalNum &&
-    dataSummary.dataBrokerFixedNum === dataSummary.dataBrokerTotalNum;
 
+  const hasExposures = combinedArray.length > 0;
   const hasUnresolvedExposures =
     getTabSpecificExposures("action-needed").length > 0;
   const hasFixedExposures = getTabSpecificExposures("fixed").length > 0;
@@ -184,39 +183,6 @@ export const View = (props: Props) => {
       </h2>
     </>
   );
-
-  let contentType: BannerContent = "NoContent";
-  if (
-    props.featureFlagsEnabled?.FreeBrokerScan &&
-    props.featureFlagsEnabled?.PremiumBrokerRemoval
-  ) {
-    if (isScanResultItemsEmpty && !scanInProgress) {
-      contentType = "DataBrokerScanUpsellContent";
-    } else if (isScanResultItemsEmpty && scanInProgress) {
-      contentType = "ScanInProgressContent";
-    } else if (
-      (!noUnresolvedExposures || !isAllFixed) &&
-      props.countryCode &&
-      props.countryCode.toLocaleLowerCase() === "us"
-    ) {
-      contentType = "LetsFixDataContent";
-    }
-  }
-
-  // MNTOR-1940: US user who is returning to the experience, free, and has resolved all their tasks
-  if (
-    props.countryCode &&
-    props.countryCode?.toLocaleLowerCase() === "us" &&
-    noUnresolvedExposures &&
-    !isScanResultItemsEmpty &&
-    !hasPremium(props.user) &&
-    // TODO: A bug causes `isAllFixed` to not be `true` when it should be:
-    // https://mozilla-hub.atlassian.net/browse/MNTOR-2192
-    /* c8 ignore next 4 */
-    isAllFixed
-  ) {
-    contentType = "YourDataIsProtectedAllFixedContent";
-  }
 
   const freeScanCta = isScanResultItemsEmpty && (
     <p>
@@ -291,6 +257,13 @@ export const View = (props: Props) => {
       </Toolbar>
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
+          type={selectedTab}
+          scanInProgress={scanInProgress}
+          isPremiumUser={hasPremium(props.user)}
+          isEligibleForPremium={props.isEligibleForPremium}
+          isEligibleForFreeScan={props.isEligibleForFreeScan}
+          hasExposures={hasExposures}
+          hasUnresolvedExposures={hasUnresolvedExposures}
           bannerData={getDashboardSummary(
             props.userScanData.results,
             props.userBreaches
@@ -301,10 +274,6 @@ export const View = (props: Props) => {
             subscriberBreaches: props.userBreaches,
             user: props.user,
           }}
-          content={contentType}
-          type={selectedTab }
-          scanInProgress={scanInProgress}
-          isEligibleForFreeScan={props.isEligibleForFreeScan}
           onShowFixed={() => {
             setSelectedTab("fixed");
           }}
