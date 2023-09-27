@@ -5,15 +5,11 @@ rec-ssn-cta = Be om kredittrapporter
 rec-ssn =
     Du får tre gratis kredittrapporter i året ved lov. 
     Å be om og gjennomgå dem påvirker ikke kreditten din. 
-    Se etter kontoer, lån eller kredittkort du ikke kjenner igjen.
+    Se etter kontoer, lån eller betalingskort du ikke kjenner igjen.
 # Recommendation subhead
 rec-pw-1-subhead = Endre passordet ditt
 # Link title
 rec-pw-1-cta = Endre passord for dette nettstedet
-rec-pw-1 =
-    Gjør dette passordet unikt og forskjellig fra alle de andre du bruker. 
-    En god strategi å følge er å kombinere to eller flere ubeslektede 
-    ord for å lage en hel passordfrase.
 # Recommendation subhead
 rec-pw-2-subhead = Oppdater andre innlogginger som bruker det samme passordet
 # Link title
@@ -57,23 +53,7 @@ rec-email =
     finn passordene dine eller følge deg på deg på nettet. En tjeneste som { -brand-relay }
     skjuler din virkelige e-postadresse mens du videresender e-post til den virkelige innboksen din.
 # Recommendation subhead
-rec-ip-subhead = Bruk en tjeneste som maskerer din IP-adresse
-# Link title
-rec-ip-us-cta = Prøv { -brand-fpn }
-rec-ip-us =
-    Din Internet Protocol-adresse (IP-adresse) kan si noe om hvor du befinner deg 
-    og din internettleverandør. En tjeneste som { -brand-fpn } 
-    maskerer IP-adressen din for å skjule plasseringen din.
-rec-ip-non-us =
-    Din Internet Protocol-adresse (IP-adresse) kan si noe om hvor du befinner deg 
-    og din internettleverandør. Med et virtuelt privat nettverk (VPN) kan du skjule posisjonen din
-    og maskere din IP-adresse.
-# Recommendation subhead
 rec-moz-vpn-cta = Prøv { -brand-mozilla-vpn }
-rec-moz-vpn-update =
-    Din Internet Protocol-adresse (IP-adresse) kan avsløre hvor du befinner deg 
-    og din internettleverandør. En tjeneste som { -brand-mozilla-vpn }
-    skjuler IP-adressen og plasseringen din for hele enheten.
 rec-hist-pw-subhead = Unngå å bruke passord på nytt
 # Link title
 rec-hist-pw-cta-fx = Se innlogginger i { -brand-name }
