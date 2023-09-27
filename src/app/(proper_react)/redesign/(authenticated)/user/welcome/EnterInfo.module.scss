@@ -85,6 +85,23 @@
   @media screen and (max-width: $screen-lg) {
     grid-template-columns: 1fr;
   }
+
+  input {
+    min-height: 3rem;
+
+    &::placeholder {
+      // overwrite default opacity for placeholders in Firefox
+      opacity: 1;
+    }
+  }
+
+  input[type="date"] {
+    // remove grey background and align date input value on iOS
+    background: transparent;
+    &::-webkit-date-and-time-value {
+      text-align: start;
+    }
+  }
 }
 
 .infoList {
