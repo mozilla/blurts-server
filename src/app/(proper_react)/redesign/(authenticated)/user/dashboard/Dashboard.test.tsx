@@ -165,7 +165,7 @@ it("opens and closes the premium upsell dialog via the Premium upsell button)", 
   render(<ComposedDashboard />);
 
   const premiumCta = screen.queryByRole("button", {
-    name: "Get Continuous Protection",
+    name: "Get continuous protection",
   });
   expect(premiumCta).toBeInTheDocument();
 
@@ -246,7 +246,7 @@ it("shows returned free user who has resolved all tasks premium upsell and all f
 
   // show banner CTA premium upgrade
   const bannerPremiumCta = screen.queryAllByRole("button", {
-    name: "Get Continuous Protection",
+    name: "Get continuous protection",
   });
   expect(bannerPremiumCta.length).toBe(1);
 
