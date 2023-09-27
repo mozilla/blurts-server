@@ -33,10 +33,10 @@
   }
 
   .fixSection {
-    position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: stretch;
     align-items: center;
+    gap: $spacing-md;
 
     @media screen and (min-width: $screen-md) {
       // Add horizontal padding to account for next/prev arrow placement on larger screens
@@ -47,29 +47,25 @@
       padding: $spacing-xl $spacing-lg $spacing-md $spacing-lg;
     }
 
-    .navArrowBack {
-      position: absolute;
-      left: 0;
-      appearance: none;
-      background-color: transparent;
-      border: 0;
-      cursor: pointer;
+    .navArrow {
+      flex: 0 0 auto;
       display: none;
-    }
+      align-items: center;
+      justify-content: center;
+      padding: $spacing-md;
+      border-radius: $border-radius-sm;
 
-    .navArrowNext {
-      position: absolute;
-      right: 0;
-      display: none;
-    }
-
-    .navArrowBack,
-    .navArrowNext {
-      margin-top: -50px; // Move up the arrows, since they're not perfectly vertically centered
+      &:hover {
+        background-color: $color-violet-20;
+      }
 
       @media screen and (min-width: $screen-md) {
-        display: block;
+        display: flex;
       }
+    }
+
+    .viewWrapper {
+      flex: 1 1 auto;
     }
   }
 }
