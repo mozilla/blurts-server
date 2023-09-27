@@ -92,8 +92,26 @@ export const authOptions: AuthOptions = {
   ],
   callbacks: {
     // Unused arguments also listed to show what's available:
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async jwt({ token, account, profile, trigger }) {
+      if (trigger === "update") {
+        // Update the FxA profile without requiring the user to log out and back in again.
+        if (!process.env.OAUTH_PROFILE_URI) {
+          throw new Error("env var not set OAUTH_PROFILE_URI");
+        }
+
+        const access_token = token.subscriber?.fxa_access_token;
+        if (!access_token) {
+          throw new Error("no access token");
+        }
+
+        const result = await fetch(process.env.OAUTH_PROFILE_URI, {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+          },
+        });
+
+        profile = await result.json();
+      }
       if (profile) {
         token.fxa = {
           locale: profile.locale,
