@@ -4,7 +4,7 @@
 
 "use client";
 
-import { Key, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Session } from "next-auth";
 import { OnerepScanResultRow } from "knex/types/tables";
@@ -32,7 +32,7 @@ import { LatestOnerepScanData } from "../../../../../../db/tables/onerep_scans";
 import { getLocale } from "../../../../../functions/universal/getLocale";
 
 import AllFixedIllustration from "./images/dashboard-all-fixed.svg";
-// import NoExposuresIllustration from "./images/dashboard-no-exposures.svg";
+import NoExposuresIllustration from "./images/dashboard-no-exposures.svg";
 import ScanProgressIllustration from "./images/scan-illustration.svg";
 
 export type Props = {
@@ -49,6 +49,11 @@ export type Props = {
 
 export type TabType = "action-needed" | "fixed";
 
+export type TabData = {
+  name: string;
+  key: TabType;
+};
+
 export const View = (props: Props) => {
   const l10n = useL10n();
 
@@ -57,8 +62,8 @@ export const View = (props: Props) => {
     dateFound: "show-all-date-found",
   };
   const [filters, setFilters] = useState<FilterState>(initialFilterState);
-  const [selectedTab, setSelectedTab] = useState<Key>("action-needed");
-  const tabsData = [
+  const [selectedTab, setSelectedTab] = useState<TabType>("action-needed");
+  const tabsData: TabData[] = [
     {
       name: l10n.getString("dashboard-tab-label-action-needed"),
       key: "action-needed",
@@ -68,7 +73,6 @@ export const View = (props: Props) => {
       key: "fixed",
     },
   ];
-  const isActionNeededTab = selectedTab === "action-needed";
   const breachesDataArray = props.userBreaches.flat();
   const scanInProgress =
     props.userScanData.scan?.onerep_scan_status === "in_progress";
@@ -91,16 +95,18 @@ export const View = (props: Props) => {
     return timestampB - timestampA;
   });
 
-  const tabSpecificExposures = arraySortedByDate.filter(
-    (exposure: Exposure) => {
+  const getTabSpecificExposures = (tabKey: TabType) =>
+    arraySortedByDate.filter((exposure: Exposure) => {
       const exposureStatus = getExposureStatus(exposure);
       return (
-        (isActionNeededTab && exposureStatus === "needAction") ||
-        (!isActionNeededTab && exposureStatus !== "needAction")
+        (tabKey === "action-needed" && exposureStatus === "needAction") ||
+        (tabKey === "fixed" && exposureStatus !== "needAction")
       );
-    }
+    });
+  const filteredExposures = filterExposures(
+    getTabSpecificExposures(selectedTab),
+    filters
   );
-  const filteredExposures = filterExposures(tabSpecificExposures, filters);
 
   const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
     return (
@@ -127,6 +133,10 @@ export const View = (props: Props) => {
   const isAllFixed =
     dataSummary.dataBreachFixedNum === dataSummary.dataBreachTotalNum &&
     dataSummary.dataBrokerFixedNum === dataSummary.dataBrokerTotalNum;
+
+  const hasUnresolvedExposures =
+    getTabSpecificExposures("action-needed").length > 0;
+  const hasFixedExposures = getTabSpecificExposures("fixed").length > 0;
 
   const TabContentActionNeeded = () => {
     const { dataBreachTotalNum, dataBrokerTotalNum, totalExposures } =
@@ -225,28 +235,46 @@ export const View = (props: Props) => {
   );
 
   const getZeroStateIndicator = () => {
-    // if () {
-    //   return (
-    //     <Image
-    //       src={NoExposuresIllustration}
-    //       alt=""
-    //     />
-    //   )
-    // }
+    let zeroStateIndicatorContent;
+
+    if (scanInProgress) {
+      zeroStateIndicatorContent = (
+        <>
+          <Image src={ScanProgressIllustration} alt="" />
+          <strong>
+            {l10n.getString("dashboard-exposures-scan-progress-label")}
+          </strong>
+          {freeScanCta}
+        </>
+      );
+    }
+
+    if (!hasUnresolvedExposures && !hasFixedExposures) {
+      zeroStateIndicatorContent = (
+        <>
+          <Image src={NoExposuresIllustration} alt="" />
+          <strong>{l10n.getString("dashboard-no-exposures-label")}</strong>
+        </>
+      );
+    }
+
+    if (!hasUnresolvedExposures && hasFixedExposures) {
+      zeroStateIndicatorContent = (
+        <>
+          <Image src={AllFixedIllustration} alt="" />
+          <strong>
+            {l10n.getString("dashboard-exposures-all-fixed-label")}
+          </strong>
+        </>
+      );
+    }
 
     return (
-      <div className={styles.zeroStateIndicator}>
-        <Image
-          src={scanInProgress ? ScanProgressIllustration : AllFixedIllustration}
-          alt=""
-        />
-        <strong>
-          {scanInProgress
-            ? l10n.getString("dashboard-exposures-scan-progress-label")
-            : l10n.getString("dashboard-exposures-all-fixed-label")}
-        </strong>
-        {!scanInProgress && freeScanCta}
-      </div>
+      zeroStateIndicatorContent && (
+        <div className={styles.zeroStateIndicator}>
+          {zeroStateIndicatorContent}
+        </div>
+      )
     );
   };
 
@@ -255,7 +283,9 @@ export const View = (props: Props) => {
       <Toolbar user={props.user}>
         <TabList
           tabs={tabsData}
-          onSelectionChange={(selectedKey) => setSelectedTab(selectedKey)}
+          onSelectionChange={(selectedKey) =>
+            setSelectedTab(selectedKey as TabType)
+          }
           selectedKey={selectedTab}
         />
       </Toolbar>
@@ -272,7 +302,7 @@ export const View = (props: Props) => {
             user: props.user,
           }}
           content={contentType}
-          type={selectedTab as TabType}
+          type={selectedTab }
           scanInProgress={scanInProgress}
           isEligibleForFreeScan={props.isEligibleForFreeScan}
           onShowFixed={() => {
@@ -280,7 +310,11 @@ export const View = (props: Props) => {
           }}
         />
         <section className={styles.exposuresArea}>
-          {isActionNeededTab ? <TabContentActionNeeded /> : <TabContentFixed />}
+          {selectedTab === "action-needed" ? (
+            <TabContentActionNeeded />
+          ) : (
+            <TabContentFixed />
+          )}
         </section>
         <div className={styles.exposuresFilterWrapper}>
           <ExposuresFilter
