@@ -9,8 +9,6 @@ import Image from "next/image";
 import { Session } from "next-auth";
 import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./View.module.scss";
-import AllFixedLogo from "./images/dashboard-all-fixed.svg";
-import ScanProgressIllustration from "./images/scan-illustration.svg";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import { BannerContent, DashboardTopBanner } from "./DashboardTopBanner";
 import { useL10n } from "../../../../../hooks/l10n";
@@ -32,6 +30,10 @@ import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 import { hasPremium } from "../../../../../functions/universal/user";
 import { LatestOnerepScanData } from "../../../../../../db/tables/onerep_scans";
 import { getLocale } from "../../../../../functions/universal/getLocale";
+
+import AllFixedIllustration from "./images/dashboard-all-fixed.svg";
+// import NoExposuresIllustration from "./images/dashboard-no-exposures.svg";
+import ScanProgressIllustration from "./images/scan-illustration.svg";
 
 export type Props = {
   featureFlagsEnabled: Pick<
@@ -223,10 +225,19 @@ export const View = (props: Props) => {
   );
 
   const getZeroStateIndicator = () => {
+    // if () {
+    //   return (
+    //     <Image
+    //       src={NoExposuresIllustration}
+    //       alt=""
+    //     />
+    //   )
+    // }
+
     return (
       <div className={styles.zeroStateIndicator}>
         <Image
-          src={scanInProgress ? ScanProgressIllustration : AllFixedLogo}
+          src={scanInProgress ? ScanProgressIllustration : AllFixedIllustration}
           alt=""
         />
         <strong>
