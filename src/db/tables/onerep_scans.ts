@@ -89,12 +89,8 @@ async function addOnerepScanResults(
           created_at: knex.fn.now(),
         })
         .onConflict("onerep_scan_id")
-        .ignore()
-        .where("onerep_scan_id", onerepScanId)
-        .update({
+        .merge({
           onerep_scan_status: onerepScanStatus,
-          // @ts-ignore knex.fn.now() results in it being set to a date,
-          // even if it's not typed as a JS date object:
           updated_at: knex.fn.now(),
         });
     }
