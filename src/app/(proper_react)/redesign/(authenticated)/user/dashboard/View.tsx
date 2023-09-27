@@ -32,7 +32,6 @@ import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 import { hasPremium } from "../../../../../functions/universal/user";
 import { LatestOnerepScanData } from "../../../../../../db/tables/onerep_scans";
 import { getLocale } from "../../../../../functions/universal/getLocale";
-import { useSession } from "next-auth/react";
 
 export type Props = {
   featureFlagsEnabled: Pick<
@@ -50,9 +49,6 @@ export type TabType = "action-needed" | "fixed";
 
 export const View = (props: Props) => {
   const l10n = useL10n();
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { data: session, status, update } = useSession();
 
   const initialFilterState: FilterState = {
     exposureType: "show-all-exposure-type",
@@ -243,13 +239,6 @@ export const View = (props: Props) => {
     );
   };
 
-  function updateSession() {
-    update()
-      .then((res) => console.info(res))
-      .catch((err) => console.error(err));
-    location.reload();
-  }
-
   return (
     <div className={styles.wrapper}>
       <Toolbar user={props.user}>
@@ -295,7 +284,6 @@ export const View = (props: Props) => {
           <ul className={styles.exposureList}>{exposureCardElems}</ul>
         )}
       </div>
-      <button onClick={() => updateSession()}>Update session</button>
     </div>
   );
 };
