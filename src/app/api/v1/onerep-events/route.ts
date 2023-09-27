@@ -7,10 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { captureException } from "@sentry/node";
 import crypto from "crypto";
 
-import {
-  addOnerepScanResults,
-  updateOnerepScanStatus,
-} from "../../../../db/tables/onerep_scans";
+import { addOnerepScanResults } from "../../../../db/tables/onerep_scans";
 import { getAllScanResults, Scan } from "../../../functions/server/onerep";
 
 interface OnerepWebhookRequest {
@@ -83,8 +80,6 @@ export async function POST(req: NextRequest) {
     const scanId = result.data.object.id;
     const reason = result.data.object.reason;
 
-    // Update the status of the latest scan
-    await updateOnerepScanStatus(scanId, result.data.object.status);
     // The webhook just tells us which scan ID finished, we need to fetch the payload.
     const scanListFull = await getAllScanResults(profileId);
     // Store full list of results in the DB.

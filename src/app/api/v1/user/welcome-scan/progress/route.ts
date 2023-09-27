@@ -15,7 +15,6 @@ import {
 import {
   getLatestOnerepScanResults,
   addOnerepScanResults,
-  updateOnerepScanStatus,
 } from "../../../../../../db/tables/onerep_scans";
 import {
   ListScanResultsResponse,
@@ -57,15 +56,12 @@ export async function GET(
             process.env.NODE_ENV === "development") ||
           process.env.APP_ENV === "heroku"
         ) {
-          // Update the status of the latest scan
-          await updateOnerepScanStatus(scan.id, scan.status);
-
           const allScanResults = await getAllScanResults(profileId);
           await addOnerepScanResults(
             profileId,
             scan.id,
             allScanResults,
-            "manual",
+            "initial",
             scan.status
           );
         }
