@@ -99,7 +99,7 @@
     // remove grey background and align date input value on iOS
     background: transparent;
     &::-webkit-date-and-time-value {
-      text-align: left;
+      text-align: start;
     }
   }
 }
