@@ -62,18 +62,6 @@ async function setOnerepManualScan(
   });
 }
 
-async function updateOnerepScanStatus(
-  onerepScanId: number,
-  onerepScanStatus: Scan["status"]
-) {
-  await knex("onerep_scans").where("onerep_scan_id", onerepScanId).update({
-    onerep_scan_status: onerepScanStatus,
-    // @ts-ignore knex.fn.now() results in it being set to a date,
-    // even if it's not typed as a JS date object:
-    updated_at: knex.fn.now(),
-  });
-}
-
 async function addOnerepScanResults(
   onerepProfileId: number,
   onerepScanId: number,
@@ -88,16 +76,27 @@ async function addOnerepScanResults(
         .delete()
         .where("onerep_scan_id", onerepScanId);
     } else {
-      // Initial and Monitoring scans always create a new scan:
-      await transaction("onerep_scans").insert({
-        onerep_profile_id: onerepProfileId,
-        onerep_scan_id: onerepScanId,
-        onerep_scan_reason: onerepScanReason,
-        onerep_scan_status: onerepScanStatus,
-        // @ts-ignore knex.fn.now() results in it being set to a date,
-        // even if it's not typed as a JS date object:
-        created_at: knex.fn.now(),
-      });
+      // Initial and Monitoring scans create a new scan if they don’t
+      // exist already. Existing scans get their status updated.
+      await transaction("onerep_scans")
+        .insert({
+          onerep_profile_id: onerepProfileId,
+          onerep_scan_id: onerepScanId,
+          onerep_scan_reason: onerepScanReason,
+          onerep_scan_status: onerepScanStatus,
+          // @ts-ignore knex.fn.now() results in it being set to a date,
+          // even if it's not typed as a JS date object:
+          created_at: knex.fn.now(),
+        })
+        .onConflict("onerep_scan_id")
+        .ignore()
+        .where("onerep_scan_id", onerepScanId)
+        .update({
+          onerep_scan_status: onerepScanStatus,
+          // @ts-ignore knex.fn.now() results in it being set to a date,
+          // even if it's not typed as a JS date object:
+          updated_at: knex.fn.now(),
+        });
     }
 
     await transaction("onerep_scan_results").insert(
@@ -177,7 +176,6 @@ export {
   getLatestOnerepScanResults,
   setOnerepProfileId,
   setOnerepManualScan,
-  updateOnerepScanStatus,
   addOnerepScanResults,
   getScansCount,
   isOnerepScanResultForSubscriber,
