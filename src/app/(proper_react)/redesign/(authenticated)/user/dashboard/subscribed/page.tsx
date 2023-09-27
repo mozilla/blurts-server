@@ -2,76 +2,45 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getServerSession } from "next-auth";
-import { getOnerepProfileId } from "../../../../../../../db/tables/subscribers";
-import { authOptions } from "../../../../../../api/utils/auth";
-import {
-  activateProfile,
-  getAllScanResults,
-  isEligibleForPremium,
-  optoutProfile,
-} from "../../../../../../functions/server/onerep";
-import {
-  getLatestOnerepScanResults,
-  addOnerepScanResults,
-} from "../../../../../../../db/tables/onerep_scans";
-import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
-import { headers } from "next/headers";
+"use client";
 
-export default async function Subscribed() {
-  const session = await getServerSession(authOptions);
-  if (!session?.user?.subscriber) {
-    throw new Error("No session");
-  }
+import { useSession } from "next-auth/react";
+import { useEffect } from "react";
+import { hasPremium } from "../../../../../../functions/universal/user";
+import { captureException } from "@sentry/browser";
 
-  if (!(await isEligibleForPremium(session.user, getCountryCode(headers())))) {
-    throw new Error("Not eligible for premium");
-  }
+/**
+ * Client-side page to update session info.
+ *
+ * Next-Auth does not have a simple way to do this purely from the client-side, so we
+ * use this page to check and redirect appropriately.
+ *
+ * NOTE: this does not replace doing server-side `hasPremium` checks! This is just
+ * a convenience so users do not need to sign out and back in to refresh their session
+ * after subscribing.
+ */
+export default function Subscribed() {
+  const { update } = useSession();
 
-  const result = await getOnerepProfileId(session.user.subscriber.id);
-  const profileId = result[0]["onerep_profile_id"] as number;
+  useEffect(() => {
+    async function updateSession() {
+      // You can await here
+      try {
+        const result = await update();
+        if (hasPremium(result?.user)) {
+          window.location.href =
+            "http://localhost:6060/redesign/user/dashboard/fix/data-broker-profiles/welcome-to-premium";
+        }
+      } catch (ex) {
+        console.error(ex);
+        captureException(ex);
+      }
+      window.location.href = "/";
+    }
+    void updateSession();
+    // We only want to run this a single time - the page should not be re-rendered.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  try {
-    await activateProfile(profileId);
-    await optoutProfile(profileId);
-  } catch (ex) {
-    console.debug(ex); // TODO handle
-  }
-
-  const dev =
-    process.env.NODE_ENV === "development" || process.env.APP_ENV === "heroku";
-  const latestScan = await getLatestOnerepScanResults(profileId);
-  if (!latestScan.scan) {
-    throw new Error("Must have performed manual scan");
-  }
-
-  const scans = await getAllScanResults(profileId);
-
-  // In dev mode, record scans every time this page is reloaded.
-  // The webhoook does this in production.
-  if (dev) {
-    await addOnerepScanResults(
-      profileId,
-      latestScan.scan.onerep_scan_id,
-      scans,
-      "initial"
-    );
-  }
-
-  return (
-    <div>
-      <div>
-        <h3>You are now subscribed</h3>
-        {dev ? (
-          <div>
-            <h3>Dev mode enabled</h3>
-            <p>Reload this page to update scan</p>
-            <pre>{JSON.stringify(scans, null, 2)}</pre>
-          </div>
-        ) : (
-          ""
-        )}
-      </div>
-    </div>
-  );
+  return <div>Please wait...</div>;
 }
