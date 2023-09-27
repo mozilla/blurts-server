@@ -15,8 +15,7 @@ import {
   getExposureReduction,
 } from "../../../../../../../../functions/server/dashboard";
 import { SubscriberBreach } from "../../../../../../../../../utils/subscriberBreaches";
-import { ExposureCard } from "../../../../../../../../components/client/ExposureCard";
-import { getLocale } from "../../../../../../../../functions/universal/getLocale";
+import { RemovalCard } from "./RemovalCard";
 
 export type Props = {
   scanData: LatestOnerepScanData;
@@ -25,7 +24,6 @@ export type Props = {
 
 export function ManualRemoveView(props: Props) {
   const l10n = getL10n();
-  const locale = getLocale(l10n);
 
   const summary = getDashboardSummary(props.scanData.results, props.breaches);
 
@@ -102,13 +100,12 @@ export function ManualRemoveView(props: Props) {
           )}
         </h3>
         <div className={styles.exposureList}>
-          {props.scanData.results.map((scanResult) => {
+          {props.scanData.results.map((scanResult, index) => {
             return (
-              <ExposureCard
+              <RemovalCard
                 key={scanResult.onerep_scan_result_id}
-                exposureData={scanResult}
-                isPremiumBrokerRemovalEnabled={true}
-                locale={locale}
+                scanResult={scanResult}
+                isExpanded={index === 0}
               />
             );
           })}

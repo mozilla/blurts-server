@@ -4,7 +4,7 @@
 
 "use client";
 
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import Link from "next/link";
 import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./ExposureCard.module.scss";
@@ -20,7 +20,6 @@ import {
   PhoneIcon,
   QuestionMarkCircle,
 } from "../server/Icons";
-import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
 import {
   DataClassEffected,
@@ -41,6 +40,8 @@ export type ExposureCardProps = {
   exposureData: Exposure;
   locale: string;
   isPremiumBrokerRemovalEnabled: boolean;
+  resolutionCta: ReactNode;
+  isExpanded?: boolean;
 };
 
 export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
@@ -56,21 +57,18 @@ export type ScanResultCardProps = {
   scanResult: OnerepScanResultRow;
   locale: string;
   isPremiumBrokerRemovalEnabled: boolean;
+  resolutionCta: ReactNode;
+  isExpanded?: boolean;
 };
 const ScanResultCard = (props: ScanResultCardProps) => {
   const { exposureImg, scanResult, locale, isPremiumBrokerRemovalEnabled } =
     props;
 
   const l10n = useL10n();
-  const [exposureCardExpanded, setExposureCardExpanded] = useState(false);
-
-  const letsFixItBtn = (
-    <span className={styles.fixItBtn}>
-      <Button variant="primary" wide>
-        {l10n.getString("exposure-card-cta")}
-      </Button>
-    </span>
+  const [exposureCardExpanded, setExposureCardExpanded] = useState(
+    props.isExpanded ?? false
   );
+
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
@@ -253,9 +251,10 @@ const ScanResultCard = (props: ScanResultCardProps) => {
                 ))}
               </div>
             </div>
-            {isPremiumBrokerRemovalEnabled && props.scanResult.status === "new"
-              ? letsFixItBtn
-              : null}
+            {isPremiumBrokerRemovalEnabled &&
+            props.scanResult.status === "new" ? (
+              <span className={styles.fixItBtn}>{props.resolutionCta}</span>
+            ) : null}
           </div>
         </div>
       </div>
@@ -269,12 +268,16 @@ export type SubscriberBreachCardProps = {
   exposureImg?: StaticImageData;
   subscriberBreach: SubscriberBreach;
   locale: string;
+  resolutionCta: ReactNode;
+  isExpanded?: boolean;
 };
 const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
   const { exposureImg, subscriberBreach, locale } = props;
 
   const l10n = useL10n();
-  const [exposureCardExpanded, setExposureCardExpanded] = useState(false);
+  const [exposureCardExpanded, setExposureCardExpanded] = useState(
+    props.isExpanded ?? false
+  );
 
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
@@ -336,14 +339,6 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
       );
     }
   });
-
-  const letsFixItBtn = (
-    <span className={styles.fixItBtn}>
-      <Button variant="primary" wide>
-        {l10n.getString("exposure-card-cta")}
-      </Button>
-    </span>
-  );
 
   const exposureCard = (
     <div>
@@ -470,7 +465,9 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
             {
               // TODO: Add unit test when changing this code:
               /* c8 ignore next */
-              !props.subscriberBreach.isResolved ? letsFixItBtn : null
+              !props.subscriberBreach.isResolved ? (
+                <span className={styles.fixItBtn}>{props.resolutionCta}</span>
+              ) : null
             }
           </div>
         </div>
