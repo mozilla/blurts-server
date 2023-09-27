@@ -312,6 +312,9 @@ false-door-test-popup-close = Close
 false-door-test-phase-2-content-part-one = Did you know there are sites selling your private info?
 false-door-test-phase-2-content-part-two = Automatically remove data from sketchy sites.
 false-door-test-phase-2-content-part-two-dashboard = Automatically remove data from broker sites. 
+false-door-test-phase-3-content-part-one = Did you know there are sites selling your private info?
+false-door-test-phase-3-content-part-two = Automatically remove data from sketchy sites with { -product-short-name }.
+false-door-test-phase-3-content-part-two-dashboard = Automatically remove data from broker sites with { -product-short-name }.
 
 # Premium upsell dialog
 

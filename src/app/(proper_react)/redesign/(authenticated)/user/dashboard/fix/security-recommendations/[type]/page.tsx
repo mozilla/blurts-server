@@ -10,10 +10,7 @@ import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
-import {
-  getL10n,
-  getLocale,
-} from "../../../../../../../../functions/server/l10n";
+import { getL10n } from "../../../../../../../../functions/server/l10n";
 
 interface SecurityRecommendationsProps {
   params: {
@@ -25,7 +22,6 @@ export default async function SecurityRecommendations({
   params,
 }: SecurityRecommendationsProps) {
   const session = await getServerSession(authOptions);
-  const locale = getLocale();
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
@@ -51,7 +47,6 @@ export default async function SecurityRecommendations({
     <SecurityRecommendationsLayout
       label={l10n.getString("security-recommendation-steps-label")}
       pageData={pageData}
-      locale={locale}
     />
   );
 }
