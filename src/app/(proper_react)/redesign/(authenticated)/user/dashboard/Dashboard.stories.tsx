@@ -22,8 +22,8 @@ const brokerOptions = {
   "emtpy-scan-in-progress": "Scan is in progress with no results",
   unresolved: "With unresolved scan results",
   "unresolved-scan-in-progress": "Scan is in progress with unresolved results",
-  resolved: "Some scan results resolved",
-  allResolved: "All scan results resolved",
+  inProgress: "Scan in progres with resolved results",
+  resolved: "All scan results resolved",
 };
 const breachOptions = {
   empty: "No data breaches",
@@ -98,7 +98,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     onerep_scan_status: "in_progress",
   };
 
-  const mockedResolvedScanResults: OnerepScanResultRow[] = [
+  const mockedInProgressScanResults: OnerepScanResultRow[] = [
     createRandomScanResult({ status: "removed" }),
     createRandomScanResult({ status: "waiting_for_verification" }),
     createRandomScanResult({ status: "optout_in_progress" }),
@@ -110,7 +110,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   ];
 
   const mockedUnresolvedScanResults: OnerepScanResultRow[] = [
-    ...mockedResolvedScanResults,
+    ...mockedInProgressScanResults,
     createRandomScanResult({ status: "new", manually_resolved: false }),
     createRandomScanResult({ status: "new", manually_resolved: true }),
   ];
@@ -128,10 +128,10 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
       if (props.brokers === "unresolved-scan-in-progress") {
         scanData.results = mockedUnresolvedScanResults;
       }
-      if (props.brokers === "resolved") {
-        scanData.results = mockedResolvedScanResults;
+      if (props.brokers === "inProgress") {
+        scanData.results = mockedInProgressScanResults;
       }
-      if (props.brokers === "allResolved") {
+      if (props.brokers === "resolved") {
         scanData.results = mockedAllResolvedScanResults;
       }
       if (props.brokers === "unresolved") {
@@ -311,7 +311,7 @@ export const DashboardUsNoPremiumResolvedScanNoBreaches: Story = {
     countryCode: "us",
     premium: false,
     breaches: "empty",
-    brokers: "resolved",
+    brokers: "inProgress",
   },
 };
 
@@ -321,7 +321,7 @@ export const DashboardUsNoPremiumResolvedScanUnresolvedBreaches: Story = {
     countryCode: "us",
     premium: false,
     breaches: "unresolved",
-    brokers: "resolved",
+    brokers: "inProgress",
   },
 };
 
@@ -331,7 +331,7 @@ export const DashboardUsNoPremiumResolvedScanResolvedBreaches: Story = {
     countryCode: "us",
     premium: false,
     breaches: "resolved",
-    brokers: "allResolved",
+    brokers: "resolved",
   },
 };
 
@@ -431,7 +431,7 @@ export const DashboardUsPremiumResolvedScanNoBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "empty",
-    brokers: "resolved",
+    brokers: "inProgress",
   },
 };
 
@@ -441,7 +441,7 @@ export const DashboardUsPremiumResolvedScanUnresolvedBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "unresolved",
-    brokers: "resolved",
+    brokers: "inProgress",
   },
 };
 
@@ -451,7 +451,7 @@ export const DashboardUsPremiumResolvedScanResolvedBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "resolved",
-    brokers: "resolved",
+    brokers: "inProgress",
   },
 };
 
