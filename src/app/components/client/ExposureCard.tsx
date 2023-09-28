@@ -4,7 +4,7 @@
 
 "use client";
 
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import Link from "next/link";
 import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./ExposureCard.module.scss";
@@ -45,15 +45,44 @@ export type ExposureCardProps = {
 };
 
 export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
-  return isScanResult(exposureData) ? (
-    <ScanResultCard {...props} scanResult={exposureData} />
-  ) : (
-    <SubscriberBreachCard {...props} subscriberBreach={exposureData} />
-  );
+  const [dataBrokerImage, setDataBrokerImage] = useState<ReactNode>();
+
+  useEffect(() => {
+    const loadDataBrokerImage = async () => {
+      if (isScanResult(exposureData)) {
+        const cleanedName = exposureData.data_broker.split(".")[0];
+        try {
+          const logo = await import(
+            `../client/assets/data-brokers/${cleanedName}.jpg`
+          );
+          setDataBrokerImage(<Image src={logo.default} alt="" />);
+        } catch (error) {
+          console.error("Error loading image:", error);
+          setDataBrokerImage(<FallbackLogo name={cleanedName} />);
+        }
+      }
+    };
+
+    loadDataBrokerImage().catch((error) => {
+      console.error("Error loading image:", error);
+    });
+  }, [exposureData]);
+
+  if (isScanResult(exposureData)) {
+    return (
+      <ScanResultCard
+        {...props}
+        scanResult={exposureData}
+        exposureImg={<>{dataBrokerImage}</>}
+      />
+    );
+  } else {
+    return <SubscriberBreachCard {...props} subscriberBreach={exposureData} />;
+  }
 };
 
 export type ScanResultCardProps = {
-  exposureImg?: StaticImageData;
+  exposureImg?: ReactNode;
   scanResult: OnerepScanResultRow;
   locale: string;
   isPremiumBrokerRemovalEnabled: boolean;
@@ -149,15 +178,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
               {
                 // TODO: Add unit test when changing this code:
                 /* c8 ignore next 7 */
-                exposureImg ? (
-                  <Image
-                    className={styles.exposureImage}
-                    alt=""
-                    src={exposureImg}
-                  />
-                ) : (
-                  <FallbackLogo name={scanResult.data_broker} />
-                )
+                exposureImg ?? <FallbackLogo name={scanResult.data_broker} />
               }
             </dd>
             <dt className={styles.visuallyHidden}>
