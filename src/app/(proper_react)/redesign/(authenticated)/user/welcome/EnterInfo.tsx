@@ -24,6 +24,7 @@ import {
   WelcomeScanBody,
 } from "../../../../../api/v1/user/welcome-scan/create/route";
 import { meetsAgeRequirement } from "../../../../../functions/universal/user";
+import { getLocale } from "../../../../../functions/universal/getLocale";
 
 import styles from "./EnterInfo.module.scss";
 
@@ -128,7 +129,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       type: "date",
       placeholder: "",
       value: dateOfBirth,
-      displayValue: new Date(dateOfBirth).toLocaleDateString("en-US", {
+      displayValue: new Date(dateOfBirth).toLocaleDateString(getLocale(l10n), {
         dateStyle: "medium",
         timeZone: "UTC",
       }),
@@ -235,9 +236,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         <div className={styles.confirmButtonWrapper}>
           <Button
             variant="primary"
-            // TODO: Add unit test when changing this code:
-            /* c8 ignore next */
-            onClick={() => explainerDialogState.close()}
+            onPress={() => explainerDialogState.close()}
             autoFocus={true}
             className={styles.startButton}
           >
@@ -270,9 +269,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       <div className={styles.stepButtonWrapper}>
         <Button
           variant="secondary"
-          // TODO: Add unit test when changing this code:
-          /* c8 ignore next */
-          onClick={() => confirmDialogState.close()}
+          onPress={() => confirmDialogState.close()}
           className={styles.startButton}
         >
           {l10n.getString(
@@ -281,9 +278,9 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         </Button>
         <Button
           variant="primary"
-          // TODO: Add unit test when changing this code:
+          // TODO: Figure out how to intercept the fetch request in a test:
           /* c8 ignore next */
-          onClick={() => handleRequestScan()}
+          onPress={() => handleRequestScan()}
           autoFocus={true}
           className={styles.startButton}
           isLoading={requestingScan}
@@ -365,9 +362,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         <div className={styles.stepButtonWrapper}>
           <Button
             variant="secondary"
-            // TODO: Add unit test when changing this code:
-            /* c8 ignore next */
-            onClick={() => onGoBack()}
+            onPress={() => onGoBack()}
             className={styles.startButton}
             type="button"
           >

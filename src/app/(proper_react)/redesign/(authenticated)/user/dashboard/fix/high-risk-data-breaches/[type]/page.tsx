@@ -9,7 +9,6 @@ import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
-import { getLocale } from "../../../../../../../../functions/server/l10n";
 import { getHighRiskBreachesByType } from "../highRiskBreachData";
 
 interface SecurityRecommendationsProps {
@@ -22,7 +21,6 @@ export default async function SecurityRecommendations({
   params,
 }: SecurityRecommendationsProps) {
   const session = await getServerSession(authOptions);
-  const locale = getLocale();
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
@@ -37,12 +35,11 @@ export default async function SecurityRecommendations({
   const pageData = getHighRiskBreachesByType({
     dataType: type,
     breaches: guidedExperienceBreaches,
-    locale,
   });
 
   if (!pageData) {
     redirect("/redesign/user/dashboard");
   }
 
-  return <HighRiskBreachLayout pageData={pageData} locale={locale} />;
+  return <HighRiskBreachLayout pageData={pageData} />;
 }

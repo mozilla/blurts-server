@@ -7,10 +7,8 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { View } from "./View";
 import { authOptions } from "../../../../../api/utils/auth";
-import { dashboardSummary } from "../../../../../functions/server/dashboard";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../functions/server/getUserBreaches";
-import { getLocale } from "../../../../../functions/server/l10n";
 import { canSubscribeToPremium } from "../../../../../functions/universal/user";
 import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
@@ -37,8 +35,6 @@ export default async function DashboardPage() {
 
   const latestScan = await getLatestOnerepScanResults(profileId);
   const subBreaches = await getSubscriberBreaches(session.user);
-  const summary = dashboardSummary(latestScan.results, subBreaches);
-  const locale = getLocale();
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(
     session.user,
@@ -51,21 +47,15 @@ export default async function DashboardPage() {
     session.user
   );
   const featureFlagsEnabled = { FreeBrokerScan, PremiumBrokerRemoval };
-  const isAllFixed =
-    summary.dataBreachFixedNum === summary.dataBreachTotalNum &&
-    summary.dataBrokerFixedNum === summary.dataBrokerTotalNum;
 
   return (
     <View
       countryCode={countryCode}
       user={session.user}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
-      userScannedResults={latestScan.results}
+      userScanData={latestScan}
       userBreaches={subBreaches}
-      locale={locale}
-      bannerData={summary}
       featureFlagsEnabled={featureFlagsEnabled}
-      isAllFixed={isAllFixed}
     />
   );
 }
