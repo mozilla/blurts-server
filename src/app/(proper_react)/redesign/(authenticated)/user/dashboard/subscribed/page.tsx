@@ -6,6 +6,8 @@
 
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
 import { hasPremium } from "../../../../../../functions/universal/user";
 import { captureException } from "@sentry/browser";
 
@@ -21,26 +23,28 @@ import { captureException } from "@sentry/browser";
  */
 export default function Subscribed() {
   const { update } = useSession();
+  const router = useRouter();
 
   useEffect(() => {
     async function updateSession() {
-      // You can await here
       try {
         const result = await update();
+        console.debug(result, hasPremium(result?.user));
         if (hasPremium(result?.user)) {
-          window.location.href =
-            "http://localhost:6060/redesign/user/dashboard/fix/data-broker-profiles/welcome-to-premium";
+          router.replace(
+            `/redesign/user/dashboard/fix/data-broker-profiles/welcome-to-premium`
+          );
+        } else {
+          router.replace(`/`);
         }
       } catch (ex) {
         console.error(ex);
         captureException(ex);
+        router.replace(`/`);
       }
-      window.location.href = "/";
     }
     void updateSession();
-    // We only want to run this a single time - the page should not be re-rendered.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [update, router]);
 
   return <div>Please wait...</div>;
 }
