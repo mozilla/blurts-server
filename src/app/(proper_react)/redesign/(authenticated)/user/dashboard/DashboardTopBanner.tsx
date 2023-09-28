@@ -15,6 +15,7 @@ import {
   getRelevantGuidedSteps,
 } from "../../../../../functions/server/getRelevantGuidedSteps";
 import { hasPremium } from "../../../../../functions/universal/user";
+import { useSession } from "next-auth/react";
 
 export type BannerContent =
   | "ScanInProgressContent"
@@ -78,6 +79,7 @@ const Content = (props: {
   onShowFixed: () => void;
 }) => {
   const l10n = useL10n();
+  const { data: session } = useSession();
 
   if (props.isOnFixedTab) {
     return (
@@ -229,27 +231,32 @@ const Content = (props: {
     //       are directed to their data breaches if they have no unresolved data
     //       brokers. Should we be keeping track of the user "acknowledging"
     //       their scan results or something?
-    return (
-      <div className={styles.explainerContent}>
-        <h3>
-          {l10n.getString("dashboard-top-banner-no-exposures-found-title")}
-        </h3>
-        <p>
-          {l10n.getString(
-            "dashboard-top-banner-no-exposures-found-description",
-            {
-              data_broker_sites_total_num: dataBrokerCount,
-            }
-          )}
-        </p>
-        <div className={styles.cta}>
-          <Button href={relevantGuidedStep.href} small variant="primary">
-            {l10n.getString("dashboard-top-banner-no-exposures-found-cta")}
-          </Button>
+
+    console.debug(session?.user);
+    if (!hasPremium(session?.user)) {
+      return (
+        <div className={styles.explainerContent}>
+          <h3>
+            {l10n.getString("dashboard-top-banner-no-exposures-found-title")}
+          </h3>
+          <p>
+            {l10n.getString(
+              "dashboard-top-banner-no-exposures-found-description",
+              {
+                data_broker_sites_total_num: dataBrokerCount,
+              }
+            )}
+          </p>
+          <div className={styles.cta}>
+            <Button href={relevantGuidedStep.href} small variant="primary">
+              {l10n.getString("dashboard-top-banner-no-exposures-found-cta")}
+            </Button>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
+
   /* c8 ignore stop */
 
   if (relevantGuidedStep.id === "Done") {
