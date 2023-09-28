@@ -15,7 +15,6 @@ import {
   getRelevantGuidedSteps,
 } from "../../../../../functions/server/getRelevantGuidedSteps";
 import { hasPremium } from "../../../../../functions/universal/user";
-import { useSession } from "next-auth/react";
 
 export type BannerContent =
   | "ScanInProgressContent"
@@ -79,7 +78,6 @@ const Content = (props: {
   onShowFixed: () => void;
 }) => {
   const l10n = useL10n();
-  const { data: session } = useSession();
 
   if (props.isOnFixedTab) {
     return (
@@ -232,8 +230,7 @@ const Content = (props: {
     //       brokers. Should we be keeping track of the user "acknowledging"
     //       their scan results or something?
 
-    console.debug(session?.user);
-    if (!hasPremium(session?.user)) {
+    if (hasPremium(props.stepDeterminationData.user)) {
       return (
         <div className={styles.explainerContent}>
           <h3>
