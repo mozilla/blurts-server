@@ -15,7 +15,7 @@ export const GaScript = ({ nonce }: Props) => {
   const ga4MeasurementId =
     process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID || "G-CXG8K4KW4P";
 
-  return navigator && navigator.doNotTrack !== "1" ? (
+  return typeof navigator !== "undefined" && navigator.doNotTrack !== "1" ? (
     <Script
       src={`https://www.googletagmanager.com/gtag/js?id=${ga4MeasurementId}`}
       nonce={nonce}
