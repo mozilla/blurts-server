@@ -10,11 +10,18 @@ import { authOptions } from "../../../../../api/utils/auth";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../functions/server/getUserBreaches";
 import { canSubscribeToPremium } from "../../../../../functions/universal/user";
-import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
+import {
+  addOnerepScanResults,
+  getLatestOnerepScanResults,
+} from "../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 
 import { isFlagEnabled } from "../../../../../functions/server/featureFlags";
-import { isEligibleForFreeScan } from "../../../../../functions/server/onerep";
+import {
+  ScanResult,
+  getAllScanResults,
+  isEligibleForFreeScan,
+} from "../../../../../functions/server/onerep";
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
@@ -33,7 +40,45 @@ export default async function DashboardPage() {
     return redirect("/redesign/user/welcome/");
   }
 
+  // This contains the latest scan results in our database.
   const latestScan = await getLatestOnerepScanResults(profileId);
+
+  // Attempt to fetch the current scan results from the provider.
+  // If anything is newer, add it to the database.
+  // Continue if there are any errors.
+  try {
+    const currentScan = await getAllScanResults(profileId);
+    const newScanResults: ScanResult[] = [];
+    currentScan.forEach((current) => {
+      latestScan.results.forEach((latest) => {
+        console.debug(new Date(current.updated_at), latest.updated_at);
+        if (
+          current.id === latest.onerep_scan_result_id &&
+          current.scan_id === latest.onerep_scan_id &&
+          new Date(current.updated_at) > latest.updated_at
+        ) {
+          newScanResults.push(current);
+        }
+      });
+    });
+
+    if (newScanResults.length > 0) {
+      const scanId = latestScan?.scan?.id;
+      if (!scanId && typeof scanId === "number") {
+        throw new Error("No current scan ID");
+      }
+
+      await addOnerepScanResults(
+        profileId,
+        scanId as number,
+        newScanResults,
+        latestScan?.scan?.onerep_scan_reason ?? "manual"
+      );
+    }
+  } catch (ex) {
+    console.warn("Could not fetch current OneRep results:", ex);
+  }
+
   const subBreaches = await getSubscriberBreaches(session.user);
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(
