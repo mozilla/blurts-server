@@ -57,14 +57,14 @@ export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
           );
           setDataBrokerImage(<Image src={logo.default} alt="" />);
         } catch (error) {
-          console.error("Error loading image:", error);
+          // Default to circle logos if logo is not found
           setDataBrokerImage(<FallbackLogo name={cleanedName} />);
         }
       }
     };
 
     loadDataBrokerImage().catch((error) => {
-      console.error("Error loading image:", error);
+      console.error("Error loading logo:", error);
     });
   }, [exposureData]);
 
