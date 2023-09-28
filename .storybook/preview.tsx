@@ -37,6 +37,16 @@ const AppDecorator: Exclude<Preview["decorators"], undefined>[0] = (
   );
 };
 
+// Arguments to the `storySort` callback, left as documentation.
+type SortData = {
+  type: "story";
+  id: string;
+  name: string;
+  title: string;
+  importPath: string;
+  tags: Array<"story" | string>;
+};
+
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
@@ -48,6 +58,14 @@ const preview: Preview = {
     },
     // https://storybook.js.org/docs/react/configure/story-layout
     layout: "fullscreen",
+    options: {
+      // https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#sorting-stories
+      // @ts-ignore Storybook appears to not parse this as TypeScript, so we can't
+      //            add `SortData` type annotations. See
+      //            https://github.com/storybookjs/storybook/issues/21702#issuecomment-1517154204
+      storySort: (a, b) =>
+        a.title.localeCompare(b.title, undefined, { numeric: true }),
+    },
     nextjs: {
       // See https://storybook.js.org/blog/integrate-nextjs-and-storybook-automatically/#nextnavigation
       appDirectory: true,
