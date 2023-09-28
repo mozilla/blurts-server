@@ -41,10 +41,10 @@ rec-bank-acc =
     Kontroller kontoutskriftene dine for mistenkelig aktivitet eller uvanlig 
     kostnader. Gi beskjed til banken din hvis du ser noe du ikke kjenner igjen
 # Recommendation subhead
-rec-cc-subhead = Overvåk kredittkortkontoutskriftene dine
+rec-cc-subhead = Overvåk betalingskortkontoutskriftene dine
 rec-cc =
-    Se opp for merkelige kostnader på kredittkortet ditt. Det kan være lurt 
-    å be om et nytt kort med et nytt nummer fra kredittkortutstederen din.
+    Se opp for merkelige kostnader på betalingskortet ditt. Det kan være lurt 
+    å be om et nytt kort med et nytt nummer fra betalingskortutstederen din.
 # Recommendation subhead
 rec-email-mask-subhead = Masker din e-postadresse
 rec-email-cta = Prøv { -brand-relay }
