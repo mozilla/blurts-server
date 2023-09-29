@@ -32,6 +32,7 @@ import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 import { hasPremium } from "../../../../../functions/universal/user";
 import { LatestOnerepScanData } from "../../../../../../db/tables/onerep_scans";
 import { getLocale } from "../../../../../functions/universal/getLocale";
+import { Button } from "../../../../../components/server/Button";
 
 export type Props = {
   featureFlagsEnabled: Pick<
@@ -112,6 +113,20 @@ export const View = (props: Props) => {
           isPremiumBrokerRemovalEnabled={
             props.featureFlagsEnabled.PremiumBrokerRemoval
           }
+          resolutionCta={
+            <Button
+              variant="primary"
+              wide
+              href={
+                isScanResult(exposure)
+                  ? "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove"
+                  : // TODO MNTOR-2226: Figure out where this CTA should go
+                    undefined
+              }
+            >
+              {l10n.getString("exposure-card-cta")}
+            </Button>
+          }
         />
       </li>
     );
@@ -123,8 +138,10 @@ export const View = (props: Props) => {
     props.userBreaches
   );
   const isAllFixed =
-    dataSummary.dataBreachFixedNum === dataSummary.dataBreachTotalNum &&
-    dataSummary.dataBrokerFixedNum === dataSummary.dataBrokerTotalNum;
+    dataSummary.dataBreachFixedExposuresNum ===
+      dataSummary.dataBreachTotalExposuresNum &&
+    dataSummary.dataBrokerFixedExposuresNum ===
+      dataSummary.dataBrokerTotalExposuresNum;
 
   const TabContentActionNeeded = () => {
     const { dataBreachTotalNum, dataBrokerTotalNum, totalExposures } =
@@ -198,9 +215,6 @@ export const View = (props: Props) => {
     noUnresolvedExposures &&
     !isScanResultItemsEmpty &&
     !hasPremium(props.user) &&
-    // TODO: A bug causes `isAllFixed` to not be `true` when it should be:
-    // https://mozilla-hub.atlassian.net/browse/MNTOR-2192
-    /* c8 ignore next 4 */
     isAllFixed
   ) {
     contentType = "YourDataIsProtectedAllFixedContent";
