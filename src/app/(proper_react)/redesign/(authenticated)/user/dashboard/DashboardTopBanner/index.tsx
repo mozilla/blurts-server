@@ -13,7 +13,8 @@ import { DashboardTopBannerContent } from "./DashboardTopBannerContent";
 export type DashboardTopBannerProps = {
   bannerData: DashboardSummary;
   hasExposures: boolean;
-  hasUnresolvedExposures: boolean;
+  hasUnresolvedBreaches: boolean;
+  hasUnresolvedBrokers: boolean;
   isEligibleForFreeScan: boolean;
   isEligibleForPremium: boolean;
   isPremiumUser: boolean;
@@ -44,7 +45,8 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           <DashboardTopBannerContent
             bannerData={props.bannerData}
             hasExposures={props.hasExposures}
-            hasUnresolvedExposures={props.hasUnresolvedExposures}
+            hasUnresolvedBreaches={props.hasUnresolvedBreaches}
+            hasUnresolvedBrokers={props.hasUnresolvedBrokers}
             isEligibleForFreeScan={props.isEligibleForFreeScan}
             isEligibleForPremium={props.isEligibleForPremium}
             isPremiumUser={props.isPremiumUser}

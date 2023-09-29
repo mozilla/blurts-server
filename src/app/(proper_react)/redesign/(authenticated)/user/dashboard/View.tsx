@@ -135,7 +135,6 @@ export const View = (props: Props) => {
     props.userBreaches
   );
 
-  const hasExposures = combinedArray.length > 0;
   const hasUnresolvedExposures =
     getTabSpecificExposures("action-needed").length > 0;
   const hasFixedExposures = getTabSpecificExposures("fixed").length > 0;
@@ -247,6 +246,12 @@ export const View = (props: Props) => {
     );
   };
 
+  const hasExposures = combinedArray.length > 0;
+  const hasUnresolvedBreaches =
+    filteredExposures.filter((exposure) => !isScanResult(exposure)).length > 0;
+  const hasUnresolvedBrokers =
+    filteredExposures.filter(isScanResult).length > 0;
+
   return (
     <div className={styles.wrapper}>
       <Toolbar user={props.user}>
@@ -269,7 +274,8 @@ export const View = (props: Props) => {
           })}
           isEligibleForFreeScan={props.isEligibleForFreeScan}
           hasExposures={hasExposures}
-          hasUnresolvedExposures={hasUnresolvedExposures}
+          hasUnresolvedBreaches={hasUnresolvedBreaches}
+          hasUnresolvedBrokers={hasUnresolvedBrokers}
           bannerData={getDashboardSummary(
             props.userScanData.results,
             props.userBreaches

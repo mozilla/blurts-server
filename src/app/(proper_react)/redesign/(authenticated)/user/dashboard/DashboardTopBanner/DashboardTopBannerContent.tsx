@@ -9,20 +9,26 @@ import {
   getRelevantGuidedSteps,
 } from "../../../../../../functions/server/getRelevantGuidedSteps";
 import { ProgressCard } from "../../../../../../components/client/ProgressCard";
+import { Button } from "../../../../../../components/server/Button";
+import {
+  ExtendedReactLocalization,
+  useL10n,
+} from "../../../../../../hooks/l10n";
 
 export interface ContentProps {
-  relevantGuidedStepId: StepLink["id"];
-  isPremiumUser: boolean;
-  isEligibleForPremium: boolean;
-  isEligibleForFreeScan: boolean;
+  relevantGuidedStepIds: StepLink["id"];
   hasExposures: boolean;
-  hasUnresolvedExposures: boolean;
+  hasUnresolvedBreaches: boolean;
+  hasUnresolvedBrokers: boolean;
+  isEligibleForFreeScan: boolean;
+  isEligibleForPremium: boolean;
+  isPremiumUser: boolean;
   scanInProgress: boolean;
 }
 
 interface ContentConditionProps
-  extends Omit<ContentProps, "relevantGuidedStepId"> {
-  relevantGuidedStepId: Array<StepLink["id"]>;
+  extends Omit<ContentProps, "relevantGuidedStepIds"> {
+  relevantGuidedStepIds: Array<StepLink["id"]>;
 }
 
 type DashboardTopBannerContentProps = Omit<
@@ -35,7 +41,7 @@ const isMatchingContent = (
   contentConditions: ContentConditionProps
 ) =>
   Object.keys(contentConditions).every((conditionKey) => {
-    if (conditionKey === "relevantGuidedStepId") {
+    if (conditionKey === "relevantGuidedStepIds") {
       return contentConditions[conditionKey].includes(
         contentProps[conditionKey]
       );
@@ -47,9 +53,23 @@ const isMatchingContent = (
     );
   });
 
+const inProgressStepIds: Array<StepLink["id"]> = [
+  "HighRiskSsn",
+  "HighRiskCreditCard",
+  "HighRiskBankAccount",
+  "HighRiskPin",
+  "LeakedPasswordsPassword",
+  "LeakedPasswordsSecurityQuestion",
+  "SecurityTipsPhone",
+  "SecurityTipsEmail",
+  "SecurityTipsIp",
+];
+
 export const DashboardTopBannerContent = (
   props: DashboardTopBannerContentProps
 ) => {
+  const l10n = useL10n();
+
   if (props.tabType === "fixed") {
     return (
       <ProgressCard
@@ -73,9 +93,10 @@ export const DashboardTopBannerContent = (
   }
 
   const contentProps = {
-    relevantGuidedStepId: relevantGuidedStep.id,
+    relevantGuidedStepIds: relevantGuidedStep.id,
     hasExposures: props.hasExposures,
-    hasUnresolvedExposures: props.hasUnresolvedExposures,
+    hasUnresolvedBreaches: props.hasUnresolvedBreaches,
+    hasUnresolvedBrokers: props.hasUnresolvedBrokers,
     isEligibleForFreeScan: props.isEligibleForFreeScan,
     isEligibleForPremium: props.isEligibleForPremium,
     isPremiumUser: props.isPremiumUser,
@@ -85,77 +106,133 @@ export const DashboardTopBannerContent = (
   return (
     <div className={styles.explainerContent}>
       <pre>{JSON.stringify(contentProps, null, 2)}</pre>
-      {getTopBannerContent(contentProps)}
+      {getTopBannerContent(contentProps, l10n)}
     </div>
   );
 };
 
-const getTopBannerContent = (contentProps: ContentProps) => {
+const getTopBannerContent = (
+  contentProps: ContentProps,
+  l10n: ExtendedReactLocalization
+) => {
   if (
     /**
-     * - Free user
-     * - Not eligible for Premium
+     * - Non-eligible Premium user
      * - No breaches
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepId: ["Done"],
+      relevantGuidedStepIds: ["Done"],
       hasExposures: false,
-      hasUnresolvedExposures: false,
+      hasUnresolvedBreaches: false,
+      hasUnresolvedBrokers: false,
       isEligibleForFreeScan: false,
       isEligibleForPremium: false,
       isPremiumUser: false,
       scanInProgress: false,
     })
   ) {
-    return "1";
+    return (
+      <>
+        <div>{"1"}</div>
+        <h3>
+          {l10n.getString("dashboard-top-banner-no-exposures-found-title")}
+        </h3>
+        <p>
+          {l10n.getString(
+            "dashboard-top-banner-non-us-no-exposures-found-description"
+          )}
+        </p>
+        <div className={styles.cta}>
+          <Button href="" small variant="primary">
+            {l10n.getString("dashboard-top-banner-monitor-more-cta")}
+          </Button>
+        </div>
+      </>
+    );
   }
 
   if (
     /**
-     * - Free user
-     * - Not eligible for Premium
+     * - Non-eligible Premium user
      * - Unresolved breaches
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepId: [
-        "HighRiskSsn",
-        "HighRiskCreditCard",
-        "HighRiskBankAccount",
-        "HighRiskPin",
-        "LeakedPasswordsPassword",
-        "LeakedPasswordsSecurityQuestion",
-        "SecurityTipsPhone",
-        "SecurityTipsEmail",
-        "SecurityTipsIp",
-      ],
+      relevantGuidedStepIds: inProgressStepIds,
       hasExposures: true,
-      hasUnresolvedExposures: true,
+      hasUnresolvedBreaches: true,
+      hasUnresolvedBrokers: false,
       isEligibleForFreeScan: false,
       isEligibleForPremium: false,
       isPremiumUser: false,
       scanInProgress: false,
     })
   ) {
-    return "3";
+    return (
+      <>
+        <div>{"3"}</div>
+        <h3>
+          {l10n.getString("dashboard-top-banner-protect-your-data-title")}
+        </h3>
+        <p>
+          {l10n.getFragment(
+            "dashboard-exposures-breaches-scan-progress-description",
+            {
+              vars: {
+                exposures_total_num: 3,
+                data_breach_total_num: 1,
+              },
+              elems: {
+                b: <strong />,
+              },
+            }
+          )}
+        </p>
+        <div className={styles.cta}>
+          <Button href="" small variant="primary">
+            {l10n.getString("dashboard-top-banner-protect-your-data-cta")}
+          </Button>
+        </div>
+      </>
+    );
   }
 
   if (
     /**
-     * - Free user
-     * - Not eligible for Premium
+     * - Non-eligible Premium user
      * - Resolved breaches
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepId: ["Done"],
+      relevantGuidedStepIds: ["Done"],
       hasExposures: true,
-      hasUnresolvedExposures: false,
+      hasUnresolvedBreaches: false,
+      hasUnresolvedBrokers: false,
       isEligibleForFreeScan: false,
       isEligibleForPremium: false,
       isPremiumUser: false,
       scanInProgress: false,
     })
   ) {
-    return "5";
+    return (
+      <>
+        <div>{"5"}</div>
+        <h3>
+          {l10n.getString("dashboard-top-banner-your-data-is-protected-title")}
+        </h3>
+        <p>
+          {l10n.getString(
+            "dashboard-top-banner-non-us-your-data-is-protected-description",
+            {
+              exposures_resolved_num: 45,
+            }
+          )}
+        </p>
+        <div className={styles.cta}>
+          <Button href="" small variant="primary">
+            {l10n.getString("dashboard-top-banner-your-data-is-protected-cta")}
+          </Button>
+        </div>
+      </>
+    );
   }
 
   if (
@@ -166,9 +243,10 @@ const getTopBannerContent = (contentProps: ContentProps) => {
      * - No scan
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepId: ["StartScan"],
+      relevantGuidedStepIds: ["StartScan"],
       hasExposures: false,
-      hasUnresolvedExposures: false,
+      hasUnresolvedBreaches: false,
+      hasUnresolvedBrokers: false,
       isEligibleForFreeScan: true,
       isEligibleForPremium: true,
       isPremiumUser: false,
@@ -181,19 +259,15 @@ const getTopBannerContent = (contentProps: ContentProps) => {
      * - No scan
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepId: ["StartScan"],
+      relevantGuidedStepIds: ["StartScan"],
       hasExposures: true,
-      hasUnresolvedExposures: true,
+      hasUnresolvedBreaches: true,
+      hasUnresolvedBrokers: false,
       isEligibleForFreeScan: true,
       isEligibleForPremium: true,
       isPremiumUser: false,
       scanInProgress: false,
-    })
-  ) {
-    return "8, 10";
-  }
-
-  if (
+    }) ||
     /**
      * - US user
      * - Non-premium
@@ -201,16 +275,47 @@ const getTopBannerContent = (contentProps: ContentProps) => {
      * - No scan
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepId: ["StartScan"],
+      relevantGuidedStepIds: ["StartScan"],
       hasExposures: true,
-      hasUnresolvedExposures: false,
+      hasUnresolvedBreaches: false,
+      hasUnresolvedBrokers: false,
       isEligibleForFreeScan: true,
       isEligibleForPremium: true,
       isPremiumUser: false,
       scanInProgress: false,
     })
   ) {
-    return "12";
+    return (
+      <>
+        <div>{"8, 10, 12"}</div>
+        <h3>
+          {l10n.getString(
+            "dashboard-top-banner-monitor-protects-your-even-more-title"
+          )}
+        </h3>
+        <p>
+          {l10n.getString(
+            "dashboard-top-banner-monitor-protects-your-even-more-description",
+            {
+              data_broker_sites_total_num: 190,
+            }
+          )}
+        </p>
+        <div className={styles.cta}>
+          <Button href={"relevantGuidedStep.href"} small variant="primary">
+            {l10n.getString(
+              "dashboard-top-banner-monitor-protects-your-even-more-cta"
+            )}
+          </Button>
+        </div>
+        <br />
+        <a href="https://mozilla.org/products/monitor/how-it-works/">
+          {l10n.getString(
+            "dashboard-top-banner-monitor-protects-your-even-more-learn-more"
+          )}
+        </a>
+      </>
+    );
   }
 
   if (
@@ -221,9 +326,119 @@ const getTopBannerContent = (contentProps: ContentProps) => {
      * - Scan: No results
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepId: ["Done"],
+      relevantGuidedStepIds: ["Done"],
       hasExposures: false,
-      hasUnresolvedExposures: false,
+      hasUnresolvedBreaches: false,
+      hasUnresolvedBrokers: false,
+      isEligibleForFreeScan: false,
+      isEligibleForPremium: true,
+      isPremiumUser: false,
+      scanInProgress: false,
+    })
+  ) {
+    return (
+      <>
+        <div>{"13"}</div>
+        <h3>
+          {l10n.getString("dashboard-top-banner-no-exposures-found-title")}
+        </h3>
+        <p>
+          {l10n.getString(
+            "dashboard-top-banner-no-exposures-found-description",
+            {
+              data_broker_sites_total_num: 190,
+            }
+          )}
+        </p>
+        <div className={styles.cta}>
+          <Button href={"relevantGuidedStep.href"} small variant="primary">
+            {l10n.getString("dashboard-top-banner-no-exposures-found-cta")}
+          </Button>
+        </div>
+      </>
+    );
+  }
+
+  if (
+    /**
+     * - US user
+     * - Non-premium
+     * - No breaches
+     * - Scan: Unresolved and removal not started
+     */
+    isMatchingContent(contentProps, {
+      relevantGuidedStepIds: ["ScanResult"],
+      hasExposures: true,
+      hasUnresolvedBreaches: false,
+      hasUnresolvedBrokers: true,
+      isEligibleForFreeScan: false,
+      isEligibleForPremium: true,
+      isPremiumUser: false,
+      scanInProgress: false,
+    }) ||
+    /**
+     * - US user
+     * - Non-premium
+     * - Unresolved breaches
+     * - Scan: Unresolved
+     */
+    isMatchingContent(contentProps, {
+      relevantGuidedStepIds: ["ScanResult"],
+      hasExposures: true,
+      hasUnresolvedBreaches: true,
+      hasUnresolvedBrokers: false,
+      isEligibleForFreeScan: false,
+      isEligibleForPremium: true,
+      isPremiumUser: false,
+      scanInProgress: false,
+    }) ||
+    isMatchingContent(contentProps, {
+      relevantGuidedStepIds: ["ScanResult"],
+      hasExposures: true,
+      hasUnresolvedBreaches: true,
+      hasUnresolvedBrokers: true,
+      isEligibleForFreeScan: false,
+      isEligibleForPremium: false,
+      isPremiumUser: true,
+      scanInProgress: false,
+    })
+  ) {
+    return (
+      <>
+        <div>{"15, 17, 23"}</div>
+        <h3>
+          {l10n.getString("dashboard-top-banner-protect-your-data-title")}
+        </h3>
+        <p>
+          {l10n.getString(
+            "dashboard-top-banner-protect-your-data-description",
+            {
+              data_breach_total_num: 123,
+              data_broker_total_num: 123,
+            }
+          )}
+        </p>
+        <div className={styles.cta}>
+          <Button href="" small variant="primary">
+            {l10n.getString("dashboard-top-banner-protect-your-data-cta")}
+          </Button>
+        </div>
+      </>
+    );
+  }
+
+  if (
+    /**
+     * - US user
+     * - Non-premium
+     * - No breaches
+     * - Scan: Unresolved and removal started
+     */
+    isMatchingContent(contentProps, {
+      relevantGuidedStepIds: inProgressStepIds,
+      hasExposures: true,
+      hasUnresolvedBreaches: false,
+      hasUnresolvedBrokers: true,
       isEligibleForFreeScan: false,
       isEligibleForPremium: true,
       isPremiumUser: false,
@@ -236,16 +451,64 @@ const getTopBannerContent = (contentProps: ContentProps) => {
      * - Scan: No results
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepId: ["Done"],
+      relevantGuidedStepIds: inProgressStepIds,
       hasExposures: true,
-      hasUnresolvedExposures: true,
+      hasUnresolvedBreaches: true,
+      hasUnresolvedBrokers: false,
       isEligibleForFreeScan: false,
       isEligibleForPremium: true,
       isPremiumUser: false,
       scanInProgress: false,
     })
   ) {
-    return "13, 14";
+    return (
+      <>
+        <div>{"16, 18, 23"}</div>
+        <h3>
+          {l10n.getString("dashboard-top-banner-lets-keep-protecting-title")}
+        </h3>
+        <p>
+          {l10n.getString(
+            "dashboard-top-banner-lets-keep-protecting-description",
+            {
+              remaining_exposures_total_num: 13,
+              // props.bannerData.totalExposures -
+              // props.bannerData.dataBrokerFixedNum,
+            }
+          )}
+        </p>
+        <div className={styles.cta}>
+          <Button href="" small variant="primary">
+            {l10n.getString("dashboard-top-banner-lets-keep-protecting-cta")}
+          </Button>
+        </div>
+      </>
+    );
+  }
+
+  if (
+    /**
+     * - US user
+     * - Non-premium
+     * - No breaches
+     * - Scan: No results
+     */
+    isMatchingContent(contentProps, {
+      relevantGuidedStepIds: ["ScanResult"],
+      hasExposures: true,
+      hasUnresolvedBreaches: false,
+      hasUnresolvedBrokers: true,
+      isEligibleForFreeScan: false,
+      isEligibleForPremium: true,
+      isPremiumUser: false,
+      scanInProgress: false,
+    })
+  ) {
+    return (
+      <>
+        <div>{"15"}</div>
+      </>
+    );
   }
 
   if (
@@ -256,16 +519,39 @@ const getTopBannerContent = (contentProps: ContentProps) => {
      * - Scan: No results
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepId: ["Done"],
+      relevantGuidedStepIds: ["Done"],
       hasExposures: true,
-      hasUnresolvedExposures: false,
+      hasUnresolvedBreaches: false,
+      hasUnresolvedBrokers: false,
       isEligibleForFreeScan: false,
       isEligibleForPremium: true,
       isPremiumUser: false,
       scanInProgress: false,
     })
   ) {
-    return "21, 28, 36";
+    return (
+      <>
+        <div>{"21, 28, 36"}</div>
+        <h3>
+          {l10n.getString("dashboard-top-banner-your-data-is-protected-title")}
+        </h3>
+        <p>
+          {l10n.getString(
+            "dashboard-top-banner-your-data-is-protected-all-fixed-description",
+            {
+              starting_exposure_total_num: 123,
+            }
+          )}
+        </p>
+        <div className={styles.cta}>
+          <Button small variant="primary">
+            {l10n.getString(
+              "dashboard-top-banner-your-data-is-protected-all-fixed-cta"
+            )}
+          </Button>
+        </div>
+      </>
+    );
   }
 
   if (
@@ -276,9 +562,10 @@ const getTopBannerContent = (contentProps: ContentProps) => {
      * - Scan: Unresolved
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepId: ["ScanResult"],
+      relevantGuidedStepIds: ["ScanResult"],
       hasExposures: true,
-      hasUnresolvedExposures: true,
+      hasUnresolvedBreaches: true,
+      hasUnresolvedBrokers: true,
       isEligibleForFreeScan: false,
       isEligibleForPremium: true,
       isPremiumUser: false,
@@ -291,26 +578,39 @@ const getTopBannerContent = (contentProps: ContentProps) => {
      * - Scan: No results
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepId: [
-        "HighRiskSsn",
-        "HighRiskCreditCard",
-        "HighRiskBankAccount",
-        "HighRiskPin",
-        "LeakedPasswordsPassword",
-        "LeakedPasswordsSecurityQuestion",
-        "SecurityTipsPhone",
-        "SecurityTipsEmail",
-        "SecurityTipsIp",
-      ],
+      relevantGuidedStepIds: inProgressStepIds,
       hasExposures: true,
-      hasUnresolvedExposures: true,
+      hasUnresolvedBreaches: true,
+      hasUnresolvedBrokers: false,
       isEligibleForFreeScan: false,
       isEligibleForPremium: false,
       isPremiumUser: true,
       scanInProgress: false,
     })
   ) {
-    return "24, 27, 31, 32, 35, 45";
+    return (
+      <>
+        <div>{"24, 27, 31, 32, 35, 45"}</div>
+        <h3>
+          {l10n.getString("dashboard-top-banner-lets-keep-protecting-title")}
+        </h3>
+        <p>
+          {l10n.getString(
+            "dashboard-top-banner-lets-keep-protecting-description",
+            {
+              remaining_exposures_total_num: 13,
+              // props.bannerData.totalExposures -
+              // props.bannerData.dataBrokerFixedNum,
+            }
+          )}
+        </p>
+        <div className={styles.cta}>
+          <Button href="" small variant="primary">
+            {l10n.getString("dashboard-top-banner-lets-keep-protecting-cta")}
+          </Button>
+        </div>
+      </>
+    );
   }
 
   if (
@@ -321,17 +621,236 @@ const getTopBannerContent = (contentProps: ContentProps) => {
      * - Scan: No results
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepId: ["Done"],
+      relevantGuidedStepIds: ["Done"],
       hasExposures: false,
-      hasUnresolvedExposures: false,
+      hasUnresolvedBreaches: false,
+      hasUnresolvedBrokers: false,
       isEligibleForFreeScan: false,
       isEligibleForPremium: false,
       isPremiumUser: true,
       scanInProgress: false,
     })
   ) {
-    return "43";
+    return (
+      <>
+        <div>{"43"}</div>
+        <h3>
+          {l10n.getString("dashboard-top-banner-no-exposures-found-title")}
+        </h3>
+        <p>
+          {l10n.getString(
+            "dashboard-top-banner-no-exposures-found-description",
+            {
+              data_broker_sites_total_num: 190,
+            }
+          )}
+        </p>
+        <div className={styles.cta}>
+          <Button href="" small variant="primary">
+            {l10n.getString("dashboard-top-banner-monitor-more-cta")}
+          </Button>
+        </div>
+      </>
+    );
   }
 
-  return ":(";
+  if (
+    /**
+     * - US user
+     * - Premium
+     * - No unresolved breaches
+     * - Scan: Unresolved
+     */
+    isMatchingContent(contentProps, {
+      relevantGuidedStepIds: ["ScanResult", "Done"],
+      hasExposures: true,
+      hasUnresolvedBreaches: false,
+      hasUnresolvedBrokers: false,
+      isEligibleForFreeScan: false,
+      isEligibleForPremium: false,
+      isPremiumUser: true,
+      scanInProgress: false,
+    }) ||
+    /**
+     * - US user
+     * - Premium
+     * - No breaches
+     * - Scan: Unresolved
+     */
+    isMatchingContent(contentProps, {
+      relevantGuidedStepIds: ["ScanResult"],
+      hasExposures: true,
+      hasUnresolvedBreaches: false,
+      hasUnresolvedBrokers: true,
+      isEligibleForFreeScan: false,
+      isEligibleForPremium: false,
+      isPremiumUser: true,
+      scanInProgress: false,
+    })
+  ) {
+    return (
+      <>
+        <div>{"49"}</div>
+        <h3>
+          {l10n.getString("dashboard-top-banner-your-data-is-protected-title")}
+        </h3>
+        <p>
+          {l10n.getString(
+            "dashboard-top-banner-your-data-is-protected-description",
+            {
+              starting_exposure_total_num: 123,
+            }
+          )}
+        </p>
+        <div className={styles.cta}>
+          <Button
+            onPress={() => {
+              // props.onShowFixed();
+            }}
+            small
+            variant="primary"
+          >
+            {l10n.getString("dashboard-top-banner-your-data-is-protected-cta")}
+          </Button>
+        </div>
+      </>
+    );
+  }
+
+  if (
+    /**
+     * - US user
+     * - Premium
+     * - No unresolved breaches
+     * - Scan: Running and no results
+     */
+    isMatchingContent(contentProps, {
+      relevantGuidedStepIds: ["ScanResult"],
+      hasExposures: false,
+      hasUnresolvedBreaches: false,
+      hasUnresolvedBrokers: false,
+      isEligibleForFreeScan: false,
+      isEligibleForPremium: false,
+      isPremiumUser: true,
+      scanInProgress: true,
+    })
+  ) {
+    return (
+      <>
+        <div>{"Scan in progress (no results)"}</div>
+        <h3>{l10n.getString("dashboard-top-banner-scan-in-progress-title")}</h3>
+        <p>
+          {l10n.getFragment(
+            "dashboard-top-banner-scan-in-progress-description",
+            {
+              vars: {
+                // data_breach_total_num: props.bannerData.totalExposures,
+                data_breach_total_num: 0,
+              },
+              elems: {
+                b: <strong />,
+              },
+            }
+          )}
+          <br />
+          <br />
+          {l10n.getString(
+            "dashboard-top-banner-scan-in-progress-fix-later-hint"
+          )}
+        </p>
+      </>
+    );
+  }
+
+  if (
+    /**
+     * - US user
+     * - Premium
+     * - No breaches
+     * - Scan: Running and results found
+     */
+    isMatchingContent(contentProps, {
+      relevantGuidedStepIds: ["ScanResult"],
+      hasExposures: true,
+      hasUnresolvedBreaches: false,
+      hasUnresolvedBrokers: true,
+      isEligibleForFreeScan: false,
+      isEligibleForPremium: false,
+      isPremiumUser: true,
+      scanInProgress: true,
+    }) ||
+    /**
+     * - US user
+     * - Premium
+     * - Unresolved breaches
+     * - Scan: Running and no results
+     */
+    isMatchingContent(contentProps, {
+      relevantGuidedStepIds: ["ScanResult"],
+      hasExposures: true,
+      hasUnresolvedBreaches: true,
+      hasUnresolvedBrokers: false,
+      isEligibleForFreeScan: false,
+      isEligibleForPremium: false,
+      isPremiumUser: true,
+      scanInProgress: true,
+    }) ||
+    /**
+     * - US user
+     * - Premium
+     * - Unresolved breaches
+     * - Scan: Running and found results
+     */
+    isMatchingContent(contentProps, {
+      relevantGuidedStepIds: ["ScanResult"],
+      hasExposures: true,
+      hasUnresolvedBreaches: true,
+      hasUnresolvedBrokers: true,
+      isEligibleForFreeScan: false,
+      isEligibleForPremium: false,
+      isPremiumUser: true,
+      scanInProgress: true,
+    })
+  ) {
+    return (
+      <>
+        <div>{"Scan in progress (found exposures)"}</div>
+        <h3>{l10n.getString("dashboard-top-banner-scan-in-progress-title")}</h3>
+        <p>
+          {l10n.getFragment(
+            "dashboard-top-banner-scan-in-progress-description",
+            {
+              vars: {
+                // data_breach_total_num: props.bannerData.totalExposures,
+                data_breach_total_num: 123,
+              },
+              elems: {
+                b: <strong />,
+              },
+            }
+          )}
+          <br />
+          <br />
+          {l10n.getString("dashboard-top-banner-scan-in-progress-fix-now-hint")}
+        </p>
+        <div className={styles.cta}>
+          <Button
+            href={
+              "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers"
+            }
+            small
+            variant="primary"
+          >
+            {l10n.getString("dashboard-top-banner-scan-in-progress-cta")}
+          </Button>
+        </div>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <div>{":("}</div>
+    </>
+  );
 };
