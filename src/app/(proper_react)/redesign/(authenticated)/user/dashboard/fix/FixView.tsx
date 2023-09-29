@@ -96,32 +96,6 @@ export const FixView = (props: FixViewProps) => {
     );
   };
 
-  // TODO: MNTOR-1700 Add routing logic here
-  const navigationArrowBack = () => {
-    return (
-      <Link
-        className={styles.navArrowBack}
-        href="/redesign/user/dashboard"
-        aria-label={l10n.getString("guided-resolution-flow-back-arrow")}
-      >
-        <Image alt="" src={ImageArrowLeft} />
-      </Link>
-    );
-  };
-
-  // TODO: MNTOR-1700 Add routing logic here
-  const navigationArrowNext = () => {
-    return (
-      <Link
-        className={styles.navArrowNext}
-        href="/redesign/user/dashboard"
-        aria-label={l10n.getString("guided-resolution-flow-next-arrow")}
-      >
-        <Image alt="" src={ImageArrowRight} />
-      </Link>
-    );
-  };
-
   return (
     <div className={styles.fixContainer}>
       <div
@@ -135,9 +109,21 @@ export const FixView = (props: FixViewProps) => {
         />
         {navigationClose()}
         <section className={styles.fixSection}>
-          {navigationArrowBack()}
-          {navigationArrowNext()}
-          {props.children}
+          <Link
+            className={`${styles.navArrow} ${styles.navArrowBack}`}
+            href="/redesign/user/dashboard"
+            aria-label={l10n.getString("guided-resolution-flow-back-arrow")}
+          >
+            <Image alt="" src={ImageArrowLeft} />
+          </Link>
+          <div className={styles.viewWrapper}>{props.children}</div>
+          <Link
+            className={`${styles.navArrow} ${styles.navArrowNext}`}
+            href="/redesign/user/dashboard"
+            aria-label={l10n.getString("guided-resolution-flow-next-arrow")}
+          >
+            <Image alt="" src={ImageArrowRight} />
+          </Link>
         </section>
       </div>
     </div>

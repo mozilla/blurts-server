@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import styles from "../dataBrokerProfiles.module.scss";
+import styles from "./ManualRemoveView.module.scss";
 import { getL10n } from "../../../../../../../../functions/server/l10n";
 import {
   AvatarIcon,
@@ -15,6 +15,7 @@ import {
   getExposureReduction,
 } from "../../../../../../../../functions/server/dashboard";
 import { SubscriberBreach } from "../../../../../../../../../utils/subscriberBreaches";
+import { RemovalCard } from "./RemovalCard";
 
 export type Props = {
   scanData: LatestOnerepScanData;
@@ -92,13 +93,23 @@ export function ManualRemoveView(props: Props) {
           </li>
         </ol>
       </div>
-      <div className={styles.content}>
+      <div className={styles.exposureListing}>
         <h3 className={styles.questionTooltipWrapper}>
           {l10n.getString(
             "fix-flow-data-broker-profiles-manual-remove-review-profiles-headline"
           )}
         </h3>
-        {/* TODO: Add exposure cards table as seen on the dashboard */}
+        <div className={styles.exposureList}>
+          {props.scanData.results.map((scanResult, index) => {
+            return (
+              <RemovalCard
+                key={scanResult.onerep_scan_result_id}
+                scanResult={scanResult}
+                isExpanded={index === 0}
+              />
+            );
+          })}
+        </div>
       </div>
       <div className={styles.buttonsWrapper}>
         <Button
