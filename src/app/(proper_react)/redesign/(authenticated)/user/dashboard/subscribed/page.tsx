@@ -29,7 +29,6 @@ export default function Subscribed() {
     async function updateSession() {
       try {
         const result = await update();
-        console.debug(result, hasPremium(result?.user));
         if (hasPremium(result?.user)) {
           router.replace(
             `/redesign/user/dashboard/fix/data-broker-profiles/welcome-to-premium`
