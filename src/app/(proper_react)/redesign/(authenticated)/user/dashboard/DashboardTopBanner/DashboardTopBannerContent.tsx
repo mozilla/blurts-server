@@ -10,7 +10,7 @@ import {
 } from "../getUserDashboardState";
 import {
   StepLink,
-  getRelevantGuidedSteps,
+  getNextGuidedStep,
 } from "../../../../../../functions/server/getRelevantGuidedSteps";
 import { ProgressCard } from "../../../../../../components/client/ProgressCard";
 import { Button } from "../../../../../../components/server/Button";
@@ -68,9 +68,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     );
   }
 
-  const relevantGuidedStep = getRelevantGuidedSteps(
-    stepDeterminationData
-  ).current;
+  const relevantGuidedStep = getNextGuidedStep(stepDeterminationData);
 
   // There should be a relevant next step for every user (even if it's just
   // going back to the dashboard), so we can't hit this line in tests (and

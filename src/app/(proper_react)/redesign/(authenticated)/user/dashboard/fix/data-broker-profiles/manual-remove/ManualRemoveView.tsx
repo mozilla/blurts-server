@@ -17,7 +17,7 @@ import {
 } from "../../../../../../../../functions/server/dashboard";
 import { SubscriberBreach } from "../../../../../../../../../utils/subscriberBreaches";
 import { RemovalCard } from "./RemovalCard";
-import { getRelevantGuidedSteps } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
+import { getNextGuidedStep } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 
 export type Props = {
   scanData: LatestOnerepScanData;
@@ -35,7 +35,7 @@ export function ManualRemoveView(props: Props) {
   const estimatedTime = countOfDataBrokerProfiles * 10; // 10 minutes per data broker site.
   const exposureReduction = getExposureReduction(summary);
 
-  const stepAfterSkip = getRelevantGuidedSteps(
+  const stepAfterSkip = getNextGuidedStep(
     {
       countryCode: props.countryCode,
       latestScanData: props.scanData,
@@ -131,7 +131,7 @@ export function ManualRemoveView(props: Props) {
             "fix-flow-data-broker-profiles-manual-remove-button-remove-for-me"
           )}
         </Button>
-        <Button variant="secondary" href={stepAfterSkip.current?.href}>
+        <Button variant="secondary" href={stepAfterSkip?.href}>
           {l10n.getString(
             "fix-flow-data-broker-profiles-manual-remove-button-skip"
           )}
