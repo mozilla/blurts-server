@@ -81,35 +81,7 @@ export function isGuidedResolutionInProgress(stepId: StepLink["id"]) {
   return inProgressStepIds.includes(stepId);
 }
 
-export function getRelevantGuidedSteps(
-  data: InputData,
-  afterStep?: StepLink["id"]
-): OutputData {
-  const current = getNextGuidedStep(data, afterStep);
-
-  // There should be a relevant current step for every user (even if it's just
-  // going back to the dashbord), so we can't hit this line in tests (and
-  // shouldn't be able to in production either):
-  /* c8 ignore next 11 */
-  if (current === null) {
-    console.error(
-      typeof afterStep === "string"
-        ? `Could not determine the current step for the current user, coming from step [${afterStep}].`
-        : "Could not determine the current step for the current user."
-    );
-    return {
-      current: null,
-      skipTarget: null,
-    };
-  }
-
-  return {
-    current: current,
-    skipTarget: getNextGuidedStep(data, current.id),
-  };
-}
-
-function getNextGuidedStep(
+export function getNextGuidedStep(
   data: InputData,
   afterStep?: StepLink["id"]
 ): StepLink | null {
