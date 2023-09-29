@@ -79,7 +79,7 @@ export const authOptions: AuthOptions = {
           twoFactorAuthentication: profile.twoFactorAuthentication,
           metricsEnabled: profile.metricsEnabled,
           locale: profile.locale,
-        };
+        } as Profile;
       },
     },
   ],
