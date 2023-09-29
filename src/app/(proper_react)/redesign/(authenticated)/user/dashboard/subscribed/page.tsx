@@ -15,7 +15,7 @@ import { useL10n } from "../../../../../../hooks/l10n";
 /**
  * Client-side page to update session info.
  *
- * Next-Auth does not have a simple way to do this purely from the client-side, so we
+ * Next-Auth does not have a simple way to do this purely from the server-side, so we
  * use this page to check and redirect appropriately.
  *
  * NOTE: this does not replace doing server-side `hasPremium` checks! This is just
