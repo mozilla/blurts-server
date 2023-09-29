@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 
 import { hasPremium } from "../../../../../../functions/universal/user";
 import { captureException } from "@sentry/browser";
+import { useL10n } from "../../../../../../hooks/l10n";
 
 /**
  * Client-side page to update session info.
@@ -22,6 +23,7 @@ import { captureException } from "@sentry/browser";
  * after subscribing.
  */
 export default function Subscribed() {
+  const l10n = useL10n();
   const { update } = useSession();
   const router = useRouter();
 
@@ -45,5 +47,5 @@ export default function Subscribed() {
     void updateSession();
   }, [update, router]);
 
-  return <div>Please wait...</div>;
+  return <div>{l10n.getString("subscription-check-loading")}</div>;
 }
