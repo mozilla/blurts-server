@@ -27,7 +27,10 @@ import { TabList } from "../../../../../components/client/TabList";
 import { FeatureFlagsEnabled } from "../../../../../functions/server/featureFlags";
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
-import { hasPremium } from "../../../../../functions/universal/user";
+import {
+  canSubscribeToPremium,
+  hasPremium,
+} from "../../../../../functions/universal/user";
 import { LatestOnerepScanData } from "../../../../../../db/tables/onerep_scans";
 import { getLocale } from "../../../../../functions/universal/getLocale";
 
@@ -257,10 +260,13 @@ export const View = (props: Props) => {
       </Toolbar>
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
-          type={selectedTab}
+          tabType={selectedTab}
           scanInProgress={scanInProgress}
           isPremiumUser={hasPremium(props.user)}
-          isEligibleForPremium={props.isEligibleForPremium}
+          isEligibleForPremium={canSubscribeToPremium({
+            user: props.user,
+            countryCode: props.countryCode,
+          })}
           isEligibleForFreeScan={props.isEligibleForFreeScan}
           hasExposures={hasExposures}
           hasUnresolvedExposures={hasUnresolvedExposures}
