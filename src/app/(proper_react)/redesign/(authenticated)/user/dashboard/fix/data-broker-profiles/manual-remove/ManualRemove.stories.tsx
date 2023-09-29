@@ -79,6 +79,8 @@ export const ManualRemoveViewStory: Story = {
           <ManualRemoveView
             scanData={mockedScanData}
             breaches={mockedBreaches}
+            countryCode="us"
+            user={mockedSession.user}
           />
         </FixView>
       </Shell>

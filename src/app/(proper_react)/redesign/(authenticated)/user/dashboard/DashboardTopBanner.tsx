@@ -106,7 +106,10 @@ const Content = (props: {
     10
   );
 
-  if (relevantGuidedStep.id === "StartScan") {
+  if (
+    relevantGuidedStep.id === "Scan" &&
+    !props.stepDeterminationData.latestScanData?.scan
+  ) {
     // If the user hasn't run a data broker scan yet (and is able to),
     // encourage them to run one:
     return (
@@ -143,7 +146,7 @@ const Content = (props: {
   }
 
   if (
-    relevantGuidedStep.id === "ScanResult" &&
+    relevantGuidedStep.id === "Scan" &&
     props.stepDeterminationData.latestScanData?.scan?.onerep_scan_status ===
       "in_progress"
   ) {
@@ -188,7 +191,7 @@ const Content = (props: {
     );
   }
 
-  if (relevantGuidedStep.id === "ScanResult") {
+  if (relevantGuidedStep.id === "Scan") {
     if (
       typeof props.stepDeterminationData.latestScanData?.results.length ===
         "number" &&
