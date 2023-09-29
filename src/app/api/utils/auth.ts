@@ -63,15 +63,8 @@ export const authOptions: AuthOptions = {
       },
       token: AppConstants.OAUTH_TOKEN_URI,
       userinfo: {
-        request: async (context) => {
-          const response = await fetch(AppConstants.OAUTH_PROFILE_URI, {
-            headers: {
-              Authorization: `Bearer ${context.tokens.access_token ?? ""}`,
-            },
-          });
-          const userInfo = (await response.json()) as Profile;
-          return userInfo;
-        },
+        request: async (context) =>
+          fetchUserInfo(context.tokens.access_token ?? ""),
       },
       clientId: AppConstants.OAUTH_CLIENT_ID,
       clientSecret: AppConstants.OAUTH_CLIENT_SECRET,
@@ -94,23 +87,7 @@ export const authOptions: AuthOptions = {
     // Unused arguments also listed to show what's available:
     async jwt({ token, account, profile, trigger }) {
       if (trigger === "update") {
-        // Update the FxA profile without requiring the user to log out and back in again.
-        if (!process.env.OAUTH_PROFILE_URI) {
-          throw new Error("env var not set OAUTH_PROFILE_URI");
-        }
-
-        const access_token = token.subscriber?.fxa_access_token;
-        if (!access_token) {
-          throw new Error("no access token");
-        }
-
-        const result = await fetch(process.env.OAUTH_PROFILE_URI, {
-          headers: {
-            Authorization: `Bearer ${access_token}`,
-          },
-        });
-
-        profile = await result.json();
+        profile = await fetchUserInfo(token.subscriber?.fxa_access_token ?? "");
       }
       if (profile) {
         token.fxa = {
@@ -217,6 +194,16 @@ export const authOptions: AuthOptions = {
     },
   },
 };
+
+async function fetchUserInfo(accessToken: string) {
+  const response = await fetch(AppConstants.OAUTH_PROFILE_URI, {
+    headers: {
+      Authorization: `Bearer ${accessToken ?? ""}`,
+    },
+  });
+  const userInfo = (await response.json()) as Profile;
+  return userInfo;
+}
 
 export function bearerToken(req: NextRequest) {
   const requestHeaders = new Headers(req.headers);
