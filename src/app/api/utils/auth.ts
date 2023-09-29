@@ -71,15 +71,7 @@ export const authOptions: AuthOptions = {
       // Parse data returned by FxA's /userinfo/
       profile: (profile: FxaProfile) => {
         log.debug("fxa-confirmed-profile-data", profile);
-        return {
-          id: profile.uid,
-          email: profile.email,
-          avatar: profile.avatar,
-          avatarDefault: profile.avatarDefault,
-          twoFactorAuthentication: profile.twoFactorAuthentication,
-          metricsEnabled: profile.metricsEnabled,
-          locale: profile.locale,
-        } as Profile;
+        return convertFxaProfile(profile);
       },
     },
   ],
@@ -201,8 +193,26 @@ async function fetchUserInfo(accessToken: string) {
       Authorization: `Bearer ${accessToken ?? ""}`,
     },
   });
-  const userInfo = (await response.json()) as Profile;
-  return userInfo;
+  const userInfo = await response.json();
+  return userInfo as Profile;
+}
+
+/**
+ * Converts an FxAProfile to a standard OAuth Profile.
+ *
+ * @param profile
+ */
+function convertFxaProfile(profile: FxaProfile) {
+  return {
+    id: profile.uid,
+    email: profile.email,
+    avatar: profile.avatar,
+    avatarDefault: profile.avatarDefault,
+    twoFactorAuthentication: profile.twoFactorAuthentication,
+    metricsEnabled: profile.metricsEnabled,
+    locale: profile.locale,
+    subscriptions: profile.subscriptions,
+  } as Profile;
 }
 
 export function bearerToken(req: NextRequest) {
