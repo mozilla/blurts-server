@@ -48,12 +48,14 @@ async function setOnerepProfileId(
 
 async function setOnerepManualScan(
   onerepProfileId: number,
-  onerepScanId: number
+  onerepScanId: number,
+  onerepScanStatus: Scan["status"]
 ) {
   await knex("onerep_scans").insert({
     onerep_profile_id: onerepProfileId,
     onerep_scan_id: onerepScanId,
     onerep_scan_reason: "manual",
+    onerep_scan_status: onerepScanStatus,
     // @ts-ignore knex.fn.now() results in it being set to a date,
     // even if it's not typed as a JS date object:
     created_at: knex.fn.now(),
@@ -64,7 +66,8 @@ async function addOnerepScanResults(
   onerepProfileId: number,
   onerepScanId: number,
   onerepScanResults: Array<ScanResult>,
-  onerepScanReason: Scan["reason"]
+  onerepScanReason: Scan["reason"],
+  onerepScanStatus: Scan["status"]
 ) {
   await knex.transaction(async (transaction) => {
     if (onerepScanReason === "manual") {
@@ -72,17 +75,25 @@ async function addOnerepScanResults(
       await transaction("onerep_scan_results")
         .delete()
         .where("onerep_scan_id", onerepScanId);
-    } else {
-      // Initial and Monitoring scans always create a new scan:
-      await transaction("onerep_scans").insert({
+    }
+
+    // Create a new scan if it does not already exist. If it already exists:
+    // Update the status of the scan.
+    await transaction("onerep_scans")
+      .insert({
         onerep_profile_id: onerepProfileId,
         onerep_scan_id: onerepScanId,
         onerep_scan_reason: onerepScanReason,
+        onerep_scan_status: onerepScanStatus,
         // @ts-ignore knex.fn.now() results in it being set to a date,
         // even if it's not typed as a JS date object:
         created_at: knex.fn.now(),
+      })
+      .onConflict("onerep_scan_id")
+      .merge({
+        onerep_scan_status: onerepScanStatus,
+        updated_at: knex.fn.now(),
       });
-    }
 
     await transaction("onerep_scan_results").insert(
       onerepScanResults.map((scanResult) => ({

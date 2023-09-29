@@ -29,10 +29,21 @@ type Exposures = {
 
 type SanitizedExposures = Array<Record<string, number>>;
 export interface DashboardSummary {
+  /** total number of user data breaches */
   dataBreachTotalNum: number;
-  dataBreachFixedNum: number;
+  /** total number of exposures from user breaches */
+  dataBreachTotalExposuresNum: number;
+  /**total number of fixed exposures from user breaches */
+  dataBreachFixedExposuresNum: number;
+  /** total number of user data broker scans */
   dataBrokerTotalNum: number;
+  /** total number of exposures from user data broker scanned results */
+  dataBrokerTotalExposuresNum: number;
+  /** total number of fixed scans from user data broker scanned results */
   dataBrokerFixedNum: number;
+  /** total number of fixed exposures from user data broker scanned results */
+  dataBrokerFixedExposuresNum: number;
+  /** total number of in-progress scans from user data broker scanned results */
   dataBrokerInProgressNum: number;
   totalExposures: number;
   allExposures: Exposures;
@@ -66,9 +77,12 @@ export function getDashboardSummary(
 ): DashboardSummary {
   const summary: DashboardSummary = {
     dataBreachTotalNum: 0,
-    dataBreachFixedNum: 0,
+    dataBreachTotalExposuresNum: 0,
+    dataBreachFixedExposuresNum: 0,
     dataBrokerTotalNum: scannedResults.length,
+    dataBrokerTotalExposuresNum: 0,
     dataBrokerFixedNum: 0,
+    dataBrokerFixedExposuresNum: 0,
     dataBrokerInProgressNum: 0,
     totalExposures: 0,
     allExposures: {
@@ -121,12 +135,14 @@ export function getDashboardSummary(
         summary.dataBrokerFixedNum++;
       }
       // total exposure: add email, phones, addresses, relatives, full name (1)
-      summary.totalExposures +=
+      const exposureIncrement =
         r.emails.length +
         r.phones.length +
         r.addresses.length +
         r.relatives.length +
         1;
+      summary.totalExposures += exposureIncrement;
+      summary.dataBrokerTotalExposuresNum += exposureIncrement;
 
       // for all exposures: email, phones, addresses, relatives, full name (1)
       summary.allExposures.emailAddresses += r.emails.length;
@@ -142,6 +158,7 @@ export function getDashboardSummary(
         summary.fixedExposures.addresses += r.addresses.length;
         summary.fixedExposures.familyMembers += r.relatives.length;
         summary.fixedExposures.fullNames++;
+        summary.dataBrokerFixedExposuresNum += exposureIncrement;
       }
     });
   }
@@ -161,65 +178,69 @@ export function getDashboardSummary(
     /* c8 ignore next */
     const increment = b.emailsAffected.length ?? 0;
 
-    /* c8 ignore next 9 */
     // count emails
     if (dataClasses.includes(BreachDataTypes.Email)) {
       summary.totalExposures += increment;
+      summary.dataBreachTotalExposuresNum += increment;
       summary.allExposures.emailAddresses += increment;
       if (b.isResolved) {
         summary.fixedExposures.emailAddresses += increment;
-        summary.dataBreachFixedNum += increment;
+        summary.dataBreachFixedExposuresNum += increment;
       }
     }
 
-    /* c8 ignore next 9 */
     // count phone numbers
     if (dataClasses.includes(BreachDataTypes.Phone)) {
       summary.totalExposures += increment;
+      summary.dataBreachTotalExposuresNum += increment;
       summary.allExposures.phoneNumbers += increment;
       if (b.isResolved) {
         summary.fixedExposures.phoneNumbers += increment;
-        summary.dataBreachFixedNum += increment;
+        summary.dataBreachFixedExposuresNum += increment;
       }
     }
 
     // count password
     if (dataClasses.includes(BreachDataTypes.Passwords)) {
       summary.totalExposures += increment;
+      summary.dataBreachTotalExposuresNum += increment;
       summary.allExposures.passwords += increment;
       if (b.isResolved) {
         summary.fixedExposures.passwords += increment;
-        summary.dataBreachFixedNum += increment;
+        summary.dataBreachFixedExposuresNum += increment;
       }
     }
 
     // count ssn
     if (dataClasses.includes(BreachDataTypes.SSN)) {
       summary.totalExposures += increment;
+      summary.dataBreachTotalExposuresNum += increment;
       summary.allExposures.socialSecurityNumbers += increment;
       if (b.isResolved) {
         summary.fixedExposures.socialSecurityNumbers += increment;
-        summary.dataBreachFixedNum += increment;
+        summary.dataBreachFixedExposuresNum += increment;
       }
     }
 
     // count IP
     if (dataClasses.includes(BreachDataTypes.IP)) {
       summary.totalExposures += increment;
+      summary.dataBreachTotalExposuresNum += increment;
       summary.allExposures.ipAddresses += increment;
       if (b.isResolved) {
         summary.fixedExposures.ipAddresses += increment;
-        summary.dataBreachFixedNum += increment;
+        summary.dataBreachFixedExposuresNum += increment;
       }
     }
 
     // count credit card
     if (dataClasses.includes(BreachDataTypes.CreditCard)) {
       summary.totalExposures += increment;
+      summary.dataBreachTotalExposuresNum += increment;
       summary.allExposures.creditCardNumbers += increment;
       if (b.isResolved) {
         summary.fixedExposures.creditCardNumbers += increment;
-        summary.dataBreachFixedNum += increment;
+        summary.dataBreachFixedExposuresNum += increment;
       }
     }
 
@@ -227,10 +248,11 @@ export function getDashboardSummary(
     // count pin numbers
     if (dataClasses.includes(BreachDataTypes.PIN)) {
       summary.totalExposures += increment;
+      summary.dataBreachTotalExposuresNum += increment;
       summary.allExposures.pins += increment;
       if (b.isResolved) {
         summary.fixedExposures.pins += increment;
-        summary.dataBreachFixedNum += increment;
+        summary.dataBreachFixedExposuresNum += increment;
       }
     }
     /* c8 ignore stop */
@@ -239,10 +261,11 @@ export function getDashboardSummary(
     // count security questions
     if (dataClasses.includes(BreachDataTypes.SecurityQuestions)) {
       summary.totalExposures += increment;
+      summary.dataBreachTotalExposuresNum += increment;
       summary.allExposures.securityQuestions += increment;
       if (b.isResolved) {
         summary.fixedExposures.securityQuestions += increment;
-        summary.dataBreachFixedNum += increment;
+        summary.dataBreachFixedExposuresNum += increment;
       }
     }
     /** c8 ignore stop */
@@ -258,7 +281,7 @@ export function getDashboardSummary(
   );
   summary.fixedSanitizedExposures = sanitizeExposures(
     summary.fixedExposures,
-    summary.dataBreachFixedNum + summary.dataBrokerFixedNum,
+    summary.dataBreachFixedExposuresNum + summary.dataBrokerFixedExposuresNum,
     isBreachesOnly
   );
   return summary;
