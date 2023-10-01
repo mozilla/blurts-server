@@ -336,6 +336,7 @@ const getTopBannerContent = (
       scanInProgress: false,
     })
   ) {
+    // NoExposuresFoundPremiumUpsell
     return (
       <>
         <div>{"13"}</div>
@@ -434,7 +435,7 @@ const getTopBannerContent = (
      * - No breaches
      * - Scan: Unresolved and removal started
      */
-    isMatchingContent(contentProps, {
+    (isMatchingContent(contentProps, {
       relevantGuidedStepIds: inProgressStepIds,
       hasExposures: true,
       hasUnresolvedBreaches: false,
@@ -443,12 +444,12 @@ const getTopBannerContent = (
       isEligibleForPremium: true,
       isPremiumUser: false,
       scanInProgress: false,
-    }) ||
+    }),
     /**
      * - US user
      * - Non-premium
      * - Unresolved breaches
-     * - Scan: No results
+     * - Scan: <Resolved></Resolved>
      */
     isMatchingContent(contentProps, {
       relevantGuidedStepIds: inProgressStepIds,
@@ -459,11 +460,11 @@ const getTopBannerContent = (
       isEligibleForPremium: true,
       isPremiumUser: false,
       scanInProgress: false,
-    })
+    }))
   ) {
     return (
       <>
-        <div>{"16, 18, 23"}</div>
+        <div>{"16, 18, 20, 31"}</div>
         <h3>
           {l10n.getString("dashboard-top-banner-lets-keep-protecting-title")}
         </h3>
@@ -586,11 +587,27 @@ const getTopBannerContent = (
       isEligibleForPremium: false,
       isPremiumUser: true,
       scanInProgress: false,
+    }) ||
+    /**
+     * - US user
+     * - Premium
+     * - No breaches
+     * - Scan: Unresolved
+     */
+    isMatchingContent(contentProps, {
+      relevantGuidedStepIds: ["ScanResult"],
+      hasExposures: true,
+      hasUnresolvedBreaches: false,
+      hasUnresolvedBrokers: true,
+      isEligibleForFreeScan: false,
+      isEligibleForPremium: false,
+      isPremiumUser: true,
+      scanInProgress: false,
     })
   ) {
     return (
       <>
-        <div>{"24, 27, 31, 32, 35, 45"}</div>
+        <div>{"24, 27, 31, 32, 35, 45, 48 "}</div>
         <h3>
           {l10n.getString("dashboard-top-banner-lets-keep-protecting-title")}
         </h3>
@@ -631,6 +648,7 @@ const getTopBannerContent = (
       scanInProgress: false,
     })
   ) {
+    // NoExposuresFoundAddEmails
     return (
       <>
         <div>{"43"}</div>
@@ -666,22 +684,6 @@ const getTopBannerContent = (
       hasExposures: true,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: false,
-      isEligibleForFreeScan: false,
-      isEligibleForPremium: false,
-      isPremiumUser: true,
-      scanInProgress: false,
-    }) ||
-    /**
-     * - US user
-     * - Premium
-     * - No breaches
-     * - Scan: Unresolved
-     */
-    isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["ScanResult"],
-      hasExposures: true,
-      hasUnresolvedBreaches: false,
-      hasUnresolvedBrokers: true,
       isEligibleForFreeScan: false,
       isEligibleForPremium: false,
       isPremiumUser: true,
