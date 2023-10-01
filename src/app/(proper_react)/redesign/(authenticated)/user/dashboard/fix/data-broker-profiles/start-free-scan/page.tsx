@@ -12,6 +12,8 @@ import { Button } from "../../../../../../../../components/server/Button";
 
 export default function StartFreeScan() {
   const l10n = useL10n();
+  const startFreeScanLink =
+    "https://www.mozilla.org/products/monitor/how-it-works/";
 
   return (
     <div className={styles.contentWrapper}>
@@ -37,7 +39,7 @@ export default function StartFreeScan() {
           {l10n.getString(
             "fix-flow-data-broker-profiles-start-free-scan-content-p2"
           )}
-          <a href="#">
+          <a href={startFreeScanLink} target="_blank" rel="noopener noreferrer">
             {l10n.getString(
               "fix-flow-data-broker-profiles-start-free-scan-link-learn-more"
             )}

@@ -28,7 +28,7 @@
       " This Source Code Form is subject to the terms of the Mozilla Public\n * License, v. 2.0. If a copy of the MPL was not distributed with this\n * file, You can obtain one at http://mozilla.org/MPL/2.0/. ",
       2
     ],
-    "jsdoc/tag-lines": ["error", "any", { "startLines": 1 }],
+    "jsdoc/tag-lines": ["error", "any"],
     "jsdoc/require-jsdoc": "off",
     "jsdoc/require-param-type": "off",
     "jsdoc/require-param-description": "off",
