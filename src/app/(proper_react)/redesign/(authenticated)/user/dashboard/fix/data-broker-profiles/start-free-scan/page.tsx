@@ -39,6 +39,7 @@ export default function StartFreeScan() {
           {l10n.getString(
             "fix-flow-data-broker-profiles-start-free-scan-content-p2"
           )}
+          &nbsp;
           <a href={startFreeScanLink} target="_blank" rel="noopener noreferrer">
             {l10n.getString(
               "fix-flow-data-broker-profiles-start-free-scan-link-learn-more"
