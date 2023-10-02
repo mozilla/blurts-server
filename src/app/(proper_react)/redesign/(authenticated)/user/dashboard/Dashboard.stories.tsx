@@ -461,3 +461,14 @@ export const DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches: Story
       brokers: "unresolved-scan-in-progress",
     },
   };
+
+export const DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches: Story =
+  {
+    name: "Invalid state: Non-Premium US user, with Premium, with unresolved scan results and a scan in progress, with unresolved breaches",
+    args: {
+      countryCode: "us",
+      premium: false,
+      breaches: "resolved",
+      brokers: "unresolved-scan-in-progress",
+    },
+  };

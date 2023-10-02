@@ -26,6 +26,7 @@ import Meta, {
   DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches,
   DashboardUsPremiumScanUnresolvedInProgressNoBreaches,
   DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches,
+  DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches,
 } from "./Dashboard.stories";
 
 jest.mock("next/navigation", () => ({
@@ -379,6 +380,30 @@ it("shows returned free user who has resolved all tasks premium upsell and all f
   expect(screen.getByRole("dialog")).toBeInTheDocument();
 });
 
+it("shows a non-Premium user who has resolved all tasks a CTA to check out what was fixed", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  // We show a CTA on desktop in the toolbar and in the mobile menu
+  const premiumCtas = screen.queryAllByRole("button", {
+    name: "Upgrade to ⁨Premium⁩",
+  });
+  expect(premiumCtas.length).toBe(2);
+
+  // show banner CTA premium upgrade
+  const bannerPremiumCta = screen.queryAllByRole("button", {
+    name: "See what’s fixed",
+  });
+  expect(bannerPremiumCta.length).toBe(1);
+
+  // click on cta
+  await user.click(bannerPremiumCta[0]);
+
+  const fixedTab = screen.getByRole("tab", { name: "Fixed" });
+  expect(fixedTab).toHaveAttribute("aria-selected", "true");
+});
+
 it("shows a returning Premium user who has resolved all tasks a CTA to check out what was fixed", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
@@ -413,13 +438,13 @@ it("shows a returning Premium user who has zero scan results and resolved breach
   render(<ComposedDashboard />);
 
   // show banner CTA premium upgrade
-  const bannerPremiumCta = screen.queryAllByRole("button", {
+  const seeWhatsFixedCta = screen.queryByRole("button", {
     name: "See what’s fixed",
   });
-  expect(bannerPremiumCta.length).toBe(1);
+  expect(seeWhatsFixedCta).toBeInTheDocument();
 
   // click on cta
-  await user.click(bannerPremiumCta[0]);
+  await user.click(seeWhatsFixedCta as HTMLButtonElement);
 
   const fixedTab = screen.getByRole("tab", { name: "Fixed" });
   expect(fixedTab).toHaveAttribute("aria-selected", "true");
@@ -514,4 +539,19 @@ it("shows scan in progress indicators on the dashboard with results and unresolv
     { exact: false }
   );
   expect(exposureTableDescription).toBeInTheDocument();
+});
+
+it("logs a warning for an invalid dashboard user state", () => {
+  const ComposedDashboard = composeStory(
+    DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches,
+    Meta
+  );
+
+  const warnLogSpy = jest.spyOn(global.console, "warn").mockImplementation();
+  render(<ComposedDashboard />);
+
+  expect(warnLogSpy).toHaveBeenCalledWith(
+    "No matching condition for dashboard state found."
+  );
+  warnLogSpy.mockReset();
 });
