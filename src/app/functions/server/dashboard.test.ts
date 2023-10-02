@@ -472,19 +472,24 @@ describe("getExposureReduction", () => {
       dataBreachTotalExposuresNum: 10,
       dataBreachFixedExposuresNum: 10,
       dataBrokerTotalNum: 10,
-      dataBrokerTotalExposuresNum: 10,
-      dataBrokerFixedExposuresNum: 10,
+      dataBrokerTotalExposuresNum: 8,
+      dataBrokerFixedExposuresNum: 8,
       dataBrokerFixedNum: 10,
+      dataBrokerInProgressExposuresNum: 10,
       dataBrokerInProgressNum: 10,
+      manuallyResolvedExposuresNum: 0,
       totalExposures: 10,
       allExposures: testExposure,
-      sanitizedExposures: [],
+      unresolvedExposures: testExposure,
+      inProgressExposures: testExposure,
       fixedExposures: testExposure,
-      fixedSanitizedExposures: [],
+      inProgressFixedExposures: testExposure,
+      unresolvedSanitizedExposures: [],
+      inProgressFixedSanitizedExposures: [],
     };
 
-    const exposureReduction = getExposureReduction(testSummary, []);
-    expect(exposureReduction).toBe(0);
+    const exposureReduction = getExposureReduction(testSummary);
+    expect(exposureReduction).toBe(80);
   });
 });
 

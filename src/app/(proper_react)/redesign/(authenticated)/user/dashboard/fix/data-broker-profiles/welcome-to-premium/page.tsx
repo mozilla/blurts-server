@@ -38,7 +38,7 @@ export default async function WelcomeToPremium() {
   const countOfDataBrokerProfiles = scanResultItems.length;
   const subBreaches = await getSubscriberBreaches(session.user);
   const summary = getDashboardSummary(scanResultItems, subBreaches);
-  const exposureReduction = getExposureReduction(summary, scanResultItems);
+  const exposureReduction = getExposureReduction(summary);
 
   return (
     <div className={styles.contentWrapper}>

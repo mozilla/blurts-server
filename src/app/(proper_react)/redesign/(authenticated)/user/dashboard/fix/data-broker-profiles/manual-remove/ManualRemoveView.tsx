@@ -29,10 +29,7 @@ export function ManualRemoveView(props: Props) {
 
   const countOfDataBrokerProfiles = props.scanData.results.length;
   const estimatedTime = countOfDataBrokerProfiles * 10; // 10 minutes per data broker site.
-  const exposureReduction = getExposureReduction(
-    summary,
-    props.scanData.results
-  );
+  const exposureReduction = getExposureReduction(summary);
 
   return (
     <div className={styles.main}>
