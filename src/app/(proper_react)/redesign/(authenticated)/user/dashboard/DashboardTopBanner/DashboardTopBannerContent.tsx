@@ -216,6 +216,11 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 }
               )}
             </p>
+            <p>
+              {l10n.getString(
+                "dashboard-top-banner-no-exposures-found-upsell-info"
+              )}
+            </p>
             <div className={styles.cta}>
               <Button href={relevantGuidedStep.href} small variant="primary">
                 {l10n.getString("dashboard-top-banner-no-exposures-found-cta")}
