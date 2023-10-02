@@ -78,6 +78,18 @@ export type OutputData = {
   skipTarget: StepLink | null;
 };
 
+export function guidedResolutionIsInProgress(stepId: StepLink["id"]) {
+  const inProgressStepIds = stepLinks
+    .filter(
+      (step) =>
+        step.id !== "StartScan" &&
+        step.id !== "ScanResult" &&
+        step.id !== "Done"
+    )
+    .map(({ id }) => id);
+  return inProgressStepIds.includes(stepId);
+}
+
 export function getRelevantGuidedSteps(
   data: InputData,
   afterStep?: StepLink["id"]

@@ -7,6 +7,7 @@ import styles from "./DashboardTopBannerContent.module.scss";
 import {
   StepLink,
   getRelevantGuidedSteps,
+  guidedResolutionIsInProgress,
 } from "../../../../../../functions/server/getRelevantGuidedSteps";
 import { ProgressCard } from "../../../../../../components/client/ProgressCard";
 import { Button } from "../../../../../../components/server/Button";
@@ -17,7 +18,7 @@ import {
 import PremiumButton from "../../../../../../components/client/PremiumButton";
 
 export interface ContentProps {
-  relevantGuidedStepIds: StepLink["id"];
+  relevantGuidedStep: StepLink;
   hasExposures: boolean;
   hasUnresolvedBreaches: boolean;
   hasUnresolvedBrokers: boolean;
@@ -29,8 +30,8 @@ export interface ContentProps {
 }
 
 interface ContentConditionProps
-  extends Omit<ContentProps, "relevantGuidedStepIds" | "onShowFixed"> {
-  relevantGuidedStepIds: Array<StepLink["id"]>;
+  extends Omit<ContentProps, "relevantGuidedStep" | "onShowFixed"> {
+  isRelevantGuidedStep: boolean;
 }
 
 const isMatchingContent = (
@@ -38,10 +39,8 @@ const isMatchingContent = (
   contentConditions: ContentConditionProps
 ) =>
   Object.keys(contentConditions).every((conditionKey) => {
-    if (conditionKey === "relevantGuidedStepIds") {
-      return contentConditions[conditionKey].includes(
-        contentProps[conditionKey]
-      );
+    if (conditionKey === "isRelevantGuidedStep") {
+      return contentConditions["isRelevantGuidedStep"];
     }
 
     return (
@@ -49,18 +48,6 @@ const isMatchingContent = (
       contentConditions[conditionKey as keyof ContentConditionProps]
     );
   });
-
-const inProgressStepIds: Array<StepLink["id"]> = [
-  "HighRiskSsn",
-  "HighRiskCreditCard",
-  "HighRiskBankAccount",
-  "HighRiskPin",
-  "LeakedPasswordsPassword",
-  "LeakedPasswordsSecurityQuestion",
-  "SecurityTipsPhone",
-  "SecurityTipsEmail",
-  "SecurityTipsIp",
-];
 
 export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
   const l10n = useL10n();
@@ -88,7 +75,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
   }
 
   const contentProps = {
-    relevantGuidedStepIds: relevantGuidedStep.id,
+    relevantGuidedStep,
     hasExposures: props.hasExposures,
     hasUnresolvedBreaches: props.hasUnresolvedBreaches,
     hasUnresolvedBrokers: props.hasUnresolvedBrokers,
@@ -101,7 +88,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
 
   return (
     <div className={styles.explainerContent}>
-      <pre>{JSON.stringify(contentProps, null, 2)}</pre>
       {getTopBannerContent(contentProps, l10n)}
     </div>
   );
@@ -111,13 +97,15 @@ const getTopBannerContent = (
   contentProps: ContentProps,
   l10n: ExtendedReactLocalization
 ) => {
+  const guidedStep = contentProps.relevantGuidedStep;
+
   if (
     /**
      * - Non-eligible Premium user
      * - No breaches
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["Done"],
+      isRelevantGuidedStep: guidedStep.id === "Done",
       hasExposures: false,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: false,
@@ -153,7 +141,7 @@ const getTopBannerContent = (
      * - Unresolved breaches
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: inProgressStepIds,
+      isRelevantGuidedStep: guidedResolutionIsInProgress(guidedStep.id),
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: false,
@@ -198,7 +186,7 @@ const getTopBannerContent = (
      * - Resolved breaches
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["Done"],
+      isRelevantGuidedStep: guidedStep.id === "Done",
       hasExposures: true,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: false,
@@ -246,7 +234,7 @@ const getTopBannerContent = (
      * - No scan
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["StartScan"],
+      isRelevantGuidedStep: guidedStep.id === "StartScan",
       hasExposures: false,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: false,
@@ -262,7 +250,7 @@ const getTopBannerContent = (
      * - No scan
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["StartScan"],
+      isRelevantGuidedStep: guidedStep.id === "StartScan",
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: false,
@@ -278,7 +266,7 @@ const getTopBannerContent = (
      * - No scan
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["StartScan"],
+      isRelevantGuidedStep: guidedStep.id === "StartScan",
       hasExposures: true,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: false,
@@ -329,7 +317,7 @@ const getTopBannerContent = (
      * - Scan: No results
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["Done"],
+      isRelevantGuidedStep: guidedStep.id === "Done",
       hasExposures: false,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: false,
@@ -371,7 +359,7 @@ const getTopBannerContent = (
      * - Scan: Unresolved and removal not started
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["ScanResult"],
+      isRelevantGuidedStep: guidedStep.id === "ScanResult",
       hasExposures: true,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: true,
@@ -387,7 +375,7 @@ const getTopBannerContent = (
      * - Scan: Unresolved
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["ScanResult"],
+      isRelevantGuidedStep: guidedStep.id === "ScanResult",
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: false,
@@ -397,7 +385,7 @@ const getTopBannerContent = (
       scanInProgress: false,
     }) ||
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["ScanResult"],
+      isRelevantGuidedStep: guidedStep.id === "ScanResult",
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: true,
@@ -439,7 +427,7 @@ const getTopBannerContent = (
      * - Scan: Unresolved and removal started
      */
     (isMatchingContent(contentProps, {
-      relevantGuidedStepIds: inProgressStepIds,
+      isRelevantGuidedStep: guidedResolutionIsInProgress(guidedStep.id),
       hasExposures: true,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: true,
@@ -455,7 +443,7 @@ const getTopBannerContent = (
      * - Scan: <Resolved></Resolved>
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: inProgressStepIds,
+      isRelevantGuidedStep: guidedResolutionIsInProgress(guidedStep.id),
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: false,
@@ -498,7 +486,7 @@ const getTopBannerContent = (
      * - Scan: No results
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["ScanResult"],
+      isRelevantGuidedStep: guidedStep.id === "ScanResult",
       hasExposures: true,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: true,
@@ -523,7 +511,7 @@ const getTopBannerContent = (
      * - Scan: No results
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["Done"],
+      isRelevantGuidedStep: guidedStep.id === "Done",
       hasExposures: true,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: false,
@@ -564,7 +552,7 @@ const getTopBannerContent = (
      * - Scan: Unresolved
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["ScanResult"],
+      isRelevantGuidedStep: guidedStep.id === "ScanResult",
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: true,
@@ -580,7 +568,7 @@ const getTopBannerContent = (
      * - Scan: No results
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: inProgressStepIds,
+      isRelevantGuidedStep: guidedResolutionIsInProgress(guidedStep.id),
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: false,
@@ -596,7 +584,7 @@ const getTopBannerContent = (
      * - Scan: Unresolved
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["ScanResult"],
+      isRelevantGuidedStep: guidedStep.id === "ScanResult",
       hasExposures: true,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: true,
@@ -639,7 +627,7 @@ const getTopBannerContent = (
      * - Scan: No results
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["Done"],
+      isRelevantGuidedStep: guidedStep.id === "Done",
       hasExposures: false,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: false,
@@ -681,7 +669,8 @@ const getTopBannerContent = (
      * - Scan: Unresolved
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["ScanResult", "Done"],
+      isRelevantGuidedStep:
+        guidedStep.id === "ScanResult" || guidedStep.id === "Done",
       hasExposures: true,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: false,
@@ -729,7 +718,7 @@ const getTopBannerContent = (
      * - Scan: Running and no results
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["ScanResult"],
+      isRelevantGuidedStep: guidedStep.id === "ScanResult",
       hasExposures: false,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: false,
@@ -741,7 +730,6 @@ const getTopBannerContent = (
   ) {
     return (
       <>
-        <div>{"Scan in progress (no results)"}</div>
         <h3>{l10n.getString("dashboard-top-banner-scan-in-progress-title")}</h3>
         <p>
           {l10n.getFragment(
@@ -774,7 +762,7 @@ const getTopBannerContent = (
      * - Scan: Running and results found
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["ScanResult"],
+      isRelevantGuidedStep: guidedStep.id === "ScanResult",
       hasExposures: true,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: true,
@@ -790,7 +778,7 @@ const getTopBannerContent = (
      * - Scan: Running and no results
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["ScanResult"],
+      isRelevantGuidedStep: guidedStep.id === "ScanResult",
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: false,
@@ -806,7 +794,7 @@ const getTopBannerContent = (
      * - Scan: Running and found results
      */
     isMatchingContent(contentProps, {
-      relevantGuidedStepIds: ["ScanResult"],
+      isRelevantGuidedStep: guidedStep.id === "ScanResult",
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: true,
@@ -818,7 +806,6 @@ const getTopBannerContent = (
   ) {
     return (
       <>
-        <div>{"Scan in progress (found exposures)"}</div>
         <h3>{l10n.getString("dashboard-top-banner-scan-in-progress-title")}</h3>
         <p>
           {l10n.getFragment(
