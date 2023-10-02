@@ -33,6 +33,7 @@ import {
 } from "../../../../../functions/universal/user";
 import { LatestOnerepScanData } from "../../../../../../db/tables/onerep_scans";
 import { getLocale } from "../../../../../functions/universal/getLocale";
+import { Button } from "../../../../../components/server/Button";
 
 import AllFixedIllustration from "./images/dashboard-all-fixed.svg";
 import NoExposuresIllustration from "./images/dashboard-no-exposures.svg";
@@ -123,6 +124,20 @@ export const View = (props: Props) => {
           locale={getLocale(l10n)}
           isPremiumBrokerRemovalEnabled={
             props.featureFlagsEnabled.PremiumBrokerRemoval
+          }
+          resolutionCta={
+            <Button
+              variant="primary"
+              wide
+              href={
+                isScanResult(exposure)
+                  ? "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove"
+                  : // TODO MNTOR-2226: Figure out where this CTA should go
+                    undefined
+              }
+            >
+              {l10n.getString("exposure-card-cta")}
+            </Button>
           }
         />
       </li>
