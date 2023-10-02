@@ -18,7 +18,7 @@ export function canSubscribeToPremium(params: {
   user?: Session["user"];
   countryCode: string;
 }): boolean {
-  return hasPremium(params.user) && params.countryCode.toLowerCase() === "us";
+  return !hasPremium(params.user) && params.countryCode.toLowerCase() === "us";
 }
 /* c8 ignore stop */
 

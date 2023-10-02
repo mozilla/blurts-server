@@ -15,6 +15,7 @@ import {
 } from "../../../../../../apiMocks/mockData";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 import { LatestOnerepScanData } from "../../../../../../db/tables/onerep_scans";
+import { canSubscribeToPremium } from "../../../../../functions/universal/user";
 
 const brokerOptions = {
   "no-scan": "No scan started",
@@ -157,7 +158,11 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
         user={user}
         userBreaches={breaches}
         userScanData={scanData}
-        isEligibleForFreeScan={props.countryCode === "us"}
+        isEligibleForPremium={canSubscribeToPremium({
+          user,
+          countryCode: props.countryCode,
+        })}
+        isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
         featureFlagsEnabled={{
           FreeBrokerScan: true,
           PremiumBrokerRemoval: true,
@@ -335,36 +340,6 @@ export const DashboardUsNoPremiumResolvedScanResolvedBreaches: Story = {
   },
 };
 
-export const DashboardUsPremiumNoScanNoBreaches: Story = {
-  name: "US user, with Premium, without scan, with 0 breaches",
-  args: {
-    countryCode: "us",
-    premium: true,
-    breaches: "empty",
-    brokers: "no-scan",
-  },
-};
-
-export const DashboardUsPremiumNoScanUnresolvedBreaches: Story = {
-  name: "US user, with Premium, without scan, with unresolved breaches",
-  args: {
-    countryCode: "us",
-    premium: true,
-    breaches: "unresolved",
-    brokers: "no-scan",
-  },
-};
-
-export const DashboardUsPremiumNoScanResolvedBreaches: Story = {
-  name: "US user, with Premium, without scan, with all breaches resolved",
-  args: {
-    countryCode: "us",
-    premium: true,
-    breaches: "resolved",
-    brokers: "no-scan",
-  },
-};
-
 export const DashboardUsPremiumEmptyScanNoBreaches: Story = {
   name: "US user, with Premium, with 0 scan results, with 0 breaches",
   args: {
@@ -492,6 +467,17 @@ export const DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches: Story
       countryCode: "us",
       premium: true,
       breaches: "unresolved",
+      brokers: "unresolved-scan-in-progress",
+    },
+  };
+
+export const DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches: Story =
+  {
+    name: "Invalid state: Non-Premium US user, with Premium, with unresolved scan results and a scan in progress, with unresolved breaches",
+    args: {
+      countryCode: "us",
+      premium: false,
+      breaches: "resolved",
       brokers: "unresolved-scan-in-progress",
     },
   };

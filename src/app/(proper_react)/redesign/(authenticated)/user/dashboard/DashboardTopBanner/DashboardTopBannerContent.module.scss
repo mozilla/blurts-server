@@ -1,0 +1,34 @@
+@import "../../../../../../tokens";
+
+.explainerContentWrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: $screen-md) {
+    justify-content: center;
+    flex: 0.5 1 0%;
+
+    @media screen and (min-width: $screen-xl) {
+      flex: 1 1 0%;
+    }
+  }
+
+  .explainerContent {
+    display: flex;
+    gap: $spacing-md;
+    flex-direction: column;
+
+    @media screen and (min-width: $screen-md) {
+      max-width: $content-sm;
+    }
+
+    h3 {
+      font: $text-title-2xs;
+    }
+
+    .cta {
+      align-self: start;
+    }
+  }
+}
