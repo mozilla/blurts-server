@@ -44,15 +44,9 @@ jest.mock("next/navigation", () => ({
   usePathname: jest.fn(),
 }));
 
-function getRelevantBannerContentCta(ctas: HTMLElement[]) {
-  return ctas.filter((element) =>
-    element.parentElement?.parentElement?.classList.contains("explainerContent")
-  )[0];
-}
-
-function getRelevantBannerContentTitle(ctas: HTMLElement[]) {
-  return ctas.filter((element) =>
-    element.parentElement?.classList.contains("explainerContent")
+function getRelevantBannerContentElement(elements: HTMLElement[]) {
+  return elements.filter((element) =>
+    element.closest(".explainerContent")?.contains(element)
   )[0];
 }
 
@@ -649,7 +643,7 @@ it("shows the correct dashboard banner title in the story DashboardNonUsNoBreach
 
   const dashboardTopBannerTitle = screen.queryAllByText("No exposures found");
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -661,7 +655,7 @@ it("shows the correct dashboard banner CTA in the story DashboardNonUsNoBreaches
     name: "Monitor more emails",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -677,7 +671,7 @@ it("shows the correct dashboard banner title in the story DashboardNonUsUnresolv
     "Let’s protect your data"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -692,7 +686,7 @@ it("shows the correct dashboard banner CTA in the story DashboardNonUsUnresolved
     name: "Let’s fix it",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -705,7 +699,7 @@ it("shows the correct dashboard banner title in the story DashboardNonUsResolved
     "Your data is protected"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -717,7 +711,7 @@ it("shows the correct dashboard banner CTA in the story DashboardNonUsResolvedBr
     name: "See what’s fixed",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -733,7 +727,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumNo
     "⁨Monitor⁩ now protects you even more"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -748,7 +742,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumNoSc
     name: "Get first scan free",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -764,7 +758,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumNo
     "⁨Monitor⁩ now protects you even more"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -779,7 +773,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumNoSc
     name: "Get first scan free",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -795,7 +789,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumNo
     "⁨Monitor⁩ now protects you even more"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -810,7 +804,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumNoSc
     name: "Get first scan free",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -824,7 +818,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumEm
 
   const dashboardTopBannerTitle = screen.queryAllByText("No exposures found");
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -839,7 +833,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumEmpt
     name: "Get continuous protection",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -855,7 +849,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumEm
     "Let’s keep protecting your data"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -870,7 +864,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumEmpt
     name: "Let’s keep going",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -886,7 +880,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumEm
     "Your data is protected"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -901,7 +895,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumEmpt
     name: "Get continuous protection",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -917,7 +911,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumUn
     "Let’s protect your data"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -932,7 +926,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumUnre
     name: "Let’s fix it",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -948,7 +942,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumUn
     "Let’s keep protecting your data"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -963,7 +957,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumUnre
     name: "Let’s keep going",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -979,7 +973,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumUn
     "Let’s protect your data"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -994,7 +988,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumUnre
     name: "Let’s fix it",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -1010,7 +1004,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumRe
     "Your data is protected"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -1025,7 +1019,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumReso
     name: "Get continuous protection",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -1041,7 +1035,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumRe
     "Let’s keep protecting your data"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -1056,7 +1050,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumReso
     name: "Let’s keep going",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -1072,7 +1066,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumRe
     "Your data is protected"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -1087,7 +1081,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumReso
     name: "Get continuous protection",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -1101,7 +1095,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumEmpt
 
   const dashboardTopBannerTitle = screen.queryAllByText("");
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -1116,7 +1110,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumEmptyS
     name: "Monitor more emails",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -1132,7 +1126,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumEmpt
     "Let’s keep protecting your data"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -1147,7 +1141,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumEmptyS
     name: "Let’s keep going",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -1163,7 +1157,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumEmpt
     "Your data is protected"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -1178,7 +1172,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumEmptyS
     name: "See what’s fixed",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -1194,7 +1188,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumUnre
     "Let’s keep protecting your data"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -1209,7 +1203,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumUnreso
     name: "Let’s keep going",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -1225,7 +1219,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumUnre
     "Let’s protect your data"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -1240,7 +1234,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumUnreso
     name: "Let’s fix it",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -1256,7 +1250,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumUnre
     "Let’s keep protecting your data"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -1271,7 +1265,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumUnreso
     name: "Let’s keep going",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -1287,7 +1281,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumReso
     "Your data is protected"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -1302,7 +1296,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumResolv
     name: "See what’s fixed",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -1318,7 +1312,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumReso
     "Let’s keep protecting your data"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -1333,7 +1327,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumResolv
     name: "Let’s keep going",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -1349,7 +1343,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumReso
     "Your data is protected"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -1364,7 +1358,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumResolv
     name: "See what’s fixed",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -1380,7 +1374,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumScan
     "Your scan is still in progress"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -1409,7 +1403,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumScan
     "Your scan is still in progress"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -1424,7 +1418,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumScanEm
     name: "See what’s ready now",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -1440,7 +1434,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumScan
     "Your scan is still in progress"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -1455,7 +1449,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumScanUn
     name: "See what’s ready now",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
@@ -1471,7 +1465,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumScan
     "Your scan is still in progress"
   );
   expect(
-    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle)
   ).toBeInTheDocument();
 });
 
@@ -1486,7 +1480,7 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumScanUn
     name: "See what’s ready now",
   });
   expect(
-    getRelevantBannerContentCta(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta)
   ).toBeInTheDocument();
 });
 
