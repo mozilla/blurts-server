@@ -449,8 +449,10 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
   }
 
   return (
-    <div className={styles.explainerContent}>
-      {getDashboardBannerContent({ userDashboardState, relevantGuidedStep })}
+    <div className={styles.explainerContentWrapper}>
+      <div className={styles.explainerContent}>
+        {getDashboardBannerContent({ userDashboardState, relevantGuidedStep })}
+      </div>
     </div>
   );
 };

@@ -41,21 +41,19 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.explainerContentWrapper}>
-          <DashboardTopBannerContent
-            bannerData={props.bannerData}
-            hasExposures={props.hasExposures}
-            hasUnresolvedBreaches={props.hasUnresolvedBreaches}
-            hasUnresolvedBrokers={props.hasUnresolvedBrokers}
-            isEligibleForFreeScan={props.isEligibleForFreeScan}
-            isEligibleForPremium={props.isEligibleForPremium}
-            isPremiumUser={props.isPremiumUser}
-            tabType={props.tabType}
-            scanInProgress={props.scanInProgress}
-            stepDeterminationData={props.stepDeterminationData}
-            onShowFixed={props.onShowFixed}
-          />
-        </div>
+        <DashboardTopBannerContent
+          bannerData={props.bannerData}
+          hasExposures={props.hasExposures}
+          hasUnresolvedBreaches={props.hasUnresolvedBreaches}
+          hasUnresolvedBrokers={props.hasUnresolvedBrokers}
+          isEligibleForFreeScan={props.isEligibleForFreeScan}
+          isEligibleForPremium={props.isEligibleForPremium}
+          isPremiumUser={props.isPremiumUser}
+          tabType={props.tabType}
+          scanInProgress={props.scanInProgress}
+          stepDeterminationData={props.stepDeterminationData}
+          onShowFixed={props.onShowFixed}
+        />
         <div className={styles.chart}>
           <Chart
             scanInProgress={props.scanInProgress}
