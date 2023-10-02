@@ -483,7 +483,7 @@ const getTopBannerContent = ({
      * - US user
      * - Non-premium
      * - Unresolved breaches
-     * - Scan: <Resolved></Resolved>
+     * - Scan: Resolved
      */
     isMatchingContent(contentProps, {
       isRelevantGuidedStep: guidedResolutionIsInProgress(guidedStep.id),
@@ -550,7 +550,7 @@ const getTopBannerContent = ({
           {l10n.getString(
             "dashboard-top-banner-your-data-is-protected-all-fixed-description",
             {
-              starting_exposure_total_num: 123,
+              starting_exposure_total_num: bannerData.totalExposures,
             }
           )}
         </p>
@@ -714,7 +714,7 @@ const getTopBannerContent = ({
           {l10n.getString(
             "dashboard-top-banner-your-data-is-protected-description",
             {
-              starting_exposure_total_num: 123,
+              starting_exposure_total_num: bannerData.totalExposures,
             }
           )}
         </p>
@@ -855,6 +855,6 @@ const getTopBannerContent = ({
   }
 
   // The above conditions should always match one of the possible dashboard states.
-  console.warn("No matching condition found");
+  console.warn("No matching condition for dashboard state found.");
   return null;
 };

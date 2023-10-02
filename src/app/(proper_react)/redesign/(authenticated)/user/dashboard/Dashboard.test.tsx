@@ -9,11 +9,16 @@ import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import Meta, {
   DashboardNonUsNoBreaches,
+  DashboardNonUsUnresolvedBreaches,
+  DashboardNonUsResolvedBreaches,
+  DashboardUsNoPremiumEmptyScanNoBreaches,
   DashboardUsNoPremiumEmptyScanResolvedBreaches,
   DashboardUsNoPremiumNoScanNoBreaches,
   DashboardUsNoPremiumResolvedScanResolvedBreaches,
+  DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
   DashboardUsNoPremiumUnresolvedScanNoBreaches,
   DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+  DashboardUsPremiumEmptyScanNoBreaches,
   DashboardUsPremiumEmptyScanResolvedBreaches,
   DashboardUsPremiumResolvedScanResolvedBreaches,
   DashboardUsPremiumResolvedScanUnresolvedBreaches,
@@ -36,7 +41,7 @@ it("passes the axe accessibility test suite 1", async () => {
 
 it("passes the axe accessibility test suite 2", async () => {
   const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+    DashboardNonUsUnresolvedBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
@@ -44,8 +49,140 @@ it("passes the axe accessibility test suite 2", async () => {
 });
 
 it("passes the axe accessibility test suite 3", async () => {
+  const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 4", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanNoBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 5", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanResolvedBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 6", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 7", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumResolvedScanResolvedBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 8", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 9", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanNoBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 10", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 11", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanNoBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 12", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanResolvedBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 13", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanResolvedBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 14", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanUnresolvedBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 15", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanEmptyInProgressNoBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 16", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 17", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanUnresolvedInProgressNoBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 18", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
