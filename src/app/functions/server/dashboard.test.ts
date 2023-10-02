@@ -9,6 +9,7 @@ import {
   getExposureReduction,
 } from "./dashboard";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
+import { RemovalStatus, RemovalStatusMap } from "../universal/scanResult";
 
 const unresolvedBreaches: SubscriberBreach[] = [
   {
@@ -138,53 +139,13 @@ const unresolvedScannedResults: OnerepScanResultRow[] = [
     relatives: ["Kyler Anderson", "Birdie Skiles", "Marshall Raynor"],
     first_name: "j",
     last_name: "j",
-    status: "new",
+    status: RemovalStatusMap.New as RemovalStatus,
     created_at: new Date("2023-09-26T16:59:04.046Z"),
     updated_at: new Date("2023-09-26T16:59:04.046Z"),
     manually_resolved: false,
   },
-  {
-    id: 2,
-    onerep_scan_result_id: 11237,
-    onerep_scan_id: 1594,
-    link: "http://ussearch.com/ab-dolore-voluptatem-accusamus-facilis",
-    age: 1,
-    data_broker: "ussearch.com",
-    data_broker_id: 12,
-    emails: [
-      "gonzalo85@konopelski.com",
-      "clifford.bailey@huel.net",
-      "rolfson.neil@gmail.com",
-    ],
-    phones: ["+5442849271748", "+8179265715457", "+3314606006541"],
-    addresses: [
-      {
-        zip: "50277",
-        city: "Seaside",
-        state: "CA",
-        street: "Clovis Square",
-      },
-      {
-        zip: "50146-7108",
-        city: "New Liliana",
-        state: "ND",
-        street: "Garnet Crossroad",
-      },
-      {
-        zip: "12582-3146",
-        city: "Port Julian",
-        state: "UT",
-        street: "Erdman Village",
-      },
-    ],
-    relatives: ["Nelson Boehm", "Brett Hand", "Cornelius Smitham"],
-    first_name: "j",
-    last_name: "j",
-    status: "new",
-    created_at: new Date("2023-09-26T16:59:04.046Z"),
-    updated_at: new Date("2023-09-26T16:59:04.046Z"),
-    manually_resolved: false,
-  },
+];
+const inProgressScannedResults: OnerepScanResultRow[] = [
   {
     id: 3,
     onerep_scan_result_id: 11236,
@@ -222,10 +183,54 @@ const unresolvedScannedResults: OnerepScanResultRow[] = [
     relatives: ["Nelson Boehm", "Brett Hand", "Cornelius Smitham"],
     first_name: "j",
     last_name: "j",
-    status: "new",
+    status: RemovalStatusMap.OptOutInProgress as RemovalStatus,
     created_at: new Date("2023-09-26T16:59:04.046Z"),
     updated_at: new Date("2023-09-26T16:59:04.046Z"),
     manually_resolved: false,
+  },
+];
+const manuallyResolvedScannedResults: OnerepScanResultRow[] = [
+  {
+    id: 3,
+    onerep_scan_result_id: 11236,
+    onerep_scan_id: 1594,
+    link: "http://instantcheckmate.com/sit-praesentium-voluptate-a-voluptas-quo-sapiente",
+    age: 1,
+    data_broker: "instantcheckmate.com",
+    data_broker_id: 11,
+    emails: [
+      "gonzalo85@konopelski.com",
+      "clifford.bailey@huel.net",
+      "rolfson.neil@gmail.com",
+    ],
+    phones: ["+5442849271748", "+8179265715457", "+3314606006541"],
+    addresses: [
+      {
+        zip: "50277",
+        city: "Seaside",
+        state: "CA",
+        street: "Clovis Square",
+      },
+      {
+        zip: "50146-7108",
+        city: "New Liliana",
+        state: "ND",
+        street: "Garnet Crossroad",
+      },
+      {
+        zip: "12582-3146",
+        city: "Port Julian",
+        state: "UT",
+        street: "Erdman Village",
+      },
+    ],
+    relatives: ["Nelson Boehm", "Brett Hand", "Cornelius Smitham"],
+    first_name: "j",
+    last_name: "j",
+    status: RemovalStatusMap.New as RemovalStatus,
+    created_at: new Date("2023-09-26T16:59:04.046Z"),
+    updated_at: new Date("2023-09-26T16:59:04.046Z"),
+    manually_resolved: true,
   },
 ];
 const allResolvedScannedResults: OnerepScanResultRow[] = [
@@ -266,7 +271,7 @@ const allResolvedScannedResults: OnerepScanResultRow[] = [
     relatives: ["Kyler Anderson", "Birdie Skiles", "Marshall Raynor"],
     first_name: "j",
     last_name: "j",
-    status: "removed",
+    status: RemovalStatusMap.Removed as RemovalStatus,
     created_at: new Date("2023-09-26T16:59:04.046Z"),
     updated_at: new Date("2023-09-26T16:59:04.046Z"),
     manually_resolved: false,
@@ -308,7 +313,7 @@ const allResolvedScannedResults: OnerepScanResultRow[] = [
     relatives: ["Nelson Boehm", "Brett Hand", "Cornelius Smitham"],
     first_name: "j",
     last_name: "j",
-    status: "removed",
+    status: RemovalStatusMap.Removed as RemovalStatus,
     created_at: new Date("2023-09-26T16:59:04.046Z"),
     updated_at: new Date("2023-09-26T16:59:04.046Z"),
     manually_resolved: false,
@@ -350,7 +355,7 @@ const allResolvedScannedResults: OnerepScanResultRow[] = [
     relatives: ["Nelson Boehm", "Brett Hand", "Cornelius Smitham"],
     first_name: "j",
     last_name: "j",
-    status: "removed",
+    status: RemovalStatusMap.Removed as RemovalStatus,
     created_at: new Date("2023-09-26T16:59:04.046Z"),
     updated_at: new Date("2023-09-26T16:59:04.046Z"),
     manually_resolved: false,
@@ -502,6 +507,7 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBrokerTotalExposuresNum).toBe(0);
     expect(summary.dataBrokerFixedNum).toBe(0);
     expect(summary.totalExposures).toBe(summary.dataBreachTotalExposuresNum);
+    expect(summary.dataBrokerInProgressExposuresNum).toBe(0);
   });
 
   it("gets breaches only all fixed summary", () => {
@@ -512,6 +518,7 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBrokerFixedNum).toBe(0);
     expect(summary.totalExposures).toBe(summary.dataBreachTotalExposuresNum);
     expect(summary.totalExposures).toBe(summary.dataBreachFixedExposuresNum);
+    expect(summary.dataBrokerInProgressExposuresNum).toBe(0);
   });
 
   it("gets scanned results only summary", () => {
@@ -519,9 +526,21 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBreachTotalNum).toBe(0);
     expect(summary.dataBreachTotalExposuresNum).toBe(0);
     expect(summary.dataBreachFixedExposuresNum).toBe(0);
-    expect(summary.dataBrokerTotalNum).toBe(3);
+    expect(summary.dataBrokerTotalNum).toBe(1);
     expect(summary.dataBrokerFixedNum).toBe(0);
     expect(summary.totalExposures).toBe(summary.dataBrokerTotalExposuresNum);
+    expect(summary.unresolvedExposures.emailAddresses).toBe(
+      summary.allExposures.emailAddresses
+    );
+    expect(summary.unresolvedExposures.phoneNumbers).toBe(
+      summary.allExposures.phoneNumbers
+    );
+    expect(summary.unresolvedExposures.addresses).toBe(
+      summary.allExposures.addresses
+    );
+    expect(summary.unresolvedExposures.familyMembers).toBe(
+      summary.allExposures.familyMembers
+    );
   });
 
   it("gets scanned results only all fixed summary", () => {
@@ -536,6 +555,45 @@ describe("getDashboardSummary", () => {
     );
   });
 
+  it("gets scanned results in-progress and fixed summary", () => {
+    const summary = getDashboardSummary(
+      [...allResolvedScannedResults, ...inProgressScannedResults],
+      []
+    );
+    expect(summary.dataBreachTotalNum).toBe(0);
+    expect(summary.dataBreachTotalExposuresNum).toBe(0);
+    expect(summary.dataBreachFixedExposuresNum).toBe(0);
+    expect(summary.dataBrokerTotalNum).toBe(4);
+    expect(summary.inProgressFixedExposures.emailAddresses).toBe(
+      summary.inProgressExposures.emailAddresses +
+        summary.fixedExposures.emailAddresses
+    );
+    expect(summary.inProgressFixedExposures.phoneNumbers).toBe(
+      summary.inProgressExposures.phoneNumbers +
+        summary.fixedExposures.phoneNumbers
+    );
+    expect(summary.inProgressFixedExposures.addresses).toBe(
+      summary.inProgressExposures.addresses + summary.fixedExposures.addresses
+    );
+    expect(summary.inProgressFixedExposures.familyMembers).toBe(
+      summary.inProgressExposures.familyMembers +
+        summary.fixedExposures.familyMembers
+    );
+  });
+
+  it("gets scanned results manually removed summary", () => {
+    const summary = getDashboardSummary(manuallyResolvedScannedResults, []);
+    expect(summary.dataBreachTotalNum).toBe(0);
+    expect(summary.dataBreachTotalExposuresNum).toBe(0);
+    expect(summary.dataBreachFixedExposuresNum).toBe(0);
+    expect(summary.dataBrokerTotalNum).toBe(1);
+    expect(summary.dataBrokerFixedNum).toBe(1);
+    expect(summary.totalExposures).toBe(summary.dataBrokerTotalExposuresNum);
+    expect(summary.dataBrokerFixedExposuresNum).toBe(
+      summary.dataBrokerTotalExposuresNum
+    );
+  });
+
   it("gets mix scanned results & breaches summary", () => {
     const summary = getDashboardSummary(
       unresolvedScannedResults,
@@ -544,8 +602,8 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBreachTotalNum).toBe(3);
     expect(summary.dataBreachTotalExposuresNum).toBe(8);
     expect(summary.dataBreachFixedExposuresNum).toBe(0);
-    expect(summary.dataBrokerTotalNum).toBe(3);
-    expect(summary.dataBrokerTotalExposuresNum).toBe(39);
+    expect(summary.dataBrokerTotalNum).toBe(1);
+    expect(summary.dataBrokerTotalExposuresNum).toBe(13);
     expect(summary.totalExposures).toBe(
       summary.dataBrokerTotalExposuresNum + summary.dataBreachTotalExposuresNum
     );

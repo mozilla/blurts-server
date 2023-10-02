@@ -380,8 +380,8 @@ export function getDashboardSummary(
     {} as Exposures
   );
 
-  console.log("unresolved exposures: ");
-  console.log(summary.unresolvedExposures);
+  // console.log("unresolved exposures: ");
+  // console.log(summary.unresolvedExposures);
 
   // count fixed and in-progress exposures
   summary.inProgressFixedExposures = Object.keys(summary.fixedExposures).reduce(
