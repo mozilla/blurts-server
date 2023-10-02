@@ -41,11 +41,13 @@ const isMatchingContent = (
 ) => {
   const { hasExposures, hasUnresolvedBreaches, hasUnresolvedBrokers } =
     contentConditions;
+  // If a user does not have any exposures it’s also not possible to have unresolved ones.
+  // This check is meant to avoid adding invalid conditions in `getTopBannerContent`.
+  /* c8 ignore next 8 */
   if (
     (!hasExposures && hasUnresolvedBreaches) ||
     (!hasExposures && hasUnresolvedBrokers)
   ) {
-    // If a user does not have any exposures it’s also not possible to have unresolved ones.
     throw new Error(
       "Invalid combination of conditions: `hasExposures` can not be `false` if `hasUnresolvedBreaches` or `hasUnresolvedBrokers` is `true`."
     );
