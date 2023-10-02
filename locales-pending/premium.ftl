@@ -262,6 +262,34 @@ dashboard-top-banner-your-data-is-protected-all-fixed-description =
     *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed! Upgrade to { -brand-premium } and wel’ll continue to monitor for new exposures. Plus we’ll automatically remove your info from any sites that are selling it.
   }
 dashboard-top-banner-your-data-is-protected-all-fixed-cta = Get continuous protection
+dashboard-top-banner-non-us-no-exposures-found-description = Great news! We searched all known data breaches and found no exposures. We’ll keep monitoring your email address and will alert you if a new breach occurs.
+
+# Variables:
+# $exposures_total_num is the total number of exposures the user has.
+# $data_breach_total_num is the total number of data breaches the user has.
+dashboard-top-banner-non-us-protect-your-data-description = {
+  $exposures_total_num ->
+    [one] {
+      $data_breach_total_num ->
+        [one] We found your data exposed <b>{ $exposures_total_num }</b> time in <b>{ $data_breach_total_num }</b> data breach. We’ll guide you step-by-step on how to fix it.
+        *[other] We found your data exposed <b>{ $exposures_total_num }</b> time in <b>{ $data_breach_total_num }</b> data breaches. We’ll guide you step-by-step on how to fix it.
+    }
+    *[other] {
+      $data_breach_total_num ->
+        [one] We found your data exposed <b>{ $exposures_total_num }</b> times in <b>{ $data_breach_total_num }</b> data breach. We’ll guide you step-by-step on how to fix it.
+        *[other] We found your data exposed <b>{ $exposures_total_num }</b> times in <b>{ $data_breach_total_num }</b> data breaches. We’ll guide you step-by-step on how to fix it.
+    }
+}
+
+# Variables:
+# $exposures_resolved_num is the number of exposures the user has resolved.
+dashboard-top-banner-non-us-your-data-is-protected-description =
+  { $exposures_resolved_num ->
+    [one] Great work, the exposure of your data is fixed! We’ll keep monitoring and will alert you of any new exposures.
+    *[other] Great work, all { $exposures_resolved_num } exposures of your data are fixed! We’ll keep monitoring and will alert you of any new exposures.
+  }
+
+dashboard-top-banner-monitor-more-cta = Monitor more emails
 
 # Variables:
 # $exposures_total_num is the total number of exposures the user has.
@@ -518,32 +546,3 @@ leaked-security-questions-steps-subtitle = This requires access to your account,
 # $breach_name is the name of the breach where the security questions were found.
 leaked-security-questions-step-one = Update your security questions on <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
 leaked-security-questions-step-two = Update them on any other site where you used the same security questions. Be sure to use different security questions for every account.
-
-
-dashboard-top-banner-non-us-no-exposures-found-description = Great news! We searched all known data breaches and found no exposures. We’ll keep monitoring your email address and will alert you if a new breach occurs.
-# Variables:
-# $exposures_total_num is the total number of exposures the user has.
-# $data_breach_total_num is the total number of data breaches the user has.
-dashboard-top-banner-non-us-protect-your-data-description = {
-  $exposures_total_num ->
-    [one] {
-      $data_breach_total_num ->
-        [one] We found your data exposed <b>{ $exposures_total_num }</b> time in <b>{ $data_breach_total_num }</b> data breach. We’ll guide you step-by-step on how to fix it.
-        *[other] We found your data exposed <b>{ $exposures_total_num }</b> time in <b>{ $data_breach_total_num }</b> data breaches. We’ll guide you step-by-step on how to fix it.
-    }
-    *[other] {
-      $data_breach_total_num ->
-        [one] We found your data exposed <b>{ $exposures_total_num }</b> times in <b>{ $data_breach_total_num }</b> data breach. We’ll guide you step-by-step on how to fix it.
-        *[other] We found your data exposed <b>{ $exposures_total_num }</b> times in <b>{ $data_breach_total_num }</b> data breaches. We’ll guide you step-by-step on how to fix it.
-    }
-}
-
-# Variables:
-# $exposures_resolved_num is the number of exposures the user has resolved.
-dashboard-top-banner-non-us-your-data-is-protected-description =
-  { $exposures_resolved_num ->
-    [one] Great work, the exposure of your data is fixed! We’ll keep monitoring and will alert you of any new exposures.
-    *[other] Great work, all { $exposures_resolved_num } exposures of your data are fixed! We’ll keep monitoring and will alert you of any new exposures.
-  }
-
-dashboard-top-banner-monitor-more-cta = Monitor more emails
