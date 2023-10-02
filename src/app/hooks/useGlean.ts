@@ -40,7 +40,7 @@ export const useGlean = (channel: string, appEnv: string) => {
       // @see https://debug-ping-preview.firebaseapp.com/pings/fx-monitor-local-dev
       Glean.setDebugViewTag(`fx-monitor-${appEnv}-dev`);
     }
-  }, []);
+  }, [channel, appEnv]);
 
   // Return all generated Glean objects required for recording data.
   return {
