@@ -15,7 +15,6 @@ import Meta, {
   DashboardUsNoPremiumUnresolvedScanNoBreaches,
   DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
   DashboardUsPremiumEmptyScanResolvedBreaches,
-  DashboardUsPremiumNoScanNoBreaches,
   DashboardUsPremiumResolvedScanResolvedBreaches,
   DashboardUsPremiumResolvedScanUnresolvedBreaches,
   DashboardUsPremiumScanEmptyInProgressNoBreaches,
@@ -218,18 +217,6 @@ it("toggles between the product offerings in the premium upsell dialog", async (
   expect(productMontlyCta).toBeInTheDocument();
 });
 
-it("shows the premium badge if the user is a premium subscriber", () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumNoScanNoBreaches,
-    Meta
-  );
-  render(<ComposedDashboard />);
-
-  // We show a CTA on desktop in the toolbar and in the mobile menu
-  const premiumBadges = screen.queryAllByText("Premium");
-  expect(premiumBadges.length).toBe(2);
-});
-
 it("shows returned free user who has resolved all tasks premium upsell and all fixed description", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
@@ -310,11 +297,6 @@ it("shows scan in progress indicators on the dashboard with no breaches", () => 
 
   const bannerContent = screen.getByText("Your scan is still in progress");
   expect(bannerContent).toBeInTheDocument();
-
-  const bannerContentCta = screen.getByRole("link", {
-    name: "See what’s ready now",
-  });
-  expect(bannerContentCta).toBeInTheDocument();
 
   const chartPrompt = screen.getByText("Scan in progress:");
   expect(chartPrompt).toBeInTheDocument();

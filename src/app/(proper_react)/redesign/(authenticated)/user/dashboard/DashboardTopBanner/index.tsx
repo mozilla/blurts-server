@@ -53,6 +53,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
             tabType={props.tabType}
             scanInProgress={props.scanInProgress}
             stepDeterminationData={props.stepDeterminationData}
+            onShowFixed={props.onShowFixed}
           />
         </div>
         <div className={styles.chart}>

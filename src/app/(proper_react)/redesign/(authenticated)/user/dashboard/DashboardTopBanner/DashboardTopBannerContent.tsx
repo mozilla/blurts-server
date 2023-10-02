@@ -14,6 +14,7 @@ import {
   ExtendedReactLocalization,
   useL10n,
 } from "../../../../../../hooks/l10n";
+import PremiumButton from "../../../../../../components/client/PremiumButton";
 
 export interface ContentProps {
   relevantGuidedStepIds: StepLink["id"];
@@ -24,17 +25,13 @@ export interface ContentProps {
   isEligibleForPremium: boolean;
   isPremiumUser: boolean;
   scanInProgress: boolean;
+  onShowFixed: () => void;
 }
 
 interface ContentConditionProps
-  extends Omit<ContentProps, "relevantGuidedStepIds"> {
+  extends Omit<ContentProps, "relevantGuidedStepIds" | "onShowFixed"> {
   relevantGuidedStepIds: Array<StepLink["id"]>;
 }
-
-type DashboardTopBannerContentProps = Omit<
-  DashboardTopBannerProps,
-  "onShowFixed"
->;
 
 const isMatchingContent = (
   contentProps: ContentProps,
@@ -65,9 +62,7 @@ const inProgressStepIds: Array<StepLink["id"]> = [
   "SecurityTipsIp",
 ];
 
-export const DashboardTopBannerContent = (
-  props: DashboardTopBannerContentProps
-) => {
+export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
   const l10n = useL10n();
 
   if (props.tabType === "fixed") {
@@ -101,6 +96,7 @@ export const DashboardTopBannerContent = (
     isEligibleForPremium: props.isEligibleForPremium,
     isPremiumUser: props.isPremiumUser,
     scanInProgress: props.scanInProgress,
+    onShowFixed: props.onShowFixed,
   };
 
   return (
@@ -212,6 +208,7 @@ const getTopBannerContent = (
       scanInProgress: false,
     })
   ) {
+    // YourDataIsProtectedNonEligiblePremiumUser
     return (
       <>
         <div>{"5"}</div>
@@ -227,7 +224,13 @@ const getTopBannerContent = (
           )}
         </p>
         <div className={styles.cta}>
-          <Button href="" small variant="primary">
+          <Button
+            onPress={() => {
+              contentProps.onShowFixed();
+            }}
+            small
+            variant="primary"
+          >
             {l10n.getString("dashboard-top-banner-your-data-is-protected-cta")}
           </Button>
         </div>
@@ -545,11 +548,9 @@ const getTopBannerContent = (
           )}
         </p>
         <div className={styles.cta}>
-          <Button small variant="primary">
-            {l10n.getString(
-              "dashboard-top-banner-your-data-is-protected-all-fixed-cta"
-            )}
-          </Button>
+          <PremiumButton
+            label={"dashboard-top-banner-your-data-is-protected-all-fixed-cta"}
+          />
         </div>
       </>
     );
@@ -690,6 +691,7 @@ const getTopBannerContent = (
       scanInProgress: false,
     })
   ) {
+    // YourDataIsProtectedPremiumUser
     return (
       <>
         <div>{"49"}</div>
@@ -707,7 +709,7 @@ const getTopBannerContent = (
         <div className={styles.cta}>
           <Button
             onPress={() => {
-              // props.onShowFixed();
+              contentProps.onShowFixed();
             }}
             small
             variant="primary"
@@ -850,9 +852,7 @@ const getTopBannerContent = (
     );
   }
 
-  return (
-    <>
-      <div>{":("}</div>
-    </>
-  );
+  // The above conditions should always match one of the possible dashboard states.
+  console.warn("No matching condition found");
+  return null;
 };
