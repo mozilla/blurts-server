@@ -258,8 +258,8 @@ dashboard-top-banner-your-data-is-protected-cta = See what’s fixed
 # $starting_exposure_total_num is the number of exposures the user has resolved.
 dashboard-top-banner-your-data-is-protected-all-fixed-description = 
   { $starting_exposure_total_num ->
-    [one] Great work, { $starting_exposure_total_num } exposure of your data is fixed! Upgrade to { -brand-premium } and wel’ll continue to monitor for new exposures. Plus we’ll automatically remove your info from any sites that are selling it.
-    *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed! Upgrade to { -brand-premium } and wel’ll continue to monitor for new exposures. Plus we’ll automatically remove your info from any sites that are selling it.
+    [one] Great work, { $starting_exposure_total_num } exposure of your data is fixed! Upgrade to { -brand-premium } and we’ll continue to monitor for new exposures. Plus we’ll automatically remove your info from any sites that are selling it.
+    *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed! Upgrade to { -brand-premium } and we’ll continue to monitor for new exposures. Plus we’ll automatically remove your info from any sites that are selling it.
   }
 dashboard-top-banner-your-data-is-protected-all-fixed-cta = Get continuous protection
 dashboard-top-banner-non-us-no-exposures-found-description = Great news! We searched all known data breaches and found no exposures. We’ll keep monitoring your email address and will alert you if a new breach occurs.
