@@ -29,8 +29,8 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
 
   const chartDataKey =
     props.tabType === "fixed"
-      ? "fixedSanitizedExposures"
-      : "sanitizedExposures";
+      ? "inProgressFixedSanitizedExposures"
+      : "unresolvedSanitizedExposures";
   const chartData: [string, number][] = props.bannerData[chartDataKey].map(
     (obj) => {
       const [key, value] = Object.entries(obj)[0];
