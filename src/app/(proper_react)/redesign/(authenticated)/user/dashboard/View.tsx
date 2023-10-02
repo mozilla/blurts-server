@@ -163,14 +163,18 @@ export const View = (props: Props) => {
     const { dataBreachTotalNum, dataBrokerTotalNum, totalExposures } =
       dataSummary;
 
-    let exposuresAreaDescription = l10n.getString(
-      "dashboard-exposures-area-description",
-      {
-        exposures_total_num: totalExposures,
-        data_breach_total_num: dataBreachTotalNum,
-        data_broker_total_num: dataBrokerTotalNum,
-      }
-    );
+    let exposuresAreaDescription;
+
+    if (hasUnresolvedExposures) {
+      exposuresAreaDescription = l10n.getString(
+        "dashboard-exposures-area-description",
+        {
+          exposures_total_num: totalExposures,
+          data_breach_total_num: dataBreachTotalNum,
+          data_broker_total_num: dataBrokerTotalNum,
+        }
+      );
+    }
 
     if (scanInProgress && !noUnresolvedExposures) {
       exposuresAreaDescription = l10n.getString(
@@ -191,9 +195,11 @@ export const View = (props: Props) => {
         <h2 className={styles.exposuresAreaHeadline}>
           {l10n.getString("dashboard-exposures-area-headline")}
         </h2>
-        <p className={styles.exposuresAreaDescription}>
-          {exposuresAreaDescription}
-        </p>
+        {exposuresAreaDescription && (
+          <p className={styles.exposuresAreaDescription}>
+            {exposuresAreaDescription}
+          </p>
+        )}
       </>
     );
   };
