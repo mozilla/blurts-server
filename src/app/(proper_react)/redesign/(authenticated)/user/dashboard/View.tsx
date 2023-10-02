@@ -135,9 +135,14 @@ export const View = (props: Props) => {
     props.userBreaches
   );
 
-  const hasUnresolvedExposures =
-    getTabSpecificExposures("action-needed").length > 0;
-  const hasFixedExposures = getTabSpecificExposures("fixed").length > 0;
+  const hasExposures = combinedArray.length > 0;
+  const hasUnresolvedBreaches =
+    filteredExposures.filter((exposure) => !isScanResult(exposure)).length > 0;
+  const hasUnresolvedBrokers =
+    filteredExposures.filter(isScanResult).length > 0;
+
+  const hasUnresolvedExposures = hasUnresolvedBreaches || hasUnresolvedBrokers;
+  const hasFixedExposures = hasExposures && !hasUnresolvedExposures;
 
   const TabContentActionNeeded = () => {
     const { dataBreachTotalNum, dataBrokerTotalNum, totalExposures } =
@@ -245,12 +250,6 @@ export const View = (props: Props) => {
       )
     );
   };
-
-  const hasExposures = combinedArray.length > 0;
-  const hasUnresolvedBreaches =
-    filteredExposures.filter((exposure) => !isScanResult(exposure)).length > 0;
-  const hasUnresolvedBrokers =
-    filteredExposures.filter(isScanResult).length > 0;
 
   return (
     <div className={styles.wrapper}>
