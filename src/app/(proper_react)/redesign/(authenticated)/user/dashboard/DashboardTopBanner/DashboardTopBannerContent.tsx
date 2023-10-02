@@ -334,7 +334,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </h3>
             <p>
               {l10n.getString(
-                "dashboard-top-banner-no-exposures-found-description",
+                "dashboard-top-banner-non-us-no-exposures-found-description",
                 {
                   data_broker_sites_total_num: parseInt(
                     process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
