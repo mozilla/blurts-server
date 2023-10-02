@@ -47,6 +47,10 @@ function hasDirectType(props: Props): props is DirectTypeProps {
 
 export const getExposureStatus = (exposure: Exposure): StatusPillType => {
   if (isScanResult(exposure)) {
+    if (exposure.manually_resolved) {
+      return "fixed";
+    }
+
     switch (exposure.status) {
       case "removed":
         return "fixed";

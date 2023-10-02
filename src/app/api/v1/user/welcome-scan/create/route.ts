@@ -91,7 +91,7 @@ export async function POST(
         // Start exposure scan
         const scan = await createScan(profileId);
         const scanId = scan.id;
-        await setOnerepManualScan(profileId, scanId);
+        await setOnerepManualScan(profileId, scanId, scan.status);
 
         return NextResponse.json({ success: true }, { status: 200 });
       }
