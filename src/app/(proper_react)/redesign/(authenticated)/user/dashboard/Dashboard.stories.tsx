@@ -119,7 +119,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   const scanData: LatestOnerepScanData = { scan: null, results: [] };
 
   if (props.countryCode === "us") {
-    if (props.brokers !== "no-scan") {
+    if (props.brokers && props.brokers !== "no-scan") {
       scanData.scan =
         props.brokers === "emtpy-scan-in-progress" ||
         props.brokers === "unresolved-scan-in-progress"
