@@ -36,12 +36,25 @@ import Meta, {
   DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches,
   DashboardUsPremiumScanUnresolvedInProgressNoBreaches,
   DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches,
+  DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches,
 } from "./Dashboard.stories";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
   usePathname: jest.fn(),
 }));
+
+function getRelevantBannerContentCta(ctas: HTMLElement[]) {
+  return ctas.filter((element) =>
+    element.parentElement?.parentElement?.classList.contains("explainerContent")
+  )[0];
+}
+
+function getRelevantBannerContentTitle(ctas: HTMLElement[]) {
+  return ctas.filter((element) =>
+    element.parentElement?.classList.contains("explainerContent")
+  )[0];
+}
 
 it("passes the axe accessibility test suite 1", async () => {
   const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
@@ -627,4 +640,868 @@ it("shows scan in progress indicators on the dashboard with results and unresolv
     { exact: false }
   );
   expect(exposureTableDescription).toBeInTheDocument();
+});
+
+// DashboardNonUsNoBreaches
+it("shows the correct dashboard banner title in the story DashboardNonUsNoBreaches", () => {
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText("No exposures found");
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardNonUsNoBreaches", () => {
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Monitor more emails",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardNonUsUnresolvedBreaches
+it("shows the correct dashboard banner title in the story DashboardNonUsUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardNonUsUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Let’s protect your data"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardNonUsUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardNonUsUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s fix it",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardNonUsResolvedBreaches
+it("shows the correct dashboard banner title in the story DashboardNonUsResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Your data is protected"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardNonUsResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+    name: "See what’s fixed",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsNoPremiumNoScanNoBreaches
+it("shows the correct dashboard banner title in the story DashboardUsNoPremiumNoScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "⁨Monitor⁩ now protects you even more"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumNoScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Get first scan free",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsNoPremiumNoScanUnresolvedBreaches
+it("shows the correct dashboard banner title in the story DashboardUsNoPremiumNoScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "⁨Monitor⁩ now protects you even more"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumNoScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Get first scan free",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsNoPremiumNoScanResolvedBreaches
+it("shows the correct dashboard banner title in the story DashboardUsNoPremiumNoScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "⁨Monitor⁩ now protects you even more"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumNoScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Get first scan free",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsNoPremiumEmptyScanNoBreaches
+it("shows the correct dashboard banner title in the story DashboardUsNoPremiumEmptyScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText("No exposures found");
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumEmptyScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Get continuous protection",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsNoPremiumEmptyScanUnresolvedBreaches
+it("shows the correct dashboard banner title in the story DashboardUsNoPremiumEmptyScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Let’s keep protecting your data"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumEmptyScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s keep going",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsNoPremiumEmptyScanResolvedBreaches
+it("shows the correct dashboard banner title in the story DashboardUsNoPremiumEmptyScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Your data is protected"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumEmptyScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+    name: "Get continuous protection",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsNoPremiumUnresolvedScanNoBreaches
+it("shows the correct dashboard banner title in the story DashboardUsNoPremiumUnresolvedScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Let’s protect your data"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumUnresolvedScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s fix it",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches
+it("shows the correct dashboard banner title in the story DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Let’s keep protecting your data"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s keep going",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsNoPremiumUnresolvedScanResolvedBreaches
+it("shows the correct dashboard banner title in the story DashboardUsNoPremiumUnresolvedScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Let’s protect your data"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumUnresolvedScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s fix it",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsNoPremiumResolvedScanNoBreaches
+it("shows the correct dashboard banner title in the story DashboardUsNoPremiumResolvedScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumResolvedScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Your data is protected"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumResolvedScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumResolvedScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+    name: "Get continuous protection",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsNoPremiumResolvedScanUnresolvedBreaches
+it("shows the correct dashboard banner title in the story DashboardUsNoPremiumResolvedScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Let’s keep protecting your data"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumResolvedScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s keep going",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsNoPremiumResolvedScanResolvedBreaches
+it("shows the correct dashboard banner title in the story DashboardUsNoPremiumResolvedScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumResolvedScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Your data is protected"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumResolvedScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumResolvedScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+    name: "Get continuous protection",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsPremiumEmptyScanNoBreaches
+it("shows the correct dashboard banner title in the story DashboardUsPremiumEmptyScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText("");
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsPremiumEmptyScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Monitor more emails",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsPremiumEmptyScanUnresolvedBreaches
+it("shows the correct dashboard banner title in the story DashboardUsPremiumEmptyScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Let’s keep protecting your data"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsPremiumEmptyScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s keep going",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsPremiumEmptyScanResolvedBreaches
+it("shows the correct dashboard banner title in the story DashboardUsPremiumEmptyScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Your data is protected"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsPremiumEmptyScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+    name: "See what’s fixed",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsPremiumUnresolvedScanNoBreaches
+it("shows the correct dashboard banner title in the story DashboardUsPremiumUnresolvedScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Let’s keep protecting your data"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsPremiumUnresolvedScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s keep going",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsPremiumUnresolvedScanUnresolvedBreaches
+it("shows the correct dashboard banner title in the story DashboardUsPremiumUnresolvedScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Let’s protect your data"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsPremiumUnresolvedScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s fix it",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsPremiumUnresolvedScanResolvedBreaches
+it("shows the correct dashboard banner title in the story DashboardUsPremiumUnresolvedScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Let’s keep protecting your data"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsPremiumUnresolvedScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s keep going",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsPremiumResolvedScanNoBreaches
+it("shows the correct dashboard banner title in the story DashboardUsPremiumResolvedScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Your data is protected"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsPremiumResolvedScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+    name: "See what’s fixed",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsPremiumResolvedScanUnresolvedBreaches
+it("shows the correct dashboard banner title in the story DashboardUsPremiumResolvedScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Let’s keep protecting your data"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsPremiumResolvedScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s keep going",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsPremiumResolvedScanResolvedBreaches
+it("shows the correct dashboard banner title in the story DashboardUsPremiumResolvedScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Your data is protected"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsPremiumResolvedScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+    name: "See what’s fixed",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsPremiumScanEmptyInProgressNoBreaches
+it("shows the correct dashboard banner title in the story DashboardUsPremiumScanEmptyInProgressNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanEmptyInProgressNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Your scan is still in progress"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsPremiumScanEmptyInProgressNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanEmptyInProgressNoBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+
+  const dashboardTopBannerCtas = container
+    .getElementsByClassName("explainerContent")[0]
+    .querySelectorAll("button");
+  expect(dashboardTopBannerCtas.length).toBe(0);
+});
+
+// DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches
+it("shows the correct dashboard banner title in the story DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Your scan is still in progress"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "See what’s ready now",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsPremiumScanUnresolvedInProgressNoBreaches
+it("shows the correct dashboard banner title in the story DashboardUsPremiumScanUnresolvedInProgressNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanUnresolvedInProgressNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Your scan is still in progress"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsPremiumScanUnresolvedInProgressNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanUnresolvedInProgressNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "See what’s ready now",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches
+it("shows the correct dashboard banner title in the story DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerTitle = screen.queryAllByText(
+    "Your scan is still in progress"
+  );
+  expect(
+    getRelevantBannerContentTitle(dashboardTopBannerTitle)
+  ).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA in the story DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "See what’s ready now",
+  });
+  expect(
+    getRelevantBannerContentCta(dashboardTopBannerCta)
+  ).toBeInTheDocument();
+});
+
+// DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches
+it("logs a warning in the story DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches,
+    Meta
+  );
+
+  const warnLogSpy = jest.spyOn(global.console, "warn").mockImplementation();
+  render(<ComposedDashboard />);
+
+  expect(warnLogSpy).toHaveBeenCalledWith(
+    "No matching condition for dashboard state found."
+  );
+  warnLogSpy.mockReset();
 });
