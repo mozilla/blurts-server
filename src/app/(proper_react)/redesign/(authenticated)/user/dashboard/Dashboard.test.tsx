@@ -11,17 +11,27 @@ import Meta, {
   DashboardNonUsNoBreaches,
   DashboardNonUsUnresolvedBreaches,
   DashboardNonUsResolvedBreaches,
-  DashboardUsNoPremiumEmptyScanNoBreaches,
-  DashboardUsNoPremiumEmptyScanResolvedBreaches,
   DashboardUsNoPremiumNoScanNoBreaches,
-  DashboardUsNoPremiumResolvedScanResolvedBreaches,
-  DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
+  DashboardUsNoPremiumNoScanUnresolvedBreaches,
+  DashboardUsNoPremiumNoScanResolvedBreaches,
+  DashboardUsNoPremiumEmptyScanNoBreaches,
+  DashboardUsNoPremiumEmptyScanUnresolvedBreaches,
+  DashboardUsNoPremiumEmptyScanResolvedBreaches,
   DashboardUsNoPremiumUnresolvedScanNoBreaches,
   DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+  DashboardUsNoPremiumUnresolvedScanResolvedBreaches,
+  DashboardUsNoPremiumResolvedScanNoBreaches,
+  DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
+  DashboardUsNoPremiumResolvedScanResolvedBreaches,
   DashboardUsPremiumEmptyScanNoBreaches,
+  DashboardUsPremiumEmptyScanUnresolvedBreaches,
   DashboardUsPremiumEmptyScanResolvedBreaches,
-  DashboardUsPremiumResolvedScanResolvedBreaches,
+  DashboardUsPremiumUnresolvedScanNoBreaches,
+  DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+  DashboardUsPremiumUnresolvedScanResolvedBreaches,
+  DashboardUsPremiumResolvedScanNoBreaches,
   DashboardUsPremiumResolvedScanUnresolvedBreaches,
+  DashboardUsPremiumResolvedScanResolvedBreaches,
   DashboardUsPremiumScanEmptyInProgressNoBreaches,
   DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches,
   DashboardUsPremiumScanUnresolvedInProgressNoBreaches,
@@ -33,6 +43,12 @@ jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
   usePathname: jest.fn(),
 }));
+
+function getTopBannerContentCta(ctas: HTMLElement[]) {
+  return ctas.filter((element) =>
+    element.parentElement?.parentElement?.classList.contains("explainerContent")
+  )[0];
+}
 
 it("passes the axe accessibility test suite 1", async () => {
   const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
@@ -57,7 +73,7 @@ it("passes the axe accessibility test suite 3", async () => {
 
 it("passes the axe accessibility test suite 4", async () => {
   const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumEmptyScanNoBreaches,
+    DashboardUsNoPremiumNoScanNoBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
@@ -66,7 +82,7 @@ it("passes the axe accessibility test suite 4", async () => {
 
 it("passes the axe accessibility test suite 5", async () => {
   const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumEmptyScanResolvedBreaches,
+    DashboardUsNoPremiumNoScanUnresolvedBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
@@ -75,7 +91,7 @@ it("passes the axe accessibility test suite 5", async () => {
 
 it("passes the axe accessibility test suite 6", async () => {
   const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumNoScanNoBreaches,
+    DashboardUsNoPremiumNoScanResolvedBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
@@ -84,7 +100,7 @@ it("passes the axe accessibility test suite 6", async () => {
 
 it("passes the axe accessibility test suite 7", async () => {
   const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumResolvedScanResolvedBreaches,
+    DashboardUsNoPremiumEmptyScanNoBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
@@ -93,7 +109,7 @@ it("passes the axe accessibility test suite 7", async () => {
 
 it("passes the axe accessibility test suite 8", async () => {
   const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
+    DashboardUsNoPremiumEmptyScanUnresolvedBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
@@ -102,7 +118,7 @@ it("passes the axe accessibility test suite 8", async () => {
 
 it("passes the axe accessibility test suite 9", async () => {
   const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumUnresolvedScanNoBreaches,
+    DashboardUsNoPremiumEmptyScanResolvedBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
@@ -111,7 +127,7 @@ it("passes the axe accessibility test suite 9", async () => {
 
 it("passes the axe accessibility test suite 10", async () => {
   const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+    DashboardUsNoPremiumUnresolvedScanNoBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
@@ -120,7 +136,7 @@ it("passes the axe accessibility test suite 10", async () => {
 
 it("passes the axe accessibility test suite 11", async () => {
   const ComposedDashboard = composeStory(
-    DashboardUsPremiumEmptyScanNoBreaches,
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
@@ -129,7 +145,7 @@ it("passes the axe accessibility test suite 11", async () => {
 
 it("passes the axe accessibility test suite 12", async () => {
   const ComposedDashboard = composeStory(
-    DashboardUsPremiumEmptyScanResolvedBreaches,
+    DashboardUsNoPremiumUnresolvedScanResolvedBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
@@ -138,7 +154,7 @@ it("passes the axe accessibility test suite 12", async () => {
 
 it("passes the axe accessibility test suite 13", async () => {
   const ComposedDashboard = composeStory(
-    DashboardUsPremiumResolvedScanResolvedBreaches,
+    DashboardUsNoPremiumResolvedScanNoBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
@@ -147,7 +163,7 @@ it("passes the axe accessibility test suite 13", async () => {
 
 it("passes the axe accessibility test suite 14", async () => {
   const ComposedDashboard = composeStory(
-    DashboardUsPremiumResolvedScanUnresolvedBreaches,
+    DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
@@ -156,7 +172,7 @@ it("passes the axe accessibility test suite 14", async () => {
 
 it("passes the axe accessibility test suite 15", async () => {
   const ComposedDashboard = composeStory(
-    DashboardUsPremiumScanEmptyInProgressNoBreaches,
+    DashboardUsNoPremiumResolvedScanResolvedBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
@@ -165,7 +181,7 @@ it("passes the axe accessibility test suite 15", async () => {
 
 it("passes the axe accessibility test suite 16", async () => {
   const ComposedDashboard = composeStory(
-    DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches,
+    DashboardUsPremiumEmptyScanNoBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
@@ -174,7 +190,7 @@ it("passes the axe accessibility test suite 16", async () => {
 
 it("passes the axe accessibility test suite 17", async () => {
   const ComposedDashboard = composeStory(
-    DashboardUsPremiumScanUnresolvedInProgressNoBreaches,
+    DashboardUsPremiumEmptyScanUnresolvedBreaches,
     Meta
   );
   const { container } = render(<ComposedDashboard />);
@@ -183,6 +199,96 @@ it("passes the axe accessibility test suite 17", async () => {
 
 it("passes the axe accessibility test suite 18", async () => {
   const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanResolvedBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 19", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanNoBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 20", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 21", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanResolvedBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 22", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanNoBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 23", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanUnresolvedBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 24", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanResolvedBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 25", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanEmptyInProgressNoBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 26", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 27", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanUnresolvedInProgressNoBreaches,
+    Meta
+  );
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 28", async () => {
+  const ComposedDashboard = composeStory(
     DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches,
     Meta
   );
@@ -190,15 +296,382 @@ it("passes the axe accessibility test suite 18", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("shows the “let’s fix it” banner content", () => {
+it("show the correct dashboard top banner content in the story NonUsNoBreaches", () => {
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Monitor more emails",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story NonUsUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardNonUsUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s fix it",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story NonUsResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+    name: "See what’s fixed",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsNoPremiumNoScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Get first scan free",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsNoPremiumNoScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Get first scan free",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsNoPremiumNoScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Get first scan free",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsNoPremiumEmptyScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Get continuous protection",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsNoPremiumEmptyScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s keep going",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsNoPremiumEmptyScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+    name: "Get continuous protection",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsNoPremiumUnresolvedScanNoBreaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanNoBreaches,
     Meta
   );
   render(<ComposedDashboard />);
 
-  const letsFixItBannerContent = screen.getByText("Let’s protect your data");
-  expect(letsFixItBannerContent).toBeInTheDocument();
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s fix it",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsNoPremiumUnresolvedScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s keep going",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsNoPremiumUnresolvedScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s fix it",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsNoPremiumResolvedScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumResolvedScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+    name: "Get continuous protection",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsNoPremiumResolvedScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s keep going",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsNoPremiumResolvedScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumResolvedScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+    name: "Get continuous protection",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsPremiumEmptyScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Monitor more emails",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsPremiumEmptyScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s keep going",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsPremiumEmptyScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+    name: "See what’s fixed",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsPremiumUnresolvedScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s keep going",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsPremiumUnresolvedScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s fix it",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsPremiumUnresolvedScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s keep going",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsPremiumResolvedScanNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+    name: "See what’s fixed",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsPremiumResolvedScanUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Let’s keep going",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsPremiumResolvedScanResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+    name: "See what’s fixed",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsPremiumScanEmptyInProgressNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanEmptyInProgressNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+});
+
+it("show the correct dashboard top banner content in the story UsPremiumScanEmptyInProgressUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+});
+
+it("show the correct dashboard top banner content in the story UsPremiumScanUnresolvedInProgressNoBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanUnresolvedInProgressNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "See what’s ready now",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story UsPremiumScanUnresolvedInProgressUnresolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "See what’s ready now",
+  });
+  expect(getTopBannerContentCta(dashboardTopBannerCta)).toBeInTheDocument();
+});
+
+it("show the correct dashboard top banner content in the story InvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches,
+    Meta
+  );
+
+  const warnLogSpy = jest.spyOn(global.console, "warn").mockImplementation();
+  render(<ComposedDashboard />);
+
+  expect(warnLogSpy).toHaveBeenCalledWith(
+    "No matching condition for dashboard state found."
+  );
+  warnLogSpy.mockReset();
+});
+
+it("show the correct dashboard top banner content in the story DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches,
+    Meta
+  );
+
+  const warnLogSpy = jest.spyOn(global.console, "warn").mockImplementation();
+  render(<ComposedDashboard />);
+
+  expect(warnLogSpy).toHaveBeenCalledWith(
+    "No matching condition for dashboard state found."
+  );
+  warnLogSpy.mockReset();
 });
 
 it("shows the 'Start a free scan' CTA to free US-based users who haven't performed a scan yet", () => {
@@ -208,7 +681,7 @@ it("shows the 'Start a free scan' CTA to free US-based users who haven't perform
   );
   render(<ComposedDashboard />);
 
-  const freeScanCta = screen.getByRole("link", { name: "Start a free scan" });
+  const freeScanCta = screen.queryByRole("link", { name: "Start a free scan" });
   expect(freeScanCta).toBeInTheDocument();
 });
 
@@ -478,7 +951,7 @@ it("shows scan in progress indicators on the dashboard for users with breaches",
 
   const bannerContent = screen.getByText("Your scan is still in progress");
   expect(bannerContent).toBeInTheDocument();
-  const bannerContentCta = screen.getByRole("link", {
+  const bannerContentCta = screen.queryByRole("link", {
     name: "See what’s ready now",
   });
   expect(bannerContentCta).toBeInTheDocument();
@@ -502,7 +975,7 @@ it("shows scan in progress indicators on the dashboard with results and no breac
 
   const bannerContent = screen.getByText("Your scan is still in progress");
   expect(bannerContent).toBeInTheDocument();
-  const bannerContentCta = screen.getByRole("link", {
+  const bannerContentCta = screen.queryByRole("link", {
     name: "See what’s ready now",
   });
   expect(bannerContentCta).toBeInTheDocument();
@@ -526,7 +999,7 @@ it("shows scan in progress indicators on the dashboard with results and unresolv
 
   const bannerContent = screen.getByText("Your scan is still in progress");
   expect(bannerContent).toBeInTheDocument();
-  const bannerContentCta = screen.getByRole("link", {
+  const bannerContentCta = screen.queryByRole("link", {
     name: "See what’s ready now",
   });
   expect(bannerContentCta).toBeInTheDocument();
@@ -539,19 +1012,4 @@ it("shows scan in progress indicators on the dashboard with results and unresolv
     { exact: false }
   );
   expect(exposureTableDescription).toBeInTheDocument();
-});
-
-it("logs a warning for an invalid dashboard user state", () => {
-  const ComposedDashboard = composeStory(
-    DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches,
-    Meta
-  );
-
-  const warnLogSpy = jest.spyOn(global.console, "warn").mockImplementation();
-  render(<ComposedDashboard />);
-
-  expect(warnLogSpy).toHaveBeenCalledWith(
-    "No matching condition for dashboard state found."
-  );
-  warnLogSpy.mockReset();
 });

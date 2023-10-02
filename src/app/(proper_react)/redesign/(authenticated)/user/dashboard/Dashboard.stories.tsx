@@ -473,7 +473,7 @@ export const DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches: Story
 
 export const DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches: Story =
   {
-    name: "Invalid state: Non-Premium US user, with Premium, with unresolved scan results and a scan in progress, with unresolved breaches",
+    name: "Invalid state: US user, without Premium, with unresolved scan results and a scan in progress, with unresolved breaches",
     args: {
       countryCode: "us",
       premium: false,
