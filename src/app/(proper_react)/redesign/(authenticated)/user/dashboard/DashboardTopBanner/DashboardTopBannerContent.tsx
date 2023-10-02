@@ -37,8 +37,20 @@ interface ContentConditionProps
 const isMatchingContent = (
   contentProps: ContentProps,
   contentConditions: ContentConditionProps
-) =>
-  Object.keys(contentConditions).every((conditionKey) => {
+) => {
+  const { hasExposures, hasUnresolvedBreaches, hasUnresolvedBrokers } =
+    contentConditions;
+  if (
+    (!hasExposures && hasUnresolvedBreaches) ||
+    (!hasExposures && hasUnresolvedBrokers)
+  ) {
+    // If a user does not have any exposures it’s also not possible to have unresolved ones.
+    throw new Error(
+      "Invalid combination of conditions: `hasExposures` can not be `false` if `hasUnresolvedBreaches` or `hasUnresolvedBrokers` is `true`."
+    );
+  }
+
+  return Object.keys(contentConditions).every((conditionKey) => {
     if (conditionKey === "isRelevantGuidedStep") {
       return contentConditions["isRelevantGuidedStep"];
     }
@@ -48,6 +60,7 @@ const isMatchingContent = (
       contentConditions[conditionKey as keyof ContentConditionProps]
     );
   });
+};
 
 export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
   const l10n = useL10n();
@@ -88,6 +101,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
 
   return (
     <div className={styles.explainerContent}>
+      <pre>{JSON.stringify(contentProps, null, 2)}</pre>
       {getTopBannerContent(contentProps, l10n)}
     </div>
   );
@@ -127,7 +141,7 @@ const getTopBannerContent = (
           )}
         </p>
         <div className={styles.cta}>
-          <Button href="" small variant="primary">
+          <Button href="/redesign/user/settings" small variant="primary">
             {l10n.getString("dashboard-top-banner-monitor-more-cta")}
           </Button>
         </div>
@@ -172,7 +186,7 @@ const getTopBannerContent = (
           )}
         </p>
         <div className={styles.cta}>
-          <Button href="" small variant="primary">
+          <Button href={guidedStep.href} small variant="primary">
             {l10n.getString("dashboard-top-banner-protect-your-data-cta")}
           </Button>
         </div>
@@ -293,7 +307,7 @@ const getTopBannerContent = (
           )}
         </p>
         <div className={styles.cta}>
-          <Button href={"relevantGuidedStep.href"} small variant="primary">
+          <Button href={guidedStep.href} small variant="primary">
             {l10n.getString(
               "dashboard-top-banner-monitor-protects-your-even-more-cta"
             )}
@@ -343,7 +357,7 @@ const getTopBannerContent = (
           )}
         </p>
         <div className={styles.cta}>
-          <Button href={"relevantGuidedStep.href"} small variant="primary">
+          <Button href={guidedStep.href} small variant="primary">
             {l10n.getString("dashboard-top-banner-no-exposures-found-cta")}
           </Button>
         </div>
@@ -411,7 +425,7 @@ const getTopBannerContent = (
           )}
         </p>
         <div className={styles.cta}>
-          <Button href="" small variant="primary">
+          <Button href={guidedStep.href} small variant="primary">
             {l10n.getString("dashboard-top-banner-protect-your-data-cta")}
           </Button>
         </div>
@@ -470,35 +484,10 @@ const getTopBannerContent = (
           )}
         </p>
         <div className={styles.cta}>
-          <Button href="" small variant="primary">
+          <Button href={guidedStep.href} small variant="primary">
             {l10n.getString("dashboard-top-banner-lets-keep-protecting-cta")}
           </Button>
         </div>
-      </>
-    );
-  }
-
-  if (
-    /**
-     * - US user
-     * - Non-premium
-     * - No breaches
-     * - Scan: No results
-     */
-    isMatchingContent(contentProps, {
-      isRelevantGuidedStep: guidedStep.id === "ScanResult",
-      hasExposures: true,
-      hasUnresolvedBreaches: false,
-      hasUnresolvedBrokers: true,
-      isEligibleForFreeScan: false,
-      isEligibleForPremium: true,
-      isPremiumUser: false,
-      scanInProgress: false,
-    })
-  ) {
-    return (
-      <>
-        <div>{"15"}</div>
       </>
     );
   }
@@ -611,7 +600,7 @@ const getTopBannerContent = (
           )}
         </p>
         <div className={styles.cta}>
-          <Button href="" small variant="primary">
+          <Button href={guidedStep.href} small variant="primary">
             {l10n.getString("dashboard-top-banner-lets-keep-protecting-cta")}
           </Button>
         </div>
@@ -653,7 +642,7 @@ const getTopBannerContent = (
           )}
         </p>
         <div className={styles.cta}>
-          <Button href="" small variant="primary">
+          <Button href="/redesign/user/settings" small variant="primary">
             {l10n.getString("dashboard-top-banner-monitor-more-cta")}
           </Button>
         </div>
@@ -825,13 +814,7 @@ const getTopBannerContent = (
           {l10n.getString("dashboard-top-banner-scan-in-progress-fix-now-hint")}
         </p>
         <div className={styles.cta}>
-          <Button
-            href={
-              "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers"
-            }
-            small
-            variant="primary"
-          >
+          <Button href={guidedStep.href} small variant="primary">
             {l10n.getString("dashboard-top-banner-scan-in-progress-cta")}
           </Button>
         </div>
