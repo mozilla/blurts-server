@@ -49,7 +49,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
   if (tabType === "fixed") {
     return (
       <ProgressCard
-        resolvedByYou={bannerData.dataBreachFixedNum}
+        resolvedByYou={bannerData.dataBreachFixedExposuresNum}
         autoRemoved={bannerData.dataBrokerFixedNum}
         totalNumExposures={bannerData.totalExposures}
       />
@@ -148,8 +148,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 {
                   exposures_resolved_num:
                     bannerData.totalExposures -
-                    bannerData.dataBreachFixedNum -
-                    bannerData.dataBrokerFixedNum,
+                    bannerData.dataBreachFixedExposuresNum,
                 }
               )}
             </p>
@@ -262,8 +261,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 {
                   remaining_exposures_total_num:
                     bannerData.totalExposures -
-                    bannerData.dataBreachFixedNum -
-                    bannerData.dataBrokerFixedNum,
+                    bannerData.dataBreachFixedExposuresNum,
                 }
               )}
             </p>
@@ -315,8 +313,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 {
                   remaining_exposures_total_num:
                     bannerData.totalExposures -
-                    bannerData.dataBreachFixedNum -
-                    bannerData.dataBrokerFixedNum,
+                    bannerData.dataBreachFixedExposuresNum,
                 }
               )}
             </p>
