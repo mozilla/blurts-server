@@ -92,7 +92,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
       case "NonEligiblePremiumUserNoBreaches":
         return (
           <>
-            <div>{"1"}</div>
             <h3>
               {l10n.getString("dashboard-top-banner-no-exposures-found-title")}
             </h3>
@@ -111,7 +110,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
       case "NonEligiblePremiumUserUnresolvedBreaches":
         return (
           <>
-            <div>{"3"}</div>
             <h3>
               {l10n.getString("dashboard-top-banner-protect-your-data-title")}
             </h3>
@@ -139,7 +137,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
       case "NonEligiblePremiumUserResolvedBreaches":
         return (
           <>
-            <div>{"5"}</div>
             <h3>
               {l10n.getString(
                 "dashboard-top-banner-your-data-is-protected-title"
@@ -174,7 +171,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
       case "UsUserNonPremiumWithoutScan":
         return (
           <>
-            <div>{"8, 10, 12"}</div>
             <h3>
               {l10n.getString(
                 "dashboard-top-banner-monitor-protects-your-even-more-title"
@@ -209,7 +205,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
       case "UsUserNonPremiumNoExposures":
         return (
           <>
-            <div>{"13"}</div>
             <h3>
               {l10n.getString("dashboard-top-banner-no-exposures-found-title")}
             </h3>
@@ -234,7 +229,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
       case "UsUserNonPremiumWithScanUnresolvedExposures":
         return (
           <>
-            <div>{"15, 17, 23"}</div>
             <h3>
               {l10n.getString("dashboard-top-banner-protect-your-data-title")}
             </h3>
@@ -257,7 +251,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
       case "UsUserNonPremiumWithScanRemovalInProgress":
         return (
           <>
-            <div>{"16, 18, 20, 31"}</div>
             <h3>
               {l10n.getString(
                 "dashboard-top-banner-lets-keep-protecting-title"
@@ -286,7 +279,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
       case "UsUserNonPremiumWithScanAllResolved":
         return (
           <>
-            <div>{"21, 28, 36"}</div>
             <h3>
               {l10n.getString(
                 "dashboard-top-banner-your-data-is-protected-title"
@@ -312,7 +304,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
       case "UsUserPremiumOrNonPremiumWithScanUnresolvedExposures":
         return (
           <>
-            <div>{"24, 27, 31, 32, 35, 45, 48 "}</div>
             <h3>
               {l10n.getString(
                 "dashboard-top-banner-lets-keep-protecting-title"
@@ -341,7 +332,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
       case "UsUserPremiumWithScanNoExposures":
         return (
           <>
-            <div>{"43"}</div>
             <h3>
               {l10n.getString("dashboard-top-banner-no-exposures-found-title")}
             </h3>
@@ -366,7 +356,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
       case "UsUserPremiumWithScanAllResolved":
         return (
           <>
-            <div>{"49"}</div>
             <h3>
               {l10n.getString(
                 "dashboard-top-banner-your-data-is-protected-title"
@@ -461,7 +450,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
 
   return (
     <div className={styles.explainerContent}>
-      <pre>{JSON.stringify(contentProps, null, 2)}</pre>
       {getDashboardBannerContent({ userDashboardState, relevantGuidedStep })}
     </div>
   );
