@@ -143,10 +143,15 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </h3>
             <p>
-              {l10n.getString(
+              {l10n.getFragment(
                 "dashboard-top-banner-non-us-your-data-is-protected-description",
                 {
-                  exposures_resolved_num: bannerData.totalExposures,
+                  vars: {
+                    exposures_resolved_num: bannerData.totalExposures,
+                  },
+                  elems: {
+                    b: <strong />,
+                  },
                 }
               )}
             </p>
@@ -235,11 +240,16 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString("dashboard-top-banner-protect-your-data-title")}
             </h3>
             <p>
-              {l10n.getString(
+              {l10n.getFragment(
                 "dashboard-top-banner-protect-your-data-description",
                 {
-                  data_breach_total_num: bannerData.totalExposures,
-                  data_broker_total_num: bannerData.dataBrokerTotalNum,
+                  vars: {
+                    data_breach_total_num: bannerData.totalExposures,
+                    data_broker_total_num: bannerData.dataBrokerTotalNum,
+                  },
+                  elems: {
+                    b: <strong />,
+                  },
                 }
               )}
             </p>
@@ -259,13 +269,18 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </h3>
             <p>
-              {l10n.getString(
+              {l10n.getFragment(
                 "dashboard-top-banner-lets-keep-protecting-description",
                 {
-                  remaining_exposures_total_num:
-                    bannerData.totalExposures -
-                    bannerData.dataBreachFixedExposuresNum -
-                    bannerData.dataBrokerFixedExposuresNum,
+                  vars: {
+                    remaining_exposures_total_num:
+                      bannerData.totalExposures -
+                      bannerData.dataBreachFixedExposuresNum -
+                      bannerData.dataBrokerFixedExposuresNum,
+                  },
+                  elems: {
+                    b: <strong />,
+                  },
                 }
               )}
             </p>
@@ -287,10 +302,15 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </h3>
             <p>
-              {l10n.getString(
+              {l10n.getFragment(
                 "dashboard-top-banner-your-data-is-protected-all-fixed-description",
                 {
-                  starting_exposure_total_num: bannerData.totalExposures,
+                  vars: {
+                    starting_exposure_total_num: bannerData.totalExposures,
+                  },
+                  elems: {
+                    b: <strong />,
+                  },
                 }
               )}
             </p>
@@ -312,13 +332,18 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </h3>
             <p>
-              {l10n.getString(
+              {l10n.getFragment(
                 "dashboard-top-banner-lets-keep-protecting-description",
                 {
-                  remaining_exposures_total_num:
-                    bannerData.totalExposures -
-                    bannerData.dataBreachFixedExposuresNum -
-                    bannerData.dataBrokerFixedExposuresNum,
+                  vars: {
+                    remaining_exposures_total_num:
+                      bannerData.totalExposures -
+                      bannerData.dataBreachFixedExposuresNum -
+                      bannerData.dataBrokerFixedExposuresNum,
+                  },
+                  elems: {
+                    b: <strong />,
+                  },
                 }
               )}
             </p>
@@ -339,7 +364,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </h3>
             <p>
               {l10n.getString(
-                "dashboard-top-banner-non-us-no-exposures-found-description",
+                "dashboard-top-banner-no-exposures-found-description",
                 {
                   data_broker_sites_total_num: parseInt(
                     process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
@@ -364,10 +389,15 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </h3>
             <p>
-              {l10n.getString(
+              {l10n.getFragment(
                 "dashboard-top-banner-your-data-is-protected-description",
                 {
-                  starting_exposure_total_num: bannerData.totalExposures,
+                  vars: {
+                    starting_exposure_total_num: bannerData.totalExposures,
+                  },
+                  elems: {
+                    b: <strong />,
+                  },
                 }
               )}
             </p>
