@@ -50,13 +50,13 @@ function getRelevantBannerContentElement(elements: HTMLElement[]) {
   )[0];
 }
 
-it("passes the axe accessibility test suite 1", async () => {
+it("passes the axe accessibility test suite for DashboardNonUsNoBreaches", async () => {
   const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 2", async () => {
+it("passes the axe accessibility test suite for DashboardNonUsUnresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardNonUsUnresolvedBreaches,
     Meta
@@ -65,13 +65,13 @@ it("passes the axe accessibility test suite 2", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 3", async () => {
+it("passes the axe accessibility test suite for DashboardNonUsResolvedBreaches", async () => {
   const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 4", async () => {
+it("passes the axe accessibility test suite for DashboardUsNoPremiumNoScanNoBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
     Meta
@@ -80,7 +80,7 @@ it("passes the axe accessibility test suite 4", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 5", async () => {
+it("passes the axe accessibility test suite for DashboardUsNoPremiumNoScanUnresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanUnresolvedBreaches,
     Meta
@@ -89,7 +89,7 @@ it("passes the axe accessibility test suite 5", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 6", async () => {
+it("passes the axe accessibility test suite for DashboardUsNoPremiumNoScanResolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanResolvedBreaches,
     Meta
@@ -98,7 +98,7 @@ it("passes the axe accessibility test suite 6", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 7", async () => {
+it("passes the axe accessibility test suite for DashboardUsNoPremiumEmptyScanNoBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanNoBreaches,
     Meta
@@ -107,7 +107,7 @@ it("passes the axe accessibility test suite 7", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 8", async () => {
+it("passes the axe accessibility test suite for DashboardUsNoPremiumEmptyScanUnresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanUnresolvedBreaches,
     Meta
@@ -116,7 +116,7 @@ it("passes the axe accessibility test suite 8", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 9", async () => {
+it("passes the axe accessibility test suite for DashboardUsNoPremiumEmptyScanResolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanResolvedBreaches,
     Meta
@@ -125,7 +125,7 @@ it("passes the axe accessibility test suite 9", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 10", async () => {
+it("passes the axe accessibility test suite for DashboardUsNoPremiumUnresolvedScanNoBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanNoBreaches,
     Meta
@@ -134,7 +134,7 @@ it("passes the axe accessibility test suite 10", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 11", async () => {
+it("passes the axe accessibility test suite for DashboardUsNoPremiumUnresolvedScanUnresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
     Meta
@@ -143,7 +143,7 @@ it("passes the axe accessibility test suite 11", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 12", async () => {
+it("passes the axe accessibility test suite for DashboardUsNoPremiumUnresolvedScanResolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanResolvedBreaches,
     Meta
@@ -152,7 +152,7 @@ it("passes the axe accessibility test suite 12", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 13", async () => {
+it("passes the axe accessibility test suite for DashboardUsNoPremiumResolvedScanNoBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanNoBreaches,
     Meta
@@ -161,7 +161,7 @@ it("passes the axe accessibility test suite 13", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 14", async () => {
+it("passes the axe accessibility test suite for DashboardUsNoPremiumResolvedScanUnresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
     Meta
@@ -170,7 +170,7 @@ it("passes the axe accessibility test suite 14", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 15", async () => {
+it("passes the axe accessibility test suite for DashboardUsNoPremiumResolvedScanResolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanResolvedBreaches,
     Meta
@@ -179,7 +179,7 @@ it("passes the axe accessibility test suite 15", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 16", async () => {
+it("passes the axe accessibility test suite for DashboardUsPremiumEmptyScanNoBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanNoBreaches,
     Meta
@@ -188,7 +188,7 @@ it("passes the axe accessibility test suite 16", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 17", async () => {
+it("passes the axe accessibility test suite for DashboardUsPremiumEmptyScanUnresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanUnresolvedBreaches,
     Meta
@@ -197,7 +197,7 @@ it("passes the axe accessibility test suite 17", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 18", async () => {
+it("passes the axe accessibility test suite for DashboardUsPremiumEmptyScanResolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanResolvedBreaches,
     Meta
@@ -206,7 +206,7 @@ it("passes the axe accessibility test suite 18", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 19", async () => {
+it("passes the axe accessibility test suite for DashboardUsPremiumUnresolvedScanNoBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanNoBreaches,
     Meta
@@ -215,7 +215,7 @@ it("passes the axe accessibility test suite 19", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 20", async () => {
+it("passes the axe accessibility test suite for DashboardUsPremiumUnresolvedScanUnresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
     Meta
@@ -224,7 +224,7 @@ it("passes the axe accessibility test suite 20", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 21", async () => {
+it("passes the axe accessibility test suite for DashboardUsPremiumUnresolvedScanResolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanResolvedBreaches,
     Meta
@@ -233,7 +233,7 @@ it("passes the axe accessibility test suite 21", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 22", async () => {
+it("passes the axe accessibility test suite for DashboardUsPremiumResolvedScanNoBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanNoBreaches,
     Meta
@@ -242,7 +242,7 @@ it("passes the axe accessibility test suite 22", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 23", async () => {
+it("passes the axe accessibility test suite for DashboardUsPremiumResolvedScanUnresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanUnresolvedBreaches,
     Meta
@@ -251,7 +251,7 @@ it("passes the axe accessibility test suite 23", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 24", async () => {
+it("passes the axe accessibility test suite for DashboardUsPremiumResolvedScanResolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanResolvedBreaches,
     Meta
@@ -260,7 +260,7 @@ it("passes the axe accessibility test suite 24", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 25", async () => {
+it("passes the axe accessibility test suite for DashboardUsPremiumScanEmptyInProgressNoBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanEmptyInProgressNoBreaches,
     Meta
@@ -269,7 +269,7 @@ it("passes the axe accessibility test suite 25", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 26", async () => {
+it("passes the axe accessibility test suite for DashboardUsPremiumScanEmptyInProgressUnresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches,
     Meta
@@ -278,7 +278,7 @@ it("passes the axe accessibility test suite 26", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 27", async () => {
+it("passes the axe accessibility test suite for DashboardUsPremiumScanUnresolvedInProgressNoBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanUnresolvedInProgressNoBreaches,
     Meta
@@ -287,7 +287,7 @@ it("passes the axe accessibility test suite 27", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite 28", async () => {
+it("passes the axe accessibility test suite for DashboardUsPremiumScanUnresolvedInProgressUnresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches,
     Meta
@@ -636,8 +636,8 @@ it("shows scan in progress indicators on the dashboard with results and unresolv
   expect(exposureTableDescription).toBeInTheDocument();
 });
 
-// DashboardNonUsNoBreaches
-it("shows the correct dashboard banner title in the story DashboardNonUsNoBreaches", () => {
+// Check dashboard banner content for story DashboardNonUsNoBreaches
+it("shows the correct dashboard banner title for non-US users, no breaches", () => {
   const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
   render(<ComposedDashboard />);
 
@@ -647,7 +647,7 @@ it("shows the correct dashboard banner title in the story DashboardNonUsNoBreach
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardNonUsNoBreaches", () => {
+it("shows the correct dashboard banner CTA for non-US users, no breaches", () => {
   const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
   render(<ComposedDashboard />);
 
@@ -659,8 +659,8 @@ it("shows the correct dashboard banner CTA in the story DashboardNonUsNoBreaches
   ).toBeInTheDocument();
 });
 
-// DashboardNonUsUnresolvedBreaches
-it("shows the correct dashboard banner title in the story DashboardNonUsUnresolvedBreaches", () => {
+// Check dashboard banner content for story DashboardNonUsUnresolvedBreaches
+it("shows the correct dashboard banner title for non-US users, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardNonUsUnresolvedBreaches,
     Meta
@@ -675,7 +675,7 @@ it("shows the correct dashboard banner title in the story DashboardNonUsUnresolv
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardNonUsUnresolvedBreaches", () => {
+it("shows the correct dashboard banner CTA for non-US users, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardNonUsUnresolvedBreaches,
     Meta
@@ -690,8 +690,8 @@ it("shows the correct dashboard banner CTA in the story DashboardNonUsUnresolved
   ).toBeInTheDocument();
 });
 
-// DashboardNonUsResolvedBreaches
-it("shows the correct dashboard banner title in the story DashboardNonUsResolvedBreaches", () => {
+// Check dashboard banner content for story DashboardNonUsResolvedBreaches
+it("shows the correct dashboard banner title for non-US users, resolved breaches", () => {
   const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
   render(<ComposedDashboard />);
 
@@ -703,7 +703,7 @@ it("shows the correct dashboard banner title in the story DashboardNonUsResolved
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardNonUsResolvedBreaches", () => {
+it("shows the correct dashboard banner CTA for non-US users, resolved breaches", () => {
   const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
   render(<ComposedDashboard />);
 
@@ -715,8 +715,8 @@ it("shows the correct dashboard banner CTA in the story DashboardNonUsResolvedBr
   ).toBeInTheDocument();
 });
 
-// DashboardUsNoPremiumNoScanNoBreaches
-it("shows the correct dashboard banner title in the story DashboardUsNoPremiumNoScanNoBreaches", () => {
+// Check dashboard banner content for story DashboardUsNoPremiumNoScanNoBreaches
+it("shows the correct dashboard banner title for US users, without Premium, no scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
     Meta
@@ -731,7 +731,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumNo
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumNoScanNoBreaches", () => {
+it("shows the correct dashboard banner CTA for US users, without Premium, no scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
     Meta
@@ -746,8 +746,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumNoSc
   ).toBeInTheDocument();
 });
 
-// DashboardUsNoPremiumNoScanUnresolvedBreaches
-it("shows the correct dashboard banner title in the story DashboardUsNoPremiumNoScanUnresolvedBreaches", () => {
+// Check dashboard banner content for story DashboardUsNoPremiumNoScanUnresolvedBreaches
+it("shows the correct dashboard banner title for US users, without Premium, no scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanUnresolvedBreaches,
     Meta
@@ -762,7 +762,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumNo
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumNoScanUnresolvedBreaches", () => {
+it("shows the correct dashboard banner CTA for US users, without Premium, no scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanUnresolvedBreaches,
     Meta
@@ -777,8 +777,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumNoSc
   ).toBeInTheDocument();
 });
 
-// DashboardUsNoPremiumNoScanResolvedBreaches
-it("shows the correct dashboard banner title in the story DashboardUsNoPremiumNoScanResolvedBreaches", () => {
+// Check dashboard banner content for story DashboardUsNoPremiumNoScanResolvedBreaches
+it("shows the correct dashboard banner title for US users, without Premium, no scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanResolvedBreaches,
     Meta
@@ -793,7 +793,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumNo
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumNoScanResolvedBreaches", () => {
+it("shows the correct dashboard banner CTA for US users, without Premium, no scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanResolvedBreaches,
     Meta
@@ -808,8 +808,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumNoSc
   ).toBeInTheDocument();
 });
 
-// DashboardUsNoPremiumEmptyScanNoBreaches
-it("shows the correct dashboard banner title in the story DashboardUsNoPremiumEmptyScanNoBreaches", () => {
+// Check dashboard banner content for story DashboardUsNoPremiumEmptyScanNoBreaches
+it("shows the correct dashboard banner title for US users, without Premium, empty scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanNoBreaches,
     Meta
@@ -822,7 +822,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumEm
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumEmptyScanNoBreaches", () => {
+it("shows the correct dashboard banner CTA for US users, without Premium, empty scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanNoBreaches,
     Meta
@@ -837,8 +837,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumEmpt
   ).toBeInTheDocument();
 });
 
-// DashboardUsNoPremiumEmptyScanUnresolvedBreaches
-it("shows the correct dashboard banner title in the story DashboardUsNoPremiumEmptyScanUnresolvedBreaches", () => {
+// Check dashboard banner content for story DashboardUsNoPremiumEmptyScanUnresolvedBreaches
+it("shows the correct dashboard banner title for US users, without Premium, empty scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanUnresolvedBreaches,
     Meta
@@ -853,7 +853,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumEm
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumEmptyScanUnresolvedBreaches", () => {
+it("shows the correct dashboard banner CTA for US users, without Premium, empty scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanUnresolvedBreaches,
     Meta
@@ -868,8 +868,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumEmpt
   ).toBeInTheDocument();
 });
 
-// DashboardUsNoPremiumEmptyScanResolvedBreaches
-it("shows the correct dashboard banner title in the story DashboardUsNoPremiumEmptyScanResolvedBreaches", () => {
+// Check dashboard banner content for story DashboardUsNoPremiumEmptyScanResolvedBreaches
+it("shows the correct dashboard banner title for US users, without Premium, empty scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanResolvedBreaches,
     Meta
@@ -884,7 +884,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumEm
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumEmptyScanResolvedBreaches", () => {
+it("shows the correct dashboard banner CTA for US users, without Premium, empty scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanResolvedBreaches,
     Meta
@@ -899,8 +899,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumEmpt
   ).toBeInTheDocument();
 });
 
-// DashboardUsNoPremiumUnresolvedScanNoBreaches
-it("shows the correct dashboard banner title in the story DashboardUsNoPremiumUnresolvedScanNoBreaches", () => {
+// Check dashboard banner content for story DashboardUsNoPremiumUnresolvedScanNoBreaches
+it("shows the correct dashboard banner title for US users, without Premium, unresolved scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanNoBreaches,
     Meta
@@ -915,7 +915,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumUn
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumUnresolvedScanNoBreaches", () => {
+it("shows the correct dashboard banner CTA for US users, without Premium, unresolved scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanNoBreaches,
     Meta
@@ -930,8 +930,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumUnre
   ).toBeInTheDocument();
 });
 
-// DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches
-it("shows the correct dashboard banner title in the story DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches", () => {
+// Check dashboard banner content for story DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches
+it("shows the correct dashboard banner title for US users, without Premium, UnresolvedScanUnresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
     Meta
@@ -946,7 +946,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumUn
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches", () => {
+it("shows the correct dashboard banner CTA for US users, without Premium, UnresolvedScanUnresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
     Meta
@@ -961,8 +961,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumUnre
   ).toBeInTheDocument();
 });
 
-// DashboardUsNoPremiumUnresolvedScanResolvedBreaches
-it("shows the correct dashboard banner title in the story DashboardUsNoPremiumUnresolvedScanResolvedBreaches", () => {
+// Check dashboard banner content for story DashboardUsNoPremiumUnresolvedScanResolvedBreaches
+it("shows the correct dashboard banner title for US users, without Premium, unresolved scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanResolvedBreaches,
     Meta
@@ -977,7 +977,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumUn
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumUnresolvedScanResolvedBreaches", () => {
+it("shows the correct dashboard banner CTA for US users, without Premium, unresolved scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanResolvedBreaches,
     Meta
@@ -992,8 +992,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumUnre
   ).toBeInTheDocument();
 });
 
-// DashboardUsNoPremiumResolvedScanNoBreaches
-it("shows the correct dashboard banner title in the story DashboardUsNoPremiumResolvedScanNoBreaches", () => {
+// Check dashboard banner content for story DashboardUsNoPremiumResolvedScanNoBreaches
+it("shows the correct dashboard banner title for US users, without Premium, resolved scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanNoBreaches,
     Meta
@@ -1008,7 +1008,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumRe
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumResolvedScanNoBreaches", () => {
+it("shows the correct dashboard banner CTA for US users, without Premium, resolved scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanNoBreaches,
     Meta
@@ -1023,8 +1023,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumReso
   ).toBeInTheDocument();
 });
 
-// DashboardUsNoPremiumResolvedScanUnresolvedBreaches
-it("shows the correct dashboard banner title in the story DashboardUsNoPremiumResolvedScanUnresolvedBreaches", () => {
+// Check dashboard banner content for story DashboardUsNoPremiumResolvedScanUnresolvedBreaches
+it("shows the correct dashboard banner title for US users, without Premium, resolved scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
     Meta
@@ -1039,7 +1039,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumRe
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumResolvedScanUnresolvedBreaches", () => {
+it("shows the correct dashboard banner CTA for US users, without Premium, resolved scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
     Meta
@@ -1054,8 +1054,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumReso
   ).toBeInTheDocument();
 });
 
-// DashboardUsNoPremiumResolvedScanResolvedBreaches
-it("shows the correct dashboard banner title in the story DashboardUsNoPremiumResolvedScanResolvedBreaches", () => {
+// Check dashboard banner content for story DashboardUsNoPremiumResolvedScanResolvedBreaches
+it("shows the correct dashboard banner title for US users, without Premium, resolved scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanResolvedBreaches,
     Meta
@@ -1070,7 +1070,7 @@ it("shows the correct dashboard banner title in the story DashboardUsNoPremiumRe
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumResolvedScanResolvedBreaches", () => {
+it("shows the correct dashboard banner CTA for US users, without Premium, resolved scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanResolvedBreaches,
     Meta
@@ -1085,8 +1085,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsNoPremiumReso
   ).toBeInTheDocument();
 });
 
-// DashboardUsPremiumEmptyScanNoBreaches
-it("shows the correct dashboard banner title in the story DashboardUsPremiumEmptyScanNoBreaches", () => {
+// Check dashboard banner content for story DashboardUsPremiumEmptyScanNoBreaches
+it("shows the correct dashboard banner title for US user, with Premium, empty scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanNoBreaches,
     Meta
@@ -1099,7 +1099,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumEmpt
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsPremiumEmptyScanNoBreaches", () => {
+it("shows the correct dashboard banner CTA for US user, with Premium, empty scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanNoBreaches,
     Meta
@@ -1114,8 +1114,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumEmptyS
   ).toBeInTheDocument();
 });
 
-// DashboardUsPremiumEmptyScanUnresolvedBreaches
-it("shows the correct dashboard banner title in the story DashboardUsPremiumEmptyScanUnresolvedBreaches", () => {
+// Check dashboard banner content for story DashboardUsPremiumEmptyScanUnresolvedBreaches
+it("shows the correct dashboard banner title for US user, with Premium, empty scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanUnresolvedBreaches,
     Meta
@@ -1130,7 +1130,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumEmpt
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsPremiumEmptyScanUnresolvedBreaches", () => {
+it("shows the correct dashboard banner CTA for US user, with Premium, empty scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanUnresolvedBreaches,
     Meta
@@ -1145,8 +1145,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumEmptyS
   ).toBeInTheDocument();
 });
 
-// DashboardUsPremiumEmptyScanResolvedBreaches
-it("shows the correct dashboard banner title in the story DashboardUsPremiumEmptyScanResolvedBreaches", () => {
+// Check dashboard banner content for story DashboardUsPremiumEmptyScanResolvedBreaches
+it("shows the correct dashboard banner title for US user, with Premium, empty scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanResolvedBreaches,
     Meta
@@ -1161,7 +1161,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumEmpt
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsPremiumEmptyScanResolvedBreaches", () => {
+it("shows the correct dashboard banner CTA for US user, with Premium, empty scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanResolvedBreaches,
     Meta
@@ -1176,8 +1176,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumEmptyS
   ).toBeInTheDocument();
 });
 
-// DashboardUsPremiumUnresolvedScanNoBreaches
-it("shows the correct dashboard banner title in the story DashboardUsPremiumUnresolvedScanNoBreaches", () => {
+// Check dashboard banner content for story DashboardUsPremiumUnresolvedScanNoBreaches
+it("shows the correct dashboard banner title for US user, with Premium, unresolved scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanNoBreaches,
     Meta
@@ -1192,7 +1192,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumUnre
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsPremiumUnresolvedScanNoBreaches", () => {
+it("shows the correct dashboard banner CTA for US user, with Premium, unresolved scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanNoBreaches,
     Meta
@@ -1207,8 +1207,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumUnreso
   ).toBeInTheDocument();
 });
 
-// DashboardUsPremiumUnresolvedScanUnresolvedBreaches
-it("shows the correct dashboard banner title in the story DashboardUsPremiumUnresolvedScanUnresolvedBreaches", () => {
+// Check dashboard banner content for story DashboardUsPremiumUnresolvedScanUnresolvedBreaches
+it("shows the correct dashboard banner title for US user, with Premium, UnresolvedScanUnresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
     Meta
@@ -1223,7 +1223,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumUnre
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsPremiumUnresolvedScanUnresolvedBreaches", () => {
+it("shows the correct dashboard banner CTA for US user, with Premium, UnresolvedScanUnresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
     Meta
@@ -1238,8 +1238,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumUnreso
   ).toBeInTheDocument();
 });
 
-// DashboardUsPremiumUnresolvedScanResolvedBreaches
-it("shows the correct dashboard banner title in the story DashboardUsPremiumUnresolvedScanResolvedBreaches", () => {
+// Check dashboard banner content for story DashboardUsPremiumUnresolvedScanResolvedBreaches
+it("shows the correct dashboard banner title for US user, with Premium, unresolved scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanResolvedBreaches,
     Meta
@@ -1254,7 +1254,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumUnre
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsPremiumUnresolvedScanResolvedBreaches", () => {
+it("shows the correct dashboard banner CTA for US user, with Premium, unresolved scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanResolvedBreaches,
     Meta
@@ -1269,8 +1269,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumUnreso
   ).toBeInTheDocument();
 });
 
-// DashboardUsPremiumResolvedScanNoBreaches
-it("shows the correct dashboard banner title in the story DashboardUsPremiumResolvedScanNoBreaches", () => {
+// Check dashboard banner content for story DashboardUsPremiumResolvedScanNoBreaches
+it("shows the correct dashboard banner title for US user, with Premium, resolved scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanNoBreaches,
     Meta
@@ -1285,7 +1285,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumReso
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsPremiumResolvedScanNoBreaches", () => {
+it("shows the correct dashboard banner CTA for US user, with Premium, resolved scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanNoBreaches,
     Meta
@@ -1300,8 +1300,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumResolv
   ).toBeInTheDocument();
 });
 
-// DashboardUsPremiumResolvedScanUnresolvedBreaches
-it("shows the correct dashboard banner title in the story DashboardUsPremiumResolvedScanUnresolvedBreaches", () => {
+// Check dashboard banner content for story DashboardUsPremiumResolvedScanUnresolvedBreaches
+it("shows the correct dashboard banner title for US user, with Premium, resolved scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanUnresolvedBreaches,
     Meta
@@ -1316,7 +1316,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumReso
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsPremiumResolvedScanUnresolvedBreaches", () => {
+it("shows the correct dashboard banner CTA for US user, with Premium, resolved scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanUnresolvedBreaches,
     Meta
@@ -1331,8 +1331,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumResolv
   ).toBeInTheDocument();
 });
 
-// DashboardUsPremiumResolvedScanResolvedBreaches
-it("shows the correct dashboard banner title in the story DashboardUsPremiumResolvedScanResolvedBreaches", () => {
+// Check dashboard banner content for story DashboardUsPremiumResolvedScanResolvedBreaches
+it("shows the correct dashboard banner title for US user, with Premium, resolved scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanResolvedBreaches,
     Meta
@@ -1347,7 +1347,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumReso
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsPremiumResolvedScanResolvedBreaches", () => {
+it("shows the correct dashboard banner CTA for US user, with Premium, resolved scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanResolvedBreaches,
     Meta
@@ -1362,8 +1362,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumResolv
   ).toBeInTheDocument();
 });
 
-// DashboardUsPremiumScanEmptyInProgressNoBreaches
-it("shows the correct dashboard banner title in the story DashboardUsPremiumScanEmptyInProgressNoBreaches", () => {
+// Check dashboard banner content for story DashboardUsPremiumScanEmptyInProgressNoBreaches
+it("shows the correct dashboard banner title for US user, with Premium, scan empty and in progress, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanEmptyInProgressNoBreaches,
     Meta
@@ -1378,7 +1378,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumScan
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsPremiumScanEmptyInProgressNoBreaches", () => {
+it("shows the correct dashboard banner CTA for US user, with Premium, scan empty and in progress, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanEmptyInProgressNoBreaches,
     Meta
@@ -1391,8 +1391,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumScanEm
   expect(dashboardTopBannerCtas.length).toBe(0);
 });
 
-// DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches
-it("shows the correct dashboard banner title in the story DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches", () => {
+// Check dashboard banner content for story DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches
+it("shows the correct dashboard banner title for US user, with Premium, scan empty and in progress, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches,
     Meta
@@ -1407,7 +1407,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumScan
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches", () => {
+it("shows the correct dashboard banner CTA for US user, with Premium, scan empty and in progress, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches,
     Meta
@@ -1422,8 +1422,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumScanEm
   ).toBeInTheDocument();
 });
 
-// DashboardUsPremiumScanUnresolvedInProgressNoBreaches
-it("shows the correct dashboard banner title in the story DashboardUsPremiumScanUnresolvedInProgressNoBreaches", () => {
+// Check dashboard banner content for story DashboardUsPremiumScanUnresolvedInProgressNoBreaches
+it("shows the correct dashboard banner title for US user, with Premium, scan unresolved and in progress, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanUnresolvedInProgressNoBreaches,
     Meta
@@ -1438,7 +1438,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumScan
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsPremiumScanUnresolvedInProgressNoBreaches", () => {
+it("shows the correct dashboard banner CTA for US user, with Premium, scan unresolved and in progress, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanUnresolvedInProgressNoBreaches,
     Meta
@@ -1453,8 +1453,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumScanUn
   ).toBeInTheDocument();
 });
 
-// DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches
-it("shows the correct dashboard banner title in the story DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches", () => {
+// Check dashboard banner content for story DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches
+it("shows the correct dashboard banner title for US user, with Premium, scan unresolved and in progress, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches,
     Meta
@@ -1469,7 +1469,7 @@ it("shows the correct dashboard banner title in the story DashboardUsPremiumScan
   ).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA in the story DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches", () => {
+it("shows the correct dashboard banner CTA for US user, with Premium, scan unresolved and in progress, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches,
     Meta
@@ -1484,8 +1484,8 @@ it("shows the correct dashboard banner CTA in the story DashboardUsPremiumScanUn
   ).toBeInTheDocument();
 });
 
-// DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches
-it("logs a warning in the story DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches", () => {
+// Check dashboard banner content for story DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches
+it("logs a warning in the story for an invalid user state", () => {
   const ComposedDashboard = composeStory(
     DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches,
     Meta
