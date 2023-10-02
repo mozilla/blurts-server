@@ -16,6 +16,7 @@ import {
   useL10n,
 } from "../../../../../../hooks/l10n";
 import PremiumButton from "../../../../../../components/client/PremiumButton";
+import { DashboardSummary } from "../../../../../../functions/server/dashboard";
 
 export interface ContentProps {
   relevantGuidedStep: StepLink;
@@ -65,18 +66,32 @@ const isMatchingContent = (
 export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
   const l10n = useL10n();
 
-  if (props.tabType === "fixed") {
+  const {
+    tabType,
+    bannerData,
+    stepDeterminationData,
+    hasExposures,
+    hasUnresolvedBreaches,
+    hasUnresolvedBrokers,
+    isEligibleForFreeScan,
+    isEligibleForPremium,
+    isPremiumUser,
+    scanInProgress,
+    onShowFixed,
+  } = props;
+
+  if (tabType === "fixed") {
     return (
       <ProgressCard
-        resolvedByYou={props.bannerData.dataBreachFixedNum}
-        autoRemoved={props.bannerData.dataBrokerFixedNum}
-        totalNumExposures={props.bannerData.totalExposures}
+        resolvedByYou={bannerData.dataBreachFixedNum}
+        autoRemoved={bannerData.dataBrokerFixedNum}
+        totalNumExposures={bannerData.totalExposures}
       />
     );
   }
 
   const relevantGuidedStep = getRelevantGuidedSteps(
-    props.stepDeterminationData
+    stepDeterminationData
   ).current;
 
   // There should be a relevant next step for every user (even if it's just
@@ -89,28 +104,33 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
 
   const contentProps = {
     relevantGuidedStep,
-    hasExposures: props.hasExposures,
-    hasUnresolvedBreaches: props.hasUnresolvedBreaches,
-    hasUnresolvedBrokers: props.hasUnresolvedBrokers,
-    isEligibleForFreeScan: props.isEligibleForFreeScan,
-    isEligibleForPremium: props.isEligibleForPremium,
-    isPremiumUser: props.isPremiumUser,
-    scanInProgress: props.scanInProgress,
-    onShowFixed: props.onShowFixed,
+    hasExposures,
+    hasUnresolvedBreaches,
+    hasUnresolvedBrokers,
+    isEligibleForFreeScan,
+    isEligibleForPremium,
+    isPremiumUser,
+    scanInProgress,
+    onShowFixed,
   };
 
   return (
     <div className={styles.explainerContent}>
       <pre>{JSON.stringify(contentProps, null, 2)}</pre>
-      {getTopBannerContent(contentProps, l10n)}
+      {getTopBannerContent({ contentProps, bannerData, l10n })}
     </div>
   );
 };
 
-const getTopBannerContent = (
-  contentProps: ContentProps,
-  l10n: ExtendedReactLocalization
-) => {
+const getTopBannerContent = ({
+  contentProps,
+  bannerData,
+  l10n,
+}: {
+  contentProps: ContentProps;
+  bannerData: DashboardSummary;
+  l10n: ExtendedReactLocalization;
+}) => {
   const guidedStep = contentProps.relevantGuidedStep;
 
   if (
@@ -176,8 +196,8 @@ const getTopBannerContent = (
             "dashboard-exposures-breaches-scan-progress-description",
             {
               vars: {
-                exposures_total_num: 3,
-                data_breach_total_num: 1,
+                exposures_total_num: bannerData.totalExposures,
+                data_breach_total_num: bannerData.dataBreachTotalNum,
               },
               elems: {
                 b: <strong />,
@@ -221,7 +241,10 @@ const getTopBannerContent = (
           {l10n.getString(
             "dashboard-top-banner-non-us-your-data-is-protected-description",
             {
-              exposures_resolved_num: 45,
+              exposures_resolved_num:
+                bannerData.totalExposures -
+                bannerData.dataBreachFixedNum -
+                bannerData.dataBrokerFixedNum,
             }
           )}
         </p>
@@ -302,7 +325,10 @@ const getTopBannerContent = (
           {l10n.getString(
             "dashboard-top-banner-monitor-protects-your-even-more-description",
             {
-              data_broker_sites_total_num: 190,
+              data_broker_sites_total_num: parseInt(
+                process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                10
+              ),
             }
           )}
         </p>
@@ -352,7 +378,10 @@ const getTopBannerContent = (
           {l10n.getString(
             "dashboard-top-banner-no-exposures-found-description",
             {
-              data_broker_sites_total_num: 190,
+              data_broker_sites_total_num: parseInt(
+                process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                10
+              ),
             }
           )}
         </p>
@@ -419,8 +448,8 @@ const getTopBannerContent = (
           {l10n.getString(
             "dashboard-top-banner-protect-your-data-description",
             {
-              data_breach_total_num: 123,
-              data_broker_total_num: 123,
+              data_breach_total_num: bannerData.totalExposures,
+              data_broker_total_num: bannerData.dataBrokerTotalNum,
             }
           )}
         </p>
@@ -477,9 +506,10 @@ const getTopBannerContent = (
           {l10n.getString(
             "dashboard-top-banner-lets-keep-protecting-description",
             {
-              remaining_exposures_total_num: 13,
-              // props.bannerData.totalExposures -
-              // props.bannerData.dataBrokerFixedNum,
+              remaining_exposures_total_num:
+                bannerData.totalExposures -
+                bannerData.dataBreachFixedNum -
+                bannerData.dataBrokerFixedNum,
             }
           )}
         </p>
@@ -593,9 +623,10 @@ const getTopBannerContent = (
           {l10n.getString(
             "dashboard-top-banner-lets-keep-protecting-description",
             {
-              remaining_exposures_total_num: 13,
-              // props.bannerData.totalExposures -
-              // props.bannerData.dataBrokerFixedNum,
+              remaining_exposures_total_num:
+                bannerData.totalExposures -
+                bannerData.dataBreachFixedNum -
+                bannerData.dataBrokerFixedNum,
             }
           )}
         </p>
@@ -637,7 +668,10 @@ const getTopBannerContent = (
           {l10n.getString(
             "dashboard-top-banner-no-exposures-found-description",
             {
-              data_broker_sites_total_num: 190,
+              data_broker_sites_total_num: parseInt(
+                process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                10
+              ),
             }
           )}
         </p>
@@ -725,8 +759,7 @@ const getTopBannerContent = (
             "dashboard-top-banner-scan-in-progress-description",
             {
               vars: {
-                // data_breach_total_num: props.bannerData.totalExposures,
-                data_breach_total_num: 0,
+                data_breach_total_num: bannerData.totalExposures,
               },
               elems: {
                 b: <strong />,
@@ -801,8 +834,7 @@ const getTopBannerContent = (
             "dashboard-top-banner-scan-in-progress-description",
             {
               vars: {
-                // data_breach_total_num: props.bannerData.totalExposures,
-                data_breach_total_num: 123,
+                data_breach_total_num: bannerData.totalExposures,
               },
               elems: {
                 b: <strong />,
