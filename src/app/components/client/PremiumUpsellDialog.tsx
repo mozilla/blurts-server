@@ -14,10 +14,11 @@ import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
 import ModalImage from "../client/assets/premium-upsell-dialog-icon.svg";
 import styles from "./PremiumUpsellDialog.module.scss";
-import getPremiumSubscriptionUrl from "../../functions/universal/getPremiumSubscriptionUrl";
 
 export interface PremiumUpsellDialogProps {
   state: OverlayTriggerState;
+  monthlySubscriptionUrl: string;
+  yearlySubscriptionUrl: string;
 }
 
 function PremiumPricingLabel({ isMonthly }: { isMonthly?: boolean }) {
@@ -59,7 +60,15 @@ function PremiumPricingLabel({ isMonthly }: { isMonthly?: boolean }) {
   );
 }
 
-function PremiumUpsellDialogContent() {
+export interface PremiumUpsellDialogContentProps {
+  monthlySubscriptionUrl: string;
+  yearlySubscriptionUrl: string;
+}
+
+function PremiumUpsellDialogContent({
+  monthlySubscriptionUrl,
+  yearlySubscriptionUrl,
+}: PremiumUpsellDialogContentProps) {
   const l10n = useL10n();
   const [selectedTab, setSelectedTab] = useState<Key>("yearly");
 
@@ -81,6 +90,7 @@ function PremiumUpsellDialogContent() {
     },
   ];
 
+  console.debug("test4:", monthlySubscriptionUrl, yearlySubscriptionUrl);
   return (
     <div className={styles.modalContent}>
       <div className={styles.productPlans}>
@@ -129,9 +139,7 @@ function PremiumUpsellDialogContent() {
       </dl>
       <Button
         className={styles.productCta}
-        href={getPremiumSubscriptionUrl({
-          type: isMonthly ? "monthly" : "yearly",
-        })}
+        href={isMonthly ? monthlySubscriptionUrl : yearlySubscriptionUrl}
         variant="primary"
       >
         {isMonthly
@@ -148,6 +156,8 @@ function PremiumUpsellDialogContent() {
 
 function PremiumUpsellDialog({
   state,
+  yearlySubscriptionUrl,
+  monthlySubscriptionUrl,
   ...otherProps
 }: PremiumUpsellDialogProps & OverlayTriggerProps) {
   const l10n = useL10n();
@@ -162,7 +172,10 @@ function PremiumUpsellDialog({
             onDismiss={() => void state.close()}
             variant="horizontal"
           >
-            <PremiumUpsellDialogContent />
+            <PremiumUpsellDialogContent
+              monthlySubscriptionUrl={monthlySubscriptionUrl}
+              yearlySubscriptionUrl={yearlySubscriptionUrl}
+            />
           </Dialog>
         </ModalOverlay>
       )}

@@ -8,7 +8,6 @@ import React, { useState } from "react";
 import styles from "../dataBrokerProfiles.module.scss";
 import { Button } from "../../../../../../../../components/server/Button";
 import { useL10n } from "../../../../../../../../hooks/l10n";
-import getPremiumSubscriptionUrl from "../../../../../../../../functions/universal/getPremiumSubscriptionUrl";
 
 export default function AutomaticRemove() {
   const l10n = useL10n();

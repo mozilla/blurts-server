@@ -9,11 +9,14 @@ import { authOptions } from "../../../../../api/utils/auth";
 import { Shell } from "../../../Shell";
 import { SignInButton } from "../../../../../(nextjs_migration)/components/client/SignInButton";
 import { headers } from "next/headers";
+import getPremiumSubscriptionUrl from "../../../../../functions/server/getPremiumSubscriptionUrl";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();
   const l10n = getL10n(l10nBundles);
   const session = await getServerSession(authOptions);
+  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
+  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
 
   if (!session) {
     return <SignInButton autoSignIn={true} />;
@@ -22,7 +25,13 @@ export default async function Layout({ children }: { children: ReactNode }) {
   const nonce = headers().get("x-nonce") ?? "";
 
   return (
-    <Shell l10n={l10n} session={session} nonce={nonce}>
+    <Shell
+      l10n={l10n}
+      session={session}
+      nonce={nonce}
+      monthlySubscriptionUrl={monthlySubscriptionUrl}
+      yearlySubscriptionUrl={yearlySubscriptionUrl}
+    >
       {children}
     </Shell>
   );
