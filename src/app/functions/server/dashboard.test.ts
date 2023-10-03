@@ -519,6 +519,7 @@ describe("getDashboardSummary", () => {
     expect(summary.totalExposures).toBe(summary.dataBreachTotalExposuresNum);
     expect(summary.totalExposures).toBe(summary.dataBreachFixedExposuresNum);
     expect(summary.dataBrokerInProgressExposuresNum).toBe(0);
+    expect(summary.unresolvedExposures.emailAddresses).toBe(0);
   });
 
   it("gets scanned results only summary", () => {
@@ -553,6 +554,7 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBrokerFixedExposuresNum).toBe(
       summary.dataBrokerTotalExposuresNum
     );
+    expect(summary.unresolvedExposures.emailAddresses).toBe(0);
   });
 
   it("gets scanned results in-progress and fixed summary", () => {
@@ -579,6 +581,7 @@ describe("getDashboardSummary", () => {
       summary.inProgressExposures.familyMembers +
         summary.fixedExposures.familyMembers
     );
+    expect(summary.unresolvedExposures.emailAddresses).toBe(0);
   });
 
   it("gets scanned results manually removed summary", () => {
@@ -592,6 +595,7 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBrokerFixedExposuresNum).toBe(
       summary.dataBrokerTotalExposuresNum
     );
+    expect(summary.unresolvedExposures.emailAddresses).toBe(0);
   });
 
   it("gets mix scanned results & breaches summary", () => {
@@ -607,6 +611,7 @@ describe("getDashboardSummary", () => {
     expect(summary.totalExposures).toBe(
       summary.dataBrokerTotalExposuresNum + summary.dataBreachTotalExposuresNum
     );
+    expect(summary.unresolvedExposures.emailAddresses).toBe(6);
   });
 
   it("gets mix scanned results & breaches all resolved summary", () => {
@@ -620,8 +625,10 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBrokerTotalNum).toBe(3);
     expect(summary.dataBrokerTotalExposuresNum).toBe(39);
     expect(summary.dataBrokerFixedExposuresNum).toBe(39);
+    expect(summary.dataBrokerInProgressExposuresNum).toBe(0);
     expect(summary.totalExposures).toBe(
       summary.dataBreachFixedExposuresNum + summary.dataBrokerFixedExposuresNum
     );
+    expect(summary.unresolvedExposures.emailAddresses).toBe(0);
   });
 });
