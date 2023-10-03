@@ -5,7 +5,7 @@
 import { ReactNode } from "react";
 import Script from "next/script";
 import { L10nProvider } from "../../contextProviders/localization";
-import { getL10nBundles, getLocale } from "../functions/server/l10n";
+import { getL10nBundles } from "../functions/server/l10n";
 import { HandleFalseDoorTest } from "./components/client/FalseDoorBanner";
 import { isFlagEnabled } from "../functions/server/featureFlags";
 import { getCountryCode } from "../functions/server/getCountryCode";

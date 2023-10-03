@@ -7,7 +7,8 @@ import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { getServerSession } from "next-auth";
-import { getLocale, getL10n } from "./functions/server/l10n";
+import { getL10n, getL10nBundles } from "./functions/server/l10n";
+import { getLocale } from "./functions/universal/getLocale";
 import { SessionProvider } from "../contextProviders/session";
 import { authOptions } from "./api/utils/auth";
 import { metropolis } from "./fonts/Metropolis/metropolis";
@@ -45,7 +46,7 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 }) {
-  const currentLocale = getLocale();
+  const currentLocale = getLocale(getL10nBundles());
   const session = await getServerSession(authOptions);
 
   return (

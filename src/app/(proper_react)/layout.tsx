@@ -3,7 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ReactNode } from "react";
-import { getL10nBundles, getLocale } from "../functions/server/l10n";
+import { getL10nBundles } from "../functions/server/l10n";
+import { getLocale } from "../functions/universal/getLocale";
 import { L10nProvider } from "../../contextProviders/localization";
 import { ReactAriaI18nProvider } from "../../contextProviders/react-aria";
 

@@ -9,7 +9,6 @@ import { View } from "./View";
 import { authOptions } from "../../../../../api/utils/auth";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../functions/server/getUserBreaches";
-import { getLocale } from "../../../../../functions/server/l10n";
 import { canSubscribeToPremium } from "../../../../../functions/universal/user";
 import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
@@ -36,7 +35,6 @@ export default async function DashboardPage() {
 
   const latestScan = await getLatestOnerepScanResults(profileId);
   const subBreaches = await getSubscriberBreaches(session.user);
-  const locale = getLocale();
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(
     session.user,
@@ -57,7 +55,6 @@ export default async function DashboardPage() {
       isEligibleForFreeScan={userIsEligibleForFreeScan}
       userScanData={latestScan}
       userBreaches={subBreaches}
-      locale={locale}
       featureFlagsEnabled={featureFlagsEnabled}
     />
   );

@@ -42,6 +42,7 @@ const customJestConfig = {
     "<rootDir>/src/db/knexfile.js",
     "<rootDir>/src/apiMocks/mockData.ts",
     "<rootDir>/src/(.+).stories.(ts|tsx)",
+    "<rootDir>/.storybook/",
     // Old, pre-Next.js code assumed to be working:
     "<rootDir>/src/appConstants.js",
     "<rootDir>/src/views/",
