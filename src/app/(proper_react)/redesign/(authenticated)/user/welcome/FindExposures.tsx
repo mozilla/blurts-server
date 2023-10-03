@@ -72,7 +72,7 @@ export const FindExposures = ({
       const nextProgress = scanProgress + percentageSteps;
       setScanProgress(Math.min(nextProgress, maxProgress));
 
-      // Periodically checki the scan progress and set the result if finished.
+      // Periodically check the scan progress and set the result if finished.
       if (!checkingScanProgress && !scanFinished) {
         setCheckingScanProgress(true);
         void fetch("/api/v1/user/welcome-scan/progress")
