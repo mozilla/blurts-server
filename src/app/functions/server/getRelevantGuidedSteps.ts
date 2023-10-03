@@ -7,7 +7,7 @@ import { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { BreachDataTypes, HighRiskDataTypes } from "../universal/breach";
 
-export type InputData = {
+export type StepDeterminationData = {
   user: Session["user"];
   countryCode: string;
   latestScanData: LatestOnerepScanData | null;
@@ -34,7 +34,7 @@ export const stepLinks = [
     id: "HighRiskBankAccount",
   },
   {
-    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/pin-number",
+    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/pin",
     id: "HighRiskPin",
   },
   {
@@ -69,11 +69,6 @@ export type StepLinkWithStatus = (typeof stepLinks)[number] & {
   completed: boolean;
 };
 
-export type OutputData = {
-  current: StepLink | null;
-  skipTarget: StepLink | null;
-};
-
 export function isGuidedResolutionInProgress(stepId: StepLink["id"]) {
   const inProgressStepIds = stepLinks
     .filter((step) => step.id !== "Scan" && step.id !== "Done")
@@ -82,7 +77,7 @@ export function isGuidedResolutionInProgress(stepId: StepLink["id"]) {
 }
 
 export function getNextGuidedStep(
-  data: InputData,
+  data: StepDeterminationData,
   afterStep?: StepLink["id"]
 ): StepLink | null {
   // Resisting the urge to add a state machine... ^.^
@@ -93,15 +88,19 @@ export function getNextGuidedStep(
     return stepLink.eligible && !stepLink.completed;
   });
 
+  // In practice, there should always be a next step (at least "Done")
+  /* c8 ignore next */
   return nextStep ?? null;
 }
 
-export function getGuidedStepStatuses(data: InputData): StepLinkWithStatus[] {
+export function getGuidedStepStatuses(
+  data: StepDeterminationData
+): StepLinkWithStatus[] {
   return stepLinks.map((stepLink) => getStepWithStatus(data, stepLink));
 }
 
 function getStepWithStatus(
-  data: InputData,
+  data: StepDeterminationData,
   stepLink: StepLink
 ): StepLinkWithStatus {
   return {
@@ -111,7 +110,10 @@ function getStepWithStatus(
   };
 }
 
-function isEligibleFor(data: InputData, stepId: StepLink["id"]): boolean {
+function isEligibleFor(
+  data: StepDeterminationData,
+  stepId: StepLink["id"]
+): boolean {
   if (stepId === "Scan") {
     return data.countryCode === "us";
   }
@@ -157,7 +159,10 @@ function isEligibleFor(data: InputData, stepId: StepLink["id"]): boolean {
   return false as never;
 }
 
-function hasCompleted(data: InputData, stepId: StepLink["id"]): boolean {
+function hasCompleted(
+  data: StepDeterminationData,
+  stepId: StepLink["id"]
+): boolean {
   if (stepId === "Scan") {
     const hasRunScan =
       typeof data.latestScanData?.scan === "object" &&

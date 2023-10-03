@@ -6,9 +6,9 @@ import type { ReactNode } from "react";
 import emailIllustration from "../images/security-recommendations-email.svg";
 import phoneIllustration from "../images/security-recommendations-phone.svg";
 import ipIllustration from "../images/security-recommendations-ip.svg";
-import { getL10n } from "../../../../../../../functions/server/l10n";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
+import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
 
 export type SecurityRecommendationContent = {
   summary: string;
@@ -33,12 +33,12 @@ export type SecurityRecommendation = {
 function getSecurityRecommendationsByType({
   dataType,
   breaches,
+  l10n,
 }: {
   dataType: string;
   breaches: GuidedExperienceBreaches;
+  l10n: ExtendedReactLocalization;
 }) {
-  const l10n = getL10n();
-
   const securityRecommendationsData: SecurityRecommendation[] = [
     {
       type: "phone",
