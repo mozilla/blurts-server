@@ -184,6 +184,7 @@ declare module "knex/types/tables" {
     onerep_profile_id: number;
     onerep_scan_id: number;
     onerep_scan_reason: Scan["reason"];
+    onerep_scan_status: Scan["status"];
     created_at: Date;
     updated_at: Date;
   }
@@ -236,7 +237,7 @@ declare module "knex/types/tables" {
 
   interface OnerepProfileRow {
     id: number;
-    onerep_profile_id: null | SubscriberRow["onerep_profile_id"];
+    onerep_profile_id: null | number;
     first_name: string;
     last_name: string;
     city_name: string;

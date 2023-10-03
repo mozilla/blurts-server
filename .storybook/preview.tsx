@@ -5,6 +5,8 @@
 import React, { useEffect } from "react";
 import { Inter } from "next/font/google";
 import type { Preview } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
+import { linkTo } from "@storybook/addon-links";
 import "../src/app/globals.css";
 import { L10nProvider } from "../src/contextProviders/localization";
 import { metropolis } from "../src/app/fonts/Metropolis/metropolis";
@@ -35,6 +37,16 @@ const AppDecorator: Exclude<Preview["decorators"], undefined>[0] = (
   );
 };
 
+// Arguments to the `storySort` callback, left as documentation.
+type SortData = {
+  type: "story";
+  id: string;
+  name: string;
+  title: string;
+  importPath: string;
+  tags: Array<"story" | string>;
+};
+
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
@@ -46,9 +58,46 @@ const preview: Preview = {
     },
     // https://storybook.js.org/docs/react/configure/story-layout
     layout: "fullscreen",
+    options: {
+      // https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#sorting-stories
+      // @ts-ignore Storybook appears to not parse this as TypeScript, so we can't
+      //            add `SortData` type annotations. See
+      //            https://github.com/storybookjs/storybook/issues/21702#issuecomment-1517154204
+      storySort: (a, b) =>
+        a.title.localeCompare(b.title, undefined, { numeric: true }),
+    },
     nextjs: {
       // See https://storybook.js.org/blog/integrate-nextjs-and-storybook-automatically/#nextnavigation
       appDirectory: true,
+      navigation: {
+        push(path: string, ...otherArgs: unknown[]) {
+          action("nextNavigation.push")(path, ...otherArgs);
+
+          if (path === "/redesign/user/dashboard") {
+            linkTo(
+              "Pages/Dashboard",
+              "US user, without Premium, with unresolved scan results, with unresolved breaches"
+            )();
+          }
+
+          if (
+            path ===
+            "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers"
+          ) {
+            linkTo(
+              "Pages/Guided resolution/1b. Scan results",
+              "With a few unresolved scan results (free)"
+            )();
+          }
+
+          if (
+            path ===
+            "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove"
+          ) {
+            linkTo("Pages/Guided resolution/1c. Manually resolve brokers")();
+          }
+        },
+      },
     },
   },
   decorators: [AppDecorator],

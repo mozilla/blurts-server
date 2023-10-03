@@ -5,8 +5,7 @@
 "use client";
 
 import Image from "next/image";
-import ShieldIcon from "./assets/shield-icon.svg";
-import ShieldOutlineIcon from "./assets/shield-outline-icon.svg";
+import MozillaMonitorLogo from "../../../(proper_react)/images/firefox-monitor-logo.webp";
 import styles from "./FalseDoorBanner.module.scss";
 import { CloseBtn } from "../../../components/server/Icons";
 import { useEffect, useState } from "react";
@@ -24,7 +23,7 @@ type HandleFalseDoorBanner = {
 // TODO: MNTOR-2043
 /* c8 ignore start */
 export const HandleFalseDoorTest = (props: HandleFalseDoorBanner) => {
-  const [cookies, setCookie] = useCookies(["falseDoorDismissedPhase2"]);
+  const [cookies, setCookie] = useCookies(["falseDoorDismissedPhase3"]);
   const [shouldShowFalseDoor, setShouldShowFalseDoor] = useState(false);
   const pathname = usePathname();
   const isOnDashboard = pathname === "/user/breaches";
@@ -34,14 +33,12 @@ export const HandleFalseDoorTest = (props: HandleFalseDoorBanner) => {
     utmParams: {
       utm_source: "monitor",
       utm_medium: "monitor-product",
-      utm_content: `banner-phase-2-us_${pathname}`,
+      utm_content: `banner-phase-3-us_${pathname}`,
     },
   });
 
   const handleDismiss = (event?: Event) => {
-    setCookie("falseDoorDismissedPhase2", "true", { path: "/" });
-
-    console.debug("event.target:", event?.target);
+    setCookie("falseDoorDismissedPhase3", "true", { path: "/" });
     if (event && event.target && "id" in event.target) {
       let action;
       if (event?.target.id === "close-button") {
@@ -58,8 +55,8 @@ export const HandleFalseDoorTest = (props: HandleFalseDoorBanner) => {
   };
 
   useEffect(() => {
-    setShouldShowFalseDoor(!cookies.falseDoorDismissedPhase2);
-  }, [cookies.falseDoorDismissedPhase2]);
+    setShouldShowFalseDoor(!cookies.falseDoorDismissedPhase3);
+  }, [cookies.falseDoorDismissedPhase3]);
 
   return (
     <>
@@ -73,7 +70,6 @@ export const HandleFalseDoorTest = (props: HandleFalseDoorBanner) => {
     </>
   );
 };
-/* c8 ignore stop */
 
 type FalseDoorBanner = {
   onDismiss?: () => void;
@@ -82,26 +78,39 @@ type FalseDoorBanner = {
 };
 export const FalseDoorBanner = (props: FalseDoorBanner) => {
   const l10n = useL10n();
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
 
-  const icon = props.checkIsOnDashboard ? ShieldOutlineIcon : ShieldIcon;
+  const handleResize = () => {
+    // 1024px is equivalent to $screen-lg
+    if (window.innerWidth > 1024) {
+      setIsLargeScreen(true);
+    } else {
+      setIsLargeScreen(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+  });
 
   const content = (
     <p>
-      {l10n.getString("false-door-test-phase-2-content-part-one")}
-      <br />
+      {l10n.getString("false-door-test-phase-3-content-part-one")}
+      {isLargeScreen ? <br /> : " "}
       {props.checkIsOnDashboard
-        ? l10n.getString("false-door-test-phase-2-content-part-two-dashboard")
-        : l10n.getString("false-door-test-phase-2-content-part-two")}
+        ? l10n.getString("false-door-test-phase-3-content-part-two-dashboard")
+        : l10n.getString("false-door-test-phase-3-content-part-two")}
     </p>
   );
+  /* c8 ignore stop */
 
   return (
     <div className={styles.falseDoorTestWrapper}>
       <div className={styles.content}>
-        <div className={styles.imageAndCopy}>
-          <Image src={icon} alt="" className={styles.logo} />
-          {content}
-        </div>
+        <span className={styles.logoWrapper}>
+          <Image src={MozillaMonitorLogo} alt="" className={styles.logo} />
+        </span>
+        {content}
         <Link
           id="open-button"
           className={styles.cta}
