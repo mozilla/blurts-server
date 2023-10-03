@@ -81,3 +81,12 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+/*
+  10. Custom
+*/
+.noList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

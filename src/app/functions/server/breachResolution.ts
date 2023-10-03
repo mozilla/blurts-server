@@ -89,6 +89,8 @@ const breachResolutionDataTypes = {
  * @param options
  * @returns {*} void
  */
+// Old untyped code, adding type defitions now isn't worth the effort:
+/* eslint-disable @typescript-eslint/no-explicit-any */
 function appendBreachResolutionChecklist(
   userBreachData: any,
   options: Partial<{ countryCode: string }> = {}
@@ -131,6 +133,7 @@ function appendBreachResolutionChecklist(
     });
   }
 }
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 /**
  * Get a subset of the breach resolution data types map
@@ -143,6 +146,8 @@ function appendBreachResolutionChecklist(
  * @param {{ countryCode: string }} options
  * @returns map of relevant breach resolution recommendations
  */
+// Old untyped code, adding type defitions now isn't worth the effort:
+/* eslint-disable @typescript-eslint/no-explicit-any */
 function getResolutionRecsPerBreach(
   dataTypes: any[],
   args: { companyName: string; breachedCompanyLink: string },
@@ -184,6 +189,7 @@ function getResolutionRecsPerBreach(
   // loop through the breach recs
   return filteredBreachRecs;
 }
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 /**
  * Get the fluent string for the body
@@ -192,6 +198,8 @@ function getResolutionRecsPerBreach(
  * @param args
  * @returns body string
  */
+// Old untyped code, adding type defitions now isn't worth the effort:
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 function getBodyMessage(body: string, args: any): string {
   const l10n = getL10n();
   const { stringArgs } = args;
@@ -207,6 +215,8 @@ function getBodyMessage(body: string, args: any): string {
 }
 
 // find fluent text based on fluent ids
+// Old untyped code, adding type defitions now isn't worth the effort:
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 function getRecommendationFromResolution(resolution: any, args: any) {
   const l10n = getL10n();
   const [resolutionType, resolutionContent] = resolution;
@@ -224,6 +234,8 @@ function getRecommendationFromResolution(resolution: any, args: any) {
  * @param originalDataTypes breach DataTypes array from HIBP
  * @returns filtered breach data types
  */
+// Old untyped code, adding type defitions now isn't worth the effort:
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 function filterBreachDataTypes(originalDataTypes: any[]) {
   const relevantDataTypes = Object.values(BreachDataTypes);
   // This function predates proper use of TypeScript, so we don't have a better

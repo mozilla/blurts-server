@@ -5,7 +5,6 @@
 "use client";
 
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import styles from "./FixNavigation.module.scss";
 import { useState } from "react";
 import { useL10n } from "../../hooks/l10n";
@@ -18,6 +17,7 @@ type StepId =
 
 export type Props = {
   navigationItems: Array<NavigationItem>;
+  pathname: string;
 };
 
 export const FixNavigation = (props: Props) => {
@@ -35,6 +35,7 @@ export const FixNavigation = (props: Props) => {
         navigationItems={props.navigationItems}
         showDataBrokerProfiles={showDataBrokerProfiles}
         currentStep={currentStep}
+        pathname={props.pathname}
       />
     </nav>
   );
@@ -44,7 +45,7 @@ export interface NavigationItem {
   key: string;
   labelStringId: string;
   href: string;
-  status: string;
+  status: string | number;
   currentStepId: string;
   imageId: string;
 }
@@ -53,10 +54,33 @@ export const Steps = (props: {
   showDataBrokerProfiles: boolean;
   currentStep: StepId;
   navigationItems: Array<NavigationItem>;
+  pathname: string;
 }) => {
   const l10n = useL10n();
 
-  const pathname = usePathname();
+  function calculateActiveProgressBarPosition(pathname: string) {
+    if (pathname === "/redesign/user/dashboard/fix/high-risk-data-breaches") {
+      return styles.beginHighRiskDataBreaches;
+    } else if (
+      pathname.startsWith(
+        "/redesign/user/dashboard/fix/high-risk-data-breaches"
+      )
+    ) {
+      return styles.duringHighRiskDataBreaches;
+    } else if (pathname === "/redesign/user/dashboard/fix/leaked-passwords") {
+      return styles.beginLeakedPasswords;
+    } else if (
+      pathname.startsWith("/redesign/user/dashboard/fix/leaked-passwords")
+    ) {
+      return styles.duringLeakedPasswords;
+    } else if (
+      pathname === "/redesign/user/dashboard/fix/security-recommendations"
+    ) {
+      return styles.beginSecurityRecommendations;
+    } else {
+      return "";
+    }
+  }
 
   return (
     <ul className={styles.steps}>
@@ -64,24 +88,32 @@ export const Steps = (props: {
         ({ key, labelStringId, href, imageId, status }) => (
           <li
             key={key}
-            aria-current={pathname.includes(href) ? "step" : undefined}
-            className={`${styles.fixNavigationItem} ${
-              pathname.includes(href) ? styles.active : ""
+            aria-current={props.pathname.includes(href) ? "step" : undefined}
+            className={`${styles.navigationItem} ${
+              props.pathname.includes(href) ? styles.active : ""
             }`}
           >
-            <Image
-              // TODO: Add "isDone" logic
-              src={imageId}
-              alt=""
-              width={22}
-              height={22}
-            />
+            <div className={styles.stepIcon}>
+              <Image src={imageId} alt="" width={22} height={22} />
+              {/* // TODO: Add logic to mark icon as checked when step is complete */}
+              {/* <CheckIcon className={styles.checkIcon} alt="" width={22} height={22} />  */}
+            </div>
+
             <div className={styles.stepLabel}>
               {l10n.getString(labelStringId)} ({status})
             </div>
           </li>
         )
       )}
+      <li className={styles.progressBarLineContainer}>
+        <div className={styles.progressBarLineWrapper}>
+          <div
+            className={`${
+              styles.activeProgressBarLine
+            } ${calculateActiveProgressBarPosition(props.pathname)}`}
+          ></div>
+        </div>
+      </li>
     </ul>
   );
 };

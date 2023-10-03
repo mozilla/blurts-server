@@ -12,7 +12,7 @@ if (navigator.doNotTrack === '1') {
   }
   window.gtag()
 } else {
-  await import(`https://www.googletagmanager.com/gtag/js?id=${AppConstants.GA4_MEASUREMENT_ID}`)
+  await import(`https://www.googletagmanager.com/gtag/js?id=${AppConstants.NEXT_PUBLIC_GA4_MEASUREMENT_ID}`)
 
   window.dataLayer = window.dataLayer || []
 
@@ -20,7 +20,7 @@ if (navigator.doNotTrack === '1') {
     window.dataLayer.push(arguments)
   }
   window.gtag('js', new Date())
-  window.gtag('config', AppConstants.GA4_MEASUREMENT_ID, {
+  window.gtag('config', AppConstants.NEXT_PUBLIC_GA4_MEASUREMENT_ID, {
     cookie_domain: window.location.hostname,
     cookie_flags: 'SameSite=None;Secure',
     debug_mode: debugMode

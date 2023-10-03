@@ -8,6 +8,7 @@ import { AuthPage } from '../pages/authPage.js'
 import { DashboardPage } from '../pages/dashBoardPage.js'
 import { DataBreachPage } from '../pages/dataBreachPage.js'
 import { SettingsPage } from '../pages/settingsPage.js'
+import { ScanPage } from '../pages/scanPage.js'
 
 const test = base.extend({
   authPage: async ({ page }, use) => {
@@ -24,6 +25,9 @@ const test = base.extend({
   },
   settingsPage: async ({ page }, use) => {
     await use(new SettingsPage(page))
+  },
+  scanPage: async ({ page }, use) => {
+    await use(new ScanPage(page))
   }
 })
 

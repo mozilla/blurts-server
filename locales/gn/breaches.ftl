@@ -12,7 +12,7 @@ breach-detail-meta-title = { -brand-fx-monitor } - { $company } Mba’ekuaarã �
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = ¿Ne myangekói { $company } mba’ekuaarã ñembogua?
-breach-detail-meta-social-description = Eipuru { -brand-fx-monitor } eikuaa hag̃ua ne maranduetépa oñemboguakuaára’e ha péicha rupi eikuaa mba’etépa ejapóta.
+breach-detail-meta-social-description = Eiporu { -brand-fx-monitor } eikuaa hag̃ua ne maranduetépa oñemboguakuaára’e ha péicha rupi eikuaa mba’etépa ejapóta.
 breach-scan-meta-title = { -brand-fx-monitor } - Ñembogua Rehegua
 breach-scan-meta-social-title = { -brand-fx-monitor } - Ñembogua Rehegua
 breach-scan-meta-social-description = Eñepyrũ tembiapo { -brand-fx-monitor } ndive emoĩporã hag̃ua ñembogua ha ereko jehechameme ñembogua pyahu rovake.
@@ -80,14 +80,14 @@ breach-checklist-pw-header-text = Embohekopyahu ñe’ẽñemi ha embojuruja mok
 
 # Variables:
 #   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
-breach-checklist-email-header-2 = Emo’ã ñanduti veve mba’epuru rovamo’ãha ndive { $firefoxRelayLink } ichagua.
+breach-checklist-email-header-2 = Emo’ã ñanduti veve mba’eporu rovamo’ãha ndive { $firefoxRelayLink } ichagua.
 breach-checklist-email-body = Kóva oñomikuaa ne ñanduti veve kundaharape omondojeývo ñanduti veve ig̃uahẽhaitépe.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
 # Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
-breach-checklist-ssn-header = Ehechameme ne mba’ete reko banco pegua, virujepuru térã kuatia’atã ñemurã emoneĩ’ỹva.
+breach-checklist-ssn-header = Ehechameme ne mba’ete reko banco pegua, virujeporu térã kuatia’atã ñemurã emoneĩ’ỹva.
 # A security freeze prevents prospective creditors from accessing your credit file.
 # Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
@@ -105,7 +105,7 @@ breach-checklist-cc-body = Avei ehechajey nde kuatia’atã ñemurã reko eikuaa
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
-breach-checklist-bank-header = Emomarandu pya’e banco-pe ne mba’ete papapy ojepurukuaátaramo.
+breach-checklist-bank-header = Emomarandu pya’e banco-pe ne mba’ete papapy ojeporukuaátaramo.
 breach-checklist-bank-body = Ejapo pya’evéramo ikatu ne mo’ãve nepytyvõkuaáva oimeraẽva mba’evaígui. Avei ehechajeykuaa ne mba’ete ehekahápe oimeraẽva mba’e nemba’e’ỹva.
 
 ## Prompts the user for changes when there is a breach detected of pin
@@ -117,13 +117,13 @@ breach-checklist-pin-body = Aníke ne PIN pyahu, térã oimeraẽva ambue PIN, n
 
 # Variables:
 #   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
-breach-checklist-ip-header-2 = Eipuru ñanduti tekoñemíme VPN ndive, { $mozillaVpnLink } ojapoháicha.
-breach-checklist-ip-body = Nde IP kundaharape (Ñanduti rapereko kundaharape) ohechauka ne rendaite ha Ñanduti mba’epuru me’ẽhára. VPN omokañykuaa nde IP kundaharape eiporukuaa hag̃ua Ñanduti teko ñemíme.
+breach-checklist-ip-header-2 = Eiporu ñanduti tekoñemíme VPN ndive, { $mozillaVpnLink } ojapoháicha.
+breach-checklist-ip-body = Nde IP kundaharape (Ñanduti rapereko kundaharape) ohechauka ne rendaite ha Ñanduti mba’eporu me’ẽhára. VPN omokañykuaa nde IP kundaharape eiporukuaa hag̃ua Ñanduti teko ñemíme.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
 breach-checklist-address-header = Emoambue oimeraẽva ñe’ẽñemi térã PIN orekóva nde kundaharape vore.
-breach-checklist-address-body = Kundaharape ndahasýi ijuhu teraguapy opavaveguápe ha ikatu ajapo ko’ã ñe’ẽñemi ha PINS hasy’ỹ hag̃ua ijepuru.
+breach-checklist-address-body = Kundaharape ndahasýi ijuhu teraguapy opavaveguápe ha ikatu ajapo ko’ã ñe’ẽñemi ha PINS hasy’ỹ hag̃ua ijeporu.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
@@ -134,7 +134,7 @@ breach-checklist-dob-body = Umi teñoihague ára ndahasýi ijejuhu teraguapyháp
 
 # Variables:
 #   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
-breach-checklist-phone-header-2 = Emo’ã ne pumbyry papapy mba’epuru rovamo’ãha { $firefoxRelayLink } ndive, oñomíva añetehápe ne pumbyry papapyete.
+breach-checklist-phone-header-2 = Emo’ã ne pumbyry papapy mba’eporu rovamo’ãha { $firefoxRelayLink } ndive, oñomíva añetehápe ne pumbyry papapyete.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
@@ -142,7 +142,7 @@ breach-checklist-sq-header-text = Embopyahu porandu tekorosãgua.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
-breach-checklist-hp-header = Emoheñói mba’ete hekorosã ha ha’eñóva oimeraẽva mbaétépe g̃uarã eipurujeyhague ñe’ẽñemi.
+breach-checklist-hp-header = Emoheñói mba’ete hekorosã ha ha’eñóva oimeraẽva mbaétépe g̃uarã eiporujeyhague ñe’ẽñemi.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
 breach-checklist-hp-body-2 = Peteĩ ñe’ẽñemi ñangarekoha ikatúva { $passwordManagerLink } (reigua ha oĩvavoi { -brand-firefox } kundahára ndive) nepytyvõkuaa ehapykueho hag̃ua opaite ñe’ẽñemi ha eike tekorosãme opaite mba’e’oka guive.

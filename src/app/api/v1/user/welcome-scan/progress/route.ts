@@ -13,8 +13,8 @@ import {
 } from "../../../../../../db/tables/subscribers";
 
 import {
-  getLatestOnerepScan,
-  setOnerepScanResults,
+  getLatestOnerepScanResults,
+  addOnerepScanResults,
 } from "../../../../../../db/tables/onerep_scans";
 import {
   ListScanResultsResponse,
@@ -35,7 +35,7 @@ export interface ScanProgressBody {
 // @see the onerep-events route and https://docs.onerep.com/#section/Webhooks-Endpoints
 export async function GET(
   _req: NextRequest
-): Promise<NextResponse<ScanProgressBody | unknown>> {
+): Promise<NextResponse<ScanProgressBody> | NextResponse<unknown>> {
   const session = await getServerSession(authOptions);
   if (typeof session?.user?.email === "string") {
     try {
@@ -44,10 +44,10 @@ export async function GET(
         "onerep_profile_id"
       ] as number;
 
-      const latestScans = await getLatestOnerepScan(profileId);
-      const latestScanId = latestScans?.onerep_scan_id;
+      const latestScan = await getLatestOnerepScanResults(profileId);
+      const latestScanId = latestScan.scan?.onerep_scan_id;
 
-      if (latestScanId) {
+      if (typeof latestScanId !== "undefined") {
         const scan = await getScanDetails(profileId, latestScanId);
 
         // Store scan results only for development environments.
@@ -57,13 +57,12 @@ export async function GET(
           process.env.APP_ENV === "heroku"
         ) {
           const allScanResults = await getAllScanResults(profileId);
-          await setOnerepScanResults(
+          await addOnerepScanResults(
             profileId,
             scan.id,
-            {
-              data: allScanResults,
-            },
-            "manual"
+            allScanResults,
+            "manual",
+            scan.status
           );
         }
 

@@ -7,7 +7,10 @@
 import { Key, useState } from "react";
 import Image from "next/image";
 import { Session } from "next-auth";
+import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./View.module.scss";
+import AllFixedLogo from "./images/dashboard-all-fixed.svg";
+import ScanProgressIllustration from "./images/scan-illustration.svg";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import { BannerContent, DashboardTopBanner } from "./DashboardTopBanner";
 import { useL10n } from "../../../../../hooks/l10n";
@@ -20,28 +23,27 @@ import {
   ExposuresFilter,
   FilterState,
 } from "../../../../../components/client/ExposuresFilter";
-import { ScanResult } from "../../../../../functions/server/onerep";
-import { DashboardSummary } from "../../../../../functions/server/dashboard";
+import { getDashboardSummary } from "../../../../../functions/server/dashboard";
 import { getExposureStatus } from "../../../../../components/server/StatusPill";
 import { TabList } from "../../../../../components/client/TabList";
-import AllFixedLogo from "./images/dashboard-all-fixed.svg";
 import { FeatureFlagsEnabled } from "../../../../../functions/server/featureFlags";
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 import { hasPremium } from "../../../../../functions/universal/user";
+import { LatestOnerepScanData } from "../../../../../../db/tables/onerep_scans";
+import { getLocale } from "../../../../../functions/universal/getLocale";
+import { Button } from "../../../../../components/server/Button";
 
 export type Props = {
-  bannerData: DashboardSummary;
   featureFlagsEnabled: Pick<
     FeatureFlagsEnabled,
     "FreeBrokerScan" | "PremiumBrokerRemoval"
   >;
-  locale: string;
   user: Session["user"];
   userBreaches: SubscriberBreach[];
-  userScannedResults: ScanResult[];
+  userScanData: LatestOnerepScanData;
   isEligibleForFreeScan: boolean;
-  countryCode?: string;
+  countryCode: string;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -66,27 +68,24 @@ export const View = (props: Props) => {
     },
   ];
   const isActionNeededTab = selectedTab === "action-needed";
-
-  const breachesDataArray = props.userBreaches
-    .map((elem: SubscriberBreach) => elem)
-    .flat();
-  const scannedResultsDataArray =
-    // TODO: Add unit test when changing this code:
-    /* c8 ignore next */
-    props.userScannedResults.map((elem: ScanResult) => elem) || [];
+  const breachesDataArray = props.userBreaches.flat();
+  const scanInProgress =
+    props.userScanData.scan?.onerep_scan_status === "in_progress";
 
   // Merge exposure cards
-  const combinedArray = [...breachesDataArray, ...scannedResultsDataArray];
+  const combinedArray = [...breachesDataArray, ...props.userScanData.results];
 
   // Sort in descending order
   const arraySortedByDate = combinedArray.sort((a, b) => {
     const dateA =
-      (a as SubscriberBreach).addedDate || (a as ScanResult).created_at;
+      (a as SubscriberBreach).addedDate ||
+      (a as OnerepScanResultRow).created_at;
     const dateB =
-      (b as SubscriberBreach).addedDate || (b as ScanResult).created_at;
+      (b as SubscriberBreach).addedDate ||
+      (b as OnerepScanResultRow).created_at;
 
-    const timestampA = new Date(dateA).getTime();
-    const timestampB = new Date(dateB).getTime();
+    const timestampA = dateA.getTime();
+    const timestampB = dateB.getTime();
 
     return timestampB - timestampA;
   });
@@ -110,31 +109,74 @@ export const View = (props: Props) => {
       >
         <ExposureCard
           exposureData={exposure}
-          locale={props.locale}
+          locale={getLocale(l10n)}
           isPremiumBrokerRemovalEnabled={
             props.featureFlagsEnabled.PremiumBrokerRemoval
+          }
+          resolutionCta={
+            <Button
+              variant="primary"
+              wide
+              href={
+                isScanResult(exposure)
+                  ? "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove"
+                  : // TODO MNTOR-2226: Figure out where this CTA should go
+                    undefined
+              }
+            >
+              {l10n.getString("exposure-card-cta")}
+            </Button>
           }
         />
       </li>
     );
   });
-  const isScanResultItemsEmpty = props.userScannedResults.length === 0;
+  const isScanResultItemsEmpty = props.userScanData.results.length === 0;
   const noUnresolvedExposures = exposureCardElems.length === 0;
+  const dataSummary = getDashboardSummary(
+    props.userScanData.results,
+    props.userBreaches
+  );
+  const isAllFixed =
+    dataSummary.dataBreachFixedExposuresNum ===
+      dataSummary.dataBreachTotalExposuresNum &&
+    dataSummary.dataBrokerFixedExposuresNum ===
+      dataSummary.dataBrokerTotalExposuresNum;
 
   const TabContentActionNeeded = () => {
     const { dataBreachTotalNum, dataBrokerTotalNum, totalExposures } =
-      props.bannerData;
+      dataSummary;
+
+    let exposuresAreaDescription = l10n.getString(
+      "dashboard-exposures-area-description",
+      {
+        exposures_total_num: totalExposures,
+        data_breach_total_num: dataBreachTotalNum,
+        data_broker_total_num: dataBrokerTotalNum,
+      }
+    );
+
+    if (scanInProgress && !noUnresolvedExposures) {
+      exposuresAreaDescription = l10n.getString(
+        "dashboard-exposures-breaches-scan-progress-description",
+        {
+          exposures_total_num: totalExposures,
+          data_breach_total_num: dataBreachTotalNum,
+        }
+      );
+    } else if (scanInProgress) {
+      exposuresAreaDescription = l10n.getString(
+        "dashboard-exposures-no-breaches-scan-progress-description"
+      );
+    }
+
     return (
       <>
         <h2 className={styles.exposuresAreaHeadline}>
           {l10n.getString("dashboard-exposures-area-headline")}
         </h2>
         <p className={styles.exposuresAreaDescription}>
-          {l10n.getString("dashboard-exposures-area-description", {
-            exposures_total_num: totalExposures,
-            data_breach_total_num: dataBreachTotalNum,
-            data_broker_total_num: dataBrokerTotalNum,
-          })}
+          {exposuresAreaDescription}
         </p>
       </>
     );
@@ -148,16 +190,17 @@ export const View = (props: Props) => {
     </>
   );
 
-  const featureFlagsEnabled =
-    props.featureFlagsEnabled?.FreeBrokerScan &&
-    props.featureFlagsEnabled?.PremiumBrokerRemoval;
-
   let contentType: BannerContent = "NoContent";
-  if (featureFlagsEnabled) {
-    if (isScanResultItemsEmpty) {
+  if (
+    props.featureFlagsEnabled?.FreeBrokerScan &&
+    props.featureFlagsEnabled?.PremiumBrokerRemoval
+  ) {
+    if (isScanResultItemsEmpty && !scanInProgress) {
       contentType = "DataBrokerScanUpsellContent";
+    } else if (isScanResultItemsEmpty && scanInProgress) {
+      contentType = "ScanInProgressContent";
     } else if (
-      !noUnresolvedExposures &&
+      (!noUnresolvedExposures || !isAllFixed) &&
       props.countryCode &&
       props.countryCode.toLocaleLowerCase() === "us"
     ) {
@@ -171,13 +214,13 @@ export const View = (props: Props) => {
     props.countryCode?.toLocaleLowerCase() === "us" &&
     noUnresolvedExposures &&
     !isScanResultItemsEmpty &&
-    !hasPremium(props.user)
+    !hasPremium(props.user) &&
+    isAllFixed
   ) {
     contentType = "YourDataIsProtectedAllFixedContent";
   }
 
-  // Fixed in: MNTOR-2011
-  const freeScanCta = isScanResultItemsEmpty ? (
+  const freeScanCta = isScanResultItemsEmpty && (
     <p>
       {l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
         vars: {
@@ -191,9 +234,24 @@ export const View = (props: Props) => {
         },
       })}
     </p>
-  ) : (
-    ""
   );
+
+  const getZeroStateIndicator = () => {
+    return (
+      <div className={styles.zeroStateIndicator}>
+        <Image
+          src={scanInProgress ? ScanProgressIllustration : AllFixedLogo}
+          alt=""
+        />
+        <strong>
+          {scanInProgress
+            ? l10n.getString("dashboard-exposures-scan-progress-label")
+            : l10n.getString("dashboard-exposures-all-fixed-label")}
+        </strong>
+        {!scanInProgress && freeScanCta}
+      </div>
+    );
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -201,19 +259,26 @@ export const View = (props: Props) => {
         <TabList
           tabs={tabsData}
           onSelectionChange={(selectedKey) => setSelectedTab(selectedKey)}
-          defaultSelectedKey={selectedTab}
+          selectedKey={selectedTab}
         />
       </Toolbar>
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
-          bannerData={props.bannerData}
+          bannerData={getDashboardSummary(
+            props.userScanData.results,
+            props.userBreaches
+          )}
+          stepDeterminationData={{
+            countryCode: props.countryCode,
+            latestScanData: props.userScanData,
+            subscriberBreaches: props.userBreaches,
+            user: props.user,
+          }}
           content={contentType}
           type={selectedTab as TabType}
-          hasRunScan={!isScanResultItemsEmpty}
+          scanInProgress={scanInProgress}
           isEligibleForFreeScan={props.isEligibleForFreeScan}
-          // TODO: Add unit test when changing this code:
-          /* c8 ignore next 3 */
-          ctaCallback={() => {
+          onShowFixed={() => {
             setSelectedTab("fixed");
           }}
         />
@@ -227,21 +292,11 @@ export const View = (props: Props) => {
             setFilterValues={setFilters}
           />
         </div>
-        {
-          // TODO: Add unit test when changing this code:
-          /* c8 ignore next 9 */
-          noUnresolvedExposures ? (
-            <div className={styles.noExposures}>
-              <Image src={AllFixedLogo} alt="" />
-              <strong>
-                {l10n.getString("dashboard-exposures-all-fixed-label")}
-              </strong>
-              {freeScanCta}
-            </div>
-          ) : (
-            <ul className={styles.exposureList}>{exposureCardElems}</ul>
-          )
-        }
+        {noUnresolvedExposures ? (
+          getZeroStateIndicator()
+        ) : (
+          <ul className={styles.exposureList}>{exposureCardElems}</ul>
+        )}
       </div>
     </div>
   );

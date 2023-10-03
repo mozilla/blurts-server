@@ -5,6 +5,7 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Session } from "next-auth";
 import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "react-stately";
@@ -14,15 +15,30 @@ import { useL10n } from "../../hooks/l10n";
 import { hasPremium } from "../../functions/universal/user";
 import ShieldIcon from "./assets/shield-icon.svg";
 import styles from "./PremiumBadge.module.scss";
+import { useGa } from "../../hooks/useGa";
 
 export type Props = {
-  user: Session["user"] | null;
+  user: Session["user"];
 };
 
 export default function PremiumBadge({ user }: Props) {
   const l10n = useL10n();
+  const { gtag } = useGa();
 
-  const dialogState = useOverlayTriggerState({ defaultOpen: false });
+  const pathname = usePathname();
+  const dialogState = useOverlayTriggerState({
+    defaultOpen: false,
+    onOpenChange: (isOpen) => {
+      gtag.record({
+        type: "event",
+        name: "premium_upsell_modal",
+        params: {
+          action: isOpen ? "opened" : "closed",
+          page_location: pathname,
+        },
+      });
+    },
+  });
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: "dialog" },
     dialogState

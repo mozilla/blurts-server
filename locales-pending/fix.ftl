@@ -18,7 +18,7 @@ fix-flow-data-broker-profiles-start-free-scan-button-start-scan = Start free sca
 fix-flow-data-broker-profiles-start-free-scan-button-skip = Skip for now
 # Variables:
 # $data_broker_sites_results_num is the number of data broker sites that have your data
-fix-flow-data-broker-profiles-view-data-broker-profiles-headline = 
+fix-flow-data-broker-profiles-view-data-broker-profiles-headline =
   { $data_broker_sites_results_num ->
     [one] { $data_broker_sites_results_num } site is selling your personal information
     *[other] { $data_broker_sites_results_num } sites are selling your personal information
@@ -30,23 +30,30 @@ fix-flow-data-broker-profiles-view-data-broker-profiles-view-info-on-sites = Vie
 fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-trigger-label = More info
 fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-title = About these profiles
 fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph1 = Data brokers make up a $240 billion industry of gathering your personal info and selling it to anyone searching for you. They scrape your data from publicly available sources to create profiles that include your name(s), current and previous addresses, family member names, criminal history, and much more.
-fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph2 = We found these profiles by searching 190 data broker sites for the name, location, and date of birth you provided. These profiles are currently live and available to anyone searching for you.
+# Variables:
+# $data_broker_sites_total_num is the total number of data broker sites available to scan.
+fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph2 =
+  { $data_broker_sites_total_num ->
+    [one] We found these profiles by searching { $data_broker_sites_total_num } data broker site for the name, location, and date of birth you provided. These profiles are currently live and available to anyone searching for you. { -brand-mozilla } is not associated with these data broker sites.
+    *[other] We found these profiles by searching { $data_broker_sites_total_num } data broker sites for the name, location, and date of birth you provided. These profiles are currently live and available to anyone searching for you. { -brand-mozilla } is not associated with these data broker sites.
+  }
 fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-confirm = OK
 fix-flow-data-broker-profiles-view-data-broker-profiles-view-profile = View your profile
 fix-flow-data-broker-profiles-view-data-broker-profiles-button-view-more = View more
 fix-flow-data-broker-profiles-view-data-broker-profiles-button-view-less = View less
-fix-flow-data-broker-profiles-manual-remove-how-to-remove-headline = Here’s how to remove these profiles 
+fix-flow-data-broker-profiles-manual-remove-how-to-remove-headline = Here’s how to remove these profiles
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-1-title = Visit each site and find removal instructions
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-1-content = They may be called data suppression, delete my data, do not show my data, or opt-out instructions.
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-2-title = Follow the steps outlined on the site
-fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-2-content = Some sites may allow you to fill out an opt-out form online, while others may require you to mail a letter. 
+fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-2-content = Some sites may allow you to fill out an opt-out form online, while others may require you to mail a letter.
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-3-title = Mark as fixed on this page
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-3-content = This will help you keep track of which exposures still need your attention, and make your overall exposures go down.
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-title = Watch for re-exposures
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-content = This process does not remove your information from public records, so even after your information is removed, sites often add you back. If you’d like us to handle this for you and automatically remove any new exposures, upgrade to { -brand-monitor-premium }.
 fix-flow-data-broker-profiles-manual-remove-review-profiles-headline = Review & remove your profiles
+fix-flow-data-broker-profiles-manual-remove-button-mark-fixed = Mark as fixed
 fix-flow-data-broker-profiles-manual-remove-button-remove-for-me = Remove them for me
-fix-flow-data-broker-profiles-manual-remove-button-skip = Skip for now 
+fix-flow-data-broker-profiles-manual-remove-button-skip = Skip for now
 fix-flow-data-broker-profiles-automatic-remove-headline = We’ll auto-remove these and guide you through exposures that need manual fixes
 # Variables:
 # $data_broker_count is the number of data brokers scanned monthly

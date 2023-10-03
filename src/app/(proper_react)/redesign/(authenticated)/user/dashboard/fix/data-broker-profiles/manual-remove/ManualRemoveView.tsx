@@ -2,13 +2,37 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { useL10n } from "../../../../../../../../hooks/l10n";
-import styles from "../dataBrokerProfiles.module.scss";
-import buttonStyles from "../../../../../../../../components/server/button.module.scss";
-import Link from "next/link";
+import styles from "./ManualRemoveView.module.scss";
+import { getL10n } from "../../../../../../../../functions/server/l10n";
+import {
+  AvatarIcon,
+  ClockIcon,
+} from "../../../../../../../../components/server/Icons";
+import { LatestOnerepScanData } from "../../../../../../../../../db/tables/onerep_scans";
+import { Button } from "../../../../../../../../components/server/Button";
+import {
+  getDashboardSummary,
+  getExposureReduction,
+} from "../../../../../../../../functions/server/dashboard";
+import { SubscriberBreach } from "../../../../../../../../../utils/subscriberBreaches";
+import { RemovalCard } from "./RemovalCard";
 
-export const ManualRemoveView = () => {
-  const l10n = useL10n();
+export type Props = {
+  scanData: LatestOnerepScanData;
+  breaches: SubscriberBreach[];
+};
+
+export function ManualRemoveView(props: Props) {
+  const l10n = getL10n();
+
+  const summary = getDashboardSummary(props.scanData.results, props.breaches);
+
+  const countOfDataBrokerProfiles = props.scanData.results.length;
+  const estimatedTime = countOfDataBrokerProfiles * 10; // 10 minutes per data broker site.
+  const exposureReduction = getExposureReduction(
+    summary,
+    props.scanData.results
+  );
 
   return (
     <div className={styles.main}>
@@ -69,32 +93,56 @@ export const ManualRemoveView = () => {
           </li>
         </ol>
       </div>
-      <div className={styles.content}>
+      <div className={styles.exposureListing}>
         <h3 className={styles.questionTooltipWrapper}>
           {l10n.getString(
             "fix-flow-data-broker-profiles-manual-remove-review-profiles-headline"
           )}
         </h3>
-        {/* TODO: Add exposure cards table as seen on the dashboard */}
+        <div className={styles.exposureList}>
+          {props.scanData.results.map((scanResult, index) => {
+            return (
+              <RemovalCard
+                key={scanResult.onerep_scan_result_id}
+                scanResult={scanResult}
+                isExpanded={index === 0}
+              />
+            );
+          })}
+        </div>
       </div>
       <div className={styles.buttonsWrapper}>
-        <Link
-          className={`${buttonStyles.button} ${buttonStyles.primary}`}
+        <Button
+          variant="primary"
           href="/redesign/user/dashboard/fix/data-broker-profiles/automatic-remove"
         >
           {l10n.getString(
             "fix-flow-data-broker-profiles-manual-remove-button-remove-for-me"
           )}
-        </Link>
-        <Link
-          className={`${buttonStyles.button} ${buttonStyles.secondary}`}
+        </Button>
+        <Button
+          variant="secondary"
           href="/" // TODO: MNTOR-1700 Add routing logic here
         >
           {l10n.getString(
             "fix-flow-data-broker-profiles-manual-remove-button-skip"
           )}
-        </Link>
+        </Button>
+      </div>
+      <div className={styles.dataBrokerResolutionStats}>
+        <div>
+          <ClockIcon width="18" height="18" alt="" />
+          {l10n.getString("data-broker-profiles-estimated-time", {
+            estimated_time: estimatedTime,
+          })}
+        </div>
+        <div>
+          <AvatarIcon width="18" height="18" alt="" />
+          {l10n.getString("data-broker-profiles-exposure-reduction", {
+            exposure_reduction: exposureReduction,
+          })}
+        </div>
       </div>
     </div>
   );
-};
+}

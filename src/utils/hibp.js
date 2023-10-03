@@ -4,7 +4,7 @@
 
 import mozlog from './log.js'
 import AppConstants from '../appConstants.js'
-import { getAllBreaches, upsertBreaches } from '../db/tables/breaches.js'
+import { getAllBreaches, upsertBreaches, knex } from '../db/tables/breaches.js'
 import { InternalServerError } from '../utils/error.js'
 import { getMessage } from '../utils/fluent.js'
 const { HIBP_THROTTLE_MAX_TRIES, HIBP_THROTTLE_DELAY, HIBP_API_ROOT, HIBP_KANON_API_ROOT, HIBP_KANON_API_TOKEN } = AppConstants
@@ -389,5 +389,6 @@ export {
   getAllBreachesFromDb,
   getFilteredBreaches,
   subscribeHash,
-  deleteSubscribedHash
+  deleteSubscribedHash,
+  knex as knexHibp
 }

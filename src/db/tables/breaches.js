@@ -108,5 +108,6 @@ export {
   getAllBreaches,
   getAllBreachesCount,
   upsertBreaches,
-  updateBreachFaviconUrl
+  updateBreachFaviconUrl,
+  knex
 }

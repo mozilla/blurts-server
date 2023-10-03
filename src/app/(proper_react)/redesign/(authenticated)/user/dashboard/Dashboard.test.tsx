@@ -4,35 +4,25 @@
 
 import { it, expect } from "@jest/globals";
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import Meta, {
-  DashboardWithScan,
-  DashboardWithScanUserFromUs,
-  DashboardWithoutScan,
-  DashboardWithoutScanUserFromUs,
-  DashboardFreeUser,
-  DashboardPremiumUser,
-  DashboardNoSession,
-  DashboardFreeUserAllResolved,
+  DashboardNonUsNoBreaches,
+  DashboardUsNoPremiumEmptyScanResolvedBreaches,
+  DashboardUsNoPremiumNoScanNoBreaches,
+  DashboardUsNoPremiumResolvedScanResolvedBreaches,
+  DashboardUsNoPremiumUnresolvedScanNoBreaches,
+  DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+  DashboardUsPremiumEmptyScanResolvedBreaches,
+  DashboardUsPremiumNoScanNoBreaches,
+  DashboardUsPremiumResolvedScanResolvedBreaches,
+  DashboardUsPremiumResolvedScanUnresolvedBreaches,
+  DashboardUsPremiumScanEmptyInProgressNoBreaches,
+  DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches,
+  DashboardUsPremiumScanUnresolvedInProgressNoBreaches,
+  DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches,
 } from "./Dashboard.stories";
-
-function enablePremium() {
-  process.env.NEXT_PUBLIC_PREMIUM_ENABLED = "true";
-}
-
-function disablePremium() {
-  process.env.NEXT_PUBLIC_PREMIUM_ENABLED = "false";
-}
-
-beforeEach(() => {
-  disablePremium();
-});
-
-afterAll(() => {
-  disablePremium();
-});
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -40,25 +30,34 @@ jest.mock("next/navigation", () => ({
 }));
 
 it("passes the axe accessibility test suite 1", async () => {
-  const ComposedDashboard = composeStory(DashboardWithScan, Meta);
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("passes the axe accessibility test suite 2", async () => {
-  const ComposedDashboard = composeStory(DashboardWithScanUserFromUs, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+    Meta
+  );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("passes the axe accessibility test suite 3", async () => {
-  const ComposedDashboard = composeStory(DashboardWithoutScanUserFromUs, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanUnresolvedBreaches,
+    Meta
+  );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("shows the “let’s fix it” banner content", () => {
-  const ComposedDashboard = composeStory(DashboardWithScanUserFromUs, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanNoBreaches,
+    Meta
+  );
   render(<ComposedDashboard />);
 
   const letsFixItBannerContent = screen.getByText("Let’s protect your data");
@@ -66,7 +65,10 @@ it("shows the “let’s fix it” banner content", () => {
 });
 
 it("shows the 'Start a free scan' CTA to free US-based users who haven't performed a scan yet", () => {
-  const ComposedDashboard = composeStory(DashboardWithoutScanUserFromUs, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta
+  );
   render(<ComposedDashboard />);
 
   const freeScanCta = screen.getByRole("link", { name: "Start a free scan" });
@@ -74,7 +76,7 @@ it("shows the 'Start a free scan' CTA to free US-based users who haven't perform
 });
 
 it("does not show the 'Start a free scan' CTA for non-US users", () => {
-  const ComposedDashboard = composeStory(DashboardWithoutScan, Meta);
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
   render(<ComposedDashboard />);
 
   const freeScanCta = screen.queryByRole("link", { name: "Start a free scan" });
@@ -83,7 +85,10 @@ it("does not show the 'Start a free scan' CTA for non-US users", () => {
 
 it("switches between tab panels", async () => {
   const user = userEvent.setup();
-  const ComposedDashboard = composeStory(DashboardWithoutScanUserFromUs, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta
+  );
   render(<ComposedDashboard />);
 
   const tabActionNeededTrigger = screen.getByRole("tab", {
@@ -101,8 +106,10 @@ it("switches between tab panels", async () => {
 });
 
 it("shows the premium upgrade cta if the user is not a premium subscriber", () => {
-  enablePremium();
-  const ComposedDashboard = composeStory(DashboardFreeUser, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta
+  );
   render(<ComposedDashboard />);
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
@@ -112,10 +119,12 @@ it("shows the premium upgrade cta if the user is not a premium subscriber", () =
   expect(premiumCtas.length).toBe(2);
 });
 
-it("opens and closes the premium upsell dialog", async () => {
-  enablePremium();
+it("opens and closes the premium upsell dialog via the Premium upsell badge)", async () => {
   const user = userEvent.setup();
-  const ComposedDashboard = composeStory(DashboardFreeUser, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta
+  );
   render(<ComposedDashboard />);
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
@@ -147,10 +156,36 @@ it("opens and closes the premium upsell dialog", async () => {
   ).not.toBeInTheDocument();
 });
 
-it("toggles between the product offerings in the premium upsell dialog", async () => {
-  enablePremium();
+it("opens and closes the premium upsell dialog via the Premium upsell button)", async () => {
   const user = userEvent.setup();
-  const ComposedDashboard = composeStory(DashboardFreeUser, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const premiumCta = screen.queryByRole("button", {
+    name: "Get Continuous Protection",
+  });
+  expect(premiumCta).toBeInTheDocument();
+
+  await user.click(premiumCta as HTMLElement);
+  expect(
+    screen.getByText("Choose the level of protection that’s right for you")
+  ).toBeInTheDocument();
+  const closeButtonIcon1 = screen.getByLabelText("Close");
+  await user.click(closeButtonIcon1.parentElement as HTMLElement);
+  expect(
+    screen.queryByText("Choose the level of protection that’s right for you")
+  ).not.toBeInTheDocument();
+});
+
+it("toggles between the product offerings in the premium upsell dialog", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta
+  );
   render(<ComposedDashboard />);
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
@@ -184,8 +219,10 @@ it("toggles between the product offerings in the premium upsell dialog", async (
 });
 
 it("shows the premium badge if the user is a premium subscriber", () => {
-  enablePremium();
-  const ComposedDashboard = composeStory(DashboardPremiumUser, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumNoScanNoBreaches,
+    Meta
+  );
   render(<ComposedDashboard />);
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
@@ -193,22 +230,12 @@ it("shows the premium badge if the user is a premium subscriber", () => {
   expect(premiumBadges.length).toBe(2);
 });
 
-it("shows the premium upgrade cta if there is no user session", () => {
-  enablePremium();
-  const ComposedDashboard = composeStory(DashboardNoSession, Meta);
-  render(<ComposedDashboard />);
-
-  // We show a CTA on desktop in the toolbar and in the mobile menu
-  const premiumCtas = screen.queryAllByRole("button", {
-    name: "Upgrade to ⁨Premium⁩",
-  });
-  expect(premiumCtas.length).toBe(2);
-});
-
 it("shows returned free user who has resolved all tasks premium upsell and all fixed description", async () => {
-  enablePremium();
   const user = userEvent.setup();
-  const ComposedDashboard = composeStory(DashboardFreeUserAllResolved, Meta);
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumResolvedScanResolvedBreaches,
+    Meta
+  );
   render(<ComposedDashboard />);
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
@@ -226,4 +253,146 @@ it("shows returned free user who has resolved all tasks premium upsell and all f
   // click on cta
   await user.click(bannerPremiumCta[0]);
   expect(screen.getByRole("dialog")).toBeInTheDocument();
+});
+
+it("shows a returning Premium user who has resolved all tasks a CTA to check out what was fixed", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  // We show a CTA on desktop in the toolbar and in the mobile menu
+  const premiumBadges = screen.queryAllByText("Premium");
+  expect(premiumBadges.length).toBe(2);
+
+  // show banner CTA premium upgrade
+  const bannerPremiumCta = screen.queryAllByRole("button", {
+    name: "See what’s fixed",
+  });
+  expect(bannerPremiumCta.length).toBe(1);
+
+  // click on cta
+  await user.click(bannerPremiumCta[0]);
+
+  const fixedTab = screen.getByRole("tab", { name: "Fixed" });
+  expect(fixedTab).toHaveAttribute("aria-selected", "true");
+});
+
+it("shows a returning Premium user who has zero scan results and resolved breaches a CTA to check out what was fixed", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  // show banner CTA premium upgrade
+  const bannerPremiumCta = screen.queryAllByRole("button", {
+    name: "See what’s fixed",
+  });
+  expect(bannerPremiumCta.length).toBe(1);
+
+  // click on cta
+  await user.click(bannerPremiumCta[0]);
+
+  const fixedTab = screen.getByRole("tab", { name: "Fixed" });
+  expect(fixedTab).toHaveAttribute("aria-selected", "true");
+});
+
+it("shows scan in progress indicators on the dashboard with no breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanEmptyInProgressNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const bannerContent = screen.getByText("Your scan is still in progress");
+  expect(bannerContent).toBeInTheDocument();
+
+  const bannerContentCta = screen.getByRole("link", {
+    name: "See what’s ready now",
+  });
+  expect(bannerContentCta).toBeInTheDocument();
+
+  const chartPrompt = screen.getByText("Scan in progress:");
+  expect(chartPrompt).toBeInTheDocument();
+
+  const exposureTableDescription = screen.getByText(
+    "We didn’t find any data breaches, but we’re still scanning sites that may be selling your personal info."
+  );
+  expect(exposureTableDescription).toBeInTheDocument();
+});
+
+it("shows scan in progress indicators on the dashboard for users with breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const bannerContent = screen.getByText("Your scan is still in progress");
+  expect(bannerContent).toBeInTheDocument();
+  const bannerContentCta = screen.getByRole("link", {
+    name: "See what’s ready now",
+  });
+  expect(bannerContentCta).toBeInTheDocument();
+
+  const chartPrompt = screen.getByText("Scan in progress:");
+  expect(chartPrompt).toBeInTheDocument();
+
+  const exposureTableDescription = screen.getByText(
+    "We found your information exposed",
+    { exact: false }
+  );
+  expect(exposureTableDescription).toBeInTheDocument();
+});
+
+it("shows scan in progress indicators on the dashboard with results and no breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanUnresolvedInProgressNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const bannerContent = screen.getByText("Your scan is still in progress");
+  expect(bannerContent).toBeInTheDocument();
+  const bannerContentCta = screen.getByRole("link", {
+    name: "See what’s ready now",
+  });
+  expect(bannerContentCta).toBeInTheDocument();
+
+  const chartPrompt = screen.getByText("Scan in progress:");
+  expect(chartPrompt).toBeInTheDocument();
+
+  const exposureTableDescription = screen.getByText(
+    "We found your information exposed",
+    { exact: false }
+  );
+  expect(exposureTableDescription).toBeInTheDocument();
+});
+
+it("shows scan in progress indicators on the dashboard with results and unresolved breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const bannerContent = screen.getByText("Your scan is still in progress");
+  expect(bannerContent).toBeInTheDocument();
+  const bannerContentCta = screen.getByRole("link", {
+    name: "See what’s ready now",
+  });
+  expect(bannerContentCta).toBeInTheDocument();
+
+  const chartPrompt = screen.getByText("Scan in progress:");
+  expect(chartPrompt).toBeInTheDocument();
+
+  const exposureTableDescription = screen.getByText(
+    "We found your information exposed",
+    { exact: false }
+  );
+  expect(exposureTableDescription).toBeInTheDocument();
 });

@@ -708,6 +708,8 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -721,6 +723,7 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 
 ## Search Engine Optimization
 
+meta-desc-2 = Find out if you’ve been part of a data breach with { -brand-fx-monitor }. We’ll help you understand what to do next and continuously monitor for any new breaches.
 
 ## Header
 
@@ -732,6 +735,10 @@ sign-in = Sign In
 site-nav-breaches-link = Resolve Data Breaches
 site-nav-settings-link = Settings
 site-nav-help-link = Help and Support
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Try our other security tools:
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
@@ -739,8 +746,11 @@ menu-button-title = User menu
 menu-button-alt = Open user menu
 menu-list-accessible-label = Account menu
 menu-item-fxa = Manage your { -brand-fx-account }
+menu-item-fxa-alt = Open { -brand-fx-account } page
 menu-item-settings = Settings
+menu-item-settings-alt = Open settings page
 menu-item-help = Help and support
+menu-item-help-alt = Open help and support page
 menu-item-logout = Sign out
 
 ## Footer
@@ -748,12 +758,14 @@ menu-item-logout = Sign out
 mozilla = { -brand-Mozilla }
 terms-and-privacy = Terms and Privacy
 github = { -brand-github }
+footer-nav-all-breaches = All Breaches
 
 ## Error page
 
 # Variables:
 #   $errorCode (number) - "404"
 error-page-error-404-title = { $errorCode } Page not found
+error-page-error-404-copy = We’re sorry, the page you’re looking for no longer exists.
 error-page-error-404-cta-button = Go back
 # Variables:
 #   $errorCode (number) - the status code of the error, e.g. 403
@@ -762,7 +774,20 @@ error-page-error-other-copy = Please try again or come back later
 
 ## Breach overview page
 
+all-breaches-headline-2 = All breaches detected by { -brand-fx-monitor }
+all-breaches-lead = We monitor all known data breaches to find out if your personal information was compromised. Here’s a complete list of all of the breaches that have been reported since 2007.
 search-breaches = Search Breaches
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Exposed data:
 
 ## Public breach detail page
 
+find-out-if-2 = Find out if you were involved in this breach
+find-out-if-description = We’ll help you quickly see if your email address was exposed in this breach, and understand what to do next.
+breach-detail-cta-signup = Check for breaches
+
+## Floating banner
+
+floating-banner-text = Boost your online security with news, tips, and updates from { -brand-Mozilla }.
+floating-banner-link-label = Sign up
+floating-banner-dismiss-button-label = No thanks
