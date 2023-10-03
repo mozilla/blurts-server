@@ -68,11 +68,20 @@ export default async function DashboardPage() {
         throw new Error("No current scan ID");
       }
 
+      if (!latestScan?.scan?.onerep_scan_reason) {
+        throw new Error("No scan reason");
+      }
+
+      if (!latestScan?.scan?.onerep_scan_reason) {
+        throw new Error("No scan status");
+      }
+
       await addOnerepScanResults(
         profileId,
         scanId as number,
         newScanResults,
-        latestScan?.scan?.onerep_scan_reason ?? "manual"
+        latestScan.scan.onerep_scan_reason,
+        latestScan.scan.onerep_scan_status
       );
     }
   } catch (ex) {
