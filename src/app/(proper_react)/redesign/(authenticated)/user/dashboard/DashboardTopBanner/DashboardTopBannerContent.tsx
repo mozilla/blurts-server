@@ -49,9 +49,21 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
   if (tabType === "fixed") {
     return (
       <ProgressCard
-        resolvedByYou={bannerData.dataBreachFixedExposuresNum}
-        autoRemoved={bannerData.dataBrokerFixedNum}
-        totalNumExposures={bannerData.totalExposures}
+        resolvedByYou={
+          bannerData.dataBrokerManuallyResolvedExposuresNum +
+          bannerData.dataBreachFixedExposuresNum
+        }
+        autoRemoved={
+          bannerData.dataBrokerFixedExposuresNum -
+          bannerData.dataBrokerManuallyResolvedExposuresNum +
+          bannerData.dataBrokerInProgressExposuresNum
+        }
+        inProgress={bannerData.dataBrokerInProgressExposuresNum}
+        totalNumExposures={
+          bannerData.dataBreachFixedExposuresNum +
+          bannerData.dataBrokerFixedExposuresNum +
+          bannerData.dataBrokerInProgressExposuresNum
+        }
       />
     );
   }
@@ -261,7 +273,9 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 {
                   remaining_exposures_total_num:
                     bannerData.totalExposures -
-                    bannerData.dataBreachFixedExposuresNum,
+                    bannerData.dataBreachFixedExposuresNum -
+                    bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBrokerInProgressExposuresNum,
                 }
               )}
             </p>
