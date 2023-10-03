@@ -327,7 +327,9 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 {
                   remaining_exposures_total_num:
                     bannerData.totalExposures -
-                    bannerData.dataBreachFixedExposuresNum,
+                    bannerData.dataBreachFixedExposuresNum -
+                    bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBrokerInProgressExposuresNum,
                 }
               )}
             </p>
