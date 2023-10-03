@@ -196,8 +196,9 @@ export function getDashboardSummary(
       const isFixed =
         r.status === RemovalStatusMap.Removed || isManuallyResolved;
       const isInProgress =
-        r.status === RemovalStatusMap.OptOutInProgress ||
-        r.status === RemovalStatusMap.WaitingForVerification;
+        (r.status === RemovalStatusMap.OptOutInProgress ||
+          r.status === RemovalStatusMap.WaitingForVerification) &&
+        !isManuallyResolved;
       if (isInProgress) {
         summary.dataBrokerInProgressNum++;
       } else if (isFixed) {
@@ -371,6 +372,15 @@ export function getDashboardSummary(
     },
     {} as Exposures
   );
+  console.log("all exposures: ");
+  console.log(summary.allExposures);
+  console.log("fixed exposures: ");
+  console.log(summary.fixedExposures);
+  console.log("in progress exposures: ");
+  console.log(summary.inProgressExposures);
+  console.log("inputs: ");
+  console.log(scannedResults);
+  console.log(subscriberBreaches);
 
   // count fixed and in-progress exposures
   summary.inProgressFixedExposures = Object.keys(summary.fixedExposures).reduce(
@@ -401,10 +411,6 @@ export function getDashboardSummary(
       summary.dataBrokerInProgressExposuresNum,
     isBreachesOnly
   );
-
-  // console.log("unresolved exposures: ");
-  // console.log(summary.unresolvedExposures);
-  // console.log(summary.unresolvedSanitizedExposures);
 
   return summary;
 }
