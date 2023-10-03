@@ -15,6 +15,7 @@ import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 
 import { isFlagEnabled } from "../../../../../functions/server/featureFlags";
 import { isEligibleForFreeScan } from "../../../../../functions/server/onerep";
+import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
@@ -33,7 +34,14 @@ export default async function DashboardPage() {
     return redirect("/redesign/user/welcome/");
   }
 
+  // This contains the latest scan results in our database.
   const latestScan = await getLatestOnerepScanResults(profileId);
+
+  // Attempt to fetch the current scan results from the provider.
+  if (latestScan) {
+    await refreshStoredScanResults(profileId);
+  }
+
   const subBreaches = await getSubscriberBreaches(session.user);
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(
