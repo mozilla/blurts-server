@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import "@testing-library/jest-dom";
+import { TextEncoder } from "util";
 import { setProjectAnnotations } from "@storybook/react";
 import { toHaveNoViolations } from "jest-axe";
 import { expect } from "@jest/globals";
@@ -31,3 +32,5 @@ global.IntersectionObserver = jest.fn();
 // attempt to preload the target, causing another rerender that would cause a
 // warning about wrapping tests in act(). Thus, we tell it it's not in view.
 defaultFallbackInView(false);
+
+global.TextEncoder = TextEncoder;
