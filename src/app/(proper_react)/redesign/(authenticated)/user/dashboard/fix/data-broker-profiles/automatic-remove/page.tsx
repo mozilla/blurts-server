@@ -9,12 +9,12 @@ import styles from "../dataBrokerProfiles.module.scss";
 import { Button } from "../../../../../../../../components/server/Button";
 import { useL10n } from "../../../../../../../../hooks/l10n";
 
-export type AutomaticRemoveProps = {
+export type Props = {
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
 };
 
-export default function AutomaticRemove(props: AutomaticRemoveProps) {
+export default function AutomaticRemove(props: Props) {
   const l10n = useL10n();
 
   const [selectedPlanIsYearly, setSelectedPlanIsYearly] = useState(true);
