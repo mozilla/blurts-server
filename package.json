@@ -55,7 +55,7 @@
     "@fluent/langneg": "^0.6.2",
     "@fluent/react": "^0.15.0",
     "@google-cloud/pubsub": "^4.0.3",
-    "@grpc/grpc-js": "1.8.21",
+    "@grpc/grpc-js": "1.9.5",
     "@leeoniya/ufuzzy": "^1.0.8",
     "@mozilla/glean": "^2.0.2",
     "@sentry/nextjs": "^7.58.1",
