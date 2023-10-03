@@ -16,6 +16,7 @@ import {
   getExposureReduction,
 } from "../../../../../../../../functions/server/dashboard";
 import { Button } from "../../../../../../../../components/server/Button";
+import { hasPremium } from "../../../../../../../../functions/universal/user";
 
 export default async function WelcomeToPremium() {
   const l10n = getL10n();
@@ -23,6 +24,11 @@ export default async function WelcomeToPremium() {
 
   if (!session?.user?.subscriber?.id) {
     redirect("/redesign/user/dashboard/");
+  }
+
+  // The user may have subscribed and just need their session updated - they will be redirected back to try again if it looks valid.
+  if (!hasPremium(session.user)) {
+    redirect(`${process.env.NEXTAUTH_URL}/redesign/user/dashboard/subscribed`);
   }
 
   const result = await getOnerepProfileId(session.user.subscriber.id);
