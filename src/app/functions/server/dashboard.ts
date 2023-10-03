@@ -48,7 +48,7 @@ export interface DashboardSummary {
   /** total number of in-progress exposures from user data broker scanned results */
   dataBrokerInProgressExposuresNum: number;
   /** total number of exposures resolved manually */
-  manuallyResolvedExposuresNum: number;
+  dataBrokerManuallyResolvedExposuresNum: number;
 
   /** total number of exposures: sum of data breaches & data broker exposures */
   totalExposures: number;
@@ -102,7 +102,7 @@ export function getDashboardSummary(
     dataBrokerFixedExposuresNum: 0,
     dataBrokerInProgressNum: 0,
     dataBrokerInProgressExposuresNum: 0,
-    manuallyResolvedExposuresNum: 0,
+    dataBrokerManuallyResolvedExposuresNum: 0,
     totalExposures: 0,
     allExposures: {
       emailAddresses: 0,
@@ -240,7 +240,7 @@ export function getDashboardSummary(
       }
 
       if (isManuallyResolved) {
-        summary.manuallyResolvedExposuresNum += exposureIncrement;
+        summary.dataBrokerManuallyResolvedExposuresNum += exposureIncrement;
       }
     });
   }
@@ -268,7 +268,6 @@ export function getDashboardSummary(
       if (b.isResolved) {
         summary.fixedExposures.emailAddresses += increment;
         summary.dataBreachFixedExposuresNum += increment;
-        summary.manuallyResolvedExposuresNum += increment;
       }
     }
 
@@ -280,7 +279,6 @@ export function getDashboardSummary(
       if (b.isResolved) {
         summary.fixedExposures.phoneNumbers += increment;
         summary.dataBreachFixedExposuresNum += increment;
-        summary.manuallyResolvedExposuresNum += increment;
       }
     }
 
@@ -292,7 +290,6 @@ export function getDashboardSummary(
       if (b.isResolved) {
         summary.fixedExposures.passwords += increment;
         summary.dataBreachFixedExposuresNum += increment;
-        summary.manuallyResolvedExposuresNum += increment;
       }
     }
 
@@ -304,7 +301,6 @@ export function getDashboardSummary(
       if (b.isResolved) {
         summary.fixedExposures.socialSecurityNumbers += increment;
         summary.dataBreachFixedExposuresNum += increment;
-        summary.manuallyResolvedExposuresNum += increment;
       }
     }
 
@@ -316,7 +312,6 @@ export function getDashboardSummary(
       if (b.isResolved) {
         summary.fixedExposures.ipAddresses += increment;
         summary.dataBreachFixedExposuresNum += increment;
-        summary.manuallyResolvedExposuresNum += increment;
       }
     }
 
@@ -328,7 +323,6 @@ export function getDashboardSummary(
       if (b.isResolved) {
         summary.fixedExposures.creditCardNumbers += increment;
         summary.dataBreachFixedExposuresNum += increment;
-        summary.manuallyResolvedExposuresNum += increment;
       }
     }
 
@@ -341,7 +335,6 @@ export function getDashboardSummary(
       if (b.isResolved) {
         summary.fixedExposures.pins += increment;
         summary.dataBreachFixedExposuresNum += increment;
-        summary.manuallyResolvedExposuresNum += increment;
       }
     }
     /* c8 ignore stop */
@@ -355,7 +348,6 @@ export function getDashboardSummary(
       if (b.isResolved) {
         summary.fixedExposures.securityQuestions += increment;
         summary.dataBreachFixedExposuresNum += increment;
-        summary.manuallyResolvedExposuresNum += increment;
       }
     }
     /** c8 ignore stop */
@@ -379,9 +371,6 @@ export function getDashboardSummary(
     },
     {} as Exposures
   );
-
-  // console.log("unresolved exposures: ");
-  // console.log(summary.unresolvedExposures);
 
   // count fixed and in-progress exposures
   summary.inProgressFixedExposures = Object.keys(summary.fixedExposures).reduce(
@@ -412,6 +401,11 @@ export function getDashboardSummary(
       summary.dataBrokerInProgressExposuresNum,
     isBreachesOnly
   );
+
+  // console.log("unresolved exposures: ");
+  // console.log(summary.unresolvedExposures);
+  // console.log(summary.unresolvedSanitizedExposures);
+
   return summary;
 }
 

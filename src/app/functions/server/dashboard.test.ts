@@ -482,7 +482,7 @@ describe("getExposureReduction", () => {
       dataBrokerFixedNum: 10,
       dataBrokerInProgressExposuresNum: 10,
       dataBrokerInProgressNum: 10,
-      manuallyResolvedExposuresNum: 0,
+      dataBrokerManuallyResolvedExposuresNum: 0,
       totalExposures: 10,
       allExposures: testExposure,
       unresolvedExposures: testExposure,
