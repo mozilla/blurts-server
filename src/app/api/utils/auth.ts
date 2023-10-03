@@ -62,9 +62,12 @@ export const authOptions: AuthOptions = {
         },
       },
       token: AppConstants.OAUTH_TOKEN_URI,
+      // This function calls `profile` below, which converts the `FxaProfile` -> `Profile`.
       userinfo: {
         request: async (context) =>
-          fetchUserInfo(context.tokens.access_token ?? ""),
+          fetchUserInfo(
+            context.tokens.access_token ?? ""
+          ) as unknown as Promise<Profile>,
       },
       clientId: AppConstants.OAUTH_CLIENT_ID,
       clientSecret: AppConstants.OAUTH_CLIENT_SECRET,
@@ -79,7 +82,9 @@ export const authOptions: AuthOptions = {
     // Unused arguments also listed to show what's available:
     async jwt({ token, account, profile, trigger }) {
       if (trigger === "update") {
-        profile = await fetchUserInfo(token.subscriber?.fxa_access_token ?? "");
+        profile = convertFxaProfile(
+          await fetchUserInfo(token.subscriber?.fxa_access_token ?? "")
+        );
       }
       if (profile) {
         token.fxa = {
@@ -194,7 +199,7 @@ async function fetchUserInfo(accessToken: string) {
     },
   });
   const userInfo = await response.json();
-  return userInfo as Profile;
+  return userInfo as FxaProfile;
 }
 
 /**
