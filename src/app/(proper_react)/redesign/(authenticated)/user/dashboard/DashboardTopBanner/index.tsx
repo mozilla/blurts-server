@@ -7,7 +7,7 @@ import { TabType } from "../View";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { DoughnutChart as Chart } from "../../../../../../components/client/Chart";
 import { DashboardSummary } from "../../../../../../functions/server/dashboard";
-import { InputData as StepDeterminationData } from "../../../../../../functions/server/getRelevantGuidedSteps";
+import { StepDeterminationData } from "../../../../../../functions/server/getRelevantGuidedSteps";
 import { DashboardTopBannerContent } from "./DashboardTopBannerContent";
 
 export type DashboardTopBannerProps = {
