@@ -49,9 +49,9 @@ export default async function DashboardPage() {
   try {
     const currentScan = await getAllScanResults(profileId);
     const newScanResults: ScanResult[] = [];
+
     currentScan.forEach((current) => {
       latestScan.results.forEach((latest) => {
-        console.debug(new Date(current.updated_at), latest.updated_at);
         if (
           current.id === latest.onerep_scan_result_id &&
           current.scan_id === latest.onerep_scan_id &&
