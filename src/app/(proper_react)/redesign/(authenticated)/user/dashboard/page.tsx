@@ -64,7 +64,7 @@ export default async function DashboardPage() {
 
     if (newScanResults.length > 0) {
       const scanId = latestScan?.scan?.id;
-      if (!scanId && typeof scanId === "number") {
+      if (typeof scanId !== "number") {
         throw new Error("No current scan ID");
       }
 
