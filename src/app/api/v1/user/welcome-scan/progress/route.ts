@@ -29,9 +29,8 @@ export interface ScanProgressBody {
   results?: ListScanResultsResponse;
 }
 
-// For development we are periodically checking the scan progress and set the
-// result if finished. Polling the OneRep API is only necessary in development
-// environments - a webhook is used elsewhere.
+// Periodically checking the scan progress and set the result if finished.
+// A webhook is used as well, but this ensures that we get the latest data.
 // @see the onerep-events route and https://docs.onerep.com/#section/Webhooks-Endpoints
 export async function GET(
   _req: NextRequest
@@ -50,12 +49,8 @@ export async function GET(
       if (typeof latestScanId !== "undefined") {
         const scan = await getScanDetails(profileId, latestScanId);
 
-        // Store scan results only for development environments.
-        if (
-          (scan.status === "finished" &&
-            process.env.NODE_ENV === "development") ||
-          process.env.APP_ENV === "heroku"
-        ) {
+        // Store scan results.
+        if (scan.status === "finished") {
           const allScanResults = await getAllScanResults(profileId);
           await addOnerepScanResults(
             profileId,
