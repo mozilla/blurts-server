@@ -517,6 +517,14 @@ describe("getDashboardSummary", () => {
         summary.inProgressExposures[k as keyof Exposures]
       ).toBeGreaterThanOrEqual(0);
     }
+
+    summary.unresolvedSanitizedExposures.forEach((_, v) => {
+      expect(v).toBeGreaterThanOrEqual(0);
+    });
+
+    summary.inProgressFixedSanitizedExposures.forEach((_, v) => {
+      expect(v).toBeGreaterThanOrEqual(0);
+    });
   };
 
   it("gets breaches only summary", () => {
