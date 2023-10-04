@@ -219,7 +219,7 @@ function hasCompleted(data: InputData, stepId: StepLink["id"]): boolean {
   ): boolean {
     return !data.subscriberBreaches.some((breach) => {
       const affectedDataClasses = breach.dataClassesEffected.map(
-        (affectedDataClass) => Object.keys(affectedDataClass).join("")
+        (affectedDataClass) => Object.keys(affectedDataClass)[0]
       );
       return (
         affectedDataClasses.includes(dataClass) &&
