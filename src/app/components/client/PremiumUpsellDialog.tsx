@@ -90,7 +90,6 @@ function PremiumUpsellDialogContent({
     },
   ];
 
-  console.debug("test4:", monthlySubscriptionUrl, yearlySubscriptionUrl);
   return (
     <div className={styles.modalContent}>
       <div className={styles.productPlans}>
