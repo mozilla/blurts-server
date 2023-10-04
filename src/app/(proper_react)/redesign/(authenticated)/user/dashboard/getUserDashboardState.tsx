@@ -26,7 +26,7 @@ interface ContentConditionProps
   isRelevantGuidedStep: boolean;
 }
 
-export const isMatchingContent = (
+const isMatchingContent = (
   contentProps: ContentProps,
   contentConditions: ContentConditionProps
 ) => {
