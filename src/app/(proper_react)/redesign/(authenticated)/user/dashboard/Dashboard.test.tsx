@@ -56,7 +56,7 @@ it("passes the axe accessibility test suite for DashboardNonUsNoBreaches", async
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for DashboardNonUsUnresolved breaches", async () => {
+it("passes the axe accessibility test suite for DashboardNonUsUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardNonUsUnresolvedBreaches,
     Meta
@@ -80,7 +80,7 @@ it("passes the axe accessibility test suite for DashboardUsNoPremiumNoScanNoBrea
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for DashboardUsNoPremiumNoScanUnresolved breaches", async () => {
+it("passes the axe accessibility test suite for DashboardUsNoPremiumNoScanUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanUnresolvedBreaches,
     Meta
@@ -107,7 +107,7 @@ it("passes the axe accessibility test suite for DashboardUsNoPremiumEmptyScanNoB
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for DashboardUsNoPremiumEmptyScanUnresolved breaches", async () => {
+it("passes the axe accessibility test suite for DashboardUsNoPremiumEmptyScanUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanUnresolvedBreaches,
     Meta
@@ -134,7 +134,7 @@ it("passes the axe accessibility test suite for DashboardUsNoPremiumUnresolvedSc
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for DashboardUsNoPremiumUnresolvedScanUnresolved breaches", async () => {
+it("passes the axe accessibility test suite for DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
     Meta
@@ -161,7 +161,7 @@ it("passes the axe accessibility test suite for DashboardUsNoPremiumResolvedScan
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for DashboardUsNoPremiumResolvedScanUnresolved breaches", async () => {
+it("passes the axe accessibility test suite for DashboardUsNoPremiumResolvedScanUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
     Meta
@@ -188,7 +188,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumEmptyScanNoBre
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumEmptyScanUnresolved breaches", async () => {
+it("passes the axe accessibility test suite for DashboardUsPremiumEmptyScanUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanUnresolvedBreaches,
     Meta
@@ -215,7 +215,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumUnresolvedScan
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumUnresolvedScanUnresolved breaches", async () => {
+it("passes the axe accessibility test suite for DashboardUsPremiumUnresolvedScanUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
     Meta
@@ -242,7 +242,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumResolvedScanNo
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumResolvedScanUnresolved breaches", async () => {
+it("passes the axe accessibility test suite for DashboardUsPremiumResolvedScanUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanUnresolvedBreaches,
     Meta
@@ -269,7 +269,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumScanEmptyInPro
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumScanEmptyInProgressUnresolved breaches", async () => {
+it("passes the axe accessibility test suite for DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches,
     Meta
@@ -287,7 +287,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumScanUnresolved
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumScanUnresolvedInProgressUnresolved breaches", async () => {
+it("passes the axe accessibility test suite for DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches,
     Meta
