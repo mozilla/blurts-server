@@ -7,6 +7,7 @@ import {
   DashboardSummary,
   getDashboardSummary,
   getExposureReduction,
+  Exposures,
 } from "./dashboard";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { RemovalStatus, RemovalStatusMap } from "../universal/scanResult";
@@ -499,8 +500,28 @@ describe("getExposureReduction", () => {
 });
 
 describe("getDashboardSummary", () => {
+  // sanity checks
+  const noNegativeCounts = (summary: DashboardSummary) => {
+    for (const k in summary.unresolvedExposures) {
+      expect(
+        summary.unresolvedExposures[k as keyof Exposures]
+      ).toBeGreaterThanOrEqual(0);
+    }
+    for (const k in summary.fixedExposures) {
+      expect(
+        summary.fixedExposures[k as keyof Exposures]
+      ).toBeGreaterThanOrEqual(0);
+    }
+    for (const k in summary.inProgressExposures) {
+      expect(
+        summary.inProgressExposures[k as keyof Exposures]
+      ).toBeGreaterThanOrEqual(0);
+    }
+  };
+
   it("gets breaches only summary", () => {
     const summary = getDashboardSummary([], unresolvedBreaches);
+    noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(3);
     expect(summary.dataBreachFixedExposuresNum).toBe(0);
     expect(summary.dataBrokerTotalNum).toBe(0);
@@ -512,6 +533,7 @@ describe("getDashboardSummary", () => {
 
   it("gets breaches only all fixed summary", () => {
     const summary = getDashboardSummary([], allResolvedBreaches);
+    noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(3);
     expect(summary.dataBrokerTotalNum).toBe(0);
     expect(summary.dataBrokerTotalExposuresNum).toBe(0);
@@ -524,6 +546,7 @@ describe("getDashboardSummary", () => {
 
   it("gets scanned results only summary", () => {
     const summary = getDashboardSummary(unresolvedScannedResults, []);
+    noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(0);
     expect(summary.dataBreachTotalExposuresNum).toBe(0);
     expect(summary.dataBreachFixedExposuresNum).toBe(0);
@@ -546,6 +569,7 @@ describe("getDashboardSummary", () => {
 
   it("gets scanned results only all fixed summary", () => {
     const summary = getDashboardSummary(allResolvedScannedResults, []);
+    noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(0);
     expect(summary.dataBreachTotalExposuresNum).toBe(0);
     expect(summary.dataBreachFixedExposuresNum).toBe(0);
@@ -562,6 +586,7 @@ describe("getDashboardSummary", () => {
       [...allResolvedScannedResults, ...inProgressScannedResults],
       []
     );
+    noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(0);
     expect(summary.dataBreachTotalExposuresNum).toBe(0);
     expect(summary.dataBreachFixedExposuresNum).toBe(0);
@@ -586,6 +611,7 @@ describe("getDashboardSummary", () => {
 
   it("gets scanned results manually removed summary", () => {
     const summary = getDashboardSummary(manuallyResolvedScannedResults, []);
+    noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(0);
     expect(summary.dataBreachTotalExposuresNum).toBe(0);
     expect(summary.dataBreachFixedExposuresNum).toBe(0);
@@ -603,6 +629,7 @@ describe("getDashboardSummary", () => {
       unresolvedScannedResults,
       unresolvedBreaches
     );
+    noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(3);
     expect(summary.dataBreachTotalExposuresNum).toBe(8);
     expect(summary.dataBreachFixedExposuresNum).toBe(0);
@@ -619,6 +646,7 @@ describe("getDashboardSummary", () => {
       allResolvedScannedResults,
       allResolvedBreaches
     );
+    noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(3);
     expect(summary.dataBreachTotalExposuresNum).toBe(8);
     expect(summary.dataBreachFixedExposuresNum).toBe(8);

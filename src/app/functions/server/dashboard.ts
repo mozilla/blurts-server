@@ -7,7 +7,7 @@ import { BreachDataTypes } from "../universal/breach";
 import { RemovalStatusMap } from "../universal/scanResult";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 
-type Exposures = {
+export type Exposures = {
   // shared
   emailAddresses: number;
   phoneNumbers: number;
@@ -372,15 +372,6 @@ export function getDashboardSummary(
     },
     {} as Exposures
   );
-  console.log("all exposures: ");
-  console.log(summary.allExposures);
-  console.log("fixed exposures: ");
-  console.log(summary.fixedExposures);
-  console.log("in progress exposures: ");
-  console.log(summary.inProgressExposures);
-  console.log("inputs: ");
-  console.log(scannedResults);
-  console.log(subscriberBreaches);
 
   // count fixed and in-progress exposures
   summary.inProgressFixedExposures = Object.keys(summary.fixedExposures).reduce(
