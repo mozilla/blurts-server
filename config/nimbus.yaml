@@ -1,7 +1,7 @@
 about:
   description: Nimbus Feature Manifest for Monitor Web testing
 channels:
-  - staging
+  - stage
   - production
 features:
   example-feature:
@@ -16,7 +16,7 @@ features:
         type: Option<String>
         default: null
     defaults:
-      - channel: staging
+      - channel: stage
         value: { "enabled": true }
       - channel: production
         value: { "something": "wicked" }
