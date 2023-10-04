@@ -11,6 +11,8 @@ import { useCookies } from "react-cookie";
 
 export type Props = {
   userId: string;
+  channel: string;
+  appEnv: string;
 };
 
 // Empty component that records a page view on first load.
@@ -18,7 +20,7 @@ export const PageLoadEvent = (props: Props) => {
   const [cookies, setCookie] = useCookies(["userId"]);
   const userId = props.userId;
 
-  const { pageEvents } = useGlean();
+  const { pageEvents } = useGlean(props.channel, props.appEnv);
   const pathname = usePathname();
 
   // On first load of the page, record a page view.
