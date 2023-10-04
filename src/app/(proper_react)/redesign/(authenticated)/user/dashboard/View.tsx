@@ -108,10 +108,9 @@ export const View = (props: Props) => {
         (tabKey === "fixed" && exposureStatus !== "needAction")
       );
     });
-  const filteredExposures = filterExposures(
-    getTabSpecificExposures(selectedTab),
-    filters
-  );
+
+  const tabSpecificExposures = getTabSpecificExposures(selectedTab);
+  const filteredExposures = filterExposures(tabSpecificExposures, filters);
 
   const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
     return (
@@ -152,9 +151,10 @@ export const View = (props: Props) => {
 
   const hasExposures = combinedArray.length > 0;
   const hasUnresolvedBreaches =
-    filteredExposures.filter((exposure) => !isScanResult(exposure)).length > 0;
+    tabSpecificExposures.filter((exposure) => !isScanResult(exposure)).length >
+    0;
   const hasUnresolvedBrokers =
-    filteredExposures.filter(isScanResult).length > 0;
+    tabSpecificExposures.filter(isScanResult).length > 0;
 
   const hasUnresolvedExposures = hasUnresolvedBreaches || hasUnresolvedBrokers;
   const hasFixedExposures = hasExposures && !hasUnresolvedExposures;
