@@ -44,17 +44,24 @@ premium-cta-label = Upgrade to { -brand-premium }
 # The number inside <nr> will be displayed in a large font,
 # the label inside <label> will be shown underneath, in a smaller font.
 # Variables:
-#   $nr (number) - Total number of exposures found for the user
+#   $nr (number) - Number of unresolved exposures for the user
 exposure-chart-heading = { $nr ->
   [one] <nr>{ $nr }</nr> <label>exposure</label>
   *[other] <nr>{ $nr }</nr> <label>exposures</label>
 }
+# Variables:
+#   $nr (number) - Number of fixed exposures found for the user
+exposure-chart-heading-fixed = <nr>{ $nr }</nr> <label>Fixed</label>
 exposure-chart-legend-heading-type = Exposure
 exposure-chart-legend-heading-nr = Number
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
 exposure-chart-caption = This chart shows how many times your info is actively exposed.
+# Variables:
+#   $total_fixed_exposures_num (number) - Number of fixed exposures
+#   $total_exposures_num (number) - Number of total exposures
+exposure-chart-caption-fixed = This chart shows the total exposures that are fixed ({ $total_fixed_exposures_num } out of { $total_exposures_num })
 exposure-chart-returning-user-upgrade-prompt = Home address, family members and more are not yet included.
 exposure-chart-returning-user-upgrade-prompt-cta = Start a free scan
 exposure-chart-scan-in-progress-prompt = <b>Scan in progress:</b> address, family members, and more are not yet included.
