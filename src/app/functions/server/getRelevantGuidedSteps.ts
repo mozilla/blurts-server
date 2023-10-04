@@ -218,11 +218,11 @@ function hasCompleted(data: InputData, stepId: StepLink["id"]): boolean {
     dataClass: (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
   ): boolean {
     return !data.subscriberBreaches.some((breach) => {
-      const effectedDataClasses = breach.dataClassesEffected.map(
-        (dataClassEffected) => Object.keys(dataClassEffected).join("")
+      const affectedDataClasses = breach.dataClassesEffected.map(
+        (affectedDataClass) => Object.keys(affectedDataClass).join("")
       );
       return (
-        effectedDataClasses.includes(dataClass) &&
+        affectedDataClasses.includes(dataClass) &&
         !breach.resolvedDataClasses.includes(dataClass)
       );
     });
