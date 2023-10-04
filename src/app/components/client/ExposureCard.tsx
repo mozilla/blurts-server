@@ -50,15 +50,14 @@ export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
   useEffect(() => {
     const loadDataBrokerImage = async () => {
       if (isScanResult(exposureData)) {
-        const cleanedName = exposureData.data_broker.split(".")[0];
         try {
           const logo = await import(
-            `../client/assets/data-brokers/${cleanedName}.jpg`
+            `../client/assets/data-brokers/${exposureData.data_broker}.jpg`
           );
           setDataBrokerImage(<Image src={logo.default} alt="" />);
         } catch (error) {
           // Default to circle logos if logo is not found
-          setDataBrokerImage(<FallbackLogo name={cleanedName} />);
+          setDataBrokerImage(<FallbackLogo name={exposureData.data_broker} />);
         }
       }
     };
