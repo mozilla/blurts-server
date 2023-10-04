@@ -242,9 +242,21 @@ it("switches between tab panels", async () => {
   expect(tabActionNeededTrigger.getAttribute("aria-selected")).toBe("false");
 });
 
-it("shows the premium upgrade cta if the user is not a premium subscriber", () => {
+it("shows US users with Premium the Premium badge", () => {
   const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumNoScanNoBreaches,
+    DashboardUsPremiumEmptyScanNoBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  // We show a Premium badge on desktop in the toolbar and in the mobile menu
+  const premiumBadges = screen.queryAllByText("Premium");
+  expect(premiumBadges.length).toBe(2);
+});
+
+it("shows US users without Premium the upsell button", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanNoBreaches,
     Meta
   );
   render(<ComposedDashboard />);
@@ -254,6 +266,26 @@ it("shows the premium upgrade cta if the user is not a premium subscriber", () =
     name: "Upgrade to ⁨Premium⁩",
   });
   expect(premiumCtas.length).toBe(2);
+});
+
+it("does not show non-US users the Premium badge", () => {
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  // We show a Premium badge on desktop in the toolbar and in the mobile menu
+  const premiumBadges = screen.queryAllByText("Premium");
+  expect(premiumBadges.length).toBe(0);
+});
+
+it("does not show non-US users the upsell button", () => {
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  // We show a CTA on desktop in the toolbar and in the mobile menu
+  const premiumCtas = screen.queryAllByRole("button", {
+    name: "Upgrade to ⁨Premium⁩",
+  });
+  expect(premiumCtas.length).toBe(0);
 });
 
 it("opens and closes the premium upsell dialog via the Premium upsell badge)", async () => {
@@ -380,16 +412,10 @@ it("shows returned free user who has resolved all tasks premium upsell and all f
   expect(screen.getByRole("dialog")).toBeInTheDocument();
 });
 
-it("shows a non-Premium user who has resolved all tasks a CTA to check out what was fixed", async () => {
+it("shows a user who has resolved all exposures a CTA to check out what was fixed", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
   render(<ComposedDashboard />);
-
-  // We show a CTA on desktop in the toolbar and in the mobile menu
-  const premiumCtas = screen.queryAllByRole("button", {
-    name: "Upgrade to ⁨Premium⁩",
-  });
-  expect(premiumCtas.length).toBe(2);
 
   // show banner CTA premium upgrade
   const bannerPremiumCta = screen.queryAllByRole("button", {
@@ -411,10 +437,6 @@ it("shows a returning Premium user who has resolved all tasks a CTA to check out
     Meta
   );
   render(<ComposedDashboard />);
-
-  // We show a CTA on desktop in the toolbar and in the mobile menu
-  const premiumBadges = screen.queryAllByText("Premium");
-  expect(premiumBadges.length).toBe(2);
 
   // show banner CTA premium upgrade
   const bannerPremiumCta = screen.queryAllByRole("button", {
