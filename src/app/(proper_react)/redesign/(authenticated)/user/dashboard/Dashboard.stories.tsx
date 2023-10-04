@@ -152,7 +152,13 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   };
 
   return (
-    <Shell l10n={getEnL10nSync()} session={mockedSession} nonce="">
+    <Shell
+      l10n={getEnL10nSync()}
+      session={mockedSession}
+      nonce=""
+      monthlySubscriptionUrl=""
+      yearlySubscriptionUrl=""
+    >
       <DashboardEl
         countryCode={props.countryCode}
         user={user}
@@ -167,6 +173,8 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           FreeBrokerScan: true,
           PremiumBrokerRemoval: true,
         }}
+        monthlySubscriptionUrl={""}
+        yearlySubscriptionUrl={""}
       />
     </Shell>
   );
