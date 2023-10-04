@@ -155,8 +155,8 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
       l10n={getEnL10nSync()}
       session={mockedSession}
       nonce=""
-      monthlySubscriptionUrl={""}
-      yearlySubscriptionUrl={""}
+      monthlySubscriptionUrl=""
+      yearlySubscriptionUrl=""
     >
       <DashboardEl
         countryCode={props.countryCode}
