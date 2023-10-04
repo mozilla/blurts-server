@@ -50,6 +50,8 @@ export type Props = {
   userScanData: LatestOnerepScanData;
   isEligibleForFreeScan: boolean;
   isEligibleForPremium: boolean;
+  monthlySubscriptionUrl: string;
+  yearlySubscriptionUrl: string;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -275,7 +277,11 @@ export const View = (props: Props) => {
 
   return (
     <div className={styles.wrapper}>
-      <Toolbar user={props.user}>
+      <Toolbar
+        user={props.user}
+        monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+        yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+      >
         <TabList
           tabs={tabsData}
           onSelectionChange={(selectedKey) =>

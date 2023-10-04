@@ -13,21 +13,31 @@ import Link from "next/link";
 import { PageLink } from "./PageLink";
 import { ExtendedReactLocalization } from "../../hooks/l10n";
 import { GaScript } from "./GaScript";
+import getPremiumSubscriptionUrl from "../../functions/server/getPremiumSubscriptionUrl";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
   session: Session;
   children: ReactNode;
   nonce: string;
+  monthlySubscriptionUrl: string;
+  yearlySubscriptionUrl: string;
 };
 
 export const Shell = (props: Props) => {
   const l10n = props.l10n;
 
+  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
+  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
+
   return (
     <>
       <GaScript nonce={props.nonce} />
-      <MobileShell session={props.session}>
+      <MobileShell
+        session={props.session}
+        monthlySubscriptionUrl={monthlySubscriptionUrl}
+        yearlySubscriptionUrl={yearlySubscriptionUrl}
+      >
         <div className={styles.wrapper}>
           <nav
             className={styles.mainMenu}
