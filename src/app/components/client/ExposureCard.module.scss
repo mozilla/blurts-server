@@ -50,6 +50,10 @@
       gap: $layout-md;
     }
 
+    .exposureCardLogo {
+      object-fit: contain;
+    }
+
     .fallbackLogo {
       display: flex;
       align-items: center;

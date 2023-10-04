@@ -52,9 +52,15 @@ export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
       if (isScanResult(exposureData)) {
         try {
           const logo = await import(
-            `../client/assets/data-brokers/${exposureData.data_broker}.jpg`
+            `../client/assets/data-brokers/${exposureData.data_broker}.png`
           );
-          setDataBrokerImage(<Image src={logo.default} alt="" />);
+          setDataBrokerImage(
+            <Image
+              className={styles.exposureCardLogo}
+              src={logo.default}
+              alt=""
+            />
+          );
         } catch (error) {
           // Default to circle logos if logo is not found
           setDataBrokerImage(<FallbackLogo name={exposureData.data_broker} />);
