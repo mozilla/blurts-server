@@ -78,7 +78,7 @@ export type OutputData = {
   skipTarget: StepLink | null;
 };
 
-export function guidedResolutionIsInProgress(stepId: StepLink["id"]) {
+export function isGuidedResolutionInProgress(stepId: StepLink["id"]) {
   const inProgressStepIds = stepLinks
     .filter(
       (step) =>
