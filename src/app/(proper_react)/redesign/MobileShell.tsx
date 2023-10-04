@@ -17,8 +17,10 @@ import { useL10n } from "../../hooks/l10n";
 import { PageLink } from "./PageLink";
 
 export type Props = {
-  children: ReactNode;
   session: Session;
+  monthlySubscriptionUrl: string;
+  yearlySubscriptionUrl: string;
+  children: ReactNode;
 };
 
 export const MobileShell = (props: Props) => {
@@ -101,7 +103,11 @@ export const MobileShell = (props: Props) => {
               </li>
             </ul>
             <div className={styles.premiumCta}>
-              <PremiumBadge user={props.session.user} />
+              <PremiumBadge
+                user={props.session.user}
+                monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+                yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+              />
             </div>
           </div>
         </nav>

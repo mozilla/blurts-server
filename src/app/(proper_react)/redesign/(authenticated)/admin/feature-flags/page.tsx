@@ -12,9 +12,13 @@ import { authOptions, isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import styles from "./page.module.scss";
 import { ModifyInputField } from "./components/ModifyInputField";
+import getPremiumSubscriptionUrl from "../../../../../functions/server/getPremiumSubscriptionUrl";
 
 export default async function FeatureFlagPage() {
   const session = await getServerSession(authOptions);
+
+  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
+  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
 
   if (!session?.user?.email) {
     return redirect("/");
@@ -96,7 +100,11 @@ export default async function FeatureFlagPage() {
     <div className={styles.wrapper}>
       <nav className={styles.tabBar}>
         <div className={styles.end}>
-          <Toolbar user={session.user} />
+          <Toolbar
+            user={session.user}
+            monthlySubscriptionUrl={monthlySubscriptionUrl}
+            yearlySubscriptionUrl={yearlySubscriptionUrl}
+          />
         </div>
       </nav>
       <div className={styles.start}>

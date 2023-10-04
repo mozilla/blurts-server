@@ -114,7 +114,13 @@ const ViewWrapper = (props: ViewWrapperProps) => {
   };
 
   return (
-    <Shell l10n={getEnL10nSync()} session={mockedSession} nonce="">
+    <Shell
+      l10n={getEnL10nSync()}
+      session={mockedSession}
+      nonce=""
+      monthlySubscriptionUrl=""
+      yearlySubscriptionUrl=""
+    >
       <FixView
         breaches={mockedBreachesEmpty}
         userScannedResults={scanData.results}
