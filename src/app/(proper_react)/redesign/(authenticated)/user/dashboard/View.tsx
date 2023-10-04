@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Image from "next/image";
 import { Session } from "next-auth";
 import { OnerepScanResultRow } from "knex/types/tables";
@@ -38,6 +38,7 @@ import { Button } from "../../../../../components/server/Button";
 import AllFixedIllustration from "./images/dashboard-all-fixed.svg";
 import NoExposuresIllustration from "./images/dashboard-no-exposures.svg";
 import ScanProgressIllustration from "./images/scan-illustration.svg";
+import { CountryCodeContext } from "../../../../../../contextProviders/country-code";
 
 export type Props = {
   featureFlagsEnabled: Pick<
@@ -49,7 +50,6 @@ export type Props = {
   userScanData: LatestOnerepScanData;
   isEligibleForFreeScan: boolean;
   isEligibleForPremium: boolean;
-  countryCode: string;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -61,6 +61,7 @@ export type TabData = {
 
 export const View = (props: Props) => {
   const l10n = useL10n();
+  const countryCode = useContext(CountryCodeContext);
 
   const initialFilterState: FilterState = {
     exposureType: "show-all-exposure-type",
@@ -290,7 +291,7 @@ export const View = (props: Props) => {
           isPremiumUser={hasPremium(props.user)}
           isEligibleForPremium={canSubscribeToPremium({
             user: props.user,
-            countryCode: props.countryCode,
+            countryCode,
           })}
           isEligibleForFreeScan={props.isEligibleForFreeScan}
           hasExposures={hasExposures}
@@ -301,7 +302,7 @@ export const View = (props: Props) => {
             props.userBreaches
           )}
           stepDeterminationData={{
-            countryCode: props.countryCode,
+            countryCode,
             latestScanData: props.userScanData,
             subscriberBreaches: props.userBreaches,
             user: props.user,
