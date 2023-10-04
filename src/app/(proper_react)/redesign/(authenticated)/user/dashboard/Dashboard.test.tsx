@@ -438,13 +438,13 @@ it("shows a returning Premium user who has zero scan results and resolved breach
   render(<ComposedDashboard />);
 
   // show banner CTA premium upgrade
-  const seeWhatsFixedCta = screen.queryByRole("button", {
+  const seeWhatsFixedCta = screen.getByRole("button", {
     name: "See what’s fixed",
   });
   expect(seeWhatsFixedCta).toBeInTheDocument();
 
   // click on cta
-  await user.click(seeWhatsFixedCta as HTMLButtonElement);
+  await user.click(seeWhatsFixedCta);
 
   const fixedTab = screen.getByRole("tab", { name: "Fixed" });
   expect(fixedTab).toHaveAttribute("aria-selected", "true");
