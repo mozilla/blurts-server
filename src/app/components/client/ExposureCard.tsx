@@ -68,11 +68,11 @@ async function getDataBrokerImage(name: string) {
 }
 
 export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
-  if (isScanResult(exposureData)) {
-    return <ScanResultCard {...props} scanResult={exposureData} />;
-  } else {
-    return <SubscriberBreachCard {...props} subscriberBreach={exposureData} />;
-  }
+  return isScanResult(exposureData) ? (
+    <ScanResultCard {...props} scanResult={exposureData} />
+  ) : (
+    <SubscriberBreachCard {...props} subscriberBreach={exposureData} />
+  );
 };
 
 export type ScanResultCardProps = {
