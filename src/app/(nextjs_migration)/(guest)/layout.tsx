@@ -65,7 +65,11 @@ const GuestLayout = async (props: Props) => {
 
   return (
     <>
-      <PageLoadEvent userId={userId} />
+      <PageLoadEvent
+        userId={userId}
+        channel={process.env.APP_ENV ?? ""}
+        appEnv={process.env.APP_ENV ?? ""}
+      />
       <header>
         <div className="header-wrapper">
           <a href="/">

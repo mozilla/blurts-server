@@ -50,6 +50,8 @@ export type Props = {
   isEligibleForFreeScan: boolean;
   isEligibleForPremium: boolean;
   countryCode: string;
+  monthlySubscriptionUrl: string;
+  yearlySubscriptionUrl: string;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -108,10 +110,9 @@ export const View = (props: Props) => {
         (tabKey === "fixed" && exposureStatus !== "needAction")
       );
     });
-  const filteredExposures = filterExposures(
-    getTabSpecificExposures(selectedTab),
-    filters
-  );
+
+  const tabSpecificExposures = getTabSpecificExposures(selectedTab);
+  const filteredExposures = filterExposures(tabSpecificExposures, filters);
 
   const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
     return (
@@ -152,9 +153,10 @@ export const View = (props: Props) => {
 
   const hasExposures = combinedArray.length > 0;
   const hasUnresolvedBreaches =
-    filteredExposures.filter((exposure) => !isScanResult(exposure)).length > 0;
+    tabSpecificExposures.filter((exposure) => !isScanResult(exposure)).length >
+    0;
   const hasUnresolvedBrokers =
-    filteredExposures.filter(isScanResult).length > 0;
+    tabSpecificExposures.filter(isScanResult).length > 0;
 
   const hasUnresolvedExposures = hasUnresolvedBreaches || hasUnresolvedBrokers;
   const hasFixedExposures = hasExposures && !hasUnresolvedExposures;
@@ -274,7 +276,11 @@ export const View = (props: Props) => {
 
   return (
     <div className={styles.wrapper}>
-      <Toolbar user={props.user}>
+      <Toolbar
+        user={props.user}
+        monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+        yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+      >
         <TabList
           tabs={tabsData}
           onSelectionChange={(selectedKey) =>

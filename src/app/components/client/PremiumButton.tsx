@@ -44,7 +44,12 @@ export default function PremiumButton({ label }: Props) {
       <Button {...triggerProps} variant="primary" small>
         {l10n.getString(label)}
       </Button>
-      <PremiumUpsellDialog {...overlayProps} state={dialogState} />
+      <PremiumUpsellDialog
+        monthlySubscriptionUrl=""
+        yearlySubscriptionUrl=""
+        {...overlayProps}
+        state={dialogState}
+      />
     </>
   );
 }
