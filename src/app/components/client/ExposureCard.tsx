@@ -4,7 +4,7 @@
 
 "use client";
 
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, Suspense, lazy, useState } from "react";
 import Link from "next/link";
 import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./ExposureCard.module.scss";
@@ -44,50 +44,33 @@ export type ExposureCardProps = {
   isExpanded?: boolean;
 };
 
-export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
-  const [dataBrokerImage, setDataBrokerImage] = useState<ReactNode>();
-
-  useEffect(() => {
-    const loadDataBrokerImage = async () => {
-      if (isScanResult(exposureData)) {
-        try {
-          const logo = await import(
-            `../client/assets/data-brokers/${exposureData.data_broker}.png`
-          );
-          setDataBrokerImage(
-            <Image
-              className={styles.exposureCardLogo}
-              src={logo.default}
-              alt=""
-            />
-          );
-        } catch (error) {
-          // Default to circle logos if logo is not found
-          setDataBrokerImage(<FallbackLogo name={exposureData.data_broker} />);
-        }
-      }
-    };
-
-    loadDataBrokerImage().catch((error) => {
-      console.error("Error loading logo:", error);
-    });
-  }, [exposureData]);
-
-  if (isScanResult(exposureData)) {
-    return (
-      <ScanResultCard
-        {...props}
-        scanResult={exposureData}
-        exposureImg={<>{dataBrokerImage}</>}
-      />
+async function getDataBrokerImage(name: string) {
+  try {
+    const DataBrokerLogo = await import(
+      `../client/assets/data-brokers/${name}.png`
     );
+    console.log(DataBrokerLogo);
+    const ImageComponent = () => <Image src={DataBrokerLogo.default} alt="" />;
+    return {
+      default: ImageComponent,
+    };
+  } catch {
+    const FallBackLogo = () => <FallbackLogo name={name} />;
+    return {
+      default: FallBackLogo,
+    };
+  }
+}
+
+export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
+  if (isScanResult(exposureData)) {
+    return <ScanResultCard {...props} scanResult={exposureData} />;
   } else {
     return <SubscriberBreachCard {...props} subscriberBreach={exposureData} />;
   }
 };
 
 export type ScanResultCardProps = {
-  exposureImg?: ReactNode;
   scanResult: OnerepScanResultRow;
   locale: string;
   isPremiumBrokerRemovalEnabled: boolean;
@@ -95,14 +78,12 @@ export type ScanResultCardProps = {
   isExpanded?: boolean;
 };
 const ScanResultCard = (props: ScanResultCardProps) => {
-  const { exposureImg, scanResult, locale, isPremiumBrokerRemovalEnabled } =
-    props;
-
+  const { scanResult, locale, isPremiumBrokerRemovalEnabled } = props;
   const l10n = useL10n();
   const [exposureCardExpanded, setExposureCardExpanded] = useState(
     props.isExpanded ?? false
   );
-
+  const DataBrokerLogo = lazy(() => getDataBrokerImage(scanResult.data_broker));
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
@@ -183,7 +164,11 @@ const ScanResultCard = (props: ScanResultCardProps) => {
               {
                 // TODO: Add unit test when changing this code:
                 /* c8 ignore next 7 */
-                exposureImg ?? <FallbackLogo name={scanResult.data_broker} />
+                <Suspense
+                  fallback={<FallbackLogo name={scanResult.data_broker} />}
+                >
+                  <DataBrokerLogo />
+                </Suspense>
               }
             </dd>
             <dt className={styles.visuallyHidden}>
