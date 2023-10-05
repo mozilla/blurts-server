@@ -20,11 +20,11 @@ import { canSubscribeToPremium } from "../../../../../functions/universal/user";
 const brokerOptions = {
   "no-scan": "No scan started",
   empty: "No scan results",
-  "emtpy-scan-in-progress": "Scan is in progress with no results",
   unresolved: "With unresolved scan results",
-  "unresolved-scan-in-progress": "Scan is in progress with unresolved results",
-  inProgress: "Scan in progres with resolved results",
   resolved: "All scan results resolved",
+  "emtpy-scan-in-progress": "Scan is in progress with no results",
+  "resolved-scan-in-progress": "Scan is in progress with resolved results",
+  "unresolved-scan-in-progress": "Scan is in progress with unresolved results",
 };
 const breachOptions = {
   empty: "No data breaches",
@@ -122,15 +122,16 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     if (props.brokers && props.brokers !== "no-scan") {
       scanData.scan =
         props.brokers === "emtpy-scan-in-progress" ||
+        props.brokers === "resolved-scan-in-progress" ||
         props.brokers === "unresolved-scan-in-progress"
           ? mockedScanInProgress
           : mockedScan;
 
+      if (props.brokers === "resolved-scan-in-progress") {
+        scanData.results = mockedInProgressScanResults;
+      }
       if (props.brokers === "unresolved-scan-in-progress") {
         scanData.results = mockedUnresolvedScanResults;
-      }
-      if (props.brokers === "inProgress") {
-        scanData.results = mockedInProgressScanResults;
       }
       if (props.brokers === "resolved") {
         scanData.results = mockedAllResolvedScanResults;
@@ -324,7 +325,7 @@ export const DashboardUsNoPremiumResolvedScanNoBreaches: Story = {
     countryCode: "us",
     premium: false,
     breaches: "empty",
-    brokers: "inProgress",
+    brokers: "resolved",
   },
 };
 
@@ -334,7 +335,7 @@ export const DashboardUsNoPremiumResolvedScanUnresolvedBreaches: Story = {
     countryCode: "us",
     premium: false,
     breaches: "unresolved",
-    brokers: "inProgress",
+    brokers: "resolved",
   },
 };
 
@@ -414,7 +415,7 @@ export const DashboardUsPremiumResolvedScanNoBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "empty",
-    brokers: "inProgress",
+    brokers: "resolved",
   },
 };
 
@@ -424,7 +425,7 @@ export const DashboardUsPremiumResolvedScanUnresolvedBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "unresolved",
-    brokers: "inProgress",
+    brokers: "resolved",
   },
 };
 
@@ -434,7 +435,7 @@ export const DashboardUsPremiumResolvedScanResolvedBreaches: Story = {
     countryCode: "us",
     premium: true,
     breaches: "resolved",
-    brokers: "inProgress",
+    brokers: "resolved",
   },
 };
 
@@ -479,13 +480,34 @@ export const DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches: Story
     },
   };
 
-export const DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches: Story =
+export const DashboardPremiumUserScanResolvedInProgressUnresolvedBreaches: Story =
   {
-    name: "Invalid state: Non-Premium US user, with Premium, with unresolved scan results and a scan in progress, with unresolved breaches",
+    name: "US user, with Premium, with resolved scan results and a scan in progress, with unresolved breaches",
     args: {
       countryCode: "us",
-      premium: false,
+      premium: true,
+      breaches: "unresolved",
+      brokers: "resolved-scan-in-progress",
+    },
+  };
+
+export const DashboardPremiumUserScanUnresolvedInProgressResolvedBreaches: Story =
+  {
+    name: "US user, with Premium, with unresolved scan results and a scan in progress, with resolved breaches",
+    args: {
+      countryCode: "us",
+      premium: true,
       breaches: "resolved",
       brokers: "unresolved-scan-in-progress",
     },
   };
+
+export const DashboardInvalidPremiumUserNoScanResolvedBreaches: Story = {
+  name: "Invalid state: US user, with Premium, with no scan, with resolved breaches",
+  args: {
+    countryCode: "us",
+    premium: true,
+    breaches: "resolved",
+    brokers: "no-scan",
+  },
+};
