@@ -133,6 +133,12 @@ After you push the tag to GitHub, you should also
 5. Check the pre-release box.
 6. Click "Publish release"
 
+### Update Jira
+
+On [our Jira board](https://mozilla-hub.atlassian.net/jira/software/c/projects/MNTOR/boards/447), take a look at the tickets listed under "Merged tot main". If those were included in the release you just created, drag those tickets to the "Done" column, in the "Merged" section (sections will appear as you start dragging). This will notify QA that they can verify the behaviour on stage.
+
+If you're unsure whether a ticket was included in the release, ask the person it is assigned to to move it if needed.
+
 ## Release to Prod
 
 We leave the tag on [Stage][stage] for a week so that we (and especially QA)

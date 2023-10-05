@@ -243,7 +243,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
                 }
               )}
               <a href={scanResult.link}>
-                <span>
+                <span className={styles.openInNewTab}>
                   <OpenInNew
                     alt={l10n.getString("open-in-new-tab-alt")}
                     width="13"
@@ -454,15 +454,15 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
                   },
                 }
               )}
-              <Link href={`/breach-details/${subscriberBreach.name}`}>
-                <span>
+              <a href={`/breach-details/${subscriberBreach.name}`}>
+                <span className={styles.openInNewTab}>
                   <OpenInNew
                     alt={l10n.getString("open-in-new-tab-alt")}
                     width="13"
                     height="13"
                   />
                 </span>
-              </Link>
+              </a>
               {l10n.getString("exposure-card-description-data-breach-part-two")}
             </p>
           </div>

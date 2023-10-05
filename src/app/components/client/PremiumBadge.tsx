@@ -19,9 +19,15 @@ import { useGa } from "../../hooks/useGa";
 
 export type Props = {
   user: Session["user"];
+  monthlySubscriptionUrl: string;
+  yearlySubscriptionUrl: string;
 };
 
-export default function PremiumBadge({ user }: Props) {
+export default function PremiumBadge({
+  user,
+  monthlySubscriptionUrl,
+  yearlySubscriptionUrl,
+}: Props) {
   const l10n = useL10n();
   const { gtag } = useGa();
 
@@ -54,7 +60,12 @@ export default function PremiumBadge({ user }: Props) {
       <Button {...triggerProps} variant="primary" small>
         {l10n.getString("premium-cta-label")}
       </Button>
-      <PremiumUpsellDialog {...overlayProps} state={dialogState} />
+      <PremiumUpsellDialog
+        {...overlayProps}
+        state={dialogState}
+        monthlySubscriptionUrl={monthlySubscriptionUrl}
+        yearlySubscriptionUrl={yearlySubscriptionUrl}
+      />
     </>
   );
 }

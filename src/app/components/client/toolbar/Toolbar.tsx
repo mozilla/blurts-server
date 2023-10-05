@@ -11,6 +11,8 @@ import PremiumBadge from "../../client/PremiumBadge";
 
 export type Props = {
   user: Session["user"];
+  monthlySubscriptionUrl: string;
+  yearlySubscriptionUrl: string;
   children?: ReactNode;
 };
 
@@ -19,7 +21,11 @@ export const Toolbar = (props: Props) => {
     <nav className={styles.toolbar}>
       <div className={styles.start}>{props.children}</div>
       <div className={styles.end}>
-        <PremiumBadge user={props.user} />
+        <PremiumBadge
+          user={props.user}
+          monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+          yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+        />
         <AppPicker />
         {props.user && <UserMenu user={props.user} />}
       </div>
