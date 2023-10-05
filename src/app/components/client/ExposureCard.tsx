@@ -49,8 +49,13 @@ async function getDataBrokerImage(name: string) {
     const DataBrokerLogo = await import(
       `../client/assets/data-brokers/${name}.png`
     );
-    console.log(DataBrokerLogo);
-    const ImageComponent = () => <Image src={DataBrokerLogo.default} alt="" />;
+    const ImageComponent = () => (
+      <Image
+        className={styles.dataBrokerLogo}
+        src={DataBrokerLogo.default}
+        alt=""
+      />
+    );
     return {
       default: ImageComponent,
     };
