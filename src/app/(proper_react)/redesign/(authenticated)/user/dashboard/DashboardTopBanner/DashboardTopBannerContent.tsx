@@ -266,7 +266,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </h3>
             <p>
-              {l10n.getString(
+              {l10n.getFragment(
                 "dashboard-top-banner-lets-keep-protecting-description",
                 {
                   vars: {
@@ -325,7 +325,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </h3>
             <p>
-              {l10n.getString(
+              {l10n.getFragment(
                 "dashboard-top-banner-lets-keep-protecting-description",
                 {
                   vars: {

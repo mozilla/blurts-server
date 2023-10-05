@@ -25,7 +25,6 @@ const brokerOptions = {
   "emtpy-scan-in-progress": "Scan is in progress with no results",
   "resolved-scan-in-progress": "Scan is in progress with resolved results",
   "unresolved-scan-in-progress": "Scan is in progress with unresolved results",
-  inProgress: "Scan is in progress with resolved results",
 };
 const breachOptions = {
   empty: "No data breaches",
