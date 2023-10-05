@@ -28,7 +28,7 @@ interface OnerepWebhookRequest {
   created_at: string;
 }
 
-export async function POST(req: NextRequest) {
+export async function POST(req: NextRequest): Promise<NextResponse> {
   let finalBuffer: Buffer;
   try {
     if (!process.env.ONEREP_WEBHOOK_SECRET) {
@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
 
     if (result.type !== "scan.completed") {
       console.debug("Unexpected OneRep webhook type received:", result.type);
-      return;
+      return NextResponse.json({ success: false }, { status: 400 });
     }
 
     if (result.data.object.status !== "finished") {
@@ -73,7 +73,7 @@ export async function POST(req: NextRequest) {
         "Received OneRep webhook, but scan not finished",
         result.data.object.status
       );
-      return;
+      return NextResponse.json({ success: false }, { status: 400 });
     }
 
     const profileId = result.data.object.profile_id;

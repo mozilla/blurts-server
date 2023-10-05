@@ -90,6 +90,11 @@ export async function POST(req: NextRequest) {
       { status: 200 }
     );
   }
+
+  return NextResponse.json(
+    { success: false, message: `No test email found for ${emailId}` },
+    { status: 400 }
+  );
 }
 
 // Leaving the `async` for now because of the commented-out `await`:
