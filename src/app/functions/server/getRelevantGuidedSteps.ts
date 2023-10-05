@@ -78,7 +78,7 @@ export type OutputData = {
   skipTarget: StepLink | null;
 };
 
-export function guidedResolutionIsInProgress(stepId: StepLink["id"]) {
+export function isGuidedResolutionInProgress(stepId: StepLink["id"]) {
   const inProgressStepIds = stepLinks
     .filter(
       (step) =>
@@ -218,11 +218,11 @@ function hasCompleted(data: InputData, stepId: StepLink["id"]): boolean {
     dataClass: (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
   ): boolean {
     return !data.subscriberBreaches.some((breach) => {
-      const effectedDataClasses = breach.dataClassesEffected.map(
-        (dataClassEffected) => Object.keys(dataClassEffected).join("")
+      const affectedDataClasses = breach.dataClassesEffected.map(
+        (affectedDataClass) => Object.keys(affectedDataClass)[0]
       );
       return (
-        effectedDataClasses.includes(dataClass) &&
+        affectedDataClasses.includes(dataClass) &&
         !breach.resolvedDataClasses.includes(dataClass)
       );
     });

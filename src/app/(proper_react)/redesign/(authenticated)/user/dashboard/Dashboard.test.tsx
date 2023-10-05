@@ -26,7 +26,9 @@ import Meta, {
   DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches,
   DashboardUsPremiumScanUnresolvedInProgressNoBreaches,
   DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches,
-  DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches,
+  DashboardPremiumUserScanResolvedInProgressUnresolvedBreaches,
+  DashboardPremiumUserScanUnresolvedInProgressResolvedBreaches,
+  DashboardInvalidPremiumUserNoScanResolvedBreaches,
 } from "./Dashboard.stories";
 
 jest.mock("next/navigation", () => ({
@@ -438,13 +440,13 @@ it("shows a returning Premium user who has zero scan results and resolved breach
   render(<ComposedDashboard />);
 
   // show banner CTA premium upgrade
-  const seeWhatsFixedCta = screen.queryByRole("button", {
+  const seeWhatsFixedCta = screen.getByRole("button", {
     name: "See what’s fixed",
   });
   expect(seeWhatsFixedCta).toBeInTheDocument();
 
   // click on cta
-  await user.click(seeWhatsFixedCta as HTMLButtonElement);
+  await user.click(seeWhatsFixedCta);
 
   const fixedTab = screen.getByRole("tab", { name: "Fixed" });
   expect(fixedTab).toHaveAttribute("aria-selected", "true");
@@ -541,9 +543,57 @@ it("shows scan in progress indicators on the dashboard with results and unresolv
   expect(exposureTableDescription).toBeInTheDocument();
 });
 
+it("shows scan in progress indicators on the dashboard with resolved scan results and unresolved breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardPremiumUserScanResolvedInProgressUnresolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const bannerContent = screen.getByText("Your scan is still in progress");
+  expect(bannerContent).toBeInTheDocument();
+  const bannerContentCta = screen.getByRole("link", {
+    name: "See what’s ready now",
+  });
+  expect(bannerContentCta).toBeInTheDocument();
+
+  const chartPrompt = screen.getByText("Scan in progress:");
+  expect(chartPrompt).toBeInTheDocument();
+
+  const exposureTableDescription = screen.getByText(
+    "We found your information exposed",
+    { exact: false }
+  );
+  expect(exposureTableDescription).toBeInTheDocument();
+});
+
+it("shows scan in progress indicators on the dashboard with unresolved scan results and resolved breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardPremiumUserScanUnresolvedInProgressResolvedBreaches,
+    Meta
+  );
+  render(<ComposedDashboard />);
+
+  const bannerContent = screen.getByText("Your scan is still in progress");
+  expect(bannerContent).toBeInTheDocument();
+  const bannerContentCta = screen.getByRole("link", {
+    name: "See what’s ready now",
+  });
+  expect(bannerContentCta).toBeInTheDocument();
+
+  const chartPrompt = screen.getByText("Scan in progress:");
+  expect(chartPrompt).toBeInTheDocument();
+
+  const exposureTableDescription = screen.getByText(
+    "We found your information exposed",
+    { exact: false }
+  );
+  expect(exposureTableDescription).toBeInTheDocument();
+});
+
 it("logs a warning for an invalid dashboard user state", () => {
   const ComposedDashboard = composeStory(
-    DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches,
+    DashboardInvalidPremiumUserNoScanResolvedBreaches,
     Meta
   );
 

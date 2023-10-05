@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ContentProps } from "./DashboardTopBanner/DashboardTopBannerContent";
-import { guidedResolutionIsInProgress } from "../../../../../functions/server/getRelevantGuidedSteps";
+import { isGuidedResolutionInProgress } from "../../../../../functions/server/getRelevantGuidedSteps";
 
 export type UserDashboardState =
   | "NonEligiblePremiumUserNoBreaches"
@@ -26,7 +26,7 @@ interface ContentConditionProps
   isRelevantGuidedStep: boolean;
 }
 
-export const isMatchingContent = (
+const isMatchingContent = (
   contentProps: ContentProps,
   contentConditions: ContentConditionProps
 ) => {
@@ -86,7 +86,7 @@ export const getUserDashboardState = (
      * - Unresolved breaches
      */
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: guidedResolutionIsInProgress(relevantGuidedStep.id),
+      isRelevantGuidedStep: isGuidedResolutionInProgress(relevantGuidedStep.id),
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: false,
@@ -247,7 +247,7 @@ export const getUserDashboardState = (
      * - Scan: Unresolved and removal started
      */
     (isMatchingContent(contentProps, {
-      isRelevantGuidedStep: guidedResolutionIsInProgress(relevantGuidedStep.id),
+      isRelevantGuidedStep: isGuidedResolutionInProgress(relevantGuidedStep.id),
       hasExposures: true,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: true,
@@ -263,7 +263,7 @@ export const getUserDashboardState = (
      * - Scan: Resolved
      */
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: guidedResolutionIsInProgress(relevantGuidedStep.id),
+      isRelevantGuidedStep: isGuidedResolutionInProgress(relevantGuidedStep.id),
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: false,
@@ -321,7 +321,7 @@ export const getUserDashboardState = (
      * - Scan: No results
      */
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: guidedResolutionIsInProgress(relevantGuidedStep.id),
+      isRelevantGuidedStep: isGuidedResolutionInProgress(relevantGuidedStep.id),
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: false,
