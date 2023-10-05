@@ -15,6 +15,7 @@ import { getEnL10nSync } from "../../../../../../../../functions/server/mockL10n
 import { FixView } from "../../FixView";
 import { LatestOnerepScanData } from "../../../../../../../../../db/tables/onerep_scans";
 import { GuidedExperienceBreaches } from "../../../../../../../../functions/server/getUserBreaches";
+import { hasPremium } from "../../../../../../../../functions/universal/user";
 
 const mockedScan: OnerepScanRow = {
   created_at: new Date(1998, 2, 31),
@@ -85,6 +86,7 @@ export const ManualRemoveViewStory: Story = {
           <ManualRemoveView
             scanData={mockedScanData}
             breaches={mockedBreaches}
+            isPremiumUser={hasPremium(user)}
           />
         </FixView>
       </Shell>

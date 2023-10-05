@@ -9,6 +9,7 @@ import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscri
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { ManualRemoveView } from "./ManualRemoveView";
 import { authOptions } from "../../../../../../../../api/utils/auth";
+import { hasPremium } from "../../../../../../../../functions/universal/user";
 
 export default async function ManualRemove() {
   const session = await getServerSession(authOptions);
@@ -21,5 +22,11 @@ export default async function ManualRemove() {
   const profileId = result[0]["onerep_profile_id"] as number;
   const scanData = await getLatestOnerepScanResults(profileId);
   const subBreaches = await getSubscriberBreaches(session.user);
-  return <ManualRemoveView breaches={subBreaches} scanData={scanData} />;
+  return (
+    <ManualRemoveView
+      breaches={subBreaches}
+      scanData={scanData}
+      isPremiumUser={hasPremium(session.user)}
+    />
+  );
 }

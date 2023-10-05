@@ -15,15 +15,29 @@ type DataBrokerDataClassProps = {
   exposureCategoryLabel: string;
   num: number;
   icon: ReactElement;
+  isPremiumUser: boolean;
 };
 
-export const DataBrokerDataClass = (props: DataBrokerDataClassProps) => (
-  <ExposureCardDataClassLayout
-    icon={props.icon}
-    label={props.exposureCategoryLabel}
-    count={props.num}
-  />
-);
+export const DataBrokerDataClass = (props: DataBrokerDataClassProps) => {
+  const emailsList = props.isPremiumUser ? (
+    <ul className={styles.emailsList}>
+      {props.scanResultData.emails.map((email: string, index: number) => (
+        <li key={index}>{email}</li>
+      ))}
+    </ul>
+  ) : (
+    <></>
+  );
+
+  return (
+    <ExposureCardDataClassLayout
+      icon={props.icon}
+      label={props.exposureCategoryLabel}
+      count={props.num}
+      emailData={emailsList}
+    />
+  );
+};
 
 type BreachDataClassProps = {
   subscriberBreachData: SubscriberBreach;
@@ -58,7 +72,7 @@ type ExposureCardDataClassLayoutProps = {
   icon: ReactElement;
   label: string;
   count: number;
-  emailData?: ReactElement;
+  emailData: ReactElement;
 };
 
 const ExposureCardDataClassLayout = (

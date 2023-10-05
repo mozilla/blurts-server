@@ -20,6 +20,7 @@ import { RemovalCard } from "./RemovalCard";
 export type Props = {
   scanData: LatestOnerepScanData;
   breaches: SubscriberBreach[];
+  isPremiumUser: boolean;
 };
 
 export function ManualRemoveView(props: Props) {
@@ -106,6 +107,7 @@ export function ManualRemoveView(props: Props) {
                 key={scanResult.onerep_scan_result_id}
                 scanResult={scanResult}
                 isExpanded={index === 0}
+                isPremiumUser={props.isPremiumUser}
               />
             );
           })}
