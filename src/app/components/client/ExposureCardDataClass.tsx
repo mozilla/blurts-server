@@ -17,24 +17,13 @@ type DataBrokerDataClassProps = {
   icon: ReactElement;
 };
 
-export const DataBrokerDataClass = (props: DataBrokerDataClassProps) => {
-  const emailsList = (
-    <ul className={styles.emailsList}>
-      {props.scanResultData.emails.map((email: string, index: number) => (
-        <li key={index}>{email}</li>
-      ))}
-    </ul>
-  );
-
-  return (
-    <ExposureCardDataClassLayout
-      icon={props.icon}
-      label={props.exposureCategoryLabel}
-      count={props.num}
-      emailData={emailsList}
-    />
-  );
-};
+export const DataBrokerDataClass = (props: DataBrokerDataClassProps) => (
+  <ExposureCardDataClassLayout
+    icon={props.icon}
+    label={props.exposureCategoryLabel}
+    count={props.num}
+  />
+);
 
 type BreachDataClassProps = {
   subscriberBreachData: SubscriberBreach;
@@ -69,7 +58,7 @@ type ExposureCardDataClassLayoutProps = {
   icon: ReactElement;
   label: string;
   count: number;
-  emailData: ReactElement;
+  emailData?: ReactElement;
 };
 
 const ExposureCardDataClassLayout = (
@@ -86,10 +75,10 @@ const ExposureCardDataClassLayout = (
           count: props.count,
         })}
       </div>
-      <div className={styles.emails}>
-        {props.label === l10n.getString("exposure-card-email") &&
-          props.emailData}
-      </div>
+      {props.emailData &&
+        props.label === l10n.getString("exposure-card-email") && (
+          <div className={styles.emails}>{props.emailData}</div>
+        )}
     </div>
   );
 };
