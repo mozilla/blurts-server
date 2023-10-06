@@ -87,6 +87,8 @@ export const ManualRemoveViewStory: Story = {
             scanData={mockedScanData}
             breaches={mockedBreaches}
             isPremiumUser={hasPremium(user)}
+            countryCode="us"
+            user={mockedSession.user}
           />
         </FixView>
       </Shell>

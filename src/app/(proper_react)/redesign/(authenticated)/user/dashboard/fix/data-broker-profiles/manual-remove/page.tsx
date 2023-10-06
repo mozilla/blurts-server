@@ -4,12 +4,14 @@
 
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
+import { headers } from "next/headers";
 import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { ManualRemoveView } from "./ManualRemoveView";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { hasPremium } from "../../../../../../../../functions/universal/user";
+import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
 
 export default async function ManualRemove() {
   const session = await getServerSession(authOptions);
@@ -27,6 +29,8 @@ export default async function ManualRemove() {
       breaches={subBreaches}
       scanData={scanData}
       isPremiumUser={hasPremium(session.user)}
+      user={session.user}
+      countryCode={getCountryCode(headers())}
     />
   );
 }

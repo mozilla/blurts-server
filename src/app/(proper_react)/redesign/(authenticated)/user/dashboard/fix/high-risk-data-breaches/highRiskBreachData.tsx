@@ -43,7 +43,7 @@ function getHighRiskBreachesByType({
   dataType,
   breaches,
 }: {
-  dataType: string;
+  dataType: HighRiskBreachTypes;
   breaches: GuidedExperienceBreaches;
 }) {
   const l10n = getL10n();
@@ -62,7 +62,7 @@ function getHighRiskBreachesByType({
       exposedData: breaches.highRisk.creditCardBreaches,
       content: {
         summary: l10n.getString("high-risk-breach-summary", {
-          num_breaches: 0,
+          num_breaches: breaches.highRisk.creditCardBreaches.length,
         }),
         description: (
           <p>{l10n.getString("high-risk-breach-credit-card-description")}</p>
@@ -89,7 +89,7 @@ function getHighRiskBreachesByType({
       exposedData: breaches.highRisk.ssnBreaches,
       content: {
         summary: l10n.getString("high-risk-breach-summary", {
-          num_breaches: 0,
+          num_breaches: breaches.highRisk.ssnBreaches.length,
         }),
         description: (
           <p>
@@ -140,7 +140,7 @@ function getHighRiskBreachesByType({
       exposedData: breaches.highRisk.bankBreaches,
       content: {
         summary: l10n.getString("high-risk-breach-summary", {
-          num_breaches: 0,
+          num_breaches: breaches.highRisk.bankBreaches.length,
         }),
         description: (
           <p>{l10n.getString("high-risk-breach-bank-account-description")}</p>
@@ -171,7 +171,7 @@ function getHighRiskBreachesByType({
       exposedData: breaches.highRisk.pinBreaches,
       content: {
         summary: l10n.getString("high-risk-breach-summary", {
-          num_breaches: 0,
+          num_breaches: breaches.highRisk.pinBreaches.length,
         }),
         description: (
           <p>{l10n.getString("high-risk-breach-pin-description")}</p>
