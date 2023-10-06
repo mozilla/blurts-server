@@ -4,7 +4,7 @@
 
 "use client";
 
-import React, { ReactNode, Suspense, lazy, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import Link from "next/link";
 import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./ExposureCard.module.scss";
@@ -27,6 +27,7 @@ import {
 } from "../../../utils/subscriberBreaches";
 import { FallbackLogo } from "../server/BreachLogo";
 import { BreachDataClass, DataBrokerDataClass } from "./ExposureCardDataClass";
+import { DataBrokerImage } from "./DataBrokerImage";
 
 export type Exposure = OnerepScanResultRow | SubscriberBreach;
 
@@ -43,29 +44,6 @@ export type ExposureCardProps = {
   resolutionCta: ReactNode;
   isExpanded?: boolean;
 };
-
-async function getDataBrokerImage(name: string) {
-  try {
-    const DataBrokerLogo = await import(
-      `../client/assets/data-brokers/${name}.png`
-    );
-    const ImageComponent = () => (
-      <Image
-        className={styles.dataBrokerLogo}
-        src={DataBrokerLogo.default}
-        alt=""
-      />
-    );
-    return {
-      default: ImageComponent,
-    };
-  } catch {
-    const FallBackLogo = () => <FallbackLogo name={name} />;
-    return {
-      default: FallBackLogo,
-    };
-  }
-}
 
 export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
   return isScanResult(exposureData) ? (
@@ -88,7 +66,6 @@ const ScanResultCard = (props: ScanResultCardProps) => {
   const [exposureCardExpanded, setExposureCardExpanded] = useState(
     props.isExpanded ?? false
   );
-  const DataBrokerLogo = lazy(() => getDataBrokerImage(scanResult.data_broker));
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
@@ -165,16 +142,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
             <dd
               className={`${styles.hideOnMobile} ${styles.exposureImageWrapper}`}
             >
-              {/* While logo is not yet set, the fallback image is the first character of the exposure name */}
-              {
-                // TODO: Add unit test when changing this code:
-                /* c8 ignore next 7 */
-                <Suspense
-                  fallback={<FallbackLogo name={scanResult.data_broker} />}
-                >
-                  <DataBrokerLogo />
-                </Suspense>
-              }
+              <DataBrokerImage name={scanResult.data_broker} />
             </dd>
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-company")}
