@@ -202,8 +202,8 @@ dashboard-top-banner-scan-in-progress-title = Your scan is still in progress
 # $data_breach_total_num is the total number of data breaches the user has.
 dashboard-top-banner-scan-in-progress-description =
   { $data_breach_total_num ->
-      [one] We found <b>{ $data_breach_total_num }</b> exposure so far, but we’re still scanning sites that sell your personal info. This should be done within 3 minutes.
-      *[other] We found <b>{ $data_breach_total_num }</b> exposures so far, but we’re still scanning sites that sell your personal info. This should be done within 3 minutes.
+      [one] We found { $data_breach_total_num } exposure so far, but we’re still scanning sites that sell your personal info. This should be done within 3 minutes.
+      *[other] We found { $data_breach_total_num } exposures so far, but we’re still scanning sites that sell your personal info. This should be done within 3 minutes.
   }
 dashboard-top-banner-scan-in-progress-fix-now-hint = You can refresh this page then, or start fixing your data breaches now.
 dashboard-top-banner-scan-in-progress-fix-later-hint = You can refresh this page then, or come back later.
@@ -213,7 +213,7 @@ dashboard-top-banner-protect-your-data-title = Let’s protect your data
 # Variables:
 # $data_breach_total_num is the total number of data breaches the user has.
 # $data_broker_total_num is the total number of data brokers selling the user’s data.
-dashboard-top-banner-protect-your-data-description = We found your data in <b>{ $data_breach_total_num }</b> data breaches and <b>{ $data_broker_total_num }</b> sites selling your personal info. We’ll guide you step-by-step on how to fix it.
+dashboard-top-banner-protect-your-data-description = We found your data in { $data_breach_total_num } data breaches and { $data_broker_total_num } sites selling your personal info. We’ll guide you step-by-step on how to fix it.
 dashboard-top-banner-protect-your-data-cta = Let’s fix it
 
 dashboard-top-banner-monitor-protects-your-even-more-title = { -product-short-name } now protects you even more
@@ -231,7 +231,7 @@ dashboard-top-banner-no-exposures-found-title = No exposures found
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. This will always be plural.
 dashboard-top-banner-no-exposures-found-description = Great news! We searched all known data breaches and { $data_broker_sites_total_num } data broker sites that sell personal info and found no exposures.
-dashboard-top-banner-no-exposures-found-upsell-info = Upgrade to premium and we’ll monitor for any new exposures.
+dashboard-top-banner-no-exposures-found-upsell-info = Upgrade to { -brand-premium } and we’ll monitor for any new exposures.
 dashboard-top-banner-no-exposures-found-cta = Get continuous protection
 dashboard-no-exposures-label = No exposures found
 
@@ -240,8 +240,8 @@ dashboard-top-banner-lets-keep-protecting-title = Let’s keep protecting your d
 # $remaining_exposures_total_num is the remaining number of exposures the user has to resolve.
 dashboard-top-banner-lets-keep-protecting-description = 
   { $remaining_exposures_total_num -> 
-    [one] You still have <b>{ $remaining_exposures_total_num }</b> exposure left to fix. Keep going and protect yourself. We’ll guide you step-by-step.
-    *[other] You still have <b>{ $remaining_exposures_total_num }</b> exposures left to fix. Keep going and protect yourself. We’ll guide you step-by-step.
+    [one] You still have { $remaining_exposures_total_num } exposure left to fix. Keep going and protect yourself. We’ll guide you step-by-step.
+    *[other] You still have { $remaining_exposures_total_num } exposures left to fix. Keep going and protect yourself. We’ll guide you step-by-step.
   }
 dashboard-top-banner-lets-keep-protecting-cta = Let’s keep going
 
@@ -251,7 +251,7 @@ dashboard-top-banner-your-data-is-protected-title = Your data is protected
 dashboard-top-banner-your-data-is-protected-description = 
   { $starting_exposure_total_num ->
     [one] Great work, the exposure of your data is fixed or in progress! We’ll keep monitoring and will alert you of any new exposures.
-    *[other] Great work, all <b>{ $starting_exposure_total_num }</b> exposures of your data are fixed or in progress! We’ll keep monitoring and will alert you of any new exposures.
+    *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed or in progress! We’ll keep monitoring and will alert you of any new exposures.
   }
 dashboard-top-banner-your-data-is-protected-cta = See what’s fixed
 
@@ -259,8 +259,8 @@ dashboard-top-banner-your-data-is-protected-cta = See what’s fixed
 # $starting_exposure_total_num is the number of exposures the user has resolved.
 dashboard-top-banner-your-data-is-protected-all-fixed-description = 
   { $starting_exposure_total_num ->
-    [one] Great work, <b>{ $starting_exposure_total_num }</b> exposure of your data is fixed! Upgrade to { -brand-premium } and we’ll continue to monitor for new exposures. Plus, we’ll automatically remove your info from any sites that are selling it.
-    *[other] Great work, all <b>{ $starting_exposure_total_num }</b> exposures of your data are fixed! Upgrade to { -brand-premium } and we’ll continue to monitor for new exposures. Plus, we’ll automatically remove your info from any sites that are selling it.
+    [one] Great work, { $starting_exposure_total_num } exposure of your data is fixed! Upgrade to { -brand-premium } and we’ll continue to monitor for new exposures. Plus, we’ll automatically remove your info from any sites that are selling it.
+    *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed! Upgrade to { -brand-premium } and we’ll continue to monitor for new exposures. Plus, we’ll automatically remove your info from any sites that are selling it.
   }
 dashboard-top-banner-your-data-is-protected-all-fixed-cta = Get continuous protection
 dashboard-top-banner-non-us-no-exposures-found-description = Great news! We searched all known data breaches and found no exposures. We’ll keep monitoring your email address and will alert you if a new breach occurs.
@@ -287,7 +287,7 @@ dashboard-top-banner-non-us-protect-your-data-description = {
 dashboard-top-banner-non-us-your-data-is-protected-description =
   { $exposures_resolved_num ->
     [one] Great work, the exposure of your data is fixed! We’ll keep monitoring and will alert you of any new exposures.
-    *[other] Great work, all <b>{ $exposures_resolved_num }</b> exposures of your data are fixed! We’ll keep monitoring and will alert you of any new exposures.
+    *[other] Great work, all { $exposures_resolved_num } exposures of your data are fixed! We’ll keep monitoring and will alert you of any new exposures.
   }
 
 dashboard-top-banner-monitor-more-cta = Monitor more emails
@@ -310,13 +310,13 @@ dashboard-exposures-breaches-scan-progress-description = {
   $exposures_total_num ->
     [one] {
       $data_breach_total_num ->
-        [one] We found your information exposed <b>{ $exposures_total_num }</b> time in <b>{ $data_breach_total_num }</b> data breach. We’re still scanning sites that may be selling your personal info.
-        *[other] We found your information exposed <b>{ $exposures_total_num }</b> time in <b>{ $data_breach_total_num }</b> data breaches. We’re still scanning sites that may be selling your personal info.
+        [one] We found your information exposed { $exposures_total_num } time in { $data_breach_total_num } data breach. We’re still scanning sites that may be selling your personal info.
+        *[other] We found your information exposed { $exposures_total_num } time in { $data_breach_total_num } data breaches. We’re still scanning sites that may be selling your personal info.
     }
     *[other] {
       $data_breach_total_num ->
-        [one] We found your information exposed <b>{ $exposures_total_num }</b> times in <b>{ $data_breach_total_num }</b> data breach. We’re still scanning sites that may be selling your personal info.
-        *[other] We found your information exposed <b>{ $exposures_total_num }</b> times in <b>{ $data_breach_total_num }</b> data breaches. We’re still scanning sites that may be selling your personal info.
+        [one] We found your information exposed { $exposures_total_num } times in { $data_breach_total_num } data breach. We’re still scanning sites that may be selling your personal info.
+        *[other] We found your information exposed { $exposures_total_num } times in { $data_breach_total_num } data breaches. We’re still scanning sites that may be selling your personal info.
     }
 }
 dashboard-exposures-no-breaches-scan-progress-description = We didn’t find any data breaches, but we’re still scanning sites that may be selling your personal info.
