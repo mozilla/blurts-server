@@ -305,7 +305,7 @@ it("shows the 'Start a free scan' CTA to free US-based users who haven't perform
   );
   render(<ComposedDashboard />);
 
-  const freeScanCta = screen.queryByRole("link", { name: "Start a free scan" });
+  const freeScanCta = screen.getByRole("link", { name: "Start a free scan" });
   expect(freeScanCta).toBeInTheDocument();
 });
 
@@ -398,12 +398,12 @@ it("opens and closes the premium upsell dialog via the Premium upsell button)", 
   );
   render(<ComposedDashboard />);
 
-  const premiumCta = screen.queryByRole("button", {
+  const premiumCta = screen.getByRole("button", {
     name: "Get continuous protection",
   });
   expect(premiumCta).toBeInTheDocument();
 
-  await user.click(premiumCta as HTMLElement);
+  await user.click(premiumCta);
   expect(
     screen.getByText("Choose the level of protection that’s right for you")
   ).toBeInTheDocument();
@@ -430,23 +430,23 @@ it("toggles between the product offerings in the premium upsell dialog", async (
 
   await user.click(premiumCtas[0]);
 
-  const productTabYearly1 = screen.queryByRole("tab", { name: "Yearly" });
+  const productTabYearly1 = screen.getByRole("tab", { name: "Yearly" });
   expect(productTabYearly1?.getAttribute("aria-selected")).toBe("true");
-  const productTabMonthly1 = screen.queryByRole("tab", { name: "Monthly" });
+  const productTabMonthly1 = screen.getByRole("tab", { name: "Monthly" });
   expect(productTabMonthly1?.getAttribute("aria-selected")).toBe("false");
-  const productYearlyCta = screen.queryByRole("link", {
+  const productYearlyCta = screen.getByRole("link", {
     name: "Select yearly plan",
   });
   expect(productYearlyCta).toBeInTheDocument();
 
-  await user.click(productTabMonthly1 as HTMLElement);
+  await user.click(productTabMonthly1);
 
-  const productTabYearly2 = screen.queryByRole("tab", { name: "Yearly" });
+  const productTabYearly2 = screen.getByRole("tab", { name: "Yearly" });
   expect(productTabYearly2?.getAttribute("aria-selected")).toBe("false");
-  const productTabMonthly2 = screen.queryByRole("tab", { name: "Monthly" });
+  const productTabMonthly2 = screen.getByRole("tab", { name: "Monthly" });
   expect(productTabMonthly2?.getAttribute("aria-selected")).toBe("true");
 
-  const productMontlyCta = screen.queryByRole("link", {
+  const productMontlyCta = screen.getByRole("link", {
     name: "Select monthly plan",
   });
   expect(productMontlyCta).toBeInTheDocument();
@@ -575,7 +575,7 @@ it("shows scan in progress indicators on the dashboard for users with breaches",
 
   const bannerContent = screen.getByText("Your scan is still in progress");
   expect(bannerContent).toBeInTheDocument();
-  const bannerContentCta = screen.queryByRole("link", {
+  const bannerContentCta = screen.getByRole("link", {
     name: "See what’s ready now",
   });
   expect(bannerContentCta).toBeInTheDocument();
@@ -599,7 +599,7 @@ it("shows scan in progress indicators on the dashboard with results and no breac
 
   const bannerContent = screen.getByText("Your scan is still in progress");
   expect(bannerContent).toBeInTheDocument();
-  const bannerContentCta = screen.queryByRole("link", {
+  const bannerContentCta = screen.getByRole("link", {
     name: "See what’s ready now",
   });
   expect(bannerContentCta).toBeInTheDocument();
@@ -623,7 +623,7 @@ it("shows scan in progress indicators on the dashboard with results and unresolv
 
   const bannerContent = screen.getByText("Your scan is still in progress");
   expect(bannerContent).toBeInTheDocument();
-  const bannerContentCta = screen.queryByRole("link", {
+  const bannerContentCta = screen.getByRole("link", {
     name: "See what’s ready now",
   });
   expect(bannerContentCta).toBeInTheDocument();
