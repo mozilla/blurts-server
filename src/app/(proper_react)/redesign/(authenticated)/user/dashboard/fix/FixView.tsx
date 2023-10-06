@@ -20,6 +20,7 @@ import stepSecurityRecommendationsIcon from "./images/step-counter-security-reco
 import { usePathname } from "next/navigation";
 import { GuidedExperienceBreaches } from "../../../../../../functions/server/getUserBreaches";
 import { useL10n } from "../../../../../../hooks/l10n";
+import { stepLinks } from "../../../../../../functions/server/getRelevantGuidedSteps";
 
 export type FixViewProps = {
   children: ReactNode;
@@ -96,6 +97,15 @@ export const FixView = (props: FixViewProps) => {
     );
   };
 
+  const currentStepIndex = stepLinks.findIndex((stepLink) =>
+    stepLink.href.startsWith(pathname)
+  );
+  const prevStepHref =
+    currentStepIndex <= 0
+      ? "/redesign/user/dashboard"
+      : stepLinks[currentStepIndex - 1].href;
+  const nextStepHref = stepLinks[currentStepIndex + 1].href;
+
   return (
     <div className={styles.fixContainer}>
       <div
@@ -111,7 +121,7 @@ export const FixView = (props: FixViewProps) => {
         <section className={styles.fixSection}>
           <Link
             className={`${styles.navArrow} ${styles.navArrowBack}`}
-            href="/redesign/user/dashboard"
+            href={prevStepHref}
             aria-label={l10n.getString("guided-resolution-flow-back-arrow")}
           >
             <Image alt="" src={ImageArrowLeft} />
@@ -119,7 +129,7 @@ export const FixView = (props: FixViewProps) => {
           <div className={styles.viewWrapper}>{props.children}</div>
           <Link
             className={`${styles.navArrow} ${styles.navArrowNext}`}
-            href="/redesign/user/dashboard"
+            href={nextStepHref}
             aria-label={l10n.getString("guided-resolution-flow-next-arrow")}
           >
             <Image alt="" src={ImageArrowRight} />

@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { Session } from "next-auth";
 import styles from "./ManualRemoveView.module.scss";
 import { getL10n } from "../../../../../../../../functions/server/l10n";
 import {
@@ -16,10 +17,13 @@ import {
 } from "../../../../../../../../functions/server/dashboard";
 import { SubscriberBreach } from "../../../../../../../../../utils/subscriberBreaches";
 import { RemovalCard } from "./RemovalCard";
+import { getRelevantGuidedSteps } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 
 export type Props = {
   scanData: LatestOnerepScanData;
   breaches: SubscriberBreach[];
+  user: Session["user"];
+  countryCode: string;
 };
 
 export function ManualRemoveView(props: Props) {
@@ -32,6 +36,16 @@ export function ManualRemoveView(props: Props) {
   const exposureReduction = getExposureReduction(
     summary,
     props.scanData.results
+  );
+
+  const stepAfterSkip = getRelevantGuidedSteps(
+    {
+      countryCode: props.countryCode,
+      latestScanData: props.scanData,
+      subscriberBreaches: props.breaches,
+      user: props.user,
+    },
+    "Scan"
   );
 
   return (
@@ -120,10 +134,7 @@ export function ManualRemoveView(props: Props) {
             "fix-flow-data-broker-profiles-manual-remove-button-remove-for-me"
           )}
         </Button>
-        <Button
-          variant="secondary"
-          href="/" // TODO: MNTOR-1700 Add routing logic here
-        >
+        <Button variant="secondary" href={stepAfterSkip.current?.href}>
           {l10n.getString(
             "fix-flow-data-broker-profiles-manual-remove-button-skip"
           )}

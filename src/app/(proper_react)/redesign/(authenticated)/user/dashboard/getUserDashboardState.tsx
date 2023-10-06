@@ -126,7 +126,7 @@ export const getUserDashboardState = (
      * - No scan
      */
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "StartScan",
+      isRelevantGuidedStep: relevantGuidedStep.id === "Scan",
       hasExposures: false,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: false,
@@ -142,7 +142,7 @@ export const getUserDashboardState = (
      * - No scan
      */
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "StartScan",
+      isRelevantGuidedStep: relevantGuidedStep.id === "Scan",
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: false,
@@ -158,7 +158,7 @@ export const getUserDashboardState = (
      * - No scan
      */
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "StartScan",
+      isRelevantGuidedStep: relevantGuidedStep.id === "Scan",
       hasExposures: true,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: false,
@@ -200,7 +200,7 @@ export const getUserDashboardState = (
      * - Scan: Unresolved and removal not started
      */
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "ScanResult",
+      isRelevantGuidedStep: relevantGuidedStep.id === "Scan",
       hasExposures: true,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: true,
@@ -216,7 +216,7 @@ export const getUserDashboardState = (
      * - Scan: Unresolved
      */
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "ScanResult",
+      isRelevantGuidedStep: relevantGuidedStep.id === "Scan",
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: false,
@@ -226,7 +226,7 @@ export const getUserDashboardState = (
       scanInProgress: false,
     }) ||
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "ScanResult",
+      isRelevantGuidedStep: relevantGuidedStep.id === "Scan",
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: true,
@@ -305,7 +305,7 @@ export const getUserDashboardState = (
      * - Scan: Unresolved
      */
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "ScanResult",
+      isRelevantGuidedStep: relevantGuidedStep.id === "Scan",
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: true,
@@ -337,7 +337,7 @@ export const getUserDashboardState = (
      * - Scan: Unresolved
      */
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "ScanResult",
+      isRelevantGuidedStep: relevantGuidedStep.id === "Scan",
       hasExposures: true,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: true,
@@ -380,7 +380,7 @@ export const getUserDashboardState = (
      */
     isMatchingContent(contentProps, {
       isRelevantGuidedStep:
-        relevantGuidedStep.id === "ScanResult" ||
+        isGuidedResolutionInProgress(relevantGuidedStep.id) ||
         relevantGuidedStep.id === "Done",
       hasExposures: true,
       hasUnresolvedBreaches: false,
@@ -402,7 +402,7 @@ export const getUserDashboardState = (
      * - Scan: Running and no results
      */
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "ScanResult",
+      isRelevantGuidedStep: relevantGuidedStep.id === "Done",
       hasExposures: false,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: false,
@@ -423,7 +423,7 @@ export const getUserDashboardState = (
      * - Scan: Running and results found
      */
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "ScanResult",
+      isRelevantGuidedStep: relevantGuidedStep.id === "Scan",
       hasExposures: true,
       hasUnresolvedBreaches: false,
       hasUnresolvedBrokers: true,
@@ -439,7 +439,7 @@ export const getUserDashboardState = (
      * - Scan: Running and no results
      */
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "ScanResult",
+      isRelevantGuidedStep: isGuidedResolutionInProgress(relevantGuidedStep.id),
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: false,
@@ -455,7 +455,7 @@ export const getUserDashboardState = (
      * - Scan: Running and found results
      */
     isMatchingContent(contentProps, {
-      isRelevantGuidedStep: relevantGuidedStep.id === "ScanResult",
+      isRelevantGuidedStep: relevantGuidedStep.id === "Scan",
       hasExposures: true,
       hasUnresolvedBreaches: true,
       hasUnresolvedBrokers: true,
