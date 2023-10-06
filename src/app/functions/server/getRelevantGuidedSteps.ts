@@ -184,7 +184,8 @@ function hasCompleted(data: InputData, stepId: StepLink["id"]): boolean {
       typeof data.latestScanData?.scan === "object" &&
       data.latestScanData?.scan !== null;
     const hasResolvedAllScanResults =
-      data.latestScanData?.scan?.onerep_scan_status === "finished" &&
+      (data.latestScanData?.scan?.onerep_scan_status === "finished" ||
+        data.latestScanData?.scan?.onerep_scan_status === "in_progress") &&
       data.latestScanData.results.every(
         (scanResult) =>
           scanResult.manually_resolved || scanResult.status !== "new"
