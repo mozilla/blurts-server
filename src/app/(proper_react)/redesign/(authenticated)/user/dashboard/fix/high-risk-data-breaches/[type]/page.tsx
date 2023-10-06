@@ -9,11 +9,14 @@ import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
-import { getHighRiskBreachesByType } from "../highRiskBreachData";
+import {
+  HighRiskBreachTypes,
+  getHighRiskBreachesByType,
+} from "../highRiskBreachData";
 
 interface SecurityRecommendationsProps {
   params: {
-    type: string;
+    type: HighRiskBreachTypes;
   };
 }
 
