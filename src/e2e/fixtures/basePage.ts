@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { test as base, expect } from "@playwright/test";
+import { test as base, expect } from "next/experimental/testmode/playwright";
 import { LandingPage } from "../pages/landingPage.js";
 import { AuthPage } from "../pages/authPage.js";
 import { DashboardPage } from "../pages/dashBoardPage.js";

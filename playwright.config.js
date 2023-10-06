@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { defineConfig, devices } from '@playwright/test'
+import { defineConfig, devices } from 'next/experimental/testmode/playwright'
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -105,7 +105,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'npm run build; npm start',
+    command: 'npm run dev -- --experimental-test-proxy',
     port: 6060,
     // Building the app can take some time:
     timeout: 1_800_000,
