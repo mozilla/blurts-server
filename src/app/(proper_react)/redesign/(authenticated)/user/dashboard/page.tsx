@@ -14,7 +14,11 @@ import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_s
 import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 
 import { isFlagEnabled } from "../../../../../functions/server/featureFlags";
-import { isEligibleForFreeScan } from "../../../../../functions/server/onerep";
+import {
+  isEligibleForFreeScan,
+  isEligibleForPremium,
+} from "../../../../../functions/server/onerep";
+import getPremiumSubscriptionUrl from "../../../../../functions/server/getPremiumSubscriptionUrl";
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
@@ -40,6 +44,10 @@ export default async function DashboardPage() {
     session.user,
     countryCode
   );
+  const userIsEligibleForPremium = await isEligibleForPremium(
+    session.user,
+    countryCode
+  );
 
   const FreeBrokerScan = await isFlagEnabled("FreeBrokerScan", session.user);
   const PremiumBrokerRemoval = await isFlagEnabled(
@@ -48,14 +56,20 @@ export default async function DashboardPage() {
   );
   const featureFlagsEnabled = { FreeBrokerScan, PremiumBrokerRemoval };
 
+  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
+  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
+
   return (
     <View
       countryCode={countryCode}
       user={session.user}
+      isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
       userScanData={latestScan}
       userBreaches={subBreaches}
       featureFlagsEnabled={featureFlagsEnabled}
+      monthlySubscriptionUrl={monthlySubscriptionUrl}
+      yearlySubscriptionUrl={yearlySubscriptionUrl}
     />
   );
 }

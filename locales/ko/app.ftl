@@ -318,7 +318,14 @@ facebook-breach-note =
     따르기를 권장합니다.
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span><a>Facebook 프로필</a>에서 정보를 “나만 보기” 또는 비공개로 설정하세요.</span>
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-2-headline = <span>SIM 스와핑을 방지하기 위해 <a>이동 통신사 계정</a>에서 비밀번호, PIN 및 기타 보안 자격 증명을 변경하세요</span>.
+facebook-breach-what-to-do-2-copy =
+    SIM 스와핑 또는 SIM 잭킹은 해커가 전화번호,
+     생년월일, 기타 데이터를 사용하여 개인 핸드폰 번호를 탈취하여 이메일, 소셜미디어,
+     심지어 금융계정까지 침입하는 것 입니다.
 facebook-breach-what-to-do-3 = Facebook 유출 페이지에서 모든 권장 사항 보기
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = 보기:
@@ -675,4 +682,7 @@ error-page-error-404-cta-button = 뒤로 가기
 search-breaches = 유출 내역 검색하기
 
 ## Public breach detail page
+
+
+## Floating banner
 
