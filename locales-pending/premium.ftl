@@ -231,7 +231,7 @@ dashboard-top-banner-no-exposures-found-title = No exposures found
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. This will always be plural.
 dashboard-top-banner-no-exposures-found-description = Great news! We searched all known data breaches and { $data_broker_sites_total_num } data broker sites that sell personal info and found no exposures.
-dashboard-top-banner-no-exposures-found-upsell-info = Upgrade to premium and we’ll monitor for any new exposures.
+dashboard-top-banner-no-exposures-found-upsell-info = Upgrade to { -brand-premium } and we’ll monitor for any new exposures.
 dashboard-top-banner-no-exposures-found-cta = Get continuous protection
 dashboard-no-exposures-label = No exposures found
 
