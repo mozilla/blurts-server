@@ -46,6 +46,7 @@ jest.mock("next/navigation", () => ({
   usePathname: jest.fn(),
 }));
 
+// Filter out elements that are not a child of the top banner content.
 function getRelevantBannerContentElement(elements: HTMLElement[]) {
   return elements.filter((element) =>
     element.closest(".explainerContent")?.contains(element)
