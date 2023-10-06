@@ -81,7 +81,7 @@ export function createRandomScanResult(
 }
 
 export type RandomBreachOptions = Partial<{
-  dataClasses: string[];
+  dataClasses: Array<(typeof BreachDataTypes)[keyof typeof BreachDataTypes]>;
   addedDate: Date;
   isResolved: boolean;
   dataClassesEffected: DataClassEffected[];
@@ -96,9 +96,9 @@ export function createRandomBreach(
   const dataClassTypes = options.isHighRiskOnly
     ? HighRiskDataTypes
     : BreachDataTypes;
-  const dataClasses = faker.helpers.arrayElements(
-    Object.values(dataClassTypes)
-  );
+  const dataClasses =
+    options.dataClasses ??
+    faker.helpers.arrayElements(Object.values(dataClassTypes));
 
   faker.seed(options.fakerSeed);
   const isResolved = options.isResolved ?? faker.datatype.boolean();
