@@ -368,9 +368,6 @@ export function getDashboardSummary(
     summary.dataBreachTotalNum - summary.dataBreachResolvedNum;
   const isBreachesOnly = summary.dataBrokerTotalNum === 0;
 
-  // calculate total exposures
-  // summary.totalExposures = summary.dataBreachTotalExposuresNum + summary.dataBrokerTotalExposuresNum;
-
   // count unresolved exposures
   summary.unresolvedExposures = Object.keys(summary.allExposures).reduce(
     (a, k) => {
