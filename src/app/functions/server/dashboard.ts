@@ -438,6 +438,7 @@ function sanitizeExposures(
 }
 
 export function getExposureReduction(summary: DashboardSummary): number {
+  if (summary.totalExposures <= 0) return 100;
   return Math.round(
     (summary.dataBrokerTotalExposuresNum / summary.totalExposures) * 100
   );

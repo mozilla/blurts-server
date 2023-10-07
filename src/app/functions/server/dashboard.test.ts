@@ -497,6 +497,50 @@ describe("getExposureReduction", () => {
     const exposureReduction = getExposureReduction(testSummary);
     expect(exposureReduction).toBe(80);
   });
+  it("gets exposure reduction number when total exposure is 0", () => {
+    const testExposure = {
+      // shared
+      emailAddresses: 0,
+      phoneNumbers: 0,
+
+      // data brokers
+      addresses: 0,
+      familyMembers: 0,
+      fullNames: 0,
+
+      // data breaches
+      socialSecurityNumbers: 0,
+      ipAddresses: 0,
+      passwords: 0,
+      creditCardNumbers: 0,
+      pins: 0,
+      securityQuestions: 0,
+      bankAccountNumbers: 0,
+    };
+    const testSummary: DashboardSummary = {
+      dataBreachTotalNum: 10,
+      dataBreachTotalExposuresNum: 10,
+      dataBreachFixedExposuresNum: 10,
+      dataBrokerTotalNum: 10,
+      dataBrokerTotalExposuresNum: 8,
+      dataBrokerFixedExposuresNum: 8,
+      dataBrokerFixedNum: 10,
+      dataBrokerInProgressExposuresNum: 10,
+      dataBrokerInProgressNum: 10,
+      dataBrokerManuallyResolvedExposuresNum: 0,
+      totalExposures: 0,
+      allExposures: testExposure,
+      unresolvedExposures: testExposure,
+      inProgressExposures: testExposure,
+      fixedExposures: testExposure,
+      inProgressFixedExposures: testExposure,
+      unresolvedSanitizedExposures: [],
+      inProgressFixedSanitizedExposures: [],
+    };
+
+    const exposureReduction = getExposureReduction(testSummary);
+    expect(exposureReduction).toBe(100);
+  });
 });
 
 describe("getDashboardSummary", () => {
