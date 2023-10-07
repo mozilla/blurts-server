@@ -162,8 +162,16 @@ export const View = (props: Props) => {
   const hasFixedExposures = hasExposures && !hasUnresolvedExposures;
 
   const TabContentActionNeeded = () => {
-    const { dataBreachTotalNum, dataBrokerTotalNum, totalExposures } =
-      dataSummary;
+    const {
+      dataBreachUnresolvedNum,
+      dataBrokerTotalNum,
+      dataBrokerFixedNum,
+      dataBrokerInProgressNum,
+      dataBreachFixedExposuresNum,
+      dataBrokerFixedExposuresNum,
+      dataBrokerInProgressExposuresNum,
+      totalExposures,
+    } = dataSummary;
 
     let exposuresAreaDescription;
 
@@ -171,9 +179,14 @@ export const View = (props: Props) => {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-area-description",
         {
-          exposures_total_num: totalExposures,
-          data_breach_total_num: dataBreachTotalNum,
-          data_broker_total_num: dataBrokerTotalNum,
+          exposures_total_num:
+            totalExposures -
+            dataBrokerFixedExposuresNum -
+            dataBreachFixedExposuresNum -
+            dataBrokerInProgressExposuresNum,
+          data_breach_total_num: dataBreachUnresolvedNum,
+          data_broker_total_num:
+            dataBrokerTotalNum - dataBrokerFixedNum - dataBrokerInProgressNum,
         }
       );
     }
@@ -182,8 +195,12 @@ export const View = (props: Props) => {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-breaches-scan-progress-description",
         {
-          exposures_total_num: totalExposures,
-          data_breach_total_num: dataBreachTotalNum,
+          exposures_total_num:
+            totalExposures -
+            dataBrokerFixedExposuresNum -
+            dataBreachFixedExposuresNum -
+            dataBrokerInProgressExposuresNum,
+          data_breach_total_num: dataBreachUnresolvedNum,
         }
       );
     } else if (scanInProgress) {

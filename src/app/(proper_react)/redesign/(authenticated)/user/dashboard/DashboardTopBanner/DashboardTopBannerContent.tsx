@@ -129,8 +129,12 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString(
                 "dashboard-exposures-breaches-scan-progress-description",
                 {
-                  exposures_total_num: bannerData.totalExposures,
-                  data_breach_total_num: bannerData.dataBreachTotalNum,
+                  exposures_total_num:
+                    bannerData.totalExposures -
+                    bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBreachFixedExposuresNum -
+                    bannerData.dataBrokerInProgressExposuresNum,
+                  data_breach_total_num: bannerData.dataBreachUnresolvedNum,
                 }
               )}
             </p>
@@ -245,8 +249,11 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString(
                 "dashboard-top-banner-protect-your-data-description",
                 {
-                  data_breach_total_num: bannerData.totalExposures,
-                  data_broker_total_num: bannerData.dataBrokerTotalNum,
+                  data_breach_total_num: bannerData.dataBreachUnresolvedNum,
+                  data_broker_total_num:
+                    bannerData.dataBrokerTotalNum -
+                    bannerData.dataBrokerFixedNum -
+                    bannerData.dataBrokerInProgressNum,
                 }
               )}
             </p>

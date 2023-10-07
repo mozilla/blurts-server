@@ -31,6 +31,10 @@ type SanitizedExposures = Array<Record<string, number>>;
 export interface DashboardSummary {
   /** total number of user data breaches */
   dataBreachTotalNum: number;
+  /** total number of user data breaches that are unresolved */
+  dataBreachUnresolvedNum: number;
+  /** total number of user data breaches that are resolved */
+  dataBreachResolvedNum: number;
   /** total number of exposures from user breaches */
   dataBreachTotalExposuresNum: number;
   /**total number of fixed exposures from user breaches */
@@ -94,6 +98,8 @@ export function getDashboardSummary(
 ): DashboardSummary {
   const summary: DashboardSummary = {
     dataBreachTotalNum: 0,
+    dataBreachResolvedNum: 0,
+    dataBreachUnresolvedNum: 0,
     dataBreachTotalExposuresNum: 0,
     dataBreachFixedExposuresNum: 0,
     dataBrokerTotalNum: scannedResults.length,
@@ -352,10 +358,14 @@ export function getDashboardSummary(
       }
     }
     /** c8 ignore stop */
+
+    if (b.isResolved) summary.dataBreachResolvedNum++;
   });
 
   // count unique breaches
   summary.dataBreachTotalNum = subscriberBreaches.length;
+  summary.dataBreachUnresolvedNum =
+    summary.dataBreachTotalNum - summary.dataBreachResolvedNum;
   const isBreachesOnly = summary.dataBrokerTotalNum === 0;
 
   // calculate total exposures
