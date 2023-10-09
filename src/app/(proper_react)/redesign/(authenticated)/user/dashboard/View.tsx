@@ -179,13 +179,13 @@ export const View = (props: Props) => {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-area-description",
         {
-          exposures_total_num:
+          exposures_unresolved_num:
             totalExposures -
             dataBrokerFixedExposuresNum -
             dataBreachFixedExposuresNum -
             dataBrokerInProgressExposuresNum,
-          data_breach_total_num: dataBreachUnresolvedNum,
-          data_broker_total_num:
+          data_breach_unresolved_num: dataBreachUnresolvedNum,
+          data_broker_unresolved_num:
             dataBrokerTotalNum - dataBrokerFixedNum - dataBrokerInProgressNum,
         }
       );
@@ -195,12 +195,12 @@ export const View = (props: Props) => {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-breaches-scan-progress-description",
         {
-          exposures_total_num:
+          exposures_unresolved_num:
             totalExposures -
             dataBrokerFixedExposuresNum -
             dataBreachFixedExposuresNum -
             dataBrokerInProgressExposuresNum,
-          data_breach_total_num: dataBreachUnresolvedNum,
+          data_breach_unresolved_num: dataBreachUnresolvedNum,
         }
       );
     } else if (scanInProgress) {
