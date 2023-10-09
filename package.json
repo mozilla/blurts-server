@@ -75,7 +75,7 @@
     "jwk-to-pem": "^2.0.5",
     "knex": "^2.4.2",
     "mozlog": "^3.0.2",
-    "next": "^13.4.1",
+    "next": "^13.5.4",
     "next-auth": "^4.22.1",
     "nodemailer": "^6.9.1",
     "patch-package": "^7.0.0",
