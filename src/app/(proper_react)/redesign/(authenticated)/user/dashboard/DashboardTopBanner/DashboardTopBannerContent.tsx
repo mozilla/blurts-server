@@ -275,19 +275,14 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </h3>
             <p>
-              {l10n.getFragment(
+              {l10n.getString(
                 "dashboard-top-banner-lets-keep-protecting-description",
                 {
-                  vars: {
-                    exposures_unresolved_num:
-                      bannerData.totalExposures -
-                      bannerData.dataBreachFixedExposuresNum -
-                      bannerData.dataBrokerFixedExposuresNum -
-                      bannerData.dataBrokerInProgressExposuresNum,
-                  },
-                  elems: {
-                    b: <strong />,
-                  },
+                  exposures_unresolved_num:
+                    bannerData.totalExposures -
+                    bannerData.dataBreachFixedExposuresNum -
+                    bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBrokerInProgressExposuresNum,
                 }
               )}
             </p>
@@ -334,19 +329,14 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </h3>
             <p>
-              {l10n.getFragment(
+              {l10n.getString(
                 "dashboard-top-banner-lets-keep-protecting-description",
                 {
-                  vars: {
-                    exposures_unresolved_num:
-                      bannerData.totalExposures -
-                      bannerData.dataBreachFixedExposuresNum -
-                      bannerData.dataBrokerFixedExposuresNum -
-                      bannerData.dataBrokerInProgressExposuresNum,
-                  },
-                  elems: {
-                    b: <strong />,
-                  },
+                  exposures_unresolved_num:
+                    bannerData.totalExposures -
+                    bannerData.dataBreachFixedExposuresNum -
+                    bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBrokerInProgressExposuresNum,
                 }
               )}
             </p>

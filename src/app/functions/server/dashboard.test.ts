@@ -562,17 +562,21 @@ describe("getDashboardSummary", () => {
       ).toBeGreaterThanOrEqual(0);
     }
 
-    summary.unresolvedSanitizedExposures.forEach((unresolvedSanitizedExposure) => {
-      Object.values(unresolvedSanitizedExposure).forEach(count => {
-        expect(count).toBeGreaterThanOrEqual(0);
-      });
-    });
+    summary.unresolvedSanitizedExposures.forEach(
+      (unresolvedSanitizedExposure) => {
+        Object.values(unresolvedSanitizedExposure).forEach((count) => {
+          expect(count).toBeGreaterThanOrEqual(0);
+        });
+      }
+    );
 
-    summary.inProgressFixedSanitizedExposures.forEach((inProgressFixedSanitizedExposure) => {
-      Object.values(inProgressFixedSanitizedExposure).forEach(count => {
-        expect(count).toBeGreaterThanOrEqual(0);
-      });
-    });
+    summary.inProgressFixedSanitizedExposures.forEach(
+      (inProgressFixedSanitizedExposure) => {
+        Object.values(inProgressFixedSanitizedExposure).forEach((count) => {
+          expect(count).toBeGreaterThanOrEqual(0);
+        });
+      }
+    );
   };
 
   it("gets breaches only summary", () => {
