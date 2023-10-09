@@ -164,7 +164,7 @@ how-fxm-2-blurb =
     ñemboguapyre, oĩhápe marandu’i ojehayhúva.
 how-fxm-3-headline = Erekóta marandu’i kundahárape
 how-fxm-3-blurb =
-    Eipurúramo { -brand-name }, og̃uahẽta ndéve marandu’i eikéramo 
+    Eiporúramo { -brand-name }, og̃uahẽta ndéve marandu’i eikéramo 
     tenda ñembyaipyrépe. Ehecháke eimépara’e pe ñembyaípe ha mba’épa ikatu ejapo péva renondépe.
 wtd-after-website = Mba’e ejapóta ñanduti kuatiarogue oñembyai rire
 wtd-after-data-agg = Mba’e ejapóta oñembyai rire mba’ekuaarã mbojuapyhára
@@ -256,7 +256,7 @@ ba-next-step-2 = Anive eiporu ñe’ẽñemi ojekuaareíva.
 ba-next-step-blurb-2 =
     Umi hekovaíva ñadutípe ikatu ojuhu ne ñe’ẽñemi ñanduti ypytũme 
     ha oiporu ñepyrũ hag̃ua tembiapo ambue ne mba’etépe. Emo’ãporãve hag̃ua 
-    eipurúke ñe’ẽñemi ha’etéva peteĩteĩvape g̃uarã.
+    eiporúke ñe’ẽñemi ha’etéva peteĩteĩvape g̃uarã.
 ba-next-step-3 = Eñepytyvõuka emoheñói hag̃ua ñe’ẽñemi oikóva ha ereko tekorosãme.
 ba-next-step-blurb-3 =
     Oiporu ñe’ẽñemi ñangarekoha omoheñói hag̃ua ñe’ẽñemi hekorosãva ha ha’eñóva. Ko’ã ñangarekoha ombyaty opaite ne
@@ -305,7 +305,7 @@ facebook-breach-note =
     hákatu pe pumbyry papapy ikatu gueteri oñembyai.</span> Peteĩva umi mba’ete
     ivaikuaáva Facebook mboguaha ryepýpe oike pumbyry papapy ha ambue
     maranduete oike’ỹhápe ñanduti veve kundaharape. Eñemboheraguapýmaramo kuri
-    Facebook mba’etépe — ndereipurúiramo jepe — ro’e ndéve
+    Facebook mba’etépe — ndereiporúiramo jepe — ro’e ndéve
     ejapo hag̃ua ko’ã mba’e ne rekorosãrã.
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
@@ -630,8 +630,8 @@ vpn-promo-copy-new = Emo’ã ne mba’ekuaarã ñandutípe ha eiporavo—VPN-pe
 vpn-banner-location = Ne rendaite: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Eñemo’ã</em> { -brand-mozilla-vpn } ndive.
 vpn-banner-protected-with-vpn = <em>Mo’ãmbyre</em> { -brand-mozilla-vpn } ndive.
-vpn-banner-title-1 = Reñemo’ãreína — aguyje reipurúre { -brand-mozilla-vpn }.
-vpn-banner-title-2 = Ne rendaite ojehapykuehokuaa ndereipurúiramo VPN.
+vpn-banner-title-1 = Reñemo’ãreína — aguyje reiporúre { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Ne rendaite ojehapykuehokuaa ndereiporúiramo VPN.
 vpn-banner-subtitle-2 = Emo’ã ne rendaite ha eikundaha tekorosãme 3 jeku’épe
 vpn-banner-status-protected = Nde rekoite: <em>Oĩ ñemo’ãme</em>
 vpn-banner-status-not-protected = Nde rekoite: <em>Noñemo’ãi⚠</em>
