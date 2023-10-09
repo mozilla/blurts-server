@@ -61,9 +61,7 @@ export function StartFreeScanView(props: Props) {
         <div className={styles.buttonsWrapper}>
           <Button
             variant="primary"
-            href={
-              "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers"
-            }
+            href="/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers"
           >
             {l10n.getString(
               "fix-flow-data-broker-profiles-start-free-scan-button-start-scan"
@@ -71,7 +69,7 @@ export function StartFreeScanView(props: Props) {
           </Button>
           <Button
             variant="secondary"
-            href={"/redesign/user/dashboard/fix/high-risk-data-breaches"}
+            href="/redesign/user/dashboard/fix/high-risk-data-breaches"
           >
             {l10n.getString(
               "fix-flow-data-broker-profiles-start-free-scan-button-skip"
