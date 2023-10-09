@@ -70,14 +70,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
 
   const relevantGuidedStep = getNextGuidedStep(stepDeterminationData);
 
-  // There should be a relevant next step for every user (even if it's just
-  // going back to the dashboard), so we can't hit this line in tests (and
-  // shouldn’t be able to in production either):
-  /* c8 ignore next 3 */
-  if (relevantGuidedStep === null) {
-    return null;
-  }
-
   const contentProps = {
     relevantGuidedStep,
     hasExposures,

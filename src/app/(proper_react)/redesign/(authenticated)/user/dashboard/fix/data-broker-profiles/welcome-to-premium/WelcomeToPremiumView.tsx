@@ -36,7 +36,7 @@ export function WelcomeToPremiumView(props: Props) {
     <FixView
       data={props.data}
       subscriberEmails={props.subscriberEmails}
-      nextStepHref={getNextGuidedStep(props.data, "Scan")?.href ?? ""}
+      nextStepHref={getNextGuidedStep(props.data, "Scan").href}
       currentSection="data-broker-profiles"
     >
       <div className={styles.contentWrapper}>

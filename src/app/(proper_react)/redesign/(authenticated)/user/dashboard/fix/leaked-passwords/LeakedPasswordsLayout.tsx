@@ -55,11 +55,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     <FixView
       subscriberEmails={props.subscriberEmails}
       data={props.data}
-      nextStepHref={
-        // In practice, there should always be a next step (at least "Done")
-        /* c8 ignore next */
-        getNextGuidedStep(props.data, stepMap[props.type])?.href ?? ""
-      }
+      nextStepHref={getNextGuidedStep(props.data, stepMap[props.type]).href}
       currentSection="leaked-passwords"
     >
       <ResolutionContainer

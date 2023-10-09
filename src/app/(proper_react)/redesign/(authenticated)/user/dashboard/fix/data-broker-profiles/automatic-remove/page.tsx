@@ -42,13 +42,11 @@ export default async function AutomaticRemovePage() {
     user: session.user,
   };
 
-  const nextStep = getNextGuidedStep(data, "Scan");
-
   return (
     <AutomaticRemoveView
       data={data}
       subscriberEmails={subscriberEmails}
-      nextStepHref={nextStep?.href ?? ""}
+      nextStepHref={getNextGuidedStep(data, "Scan").href}
       currentSection="data-broker-profiles"
       monthlySubscriptionUrl={monthlySubscriptionUrl}
       yearlySubscriptionUrl={yearlySubscriptionUrl}

@@ -24,13 +24,11 @@ export const ViewDataBrokersView = (props: Props) => {
   const countOfDataBrokerProfiles =
     props.data.latestScanData?.results.length ?? 0;
 
-  const stepAfterSkip = getNextGuidedStep(props.data, "Scan");
-
   return (
     <FixView
       data={props.data}
       subscriberEmails={props.subscriberEmails}
-      nextStepHref={stepAfterSkip?.href ?? ""}
+      nextStepHref={getNextGuidedStep(props.data, "Scan").href}
       currentSection="data-broker-profiles"
     >
       <div>

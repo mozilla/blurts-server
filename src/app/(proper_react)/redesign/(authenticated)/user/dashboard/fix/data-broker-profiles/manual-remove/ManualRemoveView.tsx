@@ -55,7 +55,7 @@ export function ManualRemoveView(props: Props) {
       subscriberEmails={props.subscriberEmails}
       // In practice, there should always be a next step (at least "Done")
       /* c8 ignore next */
-      nextStepHref={stepAfterSkip?.href ?? ""}
+      nextStepHref={stepAfterSkip.href}
       currentSection="data-broker-profiles"
     >
       <div className={styles.main}>
@@ -143,7 +143,7 @@ export function ManualRemoveView(props: Props) {
               "fix-flow-data-broker-profiles-manual-remove-button-remove-for-me"
             )}
           </Button>
-          <Button variant="secondary" href={stepAfterSkip?.href}>
+          <Button variant="secondary" href={stepAfterSkip.href}>
             {l10n.getString(
               "fix-flow-data-broker-profiles-manual-remove-button-skip"
             )}

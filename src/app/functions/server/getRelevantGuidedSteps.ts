@@ -79,7 +79,7 @@ export function isGuidedResolutionInProgress(stepId: StepLink["id"]) {
 export function getNextGuidedStep(
   data: StepDeterminationData,
   afterStep?: StepLink["id"]
-): StepLink | null {
+): StepLink {
   // Resisting the urge to add a state machine... ^.^
   const stepLinkStatuses = getGuidedStepStatuses(data);
   const fromIndex =
@@ -88,9 +88,11 @@ export function getNextGuidedStep(
     return stepLink.eligible && !stepLink.completed;
   });
 
-  // In practice, there should always be a next step (at least "Done")
+  // In practice, there should always be a next step (at least "Done").
+  // If for any reason there is not, `href` will be undefined, in which case
+  // links will just not do anything.
   /* c8 ignore next */
-  return nextStep ?? null;
+  return nextStep ?? ({ id: "InvalidStep" } as never);
 }
 
 export function getGuidedStepStatuses(
