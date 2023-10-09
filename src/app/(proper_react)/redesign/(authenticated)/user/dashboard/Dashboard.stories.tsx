@@ -442,7 +442,7 @@ export const DashboardUsPremiumResolvedScanResolvedBreaches: Story = {
 };
 
 export const DashboardUsPremiumScanEmptyInProgressNoBreaches: Story = {
-  name: "US user, with Premium, with 0 scan results and a scan progress, with no breaches",
+  name: "US user, with Premium, with 0 scan results and a scan in progress, with no breaches",
   args: {
     countryCode: "us",
     premium: true,
@@ -452,7 +452,7 @@ export const DashboardUsPremiumScanEmptyInProgressNoBreaches: Story = {
 };
 
 export const DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches: Story = {
-  name: "US user, with Premium, with 0 scan results and a scan progress, with unresolved breaches",
+  name: "US user, with Premium, with 0 scan results and a scan in progress, with unresolved breaches",
   args: {
     countryCode: "us",
     premium: true,

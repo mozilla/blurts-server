@@ -1408,12 +1408,14 @@ it("shows the correct dashboard banner CTA for US user, with Premium, scan empty
     DashboardUsPremiumScanEmptyInProgressNoBreaches,
     Meta
   );
-  const { container } = render(<ComposedDashboard />);
+  render(<ComposedDashboard />);
 
-  const dashboardTopBannerCtas = container
-    .getElementsByClassName("explainerContent")[0]
-    .querySelectorAll("button");
-  expect(dashboardTopBannerCtas.length).toBe(0);
+  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+    name: "Check more email addresses",
+  });
+  expect(
+    getRelevantBannerContentElement(dashboardTopBannerCta)
+  ).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches
