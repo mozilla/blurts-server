@@ -232,47 +232,37 @@ export const View = (props: Props) => {
   );
 
   const getZeroStateIndicator = () => {
-    let zeroStateIndicatorContent;
-
     if (scanInProgress) {
-      zeroStateIndicatorContent = (
-        <>
+      return (
+        <div className={styles.zeroStateIndicator}>
           <Image src={ScanProgressIllustration} alt="" />
           <strong>
             {l10n.getString("dashboard-exposures-scan-progress-label")}
           </strong>
           {freeScanCta}
-        </>
+        </div>
       );
     }
 
     if (!hasUnresolvedExposures && !hasFixedExposures) {
-      zeroStateIndicatorContent = (
-        <>
+      return (
+        <div className={styles.zeroStateIndicator}>
           <Image src={NoExposuresIllustration} alt="" />
           <strong>{l10n.getString("dashboard-no-exposures-label")}</strong>
-        </>
+        </div>
       );
     }
 
     if (!hasUnresolvedExposures && hasFixedExposures) {
-      zeroStateIndicatorContent = (
-        <>
+      return (
+        <div className={styles.zeroStateIndicator}>
           <Image src={AllFixedIllustration} alt="" />
           <strong>
             {l10n.getString("dashboard-exposures-all-fixed-label")}
           </strong>
-        </>
+        </div>
       );
     }
-
-    return (
-      zeroStateIndicatorContent && (
-        <div className={styles.zeroStateIndicator}>
-          {zeroStateIndicatorContent}
-        </div>
-      )
-    );
   };
 
   return (
