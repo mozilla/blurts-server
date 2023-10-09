@@ -397,9 +397,16 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               <br />
               <br />
               {l10n.getString(
-                "dashboard-top-banner-scan-in-progress-fix-later-hint"
+                "dashboard-top-banner-scan-in-progress-no-results-info"
               )}
             </p>
+            <div className={styles.cta}>
+              <Button href="/redesign/user/settings" small variant="primary">
+                {l10n.getString(
+                  "dashboard-top-banner-scan-in-progress-no-results-cta"
+                )}
+              </Button>
+            </div>
           </>
         );
       case "UsUserPremiumScanInProgressUnresolvedExposures":
@@ -423,7 +430,9 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </p>
             <div className={styles.cta}>
               <Button href={relevantGuidedStep.href} small variant="primary">
-                {l10n.getString("dashboard-top-banner-scan-in-progress-cta")}
+                {l10n.getString(
+                  "dashboard-top-banner-scan-in-progress-results-found-cta"
+                )}
               </Button>
             </div>
           </>

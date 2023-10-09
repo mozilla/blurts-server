@@ -202,12 +202,14 @@ dashboard-top-banner-scan-in-progress-title = Your scan is still in progress
 # $data_breach_total_num is the total number of data breaches the user has.
 dashboard-top-banner-scan-in-progress-description =
   { $data_breach_total_num ->
-      [one] We found { $data_breach_total_num } exposure so far, but we’re still scanning sites that sell your personal info. This should be done within 3 minutes.
-      *[other] We found { $data_breach_total_num } exposures so far, but we’re still scanning sites that sell your personal info. This should be done within 3 minutes.
+      [one] We found { $data_breach_total_num } exposure so far, but we’re still scanning sites that sell your personal info. This should be done within a few minutes.
+      *[other] We found { $data_breach_total_num } exposures so far, but we’re still scanning sites that sell your personal info. This should be done within a few minutes.
   }
-dashboard-top-banner-scan-in-progress-fix-now-hint = You can refresh this page then, or start fixing your data breaches now.
-dashboard-top-banner-scan-in-progress-fix-later-hint = You can refresh this page then, or come back later.
-dashboard-top-banner-scan-in-progress-cta = See what’s ready now
+dashboard-top-banner-scan-in-progress-no-results-info = In the meantime, you can check more email addresses for data breaches.
+dashboard-top-banner-scan-in-progress-no-results-cta = Check more email addresses
+
+dashboard-top-banner-scan-in-progress-fix-now-hint = You can come back later, or start fixing your data breaches now.
+dashboard-top-banner-scan-in-progress-results-found-cta = See what’s ready now
 
 dashboard-top-banner-protect-your-data-title = Let’s protect your data
 # Variables:
