@@ -59,11 +59,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
     <FixView
       subscriberEmails={props.subscriberEmails}
       data={props.data}
-      nextStepHref={
-        // We *should* always match a next step:
-        /* c8 ignore next */
-        getNextGuidedStep(props.data, stepMap[props.type])?.href ?? ""
-      }
+      nextStepHref={getNextGuidedStep(props.data, stepMap[props.type]).href}
       currentSection="high-risk-data-breach"
     >
       <ResolutionContainer
