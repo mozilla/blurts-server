@@ -16,6 +16,7 @@ import {
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 import { LatestOnerepScanData } from "../../../../../../db/tables/onerep_scans";
 import { canSubscribeToPremium } from "../../../../../functions/universal/user";
+import { CountryCodeProvider } from "../../../../../../contextProviders/country-code";
 
 const brokerOptions = {
   "no-scan": "No scan started",
@@ -153,31 +154,32 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   };
 
   return (
-    <Shell
-      l10n={getEnL10nSync()}
-      session={mockedSession}
-      nonce=""
-      monthlySubscriptionUrl=""
-      yearlySubscriptionUrl=""
-    >
-      <DashboardEl
-        countryCode={props.countryCode}
-        user={user}
-        userBreaches={breaches}
-        userScanData={scanData}
-        isEligibleForPremium={canSubscribeToPremium({
-          user,
-          countryCode: props.countryCode,
-        })}
-        isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
-        featureFlagsEnabled={{
-          FreeBrokerScan: true,
-          PremiumBrokerRemoval: true,
-        }}
-        monthlySubscriptionUrl={""}
-        yearlySubscriptionUrl={""}
-      />
-    </Shell>
+    <CountryCodeProvider countryCode={props.countryCode}>
+      <Shell
+        l10n={getEnL10nSync()}
+        session={mockedSession}
+        nonce=""
+        monthlySubscriptionUrl=""
+        yearlySubscriptionUrl=""
+      >
+        <DashboardEl
+          user={user}
+          userBreaches={breaches}
+          userScanData={scanData}
+          isEligibleForPremium={canSubscribeToPremium({
+            user,
+            countryCode: props.countryCode,
+          })}
+          isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
+          featureFlagsEnabled={{
+            FreeBrokerScan: true,
+            PremiumBrokerRemoval: true,
+          }}
+          monthlySubscriptionUrl={""}
+          yearlySubscriptionUrl={""}
+        />
+      </Shell>
+    </CountryCodeProvider>
   );
 };
 

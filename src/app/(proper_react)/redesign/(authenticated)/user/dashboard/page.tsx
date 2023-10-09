@@ -61,7 +61,6 @@ export default async function DashboardPage() {
 
   return (
     <View
-      countryCode={countryCode}
       user={session.user}
       isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
