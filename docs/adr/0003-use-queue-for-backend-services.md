@@ -63,19 +63,15 @@ Chosen option: "GCP Pub/Sub", because Monitor services already run in GCP, and i
 simple to scale. In all cases, some level of monitoring and tuning is necessary to provide sufficiently
 capacity to ensure that tasks are not lost.
 
-This will be realized in two phases:
-
 ### Phase 1
 
 - Separate out the data ingestion parts of the system, and host these separately from the user-facing APIs and pages.
 - Introduce a queue between external providers and the data ingestion parts of the system.
-- Introduce an hourly cron job to act as the worker which ingests messages and performs the task (such as looking up impacted users and sending breach alerts).
+- Introduce an Kubernetes job that runs in parallel every 5 minutes to act as the worker which ingests messages and performs the task
+  - An example task would be looking up impacted users in Postgres and sending breach alerts using AWS SES.
 
-A cron job is easier for SRE to support for now, but is not running often enough to use for user-facing features, and isn't as easy to scale as HTTP endpoints.
-
-### Phase 2
-
-- Replace the cron job with an internal HTTP endpoint (backed by e.g. GCP Cloud Functions, or a separate app in our existing Kubernetes cluster).
+Kubernetes jobs are documented here: https://kubernetes.io/docs/concepts/workloads/controllers/job, Monitor is specifically implementing
+the "Parallel Jobs with a work queue" task type.
 
 ### A note on PostgreSQL performance
 
@@ -100,6 +96,8 @@ maintain backwards compatibility during migrations.
   - Supports option of using cloud functions vs. having to host workers in k8s
   - Relatively simple to set up and use compared to other options
   - Mozilla is already using this cloud vendor
+  - Access and management of individual tasks in a queue
+  - Cloud Tasks has explicit rate controls while Pub/Sub requires using a Polling worker (vs. HTTP Push) to implement flow control.
 - Cons:
   - Locked in to GCP ecosystem
   - Hard to test locally/offline
