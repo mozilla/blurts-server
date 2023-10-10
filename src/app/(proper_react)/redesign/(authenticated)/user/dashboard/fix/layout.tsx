@@ -4,13 +4,8 @@
 
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../../../api/utils/auth";
-import { getSubscriberBreaches } from "../../../../../../functions/server/getUserBreaches";
-import { getSubscriberEmails } from "../../../../../../functions/server/getSubscriberEmails";
-import { getGuidedExperienceBreaches } from "../../../../../../functions/universal/guidedExperienceBreaches";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
-import { FixView } from "./FixView";
-import { getLatestOnerepScanResults } from "../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../db/tables/subscribers";
 import { canSubscribeToPremium } from "../../../../../../functions/universal/user";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
@@ -21,12 +16,6 @@ export default async function Layout({ children }: { children: ReactNode }) {
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
-  const breaches = await getSubscriberBreaches(session.user);
-  const subscriberEmails = await getSubscriberEmails(session.user);
-  const guidedExperience = getGuidedExperienceBreaches(
-    breaches,
-    subscriberEmails
-  );
 
   const headersList = headers();
   const countryCode = getCountryCode(headersList);
@@ -39,12 +28,5 @@ export default async function Layout({ children }: { children: ReactNode }) {
     return redirect("/redesign/user/welcome/");
   }
 
-  const scanResult = await getLatestOnerepScanResults(profileId);
-  const scanResultItems = scanResult.results;
-
-  return (
-    <FixView breaches={guidedExperience} userScannedResults={scanResultItems}>
-      {children}
-    </FixView>
-  );
+  return <>{children}</>;
 }

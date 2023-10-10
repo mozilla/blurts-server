@@ -2,11 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import Image from "next/image";
+import ImageCityScape from "./images/city-scape.svg";
 import styles from "../dataBrokerProfiles.module.scss";
-import { getL10n } from "../../../../../../../../functions/server/l10n";
-import { DataBrokerProfiles } from "../../../../../../../../components/client/DataBrokerProfiles";
-import { AboutBrokersIcon } from "./AboutBrokersIcon";
 import { Button } from "../../../../../../../../components/server/Button";
+import { getL10n } from "../../../../../../../../functions/server/l10n";
 import { FixView } from "../../FixView";
 import {
   StepDeterminationData,
@@ -18,11 +18,8 @@ export type Props = {
   subscriberEmails: string[];
 };
 
-export const ViewDataBrokersView = (props: Props) => {
+export function StartFreeScanView(props: Props) {
   const l10n = getL10n();
-
-  const countOfDataBrokerProfiles =
-    props.data.latestScanData?.results.length ?? 0;
 
   return (
     <FixView
@@ -31,50 +28,55 @@ export const ViewDataBrokersView = (props: Props) => {
       nextStepHref={getNextGuidedStep(props.data, "Scan").href}
       currentSection="data-broker-profiles"
     >
-      <div>
+      <div className={styles.contentWrapper}>
+        <Image className={styles.cityScape} src={ImageCityScape} alt="" />
         <div className={styles.content}>
           <h3>
             {l10n.getString(
-              "fix-flow-data-broker-profiles-view-data-broker-profiles-headline",
-              { data_broker_sites_results_num: countOfDataBrokerProfiles }
+              "fix-flow-data-broker-profiles-start-free-scan-headline"
             )}
           </h3>
           <p>
             {l10n.getString(
-              "fix-flow-data-broker-profiles-view-data-broker-profiles-content"
+              "fix-flow-data-broker-profiles-start-free-scan-content-p1",
+              {
+                data_broker_count: parseInt(
+                  process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                  10
+                ),
+              }
             )}
           </p>
-        </div>
-        <div className={styles.content}>
-          <h4 className={styles.questionTooltipWrapper}>
+          <p>
             {l10n.getString(
-              "fix-flow-data-broker-profiles-view-data-broker-profiles-view-info-on-sites"
+              "fix-flow-data-broker-profiles-start-free-scan-content-p2"
             )}
-            <AboutBrokersIcon />
-          </h4>
-          <DataBrokerProfiles data={props.data.latestScanData?.results ?? []} />
+            <a href="#">
+              {l10n.getString(
+                "fix-flow-data-broker-profiles-start-free-scan-link-learn-more"
+              )}
+            </a>
+          </p>
         </div>
         <div className={styles.buttonsWrapper}>
           <Button
             variant="primary"
-            href="/redesign/user/dashboard/fix/data-broker-profiles/automatic-remove"
+            href="/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers"
           >
             {l10n.getString(
-              "fix-flow-data-broker-profiles-view-data-broker-profiles-button-remove-for-me"
+              "fix-flow-data-broker-profiles-start-free-scan-button-start-scan"
             )}
           </Button>
           <Button
             variant="secondary"
-            href={
-              "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove"
-            }
+            href="/redesign/user/dashboard/fix/high-risk-data-breaches"
           >
             {l10n.getString(
-              "fix-flow-data-broker-profiles-view-data-broker-profiles-button-remove-manually"
+              "fix-flow-data-broker-profiles-start-free-scan-button-skip"
             )}
           </Button>
         </div>
       </div>
     </FixView>
   );
-};
+}
