@@ -2,12 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { BreachDataTypes } from "../../../utils/breachResolution";
-import { ScanResult } from "./onerep";
+import { OnerepScanResultRow } from "knex/types/tables";
+import { BreachDataTypes } from "../universal/breach";
 import { RemovalStatusMap } from "../universal/scanResult";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 
-type Exposures = {
+export type Exposures = {
   // shared
   emailAddresses: number;
   phoneNumbers: number;
@@ -29,16 +29,48 @@ type Exposures = {
 
 type SanitizedExposures = Array<Record<string, number>>;
 export interface DashboardSummary {
+  /** total number of user data breaches */
   dataBreachTotalNum: number;
-  dataBreachFixedNum: number;
+  /** total number of user data breaches that are unresolved */
+  dataBreachUnresolvedNum: number;
+  /** total number of user data breaches that are resolved */
+  dataBreachResolvedNum: number;
+  /** total number of exposures from user breaches */
+  dataBreachTotalExposuresNum: number;
+  /**total number of fixed exposures from user breaches */
+  dataBreachFixedExposuresNum: number;
+  /** total number of user data broker scans */
   dataBrokerTotalNum: number;
+  /** total number of exposures from user data broker scanned results */
+  dataBrokerTotalExposuresNum: number;
+  /** total number of fixed scans from user data broker scanned results */
   dataBrokerFixedNum: number;
+  /** total number of fixed exposures from user data broker scanned results */
+  dataBrokerFixedExposuresNum: number;
+  /** total number of in-progress scans from user data broker scanned results */
   dataBrokerInProgressNum: number;
+  /** total number of in-progress exposures from user data broker scanned results */
+  dataBrokerInProgressExposuresNum: number;
+  /** total number of exposures resolved manually */
+  dataBrokerManuallyResolvedExposuresNum: number;
+
+  /** total number of exposures: sum of data breaches & data broker exposures */
   totalExposures: number;
+  /** all exposures separated by data types */
   allExposures: Exposures;
-  sanitizedExposures: SanitizedExposures;
+  /** unresolved exposures separated by data types */
+  unresolvedExposures: Exposures;
+  /** in-progress exposures separated by data types */
+  inProgressExposures: Exposures;
+  /** resolved/removed exposures separated by data types */
   fixedExposures: Exposures;
-  fixedSanitizedExposures: SanitizedExposures;
+  /** in-progress & resolved/removed exposures separated by data types */
+  inProgressFixedExposures: Exposures;
+
+  /** sanitized all exposures for frontend display */
+  unresolvedSanitizedExposures: SanitizedExposures;
+  /** sanitized resolved/removed exposures for frontend display */
+  inProgressFixedSanitizedExposures: SanitizedExposures;
 }
 
 const exposureKeyMap: Record<string, string> = {
@@ -60,16 +92,23 @@ const exposureKeyMap: Record<string, string> = {
   bankAccountNumbers: "bank-account-numbers",
 };
 
-export function dashboardSummary(
-  scannedResults: ScanResult[],
+export function getDashboardSummary(
+  scannedResults: OnerepScanResultRow[],
   subscriberBreaches: SubscriberBreach[]
 ): DashboardSummary {
   const summary: DashboardSummary = {
     dataBreachTotalNum: 0,
-    dataBreachFixedNum: 0,
+    dataBreachResolvedNum: 0,
+    dataBreachUnresolvedNum: 0,
+    dataBreachTotalExposuresNum: 0,
+    dataBreachFixedExposuresNum: 0,
     dataBrokerTotalNum: scannedResults.length,
+    dataBrokerTotalExposuresNum: 0,
     dataBrokerFixedNum: 0,
+    dataBrokerFixedExposuresNum: 0,
     dataBrokerInProgressNum: 0,
+    dataBrokerInProgressExposuresNum: 0,
+    dataBrokerManuallyResolvedExposuresNum: 0,
     totalExposures: 0,
     allExposures: {
       emailAddresses: 0,
@@ -87,7 +126,38 @@ export function dashboardSummary(
       securityQuestions: 0,
       bankAccountNumbers: 0,
     },
-    sanitizedExposures: [],
+    unresolvedExposures: {
+      emailAddresses: 0,
+      phoneNumbers: 0,
+      addresses: 0,
+      familyMembers: 0,
+      fullNames: 0,
+
+      // data breaches
+      socialSecurityNumbers: 0,
+      ipAddresses: 0,
+      passwords: 0,
+      creditCardNumbers: 0,
+      pins: 0,
+      securityQuestions: 0,
+      bankAccountNumbers: 0,
+    },
+    inProgressExposures: {
+      emailAddresses: 0,
+      phoneNumbers: 0,
+      addresses: 0,
+      familyMembers: 0,
+      fullNames: 0,
+
+      // data breaches
+      socialSecurityNumbers: 0,
+      ipAddresses: 0,
+      passwords: 0,
+      creditCardNumbers: 0,
+      pins: 0,
+      securityQuestions: 0,
+      bankAccountNumbers: 0,
+    },
     fixedExposures: {
       emailAddresses: 0,
       phoneNumbers: 0,
@@ -104,29 +174,51 @@ export function dashboardSummary(
       securityQuestions: 0,
       bankAccountNumbers: 0,
     },
-    fixedSanitizedExposures: [],
+    inProgressFixedExposures: {
+      emailAddresses: 0,
+      phoneNumbers: 0,
+      addresses: 0,
+      familyMembers: 0,
+      fullNames: 0,
+
+      // data breaches
+      socialSecurityNumbers: 0,
+      ipAddresses: 0,
+      passwords: 0,
+      creditCardNumbers: 0,
+      pins: 0,
+      securityQuestions: 0,
+      bankAccountNumbers: 0,
+    },
+    unresolvedSanitizedExposures: [],
+    inProgressFixedSanitizedExposures: [],
   };
 
   // calculate broker summary from scanned results
   if (scannedResults) {
     scannedResults.forEach((r) => {
       // check removal status
-      const isFixed = r.status === RemovalStatusMap.Removed;
+      const isManuallyResolved = r.manually_resolved;
+      const isFixed =
+        r.status === RemovalStatusMap.Removed || isManuallyResolved;
       const isInProgress =
-        r.status === RemovalStatusMap.OptOutInProgress ||
-        r.status === RemovalStatusMap.WaitingForVerification;
+        (r.status === RemovalStatusMap.OptOutInProgress ||
+          r.status === RemovalStatusMap.WaitingForVerification) &&
+        !isManuallyResolved;
       if (isInProgress) {
         summary.dataBrokerInProgressNum++;
       } else if (isFixed) {
         summary.dataBrokerFixedNum++;
       }
       // total exposure: add email, phones, addresses, relatives, full name (1)
-      summary.totalExposures +=
+      const exposureIncrement =
         r.emails.length +
         r.phones.length +
         r.addresses.length +
         r.relatives.length +
         1;
+      summary.totalExposures += exposureIncrement;
+      summary.dataBrokerTotalExposuresNum += exposureIncrement;
 
       // for all exposures: email, phones, addresses, relatives, full name (1)
       summary.allExposures.emailAddresses += r.emails.length;
@@ -135,6 +227,15 @@ export function dashboardSummary(
       summary.allExposures.familyMembers += r.relatives.length;
       summary.allExposures.fullNames++;
 
+      if (isInProgress) {
+        summary.inProgressExposures.emailAddresses += r.emails.length;
+        summary.inProgressExposures.phoneNumbers += r.phones.length;
+        summary.inProgressExposures.addresses += r.addresses.length;
+        summary.inProgressExposures.familyMembers += r.relatives.length;
+        summary.inProgressExposures.fullNames++;
+        summary.dataBrokerInProgressExposuresNum += exposureIncrement;
+      }
+
       // for fixed exposures: email, phones, addresses, relatives, full name (1)
       if (isFixed) {
         summary.fixedExposures.emailAddresses += r.emails.length;
@@ -142,6 +243,11 @@ export function dashboardSummary(
         summary.fixedExposures.addresses += r.addresses.length;
         summary.fixedExposures.familyMembers += r.relatives.length;
         summary.fixedExposures.fullNames++;
+        summary.dataBrokerFixedExposuresNum += exposureIncrement;
+      }
+
+      if (isManuallyResolved) {
+        summary.dataBrokerManuallyResolvedExposuresNum += exposureIncrement;
       }
     });
   }
@@ -149,103 +255,161 @@ export function dashboardSummary(
   // calculate breaches summary from breaches data
   // TODO: Modify after MNTOR-1947: Refactor user breaches object
   subscriberBreaches.forEach((b) => {
+    // According to the type, b.dataClasses should always be defined, so unit
+    // tests always define it. That said, since the type was added later, I'd
+    // rather not remove the `?? []` just in case it is wrong, hence:
+    /* c8 ignore next */
     const dataClasses = b.dataClasses ?? [];
-    const increment = b.emailsEffected?.length ?? 0;
+    // b.emailsAffected *should* always be non-empty, since `subscriberBreaches`
+    // was specifically constructed to contain all breaches that affect the
+    // user. However, some basic `git blame` archeology doesn't turn up any info
+    // on why the `?? 0` was added, so I'm leaving it in place for now:
+    /* c8 ignore next */
+    const increment = b.emailsAffected.length ?? 0;
 
     // count emails
     if (dataClasses.includes(BreachDataTypes.Email)) {
       summary.totalExposures += increment;
+      summary.dataBreachTotalExposuresNum += increment;
       summary.allExposures.emailAddresses += increment;
       if (b.isResolved) {
         summary.fixedExposures.emailAddresses += increment;
-        summary.dataBreachFixedNum += increment;
+        summary.dataBreachFixedExposuresNum += increment;
       }
     }
 
     // count phone numbers
     if (dataClasses.includes(BreachDataTypes.Phone)) {
       summary.totalExposures += increment;
+      summary.dataBreachTotalExposuresNum += increment;
       summary.allExposures.phoneNumbers += increment;
       if (b.isResolved) {
         summary.fixedExposures.phoneNumbers += increment;
-        summary.dataBreachFixedNum += increment;
+        summary.dataBreachFixedExposuresNum += increment;
       }
     }
 
     // count password
     if (dataClasses.includes(BreachDataTypes.Passwords)) {
       summary.totalExposures += increment;
+      summary.dataBreachTotalExposuresNum += increment;
       summary.allExposures.passwords += increment;
       if (b.isResolved) {
         summary.fixedExposures.passwords += increment;
-        summary.dataBreachFixedNum += increment;
+        summary.dataBreachFixedExposuresNum += increment;
       }
     }
 
     // count ssn
     if (dataClasses.includes(BreachDataTypes.SSN)) {
       summary.totalExposures += increment;
+      summary.dataBreachTotalExposuresNum += increment;
       summary.allExposures.socialSecurityNumbers += increment;
       if (b.isResolved) {
         summary.fixedExposures.socialSecurityNumbers += increment;
-        summary.dataBreachFixedNum += increment;
+        summary.dataBreachFixedExposuresNum += increment;
       }
     }
 
     // count IP
     if (dataClasses.includes(BreachDataTypes.IP)) {
       summary.totalExposures += increment;
+      summary.dataBreachTotalExposuresNum += increment;
       summary.allExposures.ipAddresses += increment;
       if (b.isResolved) {
         summary.fixedExposures.ipAddresses += increment;
-        summary.dataBreachFixedNum += increment;
+        summary.dataBreachFixedExposuresNum += increment;
       }
     }
 
     // count credit card
     if (dataClasses.includes(BreachDataTypes.CreditCard)) {
       summary.totalExposures += increment;
+      summary.dataBreachTotalExposuresNum += increment;
       summary.allExposures.creditCardNumbers += increment;
       if (b.isResolved) {
         summary.fixedExposures.creditCardNumbers += increment;
-        summary.dataBreachFixedNum += increment;
+        summary.dataBreachFixedExposuresNum += increment;
       }
     }
 
+    /* c8 ignore start */
     // count pin numbers
     if (dataClasses.includes(BreachDataTypes.PIN)) {
       summary.totalExposures += increment;
+      summary.dataBreachTotalExposuresNum += increment;
       summary.allExposures.pins += increment;
       if (b.isResolved) {
         summary.fixedExposures.pins += increment;
-        summary.dataBreachFixedNum += increment;
+        summary.dataBreachFixedExposuresNum += increment;
       }
     }
+    /* c8 ignore stop */
 
+    /** c8 ignore start */
     // count security questions
     if (dataClasses.includes(BreachDataTypes.SecurityQuestions)) {
       summary.totalExposures += increment;
+      summary.dataBreachTotalExposuresNum += increment;
       summary.allExposures.securityQuestions += increment;
       if (b.isResolved) {
         summary.fixedExposures.securityQuestions += increment;
-        summary.dataBreachFixedNum += increment;
+        summary.dataBreachFixedExposuresNum += increment;
       }
     }
+    /** c8 ignore stop */
+
+    if (b.isResolved) summary.dataBreachResolvedNum++;
   });
 
   // count unique breaches
   summary.dataBreachTotalNum = subscriberBreaches.length;
+  summary.dataBreachUnresolvedNum =
+    summary.dataBreachTotalNum - summary.dataBreachResolvedNum;
   const isBreachesOnly = summary.dataBrokerTotalNum === 0;
-  summary.sanitizedExposures = sanitizeExposures(
-    summary.allExposures,
-    summary.totalExposures,
+
+  // count unresolved exposures
+  summary.unresolvedExposures = Object.keys(summary.allExposures).reduce(
+    (a, k) => {
+      a[k as keyof Exposures] =
+        summary.allExposures[k as keyof Exposures] -
+        summary.fixedExposures[k as keyof Exposures] -
+        summary.inProgressExposures[k as keyof Exposures];
+      return a;
+    },
+    {} as Exposures
+  );
+
+  // count fixed and in-progress exposures
+  summary.inProgressFixedExposures = Object.keys(summary.fixedExposures).reduce(
+    (a, k) => {
+      a[k as keyof Exposures] =
+        summary.fixedExposures[k as keyof Exposures] +
+        summary.inProgressExposures[k as keyof Exposures];
+      return a;
+    },
+    {} as Exposures
+  );
+
+  // sanitize unresolved exposures
+  summary.unresolvedSanitizedExposures = sanitizeExposures(
+    summary.unresolvedExposures,
+    summary.totalExposures -
+      summary.dataBreachFixedExposuresNum -
+      summary.dataBrokerFixedExposuresNum -
+      summary.dataBrokerInProgressExposuresNum,
     isBreachesOnly
   );
-  summary.fixedSanitizedExposures = sanitizeExposures(
-    summary.fixedExposures,
-    summary.dataBreachFixedNum + summary.dataBrokerFixedNum,
+
+  // sanitize fixed + inprogress exposures
+  summary.inProgressFixedSanitizedExposures = sanitizeExposures(
+    summary.inProgressFixedExposures,
+    summary.dataBreachFixedExposuresNum +
+      summary.dataBrokerFixedExposuresNum +
+      summary.dataBrokerInProgressExposuresNum,
     isBreachesOnly
   );
+
   return summary;
 }
 
@@ -270,6 +434,12 @@ function sanitizeExposures(
     totalExposures
   );
   sanitizedExposures.push({ "other-data-class": other });
-  console.debug({ sanitizedExposures });
   return sanitizedExposures;
+}
+
+export function getExposureReduction(summary: DashboardSummary): number {
+  if (summary.totalExposures <= 0) return 100;
+  return Math.round(
+    (summary.dataBrokerTotalExposuresNum / summary.totalExposures) * 100
+  );
 }

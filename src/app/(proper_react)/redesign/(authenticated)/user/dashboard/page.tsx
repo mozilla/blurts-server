@@ -7,16 +7,18 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { View } from "./View";
 import { authOptions } from "../../../../../api/utils/auth";
-import { dashboardSummary } from "../../../../../functions/server/dashboard";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../functions/server/getUserBreaches";
-import { getLocale } from "../../../../../functions/server/l10n";
 import { canSubscribeToPremium } from "../../../../../functions/universal/user";
-import { getLatestOnerepScan } from "../../../../../../db/tables/onerep_scans";
+import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 
 import { isFlagEnabled } from "../../../../../functions/server/featureFlags";
-import { isEligibleForFreeScan } from "../../../../../functions/server/onerep";
+import {
+  isEligibleForFreeScan,
+  isEligibleForPremium,
+} from "../../../../../functions/server/onerep";
+import getPremiumSubscriptionUrl from "../../../../../functions/server/getPremiumSubscriptionUrl";
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
@@ -35,13 +37,14 @@ export default async function DashboardPage() {
     return redirect("/redesign/user/welcome/");
   }
 
-  const scanResult = await getLatestOnerepScan(profileId);
-  const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
+  const latestScan = await getLatestOnerepScanResults(profileId);
   const subBreaches = await getSubscriberBreaches(session.user);
-  const summary = dashboardSummary(scanResultItems, subBreaches);
-  const locale = getLocale();
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(
+    session.user,
+    countryCode
+  );
+  const userIsEligibleForPremium = await isEligibleForPremium(
     session.user,
     countryCode
   );
@@ -53,16 +56,19 @@ export default async function DashboardPage() {
   );
   const featureFlagsEnabled = { FreeBrokerScan, PremiumBrokerRemoval };
 
+  const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
+  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
+
   return (
     <View
-      countryCode={countryCode}
       user={session.user}
+      isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
-      userScannedResults={scanResultItems}
+      userScanData={latestScan}
       userBreaches={subBreaches}
-      locale={locale}
-      bannerData={summary}
       featureFlagsEnabled={featureFlagsEnabled}
+      monthlySubscriptionUrl={monthlySubscriptionUrl}
+      yearlySubscriptionUrl={yearlySubscriptionUrl}
     />
   );
 }

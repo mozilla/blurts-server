@@ -4,112 +4,111 @@
 
 "use client";
 
-import styles from "./HighRiskBreachLayout.module.scss";
-import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
-import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
+import Link from "next/link";
+import { ResolutionContainer } from "../ResolutionContainer";
+import { ResolutionContent } from "../ResolutionContent";
+import { Button } from "../../../../../../../components/server/Button";
 import { useL10n } from "../../../../../../../hooks/l10n";
-import { ResolutionContentLayout } from "../ResolutionContentLayout";
-import { HighRiskBreachContent } from "./HighRiskBreachContent";
+import { getLocale } from "../../../../../../../functions/universal/getLocale";
+import { FixView } from "../FixView";
+import {
+  HighRiskBreachTypes,
+  getHighRiskBreachesByType,
+} from "./highRiskBreachData";
+import {
+  StepDeterminationData,
+  StepLink,
+  getNextGuidedStep,
+} from "../../../../../../../functions/server/getRelevantGuidedSteps";
+import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
 
-type HighRiskBreachLayoutProps = {
-  typeOfBreach: "creditCard" | "ssnBreaches" | "bankAccount" | "pin" | "none";
-  breachData: GuidedExperienceBreaches;
-  locale: string;
+export type HighRiskBreachLayoutProps = {
+  type: HighRiskBreachTypes;
+  subscriberEmails: string[];
+  data: StepDeterminationData;
 };
 
-export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
+export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
   const l10n = useL10n();
-  const highRiskDataBreaches = props.breachData.highRisk;
-  let exposedData: SubscriberBreach[] = [];
 
-  if (props.breachData) {
-    switch (props.typeOfBreach) {
-      case "ssnBreaches":
-        exposedData = highRiskDataBreaches.ssnBreaches;
-        break;
-      case "creditCard":
-        exposedData = highRiskDataBreaches.creditCardBreaches;
-        break;
-      case "bankAccount":
-        exposedData = highRiskDataBreaches.bankBreaches;
-        break;
-      case "pin":
-        exposedData = highRiskDataBreaches.pinBreaches;
-        break;
-      case "none":
-      default:
-        exposedData = [];
-        break;
-    }
-  }
+  const stepMap: Record<HighRiskBreachTypes, StepLink["id"]> = {
+    ssn: "HighRiskSsn",
+    "credit-card": "HighRiskCreditCard",
+    "bank-account": "HighRiskBankAccount",
+    pin: "HighRiskPin",
+    none: "HighRiskPin",
+  };
 
-  const dateFormatter = new Intl.DateTimeFormat("en-US", {
-    dateStyle: "short",
-  });
-
-  const listOfBreaches = exposedData.map((item: SubscriberBreach) => (
-    <div key={item.id} className={styles.breachItem}>
-      {l10n.getFragment("high-risk-breach-name-and-date", {
-        elems: { breach_date: <span className={styles.date} /> },
-        vars: {
-          breach_name: item.title,
-          breach_date: dateFormatter.format(new Date(item.addedDate)),
-        },
-      })}
-    </div>
-  ));
-
-  const breachList = (
-    <div className={styles.breachItemsWrapper}>{listOfBreaches}</div>
+  const guidedExperienceBreaches = getGuidedExperienceBreaches(
+    props.data.subscriberBreaches,
+    props.subscriberEmails
   );
 
-  const primaryCta =
-    props.typeOfBreach !== "none"
-      ? {
-          label: l10n.getString("high-risk-breach-mark-as-fixed"),
-          // TODO: Add test once MNTOR-1700 logic is added
-          /* c8 ignore start */
-          onClick: () => {
-            // TODO: MNTOR-1700 Add routing logic + fix event here
-          },
-          skip: "/", // TODO: MNTOR-1700 Add routing logic here
-        }
-      : {
-          label: l10n.getString("high-risk-breach-none-continue"),
-          onClick: () => {
-            // TODO: MNTOR-1700 Add routing logic
-          },
-          /* c8 ignore stop */
-        };
-
-  const highRiskBreachContent = HighRiskBreachContent({
-    locale: props.locale,
-    typeOfBreach: props.typeOfBreach,
+  const pageData = getHighRiskBreachesByType({
+    dataType: props.type,
+    breaches: guidedExperienceBreaches,
+    l10n: l10n,
   });
+
+  // The non-null assertion here should be safe since we already did this check
+  // in `./[type]/page.tsx`:
+  const { title, illustration, content, exposedData, type } = pageData!;
+  const hasBreaches = type !== "none";
+
   return (
-    <ResolutionContentLayout
-      type="highRisk"
-      title={highRiskBreachContent.title}
-      illustration={highRiskBreachContent.breachIllustration}
-      cta={primaryCta}
-      estimatedTime={props.typeOfBreach !== "none" ? 15 : undefined}
+    <FixView
+      subscriberEmails={props.subscriberEmails}
+      data={props.data}
+      nextStepHref={getNextGuidedStep(props.data, stepMap[props.type]).href}
+      currentSection="high-risk-data-breach"
     >
-      {props.typeOfBreach !== "none" && (
-        <>
-          <p>
-            {l10n.getString("high-risk-breach-summary", {
-              num_breaches: exposedData.length,
-            })}
-          </p>
-          {breachList}
-          {highRiskBreachContent.secondaryDescription}
-          <div className={styles.recommendations}>
-            <h4>{l10n.getString("high-risk-breach-heading")}</h4>
-            <p>{l10n.getString("high-risk-breach-subheading")}</p>
-            {highRiskBreachContent.recommendationSteps}
-          </div>
-        </>
-      )}
-    </ResolutionContentLayout>
+      <ResolutionContainer
+        type="securityRecommendations"
+        title={title}
+        illustration={illustration}
+        cta={
+          <>
+            <Button
+              variant="primary"
+              small
+              // TODO: Add test once MNTOR-1700 logic is added
+              /* c8 ignore next 3 */
+              onPress={() => {
+                // TODO: MNTOR-1700 Add routing logic + fix event here
+              }}
+            >
+              {
+                // Theoretically, this page should never be shown if the user
+                // has no breaches, unless the user directly visits its URL, so
+                // no tests represents it either:
+                /* c8 ignore next 3 */
+                hasBreaches
+                  ? l10n.getString("high-risk-breach-mark-as-fixed")
+                  : l10n.getString("high-risk-breach-none-continue")
+              }
+            </Button>
+            {hasBreaches && (
+              <Link
+                // TODO: Add test once MNTOR-1700 logic is added
+                href="/"
+              >
+                {l10n.getString("high-risk-breach-skip")}
+              </Link>
+            )}
+          </>
+        }
+        // Theoretically, this page should never be shown if the user has no
+        // breaches, unless the user directly visits its URL, so no tests
+        // represents it either:
+        /* c8 ignore next */
+        estimatedTime={hasBreaches ? 15 : undefined}
+      >
+        <ResolutionContent
+          content={content}
+          exposedData={exposedData}
+          locale={getLocale(l10n)}
+        />
+      </ResolutionContainer>
+    </FixView>
   );
-};
+}

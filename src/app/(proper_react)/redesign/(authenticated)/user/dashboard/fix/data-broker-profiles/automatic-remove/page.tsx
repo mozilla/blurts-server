@@ -2,149 +2,54 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-"use client";
+import React from "react";
+import { AutomaticRemoveView } from "./AutomaticRemoveView";
+import { getServerSession } from "next-auth";
+import { headers } from "next/headers";
+import { authOptions } from "../../../../../../../../api/utils/auth";
+import { redirect } from "next/navigation";
+import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
+import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
+import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
+import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
+import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
+import {
+  StepDeterminationData,
+  getNextGuidedStep,
+} from "../../../../../../../../functions/server/getRelevantGuidedSteps";
+import getPremiumSubscriptionUrl from "../../../../../../../../functions/server/getPremiumSubscriptionUrl";
 
-import React, { useState } from "react";
-import styles from "../dataBrokerProfiles.module.scss";
-import { Button } from "../../../../../../../../components/server/Button";
-import { useL10n } from "../../../../../../../../hooks/l10n";
+const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
+const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
 
-export default function AutomaticRemove() {
-  const l10n = useL10n();
+export default async function AutomaticRemovePage() {
+  const session = await getServerSession(authOptions);
 
-  const [selectedPlanIsYearly, setSelectedPlanIsYearly] = useState(true);
+  if (!session?.user?.subscriber?.id) {
+    redirect("/redesign/user/dashboard/");
+  }
 
-  const dataBrokerCount = parseInt(
-    process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-    10
-  );
+  const result = await getOnerepProfileId(session.user.subscriber.id);
+  const profileId = result[0]["onerep_profile_id"] as number;
+  const scanData = await getLatestOnerepScanResults(profileId);
+  const subBreaches = await getSubscriberBreaches(session.user);
+  const subscriberEmails = await getSubscriberEmails(session.user);
+
+  const data: StepDeterminationData = {
+    countryCode: getCountryCode(headers()),
+    latestScanData: scanData,
+    subscriberBreaches: subBreaches,
+    user: session.user,
+  };
 
   return (
-    <div>
-      <div className={`${styles.content} ${styles.contentAutomaticRemove}`}>
-        <h3>
-          {l10n.getString(
-            "fix-flow-data-broker-profiles-automatic-remove-headline"
-          )}
-        </h3>
-        <p>
-          {l10n.getString(
-            "fix-flow-data-broker-profiles-automatic-remove-subheadline",
-            {
-              data_broker_count: dataBrokerCount,
-            }
-          )}
-        </p>
-      </div>
-      <div className={styles.content}>
-        <div className={styles.upgradeToggleWrapper}>
-          <div className={styles.upgradeToggle}>
-            <button
-              onClick={() => setSelectedPlanIsYearly(!selectedPlanIsYearly)}
-              className={`${selectedPlanIsYearly ? styles.isActive : ""}`}
-            >
-              {l10n.getString(
-                "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-yearly"
-              )}
-            </button>
-            <button
-              onClick={() => setSelectedPlanIsYearly(!selectedPlanIsYearly)}
-              className={`${selectedPlanIsYearly ? "" : styles.isActive}`}
-            >
-              {l10n.getString(
-                "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-monthly"
-              )}
-            </button>
-          </div>
-          <span>
-            {l10n.getString(
-              "fix-flow-data-broker-profiles-automatic-remove-save-percent",
-              { percent: 10 }
-            )}
-          </span>
-        </div>
-        <div className={styles.upgradeContentWrapper}>
-          {/* Feature List */}
-          <div className={styles.featuresList}>
-            <strong>
-              {l10n.getString(
-                "fix-flow-data-broker-profiles-automatic-remove-features-headline"
-              )}
-            </strong>
-            <ul>
-              <li>
-                {l10n.getString(
-                  "fix-flow-data-broker-profiles-automatic-remove-features-monthly-scan",
-                  {
-                    data_broker_count: dataBrokerCount,
-                  }
-                )}
-              </li>
-              <li>
-                {l10n.getString(
-                  "fix-flow-data-broker-profiles-automatic-remove-features-remove-personal-info"
-                )}
-              </li>
-              <li>
-                {l10n.getString(
-                  "fix-flow-data-broker-profiles-automatic-remove-features-guided-experience"
-                )}
-              </li>
-              <li>
-                {l10n.getString(
-                  "fix-flow-data-broker-profiles-automatic-remove-features-continuous-monitoring"
-                )}
-              </li>
-              <li>
-                {l10n.getString(
-                  "fix-flow-data-broker-profiles-automatic-remove-features-breach-alerts"
-                )}
-              </li>
-            </ul>
-          </div>
-          {/* Plan select */}
-          <div className={styles.selectedPlan}>
-            <strong>
-              {l10n.getString(
-                "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-headline"
-              )}
-              <small>
-                {selectedPlanIsYearly
-                  ? l10n.getString(
-                      "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-frequency"
-                    )
-                  : l10n.getString(
-                      "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-frequency"
-                    )}
-              </small>
-            </strong>
-            {/* Price */}
-            <span>
-              {selectedPlanIsYearly
-                ? l10n.getString(
-                    "fix-flow-data-broker-profiles-automatic-remove-features-price",
-                    { price: "X.XX" }
-                  )
-                : l10n.getString(
-                    "fix-flow-data-broker-profiles-automatic-remove-features-price",
-                    { price: "X.XX" }
-                  )}
-            </span>
-            <Button
-              variant="primary"
-              onClick={() => (window.location.href = "../../subscribed")} // TODO replace with final UI
-            >
-              {selectedPlanIsYearly
-                ? l10n.getString(
-                    "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-button"
-                  )
-                : l10n.getString(
-                    "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-button"
-                  )}
-            </Button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <AutomaticRemoveView
+      data={data}
+      subscriberEmails={subscriberEmails}
+      nextStepHref={getNextGuidedStep(data, "Scan").href}
+      currentSection="data-broker-profiles"
+      monthlySubscriptionUrl={monthlySubscriptionUrl}
+      yearlySubscriptionUrl={yearlySubscriptionUrl}
+    />
   );
 }

@@ -4,13 +4,14 @@
 
 import initKnex from "knex";
 import knexConfig from "../knexfile.js";
-import { ProfileData } from "../../app/functions/server/onerep.js";
+import { CreateProfileRequest } from "../../app/functions/server/onerep.js";
+import { parseIso8601Datetime } from "../../utils/parse.js";
 
 const knex = initKnex(knexConfig);
 
 export async function setProfileDetails(
   onerepProfileId: number,
-  profileData: ProfileData
+  profileData: CreateProfileRequest
 ) {
   await knex("onerep_profiles").insert({
     onerep_profile_id: onerepProfileId,
@@ -18,7 +19,11 @@ export async function setProfileDetails(
     last_name: profileData.last_name,
     city_name: profileData.addresses[0]["city"],
     state_code: profileData.addresses[0]["state"],
-    date_of_birth: profileData.birth_date,
+    // TODO: MNTOR-2157 Validate input:
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    date_of_birth: parseIso8601Datetime(profileData.birth_date!)!,
+    // @ts-ignore knex.fn.now() results in it being set to a date,
+    // even if it's not typed as a JS date object:
     created_at: knex.fn.now(),
   });
 }

@@ -10,18 +10,24 @@ import {
   ISO8601DateString,
 } from "../../../utils/parse.js";
 import { StateAbbr } from "../../../utils/states.js";
-import { getLatestOnerepScan } from "../../../db/tables/onerep_scans";
+import { getLatestOnerepScanResults } from "../../../db/tables/onerep_scans";
 import { isFlagEnabled } from "./featureFlags";
 import { RemovalStatus } from "../universal/scanResult.js";
 const log = mozlog("external.onerep");
 
-export type ProfileData = {
+export type CreateProfileRequest = {
   first_name: string;
   last_name: string;
   addresses: [{ city: string; state: StateAbbr }];
   birth_date?: ISO8601DateString;
-  age?: ISO8601DateString;
-  phone_number?: E164PhoneNumberString;
+  phone_numbers?: E164PhoneNumberString[];
+};
+export type ShowProfileResponse = CreateProfileRequest & {
+  id: number;
+  status: "active" | "inactive";
+  created_at: ISO8601DateString;
+  updated_at: ISO8601DateString;
+  url: `https://api.onerep.com/profiles/${number}`;
 };
 export type CreateScanResponse = {
   id: number;
@@ -51,6 +57,7 @@ export type ListScansResponse = {
 };
 export type ScanResult = {
   id: number;
+  scan_id: number;
   url: string;
   link: string;
   profile_id: number;
@@ -98,7 +105,9 @@ async function onerepFetch(
   return fetch(url, { ...options, headers });
 }
 
-export async function createProfile(profileData: ProfileData): Promise<number> {
+export async function createProfile(
+  profileData: CreateProfileRequest
+): Promise<number> {
   const requestBody = {
     first_name: profileData.first_name,
     last_name: profileData.last_name,
@@ -133,6 +142,25 @@ export async function createProfile(profileData: ProfileData): Promise<number> {
     url: string;
   } = await response.json();
   return savedProfile.id;
+}
+
+export async function getProfile(
+  profileId: number
+): Promise<ShowProfileResponse> {
+  const response: Response = await onerepFetch(`/profiles/${profileId}/`, {
+    method: "GET",
+  });
+  if (!response.ok) {
+    log.info(
+      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`
+    );
+    throw new Error(
+      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`
+    );
+  }
+
+  const profile: ShowProfileResponse = await response.json();
+  return profile;
 }
 
 export async function activateProfile(profileId: number): Promise<void> {
@@ -294,9 +322,9 @@ export async function isEligibleForFreeScan(
 
   const result = await getOnerepProfileId(user.subscriber.id);
   const profileId = result[0]["onerep_profile_id"] as number;
-  const scanResult = await getLatestOnerepScan(profileId);
+  const scanResult = await getLatestOnerepScanResults(profileId);
 
-  if (scanResult?.onerep_scan_results?.data?.length) {
+  if (scanResult.results.length) {
     console.warn("User has already used free scan");
     return false;
   }
@@ -308,10 +336,6 @@ export async function isEligibleForPremium(
   user: Session["user"],
   countryCode: string
 ) {
-  if (countryCode !== "us") {
-    return false;
-  }
-
   if (countryCode !== "us") {
     return false;
   }

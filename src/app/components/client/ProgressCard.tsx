@@ -22,6 +22,7 @@ import ModalImage from "../client/assets/modal-default-img.svg";
 export type Props = {
   resolvedByYou: number;
   autoRemoved: number;
+  inProgress: number;
   totalNumExposures: number;
 };
 
@@ -30,7 +31,8 @@ function PercentageComplete(props: Props) {
 
   const percentageCompleteNum =
     totalRemoved > 0 && props.totalNumExposures > 0
-      ? ((props.autoRemoved + props.resolvedByYou) / props.totalNumExposures) *
+      ? ((props.autoRemoved + props.resolvedByYou - props.inProgress) /
+          props.totalNumExposures) *
         100
       : 0; // Prevents the division of 0
   return percentageCompleteNum;

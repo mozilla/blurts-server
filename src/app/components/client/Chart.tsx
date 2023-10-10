@@ -5,6 +5,8 @@
 "use client";
 
 import { CSSProperties } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { useL10n } from "../../hooks/l10n";
 import styles from "./Chart.module.scss";
 import { QuestionMarkCircle } from "../server/Icons";
@@ -14,13 +16,14 @@ import { Button } from "../server/Button";
 import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import ModalImage from "../client/assets/modal-default-img.svg";
-import Image from "next/image";
-import Link from "next/link";
+import { DashboardSummary } from "../../functions/server/dashboard";
 
 export type Props = {
   data: Array<[string, number]>;
-  hasRunScan: boolean;
   isEligibleForFreeScan: boolean;
+  scanInProgress: boolean;
+  isShowFixed: boolean;
+  summary: DashboardSummary;
 };
 
 export const DoughnutChart = (props: Props) => {
@@ -90,7 +93,7 @@ export const DoughnutChart = (props: Props) => {
           variant="primary"
           // TODO: Add unit test when changing this code:
           /* c8 ignore next */
-          onClick={() => explainerDialogState.close()}
+          onPress={() => explainerDialogState.close()}
           autoFocus={true}
           className={styles.startButton}
         >
@@ -100,14 +103,32 @@ export const DoughnutChart = (props: Props) => {
     </div>
   );
 
-  const prompt = (
-    <div className={styles.prompt}>
-      <p>{l10n.getString("exposure-chart-returning-user-upgrade-prompt")}</p>
-      <Link href="/redesign/user/welcome">
-        {l10n.getString("exposure-chart-returning-user-upgrade-prompt-cta")}
-      </Link>
-    </div>
-  );
+  const getPromptContent = () => {
+    if (!props.scanInProgress && props.isEligibleForFreeScan) {
+      return (
+        <>
+          <p>
+            {l10n.getString("exposure-chart-returning-user-upgrade-prompt")}
+          </p>
+          <Link href="/redesign/user/welcome">
+            {l10n.getString("exposure-chart-returning-user-upgrade-prompt-cta")}
+          </Link>
+        </>
+      );
+    }
+
+    if (props.scanInProgress) {
+      return (
+        <p>
+          {l10n.getFragment("exposure-chart-scan-in-progress-prompt", {
+            elems: { b: <strong /> },
+          })}
+        </p>
+      );
+    }
+  };
+
+  const promptContent = getPromptContent();
 
   return (
     <>
@@ -136,29 +157,53 @@ export const DoughnutChart = (props: Props) => {
               className={styles.gutter}
             />
             {slices}
-            {l10n.getFragment("exposure-chart-heading", {
-              elems: {
-                nr: (
-                  <text
-                    className={styles.headingNr}
-                    fontSize={headingNumberSize}
-                    x={diameter / 2}
-                    y={diameter / 2 - headingGap / 2}
-                    textAnchor="middle"
-                  />
-                ),
-                label: (
-                  <text
-                    className={styles.headingLabel}
-                    fontSize={headingLabelSize}
-                    x={diameter / 2}
-                    y={diameter / 2 + headingLabelSize + headingGap / 2}
-                    textAnchor="middle"
-                  />
-                ),
-              },
-              vars: { nr: sumOfFixedExposures },
-            })}
+            {props.isShowFixed
+              ? l10n.getFragment("exposure-chart-heading-fixed", {
+                  elems: {
+                    nr: (
+                      <text
+                        className={styles.headingNr}
+                        fontSize={headingNumberSize}
+                        x={diameter / 2}
+                        y={diameter / 2 - headingGap / 2}
+                        textAnchor="middle"
+                      />
+                    ),
+                    label: (
+                      <text
+                        className={styles.headingLabel}
+                        fontSize={headingLabelSize}
+                        x={diameter / 2}
+                        y={diameter / 2 + headingLabelSize + headingGap / 2}
+                        textAnchor="middle"
+                      />
+                    ),
+                  },
+                  vars: { nr: sumOfFixedExposures },
+                })
+              : l10n.getFragment("exposure-chart-heading", {
+                  elems: {
+                    nr: (
+                      <text
+                        className={styles.headingNr}
+                        fontSize={headingNumberSize}
+                        x={diameter / 2}
+                        y={diameter / 2 - headingGap / 2}
+                        textAnchor="middle"
+                      />
+                    ),
+                    label: (
+                      <text
+                        className={styles.headingLabel}
+                        fontSize={headingLabelSize}
+                        x={diameter / 2}
+                        y={diameter / 2 + headingLabelSize + headingGap / 2}
+                        textAnchor="middle"
+                      />
+                    ),
+                  },
+                  vars: { nr: sumOfFixedExposures },
+                })}
           </svg>
           <div className={styles.legend}>
             <table>
@@ -191,11 +236,23 @@ export const DoughnutChart = (props: Props) => {
                 ))}
               </tbody>
             </table>
-            {!props.hasRunScan && props.isEligibleForFreeScan && prompt}
+            {promptContent && (
+              <div className={styles.prompt}>{promptContent}</div>
+            )}
           </div>
         </div>
         <figcaption>
-          {l10n.getString("exposure-chart-caption")}
+          {props.isShowFixed
+            ? l10n.getFragment("exposure-chart-caption-fixed", {
+                vars: {
+                  total_fixed_exposures_num:
+                    props.summary.dataBreachFixedExposuresNum +
+                    props.summary.dataBrokerFixedExposuresNum +
+                    props.summary.dataBrokerInProgressExposuresNum,
+                  total_exposures_num: props.summary.totalExposures,
+                },
+              })
+            : l10n.getString("exposure-chart-caption")}
           <button
             aria-label={l10n.getString("modal-open-alt")}
             // TODO: Add unit test when changing this code:

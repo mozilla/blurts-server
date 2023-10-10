@@ -1,0 +1,239 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+import { Session } from "next-auth";
+import { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
+import { SubscriberBreach } from "../../../utils/subscriberBreaches";
+import { BreachDataTypes, HighRiskDataTypes } from "../universal/breach";
+
+export type StepDeterminationData = {
+  user: Session["user"];
+  countryCode: string;
+  latestScanData: LatestOnerepScanData | null;
+  subscriberBreaches: SubscriberBreach[];
+};
+
+// Note: the order is important; it determines in which order the user will be
+//       guided through the pages.
+export const stepLinks = [
+  {
+    href: "/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan",
+    id: "Scan",
+  },
+  {
+    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/social-security-number",
+    id: "HighRiskSsn",
+  },
+  {
+    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card",
+    id: "HighRiskCreditCard",
+  },
+  {
+    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/bank-account",
+    id: "HighRiskBankAccount",
+  },
+  {
+    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/pin",
+    id: "HighRiskPin",
+  },
+  {
+    href: "/redesign/user/dashboard/fix/leaked-passwords/password",
+    id: "LeakedPasswordsPassword",
+  },
+  {
+    href: "/redesign/user/dashboard/fix/leaked-passwords/security-question",
+    id: "LeakedPasswordsSecurityQuestion",
+  },
+  {
+    href: "/redesign/user/dashboard/fix/security-recommendations/phone",
+    id: "SecurityTipsPhone",
+  },
+  {
+    href: "/redesign/user/dashboard/fix/security-recommendations/email",
+    id: "SecurityTipsEmail",
+  },
+  {
+    href: "/redesign/user/dashboard/fix/security-recommendations/ip",
+    id: "SecurityTipsIp",
+  },
+  {
+    href: "/redesign/user/dashboard",
+    id: "Done",
+  },
+] as const satisfies ReadonlyArray<{ href: string; id: string }>;
+
+export type StepLink = (typeof stepLinks)[number];
+export type StepLinkWithStatus = (typeof stepLinks)[number] & {
+  eligible: boolean;
+  completed: boolean;
+};
+
+export function isGuidedResolutionInProgress(stepId: StepLink["id"]) {
+  const inProgressStepIds = stepLinks
+    .filter((step) => step.id !== "Scan" && step.id !== "Done")
+    .map(({ id }) => id);
+  return inProgressStepIds.includes(stepId);
+}
+
+export function getNextGuidedStep(
+  data: StepDeterminationData,
+  afterStep?: StepLink["id"]
+): StepLink {
+  // Resisting the urge to add a state machine... ^.^
+  const stepLinkStatuses = getGuidedStepStatuses(data);
+  const fromIndex =
+    stepLinkStatuses.findIndex((step) => step.id === afterStep) + 1;
+  const nextStep = stepLinkStatuses.slice(fromIndex).find((stepLink) => {
+    return stepLink.eligible && !stepLink.completed;
+  });
+
+  // In practice, there should always be a next step (at least "Done").
+  // If for any reason there is not, `href` will be undefined, in which case
+  // links will just not do anything.
+  /* c8 ignore next */
+  return nextStep ?? ({ id: "InvalidStep" } as never);
+}
+
+export function getGuidedStepStatuses(
+  data: StepDeterminationData
+): StepLinkWithStatus[] {
+  return stepLinks.map((stepLink) => getStepWithStatus(data, stepLink));
+}
+
+function getStepWithStatus(
+  data: StepDeterminationData,
+  stepLink: StepLink
+): StepLinkWithStatus {
+  return {
+    ...stepLink,
+    eligible: isEligibleFor(data, stepLink.id),
+    completed: hasCompleted(data, stepLink.id),
+  };
+}
+
+function isEligibleFor(
+  data: StepDeterminationData,
+  stepId: StepLink["id"]
+): boolean {
+  if (stepId === "Scan") {
+    return data.countryCode === "us";
+  }
+
+  if (stepId === "HighRiskSsn") {
+    // Our social security number-related mitigations aren't possible outside of the US:
+    return data.countryCode === "us";
+  }
+
+  if (
+    ["HighRiskCreditCard", "HighRiskBankAccount", "HighRiskPin"].includes(
+      stepId
+    )
+  ) {
+    // Anyone can view/resolve their high risk data breaches
+    return true;
+  }
+
+  if (
+    ["LeakedPasswordsPassword", "LeakedPasswordsSecurityQuestion"].includes(
+      stepId
+    )
+  ) {
+    // Anyone can view/resolve their leaked passwords
+    return true;
+  }
+
+  if (
+    ["SecurityTipsPhone", "SecurityTipsEmail", "SecurityTipsIp"].includes(
+      stepId
+    )
+  ) {
+    // Anyone can view security tips
+    return true;
+  }
+
+  if (stepId === "Done") {
+    return true;
+    // All steps should have been covered by the above conditions:
+    /* c8 ignore next 4 */
+  }
+
+  return false as never;
+}
+
+function hasCompleted(
+  data: StepDeterminationData,
+  stepId: StepLink["id"]
+): boolean {
+  if (stepId === "Scan") {
+    const hasRunScan =
+      typeof data.latestScanData?.scan === "object" &&
+      data.latestScanData?.scan !== null;
+    const hasResolvedAllScanResults =
+      (data.latestScanData?.scan?.onerep_scan_status === "finished" ||
+        data.latestScanData?.scan?.onerep_scan_status === "in_progress") &&
+      data.latestScanData.results.every(
+        (scanResult) =>
+          scanResult.manually_resolved || scanResult.status !== "new"
+      );
+    return hasRunScan && hasResolvedAllScanResults;
+  }
+
+  function isBreachResolved(
+    dataClass: (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
+  ): boolean {
+    return !data.subscriberBreaches.some((breach) => {
+      const affectedDataClasses = breach.dataClassesEffected.map(
+        (affectedDataClass) => Object.keys(affectedDataClass)[0]
+      );
+      return (
+        affectedDataClasses.includes(dataClass) &&
+        !breach.resolvedDataClasses.includes(dataClass)
+      );
+    });
+  }
+
+  if (stepId === "HighRiskSsn") {
+    return isBreachResolved(HighRiskDataTypes.SSN);
+  }
+
+  if (stepId === "HighRiskCreditCard") {
+    return isBreachResolved(HighRiskDataTypes.CreditCard);
+  }
+
+  if (stepId === "HighRiskBankAccount") {
+    return isBreachResolved(HighRiskDataTypes.BankAccount);
+  }
+
+  if (stepId === "HighRiskPin") {
+    return isBreachResolved(HighRiskDataTypes.PIN);
+  }
+
+  if (stepId === "LeakedPasswordsPassword") {
+    return isBreachResolved(BreachDataTypes.Passwords);
+  }
+
+  if (stepId === "LeakedPasswordsSecurityQuestion") {
+    return isBreachResolved(BreachDataTypes.SecurityQuestions);
+  }
+
+  if (stepId === "SecurityTipsPhone") {
+    return isBreachResolved(BreachDataTypes.Phone);
+  }
+
+  if (stepId === "SecurityTipsEmail") {
+    return isBreachResolved(BreachDataTypes.Email);
+  }
+
+  if (stepId === "SecurityTipsIp") {
+    return isBreachResolved(BreachDataTypes.IP);
+  }
+
+  if (stepId === "Done") {
+    return false;
+    // All steps should have been covered by the above conditions:
+    /* c8 ignore next 4 */
+  }
+
+  return false as never;
+}

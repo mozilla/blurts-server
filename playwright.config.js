@@ -18,7 +18,7 @@ export default defineConfig({
   timeout: 60_000,
 
   /* Global setup */
-  globalSetup: 'src/e2e/globalSetup.js',
+  globalSetup: 'src/e2e/global-setup.ts',
 
   /* Max time in milliseconds the whole test suite can to prevent CI breaking. */
   globalTimeout: 1_800_000,
@@ -31,7 +31,7 @@ export default defineConfig({
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 5_000
+    timeout: 2_000
   },
 
   /* Run tests in files in parallel */
@@ -53,6 +53,7 @@ export default defineConfig({
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
+
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: process.env.E2E_TEST_BASE_URL || 'https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net',
     // baseURL: 'http://localhost:6060',
@@ -72,12 +73,11 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] }
-    }
-
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] }
-    // }
+    },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] }
+    },
 
     /* Test against mobile viewports. */
     // {

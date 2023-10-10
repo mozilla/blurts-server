@@ -52,7 +52,8 @@ export const FindExposures = ({
 
   const maxProgress = 100;
   const labelSwitchThreshold = 50;
-  const percentageSteps = 6;
+  const scanDurationInSeconds = 60;
+  const percentageSteps = maxProgress / scanDurationInSeconds;
   const breachesScannedCount = getCurrentScanCountForRange({
     totalCount: breachesTotalCount,
     currentProgress: scanProgress,
@@ -71,14 +72,8 @@ export const FindExposures = ({
       const nextProgress = scanProgress + percentageSteps;
       setScanProgress(Math.min(nextProgress, maxProgress));
 
-      // For development we are periodically checking the scan progress and set
-      // the result if finished.
-      if (
-        (process.env.NODE_ENV === "development" ||
-          process.env.NEXT_PUBLIC_APP_ENV === "heroku") &&
-        !checkingScanProgress &&
-        !scanFinished
-      ) {
+      // Periodically check the scan progress and set the result if finished.
+      if (!checkingScanProgress && !scanFinished) {
         setCheckingScanProgress(true);
         void fetch("/api/v1/user/welcome-scan/progress")
           .then((response) => response.json())
@@ -101,7 +96,13 @@ export const FindExposures = ({
     }
 
     return () => clearTimeout(timeoutId);
-  }, [scanProgress, router, checkingScanProgress, scanFinished]);
+  }, [
+    scanProgress,
+    router,
+    checkingScanProgress,
+    scanFinished,
+    percentageSteps,
+  ]);
 
   function ProgressLabel() {
     return (

@@ -5,28 +5,33 @@
 import { getUserEmails } from "../db/tables/emailAddresses.js";
 import { HibpLikeDbBreach, getBreachesForEmail } from "./hibp.js";
 import { getSha1 } from "./fxa.js";
-import { BreachDataTypes, filterBreachDataTypes } from "./breachResolution.js";
+import { filterBreachDataTypes } from "./breachResolution.js";
 import {
   Breach,
   Subscriber,
 } from "../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
+import { parseIso8601Datetime } from "./parse.js";
+import { BreachDataTypes } from "../app/functions/universal/breach";
 
 export type DataClassEffected = {
   [dataType: string]: number | string[];
 };
 export interface SubscriberBreach {
-  addedDate: string;
-  breachDate: string;
-  dataClasses: string[];
+  addedDate: Date;
+  breachDate: Date;
+  dataClasses: Array<(typeof BreachDataTypes)[keyof typeof BreachDataTypes]>;
+  resolvedDataClasses: Array<
+    (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
+  >;
   description: string;
   domain: string;
   id: number;
   isResolved?: boolean;
   favIconUrl: string;
-  modifiedDate: string;
+  modifiedDate: Date;
   name: string;
   title: string;
-  emailsEffected?: string[];
+  emailsAffected: string[];
   dataClassesEffected: DataClassEffected[];
 }
 
@@ -74,22 +79,31 @@ export async function getSubBreaches(
     const breachResolution = subscriber.breach_resolution?.[email.email] ?? {};
 
     for (const breach of foundBreaches) {
-      const filteredBreachDataClasses: string[] = filterBreachDataTypes(
-        breach.DataClasses
-      );
+      type ArrayOfDataClasses = Array<
+        (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
+      >;
+      const filteredBreachDataClasses: ArrayOfDataClasses =
+        filterBreachDataTypes(breach.DataClasses);
+      // `allBreaches` is generally the return value of `getBreaches`, which
+      // either loads breaches from the database, or fetches them from the HIBP
+      // API. In the former csae, `AddedDate`, `BreachDate` and `ModifiedDate`
+      // are Date objects, but in the latter case, they are ISO 8601 date
+      // strings. Thus, we normalise that to always be a Date object.
       const subscriberBreach: SubscriberBreach = {
         id: breach.Id,
-        addedDate: breach.AddedDate,
-        breachDate: breach.BreachDate,
+        addedDate: normalizeDate(breach.AddedDate),
+        breachDate: normalizeDate(breach.BreachDate),
         dataClasses: filteredBreachDataClasses,
+        resolvedDataClasses: (breachResolution[breach.Id]?.resolutionsChecked ??
+          []) as ArrayOfDataClasses,
         description: breach.Description,
         domain: breach.Domain,
         isResolved: breachResolution[breach.Id]?.isResolved || false,
         favIconUrl: breach.FaviconUrl,
-        modifiedDate: breach.ModifiedDate,
+        modifiedDate: normalizeDate(breach.ModifiedDate),
         name: breach.Name,
         title: breach.Title,
-        emailsEffected: [email.email],
+        emailsAffected: [email.email],
         dataClassesEffected: filteredBreachDataClasses.map((c) => {
           if (c === BreachDataTypes.Email) {
             return { [c]: [email.email] };
@@ -105,7 +119,7 @@ export async function getSubBreaches(
       } else {
         // append email & other data classes counts
         const curBreach = uniqueBreaches[subscriberBreach.id];
-        curBreach.emailsEffected?.push(email.email);
+        curBreach.emailsAffected.push(email.email);
         curBreach.dataClassesEffected.forEach((d, index) => {
           const key = Object.keys(d)[0];
           if (key === BreachDataTypes.Email) {
@@ -121,4 +135,14 @@ export async function getSubBreaches(
   }
 
   return Object.values(uniqueBreaches);
+}
+
+function normalizeDate(date: string | Date): Date {
+  return typeof date === "string"
+    ? // If `date` is a string, it was fetched from the HIBP API, and we should be
+      // able to assume that it is a valid ISO 8601 string, and thus use the
+      // non-null assertion:
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      parseIso8601Datetime(date)!
+    : date;
 }

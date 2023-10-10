@@ -13,8 +13,8 @@ import {
 } from "../../../../../../db/tables/subscribers";
 
 import {
-  getLatestOnerepScan,
-  setOnerepScanResults,
+  getLatestOnerepScanResults,
+  addOnerepScanResults,
 } from "../../../../../../db/tables/onerep_scans";
 import {
   ListScanResultsResponse,
@@ -29,13 +29,12 @@ export interface ScanProgressBody {
   results?: ListScanResultsResponse;
 }
 
-// For development we are periodically checking the scan progress and set the
-// result if finished. Polling the OneRep API is only necessary in development
-// environments - a webhook is used elsewhere.
+// Periodically checking the scan progress and set the result if finished.
+// A webhook is used as well, but this ensures that we get the latest data.
 // @see the onerep-events route and https://docs.onerep.com/#section/Webhooks-Endpoints
 export async function GET(
   _req: NextRequest
-): Promise<NextResponse<ScanProgressBody | unknown>> {
+): Promise<NextResponse<ScanProgressBody> | NextResponse<unknown>> {
   const session = await getServerSession(authOptions);
   if (typeof session?.user?.email === "string") {
     try {
@@ -44,26 +43,21 @@ export async function GET(
         "onerep_profile_id"
       ] as number;
 
-      const latestScans = await getLatestOnerepScan(profileId);
-      const latestScanId = latestScans?.onerep_scan_id;
+      const latestScan = await getLatestOnerepScanResults(profileId);
+      const latestScanId = latestScan.scan?.onerep_scan_id;
 
-      if (latestScanId) {
+      if (typeof latestScanId !== "undefined") {
         const scan = await getScanDetails(profileId, latestScanId);
 
-        // Store scan results only for development environments.
-        if (
-          (scan.status === "finished" &&
-            process.env.NODE_ENV === "development") ||
-          process.env.APP_ENV === "heroku"
-        ) {
+        // Store scan results.
+        if (scan.status === "finished") {
           const allScanResults = await getAllScanResults(profileId);
-          await setOnerepScanResults(
+          await addOnerepScanResults(
             profileId,
             scan.id,
-            {
-              data: allScanResults,
-            },
-            "manual"
+            allScanResults,
+            "manual",
+            scan.status
           );
         }
 

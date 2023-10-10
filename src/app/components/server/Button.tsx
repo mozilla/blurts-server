@@ -2,12 +2,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { ComponentProps, ReactNode, useRef } from "react";
+"use client";
+
+import { ReactNode, useRef } from "react";
 import Link from "next/link";
 import styles from "./button.module.scss";
 import { useButton } from "react-aria";
 
-export interface Props extends ComponentProps<"button"> {
+export interface Props {
   children: ReactNode;
   variant: "primary" | "secondary";
   className?: string;
@@ -16,6 +18,7 @@ export interface Props extends ComponentProps<"button"> {
   href?: string;
   isLoading?: boolean;
   small?: boolean;
+  wide?: boolean;
 }
 
 export const Button = (
@@ -30,6 +33,7 @@ export const Button = (
     href,
     isLoading,
     small,
+    wide,
     ...otherProps
   } = props;
 
@@ -49,6 +53,7 @@ export const Button = (
     // Ignored for test coverage; not used in tested pages yet:
     /* c8 ignore next */
     disabled && styles.disabled,
+    wide && styles.wide,
     className,
   ]
     .filter(Boolean)

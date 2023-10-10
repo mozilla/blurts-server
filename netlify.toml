@@ -16,6 +16,6 @@
   publish = "storybook-static/"
 
   # Default build command.
-  command = "npm ci; npm run build-storybook"
+  command = "npm ci; cp .env-dist .env; npm run build-storybook"
 
-  environment = { NODE_VERSION = "18.12.1", NPM_VERSION = "8.19.3" }
+  environment = { NODE_VERSION = "18.12.1", NPM_VERSION = "9.6.5" }

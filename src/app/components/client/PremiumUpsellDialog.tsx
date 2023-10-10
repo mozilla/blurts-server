@@ -17,6 +17,8 @@ import styles from "./PremiumUpsellDialog.module.scss";
 
 export interface PremiumUpsellDialogProps {
   state: OverlayTriggerState;
+  monthlySubscriptionUrl: string;
+  yearlySubscriptionUrl: string;
 }
 
 function PremiumPricingLabel({ isMonthly }: { isMonthly?: boolean }) {
@@ -58,7 +60,15 @@ function PremiumPricingLabel({ isMonthly }: { isMonthly?: boolean }) {
   );
 }
 
-function PremiumUpsellDialogContent() {
+export interface PremiumUpsellDialogContentProps {
+  monthlySubscriptionUrl: string;
+  yearlySubscriptionUrl: string;
+}
+
+function PremiumUpsellDialogContent({
+  monthlySubscriptionUrl,
+  yearlySubscriptionUrl,
+}: PremiumUpsellDialogContentProps) {
   const l10n = useL10n();
   const [selectedTab, setSelectedTab] = useState<Key>("yearly");
 
@@ -79,12 +89,6 @@ function PremiumUpsellDialogContent() {
       content: <PremiumPricingLabel isMonthly />,
     },
   ];
-
-  const premiumSubscriptionUrl =
-    process.env.FXA_SUBSCRIPTIONS_URL &&
-    process.env.PREMIUM_PRODUCT_ID &&
-    process.env.PREMIUM_PLAN_ID_US &&
-    `${process.env.FXA_SUBSCRIPTIONS_URL}/products/${process.env.PREMIUM_PRODUCT_ID}?plan=${process.env.PREMIUM_PLAN_ID_US}`;
 
   return (
     <div className={styles.modalContent}>
@@ -134,7 +138,7 @@ function PremiumUpsellDialogContent() {
       </dl>
       <Button
         className={styles.productCta}
-        href={premiumSubscriptionUrl}
+        href={isMonthly ? monthlySubscriptionUrl : yearlySubscriptionUrl}
         variant="primary"
       >
         {isMonthly
@@ -151,6 +155,8 @@ function PremiumUpsellDialogContent() {
 
 function PremiumUpsellDialog({
   state,
+  yearlySubscriptionUrl,
+  monthlySubscriptionUrl,
   ...otherProps
 }: PremiumUpsellDialogProps & OverlayTriggerProps) {
   const l10n = useL10n();
@@ -165,7 +171,10 @@ function PremiumUpsellDialog({
             onDismiss={() => void state.close()}
             variant="horizontal"
           >
-            <PremiumUpsellDialogContent />
+            <PremiumUpsellDialogContent
+              monthlySubscriptionUrl={monthlySubscriptionUrl}
+              yearlySubscriptionUrl={yearlySubscriptionUrl}
+            />
           </Dialog>
         </ModalOverlay>
       )}

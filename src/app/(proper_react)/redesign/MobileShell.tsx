@@ -17,8 +17,10 @@ import { useL10n } from "../../hooks/l10n";
 import { PageLink } from "./PageLink";
 
 export type Props = {
+  session: Session;
+  monthlySubscriptionUrl: string;
+  yearlySubscriptionUrl: string;
   children: ReactNode;
-  session: Session | null;
 };
 
 export const MobileShell = (props: Props) => {
@@ -100,11 +102,13 @@ export const MobileShell = (props: Props) => {
                 </a>
               </li>
             </ul>
-            {process.env.NEXT_PUBLIC_PREMIUM_ENABLED === "true" && (
-              <div className={styles.premiumCta}>
-                <PremiumBadge user={props.session?.user ?? null} />
-              </div>
-            )}
+            <div className={styles.premiumCta}>
+              <PremiumBadge
+                user={props.session.user}
+                monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+                yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+              />
+            </div>
           </div>
         </nav>
         <div className={styles.content}>{props.children}</div>
