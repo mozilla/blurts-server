@@ -81,7 +81,7 @@ export function createRandomScanResult(
 }
 
 export type RandomBreachOptions = Partial<{
-  dataClasses: Array<(typeof BreachDataTypes)[keyof typeof BreachDataTypes]>;
+  dataClasses: SubscriberBreach["dataClasses"];
   addedDate: Date;
   isResolved: boolean;
   dataClassesEffected: DataClassEffected[];

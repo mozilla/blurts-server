@@ -10,7 +10,7 @@ import {
 } from "../getUserDashboardState";
 import {
   StepLink,
-  getRelevantGuidedSteps,
+  getNextGuidedStep,
 } from "../../../../../../functions/server/getRelevantGuidedSteps";
 import { ProgressCard } from "../../../../../../components/client/ProgressCard";
 import { Button } from "../../../../../../components/server/Button";
@@ -49,24 +49,26 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
   if (tabType === "fixed") {
     return (
       <ProgressCard
-        resolvedByYou={bannerData.dataBreachFixedExposuresNum}
-        autoRemoved={bannerData.dataBrokerFixedNum}
-        totalNumExposures={bannerData.totalExposures}
+        resolvedByYou={
+          bannerData.dataBrokerManuallyResolvedExposuresNum +
+          bannerData.dataBreachFixedExposuresNum
+        }
+        autoRemoved={
+          bannerData.dataBrokerFixedExposuresNum -
+          bannerData.dataBrokerManuallyResolvedExposuresNum +
+          bannerData.dataBrokerInProgressExposuresNum
+        }
+        inProgress={bannerData.dataBrokerInProgressExposuresNum}
+        totalNumExposures={
+          bannerData.dataBreachFixedExposuresNum +
+          bannerData.dataBrokerFixedExposuresNum +
+          bannerData.dataBrokerInProgressExposuresNum
+        }
       />
     );
   }
 
-  const relevantGuidedStep = getRelevantGuidedSteps(
-    stepDeterminationData
-  ).current;
-
-  // There should be a relevant next step for every user (even if it's just
-  // going back to the dashboard), so we can't hit this line in tests (and
-  // shouldn’t be able to in production either):
-  /* c8 ignore next 3 */
-  if (relevantGuidedStep === null) {
-    return null;
-  }
+  const relevantGuidedStep = getNextGuidedStep(stepDeterminationData);
 
   const contentProps = {
     relevantGuidedStep,
@@ -117,8 +119,13 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString(
                 "dashboard-exposures-breaches-scan-progress-description",
                 {
-                  exposures_total_num: bannerData.totalExposures,
-                  data_breach_total_num: bannerData.dataBreachTotalNum,
+                  exposures_unresolved_num:
+                    bannerData.totalExposures -
+                    bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBreachFixedExposuresNum -
+                    bannerData.dataBrokerInProgressExposuresNum,
+                  data_breach_unresolved_num:
+                    bannerData.dataBreachUnresolvedNum,
                 }
               )}
             </p>
@@ -233,8 +240,12 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString(
                 "dashboard-top-banner-protect-your-data-description",
                 {
-                  data_breach_total_num: bannerData.totalExposures,
-                  data_broker_total_num: bannerData.dataBrokerTotalNum,
+                  data_breach_unresolved_num:
+                    bannerData.dataBreachUnresolvedNum,
+                  data_broker_unresolved_num:
+                    bannerData.dataBrokerTotalNum -
+                    bannerData.dataBrokerFixedNum -
+                    bannerData.dataBrokerInProgressNum,
                 }
               )}
             </p>
@@ -257,10 +268,11 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString(
                 "dashboard-top-banner-lets-keep-protecting-description",
                 {
-                  remaining_exposures_total_num:
+                  exposures_unresolved_num:
                     bannerData.totalExposures -
                     bannerData.dataBreachFixedExposuresNum -
-                    bannerData.dataBrokerFixedExposuresNum,
+                    bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBrokerInProgressExposuresNum,
                 }
               )}
             </p>
@@ -310,10 +322,11 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString(
                 "dashboard-top-banner-lets-keep-protecting-description",
                 {
-                  remaining_exposures_total_num:
+                  exposures_unresolved_num:
                     bannerData.totalExposures -
                     bannerData.dataBreachFixedExposuresNum -
-                    bannerData.dataBrokerFixedExposuresNum,
+                    bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBrokerInProgressExposuresNum,
                 }
               )}
             </p>
@@ -391,7 +404,11 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString(
                 "dashboard-top-banner-scan-in-progress-description",
                 {
-                  data_breach_total_num: bannerData.totalExposures,
+                  unresolved_exposures:
+                    bannerData.totalExposures -
+                    bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBreachFixedExposuresNum -
+                    bannerData.dataBrokerInProgressExposuresNum,
                 }
               )}
               <br />
@@ -419,7 +436,11 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString(
                 "dashboard-top-banner-scan-in-progress-description",
                 {
-                  data_breach_total_num: bannerData.totalExposures,
+                  unresolved_exposures:
+                    bannerData.totalExposures -
+                    bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBreachFixedExposuresNum -
+                    bannerData.dataBrokerInProgressExposuresNum,
                 }
               )}
               <br />
