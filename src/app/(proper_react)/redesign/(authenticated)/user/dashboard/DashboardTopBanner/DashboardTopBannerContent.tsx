@@ -321,6 +321,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
           </>
         );
       case "UsUserPremiumOrNonPremiumWithScanUnresolvedExposures":
+      case "UsUserPremiumScanInProgressUnresolvedExposures":
         return (
           <>
             <h3>
@@ -427,36 +428,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 "dashboard-top-banner-scan-in-progress-fix-later-hint"
               )}
             </p>
-          </>
-        );
-      case "UsUserPremiumScanInProgressUnresolvedExposures":
-        return (
-          <>
-            <h3>
-              {l10n.getString("dashboard-top-banner-scan-in-progress-title")}
-            </h3>
-            <p>
-              {l10n.getString(
-                "dashboard-top-banner-scan-in-progress-description",
-                {
-                  unresolved_exposures:
-                    bannerData.totalExposures -
-                    bannerData.dataBrokerFixedExposuresNum -
-                    bannerData.dataBreachFixedExposuresNum -
-                    bannerData.dataBrokerInProgressExposuresNum,
-                }
-              )}
-              <br />
-              <br />
-              {l10n.getString(
-                "dashboard-top-banner-scan-in-progress-fix-now-hint"
-              )}
-            </p>
-            <div className={styles.cta}>
-              <Button href={relevantGuidedStep.href} small variant="primary">
-                {l10n.getString("dashboard-top-banner-scan-in-progress-cta")}
-              </Button>
-            </div>
           </>
         );
       default:
