@@ -103,7 +103,7 @@ maintain backwards compatibility during migrations.
   - Hard to test locally/offline
     - No official emulator, unofficial open-source emulators exist
   - Might be more difficult for external users of open-source
-  - No support for strict ordering
+  - No support for strict ordering (which is not a requirement for Monitor at this time)
     - https://cloud.google.com/tasks/docs/common-pitfalls
 
 ### [GCP Pub/Sub](https://cloud.google.com/pubsub/docs/overview)
