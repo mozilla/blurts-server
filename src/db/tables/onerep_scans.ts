@@ -189,4 +189,5 @@ export {
   getScansCountForProfile,
   isOnerepScanResultForSubscriber,
   markOnerepScanResultAsResolved,
+  getScansCountForProfile,
 };

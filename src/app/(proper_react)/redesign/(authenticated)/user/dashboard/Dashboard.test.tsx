@@ -53,6 +53,17 @@ function getRelevantBannerContentElement(elements: HTMLElement[]) {
   )[0];
 }
 
+jest.mock("../../../../../components/client/DataBrokerImage", () => {
+  return {
+    // Mock this with an empty React component. Otherwise, tests will complain:
+    // > Warning: A suspended resource finished loading inside a test, but the
+    // > event was not wrapped in act(...).
+    // > When testing, code that resolves suspended data should be wrapped into
+    // > act(...)
+    DataBrokerImage: () => null,
+  };
+});
+
 it("passes the axe accessibility test suite for DashboardNonUsNoBreaches", async () => {
   const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
   const { container } = render(<ComposedDashboard />);

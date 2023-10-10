@@ -478,7 +478,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               <br />
               <br />
               {l10n.getString(
-                "dashboard-top-banner-scan-in-progress-fix-now-hint"
+                "dashboard-top-banner-scan-in-progress-no-results-info"
               )}
             </p>
             <div className={styles.cta}>
