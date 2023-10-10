@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { bearerToken } from "../../../utils/auth";
 
 import { PubSub } from "@google-cloud/pubsub";
-import { isFlagEnabled } from "../../../../functions/server/featureFlags";
+import { getFlagsEnabledForEveryone } from "../../../../../db/tables/featureFlags";
 
 const projectId = process.env.GCP_PUBSUB_PROJECT_ID;
 const topicName = process.env.GCP_PUBSUB_TOPIC_NAME;
@@ -21,8 +21,9 @@ const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
 export async function POST(req: NextRequest) {
   let pubsub;
   let json;
+  const enabledFlags = await getFlagsEnabledForEveryone();
   try {
-    if (!(await isFlagEnabled("HibpBreachNotifications"))) {
+    if (!enabledFlags.includes("HibpBreachNotifications")) {
       console.info("Feature flag not enabled: HibpBreachNotifications");
       return NextResponse.json({}, { status: 429 });
     }

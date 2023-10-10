@@ -28,6 +28,57 @@ async function getAllFeatureFlags() {
     .returning("*");
 }
 
+/** Add any feature flag you want to refer to in the code here */
+export type FeatureFlagName =
+  | "FreeBrokerScan"
+  | "PremiumBrokerRemoval"
+  | "FalseDoorTest"
+  | "HibpBreachNotifications";
+
+/**
+ * Get all feature flags that are enabled for everyone
+ *
+ * If you have a user that is logged in, it is recommended to use
+ * [[getFlagsEnabledForEmail]], which also returns flags that are enabled for
+ * that user specifically.
+ *
+ * @returns A list of feature flags that are enabled for everyone
+ */
+export async function getFlagsEnabledForEveryone(): Promise<FeatureFlagName[]> {
+  const enabledFlagNames = await knex("feature_flags")
+    .select("name")
+    .where("deleted_at", null)
+    .and.where("expired_at", null)
+    .and.where("is_enabled", true)
+    .and.whereRaw("ARRAY_LENGTH(allow_list, 1) IS NULL")
+    .orderBy("created_at", "desc");
+
+  return enabledFlagNames.map((row) => row.name as FeatureFlagName);
+}
+
+/**
+ * Get all feature flags that are enabled for the user with a given email address
+ *
+ * This returns a list of all the feature flags that are enabled for everyone,
+ * and those that are enabled for just the user whose email is given.
+ *
+ * @param email Email address of the current user
+ * @returns A list of feature flags that are enabled for this user
+ */
+export async function getFlagsEnabledForEmail(
+  email: string
+): Promise<FeatureFlagName[]> {
+  const enabledFlagNames = await knex("feature_flags")
+    .select("name")
+    .where("deleted_at", null)
+    .and.where("expired_at", null)
+    .and.where("is_enabled", true)
+    .and.whereRaw("ARRAY_LENGTH(allow_list, 1) IS NULL")
+    .orWhereRaw("? = ANY(allow_list)", email);
+
+  return enabledFlagNames.map((row) => row.name as FeatureFlagName);
+}
+
 async function getFeatureFlagByName(name: string) {
   log.info("getFeatureFlagByName", name);
   const res = await knex("feature_flags").where("name", name);
