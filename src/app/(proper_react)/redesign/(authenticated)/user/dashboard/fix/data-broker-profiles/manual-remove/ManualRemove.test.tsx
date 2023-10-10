@@ -12,6 +12,17 @@ jest.mock("../../../../../../../../functions/server/l10n");
 
 import Meta, { ManualRemoveViewStory } from "./ManualRemove.stories";
 
+jest.mock("../../../../../../../../components/client/DataBrokerImage", () => {
+  return {
+    // Mock this with an empty React component. Otherwise, tests will complain:
+    // > Warning: A suspended resource finished loading inside a test, but the
+    // > event was not wrapped in act(...).
+    // > When testing, code that resolves suspended data should be wrapped into
+    // > act(...)
+    DataBrokerImage: () => null,
+  };
+});
+
 it("passes the axe accessibility test suite", async () => {
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
   const { container } = render(<ComposedManualRemoveView />);

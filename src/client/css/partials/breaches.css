@@ -221,6 +221,7 @@
 .breach-row .breach-company .breach-logo,
 .breach-row .breach-company img {
   height: 1.5rem;
+  width: 1.5rem;
   display: inline-block;
   vertical-align: bottom;
   margin-right: var(--padding-xs);
