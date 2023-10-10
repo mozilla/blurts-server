@@ -1,8 +1,8 @@
 # Use queues for more resilient backend services
 
-- Status: proposed
-- Deciders: TODO
-- Date: 2023-04-06
+- Status: Accepted
+- Deciders: @mansaj, @csadilek
+- Date: 2023-10-10
 
 ## Context and Problem Statement
 
