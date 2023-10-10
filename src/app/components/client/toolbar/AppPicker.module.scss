@@ -43,10 +43,6 @@
     top: 0;
     transform: translateY(-50%) rotate(45deg);
     width: $tooltip-size;
-
-    @media screen and (max-width: $screen-md) {
-      right: calc($button-size * 0.5);
-    }
   }
 
   .appPickerHeading {
