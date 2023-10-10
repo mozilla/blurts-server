@@ -207,7 +207,7 @@ dashboard-exposures-filter-reset = Reset
 dashboard-top-banner-scan-in-progress-title = Your scan is still in progress
 # Variables:
 # $unresolved_exposures is the total number of unresolved exposures the user has.
-dashboard-top-banner-scan-in-progress-description =
+dashboard-top-banner-scan-in-progress-unresolved-description =
   { $unresolved_exposures ->
       [one] We found { $unresolved_exposures } exposure so far, but we’re still scanning sites that sell your personal info. This should be done within a few minutes.
       *[other] We found { $unresolved_exposures } exposures so far, but we’re still scanning sites that sell your personal info. This should be done within a few minutes.
@@ -270,6 +270,14 @@ dashboard-top-banner-your-data-is-protected-all-fixed-description =
   { $starting_exposure_total_num ->
     [one] Great work, { $starting_exposure_total_num } exposure of your data is fixed! Upgrade to { -brand-premium } and we’ll continue to monitor for new exposures. Plus, we’ll automatically remove your info from any sites that are selling it.
     *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed! Upgrade to { -brand-premium } and we’ll continue to monitor for new exposures. Plus, we’ll automatically remove your info from any sites that are selling it.
+  }
+
+# Variables:
+# $starting_exposure_total_num is the number of exposures the user has resolved.
+dashboard-top-banner-your-data-scan-in-progress-all-fixed-description =
+  { $starting_exposure_total_num ->
+    [one] Great work fixing { $starting_exposure_total_num } exposure so far! We’re still scanning sites that sell your personal info This should be done within a few minutes.
+    *[other] Great work fixing { $starting_exposure_total_num } exposures so far! We’re still scanning sites that sell your personal info This should be done within a few minutes.
   }
 dashboard-top-banner-your-data-is-protected-all-fixed-cta = Get continuous protection
 dashboard-top-banner-non-us-no-exposures-found-description = Great news! We searched all known data breaches and found no exposures. We’ll keep monitoring your email address and will alert you if a new breach occurs.
