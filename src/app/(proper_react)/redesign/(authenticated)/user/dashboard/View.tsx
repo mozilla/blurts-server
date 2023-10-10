@@ -52,6 +52,7 @@ export type Props = {
   isEligibleForPremium: boolean;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  scanCount: number;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -82,8 +83,9 @@ export const View = (props: Props) => {
     },
   ];
   const breachesDataArray = props.userBreaches.flat();
-  const scanInProgress =
-    props.userScanData.scan?.onerep_scan_status === "in_progress";
+  const initialScanInProgress =
+    props.userScanData.scan?.onerep_scan_status === "in_progress" &&
+    props.scanCount === 1;
 
   // Merge exposure cards
   const combinedArray = [...breachesDataArray, ...props.userScanData.results];
@@ -192,7 +194,7 @@ export const View = (props: Props) => {
       );
     }
 
-    if (scanInProgress && !noUnresolvedExposures) {
+    if (initialScanInProgress && !noUnresolvedExposures) {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-breaches-scan-progress-description",
         {
@@ -204,7 +206,7 @@ export const View = (props: Props) => {
           data_breach_unresolved_num: dataBreachUnresolvedNum,
         }
       );
-    } else if (scanInProgress) {
+    } else if (initialScanInProgress) {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-no-breaches-scan-progress-description"
       );
@@ -249,7 +251,7 @@ export const View = (props: Props) => {
   );
 
   const getZeroStateIndicator = () => {
-    if (scanInProgress) {
+    if (initialScanInProgress) {
       return (
         <>
           <Image src={ScanProgressIllustration} alt="" />
@@ -298,7 +300,7 @@ export const View = (props: Props) => {
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           tabType={selectedTab}
-          scanInProgress={scanInProgress}
+          scanInProgress={initialScanInProgress}
           isPremiumUser={hasPremium(props.user)}
           isEligibleForPremium={canSubscribeToPremium({
             user: props.user,

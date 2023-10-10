@@ -10,7 +10,10 @@ import { authOptions } from "../../../../../api/utils/auth";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../functions/server/getUserBreaches";
 import { canSubscribeToPremium } from "../../../../../functions/universal/user";
-import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
+import {
+  getLatestOnerepScanResults,
+  getScansCountForProfile,
+} from "../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 
 import { isFlagEnabled } from "../../../../../functions/server/featureFlags";
@@ -38,6 +41,9 @@ export default async function DashboardPage() {
   }
 
   const latestScan = await getLatestOnerepScanResults(profileId);
+  const scanCount = await getScansCountForProfile(
+    session.user.subscriber?.onerep_profile_id as number
+  );
   const subBreaches = await getSubscriberBreaches(session.user);
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(
@@ -69,6 +75,7 @@ export default async function DashboardPage() {
       featureFlagsEnabled={featureFlagsEnabled}
       monthlySubscriptionUrl={monthlySubscriptionUrl}
       yearlySubscriptionUrl={yearlySubscriptionUrl}
+      scanCount={scanCount}
     />
   );
 }

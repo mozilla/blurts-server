@@ -118,16 +118,20 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   ];
 
   const scanData: LatestOnerepScanData = { scan: null, results: [] };
+  let scanCount = 0;
 
   if (props.countryCode === "us") {
     if (props.brokers && props.brokers !== "no-scan") {
-      scanData.scan =
+      const scanInProgress =
         props.brokers === "emtpy-scan-in-progress" ||
         props.brokers === "resolved-scan-in-progress" ||
-        props.brokers === "unresolved-scan-in-progress"
-          ? mockedScanInProgress
-          : mockedScan;
+        props.brokers === "unresolved-scan-in-progress";
 
+      scanData.scan = scanInProgress ? mockedScanInProgress : mockedScan;
+
+      if (scanInProgress) {
+        scanCount = 1;
+      }
       if (props.brokers === "resolved-scan-in-progress") {
         scanData.results = mockedInProgressScanResults;
       }
@@ -177,6 +181,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           }}
           monthlySubscriptionUrl={""}
           yearlySubscriptionUrl={""}
+          scanCount={scanCount}
         />
       </Shell>
     </CountryCodeProvider>

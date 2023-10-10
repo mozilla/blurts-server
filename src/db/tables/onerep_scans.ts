@@ -168,12 +168,25 @@ async function getScansCount(
     .andWhere("onerep_scan_reason", scanReason);
 }
 
+async function getScansCountForProfile(
+  onerepProfileId: number
+): Promise<number> {
+  return parseInt(
+    ((
+      await knex("onerep_scans")
+        .count("id")
+        .where("onerep_profile_id", onerepProfileId)
+    )?.[0]?.["count"] as string) || "0"
+  );
+}
+
 export {
   getLatestOnerepScanResults,
   setOnerepProfileId,
   setOnerepManualScan,
   addOnerepScanResults,
   getScansCount,
+  getScansCountForProfile,
   isOnerepScanResultForSubscriber,
   markOnerepScanResultAsResolved,
 };
