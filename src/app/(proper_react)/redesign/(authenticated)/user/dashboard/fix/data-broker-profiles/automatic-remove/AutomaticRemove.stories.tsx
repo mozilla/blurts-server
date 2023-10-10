@@ -4,7 +4,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { OnerepScanRow } from "knex/types/tables";
-import { ManualRemoveView } from "./ManualRemoveView";
+import { AutomaticRemoveView } from "./AutomaticRemoveView";
 import {
   createRandomBreach,
   createRandomScanResult,
@@ -12,9 +12,7 @@ import {
 } from "../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../Shell";
 import { getEnL10nSync } from "../../../../../../../../functions/server/mockL10n";
-import { FixView } from "../../FixView";
 import { LatestOnerepScanData } from "../../../../../../../../../db/tables/onerep_scans";
-import { GuidedExperienceBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 
 const mockedScan: OnerepScanRow = {
   created_at: new Date(1998, 2, 31),
@@ -34,25 +32,6 @@ const mockedScanData: LatestOnerepScanData = {
 };
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
 
-const mockedBreachSummary: GuidedExperienceBreaches = {
-  emails: [],
-  highRisk: {
-    bankBreaches: [],
-    creditCardBreaches: [],
-    pinBreaches: [],
-    ssnBreaches: [],
-  },
-  passwordBreaches: {
-    passwords: [],
-    securityQuestions: [],
-  },
-  securityRecommendations: {
-    emailAddress: [],
-    IPAddress: [],
-    phoneNumber: [],
-  },
-};
-
 const user = createUserWithPremiumSubscription();
 
 const mockedSession = {
@@ -60,15 +39,15 @@ const mockedSession = {
   user: user,
 };
 
-const meta: Meta<typeof ManualRemoveView> = {
-  title: "Pages/Guided resolution/1c. Manually resolve brokers",
-  component: ManualRemoveView,
+const meta: Meta<typeof AutomaticRemoveView> = {
+  title: "Pages/Guided resolution/1d. Automatically resolve brokers",
+  component: AutomaticRemoveView,
 };
 export default meta;
-type Story = StoryObj<typeof ManualRemoveView>;
+type Story = StoryObj<typeof AutomaticRemoveView>;
 
 export const ManualRemoveViewStory: Story = {
-  name: "1c. Manually resolve brokers",
+  name: "1d. Automatically resolve brokers",
   render: () => {
     return (
       <Shell
@@ -78,15 +57,19 @@ export const ManualRemoveViewStory: Story = {
         monthlySubscriptionUrl=""
         yearlySubscriptionUrl=""
       >
-        <FixView
-          breaches={mockedBreachSummary}
-          userScannedResults={mockedScanData.results}
-        >
-          <ManualRemoveView
-            scanData={mockedScanData}
-            breaches={mockedBreaches}
-          />
-        </FixView>
+        <AutomaticRemoveView
+          data={{
+            countryCode: "us",
+            latestScanData: mockedScanData,
+            subscriberBreaches: mockedBreaches,
+            user: mockedSession.user,
+          }}
+          subscriberEmails={[]}
+          nextStepHref="/redesign/user/dashboard/fix/high-risk-data-breaches/social-security-number"
+          currentSection="data-broker-profiles"
+          monthlySubscriptionUrl=""
+          yearlySubscriptionUrl=""
+        />
       </Shell>
     );
   },

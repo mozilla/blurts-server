@@ -340,10 +340,6 @@ export async function isEligibleForPremium(
     return false;
   }
 
-  if (countryCode !== "us") {
-    return false;
-  }
-
   if (!user?.subscriber?.id) {
     throw new Error("No session");
   }

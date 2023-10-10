@@ -47,6 +47,7 @@ CO01:
             - monitor-several-emails
             - rec-bank-acc-subhead
             - rec-cc-subhead
+            - dashboard-top-banner-monitor-more-cta
         files: []
 # Variable comments
 VC:
