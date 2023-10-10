@@ -27,6 +27,7 @@ import {
 } from "../../../utils/subscriberBreaches";
 import { FallbackLogo } from "../server/BreachLogo";
 import { BreachDataClass, DataBrokerDataClass } from "./ExposureCardDataClass";
+import { DataBrokerImage } from "./DataBrokerImage";
 
 export type Exposure = OnerepScanResultRow | SubscriberBreach;
 
@@ -53,7 +54,6 @@ export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
 };
 
 export type ScanResultCardProps = {
-  exposureImg?: StaticImageData;
   scanResult: OnerepScanResultRow;
   locale: string;
   isPremiumBrokerRemovalEnabled: boolean;
@@ -61,14 +61,11 @@ export type ScanResultCardProps = {
   isExpanded?: boolean;
 };
 const ScanResultCard = (props: ScanResultCardProps) => {
-  const { exposureImg, scanResult, locale, isPremiumBrokerRemovalEnabled } =
-    props;
-
+  const { scanResult, locale, isPremiumBrokerRemovalEnabled } = props;
   const l10n = useL10n();
   const [exposureCardExpanded, setExposureCardExpanded] = useState(
     props.isExpanded ?? false
   );
-
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
@@ -145,20 +142,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
             <dd
               className={`${styles.hideOnMobile} ${styles.exposureImageWrapper}`}
             >
-              {/* While logo is not yet set, the fallback image is the first character of the exposure name */}
-              {
-                // TODO: Add unit test when changing this code:
-                /* c8 ignore next 7 */
-                exposureImg ? (
-                  <Image
-                    className={styles.exposureImage}
-                    alt=""
-                    src={exposureImg}
-                  />
-                ) : (
-                  <FallbackLogo name={scanResult.data_broker} />
-                )
-              }
+              <DataBrokerImage name={scanResult.data_broker} />
             </dd>
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-company")}

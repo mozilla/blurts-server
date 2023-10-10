@@ -4,7 +4,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { OnerepScanRow } from "knex/types/tables";
-import { ManualRemoveView } from "./ManualRemoveView";
+import { StartFreeScanView } from "./StartFreeScanView";
 import {
   createRandomBreach,
   createRandomScanResult,
@@ -39,15 +39,15 @@ const mockedSession = {
   user: user,
 };
 
-const meta: Meta<typeof ManualRemoveView> = {
-  title: "Pages/Guided resolution/1c. Manually resolve brokers",
-  component: ManualRemoveView,
+const meta: Meta<typeof StartFreeScanView> = {
+  title: "Pages/Guided resolution/1a. Free scan",
+  component: StartFreeScanView,
 };
 export default meta;
-type Story = StoryObj<typeof ManualRemoveView>;
+type Story = StoryObj<typeof StartFreeScanView>;
 
 export const ManualRemoveViewStory: Story = {
-  name: "1c. Manually resolve brokers",
+  name: "1a. Free scan",
   render: () => {
     return (
       <Shell
@@ -57,11 +57,13 @@ export const ManualRemoveViewStory: Story = {
         monthlySubscriptionUrl=""
         yearlySubscriptionUrl=""
       >
-        <ManualRemoveView
-          scanData={mockedScanData}
-          breaches={mockedBreaches}
-          countryCode="us"
-          user={mockedSession.user}
+        <StartFreeScanView
+          data={{
+            countryCode: "us",
+            latestScanData: mockedScanData,
+            subscriberBreaches: mockedBreaches,
+            user: mockedSession.user,
+          }}
           subscriberEmails={[]}
         />
       </Shell>
