@@ -244,7 +244,7 @@ $text-body-sm: 400 clamp(12px, 1.14svw, 14px) / 1.5 var(--font-inter),
 $text-body-xs: 400 12px / 1.5 var(--font-inter), sans-serif;
 
 $tab-bar-height: 100px;
-$width-first-column-filter-bar: 50px;
+$width-first-column-filter-bar: 90px;
 
 // Question circle mark for explainer dialogs
 @mixin question-mark-circle-btn {
