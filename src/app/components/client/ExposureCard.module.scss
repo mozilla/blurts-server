@@ -50,6 +50,10 @@
       gap: $layout-md;
     }
 
+    .dataBrokerLogo {
+      object-fit: contain;
+    }
+
     .fallbackLogo {
       display: flex;
       align-items: center;
@@ -93,7 +97,8 @@
         }
 
         &.hideOnMobile {
-          display: block;
+          display: flex;
+          justify-content: center;
         }
       }
 
