@@ -251,35 +251,33 @@ export const View = (props: Props) => {
   const getZeroStateIndicator = () => {
     if (scanInProgress) {
       return (
-        <div className={styles.zeroStateIndicator}>
+        <>
           <Image src={ScanProgressIllustration} alt="" />
           <strong>
             {l10n.getString("dashboard-exposures-scan-progress-label")}
           </strong>
           {freeScanCta}
-        </div>
-      );
-    }
-
-    if (!hasUnresolvedExposures && !hasFixedExposures) {
-      return (
-        <div className={styles.zeroStateIndicator}>
-          <Image src={NoExposuresIllustration} alt="" />
-          <strong>{l10n.getString("dashboard-no-exposures-label")}</strong>
-        </div>
+        </>
       );
     }
 
     if (!hasUnresolvedExposures && hasFixedExposures) {
       return (
-        <div className={styles.zeroStateIndicator}>
+        <>
           <Image src={AllFixedIllustration} alt="" />
           <strong>
             {l10n.getString("dashboard-exposures-all-fixed-label")}
           </strong>
-        </div>
+        </>
       );
     }
+
+    return (
+      <>
+        <Image src={NoExposuresIllustration} alt="" />
+        <strong>{l10n.getString("dashboard-no-exposures-label")}</strong>
+      </>
+    );
   };
 
   return (
@@ -339,7 +337,9 @@ export const View = (props: Props) => {
           />
         </div>
         {noUnresolvedExposures ? (
-          getZeroStateIndicator()
+          <div className={styles.zeroStateIndicator}>
+            {getZeroStateIndicator()}
+          </div>
         ) : (
           <ul className={styles.exposureList}>{exposureCardElems}</ul>
         )}
