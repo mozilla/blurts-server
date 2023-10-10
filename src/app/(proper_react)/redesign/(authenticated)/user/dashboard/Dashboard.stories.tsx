@@ -163,10 +163,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             countryCode: props.countryCode,
           })}
           isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
-          featureFlagsEnabled={{
-            FreeBrokerScan: true,
-            PremiumBrokerRemoval: true,
-          }}
+          enabledFeatureFlags={["FreeBrokerScan", "PremiumBrokerRemoval"]}
           monthlySubscriptionUrl={""}
           yearlySubscriptionUrl={""}
           scanCount={scanCount}
