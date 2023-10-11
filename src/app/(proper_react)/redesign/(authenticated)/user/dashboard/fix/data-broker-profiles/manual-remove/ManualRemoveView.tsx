@@ -26,6 +26,7 @@ import { FixView } from "../../FixView";
 export type Props = {
   scanData: LatestOnerepScanData;
   breaches: SubscriberBreach[];
+  isPremiumUser: boolean;
   user: Session["user"];
   countryCode: string;
   subscriberEmails: string[];
@@ -129,6 +130,7 @@ export function ManualRemoveView(props: Props) {
                   key={scanResult.onerep_scan_result_id}
                   scanResult={scanResult}
                   isExpanded={index === 0}
+                  isPremiumUser={props.isPremiumUser}
                 />
               );
             })}
