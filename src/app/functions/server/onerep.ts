@@ -14,7 +14,7 @@ import { getLatestOnerepScanResults } from "../../../db/tables/onerep_scans";
 import { RemovalStatus } from "../universal/scanResult.js";
 import {
   FeatureFlagName,
-  getFlagsEnabledForEmail,
+  getEnabledFeatureFlags,
 } from "../../../db/tables/featureFlags";
 const log = mozlog("external.onerep");
 
@@ -319,7 +319,7 @@ export async function isEligibleForFreeScan(
     throw new Error("No session");
   }
 
-  const enabledFlags = await getFlagsEnabledForEmail(user.email);
+  const enabledFlags = await getEnabledFeatureFlags({ email: user.email });
   if (!enabledFlags.includes("FreeBrokerScan")) {
     return false;
   }

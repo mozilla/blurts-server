@@ -11,7 +11,7 @@ import { getCountryCode } from "../functions/server/getCountryCode";
 import { headers } from "next/headers";
 import AppConstants from "../../appConstants";
 import { getNonce } from "./functions/server/getNonce";
-import { getFlagsEnabledForEveryone } from "../../db/tables/featureFlags";
+import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
 
 export default async function MigrationLayout({
   children,
@@ -21,7 +21,7 @@ export default async function MigrationLayout({
   const headersList = headers();
   const l10nBundles = getL10nBundles();
   const countryCode = getCountryCode(headersList);
-  const enabledFlags = await getFlagsEnabledForEveryone();
+  const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
   const waitlistLink = AppConstants.FALSE_DOOR_TEST_LINK_PHASE_ONE;
   const acceptLanguage = headersList.get("Accept-Language");
 
