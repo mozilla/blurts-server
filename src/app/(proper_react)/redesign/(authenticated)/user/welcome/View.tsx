@@ -25,14 +25,14 @@ export type Props = {
   user: Session["user"];
   dataBrokerCount: number;
   breachesTotalCount: number;
-  stepId?: StepId;
+  stepId: StepId;
 };
 
 export const View = ({
   user,
   dataBrokerCount,
   breachesTotalCount,
-  stepId = "getStarted",
+  stepId,
 }: Props) => {
   const l10n = useL10n();
   const [currentStep, setCurrentStep] = useState<StepId>(stepId);

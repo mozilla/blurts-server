@@ -18,15 +18,22 @@ export default async function Onboarding() {
     return <SignInButton autoSignIn={true} />;
   }
 
+  const headersList = headers();
   const userIsEligible = await isEligibleForFreeScan(
     session.user,
-    getCountryCode(headers())
+    getCountryCode(headersList)
   );
   if (!userIsEligible) {
     return redirect("/");
   }
 
   const allBreachesCount = await getAllBreachesCount();
+  const referer = headersList.get("referer");
+  const intialStepId = referer?.includes(
+    "/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan"
+  )
+    ? "enterInfo"
+    : "getStarted";
 
   return (
     <View
@@ -36,6 +43,7 @@ export default async function Onboarding() {
         10
       )}
       breachesTotalCount={allBreachesCount}
+      stepId={intialStepId}
     />
   );
 }
