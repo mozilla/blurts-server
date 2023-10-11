@@ -13,14 +13,12 @@ export function hasPremium(user?: Session["user"]): boolean {
 /* c8 ignore stop */
 
 // TODO: Add unit test when changing this code:
-/* c8 ignore start */
 export function canSubscribeToPremium(params: {
   user?: Session["user"];
   countryCode: string;
 }): boolean {
-  return hasPremium(params.user) && params.countryCode.toLowerCase() === "us";
+  return !hasPremium(params.user) && params.countryCode.toLowerCase() === "us";
 }
-/* c8 ignore stop */
 
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */

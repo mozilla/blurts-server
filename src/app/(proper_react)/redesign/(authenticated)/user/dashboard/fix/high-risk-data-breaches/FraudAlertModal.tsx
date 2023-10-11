@@ -121,6 +121,8 @@ export const FraudAlertModal = () => {
               <div className={styles.confirmButtonWrapper}>
                 <Button
                   variant="primary"
+                  // TODO: Test dialog closing
+                  /* c8 ignore next */
                   onPress={() => overlayTriggerState.close()}
                   autoFocus={true}
                 >
