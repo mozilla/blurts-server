@@ -29,7 +29,7 @@ export function AutomaticRemoveView(props: Props) {
     props;
 
   return (
-    <FixView {...fixViewProps}>
+    <FixView {...fixViewProps} hideNavigation>
       <div>
         <div className={`${styles.content} ${styles.contentAutomaticRemove}`}>
           <h3>
