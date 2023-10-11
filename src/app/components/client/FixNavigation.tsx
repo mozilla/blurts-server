@@ -6,114 +6,181 @@
 
 import Image from "next/image";
 import styles from "./FixNavigation.module.scss";
-import { useState } from "react";
+import stepDataBrokerProfilesIcon from "../../(proper_react)/redesign/(authenticated)/user/dashboard/fix/images/step-counter-data-broker-profiles.svg";
+import stepHighRiskDataBreachesIcon from "../../(proper_react)/redesign/(authenticated)/user/dashboard/fix/images/step-counter-high-risk.svg";
+import stepLeakedPasswordsIcon from "../../(proper_react)/redesign/(authenticated)/user/dashboard/fix/images/step-counter-leaked-passwords.svg";
+import stepSecurityRecommendationsIcon from "../../(proper_react)/redesign/(authenticated)/user/dashboard/fix/images/step-counter-security-recommendations.svg";
 import { useL10n } from "../../hooks/l10n";
-
-type StepId =
-  | "dataBrokerProfiles"
-  | "highRiskDataBreaches"
-  | "leakedPasswords"
-  | "securityRecommendations";
+import { StepDeterminationData } from "../../functions/server/getRelevantGuidedSteps";
+import { getGuidedExperienceBreaches } from "../../functions/universal/guidedExperienceBreaches";
 
 export type Props = {
-  navigationItems: Array<NavigationItem>;
-  pathname: string;
+  currentSection:
+    | "data-broker-profiles"
+    | "high-risk-data-breach"
+    | "leaked-passwords"
+    | "security-recommendations";
+  subscriberEmails: string[];
+  data: StepDeterminationData;
 };
 
 export const FixNavigation = (props: Props) => {
-  // TODO: Add logic to abstract away from hard-coded dataBrokerProfiles section
-  const [showDataBrokerProfiles] = useState(true);
-  const [currentStep, setCurrentStep] = useState<StepId>("dataBrokerProfiles");
-
-  if (!showDataBrokerProfiles) {
-    setCurrentStep("highRiskDataBreaches");
-  }
-
   return (
     <nav className={styles.stepsWrapper}>
       <Steps
-        navigationItems={props.navigationItems}
-        showDataBrokerProfiles={showDataBrokerProfiles}
-        currentStep={currentStep}
-        pathname={props.pathname}
+        currentSection={props.currentSection}
+        subscriberEmails={props.subscriberEmails}
+        data={props.data}
       />
     </nav>
   );
 };
 
-export interface NavigationItem {
-  key: string;
-  labelStringId: string;
-  href: string;
-  status: string | number;
-  currentStepId: string;
-  imageId: string;
-}
-
 export const Steps = (props: {
-  showDataBrokerProfiles: boolean;
-  currentStep: StepId;
-  navigationItems: Array<NavigationItem>;
-  pathname: string;
+  currentSection: Props["currentSection"];
+  subscriberEmails: string[];
+  data: StepDeterminationData;
 }) => {
   const l10n = useL10n();
 
-  function calculateActiveProgressBarPosition(pathname: string) {
-    if (pathname === "/redesign/user/dashboard/fix/high-risk-data-breaches") {
-      return styles.beginHighRiskDataBreaches;
-    } else if (
-      pathname.startsWith(
-        "/redesign/user/dashboard/fix/high-risk-data-breaches"
-      )
-    ) {
-      return styles.duringHighRiskDataBreaches;
-    } else if (pathname === "/redesign/user/dashboard/fix/leaked-passwords") {
-      return styles.beginLeakedPasswords;
-    } else if (
-      pathname.startsWith("/redesign/user/dashboard/fix/leaked-passwords")
-    ) {
-      return styles.duringLeakedPasswords;
-    } else if (
-      pathname === "/redesign/user/dashboard/fix/security-recommendations"
-    ) {
-      return styles.beginSecurityRecommendations;
-    } else {
-      return "";
-    }
-  }
+  const breachesByClassification = getGuidedExperienceBreaches(
+    props.data.subscriberBreaches,
+    props.subscriberEmails
+  );
+  const totalHighRiskBreaches = Object.values(
+    breachesByClassification.highRisk
+  ).reduce((acc, array) => acc + array.length, 0);
+  const totalDataBrokerProfiles =
+    // No tests simulate the absence of scan data yet:
+    /* c8 ignore next */
+    props.data.latestScanData?.results.length ?? 0;
+  const totalPasswordBreaches = Object.values(
+    breachesByClassification.passwordBreaches
+  ).reduce((acc, array) => acc + array.length, 0);
+  const totalSecurityRecommendations = Object.values(
+    breachesByClassification.securityRecommendations
+  ).filter((value) => {
+    return value.length > 0;
+  }).length;
 
   return (
     <ul className={styles.steps}>
-      {props.navigationItems.map(
-        ({ key, labelStringId, href, imageId, status }) => (
-          <li
-            key={key}
-            aria-current={props.pathname.includes(href) ? "step" : undefined}
-            className={`${styles.navigationItem} ${
-              props.pathname.includes(href) ? styles.active : ""
-            }`}
-          >
-            <div className={styles.stepIcon}>
-              <Image src={imageId} alt="" width={22} height={22} />
-              {/* // TODO: Add logic to mark icon as checked when step is complete */}
-              {/* <CheckIcon className={styles.checkIcon} alt="" width={22} height={22} />  */}
-            </div>
+      <li
+        aria-current={
+          props.currentSection === "data-broker-profiles" ? "step" : undefined
+        }
+        className={`${styles.navigationItem} ${
+          props.currentSection === "data-broker-profiles" ? styles.active : ""
+        }`}
+      >
+        <div className={styles.stepIcon}>
+          <Image
+            src={stepDataBrokerProfilesIcon}
+            alt=""
+            width={22}
+            height={22}
+          />
+          {/* // TODO: Add logic to mark icon as checked when step is complete */}
+          {/* <CheckIcon className={styles.checkIcon} alt="" width={22} height={22} />  */}
+        </div>
 
-            <div className={styles.stepLabel}>
-              {l10n.getString(labelStringId)} ({status})
-            </div>
-          </li>
-        )
-      )}
+        <div className={styles.stepLabel}>
+          {l10n.getString("fix-flow-nav-data-broker-profiles")} (
+          {totalDataBrokerProfiles})
+        </div>
+      </li>
+      <li
+        aria-current={
+          props.currentSection === "high-risk-data-breach" ? "step" : undefined
+        }
+        className={`${styles.navigationItem} ${
+          props.currentSection === "high-risk-data-breach" ? styles.active : ""
+        }`}
+      >
+        <div className={styles.stepIcon}>
+          <Image
+            src={stepHighRiskDataBreachesIcon}
+            alt=""
+            width={22}
+            height={22}
+          />
+          {/* // TODO: Add logic to mark icon as checked when step is complete */}
+          {/* <CheckIcon className={styles.checkIcon} alt="" width={22} height={22} />  */}
+        </div>
+
+        <div className={styles.stepLabel}>
+          {l10n.getString("fix-flow-nav-high-risk-data-breaches")} (
+          {totalHighRiskBreaches})
+        </div>
+      </li>
+      <li
+        aria-current={
+          props.currentSection === "leaked-passwords" ? "step" : undefined
+        }
+        className={`${styles.navigationItem} ${
+          props.currentSection === "leaked-passwords" ? styles.active : ""
+        }`}
+      >
+        <div className={styles.stepIcon}>
+          <Image src={stepLeakedPasswordsIcon} alt="" width={22} height={22} />
+          {/* // TODO: Add logic to mark icon as checked when step is complete */}
+          {/* <CheckIcon className={styles.checkIcon} alt="" width={22} height={22} />  */}
+        </div>
+
+        <div className={styles.stepLabel}>
+          {l10n.getString("fix-flow-nav-leaked-passwords")} (
+          {totalPasswordBreaches})
+        </div>
+      </li>
+      <li
+        aria-current={
+          props.currentSection === "security-recommendations"
+            ? "step"
+            : undefined
+        }
+        className={`${styles.navigationItem} ${
+          props.currentSection === "security-recommendations"
+            ? styles.active
+            : ""
+        }`}
+      >
+        <div className={styles.stepIcon}>
+          <Image
+            src={stepSecurityRecommendationsIcon}
+            alt=""
+            width={22}
+            height={22}
+          />
+          {/* // TODO: Add logic to mark icon as checked when step is complete */}
+          {/* <CheckIcon className={styles.checkIcon} alt="" width={22} height={22} />  */}
+        </div>
+
+        <div className={styles.stepLabel}>
+          {l10n.getString("fix-flow-nav-security-recommendations")} (
+          {totalSecurityRecommendations})
+        </div>
+      </li>
       <li className={styles.progressBarLineContainer}>
         <div className={styles.progressBarLineWrapper}>
           <div
             className={`${
               styles.activeProgressBarLine
-            } ${calculateActiveProgressBarPosition(props.pathname)}`}
+            } ${calculateActiveProgressBarPosition(props.currentSection)}`}
           ></div>
         </div>
       </li>
     </ul>
   );
 };
+
+function calculateActiveProgressBarPosition(section: Props["currentSection"]) {
+  if (section === "high-risk-data-breach") {
+    return styles.beginHighRiskDataBreaches;
+  } else if (section === "leaked-passwords") {
+    return styles.beginLeakedPasswords;
+  } else if (section === "security-recommendations") {
+    return styles.beginSecurityRecommendations;
+  } else {
+    return "";
+  }
+}

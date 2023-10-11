@@ -7,7 +7,7 @@ import { TabType } from "../View";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { DoughnutChart as Chart } from "../../../../../../components/client/Chart";
 import { DashboardSummary } from "../../../../../../functions/server/dashboard";
-import { InputData as StepDeterminationData } from "../../../../../../functions/server/getRelevantGuidedSteps";
+import { StepDeterminationData } from "../../../../../../functions/server/getRelevantGuidedSteps";
 import { DashboardTopBannerContent } from "./DashboardTopBannerContent";
 
 export type DashboardTopBannerProps = {
@@ -26,11 +26,11 @@ export type DashboardTopBannerProps = {
 
 export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   const l10n = useL10n();
+  const isShowFixed = props.tabType === "fixed";
 
-  const chartDataKey =
-    props.tabType === "fixed"
-      ? "fixedSanitizedExposures"
-      : "sanitizedExposures";
+  const chartDataKey = isShowFixed
+    ? "inProgressFixedSanitizedExposures"
+    : "unresolvedSanitizedExposures";
   const chartData: [string, number][] = props.bannerData[chartDataKey].map(
     (obj) => {
       const [key, value] = Object.entries(obj)[0];
@@ -59,6 +59,8 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
             scanInProgress={props.scanInProgress}
             data={chartData}
             isEligibleForFreeScan={props.isEligibleForFreeScan}
+            isShowFixed={isShowFixed}
+            summary={props.bannerData}
           />
         </div>
       </div>

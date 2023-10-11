@@ -44,17 +44,24 @@ premium-cta-label = Upgrade to { -brand-premium }
 # The number inside <nr> will be displayed in a large font,
 # the label inside <label> will be shown underneath, in a smaller font.
 # Variables:
-#   $nr (number) - Total number of exposures found for the user
+#   $nr (number) - Number of unresolved exposures for the user
 exposure-chart-heading = { $nr ->
   [one] <nr>{ $nr }</nr> <label>exposure</label>
   *[other] <nr>{ $nr }</nr> <label>exposures</label>
 }
+# Variables:
+#   $nr (number) - Number of fixed exposures found for the user
+exposure-chart-heading-fixed = <nr>{ $nr }</nr> <label>Fixed</label>
 exposure-chart-legend-heading-type = Exposure
 exposure-chart-legend-heading-nr = Number
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
 exposure-chart-caption = This chart shows how many times your info is actively exposed.
+# Variables:
+#   $total_fixed_exposures_num (number) - Number of fixed exposures
+#   $total_exposures_num (number) - Number of total exposures
+exposure-chart-caption-fixed = This chart shows the total exposures that are fixed ({ $total_fixed_exposures_num } out of { $total_exposures_num })
 exposure-chart-returning-user-upgrade-prompt = Home address, family members and more are not yet included.
 exposure-chart-returning-user-upgrade-prompt-cta = Start a free scan
 exposure-chart-scan-in-progress-prompt = <b>Scan in progress:</b> address, family members, and more are not yet included.
@@ -199,11 +206,11 @@ dashboard-exposures-filter-reset = Reset
 
 dashboard-top-banner-scan-in-progress-title = Your scan is still in progress
 # Variables:
-# $data_breach_total_num is the total number of data breaches the user has.
+# $unresolved_exposures is the total number of unresolved exposures the user has.
 dashboard-top-banner-scan-in-progress-description =
-  { $data_breach_total_num ->
-      [one] We found { $data_breach_total_num } exposure so far, but we’re still scanning sites that sell your personal info. This should be done within 3 minutes.
-      *[other] We found { $data_breach_total_num } exposures so far, but we’re still scanning sites that sell your personal info. This should be done within 3 minutes.
+  { $unresolved_exposures ->
+      [one] We found { $unresolved_exposures } exposure so far, but we’re still scanning sites that sell your personal info. This should be done within 3 minutes.
+      *[other] We found { $unresolved_exposures } exposures so far, but we’re still scanning sites that sell your personal info. This should be done within 3 minutes.
   }
 dashboard-top-banner-scan-in-progress-fix-now-hint = You can refresh this page then, or start fixing your data breaches now.
 dashboard-top-banner-scan-in-progress-fix-later-hint = You can refresh this page then, or come back later.
@@ -211,9 +218,9 @@ dashboard-top-banner-scan-in-progress-cta = See what’s ready now
 
 dashboard-top-banner-protect-your-data-title = Let’s protect your data
 # Variables:
-# $data_breach_total_num is the total number of data breaches the user has.
-# $data_broker_total_num is the total number of data brokers selling the user’s data.
-dashboard-top-banner-protect-your-data-description = We found your data in { $data_breach_total_num } data breaches and { $data_broker_total_num } sites selling your personal info. We’ll guide you step-by-step on how to fix it.
+# $data_breach_unresolved_num is the unresolved number of data breaches the user has.
+# $data_broker_unresolved_num is the unresolved number of data brokers selling the user’s data.
+dashboard-top-banner-protect-your-data-description = We found your data in { $data_breach_unresolved_num } data breaches and { $data_broker_unresolved_num } sites selling your personal info. We’ll guide you step-by-step on how to fix it.
 dashboard-top-banner-protect-your-data-cta = Let’s fix it
 
 dashboard-top-banner-monitor-protects-your-even-more-title = { -product-short-name } now protects you even more
@@ -237,11 +244,11 @@ dashboard-no-exposures-label = No exposures found
 
 dashboard-top-banner-lets-keep-protecting-title = Let’s keep protecting your data
 # Variables:
-# $remaining_exposures_total_num is the remaining number of exposures the user has to resolve.
+# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
 dashboard-top-banner-lets-keep-protecting-description = 
-  { $remaining_exposures_total_num -> 
-    [one] You still have { $remaining_exposures_total_num } exposure left to fix. Keep going and protect yourself. We’ll guide you step-by-step.
-    *[other] You still have { $remaining_exposures_total_num } exposures left to fix. Keep going and protect yourself. We’ll guide you step-by-step.
+  { $exposures_unresolved_num -> 
+    [one] You still have { $exposures_unresolved_num } exposure left to fix. Keep going and protect yourself. We’ll guide you step-by-step.
+    *[other] You still have { $exposures_unresolved_num } exposures left to fix. Keep going and protect yourself. We’ll guide you step-by-step.
   }
 dashboard-top-banner-lets-keep-protecting-cta = Let’s keep going
 
@@ -266,19 +273,19 @@ dashboard-top-banner-your-data-is-protected-all-fixed-cta = Get continuous prote
 dashboard-top-banner-non-us-no-exposures-found-description = Great news! We searched all known data breaches and found no exposures. We’ll keep monitoring your email address and will alert you if a new breach occurs.
 
 # Variables:
-# $exposures_total_num is the total number of exposures the user has.
-# $data_breach_total_num is the total number of data breaches the user has.
+# $exposures_unresolved_num is the total number of exposures the user has.
+# $data_breach_unresolved_num is the total number of data breaches the user has.
 dashboard-top-banner-non-us-protect-your-data-description = {
-  $exposures_total_num ->
+  $exposures_unresolved_num ->
     [one] {
-      $data_breach_total_num ->
-        [one] We found your data exposed <b>{ $exposures_total_num }</b> time in <b>{ $data_breach_total_num }</b> data breach. We’ll guide you step-by-step on how to fix it.
-        *[other] We found your data exposed <b>{ $exposures_total_num }</b> time in <b>{ $data_breach_total_num }</b> data breaches. We’ll guide you step-by-step on how to fix it.
+      $data_breach_unresolved_num ->
+        [one] We found your data exposed <b>{ $exposures_unresolved_num }</b> time in <b>{ $data_breach_unresolved_num }</b> data breach. We’ll guide you step-by-step on how to fix it.
+        *[other] We found your data exposed <b>{ $exposures_unresolved_num }</b> time in <b>{ $data_breach_unresolved_num }</b> data breaches. We’ll guide you step-by-step on how to fix it.
     }
     *[other] {
-      $data_breach_total_num ->
-        [one] We found your data exposed <b>{ $exposures_total_num }</b> times in <b>{ $data_breach_total_num }</b> data breach. We’ll guide you step-by-step on how to fix it.
-        *[other] We found your data exposed <b>{ $exposures_total_num }</b> times in <b>{ $data_breach_total_num }</b> data breaches. We’ll guide you step-by-step on how to fix it.
+      $data_breach_unresolved_num ->
+        [one] We found your data exposed <b>{ $exposures_unresolved_num }</b> times in <b>{ $data_breach_unresolved_num }</b> data breach. We’ll guide you step-by-step on how to fix it.
+        *[other] We found your data exposed <b>{ $exposures_unresolved_num }</b> times in <b>{ $data_breach_unresolved_num }</b> data breaches. We’ll guide you step-by-step on how to fix it.
     }
 }
 
@@ -293,10 +300,10 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
 dashboard-top-banner-monitor-more-cta = Monitor more emails
 
 # Variables:
-# $exposures_total_num is the total number of exposures the user has.
-# $data_breach_total_num is the total number of data breaches the user has.
-# $data_broker_total_num is the total number of data brokers selling the user’s data.
-dashboard-exposures-area-description = We found your information exposed { $exposures_total_num } times over { $data_breach_total_num } data breaches and { $data_broker_total_num } data broker sites that are selling your personal info.
+# $exposures_unresolved_num is the unresolved number of exposures the user has.
+# $data_breach_unresolved_num is the unresolved number of data breaches the user has.
+# $data_broker_unresolved_num is the unresolved number of data brokers selling the user’s data.
+dashboard-exposures-area-description = We found your information exposed { $exposures_unresolved_num } times over { $data_breach_unresolved_num } data breaches and { $data_broker_unresolved_num } data broker sites that are selling your personal info.
 dashboard-exposures-all-fixed-label = All fixed here!
 
 
@@ -304,19 +311,19 @@ dashboard-exposures-area-headline = View all sites where your info is exposed
 dashboard-fixed-area-headline = View all exposures that are fixed or in-progress
 
 # Variables:
-# $exposures_total_num is the total number of exposures the user has.
-# $data_breach_total_num is the total number of data breaches the user has.
+# $exposures_unresolved_num is the unresolved number of exposures the user has.
+# $data_breach_unresolved_num is the unresolved number of data breaches the user has.
 dashboard-exposures-breaches-scan-progress-description = {
-  $exposures_total_num ->
+  $exposures_unresolved_num ->
     [one] {
-      $data_breach_total_num ->
-        [one] We found your information exposed { $exposures_total_num } time in { $data_breach_total_num } data breach. We’re still scanning sites that may be selling your personal info.
-        *[other] We found your information exposed { $exposures_total_num } time in { $data_breach_total_num } data breaches. We’re still scanning sites that may be selling your personal info.
+      $data_breach_unresolved_num ->
+        [one] We found your information exposed { $exposures_unresolved_num } time in { $data_breach_unresolved_num } data breach. We’re still scanning sites that may be selling your personal info.
+        *[other] We found your information exposed { $exposures_unresolved_num } time in { $data_breach_unresolved_num } data breaches. We’re still scanning sites that may be selling your personal info.
     }
     *[other] {
-      $data_breach_total_num ->
-        [one] We found your information exposed { $exposures_total_num } times in { $data_breach_total_num } data breach. We’re still scanning sites that may be selling your personal info.
-        *[other] We found your information exposed { $exposures_total_num } times in { $data_breach_total_num } data breaches. We’re still scanning sites that may be selling your personal info.
+      $data_breach_unresolved_num ->
+        [one] We found your information exposed { $exposures_unresolved_num } times in { $data_breach_unresolved_num } data breach. We’re still scanning sites that may be selling your personal info.
+        *[other] We found your information exposed { $exposures_unresolved_num } times in { $data_breach_unresolved_num } data breaches. We’re still scanning sites that may be selling your personal info.
     }
 }
 dashboard-exposures-no-breaches-scan-progress-description = We didn’t find any data breaches, but we’re still scanning sites that may be selling your personal info.

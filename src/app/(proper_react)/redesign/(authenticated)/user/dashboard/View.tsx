@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Image from "next/image";
 import { Session } from "next-auth";
 import { OnerepScanResultRow } from "knex/types/tables";
@@ -38,6 +38,7 @@ import { Button } from "../../../../../components/server/Button";
 import AllFixedIllustration from "./images/dashboard-all-fixed.svg";
 import NoExposuresIllustration from "./images/dashboard-no-exposures.svg";
 import ScanProgressIllustration from "./images/scan-illustration.svg";
+import { CountryCodeContext } from "../../../../../../contextProviders/country-code";
 
 export type Props = {
   featureFlagsEnabled: Pick<
@@ -49,7 +50,6 @@ export type Props = {
   userScanData: LatestOnerepScanData;
   isEligibleForFreeScan: boolean;
   isEligibleForPremium: boolean;
-  countryCode: string;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
 };
@@ -63,6 +63,7 @@ export type TabData = {
 
 export const View = (props: Props) => {
   const l10n = useL10n();
+  const countryCode = useContext(CountryCodeContext);
 
   const initialFilterState: FilterState = {
     exposureType: "show-all-exposure-type",
@@ -163,8 +164,16 @@ export const View = (props: Props) => {
   const hasFixedExposures = hasExposures && !hasUnresolvedExposures;
 
   const TabContentActionNeeded = () => {
-    const { dataBreachTotalNum, dataBrokerTotalNum, totalExposures } =
-      dataSummary;
+    const {
+      dataBreachUnresolvedNum,
+      dataBrokerTotalNum,
+      dataBrokerFixedNum,
+      dataBrokerInProgressNum,
+      dataBreachFixedExposuresNum,
+      dataBrokerFixedExposuresNum,
+      dataBrokerInProgressExposuresNum,
+      totalExposures,
+    } = dataSummary;
 
     let exposuresAreaDescription;
 
@@ -172,9 +181,14 @@ export const View = (props: Props) => {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-area-description",
         {
-          exposures_total_num: totalExposures,
-          data_breach_total_num: dataBreachTotalNum,
-          data_broker_total_num: dataBrokerTotalNum,
+          exposures_unresolved_num:
+            totalExposures -
+            dataBrokerFixedExposuresNum -
+            dataBreachFixedExposuresNum -
+            dataBrokerInProgressExposuresNum,
+          data_breach_unresolved_num: dataBreachUnresolvedNum,
+          data_broker_unresolved_num:
+            dataBrokerTotalNum - dataBrokerFixedNum - dataBrokerInProgressNum,
         }
       );
     }
@@ -183,8 +197,12 @@ export const View = (props: Props) => {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-breaches-scan-progress-description",
         {
-          exposures_total_num: totalExposures,
-          data_breach_total_num: dataBreachTotalNum,
+          exposures_unresolved_num:
+            totalExposures -
+            dataBrokerFixedExposuresNum -
+            dataBreachFixedExposuresNum -
+            dataBrokerInProgressExposuresNum,
+          data_breach_unresolved_num: dataBreachUnresolvedNum,
         }
       );
     } else if (scanInProgress) {
@@ -297,7 +315,7 @@ export const View = (props: Props) => {
           isPremiumUser={hasPremium(props.user)}
           isEligibleForPremium={canSubscribeToPremium({
             user: props.user,
-            countryCode: props.countryCode,
+            countryCode,
           })}
           isEligibleForFreeScan={props.isEligibleForFreeScan}
           hasExposures={hasExposures}
@@ -308,7 +326,7 @@ export const View = (props: Props) => {
             props.userBreaches
           )}
           stepDeterminationData={{
-            countryCode: props.countryCode,
+            countryCode,
             latestScanData: props.userScanData,
             subscriberBreaches: props.userBreaches,
             user: props.user,
