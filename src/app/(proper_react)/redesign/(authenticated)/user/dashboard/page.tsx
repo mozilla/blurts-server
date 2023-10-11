@@ -22,7 +22,7 @@ import {
 } from "../../../../../functions/server/onerep";
 import getPremiumSubscriptionUrl from "../../../../../functions/server/getPremiumSubscriptionUrl";
 import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
-import { getFlagsEnabledForEmail } from "../../../../../../db/tables/featureFlags";
+import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
@@ -51,14 +51,18 @@ export default async function DashboardPage() {
     session.user,
     countryCode
   );
-  const enabledFlags = await getFlagsEnabledForEmail(session.user.email);
+  const enabledFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
   const userIsEligibleForPremium = isEligibleForPremium(
     session.user,
     countryCode,
     enabledFlags
   );
 
-  const enabledFeatureFlags = await getFlagsEnabledForEmail(session.user.email);
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
