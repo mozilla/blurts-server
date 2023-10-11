@@ -126,15 +126,15 @@ export const View = (props: Props) => {
         if (props.isPremiumUser) {
           // if premium user, go to resolution card
           return "redesign/user/dashboard/fix/high-risk-data-breaches";
-        } else {
-          // if free user, go to data broker results
-          return "redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers";
         }
+        // if free user, go to data broker results
+        return "redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers";
       }
-    } else {
-      // if it's a data broker exposure
-      return "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove";
+
+      return "redesign/user/dashboard/";
     }
+    // if it's a data broker exposure
+    return "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove";
   };
 
   const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
