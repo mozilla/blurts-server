@@ -130,6 +130,8 @@ export async function getSubBreaches(
             (curBreach.dataClassesEffected[index][key] as number)++;
           }
         });
+        curBreach.isResolved =
+          curBreach.isResolved && subscriberBreach.isResolved;
       }
     }
   }
