@@ -154,6 +154,7 @@ export const View = (props: Props) => {
           isPremiumBrokerRemovalEnabled={
             props.featureFlagsEnabled.PremiumBrokerRemoval
           }
+          isPremiumUser={hasPremium(props.user)}
           resolutionCta={
             <Button variant="primary" wide href={getExposureCardLink(exposure)}>
               {l10n.getString("exposure-card-cta")}
