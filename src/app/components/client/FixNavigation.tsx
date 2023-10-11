@@ -22,11 +22,12 @@ export type Props = {
     | "security-recommendations";
   subscriberEmails: string[];
   data: StepDeterminationData;
+  label: string;
 };
 
 export const FixNavigation = (props: Props) => {
   return (
-    <nav className={styles.stepsWrapper} aria-label="Guided steps">
+    <nav className={styles.stepsWrapper} aria-label={props.label}>
       <Steps
         currentSection={props.currentSection}
         subscriberEmails={props.subscriberEmails}

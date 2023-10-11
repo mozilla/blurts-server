@@ -59,6 +59,9 @@ export const FixView = (props: FixViewProps) => {
             currentSection={props.currentSection}
             data={props.data}
             subscriberEmails={props.subscriberEmails}
+            label={l10n.getString(
+              "guided-resoultion-flow-step-navigation-label"
+            )}
           />
         )}
         {navigationClose()}
