@@ -72,39 +72,30 @@
       &.hideOnMobile {
         display: none;
       }
-
       .exposureCompanyTitle {
         font: $text-body-sm;
-        max-width: 150px; // truncate long names for mobile view
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
-
-        @media screen and (min-width: $screen-sm) {
-          max-width: 250px; // truncate long names for mobile view
-        }
-
-        @media screen and (min-width: $screen-md) {
-          max-width: 100%;
-        }
-      }
-
-      @media screen and (min-width: $screen-lg) {
-        flex: 1 1 0%;
-
-        &.exposureImageWrapper {
-          flex: 0.2 0 $width-first-column-filter-bar;
-        }
-
-        &.hideOnMobile {
-          display: flex;
-          justify-content: center;
-        }
       }
 
       .exposureImageWrapper {
         .exposureImage {
           height: 100%;
+        }
+      }
+
+      @media screen and (min-width: $screen-lg) {
+        &.exposureImageWrapper {
+          flex: 0.2 0 $width-first-column-filter-bar;
+        }
+      }
+
+      @media screen and (min-width: $screen-xl) {
+        flex: 1 1 0%;
+
+        &.hideOnMobile {
+          display: flex;
         }
       }
     }
@@ -240,4 +231,8 @@
 
 .visuallyHidden {
   @include visually-hidden;
+}
+
+.companyNameArea {
+  @include company-name-area;
 }
