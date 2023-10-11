@@ -120,18 +120,23 @@ export const View = (props: Props) => {
   const getExposureCardLink = (exposure: Exposure) => {
     let link = "/redesign/user/dashboard";
 
-    if (props.isEligibleForFreeScan) {
-      link = "redesign/user/dashboard/fix/data-broker-profiles/start-free-scan";
-    } else if (props.isEligibleForPremium) {
-      if (props.isPremiumUser) {
-        // if premium user, go to resolution card
-        link = "redesign/user/dashboard/fix/high-risk-data-breaches";
-      } else {
-        // if free user, go to data broker results
+    if (!isScanResult(exposure)) {
+      // if it's a data breach exposure
+      if (props.isEligibleForFreeScan) {
         link =
-          "redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers";
+          "redesign/user/dashboard/fix/data-broker-profiles/start-free-scan";
+      } else if (props.isEligibleForPremium) {
+        if (props.isPremiumUser) {
+          // if premium user, go to resolution card
+          link = "redesign/user/dashboard/fix/high-risk-data-breaches";
+        } else {
+          // if free user, go to data broker results
+          link =
+            "redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers";
+        }
       }
-    } else if (isScanResult(exposure)) {
+    } else {
+      // if it's a data broker exposure
       link = "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove";
     }
     return link;
