@@ -9,7 +9,10 @@ import { View } from "./View";
 import { authOptions } from "../../../../../api/utils/auth";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../functions/server/getUserBreaches";
-import { canSubscribeToPremium } from "../../../../../functions/universal/user";
+import {
+  canSubscribeToPremium,
+  hasPremium,
+} from "../../../../../functions/universal/user";
 import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 
@@ -48,6 +51,7 @@ export default async function DashboardPage() {
     session.user,
     countryCode
   );
+  const isPremiumUser = hasPremium(session.user);
 
   const FreeBrokerScan = await isFlagEnabled("FreeBrokerScan", session.user);
   const PremiumBrokerRemoval = await isFlagEnabled(
@@ -64,6 +68,7 @@ export default async function DashboardPage() {
       user={session.user}
       isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
+      isPremiumUser={isPremiumUser}
       userScanData={latestScan}
       userBreaches={subBreaches}
       featureFlagsEnabled={featureFlagsEnabled}

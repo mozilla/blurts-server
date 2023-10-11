@@ -50,6 +50,7 @@ export type Props = {
   userScanData: LatestOnerepScanData;
   isEligibleForFreeScan: boolean;
   isEligibleForPremium: boolean;
+  isPremiumUser: boolean;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
 };
@@ -115,6 +116,27 @@ export const View = (props: Props) => {
   const tabSpecificExposures = getTabSpecificExposures(selectedTab);
   const filteredExposures = filterExposures(tabSpecificExposures, filters);
 
+  // MNTOR-2226
+  const getExposureCardLink = (exposure: Exposure) => {
+    let link = "/redesign/user/dashboard";
+
+    if (props.isEligibleForFreeScan) {
+      link = "redesign/user/dashboard/fix/data-broker-profiles/start-free-scan";
+    } else if (props.isEligibleForPremium) {
+      if (props.isPremiumUser) {
+        // if premium user, go to resolution card
+        link = "redesign/user/dashboard/fix/high-risk-data-breaches";
+      } else {
+        // if free user, go to data broker results
+        link =
+          "redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers";
+      }
+    } else if (isScanResult(exposure)) {
+      link = "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove";
+    }
+    return link;
+  };
+
   const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
     return (
       <li
@@ -128,16 +150,7 @@ export const View = (props: Props) => {
             props.featureFlagsEnabled.PremiumBrokerRemoval
           }
           resolutionCta={
-            <Button
-              variant="primary"
-              wide
-              href={
-                isScanResult(exposure)
-                  ? "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove"
-                  : // TODO MNTOR-2226: Figure out where this CTA should go
-                    undefined
-              }
-            >
+            <Button variant="primary" wide href={getExposureCardLink(exposure)}>
               {l10n.getString("exposure-card-cta")}
             </Button>
           }
