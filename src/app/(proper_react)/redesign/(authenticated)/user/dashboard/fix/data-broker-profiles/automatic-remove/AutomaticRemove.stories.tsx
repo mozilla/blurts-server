@@ -46,7 +46,7 @@ const meta: Meta<typeof AutomaticRemoveView> = {
 export default meta;
 type Story = StoryObj<typeof AutomaticRemoveView>;
 
-export const ManualRemoveViewStory: Story = {
+export const AutomaticRemoveViewStory: Story = {
   name: "1d. Automatically resolve brokers",
   render: () => {
     return (

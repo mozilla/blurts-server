@@ -24,7 +24,7 @@ export type FixViewProps = {
     | "high-risk-data-breach"
     | "leaked-passwords"
     | "security-recommendations";
-  hideNavigation?: boolean;
+  hideProgressIndicator?: boolean;
 };
 
 export const FixView = (props: FixViewProps) => {
@@ -54,7 +54,7 @@ export const FixView = (props: FixViewProps) => {
           isResolutionLayout ? styles.highRiskDataBreachContentBg : ""
         }`}
       >
-        {!props.hideNavigation && (
+        {!props.hideProgressIndicator && (
           <FixNavigation
             currentSection={props.currentSection}
             data={props.data}

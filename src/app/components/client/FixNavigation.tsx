@@ -26,7 +26,7 @@ export type Props = {
 
 export const FixNavigation = (props: Props) => {
   return (
-    <nav className={styles.stepsWrapper}>
+    <nav className={styles.stepsWrapper} aria-label="Guided steps">
       <Steps
         currentSection={props.currentSection}
         subscriberEmails={props.subscriberEmails}
