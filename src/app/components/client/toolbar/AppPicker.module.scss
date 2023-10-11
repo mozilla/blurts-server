@@ -25,106 +25,103 @@
   }
 }
 
-.popover {
+.popup {
+  width: $content-xs;
+  list-style-type: none;
+  box-shadow: $box-shadow-sm;
+  border-radius: $border-radius-sm;
+  background-color: $color-white;
   position: relative;
 
-  .triggerAnchor {
+  &::before {
+    $tooltip-size: 12px;
+    background-color: white;
+    content: "";
+    height: $tooltip-size;
     position: absolute;
-    width: 12px;
-    height: 12px;
-    background-color: $color-white;
-    transform: rotate(45deg) translateX(-50%)
-      translateY(calc(50% + $spacing-sm / 2));
+    right: 100px; // Vertically align chevron with bento icon
+    top: 0;
+    transform: translateY(-50%) rotate(45deg);
+    width: $tooltip-size;
   }
 
-  .popup {
-    margin-top: $spacing-sm;
-    padding: 0;
-    padding-bottom: $spacing-lg;
-    width: $content-xs;
-    list-style-type: none;
-    box-shadow: $box-shadow-sm;
-    border-radius: $border-radius-sm;
-    background-color: $color-white;
+  .appPickerHeading {
+    color: $color-black;
+    padding: $spacing-lg;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing-sm;
+    // The first gradient is all white, except for the bottom 3 pixels which
+    // are transparent. That way, they leave a gap for the coloured background
+    // that flows to the right, rendering it as a coloured bottom border.
+    background-image: linear-gradient(
+        to bottom,
+        $color-white calc(100% - 3px),
+        rgba(0, 0, 0, 0)
+      ),
+      linear-gradient(to right, #f73940 1.25%, #a83db5 96.87%);
+    border-radius: $border-radius-sm $border-radius-sm 0 0;
 
-    .appPickerHeading {
-      color: $color-black;
-      padding: $spacing-lg;
-      text-align: center;
+    img {
+      height: $layout-sm;
+    }
+
+    h2 {
+      font: $text-body-md;
+    }
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-md;
+    padding: $spacing-lg;
+    list-style-type: none;
+  }
+
+  .menuItemWrapper {
+    &[data-key="mozilla"] {
+      grid-column: 1 / 4;
+    }
+
+    .menuLink {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
+      color: $color-black;
       align-items: center;
-      gap: $spacing-sm;
-      // The first gradient is all white, except for the bottom 3 pixels which
-      // are transparent. That way, they leave a gap for the coloured background
-      // that flows to the right, rendering it as a coloured bottom border.
-      background-image: linear-gradient(
-          to bottom,
-          $color-white calc(100% - 3px),
-          rgba(0, 0, 0, 0)
-        ),
-        linear-gradient(to right, #f73940 1.25%, #a83db5 96.87%);
-      border-radius: $border-radius-sm $border-radius-sm 0 0;
+      text-align: center;
+      text-decoration: none;
+
+      font: $text-body-sm;
 
       img {
         height: $layout-sm;
+        padding: $spacing-lg;
+        width: -moz-fit-content;
+        width: fit-content;
+        box-sizing: content-box;
+        border-radius: $border-radius-md;
       }
 
-      h2 {
-        font: $text-body-md;
+      &.mozillaLink {
+        color: $color-blue-50;
+        justify-content: center;
+        width: 100%;
+        margin-top: $spacing-lg;
       }
     }
 
-    ul {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: $spacing-md;
-      padding: $spacing-lg;
-      list-style-type: none;
-    }
-
-    .menuItemWrapper {
-      &[data-key="mozilla"] {
-        grid-column: 1 / 4;
-      }
+    &.isFocused {
+      outline: none;
+      cursor: pointer;
 
       .menuLink {
-        display: flex;
-        flex-direction: column;
-        color: $color-black;
-        align-items: center;
-        text-align: center;
-        text-decoration: none;
-
-        font: $text-body-sm;
+        color: $color-violet-90;
 
         img {
-          height: $layout-sm;
-          padding: $spacing-lg;
-          width: -moz-fit-content;
-          width: fit-content;
-          box-sizing: content-box;
-          border-radius: $border-radius-md;
-        }
-
-        &.mozillaLink {
-          color: $color-blue-50;
-          justify-content: center;
-          width: 100%;
-          margin-top: $spacing-lg;
-        }
-      }
-
-      &.isFocused {
-        outline: none;
-        cursor: pointer;
-
-        .menuLink {
-          color: $color-violet-90;
-
-          img {
-            background-color: $color-violet-10;
-          }
+          background-color: $color-violet-10;
         }
       }
     }
