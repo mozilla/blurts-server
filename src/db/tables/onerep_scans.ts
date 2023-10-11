@@ -186,7 +186,6 @@ export {
   setOnerepManualScan,
   addOnerepScanResults,
   getScansCount,
-  getScansCountForProfile,
   isOnerepScanResultForSubscriber,
   markOnerepScanResultAsResolved,
   getScansCountForProfile,
