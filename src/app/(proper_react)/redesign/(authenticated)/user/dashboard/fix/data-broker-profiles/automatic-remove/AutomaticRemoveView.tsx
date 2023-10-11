@@ -147,7 +147,6 @@ export function AutomaticRemoveView(props: Props) {
                     ? yearlySubscriptionUrl
                     : monthlySubscriptionUrl
                 }
-                onPress={() => (window.location.href = "../../subscribed")} // TODO replace with final UI
               >
                 {selectedPlanIsYearly
                   ? l10n.getString(
