@@ -147,7 +147,6 @@ export const View = (props: Props) => {
       </li>
     );
   });
-  const isScanResultItemsEmpty = props.userScanData.results.length === 0;
   const noUnresolvedExposures = exposureCardElems.length === 0;
   const dataSummary = getDashboardSummary(
     props.userScanData.results,
@@ -234,7 +233,7 @@ export const View = (props: Props) => {
     </>
   );
 
-  const freeScanCta = isScanResultItemsEmpty && (
+  const freeScanCta = props.isEligibleForFreeScan && (
     <p>
       {l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
         vars: {
@@ -244,7 +243,7 @@ export const View = (props: Props) => {
           ),
         },
         elems: {
-          free_scan_link: <a href="/redesign/user/welcome" />,
+          start_free_scan_link: <a href="/redesign/user/welcome" />,
         },
       })}
     </p>
@@ -258,7 +257,6 @@ export const View = (props: Props) => {
           <strong>
             {l10n.getString("dashboard-exposures-scan-progress-label")}
           </strong>
-          {freeScanCta}
         </>
       );
     }
@@ -270,6 +268,7 @@ export const View = (props: Props) => {
           <strong>
             {l10n.getString("dashboard-exposures-all-fixed-label")}
           </strong>
+          {freeScanCta}
         </>
       );
     }
@@ -278,6 +277,7 @@ export const View = (props: Props) => {
       <>
         <Image src={NoExposuresIllustration} alt="" />
         <strong>{l10n.getString("dashboard-no-exposures-label")}</strong>
+        {freeScanCta}
       </>
     );
   };
