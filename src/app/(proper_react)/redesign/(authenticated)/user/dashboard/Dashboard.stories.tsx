@@ -23,9 +23,7 @@ const brokerOptions = {
   empty: "No scan results",
   unresolved: "With unresolved scan results",
   resolved: "All scan results resolved",
-  "emtpy-scan-in-progress": "Scan is in progress with no results",
-  "resolved-scan-in-progress": "Scan is in progress with resolved results",
-  "unresolved-scan-in-progress": "Scan is in progress with unresolved results",
+  "scan-in-progress": "Scan is in progress",
 };
 const breachOptions = {
   empty: "No data breaches",
@@ -118,21 +116,15 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   ];
 
   const scanData: LatestOnerepScanData = { scan: null, results: [] };
+  let scanCount = 0;
 
   if (props.countryCode === "us") {
     if (props.brokers && props.brokers !== "no-scan") {
-      scanData.scan =
-        props.brokers === "emtpy-scan-in-progress" ||
-        props.brokers === "resolved-scan-in-progress" ||
-        props.brokers === "unresolved-scan-in-progress"
-          ? mockedScanInProgress
-          : mockedScan;
+      const scanInProgress = props.brokers === "scan-in-progress";
+      scanData.scan = scanInProgress ? mockedScanInProgress : mockedScan;
 
-      if (props.brokers === "resolved-scan-in-progress") {
-        scanData.results = mockedInProgressScanResults;
-      }
-      if (props.brokers === "unresolved-scan-in-progress") {
-        scanData.results = mockedUnresolvedScanResults;
+      if (scanInProgress) {
+        scanCount = 1;
       }
       if (props.brokers === "resolved") {
         scanData.results = mockedAllResolvedScanResults;
@@ -177,6 +169,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           }}
           monthlySubscriptionUrl={""}
           yearlySubscriptionUrl={""}
+          scanCount={scanCount}
         />
       </Shell>
     </CountryCodeProvider>
@@ -441,68 +434,65 @@ export const DashboardUsPremiumResolvedScanResolvedBreaches: Story = {
   },
 };
 
-export const DashboardUsPremiumScanEmptyInProgressNoBreaches: Story = {
-  name: "US user, with Premium, with 0 scan results and a scan progress, with no breaches",
+export const DashboardUsNoPremiumScanInProgressNoBreaches: Story = {
+  name: "US user, without Premium, scan in progress, with no breaches",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "empty",
+    brokers: "scan-in-progress",
+  },
+};
+
+export const DashboardUsNoPremiumScanInProgressUnresolvedBreaches: Story = {
+  name: "US user, without Premium, scan in progress, with unresolved breaches",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "unresolved",
+    brokers: "scan-in-progress",
+  },
+};
+
+export const DashboardUsNoPremiumScanInProgressResolvedBreaches: Story = {
+  name: "US user, without Premium, scan in progress, with resolved breaches",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "resolved",
+    brokers: "scan-in-progress",
+  },
+};
+
+export const DashboardUsPremiumScanInProgressNoBreaches: Story = {
+  name: "US user, with Premium, scan in progress, with no breaches",
   args: {
     countryCode: "us",
     premium: true,
     breaches: "empty",
-    brokers: "emtpy-scan-in-progress",
+    brokers: "scan-in-progress",
   },
 };
 
-export const DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches: Story = {
-  name: "US user, with Premium, with 0 scan results and a scan progress, with unresolved breaches",
+export const DashboardUsPremiumScanInProgressUnresolvedBreaches: Story = {
+  name: "US user, with Premium, scan in progress, with unresolved breaches",
   args: {
     countryCode: "us",
     premium: true,
     breaches: "unresolved",
-    brokers: "emtpy-scan-in-progress",
+    brokers: "scan-in-progress",
   },
 };
 
-export const DashboardUsPremiumScanUnresolvedInProgressNoBreaches: Story = {
-  name: "US user, with Premium, with unresolved scan results and a scan in progress, with no breaches",
+export const DashboardUsPremiumScanInProgressResolvedBreaches: Story = {
+  name: "US user, with Premium, scan in progress, with resolved breaches",
   args: {
     countryCode: "us",
     premium: true,
-    breaches: "empty",
-    brokers: "unresolved-scan-in-progress",
+    breaches: "resolved",
+    brokers: "scan-in-progress",
   },
 };
-
-export const DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches: Story =
-  {
-    name: "US user, with Premium, with unresolved scan results and a scan in progress, with unresolved breaches",
-    args: {
-      countryCode: "us",
-      premium: true,
-      breaches: "unresolved",
-      brokers: "unresolved-scan-in-progress",
-    },
-  };
-
-export const DashboardPremiumUserScanResolvedInProgressUnresolvedBreaches: Story =
-  {
-    name: "US user, with Premium, with resolved scan results and a scan in progress, with unresolved breaches",
-    args: {
-      countryCode: "us",
-      premium: true,
-      breaches: "unresolved",
-      brokers: "resolved-scan-in-progress",
-    },
-  };
-
-export const DashboardPremiumUserScanUnresolvedInProgressResolvedBreaches: Story =
-  {
-    name: "US user, with Premium, with unresolved scan results and a scan in progress, with resolved breaches",
-    args: {
-      countryCode: "us",
-      premium: true,
-      breaches: "resolved",
-      brokers: "unresolved-scan-in-progress",
-    },
-  };
 
 export const DashboardInvalidPremiumUserNoScanResolvedBreaches: Story = {
   name: "Invalid state: US user, with Premium, with no scan, with resolved breaches",
