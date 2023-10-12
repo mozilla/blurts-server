@@ -524,7 +524,6 @@ describe("getSubBreaches", () => {
 
     const subBreaches = await getSubBreaches(subscriber, []);
     expect(subBreaches.length).toEqual(1);
-    console.log(JSON.stringify(subBreaches));
     expect(subBreaches[0].isResolved).toBe(true);
   });
 });
