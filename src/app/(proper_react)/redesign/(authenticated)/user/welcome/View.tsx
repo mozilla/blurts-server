@@ -17,8 +17,8 @@ import stepDoneIcon from "./images/step-counter-done.svg";
 import { GetStarted } from "./GetStarted";
 import { FindExposures } from "./FindExposures";
 import { EnterInfo } from "./EnterInfo";
-import { useL10n } from "../../../../../../hooks/l10n";
-import monitorLogo from "../../../../../images/monitor-logo.webp";
+import { useL10n } from "../../../../../hooks/l10n";
+import monitorLogo from "../../../../images/monitor-logo.webp";
 
 type StepId = "getStarted" | "enterInfo" | "findExposures";
 

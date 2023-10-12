@@ -6,7 +6,7 @@ import { getServerSession } from "next-auth";
 import { SignInButton } from "../../../../../../(nextjs_migration)/components/client/SignInButton";
 import { notFound, redirect } from "next/navigation";
 import { isEligibleForFreeScan } from "../../../../../../functions/server/onerep";
-import { View } from "./View";
+import { View } from "../View";
 import { getAllBreachesCount } from "../../../../../../../db/tables/breaches";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
