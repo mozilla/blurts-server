@@ -5,6 +5,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Session } from "next-auth";
@@ -38,6 +39,7 @@ export const View = ({
   const [currentStep, setCurrentStep] = useState<StepId>(
     skipInitialStep ? "enterInfo" : "getStarted"
   );
+  const router = useRouter();
 
   const currentComponent =
     currentStep === "findExposures" ? (
@@ -53,7 +55,9 @@ export const View = ({
         onScanStarted={() => setCurrentStep("findExposures")}
         // TODO: Add unit test when changing this code:
         /* c8 ignore next */
-        onGoBack={() => setCurrentStep("getStarted")}
+        onGoBack={() =>
+          skipInitialStep ? router.back() : setCurrentStep("getStarted")
+        }
       />
     ) : (
       <GetStarted
