@@ -28,6 +28,7 @@ export default async function Onboarding({ params }: Props) {
 
   const { slug } = params;
   const firstSlug = slug?.[0];
+  // Only allow no or one specific slug. Otherwise: Respond with 404.
   if (
     typeof slug !== "undefined" &&
     (firstSlug !== FreeScanSlug || slug.length >= 2)
