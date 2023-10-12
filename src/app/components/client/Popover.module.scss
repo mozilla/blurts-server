@@ -1,5 +1,10 @@
 @import "../../tokens";
 
+.underlay {
+  position: fixed;
+  inset: 0;
+}
+
 .popover {
   background: $color-white;
   box-shadow: none;
