@@ -26,18 +26,20 @@ export type Props = {
   user: Session["user"];
   dataBrokerCount: number;
   breachesTotalCount: number;
-  skipInitialStep: boolean;
+  stepId?: StepId;
+  skipInitialStep?: boolean;
 };
 
 export const View = ({
   user,
   dataBrokerCount,
   breachesTotalCount,
+  stepId = "getStarted",
   skipInitialStep,
 }: Props) => {
   const l10n = useL10n();
   const [currentStep, setCurrentStep] = useState<StepId>(
-    skipInitialStep ? "enterInfo" : "getStarted"
+    skipInitialStep ? "enterInfo" : stepId
   );
   const router = useRouter();
 
@@ -89,7 +91,7 @@ export const View = ({
 
 export const Steps = (props: {
   currentStep: StepId;
-  skipInitialStep: boolean;
+  skipInitialStep?: boolean;
 }) => {
   const l10n = useL10n();
 
