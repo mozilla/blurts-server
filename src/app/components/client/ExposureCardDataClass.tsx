@@ -15,15 +15,18 @@ type DataBrokerDataClassProps = {
   exposureCategoryLabel: string;
   num: number;
   icon: ReactElement;
+  isPremiumUser: boolean;
 };
 
 export const DataBrokerDataClass = (props: DataBrokerDataClassProps) => {
-  const emailsList = (
+  const emailsList = props.isPremiumUser ? (
     <ul className={styles.emailsList}>
       {props.scanResultData.emails.map((email: string, index: number) => (
         <li key={index}>{email}</li>
       ))}
     </ul>
+  ) : (
+    <></>
   );
 
   return (
@@ -86,10 +89,10 @@ const ExposureCardDataClassLayout = (
           count: props.count,
         })}
       </div>
-      <div className={styles.emails}>
-        {props.label === l10n.getString("exposure-card-email") &&
-          props.emailData}
-      </div>
+      {props.emailData &&
+        props.label === l10n.getString("exposure-card-email") && (
+          <div className={styles.emails}>{props.emailData}</div>
+        )}
     </div>
   );
 };

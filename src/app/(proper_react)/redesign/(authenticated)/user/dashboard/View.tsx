@@ -129,6 +129,7 @@ export const View = (props: Props) => {
           isPremiumBrokerRemovalEnabled={
             props.featureFlagsEnabled.PremiumBrokerRemoval
           }
+          isPremiumUser={hasPremium(props.user)}
           resolutionCta={
             <Button
               variant="primary"
