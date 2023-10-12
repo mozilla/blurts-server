@@ -394,7 +394,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </div>
           </>
         );
-      case "UsUserPremiumScanInProgressNoExposures":
+      case "UsUserScanInProgressNoBreaches":
         return (
           <>
             <h3>
@@ -402,7 +402,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </h3>
             <p>
               {l10n.getString(
-                "dashboard-top-banner-scan-in-progress-description",
+                "dashboard-top-banner-scan-in-progress-unresolved-description",
                 {
                   unresolved_exposures:
                     bannerData.totalExposures -
@@ -414,12 +414,19 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               <br />
               <br />
               {l10n.getString(
-                "dashboard-top-banner-scan-in-progress-fix-later-hint"
+                "dashboard-top-banner-scan-in-progress-no-results-info"
               )}
             </p>
+            <div className={styles.cta}>
+              <Button href="/redesign/user/settings" small variant="primary">
+                {l10n.getString(
+                  "dashboard-top-banner-scan-in-progress-no-results-cta"
+                )}
+              </Button>
+            </div>
           </>
         );
-      case "UsUserPremiumScanInProgressUnresolvedExposures":
+      case "UsUserScanInProgressUnresolvedBreaches":
         return (
           <>
             <h3>
@@ -427,7 +434,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </h3>
             <p>
               {l10n.getString(
-                "dashboard-top-banner-scan-in-progress-description",
+                "dashboard-top-banner-scan-in-progress-unresolved-description",
                 {
                   unresolved_exposures:
                     bannerData.totalExposures -
@@ -444,7 +451,41 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </p>
             <div className={styles.cta}>
               <Button href={relevantGuidedStep.href} small variant="primary">
-                {l10n.getString("dashboard-top-banner-scan-in-progress-cta")}
+                {l10n.getString(
+                  "dashboard-top-banner-scan-in-progress-results-found-cta"
+                )}
+              </Button>
+            </div>
+          </>
+        );
+      case "UsUserScanInProgressResolvedBreaches":
+        return (
+          <>
+            <h3>
+              {l10n.getString("dashboard-top-banner-scan-in-progress-title")}
+            </h3>
+            <p>
+              {l10n.getString(
+                "dashboard-top-banner-your-data-scan-in-progress-all-fixed-description",
+                {
+                  starting_exposure_total_num:
+                    bannerData.totalExposures -
+                    bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBreachFixedExposuresNum -
+                    bannerData.dataBrokerInProgressExposuresNum,
+                }
+              )}
+              <br />
+              <br />
+              {l10n.getString(
+                "dashboard-top-banner-scan-in-progress-no-results-info"
+              )}
+            </p>
+            <div className={styles.cta}>
+              <Button href={relevantGuidedStep.href} small variant="primary">
+                {l10n.getString(
+                  "dashboard-top-banner-scan-in-progress-no-results-cta"
+                )}
               </Button>
             </div>
           </>

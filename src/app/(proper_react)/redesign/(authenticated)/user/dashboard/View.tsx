@@ -52,6 +52,7 @@ export type Props = {
   isEligibleForPremium: boolean;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  scanCount: number;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -82,8 +83,9 @@ export const View = (props: Props) => {
     },
   ];
   const breachesDataArray = props.userBreaches.flat();
-  const scanInProgress =
-    props.userScanData.scan?.onerep_scan_status === "in_progress";
+  const initialScanInProgress =
+    props.userScanData.scan?.onerep_scan_status === "in_progress" &&
+    props.scanCount === 1;
 
   // Merge exposure cards
   const combinedArray = [...breachesDataArray, ...props.userScanData.results];
@@ -127,6 +129,7 @@ export const View = (props: Props) => {
           isPremiumBrokerRemovalEnabled={
             props.featureFlagsEnabled.PremiumBrokerRemoval
           }
+          isPremiumUser={hasPremium(props.user)}
           resolutionCta={
             <Button
               variant="primary"
@@ -145,7 +148,6 @@ export const View = (props: Props) => {
       </li>
     );
   });
-  const isScanResultItemsEmpty = props.userScanData.results.length === 0;
   const noUnresolvedExposures = exposureCardElems.length === 0;
   const dataSummary = getDashboardSummary(
     props.userScanData.results,
@@ -192,7 +194,7 @@ export const View = (props: Props) => {
       );
     }
 
-    if (scanInProgress && !noUnresolvedExposures) {
+    if (initialScanInProgress && !noUnresolvedExposures) {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-breaches-scan-progress-description",
         {
@@ -204,7 +206,7 @@ export const View = (props: Props) => {
           data_breach_unresolved_num: dataBreachUnresolvedNum,
         }
       );
-    } else if (scanInProgress) {
+    } else if (initialScanInProgress) {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-no-breaches-scan-progress-description"
       );
@@ -232,7 +234,7 @@ export const View = (props: Props) => {
     </>
   );
 
-  const freeScanCta = isScanResultItemsEmpty && (
+  const freeScanCta = props.isEligibleForFreeScan && (
     <p>
       {l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
         vars: {
@@ -242,53 +244,42 @@ export const View = (props: Props) => {
           ),
         },
         elems: {
-          free_scan_link: <a href="/redesign/user/welcome" />,
+          a: <a href="/redesign/user/welcome" />,
         },
       })}
     </p>
   );
 
   const getZeroStateIndicator = () => {
-    let zeroStateIndicatorContent;
-
-    if (scanInProgress) {
-      zeroStateIndicatorContent = (
+    if (initialScanInProgress) {
+      return (
         <>
           <Image src={ScanProgressIllustration} alt="" />
           <strong>
             {l10n.getString("dashboard-exposures-scan-progress-label")}
+          </strong>
+        </>
+      );
+    }
+
+    if (!hasUnresolvedExposures && hasFixedExposures) {
+      return (
+        <>
+          <Image src={AllFixedIllustration} alt="" />
+          <strong>
+            {l10n.getString("dashboard-exposures-all-fixed-label")}
           </strong>
           {freeScanCta}
         </>
       );
     }
 
-    if (!hasUnresolvedExposures && !hasFixedExposures) {
-      zeroStateIndicatorContent = (
-        <>
-          <Image src={NoExposuresIllustration} alt="" />
-          <strong>{l10n.getString("dashboard-no-exposures-label")}</strong>
-        </>
-      );
-    }
-
-    if (!hasUnresolvedExposures && hasFixedExposures) {
-      zeroStateIndicatorContent = (
-        <>
-          <Image src={AllFixedIllustration} alt="" />
-          <strong>
-            {l10n.getString("dashboard-exposures-all-fixed-label")}
-          </strong>
-        </>
-      );
-    }
-
     return (
-      zeroStateIndicatorContent && (
-        <div className={styles.zeroStateIndicator}>
-          {zeroStateIndicatorContent}
-        </div>
-      )
+      <>
+        <Image src={NoExposuresIllustration} alt="" />
+        <strong>{l10n.getString("dashboard-no-exposures-label")}</strong>
+        {freeScanCta}
+      </>
     );
   };
 
@@ -310,7 +301,7 @@ export const View = (props: Props) => {
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           tabType={selectedTab}
-          scanInProgress={scanInProgress}
+          scanInProgress={initialScanInProgress}
           isPremiumUser={hasPremium(props.user)}
           isEligibleForPremium={canSubscribeToPremium({
             user: props.user,
@@ -349,7 +340,9 @@ export const View = (props: Props) => {
           />
         </div>
         {noUnresolvedExposures ? (
-          getZeroStateIndicator()
+          <div className={styles.zeroStateIndicator}>
+            {getZeroStateIndicator()}
+          </div>
         ) : (
           <ul className={styles.exposureList}>{exposureCardElems}</ul>
         )}
