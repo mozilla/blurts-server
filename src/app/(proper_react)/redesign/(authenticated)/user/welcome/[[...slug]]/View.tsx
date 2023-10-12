@@ -16,8 +16,10 @@ import stepDoneIcon from "./images/step-counter-done.svg";
 import { GetStarted } from "./GetStarted";
 import { FindExposures } from "./FindExposures";
 import { EnterInfo } from "./EnterInfo";
-import { useL10n } from "../../../../../hooks/l10n";
-import monitorLogo from "../../../../images/monitor-logo.webp";
+import { useL10n } from "../../../../../../hooks/l10n";
+import monitorLogo from "../../../../../images/monitor-logo.webp";
+
+export type SlugProp = "free-scan" | undefined;
 
 type StepId = "getStarted" | "enterInfo" | "findExposures";
 
@@ -25,17 +27,18 @@ export type Props = {
   user: Session["user"];
   dataBrokerCount: number;
   breachesTotalCount: number;
-  stepId: StepId;
+  slug: SlugProp;
 };
 
 export const View = ({
   user,
   dataBrokerCount,
   breachesTotalCount,
-  stepId,
+  slug,
 }: Props) => {
   const l10n = useL10n();
-  const [currentStep, setCurrentStep] = useState<StepId>(stepId);
+  const initialStep = slug ? "enterInfo" : "getStarted";
+  const [currentStep, setCurrentStep] = useState<StepId>(initialStep);
 
   const currentComponent =
     currentStep === "findExposures" ? (

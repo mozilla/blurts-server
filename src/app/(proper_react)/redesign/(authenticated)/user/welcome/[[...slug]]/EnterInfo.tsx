@@ -10,21 +10,21 @@ import { Session } from "next-auth";
 import { useOverlayTriggerState } from "react-stately";
 import { useButton, useOverlayTrigger } from "react-aria";
 import whyWeNeedInfoHero from "./images/welcome-why-we-need-info.svg";
-import { useL10n } from "../../../../../hooks/l10n";
-import { ModalOverlay } from "../../../../../components/client/dialog/ModalOverlay";
-import { Dialog } from "../../../../../components/client/dialog/Dialog";
-import { Button } from "../../../../../components/server/Button";
-import { InputField } from "../../../../../components/client/InputField";
+import { useL10n } from "../../../../../../hooks/l10n";
+import { ModalOverlay } from "../../../../../../components/client/dialog/ModalOverlay";
+import { Dialog } from "../../../../../../components/client/dialog/Dialog";
+import { Button } from "../../../../../../components/server/Button";
+import { InputField } from "../../../../../../components/client/InputField";
 import {
   LocationAutocompleteInput,
   getDetailsFromLocationString,
-} from "../../../../../components/client/LocationAutocompleteInput";
+} from "../../../../../../components/client/LocationAutocompleteInput";
 import {
   UserInfo,
   WelcomeScanBody,
-} from "../../../../../api/v1/user/welcome-scan/create/route";
-import { meetsAgeRequirement } from "../../../../../functions/universal/user";
-import { getLocale } from "../../../../../functions/universal/getLocale";
+} from "../../../../../../api/v1/user/welcome-scan/create/route";
+import { meetsAgeRequirement } from "../../../../../../functions/universal/user";
+import { getLocale } from "../../../../../../functions/universal/getLocale";
 
 import styles from "./EnterInfo.module.scss";
 

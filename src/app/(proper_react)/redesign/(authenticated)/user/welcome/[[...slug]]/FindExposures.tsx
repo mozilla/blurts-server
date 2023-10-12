@@ -6,9 +6,9 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ProgressBar } from "../../../../../components/client/ProgressBar";
+import { ProgressBar } from "../../../../../../components/client/ProgressBar";
 import styles from "./FindExposures.module.scss";
-import { useL10n } from "../../../../../hooks/l10n";
+import { useL10n } from "../../../../../../hooks/l10n";
 
 export type Props = {
   dataBrokerCount: number;
