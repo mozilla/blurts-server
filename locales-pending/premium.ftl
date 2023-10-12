@@ -343,8 +343,8 @@ dashboard-exposures-scan-progress-label = Scan in progress
 # $data_broker_total_num is the total number of data brokers selling the user’s data.
 dashboard-exposures-all-fixed-free-scan = {
     $data_broker_total_num ->
-      [one] Next <start_free_scan_link>start your free scan</start_free_scan_link> of { $data_broker_total_num } site that may be selling your personal info.
-     *[other] Next <start_free_scan_link>start your free scan</start_free_scan_link> of { $data_broker_total_num } sites that may be selling your personal info.
+      [one] Next <a>start your free scan</a> of { $data_broker_total_num } site that may be selling your personal info.
+     *[other] Next <a>start your free scan</a> of { $data_broker_total_num } sites that may be selling your personal info.
   }
 
 ## False door test

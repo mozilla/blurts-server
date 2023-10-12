@@ -244,7 +244,7 @@ export const View = (props: Props) => {
           ),
         },
         elems: {
-          start_free_scan_link: <a href="/redesign/user/welcome" />,
+          a: <a href="/redesign/user/welcome" />,
         },
       })}
     </p>
