@@ -60,7 +60,7 @@ export const FixView = (props: FixViewProps) => {
             data={props.data}
             subscriberEmails={props.subscriberEmails}
             label={l10n.getString(
-              "guided-resoultion-flow-step-navigation-label"
+              "guided-resolution-flow-step-navigation-label"
             )}
           />
         )}
