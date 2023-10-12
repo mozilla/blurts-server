@@ -19,26 +19,25 @@ import { EnterInfo } from "./EnterInfo";
 import { useL10n } from "../../../../../../hooks/l10n";
 import monitorLogo from "../../../../../images/monitor-logo.webp";
 
-export type SlugProp = "free-scan" | undefined;
-
 type StepId = "getStarted" | "enterInfo" | "findExposures";
 
 export type Props = {
   user: Session["user"];
   dataBrokerCount: number;
   breachesTotalCount: number;
-  slug: SlugProp;
+  skipInitialStep: boolean;
 };
 
 export const View = ({
   user,
   dataBrokerCount,
   breachesTotalCount,
-  slug,
+  skipInitialStep,
 }: Props) => {
   const l10n = useL10n();
-  const initialStep = slug ? "enterInfo" : "getStarted";
-  const [currentStep, setCurrentStep] = useState<StepId>(initialStep);
+  const [currentStep, setCurrentStep] = useState<StepId>(
+    skipInitialStep ? "enterInfo" : "getStarted"
+  );
 
   const currentComponent =
     currentStep === "findExposures" ? (
@@ -77,38 +76,49 @@ export const View = ({
         </Link>
       </header>
       <nav className={styles.stepsWrapper}>
-        <Steps currentStep={currentStep} />
+        <Steps currentStep={currentStep} skipInitialStep={skipInitialStep} />
       </nav>
       <main className={styles.contentWrapper}>{currentComponent}</main>
     </div>
   );
 };
 
-export const Steps = (props: { currentStep: StepId }) => {
+export const Steps = (props: {
+  currentStep: StepId;
+  skipInitialStep: boolean;
+}) => {
   const l10n = useL10n();
 
   return (
-    <ul className={styles.steps}>
-      <li
-        aria-current={props.currentStep === "getStarted" ? "step" : undefined}
-        className={`${styles.getStarted} ${
-          isStepDone("getStarted", props.currentStep) ? styles.isCompleted : ""
-        }`}
-      >
-        <Image
-          src={
-            props.currentStep === "getStarted"
-              ? stepGetStartedIcon
-              : stepDoneIcon
-          }
-          alt=""
-          width={22}
-          height={22}
-        />
-        <div className={styles.stepLabel}>
-          {l10n.getString("onboarding-steps-get-started-label")}
-        </div>
-      </li>
+    <ul
+      className={`${styles.steps} ${
+        props.skipInitialStep ? styles.getStartedHidden : ""
+      }`}
+    >
+      {!props.skipInitialStep && (
+        <li
+          aria-current={props.currentStep === "getStarted" ? "step" : undefined}
+          className={`${styles.getStarted} ${
+            isStepDone("getStarted", props.currentStep)
+              ? styles.isCompleted
+              : ""
+          }`}
+        >
+          <Image
+            src={
+              props.currentStep === "getStarted"
+                ? stepGetStartedIcon
+                : stepDoneIcon
+            }
+            alt=""
+            width={22}
+            height={22}
+          />
+          <div className={styles.stepLabel}>
+            {l10n.getString("onboarding-steps-get-started-label")}
+          </div>
+        </li>
+      )}
       <li
         aria-current={props.currentStep === "enterInfo" ? "step" : undefined}
         className={`${styles.enterInfo} ${
