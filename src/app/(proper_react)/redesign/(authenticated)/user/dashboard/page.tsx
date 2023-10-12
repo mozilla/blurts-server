@@ -22,6 +22,7 @@ import {
   isEligibleForPremium,
 } from "../../../../../functions/server/onerep";
 import getPremiumSubscriptionUrl from "../../../../../functions/server/getPremiumSubscriptionUrl";
+import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
@@ -40,10 +41,10 @@ export default async function DashboardPage() {
     return redirect("/redesign/user/welcome/");
   }
 
+  await refreshStoredScanResults(profileId);
+
   const latestScan = await getLatestOnerepScanResults(profileId);
-  const scanCount = await getScansCountForProfile(
-    session.user.subscriber?.onerep_profile_id as number
-  );
+  const scanCount = await getScansCountForProfile(profileId);
   const subBreaches = await getSubscriberBreaches(session.user);
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(
