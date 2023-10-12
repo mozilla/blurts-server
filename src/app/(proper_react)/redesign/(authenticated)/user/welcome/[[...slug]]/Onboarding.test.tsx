@@ -10,7 +10,9 @@ import { axe } from "jest-axe";
 import Meta, { Onboarding } from "./Onboarding.stories";
 
 jest.mock("next/navigation", () => ({
-  useRouter: jest.fn(),
+  useRouter: () => ({
+    back: jest.fn(),
+  }),
 }));
 
 function populateEnterInfoForm(container: HTMLElement) {
@@ -209,4 +211,30 @@ it("passes the axe accessibility test suite on step 3", async () => {
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   const { container } = render(<ComposedOnboarding stepId="findExposures" />);
   expect(await axe(container)).toHaveNoViolations();
+});
+
+it("shows a condensed version of the onboarding skipping step “Get started”", () => {
+  const ComposedOnboarding = composeStory(Onboarding, Meta);
+  render(<ComposedOnboarding skipInitialStep />);
+  const proceedButton = screen.getByRole("button", {
+    name: "Find exposures",
+  });
+  expect(proceedButton).toBeInTheDocument();
+});
+
+it("does not navigate back to step 1 of the onboarding", async () => {
+  const user = userEvent.setup();
+  const ComposedOnboarding = composeStory(Onboarding, Meta);
+  render(<ComposedOnboarding skipInitialStep />);
+
+  const backButton = screen.getByRole("button", {
+    name: "Go back",
+  });
+  await user.click(backButton);
+
+  expect(
+    screen.queryByRole("heading", {
+      name: "Welcome to ⁨Monitor⁩. Let’s find your exposed information.",
+    })
+  ).not.toBeInTheDocument();
 });
