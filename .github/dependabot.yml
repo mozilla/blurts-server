@@ -42,6 +42,23 @@ updates:
           - "@storybook/*"
         exclude-patterns:
           - "eslint-config-next"
+      fluent:
+        patterns:
+          - "@fluent/*""
+      nextjs:
+        patterns:
+          - "eslint-config-next"
+          - "next"
+          - "@next/*"
+      react-aria:
+        patterns:
+          - "react-aria"
+          - "react-stately"
+      stylelint:
+        patterns:
+          - "stylelint"
+          - "stylelint-scss"
+          - "stylelint-config-recommended-scss"
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
