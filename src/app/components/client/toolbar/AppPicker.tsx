@@ -220,8 +220,6 @@ type AppPickerTriggerProps = {
   MenuTriggerProps &
   AriaMenuTriggerProps;
 
-// TODO: Add unit test when changing this code:
-/* c8 ignore start */
 function AppPickerTrigger(props: AppPickerTriggerProps) {
   const l10n = useL10n();
   const state = useMenuTriggerState({});
@@ -239,6 +237,7 @@ function AppPickerTrigger(props: AppPickerTriggerProps) {
       label: props.referringHost,
     });
   };
+
   return (
     <>
       <button
@@ -266,7 +265,6 @@ function AppPickerTrigger(props: AppPickerTriggerProps) {
     </>
   );
 }
-/* c8 ignore stop */
 
 type AppPickerMenuProps<T> = AriaMenuProps<T>;
 
