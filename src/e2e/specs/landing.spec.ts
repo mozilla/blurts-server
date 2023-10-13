@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { test, expect } from "../fixtures/basePage.js";
+import { defaultScreenshotOpts } from "../utils/helpers.js";
 
 test.describe("Landing Page element verification", () => {
   test.beforeEach(async ({ landingPage }) => {
@@ -51,9 +52,12 @@ test.describe("Landing Page element verification", () => {
     }).toPass();
   });
 
-  test("Verify that the site footer is displayed correctly", async ({
+  test("Verify that the site footer is displayed correctly @uiregression", async ({
     landingPage,
   }) => {
+    // clear any possible banner
+    await landingPage.maybeClearBanner();
+
     // link to testrail case
     test.info().annotations.push({
       type: "testrail",
@@ -62,11 +66,10 @@ test.describe("Landing Page element verification", () => {
     });
 
     // visually verify landing page footer is displayed correctly
-    await expect(async () => {
-      await expect(landingPage.landingFooter).toHaveScreenshot(
-        `${process.env.E2E_TEST_ENV}-landingFooter.png`
-      );
-    }).toPass();
+    await expect(landingPage.landingFooter).toHaveScreenshot(
+      `${process.env.E2E_TEST_ENV}-landingFooter.png`,
+      defaultScreenshotOpts
+    );
   });
 });
 
