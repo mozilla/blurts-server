@@ -222,21 +222,22 @@ type AppPickerTriggerProps = {
 
 function AppPickerTrigger(props: AppPickerTriggerProps) {
   const l10n = useL10n();
-  const state = useMenuTriggerState({});
+  const state = useMenuTriggerState({
+    onOpenChange: (isOpen) => {
+      isOpen &&
+        gaEvent({
+          category: "bento",
+          action: state.isOpen ? "bento-opened" : "bento-closed",
+          label: props.referringHost,
+        });
+    },
+  });
   const ref = useRef<HTMLButtonElement | null>(null);
   const popoverRef = useRef<HTMLDivElement | null>(null);
   const { menuTriggerProps, menuProps } = useMenuTrigger({}, state, ref);
   const items = menuProps.items as Array<Node<object>>;
   const mergedMenuProps = mergeProps(props, { ...menuProps, items });
   const menuTriggerButton = useButton(menuTriggerProps, ref);
-
-  const handleButtonClick = () => {
-    gaEvent({
-      category: "bento",
-      action: state.isOpen ? "bento-opened" : "bento-closed",
-      label: props.referringHost,
-    });
-  };
 
   return (
     <>
@@ -245,7 +246,6 @@ function AppPickerTrigger(props: AppPickerTriggerProps) {
         ref={ref}
         title={l10n.getString("toolbar-app-picker-trigger-title")}
         className={styles.trigger}
-        onClick={handleButtonClick}
       >
         <BentoIcon alt={props.label} />
       </button>
