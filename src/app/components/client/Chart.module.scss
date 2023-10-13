@@ -2,7 +2,7 @@
 
 .chartContainer {
   text-align: center;
-  display: inline-flex;
+  display: flex;
   gap: $spacing-md;
   flex-direction: column;
   align-items: flex-end;

@@ -18,7 +18,7 @@
   }
 
   .chart {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
 
     @media screen and (min-width: $screen-md) {
