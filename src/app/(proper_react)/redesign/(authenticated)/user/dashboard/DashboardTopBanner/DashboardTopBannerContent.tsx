@@ -187,7 +187,11 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button href={relevantGuidedStep.href} small variant="primary">
+              <Button
+                href="/redesign/user/welcome/free-scan"
+                small
+                variant="primary"
+              >
                 {l10n.getString(
                   "dashboard-top-banner-monitor-protects-your-even-more-cta"
                 )}
