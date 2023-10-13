@@ -8,6 +8,21 @@ import { SubscriberRow } from "knex/types/tables";
 declare module "next-auth" {
   /** The OAuth profile extracted from Firefox Accounts */
   interface Profile {
+    email: string;
+    /** The value of the Accept-Language header when the user signed up for their Firefox Account */
+    locale: string;
+    amrValues: ["pwd", "email"];
+    twoFactorAuthentication: boolean;
+    metricsEnabled: boolean;
+    uid: string;
+    /** URL to an avatar image for the current user */
+    avatar: string;
+    avatarDefault: boolean;
+    subscriptions?: Array<string>;
+  }
+
+  /** Shape of the data the FxaProvider's `profile` callback returns: */
+  interface User {
     id: string;
     email: string;
     /** The value of the Accept-Language header when the user signed up for their Firefox Account */

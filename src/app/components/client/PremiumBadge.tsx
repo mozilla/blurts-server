@@ -4,6 +4,7 @@
 
 "use client";
 
+import { useContext } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Session } from "next-auth";
@@ -12,18 +13,29 @@ import { useOverlayTriggerState } from "react-stately";
 import { PremiumUpsellDialog } from "./PremiumUpsellDialog";
 import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
-import { hasPremium } from "../../functions/universal/user";
+import {
+  canSubscribeToPremium,
+  hasPremium,
+} from "../../functions/universal/user";
 import ShieldIcon from "./assets/shield-icon.svg";
 import styles from "./PremiumBadge.module.scss";
 import { useGa } from "../../hooks/useGa";
+import { CountryCodeContext } from "../../../contextProviders/country-code";
 
 export type Props = {
   user: Session["user"];
+  monthlySubscriptionUrl: string;
+  yearlySubscriptionUrl: string;
 };
 
-export default function PremiumBadge({ user }: Props) {
+export default function PremiumBadge({
+  user,
+  monthlySubscriptionUrl,
+  yearlySubscriptionUrl,
+}: Props) {
   const l10n = useL10n();
   const { gtag } = useGa();
+  const countryCode = useContext(CountryCodeContext);
 
   const pathname = usePathname();
   const dialogState = useOverlayTriggerState({
@@ -44,17 +56,30 @@ export default function PremiumBadge({ user }: Props) {
     dialogState
   );
 
-  return user && hasPremium(user) ? (
-    <div className={styles.badge}>
-      <Image src={ShieldIcon} alt="" width="24" height="24" />
-      {l10n.getString("premium-badge-label")}
-    </div>
-  ) : (
-    <>
-      <Button {...triggerProps} variant="primary" small>
-        {l10n.getString("premium-cta-label")}
-      </Button>
-      <PremiumUpsellDialog {...overlayProps} state={dialogState} />
-    </>
-  );
+  if (hasPremium(user)) {
+    return (
+      <div className={styles.badge}>
+        <Image src={ShieldIcon} alt="" width="24" height="24" />
+        {l10n.getString("premium-badge-label")}
+      </div>
+    );
+  }
+
+  if (canSubscribeToPremium({ user, countryCode })) {
+    return (
+      <>
+        <Button {...triggerProps} variant="primary" small>
+          {l10n.getString("premium-cta-label")}
+        </Button>
+        <PremiumUpsellDialog
+          {...overlayProps}
+          state={dialogState}
+          monthlySubscriptionUrl={monthlySubscriptionUrl}
+          yearlySubscriptionUrl={yearlySubscriptionUrl}
+        />
+      </>
+    );
+  }
+
+  return <></>;
 }

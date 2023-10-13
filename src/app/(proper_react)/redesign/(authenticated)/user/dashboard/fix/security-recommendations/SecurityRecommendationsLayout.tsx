@@ -4,51 +4,88 @@
 
 "use client";
 
-import type { SecurityRecommendation } from "./securityRecommendationsData";
+import {
+  SecurityRecommendationTypes,
+  getSecurityRecommendationsByType,
+} from "./securityRecommendationsData";
 import { ResolutionContainer } from "../ResolutionContainer";
 import { ResolutionContent } from "../ResolutionContent";
 import { Button } from "../../../../../../../components/server/Button";
 import { useL10n } from "../../../../../../../hooks/l10n";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
+import { FixView } from "../FixView";
+import {
+  StepDeterminationData,
+  StepLink,
+  getNextGuidedStep,
+} from "../../../../../../../functions/server/getRelevantGuidedSteps";
+import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
 
 export interface SecurityRecommendationsLayoutProps {
-  label: string;
-  pageData: SecurityRecommendation;
+  type: SecurityRecommendationTypes;
+  subscriberEmails: string[];
+  data: StepDeterminationData;
 }
 
-export function SecurityRecommendationsLayout({
-  label,
-  pageData,
-}: SecurityRecommendationsLayoutProps) {
+export function SecurityRecommendationsLayout(
+  props: SecurityRecommendationsLayoutProps
+) {
   const l10n = useL10n();
-  const { title, illustration, content, exposedData } = pageData;
+
+  const stepMap: Record<SecurityRecommendationTypes, StepLink["id"]> = {
+    email: "SecurityTipsEmail",
+    ip: "SecurityTipsIp",
+    phone: "SecurityTipsPhone",
+  };
+
+  const guidedExperienceBreaches = getGuidedExperienceBreaches(
+    props.data.subscriberBreaches,
+    props.subscriberEmails
+  );
+
+  const pageData = getSecurityRecommendationsByType({
+    dataType: props.type,
+    breaches: guidedExperienceBreaches,
+    l10n: l10n,
+  });
+
+  // The non-null assertion here should be safe since we already did this check
+  // in `./[type]/page.tsx`:
+  const { title, illustration, content, exposedData } = pageData!;
 
   return (
-    <ResolutionContainer
-      label={label}
-      type="securityRecommendations"
-      title={title}
-      illustration={illustration}
-      cta={
-        <Button
-          variant="primary"
-          small
-          // TODO: Add test once MNTOR-1700 logic is added
-          /* c8 ignore next 3 */
-          onPress={() => {
-            // TODO: MNTOR-1700 Add routing logic
-          }}
-          autoFocus={true}
-        >
-          {l10n.getString("security-recommendation-steps-cta-label")}
-        </Button>
-      }
+    <FixView
+      subscriberEmails={props.subscriberEmails}
+      data={props.data}
+      nextStepHref={getNextGuidedStep(props.data, stepMap[props.type]).href}
+      currentSection="security-recommendations"
     >
-      <ResolutionContent
-        content={content}
-        exposedData={exposedData}
-        locale={getLocale(l10n)}
-      />
-    </ResolutionContainer>
+      <ResolutionContainer
+        label={l10n.getString("security-recommendation-steps-label")}
+        type="securityRecommendations"
+        title={title}
+        illustration={illustration}
+        cta={
+          <Button
+            variant="primary"
+            small
+            // TODO: Add test once MNTOR-1700 logic is added
+            /* c8 ignore next 3 */
+            onPress={() => {
+              // TODO: MNTOR-1700 Add routing logic
+            }}
+            autoFocus={true}
+          >
+            {l10n.getString("security-recommendation-steps-cta-label")}
+          </Button>
+        }
+      >
+        <ResolutionContent
+          content={content}
+          exposedData={exposedData}
+          locale={getLocale(l10n)}
+        />
+      </ResolutionContainer>
+    </FixView>
   );
 }

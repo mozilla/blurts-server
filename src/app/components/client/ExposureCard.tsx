@@ -27,6 +27,7 @@ import {
 } from "../../../utils/subscriberBreaches";
 import { FallbackLogo } from "../server/BreachLogo";
 import { BreachDataClass, DataBrokerDataClass } from "./ExposureCardDataClass";
+import { DataBrokerImage } from "./DataBrokerImage";
 
 export type Exposure = OnerepScanResultRow | SubscriberBreach;
 
@@ -40,6 +41,7 @@ export type ExposureCardProps = {
   exposureData: Exposure;
   locale: string;
   isPremiumBrokerRemovalEnabled: boolean;
+  isPremiumUser: boolean;
   resolutionCta: ReactNode;
   isExpanded?: boolean;
 };
@@ -53,22 +55,19 @@ export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
 };
 
 export type ScanResultCardProps = {
-  exposureImg?: StaticImageData;
   scanResult: OnerepScanResultRow;
   locale: string;
   isPremiumBrokerRemovalEnabled: boolean;
   resolutionCta: ReactNode;
   isExpanded?: boolean;
+  isPremiumUser: boolean;
 };
 const ScanResultCard = (props: ScanResultCardProps) => {
-  const { exposureImg, scanResult, locale, isPremiumBrokerRemovalEnabled } =
-    props;
-
+  const { scanResult, locale, isPremiumBrokerRemovalEnabled } = props;
   const l10n = useL10n();
   const [exposureCardExpanded, setExposureCardExpanded] = useState(
     props.isExpanded ?? false
   );
-
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
@@ -84,6 +83,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         icon={<MultipleUsersIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-family-members")}
         num={scanResult.relatives.length}
+        isPremiumUser={props.isPremiumUser}
       />
     );
   }
@@ -95,6 +95,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         icon={<PhoneIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
         num={scanResult.phones.length}
+        isPremiumUser={props.isPremiumUser}
       />
     );
   }
@@ -106,6 +107,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         icon={<EmailIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-email")}
         num={scanResult.emails.length}
+        isPremiumUser={props.isPremiumUser}
       />
     );
   }
@@ -117,10 +119,11 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         icon={<LocationPinIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-address")}
         num={scanResult.addresses.length}
+        isPremiumUser={props.isPremiumUser}
       />
     );
     // TODO: Add unit test when changing this code:
-    /* c8 ignore next 12 */
+    /* c8 ignore next 13 */
   } else {
     // "Other" item when none of the conditions above are met
     exposureCategoriesArray.push(
@@ -130,6 +133,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         icon={<QuestionMarkCircle alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-other")}
         num={0}
+        isPremiumUser={props.isPremiumUser}
       />
     );
   }
@@ -145,20 +149,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
             <dd
               className={`${styles.hideOnMobile} ${styles.exposureImageWrapper}`}
             >
-              {/* While logo is not yet set, the fallback image is the first character of the exposure name */}
-              {
-                // TODO: Add unit test when changing this code:
-                /* c8 ignore next 7 */
-                exposureImg ? (
-                  <Image
-                    className={styles.exposureImage}
-                    alt=""
-                    src={exposureImg}
-                  />
-                ) : (
-                  <FallbackLogo name={scanResult.data_broker} />
-                )
-              }
+              <DataBrokerImage name={scanResult.data_broker} />
             </dd>
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-company")}
@@ -227,7 +218,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
                 }
               )}
               <a href={scanResult.link}>
-                <span>
+                <span className={styles.openInNewTab}>
                   <OpenInNew
                     alt={l10n.getString("open-in-new-tab-alt")}
                     width="13"
@@ -438,15 +429,15 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
                   },
                 }
               )}
-              <Link href={`/breach-details/${subscriberBreach.name}`}>
-                <span>
+              <a href={`/breach-details/${subscriberBreach.name}`}>
+                <span className={styles.openInNewTab}>
                   <OpenInNew
                     alt={l10n.getString("open-in-new-tab-alt")}
                     width="13"
                     height="13"
                   />
                 </span>
-              </Link>
+              </a>
               {l10n.getString("exposure-card-description-data-breach-part-two")}
             </p>
           </div>

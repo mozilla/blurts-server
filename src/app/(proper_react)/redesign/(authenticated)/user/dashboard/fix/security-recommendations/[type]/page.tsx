@@ -4,17 +4,24 @@
 
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 import { SecurityRecommendationsLayout } from "../SecurityRecommendationsLayout";
-import { getSecurityRecommendationsByType } from "../securityRecommendationsData";
+import {
+  SecurityRecommendationTypes,
+  getSecurityRecommendationsByType,
+} from "../securityRecommendationsData";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
+import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
+import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
+import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
 import { getL10n } from "../../../../../../../../functions/server/l10n";
 
 interface SecurityRecommendationsProps {
   params: {
-    type: string;
+    type: SecurityRecommendationTypes;
   };
 }
 
@@ -37,16 +44,27 @@ export default async function SecurityRecommendations({
   const pageData = getSecurityRecommendationsByType({
     dataType: type,
     breaches: guidedExperienceBreaches,
+    l10n: l10n,
   });
 
   if (!pageData) {
     redirect("/redesign/user/dashboard");
   }
 
+  const result = await getOnerepProfileId(session.user.subscriber.id);
+  const profileId = result[0]["onerep_profile_id"] as number;
+  const scanData = await getLatestOnerepScanResults(profileId);
+
   return (
     <SecurityRecommendationsLayout
-      label={l10n.getString("security-recommendation-steps-label")}
-      pageData={pageData}
+      subscriberEmails={subscriberEmails}
+      type={type}
+      data={{
+        countryCode: getCountryCode(headers()),
+        subscriberBreaches: breaches,
+        user: session.user,
+        latestScanData: scanData,
+      }}
     />
   );
 }
