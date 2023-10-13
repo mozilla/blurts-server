@@ -13,6 +13,7 @@ import {
 import { Shell } from "../../../../../../Shell";
 import { getEnL10nSync } from "../../../../../../../../functions/server/mockL10n";
 import { LatestOnerepScanData } from "../../../../../../../../../db/tables/onerep_scans";
+import { hasPremium } from "../../../../../../../../functions/universal/user";
 
 const mockedScan: OnerepScanRow = {
   created_at: new Date(1998, 2, 31),
@@ -63,6 +64,7 @@ export const ManualRemoveViewStory: Story = {
           countryCode="us"
           user={mockedSession.user}
           subscriberEmails={[]}
+          isPremiumUser={hasPremium(user)}
         />
       </Shell>
     );

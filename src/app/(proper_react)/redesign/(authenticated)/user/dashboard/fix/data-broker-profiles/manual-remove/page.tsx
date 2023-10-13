@@ -10,6 +10,7 @@ import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscri
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { ManualRemoveView } from "./ManualRemoveView";
 import { authOptions } from "../../../../../../../../api/utils/auth";
+import { hasPremium } from "../../../../../../../../functions/universal/user";
 import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
 import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 
@@ -30,6 +31,7 @@ export default async function ManualRemovePage() {
     <ManualRemoveView
       breaches={subBreaches}
       scanData={scanData}
+      isPremiumUser={hasPremium(session.user)}
       user={session.user}
       countryCode={getCountryCode(headers())}
       subscriberEmails={subscriberEmails}
