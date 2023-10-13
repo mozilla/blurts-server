@@ -50,8 +50,11 @@ export function StartFreeScanView(props: Props) {
           <p>
             {l10n.getString(
               "fix-flow-data-broker-profiles-start-free-scan-content-p2"
-            )}
-            <a href="#">
+            )}{" "}
+            <a
+              href="https://www.mozilla.org/products/monitor/how-it-works/"
+              target="_blank"
+            >
               {l10n.getString(
                 "fix-flow-data-broker-profiles-start-free-scan-link-learn-more"
               )}
