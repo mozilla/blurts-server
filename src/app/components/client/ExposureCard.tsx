@@ -213,11 +213,13 @@ const ScanResultCard = (props: ScanResultCardProps) => {
                 "exposure-card-description-info-for-sale-part-one",
                 {
                   elems: {
-                    data_broker_link: <a href={scanResult.link} />,
+                    data_broker_link: (
+                      <a href={scanResult.link} target="_blank" />
+                    ),
                   },
                 }
               )}
-              <a href={scanResult.link}>
+              <a href={scanResult.link} target="_blank">
                 <span className={styles.openInNewTab}>
                   <OpenInNew
                     alt={l10n.getString("open-in-new-tab-alt")}
@@ -429,7 +431,10 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
                   },
                 }
               )}
-              <a href={`/breach-details/${subscriberBreach.name}`}>
+              <a
+                href={`/breach-details/${subscriberBreach.name}`}
+                target="_blank"
+              >
                 <span className={styles.openInNewTab}>
                   <OpenInNew
                     alt={l10n.getString("open-in-new-tab-alt")}
