@@ -18,6 +18,9 @@
   }
 
   .chart {
+    display: flex;
+    justify-content: center;
+
     @media screen and (min-width: $screen-md) {
       flex: 1 1 0%;
     }
