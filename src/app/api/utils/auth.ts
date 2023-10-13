@@ -29,7 +29,7 @@ const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   // a redirect URL of /api/auth/callback/fxa for Firefox Monitor,
   // for every environment we deploy to:
   id: "fxa",
-  name: "Firefox Accounts",
+  name: "Mozilla accounts",
   type: "oauth",
   authorization: {
     url: AppConstants.OAUTH_AUTHORIZATION_URI,

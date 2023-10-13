@@ -51,7 +51,7 @@ it("checks if the user menu items are interactive", async () => {
   expect(menuItems.length).toBe(4);
 
   // FxA link
-  const fxaItem = screen.getByText("Manage your ⁨Firefox account⁩");
+  const fxaItem = screen.getByText("Manage your ⁨Mozilla account⁩");
   expect(fxaItem).toBeInTheDocument();
   const fxaItemWrapper = fxaItem.parentElement;
   const clickFxAItemSpy = jest.spyOn(fxaItem, "click");
