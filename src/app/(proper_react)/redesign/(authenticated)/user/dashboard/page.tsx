@@ -10,7 +10,10 @@ import { authOptions } from "../../../../../api/utils/auth";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../functions/server/getUserBreaches";
 import { canSubscribeToPremium } from "../../../../../functions/universal/user";
-import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
+import {
+  getLatestOnerepScanResults,
+  getScansCountForProfile,
+} from "../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 
 import { isFlagEnabled } from "../../../../../functions/server/featureFlags";
@@ -19,6 +22,7 @@ import {
   isEligibleForPremium,
 } from "../../../../../functions/server/onerep";
 import getPremiumSubscriptionUrl from "../../../../../functions/server/getPremiumSubscriptionUrl";
+import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
@@ -37,7 +41,10 @@ export default async function DashboardPage() {
     return redirect("/redesign/user/welcome/");
   }
 
+  await refreshStoredScanResults(profileId);
+
   const latestScan = await getLatestOnerepScanResults(profileId);
+  const scanCount = await getScansCountForProfile(profileId);
   const subBreaches = await getSubscriberBreaches(session.user);
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(
@@ -69,6 +76,7 @@ export default async function DashboardPage() {
       featureFlagsEnabled={featureFlagsEnabled}
       monthlySubscriptionUrl={monthlySubscriptionUrl}
       yearlySubscriptionUrl={yearlySubscriptionUrl}
+      scanCount={scanCount}
     />
   );
 }

@@ -207,14 +207,16 @@ dashboard-exposures-filter-reset = Reset
 dashboard-top-banner-scan-in-progress-title = Your scan is still in progress
 # Variables:
 # $unresolved_exposures is the total number of unresolved exposures the user has.
-dashboard-top-banner-scan-in-progress-description =
+dashboard-top-banner-scan-in-progress-unresolved-description =
   { $unresolved_exposures ->
-      [one] We found { $unresolved_exposures } exposure so far, but we’re still scanning sites that sell your personal info. This should be done within 3 minutes.
-      *[other] We found { $unresolved_exposures } exposures so far, but we’re still scanning sites that sell your personal info. This should be done within 3 minutes.
+      [one] We found { $unresolved_exposures } exposure so far, but we’re still scanning sites that sell your personal info. This should be done within a few minutes.
+      *[other] We found { $unresolved_exposures } exposures so far, but we’re still scanning sites that sell your personal info. This should be done within a few minutes.
   }
-dashboard-top-banner-scan-in-progress-fix-now-hint = You can refresh this page then, or start fixing your data breaches now.
-dashboard-top-banner-scan-in-progress-fix-later-hint = You can refresh this page then, or come back later.
-dashboard-top-banner-scan-in-progress-cta = See what’s ready now
+dashboard-top-banner-scan-in-progress-no-results-info = In the meantime, you can check more email addresses for data breaches.
+dashboard-top-banner-scan-in-progress-no-results-cta = Check more email addresses
+
+dashboard-top-banner-scan-in-progress-fix-now-hint = You can come back later, or start fixing your data breaches now.
+dashboard-top-banner-scan-in-progress-results-found-cta = See what’s ready now
 
 dashboard-top-banner-protect-your-data-title = Let’s protect your data
 # Variables:
@@ -268,6 +270,14 @@ dashboard-top-banner-your-data-is-protected-all-fixed-description =
   { $starting_exposure_total_num ->
     [one] Great work, { $starting_exposure_total_num } exposure of your data is fixed! Upgrade to { -brand-premium } and we’ll continue to monitor for new exposures. Plus, we’ll automatically remove your info from any sites that are selling it.
     *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed! Upgrade to { -brand-premium } and we’ll continue to monitor for new exposures. Plus, we’ll automatically remove your info from any sites that are selling it.
+  }
+
+# Variables:
+# $starting_exposure_total_num is the number of exposures the user has resolved.
+dashboard-top-banner-your-data-scan-in-progress-all-fixed-description =
+  { $starting_exposure_total_num ->
+    [one] Great work fixing { $starting_exposure_total_num } exposure so far! We’re still scanning sites that sell your personal info. This should be done within a few minutes.
+    *[other] Great work fixing { $starting_exposure_total_num } exposures so far! We’re still scanning sites that sell your personal info. This should be done within a few minutes.
   }
 dashboard-top-banner-your-data-is-protected-all-fixed-cta = Get continuous protection
 dashboard-top-banner-non-us-no-exposures-found-description = Great news! We searched all known data breaches and found no exposures. We’ll keep monitoring your email address and will alert you if a new breach occurs.
@@ -333,8 +343,8 @@ dashboard-exposures-scan-progress-label = Scan in progress
 # $data_broker_total_num is the total number of data brokers selling the user’s data.
 dashboard-exposures-all-fixed-free-scan = {
     $data_broker_total_num ->
-      [one] Next <link>start your free scan</link> of { $data_broker_total_num } site that may be selling your personal info.
-     *[other] Next <link>start your free scan</link> of { $data_broker_total_num } sites that may be selling your personal info.
+      [one] Next <a>start your free scan</a> of { $data_broker_total_num } site that may be selling your personal info.
+     *[other] Next <a>start your free scan</a> of { $data_broker_total_num } sites that may be selling your personal info.
   }
 
 ## False door test
