@@ -41,6 +41,7 @@ export type ExposureCardProps = {
   exposureData: Exposure;
   locale: string;
   isPremiumBrokerRemovalEnabled: boolean;
+  isPremiumUser: boolean;
   resolutionCta: ReactNode;
   isExpanded?: boolean;
 };
@@ -59,6 +60,7 @@ export type ScanResultCardProps = {
   isPremiumBrokerRemovalEnabled: boolean;
   resolutionCta: ReactNode;
   isExpanded?: boolean;
+  isPremiumUser: boolean;
 };
 const ScanResultCard = (props: ScanResultCardProps) => {
   const { scanResult, locale, isPremiumBrokerRemovalEnabled } = props;
@@ -81,6 +83,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         icon={<MultipleUsersIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-family-members")}
         num={scanResult.relatives.length}
+        isPremiumUser={props.isPremiumUser}
       />
     );
   }
@@ -92,6 +95,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         icon={<PhoneIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
         num={scanResult.phones.length}
+        isPremiumUser={props.isPremiumUser}
       />
     );
   }
@@ -103,6 +107,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         icon={<EmailIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-email")}
         num={scanResult.emails.length}
+        isPremiumUser={props.isPremiumUser}
       />
     );
   }
@@ -114,10 +119,11 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         icon={<LocationPinIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-address")}
         num={scanResult.addresses.length}
+        isPremiumUser={props.isPremiumUser}
       />
     );
     // TODO: Add unit test when changing this code:
-    /* c8 ignore next 12 */
+    /* c8 ignore next 13 */
   } else {
     // "Other" item when none of the conditions above are met
     exposureCategoriesArray.push(
@@ -127,6 +133,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         icon={<QuestionMarkCircle alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-other")}
         num={0}
+        isPremiumUser={props.isPremiumUser}
       />
     );
   }

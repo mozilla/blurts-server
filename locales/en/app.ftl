@@ -866,7 +866,12 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
+# Deprecated - to be replaced by -brand-mozilla-account
 -brand-fx-account = Firefox account
+
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account = Mozilla account
 
 ## Search Engine Optimization
 
@@ -882,7 +887,7 @@ sign-in = Sign In
 site-nav-breaches-link = Resolve Data Breaches
 site-nav-settings-link = Settings
 site-nav-help-link = Help and Support
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Try our other security tools:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -892,8 +897,12 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = User menu
 menu-button-alt = Open user menu
 menu-list-accessible-label = Account menu
+# Deprecated
 menu-item-fxa = Manage your { -brand-fx-account }
+menu-item-fxa-2 = Manage your { -brand-mozilla-account }
+# Deprecated
 menu-item-fxa-alt = Open { -brand-fx-account } page
+menu-item-fxa-alt-2 = Open { -brand-mozilla-account } page
 menu-item-settings = Settings
 menu-item-settings-alt = Open settings page
 menu-item-help = Help and support
