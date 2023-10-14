@@ -28,6 +28,36 @@ async function getAllFeatureFlags() {
     .returning("*");
 }
 
+/** Add any feature flag you want to refer to in the code here */
+export type FeatureFlagName =
+  | "FxaRebrand"
+  | "FreeBrokerScan"
+  | "PremiumBrokerRemoval"
+  | "FalseDoorTest"
+  | "HibpBreachNotifications";
+
+export async function getEnabledFeatureFlags(
+  options:
+    | { ignoreAllowlist?: false; email: string }
+    | { ignoreAllowlist: true }
+): Promise<FeatureFlagName[]> {
+  let query = knex("feature_flags")
+    .select("name")
+    .where("deleted_at", null)
+    .and.where("expired_at", null)
+    .and.where("is_enabled", true);
+
+  if (!options.ignoreAllowlist) {
+    query = query.and
+      .whereRaw("ARRAY_LENGTH(allow_list, 1) IS NULL")
+      .orWhereRaw("? = ANY(allow_list)", options.email);
+  }
+
+  const enabledFlagNames = await query;
+
+  return enabledFlagNames.map((row) => row.name as FeatureFlagName);
+}
+
 async function getFeatureFlagByName(name: string) {
   log.info("getFeatureFlagByName", name);
   const res = await knex("feature_flags").where("name", name);

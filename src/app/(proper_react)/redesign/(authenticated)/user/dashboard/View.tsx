@@ -24,7 +24,6 @@ import {
 import { getDashboardSummary } from "../../../../../functions/server/dashboard";
 import { getExposureStatus } from "../../../../../components/server/StatusPill";
 import { TabList } from "../../../../../components/client/TabList";
-import { FeatureFlagsEnabled } from "../../../../../functions/server/featureFlags";
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 import {
@@ -39,12 +38,10 @@ import AllFixedIllustration from "./images/dashboard-all-fixed.svg";
 import NoExposuresIllustration from "./images/dashboard-no-exposures.svg";
 import ScanProgressIllustration from "./images/scan-illustration.svg";
 import { CountryCodeContext } from "../../../../../../contextProviders/country-code";
+import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 
 export type Props = {
-  featureFlagsEnabled: Pick<
-    FeatureFlagsEnabled,
-    "FreeBrokerScan" | "PremiumBrokerRemoval"
-  >;
+  enabledFeatureFlags: FeatureFlagName[];
   user: Session["user"];
   userBreaches: SubscriberBreach[];
   userScanData: LatestOnerepScanData;
@@ -126,9 +123,9 @@ export const View = (props: Props) => {
         <ExposureCard
           exposureData={exposure}
           locale={getLocale(l10n)}
-          isPremiumBrokerRemovalEnabled={
-            props.featureFlagsEnabled.PremiumBrokerRemoval
-          }
+          isPremiumBrokerRemovalEnabled={props.enabledFeatureFlags.includes(
+            "PremiumBrokerRemoval"
+          )}
           isPremiumUser={hasPremium(props.user)}
           resolutionCta={
             <Button
