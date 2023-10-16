@@ -203,7 +203,7 @@ dashboard-exposures-filter-show-all = Show all
 dashboard-exposures-filter-show-results = Show results
 dashboard-exposures-filter-reset = Reset
 
-
+dashboard-top-banner-section-label = Dashboard summary
 dashboard-top-banner-scan-in-progress-title = Your scan is still in progress
 # Variables:
 # $unresolved_exposures is the total number of unresolved exposures the user has.
