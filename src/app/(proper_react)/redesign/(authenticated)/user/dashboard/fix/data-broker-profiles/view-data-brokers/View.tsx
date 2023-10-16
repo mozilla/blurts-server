@@ -36,19 +36,19 @@ export const ViewDataBrokersView = (props: Props) => {
           <h3>
             {l10n.getString(
               "fix-flow-data-broker-profiles-view-data-broker-profiles-headline",
-              { data_broker_sites_results_num: countOfDataBrokerProfiles }
+              { data_broker_sites_results_num: countOfDataBrokerProfiles },
             )}
           </h3>
           <p>
             {l10n.getString(
-              "fix-flow-data-broker-profiles-view-data-broker-profiles-content"
+              "fix-flow-data-broker-profiles-view-data-broker-profiles-content",
             )}
           </p>
         </div>
         <div className={styles.content}>
           <h4 className={styles.questionTooltipWrapper}>
             {l10n.getString(
-              "fix-flow-data-broker-profiles-view-data-broker-profiles-view-info-on-sites"
+              "fix-flow-data-broker-profiles-view-data-broker-profiles-view-info-on-sites",
             )}
             <AboutBrokersIcon />
           </h4>
@@ -60,7 +60,7 @@ export const ViewDataBrokersView = (props: Props) => {
             href="/redesign/user/dashboard/fix/data-broker-profiles/automatic-remove"
           >
             {l10n.getString(
-              "fix-flow-data-broker-profiles-view-data-broker-profiles-button-remove-for-me"
+              "fix-flow-data-broker-profiles-view-data-broker-profiles-button-remove-for-me",
             )}
           </Button>
           <Button
@@ -70,7 +70,7 @@ export const ViewDataBrokersView = (props: Props) => {
             }
           >
             {l10n.getString(
-              "fix-flow-data-broker-profiles-view-data-broker-profiles-button-remove-manually"
+              "fix-flow-data-broker-profiles-view-data-broker-profiles-button-remove-manually",
             )}
           </Button>
         </div>

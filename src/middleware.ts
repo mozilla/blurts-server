@@ -76,8 +76,8 @@ function generateCspData() {
         (pattern) =>
           `${pattern.protocol ?? "https"}://${pattern.hostname.replace(
             "**",
-            "*"
-          )}${pattern.port ? `:${pattern.port}` : ""}`
+            "*",
+          )}${pattern.port ? `:${pattern.port}` : ""}`,
       )
       .join(" ")}`,
     "child-src 'self'",

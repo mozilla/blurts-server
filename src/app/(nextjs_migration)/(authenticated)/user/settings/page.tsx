@@ -59,7 +59,7 @@ const deleteButton = (email: EmailRow) => {
 
 const createEmailItem = (
   email: EmailRow & { primary?: boolean },
-  breachCounts: Map<string, number>
+  breachCounts: Map<string, number>,
 ) => {
   const l10n = getL10n();
 
@@ -98,12 +98,12 @@ const getSortedEmails = (emails: Array<EmailRow & { primary?: boolean }>) =>
 
 const createEmailList = (
   emails: EmailRow[],
-  breachCounts: Map<string, number>
+  breachCounts: Map<string, number>,
 ) => {
   return (
     <ul className="settings-email-list">
       {getSortedEmails(emails).map((email) =>
-        createEmailItem(email, breachCounts)
+        createEmailItem(email, breachCounts),
       )}
     </ul>
   );
@@ -180,7 +180,7 @@ export default async function Settings() {
     const breaches = await getBreachesForEmail(
       getSha1(email.email),
       allBreaches,
-      true
+      true,
     );
     breachCounts.set(email.email, breaches?.length || 0);
   }
@@ -252,7 +252,7 @@ export default async function Settings() {
                 {l10n.getString(
                   enabledFlags.includes("FxaRebrand")
                     ? "settings-deactivate-account-info-2"
-                    : "settings-deactivate-account-info"
+                    : "settings-deactivate-account-info",
                 )}
               </p>
               <a
@@ -264,7 +264,7 @@ export default async function Settings() {
                 {l10n.getString(
                   enabledFlags.includes("FxaRebrand")
                     ? "settings-fxa-link-label-2"
-                    : "settings-fxa-link-label"
+                    : "settings-fxa-link-label",
                 )}
               </a>
             </section>

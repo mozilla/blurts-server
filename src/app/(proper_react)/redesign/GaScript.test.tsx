@@ -10,7 +10,7 @@ afterEach(() => {
   // Clean up script elements
   [...document.getElementsByTagName("script")].forEach((element) => {
     const isGaScriptElement = element.src.includes(
-      "https://www.googletagmanager.com/gtag/js"
+      "https://www.googletagmanager.com/gtag/js",
     );
     if (isGaScriptElement) {
       element.remove();

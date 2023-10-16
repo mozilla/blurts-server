@@ -90,7 +90,7 @@ export type ListScanResultsResponse = {
 
 async function onerepFetch(
   path: string,
-  options: Parameters<typeof fetch>[1] = {}
+  options: Parameters<typeof fetch>[1] = {},
 ) {
   const onerepApiBase = process.env.ONEREP_API_BASE;
   if (!onerepApiBase) {
@@ -109,7 +109,7 @@ async function onerepFetch(
 }
 
 export async function createProfile(
-  profileData: CreateProfileRequest
+  profileData: CreateProfileRequest,
 ): Promise<number> {
   const requestBody = {
     first_name: profileData.first_name,
@@ -130,10 +130,10 @@ export async function createProfile(
     log.info(
       `Failed to create OneRep profile: [${response.status}] [${
         response.statusText
-      }] [${JSON.stringify(await response.json())}]`
+      }] [${JSON.stringify(await response.json())}]`,
     );
     throw new Error(
-      `Failed to create OneRep profile: [${response.status}] [${response.statusText}]`
+      `Failed to create OneRep profile: [${response.status}] [${response.statusText}]`,
     );
   }
 
@@ -148,17 +148,17 @@ export async function createProfile(
 }
 
 export async function getProfile(
-  profileId: number
+  profileId: number,
 ): Promise<ShowProfileResponse> {
   const response: Response = await onerepFetch(`/profiles/${profileId}/`, {
     method: "GET",
   });
   if (!response.ok) {
     log.info(
-      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`
+      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
-      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`
+      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
     );
   }
 
@@ -171,14 +171,14 @@ export async function activateProfile(profileId: number): Promise<void> {
     `/profiles/${profileId}/activate`,
     {
       method: "PUT",
-    }
+    },
   );
   if (!response.ok) {
     log.info(
-      `Failed to activate OneRep profile: [${response.status}] [${response.statusText}]`
+      `Failed to activate OneRep profile: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
-      `Failed to activate OneRep profile: [${response.status}] [${response.statusText}]`
+      `Failed to activate OneRep profile: [${response.status}] [${response.statusText}]`,
     );
   }
 }
@@ -188,14 +188,14 @@ export async function deactivateProfile(profileId: number): Promise<void> {
     `/profiles/${profileId}/deactivate`,
     {
       method: "PUT",
-    }
+    },
   );
   if (!response.ok) {
     log.info(
-      `Failed to deactivate OneRep profile: [${response.status}] [${response.statusText}]`
+      `Failed to deactivate OneRep profile: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
-      `Failed to deactivate OneRep profile: [${response.status}] [${response.statusText}]`
+      `Failed to deactivate OneRep profile: [${response.status}] [${response.statusText}]`,
     );
   }
 }
@@ -208,17 +208,17 @@ export async function optoutProfile(profileId: number): Promise<void> {
     log.info(
       `Failed to opt-out OneRep profile: [${response.status}] [${
         response.statusText
-      }] [${JSON.stringify(await response.json())}]`
+      }] [${JSON.stringify(await response.json())}]`,
     );
     throw new Error(
       `Failed to opt-out OneRep profile: [${response.status}] [${
         response.statusText
-      }] [${JSON.stringify(await response.json())}]`
+      }] [${JSON.stringify(await response.json())}]`,
     );
   }
 }
 export async function createScan(
-  profileId: number
+  profileId: number,
 ): Promise<CreateScanResponse> {
   /**
    * See https://docs.onerep.com/#operation/createScan
@@ -228,10 +228,10 @@ export async function createScan(
   });
   if (!response.ok) {
     log.info(
-      `Failed to create a scan: [${response.status}] [${response.statusText}]`
+      `Failed to create a scan: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
-      `Failed to create a scan: [${response.status}] [${response.statusText}]`
+      `Failed to create a scan: [${response.status}] [${response.statusText}]`,
     );
   }
   return response.json() as Promise<CreateScanResponse>;
@@ -239,7 +239,7 @@ export async function createScan(
 
 export async function listScans(
   profileId: number,
-  options: Partial<{ page: number; per_page: number }> = {}
+  options: Partial<{ page: number; per_page: number }> = {},
 ): Promise<ListScansResponse> {
   const queryParams = new URLSearchParams();
   if (options.page) {
@@ -252,14 +252,14 @@ export async function listScans(
     `/profiles/${profileId}/scans?` + queryParams.toString(),
     {
       method: "GET",
-    }
+    },
   );
   if (!response.ok) {
     log.info(
-      `Failed to fetch scans: [${response.status}] [${response.statusText}]`
+      `Failed to fetch scans: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
-      `Failed to fetch scans: [${response.status}] [${response.statusText}]`
+      `Failed to fetch scans: [${response.status}] [${response.statusText}]`,
     );
   }
   return response.json() as Promise<ListScansResponse>;
@@ -271,7 +271,7 @@ export async function listScanResults(
     page: number;
     per_page: number;
     status: RemovalStatus;
-  }> = {}
+  }> = {},
 ): Promise<ListScanResultsResponse> {
   const queryParams = new URLSearchParams({
     "profile_id[]": profileId.toString(),
@@ -294,14 +294,14 @@ export async function listScanResults(
     "/scan-results/?" + queryParams.toString(),
     {
       method: "GET",
-    }
+    },
   );
   if (!response.ok) {
     log.info(
-      `Failed to fetch scan results: [${response.status}] [${response.statusText}]`
+      `Failed to fetch scan results: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
-      `Failed to fetch scan results: [${response.status}] [${response.statusText}]`
+      `Failed to fetch scan results: [${response.status}] [${response.statusText}]`,
     );
   }
   return response.json() as Promise<ListScanResultsResponse>;
@@ -309,7 +309,7 @@ export async function listScanResults(
 
 export async function isEligibleForFreeScan(
   user: Session["user"],
-  countryCode: string
+  countryCode: string,
 ) {
   if (countryCode !== "us") {
     return false;
@@ -339,7 +339,7 @@ export async function isEligibleForFreeScan(
 export function isEligibleForPremium(
   user: Session["user"],
   countryCode: string,
-  enabledFlags: FeatureFlagName[]
+  enabledFlags: FeatureFlagName[],
 ) {
   if (countryCode !== "us") {
     return false;
@@ -358,24 +358,24 @@ export function isEligibleForPremium(
 
 export async function getScanDetails(
   profileId: number,
-  scanId: number
+  scanId: number,
 ): Promise<Scan> {
   const response = await onerepFetch(`/profiles/${profileId}/scans/${scanId}`, {
     method: "GET",
   });
   if (!response.ok) {
     log.info(
-      `Failed to fetch scan details: [${response.status}] [${response.statusText}]`
+      `Failed to fetch scan details: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
-      `Failed to fetch scan details: [${response.status}] [${response.statusText}]`
+      `Failed to fetch scan details: [${response.status}] [${response.statusText}]`,
     );
   }
   return response.json() as Promise<Scan>;
 }
 
 export async function getAllScanResults(
-  profileId: number
+  profileId: number,
 ): Promise<ScanResult[]> {
   const scanPagesAll = [];
   const firstPage = await listScanResults(profileId, {

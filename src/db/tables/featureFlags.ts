@@ -39,7 +39,7 @@ export type FeatureFlagName =
 export async function getEnabledFeatureFlags(
   options:
     | { ignoreAllowlist?: false; email: string }
-    | { ignoreAllowlist: true }
+    | { ignoreAllowlist: true },
 ): Promise<FeatureFlagName[]> {
   let query = knex("feature_flags")
     .select("name")

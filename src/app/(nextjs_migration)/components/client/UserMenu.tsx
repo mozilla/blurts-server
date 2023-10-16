@@ -70,7 +70,7 @@ export const UserMenu = ({
               {l10n.getString(
                 enabledFeatureFlags.includes("FxaRebrand")
                   ? "menu-item-fxa-2"
-                  : "menu-item-fxa"
+                  : "menu-item-fxa",
               )}
               <Image alt="" src={OpenInIcon} />
             </div>

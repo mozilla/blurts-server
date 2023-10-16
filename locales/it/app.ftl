@@ -645,10 +645,18 @@ ad-unit-6-before-you-complete = La prossima volta che devi registrarti, utilizza
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
+# Deprecated - to be replaced by -brand-mozilla-account
 -brand-fx-account =
     { $capitalization ->
        *[lowercase] account Firefox
         [uppercase] Account Firefox
+    }
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account =
+    { $capitalization ->
+        [uppercase] Account Firefox
+       *[lowercase] account Firefox
     }
 
 ## Search Engine Optimization
@@ -665,7 +673,7 @@ sign-in = Accedi
 site-nav-breaches-link = Risolvi le violazioni di dati
 site-nav-settings-link = Impostazioni
 site-nav-help-link = Guida e supporto
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Prova i nostri altri strumenti di sicurezza:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -675,8 +683,12 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Menu utente
 menu-button-alt = Apri il menu utente
 menu-list-accessible-label = Menu dell’account
+# Deprecated
 menu-item-fxa = Gestisci il tuo { -brand-fx-account }
+menu-item-fxa-2 = Gestisci il tuo { -brand-mozilla-account }
+# Deprecated
 menu-item-fxa-alt = Apri la pagina dell’{ -brand-fx-account }
+menu-item-fxa-alt-2 = Apri la pagina dell’{ -brand-mozilla-account }
 menu-item-settings = Impostazioni
 menu-item-settings-alt = Apri la pagina delle impostazioni
 menu-item-help = Guida e supporto

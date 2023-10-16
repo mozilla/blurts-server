@@ -44,7 +44,7 @@ export async function POST(request: Request) {
     const breaches = (await getBreachesForEmail(
       getSha1(validatedEmail.email),
       allBreaches,
-      false
+      false,
     )) as Breach[];
 
     const successResponse: RequestBreachScanSuccessResponse = {
@@ -70,7 +70,9 @@ export async function POST(request: Request) {
       // This is sent in the API response because we don't have Fluent on the
       // client side, and thus can't dynamically localise breached data classes:
       dataClassStrings: breaches.map((breach) =>
-        breach.DataClasses.map((dataClass: string) => l10n.getString(dataClass))
+        breach.DataClasses.map((dataClass: string) =>
+          l10n.getString(dataClass),
+        ),
       ),
       // This is sent in the API response because we can't call `getBreachLogo`
       // client side, where it would expose AppConstants:

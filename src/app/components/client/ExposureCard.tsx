@@ -66,7 +66,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
   const { scanResult, locale, isPremiumBrokerRemovalEnabled } = props;
   const l10n = useL10n();
   const [exposureCardExpanded, setExposureCardExpanded] = useState(
-    props.isExpanded ?? false
+    props.isExpanded ?? false,
   );
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
@@ -84,7 +84,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         exposureCategoryLabel={l10n.getString("exposure-card-family-members")}
         num={scanResult.relatives.length}
         isPremiumUser={props.isPremiumUser}
-      />
+      />,
     );
   }
   if (scanResult.phones.length > 0) {
@@ -96,7 +96,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
         num={scanResult.phones.length}
         isPremiumUser={props.isPremiumUser}
-      />
+      />,
     );
   }
   if (scanResult.emails.length > 0) {
@@ -108,7 +108,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         exposureCategoryLabel={l10n.getString("exposure-card-email")}
         num={scanResult.emails.length}
         isPremiumUser={props.isPremiumUser}
-      />
+      />,
     );
   }
   if (scanResult.addresses.length > 0) {
@@ -120,7 +120,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         exposureCategoryLabel={l10n.getString("exposure-card-address")}
         num={scanResult.addresses.length}
         isPremiumUser={props.isPremiumUser}
-      />
+      />,
     );
     // TODO: Add unit test when changing this code:
     /* c8 ignore next 13 */
@@ -134,7 +134,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         exposureCategoryLabel={l10n.getString("exposure-card-other")}
         num={0}
         isPremiumUser={props.isPremiumUser}
-      />
+      />,
     );
   }
 
@@ -217,7 +217,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
                       <a href={scanResult.link} target="_blank" />
                     ),
                   },
-                }
+                },
               )}
               <a href={scanResult.link} target="_blank">
                 <span className={styles.openInNewTab}>
@@ -229,7 +229,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
                 </span>
               </a>
               {l10n.getString(
-                "exposure-card-description-info-for-sale-part-two"
+                "exposure-card-description-info-for-sale-part-two",
               )}
             </p>
           </div>
@@ -269,7 +269,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
 
   const l10n = useL10n();
   const [exposureCardExpanded, setExposureCardExpanded] = useState(
-    props.isExpanded ?? false
+    props.isExpanded ?? false,
   );
 
   const dateFormatter = new Intl.DateTimeFormat(locale, {
@@ -288,7 +288,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           key={dataClass}
           icon={<EmailIcon alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-email")}
-        />
+        />,
       );
     } else if (dataClass === "passwords") {
       exposureCategoriesArray.push(
@@ -297,7 +297,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           key={dataClass}
           icon={<PasswordIcon alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-password")}
-        />
+        />,
       );
     } else if (dataClass === "phone-numbers") {
       exposureCategoriesArray.push(
@@ -306,7 +306,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           key={dataClass}
           icon={<PhoneIcon alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
-        />
+        />,
       );
     } else if (dataClass === "ip-addresses") {
       exposureCategoriesArray.push(
@@ -315,7 +315,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           key={dataClass}
           icon={<QuestionMarkCircle alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-ip-address")}
-        />
+        />,
       );
       // TODO: Add unit test when changing this code:
       /* c8 ignore next 12 */
@@ -328,7 +328,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           key={dataClass}
           icon={<QuestionMarkCircle alt="" width="13" height="13" />} // default icon for categories without a unique one
           exposureCategoryLabel={l10n.getString(dataClass)} // categories are localized in data-classes.ftl
-        />
+        />,
       );
     }
   });
@@ -429,7 +429,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
                       <Link href={`/breach-details/${subscriberBreach.name}`} />
                     ),
                   },
-                }
+                },
               )}
               <a
                 href={`/breach-details/${subscriberBreach.name}`}

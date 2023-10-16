@@ -29,7 +29,7 @@ interface ContentConditionProps
 
 const isMatchingContent = (
   contentProps: ContentProps,
-  contentConditions: ContentConditionProps
+  contentConditions: ContentConditionProps,
 ) => {
   const { hasExposures, hasUnresolvedBreaches, hasUnresolvedBrokers } =
     contentConditions;
@@ -41,7 +41,7 @@ const isMatchingContent = (
     (!hasExposures && hasUnresolvedBrokers)
   ) {
     throw new Error(
-      "Invalid combination of conditions: `hasExposures` can not be `false` if `hasUnresolvedBreaches` or `hasUnresolvedBrokers` is `true`."
+      "Invalid combination of conditions: `hasExposures` can not be `false` if `hasUnresolvedBreaches` or `hasUnresolvedBrokers` is `true`.",
     );
   }
 
@@ -58,7 +58,7 @@ const isMatchingContent = (
 };
 
 export const getUserDashboardState = (
-  contentProps: ContentProps
+  contentProps: ContentProps,
 ): UserDashboardState => {
   const { relevantGuidedStep } = contentProps;
 

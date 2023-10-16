@@ -100,7 +100,7 @@ it("can go to step 2 from step 1", async () => {
   expect(
     screen.queryByRole("heading", {
       name: "Enter the details you want to protect",
-    })
+    }),
   ).not.toBeInTheDocument();
 
   const startButton = screen.getByRole("button", {
@@ -111,7 +111,7 @@ it("can go to step 2 from step 1", async () => {
   expect(
     screen.getByRole("heading", {
       name: "Enter the details you want to protect",
-    })
+    }),
   ).toBeInTheDocument();
 });
 
@@ -123,7 +123,7 @@ it("can go back to step 1 after moving on to step 2", async () => {
   expect(
     screen.queryByRole("heading", {
       name: "Welcome to ⁨Monitor⁩. Let’s find your exposed information.",
-    })
+    }),
   ).not.toBeInTheDocument();
 
   const backButton = screen.getByRole("button", {
@@ -134,7 +134,7 @@ it("can go back to step 1 after moving on to step 2", async () => {
   expect(
     screen.getByRole("heading", {
       name: "Welcome to ⁨Monitor⁩. Let’s find your exposed information.",
-    })
+    }),
   ).toBeInTheDocument();
 });
 

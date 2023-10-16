@@ -13,10 +13,10 @@ export async function GET(req: NextRequest) {
   }
 
   const monthlyScanQuota = parseInt(
-    (process.env.MONTHLY_SCANS_QUOTA as string) || "0"
+    (process.env.MONTHLY_SCANS_QUOTA as string) || "0",
   );
   const monthlySubscriberQuota = parseInt(
-    (process.env.MONTHLY_SUBSCRIBERS_QUOTA as string) || "0"
+    (process.env.MONTHLY_SUBSCRIBERS_QUOTA as string) || "0",
   );
 
   const now = new Date();
@@ -27,7 +27,7 @@ export async function GET(req: NextRequest) {
       await getScansCount(
         firstDayOfMonth.toDateString(),
         now.toDateString(),
-        "manual"
+        "manual",
       )
     )?.[0]?.["count"] as string) || "0";
 
@@ -36,7 +36,7 @@ export async function GET(req: NextRequest) {
       await getScansCount(
         firstDayOfMonth.toDateString(),
         now.toDateString(),
-        "initial"
+        "initial",
       )
     )?.[0]?.["count"] as string) || "0";
 
