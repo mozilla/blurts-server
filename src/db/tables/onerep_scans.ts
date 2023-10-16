@@ -4,10 +4,30 @@
 
 import initKnex from "knex";
 import knexConfig from "../knexfile.js";
+
+import { createLogger, transports } from "winston";
+import { LoggingWinston } from "@google-cloud/logging-winston";
+
 import { ScanResult, Scan } from "../../app/functions/server/onerep.js";
 import { Subscriber } from "../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
+
 const knex = initKnex(knexConfig);
+const loggingWinston = new LoggingWinston({
+  labels: {
+    name: "onerep-stats",
+    version: "0.1.0",
+  },
+});
+
+const logger = createLogger({
+  level: "info",
+  transports: [new transports.Console()],
+});
+
+if (["stage", "production"].includes(process.env.APP_ENV ?? "local")) {
+  logger.transports.push(loggingWinston);
+}
 
 export interface LatestOnerepScanData {
   scan: OnerepScanRow | null;
@@ -51,6 +71,8 @@ async function setOnerepManualScan(
   onerepScanId: number,
   onerepScanStatus: Scan["status"],
 ) {
+  logger.info("manual_scan_created", { onerepScanId, onerepScanStatus });
+
   await knex("onerep_scans").insert({
     onerep_profile_id: onerepProfileId,
     onerep_scan_id: onerepScanId,
@@ -72,6 +94,11 @@ async function addOnerepScanResults(
   await knex.transaction(async (transaction) => {
     if (onerepScanReason === "manual") {
       // Manual scans update an existing scan, replacing the previous results:
+      logger.info("manual_scan_updated", {
+        onerepScanId,
+        onerepScanReason,
+        onerepScanStatus,
+      });
       await transaction("onerep_scan_results")
         .delete()
         .where("onerep_scan_id", onerepScanId);
@@ -79,6 +106,11 @@ async function addOnerepScanResults(
 
     // Create a new scan if it does not already exist. If it already exists:
     // Update the status of the scan.
+    logger.info("new_scan_created", {
+      onerepScanId,
+      onerepScanReason,
+      onerepScanStatus,
+    });
     await transaction("onerep_scans")
       .insert({
         onerep_profile_id: onerepProfileId,
@@ -147,6 +179,10 @@ async function isOnerepScanResultForSubscriber(params: {
 async function markOnerepScanResultAsResolved(
   onerepScanResultId: number,
 ): Promise<void> {
+  logger.info("scan_resolved", {
+    onerepScanResultId,
+  });
+
   await knex("onerep_scan_results")
     .update({
       manually_resolved: true,
@@ -168,18 +204,6 @@ async function getScansCount(
     .andWhere("onerep_scan_reason", scanReason);
 }
 
-async function getScansCountForProfile(
-  onerepProfileId: number,
-): Promise<number> {
-  return parseInt(
-    ((
-      await knex("onerep_scans")
-        .count("id")
-        .where("onerep_profile_id", onerepProfileId)
-    )?.[0]?.["count"] as string) || "0",
-  );
-}
-
 export {
   getLatestOnerepScanResults,
   setOnerepProfileId,
@@ -188,5 +212,4 @@ export {
   getScansCount,
   isOnerepScanResultForSubscriber,
   markOnerepScanResultAsResolved,
-  getScansCountForProfile,
 };
