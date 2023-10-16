@@ -20,6 +20,8 @@ import { authOptions } from "../../../api/utils/auth";
 import { getNonce } from "../../functions/server/getNonce";
 import { PageLoadEvent } from "../../components/client/PageLoadEvent";
 import { getExperiments } from "../../../functions/server/getExperiments";
+import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
+
 export type Props = {
   children: ReactNode;
 };
@@ -57,6 +59,9 @@ const MainLayout = async (props: Props) => {
   }
 
   const l10n = getL10n();
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
 
   return (
     <>
@@ -101,6 +106,7 @@ const MainLayout = async (props: Props) => {
               session={session}
               fxaSettingsUrl={AppConstants.NEXT_PUBLIC_FXA_SETTINGS_URL}
               nonce={getNonce()}
+              enabledFeatureFlags={enabledFeatureFlags}
             />
           </div>
         </div>
