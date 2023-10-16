@@ -14,14 +14,21 @@ import OpenInIcon from "../../../../client/images/icon-open-in.svg";
 import SettingsIcon from "../../../../client/images/icon-settings.svg";
 import HelpIcon from "../../../../client/images/icon-help.svg";
 import SignOutIcon from "../../../../client/images/icon-signout.svg";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 export type Props = {
   session: Session;
   fxaSettingsUrl: string;
   nonce: string | undefined;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
-export const UserMenu = ({ session, fxaSettingsUrl, nonce }: Props) => {
+export const UserMenu = ({
+  session,
+  fxaSettingsUrl,
+  nonce,
+  enabledFeatureFlags,
+}: Props) => {
   const l10n = useL10n();
   if (!session) {
     return null;
@@ -60,7 +67,11 @@ export const UserMenu = ({ session, fxaSettingsUrl, nonce }: Props) => {
           <a href={fxaSettingsUrl} target="_blank" className="user-menu-header">
             <b className="user-menu-email">{session.user?.email}</b>
             <div className="user-menu-subtitle">
-              {l10n.getString("menu-item-fxa")}
+              {l10n.getString(
+                enabledFeatureFlags.includes("FxaRebrand")
+                  ? "menu-item-fxa-2"
+                  : "menu-item-fxa"
+              )}
               <Image alt="" src={OpenInIcon} />
             </div>
           </a>

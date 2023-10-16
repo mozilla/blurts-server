@@ -12,9 +12,18 @@ enum ENV {
   dev = "dev",
 }
 
-export const defaultScreenshotOpts = {
+interface DefaultScreenshotOpts {
+  animations: "disabled" | "allow";
+  maxDiffPixelRatio: number;
+  timeout: number;
+  caret?: "hide" | "initial" | undefined;
+  fullPage?: boolean;
+}
+
+export const defaultScreenshotOpts: Partial<DefaultScreenshotOpts> = {
   animations: "disabled",
   maxDiffPixelRatio: 0.04,
+  timeout: 5_000,
 };
 
 export const ENV_URLS = {

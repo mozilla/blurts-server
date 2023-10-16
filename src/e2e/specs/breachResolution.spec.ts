@@ -132,7 +132,7 @@ test.describe("Breaches Dashboard - Headers", () => {
       // head text
       expect(
         await dataBreachPage.dataBreachesNavbarProfileMenuHeaderSubtitle.textContent()
-      ).toEqual("Manage your Firefox account");
+      ).toEqual("Manage your Mozilla account");
 
       // check settings
       await expect(
