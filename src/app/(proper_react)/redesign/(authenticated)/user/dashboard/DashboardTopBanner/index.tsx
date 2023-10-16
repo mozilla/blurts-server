@@ -35,7 +35,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
     (obj) => {
       const [key, value] = Object.entries(obj)[0];
       return [l10n.getString(key), value];
-    }
+    },
   );
 
   return (

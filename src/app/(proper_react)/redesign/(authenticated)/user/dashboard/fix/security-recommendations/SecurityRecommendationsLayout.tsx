@@ -28,7 +28,7 @@ export interface SecurityRecommendationsLayoutProps {
 }
 
 export function SecurityRecommendationsLayout(
-  props: SecurityRecommendationsLayoutProps
+  props: SecurityRecommendationsLayoutProps,
 ) {
   const l10n = useL10n();
 
@@ -40,7 +40,7 @@ export function SecurityRecommendationsLayout(
 
   const guidedExperienceBreaches = getGuidedExperienceBreaches(
     props.data.subscriberBreaches,
-    props.subscriberEmails
+    props.subscriberEmails,
   );
 
   const pageData = getSecurityRecommendationsByType({

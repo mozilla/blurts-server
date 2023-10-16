@@ -17,7 +17,7 @@ import Meta, {
 it("passes the axe accessibility test suite for credit card breaches", async () => {
   const ComposedHighRiskDataBreachComponent = composeStory(
     CreditCardStory,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedHighRiskDataBreachComponent />);
   expect(await axe(container)).toHaveNoViolations();
@@ -26,7 +26,7 @@ it("passes the axe accessibility test suite for credit card breaches", async () 
 it("passes the axe accessibility test suite for bank account breaches", async () => {
   const ComposedHighRiskDataBreachComponent = composeStory(
     BankAccountStory,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedHighRiskDataBreachComponent />);
   expect(await axe(container)).toHaveNoViolations();

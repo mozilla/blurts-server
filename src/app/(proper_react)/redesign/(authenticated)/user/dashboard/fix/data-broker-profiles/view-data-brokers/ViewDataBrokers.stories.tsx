@@ -56,7 +56,7 @@ const ViewWrapper = (props: ViewWrapperProps) => {
   const mockedManyUnresolvedScanResults: OnerepScanResultRow[] = [
     ...Array(42),
   ].map(() =>
-    createRandomScanResult({ status: "new", manually_resolved: false })
+    createRandomScanResult({ status: "new", manually_resolved: false }),
   );
 
   const scanData: LatestOnerepScanData = { scan: null, results: [] };

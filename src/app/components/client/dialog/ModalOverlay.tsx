@@ -19,7 +19,7 @@ export const ModalOverlay = ({ state, children, ...otherProps }: Props) => {
   const { modalProps, underlayProps } = useModalOverlay(
     otherProps,
     state,
-    modalRef
+    modalRef,
   );
 
   return (

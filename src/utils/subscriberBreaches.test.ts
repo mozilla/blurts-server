@@ -258,10 +258,10 @@ describe("getSubBreaches", () => {
       "passwords",
     ]);
     expect(subBreaches[0].dataClassesEffected[0]["email-addresses"]).toContain(
-      "test@test.com"
+      "test@test.com",
     );
     expect(subBreaches[0].dataClassesEffected[0]["email-addresses"]).toContain(
-      "additional@test.com"
+      "additional@test.com",
     );
     expect(subBreaches[0].dataClassesEffected[1]).toEqual({ passwords: 2 });
   });
@@ -321,7 +321,7 @@ describe("getSubBreaches", () => {
         BreachDate: "2016-12-01T08:00:00.000Z",
         AddedDate: "2017-04-15T11:02:35.000Z",
         ModifiedDate: "2017-04-15T11:02:35.000Z",
-      }))
+      })),
     );
 
     const subBreaches = await getSubBreaches(subscriber, []);

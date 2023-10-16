@@ -18,7 +18,7 @@ const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
 mockedBreaches.push(
   createRandomBreach({
     dataClasses: [BreachDataTypes.Passwords, BreachDataTypes.SecurityQuestions],
-  })
+  }),
 );
 
 const user = createUserWithPremiumSubscription();

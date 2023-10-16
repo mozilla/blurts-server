@@ -18,7 +18,7 @@ type ExposuresFilterTypeExplainerProps = {
 };
 
 export const ExposuresFilterTypeExplainer = (
-  props: ExposuresFilterTypeExplainerProps
+  props: ExposuresFilterTypeExplainerProps,
 ) => {
   const l10n = useL10n();
 
@@ -40,7 +40,7 @@ export const ExposuresFilterTypeExplainer = (
             {l10n.getString("modal-exposure-type-description", {
               data_broker_sites_total_num: parseInt(
                 process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-                10
+                10,
               ),
             })}
           </p>
@@ -77,7 +77,7 @@ type ExposuresFilterStatusExplainerProps = {
 };
 
 export const ExposuresFilterStatusExplainer = (
-  props: ExposuresFilterStatusExplainerProps
+  props: ExposuresFilterStatusExplainerProps,
 ) => {
   const l10n = useL10n();
 
@@ -99,7 +99,7 @@ export const ExposuresFilterStatusExplainer = (
             {l10n.getString("modal-exposure-status-description", {
               data_broker_sites_total_num: parseInt(
                 process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-                10
+                10,
               ),
             })}
           </p>

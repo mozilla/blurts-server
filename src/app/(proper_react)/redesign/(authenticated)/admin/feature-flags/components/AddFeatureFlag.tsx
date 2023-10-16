@@ -35,7 +35,7 @@ export const AddFeatureFlag = () => {
   const handleSubmit = (
     event: FormEvent<HTMLFormElement> & {
       target: FeatureFlagElement;
-    }
+    },
   ) => {
     event.preventDefault();
 

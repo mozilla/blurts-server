@@ -25,7 +25,7 @@ export type LocaleData = {
 const translationsContext = (require as any).context(
   "../../../../locales",
   true,
-  /\.ftl$/
+  /\.ftl$/,
 );
 const loadedSources: Record<string, string> = {};
 function loadSource(filename: string): string {
@@ -64,13 +64,13 @@ export function getL10nBundles(): LocaleData[] {
         const pendingTranslationsContext = (require as any).context(
           "../../../../locales-pending",
           true,
-          /\.ftl$/
+          /\.ftl$/,
         );
         pendingTranslationsContext
           .keys()
           .forEach((pendingTranslationFilename: string) => {
             bundleSources.en.push(
-              pendingTranslationsContext(pendingTranslationFilename)
+              pendingTranslationsContext(pendingTranslationFilename),
             );
           });
       }
@@ -81,7 +81,7 @@ export function getL10nBundles(): LocaleData[] {
   const currentLocales = negotiateLanguages(
     languages,
     Object.keys(bundleSources),
-    { defaultLocale: "en" }
+    { defaultLocale: "en" },
   );
 
   const relevantBundleSources = currentLocales.map((relevantLocale) => ({
@@ -123,7 +123,7 @@ function getBundle(localeData: LocaleData): FluentBundle {
 }
 
 export function getL10n(
-  localeData: LocaleData[] = getL10nBundles()
+  localeData: LocaleData[] = getL10nBundles(),
 ): ExtendedReactLocalization {
   const bundles: FluentBundle[] = localeData.map((data) => getBundle(data));
 
@@ -131,7 +131,7 @@ export function getL10n(
   // bundles. You can store it in your app's state.
   const l10n = new ReactLocalization(
     bundles,
-    process.env.STORYBOOK === "true" ? undefined : parseMarkup
+    process.env.STORYBOOK === "true" ? undefined : parseMarkup,
   );
 
   const getFragment: GetFragment = (id, args, fallback) =>

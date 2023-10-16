@@ -34,7 +34,7 @@ const getCurrentScanCountForRange = ({
     return totalCount;
   }
   const currentCount = Math.ceil(
-    (totalCount * (currentProgress - rangeStart)) / (rangeEnd - rangeStart)
+    (totalCount * (currentProgress - rangeStart)) / (rangeEnd - rangeStart),
   );
 
   return currentCount;
@@ -115,14 +115,14 @@ export const FindExposures = ({
             scanProgress < labelSwitchThreshold
               ? l10n.getString(
                   "onboarding-find-exposures-progress-breaches-counter",
-                  { breachesScannedCount, breachesTotalCount }
+                  { breachesScannedCount, breachesTotalCount },
                 )
               : l10n.getString(
                   "onboarding-find-exposures-progress-broker-counter",
                   {
                     dataBrokerScannedCount,
                     dataBrokerTotalCount: dataBrokerCount,
-                  }
+                  },
                 )
           }
         </div>

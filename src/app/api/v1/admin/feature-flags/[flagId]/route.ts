@@ -17,7 +17,7 @@ import appConstants from "../../../../../../appConstants";
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { flagId: string } }
+  { params }: { params: { flagId: string } },
 ) {
   const session = await getServerSession(authOptions);
   if (isAdmin(session?.user?.email || "")) {
