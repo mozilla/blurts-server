@@ -4,7 +4,7 @@
 
 "use client";
 
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode } from "react";
 import Link from "next/link";
 import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./ExposureCard.module.scss";
@@ -44,6 +44,7 @@ export type ExposureCardProps = {
   isPremiumUser: boolean;
   resolutionCta: ReactNode;
   isExpanded?: boolean;
+  setExpanded: () => void;
 };
 
 export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
@@ -59,15 +60,13 @@ export type ScanResultCardProps = {
   locale: string;
   isPremiumBrokerRemovalEnabled: boolean;
   resolutionCta: ReactNode;
-  isExpanded?: boolean;
   isPremiumUser: boolean;
+  isExpanded?: boolean;
+  setExpanded: () => void;
 };
 const ScanResultCard = (props: ScanResultCardProps) => {
   const { scanResult, locale, isPremiumBrokerRemovalEnabled } = props;
   const l10n = useL10n();
-  const [exposureCardExpanded, setExposureCardExpanded] = useState(
-    props.isExpanded ?? false
-  );
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
@@ -182,16 +181,16 @@ const ScanResultCard = (props: ScanResultCardProps) => {
             className={styles.chevron}
             // TODO: Add unit test when changing this code:
             /* c8 ignore next */
-            onClick={() => setExposureCardExpanded(!exposureCardExpanded)}
+            onClick={props.setExpanded}
           >
             <ChevronDown
               // TODO: Add unit test when changing this code:
               /* c8 ignore next */
-              className={exposureCardExpanded ? styles.isOpen : ""}
+              className={props.isExpanded ? styles.isOpen : ""}
               alt={
                 // TODO: Add unit test when changing this code:
                 /* c8 ignore next 2 */
-                exposureCardExpanded
+                props.isExpanded
                   ? l10n.getString("chevron-up-alt")
                   : l10n.getString("chevron-down-alt")
               }
@@ -204,7 +203,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
           className={`${styles.exposureDetailsSection} ${
             // TODO: Add unit test when changing this code:
             /* c8 ignore next */
-            exposureCardExpanded ? styles.isOpen : ""
+            props.isExpanded ? styles.isOpen : ""
           }`}
         >
           <div>
@@ -261,15 +260,12 @@ export type SubscriberBreachCardProps = {
   locale: string;
   resolutionCta: ReactNode;
   isExpanded?: boolean;
+  setExpanded: () => void;
 };
 const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
   const { exposureImg, subscriberBreach, locale } = props;
 
   const l10n = useL10n();
-  const [exposureCardExpanded, setExposureCardExpanded] = useState(
-    props.isExpanded ?? false
-  );
-
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
@@ -388,16 +384,16 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
             className={styles.chevron}
             // TODO: Add unit test when changing this code:
             /* c8 ignore next */
-            onClick={() => setExposureCardExpanded(!exposureCardExpanded)}
+            onClick={props.setExpanded}
           >
             <ChevronDown
               // TODO: Add unit test when changing this code:
               /* c8 ignore next */
-              className={exposureCardExpanded ? styles.isOpen : ""}
+              className={props.isExpanded ? styles.isOpen : ""}
               alt={
                 // TODO: Add unit test when changing this code:
                 /* c8 ignore next 2 */
-                exposureCardExpanded
+                props.isExpanded
                   ? l10n.getString("chevron-up-alt")
                   : l10n.getString("chevron-down-alt")
               }
@@ -410,7 +406,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           className={`${styles.exposureDetailsSection} ${
             // TODO: Add unit test when changing this code:
             /* c8 ignore next */
-            exposureCardExpanded ? styles.isOpen : ""
+            props.isExpanded ? styles.isOpen : ""
           }`}
         >
           <div>

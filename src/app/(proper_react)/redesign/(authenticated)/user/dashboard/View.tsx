@@ -72,6 +72,7 @@ export const View = (props: Props) => {
   };
   const [filters, setFilters] = useState<FilterState>(initialFilterState);
   const [selectedTab, setSelectedTab] = useState<TabType>("action-needed");
+  const [activeExposureCardKey, setActiveExposureCardKey] = useState("");
   const tabsData: TabData[] = [
     {
       name: l10n.getString("dashboard-tab-label-action-needed"),
@@ -138,13 +139,15 @@ export const View = (props: Props) => {
   };
 
   const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
+    const exposureCardKey = `${isScanResult(exposure) ? "scan" : "breach"}-${
+      exposure.id
+    }`;
     return (
-      <li
-        key={`${isScanResult(exposure) ? "scan" : "breach"}-${exposure.id}`}
-        className={styles.exposureListItem}
-      >
+      <li key={exposureCardKey} className={styles.exposureListItem}>
         <ExposureCard
           exposureData={exposure}
+          isExpanded={exposureCardKey === activeExposureCardKey}
+          setExpanded={() => setActiveExposureCardKey(exposureCardKey)}
           locale={getLocale(l10n)}
           isPremiumBrokerRemovalEnabled={
             props.featureFlagsEnabled.PremiumBrokerRemoval
