@@ -668,7 +668,6 @@ ad-unit-6-before-you-complete = Para se të plotësoni regjistrimin tuaj të rad
 
 ## Search Engine Optimization
 
-meta-desc = Shihni nëse keni qenë pjesë e ndonjë shkeljeje të dhënash, përmes { -brand-fx-monitor }. Regjistrohuni për sinjalizime rreth shkeljesh në të ardhmen dhe merrni ndihmëza si t’i mbani llogaritë tuaja të parrezikuara.
 
 ## Header
 
@@ -727,3 +726,8 @@ exposed-data = Të dhëna të ekspozuara:
 find-out-if-2 = Shihni nëse jeni përfshirë në këtë cenim
 find-out-if-description = Do t’ju ndihmojmë të shihni shpejt e shpejt nëse adresa juaj email qe ekspozuar në këtë cenim dhe të kuptoni ç’të bëhet më pas.
 breach-detail-cta-signup = Kontrolloni për cenime
+
+## Floating banner
+
+floating-banner-link-label = Regjistrohuni
+floating-banner-dismiss-button-label = Jo, faleminderit
