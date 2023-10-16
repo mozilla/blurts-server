@@ -121,17 +121,17 @@ export const View = (props: Props) => {
     if (!isScanResult(exposure)) {
       // if it's a data breach exposure
       if (props.isEligibleForFreeScan) {
-        return "redesign/user/dashboard/fix/data-broker-profiles/start-free-scan";
+        return "/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan";
       } else if (props.isEligibleForPremium) {
         if (props.isPremiumUser) {
           // if premium user, go to resolution card
-          return "redesign/user/dashboard/fix/high-risk-data-breaches";
+          return "/redesign/user/dashboard/fix/high-risk-data-breaches";
         }
         // if free user, go to data broker results
-        return "redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers";
+        return "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers";
       }
 
-      return "redesign/user/dashboard/";
+      return "/redesign/user/dashboard/";
     }
     // if it's a data broker exposure
     return "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove";
