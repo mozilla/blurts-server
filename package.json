@@ -51,7 +51,7 @@
     "@aws-sdk/lib-storage": "^3.428.0",
     "@fluent/bundle": "^0.18.0",
     "@fluent/langneg": "^0.7.0",
-    "@fluent/react": "^0.15.0",
+    "@fluent/react": "^0.15.2",
     "@google-cloud/pubsub": "^4.0.6",
     "@grpc/grpc-js": "1.9.5",
     "@leeoniya/ufuzzy": "^1.0.8",
