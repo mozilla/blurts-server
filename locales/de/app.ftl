@@ -670,7 +670,11 @@ ad-unit-6-before-you-complete = Bevor Sie die nächste Registrierung abschließe
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
+# Deprecated - to be replaced by -brand-mozilla-account
 -brand-fx-account = Firefox-Konto
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account = Mozilla-Konto
 
 ## Search Engine Optimization
 
@@ -686,7 +690,7 @@ sign-in = Einloggen
 site-nav-breaches-link = Datenlecks beheben
 site-nav-settings-link = Einstellungen
 site-nav-help-link = Hilfe und Unterstützung
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Probieren Sie unsere anderen Sicherheitswerkzeuge aus:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -696,8 +700,12 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Benutzermenü
 menu-button-alt = Benutzermenü öffnen
 menu-list-accessible-label = Kontomenü
+# Deprecated
 menu-item-fxa = Verwalten Sie Ihr { -brand-fx-account }
+menu-item-fxa-2 = Verwalten Sie Ihr { -brand-mozilla-account }
+# Deprecated
 menu-item-fxa-alt = { -brand-fx-account }-Seite öffnen
+menu-item-fxa-alt-2 = { -brand-mozilla-account }-Seite öffnen
 menu-item-settings = Einstellungen
 menu-item-settings-alt = Einstellungsseite öffnen
 menu-item-help = Hilfe und Unterstützung
@@ -742,14 +750,3 @@ breach-detail-cta-signup = Auf Datenlecks überprüfen
 floating-banner-text = Erhöhen Sie Ihre Online-Sicherheit mit Nachrichten, Tipps und Updates von { -brand-Mozilla }.
 floating-banner-link-label = Registrieren
 floating-banner-dismiss-button-label = Nein, danke
-
-## False door test
-
-
-# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
-
-false-door-test-content-part-one = Niemand sollte Ihre persönlichen Daten kaufen können.
-false-door-test-content-part-two = Automatisch Daten von Websites entfernen, die versuchen, sie zu verkaufen.
-false-door-test-content-part-two-dashboard = Automatisch Daten von Websites löschen, die versuchen, sie zu verkaufen.
-false-door-test-cta = Ich bin dabei
-false-door-test-popup-close = Schließen

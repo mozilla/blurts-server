@@ -54,8 +54,12 @@ settings-cancel-premium-subscription-link-label = Prekliči iz svojega { -brand-
 ## Deactivate account
 
 settings-deactivate-account-title = Deaktiviraj račun
+# Deprecated
 settings-deactivate-account-info = { -product-short-name } lahko deaktivirate tako, da izbrišete { -brand-fx-account }.
+settings-deactivate-account-info-2 = { -product-short-name } lahko izključite tako, da izbrišete svoj { -brand-mozilla-account }.
+# Deprecated
 settings-fxa-link-label = Odpri nastavitve { -brand-firefox(sklon: "rodilnik") }
+settings-fxa-link-label-2 = Pojdite v Nastavitve { -brand-mozilla(sklon: "rodilnik") }
 
 ## Add email dialog
 

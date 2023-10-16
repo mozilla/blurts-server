@@ -48,8 +48,12 @@ settings-cancel-premium-subscription-link-label = Batalkan dari { -brand-fx-acco
 ## Deactivate account
 
 settings-deactivate-account-title = Nonaktifkan akun
+# Deprecated
 settings-deactivate-account-info = Anda dapat menonaktifkan { -product-short-name } dengan menghapus { -brand-fx-account } Anda.
+settings-deactivate-account-info-2 = Anda dapat menonaktifkan { -product-short-name } dengan menghapus { -brand-mozilla-account } Anda.
+# Deprecated
 settings-fxa-link-label = Buka Pengaturan { -brand-firefox }
+settings-fxa-link-label-2 = Buka Pengaturan { -brand-mozilla }
 
 ## Add email dialog
 
