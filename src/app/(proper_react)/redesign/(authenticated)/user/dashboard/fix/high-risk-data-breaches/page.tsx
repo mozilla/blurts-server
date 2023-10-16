@@ -26,7 +26,7 @@ export default async function HighRiskDataBreaches() {
   const subscriberEmails = await getSubscriberEmails(session.user);
   const guidedExperienceBreaches = getGuidedExperienceBreaches(
     breaches,
-    subscriberEmails
+    subscriberEmails,
   );
 
   const pageData = getHighRiskBreachesByType({

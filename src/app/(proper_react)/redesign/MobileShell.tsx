@@ -47,7 +47,7 @@ export const MobileShell = (props: Props) => {
               /* c8 ignore next 2 */
               isExpanded
                 ? "main-nav-button-collapse-tooltip"
-                : "main-nav-button-expand-tooltip"
+                : "main-nav-button-expand-tooltip",
             )}
           >
             {

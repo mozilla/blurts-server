@@ -51,7 +51,7 @@ function createEmailOptions({ breachesData, emailSelectIndex }: UserBreaches) {
     (email, index) =>
       `<option ${
         emailSelectIndex === index ? "selected" : ""
-      }>${email}</option>`
+      }>${email}</option>`,
   );
 
   return optionElements.join("");
@@ -126,7 +126,7 @@ export default async function UserBreaches() {
               dangerouslySetInnerHTML={{
                 __html: l10n.getString("breach-heading-email", {
                   "email-select": `<custom-select name="email-account">${createEmailOptions(
-                    userBreachesData
+                    userBreachesData,
                   )}</custom-select>`,
                 }),
               }}

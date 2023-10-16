@@ -67,7 +67,7 @@ export async function refreshStoredScanResults(profileId: number) {
         scanId,
         newScanResults,
         reason,
-        status
+        status,
       );
     }
   } catch (ex) {

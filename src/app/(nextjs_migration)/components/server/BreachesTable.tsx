@@ -18,11 +18,11 @@ function createResolveSteps(breach: any) {
     ([key, value]: [string, any]) => `
     <li class="resolve-list-item">
       <input name="${breach.Id as string}" value="${key}" type="checkbox" ${
-      checkedArr.includes(key) ? "checked" : ""
-    }>
+        checkedArr.includes(key) ? "checked" : ""
+      }>
       <p>${value.header as string}<br><i>${value.body as string}</i></p>
     </li>
-   `
+   `,
   );
 
   return resolveStepsHTML.join("");
@@ -58,7 +58,7 @@ export const BreachesTable = ({ userBreaches }: Props) => {
         const breachDate = Date.parse(breach.BreachDate);
         const addedDate = Date.parse((breach as Breach).AddedDate);
         const dataClassesTranslated = breach.DataClasses.map((item) =>
-          l10n.getString(item)
+          l10n.getString(item),
         );
         const description = l10n.getString("breach-description", {
           companyName: breach.Title,
@@ -208,7 +208,7 @@ export const BreachesTable = ({ userBreaches }: Props) => {
                 </p>
                 <p class="add-email-cta">
                   <span>${l10n.getString(
-                    "breaches-all-resolved-cta-blurb"
+                    "breaches-all-resolved-cta-blurb",
                   )}</span>
                   <button
                     class="primary"

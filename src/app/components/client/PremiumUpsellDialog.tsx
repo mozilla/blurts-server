@@ -29,30 +29,30 @@ function PremiumPricingLabel({ isMonthly }: { isMonthly?: boolean }) {
       <small className={styles.pricingInfo}>
         {l10n.getString(
           "fix-flow-data-broker-profiles-automatic-remove-save-percent",
-          { percent: 10 }
+          { percent: 10 },
         )}
       </small>
       <div className={styles.pricingPill}>
         <div className={styles.pricingLabel}>
           <b>
             {l10n.getString(
-              "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-headline"
+              "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-headline",
             )}
           </b>
           <small>
             {isMonthly
               ? l10n.getString(
-                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-frequency"
+                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-frequency",
                 )
               : l10n.getString(
-                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-frequency"
+                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-frequency",
                 )}
           </small>
         </div>
         <b>
           {l10n.getString(
             "fix-flow-data-broker-profiles-automatic-remove-features-price",
-            { price: isMonthly ? "X.XX" : "Y.YY" }
+            { price: isMonthly ? "X.XX" : "Y.YY" },
           )}
         </b>
       </div>
@@ -76,14 +76,14 @@ function PremiumUpsellDialogContent({
   const tabsData = [
     {
       name: l10n.getString(
-        "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-yearly"
+        "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-yearly",
       ),
       key: "yearly",
       content: <PremiumPricingLabel />,
     },
     {
       name: l10n.getString(
-        "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-monthly"
+        "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-monthly",
       ),
       key: "monthly",
       content: <PremiumPricingLabel isMonthly />,
@@ -101,7 +101,7 @@ function PremiumUpsellDialogContent({
       <dl className={styles.list}>
         <dt>
           {l10n.getString(
-            "fix-flow-data-broker-profiles-automatic-remove-features-headline"
+            "fix-flow-data-broker-profiles-automatic-remove-features-headline",
           )}
         </dt>
         <dd>
@@ -110,29 +110,29 @@ function PremiumUpsellDialogContent({
             {
               data_broker_count: parseInt(
                 process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-                10
+                10,
               ),
-            }
+            },
           )}
         </dd>
         <dd>
           {l10n.getString(
-            "fix-flow-data-broker-profiles-automatic-remove-features-remove-personal-info"
+            "fix-flow-data-broker-profiles-automatic-remove-features-remove-personal-info",
           )}
         </dd>
         <dd>
           {l10n.getString(
-            "fix-flow-data-broker-profiles-automatic-remove-features-guided-experience"
+            "fix-flow-data-broker-profiles-automatic-remove-features-guided-experience",
           )}
         </dd>
         <dd>
           {l10n.getString(
-            "fix-flow-data-broker-profiles-automatic-remove-features-continuous-monitoring"
+            "fix-flow-data-broker-profiles-automatic-remove-features-continuous-monitoring",
           )}
         </dd>
         <dd>
           {l10n.getString(
-            "fix-flow-data-broker-profiles-automatic-remove-features-breach-alerts"
+            "fix-flow-data-broker-profiles-automatic-remove-features-breach-alerts",
           )}
         </dd>
       </dl>
@@ -143,10 +143,10 @@ function PremiumUpsellDialogContent({
       >
         {isMonthly
           ? l10n.getString(
-              "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-button"
+              "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-button",
             )
           : l10n.getString(
-              "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-button"
+              "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-button",
             )}
       </Button>
     </div>

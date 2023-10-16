@@ -47,13 +47,13 @@ const getJwtPubKey = async () => {
     const { keys } = (await response.json()) as { keys: jwkToPem.JWK[] };
     console.info(
       "getJwtPubKey",
-      `fetched jwt public keys from: ${jwtKeyUri} - ${keys.length}`
+      `fetched jwt public keys from: ${jwtKeyUri} - ${keys.length}`,
     );
     return keys;
   } catch (e: unknown) {
     console.error("getJwtPubKey", `Could not get JWT public key: ${jwtKeyUri}`);
     captureException(
-      new Error(`Could not get JWT public key: ${jwtKeyUri} - ${e as string}`)
+      new Error(`Could not get JWT public key: ${jwtKeyUri} - ${e as string}`),
     );
   }
 };
@@ -127,14 +127,14 @@ export async function POST(request: NextRequest) {
     captureMessage(
       `fxaRpEvents: decodedJWT is missing attribute "events", ${
         decodedJWT as unknown as string
-      }`
+      }`,
     );
     return NextResponse.json(
       {
         success: false,
         message: 'fxaRpEvents: decodedJWT is missing attribute "events"',
       },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -144,14 +144,14 @@ export async function POST(request: NextRequest) {
     captureMessage(
       `fxaRpEvents: decodedJWT is missing attribute "sub", ${
         decodedJWT as unknown as string
-      }`
+      }`,
     );
     return NextResponse.json(
       {
         success: false,
         message: 'fxaRpEvents: decodedJWT is missing attribute "sub"',
       },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -164,7 +164,7 @@ export async function POST(request: NextRequest) {
   // There's a chance that the fxa event from deletion gets to our service first, in which case, the user will be deleted from the db prior to the profile change event hitting our service
   if (!subscriber) {
     const e = new Error(
-      `could not find subscriber with fxa user id: ${fxaUserId}`
+      `could not find subscriber with fxa user id: ${fxaUserId}`,
     );
     console.error("fxaRpEvents", e);
     captureException(e);
@@ -203,7 +203,7 @@ export async function POST(request: NextRequest) {
             await updatePrimaryEmail(
               subscriber,
               updatedProfileFromEvent[key as keyof ProfileChangeEvent] ||
-                subscriber.primary_email
+                subscriber.primary_email,
             );
           }
           if (currentFxAProfile[key]) {
@@ -245,7 +245,7 @@ export async function POST(request: NextRequest) {
         if (!oneRepProfileId) {
           console.error(
             "No OneRep profile Id found, subscriber: ",
-            subscriber.id
+            subscriber.id,
           );
 
           captureException(
@@ -253,7 +253,7 @@ export async function POST(request: NextRequest) {
               subscriber.id as string
             }\n
             Event: ${event}\n
-            updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`)
+            updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`),
           );
           break;
         }
@@ -262,7 +262,7 @@ export async function POST(request: NextRequest) {
           if (
             updatedSubscriptionFromEvent.isActive &&
             updatedSubscriptionFromEvent.capabilities.includes(
-              MONITOR_PREMIUM_CAPABILITY
+              MONITOR_PREMIUM_CAPABILITY,
             )
           ) {
             // activate and opt out profiles
@@ -271,7 +271,7 @@ export async function POST(request: NextRequest) {
           } else if (
             !updatedSubscriptionFromEvent.isActive &&
             updatedSubscriptionFromEvent.capabilities.includes(
-              MONITOR_PREMIUM_CAPABILITY
+              MONITOR_PREMIUM_CAPABILITY,
             )
           ) {
             // deactivation stops opt out process
@@ -281,7 +281,7 @@ export async function POST(request: NextRequest) {
           captureException(
             new Error(`${(e as Error).message}\n
           Event: ${event}\n
-          updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`)
+          updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`),
           );
         }
         break;
