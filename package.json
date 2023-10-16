@@ -72,7 +72,7 @@
     "knex": "^3.0.1",
     "mozlog": "^3.0.2",
     "next": "^13.5.4",
-    "next-auth": "^4.22.1",
+    "next-auth": "^4.23.2",
     "nodemailer": "^6.9.1",
     "patch-package": "^8.0.0",
     "pg": "^8.11.3",
