@@ -11,8 +11,11 @@ import {
 } from "../../../utils/parse.js";
 import { StateAbbr } from "../../../utils/states.js";
 import { getLatestOnerepScanResults } from "../../../db/tables/onerep_scans";
-import { isFlagEnabled } from "./featureFlags";
 import { RemovalStatus } from "../universal/scanResult.js";
+import {
+  FeatureFlagName,
+  getEnabledFeatureFlags,
+} from "../../../db/tables/featureFlags";
 const log = mozlog("external.onerep");
 
 export type CreateProfileRequest = {
@@ -316,7 +319,8 @@ export async function isEligibleForFreeScan(
     throw new Error("No session");
   }
 
-  if (!(await isFlagEnabled("FreeBrokerScan", user))) {
+  const enabledFlags = await getEnabledFeatureFlags({ email: user.email });
+  if (!enabledFlags.includes("FreeBrokerScan")) {
     return false;
   }
 
@@ -332,9 +336,10 @@ export async function isEligibleForFreeScan(
   return true;
 }
 
-export async function isEligibleForPremium(
+export function isEligibleForPremium(
   user: Session["user"],
-  countryCode: string
+  countryCode: string,
+  enabledFlags: FeatureFlagName[]
 ) {
   if (countryCode !== "us") {
     return false;
@@ -344,7 +349,7 @@ export async function isEligibleForPremium(
     throw new Error("No session");
   }
 
-  if (!(await isFlagEnabled("PremiumBrokerRemoval", user))) {
+  if (!enabledFlags.includes("PremiumBrokerRemoval")) {
     return false;
   }
 

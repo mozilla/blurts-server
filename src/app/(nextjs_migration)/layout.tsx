@@ -7,11 +7,11 @@ import Script from "next/script";
 import { L10nProvider } from "../../contextProviders/localization";
 import { getL10nBundles } from "../functions/server/l10n";
 import { HandleFalseDoorTest } from "./components/client/FalseDoorBanner";
-import { isFlagEnabled } from "../functions/server/featureFlags";
 import { getCountryCode } from "../functions/server/getCountryCode";
 import { headers } from "next/headers";
 import AppConstants from "../../appConstants";
 import { getNonce } from "./functions/server/getNonce";
+import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
 
 export default async function MigrationLayout({
   children,
@@ -21,7 +21,7 @@ export default async function MigrationLayout({
   const headersList = headers();
   const l10nBundles = getL10nBundles();
   const countryCode = getCountryCode(headersList);
-  const falseDoorFlag = await isFlagEnabled("FalseDoorTest");
+  const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
   const waitlistLink = AppConstants.FALSE_DOOR_TEST_LINK_PHASE_ONE;
   const acceptLanguage = headersList.get("Accept-Language");
 
@@ -50,7 +50,7 @@ export default async function MigrationLayout({
         nonce={getNonce()}
       />
       {children}
-      {falseDoorFlag &&
+      {enabledFlags.includes("FalseDoorTest") &&
         waitlistLink &&
         countryCode.toLowerCase() === "us" &&
         ["en", "en-GB", "en-US", "en-CA"].includes(locale) && (

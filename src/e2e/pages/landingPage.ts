@@ -93,7 +93,7 @@ export class LandingPage {
     await this.firefoxLogo.click();
   }
 
-  async checkBanner() {
+  async maybeClearBanner() {
     if (await this.falseDoorBanner.isVisible()) {
       await this.falseBannerCloseButton.click();
     }

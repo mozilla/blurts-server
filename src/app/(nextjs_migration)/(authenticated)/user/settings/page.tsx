@@ -21,6 +21,7 @@ import { getBreachesForEmail } from "../../../../../utils/hibp";
 import { getSha1 } from "../../../../../utils/fxa";
 import { getSubscriberById } from "../../../../../db/tables/subscribers";
 import { getNonce } from "../../../functions/server/getNonce";
+import { getEnabledFeatureFlags } from "../../../../../db/tables/featureFlags";
 
 const emailNeedsVerificationSub = (email: EmailRow) => {
   const l10n = getL10n();
@@ -152,6 +153,9 @@ export default async function Settings() {
   if (!session || !session.user?.subscriber) {
     return redirect("/");
   }
+  const enabledFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
   // Re-fetch the subscriber every time, rather than reading it from `session`
   // - if the user changes their preferences on this page, the JSON web token
   // containing the subscriber data won't be updated until the next sign-in.
@@ -245,7 +249,11 @@ export default async function Settings() {
                 {l10n.getString("settings-deactivate-account-title")}
               </h3>
               <p className="settings-section-info">
-                {l10n.getString("settings-deactivate-account-info")}
+                {l10n.getString(
+                  enabledFlags.includes("FxaRebrand")
+                    ? "settings-deactivate-account-info-2"
+                    : "settings-deactivate-account-info"
+                )}
               </p>
               <a
                 className="settings-link-fxa"
@@ -253,7 +261,11 @@ export default async function Settings() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {l10n.getString("settings-fxa-link-label")}
+                {l10n.getString(
+                  enabledFlags.includes("FxaRebrand")
+                    ? "settings-fxa-link-label-2"
+                    : "settings-fxa-link-label"
+                )}
               </a>
             </section>
           </div>

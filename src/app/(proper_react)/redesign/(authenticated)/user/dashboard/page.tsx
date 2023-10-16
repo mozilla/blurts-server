@@ -16,13 +16,13 @@ import {
 } from "../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 
-import { isFlagEnabled } from "../../../../../functions/server/featureFlags";
 import {
   isEligibleForFreeScan,
   isEligibleForPremium,
 } from "../../../../../functions/server/onerep";
 import getPremiumSubscriptionUrl from "../../../../../functions/server/getPremiumSubscriptionUrl";
 import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
+import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
@@ -51,17 +51,18 @@ export default async function DashboardPage() {
     session.user,
     countryCode
   );
-  const userIsEligibleForPremium = await isEligibleForPremium(
+  const enabledFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+  const userIsEligibleForPremium = isEligibleForPremium(
     session.user,
-    countryCode
+    countryCode,
+    enabledFlags
   );
 
-  const FreeBrokerScan = await isFlagEnabled("FreeBrokerScan", session.user);
-  const PremiumBrokerRemoval = await isFlagEnabled(
-    "PremiumBrokerRemoval",
-    session.user
-  );
-  const featureFlagsEnabled = { FreeBrokerScan, PremiumBrokerRemoval };
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
@@ -73,7 +74,7 @@ export default async function DashboardPage() {
       isEligibleForFreeScan={userIsEligibleForFreeScan}
       userScanData={latestScan}
       userBreaches={subBreaches}
-      featureFlagsEnabled={featureFlagsEnabled}
+      enabledFeatureFlags={enabledFeatureFlags}
       monthlySubscriptionUrl={monthlySubscriptionUrl}
       yearlySubscriptionUrl={yearlySubscriptionUrl}
       scanCount={scanCount}
