@@ -44,7 +44,7 @@ updates:
           - "eslint-config-next"
       fluent:
         patterns:
-          - "@fluent/*""
+          - "@fluent/*"
       nextjs:
         patterns:
           - "eslint-config-next"
