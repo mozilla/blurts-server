@@ -23,7 +23,7 @@ export interface PopoverProps extends AriaPopoverProps {
 function Popover({ children, offset, state, ...props }: PopoverProps) {
   const { popoverProps, underlayProps } = usePopover(
     { ...props, offset },
-    state
+    state,
   );
 
   // The <DismissButton> components allow screen reader users

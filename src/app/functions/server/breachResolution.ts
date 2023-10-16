@@ -93,7 +93,7 @@ const breachResolutionDataTypes = {
 /* eslint-disable @typescript-eslint/no-explicit-any */
 function appendBreachResolutionChecklist(
   userBreachData: any,
-  options: Partial<{ countryCode: string }> = {}
+  options: Partial<{ countryCode: string }> = {},
 ) {
   const l10n = getL10n();
   const { verifiedEmails } = userBreachData;
@@ -102,7 +102,7 @@ function appendBreachResolutionChecklist(
     breaches.forEach((b: Breach) => {
       const dataClasses = b.DataClasses;
       const blockList = (AppConstants.HIBP_BREACH_DOMAIN_BLOCKLIST ?? "").split(
-        ","
+        ",",
       );
       const showLink = b.Domain && !blockList.includes(b.Domain);
 
@@ -110,13 +110,13 @@ function appendBreachResolutionChecklist(
         companyName: b.Name,
         breachedCompanyLink: showLink ? `https://${b.Domain}` : "",
         firefoxRelayLink: `<a href="https://relay.firefox.com/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${l10n.getString(
-          "breach-checklist-link-firefox-relay"
+          "breach-checklist-link-firefox-relay",
         )}</a>`,
         passwordManagerLink: `<a href="https://www.mozilla.org/firefox/features/password-manager/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${l10n.getString(
-          "breach-checklist-link-password-manager"
+          "breach-checklist-link-password-manager",
         )}</a>`,
         mozillaVpnLink: `<a href="https://www.mozilla.org/products/vpn/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${l10n.getString(
-          "breach-checklist-link-mozilla-vpn"
+          "breach-checklist-link-mozilla-vpn",
         )}</a>`,
         equifaxLink:
           '<a href="https://www.equifax.com/personal/credit-report-services/credit-freeze/" target="_blank">Equifax</a>',
@@ -128,7 +128,7 @@ function appendBreachResolutionChecklist(
       (b as any).breachChecklist = getResolutionRecsPerBreach(
         dataClasses,
         args,
-        options
+        options,
       );
     });
   }
@@ -151,7 +151,7 @@ function appendBreachResolutionChecklist(
 function getResolutionRecsPerBreach(
   dataTypes: any[],
   args: { companyName: string; breachedCompanyLink: string },
-  options: Partial<{ countryCode: string }> = {}
+  options: Partial<{ countryCode: string }> = {},
 ) {
   const filteredBreachRecs: Record<
     string,
@@ -167,12 +167,12 @@ function getResolutionRecsPerBreach(
       (!options.countryCode ||
         !Array.isArray(value.applicableCountryCodes) ||
         value.applicableCountryCodes.includes(
-          options.countryCode.toLowerCase()
+          options.countryCode.toLowerCase(),
         ))
     ) {
       filteredBreachRecs[key] = getRecommendationFromResolution(
         resolution,
-        args
+        args,
       );
     }
   }
@@ -182,7 +182,7 @@ function getResolutionRecsPerBreach(
     const resolutionTypeGeneral = BreachDataTypes.General;
     filteredBreachRecs[resolutionTypeGeneral] = getRecommendationFromResolution(
       [resolutionTypeGeneral, breachResolutionDataTypes[resolutionTypeGeneral]],
-      args
+      args,
     );
   }
 
@@ -209,7 +209,7 @@ function getBodyMessage(body: string, args: any): string {
     .getString(body, stringArgs)
     .replace(
       "<breached-company-link>",
-      companyLink ? `<a href="${companyLink}" target="_blank">` : ""
+      companyLink ? `<a href="${companyLink}" target="_blank">` : "",
     )
     .replace("</breached-company-link>", companyLink ? "</a>" : "");
 }

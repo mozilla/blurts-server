@@ -22,7 +22,7 @@ export interface Props {
 }
 
 export const Button = (
-  props: Props & Parameters<typeof useButton>[0] // AriaButtonOptions
+  props: Props & Parameters<typeof useButton>[0], // AriaButtonOptions
 ) => {
   const {
     children,

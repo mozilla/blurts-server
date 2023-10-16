@@ -45,7 +45,7 @@ it("removes the manual resolution button once a profile has been resolved", asyn
     name: "Mark as fixed",
   });
   expect(resolveButtonsAfterResolving.length).toBeLessThan(
-    resolveButtonsBeforeResolving.length
+    resolveButtonsBeforeResolving.length,
   );
 });
 
@@ -65,6 +65,6 @@ it("keeps the manual resolution button if resolving a profile failed", async () 
     name: "Mark as fixed",
   });
   expect(resolveButtonsAfterResolving.length).toBe(
-    resolveButtonsBeforeResolving.length
+    resolveButtonsBeforeResolving.length,
   );
 });

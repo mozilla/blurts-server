@@ -22,7 +22,7 @@ export const ModifyInputField = (props: {
   const handleBlur = (
     event: FocusEventHandler<HTMLInputElement> & {
       target: FeatureFieldElement;
-    }
+    },
   ) => {
     const eventTarget: FeatureFieldElement = event.target;
     const id = eventTarget.id;

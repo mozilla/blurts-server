@@ -40,7 +40,7 @@ it("getGuidedExperienceBreaches: return guided experience", () => {
 
   const guidedExp = getGuidedExperienceBreaches(
     [subBreach],
-    ["test@mozilla.com"]
+    ["test@mozilla.com"],
   );
   expect(guidedExp.emails).toHaveLength(1);
   expect(guidedExp.highRisk.ssnBreaches).toHaveLength(1);

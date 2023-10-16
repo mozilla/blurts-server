@@ -48,8 +48,8 @@ jest.mock("next/navigation", () => ({
 
 // Filter out elements that are not a child of the top banner content.
 function getRelevantBannerContentElement(elements: HTMLElement[]) {
-  return elements.filter((element) =>
-    element.closest(".explainerContent")?.contains(element)
+  return elements.filter(
+    (element) => element.closest(".explainerContent")?.contains(element),
   )[0];
 }
 
@@ -73,7 +73,7 @@ it("passes the axe accessibility test suite for DashboardNonUsNoBreaches", async
 it("passes the axe accessibility test suite for DashboardNonUsUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardNonUsUnresolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -88,7 +88,7 @@ it("passes the axe accessibility test suite for DashboardNonUsResolvedBreaches",
 it("passes the axe accessibility test suite for DashboardUsNoPremiumNoScanNoBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -97,7 +97,7 @@ it("passes the axe accessibility test suite for DashboardUsNoPremiumNoScanNoBrea
 it("passes the axe accessibility test suite for DashboardUsNoPremiumNoScanUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -106,7 +106,7 @@ it("passes the axe accessibility test suite for DashboardUsNoPremiumNoScanUnreso
 it("passes the axe accessibility test suite for DashboardUsNoPremiumNoScanResolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanResolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -115,7 +115,7 @@ it("passes the axe accessibility test suite for DashboardUsNoPremiumNoScanResolv
 it("passes the axe accessibility test suite for DashboardUsNoPremiumEmptyScanNoBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanNoBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -124,7 +124,7 @@ it("passes the axe accessibility test suite for DashboardUsNoPremiumEmptyScanNoB
 it("passes the axe accessibility test suite for DashboardUsNoPremiumEmptyScanUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -133,7 +133,7 @@ it("passes the axe accessibility test suite for DashboardUsNoPremiumEmptyScanUnr
 it("passes the axe accessibility test suite for DashboardUsNoPremiumEmptyScanResolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanResolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -142,7 +142,7 @@ it("passes the axe accessibility test suite for DashboardUsNoPremiumEmptyScanRes
 it("passes the axe accessibility test suite for DashboardUsNoPremiumUnresolvedScanNoBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanNoBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -151,7 +151,7 @@ it("passes the axe accessibility test suite for DashboardUsNoPremiumUnresolvedSc
 it("passes the axe accessibility test suite for DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -160,7 +160,7 @@ it("passes the axe accessibility test suite for DashboardUsNoPremiumUnresolvedSc
 it("passes the axe accessibility test suite for DashboardUsNoPremiumUnresolvedScanResolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanResolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -169,7 +169,7 @@ it("passes the axe accessibility test suite for DashboardUsNoPremiumUnresolvedSc
 it("passes the axe accessibility test suite for DashboardUsNoPremiumResolvedScanNoBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanNoBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -178,7 +178,7 @@ it("passes the axe accessibility test suite for DashboardUsNoPremiumResolvedScan
 it("passes the axe accessibility test suite for DashboardUsNoPremiumResolvedScanUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -187,7 +187,7 @@ it("passes the axe accessibility test suite for DashboardUsNoPremiumResolvedScan
 it("passes the axe accessibility test suite for DashboardUsNoPremiumResolvedScanResolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanResolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -196,7 +196,7 @@ it("passes the axe accessibility test suite for DashboardUsNoPremiumResolvedScan
 it("passes the axe accessibility test suite for DashboardUsPremiumEmptyScanNoBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanNoBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -205,7 +205,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumEmptyScanNoBre
 it("passes the axe accessibility test suite for DashboardUsPremiumEmptyScanUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -214,7 +214,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumEmptyScanUnres
 it("passes the axe accessibility test suite for DashboardUsPremiumEmptyScanResolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanResolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -223,7 +223,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumEmptyScanResol
 it("passes the axe accessibility test suite for DashboardUsPremiumUnresolvedScanNoBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanNoBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -232,7 +232,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumUnresolvedScan
 it("passes the axe accessibility test suite for DashboardUsPremiumUnresolvedScanUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -241,7 +241,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumUnresolvedScan
 it("passes the axe accessibility test suite for DashboardUsPremiumUnresolvedScanResolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanResolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -250,7 +250,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumUnresolvedScan
 it("passes the axe accessibility test suite for DashboardUsPremiumResolvedScanNoBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanNoBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -259,7 +259,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumResolvedScanNo
 it("passes the axe accessibility test suite for DashboardUsPremiumResolvedScanUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -268,7 +268,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumResolvedScanUn
 it("passes the axe accessibility test suite for DashboardUsPremiumResolvedScanResolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanResolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -277,7 +277,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumResolvedScanRe
 it("passes the axe accessibility test suite for DashboardUsPremiumScanEmptyInProgressNoBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumScanInProgressNoBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -286,7 +286,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumScanEmptyInPro
 it("passes the axe accessibility test suite for DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumScanInProgressUnresolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -295,7 +295,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumScanEmptyInPro
 it("passes the axe accessibility test suite for DashboardUsPremiumScanUnresolvedInProgressNoBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumScanInProgressResolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -304,7 +304,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumScanUnresolved
 it("passes the axe accessibility test suite for DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanInProgressNoBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -313,7 +313,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumScanUnresolved
 it("passes the axe accessibility test suite for DashboardUsPremiumScanInProgressUnresolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanInProgressUnresolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -322,7 +322,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumScanInProgress
 it("passes the axe accessibility test suite for DashboardUsPremiumScanInProgressResolvedBreaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanInProgressResolvedBreaches,
-    Meta
+    Meta,
   );
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
@@ -331,7 +331,7 @@ it("passes the axe accessibility test suite for DashboardUsPremiumScanInProgress
 it("shows the 'Start a free scan' CTA to free US-based users who haven't performed a scan yet", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -351,7 +351,7 @@ it("switches between tab panels", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -372,7 +372,7 @@ it("switches between tab panels", async () => {
 it("shows US users with Premium the Premium badge", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -384,7 +384,7 @@ it("shows US users with Premium the Premium badge", () => {
 it("shows US users without Premium the upsell button", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -419,7 +419,7 @@ it("opens and closes the premium upsell dialog via the Premium upsell badge)", a
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -432,23 +432,23 @@ it("opens and closes the premium upsell dialog via the Premium upsell badge)", a
   // Shows the modal for the desktop layout
   await user.click(premiumCtas[0]);
   expect(
-    screen.getByText("Choose the level of protection that’s right for you")
+    screen.getByText("Choose the level of protection that’s right for you"),
   ).toBeInTheDocument();
   const closeButtonIcon1 = screen.getByLabelText("Close");
   await user.click(closeButtonIcon1.parentElement as HTMLElement);
   expect(
-    screen.queryByText("Choose the level of protection that’s right for you")
+    screen.queryByText("Choose the level of protection that’s right for you"),
   ).not.toBeInTheDocument();
 
   // Shows the modal for the mobile layout
   await user.click(premiumCtas[1]);
   expect(
-    screen.getByText("Choose the level of protection that’s right for you")
+    screen.getByText("Choose the level of protection that’s right for you"),
   ).toBeInTheDocument();
   const closeButtonIcon2 = screen.getByLabelText("Close");
   await user.click(closeButtonIcon2.parentElement as HTMLElement);
   expect(
-    screen.queryByText("Choose the level of protection that’s right for you")
+    screen.queryByText("Choose the level of protection that’s right for you"),
   ).not.toBeInTheDocument();
 });
 
@@ -456,7 +456,7 @@ it("opens and closes the premium upsell dialog via the Premium upsell button)", 
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -467,12 +467,12 @@ it("opens and closes the premium upsell dialog via the Premium upsell button)", 
 
   await user.click(premiumCta);
   expect(
-    screen.getByText("Choose the level of protection that’s right for you")
+    screen.getByText("Choose the level of protection that’s right for you"),
   ).toBeInTheDocument();
   const closeButtonIcon1 = screen.getByLabelText("Close");
   await user.click(closeButtonIcon1.parentElement as HTMLElement);
   expect(
-    screen.queryByText("Choose the level of protection that’s right for you")
+    screen.queryByText("Choose the level of protection that’s right for you"),
   ).not.toBeInTheDocument();
 });
 
@@ -480,7 +480,7 @@ it("toggles between the product offerings in the premium upsell dialog", async (
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -518,7 +518,7 @@ it("shows returned free user who has resolved all tasks premium upsell and all f
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -561,7 +561,7 @@ it("shows a returning Premium user who has resolved all tasks a CTA to check out
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -582,7 +582,7 @@ it("shows a returning Premium user who has zero scan results and resolved breach
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -602,7 +602,7 @@ it("shows a returning Premium user who has zero scan results and resolved breach
 it("shows scan in progress indicators on the dashboard with no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanInProgressNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -613,7 +613,7 @@ it("shows scan in progress indicators on the dashboard with no breaches", () => 
   expect(chartPrompt).toBeInTheDocument();
 
   const exposureTableDescription = screen.getByText(
-    "We didn’t find any data breaches, but we’re still scanning sites that may be selling your personal info."
+    "We didn’t find any data breaches, but we’re still scanning sites that may be selling your personal info.",
   );
   expect(exposureTableDescription).toBeInTheDocument();
 });
@@ -621,7 +621,7 @@ it("shows scan in progress indicators on the dashboard with no breaches", () => 
 it("shows scan in progress indicators on the dashboard for users with breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanInProgressUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -637,7 +637,7 @@ it("shows scan in progress indicators on the dashboard for users with breaches",
 
   const exposureTableDescription = screen.getByText(
     "We found ⁨9⁩ exposures so far, but we’re still scanning sites that sell your personal info. This should be done within a few minutes.",
-    { exact: false }
+    { exact: false },
   );
   expect(exposureTableDescription).toBeInTheDocument();
 });
@@ -645,7 +645,7 @@ it("shows scan in progress indicators on the dashboard for users with breaches",
 it("shows scan in progress indicators on the dashboard and no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumScanInProgressNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -661,7 +661,7 @@ it("shows scan in progress indicators on the dashboard and no breaches", () => {
 
   const exposureTableDescription = screen.getByText(
     "We found ⁨0⁩ exposures so far, but we’re still scanning sites that sell your personal info. This should be done within a few minutes.",
-    { exact: false }
+    { exact: false },
   );
   expect(exposureTableDescription).toBeInTheDocument();
 });
@@ -669,7 +669,7 @@ it("shows scan in progress indicators on the dashboard and no breaches", () => {
 it("shows scan in progress indicators on the dashboard and unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumScanInProgressUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -685,7 +685,7 @@ it("shows scan in progress indicators on the dashboard and unresolved breaches",
 
   const exposureTableDescription = screen.getByText(
     "We found ⁨9⁩ exposures so far, but we’re still scanning sites that sell your personal info. This should be done within a few minutes.",
-    { exact: false }
+    { exact: false },
   );
   expect(exposureTableDescription).toBeInTheDocument();
 });
@@ -697,7 +697,7 @@ it("shows the correct dashboard banner title for non-US users, no breaches", () 
 
   const dashboardTopBannerTitle = screen.queryAllByText("No exposures found");
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
@@ -709,7 +709,7 @@ it("shows the correct dashboard banner CTA for non-US users, no breaches", () =>
     name: "Monitor more emails",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -717,22 +717,22 @@ it("shows the correct dashboard banner CTA for non-US users, no breaches", () =>
 it("shows the correct dashboard banner title for non-US users, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardNonUsUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Let’s protect your data"
+    "Let’s protect your data",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for non-US users, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardNonUsUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -740,7 +740,7 @@ it("shows the correct dashboard banner CTA for non-US users, unresolved breaches
     name: "Let’s fix it",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -750,10 +750,10 @@ it("shows the correct dashboard banner title for non-US users, resolved breaches
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Your data is protected"
+    "Your data is protected",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
@@ -765,7 +765,7 @@ it("shows the correct dashboard banner CTA for non-US users, resolved breaches",
     name: "See what’s fixed",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -773,22 +773,22 @@ it("shows the correct dashboard banner CTA for non-US users, resolved breaches",
 it("shows the correct dashboard banner title for US users, without Premium, no scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "⁨Monitor⁩ now protects you even more"
+    "⁨Monitor⁩ now protects you even more",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, no scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -796,7 +796,7 @@ it("shows the correct dashboard banner CTA for US users, without Premium, no sca
     name: "Get first scan free",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -804,22 +804,22 @@ it("shows the correct dashboard banner CTA for US users, without Premium, no sca
 it("shows the correct dashboard banner title for US users, without Premium, no scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "⁨Monitor⁩ now protects you even more"
+    "⁨Monitor⁩ now protects you even more",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, no scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -827,7 +827,7 @@ it("shows the correct dashboard banner CTA for US users, without Premium, no sca
     name: "Get first scan free",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -835,22 +835,22 @@ it("shows the correct dashboard banner CTA for US users, without Premium, no sca
 it("shows the correct dashboard banner title for US users, without Premium, no scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "⁨Monitor⁩ now protects you even more"
+    "⁨Monitor⁩ now protects you even more",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, no scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -858,7 +858,7 @@ it("shows the correct dashboard banner CTA for US users, without Premium, no sca
     name: "Get first scan free",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -866,20 +866,20 @@ it("shows the correct dashboard banner CTA for US users, without Premium, no sca
 it("shows the correct dashboard banner title for US users, without Premium, empty scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText("No exposures found");
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, empty scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -887,7 +887,7 @@ it("shows the correct dashboard banner CTA for US users, without Premium, empty 
     name: "Get continuous protection",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -895,22 +895,22 @@ it("shows the correct dashboard banner CTA for US users, without Premium, empty 
 it("shows the correct dashboard banner title for US users, without Premium, empty scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Let’s keep protecting your data"
+    "Let’s keep protecting your data",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, empty scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -918,7 +918,7 @@ it("shows the correct dashboard banner CTA for US users, without Premium, empty 
     name: "Let’s keep going",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -926,22 +926,22 @@ it("shows the correct dashboard banner CTA for US users, without Premium, empty 
 it("shows the correct dashboard banner title for US users, without Premium, empty scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Your data is protected"
+    "Your data is protected",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, empty scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -949,7 +949,7 @@ it("shows the correct dashboard banner CTA for US users, without Premium, empty 
     name: "Get continuous protection",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -957,22 +957,22 @@ it("shows the correct dashboard banner CTA for US users, without Premium, empty 
 it("shows the correct dashboard banner title for US users, without Premium, unresolved scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Let’s protect your data"
+    "Let’s protect your data",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, unresolved scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -980,7 +980,7 @@ it("shows the correct dashboard banner CTA for US users, without Premium, unreso
     name: "Let’s fix it",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -988,22 +988,22 @@ it("shows the correct dashboard banner CTA for US users, without Premium, unreso
 it("shows the correct dashboard banner title for US users, without Premium, UnresolvedScanUnresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Let’s keep protecting your data"
+    "Let’s keep protecting your data",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, UnresolvedScanUnresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1011,7 +1011,7 @@ it("shows the correct dashboard banner CTA for US users, without Premium, Unreso
     name: "Let’s keep going",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1019,22 +1019,22 @@ it("shows the correct dashboard banner CTA for US users, without Premium, Unreso
 it("shows the correct dashboard banner title for US users, without Premium, unresolved scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Let’s protect your data"
+    "Let’s protect your data",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, unresolved scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1042,7 +1042,7 @@ it("shows the correct dashboard banner CTA for US users, without Premium, unreso
     name: "Let’s fix it",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1050,22 +1050,22 @@ it("shows the correct dashboard banner CTA for US users, without Premium, unreso
 it("shows the correct dashboard banner title for US users, without Premium, resolved scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Your data is protected"
+    "Your data is protected",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, resolved scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1073,7 +1073,7 @@ it("shows the correct dashboard banner CTA for US users, without Premium, resolv
     name: "Get continuous protection",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1081,22 +1081,22 @@ it("shows the correct dashboard banner CTA for US users, without Premium, resolv
 it("shows the correct dashboard banner title for US users, without Premium, resolved scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Let’s keep protecting your data"
+    "Let’s keep protecting your data",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, resolved scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1104,7 +1104,7 @@ it("shows the correct dashboard banner CTA for US users, without Premium, resolv
     name: "Let’s keep going",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1112,22 +1112,22 @@ it("shows the correct dashboard banner CTA for US users, without Premium, resolv
 it("shows the correct dashboard banner title for US users, without Premium, resolved scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Your data is protected"
+    "Your data is protected",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, resolved scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1135,7 +1135,7 @@ it("shows the correct dashboard banner CTA for US users, without Premium, resolv
     name: "Get continuous protection",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1143,20 +1143,20 @@ it("shows the correct dashboard banner CTA for US users, without Premium, resolv
 it("shows the correct dashboard banner title for US user, with Premium, empty scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText("");
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, empty scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1164,7 +1164,7 @@ it("shows the correct dashboard banner CTA for US user, with Premium, empty scan
     name: "Monitor more emails",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1172,22 +1172,22 @@ it("shows the correct dashboard banner CTA for US user, with Premium, empty scan
 it("shows the correct dashboard banner title for US user, with Premium, empty scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Let’s keep protecting your data"
+    "Let’s keep protecting your data",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, empty scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1195,7 +1195,7 @@ it("shows the correct dashboard banner CTA for US user, with Premium, empty scan
     name: "Let’s keep going",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1203,22 +1203,22 @@ it("shows the correct dashboard banner CTA for US user, with Premium, empty scan
 it("shows the correct dashboard banner title for US user, with Premium, empty scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Your data is protected"
+    "Your data is protected",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, empty scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1226,7 +1226,7 @@ it("shows the correct dashboard banner CTA for US user, with Premium, empty scan
     name: "See what’s fixed",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1234,22 +1234,22 @@ it("shows the correct dashboard banner CTA for US user, with Premium, empty scan
 it("shows the correct dashboard banner title for US user, with Premium, unresolved scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Let’s keep protecting your data"
+    "Let’s keep protecting your data",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, unresolved scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1257,7 +1257,7 @@ it("shows the correct dashboard banner CTA for US user, with Premium, unresolved
     name: "Let’s keep going",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1265,22 +1265,22 @@ it("shows the correct dashboard banner CTA for US user, with Premium, unresolved
 it("shows the correct dashboard banner title for US user, with Premium, UnresolvedScanUnresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Let’s protect your data"
+    "Let’s protect your data",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, UnresolvedScanUnresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1288,7 +1288,7 @@ it("shows the correct dashboard banner CTA for US user, with Premium, Unresolved
     name: "Let’s fix it",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1296,22 +1296,22 @@ it("shows the correct dashboard banner CTA for US user, with Premium, Unresolved
 it("shows the correct dashboard banner title for US user, with Premium, unresolved scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Let’s keep protecting your data"
+    "Let’s keep protecting your data",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, unresolved scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1319,7 +1319,7 @@ it("shows the correct dashboard banner CTA for US user, with Premium, unresolved
     name: "Let’s keep going",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1327,22 +1327,22 @@ it("shows the correct dashboard banner CTA for US user, with Premium, unresolved
 it("shows the correct dashboard banner title for US user, with Premium, resolved scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Your data is protected"
+    "Your data is protected",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, resolved scan, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1350,7 +1350,7 @@ it("shows the correct dashboard banner CTA for US user, with Premium, resolved s
     name: "See what’s fixed",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1358,22 +1358,22 @@ it("shows the correct dashboard banner CTA for US user, with Premium, resolved s
 it("shows the correct dashboard banner title for US user, with Premium, resolved scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Let’s keep protecting your data"
+    "Let’s keep protecting your data",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, resolved scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1381,7 +1381,7 @@ it("shows the correct dashboard banner CTA for US user, with Premium, resolved s
     name: "Let’s keep going",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1389,22 +1389,22 @@ it("shows the correct dashboard banner CTA for US user, with Premium, resolved s
 it("shows the correct dashboard banner title for US user, with Premium, resolved scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Your data is protected"
+    "Your data is protected",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, resolved scan, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1412,7 +1412,7 @@ it("shows the correct dashboard banner CTA for US user, with Premium, resolved s
     name: "See what’s fixed",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1420,22 +1420,22 @@ it("shows the correct dashboard banner CTA for US user, with Premium, resolved s
 it("shows the correct dashboard banner title for US user, without Premium, scan in progress, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumScanInProgressNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Your scan is still in progress"
+    "Your scan is still in progress",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, without Premium, scan in progress, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumScanInProgressNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1443,7 +1443,7 @@ it("shows the correct dashboard banner CTA for US user, without Premium, scan in
     name: "Check more email addresses",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1451,22 +1451,22 @@ it("shows the correct dashboard banner CTA for US user, without Premium, scan in
 it("shows the correct dashboard banner title for US user, without Premium, scan in progress, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumScanInProgressUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Your scan is still in progress"
+    "Your scan is still in progress",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, without Premium, scan in progress, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumScanInProgressUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1474,7 +1474,7 @@ it("shows the correct dashboard banner CTA for US user, without Premium, scan in
     name: "See what’s ready now",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1482,22 +1482,22 @@ it("shows the correct dashboard banner CTA for US user, without Premium, scan in
 it("shows the correct dashboard banner title for US user, without Premium, scan in progress, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumScanInProgressResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Your scan is still in progress"
+    "Your scan is still in progress",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, without Premium, scan in progress, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumScanInProgressResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1505,7 +1505,7 @@ it("shows the correct dashboard banner CTA for US user, without Premium, scan in
     name: "Check more email addresses",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1513,22 +1513,22 @@ it("shows the correct dashboard banner CTA for US user, without Premium, scan in
 it("shows the correct dashboard banner title for US user, with Premium, scan in progress, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanInProgressNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Your scan is still in progress"
+    "Your scan is still in progress",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, scan in progress, no breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanInProgressNoBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1536,7 +1536,7 @@ it("shows the correct dashboard banner CTA for US user, with Premium, scan in pr
     name: "Check more email addresses",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1544,22 +1544,22 @@ it("shows the correct dashboard banner CTA for US user, with Premium, scan in pr
 it("shows the correct dashboard banner title for US user, with Premium, scan in progress, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanInProgressUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Your scan is still in progress"
+    "Your scan is still in progress",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, scan in progress, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanInProgressUnresolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1567,7 +1567,7 @@ it("shows the correct dashboard banner CTA for US user, with Premium, scan in pr
     name: "See what’s ready now",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1575,22 +1575,22 @@ it("shows the correct dashboard banner CTA for US user, with Premium, scan in pr
 it("shows the correct dashboard banner title for US user, with Premium, scan in progress, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanInProgressResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
   const dashboardTopBannerTitle = screen.queryAllByText(
-    "Your scan is still in progress"
+    "Your scan is still in progress",
   );
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle)
+    getRelevantBannerContentElement(dashboardTopBannerTitle),
   ).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, scan in progress, resolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanInProgressResolvedBreaches,
-    Meta
+    Meta,
   );
   render(<ComposedDashboard />);
 
@@ -1598,7 +1598,7 @@ it("shows the correct dashboard banner CTA for US user, with Premium, scan in pr
     name: "Check more email addresses",
   });
   expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta)
+    getRelevantBannerContentElement(dashboardTopBannerCta),
   ).toBeInTheDocument();
 });
 
@@ -1606,14 +1606,14 @@ it("shows the correct dashboard banner CTA for US user, with Premium, scan in pr
 it("logs a warning in the story for an invalid user state", () => {
   const ComposedDashboard = composeStory(
     DashboardInvalidPremiumUserNoScanResolvedBreaches,
-    Meta
+    Meta,
   );
 
   const warnLogSpy = jest.spyOn(global.console, "warn").mockImplementation();
   render(<ComposedDashboard />);
 
   expect(warnLogSpy).toHaveBeenCalledWith(
-    "No matching condition for dashboard state found."
+    "No matching condition for dashboard state found.",
   );
   warnLogSpy.mockReset();
 });

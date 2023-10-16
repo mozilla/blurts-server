@@ -48,7 +48,7 @@ export const getBaseUrl = () => {
 export const getVerificationCode = async (
   testEmail: string,
   page: Page,
-  attempts = 10
+  attempts = 10,
 ): Promise<string> => {
   if (attempts === 0) {
     throw new InternalServerError("Unable to retrieve restmail data");

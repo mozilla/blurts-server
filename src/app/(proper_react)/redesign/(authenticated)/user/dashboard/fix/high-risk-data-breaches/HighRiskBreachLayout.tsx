@@ -41,7 +41,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
 
   const guidedExperienceBreaches = getGuidedExperienceBreaches(
     props.data.subscriberBreaches,
-    props.subscriberEmails
+    props.subscriberEmails,
   );
 
   const pageData = getHighRiskBreachesByType({

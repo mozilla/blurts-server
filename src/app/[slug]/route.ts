@@ -7,7 +7,7 @@ import { vers } from "../../utils/dockerflow.js";
 
 export function GET(
   req: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: { slug: string } },
 ) {
   // heartbeat route for dockerflow
   if (

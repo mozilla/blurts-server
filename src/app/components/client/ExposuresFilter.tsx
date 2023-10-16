@@ -60,24 +60,24 @@ export const ExposuresFilter = ({
   const exposureTypeExplainerDialogState = useOverlayTriggerState({});
   const exposureTypeExplainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
-    exposureTypeExplainerDialogState
+    exposureTypeExplainerDialogState,
   );
   const exposureTypeExplainerTriggerRef = useRef<HTMLButtonElement>(null);
   const exposureTypeExplainerTriggerProps = useButton(
     exposureTypeExplainerDialogTrigger.triggerProps,
-    exposureTypeExplainerTriggerRef
+    exposureTypeExplainerTriggerRef,
   ).buttonProps;
 
   // Status filter explainer dialog
   const exposureStatusExplainerDialogState = useOverlayTriggerState({});
   const exposureStatusExplainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
-    exposureStatusExplainerDialogState
+    exposureStatusExplainerDialogState,
   );
   const exposureStatusExplainerTriggerRef = useRef<HTMLButtonElement>(null);
   const exposureStatusExplainerTriggerProps = useButton(
     exposureStatusExplainerDialogTrigger.triggerProps,
-    exposureStatusExplainerTriggerRef
+    exposureStatusExplainerTriggerRef,
   ).buttonProps;
 
   // Filter Dialog
@@ -101,7 +101,7 @@ export const ExposuresFilter = ({
   const filterBtnRef = useRef<HTMLButtonElement>(null);
   const { overlayProps } = useOverlayTrigger(
     { type: "dialog" },
-    filterDialogState
+    filterDialogState,
   );
 
   const dismissButtonRef = useRef<HTMLButtonElement>(null);
@@ -113,7 +113,7 @@ export const ExposuresFilter = ({
         filterDialogState.close();
       },
     },
-    dismissButtonRef
+    dismissButtonRef,
   ).buttonProps;
 
   // TODO: Add unit test when changing this code:
@@ -141,12 +141,12 @@ export const ExposuresFilter = ({
           </Radio>
           <Radio value="data-broker">
             {l10n.getString(
-              "dashboard-exposures-filter-exposure-type-info-for-sale"
+              "dashboard-exposures-filter-exposure-type-info-for-sale",
             )}
           </Radio>
           <Radio value="data-breach">
             {l10n.getString(
-              "dashboard-exposures-filter-exposure-type-data-breach"
+              "dashboard-exposures-filter-exposure-type-data-breach",
             )}
           </Radio>
         </FilterRadioGroup>
@@ -163,12 +163,12 @@ export const ExposuresFilter = ({
           </Radio>
           <Radio value="seven-days">
             {l10n.getString(
-              "dashboard-exposures-filter-date-found-last-seven-days"
+              "dashboard-exposures-filter-date-found-last-seven-days",
             )}
           </Radio>
           <Radio value="thirty-days">
             {l10n.getString(
-              "dashboard-exposures-filter-date-found-last-thirty-days"
+              "dashboard-exposures-filter-date-found-last-thirty-days",
             )}
           </Radio>
           <Radio value="last-year">
