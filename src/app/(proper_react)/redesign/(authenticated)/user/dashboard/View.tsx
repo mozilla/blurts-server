@@ -39,6 +39,7 @@ import NoExposuresIllustration from "./images/dashboard-no-exposures.svg";
 import ScanProgressIllustration from "./images/scan-illustration.svg";
 import { CountryCodeContext } from "../../../../../../contextProviders/country-code";
 import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
+import { getNextGuidedStep } from "../../../../../functions/server/getRelevantGuidedSteps";
 
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
@@ -114,28 +115,6 @@ export const View = (props: Props) => {
 
   const tabSpecificExposures = getTabSpecificExposures(selectedTab);
   const filteredExposures = filterExposures(tabSpecificExposures, filters);
-
-  // MNTOR-2226
-  const getExposureCardLink = (exposure: Exposure) => {
-    if (!isScanResult(exposure)) {
-      // if it's a data breach exposure
-      if (props.isEligibleForFreeScan) {
-        return "/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan";
-      } else if (props.isEligibleForPremium) {
-        if (hasPremium(props.user)) {
-          // if premium user, go to resolution card
-          return "/redesign/user/dashboard/fix/high-risk-data-breaches";
-        }
-        // if free user, go to data broker results
-        return "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers";
-      }
-
-      return "/redesign/user/dashboard/";
-    }
-    // if it's a data broker exposure
-    return "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove";
-  };
-
   const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
     const exposureCardKey = `${isScanResult(exposure) ? "scan" : "breach"}-${
       exposure.id
@@ -152,7 +131,18 @@ export const View = (props: Props) => {
           )}
           isPremiumUser={hasPremium(props.user)}
           resolutionCta={
-            <Button variant="primary" wide href={getExposureCardLink(exposure)}>
+            <Button
+              variant="primary"
+              wide
+              href={
+                getNextGuidedStep({
+                  user: props.user,
+                  countryCode,
+                  latestScanData: props.userScanData,
+                  subscriberBreaches: props.userBreaches,
+                }).href
+              }
+            >
               {l10n.getString("exposure-card-cta")}
             </Button>
           }
