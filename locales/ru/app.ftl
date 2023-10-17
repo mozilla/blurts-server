@@ -702,11 +702,15 @@ ad-unit-6-before-you-complete = Прежде чем завершить след�
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
+# Deprecated - to be replaced by -brand-mozilla-account
 -brand-fx-account =
     { $case ->
         [prepositional] Аккаунтом Firefox
        *[nominative] Аккаунт Firefox
     }
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account = Аккаунт Mozilla
 
 ## Search Engine Optimization
 
@@ -722,7 +726,7 @@ sign-in = Войти
 site-nav-breaches-link = Разобраться с утечками данных
 site-nav-settings-link = Настройки
 site-nav-help-link = Помощь и Поддержка
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Попробуйте другие наши инструменты безопасности:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -732,8 +736,12 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Пользовательское меню
 menu-button-alt = Открыть пользовательское меню
 menu-list-accessible-label = Меню аккаунта
+# Deprecated
 menu-item-fxa = Управляйте своим { -brand-fx-account(case: "prepositional") }
+menu-item-fxa-2 = Управляйте своим { -brand-mozilla-account }
+# Deprecated
 menu-item-fxa-alt = Открыть страницу { -brand-fx-account }
+menu-item-fxa-alt-2 = Открыть страницу { -brand-mozilla-account }
 menu-item-settings = Настройки
 menu-item-settings-alt = Открыть страницу настроек
 menu-item-help = Справка и поддержка

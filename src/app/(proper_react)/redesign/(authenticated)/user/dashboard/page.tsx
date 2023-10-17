@@ -49,7 +49,7 @@ export default async function DashboardPage() {
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(
     session.user,
-    countryCode
+    countryCode,
   );
   const enabledFlags = await getEnabledFeatureFlags({
     email: session.user.email,
@@ -57,7 +57,7 @@ export default async function DashboardPage() {
   const userIsEligibleForPremium = isEligibleForPremium(
     session.user,
     countryCode,
-    enabledFlags
+    enabledFlags,
   );
 
   const enabledFeatureFlags = await getEnabledFeatureFlags({

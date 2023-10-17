@@ -29,7 +29,7 @@ const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   // a redirect URL of /api/auth/callback/fxa for Firefox Monitor,
   // for every environment we deploy to:
   id: "fxa",
-  name: "Firefox Accounts",
+  name: "Mozilla accounts",
   type: "oauth",
   authorization: {
     url: AppConstants.OAUTH_AUTHORIZATION_URI,
@@ -99,7 +99,7 @@ export const authOptions: AuthOptions = {
               existingUser,
               account.access_token,
               account.refresh_token,
-              JSON.stringify(profile)
+              JSON.stringify(profile),
             );
             token.subscriber = updatedUser;
           }
@@ -110,7 +110,7 @@ export const authOptions: AuthOptions = {
             profile.locale,
             account.access_token,
             account.refresh_token,
-            JSON.stringify(profile)
+            JSON.stringify(profile),
           );
           token.subscriber = verifiedSubscriber;
 
@@ -118,7 +118,7 @@ export const authOptions: AuthOptions = {
           const unsafeBreachesForEmail = await getBreachesForEmail(
             getSha1(email),
             allBreaches,
-            true
+            true,
           );
 
           // Send report email
@@ -140,7 +140,7 @@ export const authOptions: AuthOptions = {
           const emailTemplate = getTemplate(
             data,
             signupReportEmailPartial,
-            l10n
+            l10n,
           );
 
           await initEmail(process.env.SMTP_URL);

@@ -40,7 +40,7 @@ const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
   relay: {
     id: "relay",
     url: `https://relay.firefox.com/?utm_source=${encodeURIComponent(
-      referringHost
+      referringHost,
     )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
     title: l10n.getString("toolbar-app-picker-product-relay"),
     gaLabel: "fx-relay",
@@ -54,7 +54,7 @@ const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
   fxDesktop: {
     id: "fxDesktop",
     url: `https://www.mozilla.org/firefox/new/?utm_source=${encodeURIComponent(
-      referringHost
+      referringHost,
     )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
     title: l10n.getString("toolbar-app-picker-product-fx-desktop"),
     gaLabel: "fx-desktop",
@@ -62,7 +62,7 @@ const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
   fxMobile: {
     id: "fxMobile",
     url: `https://www.mozilla.org/firefox/browsers/mobile/?utm_source=${encodeURIComponent(
-      referringHost
+      referringHost,
     )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
     title: l10n.getString("toolbar-app-picker-product-fx-mobile"),
     gaLabel: "fx-mobile",
@@ -70,7 +70,7 @@ const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
   vpn: {
     id: "vpn",
     url: `https://www.mozilla.org/products/vpn/?utm_source=${encodeURIComponent(
-      referringHost
+      referringHost,
     )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
     title: l10n.getString("toolbar-app-picker-product-vpn"),
     gaLabel: "vpn",
@@ -200,7 +200,7 @@ export const AppPicker = () => {
         <a
           ref={mozillaLinkRef}
           href={`https://www.mozilla.org/?utm_source=${encodeURIComponent(
-            referringHost
+            referringHost,
           )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`}
           className={`${styles["menuLink"]} ${styles["mozillaLink"]}`}
           target="_blank"
@@ -308,7 +308,7 @@ const AppPickerItem = <T extends object>(props: AppPickerItemProps<T>) => {
       key: props.item.key,
     },
     props.state,
-    menuItemRef
+    menuItemRef,
   );
 
   return (

@@ -25,7 +25,7 @@ toolbar-app-picker-by-mozilla = Made by { -brand-mozilla }
 
 user-menu-trigger-label = Open user menu
 user-menu-trigger-tooltip = Profile
-user-menu-manage-fxa-label = Manage your { -brand-fx-account }
+user-menu-manage-fxa-label = Manage your { -brand-mozilla-account }
 user-menu-settings-label = Settings
 user-menu-settings-tooltip = Configure { -brand-fx-monitor }
 user-menu-help-label = Help and support
@@ -69,8 +69,8 @@ exposure-chart-scan-in-progress-prompt = <b>Scan in progress:</b> address, famil
 modal-active-number-of-exposures-title = About your number of active exposures
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
-modal-active-number-of-exposures-part-one = 
-  { $limit -> 
+modal-active-number-of-exposures-part-one =
+  { $limit ->
     [one] This chart includes the total number of times we found each type of data exposed across all data broker profiles and all data breaches for the { $limit } email address that you are currently monitoring.
     *[other] This chart includes the total number of times we found each type of data exposed across all data broker profiles and all data breaches for up to { $limit } email addresses that you are currently monitoring.
   }
@@ -98,8 +98,8 @@ full-name = Full name
 # Here’s What We Fixed Modal
 
 modal-heres-what-we-fixed-title = About what we fixed
-modal-heres-what-we-fixed-description-part-one = <b>Resolved by you</b> includes anything you have manually fixed. 
-  All data breaches that require access to your accounts need to be fixed manually, 
+modal-heres-what-we-fixed-description-part-one = <b>Resolved by you</b> includes anything you have manually fixed.
+  All data breaches that require access to your accounts need to be fixed manually,
   even if you have upgraded to { -brand-premium }.
 modal-heres-what-we-fixed-description-part-two = <b>Auto-removed</b> includes any exposures from data broker
   profiles that we have removed for you. This is available only for
@@ -162,11 +162,11 @@ modal-exposure-type-title = About exposure types
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.
 modal-exposure-type-description = We search for you in all known data breaches and { $data_broker_sites_total_num } data broker sites that sell your personal info. Here are the two types of exposures we find:
-modal-exposure-type-data-breach = <b>Data breach</b> means your information has been compromised in a breach and could be in the wrong hands. 
+modal-exposure-type-data-breach = <b>Data breach</b> means your information has been compromised in a breach and could be in the wrong hands.
   Resolving these typically requires accessing your accounts, so you’ll need to take manual steps to resolve each breach even if you’ve upgraded to { -brand-premium }.
-modal-exposure-type-data-broker-part-one = <b>Info for sale</b> means a data broker site is publicly publishing and selling your personal info. 
-  You’ll need to manually request removal from each site. 
-modal-exposure-type-data-broker-part-two = If you’re a { -brand-premium } user, we automatically remove all profiles for you. 
+modal-exposure-type-data-broker-part-one = <b>Info for sale</b> means a data broker site is publicly publishing and selling your personal info.
+  You’ll need to manually request removal from each site.
+modal-exposure-type-data-broker-part-two = If you’re a { -brand-premium } user, we automatically remove all profiles for you.
   In both cases, removals typically take 7-14 days. Some can take longer, while others can happen within the hour.
 
 # About Exposure Statuses Modal
@@ -175,7 +175,7 @@ modal-exposure-status-title = About exposure statuses
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be plural.
 modal-exposure-status-description = We search for exposures in all known data breaches and { $data_broker_sites_total_num } data broker sites that sell your personal info.
-  Your exposures will have one of the following statuses: 
+  Your exposures will have one of the following statuses:
 modal-exposure-status-action-needed = <b>Action needed</b> means it is currently active and you need to take steps to fix it.
 modal-exposure-status-in-progress = <b>In progress</b> means we are actively working on fixing the exposure for you. This is a { -brand-premium } feature.
 modal-exposure-status-fixed = <b>Fixed</b> means the exposure has been resolved and theres no action for you to take.
@@ -203,7 +203,7 @@ dashboard-exposures-filter-show-all = Show all
 dashboard-exposures-filter-show-results = Show results
 dashboard-exposures-filter-reset = Reset
 
-
+dashboard-top-banner-section-label = Dashboard summary
 dashboard-top-banner-scan-in-progress-title = Your scan is still in progress
 # Variables:
 # $unresolved_exposures is the total number of unresolved exposures the user has.
@@ -228,7 +228,7 @@ dashboard-top-banner-protect-your-data-cta = Let’s fix it
 dashboard-top-banner-monitor-protects-your-even-more-title = { -product-short-name } now protects you even more
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan.
-dashboard-top-banner-monitor-protects-your-even-more-description = 
+dashboard-top-banner-monitor-protects-your-even-more-description =
   { $data_broker_sites_total_num ->
       [one] We can now find exposures of your personal info on { $data_broker_sites_total_num } data broker site that publish and sell your personal info for a profit.
       *[other] We can now find exposures of your personal info on { $data_broker_sites_total_num } data broker sites that publish and sell your personal info for a profit.
@@ -247,8 +247,8 @@ dashboard-no-exposures-label = No exposures found
 dashboard-top-banner-lets-keep-protecting-title = Let’s keep protecting your data
 # Variables:
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description = 
-  { $exposures_unresolved_num -> 
+dashboard-top-banner-lets-keep-protecting-description =
+  { $exposures_unresolved_num ->
     [one] You still have { $exposures_unresolved_num } exposure left to fix. Keep going and protect yourself. We’ll guide you step-by-step.
     *[other] You still have { $exposures_unresolved_num } exposures left to fix. Keep going and protect yourself. We’ll guide you step-by-step.
   }
@@ -257,7 +257,7 @@ dashboard-top-banner-lets-keep-protecting-cta = Let’s keep going
 dashboard-top-banner-your-data-is-protected-title = Your data is protected
 # Variables:
 # $starting_exposure_total_num is the number of exposures the user has resolved.
-dashboard-top-banner-your-data-is-protected-description = 
+dashboard-top-banner-your-data-is-protected-description =
   { $starting_exposure_total_num ->
     [one] Great work, the exposure of your data is fixed or in progress! We’ll keep monitoring and will alert you of any new exposures.
     *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed or in progress! We’ll keep monitoring and will alert you of any new exposures.
@@ -266,7 +266,7 @@ dashboard-top-banner-your-data-is-protected-cta = See what’s fixed
 
 # Variables:
 # $starting_exposure_total_num is the number of exposures the user has resolved.
-dashboard-top-banner-your-data-is-protected-all-fixed-description = 
+dashboard-top-banner-your-data-is-protected-all-fixed-description =
   { $starting_exposure_total_num ->
     [one] Great work, { $starting_exposure_total_num } exposure of your data is fixed! Upgrade to { -brand-premium } and we’ll continue to monitor for new exposures. Plus, we’ll automatically remove your info from any sites that are selling it.
     *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed! Upgrade to { -brand-premium } and we’ll continue to monitor for new exposures. Plus, we’ll automatically remove your info from any sites that are selling it.
@@ -372,6 +372,7 @@ premium-upsell-dialog-title = Choose the level of protection that’s right for 
 guided-resolution-flow-exit = Return to dashboard
 guided-resolution-flow-back-arrow = Go to previous step
 guided-resolution-flow-next-arrow = Go to next step
+guided-resolution-flow-step-navigation-label = Guided steps
 # Variables
 # $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
 # "Est." is shortform for "Estimated".
@@ -397,7 +398,7 @@ welcome-to-premium-data-broker-profiles-title-part-two = We’ll remove those pr
 # Variables:
 # $profile_total_num is the number of exposures came back from user data broker scans.
 # $exposure_reduction_percentage is the percent by which exposures are reduced
-welcome-to-premium-data-broker-profiles-description-part-one =  
+welcome-to-premium-data-broker-profiles-description-part-one =
   { $profile_total_num ->
     [one] We’ve already started our auto-removal process of 1 profile — which will reduce your exposures by { $exposure_reduction_percentage }%.
     *[other] We’ve already started our auto-removal process of { $profile_total_num } profiles — which will reduce your exposures by { $exposure_reduction_percentage }%.
@@ -418,7 +419,7 @@ high-risk-breach-summary = { $num_breaches ->
 }
 # Variables
 # $breach_name is the name of the breach where the high risk data was found.
-# $breach_date is the date when the breach occurred. 
+# $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
 high-risk-breach-name-and-date = { $breach_name } <breach_date>on { $breach_date }</breach_date>
 high-risk-breach-mark-as-fixed = Mark as fixed
@@ -454,14 +455,14 @@ high-risk-breach-social-security-step-two = <link_to_info>Check your credit repo
 # Social Security Number Modal
 
 ssn-modal-title = About fraud alerts and credit freezes
-ssn-modal-description-fraud-part-one = <b>A fraud alert</b> requires businesses to verify your identity before it issues new credit in your name. It’s free, lasts one year, and won’t negatively affect your credit score. 
+ssn-modal-description-fraud-part-one = <b>A fraud alert</b> requires businesses to verify your identity before it issues new credit in your name. It’s free, lasts one year, and won’t negatively affect your credit score.
 ssn-modal-description-fraud-part-two = To set one up, contact any one of the three credit bureaus. You don’t have to contact all three.
-ssn-modal-description-freeze-credit-part-one = <b>Freezing your credit</b> prevents anyone from opening a new account in your name. It’s free and won’t negatively affect your credit score, but you’ll need to unfreeze it before opening any new accounts. 
+ssn-modal-description-freeze-credit-part-one = <b>Freezing your credit</b> prevents anyone from opening a new account in your name. It’s free and won’t negatively affect your credit score, but you’ll need to unfreeze it before opening any new accounts.
 ssn-modal-description-freeze-credit-part-two = To freeze your credit, contact each of the three credit bureaus — <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link>, and <transunion_link>TransUnion</transunion_link>.
 ssn-modal-learn-more = Learn more about fraud alerts and credit freezes
 ssn-modal-ok = OK
 
-# PIN Breaches 
+# PIN Breaches
 
 high-risk-breach-pin-title = Your PIN was exposed
 high-risk-breach-pin-description = Taking action ASAP could give you more legal protections to help you recover any losses.
@@ -473,7 +474,7 @@ high-risk-breach-pin-step-three = Check your accounts for unauthorized charges.
 
 high-risk-breach-none-title = Great news, we didn’t find any high risk data breaches
 # Variables
-# $email_list is list of emails that the user is monitoring for breaches. E.g. john@yahoo.com, ali@gmail.com, sam@hotmail.com 
+# $email_list is list of emails that the user is monitoring for breaches. E.g. john@yahoo.com, ali@gmail.com, sam@hotmail.com
 high-risk-breach-none-description = We detect data breaches based on your email address, and we didn’t find any high risk data breaches for { $email_list }.
 high-risk-breach-none-sub-description-part-one = High risk data breaches include:
 high-risk-breach-none-sub-description-ssn = Social security number
@@ -532,7 +533,7 @@ security-recommendation-ip-step-one = Use a VPN (such as <link_to_info>{ -brand-
 # $breach_name is the name of the breach where the leaked password was found.
 leaked-passwords-title = Your { $breach_name } password was exposed.
 # Variables
-# $breach_date is the date when the breach occurred. 
+# $breach_date is the date when the breach occurred.
 leaked-passwords-summary = It appeared in a data breach on { $breach_date }.
 leaked-passwords-description = Scammers can access your account and will likely try to use it on other accounts to see if you’ve used the same password. Change it anywhere you’ve used it to protect yourself.
 leaked-passwords-steps-title = Here’s what to do
@@ -554,7 +555,7 @@ leaked-passwords-estimated-time = Est. time to complete: { $estimated_time } min
 leaked-security-questions-title = Your security questions were exposed
 # Variables
 # $breach_name is the name of the breach where the leaked security questions were found.
-# $breach_date is the date when the breach occurred. 
+# $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
 leaked-security-questions-summary = They appeared in a data breach on { $breach_name } on { $breach_date }.
 leaked-security-questions-description = Scammers can use these to access your accounts, and any other site where you’ve used the same security questions. Update them now to protect your accounts.

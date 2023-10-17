@@ -103,7 +103,7 @@ function getTemplatesData(l10n: ReactLocalization) {
       template: getPreviewTemplate(
         getVerificationDummyData(appConstants.EMAIL_TEST_RECIPIENT, l10n),
         verifyPartial,
-        l10n
+        l10n,
       ),
     },
     [EmailTemplateType.Notification]: {
@@ -111,7 +111,7 @@ function getTemplatesData(l10n: ReactLocalization) {
       template: getPreviewTemplate(
         getNotificationDummyData(appConstants.EMAIL_TEST_RECIPIENT, l10n),
         breachAlertEmailPartial,
-        l10n
+        l10n,
       ),
     },
     [EmailTemplateType.Monthly]: {
@@ -119,7 +119,7 @@ function getTemplatesData(l10n: ReactLocalization) {
       template: getPreviewTemplate(
         getMonthlyDummyData(appConstants.EMAIL_TEST_RECIPIENT, l10n),
         monthlyUnresolvedEmailPartial,
-        l10n
+        l10n,
       ),
     },
     [EmailTemplateType.SignupReport]: {
@@ -127,7 +127,7 @@ function getTemplatesData(l10n: ReactLocalization) {
       template: getPreviewTemplate(
         getSignupReportDummyData(appConstants.EMAIL_TEST_RECIPIENT, l10n),
         signupReportEmailPartial,
-        l10n
+        l10n,
       ),
     },
   };
@@ -145,7 +145,7 @@ function getPreviewOptions(currentTemplateKey: string, data: any) {
     >
       ${data[templateKey].label as string}
     </option>
-  `
+  `,
     )
     .join("");
 

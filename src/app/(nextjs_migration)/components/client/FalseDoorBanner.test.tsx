@@ -16,7 +16,7 @@ it("shows false door test variant on dashboard", () => {
   // substring match https://testing-library.com/docs/queries/about/#textmatch
   const bannerElem = screen.getByText(
     "Automatically remove data from broker sites with",
-    { exact: false }
+    { exact: false },
   );
   expect(bannerElem).toBeInTheDocument();
 });
@@ -27,7 +27,7 @@ it("shows false door test", () => {
   // substring match https://testing-library.com/docs/queries/about/#textmatch
   const bannerElem = screen.getByText(
     "Automatically remove data from sketchy sites with",
-    { exact: false }
+    { exact: false },
   );
   expect(bannerElem).toBeInTheDocument();
 });

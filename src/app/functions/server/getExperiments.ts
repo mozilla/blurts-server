@@ -12,7 +12,7 @@ import { captureException } from "@sentry/node";
  * @returns
  */
 export async function getExperiments(
-  userId: string | undefined
+  userId: string | undefined,
 ): Promise<unknown> {
   const serverUrl = process.env.NIMBUS_SIDECAR_URL;
   if (!serverUrl) {

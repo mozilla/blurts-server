@@ -63,7 +63,7 @@ it("doesn't filter out anything by default", () => {
       dateFound: "show-all-date-found",
       exposureType: "show-all-exposure-type",
       status: "show-all-status",
-    })
+    }),
   ).toStrictEqual(exposures);
 });
 
@@ -84,7 +84,7 @@ it("can filter out breaches", () => {
       dateFound: "show-all-date-found",
       exposureType: "data-broker",
       status: "show-all-status",
-    })
+    }),
   ).toStrictEqual([
     scanResultThisWeek,
     scanResultThisMonth,
@@ -110,7 +110,7 @@ it("can filter out data brokers", () => {
       dateFound: "show-all-date-found",
       exposureType: "data-breach",
       status: "show-all-status",
-    })
+    }),
   ).toStrictEqual([breachThisWeek, breachThisMonth, breachThisYear, breachOld]);
 });
 
@@ -131,7 +131,7 @@ it("can filter out exposures older than a year", () => {
       dateFound: "last-year",
       exposureType: "show-all-exposure-type",
       status: "show-all-status",
-    })
+    }),
   ).toStrictEqual([
     breachThisWeek,
     scanResultThisWeek,
@@ -159,7 +159,7 @@ it("can filter out exposures older than a month", () => {
       dateFound: "thirty-days",
       exposureType: "show-all-exposure-type",
       status: "show-all-status",
-    })
+    }),
   ).toStrictEqual([
     breachThisWeek,
     scanResultThisWeek,
@@ -185,7 +185,7 @@ it("can filter out exposures older than a week", () => {
       dateFound: "seven-days",
       exposureType: "show-all-exposure-type",
       status: "show-all-status",
-    })
+    }),
   ).toStrictEqual([breachThisWeek, scanResultThisWeek]);
 });
 
@@ -206,6 +206,6 @@ it("filters out anything that doesn't match *all* filters", () => {
       dateFound: "last-year",
       exposureType: "data-breach",
       status: "show-all-status",
-    })
+    }),
   ).toStrictEqual([breachThisWeek, breachThisMonth, breachThisYear]);
 });

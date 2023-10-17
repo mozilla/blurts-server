@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
     await verifyEmailHash(token);
     return NextResponse.redirect(
       (process.env.SERVER_URL ?? "") + "/user/settings",
-      301
+      301,
     );
   } catch (e) {
     console.error(e);

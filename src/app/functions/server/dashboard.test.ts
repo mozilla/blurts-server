@@ -548,17 +548,17 @@ describe("getDashboardSummary", () => {
   const noNegativeCounts = (summary: DashboardSummary) => {
     for (const k in summary.unresolvedExposures) {
       expect(
-        summary.unresolvedExposures[k as keyof Exposures]
+        summary.unresolvedExposures[k as keyof Exposures],
       ).toBeGreaterThanOrEqual(0);
     }
     for (const k in summary.fixedExposures) {
       expect(
-        summary.fixedExposures[k as keyof Exposures]
+        summary.fixedExposures[k as keyof Exposures],
       ).toBeGreaterThanOrEqual(0);
     }
     for (const k in summary.inProgressExposures) {
       expect(
-        summary.inProgressExposures[k as keyof Exposures]
+        summary.inProgressExposures[k as keyof Exposures],
       ).toBeGreaterThanOrEqual(0);
     }
 
@@ -567,7 +567,7 @@ describe("getDashboardSummary", () => {
         Object.values(unresolvedSanitizedExposure).forEach((count) => {
           expect(count).toBeGreaterThanOrEqual(0);
         });
-      }
+      },
     );
 
     summary.inProgressFixedSanitizedExposures.forEach(
@@ -575,7 +575,7 @@ describe("getDashboardSummary", () => {
         Object.values(inProgressFixedSanitizedExposure).forEach((count) => {
           expect(count).toBeGreaterThanOrEqual(0);
         });
-      }
+      },
     );
   };
 
@@ -614,16 +614,16 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBrokerFixedNum).toBe(0);
     expect(summary.totalExposures).toBe(summary.dataBrokerTotalExposuresNum);
     expect(summary.unresolvedExposures.emailAddresses).toBe(
-      summary.allExposures.emailAddresses
+      summary.allExposures.emailAddresses,
     );
     expect(summary.unresolvedExposures.phoneNumbers).toBe(
-      summary.allExposures.phoneNumbers
+      summary.allExposures.phoneNumbers,
     );
     expect(summary.unresolvedExposures.addresses).toBe(
-      summary.allExposures.addresses
+      summary.allExposures.addresses,
     );
     expect(summary.unresolvedExposures.familyMembers).toBe(
-      summary.allExposures.familyMembers
+      summary.allExposures.familyMembers,
     );
   });
 
@@ -636,7 +636,7 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBrokerTotalNum).toBe(3);
     expect(summary.totalExposures).toBe(summary.dataBrokerTotalExposuresNum);
     expect(summary.dataBrokerFixedExposuresNum).toBe(
-      summary.dataBrokerTotalExposuresNum
+      summary.dataBrokerTotalExposuresNum,
     );
     expect(summary.unresolvedExposures.emailAddresses).toBe(0);
   });
@@ -644,7 +644,7 @@ describe("getDashboardSummary", () => {
   it("gets scanned results in-progress and fixed summary", () => {
     const summary = getDashboardSummary(
       [...allResolvedScannedResults, ...inProgressScannedResults],
-      []
+      [],
     );
     noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(0);
@@ -653,18 +653,18 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBrokerTotalNum).toBe(4);
     expect(summary.inProgressFixedExposures.emailAddresses).toBe(
       summary.inProgressExposures.emailAddresses +
-        summary.fixedExposures.emailAddresses
+        summary.fixedExposures.emailAddresses,
     );
     expect(summary.inProgressFixedExposures.phoneNumbers).toBe(
       summary.inProgressExposures.phoneNumbers +
-        summary.fixedExposures.phoneNumbers
+        summary.fixedExposures.phoneNumbers,
     );
     expect(summary.inProgressFixedExposures.addresses).toBe(
-      summary.inProgressExposures.addresses + summary.fixedExposures.addresses
+      summary.inProgressExposures.addresses + summary.fixedExposures.addresses,
     );
     expect(summary.inProgressFixedExposures.familyMembers).toBe(
       summary.inProgressExposures.familyMembers +
-        summary.fixedExposures.familyMembers
+        summary.fixedExposures.familyMembers,
     );
     expect(summary.unresolvedExposures.emailAddresses).toBe(0);
   });
@@ -679,7 +679,7 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBrokerFixedNum).toBe(1);
     expect(summary.totalExposures).toBe(summary.dataBrokerTotalExposuresNum);
     expect(summary.dataBrokerFixedExposuresNum).toBe(
-      summary.dataBrokerTotalExposuresNum
+      summary.dataBrokerTotalExposuresNum,
     );
     expect(summary.unresolvedExposures.emailAddresses).toBe(0);
   });
@@ -687,7 +687,7 @@ describe("getDashboardSummary", () => {
   it("gets mix scanned results & breaches summary", () => {
     const summary = getDashboardSummary(
       unresolvedScannedResults,
-      unresolvedBreaches
+      unresolvedBreaches,
     );
     noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(3);
@@ -696,7 +696,7 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBrokerTotalNum).toBe(1);
     expect(summary.dataBrokerTotalExposuresNum).toBe(13);
     expect(summary.totalExposures).toBe(
-      summary.dataBrokerTotalExposuresNum + summary.dataBreachTotalExposuresNum
+      summary.dataBrokerTotalExposuresNum + summary.dataBreachTotalExposuresNum,
     );
     expect(summary.unresolvedExposures.emailAddresses).toBe(6);
   });
@@ -704,7 +704,7 @@ describe("getDashboardSummary", () => {
   it("gets mix scanned results & breaches all resolved summary", () => {
     const summary = getDashboardSummary(
       allResolvedScannedResults,
-      allResolvedBreaches
+      allResolvedBreaches,
     );
     noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(3);
@@ -715,7 +715,7 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBrokerFixedExposuresNum).toBe(39);
     expect(summary.dataBrokerInProgressExposuresNum).toBe(0);
     expect(summary.totalExposures).toBe(
-      summary.dataBreachFixedExposuresNum + summary.dataBrokerFixedExposuresNum
+      summary.dataBreachFixedExposuresNum + summary.dataBrokerFixedExposuresNum,
     );
     expect(summary.unresolvedExposures.emailAddresses).toBe(0);
   });

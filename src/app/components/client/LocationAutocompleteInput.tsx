@@ -118,7 +118,7 @@ export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
 
     const locationString = getLocationStringByKey(
       locationSuggestions,
-      selectedKey
+      selectedKey,
     );
     setSearchQuery(locationString);
   }, [selectedKey, locationSuggestions]);
@@ -127,7 +127,7 @@ export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
   const handleOnChange = (inputValue: string) => {
     const locationString = getLocationStringByKey(
       locationSuggestions,
-      selectedKey
+      selectedKey,
     );
     // Clear current selection if the input value changes
     // TODO: Add unit test when changing this code:

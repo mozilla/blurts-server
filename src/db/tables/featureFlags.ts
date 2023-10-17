@@ -30,6 +30,7 @@ async function getAllFeatureFlags() {
 
 /** Add any feature flag you want to refer to in the code here */
 export type FeatureFlagName =
+  | "FxaRebrand"
   | "FreeBrokerScan"
   | "PremiumBrokerRemoval"
   | "FalseDoorTest"
@@ -38,7 +39,7 @@ export type FeatureFlagName =
 export async function getEnabledFeatureFlags(
   options:
     | { ignoreAllowlist?: false; email: string }
-    | { ignoreAllowlist: true }
+    | { ignoreAllowlist: true },
 ): Promise<FeatureFlagName[]> {
   let query = knex("feature_flags")
     .select("name")

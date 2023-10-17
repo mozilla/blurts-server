@@ -24,6 +24,7 @@ career-levels = Shkallë karriere
 cellular-network-names = Emra rrjetesh celulari
 charitable-donations = Dhurime bamirësie
 chat-logs = Regjistra bisedash
+clothing-sizes = Numra veshjesh
 credit-card-cvv = CVV karte krediti
 credit-cards = Karta krediti
 credit-status-information = Informacion gjendjeje krediti

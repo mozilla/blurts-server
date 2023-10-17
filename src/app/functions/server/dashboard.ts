@@ -94,7 +94,7 @@ const exposureKeyMap: Record<string, string> = {
 
 export function getDashboardSummary(
   scannedResults: OnerepScanResultRow[],
-  subscriberBreaches: SubscriberBreach[]
+  subscriberBreaches: SubscriberBreach[],
 ): DashboardSummary {
   const summary: DashboardSummary = {
     dataBreachTotalNum: 0,
@@ -377,7 +377,7 @@ export function getDashboardSummary(
         summary.inProgressExposures[k as keyof Exposures];
       return a;
     },
-    {} as Exposures
+    {} as Exposures,
   );
 
   // count fixed and in-progress exposures
@@ -388,7 +388,7 @@ export function getDashboardSummary(
         summary.inProgressExposures[k as keyof Exposures];
       return a;
     },
-    {} as Exposures
+    {} as Exposures,
   );
 
   // sanitize unresolved exposures
@@ -398,7 +398,7 @@ export function getDashboardSummary(
       summary.dataBreachFixedExposuresNum -
       summary.dataBrokerFixedExposuresNum -
       summary.dataBrokerInProgressExposuresNum,
-    isBreachesOnly
+    isBreachesOnly,
   );
 
   // sanitize fixed + inprogress exposures
@@ -407,7 +407,7 @@ export function getDashboardSummary(
     summary.dataBreachFixedExposuresNum +
       summary.dataBrokerFixedExposuresNum +
       summary.dataBrokerInProgressExposuresNum,
-    isBreachesOnly
+    isBreachesOnly,
   );
 
   return summary;
@@ -416,7 +416,7 @@ export function getDashboardSummary(
 function sanitizeExposures(
   exposures: Exposures,
   totalExposures: number,
-  breachesOnly = false
+  breachesOnly = false,
 ): SanitizedExposures {
   let numOfTopExposures = 4; // when we have both exposure types
   if (breachesOnly) {
@@ -431,7 +431,7 @@ function sanitizeExposures(
     .splice(0, numOfTopExposures);
   const other = sanitizedExposures.reduce(
     (total, cur) => total - (Object.values(cur).pop() || 0),
-    totalExposures
+    totalExposures,
   );
   sanitizedExposures.push({ "other-data-class": other });
   return sanitizedExposures;
@@ -440,6 +440,6 @@ function sanitizeExposures(
 export function getExposureReduction(summary: DashboardSummary): number {
   if (summary.totalExposures <= 0) return 100;
   return Math.round(
-    (summary.dataBrokerTotalExposuresNum / summary.totalExposures) * 100
+    (summary.dataBrokerTotalExposuresNum / summary.totalExposures) * 100,
   );
 }
