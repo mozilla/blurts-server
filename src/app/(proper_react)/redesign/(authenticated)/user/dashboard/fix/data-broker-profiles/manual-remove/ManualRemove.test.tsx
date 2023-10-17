@@ -68,3 +68,13 @@ it("keeps the manual resolution button if resolving a profile failed", async () 
     resolveButtonsBeforeResolving.length,
   );
 });
+
+it("shows the progress indicator on the manual resolution flow", () => {
+  const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
+  render(<ComposedManualRemoveView />);
+
+  const guidedStepsNavigation = screen.queryByRole("navigation", {
+    name: "Guided steps",
+  });
+  expect(guidedStepsNavigation).toBeInTheDocument();
+});

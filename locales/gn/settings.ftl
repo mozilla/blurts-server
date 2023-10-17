@@ -51,8 +51,12 @@ settings-cancel-premium-subscription-link-label = Eipe’a ne { -brand-fx-accoun
 ## Deactivate account
 
 settings-deactivate-account-title = Emboguete mba’ete
+# Deprecated
 settings-deactivate-account-info = Eipe’aitekuaa { -product-short-name } emboguévo nde { -brand-fx-account }.
+settings-deactivate-account-info-2 = Eipe’aitekuaa { -product-short-name } emboguévo nde { -brand-mozilla-account }.
+# Deprecated
 settings-fxa-link-label = Eho { -brand-firefox } poravorãme
+settings-fxa-link-label-2 = Eho { -brand-mozilla } ñembohekópe
 
 ## Add email dialog
 

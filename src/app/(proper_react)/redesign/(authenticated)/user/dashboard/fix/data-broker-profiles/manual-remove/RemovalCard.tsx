@@ -48,7 +48,7 @@ export const RemovalCard = (props: Props) => {
       locale={getLocale(l10n)}
       resolutionCta={
         !isResolved ? (
-          <Button variant="primary" wide onPress={() => void resolve()}>
+          <Button variant="primary" small onPress={() => void resolve()}>
             {l10n.getString(
               "fix-flow-data-broker-profiles-manual-remove-button-mark-fixed",
             )}
