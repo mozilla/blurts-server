@@ -28,7 +28,7 @@ export function WelcomeToPremiumView(props: Props) {
     props.data.latestScanData?.results.length ?? 0;
   const summary = getDashboardSummary(
     props.data.latestScanData?.results ?? [],
-    props.data.subscriberBreaches
+    props.data.subscriberBreaches,
   );
   const exposureReduction = getExposureReduction(summary);
 
@@ -43,11 +43,11 @@ export function WelcomeToPremiumView(props: Props) {
         <div className={styles.content}>
           <h3>
             {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-title-part-one"
+              "welcome-to-premium-data-broker-profiles-title-part-one",
             )}
             <br />
             {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-title-part-two"
+              "welcome-to-premium-data-broker-profiles-title-part-two",
             )}
           </h3>
           <p>
@@ -56,17 +56,17 @@ export function WelcomeToPremiumView(props: Props) {
               {
                 profile_total_num: countOfDataBrokerProfiles,
                 exposure_reduction_percentage: exposureReduction,
-              }
+              },
             )}
           </p>
           <p>
             {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-description-part-two"
+              "welcome-to-premium-data-broker-profiles-description-part-two",
             )}
           </p>
           <p>
             {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-description-part-three"
+              "welcome-to-premium-data-broker-profiles-description-part-three",
             )}
           </p>
           <div className={styles.buttonsWrapper}>
@@ -77,7 +77,7 @@ export function WelcomeToPremiumView(props: Props) {
               wide
             >
               {l10n.getString(
-                "welcome-to-premium-data-broker-profiles-cta-label"
+                "welcome-to-premium-data-broker-profiles-cta-label",
               )}
             </Button>
           </div>

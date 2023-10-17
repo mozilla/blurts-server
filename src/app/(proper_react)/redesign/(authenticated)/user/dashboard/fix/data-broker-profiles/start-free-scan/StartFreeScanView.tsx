@@ -33,7 +33,7 @@ export function StartFreeScanView(props: Props) {
         <div className={styles.content}>
           <h3>
             {l10n.getString(
-              "fix-flow-data-broker-profiles-start-free-scan-headline"
+              "fix-flow-data-broker-profiles-start-free-scan-headline",
             )}
           </h3>
           <p>
@@ -42,18 +42,21 @@ export function StartFreeScanView(props: Props) {
               {
                 data_broker_count: parseInt(
                   process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-                  10
+                  10,
                 ),
-              }
+              },
             )}
           </p>
           <p>
             {l10n.getString(
-              "fix-flow-data-broker-profiles-start-free-scan-content-p2"
-            )}
-            <a href="#">
+              "fix-flow-data-broker-profiles-start-free-scan-content-p2",
+            )}{" "}
+            <a
+              href="https://www.mozilla.org/products/monitor/how-it-works/"
+              target="_blank"
+            >
               {l10n.getString(
-                "fix-flow-data-broker-profiles-start-free-scan-link-learn-more"
+                "fix-flow-data-broker-profiles-start-free-scan-link-learn-more",
               )}
             </a>
           </p>
@@ -64,7 +67,7 @@ export function StartFreeScanView(props: Props) {
             href="/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers"
           >
             {l10n.getString(
-              "fix-flow-data-broker-profiles-start-free-scan-button-start-scan"
+              "fix-flow-data-broker-profiles-start-free-scan-button-start-scan",
             )}
           </Button>
           <Button
@@ -72,7 +75,7 @@ export function StartFreeScanView(props: Props) {
             href="/redesign/user/dashboard/fix/high-risk-data-breaches"
           >
             {l10n.getString(
-              "fix-flow-data-broker-profiles-start-free-scan-button-skip"
+              "fix-flow-data-broker-profiles-start-free-scan-button-skip",
             )}
           </Button>
         </div>

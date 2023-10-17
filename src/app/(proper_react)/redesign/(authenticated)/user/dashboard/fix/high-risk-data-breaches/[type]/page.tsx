@@ -37,7 +37,7 @@ export default async function SecurityRecommendations({
   const subscriberEmails = await getSubscriberEmails(session.user);
   const guidedExperienceBreaches = getGuidedExperienceBreaches(
     breaches,
-    subscriberEmails
+    subscriberEmails,
   );
 
   const { type } = params;

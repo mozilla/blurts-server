@@ -68,7 +68,7 @@ test.describe("Breach Resolution", () => {
       {
         body: await page.screenshot(),
         contentType: "image/png",
-      }
+      },
     );
   });
 });
@@ -112,7 +112,7 @@ test.describe("Breaches Dashboard - Headers", () => {
     // verify logo and profile button
     await expect(async () => {
       expect(
-        await dataBreachPage.dataBreachesLogoLink.first().getAttribute("href")
+        await dataBreachPage.dataBreachesLogoLink.first().getAttribute("href"),
       ).toBe("/user/breaches");
     }).toPass();
 
@@ -126,27 +126,27 @@ test.describe("Breaches Dashboard - Headers", () => {
 
       // menu header
       await expect(
-        dataBreachPage.dataBreachesNavbarProfileMenuHeader
+        dataBreachPage.dataBreachesNavbarProfileMenuHeader,
       ).toBeVisible();
 
       // head text
       expect(
-        await dataBreachPage.dataBreachesNavbarProfileMenuHeaderSubtitle.textContent()
-      ).toEqual("Manage your Firefox account");
+        await dataBreachPage.dataBreachesNavbarProfileMenuHeaderSubtitle.textContent(),
+      ).toEqual("Manage your Mozilla account");
 
       // check settings
       await expect(
-        dataBreachPage.dataBreachesNavbarProfileMenuSettings
+        dataBreachPage.dataBreachesNavbarProfileMenuSettings,
       ).toBeVisible();
 
       // help and support
       await expect(
-        dataBreachPage.dataBreachesNavbarProfileMenuHelpAndSupport
+        dataBreachPage.dataBreachesNavbarProfileMenuHelpAndSupport,
       ).toBeVisible();
 
       // sign out
       await expect(
-        dataBreachPage.dataBreachesNavbarProfileMenuSignOut
+        dataBreachPage.dataBreachesNavbarProfileMenuSignOut,
       ).toBeVisible();
     }).toPass();
   });
@@ -171,17 +171,17 @@ test.describe("Breaches Dashboard - Headers", () => {
     await expect(async () => {
       // settings button redirects the user to "Settings" tab
       expect(await dataBreachPage.settingsNavButton.getAttribute("href")).toBe(
-        links.settingsNavButtonLink
+        links.settingsNavButtonLink,
       );
 
       // redirects the user to the "Resolve data breaches" tab
       expect(
-        await dataBreachPage.resolveDataBreachesNavButton.getAttribute("href")
+        await dataBreachPage.resolveDataBreachesNavButton.getAttribute("href"),
       ).toContain(links.resolveDataBreachesNavButtonLink);
 
       // opens a new tab in which user is redirected to the "Monitor Help" page
       expect(
-        await dataBreachPage.helpAndSupportNavButton.getAttribute("href")
+        await dataBreachPage.helpAndSupportNavButton.getAttribute("href"),
       ).toContain(links.helpAndSupportNavButtonLink);
     }).toPass();
   });

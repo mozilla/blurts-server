@@ -38,7 +38,7 @@ export interface UserInfo {
 }
 
 export async function POST(
-  req: NextRequest
+  req: NextRequest,
 ): Promise<NextResponse<WelcomeScanBody> | NextResponse<unknown>> {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber) {
@@ -47,7 +47,7 @@ export async function POST(
 
   const eligible = await isEligibleForFreeScan(
     session.user,
-    getCountryCode(headers())
+    getCountryCode(headers()),
   );
   if (!eligible) {
     throw new Error("User is not eligible for feature");

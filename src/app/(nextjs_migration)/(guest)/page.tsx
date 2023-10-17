@@ -47,7 +47,7 @@ export default function Home() {
               name="email"
               type="email"
               placeholder={l10n.getString(
-                "exposure-landing-hero-email-placeholder"
+                "exposure-landing-hero-email-placeholder",
               )}
               required
             />

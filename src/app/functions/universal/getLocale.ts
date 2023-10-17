@@ -6,7 +6,7 @@ import { ReactLocalization } from "@fluent/react";
 import { LocaleData } from "../server/l10n";
 
 export function getLocale(
-  localeData: LocaleData[] | ReactLocalization
+  localeData: LocaleData[] | ReactLocalization,
 ): string {
   return (
     (Array.isArray(localeData)

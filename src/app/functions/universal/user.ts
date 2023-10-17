@@ -23,7 +23,7 @@ export function canSubscribeToPremium(params: {
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
 export function hasSetupOnerep(
-  user?: Session["user"]
+  user?: Session["user"],
 ): user is Session["user"] & { subscriber: { onerep_profile_id: number } } {
   return typeof user?.subscriber?.onerep_profile_id === "number";
 }

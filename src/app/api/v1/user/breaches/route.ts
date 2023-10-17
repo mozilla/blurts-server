@@ -73,20 +73,20 @@ export async function PUT(req: NextRequest) {
       // check if breach id is a part of affectEmail's breaches
       const { verifiedEmails } = await getAllEmailsAndBreaches(
         subscriber,
-        allBreaches
+        allBreaches,
       );
       let currentEmail;
       if (affectedEmailAsSubscriber) {
         currentEmail = verifiedEmails.find(
-          (ve) => ve.email === affectedEmailAsSubscriber
+          (ve) => ve.email === affectedEmailAsSubscriber,
         );
       } else {
         currentEmail = verifiedEmails.find(
-          (ve) => ve.email === affectedEmailInEmailAddresses
+          (ve) => ve.email === affectedEmailInEmailAddresses,
         );
       }
       const currentBreaches = currentEmail?.breaches?.filter(
-        (b) => b.Id === breachIdNumber
+        (b) => b.Id === breachIdNumber,
       );
       if (!currentBreaches) {
         return NextResponse.json({
@@ -97,13 +97,13 @@ export async function PUT(req: NextRequest) {
 
       // check if resolutionsChecked array is a subset of the breaches' datatypes
       const isSubset = resolutionsChecked.every((val) =>
-        currentBreaches[0].DataClasses.includes(val)
+        currentBreaches[0].DataClasses.includes(val),
       );
       if (!isSubset) {
         return NextResponse.json({
           success: false,
           message: `Error: the resolutionChecked param contains more than allowed data types: [${resolutionsChecked.join(
-            ", "
+            ", ",
           )}]`,
         });
       }
@@ -139,7 +139,7 @@ export async function PUT(req: NextRequest) {
 
       const updatedSubscriber = await setBreachResolution(
         subscriber,
-        currentBreachResolution
+        currentBreachResolution,
       );
 
       return NextResponse.json({

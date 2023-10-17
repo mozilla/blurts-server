@@ -6,7 +6,7 @@ import {
   addOnerepScanResults,
   getLatestOnerepScanResults,
 } from "../../../db/tables/onerep_scans";
-import { ScanResult, getAllScanResults } from "./onerep";
+import { ScanResult, getAllScanResults, getScanDetails } from "./onerep";
 
 /**
  * Attempt to fetch the current scan results from the provider.
@@ -20,24 +20,36 @@ export async function refreshStoredScanResults(profileId: number) {
   // This contains the latest scan results in our database.
   const latestScan = await getLatestOnerepScanResults(profileId);
 
+  let scanId = latestScan.scan?.onerep_scan_id;
+  let reason = latestScan.scan?.onerep_scan_reason;
+  let status = latestScan.scan?.onerep_scan_status;
+
   try {
     const currentScan = await getAllScanResults(profileId);
-    const newScanResults: ScanResult[] = [];
+    let newScanResults: ScanResult[] = [];
 
-    currentScan.forEach((current) => {
-      latestScan.results.forEach((latest) => {
-        if (
-          current.id === latest.onerep_scan_result_id &&
-          current.scan_id === latest.onerep_scan_id &&
-          new Date(current.updated_at) > latest.updated_at
-        ) {
-          newScanResults.push(current);
-        }
+    if (!latestScan.results.length) {
+      newScanResults = currentScan;
+    } else {
+      currentScan.forEach((current) => {
+        latestScan.results.forEach((latest) => {
+          if (
+            current.id === latest.onerep_scan_result_id &&
+            current.scan_id === latest.onerep_scan_id &&
+            new Date(current.updated_at) > latest.updated_at
+          ) {
+            newScanResults.push(current);
+          }
+        });
       });
-    });
+    }
 
     if (newScanResults.length > 0) {
-      const scanId = latestScan?.scan?.id;
+      scanId = newScanResults[0].scan_id;
+      const details = await getScanDetails(profileId, scanId);
+      reason = details.reason;
+      status = details.status;
+
       if (!scanId && typeof scanId === "number") {
         throw new Error("No current scan ID");
       }
@@ -52,10 +64,10 @@ export async function refreshStoredScanResults(profileId: number) {
 
       await addOnerepScanResults(
         profileId,
-        scanId as number,
+        scanId,
         newScanResults,
-        latestScan.scan.onerep_scan_reason,
-        latestScan.scan.onerep_scan_status
+        reason,
+        status,
       );
     }
   } catch (ex) {

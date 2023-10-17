@@ -749,7 +749,11 @@ ad-unit-6-before-you-complete = Cyn i chi gwblhau'r cofrestriad nesaf hwnnw, def
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
+# Deprecated - to be replaced by -brand-mozilla-account
 -brand-fx-account = Cyfrif Firefox
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account = Cyfrif Mozilla
 
 ## Search Engine Optimization
 
@@ -765,7 +769,7 @@ sign-in = Mewngofnodi
 site-nav-breaches-link = Datrys Tor-data
 site-nav-settings-link = Gosodiadau
 site-nav-help-link = Cymorth a Chefnogaeth
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Rhowch gynnig ar ein hoffer diogelwch eraill:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -775,8 +779,12 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Dewislen defnyddiwr
 menu-button-alt = Agor dewislen defnyddiwr
 menu-list-accessible-label = Dewislen cyfrif
+# Deprecated
 menu-item-fxa = Rheolwch eich { -brand-fx-account }
+menu-item-fxa-2 = Rheoli eich { -brand-mozilla-account }
+# Deprecated
 menu-item-fxa-alt = Agor tudalen { -brand-fx-account }
+menu-item-fxa-alt-2 = Agor tudalen { -brand-mozilla-account }
 menu-item-settings = Gosodiadau
 menu-item-settings-alt = Agor tudalen gosodiadau
 menu-item-help = Cymorth a chefnogaeth
@@ -821,14 +829,3 @@ breach-detail-cta-signup = Gwiriwch am dor-data
 floating-banner-text = Rhowch hwb i'ch diogelwch ar-lein gyda newyddion, awgrymiadau a diweddariadau gan { -brand-Mozilla }.
 floating-banner-link-label = Ymuno
 floating-banner-dismiss-button-label = Dim diolch
-
-## False door test
-
-
-# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
-
-false-door-test-content-part-one = Ni ddylai neb allu prynu eich gwybodaeth bersonol.
-false-door-test-content-part-two = Dileu data yn awtomatig o wefannau sy'n ceisio ei werthu.
-false-door-test-content-part-two-dashboard = Auto-dileu data o safleoedd sy'n ceisio ei werthu.
-false-door-test-cta = Cyfrwch fi i mewn
-false-door-test-popup-close = Cau

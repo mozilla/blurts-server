@@ -12,9 +12,18 @@ enum ENV {
   dev = "dev",
 }
 
-export const defaultScreenshotOpts = {
+interface DefaultScreenshotOpts {
+  animations: "disabled" | "allow";
+  maxDiffPixelRatio: number;
+  timeout: number;
+  caret?: "hide" | "initial" | undefined;
+  fullPage?: boolean;
+}
+
+export const defaultScreenshotOpts: Partial<DefaultScreenshotOpts> = {
   animations: "disabled",
   maxDiffPixelRatio: 0.04,
+  timeout: 5_000,
 };
 
 export const ENV_URLS = {
@@ -39,7 +48,7 @@ export const getBaseUrl = () => {
 export const getVerificationCode = async (
   testEmail: string,
   page: Page,
-  attempts = 10
+  attempts = 10,
 ): Promise<string> => {
   if (attempts === 0) {
     throw new InternalServerError("Unable to retrieve restmail data");

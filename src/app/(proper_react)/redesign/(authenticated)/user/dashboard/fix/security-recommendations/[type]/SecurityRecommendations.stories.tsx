@@ -22,7 +22,7 @@ mockedBreaches.push(
       BreachDataTypes.Email,
       BreachDataTypes.IP,
     ],
-  })
+  }),
 );
 
 const user = createUserWithPremiumSubscription();
