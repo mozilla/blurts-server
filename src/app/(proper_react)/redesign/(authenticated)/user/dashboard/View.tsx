@@ -39,6 +39,7 @@ import NoExposuresIllustration from "./images/dashboard-no-exposures.svg";
 import ScanProgressIllustration from "./images/scan-illustration.svg";
 import { CountryCodeContext } from "../../../../../../contextProviders/country-code";
 import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
+import { getNextGuidedStep } from "../../../../../functions/server/getRelevantGuidedSteps";
 
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
@@ -69,6 +70,7 @@ export const View = (props: Props) => {
   };
   const [filters, setFilters] = useState<FilterState>(initialFilterState);
   const [selectedTab, setSelectedTab] = useState<TabType>("action-needed");
+  const [activeExposureCardKey, setActiveExposureCardKey] = useState("");
   const tabsData: TabData[] = [
     {
       name: l10n.getString("dashboard-tab-label-action-needed"),
@@ -113,15 +115,16 @@ export const View = (props: Props) => {
 
   const tabSpecificExposures = getTabSpecificExposures(selectedTab);
   const filteredExposures = filterExposures(tabSpecificExposures, filters);
-
   const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
+    const exposureCardKey = `${isScanResult(exposure) ? "scan" : "breach"}-${
+      exposure.id
+    }`;
     return (
-      <li
-        key={`${isScanResult(exposure) ? "scan" : "breach"}-${exposure.id}`}
-        className={styles.exposureListItem}
-      >
+      <li key={exposureCardKey} className={styles.exposureListItem}>
         <ExposureCard
           exposureData={exposure}
+          isExpanded={exposureCardKey === activeExposureCardKey}
+          setExpanded={() => setActiveExposureCardKey(exposureCardKey)}
           locale={getLocale(l10n)}
           isPremiumBrokerRemovalEnabled={props.enabledFeatureFlags.includes(
             "PremiumBrokerRemoval",
@@ -132,10 +135,12 @@ export const View = (props: Props) => {
               variant="primary"
               wide
               href={
-                isScanResult(exposure)
-                  ? "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove"
-                  : // TODO MNTOR-2226: Figure out where this CTA should go
-                    undefined
+                getNextGuidedStep({
+                  user: props.user,
+                  countryCode,
+                  latestScanData: props.userScanData,
+                  subscriberBreaches: props.userBreaches,
+                }).href
               }
             >
               {l10n.getString("exposure-card-cta")}

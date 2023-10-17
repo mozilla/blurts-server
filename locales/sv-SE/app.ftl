@@ -723,7 +723,11 @@ ad-unit-6-before-you-complete = Innan du slutför nästa registrering, använd e
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
+# Deprecated - to be replaced by -brand-mozilla-account
 -brand-fx-account = Firefox-konto
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account = Mozilla-konto
 
 ## Search Engine Optimization
 
@@ -739,7 +743,7 @@ sign-in = Logga in
 site-nav-breaches-link = Åtgärda dataintrång
 site-nav-settings-link = Inställningar
 site-nav-help-link = Hjälp och support
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Prova våra andra säkerhetsverktyg:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -749,8 +753,12 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Användarmeny
 menu-button-alt = Öppna användarmenyn
 menu-list-accessible-label = Kontomeny
+# Deprecated
 menu-item-fxa = Hantera ditt { -brand-fx-account }
+menu-item-fxa-2 = Hantera ditt { -brand-mozilla-account }
+# Deprecated
 menu-item-fxa-alt = Öppna sidan { -brand-fx-account }
+menu-item-fxa-alt-2 = Öppna sidan { -brand-mozilla-account }
 menu-item-settings = Inställningar
 menu-item-settings-alt = Öppna inställningssidan
 menu-item-help = Hjälp och support
@@ -795,14 +803,3 @@ breach-detail-cta-signup = Sök efter intrång
 floating-banner-text = Öka din onlinesäkerhet med nyheter, tips och uppdateringar från { -brand-Mozilla }.
 floating-banner-link-label = Registrera dig
 floating-banner-dismiss-button-label = Nej tack
-
-## False door test
-
-
-# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
-
-false-door-test-content-part-one = Ingen ska kunna köpa dina personuppgifter.
-false-door-test-content-part-two = Ta automatiskt bort data från webbplatser som försöker sälja den.
-false-door-test-content-part-two-dashboard = Ta automatiskt bort data från webbplatser som försöker sälja den.
-false-door-test-cta = Räkna med mig
-false-door-test-popup-close = Stäng

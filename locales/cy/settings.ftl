@@ -60,7 +60,7 @@ settings-cancel-premium-subscription-link-label = Diddymu'ch { -brand-fx-account
 settings-deactivate-account-title = Analluogi cyfrif
 # Deprecated
 settings-deactivate-account-info = Gallwch ddadalluogi { -product-short-name } drwy ddileu eich { -brand-fx-account }.
-settings-deactivate-account-info-2 = Gallwch ddadactifadu { -product-short-name } drwy ddileu eich { -brand-mozilla-account }.
+settings-deactivate-account-info-2 = Gallwch ddadweithredu { -product-short-name } drwy ddileu eich { -brand-mozilla-account }.
 # Deprecated
 settings-fxa-link-label = Ewch i Gosodiadau { -brand-firefox }
 settings-fxa-link-label-2 = Ewch i Gosodiadau { -brand-mozilla }

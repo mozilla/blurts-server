@@ -704,7 +704,11 @@ ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eiporu ñand
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
+# Deprecated - to be replaced by -brand-mozilla-account
 -brand-fx-account = Firefox mba’ete
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account = Mozilla mba’ete
 
 ## Search Engine Optimization
 
@@ -720,7 +724,7 @@ sign-in = Eñepyrũ tembiapo
 site-nav-breaches-link = Emoĩporã mba’ekuaarã ñembogua
 site-nav-settings-link = Ñemboheko
 site-nav-help-link = Ñepytvõ ha Pytyvõha
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Eiporu ore ambue rembiporu tekorosãrã:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -730,8 +734,12 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Poruhára jeporavoha
 menu-button-alt = Embojuruja poruhára jeporavoha
 menu-list-accessible-label = Mba’ete jeporavoha
+# Deprecated
 menu-item-fxa = Eñangareko nde { -brand-fx-account }
+menu-item-fxa-2 = Eñangareko { -brand-mozilla-account } rehe
+# Deprecated
 menu-item-fxa-alt = Embojuruja { -brand-fx-account } kuatiarogue
+menu-item-fxa-alt-2 = Embojuruja { -brand-mozilla-account } kuatiarogue
 menu-item-settings = Ñemboheko
 menu-item-settings-alt = Embojuruja kuatiarogue ñemboheko
 menu-item-help = Ñepytvõ ha Pytyvõha

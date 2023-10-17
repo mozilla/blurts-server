@@ -29,7 +29,7 @@ export function AutomaticRemoveView(props: Props) {
     props;
 
   return (
-    <FixView {...fixViewProps}>
+    <FixView {...fixViewProps} hideProgressIndicator>
       <div>
         <div className={`${styles.content} ${styles.contentAutomaticRemove}`}>
           <h3>
@@ -147,7 +147,6 @@ export function AutomaticRemoveView(props: Props) {
                     ? yearlySubscriptionUrl
                     : monthlySubscriptionUrl
                 }
-                onPress={() => (window.location.href = "../../subscribed")} // TODO replace with final UI
               >
                 {selectedPlanIsYearly
                   ? l10n.getString(

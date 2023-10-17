@@ -26,13 +26,13 @@ breach-heading-email = Úniky údajov pre { $email-select }
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored =
     { $total ->
-        [one] Monitorované e-maily: { $count } z { $total }
-        [few] Monitorované e-maily: { $count } z { $total }
-        [many] Monitorované e-maily: { $count } z { $total }
-       *[other] Monitorované e-maily: { $count } z { $total }
+        [one] Monitorované e‑maily: { $count } z { $total }
+        [few] Monitorované e‑maily: { $count } z { $total }
+        [many] Monitorované e‑maily: { $count } z { $total }
+       *[other] Monitorované e‑maily: { $count } z { $total }
     }
 # link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = Spravovať e-mailové adresy
+manage-emails-link = Spravovať e‑mailové adresy
 
 ## Breaches resolved filter
 
@@ -53,14 +53,14 @@ breaches-none-headline = Neboli nájdené žiadne úniky údajov
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
 breaches-none-copy = Dobré správy! Pre adresu { $email } neboli hlásené žiadne známe úniky údajov. Túto adresu budeme naďalej sledovať a budeme vás informovať, ak dôjde k novým únikom.
-breaches-none-cta-blurb = Chcete monitorovať ďalšiu e-mailovú adresu?
-breaches-none-cta-button = Pridať e-mailovú adresu
+breaches-none-cta-blurb = Chcete monitorovať ďalšiu e‑mailovú adresu?
+breaches-none-cta-button = Pridať e‑mailovú adresu
 breaches-all-resolved-headline = Všetky úniky údajov vyriešené
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
 breaches-all-resolved-copy = Paráda! Vyriešili ste všetky úniky údajov pre adresu { $email }. Túto adresu budeme naďalej sledovať a budeme vás informovať, ak dôjde k novým únikom.
-breaches-all-resolved-cta-blurb = Chcete monitorovať ďalšiu e-mailovú adresu?
-breaches-all-resolved-cta-button = Pridať e-mailovú adresu
+breaches-all-resolved-cta-blurb = Chcete monitorovať ďalšiu e‑mailovú adresu?
+breaches-all-resolved-cta-button = Pridať e‑mailovú adresu
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 # Variables:
 #   $breachDate (String) - Date of the breach
@@ -85,8 +85,8 @@ breach-checklist-pw-body-text = Vo väčšine prípadov vám odporúčame zmeni�
 
 # Variables:
 #   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
-breach-checklist-email-header-2 = Chráňte svoj e-mail pomocou služby maskovania e-mailov, ako je { $firefoxRelayLink }.
-breach-checklist-email-body = Týmto môžete skryť vašu skutočnú e-mailovú adresu a zároveň stále dostávať e-maily do vašej skutočnej e-mailovej schránky.
+breach-checklist-email-header-2 = Chráňte svoj e‑mail pomocou služby maskovania e‑mailov, ako je { $firefoxRelayLink }.
+breach-checklist-email-body = Týmto môžete skryť vašu skutočnú e‑mailovú adresu a zároveň stále dostávať e‑maily do vašej skutočnej e‑mailovej schránky.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
