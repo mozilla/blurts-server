@@ -14,7 +14,8 @@ import { getLocale } from "../../../../../../../../functions/universal/getLocale
 export type Props = {
   scanResult: OnerepScanResultRow;
   isPremiumUser: boolean;
-  isExpanded?: boolean;
+  isExpanded: boolean;
+  setExpanded: () => void;
 };
 
 export const RemovalCard = (props: Props) => {
@@ -56,6 +57,7 @@ export const RemovalCard = (props: Props) => {
         ) : null
       }
       isExpanded={props.isExpanded}
+      setExpanded={props.setExpanded}
     />
   );
 };
