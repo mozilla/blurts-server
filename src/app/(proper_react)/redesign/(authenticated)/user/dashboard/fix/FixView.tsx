@@ -24,6 +24,7 @@ export type FixViewProps = {
     | "high-risk-data-breach"
     | "leaked-passwords"
     | "security-recommendations";
+  hideProgressIndicator?: boolean;
 };
 
 export const FixView = (props: FixViewProps) => {
@@ -53,11 +54,16 @@ export const FixView = (props: FixViewProps) => {
           isResolutionLayout ? styles.highRiskDataBreachContentBg : ""
         }`}
       >
-        <FixNavigation
-          currentSection={props.currentSection}
-          data={props.data}
-          subscriberEmails={props.subscriberEmails}
-        />
+        {!props.hideProgressIndicator && (
+          <FixNavigation
+            currentSection={props.currentSection}
+            data={props.data}
+            subscriberEmails={props.subscriberEmails}
+            label={l10n.getString(
+              "guided-resolution-flow-step-navigation-label",
+            )}
+          />
+        )}
         {navigationClose()}
         <section className={styles.fixSection}>
           <div className={styles.viewWrapper}>{props.children}</div>
