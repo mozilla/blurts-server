@@ -725,7 +725,11 @@ ad-unit-6-before-you-complete = Ennen kuin suoritat seuraavan rekisteröitymisen
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
+# Deprecated - to be replaced by -brand-mozilla-account
 -brand-fx-account = Firefox-tili
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account = Mozilla-tili
 
 ## Search Engine Optimization
 
@@ -741,7 +745,7 @@ sign-in = Kirjaudu sisään
 site-nav-breaches-link = Selvitä tietovuodot
 site-nav-settings-link = Asetukset
 site-nav-help-link = Ohjeet ja tuki
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Kokeile muita suojaustyökalujamme:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -751,8 +755,12 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Käyttäjävalikko
 menu-button-alt = Avaa käyttäjävalikko
 menu-list-accessible-label = Tilivalikko
+# Deprecated
 menu-item-fxa = Hallitse { -brand-fx-account }äsi
+menu-item-fxa-2 = Hallitse { -brand-mozilla-account }äsi
+# Deprecated
 menu-item-fxa-alt = Avaa { -brand-fx-account } -sivu
+menu-item-fxa-alt-2 = Avaa { -brand-mozilla-account }n sivu
 menu-item-settings = Asetukset
 menu-item-settings-alt = Avaa asetussivu
 menu-item-help = Ohjeet ja tuki

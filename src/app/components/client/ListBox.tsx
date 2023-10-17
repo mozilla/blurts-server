@@ -25,7 +25,7 @@ function Option({ item, state }: OptionProps) {
   const { optionProps, isSelected, isFocused, isDisabled } = useOption(
     { key: item.key },
     state,
-    ref
+    ref,
   );
 
   return (

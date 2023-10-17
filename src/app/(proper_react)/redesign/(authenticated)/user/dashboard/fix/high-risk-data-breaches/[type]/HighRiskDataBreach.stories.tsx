@@ -23,7 +23,7 @@ mockedBreaches.push(
       BreachDataTypes.BankAccount,
       BreachDataTypes.PIN,
     ],
-  })
+  }),
 );
 
 const user = createUserWithPremiumSubscription();

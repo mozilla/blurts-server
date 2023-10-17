@@ -22,19 +22,19 @@ export function AutomaticRemoveView(props: Props) {
 
   const dataBrokerCount = parseInt(
     process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-    10
+    10,
   );
 
   const { monthlySubscriptionUrl, yearlySubscriptionUrl, ...fixViewProps } =
     props;
 
   return (
-    <FixView {...fixViewProps}>
+    <FixView {...fixViewProps} hideProgressIndicator>
       <div>
         <div className={`${styles.content} ${styles.contentAutomaticRemove}`}>
           <h3>
             {l10n.getString(
-              "fix-flow-data-broker-profiles-automatic-remove-headline"
+              "fix-flow-data-broker-profiles-automatic-remove-headline",
             )}
           </h3>
           <p>
@@ -42,7 +42,7 @@ export function AutomaticRemoveView(props: Props) {
               "fix-flow-data-broker-profiles-automatic-remove-subheadline",
               {
                 data_broker_count: dataBrokerCount,
-              }
+              },
             )}
           </p>
         </div>
@@ -54,7 +54,7 @@ export function AutomaticRemoveView(props: Props) {
                 className={`${selectedPlanIsYearly ? styles.isActive : ""}`}
               >
                 {l10n.getString(
-                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-yearly"
+                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-yearly",
                 )}
               </button>
               <button
@@ -62,14 +62,14 @@ export function AutomaticRemoveView(props: Props) {
                 className={`${selectedPlanIsYearly ? "" : styles.isActive}`}
               >
                 {l10n.getString(
-                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-monthly"
+                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-monthly",
                 )}
               </button>
             </div>
             <span>
               {l10n.getString(
                 "fix-flow-data-broker-profiles-automatic-remove-save-percent",
-                { percent: 10 }
+                { percent: 10 },
               )}
             </span>
           </div>
@@ -78,7 +78,7 @@ export function AutomaticRemoveView(props: Props) {
             <div className={styles.featuresList}>
               <strong>
                 {l10n.getString(
-                  "fix-flow-data-broker-profiles-automatic-remove-features-headline"
+                  "fix-flow-data-broker-profiles-automatic-remove-features-headline",
                 )}
               </strong>
               <ul>
@@ -87,27 +87,27 @@ export function AutomaticRemoveView(props: Props) {
                     "fix-flow-data-broker-profiles-automatic-remove-features-monthly-scan",
                     {
                       data_broker_count: dataBrokerCount,
-                    }
+                    },
                   )}
                 </li>
                 <li>
                   {l10n.getString(
-                    "fix-flow-data-broker-profiles-automatic-remove-features-remove-personal-info"
+                    "fix-flow-data-broker-profiles-automatic-remove-features-remove-personal-info",
                   )}
                 </li>
                 <li>
                   {l10n.getString(
-                    "fix-flow-data-broker-profiles-automatic-remove-features-guided-experience"
+                    "fix-flow-data-broker-profiles-automatic-remove-features-guided-experience",
                   )}
                 </li>
                 <li>
                   {l10n.getString(
-                    "fix-flow-data-broker-profiles-automatic-remove-features-continuous-monitoring"
+                    "fix-flow-data-broker-profiles-automatic-remove-features-continuous-monitoring",
                   )}
                 </li>
                 <li>
                   {l10n.getString(
-                    "fix-flow-data-broker-profiles-automatic-remove-features-breach-alerts"
+                    "fix-flow-data-broker-profiles-automatic-remove-features-breach-alerts",
                   )}
                 </li>
               </ul>
@@ -116,15 +116,15 @@ export function AutomaticRemoveView(props: Props) {
             <div className={styles.selectedPlan}>
               <strong>
                 {l10n.getString(
-                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-headline"
+                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-headline",
                 )}
                 <small>
                   {selectedPlanIsYearly
                     ? l10n.getString(
-                        "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-frequency"
+                        "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-frequency",
                       )
                     : l10n.getString(
-                        "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-frequency"
+                        "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-frequency",
                       )}
                 </small>
               </strong>
@@ -133,11 +133,11 @@ export function AutomaticRemoveView(props: Props) {
                 {selectedPlanIsYearly
                   ? l10n.getString(
                       "fix-flow-data-broker-profiles-automatic-remove-features-price",
-                      { price: "X.XX" }
+                      { price: "X.XX" },
                     )
                   : l10n.getString(
                       "fix-flow-data-broker-profiles-automatic-remove-features-price",
-                      { price: "X.XX" }
+                      { price: "X.XX" },
                     )}
               </span>
               <Button
@@ -147,14 +147,13 @@ export function AutomaticRemoveView(props: Props) {
                     ? yearlySubscriptionUrl
                     : monthlySubscriptionUrl
                 }
-                onPress={() => (window.location.href = "../../subscribed")} // TODO replace with final UI
               >
                 {selectedPlanIsYearly
                   ? l10n.getString(
-                      "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-button"
+                      "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-button",
                     )
                   : l10n.getString(
-                      "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-button"
+                      "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-button",
                     )}
               </Button>
             </div>

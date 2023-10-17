@@ -33,7 +33,7 @@ export interface ScanProgressBody {
 // A webhook is used as well, but this ensures that we get the latest data.
 // @see the onerep-events route and https://docs.onerep.com/#section/Webhooks-Endpoints
 export async function GET(
-  _req: NextRequest
+  _req: NextRequest,
 ): Promise<NextResponse<ScanProgressBody> | NextResponse<unknown>> {
   const session = await getServerSession(authOptions);
   if (typeof session?.user?.email === "string") {
@@ -57,13 +57,13 @@ export async function GET(
             scan.id,
             allScanResults,
             "manual",
-            scan.status
+            scan.status,
           );
         }
 
         return NextResponse.json(
           { success: true, status: scan.status },
-          { status: 200 }
+          { status: 200 },
         );
       }
 

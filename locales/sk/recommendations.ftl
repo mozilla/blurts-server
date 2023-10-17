@@ -47,12 +47,12 @@ rec-cc =
     Skontrolujte, či neboli prostredníctvom vašej karty uskutočnené 
     podozrivé transakcie. Ak áno, požiadajte o vydanie novej.
 # Recommendation subhead
-rec-email-mask-subhead = Použite e-mailovú masku
+rec-email-mask-subhead = Použite e‑mailovú masku
 rec-email-cta = Vyskúšajte { -brand-relay }
 rec-email =
-    Poskytnutie skutočnej e-mailovej adresy uľahčuje prácu hackerom alebo
+    Poskytnutie skutočnej e‑mailovej adresy uľahčuje prácu hackerom alebo
     sledovacím prvkom pri zisťovaní vášho hesla. Služby ako { -brand-relay } skrývajú
-    vašu skutočnú e-mailovú adresu, pričom e-maily budú preposielané do vašej skutočnej e-mailovej schránky.
+    vašu skutočnú e‑mailovú adresu, pričom e‑maily budú preposielané do vašej skutočnej e‑mailovej schránky.
 # Recommendation subhead
 rec-ip-subhead-2 = Na maskovanie vašej IP adresy použite sieť VPN
 # Recommendation subhead
@@ -112,7 +112,7 @@ rec-gen-2 =
 rec-gen-3-subhead = Nerozdávajte zbytočne svoje osobné údaje
 # Link title
 rec-gen-3-cta = Ďalšie bezpečnostné tipy
-rec-gen-3 = Ak nemusíte, nedávajte nikomu svoje osobné údaje. Ak vás niekto požiada o e-mail, adresu alebo telefónne číslo, vždy to môžete odmietnuť.
+rec-gen-3 = Ak nemusíte, nedávajte nikomu svoje osobné údaje. Ak vás niekto požiada o e‑mail, adresu alebo telefónne číslo, vždy to môžete odmietnuť.
 # Recommendation subhead
 rec-gen-4-subhead = Pravidelne aktualizujte svoje programy a aplikácie
 rec-gen-4 =

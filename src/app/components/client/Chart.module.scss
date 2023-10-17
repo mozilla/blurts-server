@@ -3,9 +3,9 @@
 .chartContainer {
   text-align: center;
   display: flex;
-  gap: $spacing-lg;
+  gap: $spacing-md;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
 
   figcaption {
     text-align: center;

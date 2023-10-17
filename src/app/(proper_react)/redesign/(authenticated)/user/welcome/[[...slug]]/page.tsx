@@ -38,7 +38,7 @@ export default async function Onboarding({ params }: Props) {
 
   const userIsEligible = await isEligibleForFreeScan(
     session.user,
-    getCountryCode(headers())
+    getCountryCode(headers()),
   );
 
   if (!userIsEligible) {
@@ -53,7 +53,7 @@ export default async function Onboarding({ params }: Props) {
         user={session.user}
         dataBrokerCount={parseInt(
           process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-          10
+          10,
         )}
         breachesTotalCount={allBreachesCount}
         skipInitialStep={firstSlug === FreeScanSlug}

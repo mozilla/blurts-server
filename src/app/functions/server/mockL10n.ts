@@ -25,22 +25,22 @@ export function getEnL10nBundlesSync(): LocaleData[] {
 
 export function getEnL10nBundlesInWebpackContext(): LocaleData[] {
   const referenceStringsContext: { keys: () => string[] } & ((
-    path: string
+    path: string,
     // `require` isn't usually valid JS, so skip type checking for that:
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ) => string) = (require as any).context(
     "../../../../locales/en",
     true,
-    /\.ftl$/
+    /\.ftl$/,
   );
   const pendingTranslationsContext: { keys: () => string[] } & ((
-    path: string
+    path: string,
     // `require` isn't usually valid JS, so skip type checking for that:
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ) => string) = (require as any).context(
     "../../../../locales-pending",
     true,
-    /\.ftl$/
+    /\.ftl$/,
   );
   const referenceSourceFilenames = referenceStringsContext.keys();
   const pendingSourceFilenames = pendingTranslationsContext.keys();
@@ -48,8 +48,8 @@ export function getEnL10nBundlesInWebpackContext(): LocaleData[] {
     .map((filePath) => referenceStringsContext(filePath))
     .concat(
       pendingSourceFilenames.map((filePath) =>
-        pendingTranslationsContext(filePath)
-      )
+        pendingTranslationsContext(filePath),
+      ),
     );
 
   return [
@@ -71,22 +71,22 @@ export function getEnL10nBundlesInNodeContext(): LocaleData[] {
   const { resolve: resolvePath }: { resolve: typeof resolve } = require("path");
   const referenceStringsPath = resolvePath(
     __dirname,
-    "../../../../locales/en/"
+    "../../../../locales/en/",
   );
   const pendingStringsPath = resolvePath(
     __dirname,
-    "../../../../locales-pending/"
+    "../../../../locales-pending/",
   );
   const ftlPaths = nodeReaddirSync(referenceStringsPath)
     .map((filename) => resolvePath(referenceStringsPath, filename))
     .concat(
       nodeReaddirSync(pendingStringsPath).map((filename) =>
-        resolvePath(pendingStringsPath, filename)
-      )
+        resolvePath(pendingStringsPath, filename),
+      ),
     );
 
   const bundleSources: string[] = ftlPaths.map((filePath) =>
-    nodeReadFileSync(filePath, "utf-8")
+    nodeReadFileSync(filePath, "utf-8"),
   );
 
   return [
@@ -139,7 +139,7 @@ export function getEnL10nSync(): ExtendedReactLocalization {
     bundles,
     // In Storybook, the Fluent bundle is generated in the browser, so we don't need
     // to provide `parseMarkup`:
-    process.env.STORYBOOK === "true" ? undefined : parseMarkup
+    process.env.STORYBOOK === "true" ? undefined : parseMarkup,
   );
 
   const getFragment: GetFragment = (id, args, fallback) =>

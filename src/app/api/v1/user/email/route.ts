@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
     try {
       const body: EmailAddRequest = await req.json();
       const subscriber = (await getSubscriberByEmail(
-        token.email
+        token.email,
       )) as Subscriber & {
         email_addresses: Array<{ id: number; email: string }>;
       };
@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
             success: false,
             message: l10n.getString("user-add-invalid-email"),
           },
-          { status: 400 }
+          { status: 400 },
         );
       }
 
@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
             success: false,
             message: l10n.getString("user-add-too-many-emails"),
           },
-          { status: 400 }
+          { status: 400 },
         );
       }
 
@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
             success: false,
             message: l10n.getString("user-add-duplicate-email"),
           },
-          { status: 400 }
+          { status: 400 },
         );
       }
 
@@ -74,14 +74,14 @@ export async function POST(req: NextRequest) {
               success: false,
               message: l10n.getString("user-add-duplicate-email"),
             },
-            { status: 400 }
+            { status: 400 },
           );
         }
       }
 
       const unverifiedSubscriber = await addSubscriberUnverifiedEmailHash(
         subscriber,
-        validatedEmail.email
+        validatedEmail.email,
       );
 
       await initEmail();
@@ -102,7 +102,7 @@ export async function POST(req: NextRequest) {
             success: false,
             message: "Verification email recently sent, try again later",
           },
-          { status: 429 }
+          { status: 429 },
         );
       }
       return NextResponse.json({ success: false }, { status: 500 });

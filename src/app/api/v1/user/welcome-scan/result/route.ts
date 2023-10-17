@@ -34,7 +34,7 @@ export async function GET() {
       const scanResults = await getLatestOnerepScanResults(profileId);
       return NextResponse.json(
         { success: true, scan_results: scanResults },
-        { status: 200 }
+        { status: 200 },
       );
     } catch (e) {
       console.error(e);

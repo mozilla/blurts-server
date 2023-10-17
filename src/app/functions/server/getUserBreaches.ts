@@ -94,7 +94,7 @@ export async function getUserBreaches({
  * @param user
  */
 export async function getSubscriberBreaches(
-  user: Session["user"]
+  user: Session["user"],
 ): Promise<SubscriberBreach[]> {
   const subscriber = await getSubscriberByEmail(user.email);
   const allBreaches = await getBreaches();
