@@ -228,7 +228,7 @@ export const ExposuresFilter = ({
               {l10n.getString("dashboard-exposures-filter")}
             </button>
           </li>
-          <li className={styles.hideOnMobile}>
+          <li className={`${styles.hideOnMobile} ${styles.companyNameArea}`}>
             {l10n.getString("dashboard-exposures-filter-company")}
           </li>
           <li className={styles.hideOnMobile}>

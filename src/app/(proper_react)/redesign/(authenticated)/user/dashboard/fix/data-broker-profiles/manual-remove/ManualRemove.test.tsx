@@ -68,3 +68,25 @@ it("keeps the manual resolution button if resolving a profile failed", async () 
     resolveButtonsBeforeResolving.length,
   );
 });
+
+it("shows the progress indicator on the manual resolution flow", () => {
+  const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
+  render(<ComposedManualRemoveView />);
+
+  const guidedStepsNavigation = screen.queryByRole("navigation", {
+    name: "Guided steps",
+  });
+  expect(guidedStepsNavigation).toBeInTheDocument();
+});
+
+it("expands one card at a time", async () => {
+  const user = userEvent.setup();
+  global.fetch = jest.fn().mockResolvedValueOnce({ ok: true });
+  const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
+  render(<ComposedManualRemoveView />);
+
+  const expandButton = screen.getAllByRole("button", { name: "Expand" });
+  await user.click(expandButton[0]);
+  const expandButton2 = screen.getAllByRole("button", { name: "Expand" });
+  expect(expandButton.length).toBe(expandButton2.length);
+});

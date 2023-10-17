@@ -144,7 +144,7 @@ exposure-card-description-data-breach-part-two = We’ll walk you through the st
 exposure-card-your-exposed-info = Your exposed info:
 exposure-card-exposure-type-data-broker = Info for sale
 exposure-card-exposure-type-data-breach = Data breach
-exposure-card-cta = Let’s fix it
+exposure-card-cta = Fix all exposures
 exposure-card-label-company-logo = Company logo
 exposure-card-label-company = Company
 exposure-card-label-exposure-type = Exposure type
@@ -203,7 +203,7 @@ dashboard-exposures-filter-show-all = Show all
 dashboard-exposures-filter-show-results = Show results
 dashboard-exposures-filter-reset = Reset
 
-
+dashboard-top-banner-section-label = Dashboard summary
 dashboard-top-banner-scan-in-progress-title = Your scan is still in progress
 # Variables:
 # $unresolved_exposures is the total number of unresolved exposures the user has.
@@ -372,6 +372,7 @@ premium-upsell-dialog-title = Choose the level of protection that’s right for 
 guided-resolution-flow-exit = Return to dashboard
 guided-resolution-flow-back-arrow = Go to previous step
 guided-resolution-flow-next-arrow = Go to next step
+guided-resolution-flow-step-navigation-label = Guided steps
 # Variables
 # $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
 # "Est." is shortform for "Estimated".
