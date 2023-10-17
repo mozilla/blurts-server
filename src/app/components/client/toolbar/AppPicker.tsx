@@ -224,12 +224,11 @@ function AppPickerTrigger(props: AppPickerTriggerProps) {
   const l10n = useL10n();
   const state = useMenuTriggerState({
     onOpenChange: (isOpen) => {
-      isOpen &&
-        gaEvent({
-          category: "bento",
-          action: state.isOpen ? "bento-opened" : "bento-closed",
-          label: props.referringHost,
-        });
+      gaEvent({
+        category: "bento",
+        action: isOpen ? "bento-opened" : "bento-closed",
+        label: props.referringHost,
+      });
     },
   });
   const ref = useRef<HTMLButtonElement | null>(null);
