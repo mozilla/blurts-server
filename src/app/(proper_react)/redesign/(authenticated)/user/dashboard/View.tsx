@@ -47,7 +47,6 @@ export type Props = {
   userScanData: LatestOnerepScanData;
   isEligibleForFreeScan: boolean;
   isEligibleForPremium: boolean;
-  isPremiumUser: boolean;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
   scanCount: number;
@@ -123,7 +122,7 @@ export const View = (props: Props) => {
       if (props.isEligibleForFreeScan) {
         return "/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan";
       } else if (props.isEligibleForPremium) {
-        if (props.isPremiumUser) {
+        if (hasPremium(props.user)) {
           // if premium user, go to resolution card
           return "/redesign/user/dashboard/fix/high-risk-data-breaches";
         }

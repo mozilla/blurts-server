@@ -9,10 +9,7 @@ import { View } from "./View";
 import { authOptions } from "../../../../../api/utils/auth";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../functions/server/getUserBreaches";
-import {
-  canSubscribeToPremium,
-  hasPremium,
-} from "../../../../../functions/universal/user";
+import { canSubscribeToPremium } from "../../../../../functions/universal/user";
 import {
   getLatestOnerepScanResults,
   getScansCountForProfile,
@@ -62,7 +59,6 @@ export default async function DashboardPage() {
     countryCode,
     enabledFlags,
   );
-  const isPremiumUser = hasPremium(session.user);
 
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
@@ -76,7 +72,6 @@ export default async function DashboardPage() {
       user={session.user}
       isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
-      isPremiumUser={isPremiumUser}
       userScanData={latestScan}
       userBreaches={subBreaches}
       enabledFeatureFlags={enabledFeatureFlags}
