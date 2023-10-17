@@ -53,7 +53,7 @@ export const BreachDataClass = (props: BreachDataClassProps) => {
       {props.subscriberBreachData.emailsAffected.map(
         (email: string, index: number) => (
           <li key={index}>{email}</li>
-        )
+        ),
       )}
     </ul>
   );
@@ -76,7 +76,7 @@ type ExposureCardDataClassLayoutProps = {
 };
 
 const ExposureCardDataClassLayout = (
-  props: ExposureCardDataClassLayoutProps
+  props: ExposureCardDataClassLayoutProps,
 ) => {
   const l10n = useL10n();
 

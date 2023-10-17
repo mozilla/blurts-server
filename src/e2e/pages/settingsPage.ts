@@ -27,10 +27,10 @@ export class SettingsPage {
     this.settingsEmailSettings = page.locator(".settings-email-item");
     this.settingsContent = page.locator(".settings-content");
     this.sendToAffectedEmailRadioButton = page.locator(
-      'input[data-alert-option="0"]'
+      'input[data-alert-option="0"]',
     );
     this.sendToPrimaryEmailRadioButton = page.locator(
-      'input[data-alert-option="1"]'
+      'input[data-alert-option="1"]',
     );
   }
 

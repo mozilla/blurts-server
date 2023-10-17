@@ -18,8 +18,8 @@ describe("parseE164PhoneNumber", () => {
   it("returns null if given something too long to be a phone number", () => {
     expect(
       parseE164PhoneNumber(
-        "This is more than 16 characters and therefore unlikely to be a phone number."
-      )
+        "This is more than 16 characters and therefore unlikely to be a phone number.",
+      ),
     ).toBeNull();
   });
 
@@ -35,10 +35,10 @@ describe("parseE164PhoneNumber", () => {
 describe("parseIso8601Datetime", () => {
   it("returns a Date object if the ISO 8601 string is valid", () => {
     expect(parseIso8601Datetime("1998-03-31T00:00:00.000Z")).toBeInstanceOf(
-      Date
+      Date,
     );
     expect(parseIso8601Datetime("1998-03-31T00:00:00.000Z")?.getTime()).toBe(
-      891302400000
+      891302400000,
     );
   });
 

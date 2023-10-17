@@ -20,7 +20,7 @@ import { Fragment, createElement, useEffect, useState } from "react";
 export type GetFragment = (
   id: Parameters<ReactLocalization["getString"]>[0],
   args?: Parameters<ReactLocalization["getElement"]>[2],
-  fallback?: Parameters<ReactLocalization["getString"]>[2]
+  fallback?: Parameters<ReactLocalization["getString"]>[2],
 ) => ReturnType<ReactLocalization["getElement"]> | null;
 
 export type ExtendedReactLocalization = ReactLocalization & {

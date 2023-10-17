@@ -32,7 +32,7 @@ export class LandingPage {
     this.signUpButton = page.getByRole("button", { name: "Get Started" });
     this.signInButton = page.getByRole("button", { name: "Sign In" });
     this.firefoxLogo = page.locator(
-      '//img[starts-with(@class, "monitor-logo")]'
+      '//img[starts-with(@class, "monitor-logo")]',
     );
     this.whyUseMonitorSec = page.locator(".why-use-monitor");
     this.howItWorksSec = page.locator(".how-it-works");
@@ -46,11 +46,11 @@ export class LandingPage {
     this.GithubLink = page.getByRole("link", { name: "Github" });
     this.landingFooter = page.locator(".site-footer");
     this.ourMissionLink = page.locator(
-      'footer a:has-text("Learn more about our mission")'
+      'footer a:has-text("Learn more about our mission")',
     );
     this.seeAllFAQsLink = page.locator('footer a:has-text("See all FAQs")');
     this.falseDoorBanner = page.locator(
-      '//div[starts-with(@class, "FalseDoorBanner_falseDoorTest")]'
+      '//div[starts-with(@class, "FalseDoorBanner_falseDoorTest")]',
     );
     this.falseBannerCloseButton = page.locator("#close-button");
     this.scanEmailAddressInput = page.locator("#scan-email-address");
@@ -93,7 +93,7 @@ export class LandingPage {
     await this.firefoxLogo.click();
   }
 
-  async checkBanner() {
+  async maybeClearBanner() {
     if (await this.falseDoorBanner.isVisible()) {
       await this.falseBannerCloseButton.click();
     }

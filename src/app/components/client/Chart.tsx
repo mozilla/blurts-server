@@ -32,12 +32,12 @@ export const DoughnutChart = (props: Props) => {
   const explainerDialogState = useOverlayTriggerState({});
   const explainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
-    explainerDialogState
+    explainerDialogState,
   );
 
   const sumOfFixedExposures = props.data.reduce(
     (total, [_label, num]) => total + num,
-    0
+    0,
   );
   const percentages = props.data.map(([label, num]) => {
     return [label, num / sumOfFixedExposures] as const;

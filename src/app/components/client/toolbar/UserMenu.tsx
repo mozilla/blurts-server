@@ -173,7 +173,7 @@ function MenuTrigger(props: MenuTriggerComponentProps) {
       </button>
       {state.isOpen && (
         <Popover
-          offset={16}
+          offset={20}
           popoverRef={popoverRef}
           state={state}
           triggerRef={ref}

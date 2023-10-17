@@ -2,6 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor } - Pult
 
 ## Breaches header
 
@@ -59,11 +60,6 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Që të ndryshoni fjalëkalimin tuaj dhe të aktivizoni mirëfilltësimin dyfaktorësh (2FA), kaloni te sajti i shoqërisë.
-# Variables:
-#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = Sigurohuni që fjalëkalimi juaj të jetë unik dhe i zorshëm të hamendësohet. Nëse ky fjalëkalim është përdorur në çfarëdo llogarie tjetër, sigurohuni se e ndryshoni edhe atje. { $passwordManagerLink } mund t’ju ndihmojë të ndiqni në mënyrë të sigurt krejt fjalëkalimet tuaja.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -127,9 +123,6 @@ breach-checklist-phone-header-2 = Mbrojeni numrin tuaj të telefonit me një sh�
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Përditësoni pyetjet tuaja të sigurisë te sajti i shoqërisë.
-breach-checklist-sq-body = Përdorni përgjigje të gjata, të zgjedhura kuturu dhe depozitojini diku në një vend të parrezik. Bëjeni këtë kudo tjetër ku keni përdorur të njëjtat pyetje sigurie.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 

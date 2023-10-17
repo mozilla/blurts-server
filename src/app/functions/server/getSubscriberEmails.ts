@@ -12,7 +12,7 @@ import { getUserEmails } from "../../../db/tables/emailAddresses.js";
  * @param user
  */
 export async function getSubscriberEmails(
-  user: Session["user"]
+  user: Session["user"],
 ): Promise<string[]> {
   const emailArray: string[] = [user.email];
   const subscriber = await getSubscriberByEmail(user.email);

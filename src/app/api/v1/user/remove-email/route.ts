@@ -36,18 +36,18 @@ export async function POST(req: NextRequest) {
             success: false,
             message: l10n.getString("error-not-subscribed"),
           },
-          { status: 400 }
+          { status: 400 },
         );
       }
 
       await removeOneSecondaryEmail(emailId);
       await deleteResolutionsWithEmail(
         existingEmail.subscriber_id,
-        existingEmail.email
+        existingEmail.email,
       );
       return NextResponse.redirect(
         AppConstants.SERVER_URL + "/user/settings",
-        301
+        301,
       );
     } catch (e) {
       console.error(e);
