@@ -781,10 +781,10 @@ menu-button-alt = Agor dewislen defnyddiwr
 menu-list-accessible-label = Dewislen cyfrif
 # Deprecated
 menu-item-fxa = Rheolwch eich { -brand-fx-account }
-menu-item-fxa-2 = Rheoli eich { -brand-mozilla-account }
+menu-item-fxa-2 = Rheoli eich cyfrif { -brand-mozilla-account }
 # Deprecated
 menu-item-fxa-alt = Agor tudalen { -brand-fx-account }
-menu-item-fxa-alt-2 = Agor tudalen { -brand-mozilla-account }
+menu-item-fxa-alt-2 = Agor tudalen cyfrif { -brand-mozilla-account }
 menu-item-settings = Gosodiadau
 menu-item-settings-alt = Agor tudalen gosodiadau
 menu-item-help = Cymorth a chefnogaeth
