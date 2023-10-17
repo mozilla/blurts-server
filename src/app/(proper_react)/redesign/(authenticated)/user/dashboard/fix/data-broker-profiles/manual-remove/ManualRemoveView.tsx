@@ -8,7 +8,6 @@ import { useState } from "react";
 import { Session } from "next-auth";
 import styles from "./ManualRemoveView.module.scss";
 import { useL10n } from "../../../../../../../../hooks/l10n";
-// import { getL10n } from "../../../../../../../../functions/server/l10n";
 import {
   AvatarIcon,
   ClockIcon,
