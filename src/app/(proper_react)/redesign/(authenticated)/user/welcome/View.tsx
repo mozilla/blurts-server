@@ -39,7 +39,7 @@ export const View = ({
 }: Props) => {
   const l10n = useL10n();
   const [currentStep, setCurrentStep] = useState<StepId>(
-    skipInitialStep ? "enterInfo" : stepId
+    skipInitialStep ? "enterInfo" : stepId,
   );
   const router = useRouter();
 
@@ -55,8 +55,6 @@ export const View = ({
         // TODO: Add unit test when changing this code:
         /* c8 ignore next */
         onScanStarted={() => setCurrentStep("findExposures")}
-        // TODO: Add unit test when changing this code:
-        /* c8 ignore next */
         onGoBack={() =>
           skipInitialStep ? router.back() : setCurrentStep("getStarted")
         }
@@ -64,8 +62,6 @@ export const View = ({
     ) : (
       <GetStarted
         dataBrokerCount={dataBrokerCount}
-        // TODO: Add unit test when changing this code:
-        /* c8 ignore next */
         onStart={() => setCurrentStep("enterInfo")}
       />
     );
