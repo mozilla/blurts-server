@@ -13,7 +13,6 @@ const loggingWinston = new LoggingWinston({
 });
 
 export const logger = createLogger({
-  level: "info",
   transports: [],
 });
 
