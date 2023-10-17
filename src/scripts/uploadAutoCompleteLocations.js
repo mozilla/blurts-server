@@ -29,6 +29,8 @@ import path from "path";
 import fs from "fs";
 import AdmZip from "adm-zip";
 
+import { logger } from "../app/functions/server/logging";
+
 const REMOTE_DATA_URL = "https://download.geonames.org/export/dump";
 const DATA_COUNTRY_CODE = "US";
 const LOCATIONS_DATA_FILE = "locationAutocompleteData.json";
@@ -91,7 +93,7 @@ async function fetchRemoteArchive({
   localDownloadPath,
   localExtractionPath,
 }) {
-  console.info(
+  logger.info(
     `Downloading remote file: ${remoteArchiveUrl} -> ${localDownloadPath}`
   );
 
@@ -100,7 +102,7 @@ async function fetchRemoteArchive({
     writeStream: createWriteStream(localDownloadPath),
   });
 
-  console.info(`Extracting: ${localDownloadPath} -> ${localExtractionPath}`);
+  logger.info(`Extracting: ${localDownloadPath} -> ${localExtractionPath}`);
   const zip = new AdmZip(localDownloadPath);
   await new Promise((resolve, reject) => {
     zip.extractAllToAsync(localExtractionPath, true, false, (error) =>
@@ -110,12 +112,12 @@ async function fetchRemoteArchive({
 }
 
 try {
-  console.info("Create autocomplete location data");
+  logger.info("Create autocomplete location data");
 
   const startTime = Date.now();
   const tmpDirPath = path.join(os.tmpdir(), "fx-monitor");
 
-  console.info(`Creating data directory: ${tmpDirPath}`);
+  logger.info(`Creating data directory: ${tmpDirPath}`);
   if (!existsSync(tmpDirPath)) {
     mkdirSync(tmpDirPath);
   }
@@ -127,37 +129,37 @@ try {
   };
 
   if (FETCH_REMOTE_DATASETS) {
-    console.info("Downloading all locations");
+    logger.info("Downloading all locations");
     await fetchRemoteArchive({
       remoteArchiveUrl: `${REMOTE_DATA_URL}/${DATA_COUNTRY_CODE}.zip`,
       localDownloadPath: `${tmpDirPath}/locations-${DATA_COUNTRY_CODE}.zip`,
       localExtractionPath: localDestinationPath.locations,
     });
 
-    console.info("Downloading alternate names");
+    logger.info("Downloading alternate names");
     await fetchRemoteArchive({
       remoteArchiveUrl: `${REMOTE_DATA_URL}/alternatenames/${DATA_COUNTRY_CODE}.zip`,
       localDownloadPath: `${tmpDirPath}/alternatenames-${DATA_COUNTRY_CODE}.zip`,
       localExtractionPath: localDestinationPath.alternateNames,
     });
 
-    console.info("Downloading hierachy data");
+    logger.info("Downloading hierachy data");
     await fetchRemoteArchive({
       remoteArchiveUrl: `${REMOTE_DATA_URL}/hierarchy.zip`,
       localDownloadPath: `${tmpDirPath}/hierarchy.zip`,
       localExtractionPath: localDestinationPath.hierarchy,
     });
   } else {
-    console.info("Skipping downloading remote data");
+    logger.info("Skipping downloading remote data");
   }
 
-  console.info("Reading file: Alternate location names");
+  logger.info("Reading file: Alternate location names");
   const alternateNamesData = readFileSync(
     `${localDestinationPath.alternateNames}/${DATA_COUNTRY_CODE}.txt`,
     "utf8"
   );
 
-  console.info("Parsing data: Alternate location names");
+  logger.info("Parsing data: Alternate location names");
   const alternateNameRows = alternateNamesData.split("\n");
   const parsedAlternateNames = alternateNameRows
     .map((alternateNamesLine) => {
@@ -193,12 +195,12 @@ try {
       (alternateName) => alternateName
     );
 
-  console.info("Reading file: Hierarchy");
+  logger.info("Reading file: Hierarchy");
   const hierachyData = readFileSync(
     `${localDestinationPath.hierarchy}/hierarchy.txt`,
     "utf8"
   );
-  console.info("Parsing data: Location hierarchy");
+  logger.info("Parsing data: Location hierarchy");
   const hierachyDataRows = hierachyData.split("\n");
   const hierarchyIds = hierachyDataRows.map((hierachyRow) => {
     const [locationParentId, locationChildId, _hierachyType] =
@@ -207,13 +209,13 @@ try {
     return [locationParentId, locationChildId];
   });
 
-  console.info("Reading file: All locations");
+  logger.info("Reading file: All locations");
   const locationData = readFileSync(
     `${localDestinationPath.locations}/${DATA_COUNTRY_CODE}.txt`,
     "utf8"
   );
 
-  console.info("Parsing data: All locations");
+  logger.info("Parsing data: All locations");
   const locationDataRows = locationData.split("\n");
   const locationRowCount = locationDataRows.length;
   const locationDataPopulated = locationDataRows.reduce(
@@ -286,7 +288,7 @@ try {
   );
 
   // Filter out locations that have another populated place as a parent.
-  console.info("Filtering by hierachy");
+  logger.info("Filtering by hierachy");
   const locationDataPopulatedCount = locationDataPopulated.length;
   const locationDataPopulatedTopLevel = locationDataPopulated.filter(
     (locationPopulated, rowIndex) => {
@@ -311,11 +313,11 @@ try {
     }
   );
 
-  console.info(
+  logger.info(
     `Number of relevant locations found: ${locationDataPopulatedTopLevel.length}`
   );
 
-  console.info(`Writing location data to file: ${LOCATIONS_DATA_FILE}`);
+  logger.info(`Writing location data to file: ${LOCATIONS_DATA_FILE}`);
   const locationDataFinal = {
     name: "fx-monitor-location-autocomplete-data",
     description:
@@ -333,7 +335,7 @@ try {
   await uploadToS3(`autocomplete/${LOCATIONS_DATA_FILE}`, readStream)
 
   if (CLEANUP_TMP_DATA_AFTER_FINISHED) {
-    console.info("Cleaning up data directory");
+    logger.info("Cleaning up data directory");
     rmSync(tmpDirPath, {
       recursive: true,
       force: true,
@@ -341,12 +343,12 @@ try {
   }
 
   const endTime = Date.now();
-  console.info(
+  logger.info(
     `Created location data file successfully: Executed in ${(endTime - startTime) / 1000
     }s`
   );
 } catch (error) {
-  console.error("Creating location file failed with:", error);
+  logger.error("Creating location file failed with:", error);
 }
 
 Sentry.captureCheckIn({

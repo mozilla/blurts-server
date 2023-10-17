@@ -16,6 +16,7 @@ import { ProgressCard } from "../../../../../../components/client/ProgressCard";
 import { Button } from "../../../../../../components/server/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
 import PremiumButton from "../../../../../../components/client/PremiumButton";
+import { logger } from "../../../../../../functions/server/logging";
 
 export interface ContentProps {
   relevantGuidedStep: StepLink;
@@ -492,7 +493,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
         );
       default:
         // The above conditions should always match one of the possible dashboard states.
-        console.warn("No matching condition for dashboard state found.");
+        logger.warn("No matching condition for dashboard state found.");
         return null;
     }
   }

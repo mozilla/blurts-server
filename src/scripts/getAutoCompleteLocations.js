@@ -7,18 +7,20 @@ import { Readable } from 'stream';
 import { finished } from 'stream/promises';
 import "dotenv/config"
 
+import { logger } from "../app/functions/server/logging";
+
 const dataPath = "./locationAutocompleteData.json";
 
 if (!existsSync(dataPath)) {
   const stream = createWriteStream(dataPath);
   try {
     const fetchUrl = `https://s3.amazonaws.com/${process.env.S3_BUCKET}/autocomplete/locationAutocompleteData.json`;
-    console.debug({ fetchUrl })
+    logger.debug({ fetchUrl })
     const { body } = await fetch(fetchUrl);
     await finished(Readable.fromWeb(body).pipe(stream));
   } catch (e) {
-    console.error(e)
+    logger.error(e)
   }
 } else {
-  console.log('file already exists: ', dataPath)
+  logger.log('file already exists: ', dataPath)
 }

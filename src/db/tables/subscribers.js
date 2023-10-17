@@ -6,10 +6,9 @@ import { destroyOAuthToken } from '../../utils/fxa.js'
 import initKnex from 'knex'
 import knexConfig from '../knexfile.js'
 import AppConstants from '../../appConstants.js'
-import mozlog from '../../utils/log.js'
+import { logger } from '../../app/functions/server/logging.js';
 const knex = initKnex(knexConfig)
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = AppConstants
-const log = mozlog('DB.subscribers')
 
 /**
  * @param {string} token
@@ -133,12 +132,12 @@ async function updatePrimaryEmail (subscriber, updatedEmail) {
       .transacting(trx)
 
     await trx.commit()
-    log.debug('updatePrimaryEmail', { subscriberTableUpdated })
-    log.debug('updatePrimaryEmail', { emailTableUpdated })
+    logger.debug('updatePrimaryEmail', { subscriberTableUpdated })
+    logger.debug('updatePrimaryEmail', { emailTableUpdated })
   } catch (error) {
     await trx.rollback()
     // @ts-ignore Type annotations added later; type unknown:
-    log.error('updatePrimaryEmail', error)
+    logger.error('updatePrimaryEmail', error)
   }
   const updatedSubscriber = Array.isArray(subscriberTableUpdated) ? subscriberTableUpdated[0] : null
   return updatedSubscriber
@@ -208,7 +207,7 @@ async function updateFxAProfileData (subscriber, fxaProfileData) {
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function removeFxAData (subscriber) {
-  log.debug('removeFxAData', subscriber)
+  logger.debug('removeFxAData', subscriber)
   const updated = await knex('subscribers')
     .where('id', '=', subscriber.id)
     .update({
@@ -381,7 +380,7 @@ async function deleteUnverifiedSubscribers () {
     .where('primary_verified', false)
     .andWhere('created_at', '<', expiredTimeStamp)
     .del()
-  log.info('deleteUnverifiedSubscribers', { msg: `Deleted ${numDeleted} rows.` })
+  logger.info('deleteUnverifiedSubscribers', { msg: `Deleted ${numDeleted} rows.` })
 }
 /* c8 ignore stop */
 
@@ -395,7 +394,7 @@ async function deleteUnverifiedSubscribers () {
 /* c8 ignore start */
 async function deleteSubscriber (sub) {
   const trx = await knex.transaction()
-  log.debug('deleteSubscriber', JSON.stringify(sub))
+  logger.debug('deleteSubscriber', JSON.stringify(sub))
 
   try {
     await knex('email_addresses').where({ subscriber_id: sub.id }).del().transacting(trx)
@@ -404,7 +403,7 @@ async function deleteSubscriber (sub) {
   } catch (error) {
     await trx.rollback()
     // @ts-ignore Type annotations added later; type unknown:
-    log.error('deleteSubscriber', error)
+    logger.error('deleteSubscriber', error)
   }
   //  const subscriber = await knex('subscribers').returning('id').where('fxa_uid', fxaUID).del()
   //  if (subscriber && subscriber[0]) { await knex('email_addresses').where({ subscriber_id: subscriber[0].id }).del() }
