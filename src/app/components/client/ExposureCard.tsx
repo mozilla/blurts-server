@@ -155,7 +155,9 @@ const ScanResultCard = (props: ScanResultCardProps) => {
               {l10n.getString("exposure-card-label-company")}
             </dt>
             <dd>
-              <span className={styles.exposureCompanyTitle}>
+              <span
+                className={`${styles.exposureCompanyTitle} ${styles.companyNameArea}`}
+              >
                 {scanResult.data_broker}
               </span>
             </dd>
@@ -363,7 +365,9 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
               {l10n.getString("exposure-card-label-company")}
             </dt>
             <dd>
-              <span className={styles.exposureCompanyTitle}>
+              <span
+                className={`${styles.exposureCompanyTitle} ${styles.companyNameArea}`}
+              >
                 {subscriberBreach.title}
               </span>
             </dd>
