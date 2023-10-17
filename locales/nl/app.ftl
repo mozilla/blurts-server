@@ -718,7 +718,11 @@ ad-unit-6-before-you-complete = Gebruik, voordat u uw volgende registratie volto
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
+# Deprecated - to be replaced by -brand-mozilla-account
 -brand-fx-account = Firefox-account
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account = Mozilla-account
 
 ## Search Engine Optimization
 
@@ -734,7 +738,7 @@ sign-in = Aanmelden
 site-nav-breaches-link = Datalekken oplossen
 site-nav-settings-link = Instellingen
 site-nav-help-link = Hulp en ondersteuning
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Probeer onze andere beveiligingshulpmiddelen:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -744,8 +748,12 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Gebruikersmenu
 menu-button-alt = Gebruikersmenu openen
 menu-list-accessible-label = Accountmenu
+# Deprecated
 menu-item-fxa = Uw { -brand-fx-account } beheren
+menu-item-fxa-2 = Uw { -brand-mozilla-account } beheren
+# Deprecated
 menu-item-fxa-alt = { -brand-fx-account }-pagina openen
+menu-item-fxa-alt-2 = { -brand-mozilla-account }-pagina openen
 menu-item-settings = Instellingen
 menu-item-settings-alt = Instellingenpagina openen
 menu-item-help = Hulp en ondersteuning
