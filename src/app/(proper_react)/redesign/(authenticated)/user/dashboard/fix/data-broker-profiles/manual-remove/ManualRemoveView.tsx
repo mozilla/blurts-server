@@ -2,10 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+"use client";
+
+import { useState } from "react";
 import { Session } from "next-auth";
 import Link from "next/link";
 import styles from "./ManualRemoveView.module.scss";
-import { getL10n } from "../../../../../../../../functions/server/l10n";
+import { useL10n } from "../../../../../../../../hooks/l10n";
 import {
   AvatarIcon,
   ClockIcon,
@@ -34,7 +37,8 @@ export type Props = {
 };
 
 export function ManualRemoveView(props: Props) {
-  const l10n = getL10n();
+  const l10n = useL10n();
+  const [activeExposureCardKey, setActiveExposureCardKey] = useState(0);
 
   const summary = getDashboardSummary(props.scanData.results, props.breaches);
 
@@ -135,8 +139,9 @@ export function ManualRemoveView(props: Props) {
                 <RemovalCard
                   key={scanResult.onerep_scan_result_id}
                   scanResult={scanResult}
-                  isExpanded={index === 0}
+                  isExpanded={index === activeExposureCardKey}
                   isPremiumUser={props.isPremiumUser}
+                  setExpanded={() => setActiveExposureCardKey(index)}
                 />
               );
             })}
