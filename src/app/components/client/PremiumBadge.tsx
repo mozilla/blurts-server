@@ -53,7 +53,7 @@ export default function PremiumBadge({
   });
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: "dialog" },
-    dialogState
+    dialogState,
   );
 
   if (hasPremium(user)) {

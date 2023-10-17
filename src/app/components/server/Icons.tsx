@@ -308,7 +308,7 @@ export const BentoIcon = (props: SVGProps<SVGSVGElement> & { alt: string }) => {
 
 // Link to icon: https://www.figma.com/file/olFHozlwrdYlCkZaG4B262/Nebula-Design-System-V2-(WIP)?type=design&node-id=109-1405&mode=design&t=WbRVICi1MjCbri9t-4
 export const FilterIcon = (
-  props: SVGProps<SVGSVGElement> & { alt: string }
+  props: SVGProps<SVGSVGElement> & { alt: string },
 ) => {
   return (
     <svg
@@ -334,7 +334,7 @@ export const FilterIcon = (
 
 // Keywords: lock
 export const PasswordIcon = (
-  props: SVGProps<SVGSVGElement> & { alt: string }
+  props: SVGProps<SVGSVGElement> & { alt: string },
 ) => {
   return (
     <svg
@@ -413,7 +413,7 @@ export const CheckIcon = (props: SVGProps<SVGSVGElement> & { alt: string }) => {
 
 // Keywords: person, profile, face, head
 export const AvatarIcon = (
-  props: SVGProps<SVGSVGElement> & { alt: string }
+  props: SVGProps<SVGSVGElement> & { alt: string },
 ) => {
   return (
     <svg

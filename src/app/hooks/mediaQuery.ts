@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 function useMediaQueryImp(mediaQuery: string): boolean {
   const [mediaQueryList, setMediaQueryList] = useState(
-    window.matchMedia(mediaQuery)
+    window.matchMedia(mediaQuery),
   );
   useEffect(() => {
     setMediaQueryList(window.matchMedia(mediaQuery));
@@ -15,7 +15,7 @@ function useMediaQueryImp(mediaQuery: string): boolean {
   const [matches, setMatches] = useState(mediaQueryList.matches);
   useEffect(() => {
     const changeListener: Parameters<MediaQueryList["addEventListener"]>[1] = (
-      _changedList
+      _changedList,
     ) => {
       setMatches(mediaQueryList.matches);
     };

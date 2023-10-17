@@ -10,7 +10,7 @@ import { FilterState } from "../../../../../components/client/ExposuresFilter";
 
 export function filterExposures(
   exposures: Exposure[],
-  filters: FilterState
+  filters: FilterState,
 ): Exposure[] {
   return exposures.filter((exposure) => {
     if (filters.exposureType === "data-breach" && isScanResult(exposure)) {

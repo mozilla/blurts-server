@@ -15,7 +15,7 @@ export interface LatestOnerepScanData {
 }
 
 async function getLatestOnerepScanResults(
-  onerepProfileId: number
+  onerepProfileId: number,
 ): Promise<LatestOnerepScanData> {
   const scan = await knex("onerep_scans")
     .first()
@@ -36,7 +36,7 @@ async function getLatestOnerepScanResults(
 
 async function setOnerepProfileId(
   subscriber: Subscriber,
-  onerepProfileId: number
+  onerepProfileId: number,
 ) {
   await knex("subscribers").where("id", subscriber.id).update({
     onerep_profile_id: onerepProfileId,
@@ -49,7 +49,7 @@ async function setOnerepProfileId(
 async function setOnerepManualScan(
   onerepProfileId: number,
   onerepScanId: number,
-  onerepScanStatus: Scan["status"]
+  onerepScanStatus: Scan["status"],
 ) {
   await knex("onerep_scans").insert({
     onerep_profile_id: onerepProfileId,
@@ -67,7 +67,7 @@ async function addOnerepScanResults(
   onerepScanId: number,
   onerepScanResults: Array<ScanResult>,
   onerepScanReason: Scan["reason"],
-  onerepScanStatus: Scan["status"]
+  onerepScanStatus: Scan["status"],
 ) {
   await knex.transaction(async (transaction) => {
     if (onerepScanReason === "manual") {
@@ -114,7 +114,7 @@ async function addOnerepScanResults(
         middle_name: scanResult.middle_name,
         last_name: scanResult.last_name,
         status: scanResult.status,
-      }))
+      })),
     );
   });
 }
@@ -127,16 +127,16 @@ async function isOnerepScanResultForSubscriber(params: {
     .innerJoin(
       "onerep_scans",
       "onerep_scan_results.onerep_scan_id",
-      "onerep_scans.onerep_scan_id"
+      "onerep_scans.onerep_scan_id",
     )
     .innerJoin(
       "subscribers",
       "onerep_scans.onerep_profile_id",
-      "subscribers.onerep_profile_id"
+      "subscribers.onerep_profile_id",
     )
     .where(
       "onerep_scan_results.onerep_scan_result_id",
-      params.onerepScanResultId
+      params.onerepScanResultId,
     )
     .andWhere("subscribers.id", params.subscriberId)
     .first("onerep_scan_result_id");
@@ -145,7 +145,7 @@ async function isOnerepScanResultForSubscriber(params: {
 }
 
 async function markOnerepScanResultAsResolved(
-  onerepScanResultId: number
+  onerepScanResultId: number,
 ): Promise<void> {
   await knex("onerep_scan_results")
     .update({
@@ -160,7 +160,7 @@ async function markOnerepScanResultAsResolved(
 async function getScansCount(
   startDate: string,
   endDate: string,
-  scanReason: Scan["reason"]
+  scanReason: Scan["reason"],
 ) {
   return await knex("onerep_scans")
     .count("id")
@@ -169,14 +169,14 @@ async function getScansCount(
 }
 
 async function getScansCountForProfile(
-  onerepProfileId: number
+  onerepProfileId: number,
 ): Promise<number> {
   return parseInt(
     ((
       await knex("onerep_scans")
         .count("id")
         .where("onerep_profile_id", onerepProfileId)
-    )?.[0]?.["count"] as string) || "0"
+    )?.[0]?.["count"] as string) || "0",
   );
 }
 

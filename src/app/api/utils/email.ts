@@ -13,12 +13,12 @@ import { Subscriber } from "../../(nextjs_migration)/(authenticated)/user/breach
 export async function sendVerificationEmail(
   user: Subscriber,
   emailId: number,
-  l10n: ReactLocalization
+  l10n: ReactLocalization,
 ) {
   const getMessage = getStringLookup(l10n);
   const unverifiedEmailAddressRecord = await resetUnverifiedEmailAddress(
     emailId,
-    l10n
+    l10n,
   );
   const recipientEmail = unverifiedEmailAddressRecord.email;
   const data = {
@@ -32,6 +32,6 @@ export async function sendVerificationEmail(
   await sendEmail(
     recipientEmail,
     getMessage("email-subject-verify"),
-    getTemplate(data, verifyPartial, l10n)
+    getTemplate(data, verifyPartial, l10n),
   );
 }

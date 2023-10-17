@@ -45,20 +45,20 @@ export const Steps = (props: {
 
   const breachesByClassification = getGuidedExperienceBreaches(
     props.data.subscriberBreaches,
-    props.subscriberEmails
+    props.subscriberEmails,
   );
   const totalHighRiskBreaches = Object.values(
-    breachesByClassification.highRisk
+    breachesByClassification.highRisk,
   ).reduce((acc, array) => acc + array.length, 0);
   const totalDataBrokerProfiles =
     // No tests simulate the absence of scan data yet:
     /* c8 ignore next */
     props.data.latestScanData?.results.length ?? 0;
   const totalPasswordBreaches = Object.values(
-    breachesByClassification.passwordBreaches
+    breachesByClassification.passwordBreaches,
   ).reduce((acc, array) => acc + array.length, 0);
   const totalSecurityRecommendations = Object.values(
-    breachesByClassification.securityRecommendations
+    breachesByClassification.securityRecommendations,
   ).filter((value) => {
     return value.length > 0;
   }).length;

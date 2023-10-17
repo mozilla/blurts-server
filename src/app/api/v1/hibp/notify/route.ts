@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
 
     if (!(json.breachName && json.hashPrefix && json.hashSuffixes)) {
       console.error(
-        "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes."
+        "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.",
       );
       return NextResponse.json({ success: false }, { status: 400 });
     }

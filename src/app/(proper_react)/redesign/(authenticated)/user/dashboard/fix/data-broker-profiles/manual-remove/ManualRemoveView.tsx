@@ -7,7 +7,8 @@
 import { useState } from "react";
 import { Session } from "next-auth";
 import styles from "./ManualRemoveView.module.scss";
-import { getL10n } from "../../../../../../../../functions/server/l10n";
+import { useL10n } from "../../../../../../../../hooks/l10n";
+// import { getL10n } from "../../../../../../../../functions/server/l10n";
 import {
   AvatarIcon,
   ClockIcon,
@@ -36,7 +37,7 @@ export type Props = {
 };
 
 export function ManualRemoveView(props: Props) {
-  const l10n = getL10n();
+  const l10n = useL10n();
   const [activeExposureCardKey, setActiveExposureCardKey] = useState(0);
 
   const summary = getDashboardSummary(props.scanData.results, props.breaches);
@@ -67,55 +68,55 @@ export function ManualRemoveView(props: Props) {
         <div className={styles.content}>
           <h3>
             {l10n.getString(
-              "fix-flow-data-broker-profiles-manual-remove-how-to-remove-headline"
+              "fix-flow-data-broker-profiles-manual-remove-how-to-remove-headline",
             )}
           </h3>
           <ol className={styles.removalStepsList}>
             <li>
               <strong>
                 {l10n.getString(
-                  "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-1-title"
+                  "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-1-title",
                 )}
               </strong>
               <span>
                 {l10n.getString(
-                  "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-1-content"
+                  "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-1-content",
                 )}
               </span>
             </li>
             <li>
               <strong>
                 {l10n.getString(
-                  "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-2-title"
+                  "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-2-title",
                 )}
               </strong>
               <span>
                 {l10n.getString(
-                  "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-2-content"
+                  "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-2-content",
                 )}
               </span>
             </li>
             <li>
               <strong>
                 {l10n.getString(
-                  "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-3-title"
+                  "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-3-title",
                 )}
               </strong>
               <span>
                 {l10n.getString(
-                  "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-3-content"
+                  "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-3-content",
                 )}
               </span>
             </li>
             <li>
               <strong>
                 {l10n.getString(
-                  "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-title"
+                  "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-title",
                 )}
               </strong>
               <span>
                 {l10n.getString(
-                  "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-content"
+                  "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-content",
                 )}
               </span>
             </li>
@@ -124,7 +125,7 @@ export function ManualRemoveView(props: Props) {
         <div className={styles.exposureListing}>
           <h3 className={styles.questionTooltipWrapper}>
             {l10n.getString(
-              "fix-flow-data-broker-profiles-manual-remove-review-profiles-headline"
+              "fix-flow-data-broker-profiles-manual-remove-review-profiles-headline",
             )}
           </h3>
           <div className={styles.exposureList}>
@@ -147,12 +148,12 @@ export function ManualRemoveView(props: Props) {
             href="/redesign/user/dashboard/fix/data-broker-profiles/automatic-remove"
           >
             {l10n.getString(
-              "fix-flow-data-broker-profiles-manual-remove-button-remove-for-me"
+              "fix-flow-data-broker-profiles-manual-remove-button-remove-for-me",
             )}
           </Button>
           <Button variant="secondary" href={stepAfterSkip.href}>
             {l10n.getString(
-              "fix-flow-data-broker-profiles-manual-remove-button-skip"
+              "fix-flow-data-broker-profiles-manual-remove-button-skip",
             )}
           </Button>
         </div>

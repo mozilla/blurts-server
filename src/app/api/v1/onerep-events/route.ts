@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
     if (result.data.object.status !== "finished") {
       console.debug(
         "Received OneRep webhook, but scan not finished",
-        result.data.object.status
+        result.data.object.status,
       );
       return;
     }
@@ -88,7 +88,7 @@ export async function POST(req: NextRequest) {
       scanId,
       scanListFull,
       reason,
-      result.data.object.status
+      result.data.object.status,
     );
 
     return NextResponse.json({ success: true }, { status: 200 });

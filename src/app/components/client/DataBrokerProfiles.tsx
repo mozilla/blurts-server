@@ -41,10 +41,10 @@ export const DataBrokerProfiles = (props: Props) => {
         <span>
           {showAllProfiles
             ? l10n.getString(
-                "fix-flow-data-broker-profiles-view-data-broker-profiles-button-view-less"
+                "fix-flow-data-broker-profiles-view-data-broker-profiles-button-view-less",
               )
             : l10n.getString(
-                "fix-flow-data-broker-profiles-view-data-broker-profiles-button-view-more"
+                "fix-flow-data-broker-profiles-view-data-broker-profiles-button-view-more",
               )}
         </span>
         <Image alt="" src={IconChevronDown} />
@@ -70,7 +70,7 @@ export const DataBrokerProfileCard = (props: DataBrokerProfileCardProps) => {
       {/* <Image src={} alt={props.data.data_broker} /> */}
       <a href={props.data.link}>
         {l10n.getString(
-          "fix-flow-data-broker-profiles-view-data-broker-profiles-view-profile"
+          "fix-flow-data-broker-profiles-view-data-broker-profiles-view-profile",
         )}
       </a>
     </div>

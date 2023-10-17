@@ -35,7 +35,7 @@ export default async function StartFreeScanPage() {
   if (latestScanData?.scan) {
     // If the user already has done a scan, let them view their results:
     return redirect(
-      "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers"
+      "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers",
     );
   }
 

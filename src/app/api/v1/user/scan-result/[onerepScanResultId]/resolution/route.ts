@@ -19,13 +19,13 @@ export type ResolveScanResultResponse =
 
 export async function POST(
   req: NextRequest,
-  { params }: { params: { onerepScanResultId: string } }
+  { params }: { params: { onerepScanResultId: string } },
 ): Promise<NextResponse<ResolveScanResultResponse>> {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber) {
     return new NextResponse<ResolveScanResultResponse>(
       JSON.stringify({ success: false, message: "Unauthenticated" }),
-      { status: 401 }
+      { status: 401 },
     );
   }
 
@@ -33,7 +33,7 @@ export async function POST(
   if (typeof scanResultId !== "number" || Number.isNaN(scanResultId)) {
     return new NextResponse<ResolveScanResultResponse>(
       JSON.stringify({ success: false, message: "Invalid scan result ID" }),
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -44,7 +44,7 @@ export async function POST(
   if (!isAllowedToResolve) {
     return new NextResponse<ResolveScanResultResponse>(
       JSON.stringify({ success: false, message: "Invalid scan result ID" }),
-      { status: 403 }
+      { status: 403 },
     );
   }
 
@@ -52,7 +52,7 @@ export async function POST(
     await markOnerepScanResultAsResolved(scanResultId);
     return new NextResponse<ResolveScanResultResponse>(
       JSON.stringify({ success: true }),
-      { status: 200 }
+      { status: 200 },
     );
   } catch (e) {
     console.error(e);
@@ -61,7 +61,7 @@ export async function POST(
         success: false,
         message: "Something went wrong, please try again.",
       }),
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

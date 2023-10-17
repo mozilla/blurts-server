@@ -14,14 +14,14 @@ import { getLocale } from "../../../../../../../../functions/universal/getLocale
 export type Props = {
   scanResult: OnerepScanResultRow;
   isPremiumUser: boolean;
-  isExpanded?: boolean;
+  isExpanded: boolean;
   setExpanded: () => void;
 };
 
 export const RemovalCard = (props: Props) => {
   const l10n = useL10n();
   const [isResolved, setIsResolved] = useState(
-    props.scanResult.manually_resolved
+    props.scanResult.manually_resolved,
   );
 
   async function resolve() {
@@ -31,7 +31,7 @@ export const RemovalCard = (props: Props) => {
       {
         method: "POST",
         credentials: "same-origin",
-      }
+      },
     );
     if (!response.ok) {
       setIsResolved(false);
@@ -51,7 +51,7 @@ export const RemovalCard = (props: Props) => {
         !isResolved ? (
           <Button variant="primary" wide onPress={() => void resolve()}>
             {l10n.getString(
-              "fix-flow-data-broker-profiles-manual-remove-button-mark-fixed"
+              "fix-flow-data-broker-profiles-manual-remove-button-mark-fixed",
             )}
           </Button>
         ) : null

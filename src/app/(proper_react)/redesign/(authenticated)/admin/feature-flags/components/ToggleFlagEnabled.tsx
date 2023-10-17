@@ -22,7 +22,7 @@ export const ToggleFlagEnabled = (props: {
   const handleChange = (
     event: ChangeEventHandler<HTMLInputElement> & {
       target: FeatureToggleElement;
-    }
+    },
   ) => {
     const eventTarget: FeatureToggleElement = event.target;
 
