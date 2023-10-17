@@ -621,7 +621,11 @@ ad-unit-6-before-you-complete = 您在下次注册账号时，可使用马甲邮
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
+# Deprecated - to be replaced by -brand-mozilla-account
 -brand-fx-account = Firefox 账户
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account = Mozilla 账户
 
 ## Search Engine Optimization
 
@@ -637,7 +641,7 @@ sign-in = 登录
 site-nav-breaches-link = 解决数据泄露
 site-nav-settings-link = 设置
 site-nav-help-link = 帮助和支持
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = 试试我们其他保护安全的工具：
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -647,8 +651,12 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = 用户菜单
 menu-button-alt = 打开用户菜单
 menu-list-accessible-label = 账户菜单
+# Deprecated
 menu-item-fxa = 管理您的 { -brand-fx-account }
+menu-item-fxa-2 = 管理您的 { -brand-mozilla-account }
+# Deprecated
 menu-item-fxa-alt = 打开 { -brand-fx-account } 页面
+menu-item-fxa-alt-2 = 打开 { -brand-mozilla-account } 页面
 menu-item-settings = 设置
 menu-item-settings-alt = 打开设置页面
 menu-item-help = 帮助和支持

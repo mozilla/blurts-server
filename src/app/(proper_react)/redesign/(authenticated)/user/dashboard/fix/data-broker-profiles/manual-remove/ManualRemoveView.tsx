@@ -2,9 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+"use client";
+
+import { useState } from "react";
 import { Session } from "next-auth";
+import Link from "next/link";
 import styles from "./ManualRemoveView.module.scss";
-import { getL10n } from "../../../../../../../../functions/server/l10n";
+import { useL10n } from "../../../../../../../../hooks/l10n";
 import {
   AvatarIcon,
   ClockIcon,
@@ -33,7 +37,8 @@ export type Props = {
 };
 
 export function ManualRemoveView(props: Props) {
-  const l10n = getL10n();
+  const l10n = useL10n();
+  const [activeExposureCardKey, setActiveExposureCardKey] = useState(0);
 
   const summary = getDashboardSummary(props.scanData.results, props.breaches);
 
@@ -54,8 +59,6 @@ export function ManualRemoveView(props: Props) {
     <FixView
       data={data}
       subscriberEmails={props.subscriberEmails}
-      // In practice, there should always be a next step (at least "Done")
-      /* c8 ignore next */
       nextStepHref={stepAfterSkip.href}
       currentSection="data-broker-profiles"
     >
@@ -110,8 +113,15 @@ export function ManualRemoveView(props: Props) {
                 )}
               </strong>
               <span>
-                {l10n.getString(
+                {l10n.getFragment(
                   "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-content",
+                  {
+                    elems: {
+                      upgrade_link: (
+                        <Link href="/redesign/user/dashboard/fix/data-broker-profiles/automatic-remove" />
+                      ),
+                    },
+                  },
                 )}
               </span>
             </li>
@@ -129,8 +139,9 @@ export function ManualRemoveView(props: Props) {
                 <RemovalCard
                   key={scanResult.onerep_scan_result_id}
                   scanResult={scanResult}
-                  isExpanded={index === 0}
+                  isExpanded={index === activeExposureCardKey}
                   isPremiumUser={props.isPremiumUser}
+                  setExpanded={() => setActiveExposureCardKey(index)}
                 />
               );
             })}
