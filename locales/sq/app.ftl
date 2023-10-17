@@ -655,6 +655,8 @@ ad-unit-6-before-you-complete = Para se të plotësoni regjistrimin tuaj të rad
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -664,7 +666,11 @@ ad-unit-6-before-you-complete = Para se të plotësoni regjistrimin tuaj të rad
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
+# Deprecated - to be replaced by -brand-mozilla-account
 -brand-fx-account = Llogari Firefox
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account = Llogari Mozilla
 
 ## Search Engine Optimization
 
@@ -679,7 +685,7 @@ sign-in = Hyni
 site-nav-breaches-link = Zgjidhni Cenime të Dhënash
 site-nav-settings-link = Rregullime
 site-nav-help-link = Ndihmë dhe Asistencë
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Provoni mjete sigurie të tjera tonat:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -689,9 +695,16 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Menu përdoruesi
 menu-button-alt = Hap menu përdoruesi
 menu-list-accessible-label = Menu llogarish
+# Deprecated
 menu-item-fxa = Administroni { -brand-fx-account } tuaj
+menu-item-fxa-2 = Administroni { -brand-mozilla-account } tuaj
+# Deprecated
+menu-item-fxa-alt = Hapni faqe { -brand-fx-account }
+menu-item-fxa-alt-2 = Hapni faqe { -brand-mozilla-account }
 menu-item-settings = Rregullime
+menu-item-settings-alt = Hap faqen e rregullimeve
 menu-item-help = Ndihmë dhe asistencë
+menu-item-help-alt = Hapni faqen e ndihmës dhe asistencës
 menu-item-logout = Dilni
 
 ## Footer
@@ -729,5 +742,6 @@ breach-detail-cta-signup = Kontrolloni për cenime
 
 ## Floating banner
 
+floating-banner-text = Fuziqoni sigurinë tuaj internetore, përmes lajmesh, ndihmëzash dhe përditësimesh nga { -brand-Mozilla }.
 floating-banner-link-label = Regjistrohuni
 floating-banner-dismiss-button-label = Jo, faleminderit

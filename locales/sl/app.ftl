@@ -778,7 +778,15 @@ ad-unit-6-before-you-complete = Preden dokončate naslednjo prijavo, uporabite e
 -brand-fx-account = Firefox Račun
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-mozilla-account = račun Mozilla
+-brand-mozilla-account =
+    { $sklon ->
+        [rodilnik] Računa Mozilla
+        [dajalnik] Računu Mozilla
+        [tozilnik] Račun Mozilla
+        [mestnik] Računu Mozilla
+        [orodnik] Računom Mozilla
+       *[imenovalnik] Račun Mozilla
+    }
 
 ## Search Engine Optimization
 

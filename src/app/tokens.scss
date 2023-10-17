@@ -266,6 +266,12 @@ $text-body-xs:
 $tab-bar-height: 100px;
 $width-first-column-filter-bar: 90px;
 
+@mixin company-name-area {
+  @media screen and (min-width: $screen-lg) {
+    min-width: 250px;
+  }
+}
+
 // Question circle mark for explainer dialogs
 @mixin question-mark-circle-btn {
   background-color: transparent;

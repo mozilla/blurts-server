@@ -49,7 +49,9 @@
         &.exposureImageWrapper {
           flex: 0.2 0 $width-first-column-filter-bar;
         }
+      }
 
+      @media screen and (min-width: $screen-xl) {
         &.hideOnMobile {
           display: flex;
         }
@@ -156,4 +158,8 @@
 
 .visuallyHidden {
   @include visually-hidden;
+}
+
+.companyNameArea {
+  @include company-name-area;
 }

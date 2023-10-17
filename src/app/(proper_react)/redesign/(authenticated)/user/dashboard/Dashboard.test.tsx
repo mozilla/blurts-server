@@ -3,7 +3,13 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { it, expect } from "@jest/globals";
-import { render, screen } from "@testing-library/react";
+import {
+  getByRole,
+  getByText,
+  queryByRole,
+  render,
+  screen,
+} from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
@@ -45,13 +51,6 @@ jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
   usePathname: jest.fn(),
 }));
-
-// Filter out elements that are not a child of the top banner content.
-function getRelevantBannerContentElement(elements: HTMLElement[]) {
-  return elements.filter(
-    (element) => element.closest(".explainerContent")?.contains(element),
-  )[0];
-}
 
 jest.mock("../../../../../components/client/DataBrokerImage", () => {
   return {
@@ -695,22 +694,27 @@ it("shows the correct dashboard banner title for non-US users, no breaches", () 
   const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText("No exposures found");
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
+    "No exposures found",
+  );
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for non-US users, no breaches", () => {
   const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Monitor more emails",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardNonUsUnresolvedBreaches
@@ -721,12 +725,14 @@ it("shows the correct dashboard banner title for non-US users, unresolved breach
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Let’s protect your data",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for non-US users, unresolved breaches", () => {
@@ -736,12 +742,13 @@ it("shows the correct dashboard banner CTA for non-US users, unresolved breaches
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Let’s fix it",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardNonUsResolvedBreaches
@@ -749,24 +756,27 @@ it("shows the correct dashboard banner title for non-US users, resolved breaches
   const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Your data is protected",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for non-US users, resolved breaches", () => {
   const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
     name: "See what’s fixed",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumNoScanNoBreaches
@@ -777,12 +787,14 @@ it("shows the correct dashboard banner title for US users, without Premium, no s
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "⁨Monitor⁩ now protects you even more",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, no scan, no breaches", () => {
@@ -792,12 +804,13 @@ it("shows the correct dashboard banner CTA for US users, without Premium, no sca
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Get first scan free",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumNoScanUnresolvedBreaches
@@ -808,12 +821,14 @@ it("shows the correct dashboard banner title for US users, without Premium, no s
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "⁨Monitor⁩ now protects you even more",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, no scan, unresolved breaches", () => {
@@ -823,12 +838,13 @@ it("shows the correct dashboard banner CTA for US users, without Premium, no sca
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Get first scan free",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumNoScanResolvedBreaches
@@ -839,12 +855,14 @@ it("shows the correct dashboard banner title for US users, without Premium, no s
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "⁨Monitor⁩ now protects you even more",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, no scan, resolved breaches", () => {
@@ -854,12 +872,13 @@ it("shows the correct dashboard banner CTA for US users, without Premium, no sca
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Get first scan free",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumEmptyScanNoBreaches
@@ -870,10 +889,14 @@ it("shows the correct dashboard banner title for US users, without Premium, empt
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText("No exposures found");
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
+    "No exposures found",
+  );
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, empty scan, no breaches", () => {
@@ -883,12 +906,13 @@ it("shows the correct dashboard banner CTA for US users, without Premium, empty 
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Get continuous protection",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumEmptyScanUnresolvedBreaches
@@ -899,12 +923,14 @@ it("shows the correct dashboard banner title for US users, without Premium, empt
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Let’s keep protecting your data",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, empty scan, unresolved breaches", () => {
@@ -914,12 +940,13 @@ it("shows the correct dashboard banner CTA for US users, without Premium, empty 
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Let’s keep going",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumEmptyScanResolvedBreaches
@@ -930,12 +957,14 @@ it("shows the correct dashboard banner title for US users, without Premium, empt
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Your data is protected",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, empty scan, resolved breaches", () => {
@@ -945,12 +974,13 @@ it("shows the correct dashboard banner CTA for US users, without Premium, empty 
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
     name: "Get continuous protection",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumUnresolvedScanNoBreaches
@@ -961,12 +991,14 @@ it("shows the correct dashboard banner title for US users, without Premium, unre
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Let’s protect your data",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, unresolved scan, no breaches", () => {
@@ -976,12 +1008,13 @@ it("shows the correct dashboard banner CTA for US users, without Premium, unreso
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Let’s fix it",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches
@@ -992,12 +1025,14 @@ it("shows the correct dashboard banner title for US users, without Premium, Unre
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Let’s keep protecting your data",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, UnresolvedScanUnresolved breaches", () => {
@@ -1007,12 +1042,13 @@ it("shows the correct dashboard banner CTA for US users, without Premium, Unreso
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Let’s keep going",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumUnresolvedScanResolvedBreaches
@@ -1023,12 +1059,14 @@ it("shows the correct dashboard banner title for US users, without Premium, unre
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Let’s protect your data",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, unresolved scan, resolved breaches", () => {
@@ -1038,12 +1076,13 @@ it("shows the correct dashboard banner CTA for US users, without Premium, unreso
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Let’s fix it",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumResolvedScanNoBreaches
@@ -1054,12 +1093,14 @@ it("shows the correct dashboard banner title for US users, without Premium, reso
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Your data is protected",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, resolved scan, no breaches", () => {
@@ -1069,12 +1110,13 @@ it("shows the correct dashboard banner CTA for US users, without Premium, resolv
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
     name: "Get continuous protection",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumResolvedScanUnresolvedBreaches
@@ -1085,12 +1127,14 @@ it("shows the correct dashboard banner title for US users, without Premium, reso
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Let’s keep protecting your data",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, resolved scan, unresolved breaches", () => {
@@ -1100,12 +1144,13 @@ it("shows the correct dashboard banner CTA for US users, without Premium, resolv
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Let’s keep going",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumResolvedScanResolvedBreaches
@@ -1116,12 +1161,14 @@ it("shows the correct dashboard banner title for US users, without Premium, reso
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Your data is protected",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US users, without Premium, resolved scan, resolved breaches", () => {
@@ -1131,12 +1178,13 @@ it("shows the correct dashboard banner CTA for US users, without Premium, resolv
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
     name: "Get continuous protection",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsPremiumEmptyScanNoBreaches
@@ -1147,10 +1195,14 @@ it("shows the correct dashboard banner title for US user, with Premium, empty sc
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText("");
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
+    "No exposures found",
+  );
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, empty scan, no breaches", () => {
@@ -1160,12 +1212,13 @@ it("shows the correct dashboard banner CTA for US user, with Premium, empty scan
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Monitor more emails",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsPremiumEmptyScanUnresolvedBreaches
@@ -1176,12 +1229,14 @@ it("shows the correct dashboard banner title for US user, with Premium, empty sc
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Let’s keep protecting your data",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, empty scan, unresolved breaches", () => {
@@ -1191,12 +1246,13 @@ it("shows the correct dashboard banner CTA for US user, with Premium, empty scan
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Let’s keep going",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsPremiumEmptyScanResolvedBreaches
@@ -1207,12 +1263,14 @@ it("shows the correct dashboard banner title for US user, with Premium, empty sc
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Your data is protected",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, empty scan, resolved breaches", () => {
@@ -1222,12 +1280,13 @@ it("shows the correct dashboard banner CTA for US user, with Premium, empty scan
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
     name: "See what’s fixed",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsPremiumUnresolvedScanNoBreaches
@@ -1238,12 +1297,14 @@ it("shows the correct dashboard banner title for US user, with Premium, unresolv
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Let’s keep protecting your data",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, unresolved scan, no breaches", () => {
@@ -1253,12 +1314,13 @@ it("shows the correct dashboard banner CTA for US user, with Premium, unresolved
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Let’s keep going",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsPremiumUnresolvedScanUnresolvedBreaches
@@ -1269,12 +1331,14 @@ it("shows the correct dashboard banner title for US user, with Premium, Unresolv
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Let’s protect your data",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, UnresolvedScanUnresolved breaches", () => {
@@ -1284,12 +1348,13 @@ it("shows the correct dashboard banner CTA for US user, with Premium, Unresolved
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Let’s fix it",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsPremiumUnresolvedScanResolvedBreaches
@@ -1300,12 +1365,14 @@ it("shows the correct dashboard banner title for US user, with Premium, unresolv
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Let’s keep protecting your data",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, unresolved scan, resolved breaches", () => {
@@ -1315,12 +1382,13 @@ it("shows the correct dashboard banner CTA for US user, with Premium, unresolved
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Let’s keep going",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsPremiumResolvedScanNoBreaches
@@ -1331,12 +1399,14 @@ it("shows the correct dashboard banner title for US user, with Premium, resolved
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Your data is protected",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, resolved scan, no breaches", () => {
@@ -1346,12 +1416,13 @@ it("shows the correct dashboard banner CTA for US user, with Premium, resolved s
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
     name: "See what’s fixed",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsPremiumResolvedScanUnresolvedBreaches
@@ -1362,12 +1433,14 @@ it("shows the correct dashboard banner title for US user, with Premium, resolved
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Let’s keep protecting your data",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, resolved scan, unresolved breaches", () => {
@@ -1377,12 +1450,13 @@ it("shows the correct dashboard banner CTA for US user, with Premium, resolved s
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Let’s keep going",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsPremiumResolvedScanResolvedBreaches
@@ -1393,12 +1467,14 @@ it("shows the correct dashboard banner title for US user, with Premium, resolved
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Your data is protected",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, resolved scan, resolved breaches", () => {
@@ -1408,12 +1484,13 @@ it("shows the correct dashboard banner CTA for US user, with Premium, resolved s
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("button", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
     name: "See what’s fixed",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumScanInProgressNoBreaches
@@ -1424,12 +1501,14 @@ it("shows the correct dashboard banner title for US user, without Premium, scan 
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Your scan is still in progress",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, without Premium, scan in progress, no breaches", () => {
@@ -1439,12 +1518,13 @@ it("shows the correct dashboard banner CTA for US user, without Premium, scan in
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Check more email addresses",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumScanInProgressUnresolvedBreaches
@@ -1455,12 +1535,14 @@ it("shows the correct dashboard banner title for US user, without Premium, scan 
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Your scan is still in progress",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, without Premium, scan in progress, unresolved breaches", () => {
@@ -1470,12 +1552,13 @@ it("shows the correct dashboard banner CTA for US user, without Premium, scan in
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "See what’s ready now",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumScanInProgressResolvedBreaches
@@ -1486,12 +1569,14 @@ it("shows the correct dashboard banner title for US user, without Premium, scan 
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Your scan is still in progress",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, without Premium, scan in progress, resolved breaches", () => {
@@ -1501,12 +1586,13 @@ it("shows the correct dashboard banner CTA for US user, without Premium, scan in
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Check more email addresses",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsPremiumScanInProgressNoBreaches
@@ -1517,12 +1603,14 @@ it("shows the correct dashboard banner title for US user, with Premium, scan in 
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Your scan is still in progress",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, scan in progress, no breaches", () => {
@@ -1532,12 +1620,13 @@ it("shows the correct dashboard banner CTA for US user, with Premium, scan in pr
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Check more email addresses",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsPremiumScanInProgressUnresolvedBreaches
@@ -1548,12 +1637,14 @@ it("shows the correct dashboard banner title for US user, with Premium, scan in 
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Your scan is still in progress",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, scan in progress, unresolved breaches", () => {
@@ -1563,12 +1654,13 @@ it("shows the correct dashboard banner CTA for US user, with Premium, scan in pr
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "See what’s ready now",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsPremiumScanInProgressResolvedBreaches
@@ -1579,12 +1671,14 @@ it("shows the correct dashboard banner title for US user, with Premium, scan in 
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerTitle = screen.queryAllByText(
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
     "Your scan is still in progress",
   );
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerTitle),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
 it("shows the correct dashboard banner CTA for US user, with Premium, scan in progress, resolved breaches", () => {
@@ -1594,12 +1688,13 @@ it("shows the correct dashboard banner CTA for US user, with Premium, scan in pr
   );
   render(<ComposedDashboard />);
 
-  const dashboardTopBannerCta = screen.queryAllByRole("link", {
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
     name: "Check more email addresses",
   });
-  expect(
-    getRelevantBannerContentElement(dashboardTopBannerCta),
-  ).toBeInTheDocument();
+  expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches
