@@ -498,10 +498,13 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
   }
 
   return (
-    <div className={styles.explainerContentWrapper}>
+    <section
+      className={styles.explainerContentWrapper}
+      aria-label={l10n.getString("dashboard-top-banner-section-label")}
+    >
       <div className={styles.explainerContent}>
         {getDashboardBannerContent({ userDashboardState, relevantGuidedStep })}
       </div>
-    </div>
+    </section>
   );
 };

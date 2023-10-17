@@ -710,7 +710,11 @@ ad-unit-6-before-you-complete = Trước khi bạn hoàn tất lần đăng ký 
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
+# Deprecated - to be replaced by -brand-mozilla-account
 -brand-fx-account = Tài khoản Firefox
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account = Tài khoản Mozilla
 
 ## Search Engine Optimization
 
@@ -726,7 +730,7 @@ sign-in = Đăng nhập
 site-nav-breaches-link = Giải quyết rò rỉ dữ liệu
 site-nav-settings-link = Cài đặt
 site-nav-help-link = Trợ giúp và hỗ trợ
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Hãy thử các công cụ bảo mật khác của chúng tôi:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -736,8 +740,12 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Menu người dùng
 menu-button-alt = Mở menu người dùng
 menu-list-accessible-label = Menu tài khoản
+# Deprecated
 menu-item-fxa = Quản lý { -brand-fx-account } của bạn
+menu-item-fxa-2 = Quản lý { -brand-mozilla-account } của bạn
+# Deprecated
 menu-item-fxa-alt = Mở trang { -brand-fx-account }
+menu-item-fxa-alt-2 = Mở trang { -brand-mozilla-account }
 menu-item-settings = Cài đặt
 menu-item-settings-alt = Mở trang cài đặt
 menu-item-help = Trợ giúp và hỗ trợ

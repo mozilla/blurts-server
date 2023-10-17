@@ -220,11 +220,17 @@ type AppPickerTriggerProps = {
   MenuTriggerProps &
   AriaMenuTriggerProps;
 
-// TODO: Add unit test when changing this code:
-/* c8 ignore start */
 function AppPickerTrigger(props: AppPickerTriggerProps) {
   const l10n = useL10n();
-  const state = useMenuTriggerState({});
+  const state = useMenuTriggerState({
+    onOpenChange: (isOpen) => {
+      gaEvent({
+        category: "bento",
+        action: isOpen ? "bento-opened" : "bento-closed",
+        label: props.referringHost,
+      });
+    },
+  });
   const ref = useRef<HTMLButtonElement | null>(null);
   const popoverRef = useRef<HTMLDivElement | null>(null);
   const { menuTriggerProps, menuProps } = useMenuTrigger({}, state, ref);
@@ -232,13 +238,6 @@ function AppPickerTrigger(props: AppPickerTriggerProps) {
   const mergedMenuProps = mergeProps(props, { ...menuProps, items });
   const menuTriggerButton = useButton(menuTriggerProps, ref);
 
-  const handleButtonClick = () => {
-    gaEvent({
-      category: "bento",
-      action: state.isOpen ? "bento-opened" : "bento-closed",
-      label: props.referringHost,
-    });
-  };
   return (
     <>
       <button
@@ -246,7 +245,6 @@ function AppPickerTrigger(props: AppPickerTriggerProps) {
         ref={ref}
         title={l10n.getString("toolbar-app-picker-trigger-title")}
         className={styles.trigger}
-        onClick={handleButtonClick}
       >
         <BentoIcon alt={props.label} />
       </button>
@@ -266,7 +264,6 @@ function AppPickerTrigger(props: AppPickerTriggerProps) {
     </>
   );
 }
-/* c8 ignore stop */
 
 type AppPickerMenuProps<T> = AriaMenuProps<T>;
 
