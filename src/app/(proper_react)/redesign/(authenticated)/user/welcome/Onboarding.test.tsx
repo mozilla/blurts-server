@@ -102,7 +102,7 @@ it("can go to step 2 from step 1", async () => {
   expect(
     screen.queryByRole("heading", {
       name: "Enter the details you want to protect",
-    })
+    }),
   ).not.toBeInTheDocument();
 
   const startButton = screen.getByRole("button", {
@@ -113,7 +113,7 @@ it("can go to step 2 from step 1", async () => {
   expect(
     screen.getByRole("heading", {
       name: "Enter the details you want to protect",
-    })
+    }),
   ).toBeInTheDocument();
 });
 
@@ -125,7 +125,7 @@ it("can go back to step 1 after moving on to step 2", async () => {
   expect(
     screen.queryByRole("heading", {
       name: "Welcome to ⁨Monitor⁩. Let’s find your exposed information.",
-    })
+    }),
   ).not.toBeInTheDocument();
 
   const backButton = screen.getByRole("button", {
@@ -136,7 +136,7 @@ it("can go back to step 1 after moving on to step 2", async () => {
   expect(
     screen.getByRole("heading", {
       name: "Welcome to ⁨Monitor⁩. Let’s find your exposed information.",
-    })
+    }),
   ).toBeInTheDocument();
 });
 
@@ -222,7 +222,7 @@ it("shows a condensed version of the onboarding skipping step “Get started”"
   expect(proceedButton).toBeInTheDocument();
 });
 
-it("does not navigate back to step 1 of the onboarding", async () => {
+it("does not navigate back to step 1 of the onboarding when `skipInitialStep` is set", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   render(<ComposedOnboarding skipInitialStep />);
@@ -235,6 +235,6 @@ it("does not navigate back to step 1 of the onboarding", async () => {
   expect(
     screen.queryByRole("heading", {
       name: "Welcome to ⁨Monitor⁩. Let’s find your exposed information.",
-    })
+    }),
   ).not.toBeInTheDocument();
 });
