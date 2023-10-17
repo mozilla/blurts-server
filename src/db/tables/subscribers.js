@@ -6,7 +6,7 @@ import { destroyOAuthToken } from '../../utils/fxa.js'
 import initKnex from 'knex'
 import knexConfig from '../knexfile.js'
 import AppConstants from '../../appConstants.js'
-import { logger } from '../../app/functions/server/logging.js';
+import { logger } from '../../app/functions/server/logging';
 const knex = initKnex(knexConfig)
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = AppConstants
 

@@ -4,7 +4,7 @@
 
 import initKnex from "knex";
 import knexConfig from "../knexfile.js";
-import { logger } from "../../app/functions/server/logging.js";
+import { logger } from "../../app/functions/server/logging";
 import { FeatureFlagRow } from "knex/types/tables";
 const knex = initKnex(knexConfig);
 

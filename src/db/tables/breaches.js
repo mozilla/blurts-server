@@ -4,7 +4,7 @@
 
 import initKnex from 'knex'
 import knexConfig from '../knexfile.js'
-import { logger } from '../../app/functions/server/logging.js'
+import { logger } from '../../app/functions/server/logging'
 const knex = initKnex(knexConfig)
 
 /**

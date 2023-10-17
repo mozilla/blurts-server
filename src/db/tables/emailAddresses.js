@@ -5,7 +5,7 @@
 import { v4 as uuidv4 } from 'uuid'
 import initKnex from 'knex'
 import knexConfig from '../knexfile.js'
-import { logger} from '../../app/functions/server/logging.js';
+import { logger} from '../../app/functions/server/logging';
 import { subscribeHash } from '../../utils/hibp.js'
 import { getSha1 } from '../../utils/fxa.js'
 import { getSubscriberByEmail, updateFxAData } from './subscribers.js'
