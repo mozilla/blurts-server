@@ -20,7 +20,7 @@ it("opens and closes the app picker", async () => {
   const ComposedDashboard = composeStory(AppPickerDefault, Meta);
   const { container } = render(<ComposedDashboard />);
   expect(
-    screen.queryByRole("menu", { name: "⁨Mozilla⁩ apps and services" })
+    screen.queryByRole("menu", { name: "⁨Mozilla⁩ apps and services" }),
   ).not.toBeInTheDocument();
 
   const appPickerTrigger = screen.getByRole("button", {
@@ -29,11 +29,11 @@ it("opens and closes the app picker", async () => {
 
   await user.click(appPickerTrigger);
   expect(
-    screen.getByRole("menu", { name: "⁨Mozilla⁩ apps and services" })
+    screen.getByRole("menu", { name: "⁨Mozilla⁩ apps and services" }),
   ).toBeInTheDocument();
 
   await user.click(container);
   expect(
-    screen.queryByRole("menu", { name: "⁨Mozilla⁩ apps and services" })
+    screen.queryByRole("menu", { name: "⁨Mozilla⁩ apps and services" }),
   ).not.toBeInTheDocument();
 });
