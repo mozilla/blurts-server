@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Session } from "next-auth";
+import Link from "next/link";
 import styles from "./ManualRemoveView.module.scss";
 import { getL10n } from "../../../../../../../../functions/server/l10n";
 import {
@@ -54,8 +55,6 @@ export function ManualRemoveView(props: Props) {
     <FixView
       data={data}
       subscriberEmails={props.subscriberEmails}
-      // In practice, there should always be a next step (at least "Done")
-      /* c8 ignore next */
       nextStepHref={stepAfterSkip.href}
       currentSection="data-broker-profiles"
     >
@@ -110,8 +109,15 @@ export function ManualRemoveView(props: Props) {
                 )}
               </strong>
               <span>
-                {l10n.getString(
+                {l10n.getFragment(
                   "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-content",
+                  {
+                    elems: {
+                      upgrade_link: (
+                        <Link href="/redesign/user/dashboard/fix/data-broker-profiles/automatic-remove" />
+                      ),
+                    },
+                  },
                 )}
               </span>
             </li>
