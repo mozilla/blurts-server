@@ -82,6 +82,7 @@
     "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
     "react-stately": "^3.27.0",
+    "request": "^2.88.2",
     "uuid": "^9.0.0",
     "winston": "^3.11.0"
   },

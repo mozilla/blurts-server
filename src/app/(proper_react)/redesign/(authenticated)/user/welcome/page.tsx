@@ -4,7 +4,6 @@
 
 import { getServerSession } from "next-auth";
 import { SignInButton } from "../../../../../(nextjs_migration)/components/client/SignInButton";
-import { redirect } from "next/navigation";
 import { isEligibleForFreeScan } from "../../../../../functions/server/onerep";
 import { View } from "./View";
 import { getAllBreachesCount } from "../../../../../../db/tables/breaches";
@@ -23,7 +22,7 @@ export default async function Onboarding() {
     getCountryCode(headers()),
   );
   if (!userIsEligible) {
-    return redirect("/");
+    throw new Error("Not eligible for this feature");
   }
 
   const allBreachesCount = await getAllBreachesCount();
