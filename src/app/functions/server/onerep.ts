@@ -126,7 +126,7 @@ export async function createProfile(
     body: JSON.stringify(requestBody),
   });
   if (!response.ok) {
-    logger.info(
+    logger.error(
       `Failed to create OneRep profile: [${response.status}] [${
         response.statusText
       }] [${JSON.stringify(await response.json())}]`,
@@ -153,7 +153,7 @@ export async function getProfile(
     method: "GET",
   });
   if (!response.ok) {
-    logger.info(
+    logger.error(
       `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
@@ -173,7 +173,7 @@ export async function activateProfile(profileId: number): Promise<void> {
     },
   );
   if (!response.ok) {
-    logger.info(
+    logger.error(
       `Failed to activate OneRep profile: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
@@ -190,7 +190,7 @@ export async function deactivateProfile(profileId: number): Promise<void> {
     },
   );
   if (!response.ok) {
-    logger.info(
+    logger.error(
       `Failed to deactivate OneRep profile: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
@@ -204,7 +204,7 @@ export async function optoutProfile(profileId: number): Promise<void> {
     method: "POST",
   });
   if (!response.ok) {
-    logger.info(
+    logger.error(
       `Failed to opt-out OneRep profile: [${response.status}] [${
         response.statusText
       }] [${JSON.stringify(await response.json())}]`,
@@ -226,7 +226,7 @@ export async function createScan(
     method: "POST",
   });
   if (!response.ok) {
-    logger.info(
+    logger.error(
       `Failed to create a scan: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
@@ -254,7 +254,7 @@ export async function listScans(
     },
   );
   if (!response.ok) {
-    logger.info(
+    logger.error(
       `Failed to fetch scans: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
@@ -296,7 +296,7 @@ export async function listScanResults(
     },
   );
   if (!response.ok) {
-    logger.info(
+    logger.error(
       `Failed to fetch scan results: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
@@ -363,7 +363,7 @@ export async function getScanDetails(
     method: "GET",
   });
   if (!response.ok) {
-    logger.info(
+    logger.error(
       `Failed to fetch scan details: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
