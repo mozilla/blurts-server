@@ -168,10 +168,10 @@ export const authOptions: AuthOptions = {
   },
   events: {
     signIn(message) {
-      logger.debug("fxa-confirmed-profile-data", message.user);
+      logger.debug("fxa-confirmed-profile-data", message.user.id);
     },
     signOut(message) {
-      logger.debug("logout", message.token.email ?? undefined);
+      logger.debug("logout", message.token.subscriber?.id ?? undefined);
     },
   },
 };
