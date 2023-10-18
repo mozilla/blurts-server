@@ -4,6 +4,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
+import { logger } from "../../../../functions/server/logging";
 import {
   getAllFeatureFlags,
   addFeatureFlag,
@@ -45,7 +46,7 @@ export async function POST(req: NextRequest) {
       const resp = await addFeatureFlag(newFlag);
       return NextResponse.json(resp);
     } catch (e) {
-      console.error(e);
+      logger.error(e);
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
