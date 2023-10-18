@@ -12,7 +12,7 @@ export async function up(knex) {
       table.increments("id").primary();
       table.integer("subscriber_id").references("subscribers.id").notNullable();
       table.integer("breach_id").references("breaches.id").notNullable();
-      table.boolean("appeared").notNullable().defaultTo(false);
+      table.boolean("appeared").notNullable().defaultTo(true);
       table.boolean("notified").notNullable().defaultTo(false);
       table.string("email"); //optional email
       table.string("notification_type").notNullable().defaultTo("incident"); // incident, monthly
