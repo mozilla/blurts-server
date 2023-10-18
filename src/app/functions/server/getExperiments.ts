@@ -15,6 +15,11 @@ import { logger } from "./logging";
 export async function getExperiments(
   userId: string | undefined,
 ): Promise<unknown> {
+  if (!["stage", "production"].includes(process.env.APP_ENV ?? "local")) {
+    // Only use Cirrus in GCP environments.
+    return;
+  }
+
   const serverUrl = process.env.NIMBUS_SIDECAR_URL;
   if (!serverUrl) {
     throw new Error("env var NIMBUS_SIDECAR_URL not set");
