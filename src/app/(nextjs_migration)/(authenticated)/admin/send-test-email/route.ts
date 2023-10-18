@@ -4,7 +4,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import AppConstants from "../../../../../appConstants.js";
-import { logger } from "../../../../functions/server/logging.js";
+import { logger } from "../../../../functions/server/logging";
 import {
   EmailTemplateType,
   getMonthlyDummyData,

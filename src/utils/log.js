@@ -3,14 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 // @ts-ignore No type definitions available
-import mozlog from 'mozlog'
+import logging from '../app/functions/server/logging'
 
-import AppConstants from '../appConstants.js'
-
-const log = mozlog({
-  app: 'fx-monitor',
-  level: AppConstants.MOZLOG_LEVEL,
-  fmt: AppConstants.MOZLOG_FMT
-})
-
-export default log
+export default logging
