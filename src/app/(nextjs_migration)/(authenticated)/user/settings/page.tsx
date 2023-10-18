@@ -263,7 +263,7 @@ export default async function Settings() {
               >
                 {l10n.getString(
                   enabledFlags.includes("FxaRebrand")
-                    ? "settings-fxa-link-label-2"
+                    ? "settings-fxa-link-label-3"
                     : "settings-fxa-link-label",
                 )}
               </a>
