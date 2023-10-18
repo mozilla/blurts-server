@@ -262,8 +262,9 @@ declare module "knex/types/tables" {
     appeared: boolean;
     notified: boolean;
     email: string | null;
-    notification_type: Date;
+    notification_type: string;
     created_at: Date;
+    updated_at: Date;
   }
   type EmailNotificationOptionalColumns = Extract<
     keyof EmailNotificationRow,
