@@ -255,6 +255,25 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "updated_at"
   >;
 
+  interface EmailNotificationRow {
+    id: number;
+    subscriber_id: number;
+    breach_id: number;
+    appeared: boolean;
+    notified: boolean;
+    email: string | null;
+    notification_type: Date;
+    created_at: Date;
+  }
+  type EmailNotificationOptionalColumns = Extract<
+    keyof EmailNotificationRow,
+    "email"
+  >;
+  type EmailNotificationAutoInsertedColumns = Extract<
+    keyof EmailNotificationRow,
+    "id" | "created_at" | "updated_at"
+  >;
+
   interface Tables {
     feature_flags: Knex.CompositeTableType<
       FeatureFlagRow,
@@ -342,6 +361,19 @@ declare module "knex/types/tables" {
       // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
       Partial<Omit<OnerepProfileRow, "id" | "created_at">> &
         Pick<OnerepProfileRow, "updated_at">
+    >;
+
+    email_notifications: Knex.CompositeTableType<
+      EmailNotificationRow,
+      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
+      Omit<
+        EmailNotificationRow,
+        EmailAddressAutoInsertedColumns | EmailNotificationOptionalColumns
+      > &
+        Partial<Pick<EmailNotificationRow, EmailNotificationOptionalColumns>>,
+      // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
+      Partial<Omit<EmailNotificationRow, "id" | "created_at">> &
+        Pick<EmailNotificationRow, "updated_at">
     >;
   }
 }
