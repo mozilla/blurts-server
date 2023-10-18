@@ -52,8 +52,12 @@ settings-cancel-premium-subscription-link-label = Cancela desde tu { -brand-fx-a
 ## Deactivate account
 
 settings-deactivate-account-title = Desactivar cuenta
+# Deprecated
 settings-deactivate-account-info = Puede desactivar { -product-short-name } eliminando tu { -brand-fx-account }.
+settings-deactivate-account-info-2 = Puede desactivar { -product-short-name } eliminando tu { -brand-mozilla-account }.
+# Deprecated
 settings-fxa-link-label = Ir a ajustes de { -brand-firefox }
+settings-fxa-link-label-2 = Ir a ajustes de { -brand-mozilla }
 
 ## Add email dialog
 
