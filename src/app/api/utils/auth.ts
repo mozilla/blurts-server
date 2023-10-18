@@ -20,6 +20,7 @@ import { getTemplate } from "../../../views/emails/email2022.js";
 import { signupReportEmailPartial } from "../../../views/emails/emailSignupReport.js";
 import { getL10n } from "../../functions/server/l10n";
 import { OAuthConfig } from "next-auth/providers/oauth.js";
+import { SerializedSubscriber } from "../../../next-auth.js";
 
 const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   // As per https://mozilla.slack.com/archives/C4D36CAJW/p1683642497940629?thread_ts=1683642325.465929&cid=C4D36CAJW,
@@ -108,7 +109,10 @@ export const authOptions: AuthOptions = {
             account.refresh_token,
             JSON.stringify(profile),
           );
-          token.subscriber = verifiedSubscriber;
+          // The date fields of `verifiedSubscriber` get converted to an ISO 8601
+          // date string when serialised in the token, hence the type assertion:
+          token.subscriber =
+            verifiedSubscriber as unknown as SerializedSubscriber;
 
           const allBreaches = await getBreaches();
           const unsafeBreachesForEmail = await getBreachesForEmail(
