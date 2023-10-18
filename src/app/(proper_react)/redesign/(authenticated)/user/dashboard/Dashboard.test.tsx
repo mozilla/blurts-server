@@ -1712,3 +1712,19 @@ it("logs a warning in the story for an invalid user state", () => {
   );
   warnLogSpy.mockReset();
 });
+
+it("expands one card at a time", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const expandButton = screen.getAllByRole("button", { name: "Expand" });
+  await user.click(expandButton[0]);
+  const afterExpand1 = screen.getAllByRole("button", { name: "Expand" });
+  await user.click(afterExpand1[0]);
+  const afterExpand2 = screen.getAllByRole("button", { name: "Expand" });
+  expect(afterExpand1.length).toBe(afterExpand2.length);
+});

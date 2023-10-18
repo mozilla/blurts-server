@@ -50,8 +50,12 @@ settings-cancel-premium-subscription-link-label = Κάντε ακύρωση απ
 ## Deactivate account
 
 settings-deactivate-account-title = Απενεργοποίηση λογαριασμού
+# Deprecated
 settings-deactivate-account-info = Μπορείτε να απενεργοποιήσετε το { -product-short-name } διαγράφοντας τον { -brand-fx-account(case: "acc", capitalization: "lower") } σας.
+settings-deactivate-account-info-2 = Μπορείτε να απενεργοποιήσετε το { -product-short-name } διαγράφοντας τον { -brand-mozilla-account(case: "acc", capitalization: "lower") } σας.
+# Deprecated
 settings-fxa-link-label = Μεταβείτε στις ρυθμίσεις του { -brand-firefox }
+settings-fxa-link-label-2 = Μετάβαση στις ρυθμίσεις { -brand-mozilla }
 
 ## Add email dialog
 
