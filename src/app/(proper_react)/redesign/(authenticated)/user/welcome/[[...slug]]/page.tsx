@@ -56,7 +56,7 @@ export default async function Onboarding({ params }: Props) {
           10,
         )}
         breachesTotalCount={allBreachesCount}
-        skipInitialStep={firstSlug === FreeScanSlug}
+        stepId={firstSlug === FreeScanSlug ? "enterInfo" : "getStarted"}
       />
     </>
   );

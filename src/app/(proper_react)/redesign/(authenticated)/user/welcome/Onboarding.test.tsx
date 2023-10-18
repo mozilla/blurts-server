@@ -120,7 +120,12 @@ it("can go to step 2 from step 1", async () => {
 it("can go back to step 1 after moving on to step 2", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
-  render(<ComposedOnboarding stepId="enterInfo" />);
+  render(<ComposedOnboarding />);
+
+  const startButton = screen.getByRole("button", {
+    name: "Start my free scan",
+  });
+  await user.click(startButton);
 
   expect(
     screen.queryByRole("heading", {
@@ -215,17 +220,17 @@ it("passes the axe accessibility test suite on step 3", async () => {
 
 it("shows a condensed version of the onboarding skipping step “Get started”", () => {
   const ComposedOnboarding = composeStory(Onboarding, Meta);
-  render(<ComposedOnboarding skipInitialStep />);
+  render(<ComposedOnboarding stepId="enterInfo" />);
   const proceedButton = screen.getByRole("button", {
     name: "Find exposures",
   });
   expect(proceedButton).toBeInTheDocument();
 });
 
-it("does not navigate back to step 1 of the onboarding when `skipInitialStep` is set", async () => {
+it("does not navigate back to step 1 of the onboarding when directly linking to the `enterInfo` step", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
-  render(<ComposedOnboarding skipInitialStep />);
+  render(<ComposedOnboarding stepId="enterInfo" />);
 
   const backButton = screen.getByRole("button", {
     name: "Go back",
