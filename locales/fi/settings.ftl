@@ -50,8 +50,12 @@ settings-cancel-premium-subscription-link-label = Peruuta { -brand-fx-account }l
 ## Deactivate account
 
 settings-deactivate-account-title = Poista tili käytöstä
+# Deprecated
 settings-deactivate-account-info = Voit poistaa { -product-short-name }in käytöstä poistamalla { -brand-fx-account }n.
+settings-deactivate-account-info-2 = Voit poistaa { -product-short-name }in käytöstä poistamalla { -brand-mozilla-account }n.
+# Deprecated
 settings-fxa-link-label = Siirry { -brand-firefox }-asetuksiin
+settings-fxa-link-label-2 = Siirry { -brand-mozilla }-asetuksiin
 
 ## Add email dialog
 

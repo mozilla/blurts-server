@@ -10,9 +10,11 @@ import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscri
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { ManualRemoveView } from "./ManualRemoveView";
 import { authOptions } from "../../../../../../../../api/utils/auth";
+import { hasPremium } from "../../../../../../../../functions/universal/user";
 import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
+import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 
-export default async function ManualRemove() {
+export default async function ManualRemovePage() {
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.subscriber?.id) {
@@ -23,12 +25,16 @@ export default async function ManualRemove() {
   const profileId = result[0]["onerep_profile_id"] as number;
   const scanData = await getLatestOnerepScanResults(profileId);
   const subBreaches = await getSubscriberBreaches(session.user);
+  const subscriberEmails = await getSubscriberEmails(session.user);
+
   return (
     <ManualRemoveView
       breaches={subBreaches}
       scanData={scanData}
+      isPremiumUser={hasPremium(session.user)}
       user={session.user}
       countryCode={getCountryCode(headers())}
+      subscriberEmails={subscriberEmails}
     />
   );
 }

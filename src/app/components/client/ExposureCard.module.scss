@@ -1,9 +1,6 @@
 @import "../../tokens";
 
 .exposureCard {
-  // Variables
-  --exposureDetailsIconWidth: 28px;
-
   font: $text-body-sm;
   background-color: $color-white;
   border: 2px solid rgba($color-purple-70, 0.2);
@@ -50,6 +47,10 @@
       gap: $layout-md;
     }
 
+    .dataBrokerLogo {
+      object-fit: contain;
+    }
+
     .fallbackLogo {
       display: flex;
       align-items: center;
@@ -68,38 +69,30 @@
       &.hideOnMobile {
         display: none;
       }
-
       .exposureCompanyTitle {
         font: $text-body-sm;
-        max-width: 150px; // truncate long names for mobile view
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
-
-        @media screen and (min-width: $screen-sm) {
-          max-width: 250px; // truncate long names for mobile view
-        }
-
-        @media screen and (min-width: $screen-md) {
-          max-width: 100%;
-        }
-      }
-
-      @media screen and (min-width: $screen-lg) {
-        flex: 1 1 0%;
-
-        &.exposureImageWrapper {
-          flex: 0.2 0 $width-first-column-filter-bar;
-        }
-
-        &.hideOnMobile {
-          display: block;
-        }
       }
 
       .exposureImageWrapper {
         .exposureImage {
           height: 100%;
+        }
+      }
+
+      @media screen and (min-width: $screen-lg) {
+        &.exposureImageWrapper {
+          flex: 0.2 0 $width-first-column-filter-bar;
+        }
+      }
+
+      @media screen and (min-width: $screen-xl) {
+        flex: 1 1 0%;
+
+        &.hideOnMobile {
+          display: flex;
         }
       }
     }
@@ -140,6 +133,7 @@
       gap: $layout-xs;
 
       .exposedInfoWrapper {
+        font: $text-body-xs;
         display: flex;
         flex-direction: column;
         gap: $spacing-md;
@@ -178,7 +172,6 @@
       }
 
       .dataClassesList {
-        font: $text-body-sm;
         justify-content: space-between;
         margin-left: 0;
         padding-left: 0;
@@ -203,12 +196,10 @@
           .label {
             display: flex;
             align-items: center;
+            gap: $spacing-xs;
 
             .exposureTypeIcon {
-              width: var(--exposureDetailsIconWidth);
               color: $color-purple-60;
-              display: flex;
-              justify-content: flex-start;
             }
           }
 
@@ -235,4 +226,8 @@
 
 .visuallyHidden {
   @include visually-hidden;
+}
+
+.companyNameArea {
+  @include company-name-area;
 }

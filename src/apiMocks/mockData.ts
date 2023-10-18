@@ -46,7 +46,7 @@ export type RandomScanResultOptions = Partial<{
  * @returns A single scan result.
  */
 export function createRandomScanResult(
-  options: RandomScanResultOptions = {}
+  options: RandomScanResultOptions = {},
 ): OnerepScanResultRow {
   faker.seed(options.fakerSeed);
   return {
@@ -60,7 +60,7 @@ export function createRandomScanResult(
     status:
       options.status ??
       (faker.helpers.arrayElement(
-        Object.values(RemovalStatusMap)
+        Object.values(RemovalStatusMap),
       ) as RemovalStatus),
     manually_resolved: options.manually_resolved ?? faker.datatype.boolean(),
     addresses: Array.from({ length: 3 }, () => ({
@@ -81,7 +81,7 @@ export function createRandomScanResult(
 }
 
 export type RandomBreachOptions = Partial<{
-  dataClasses: Array<(typeof BreachDataTypes)[keyof typeof BreachDataTypes]>;
+  dataClasses: SubscriberBreach["dataClasses"];
   addedDate: Date;
   isResolved: boolean;
   dataClassesEffected: DataClassEffected[];
@@ -91,7 +91,7 @@ export type RandomBreachOptions = Partial<{
 
 // TODO: MNTOR-2033 Update this random breach function with new data breach object, and deprecate all BreachMockItems
 export function createRandomBreach(
-  options: RandomBreachOptions = {}
+  options: RandomBreachOptions = {},
 ): SubscriberBreach {
   const dataClassTypes = options.isHighRiskOnly
     ? HighRiskDataTypes

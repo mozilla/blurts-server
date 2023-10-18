@@ -22,7 +22,7 @@ export async function getBreaches() {
   breaches = await getAllBreachesFromDb();
   log.debug(
     "loadBreachesIntoApp",
-    `loaded breaches from database: ${breaches.length}`
+    `loaded breaches from database: ${breaches.length}`,
   );
 
   // if "breaches" table does not return results, fall back to HIBP request
@@ -30,7 +30,7 @@ export async function getBreaches() {
     const breachesResponse = (await req("/breaches")) as Breach[];
     log.debug(
       "loadBreachesIntoApp",
-      `loaded breaches from HIBP: ${breachesResponse.length}`
+      `loaded breaches from HIBP: ${breachesResponse.length}`,
     );
 
     for (const breach of breachesResponse) {

@@ -24,7 +24,6 @@ import {
 import { getDashboardSummary } from "../../../../../functions/server/dashboard";
 import { getExposureStatus } from "../../../../../components/server/StatusPill";
 import { TabList } from "../../../../../components/client/TabList";
-import { FeatureFlagsEnabled } from "../../../../../functions/server/featureFlags";
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 import {
@@ -39,12 +38,11 @@ import AllFixedIllustration from "./images/dashboard-all-fixed.svg";
 import NoExposuresIllustration from "./images/dashboard-no-exposures.svg";
 import ScanProgressIllustration from "./images/scan-illustration.svg";
 import { CountryCodeContext } from "../../../../../../contextProviders/country-code";
+import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
+import { getNextGuidedStep } from "../../../../../functions/server/getRelevantGuidedSteps";
 
 export type Props = {
-  featureFlagsEnabled: Pick<
-    FeatureFlagsEnabled,
-    "FreeBrokerScan" | "PremiumBrokerRemoval"
-  >;
+  enabledFeatureFlags: FeatureFlagName[];
   user: Session["user"];
   userBreaches: SubscriberBreach[];
   userScanData: LatestOnerepScanData;
@@ -52,6 +50,7 @@ export type Props = {
   isEligibleForPremium: boolean;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  scanCount: number;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -71,6 +70,7 @@ export const View = (props: Props) => {
   };
   const [filters, setFilters] = useState<FilterState>(initialFilterState);
   const [selectedTab, setSelectedTab] = useState<TabType>("action-needed");
+  const [activeExposureCardKey, setActiveExposureCardKey] = useState("");
   const tabsData: TabData[] = [
     {
       name: l10n.getString("dashboard-tab-label-action-needed"),
@@ -82,8 +82,9 @@ export const View = (props: Props) => {
     },
   ];
   const breachesDataArray = props.userBreaches.flat();
-  const scanInProgress =
-    props.userScanData.scan?.onerep_scan_status === "in_progress";
+  const initialScanInProgress =
+    props.userScanData.scan?.onerep_scan_status === "in_progress" &&
+    props.scanCount === 1;
 
   // Merge exposure cards
   const combinedArray = [...breachesDataArray, ...props.userScanData.results];
@@ -114,28 +115,32 @@ export const View = (props: Props) => {
 
   const tabSpecificExposures = getTabSpecificExposures(selectedTab);
   const filteredExposures = filterExposures(tabSpecificExposures, filters);
-
   const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
+    const exposureCardKey = `${isScanResult(exposure) ? "scan" : "breach"}-${
+      exposure.id
+    }`;
     return (
-      <li
-        key={`${isScanResult(exposure) ? "scan" : "breach"}-${exposure.id}`}
-        className={styles.exposureListItem}
-      >
+      <li key={exposureCardKey} className={styles.exposureListItem}>
         <ExposureCard
           exposureData={exposure}
+          isExpanded={exposureCardKey === activeExposureCardKey}
+          setExpanded={() => setActiveExposureCardKey(exposureCardKey)}
           locale={getLocale(l10n)}
-          isPremiumBrokerRemovalEnabled={
-            props.featureFlagsEnabled.PremiumBrokerRemoval
-          }
+          isPremiumBrokerRemovalEnabled={props.enabledFeatureFlags.includes(
+            "PremiumBrokerRemoval",
+          )}
+          isPremiumUser={hasPremium(props.user)}
           resolutionCta={
             <Button
               variant="primary"
               wide
               href={
-                isScanResult(exposure)
-                  ? "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove"
-                  : // TODO MNTOR-2226: Figure out where this CTA should go
-                    undefined
+                getNextGuidedStep({
+                  user: props.user,
+                  countryCode,
+                  latestScanData: props.userScanData,
+                  subscriberBreaches: props.userBreaches,
+                }).href
               }
             >
               {l10n.getString("exposure-card-cta")}
@@ -145,11 +150,10 @@ export const View = (props: Props) => {
       </li>
     );
   });
-  const isScanResultItemsEmpty = props.userScanData.results.length === 0;
   const noUnresolvedExposures = exposureCardElems.length === 0;
   const dataSummary = getDashboardSummary(
     props.userScanData.results,
-    props.userBreaches
+    props.userBreaches,
   );
 
   const hasExposures = combinedArray.length > 0;
@@ -163,8 +167,16 @@ export const View = (props: Props) => {
   const hasFixedExposures = hasExposures && !hasUnresolvedExposures;
 
   const TabContentActionNeeded = () => {
-    const { dataBreachTotalNum, dataBrokerTotalNum, totalExposures } =
-      dataSummary;
+    const {
+      dataBreachUnresolvedNum,
+      dataBrokerTotalNum,
+      dataBrokerFixedNum,
+      dataBrokerInProgressNum,
+      dataBreachFixedExposuresNum,
+      dataBrokerFixedExposuresNum,
+      dataBrokerInProgressExposuresNum,
+      totalExposures,
+    } = dataSummary;
 
     let exposuresAreaDescription;
 
@@ -172,24 +184,33 @@ export const View = (props: Props) => {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-area-description",
         {
-          exposures_total_num: totalExposures,
-          data_breach_total_num: dataBreachTotalNum,
-          data_broker_total_num: dataBrokerTotalNum,
-        }
+          exposures_unresolved_num:
+            totalExposures -
+            dataBrokerFixedExposuresNum -
+            dataBreachFixedExposuresNum -
+            dataBrokerInProgressExposuresNum,
+          data_breach_unresolved_num: dataBreachUnresolvedNum,
+          data_broker_unresolved_num:
+            dataBrokerTotalNum - dataBrokerFixedNum - dataBrokerInProgressNum,
+        },
       );
     }
 
-    if (scanInProgress && !noUnresolvedExposures) {
+    if (initialScanInProgress && !noUnresolvedExposures) {
       exposuresAreaDescription = l10n.getString(
         "dashboard-exposures-breaches-scan-progress-description",
         {
-          exposures_total_num: totalExposures,
-          data_breach_total_num: dataBreachTotalNum,
-        }
+          exposures_unresolved_num:
+            totalExposures -
+            dataBrokerFixedExposuresNum -
+            dataBreachFixedExposuresNum -
+            dataBrokerInProgressExposuresNum,
+          data_breach_unresolved_num: dataBreachUnresolvedNum,
+        },
       );
-    } else if (scanInProgress) {
+    } else if (initialScanInProgress) {
       exposuresAreaDescription = l10n.getString(
-        "dashboard-exposures-no-breaches-scan-progress-description"
+        "dashboard-exposures-no-breaches-scan-progress-description",
       );
     }
 
@@ -215,63 +236,52 @@ export const View = (props: Props) => {
     </>
   );
 
-  const freeScanCta = isScanResultItemsEmpty && (
+  const freeScanCta = props.isEligibleForFreeScan && (
     <p>
       {l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
         vars: {
           data_broker_total_num: parseInt(
             process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-            10
+            10,
           ),
         },
         elems: {
-          free_scan_link: <a href="/redesign/user/welcome" />,
+          a: <a href="/redesign/user/welcome" />,
         },
       })}
     </p>
   );
 
   const getZeroStateIndicator = () => {
-    let zeroStateIndicatorContent;
-
-    if (scanInProgress) {
-      zeroStateIndicatorContent = (
+    if (initialScanInProgress) {
+      return (
         <>
           <Image src={ScanProgressIllustration} alt="" />
           <strong>
             {l10n.getString("dashboard-exposures-scan-progress-label")}
+          </strong>
+        </>
+      );
+    }
+
+    if (!hasUnresolvedExposures && hasFixedExposures) {
+      return (
+        <>
+          <Image src={AllFixedIllustration} alt="" />
+          <strong>
+            {l10n.getString("dashboard-exposures-all-fixed-label")}
           </strong>
           {freeScanCta}
         </>
       );
     }
 
-    if (!hasUnresolvedExposures && !hasFixedExposures) {
-      zeroStateIndicatorContent = (
-        <>
-          <Image src={NoExposuresIllustration} alt="" />
-          <strong>{l10n.getString("dashboard-no-exposures-label")}</strong>
-        </>
-      );
-    }
-
-    if (!hasUnresolvedExposures && hasFixedExposures) {
-      zeroStateIndicatorContent = (
-        <>
-          <Image src={AllFixedIllustration} alt="" />
-          <strong>
-            {l10n.getString("dashboard-exposures-all-fixed-label")}
-          </strong>
-        </>
-      );
-    }
-
     return (
-      zeroStateIndicatorContent && (
-        <div className={styles.zeroStateIndicator}>
-          {zeroStateIndicatorContent}
-        </div>
-      )
+      <>
+        <Image src={NoExposuresIllustration} alt="" />
+        <strong>{l10n.getString("dashboard-no-exposures-label")}</strong>
+        {freeScanCta}
+      </>
     );
   };
 
@@ -293,7 +303,7 @@ export const View = (props: Props) => {
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           tabType={selectedTab}
-          scanInProgress={scanInProgress}
+          scanInProgress={initialScanInProgress}
           isPremiumUser={hasPremium(props.user)}
           isEligibleForPremium={canSubscribeToPremium({
             user: props.user,
@@ -305,7 +315,7 @@ export const View = (props: Props) => {
           hasUnresolvedBrokers={hasUnresolvedBrokers}
           bannerData={getDashboardSummary(
             props.userScanData.results,
-            props.userBreaches
+            props.userBreaches,
           )}
           stepDeterminationData={{
             countryCode,
@@ -332,7 +342,9 @@ export const View = (props: Props) => {
           />
         </div>
         {noUnresolvedExposures ? (
-          getZeroStateIndicator()
+          <div className={styles.zeroStateIndicator}>
+            {getZeroStateIndicator()}
+          </div>
         ) : (
           <ul className={styles.exposureList}>{exposureCardElems}</ul>
         )}

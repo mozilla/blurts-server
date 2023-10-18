@@ -43,7 +43,7 @@ export class AuthPage {
 
   async enterPassword() {
     await this.passwordInputField.fill(
-      process.env.E2E_TEST_ACCOUNT_PASSWORD as string
+      process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
     );
     await this.continue();
   }
@@ -56,10 +56,10 @@ export class AuthPage {
   async signUp(email: string, page: Page) {
     await this.enterEmail(email);
     await this.passwordInputField.fill(
-      process.env.E2E_TEST_ACCOUNT_PASSWORD as string
+      process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
     );
     await this.passwordConfirmInputField.fill(
-      process.env.E2E_TEST_ACCOUNT_PASSWORD as string
+      process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
     );
     await this.ageInputField.type("31");
     await this.continue();

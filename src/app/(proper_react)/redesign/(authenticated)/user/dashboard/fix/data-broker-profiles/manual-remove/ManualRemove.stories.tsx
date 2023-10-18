@@ -12,9 +12,8 @@ import {
 } from "../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../Shell";
 import { getEnL10nSync } from "../../../../../../../../functions/server/mockL10n";
-import { FixView } from "../../FixView";
 import { LatestOnerepScanData } from "../../../../../../../../../db/tables/onerep_scans";
-import { GuidedExperienceBreaches } from "../../../../../../../../functions/server/getUserBreaches";
+import { hasPremium } from "../../../../../../../../functions/universal/user";
 
 const mockedScan: OnerepScanRow = {
   created_at: new Date(1998, 2, 31),
@@ -29,29 +28,10 @@ const mockedScan: OnerepScanRow = {
 const mockedScanData: LatestOnerepScanData = {
   scan: mockedScan,
   results: [...Array(5)].map(() =>
-    createRandomScanResult({ status: "new", manually_resolved: false })
+    createRandomScanResult({ status: "new", manually_resolved: false }),
   ),
 };
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
-
-const mockedBreachSummary: GuidedExperienceBreaches = {
-  emails: [],
-  highRisk: {
-    bankBreaches: [],
-    creditCardBreaches: [],
-    pinBreaches: [],
-    ssnBreaches: [],
-  },
-  passwordBreaches: {
-    passwords: [],
-    securityQuestions: [],
-  },
-  securityRecommendations: {
-    emailAddress: [],
-    IPAddress: [],
-    phoneNumber: [],
-  },
-};
 
 const user = createUserWithPremiumSubscription();
 
@@ -78,17 +58,14 @@ export const ManualRemoveViewStory: Story = {
         monthlySubscriptionUrl=""
         yearlySubscriptionUrl=""
       >
-        <FixView
-          breaches={mockedBreachSummary}
-          userScannedResults={mockedScanData.results}
-        >
-          <ManualRemoveView
-            scanData={mockedScanData}
-            breaches={mockedBreaches}
-            countryCode="us"
-            user={mockedSession.user}
-          />
-        </FixView>
+        <ManualRemoveView
+          scanData={mockedScanData}
+          breaches={mockedBreaches}
+          countryCode="us"
+          user={mockedSession.user}
+          subscriberEmails={[]}
+          isPremiumUser={hasPremium(user)}
+        />
       </Shell>
     );
   },

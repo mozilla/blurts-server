@@ -7,7 +7,7 @@ import passwordIllustration from "../images/leaked-passwords.svg";
 import securityQuestionsIllustration from "../images/security-questions.svg";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
-import { getL10n } from "../../../../../../../functions/server/l10n";
+import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
 
 export type LeakedPasswordsContent = {
   summary: string;
@@ -31,26 +31,31 @@ export type LeakedPassword = {
 function getLeakedPasswords({
   dataType,
   breaches,
+  l10n,
 }: {
   dataType: string;
   breaches: GuidedExperienceBreaches;
+  l10n: ExtendedReactLocalization;
 }) {
-  const l10n = getL10n();
-
   const findFirstUnresolvedBreach = (breachClassType: LeakedPasswordsTypes) => {
     const leakedPasswordType =
       breachClassType === "password" ? "passwords" : "securityQuestions";
     return Object.values(breaches.passwordBreaches[leakedPasswordType]).find(
-      (breach) => !breach.isResolved
+      (breach) => !breach.isResolved,
     );
   };
 
   const unresolvedPasswordBreach = findFirstUnresolvedBreach("password");
   const unresolvedSecurityQuestionsBreach =
     findFirstUnresolvedBreach("security-question");
+  // This env var is always defined in test, so the other branch can't be covered:
+  /* c8 ignore next */
   const blockList = (process.env.HIBP_BREACH_DOMAIN_BLOCKLIST ?? "").split(",");
 
   const getBreachInfo = (breach?: SubscriberBreach) => ({
+    // Old code without tests for the case where `breach` is `undefined`
+    // (is that even possible?)
+    /* c8 ignore next 6 */
     name: breach ? breach.name : "",
     breachDate: breach ? breach.breachDate : "",
     breachSite:

@@ -15,15 +15,18 @@ type DataBrokerDataClassProps = {
   exposureCategoryLabel: string;
   num: number;
   icon: ReactElement;
+  isPremiumUser: boolean;
 };
 
 export const DataBrokerDataClass = (props: DataBrokerDataClassProps) => {
-  const emailsList = (
+  const emailsList = props.isPremiumUser ? (
     <ul className={styles.emailsList}>
       {props.scanResultData.emails.map((email: string, index: number) => (
         <li key={index}>{email}</li>
       ))}
     </ul>
+  ) : (
+    <></>
   );
 
   return (
@@ -50,7 +53,7 @@ export const BreachDataClass = (props: BreachDataClassProps) => {
       {props.subscriberBreachData.emailsAffected.map(
         (email: string, index: number) => (
           <li key={index}>{email}</li>
-        )
+        ),
       )}
     </ul>
   );
@@ -73,7 +76,7 @@ type ExposureCardDataClassLayoutProps = {
 };
 
 const ExposureCardDataClassLayout = (
-  props: ExposureCardDataClassLayoutProps
+  props: ExposureCardDataClassLayoutProps,
 ) => {
   const l10n = useL10n();
 
@@ -81,15 +84,17 @@ const ExposureCardDataClassLayout = (
     <div className={styles.detailsFoundItem}>
       <div className={styles.label}>
         <span className={styles.exposureTypeIcon}>{props.icon}</span>
-        {l10n.getString("exposure-card-label-and-count", {
-          category_label: props.label,
-          count: props.count,
-        })}
+        <span>
+          {l10n.getString("exposure-card-label-and-count", {
+            category_label: props.label,
+            count: props.count,
+          })}
+        </span>
       </div>
-      <div className={styles.emails}>
-        {props.label === l10n.getString("exposure-card-email") &&
-          props.emailData}
-      </div>
+      {props.emailData &&
+        props.label === l10n.getString("exposure-card-email") && (
+          <div className={styles.emails}>{props.emailData}</div>
+        )}
     </div>
   );
 };

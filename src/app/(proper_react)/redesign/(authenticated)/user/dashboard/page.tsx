@@ -9,16 +9,25 @@ import { View } from "./View";
 import { authOptions } from "../../../../../api/utils/auth";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../functions/server/getUserBreaches";
-import { canSubscribeToPremium } from "../../../../../functions/universal/user";
-import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
+import {
+  canSubscribeToPremium,
+  hasPremium,
+} from "../../../../../functions/universal/user";
+import {
+  getLatestOnerepScanResults,
+  getScansCountForProfile,
+} from "../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 
-import { isFlagEnabled } from "../../../../../functions/server/featureFlags";
 import {
   isEligibleForFreeScan,
   isEligibleForPremium,
 } from "../../../../../functions/server/onerep";
 import getPremiumSubscriptionUrl from "../../../../../functions/server/getPremiumSubscriptionUrl";
+import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
+import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
+import { parseIso8601Datetime } from "../../../../../../utils/parse";
+
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
@@ -30,31 +39,59 @@ export default async function DashboardPage() {
 
   const result = await getOnerepProfileId(session.user.subscriber.id);
   const profileId = result[0]["onerep_profile_id"] as number;
+  const brokerScanReleaseDateParts = (
+    process.env.BROKER_SCAN_RELEASE_DATE ?? ""
+  ).split("-");
+  if (brokerScanReleaseDateParts[0] === "") {
+    brokerScanReleaseDateParts[0] = "2023";
+  }
+  const brokerScanReleaseDate = new Date(
+    Date.UTC(
+      Number.parseInt(brokerScanReleaseDateParts[0], 10),
+      Number.parseInt(brokerScanReleaseDateParts[1] ?? "12", 10) - 1,
+      Number.parseInt(brokerScanReleaseDateParts[2] ?? "05", 10),
+    ),
+  );
+
+  const hasRunScan = typeof profileId === "number";
+  const isNewUser =
+    (parseIso8601Datetime(session.user.subscriber.created_at)?.getTime() ?? 0) >
+    brokerScanReleaseDate.getTime();
+
   if (
-    !profileId &&
-    canSubscribeToPremium({ user: session?.user, countryCode: countryCode })
+    !hasRunScan &&
+    (hasPremium(session.user) ||
+      (isNewUser &&
+        canSubscribeToPremium({
+          user: session.user,
+          countryCode: countryCode,
+        })))
   ) {
     return redirect("/redesign/user/welcome/");
   }
 
+  await refreshStoredScanResults(profileId);
+
   const latestScan = await getLatestOnerepScanResults(profileId);
+  const scanCount = await getScansCountForProfile(profileId);
   const subBreaches = await getSubscriberBreaches(session.user);
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(
     session.user,
-    countryCode
+    countryCode,
   );
-  const userIsEligibleForPremium = await isEligibleForPremium(
+  const enabledFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+  const userIsEligibleForPremium = isEligibleForPremium(
     session.user,
-    countryCode
+    countryCode,
+    enabledFlags,
   );
 
-  const FreeBrokerScan = await isFlagEnabled("FreeBrokerScan", session.user);
-  const PremiumBrokerRemoval = await isFlagEnabled(
-    "PremiumBrokerRemoval",
-    session.user
-  );
-  const featureFlagsEnabled = { FreeBrokerScan, PremiumBrokerRemoval };
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
@@ -66,9 +103,10 @@ export default async function DashboardPage() {
       isEligibleForFreeScan={userIsEligibleForFreeScan}
       userScanData={latestScan}
       userBreaches={subBreaches}
-      featureFlagsEnabled={featureFlagsEnabled}
+      enabledFeatureFlags={enabledFeatureFlags}
       monthlySubscriptionUrl={monthlySubscriptionUrl}
       yearlySubscriptionUrl={yearlySubscriptionUrl}
+      scanCount={scanCount}
     />
   );
 }

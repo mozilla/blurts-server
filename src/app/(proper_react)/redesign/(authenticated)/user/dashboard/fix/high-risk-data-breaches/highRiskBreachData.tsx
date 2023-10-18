@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { ReactNode } from "react";
-import { getL10n } from "../../../../../../../functions/server/l10n";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import creditCardIllustration from "../images/high-risk-data-breach-credit-card.svg";
 import socialSecurityNumberIllustration from "../images/high-risk-data-breach-ssn.svg";
@@ -13,6 +12,7 @@ import noBreachesIllustration from "../images/high-risk-breaches-none.svg";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { FraudAlertModal } from "./FraudAlertModal";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
+import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
 
 export type HighRiskBreachContent = {
   summary: string;
@@ -42,12 +42,12 @@ export type HighRiskBreach = {
 function getHighRiskBreachesByType({
   dataType,
   breaches,
+  l10n,
 }: {
   dataType: HighRiskBreachTypes;
   breaches: GuidedExperienceBreaches;
+  l10n: ExtendedReactLocalization;
 }) {
-  const l10n = getL10n();
-
   // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
   const emailsFormatter = new Intl.ListFormat(getLocale(l10n), {
     style: "long",
@@ -213,12 +213,12 @@ function getHighRiskBreachesByType({
               </li>
               <li>
                 {l10n.getString(
-                  "high-risk-breach-none-sub-description-bank-account"
+                  "high-risk-breach-none-sub-description-bank-account",
                 )}
               </li>
               <li>
                 {l10n.getString(
-                  "high-risk-breach-none-sub-description-cc-number"
+                  "high-risk-breach-none-sub-description-cc-number",
                 )}
               </li>
               <li>

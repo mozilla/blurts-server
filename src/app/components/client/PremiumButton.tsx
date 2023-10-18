@@ -36,7 +36,7 @@ export default function PremiumButton({ label }: Props) {
   });
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: "dialog" },
-    dialogState
+    dialogState,
   );
 
   return (

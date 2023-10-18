@@ -5,6 +5,7 @@
 
 # Settings page
 
+settings-meta-title = { -brand-fx-monitor } - Rregullime
 settings-page-title = Rregullime { -product-short-name }-i
 
 ## Breach alert preferences
@@ -29,6 +30,7 @@ settings-email-limit-info =
 settings-email-verification-callout = Lypset verifikim email-i
 settings-resend-email-verification-link = Ridërgo email verifikimi
 settings-add-email-button = Shtoni adresë email
+settings-delete-email-button = Fshije adresën email
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -39,11 +41,17 @@ settings-email-number-of-breaches-info =
        *[other] Shfaqet në { $breachCount } cenime të ditura.
     }
 
+## Cancel Premium subscription
+
+
 ## Deactivate account
 
 settings-deactivate-account-title = Çaktivizoje llogarinë
+# Deprecated
 settings-deactivate-account-info = { -product-short-name } mund ta çaktivizoni duke fshirë { -brand-fx-account } tuaj.
+# Deprecated
 settings-fxa-link-label = Kaloni te Rregullime { -brand-firefox }-i
+settings-fxa-link-label-2 = Kaloni te Rregullime { -brand-mozilla }
 
 ## Add email dialog
 
@@ -51,3 +59,9 @@ settings-email-dialog-title = Shtoni adresë tjetër email
 settings-add-email-text = Shtoni një adresë të re email, që të shihni nëse është përfshirë në ndonjë cenim.
 settings-email-input-label = Adresë email
 settings-send-email-verification-button = Dërgo lidhje verifikimi
+
+## Unsubscribe Dialog Survey
+
+settings-unsubscribe-dialog-message-placeholder = Ç’mund të kishte ecur më mirë?
+settings-unsubscribe-dialog-continue = Vazhdo me anulimin
+settings-unsubscribe-dialog-cancel = S’prish punë, kthemëni

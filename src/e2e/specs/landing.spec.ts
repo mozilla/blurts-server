@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { test, expect } from "../fixtures/basePage.js";
+import { defaultScreenshotOpts } from "../utils/helpers.js";
 
 test.describe("Landing Page element verification", () => {
   test.beforeEach(async ({ landingPage }) => {
@@ -24,19 +25,19 @@ test.describe("Landing Page element verification", () => {
     // verify the actual hrefs in the footer matches expected
     await expect(async () => {
       expect(await landingPage.MozillaFooterLogoLink.getAttribute("href")).toBe(
-        links.mozillaLogoUrl
+        links.mozillaLogoUrl,
       );
       expect(await landingPage.AllBreachesLink.getAttribute("href")).toContain(
-        links.allBreachesUrl
+        links.allBreachesUrl,
       );
       expect(await landingPage.FAQLink.getAttribute("href")).toContain(
-        links.FAQUrl
+        links.FAQUrl,
       );
       expect(await landingPage.TermsLink.getAttribute("href")).toContain(
-        links.TermsUrl
+        links.TermsUrl,
       );
       expect(await landingPage.GithubLink.getAttribute("href")).toBe(
-        links.GithubUrl
+        links.GithubUrl,
       );
     }).toPass();
   });
@@ -51,9 +52,12 @@ test.describe("Landing Page element verification", () => {
     }).toPass();
   });
 
-  test("Verify that the site footer is displayed correctly", async ({
+  test("Verify that the site footer is displayed correctly @uiregression", async ({
     landingPage,
   }) => {
+    // clear any possible banner
+    await landingPage.maybeClearBanner();
+
     // link to testrail case
     test.info().annotations.push({
       type: "testrail",
@@ -62,11 +66,10 @@ test.describe("Landing Page element verification", () => {
     });
 
     // visually verify landing page footer is displayed correctly
-    await expect(async () => {
-      await expect(landingPage.landingFooter).toHaveScreenshot(
-        `${process.env.E2E_TEST_ENV}-landingFooter.png`
-      );
-    }).toPass();
+    await expect(landingPage.landingFooter).toHaveScreenshot(
+      `${process.env.E2E_TEST_ENV}-landingFooter.png`,
+      defaultScreenshotOpts,
+    );
   });
 });
 
@@ -123,15 +126,15 @@ test.describe("Landing Page Functionality Verification", () => {
 
       // verify redirect to sign in("/user/breaches")
       expect(await scanPage.signUpForAlerts.getAttribute("href")).toBe(
-        "/user/breaches"
+        "/user/breaches",
       );
       expect(
-        await scanPage.getAlertsAboutBreachesButton.getAttribute("href")
+        await scanPage.getAlertsAboutBreachesButton.getAttribute("href"),
       ).toBe("/user/breaches");
 
       // verify "have i been pwned" website redirect
       expect(await scanPage.haveIBeenPwnedLink.getAttribute("href")).toBe(
-        "https://haveibeenpwned.com/"
+        "https://haveibeenpwned.com/",
       );
     }).toPass();
   });

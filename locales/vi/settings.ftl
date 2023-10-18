@@ -42,8 +42,12 @@ settings-cancel-premium-subscription-link-label = Hủy từ { -brand-fx-account
 ## Deactivate account
 
 settings-deactivate-account-title = Hủy kích hoạt tài khoản
+# Deprecated
 settings-deactivate-account-info = Bạn có thể hủy kích hoạt { -product-short-name } bằng cách xóa { -brand-fx-account } của mình.
+settings-deactivate-account-info-2 = Bạn có thể vô hiệu hóa { -product-short-name } bằng cách xoá { -brand-mozilla-account } của bạn.
+# Deprecated
 settings-fxa-link-label = Đi đến cài đặt { -brand-firefox }
+settings-fxa-link-label-2 = Đi đến cài đặt { -brand-mozilla }
 
 ## Add email dialog
 

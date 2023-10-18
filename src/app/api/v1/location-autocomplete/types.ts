@@ -67,7 +67,7 @@ export type AlternateNameData = [
   IsColloquial,
   IsHistoric,
   From,
-  To
+  To,
 ];
 
 /** Name of geographical point (utf8), varchar(200). */
@@ -831,7 +831,7 @@ export type LocationData = [
   LocationElevation,
   LocationDem,
   LocationTimezone,
-  LocationModificationDate
+  LocationModificationDate,
 ];
 
 export interface RelevantLocation {

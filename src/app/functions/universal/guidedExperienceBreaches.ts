@@ -8,7 +8,7 @@ import { GuidedExperienceBreaches } from "../server/getUserBreaches";
 
 export function getGuidedExperienceBreaches(
   subscriberBreaches: SubscriberBreach[],
-  emails: string[]
+  emails: string[],
 ): GuidedExperienceBreaches {
   const guidedExperienceBreaches: GuidedExperienceBreaches = {
     highRisk: {

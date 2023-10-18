@@ -4,7 +4,7 @@
 
 "use client";
 
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode } from "react";
 import Link from "next/link";
 import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./ExposureCard.module.scss";
@@ -27,6 +27,7 @@ import {
 } from "../../../utils/subscriberBreaches";
 import { FallbackLogo } from "../server/BreachLogo";
 import { BreachDataClass, DataBrokerDataClass } from "./ExposureCardDataClass";
+import { DataBrokerImage } from "./DataBrokerImage";
 
 export type Exposure = OnerepScanResultRow | SubscriberBreach;
 
@@ -40,8 +41,10 @@ export type ExposureCardProps = {
   exposureData: Exposure;
   locale: string;
   isPremiumBrokerRemovalEnabled: boolean;
+  isPremiumUser: boolean;
   resolutionCta: ReactNode;
-  isExpanded?: boolean;
+  isExpanded: boolean;
+  setExpanded: () => void;
 };
 
 export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
@@ -53,22 +56,17 @@ export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
 };
 
 export type ScanResultCardProps = {
-  exposureImg?: StaticImageData;
   scanResult: OnerepScanResultRow;
   locale: string;
   isPremiumBrokerRemovalEnabled: boolean;
   resolutionCta: ReactNode;
-  isExpanded?: boolean;
+  isPremiumUser: boolean;
+  isExpanded: boolean;
+  setExpanded: () => void;
 };
 const ScanResultCard = (props: ScanResultCardProps) => {
-  const { exposureImg, scanResult, locale, isPremiumBrokerRemovalEnabled } =
-    props;
-
+  const { scanResult, locale, isPremiumBrokerRemovalEnabled } = props;
   const l10n = useL10n();
-  const [exposureCardExpanded, setExposureCardExpanded] = useState(
-    props.isExpanded ?? false
-  );
-
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
@@ -84,7 +82,8 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         icon={<MultipleUsersIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-family-members")}
         num={scanResult.relatives.length}
-      />
+        isPremiumUser={props.isPremiumUser}
+      />,
     );
   }
   if (scanResult.phones.length > 0) {
@@ -95,7 +94,8 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         icon={<PhoneIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
         num={scanResult.phones.length}
-      />
+        isPremiumUser={props.isPremiumUser}
+      />,
     );
   }
   if (scanResult.emails.length > 0) {
@@ -106,7 +106,8 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         icon={<EmailIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-email")}
         num={scanResult.emails.length}
-      />
+        isPremiumUser={props.isPremiumUser}
+      />,
     );
   }
   if (scanResult.addresses.length > 0) {
@@ -117,10 +118,11 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         icon={<LocationPinIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-address")}
         num={scanResult.addresses.length}
-      />
+        isPremiumUser={props.isPremiumUser}
+      />,
     );
     // TODO: Add unit test when changing this code:
-    /* c8 ignore next 12 */
+    /* c8 ignore next 13 */
   } else {
     // "Other" item when none of the conditions above are met
     exposureCategoriesArray.push(
@@ -130,7 +132,8 @@ const ScanResultCard = (props: ScanResultCardProps) => {
         icon={<QuestionMarkCircle alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-other")}
         num={0}
-      />
+        isPremiumUser={props.isPremiumUser}
+      />,
     );
   }
 
@@ -145,26 +148,15 @@ const ScanResultCard = (props: ScanResultCardProps) => {
             <dd
               className={`${styles.hideOnMobile} ${styles.exposureImageWrapper}`}
             >
-              {/* While logo is not yet set, the fallback image is the first character of the exposure name */}
-              {
-                // TODO: Add unit test when changing this code:
-                /* c8 ignore next 7 */
-                exposureImg ? (
-                  <Image
-                    className={styles.exposureImage}
-                    alt=""
-                    src={exposureImg}
-                  />
-                ) : (
-                  <FallbackLogo name={scanResult.data_broker} />
-                )
-              }
+              <DataBrokerImage name={scanResult.data_broker} />
             </dd>
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-company")}
             </dt>
             <dd>
-              <span className={styles.exposureCompanyTitle}>
+              <span
+                className={`${styles.exposureCompanyTitle} ${styles.companyNameArea}`}
+              >
                 {scanResult.data_broker}
               </span>
             </dd>
@@ -191,16 +183,16 @@ const ScanResultCard = (props: ScanResultCardProps) => {
             className={styles.chevron}
             // TODO: Add unit test when changing this code:
             /* c8 ignore next */
-            onClick={() => setExposureCardExpanded(!exposureCardExpanded)}
+            onClick={props.setExpanded}
           >
             <ChevronDown
               // TODO: Add unit test when changing this code:
               /* c8 ignore next */
-              className={exposureCardExpanded ? styles.isOpen : ""}
+              className={props.isExpanded ? styles.isOpen : ""}
               alt={
                 // TODO: Add unit test when changing this code:
                 /* c8 ignore next 2 */
-                exposureCardExpanded
+                props.isExpanded
                   ? l10n.getString("chevron-up-alt")
                   : l10n.getString("chevron-down-alt")
               }
@@ -213,7 +205,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
           className={`${styles.exposureDetailsSection} ${
             // TODO: Add unit test when changing this code:
             /* c8 ignore next */
-            exposureCardExpanded ? styles.isOpen : ""
+            props.isExpanded ? styles.isOpen : ""
           }`}
         >
           <div>
@@ -222,11 +214,13 @@ const ScanResultCard = (props: ScanResultCardProps) => {
                 "exposure-card-description-info-for-sale-part-one",
                 {
                   elems: {
-                    data_broker_link: <a href={scanResult.link} />,
+                    data_broker_link: (
+                      <a href={scanResult.link} target="_blank" />
+                    ),
                   },
-                }
+                },
               )}
-              <a href={scanResult.link}>
+              <a href={scanResult.link} target="_blank">
                 <span className={styles.openInNewTab}>
                   <OpenInNew
                     alt={l10n.getString("open-in-new-tab-alt")}
@@ -236,7 +230,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
                 </span>
               </a>
               {l10n.getString(
-                "exposure-card-description-info-for-sale-part-two"
+                "exposure-card-description-info-for-sale-part-two",
               )}
             </p>
           </div>
@@ -269,16 +263,13 @@ export type SubscriberBreachCardProps = {
   subscriberBreach: SubscriberBreach;
   locale: string;
   resolutionCta: ReactNode;
-  isExpanded?: boolean;
+  isExpanded: boolean;
+  setExpanded: () => void;
 };
 const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
   const { exposureImg, subscriberBreach, locale } = props;
 
   const l10n = useL10n();
-  const [exposureCardExpanded, setExposureCardExpanded] = useState(
-    props.isExpanded ?? false
-  );
-
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
@@ -295,7 +286,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           key={dataClass}
           icon={<EmailIcon alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-email")}
-        />
+        />,
       );
     } else if (dataClass === "passwords") {
       exposureCategoriesArray.push(
@@ -304,7 +295,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           key={dataClass}
           icon={<PasswordIcon alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-password")}
-        />
+        />,
       );
     } else if (dataClass === "phone-numbers") {
       exposureCategoriesArray.push(
@@ -313,7 +304,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           key={dataClass}
           icon={<PhoneIcon alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
-        />
+        />,
       );
     } else if (dataClass === "ip-addresses") {
       exposureCategoriesArray.push(
@@ -322,7 +313,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           key={dataClass}
           icon={<QuestionMarkCircle alt="" width="13" height="13" />}
           exposureCategoryLabel={l10n.getString("exposure-card-ip-address")}
-        />
+        />,
       );
       // TODO: Add unit test when changing this code:
       /* c8 ignore next 12 */
@@ -335,7 +326,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           key={dataClass}
           icon={<QuestionMarkCircle alt="" width="13" height="13" />} // default icon for categories without a unique one
           exposureCategoryLabel={l10n.getString(dataClass)} // categories are localized in data-classes.ftl
-        />
+        />,
       );
     }
   });
@@ -370,7 +361,9 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
               {l10n.getString("exposure-card-label-company")}
             </dt>
             <dd>
-              <span className={styles.exposureCompanyTitle}>
+              <span
+                className={`${styles.exposureCompanyTitle} ${styles.companyNameArea}`}
+              >
                 {subscriberBreach.title}
               </span>
             </dd>
@@ -397,16 +390,16 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
             className={styles.chevron}
             // TODO: Add unit test when changing this code:
             /* c8 ignore next */
-            onClick={() => setExposureCardExpanded(!exposureCardExpanded)}
+            onClick={props.setExpanded}
           >
             <ChevronDown
               // TODO: Add unit test when changing this code:
               /* c8 ignore next */
-              className={exposureCardExpanded ? styles.isOpen : ""}
+              className={props.isExpanded ? styles.isOpen : ""}
               alt={
                 // TODO: Add unit test when changing this code:
                 /* c8 ignore next 2 */
-                exposureCardExpanded
+                props.isExpanded
                   ? l10n.getString("chevron-up-alt")
                   : l10n.getString("chevron-down-alt")
               }
@@ -419,7 +412,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           className={`${styles.exposureDetailsSection} ${
             // TODO: Add unit test when changing this code:
             /* c8 ignore next */
-            exposureCardExpanded ? styles.isOpen : ""
+            props.isExpanded ? styles.isOpen : ""
           }`}
         >
           <div>
@@ -436,9 +429,12 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
                       <Link href={`/breach-details/${subscriberBreach.name}`} />
                     ),
                   },
-                }
+                },
               )}
-              <a href={`/breach-details/${subscriberBreach.name}`}>
+              <a
+                href={`/breach-details/${subscriberBreach.name}`}
+                target="_blank"
+              >
                 <span className={styles.openInNewTab}>
                   <OpenInNew
                     alt={l10n.getString("open-in-new-tab-alt")}

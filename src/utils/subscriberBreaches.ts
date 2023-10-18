@@ -45,7 +45,7 @@ type SubscriberBreachMap = Record<number, SubscriberBreach>;
  */
 export async function getSubBreaches(
   subscriber: Subscriber,
-  allBreaches: (Breach | HibpLikeDbBreach)[]
+  allBreaches: (Breach | HibpLikeDbBreach)[],
 ) {
   const uniqueBreaches: SubscriberBreachMap = {};
 
@@ -72,7 +72,7 @@ export async function getSubBreaches(
         !breach.IsSpamList &&
         !breach.IsFabricated &&
         breach.IsVerified &&
-        breach.Domain !== ""
+        breach.Domain !== "",
     );
 
     // breach resolution
@@ -124,12 +124,14 @@ export async function getSubBreaches(
           const key = Object.keys(d)[0];
           if (key === BreachDataTypes.Email) {
             (curBreach.dataClassesEffected[index][key] as string[]).push(
-              email.email
+              email.email,
             );
           } else {
             (curBreach.dataClassesEffected[index][key] as number)++;
           }
         });
+        curBreach.isResolved =
+          curBreach.isResolved && subscriberBreach.isResolved;
       }
     }
   }

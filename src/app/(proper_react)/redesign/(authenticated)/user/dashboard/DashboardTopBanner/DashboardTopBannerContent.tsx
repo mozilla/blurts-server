@@ -10,7 +10,7 @@ import {
 } from "../getUserDashboardState";
 import {
   StepLink,
-  getRelevantGuidedSteps,
+  getNextGuidedStep,
 } from "../../../../../../functions/server/getRelevantGuidedSteps";
 import { ProgressCard } from "../../../../../../components/client/ProgressCard";
 import { Button } from "../../../../../../components/server/Button";
@@ -49,24 +49,26 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
   if (tabType === "fixed") {
     return (
       <ProgressCard
-        resolvedByYou={bannerData.dataBreachFixedExposuresNum}
-        autoRemoved={bannerData.dataBrokerFixedNum}
-        totalNumExposures={bannerData.totalExposures}
+        resolvedByYou={
+          bannerData.dataBrokerManuallyResolvedExposuresNum +
+          bannerData.dataBreachFixedExposuresNum
+        }
+        autoRemoved={
+          bannerData.dataBrokerFixedExposuresNum -
+          bannerData.dataBrokerManuallyResolvedExposuresNum +
+          bannerData.dataBrokerInProgressExposuresNum
+        }
+        inProgress={bannerData.dataBrokerInProgressExposuresNum}
+        totalNumExposures={
+          bannerData.dataBreachFixedExposuresNum +
+          bannerData.dataBrokerFixedExposuresNum +
+          bannerData.dataBrokerInProgressExposuresNum
+        }
       />
     );
   }
 
-  const relevantGuidedStep = getRelevantGuidedSteps(
-    stepDeterminationData
-  ).current;
-
-  // There should be a relevant next step for every user (even if it's just
-  // going back to the dashboard), so we can't hit this line in tests (and
-  // shouldn’t be able to in production either):
-  /* c8 ignore next 3 */
-  if (relevantGuidedStep === null) {
-    return null;
-  }
+  const relevantGuidedStep = getNextGuidedStep(stepDeterminationData);
 
   const contentProps = {
     relevantGuidedStep,
@@ -97,7 +99,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </h3>
             <p>
               {l10n.getString(
-                "dashboard-top-banner-non-us-no-exposures-found-description"
+                "dashboard-top-banner-non-us-no-exposures-found-description",
               )}
             </p>
             <div className={styles.cta}>
@@ -117,9 +119,14 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString(
                 "dashboard-exposures-breaches-scan-progress-description",
                 {
-                  exposures_total_num: bannerData.totalExposures,
-                  data_breach_total_num: bannerData.dataBreachTotalNum,
-                }
+                  exposures_unresolved_num:
+                    bannerData.totalExposures -
+                    bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBreachFixedExposuresNum -
+                    bannerData.dataBrokerInProgressExposuresNum,
+                  data_breach_unresolved_num:
+                    bannerData.dataBreachUnresolvedNum,
+                },
               )}
             </p>
             <div className={styles.cta}>
@@ -134,7 +141,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
           <>
             <h3>
               {l10n.getString(
-                "dashboard-top-banner-your-data-is-protected-title"
+                "dashboard-top-banner-your-data-is-protected-title",
               )}
             </h3>
             <p>
@@ -142,7 +149,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 "dashboard-top-banner-non-us-your-data-is-protected-description",
                 {
                   exposures_resolved_num: bannerData.totalExposures,
-                }
+                },
               )}
             </p>
             <div className={styles.cta}>
@@ -154,7 +161,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 variant="primary"
               >
                 {l10n.getString(
-                  "dashboard-top-banner-your-data-is-protected-cta"
+                  "dashboard-top-banner-your-data-is-protected-cta",
                 )}
               </Button>
             </div>
@@ -165,7 +172,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
           <>
             <h3>
               {l10n.getString(
-                "dashboard-top-banner-monitor-protects-your-even-more-title"
+                "dashboard-top-banner-monitor-protects-your-even-more-title",
               )}
             </h3>
             <p>
@@ -174,22 +181,22 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 {
                   data_broker_sites_total_num: parseInt(
                     process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-                    10
+                    10,
                   ),
-                }
+                },
               )}
             </p>
             <div className={styles.cta}>
               <Button href={relevantGuidedStep.href} small variant="primary">
                 {l10n.getString(
-                  "dashboard-top-banner-monitor-protects-your-even-more-cta"
+                  "dashboard-top-banner-monitor-protects-your-even-more-cta",
                 )}
               </Button>
             </div>
             <br />
             <a href="https://mozilla.org/products/monitor/how-it-works/">
               {l10n.getString(
-                "dashboard-top-banner-monitor-protects-your-even-more-learn-more"
+                "dashboard-top-banner-monitor-protects-your-even-more-learn-more",
               )}
             </a>
           </>
@@ -206,14 +213,14 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 {
                   data_broker_sites_total_num: parseInt(
                     process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-                    10
+                    10,
                   ),
-                }
+                },
               )}
             </p>
             <p>
               {l10n.getString(
-                "dashboard-top-banner-no-exposures-found-upsell-info"
+                "dashboard-top-banner-no-exposures-found-upsell-info",
               )}
             </p>
             <div className={styles.cta}>
@@ -233,9 +240,13 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString(
                 "dashboard-top-banner-protect-your-data-description",
                 {
-                  data_breach_total_num: bannerData.totalExposures,
-                  data_broker_total_num: bannerData.dataBrokerTotalNum,
-                }
+                  data_breach_unresolved_num:
+                    bannerData.dataBreachUnresolvedNum,
+                  data_broker_unresolved_num:
+                    bannerData.dataBrokerTotalNum -
+                    bannerData.dataBrokerFixedNum -
+                    bannerData.dataBrokerInProgressNum,
+                },
               )}
             </p>
             <div className={styles.cta}>
@@ -250,24 +261,25 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
           <>
             <h3>
               {l10n.getString(
-                "dashboard-top-banner-lets-keep-protecting-title"
+                "dashboard-top-banner-lets-keep-protecting-title",
               )}
             </h3>
             <p>
               {l10n.getString(
                 "dashboard-top-banner-lets-keep-protecting-description",
                 {
-                  remaining_exposures_total_num:
+                  exposures_unresolved_num:
                     bannerData.totalExposures -
                     bannerData.dataBreachFixedExposuresNum -
-                    bannerData.dataBrokerFixedExposuresNum,
-                }
+                    bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBrokerInProgressExposuresNum,
+                },
               )}
             </p>
             <div className={styles.cta}>
               <Button href={relevantGuidedStep.href} small variant="primary">
                 {l10n.getString(
-                  "dashboard-top-banner-lets-keep-protecting-cta"
+                  "dashboard-top-banner-lets-keep-protecting-cta",
                 )}
               </Button>
             </div>
@@ -278,7 +290,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
           <>
             <h3>
               {l10n.getString(
-                "dashboard-top-banner-your-data-is-protected-title"
+                "dashboard-top-banner-your-data-is-protected-title",
               )}
             </h3>
             <p>
@@ -286,7 +298,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 "dashboard-top-banner-your-data-is-protected-all-fixed-description",
                 {
                   starting_exposure_total_num: bannerData.totalExposures,
-                }
+                },
               )}
             </p>
             <div className={styles.cta}>
@@ -303,24 +315,25 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
           <>
             <h3>
               {l10n.getString(
-                "dashboard-top-banner-lets-keep-protecting-title"
+                "dashboard-top-banner-lets-keep-protecting-title",
               )}
             </h3>
             <p>
               {l10n.getString(
                 "dashboard-top-banner-lets-keep-protecting-description",
                 {
-                  remaining_exposures_total_num:
+                  exposures_unresolved_num:
                     bannerData.totalExposures -
                     bannerData.dataBreachFixedExposuresNum -
-                    bannerData.dataBrokerFixedExposuresNum,
-                }
+                    bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBrokerInProgressExposuresNum,
+                },
               )}
             </p>
             <div className={styles.cta}>
               <Button href={relevantGuidedStep.href} small variant="primary">
                 {l10n.getString(
-                  "dashboard-top-banner-lets-keep-protecting-cta"
+                  "dashboard-top-banner-lets-keep-protecting-cta",
                 )}
               </Button>
             </div>
@@ -338,9 +351,9 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 {
                   data_broker_sites_total_num: parseInt(
                     process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-                    10
+                    10,
                   ),
-                }
+                },
               )}
             </p>
             <div className={styles.cta}>
@@ -355,7 +368,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
           <>
             <h3>
               {l10n.getString(
-                "dashboard-top-banner-your-data-is-protected-title"
+                "dashboard-top-banner-your-data-is-protected-title",
               )}
             </h3>
             <p>
@@ -363,7 +376,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 "dashboard-top-banner-your-data-is-protected-description",
                 {
                   starting_exposure_total_num: bannerData.totalExposures,
-                }
+                },
               )}
             </p>
             <div className={styles.cta}>
@@ -375,13 +388,13 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 variant="primary"
               >
                 {l10n.getString(
-                  "dashboard-top-banner-your-data-is-protected-cta"
+                  "dashboard-top-banner-your-data-is-protected-cta",
                 )}
               </Button>
             </div>
           </>
         );
-      case "UsUserPremiumScanInProgressNoExposures":
+      case "UsUserScanInProgressNoBreaches":
         return (
           <>
             <h3>
@@ -389,20 +402,31 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </h3>
             <p>
               {l10n.getString(
-                "dashboard-top-banner-scan-in-progress-description",
+                "dashboard-top-banner-scan-in-progress-unresolved-description",
                 {
-                  data_breach_total_num: bannerData.totalExposures,
-                }
+                  unresolved_exposures:
+                    bannerData.totalExposures -
+                    bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBreachFixedExposuresNum -
+                    bannerData.dataBrokerInProgressExposuresNum,
+                },
               )}
               <br />
               <br />
               {l10n.getString(
-                "dashboard-top-banner-scan-in-progress-fix-later-hint"
+                "dashboard-top-banner-scan-in-progress-no-results-info",
               )}
             </p>
+            <div className={styles.cta}>
+              <Button href="/redesign/user/settings" small variant="primary">
+                {l10n.getString(
+                  "dashboard-top-banner-scan-in-progress-no-results-cta",
+                )}
+              </Button>
+            </div>
           </>
         );
-      case "UsUserPremiumScanInProgressUnresolvedExposures":
+      case "UsUserScanInProgressUnresolvedBreaches":
         return (
           <>
             <h3>
@@ -410,20 +434,58 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </h3>
             <p>
               {l10n.getString(
-                "dashboard-top-banner-scan-in-progress-description",
+                "dashboard-top-banner-scan-in-progress-unresolved-description",
                 {
-                  data_breach_total_num: bannerData.totalExposures,
-                }
+                  unresolved_exposures:
+                    bannerData.totalExposures -
+                    bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBreachFixedExposuresNum -
+                    bannerData.dataBrokerInProgressExposuresNum,
+                },
               )}
               <br />
               <br />
               {l10n.getString(
-                "dashboard-top-banner-scan-in-progress-fix-now-hint"
+                "dashboard-top-banner-scan-in-progress-fix-now-hint",
               )}
             </p>
             <div className={styles.cta}>
               <Button href={relevantGuidedStep.href} small variant="primary">
-                {l10n.getString("dashboard-top-banner-scan-in-progress-cta")}
+                {l10n.getString(
+                  "dashboard-top-banner-scan-in-progress-results-found-cta",
+                )}
+              </Button>
+            </div>
+          </>
+        );
+      case "UsUserScanInProgressResolvedBreaches":
+        return (
+          <>
+            <h3>
+              {l10n.getString("dashboard-top-banner-scan-in-progress-title")}
+            </h3>
+            <p>
+              {l10n.getString(
+                "dashboard-top-banner-your-data-scan-in-progress-all-fixed-description",
+                {
+                  starting_exposure_total_num:
+                    bannerData.totalExposures -
+                    bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBreachFixedExposuresNum -
+                    bannerData.dataBrokerInProgressExposuresNum,
+                },
+              )}
+              <br />
+              <br />
+              {l10n.getString(
+                "dashboard-top-banner-scan-in-progress-no-results-info",
+              )}
+            </p>
+            <div className={styles.cta}>
+              <Button href={relevantGuidedStep.href} small variant="primary">
+                {l10n.getString(
+                  "dashboard-top-banner-scan-in-progress-no-results-cta",
+                )}
               </Button>
             </div>
           </>
@@ -436,10 +498,13 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
   }
 
   return (
-    <div className={styles.explainerContentWrapper}>
+    <section
+      className={styles.explainerContentWrapper}
+      aria-label={l10n.getString("dashboard-top-banner-section-label")}
+    >
       <div className={styles.explainerContent}>
         {getDashboardBannerContent({ userDashboardState, relevantGuidedStep })}
       </div>
-    </div>
+    </section>
   );
 };

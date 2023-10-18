@@ -7,7 +7,7 @@ import { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { BreachDataTypes, HighRiskDataTypes } from "../universal/breach";
 
-export type InputData = {
+export type StepDeterminationData = {
   user: Session["user"];
   countryCode: string;
   latestScanData: LatestOnerepScanData | null;
@@ -34,7 +34,7 @@ export const stepLinks = [
     id: "HighRiskBankAccount",
   },
   {
-    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/pin-number",
+    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/pin",
     id: "HighRiskPin",
   },
   {
@@ -69,11 +69,6 @@ export type StepLinkWithStatus = (typeof stepLinks)[number] & {
   completed: boolean;
 };
 
-export type OutputData = {
-  current: StepLink | null;
-  skipTarget: StepLink | null;
-};
-
 export function isGuidedResolutionInProgress(stepId: StepLink["id"]) {
   const inProgressStepIds = stepLinks
     .filter((step) => step.id !== "Scan" && step.id !== "Done")
@@ -81,38 +76,10 @@ export function isGuidedResolutionInProgress(stepId: StepLink["id"]) {
   return inProgressStepIds.includes(stepId);
 }
 
-export function getRelevantGuidedSteps(
-  data: InputData,
-  afterStep?: StepLink["id"]
-): OutputData {
-  const current = getNextGuidedStep(data, afterStep);
-
-  // There should be a relevant current step for every user (even if it's just
-  // going back to the dashbord), so we can't hit this line in tests (and
-  // shouldn't be able to in production either):
-  /* c8 ignore next 11 */
-  if (current === null) {
-    console.error(
-      typeof afterStep === "string"
-        ? `Could not determine the current step for the current user, coming from step [${afterStep}].`
-        : "Could not determine the current step for the current user."
-    );
-    return {
-      current: null,
-      skipTarget: null,
-    };
-  }
-
-  return {
-    current: current,
-    skipTarget: getNextGuidedStep(data, current.id),
-  };
-}
-
-function getNextGuidedStep(
-  data: InputData,
-  afterStep?: StepLink["id"]
-): StepLink | null {
+export function getNextGuidedStep(
+  data: StepDeterminationData,
+  afterStep?: StepLink["id"],
+): StepLink {
   // Resisting the urge to add a state machine... ^.^
   const stepLinkStatuses = getGuidedStepStatuses(data);
   const fromIndex =
@@ -121,16 +88,22 @@ function getNextGuidedStep(
     return stepLink.eligible && !stepLink.completed;
   });
 
-  return nextStep ?? null;
+  // In practice, there should always be a next step (at least "Done").
+  // If for any reason there is not, `href` will be undefined, in which case
+  // links will just not do anything.
+  /* c8 ignore next */
+  return nextStep ?? ({ id: "InvalidStep" } as never);
 }
 
-export function getGuidedStepStatuses(data: InputData): StepLinkWithStatus[] {
+export function getGuidedStepStatuses(
+  data: StepDeterminationData,
+): StepLinkWithStatus[] {
   return stepLinks.map((stepLink) => getStepWithStatus(data, stepLink));
 }
 
 function getStepWithStatus(
-  data: InputData,
-  stepLink: StepLink
+  data: StepDeterminationData,
+  stepLink: StepLink,
 ): StepLinkWithStatus {
   return {
     ...stepLink,
@@ -139,7 +112,10 @@ function getStepWithStatus(
   };
 }
 
-function isEligibleFor(data: InputData, stepId: StepLink["id"]): boolean {
+function isEligibleFor(
+  data: StepDeterminationData,
+  stepId: StepLink["id"],
+): boolean {
   if (stepId === "Scan") {
     return data.countryCode === "us";
   }
@@ -151,7 +127,7 @@ function isEligibleFor(data: InputData, stepId: StepLink["id"]): boolean {
 
   if (
     ["HighRiskCreditCard", "HighRiskBankAccount", "HighRiskPin"].includes(
-      stepId
+      stepId,
     )
   ) {
     // Anyone can view/resolve their high risk data breaches
@@ -160,7 +136,7 @@ function isEligibleFor(data: InputData, stepId: StepLink["id"]): boolean {
 
   if (
     ["LeakedPasswordsPassword", "LeakedPasswordsSecurityQuestion"].includes(
-      stepId
+      stepId,
     )
   ) {
     // Anyone can view/resolve their leaked passwords
@@ -169,7 +145,7 @@ function isEligibleFor(data: InputData, stepId: StepLink["id"]): boolean {
 
   if (
     ["SecurityTipsPhone", "SecurityTipsEmail", "SecurityTipsIp"].includes(
-      stepId
+      stepId,
     )
   ) {
     // Anyone can view security tips
@@ -185,7 +161,10 @@ function isEligibleFor(data: InputData, stepId: StepLink["id"]): boolean {
   return false as never;
 }
 
-function hasCompleted(data: InputData, stepId: StepLink["id"]): boolean {
+function hasCompleted(
+  data: StepDeterminationData,
+  stepId: StepLink["id"],
+): boolean {
   if (stepId === "Scan") {
     const hasRunScan =
       typeof data.latestScanData?.scan === "object" &&
@@ -195,17 +174,17 @@ function hasCompleted(data: InputData, stepId: StepLink["id"]): boolean {
         data.latestScanData?.scan?.onerep_scan_status === "in_progress") &&
       data.latestScanData.results.every(
         (scanResult) =>
-          scanResult.manually_resolved || scanResult.status !== "new"
+          scanResult.manually_resolved || scanResult.status !== "new",
       );
     return hasRunScan && hasResolvedAllScanResults;
   }
 
   function isBreachResolved(
-    dataClass: (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
+    dataClass: (typeof BreachDataTypes)[keyof typeof BreachDataTypes],
   ): boolean {
     return !data.subscriberBreaches.some((breach) => {
       const affectedDataClasses = breach.dataClassesEffected.map(
-        (affectedDataClass) => Object.keys(affectedDataClass)[0]
+        (affectedDataClass) => Object.keys(affectedDataClass)[0],
       );
       return (
         affectedDataClasses.includes(dataClass) &&

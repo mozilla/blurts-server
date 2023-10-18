@@ -7,20 +7,23 @@ import { it, expect } from "@jest/globals";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import Meta, {
-  Passwords,
-  SecurityQuestions,
-} from "./LeakedPasswordsLayout.stories";
+  PasswordsStory,
+  SecurityQuestionsStory,
+} from "./LeakedPasswords.stories";
 
 it("leaked passwords component passes the axe accessibility test suite", async () => {
-  const ComposedHighRiskDataBreachComponent = composeStory(Passwords, Meta);
+  const ComposedHighRiskDataBreachComponent = composeStory(
+    PasswordsStory,
+    Meta,
+  );
   const { container } = render(<ComposedHighRiskDataBreachComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("security questions component passes the axe accessibility test suite", async () => {
   const ComposedHighRiskDataBreachComponent = composeStory(
-    SecurityQuestions,
-    Meta
+    SecurityQuestionsStory,
+    Meta,
   );
   const { container } = render(<ComposedHighRiskDataBreachComponent />);
   expect(await axe(container)).toHaveNoViolations();

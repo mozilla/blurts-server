@@ -12,7 +12,7 @@ import { captureException } from "@sentry/node";
  * @returns
  */
 export async function getExperiments(
-  userId: string | undefined
+  userId: string | undefined,
 ): Promise<unknown> {
   let features;
   if (["stage", "production"].includes(process.env.APP_ENV ?? "local")) {
