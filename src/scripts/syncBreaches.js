@@ -19,7 +19,6 @@ import Sentry from "@sentry/nextjs"
 import { req, formatDataClassesArray } from '../utils/hibp.js'
 import { getAllBreaches, upsertBreaches, updateBreachFaviconUrl} from '../db/tables/breaches.js'
 import { uploadToS3 } from './s3.js'
-import { logger } from "../app/functions/server/logging.js";
 
 const SENTRY_SLUG = "cron-sync-breaches"
 
@@ -38,7 +37,7 @@ export async function getBreachIcons(breaches) {
 
   // make logofolder if it doesn't exist
   const logoFolder = os.tmpdir();
-  logger.log(`Logo folder: ${logoFolder}`)
+  console.log(`Logo folder: ${logoFolder}`)
 
   // read existing logos
   const existingLogos = await readdir(logoFolder);
@@ -46,23 +45,23 @@ export async function getBreachIcons(breaches) {
   (await Promise.allSettled(
     breaches.map(async ({Domain: breachDomain, Name: breachName}) => {
       if (!breachDomain || breachDomain.length == 0) {
-        logger.log('empty domain: ', breachName)
+        console.log('empty domain: ', breachName)
         await updateBreachFaviconUrl(breachName, null)
         return;
       }
       const logoFilename = breachDomain.toLowerCase() + ".ico";
       const logoPath = pathResolve(logoFolder, logoFilename);
       if (existingLogos.includes(logoFilename)) {
-        logger.log('skipping ', logoFilename)
+        console.log('skipping ', logoFilename)
         await updateBreachFaviconUrl(breachName, `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`)
         return;
       }
-      logger.log(`fetching: ${logoFilename}`)
+      console.log(`fetching: ${logoFilename}`)
       const res = await fetch(
         `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`);
       if (res.status !== 200) {
         // update logo path with null
-        logger.log(`Logo does not exist for: ${breachName} ${breachDomain}`)
+        console.log(`Logo does not exist for: ${breachName} ${breachDomain}`)
         await updateBreachFaviconUrl(breachName, null)
         return;
       }
@@ -89,8 +88,8 @@ for (const breach of breachesResponse) {
   if (!isValidBreach(breach)) throw new Error('Breach data structure is not valid', JSON.stringify(breach))
 }
 
-logger.log('Breaches found: ', breaches.length)
-logger.log('Unique breaches based on Name + BreachDate', seen.size)
+console.log('Breaches found: ', breaches.length)
+console.log('Unique breaches based on Name + BreachDate', seen.size)
 
 // sanity check: no duplicate breaches with Name + BreachDate
 if (seen.size !== breaches.length) {
@@ -100,7 +99,7 @@ if (seen.size !== breaches.length) {
 
   // get
   const result = await getAllBreaches()
-  logger.log("Number of breaches in the database after upsert:", result.length)
+  console.log("Number of breaches in the database after upsert:", result.length)
 }
 
 await getBreachIcons(breaches)

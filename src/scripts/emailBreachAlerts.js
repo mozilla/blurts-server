@@ -2,8 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { logger } from "../app/functions/server/logging.js";
-
 import Sentry from "@sentry/nextjs"
 import { acceptedLanguages, negotiateLanguages } from "@fluent/langneg";
 import { localStorage } from '../utils/localStorage.js'
@@ -69,11 +67,11 @@ export async function poll(subClient, receivedMessages) {
 
   // Process the messages. Skip any that cannot be processed, and do not mark as acknowledged.
   for (const message of receivedMessages) {
-    logger.info(`Received message: ${message.message.data}`);
+    console.log(`Received message: ${message.message.data}`);
     const data = JSON.parse(message.message.data);
 
     if (!(data.breachName && data.hashPrefix && data.hashSuffixes)) {
-      logger.error(
+      console.error(
         "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes."
       );
       continue;
@@ -120,7 +118,7 @@ export async function poll(subClient, receivedMessages) {
         .map((condition) => condition.logId)
         .join(", ");
 
-      logger.info("Breach alert email was not sent.", {
+      console.info("Breach alert email was not sent.", {
         name: breachAlert.Name,
         reason: `The following conditions were not satisfied: ${conditionLogIds}.`,
       });
@@ -143,7 +141,7 @@ export async function poll(subClient, receivedMessages) {
       const emailAddresses = await getEmailAddressesByHashes(hashes);
       const recipients = subscribers.concat(emailAddresses);
 
-      logger.info(EmailTemplateType.Notification, {
+      console.info(EmailTemplateType.Notification, {
         breachAlertName: breachAlert.Name,
         length: recipients.length,
       });
@@ -152,7 +150,7 @@ export async function poll(subClient, receivedMessages) {
       const notifiedRecipients = [];
 
       for (const recipient of recipients) {
-        logger.info("notify", { recipient: recipient.primary_sha1 });
+        console.info("notify", { recipient });
 
         // Get subscriber ID from:
         // - `subscriber_id`: if `email_addresses` record
@@ -200,7 +198,7 @@ export async function poll(subClient, receivedMessages) {
         });
       }
 
-      logger.info("notified", { length: notifiedRecipients.length });
+      console.info("notified", { length: notifiedRecipients.length });
 
       subClient.acknowledge({
         subscription: formattedSubscription,
@@ -208,7 +206,7 @@ export async function poll(subClient, receivedMessages) {
       });
     /* c8 ignore start */
     } catch (error) {
-      logger.error(`Notifying subscribers of breach failed: ${error}`);
+      console.error(`Notifying subscribers of breach failed: ${error}`);
     }
     /* c8 ignore stop */
   }
@@ -218,7 +216,7 @@ export async function poll(subClient, receivedMessages) {
 async function pullMessages() {
   let options = {};
   if (process.env.NODE_ENV === "development") {
-    logger.debug("Dev mode, connecting to local pubsub emulator");
+    console.debug("Dev mode, connecting to local pubsub emulator");
     options = {
       servicePath: "localhost",
       port: "8085",
@@ -235,7 +233,7 @@ async function pullMessages() {
 
   // If there are no messages, this will wait until the default timeout for the pull API.
   // @see https://cloud.google.com/pubsub/docs/pull
-  logger.debug("polling pubsub...");
+  console.debug("polling pubsub...");
   const [response] = await subClient.pull({
     subscription: formattedSubscription,
     maxMessages,
@@ -263,7 +261,7 @@ if (process.env.NODE_ENV !== "test") {
         status: "ok",
       });
     })
-    .catch((err) => logger.error(err))
+    .catch((err) => console.error(err))
     .finally(async() => {
       // Tear down knex connection pools
       await knexSubscribers.destroy();
