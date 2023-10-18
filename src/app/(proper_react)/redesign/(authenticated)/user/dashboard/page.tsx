@@ -9,7 +9,10 @@ import { View } from "./View";
 import { authOptions } from "../../../../../api/utils/auth";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../functions/server/getUserBreaches";
-import { canSubscribeToPremium } from "../../../../../functions/universal/user";
+import {
+  canSubscribeToPremium,
+  hasPremium,
+} from "../../../../../functions/universal/user";
 import {
   getLatestOnerepScanResults,
   getScansCountForProfile,
@@ -24,6 +27,7 @@ import getPremiumSubscriptionUrl from "../../../../../functions/server/getPremiu
 import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
 import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 import { parseIso8601Datetime } from "../../../../../../utils/parse";
+
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
@@ -48,11 +52,20 @@ export default async function DashboardPage() {
       Number.parseInt(brokerScanReleaseDateParts[2] ?? "05", 10),
     ),
   );
-  if (
-    !profileId &&
-    canSubscribeToPremium({ user: session?.user, countryCode: countryCode }) &&
+
+  const hasRunScan = typeof profileId === "number";
+  const isNewUser =
     (parseIso8601Datetime(session.user.subscriber.created_at)?.getTime() ?? 0) >
-      brokerScanReleaseDate.getTime()
+    brokerScanReleaseDate.getTime();
+
+  if (
+    !hasRunScan &&
+    (hasPremium(session.user) ||
+      (isNewUser &&
+        canSubscribeToPremium({
+          user: session.user,
+          countryCode: countryCode,
+        })))
   ) {
     return redirect("/redesign/user/welcome/");
   }
