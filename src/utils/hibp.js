@@ -2,7 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { logger } from '../app/functions/server/logging';
 import AppConstants from '../appConstants.js'
 import { getAllBreaches, upsertBreaches, knex } from '../db/tables/breaches.js'
 import { InternalServerError } from '../utils/error.js'
@@ -48,7 +47,7 @@ async function _throttledFetch (url, reqOptions, tryCount = 1) {
         // 404 can mean "no results", return undefined response
         return undefined
       case 429:
-        logger.info('_throttledFetch', { err: 'Error 429, tryCount: ' + tryCount })
+        console.info('_throttledFetch', { err: 'Error 429, tryCount: ' + tryCount })
         // @ts-ignore TODO: Explicitly parse into a number
         if (tryCount >= HIBP_THROTTLE_MAX_TRIES) {
           throw new InternalServerError(getMessage('error-hibp-throttled'))
@@ -62,7 +61,7 @@ async function _throttledFetch (url, reqOptions, tryCount = 1) {
         throw new InternalServerError(`bad response: ${response.status}`)
     }
   } catch (err) {
-    logger.error('_throttledFetch', { err })
+    console.error('_throttledFetch', { err })
     throw new InternalServerError(getMessage('error-hibp-connect'))
   }
 }
@@ -140,7 +139,7 @@ async function getAllBreachesFromDb () {
   try {
     dbBreaches = await getAllBreaches()
   } catch (e) {
-    logger.error('getAllBreachesFromDb', 'No breaches exist in the database: ' + e)
+    console.error('getAllBreachesFromDb', 'No breaches exist in the database: ' + e)
     return dbBreaches
   }
 
@@ -177,12 +176,12 @@ async function getAllBreachesFromDb () {
 async function loadBreachesIntoApp (app) {
   // attempt to fetch breaches from the "breaches" database table
   const breaches = await getAllBreachesFromDb()
-  logger.debug('loadBreachesIntoApp', `loaded breaches from database: ${breaches.length}`)
+  console.debug('loadBreachesIntoApp', `loaded breaches from database: ${breaches.length}`)
 
   // if "breaches" table does not return results, fall back to HIBP request
   if (breaches?.length < 1) {
     const breachesResponse = await req('/breaches')
-    logger.debug('loadBreachesIntoApp', `loaded breaches from HIBP: ${breachesResponse.length}`)
+    console.debug('loadBreachesIntoApp', `loaded breaches from HIBP: ${breachesResponse.length}`)
 
     for (const breach of breachesResponse) {
       breach.DataClasses = formatDataClassesArray(breach.DataClasses)
@@ -200,7 +199,7 @@ async function loadBreachesIntoApp (app) {
   app.locals.breachLogoMap = new Map()
   app.locals.breaches = breaches
   app.locals.breachesLoadedDateTime = Date.now()
-  logger.info('done-loading-breaches', 'great success 👍')
+  console.info('done-loading-breaches', 'great success 👍')
 }
 /* c8 ignore stop */
 
