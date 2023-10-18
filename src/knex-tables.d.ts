@@ -261,15 +261,11 @@ declare module "knex/types/tables" {
     breach_id: number;
     appeared: boolean;
     notified: boolean;
-    email: string | null;
+    email: string;
     notification_type: string;
     created_at: Date;
     updated_at: Date;
   }
-  type EmailNotificationOptionalColumns = Extract<
-    keyof EmailNotificationRow,
-    "email"
-  >;
   type EmailNotificationAutoInsertedColumns = Extract<
     keyof EmailNotificationRow,
     "id" | "created_at" | "updated_at"
@@ -366,12 +362,9 @@ declare module "knex/types/tables" {
 
     email_notifications: Knex.CompositeTableType<
       EmailNotificationRow,
-      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
-      Omit<
-        EmailNotificationRow,
-        EmailAddressAutoInsertedColumns | EmailNotificationOptionalColumns
-      > &
-        Partial<Pick<EmailNotificationRow, EmailNotificationOptionalColumns>>,
+      // On updates, auto-generated columns cannot be set:
+      Omit<EmailNotificationRow, EmailAddressAutoInsertedColumns> &
+        Partial<EmailNotificationRow>,
       // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
       Partial<Omit<EmailNotificationRow, "id" | "created_at">> &
         Pick<EmailNotificationRow, "updated_at">

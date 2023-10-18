@@ -14,7 +14,7 @@ export type EmailNotification = {
   breachesId: number;
   subscriberId: number;
   notified?: boolean;
-  email?: string;
+  email: string;
   notificationType: EmailNotificationType;
 };
 
@@ -31,6 +31,7 @@ export async function getAllEmailNotificationsForSubscriber(
 export async function getEmailNotification(
   subscriberId: number,
   breachId: number,
+  email: string,
 ): Promise<EmailNotificationRow | null> {
   logger.info(
     `getEmailNotification for subscriber: ${subscriberId}, breach: ${breachId}`,
@@ -38,6 +39,7 @@ export async function getEmailNotification(
   const res = await knex("email_notifications")
     .where("subscriber_id", subscriberId)
     .andWhere("breach_id", breachId)
+    .andWhere("email", email)
     .returning("*");
   if (res.length > 1) {
     logger.error(
@@ -49,6 +51,18 @@ export async function getEmailNotification(
   return res?.[0] || null;
 }
 
+export async function getEmailNotificationSubscribersForBreach(
+  breachId: number,
+): Promise<number[]> {
+  logger.info(
+    `getEmailNotificationSubscribersForBreach for breach: ${breachId}`,
+  );
+  const res = await knex("email_notifications")
+    .where("breach_id", breachId)
+    .returning("subscriber_id");
+  return res.map((row) => row.subscriber_id);
+}
+
 export async function addEmailNotification(
   newNotification: EmailNotification,
 ): Promise<EmailNotificationRow> {
@@ -58,7 +72,7 @@ export async function addEmailNotification(
     breach_id: newNotification.breachesId,
     appeared: true,
     notified: newNotification.notified || false,
-    email: newNotification.email || null,
+    email: newNotification.email,
     notification_type: newNotification.notificationType,
   };
 
@@ -66,4 +80,22 @@ export async function addEmailNotification(
     .insert(emailNotificationDb)
     .returning("*");
   return res[0] as EmailNotificationRow;
+}
+
+export async function markEmailAsNotified(
+  subscriberId: number,
+  breachId: number,
+  email: string,
+) {
+  logger.info(`markEmailAsNotified for breach: ${breachId}`);
+  await knex("email_notifications")
+    .where("subscriber_id", subscriberId)
+    .andWhere("breach_id", breachId)
+    .andWhere("email", email)
+    .update({
+      notified: true,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
+    });
 }

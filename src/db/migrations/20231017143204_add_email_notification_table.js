@@ -14,12 +14,13 @@ export async function up(knex) {
       table.integer("breach_id").references("breaches.id").notNullable();
       table.boolean("appeared").notNullable().defaultTo(true);
       table.boolean("notified").notNullable().defaultTo(false);
-      table.string("email"); //optional email
+      table.string("email").notNullable()
       table.string("notification_type").notNullable().defaultTo("incident"); // incident, monthly
       table.timestamp("created_at").defaultTo(knex.fn.now());
       table.timestamp("updated_at").defaultTo(knex.fn.now());
       table.index("subscriber_id");
       table.index("breach_id");
+      table.unique(["subscriber_id", "breach_id", "email"]); // unique composite key
     });
 }
 
