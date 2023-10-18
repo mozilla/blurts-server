@@ -7,7 +7,7 @@ import { Readable } from 'stream';
 import { finished } from 'stream/promises';
 import "dotenv/config"
 
-import { logger } from "../app/functions/server/logging";
+import { logger } from "../app/functions/server/logging.js";
 
 const dataPath = "./locationAutocompleteData.json";
 

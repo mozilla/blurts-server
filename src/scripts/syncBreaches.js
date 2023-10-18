@@ -19,7 +19,7 @@ import Sentry from "@sentry/nextjs"
 import { req, formatDataClassesArray } from '../utils/hibp.js'
 import { getAllBreaches, upsertBreaches, updateBreachFaviconUrl} from '../db/tables/breaches.js'
 import { uploadToS3 } from './s3.js'
-import { logger } from "../app/functions/server/logging";
+import { logger } from "../app/functions/server/logging.js";
 
 const SENTRY_SLUG = "cron-sync-breaches"
 

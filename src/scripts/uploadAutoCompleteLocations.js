@@ -29,7 +29,7 @@ import path from "path";
 import fs from "fs";
 import AdmZip from "adm-zip";
 
-import { logger } from "../app/functions/server/logging";
+import { logger } from "../app/functions/server/logging.js";
 
 const REMOTE_DATA_URL = "https://download.geonames.org/export/dump";
 const DATA_COUNTRY_CODE = "US";
