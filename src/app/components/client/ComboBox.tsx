@@ -29,7 +29,7 @@ function ComboBox(props: ComboBoxProps) {
         listBoxRef,
         popoverRef,
       },
-      state
+      state,
     );
   const isInvalid = validationState === "invalid";
   const showError = errorMessage && isInvalid;

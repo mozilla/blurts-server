@@ -57,7 +57,7 @@ settings-deactivate-account-info = You can deactivate { -product-short-name } by
 settings-deactivate-account-info-2 = You can deactivate { -product-short-name } by deleting your { -brand-mozilla-account }.
 # Deprecated
 settings-fxa-link-label = Go to { -brand-firefox } Settings
-settings-fxa-link-label-2 = Go to { -brand-mozilla } Settings
+settings-fxa-link-label-3 = Go to { -brand-mozilla-account } settings
 
 ## Add email dialog
 

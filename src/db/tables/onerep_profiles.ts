@@ -11,7 +11,7 @@ const knex = initKnex(knexConfig);
 
 export async function setProfileDetails(
   onerepProfileId: number,
-  profileData: CreateProfileRequest
+  profileData: CreateProfileRequest,
 ) {
   await knex("onerep_profiles").insert({
     onerep_profile_id: onerepProfileId,

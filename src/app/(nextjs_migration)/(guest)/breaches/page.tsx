@@ -83,7 +83,7 @@ export default async function PublicScan() {
                   new Date(a.AddedDate).getTime() <
                   new Date(b.AddedDate).getTime()
                     ? 1
-                    : -1
+                    : -1,
                 )
                 .map((breach) => (
                   <BreachCard
@@ -124,7 +124,7 @@ function BreachCard(props: { breach: HibpLikeDbBreach | Breach }) {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
-                }
+                },
               )}
             </dd>
           </div>
@@ -133,7 +133,7 @@ function BreachCard(props: { breach: HibpLikeDbBreach | Breach }) {
             <dd>
               {formatList(
                 props.breach.DataClasses.map((a: string) => l10n.getString(a)),
-                getLocale(l10n)
+                getLocale(l10n),
               )}
             </dd>
           </div>

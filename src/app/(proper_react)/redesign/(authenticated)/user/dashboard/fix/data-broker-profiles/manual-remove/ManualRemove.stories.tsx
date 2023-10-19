@@ -28,7 +28,7 @@ const mockedScan: OnerepScanRow = {
 const mockedScanData: LatestOnerepScanData = {
   scan: mockedScan,
   results: [...Array(5)].map(() =>
-    createRandomScanResult({ status: "new", manually_resolved: false })
+    createRandomScanResult({ status: "new", manually_resolved: false }),
   ),
 };
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());

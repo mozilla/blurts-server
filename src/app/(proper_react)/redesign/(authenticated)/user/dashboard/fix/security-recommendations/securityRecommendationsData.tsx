@@ -170,7 +170,7 @@ function getSecurityRecommendationsByType({
   ];
 
   return securityRecommendationsData.find(
-    (content) => content.type === dataType
+    (content) => content.type === dataType,
   );
 }
 

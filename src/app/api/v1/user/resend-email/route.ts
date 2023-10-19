@@ -4,6 +4,8 @@
 
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
+
+import { logger } from "../../../../functions/server/logging";
 import AppConstants from "../../../../../appConstants";
 import { getSubscriberByEmail } from "../../../../../db/tables/subscribers";
 import { getUserEmails } from "../../../../../db/tables/emailAddresses";
@@ -26,7 +28,7 @@ export async function POST(req: NextRequest) {
       const existingEmail = await getUserEmails(subscriber.id);
 
       const filteredEmail = existingEmail.filter(
-        (a) => a.email === emailId && a.subscriber_id === subscriber.id
+        (a) => a.email === emailId && a.subscriber_id === subscriber.id,
       );
 
       if (!filteredEmail) {
@@ -35,7 +37,7 @@ export async function POST(req: NextRequest) {
             success: false,
             message: l10n.getString("user-verify-token-error"),
           },
-          { status: 500 }
+          { status: 500 },
         );
       }
 
@@ -43,7 +45,7 @@ export async function POST(req: NextRequest) {
       await sendVerificationEmail(
         subscriber,
         Number.parseInt(emailId, 10),
-        l10n
+        l10n,
       );
 
       return NextResponse.json({
@@ -51,7 +53,7 @@ export async function POST(req: NextRequest) {
         message: "Sent the verification email",
       });
     } catch (e) {
-      console.error(e);
+      logger.error(e);
       if (
         e instanceof Error &&
         e.message === "error-email-validation-pending"
@@ -61,7 +63,7 @@ export async function POST(req: NextRequest) {
             success: false,
             message: "Verification email recently sent, try again later",
           },
-          { status: 429 }
+          { status: 429 },
         );
       }
       return NextResponse.json({ success: false }, { status: 500 });

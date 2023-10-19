@@ -4,6 +4,11 @@
 
 import { DefaultSession } from "next-auth";
 import { SubscriberRow } from "knex/types/tables";
+import { ISO8601DateString } from "./utils/parse";
+
+export type SerializedSubscriber = Omit<SubscriberRow, "created_at"> & {
+  created_at: ISO8601DateString;
+};
 
 declare module "next-auth" {
   /** The OAuth profile extracted from Firefox Accounts */
@@ -48,7 +53,7 @@ declare module "next-auth" {
         avatarDefault: boolean;
         subscriptions: Array<string>;
       };
-      subscriber?: SubscriberRow;
+      subscriber?: SerializedSubscriber;
     } & DefaultSession["user"] & { email: string };
   }
 }
@@ -66,6 +71,6 @@ declare module "next-auth/jwt" {
       avatarDefault: boolean;
       subscriptions: Array<string>;
     };
-    subscriber?: SubscriberRow;
+    subscriber?: SerializedSubscriber;
   }
 }

@@ -9,7 +9,10 @@ import { View } from "./View";
 import { authOptions } from "../../../../../api/utils/auth";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../functions/server/getUserBreaches";
-import { canSubscribeToPremium } from "../../../../../functions/universal/user";
+import {
+  canSubscribeToPremium,
+  hasPremium,
+} from "../../../../../functions/universal/user";
 import {
   getLatestOnerepScanResults,
   getScansCountForProfile,
@@ -23,6 +26,8 @@ import {
 import getPremiumSubscriptionUrl from "../../../../../functions/server/getPremiumSubscriptionUrl";
 import { refreshStoredScanResults } from "../../../../../functions/server/refreshStoredScanResults";
 import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
+import { parseIso8601Datetime } from "../../../../../../utils/parse";
+
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
@@ -34,9 +39,33 @@ export default async function DashboardPage() {
 
   const result = await getOnerepProfileId(session.user.subscriber.id);
   const profileId = result[0]["onerep_profile_id"] as number;
+  const brokerScanReleaseDateParts = (
+    process.env.BROKER_SCAN_RELEASE_DATE ?? ""
+  ).split("-");
+  if (brokerScanReleaseDateParts[0] === "") {
+    brokerScanReleaseDateParts[0] = "2023";
+  }
+  const brokerScanReleaseDate = new Date(
+    Date.UTC(
+      Number.parseInt(brokerScanReleaseDateParts[0], 10),
+      Number.parseInt(brokerScanReleaseDateParts[1] ?? "12", 10) - 1,
+      Number.parseInt(brokerScanReleaseDateParts[2] ?? "05", 10),
+    ),
+  );
+
+  const hasRunScan = typeof profileId === "number";
+  const isNewUser =
+    (parseIso8601Datetime(session.user.subscriber.created_at)?.getTime() ?? 0) >
+    brokerScanReleaseDate.getTime();
+
   if (
-    !profileId &&
-    canSubscribeToPremium({ user: session?.user, countryCode: countryCode })
+    !hasRunScan &&
+    (hasPremium(session.user) ||
+      (isNewUser &&
+        canSubscribeToPremium({
+          user: session.user,
+          countryCode: countryCode,
+        })))
   ) {
     return redirect("/redesign/user/welcome/");
   }
@@ -49,7 +78,7 @@ export default async function DashboardPage() {
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(
     session.user,
-    countryCode
+    countryCode,
   );
   const enabledFlags = await getEnabledFeatureFlags({
     email: session.user.email,
@@ -57,7 +86,7 @@ export default async function DashboardPage() {
   const userIsEligibleForPremium = isEligibleForPremium(
     session.user,
     countryCode,
-    enabledFlags
+    enabledFlags,
   );
 
   const enabledFeatureFlags = await getEnabledFeatureFlags({

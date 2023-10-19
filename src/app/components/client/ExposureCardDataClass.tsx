@@ -53,7 +53,7 @@ export const BreachDataClass = (props: BreachDataClassProps) => {
       {props.subscriberBreachData.emailsAffected.map(
         (email: string, index: number) => (
           <li key={index}>{email}</li>
-        )
+        ),
       )}
     </ul>
   );
@@ -76,7 +76,7 @@ type ExposureCardDataClassLayoutProps = {
 };
 
 const ExposureCardDataClassLayout = (
-  props: ExposureCardDataClassLayoutProps
+  props: ExposureCardDataClassLayoutProps,
 ) => {
   const l10n = useL10n();
 
@@ -84,10 +84,12 @@ const ExposureCardDataClassLayout = (
     <div className={styles.detailsFoundItem}>
       <div className={styles.label}>
         <span className={styles.exposureTypeIcon}>{props.icon}</span>
-        {l10n.getString("exposure-card-label-and-count", {
-          category_label: props.label,
-          count: props.count,
-        })}
+        <span>
+          {l10n.getString("exposure-card-label-and-count", {
+            category_label: props.label,
+            count: props.count,
+          })}
+        </span>
       </div>
       {props.emailData &&
         props.label === l10n.getString("exposure-card-email") && (

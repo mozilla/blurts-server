@@ -33,7 +33,7 @@ export default function Subscribed() {
         const result = await update();
         if (hasPremium(result?.user)) {
           router.replace(
-            `/redesign/user/dashboard/fix/data-broker-profiles/welcome-to-premium`
+            `/redesign/user/dashboard/fix/data-broker-profiles/welcome-to-premium`,
           );
         } else {
           router.replace(`/`);

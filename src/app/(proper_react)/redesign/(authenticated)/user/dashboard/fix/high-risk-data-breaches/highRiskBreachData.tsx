@@ -213,12 +213,12 @@ function getHighRiskBreachesByType({
               </li>
               <li>
                 {l10n.getString(
-                  "high-risk-breach-none-sub-description-bank-account"
+                  "high-risk-breach-none-sub-description-bank-account",
                 )}
               </li>
               <li>
                 {l10n.getString(
-                  "high-risk-breach-none-sub-description-cc-number"
+                  "high-risk-breach-none-sub-description-cc-number",
                 )}
               </li>
               <li>

@@ -4,6 +4,8 @@
 
 import { v5 as uuidv5 } from "uuid";
 import { ReactNode } from "react";
+
+import { logger } from "../../functions/server/logging";
 import "../../../client/css/index.css";
 import Image from "next/image";
 import MonitorLogo from "../../../client/images/monitor-logo-transparent@2x.webp";
@@ -35,7 +37,7 @@ const GuestLayout = async (props: Props) => {
     if (process.env.NIMBUS_UUID_NAMESPACE) {
       userId = uuidv5(accountId, process.env.NIMBUS_UUID_NAMESPACE);
     } else {
-      console.error("NIMBUS_UUID_NAMESPACE env var not set");
+      logger.error("NIMBUS_UUID_NAMESPACE env var not set");
     }
   } else {
     // if the user is not logged in, use a cookie with a randomly-generated Nimbus user ID.
@@ -51,16 +53,16 @@ const GuestLayout = async (props: Props) => {
   }
 
   if (!userId) {
-    console.error("No user ID for Nimbus telemetry");
+    logger.error("No user ID for Nimbus telemetry");
   }
 
   try {
     // TODO For initial A/A testing `features` is unused. https://mozilla-hub.atlassian.net/browse/MNTOR-2182
     const features = await getExperiments(userId);
     // TODO remove debug for A/A testing https://mozilla-hub.atlassian.net/browse/MNTOR-2182
-    console.debug("Nimbus features in guest session:", features);
+    logger.debug("Nimbus features in guest session:", features);
   } catch (ex) {
-    console.error("Could not fetch Nimbus features:", ex);
+    logger.error("Could not fetch Nimbus features:", ex);
   }
 
   return (

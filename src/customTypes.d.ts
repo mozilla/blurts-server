@@ -18,25 +18,6 @@ type FxaProfile = {
   metricsEnabled?: boolean;
   sub?: string;
 };
-
-declare module "mozlog" {
-  type LogFunction = (_op: string, _details?: object | string) => void;
-
-  type Options = {
-    app: string;
-    level: string;
-    fmt: string;
-  };
-  const defaultFunction: (_options: Options) => (_scope: string) => {
-    debug: LogFunction;
-    info: LogFunction;
-    warn: LogFunction;
-    error: LogFunction;
-  };
-
-  export default defaultFunction;
-}
-
 interface Window {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   gtag: any;

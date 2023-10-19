@@ -26,13 +26,13 @@ export const GetStarted = (props: Props) => {
   const explainerDialogState = useOverlayTriggerState({});
   const explainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
-    explainerDialogState
+    explainerDialogState,
   );
 
   const triggerRef = useRef<HTMLButtonElement>(null);
   const { buttonProps } = useButton(
     explainerDialogTrigger.triggerProps,
-    triggerRef
+    triggerRef,
   );
 
   return (
@@ -59,11 +59,11 @@ export const GetStarted = (props: Props) => {
               title={
                 <>
                   {l10n.getString(
-                    "onboarding-get-started-how-it-works-dialog-heading-line1"
+                    "onboarding-get-started-how-it-works-dialog-heading-line1",
                   )}
                   <br />
                   {l10n.getString(
-                    "onboarding-get-started-how-it-works-dialog-heading-line2"
+                    "onboarding-get-started-how-it-works-dialog-heading-line2",
                   )}
                 </>
               }
@@ -74,37 +74,37 @@ export const GetStarted = (props: Props) => {
                   <li>
                     <strong>
                       {l10n.getString(
-                        "onboarding-get-started-how-it-works-dialog-step1-heading"
+                        "onboarding-get-started-how-it-works-dialog-step1-heading",
                       )}
                     </strong>
                     <p>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step1-content",
-                        { dataBrokerTotalCount: props.dataBrokerCount }
+                        { dataBrokerTotalCount: props.dataBrokerCount },
                       )}
                     </p>
                   </li>
                   <li>
                     <strong>
                       {l10n.getString(
-                        "onboarding-get-started-how-it-works-dialog-step2-heading"
+                        "onboarding-get-started-how-it-works-dialog-step2-heading",
                       )}
                     </strong>
                     <p>
                       {l10n.getString(
-                        "onboarding-get-started-how-it-works-dialog-step2-content"
+                        "onboarding-get-started-how-it-works-dialog-step2-content",
                       )}
                     </p>
                   </li>
                   <li>
                     <strong>
                       {l10n.getString(
-                        "onboarding-get-started-how-it-works-dialog-step3-heading"
+                        "onboarding-get-started-how-it-works-dialog-step3-heading",
                       )}
                     </strong>
                     <p>
                       {l10n.getString(
-                        "onboarding-get-started-how-it-works-dialog-step3-content"
+                        "onboarding-get-started-how-it-works-dialog-step3-content",
                       )}
                     </p>
                   </li>
@@ -117,7 +117,7 @@ export const GetStarted = (props: Props) => {
                     className={styles.startButton}
                   >
                     {l10n.getString(
-                      "onboarding-get-started-how-it-works-dialog-confirm-label"
+                      "onboarding-get-started-how-it-works-dialog-confirm-label",
                     )}
                   </Button>
                 </div>
