@@ -767,6 +767,7 @@ ad-unit-6-before-you-complete = Перш ніж здійснити наступ�
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
+# Deprecated - to be replaced by -brand-mozilla-account
 -brand-fx-account =
     { $case ->
         [gen]
@@ -800,6 +801,41 @@ ad-unit-6-before-you-complete = Перш ніж здійснити наступ�
                *[upper] Обліковий запис Firefox
             }
     }
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account =
+    { $case ->
+        [gen]
+            { $capitalization ->
+                [upper] Облікового запису Mozilla
+               *[lower] облікового запису Mozilla
+            }
+        [dat]
+            { $capitalization ->
+                [upper] Обліковому запису Mozilla
+               *[lower] обліковому запису Mozilla
+            }
+        [acc]
+            { $capitalization ->
+                [upper] Обліковий запис Mozilla
+               *[lower] обліковий запис Mozilla
+            }
+        [abl]
+            { $capitalization ->
+                [upper] Обліковим записом Mozilla
+               *[lower] обліковим записом Mozilla
+            }
+        [loc]
+            { $capitalization ->
+                [upper] Обліковому записі Mozilla
+               *[lower] обліковому записі Mozilla
+            }
+       *[nom]
+            { $capitalization ->
+                [upper] Обліковий запис Mozilla
+               *[lower] обліковий запис Mozilla
+            }
+    }
 
 ## Search Engine Optimization
 
@@ -815,7 +851,7 @@ sign-in = Увійти
 site-nav-breaches-link = Розв'язати витоки даних
 site-nav-settings-link = Налаштування
 site-nav-help-link = Довідка та підтримка
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Спробуйте інші наші інструменти безпеки:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -825,8 +861,12 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Меню користувача
 menu-button-alt = Відкрити меню користувача
 menu-list-accessible-label = Меню облікового запису
+# Deprecated
 menu-item-fxa = Керувати своїм { -brand-fx-account(case: "abl", capitalization: "lower") }
+menu-item-fxa-2 = Керуйте своїм { -brand-mozilla-account(case: "abl") }
+# Deprecated
 menu-item-fxa-alt = Відкрити сторінку { -brand-fx-account(case: "gen", capitalization: "lower") }
+menu-item-fxa-alt-2 = Відкрити сторінку { -brand-mozilla-account(case: "gen") }
 menu-item-settings = Налаштування
 menu-item-settings-alt = Відкрити сторінку налаштувань
 menu-item-help = Довідка та підтримка
@@ -871,14 +911,3 @@ breach-detail-cta-signup = Перевірити на витік даних
 floating-banner-text = Підвищте онлайн-безпеку за допомогою новин, порад і оновлень від { -brand-Mozilla }.
 floating-banner-link-label = Зареєструватись
 floating-banner-dismiss-button-label = Ні, дякую
-
-## False door test
-
-
-# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
-
-false-door-test-content-part-one = Ніхто не повинен мати можливість купити вашу особисту інформацію.
-false-door-test-content-part-two = Автоматично видаляйте дані із сайтів, які намагаються її продати.
-false-door-test-content-part-two-dashboard = Автоматичне видалення даних із сайтів, які намагаються їх продати.
-false-door-test-cta = Розраховуйте на мене
-false-door-test-popup-close = Закрити

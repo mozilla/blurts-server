@@ -4,7 +4,6 @@
 
 import type { Session } from "next-auth";
 import { getOnerepProfileId } from "../../../db/tables/subscribers.js";
-import mozlog from "../../../utils/log.js";
 import {
   E164PhoneNumberString,
   ISO8601DateString,
@@ -16,7 +15,7 @@ import {
   FeatureFlagName,
   getEnabledFeatureFlags,
 } from "../../../db/tables/featureFlags";
-const log = mozlog("external.onerep");
+import { logger } from "./logging";
 
 export type CreateProfileRequest = {
   first_name: string;
@@ -127,7 +126,7 @@ export async function createProfile(
     body: JSON.stringify(requestBody),
   });
   if (!response.ok) {
-    log.info(
+    logger.error(
       `Failed to create OneRep profile: [${response.status}] [${
         response.statusText
       }] [${JSON.stringify(await response.json())}]`,
@@ -154,7 +153,7 @@ export async function getProfile(
     method: "GET",
   });
   if (!response.ok) {
-    log.info(
+    logger.error(
       `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
@@ -174,7 +173,7 @@ export async function activateProfile(profileId: number): Promise<void> {
     },
   );
   if (!response.ok) {
-    log.info(
+    logger.error(
       `Failed to activate OneRep profile: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
@@ -191,7 +190,7 @@ export async function deactivateProfile(profileId: number): Promise<void> {
     },
   );
   if (!response.ok) {
-    log.info(
+    logger.error(
       `Failed to deactivate OneRep profile: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
@@ -205,7 +204,7 @@ export async function optoutProfile(profileId: number): Promise<void> {
     method: "POST",
   });
   if (!response.ok) {
-    log.info(
+    logger.error(
       `Failed to opt-out OneRep profile: [${response.status}] [${
         response.statusText
       }] [${JSON.stringify(await response.json())}]`,
@@ -227,7 +226,7 @@ export async function createScan(
     method: "POST",
   });
   if (!response.ok) {
-    log.info(
+    logger.error(
       `Failed to create a scan: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
@@ -255,7 +254,7 @@ export async function listScans(
     },
   );
   if (!response.ok) {
-    log.info(
+    logger.error(
       `Failed to fetch scans: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
@@ -297,7 +296,7 @@ export async function listScanResults(
     },
   );
   if (!response.ok) {
-    log.info(
+    logger.error(
       `Failed to fetch scan results: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
@@ -329,7 +328,7 @@ export async function isEligibleForFreeScan(
   const scanResult = await getLatestOnerepScanResults(profileId);
 
   if (scanResult.results.length) {
-    console.warn("User has already used free scan");
+    logger.warn("User has already used free scan");
     return false;
   }
 
@@ -364,7 +363,7 @@ export async function getScanDetails(
     method: "GET",
   });
   if (!response.ok) {
-    log.info(
+    logger.error(
       `Failed to fetch scan details: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
