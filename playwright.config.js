@@ -72,11 +72,23 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] }
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: {
+          width: 1920,
+          height: 1080
+        }
+      }
     },
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] }
+      use: {
+        ...devices['Desktop Firefox'],
+        viewport: {
+          width: 1920,
+          height: 1080
+        }
+      }
     },
 
     /* Test against mobile viewports. */
@@ -104,10 +116,10 @@ export default defineConfig({
   outputDir: 'src/e2e/test-results/',
 
   /* Run your local dev server before starting the tests */
-  webServer: {
-    command: 'npm run build; npm start',
-    port: 6060,
-    // Building the app can take some time:
-    timeout: 1_800_000,
-  }
+  // webServer: {
+  //   command: 'npm run build; npm start',
+  //   port: 6060,
+  //   // Building the app can take some time:
+  //   timeout: 1_800_000,
+  // }
 })
