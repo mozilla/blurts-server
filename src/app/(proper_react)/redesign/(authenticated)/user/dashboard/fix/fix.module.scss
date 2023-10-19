@@ -50,10 +50,12 @@
     .navArrow {
       flex: 0 0 auto;
       display: none;
+      position: absolute;
       align-items: center;
       justify-content: center;
       padding: $spacing-md;
       border-radius: $border-radius-sm;
+      right: $spacing-md;
 
       &:hover {
         background-color: $color-violet-20;

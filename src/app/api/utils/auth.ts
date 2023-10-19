@@ -4,7 +4,7 @@
 
 import { NextRequest } from "next/server";
 import { AuthOptions, Profile as FxaProfile, User } from "next-auth";
-import mozlog from "../../../utils/log.js";
+import { logger } from "../../functions/server/logging";
 
 import AppConstants from "../../../appConstants.js";
 import {
@@ -20,8 +20,7 @@ import { getTemplate } from "../../../views/emails/email2022.js";
 import { signupReportEmailPartial } from "../../../views/emails/emailSignupReport.js";
 import { getL10n } from "../../functions/server/l10n";
 import { OAuthConfig } from "next-auth/providers/oauth.js";
-
-const log = mozlog("controllers.auth");
+import { SerializedSubscriber } from "../../../next-auth.js";
 
 const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   // As per https://mozilla.slack.com/archives/C4D36CAJW/p1683642497940629?thread_ts=1683642325.465929&cid=C4D36CAJW,
@@ -51,7 +50,6 @@ const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   clientSecret: AppConstants.OAUTH_CLIENT_SECRET,
   // Parse data returned by FxA's /userinfo/
   profile: (profile) => {
-    log.debug("fxa-confirmed-profile-data", profile);
     return convertFxaProfile(profile);
   },
 };
@@ -82,7 +80,6 @@ export const authOptions: AuthOptions = {
       }
       if (account && typeof profile?.email === "string") {
         // We're signing in with FxA; store user in database if not present yet.
-        log.debug("fxa-confirmed-fxaUser", account);
 
         // Note: we could create an [Adapter](https://next-auth.js.org/tutorials/creating-a-database-adapter)
         //       to store the user in the database, but by doing it in the callback,
@@ -112,7 +109,10 @@ export const authOptions: AuthOptions = {
             account.refresh_token,
             JSON.stringify(profile),
           );
-          token.subscriber = verifiedSubscriber;
+          // The date fields of `verifiedSubscriber` get converted to an ISO 8601
+          // date string when serialised in the token, hence the type assertion:
+          token.subscriber =
+            verifiedSubscriber as unknown as SerializedSubscriber;
 
           const allBreaches = await getBreaches();
           const unsafeBreachesForEmail = await getBreachesForEmail(
@@ -168,10 +168,10 @@ export const authOptions: AuthOptions = {
   },
   events: {
     signIn(message) {
-      log.debug("fxa-confirmed-profile-data", message.user);
+      logger.debug("fxa-confirmed-profile-data", message.user.id);
     },
     signOut(message) {
-      log.debug("logout", message.token.email ?? undefined);
+      logger.debug("logout", message.token.subscriber?.id ?? undefined);
     },
   },
 };

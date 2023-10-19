@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { UserMenu } from "./UserMenu";
 
 const meta: Meta<typeof UserMenu> = {
-  title: "UserMenu",
+  title: "Toolbar",
   component: UserMenu,
 };
 export default meta;

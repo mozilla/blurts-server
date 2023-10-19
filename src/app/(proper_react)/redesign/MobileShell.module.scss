@@ -9,7 +9,7 @@
 .header {
   display: none;
 
-  @media screen and (max-width: $screen-lg) {
+  @media screen and (max-width: $screen-xl) {
     position: sticky;
     background-color: $color-white;
     box-shadow: $box-shadow-sm;
