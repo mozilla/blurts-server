@@ -12,6 +12,7 @@ import Meta, { Onboarding } from "./Onboarding.stories";
 jest.mock("next/navigation", () => ({
   useRouter: () => ({
     back: jest.fn(),
+    push: jest.fn(),
   }),
 }));
 

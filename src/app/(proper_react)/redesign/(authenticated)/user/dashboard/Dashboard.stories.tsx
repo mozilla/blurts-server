@@ -17,6 +17,7 @@ import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 import { LatestOnerepScanData } from "../../../../../../db/tables/onerep_scans";
 import { canSubscribeToPremium } from "../../../../../functions/universal/user";
 import { CountryCodeProvider } from "../../../../../../contextProviders/country-code";
+import { PreviousRouteProvider } from "../../../../../../contextProviders/previous-route";
 
 const brokerOptions = {
   "no-scan": "No scan started",
@@ -147,28 +148,30 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
 
   return (
     <CountryCodeProvider countryCode={props.countryCode}>
-      <Shell
-        l10n={getEnL10nSync()}
-        session={mockedSession}
-        nonce=""
-        monthlySubscriptionUrl=""
-        yearlySubscriptionUrl=""
-      >
-        <DashboardEl
-          user={user}
-          userBreaches={breaches}
-          userScanData={scanData}
-          isEligibleForPremium={canSubscribeToPremium({
-            user,
-            countryCode: props.countryCode,
-          })}
-          isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
-          enabledFeatureFlags={["FreeBrokerScan", "PremiumBrokerRemoval"]}
-          monthlySubscriptionUrl={""}
-          yearlySubscriptionUrl={""}
-          scanCount={scanCount}
-        />
-      </Shell>
+      <PreviousRouteProvider referrer="">
+        <Shell
+          l10n={getEnL10nSync()}
+          session={mockedSession}
+          nonce=""
+          monthlySubscriptionUrl=""
+          yearlySubscriptionUrl=""
+        >
+          <DashboardEl
+            user={user}
+            userBreaches={breaches}
+            userScanData={scanData}
+            isEligibleForPremium={canSubscribeToPremium({
+              user,
+              countryCode: props.countryCode,
+            })}
+            isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
+            enabledFeatureFlags={["FreeBrokerScan", "PremiumBrokerRemoval"]}
+            monthlySubscriptionUrl={""}
+            yearlySubscriptionUrl={""}
+            scanCount={scanCount}
+          />
+        </Shell>
+      </PreviousRouteProvider>
     </CountryCodeProvider>
   );
 };

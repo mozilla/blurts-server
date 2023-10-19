@@ -24,7 +24,6 @@ export function PreviousRouteProvider({ children, referrer }: Props) {
 
   return (
     <PreviousRouteContext.Provider value={pathnameRef.current}>
-      <div>previousRoute: {pathnameRef.current}</div>
       {children}
     </PreviousRouteContext.Provider>
   );

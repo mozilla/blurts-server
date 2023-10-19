@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -19,6 +19,7 @@ import { FindExposures } from "./FindExposures";
 import { EnterInfo } from "./EnterInfo";
 import { useL10n } from "../../../../../hooks/l10n";
 import monitorLogo from "../../../../images/monitor-logo.webp";
+import { PreviousRouteContext } from "../../../../../../contextProviders/previous-route";
 
 type StepId = "getStarted" | "enterInfo" | "findExposures";
 
@@ -39,12 +40,15 @@ export const View = ({
   const skipInitialStep = stepId === "enterInfo";
   const [currentStep, setCurrentStep] = useState<StepId>(stepId);
   const router = useRouter();
+  const previousRoute = useContext(PreviousRouteContext);
+  const nextRoute = previousRoute || "/redesign/user/dashboard/";
 
   const currentComponent =
     currentStep === "findExposures" ? (
       <FindExposures
         dataBrokerCount={dataBrokerCount}
         breachesTotalCount={breachesTotalCount}
+        nextRoute={nextRoute}
       />
     ) : currentStep === "enterInfo" ? (
       <EnterInfo
@@ -53,7 +57,9 @@ export const View = ({
         /* c8 ignore next */
         onScanStarted={() => setCurrentStep("findExposures")}
         onGoBack={() =>
-          skipInitialStep ? router.back() : setCurrentStep("getStarted")
+          skipInitialStep
+            ? router.push(nextRoute)
+            : setCurrentStep("getStarted")
         }
       />
     ) : (
