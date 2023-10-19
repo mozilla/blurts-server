@@ -51,7 +51,7 @@ export async function getEmailNotification(
   return res?.[0] || null;
 }
 
-export async function getEmailNotificationSubscribersForBreach(
+export async function getAffectedSubscribersForBreach(
   breachId: number,
 ): Promise<number[]> {
   logger.info(
