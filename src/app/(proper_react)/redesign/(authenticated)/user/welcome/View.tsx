@@ -5,6 +5,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Session } from "next-auth";
@@ -35,7 +36,9 @@ export const View = ({
   stepId = "getStarted",
 }: Props) => {
   const l10n = useL10n();
+  const skipInitialStep = stepId === "enterInfo";
   const [currentStep, setCurrentStep] = useState<StepId>(stepId);
+  const router = useRouter();
 
   const currentComponent =
     currentStep === "findExposures" ? (
@@ -49,15 +52,13 @@ export const View = ({
         // TODO: Add unit test when changing this code:
         /* c8 ignore next */
         onScanStarted={() => setCurrentStep("findExposures")}
-        // TODO: Add unit test when changing this code:
-        /* c8 ignore next */
-        onGoBack={() => setCurrentStep("getStarted")}
+        onGoBack={() =>
+          skipInitialStep ? router.back() : setCurrentStep("getStarted")
+        }
       />
     ) : (
       <GetStarted
         dataBrokerCount={dataBrokerCount}
-        // TODO: Add unit test when changing this code:
-        /* c8 ignore next */
         onStart={() => setCurrentStep("enterInfo")}
       />
     );
@@ -74,38 +75,49 @@ export const View = ({
         </Link>
       </header>
       <nav className={styles.stepsWrapper}>
-        <Steps currentStep={currentStep} />
+        <Steps currentStep={currentStep} skipInitialStep={skipInitialStep} />
       </nav>
       <main className={styles.contentWrapper}>{currentComponent}</main>
     </div>
   );
 };
 
-export const Steps = (props: { currentStep: StepId }) => {
+export const Steps = (props: {
+  currentStep: StepId;
+  skipInitialStep?: boolean;
+}) => {
   const l10n = useL10n();
 
   return (
-    <ul className={styles.steps}>
-      <li
-        aria-current={props.currentStep === "getStarted" ? "step" : undefined}
-        className={`${styles.getStarted} ${
-          isStepDone("getStarted", props.currentStep) ? styles.isCompleted : ""
-        }`}
-      >
-        <Image
-          src={
-            props.currentStep === "getStarted"
-              ? stepGetStartedIcon
-              : stepDoneIcon
-          }
-          alt=""
-          width={22}
-          height={22}
-        />
-        <div className={styles.stepLabel}>
-          {l10n.getString("onboarding-steps-get-started-label")}
-        </div>
-      </li>
+    <ul
+      className={`${styles.steps} ${
+        props.skipInitialStep ? styles.getStartedHidden : ""
+      }`}
+    >
+      {!props.skipInitialStep && (
+        <li
+          aria-current={props.currentStep === "getStarted" ? "step" : undefined}
+          className={`${styles.getStarted} ${
+            isStepDone("getStarted", props.currentStep)
+              ? styles.isCompleted
+              : ""
+          }`}
+        >
+          <Image
+            src={
+              props.currentStep === "getStarted"
+                ? stepGetStartedIcon
+                : stepDoneIcon
+            }
+            alt=""
+            width={22}
+            height={22}
+          />
+          <div className={styles.stepLabel}>
+            {l10n.getString("onboarding-steps-get-started-label")}
+          </div>
+        </li>
+      )}
       <li
         aria-current={props.currentStep === "enterInfo" ? "step" : undefined}
         className={`${styles.enterInfo} ${
