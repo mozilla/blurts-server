@@ -8,6 +8,7 @@ import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Script from "next/script";
 
+import { logger } from "../../../functions/server/logging";
 import "../../../../client/css/index.css";
 import { UserMenu } from "../../components/client/UserMenu";
 import { SignInButton } from "../../components/client/SignInButton";
@@ -41,21 +42,21 @@ const MainLayout = async (props: Props) => {
     if (process.env.NIMBUS_UUID_NAMESPACE) {
       userId = uuidv5(accountId, process.env.NIMBUS_UUID_NAMESPACE);
     } else {
-      console.error("NIMBUS_UUID_NAMESPACE env var not set");
+      logger.error("NIMBUS_UUID_NAMESPACE env var not set");
     }
   }
 
   if (!userId) {
-    console.error("No user ID for Nimbus telemetry");
+    logger.error("No user ID for Nimbus telemetry");
   }
 
   try {
     // TODO For initial A/A testing `features` is unused. https://mozilla-hub.atlassian.net/browse/MNTOR-2182
     const features = await getExperiments(userId);
     // TODO remove debug for A/A testing https://mozilla-hub.atlassian.net/browse/MNTOR-2182
-    console.debug("Nimbus features in authenticated session:", features);
+    logger.debug("Nimbus features in authenticated session:", features);
   } catch (ex) {
-    console.error("Could not fetch Nimbus features:", ex);
+    logger.error("Could not fetch Nimbus features:", ex);
   }
 
   const l10n = getL10n();

@@ -14,7 +14,8 @@ import { getLocale } from "../../../../../../../../functions/universal/getLocale
 export type Props = {
   scanResult: OnerepScanResultRow;
   isPremiumUser: boolean;
-  isExpanded?: boolean;
+  isExpanded: boolean;
+  setExpanded: () => void;
 };
 
 export const RemovalCard = (props: Props) => {
@@ -48,7 +49,7 @@ export const RemovalCard = (props: Props) => {
       locale={getLocale(l10n)}
       resolutionCta={
         !isResolved ? (
-          <Button variant="primary" wide onPress={() => void resolve()}>
+          <Button variant="primary" small onPress={() => void resolve()}>
             {l10n.getString(
               "fix-flow-data-broker-profiles-manual-remove-button-mark-fixed",
             )}
@@ -56,6 +57,7 @@ export const RemovalCard = (props: Props) => {
         ) : null
       }
       isExpanded={props.isExpanded}
+      setExpanded={props.setExpanded}
     />
   );
 };

@@ -4,11 +4,14 @@
 
 import initKnex from "knex";
 import knexConfig from "../knexfile.js";
+
+import { logger } from "../../app/functions/server/logging";
+
 import { ScanResult, Scan } from "../../app/functions/server/onerep.js";
 import { Subscriber } from "../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
-const knex = initKnex(knexConfig);
 
+const knex = initKnex(knexConfig);
 export interface LatestOnerepScanData {
   scan: OnerepScanRow | null;
   results: OnerepScanResultRow[];
@@ -51,6 +54,8 @@ async function setOnerepManualScan(
   onerepScanId: number,
   onerepScanStatus: Scan["status"],
 ) {
+  logger.info("manual_scan_created", { onerepScanId, onerepScanStatus });
+
   await knex("onerep_scans").insert({
     onerep_profile_id: onerepProfileId,
     onerep_scan_id: onerepScanId,
@@ -72,6 +77,11 @@ async function addOnerepScanResults(
   await knex.transaction(async (transaction) => {
     if (onerepScanReason === "manual") {
       // Manual scans update an existing scan, replacing the previous results:
+      logger.info("manual_scan_updated", {
+        onerepScanId,
+        onerepScanReason,
+        onerepScanStatus,
+      });
       await transaction("onerep_scan_results")
         .delete()
         .where("onerep_scan_id", onerepScanId);
@@ -79,6 +89,11 @@ async function addOnerepScanResults(
 
     // Create a new scan if it does not already exist. If it already exists:
     // Update the status of the scan.
+    logger.info("new_scan_created", {
+      onerepScanId,
+      onerepScanReason,
+      onerepScanStatus,
+    });
     await transaction("onerep_scans")
       .insert({
         onerep_profile_id: onerepProfileId,
@@ -147,6 +162,10 @@ async function isOnerepScanResultForSubscriber(params: {
 async function markOnerepScanResultAsResolved(
   onerepScanResultId: number,
 ): Promise<void> {
+  logger.info("scan_resolved", {
+    onerepScanResultId,
+  });
+
   await knex("onerep_scan_results")
     .update({
       manually_resolved: true,
