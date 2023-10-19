@@ -11,7 +11,7 @@ const knex = initKnex(knexConfig);
 export type EmailNotificationType = "incident" | "monthly";
 
 export type EmailNotification = {
-  breachesId: number;
+  breachId: number;
   subscriberId: number;
   notified?: boolean;
   email: string;
@@ -70,7 +70,7 @@ export async function addEmailNotification(
   logger.info(`addEmailNotification: ${JSON.stringify(newNotification)}`);
   const emailNotificationDb: Partial<EmailNotificationRow> = {
     subscriber_id: newNotification.subscriberId,
-    breach_id: newNotification.breachesId,
+    breach_id: newNotification.breachId,
     appeared: true,
     notified: newNotification.notified || false,
     email: newNotification.email,

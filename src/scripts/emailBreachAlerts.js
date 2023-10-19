@@ -11,9 +11,9 @@ import * as grpc from "@grpc/grpc-js";
 
 import { getSubscribersByHashes, knexSubscribers } from "../db/tables/subscribers.js";
 import { getEmailAddressesByHashes, knexEmailAddresses } from "../db/tables/emailAddresses.js";
+import { getNotifiedSubscribersForBreach, addEmailNotification} from '../db/tables/email_notifications.ts';
 import { getTemplate } from "../views/emails/email2022.js";
 import { breachAlertEmailPartial } from "../views/emails/emailBreachAlert.js";
-
 import {
   initEmail,
   EmailTemplateType,
@@ -82,7 +82,7 @@ export async function poll(subClient, receivedMessages) {
     const breaches = await getAllBreachesFromDb();
     const breachAlert = getBreachByName(breaches, breachName);
 
-    const { IsVerified, Domain, IsFabricated, IsSpamList } = breachAlert;
+    const { IsVerified, Domain, IsFabricated, IsSpamList, id : breachId } = breachAlert;
 
     // If any of the following conditions are not satisfied:
     // Do not send the breach alert email! The `logId`s are being used for
@@ -152,10 +152,16 @@ export async function poll(subClient, receivedMessages) {
       for (const recipient of recipients) {
         console.info("notify", { recipient });
 
+        const notifiedSubs = await getNotifiedSubscribersForBreach(breachId);
+
         // Get subscriber ID from:
         // - `subscriber_id`: if `email_addresses` record
         // - `id`: if `subscribers` record
         const subscriberId = recipient.subscriber_id ?? recipient.id;
+        if (notifiedSubs.includes(subscriberId)) {
+          console.info("Subscriber already notified, skipping: ", subscriberId)
+          continue;
+        }
         const { recipientEmail, breachedEmail, signupLanguage } =
           getAddressesAndLanguageForEmail(recipient);
 
@@ -193,6 +199,17 @@ export async function poll(subClient, receivedMessages) {
               await sendEmail(data.recipientEmail, subject, emailTemplate);
 
               notifiedRecipients.push(breachedEmail);
+              try {
+                await addEmailNotification({
+                  breachId,
+                  subscriberId,
+                  notified: true,
+                  email: data.recipientEmail,
+                  notificationType: "incident"
+                })
+              } catch(e) {
+                console.error("Failed to add email notification to table: ", e)
+              }
             }
           })();
         });
