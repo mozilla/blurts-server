@@ -737,6 +737,7 @@ ad-unit-6-before-you-complete = Πριν ολοκληρώσετε την επό�
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
+# Deprecated - to be replaced by -brand-mozilla-account
 -brand-fx-account =
     { $case ->
         [gen]
@@ -755,6 +756,26 @@ ad-unit-6-before-you-complete = Πριν ολοκληρώσετε την επό�
                *[upper] Λογαριασμός Firefox
             }
     }
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account =
+    { $case ->
+        [gen]
+            { $capitalization ->
+                [lower] λογαριασμού Mozilla
+               *[upper] Λογαριασμού Mozilla
+            }
+        [acc]
+            { $capitalization ->
+                [lower] λογαριασμό Mozilla
+               *[upper] Λογαριασμό Mozilla
+            }
+       *[nom]
+            { $capitalization ->
+                [lower] λογαριασμός Mozilla
+               *[upper] Λογαριασμός Mozilla
+            }
+    }
 
 ## Search Engine Optimization
 
@@ -770,7 +791,7 @@ sign-in = Σύνδεση
 site-nav-breaches-link = Επίλυση παραβιάσεων δεδομένων
 site-nav-settings-link = Ρυθμίσεις
 site-nav-help-link = Βοήθεια και υποστήριξη
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Δοκιμάστε τα άλλα εργαλεία ασφαλείας μας:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -780,8 +801,12 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Μενού χρήστη
 menu-button-alt = Άνοιγμα μενού χρήστη
 menu-list-accessible-label = Μενού λογαριασμού
+# Deprecated
 menu-item-fxa = Διαχείριση { -brand-fx-account(case: "gen", capitalization: "lower") }
+menu-item-fxa-2 = Διαχείριση { -brand-mozilla-account(case: "gen", capitalization: "lower") }
+# Deprecated
 menu-item-fxa-alt = Άνοιγμα σελίδας { -brand-fx-account(case: "gen", capitalization: "lower") }
+menu-item-fxa-alt-2 = Άνοιγμα σελίδας { -brand-mozilla-account(case: "gen", capitalization: "lower") }
 menu-item-settings = Ρυθμίσεις
 menu-item-settings-alt = Άνοιγμα σελίδας ρυθμίσεων
 menu-item-help = Βοήθεια και υποστήριξη

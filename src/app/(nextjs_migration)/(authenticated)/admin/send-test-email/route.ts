@@ -4,6 +4,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import AppConstants from "../../../../../appConstants.js";
+import { logger } from "../../../../functions/server/logging";
 import {
   EmailTemplateType,
   getMonthlyDummyData,
@@ -31,13 +32,13 @@ export async function POST(req: NextRequest) {
       const emailTemplate = getTemplate(
         getVerificationDummyData(recipient, l10n),
         verifyPartial,
-        l10n
+        l10n,
       );
       await initEmail(process.env.SMTP_URL);
       await sendEmail(
         recipient,
         l10n.getString("email-subject-verify"),
-        emailTemplate
+        emailTemplate,
       );
       break;
     }
@@ -51,13 +52,13 @@ export async function POST(req: NextRequest) {
       const emailTemplate = getTemplate(
         getMonthlyDummyData(AppConstants.EMAIL_TEST_RECIPIENT, l10n),
         monthlyUnresolvedEmailPartial,
-        l10n
+        l10n,
       );
       await initEmail(process.env.SMTP_URL);
       await sendEmail(
         recipient,
         l10n.getString("email-unresolved-heading"),
-        emailTemplate
+        emailTemplate,
       );
       break;
     }
@@ -66,13 +67,13 @@ export async function POST(req: NextRequest) {
       const emailTemplate = getTemplate(
         getSignupReportDummyData(AppConstants.EMAIL_TEST_RECIPIENT, l10n),
         signupReportEmailPartial,
-        l10n
+        l10n,
       );
       await initEmail(process.env.SMTP_URL);
       await sendEmail(
         recipient,
         l10n.getString("email-subject-found-breaches"),
-        emailTemplate
+        emailTemplate,
       );
       break;
     }
@@ -81,13 +82,13 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  console.info(`Sent test email: ${emailId}`);
+  logger.info(`Sent test email: ${emailId}`);
 
   // The notify function has its own response
   if (emailId !== EmailTemplateType.Notification) {
     return NextResponse.json(
       { success: true, message: `Sent test ${emailId} email` },
-      { status: 200 }
+      { status: 200 },
     );
   }
 }

@@ -43,7 +43,7 @@ export class DataBreachPage {
     this.dataBreachesNavbarProfileMenuHeader =
       page.locator(".user-menu-header");
     this.dataBreachesNavbarProfileMenuHeaderSubtitle = page.locator(
-      "a .user-menu-subtitle"
+      "a .user-menu-subtitle",
     );
     this.dataBreachesNavbarProfileMenuSettings = page
       .getByLabel("Account menu")

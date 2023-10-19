@@ -40,7 +40,7 @@ const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
   relay: {
     id: "relay",
     url: `https://relay.firefox.com/?utm_source=${encodeURIComponent(
-      referringHost
+      referringHost,
     )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
     title: l10n.getString("toolbar-app-picker-product-relay"),
     gaLabel: "fx-relay",
@@ -54,7 +54,7 @@ const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
   fxDesktop: {
     id: "fxDesktop",
     url: `https://www.mozilla.org/firefox/new/?utm_source=${encodeURIComponent(
-      referringHost
+      referringHost,
     )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
     title: l10n.getString("toolbar-app-picker-product-fx-desktop"),
     gaLabel: "fx-desktop",
@@ -62,7 +62,7 @@ const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
   fxMobile: {
     id: "fxMobile",
     url: `https://www.mozilla.org/firefox/browsers/mobile/?utm_source=${encodeURIComponent(
-      referringHost
+      referringHost,
     )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
     title: l10n.getString("toolbar-app-picker-product-fx-mobile"),
     gaLabel: "fx-mobile",
@@ -70,7 +70,7 @@ const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
   vpn: {
     id: "vpn",
     url: `https://www.mozilla.org/products/vpn/?utm_source=${encodeURIComponent(
-      referringHost
+      referringHost,
     )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
     title: l10n.getString("toolbar-app-picker-product-vpn"),
     gaLabel: "vpn",
@@ -200,7 +200,7 @@ export const AppPicker = () => {
         <a
           ref={mozillaLinkRef}
           href={`https://www.mozilla.org/?utm_source=${encodeURIComponent(
-            referringHost
+            referringHost,
           )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`}
           className={`${styles["menuLink"]} ${styles["mozillaLink"]}`}
           target="_blank"
@@ -220,11 +220,17 @@ type AppPickerTriggerProps = {
   MenuTriggerProps &
   AriaMenuTriggerProps;
 
-// TODO: Add unit test when changing this code:
-/* c8 ignore start */
 function AppPickerTrigger(props: AppPickerTriggerProps) {
   const l10n = useL10n();
-  const state = useMenuTriggerState({});
+  const state = useMenuTriggerState({
+    onOpenChange: (isOpen) => {
+      gaEvent({
+        category: "bento",
+        action: isOpen ? "bento-opened" : "bento-closed",
+        label: props.referringHost,
+      });
+    },
+  });
   const ref = useRef<HTMLButtonElement | null>(null);
   const popoverRef = useRef<HTMLDivElement | null>(null);
   const { menuTriggerProps, menuProps } = useMenuTrigger({}, state, ref);
@@ -232,13 +238,6 @@ function AppPickerTrigger(props: AppPickerTriggerProps) {
   const mergedMenuProps = mergeProps(props, { ...menuProps, items });
   const menuTriggerButton = useButton(menuTriggerProps, ref);
 
-  const handleButtonClick = () => {
-    gaEvent({
-      category: "bento",
-      action: state.isOpen ? "bento-opened" : "bento-closed",
-      label: props.referringHost,
-    });
-  };
   return (
     <>
       <button
@@ -246,7 +245,6 @@ function AppPickerTrigger(props: AppPickerTriggerProps) {
         ref={ref}
         title={l10n.getString("toolbar-app-picker-trigger-title")}
         className={styles.trigger}
-        onClick={handleButtonClick}
       >
         <BentoIcon alt={props.label} />
       </button>
@@ -266,7 +264,6 @@ function AppPickerTrigger(props: AppPickerTriggerProps) {
     </>
   );
 }
-/* c8 ignore stop */
 
 type AppPickerMenuProps<T> = AriaMenuProps<T>;
 
@@ -311,7 +308,7 @@ const AppPickerItem = <T extends object>(props: AppPickerItemProps<T>) => {
       key: props.item.key,
     },
     props.state,
-    menuItemRef
+    menuItemRef,
   );
 
   return (

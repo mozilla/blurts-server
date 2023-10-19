@@ -17,7 +17,7 @@ export function GET(req: NextRequest) {
 
     return NextResponse.redirect(
       `${process.env.SERVER_URL ?? ""}/user/breaches`,
-      302
+      302,
     );
   } catch (e) {
     return NextResponse.json({ success: false }, { status: 500 });

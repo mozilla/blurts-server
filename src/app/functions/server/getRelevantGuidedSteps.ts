@@ -78,7 +78,7 @@ export function isGuidedResolutionInProgress(stepId: StepLink["id"]) {
 
 export function getNextGuidedStep(
   data: StepDeterminationData,
-  afterStep?: StepLink["id"]
+  afterStep?: StepLink["id"],
 ): StepLink {
   // Resisting the urge to add a state machine... ^.^
   const stepLinkStatuses = getGuidedStepStatuses(data);
@@ -96,14 +96,14 @@ export function getNextGuidedStep(
 }
 
 export function getGuidedStepStatuses(
-  data: StepDeterminationData
+  data: StepDeterminationData,
 ): StepLinkWithStatus[] {
   return stepLinks.map((stepLink) => getStepWithStatus(data, stepLink));
 }
 
 function getStepWithStatus(
   data: StepDeterminationData,
-  stepLink: StepLink
+  stepLink: StepLink,
 ): StepLinkWithStatus {
   return {
     ...stepLink,
@@ -114,7 +114,7 @@ function getStepWithStatus(
 
 function isEligibleFor(
   data: StepDeterminationData,
-  stepId: StepLink["id"]
+  stepId: StepLink["id"],
 ): boolean {
   if (stepId === "Scan") {
     return data.countryCode === "us";
@@ -127,7 +127,7 @@ function isEligibleFor(
 
   if (
     ["HighRiskCreditCard", "HighRiskBankAccount", "HighRiskPin"].includes(
-      stepId
+      stepId,
     )
   ) {
     // Anyone can view/resolve their high risk data breaches
@@ -136,7 +136,7 @@ function isEligibleFor(
 
   if (
     ["LeakedPasswordsPassword", "LeakedPasswordsSecurityQuestion"].includes(
-      stepId
+      stepId,
     )
   ) {
     // Anyone can view/resolve their leaked passwords
@@ -145,7 +145,7 @@ function isEligibleFor(
 
   if (
     ["SecurityTipsPhone", "SecurityTipsEmail", "SecurityTipsIp"].includes(
-      stepId
+      stepId,
     )
   ) {
     // Anyone can view security tips
@@ -163,7 +163,7 @@ function isEligibleFor(
 
 function hasCompleted(
   data: StepDeterminationData,
-  stepId: StepLink["id"]
+  stepId: StepLink["id"],
 ): boolean {
   if (stepId === "Scan") {
     const hasRunScan =
@@ -174,17 +174,17 @@ function hasCompleted(
         data.latestScanData?.scan?.onerep_scan_status === "in_progress") &&
       data.latestScanData.results.every(
         (scanResult) =>
-          scanResult.manually_resolved || scanResult.status !== "new"
+          scanResult.manually_resolved || scanResult.status !== "new",
       );
     return hasRunScan && hasResolvedAllScanResults;
   }
 
   function isBreachResolved(
-    dataClass: (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
+    dataClass: (typeof BreachDataTypes)[keyof typeof BreachDataTypes],
   ): boolean {
     return !data.subscriberBreaches.some((breach) => {
       const affectedDataClasses = breach.dataClassesEffected.map(
-        (affectedDataClass) => Object.keys(affectedDataClass)[0]
+        (affectedDataClass) => Object.keys(affectedDataClass)[0],
       );
       return (
         affectedDataClasses.includes(dataClass) &&

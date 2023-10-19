@@ -7,6 +7,8 @@ import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
 import { authOptions } from "../../../../utils/auth";
 import { NextResponse } from "next/server";
 
+import { logger } from "../../../../../functions/server/logging";
+
 import AppConstants from "../../../../../../appConstants";
 import {
   getOnerepProfileId,
@@ -34,10 +36,10 @@ export async function GET() {
       const scanResults = await getLatestOnerepScanResults(profileId);
       return NextResponse.json(
         { success: true, scan_results: scanResults },
-        { status: 200 }
+        { status: 200 },
       );
     } catch (e) {
-      console.error(e);
+      logger.error(e);
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {

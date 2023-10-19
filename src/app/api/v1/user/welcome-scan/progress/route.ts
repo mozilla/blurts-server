@@ -6,6 +6,8 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../utils/auth";
 import { NextRequest, NextResponse } from "next/server";
 
+import { logger } from "../../../../../functions/server/logging";
+
 import AppConstants from "../../../../../../appConstants";
 import {
   getOnerepProfileId,
@@ -33,7 +35,7 @@ export interface ScanProgressBody {
 // A webhook is used as well, but this ensures that we get the latest data.
 // @see the onerep-events route and https://docs.onerep.com/#section/Webhooks-Endpoints
 export async function GET(
-  _req: NextRequest
+  _req: NextRequest,
 ): Promise<NextResponse<ScanProgressBody> | NextResponse<unknown>> {
   const session = await getServerSession(authOptions);
   if (typeof session?.user?.email === "string") {
@@ -57,19 +59,19 @@ export async function GET(
             scan.id,
             allScanResults,
             "manual",
-            scan.status
+            scan.status,
           );
         }
 
         return NextResponse.json(
           { success: true, status: scan.status },
-          { status: 200 }
+          { status: 200 },
         );
       }
 
       return NextResponse.json({ success: true }, { status: 200 });
     } catch (e) {
-      console.error(e);
+      logger.error(e);
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {

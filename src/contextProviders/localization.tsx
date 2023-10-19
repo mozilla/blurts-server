@@ -23,7 +23,7 @@ export const L10nProvider = (props: {
   props.bundleSources.forEach(({ locale, bundleSources }) => {
     const bundle = new FluentBundle(locale);
     bundleSources.forEach((bundleSource) =>
-      bundle.addResource(new FluentResource(bundleSource))
+      bundle.addResource(new FluentResource(bundleSource)),
     );
     bundles.push(bundle);
   });

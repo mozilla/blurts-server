@@ -31,7 +31,7 @@ export const Dialog = ({
   const dismissButtonRef = useRef<HTMLButtonElement>(null);
   const dismissButtonProps = useButton(
     { onPress: onDismiss },
-    dismissButtonRef
+    dismissButtonRef,
   ).buttonProps;
   const dismissButton =
     typeof onDismiss === "function" ? (

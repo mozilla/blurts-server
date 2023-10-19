@@ -46,7 +46,7 @@ export const ProgressCard = (props: Props) => {
   const explainerDialogState = useOverlayTriggerState({});
   const explainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
-    explainerDialogState
+    explainerDialogState,
   );
 
   const activeProgressBarStyle: CSSProperties = {
@@ -112,7 +112,7 @@ export const ProgressCard = (props: Props) => {
   const explainerDialogTriggerRef = useRef<HTMLButtonElement>(null);
   const explainerDialogTriggerProps = useButton(
     explainerDialogTrigger.triggerProps,
-    explainerDialogTriggerRef
+    explainerDialogTriggerRef,
   ).buttonProps;
 
   return (

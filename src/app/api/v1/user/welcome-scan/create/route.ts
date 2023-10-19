@@ -6,6 +6,8 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../utils/auth";
 import { NextRequest, NextResponse } from "next/server";
 
+import { logger } from "../../../../../functions/server/logging";
+
 import {
   createProfile,
   createScan,
@@ -38,7 +40,7 @@ export interface UserInfo {
 }
 
 export async function POST(
-  req: NextRequest
+  req: NextRequest,
 ): Promise<NextResponse<WelcomeScanBody> | NextResponse<unknown>> {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber) {
@@ -47,7 +49,7 @@ export async function POST(
 
   const eligible = await isEligibleForFreeScan(
     session.user,
-    getCountryCode(headers())
+    getCountryCode(headers()),
   );
   if (!eligible) {
     throw new Error("User is not eligible for feature");
@@ -98,7 +100,7 @@ export async function POST(
 
       return NextResponse.json({ success: true }, { status: 200 });
     } catch (e) {
-      console.error(e);
+      logger.error(e);
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {

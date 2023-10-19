@@ -7,6 +7,7 @@ import {
   getLatestOnerepScanResults,
 } from "../../../db/tables/onerep_scans";
 import { ScanResult, getAllScanResults, getScanDetails } from "./onerep";
+import { logger } from "./logging";
 
 /**
  * Attempt to fetch the current scan results from the provider.
@@ -67,10 +68,10 @@ export async function refreshStoredScanResults(profileId: number) {
         scanId,
         newScanResults,
         reason,
-        status
+        status,
       );
     }
   } catch (ex) {
-    console.warn("Could not fetch current OneRep results:", ex);
+    logger.warn("Could not fetch current OneRep results:", ex);
   }
 }

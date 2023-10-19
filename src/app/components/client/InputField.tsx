@@ -13,7 +13,7 @@ export const InputField = (props: AriaTextFieldProps) => {
   const inputRef = useRef(null);
   const { errorMessageProps, inputProps, labelProps } = useTextField(
     props,
-    inputRef
+    inputRef,
   );
   const isInvalid = validationState === "invalid";
   const showError = errorMessage && isInvalid;

@@ -27,7 +27,7 @@ const mockedScan: OnerepScanRow = {
 const mockedScanData: LatestOnerepScanData = {
   scan: mockedScan,
   results: [...Array(5)].map(() =>
-    createRandomScanResult({ status: "new", manually_resolved: false })
+    createRandomScanResult({ status: "new", manually_resolved: false }),
   ),
 };
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
@@ -46,7 +46,7 @@ const meta: Meta<typeof AutomaticRemoveView> = {
 export default meta;
 type Story = StoryObj<typeof AutomaticRemoveView>;
 
-export const ManualRemoveViewStory: Story = {
+export const AutomaticRemoveViewStory: Story = {
   name: "1d. Automatically resolve brokers",
   render: () => {
     return (

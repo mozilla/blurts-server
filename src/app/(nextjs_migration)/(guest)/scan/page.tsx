@@ -50,7 +50,7 @@ export default function PublicScan() {
               <dl>
                 <div class="exposure-scan-breach-added">
                   <dt>${l10n.getString(
-                    "exposure-landing-result-card-added"
+                    "exposure-landing-result-card-added",
                   )}</dt>
                   ${
                     /* The added date will be added client-side, after running the scan */ ""
@@ -59,7 +59,7 @@ export default function PublicScan() {
                 </div>
                 <div class="exposure-scan-breach-data">
                   <dt>${l10n.getString(
-                    "exposure-landing-result-card-data"
+                    "exposure-landing-result-card-data",
                   )}</dt>
                   ${
                     /* The breached data will be added client-side, after running the scan */ ""
@@ -89,7 +89,7 @@ export default function PublicScan() {
               className="button primary"
             >
               {l10n.getString(
-                "exposure-landing-result-overflow-hero-cta-label"
+                "exposure-landing-result-overflow-hero-cta-label",
               )}
             </a>
           </div>
@@ -103,7 +103,7 @@ export default function PublicScan() {
             className="button primary"
           >
             {l10n.getString(
-              "exposure-landing-result-overflow-footer-cta-label"
+              "exposure-landing-result-overflow-footer-cta-label",
             )}
           </a>
           <p
@@ -113,7 +113,7 @@ export default function PublicScan() {
                 .getString("exposure-landing-result-footer-attribution")
                 .replace(
                   "<hibp-link>",
-                  '<a href="https://haveibeenpwned.com/" target="_blank">'
+                  '<a href="https://haveibeenpwned.com/" target="_blank">',
                 )
                 .replace("</hibp-link>", "</a>"),
             }}
@@ -155,7 +155,7 @@ export default function PublicScan() {
                 .getString("exposure-landing-result-footer-attribution")
                 .replace(
                   "<hibp-link>",
-                  '<a href="https://haveibeenpwned.com/" target="_blank">'
+                  '<a href="https://haveibeenpwned.com/" target="_blank">',
                 )
                 .replace("</hibp-link>", "</a>"),
             }}
@@ -202,7 +202,7 @@ export default function PublicScan() {
                 .getString("exposure-landing-result-footer-attribution")
                 .replace(
                   "<hibp-link>",
-                  '<a href="https://haveibeenpwned.com/" target="_blank">'
+                  '<a href="https://haveibeenpwned.com/" target="_blank">',
                 )
                 .replace("</hibp-link>", "</a>"),
             }}

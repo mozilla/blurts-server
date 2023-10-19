@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { captureException } from "@sentry/node";
 import crypto from "crypto";
 
+import { logger } from "../../../functions/server/logging";
 import { addOnerepScanResults } from "../../../../db/tables/onerep_scans";
 import { getAllScanResults, Scan } from "../../../functions/server/onerep";
 
@@ -53,7 +54,7 @@ export async function POST(req: NextRequest) {
       throw new Error("Webhook signature invalid");
     }
   } catch (ex) {
-    console.error(ex);
+    logger.error(ex);
     captureException(ex);
 
     return NextResponse.json({ success: false }, { status: 401 });
@@ -61,17 +62,17 @@ export async function POST(req: NextRequest) {
 
   try {
     const result: OnerepWebhookRequest = JSON.parse(finalBuffer.toString());
-    console.debug("OneRep Webhook Request received:", result);
+    logger.debug("OneRep Webhook Request received:", result);
 
     if (result.type !== "scan.completed") {
-      console.debug("Unexpected OneRep webhook type received:", result.type);
+      logger.debug("Unexpected OneRep webhook type received:", result.type);
       return;
     }
 
     if (result.data.object.status !== "finished") {
-      console.debug(
+      logger.debug(
         "Received OneRep webhook, but scan not finished",
-        result.data.object.status
+        result.data.object.status,
       );
       return;
     }
@@ -88,12 +89,12 @@ export async function POST(req: NextRequest) {
       scanId,
       scanListFull,
       reason,
-      result.data.object.status
+      result.data.object.status,
     );
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (ex) {
-    console.error(ex);
+    logger.error(ex);
     captureException(ex);
 
     return NextResponse.json({ success: false }, { status: 500 });
