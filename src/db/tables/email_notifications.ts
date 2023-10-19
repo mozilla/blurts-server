@@ -51,7 +51,7 @@ export async function getEmailNotification(
   return res?.[0] || null;
 }
 
-export async function getAffectedSubscribersForBreach(
+export async function getNotifiedSubscribersForBreach(
   breachId: number,
 ): Promise<number[]> {
   logger.info(
@@ -59,6 +59,7 @@ export async function getAffectedSubscribersForBreach(
   );
   const res = await knex("email_notifications")
     .where("breach_id", breachId)
+    .andWhere("notified", true)
     .returning("subscriber_id");
   return res.map((row) => row.subscriber_id);
 }
