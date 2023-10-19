@@ -54,8 +54,12 @@ settings-cancel-premium-subscription-link-label = Скасуйте у своєм
 ## Deactivate account
 
 settings-deactivate-account-title = Деактивувати обліковий запис
+# Deprecated
 settings-deactivate-account-info = Ви можете деактивувати { -product-short-name }, видаливши свій { -brand-fx-account }.
+settings-deactivate-account-info-2 = Ви можете деактивувати { -product-short-name }, видаливши свій { -brand-mozilla-account }.
+# Deprecated
 settings-fxa-link-label = Перейти до налаштувань { -brand-firefox }
+settings-fxa-link-label-2 = Перейти до налаштувань { -brand-mozilla }
 
 ## Add email dialog
 

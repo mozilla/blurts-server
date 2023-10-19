@@ -4,8 +4,9 @@
 
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
-import AppConstants from "../../../../../appConstants";
 
+import { logger } from "../../../../functions/server/logging";
+import AppConstants from "../../../../../appConstants";
 import {
   getSubscriberByEmail,
   deleteResolutionsWithEmail,
@@ -50,7 +51,7 @@ export async function POST(req: NextRequest) {
         301,
       );
     } catch (e) {
-      console.error(e);
+      logger.error(e);
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {

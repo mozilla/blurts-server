@@ -14,11 +14,10 @@ const loggingWinston = new LoggingWinston({
 
 export const logger = createLogger({
   level: "info",
-  transports: [],
+  transports: [new transports.Console()],
 });
 
+// In GCP environments, use cloud logging instead of stdout.
 if (["stage", "production"].includes(process.env.APP_ENV ?? "local")) {
-  logger.transports.push(loggingWinston);
-} else {
-  logger.transports.push(new transports.Console());
+  logger.transports = [loggingWinston];
 }
