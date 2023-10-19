@@ -6,6 +6,8 @@ import * as jwt from "jsonwebtoken";
 import jwkToPem from "jwk-to-pem";
 import { NextRequest, NextResponse } from "next/server";
 import { captureException, captureMessage } from "@sentry/node";
+
+import { logger } from "../../../functions/server/logging";
 import {
   deleteSubscriber,
   getSubscriberByFxaUid,
@@ -45,13 +47,13 @@ const getJwtPubKey = async () => {
       },
     });
     const { keys } = (await response.json()) as { keys: jwkToPem.JWK[] };
-    console.info(
+    logger.info(
       "getJwtPubKey",
       `fetched jwt public keys from: ${jwtKeyUri} - ${keys.length}`,
     );
     return keys;
   } catch (e: unknown) {
-    console.error("getJwtPubKey", `Could not get JWT public key: ${jwtKeyUri}`);
+    logger.error("getJwtPubKey", `Could not get JWT public key: ${jwtKeyUri}`);
     captureException(
       new Error(`Could not get JWT public key: ${jwtKeyUri} - ${e as string}`),
     );
@@ -116,14 +118,14 @@ export async function POST(request: NextRequest) {
   try {
     decodedJWT = (await authenticateFxaJWT(request)) as JwtPayload;
   } catch (e) {
-    console.error("fxaRpEvents", e);
+    logger.error("fxaRpEvents", e);
     captureException(e);
     return NextResponse.json({ success: false }, { status: 401 });
   }
 
   if (!decodedJWT?.events) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
-    console.error("fxaRpEvents", decodedJWT);
+    logger.error("fxaRpEvents", decodedJWT);
     captureMessage(
       `fxaRpEvents: decodedJWT is missing attribute "events", ${
         decodedJWT as unknown as string
@@ -166,7 +168,7 @@ export async function POST(request: NextRequest) {
     const e = new Error(
       `could not find subscriber with fxa user id: ${fxaUserId}`,
     );
-    console.error("fxaRpEvents", e);
+    logger.error("fxaRpEvents", e);
     captureException(e);
     return NextResponse.json({ success: true, message: "OK" }, { status: 200 });
   }
@@ -175,7 +177,7 @@ export async function POST(request: NextRequest) {
   for (const event in decodedJWT?.events) {
     switch (event) {
       case FXA_DELETE_USER_EVENT:
-        console.debug("fxa_delete_user", {
+        logger.debug("fxa_delete_user", {
           subscriber,
           event,
         });
@@ -187,7 +189,7 @@ export async function POST(request: NextRequest) {
         const updatedProfileFromEvent = decodedJWT.events[
           event
         ] as ProfileChangeEvent;
-        console.debug("fxa_profile_update", {
+        logger.debug("fxa_profile_update", {
           fxaUserId,
           event,
           updatedProfileFromEvent,
@@ -218,7 +220,7 @@ export async function POST(request: NextRequest) {
       }
       case FXA_PASSWORD_CHANGE_EVENT: {
         const updateFromEvent = decodedJWT.events[event];
-        console.debug("fxa_password_change", {
+        logger.debug("fxa_password_change", {
           fxaUserId,
           event,
           updateFromEvent,
@@ -229,7 +231,7 @@ export async function POST(request: NextRequest) {
         const updatedSubscriptionFromEvent = decodedJWT.events[
           event
         ] as SubscriptionStateChangeEvent;
-        console.debug("fxa_subscription_change", {
+        logger.debug("fxa_subscription_change", {
           fxaUserId,
           event,
           updatedSubscriptionFromEvent,
@@ -239,11 +241,11 @@ export async function POST(request: NextRequest) {
         const result = await getOnerepProfileId(subscriber.id);
         const oneRepProfileId = result?.[0]?.["onerep_profile_id"] as number;
 
-        console.debug("fxa_subscription_change", JSON.stringify(result));
+        logger.debug("fxa_subscription_change", JSON.stringify(result));
 
         // MNTOR-2103: if one rep profile id doesn't exist in the db, fail silently
         if (!oneRepProfileId) {
-          console.error(
+          logger.error(
             "No OneRep profile Id found, subscriber: ",
             subscriber.id,
           );
@@ -287,7 +289,7 @@ export async function POST(request: NextRequest) {
         break;
       }
       default:
-        console.warn("unhandled_event", {
+        logger.warn("unhandled_event", {
           event,
         });
         break;
