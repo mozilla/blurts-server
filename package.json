@@ -80,7 +80,7 @@
     "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
     "react-stately": "^3.27.0",
-    "uuid": "^9.0.0",
+    "uuid": "^9.0.1",
     "winston": "^3.11.0"
   },
   "devDependencies": {
@@ -102,7 +102,7 @@
     "@types/jsonwebtoken": "^9.0.2",
     "@types/jwk-to-pem": "^2.0.1",
     "@types/nodemailer": "^6.4.11",
-    "@types/uuid": "^9.0.1",
+    "@types/uuid": "^9.0.6",
     "@typescript-eslint/eslint-plugin": "^6.7.5",
     "@typescript-eslint/parser": "^6.7.5",
     "adm-zip": "^0.5.10",
