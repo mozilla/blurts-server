@@ -46,6 +46,13 @@ jest.mock("../db/tables/emailAddresses.js", () => {
   }
 });
 
+jest.mock("../db/tables/email_notifications.js", () => {
+  return {
+    getNotifiedSubscribersForBreach: jest.fn(() => [""]),
+    addEmailNotification: jest.fn()
+  }
+})
+
 jest.mock("../utils/fluent.js", () => {
   return {
     initFluentBundles: jest.fn(),
@@ -65,6 +72,7 @@ jest.mock("../views/emails/emailBreachAlert.js", () => {
     breachAlertEmailPartial: jest.fn()
   }
 });
+
 
 const subClient = {
   subscriptionPath: jest.fn(),
@@ -89,6 +97,7 @@ function buildReceivedMessages(testBreachAlert) {
 
 beforeEach(() => {
   jest.clearAllMocks();
+  jest.spyOn(console, 'error').mockImplementation(() => {});
 });
 
 test("rejects invalid messages", async () => {
@@ -202,3 +211,96 @@ test("processes valid messages", async () => {
   // Verified, not fabricated, not spam list breaches are emailed.
   expect(sendEmail).toHaveBeenCalledTimes(1);
 });
+
+test("skipping email when subscriber id exists in email_notifications table", async () => {
+  const { sendEmail } = await import("../utils/email.js");
+  const mockedUtilsHibp = jest.requireMock("../utils/hibp.js");
+  mockedUtilsHibp.getBreachByName.mockReturnValue({
+    IsVerified: true,
+    Domain: "test1",
+    IsFabricated: false,
+    IsSpamList: false,
+    Id: 1,
+  });
+
+  jest.mock("../db/tables/subscribers.js", () => {
+    return {
+      getSubscribersByHashes: jest.fn(() => [{id: 1}])
+    }
+  });
+
+  jest.mock("../db/tables/emailAddresses.js", () => {
+    return {
+      getEmailAddressesByHashes: jest.fn(() => [])
+    }
+  });
+
+  jest.mock("../db/tables/email_notifications.js", () => {
+    return {
+      getNotifiedSubscribersForBreach: jest.fn(() => [1]),
+      addEmailNotification: jest.fn()
+    }
+  })
+
+  const receivedMessages = buildReceivedMessages({
+    "breachName": "test1",
+    "hashPrefix": "test-prefix1",
+    "hashSuffixes": ["test-suffix1"]
+  });
+
+  const { poll } = await import("./emailBreachAlerts.js");
+
+  await poll(subClient, receivedMessages);
+  // Verified, not fabricated, not spam list breaches are acknowledged.
+  expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
+  // Verified, not fabricated, not spam list breaches are emailed.
+  expect(sendEmail).toHaveBeenCalledTimes(0);
+})
+
+test("throws an error when addEmailNotification fails", async () => {
+  const { sendEmail } = await import("../utils/email.js");
+  const mockedUtilsHibp = jest.requireMock("../utils/hibp.js");
+  mockedUtilsHibp.getBreachByName.mockReturnValue({
+    IsVerified: true,
+    Domain: "test1",
+    IsFabricated: false,
+    IsSpamList: false,
+    Id: 1,
+  });
+
+  jest.mock("../db/tables/subscribers.js", () => {
+    return {
+      getSubscribersByHashes: jest.fn(() => [{id: 1}])
+    }
+  });
+
+  jest.mock("../db/tables/emailAddresses.js", () => {
+    return {
+      getEmailAddressesByHashes: jest.fn(() => [""])
+    }
+  });
+
+  jest.mock("../db/tables/email_notifications.js", () => {
+    return {
+      getNotifiedSubscribersForBreach: jest.fn(() => [2]),
+      addEmailNotification: jest.fn().mockImplementationOnce(() => { throw new Error("add failed")})
+    }
+  })
+
+  const consoleErrorSpy = jest.spyOn(console, "error")
+
+  const receivedMessages = buildReceivedMessages({
+    "breachName": "test1",
+    "hashPrefix": "test-prefix1",
+    "hashSuffixes": ["test-suffix1"]
+  });
+
+  const { poll } = await import("./emailBreachAlerts.js");
+
+  try {
+    await poll(subClient, receivedMessages)
+  } catch(e) {
+    expect(console.error).toBeCalled()
+    expect(e.message).toBe("add failed")
+  }
+})

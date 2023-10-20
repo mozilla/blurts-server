@@ -11,7 +11,7 @@ import * as grpc from "@grpc/grpc-js";
 
 import { getSubscribersByHashes, knexSubscribers } from "../db/tables/subscribers.js";
 import { getEmailAddressesByHashes, knexEmailAddresses } from "../db/tables/emailAddresses.js";
-import { getNotifiedSubscribersForBreach, addEmailNotification} from '../db/tables/email_notifications.ts';
+import { getNotifiedSubscribersForBreach, addEmailNotification} from '../db/tables/email_notifications.js';
 import { getTemplate } from "../views/emails/email2022.js";
 import { breachAlertEmailPartial } from "../views/emails/emailBreachAlert.js";
 import {
@@ -140,6 +140,7 @@ export async function poll(subClient, receivedMessages) {
       const subscribers = await getSubscribersByHashes(hashes);
       const emailAddresses = await getEmailAddressesByHashes(hashes);
       const recipients = subscribers.concat(emailAddresses);
+      console.info("recipients: ", {recipients})
 
       console.info(EmailTemplateType.Notification, {
         breachAlertName: breachAlert.Name,
@@ -153,6 +154,7 @@ export async function poll(subClient, receivedMessages) {
         console.info("notify", { recipient });
 
         const notifiedSubs = await getNotifiedSubscribersForBreach(breachId);
+        console.info("notifiedSubs", { notifiedSubs });
 
         // Get subscriber ID from:
         // - `subscriber_id`: if `email_addresses` record
@@ -209,6 +211,7 @@ export async function poll(subClient, receivedMessages) {
                 })
               } catch(e) {
                 console.error("Failed to add email notification to table: ", e)
+                throw new Error(e)
               }
             }
           })();
