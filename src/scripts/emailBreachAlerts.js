@@ -11,7 +11,7 @@ import * as grpc from "@grpc/grpc-js";
 
 import { getSubscribersByHashes, knexSubscribers } from "../db/tables/subscribers.js";
 import { getEmailAddressesByHashes, knexEmailAddresses } from "../db/tables/emailAddresses.js";
-import { getNotifiedSubscribersForBreach, addEmailNotification} from '../db/tables/email_notifications.js';
+import { getNotifiedSubscribersForBreach, addEmailNotification, markEmailAsNotified} from '../db/tables/email_notifications.js';
 import { getTemplate } from "../views/emails/email2022.js";
 import { breachAlertEmailPartial } from "../views/emails/emailBreachAlert.js";
 import {
@@ -140,7 +140,6 @@ export async function poll(subClient, receivedMessages) {
       const subscribers = await getSubscribersByHashes(hashes);
       const emailAddresses = await getEmailAddressesByHashes(hashes);
       const recipients = subscribers.concat(emailAddresses);
-      console.info("recipients: ", {recipients})
 
       console.info(EmailTemplateType.Notification, {
         breachAlertName: breachAlert.Name,
@@ -154,7 +153,6 @@ export async function poll(subClient, receivedMessages) {
         console.info("notify", { recipient });
 
         const notifiedSubs = await getNotifiedSubscribersForBreach(breachId);
-        console.info("notifiedSubs", { notifiedSubs });
 
         // Get subscriber ID from:
         // - `subscriber_id`: if `email_addresses` record
@@ -195,17 +193,13 @@ export async function poll(subClient, receivedMessages) {
                 utmCampaign: utmCampaignId,
               };
 
-              const emailTemplate = getTemplate(data, breachAlertEmailPartial);
-              const subject = getMessage("breach-alert-subject");
-
-              await sendEmail(data.recipientEmail, subject, emailTemplate);
-
-              notifiedRecipients.push(breachedEmail);
+              // try to append a new row into the email notifications table
+              // if the append fails, there might be already an entry, stop the script
               try {
                 await addEmailNotification({
                   breachId,
                   subscriberId,
-                  notified: true,
+                  notified: false,
                   email: data.recipientEmail,
                   notificationType: "incident"
                 })
@@ -213,6 +207,18 @@ export async function poll(subClient, receivedMessages) {
                 console.error("Failed to add email notification to table: ", e)
                 throw new Error(e)
               }
+
+              const emailTemplate = getTemplate(data, breachAlertEmailPartial);
+              const subject = getMessage("breach-alert-subject");
+
+              await sendEmail(data.recipientEmail, subject, emailTemplate);
+              try{
+                await markEmailAsNotified(subscriberId, breachId, data.recipientEmail)
+              } catch(e) {
+                console.error("Failed to mark email as notified: ", e)
+                throw new Error(e)
+              }
+              notifiedRecipients.push(breachedEmail);
             }
           })();
         });

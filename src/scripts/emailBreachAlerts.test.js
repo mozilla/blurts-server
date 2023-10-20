@@ -49,7 +49,8 @@ jest.mock("../db/tables/emailAddresses.js", () => {
 jest.mock("../db/tables/email_notifications.js", () => {
   return {
     getNotifiedSubscribersForBreach: jest.fn(() => [""]),
-    addEmailNotification: jest.fn()
+    addEmailNotification: jest.fn(),
+    markEmailAsNotified: jest.fn()
   }
 })
 
@@ -286,9 +287,6 @@ test("throws an error when addEmailNotification fails", async () => {
       addEmailNotification: jest.fn().mockImplementationOnce(() => { throw new Error("add failed")})
     }
   })
-
-  const consoleErrorSpy = jest.spyOn(console, "error")
-
   const receivedMessages = buildReceivedMessages({
     "breachName": "test1",
     "hashPrefix": "test-prefix1",
@@ -303,4 +301,53 @@ test("throws an error when addEmailNotification fails", async () => {
     expect(console.error).toBeCalled()
     expect(e.message).toBe("add failed")
   }
+
+  expect(sendEmail).toHaveBeenCalledTimes(0);
+})
+
+test("throws an error when markEmailAsNotified fails", async () => {
+  const { sendEmail } = await import("../utils/email.js");
+  const mockedUtilsHibp = jest.requireMock("../utils/hibp.js");
+  mockedUtilsHibp.getBreachByName.mockReturnValue({
+    IsVerified: true,
+    Domain: "test1",
+    IsFabricated: false,
+    IsSpamList: false,
+    Id: 1,
+  });
+
+  jest.mock("../db/tables/subscribers.js", () => {
+    return {
+      getSubscribersByHashes: jest.fn(() => [{id: 1}])
+    }
+  });
+
+  jest.mock("../db/tables/emailAddresses.js", () => {
+    return {
+      getEmailAddressesByHashes: jest.fn(() => [""])
+    }
+  });
+
+  jest.mock("../db/tables/email_notifications.js", () => {
+    return {
+      getNotifiedSubscribersForBreach: jest.fn(() => [2]),
+      addEmailNotification: jest.fn(),
+      markEmailAsNotified: jest.fn().mockImplementationOnce(() => { throw new Error("mark failed")})
+    }
+  })
+  const receivedMessages = buildReceivedMessages({
+    "breachName": "test1",
+    "hashPrefix": "test-prefix1",
+    "hashSuffixes": ["test-suffix1"]
+  });
+
+  const { poll } = await import("./emailBreachAlerts.js");
+
+  try {
+    await poll(subClient, receivedMessages)
+  } catch(e) {
+    expect(console.error).toBeCalled()
+    expect(e.message).toBe("mark failed")
+  }
+  expect(sendEmail).toHaveBeenCalledTimes(1);
 })
