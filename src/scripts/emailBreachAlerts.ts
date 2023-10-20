@@ -11,7 +11,7 @@ import * as grpc from "@grpc/grpc-js";
 
 import { getSubscribersByHashes, knexSubscribers } from "../db/tables/subscribers.js";
 import { getEmailAddressesByHashes, knexEmailAddresses } from "../db/tables/emailAddresses.js";
-import { getNotifiedSubscribersForBreach, addEmailNotification} from '../db/tables/email_notifications.ts';
+import { getNotifiedSubscribersForBreach, addEmailNotification} from '../db/tables/email_notifications';
 import { getTemplate } from "../views/emails/email2022.js";
 import { breachAlertEmailPartial } from "../views/emails/emailBreachAlert.js";
 import {
@@ -28,6 +28,8 @@ import {
   getAllBreachesFromDb,
   knexHibp
 } from "../utils/hibp.js";
+import { SubscriberClient } from "@google-cloud/pubsub/build/src/v1/subscriber_client.js";
+import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 
 const SENTRY_SLUG = "cron-breach-alerts";
 
@@ -44,10 +46,10 @@ const checkInId = Sentry.captureCheckIn({
 
 // Only process this many messages before exiting.
 /* c8 ignore start */
-const maxMessages = parseInt(process.env.EMAIL_BREACH_ALERT_MAX_MESSAGES || 10000);
+const maxMessages = parseInt(process.env.EMAIL_BREACH_ALERT_MAX_MESSAGES || "10000");
 /* c8 ignore stop */
-const projectId = process.env.GCP_PUBSUB_PROJECT_ID;
-const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
+const projectId = process.env.GCP_PUBSUB_PROJECT_ID || "";
+const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME || "";
 
 /**
  * Fetch the latest HIBP breach data from GCP PubSub queue.
@@ -59,7 +61,7 @@ const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
  *
  * More about how account identities are anonymized: https://blog.mozilla.org/security/2018/06/25/scanning-breached-accounts-k-anonymity/
  */
-export async function poll(subClient, receivedMessages) {
+export async function poll(subClient : SubscriberClient, receivedMessages :any) {
   const formattedSubscription = subClient.subscriptionPath(
     projectId,
     subscriptionName
@@ -82,7 +84,7 @@ export async function poll(subClient, receivedMessages) {
     const breaches = await getAllBreachesFromDb();
     const breachAlert = getBreachByName(breaches, breachName);
 
-    const { IsVerified, Domain, IsFabricated, IsSpamList, id : breachId } = breachAlert;
+    const { IsVerified, Domain, IsFabricated, IsSpamList, Id : breachId } = breachAlert;
 
     // If any of the following conditions are not satisfied:
     // Do not send the breach alert email! The `logId`s are being used for
@@ -134,12 +136,12 @@ export async function poll(subClient, receivedMessages) {
     try {
       const reqHashPrefix = hashPrefix.toLowerCase();
       const hashes = hashSuffixes.map(
-        (suffix) => reqHashPrefix + suffix.toLowerCase()
+        (suffix:string) => reqHashPrefix + suffix.toLowerCase()
       );
 
       const subscribers = await getSubscribersByHashes(hashes);
       const emailAddresses = await getEmailAddressesByHashes(hashes);
-      const recipients = subscribers.concat(emailAddresses);
+      const recipients : (EmailAddressRow | SubscriberRow)[] = subscribers.concat(emailAddresses);
 
       console.info(EmailTemplateType.Notification, {
         breachAlertName: breachAlert.Name,
@@ -147,7 +149,7 @@ export async function poll(subClient, receivedMessages) {
       });
 
       const utmCampaignId = "breach-alert";
-      const notifiedRecipients = [];
+      const notifiedRecipients : string[] = [];
 
       for (const recipient of recipients) {
         console.info("notify", { recipient });
@@ -157,7 +159,7 @@ export async function poll(subClient, receivedMessages) {
         // Get subscriber ID from:
         // - `subscriber_id`: if `email_addresses` record
         // - `id`: if `subscribers` record
-        const subscriberId = recipient.subscriber_id ?? recipient.id;
+        const subscriberId = (recipient as EmailAddressRow).subscriber_id ?? recipient.id;
         if (notifiedSubs.includes(subscriberId)) {
           console.info("Subscriber already notified, skipping: ", subscriberId)
           continue;
@@ -171,7 +173,7 @@ export async function poll(subClient, receivedMessages) {
           : [];
         /* c8 ignore stop */
 
-        const availableLanguages = process.env.SUPPORTED_LOCALES.split(",");
+        const availableLanguages = process.env.SUPPORTED_LOCALES?.split(",") || [];
         const supportedLocales = negotiateLanguages(
           requestedLanguage,
           availableLanguages,
@@ -263,7 +265,7 @@ async function init() {
   await initEmail();
 
   const [subClient, receivedMessages] = await pullMessages();
-  await poll(subClient, receivedMessages);
+  await poll(subClient as SubscriberClient, receivedMessages);
 }
 
 if (process.env.NODE_ENV !== "test") {

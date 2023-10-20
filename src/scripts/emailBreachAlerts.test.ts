@@ -60,7 +60,7 @@ jest.mock("../views/emails/email2022.js", () => {
  }
 });
 
-jest.mock("../views/emails/emailBreachAlert.js", () => {
+jest.mock("../views/emails/emailBreachAlert", () => {
   return {
     breachAlertEmailPartial: jest.fn()
   }
@@ -92,7 +92,7 @@ beforeEach(() => {
 });
 
 test("rejects invalid messages", async () => {
-  const { poll } = await import("./emailBreachAlerts.js");
+  const { poll } = await import("./emailBreachAlerts");
 
   const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
 
@@ -146,7 +146,7 @@ test("processes valid messages", async () => {
     "hashSuffixes": ["test-suffix1"]
   });
 
-  const { poll } = await import("./emailBreachAlerts.js");
+  const { poll } = await import("./emailBreachAlerts");
 
   await poll(subClient, receivedMessages);
   // Fabricated but valid breach is acknowledged.

@@ -1,0 +1,376 @@
+"use strict";
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.poll = void 0;
+var nextjs_1 = require("@sentry/nextjs");
+var langneg_1 = require("@fluent/langneg");
+var localStorage_js_1 = require("../utils/localStorage.js");
+var pubsub = require("@google-cloud/pubsub");
+var grpc = require("@grpc/grpc-js");
+var subscribers_js_1 = require("../db/tables/subscribers.js");
+var emailAddresses_js_1 = require("../db/tables/emailAddresses.js");
+var email_notifications_js_1 = require("../db/tables/email_notifications.js");
+var email2022_js_1 = require("../views/emails/email2022.js");
+var emailBreachAlert_js_1 = require("../views/emails/emailBreachAlert.js");
+var email_js_1 = require("../utils/email.js");
+var fluent_js_1 = require("../utils/fluent.js");
+var hibp_js_1 = require("../utils/hibp.js");
+var SENTRY_SLUG = "cron-breach-alerts";
+nextjs_1.default.init({
+    environment: process.env.APP_ENV,
+    dsn: process.env.SENTRY_DSN,
+    tracesSampleRate: 1.0,
+});
+var checkInId = nextjs_1.default.captureCheckIn({
+    monitorSlug: SENTRY_SLUG,
+    status: "in_progress",
+});
+// Only process this many messages before exiting.
+/* c8 ignore start */
+var maxMessages = parseInt(process.env.EMAIL_BREACH_ALERT_MAX_MESSAGES || 10000);
+/* c8 ignore stop */
+var projectId = process.env.GCP_PUBSUB_PROJECT_ID;
+var subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
+/**
+ * Fetch the latest HIBP breach data from GCP PubSub queue.
+ *
+ * A breach notification contains the following parameters:
+ * - breachName
+ * - hashPrefix
+ * - hashSuffixes
+ *
+ * More about how account identities are anonymized: https://blog.mozilla.org/security/2018/06/25/scanning-breached-accounts-k-anonymity/
+ */
+function poll(subClient, receivedMessages) {
+    var _a;
+    return __awaiter(this, void 0, void 0, function () {
+        var formattedSubscription, _loop_1, _i, receivedMessages_1, message;
+        var _this = this;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    formattedSubscription = subClient.subscriptionPath(projectId, subscriptionName);
+                    _loop_1 = function (message) {
+                        var data, breachName, hashPrefix, hashSuffixes, breaches, breachAlert, IsVerified, Domain, IsFabricated, IsSpamList, breachId, emailDeliveryConditions, unsatisfiedConditions, doNotSendEmail, conditionLogIds, reqHashPrefix_1, hashes, subscribers, emailAddresses, recipients, utmCampaignId_1, notifiedRecipients_1, _loop_2, _c, recipients_1, recipient, error_1;
+                        return __generator(this, function (_d) {
+                            switch (_d.label) {
+                                case 0:
+                                    console.log("Received message: ".concat(message.message.data));
+                                    data = JSON.parse(message.message.data);
+                                    if (!(data.breachName && data.hashPrefix && data.hashSuffixes)) {
+                                        console.error("HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.");
+                                        return [2 /*return*/, "continue"];
+                                    }
+                                    breachName = data.breachName, hashPrefix = data.hashPrefix, hashSuffixes = data.hashSuffixes;
+                                    return [4 /*yield*/, (0, hibp_js_1.getAllBreachesFromDb)()];
+                                case 1:
+                                    breaches = _d.sent();
+                                    breachAlert = (0, hibp_js_1.getBreachByName)(breaches, breachName);
+                                    IsVerified = breachAlert.IsVerified, Domain = breachAlert.Domain, IsFabricated = breachAlert.IsFabricated, IsSpamList = breachAlert.IsSpamList, breachId = breachAlert.id;
+                                    emailDeliveryConditions = [
+                                        {
+                                            logId: "isNotVerified",
+                                            condition: !IsVerified,
+                                        },
+                                        {
+                                            logId: "domainEmpty",
+                                            condition: Domain === "",
+                                        },
+                                        {
+                                            logId: "isFabricated",
+                                            condition: IsFabricated,
+                                        },
+                                        {
+                                            logId: "isSpam",
+                                            condition: IsSpamList,
+                                        },
+                                    ];
+                                    unsatisfiedConditions = emailDeliveryConditions.filter(function (condition) { return condition.condition; });
+                                    doNotSendEmail = unsatisfiedConditions.length > 0;
+                                    if (doNotSendEmail) {
+                                        conditionLogIds = unsatisfiedConditions
+                                            .map(function (condition) { return condition.logId; })
+                                            .join(", ");
+                                        console.info("Breach alert email was not sent.", {
+                                            name: breachAlert.Name,
+                                            reason: "The following conditions were not satisfied: ".concat(conditionLogIds, "."),
+                                        });
+                                        subClient.acknowledge({
+                                            subscription: formattedSubscription,
+                                            ackIds: [message.ackId],
+                                        });
+                                        return [2 /*return*/, "continue"];
+                                    }
+                                    _d.label = 2;
+                                case 2:
+                                    _d.trys.push([2, 9, , 10]);
+                                    reqHashPrefix_1 = hashPrefix.toLowerCase();
+                                    hashes = hashSuffixes.map(function (suffix) { return reqHashPrefix_1 + suffix.toLowerCase(); });
+                                    return [4 /*yield*/, (0, subscribers_js_1.getSubscribersByHashes)(hashes)];
+                                case 3:
+                                    subscribers = _d.sent();
+                                    return [4 /*yield*/, (0, emailAddresses_js_1.getEmailAddressesByHashes)(hashes)];
+                                case 4:
+                                    emailAddresses = _d.sent();
+                                    recipients = subscribers.concat(emailAddresses);
+                                    console.info(email_js_1.EmailTemplateType.Notification, {
+                                        breachAlertName: breachAlert.Name,
+                                        length: recipients.length,
+                                    });
+                                    utmCampaignId_1 = "breach-alert";
+                                    notifiedRecipients_1 = [];
+                                    _loop_2 = function (recipient) {
+                                        var notifiedSubs, subscriberId, _e, recipientEmail, breachedEmail, signupLanguage, requestedLanguage, availableLanguages, supportedLocales;
+                                        return __generator(this, function (_f) {
+                                            switch (_f.label) {
+                                                case 0:
+                                                    console.info("notify", { recipient: recipient });
+                                                    return [4 /*yield*/, (0, email_notifications_js_1.getNotifiedSubscribersForBreach)(breachId)];
+                                                case 1:
+                                                    notifiedSubs = _f.sent();
+                                                    subscriberId = (_a = recipient.subscriber_id) !== null && _a !== void 0 ? _a : recipient.id;
+                                                    if (notifiedSubs.includes(subscriberId)) {
+                                                        console.info("Subscriber already notified, skipping: ", subscriberId);
+                                                        return [2 /*return*/, "continue"];
+                                                    }
+                                                    _e = (0, hibp_js_1.getAddressesAndLanguageForEmail)(recipient), recipientEmail = _e.recipientEmail, breachedEmail = _e.breachedEmail, signupLanguage = _e.signupLanguage;
+                                                    requestedLanguage = signupLanguage
+                                                        ? (0, langneg_1.acceptedLanguages)(signupLanguage)
+                                                        : [];
+                                                    availableLanguages = process.env.SUPPORTED_LOCALES.split(",");
+                                                    supportedLocales = (0, langneg_1.negotiateLanguages)(requestedLanguage, availableLanguages, { defaultLocale: "en" });
+                                                    return [4 /*yield*/, localStorage_js_1.localStorage.run(new Map(), function () { return __awaiter(_this, void 0, void 0, function () {
+                                                            var _this = this;
+                                                            return __generator(this, function (_a) {
+                                                                switch (_a.label) {
+                                                                    case 0:
+                                                                        localStorage_js_1.localStorage.getStore().set('locale', supportedLocales);
+                                                                        return [4 /*yield*/, (function () { return __awaiter(_this, void 0, void 0, function () {
+                                                                                var data_1, emailTemplate, subject, e_1;
+                                                                                return __generator(this, function (_a) {
+                                                                                    switch (_a.label) {
+                                                                                        case 0:
+                                                                                            if (!!notifiedRecipients_1.includes(breachedEmail)) return [3 /*break*/, 5];
+                                                                                            data_1 = {
+                                                                                                breachData: breachAlert,
+                                                                                                breachedEmail: breachedEmail,
+                                                                                                ctaHref: (0, email_js_1.getEmailCtaHref)(utmCampaignId_1, "dashboard-cta"),
+                                                                                                heading: (0, fluent_js_1.getMessage)("email-spotted-new-breach"),
+                                                                                                recipientEmail: recipientEmail,
+                                                                                                subscriberId: subscriberId,
+                                                                                                supportedLocales: supportedLocales,
+                                                                                                utmCampaign: utmCampaignId_1,
+                                                                                            };
+                                                                                            emailTemplate = (0, email2022_js_1.getTemplate)(data_1, emailBreachAlert_js_1.breachAlertEmailPartial);
+                                                                                            subject = (0, fluent_js_1.getMessage)("breach-alert-subject");
+                                                                                            return [4 /*yield*/, (0, email_js_1.sendEmail)(data_1.recipientEmail, subject, emailTemplate)];
+                                                                                        case 1:
+                                                                                            _a.sent();
+                                                                                            notifiedRecipients_1.push(breachedEmail);
+                                                                                            _a.label = 2;
+                                                                                        case 2:
+                                                                                            _a.trys.push([2, 4, , 5]);
+                                                                                            return [4 /*yield*/, (0, email_notifications_js_1.addEmailNotification)({
+                                                                                                    breachId: breachId,
+                                                                                                    subscriberId: subscriberId,
+                                                                                                    notified: true,
+                                                                                                    email: data_1.recipientEmail,
+                                                                                                    notificationType: "incident"
+                                                                                                })];
+                                                                                        case 3:
+                                                                                            _a.sent();
+                                                                                            return [3 /*break*/, 5];
+                                                                                        case 4:
+                                                                                            e_1 = _a.sent();
+                                                                                            console.error("Failed to add email notification to table: ", e_1);
+                                                                                            return [3 /*break*/, 5];
+                                                                                        case 5: return [2 /*return*/];
+                                                                                    }
+                                                                                });
+                                                                            }); })()];
+                                                                    case 1:
+                                                                        _a.sent();
+                                                                        return [2 /*return*/];
+                                                                }
+                                                            });
+                                                        }); })];
+                                                case 2:
+                                                    _f.sent();
+                                                    return [2 /*return*/];
+                                            }
+                                        });
+                                    };
+                                    _c = 0, recipients_1 = recipients;
+                                    _d.label = 5;
+                                case 5:
+                                    if (!(_c < recipients_1.length)) return [3 /*break*/, 8];
+                                    recipient = recipients_1[_c];
+                                    return [5 /*yield**/, _loop_2(recipient)];
+                                case 6:
+                                    _d.sent();
+                                    _d.label = 7;
+                                case 7:
+                                    _c++;
+                                    return [3 /*break*/, 5];
+                                case 8:
+                                    console.info("notified", { length: notifiedRecipients_1.length });
+                                    subClient.acknowledge({
+                                        subscription: formattedSubscription,
+                                        ackIds: [message.ackId],
+                                    });
+                                    return [3 /*break*/, 10];
+                                case 9:
+                                    error_1 = _d.sent();
+                                    console.error("Notifying subscribers of breach failed: ".concat(error_1));
+                                    return [3 /*break*/, 10];
+                                case 10: return [2 /*return*/];
+                            }
+                        });
+                    };
+                    _i = 0, receivedMessages_1 = receivedMessages;
+                    _b.label = 1;
+                case 1:
+                    if (!(_i < receivedMessages_1.length)) return [3 /*break*/, 4];
+                    message = receivedMessages_1[_i];
+                    return [5 /*yield**/, _loop_1(message)];
+                case 2:
+                    _b.sent();
+                    _b.label = 3;
+                case 3:
+                    _i++;
+                    return [3 /*break*/, 1];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+exports.poll = poll;
+/* c8 ignore start */
+function pullMessages() {
+    return __awaiter(this, void 0, void 0, function () {
+        var options, subClient, formattedSubscription, response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    options = {};
+                    if (process.env.NODE_ENV === "development") {
+                        console.debug("Dev mode, connecting to local pubsub emulator");
+                        options = {
+                            servicePath: "localhost",
+                            port: "8085",
+                            sslCreds: grpc.credentials.createInsecure()
+                        };
+                    }
+                    subClient = new pubsub.v1.SubscriberClient(options);
+                    formattedSubscription = subClient.subscriptionPath(projectId, subscriptionName);
+                    // If there are no messages, this will wait until the default timeout for the pull API.
+                    // @see https://cloud.google.com/pubsub/docs/pull
+                    console.debug("polling pubsub...");
+                    return [4 /*yield*/, subClient.pull({
+                            subscription: formattedSubscription,
+                            maxMessages: maxMessages,
+                        })];
+                case 1:
+                    response = (_a.sent())[0];
+                    return [2 /*return*/, [subClient, response.receivedMessages]];
+            }
+        });
+    });
+}
+function init() {
+    return __awaiter(this, void 0, void 0, function () {
+        var _a, subClient, receivedMessages;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, (0, fluent_js_1.initFluentBundles)()];
+                case 1:
+                    _b.sent();
+                    return [4 /*yield*/, (0, email_js_1.initEmail)()];
+                case 2:
+                    _b.sent();
+                    return [4 /*yield*/, pullMessages()];
+                case 3:
+                    _a = _b.sent(), subClient = _a[0], receivedMessages = _a[1];
+                    return [4 /*yield*/, poll(subClient, receivedMessages)];
+                case 4:
+                    _b.sent();
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+if (process.env.NODE_ENV !== "test") {
+    init()
+        .then(function (_res) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            if (!(projectId && subscriptionName)) {
+                throw new Error("env vars not set: GCP_PUBSUB_PROJECT_ID and GCP_PUBSUB_SUBSCRIPTION_NAME");
+            }
+            nextjs_1.default.captureCheckIn({
+                checkInId: checkInId,
+                monitorSlug: SENTRY_SLUG,
+                status: "ok",
+            });
+            return [2 /*return*/];
+        });
+    }); })
+        .catch(function (err) { return console.error(err); })
+        .finally(function () { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: 
+                // Tear down knex connection pools
+                return [4 /*yield*/, subscribers_js_1.knexSubscribers.destroy()];
+                case 1:
+                    // Tear down knex connection pools
+                    _a.sent();
+                    return [4 /*yield*/, emailAddresses_js_1.knexEmailAddresses.destroy()];
+                case 2:
+                    _a.sent();
+                    return [4 /*yield*/, hibp_js_1.knexHibp.destroy()];
+                case 3:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+}
+/* c8 ignore stop */
