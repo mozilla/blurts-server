@@ -212,6 +212,9 @@ export async function poll(subClient, receivedMessages) {
               const subject = getMessage("breach-alert-subject");
 
               await sendEmail(data.recipientEmail, subject, emailTemplate);
+
+              // mark email as notified in database
+              // if this call ever fails, stop stop the script with an error
               try{
                 await markEmailAsNotified(subscriberId, breachId, data.recipientEmail)
               } catch(e) {
