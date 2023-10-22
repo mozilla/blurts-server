@@ -59,7 +59,7 @@ settings-deactivate-account-info = Ви можете деактивувати { 
 settings-deactivate-account-info-2 = Ви можете деактивувати { -product-short-name }, видаливши свій { -brand-mozilla-account }.
 # Deprecated
 settings-fxa-link-label = Перейти до налаштувань { -brand-firefox }
-settings-fxa-link-label-2 = Перейти до налаштувань { -brand-mozilla }
+settings-fxa-link-label-3 = Перейти до налаштувань { -brand-mozilla-account(case: "gen") }
 
 ## Add email dialog
 
