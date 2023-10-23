@@ -3,6 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
+
+import { logger } from "../../../../functions/server/logging";
 import { verifyEmailHash } from "../../../../../db/tables/emailAddresses.js";
 export async function GET(req: NextRequest) {
   try {
@@ -17,7 +19,7 @@ export async function GET(req: NextRequest) {
       301,
     );
   } catch (e) {
-    console.error(e);
+    logger.error(e);
     return NextResponse.json({ success: false }, { status: 500 });
   }
 }

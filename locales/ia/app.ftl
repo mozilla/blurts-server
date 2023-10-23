@@ -635,7 +635,11 @@ ad-unit-6-before-you-complete = Ante que tu completa tu proxime registration, us
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
+# Deprecated - to be replaced by -brand-mozilla-account
 -brand-fx-account = Conto Firefox
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account = Conto Mozilla
 
 ## Search Engine Optimization
 
@@ -651,7 +655,7 @@ sign-in = Aperir session
 site-nav-breaches-link = Resolver violationes de datos
 site-nav-settings-link = Parametros
 site-nav-help-link = Adjuta e assistentia
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Proba nostre altere utensiles de securitate:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -661,8 +665,12 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Menu de usator
 menu-button-alt = Aperir le menu de usator
 menu-list-accessible-label = Menu de conto
+# Deprecated
 menu-item-fxa = Gere tu { -brand-fx-account }
+menu-item-fxa-2 = Gere tu { -brand-mozilla-account }
+# Deprecated
 menu-item-fxa-alt = Aperir le pagina de { -brand-fx-account }
+menu-item-fxa-alt-2 = Aperir le pagina de { -brand-mozilla-account }
 menu-item-settings = Parametros
 menu-item-settings-alt = Aperir le pagina del parametros
 menu-item-help = Adjuta e supporto

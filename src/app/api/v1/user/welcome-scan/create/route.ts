@@ -6,6 +6,8 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../utils/auth";
 import { NextRequest, NextResponse } from "next/server";
 
+import { logger } from "../../../../../functions/server/logging";
+
 import {
   createProfile,
   createScan,
@@ -98,7 +100,7 @@ export async function POST(
 
       return NextResponse.json({ success: true }, { status: 200 });
     } catch (e) {
-      console.error(e);
+      logger.error(e);
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {

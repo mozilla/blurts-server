@@ -62,7 +62,6 @@ function generateCspData() {
         ? "'unsafe-eval' 'unsafe-inline'"
         : `'nonce-${nonce}'`) +
       ` https://*.googletagmanager.com`,
-    "script-src-attr 'none'",
     `connect-src 'self' ${
       process.env.NODE_ENV === "development" ? "webpack://*" : ""
     } https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.ingest.sentry.io https://incoming.telemetry.mozilla.org`,
@@ -88,7 +87,6 @@ function generateCspData() {
     "form-action 'self'",
     "frame-ancestors 'self'",
     "object-src 'none'",
-    "base-uri 'self'",
     "block-all-mixed-content",
     "upgrade-insecure-requests",
   ];

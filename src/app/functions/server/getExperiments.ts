@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { captureException } from "@sentry/node";
+import { logger } from "./logging";
 
 /**
  * Call the Cirrus sidecar, which returns a list of eligible experiments for the current user.
@@ -14,26 +15,28 @@ import { captureException } from "@sentry/node";
 export async function getExperiments(
   userId: string | undefined,
 ): Promise<unknown> {
-  const serverUrl = process.env.NIMBUS_SIDECAR_URL;
-  if (!serverUrl) {
-    throw new Error("env var NIMBUS_SIDECAR_URL not set");
-  }
-
   let features;
-  try {
-    features = await fetch(`${serverUrl}/v1/features/`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify({
-        client_id: userId,
-        context: { key: "example-key" },
-      }),
-    });
-  } catch (ex) {
-    console.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
-    captureException(ex);
+  if (["stage", "production"].includes(process.env.APP_ENV ?? "local")) {
+    const serverUrl = process.env.NIMBUS_SIDECAR_URL;
+    if (!serverUrl) {
+      throw new Error("env var NIMBUS_SIDECAR_URL not set");
+    }
+
+    try {
+      features = await fetch(`${serverUrl}/v1/features/`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          client_id: userId,
+          context: { key: "example-key" },
+        }),
+      });
+    } catch (ex) {
+      logger.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
+      captureException(ex);
+    }
   }
 
   return features?.json();
