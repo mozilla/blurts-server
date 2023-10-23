@@ -70,7 +70,7 @@ export function SecurityRecommendationsLayout(
             variant="primary"
             small
             // TODO: Add test once MNTOR-1700 logic is added
-            /* c8 ignore next 3 */
+            /* c8 ignore next 6 */
             onPress={() => {
               location.href = getNextGuidedStep(
                 props.data,
