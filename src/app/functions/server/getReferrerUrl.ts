@@ -4,9 +4,15 @@
 
 import type { headers as headersGetter } from "next/headers";
 
-export function getPreviousRoute(
-  headers: ReturnType<typeof headersGetter>,
-): string {
+type ReferrerUrlProps = {
+  headers: ReturnType<typeof headersGetter>;
+  referrerParam: string | undefined;
+};
+
+export function getReferrerUrl({
+  headers,
+  referrerParam,
+}: ReferrerUrlProps): string {
   const referrer = headers.get("referer");
   const serverUrl = process.env.SERVER_URL as string;
   const isRouteWithinMonitor = referrer && referrer.includes(serverUrl);
@@ -15,5 +21,12 @@ export function getPreviousRoute(
     return referrer.replace(serverUrl, "");
   }
 
-  return "";
+  switch (referrerParam) {
+    case "dashboard":
+      return "/redesign/user/dashboard";
+    case "fix":
+      return "/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan";
+    default:
+      return "";
+  }
 }
