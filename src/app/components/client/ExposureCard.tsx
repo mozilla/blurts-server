@@ -246,7 +246,9 @@ const ScanResultCard = (props: ScanResultCardProps) => {
               </div>
             </div>
             {isPremiumBrokerRemovalEnabled &&
-            props.scanResult.status === "new" ? (
+            // Verifying the status for automatically removed data brokers v. manually resolved are handled differently
+            props.scanResult.status === "new" &&
+            !props.scanResult.manually_resolved ? (
               <span className={styles.fixItBtn}>{props.resolutionCta}</span>
             ) : null}
           </div>
