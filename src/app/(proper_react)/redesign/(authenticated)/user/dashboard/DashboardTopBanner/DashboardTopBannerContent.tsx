@@ -228,9 +228,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <PremiumButton
-                label={"dashboard-top-banner-no-exposures-found-cta"}
-              />
+              <PremiumButton label="dashboard-top-banner-no-exposures-found-cta" />
             </div>
           </>
         );
@@ -482,7 +480,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button href={relevantGuidedStep.href} small variant="primary">
+              <Button href="/redesign/user/settings" small variant="primary">
                 {l10n.getString(
                   "dashboard-top-banner-scan-in-progress-no-results-cta",
                 )}
