@@ -279,7 +279,6 @@ dashboard-top-banner-your-data-scan-in-progress-all-fixed-description =
     [one] Great work fixing { $starting_exposure_total_num } exposure so far! We’re still scanning sites that sell your personal info. This should be done within a few minutes.
     *[other] Great work fixing { $starting_exposure_total_num } exposures so far! We’re still scanning sites that sell your personal info. This should be done within a few minutes.
   }
-dashboard-top-banner-your-data-is-protected-all-fixed-cta = Get continuous protection
 dashboard-top-banner-non-us-no-exposures-found-description = Great news! We searched all known data breaches and found no exposures. We’ll keep monitoring your email address and will alert you if a new breach occurs.
 
 # Variables:
