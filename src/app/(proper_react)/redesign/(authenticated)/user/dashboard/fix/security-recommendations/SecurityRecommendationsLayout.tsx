@@ -72,7 +72,10 @@ export function SecurityRecommendationsLayout(
             // TODO: Add test once MNTOR-1700 logic is added
             /* c8 ignore next 3 */
             onPress={() => {
-              // TODO: MNTOR-1700 Add routing logic
+              location.href = getNextGuidedStep(
+                props.data,
+                stepMap[props.type],
+              ).href;
             }}
             autoFocus={true}
           >
