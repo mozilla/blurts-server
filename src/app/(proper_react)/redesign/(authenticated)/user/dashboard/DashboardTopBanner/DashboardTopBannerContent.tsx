@@ -54,15 +54,11 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
           bannerData.dataBreachFixedExposuresNum
         }
         autoRemoved={
-          bannerData.dataBrokerFixedExposuresNum -
-          bannerData.dataBrokerManuallyResolvedExposuresNum +
-          bannerData.dataBrokerInProgressExposuresNum
+          bannerData.dataBrokerInProgressNum + bannerData.dataBrokerFixedNum
         }
         inProgress={bannerData.dataBrokerInProgressExposuresNum}
         totalNumExposures={
-          bannerData.dataBreachFixedExposuresNum +
-          bannerData.dataBrokerFixedExposuresNum +
-          bannerData.dataBrokerInProgressExposuresNum
+          bannerData.dataBreachTotalNum + bannerData.dataBrokerTotalNum
         }
       />
     );
