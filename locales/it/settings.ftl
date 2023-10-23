@@ -55,7 +55,7 @@ settings-deactivate-account-info = Puoi disattivare { -product-short-name } elim
 settings-deactivate-account-info-2 = Puoi disattivare { -product-short-name } eliminando il tuo { -brand-mozilla-account }.
 # Deprecated
 settings-fxa-link-label = Vai alle impostazioni di { -brand-firefox }
-settings-fxa-link-label-2 = Vai alle Impostazioni di { -brand-mozilla }
+settings-fxa-link-label-3 = Vai alle impostazioni dell’{ -brand-mozilla-account }
 
 ## Add email dialog
 

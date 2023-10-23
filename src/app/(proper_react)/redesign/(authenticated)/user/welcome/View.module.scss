@@ -178,6 +178,17 @@
         }
       }
     }
+
+    &.getStartedHidden {
+      li {
+        // If the first step indicator is hidden the space between the other two
+        // indicators grows. We’ll need to increase the length of the line that
+        // connects them:
+        &:nth-child(2)::before {
+          width: calc(50% + $stepGap);
+        }
+      }
+    }
   }
 }
 @media screen and (max-width: calc($screen-md - 1px)) {

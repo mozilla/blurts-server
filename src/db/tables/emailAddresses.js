@@ -5,7 +5,7 @@
 import { v4 as uuidv4 } from 'uuid'
 import initKnex from 'knex'
 import knexConfig from '../knexfile.js'
-import mozlog from '../../utils/log.js'
+import { logger} from '../../app/functions/server/logging';
 import { subscribeHash } from '../../utils/hibp.js'
 import { getSha1 } from '../../utils/fxa.js'
 import { getSubscriberByEmail, updateFxAData } from './subscribers.js'
@@ -16,7 +16,6 @@ import {
 } from '../../utils/error.js'
 import { getMessage } from '../../utils/fluent.js'
 const knex = initKnex(knexConfig)
-const log = mozlog('DB.email_addresses')
 
 /**
  * @param {string} token
@@ -58,7 +57,7 @@ async function getEmailAddressRecordByEmail (email) {
   }
   if (emailAddresses.length > 1) {
     // TODO: handle multiple emails in separate(?) subscriber accounts?
-    log.warn('getEmailAddressRecordByEmail', { msg: 'found the same email multiple times' })
+    logger.warn('getEmailAddressRecordByEmail', { msg: 'found the same email multiple times' })
   }
   return emailAddresses[0]
 }
@@ -172,7 +171,7 @@ async function _getSha1EntryAndDo (sha1, aFoundCallback, aNotFoundCallback) {
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
-  log.debug('_addEmailHash', { sha1, email, signupLanguage, verified })
+  logger.debug('_addEmailHash', { sha1, email, signupLanguage, verified })
   try {
     return await _getSha1EntryAndDo(sha1, async (/** @type {any} */ aEntry) => {
       // Entry existed, patch the email value if supplied.
@@ -202,7 +201,7 @@ async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
     })
   } catch (e) {
     // @ts-ignore Log whatever, we don't care
-    log.error(e)
+    logger.error(e)
     throw new InternalServerError(getMessage('error-could-not-add-email'))
   }
 }
@@ -322,7 +321,7 @@ async function removeEmail (email) {
   if (!subscriber) {
     const emailAddress = await getEmailAddressRecordByEmail(email)
     if (!emailAddress) {
-      log.warn('removed-subscriber-not-found')
+      logger.warn('removed-subscriber-not-found')
       return
     }
     await knex('email_addresses')

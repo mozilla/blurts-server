@@ -50,8 +50,12 @@ settings-cancel-premium-subscription-link-label = Annulearje fan jo { -brand-fx-
 ## Deactivate account
 
 settings-deactivate-account-title = Account de-aktivearje
+# Deprecated
 settings-deactivate-account-info = Jo kinne { -product-short-name } de-aktivearje troch jo { -brand-fx-account } fuort te smiten.
+settings-deactivate-account-info-2 = Jo kinne { -product-short-name } de-aktivearje troch jo { -brand-mozilla-account } fuort te smiten.
+# Deprecated
 settings-fxa-link-label = Gean nei { -brand-firefox }-ynstellingen
+settings-fxa-link-label-3 = Nei { -brand-mozilla-account }-ynstellingen
 
 ## Add email dialog
 
