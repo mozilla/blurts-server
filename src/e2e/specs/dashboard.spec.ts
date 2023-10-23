@@ -7,7 +7,7 @@ import { checkAuthState } from "../utils/helpers.js";
 
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
-test.describe.only("Breaches Dashboard - Headers", () => {
+test.describe("Breaches Dashboard - Headers", () => {
   test.beforeEach(async ({ dashboardPage, page }) => {
     await dashboardPage.open();
 
