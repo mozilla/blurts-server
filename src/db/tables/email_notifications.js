@@ -11,11 +11,13 @@ const knex = initKnex(knexConfig);
   */
  async function getAllEmailNotificationsForSubscriber(subscriberId){
   console.info("getAllEmailNotificationsForSubscriber: ", subscriberId);
-  return await knex("email_notifications")
-    .where("subscriber_id", subscriberId)
-    .orderBy("id")
-    .forUpdate()
-    .returning("*");
+  return await knex.transaction(trx => {
+    return trx('email_notifications')
+      .forUpdate()
+      .select()
+      .where("subscriber_id", subscriberId)
+      .orderBy("id");
+  })
 }
 
 /**
@@ -31,12 +33,15 @@ async function getEmailNotification(
   console.info(
     `getEmailNotification for subscriber: ${subscriberId}, breach: ${breachId}`,
   );
-  const res = await knex("email_notifications")
-    .where("subscriber_id", subscriberId)
-    .andWhere("breach_id", breachId)
-    .andWhere("email", email)
-    .forUpdate()
-    .returning("*");
+  const res = await knex.transaction(trx => {
+    return trx('email_notifications')
+      .forUpdate()
+      .select()
+      .where("subscriber_id", subscriberId)
+      .andWhere("breach_id", breachId)
+      .andWhere("email", email);
+  })
+
   if (res.length > 1) {
     console.error(
       "More than one entry for subscriber/breach email notification: ",
@@ -56,11 +61,15 @@ async function getNotifiedSubscribersForBreach(
   console.info(
     `getEmailNotificationSubscribersForBreach for breach: ${breachId}`,
   );
-  const res = await knex("email_notifications")
-    .where("breach_id", breachId)
-    .andWhere("notified", true)
-    .forUpdate()
-    .returning("subscriber_id");
+
+  const res = await knex.transaction(trx => {
+    return trx('email_notifications')
+      .forUpdate()
+      .select("subscriber_id")
+      .where("notified", true)
+      .andWhere("breach_id", breachId);
+  })
+
   return res.map((row) => row.subscriber_id);
 }
 
