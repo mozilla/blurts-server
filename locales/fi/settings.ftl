@@ -55,7 +55,7 @@ settings-deactivate-account-info = Voit poistaa { -product-short-name }in käyt�
 settings-deactivate-account-info-2 = Voit poistaa { -product-short-name }in käytöstä poistamalla { -brand-mozilla-account }n.
 # Deprecated
 settings-fxa-link-label = Siirry { -brand-firefox }-asetuksiin
-settings-fxa-link-label-2 = Siirry { -brand-mozilla }-asetuksiin
+settings-fxa-link-label-3 = Siirry { -brand-mozilla-account }n asetuksiin
 
 ## Add email dialog
 

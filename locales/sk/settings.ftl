@@ -59,7 +59,7 @@ settings-deactivate-account-info = Službu { -product-short-name } môžete deak
 settings-deactivate-account-info-2 = { -product-short-name } môžete deaktivovať odstránením svojho { -brand-mozilla-account(case: "gen", capitalization: "lower") }.
 # Deprecated
 settings-fxa-link-label = Prejsť do Nastavení { -brand-firefox(case: "gen") }
-settings-fxa-link-label-2 = Prejsť do Nastavení { -brand-mozilla(case: "gen") }
+settings-fxa-link-label-3 = Prejsť do Nastavení { -brand-mozilla-account(case: "gen", capitalization: "lowe") }
 
 ## Add email dialog
 
