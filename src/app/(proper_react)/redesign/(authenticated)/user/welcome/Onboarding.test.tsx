@@ -228,6 +228,16 @@ it("shows a condensed version of the onboarding skipping step “Get started”"
   expect(proceedButton).toBeInTheDocument();
 });
 
+it("does not show the go back button on step 2 of the onboarding when there is no previous route", () => {
+  const ComposedOnboarding = composeStory(Onboarding, Meta);
+  render(<ComposedOnboarding stepId="enterInfo" />);
+
+  const backButton = screen.queryByRole("button", {
+    name: "Go back",
+  });
+  expect(backButton).not.toBeInTheDocument();
+});
+
 it("does not navigate back to step 1 of the onboarding when directly linking to the `enterInfo` step if there is previous route", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
