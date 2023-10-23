@@ -25,11 +25,11 @@
       padding: 0;
       cursor: pointer;
       color: rgba($color-purple-70, 0.7);
-      width: 15px;
-      height: 20px; //height of down chevron
+      width: 15px; // size of the chevron on mobile
+      height: 20px; // height of down chevron
 
       @media screen and (min-width: $screen-md) {
-        width: 20px;
+        width: 20px; // size of the chevron on larger devices
       }
 
       .isOpen {
