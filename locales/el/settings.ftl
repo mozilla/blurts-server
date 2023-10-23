@@ -55,7 +55,7 @@ settings-deactivate-account-info = Μπορείτε να απενεργοποι�
 settings-deactivate-account-info-2 = Μπορείτε να απενεργοποιήσετε το { -product-short-name } διαγράφοντας τον { -brand-mozilla-account(case: "acc", capitalization: "lower") } σας.
 # Deprecated
 settings-fxa-link-label = Μεταβείτε στις ρυθμίσεις του { -brand-firefox }
-settings-fxa-link-label-2 = Μετάβαση στις ρυθμίσεις { -brand-mozilla }
+settings-fxa-link-label-3 = Μετάβαση στις ρυθμίσεις { -brand-mozilla-account(case: "gen", capitalization: "lower") }
 
 ## Add email dialog
 

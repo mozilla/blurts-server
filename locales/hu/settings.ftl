@@ -55,7 +55,7 @@ settings-deactivate-account-info = A { -brand-fx-account }ja törlésével deakt
 settings-deactivate-account-info-2 = A { -brand-mozilla-account }ja törlésével kikapcsolhatja a { -product-short-name }t.
 # Deprecated
 settings-fxa-link-label = Ugorjon a { -brand-firefox } beállításaihoz
-settings-fxa-link-label-2 = Ugorjon a { -brand-mozilla } beállításaihoz
+settings-fxa-link-label-3 = Ugrás a { -brand-mozilla-account } beállításaihoz
 
 ## Add email dialog
 

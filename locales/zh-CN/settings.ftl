@@ -47,7 +47,7 @@ settings-deactivate-account-info = 您可以通过删除您的 { -brand-fx-accou
 settings-deactivate-account-info-2 = 您可以通过删除 { -brand-mozilla-account } 来停用 { -product-short-name }。
 # Deprecated
 settings-fxa-link-label = 转到 { -brand-firefox } 设置
-settings-fxa-link-label-2 = 前往 { -brand-mozilla } 设置
+settings-fxa-link-label-3 = 前往 { -brand-mozilla-account } 设置
 
 ## Add email dialog
 
