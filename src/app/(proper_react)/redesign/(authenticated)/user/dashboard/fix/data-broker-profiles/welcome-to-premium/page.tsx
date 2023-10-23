@@ -13,7 +13,6 @@ import { WelcomeToPremiumView } from "./WelcomeToPremiumView";
 import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 import { StepDeterminationData } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
-import { hasPremium } from "../../../../../../../../functions/universal/user";
 
 export default async function WelcomeToPremiumPage() {
   const session = await getServerSession(authOptions);
@@ -21,11 +20,6 @@ export default async function WelcomeToPremiumPage() {
   // Ensure user is logged in
   if (!session?.user?.subscriber?.id) {
     redirect("/redesign/user/dashboard/");
-  }
-
-  // The user may have subscribed and just need their session updated - they will be redirected back to try again if it looks valid.
-  if (!hasPremium(session.user)) {
-    redirect(`${process.env.NEXTAUTH_URL}/redesign/user/dashboard/subscribed`);
   }
 
   const result = await getOnerepProfileId(session.user.subscriber.id);
