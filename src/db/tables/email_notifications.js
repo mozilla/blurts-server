@@ -14,6 +14,7 @@ const knex = initKnex(knexConfig);
   return await knex("email_notifications")
     .where("subscriber_id", subscriberId)
     .orderBy("id")
+    .forUpdate()
     .returning("*");
 }
 
@@ -34,6 +35,7 @@ async function getEmailNotification(
     .where("subscriber_id", subscriberId)
     .andWhere("breach_id", breachId)
     .andWhere("email", email)
+    .forUpdate()
     .returning("*");
   if (res.length > 1) {
     console.error(
@@ -57,6 +59,7 @@ async function getNotifiedSubscribersForBreach(
   const res = await knex("email_notifications")
     .where("breach_id", breachId)
     .andWhere("notified", true)
+    .forUpdate()
     .returning("subscriber_id");
   return res.map((row) => row.subscriber_id);
 }
