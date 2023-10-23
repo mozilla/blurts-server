@@ -72,7 +72,7 @@
     "knex": "^3.0.1",
     "next": "^13.5.6",
     "next-auth": "^4.24.3",
-    "nodemailer": "^6.9.6",
+    "nodemailer": "^6.9.7",
     "patch-package": "^8.0.0",
     "pg": "^8.11.3",
     "react": "^18.2.0",
