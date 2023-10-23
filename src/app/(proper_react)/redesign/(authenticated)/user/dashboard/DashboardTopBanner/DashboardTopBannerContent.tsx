@@ -473,9 +473,8 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 "dashboard-top-banner-your-data-scan-in-progress-all-fixed-description",
                 {
                   starting_exposure_total_num:
-                    bannerData.totalExposures -
-                    bannerData.dataBrokerFixedExposuresNum -
-                    bannerData.dataBreachFixedExposuresNum -
+                    bannerData.dataBrokerFixedExposuresNum +
+                    bannerData.dataBreachFixedExposuresNum +
                     bannerData.dataBrokerInProgressExposuresNum,
                 },
               )}
