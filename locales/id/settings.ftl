@@ -53,7 +53,7 @@ settings-deactivate-account-info = Anda dapat menonaktifkan { -product-short-nam
 settings-deactivate-account-info-2 = Anda dapat menonaktifkan { -product-short-name } dengan menghapus { -brand-mozilla-account } Anda.
 # Deprecated
 settings-fxa-link-label = Buka Pengaturan { -brand-firefox }
-settings-fxa-link-label-2 = Buka Pengaturan { -brand-mozilla }
+settings-fxa-link-label-3 = Buka pengaturan { -brand-mozilla-account }
 
 ## Add email dialog
 
