@@ -270,10 +270,6 @@ $tab-bar-height: 100px;
 $width-first-column-filter-bar: 90px;
 
 @mixin company-name-area {
-  &.makeFontSmaller {
-    font: $text-body-2xs;
-  }
-
   @media screen and (min-width: $screen-lg) {
     min-width: 250px;
   }
