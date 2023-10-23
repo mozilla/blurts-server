@@ -27,7 +27,7 @@ export type Props = {
   dataBrokerCount: number;
   breachesTotalCount: number;
   stepId?: StepId;
-  previousRoute: string;
+  previousRoute: string | null;
 };
 
 export const View = ({
@@ -47,7 +47,7 @@ export const View = ({
       <FindExposures
         dataBrokerCount={dataBrokerCount}
         breachesTotalCount={breachesTotalCount}
-        previousRoute={previousRoute}
+        previousRoute={previousRoute ?? "/redesign/user/dashboard"}
       />
     ) : currentStep === "enterInfo" ? (
       <EnterInfo
@@ -55,11 +55,15 @@ export const View = ({
         // TODO: Add unit test when changing this code:
         /* c8 ignore next */
         onScanStarted={() => setCurrentStep("findExposures")}
-        onGoBack={() =>
-          skipInitialStep
-            ? router.push(previousRoute)
-            : setCurrentStep("getStarted")
-        }
+        previousRoute={previousRoute}
+        skipInitialStep={skipInitialStep}
+        onGoBack={() => {
+          if (skipInitialStep && previousRoute) {
+            router.push(previousRoute);
+          } else {
+            setCurrentStep("getStarted");
+          }
+        }}
       />
     ) : (
       <GetStarted

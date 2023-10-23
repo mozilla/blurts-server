@@ -12,7 +12,7 @@ type ReferrerUrlProps = {
 export function getReferrerUrl({
   headers,
   referrerParam,
-}: ReferrerUrlProps): string {
+}: ReferrerUrlProps): string | null {
   const referrer = headers.get("referer");
   const serverUrl = process.env.SERVER_URL as string;
   const isRouteWithinMonitor = referrer && referrer.includes(serverUrl);
@@ -27,6 +27,6 @@ export function getReferrerUrl({
     case "fix":
       return "/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan";
     default:
-      return "";
+      return null;
   }
 }
