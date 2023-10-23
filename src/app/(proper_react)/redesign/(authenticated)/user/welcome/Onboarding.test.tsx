@@ -228,10 +228,15 @@ it("shows a condensed version of the onboarding skipping step “Get started”"
   expect(proceedButton).toBeInTheDocument();
 });
 
-it("does not navigate back to step 1 of the onboarding when directly linking to the `enterInfo` step", async () => {
+it("does not navigate back to step 1 of the onboarding when directly linking to the `enterInfo` step if there is previous route", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
-  render(<ComposedOnboarding stepId="enterInfo" />);
+  render(
+    <ComposedOnboarding
+      stepId="enterInfo"
+      previousRoute="/redesign/user/dashboard/"
+    />,
+  );
 
   const backButton = screen.getByRole("button", {
     name: "Go back",

@@ -20,6 +20,7 @@ export const Onboarding: Story = {
       user={{ email: "example@example.com" }}
       dataBrokerCount={190}
       breachesTotalCount={678}
+      previousRoute={props.previousRoute}
     />
   ),
 };
