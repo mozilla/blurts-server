@@ -1728,3 +1728,19 @@ it("expands one card at a time", async () => {
   const afterExpand2 = screen.getAllByRole("button", { name: "Expand" });
   expect(afterExpand1.length).toBe(afterExpand2.length);
 });
+
+it("closes previously active card onclick", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const initialState = screen.getAllByRole("button", { name: "Expand" });
+  await user.click(initialState[0]);
+  const afterExpand = screen.getAllByRole("button", { name: "Collapse" });
+  await user.click(afterExpand[0]);
+  const afterCollapse = screen.getAllByRole("button", { name: "Expand" });
+  expect(initialState.length).toBe(afterCollapse.length);
+});
