@@ -11,6 +11,7 @@ import { getAllBreachesCount } from "../../../../../../../db/tables/breaches";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
 import { authOptions } from "../../../../../../api/utils/auth";
+import { getPreviousRoute } from "../../../../../../functions/server/getPreviousRoute";
 
 const FreeScanSlug = "free-scan" as const;
 
@@ -46,6 +47,9 @@ export default async function Onboarding({ params }: Props) {
   }
 
   const allBreachesCount = await getAllBreachesCount();
+  const headersList = headers();
+  const previousRoute =
+    getPreviousRoute(headersList) || "/redesign/user/dashboard";
 
   return (
     <>
@@ -57,6 +61,7 @@ export default async function Onboarding({ params }: Props) {
         )}
         breachesTotalCount={allBreachesCount}
         stepId={firstSlug === FreeScanSlug ? "enterInfo" : "getStarted"}
+        previousRoute={previousRoute}
       />
     </>
   );
