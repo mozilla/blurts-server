@@ -4,16 +4,21 @@
 
 "use client";
 
-import { useSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import { useEffect } from "react";
+import { hasPremium } from "../../functions/universal/user";
 
 export const SubscriptionCheck = () => {
   const { update } = useSession();
 
   useEffect(() => {
     async function updateSession() {
-      await update();
+      const session = await getSession();
+      if (!hasPremium(session?.user)) {
+        await update();
+      }
     }
+
     void updateSession();
 
     // This should only run once per page load - `update` will always appear to be changed.

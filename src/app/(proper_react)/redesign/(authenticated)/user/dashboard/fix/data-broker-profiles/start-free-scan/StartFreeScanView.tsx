@@ -62,7 +62,10 @@ export function StartFreeScanView(props: Props) {
           </p>
         </div>
         <div className={styles.buttonsWrapper}>
-          <Button variant="primary" href="/redesign/user/welcome/free-scan">
+          <Button
+            variant="primary"
+            href="/redesign/user/welcome/free-scan?referrer=fix"
+          >
             {l10n.getString(
               "fix-flow-data-broker-profiles-start-free-scan-button-start-scan",
             )}
