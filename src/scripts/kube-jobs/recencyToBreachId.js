@@ -10,49 +10,52 @@
  * `useBreachId: true/false`
  */
 
-import Knex from 'knex'
-import knexConfig from '../../db/knexfile.js'
-import { getAllBreachesFromDb } from '../../utils/hibp.js'
-import { getAllEmailsAndBreaches } from '../../utils/breaches.js'
-const knex = Knex(knexConfig)
+import Knex from "knex";
+import knexConfig from "../../db/knexfile.js";
+import { getAllBreachesFromDb } from "../../utils/hibp.js";
+import { getAllEmailsAndBreaches } from "../../utils/breaches.js";
+const knex = Knex(knexConfig);
 
-const LIMIT = 1000 // with millions of records, we have to load a few at a time
-let subscribersArr = []
+const LIMIT = 1000; // with millions of records, we have to load a few at a time
+let subscribersArr = [];
 
 const selectAndLockResolutions = async () => {
-  const trx = await knex.transaction()
-  let subscribers = []
+  const trx = await knex.transaction();
+  let subscribers = [];
   try {
-    subscribers = await knex.select('id', 'primary_email', 'breach_resolution')
-      .from('subscribers')
-      .whereNotNull('breach_resolution')
-      .whereNull('db_migration_2')
+    subscribers = await knex
+      .select("id", "primary_email", "breach_resolution")
+      .from("subscribers")
+      .whereNotNull("breach_resolution")
+      .whereNull("db_migration_2")
       .limit(LIMIT)
-      .orderBy('updated_at', 'desc')
+      .orderBy("updated_at", "desc")
       .transacting(trx)
-      .forUpdate()
+      .forUpdate();
 
     // update the lock
-    await Promise.all(subscribers.map(sub => {
-      const { id } = sub
-      return knex('subscribers')
-        .where('id', id)
-        .update({
-          db_migration_2: true
-        })
-        .transacting(trx)
-    }))
+    await Promise.all(
+      subscribers.map((sub) => {
+        const { id } = sub;
+        return knex("subscribers")
+          .where("id", id)
+          .update({
+            db_migration_2: true,
+          })
+          .transacting(trx);
+      }),
+    );
 
-    await trx.commit()
+    await trx.commit();
   } catch (error) {
-    await trx.rollback()
-    console.error('select & mark rows failed!! first row:')
-    console.log({ first: subscribers[0] })
-    console.error(error)
+    await trx.rollback();
+    console.error("select & mark rows failed!! first row:");
+    console.log({ first: subscribers[0] });
+    console.error(error);
   }
 
-  return subscribers
-}
+  return subscribers;
+};
 
 /**
  * Batch update
@@ -60,102 +63,119 @@ const selectAndLockResolutions = async () => {
  * @param {*} updateCollection
  */
 const batchUpdate = async (updateCollection) => {
-  const trx = await knex.transaction()
+  const trx = await knex.transaction();
   try {
-    await Promise.all(updateCollection.map(tuple => {
-      const { user, updatedBreachesResolution } = tuple
-      return knex('subscribers')
-        .where('id', user.id)
-        .update({
-          breach_resolution: updatedBreachesResolution
-        })
-        .transacting(trx)
-    }))
-    await trx.commit()
+    await Promise.all(
+      updateCollection.map((tuple) => {
+        const { user, updatedBreachesResolution } = tuple;
+        return knex("subscribers")
+          .where("id", user.id)
+          .update({
+            breach_resolution: updatedBreachesResolution,
+          })
+          .transacting(trx);
+      }),
+    );
+    await trx.commit();
   } catch (error) {
-    await trx.rollback()
-    console.error('batch update failed!!')
-    console.log({ updateCollection })
-    console.error(error)
+    await trx.rollback();
+    console.error("batch update failed!!");
+    console.log({ updateCollection });
+    console.error(error);
   }
-}
+};
 
 // Script begins here
-const startTime = Date.now()
-console.log(`Start time is: ${startTime}`)
+const startTime = Date.now();
+console.log(`Start time is: ${startTime}`);
 
 // load all breaches for ref
-const allBreaches = await getAllBreachesFromDb()
-if (allBreaches && allBreaches.length > 0) console.log('breaches loaded successfully! ', allBreaches.length)
+const allBreaches = await getAllBreachesFromDb();
+if (allBreaches && allBreaches.length > 0)
+  console.log("breaches loaded successfully! ", allBreaches.length);
 
 // find all subscribers who resolved any breaches in the past,
 // replace recency index with breach id
 
-let failedToSelect = true
+let failedToSelect = true;
 while (failedToSelect) {
   try {
-    subscribersArr = await selectAndLockResolutions()
-    failedToSelect = false
+    subscribersArr = await selectAndLockResolutions();
+    failedToSelect = false;
   } catch (e) {
-    console.error(e)
+    console.error(e);
   }
 }
 
-console.log(`Loaded # of subscribers: ${subscribersArr.length}`)
-const updateCollection = []
+console.log(`Loaded # of subscribers: ${subscribersArr.length}`);
+const updateCollection = [];
 
 for (const subscriber of subscribersArr) {
-  const { breach_resolution: v2 } = subscriber
+  const { breach_resolution: v2 } = subscriber;
   // console.debug({ v2 })
 
   // if useBreachId is set, skip because this breach_resolution has already been worked on
   if (v2.useBreachId) {
-    console.log('Skipping since `useBreachId` is set already, this breach resolution is already converted')
-    continue
+    console.log(
+      "Skipping since `useBreachId` is set already, this breach resolution is already converted",
+    );
+    continue;
   }
 
-  const newResolutions = {}
+  const newResolutions = {};
 
   // fetch subscriber all breaches / email
-  let subscriberBreachesEmail
+  let subscriberBreachesEmail;
   try {
-    subscriberBreachesEmail = await getAllEmailsAndBreaches(subscriber, allBreaches)
+    subscriberBreachesEmail = await getAllEmailsAndBreaches(
+      subscriber,
+      allBreaches,
+    );
   } catch (e) {
-    console.error('Cannot fetch subscriber breaches at the moment: ', e)
-    continue
+    console.error("Cannot fetch subscriber breaches at the moment: ", e);
+    continue;
   }
   // console.debug(JSON.stringify(subscriberBreachesEmail.verifiedEmails))
 
   for (const email in v2) {
     // console.debug({ email })
-    const resolutions = v2[email]
+    const resolutions = v2[email];
     // console.debug({ resolutions })
-    newResolutions[email] = {}
+    newResolutions[email] = {};
 
     for (const recencyIndex in resolutions) {
       // console.debug({ recencyIndex })
 
       // find subscriber's relevant recency index breach information
-      const ve = subscriberBreachesEmail.verifiedEmails?.filter(ve => ve.email === email)[0] || {}
-      const subBreach = ve.breaches?.filter(b => Number(b.recencyIndex) === Number(recencyIndex))[0] || null
-      const breachName = subBreach?.Name
-      console.debug({ breachName })
+      const ve =
+        subscriberBreachesEmail.verifiedEmails?.filter(
+          (ve) => ve.email === email,
+        )[0] || {};
+      const subBreach =
+        ve.breaches?.filter(
+          (b) => Number(b.recencyIndex) === Number(recencyIndex),
+        )[0] || null;
+      const breachName = subBreach?.Name;
+      console.debug({ breachName });
 
       // find breach id for the breach
-      const breachId = allBreaches.find(b => b.Name === breachName)?.Id
-      newResolutions[email][breachId] = v2[email][recencyIndex]
+      const breachId = allBreaches.find((b) => b.Name === breachName)?.Id;
+      newResolutions[email][breachId] = v2[email][recencyIndex];
     }
   }
 
   // check if v2 is changed, if so, upsert the new v2
-  newResolutions.useBreachId = true
-  updateCollection.push({ user: subscriber, updatedBreachesResolution: newResolutions })
+  newResolutions.useBreachId = true;
+  updateCollection.push({
+    user: subscriber,
+    updatedBreachesResolution: newResolutions,
+  });
 }
 
-await batchUpdate(updateCollection)
+await batchUpdate(updateCollection);
 
-console.log('Reaching the end of the table')
-const endTime = Date.now()
-console.log(`End time is: ${endTime}`)
-console.log('Diff is: ', endTime - startTime)
-process.exit()
+console.log("Reaching the end of the table");
+const endTime = Date.now();
+console.log(`End time is: ${endTime}`);
+console.log("Diff is: ", endTime - startTime);
+process.exit();

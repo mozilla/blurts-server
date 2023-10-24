@@ -909,7 +909,7 @@ it("shows the correct dashboard banner CTA for US users, without Premium, empty 
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "Get continuous protection",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();

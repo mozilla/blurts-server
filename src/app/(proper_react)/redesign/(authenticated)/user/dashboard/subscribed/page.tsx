@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { hasPremium } from "../../../../../../functions/universal/user";
 import { captureException } from "@sentry/browser";
 import { useL10n } from "../../../../../../hooks/l10n";
+import { captureMessage } from "@sentry/nextjs";
 
 /**
  * Client-side page to update session info.
@@ -36,16 +37,21 @@ export default function Subscribed() {
             `/redesign/user/dashboard/fix/data-broker-profiles/welcome-to-premium`,
           );
         } else {
-          router.replace(`/`);
+          const message = "No subscription found";
+          captureMessage(message);
+          console.error(message);
+          router.replace("/redesign/user/dashboard");
         }
       } catch (ex) {
-        console.error(ex);
         captureException(ex);
-        router.replace(`/`);
+        console.error(ex);
+        router.replace("/redesign/user/dashboard");
       }
     }
     void updateSession();
-  }, [update, router]);
+    // Only run once, since we will be immediately redirecting no matter what.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  return <div>{l10n.getString("subscription-check-loading")}</div>;
+  return <div id="loading">{l10n.getString("subscription-check-loading")}</div>;
 }
