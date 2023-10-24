@@ -11,6 +11,7 @@ import { getAllBreachesCount } from "../../../../../../../db/tables/breaches";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
 import { authOptions } from "../../../../../../api/utils/auth";
+import { getReferrerUrl } from "../../../../../../functions/server/getReferrerUrl";
 
 const FreeScanSlug = "free-scan" as const;
 
@@ -18,9 +19,12 @@ type Props = {
   params: {
     slug: string[] | undefined;
   };
+  searchParams: {
+    referrer?: string;
+  };
 };
 
-export default async function Onboarding({ params }: Props) {
+export default async function Onboarding({ params, searchParams }: Props) {
   const session = await getServerSession(authOptions);
   if (!session) {
     return <SignInButton autoSignIn={true} />;
@@ -46,18 +50,22 @@ export default async function Onboarding({ params }: Props) {
   }
 
   const allBreachesCount = await getAllBreachesCount();
+  const headersList = headers();
+  const previousRoute = getReferrerUrl({
+    headers: headersList,
+    referrerParam: searchParams.referrer,
+  });
 
   return (
-    <>
-      <View
-        user={session.user}
-        dataBrokerCount={parseInt(
-          process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-          10,
-        )}
-        breachesTotalCount={allBreachesCount}
-        stepId={firstSlug === FreeScanSlug ? "enterInfo" : "getStarted"}
-      />
-    </>
+    <View
+      user={session.user}
+      dataBrokerCount={parseInt(
+        process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+        10,
+      )}
+      breachesTotalCount={allBreachesCount}
+      stepId={firstSlug === FreeScanSlug ? "enterInfo" : "getStarted"}
+      previousRoute={previousRoute}
+    />
   );
 }

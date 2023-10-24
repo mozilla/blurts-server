@@ -188,7 +188,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </p>
             <div className={styles.cta}>
               <Button
-                href="/redesign/user/welcome/free-scan"
+                href="/redesign/user/welcome/free-scan?referrer=dashboard"
                 small
                 variant="primary"
               >
