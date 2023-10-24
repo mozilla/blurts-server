@@ -4,7 +4,7 @@
 
 import { getServerSession } from "next-auth";
 import { SignInButton } from "../../../../../../(nextjs_migration)/components/client/SignInButton";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { isEligibleForFreeScan } from "../../../../../../functions/server/onerep";
 import { View } from "../View";
 import { getAllBreachesCount } from "../../../../../../../db/tables/breaches";
@@ -46,7 +46,9 @@ export default async function Onboarding({ params, searchParams }: Props) {
   );
 
   if (!userIsEligible) {
-    return redirect("/");
+    throw new Error(
+      `Subscriber not eligible for free scan, ID: ${session?.user?.subscriber?.id}`,
+    );
   }
 
   const allBreachesCount = await getAllBreachesCount();
