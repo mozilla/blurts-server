@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Session } from "next-auth";
@@ -21,6 +21,7 @@ import ShieldIcon from "./assets/shield-icon.svg";
 import styles from "./PremiumBadge.module.scss";
 import { useGa } from "../../hooks/useGa";
 import { CountryCodeContext } from "../../../contextProviders/country-code";
+import { useSession } from "next-auth/react";
 
 export type Props = {
   user: Session["user"];
@@ -55,6 +56,18 @@ export default function PremiumBadge({
     { type: "dialog" },
     dialogState,
   );
+
+  const { update } = useSession();
+
+  useEffect(() => {
+    async function updateSession() {
+      await update();
+    }
+    void updateSession();
+
+    // This should only run once per page load - `update` will always appear to be changed.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (hasPremium(user)) {
     return (
