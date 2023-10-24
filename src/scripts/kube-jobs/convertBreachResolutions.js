@@ -8,15 +8,15 @@
  * with the goal of deprecating the column
  */
 
-import Knex from 'knex'
-import knexConfig from '../../db/knexfile.js'
-import { getAllBreachesFromDb } from '../../utils/hibp.js'
-import { getAllEmailsAndBreaches } from '../../utils/breaches.js'
-import { BreachDataTypes } from '../../utils/breach-resolution.js'
-const knex = Knex(knexConfig)
+import Knex from "knex";
+import knexConfig from "../../db/knexfile.js";
+import { getAllBreachesFromDb } from "../../utils/hibp.js";
+import { getAllEmailsAndBreaches } from "../../utils/breaches.js";
+import { BreachDataTypes } from "../../utils/breach-resolution.js";
+const knex = Knex(knexConfig);
 
-const LIMIT = 1000 // with millions of records, we have to load a few at a time
-let subscribersArr = []
+const LIMIT = 1000; // with millions of records, we have to load a few at a time
+let subscribersArr = [];
 
 /**
  * Batch update
@@ -24,95 +24,104 @@ let subscribersArr = []
  * @param {*} updateCollection
  */
 const batchUpdate = async (updateCollection) => {
-  const trx = await knex.transaction()
+  const trx = await knex.transaction();
   try {
-    await Promise.all(updateCollection.map(tuple => {
-      const { user, updatedBreachesResolution } = tuple
-      return knex('subscribers')
-        .where('id', user.id)
-        .update({
-          breach_resolution: updatedBreachesResolution
-        })
-        .transacting(trx)
-    }))
-    await trx.commit()
+    await Promise.all(
+      updateCollection.map((tuple) => {
+        const { user, updatedBreachesResolution } = tuple;
+        return knex("subscribers")
+          .where("id", user.id)
+          .update({
+            breach_resolution: updatedBreachesResolution,
+          })
+          .transacting(trx);
+      }),
+    );
+    await trx.commit();
   } catch (error) {
-    await trx.rollback()
-    console.error('batch update failed!!')
-    console.log({ updateCollection })
-    console.error(error)
+    await trx.rollback();
+    console.error("batch update failed!!");
+    console.log({ updateCollection });
+    console.error(error);
   }
-}
+};
 
 const selectAndLockResolutions = async () => {
-  const trx = await knex.transaction()
-  let subscribersArr = []
+  const trx = await knex.transaction();
+  let subscribersArr = [];
   try {
-    subscribersArr = await knex.select('id', 'primary_email', 'breaches_resolved', 'breach_resolution')
-      .from('subscribers')
-      .whereNotNull('breaches_resolved')
-      .whereNull('db_migration_1')
+    subscribersArr = await knex
+      .select("id", "primary_email", "breaches_resolved", "breach_resolution")
+      .from("subscribers")
+      .whereNotNull("breaches_resolved")
+      .whereNull("db_migration_1")
       .limit(LIMIT)
-      .orderBy('updated_at', 'desc')
+      .orderBy("updated_at", "desc")
       .transacting(trx)
-      .forUpdate()
+      .forUpdate();
 
     // update the lock
-    await Promise.all(subscribersArr.map(sub => {
-      const { id } = sub
-      return knex('subscribers')
-        .where('id', id)
-        .update({
-          db_migration_1: true
-        })
-        .transacting(trx)
-    }))
+    await Promise.all(
+      subscribersArr.map((sub) => {
+        const { id } = sub;
+        return knex("subscribers")
+          .where("id", id)
+          .update({
+            db_migration_1: true,
+          })
+          .transacting(trx);
+      }),
+    );
 
-    await trx.commit()
+    await trx.commit();
   } catch (error) {
-    await trx.rollback()
-    console.log('select & mark rows failed!! first row:')
-    console.log({ first: subscribersArr[0] })
-    console.error(error)
+    await trx.rollback();
+    console.log("select & mark rows failed!! first row:");
+    console.log({ first: subscribersArr[0] });
+    console.error(error);
   }
 
-  return subscribersArr
-}
+  return subscribersArr;
+};
 
-const startTime = Date.now()
-console.log(`Start time is: ${startTime}`)
+const startTime = Date.now();
+console.log(`Start time is: ${startTime}`);
 
 // load all breaches for ref
-const allBreaches = await getAllBreachesFromDb()
-if (allBreaches && allBreaches.length > 0) console.log('breaches loaded successfully! ', allBreaches.length)
+const allBreaches = await getAllBreachesFromDb();
+if (allBreaches && allBreaches.length > 0)
+  console.log("breaches loaded successfully! ", allBreaches.length);
 
 // find all subscribers who resolved any breaches in the past, convert those
 // records into the new v2 format
-let failedToSelect = true
+let failedToSelect = true;
 while (failedToSelect) {
   try {
-    subscribersArr = await selectAndLockResolutions()
-    failedToSelect = false
+    subscribersArr = await selectAndLockResolutions();
+    failedToSelect = false;
   } catch (e) {
-    failedToSelect = true
-    console.error(e)
+    failedToSelect = true;
+    console.error(e);
   }
 }
 
-console.log(`Loaded # of subscribers: ${subscribersArr.length}`)
-const updateCollection = []
+console.log(`Loaded # of subscribers: ${subscribersArr.length}`);
+const updateCollection = [];
 
 for (const subscriber of subscribersArr) {
-  let { breaches_resolved: v1, breach_resolution: v2 } = subscriber
-  let isV2Changed = false // use a boolean to track if v2 has been changed, only upsert if so
+  let { breaches_resolved: v1, breach_resolution: v2 } = subscriber;
+  let isV2Changed = false; // use a boolean to track if v2 has been changed, only upsert if so
 
   // fetch subscriber all breaches / email
-  let subscriberBreachesEmail
+  let subscriberBreachesEmail;
   try {
-    subscriberBreachesEmail = await getAllEmailsAndBreaches(subscriber, allBreaches)
+    subscriberBreachesEmail = await getAllEmailsAndBreaches(
+      subscriber,
+      allBreaches,
+    );
   } catch (e) {
-    console.error('Cannot fetch subscriber breaches at the moment: ', e)
-    continue
+    console.error("Cannot fetch subscriber breaches at the moment: ", e);
+    continue;
   }
   // console.debug(JSON.stringify(subscriberBreachesEmail.verifiedEmails))
 
@@ -122,53 +131,67 @@ for (const subscriber of subscribersArr) {
     for (const recencyIndex of resolvedRecencyIndices) {
       // console.debug({ recencyIndex })
       // find subscriber's relevant recency index breach information
-      const ve = subscriberBreachesEmail.verifiedEmails?.filter(e => e.email === email)[0] || {}
+      const ve =
+        subscriberBreachesEmail.verifiedEmails?.filter(
+          (e) => e.email === email,
+        )[0] || {};
       // console.debug({ ve })
-      const subBreach = ve.breaches?.filter(b => Number(b.recencyIndex) === Number(recencyIndex))[0] || null
+      const subBreach =
+        ve.breaches?.filter(
+          (b) => Number(b.recencyIndex) === Number(recencyIndex),
+        )[0] || null;
       // console.debug({ subBreach })
 
       if (!subBreach || !subBreach.DataClasses) {
-        console.warn(`SKIP: Cannot find subscribers breach and data types - recency: ${recencyIndex} email: ${email}`)
-        continue
+        console.warn(
+          `SKIP: Cannot find subscribers breach and data types - recency: ${recencyIndex} email: ${email}`,
+        );
+        continue;
       }
 
       // if email does not exist in v2, we need to add it to the object
       // format: {email: { recencyIndex: { isResolved: true, resolutionsChecked: [DataTypes]}}}
-      if (!v2) v2 = {}
+      if (!v2) v2 = {};
       if (!v2[email]) {
         v2[email] = {
           [recencyIndex]: {
             isResolved: true,
-            resolutionsChecked: subBreach?.DataClasses || [BreachDataTypes.General]
-          }
-        }
+            resolutionsChecked: subBreach?.DataClasses || [
+              BreachDataTypes.General,
+            ],
+          },
+        };
 
-        isV2Changed = true
+        isV2Changed = true;
       }
       if (v2[email][recencyIndex]?.isResolved) {
-        console.log(`recencyIndex ${recencyIndex} exists in v2 and is resolved, no changes`)
+        console.log(
+          `recencyIndex ${recencyIndex} exists in v2 and is resolved, no changes`,
+        );
       } else {
-        console.log(`recencyIndex ${recencyIndex} either does not exist or is not resolved, overwriting`)
+        console.log(
+          `recencyIndex ${recencyIndex} either does not exist or is not resolved, overwriting`,
+        );
         v2[email][recencyIndex] = {
           isResolved: true,
-          resolutionsChecked: subBreach?.DataClasses
-        }
-        isV2Changed = true
+          resolutionsChecked: subBreach?.DataClasses,
+        };
+        isV2Changed = true;
       }
     }
   }
 
   // check if v2 is changed, if so, upsert the new v2
   if (isV2Changed) {
-    console.log('upsert for subscriber: ', subscriber.primary_email)
-    updateCollection.push({ user: subscriber, updatedBreachesResolution: v2 })
+    console.log("upsert for subscriber: ", subscriber.primary_email);
+    updateCollection.push({ user: subscriber, updatedBreachesResolution: v2 });
   }
 }
-await batchUpdate(updateCollection)
+await batchUpdate(updateCollection);
 
 // breaking out of do..while loop
-console.log('Script finished')
-const endTime = Date.now()
-console.log(`End time is: ${endTime}`)
-console.log('Diff is: ', endTime - startTime)
-process.exit()
+console.log("Script finished");
+const endTime = Date.now();
+console.log(`End time is: ${endTime}`);
+console.log("Diff is: ", endTime - startTime);
+process.exit();
