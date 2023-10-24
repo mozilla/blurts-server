@@ -14,10 +14,8 @@ const loggingWinston = new LoggingWinston({
 
 export const logger = createLogger({
   level: "info",
-  transports: [new transports.Console()],
+  // In GCP environments, use cloud logging instead of stdout.
+  transports: ["stage", "production"].includes(process.env.APP_ENV ?? "local")
+    ? [loggingWinston]
+    : [new transports.Console()],
 });
-
-// In GCP environments, use cloud logging instead of stdout.
-if (["stage", "production"].includes(process.env.APP_ENV ?? "local")) {
-  logger.transports = [loggingWinston];
-}
