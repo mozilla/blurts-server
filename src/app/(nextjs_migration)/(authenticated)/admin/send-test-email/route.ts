@@ -4,7 +4,6 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import AppConstants from "../../../../../appConstants.js";
-import { logger } from "../../../../functions/server/logging";
 import {
   EmailTemplateType,
   getMonthlyDummyData,
@@ -82,7 +81,7 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  logger.info(`Sent test email: ${emailId}`);
+  console.info(`Sent test email: ${emailId}`);
 
   // The notify function has its own response
   if (emailId !== EmailTemplateType.Notification) {

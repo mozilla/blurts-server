@@ -4,7 +4,6 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { bearerToken } from "../../../utils/auth";
-import { logger } from "../../../../functions/server/logging";
 
 import { PubSub } from "@google-cloud/pubsub";
 import { getEnabledFeatureFlags } from "../../../../../db/tables/featureFlags";
@@ -25,7 +24,7 @@ export async function POST(req: NextRequest) {
   const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
   try {
     if (!enabledFlags.includes("HibpBreachNotifications")) {
-      logger.info("Feature flag not enabled: HibpBreachNotifications");
+      console.info("Feature flag not enabled: HibpBreachNotifications");
       return NextResponse.json({}, { status: 429 });
     }
     if (!projectId) {
@@ -43,7 +42,7 @@ export async function POST(req: NextRequest) {
     json = await req.json();
 
     if (!(json.breachName && json.hashPrefix && json.hashSuffixes)) {
-      logger.error(
+      console.error(
         "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.",
       );
       return NextResponse.json({ success: false }, { status: 400 });
@@ -51,7 +50,7 @@ export async function POST(req: NextRequest) {
 
     pubsub = new PubSub({ projectId });
   } catch (ex) {
-    logger.error("Error connecting to PubSub:", ex);
+    console.error("Error connecting to PubSub:", ex);
     return NextResponse.json({ success: false }, { status: 500 });
   }
 
@@ -59,7 +58,6 @@ export async function POST(req: NextRequest) {
   try {
     topic = pubsub.topic(topicName);
     await topic.publishMessage({ json });
-    logger.info("Successfully queued breach notification", json);
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (ex) {
     if (process.env.NODE_ENV === "development") {
@@ -69,10 +67,10 @@ export async function POST(req: NextRequest) {
       await pubsub.createTopic(topicName);
       await pubsub.topic(topicName).createSubscription(subscriptionName);
     } else {
-      logger.error("Topic not found:", topicName);
+      console.error("Topic not found:", topicName);
       return NextResponse.json({ success: false }, { status: 500 });
     }
-    logger.error("Error queuing HIBP breach:", topicName);
+    console.error("Error queuing HIBP breach:", topicName);
     return NextResponse.json({ success: false }, { status: 500 });
   }
 }

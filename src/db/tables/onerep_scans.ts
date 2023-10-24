@@ -5,13 +5,30 @@
 import initKnex from "knex";
 import knexConfig from "../knexfile.js";
 
-import { logger } from "../../app/functions/server/logging";
+import { createLogger, transports } from "winston";
+import { LoggingWinston } from "@google-cloud/logging-winston";
 
 import { ScanResult, Scan } from "../../app/functions/server/onerep.js";
 import { Subscriber } from "../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
 
 const knex = initKnex(knexConfig);
+const loggingWinston = new LoggingWinston({
+  labels: {
+    name: "onerep-stats",
+    version: "0.1.0",
+  },
+});
+
+const logger = createLogger({
+  level: "info",
+  transports: [new transports.Console()],
+});
+
+if (["stage", "production"].includes(process.env.APP_ENV ?? "local")) {
+  logger.transports.push(loggingWinston);
+}
+
 export interface LatestOnerepScanData {
   scan: OnerepScanRow | null;
   results: OnerepScanResultRow[];

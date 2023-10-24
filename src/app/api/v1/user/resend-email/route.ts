@@ -4,8 +4,6 @@
 
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
-
-import { logger } from "../../../../functions/server/logging";
 import AppConstants from "../../../../../appConstants";
 import { getSubscriberByEmail } from "../../../../../db/tables/subscribers";
 import { getUserEmails } from "../../../../../db/tables/emailAddresses";
@@ -53,7 +51,7 @@ export async function POST(req: NextRequest) {
         message: "Sent the verification email",
       });
     } catch (e) {
-      logger.error(e);
+      console.error(e);
       if (
         e instanceof Error &&
         e.message === "error-email-validation-pending"

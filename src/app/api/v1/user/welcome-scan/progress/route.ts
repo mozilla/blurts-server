@@ -6,8 +6,6 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../utils/auth";
 import { NextRequest, NextResponse } from "next/server";
 
-import { logger } from "../../../../../functions/server/logging";
-
 import AppConstants from "../../../../../../appConstants";
 import {
   getOnerepProfileId,
@@ -71,7 +69,7 @@ export async function GET(
 
       return NextResponse.json({ success: true }, { status: 200 });
     } catch (e) {
-      logger.error(e);
+      console.error(e);
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {

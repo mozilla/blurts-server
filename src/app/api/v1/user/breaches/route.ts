@@ -2,14 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { NextRequest, NextResponse } from "next/server";
-import { getToken } from "next-auth/jwt";
-
-import { logger } from "../../../../functions/server/logging";
 import {
   BreachResolutionRequest,
   Subscriber,
 } from "../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
+
+import { NextRequest, NextResponse } from "next/server";
+import { getToken } from "next-auth/jwt";
 import { getBreaches } from "../../../../functions/server/getBreaches";
 import { getAllEmailsAndBreaches } from "../../../../../utils/breaches";
 import {
@@ -33,7 +32,7 @@ export async function GET(req: NextRequest) {
       };
       return NextResponse.json(successResponse);
     } catch (e) {
-      logger.error(e);
+      console.error(e);
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
@@ -148,7 +147,7 @@ export async function PUT(req: NextRequest) {
         breachResolutions: updatedSubscriber.breach_resolution,
       });
     } catch (e) {
-      logger.error(e);
+      console.error(e);
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {

@@ -5,7 +5,6 @@
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 
-import { logger } from "../../../../../../functions/server/logging";
 import { authOptions } from "../../../../../utils/auth";
 import {
   isOnerepScanResultForSubscriber,
@@ -56,7 +55,7 @@ export async function POST(
       { status: 200 },
     );
   } catch (e) {
-    logger.error(e);
+    console.error(e);
     return new NextResponse<ResolveScanResultResponse>(
       JSON.stringify({
         success: false,

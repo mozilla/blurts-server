@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { captureException } from "@sentry/node";
-import { logger } from "./logging";
 
 /**
  * Call the Cirrus sidecar, which returns a list of eligible experiments for the current user.
@@ -34,7 +33,7 @@ export async function getExperiments(
         }),
       });
     } catch (ex) {
-      logger.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
+      console.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
       captureException(ex);
     }
   }

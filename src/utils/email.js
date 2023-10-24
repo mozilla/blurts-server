@@ -5,6 +5,7 @@
 import { createTransport } from 'nodemailer'
 import { URL } from 'url'
 
+import mozlog from './log.js'
 import AppConstants from '../appConstants.js'
 import {
   BadRequestError,
@@ -15,6 +16,7 @@ import { getMessage, getStringLookup } from '../utils/fluent.js'
 import { updateMonthlyEmailOptout } from '../db/tables/subscribers.js'
 import SMTPTransport from 'nodemailer/lib/smtp-transport/index.js'
 
+const log = mozlog('email-utils')
 
 const { SERVER_URL } = AppConstants
 
@@ -35,7 +37,7 @@ const EmailTemplateType = {
 async function initEmail (smtpUrl = AppConstants.SMTP_URL) {
   // Allow a debug mode that will log JSON instead of sending emails.
   if (!smtpUrl) {
-    console.info('smtpUrl-empty', { message: 'EmailUtils will log a JSON response instead of sending emails.' })
+    log.info('smtpUrl-empty', { message: 'EmailUtils will log a JSON response instead of sending emails.' })
     gTransporter = createTransport({ jsonTransport: true })
     return true
   }
@@ -80,7 +82,7 @@ function sendEmail (recipient, subject, html) {
       /* c8 ignore next 4 */
       if (gTransporter.transporter.name === 'JSONTransport') {
         // @ts-ignore Added typing later, but it disagrees with actual use:
-        console.info('JSONTransport', { message: info.message.toString() })
+        log.info('JSONTransport', { message: info.message.toString() })
       }
       resolve(info)
     })

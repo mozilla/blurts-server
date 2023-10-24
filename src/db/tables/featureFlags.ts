@@ -4,9 +4,10 @@
 
 import initKnex from "knex";
 import knexConfig from "../knexfile.js";
-import { logger } from "../../app/functions/server/logging";
+import mozlog from "../../utils/log.js";
 import { FeatureFlagRow } from "knex/types/tables";
 const knex = initKnex(knexConfig);
+const log = mozlog("DB.flags");
 
 export type FeatureFlag = {
   name: string;
@@ -58,14 +59,14 @@ export async function getEnabledFeatureFlags(
 }
 
 async function getFeatureFlagByName(name: string) {
-  logger.info("getFeatureFlagByName", name);
+  log.info("getFeatureFlagByName", name);
   const res = await knex("feature_flags").where("name", name);
 
   return res[0] || null;
 }
 
 async function addFeatureFlag(flag: FeatureFlag) {
-  logger.info("addFeatureFlag", flag);
+  log.info("addFeatureFlag", flag);
   const featureFlagDb: FeatureFlagRow = {
     name: flag.name,
     is_enabled: flag.isEnabled,
@@ -90,7 +91,7 @@ async function addFeatureFlag(flag: FeatureFlag) {
 }
 
 async function deleteFeatureFlagByName(name: string) {
-  logger.info("deleteFeatureFlagByName", name);
+  log.info("deleteFeatureFlagByName", name);
   const res = await knex("feature_flags")
     .where("name", name)
     .update({
@@ -103,7 +104,7 @@ async function deleteFeatureFlagByName(name: string) {
 }
 
 async function updateDependencies(name: string, dependencies: string[]) {
-  logger.info("updateDependencies", { name, dependencies });
+  log.info("updateDependencies", { name, dependencies });
   const res = await knex("feature_flags")
     .where("name", name)
     .update({
@@ -118,7 +119,7 @@ async function updateDependencies(name: string, dependencies: string[]) {
 }
 
 async function updateOwner(name: string, owner: string) {
-  logger.info("updateOwner", { name, owner });
+  log.info("updateOwner", { name, owner });
   const res = await knex("feature_flags")
     .where("name", name)
     .update({
@@ -138,7 +139,7 @@ async function updateAllowList(name: string, allowList: string[]) {
     if (e) acc.push(e);
     return acc;
   }, []);
-  logger.info("updateAllowList", { name, allowList });
+  log.info("updateAllowList", { name, allowList });
   const res = await knex("feature_flags")
     .where("name", name)
     .update({
@@ -158,7 +159,7 @@ async function updateWaitList(name: string, waitList: string[]) {
     if (e) acc.push(e);
     return acc;
   }, []);
-  logger.info("updateWaitList", { name, waitList });
+  log.info("updateWaitList", { name, waitList });
   const res = await knex("feature_flags")
     .where("name", name)
     .update({
@@ -173,7 +174,7 @@ async function updateWaitList(name: string, waitList: string[]) {
 }
 
 async function enableFeatureFlagByName(name: string, isEnabled: boolean) {
-  logger.info("enableFeatureFlagByName", name);
+  log.info("enableFeatureFlagByName", name);
   const res = await knex("feature_flags")
     .where("name", name)
     .update({
@@ -188,7 +189,7 @@ async function enableFeatureFlagByName(name: string, isEnabled: boolean) {
 }
 
 async function disableFeatureFlagByName(name: string) {
-  logger.info("disableFeatureFlagByName", name);
+  log.info("disableFeatureFlagByName", name);
   const res = await knex("feature_flags")
     .where("name", name)
     .update({
