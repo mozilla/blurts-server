@@ -679,7 +679,7 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBreachTotalNum).toBe(0);
     expect(summary.dataBreachTotalExposuresNum).toBe(0);
     expect(summary.dataBreachFixedExposuresNum).toBe(0);
-    expect(summary.dataBrokerTotalNum).toBe(0);
+    expect(summary.dataBrokerTotalNum).toBe(1);
     expect(summary.dataBrokerFixedNum).toBe(0);
     expect(summary.totalExposures).toBe(summary.dataBrokerTotalExposuresNum);
     expect(summary.dataBrokerFixedExposuresNum).toBe(
