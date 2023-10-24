@@ -25,7 +25,12 @@
       padding: 0;
       cursor: pointer;
       color: rgba($color-purple-70, 0.7);
-      height: 20px; //height of down chevron
+      width: 15px; // size of the chevron on mobile
+      height: 20px; // height of down chevron
+
+      @media screen and (min-width: $screen-md) {
+        width: 20px; // size of the chevron on larger devices
+      }
 
       .isOpen {
         transition: transform 0.2s ease-out;
@@ -74,6 +79,10 @@
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
+
+        &.makeFontSmaller {
+          font: $text-body-2xs;
+        }
       }
 
       .exposureImageWrapper {
@@ -176,17 +185,18 @@
         margin-left: 0;
         padding-left: 0;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         grid-row-gap: $spacing-sm;
 
-        @media screen and (min-width: $screen-sm) {
+        @media screen and (min-width: $screen-md) {
           grid-template-columns: 1fr 1fr 1fr;
+          gap: $spacing-sm;
         }
 
         @media screen and (min-width: $screen-lg) {
           display: flex;
           flex-direction: row;
-          align-items: start;
+          align-items: center;
           gap: $layout-xs;
           flex-wrap: wrap;
           justify-content: flex-start;

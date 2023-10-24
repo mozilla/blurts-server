@@ -1,12 +1,14 @@
 @import "../../tokens";
 
 .pill {
-  font: $text-body-xs;
+  font: $text-body-2xs;
   font-weight: 600;
   display: inline-block;
-  min-width: 90px; // keep the width fixed
+  min-width: 80px; // keep the width fixed
 
   @media screen and (min-width: $screen-md) {
+    font: $text-body-xs;
+    font-weight: 600;
     min-width: 120px; // keep the width fixed
   }
   text-align: center;
