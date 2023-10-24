@@ -27,6 +27,7 @@ export type Props = {
   dataBrokerCount: number;
   breachesTotalCount: number;
   stepId?: StepId;
+  previousRoute: string | null;
 };
 
 export const View = ({
@@ -34,6 +35,7 @@ export const View = ({
   dataBrokerCount,
   breachesTotalCount,
   stepId = "getStarted",
+  previousRoute,
 }: Props) => {
   const l10n = useL10n();
   const skipInitialStep = stepId === "enterInfo";
@@ -45,6 +47,7 @@ export const View = ({
       <FindExposures
         dataBrokerCount={dataBrokerCount}
         breachesTotalCount={breachesTotalCount}
+        previousRoute={previousRoute ?? "/redesign/user/dashboard"}
       />
     ) : currentStep === "enterInfo" ? (
       <EnterInfo
@@ -52,9 +55,15 @@ export const View = ({
         // TODO: Add unit test when changing this code:
         /* c8 ignore next */
         onScanStarted={() => setCurrentStep("findExposures")}
-        onGoBack={() =>
-          skipInitialStep ? router.back() : setCurrentStep("getStarted")
-        }
+        previousRoute={previousRoute}
+        skipInitialStep={skipInitialStep}
+        onGoBack={() => {
+          if (skipInitialStep && previousRoute) {
+            router.push(previousRoute);
+          } else {
+            setCurrentStep("getStarted");
+          }
+        }}
       />
     ) : (
       <GetStarted
