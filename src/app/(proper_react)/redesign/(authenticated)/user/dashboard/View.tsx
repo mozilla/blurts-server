@@ -124,7 +124,13 @@ export const View = (props: Props) => {
         <ExposureCard
           exposureData={exposure}
           isExpanded={exposureCardKey === activeExposureCardKey}
-          setExpanded={() => setActiveExposureCardKey(exposureCardKey)}
+          setExpanded={() => {
+            if (exposureCardKey === activeExposureCardKey) {
+              setActiveExposureCardKey("");
+            } else {
+              setActiveExposureCardKey(exposureCardKey);
+            }
+          }}
           locale={getLocale(l10n)}
           isPremiumBrokerRemovalEnabled={props.enabledFeatureFlags.includes(
             "PremiumBrokerRemoval",

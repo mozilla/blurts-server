@@ -90,3 +90,16 @@ it("expands one card at a time", async () => {
   const expandButton2 = screen.getAllByRole("button", { name: "Expand" });
   expect(expandButton.length).toBe(expandButton2.length);
 });
+
+it("closes previously active card onclick", async () => {
+  const user = userEvent.setup();
+  global.fetch = jest.fn().mockResolvedValueOnce({ ok: true });
+  const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
+  render(<ComposedManualRemoveView />);
+
+  const initialState = screen.getAllByRole("button", { name: "Expand" });
+  const afterExpand = screen.getAllByRole("button", { name: "Collapse" });
+  await user.click(afterExpand[0]);
+  const afterCollapse = screen.getAllByRole("button", { name: "Expand" });
+  expect(initialState.length).toBe(afterCollapse.length - 1);
+});

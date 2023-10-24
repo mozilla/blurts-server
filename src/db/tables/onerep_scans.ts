@@ -89,7 +89,7 @@ async function addOnerepScanResults(
 
     // Create a new scan if it does not already exist. If it already exists:
     // Update the status of the scan.
-    logger.info("new_scan_created", {
+    logger.info("scan_created_or_updated", {
       onerepScanId,
       onerepScanReason,
       onerepScanStatus,
@@ -110,27 +110,29 @@ async function addOnerepScanResults(
         updated_at: knex.fn.now(),
       });
 
-    await transaction("onerep_scan_results").insert(
-      onerepScanResults.map((scanResult) => ({
-        onerep_scan_result_id: scanResult.id,
-        onerep_scan_id: scanResult.scan_id,
-        link: scanResult.link,
-        age:
-          typeof scanResult.age === "string"
-            ? Number.parseInt(scanResult.age, 10)
-            : undefined,
-        data_broker: scanResult.data_broker,
-        data_broker_id: scanResult.data_broker_id,
-        emails: JSON.stringify(scanResult.emails),
-        phones: JSON.stringify(scanResult.phones),
-        addresses: JSON.stringify(scanResult.addresses),
-        relatives: JSON.stringify(scanResult.relatives),
-        first_name: scanResult.first_name,
-        middle_name: scanResult.middle_name,
-        last_name: scanResult.last_name,
-        status: scanResult.status,
-      })),
-    );
+    const scanResultsMap = onerepScanResults.map((scanResult) => ({
+      onerep_scan_result_id: scanResult.id,
+      onerep_scan_id: scanResult.scan_id,
+      link: scanResult.link,
+      age:
+        typeof scanResult.age === "string"
+          ? Number.parseInt(scanResult.age, 10)
+          : undefined,
+      data_broker: scanResult.data_broker,
+      data_broker_id: scanResult.data_broker_id,
+      emails: JSON.stringify(scanResult.emails),
+      phones: JSON.stringify(scanResult.phones),
+      addresses: JSON.stringify(scanResult.addresses),
+      relatives: JSON.stringify(scanResult.relatives),
+      first_name: scanResult.first_name,
+      middle_name: scanResult.middle_name,
+      last_name: scanResult.last_name,
+      status: scanResult.status,
+    }));
+
+    logger.info("scan_result", scanResultsMap);
+
+    await transaction("onerep_scan_results").insert(scanResultsMap);
   });
 }
 
