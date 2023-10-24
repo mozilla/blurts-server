@@ -199,8 +199,7 @@ export function getDashboardSummary(
     scannedResults.forEach((r) => {
       // check removal status
       const isManuallyResolved = r.manually_resolved;
-      const isFixed =
-        r.status === RemovalStatusMap.Removed || isManuallyResolved;
+      const isFixed = r.status === RemovalStatusMap.Removed;
       const isInProgress =
         (r.status === RemovalStatusMap.OptOutInProgress ||
           r.status === RemovalStatusMap.WaitingForVerification) &&
@@ -215,8 +214,7 @@ export function getDashboardSummary(
         r.emails.length +
         r.phones.length +
         r.addresses.length +
-        r.relatives.length +
-        1;
+        r.relatives.length;
       summary.totalExposures += exposureIncrement;
       summary.dataBrokerTotalExposuresNum += exposureIncrement;
 

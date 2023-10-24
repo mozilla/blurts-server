@@ -133,6 +133,7 @@ export const ProgressCard = (props: Props) => {
           </div>
           <p>{l10n.getString("progress-card-resolved-by-you-headline")}</p>
         </div>
+
         <div className={styles.progressItem}>
           <div className={styles.progressStat}>
             <Image src={ExploringLaptopMinus} alt="" width="50" height="50" />
