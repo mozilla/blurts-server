@@ -34,62 +34,62 @@ export function WelcomeToPremiumView(props: Props) {
   const exposureReduction = getExposureReduction(summary);
 
   return (
-    <FixView
-      data={props.data}
-      subscriberEmails={props.subscriberEmails}
-      nextStepHref={getNextGuidedStep(props.data, "Scan").href}
-      currentSection="data-broker-profiles"
-    >
-      <div className={styles.contentWrapper}>
-        <div className={styles.content}>
-          <h3>
-            {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-title-part-one",
-            )}
-            <br />
-            {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-title-part-two",
-            )}
-          </h3>
-          <p>
-            {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-description-part-one",
-              {
-                profile_total_num: countOfDataBrokerProfiles,
-                exposure_reduction_percentage: exposureReduction,
-              },
-            )}
-          </p>
-          <p>
-            {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-description-part-two",
-            )}
-          </p>
-          <p>
-            {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-description-part-three",
-            )}
-          </p>
-          <div className={styles.buttonsWrapper}>
-            <Button
-              variant="primary"
-              href="/redesign/user/dashboard/fix/high-risk-data-breaches"
-              disabled
-              wide
-            >
+    <>
+      <SubscriptionCheck />
+      <FixView
+        data={props.data}
+        subscriberEmails={props.subscriberEmails}
+        nextStepHref={getNextGuidedStep(props.data, "Scan").href}
+        currentSection="data-broker-profiles"
+      >
+        <div className={styles.contentWrapper}>
+          <div className={styles.content}>
+            <h3>
               {l10n.getString(
-                "welcome-to-premium-data-broker-profiles-cta-label",
+                "welcome-to-premium-data-broker-profiles-title-part-one",
               )}
-            </Button>
+              <br />
+              {l10n.getString(
+                "welcome-to-premium-data-broker-profiles-title-part-two",
+              )}
+            </h3>
+            <p>
+              {l10n.getString(
+                "welcome-to-premium-data-broker-profiles-description-part-one",
+                {
+                  profile_total_num: countOfDataBrokerProfiles,
+                  exposure_reduction_percentage: exposureReduction,
+                },
+              )}
+            </p>
+            <p>
+              {l10n.getString(
+                "welcome-to-premium-data-broker-profiles-description-part-two",
+              )}
+            </p>
+            <p>
+              {l10n.getString(
+                "welcome-to-premium-data-broker-profiles-description-part-three",
+              )}
+            </p>
+            <div className={styles.buttonsWrapper}>
+              <Button
+                variant="primary"
+                href="/redesign/user/dashboard/fix/high-risk-data-breaches"
+                disabled
+                wide
+              >
+                {l10n.getString(
+                  "welcome-to-premium-data-broker-profiles-cta-label",
+                )}
+              </Button>
+            </div>
+          </div>
+          <div className={styles.chart}>
+            <PercentageChart exposureReduction={exposureReduction} />
           </div>
         </div>
-        <div className={styles.chart}>
-          <PercentageChart exposureReduction={exposureReduction} />
-        </div>
-        <div>
-          <SubscriptionCheck />
-        </div>
-      </div>
-    </FixView>
+      </FixView>
+    </>
   );
 }
