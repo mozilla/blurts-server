@@ -54,9 +54,16 @@ export type Props = {
   onScanStarted: () => void;
   onGoBack: () => void;
   user: Session["user"];
+  skipInitialStep: boolean;
+  previousRoute: string | null;
 };
 
-export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
+export const EnterInfo = ({
+  onScanStarted,
+  onGoBack,
+  skipInitialStep,
+  previousRoute,
+}: Props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [location, setLocation] = useState("");
@@ -360,14 +367,16 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
           )}
         </div>
         <div className={styles.stepButtonWrapper}>
-          <Button
-            variant="secondary"
-            onPress={() => onGoBack()}
-            className={styles.startButton}
-            type="button"
-          >
-            {l10n.getString("onboarding-steps-enter-info-back")}
-          </Button>
+          {(!skipInitialStep || (skipInitialStep && previousRoute)) && (
+            <Button
+              variant="secondary"
+              onPress={() => onGoBack()}
+              className={styles.startButton}
+              type="button"
+            >
+              {l10n.getString("onboarding-steps-enter-info-back")}
+            </Button>
+          )}
           <Button
             {...confirmDialogTrigger.triggerProps}
             variant="primary"

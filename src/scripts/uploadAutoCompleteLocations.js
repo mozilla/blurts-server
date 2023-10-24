@@ -23,7 +23,7 @@ import {
   writeFileSync,
 } from "fs";
 import { uploadToS3 } from "./s3.js";
-import Sentry from "@sentry/nextjs"
+import Sentry from "@sentry/nextjs";
 import os from "os";
 import path from "path";
 import fs from "fs";
@@ -42,10 +42,9 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
-
 const checkInId = Sentry.captureCheckIn({
   monitorSlug: SENTRY_SLUG,
-  status: "in_progress"
+  status: "in_progress",
 });
 
 // Only include populated places that are a city, town, village, or another
@@ -65,14 +64,11 @@ const allowedFeatureCodes = [
 function logProgress(currentCount, totalCount) {
   const progress = Math.round(((currentCount + 1) / totalCount) * 100);
   process.stdout.write(
-    `-> ${currentCount + 1} / ${totalCount} (${progress}%) \r`
+    `-> ${currentCount + 1} / ${totalCount} (${progress}%) \r`,
   );
 }
 
-function writeFromRemoteFile({
-  url,
-  writeStream,
-}) {
+function writeFromRemoteFile({ url, writeStream }) {
   return new Promise((resolve, reject) => {
     https.get(url, (res) => {
       res.on("end", () => {
@@ -92,7 +88,7 @@ async function fetchRemoteArchive({
   localExtractionPath,
 }) {
   console.info(
-    `Downloading remote file: ${remoteArchiveUrl} -> ${localDownloadPath}`
+    `Downloading remote file: ${remoteArchiveUrl} -> ${localDownloadPath}`,
   );
 
   await writeFromRemoteFile({
@@ -104,7 +100,7 @@ async function fetchRemoteArchive({
   const zip = new AdmZip(localDownloadPath);
   await new Promise((resolve, reject) => {
     zip.extractAllToAsync(localExtractionPath, true, false, (error) =>
-      error ? reject(error) : resolve()
+      error ? reject(error) : resolve(),
     );
   });
 }
@@ -154,7 +150,7 @@ try {
   console.info("Reading file: Alternate location names");
   const alternateNamesData = readFileSync(
     `${localDestinationPath.alternateNames}/${DATA_COUNTRY_CODE}.txt`,
-    "utf8"
+    "utf8",
   );
 
   console.info("Parsing data: Alternate location names");
@@ -172,7 +168,7 @@ try {
         isHistoric,
         _from,
         _to,
-      ] = alternateNamesLine.split("\t") // lines are tab delimited
+      ] = alternateNamesLine.split("\t"); // lines are tab delimited
 
       const isAbbreviation = isolanguage === "abbr";
       const isRelevantAlternateName =
@@ -189,14 +185,12 @@ try {
 
       return null;
     })
-    .filter(
-      (alternateName) => alternateName
-    );
+    .filter((alternateName) => alternateName);
 
   console.info("Reading file: Hierarchy");
   const hierachyData = readFileSync(
     `${localDestinationPath.hierarchy}/hierarchy.txt`,
-    "utf8"
+    "utf8",
   );
   console.info("Parsing data: Location hierarchy");
   const hierachyDataRows = hierachyData.split("\n");
@@ -210,7 +204,7 @@ try {
   console.info("Reading file: All locations");
   const locationData = readFileSync(
     `${localDestinationPath.locations}/${DATA_COUNTRY_CODE}.txt`,
-    "utf8"
+    "utf8",
   );
 
   console.info("Parsing data: All locations");
@@ -240,7 +234,7 @@ try {
         _dem,
         _timezone,
         _modificationDate,
-      ] = location.split("\t") // lines are tab delimited
+      ] = location.split("\t"); // lines are tab delimited
 
       const isPopulatedPlaceOfInterest =
         featureClass === allowedFeatureClass &&
@@ -250,10 +244,10 @@ try {
       if (isPopulatedPlaceOfInterest && hasPopulation) {
         const alternateNames = parsedAlternateNames.filter(
           ({ alternateOf, name: alternateName }) =>
-            alternateOf === geonameId && alternateName !== name
+            alternateOf === geonameId && alternateName !== name,
         );
         const preferredName = alternateNames.find(
-          ({ isPreferredName }) => isPreferredName === "1"
+          ({ isPreferredName }) => isPreferredName === "1",
         );
         const alternateNamesFinal = alternateNames.map((alternateName) => {
           // Include the original name as an alternative name if we’ll use an
@@ -276,13 +270,14 @@ try {
           population,
           ...(alternateNames &&
             alternateNames.length > 0 && {
-            alternateNames: alternateNamesFinal,
-          }),
+              alternateNames: alternateNamesFinal,
+            }),
         });
       }
 
       return relevantLocations;
-    }, []
+    },
+    [],
   );
 
   // Filter out locations that have another populated place as a parent.
@@ -304,15 +299,15 @@ try {
               location.featureClass === allowedFeatureClass
             );
           });
-        }
+        },
       );
 
       return !hasPopulatedParentLocation;
-    }
+    },
   );
 
   console.info(
-    `Number of relevant locations found: ${locationDataPopulatedTopLevel.length}`
+    `Number of relevant locations found: ${locationDataPopulatedTopLevel.length}`,
   );
 
   console.info(`Writing location data to file: ${LOCATIONS_DATA_FILE}`);
@@ -330,7 +325,7 @@ try {
   writeFileSync(LOCATIONS_DATA_FILE, JSON.stringify(locationDataFinal));
 
   let readStream = fs.createReadStream(LOCATIONS_DATA_FILE);
-  await uploadToS3(`autocomplete/${LOCATIONS_DATA_FILE}`, readStream)
+  await uploadToS3(`autocomplete/${LOCATIONS_DATA_FILE}`, readStream);
 
   if (CLEANUP_TMP_DATA_AFTER_FINISHED) {
     console.info("Cleaning up data directory");
@@ -342,8 +337,9 @@ try {
 
   const endTime = Date.now();
   console.info(
-    `Created location data file successfully: Executed in ${(endTime - startTime) / 1000
-    }s`
+    `Created location data file successfully: Executed in ${
+      (endTime - startTime) / 1000
+    }s`,
   );
 } catch (error) {
   console.error("Creating location file failed with:", error);
@@ -352,6 +348,6 @@ try {
 Sentry.captureCheckIn({
   checkInId,
   monitorSlug: SENTRY_SLUG,
-  status: "ok"
-})
-setTimeout(process.exit, 1000)
+  status: "ok",
+});
+setTimeout(process.exit, 1000);
