@@ -141,7 +141,13 @@ export function ManualRemoveView(props: Props) {
                   scanResult={scanResult}
                   isExpanded={index === activeExposureCardKey}
                   isPremiumUser={props.isPremiumUser}
-                  setExpanded={() => setActiveExposureCardKey(index)}
+                  setExpanded={() => {
+                    if (index === activeExposureCardKey) {
+                      setActiveExposureCardKey(-1);
+                    } else {
+                      setActiveExposureCardKey(index);
+                    }
+                  }}
                 />
               );
             })}
