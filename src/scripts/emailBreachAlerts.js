@@ -2,16 +2,26 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import Sentry from "@sentry/nextjs"
+import Sentry from "@sentry/nextjs";
 import { acceptedLanguages, negotiateLanguages } from "@fluent/langneg";
-import { localStorage } from '../utils/localStorage.js'
+import { localStorage } from "../utils/localStorage.js";
 
 import * as pubsub from "@google-cloud/pubsub";
 import * as grpc from "@grpc/grpc-js";
 
-import { getSubscribersByHashes, knexSubscribers } from "../db/tables/subscribers.js";
-import { getEmailAddressesByHashes, knexEmailAddresses } from "../db/tables/emailAddresses.js";
-import { getNotifiedSubscribersForBreach, addEmailNotification, markEmailAsNotified} from '../db/tables/email_notifications.js';
+import {
+  getSubscribersByHashes,
+  knexSubscribers,
+} from "../db/tables/subscribers.js";
+import {
+  getEmailAddressesByHashes,
+  knexEmailAddresses,
+} from "../db/tables/emailAddresses.js";
+import {
+  getNotifiedSubscribersForBreach,
+  addEmailNotification,
+  markEmailAsNotified,
+} from "../db/tables/email_notifications.js";
 import { getTemplate } from "../views/emails/email2022.js";
 import { breachAlertEmailPartial } from "../views/emails/emailBreachAlert.js";
 import {
@@ -26,7 +36,7 @@ import {
   getAddressesAndLanguageForEmail,
   getBreachByName,
   getAllBreachesFromDb,
-  knexHibp
+  knexHibp,
 } from "../utils/hibp.js";
 
 const SENTRY_SLUG = "cron-breach-alerts";
@@ -44,7 +54,9 @@ const checkInId = Sentry.captureCheckIn({
 
 // Only process this many messages before exiting.
 /* c8 ignore start */
-const maxMessages = parseInt(process.env.EMAIL_BREACH_ALERT_MAX_MESSAGES || 10000);
+const maxMessages = parseInt(
+  process.env.EMAIL_BREACH_ALERT_MAX_MESSAGES || 10000,
+);
 /* c8 ignore stop */
 const projectId = process.env.GCP_PUBSUB_PROJECT_ID;
 const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
@@ -62,7 +74,7 @@ const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
 export async function poll(subClient, receivedMessages) {
   const formattedSubscription = subClient.subscriptionPath(
     projectId,
-    subscriptionName
+    subscriptionName,
   );
 
   // Process the messages. Skip any that cannot be processed, and do not mark as acknowledged.
@@ -72,7 +84,7 @@ export async function poll(subClient, receivedMessages) {
 
     if (!(data.breachName && data.hashPrefix && data.hashSuffixes)) {
       console.error(
-        "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes."
+        "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.",
       );
       continue;
     }
@@ -82,7 +94,13 @@ export async function poll(subClient, receivedMessages) {
     const breaches = await getAllBreachesFromDb();
     const breachAlert = getBreachByName(breaches, breachName);
 
-    const { IsVerified, Domain, IsFabricated, IsSpamList, id : breachId } = breachAlert;
+    const {
+      IsVerified,
+      Domain,
+      IsFabricated,
+      IsSpamList,
+      id: breachId,
+    } = breachAlert;
 
     // If any of the following conditions are not satisfied:
     // Do not send the breach alert email! The `logId`s are being used for
@@ -107,7 +125,7 @@ export async function poll(subClient, receivedMessages) {
     ];
 
     const unsatisfiedConditions = emailDeliveryConditions.filter(
-      (condition) => condition.condition
+      (condition) => condition.condition,
     );
 
     const doNotSendEmail = unsatisfiedConditions.length > 0;
@@ -134,7 +152,7 @@ export async function poll(subClient, receivedMessages) {
     try {
       const reqHashPrefix = hashPrefix.toLowerCase();
       const hashes = hashSuffixes.map(
-        (suffix) => reqHashPrefix + suffix.toLowerCase()
+        (suffix) => reqHashPrefix + suffix.toLowerCase(),
       );
 
       const subscribers = await getSubscribersByHashes(hashes);
@@ -159,7 +177,7 @@ export async function poll(subClient, receivedMessages) {
         // - `id`: if `subscribers` record
         const subscriberId = recipient.subscriber_id ?? recipient.id;
         if (notifiedSubs.includes(subscriberId)) {
-          console.info("Subscriber already notified, skipping: ", subscriberId)
+          console.info("Subscriber already notified, skipping: ", subscriberId);
           continue;
         }
         const { recipientEmail, breachedEmail, signupLanguage } =
@@ -175,11 +193,11 @@ export async function poll(subClient, receivedMessages) {
         const supportedLocales = negotiateLanguages(
           requestedLanguage,
           availableLanguages,
-          { defaultLocale: "en" }
+          { defaultLocale: "en" },
         );
 
         await localStorage.run(new Map(), async () => {
-          localStorage.getStore().set('locale', supportedLocales);
+          localStorage.getStore().set("locale", supportedLocales);
           await (async () => {
             if (!notifiedRecipients.includes(breachedEmail)) {
               const data = {
@@ -201,11 +219,11 @@ export async function poll(subClient, receivedMessages) {
                   subscriberId,
                   notified: false,
                   email: data.recipientEmail,
-                  notificationType: "incident"
-                })
-              } catch(e) {
-                console.error("Failed to add email notification to table: ", e)
-                throw new Error(e)
+                  notificationType: "incident",
+                });
+              } catch (e) {
+                console.error("Failed to add email notification to table: ", e);
+                throw new Error(e);
               }
 
               const emailTemplate = getTemplate(data, breachAlertEmailPartial);
@@ -215,11 +233,15 @@ export async function poll(subClient, receivedMessages) {
 
               // mark email as notified in database
               // if this call ever fails, stop stop the script with an error
-              try{
-                await markEmailAsNotified(subscriberId, breachId, data.recipientEmail)
-              } catch(e) {
-                console.error("Failed to mark email as notified: ", e)
-                throw new Error(e)
+              try {
+                await markEmailAsNotified(
+                  subscriberId,
+                  breachId,
+                  data.recipientEmail,
+                );
+              } catch (e) {
+                console.error("Failed to mark email as notified: ", e);
+                throw new Error(e);
               }
               notifiedRecipients.push(breachedEmail);
             }
@@ -233,7 +255,7 @@ export async function poll(subClient, receivedMessages) {
         subscription: formattedSubscription,
         ackIds: [message.ackId],
       });
-    /* c8 ignore start */
+      /* c8 ignore start */
     } catch (error) {
       console.error(`Notifying subscribers of breach failed: ${error}`);
     }
@@ -249,15 +271,15 @@ async function pullMessages() {
     options = {
       servicePath: "localhost",
       port: "8085",
-      sslCreds: grpc.credentials.createInsecure()
-    }
+      sslCreds: grpc.credentials.createInsecure(),
+    };
   }
 
   const subClient = new pubsub.v1.SubscriberClient(options);
 
   const formattedSubscription = subClient.subscriptionPath(
     projectId,
-    subscriptionName
+    subscriptionName,
   );
 
   // If there are no messages, this will wait until the default timeout for the pull API.
@@ -282,7 +304,9 @@ if (process.env.NODE_ENV !== "test") {
   init()
     .then(async (_res) => {
       if (!(projectId && subscriptionName)) {
-        throw new Error("env vars not set: GCP_PUBSUB_PROJECT_ID and GCP_PUBSUB_SUBSCRIPTION_NAME")
+        throw new Error(
+          "env vars not set: GCP_PUBSUB_PROJECT_ID and GCP_PUBSUB_SUBSCRIPTION_NAME",
+        );
       }
       Sentry.captureCheckIn({
         checkInId,
@@ -291,7 +315,7 @@ if (process.env.NODE_ENV !== "test") {
       });
     })
     .catch((err) => console.error(err))
-    .finally(async() => {
+    .finally(async () => {
       // Tear down knex connection pools
       await knexSubscribers.destroy();
       await knexEmailAddresses.destroy();
