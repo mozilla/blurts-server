@@ -15,7 +15,8 @@ const loggingWinston = new LoggingWinston({
 export const logger = createLogger({
   level: "info",
   // In GCP environments, use cloud logging instead of stdout.
-  transports: ["stage", "production"].includes(process.env.APP_ENV ?? "local")
+  // FIXME https://mozilla-hub.atlassian.net/browse/MNTOR-2401 - enable for stage and production
+  transports: ["gcpdev"].includes(process.env.APP_ENV ?? "local")
     ? [loggingWinston]
     : [new transports.Console()],
 });
