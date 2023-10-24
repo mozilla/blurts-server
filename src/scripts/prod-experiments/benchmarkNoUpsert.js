@@ -8,50 +8,56 @@
  * with the goal of deprecating the column
  */
 
-import Knex from 'knex'
-import knexConfig from '../../db/knexfile.js'
-import { getAllBreachesFromDb } from '../../utils/hibp.js'
-import { getAllEmailsAndBreaches } from '../../utils/breaches.js'
-import { BreachDataTypes } from '../../utils/breach-resolution.js'
-const knex = Knex(knexConfig)
+import Knex from "knex";
+import knexConfig from "../../db/knexfile.js";
+import { getAllBreachesFromDb } from "../../utils/hibp.js";
+import { getAllEmailsAndBreaches } from "../../utils/breaches.js";
+import { BreachDataTypes } from "../../utils/breach-resolution.js";
+const knex = Knex(knexConfig);
 
-const LIMIT = 1000 // with millions of records, we have to load a few at a time
-let offset = 0 // looping through all records with offset
-let subscribersArr = []
+const LIMIT = 1000; // with millions of records, we have to load a few at a time
+let offset = 0; // looping through all records with offset
+let subscribersArr = [];
 
-let CAP = 5000 // cap the experiment
+let CAP = 5000; // cap the experiment
 if (process.argv.length > 2) {
-  CAP = process.argv[2]
-  console.log('using cap passed in: ', CAP)
+  CAP = process.argv[2];
+  console.log("using cap passed in: ", CAP);
 }
 
-const startTime = Date.now()
-console.log(`Start time is: ${startTime}`)
+const startTime = Date.now();
+console.log(`Start time is: ${startTime}`);
 
 // load all breaches for ref
-const allBreaches = await getAllBreachesFromDb()
-if (allBreaches && allBreaches.length > 0) console.log('breaches loaded successfully! ', allBreaches.length)
+const allBreaches = await getAllBreachesFromDb();
+if (allBreaches && allBreaches.length > 0)
+  console.log("breaches loaded successfully! ", allBreaches.length);
 
 // find all subscribers who resolved any breaches in the past, convert those
 // records into the new v2 format
 do {
-  console.log(`Converting breaches_resolved to breach_resolution - start: ${offset} limit: ${LIMIT}`)
+  console.log(
+    `Converting breaches_resolved to breach_resolution - start: ${offset} limit: ${LIMIT}`,
+  );
   subscribersArr = await knex
-    .select('id', 'primary_email', 'breaches_resolved', 'breach_resolution')
-    .from('subscribers')
-    .whereNotNull('breaches_resolved')
+    .select("id", "primary_email", "breaches_resolved", "breach_resolution")
+    .from("subscribers")
+    .whereNotNull("breaches_resolved")
     .limit(LIMIT)
     .offset(offset)
-    .orderBy('updated_at', 'desc')
+    .orderBy("updated_at", "desc");
 
-  console.log(`Loaded # of subscribers: ${subscribersArr.length}`)
+  console.log(`Loaded # of subscribers: ${subscribersArr.length}`);
 
   for (const subscriber of subscribersArr) {
-    let { breaches_resolved: v1, breach_resolution: v2 } = subscriber
-    let isV2Changed = false // use a boolean to track if v2 has been changed, only upsert if so
+    let { breaches_resolved: v1, breach_resolution: v2 } = subscriber;
+    let isV2Changed = false; // use a boolean to track if v2 has been changed, only upsert if so
 
     // fetch subscriber all breaches / email
-    const subscriberBreachesEmail = await getAllEmailsAndBreaches(subscriber, allBreaches)
+    const subscriberBreachesEmail = await getAllEmailsAndBreaches(
+      subscriber,
+      allBreaches,
+    );
     // console.debug(JSON.stringify(subscriberBreachesEmail.verifiedEmails))
 
     for (const [email, resolvedRecencyIndices] of Object.entries(v1)) {
@@ -60,53 +66,67 @@ do {
       for (const recencyIndex of resolvedRecencyIndices) {
         // console.debug({ recencyIndex })
         // find subscriber's relevant recency index breach information
-        const ve = subscriberBreachesEmail.verifiedEmails?.filter(e => e.email === email)[0] || {}
+        const ve =
+          subscriberBreachesEmail.verifiedEmails?.filter(
+            (e) => e.email === email,
+          )[0] || {};
         // console.debug({ ve })
-        const subBreach = ve.breaches?.filter(b => Number(b.recencyIndex) === Number(recencyIndex))[0] || null
+        const subBreach =
+          ve.breaches?.filter(
+            (b) => Number(b.recencyIndex) === Number(recencyIndex),
+          )[0] || null;
         // console.debug({ subBreach })
 
         if (!subBreach || !subBreach.DataClasses) {
-          console.warn(`SKIP: Cannot find subscribers breach and data types - recency: ${recencyIndex} email: ${email}`)
-          continue
+          console.warn(
+            `SKIP: Cannot find subscribers breach and data types - recency: ${recencyIndex} email: ${email}`,
+          );
+          continue;
         }
 
         // if email does not exist in v2, we need to add it to the object
         // format: {email: { recencyIndex: { isResolved: true, resolutionsChecked: [DataTypes]}}}
-        if (!v2) v2 = {}
+        if (!v2) v2 = {};
         if (!v2[email]) {
           v2[email] = {
             [recencyIndex]: {
               isResolved: true,
-              resolutionsChecked: subBreach?.DataClasses || [BreachDataTypes.General]
-            }
-          }
+              resolutionsChecked: subBreach?.DataClasses || [
+                BreachDataTypes.General,
+              ],
+            },
+          };
 
-          isV2Changed = true
+          isV2Changed = true;
         }
         if (v2[email][recencyIndex]?.isResolved) {
-          console.log(`recencyIndex ${recencyIndex} exists in v2 and is resolved, no changes`)
+          console.log(
+            `recencyIndex ${recencyIndex} exists in v2 and is resolved, no changes`,
+          );
         } else {
-          console.log(`recencyIndex ${recencyIndex} either does not exist or is not resolved, overwriting`)
+          console.log(
+            `recencyIndex ${recencyIndex} either does not exist or is not resolved, overwriting`,
+          );
           v2[email][recencyIndex] = {
             isResolved: true,
-            resolutionsChecked: subBreach?.DataClasses
-          }
-          isV2Changed = true
+            resolutionsChecked: subBreach?.DataClasses,
+          };
+          isV2Changed = true;
         }
       }
     }
 
     // check if v2 is changed, if so, upsert the new v2
     if (isV2Changed) {
-      console.log('upsert for subscriber: ', subscriber.primary_email)
+      console.log("upsert for subscriber: ", subscriber.primary_email);
     }
   }
-  offset += LIMIT
-} while (subscribersArr.length === LIMIT && offset <= CAP)
+  offset += LIMIT;
+} while (subscribersArr.length === LIMIT && offset <= CAP);
 
 // breaking out of do..while loop
-console.log('Reaching the end of the table, offset ended at', offset)
-const endTime = Date.now()
-console.log(`End time is: ${endTime}`)
-console.log('Diff is: ', endTime - startTime)
-process.exit()
+console.log("Reaching the end of the table, offset ended at", offset);
+const endTime = Date.now();
+console.log(`End time is: ${endTime}`);
+console.log("Diff is: ", endTime - startTime);
+process.exit();

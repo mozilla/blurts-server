@@ -7,7 +7,7 @@ import { test, expect, jest } from "@jest/globals";
 jest.mock("@sentry/nextjs", () => {
   return {
     init: jest.fn(),
-    captureCheckIn: jest.fn()
+    captureCheckIn: jest.fn(),
   };
 });
 
@@ -16,8 +16,8 @@ jest.mock("../utils/email.js", () => {
     initEmail: jest.fn(),
     EmailTemplateType: jest.fn(),
     getEmailCtaHref: jest.fn(),
-    sendEmail: jest.fn()
-  }
+    sendEmail: jest.fn(),
+  };
 });
 
 jest.mock("../utils/hibp.js", () => {
@@ -26,107 +26,138 @@ jest.mock("../utils/hibp.js", () => {
       return {
         recipientEmail: "1",
         breachedEmail: "2",
-        signupLanguage: "3"
-      }
+        signupLanguage: "3",
+      };
     }),
     getBreachByName: jest.fn(),
     getAllBreachesFromDb: jest.fn(),
-  }
+  };
 });
 
 jest.mock("../db/tables/subscribers.js", () => {
   return {
-    getSubscribersByHashes: jest.fn(() => [""])
-  }
+    getSubscribersByHashes: jest.fn(() => [""]),
+  };
 });
 
 jest.mock("../db/tables/emailAddresses.js", () => {
   return {
-    getEmailAddressesByHashes: jest.fn(() => [""])
-  }
+    getEmailAddressesByHashes: jest.fn(() => [""]),
+  };
+});
+
+jest.mock("../db/tables/email_notifications.js", () => {
+  return {
+    getNotifiedSubscribersForBreach: jest.fn(() => [""]),
+    addEmailNotification: jest.fn(),
+    markEmailAsNotified: jest.fn(),
+  };
 });
 
 jest.mock("../utils/fluent.js", () => {
   return {
     initFluentBundles: jest.fn(),
     getMessage: jest.fn(),
-    getStringLookup: jest.fn()
-  }
+    getStringLookup: jest.fn(),
+  };
 });
 
 jest.mock("../views/emails/email2022.js", () => {
- return {
-  getTemplate: jest.fn()
- }
+  return {
+    getTemplate: jest.fn(),
+  };
 });
 
 jest.mock("../views/emails/emailBreachAlert.js", () => {
   return {
-    breachAlertEmailPartial: jest.fn()
-  }
+    breachAlertEmailPartial: jest.fn(),
+  };
 });
 
 const subClient = {
   subscriptionPath: jest.fn(),
-  acknowledge: jest.fn()
-}
+  acknowledge: jest.fn(),
+};
 
 function buildReceivedMessages(testBreachAlert) {
   return [
     {
-      ackId: 'testAckId',
+      ackId: "testAckId",
       message: {
         attributes: {},
         data: Buffer.from(JSON.stringify(testBreachAlert)),
-        messageId: '1',
+        messageId: "1",
         publishTime: {},
-        orderingKey: ''
+        orderingKey: "",
       },
-      deliveryAttempt: 0
-    }
-  ]
+      deliveryAttempt: 0,
+    },
+  ];
 }
 
 beforeEach(() => {
   jest.clearAllMocks();
+  jest.spyOn(console, "error").mockImplementation(() => {});
 });
 
 test("rejects invalid messages", async () => {
   const { poll } = await import("./emailBreachAlerts.js");
 
-  const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+  const consoleError = jest
+    .spyOn(console, "error")
+    .mockImplementation(() => {});
 
-  await poll(subClient, buildReceivedMessages({
-    // missing breachName
-    "hashPrefix": "test-prefix1",
-    "hashSuffixes": ["test-suffix1"]
-  }));
+  await poll(
+    subClient,
+    buildReceivedMessages({
+      // missing breachName
+      hashPrefix: "test-prefix1",
+      hashSuffixes: ["test-suffix1"],
+    }),
+  );
   expect(subClient.acknowledge).toBeCalledTimes(0);
-  expect(consoleError).toBeCalledWith("HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.")
+  expect(consoleError).toBeCalledWith(
+    "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.",
+  );
 
-  await poll(subClient, buildReceivedMessages({
-    "breachName": "test1",
-    // missing hashPrefix
-    "hashSuffixes": ["test-suffix1"]
-  }));
+  await poll(
+    subClient,
+    buildReceivedMessages({
+      breachName: "test1",
+      // missing hashPrefix
+      hashSuffixes: ["test-suffix1"],
+    }),
+  );
   expect(subClient.acknowledge).toBeCalledTimes(0);
-  expect(consoleError).toBeCalledWith("HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.")
+  expect(consoleError).toBeCalledWith(
+    "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.",
+  );
 
-  await poll(subClient, buildReceivedMessages({
-    "breachName": "test1",
-    "hashPrefix": "test-prefix1",
-    // missing hashSuffixes
-  }));
+  await poll(
+    subClient,
+    buildReceivedMessages({
+      breachName: "test1",
+      hashPrefix: "test-prefix1",
+      // missing hashSuffixes
+    }),
+  );
   expect(subClient.acknowledge).toBeCalledTimes(0);
-  expect(consoleError).toBeCalledWith("HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.")
+  expect(consoleError).toBeCalledWith(
+    "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.",
+  );
 
-  await poll(subClient, buildReceivedMessages({
-    "breachName": "test1",
-    "hashPrefix": "test-prefix1",
-    "hashSuffixes": "" // hashSuffixes not an array
-  }));
+  await poll(
+    subClient,
+    buildReceivedMessages({
+      breachName: "test1",
+      hashPrefix: "test-prefix1",
+      hashSuffixes: "", // hashSuffixes not an array
+    }),
+  );
   expect(subClient.acknowledge).toBeCalledTimes(0);
-  expect(consoleError).toBeCalledWith("HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.")
+  expect(consoleError).toBeCalledWith(
+    "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.",
+  );
 });
 
 test("processes valid messages", async () => {
@@ -141,9 +172,9 @@ test("processes valid messages", async () => {
   });
 
   const receivedMessages = buildReceivedMessages({
-    "breachName": "test1",
-    "hashPrefix": "test-prefix1",
-    "hashSuffixes": ["test-suffix1"]
+    breachName: "test1",
+    hashPrefix: "test-prefix1",
+    hashSuffixes: ["test-suffix1"],
   });
 
   const { poll } = await import("./emailBreachAlerts.js");
@@ -200,5 +231,148 @@ test("processes valid messages", async () => {
   // Verified, not fabricated, not spam list breaches are acknowledged.
   expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
   // Verified, not fabricated, not spam list breaches are emailed.
+  expect(sendEmail).toHaveBeenCalledTimes(1);
+});
+
+test("skipping email when subscriber id exists in email_notifications table", async () => {
+  const { sendEmail } = await import("../utils/email.js");
+  const mockedUtilsHibp = jest.requireMock("../utils/hibp.js");
+  mockedUtilsHibp.getBreachByName.mockReturnValue({
+    IsVerified: true,
+    Domain: "test1",
+    IsFabricated: false,
+    IsSpamList: false,
+    Id: 1,
+  });
+
+  jest.mock("../db/tables/subscribers.js", () => {
+    return {
+      getSubscribersByHashes: jest.fn(() => [{ id: 1 }]),
+    };
+  });
+
+  jest.mock("../db/tables/emailAddresses.js", () => {
+    return {
+      getEmailAddressesByHashes: jest.fn(() => []),
+    };
+  });
+
+  jest.mock("../db/tables/email_notifications.js", () => {
+    return {
+      getNotifiedSubscribersForBreach: jest.fn(() => [1]),
+      addEmailNotification: jest.fn(),
+    };
+  });
+
+  const receivedMessages = buildReceivedMessages({
+    breachName: "test1",
+    hashPrefix: "test-prefix1",
+    hashSuffixes: ["test-suffix1"],
+  });
+
+  const { poll } = await import("./emailBreachAlerts.js");
+
+  await poll(subClient, receivedMessages);
+  // Verified, not fabricated, not spam list breaches are acknowledged.
+  expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
+  // Verified, not fabricated, not spam list breaches are emailed.
+  expect(sendEmail).toHaveBeenCalledTimes(0);
+});
+
+test("throws an error when addEmailNotification fails", async () => {
+  const { sendEmail } = await import("../utils/email.js");
+  const mockedUtilsHibp = jest.requireMock("../utils/hibp.js");
+  mockedUtilsHibp.getBreachByName.mockReturnValue({
+    IsVerified: true,
+    Domain: "test1",
+    IsFabricated: false,
+    IsSpamList: false,
+    Id: 1,
+  });
+
+  jest.mock("../db/tables/subscribers.js", () => {
+    return {
+      getSubscribersByHashes: jest.fn(() => [{ id: 1 }]),
+    };
+  });
+
+  jest.mock("../db/tables/emailAddresses.js", () => {
+    return {
+      getEmailAddressesByHashes: jest.fn(() => [""]),
+    };
+  });
+
+  jest.mock("../db/tables/email_notifications.js", () => {
+    return {
+      getNotifiedSubscribersForBreach: jest.fn(() => [2]),
+      addEmailNotification: jest.fn().mockImplementationOnce(() => {
+        throw new Error("add failed");
+      }),
+    };
+  });
+  const receivedMessages = buildReceivedMessages({
+    breachName: "test1",
+    hashPrefix: "test-prefix1",
+    hashSuffixes: ["test-suffix1"],
+  });
+
+  const { poll } = await import("./emailBreachAlerts.js");
+
+  try {
+    await poll(subClient, receivedMessages);
+  } catch (e) {
+    expect(console.error).toBeCalled();
+    expect(e.message).toBe("add failed");
+  }
+
+  expect(sendEmail).toHaveBeenCalledTimes(0);
+});
+
+test("throws an error when markEmailAsNotified fails", async () => {
+  const { sendEmail } = await import("../utils/email.js");
+  const mockedUtilsHibp = jest.requireMock("../utils/hibp.js");
+  mockedUtilsHibp.getBreachByName.mockReturnValue({
+    IsVerified: true,
+    Domain: "test1",
+    IsFabricated: false,
+    IsSpamList: false,
+    Id: 1,
+  });
+
+  jest.mock("../db/tables/subscribers.js", () => {
+    return {
+      getSubscribersByHashes: jest.fn(() => [{ id: 1 }]),
+    };
+  });
+
+  jest.mock("../db/tables/emailAddresses.js", () => {
+    return {
+      getEmailAddressesByHashes: jest.fn(() => [""]),
+    };
+  });
+
+  jest.mock("../db/tables/email_notifications.js", () => {
+    return {
+      getNotifiedSubscribersForBreach: jest.fn(() => [2]),
+      addEmailNotification: jest.fn(),
+      markEmailAsNotified: jest.fn().mockImplementationOnce(() => {
+        throw new Error("mark failed");
+      }),
+    };
+  });
+  const receivedMessages = buildReceivedMessages({
+    breachName: "test1",
+    hashPrefix: "test-prefix1",
+    hashSuffixes: ["test-suffix1"],
+  });
+
+  const { poll } = await import("./emailBreachAlerts.js");
+
+  try {
+    await poll(subClient, receivedMessages);
+  } catch (e) {
+    expect(console.error).toBeCalled();
+    expect(e.message).toBe("mark failed");
+  }
   expect(sendEmail).toHaveBeenCalledTimes(1);
 });
