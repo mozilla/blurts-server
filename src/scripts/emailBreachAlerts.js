@@ -99,7 +99,7 @@ export async function poll(subClient, receivedMessages) {
       Domain,
       IsFabricated,
       IsSpamList,
-      id: breachId,
+      Id: breachId,
     } = breachAlert;
 
     // If any of the following conditions are not satisfied:
