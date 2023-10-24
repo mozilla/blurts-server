@@ -162,7 +162,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
                 className={`${styles.exposureCompanyTitle} ${
                   styles.companyNameArea
                 }
-                ${isCompanyNameTooLong && styles.makeFontSmaller}`}
+                ${isCompanyNameTooLong ? styles.makeFontSmaller : ""}`}
               >
                 {scanResult.data_broker}
               </span>
