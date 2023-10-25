@@ -110,7 +110,7 @@ export const DoughnutChart = (props: Props) => {
           <p>
             {l10n.getString("exposure-chart-returning-user-upgrade-prompt")}
           </p>
-          <Link href="/redesign/user/welcome">
+          <Link href="/redesign/user/welcome/free-scan?referrer=dashboard">
             {l10n.getString("exposure-chart-returning-user-upgrade-prompt-cta")}
           </Link>
         </>
