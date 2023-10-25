@@ -22,19 +22,16 @@ import ModalImage from "../client/assets/modal-default-img.svg";
 export type Props = {
   resolvedByYou: number;
   autoRemoved: number;
-  totalNumExposures: number;
+  inProgress: number;
 };
 
 function PercentageComplete(props: Props) {
-  const totalRemoved = props.autoRemoved + props.resolvedByYou;
-
   const percentageCompleteNum =
-    totalRemoved > 0 && props.totalNumExposures > 0
-      ? (totalRemoved / props.totalNumExposures) * 100
+    props.autoRemoved > 0 && props.inProgress > 0
+      ? (props.autoRemoved / (props.inProgress + props.autoRemoved)) * 100
       : 0; // Prevents the division of 0
   return percentageCompleteNum;
 }
-
 export const ProgressCard = (props: Props) => {
   const percentageCompleteNum = Math.round(PercentageComplete(props)); // Ensures a whole number
   const percentageRemainingNumber = 100 - percentageCompleteNum;
