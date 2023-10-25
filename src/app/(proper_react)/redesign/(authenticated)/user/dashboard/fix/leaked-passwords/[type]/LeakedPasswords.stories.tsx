@@ -71,3 +71,10 @@ export const SecurityQuestionsStory: Story = {
     type: "security-question",
   },
 };
+
+export const PasswordsDoneStory: Story = {
+  name: "3c. Done",
+  args: {
+    type: "done",
+  },
+};

@@ -90,3 +90,10 @@ export const PinStory: Story = {
     type: "pin",
   },
 };
+
+export const HighRiskBreachDoneStory: Story = {
+  name: "2e. Done",
+  args: {
+    type: "done",
+  },
+};

@@ -36,6 +36,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
     "credit-card": "HighRiskCreditCard",
     "bank-account": "HighRiskBankAccount",
     pin: "HighRiskPin",
+    done: "HighRiskDone",
     none: "HighRiskPin",
   };
 

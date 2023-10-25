@@ -29,6 +29,7 @@ export type HighRiskBreachTypes =
   | "ssn"
   | "bank-account"
   | "pin"
+  | "done"
   | "none";
 
 export type HighRiskBreach = {
@@ -184,6 +185,25 @@ function getHighRiskBreachesByType({
               <li>{l10n.getString("high-risk-breach-pin-step-one")}</li>
               <li>{l10n.getString("high-risk-breach-pin-step-two")}</li>
               <li>{l10n.getString("high-risk-breach-pin-step-three")}</li>
+            </ol>
+          ),
+        },
+      },
+    },
+    {
+      type: "done",
+      title: "High-risk breaches done",
+      illustration: "",
+      exposedData: [],
+      content: {
+        summary: "Summary",
+        description: "Description",
+        recommendations: {
+          title: "Recommendations",
+          steps: (
+            <ol>
+              <li>One</li>
+              <li>Two</li>
             </ol>
           ),
         },

@@ -34,6 +34,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   const stepMap: Record<LeakedPasswordsTypes, StepLink["id"]> = {
     password: "LeakedPasswordsPassword",
     "security-question": "LeakedPasswordsSecurityQuestion",
+    done: "LeakedPasswordsDone",
   };
 
   const guidedExperienceBreaches = getGuidedExperienceBreaches(

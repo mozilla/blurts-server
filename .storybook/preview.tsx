@@ -155,6 +155,15 @@ const preview: Preview = {
           }
 
           if (
+            path === "/redesign/user/dashboard/fix/high-risk-data-breaches/done"
+          ) {
+            linkTo(
+              "Pages/Guided resolution/2. High-risk data breaches",
+              "2e. Done",
+            )();
+          }
+
+          if (
             path === "/redesign/user/dashboard/fix/leaked-passwords/password"
           ) {
             linkTo(
@@ -171,6 +180,10 @@ const preview: Preview = {
               "Pages/Guided resolution/3. Leaked passwords",
               "3b. Security questions",
             )();
+          }
+
+          if (path === "/redesign/user/dashboard/fix/leaked-passwords/done") {
+            linkTo("Pages/Guided resolution/3. Leaked passwords", "3c. Done")();
           }
 
           if (

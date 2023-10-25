@@ -19,7 +19,7 @@ export type LeakedPasswordsContent = {
   };
 };
 
-export type LeakedPasswordsTypes = "password" | "security-question";
+export type LeakedPasswordsTypes = "password" | "security-question" | "done";
 
 export type LeakedPassword = {
   type: LeakedPasswordsTypes;
@@ -149,6 +149,24 @@ function getLeakedPasswords({
                 })}
               </li>
               <li>{l10n.getFragment("leaked-security-questions-step-two")}</li>
+            </ol>
+          ),
+        },
+      },
+    },
+    {
+      type: "done",
+      title: "Passwords done",
+      illustration: securityQuestionsIllustration,
+      content: {
+        summary: "Summary",
+        description: "Description",
+        recommendations: {
+          title: "Recommendations",
+          steps: (
+            <ol>
+              <li>One</li>
+              <li>Two</li>
             </ol>
           ),
         },
