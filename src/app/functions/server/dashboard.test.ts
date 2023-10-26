@@ -462,7 +462,6 @@ describe("getExposureReduction", () => {
       // data brokers
       addresses: 0,
       familyMembers: 0,
-      fullNames: 0,
 
       // data breaches
       socialSecurityNumbers: 0,
@@ -508,7 +507,6 @@ describe("getExposureReduction", () => {
       // data brokers
       addresses: 0,
       familyMembers: 0,
-      fullNames: 0,
 
       // data breaches
       socialSecurityNumbers: 0,

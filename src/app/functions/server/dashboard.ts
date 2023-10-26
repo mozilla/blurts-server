@@ -15,7 +15,6 @@ export type Exposures = {
   // data brokers
   addresses: number;
   familyMembers: number;
-  fullNames: number;
 
   // data breaches
   socialSecurityNumbers: number;
@@ -80,7 +79,6 @@ const exposureKeyMap: Record<string, string> = {
   // data brokers
   addresses: "physical-addresses",
   familyMembers: "family-members-names",
-  fullNames: "full-name",
 
   // data breaches
   socialSecurityNumbers: "social-security-numbers",
@@ -115,7 +113,6 @@ export function getDashboardSummary(
       phoneNumbers: 0,
       addresses: 0,
       familyMembers: 0,
-      fullNames: 0,
 
       // data breaches
       socialSecurityNumbers: 0,
@@ -131,7 +128,6 @@ export function getDashboardSummary(
       phoneNumbers: 0,
       addresses: 0,
       familyMembers: 0,
-      fullNames: 0,
 
       // data breaches
       socialSecurityNumbers: 0,
@@ -147,7 +143,6 @@ export function getDashboardSummary(
       phoneNumbers: 0,
       addresses: 0,
       familyMembers: 0,
-      fullNames: 0,
 
       // data breaches
       socialSecurityNumbers: 0,
@@ -163,7 +158,6 @@ export function getDashboardSummary(
       phoneNumbers: 0,
       addresses: 0,
       familyMembers: 0,
-      fullNames: 0,
 
       // data breaches
       socialSecurityNumbers: 0,
@@ -179,7 +173,6 @@ export function getDashboardSummary(
       phoneNumbers: 0,
       addresses: 0,
       familyMembers: 0,
-      fullNames: 0,
 
       // data breaches
       socialSecurityNumbers: 0,
@@ -223,14 +216,12 @@ export function getDashboardSummary(
       summary.allExposures.phoneNumbers += r.phones.length;
       summary.allExposures.addresses += r.addresses.length;
       summary.allExposures.familyMembers += r.relatives.length;
-      summary.allExposures.fullNames++;
 
       if (isInProgress) {
         summary.inProgressExposures.emailAddresses += r.emails.length;
         summary.inProgressExposures.phoneNumbers += r.phones.length;
         summary.inProgressExposures.addresses += r.addresses.length;
         summary.inProgressExposures.familyMembers += r.relatives.length;
-        summary.inProgressExposures.fullNames++;
         summary.dataBrokerInProgressExposuresNum += exposureIncrement;
       }
 
@@ -240,7 +231,6 @@ export function getDashboardSummary(
         summary.fixedExposures.phoneNumbers += r.phones.length;
         summary.fixedExposures.addresses += r.addresses.length;
         summary.fixedExposures.familyMembers += r.relatives.length;
-        summary.fixedExposures.fullNames++;
         summary.dataBrokerFixedExposuresNum += exposureIncrement;
       }
 
