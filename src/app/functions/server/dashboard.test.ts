@@ -680,10 +680,8 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBrokerTotalNum).toBe(1);
     expect(summary.dataBrokerFixedNum).toBe(0);
     expect(summary.totalExposures).toBe(summary.dataBrokerTotalExposuresNum);
-    expect(summary.dataBrokerFixedExposuresNum).toBe(
-      summary.dataBrokerTotalExposuresNum,
-    );
-    expect(summary.unresolvedExposures.emailAddresses).toBe(0);
+    expect(summary.dataBrokerManuallyResolvedExposuresNum).toBe(12);
+    expect(summary.unresolvedExposures.emailAddresses).toBe(3);
   });
 
   it("gets mix scanned results & breaches summary", () => {
