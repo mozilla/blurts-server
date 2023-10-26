@@ -4,14 +4,12 @@
   align-items: center;
   display: flex;
   justify-content: center;
+  flex: 1 1 0%;
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: $screen-sm) and (max-width: calc($screen-md - 1px)) {
     justify-content: center;
     flex: 0.5 1 0%;
-
-    @media screen and (min-width: $screen-xl) {
-      flex: 1 1 0%;
-    }
+    text-align: center;
   }
 
   .explainerContent {
@@ -29,6 +27,16 @@
 
     .cta {
       align-self: start;
+
+      @media screen and (min-width: $screen-sm) and (max-width: calc($screen-md - 1px)) {
+        align-self: center;
+      }
+
+      @media screen and (max-width: calc($screen-md - 1px)) {
+        display: grid;
+        max-width: $content-sm;
+        width: 100%;
+      }
     }
   }
 }

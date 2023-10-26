@@ -80,8 +80,10 @@
         overflow: hidden;
         white-space: nowrap;
 
-        &.makeFontSmaller {
-          font: $text-body-2xs;
+        @media screen and (max-width: $screen-sm) {
+          &.makeFontSmaller {
+            font: $text-body-2xs;
+          }
         }
       }
 
