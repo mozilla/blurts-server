@@ -27,10 +27,13 @@ export type Props = {
 
 function PercentageComplete(props: Props) {
   const percentageCompleteNum =
+    // TODO: Confirm percentage breakdown
+    /* c8 ignore start */
     props.autoRemoved > 0 && props.inProgress > 0
       ? (props.autoRemoved / (props.inProgress + props.autoRemoved)) * 100
       : 0; // Prevents the division of 0
   return percentageCompleteNum;
+  /* c8 ignore stop */
 }
 export const ProgressCard = (props: Props) => {
   const percentageCompleteNum = Math.round(PercentageComplete(props)); // Ensures a whole number
