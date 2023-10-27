@@ -4,7 +4,7 @@
 
 import { ContentProps } from "./DashboardTopBanner/DashboardTopBannerContent";
 import { isGuidedResolutionInProgress } from "../../../../../functions/server/getRelevantGuidedSteps";
-import { captureMessage } from "@sentry/nextjs";
+import { captureException } from "@sentry/nextjs";
 
 export type UserDashboardState =
   | "NonEligiblePremiumUserNoBreaches"
@@ -507,7 +507,15 @@ export const getUserDashboardState = (
     return "UsUserScanInProgressResolvedBreaches";
   }
 
-  captureMessage(`InvalidUserState: ${JSON.stringify(contentProps)}`);
+  if (typeof window === "undefined") {
+    import("../../../../../functions/server/logging")
+      .then((module) =>
+        module.logger.error(
+          `InvalidUserState: ${JSON.stringify(contentProps)}`,
+        ),
+      )
+      .catch((err) => captureException(err));
+  }
 
   return "InvalidUserState";
 };
