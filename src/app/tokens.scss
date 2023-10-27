@@ -140,8 +140,8 @@ $color-pink-10: #ffb4db;
 $color-pink-05: #ffdef0;
 
 // Gradient
-$gradient-blue: radial-gradient(
-  100% 100% at 100% 0%,
+$gradient-blue: linear-gradient(
+  to right,
   $color-violet-50 0%,
   $color-purple-50 37.1%,
   $color-blue-40 61.4%,
@@ -261,6 +261,9 @@ $text-body-sm:
   sans-serif;
 $text-body-xs:
   400 12px / 1.5 var(--font-inter),
+  sans-serif;
+$text-body-2xs:
+  400 10px / 1.5 var(--font-inter),
   sans-serif;
 
 $tab-bar-height: 100px;
