@@ -507,6 +507,7 @@ export const getUserDashboardState = (
     return "UsUserScanInProgressResolvedBreaches";
   }
 
+  /* c8 ignore next 9 */
   if (typeof window === "undefined") {
     import("../../../../../functions/server/logging")
       .then((module) =>
