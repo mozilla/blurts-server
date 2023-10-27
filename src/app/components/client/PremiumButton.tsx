@@ -11,6 +11,7 @@ import { PremiumUpsellDialog } from "./PremiumUpsellDialog";
 import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
 import { useGa } from "../../hooks/useGa";
+import getPremiumSubscriptionUrl from "../../functions/server/getPremiumSubscriptionUrl";
 
 export type Props = {
   label: string;
@@ -45,8 +46,8 @@ export default function PremiumButton({ label }: Props) {
         {l10n.getString(label)}
       </Button>
       <PremiumUpsellDialog
-        monthlySubscriptionUrl=""
-        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl={getPremiumSubscriptionUrl({ type: "monthly" })}
+        yearlySubscriptionUrl={getPremiumSubscriptionUrl({ type: "yearly" })}
         {...overlayProps}
         state={dialogState}
       />
