@@ -53,17 +53,8 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
           bannerData.dataBrokerManuallyResolvedExposuresNum +
           bannerData.dataBreachFixedExposuresNum
         }
-        autoRemoved={
-          bannerData.dataBrokerFixedExposuresNum -
-          bannerData.dataBrokerManuallyResolvedExposuresNum +
-          bannerData.dataBrokerInProgressExposuresNum
-        }
+        autoRemoved={bannerData.dataBrokerFixedExposuresNum}
         inProgress={bannerData.dataBrokerInProgressExposuresNum}
-        totalNumExposures={
-          bannerData.dataBreachFixedExposuresNum +
-          bannerData.dataBrokerFixedExposuresNum +
-          bannerData.dataBrokerInProgressExposuresNum
-        }
       />
     );
   }
@@ -188,7 +179,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </p>
             <div className={styles.cta}>
               <Button
-                href="/redesign/user/welcome/free-scan"
+                href="/redesign/user/welcome/free-scan?referrer=dashboard"
                 small
                 variant="primary"
               >
@@ -466,10 +457,9 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString(
                 "dashboard-top-banner-your-data-scan-in-progress-all-fixed-description",
                 {
-                  starting_exposure_total_num:
-                    bannerData.totalExposures -
-                    bannerData.dataBrokerFixedExposuresNum -
-                    bannerData.dataBreachFixedExposuresNum -
+                  exposures_resolved_num:
+                    bannerData.dataBrokerFixedExposuresNum +
+                    bannerData.dataBreachFixedExposuresNum +
                     bannerData.dataBrokerInProgressExposuresNum,
                 },
               )}

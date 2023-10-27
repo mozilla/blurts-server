@@ -13,6 +13,7 @@ import { useL10n } from "../../../../../hooks/l10n";
 export type Props = {
   dataBrokerCount: number;
   breachesTotalCount: number;
+  previousRoute: string;
 };
 
 const getCurrentScanCountForRange = ({
@@ -43,6 +44,7 @@ const getCurrentScanCountForRange = ({
 export const FindExposures = ({
   dataBrokerCount,
   breachesTotalCount,
+  previousRoute,
 }: Props) => {
   const [scanProgress, setScanProgress] = useState(0);
   const [scanFinished, setScanFinished] = useState(false);
@@ -92,7 +94,7 @@ export const FindExposures = ({
     // TODO: Add unit test when changing this code:
     /* c8 ignore next 3 */
     if (scanProgress >= maxProgress) {
-      router.push("/redesign/user/dashboard/");
+      router.push(previousRoute);
     }
 
     return () => clearTimeout(timeoutId);
@@ -102,6 +104,7 @@ export const FindExposures = ({
     checkingScanProgress,
     scanFinished,
     percentageSteps,
+    previousRoute,
   ]);
 
   function ProgressLabel() {

@@ -83,7 +83,10 @@
     display: flex;
     flex-direction: column;
     gap: $spacing-md;
-    padding-inline: $spacing-md;
+
+    @media screen and (min-width: $screen-md) {
+      padding-inline: $spacing-lg;
+    }
   }
 }
 
