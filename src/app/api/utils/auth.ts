@@ -55,7 +55,7 @@ const fxaProviderConfig: OAuthConfig<FxaProfile> = {
 };
 
 export const authOptions: AuthOptions = {
-  debug: false,
+  debug: process.env.NODE_ENV !== "production",
   secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: "jwt",
