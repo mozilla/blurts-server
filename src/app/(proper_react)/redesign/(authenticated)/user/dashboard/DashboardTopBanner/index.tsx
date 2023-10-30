@@ -31,6 +31,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   const chartDataKey = isShowFixed
     ? "inProgressFixedSanitizedExposures"
     : "unresolvedSanitizedExposures";
+
   const chartData: [string, number][] = props.bannerData[chartDataKey].map(
     (obj) => {
       const [key, value] = Object.entries(obj)[0];

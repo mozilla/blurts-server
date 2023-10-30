@@ -43,15 +43,17 @@ settings-email-number-of-breaches-info =
 
 ## Cancel Premium subscription
 
+settings-cancel-premium-subscription-link-label = Anulojeni nga { -brand-fx-account } juaj
 
 ## Deactivate account
 
 settings-deactivate-account-title = Çaktivizoje llogarinë
 # Deprecated
 settings-deactivate-account-info = { -product-short-name } mund ta çaktivizoni duke fshirë { -brand-fx-account } tuaj.
+settings-deactivate-account-info-2 = { -product-short-name } mund ta çaktivizoni duke fshirë { -brand-mozilla-account } tuaj.
 # Deprecated
 settings-fxa-link-label = Kaloni te Rregullime { -brand-firefox }-i
-settings-fxa-link-label-2 = Kaloni te Rregullime { -brand-mozilla }
+settings-fxa-link-label-3 = Kaloni te rregullime { -brand-mozilla-account }
 
 ## Add email dialog
 
@@ -62,6 +64,8 @@ settings-send-email-verification-button = Dërgo lidhje verifikimi
 
 ## Unsubscribe Dialog Survey
 
+settings-unsubscribe-dialog-title = Na vjen keq t’ju shohim të ikni. <br /> Do të na tregoni pse po largoheni?
+settings-unsubscribe-dialog-info = Përvoja juaj është e rëndësishme për ne. Lexojmë çdo përgjigje dhe e marrim në konsideratë.
 settings-unsubscribe-dialog-message-placeholder = Ç’mund të kishte ecur më mirë?
 settings-unsubscribe-dialog-continue = Vazhdo me anulimin
 settings-unsubscribe-dialog-cancel = S’prish punë, kthemëni

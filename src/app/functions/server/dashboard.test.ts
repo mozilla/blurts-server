@@ -462,7 +462,6 @@ describe("getExposureReduction", () => {
       // data brokers
       addresses: 0,
       familyMembers: 0,
-      fullNames: 0,
 
       // data breaches
       socialSecurityNumbers: 0,
@@ -492,6 +491,8 @@ describe("getExposureReduction", () => {
       inProgressFixedExposures: testExposure,
       unresolvedSanitizedExposures: [],
       inProgressFixedSanitizedExposures: [],
+      dataBreachUnresolvedNum: 0,
+      dataBreachResolvedNum: 0,
     };
 
     const exposureReduction = getExposureReduction(testSummary);
@@ -506,7 +507,6 @@ describe("getExposureReduction", () => {
       // data brokers
       addresses: 0,
       familyMembers: 0,
-      fullNames: 0,
 
       // data breaches
       socialSecurityNumbers: 0,
@@ -536,6 +536,8 @@ describe("getExposureReduction", () => {
       inProgressFixedExposures: testExposure,
       unresolvedSanitizedExposures: [],
       inProgressFixedSanitizedExposures: [],
+      dataBreachUnresolvedNum: 0,
+      dataBreachResolvedNum: 0,
     };
 
     const exposureReduction = getExposureReduction(testSummary);
@@ -676,12 +678,10 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBreachTotalExposuresNum).toBe(0);
     expect(summary.dataBreachFixedExposuresNum).toBe(0);
     expect(summary.dataBrokerTotalNum).toBe(1);
-    expect(summary.dataBrokerFixedNum).toBe(1);
+    expect(summary.dataBrokerFixedNum).toBe(0);
     expect(summary.totalExposures).toBe(summary.dataBrokerTotalExposuresNum);
-    expect(summary.dataBrokerFixedExposuresNum).toBe(
-      summary.dataBrokerTotalExposuresNum,
-    );
-    expect(summary.unresolvedExposures.emailAddresses).toBe(0);
+    expect(summary.dataBrokerManuallyResolvedExposuresNum).toBe(12);
+    expect(summary.unresolvedExposures.emailAddresses).toBe(3);
   });
 
   it("gets mix scanned results & breaches summary", () => {
@@ -694,7 +694,7 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBreachTotalExposuresNum).toBe(8);
     expect(summary.dataBreachFixedExposuresNum).toBe(0);
     expect(summary.dataBrokerTotalNum).toBe(1);
-    expect(summary.dataBrokerTotalExposuresNum).toBe(13);
+    expect(summary.dataBrokerTotalExposuresNum).toBe(12);
     expect(summary.totalExposures).toBe(
       summary.dataBrokerTotalExposuresNum + summary.dataBreachTotalExposuresNum,
     );
@@ -711,8 +711,8 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBreachTotalExposuresNum).toBe(8);
     expect(summary.dataBreachFixedExposuresNum).toBe(8);
     expect(summary.dataBrokerTotalNum).toBe(3);
-    expect(summary.dataBrokerTotalExposuresNum).toBe(39);
-    expect(summary.dataBrokerFixedExposuresNum).toBe(39);
+    expect(summary.dataBrokerTotalExposuresNum).toBe(36);
+    expect(summary.dataBrokerFixedExposuresNum).toBe(36);
     expect(summary.dataBrokerInProgressExposuresNum).toBe(0);
     expect(summary.totalExposures).toBe(
       summary.dataBreachFixedExposuresNum + summary.dataBrokerFixedExposuresNum,
