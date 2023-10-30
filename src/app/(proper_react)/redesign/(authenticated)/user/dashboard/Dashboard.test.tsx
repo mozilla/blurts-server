@@ -1698,15 +1698,19 @@ it("shows the correct dashboard banner CTA for US user, with Premium, scan in pr
 });
 
 // Check dashboard banner content for story DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches
-it("logs a warning in the story for an invalid user state", () => {
+it("logs a warning and error in the story for an invalid user state", () => {
   const ComposedDashboard = composeStory(
     DashboardInvalidPremiumUserNoScanResolvedBreaches,
     Meta,
   );
 
+  const errorLogSpy = jest.spyOn(global.console, "error").mockImplementation();
   const warnLogSpy = jest.spyOn(global.console, "warn").mockImplementation();
   render(<ComposedDashboard />);
 
+  expect(errorLogSpy).toHaveBeenCalledWith(
+    `InvalidUserState: {"relevantGuidedStep":{"href":"/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan","id":"Scan","eligible":true,"completed":false},"hasExposures":true,"hasUnresolvedBreaches":false,"hasUnresolvedBrokers":false,"isEligibleForFreeScan":true,"isEligibleForPremium":false,"isPremiumUser":true,"scanInProgress":false}`,
+  );
   expect(warnLogSpy).toHaveBeenCalledWith(
     "No matching condition for dashboard state found.",
   );

@@ -506,5 +506,8 @@ export const getUserDashboardState = (
     return "UsUserScanInProgressResolvedBreaches";
   }
 
+  /* c8 ignore next 1 */
+  console.error(`InvalidUserState: ${JSON.stringify(contentProps)}`);
+
   return "InvalidUserState";
 };

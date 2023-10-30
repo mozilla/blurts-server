@@ -252,7 +252,7 @@ export const View = (props: Props) => {
           ),
         },
         elems: {
-          a: <a href="/redesign/user/welcome" />,
+          a: <a href="/redesign/user/welcome/free-scan?referrer=dashboard" />,
         },
       })}
     </p>
