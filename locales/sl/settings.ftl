@@ -59,7 +59,7 @@ settings-deactivate-account-info = { -product-short-name } lahko deaktivirate ta
 settings-deactivate-account-info-2 = { -product-short-name } lahko izključite tako, da izbrišete svoj { -brand-mozilla-account }.
 # Deprecated
 settings-fxa-link-label = Odpri nastavitve { -brand-firefox(sklon: "rodilnik") }
-settings-fxa-link-label-3 = Pojdi na nastavitve { -brand-mozilla-account(sklon: "rodilnik") }
+settings-fxa-link-label-3 = Pojdite v Nastavitve { -brand-mozilla-account(sklon: "rodilnik") }
 
 ## Add email dialog
 

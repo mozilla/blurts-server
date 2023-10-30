@@ -74,11 +74,15 @@ export async function getBreachIcons(breaches) {
       await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()));
       const fileStream = createWriteStream(logoPath, { flags: "wx" });
       const bodyReadable = Readable.fromWeb(res.body);
-      await finished(bodyReadable.pipe(fileStream));
-      await updateBreachFaviconUrl(
-        breachName,
-        `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`,
-      );
+      try {
+        await finished(bodyReadable.pipe(fileStream));
+        await updateBreachFaviconUrl(
+          breachName,
+          `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`,
+        );
+      } catch (e) {
+        console.error(e);
+      }
     }),
   );
 }
