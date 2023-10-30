@@ -66,11 +66,10 @@ export async function GET(
  * NOTE: this will only carry out the server actions that should happen - client
  * state (such as the badge) depends on the FxA `subscriptions` claim in the JWT.
  *
- * @param {NextRequest} req
+ * @param req
  * @param root0
  * @param root0.params
  * @param root0.params.primarySha1
- * @param root0.params.action
  */
 export async function PUT(
   req: NextRequest,
