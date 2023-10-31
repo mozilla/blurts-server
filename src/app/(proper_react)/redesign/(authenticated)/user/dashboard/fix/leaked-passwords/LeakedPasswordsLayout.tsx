@@ -51,6 +51,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   // The non-null assertion here should be safe since we already did this check
   // in `./[type]/page.tsx`:
   const { title, illustration, content } = pageData!;
+  const isStepDone = props.type === "done";
 
   return (
     <FixView
@@ -64,28 +65,30 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         title={title}
         illustration={illustration}
         cta={
-          <>
-            <Button
-              variant="primary"
-              small
-              // TODO: Add test once MNTOR-1700 logic is added
-              /* c8 ignore next 3 */
-              onPress={() => {
-                // TODO: MNTOR-1700 Add routing logic
-              }}
-              autoFocus={true}
-            >
-              {l10n.getString("leaked-passwords-mark-as-fixed")}
-            </Button>
-            <Link
-              // TODO: Add test once MNTOR-1700 logic is added
-              href="/"
-            >
-              {l10n.getString("leaked-passwords-skip")}
-            </Link>
-          </>
+          !isStepDone && (
+            <>
+              <Button
+                variant="primary"
+                small
+                // TODO: Add test once MNTOR-1700 logic is added
+                /* c8 ignore next 3 */
+                onPress={() => {
+                  // TODO: MNTOR-1700 Add routing logic
+                }}
+                autoFocus={true}
+              >
+                {l10n.getString("leaked-passwords-mark-as-fixed")}
+              </Button>
+              <Link
+                // TODO: Add test once MNTOR-1700 logic is added
+                href="/"
+              >
+                {l10n.getString("leaked-passwords-skip")}
+              </Link>
+            </>
+          )
         }
-        estimatedTime={4}
+        estimatedTime={!isStepDone ? 4 : undefined}
       >
         <ResolutionContent content={content} locale={getLocale(l10n)} />
       </ResolutionContainer>

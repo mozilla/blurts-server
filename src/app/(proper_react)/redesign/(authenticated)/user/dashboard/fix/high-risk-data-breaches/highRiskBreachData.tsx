@@ -198,15 +198,6 @@ function getHighRiskBreachesByType({
       content: {
         summary: "Summary",
         description: "Description",
-        recommendations: {
-          title: "Recommendations",
-          steps: (
-            <ol>
-              <li>One</li>
-              <li>Two</li>
-            </ol>
-          ),
-        },
       },
     },
     {

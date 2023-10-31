@@ -55,6 +55,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
   // in `./[type]/page.tsx`:
   const { title, illustration, content, exposedData, type } = pageData!;
   const hasBreaches = type !== "none";
+  const isStepDone = type === "done";
 
   return (
     <FixView
@@ -68,41 +69,43 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
         title={title}
         illustration={illustration}
         cta={
-          <>
-            <Button
-              variant="primary"
-              small
-              // TODO: Add test once MNTOR-1700 logic is added
-              /* c8 ignore next 3 */
-              onPress={() => {
-                // TODO: MNTOR-1700 Add routing logic + fix event here
-              }}
-            >
-              {
-                // Theoretically, this page should never be shown if the user
-                // has no breaches, unless the user directly visits its URL, so
-                // no tests represents it either:
-                /* c8 ignore next 3 */
-                hasBreaches
-                  ? l10n.getString("high-risk-breach-mark-as-fixed")
-                  : l10n.getString("high-risk-breach-none-continue")
-              }
-            </Button>
-            {hasBreaches && (
-              <Link
+          !isStepDone && (
+            <>
+              <Button
+                variant="primary"
+                small
                 // TODO: Add test once MNTOR-1700 logic is added
-                href="/"
+                /* c8 ignore next 3 */
+                onPress={() => {
+                  // TODO: MNTOR-1700 Add routing logic + fix event here
+                }}
               >
-                {l10n.getString("high-risk-breach-skip")}
-              </Link>
-            )}
-          </>
+                {
+                  // Theoretically, this page should never be shown if the user
+                  // has no breaches, unless the user directly visits its URL, so
+                  // no tests represents it either:
+                  /* c8 ignore next 3 */
+                  hasBreaches
+                    ? l10n.getString("high-risk-breach-mark-as-fixed")
+                    : l10n.getString("high-risk-breach-none-continue")
+                }
+              </Button>
+              {hasBreaches && (
+                <Link
+                  // TODO: Add test once MNTOR-1700 logic is added
+                  href="/"
+                >
+                  {l10n.getString("high-risk-breach-skip")}
+                </Link>
+              )}
+            </>
+          )
         }
         // Theoretically, this page should never be shown if the user has no
         // breaches, unless the user directly visits its URL, so no tests
         // represents it either:
         /* c8 ignore next */
-        estimatedTime={hasBreaches ? 15 : undefined}
+        estimatedTime={!isStepDone && hasBreaches ? 15 : undefined}
       >
         <ResolutionContent
           content={content}
