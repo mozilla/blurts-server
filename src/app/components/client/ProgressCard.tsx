@@ -23,21 +23,18 @@ export type Props = {
   resolvedByYou: number;
   autoRemoved: number;
   inProgress: number;
-  totalNumExposures: number;
 };
 
 function PercentageComplete(props: Props) {
-  const totalRemoved = props.autoRemoved + props.resolvedByYou;
-
   const percentageCompleteNum =
-    totalRemoved > 0 && props.totalNumExposures > 0
-      ? ((props.autoRemoved + props.resolvedByYou - props.inProgress) /
-          props.totalNumExposures) *
-        100
+    // TODO: Confirm percentage breakdown
+    /* c8 ignore start */
+    props.autoRemoved > 0 && props.inProgress > 0
+      ? (props.autoRemoved / (props.inProgress + props.autoRemoved)) * 100
       : 0; // Prevents the division of 0
   return percentageCompleteNum;
+  /* c8 ignore stop */
 }
-
 export const ProgressCard = (props: Props) => {
   const percentageCompleteNum = Math.round(PercentageComplete(props)); // Ensures a whole number
   const percentageRemainingNumber = 100 - percentageCompleteNum;
@@ -136,6 +133,7 @@ export const ProgressCard = (props: Props) => {
           </div>
           <p>{l10n.getString("progress-card-resolved-by-you-headline")}</p>
         </div>
+
         <div className={styles.progressItem}>
           <div className={styles.progressStat}>
             <Image src={ExploringLaptopMinus} alt="" width="50" height="50" />

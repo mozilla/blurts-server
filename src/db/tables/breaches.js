@@ -4,7 +4,6 @@
 
 import initKnex from 'knex'
 import knexConfig from '../knexfile.js'
-import { logger } from '../../app/functions/server/logging'
 const knex = initKnex(knexConfig)
 
 /**
@@ -47,7 +46,7 @@ async function getAllBreachesCount() {
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function upsertBreaches(hibpBreaches) {
-  logger.debug('upsertBreaches', hibpBreaches[0])
+  console.debug('upsertBreaches', hibpBreaches[0])
 
   return knex.transaction(async trx => {
     const queries = hibpBreaches.map(breach =>

@@ -3,6 +3,8 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-meta-title = { -brand-fx-monitor } - Pult
+breach-all-meta-title = { -brand-fx-monitor } - Krejt Cenimet e të Dhënave
+breach-all-meta-social-title = Krejt Cenimet e Pikasura nga { -brand-fx-monitor }
 
 ## Breaches header
 
