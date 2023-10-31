@@ -10,14 +10,22 @@ export class DashboardPage {
   readonly siteFoundImage: Locator;
   readonly breachStats: Locator;
 
+  readonly dashboardNavButton: Locator;
+  readonly fAQsNavButton: Locator;
+
   constructor(page: Page) {
     this.page = page;
     this.dataBreachEmailDropdown = page.locator("custom-select");
     this.siteFoundImage = page.locator("figure img");
     this.breachStats = page.locator("breach-stats");
+    //sidebar nav
+    this.dashboardNavButton = page.getByRole("link", { name: "Dashboard" });
+    this.fAQsNavButton = page
+      .getByLabel("Navigation")
+      .getByRole("link", { name: "FAQs" });
   }
 
   async open() {
-    await this.page.goto("/user/dashboard");
+    await this.page.goto("/redesign/user/dashboard");
   }
 }
