@@ -143,7 +143,9 @@ async function addOnerepScanResults(
       }),
     );
 
-    await transaction("onerep_scan_results").insert(scanResultsMap);
+    if (scanResultsMap.length > 0) {
+      await transaction("onerep_scan_results").insert(scanResultsMap);
+    }
   });
 }
 
