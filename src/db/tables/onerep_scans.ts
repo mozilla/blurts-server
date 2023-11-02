@@ -139,7 +139,7 @@ async function addOnerepScanResults(
   await knex("onerep_scan_results")
     .insert(scanResultsMap)
     .onConflict("onerep_scan_result_id")
-    .ignore();
+    .merge();
 }
 
 async function isOnerepScanResultForSubscriber(params: {
