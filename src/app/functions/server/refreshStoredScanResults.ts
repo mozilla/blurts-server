@@ -31,9 +31,11 @@ export async function refreshStoredScanResults(profileId: number) {
     );
 
     // Record any new scans.
-    for (const scan of newScans) {
-      await setOnerepScan(profileId, scan.id, scan.status, scan.reason);
-    }
+    await Promise.all(
+      newScans.map(async (scan) => {
+        await setOnerepScan(profileId, scan.id, scan.status, scan.reason);
+      }),
+    );
 
     // Refresh results for all scans, new and existing.
     // The database will ignore any attempt to insert duplicate scan result IDs.
