@@ -38,7 +38,7 @@ export async function refreshStoredScanResults(profileId: number) {
       }),
     );
 
-    // Record any new scans.
+    // Record any new scans, or change in existing scan status.
     await Promise.all(
       remoteScans.map(async (scan) => {
         await setOnerepScan(profileId, scan.id, scan.status, scan.reason);
