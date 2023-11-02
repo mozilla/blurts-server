@@ -13,26 +13,48 @@ import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
 
 const knex = initKnex(knexConfig);
 export interface LatestOnerepScanData {
-  scan: OnerepScanRow | null;
   results: OnerepScanResultRow[];
+}
+
+async function getAllScansForProfile(
+  onerepProfileId: number,
+): Promise<OnerepScanRow[]> {
+  const scans = await knex("onerep_scans")
+    .where("onerep_profile_id", onerepProfileId)
+    .orderBy("created_at", "desc");
+
+  return scans;
+}
+
+async function getScanResults(
+  onerepScanId: number,
+): Promise<OnerepScanResultRow[]> {
+  const scanResults = await knex("onerep_scan_results").where(
+    "onerep_scan_id",
+    onerepScanId,
+  );
+
+  return scanResults;
 }
 
 async function getLatestOnerepScanResults(
   onerepProfileId: number,
 ): Promise<LatestOnerepScanData> {
-  const scan = await knex("onerep_scans")
-    .first()
+  const result = await knex("onerep_scan_results")
+    .select("onerep_scan_id")
+    .from("onerep_scans")
     .where("onerep_profile_id", onerepProfileId)
     .orderBy("created_at", "desc");
 
+  const scanIds = result.map((scan_id) => scan_id["onerep_scan_id"]);
+
   const results =
-    typeof scan === "undefined"
+    typeof scanIds === "undefined"
       ? []
       : await knex("onerep_scan_results")
           .select()
-          .where("onerep_scan_id", scan.onerep_scan_id);
+          .whereIn("onerep_scan_id", scanIds);
   return {
-    scan: scan ?? null,
     results: results,
   };
 }
@@ -49,17 +71,18 @@ async function setOnerepProfileId(
   });
 }
 
-async function setOnerepManualScan(
+async function setOnerepScan(
   onerepProfileId: number,
   onerepScanId: number,
   onerepScanStatus: Scan["status"],
+  oneRepScanReason: "manual" | "initial" | "monitoring",
 ) {
   logger.info("manual_scan_created", { onerepScanId, onerepScanStatus });
 
   await knex("onerep_scans").insert({
     onerep_profile_id: onerepProfileId,
     onerep_scan_id: onerepScanId,
-    onerep_scan_reason: "manual",
+    onerep_scan_reason: oneRepScanReason,
     onerep_scan_status: onerepScanStatus,
     // @ts-ignore knex.fn.now() results in it being set to a date,
     // even if it's not typed as a JS date object:
@@ -69,47 +92,9 @@ async function setOnerepManualScan(
 
 async function addOnerepScanResults(
   onerepProfileId: number,
-  onerepScanId: number,
   onerepScanResults: Array<ScanResult>,
-  onerepScanReason: Scan["reason"],
-  onerepScanStatus: Scan["status"],
 ) {
   await knex.transaction(async (transaction) => {
-    if (onerepScanReason === "manual") {
-      // Manual scans update an existing scan, replacing the previous results:
-      logger.info("manual_scan_updated", {
-        onerepScanId,
-        onerepScanReason,
-        onerepScanStatus,
-      });
-      await transaction("onerep_scan_results")
-        .delete()
-        .where("onerep_scan_id", onerepScanId);
-    }
-
-    // Create a new scan if it does not already exist. If it already exists:
-    // Update the status of the scan.
-    logger.info("scan_created_or_updated", {
-      onerepScanId,
-      onerepScanReason,
-      onerepScanStatus,
-    });
-    await transaction("onerep_scans")
-      .insert({
-        onerep_profile_id: onerepProfileId,
-        onerep_scan_id: onerepScanId,
-        onerep_scan_reason: onerepScanReason,
-        onerep_scan_status: onerepScanStatus,
-        // @ts-ignore knex.fn.now() results in it being set to a date,
-        // even if it's not typed as a JS date object:
-        created_at: knex.fn.now(),
-      })
-      .onConflict("onerep_scan_id")
-      .merge({
-        onerep_scan_status: onerepScanStatus,
-        updated_at: knex.fn.now(),
-      });
-
     const scanResultsMap = onerepScanResults.map((scanResult) => ({
       onerep_scan_result_id: scanResult.id,
       onerep_scan_id: scanResult.scan_id,
@@ -131,9 +116,9 @@ async function addOnerepScanResults(
     }));
 
     // Only log metadata. This is used for reporting purposes.
-    logger.info(
-      "scan_result",
-      scanResultsMap.map((result) => {
+    logger.info("scan_result", {
+      onerepProfileId,
+      scan: scanResultsMap.map((result) => {
         return {
           onerepScanId: result.onerep_scan_id,
           onerepScanResultId: result.onerep_scan_result_id,
@@ -141,9 +126,12 @@ async function addOnerepScanResults(
           dataBrokerId: result.data_broker_id,
         };
       }),
-    );
+    });
 
-    await transaction("onerep_scan_results").insert(scanResultsMap);
+    await transaction("onerep_scan_results")
+      .insert(scanResultsMap)
+      .onConflict("onerep_scan_result_id")
+      .ignore();
   });
 }
 
@@ -213,9 +201,11 @@ async function getScansCountForProfile(
 }
 
 export {
+  getAllScansForProfile,
+  getScanResults,
   getLatestOnerepScanResults,
   setOnerepProfileId,
-  setOnerepManualScan,
+  setOnerepScan,
   addOnerepScanResults,
   getScansCount,
   isOnerepScanResultForSubscriber,

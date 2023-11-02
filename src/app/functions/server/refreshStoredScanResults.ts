@@ -4,9 +4,10 @@
 
 import {
   addOnerepScanResults,
-  getLatestOnerepScanResults,
+  getAllScansForProfile,
+  setOnerepScan,
 } from "../../../db/tables/onerep_scans";
-import { ScanResult, getAllScanResults, getScanDetails } from "./onerep";
+import { getAllScanResults, listScans } from "./onerep";
 import { logger } from "./logging";
 
 /**
@@ -18,59 +19,35 @@ import { logger } from "./logging";
  * @param profileId {number} OneRep Profile ID to refresh.
  */
 export async function refreshStoredScanResults(profileId: number) {
-  // This contains the latest scan results in our database.
-  const latestScan = await getLatestOnerepScanResults(profileId);
-
-  let scanId = latestScan.scan?.onerep_scan_id;
-  let reason = latestScan.scan?.onerep_scan_reason;
-  let status = latestScan.scan?.onerep_scan_status;
-
   try {
-    const currentScan = await getAllScanResults(profileId);
-    let newScanResults: ScanResult[] = [];
+    const remoteScans = (await listScans(profileId)).data;
+    const localScans = await getAllScansForProfile(profileId);
 
-    if (!latestScan.results.length) {
-      newScanResults = currentScan;
-    } else {
-      currentScan.forEach((current) => {
-        latestScan.results.forEach((latest) => {
-          if (
-            current.id === latest.onerep_scan_result_id &&
-            current.scan_id === latest.onerep_scan_id &&
-            new Date(current.updated_at) > latest.updated_at
-          ) {
-            newScanResults.push(current);
-          }
-        });
-      });
+    const newScans = remoteScans.filter(
+      (remoteScan) =>
+        // @ts-ignore FIXME
+        !localScans.some(
+          (localScan) => localScan.onerep_scan_id === remoteScan.id,
+        ),
+    );
+
+    // Record any new scans.
+    for (const scan of newScans) {
+      await setOnerepScan(profileId, scan.id, scan.status, scan.reason);
     }
 
-    if (newScanResults.length > 0) {
-      scanId = newScanResults[0].scan_id;
-      const details = await getScanDetails(profileId, scanId);
-      reason = details.reason;
-      status = details.status;
+    // Refresh results for all scans, new and existing.
+    const allScanResults = await getAllScanResults(profileId);
+    await addOnerepScanResults(profileId, allScanResults);
 
-      if (!scanId && typeof scanId === "number") {
-        throw new Error("No current scan ID");
-      }
+    /*
 
-      if (!latestScan?.scan?.onerep_scan_reason) {
-        throw new Error("No scan reason");
-      }
 
-      if (!latestScan?.scan?.onerep_scan_reason) {
-        throw new Error("No scan status");
-      }
+    const newScanResults = remoteScanResults.filter((remoteScanResult) => {
+    });
 
-      await addOnerepScanResults(
-        profileId,
-        scanId,
-        newScanResults,
-        reason,
-        status,
-      );
-    }
+    await addOnerepScanResults(profileId, newScanResults);
+    */
   } catch (ex) {
     logger.warn("Could not fetch current OneRep results:", ex);
   }
