@@ -475,7 +475,7 @@ how-hackers-work-desc = Emo’ã ne ñe’ẽñemi mba’evai apoha ñandutiguá
 what-to-do-after-breach-desc = Ejoko ne mba’ete eguereko hag̃ua ne marandu mombyry iñañávagui.
 create-strong-passwords-desc = Ejapo ne ñe’ẽñemi imbaretéva, hekorosã ha hasýva ojekuaa hag̃ua.
 steps-to-protect-desc = Eikumby kyhyjerã hetavéva eikuaa hag̃ua mba’etépa pe ehekava’erã.
-five-myths-desc = Eikuaa mb’aéichapa emboykéta ñe’ẽñemi jeporuvai nombohasýiva hekovaíva rembiapo.
+five-myths-desc = Mba’éichapa emboykéta ñe’ẽñemi jeporuvai nombohasýiva hekovaíva rembiapo.
 take-further-steps-desc = Ehecha mba’éichapa emboykéta teratee ñemonda ani hag̃ua ñe apañuãi viru rekópe.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = ¡Moambuepy ñongatupyre!
@@ -618,7 +618,7 @@ steps-to-resolve-headline = Tape emoĩporã hag̃ua ko ñembyai
 vpn-promo-headline = Ko’ág̃a emongakuaa tekorosã ñandutípe.
 vpn-promo-copy = { -brand-Mozilla } Virtual Private Network oipytyvõ emo’ã hag̃ua nde jeike ñandutípe umi mba’evai apohágui.
 vpn-promo-cta = Erekóke { -brand-mozilla-vpn }
-vpn-promo-headline-new = 50% sa’ivéta ehepyme’ẽramo ary pukukue
+vpn-promo-headline-new = 50% sa’ivéta ehepyme’ẽrõ ary pukukue
 vpn-promo-copy-new = Emo’ã ne mba’ekuaarã ñandutípe ha eiporavo—VPN-pe teraguapy ojokupytýva eikotevẽvare.
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`

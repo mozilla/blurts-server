@@ -133,7 +133,7 @@ async function addOnerepScanResults(
     // Only log metadata. This is used for reporting purposes.
     logger.info(
       "scan_result",
-      scanResultsMap.forEach((result) => {
+      scanResultsMap.map((result) => {
         return {
           onerepScanId: result.onerep_scan_id,
           onerepScanResultId: result.onerep_scan_result_id,
@@ -143,7 +143,9 @@ async function addOnerepScanResults(
       }),
     );
 
-    await transaction("onerep_scan_results").insert(scanResultsMap);
+    if (scanResultsMap.length > 0) {
+      await transaction("onerep_scan_results").insert(scanResultsMap);
+    }
   });
 }
 
