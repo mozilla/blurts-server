@@ -44,19 +44,22 @@ async function getLatestOnerepScanResults(
   const scanIds = await knex("onerep_scan_results")
     .select("onerep_scan_id")
     .from("onerep_scans")
-    .where("onerep_profile_id", onerepProfileId)
-    .orderBy("created_at", "desc");
-
-  const scanIdMap = scanIds.map((scan_id) => scan_id["onerep_scan_id"]);
+    .where("onerep_profile_id", onerepProfileId);
 
   const results =
     typeof scanIds === "undefined"
       ? []
       : await knex("onerep_scan_results")
           .select()
-          .whereIn("onerep_scan_id", scanIdMap);
+          .whereIn(
+            "onerep_scan_id",
+            scanIds.map((scan_id) => scan_id["onerep_scan_id"]),
+          );
 
-  const scan = await knex("onerep_scans").first();
+  const scan = await knex("onerep_scans")
+    .first()
+    .where("onerep_profile_id", onerepProfileId)
+    .orderBy("created_at", "desc");
 
   return {
     scan: scan ?? null,
