@@ -82,17 +82,21 @@ async function setOnerepScan(
   onerepScanStatus: Scan["status"],
   oneRepScanReason: "manual" | "initial" | "monitoring",
 ) {
-  logger.info("manual_scan_created", { onerepScanId, onerepScanStatus });
-
-  await knex("onerep_scans").insert({
-    onerep_profile_id: onerepProfileId,
-    onerep_scan_id: onerepScanId,
-    onerep_scan_reason: oneRepScanReason,
-    onerep_scan_status: onerepScanStatus,
-    // @ts-ignore knex.fn.now() results in it being set to a date,
-    // even if it's not typed as a JS date object:
-    created_at: knex.fn.now(),
-  });
+  await knex("onerep_scans")
+    .insert({
+      onerep_profile_id: onerepProfileId,
+      onerep_scan_id: onerepScanId,
+      onerep_scan_reason: oneRepScanReason,
+      onerep_scan_status: onerepScanStatus,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      created_at: knex.fn.now(),
+    })
+    .onConflict("onerep_scan_id")
+    .merge({
+      onerep_scan_status: onerepScanStatus,
+      updated_at: knex.fn.now(),
+    });
 }
 
 async function addOnerepScanResults(
