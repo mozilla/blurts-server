@@ -51,6 +51,7 @@ async function getLatestOnerepScanResults(
       ? []
       : await knex("onerep_scan_results")
           .select()
+          .where("onerep_profile_id", onerepProfileId)
           .innerJoin(
             "onerep_scans",
             "onerep_scan_results.onerep_scan_id",
