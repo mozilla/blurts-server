@@ -25,7 +25,6 @@ export async function refreshStoredScanResults(profileId: number) {
 
     const newScans = remoteScans.filter(
       (remoteScan) =>
-        // @ts-ignore FIXME
         !localScans.some(
           (localScan) => localScan.onerep_scan_id === remoteScan.id,
         ),
@@ -37,17 +36,9 @@ export async function refreshStoredScanResults(profileId: number) {
     }
 
     // Refresh results for all scans, new and existing.
+    // The database will ignore any attempt to insert duplicate scan result IDs.
     const allScanResults = await getAllScanResults(profileId);
     await addOnerepScanResults(profileId, allScanResults);
-
-    /*
-
-
-    const newScanResults = remoteScanResults.filter((remoteScanResult) => {
-    });
-
-    await addOnerepScanResults(profileId, newScanResults);
-    */
   } catch (ex) {
     logger.warn("Could not fetch current OneRep results:", ex);
   }
