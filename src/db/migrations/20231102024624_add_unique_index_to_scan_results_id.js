@@ -7,6 +7,13 @@
  * @returns { Promise<void> }
  */
 export function up (knex) {
+  // Delete any duplicate rows, choosing the row that was inserted last.
+  knex.raw(`
+    DELETE FROM onerep_scan_results R1
+    USING onerep_scan_results R2
+    WHERE R1.ctid < R2.ctid
+    AND R1.onerep_scan_result_id = R2.onerep_scan_result_id`
+  );
   return knex.schema.table('onerep_scan_results', table => {
     table.unique('onerep_scan_result_id')
   })
