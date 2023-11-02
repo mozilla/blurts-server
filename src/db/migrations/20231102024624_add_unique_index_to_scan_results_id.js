@@ -6,9 +6,9 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export function up (knex) {
+export async function up (knex) {
   // Delete any duplicate rows, choosing the row that was inserted last.
-  knex.raw(`
+  await knex.raw(`
     DELETE FROM onerep_scan_results R1
     USING onerep_scan_results R2
     WHERE R1.ctid < R2.ctid
