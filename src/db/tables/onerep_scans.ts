@@ -13,6 +13,7 @@ import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
 
 const knex = initKnex(knexConfig);
 export interface LatestOnerepScanData {
+  scan: OnerepScanRow | null;
   results: OnerepScanResultRow[];
 }
 
@@ -40,22 +41,26 @@ async function getScanResults(
 async function getLatestOnerepScanResults(
   onerepProfileId: number,
 ): Promise<LatestOnerepScanData> {
-  const result = await knex("onerep_scan_results")
+  const scanIds = await knex("onerep_scan_results")
     .select("onerep_scan_id")
     .from("onerep_scans")
     .where("onerep_profile_id", onerepProfileId)
     .orderBy("created_at", "desc");
 
-  const scanIds = result.map((scan_id) => scan_id["onerep_scan_id"]);
+  const scanIdMap = scanIds.map((scan_id) => scan_id["onerep_scan_id"]);
 
   const results =
     typeof scanIds === "undefined"
       ? []
       : await knex("onerep_scan_results")
           .select()
-          .whereIn("onerep_scan_id", scanIds);
+          .whereIn("onerep_scan_id", scanIdMap);
+
+  const scan = await knex("onerep_scans").first();
+
   return {
-    results: results,
+    scan: scan ?? null,
+    results,
   };
 }
 
