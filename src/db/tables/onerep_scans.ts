@@ -41,25 +41,21 @@ async function getScanResults(
 async function getLatestOnerepScanResults(
   onerepProfileId: number,
 ): Promise<LatestOnerepScanData> {
-  const scanIds = await knex("onerep_scan_results")
-    .select("onerep_scan_id")
-    .from("onerep_scans")
-    .where("onerep_profile_id", onerepProfileId);
-
-  const results =
-    typeof scanIds === "undefined"
-      ? []
-      : await knex("onerep_scan_results")
-          .select()
-          .whereIn(
-            "onerep_scan_id",
-            scanIds.map((scan_id) => scan_id["onerep_scan_id"]),
-          );
-
   const scan = await knex("onerep_scans")
     .first()
     .where("onerep_profile_id", onerepProfileId)
     .orderBy("created_at", "desc");
+
+  const results =
+    typeof scan === "undefined"
+      ? []
+      : await knex("onerep_scan_results")
+          .select()
+          .innerJoin(
+            "onerep_scans",
+            "onerep_scan_results.onerep_scan_id",
+            "onerep_scans.onerep_scan_id",
+          );
 
   return {
     scan: scan ?? null,
