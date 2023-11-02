@@ -23,14 +23,14 @@ export async function refreshStoredScanResults(profileId: number) {
     const remoteScans = (await listScans(profileId)).data;
     const localScans = await getAllScansForProfile(profileId);
 
-    const newScan = remoteScans.filter(
+    const newScans = remoteScans.filter(
       (remoteScan) =>
         !localScans.some(
           (localScan) => localScan.onerep_scan_id === remoteScan.id,
         ),
     );
 
-    newScan.forEach((scan) =>
+    newScans.forEach((scan) =>
       logger.info("scan_created_or_updated", {
         onerepScanId: scan.id,
         onerepScanStatus: scan.status,
