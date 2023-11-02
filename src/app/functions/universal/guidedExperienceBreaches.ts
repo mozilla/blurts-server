@@ -67,7 +67,7 @@ export function getGuidedExperienceBreaches(
       guidedExperienceBreaches.securityRecommendations.emailAddress.push(b);
     }
 
-    if (b.dataClasses.includes(BreachDataTypes.HistoricalPasswords)) {
+    if (b.dataClasses.includes(BreachDataTypes.IP)) {
       guidedExperienceBreaches.securityRecommendations.IPAddress.push(b);
     }
     /* c8 ignore stop */
