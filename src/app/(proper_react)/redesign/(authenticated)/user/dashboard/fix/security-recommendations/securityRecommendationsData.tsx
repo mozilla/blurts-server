@@ -148,7 +148,7 @@ function getSecurityRecommendationsByType({
         recommendations: {
           title: l10n.getString("security-recommendation-steps-title"),
           steps: (
-            <>
+            <p>
               {l10n.getFragment("security-recommendation-ip-step-one", {
                 elems: {
                   link_to_info: (
@@ -160,7 +160,7 @@ function getSecurityRecommendationsByType({
                   ),
                 },
               })}
-            </>
+            </p>
           ),
         },
       },
