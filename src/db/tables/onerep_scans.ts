@@ -99,45 +99,43 @@ async function addOnerepScanResults(
   onerepProfileId: number,
   onerepScanResults: Array<ScanResult>,
 ) {
-  await knex.transaction(async (transaction) => {
-    const scanResultsMap = onerepScanResults.map((scanResult) => ({
-      onerep_scan_result_id: scanResult.id,
-      onerep_scan_id: scanResult.scan_id,
-      link: scanResult.link,
-      age:
-        typeof scanResult.age === "string"
-          ? Number.parseInt(scanResult.age, 10)
-          : undefined,
-      data_broker: scanResult.data_broker,
-      data_broker_id: scanResult.data_broker_id,
-      emails: JSON.stringify(scanResult.emails),
-      phones: JSON.stringify(scanResult.phones),
-      addresses: JSON.stringify(scanResult.addresses),
-      relatives: JSON.stringify(scanResult.relatives),
-      first_name: scanResult.first_name,
-      middle_name: scanResult.middle_name,
-      last_name: scanResult.last_name,
-      status: scanResult.status,
-    }));
+  const scanResultsMap = onerepScanResults.map((scanResult) => ({
+    onerep_scan_result_id: scanResult.id,
+    onerep_scan_id: scanResult.scan_id,
+    link: scanResult.link,
+    age:
+      typeof scanResult.age === "string"
+        ? Number.parseInt(scanResult.age, 10)
+        : undefined,
+    data_broker: scanResult.data_broker,
+    data_broker_id: scanResult.data_broker_id,
+    emails: JSON.stringify(scanResult.emails),
+    phones: JSON.stringify(scanResult.phones),
+    addresses: JSON.stringify(scanResult.addresses),
+    relatives: JSON.stringify(scanResult.relatives),
+    first_name: scanResult.first_name,
+    middle_name: scanResult.middle_name,
+    last_name: scanResult.last_name,
+    status: scanResult.status,
+  }));
 
-    // Only log metadata. This is used for reporting purposes.
-    logger.info("scan_result", {
-      onerepProfileId,
-      scan: scanResultsMap.map((result) => {
-        return {
-          onerepScanId: result.onerep_scan_id,
-          onerepScanResultId: result.onerep_scan_result_id,
-          onerepScanStatus: result.status,
-          dataBrokerId: result.data_broker_id,
-        };
-      }),
-    });
-
-    await transaction("onerep_scan_results")
-      .insert(scanResultsMap)
-      .onConflict("onerep_scan_result_id")
-      .ignore();
+  // Only log metadata. This is used for reporting purposes.
+  logger.info("scan_result", {
+    onerepProfileId,
+    scan: scanResultsMap.map((result) => {
+      return {
+        onerepScanId: result.onerep_scan_id,
+        onerepScanResultId: result.onerep_scan_result_id,
+        onerepScanStatus: result.status,
+        dataBrokerId: result.data_broker_id,
+      };
+    }),
   });
+
+  await knex("onerep_scan_results")
+    .insert(scanResultsMap)
+    .onConflict("onerep_scan_result_id")
+    .ignore();
 }
 
 async function isOnerepScanResultForSubscriber(params: {
