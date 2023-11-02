@@ -11,7 +11,7 @@ export async function up (knex) {
   await knex.raw(`
     DELETE FROM onerep_scan_results R1
     USING onerep_scan_results R2
-    WHERE R1.ctid < R2.ctid
+    WHERE R1.ctid > R2.ctid
     AND R1.onerep_scan_result_id = R2.onerep_scan_result_id`
   );
   return knex.schema.table('onerep_scan_results', table => {
