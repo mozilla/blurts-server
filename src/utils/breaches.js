@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+
 import { getUserEmails } from '../db/tables/emailAddresses.js'
 import { getBreachesForEmail, getFilteredBreaches } from './hibp.js'
 import { getSha1 } from './fxa.js'
@@ -25,15 +26,20 @@ import { filterBreachDataTypes } from './breachResolution.js'
  * @returns {Promise<AllEmailsAndBreaches>}
  */
 async function getAllEmailsAndBreaches(user, allBreaches) {
+  
+  // @ts-ignore: function will be deprecated
   const verifiedEmails = []
+  // @ts-ignore: function will be deprecated
   const unverifiedEmails = []
   
   if (!user) {
     console.error("subscriber cannot be undefined");
+    // @ts-ignore: function will be deprecated
     return { verifiedEmails, unverifiedEmails };
   }
   if (!allBreaches || allBreaches.length === 0) {
     console.error("all breaches object cannot be empty");
+    // @ts-ignore: function will be deprecated
     return { verifiedEmails, unverifiedEmails };
   }
 
