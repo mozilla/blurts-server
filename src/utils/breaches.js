@@ -24,10 +24,20 @@ import { filterBreachDataTypes } from './breachResolution.js'
  * @param {*} allBreaches
  * @returns {Promise<AllEmailsAndBreaches>}
  */
-async function getAllEmailsAndBreaches (user, allBreaches) {
-  const monitoredEmails = await getUserEmails(user.id)
+async function getAllEmailsAndBreaches(user, allBreaches) {
   const verifiedEmails = []
   const unverifiedEmails = []
+  
+  if (!user) {
+    console.error("subscriber cannot be undefined");
+    return { verifiedEmails, unverifiedEmails };
+  }
+  if (!allBreaches || allBreaches.length === 0) {
+    console.error("all breaches object cannot be empty");
+    return { verifiedEmails, unverifiedEmails };
+  }
+
+  const monitoredEmails = await getUserEmails(user.id)
   verifiedEmails.push(await bundleVerifiedEmails({ user, email: user.primary_email, recordId: user.id, recordVerified: user.primary_verified, allBreaches }))
   for (const email of monitoredEmails) {
     if (email.verified) {
@@ -56,7 +66,7 @@ async function getAllEmailsAndBreaches (user, allBreaches) {
  *
  * @param {any[]} foundBreaches
  */
-function addRecencyIndex (foundBreaches) {
+function addRecencyIndex(foundBreaches) {
   /**
    * @type {any[]}
    */
@@ -88,7 +98,7 @@ function addRecencyIndex (foundBreaches) {
  * @param {{ user: any; email: any; recordId: any; recordVerified: any; allBreaches: import('./hibp.js').HibpLikeDbBreach[]; }} options
  * @returns {Promise<BundledVerifiedEmails>}
  */
-async function bundleVerifiedEmails (options) {
+async function bundleVerifiedEmails(options) {
   const { user, email, recordId, recordVerified, allBreaches } = options
   const lowerCaseEmailSha = getSha1(email.toLowerCase())
 
