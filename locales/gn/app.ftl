@@ -145,7 +145,7 @@ sensitive-sites-copy =
     ñembyai rehegua ojehechajey vove ñanduti veve kundaharape. Kóva he’ise nde ha’eha
     neañomi ehechataha ne marandúpa oñembyaikuaápara’e (peteĩva noiméiramo
     oikekuaa ne mba’ete ñanduti veve reheguápe).
-delayed-reporting-headline = Mba’ére eha’arõiterei ñembyai ñemomarandu
+delayed-reporting-headline = Mba’ére eha’ãrõiterei ñembyai ñemomarandu
 delayed-reporting-copy = Ikatu oraha heta jasy térã ary umi credencial ojehechakuaáva rehegua mba’ekuaarã ñembyaíva osẽkuaáva ñanduti ypytũme. Umi ñembyai ojuajúta ñane mba’ekuaarã rendápe pya’ete ojejuhu térã ojehechajey rire.
 about-fxm-headline = { -product-name } rehegua
 about-fxm-blurb = { -product-name } omombe’u ne mba’ete ñandutigua ivaikuaápara’e ne mba’ekuaarã. Ehecháke ne mba’ekuaarãpa imarãkuaára’e, og̃uahẽta kyhyjerã ñembyai pyahu ha ehecha mba’éichapa emo’ãkuaa ne mba’ete ñandutípe. { -brand-Mozilla } ohepyme’ẽ { -product-name }.
@@ -262,7 +262,7 @@ ba-next-step-blurb-3 =
     Oiporu ñe’ẽñemi ñangarekoha omoheñói hag̃ua ñe’ẽñemi hekorosãva ha ha’eñóva. Ko’ã ñangarekoha ombyaty opaite ne
     rembiapo ñepyrũ hekorosãva eike hag̃ua opaite ne mba’e’oka guive.
 faq1 = Ndaikuaái ko mba’apohaguasu térã ñanduti renda. ¿Mba’ére aime ko ñembyaípe?
-faq2 = ¿Mba’ére eha’arõite ko ñembyai ñemomarandu?
+faq2 = Mba’érepa eha’ãrõite ñembyai momarandu
 faq3 = ¿Mba’éicha aikuaáta ko ñanduti veve ha’eha { -product-name } mba’e?
 # Variables:
 #   $breachCount (Integer) - Number of breaches
@@ -475,7 +475,7 @@ how-hackers-work-desc = Emo’ã ne ñe’ẽñemi mba’evai apoha ñandutiguá
 what-to-do-after-breach-desc = Ejoko ne mba’ete eguereko hag̃ua ne marandu mombyry iñañávagui.
 create-strong-passwords-desc = Ejapo ne ñe’ẽñemi imbaretéva, hekorosã ha hasýva ojekuaa hag̃ua.
 steps-to-protect-desc = Eikumby kyhyjerã hetavéva eikuaa hag̃ua mba’etépa pe ehekava’erã.
-five-myths-desc = Eikuaa mb’aéichapa emboykéta ñe’ẽñemi jeporuvai nombohasýiva hekovaíva rembiapo.
+five-myths-desc = Mba’éichapa emboykéta ñe’ẽñemi jeporuvai nombohasýiva hekovaíva rembiapo.
 take-further-steps-desc = Ehecha mba’éichapa emboykéta teratee ñemonda ani hag̃ua ñe apañuãi viru rekópe.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = ¡Moambuepy ñongatupyre!
@@ -618,7 +618,7 @@ steps-to-resolve-headline = Tape emoĩporã hag̃ua ko ñembyai
 vpn-promo-headline = Ko’ág̃a emongakuaa tekorosã ñandutípe.
 vpn-promo-copy = { -brand-Mozilla } Virtual Private Network oipytyvõ emo’ã hag̃ua nde jeike ñandutípe umi mba’evai apohágui.
 vpn-promo-cta = Erekóke { -brand-mozilla-vpn }
-vpn-promo-headline-new = 50% sa’ivéta ehepyme’ẽramo ary pukukue
+vpn-promo-headline-new = 50% sa’ivéta ehepyme’ẽrõ ary pukukue
 vpn-promo-copy-new = Emo’ã ne mba’ekuaarã ñandutípe ha eiporavo—VPN-pe teraguapy ojokupytýva eikotevẽvare.
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`

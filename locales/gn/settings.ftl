@@ -46,6 +46,7 @@ settings-email-number-of-breaches-info =
 ## Cancel Premium subscription
 
 settings-cancel-premium-subscription-title = Eipe’a { -brand-premium } ñemboheraguapy
+settings-cancel-premium-subscription-info = Ne ñemboheraguapýgui oikojeýta mba’ete reiguáva opa rire ehepyme’ẽva reikóvo. Umi ñemo’ã resa’ỹijokuégui osẽva oñemboguetéta ha ehechameméta mba’ekuaarã ñembogua añoite 1 ñanduti veve kundaharapépe g̃uarã.
 settings-cancel-premium-subscription-link-label = Eipe’a ne { -brand-fx-account } guive
 
 ## Deactivate account
@@ -56,7 +57,7 @@ settings-deactivate-account-info = Eipe’aitekuaa { -product-short-name } embog
 settings-deactivate-account-info-2 = Eipe’aitekuaa { -product-short-name } emboguévo nde { -brand-mozilla-account }.
 # Deprecated
 settings-fxa-link-label = Eho { -brand-firefox } poravorãme
-settings-fxa-link-label-2 = Eho { -brand-mozilla } ñembohekópe
+settings-fxa-link-label-3 = Eho { -brand-mozilla-account } ñembohekópe
 
 ## Add email dialog
 
