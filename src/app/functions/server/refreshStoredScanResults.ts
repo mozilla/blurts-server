@@ -46,7 +46,7 @@ export async function refreshStoredScanResults(profileId: number) {
     );
 
     // Refresh results for all scans, new and existing.
-    // The database will ignore any attempt to insert duplicate scan result IDs.
+    // An attempt to insert a duplicate scan result IDs will result in merging the existing and new entry.
     const allScanResults = await getAllScanResults(profileId);
     await addOnerepScanResults(profileId, allScanResults);
   } catch (ex) {
