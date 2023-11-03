@@ -47,6 +47,7 @@ settings-deactivate-account-info = { -product-short-name }’ü { -brand-fx-acco
 settings-deactivate-account-info-2 = { -product-short-name }’ü { -brand-mozilla-account }nızı silerek devre dışı bırakabilirsiniz.
 # Deprecated
 settings-fxa-link-label = { -brand-firefox } ayarlarına git
+settings-fxa-link-label-3 = { -brand-mozilla-account } ayarlarına gidin
 
 ## Add email dialog
 

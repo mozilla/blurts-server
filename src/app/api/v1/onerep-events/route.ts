@@ -8,8 +8,8 @@ import { captureException } from "@sentry/node";
 import crypto from "crypto";
 
 import { logger } from "../../../functions/server/logging";
-import { addOnerepScanResults } from "../../../../db/tables/onerep_scans";
-import { getAllScanResults, Scan } from "../../../functions/server/onerep";
+import { Scan } from "../../../functions/server/onerep";
+import { refreshStoredScanResults } from "../../../functions/server/refreshStoredScanResults";
 
 interface OnerepWebhookRequest {
   id: number;
@@ -81,16 +81,10 @@ export async function POST(req: NextRequest) {
     const scanId = result.data.object.id;
     const reason = result.data.object.reason;
 
-    // The webhook just tells us which scan ID finished, we need to fetch the payload.
-    const scanListFull = await getAllScanResults(profileId);
-    // Store full list of results in the DB.
-    await addOnerepScanResults(
-      profileId,
-      scanId,
-      scanListFull,
-      reason,
-      result.data.object.status,
-    );
+    logger.info("received_onerep_webhook", { profileId, scanId, reason });
+
+    // The webhook just tells us which scan ID finished, we need to fetch the payload and refresh.
+    await refreshStoredScanResults(profileId);
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (ex) {

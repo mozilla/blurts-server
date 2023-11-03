@@ -19,7 +19,7 @@ import AppConstants from "../../../../../../appConstants";
 import { getSubscriberByEmail } from "../../../../../../db/tables/subscribers";
 import {
   setOnerepProfileId,
-  setOnerepManualScan,
+  setOnerepScan,
 } from "../../../../../../db/tables/onerep_scans";
 import { setProfileDetails } from "../../../../../../db/tables/onerep_profiles";
 import { StateAbbr } from "../../../../../../utils/states";
@@ -93,7 +93,7 @@ export async function POST(
         // Start exposure scan
         const scan = await createScan(profileId);
         const scanId = scan.id;
-        await setOnerepManualScan(profileId, scanId, scan.status);
+        await setOnerepScan(profileId, scanId, scan.status, "manual");
 
         return NextResponse.json({ success: true }, { status: 200 });
       }
