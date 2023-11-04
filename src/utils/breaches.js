@@ -38,7 +38,7 @@ async function getAllEmailsAndBreaches(user, allBreaches) {
     return { verifiedEmails, unverifiedEmails };
   }
   if (!allBreaches || allBreaches.length === 0) {
-    console.error("all breaches object cannot be empty");
+    console.error("allBreaches object cannot be empty");
     // @ts-ignore: function will be deprecated
     return { verifiedEmails, unverifiedEmails };
   }
