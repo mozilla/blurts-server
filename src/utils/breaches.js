@@ -7,6 +7,7 @@ import { getUserEmails } from '../db/tables/emailAddresses.js'
 import { getBreachesForEmail, getFilteredBreaches } from './hibp.js'
 import { getSha1 } from './fxa.js'
 import { filterBreachDataTypes } from './breachResolution.js'
+import { captureMessage } from "@sentry/node";
 
 /**
  * @typedef {{
@@ -33,12 +34,17 @@ async function getAllEmailsAndBreaches(user, allBreaches) {
   const unverifiedEmails = []
   
   if (!user) {
-    console.error("subscriber cannot be undefined");
+    const errMsg = "getAllEmailsAndBreaches: subscriber cannot be undefined"
+    console.error(errMsg);
+    captureMessage(errMsg);
+    
     // @ts-ignore: function will be deprecated
     return { verifiedEmails, unverifiedEmails };
   }
   if (!allBreaches || allBreaches.length === 0) {
-    console.error("allBreaches object cannot be empty");
+    const errMsg = "getAllEmailsAndBreaches: allBreaches object cannot be empty"
+    console.error(errMsg);
+    captureMessage(errMsg)
     // @ts-ignore: function will be deprecated
     return { verifiedEmails, unverifiedEmails };
   }
