@@ -148,21 +148,19 @@ function getSecurityRecommendationsByType({
         recommendations: {
           title: l10n.getString("security-recommendation-steps-title"),
           steps: (
-            <ul className="noList">
-              <li>
-                {l10n.getFragment("security-recommendation-ip-step-one", {
-                  elems: {
-                    link_to_info: (
-                      <a
-                        href="https://www.mozilla.org/products/vpn/?entrypoint_experiment=vpn-refresh-pricing&entrypoint_variation=1"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      />
-                    ),
-                  },
-                })}
-              </li>
-            </ul>
+            <p>
+              {l10n.getFragment("security-recommendation-ip-step-one", {
+                elems: {
+                  link_to_info: (
+                    <a
+                      href="https://www.mozilla.org/products/vpn/?entrypoint_experiment=vpn-refresh-pricing&entrypoint_variation=1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    />
+                  ),
+                },
+              })}
+            </p>
           ),
         },
       },

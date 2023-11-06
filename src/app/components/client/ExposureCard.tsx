@@ -137,6 +137,10 @@ const ScanResultCard = (props: ScanResultCardProps) => {
     );
   }
 
+  const COMPANY_NAME_MAX_CHARACTER_COUNT = 20;
+  const isCompanyNameTooLong =
+    scanResult.data_broker.length > COMPANY_NAME_MAX_CHARACTER_COUNT;
+
   const exposureCard = (
     <div>
       <div className={styles.exposureCard}>
@@ -155,7 +159,10 @@ const ScanResultCard = (props: ScanResultCardProps) => {
             </dt>
             <dd>
               <span
-                className={`${styles.exposureCompanyTitle} ${styles.companyNameArea}`}
+                className={`${styles.exposureCompanyTitle} ${
+                  styles.companyNameArea
+                }
+                ${isCompanyNameTooLong ? styles.makeFontSmaller : ""}`}
               >
                 {scanResult.data_broker}
               </span>
@@ -246,7 +253,9 @@ const ScanResultCard = (props: ScanResultCardProps) => {
               </div>
             </div>
             {isPremiumBrokerRemovalEnabled &&
-            props.scanResult.status === "new" ? (
+            // Verifying the status for automatically removed data brokers v. manually resolved are handled differently
+            props.scanResult.status === "new" &&
+            !props.scanResult.manually_resolved ? (
               <span className={styles.fixItBtn}>{props.resolutionCta}</span>
             ) : null}
           </div>

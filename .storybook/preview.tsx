@@ -8,6 +8,7 @@ import type { Preview } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import "../src/app/globals.css";
+import { SessionProvider } from "../src/contextProviders/session";
 import { L10nProvider } from "../src/contextProviders/localization";
 import { metropolis } from "../src/app/fonts/Metropolis/metropolis";
 import { ReactAriaI18nProvider } from "../src/contextProviders/react-aria";
@@ -16,7 +17,7 @@ import { getEnL10nBundlesSync } from "../src/app/functions/server/mockL10n";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 const AppDecorator: Exclude<Preview["decorators"], undefined>[0] = (
-  storyFn
+  storyFn,
 ) => {
   const l10nBundles = getEnL10nBundlesSync();
 
@@ -32,7 +33,9 @@ const AppDecorator: Exclude<Preview["decorators"], undefined>[0] = (
 
   return (
     <L10nProvider bundleSources={l10nBundles}>
-      <ReactAriaI18nProvider locale="en">{storyFn()}</ReactAriaI18nProvider>
+      <SessionProvider session={null}>
+        <ReactAriaI18nProvider locale="en">{storyFn()}</ReactAriaI18nProvider>
+      </SessionProvider>
     </L10nProvider>
   );
 };
@@ -76,7 +79,7 @@ const preview: Preview = {
           if (path === "/redesign/user/dashboard") {
             linkTo(
               "Pages/Dashboard",
-              "US user, without Premium, with unresolved scan results, with unresolved breaches"
+              "US user, without Premium, with unresolved scan results, with unresolved breaches",
             )();
           }
 
@@ -93,7 +96,7 @@ const preview: Preview = {
           ) {
             linkTo(
               "Pages/Guided resolution/1b. Scan results",
-              "With a few unresolved scan results (free)"
+              "With a few unresolved scan results (free)",
             )();
           }
 
@@ -109,7 +112,7 @@ const preview: Preview = {
             "/redesign/user/dashboard/fix/data-broker-profiles/automatic-remove"
           ) {
             linkTo(
-              "Pages/Guided resolution/1d. Automatically resolve brokers"
+              "Pages/Guided resolution/1d. Automatically resolve brokers",
             )();
           }
 
@@ -118,7 +121,7 @@ const preview: Preview = {
           ) {
             linkTo(
               "Pages/Guided resolution/2. High-risk data breaches",
-              "2a. Social Security Number"
+              "2a. Social Security Number",
             )();
           }
 
@@ -128,7 +131,7 @@ const preview: Preview = {
           ) {
             linkTo(
               "Pages/Guided resolution/2. High-risk data breaches",
-              "2b. Credit card"
+              "2b. Credit card",
             )();
           }
 
@@ -138,7 +141,7 @@ const preview: Preview = {
           ) {
             linkTo(
               "Pages/Guided resolution/2. High-risk data breaches",
-              "2c. Bank account"
+              "2c. Bank account",
             )();
           }
 
@@ -147,7 +150,7 @@ const preview: Preview = {
           ) {
             linkTo(
               "Pages/Guided resolution/2. High-risk data breaches",
-              "2d. PIN"
+              "2d. PIN",
             )();
           }
 
@@ -156,7 +159,7 @@ const preview: Preview = {
           ) {
             linkTo(
               "Pages/Guided resolution/3. Leaked passwords",
-              "3a. Passwords"
+              "3a. Passwords",
             )();
           }
 
@@ -166,7 +169,7 @@ const preview: Preview = {
           ) {
             linkTo(
               "Pages/Guided resolution/3. Leaked passwords",
-              "3b. Security questions"
+              "3b. Security questions",
             )();
           }
 
@@ -176,7 +179,7 @@ const preview: Preview = {
           ) {
             linkTo(
               "Pages/Guided resolution/4. Security recommendations",
-              "4a. Phone number"
+              "4a. Phone number",
             )();
           }
 
@@ -186,7 +189,7 @@ const preview: Preview = {
           ) {
             linkTo(
               "Pages/Guided resolution/4. Security recommendations",
-              "4b. Email address"
+              "4b. Email address",
             )();
           }
 
@@ -195,7 +198,7 @@ const preview: Preview = {
           ) {
             linkTo(
               "Pages/Guided resolution/4. Security recommendations",
-              "4c. IP address"
+              "4c. IP address",
             )();
           }
         },

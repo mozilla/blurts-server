@@ -909,7 +909,7 @@ it("shows the correct dashboard banner CTA for US users, without Premium, empty 
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "Get continuous protection",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
@@ -1698,15 +1698,19 @@ it("shows the correct dashboard banner CTA for US user, with Premium, scan in pr
 });
 
 // Check dashboard banner content for story DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches
-it("logs a warning in the story for an invalid user state", () => {
+it("logs a warning and error in the story for an invalid user state", () => {
   const ComposedDashboard = composeStory(
     DashboardInvalidPremiumUserNoScanResolvedBreaches,
     Meta,
   );
 
+  const errorLogSpy = jest.spyOn(global.console, "error").mockImplementation();
   const warnLogSpy = jest.spyOn(global.console, "warn").mockImplementation();
   render(<ComposedDashboard />);
 
+  expect(errorLogSpy).toHaveBeenCalledWith(
+    `InvalidUserState: {"relevantGuidedStep":{"href":"/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan","id":"Scan","eligible":true,"completed":false},"hasExposures":true,"hasUnresolvedBreaches":false,"hasUnresolvedBrokers":false,"isEligibleForFreeScan":true,"isEligibleForPremium":false,"isPremiumUser":true,"scanInProgress":false}`,
+  );
   expect(warnLogSpy).toHaveBeenCalledWith(
     "No matching condition for dashboard state found.",
   );
@@ -1727,4 +1731,20 @@ it("expands one card at a time", async () => {
   await user.click(afterExpand1[0]);
   const afterExpand2 = screen.getAllByRole("button", { name: "Expand" });
   expect(afterExpand1.length).toBe(afterExpand2.length);
+});
+
+it("closes previously active card onclick", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const initialState = screen.getAllByRole("button", { name: "Expand" });
+  await user.click(initialState[0]);
+  const afterExpand = screen.getAllByRole("button", { name: "Collapse" });
+  await user.click(afterExpand[0]);
+  const afterCollapse = screen.getAllByRole("button", { name: "Expand" });
+  expect(initialState.length).toBe(afterCollapse.length);
 });

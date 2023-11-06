@@ -42,8 +42,12 @@ settings-cancel-premium-subscription-link-label = { -brand-fx-account }nızdan i
 ## Deactivate account
 
 settings-deactivate-account-title = Hesabı devre dışı bırak
+# Deprecated
 settings-deactivate-account-info = { -product-short-name }’ü { -brand-fx-account }nızı silerek devre dışı bırakabilirsiniz.
+settings-deactivate-account-info-2 = { -product-short-name }’ü { -brand-mozilla-account }nızı silerek devre dışı bırakabilirsiniz.
+# Deprecated
 settings-fxa-link-label = { -brand-firefox } ayarlarına git
+settings-fxa-link-label-3 = { -brand-mozilla-account } ayarlarına gidin
 
 ## Add email dialog
 
