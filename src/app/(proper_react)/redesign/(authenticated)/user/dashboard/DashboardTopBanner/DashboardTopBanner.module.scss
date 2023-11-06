@@ -12,9 +12,10 @@
   gap: $layout-sm;
   padding: $layout-xs;
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: $screen-lg) {
     padding: $layout-md;
     flex-direction: row;
+    align-items: center;
   }
 
   .chart {
