@@ -126,7 +126,7 @@
     "sass": "^1.69.4",
     "storybook": "^7.5.2",
     "stylelint": "^15.11.0",
-    "stylelint-config-recommended-scss": "^13.0.0",
+    "stylelint-config-recommended-scss": "^13.1.0",
     "stylelint-scss": "^5.2.1",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
