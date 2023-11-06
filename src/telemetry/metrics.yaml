@@ -589,4 +589,4 @@ cta_button:
         description: Attribution source.
         type: string
       button_id:
-        description: The ID of rthe button that was clicked on, or some way to identify where on the page the interaction is located.
+        description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
