@@ -15,7 +15,7 @@ import {
 import { ProgressCard } from "../../../../../../components/client/ProgressCard";
 import { Button } from "../../../../../../components/server/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
-import PremiumButton from "../../../../../../components/client/PremiumButton";
+import PremiumBadge from "../../../../../../components/client/PremiumBadge";
 
 export interface ContentProps {
   relevantGuidedStep: StepLink;
@@ -44,6 +44,9 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     isPremiumUser,
     scanInProgress,
     onShowFixed,
+    user,
+    monthlySubscriptionUrl,
+    yearlySubscriptionUrl,
   } = props;
 
   if (tabType === "fixed") {
@@ -219,7 +222,14 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <PremiumButton label="dashboard-top-banner-no-exposures-found-cta" />
+              <PremiumBadge
+                label={l10n.getString(
+                  "dashboard-top-banner-no-exposures-found-cta",
+                )}
+                user={user}
+                monthlySubscriptionUrl={monthlySubscriptionUrl}
+                yearlySubscriptionUrl={yearlySubscriptionUrl}
+              />
             </div>
           </>
         );
@@ -295,7 +305,14 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <PremiumButton label="dashboard-top-banner-no-exposures-found-cta" />
+              <PremiumBadge
+                label={l10n.getString(
+                  "dashboard-top-banner-no-exposures-found-cta",
+                )}
+                user={user}
+                monthlySubscriptionUrl={monthlySubscriptionUrl}
+                yearlySubscriptionUrl={yearlySubscriptionUrl}
+              />
             </div>
           </>
         );

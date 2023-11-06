@@ -104,6 +104,7 @@ export const MobileShell = (props: Props) => {
             </ul>
             <div className={styles.premiumCta}>
               <PremiumBadge
+                label={l10n.getString("premium-cta-label")}
                 user={props.session.user}
                 monthlySubscriptionUrl={props.monthlySubscriptionUrl}
                 yearlySubscriptionUrl={props.yearlySubscriptionUrl}

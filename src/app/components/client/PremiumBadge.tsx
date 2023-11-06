@@ -23,12 +23,14 @@ import { useGa } from "../../hooks/useGa";
 import { CountryCodeContext } from "../../../contextProviders/country-code";
 
 export type Props = {
+  label: string;
   user: Session["user"];
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
 };
 
 export default function PremiumBadge({
+  label,
   user,
   monthlySubscriptionUrl,
   yearlySubscriptionUrl,
@@ -69,7 +71,7 @@ export default function PremiumBadge({
     return (
       <>
         <Button {...triggerProps} variant="primary" small>
-          {l10n.getString("premium-cta-label")}
+          {label}
         </Button>
         <PremiumUpsellDialog
           {...overlayProps}
