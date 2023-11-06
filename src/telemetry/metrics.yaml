@@ -556,7 +556,7 @@ cta_button:
         description: The full URL of the page.
         type: string
       user_id:
-        description: Mozilla acounts user ID. Randomly-generated if not logged in.
+        description: Mozilla accounts user ID. Randomly-generated if not logged in.
         type: string
       dashboard_tab:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
