@@ -38,7 +38,7 @@ const MainLayout = async (props: Props) => {
   let userId = "";
   if (accountId && typeof accountId === "string") {
     // If the user is logged in, use a UUID based on the user's subscriber ID.
-    // TODO determine if we can collect the FxA UID directly https://mozilla-hub.atlassian.net/browse/MNTOR-2180
+    // FIXME determine if we can collect the FxA UID directly https://mozilla-hub.atlassian.net/browse/MNTOR-2180
     if (process.env.NIMBUS_UUID_NAMESPACE) {
       userId = uuidv5(accountId, process.env.NIMBUS_UUID_NAMESPACE);
     } else {
