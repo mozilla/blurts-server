@@ -1,0 +1,592 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+# For more information on configuring this file:
+# https://mozilla.github.io/glean/book/reference/yaml/metrics.html
+
+---
+$schema: moz://mozilla.org/schemas/glean/metrics/2-0-0
+
+page:
+  view:
+    type: event
+    description: |
+      A page view event e.g trackable by the URL.
+    bugs:
+      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+    data_reviews:
+      - TODO
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      url:
+        description: The full URL of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID. Randomly-generated if not logged in.
+        type: string
+      dashboard_tab:
+        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
+        type: string
+      legacy_user:
+        description: This date is used to direct users who signed up after data broker scanning was released to the welcome flow.
+        type: boolean
+      breach_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      legacy_breach_count:
+        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
+        type: quantity
+      broker_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      session_id:
+        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        type: string
+      utm_campaign:
+        description: Attribution campaign.
+        type: string
+      utm_content:
+        description: Attribution content.
+        type: string
+      utm_medium:
+        description: Attribution medium.
+        type: string
+      utm_source:
+        description: Attribution source.
+        type: string
+
+popup:
+  view:
+    type: event
+    description: |
+      A view of a popup, generated from clicking a button on a page view.
+    bugs:
+      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+    data_reviews:
+      - TODO
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      url:
+        description: The full URL of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID. Randomly-generated if not logged in.
+        type: string
+      dashboard_tab:
+        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
+        type: string
+      legacy_user:
+        description: This date is used to direct users who signed up after data broker scanning was released to the welcome flow.
+        type: boolean
+      breach_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      legacy_breach_count:
+        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
+        type: quantity
+      broker_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      session_id:
+        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        type: string
+      utm_campaign:
+        description: Attribution campaign.
+        type: string
+      utm_content:
+        description: Attribution content.
+        type: string
+      utm_medium:
+        description: Attribution medium.
+        type: string
+      utm_source:
+        description: Attribution source.
+        type: string
+
+  exit:
+    type: event
+    description: |
+      An exit of a popup.
+    bugs:
+      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+    data_reviews:
+      - TODO
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      url:
+        description: The full URL of the page.
+        type: string
+      user_id:
+        description: Mozilla acounts user ID. Randomly-generated if not logged in.
+        type: string
+      dashboard_tab:
+        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
+        type: string
+      legacy_user:
+        description: This date is used to direct users who signed up after data broker scanning was released to the welcome flow.
+        type: boolean
+      breach_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      legacy_breach_count:
+        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
+        type: quantity
+      broker_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      session_id:
+        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        type: string
+      utm_campaign:
+        description: Attribution campaign.
+        type: string
+      utm_content:
+        description: Attribution content.
+        type: string
+      utm_medium:
+        description: Attribution medium.
+        type: string
+      utm_source:
+        description: Attribution source.
+        type: string
+
+button:
+  click:
+    type: event
+    description: |
+      A click on a button (one that doesn’t fall into the CTA or purchase intent category).
+    bugs:
+      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+    data_reviews:
+      - TODO
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      url:
+        description: The full URL of the page.
+        type: string
+      user_id:
+        description: Mozilla acounts user ID. Randomly-generated if not logged in.
+        type: string
+      dashboard_tab:
+        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
+        type: string
+      legacy_user:
+        description: This date is used to direct users who signed up after data broker scanning was released to the welcome flow.
+        type: boolean
+      breach_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      legacy_breach_count:
+        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
+        type: quantity
+      broker_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      session_id:
+        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        type: string
+      utm_campaign:
+        description: Attribution campaign.
+        type: string
+      utm_content:
+        description: Attribution content.
+        type: string
+      utm_medium:
+        description: Attribution medium.
+        type: string
+      utm_source:
+        description: Attribution source.
+        type: string
+      button_id:
+        description: The ID of rthe button that was clicked on, or some way to identify where on the page the interaction is located.
+
+
+field:
+  focus:
+    type: event
+    description: |
+      A click to focus into a text field on the webpage.
+    bugs:
+      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+    data_reviews:
+      - TODO
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      url:
+        description: The full URL of the page.
+        type: string
+      user_id:
+        description: Mozilla acounts user ID. Randomly-generated if not logged in.
+        type: string
+      dashboard_tab:
+        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
+        type: string
+      legacy_user:
+        description: This date is used to direct users who signed up after data broker scanning was released to the welcome flow.
+        type: boolean
+      breach_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      legacy_breach_count:
+        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
+        type: quantity
+      broker_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      session_id:
+        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        type: string
+      utm_campaign:
+        description: Attribution campaign.
+        type: string
+      utm_content:
+        description: Attribution content.
+        type: string
+      utm_medium:
+        description: Attribution medium.
+        type: string
+      utm_source:
+        description: Attribution source.
+        type: string
+
+link:
+  click:
+    type: event
+    description: |
+      A click on a link.
+    bugs:
+      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+    data_reviews:
+      - TODO
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      url:
+        description: The full URL of the page.
+        type: string
+      user_id:
+        description: Mozilla acounts user ID. Randomly-generated if not logged in.
+        type: string
+      dashboard_tab:
+        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
+        type: string
+      legacy_user:
+        description: This date is used to direct users who signed up after data broker scanning was released to the welcome flow.
+        type: boolean
+      breach_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      legacy_breach_count:
+        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
+        type: quantity
+      broker_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      session_id:
+        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        type: string
+      utm_campaign:
+        description: Attribution campaign.
+        type: string
+      utm_content:
+        description: Attribution content.
+        type: string
+      utm_medium:
+        description: Attribution medium.
+        type: string
+      utm_source:
+        description: Attribution source.
+        type: string
+      button_id:
+        description: The ID of rthe button that was clicked on, or some way to identify where on the page the interaction is located.
+
+upgrade_intent:
+  click:
+    type: event
+    description: |
+      A click on a button that indicates an intent to purchase or upgrade out of the freemium experience.
+    bugs:
+      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+    data_reviews:
+      - TODO
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      url:
+        description: The full URL of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID. Randomly-generated if not logged in.
+        type: string
+      dashboard_tab:
+        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
+        type: string
+      legacy_user:
+        description: This date is used to direct users who signed up after data broker scanning was released to the welcome flow.
+        type: boolean
+      breach_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      legacy_breach_count:
+        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
+        type: quantity
+      broker_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      session_id:
+        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        type: string
+      utm_campaign:
+        description: Attribution campaign.
+        type: string
+      utm_content:
+        description: Attribution content.
+        type: string
+      utm_medium:
+        description: Attribution medium.
+        type: string
+      utm_source:
+        description: Attribution source.
+        type: string
+      button_id:
+        description: The ID of rthe button that was clicked on, or some way to identify where on the page the interaction is located.
+
+  success:
+    type: event
+    description: |
+      An event that indicates the successfully upgrade of the user’s plan.
+    bugs:
+      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+    data_reviews:
+      - TODO
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      url:
+        description: The full URL of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID. Randomly-generated if not logged in.
+        type: string
+      dashboard_tab:
+        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
+        type: string
+      legacy_user:
+        description: This date is used to direct users who signed up after data broker scanning was released to the welcome flow.
+        type: boolean
+      breach_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      legacy_breach_count:
+        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
+        type: quantity
+      broker_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      session_id:
+        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        type: string
+      utm_campaign:
+        description: Attribution campaign.
+        type: string
+      utm_content:
+        description: Attribution content.
+        type: string
+      utm_medium:
+        description: Attribution medium.
+        type: string
+      utm_source:
+        description: Attribution source.
+        type: string
+
+expand:
+  click:
+    type: event
+    description: |
+      A click to expand a section on the webpage.
+    bugs:
+      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+    data_reviews:
+      - TODO
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      url:
+        description: The full URL of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID. Randomly-generated if not logged in.
+        type: string
+      dashboard_tab:
+        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
+        type: string
+      legacy_user:
+        description: This date is used to direct users who signed up after data broker scanning was released to the welcome flow.
+        type: boolean
+      breach_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      legacy_breach_count:
+        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
+        type: quantity
+      broker_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      session_id:
+        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        type: string
+      utm_campaign:
+        description: Attribution campaign.
+        type: string
+      utm_content:
+        description: Attribution content.
+        type: string
+      utm_medium:
+        description: Attribution medium.
+        type: string
+      utm_source:
+        description: Attribution source.
+        type: string
+      button_id:
+        description: The ID of rthe button that was clicked on, or some way to identify where on the page the interaction is located.
+
+collapse:
+  click:
+    type: event
+    description: |
+      A click to collapse a section on the webpage.
+    bugs:
+      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+    data_reviews:
+      - TODO
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      url:
+        description: The full URL of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID. Randomly-generated if not logged in.
+        type: string
+      dashboard_tab:
+        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
+        type: string
+      legacy_user:
+        description: This date is used to direct users who signed up after data broker scanning was released to the welcome flow.
+        type: boolean
+      breach_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      legacy_breach_count:
+        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
+        type: quantity
+      broker_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      session_id:
+        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        type: string
+      utm_campaign:
+        description: Attribution campaign.
+        type: string
+      utm_content:
+        description: Attribution content.
+        type: string
+      utm_medium:
+        description: Attribution medium.
+        type: string
+      utm_source:
+        description: Attribution source.
+        type: string
+      button_id:
+        description: The ID of rthe button that was clicked on, or some way to identify where on the page the interaction is located.
+
+cta_button:
+  click:
+    type: event
+    description: |
+      A click on a button that has a CTA (i.e starting a free scan).
+    bugs:
+      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+    data_reviews:
+      - TODO
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      url:
+        description: The full URL of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID. Randomly-generated if not logged in.
+        type: string
+      dashboard_tab:
+        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
+        type: string
+      legacy_user:
+        description: This date is used to direct users who signed up after data broker scanning was released to the welcome flow.
+        type: boolean
+      breach_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      legacy_breach_count:
+        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
+        type: quantity
+      broker_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      session_id:
+        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        type: string
+      utm_campaign:
+        description: Attribution campaign.
+        type: string
+      utm_content:
+        description: Attribution content.
+        type: string
+      utm_medium:
+        description: Attribution medium.
+        type: string
+      utm_source:
+        description: Attribution source.
+        type: string
+      button_id:
+        description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
