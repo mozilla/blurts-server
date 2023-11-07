@@ -22,14 +22,19 @@ export const PageLoadEvent = (props: Props) => {
 
   const { pageEvents } = useGlean(props.channel, props.appEnv);
   const pathname = usePathname();
+  const origin =
+    typeof window !== "undefined" && window.location.origin
+      ? window.location.origin
+      : "";
+  const url = new URL(pathname, origin).toString();
 
   // On first load of the page, record a page view.
   useEffect(() => {
     if (!cookies.userId && userId.startsWith("guest")) {
       setCookie("userId", userId);
     }
-    pageEvents.view.record({ path: pathname, user_id: userId });
-  }, [cookies.userId, setCookie, pageEvents.view, pathname, userId]);
+    pageEvents.view.record({ url, user_id: userId });
+  }, [cookies.userId, setCookie, pageEvents.view, url, userId]);
 
   // This component doesn't render anything.
   return <></>;
