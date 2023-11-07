@@ -59,6 +59,9 @@ page:
       utm_source:
         description: Attribution source.
         type: string
+      utm_term:
+        description: Attribution term.
+        type: string
       referrer:
         description: The referring URL, if any.
         type: string
@@ -384,18 +387,6 @@ expand:
       session_id:
         description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
         type: string
-      utm_campaign:
-        description: Attribution campaign.
-        type: string
-      utm_content:
-        description: Attribution content.
-        type: string
-      utm_medium:
-        description: Attribution medium.
-        type: string
-      utm_source:
-        description: Attribution source.
-        type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
 
@@ -438,18 +429,6 @@ collapse:
       session_id:
         description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
         type: string
-      utm_campaign:
-        description: Attribution campaign.
-        type: string
-      utm_content:
-        description: Attribution content.
-        type: string
-      utm_medium:
-        description: Attribution medium.
-        type: string
-      utm_source:
-        description: Attribution source.
-        type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
 
@@ -491,18 +470,6 @@ cta_button:
         type: quantity
       session_id:
         description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
-        type: string
-      utm_campaign:
-        description: Attribution campaign.
-        type: string
-      utm_content:
-        description: Attribution content.
-        type: string
-      utm_medium:
-        description: Attribution medium.
-        type: string
-      utm_source:
-        description: Attribution source.
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
