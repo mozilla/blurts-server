@@ -13,6 +13,11 @@ import { WelcomeToPremiumView } from "./WelcomeToPremiumView";
 import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 import { StepDeterminationData } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
+import {
+  activateProfile,
+  getProfile,
+  optoutProfile,
+} from "../../../../../../../../functions/server/onerep";
 
 export default async function WelcomeToPremiumPage() {
   const session = await getServerSession(authOptions);
@@ -34,6 +39,17 @@ export default async function WelcomeToPremiumPage() {
     subscriberBreaches: subBreaches,
     user: session.user,
   };
+
+  // In case there are any new scan results eventhough the current user is
+  // a subscriber: Most likely we were not able or failed to kick-off the
+  // auto-removal process, yet.
+  // Let’s make sure the users OneRep profile is activated:
+  const { status: profileStatus } = await getProfile(profileId);
+  if (profileStatus === "inactive") {
+    // activate and opt out profiles
+    await activateProfile(profileId);
+    await optoutProfile(profileId);
+  }
 
   return (
     <WelcomeToPremiumView data={data} subscriberEmails={subscriberEmails} />
