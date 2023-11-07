@@ -29,6 +29,7 @@ export const PageLoadEvent = (props: Props) => {
   let utm_content = "";
   let utm_medium = "";
   let utm_source = "";
+  let utm_term = "";
 
   if (
     typeof window !== "undefined" &&
@@ -44,6 +45,7 @@ export const PageLoadEvent = (props: Props) => {
     utm_content = params.get("utm_content") ?? "";
     utm_medium = params.get("utm_medium") ?? "";
     utm_source = params.get("utm_source") ?? "";
+    utm_term = params.get("utm_term") ?? "";
   }
 
   // On first load of the page, record a page view.
