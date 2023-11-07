@@ -34,8 +34,7 @@ export const PageLoadEvent = (props: Props) => {
   if (
     typeof window !== "undefined" &&
     typeof document !== "undefined" &&
-    window.location &&
-    document
+    window.location
   ) {
     url = new URL(pathname, window.location.origin).toString();
     referrer = document.referrer;
