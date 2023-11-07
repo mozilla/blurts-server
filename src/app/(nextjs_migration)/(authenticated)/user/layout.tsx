@@ -33,21 +33,11 @@ const MainLayout = async (props: Props) => {
     return <SignInButton autoSignIn />;
   }
 
-  const accountId = session?.user?.subscriber?.fxa_uid;
-
-  let userId = "";
-  if (accountId && typeof accountId === "string") {
-    // If the user is logged in, use a UUID based on the user's subscriber ID.
-    // FIXME determine if we can collect the FxA UID directly https://mozilla-hub.atlassian.net/browse/MNTOR-2180
-    if (process.env.NIMBUS_UUID_NAMESPACE) {
-      userId = uuidv5(accountId, process.env.NIMBUS_UUID_NAMESPACE);
-    } else {
-      logger.error("NIMBUS_UUID_NAMESPACE env var not set");
-    }
-  }
+  // FIXME we need permission to collect this.
+  const userId = session?.user?.subscriber?.fxa_uid ?? "";
 
   if (!userId) {
-    logger.error("No user ID for Nimbus telemetry");
+    logger.error("No user ID for telemetry");
   }
 
   try {
