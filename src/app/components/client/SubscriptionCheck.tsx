@@ -6,23 +6,17 @@
 
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
-import { hasPremium } from "../../functions/universal/user";
 
 export const SubscriptionCheck = () => {
-  const { data: session, update } = useSession();
+  const { update } = useSession();
 
   useEffect(() => {
     async function updateSession() {
       await update();
     }
 
-    if (!hasPremium(session?.user)) {
-      void updateSession();
-    }
-
-    // This should only run once per page load - `update` will always appear to be changed.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    void updateSession();
+  }, [update]);
 
   return <></>;
 };
