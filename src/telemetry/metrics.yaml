@@ -130,7 +130,7 @@ popup:
         description: The full URL of the page.
         type: string
       user_id:
-        description: Mozilla acounts user ID. Randomly-generated if not logged in.
+        description: Mozilla accounts user ID. Randomly-generated if not logged in.
         type: string
       dashboard_tab:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
@@ -182,7 +182,7 @@ button:
         description: The full URL of the page.
         type: string
       user_id:
-        description: Mozilla acounts user ID. Randomly-generated if not logged in.
+        description: Mozilla accounts user ID. Randomly-generated if not logged in.
         type: string
       dashboard_tab:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
@@ -215,7 +215,7 @@ button:
         description: Attribution source.
         type: string
       button_id:
-        description: The ID of rthe button that was clicked on, or some way to identify where on the page the interaction is located.
+        description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
 
 field:
   focus:
@@ -236,7 +236,7 @@ field:
         description: The full URL of the page.
         type: string
       user_id:
-        description: Mozilla acounts user ID. Randomly-generated if not logged in.
+        description: Mozilla accounts user ID. Randomly-generated if not logged in.
         type: string
       dashboard_tab:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
@@ -288,7 +288,7 @@ link:
         description: The full URL of the page.
         type: string
       user_id:
-        description: Mozilla acounts user ID. Randomly-generated if not logged in.
+        description: Mozilla accounts user ID. Randomly-generated if not logged in.
         type: string
       dashboard_tab:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
@@ -321,7 +321,7 @@ link:
         description: Attribution source.
         type: string
       button_id:
-        description: The ID of rthe button that was clicked on, or some way to identify where on the page the interaction is located.
+        description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
 
 upgrade_intent:
   click:
@@ -375,7 +375,7 @@ upgrade_intent:
         description: Attribution source.
         type: string
       button_id:
-        description: The ID of rthe button that was clicked on, or some way to identify where on the page the interaction is located.
+        description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
 
   success:
     type: event
@@ -480,7 +480,7 @@ expand:
         description: Attribution source.
         type: string
       button_id:
-        description: The ID of rthe button that was clicked on, or some way to identify where on the page the interaction is located.
+        description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
 
 collapse:
   click:
@@ -534,7 +534,7 @@ collapse:
         description: Attribution source.
         type: string
       button_id:
-        description: The ID of rthe button that was clicked on, or some way to identify where on the page the interaction is located.
+        description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
 
 cta_button:
   click:
