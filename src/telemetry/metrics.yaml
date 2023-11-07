@@ -59,6 +59,9 @@ page:
       utm_source:
         description: Attribution source.
         type: string
+      referrer:
+        description: The referring URL, if any.
+        type: string
 
 popup:
   view:
@@ -98,19 +101,6 @@ popup:
         type: quantity
       session_id:
         description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
-        type: string
-      utm_campaign:
-        description: Attribution campaign.
-        type: string
-      utm_content:
-        description: Attribution content.
-        type: string
-      utm_medium:
-        description: Attribution medium.
-        type: string
-      utm_source:
-        description: Attribution source.
-        type: string
 
   exit:
     type: event
@@ -149,18 +139,6 @@ popup:
         type: quantity
       session_id:
         description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
-        type: string
-      utm_campaign:
-        description: Attribution campaign.
-        type: string
-      utm_content:
-        description: Attribution content.
-        type: string
-      utm_medium:
-        description: Attribution medium.
-        type: string
-      utm_source:
-        description: Attribution source.
         type: string
 
 button:
@@ -201,19 +179,6 @@ button:
         type: quantity
       session_id:
         description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
-        type: string
-      utm_campaign:
-        description: Attribution campaign.
-        type: string
-      utm_content:
-        description: Attribution content.
-        type: string
-      utm_medium:
-        description: Attribution medium.
-        type: string
-      utm_source:
-        description: Attribution source.
-        type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
 
@@ -256,18 +221,6 @@ field:
       session_id:
         description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
         type: string
-      utm_campaign:
-        description: Attribution campaign.
-        type: string
-      utm_content:
-        description: Attribution content.
-        type: string
-      utm_medium:
-        description: Attribution medium.
-        type: string
-      utm_source:
-        description: Attribution source.
-        type: string
 
 link:
   click:
@@ -307,18 +260,6 @@ link:
         type: quantity
       session_id:
         description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
-        type: string
-      utm_campaign:
-        description: Attribution campaign.
-        type: string
-      utm_content:
-        description: Attribution content.
-        type: string
-      utm_medium:
-        description: Attribution medium.
-        type: string
-      utm_source:
-        description: Attribution source.
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
@@ -362,18 +303,6 @@ upgrade_intent:
       session_id:
         description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
         type: string
-      utm_campaign:
-        description: Attribution campaign.
-        type: string
-      utm_content:
-        description: Attribution content.
-        type: string
-      utm_medium:
-        description: Attribution medium.
-        type: string
-      utm_source:
-        description: Attribution source.
-        type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
 
@@ -414,18 +343,6 @@ upgrade_intent:
         type: quantity
       session_id:
         description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
-        type: string
-      utm_campaign:
-        description: Attribution campaign.
-        type: string
-      utm_content:
-        description: Attribution content.
-        type: string
-      utm_medium:
-        description: Attribution medium.
-        type: string
-      utm_source:
-        description: Attribution source.
         type: string
 
 expand:

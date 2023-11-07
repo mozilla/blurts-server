@@ -22,19 +22,56 @@ export const PageLoadEvent = (props: Props) => {
 
   const { pageEvents } = useGlean(props.channel, props.appEnv);
   const pathname = usePathname();
-  const origin =
-    typeof window !== "undefined" && window.location.origin
-      ? window.location.origin
-      : "";
-  const url = new URL(pathname, origin).toString();
+
+  let url = "";
+  let referrer = "";
+  let utm_campaign = "";
+  let utm_content = "";
+  let utm_medium = "";
+  let utm_source = "";
+
+  if (
+    typeof window !== "undefined" &&
+    typeof document !== "undefined" &&
+    window.location &&
+    document
+  ) {
+    url = new URL(pathname, window.location.origin).toString();
+    referrer = document.referrer;
+
+    const params = new URLSearchParams(window.location.search);
+    utm_campaign = params.get("utm_campaign") ?? "";
+    utm_content = params.get("utm_content") ?? "";
+    utm_medium = params.get("utm_medium") ?? "";
+    utm_source = params.get("utm_source") ?? "";
+  }
 
   // On first load of the page, record a page view.
   useEffect(() => {
     if (!cookies.userId && userId.startsWith("guest")) {
       setCookie("userId", userId);
     }
-    pageEvents.view.record({ url, user_id: userId });
-  }, [cookies.userId, setCookie, pageEvents.view, url, userId]);
+    pageEvents.view.record({
+      url,
+      user_id: userId,
+      utm_campaign,
+      utm_content,
+      utm_medium,
+      utm_source,
+      referrer,
+    });
+  }, [
+    cookies.userId,
+    setCookie,
+    pageEvents.view,
+    url,
+    userId,
+    utm_campaign,
+    utm_content,
+    utm_medium,
+    utm_source,
+    referrer,
+  ]);
 
   // This component doesn't render anything.
   return <></>;
