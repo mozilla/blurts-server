@@ -50,6 +50,8 @@ export interface DashboardSummary {
   dataBrokerInProgressNum: number;
   /** total number of in-progress exposures from user data broker scanned results */
   dataBrokerInProgressExposuresNum: number;
+  /** total number of scans resolved manually */
+  dataBrokerManuallyResolvedNum: number;
   /** total number of exposures resolved manually */
   dataBrokerManuallyResolvedExposuresNum: number;
 
@@ -65,6 +67,8 @@ export interface DashboardSummary {
   fixedExposures: Exposures;
   /** in-progress & resolved/removed exposures separated by data types */
   inProgressFixedExposures: Exposures;
+  /** manually resolved exposures separated by data types */
+  manuallyResolvedExposures: Exposures;
 
   /** sanitized all exposures for frontend display */
   unresolvedSanitizedExposures: SanitizedExposures;
@@ -106,6 +110,7 @@ export function getDashboardSummary(
     dataBrokerFixedExposuresNum: 0,
     dataBrokerInProgressNum: 0,
     dataBrokerInProgressExposuresNum: 0,
+    dataBrokerManuallyResolvedNum: 0,
     dataBrokerManuallyResolvedExposuresNum: 0,
     totalExposures: 0,
     allExposures: {
@@ -183,6 +188,21 @@ export function getDashboardSummary(
       securityQuestions: 0,
       bankAccountNumbers: 0,
     },
+    manuallyResolvedExposures: {
+      emailAddresses: 0,
+      phoneNumbers: 0,
+      addresses: 0,
+      familyMembers: 0,
+
+      // data breaches
+      socialSecurityNumbers: 0,
+      ipAddresses: 0,
+      passwords: 0,
+      creditCardNumbers: 0,
+      pins: 0,
+      securityQuestions: 0,
+      bankAccountNumbers: 0,
+    },
     unresolvedSanitizedExposures: [],
     inProgressFixedSanitizedExposures: [],
   };
@@ -192,12 +212,15 @@ export function getDashboardSummary(
     scannedResults.forEach((r) => {
       // check removal status
       const isManuallyResolved = r.manually_resolved;
-      const isFixed = r.status === RemovalStatusMap.Removed;
+      const isFixed =
+        r.status === RemovalStatusMap.Removed && !isManuallyResolved;
       const isInProgress =
         (r.status === RemovalStatusMap.OptOutInProgress ||
           r.status === RemovalStatusMap.WaitingForVerification) &&
         !isManuallyResolved;
-      if (isInProgress) {
+      if (isManuallyResolved) {
+        summary.dataBrokerManuallyResolvedNum++;
+      } else if (isInProgress) {
         summary.dataBrokerInProgressNum++;
       } else if (isFixed) {
         summary.dataBrokerFixedNum++;
@@ -234,7 +257,12 @@ export function getDashboardSummary(
         summary.dataBrokerFixedExposuresNum += exposureIncrement;
       }
 
+      // for manually-resolved exposures: email, phones, addresses, relatives, full name (1)
       if (isManuallyResolved) {
+        summary.manuallyResolvedExposures.emailAddresses += r.emails.length;
+        summary.manuallyResolvedExposures.phoneNumbers += r.phones.length;
+        summary.manuallyResolvedExposures.addresses += r.addresses.length;
+        summary.manuallyResolvedExposures.familyMembers += r.relatives.length;
         summary.dataBrokerManuallyResolvedExposuresNum += exposureIncrement;
       }
     });
@@ -373,6 +401,7 @@ export function getDashboardSummary(
     (a, k) => {
       a[k as keyof Exposures] =
         summary.fixedExposures[k as keyof Exposures] +
+        summary.manuallyResolvedExposures[k as keyof Exposures] +
         summary.inProgressExposures[k as keyof Exposures];
       return a;
     },
@@ -385,6 +414,7 @@ export function getDashboardSummary(
     summary.totalExposures -
       summary.dataBreachFixedExposuresNum -
       summary.dataBrokerFixedExposuresNum -
+      summary.dataBrokerManuallyResolvedExposuresNum -
       summary.dataBrokerInProgressExposuresNum,
     isBreachesOnly,
   );
@@ -394,6 +424,7 @@ export function getDashboardSummary(
     summary.inProgressFixedExposures,
     summary.dataBreachFixedExposuresNum +
       summary.dataBrokerFixedExposuresNum +
+      summary.dataBrokerManuallyResolvedExposuresNum +
       summary.dataBrokerInProgressExposuresNum,
     isBreachesOnly,
   );
@@ -410,18 +441,20 @@ function sanitizeExposures(
   if (breachesOnly) {
     numOfTopExposures = 2; // when we have breaches only
   }
-  const sanitizedExposures = Object.entries(exposures)
+  const allSanitizedExposures = Object.entries(exposures)
     .sort((a, b) => b[1] - a[1])
     .map((e) => {
       const key = exposureKeyMap[e[0]];
       return { [key]: e[1] };
-    })
-    .splice(0, numOfTopExposures);
-  const other = sanitizedExposures.reduce(
-    (total, cur) => total - (Object.values(cur).pop() || 0),
-    totalExposures,
-  );
-  sanitizedExposures.push({ "other-data-class": other });
+    });
+  const sanitizedExposures = allSanitizedExposures.slice(0, numOfTopExposures);
+  const otherSanitizedExposures = allSanitizedExposures
+    .slice(numOfTopExposures)
+    .reduce(
+      (total, cur) => total - (Object.values(cur).pop() || 0),
+      totalExposures,
+    );
+  sanitizedExposures.push({ "other-data-class": otherSanitizedExposures });
   return sanitizedExposures;
 }
 

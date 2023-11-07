@@ -34,13 +34,13 @@ export const DoughnutChart = (props: Props) => {
     { type: "dialog" },
     explainerDialogState,
   );
-  const sumOfFixedExposures = props.data.reduce(
+  const sumOfShownExposures = props.data.reduce(
     (total, [_label, num]) => total + num,
     0,
   );
 
   const percentages = props.data.map(([label, num]) => {
-    return [label, num / sumOfFixedExposures] as const;
+    return [label, num / sumOfShownExposures] as const;
   });
 
   const diameter = 100;
@@ -139,7 +139,7 @@ export const DoughnutChart = (props: Props) => {
             role="img"
             aria-label={l10n
               .getString("exposure-chart-heading", {
-                nr: sumOfFixedExposures,
+                nr: sumOfShownExposures,
               })
               .replace("<nr>", "")
               .replace("</nr>", "")
@@ -179,7 +179,7 @@ export const DoughnutChart = (props: Props) => {
                       />
                     ),
                   },
-                  vars: { nr: sumOfFixedExposures },
+                  vars: { nr: sumOfShownExposures },
                 })
               : l10n.getFragment("exposure-chart-heading", {
                   elems: {
@@ -202,7 +202,7 @@ export const DoughnutChart = (props: Props) => {
                       />
                     ),
                   },
-                  vars: { nr: sumOfFixedExposures },
+                  vars: { nr: sumOfShownExposures },
                 })}
           </svg>
           <div className={styles.legend}>

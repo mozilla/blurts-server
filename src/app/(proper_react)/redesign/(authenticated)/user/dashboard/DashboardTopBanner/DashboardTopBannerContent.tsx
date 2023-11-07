@@ -113,6 +113,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                   exposures_unresolved_num:
                     bannerData.totalExposures -
                     bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBrokerManuallyResolvedExposuresNum -
                     bannerData.dataBreachFixedExposuresNum -
                     bannerData.dataBrokerInProgressExposuresNum,
                   data_breach_unresolved_num:
@@ -265,6 +266,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                     bannerData.totalExposures -
                     bannerData.dataBreachFixedExposuresNum -
                     bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBrokerManuallyResolvedExposuresNum -
                     bannerData.dataBrokerInProgressExposuresNum,
                 },
               )}
@@ -315,6 +317,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                     bannerData.totalExposures -
                     bannerData.dataBreachFixedExposuresNum -
                     bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBrokerManuallyResolvedExposuresNum -
                     bannerData.dataBrokerInProgressExposuresNum,
                 },
               )}
@@ -396,6 +399,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                   unresolved_exposures:
                     bannerData.totalExposures -
                     bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBrokerManuallyResolvedExposuresNum -
                     bannerData.dataBreachFixedExposuresNum -
                     bannerData.dataBrokerInProgressExposuresNum,
                 },
@@ -428,6 +432,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                   unresolved_exposures:
                     bannerData.totalExposures -
                     bannerData.dataBrokerFixedExposuresNum -
+                    bannerData.dataBrokerManuallyResolvedExposuresNum -
                     bannerData.dataBreachFixedExposuresNum -
                     bannerData.dataBrokerInProgressExposuresNum,
                 },
@@ -459,6 +464,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 {
                   exposures_resolved_num:
                     bannerData.dataBrokerFixedExposuresNum +
+                    bannerData.dataBrokerManuallyResolvedExposuresNum -
                     bannerData.dataBreachFixedExposuresNum +
                     bannerData.dataBrokerInProgressExposuresNum,
                 },

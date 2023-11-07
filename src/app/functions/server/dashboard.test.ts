@@ -478,7 +478,8 @@ describe("getExposureReduction", () => {
       dataBreachFixedExposuresNum: 10,
       dataBrokerTotalNum: 10,
       dataBrokerTotalExposuresNum: 8,
-      dataBrokerFixedExposuresNum: 8,
+      dataBrokerFixedExposuresNum: 6,
+      dataBrokerManuallyResolvedNum: 2,
       dataBrokerFixedNum: 10,
       dataBrokerInProgressExposuresNum: 10,
       dataBrokerInProgressNum: 10,
@@ -488,6 +489,7 @@ describe("getExposureReduction", () => {
       unresolvedExposures: testExposure,
       inProgressExposures: testExposure,
       fixedExposures: testExposure,
+      manuallyResolvedExposures: testExposure,
       inProgressFixedExposures: testExposure,
       unresolvedSanitizedExposures: [],
       inProgressFixedSanitizedExposures: [],
@@ -523,7 +525,8 @@ describe("getExposureReduction", () => {
       dataBreachFixedExposuresNum: 10,
       dataBrokerTotalNum: 10,
       dataBrokerTotalExposuresNum: 8,
-      dataBrokerFixedExposuresNum: 8,
+      dataBrokerFixedExposuresNum: 6,
+      dataBrokerManuallyResolvedNum: 2,
       dataBrokerFixedNum: 10,
       dataBrokerInProgressExposuresNum: 10,
       dataBrokerInProgressNum: 10,
@@ -533,6 +536,7 @@ describe("getExposureReduction", () => {
       unresolvedExposures: testExposure,
       inProgressExposures: testExposure,
       fixedExposures: testExposure,
+      manuallyResolvedExposures: testExposure,
       inProgressFixedExposures: testExposure,
       unresolvedSanitizedExposures: [],
       inProgressFixedSanitizedExposures: [],
@@ -715,7 +719,9 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBrokerFixedExposuresNum).toBe(36);
     expect(summary.dataBrokerInProgressExposuresNum).toBe(0);
     expect(summary.totalExposures).toBe(
-      summary.dataBreachFixedExposuresNum + summary.dataBrokerFixedExposuresNum,
+      summary.dataBreachFixedExposuresNum +
+        summary.dataBrokerFixedExposuresNum +
+        summary.dataBrokerManuallyResolvedExposuresNum,
     );
     expect(summary.unresolvedExposures.emailAddresses).toBe(0);
   });

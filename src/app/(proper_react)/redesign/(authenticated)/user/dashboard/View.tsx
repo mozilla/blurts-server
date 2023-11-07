@@ -180,6 +180,7 @@ export const View = (props: Props) => {
       dataBrokerInProgressNum,
       dataBreachFixedExposuresNum,
       dataBrokerFixedExposuresNum,
+      dataBrokerManuallyResolvedExposuresNum,
       dataBrokerInProgressExposuresNum,
       totalExposures,
     } = dataSummary;
@@ -193,6 +194,7 @@ export const View = (props: Props) => {
           exposures_unresolved_num:
             totalExposures -
             dataBrokerFixedExposuresNum -
+            dataBrokerManuallyResolvedExposuresNum -
             dataBreachFixedExposuresNum -
             dataBrokerInProgressExposuresNum,
           data_breach_unresolved_num: dataBreachUnresolvedNum,
@@ -209,6 +211,7 @@ export const View = (props: Props) => {
           exposures_unresolved_num:
             totalExposures -
             dataBrokerFixedExposuresNum -
+            dataBrokerManuallyResolvedExposuresNum -
             dataBreachFixedExposuresNum -
             dataBrokerInProgressExposuresNum,
           data_breach_unresolved_num: dataBreachUnresolvedNum,
