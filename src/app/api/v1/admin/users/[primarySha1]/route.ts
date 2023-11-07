@@ -11,9 +11,8 @@ import {
   getSubscribersByHashes,
 } from "../../../../../../db/tables/subscribers";
 import {
-  activateProfile,
+  activateAndOptoutProfile,
   deactivateProfile,
-  optoutProfile,
 } from "../../../../../functions/server/onerep";
 import { captureException } from "@sentry/node";
 
@@ -112,8 +111,7 @@ export async function PUT(
         switch (action) {
           case "subscribe": {
             // activate and opt out profiles
-            await activateProfile(oneRepProfileId);
-            await optoutProfile(oneRepProfileId);
+            await activateAndOptoutProfile(oneRepProfileId);
             logger.info("force_user_subscribe", {
               oneRepProfileId,
               primarySha1,

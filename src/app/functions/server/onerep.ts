@@ -216,6 +216,21 @@ export async function optoutProfile(profileId: number): Promise<void> {
     );
   }
 }
+
+export async function activateAndOptoutProfile(
+  profileId: number,
+): Promise<void> {
+  const { status: profileStatus } = await getProfile(profileId);
+  if (profileStatus === "inactive") {
+    await activateProfile(profileId);
+    await optoutProfile(profileId);
+  } else {
+    logger.info(
+      "Attempted to activate and opt-out of an already activated OneRep profile",
+    );
+  }
+}
+
 export async function createScan(
   profileId: number,
 ): Promise<CreateScanResponse> {

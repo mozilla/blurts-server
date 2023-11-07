@@ -13,16 +13,12 @@ import { WelcomeToPremiumView } from "./WelcomeToPremiumView";
 import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 import { StepDeterminationData } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
-import {
-  activateProfile,
-  getProfile,
-  optoutProfile,
-} from "../../../../../../../../functions/server/onerep";
+import { activateAndOptoutProfile } from "../../../../../../../../functions/server/onerep";
 
 export default async function WelcomeToPremiumPage() {
   const session = await getServerSession(authOptions);
 
-  // Ensure user is logged in
+  // Ensure user is logged in and a subscriber
   if (!session?.user?.subscriber?.id) {
     redirect("/redesign/user/dashboard/");
   }
@@ -40,16 +36,11 @@ export default async function WelcomeToPremiumPage() {
     user: session.user,
   };
 
-  // In case there are any new scan results eventhough the current user is
-  // a subscriber: Most likely we were not able or failed to kick-off the
-  // auto-removal process, yet.
+  // If the current user is a subscriber and their OneRep profile is not
+  // activated: Most likely we were not able or failed to kick-off the
+  // auto-removal process.
   // Let’s make sure the users OneRep profile is activated:
-  const { status: profileStatus } = await getProfile(profileId);
-  if (profileStatus === "inactive") {
-    // activate and opt out profiles
-    await activateProfile(profileId);
-    await optoutProfile(profileId);
-  }
+  await activateAndOptoutProfile(profileId);
 
   return (
     <WelcomeToPremiumView data={data} subscriberEmails={subscriberEmails} />
