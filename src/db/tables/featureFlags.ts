@@ -29,7 +29,6 @@ async function getAllFeatureFlags() {
 
 /** Add any feature flag you want to refer to in the code here */
 export type FeatureFlagName =
-  | "FxaRebrand"
   | "FreeBrokerScan"
   | "PremiumBrokerRemoval"
   | "FalseDoorTest"
