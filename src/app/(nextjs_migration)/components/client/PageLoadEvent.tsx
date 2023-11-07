@@ -60,6 +60,7 @@ export const PageLoadEvent = (props: Props) => {
       utm_content,
       utm_medium,
       utm_source,
+      utm_term,
       referrer,
     });
   }, [
@@ -72,6 +73,7 @@ export const PageLoadEvent = (props: Props) => {
     utm_content,
     utm_medium,
     utm_source,
+    utm_term,
     referrer,
   ]);
 
