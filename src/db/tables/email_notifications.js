@@ -89,7 +89,7 @@ async function addEmailNotification(
     notification_type: newNotification.notificationType,
   };
 
-  const res = await knex("emails_notification")
+  const res = await knex("email_notifications")
     .insert(emailNotificationDb)
     .returning("*");
   return res[0];

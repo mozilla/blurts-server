@@ -34,11 +34,11 @@ export const DoughnutChart = (props: Props) => {
     { type: "dialog" },
     explainerDialogState,
   );
-
   const sumOfFixedExposures = props.data.reduce(
     (total, [_label, num]) => total + num,
     0,
   );
+
   const percentages = props.data.map(([label, num]) => {
     return [label, num / sumOfFixedExposures] as const;
   });
@@ -110,7 +110,7 @@ export const DoughnutChart = (props: Props) => {
           <p>
             {l10n.getString("exposure-chart-returning-user-upgrade-prompt")}
           </p>
-          <Link href="/redesign/user/welcome">
+          <Link href="/redesign/user/welcome/free-scan?referrer=dashboard">
             {l10n.getString("exposure-chart-returning-user-upgrade-prompt-cta")}
           </Link>
         </>
@@ -248,7 +248,8 @@ export const DoughnutChart = (props: Props) => {
                   total_fixed_exposures_num:
                     props.summary.dataBreachFixedExposuresNum +
                     props.summary.dataBrokerFixedExposuresNum +
-                    props.summary.dataBrokerInProgressExposuresNum,
+                    props.summary.dataBrokerInProgressExposuresNum +
+                    props.summary.dataBrokerManuallyResolvedExposuresNum,
                   total_exposures_num: props.summary.totalExposures,
                 },
               })

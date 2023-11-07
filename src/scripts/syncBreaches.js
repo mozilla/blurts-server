@@ -10,10 +10,6 @@
  */
 
 import { readdir } from "node:fs/promises";
-import { resolve as pathResolve } from "node:path";
-import { finished } from "node:stream/promises";
-import { createWriteStream } from "node:fs";
-import { Readable } from "node:stream";
 import os from "node:os";
 import Sentry from "@sentry/nextjs";
 import { req, formatDataClassesArray } from "../utils/hibp.js";
@@ -52,7 +48,6 @@ export async function getBreachIcons(breaches) {
         return;
       }
       const logoFilename = breachDomain.toLowerCase() + ".ico";
-      const logoPath = pathResolve(logoFolder, logoFilename);
       if (existingLogos.includes(logoFilename)) {
         console.log("skipping ", logoFilename);
         await updateBreachFaviconUrl(
@@ -71,14 +66,17 @@ export async function getBreachIcons(breaches) {
         await updateBreachFaviconUrl(breachName, null);
         return;
       }
-      await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()));
-      const fileStream = createWriteStream(logoPath, { flags: "wx" });
-      const bodyReadable = Readable.fromWeb(res.body);
-      await finished(bodyReadable.pipe(fileStream));
-      await updateBreachFaviconUrl(
-        breachName,
-        `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`,
-      );
+
+      try {
+        await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()));
+        await updateBreachFaviconUrl(
+          breachName,
+          `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`,
+        );
+      } catch (e) {
+        console.error(e);
+        return;
+      }
     }),
   );
 }

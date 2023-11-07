@@ -54,13 +54,7 @@ export async function GET(
         // Store scan results.
         if (scan.status === "finished") {
           const allScanResults = await getAllScanResults(profileId);
-          await addOnerepScanResults(
-            profileId,
-            scan.id,
-            allScanResults,
-            "manual",
-            scan.status,
-          );
+          await addOnerepScanResults(profileId, allScanResults);
         }
 
         return NextResponse.json(
