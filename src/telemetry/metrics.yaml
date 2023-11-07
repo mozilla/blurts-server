@@ -217,7 +217,6 @@ button:
       button_id:
         description: The ID of rthe button that was clicked on, or some way to identify where on the page the interaction is located.
 
-
 field:
   focus:
     type: event
