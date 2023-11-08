@@ -34,11 +34,11 @@ export const ENV_URLS = {
 };
 
 export const setEnvVariables = (email: string) => {
-  process.env["E2E_TEST_ENV"] = (process.env.E2E_TEST_ENV as string) ?? "local";
+  process.env["E2E_TEST_ENV"] =
+    (process.env.E2E_TEST_ENV as string) ?? ENV.stage;
   process.env["E2E_TEST_ACCOUNT_EMAIL"] = email;
   process.env["E2E_TEST_BASE_URL"] =
-    ENV_URLS[process.env.E2E_TEST_ENV as ENV] ??
-    "https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net";
+    ENV_URLS[process.env.E2E_TEST_ENV as ENV] ?? ENV_URLS.stage;
 };
 
 export const getBaseUrl = () => {
@@ -93,29 +93,32 @@ const enterYourPassword = async (page: Page) => {
 
 export const checkAuthState = async (page: Page) => {
   const authStateTitleString = await page
-    .locator("h1")
-    .textContent({ timeout: 4000 });
-  const checkIfTitleContains = (potentialTitle: string) => {
-    return authStateTitleString?.includes(potentialTitle);
-  };
+    .locator(".card-header")
+    .textContent({ timeout: 1000 });
 
-  switch (true) {
-    case checkIfTitleContains("Enter your email"):
-      await enterYourEmail(page);
-      break;
-    case checkIfTitleContains("Enter your password"):
-      await enterYourPassword(page);
-      break;
-    // case checkIfTitleContains('Set your password'):
-    //   await setYourPassword(page)
-    //   break
-    // case checkIfTitleContains('Enter confirmation code'):
-    //   await enterConfirmationCode(page)
-    //   break
-    // case checkIfTitleContains('Sign in'):
-    //   await signIn(page)
-    //   break
-    default:
-      break;
+  if (authStateTitleString) {
+    const checkIfTitleContains = (potentialTitle: string) => {
+      return authStateTitleString?.includes(potentialTitle);
+    };
+
+    switch (true) {
+      case checkIfTitleContains("Enter your email"):
+        await enterYourEmail(page);
+        break;
+      case checkIfTitleContains("Enter your password"):
+        await enterYourPassword(page);
+        break;
+      // case checkIfTitleContains('Set your password'):
+      //   await setYourPassword(page)
+      //   break
+      // case checkIfTitleContains('Enter confirmation code'):
+      //   await enterConfirmationCode(page)
+      //   break
+      // case checkIfTitleContains('Sign in'):
+      //   await signIn(page)
+      //   break
+      default:
+        break;
+    }
   }
 };

@@ -67,11 +67,7 @@ export const UserMenu = ({
           <a href={fxaSettingsUrl} target="_blank" className="user-menu-header">
             <b className="user-menu-email">{session.user?.email}</b>
             <div className="user-menu-subtitle">
-              {l10n.getString(
-                enabledFeatureFlags.includes("FxaRebrand")
-                  ? "menu-item-fxa-2"
-                  : "menu-item-fxa",
-              )}
+              {l10n.getString("menu-item-fxa-2")}
               <Image alt="" src={OpenInIcon} />
             </div>
           </a>

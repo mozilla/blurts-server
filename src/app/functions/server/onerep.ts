@@ -327,7 +327,7 @@ export async function isEligibleForFreeScan(
   const profileId = result[0]["onerep_profile_id"] as number;
   const scanResult = await getLatestOnerepScanResults(profileId);
 
-  if (scanResult.results.length) {
+  if (scanResult.scan) {
     logger.warn("User has already used free scan");
     return false;
   }
