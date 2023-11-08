@@ -23,8 +23,8 @@ page:
       - rhelmer@mozilla.com
     expires: never
     extra_keys:
-      url:
-        description: The full URL of the page.
+      path:
+        description: The path of the page.
         type: string
       user_id:
         description: Mozilla accounts user ID. Randomly-generated if not logged in.

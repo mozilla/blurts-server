@@ -7,7 +7,6 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useGlean } from "../../../hooks/useGlean";
-import { useCookies } from "react-cookie";
 
 export type Props = {
   userId: string;
@@ -17,13 +16,11 @@ export type Props = {
 
 // Empty component that records a page view on first load.
 export const PageLoadEvent = (props: Props) => {
-  const [cookies, setCookie] = useCookies(["userId"]);
   const userId = props.userId;
 
   const { pageEvents } = useGlean(props.channel, props.appEnv);
-  const pathname = usePathname();
+  const path = usePathname();
 
-  let url = "";
   let referrer = "";
   let utm_campaign = "";
   let utm_content = "";
@@ -34,10 +31,14 @@ export const PageLoadEvent = (props: Props) => {
   if (
     typeof window !== "undefined" &&
     typeof document !== "undefined" &&
-    window.location
+    window.location &&
+    document.referrer
   ) {
-    url = new URL(pathname, window.location.origin).toString();
-    referrer = document.referrer;
+    try {
+      referrer = new URL(document.referrer).origin;
+    } catch (ex) {
+      console.error("Could not parse referrer as URL:", document.referrer);
+    }
 
     const params = new URLSearchParams(window.location.search);
     utm_campaign = params.get("utm_campaign") ?? "";
@@ -49,11 +50,8 @@ export const PageLoadEvent = (props: Props) => {
 
   // On first load of the page, record a page view.
   useEffect(() => {
-    if (!cookies.userId && userId.startsWith("guest")) {
-      setCookie("userId", userId);
-    }
     pageEvents.view.record({
-      url,
+      path,
       user_id: userId,
       utm_campaign,
       utm_content,
@@ -63,10 +61,8 @@ export const PageLoadEvent = (props: Props) => {
       referrer,
     });
   }, [
-    cookies.userId,
-    setCookie,
     pageEvents.view,
-    url,
+    path,
     userId,
     utm_campaign,
     utm_content,
