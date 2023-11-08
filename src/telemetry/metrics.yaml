@@ -159,8 +159,8 @@ button:
       - rhelmer@mozilla.com
     expires: never
     extra_keys:
-      url:
-        description: The full URL of the page.
+      path:
+        description: The path of the page.
         type: string
       user_id:
         description: Mozilla accounts user ID.
@@ -200,8 +200,8 @@ field:
       - rhelmer@mozilla.com
     expires: never
     extra_keys:
-      url:
-        description: The full URL of the page.
+      path:
+        description: The path of the page.
         type: string
       user_id:
         description: Mozilla accounts user ID.
@@ -240,8 +240,8 @@ link:
       - rhelmer@mozilla.com
     expires: never
     extra_keys:
-      url:
-        description: The full URL of the page.
+      path:
+        description: The path of the page.
         type: string
       user_id:
         description: Mozilla accounts user ID.
@@ -282,8 +282,8 @@ upgrade_intent:
       - rhelmer@mozilla.com
     expires: never
     extra_keys:
-      url:
-        description: The full URL of the page.
+      path:
+        description: The path of the page.
         type: string
       user_id:
         description: Mozilla accounts user ID.
@@ -323,8 +323,8 @@ upgrade_intent:
       - rhelmer@mozilla.com
     expires: never
     extra_keys:
-      url:
-        description: The full URL of the page.
+      path:
+        description: The path of the page.
         type: string
       user_id:
         description: Mozilla accounts user ID.
@@ -363,8 +363,8 @@ expand:
       - rhelmer@mozilla.com
     expires: never
     extra_keys:
-      url:
-        description: The full URL of the page.
+      path:
+        description: The path of the page.
         type: string
       user_id:
         description: Mozilla accounts user ID.
@@ -405,8 +405,8 @@ collapse:
       - rhelmer@mozilla.com
     expires: never
     extra_keys:
-      url:
-        description: The full URL of the page.
+      path:
+        description: The path of the page.
         type: string
       user_id:
         description: Mozilla accounts user ID.
@@ -447,8 +447,8 @@ cta_button:
       - rhelmer@mozilla.com
     expires: never
     extra_keys:
-      url:
-        description: The full URL of the page.
+      path:
+        description: The path of the page.
         type: string
       user_id:
         description: Mozilla accounts user ID.
