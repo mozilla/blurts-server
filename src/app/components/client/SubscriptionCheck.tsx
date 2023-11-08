@@ -16,7 +16,10 @@ export const SubscriptionCheck = () => {
     }
 
     void updateSession();
-  }, [update]);
+
+    // This should only run once per page load - `update` will always appear to be changed.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return <></>;
 };
