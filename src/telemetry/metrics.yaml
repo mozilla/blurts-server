@@ -224,6 +224,8 @@ field:
       session_id:
         description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
         type: string
+      field_id:
+        description: The ID of the field that was clicked on, or some way to identify where on the page the interaction is located.
 
 link:
   click:
