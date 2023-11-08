@@ -107,12 +107,12 @@ function getStepWithStatus(
 ): StepLinkWithStatus {
   return {
     ...stepLink,
-    eligible: isEligibleFor(data, stepLink.id),
-    completed: hasCompleted(data, stepLink.id),
+    eligible: isEligibleForStep(data, stepLink.id),
+    completed: hasCompletedStep(data, stepLink.id),
   };
 }
 
-function isEligibleFor(
+export function isEligibleForStep(
   data: StepDeterminationData,
   stepId: StepLink["id"],
 ): boolean {
@@ -161,7 +161,7 @@ function isEligibleFor(
   return false as never;
 }
 
-function hasCompleted(
+export function hasCompletedStep(
   data: StepDeterminationData,
   stepId: StepLink["id"],
 ): boolean {
