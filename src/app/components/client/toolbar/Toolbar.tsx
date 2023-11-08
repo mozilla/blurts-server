@@ -7,7 +7,7 @@ import styles from "./Toolbar.module.scss";
 import { UserMenu } from "./UserMenu";
 import { Session } from "next-auth";
 import { AppPicker } from "./AppPicker";
-import PremiumBadge from "../../client/PremiumBadge";
+import { PremiumBadge } from "../../client/PremiumBadge";
 import { useL10n } from "../../../hooks/l10n";
 
 export type Props = {

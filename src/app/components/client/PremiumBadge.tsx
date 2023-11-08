@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Session } from "next-auth";
@@ -21,25 +21,19 @@ import ShieldIcon from "./assets/shield-icon.svg";
 import styles from "./PremiumBadge.module.scss";
 import { useGa } from "../../hooks/useGa";
 import { CountryCodeContext } from "../../../contextProviders/country-code";
+import { useSession } from "next-auth/react";
 
 export type Props = {
   label: string;
-  user: Session["user"];
+  user?: Session["user"];
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
 };
 
-export default function PremiumBadge({
-  label,
-  user,
-  monthlySubscriptionUrl,
-  yearlySubscriptionUrl,
-}: Props) {
-  const l10n = useL10n();
+const PremiumLayout = (props: Props) => {
   const { gtag } = useGa();
-  const countryCode = useContext(CountryCodeContext);
-
   const pathname = usePathname();
+
   const dialogState = useOverlayTriggerState({
     defaultOpen: false,
     onOpenChange: (isOpen) => {
@@ -57,6 +51,41 @@ export default function PremiumBadge({
     { type: "dialog" },
     dialogState,
   );
+  return (
+    <>
+      <Button {...triggerProps} variant="primary" small>
+        {props.label}
+      </Button>
+      <PremiumUpsellDialog
+        {...overlayProps}
+        state={dialogState}
+        monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+        yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+      />
+    </>
+  );
+};
+
+export function PremiumButton(props: Props) {
+  return <PremiumLayout {...props} />;
+}
+
+export function PremiumBadge(props: Props) {
+  const l10n = useL10n();
+  const countryCode = useContext(CountryCodeContext);
+
+  const { update } = useSession();
+  const { user } = props;
+
+  useEffect(() => {
+    async function updateSession() {
+      await update();
+    }
+    void updateSession();
+
+    // This should only run once per page load - `update` will always appear to be changed.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (hasPremium(user)) {
     return (
@@ -68,19 +97,7 @@ export default function PremiumBadge({
   }
 
   if (canSubscribeToPremium({ user, countryCode })) {
-    return (
-      <>
-        <Button {...triggerProps} variant="primary" small>
-          {label}
-        </Button>
-        <PremiumUpsellDialog
-          {...overlayProps}
-          state={dialogState}
-          monthlySubscriptionUrl={monthlySubscriptionUrl}
-          yearlySubscriptionUrl={yearlySubscriptionUrl}
-        />
-      </>
-    );
+    return <PremiumLayout {...props} />;
   }
 
   return <></>;
