@@ -9,7 +9,10 @@ import {
   ISO8601DateString,
 } from "../../../utils/parse.js";
 import { StateAbbr } from "../../../utils/states.js";
-import { getLatestOnerepScanResults } from "../../../db/tables/onerep_scans";
+import {
+  getAllScansForProfile,
+  getLatestOnerepScanResults,
+} from "../../../db/tables/onerep_scans";
 import { RemovalStatus } from "../universal/scanResult.js";
 import {
   FeatureFlagName,
@@ -220,14 +223,21 @@ export async function optoutProfile(profileId: number): Promise<void> {
 export async function activateAndOptoutProfile(
   profileId: number,
 ): Promise<void> {
-  const { status: profileStatus } = await getProfile(profileId);
-  if (profileStatus === "inactive") {
-    await activateProfile(profileId);
-    await optoutProfile(profileId);
-  } else {
-    logger.info(
-      "Attempted to activate and opt-out of an already activated OneRep profile",
+  try {
+    const { status: profileStatus } = await getProfile(profileId);
+    if (profileStatus === "inactive") {
+      await activateProfile(profileId);
+    }
+
+    const scans = await getAllScansForProfile(profileId);
+    const hasInitialScan = scans.some(
+      (scan) => scan.onerep_scan_reason === "initial",
     );
+    if (!hasInitialScan) {
+      await optoutProfile(profileId);
+    }
+  } catch (error) {
+    logger.error("Failed to activate and optout profile:", error);
   }
 }
 
