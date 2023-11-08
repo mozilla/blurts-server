@@ -27,7 +27,7 @@ page:
         description: The path of the page.
         type: string
       user_id:
-        description: Mozilla accounts user ID. Randomly-generated if not logged in.
+        description: Mozilla accounts user ID.
         type: string
       dashboard_tab:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
@@ -85,7 +85,7 @@ popup:
         description: The full URL of the page.
         type: string
       user_id:
-        description: Mozilla accounts user ID. Randomly-generated if not logged in.
+        description: Mozilla accounts user ID.
         type: string
       dashboard_tab:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
@@ -123,7 +123,7 @@ popup:
         description: The full URL of the page.
         type: string
       user_id:
-        description: Mozilla accounts user ID. Randomly-generated if not logged in.
+        description: Mozilla accounts user ID.
         type: string
       dashboard_tab:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
@@ -163,7 +163,7 @@ button:
         description: The full URL of the page.
         type: string
       user_id:
-        description: Mozilla accounts user ID. Randomly-generated if not logged in.
+        description: Mozilla accounts user ID.
         type: string
       dashboard_tab:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
@@ -204,7 +204,7 @@ field:
         description: The full URL of the page.
         type: string
       user_id:
-        description: Mozilla accounts user ID. Randomly-generated if not logged in.
+        description: Mozilla accounts user ID.
         type: string
       dashboard_tab:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
@@ -244,7 +244,7 @@ link:
         description: The full URL of the page.
         type: string
       user_id:
-        description: Mozilla accounts user ID. Randomly-generated if not logged in.
+        description: Mozilla accounts user ID.
         type: string
       dashboard_tab:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
@@ -286,7 +286,7 @@ upgrade_intent:
         description: The full URL of the page.
         type: string
       user_id:
-        description: Mozilla accounts user ID. Randomly-generated if not logged in.
+        description: Mozilla accounts user ID.
         type: string
       dashboard_tab:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
@@ -327,7 +327,7 @@ upgrade_intent:
         description: The full URL of the page.
         type: string
       user_id:
-        description: Mozilla accounts user ID. Randomly-generated if not logged in.
+        description: Mozilla accounts user ID.
         type: string
       dashboard_tab:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
@@ -367,7 +367,7 @@ expand:
         description: The full URL of the page.
         type: string
       user_id:
-        description: Mozilla accounts user ID. Randomly-generated if not logged in.
+        description: Mozilla accounts user ID.
         type: string
       dashboard_tab:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
@@ -409,7 +409,7 @@ collapse:
         description: The full URL of the page.
         type: string
       user_id:
-        description: Mozilla accounts user ID. Randomly-generated if not logged in.
+        description: Mozilla accounts user ID.
         type: string
       dashboard_tab:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
@@ -451,7 +451,7 @@ cta_button:
         description: The full URL of the page.
         type: string
       user_id:
-        description: Mozilla accounts user ID. Randomly-generated if not logged in.
+        description: Mozilla accounts user ID.
         type: string
       dashboard_tab:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
