@@ -11,11 +11,7 @@ export const SubscriptionCheck = () => {
   const { update } = useSession();
 
   useEffect(() => {
-    async function updateSession() {
-      await update();
-    }
-
-    void updateSession();
+    void update();
 
     // This should only run once per page load - `update` will always appear to be changed.
     // eslint-disable-next-line react-hooks/exhaustive-deps
