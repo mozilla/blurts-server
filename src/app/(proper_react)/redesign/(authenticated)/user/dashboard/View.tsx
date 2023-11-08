@@ -332,7 +332,6 @@ export const View = (props: Props) => {
           onShowFixed={() => {
             setSelectedTab("fixed");
           }}
-          user={props.user}
           monthlySubscriptionUrl={props.monthlySubscriptionUrl}
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
         />
