@@ -145,11 +145,11 @@ export async function PUT(
             break;
           }
           case "delete_onerep_scans": {
+            await deleteScansForProfile(onerepProfileId);
             logger.info("delete_onerep_scans", {
               onerepProfileId,
               primarySha1,
             });
-            await deleteScansForProfile(onerepProfileId);
             break;
           }
           case "delete_onrep_scan_results": {
