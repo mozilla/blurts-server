@@ -22,6 +22,8 @@ export type DashboardTopBannerProps = {
   stepDeterminationData: StepDeterminationData;
   tabType: TabType;
   onShowFixed: () => void;
+  monthlySubscriptionUrl: string;
+  yearlySubscriptionUrl: string;
 };
 
 export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
@@ -54,6 +56,8 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           scanInProgress={props.scanInProgress}
           stepDeterminationData={props.stepDeterminationData}
           onShowFixed={props.onShowFixed}
+          monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+          yearlySubscriptionUrl={props.yearlySubscriptionUrl}
         />
         <div className={styles.chart}>
           <Chart
