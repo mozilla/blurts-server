@@ -12,7 +12,7 @@ page:
   view:
     type: event
     description: |
-      A page view event e.g trackable by the URL.
+      An event triggered when the page is loaded.
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
