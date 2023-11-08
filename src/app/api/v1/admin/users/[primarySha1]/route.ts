@@ -79,6 +79,9 @@ export async function GET(
  *     "delete_subscriber"
  *   ]
  * }
+ *
+ * Actions will be processed in the order specified.
+ *
  * NOTE: this will only carry out the server actions that should happen - client
  * state (such as the badge) depends on the FxA `subscriptions` claim in the JWT.
  *
@@ -179,14 +182,14 @@ export async function PUT(
             }
             default: {
               logger.error("Unknown action:", action);
-              return NextResponse.json({ success: true }, { status: 500 });
+              return NextResponse.json({ success: false }, { status: 500 });
             }
           }
         }
       }
     } catch (ex) {
       captureException(ex);
-      return NextResponse.json({ success: true }, { status: 500 });
+      return NextResponse.json({ success: false }, { status: 500 });
     }
 
     return NextResponse.json({ success: true }, { status: 200 });
