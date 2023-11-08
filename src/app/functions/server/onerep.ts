@@ -224,18 +224,20 @@ export async function activateAndOptoutProfile(
   profileId: number,
 ): Promise<void> {
   try {
+    const scans = await getAllScansForProfile(profileId);
+    const hasInitialScan = scans.some(
+      (scan) => scan.onerep_scan_reason === "initial",
+    );
+    if (hasInitialScan) {
+      return;
+    }
+
     const { status: profileStatus } = await getProfile(profileId);
     if (profileStatus === "inactive") {
       await activateProfile(profileId);
     }
 
-    const scans = await getAllScansForProfile(profileId);
-    const hasInitialScan = scans.some(
-      (scan) => scan.onerep_scan_reason === "initial",
-    );
-    if (!hasInitialScan) {
-      await optoutProfile(profileId);
-    }
+    await optoutProfile(profileId);
   } catch (error) {
     logger.error("Failed to activate and optout profile:", error);
   }
