@@ -9,7 +9,6 @@ import { DoughnutChart as Chart } from "../../../../../../components/client/Char
 import { DashboardSummary } from "../../../../../../functions/server/dashboard";
 import { StepDeterminationData } from "../../../../../../functions/server/getRelevantGuidedSteps";
 import { DashboardTopBannerContent } from "./DashboardTopBannerContent";
-import { Session } from "next-auth";
 
 export type DashboardTopBannerProps = {
   bannerData: DashboardSummary;
@@ -23,7 +22,6 @@ export type DashboardTopBannerProps = {
   stepDeterminationData: StepDeterminationData;
   tabType: TabType;
   onShowFixed: () => void;
-  user: Session["user"];
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
 };
@@ -58,7 +56,6 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           scanInProgress={props.scanInProgress}
           stepDeterminationData={props.stepDeterminationData}
           onShowFixed={props.onShowFixed}
-          user={props.user}
           monthlySubscriptionUrl={props.monthlySubscriptionUrl}
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
         />
