@@ -114,76 +114,63 @@ export async function PUT(
       const result = await getOnerepProfileId(subscriber.id);
       const onerepProfileId = result?.[0]?.["onerep_profile_id"] as number;
 
-      logger.debug("fxa_subscription_change", JSON.stringify(result));
+      logger.debug("admin_subscription_change", JSON.stringify(result));
 
-      // MNTOR-2103: if one rep profile id doesn't exist in the db, fail silently
-      if (!onerepProfileId) {
-        logger.error("No OneRep profile Id found", {
-          subscriberId: subscriber.id,
-        });
-
-        captureException(
-          new Error(
-            `No OneRep profile Id found, subscriber ID: ${subscriber.id})}`,
-          ),
-        );
-
-        for (const action in actions) {
-          switch (action) {
-            case "subscribe": {
-              // activate and opt out profiles
-              await activateProfile(onerepProfileId);
-              await optoutProfile(onerepProfileId);
-              logger.info("force_user_subscribe", {
-                onerepProfileId,
-                primarySha1,
-              });
-              break;
-            }
-            case "unsubscribe": {
-              await deactivateProfile(onerepProfileId);
-              logger.info("force_user_unsubscribe", {
-                onerepProfileId,
-                primarySha1,
-              });
-              break;
-            }
-            case "delete_onerep_profile": {
-              await deleteProfileDetails(onerepProfileId);
-              logger.info("delete_onerep_profile", {
-                onerepProfileId,
-                primarySha1,
-              });
-              break;
-            }
-            case "delete_onerep_scans": {
-              logger.info("delete_onerep_scans", {
-                onerepProfileId,
-                primarySha1,
-              });
-              await deleteScansForProfile(onerepProfileId);
-              break;
-            }
-            case "delete_onrep_scan_results": {
-              await deleteScanResultsForProfile(onerepProfileId);
-              logger.info("delete_onerep_scan_results", {
-                onerepProfileId,
-                primarySha1,
-              });
-              break;
-            }
-            case "delete_subscriber": {
-              await deleteSubscriber(subscriber);
-              logger.info("delete_subscriber", {
-                onerepProfileId,
-                primarySha1,
-              });
-              break;
-            }
-            default: {
-              logger.error("Unknown action:", action);
-              return NextResponse.json({ success: false }, { status: 500 });
-            }
+      for (const action of actions) {
+        switch (action) {
+          case "subscribe": {
+            // activate and opt out profiles
+            await activateProfile(onerepProfileId);
+            await optoutProfile(onerepProfileId);
+            logger.info("force_user_subscribe", {
+              onerepProfileId,
+              primarySha1,
+            });
+            break;
+          }
+          case "unsubscribe": {
+            await deactivateProfile(onerepProfileId);
+            logger.info("force_user_unsubscribe", {
+              onerepProfileId,
+              primarySha1,
+            });
+            break;
+          }
+          case "delete_onerep_profile": {
+            await deleteProfileDetails(onerepProfileId);
+            logger.info("delete_onerep_profile", {
+              onerepProfileId,
+              primarySha1,
+            });
+            break;
+          }
+          case "delete_onerep_scans": {
+            logger.info("delete_onerep_scans", {
+              onerepProfileId,
+              primarySha1,
+            });
+            await deleteScansForProfile(onerepProfileId);
+            break;
+          }
+          case "delete_onrep_scan_results": {
+            await deleteScanResultsForProfile(onerepProfileId);
+            logger.info("delete_onerep_scan_results", {
+              onerepProfileId,
+              primarySha1,
+            });
+            break;
+          }
+          case "delete_subscriber": {
+            await deleteSubscriber(subscriber);
+            logger.info("delete_subscriber", {
+              onerepProfileId,
+              primarySha1,
+            });
+            break;
+          }
+          default: {
+            logger.error("Unknown action:", action);
+            return NextResponse.json({ success: false }, { status: 500 });
           }
         }
       }
