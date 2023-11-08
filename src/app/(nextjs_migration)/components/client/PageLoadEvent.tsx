@@ -7,11 +7,27 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useGlean } from "../../../hooks/useGlean";
+import { ExtraMap } from "@mozilla/glean/dist/types/core/metrics/events_database/recorded_event";
 
 export type Props = {
   userId: string;
   channel: string;
   appEnv: string;
+};
+
+type RequiredKeys = {
+  user_id: string;
+  path: string;
+};
+
+type OptionalKeys = {
+  [key: string]: string | undefined;
+  referrer?: string;
+  utm_campaign?: string;
+  utm_content?: string;
+  utm_medium?: string;
+  utm_source?: string;
+  utm_term?: string;
 };
 
 // Empty component that records a page view on first load.
@@ -21,56 +37,49 @@ export const PageLoadEvent = (props: Props) => {
   const { pageEvents } = useGlean(props.channel, props.appEnv);
   const path = usePathname();
 
-  let referrer = "";
-  let utm_campaign = "";
-  let utm_content = "";
-  let utm_medium = "";
-  let utm_source = "";
-  let utm_term = "";
+  const required: RequiredKeys = {
+    user_id: userId,
+    path,
+  };
+  const optional: OptionalKeys = {};
 
   if (
     typeof window !== "undefined" &&
     typeof document !== "undefined" &&
-    window.location &&
-    document.referrer
+    window.location
   ) {
     try {
-      referrer = new URL(document.referrer).origin;
+      const referrerUrl = new URL(document.referrer);
+      // Remove any query params.
+      referrerUrl.search = "";
+      // Remove any fragment identifiers.
+      referrerUrl.hash = "";
+
+      optional["referrer"] = referrerUrl.toString();
     } catch (ex) {
       console.error("Could not parse referrer as URL:", document.referrer);
     }
 
     const params = new URLSearchParams(window.location.search);
-    utm_campaign = params.get("utm_campaign") ?? "";
-    utm_content = params.get("utm_content") ?? "";
-    utm_medium = params.get("utm_medium") ?? "";
-    utm_source = params.get("utm_source") ?? "";
-    utm_term = params.get("utm_term") ?? "";
+    [
+      "utm_campaign",
+      "utm_content",
+      "utm_medium",
+      "utm_source",
+      "utm_term",
+    ].forEach((key) => {
+      if (params.has(key)) {
+        optional[key] = params.get(key) ?? "";
+      }
+    });
   }
+
+  const keys = Object.assign(required, optional) as ExtraMap;
 
   // On first load of the page, record a page view.
   useEffect(() => {
-    pageEvents.view.record({
-      path,
-      user_id: userId,
-      utm_campaign,
-      utm_content,
-      utm_medium,
-      utm_source,
-      utm_term,
-      referrer,
-    });
-  }, [
-    pageEvents.view,
-    path,
-    userId,
-    utm_campaign,
-    utm_content,
-    utm_medium,
-    utm_source,
-    utm_term,
-    referrer,
-  ]);
+    pageEvents.view.record(keys);
+  }, [pageEvents.view, keys]);
 
   // This component doesn't render anything.
   return <></>;
