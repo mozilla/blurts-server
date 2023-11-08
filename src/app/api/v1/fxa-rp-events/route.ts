@@ -21,6 +21,7 @@ import {
   optoutProfile,
 } from "../../../functions/server/onerep";
 import { bearerToken } from "../../utils/auth";
+import { revokeOAuthTokens } from "../../../../utils/fxa";
 import appConstants from "../../../../appConstants";
 
 const FXA_PROFILE_CHANGE_EVENT =
@@ -177,8 +178,8 @@ export async function POST(request: NextRequest) {
   for (const event in decodedJWT?.events) {
     switch (event) {
       case FXA_DELETE_USER_EVENT:
-        logger.debug("fxa_delete_user", {
-          subscriber,
+        logger.info("fxa_delete_user", {
+          subscriber: subscriber.id,
           event,
         });
 
@@ -189,8 +190,8 @@ export async function POST(request: NextRequest) {
         const updatedProfileFromEvent = decodedJWT.events[
           event
         ] as ProfileChangeEvent;
-        logger.debug("fxa_profile_update", {
-          fxaUserId,
+        logger.info("fxa_profile_update", {
+          subscriber: subscriber.id,
           event,
           updatedProfileFromEvent,
         });
@@ -220,19 +221,22 @@ export async function POST(request: NextRequest) {
       }
       case FXA_PASSWORD_CHANGE_EVENT: {
         const updateFromEvent = decodedJWT.events[event];
-        logger.debug("fxa_password_change", {
-          fxaUserId,
+        logger.info("fxa_password_change", {
+          subscriber: subscriber.id,
           event,
           updateFromEvent,
         });
+
+        // MNTOR-1932: Change password should revoke sessions
+        await revokeOAuthTokens(subscriber);
         break;
       }
       case FXA_SUBSCRIPTION_CHANGE_EVENT: {
         const updatedSubscriptionFromEvent = decodedJWT.events[
           event
         ] as SubscriptionStateChangeEvent;
-        logger.debug("fxa_subscription_change", {
-          fxaUserId,
+        logger.info("fxa_subscription_change", {
+          subscriber: subscriber.id,
           event,
           updatedSubscriptionFromEvent,
         });
@@ -241,7 +245,7 @@ export async function POST(request: NextRequest) {
         const result = await getOnerepProfileId(subscriber.id);
         const oneRepProfileId = result?.[0]?.["onerep_profile_id"] as number;
 
-        logger.debug("fxa_subscription_change", JSON.stringify(result));
+        logger.info("fxa_subscription_change", JSON.stringify(result));
 
         // MNTOR-2103: if one rep profile id doesn't exist in the db, fail silently
         if (!oneRepProfileId) {
