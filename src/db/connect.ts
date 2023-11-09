@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ConnectionOptions } from "tls";
-import initKnex from "knex";
+import initKnex, { Knex } from "knex";
 import knexConfig from "./knexfile";
 
 export interface KnexConfig {
@@ -11,7 +11,7 @@ export interface KnexConfig {
   connection: ConnectionOptions;
 }
 
-const createDbConnection = () => {
+const createDbConnection = (): Knex => {
   const config = knexConfig as KnexConfig;
   /* c8 ignore start */
   if (process.env.NODE_ENV === "development") {
