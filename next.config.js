@@ -160,4 +160,12 @@ const sentryWebpackPluginOptions = {
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };
 
-export default withSentryConfig(nextConfig, sentryWebpackPluginOptions)
+const sentryOptions = {
+  // Upload additional client files (increases upload size)
+  widenClientFileUpload: true,
+
+  // Hides source maps from generated client bundles
+  hideSourceMaps: true,
+};
+
+export default withSentryConfig(nextConfig, sentryWebpackPluginOptions, sentryOptions)
