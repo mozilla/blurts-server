@@ -115,12 +115,18 @@ const GuestLayout = async (props: Props) => {
             </a>
           </li>
           <li>
-            <a href="https://www.mozilla.org/en-US/about/legal/terms/subscription-services/">
+            <a
+              href="https://www.mozilla.org/en-US/about/legal/terms/subscription-services/"
+              target="_blank"
+            >
               {l10n.getString("terms-of-service")}
             </a>
           </li>
           <li>
-            <a href="https://www.mozilla.org/en-US/privacy/subscription-services/">
+            <a
+              href="https://www.mozilla.org/en-US/privacy/subscription-services/"
+              target="_blank"
+            >
               {l10n.getString("privacy-notice")}
             </a>
           </li>
