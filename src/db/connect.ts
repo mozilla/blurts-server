@@ -13,6 +13,7 @@ export interface KnexConfig {
 
 const createDbConnection = () => {
   const config = knexConfig as KnexConfig;
+  /* c8 ignore start */
   if (process.env.NODE_ENV === "development") {
     const { client } = knexConfig;
     if (!(client in global)) {
@@ -23,6 +24,7 @@ const createDbConnection = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return global[client as keyof typeof globalThis] as Knex<any, unknown>;
   }
+  /* c8 ignore stop */
 
   return initKnex(config);
 };
