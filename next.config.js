@@ -162,6 +162,7 @@ const sentryWebpackPluginOptions = {
 
 const sentryOptions = {
   // Upload additional client files (increases upload size)
+  // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#widen-the-upload-scope
   widenClientFileUpload: true,
 
   // Hides source maps from generated client bundles
