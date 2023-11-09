@@ -29,7 +29,6 @@ export type LeakedPasswordsContent = {
     steps: ReactNode;
     subtitle?: string;
   };
-  id: number;
 };
 
 export type LeakedPassword = {

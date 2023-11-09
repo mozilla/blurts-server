@@ -32,12 +32,12 @@ export interface LeakedPasswordsLayoutProps {
 async function updateBreachStatus(
   email: string,
   id: number,
-  resolvedDataClass: string,
+  resolvedDataClass: HibpBreachDataTypes[keyof HibpBreachDataTypes],
 ) {
   try {
-    const data = {
-      email,
-      id,
+    const data: BreachResolutionRequest = {
+      affectedEmail: email,
+      breachId: id,
       resolutionsChecked: [resolvedDataClass], // Adding "passwords" to an array
     };
 
