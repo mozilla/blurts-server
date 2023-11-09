@@ -29,9 +29,11 @@ export type LeakedPasswordsContent = {
     steps: ReactNode;
     subtitle?: string;
   };
+  id: number;
 };
 
 export type LeakedPassword = {
+  id: number;
   type: LeakedPasswordsTypes;
   title: string;
   illustration: string;
@@ -152,6 +154,8 @@ function getLeakedPasswords({
     breachSite: securityQuestionBreachSite,
   } = getBreachInfo(unresolvedSecurityQuestionsBreach);
 
+  // const allPasswords = breaches.passwordBreaches;
+
   const leakedPasswordsData: LeakedPassword[] = [
     {
       type: "passwords",
@@ -244,7 +248,11 @@ function getLeakedPasswords({
     },
   ];
 
-  return leakedPasswordsData.find((content) => content.type === dataType);
+  const firstLeakedPaswordsData = leakedPasswordsData.find(
+    (content) => content.type === dataType,
+  );
+
+  return { firstLeakedPaswordsData, leakedPasswordsData };
 }
 
 export { getLeakedPasswords };

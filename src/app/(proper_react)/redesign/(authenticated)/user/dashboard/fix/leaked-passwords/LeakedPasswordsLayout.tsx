@@ -29,6 +29,31 @@ export interface LeakedPasswordsLayoutProps {
   data: StepDeterminationData;
 }
 
+async function updateBreachStatus(
+  email: string,
+  id: number,
+  resolvedDataClass: string,
+) {
+  try {
+    const data = {
+      email,
+      id,
+      resolutionsChecked: [resolvedDataClass], // Adding "passwords" to an array
+    };
+
+    const res = await fetch("/api/v1/user/breaches", {
+      method: "PUT",
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      throw new Error("Bad fetch response");
+    }
+  } catch (e) {
+    console.error("Could not update user breach resolve status:", e);
+  }
+}
+
 export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   const l10n = useL10n();
 
