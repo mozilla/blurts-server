@@ -23,21 +23,16 @@ import { useGa } from "../../hooks/useGa";
 import { CountryCodeContext } from "../../../contextProviders/country-code";
 
 export type Props = {
-  user: Session["user"];
+  label: string;
+  user?: Session["user"];
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
 };
 
-export default function PremiumBadge({
-  user,
-  monthlySubscriptionUrl,
-  yearlySubscriptionUrl,
-}: Props) {
-  const l10n = useL10n();
+export function PremiumButton(props: Props) {
   const { gtag } = useGa();
-  const countryCode = useContext(CountryCodeContext);
-
   const pathname = usePathname();
+
   const dialogState = useOverlayTriggerState({
     defaultOpen: false,
     onOpenChange: (isOpen) => {
@@ -55,6 +50,26 @@ export default function PremiumBadge({
     { type: "dialog" },
     dialogState,
   );
+  return (
+    <>
+      <Button {...triggerProps} variant="primary" small>
+        {props.label}
+      </Button>
+      <PremiumUpsellDialog
+        {...overlayProps}
+        state={dialogState}
+        monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+        yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+      />
+    </>
+  );
+}
+
+export function PremiumBadge(props: Props) {
+  const l10n = useL10n();
+  const countryCode = useContext(CountryCodeContext);
+
+  const { user } = props;
 
   if (hasPremium(user)) {
     return (
@@ -66,19 +81,7 @@ export default function PremiumBadge({
   }
 
   if (canSubscribeToPremium({ user, countryCode })) {
-    return (
-      <>
-        <Button {...triggerProps} variant="primary" small>
-          {l10n.getString("premium-cta-label")}
-        </Button>
-        <PremiumUpsellDialog
-          {...overlayProps}
-          state={dialogState}
-          monthlySubscriptionUrl={monthlySubscriptionUrl}
-          yearlySubscriptionUrl={yearlySubscriptionUrl}
-        />
-      </>
-    );
+    return <PremiumButton {...props} />;
   }
 
   return <></>;

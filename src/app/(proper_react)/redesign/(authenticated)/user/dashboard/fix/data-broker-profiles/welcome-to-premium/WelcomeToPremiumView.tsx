@@ -5,7 +5,6 @@
 import styles from "./welcomeToPremium.module.scss";
 import { getL10n } from "../../../../../../../../functions/server/l10n";
 import { PercentageChart } from "../../../../../../../../components/client/PercentageChart";
-import { SubscriptionCheck } from "../../../../../../../../components/client/SubscriptionCheck";
 import {
   getDashboardSummary,
   getExposureReduction,
@@ -34,62 +33,59 @@ export function WelcomeToPremiumView(props: Props) {
   const exposureReduction = getExposureReduction(summary);
 
   return (
-    <>
-      <SubscriptionCheck />
-      <FixView
-        data={props.data}
-        subscriberEmails={props.subscriberEmails}
-        nextStepHref={getNextGuidedStep(props.data, "Scan").href}
-        currentSection="data-broker-profiles"
-      >
-        <div className={styles.contentWrapper}>
-          <div className={styles.content}>
-            <h3>
+    <FixView
+      data={props.data}
+      subscriberEmails={props.subscriberEmails}
+      nextStepHref={getNextGuidedStep(props.data, "Scan").href}
+      currentSection="data-broker-profiles"
+    >
+      <div className={styles.contentWrapper}>
+        <div className={styles.content}>
+          <h3>
+            {l10n.getString(
+              "welcome-to-premium-data-broker-profiles-title-part-one",
+            )}
+            <br />
+            {l10n.getString(
+              "welcome-to-premium-data-broker-profiles-title-part-two",
+            )}
+          </h3>
+          <p>
+            {l10n.getString(
+              "welcome-to-premium-data-broker-profiles-description-part-one",
+              {
+                profile_total_num: countOfDataBrokerProfiles,
+                exposure_reduction_percentage: exposureReduction,
+              },
+            )}
+          </p>
+          <p>
+            {l10n.getString(
+              "welcome-to-premium-data-broker-profiles-description-part-two",
+            )}
+          </p>
+          <p>
+            {l10n.getString(
+              "welcome-to-premium-data-broker-profiles-description-part-three",
+            )}
+          </p>
+          <div className={styles.buttonsWrapper}>
+            <Button
+              variant="primary"
+              href="/redesign/user/dashboard/fix/high-risk-data-breaches"
+              disabled
+              wide
+            >
               {l10n.getString(
-                "welcome-to-premium-data-broker-profiles-title-part-one",
+                "welcome-to-premium-data-broker-profiles-cta-label",
               )}
-              <br />
-              {l10n.getString(
-                "welcome-to-premium-data-broker-profiles-title-part-two",
-              )}
-            </h3>
-            <p>
-              {l10n.getString(
-                "welcome-to-premium-data-broker-profiles-description-part-one",
-                {
-                  profile_total_num: countOfDataBrokerProfiles,
-                  exposure_reduction_percentage: exposureReduction,
-                },
-              )}
-            </p>
-            <p>
-              {l10n.getString(
-                "welcome-to-premium-data-broker-profiles-description-part-two",
-              )}
-            </p>
-            <p>
-              {l10n.getString(
-                "welcome-to-premium-data-broker-profiles-description-part-three",
-              )}
-            </p>
-            <div className={styles.buttonsWrapper}>
-              <Button
-                variant="primary"
-                href="/redesign/user/dashboard/fix/high-risk-data-breaches"
-                disabled
-                wide
-              >
-                {l10n.getString(
-                  "welcome-to-premium-data-broker-profiles-cta-label",
-                )}
-              </Button>
-            </div>
-          </div>
-          <div className={styles.chart}>
-            <PercentageChart exposureReduction={exposureReduction} />
+            </Button>
           </div>
         </div>
-      </FixView>
-    </>
+        <div className={styles.chart}>
+          <PercentageChart exposureReduction={exposureReduction} />
+        </div>
+      </div>
+    </FixView>
   );
 }
