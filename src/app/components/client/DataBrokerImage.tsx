@@ -2,13 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useMemo } from "react";
 import styles from "./ExposureCard.module.scss";
 import Image from "next/image";
 import { FallbackLogo } from "../server/BreachLogo";
 
 export const DataBrokerImage = (props: { name: string }) => {
-  const LazyLoadedImage = lazy(() => getDataBrokerImage(props.name));
+  const LazyLoadedImage = useMemo(
+    () => lazy(() => getDataBrokerImage(props.name)),
+    [props.name],
+  );
 
   return (
     <Suspense fallback={<FallbackLogo name={props.name} />}>

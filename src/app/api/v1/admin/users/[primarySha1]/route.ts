@@ -7,6 +7,7 @@ import { getServerSession } from "next-auth";
 import { logger } from "../../../../../functions/server/logging";
 import { isAdmin, authOptions } from "../../../../utils/auth";
 import {
+  deleteSubscriber,
   getOnerepProfileId,
   getSubscribersByHashes,
 } from "../../../../../../db/tables/subscribers";
@@ -16,6 +17,11 @@ import {
   optoutProfile,
 } from "../../../../../functions/server/onerep";
 import { captureException } from "@sentry/node";
+import { deleteProfileDetails } from "../../../../../../db/tables/onerep_profiles";
+import {
+  deleteScanResultsForProfile,
+  deleteScansForProfile,
+} from "../../../../../../db/tables/onerep_scans";
 
 /**
  * Look up a subscriber based on SHA1 hash of their email address.
@@ -62,7 +68,20 @@ export async function GET(
 /**
  * Change user state based on subscriber ID.
  *
- * Current supported actions are subscribe and unsubscribe.
+ * Multiple actions may be specified in one request:
+ * {
+ *   "actions":[
+ *     "subscribe",
+ *     "unsubscribe",
+ *     "delete_onerep_profile",
+ *     "delete_onerep_scans",
+ *     "delete_onerep_scan_results",
+ *     "delete_subscriber"
+ *   ]
+ * }
+ *
+ * Actions will be processed in the order specified.
+ *
  * NOTE: this will only carry out the server actions that should happen - client
  * state (such as the badge) depends on the FxA `subscriptions` claim in the JWT.
  *
@@ -85,7 +104,7 @@ export async function PUT(
       }
 
       const body = await req.json();
-      const action = body.action;
+      const actions = body.actions;
 
       if (!primarySha1) {
         return NextResponse.json({ success: false }, { status: 400 });
@@ -93,50 +112,71 @@ export async function PUT(
 
       const subscriber = (await getSubscribersByHashes([primarySha1]))[0];
       const result = await getOnerepProfileId(subscriber.id);
-      const oneRepProfileId = result?.[0]?.["onerep_profile_id"] as number;
+      const onerepProfileId = result?.[0]?.["onerep_profile_id"] as number;
 
-      logger.debug("fxa_subscription_change", JSON.stringify(result));
+      logger.debug("admin_subscription_change", JSON.stringify(result));
 
-      // MNTOR-2103: if one rep profile id doesn't exist in the db, fail silently
-      if (!oneRepProfileId) {
-        logger.error("No OneRep profile Id found", {
-          subscriberId: subscriber.id,
-        });
-
-        captureException(
-          new Error(
-            `No OneRep profile Id found, subscriber ID: ${subscriber.id})}`,
-          ),
-        );
-
+      for (const action of actions) {
         switch (action) {
           case "subscribe": {
             // activate and opt out profiles
-            await activateProfile(oneRepProfileId);
-            await optoutProfile(oneRepProfileId);
+            await activateProfile(onerepProfileId);
+            await optoutProfile(onerepProfileId);
             logger.info("force_user_subscribe", {
-              oneRepProfileId,
+              onerepProfileId,
               primarySha1,
             });
             break;
           }
           case "unsubscribe": {
-            await deactivateProfile(oneRepProfileId);
+            await deactivateProfile(onerepProfileId);
             logger.info("force_user_unsubscribe", {
-              oneRepProfileId,
+              onerepProfileId,
+              primarySha1,
+            });
+            break;
+          }
+          case "delete_onerep_profile": {
+            await deleteProfileDetails(onerepProfileId);
+            logger.info("delete_onerep_profile", {
+              onerepProfileId,
+              primarySha1,
+            });
+            break;
+          }
+          case "delete_onerep_scans": {
+            await deleteScansForProfile(onerepProfileId);
+            logger.info("delete_onerep_scans", {
+              onerepProfileId,
+              primarySha1,
+            });
+            break;
+          }
+          case "delete_onrep_scan_results": {
+            await deleteScanResultsForProfile(onerepProfileId);
+            logger.info("delete_onerep_scan_results", {
+              onerepProfileId,
+              primarySha1,
+            });
+            break;
+          }
+          case "delete_subscriber": {
+            await deleteSubscriber(subscriber);
+            logger.info("delete_subscriber", {
+              onerepProfileId,
               primarySha1,
             });
             break;
           }
           default: {
             logger.error("Unknown action:", action);
-            return NextResponse.json({ success: true }, { status: 500 });
+            return NextResponse.json({ success: false }, { status: 500 });
           }
         }
       }
     } catch (ex) {
       captureException(ex);
-      return NextResponse.json({ success: true }, { status: 500 });
+      return NextResponse.json({ success: false }, { status: 500 });
     }
 
     return NextResponse.json({ success: true }, { status: 200 });
