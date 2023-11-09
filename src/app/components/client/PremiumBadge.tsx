@@ -29,7 +29,7 @@ export type Props = {
   yearlySubscriptionUrl: string;
 };
 
-const PremiumLayout = (props: Props) => {
+export function PremiumButton(props: Props) {
   const { gtag } = useGa();
   const pathname = usePathname();
 
@@ -63,10 +63,6 @@ const PremiumLayout = (props: Props) => {
       />
     </>
   );
-};
-
-export function PremiumButton(props: Props) {
-  return <PremiumLayout {...props} />;
 }
 
 export function PremiumBadge(props: Props) {
@@ -85,7 +81,7 @@ export function PremiumBadge(props: Props) {
   }
 
   if (canSubscribeToPremium({ user, countryCode })) {
-    return <PremiumLayout {...props} />;
+    return <PremiumButton {...props} />;
   }
 
   return <></>;
