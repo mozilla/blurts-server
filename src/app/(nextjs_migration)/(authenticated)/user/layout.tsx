@@ -140,11 +140,13 @@ const MainLayout = async (props: Props) => {
             </a>
           </li>
           <li>
-            <a
-              href="https://www.mozilla.org/privacy/firefox-monitor"
-              target="_blank"
-            >
-              {l10n.getString("terms-and-privacy")}
+            <a href="https://www.mozilla.org/en-US/about/legal/terms/subscription-services/">
+              {l10n.getString("terms-of-service")}
+            </a>
+          </li>
+          <li>
+            <a href="https://www.mozilla.org/en-US/privacy/subscription-services/">
+              {l10n.getString("privacy-notice")}
             </a>
           </li>
           <li>

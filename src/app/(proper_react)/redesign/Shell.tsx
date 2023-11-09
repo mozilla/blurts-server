@@ -96,8 +96,13 @@ export const Shell = (props: Props) => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.mozilla.org/privacy/firefox-monitor">
-                    {l10n.getString("terms-and-privacy")}
+                  <a href="https://www.mozilla.org/en-US/about/legal/terms/subscription-services/">
+                    {l10n.getString("terms-of-service")}
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.mozilla.org/en-US/privacy/subscription-services/">
+                    {l10n.getString("privacy-notice")}
                   </a>
                 </li>
                 <li>
