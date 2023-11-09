@@ -56,7 +56,7 @@
     "@grpc/grpc-js": "1.9.7",
     "@leeoniya/ufuzzy": "^1.0.11",
     "@mozilla/glean": "2.0.5",
-    "@sentry/nextjs": "^7.74.1",
+    "@sentry/nextjs": "^7.77.0",
     "@sentry/node": "^7.58.1",
     "@sentry/tracing": "^7.74.1",
     "@types/jsdom": "^21.1.4",
