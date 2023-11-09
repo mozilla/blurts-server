@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Session } from "next-auth";
@@ -21,7 +21,6 @@ import ShieldIcon from "./assets/shield-icon.svg";
 import styles from "./PremiumBadge.module.scss";
 import { useGa } from "../../hooks/useGa";
 import { CountryCodeContext } from "../../../contextProviders/country-code";
-import { useSession } from "next-auth/react";
 
 export type Props = {
   label: string;
@@ -30,7 +29,7 @@ export type Props = {
   yearlySubscriptionUrl: string;
 };
 
-const PremiumLayout = (props: Props) => {
+export function PremiumButton(props: Props) {
   const { gtag } = useGa();
   const pathname = usePathname();
 
@@ -64,28 +63,13 @@ const PremiumLayout = (props: Props) => {
       />
     </>
   );
-};
-
-export function PremiumButton(props: Props) {
-  return <PremiumLayout {...props} />;
 }
 
 export function PremiumBadge(props: Props) {
   const l10n = useL10n();
   const countryCode = useContext(CountryCodeContext);
 
-  const { update } = useSession();
   const { user } = props;
-
-  useEffect(() => {
-    async function updateSession() {
-      await update();
-    }
-    void updateSession();
-
-    // This should only run once per page load - `update` will always appear to be changed.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   if (hasPremium(user)) {
     return (
@@ -97,7 +81,7 @@ export function PremiumBadge(props: Props) {
   }
 
   if (canSubscribeToPremium({ user, countryCode })) {
-    return <PremiumLayout {...props} />;
+    return <PremiumButton {...props} />;
   }
 
   return <></>;
