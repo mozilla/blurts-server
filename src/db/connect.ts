@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ConnectionOptions } from "tls";
-import initKnex, { Knex } from "knex";
+import initKnex from "knex";
 import knexConfig from "./knexfile";
 
 export interface KnexConfig {
@@ -21,8 +21,8 @@ const createDbConnection = () => {
       global[client as keyof typeof globalThis] = initKnex(config);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return global[client as keyof typeof globalThis] as Knex<any, unknown>;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return global[client as keyof typeof globalThis];
   }
   /* c8 ignore stop */
 
