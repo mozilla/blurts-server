@@ -118,7 +118,7 @@ function getLeakedPasswords({
     const leakedPasswordType =
       breachClassType === "passwords" ? "passwords" : "securityQuestions";
     return Object.values(breaches.passwordBreaches[leakedPasswordType]).find(
-      (breach) => !breach.isResolved,
+      (breach) => !breach.resolvedDataClasses.includes(resolvedDataClassName),
     );
   };
 
@@ -152,8 +152,6 @@ function getLeakedPasswords({
     breachDate: securityQuestionBreachDate,
     breachSite: securityQuestionBreachSite,
   } = getBreachInfo(unresolvedSecurityQuestionsBreach);
-
-  // const allPasswords = breaches.passwordBreaches;
 
   const leakedPasswordsData: LeakedPassword[] = [
     {
