@@ -43,8 +43,9 @@ export const DoughnutChart = (props: Props) => {
     return [label, num / sumOfFixedExposures] as const;
   });
 
-  const diameter = 100;
-  const ringWidth = 15;
+  // High values make the circle edges crisper
+  const diameter = 10_000_000;
+  const ringWidth = 1_500_000;
   const radius = (diameter - ringWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const sliceBorderWidth = 0;
