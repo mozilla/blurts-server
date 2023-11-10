@@ -5,8 +5,14 @@
 // It looks like the type definitions don't perfectly match how
 // `pg-connection-string` works, triggering a false positive for this lint rule:
 /* eslint-disable import/no-named-as-default-member */
-import pgConnectionStr from 'pg-connection-string'
+import pgConnectionStr from "pg-connection-string";
 import AppConstants from "../appConstants.js";
+
+/**
+ * @typedef {object} KnexConfig
+ * @property {string} client
+ * @property {import("pg-connection-string").ConnectionOptions} connection 
+ */
 
 const { DATABASE_URL, APP_ENV, NODE_ENV } = AppConstants;
 const connectionObj = pgConnectionStr.parse(DATABASE_URL);
@@ -28,4 +34,5 @@ const TESTS_CONFIG = {
   connection: testConnectionObj,
 };
 
+/** @returns KnexConfig */
 export default NODE_ENV === "tests" ? TESTS_CONFIG : RUNTIME_CONFIG;
