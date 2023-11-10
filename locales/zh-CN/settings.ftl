@@ -44,10 +44,10 @@ settings-cancel-premium-subscription-link-label = 取消 { -brand-fx-account } �
 settings-deactivate-account-title = 禁用账户
 # Deprecated
 settings-deactivate-account-info = 您可以通过删除您的 { -brand-fx-account } 来停用 { -product-short-name }。
-settings-deactivate-account-info-2 = 您可以通过删除 { -brand-mozilla-account } 来停用 { -product-short-name }。
+settings-deactivate-account-info-2 = 您可以通过删除 { -brand-mozilla-account }来停用 { -product-short-name }。
 # Deprecated
 settings-fxa-link-label = 转到 { -brand-firefox } 设置
-settings-fxa-link-label-3 = 前往 { -brand-mozilla-account } 设置
+settings-fxa-link-label-3 = 前往 { -brand-mozilla-account }设置
 
 ## Add email dialog
 

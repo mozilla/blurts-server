@@ -249,11 +249,7 @@ export default async function Settings() {
                 {l10n.getString("settings-deactivate-account-title")}
               </h3>
               <p className="settings-section-info">
-                {l10n.getString(
-                  enabledFlags.includes("FxaRebrand")
-                    ? "settings-deactivate-account-info-2"
-                    : "settings-deactivate-account-info",
-                )}
+                {l10n.getString("settings-deactivate-account-info-2")}
               </p>
               <a
                 className="settings-link-fxa"
@@ -261,11 +257,7 @@ export default async function Settings() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {l10n.getString(
-                  enabledFlags.includes("FxaRebrand")
-                    ? "settings-fxa-link-label-3"
-                    : "settings-fxa-link-label",
-                )}
+                {l10n.getString("settings-fxa-link-label-3")}
               </a>
             </section>
           </div>

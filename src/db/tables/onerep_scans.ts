@@ -207,6 +207,25 @@ async function getScansCountForProfile(
   );
 }
 
+async function deleteScansForProfile(onerepProfileId: number): Promise<void> {
+  await knex("onerep_scans")
+    .delete()
+    .where("onerep_profile_id", onerepProfileId);
+}
+
+async function deleteScanResultsForProfile(
+  onerepProfileId: number,
+): Promise<void> {
+  await knex("onerep_scan_results")
+    .delete()
+    .innerJoin(
+      "onerep_scans",
+      "onerep_scan_results.onerep_scan_id",
+      "onerep_scans.onerep_scan_id",
+    )
+    .where("onerep_profile_id", onerepProfileId);
+}
+
 export {
   getAllScansForProfile,
   getScanResults,
@@ -218,4 +237,6 @@ export {
   isOnerepScanResultForSubscriber,
   markOnerepScanResultAsResolved,
   getScansCountForProfile,
+  deleteScansForProfile,
+  deleteScanResultsForProfile,
 };
