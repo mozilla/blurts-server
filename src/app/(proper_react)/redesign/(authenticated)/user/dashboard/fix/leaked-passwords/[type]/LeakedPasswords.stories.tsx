@@ -17,7 +17,13 @@ const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
 // Ensure all leaked passwords data breaches are present in at least one breach:
 mockedBreaches.push(
   createRandomBreach({
-    dataClasses: [BreachDataTypes.Passwords, BreachDataTypes.SecurityQuestions],
+    dataClassesEffected: [
+      {
+        [BreachDataTypes.Passwords]: 42,
+        [BreachDataTypes.SecurityQuestions]: 42,
+      },
+    ],
+    isResolved: false,
   }),
 );
 
