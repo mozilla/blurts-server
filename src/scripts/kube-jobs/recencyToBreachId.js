@@ -10,11 +10,11 @@
  * `useBreachId: true/false`
  */
 
-import Knex from "knex";
-import knexConfig from "../../db/knexfile.js";
+import { createDbConnection } from "../connect";
 import { getAllBreachesFromDb } from "../../utils/hibp.js";
 import { getAllEmailsAndBreaches } from "../../utils/breaches.js";
-const knex = Knex(knexConfig);
+
+const knex = createDbConnection();
 
 const LIMIT = 1000; // with millions of records, we have to load a few at a time
 let subscribersArr = [];
