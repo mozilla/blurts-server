@@ -708,6 +708,8 @@ ad-unit-6-before-you-complete = Antes de concluir a próxima inscrição, utiliz
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Fundação Mozilla
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -715,12 +717,13 @@ ad-unit-6-before-you-complete = Antes de concluir a próxima inscrição, utiliz
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
+# “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Conta Firefox
+-brand-mozilla-account = Conta Mozilla
 
 ## Search Engine Optimization
 
+meta-desc-2 = Descubra se fez parte de uma violação de dados com o { -brand-fx-monitor }. Iremos ajudar a compreender o que fazer a seguir e monitorizarmos continuamente a procura de quaisquer novas violações de dados.
 
 ## Header
 
@@ -732,7 +735,7 @@ sign-in = Iniciar sessão
 site-nav-breaches-link = Resolver Violações de Dados
 site-nav-settings-link = Definições
 site-nav-help-link = Ajuda e Apoio
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Experimente as nossas outras ferramentas de segurança:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -742,9 +745,12 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Menu do utilizador
 menu-button-alt = Abrir menu do utilizador
 menu-list-accessible-label = Menu da conta
-menu-item-fxa = Gerir a sua { -brand-fx-account }
+menu-item-fxa-2 = Gerir a sua { -brand-mozilla-account }
+menu-item-fxa-alt-2 = Abrir a página da { -brand-mozilla-account }
 menu-item-settings = Definições
+menu-item-settings-alt = Abrir a página das definições
 menu-item-help = Ajuda e apoio
+menu-item-help-alt = Abrir a página de ajuda e apoio
 menu-item-logout = Terminar sessão
 
 ## Footer
@@ -769,6 +775,7 @@ error-page-error-other-copy = Por favor, tente novamente ou volte mais tarde
 ## Breach overview page
 
 all-breaches-headline-2 = Todas as falhas de segurança detetadas por { -brand-fx-monitor }
+all-breaches-lead = Monitorizamos todas as brechas de dados conhecidas para descobrir se a sua informação pessoal foi comprometida. Aqui está uma lista completa de todas as violações de dados que foram relatadas desde 2007.
 search-breaches = Procurar por violações de dados
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Dados expostos:
@@ -776,4 +783,11 @@ exposed-data = Dados expostos:
 ## Public breach detail page
 
 find-out-if-2 = Saiba se esteve envolvido nesta falha de segurança
+find-out-if-description = Iremos ajudá-lo a ver rapidamente se o seu endereço de e-mail foi exposto nesta violação de dados e a compreender o que fazer a seguir.
 breach-detail-cta-signup = Pesquisar por falhas de segurança
+
+## Floating banner
+
+floating-banner-text = Aumente a sua segurança online com notícias, dicas e atualizações da { -brand-Mozilla }.
+floating-banner-link-label = Registar
+floating-banner-dismiss-button-label = Não, obrigado
