@@ -98,7 +98,7 @@ export const ProgressCard = (props: Props) => {
           </div>
           <p>{l10n.getString("progress-card-auto-removed-headline")}</p>
         </div>
-        {!props.isPremiumUser && (
+        {props.isPremiumUser && (
           <div className={styles.progressItem}>
             <div className={styles.progressStat}>
               <Image
