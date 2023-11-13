@@ -8,7 +8,7 @@ import {
   waitForUrlOrTimeout,
 } from "../utils/helpers.js";
 
-test.describe(`${process.env.E2E_TEST_ENV} Landing Page element verification`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Landing Page element verification`, () => {
   test.beforeEach(async ({ landingPage }) => {
     await landingPage.open();
   });
@@ -51,7 +51,7 @@ test.describe(`${process.env.E2E_TEST_ENV} Landing Page element verification`, (
     await expect(landingPage.seeIfDataBreachSec).toBeVisible();
   });
 
-  test("Verify that the site footer is displayed correctly @uiregression", async ({
+  test.only("Verify that the site footer is displayed correctly @ui", async ({
     landingPage,
   }) => {
     // clear any possible banner
@@ -72,7 +72,7 @@ test.describe(`${process.env.E2E_TEST_ENV} Landing Page element verification`, (
   });
 });
 
-test.describe(`${process.env.E2E_TEST_ENV} Landing Page Functionality Verification`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Landing Page Functionality Verification`, () => {
   test("Verify landing page elements - free scan", async ({
     landingPage,
     scanPage,

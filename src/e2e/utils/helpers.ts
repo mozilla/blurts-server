@@ -56,13 +56,14 @@ export const waitForUrlOrTimeout = async (
   urlSubstring: string,
   timeout: number,
 ) => {
-  const tries = 0;
+  let tries = 0;
   const startTime = Date.now();
   while (Date.now() - startTime > timeout || tries < 10) {
     if (page.url().includes(urlSubstring)) {
       return true;
     }
 
+    tries++;
     await delay(500);
   }
 };

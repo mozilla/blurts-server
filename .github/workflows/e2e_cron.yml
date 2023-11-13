@@ -7,7 +7,7 @@ on:
       environment:
         description: 'Environment to run the e2e against'
         required: false
-        default: 'dev'
+        default: 'stage'
         type: choice
         options:
           - stage
@@ -55,7 +55,7 @@ jobs:
 
       - name: Run Playwright tests - ${{ inputs.environment != null && inputs.environment || 'stage' }}
         if: github.actor != 'dependabot[bot]'
-        run: npm run e2e:${{ inputs.type != null && inputs.type || '' }}
+        run: npm run e2e:${{ inputs.type }}
         timeout-minutes: 10
         env:
           E2E_TEST_ENV: ${{ inputs.environment != null && inputs.environment || 'stage' }}
@@ -63,6 +63,7 @@ jobs:
           E2E_TEST_ACCOUNT_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL }}
           E2E_TEST_ACCOUNT_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_PASSWORD }}
           E2E_START_LOCAL_SERVER: 'false'
+          E2E_COMMAND_SUFFIX: ${{ inputs.type }}
           ADMINS: ${{ secrets.ADMINS }}
           FXA_ENABLED: true
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}

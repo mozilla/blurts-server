@@ -6,7 +6,7 @@ import { test, expect } from "../fixtures/basePage.js";
 
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
-test.describe(`${process.env.E2E_TEST_ENV} Breaches Dashboard - Headers`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () => {
   test("Verify that the site header is displayed correctly for signed in users", async ({
     dataBreachPage,
   }) => {
@@ -49,7 +49,7 @@ test.describe(`${process.env.E2E_TEST_ENV} Breaches Dashboard - Headers`, () => 
     await page.waitForLoadState("networkidle");
     await dataBreachPage.dataBreachesNavbarProfile.click();
 
-    // verify mnanage your ff account link, settings option, help and support option, sign out option
+    // verify manage your Mozilla account link, settings option, help and support option, sign out option
     // menu is open
     expect(await dataBreachPage.profileMenuExpanded()).toBeTruthy();
 

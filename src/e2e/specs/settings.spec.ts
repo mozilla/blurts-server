@@ -47,7 +47,7 @@ test.describe(`${process.env.E2E_TEST_ENV} Settings Page`, () => {
     }).toPass();
 
     await expect(async () => {
-      // select "send asll breach alerts to the primary email address"
+      // select "send all breach alerts to the primary email address"
       await settingsPage.sendToPrimaryEmailRadioButton.click();
 
       // verify option is selected

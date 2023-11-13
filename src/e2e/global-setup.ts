@@ -38,7 +38,7 @@ async function maybeStartWebServer(): Promise<void> {
   if (process.env.E2E_START_LOCAL_SERVER === "true") {
     console.log("[e2e] - Starting the local web server...");
 
-    // define port and timeout
+    // define timeout
     const timeout = 1_800_000;
 
     // start the server
