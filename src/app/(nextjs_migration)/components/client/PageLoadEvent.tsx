@@ -21,7 +21,6 @@ type RequiredKeys = {
 };
 
 type OptionalKeys = {
-  [key: string]: string | undefined;
   referrer?: string;
   utm_campaign?: string;
   utm_content?: string;
