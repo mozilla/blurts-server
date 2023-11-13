@@ -88,7 +88,7 @@
         @media screen and (min-width: $screen-sm) {
           content: "";
           position: absolute;
-          left: -20px;
+          left: -($layout-xs);
           top: 0;
           bottom: 0;
           width: 1px;
