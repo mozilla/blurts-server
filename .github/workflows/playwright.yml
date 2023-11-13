@@ -74,6 +74,7 @@ jobs:
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
           NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+          E2E_START_LOCAL_SERVER: 'true'
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/blurts
           HIBP_KANON_API_TOKEN: ${{ secrets.HIBP_KANON_API_TOKEN }}
           HIBP_API_TOKEN: ${{ secrets.HIBP_API_TOKEN }}
