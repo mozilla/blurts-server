@@ -47,7 +47,7 @@ async function maybeStartWebServer(): Promise<void> {
     // wait for the server to start with a timeout
     await new Promise<void>((resolve, reject) => {
       localWebServerProcess.stdout?.on("data", (data) => {
-        if (data.includes("server is running")) {
+        if (data.includes("Ready in")) {
           resolve();
         }
       });
