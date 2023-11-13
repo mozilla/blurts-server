@@ -84,7 +84,7 @@ exposure-card-company = Company domain
 exposure-card-exposure-type = Exposure type
 exposure-card-date-found = Date of the exposure
 
-progress-card-heres-what-we-fixed-headline = Here's what we fixed
+progress-card-heres-what-we-fixed-headline = Here’s what we fixed
 progress-card-resolved-by-you-headline = Resolved by you
 progress-card-auto-removed-headline = Auto-removed
 progress-card-in-progress-headline = In progress
