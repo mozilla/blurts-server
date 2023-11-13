@@ -336,16 +336,11 @@ export async function isEligibleForFreeScan(
 }
 
 export function isEligibleForPremium(
-  user: Session["user"],
   countryCode: string,
   enabledFlags: FeatureFlagName[],
 ) {
   if (countryCode !== "us") {
     return false;
-  }
-
-  if (!user?.subscriber?.id) {
-    throw new Error("No session");
   }
 
   if (!enabledFlags.includes("PremiumBrokerRemoval")) {

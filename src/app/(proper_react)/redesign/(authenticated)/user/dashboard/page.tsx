@@ -84,7 +84,6 @@ export default async function DashboardPage() {
     email: session.user.email,
   });
   const userIsEligibleForPremium = isEligibleForPremium(
-    session.user,
     countryCode,
     enabledFlags,
   );
