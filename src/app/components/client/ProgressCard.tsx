@@ -15,6 +15,7 @@ import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
 import ExploringLaptopPlus from "./assets/exploring-laptop-check.svg";
 import ExploringLaptopMinus from "./assets/exploring-laptop-minus.svg";
+import ExploringLaptopInProgress from "./assets/exploring-laptop-in-progress.svg";
 import { QuestionMarkCircle } from "../server/Icons";
 import ModalImage from "../client/assets/modal-default-img.svg";
 
@@ -92,7 +93,12 @@ export const ProgressCard = (props: Props) => {
         </div>
         <div className={styles.progressItem}>
           <div className={styles.progressStat}>
-            <Image src={ExploringLaptopMinus} alt="" width="50" height="50" />
+            <Image
+              src={ExploringLaptopInProgress}
+              alt=""
+              width="50"
+              height="50"
+            />
             <span>{props.autoRemoved}</span>
           </div>
           <p>{l10n.getString("progress-card-auto-removed-headline")}</p>
