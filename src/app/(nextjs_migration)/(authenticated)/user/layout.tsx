@@ -141,7 +141,7 @@ const MainLayout = async (props: Props) => {
           </li>
           <li>
             <a
-              href="https://www.mozilla.org/en-US/about/legal/terms/subscription-services/"
+              href="https://www.mozilla.org/about/legal/terms/subscription-services/"
               target="_blank"
             >
               {l10n.getString("terms-of-service")}
@@ -149,7 +149,7 @@ const MainLayout = async (props: Props) => {
           </li>
           <li>
             <a
-              href="https://www.mozilla.org/en-US/privacy/subscription-services/"
+              href="https://www.mozilla.org/privacy/subscription-services/"
               target="_blank"
             >
               {l10n.getString("privacy-notice")}
