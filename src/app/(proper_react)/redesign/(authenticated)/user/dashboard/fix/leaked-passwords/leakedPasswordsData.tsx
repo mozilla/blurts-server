@@ -153,7 +153,7 @@ function getLeakedPasswords({
     breachSite: securityQuestionBreachSite,
   } = getBreachInfo(unresolvedSecurityQuestionsBreach);
 
-  const leakedPasswordsData: LeakedPassword[] = [
+  const leakedPasswordsData: LeakedPasswordsLayout[] = [
     {
       type: "passwords",
       title: l10n.getString("leaked-passwords-title", {
@@ -245,11 +245,11 @@ function getLeakedPasswords({
     },
   ];
 
-  const firstLeakedPaswordsData = leakedPasswordsData.find(
+  const unresolvedPasswordBreachContent = leakedPasswordsData.find(
     (content) => content.type === dataType,
   );
 
-  return { firstLeakedPaswordsData, leakedPasswordsData };
+  return { unresolvedPasswordBreachContent, unresolvedPasswordBreach };
 }
 
 export { getLeakedPasswords };

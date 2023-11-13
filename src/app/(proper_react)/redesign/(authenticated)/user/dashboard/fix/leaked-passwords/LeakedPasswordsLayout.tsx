@@ -54,6 +54,26 @@ async function updateBreachStatus(
   }
 }
 
+// async function refetchBreachStatus() {
+//   console.log("this function ran");
+//   try {
+//     const res = await fetch("/api/v1/user/breaches", {
+//       method: "GET"
+//     });
+
+//     if (!res.ok) {
+//       throw new Error("Bad fetch response");
+//     }
+
+//     const updatedData = await res.json(); // Extract the data from the response
+
+//   }
+//     catch (e) {
+//       console.error("Could not get user breach resolve status:", e)
+//     }
+
+// }
+
 export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   const l10n = useL10n();
 
@@ -65,8 +85,14 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     none: "LeakedPasswordsSecurityQuestion",
   };
 
-  const guidedExperienceBreaches = getGuidedExperienceBreaches(
+  // This will be always the initial props passed from the page.
+  // They were fetched from the db.
+  const [subscriberBreaches, setSubscriberBreaches] = useState(
     props.data.subscriberBreaches,
+  );
+
+  const guidedExperienceBreaches = getGuidedExperienceBreaches(
+    subscriberBreaches,
     props.subscriberEmails,
   );
 
@@ -123,7 +149,10 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         isStepDone={isStepDone}
         data={props.data}
       >
-        <ResolutionContent content={content} locale={getLocale(l10n)} />
+        <ResolutionContent
+          content={unresolvedPasswordBreachContent.content}
+          locale={getLocale(l10n)}
+        />
       </ResolutionContainer>
     </FixView>
   );
