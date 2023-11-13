@@ -105,7 +105,7 @@ const MainLayout = async (props: Props) => {
             </button>
             <UserMenu
               session={session}
-              fxaSettingsUrl={AppConstants.NEXT_PUBLIC_FXA_SETTINGS_URL}
+              fxaSettingsUrl={AppConstants.FXA_SETTINGS_URL}
               nonce={getNonce()}
               enabledFeatureFlags={enabledFeatureFlags}
             />

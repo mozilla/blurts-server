@@ -25,6 +25,7 @@ career-levels = Níveis de carreira
 cellular-network-names = Nomes de redes celulares
 charitable-donations = Doações de caridade
 chat-logs = Registos de conversas
+clothing-sizes = Tamanhos de t-shirt
 credit-card-cvv = CVV do cartão de crédito
 credit-cards = Cartões de crédito
 credit-status-information = Informação do estado de crédito
@@ -34,6 +35,9 @@ customer-interactions = Interações com clientes
 dates-of-birth = Datas de nascimento
 deceased-date = Data de falecimento
 deceased-statuses = Estados de falecimento
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Instruções de entrega
 device-information = Informação de dispositivo
 device-serial-numbers = Números de série dos dispositivos
 device-usage-tracking-data = Dados de monitorização de utilização de dispositivos
@@ -74,6 +78,8 @@ job-titles = Títulos de trabalho
 # This string refers to vehicle license plates. 
 licence-plates = Matrículas
 living-costs = Custos de vida
+# This string refers to financial loans.
+loan-information = Informação de empréstimo
 login-histories = Histórias de autenticação
 mac-addresses = Endereços MAC
 marital-statuses = Estados conjugais
@@ -84,10 +90,15 @@ names = Nomes
 nationalities = Nacionalidades
 net-worths = Património líquido
 nicknames = Alcunhas
+# no data classes found
+none-data-class = Nenhum
 occupations = Ocupações
+# various data classes grouped together
+other-data-class = Outro
 parenting-plans = Planos de parentalidade
 partial-credit-card-data = Dados parciais de cartões de crédito
 partial-dates-of-birth = Datas parciais de nascimento
+partial-phone-numbers = Números de telefone parciais
 passport-numbers = Números de passaporte
 password-hints = Dicas de palavras-passe
 password-strengths = Força da palavra-passe:
@@ -137,6 +148,7 @@ user-website-urls = URLs de websites de utilizador
 usernames = Nomes de utilizador
 utility-bills = Contas de serviços públicos
 vehicle-details = Detalhes de veículos
+vehicle-identification-numbers-vins = Números de identificação de veículos (VINs)
 website-activity = Atividade de websites
 work-habits = Hábitos de trabalho
 years-of-birth = Anos de nascimento
