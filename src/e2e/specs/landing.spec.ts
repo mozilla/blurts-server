@@ -51,7 +51,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Landing Page element verification`,
     await expect(landingPage.seeIfDataBreachSec).toBeVisible();
   });
 
-  test.only("Verify that the site footer is displayed correctly @ui", async ({
+  test("Verify that the site footer is displayed correctly @ui", async ({
     landingPage,
   }) => {
     // clear any possible banner

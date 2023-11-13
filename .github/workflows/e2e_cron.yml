@@ -62,7 +62,6 @@ jobs:
           E2E_TEST_BASE_URL: ${{ secrets.E2E_TEST_BASE_URL }}
           E2E_TEST_ACCOUNT_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL }}
           E2E_TEST_ACCOUNT_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_PASSWORD }}
-          E2E_START_LOCAL_SERVER: 'false'
           E2E_COMMAND_SUFFIX: ${{ inputs.type }}
           ADMINS: ${{ secrets.ADMINS }}
           FXA_ENABLED: true
