@@ -6,8 +6,12 @@ import { setEnvVariables } from "./utils/helpers";
 import { AuthPage } from "./pages/authPage.js";
 import { LandingPage } from "./pages/landingPage.js";
 import { chromium } from "@playwright/test";
+import { exec } from "child_process";
 
 async function globalSetup() {
+  // start local web server if appropriate env variable supplied
+  await maybeStartWebServer();
+
   // playwright setup
   const browser = await chromium.launch();
   const page = await browser.newPage();
@@ -28,6 +32,37 @@ async function globalSetup() {
   // // // create reuseable state json
   await page.context().storageState({ path: "./e2e/storageState.json" });
   await browser.close();
+}
+
+async function maybeStartWebServer(): Promise<void> {
+  if (process.env.E2E_START_LOCAL_SERVER === "true") {
+    console.log("[e2e] - Starting the local web server...");
+
+    // define port and timeout
+    const timeout = 1_800_000;
+
+    // start the server
+    const localWebServerProcess = exec("npm run build; npm start");
+
+    // wait for the server to start with a timeout
+    await new Promise<void>((resolve, reject) => {
+      localWebServerProcess.stdout?.on("data", (data) => {
+        if (data.includes("server is running")) {
+          resolve();
+        }
+      });
+
+      setTimeout(() => {
+        reject(
+          new Error(
+            "Local Web Server did not start within the specified timeout",
+          ),
+        );
+      }, timeout);
+    });
+  } else {
+    console.log("[e2e] - Skipping local web server start...");
+  }
 }
 
 export default globalSetup;

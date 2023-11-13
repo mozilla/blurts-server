@@ -45,6 +45,28 @@ export const getBaseUrl = () => {
   return ENV_URLS[process.env.E2E_TEST_ENV as ENV] || ENV_URLS.local;
 };
 
+export const delay = async (time: number) => {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, time);
+  });
+};
+
+export const waitForUrlOrTimeout = async (
+  page: Page,
+  urlSubstring: string,
+  timeout: number,
+) => {
+  const tries = 0;
+  const startTime = Date.now();
+  while (Date.now() - startTime > timeout || tries < 10) {
+    if (page.url().includes(urlSubstring)) {
+      return true;
+    }
+
+    await delay(500);
+  }
+};
+
 export const getVerificationCode = async (
   testEmail: string,
   page: Page,

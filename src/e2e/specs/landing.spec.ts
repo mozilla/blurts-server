@@ -3,9 +3,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { test, expect } from "../fixtures/basePage.js";
-import { defaultScreenshotOpts } from "../utils/helpers.js";
+import {
+  defaultScreenshotOpts,
+  waitForUrlOrTimeout,
+} from "../utils/helpers.js";
 
-test.describe("Landing Page element verification", () => {
+test.describe(`${process.env.E2E_TEST_ENV} Landing Page element verification`, () => {
   test.beforeEach(async ({ landingPage }) => {
     await landingPage.open();
   });
@@ -23,33 +26,29 @@ test.describe("Landing Page element verification", () => {
     const links = landingPage.links();
 
     // verify the actual hrefs in the footer matches expected
-    await expect(async () => {
-      expect(await landingPage.MozillaFooterLogoLink.getAttribute("href")).toBe(
-        links.mozillaLogoUrl,
-      );
-      expect(await landingPage.AllBreachesLink.getAttribute("href")).toContain(
-        links.allBreachesUrl,
-      );
-      expect(await landingPage.FAQLink.getAttribute("href")).toContain(
-        links.FAQUrl,
-      );
-      expect(await landingPage.TermsLink.getAttribute("href")).toContain(
-        links.TermsUrl,
-      );
-      expect(await landingPage.GithubLink.getAttribute("href")).toBe(
-        links.GithubUrl,
-      );
-    }).toPass();
+    expect(await landingPage.MozillaFooterLogoLink.getAttribute("href")).toBe(
+      links.mozillaLogoUrl,
+    );
+    expect(await landingPage.AllBreachesLink.getAttribute("href")).toContain(
+      links.allBreachesUrl,
+    );
+    expect(await landingPage.FAQLink.getAttribute("href")).toContain(
+      links.FAQUrl,
+    );
+    expect(await landingPage.TermsLink.getAttribute("href")).toContain(
+      links.TermsUrl,
+    );
+    expect(await landingPage.GithubLink.getAttribute("href")).toBe(
+      links.GithubUrl,
+    );
   });
 
   test("Verify landing page elements", async ({ landingPage }) => {
     // confirm landing page elements are visible
-    await expect(async () => {
-      await expect(landingPage.whyUseMonitorSec).toBeVisible();
-      await expect(landingPage.howItWorksSec).toBeVisible();
-      await expect(landingPage.questionsAboutSec).toBeVisible();
-      await expect(landingPage.seeIfDataBreachSec).toBeVisible();
-    }).toPass();
+    await expect(landingPage.whyUseMonitorSec).toBeVisible();
+    await expect(landingPage.howItWorksSec).toBeVisible();
+    await expect(landingPage.questionsAboutSec).toBeVisible();
+    await expect(landingPage.seeIfDataBreachSec).toBeVisible();
   });
 
   test("Verify that the site footer is displayed correctly @uiregression", async ({
@@ -73,11 +72,7 @@ test.describe("Landing Page element verification", () => {
   });
 });
 
-test.describe("Landing Page Functionality Verification", () => {
-  test.beforeEach(async ({ landingPage }) => {
-    await landingPage.open();
-  });
-
+test.describe(`${process.env.E2E_TEST_ENV} Landing Page Functionality Verification`, () => {
   test("Verify landing page elements - free scan", async ({
     landingPage,
     scanPage,
@@ -90,30 +85,19 @@ test.describe("Landing Page Functionality Verification", () => {
         "https://testrail.stage.mozaws.net/index.php?/cases/view/2255913",
     });
 
-    // Intercept request and fulfill return
-    await page.route("**/api/v1/scan/", async (route) => {
-      await route.fulfill({
-        status: 200,
-        body: JSON.stringify({
-          success: true,
-          breaches: [],
-          total: 0,
-          heading:
-            'We found (mocked) <span class="breach-result-email"></span> exposed in <span class="breach-result-count"></span> data breaches.',
-          dataClassStrings: [],
-          logos: [],
-        }),
-      });
+    await page.goto(process.env.E2E_TEST_BASE_URL as string, {
+      waitUntil: "networkidle",
     });
 
     // generate email
     const randomEmail = `${Date.now()}_auto@restmail.net`;
 
-    // await page.pause()
+    // enter email for free scan
     await landingPage.enterScanEmail(randomEmail);
 
-    // verify scan page items
-    await expect(async () => {
+    const freeScanRedirect = await waitForUrlOrTimeout(page, "/scan", 5000);
+    if (freeScanRedirect) {
+      // verify scan page items
       // verify hero header text content
       expect(await scanPage.heroHeader.textContent()).toContain("We found");
       expect(await scanPage.heroHeader.textContent()).toContain(randomEmail);
@@ -124,7 +108,7 @@ test.describe("Landing Page Functionality Verification", () => {
       // verify second CTA button
       await expect(scanPage.signUpForAlerts).toBeVisible();
 
-      // verify redirect to sign in("/user/breaches")
+      // verify redirect to sign in('/user/breaches')
       expect(await scanPage.signUpForAlerts.getAttribute("href")).toBe(
         "/user/breaches",
       );
@@ -132,10 +116,15 @@ test.describe("Landing Page Functionality Verification", () => {
         await scanPage.getAlertsAboutBreachesButton.getAttribute("href"),
       ).toBe("/user/breaches");
 
-      // verify "have i been pwned" website redirect
+      // verify 'have i been pwned' website redirect
       expect(await scanPage.haveIBeenPwnedLink.getAttribute("href")).toBe(
         "https://haveibeenpwned.com/",
       );
-    }).toPass();
+    } else {
+      console.log(
+        "[e2e] - Timeout reached without being redirect to the free scan results page",
+      );
+      expect(page.url().includes("/scan")).toBeTruthy();
+    }
   });
 });

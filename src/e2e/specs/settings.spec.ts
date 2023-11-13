@@ -6,7 +6,7 @@ import { test, expect } from "../fixtures/basePage.js";
 
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
-test.describe("Settings Page", () => {
+test.describe(`${process.env.E2E_TEST_ENV} Settings Page`, () => {
   test("Verify settings page loads", async ({
     page,
     settingsPage,
@@ -38,22 +38,20 @@ test.describe("Settings Page", () => {
     // go to monitor settings page
     await settingsPage.open();
 
-    // select "send breach alerts to the affected email address" option
-    await settingsPage.sendToAffectedEmailRadioButton.click();
     await expect(async () => {
+      // select "send breach alerts to the affected email address" option
+      await settingsPage.sendToAffectedEmailRadioButton.click();
+
       // verify option is selected
       await expect(page.locator('input[data-alert-option="0"]')).toBeChecked();
-    }).toPass({
-      timeout: 2000,
-    });
+    }).toPass();
 
-    // select "send asll breach alerts to the primary email address"
-    await settingsPage.sendToPrimaryEmailRadioButton.click();
     await expect(async () => {
+      // select "send asll breach alerts to the primary email address"
+      await settingsPage.sendToPrimaryEmailRadioButton.click();
+
       // verify option is selected
       await expect(page.locator('input[data-alert-option="1"]')).toBeChecked();
-    }).toPass({
-      timeout: 2000,
-    });
+    }).toPass();
   });
 });

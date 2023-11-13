@@ -8,7 +8,7 @@ import { checkAuthState } from "../utils/helpers.js";
 
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
-test.describe("Breaches Dashboard - Headers", () => {
+test.describe(`${process.env.E2E_TEST_ENV} Breaches Dashboard - Headers`, () => {
   test.beforeEach(async ({ dashboardPage, page }) => {
     await dashboardPage.open();
 
@@ -61,7 +61,7 @@ test.describe("Breaches Dashboard - Headers", () => {
   });
 });
 
-test.describe("Breaches Dashboard - Headers - Outside of U.S.", () => {
+test.describe(`${process.env.E2E_TEST_ENV} Breaches Dashboard - Headers - Outside of U.S.`, () => {
   test("Verify that the site header and navigation bar is displayed correctly", async ({
     context,
   }) => {
