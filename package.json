@@ -46,8 +46,8 @@
     "npm": "9.6.5"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.438.0",
-    "@aws-sdk/lib-storage": "^3.438.0",
+    "@aws-sdk/client-s3": "^3.449.0",
+    "@aws-sdk/lib-storage": "^3.449.0",
     "@fluent/bundle": "^0.18.0",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
