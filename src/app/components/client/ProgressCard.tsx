@@ -93,20 +93,20 @@ export const ProgressCard = (props: Props) => {
         </div>
         <div className={styles.progressItem}>
           <div className={styles.progressStat}>
-            <Image
-              src={ExploringLaptopInProgress}
-              alt=""
-              width="50"
-              height="50"
-            />
+            <Image src={ExploringLaptopMinus} alt="" width="50" height="50" />
             <span>{props.autoRemoved}</span>
           </div>
           <p>{l10n.getString("progress-card-auto-removed-headline")}</p>
         </div>
-        {props.isPremiumUser && (
+        {!props.isPremiumUser && (
           <div className={styles.progressItem}>
             <div className={styles.progressStat}>
-              <Image src={ExploringLaptopMinus} alt="" width="50" height="50" />
+              <Image
+                src={ExploringLaptopInProgress}
+                alt=""
+                width="50"
+                height="50"
+              />
               <span>{props.inProgress}</span>
             </div>
             <p>{l10n.getString("progress-card-in-progress-headline")}</p>
