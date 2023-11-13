@@ -48,24 +48,19 @@ test.describe("Breaches Dashboard - Headers", () => {
     });
 
     // verify the navigation bar left side elements
-    await expect(async () => {
-      expect(
-        await dashboardPage.fireFoxMonitorLogoImgButton.isVisible(),
-      ).toBeTruthy();
-      expect(await dashboardPage.dashboardNavButton.isVisible()).toBeTruthy();
-      expect(await dashboardPage.exposuresHeading.isVisible()).toBeTruthy();
-      expect(await dashboardPage.FAQsNavButton.isVisible()).toBeTruthy();
-    }).toPass();
+    expect(
+      await dashboardPage.fireFoxMonitorLogoImgButton.isVisible(),
+    ).toBeTruthy();
+    expect(await dashboardPage.dashboardNavButton.isVisible()).toBeTruthy();
+    expect(await dashboardPage.exposuresHeading.isVisible()).toBeTruthy();
+    expect(await dashboardPage.FAQsNavButton.isVisible()).toBeTruthy();
 
     // verify the site header elements
-    await expect(async () => {
-      expect(await dashboardPage.actionNeededTab.isVisible()).toBeTruthy();
-      expect(await dashboardPage.fixedTab.isVisible()).toBeTruthy();
-    }).toPass();
+    expect(await dashboardPage.actionNeededTab.isVisible()).toBeTruthy();
+    expect(await dashboardPage.fixedTab.isVisible()).toBeTruthy();
   });
 });
 
-test.use({ storageState: "./e2e/storageState.json" });
 test.describe("Breaches Dashboard - Headers - Outside of U.S.", () => {
   test("Verify that the site header and navigation bar is displayed correctly", async ({
     context,
@@ -77,7 +72,7 @@ test.describe("Breaches Dashboard - Headers - Outside of U.S.", () => {
         "https://testrail.stage.mozaws.net/index.php?/cases/view/2301511",
     });
 
-    const page = await context.newPage(); // Set location to Edinburgh
+    const page = await context.newPage();
     await context.grantPermissions(["geolocation"]);
     await context.setGeolocation({ latitude: 55.9533, longitude: -3.1883 }); // Set location to Edinburgh
 
@@ -91,8 +86,6 @@ test.describe("Breaches Dashboard - Headers - Outside of U.S.", () => {
     }
 
     // verify the site header elements
-    await expect(async () => {
-      expect(await dashboardPage.upgradeToPremium.isHidden()).toBeTruthy();
-    }).toPass();
+    expect(await dashboardPage.upgradeToPremium.isHidden()).toBeTruthy();
   });
 });
