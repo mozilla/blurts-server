@@ -9,7 +9,7 @@
 import * as Sentry from "@sentry/nextjs";
 
 Sentry.init({
-  environment: process.env.NEXT_PUBLIC_APP_ENV,
+  environment: getEnvironment(),
   dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
 
   // Adjust this value in production, or use tracesSampler for greater control
@@ -23,7 +23,7 @@ Sentry.init({
   // This sets the sample rate to be 10%. You may want this to be 100% while
   // in development and sample at a lower rate in production
   replaysSessionSampleRate: ["development", "heroku"].includes(
-    process.env.NODE_ENV
+    process.env.NODE_ENV,
   )
     ? 1.0
     : 0.1,
@@ -37,3 +37,34 @@ Sentry.init({
     }),
   ],
 });
+
+/**
+ * We use the same built artifacts in every environment. Since client-side
+ * environment variables get compiled in at build time, the only environment
+ * variables that are available are the ones that are available on the build
+ * server, which therefore do not necessarily represent the environment the code
+ * will eventually run in. Therefore, we have to dynamically determine the
+ * environment at runtime, which is what this function does.
+ */
+function getEnvironment() {
+  if (
+    document.location.origin === "https://monitor.firefox.com" ||
+    document.location.origin === "https://monitor.mozilla.com"
+  ) {
+    return "production";
+  }
+  if (
+    document.location.origin ===
+    "https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net"
+  ) {
+    return "stage";
+  }
+  if (document.location.origin === "https://fx-breach-alerts.herokuapp.com") {
+    return "heroku";
+  }
+  if (document.location.hostname === "localhost") {
+    return "local";
+  }
+
+  return "unknown";
+}

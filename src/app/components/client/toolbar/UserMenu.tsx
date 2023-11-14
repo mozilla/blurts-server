@@ -76,7 +76,7 @@ export const UserMenu = (props: UserMenuProps) => {
         <b>{props.user.email}</b>
         <a
           className={styles.menuItemCta}
-          href={process.env.NEXT_PUBLIC_FXA_SETTINGS_URL}
+          href={process.env.FXA_SETTINGS_URL}
           ref={fxaItemRef}
           rel="noopener noreferrer"
           target="_blank"
@@ -105,7 +105,7 @@ export const UserMenu = (props: UserMenuProps) => {
       >
         <a
           className={styles.menuItemCta}
-          href={process.env.NEXT_PUBLIC_EXTERNAL_SUPPORT_URL}
+          href={process.env.NEXT_PUBLIC_MONITOR_SUPPORT_URL}
           ref={helpItemRef}
           rel="noopener noreferrer"
           target="_blank"
