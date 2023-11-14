@@ -77,6 +77,8 @@ export async function poll(subClient, receivedMessages) {
     subscriptionName,
   );
 
+  const breaches = await getAllBreachesFromDb();
+
   // Process the messages. Skip any that cannot be processed, and do not mark as acknowledged.
   for (const message of receivedMessages) {
     console.log(`Received message: ${message.message.data}`);
@@ -90,8 +92,6 @@ export async function poll(subClient, receivedMessages) {
     }
 
     const { breachName, hashPrefix, hashSuffixes } = data;
-
-    const breaches = await getAllBreachesFromDb();
     const breachAlert = getBreachByName(breaches, breachName);
 
     const {
