@@ -59,6 +59,11 @@ breaches-all-resolved-headline = Todas as violações resolvidas
 breaches-all-resolved-copy = Boa! Resolveu todas as violações de dados para { $email }. Iremos continuar a monitorizar este e-mail e iremos informá-lo se ocorrerem novas violações de dados.
 breaches-all-resolved-cta-blurb = Gostaria de monitorizar outro e-mail?
 breaches-all-resolved-cta-button = Adicionar endereço de e-mail
+# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
+breach-description = A { $breachDate }, { $companyName } foi comprometido. Assim que a violação de dados foi descoberta e confirmada, foi adicionada à nossa base de dados a { $addedDate }. Esta violação de dados incluiu: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
