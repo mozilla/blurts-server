@@ -180,9 +180,11 @@ function getLeakedPasswords({
                         rel="noopener noreferrer"
                       />
                     ),
+                    b: <strong />,
                   },
                   vars: {
                     breach_name: passwordBreachName,
+                    email_affected: emailAffected,
                   },
                 })}
               </li>

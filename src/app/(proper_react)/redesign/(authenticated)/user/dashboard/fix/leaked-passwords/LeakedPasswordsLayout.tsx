@@ -54,26 +54,6 @@ async function updateBreachStatus(
   }
 }
 
-// async function refetchBreachStatus() {
-//   console.log("this function ran");
-//   try {
-//     const res = await fetch("/api/v1/user/breaches", {
-//       method: "GET"
-//     });
-
-//     if (!res.ok) {
-//       throw new Error("Bad fetch response");
-//     }
-
-//     const updatedData = await res.json(); // Extract the data from the response
-
-//   }
-//     catch (e) {
-//       console.error("Could not get user breach resolve status:", e)
-//     }
-
-// }
-
 export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   const l10n = useL10n();
 
@@ -90,7 +70,6 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   const [subscriberBreaches, setSubscriberBreaches] = useState(
     props.data.subscriberBreaches,
   );
-
   const guidedExperienceBreaches = getGuidedExperienceBreaches(
     subscriberBreaches,
     props.subscriberEmails,
