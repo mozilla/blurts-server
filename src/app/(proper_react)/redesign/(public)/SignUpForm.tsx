@@ -25,6 +25,9 @@ export const SignUpForm = (props: Props) => {
     void signIn(
       "fxa",
       { callbackUrl: props.signUpCallbackUrl },
+      // This passes an `?email=` query parameter to FxA, causing it to prefill
+      // the email address in the sign-up form. See
+      // https://mozilla.github.io/ecosystem-platform/relying-parties/reference/query-parameters#email
       { email: emailInput },
     );
   };
