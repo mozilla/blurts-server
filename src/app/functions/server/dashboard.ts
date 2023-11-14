@@ -393,7 +393,7 @@ export function getDashboardSummary(
     {} as Exposures,
   );
 
-  // count fixed and in-progress exposures
+  // count fixed, in-progress, and manually resolved (data brokers) exposures
   summary.inProgressFixedExposures = Object.keys(summary.fixedExposures).reduce(
     (a, k) => {
       a[k as keyof Exposures] =
