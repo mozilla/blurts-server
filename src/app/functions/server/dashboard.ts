@@ -209,7 +209,8 @@ export function getDashboardSummary(
     scannedResults.forEach((r) => {
       // check removal status
       const isManuallyResolved = r.manually_resolved;
-      const isFixed = r.status === RemovalStatusMap.Removed;
+      const isFixed =
+        r.status === RemovalStatusMap.Removed && !isManuallyResolved;
       const isInProgress =
         (r.status === RemovalStatusMap.OptOutInProgress ||
           r.status === RemovalStatusMap.WaitingForVerification) &&
