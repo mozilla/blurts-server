@@ -723,7 +723,7 @@ ad-unit-6-before-you-complete = Antes de concluir a próxima inscrição, utiliz
 
 ## Search Engine Optimization
 
-meta-desc-2 = Descubra se fez parte de uma violação de dados com o { -brand-fx-monitor }. Iremos ajudar a compreender o que fazer a seguir e monitorizarmos continuamente a procura de quaisquer novas violações de dados.
+meta-desc-2 = Descubra se fez parte de uma violação de dados com o { -brand-fx-monitor }. Iremos ajudar a compreender o que fazer a seguir e mantemos uma monitorização contínua à procura de quaisquer novas violações de dados.
 
 ## Header
 
