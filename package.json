@@ -18,7 +18,7 @@
     "e2e:debug": "playwright test src/e2e/ --ui",
     "e2e:smoke": "playwright test src/e2e/ --grep @smoke",
     "e2e:ui": "playwright test src/e2e/ --grep @ui",
-    "e2e:all": "playwright test src/e2e/ --grep ''",
+    "e2e:all": "playwright test src/e2e/",
     "db:migrate": "node -r dotenv/config node_modules/knex/bin/cli.js migrate:latest --knexfile src/db/knexfile.js",
     "db:rollback": "node -r dotenv/config node_modules/knex/bin/cli.js migrate:rollback --knexfile src/db/knexfile.js",
     "prepare": "husky install",
