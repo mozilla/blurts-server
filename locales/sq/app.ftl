@@ -664,16 +664,13 @@ ad-unit-6-before-you-complete = Para se të plotësoni regjistrimin tuaj të rad
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account = Llogari Firefox
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Llogari Mozilla
 
 ## Search Engine Optimization
 
+meta-desc-2 = Shihni nëse keni qenë pjesë e një cenimi të dhënash, me { -brand-fx-monitor }. Do t’ju ndihmojmë të kuptoni ç’të bëhet në vazhdim dhe të mbikëqyrni vazhdimisht për çfarëdo cenimesh.
 
 ## Header
 
@@ -695,11 +692,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Menu përdoruesi
 menu-button-alt = Hap menu përdoruesi
 menu-list-accessible-label = Menu llogarish
-# Deprecated
-menu-item-fxa = Administroni { -brand-fx-account } tuaj
 menu-item-fxa-2 = Administroni { -brand-mozilla-account } tuaj
-# Deprecated
-menu-item-fxa-alt = Hapni faqe { -brand-fx-account }
 menu-item-fxa-alt-2 = Hapni faqe { -brand-mozilla-account }
 menu-item-settings = Rregullime
 menu-item-settings-alt = Hap faqen e rregullimeve
