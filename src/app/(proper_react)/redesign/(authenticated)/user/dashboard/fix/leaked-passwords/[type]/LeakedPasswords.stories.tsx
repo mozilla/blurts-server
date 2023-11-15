@@ -12,6 +12,7 @@ import { getEnL10nSync } from "../../../../../../../../functions/server/mockL10n
 import { LeakedPasswordsLayout } from "../LeakedPasswordsLayout";
 import { LeakedPasswordsTypes } from "../leakedPasswordsData";
 import { BreachDataTypes } from "../../../../../../../../functions/universal/breach";
+import { HighRiskBreachDoneTypes } from "../../high-risk-data-breaches/highRiskBreachData";
 
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
 // Ensure all leaked passwords data breaches are present in at least one breach:
@@ -34,7 +35,10 @@ const mockedSession = {
   user: user,
 };
 
-const LeakedPasswordsWrapper = (props: { type: LeakedPasswordsTypes }) => {
+const LeakedPasswordsWrapper = (props: {
+  type: LeakedPasswordsTypes;
+  nextStep: HighRiskBreachDoneTypes;
+}) => {
   return (
     <Shell
       l10n={getEnL10nSync()}
@@ -52,6 +56,7 @@ const LeakedPasswordsWrapper = (props: { type: LeakedPasswordsTypes }) => {
           subscriberBreaches: mockedBreaches,
           user: mockedSession.user,
         }}
+        nextStep={props.nextStep}
       />
     </Shell>
   );
@@ -71,10 +76,27 @@ export const PasswordsStory: Story = {
   },
 };
 
-export const PasswordsDoneStory: Story = {
-  name: "3b. Passwords done",
+export const PasswordsDoneSecurityQuestionsNextStory: Story = {
+  name: "3b I. Done (Next step: Security questions)",
   args: {
     type: "passwords-done",
+    nextStep: "security-questions",
+  },
+};
+
+export const PasswordsDoneSecurityTipsNextStory: Story = {
+  name: "3b II. Done (Next step: Security tips)",
+  args: {
+    type: "passwords-done",
+    nextStep: "security-tips",
+  },
+};
+
+export const PasswordsDoneNoNextStepStory: Story = {
+  name: "3b III. Done (Next step: None)",
+  args: {
+    type: "security-questions-done",
+    nextStep: "none",
   },
 };
 
@@ -85,9 +107,18 @@ export const SecurityQuestionsStory: Story = {
   },
 };
 
-export const SecurityQuestionsDoneStory: Story = {
-  name: "3d. Security questions done",
+export const SecurityQuestionsDoneSecurityTipsNextStory: Story = {
+  name: "3d I. Done (Next step: Security tips)",
   args: {
     type: "security-questions-done",
+    nextStep: "security-tips",
+  },
+};
+
+export const SecurityQuestionsDoneNoNextStepStory: Story = {
+  name: "3d II. Done (Next step: None)",
+  args: {
+    type: "security-questions-done",
+    nextStep: "none",
   },
 };

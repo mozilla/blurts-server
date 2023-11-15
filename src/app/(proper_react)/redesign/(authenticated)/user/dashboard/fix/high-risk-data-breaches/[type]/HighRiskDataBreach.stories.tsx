@@ -131,36 +131,32 @@ export const PinStory: Story = {
   },
 };
 
-// Passwords next
 export const HighRiskBreachDonePasswordsNextStory: Story = {
-  name: "2e. Done (Passwords next)",
+  name: "2e I. Done (Next step: Passwords)",
   args: {
     type: "done",
     nextStep: "passwords",
   },
 };
 
-// Security questions next
 export const HighRiskBreachDoneSecurityQuestionsNextStory: Story = {
-  name: "2e. Done (Security questions next)",
+  name: "2e II. Done (Next step: Security questions)",
   args: {
     type: "done",
     nextStep: "security-questions",
   },
 };
 
-// Security tips next
 export const HighRiskBreachDoneSecurityTipsNextStory: Story = {
-  name: "2e. Done (Security tips next)",
+  name: "2e III. Done (Next step: Security tips)",
   args: {
     type: "done",
     nextStep: "security-tips",
   },
 };
 
-// No next steps
-export const HighRiskBreachDoneNoNextStepsStory: Story = {
-  name: "2e. Done (No next steps)",
+export const HighRiskBreachDoneNoNextStepStory: Story = {
+  name: "2e IV. Done (Next step: None)",
   args: {
     type: "done",
     nextStep: "none",

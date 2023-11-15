@@ -9,6 +9,7 @@ import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreach
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
 import { Button } from "../../../../../../../components/server/Button";
+import { HighRiskBreachDoneTypes } from "../high-risk-data-breaches/highRiskBreachData";
 
 export type LeakedPasswordsContent = {
   summary: string;
@@ -33,14 +34,67 @@ export type LeakedPassword = {
   content: LeakedPasswordsContent;
 };
 
+function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
+  // Security questions next
+  if (nextStep === "security-questions") {
+    return {
+      summary: "",
+      description: (
+        <>
+          <p>Now let’s review and update your exposed security questions.</p>
+          <Button variant="primary" small href="" autoFocus={true}>
+            Let’s keep going
+          </Button>
+        </>
+      ),
+    };
+  }
+
+  // Security tips next
+  if (nextStep === "security-tips") {
+    return {
+      summary: "",
+      description: (
+        <>
+          <p>
+            Next, we’ll give you personalized security recommendations based on
+            what data of yours has been exposed.
+          </p>
+          <Button variant="primary" small href="" autoFocus={true}>
+            See recommendations
+          </Button>
+        </>
+      ),
+    };
+  }
+
+  // No next steps
+  return {
+    summary: "",
+    description: (
+      <>
+        <p>
+          Nicely done! You’ve reached the end of your steps. You can view any
+          action items and track your progress on your dashboard.
+        </p>
+        <Button variant="primary" small href="" autoFocus={true}>
+          Go to your Dashboard
+        </Button>
+      </>
+    ),
+  };
+}
+
 function getLeakedPasswords({
   dataType,
   breaches,
   l10n,
+  nextStep,
 }: {
   dataType: string;
   breaches: GuidedExperienceBreaches;
   l10n: ExtendedReactLocalization;
+  nextStep?: HighRiskBreachDoneTypes;
 }) {
   const findFirstUnresolvedBreach = (breachClassType: LeakedPasswordsTypes) => {
     const leakedPasswordType =
@@ -124,17 +178,7 @@ function getLeakedPasswords({
       type: "passwords-done",
       title: "Your passwords are now protected!",
       illustration: "",
-      content: {
-        summary: "",
-        description: (
-          <>
-            <p>Now let’s review and update your exposed security questions.</p>
-            <Button variant="primary" small href="" autoFocus={true}>
-              Let’s keep going
-            </Button>
-          </>
-        ),
-      },
+      content: getDoneStepContent(nextStep),
     },
     {
       type: "security-questions",
@@ -179,20 +223,7 @@ function getLeakedPasswords({
       type: "security-questions-done",
       title: "Your security questions are protected!",
       illustration: "",
-      content: {
-        summary: "",
-        description: (
-          <>
-            <p>
-              Next, we’ll give you personalized security recommendations based
-              on what data of yours has been exposed.{" "}
-            </p>
-            <Button variant="primary" small href="" autoFocus={true}>
-              See recommendations
-            </Button>
-          </>
-        ),
-      },
+      content: getDoneStepContent(nextStep),
     },
   ];
 

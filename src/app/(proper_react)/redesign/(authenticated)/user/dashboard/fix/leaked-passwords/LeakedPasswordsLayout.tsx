@@ -21,11 +21,13 @@ import {
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../FixView";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
+import { HighRiskBreachDoneTypes } from "../high-risk-data-breaches/highRiskBreachData";
 
 export interface LeakedPasswordsLayoutProps {
   type: LeakedPasswordsTypes;
   subscriberEmails: string[];
   data: StepDeterminationData;
+  nextStep?: HighRiskBreachDoneTypes;
 }
 
 export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
@@ -33,8 +35,9 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
 
   const stepMap: Record<LeakedPasswordsTypes, StepLink["id"]> = {
     password: "LeakedPasswordsPassword",
-    "security-question": "LeakedPasswordsSecurityQuestion",
-    done: "LeakedPasswordsDone",
+    "passwords-done": "LeakedPasswordsDone",
+    "security-questions": "LeakedPasswordsSecurityQuestion",
+    "security-questions-done": "SecurityQuestionsDone",
   };
 
   const guidedExperienceBreaches = getGuidedExperienceBreaches(
@@ -46,12 +49,14 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     dataType: props.type,
     breaches: guidedExperienceBreaches,
     l10n: l10n,
+    nextStep: props.nextStep,
   });
 
   // The non-null assertion here should be safe since we already did this check
   // in `./[type]/page.tsx`:
   const { title, illustration, content } = pageData!;
-  const isStepDone = props.type === "done";
+  const isStepDone =
+    props.type === "passwords-done" || props.type === "security-questions-done";
 
   return (
     <FixView
