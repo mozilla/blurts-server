@@ -39,7 +39,7 @@ async function updateBreachStatus(
     const data: BreachResolutionRequest = {
       affectedEmail: email,
       breachId: id,
-      resolutionsChecked: [resolvedDataClass], // Adding "passwords" to an array
+      resolutionsChecked: [resolvedDataClass],
     };
 
     const res = await fetch("/api/v1/user/breaches", {

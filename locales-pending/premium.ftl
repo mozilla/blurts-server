@@ -531,7 +531,7 @@ security-recommendation-ip-step-one = Use a VPN (such as <link_to_info>{ -brand-
 
 # Variables
 # $breach_name is the name of the breach where the leaked password was found.
-leaked-passwords-title = Your { $breach_name } password was exposed.
+leaked-passwords-title = Your { $breach_name } password was exposed
 # Variables
 # $breach_date is the date when the breach occurred.
 leaked-passwords-summary = It appeared in a data breach on { $breach_date }.
