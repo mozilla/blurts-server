@@ -71,16 +71,23 @@ export const PasswordsStory: Story = {
   },
 };
 
-export const SecurityQuestionsStory: Story = {
-  name: "3b. Security questions",
+export const PasswordsDoneStory: Story = {
+  name: "3b. Passwords done",
   args: {
-    type: "security-question",
+    type: "passwords-done",
   },
 };
 
-export const PasswordsDoneStory: Story = {
-  name: "3c. Done",
+export const SecurityQuestionsStory: Story = {
+  name: "3c. Security questions",
   args: {
-    type: "done",
+    type: "security-questions",
+  },
+};
+
+export const SecurityQuestionsDoneStory: Story = {
+  name: "3d. Security questions done",
+  args: {
+    type: "security-questions-done",
   },
 };

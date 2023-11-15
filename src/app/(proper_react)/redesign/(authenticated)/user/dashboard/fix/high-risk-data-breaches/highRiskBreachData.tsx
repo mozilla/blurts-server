@@ -13,6 +13,7 @@ import { GuidedExperienceBreaches } from "../../../../../../../functions/server/
 import { FraudAlertModal } from "./FraudAlertModal";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
+import { Button } from "../../../../../../../components/server/Button";
 
 export type HighRiskBreachContent = {
   summary: string;
@@ -192,12 +193,23 @@ function getHighRiskBreachesByType({
     },
     {
       type: "done",
-      title: "High-risk breaches done",
+      title: "You’ve fixed your high risk exposures!",
       illustration: "",
       exposedData: [],
       content: {
-        summary: "Summary",
-        description: "Description",
+        summary: "",
+        description: (
+          <>
+            <p>
+              Doing this work can feel like a lot, but it’s important to do so
+              to keep yourself safe. Keep up the good work.
+            </p>
+            <p>Now let’s fix your exposed passwords.</p>
+            <Button variant="primary" small href="" autoFocus={true}>
+              Let’s keep going
+            </Button>
+          </>
+        ),
       },
     },
     {

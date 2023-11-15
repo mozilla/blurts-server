@@ -8,6 +8,7 @@ import securityQuestionsIllustration from "../images/security-questions.svg";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
+import { Button } from "../../../../../../../components/server/Button";
 
 export type LeakedPasswordsContent = {
   summary: string;
@@ -19,7 +20,11 @@ export type LeakedPasswordsContent = {
   };
 };
 
-export type LeakedPasswordsTypes = "password" | "security-question" | "done";
+export type LeakedPasswordsTypes =
+  | "password"
+  | "passwords-done"
+  | "security-questions"
+  | "security-questions-done";
 
 export type LeakedPassword = {
   type: LeakedPasswordsTypes;
@@ -47,7 +52,7 @@ function getLeakedPasswords({
 
   const unresolvedPasswordBreach = findFirstUnresolvedBreach("password");
   const unresolvedSecurityQuestionsBreach =
-    findFirstUnresolvedBreach("security-question");
+    findFirstUnresolvedBreach("security-questions");
   // This env var is always defined in test, so the other branch can't be covered:
   /* c8 ignore next */
   const blockList = (process.env.HIBP_BREACH_DOMAIN_BLOCKLIST ?? "").split(",");
@@ -116,7 +121,23 @@ function getLeakedPasswords({
       },
     },
     {
-      type: "security-question",
+      type: "passwords-done",
+      title: "Your passwords are now protected!",
+      illustration: "",
+      content: {
+        summary: "",
+        description: (
+          <>
+            <p>Now let’s review and update your exposed security questions.</p>
+            <Button variant="primary" small href="" autoFocus={true}>
+              Let’s keep going
+            </Button>
+          </>
+        ),
+      },
+    },
+    {
+      type: "security-questions",
       title: l10n.getString("leaked-security-questions-title"),
       illustration: securityQuestionsIllustration,
       content: {
@@ -155,12 +176,22 @@ function getLeakedPasswords({
       },
     },
     {
-      type: "done",
-      title: "Passwords done",
-      illustration: securityQuestionsIllustration,
+      type: "security-questions-done",
+      title: "Your security questions are protected!",
+      illustration: "",
       content: {
-        summary: "Summary",
-        description: "Description",
+        summary: "",
+        description: (
+          <>
+            <p>
+              Next, we’ll give you personalized security recommendations based
+              on what data of yours has been exposed.{" "}
+            </p>
+            <Button variant="primary" small href="" autoFocus={true}>
+              See recommendations
+            </Button>
+          </>
+        ),
       },
     },
   ];

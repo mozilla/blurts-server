@@ -36,6 +36,7 @@ export function SecurityRecommendationsLayout(
     email: "SecurityTipsEmail",
     ip: "SecurityTipsIp",
     phone: "SecurityTipsPhone",
+    done: "SecurityTipsDone",
   };
 
   const guidedExperienceBreaches = getGuidedExperienceBreaches(

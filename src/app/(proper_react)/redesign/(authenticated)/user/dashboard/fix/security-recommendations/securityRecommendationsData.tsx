@@ -9,6 +9,7 @@ import ipIllustration from "../images/security-recommendations-ip.svg";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
+import { Button } from "../../../../../../../components/server/Button";
 
 export type SecurityRecommendationContent = {
   summary: string;
@@ -20,7 +21,7 @@ export type SecurityRecommendationContent = {
   };
 };
 
-export type SecurityRecommendationTypes = "phone" | "email" | "ip";
+export type SecurityRecommendationTypes = "phone" | "email" | "ip" | "done";
 
 export type SecurityRecommendation = {
   type: SecurityRecommendationTypes;
@@ -163,6 +164,26 @@ function getSecurityRecommendationsByType({
             </p>
           ),
         },
+      },
+    },
+    {
+      type: "done",
+      title: "You’ve completed all your recommendations",
+      illustration: "",
+      exposedData: [],
+      content: {
+        summary: "",
+        description: (
+          <>
+            <p>
+              Nicely done! You’ve reached the end of your steps. You can view
+              any action items and track your progress on your dashboard.
+            </p>
+            <Button variant="primary" small href="" autoFocus={true}>
+              Go to your Dashboard
+            </Button>
+          </>
+        ),
       },
     },
   ];

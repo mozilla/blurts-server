@@ -157,9 +157,12 @@ export function isEligibleForStep(
   }
 
   if (
-    ["SecurityTipsPhone", "SecurityTipsEmail", "SecurityTipsIp"].includes(
-      stepId,
-    )
+    [
+      "SecurityTipsPhone",
+      "SecurityTipsEmail",
+      "SecurityTipsIp",
+      "SecurityTipsDone",
+    ].includes(stepId)
   ) {
     // Anyone can view security tips
     return true;

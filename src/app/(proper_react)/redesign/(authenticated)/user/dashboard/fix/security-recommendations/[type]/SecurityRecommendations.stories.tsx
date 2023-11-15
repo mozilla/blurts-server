@@ -87,3 +87,10 @@ export const IpStory: Story = {
     type: "ip",
   },
 };
+
+export const Done: Story = {
+  name: "4d. Done",
+  args: {
+    type: "done",
+  },
+};

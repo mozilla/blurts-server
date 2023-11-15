@@ -174,7 +174,7 @@ const preview: Preview = {
 
           if (
             path ===
-            "/redesign/user/dashboard/fix/leaked-passwords/security-question"
+            "/redesign/user/dashboard/fix/leaked-passwords/security-questions"
           ) {
             linkTo(
               "Pages/Guided resolution/3. Leaked passwords",

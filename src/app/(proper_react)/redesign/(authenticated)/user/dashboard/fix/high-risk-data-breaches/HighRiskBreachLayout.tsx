@@ -5,6 +5,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ResolutionContainer } from "../ResolutionContainer";
 import { ResolutionContent } from "../ResolutionContent";
 import { Button } from "../../../../../../../components/server/Button";
@@ -57,6 +58,8 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
   const hasBreaches = type !== "none";
   const isStepDone = type === "done";
 
+  const router = useRouter();
+
   return (
     <FixView
       subscriberEmails={props.subscriberEmails}
@@ -78,6 +81,11 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
                 /* c8 ignore next 3 */
                 onPress={() => {
                   // TODO: MNTOR-1700 Add routing logic + fix event here
+
+                  // If the last item in the section has been resolved: Let’s celebrate.
+                  router.push(
+                    "/redesign/user/dashboard/fix/high-risk-data-breaches/done",
+                  );
                 }}
               >
                 {
