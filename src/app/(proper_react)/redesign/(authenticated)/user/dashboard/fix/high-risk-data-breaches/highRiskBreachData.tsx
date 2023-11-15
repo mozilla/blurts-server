@@ -41,14 +41,104 @@ export type HighRiskBreach = {
   exposedData: SubscriberBreach[];
 };
 
+export type HighRiskBreachDoneTypes =
+  | "passwords"
+  | "security-questions"
+  | "security-tips"
+  | "none";
+
+function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
+  // Passwords next
+  if (nextStep === "passwords") {
+    return {
+      summary: "",
+      description: (
+        <>
+          <p>
+            Doing this work can feel like a lot, but it’s important to do so to
+            keep yourself safe. Keep up the good work.
+          </p>
+          <p>Now let’s fix your exposed passwords.</p>
+          <Button variant="primary" small href="" autoFocus={true}>
+            Let’s keep going
+          </Button>
+        </>
+      ),
+    };
+  }
+
+  // Security questions next
+  if (nextStep === "security-questions") {
+    return {
+      summary: "",
+      description: (
+        <>
+          <p>
+            Doing this work can feel like a lot, but it’s important to do so to
+            keep yourself safe. Keep up the good work.
+          </p>
+          <p>Now let’s fix your exposed security questions.</p>
+          <Button variant="primary" small href="" autoFocus={true}>
+            Let’s keep going
+          </Button>
+        </>
+      ),
+    };
+  }
+
+  // Security tips next
+  if (nextStep === "security-tips") {
+    return {
+      summary: "",
+      description: (
+        <>
+          <p>
+            Doing this work can feel like a lot, but it’s important to do so to
+            keep yourself safe. Keep up the good work.
+          </p>
+          <p>
+            Next, we’ll give you personalized security recommendations based on
+            what data of yours has been exposed.{" "}
+          </p>
+          <Button variant="primary" small href="" autoFocus={true}>
+            See recommendations
+          </Button>
+        </>
+      ),
+    };
+  }
+
+  // No next steps
+  return {
+    summary: "",
+    description: (
+      <>
+        <p>
+          Doing this work can feel like a lot, but it’s important to do so to
+          keep yourself safe.
+        </p>
+        <p>
+          You’ve reached the end of your steps. You can view any action items
+          and track your progress on your dashboard.
+        </p>
+        <Button variant="primary" small href="" autoFocus={true}>
+          Go to your Dashboard
+        </Button>
+      </>
+    ),
+  };
+}
+
 function getHighRiskBreachesByType({
   dataType,
   breaches,
   l10n,
+  nextStep,
 }: {
   dataType: HighRiskBreachTypes;
   breaches: GuidedExperienceBreaches;
   l10n: ExtendedReactLocalization;
+  nextStep?: HighRiskBreachDoneTypes;
 }) {
   // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
   const emailsFormatter = new Intl.ListFormat(getLocale(l10n), {
@@ -196,21 +286,7 @@ function getHighRiskBreachesByType({
       title: "You’ve fixed your high risk exposures!",
       illustration: "",
       exposedData: [],
-      content: {
-        summary: "",
-        description: (
-          <>
-            <p>
-              Doing this work can feel like a lot, but it’s important to do so
-              to keep yourself safe. Keep up the good work.
-            </p>
-            <p>Now let’s fix your exposed passwords.</p>
-            <Button variant="primary" small href="" autoFocus={true}>
-              Let’s keep going
-            </Button>
-          </>
-        ),
-      },
+      content: getDoneStepContent(nextStep),
     },
     {
       type: "none",

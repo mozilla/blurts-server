@@ -10,7 +10,10 @@ import {
 import { Shell } from "../../../../../../Shell";
 import { getEnL10nSync } from "../../../../../../../../functions/server/mockL10n";
 import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
-import { HighRiskBreachTypes } from "../highRiskBreachData";
+import {
+  HighRiskBreachDoneTypes,
+  HighRiskBreachTypes,
+} from "../highRiskBreachData";
 import { BreachDataTypes } from "../../../../../../../../functions/universal/breach";
 import { StepDeterminationData } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { OnerepScanRow } from "knex/types/tables";
@@ -40,6 +43,7 @@ const mockedSession = {
 
 const HighRiskBreachWrapper = (props: {
   type: HighRiskBreachTypes;
+  nextStep: HighRiskBreachDoneTypes;
   scanStatus?: "empty" | "not_started" | "unavailable";
 }) => {
   const mockedScan: OnerepScanRow = {
@@ -85,6 +89,7 @@ const HighRiskBreachWrapper = (props: {
       <HighRiskBreachLayout
         subscriberEmails={[]}
         type={props.type}
+        nextStep={props.nextStep}
         data={data}
       />
     </Shell>
@@ -126,9 +131,38 @@ export const PinStory: Story = {
   },
 };
 
-export const HighRiskBreachDoneStory: Story = {
-  name: "2e. Done",
+// Passwords next
+export const HighRiskBreachDonePasswordsNextStory: Story = {
+  name: "2e. Done (Passwords next)",
   args: {
     type: "done",
+    nextStep: "passwords",
+  },
+};
+
+// Security questions next
+export const HighRiskBreachDoneSecurityQuestionsNextStory: Story = {
+  name: "2e. Done (Security questions next)",
+  args: {
+    type: "done",
+    nextStep: "security-questions",
+  },
+};
+
+// Security tips next
+export const HighRiskBreachDoneSecurityTipsNextStory: Story = {
+  name: "2e. Done (Security tips next)",
+  args: {
+    type: "done",
+    nextStep: "security-tips",
+  },
+};
+
+// No next steps
+export const HighRiskBreachDoneNoNextStepsStory: Story = {
+  name: "2e. Done (No next steps)",
+  args: {
+    type: "done",
+    nextStep: "none",
   },
 };

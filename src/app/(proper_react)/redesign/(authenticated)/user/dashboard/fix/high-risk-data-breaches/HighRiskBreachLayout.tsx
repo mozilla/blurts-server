@@ -13,6 +13,7 @@ import { useL10n } from "../../../../../../../hooks/l10n";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { FixView } from "../FixView";
 import {
+  HighRiskBreachDoneTypes,
   HighRiskBreachTypes,
   getHighRiskBreachesByType,
 } from "./highRiskBreachData";
@@ -25,6 +26,7 @@ import { getGuidedExperienceBreaches } from "../../../../../../../functions/univ
 
 export type HighRiskBreachLayoutProps = {
   type: HighRiskBreachTypes;
+  nextStep: HighRiskBreachDoneTypes;
   subscriberEmails: string[];
   data: StepDeterminationData;
 };
@@ -48,6 +50,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
 
   const pageData = getHighRiskBreachesByType({
     dataType: props.type,
+    nextStep: props.nextStep,
     breaches: guidedExperienceBreaches,
     l10n: l10n,
   });
