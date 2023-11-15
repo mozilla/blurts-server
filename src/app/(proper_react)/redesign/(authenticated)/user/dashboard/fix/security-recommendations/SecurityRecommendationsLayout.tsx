@@ -39,6 +39,8 @@ export function SecurityRecommendationsLayout(
     done: "SecurityTipsDone",
   };
 
+  const isStepDone = props.type === "done";
+
   const guidedExperienceBreaches = getGuidedExperienceBreaches(
     props.data.subscriberBreaches,
     props.subscriberEmails,
@@ -60,25 +62,32 @@ export function SecurityRecommendationsLayout(
       data={props.data}
       nextStepHref={getNextGuidedStep(props.data, stepMap[props.type]).href}
       currentSection="security-recommendations"
+      hideProgressIndicator={isStepDone}
     >
       <ResolutionContainer
-        label={l10n.getString("security-recommendation-steps-label")}
+        label={
+          !isStepDone
+            ? l10n.getString("security-recommendation-steps-label")
+            : ""
+        }
         type="securityRecommendations"
         title={title}
         illustration={illustration}
         cta={
-          <Button
-            variant="primary"
-            small
-            // TODO: Add test once MNTOR-1700 logic is added
-            /* c8 ignore next 3 */
-            onPress={() => {
-              // TODO: MNTOR-1700 Add routing logic
-            }}
-            autoFocus={true}
-          >
-            {l10n.getString("security-recommendation-steps-cta-label")}
-          </Button>
+          !isStepDone && (
+            <Button
+              variant="primary"
+              small
+              // TODO: Add test once MNTOR-1700 logic is added
+              /* c8 ignore next 3 */
+              onPress={() => {
+                // TODO: MNTOR-1700 Add routing logic
+              }}
+              autoFocus={true}
+            >
+              {l10n.getString("security-recommendation-steps-cta-label")}
+            </Button>
+          )
         }
       >
         <ResolutionContent

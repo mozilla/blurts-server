@@ -64,6 +64,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
       data={props.data}
       nextStepHref={getNextGuidedStep(props.data, stepMap[props.type]).href}
       currentSection="leaked-passwords"
+      hideProgressIndicator={isStepDone}
     >
       <ResolutionContainer
         type="leakedPasswords"

@@ -69,6 +69,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
       data={props.data}
       nextStepHref={getNextGuidedStep(props.data, stepMap[props.type]).href}
       currentSection="high-risk-data-breach"
+      hideProgressIndicator={isStepDone}
     >
       <ResolutionContainer
         type="securityRecommendations"
