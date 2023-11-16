@@ -24,7 +24,8 @@
     "build-storybook": "storybook build",
     "create-location-data": "node src/scripts/uploadAutoCompleteLocations.js",
     "get-location-data": "node src/scripts/getAutoCompleteLocations.js",
-    "build-glean": "glean translate src/telemetry/metrics.yaml --format javascript --output src/telemetry/generated"
+    "build-glean": "glean translate src/telemetry/metrics.yaml --format javascript --output src/telemetry/generated",
+    "build-glean-docs": "glean translate src/telemetry/metrics.yaml --format markdown --output docs"
   },
   "nodemonConfig": {
     "watch": [
