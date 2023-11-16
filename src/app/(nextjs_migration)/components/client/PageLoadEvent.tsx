@@ -60,13 +60,15 @@ export const PageLoadEvent = (props: Props) => {
     }
 
     const params = new URLSearchParams(window.location.search);
-    ([
-      "utm_campaign",
-      "utm_content",
-      "utm_medium",
-      "utm_source",
-      "utm_term",
-    ] as const).forEach((key) => {
+    (
+      [
+        "utm_campaign",
+        "utm_content",
+        "utm_medium",
+        "utm_source",
+        "utm_term",
+      ] as const
+    ).forEach((key) => {
       if (params.has(key)) {
         optional[key] = params.get(key) ?? "";
       }
