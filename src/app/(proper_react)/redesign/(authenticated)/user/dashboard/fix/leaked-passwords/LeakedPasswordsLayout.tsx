@@ -34,10 +34,11 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   const l10n = useL10n();
 
   const stepMap: Record<LeakedPasswordsTypes, StepLink["id"]> = {
-    password: "LeakedPasswordsPassword",
-    "passwords-done": "LeakedPasswordsDone",
+    passwords: "LeakedPasswordsPassword",
+    "passwords-done": "LeakedPasswordsPassword",
     "security-questions": "LeakedPasswordsSecurityQuestion",
-    "security-questions-done": "SecurityQuestionsDone",
+    "security-questions-done": "LeakedPasswordsSecurityQuestion",
+    none: "LeakedPasswordsSecurityQuestion",
   };
 
   const guidedExperienceBreaches = getGuidedExperienceBreaches(
@@ -95,6 +96,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
           )
         }
         estimatedTime={!isStepDone ? 4 : undefined}
+        isStepDone={isStepDone}
       >
         <ResolutionContent content={content} locale={getLocale(l10n)} />
       </ResolutionContainer>

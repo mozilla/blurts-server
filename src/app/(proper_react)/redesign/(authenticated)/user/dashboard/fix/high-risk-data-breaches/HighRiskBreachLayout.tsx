@@ -26,9 +26,9 @@ import { getGuidedExperienceBreaches } from "../../../../../../../functions/univ
 
 export type HighRiskBreachLayoutProps = {
   type: HighRiskBreachTypes;
-  nextStep: HighRiskBreachDoneTypes;
   subscriberEmails: string[];
   data: StepDeterminationData;
+  nextStep?: HighRiskBreachDoneTypes;
 };
 
 export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
@@ -39,8 +39,8 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
     "credit-card": "HighRiskCreditCard",
     "bank-account": "HighRiskBankAccount",
     pin: "HighRiskPin",
-    done: "HighRiskDone",
     none: "HighRiskPin",
+    done: "HighRiskPin",
   };
 
   const guidedExperienceBreaches = getGuidedExperienceBreaches(

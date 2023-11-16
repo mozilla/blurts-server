@@ -38,7 +38,7 @@ export const stepLinks = [
     id: "HighRiskPin",
   },
   {
-    href: "/redesign/user/dashboard/fix/leaked-passwords/password",
+    href: "/redesign/user/dashboard/fix/leaked-passwords/passwords",
     id: "LeakedPasswordsPassword",
   },
   {

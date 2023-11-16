@@ -34,9 +34,9 @@ export function SecurityRecommendationsLayout(
 
   const stepMap: Record<SecurityRecommendationTypes, StepLink["id"]> = {
     email: "SecurityTipsEmail",
-    ip: "SecurityTipsIp",
     phone: "SecurityTipsPhone",
-    done: "SecurityTipsDone",
+    ip: "SecurityTipsIp",
+    done: "SecurityTipsIp",
   };
 
   const isStepDone = props.type === "done";
@@ -89,6 +89,7 @@ export function SecurityRecommendationsLayout(
             </Button>
           )
         }
+        isStepDone={isStepDone}
       >
         <ResolutionContent
           content={content}
