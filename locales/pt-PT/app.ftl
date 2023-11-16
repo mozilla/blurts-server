@@ -775,7 +775,7 @@ error-page-error-other-copy = Por favor, tente novamente ou volte mais tarde
 ## Breach overview page
 
 all-breaches-headline-2 = Todas as falhas de segurança detetadas por { -brand-fx-monitor }
-all-breaches-lead = Monitorizamos todas as brechas de dados conhecidas para descobrir se a sua informação pessoal foi comprometida. Aqui está uma lista completa de todas as violações de dados que foram relatadas desde 2007.
+all-breaches-lead = Monitorizamos todas as violações de dados conhecidas para descobrir se a sua informação pessoal foi comprometida. Aqui está uma lista completa de todas as violações de dados que foram reportadas desde 2007.
 search-breaches = Procurar por violações de dados
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Dados expostos:
@@ -783,11 +783,11 @@ exposed-data = Dados expostos:
 ## Public breach detail page
 
 find-out-if-2 = Saiba se esteve envolvido nesta falha de segurança
-find-out-if-description = Iremos ajudá-lo a ver rapidamente se o seu endereço de e-mail foi exposto nesta violação de dados e a compreender o que fazer a seguir.
+find-out-if-description = Iremos ajudar a perceber muito rapidamente se o seu endereço de e-mail foi exposto nesta violação de dados e a compreender o que fazer a seguir.
 breach-detail-cta-signup = Pesquisar por falhas de segurança
 
 ## Floating banner
 
 floating-banner-text = Aumente a sua segurança online com notícias, dicas e atualizações da { -brand-Mozilla }.
-floating-banner-link-label = Registar
+floating-banner-link-label = Criar conta
 floating-banner-dismiss-button-label = Não, obrigado

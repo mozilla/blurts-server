@@ -26,7 +26,7 @@ breach-heading-email = Violações de dados para { $email-select }
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored =
     { $total ->
-        [one] { $count } de { $total } e-mails monitorizados
+        [one] { $count } de { $total } e-mail monitorizado
        *[other] { $count } de { $total } e-mails monitorizados
     }
 # link to Settings page where user can add/remove emails and set message preferences
@@ -50,13 +50,13 @@ breaches-resolve-heading = Resolver esta falha de segurança:
 breaches-none-headline = Não foram encontradas violações
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
-breaches-none-copy = Boas notícias! Não foram reportadas violações de dados conhecidas para { $email }. Iremos continuar a monitorizar este e-mail e iremos informá-lo se ocorrerem novas violações de dados.
+breaches-none-copy = Boas notícias! Não foram reportadas violações de dados conhecidas para { $email }. Iremos continuar a monitorizar este e-mail e iremos informar se ocorrerem novas violações de dados.
 breaches-none-cta-blurb = Gostaria de monitorizar outro e-mail?
 breaches-none-cta-button = Adicionar endereço de e-mail
 breaches-all-resolved-headline = Todas as violações resolvidas
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = Boa! Resolveu todas as violações de dados para { $email }. Iremos continuar a monitorizar este e-mail e iremos informá-lo se ocorrerem novas violações de dados.
+breaches-all-resolved-copy = Boa! Resolveu todas as violações de dados para { $email }. Iremos continuar a monitorizar este e-mail e iremos informar se ocorrerem novas violações de dados.
 breaches-all-resolved-cta-blurb = Gostaria de monitorizar outro e-mail?
 breaches-all-resolved-cta-button = Adicionar endereço de e-mail
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
@@ -90,7 +90,7 @@ breach-checklist-email-body = Isto pode ocultar o seu endereço de e-mail real e
 
 # Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
-breach-checklist-ssn-header = Monitorize o seu relatório de crédito para contas, empréstimos ou cartões de crédito que não reconheça.
+breach-checklist-ssn-header = Monitorize o seu informações de crédito para contas, empréstimos ou cartões de crédito que não reconheça.
 # A security freeze prevents prospective creditors from accessing your credit file.
 # Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
@@ -108,29 +108,29 @@ breach-checklist-cc-body = Deve também rever os extratos do seu cartão de cré
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
-breach-checklist-bank-header = Notifique o seu banco imediatamente que o número da sua conta foi comprometido.
-breach-checklist-bank-body = Fazer isso mais rapidamente pode fornecer mais proteções legais para ajudar a recuperar quaisquer perda. Também desejará verificar as suas contas por quaisquer cobranças não reconhecidas.
+breach-checklist-bank-header = Notifique imediatamente o seu banco que o número da sua conta foi comprometido.
+breach-checklist-bank-body = Fazer isto mais rapidamente pode fornecer mais proteções legais para ajudar a recuperar quaisquer perdas. Também poderá querer verificar as suas contas para identificar quaisquer cobranças não reconhecidas.
 
 ## Prompts the user for changes when there is a breach detected of pin
 
 breach-checklist-pin-header = Notifique o emissor do seu cartão e altere o seu PIN imediatamente.
-breach-checklist-pin-body = Certifique-se que o seu novo PIN, ou qualquer outro PIN, não inclui números facilmente adivinhados, como a sua data de nascimento ou endereço.
+breach-checklist-pin-body = Certifique-se que o seu novo PIN, ou qualquer outro PIN, não inclui números que possam ser deduzidos com facilidade, tais como a sua data de nascimento ou morada.
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
 # Variables:
 #   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
-breach-checklist-ip-header-2 = Use a Internet privadamente com uma VPN, como a { $mozillaVpnLink }.
-breach-checklist-ip-body = O seu endereço IP (endereço do protocolo da Internet) indica a sua localização e fornecedor de serviço de Internet. Uma VPN pode ocultar o seu endereço IP real para que possa usar a Internet com privacidade.
+breach-checklist-ip-header-2 = Utilize a Internet de forma privada com uma VPN, como a { $mozillaVpnLink }.
+breach-checklist-ip-body = O seu endereço IP (endereço do protocolo da Internet) indica a sua localização e fornecedor de serviço de Internet. Uma VPN pode ocultar o seu endereço IP real para que possa utilizar a Internet com privacidade.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
-breach-checklist-address-header = Altere quaisquer palavras-passe ou PINs que incluam qualquer parte do seu endereço.
-breach-checklist-address-body = Os endereços são fáceis de encontrar em registos públicos e podem fazer com que essas palavras-passe e PINs sejam fáceis de adivinhar.
+breach-checklist-address-header = Altere quaisquer palavras-passe ou PIN que incluam qualquer parte do seu endereço.
+breach-checklist-address-body = Os endereços são fáceis de encontrar em registos públicos e podem fazer com que estas palavras-passe e PIN sejam fáceis de adivinhar.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
-breach-checklist-dob-header = Altere quaisquer palavras-passe ou PINs que incluam a sua data de nascimento.
+breach-checklist-dob-header = Altere quaisquer palavras-passe ou PIN que incluam a sua data de nascimento.
 breach-checklist-dob-body = As datas de nascimento são fáceis de encontrar em registos públicos e as pessoas que as encontrarem poderão adivinhar facilmente o seu PIN.
 
 ## Prompts the user for changes when there is a breach detected of phone number
