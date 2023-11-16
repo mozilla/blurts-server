@@ -45,7 +45,10 @@ page:
         description: Users who run the new free scan will be notified of breaches found during the scan.
         type: quantity
       session_id:
-        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
         type: string
       utm_campaign:
         description: Attribution campaign.
@@ -103,7 +106,11 @@ dashboard:
         description: Users who run the new free scan will be notified of breaches found during the scan.
         type: quantity
       session_id:
-        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
 
 popup:
   view:
@@ -142,7 +149,11 @@ popup:
         description: Users who run the new free scan will be notified of breaches found during the scan.
         type: quantity
       session_id:
-        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
 
   exit:
     type: event
@@ -180,7 +191,10 @@ popup:
         description: Users who run the new free scan will be notified of breaches found during the scan.
         type: quantity
       session_id:
-        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
         type: string
 
 button:
@@ -220,7 +234,11 @@ button:
         description: Users who run the new free scan will be notified of breaches found during the scan.
         type: quantity
       session_id:
-        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
 
@@ -261,7 +279,10 @@ field:
         description: Users who run the new free scan will be notified of breaches found during the scan.
         type: quantity
       session_id:
-        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
         type: string
       field_id:
         description: The ID of the field that was clicked on, or some way to identify where on the page the interaction is located.
@@ -303,7 +324,10 @@ link:
         description: Users who run the new free scan will be notified of breaches found during the scan.
         type: quantity
       session_id:
-        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
@@ -345,7 +369,10 @@ upgrade_intent:
         description: Users who run the new free scan will be notified of breaches found during the scan.
         type: quantity
       session_id:
-        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
@@ -385,14 +412,17 @@ upgrade_intent:
         description: Users who run the new free scan will be notified of breaches found during the scan.
         type: quantity
       session_id:
-        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
         type: string
 
 expand:
   click:
     type: event
     description: |
-      A click to expand a section on the webpage.
+      A click to expand a section of the webpage.
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
@@ -425,7 +455,10 @@ expand:
         description: Users who run the new free scan will be notified of breaches found during the scan.
         type: quantity
       session_id:
-        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
@@ -467,7 +500,10 @@ collapse:
         description: Users who run the new free scan will be notified of breaches found during the scan.
         type: quantity
       session_id:
-        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
@@ -476,7 +512,7 @@ cta_button:
   click:
     type: event
     description: |
-      A click on a button that has a CTA (i.e starting a free scan).
+      A click on a button that has a specific call-to-action.
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
@@ -509,7 +545,10 @@ cta_button:
         description: Users who run the new free scan will be notified of breaches found during the scan.
         type: quantity
       session_id:
-        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
