@@ -43,16 +43,13 @@ settings-email-number-of-breaches-info =
 
 ## Cancel Premium subscription
 
-settings-cancel-premium-subscription-link-label = Anulojeni nga { -brand-fx-account } juaj
+settings-cancel-premium-subscription-title = Anuloni pajtim { -brand-premium }
+settings-cancel-premium-subscription-info = Pajtimi juaj do të rikthehet në një llogari falas, pasi të përfundojë cikli i tanishëm i faturimeve. Përfundimet e kontrolleve për mbrojtje e privatësisë tuaj do të fshihen përgjithmonë dhe do të keni mbikëqyrje cenimesh të dhënash vetëm për 1 adresë email.
 
 ## Deactivate account
 
 settings-deactivate-account-title = Çaktivizoje llogarinë
-# Deprecated
-settings-deactivate-account-info = { -product-short-name } mund ta çaktivizoni duke fshirë { -brand-fx-account } tuaj.
 settings-deactivate-account-info-2 = { -product-short-name } mund ta çaktivizoni duke fshirë { -brand-mozilla-account } tuaj.
-# Deprecated
-settings-fxa-link-label = Kaloni te Rregullime { -brand-firefox }-i
 settings-fxa-link-label-3 = Kaloni te rregullime { -brand-mozilla-account }
 
 ## Add email dialog
@@ -67,5 +64,7 @@ settings-send-email-verification-button = Dërgo lidhje verifikimi
 settings-unsubscribe-dialog-title = Na vjen keq t’ju shohim të ikni. <br /> Do të na tregoni pse po largoheni?
 settings-unsubscribe-dialog-info = Përvoja juaj është e rëndësishme për ne. Lexojmë çdo përgjigje dhe e marrim në konsideratë.
 settings-unsubscribe-dialog-message-placeholder = Ç’mund të kishte ecur më mirë?
+# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
+settings-unsubscribe-dialog-confirmation = Ju lutemi, kini parasysh se krejt shërbimet tuaja { -brand-monitor-premium } do të <a { $faq_href }>fshihen përgjithnjë</a>, pasi të përfundojë cikli i tanishëm i faturimit.
 settings-unsubscribe-dialog-continue = Vazhdo me anulimin
 settings-unsubscribe-dialog-cancel = S’prish punë, kthemëni
