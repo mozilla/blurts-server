@@ -14,6 +14,7 @@ import { FraudAlertModal } from "./FraudAlertModal";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
 import { Button } from "../../../../../../../components/server/Button";
+import { StepLink } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 
 export type HighRiskBreachContent = {
   summary: string;
@@ -41,15 +42,9 @@ export type HighRiskBreach = {
   exposedData: SubscriberBreach[];
 };
 
-export type HighRiskBreachDoneTypes =
-  | "passwords"
-  | "security-questions"
-  | "security-tips"
-  | "none";
-
-function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
+function getDoneStepContent(nextStep?: StepLink) {
   // Passwords next
-  if (nextStep === "passwords") {
+  if (nextStep?.id === "LeakedPasswordsPassword") {
     return {
       summary: "",
       description: (
@@ -68,7 +63,7 @@ function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
   }
 
   // Security questions next
-  if (nextStep === "security-questions") {
+  if (nextStep?.id === "LeakedPasswordsSecurityQuestion") {
     return {
       summary: "",
       description: (
@@ -87,7 +82,12 @@ function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
   }
 
   // Security tips next
-  if (nextStep === "security-tips") {
+  if (
+    nextStep &&
+    ["SecurityTipsPhone", "SecurityTipsEmail", "SecurityTipsIp"].includes(
+      nextStep.id,
+    )
+  ) {
     return {
       summary: "",
       description: (
@@ -138,7 +138,7 @@ function getHighRiskBreachesByType({
   dataType: HighRiskBreachTypes;
   breaches: GuidedExperienceBreaches;
   l10n: ExtendedReactLocalization;
-  nextStep?: HighRiskBreachDoneTypes;
+  nextStep?: StepLink;
 }) {
   // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
   const emailsFormatter = new Intl.ListFormat(getLocale(l10n), {

@@ -13,7 +13,6 @@ import { useL10n } from "../../../../../../../hooks/l10n";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { FixView } from "../FixView";
 import {
-  HighRiskBreachDoneTypes,
   HighRiskBreachTypes,
   getHighRiskBreachesByType,
 } from "./highRiskBreachData";
@@ -28,7 +27,6 @@ export type HighRiskBreachLayoutProps = {
   type: HighRiskBreachTypes;
   subscriberEmails: string[];
   data: StepDeterminationData;
-  nextStep?: HighRiskBreachDoneTypes;
 };
 
 export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
@@ -48,11 +46,12 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
     props.subscriberEmails,
   );
 
+  const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
   const pageData = getHighRiskBreachesByType({
     dataType: props.type,
-    nextStep: props.nextStep,
     breaches: guidedExperienceBreaches,
     l10n: l10n,
+    nextStep,
   });
 
   // The non-null assertion here should be safe since we already did this check
@@ -67,7 +66,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
     <FixView
       subscriberEmails={props.subscriberEmails}
       data={props.data}
-      nextStep={getNextGuidedStep(props.data, stepMap[props.type])}
+      nextStep={nextStep}
       currentSection="high-risk-data-breach"
       hideProgressIndicator={isStepDone}
     >

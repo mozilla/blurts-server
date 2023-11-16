@@ -10,29 +10,13 @@ import {
 import { Shell } from "../../../../../../Shell";
 import { getEnL10nSync } from "../../../../../../../../functions/server/mockL10n";
 import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
-import {
-  HighRiskBreachDoneTypes,
-  HighRiskBreachTypes,
-} from "../highRiskBreachData";
+import { HighRiskBreachTypes } from "../highRiskBreachData";
 import { BreachDataTypes } from "../../../../../../../../functions/universal/breach";
-import { StepDeterminationData } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
+import {
+  StepDeterminationData,
+  StepLink,
+} from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { OnerepScanRow } from "knex/types/tables";
-
-const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
-// Ensure all high-risk data breaches are present in at least one breach:
-mockedBreaches.push(
-  createRandomBreach({
-    dataClassesEffected: [
-      {
-        [BreachDataTypes.SSN]: 42,
-        [BreachDataTypes.CreditCard]: 42,
-        [BreachDataTypes.BankAccount]: 42,
-        [BreachDataTypes.PIN]: 42,
-      },
-    ],
-    isResolved: false,
-  }),
-);
 
 const user = createUserWithPremiumSubscription();
 
@@ -43,9 +27,46 @@ const mockedSession = {
 
 const HighRiskBreachWrapper = (props: {
   type: HighRiskBreachTypes;
-  nextStep: HighRiskBreachDoneTypes;
+  nextStep: StepLink;
   scanStatus?: "empty" | "not_started" | "unavailable";
+  nextUnresolvedBreachType?: keyof typeof BreachDataTypes;
 }) => {
+  const hasNextUnresolvedBreach = props.nextUnresolvedBreachType !== null;
+  const mockedBreaches = [...Array(5)].map(() =>
+    createRandomBreach({
+      isResolved: hasNextUnresolvedBreach,
+    }),
+  );
+
+  // Ensure all high-risk data breaches are present in at least one breach:
+  mockedBreaches.push(
+    createRandomBreach({
+      dataClassesEffected: [
+        {
+          [BreachDataTypes.SSN]: 42,
+          [BreachDataTypes.CreditCard]: 42,
+          [BreachDataTypes.BankAccount]: 42,
+          [BreachDataTypes.PIN]: 42,
+        },
+      ],
+      isResolved: hasNextUnresolvedBreach,
+    }),
+  );
+
+  // Adds a breach with an unresolved breach type
+  if (props.nextUnresolvedBreachType) {
+    mockedBreaches.push(
+      createRandomBreach({
+        dataClassesEffected: [
+          {
+            [BreachDataTypes[props.nextUnresolvedBreachType]]: 42,
+          },
+        ],
+        isResolved: false,
+      }),
+    );
+  }
+
   const mockedScan: OnerepScanRow = {
     created_at: new Date(1998, 2, 31),
     updated_at: new Date(1998, 2, 31),
@@ -89,7 +110,6 @@ const HighRiskBreachWrapper = (props: {
       <HighRiskBreachLayout
         subscriberEmails={[]}
         type={props.type}
-        nextStep={props.nextStep}
         data={data}
       />
     </Shell>
@@ -135,7 +155,7 @@ export const HighRiskBreachDonePasswordsNextStory: Story = {
   name: "2e I. Done (Next step: Passwords)",
   args: {
     type: "done",
-    nextStep: "passwords",
+    nextUnresolvedBreachType: "Passwords",
   },
 };
 
@@ -143,7 +163,7 @@ export const HighRiskBreachDoneSecurityQuestionsNextStory: Story = {
   name: "2e II. Done (Next step: Security questions)",
   args: {
     type: "done",
-    nextStep: "security-questions",
+    nextUnresolvedBreachType: "SecurityQuestions",
   },
 };
 
@@ -151,7 +171,7 @@ export const HighRiskBreachDoneSecurityTipsNextStory: Story = {
   name: "2e III. Done (Next step: Security tips)",
   args: {
     type: "done",
-    nextStep: "security-tips",
+    nextUnresolvedBreachType: "Phone",
   },
 };
 
@@ -159,6 +179,5 @@ export const HighRiskBreachDoneNoNextStepStory: Story = {
   name: "2e IV. Done (Next step: None)",
   args: {
     type: "done",
-    nextStep: "none",
   },
 };
