@@ -17,18 +17,10 @@ type ResolutionContainerProps = {
   illustration: string;
   estimatedTime?: number;
   children: ReactNode;
+  isStepDone: boolean;
   label?: string;
   cta?: ReactNode;
 };
-
-export function withProgressCard(content: ReactNode) {
-  return (
-    <div className={styles.doneContentWrapper}>
-      <div className={styles.doneContent}>{content}</div>
-      <ProgressCard resolvedByYou={3} autoRemoved={10} inProgress={2} />
-    </div>
-  );
-}
 
 export const ResolutionContainer = (props: ResolutionContainerProps) => {
   const l10n = useL10n();
@@ -47,7 +39,14 @@ export const ResolutionContainer = (props: ResolutionContainerProps) => {
       <div className={styles.breachContentWrapper}>
         {props.label && <div className={styles.label}>{props.label}</div>}
         <h3>{props.title}</h3>
-        {props.children}
+        {props.isStepDone ? (
+          <div className={styles.doneContentWrapper}>
+            <div className={styles.doneContent}>{props.children}</div>
+            <ProgressCard resolvedByYou={3} autoRemoved={10} inProgress={2} />
+          </div>
+        ) : (
+          props.children
+        )}
         {props.cta && <div className={styles.buttons}>{props.cta}</div>}
         {props.estimatedTime && (
           <div className={styles.estimatedTime}>

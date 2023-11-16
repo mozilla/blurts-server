@@ -38,20 +38,12 @@ export const stepLinks = [
     id: "HighRiskPin",
   },
   {
-    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/done",
-    id: "HighRiskDone",
-  },
-  {
     href: "/redesign/user/dashboard/fix/leaked-passwords/password",
     id: "LeakedPasswordsPassword",
   },
   {
     href: "/redesign/user/dashboard/fix/leaked-passwords/security-question",
     id: "LeakedPasswordsSecurityQuestion",
-  },
-  {
-    href: "/redesign/user/dashboard/fix/leaked-passwords/done",
-    id: "LeakedPasswordsDone",
   },
   {
     href: "/redesign/user/dashboard/fix/security-recommendations/phone",
@@ -134,35 +126,27 @@ export function isEligibleForStep(
   }
 
   if (
-    [
-      "HighRiskCreditCard",
-      "HighRiskBankAccount",
-      "HighRiskPin",
-      "HighRiskDone",
-    ].includes(stepId)
+    ["HighRiskCreditCard", "HighRiskBankAccount", "HighRiskPin"].includes(
+      stepId,
+    )
   ) {
     // Anyone can view/resolve their high risk data breaches
     return true;
   }
 
   if (
-    [
-      "LeakedPasswordsPassword",
-      "LeakedPasswordsSecurityQuestion",
-      "LeakedPasswordsDone",
-    ].includes(stepId)
+    ["LeakedPasswordsPassword", "LeakedPasswordsSecurityQuestion"].includes(
+      stepId,
+    )
   ) {
     // Anyone can view/resolve their leaked passwords
     return true;
   }
 
   if (
-    [
-      "SecurityTipsPhone",
-      "SecurityTipsEmail",
-      "SecurityTipsIp",
-      "SecurityTipsDone",
-    ].includes(stepId)
+    ["SecurityTipsPhone", "SecurityTipsEmail", "SecurityTipsIp"].includes(
+      stepId,
+    )
   ) {
     // Anyone can view security tips
     return true;
@@ -260,22 +244,12 @@ export function hasCompletedStep(
     return isBreachResolved(HighRiskDataTypes.PIN);
   }
 
-  if (stepId === "HighRiskDone") {
-    // TODO: Temporarily mark as not completed after resolving high risk breaches.
-    return true;
-  }
-
   if (stepId === "LeakedPasswordsPassword") {
     return isBreachResolved(BreachDataTypes.Passwords);
   }
 
   if (stepId === "LeakedPasswordsSecurityQuestion") {
     return isBreachResolved(BreachDataTypes.SecurityQuestions);
-  }
-
-  if (stepId === "LeakedPasswordsDone") {
-    // TODO: Temporarily mark as not completed after resolving leaked passwords.
-    return true;
   }
 
   if (stepId === "SecurityTipsPhone") {

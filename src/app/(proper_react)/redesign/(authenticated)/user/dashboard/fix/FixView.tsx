@@ -69,7 +69,10 @@ export const FixView = (props: FixViewProps) => {
         )}
         {navigationClose()}
         <section className={styles.fixSection}>
-          <div className={styles.viewWrapper}>{props.children}</div>
+          <div className={styles.viewWrapper}>
+            <pre>{JSON.stringify(props.nextStep, null, 2)}</pre>
+            {props.children}
+          </div>
           <Link
             className={`${styles.navArrow} ${styles.navArrowNext}`}
             href={props.nextStep.href}

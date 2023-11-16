@@ -14,7 +14,6 @@ import { FraudAlertModal } from "./FraudAlertModal";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
 import { Button } from "../../../../../../../components/server/Button";
-import { withProgressCard } from "../ResolutionContainer";
 
 export type HighRiskBreachContent = {
   summary: string;
@@ -53,7 +52,7 @@ function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
   if (nextStep === "passwords") {
     return {
       summary: "",
-      description: withProgressCard(
+      description: (
         <>
           <p>
             Doing this work can feel like a lot, but it’s important to do so to
@@ -63,7 +62,7 @@ function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
           <Button variant="primary" small href="" autoFocus={true}>
             Let’s keep going
           </Button>
-        </>,
+        </>
       ),
     };
   }
@@ -72,7 +71,7 @@ function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
   if (nextStep === "security-questions") {
     return {
       summary: "",
-      description: withProgressCard(
+      description: (
         <>
           <p>
             Doing this work can feel like a lot, but it’s important to do so to
@@ -82,7 +81,7 @@ function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
           <Button variant="primary" small href="" autoFocus={true}>
             Let’s keep going
           </Button>
-        </>,
+        </>
       ),
     };
   }
@@ -91,7 +90,7 @@ function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
   if (nextStep === "security-tips") {
     return {
       summary: "",
-      description: withProgressCard(
+      description: (
         <>
           <p>
             Doing this work can feel like a lot, but it’s important to do so to
@@ -104,7 +103,7 @@ function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
           <Button variant="primary" small href="" autoFocus={true}>
             See recommendations
           </Button>
-        </>,
+        </>
       ),
     };
   }
@@ -112,7 +111,7 @@ function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
   // No next steps
   return {
     summary: "",
-    description: withProgressCard(
+    description: (
       <>
         <p>
           Doing this work can feel like a lot, but it’s important to do so to
@@ -125,7 +124,7 @@ function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
         <Button variant="primary" small href="" autoFocus={true}>
           Go to your Dashboard
         </Button>
-      </>,
+      </>
     ),
   };
 }
