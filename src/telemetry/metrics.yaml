@@ -16,7 +16,7 @@ page:
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
-      - TODO
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
       - interaction
     notification_emails:
@@ -62,7 +62,7 @@ dashboard:
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
-      - TODO
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
       - interaction
     notification_emails:
@@ -105,7 +105,7 @@ popup:
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
-      - TODO
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
       - interaction
     notification_emails:
@@ -132,7 +132,7 @@ popup:
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
-      - TODO
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
       - interaction
     notification_emails:
@@ -160,7 +160,7 @@ button:
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
-      - TODO
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
       - interaction
     notification_emails:
@@ -190,7 +190,7 @@ field:
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
-      - TODO
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
       - interaction
     notification_emails:
@@ -220,7 +220,7 @@ link:
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
-      - TODO
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
       - interaction
     notification_emails:
@@ -250,7 +250,7 @@ upgrade_intent:
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
-      - TODO
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
       - interaction
     notification_emails:
@@ -279,7 +279,7 @@ upgrade_intent:
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
-      - TODO
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
       - interaction
     notification_emails:
@@ -307,7 +307,7 @@ expand:
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
-      - TODO
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
       - interaction
     notification_emails:
@@ -337,7 +337,7 @@ collapse:
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
-      - TODO
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
       - interaction
     notification_emails:
@@ -367,7 +367,7 @@ cta_button:
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
-      - TODO
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
       - interaction
     notification_emails:
