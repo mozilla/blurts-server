@@ -29,21 +29,6 @@ page:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      dashboard_tab:
-        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
-        type: string
-      legacy_user:
-        description: True for users who signed up after data broker scanning was released to the welcome flow.
-        type: boolean
-      breach_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
-      legacy_breach_count:
-        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
-        type: quantity
-      broker_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
@@ -90,6 +75,12 @@ dashboard:
       user_id:
         description: Mozilla accounts user ID.
         type: string
+      session_id:
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
       dashboard_tab:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
         type: string
@@ -105,12 +96,6 @@ dashboard:
       broker_count:
         description: Users who run the new free scan will be notified of breaches found during the scan.
         type: quantity
-      session_id:
-        description: An ID that allows us to track “sessions” of the user experience within the product.
-        type: string
-      flow_id:
-        description: A randomly generated unique identifier for following user flows within the FxA system.
-        type: string
 
 popup:
   view:
@@ -133,21 +118,6 @@ popup:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      dashboard_tab:
-        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
-        type: string
-      legacy_user:
-        description: True for users who signed up after data broker scanning was released to the welcome flow.
-        type: boolean
-      breach_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
-      legacy_breach_count:
-        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
-        type: quantity
-      broker_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
@@ -175,21 +145,6 @@ popup:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      dashboard_tab:
-        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
-        type: string
-      legacy_user:
-        description: True for users who signed up after data broker scanning was released to the welcome flow.
-        type: boolean
-      breach_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
-      legacy_breach_count:
-        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
-        type: quantity
-      broker_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
@@ -218,21 +173,6 @@ button:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      dashboard_tab:
-        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
-        type: string
-      legacy_user:
-        description: True for users who signed up after data broker scanning was released to the welcome flow.
-        type: boolean
-      breach_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
-      legacy_breach_count:
-        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
-        type: quantity
-      broker_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
@@ -263,21 +203,6 @@ field:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      dashboard_tab:
-        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
-        type: string
-      legacy_user:
-        description: True for users who signed up after data broker scanning was released to the welcome flow.
-        type: boolean
-      breach_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
-      legacy_breach_count:
-        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
-        type: quantity
-      broker_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
@@ -308,21 +233,6 @@ link:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      dashboard_tab:
-        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
-        type: string
-      legacy_user:
-        description: True for users who signed up after data broker scanning was released to the welcome flow.
-        type: boolean
-      breach_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
-      legacy_breach_count:
-        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
-        type: quantity
-      broker_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
@@ -353,21 +263,6 @@ upgrade_intent:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      dashboard_tab:
-        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
-        type: string
-      legacy_user:
-        description: True for users who signed up after data broker scanning was released to the welcome flow.
-        type: boolean
-      breach_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
-      legacy_breach_count:
-        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
-        type: quantity
-      broker_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
@@ -376,6 +271,7 @@ upgrade_intent:
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
+
   success:
     type: event
     description: |
@@ -396,21 +292,6 @@ upgrade_intent:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      dashboard_tab:
-        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
-        type: string
-      legacy_user:
-        description: True for users who signed up after data broker scanning was released to the welcome flow.
-        type: boolean
-      breach_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
-      legacy_breach_count:
-        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
-        type: quantity
-      broker_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
@@ -439,21 +320,6 @@ expand:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      dashboard_tab:
-        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
-        type: string
-      legacy_user:
-        description: True for users who signed up after data broker scanning was released to the welcome flow.
-        type: boolean
-      breach_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
-      legacy_breach_count:
-        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
-        type: quantity
-      broker_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
@@ -484,21 +350,6 @@ collapse:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      dashboard_tab:
-        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
-        type: string
-      legacy_user:
-        description: True for users who signed up after data broker scanning was released to the welcome flow.
-        type: boolean
-      breach_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
-      legacy_breach_count:
-        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
-        type: quantity
-      broker_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
@@ -529,21 +380,6 @@ cta_button:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      dashboard_tab:
-        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
-        type: string
-      legacy_user:
-        description: True for users who signed up after data broker scanning was released to the welcome flow.
-        type: boolean
-      breach_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
-      legacy_breach_count:
-        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
-        type: quantity
-      broker_count:
-        description: Users who run the new free scan will be notified of breaches found during the scan.
-        type: quantity
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
