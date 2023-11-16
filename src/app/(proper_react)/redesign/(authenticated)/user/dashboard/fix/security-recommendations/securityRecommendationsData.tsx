@@ -10,6 +10,7 @@ import { GuidedExperienceBreaches } from "../../../../../../../functions/server/
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
 import { Button } from "../../../../../../../components/server/Button";
+import { withProgressCard } from "../ResolutionContainer";
 
 export type SecurityRecommendationContent = {
   summary: string;
@@ -173,7 +174,7 @@ function getSecurityRecommendationsByType({
       exposedData: [],
       content: {
         summary: "",
-        description: (
+        description: withProgressCard(
           <>
             <p>
               Nicely done! You’ve reached the end of your steps. You can view
@@ -182,7 +183,7 @@ function getSecurityRecommendationsByType({
             <Button variant="primary" small href="" autoFocus={true}>
               Go to your Dashboard
             </Button>
-          </>
+          </>,
         ),
       },
     },

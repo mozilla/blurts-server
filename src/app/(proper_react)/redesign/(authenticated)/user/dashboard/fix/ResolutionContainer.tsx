@@ -9,6 +9,7 @@ import type { ReactNode } from "react";
 import { ClockIcon } from "../../../../../../components/server/Icons";
 import { useL10n } from "../../../../../../hooks/l10n";
 import styles from "./ResolutionContainer.module.scss";
+import { ProgressCard } from "../../../../../../components/client/ProgressCard";
 
 type ResolutionContainerProps = {
   type: "highRisk" | "leakedPasswords" | "securityRecommendations";
@@ -20,6 +21,15 @@ type ResolutionContainerProps = {
   cta?: ReactNode;
 };
 
+export function withProgressCard(content: ReactNode) {
+  return (
+    <div className={styles.doneContentWrapper}>
+      <div className={styles.doneContent}>{content}</div>
+      <ProgressCard resolvedByYou={3} autoRemoved={10} inProgress={2} />
+    </div>
+  );
+}
+
 export const ResolutionContainer = (props: ResolutionContainerProps) => {
   const l10n = useL10n();
   const estimatedTimeString =
@@ -29,7 +39,11 @@ export const ResolutionContainer = (props: ResolutionContainerProps) => {
 
   return (
     // TODO: Check with design if toolbar should be on this page
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} ${
+        props.illustration ? styles.hasIllustration : ""
+      }`}
+    >
       <div className={styles.breachContentWrapper}>
         {props.label && <div className={styles.label}>{props.label}</div>}
         <h3>{props.title}</h3>
@@ -44,9 +58,11 @@ export const ResolutionContainer = (props: ResolutionContainerProps) => {
           </div>
         )}
       </div>
-      <div className={`${styles.illustrationWrapper} ${styles.hideOnMobile}`}>
-        <Image src={props.illustration} alt="" />
-      </div>
+      {props.illustration && (
+        <div className={`${styles.illustrationWrapper} ${styles.hideOnMobile}`}>
+          <Image src={props.illustration} alt="" />
+        </div>
+      )}
     </div>
   );
 };

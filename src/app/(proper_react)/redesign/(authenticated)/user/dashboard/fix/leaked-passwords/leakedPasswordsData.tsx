@@ -10,6 +10,7 @@ import { GuidedExperienceBreaches } from "../../../../../../../functions/server/
 import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
 import { Button } from "../../../../../../../components/server/Button";
 import { HighRiskBreachDoneTypes } from "../high-risk-data-breaches/highRiskBreachData";
+import { withProgressCard } from "../ResolutionContainer";
 
 export type LeakedPasswordsContent = {
   summary: string;
@@ -39,13 +40,13 @@ function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
   if (nextStep === "security-questions") {
     return {
       summary: "",
-      description: (
+      description: withProgressCard(
         <>
           <p>Now let’s review and update your exposed security questions.</p>
           <Button variant="primary" small href="" autoFocus={true}>
             Let’s keep going
           </Button>
-        </>
+        </>,
       ),
     };
   }
@@ -54,7 +55,7 @@ function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
   if (nextStep === "security-tips") {
     return {
       summary: "",
-      description: (
+      description: withProgressCard(
         <>
           <p>
             Next, we’ll give you personalized security recommendations based on
@@ -63,7 +64,7 @@ function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
           <Button variant="primary" small href="" autoFocus={true}>
             See recommendations
           </Button>
-        </>
+        </>,
       ),
     };
   }
@@ -71,7 +72,7 @@ function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
   // No next steps
   return {
     summary: "",
-    description: (
+    description: withProgressCard(
       <>
         <p>
           Nicely done! You’ve reached the end of your steps. You can view any
@@ -80,7 +81,7 @@ function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
         <Button variant="primary" small href="" autoFocus={true}>
           Go to your Dashboard
         </Button>
-      </>
+      </>,
     ),
   };
 }
