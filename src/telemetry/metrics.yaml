@@ -14,7 +14,7 @@ page:
     description: |
       A web page view event distinguishable by the page’s URL.
     bugs:
-      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_reviews:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
@@ -60,7 +60,7 @@ dashboard:
     description: |
       A view event of a Monitor user’s dashboard, where a user is able to view their data breaches and broker information.
     bugs:
-      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_reviews:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
@@ -103,7 +103,7 @@ popup:
     description: |
       A view of a popup on a webpage or dashboard view.
     bugs:
-      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_reviews:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
@@ -130,7 +130,7 @@ popup:
     description: |
       An exit of a popup on a webpage or dashboard view.
     bugs:
-      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_reviews:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
@@ -158,7 +158,7 @@ button:
     description: |
       A click on a button that doesn’t fall into one of the two other button categories (call-to-action (CTA) or purchase intent).
     bugs:
-      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_reviews:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
@@ -188,7 +188,7 @@ field:
     description: |
       An engagement of focus into a text field on a webpage.
     bugs:
-      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_reviews:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
@@ -218,7 +218,7 @@ link:
     description: |
       A click on a link on a webpage that redirects to a different webpage.
     bugs:
-      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_reviews:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
@@ -248,7 +248,7 @@ upgrade_intent:
     description: |
       A click on a button that indicates an intent to purchase or upgrade to the paid experience.
     bugs:
-      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_reviews:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
@@ -277,7 +277,7 @@ upgrade_intent:
     description: |
       An event that indicates the successfully upgrade of the user’s plan
     bugs:
-      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_reviews:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
@@ -305,7 +305,7 @@ expand:
     description: |
       A click to expand a section of the webpage.
     bugs:
-      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_reviews:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
@@ -335,7 +335,7 @@ collapse:
     description: |
       A click to collapse a section on the webpage.
     bugs:
-      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_reviews:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
@@ -365,7 +365,7 @@ cta_button:
     description: |
       A click on a button that has a specific call-to-action.
     bugs:
-      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_reviews:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
