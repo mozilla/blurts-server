@@ -221,15 +221,18 @@ export async function poll(subClient, receivedMessages) {
                   email: data.recipientEmail,
                   notificationType: "incident",
                 });
+
+                const emailTemplate = getTemplate(
+                  data,
+                  breachAlertEmailPartial,
+                );
+                const subject = getMessage("breach-alert-subject");
+
+                await sendEmail(data.recipientEmail, subject, emailTemplate);
               } catch (e) {
                 console.error("Failed to add email notification to table: ", e);
-                throw new Error(e);
+                setTimeout(process.exit, 1000);
               }
-
-              const emailTemplate = getTemplate(data, breachAlertEmailPartial);
-              const subject = getMessage("breach-alert-subject");
-
-              await sendEmail(data.recipientEmail, subject, emailTemplate);
 
               // mark email as notified in database
               // if this call ever fails, stop stop the script with an error
