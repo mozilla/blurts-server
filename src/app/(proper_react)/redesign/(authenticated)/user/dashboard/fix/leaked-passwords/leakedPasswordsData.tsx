@@ -31,8 +31,14 @@ export type LeakedPasswordsContent = {
   };
 };
 
+<<<<<<< HEAD
 export type LeakedPassword = {
   id: number;
+=======
+export type LeakedPasswordsTypes = "passwords" | "security-question";
+
+export type LeakedPasswordsLayout = {
+>>>>>>> 546acaf11 (switch between security questions and passwords)
   type: LeakedPasswordsTypes;
   title: string;
   illustration: string;
@@ -251,7 +257,11 @@ function getLeakedPasswords({
     (content) => content.type === dataType,
   );
 
-  return { unresolvedPasswordBreachContent, unresolvedPasswordBreach };
+  return {
+    unresolvedPasswordBreachContent,
+    unresolvedPasswordBreach,
+    unresolvedSecurityQuestionsBreach,
+  };
 }
 
 export { getLeakedPasswords };

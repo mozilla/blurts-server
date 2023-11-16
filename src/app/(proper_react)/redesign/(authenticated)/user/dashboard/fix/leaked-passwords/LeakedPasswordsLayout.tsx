@@ -9,6 +9,7 @@ import { ResolutionContent } from "../ResolutionContent";
 import { Button } from "../../../../../../../components/server/Button";
 import { useL10n } from "../../../../../../../hooks/l10n";
 import {
+  LeakedPassword,
   LeakedPasswordsTypes,
   getLeakedPasswords,
 } from "./leakedPasswordsData";
@@ -18,7 +19,7 @@ import {
   StepDeterminationData,
   StepLink,
   getNextGuidedStep,
-  hasCompleted,
+  hasCompletedStep,
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../FixView";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
@@ -75,15 +76,27 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     subscriberBreaches,
     props.subscriberEmails,
   );
+<<<<<<< HEAD
 
   const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
   const pageData = getLeakedPasswords({
+=======
+  const stepMap: Record<LeakedPasswordsTypes, StepLink["id"]> = {
+    passwords: "LeakedPasswordsPassword",
+    "security-question": "LeakedPasswordsSecurityQuestion",
+  };
+  const l10n = useL10n();
+  const [emailAffected, setEmailAffected] = useState<string>();
+  const stepCompleted = hasCompletedStep(props.data, "LeakedPasswordsPassword");
+  const [pageDataContent, setPageDataContent] = useState<LeakedPassword>({
+>>>>>>> 546acaf11 (switch between security questions and passwords)
     dataType: props.type,
     breaches: guidedExperienceBreaches,
     l10n: l10n,
     nextStep,
   });
 
+<<<<<<< HEAD
   // The non-null assertion here should be safe since we already did this check
   // in `./[type]/page.tsx`:
   const { title, illustration, content } = pageData!;
@@ -128,12 +141,120 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         estimatedTime={!isStepDone ? 4 : undefined}
         isStepDone={isStepDone}
         data={props.data}
+=======
+  const pageData = getLeakedPasswords(pageDataContent);
+
+  // let pageData = getLeakedPasswords({
+  //   dataType: props.type,
+  //   breaches: guidedExperienceBreaches,
+  //   l10n: l10n,
+  //   emailAffected: emailAffected ?? "",
+  // });
+
+  const unresolvedPasswordBreachContent =
+    pageData.unresolvedPasswordBreachContent;
+  const unresolvedPasswordBreach =
+    props.type === "passwords"
+      ? pageData.unresolvedPasswordBreach
+      : pageData.unresolvedSecurityQuestionsBreach;
+  const resolvedDataClassName =
+    props.type === "passwords" ? "passwords" : "security-questions-and-answers";
+
+  useEffect(() => {
+    if (emailAffected) {
+      const newPageData = {
+        dataType: props.type,
+        breaches: guidedExperienceBreaches,
+        l10n: l10n,
+        emailAffected: emailAffected,
+      };
+      setPageDataContent(newPageData);
+    }
+  }, [emailAffected]);
+
+  useEffect(() => {
+    if (unresolvedPasswordBreach) {
+      props.subscriberEmails.forEach((email: string) => {
+        if (unresolvedPasswordBreach.emailsAffected.includes(email)) {
+          setEmailAffected(email);
+        }
+      });
+    }
+  }, [unresolvedPasswordBreach, props.subscriberEmails]);
+
+  const handleUpdateBreachStatus = (stepCompleted: boolean) => {
+    if (!stepCompleted) {
+      if (emailAffected) {
+        updateBreachStatus(
+          emailAffected,
+          unresolvedPasswordBreach.id,
+          resolvedDataClassName,
+        )
+          .then(() => {
+            const updatedSubscriberBreaches = subscriberBreaches.map(
+              (subscriberBreach) => {
+                if (subscriberBreach.id === unresolvedPasswordBreach.id) {
+                  subscriberBreach.resolvedDataClasses.push("passwords");
+                }
+                return subscriberBreach;
+              },
+            );
+            setSubscriberBreaches(updatedSubscriberBreaches);
+          })
+          .catch((error) => {
+            console.error("Error updating breach status", error);
+          });
+        return;
+      }
+    }
+    window.location.href = getNextGuidedStep(
+      props.data,
+      stepMap[props.type],
+    ).href;
+  };
+
+  return (
+    unresolvedPasswordBreach &&
+    unresolvedPasswordBreachContent && (
+      <FixView
+        subscriberEmails={props.subscriberEmails}
+        data={props.data}
+        nextStepHref={getNextGuidedStep(props.data, stepMap[props.type]).href}
+        currentSection="leaked-passwords"
+>>>>>>> 546acaf11 (switch between security questions and passwords)
       >
-        <ResolutionContent
-          content={unresolvedPasswordBreachContent.content}
-          locale={getLocale(l10n)}
-        />
-      </ResolutionContainer>
-    </FixView>
+        <ResolutionContainer
+          type="leakedPasswords"
+          title={unresolvedPasswordBreachContent.title}
+          illustration={unresolvedPasswordBreachContent.illustration}
+          cta={
+            <>
+              <Button
+                variant="primary"
+                small
+                // TODO: Add test once MNTOR-1700 logic is added
+                /* c8 ignore next 3 */
+                onPress={() => handleUpdateBreachStatus(stepCompleted)}
+                autoFocus={true}
+              >
+                {l10n.getString("leaked-passwords-mark-as-fixed")}
+              </Button>
+              <Link
+                // TODO: Add test once MNTOR-1700 logic is added
+                href="/"
+              >
+                {l10n.getString("leaked-passwords-skip")}
+              </Link>
+            </>
+          }
+          estimatedTime={4}
+        >
+          <ResolutionContent
+            content={unresolvedPasswordBreachContent.content}
+            locale={getLocale(l10n)}
+          />
+        </ResolutionContainer>
+      </FixView>
+    )
   );
 }
