@@ -12,7 +12,7 @@ page:
   view:
     type: event
     description: |
-      An event triggered when the page is loaded.
+      A web page view event distinguishable by the page’s URL.
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
@@ -66,11 +66,50 @@ page:
         description: The referring URL, if any.
         type: string
 
+dashboard:
+  view:
+    type: event
+    description: |
+      A view event of a Monitor user’s dashboard, where a user is able to view their data breaches and broker information.
+    bugs:
+      - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
+    data_reviews:
+      - TODO
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID.
+        type: string
+      dashboard_tab:
+        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
+        type: string
+      legacy_user:
+        description: This date is used to direct users who signed up after data broker scanning was released to the welcome flow.
+        type: boolean
+      breach_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      legacy_breach_count:
+        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
+        type: quantity
+      broker_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      session_id:
+        description: A flow ID (or similar) that allows us to track “sessions” of the user experience within the product.
+
 popup:
   view:
     type: event
     description: |
-      A view of a popup, generated from clicking a button on a page view.
+      A view of a popup on a webpage or dashboard view.
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
@@ -108,7 +147,7 @@ popup:
   exit:
     type: event
     description: |
-      An exit of a popup.
+      An exit of a popup on a webpage or dashboard view.
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
@@ -148,7 +187,7 @@ button:
   click:
     type: event
     description: |
-      A click on a button (one that doesn’t fall into the CTA or purchase intent category).
+      A click on a button that doesn’t fall into one of the two other button categories (call-to-action (CTA) or purchase intent).
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
@@ -189,7 +228,7 @@ field:
   focus:
     type: event
     description: |
-      A click to focus into a text field on the webpage.
+      An engagement of focus into a text field on a webpage.
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
@@ -231,7 +270,7 @@ link:
   click:
     type: event
     description: |
-      A click on a link.
+      A click on a link on a webpage that redirects to a different webpage.
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
@@ -273,7 +312,7 @@ upgrade_intent:
   click:
     type: event
     description: |
-      A click on a button that indicates an intent to purchase or upgrade out of the freemium experience.
+      A click on a button that indicates an intent to purchase or upgrade to the paid experience.
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
@@ -310,11 +349,10 @@ upgrade_intent:
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
-
   success:
     type: event
     description: |
-      An event that indicates the successfully upgrade of the user’s plan.
+      An event that indicates the successfully upgrade of the user’s plan
     bugs:
       - https://mozilla-hub.atlassian.net/browse/MNTOR-2399
     data_reviews:
