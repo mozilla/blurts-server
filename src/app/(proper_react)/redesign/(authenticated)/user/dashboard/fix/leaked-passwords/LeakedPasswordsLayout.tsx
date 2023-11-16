@@ -21,13 +21,11 @@ import {
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../FixView";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
-import { HighRiskBreachDoneTypes } from "../high-risk-data-breaches/highRiskBreachData";
 
 export interface LeakedPasswordsLayoutProps {
   type: LeakedPasswordsTypes;
   subscriberEmails: string[];
   data: StepDeterminationData;
-  nextStep?: HighRiskBreachDoneTypes;
 }
 
 export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
@@ -46,11 +44,12 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     props.subscriberEmails,
   );
 
+  const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
   const pageData = getLeakedPasswords({
     dataType: props.type,
     breaches: guidedExperienceBreaches,
     l10n: l10n,
-    nextStep: props.nextStep,
+    nextStep,
   });
 
   // The non-null assertion here should be safe since we already did this check
@@ -63,7 +62,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     <FixView
       subscriberEmails={props.subscriberEmails}
       data={props.data}
-      nextStep={getNextGuidedStep(props.data, stepMap[props.type])}
+      nextStep={nextStep}
       currentSection="leaked-passwords"
       hideProgressIndicator={isStepDone}
     >

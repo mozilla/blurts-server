@@ -12,10 +12,7 @@ import { getEnL10nSync } from "../../../../../../../../functions/server/mockL10n
 import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
 import { HighRiskBreachTypes } from "../highRiskBreachData";
 import { BreachDataTypes } from "../../../../../../../../functions/universal/breach";
-import {
-  StepDeterminationData,
-  StepLink,
-} from "../../../../../../../../functions/server/getRelevantGuidedSteps";
+import { StepDeterminationData } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { OnerepScanRow } from "knex/types/tables";
 
 const user = createUserWithPremiumSubscription();
@@ -27,7 +24,6 @@ const mockedSession = {
 
 const HighRiskBreachWrapper = (props: {
   type: HighRiskBreachTypes;
-  nextStep: StepLink;
   scanStatus?: "empty" | "not_started" | "unavailable";
   nextUnresolvedBreachType?: keyof typeof BreachDataTypes;
 }) => {

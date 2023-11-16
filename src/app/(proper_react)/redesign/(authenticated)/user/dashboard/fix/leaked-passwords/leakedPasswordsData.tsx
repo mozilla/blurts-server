@@ -9,7 +9,7 @@ import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreach
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
 import { Button } from "../../../../../../../components/server/Button";
-import { HighRiskBreachDoneTypes } from "../high-risk-data-breaches/highRiskBreachData";
+import { StepLink } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 
 export type LeakedPasswordsContent = {
   summary: string;
@@ -35,9 +35,9 @@ export type LeakedPassword = {
   content: LeakedPasswordsContent;
 };
 
-function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
+function getDoneStepContent(nextStep?: StepLink) {
   // Security questions next
-  if (nextStep === "security-questions") {
+  if (nextStep?.id === "LeakedPasswordsSecurityQuestion") {
     return {
       summary: "",
       description: (
@@ -52,7 +52,12 @@ function getDoneStepContent(nextStep?: HighRiskBreachDoneTypes) {
   }
 
   // Security tips next
-  if (nextStep === "security-tips") {
+  if (
+    nextStep &&
+    ["SecurityTipsPhone", "SecurityTipsEmail", "SecurityTipsIp"].includes(
+      nextStep.id,
+    )
+  ) {
     return {
       summary: "",
       description: (
@@ -95,7 +100,7 @@ function getLeakedPasswords({
   dataType: string;
   breaches: GuidedExperienceBreaches;
   l10n: ExtendedReactLocalization;
-  nextStep?: HighRiskBreachDoneTypes;
+  nextStep?: StepLink;
 }) {
   const findFirstUnresolvedBreach = (breachClassType: LeakedPasswordsTypes) => {
     const leakedPasswordType =
@@ -105,7 +110,7 @@ function getLeakedPasswords({
     );
   };
 
-  const unresolvedPasswordBreach = findFirstUnresolvedBreach("password");
+  const unresolvedPasswordBreach = findFirstUnresolvedBreach("passwords");
   const unresolvedSecurityQuestionsBreach =
     findFirstUnresolvedBreach("security-questions");
   // This env var is always defined in test, so the other branch can't be covered:

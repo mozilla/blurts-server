@@ -12,21 +12,6 @@ import { getEnL10nSync } from "../../../../../../../../functions/server/mockL10n
 import { LeakedPasswordsLayout } from "../LeakedPasswordsLayout";
 import { LeakedPasswordsTypes } from "../leakedPasswordsData";
 import { BreachDataTypes } from "../../../../../../../../functions/universal/breach";
-import { HighRiskBreachDoneTypes } from "../../high-risk-data-breaches/highRiskBreachData";
-
-const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
-// Ensure all leaked passwords data breaches are present in at least one breach:
-mockedBreaches.push(
-  createRandomBreach({
-    dataClassesEffected: [
-      {
-        [BreachDataTypes.Passwords]: 42,
-        [BreachDataTypes.SecurityQuestions]: 42,
-      },
-    ],
-    isResolved: false,
-  }),
-);
 
 const user = createUserWithPremiumSubscription();
 
@@ -37,8 +22,42 @@ const mockedSession = {
 
 const LeakedPasswordsWrapper = (props: {
   type: LeakedPasswordsTypes;
-  nextStep: HighRiskBreachDoneTypes;
+  nextUnresolvedBreachType?: keyof typeof BreachDataTypes;
 }) => {
+  const hasNextUnresolvedBreach = props.nextUnresolvedBreachType !== null;
+  const mockedBreaches = [...Array(5)].map(() =>
+    createRandomBreach({
+      isResolved: hasNextUnresolvedBreach,
+    }),
+  );
+
+  // Ensure all leaked passwords data breaches are present in at least one breach:
+  mockedBreaches.push(
+    createRandomBreach({
+      dataClassesEffected: [
+        {
+          [BreachDataTypes.Passwords]: 42,
+          [BreachDataTypes.SecurityQuestions]: 42,
+        },
+      ],
+      isResolved: false,
+    }),
+  );
+
+  // Adds a breach with an unresolved breach type
+  if (props.nextUnresolvedBreachType) {
+    mockedBreaches.push(
+      createRandomBreach({
+        dataClassesEffected: [
+          {
+            [BreachDataTypes[props.nextUnresolvedBreachType]]: 42,
+          },
+        ],
+        isResolved: false,
+      }),
+    );
+  }
+
   return (
     <Shell
       l10n={getEnL10nSync()}
@@ -56,7 +75,6 @@ const LeakedPasswordsWrapper = (props: {
           subscriberBreaches: mockedBreaches,
           user: mockedSession.user,
         }}
-        nextStep={props.nextStep}
       />
     </Shell>
   );
@@ -72,7 +90,7 @@ type Story = StoryObj<typeof LeakedPasswordsWrapper>;
 export const PasswordsStory: Story = {
   name: "3a. Passwords",
   args: {
-    type: "password",
+    type: "passwords",
   },
 };
 
@@ -80,7 +98,7 @@ export const PasswordsDoneSecurityQuestionsNextStory: Story = {
   name: "3b I. Done (Next step: Security questions)",
   args: {
     type: "passwords-done",
-    nextStep: "security-questions",
+    nextUnresolvedBreachType: "SecurityQuestions",
   },
 };
 
@@ -88,7 +106,7 @@ export const PasswordsDoneSecurityTipsNextStory: Story = {
   name: "3b II. Done (Next step: Security tips)",
   args: {
     type: "passwords-done",
-    nextStep: "security-tips",
+    nextUnresolvedBreachType: "Email",
   },
 };
 
@@ -96,7 +114,6 @@ export const PasswordsDoneNoNextStepStory: Story = {
   name: "3b III. Done (Next step: None)",
   args: {
     type: "security-questions-done",
-    nextStep: "none",
   },
 };
 
@@ -111,7 +128,7 @@ export const SecurityQuestionsDoneSecurityTipsNextStory: Story = {
   name: "3d I. Done (Next step: Security tips)",
   args: {
     type: "security-questions-done",
-    nextStep: "security-tips",
+    nextUnresolvedBreachType: "IP",
   },
 };
 
@@ -119,6 +136,5 @@ export const SecurityQuestionsDoneNoNextStepStory: Story = {
   name: "3d II. Done (Next step: None)",
   args: {
     type: "security-questions-done",
-    nextStep: "none",
   },
 };
