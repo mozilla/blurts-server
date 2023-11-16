@@ -63,6 +63,7 @@ export function SecurityRecommendationsLayout(
       nextStep={getNextGuidedStep(props.data, stepMap[props.type])}
       currentSection="security-recommendations"
       hideProgressIndicator={isStepDone}
+      showConfetti={isStepDone}
     >
       <ResolutionContainer
         label={

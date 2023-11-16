@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 
   @media screen and (min-width: $screen-md) {
     padding: $layout-sm;

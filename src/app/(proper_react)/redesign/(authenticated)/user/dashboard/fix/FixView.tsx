@@ -7,6 +7,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ReactNode } from "react";
+import { Confetti } from "../../../../../../components/client/Confetti";
 import { FixNavigation } from "../../../../../../components/client/FixNavigation";
 import styles from "./fix.module.scss";
 import ImageArrowRight from "./images/icon-arrow-right.svg";
@@ -28,6 +29,7 @@ export type FixViewProps = {
     | "leaked-passwords"
     | "security-recommendations";
   hideProgressIndicator?: boolean;
+  showConfetti?: boolean;
 };
 
 export const FixView = (props: FixViewProps) => {
@@ -52,6 +54,7 @@ export const FixView = (props: FixViewProps) => {
 
   return (
     <div className={styles.fixContainer}>
+      {props.showConfetti && <Confetti />}
       <div
         className={`${styles.fixWrapper} ${
           isResolutionLayout ? styles.highRiskDataBreachContentBg : ""
