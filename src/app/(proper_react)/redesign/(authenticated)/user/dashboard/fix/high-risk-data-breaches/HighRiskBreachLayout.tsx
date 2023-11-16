@@ -67,7 +67,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
     <FixView
       subscriberEmails={props.subscriberEmails}
       data={props.data}
-      nextStepHref={getNextGuidedStep(props.data, stepMap[props.type]).href}
+      nextStep={getNextGuidedStep(props.data, stepMap[props.type])}
       currentSection="high-risk-data-breach"
       hideProgressIndicator={isStepDone}
     >

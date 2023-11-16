@@ -62,7 +62,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     <FixView
       subscriberEmails={props.subscriberEmails}
       data={props.data}
-      nextStepHref={getNextGuidedStep(props.data, stepMap[props.type]).href}
+      nextStep={getNextGuidedStep(props.data, stepMap[props.type])}
       currentSection="leaked-passwords"
       hideProgressIndicator={isStepDone}
     >

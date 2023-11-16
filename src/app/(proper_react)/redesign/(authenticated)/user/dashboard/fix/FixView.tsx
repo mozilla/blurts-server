@@ -12,13 +12,16 @@ import styles from "./fix.module.scss";
 import ImageArrowRight from "./images/icon-arrow-right.svg";
 import ImageClose from "./images/icon-close.svg";
 import { useL10n } from "../../../../../../hooks/l10n";
-import { StepDeterminationData } from "../../../../../../functions/server/getRelevantGuidedSteps";
+import {
+  StepDeterminationData,
+  StepLink,
+} from "../../../../../../functions/server/getRelevantGuidedSteps";
 
 export type FixViewProps = {
   children: ReactNode;
   subscriberEmails: string[];
   data: StepDeterminationData;
-  nextStepHref: string;
+  nextStep: StepLink;
   currentSection:
     | "data-broker-profiles"
     | "high-risk-data-breach"
@@ -69,7 +72,7 @@ export const FixView = (props: FixViewProps) => {
           <div className={styles.viewWrapper}>{props.children}</div>
           <Link
             className={`${styles.navArrow} ${styles.navArrowNext}`}
-            href={props.nextStepHref}
+            href={props.nextStep.href}
             aria-label={l10n.getString("guided-resolution-flow-next-arrow")}
           >
             <Image alt="" src={ImageArrowRight} />

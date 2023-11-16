@@ -60,7 +60,7 @@ export function SecurityRecommendationsLayout(
     <FixView
       subscriberEmails={props.subscriberEmails}
       data={props.data}
-      nextStepHref={getNextGuidedStep(props.data, stepMap[props.type]).href}
+      nextStep={getNextGuidedStep(props.data, stepMap[props.type])}
       currentSection="security-recommendations"
       hideProgressIndicator={isStepDone}
     >
