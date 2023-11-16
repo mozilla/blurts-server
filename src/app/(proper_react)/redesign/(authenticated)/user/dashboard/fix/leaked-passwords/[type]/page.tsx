@@ -18,12 +18,10 @@ import { getCountryCode } from "../../../../../../../../functions/server/getCoun
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
 import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
 import { getL10n } from "../../../../../../../../functions/server/l10n";
-import { HighRiskBreachDoneTypes } from "../../high-risk-data-breaches/highRiskBreachData";
 
 interface LeakedPasswordsProps {
   params: {
     type: LeakedPasswordsTypes;
-    nextStep: HighRiskBreachDoneTypes;
   };
 }
 
