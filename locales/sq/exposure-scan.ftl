@@ -11,7 +11,7 @@ exposure-landing-result-error = Diç shkoi ters, teksa kontrollohej për cenime.
 exposure-landing-result-hero-heading =
     { $count ->
         [one] Gjetëm <email>{ $email }</email> të ekspozuar në <count>1</count> cenim të dhënash.
-       *[other] Gjetëm <email>{ $email }</email> të ekspozuar në <count>1</count> cenime të dhënash.
+       *[other] Gjetëm <email>{ $email }</email> të ekspozuar në <count>{ $count }</count> cenime të dhënash.
     }
 exposure-landing-result-card-added = Shkelje e Shtuar Më:
 exposure-landing-result-card-data = Të dhëna të Ekspozuara:
