@@ -20,6 +20,10 @@
     background-position: center;
     position: relative;
     background-image: url("./images/content-background.svg");
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-height: $content-sm;
 
     &.contentBackgroundImage {
       background-image: url("./images/high-risk-breaches-content-background.svg");
