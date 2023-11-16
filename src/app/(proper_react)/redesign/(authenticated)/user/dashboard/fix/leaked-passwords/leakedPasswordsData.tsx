@@ -31,14 +31,8 @@ export type LeakedPasswordsContent = {
   };
 };
 
-<<<<<<< HEAD
 export type LeakedPassword = {
   id: number;
-=======
-export type LeakedPasswordsTypes = "passwords" | "security-question";
-
-export type LeakedPasswordsLayout = {
->>>>>>> 546acaf11 (switch between security questions and passwords)
   type: LeakedPasswordsTypes;
   title: string;
   illustration: string;

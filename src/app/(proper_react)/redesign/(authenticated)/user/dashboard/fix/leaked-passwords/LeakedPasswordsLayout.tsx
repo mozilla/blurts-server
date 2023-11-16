@@ -87,7 +87,10 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   };
   const l10n = useL10n();
   const [emailAffected, setEmailAffected] = useState<string>();
+  // Pass the correct type don't hardcode
   const stepCompleted = hasCompletedStep(props.data, "LeakedPasswordsPassword");
+  console.log(props.type);
+  console.log(stepCompleted);
   const [pageDataContent, setPageDataContent] = useState<LeakedPassword>({
 >>>>>>> 546acaf11 (switch between security questions and passwords)
     dataType: props.type,
@@ -144,19 +147,11 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
 =======
   const pageData = getLeakedPasswords(pageDataContent);
 
-  // let pageData = getLeakedPasswords({
-  //   dataType: props.type,
-  //   breaches: guidedExperienceBreaches,
-  //   l10n: l10n,
-  //   emailAffected: emailAffected ?? "",
-  // });
-
   const unresolvedPasswordBreachContent =
     pageData.unresolvedPasswordBreachContent;
   const unresolvedPasswordBreach =
-    props.type === "passwords"
-      ? pageData.unresolvedPasswordBreach
-      : pageData.unresolvedSecurityQuestionsBreach;
+    pageData.unresolvedPasswordBreach ??
+    pageData.unresolvedSecurityQuestionsBreach;
   const resolvedDataClassName =
     props.type === "passwords" ? "passwords" : "security-questions-and-answers";
 
@@ -199,7 +194,19 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
                 return subscriberBreach;
               },
             );
-            setSubscriberBreaches(updatedSubscriberBreaches);
+            const isComplete = hasCompletedStep(
+              { ...props.data, subscriberBreaches: updatedSubscriberBreaches },
+              "LeakedPasswordsPassword",
+            );
+
+            if (!isComplete) {
+              setSubscriberBreaches(updatedSubscriberBreaches);
+            } else {
+              window.location.href = getNextGuidedStep(
+                props.data,
+                stepMap[props.type],
+              ).href;
+            }
           })
           .catch((error) => {
             console.error("Error updating breach status", error);
@@ -213,6 +220,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     ).href;
   };
 
+  console.log(unresolvedPasswordBreach);
   return (
     unresolvedPasswordBreach &&
     unresolvedPasswordBreachContent && (
