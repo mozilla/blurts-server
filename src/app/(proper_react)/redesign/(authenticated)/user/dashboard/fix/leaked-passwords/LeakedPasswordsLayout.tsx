@@ -167,8 +167,6 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     }
   }, [emailAffected]);
 
-  // This should only run once per page load
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (unresolvedPasswordBreach) {
       props.subscriberEmails.forEach((email: string) => {
