@@ -53,7 +53,7 @@ it("passes the axe accessibility test suite for PIN breaches", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for the high-risk celebration view, next step is passwords)", async () => {
+it("passes the axe accessibility test suite for the high-risk celebration view, next step is passwords", async () => {
   const ComposedHighRiskDataBreachComponent = composeStory(
     HighRiskBreachDonePasswordsNextStory,
     Meta,
@@ -62,7 +62,7 @@ it("passes the axe accessibility test suite for the high-risk celebration view, 
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for the high-risk celebration view, next step is security questions)", async () => {
+it("passes the axe accessibility test suite for the high-risk celebration view, next step is security questions", async () => {
   const ComposedHighRiskDataBreachComponent = composeStory(
     HighRiskBreachDoneSecurityQuestionsNextStory,
     Meta,
@@ -71,7 +71,7 @@ it("passes the axe accessibility test suite for the high-risk celebration view, 
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for the high-risk celebration view, next step is security tips)", async () => {
+it("passes the axe accessibility test suite for the high-risk celebration view, next step is security tips", async () => {
   const ComposedHighRiskDataBreachComponent = composeStory(
     HighRiskBreachDoneSecurityTipsNextStory,
     Meta,
@@ -80,7 +80,7 @@ it("passes the axe accessibility test suite for the high-risk celebration view, 
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for the high-risk celebration view, no next step)", async () => {
+it("passes the axe accessibility test suite for the high-risk celebration view, no next step", async () => {
   const ComposedHighRiskDataBreachComponent = composeStory(
     HighRiskBreachDoneNoNextStepStory,
     Meta,

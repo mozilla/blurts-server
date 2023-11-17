@@ -168,7 +168,7 @@ function getSecurityRecommendationsByType({
     },
     {
       type: "done",
-      title: "You’ve completed all your recommendations",
+      title: "You’ve completed all your recommendations!",
       illustration: "",
       exposedData: [],
       content: {

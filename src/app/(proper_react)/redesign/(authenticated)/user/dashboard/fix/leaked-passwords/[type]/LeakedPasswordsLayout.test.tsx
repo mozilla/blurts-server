@@ -22,69 +22,56 @@ beforeEach(() => {
 });
 
 it("leaked passwords component passes the axe accessibility test suite", async () => {
-  const ComposedLeakedPasswordsDataBreachComponent = composeStory(
-    PasswordsStory,
-    Meta,
-  );
-  const { container } = render(<ComposedLeakedPasswordsDataBreachComponent />);
+  const ComposedComponent = composeStory(PasswordsStory, Meta);
+  const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("security questions component passes the axe accessibility test suite", async () => {
-  const ComposedLeakedPasswordsDataBreachComponent = composeStory(
-    SecurityQuestionsStory,
-    Meta,
-  );
-  const { container } = render(<ComposedLeakedPasswordsDataBreachComponent />);
+  const ComposedComponent = composeStory(SecurityQuestionsStory, Meta);
+  const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for the leaked passwords celebration view, next step is security questions)", async () => {
-  const ComposedLeakedPasswordsDataBreachComponent = composeStory(
+it("passes the axe accessibility test suite for the leaked passwords celebration view, next step is security questions", async () => {
+  const ComposedComponent = composeStory(
     PasswordsDoneSecurityQuestionsNextStory,
     Meta,
   );
-  const { container } = render(<ComposedLeakedPasswordsDataBreachComponent />);
+  const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for the leaked passwords celebration view, next step is security tips)", async () => {
-  const ComposedLeakedPasswordsDataBreachComponent = composeStory(
+it("passes the axe accessibility test suite for the leaked passwords celebration view, next step is security tips", async () => {
+  const ComposedComponent = composeStory(
     PasswordsDoneSecurityTipsNextStory,
     Meta,
   );
-  const { container } = render(<ComposedLeakedPasswordsDataBreachComponent />);
+  const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for the leaked passwords celebration view, no next step)", async () => {
-  const ComposedLeakedPasswordsDataBreachComponent = composeStory(
-    PasswordsDoneNoNextStepStory,
-    Meta,
-  );
-  const { container } = render(<ComposedLeakedPasswordsDataBreachComponent />);
+it("passes the axe accessibility test suite for the leaked passwords celebration view, no next step", async () => {
+  const ComposedComponent = composeStory(PasswordsDoneNoNextStepStory, Meta);
+  const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for the security questions celebration view, next step is security tips)", async () => {
-  const ComposedSecurityQuestionsDataBreachComponent = composeStory(
+it("passes the axe accessibility test suite for the security questions celebration view, next step is security tips", async () => {
+  const ComposedComponent = composeStory(
     SecurityQuestionsDoneSecurityTipsNextStory,
     Meta,
   );
-  const { container } = render(
-    <ComposedSecurityQuestionsDataBreachComponent />,
-  );
+  const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for the security questions celebration view, no next step)", async () => {
-  const ComposedSecurityQuestionsDataBreachComponent = composeStory(
+it("passes the axe accessibility test suite for the security questions celebration view, no next step", async () => {
+  const ComposedComponent = composeStory(
     SecurityQuestionsDoneNoNextStepStory,
     Meta,
   );
-  const { container } = render(
-    <ComposedSecurityQuestionsDataBreachComponent />,
-  );
+  const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
