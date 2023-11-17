@@ -69,6 +69,7 @@ async function getEmailAddressRecordByEmail (email) {
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function addSubscriberUnverifiedEmailHash (user, email) {
+  const lowerCaseEmail = email.toLowerCase()
   const res = await knex.transaction(trx => {
     return trx('email_addresses')
       .forUpdate()
@@ -77,13 +78,13 @@ async function addSubscriberUnverifiedEmailHash (user, email) {
       })
       .insert({
         subscriber_id: user.id,
-        email,
-        sha1: getSha1(email),
+        email: lowerCaseEmail,
+        sha1: getSha1(lowerCaseEmail),
         verification_token: uuidv4(),
         verified: false
       }).returning('*')
   })
-  return await res[0]
+  return res[0]
 }
 /* c8 ignore stop */
 
@@ -222,7 +223,8 @@ async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function addSubscriber (email, signupLanguage, fxaAccessToken = null, fxaRefreshToken = null, fxaProfileData = null) {
-  const emailHash = await _addEmailHash(getSha1(email), email, signupLanguage, true)
+  const lowerCaseEmail = email.toLowerCase()
+  const emailHash = await _addEmailHash(getSha1(lowerCaseEmail), lowerCaseEmail, signupLanguage, true)
   const verified = await _verifySubscriber(emailHash)
   const verifiedSubscriber = Array.isArray(verified) ? verified[0] : null
   if (fxaRefreshToken || fxaProfileData) {

@@ -12,17 +12,22 @@ import { getEnL10nSync } from "../../../../../../../../functions/server/mockL10n
 import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
 import { HighRiskBreachTypes } from "../highRiskBreachData";
 import { BreachDataTypes } from "../../../../../../../../functions/universal/breach";
+import { StepDeterminationData } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
+import { OnerepScanRow } from "knex/types/tables";
 
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
 // Ensure all high-risk data breaches are present in at least one breach:
 mockedBreaches.push(
   createRandomBreach({
-    dataClasses: [
-      BreachDataTypes.SSN,
-      BreachDataTypes.CreditCard,
-      BreachDataTypes.BankAccount,
-      BreachDataTypes.PIN,
+    dataClassesEffected: [
+      {
+        [BreachDataTypes.SSN]: 42,
+        [BreachDataTypes.CreditCard]: 42,
+        [BreachDataTypes.BankAccount]: 42,
+        [BreachDataTypes.PIN]: 42,
+      },
     ],
+    isResolved: false,
   }),
 );
 
@@ -33,7 +38,42 @@ const mockedSession = {
   user: user,
 };
 
-const HighRiskBreachWrapper = (props: { type: HighRiskBreachTypes }) => {
+const HighRiskBreachWrapper = (props: {
+  type: HighRiskBreachTypes;
+  scanStatus?: "empty" | "not_started" | "unavailable";
+}) => {
+  const mockedScan: OnerepScanRow = {
+    created_at: new Date(1998, 2, 31),
+    updated_at: new Date(1998, 2, 31),
+    id: 0,
+    onerep_profile_id: 0,
+    onerep_scan_id: 0,
+    onerep_scan_reason: "initial",
+    onerep_scan_status: "finished",
+  };
+
+  const data: StepDeterminationData =
+    props.scanStatus === "empty"
+      ? {
+          countryCode: "us",
+          latestScanData: { results: [], scan: mockedScan },
+          subscriberBreaches: mockedBreaches,
+          user: mockedSession.user,
+        }
+      : props.scanStatus === "not_started"
+      ? {
+          countryCode: "us",
+          latestScanData: { results: [], scan: null },
+          subscriberBreaches: mockedBreaches,
+          user: mockedSession.user,
+        }
+      : {
+          countryCode: "nl",
+          latestScanData: { results: [], scan: null },
+          subscriberBreaches: mockedBreaches,
+          user: mockedSession.user,
+        };
+
   return (
     <Shell
       l10n={getEnL10nSync()}
@@ -45,12 +85,7 @@ const HighRiskBreachWrapper = (props: { type: HighRiskBreachTypes }) => {
       <HighRiskBreachLayout
         subscriberEmails={[]}
         type={props.type}
-        data={{
-          countryCode: "nl",
-          latestScanData: { results: [], scan: null },
-          subscriberBreaches: mockedBreaches,
-          user: mockedSession.user,
-        }}
+        data={data}
       />
     </Shell>
   );

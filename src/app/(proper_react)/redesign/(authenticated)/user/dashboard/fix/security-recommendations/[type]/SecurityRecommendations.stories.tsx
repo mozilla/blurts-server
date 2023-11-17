@@ -17,11 +17,14 @@ const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
 // Ensure all security recommendation data breaches are present in at least one breach:
 mockedBreaches.push(
   createRandomBreach({
-    dataClasses: [
-      BreachDataTypes.Phone,
-      BreachDataTypes.Email,
-      BreachDataTypes.IP,
+    dataClassesEffected: [
+      {
+        [BreachDataTypes.Phone]: 42,
+        [BreachDataTypes.Email]: 42,
+        [BreachDataTypes.IP]: 42,
+      },
     ],
+    isResolved: false,
   }),
 );
 

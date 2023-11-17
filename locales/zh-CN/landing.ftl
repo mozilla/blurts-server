@@ -50,4 +50,4 @@ depends-on-hackers = 并非所有外泄事件都会泄露同样的信息，这�
 ## See if you’ve been in a data breach
 
 see-if-data-breach = 看看您是否受到数据外泄事件影响
-hibp-footer-attribution = <b>{ -brand-HIBP }</b> 提供的泄漏事件数据
+hibp-footer-attribution = 泄漏事件数据由 <b>{ -brand-HIBP }</b> 提供
