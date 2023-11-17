@@ -33,7 +33,6 @@ const MainLayout = async (props: Props) => {
     return <SignInButton autoSignIn />;
   }
 
-  // FIXME we need permission to collect this.
   const userId = session?.user?.subscriber?.fxa_uid ?? "";
 
   if (!userId) {
