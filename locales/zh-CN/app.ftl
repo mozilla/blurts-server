@@ -656,7 +656,7 @@ menu-item-fxa = 管理您的 { -brand-fx-account }
 menu-item-fxa-2 = 管理您的 { -brand-mozilla-account }
 # Deprecated
 menu-item-fxa-alt = 打开 { -brand-fx-account } 页面
-menu-item-fxa-alt-2 = 打开 { -brand-mozilla-account } 页面
+menu-item-fxa-alt-2 = 打开 { -brand-mozilla-account }页面
 menu-item-settings = 设置
 menu-item-settings-alt = 打开设置页面
 menu-item-help = 帮助和支持
