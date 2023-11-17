@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { useGlean } from "../../../hooks/useGlean";
 import { ExtraMap } from "@mozilla/glean/dist/types/core/metrics/events_database/recorded_event";
@@ -75,12 +75,15 @@ export const PageLoadEvent = (props: Props) => {
     });
   }
 
-  const keys = Object.assign(required, optional) as ExtraMap;
+  const keys = useMemo(
+    () => Object.assign(required, optional) as ExtraMap,
+    [required, optional],
+  );
 
   // On first load of the page, record a page view.
   useEffect(() => {
     pageEvents.view.record(keys);
-  }, [pageEvents.view, keys]);
+  }, [pageEvents.view, keys, path]);
 
   // This component doesn't render anything.
   return <></>;
