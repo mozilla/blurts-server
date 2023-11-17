@@ -756,7 +756,8 @@ menu-item-logout = Terminar sessão
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Termos e privacidade
+terms-of-service = Termos do serviço
+privacy-notice = Política de privacidade
 github = { -brand-github }
 footer-nav-all-breaches = Todas as falhas de segurança
 
