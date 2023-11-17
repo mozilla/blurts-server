@@ -7,7 +7,7 @@
  * The purpose of the script is to clean up some of the failed records during db migration on 3/28/23
  */
 
-import { createDbConnection } from "../connect";
+import { createDbConnection } from "../db/connect.js";
 import { getAllBreachesFromDb } from "../utils/hibp.js";
 import { getAllEmailsAndBreaches } from "../utils/breaches.js";
 import { setBreachResolution } from "../db/tables/subscribers.js";
