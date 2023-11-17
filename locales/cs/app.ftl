@@ -831,10 +831,6 @@ ad-unit-6-before-you-complete = Během své další registrace použijte místo 
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account = Účet Firefoxu
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account =
@@ -895,11 +891,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Nabídka uživatele
 menu-button-alt = Otevřít nabídku uživatele
 menu-list-accessible-label = Nabídka účtu
-# Deprecated
-menu-item-fxa = Spravovat { -brand-fx-account(case: "acc", capitalization: "lower") }
 menu-item-fxa-2 = Spravovat { -brand-mozilla-account(case: "acc", capitalization: "lower") }
-# Deprecated
-menu-item-fxa-alt = Otevřít stránku { -brand-fx-account }
 menu-item-fxa-alt-2 = Otevřít stránku pro { -brand-mozilla-account(case: "acc") }
 menu-item-settings = Nastavení
 menu-item-settings-alt = Otevřít stránku nastavení
@@ -910,7 +902,8 @@ menu-item-logout = Odhlásit se
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Podmínky a ochrana soukromí
+terms-of-service = Podmínky služby
+privacy-notice = Zásady ochrany osobních údajů
 github = { -brand-github }
 footer-nav-all-breaches = Všechny úniky
 

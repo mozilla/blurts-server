@@ -716,10 +716,6 @@ ad-unit-6-before-you-complete = Gebruik, voordat u uw volgende registratie volto
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account = Firefox-account
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla-account
@@ -748,11 +744,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Gebruikersmenu
 menu-button-alt = Gebruikersmenu openen
 menu-list-accessible-label = Accountmenu
-# Deprecated
-menu-item-fxa = Uw { -brand-fx-account } beheren
 menu-item-fxa-2 = Uw { -brand-mozilla-account } beheren
-# Deprecated
-menu-item-fxa-alt = { -brand-fx-account }-pagina openen
 menu-item-fxa-alt-2 = { -brand-mozilla-account }-pagina openen
 menu-item-settings = Instellingen
 menu-item-settings-alt = Instellingenpagina openen
@@ -763,7 +755,8 @@ menu-item-logout = Afmelden
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Voorwaarden en Privacy
+terms-of-service = Servicevoorwaarden
+privacy-notice = Privacyverklaring
 github = { -brand-github }
 footer-nav-all-breaches = Alle datalekken
 
