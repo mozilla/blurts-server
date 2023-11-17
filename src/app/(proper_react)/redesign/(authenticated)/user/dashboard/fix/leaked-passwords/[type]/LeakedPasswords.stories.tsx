@@ -113,7 +113,7 @@ export const PasswordsDoneSecurityTipsNextStory: Story = {
 export const PasswordsDoneNoNextStepStory: Story = {
   name: "3b III. Done (Next step: None)",
   args: {
-    type: "security-questions-done",
+    type: "passwords-done",
   },
 };
 

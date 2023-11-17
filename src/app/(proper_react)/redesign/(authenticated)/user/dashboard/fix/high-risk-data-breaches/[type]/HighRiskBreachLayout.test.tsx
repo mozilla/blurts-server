@@ -53,7 +53,7 @@ it("passes the axe accessibility test suite for PIN breaches", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for the celebration view, next step is passwords)", async () => {
+it("passes the axe accessibility test suite for the high-risk celebration view, next step is passwords)", async () => {
   const ComposedHighRiskDataBreachComponent = composeStory(
     HighRiskBreachDonePasswordsNextStory,
     Meta,
@@ -62,7 +62,7 @@ it("passes the axe accessibility test suite for the celebration view, next step 
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for the celebration view, next step is security questions)", async () => {
+it("passes the axe accessibility test suite for the high-risk celebration view, next step is security questions)", async () => {
   const ComposedHighRiskDataBreachComponent = composeStory(
     HighRiskBreachDoneSecurityQuestionsNextStory,
     Meta,
@@ -71,7 +71,7 @@ it("passes the axe accessibility test suite for the celebration view, next step 
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for the celebration view, next step is security tips)", async () => {
+it("passes the axe accessibility test suite for the high-risk celebration view, next step is security tips)", async () => {
   const ComposedHighRiskDataBreachComponent = composeStory(
     HighRiskBreachDoneSecurityTipsNextStory,
     Meta,
@@ -80,7 +80,7 @@ it("passes the axe accessibility test suite for the celebration view, next step 
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for the celebration view, no next step)", async () => {
+it("passes the axe accessibility test suite for the high-risk celebration view, no next step)", async () => {
   const ComposedHighRiskDataBreachComponent = composeStory(
     HighRiskBreachDoneNoNextStepStory,
     Meta,
@@ -135,7 +135,7 @@ it("does not show the Broker step if the user is in a country where the data bro
   expect(steps).toHaveLength(3);
 });
 
-it("shows the celebration view, next step is passwords", () => {
+it("shows the high-risk celebration view, next step is passwords", () => {
   const ComposedComponent = composeStory(
     HighRiskBreachDonePasswordsNextStory,
     Meta,
@@ -149,7 +149,7 @@ it("shows the celebration view, next step is passwords", () => {
   expect(viewHeading).toBeInTheDocument();
 });
 
-it("shows the celebration view, next step is security questions", () => {
+it("shows the high-risk celebration view, next step is security questions", () => {
   const ComposedComponent = composeStory(
     HighRiskBreachDoneSecurityQuestionsNextStory,
     Meta,
@@ -163,7 +163,7 @@ it("shows the celebration view, next step is security questions", () => {
   expect(viewHeading).toBeInTheDocument();
 });
 
-it("shows the celebration view, next step is security tips", () => {
+it("shows the high-risk celebration view, next step is security tips", () => {
   const ComposedComponent = composeStory(
     HighRiskBreachDoneSecurityTipsNextStory,
     Meta,
@@ -177,7 +177,7 @@ it("shows the celebration view, next step is security tips", () => {
   expect(viewHeading).toBeInTheDocument();
 });
 
-it("shows the celebration view, next step is passwords, no next step", () => {
+it("shows the high-risk celebration view, next step is passwords, no next step", () => {
   const ComposedComponent = composeStory(
     HighRiskBreachDoneNoNextStepStory,
     Meta,
