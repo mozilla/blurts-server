@@ -35,16 +35,23 @@ export type LeakedPassword = {
   content: LeakedPasswordsContent;
 };
 
-function getDoneStepContent(nextStep?: StepLink) {
+function getDoneStepContent(
+  l10n: ExtendedReactLocalization,
+  nextStep?: StepLink,
+) {
   // Security questions next
   if (nextStep?.id === "LeakedPasswordsSecurityQuestion") {
     return {
       summary: "",
       description: (
         <>
-          <p>Now let’s review and update your exposed security questions.</p>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-leaked-passwords-description-next-security-questions",
+            )}
+          </p>
           <Button variant="primary" small href="" autoFocus={true}>
-            Let’s keep going
+            {l10n.getString("fix-flow-celebration-NextLabel")}
           </Button>
         </>
       ),
@@ -63,11 +70,12 @@ function getDoneStepContent(nextStep?: StepLink) {
       description: (
         <>
           <p>
-            Next, we’ll give you personalized security recommendations based on
-            what data of yours has been exposed.
+            {l10n.getString(
+              "fix-flow-celebration-leaked-passwords-description-next-security-recommendations",
+            )}
           </p>
           <Button variant="primary" small href="" autoFocus={true}>
-            See recommendations
+            {l10n.getString("fix-flow-celebration-NextRecommendationsLabel")}
           </Button>
         </>
       ),
@@ -80,11 +88,12 @@ function getDoneStepContent(nextStep?: StepLink) {
     description: (
       <>
         <p>
-          Nicely done! You’ve reached the end of your steps. You can view any
-          action items and track your progress on your dashboard.
+          {l10n.getString(
+            "fix-flow-celebration-leaked-passwords-description-next-dashboard",
+          )}
         </p>
         <Button variant="primary" small href="" autoFocus={true}>
-          Go to your Dashboard
+          {l10n.getString("fix-flow-celebration-NextDashboardLabel")}
         </Button>
       </>
     ),
@@ -182,9 +191,9 @@ function getLeakedPasswords({
     },
     {
       type: "passwords-done",
-      title: "Your passwords are now protected!",
+      title: l10n.getString("fix-flow-celebration-leaked-passwords-title"),
       illustration: "",
-      content: getDoneStepContent(nextStep),
+      content: getDoneStepContent(l10n, nextStep),
     },
     {
       type: "security-questions",
@@ -227,9 +236,9 @@ function getLeakedPasswords({
     },
     {
       type: "security-questions-done",
-      title: "Your security questions are protected!",
+      title: l10n.getString("fix-flow-celebration-security-questions-title"),
       illustration: "",
-      content: getDoneStepContent(nextStep),
+      content: getDoneStepContent(l10n, nextStep),
     },
   ];
 

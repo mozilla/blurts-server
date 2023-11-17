@@ -42,7 +42,10 @@ export type HighRiskBreach = {
   exposedData: SubscriberBreach[];
 };
 
-function getDoneStepContent(nextStep?: StepLink) {
+function getDoneStepContent(
+  l10n: ExtendedReactLocalization,
+  nextStep?: StepLink,
+) {
   // Passwords next
   if (nextStep?.id === "LeakedPasswordsPassword") {
     return {
@@ -50,12 +53,17 @@ function getDoneStepContent(nextStep?: StepLink) {
       description: (
         <>
           <p>
-            Doing this work can feel like a lot, but it’s important to do so to
-            keep yourself safe. Keep up the good work.
+            {l10n.getString(
+              "fix-flow-celebration-high-risk-description-in-progress",
+            )}
           </p>
-          <p>Now let’s fix your exposed passwords.</p>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-high-risk-description-next-passwords",
+            )}
+          </p>
           <Button variant="primary" small href="" autoFocus={true}>
-            Let’s keep going
+            {l10n.getString("fix-flow-celebration-NextLabel")}
           </Button>
         </>
       ),
@@ -69,12 +77,17 @@ function getDoneStepContent(nextStep?: StepLink) {
       description: (
         <>
           <p>
-            Doing this work can feel like a lot, but it’s important to do so to
-            keep yourself safe. Keep up the good work.
+            {l10n.getString(
+              "fix-flow-celebration-high-risk-description-in-progress",
+            )}
           </p>
-          <p>Now let’s fix your exposed security questions.</p>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-high-risk-description-next-security-questions",
+            )}
+          </p>
           <Button variant="primary" small href="" autoFocus={true}>
-            Let’s keep going
+            {l10n.getString("fix-flow-celebration-NextLabel")}
           </Button>
         </>
       ),
@@ -93,15 +106,17 @@ function getDoneStepContent(nextStep?: StepLink) {
       description: (
         <>
           <p>
-            Doing this work can feel like a lot, but it’s important to do so to
-            keep yourself safe. Keep up the good work.
+            {l10n.getString(
+              "fix-flow-celebration-high-risk-description-in-progress",
+            )}
           </p>
           <p>
-            Next, we’ll give you personalized security recommendations based on
-            what data of yours has been exposed.{" "}
+            {l10n.getString(
+              "fix-flow-celebration-high-risk-description-next-security-recommendations",
+            )}
           </p>
           <Button variant="primary" small href="" autoFocus={true}>
-            See recommendations
+            {l10n.getString("fix-flow-celebration-NextRecommendationsLabel")}
           </Button>
         </>
       ),
@@ -114,15 +129,15 @@ function getDoneStepContent(nextStep?: StepLink) {
     description: (
       <>
         <p>
-          Doing this work can feel like a lot, but it’s important to do so to
-          keep yourself safe.
+          {l10n.getString("fix-flow-celebration-high-risk-description-done")}
         </p>
         <p>
-          You’ve reached the end of your steps. You can view any action items
-          and track your progress on your dashboard.
+          {l10n.getString(
+            "fix-flow-celebration-high-risk-description-next-dashboard",
+          )}
         </p>
         <Button variant="primary" small href="" autoFocus={true}>
-          Go to your Dashboard
+          {l10n.getString("fix-flow-celebration-NextDashboardLabel")}
         </Button>
       </>
     ),
@@ -283,10 +298,10 @@ function getHighRiskBreachesByType({
     },
     {
       type: "done",
-      title: "You’ve fixed your high risk exposures!",
+      title: l10n.getString("fix-flow-celebration-high-risk-title"),
       illustration: "",
       exposedData: [],
-      content: getDoneStepContent(nextStep),
+      content: getDoneStepContent(l10n, nextStep),
     },
     {
       type: "none",

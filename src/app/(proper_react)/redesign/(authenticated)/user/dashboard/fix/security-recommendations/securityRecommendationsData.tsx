@@ -168,7 +168,9 @@ function getSecurityRecommendationsByType({
     },
     {
       type: "done",
-      title: "You’ve completed all your recommendations!",
+      title: l10n.getString(
+        "fix-flow-celebration-security-recommendations-title",
+      ),
       illustration: "",
       exposedData: [],
       content: {
@@ -176,11 +178,12 @@ function getSecurityRecommendationsByType({
         description: (
           <>
             <p>
-              Nicely done! You’ve reached the end of your steps. You can view
-              any action items and track your progress on your dashboard.
+              {l10n.getString(
+                "fix-flow-celebration-security-recommendations-description-next-dashboard",
+              )}
             </p>
             <Button variant="primary" small href="" autoFocus={true}>
-              Go to your Dashboard
+              {l10n.getString("fix-flow-celebration-NextDashboardLabel")}
             </Button>
           </>
         ),
