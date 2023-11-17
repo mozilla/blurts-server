@@ -119,6 +119,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
         /* c8 ignore next */
         estimatedTime={!isStepDone && hasBreaches ? 15 : undefined}
         isStepDone={isStepDone}
+        data={props.data}
       >
         <ResolutionContent
           content={content}

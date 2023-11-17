@@ -97,6 +97,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         }
         estimatedTime={!isStepDone ? 4 : undefined}
         isStepDone={isStepDone}
+        data={props.data}
       >
         <ResolutionContent content={content} locale={getLocale(l10n)} />
       </ResolutionContainer>

@@ -91,6 +91,7 @@ export function SecurityRecommendationsLayout(
           )
         }
         isStepDone={isStepDone}
+        data={props.data}
       >
         <ResolutionContent
           content={content}

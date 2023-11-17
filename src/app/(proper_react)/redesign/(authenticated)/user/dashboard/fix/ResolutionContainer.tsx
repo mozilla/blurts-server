@@ -10,6 +10,8 @@ import { ClockIcon } from "../../../../../../components/server/Icons";
 import { useL10n } from "../../../../../../hooks/l10n";
 import styles from "./ResolutionContainer.module.scss";
 import { ProgressCard } from "../../../../../../components/client/ProgressCard";
+import { StepDeterminationData } from "../../../../../../functions/server/getRelevantGuidedSteps";
+import { getDashboardSummary } from "../../../../../../functions/server/dashboard";
 
 type ResolutionContainerProps = {
   type: "highRisk" | "leakedPasswords" | "securityRecommendations";
@@ -18,6 +20,7 @@ type ResolutionContainerProps = {
   estimatedTime?: number;
   children: ReactNode;
   isStepDone: boolean;
+  data: StepDeterminationData;
   label?: string;
   cta?: ReactNode;
 };
@@ -28,6 +31,11 @@ export const ResolutionContainer = (props: ResolutionContainerProps) => {
     props.type === "leakedPasswords"
       ? "leaked-passwords-estimated-time"
       : "high-risk-breach-estimated-time";
+
+  const resolutionSummary = getDashboardSummary(
+    props.data.latestScanData?.results ?? [],
+    props.data.subscriberBreaches,
+  );
 
   return (
     // TODO: Check with design if toolbar should be on this page
@@ -42,7 +50,14 @@ export const ResolutionContainer = (props: ResolutionContainerProps) => {
         {props.isStepDone ? (
           <div className={styles.doneContentWrapper}>
             <div className={styles.doneContent}>{props.children}</div>
-            <ProgressCard resolvedByYou={3} autoRemoved={10} inProgress={2} />
+            <ProgressCard
+              resolvedByYou={
+                resolutionSummary.dataBrokerManuallyResolvedExposuresNum +
+                resolutionSummary.dataBreachFixedExposuresNum
+              }
+              autoRemoved={resolutionSummary.dataBrokerFixedExposuresNum}
+              inProgress={resolutionSummary.dataBrokerInProgressExposuresNum}
+            />
           </div>
         ) : (
           props.children
