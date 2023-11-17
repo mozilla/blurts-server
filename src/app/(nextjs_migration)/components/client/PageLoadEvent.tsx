@@ -36,10 +36,10 @@ export const PageLoadEvent = (props: Props) => {
   const { pageEvents } = useGlean(props.channel, props.appEnv);
   const path = usePathname();
 
-  const required: RequiredKeys = {
-    user_id: userId,
-    path,
-  };
+  const required: RequiredKeys = useMemo(() => {
+    return { user_id: userId, path };
+  }, [userId, path]);
+
   const optional: OptionalKeys = {};
 
   if (
