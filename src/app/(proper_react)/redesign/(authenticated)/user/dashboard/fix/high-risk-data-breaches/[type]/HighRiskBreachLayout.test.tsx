@@ -6,13 +6,22 @@ import { it, expect } from "@jest/globals";
 import { getAllByRole, render, screen } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
+import { setupJestCanvasMock } from "jest-canvas-mock";
 
 import Meta, {
   BankAccountStory,
   CreditCardStory,
   PinStory,
   SsnStory,
+  HighRiskBreachDonePasswordsNextStory,
+  HighRiskBreachDoneSecurityQuestionsNextStory,
+  HighRiskBreachDoneSecurityTipsNextStory,
+  HighRiskBreachDoneNoNextStepStory,
 } from "./HighRiskDataBreach.stories";
+
+beforeEach(() => {
+  setupJestCanvasMock();
+});
 
 it("passes the axe accessibility test suite for credit card breaches", async () => {
   const ComposedHighRiskDataBreachComponent = composeStory(
@@ -40,6 +49,42 @@ it("passes the axe accessibility test suite for SSN breaches", async () => {
 
 it("passes the axe accessibility test suite for PIN breaches", async () => {
   const ComposedHighRiskDataBreachComponent = composeStory(PinStory, Meta);
+  const { container } = render(<ComposedHighRiskDataBreachComponent />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite for the celebration view, next step is passwords)", async () => {
+  const ComposedHighRiskDataBreachComponent = composeStory(
+    HighRiskBreachDonePasswordsNextStory,
+    Meta,
+  );
+  const { container } = render(<ComposedHighRiskDataBreachComponent />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite for the celebration view, next step is security questions)", async () => {
+  const ComposedHighRiskDataBreachComponent = composeStory(
+    HighRiskBreachDoneSecurityQuestionsNextStory,
+    Meta,
+  );
+  const { container } = render(<ComposedHighRiskDataBreachComponent />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite for the celebration view, next step is security tips)", async () => {
+  const ComposedHighRiskDataBreachComponent = composeStory(
+    HighRiskBreachDoneSecurityTipsNextStory,
+    Meta,
+  );
+  const { container } = render(<ComposedHighRiskDataBreachComponent />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite for the celebration view, no next step)", async () => {
+  const ComposedHighRiskDataBreachComponent = composeStory(
+    HighRiskBreachDoneNoNextStepStory,
+    Meta,
+  );
   const { container } = render(<ComposedHighRiskDataBreachComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
@@ -88,4 +133,60 @@ it("does not show the Broker step if the user is in a country where the data bro
   });
   const steps = getAllByRole(stepIndicator, "listitem");
   expect(steps).toHaveLength(3);
+});
+
+it("shows the celebration view, next step is passwords", () => {
+  const ComposedComponent = composeStory(
+    HighRiskBreachDonePasswordsNextStory,
+    Meta,
+  );
+
+  render(<ComposedComponent />);
+
+  const viewHeading = screen.getByRole("heading", {
+    name: "You’ve fixed your high risk exposures!",
+  });
+  expect(viewHeading).toBeInTheDocument();
+});
+
+it("shows the celebration view, next step is security questions", () => {
+  const ComposedComponent = composeStory(
+    HighRiskBreachDoneSecurityQuestionsNextStory,
+    Meta,
+  );
+
+  render(<ComposedComponent />);
+
+  const viewHeading = screen.getByRole("heading", {
+    name: "You’ve fixed your high risk exposures!",
+  });
+  expect(viewHeading).toBeInTheDocument();
+});
+
+it("shows the celebration view, next step is security tips", () => {
+  const ComposedComponent = composeStory(
+    HighRiskBreachDoneSecurityTipsNextStory,
+    Meta,
+  );
+
+  render(<ComposedComponent />);
+
+  const viewHeading = screen.getByRole("heading", {
+    name: "You’ve fixed your high risk exposures!",
+  });
+  expect(viewHeading).toBeInTheDocument();
+});
+
+it("shows the celebration view, next step is passwords, no next step", () => {
+  const ComposedComponent = composeStory(
+    HighRiskBreachDoneNoNextStepStory,
+    Meta,
+  );
+
+  render(<ComposedComponent />);
+
+  const viewHeading = screen.getByRole("heading", {
+    name: "You’ve fixed your high risk exposures!",
+  });
+  expect(viewHeading).toBeInTheDocument();
 });
