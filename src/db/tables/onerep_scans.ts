@@ -59,7 +59,7 @@ async function getLatestOnerepScanResults(
 
   return {
     scan: scan ?? null,
-    results: results ?? [],
+    results,
   };
 }
 
