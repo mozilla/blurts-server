@@ -51,4 +51,9 @@ it("shows the security recommendations celebration view", () => {
     name: "You’ve completed all your recommendations!",
   });
   expect(viewHeading).toBeInTheDocument();
+
+  const buttonLink = screen.getByRole("link", {
+    name: "Go to your Dashboard",
+  });
+  expect(buttonLink).toBeInTheDocument();
 });

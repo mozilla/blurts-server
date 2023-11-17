@@ -87,6 +87,11 @@ it("shows the leaked passwords celebration view, next step is security questions
     name: "Your passwords are now protected!",
   });
   expect(viewHeading).toBeInTheDocument();
+
+  const buttonLink = screen.getByRole("link", {
+    name: "Let’s keep going",
+  });
+  expect(buttonLink).toBeInTheDocument();
 });
 
 it("shows the leaked passwords celebration view, next step is passwords", () => {
@@ -101,6 +106,11 @@ it("shows the leaked passwords celebration view, next step is passwords", () => 
     name: "Your passwords are now protected!",
   });
   expect(viewHeading).toBeInTheDocument();
+
+  const buttonLink = screen.getByRole("link", {
+    name: "See recommendations",
+  });
+  expect(buttonLink).toBeInTheDocument();
 });
 
 it("shows the leaked passwords celebration view, no next step", () => {
@@ -112,6 +122,11 @@ it("shows the leaked passwords celebration view, no next step", () => {
     name: "Your passwords are now protected!",
   });
   expect(viewHeading).toBeInTheDocument();
+
+  const buttonLink = screen.getByRole("link", {
+    name: "Go to your Dashboard",
+  });
+  expect(buttonLink).toBeInTheDocument();
 });
 
 it("shows the security questions celebration view, next step is security tips", () => {
@@ -126,6 +141,11 @@ it("shows the security questions celebration view, next step is security tips", 
     name: "Your security questions are protected!",
   });
   expect(viewHeading).toBeInTheDocument();
+
+  const buttonLink = screen.getByRole("link", {
+    name: "See recommendations",
+  });
+  expect(buttonLink).toBeInTheDocument();
 });
 
 it("shows the security questions celebration view, no next step", () => {
@@ -140,4 +160,9 @@ it("shows the security questions celebration view, no next step", () => {
     name: "Your security questions are protected!",
   });
   expect(viewHeading).toBeInTheDocument();
+
+  const buttonLink = screen.getByRole("link", {
+    name: "Go to your Dashboard",
+  });
+  expect(buttonLink).toBeInTheDocument();
 });

@@ -141,6 +141,11 @@ it("shows the high-risk celebration view, next step is passwords", () => {
     name: "You’ve fixed your high risk exposures!",
   });
   expect(viewHeading).toBeInTheDocument();
+
+  const buttonLink = screen.getByRole("link", {
+    name: "Let’s keep going",
+  });
+  expect(buttonLink).toBeInTheDocument();
 });
 
 it("shows the high-risk celebration view, next step is security questions", () => {
@@ -155,6 +160,11 @@ it("shows the high-risk celebration view, next step is security questions", () =
     name: "You’ve fixed your high risk exposures!",
   });
   expect(viewHeading).toBeInTheDocument();
+
+  const buttonLink = screen.getByRole("link", {
+    name: "Let’s keep going",
+  });
+  expect(buttonLink).toBeInTheDocument();
 });
 
 it("shows the high-risk celebration view, next step is security tips", () => {
@@ -169,6 +179,11 @@ it("shows the high-risk celebration view, next step is security tips", () => {
     name: "You’ve fixed your high risk exposures!",
   });
   expect(viewHeading).toBeInTheDocument();
+
+  const buttonLink = screen.getByRole("link", {
+    name: "See recommendations",
+  });
+  expect(buttonLink).toBeInTheDocument();
 });
 
 it("shows the high-risk celebration view, next step is passwords, no next step", () => {
@@ -183,4 +198,9 @@ it("shows the high-risk celebration view, next step is passwords, no next step",
     name: "You’ve fixed your high risk exposures!",
   });
   expect(viewHeading).toBeInTheDocument();
+
+  const buttonLink = screen.getByRole("link", {
+    name: "Go to your Dashboard",
+  });
+  expect(buttonLink).toBeInTheDocument();
 });
