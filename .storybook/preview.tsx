@@ -159,7 +159,7 @@ const preview: Preview = {
           ) {
             linkTo(
               "Pages/Guided resolution/2. High-risk data breaches",
-              "2e. Done",
+              "2e IV. Done (Next step: None)",
             )();
           }
 
@@ -182,8 +182,24 @@ const preview: Preview = {
             )();
           }
 
-          if (path === "/redesign/user/dashboard/fix/leaked-passwords/done") {
-            linkTo("Pages/Guided resolution/3. Leaked passwords", "3c. Done")();
+          if (
+            path ===
+            "/redesign/user/dashboard/fix/leaked-passwords/passwords-done"
+          ) {
+            linkTo(
+              "Pages/Guided resolution/3. Leaked passwords",
+              "3b I. Done (Next step: Security questions)",
+            )();
+          }
+
+          if (
+            path ===
+            "/redesign/user/dashboard/fix/leaked-passwords/security-questions-done"
+          ) {
+            linkTo(
+              "Pages/Guided resolution/3. Leaked passwords",
+              "3d II. Done (Next step: None)",
+            )();
           }
 
           if (
@@ -212,6 +228,16 @@ const preview: Preview = {
             linkTo(
               "Pages/Guided resolution/4. Security recommendations",
               "4c. IP address",
+            )();
+          }
+
+          if (
+            path ===
+            "/redesign/user/dashboard/fix/security-recommendations/done"
+          ) {
+            linkTo(
+              "Pages/Guided resolution/4. Security recommendations",
+              "4d. Done",
             )();
           }
         },
