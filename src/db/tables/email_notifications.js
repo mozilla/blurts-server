@@ -88,10 +88,13 @@ async function addEmailNotification(
     email: newNotification.email,
     notification_type: newNotification.notificationType,
   };
-
-  const res = await knex("email_notifications")
-    .insert(emailNotificationDb)
-    .returning("*");
+  
+  const res = await knex.transaction(trx => {
+      return trx('email_notifications')
+        .forUpdate()
+        .insert(emailNotificationDb)
+        .returning("*");
+      });
   return res[0];
 }
 
@@ -106,15 +109,18 @@ async function markEmailAsNotified(
   email
 ) {
   console.info(`markEmailAsNotified for breach: ${breachId}`);
-  await knex("email_notifications")
-    .where("subscriber_id", subscriberId)
-    .andWhere("breach_id", breachId)
-    .andWhere("email", email)
-    .update({
-      notified: true,
-      // @ts-ignore knex.fn.now() results in it being set to a date,
-      // even if it's not typed as a JS date object:
-      updated_at: knex.fn.now(),
+  await knex.transaction(trx => {
+    return trx('email_notifications')
+      .forUpdate()
+      .where("subscriber_id", subscriberId)
+      .andWhere("breach_id", breachId)
+      .andWhere("email", email)
+      .update({
+        notified: true,
+        // @ts-ignore knex.fn.now() results in it being set to a date,
+        // even if it's not typed as a JS date object:
+        updated_at: knex.fn.now(),
+      });
     });
 }
 

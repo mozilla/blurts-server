@@ -3,8 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Shihni nëse keni qenë viktimë e ndonjë shkeljeje të dhënash
-stay-safe-with-tool = Qëndroni i parrezik, me një mjetë të thjeshtë, por të fuqishëm, që ndjek nëse hollësitë tuaja personale janë ekspozuar në ndonjë cenim të dhënash. Do t’ju ndihmojmë të kuptoni ç’duhet bërë në vijim dhe se si të mbikëqyrni pandërprerë për çfarëdo cenimesh të reja — e gjitha kjo pa ndonjë kosto për ju.
 get-started = Fillojani
 
 ## Why use Firefox Monitor?
@@ -52,3 +50,4 @@ depends-on-hackers = Jo krejt cenimet ekspozojnë të njëjtat hollësi. Kjo var
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Shihni nëse jeni përfshirë në shkelje të dhënash
+hibp-footer-attribution = Të dhëna cenimesh furnizuar nga <b>{ -brand-HIBP }</b>
