@@ -33,7 +33,7 @@ export const ResolutionContainer = (props: ResolutionContainerProps) => {
       : "high-risk-breach-estimated-time";
 
   const resolutionSummary = getDashboardSummary(
-    props.data.latestScanData?.results ?? [],
+    props.data.latestScanData?.results,
     props.data.subscriberBreaches,
   );
 
