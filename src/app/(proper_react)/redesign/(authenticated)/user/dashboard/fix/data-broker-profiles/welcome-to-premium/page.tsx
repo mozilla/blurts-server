@@ -18,7 +18,7 @@ import { activateAndOptoutProfile } from "../../../../../../../../functions/serv
 export default async function WelcomeToPremiumPage() {
   const session = await getServerSession(authOptions);
 
-  // Ensure user is logged in and a subscriber
+  // Ensure user is logged in
   if (!session?.user?.subscriber?.id) {
     redirect("/redesign/user/dashboard/");
   }
