@@ -101,7 +101,7 @@
     "@types/jest-axe": "^3.5.7",
     "@types/jsonwebtoken": "^9.0.4",
     "@types/jwk-to-pem": "^2.0.2",
-    "@types/nodemailer": "^6.4.13",
+    "@types/nodemailer": "^6.4.14",
     "@types/uuid": "^9.0.6",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
