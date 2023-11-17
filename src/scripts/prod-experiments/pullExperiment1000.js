@@ -7,10 +7,10 @@
  * The purpose of the script is to benchmark pure read with limit set as 1000
  */
 
-import Knex from "knex";
-import knexConfig from "../../db/knexfile.js";
+import { createDbConnection } from "../../db/connect.js";
 import { getAllBreachesFromDb } from "../../utils/hibp.js";
-const knex = Knex(knexConfig);
+
+const knex = createDbConnection();
 
 const LIMIT = 1000; // with millions of records, we have to load a few at a time
 let CAP = 1500000;
