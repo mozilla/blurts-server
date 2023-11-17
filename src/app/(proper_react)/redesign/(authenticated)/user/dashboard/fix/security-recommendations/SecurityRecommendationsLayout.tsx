@@ -46,10 +46,12 @@ export function SecurityRecommendationsLayout(
     props.subscriberEmails,
   );
 
+  const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
   const pageData = getSecurityRecommendationsByType({
     dataType: props.type,
     breaches: guidedExperienceBreaches,
     l10n: l10n,
+    nextStep,
   });
 
   // The non-null assertion here should be safe since we already did this check

@@ -39,8 +39,12 @@ function getDoneStepContent(
   l10n: ExtendedReactLocalization,
   nextStep?: StepLink,
 ) {
+  if (!nextStep) {
+    return { summary: "", description: "" };
+  }
+
   // Security questions next
-  if (nextStep?.id === "LeakedPasswordsSecurityQuestion") {
+  if (nextStep.id === "LeakedPasswordsSecurityQuestion") {
     return {
       summary: "",
       description: (
@@ -50,7 +54,7 @@ function getDoneStepContent(
               "fix-flow-celebration-leaked-passwords-description-next-security-questions",
             )}
           </p>
-          <Button variant="primary" small href="" autoFocus={true}>
+          <Button variant="primary" small href={nextStep.href} autoFocus={true}>
             {l10n.getString("fix-flow-celebration-NextLabel")}
           </Button>
         </>
@@ -60,7 +64,6 @@ function getDoneStepContent(
 
   // Security tips next
   if (
-    nextStep &&
     ["SecurityTipsPhone", "SecurityTipsEmail", "SecurityTipsIp"].includes(
       nextStep.id,
     )
@@ -74,7 +77,7 @@ function getDoneStepContent(
               "fix-flow-celebration-leaked-passwords-description-next-security-recommendations",
             )}
           </p>
-          <Button variant="primary" small href="" autoFocus={true}>
+          <Button variant="primary" small href={nextStep.href} autoFocus={true}>
             {l10n.getString("fix-flow-celebration-NextRecommendationsLabel")}
           </Button>
         </>
@@ -92,7 +95,7 @@ function getDoneStepContent(
             "fix-flow-celebration-leaked-passwords-description-next-dashboard",
           )}
         </p>
-        <Button variant="primary" small href="" autoFocus={true}>
+        <Button variant="primary" small href={nextStep.href} autoFocus={true}>
           {l10n.getString("fix-flow-celebration-NextDashboardLabel")}
         </Button>
       </>

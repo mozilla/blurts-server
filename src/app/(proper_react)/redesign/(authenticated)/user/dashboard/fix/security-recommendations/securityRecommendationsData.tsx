@@ -10,6 +10,7 @@ import { GuidedExperienceBreaches } from "../../../../../../../functions/server/
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
 import { Button } from "../../../../../../../components/server/Button";
+import { StepLink } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 
 export type SecurityRecommendationContent = {
   summary: string;
@@ -35,10 +36,12 @@ function getSecurityRecommendationsByType({
   dataType,
   breaches,
   l10n,
+  nextStep,
 }: {
   dataType: string;
   breaches: GuidedExperienceBreaches;
   l10n: ExtendedReactLocalization;
+  nextStep?: StepLink;
 }) {
   const securityRecommendationsData: SecurityRecommendation[] = [
     {
@@ -175,14 +178,19 @@ function getSecurityRecommendationsByType({
       exposedData: [],
       content: {
         summary: "",
-        description: (
+        description: nextStep && (
           <>
             <p>
               {l10n.getString(
                 "fix-flow-celebration-security-recommendations-description-next-dashboard",
               )}
             </p>
-            <Button variant="primary" small href="" autoFocus={true}>
+            <Button
+              variant="primary"
+              small
+              href={nextStep.href}
+              autoFocus={true}
+            >
               {l10n.getString("fix-flow-celebration-NextDashboardLabel")}
             </Button>
           </>
