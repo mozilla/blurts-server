@@ -24,68 +24,62 @@ beforeEach(() => {
 });
 
 it("passes the axe accessibility test suite for credit card breaches", async () => {
-  const ComposedHighRiskDataBreachComponent = composeStory(
-    CreditCardStory,
-    Meta,
-  );
-  const { container } = render(<ComposedHighRiskDataBreachComponent />);
+  const ComposedComponent = composeStory(CreditCardStory, Meta);
+  const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("passes the axe accessibility test suite for bank account breaches", async () => {
-  const ComposedHighRiskDataBreachComponent = composeStory(
-    BankAccountStory,
-    Meta,
-  );
-  const { container } = render(<ComposedHighRiskDataBreachComponent />);
+  const ComposedComponent = composeStory(BankAccountStory, Meta);
+  const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("passes the axe accessibility test suite for SSN breaches", async () => {
-  const ComposedHighRiskDataBreachComponent = composeStory(SsnStory, Meta);
-  const { container } = render(<ComposedHighRiskDataBreachComponent />);
+  const ComposedComponent = composeStory(SsnStory, Meta);
+  const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("passes the axe accessibility test suite for PIN breaches", async () => {
-  const ComposedHighRiskDataBreachComponent = composeStory(PinStory, Meta);
-  const { container } = render(<ComposedHighRiskDataBreachComponent />);
+  const ComposedComponent = composeStory(PinStory, Meta);
+  const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("passes the axe accessibility test suite for the high-risk celebration view, next step is passwords", async () => {
-  const ComposedHighRiskDataBreachComponent = composeStory(
+  const ComposedComponent = composeStory(
     HighRiskBreachDonePasswordsNextStory,
     Meta,
   );
-  const { container } = render(<ComposedHighRiskDataBreachComponent />);
+  const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("passes the axe accessibility test suite for the high-risk celebration view, next step is security questions", async () => {
-  const ComposedHighRiskDataBreachComponent = composeStory(
+  const ComposedComponent = composeStory(
     HighRiskBreachDoneSecurityQuestionsNextStory,
     Meta,
   );
-  const { container } = render(<ComposedHighRiskDataBreachComponent />);
+  const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("passes the axe accessibility test suite for the high-risk celebration view, next step is security tips", async () => {
-  const ComposedHighRiskDataBreachComponent = composeStory(
+  const ComposedComponent = composeStory(
     HighRiskBreachDoneSecurityTipsNextStory,
     Meta,
   );
-  const { container } = render(<ComposedHighRiskDataBreachComponent />);
+  const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("passes the axe accessibility test suite for the high-risk celebration view, no next step", async () => {
-  const ComposedHighRiskDataBreachComponent = composeStory(
+  const ComposedComponent = composeStory(
     HighRiskBreachDoneNoNextStepStory,
     Meta,
   );
-  const { container } = render(<ComposedHighRiskDataBreachComponent />);
+  const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
