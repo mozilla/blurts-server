@@ -167,6 +167,8 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     }
   }, [emailAffected]);
 
+  // This should only run once per page load
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (unresolvedPasswordBreach) {
       props.subscriberEmails.forEach((email: string) => {
@@ -177,52 +179,60 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     }
   }, [unresolvedPasswordBreach, props.subscriberEmails]);
 
-  const handleUpdateBreachStatus = (stepCompleted: boolean) => {
-    if (!stepCompleted) {
-      if (emailAffected) {
-        updateBreachStatus(
-          emailAffected,
-          unresolvedPasswordBreach.id,
-          resolvedDataClassName,
-        )
-          .then(() => {
-            const updatedSubscriberBreaches = subscriberBreaches.map(
-              (subscriberBreach) => {
-                if (subscriberBreach.id === unresolvedPasswordBreach.id) {
-                  subscriberBreach.resolvedDataClasses.push("passwords");
-                }
-                return subscriberBreach;
-              },
-            );
-            const isComplete = hasCompletedStep(
-              { ...props.data, subscriberBreaches: updatedSubscriberBreaches },
-              "LeakedPasswordsPassword",
-            );
-
-            if (!isComplete) {
-              setSubscriberBreaches(updatedSubscriberBreaches);
-            } else {
-              window.location.href = getNextGuidedStep(
-                props.data,
-                stepMap[props.type],
-              ).href;
-            }
-          })
-          .catch((error) => {
-            console.error("Error updating breach status", error);
-          });
-        return;
-      }
+  const handleUpdateBreachStatus = async () => {
+    if (!emailAffected) {
+      window.location.href = getNextGuidedStep(
+        props.data,
+        stepMap[props.type],
+      ).href;
+      return;
     }
-    window.location.href = getNextGuidedStep(
-      props.data,
-      stepMap[props.type],
-    ).href;
+
+    try {
+      await updateBreachStatus(
+        emailAffected,
+        unresolvedPasswordBreach.id,
+        resolvedDataClassName,
+      );
+
+      const updatedSubscriberBreaches = subscriberBreaches.map(
+        (subscriberBreach) => {
+          if (subscriberBreach.id === unresolvedPasswordBreach.id) {
+            subscriberBreach.resolvedDataClasses.push("passwords");
+          }
+          return subscriberBreach;
+        },
+      );
+
+      const isComplete = hasCompletedStep(
+        { ...props.data, subscriberBreaches: updatedSubscriberBreaches },
+        "LeakedPasswordsPassword",
+      );
+
+      setSubscriberBreaches(updatedSubscriberBreaches);
+
+      if (isComplete) {
+        window.location.href = getNextGuidedStep(
+          props.data,
+          stepMap[props.type],
+        ).href;
+      }
+    } catch (error) {
+      console.error("Error updating breach status", error);
+    }
   };
 
-  console.log(unresolvedPasswordBreach);
+  const handlePress = async () => {
+    try {
+      await handleUpdateBreachStatus();
+      // Additional logic after the Promise resolves
+    } catch (error) {
+      // Handle errors if needed
+      console.error("Error updating breach status", error);
+    }
+  };
+
   return (
-    unresolvedPasswordBreach &&
     unresolvedPasswordBreachContent && (
       <FixView
         subscriberEmails={props.subscriberEmails}
@@ -242,7 +252,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
                 small
                 // TODO: Add test once MNTOR-1700 logic is added
                 /* c8 ignore next 3 */
-                onPress={() => handleUpdateBreachStatus(stepCompleted)}
+                onPress={() => void handlePress()}
                 autoFocus={true}
               >
                 {l10n.getString("leaked-passwords-mark-as-fixed")}
