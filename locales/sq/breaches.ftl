@@ -5,6 +5,17 @@
 breach-meta-title = { -brand-fx-monitor } - Pult
 breach-all-meta-title = { -brand-fx-monitor } - Krejt Cenimet e të Dhënave
 breach-all-meta-social-title = Krejt Cenimet e Pikasura nga { -brand-fx-monitor }
+breach-all-meta-social-description = Shfletoni listën e plotë të cenimeve të ditura të pikasura nga { -brand-fx-monitor }, mandej shihni nëse është ekspozuar informacion i juaji.
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - Cenim të Dhënash { $company }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = Qetë prekur nga Cenim të Dhënash { $company }?
+breach-detail-meta-social-description = Përdorni { -brand-fx-monitor } që të shihni nëse në këtë cenim qe ekspozuar informacion personal i juaji dhe kuptoni ç’të bëhet më pas.
+breach-scan-meta-title = { -brand-fx-monitor } - Përfundime Cenimesh
+breach-scan-meta-social-title = Përfundime Cenimesh { -brand-fx-monitor }
+breach-scan-meta-social-description = Që të zgjidhni cenime dhe të merrni mbikëqyrje të vazhdueshme për çfarëdo cenimi të ri të ditur, bëni hyrjen te { -brand-fx-monitor }.
 
 ## Breaches header
 
@@ -62,6 +73,11 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
+breach-checklist-pw-header-text = Përditësoni fjalëkalimet tuaja dhe aktivizoni mirëfilltësim dyfaktorësh (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-text = Në shumicën e rasteve rekomandojmë të ndryshoni fjalëkalimin tuaj në sajtin e shoqërisë. Por <b>sajti në fjalë mund të jetë jashtë funksionimi, ose të përmbajë lëndë dashakeqe</b>, ndaj bëni kujdes, nëse <breached-company-link>vizitoni sajtin</breached-company-link>. Për më tepër mbrojtje, sigurohuni se po përdorni fjalëkalime unikë për krejt llogaritë, që kështu, çfarëdo rrjedhje fjalëkalimi të mos mund të përdoret për të hyrë në llogari të tjera. { $passwordManagerLink } mund t’ju ndihmojë të keni nën kontroll në mënyrë të parrezik krejt fjalëkalimet tuaj.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -125,6 +141,9 @@ breach-checklist-phone-header-2 = Mbrojeni numrin tuaj të telefonit me një sh�
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+breach-checklist-sq-header-text = Përditësoni pyetjet tuaja të sigurisë.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = Në shumicën e rasteve rekomandojmë të përditësoni pyetjet tuaja të sigurisë në sajtin e shoqërisë. Por <b>sajti në fjalë mund të jetë jashtë funksionimi, ose të përmbajë lëndë dashakeqe</b>, ndaj bëni kujdes, nëse <breached-company-link>vizitoni sajtin</breached-company-link>. Për më tepër mbrojtje,përditësojini këto pyetje sigurie në çfarëdo llogarie të rëndësishme ku i keni përdorur dhe krijoni fjalëkalime unikë për krejt llogaritë.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 

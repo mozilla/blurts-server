@@ -27,3 +27,9 @@ export async function setProfileDetails(
     created_at: knex.fn.now(),
   });
 }
+
+export async function deleteProfileDetails(onerepProfileId: number) {
+  await knex("onerep_profiles").delete().where({
+    onerep_profile_id: onerepProfileId,
+  });
+}

@@ -4,9 +4,8 @@
 
 "use client";
 
-import { Key, useDeferredValue, useEffect, useState } from "react";
-import { AriaTextFieldProps } from "react-aria";
-import { Item } from "react-stately";
+import { useDeferredValue, useEffect, useState } from "react";
+import { ComboBoxStateOptions, Item } from "react-stately";
 import { ComboBox } from "./ComboBox";
 import {
   MatchingLocations,
@@ -61,20 +60,26 @@ function getLocationString(location: RelevantLocation) {
   return `${name}, ${stateCode}, ${countryCode}`;
 }
 
-function getLocationStringByKey(locations: Array<RelevantLocation>, key: Key) {
+function getLocationStringByKey(
+  locations: Array<RelevantLocation>,
+  key: ComboBoxStateOptions<object>["selectedKey"],
+) {
   const location = locations.find(({ id }) => id === key);
   // TODO: Add unit test when changing this code:
   /* c8 ignore next */
   return location ? getLocationString(location) : "";
 }
 
-export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
+export const LocationAutocompleteInput = (
+  props: ComboBoxStateOptions<object>,
+) => {
   const [searchQuery, setSearchQuery] = useState("");
   const deferredSearchQuery = useDeferredValue(searchQuery);
 
   const [locationSuggestions, setLocationSuggestions] =
     useState<MatchingLocations>([]);
-  const [selectedKey, setSelectedKey] = useState<Key>("");
+  const [selectedKey, setSelectedKey] =
+    useState<ComboBoxStateOptions<object>["selectedKey"]>("");
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -137,12 +142,14 @@ export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
     }
 
     setSearchQuery(inputValue);
-    props.onChange?.(inputValue);
+    props.onInputChange?.(inputValue);
   };
 
   // TODO: Add unit test when changing this code:
-  /* c8 ignore next 3 */
-  const handleOnSelectionChange = (key: Key) => {
+  /* c8 ignore next 5 */
+  const handleOnSelectionChange = (
+    key: ComboBoxStateOptions<object>["selectedKey"],
+  ) => {
     setSelectedKey(key);
   };
 
