@@ -18,6 +18,7 @@ import { cookies } from "next/headers";
 import { randomUUID } from "crypto";
 import { PageLoadEvent } from "../components/client/PageLoadEvent";
 import { getExperiments } from "../../functions/server/getExperiments";
+import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
 
 export type Props = {
   children: ReactNode;
@@ -65,12 +66,17 @@ const GuestLayout = async (props: Props) => {
     logger.error("Could not fetch Nimbus features:", ex);
   }
 
+  const enabledFlags = await getEnabledFeatureFlags({
+    email: session?.user.email ?? "",
+  });
+
   return (
     <>
       <PageLoadEvent
         userId={userId}
         channel={process.env.APP_ENV ?? ""}
         appEnv={process.env.APP_ENV ?? ""}
+        enabledFlags={enabledFlags}
       />
       <header>
         <div className="header-wrapper">

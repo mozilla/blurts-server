@@ -8,19 +8,21 @@ import { useEffect, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { useGlean } from "../../../hooks/useGlean";
 import { ExtraMap } from "@mozilla/glean/dist/types/core/metrics/events_database/recorded_event";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 export type Props = {
   userId: string;
   channel: string;
   appEnv: string;
+  enabledFlags: FeatureFlagName[];
 };
 
 type RequiredKeys = {
-  user_id: string;
   path: string;
 };
 
 type OptionalKeys = {
+  user_id?: string;
   referrer?: string;
   utm_campaign?: string;
   utm_content?: string;
@@ -37,12 +39,16 @@ export const PageLoadEvent = (props: Props) => {
   const path = usePathname();
 
   const required: RequiredKeys = useMemo(() => {
-    return { user_id: userId, path };
-  }, [userId, path]);
+    return { path };
+  }, [path]);
 
   const optional: OptionalKeys = useMemo(() => {
-    return {};
-  }, []);
+    if (props.enabledFlags.includes("FxaUidTelemetry")) {
+      return { user_id: userId };
+    } else {
+      return {};
+    }
+  }, [userId, props.enabledFlags]);
 
   if (
     typeof window !== "undefined" &&

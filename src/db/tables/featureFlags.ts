@@ -32,7 +32,8 @@ export type FeatureFlagName =
   | "FreeBrokerScan"
   | "PremiumBrokerRemoval"
   | "FalseDoorTest"
-  | "HibpBreachNotifications";
+  | "HibpBreachNotifications"
+  | "FxaUidTelemetry";
 
 export async function getEnabledFeatureFlags(
   options:
