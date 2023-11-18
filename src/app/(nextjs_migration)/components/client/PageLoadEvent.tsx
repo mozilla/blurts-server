@@ -40,7 +40,9 @@ export const PageLoadEvent = (props: Props) => {
     return { user_id: userId, path };
   }, [userId, path]);
 
-  const optional: OptionalKeys = {};
+  const optional: OptionalKeys = useMemo(() => {
+    return {};
+  }, []);
 
   if (
     typeof window !== "undefined" &&
