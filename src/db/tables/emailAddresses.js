@@ -3,8 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { v4 as uuidv4 } from 'uuid'
-import initKnex from 'knex'
-import knexConfig from '../knexfile.js'
+import { createDbConnection } from "../connect";
 import { subscribeHash } from '../../utils/hibp.js'
 import { getSha1 } from '../../utils/fxa.js'
 import { getSubscriberByEmail, updateFxAData } from './subscribers.js'
@@ -14,7 +13,8 @@ import {
   UnauthorizedError
 } from '../../utils/error.js'
 import { getMessage } from '../../utils/fluent.js'
-const knex = initKnex(knexConfig)
+
+const knex = createDbConnection();
 
 /**
  * @param {string} token
