@@ -33,22 +33,19 @@ const GuestLayout = async (props: Props) => {
   let userId = "";
 
   if (accountId && typeof accountId === "string") {
-    // If the user is logged in, use a UUID based on the user's subscriber ID.
+    // If the user is logged in, use the FxA User ID.
     // Note: we may want to use the FxA UID here, but we need approval for that first.
-    if (process.env.NIMBUS_UUID_NAMESPACE) {
-      userId = uuidv5(accountId, process.env.NIMBUS_UUID_NAMESPACE);
-    } else {
-      logger.error("NIMBUS_UUID_NAMESPACE env var not set");
-    }
+    userId = accountId;
   } else {
     // if the user is not logged in, use a cookie with a randomly-generated Nimbus user ID.
+    // TODO: could we use client ID for this? There's no supported way to get it from GleanJS.
     const cookie = cookies().get("userId");
     if (cookie) {
       userId = cookie.value;
     } else {
       // TODO Cookies can only be set in server action or route handler
       // @see https://nextjs.org/docs/app/api-reference/functions/cookies#cookiessetname-value-options
-      // cookies().set("userId", uuid);
+      // This is set client-side in PageLoadEvent.
       userId = `guest-${randomUUID()}`;
     }
   }

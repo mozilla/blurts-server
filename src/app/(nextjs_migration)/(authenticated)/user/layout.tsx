@@ -53,6 +53,10 @@ const MainLayout = async (props: Props) => {
     email: session.user.email,
   });
 
+  const enabledFlags = await getEnabledFeatureFlags({
+    email: session?.user.email ?? "",
+  });
+
   return (
     <>
       <Script
@@ -64,6 +68,7 @@ const MainLayout = async (props: Props) => {
         userId={userId}
         channel={process.env.APP_ENV ?? ""}
         appEnv={process.env.APP_ENV ?? ""}
+        enabledFlags={enabledFlags}
       />
       <header>
         <div className="header-wrapper">

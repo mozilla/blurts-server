@@ -6,6 +6,7 @@
 
 import { useEffect, useMemo } from "react";
 import { usePathname } from "next/navigation";
+import { useCookies } from "react-cookie";
 import { useGlean } from "../../../hooks/useGlean";
 import { ExtraMap } from "@mozilla/glean/dist/types/core/metrics/events_database/recorded_event";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
@@ -33,6 +34,7 @@ type OptionalKeys = {
 
 // Empty component that records a page view on first load.
 export const PageLoadEvent = (props: Props) => {
+  const [cookies, setCookie] = useCookies(["userId"]);
   const userId = props.userId;
 
   const { pageEvents } = useGlean(props.channel, props.appEnv);
@@ -43,12 +45,20 @@ export const PageLoadEvent = (props: Props) => {
   }, [path]);
 
   const optional: OptionalKeys = useMemo(() => {
+    // If the user is not logged in, use randomly-generated user ID and store in cookie.
+    if (userId.startsWith("guest")) {
+      if (!cookies.userId) {
+        setCookie("userId", userId);
+      }
+      return { user_id: userId };
+    }
+
     if (props.enabledFlags.includes("FxaUidTelemetry")) {
       return { user_id: userId };
     } else {
       return {};
     }
-  }, [userId, props.enabledFlags]);
+  }, [cookies.userId, setCookie, userId, props.enabledFlags]);
 
   if (
     typeof window !== "undefined" &&
