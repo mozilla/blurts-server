@@ -91,7 +91,7 @@ export const PageLoadEvent = (props: Props) => {
   // On first load of the page, record a page view.
   useEffect(() => {
     pageEvents.view.record(keys);
-  }, [pageEvents.view, keys, path]);
+  }, [pageEvents.view, keys]);
 
   // This component doesn't render anything.
   return <></>;
