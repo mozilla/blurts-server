@@ -703,7 +703,8 @@ menu-item-logout = Dilni
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Kushte & Privatësi
+terms-of-service = Kushtet e Shërbimit
+privacy-notice = Shënim Mbi Privatësinë
 github = { -brand-github }
 footer-nav-all-breaches = Krejt Cenimet
 

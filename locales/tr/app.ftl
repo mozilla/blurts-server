@@ -656,10 +656,6 @@ ad-unit-6-before-you-complete = Siteye kaydolurken bilgilerinizi korumak ve gele
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account = Firefox hesabı
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla hesabı
@@ -687,11 +683,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Kullanıcı menüsü
 menu-button-alt = Kullanıcı menüsünü aç
 menu-list-accessible-label = Hesap menüsü
-# Deprecated
-menu-item-fxa = { -brand-fx-account }nızı yönetin
 menu-item-fxa-2 = { -brand-mozilla-account }nızı yönetin
-# Deprecated
-menu-item-fxa-alt = { -brand-fx-account } sayfasını aç
 menu-item-fxa-alt-2 = { -brand-mozilla-account } sayfasını açın
 menu-item-settings = Ayarlar
 menu-item-settings-alt = Ayarlar sayfasını aç
@@ -702,7 +694,8 @@ menu-item-logout = Çıkış yap
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Şartlar ve gizlilik
+terms-of-service = Kullanım Koşulları
+privacy-notice = Gizlilik Bildirimi
 github = { -brand-github }
 footer-nav-all-breaches = Tüm ihlaller
 
