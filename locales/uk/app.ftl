@@ -765,42 +765,6 @@ ad-unit-6-before-you-complete = Перш ніж здійснити наступ�
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account =
-    { $case ->
-        [gen]
-            { $capitalization ->
-                [lower] облікового запису Firefox
-               *[upper] Облікового запису Firefox
-            }
-        [dat]
-            { $capitalization ->
-                [lower] обліковому запису Firefox
-               *[upper] Обліковому запису Firefox
-            }
-        [acc]
-            { $capitalization ->
-                [lower] обліковий запис Firefox
-               *[upper] Обліковий запис Firefox
-            }
-        [abl]
-            { $capitalization ->
-                [lower] обліковим записом Firefox
-               *[upper] Обліковим записом Firefox
-            }
-        [loc]
-            { $capitalization ->
-                [lower] обліковому записі Firefox
-               *[upper] Обліковому записі Firefox
-            }
-       *[nom]
-            { $capitalization ->
-                [lower] обліковий запис Firefox
-               *[upper] Обліковий запис Firefox
-            }
-    }
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account =
@@ -861,11 +825,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Меню користувача
 menu-button-alt = Відкрити меню користувача
 menu-list-accessible-label = Меню облікового запису
-# Deprecated
-menu-item-fxa = Керувати своїм { -brand-fx-account(case: "abl", capitalization: "lower") }
 menu-item-fxa-2 = Керуйте своїм { -brand-mozilla-account(case: "abl") }
-# Deprecated
-menu-item-fxa-alt = Відкрити сторінку { -brand-fx-account(case: "gen", capitalization: "lower") }
 menu-item-fxa-alt-2 = Відкрити сторінку { -brand-mozilla-account(case: "gen") }
 menu-item-settings = Налаштування
 menu-item-settings-alt = Відкрити сторінку налаштувань
@@ -876,7 +836,8 @@ menu-item-logout = Вийти
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Умови та приватність
+terms-of-service = Умови використання
+privacy-notice = Положення про приватність
 github = { -brand-github }
 footer-nav-all-breaches = Усі витоки
 
