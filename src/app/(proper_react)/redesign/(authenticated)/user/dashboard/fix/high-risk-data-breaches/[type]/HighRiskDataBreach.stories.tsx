@@ -90,7 +90,7 @@ const HighRiskBreachWrapper = (props: {
         }
       : {
           countryCode: "nl",
-          latestScanData: { results: [], scan: null },
+          latestScanData: null,
           subscriberBreaches: mockedBreaches,
           user: mockedSession.user,
         };
