@@ -655,14 +655,6 @@ ad-unit-6-before-you-complete = Pour finir cette inscription, utilisez un alias 
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account =
-    { $capitalization ->
-       *[lowercase] compte Firefox
-        [uppercase] Compte Firefox
-    }
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Compte Mozilla
@@ -691,11 +683,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Menu utilisateur
 menu-button-alt = Ouvrir le menu utilisateur
 menu-list-accessible-label = Menu du compte
-# Deprecated
-menu-item-fxa = Gérer votre { -brand-fx-account }
 menu-item-fxa-2 = Gérer votre { -brand-mozilla-account }
-# Deprecated
-menu-item-fxa-alt = Ouvrir la page du { -brand-fx-account }
 menu-item-fxa-alt-2 = Ouvrir la page du { -brand-mozilla-account }
 menu-item-settings = Paramètres
 menu-item-settings-alt = Ouvrir la page des paramètres
@@ -706,7 +694,8 @@ menu-item-logout = Déconnexion
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Confidentialité et conditions d’utilisation
+terms-of-service = Conditions d’utilisation
+privacy-notice = Politique de confidentialité
 github = { -brand-github }
 footer-nav-all-breaches = Toutes les fuites de données
 

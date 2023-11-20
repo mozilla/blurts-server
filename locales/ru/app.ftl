@@ -700,14 +700,6 @@ ad-unit-6-before-you-complete = Прежде чем завершить след�
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account =
-    { $case ->
-        [prepositional] Аккаунтом Firefox
-       *[nominative] Аккаунт Firefox
-    }
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Аккаунт Mozilla
@@ -736,11 +728,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Пользовательское меню
 menu-button-alt = Открыть пользовательское меню
 menu-list-accessible-label = Меню аккаунта
-# Deprecated
-menu-item-fxa = Управляйте своим { -brand-fx-account(case: "prepositional") }
 menu-item-fxa-2 = Управляйте своим { -brand-mozilla-account }
-# Deprecated
-menu-item-fxa-alt = Открыть страницу { -brand-fx-account }
 menu-item-fxa-alt-2 = Открыть страницу { -brand-mozilla-account }
 menu-item-settings = Настройки
 menu-item-settings-alt = Открыть страницу настроек
@@ -751,7 +739,8 @@ menu-item-logout = Выйти
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Условия и конфиденциальность
+terms-of-service = Условия использования
+privacy-notice = Уведомление о конфиденциальности
 github = { -brand-github }
 footer-nav-all-breaches = Все утечки
 

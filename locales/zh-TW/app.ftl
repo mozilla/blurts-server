@@ -615,10 +615,6 @@ ad-unit-6-before-you-complete = 您下次註冊帳號時，可使用轉寄信箱
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account = Firefox 帳號
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla 帳號
@@ -647,11 +643,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = 使用者選單
 menu-button-alt = 開啟使用者選單
 menu-list-accessible-label = 帳號選單
-# Deprecated
-menu-item-fxa = 管理您的 { -brand-fx-account }
 menu-item-fxa-2 = 管理您的 { -brand-mozilla-account }
-# Deprecated
-menu-item-fxa-alt = 開啟 { -brand-fx-account } 頁面
 menu-item-fxa-alt-2 = 開啟 { -brand-mozilla-account }頁面
 menu-item-settings = 設定
 menu-item-settings-alt = 開啟設定頁面
@@ -662,7 +654,8 @@ menu-item-logout = 登出
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = 使用條款及隱私權
+terms-of-service = 服務條款
+privacy-notice = 隱私權公告
 github = { -brand-github }
 footer-nav-all-breaches = 所有資料外洩事件
 

@@ -70,10 +70,8 @@ export function SecurityRecommendationsLayout(
             variant="primary"
             small
             // TODO: Add test once MNTOR-1700 logic is added
-            /* c8 ignore next 3 */
-            onPress={() => {
-              // TODO: MNTOR-1700 Add routing logic
-            }}
+            /* c8 ignore next 6 */
+            href={getNextGuidedStep(props.data, stepMap[props.type]).href}
             autoFocus={true}
           >
             {l10n.getString("security-recommendation-steps-cta-label")}

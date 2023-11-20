@@ -12,9 +12,8 @@ import {
   getSubscribersByHashes,
 } from "../../../../../../db/tables/subscribers";
 import {
-  activateProfile,
+  activateAndOptoutProfile,
   deactivateProfile,
-  optoutProfile,
 } from "../../../../../functions/server/onerep";
 import { captureException } from "@sentry/node";
 import { deleteProfileDetails } from "../../../../../../db/tables/onerep_profiles";
@@ -120,8 +119,7 @@ export async function PUT(
         switch (action) {
           case "subscribe": {
             // activate and opt out profiles
-            await activateProfile(onerepProfileId);
-            await optoutProfile(onerepProfileId);
+            await activateAndOptoutProfile(onerepProfileId);
             logger.info("force_user_subscribe", {
               onerepProfileId,
               primarySha1,

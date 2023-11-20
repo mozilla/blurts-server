@@ -25,7 +25,7 @@ it("shows and hides the explainer dialog", async () => {
   const ComposedProgressCard = composeStory(ProgressCardItem, Meta);
   render(<ComposedProgressCard />);
 
-  const progressCardHeader = screen.getByText("Here is what we fixed");
+  const progressCardHeader = screen.getByText("Here’s what we fixed");
   const explainerTrigger = within(progressCardHeader).getByLabelText("Open");
   await user.click(explainerTrigger);
 
