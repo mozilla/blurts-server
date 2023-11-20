@@ -9,7 +9,7 @@ enum ENV {
   local = "local",
   stage = "stage",
   prod = "prod",
-  dev = "dev",
+  heroku = "heroku",
 }
 
 interface DefaultScreenshotOpts {
@@ -28,9 +28,9 @@ export const defaultScreenshotOpts: Partial<DefaultScreenshotOpts> = {
 
 export const ENV_URLS = {
   local: "http://localhost:6060",
-  dev: "https://fx-breach-alerts.herokuapp.com",
+  heroku: "https://fx-breach-alerts.herokuapp.com",
   stage: "https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net",
-  prod: "https://monitor.firefox.com/",
+  prod: "https://monitor.firefox.com",
 };
 
 export const setEnvVariables = (email: string) => {
