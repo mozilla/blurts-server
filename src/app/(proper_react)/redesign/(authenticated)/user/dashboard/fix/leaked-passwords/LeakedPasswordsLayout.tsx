@@ -244,15 +244,13 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
               <Button
                 variant="primary"
                 small
-                // TODO: Add test once MNTOR-1700 logic is added
-                /* c8 ignore next 3 */
                 onPress={() => void handlePress()}
                 autoFocus={true}
               >
                 {l10n.getString("leaked-passwords-mark-as-fixed")}
               </Button>
               <Link
-                // TODO: Add test once MNTOR-1700 logic is added
+                // TODO: Add skip logic
                 href="/"
               >
                 {l10n.getString("leaked-passwords-skip")}
