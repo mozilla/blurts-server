@@ -28,13 +28,14 @@ async function init({ debugMode, ga4MeasurementId }) {
     });
 
     // Instrument CTA clicks for analytics.
-    document
-      .querySelectorAll("[data-cta-id]")
-      .forEach((cta) =>
-        cta.addEventListener("click", () =>
-          window.gtag("event", "clicked_cta", { cta_id: cta.dataset.ctaId }),
-        ),
-      );
+    document.querySelectorAll("[data-cta-id]").forEach((cta) =>
+      cta.addEventListener("click", () =>
+        window.gtag("event", "clicked_cta", {
+          cta_id: cta.dataset.ctaId,
+          page_location: window.location.href,
+        }),
+      ),
+    );
   }
 }
 
