@@ -34,7 +34,7 @@ export default async function LeakedPasswords({
   const subscriberEmails = await getSubscriberEmails(session.user);
 
   const { type } = params;
-  if (!(type in leakedPasswordTypes)) {
+  if (!leakedPasswordTypes.includes(type)) {
     redirect("/redesign/user/dashboard");
   }
 

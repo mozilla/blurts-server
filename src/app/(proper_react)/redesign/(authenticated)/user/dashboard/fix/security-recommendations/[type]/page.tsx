@@ -34,7 +34,7 @@ export default async function SecurityRecommendations({
   const subscriberEmails = await getSubscriberEmails(session.user);
 
   const { type } = params;
-  if (!(type in securityRecommendationTypes)) {
+  if (!securityRecommendationTypes.includes(type)) {
     redirect("/redesign/user/dashboard");
   }
 
