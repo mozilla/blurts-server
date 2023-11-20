@@ -87,10 +87,6 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   };
   const l10n = useL10n();
   const [emailAffected, setEmailAffected] = useState<string>();
-  // Pass the correct type don't hardcode
-  const stepCompleted = hasCompletedStep(props.data, "LeakedPasswordsPassword");
-  console.log(props.type);
-  console.log(stepCompleted);
   const [pageDataContent, setPageDataContent] = useState<LeakedPassword>({
 >>>>>>> 546acaf11 (switch between security questions and passwords)
     dataType: props.type,
@@ -146,7 +142,6 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         data={props.data}
 =======
   const pageData = getLeakedPasswords(pageDataContent);
-
   const unresolvedPasswordBreachContent =
     pageData.unresolvedPasswordBreachContent;
   const unresolvedPasswordBreach =
@@ -193,10 +188,11 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         resolvedDataClassName,
       );
 
+      // Manually move to the next step when mark is fixed is selected
       const updatedSubscriberBreaches = subscriberBreaches.map(
         (subscriberBreach) => {
           if (subscriberBreach.id === unresolvedPasswordBreach.id) {
-            subscriberBreach.resolvedDataClasses.push("passwords");
+            subscriberBreach.resolvedDataClasses.push(resolvedDataClassName);
           }
           return subscriberBreach;
         },
@@ -204,7 +200,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
 
       const isComplete = hasCompletedStep(
         { ...props.data, subscriberBreaches: updatedSubscriberBreaches },
-        "LeakedPasswordsPassword",
+        stepMap[props.type],
       );
 
       setSubscriberBreaches(updatedSubscriberBreaches);
@@ -223,9 +219,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   const handlePress = async () => {
     try {
       await handleUpdateBreachStatus();
-      // Additional logic after the Promise resolves
     } catch (error) {
-      // Handle errors if needed
       console.error("Error updating breach status", error);
     }
   };
