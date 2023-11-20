@@ -721,10 +721,6 @@ ad-unit-6-before-you-complete = Mielőtt befejezné a következő regisztráció
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account = Firefox-fiók
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla-fiók
@@ -753,11 +749,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Felhasználói menü
 menu-button-alt = Felhasználói menü megnyitása
 menu-list-accessible-label = Fiók menü
-# Deprecated
-menu-item-fxa = A { -brand-fx-account }ja kezelése
 menu-item-fxa-2 = A { -brand-mozilla-account } kezelése
-# Deprecated
-menu-item-fxa-alt = A { -brand-fx-account } oldal megnyitása
 menu-item-fxa-alt-2 = A { -brand-mozilla-account } oldal megnyitása
 menu-item-settings = Beállítások
 menu-item-settings-alt = Beállítások oldal megnyitása
@@ -768,7 +760,8 @@ menu-item-logout = Kijelentkezés
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Feltételek és adatvédelem
+terms-of-service = A szolgáltatás feltételei
+privacy-notice = Adatvédelmi nyilatkozat
 github = { -brand-github }
 footer-nav-all-breaches = Összes adatvédelmi incidens
 

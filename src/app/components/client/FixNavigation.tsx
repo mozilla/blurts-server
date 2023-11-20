@@ -192,10 +192,10 @@ const StepImage = (props: {
     props.section === "Scan"
       ? stepDataBrokerProfilesIcon
       : props.section === "HighRisk"
-      ? stepHighRiskDataBreachesIcon
-      : props.section === "LeakedPasswords"
-      ? stepLeakedPasswordsIcon
-      : stepSecurityRecommendationsIcon;
+        ? stepHighRiskDataBreachesIcon
+        : props.section === "LeakedPasswords"
+          ? stepLeakedPasswordsIcon
+          : stepSecurityRecommendationsIcon;
 
   return <Image src={src} alt="" width={22} height={22} />;
 };

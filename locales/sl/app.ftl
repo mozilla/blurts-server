@@ -772,10 +772,6 @@ ad-unit-6-before-you-complete = Preden dokončate naslednjo prijavo, uporabite e
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account = Firefox Račun
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account =
@@ -812,11 +808,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Uporabniški meni
 menu-button-alt = Odpri uporabniški meni
 menu-list-accessible-label = Meni računa
-# Deprecated
-menu-item-fxa = Upravljajte svoj { -brand-fx-account }
 menu-item-fxa-2 = Upravljajte svoj { -brand-mozilla-account }
-# Deprecated
-menu-item-fxa-alt = Odpri stran { -brand-fx-account }
 menu-item-fxa-alt-2 = Odpri stran { -brand-mozilla-account(sklon: "rodilnik") }
 menu-item-settings = Nastavitve
 menu-item-settings-alt = Odpri stran z nastavitvami
@@ -827,7 +819,8 @@ menu-item-logout = Odjava
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Pogoji in zasebnost
+terms-of-service = Pogoji uporabe
+privacy-notice = Obvestilo o zasebnosti
 github = { -brand-github }
 footer-nav-all-breaches = Vse kraje podatkov
 

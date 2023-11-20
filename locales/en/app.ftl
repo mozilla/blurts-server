@@ -903,7 +903,8 @@ menu-item-logout = Sign out
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Terms & Privacy
+terms-of-service = Terms of Service
+privacy-notice = Privacy Notice
 github = { -brand-github }
 footer-nav-all-breaches = All Breaches
 
