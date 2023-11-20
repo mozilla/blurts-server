@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Locator, Page } from "@playwright/test";
+import { waitForUrlOrTimeout } from "../utils/helpers";
 
 export class LandingPage {
   readonly page: Page;
@@ -77,8 +78,8 @@ export class LandingPage {
       // identify expected URLs
       mozillaLogoUrl: "https://www.mozilla.org",
       allBreachesUrl: "/breaches",
-      FAQUrl: "/firefox-monitor-faq",
-      TermsUrl: "/privacy/firefox-monitor",
+      FAQUrl: "https://support.mozilla.org/kb/firefox-monitor-faq",
+      TermsUrl: "https://www.mozilla.org/privacy/firefox-monitor",
       GithubUrl: "https://github.com/mozilla/blurts-server",
     };
   }
@@ -99,8 +100,10 @@ export class LandingPage {
     }
   }
 
-  async enterScanEmail(email: string) {
+  async enterFreeScanEmail(email: string) {
     await this.scanEmailAddressInput.fill(email);
     await this.checkForBreachesButton.click();
+
+    return await waitForUrlOrTimeout(this.page, "/scan", 5000);
   }
 }
