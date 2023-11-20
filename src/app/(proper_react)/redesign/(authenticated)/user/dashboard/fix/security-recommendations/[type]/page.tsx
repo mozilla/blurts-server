@@ -8,16 +8,14 @@ import { headers } from "next/headers";
 import { SecurityRecommendationsLayout } from "../SecurityRecommendationsLayout";
 import {
   SecurityRecommendationTypes,
-  getSecurityRecommendationsByType,
+  securityRecommendationTypes,
 } from "../securityRecommendationsData";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
-import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
 import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
 import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
-import { getL10n } from "../../../../../../../../functions/server/l10n";
 
 interface SecurityRecommendationsProps {
   params: {
@@ -32,22 +30,11 @@ export default async function SecurityRecommendations({
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
-  const l10n = getL10n();
   const breaches = await getSubscriberBreaches(session.user);
   const subscriberEmails = await getSubscriberEmails(session.user);
-  const guidedExperienceBreaches = getGuidedExperienceBreaches(
-    breaches,
-    subscriberEmails,
-  );
 
   const { type } = params;
-  const pageData = getSecurityRecommendationsByType({
-    dataType: type,
-    breaches: guidedExperienceBreaches,
-    l10n: l10n,
-  });
-
-  if (!pageData) {
+  if (!(type in securityRecommendationTypes)) {
     redirect("/redesign/user/dashboard");
   }
 

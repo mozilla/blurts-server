@@ -11,6 +11,16 @@ import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
 import { Button } from "../../../../../../../components/server/Button";
 import { StepLink } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 
+export const leakedPasswordTypes = [
+  "passwords",
+  "passwords-done",
+  "security-questions",
+  "security-questions-done",
+  "none",
+] as const;
+
+export type LeakedPasswordsTypes = (typeof leakedPasswordTypes)[number];
+
 export type LeakedPasswordsContent = {
   summary: string;
   description: ReactNode;
@@ -21,13 +31,6 @@ export type LeakedPasswordsContent = {
   };
 };
 
-export type LeakedPasswordsTypes =
-  | "passwords"
-  | "passwords-done"
-  | "security-questions"
-  | "security-questions-done"
-  | "none";
-
 export type LeakedPassword = {
   type: LeakedPasswordsTypes;
   title: string;
@@ -37,12 +40,8 @@ export type LeakedPassword = {
 
 function getDoneStepContent(
   l10n: ExtendedReactLocalization,
-  nextStep?: StepLink,
+  nextStep: StepLink,
 ) {
-  if (!nextStep) {
-    return { summary: "", description: "" };
-  }
-
   // Security questions next
   if (nextStep.id === "LeakedPasswordsSecurityQuestion") {
     return {
@@ -112,7 +111,7 @@ function getLeakedPasswords({
   dataType: string;
   breaches: GuidedExperienceBreaches;
   l10n: ExtendedReactLocalization;
-  nextStep?: StepLink;
+  nextStep: StepLink;
 }) {
   const findFirstUnresolvedBreach = (breachClassType: LeakedPasswordsTypes) => {
     const leakedPasswordType =

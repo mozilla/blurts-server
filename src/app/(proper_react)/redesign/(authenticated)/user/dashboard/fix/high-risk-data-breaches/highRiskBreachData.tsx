@@ -16,6 +16,17 @@ import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
 import { Button } from "../../../../../../../components/server/Button";
 import { StepLink } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 
+export const highRiskBreachTypes = [
+  "credit-card",
+  "ssn",
+  "bank-account",
+  "pin",
+  "done",
+  "none",
+] as const;
+
+export type HighRiskBreachTypes = (typeof highRiskBreachTypes)[number];
+
 export type HighRiskBreachContent = {
   summary: string;
   description: ReactNode;
@@ -25,14 +36,6 @@ export type HighRiskBreachContent = {
     subtitle?: string;
   };
 };
-
-export type HighRiskBreachTypes =
-  | "credit-card"
-  | "ssn"
-  | "bank-account"
-  | "pin"
-  | "done"
-  | "none";
 
 export type HighRiskBreach = {
   type: HighRiskBreachTypes;
@@ -44,12 +47,8 @@ export type HighRiskBreach = {
 
 function getDoneStepContent(
   l10n: ExtendedReactLocalization,
-  nextStep?: StepLink,
+  nextStep: StepLink,
 ) {
-  if (!nextStep) {
-    return { summary: "", description: "" };
-  }
-
   // Passwords next
   if (nextStep.id === "LeakedPasswordsPassword") {
     return {
@@ -156,7 +155,7 @@ function getHighRiskBreachesByType({
   dataType: HighRiskBreachTypes;
   breaches: GuidedExperienceBreaches;
   l10n: ExtendedReactLocalization;
-  nextStep?: StepLink;
+  nextStep: StepLink;
 }) {
   // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
   const emailsFormatter = new Intl.ListFormat(getLocale(l10n), {

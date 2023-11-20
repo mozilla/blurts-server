@@ -12,6 +12,16 @@ import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
 import { Button } from "../../../../../../../components/server/Button";
 import { StepLink } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 
+export const securityRecommendationTypes = [
+  "phone",
+  "email",
+  "ip",
+  "done",
+] as const;
+
+export type SecurityRecommendationTypes =
+  (typeof securityRecommendationTypes)[number];
+
 export type SecurityRecommendationContent = {
   summary: string;
   description: ReactNode;
@@ -21,8 +31,6 @@ export type SecurityRecommendationContent = {
     subtitle?: string;
   };
 };
-
-export type SecurityRecommendationTypes = "phone" | "email" | "ip" | "done";
 
 export type SecurityRecommendation = {
   type: SecurityRecommendationTypes;
