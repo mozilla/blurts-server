@@ -735,27 +735,6 @@ ad-unit-6-before-you-complete = Πριν ολοκληρώσετε την επό�
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account =
-    { $case ->
-        [gen]
-            { $capitalization ->
-                [lower] λογαριασμού Firefox
-               *[upper] Λογαριασμού Firefox
-            }
-        [acc]
-            { $capitalization ->
-                [lower] λογαριασμό Firefox
-               *[upper] Λογαριασμό Firefox
-            }
-       *[nom]
-            { $capitalization ->
-                [lower] λογαριασμός Firefox
-               *[upper] Λογαριασμός Firefox
-            }
-    }
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account =
@@ -801,11 +780,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Μενού χρήστη
 menu-button-alt = Άνοιγμα μενού χρήστη
 menu-list-accessible-label = Μενού λογαριασμού
-# Deprecated
-menu-item-fxa = Διαχείριση { -brand-fx-account(case: "gen", capitalization: "lower") }
 menu-item-fxa-2 = Διαχείριση { -brand-mozilla-account(case: "gen", capitalization: "lower") }
-# Deprecated
-menu-item-fxa-alt = Άνοιγμα σελίδας { -brand-fx-account(case: "gen", capitalization: "lower") }
 menu-item-fxa-alt-2 = Άνοιγμα σελίδας { -brand-mozilla-account(case: "gen", capitalization: "lower") }
 menu-item-settings = Ρυθμίσεις
 menu-item-settings-alt = Άνοιγμα σελίδας ρυθμίσεων
@@ -816,7 +791,8 @@ menu-item-logout = Αποσύνδεση
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Όροι και απόρρητο
+terms-of-service = Όροι υπηρεσίας
+privacy-notice = Σημείωση απορρήτου
 github = { -brand-github }
 footer-nav-all-breaches = Όλες οι παραβιάσεις
 
