@@ -332,6 +332,8 @@ export const View = (props: Props) => {
           onShowFixed={() => {
             setSelectedTab("fixed");
           }}
+          monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+          yearlySubscriptionUrl={props.yearlySubscriptionUrl}
         />
         <section className={styles.exposuresArea}>
           {selectedTab === "action-needed" ? (
