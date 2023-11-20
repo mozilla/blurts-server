@@ -51,7 +51,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
 
     // verify manage your Mozilla account link, settings option, help and support option, sign out option
     // menu is open
-    expect(await dataBreachPage.profileMenuExpanded()).toBeTruthy();
+    expect(await dataBreachPage.profileMenuExpanded()).toBe(true);
 
     // menu header
     await expect(
@@ -59,9 +59,9 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
     ).toBeVisible();
 
     // head text
-    expect(
-      await dataBreachPage.dataBreachesNavbarProfileMenuHeaderSubtitle.textContent(),
-    ).toEqual("Manage your Mozilla account");
+    await expect(
+      dataBreachPage.dataBreachesNavbarProfileMenuHeaderSubtitle,
+    ).toHaveText("Manage your Mozilla account");
 
     // check settings
     await expect(

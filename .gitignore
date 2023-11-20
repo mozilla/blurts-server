@@ -34,8 +34,6 @@ storybook-static/
 
 # testing
 /coverage
-/src/e2e/test-results
-playwright-report
 
 # next.js
 /.next/

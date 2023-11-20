@@ -51,6 +51,7 @@ export const delay = async (time: number) => {
   });
 };
 
+// this is particular to the free email scan behavior -- fast follow to optimize
 export const waitForUrlOrTimeout = async (
   page: Page,
   urlSubstring: string,

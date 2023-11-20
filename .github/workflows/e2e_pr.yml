@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: Monitor e2e Smoke Tests
 on:
   push:
     branches: [ main ]

@@ -29,10 +29,12 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
         "https://testrail.stage.mozaws.net/index.php?/cases/view/2301512",
     });
 
-    expect(await dashboardPage.dashboardNavButton.getAttribute("href")).toEqual(
+    await expect(dashboardPage.dashboardNavButton).toHaveAttribute(
+      "href",
       "/redesign/user/dashboard",
     );
-    expect(await dashboardPage.FAQsNavButton.getAttribute("href")).toEqual(
+    await expect(dashboardPage.FAQsNavButton).toHaveAttribute(
+      "href",
       "https://support.mozilla.org/kb/firefox-monitor-faq",
     );
   });
