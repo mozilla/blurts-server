@@ -721,10 +721,6 @@ ad-unit-6-before-you-complete = Innan du slutför nästa registrering, använd e
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account = Firefox-konto
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla-konto
@@ -753,11 +749,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Användarmeny
 menu-button-alt = Öppna användarmenyn
 menu-list-accessible-label = Kontomeny
-# Deprecated
-menu-item-fxa = Hantera ditt { -brand-fx-account }
 menu-item-fxa-2 = Hantera ditt { -brand-mozilla-account }
-# Deprecated
-menu-item-fxa-alt = Öppna sidan { -brand-fx-account }
 menu-item-fxa-alt-2 = Öppna sidan { -brand-mozilla-account }
 menu-item-settings = Inställningar
 menu-item-settings-alt = Öppna inställningssidan
@@ -768,7 +760,8 @@ menu-item-logout = Logga ut
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Villkor och sekretess
+terms-of-service = Användarvillkor
+privacy-notice = Sekretessmeddelande
 github = { -brand-github }
 footer-nav-all-breaches = Alla intrång
 

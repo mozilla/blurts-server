@@ -12,14 +12,14 @@ identifying-breaches = Identificar e resolver violações de dados é um passo i
 protect-account = Proteja as suas contas
 protect-account-prevent-hackers = Impeça que os piratas informáticos entrem nas suas contas com as palavras-passe violadas.
 prevent-fraud = Prevenir fraudes e cibercrimes
-prevent-fraud-keep-info = Mantenha a sua informação longe de piratas que pretendem fazer-se passar por si e comprometer-se com erros.
+prevent-fraud-keep-info = Mantenha a sua informação longe de piratas que pretendem fazer-se passar por si e cometer crimes.
 get-alerts = Obter alertas para novas violações de dados
 get-alerts-find-out = Descubra quando a sua informação pessoal está comprometida numa nova violação de dados conhecida.
 
 ## Here’s how it works
 
 how-it-works = Eis como funciona
-check-for-breaches = Pesquisar por falhas de segurança
+check-for-breaches = Pesquisar por intrusões
 check-for-breaches-we-search = Iremos pesquisar todas as violações de dados conhecidas desde 2007 para ver se a sua informação foi comprometida.
 protect-accounts = Proteja as suas contas
 protect-accounts-clear-steps = Iremos dar-lhe passos claros sobre o que fazer a seguir para qualquer violação de dados em que tenha estado envolvido.
