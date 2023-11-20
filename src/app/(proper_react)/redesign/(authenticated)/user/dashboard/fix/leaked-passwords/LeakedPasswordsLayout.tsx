@@ -160,6 +160,8 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
       };
       setPageDataContent(newPageData);
     }
+    // This should only run if emailAffected changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [emailAffected]);
 
   useEffect(() => {
