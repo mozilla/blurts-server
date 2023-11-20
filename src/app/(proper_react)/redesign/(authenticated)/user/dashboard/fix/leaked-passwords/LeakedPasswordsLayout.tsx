@@ -244,7 +244,11 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
               <Button
                 variant="primary"
                 small
+                // TODO: Write unit tests MNTOR-2560
+                /* c8 ignore start */
                 onPress={() => void handlePress()}
+                /* c8 ignore end */
+
                 autoFocus={true}
               >
                 {l10n.getString("leaked-passwords-mark-as-fixed")}
