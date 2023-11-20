@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import initKnex, { Knex } from "knex";
-import knexConfig from "./knexfile";
+import knexConfig from "./knexfile.js";
 
 /** @returns {Knex} */
 const createDbConnection = () => {
