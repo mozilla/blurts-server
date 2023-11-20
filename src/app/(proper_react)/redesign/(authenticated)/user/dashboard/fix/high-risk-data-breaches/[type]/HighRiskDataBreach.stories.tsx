@@ -82,18 +82,18 @@ const HighRiskBreachWrapper = (props: {
           user: mockedSession.user,
         }
       : props.scanStatus === "not_started"
-      ? {
-          countryCode: "us",
-          latestScanData: { results: [], scan: null },
-          subscriberBreaches: mockedBreaches,
-          user: mockedSession.user,
-        }
-      : {
-          countryCode: "nl",
-          latestScanData: null,
-          subscriberBreaches: mockedBreaches,
-          user: mockedSession.user,
-        };
+        ? {
+            countryCode: "us",
+            latestScanData: { results: [], scan: null },
+            subscriberBreaches: mockedBreaches,
+            user: mockedSession.user,
+          }
+        : {
+            countryCode: "nl",
+            latestScanData: null,
+            subscriberBreaches: mockedBreaches,
+            user: mockedSession.user,
+          };
 
   return (
     <Shell

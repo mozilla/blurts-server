@@ -708,10 +708,6 @@ ad-unit-6-before-you-complete = Trước khi bạn hoàn tất lần đăng ký 
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account = Tài khoản Firefox
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Tài khoản Mozilla
@@ -740,11 +736,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Menu người dùng
 menu-button-alt = Mở menu người dùng
 menu-list-accessible-label = Menu tài khoản
-# Deprecated
-menu-item-fxa = Quản lý { -brand-fx-account } của bạn
 menu-item-fxa-2 = Quản lý { -brand-mozilla-account } của bạn
-# Deprecated
-menu-item-fxa-alt = Mở trang { -brand-fx-account }
 menu-item-fxa-alt-2 = Mở trang { -brand-mozilla-account }
 menu-item-settings = Cài đặt
 menu-item-settings-alt = Mở trang cài đặt
@@ -755,7 +747,8 @@ menu-item-logout = Đăng xuất
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Điều khoản & quyền riêng tư
+terms-of-service = Điều khoản dịch vụ
+privacy-notice = Thông báo về quyền riêng tư
 github = { -brand-github }
 footer-nav-all-breaches = Tất cả vụ rò rỉ
 

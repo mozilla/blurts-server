@@ -150,11 +150,11 @@ breach-checklist-sq-body-text = Na maioria dos casos, recomendamos que atualize 
 breach-checklist-hp-header = Crie palavras-passe fortes e exclusivas para qualquer conta em que reutilizou palavras-passe.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-hp-body-2 = Um gestor de palavras-passe como o { $passwordManagerLink } (que é gratuito e integrado no { -brand-firefox }) pode ajudar-lhe a acompanhar todas as suas palavras-passe e a aceder às mesmas com segurança em todos os seus dispositivos.
+breach-checklist-hp-body-2 = Um gestor de palavras-passe como o { $passwordManagerLink } (que é gratuito e integrado no { -brand-firefox }) pode ajudar a gerir todas as suas palavras-passe e a aceder às mesmas com segurança, em todos os seus dispositivos.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
 # Variables:
 #   $breachDate (String) - Date of the breach
 #   $companyName (String) - Name of the company where the breach occurred
-breach-checklist-general-header = Entre em contacto com a { $companyName } para os informar sobre esta violação de dados e perguntar sobre os passos específicos que pode executar.
+breach-checklist-general-header = Entre em contacto com a { $companyName } para os informar sobre esta violação de dados e questionar sobre os passos específicos que pode executar.
