@@ -14,6 +14,7 @@ import { PageLink } from "./PageLink";
 import { ExtendedReactLocalization } from "../../hooks/l10n";
 import { GaScript } from "./GaScript";
 import getPremiumSubscriptionUrl from "../../functions/server/getPremiumSubscriptionUrl";
+import { SubscriptionCheck } from "../../components/client/SubscriptionCheck";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -33,6 +34,7 @@ export const Shell = (props: Props) => {
   return (
     <>
       <GaScript nonce={props.nonce} />
+      <SubscriptionCheck />
       <MobileShell
         session={props.session}
         monthlySubscriptionUrl={monthlySubscriptionUrl}
@@ -94,8 +96,19 @@ export const Shell = (props: Props) => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.mozilla.org/privacy/firefox-monitor">
-                    {l10n.getString("terms-and-privacy")}
+                  <a
+                    href="https://www.mozilla.org/about/legal/terms/subscription-services/"
+                    target="_blank"
+                  >
+                    {l10n.getString("terms-of-service")}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.mozilla.org/privacy/subscription-services/"
+                    target="_blank"
+                  >
+                    {l10n.getString("privacy-notice")}
                   </a>
                 </li>
                 <li>

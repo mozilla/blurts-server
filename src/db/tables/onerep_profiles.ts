@@ -2,12 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import initKnex from "knex";
-import knexConfig from "../knexfile.js";
+import { createDbConnection } from "../connect";
 import { CreateProfileRequest } from "../../app/functions/server/onerep.js";
 import { parseIso8601Datetime } from "../../utils/parse.js";
 
-const knex = initKnex(knexConfig);
+const knex = createDbConnection();
 
 export async function setProfileDetails(
   onerepProfileId: number,
@@ -25,5 +24,11 @@ export async function setProfileDetails(
     // @ts-ignore knex.fn.now() results in it being set to a date,
     // even if it's not typed as a JS date object:
     created_at: knex.fn.now(),
+  });
+}
+
+export async function deleteProfileDetails(onerepProfileId: number) {
+  await knex("onerep_profiles").delete().where({
+    onerep_profile_id: onerepProfileId,
   });
 }

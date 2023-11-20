@@ -11,8 +11,13 @@ import stepHighRiskDataBreachesIcon from "../../(proper_react)/redesign/(authent
 import stepLeakedPasswordsIcon from "../../(proper_react)/redesign/(authenticated)/user/dashboard/fix/images/step-counter-leaked-passwords.svg";
 import stepSecurityRecommendationsIcon from "../../(proper_react)/redesign/(authenticated)/user/dashboard/fix/images/step-counter-security-recommendations.svg";
 import { useL10n } from "../../hooks/l10n";
-import { StepDeterminationData } from "../../functions/server/getRelevantGuidedSteps";
+import {
+  StepDeterminationData,
+  hasCompletedStepSection,
+  isEligibleForStep,
+} from "../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../functions/universal/guidedExperienceBreaches";
+import { CheckIcon } from "../server/Icons";
 
 export type Props = {
   currentSection:
@@ -66,47 +71,43 @@ export const Steps = (props: {
 
   return (
     <ul className={styles.steps}>
-      <li
-        aria-current={
-          props.currentSection === "data-broker-profiles" ? "step" : undefined
-        }
-        className={`${styles.navigationItem} ${
-          props.currentSection === "data-broker-profiles" ? styles.active : ""
-        }`}
-      >
-        <div className={styles.stepIcon}>
-          <Image
-            src={stepDataBrokerProfilesIcon}
-            alt=""
-            width={22}
-            height={22}
-          />
-          {/* // TODO: Add logic to mark icon as checked when step is complete */}
-          {/* <CheckIcon className={styles.checkIcon} alt="" width={22} height={22} />  */}
-        </div>
+      {isEligibleForStep(props.data, "Scan") && (
+        <li
+          aria-current={
+            props.currentSection === "data-broker-profiles" ? "step" : undefined
+          }
+          className={`${styles.navigationItem} ${
+            props.currentSection === "data-broker-profiles" ? styles.active : ""
+          } ${
+            hasCompletedStepSection(props.data, "Scan")
+              ? styles.isCompleted
+              : ""
+          }`}
+        >
+          <div className={styles.stepIcon}>
+            <StepImage data={props.data} section="Scan" />
+          </div>
 
-        <div className={styles.stepLabel}>
-          {l10n.getString("fix-flow-nav-data-broker-profiles")} (
-          {totalDataBrokerProfiles})
-        </div>
-      </li>
+          <div className={styles.stepLabel}>
+            {l10n.getString("fix-flow-nav-data-broker-profiles")} (
+            {totalDataBrokerProfiles})
+          </div>
+        </li>
+      )}
       <li
         aria-current={
           props.currentSection === "high-risk-data-breach" ? "step" : undefined
         }
         className={`${styles.navigationItem} ${
           props.currentSection === "high-risk-data-breach" ? styles.active : ""
+        } ${
+          hasCompletedStepSection(props.data, "HighRisk")
+            ? styles.isCompleted
+            : ""
         }`}
       >
         <div className={styles.stepIcon}>
-          <Image
-            src={stepHighRiskDataBreachesIcon}
-            alt=""
-            width={22}
-            height={22}
-          />
-          {/* // TODO: Add logic to mark icon as checked when step is complete */}
-          {/* <CheckIcon className={styles.checkIcon} alt="" width={22} height={22} />  */}
+          <StepImage data={props.data} section="HighRisk" />
         </div>
 
         <div className={styles.stepLabel}>
@@ -120,12 +121,14 @@ export const Steps = (props: {
         }
         className={`${styles.navigationItem} ${
           props.currentSection === "leaked-passwords" ? styles.active : ""
+        } ${
+          hasCompletedStepSection(props.data, "LeakedPasswords")
+            ? styles.isCompleted
+            : ""
         }`}
       >
         <div className={styles.stepIcon}>
-          <Image src={stepLeakedPasswordsIcon} alt="" width={22} height={22} />
-          {/* // TODO: Add logic to mark icon as checked when step is complete */}
-          {/* <CheckIcon className={styles.checkIcon} alt="" width={22} height={22} />  */}
+          <StepImage data={props.data} section="LeakedPasswords" />
         </div>
 
         <div className={styles.stepLabel}>
@@ -143,17 +146,14 @@ export const Steps = (props: {
           props.currentSection === "security-recommendations"
             ? styles.active
             : ""
+        } ${
+          hasCompletedStepSection(props.data, "SecurityTips")
+            ? styles.isCompleted
+            : ""
         }`}
       >
         <div className={styles.stepIcon}>
-          <Image
-            src={stepSecurityRecommendationsIcon}
-            alt=""
-            width={22}
-            height={22}
-          />
-          {/* // TODO: Add logic to mark icon as checked when step is complete */}
-          {/* <CheckIcon className={styles.checkIcon} alt="" width={22} height={22} />  */}
+          <StepImage data={props.data} section="SecurityTips" />
         </div>
 
         <div className={styles.stepLabel}>
@@ -161,17 +161,43 @@ export const Steps = (props: {
           {totalSecurityRecommendations})
         </div>
       </li>
-      <li className={styles.progressBarLineContainer}>
+      <li className={styles.progressBarLineContainer} aria-hidden>
         <div className={styles.progressBarLineWrapper}>
           <div
             className={`${
               styles.activeProgressBarLine
-            } ${calculateActiveProgressBarPosition(props.currentSection)}`}
+            } ${calculateActiveProgressBarPosition(props.currentSection)} ${
+              isEligibleForStep(props.data, "Scan")
+                ? styles.hasFourSteps
+                : styles.hasThreeSteps
+            }`}
           ></div>
         </div>
       </li>
     </ul>
   );
+};
+
+const StepImage = (props: {
+  data: StepDeterminationData;
+  section: Parameters<typeof hasCompletedStepSection>[1];
+}) => {
+  if (hasCompletedStepSection(props.data, props.section)) {
+    return (
+      <CheckIcon className={styles.checkIcon} alt="" width={22} height={22} />
+    );
+  }
+
+  const src =
+    props.section === "Scan"
+      ? stepDataBrokerProfilesIcon
+      : props.section === "HighRisk"
+        ? stepHighRiskDataBreachesIcon
+        : props.section === "LeakedPasswords"
+          ? stepLeakedPasswordsIcon
+          : stepSecurityRecommendationsIcon;
+
+  return <Image src={src} alt="" width={22} height={22} />;
 };
 
 function calculateActiveProgressBarPosition(section: Props["currentSection"]) {

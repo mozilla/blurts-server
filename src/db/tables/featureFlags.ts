@@ -2,11 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import initKnex from "knex";
-import knexConfig from "../knexfile.js";
+import { createDbConnection } from "../connect";
 import { logger } from "../../app/functions/server/logging";
 import { FeatureFlagRow } from "knex/types/tables";
-const knex = initKnex(knexConfig);
+
+const knex = createDbConnection();
 
 export type FeatureFlag = {
   name: string;
@@ -29,7 +29,6 @@ async function getAllFeatureFlags() {
 
 /** Add any feature flag you want to refer to in the code here */
 export type FeatureFlagName =
-  | "FxaRebrand"
   | "FreeBrokerScan"
   | "PremiumBrokerRemoval"
   | "FalseDoorTest"

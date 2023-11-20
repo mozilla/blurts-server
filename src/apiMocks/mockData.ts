@@ -98,7 +98,16 @@ export function createRandomBreach(
     : BreachDataTypes;
   const dataClasses =
     options.dataClasses ??
-    faker.helpers.arrayElements(Object.values(dataClassTypes));
+    // If no explicit data-classes are passed, but affected data classes *are*,
+    // then the affected data classes will be used as the list of data classes:
+    (Array.isArray(options.dataClassesEffected)
+      ? options.dataClassesEffected
+          .map(
+            (affectedObj) =>
+              Object.keys(affectedObj) as SubscriberBreach["dataClasses"],
+          )
+          .flat()
+      : faker.helpers.arrayElements(Object.values(dataClassTypes)));
 
   faker.seed(options.fakerSeed);
   const isResolved = options.isResolved ?? faker.datatype.boolean();

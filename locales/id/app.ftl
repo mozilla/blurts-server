@@ -700,10 +700,6 @@ ad-unit-6-before-you-complete = Sebelum menyelesaikan pendaftaran berikutnya, gu
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account = Akun Firefox
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Akun Mozilla
@@ -732,11 +728,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Menu pengguna
 menu-button-alt = Buka menu pengguna
 menu-list-accessible-label = Menu akun
-# Deprecated
-menu-item-fxa = Kelola { -brand-fx-account } Anda
 menu-item-fxa-2 = Kelola { -brand-mozilla-account } Anda
-# Deprecated
-menu-item-fxa-alt = Buka laman { -brand-fx-account }
 menu-item-fxa-alt-2 = Buka laman { -brand-mozilla-account }
 menu-item-settings = Pengaturan
 menu-item-settings-alt = Buka laman pengaturan
@@ -747,7 +739,8 @@ menu-item-logout = Keluar
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Ketentuan dan Privasi
+terms-of-service = Ketentuan Layanan
+privacy-notice = Kebijakan Privasi
 github = { -brand-github }
 footer-nav-all-breaches = Semua Pembobolan
 

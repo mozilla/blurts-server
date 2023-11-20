@@ -107,12 +107,12 @@ function getStepWithStatus(
 ): StepLinkWithStatus {
   return {
     ...stepLink,
-    eligible: isEligibleFor(data, stepLink.id),
-    completed: hasCompleted(data, stepLink.id),
+    eligible: isEligibleForStep(data, stepLink.id),
+    completed: hasCompletedStep(data, stepLink.id),
   };
 }
 
-function isEligibleFor(
+export function isEligibleForStep(
   data: StepDeterminationData,
   stepId: StepLink["id"],
 ): boolean {
@@ -161,7 +161,42 @@ function isEligibleFor(
   return false as never;
 }
 
-function hasCompleted(
+export function hasCompletedStepSection(
+  data: StepDeterminationData,
+  section: "Scan" | "HighRisk" | "LeakedPasswords" | "SecurityTips",
+): boolean {
+  if (section === "Scan") {
+    return hasCompletedStep(data, "Scan");
+  }
+  if (section === "HighRisk") {
+    return (
+      hasCompletedStep(data, "HighRiskSsn") &&
+      hasCompletedStep(data, "HighRiskCreditCard") &&
+      hasCompletedStep(data, "HighRiskBankAccount") &&
+      hasCompletedStep(data, "HighRiskPin")
+    );
+  }
+  if (section === "LeakedPasswords") {
+    return (
+      hasCompletedStep(data, "LeakedPasswordsPassword") &&
+      hasCompletedStep(data, "LeakedPasswordsSecurityQuestion")
+    );
+  }
+  if (section === "SecurityTips") {
+    return (
+      hasCompletedStep(data, "SecurityTipsEmail") &&
+      hasCompletedStep(data, "SecurityTipsIp") &&
+      hasCompletedStep(data, "SecurityTipsPhone")
+    );
+
+    // All steps should have been covered by the above conditions:
+    /* c8 ignore next 4 */
+  }
+
+  return false as never;
+}
+
+export function hasCompletedStep(
   data: StepDeterminationData,
   stepId: StepLink["id"],
 ): boolean {
