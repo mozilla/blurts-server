@@ -619,10 +619,6 @@ ad-unit-6-before-you-complete = 您在下次注册账号时，可使用马甲邮
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account = Firefox 账户
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla 账户
@@ -651,11 +647,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = 用户菜单
 menu-button-alt = 打开用户菜单
 menu-list-accessible-label = 账户菜单
-# Deprecated
-menu-item-fxa = 管理您的 { -brand-fx-account }
 menu-item-fxa-2 = 管理您的 { -brand-mozilla-account }
-# Deprecated
-menu-item-fxa-alt = 打开 { -brand-fx-account } 页面
 menu-item-fxa-alt-2 = 打开 { -brand-mozilla-account }页面
 menu-item-settings = 设置
 menu-item-settings-alt = 打开设置页面
@@ -666,7 +658,8 @@ menu-item-logout = 退出
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = 使用条款和隐私
+terms-of-service = 服务条款
+privacy-notice = 隐私声明
 github = { -brand-github }
 footer-nav-all-breaches = 所有数据外泄事件
 

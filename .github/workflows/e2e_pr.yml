@@ -1,22 +1,9 @@
-name: Playwright Tests
+name: Monitor e2e Smoke Tests
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  schedule:
-    - cron: '0 8 * * *'
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Environment to run the e2e against'
-        required: false
-        default: 'dev'
-        type: choice
-        options:
-          - stage
-          - prod
-          - dev
 jobs:
   test:
     timeout-minutes: 60
