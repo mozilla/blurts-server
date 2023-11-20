@@ -21,6 +21,7 @@ import {
   getNextGuidedStep,
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
+import { hasPremium } from "../../../../../../../functions/universal/user";
 
 export type HighRiskBreachLayoutProps = {
   type: HighRiskBreachTypes;
@@ -72,6 +73,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
         type="securityRecommendations"
         title={title}
         illustration={illustration}
+        isPremiumUser={hasPremium(props.data.user)}
         cta={
           !isStepDone && (
             <>
@@ -105,7 +107,6 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
         // Theoretically, this page should never be shown if the user has no
         // breaches, unless the user directly visits its URL, so no tests
         // represents it either:
-        /* c8 ignore next */
         estimatedTime={!isStepDone && hasBreaches ? 15 : undefined}
         isStepDone={isStepDone}
         data={props.data}

@@ -20,6 +20,7 @@ import {
   getNextGuidedStep,
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
+import { hasPremium } from "../../../../../../../functions/universal/user";
 
 export interface SecurityRecommendationsLayoutProps {
   type: SecurityRecommendationTypes;
@@ -76,6 +77,7 @@ export function SecurityRecommendationsLayout(
         type="securityRecommendations"
         title={title}
         illustration={illustration}
+        isPremiumUser={hasPremium(props.data.user)}
         cta={
           !isStepDone && (
             <Button

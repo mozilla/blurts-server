@@ -21,6 +21,7 @@ import {
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../FixView";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
+import { hasPremium } from "../../../../../../../functions/universal/user";
 
 export interface LeakedPasswordsLayoutProps {
   type: LeakedPasswordsTypes;
@@ -71,6 +72,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         type="leakedPasswords"
         title={title}
         illustration={illustration}
+        isPremiumUser={hasPremium(props.data.user)}
         cta={
           !isStepDone && (
             <>

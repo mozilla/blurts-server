@@ -19,6 +19,7 @@ type ResolutionContainerProps = {
   illustration: string;
   estimatedTime?: number;
   children: ReactNode;
+  isPremiumUser: boolean;
   isStepDone: boolean;
   data: StepDeterminationData;
   label?: string;
@@ -51,6 +52,7 @@ export const ResolutionContainer = (props: ResolutionContainerProps) => {
           <div className={styles.doneContentWrapper}>
             <div className={styles.doneContent}>{props.children}</div>
             <ProgressCard
+              isPremiumUser={props.isPremiumUser}
               resolvedByYou={
                 resolutionSummary.dataBrokerManuallyResolvedExposuresNum +
                 resolutionSummary.dataBreachFixedExposuresNum
