@@ -63,6 +63,8 @@ export interface DashboardSummary {
   inProgressExposures: Exposures;
   /** resolved/removed exposures separated by data types */
   fixedExposures: Exposures;
+  /** manually resolved data broker exposures separated by data types */
+  manuallyResolvedDataBrokerExposures: Exposures;
   /** in-progress & resolved/removed exposures separated by data types */
   inProgressFixedExposures: Exposures;
 
@@ -168,6 +170,21 @@ export function getDashboardSummary(
       securityQuestions: 0,
       bankAccountNumbers: 0,
     },
+    manuallyResolvedDataBrokerExposures: {
+      emailAddresses: 0,
+      phoneNumbers: 0,
+      addresses: 0,
+      familyMembers: 0,
+
+      // data breaches
+      socialSecurityNumbers: 0,
+      ipAddresses: 0,
+      passwords: 0,
+      creditCardNumbers: 0,
+      pins: 0,
+      securityQuestions: 0,
+      bankAccountNumbers: 0,
+    },
     inProgressFixedExposures: {
       emailAddresses: 0,
       phoneNumbers: 0,
@@ -192,7 +209,8 @@ export function getDashboardSummary(
     scannedResults.forEach((r) => {
       // check removal status
       const isManuallyResolved = r.manually_resolved;
-      const isFixed = r.status === RemovalStatusMap.Removed;
+      const isFixed =
+        r.status === RemovalStatusMap.Removed && !isManuallyResolved;
       const isInProgress =
         (r.status === RemovalStatusMap.OptOutInProgress ||
           r.status === RemovalStatusMap.WaitingForVerification) &&
@@ -235,6 +253,14 @@ export function getDashboardSummary(
       }
 
       if (isManuallyResolved) {
+        summary.manuallyResolvedDataBrokerExposures.emailAddresses +=
+          r.emails.length;
+        summary.manuallyResolvedDataBrokerExposures.phoneNumbers +=
+          r.phones.length;
+        summary.manuallyResolvedDataBrokerExposures.addresses +=
+          r.addresses.length;
+        summary.manuallyResolvedDataBrokerExposures.familyMembers +=
+          r.relatives.length;
         summary.dataBrokerManuallyResolvedExposuresNum += exposureIncrement;
       }
     });
@@ -368,12 +394,13 @@ export function getDashboardSummary(
     {} as Exposures,
   );
 
-  // count fixed and in-progress exposures
+  // count fixed, in-progress, and manually resolved (data brokers) exposures
   summary.inProgressFixedExposures = Object.keys(summary.fixedExposures).reduce(
     (a, k) => {
       a[k as keyof Exposures] =
         summary.fixedExposures[k as keyof Exposures] +
-        summary.inProgressExposures[k as keyof Exposures];
+        summary.inProgressExposures[k as keyof Exposures] +
+        summary.manuallyResolvedDataBrokerExposures[k as keyof Exposures];
       return a;
     },
     {} as Exposures,
@@ -394,7 +421,8 @@ export function getDashboardSummary(
     summary.inProgressFixedExposures,
     summary.dataBreachFixedExposuresNum +
       summary.dataBrokerFixedExposuresNum +
-      summary.dataBrokerInProgressExposuresNum,
+      summary.dataBrokerInProgressExposuresNum +
+      summary.dataBrokerManuallyResolvedExposuresNum,
     isBreachesOnly,
   );
 
