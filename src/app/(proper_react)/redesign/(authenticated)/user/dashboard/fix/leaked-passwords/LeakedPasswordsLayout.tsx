@@ -86,10 +86,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
               >
                 {l10n.getString("leaked-passwords-mark-as-fixed")}
               </Button>
-              <Link
-                // TODO: Add test once MNTOR-1700 logic is added
-                href="/"
-              >
+              <Link href={nextStep.href}>
                 {l10n.getString("leaked-passwords-skip")}
               </Link>
             </>

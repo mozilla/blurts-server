@@ -95,10 +95,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
                 }
               </Button>
               {hasBreaches && (
-                <Link
-                  // TODO: Add test once MNTOR-1700 logic is added
-                  href="/"
-                >
+                <Link href={nextStep.href}>
                   {l10n.getString("high-risk-breach-skip")}
                 </Link>
               )}
