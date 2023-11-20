@@ -723,10 +723,6 @@ ad-unit-6-before-you-complete = Ennen kuin suoritat seuraavan rekisteröitymisen
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account = Firefox-tili
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla-tili
@@ -755,11 +751,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Käyttäjävalikko
 menu-button-alt = Avaa käyttäjävalikko
 menu-list-accessible-label = Tilivalikko
-# Deprecated
-menu-item-fxa = Hallitse { -brand-fx-account }äsi
 menu-item-fxa-2 = Hallitse { -brand-mozilla-account }äsi
-# Deprecated
-menu-item-fxa-alt = Avaa { -brand-fx-account } -sivu
 menu-item-fxa-alt-2 = Avaa { -brand-mozilla-account }n sivu
 menu-item-settings = Asetukset
 menu-item-settings-alt = Avaa asetussivu
@@ -770,7 +762,8 @@ menu-item-logout = Kirjaudu ulos
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Ehdot ja tietosuoja
+terms-of-service = Käyttöehdot
+privacy-notice = Tietosuojakäytäntö
 github = { -brand-github }
 footer-nav-all-breaches = Kaikki tietovuodot
 

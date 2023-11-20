@@ -85,6 +85,7 @@
       position: relative;
 
       &:not(:first-child)::before {
+        // Lines in between the different items in the progress cardå
         @media screen and (min-width: $screen-sm) {
           content: "";
           position: absolute;

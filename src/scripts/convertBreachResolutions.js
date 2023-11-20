@@ -8,13 +8,13 @@
  * with the goal of deprecating the column
  */
 
-import Knex from "knex";
-import knexConfig from "../db/knexfile.js";
+import { createDbConnection } from "../db/connect.js";
 import { getAllBreachesFromDb } from "../utils/hibp.js";
 import { getAllEmailsAndBreaches } from "../utils/breaches.js";
 import { setBreachResolution } from "../db/tables/subscribers.js";
 import { BreachDataTypes } from "../utils/breach-resolution.js";
-const knex = Knex(knexConfig);
+
+const knex = createDbConnection();
 
 const LIMIT = 50; // with millions of records, we have to load a few at a time
 let offset = 0; // looping through all records with offset

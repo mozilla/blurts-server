@@ -16,23 +16,27 @@ interface ComboBoxProps extends ComboBoxStateOptions<object> {
 }
 
 function ComboBox(props: ComboBoxProps) {
-  const { errorMessage, label, isRequired, validationState } = props;
+  const { label, isRequired, validationState } = props;
   const inputRef = useRef(null);
   const listBoxRef = useRef(null);
   const popoverRef = useRef(null);
   const state = useComboBoxState({ ...props });
-  const { inputProps, listBoxProps, labelProps, errorMessageProps } =
-    useComboBox(
-      {
-        ...props,
-        inputRef,
-        listBoxRef,
-        popoverRef,
-      },
-      state,
-    );
+  const {
+    inputProps,
+    listBoxProps,
+    labelProps,
+    errorMessageProps,
+    validationErrors,
+  } = useComboBox(
+    {
+      ...props,
+      inputRef,
+      listBoxRef,
+      popoverRef,
+    },
+    state,
+  );
   const isInvalid = validationState === "invalid";
-  const showError = errorMessage && isInvalid;
 
   return (
     <>
@@ -54,9 +58,16 @@ function ComboBox(props: ComboBoxProps) {
             !inputProps.value ? styles.noValue : ""
           } ${isInvalid ? styles.hasError : ""}`}
         />
-        {showError && (
+        {isInvalid && (
           <div {...errorMessageProps} className={styles.inputMessage}>
-            {errorMessage}
+            {
+              // We always pass in a string at the time of writing, so we can't
+              // hit the "else" path with tests:
+              /* c8 ignore next 3 */
+              typeof props.errorMessage === "string"
+                ? props.errorMessage
+                : validationErrors.join(" ")
+            }
           </div>
         )}
       </div>
