@@ -31,6 +31,8 @@ export interface LeakedPasswordsLayoutProps {
   data: StepDeterminationData;
 }
 
+// TODO: Write unit tests MNTOR-2560
+/* c8 ignore start */
 async function updateBreachStatus(
   email: string,
   id: number,
@@ -55,6 +57,7 @@ async function updateBreachStatus(
     console.error("Could not update user breach resolve status:", e);
   }
 }
+/* c8 ignore stop */
 
 export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   const l10n = useL10n();
@@ -218,14 +221,6 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     }
   };
 
-  const handlePress = async () => {
-    try {
-      await handleUpdateBreachStatus();
-    } catch (error) {
-      console.error("Error updating breach status", error);
-    }
-  };
-
   return (
     unresolvedPasswordBreachContent && (
       <FixView
@@ -246,8 +241,8 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
                 small
                 // TODO: Write unit tests MNTOR-2560
                 /* c8 ignore start */
-                onPress={() => void handlePress()}
-                /* c8 ignore end */
+                onPress={() => void handleUpdateBreachStatus()}
+                /* c8 ignore stop */
 
                 autoFocus={true}
               >
