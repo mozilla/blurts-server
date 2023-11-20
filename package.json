@@ -53,7 +53,7 @@
     "@fluent/react": "^0.15.2",
     "@google-cloud/logging-winston": "^6.0.0",
     "@google-cloud/pubsub": "^4.0.7",
-    "@grpc/grpc-js": "1.9.7",
+    "@grpc/grpc-js": "1.9.11",
     "@leeoniya/ufuzzy": "^1.0.11",
     "@mozilla/glean": "3.0.0",
     "@sentry/nextjs": "^7.80.1",
