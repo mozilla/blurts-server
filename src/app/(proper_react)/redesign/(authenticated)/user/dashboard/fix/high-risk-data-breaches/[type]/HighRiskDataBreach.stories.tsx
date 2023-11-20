@@ -45,7 +45,7 @@ const HighRiskBreachWrapper = (props: {
           [BreachDataTypes.PIN]: 42,
         },
       ],
-      isResolved: hasNextUnresolvedBreach,
+      isResolved: false,
     }),
   );
 

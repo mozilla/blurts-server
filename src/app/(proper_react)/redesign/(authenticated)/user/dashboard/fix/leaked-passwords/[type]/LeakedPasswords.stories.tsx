@@ -24,10 +24,9 @@ const LeakedPasswordsWrapper = (props: {
   type: LeakedPasswordsTypes;
   nextUnresolvedBreachType?: keyof typeof BreachDataTypes;
 }) => {
-  const hasNextUnresolvedBreach = props.nextUnresolvedBreachType !== null;
   const mockedBreaches = [...Array(5)].map(() =>
     createRandomBreach({
-      isResolved: hasNextUnresolvedBreach,
+      isResolved: props.nextUnresolvedBreachType !== null,
     }),
   );
 
