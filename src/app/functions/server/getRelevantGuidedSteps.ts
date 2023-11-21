@@ -88,11 +88,25 @@ export function getNextGuidedStep(
     return stepLink.eligible && !stepLink.completed;
   });
 
-  // In practice, there should always be a next step (at least "Done").
-  // If for any reason there is not, `href` will be undefined, in which case
-  // links will just not do anything.
-  /* c8 ignore next */
-  return nextStep ?? ({ id: "InvalidStep" } as never);
+  if (!nextStep) {
+    // In practice, there should always be a next step (at least "Done").
+    // If for any reason there is not, `href` will be undefined, in which case
+    // links will just not do anything.
+    console.error(
+      `Could not determine the relevant next guided step for the user. Skipping step: [${
+        // We don't have a way to trigger an invalid state without skipping a
+        // valid one during tests:
+        /* c8 ignore next */
+        afterStep ?? "Not skipping any steps"
+      }]. Is \`data.user\` defined: [${!!data.user}]. Country code: [${
+        data.countryCode
+      }]. Is \`data.latestScanData.scan\` defined: [${!!data.latestScanData
+        ?.scan}]. Number of scan results: [${data.latestScanData?.results
+        .length}]. Number of breaches: [${data.subscriberBreaches.length}].`,
+    );
+    return { id: "InvalidStep" } as never;
+  }
+  return nextStep;
 }
 
 export function getGuidedStepStatuses(
