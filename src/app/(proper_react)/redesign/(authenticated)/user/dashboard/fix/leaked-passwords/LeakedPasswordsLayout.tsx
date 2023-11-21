@@ -57,8 +57,6 @@ async function updateBreachStatus(
     console.error("Could not update user breach resolve status:", e);
   }
 }
-/* c8 ignore stop */
-
 export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   const l10n = useL10n();
 
@@ -154,26 +152,22 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     props.type === "passwords" ? "passwords" : "security-questions-and-answers";
 
   useEffect(() => {
-    if (emailAffected) {
-      const newPageData = {
-        dataType: props.type,
-        breaches: guidedExperienceBreaches,
-        l10n: l10n,
-        emailAffected: emailAffected,
-      };
-      setPageDataContent(newPageData);
-    }
-    // This should only run if emailAffected changes
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [emailAffected]);
-
-  useEffect(() => {
     if (unresolvedPasswordBreach) {
-      props.subscriberEmails.forEach((email: string) => {
-        if (unresolvedPasswordBreach.emailsAffected.includes(email)) {
-          setEmailAffected(email);
-        }
-      });
+      // Check for the email assosciated with the leaked password/security question breach
+      const emailMatch = props.subscriberEmails.find((email) =>
+        unresolvedPasswordBreach.emailsAffected.includes(email),
+      );
+
+      if (emailMatch) {
+        setEmailAffected(emailMatch);
+        const newPageData: LeakedPassword = {
+          dataType: props.type,
+          breaches: guidedExperienceBreaches,
+          l10n: l10n,
+          emailAffected: emailMatch,
+        };
+        setPageDataContent(newPageData);
+      }
     }
   }, [unresolvedPasswordBreach, props.subscriberEmails]);
 
@@ -239,11 +233,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
               <Button
                 variant="primary"
                 small
-                // TODO: Write unit tests MNTOR-2560
-                /* c8 ignore start */
                 onPress={() => void handleUpdateBreachStatus()}
-                /* c8 ignore stop */
-
                 autoFocus={true}
               >
                 {l10n.getString("leaked-passwords-mark-as-fixed")}
@@ -267,3 +257,4 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     )
   );
 }
+/* c8 ignore stop */

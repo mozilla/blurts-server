@@ -112,6 +112,7 @@ function getLeakedPasswords({
   dataType: string;
   breaches: GuidedExperienceBreaches;
   l10n: ExtendedReactLocalization;
+<<<<<<< HEAD
   nextStep: StepLink;
 }) {
   const findFirstUnresolvedBreach = (breachClassType: LeakedPasswordsTypes) => {
@@ -125,6 +126,38 @@ function getLeakedPasswords({
   const unresolvedPasswordBreach = findFirstUnresolvedBreach("passwords");
   const unresolvedSecurityQuestionsBreach =
     findFirstUnresolvedBreach("security-questions");
+=======
+  emailAffected: string;
+};
+
+export const findFirstUnresolvedBreach = (
+  breaches: GuidedExperienceBreaches,
+  breachClassType: LeakedPasswordsTypes,
+) => {
+  const leakedPasswordType =
+    breachClassType === "passwords" ? "passwords" : "securityQuestions";
+  const resolvedDataClassName =
+    breachClassType === "passwords"
+      ? "passwords"
+      : "security-questions-and-answers";
+
+  return Object.values(breaches.passwordBreaches[leakedPasswordType]).find(
+    (breach) => !breach.resolvedDataClasses.includes(resolvedDataClassName),
+  );
+};
+
+function getLeakedPasswords(props: LeakedPassword) {
+  const { dataType, breaches, l10n, emailAffected } = props;
+
+  const unresolvedPasswordBreach = findFirstUnresolvedBreach(
+    breaches,
+    "passwords",
+  ) as SubscriberBreach;
+  const unresolvedSecurityQuestionsBreach = findFirstUnresolvedBreach(
+    breaches,
+    "security-question",
+  ) as SubscriberBreach;
+>>>>>>> 31950ecce (remove secondary useEffect)
   // This env var is always defined in test, so the other branch can't be covered:
   /* c8 ignore next */
   const blockList = (process.env.HIBP_BREACH_DOMAIN_BLOCKLIST ?? "").split(",");
