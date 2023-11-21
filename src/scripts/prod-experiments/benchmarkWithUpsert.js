@@ -8,7 +8,7 @@
  * with the goal of deprecating the column
  */
 
-import { createDbConnection } from "../../db/connect.js";
+import createDbConnection from "../../db/connect.js";
 import { getAllBreachesFromDb } from "../../utils/hibp.js";
 import { getAllEmailsAndBreaches } from "../../utils/breaches.js";
 import { BreachDataTypes } from "../../utils/breach-resolution.js";
