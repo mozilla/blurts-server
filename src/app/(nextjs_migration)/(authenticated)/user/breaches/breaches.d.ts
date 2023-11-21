@@ -131,3 +131,7 @@ export interface BreachResolutionRequest {
   breachId: number;
   resolutionsChecked: Array<keyof HibpBreachDataTypes>;
 }
+
+export interface BreachBulkResolutionRequest {
+  dataType: BreachDataTypes;
+}
