@@ -323,6 +323,7 @@ if (process.env.NODE_ENV !== "test") {
         monitorSlug: SENTRY_SLUG,
         status: "ok",
       });
+      setTimeout(process.exit, 1000);
     });
 }
 /* c8 ignore stop */
