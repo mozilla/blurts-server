@@ -311,11 +311,6 @@ if (process.env.NODE_ENV !== "test") {
           "env vars not set: GCP_PUBSUB_PROJECT_ID and GCP_PUBSUB_SUBSCRIPTION_NAME",
         );
       }
-      Sentry.captureCheckIn({
-        checkInId,
-        monitorSlug: SENTRY_SLUG,
-        status: "ok",
-      });
     })
     .catch((err) => console.error(err))
     .finally(async () => {
@@ -323,6 +318,11 @@ if (process.env.NODE_ENV !== "test") {
       await knexSubscribers.destroy();
       await knexEmailAddresses.destroy();
       await knexHibp.destroy();
+      Sentry.captureCheckIn({
+        checkInId,
+        monitorSlug: SENTRY_SLUG,
+        status: "ok",
+      });
     });
 }
 /* c8 ignore stop */
