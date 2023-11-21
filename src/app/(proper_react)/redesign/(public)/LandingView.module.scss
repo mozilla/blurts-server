@@ -141,3 +141,18 @@
     }
   }
 }
+
+.plans {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-lg;
+  background-color: $color-grey-05;
+  padding: $layout-lg 0;
+
+  .planName,
+  .lead,
+  table {
+    width: $content-lg;
+  }
+}
