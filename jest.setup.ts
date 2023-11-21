@@ -4,12 +4,20 @@
 
 import "@testing-library/jest-dom";
 import "@testing-library/jest-dom/jest-globals";
+import { TestingLibraryMatchers } from "@testing-library/jest-dom/matchers";
 import { TextEncoder } from "util";
 import { setProjectAnnotations } from "@storybook/react";
 import { defaultFallbackInView } from "react-intersection-observer";
 import failOnConsole from "jest-fail-on-console";
 import * as globalStorybookConfig from "./.storybook/preview";
 import "jest-axe/extend-expect";
+
+declare module "expect" {
+  interface Matchers<R = void>
+    extends TestingLibraryMatchers<typeof expect.stringContaining, R> {
+    toHaveNoViolations(): R;
+  }
+}
 
 setProjectAnnotations(
   globalStorybookConfig as Parameters<typeof setProjectAnnotations>[0],
