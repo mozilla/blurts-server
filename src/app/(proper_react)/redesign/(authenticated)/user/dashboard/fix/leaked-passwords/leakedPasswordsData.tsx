@@ -8,6 +8,7 @@ import securityQuestionsIllustration from "../images/security-questions.svg";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
+<<<<<<< HEAD
 import { Button } from "../../../../../../../components/server/Button";
 import { StepLink } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 
@@ -20,6 +21,12 @@ export const leakedPasswordTypes = [
 ] as const;
 
 export type LeakedPasswordsTypes = (typeof leakedPasswordTypes)[number];
+=======
+import {
+  BreachResolutionRequest,
+  HibpBreachDataTypes,
+} from "../../../../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
+>>>>>>> c2c968aba (add security question email match)
 
 export type LeakedPasswordsContent = {
   summary: string;
@@ -146,6 +153,34 @@ export const findFirstUnresolvedBreach = (
   );
 };
 
+// TODO: Write unit tests MNTOR-2560
+/* c8 ignore start */
+export async function updateBreachStatus(
+  email: string,
+  id: number,
+  resolvedDataClass: HibpBreachDataTypes[keyof HibpBreachDataTypes],
+) {
+  try {
+    const data: BreachResolutionRequest = {
+      affectedEmail: email,
+      breachId: id,
+      resolutionsChecked: [resolvedDataClass],
+    };
+
+    const res = await fetch("/api/v1/user/breaches", {
+      method: "PUT",
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      throw new Error("Bad fetch response");
+    }
+  } catch (e) {
+    console.error("Could not update user breach resolve status:", e);
+  }
+}
+/* c8 ignore stop */
+
 function getLeakedPasswords(props: LeakedPassword) {
   const { dataType, breaches, l10n, emailAffected } = props;
 
@@ -260,9 +295,11 @@ function getLeakedPasswords(props: LeakedPassword) {
                         rel="noopener noreferrer"
                       />
                     ),
+                    b: <strong />,
                   },
                   vars: {
                     breach_name: securityQuestionBreachName,
+                    email_affected: emailAffected,
                   },
                 })}
               </li>

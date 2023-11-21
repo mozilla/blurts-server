@@ -31,8 +31,6 @@ export interface LeakedPasswordsLayoutProps {
   data: StepDeterminationData;
 }
 
-// TODO: Write unit tests MNTOR-2560
-/* c8 ignore start */
 async function updateBreachStatus(
   email: string,
   id: number,
@@ -57,6 +55,7 @@ async function updateBreachStatus(
     console.error("Could not update user breach resolve status:", e);
   }
 }
+
 export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   const l10n = useL10n();
 
@@ -77,26 +76,15 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     subscriberBreaches,
     props.subscriberEmails,
   );
-<<<<<<< HEAD
 
   const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
   const pageData = getLeakedPasswords({
-=======
-  const stepMap: Record<LeakedPasswordsTypes, StepLink["id"]> = {
-    passwords: "LeakedPasswordsPassword",
-    "security-question": "LeakedPasswordsSecurityQuestion",
-  };
-  const l10n = useL10n();
-  const [emailAffected, setEmailAffected] = useState<string>();
-  const [pageDataContent, setPageDataContent] = useState<LeakedPassword>({
->>>>>>> 546acaf11 (switch between security questions and passwords)
     dataType: props.type,
     breaches: guidedExperienceBreaches,
     l10n: l10n,
     nextStep,
   });
 
-<<<<<<< HEAD
   // The non-null assertion here should be safe since we already did this check
   // in `./[type]/page.tsx`:
   const { title, illustration, content } = pageData!;
@@ -141,88 +129,6 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         estimatedTime={!isStepDone ? 4 : undefined}
         isStepDone={isStepDone}
         data={props.data}
-=======
-  const pageData = getLeakedPasswords(pageDataContent);
-  const unresolvedPasswordBreachContent =
-    pageData.unresolvedPasswordBreachContent;
-  const unresolvedPasswordBreach =
-    pageData.unresolvedPasswordBreach ??
-    pageData.unresolvedSecurityQuestionsBreach;
-  const resolvedDataClassName =
-    props.type === "passwords" ? "passwords" : "security-questions-and-answers";
-
-  useEffect(() => {
-    if (unresolvedPasswordBreach) {
-      // Check for the email assosciated with the leaked password/security question breach
-      const emailMatch = props.subscriberEmails.find((email) =>
-        unresolvedPasswordBreach.emailsAffected.includes(email),
-      );
-
-      if (emailMatch) {
-        setEmailAffected(emailMatch);
-        const newPageData: LeakedPassword = {
-          dataType: props.type,
-          breaches: guidedExperienceBreaches,
-          l10n: l10n,
-          emailAffected: emailMatch,
-        };
-        setPageDataContent(newPageData);
-      }
-    }
-  }, [unresolvedPasswordBreach, props.subscriberEmails]);
-
-  const handleUpdateBreachStatus = async () => {
-    if (!emailAffected) {
-      window.location.href = getNextGuidedStep(
-        props.data,
-        stepMap[props.type],
-      ).href;
-      return;
-    }
-
-    try {
-      await updateBreachStatus(
-        emailAffected,
-        unresolvedPasswordBreach.id,
-        resolvedDataClassName,
-      );
-
-      // Manually move to the next step when mark is fixed is selected
-      const updatedSubscriberBreaches = subscriberBreaches.map(
-        (subscriberBreach) => {
-          if (subscriberBreach.id === unresolvedPasswordBreach.id) {
-            subscriberBreach.resolvedDataClasses.push(resolvedDataClassName);
-          }
-          return subscriberBreach;
-        },
-      );
-
-      const isComplete = hasCompletedStep(
-        { ...props.data, subscriberBreaches: updatedSubscriberBreaches },
-        stepMap[props.type],
-      );
-
-      setSubscriberBreaches(updatedSubscriberBreaches);
-
-      if (isComplete) {
-        window.location.href = getNextGuidedStep(
-          props.data,
-          stepMap[props.type],
-        ).href;
-      }
-    } catch (error) {
-      console.error("Error updating breach status", error);
-    }
-  };
-
-  return (
-    unresolvedPasswordBreachContent && (
-      <FixView
-        subscriberEmails={props.subscriberEmails}
-        data={props.data}
-        nextStepHref={getNextGuidedStep(props.data, stepMap[props.type]).href}
-        currentSection="leaked-passwords"
->>>>>>> 546acaf11 (switch between security questions and passwords)
       >
         <ResolutionContainer
           type="leakedPasswords"
@@ -233,13 +139,15 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
               <Button
                 variant="primary"
                 small
-                onPress={() => void handleUpdateBreachStatus()}
+                // TODO: Add test once MNTOR-1700 logic is added
+                /* c8 ignore next 3 */
+                onPress={() => handleUpdateBreachStatus(stepCompleted)}
                 autoFocus={true}
               >
                 {l10n.getString("leaked-passwords-mark-as-fixed")}
               </Button>
               <Link
-                // TODO: Add skip logic
+                // TODO: Add test once MNTOR-1700 logic is added
                 href="/"
               >
                 {l10n.getString("leaked-passwords-skip")}
@@ -257,4 +165,3 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     )
   );
 }
-/* c8 ignore stop */
