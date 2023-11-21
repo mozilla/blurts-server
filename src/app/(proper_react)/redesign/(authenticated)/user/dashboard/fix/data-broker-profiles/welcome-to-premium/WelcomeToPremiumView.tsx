@@ -5,7 +5,6 @@
 import styles from "./welcomeToPremium.module.scss";
 import { getL10n } from "../../../../../../../../functions/server/l10n";
 import { PercentageChart } from "../../../../../../../../components/client/PercentageChart";
-import { SubscriptionCheck } from "../../../../../../../../components/client/SubscriptionCheck";
 import {
   getDashboardSummary,
   getExposureReduction,
@@ -85,9 +84,6 @@ export function WelcomeToPremiumView(props: Props) {
         </div>
         <div className={styles.chart}>
           <PercentageChart exposureReduction={exposureReduction} />
-        </div>
-        <div>
-          <SubscriptionCheck />
         </div>
       </div>
     </FixView>

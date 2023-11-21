@@ -7,14 +7,14 @@
  * The purpose of the script is to clean up some of the failed records during db migration on 3/28/23
  */
 
-import Knex from "knex";
-import knexConfig from "../db/knexfile.js";
+import createDbConnection from "../db/connect.js";
 import { getAllBreachesFromDb } from "../utils/hibp.js";
 import { getAllEmailsAndBreaches } from "../utils/breaches.js";
 import { setBreachResolution } from "../db/tables/subscribers.js";
 import mozlog from "../utils/log.js";
 const log = mozlog("script.migrationCleanup");
-const knex = Knex(knexConfig);
+
+const knex = createDbConnection();
 
 const LIMIT = 3000;
 let subscribersArr = [];

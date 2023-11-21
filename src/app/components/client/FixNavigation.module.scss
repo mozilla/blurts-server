@@ -54,25 +54,41 @@
           height: 3px;
           position: absolute;
 
-          // These are not arbitrary "magic numbers." The width represents an increment of 100/8 due to the progress bar's ratio.
-          // 16.6667 is the closest round approximation of 100/8.
-          &.duringDataBrokerProfiles {
-            width: calc(16.6667% + $iconDiameter);
+          &.hasFourSteps {
+            // These are not arbitrary "magic numbers." The width represents an increment of 100/6 due to the progress bar's ratio.
+            &.duringDataBrokerProfiles {
+              width: calc(100% / 6 + $iconDiameter);
+            }
+            &.beginHighRiskDataBreaches {
+              width: 100% / 6 * 2;
+            }
+            &.duringHighRiskDataBreaches {
+              width: 100% / 6 * 3;
+            }
+            &.beginLeakedPasswords {
+              width: 100% / 6 * 4;
+            }
+            &.duringLeakedPasswords {
+              width: calc(100% / 6 * 5 - $iconDiameter);
+            }
+            &.beginSecurityRecommendations {
+              width: 100%;
+            }
           }
-          &.beginHighRiskDataBreaches {
-            width: 33.3333%;
-          }
-          &.duringHighRiskDataBreaches {
-            width: 50%;
-          }
-          &.beginLeakedPasswords {
-            width: 66.6667%;
-          }
-          &.duringLeakedPasswords {
-            width: calc(87.5% - $iconDiameter);
-          }
-          &.beginSecurityRecommendations {
-            width: 100%;
+
+          &.hasThreeSteps {
+            &.duringHighRiskDataBreaches {
+              width: 100% / 3;
+            }
+            &.beginLeakedPasswords {
+              width: 50%;
+            }
+            &.duringLeakedPasswords {
+              width: 100% / 3 * 2;
+            }
+            &.beginSecurityRecommendations {
+              width: 100%;
+            }
           }
         }
       }
@@ -161,6 +177,10 @@
         width: 100%;
         pointer-events: none;
         user-select: none;
+
+        svg {
+          display: none;
+        }
       }
 
       &[aria-current="step"] .stepIcon {

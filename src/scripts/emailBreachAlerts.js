@@ -77,6 +77,8 @@ export async function poll(subClient, receivedMessages) {
     subscriptionName,
   );
 
+  const breaches = await getAllBreachesFromDb();
+
   // Process the messages. Skip any that cannot be processed, and do not mark as acknowledged.
   for (const message of receivedMessages) {
     console.log(`Received message: ${message.message.data}`);
@@ -90,8 +92,6 @@ export async function poll(subClient, receivedMessages) {
     }
 
     const { breachName, hashPrefix, hashSuffixes } = data;
-
-    const breaches = await getAllBreachesFromDb();
     const breachAlert = getBreachByName(breaches, breachName);
 
     const {
@@ -221,15 +221,18 @@ export async function poll(subClient, receivedMessages) {
                   email: data.recipientEmail,
                   notificationType: "incident",
                 });
+
+                const emailTemplate = getTemplate(
+                  data,
+                  breachAlertEmailPartial,
+                );
+                const subject = getMessage("breach-alert-subject");
+
+                await sendEmail(data.recipientEmail, subject, emailTemplate);
               } catch (e) {
                 console.error("Failed to add email notification to table: ", e);
-                throw new Error(e);
+                setTimeout(process.exit, 1000);
               }
-
-              const emailTemplate = getTemplate(data, breachAlertEmailPartial);
-              const subject = getMessage("breach-alert-subject");
-
-              await sendEmail(data.recipientEmail, subject, emailTemplate);
 
               // mark email as notified in database
               // if this call ever fails, stop stop the script with an error
@@ -308,11 +311,6 @@ if (process.env.NODE_ENV !== "test") {
           "env vars not set: GCP_PUBSUB_PROJECT_ID and GCP_PUBSUB_SUBSCRIPTION_NAME",
         );
       }
-      Sentry.captureCheckIn({
-        checkInId,
-        monitorSlug: SENTRY_SLUG,
-        status: "ok",
-      });
     })
     .catch((err) => console.error(err))
     .finally(async () => {
@@ -320,6 +318,12 @@ if (process.env.NODE_ENV !== "test") {
       await knexSubscribers.destroy();
       await knexEmailAddresses.destroy();
       await knexHibp.destroy();
+      Sentry.captureCheckIn({
+        checkInId,
+        monitorSlug: SENTRY_SLUG,
+        status: "ok",
+      });
+      setTimeout(process.exit, 1000);
     });
 }
 /* c8 ignore stop */

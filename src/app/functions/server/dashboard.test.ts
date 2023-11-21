@@ -719,4 +719,69 @@ describe("getDashboardSummary", () => {
     );
     expect(summary.unresolvedExposures.emailAddresses).toBe(0);
   });
+
+  it("manuallyResolvedDataBrokerExposures is counted once", () => {
+    const combinedScannedResults = [
+      ...unresolvedScannedResults,
+      ...manuallyResolvedScannedResults,
+    ];
+    const summary = getDashboardSummary(combinedScannedResults, []);
+    noNegativeCounts(summary);
+    expect(summary.dataBrokerTotalNum).toBe(2);
+    expect(summary.dataBrokerTotalExposuresNum).toBe(24);
+    expect(summary.dataBrokerFixedNum).toBe(0);
+    expect(summary.dataBrokerInProgressExposuresNum).toBe(0);
+    expect(summary.dataBrokerManuallyResolvedExposuresNum).toBe(12);
+  });
+
+  it("inProgressFixedSanitizedExposures counts manually resolved exposures", () => {
+    const combinedScannedResults = [
+      ...unresolvedScannedResults,
+      ...manuallyResolvedScannedResults,
+    ];
+    const expectedSanitizedExposures = [
+      {
+        "email-addresses": 3,
+      },
+      {
+        "phone-numbers": 3,
+      },
+      {
+        "physical-addresses": 3,
+      },
+      {
+        "family-members-names": 3,
+      },
+      {
+        "other-data-class": 0,
+      },
+    ];
+    const summary = getDashboardSummary(combinedScannedResults, []);
+    noNegativeCounts(summary);
+    console.log(
+      "yay ",
+      JSON.stringify(summary.inProgressFixedSanitizedExposures),
+    );
+    expect(summary.inProgressFixedSanitizedExposures).toEqual(
+      expectedSanitizedExposures,
+    );
+  });
+
+  it("inProgressFixedExposures counts manually resolved exposures", () => {
+    const combinedScannedResults = [
+      ...unresolvedScannedResults,
+      ...manuallyResolvedScannedResults,
+    ];
+    const summary = getDashboardSummary(combinedScannedResults, []);
+    noNegativeCounts(summary);
+    expect(summary.manuallyResolvedDataBrokerExposures.passwords).toBe(
+      summary.inProgressFixedExposures.passwords,
+    );
+    expect(summary.manuallyResolvedDataBrokerExposures.pins).toBe(
+      summary.inProgressFixedExposures.pins,
+    );
+    expect(summary.manuallyResolvedDataBrokerExposures.phoneNumbers).toBe(
+      summary.inProgressFixedExposures.phoneNumbers,
+    );
+  });
 });

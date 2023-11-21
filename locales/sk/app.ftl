@@ -786,42 +786,6 @@ ad-unit-6-before-you-complete = Pred dokončením vašej ďalšej registrácie p
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account =
-    { $case ->
-        [gen]
-            { $capitalization ->
-                [lower] účtu Firefox
-               *[upper] Účtu Firefox
-            }
-        [dat]
-            { $capitalization ->
-                [lower] účtu Firefox
-               *[upper] Účtu Firefox
-            }
-        [acc]
-            { $capitalization ->
-                [lower] účet Firefox
-               *[upper] Účet Firefox
-            }
-        [loc]
-            { $capitalization ->
-                [lower] účte Firefox
-               *[upper] Účte Firefox
-            }
-        [ins]
-            { $capitalization ->
-                [lower] účtom Firefox
-               *[upper] Účtom Firefox
-            }
-       *[nom]
-            { $capitalization ->
-                [lower] účet Firefox
-               *[upper] Účet Firefox
-            }
-    }
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account =
@@ -882,11 +846,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Ponuka používateľa
 menu-button-alt = Otvoriť používateľskú ponuku
 menu-list-accessible-label = Ponuka účtu
-# Deprecated
-menu-item-fxa = Spravovať { -brand-fx-account(case: "acc", capitalization: "lower") }
 menu-item-fxa-2 = Spravovať { -brand-mozilla-account(case: "acc", capitalization: "lower") }
-# Deprecated
-menu-item-fxa-alt = Otvoriť stránku { -brand-fx-account }
 menu-item-fxa-alt-2 = Otvoriť stránku pre { -brand-mozilla-account(case: "acc") }
 menu-item-settings = Nastavenia
 menu-item-settings-alt = Otvoriť nastavenia
@@ -897,7 +857,8 @@ menu-item-logout = Odhlásiť sa
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Podmienky a ochrana súkromia
+terms-of-service = Podmienky používania služby
+privacy-notice = Vyhlásenie o ochrane osobných údajov
 github = { -brand-github }
 footer-nav-all-breaches = Všetky úniky údajov
 

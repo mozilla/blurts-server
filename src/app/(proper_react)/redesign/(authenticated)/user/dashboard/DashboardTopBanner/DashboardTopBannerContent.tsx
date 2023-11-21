@@ -15,7 +15,7 @@ import {
 import { ProgressCard } from "../../../../../../components/client/ProgressCard";
 import { Button } from "../../../../../../components/server/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
-import PremiumButton from "../../../../../../components/client/PremiumButton";
+import { PremiumButton } from "../../../../../../components/client/PremiumBadge";
 
 export interface ContentProps {
   relevantGuidedStep: StepLink;
@@ -44,11 +44,14 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     isPremiumUser,
     scanInProgress,
     onShowFixed,
+    monthlySubscriptionUrl,
+    yearlySubscriptionUrl,
   } = props;
 
   if (tabType === "fixed") {
     return (
       <ProgressCard
+        isPremiumUser={isPremiumUser}
         resolvedByYou={
           bannerData.dataBrokerManuallyResolvedExposuresNum +
           bannerData.dataBreachFixedExposuresNum
@@ -219,7 +222,13 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <PremiumButton label="dashboard-top-banner-no-exposures-found-cta" />
+              <PremiumButton
+                label={l10n.getString(
+                  "dashboard-top-banner-no-exposures-found-cta",
+                )}
+                monthlySubscriptionUrl={monthlySubscriptionUrl}
+                yearlySubscriptionUrl={yearlySubscriptionUrl}
+              />
             </div>
           </>
         );
@@ -295,7 +304,13 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <PremiumButton label="dashboard-top-banner-no-exposures-found-cta" />
+              <PremiumButton
+                label={l10n.getString(
+                  "dashboard-top-banner-no-exposures-found-cta",
+                )}
+                monthlySubscriptionUrl={monthlySubscriptionUrl}
+                yearlySubscriptionUrl={yearlySubscriptionUrl}
+              />
             </div>
           </>
         );

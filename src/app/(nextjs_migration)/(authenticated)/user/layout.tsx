@@ -33,21 +33,10 @@ const MainLayout = async (props: Props) => {
     return <SignInButton autoSignIn />;
   }
 
-  const accountId = session?.user?.subscriber?.fxa_uid;
-
-  let userId = "";
-  if (accountId && typeof accountId === "string") {
-    // If the user is logged in, use a UUID based on the user's subscriber ID.
-    // TODO determine if we can collect the FxA UID directly https://mozilla-hub.atlassian.net/browse/MNTOR-2180
-    if (process.env.NIMBUS_UUID_NAMESPACE) {
-      userId = uuidv5(accountId, process.env.NIMBUS_UUID_NAMESPACE);
-    } else {
-      logger.error("NIMBUS_UUID_NAMESPACE env var not set");
-    }
-  }
+  const userId = session?.user?.subscriber?.fxa_uid ?? "";
 
   if (!userId) {
-    logger.error("No user ID for Nimbus telemetry");
+    logger.error("No user ID for telemetry");
   }
 
   try {
@@ -64,6 +53,10 @@ const MainLayout = async (props: Props) => {
     email: session.user.email,
   });
 
+  const enabledFlags = await getEnabledFeatureFlags({
+    email: session?.user.email ?? "",
+  });
+
   return (
     <>
       <Script
@@ -75,6 +68,7 @@ const MainLayout = async (props: Props) => {
         userId={userId}
         channel={process.env.APP_ENV ?? ""}
         appEnv={process.env.APP_ENV ?? ""}
+        enabledFlags={enabledFlags}
       />
       <header>
         <div className="header-wrapper">
@@ -105,7 +99,7 @@ const MainLayout = async (props: Props) => {
             </button>
             <UserMenu
               session={session}
-              fxaSettingsUrl={AppConstants.NEXT_PUBLIC_FXA_SETTINGS_URL}
+              fxaSettingsUrl={AppConstants.FXA_SETTINGS_URL}
               nonce={getNonce()}
               enabledFeatureFlags={enabledFeatureFlags}
             />
@@ -141,10 +135,18 @@ const MainLayout = async (props: Props) => {
           </li>
           <li>
             <a
-              href="https://www.mozilla.org/privacy/firefox-monitor"
+              href="https://www.mozilla.org/about/legal/terms/subscription-services/"
               target="_blank"
             >
-              {l10n.getString("terms-and-privacy")}
+              {l10n.getString("terms-of-service")}
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.mozilla.org/privacy/subscription-services/"
+              target="_blank"
+            >
+              {l10n.getString("privacy-notice")}
             </a>
           </li>
           <li>

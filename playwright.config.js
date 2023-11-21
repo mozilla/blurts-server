@@ -119,7 +119,8 @@ export default defineConfig({
   webServer: {
     command: 'npm run build; npm start',
     port: 6060,
+    reuseExistingServer: !process.env.CI,
     // Building the app can take some time:
-    timeout: 1_800_000,
+    timeout: 600_000,
   }
 })

@@ -20,6 +20,7 @@ import {
 import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 
 import {
+  activateAndOptoutProfile,
   isEligibleForFreeScan,
   isEligibleForPremium,
 } from "../../../../../functions/server/onerep";
@@ -57,10 +58,11 @@ export default async function DashboardPage() {
   const isNewUser =
     (parseIso8601Datetime(session.user.subscriber.created_at)?.getTime() ?? 0) >
     brokerScanReleaseDate.getTime();
+  const isPremiumUser = hasPremium(session.user);
 
   if (
     !hasRunScan &&
-    (hasPremium(session.user) ||
+    (isPremiumUser ||
       (isNewUser &&
         canSubscribeToPremium({
           user: session.user,
@@ -71,6 +73,14 @@ export default async function DashboardPage() {
   }
 
   await refreshStoredScanResults(profileId);
+
+  // If the current user is a subscriber and their OneRep profile is not
+  // activated: Most likely we were not able or failed to kick-off the
+  // auto-removal process.
+  // Let’s make sure the users OneRep profile is activated:
+  if (isPremiumUser) {
+    await activateAndOptoutProfile(profileId);
+  }
 
   const latestScan = await getLatestOnerepScanResults(profileId);
   const scanCount = await getScansCountForProfile(profileId);

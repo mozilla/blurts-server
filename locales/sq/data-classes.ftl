@@ -12,6 +12,7 @@ audio-recordings = Incizime audio
 auth-tokens = Token-ë mirëfilltësimi
 avatars = Avatarë
 bank-account-numbers = Numra llogarish bankare
+beauty-ratings = Vlerësime bukurie
 biometric-data = Të dhëna biometrike
 # This string is the shortened version of "Biographies", and 
 # refers to biographical data about a user.
@@ -56,6 +57,7 @@ family-plans = Plane familjare
 family-structure = Strukturë familjare
 financial-investments = Investime financiare
 financial-transactions = Transaksione financiare
+fitness-levels = Shkallë kondicioni fizik
 flights-taken = Fluturime të bëra
 genders = Gjini
 geographic-locations = Vendndodhje gjeografike
@@ -122,6 +124,7 @@ races = Raca
 recovery-email-addresses = Adresa email rimarrjesh
 relationship-statuses = Gjendje marrëdhëniesh
 religions = Fe
+reward-program-balances = Bilanc programi shpërblimi
 salutations = Përshëndetje
 school-grades-class-levels = nivele shkollore (klasa)
 security-questions-and-answers = Pyetje dhe përgjigje sigurie

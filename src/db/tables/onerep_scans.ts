@@ -2,16 +2,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import initKnex from "knex";
-import knexConfig from "../knexfile.js";
-
+import createDbConnection from "../connect.js";
 import { logger } from "../../app/functions/server/logging";
 
 import { ScanResult, Scan } from "../../app/functions/server/onerep.js";
 import { Subscriber } from "../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
 
-const knex = initKnex(knexConfig);
+const knex = createDbConnection();
+
 export interface LatestOnerepScanData {
   scan: OnerepScanRow | null;
   results: OnerepScanResultRow[];
@@ -207,6 +206,25 @@ async function getScansCountForProfile(
   );
 }
 
+async function deleteScansForProfile(onerepProfileId: number): Promise<void> {
+  await knex("onerep_scans")
+    .delete()
+    .where("onerep_profile_id", onerepProfileId);
+}
+
+async function deleteScanResultsForProfile(
+  onerepProfileId: number,
+): Promise<void> {
+  await knex("onerep_scan_results")
+    .delete()
+    .innerJoin(
+      "onerep_scans",
+      "onerep_scan_results.onerep_scan_id",
+      "onerep_scans.onerep_scan_id",
+    )
+    .where("onerep_profile_id", onerepProfileId);
+}
+
 export {
   getAllScansForProfile,
   getScanResults,
@@ -218,4 +236,6 @@ export {
   isOnerepScanResultForSubscriber,
   markOnerepScanResultAsResolved,
   getScansCountForProfile,
+  deleteScansForProfile,
+  deleteScanResultsForProfile,
 };

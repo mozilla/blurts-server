@@ -2,12 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import createDbConnection from "../connect.js";
 import { destroyOAuthToken } from '../../utils/fxa.js'
-import initKnex from 'knex'
-import knexConfig from '../knexfile.js'
 import AppConstants from '../../appConstants.js'
 
-const knex = initKnex(knexConfig)
+const knex = createDbConnection();
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = AppConstants
 
 /**
