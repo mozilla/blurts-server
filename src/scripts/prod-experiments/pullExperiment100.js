@@ -7,7 +7,7 @@
  * The purpose of the script is to benchmark pure read with limit set as 100
  */
 
-import { createDbConnection } from "../../db/connect.js";
+import createDbConnection from "../../db/connect.js";
 import { getAllBreachesFromDb } from "../../utils/hibp.js";
 
 const knex = createDbConnection();
