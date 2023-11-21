@@ -155,16 +155,16 @@ export const findFirstUnresolvedBreach = (
 
 // TODO: Write unit tests MNTOR-2560
 /* c8 ignore start */
-export async function updateBreachStatus(
+export async function updatePasswordsBreachStatus(
   email: string,
   id: number,
-  resolvedDataClass: HibpBreachDataTypes[keyof HibpBreachDataTypes],
+  resolvedDataClass: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>,
 ) {
   try {
     const data: BreachResolutionRequest = {
       affectedEmail: email,
       breachId: id,
-      resolutionsChecked: [resolvedDataClass],
+      resolutionsChecked: resolvedDataClass,
     };
 
     const res = await fetch("/api/v1/user/breaches", {
