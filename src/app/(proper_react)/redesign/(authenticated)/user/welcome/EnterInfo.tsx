@@ -94,6 +94,9 @@ export const EnterInfo = ({
       ),
       value: firstName,
       displayValue: firstName,
+      errorMessage: l10n.getString(
+        "onboarding-enter-details-input-error-message-generic",
+      ),
       isValid: firstName.trim() !== "",
       onChange: setFirstName,
     },
@@ -106,6 +109,9 @@ export const EnterInfo = ({
       ),
       value: lastName,
       displayValue: lastName,
+      errorMessage: l10n.getString(
+        "onboarding-enter-details-input-error-message-generic",
+      ),
       isValid: lastName.trim() !== "",
       onChange: setLastName,
     },
@@ -118,6 +124,9 @@ export const EnterInfo = ({
       ),
       value: location,
       displayValue: location,
+      errorMessage: l10n.getString(
+        "onboarding-enter-details-input-error-message-location",
+      ),
       isValid: location.trim() !== "",
       onChange: setLocation,
     },
@@ -131,6 +140,9 @@ export const EnterInfo = ({
         dateStyle: "medium",
         timeZone: "UTC",
       }),
+      errorMessage: l10n.getString(
+        "onboarding-enter-details-input-error-message-generic",
+      ),
       isValid: meetsAgeRequirement(dateOfBirth),
       onChange: setDateOfBirth,
     },
@@ -314,28 +326,34 @@ export const EnterInfo = ({
       <form onSubmit={handleOnSubmit}>
         <div className={styles.inputContainer}>
           {userDetailsData.map(
-            ({ key, label, onChange, placeholder, isValid, type, value }) => {
+            ({
+              key,
+              errorMessage,
+              label,
+              onChange,
+              placeholder,
+              isValid,
+              type,
+              value,
+            }) => {
               const validationState =
                 !isValid && invalidInputs.includes(key) ? "invalid" : "valid";
               return key === "location" ? (
                 <LocationAutocompleteInput
                   key={key}
-                  errorMessage={l10n.getString(
-                    "onboarding-enter-details-input-error-message-location",
-                  )}
+                  errorMessage={errorMessage}
                   label={label}
                   isRequired={true}
-                  onInputChange={onChange}
+                  onChange={onChange}
                   placeholder={placeholder}
+                  type={type}
                   validationState={validationState}
-                  inputValue={value}
+                  value={value}
                 />
               ) : (
                 <InputField
                   key={key}
-                  errorMessage={l10n.getString(
-                    "onboarding-enter-details-input-error-message-generic",
-                  )}
+                  errorMessage={errorMessage}
                   label={label}
                   isRequired={true}
                   onChange={onChange}

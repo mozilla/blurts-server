@@ -4,7 +4,7 @@
 
 "use client";
 
-import { ReactNode, RefObject, useRef } from "react";
+import { Key, ReactNode, RefObject, useRef } from "react";
 import { AriaListBoxOptions, useListBox, useOption } from "react-aria";
 import { ListState } from "react-stately";
 import { useElementWidth } from "../../hooks/useElementWidth";
@@ -12,7 +12,7 @@ import styles from "./ListBox.module.scss";
 
 export interface OptionProps extends AriaListBoxOptions<unknown> {
   item: {
-    key: Parameters<typeof useOption>[0]["key"];
+    key: Key;
     rendered: ReactNode;
   };
   state: ListState<object>;
