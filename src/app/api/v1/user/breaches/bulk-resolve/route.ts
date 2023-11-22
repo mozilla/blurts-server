@@ -40,7 +40,6 @@ export async function PUT(req: NextRequest): Promise<NextResponse> {
     );
 
     const currentBreachResolution = subscriber.breach_resolution || {}; // get this from existing breach resolution if available
-    currentBreachResolution.useBreachId = true;
 
     for (const verifiedEmail of verifiedEmails) {
       const currentEmail = verifiedEmail.email;
