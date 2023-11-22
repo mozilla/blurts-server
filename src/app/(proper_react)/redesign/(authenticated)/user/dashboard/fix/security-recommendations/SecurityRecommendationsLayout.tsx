@@ -4,6 +4,7 @@
 
 "use client";
 
+import { useRouter } from "next/navigation";
 import {
   SecurityRecommendationTypes,
   getSecurityRecommendationsByType,
@@ -32,6 +33,7 @@ export function SecurityRecommendationsLayout(
   props: SecurityRecommendationsLayoutProps,
 ) {
   const l10n = useL10n();
+  const router = useRouter();
 
   const stepMap: Record<SecurityRecommendationTypes, StepLink["id"]> = {
     email: "SecurityTipsEmail",
@@ -58,6 +60,37 @@ export function SecurityRecommendationsLayout(
   // The non-null assertion here should be safe since we already did this check
   // in `./[type]/page.tsx`:
   const { title, illustration, content, exposedData } = pageData!;
+  const hasExposedData = exposedData.length;
+
+  const handlePrimaryButtonPress = async () => {
+    if (!hasExposedData) {
+      router.push(nextStep.href);
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/v1/user/breaches/bulk-resolve", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          dataType: props.type,
+        }),
+      });
+
+      const result = await response.json();
+      if (!result?.success) {
+        throw new Error(
+          `Could not resolve breach data class of type: ${props.type}`,
+        );
+      }
+
+      router.push(nextStep.href);
+    } catch (_error) {
+      // do nothing
+    }
+  };
 
   return (
     <FixView
@@ -83,9 +116,8 @@ export function SecurityRecommendationsLayout(
             <Button
               variant="primary"
               small
-              // TODO: Add test once MNTOR-1700 logic is added
-              href={nextStep.href}
               autoFocus={true}
+              onPress={() => void handlePrimaryButtonPress()}
             >
               {l10n.getString("security-recommendation-steps-cta-label")}
             </Button>

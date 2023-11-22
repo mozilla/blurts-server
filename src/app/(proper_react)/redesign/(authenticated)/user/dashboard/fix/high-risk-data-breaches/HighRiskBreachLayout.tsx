@@ -5,6 +5,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ResolutionContainer } from "../ResolutionContainer";
 import { ResolutionContent } from "../ResolutionContent";
 import { Button } from "../../../../../../../components/server/Button";
@@ -31,6 +32,7 @@ export type HighRiskBreachLayoutProps = {
 
 export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
   const l10n = useL10n();
+  const router = useRouter();
 
   const stepMap: Record<HighRiskBreachTypes, StepLink["id"]> = {
     ssn: "HighRiskSsn",
@@ -57,8 +59,39 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
   // The non-null assertion here should be safe since we already did this check
   // in `./[type]/page.tsx`:
   const { title, illustration, content, exposedData, type } = pageData!;
-  const hasBreaches = type !== "none";
+  const isHighRiskBreachesStep = type !== "none";
   const isStepDone = type === "done";
+  const hasExposedData = exposedData.length;
+
+  const handlePrimaryButtonPress = async () => {
+    if (!isHighRiskBreachesStep || !hasExposedData) {
+      router.push(nextStep.href);
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/v1/user/breaches/bulk-resolve", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          dataType: type,
+        }),
+      });
+
+      const result = await response.json();
+      if (!result?.success) {
+        throw new Error(
+          `Could not resolve breach data class of type: ${props.type}`,
+        );
+      }
+
+      router.push(nextStep.href);
+    } catch (_error) {
+      // do nothing
+    }
+  };
 
   return (
     <FixView
@@ -80,23 +113,20 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
               <Button
                 variant="primary"
                 small
-                // TODO: Add test once MNTOR-1700 logic is added
-                /* c8 ignore next 3 */
-                onPress={() => {
-                  // TODO: MNTOR-1700 Add routing logic + fix event here
-                }}
+                autoFocus={true}
+                onPress={() => void handlePrimaryButtonPress()}
               >
                 {
                   // Theoretically, this page should never be shown if the user
                   // has no breaches, unless the user directly visits its URL, so
                   // no tests represents it either:
                   /* c8 ignore next 3 */
-                  hasBreaches
+                  isHighRiskBreachesStep
                     ? l10n.getString("high-risk-breach-mark-as-fixed")
                     : l10n.getString("high-risk-breach-none-continue")
                 }
               </Button>
-              {hasBreaches && (
+              {isHighRiskBreachesStep && (
                 <Link href={nextStep.href}>
                   {l10n.getString("high-risk-breach-skip")}
                 </Link>
@@ -107,7 +137,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
         // Theoretically, this page should never be shown if the user has no
         // breaches, unless the user directly visits its URL, so no tests
         // represents it either:
-        estimatedTime={!isStepDone && hasBreaches ? 15 : undefined}
+        estimatedTime={!isStepDone && isHighRiskBreachesStep ? 15 : undefined}
         isStepDone={isStepDone}
         data={props.data}
       >
