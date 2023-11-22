@@ -133,10 +133,6 @@ const meta: Meta<typeof HighRiskBreachWrapper> = {
       description: "Next unresolved breach type",
       options: [
         "None",
-        "SSN",
-        "CreditCard",
-        "BankAccount",
-        "PIN",
         "Passwords",
         "SecurityQuestions",
         "Phone",
