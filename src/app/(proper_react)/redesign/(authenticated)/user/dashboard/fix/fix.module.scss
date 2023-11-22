@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  // Set position relative so the child <Confetti> canvas can overlay <FixView>
   position: relative;
 
   @media screen and (min-width: $screen-md) {
