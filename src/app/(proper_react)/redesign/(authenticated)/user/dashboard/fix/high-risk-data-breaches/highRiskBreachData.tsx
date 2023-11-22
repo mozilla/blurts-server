@@ -13,6 +13,19 @@ import { GuidedExperienceBreaches } from "../../../../../../../functions/server/
 import { FraudAlertModal } from "./FraudAlertModal";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
+import { Button } from "../../../../../../../components/server/Button";
+import { StepLink } from "../../../../../../../functions/server/getRelevantGuidedSteps";
+
+export const highRiskBreachTypes = [
+  "credit-card",
+  "ssn",
+  "bank-account",
+  "pin",
+  "done",
+  "none",
+] as const;
+
+export type HighRiskBreachTypes = (typeof highRiskBreachTypes)[number];
 
 export type HighRiskBreachContent = {
   summary: string;
@@ -24,13 +37,6 @@ export type HighRiskBreachContent = {
   };
 };
 
-export type HighRiskBreachTypes =
-  | "credit-card"
-  | "ssn"
-  | "bank-account"
-  | "pin"
-  | "none";
-
 export type HighRiskBreach = {
   type: HighRiskBreachTypes;
   title: string;
@@ -39,14 +45,117 @@ export type HighRiskBreach = {
   exposedData: SubscriberBreach[];
 };
 
+function getDoneStepContent(
+  l10n: ExtendedReactLocalization,
+  nextStep: StepLink,
+): { summary: string; description: ReactNode } {
+  // Passwords next
+  if (nextStep.id === "LeakedPasswordsPassword") {
+    return {
+      summary: "",
+      description: (
+        <>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-high-risk-description-in-progress",
+            )}
+          </p>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-high-risk-description-next-passwords",
+            )}
+          </p>
+          <Button variant="primary" small href={nextStep.href} autoFocus={true}>
+            {l10n.getString("fix-flow-celebration-next-label")}
+          </Button>
+        </>
+      ),
+    };
+  }
+
+  // Security questions next
+  if (nextStep.id === "LeakedPasswordsSecurityQuestion") {
+    return {
+      summary: "",
+      description: (
+        <>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-high-risk-description-in-progress",
+            )}
+          </p>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-high-risk-description-next-security-questions",
+            )}
+          </p>
+          <Button variant="primary" small href={nextStep.href} autoFocus={true}>
+            {l10n.getString("fix-flow-celebration-next-label")}
+          </Button>
+        </>
+      ),
+    };
+  }
+
+  // Security tips next
+  if (
+    ["SecurityTipsPhone", "SecurityTipsEmail", "SecurityTipsIp"].includes(
+      nextStep.id,
+    )
+  ) {
+    return {
+      summary: "",
+      description: (
+        <>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-high-risk-description-in-progress",
+            )}
+          </p>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-high-risk-description-next-security-recommendations",
+            )}
+          </p>
+          <Button variant="primary" small href={nextStep.href} autoFocus={true}>
+            {l10n.getString("fix-flow-celebration-next-recommendations-label")}
+          </Button>
+        </>
+      ),
+    };
+  }
+
+  // No next steps
+  return {
+    summary: "",
+    description: (
+      <>
+        <p>
+          {l10n.getString("fix-flow-celebration-high-risk-description-done")}
+        </p>
+        <p>
+          {l10n.getString(
+            "fix-flow-celebration-high-risk-description-next-dashboard",
+          )}
+        </p>
+        <Button variant="primary" small href={nextStep.href} autoFocus={true}>
+          {l10n.getString("fix-flow-celebration-next-dashboard-label")}
+        </Button>
+      </>
+    ),
+  };
+}
+
 function getHighRiskBreachesByType({
   dataType,
   breaches,
   l10n,
+  nextStep,
 }: {
   dataType: HighRiskBreachTypes;
   breaches: GuidedExperienceBreaches;
   l10n: ExtendedReactLocalization;
+  nextStep: StepLink;
 }) {
   // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
   const emailsFormatter = new Intl.ListFormat(getLocale(l10n), {
@@ -188,6 +297,13 @@ function getHighRiskBreachesByType({
           ),
         },
       },
+    },
+    {
+      type: "done",
+      title: l10n.getString("fix-flow-celebration-high-risk-title"),
+      illustration: "",
+      exposedData: [],
+      content: getDoneStepContent(l10n, nextStep),
     },
     {
       type: "none",

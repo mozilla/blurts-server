@@ -1,0 +1,14 @@
+.confetti {
+  background: transparent;
+  display: none;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+
+  @media (prefers-reduced-motion: no-preference) {
+    display: block;
+  }
+}

@@ -12,11 +12,11 @@ page:
   view:
     type: event
     description: |
-      An event triggered when the page is loaded.
+      A web page view event distinguishable by the page’s URL.
     bugs:
-      - https://mozilla-hub.atlassian.net/browse/MNTOR-2022
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_reviews:
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1848664#c6
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_sensitivity:
       - interaction
     notification_emails:
@@ -27,5 +27,364 @@ page:
         description: The path of the page.
         type: string
       user_id:
-        description: User ID for Nimbus. Derived from subscriber ID or randomly-generated if not logged in.
+        description: Mozilla accounts user ID.
         type: string
+      session_id:
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
+      utm_campaign:
+        description: Attribution campaign.
+        type: string
+      utm_content:
+        description: Attribution content.
+        type: string
+      utm_medium:
+        description: Attribution medium.
+        type: string
+      utm_source:
+        description: Attribution source.
+        type: string
+      utm_term:
+        description: Attribution term.
+        type: string
+      referrer:
+        description: The referring URL, if any.
+        type: string
+
+dashboard:
+  view:
+    type: event
+    description: |
+      A view event of a Monitor user’s dashboard, where a user is able to view their data breaches and broker information.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID.
+        type: string
+      session_id:
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
+      dashboard_tab:
+        description: Either [action_needed, fixed] depending on where the user is in their dashboard.
+        type: string
+      legacy_user:
+        description: True for users who signed up after data broker scanning was released to the welcome flow.
+        type: boolean
+      breach_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+      legacy_breach_count:
+        description: Legacy users of Monitor may already have breaches reported on their dashboard, without having run the new free scan.
+        type: quantity
+      broker_count:
+        description: Users who run the new free scan will be notified of breaches found during the scan.
+        type: quantity
+
+popup:
+  view:
+    type: event
+    description: |
+      A view of a popup on a webpage or dashboard view.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID.
+        type: string
+      session_id:
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
+
+  exit:
+    type: event
+    description: |
+      An exit of a popup on a webpage or dashboard view.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID.
+        type: string
+      session_id:
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
+
+button:
+  click:
+    type: event
+    description: |
+      A click on a button that doesn’t fall into one of the two other button categories (call-to-action (CTA) or purchase intent).
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID.
+        type: string
+      session_id:
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
+      button_id:
+        description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
+
+field:
+  focus:
+    type: event
+    description: |
+      An engagement of focus into a text field on a webpage.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID.
+        type: string
+      session_id:
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
+      field_id:
+        description: The ID of the field that was clicked on, or some way to identify where on the page the interaction is located.
+
+link:
+  click:
+    type: event
+    description: |
+      A click on a link on a webpage that redirects to a different webpage.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID.
+        type: string
+      session_id:
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
+      button_id:
+        description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
+
+upgrade_intent:
+  click:
+    type: event
+    description: |
+      A click on a button that indicates an intent to purchase or upgrade to the paid experience.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID.
+        type: string
+      session_id:
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
+      button_id:
+        description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
+
+  success:
+    type: event
+    description: |
+      An event that indicates the successfully upgrade of the user’s plan
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID.
+        type: string
+      session_id:
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
+
+expand:
+  click:
+    type: event
+    description: |
+      A click to expand a section of the webpage.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID.
+        type: string
+      session_id:
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
+      button_id:
+        description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
+
+collapse:
+  click:
+    type: event
+    description: |
+      A click to collapse a section on the webpage.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID.
+        type: string
+      session_id:
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
+      button_id:
+        description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
+
+cta_button:
+  click:
+    type: event
+    description: |
+      A click on a button that has a specific call-to-action.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      user_id:
+        description: Mozilla accounts user ID.
+        type: string
+      session_id:
+        description: An ID that allows us to track “sessions” of the user experience within the product.
+        type: string
+      flow_id:
+        description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
+      button_id:
+        description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.

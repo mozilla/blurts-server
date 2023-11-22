@@ -7,24 +7,29 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ReactNode } from "react";
+import { Confetti } from "../../../../../../components/client/Confetti";
 import { FixNavigation } from "../../../../../../components/client/FixNavigation";
 import styles from "./fix.module.scss";
 import ImageArrowRight from "./images/icon-arrow-right.svg";
 import ImageClose from "./images/icon-close.svg";
 import { useL10n } from "../../../../../../hooks/l10n";
-import { StepDeterminationData } from "../../../../../../functions/server/getRelevantGuidedSteps";
+import {
+  StepDeterminationData,
+  StepLink,
+} from "../../../../../../functions/server/getRelevantGuidedSteps";
 
 export type FixViewProps = {
   children: ReactNode;
   subscriberEmails: string[];
   data: StepDeterminationData;
-  nextStepHref: string;
+  nextStep: StepLink;
   currentSection:
     | "data-broker-profiles"
     | "high-risk-data-breach"
     | "leaked-passwords"
     | "security-recommendations";
   hideProgressIndicator?: boolean;
+  showConfetti?: boolean;
 };
 
 export const FixView = (props: FixViewProps) => {
@@ -49,6 +54,7 @@ export const FixView = (props: FixViewProps) => {
 
   return (
     <div className={styles.fixContainer}>
+      {props.showConfetti && <Confetti />}
       <div
         className={`${styles.fixWrapper} ${
           isResolutionLayout ? styles.highRiskDataBreachContentBg : ""
@@ -69,7 +75,7 @@ export const FixView = (props: FixViewProps) => {
           <div className={styles.viewWrapper}>{props.children}</div>
           <Link
             className={`${styles.navArrow} ${styles.navArrowNext}`}
-            href={props.nextStepHref}
+            href={props.nextStep.href}
             aria-label={l10n.getString("guided-resolution-flow-next-arrow")}
           >
             <Image alt="" src={ImageArrowRight} />
