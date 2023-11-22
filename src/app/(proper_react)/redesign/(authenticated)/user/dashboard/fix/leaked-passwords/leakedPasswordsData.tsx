@@ -8,9 +8,12 @@ import securityQuestionsIllustration from "../images/security-questions.svg";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
-<<<<<<< HEAD
 import { Button } from "../../../../../../../components/server/Button";
 import { StepLink } from "../../../../../../../functions/server/getRelevantGuidedSteps";
+import {
+  BreachResolutionRequest,
+  HibpBreachDataTypes,
+} from "../../../../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
 
 export const leakedPasswordTypes = [
   "passwords",
@@ -21,12 +24,6 @@ export const leakedPasswordTypes = [
 ] as const;
 
 export type LeakedPasswordsTypes = (typeof leakedPasswordTypes)[number];
-=======
-import {
-  BreachResolutionRequest,
-  HibpBreachDataTypes,
-} from "../../../../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
->>>>>>> c2c968aba (add security question email match)
 
 export type LeakedPasswordsContent = {
   summary: string;
@@ -39,11 +36,18 @@ export type LeakedPasswordsContent = {
 };
 
 export type LeakedPassword = {
-  id: number;
   type: LeakedPasswordsTypes;
   title: string;
   illustration: string;
   content: LeakedPasswordsContent;
+};
+
+export type LeakedPasswordLayout = {
+  dataType: LeakedPasswordsTypes;
+  breaches: GuidedExperienceBreaches;
+  l10n: ExtendedReactLocalization;
+  nextStep: StepLink;
+  emailAffected: string;
 };
 
 function getDoneStepContent(
@@ -110,33 +114,8 @@ function getDoneStepContent(
   };
 }
 
-function getLeakedPasswords({
-  dataType,
-  breaches,
-  l10n,
-  nextStep,
-}: {
-  dataType: string;
-  breaches: GuidedExperienceBreaches;
-  l10n: ExtendedReactLocalization;
-<<<<<<< HEAD
-  nextStep: StepLink;
-}) {
-  const findFirstUnresolvedBreach = (breachClassType: LeakedPasswordsTypes) => {
-    const leakedPasswordType =
-      breachClassType === "passwords" ? "passwords" : "securityQuestions";
-    return Object.values(breaches.passwordBreaches[leakedPasswordType]).find(
-      (breach) => !breach.resolvedDataClasses.includes(resolvedDataClassName),
-    );
-  };
-
-  const unresolvedPasswordBreach = findFirstUnresolvedBreach("passwords");
-  const unresolvedSecurityQuestionsBreach =
-    findFirstUnresolvedBreach("security-questions");
-=======
-  emailAffected: string;
-};
-
+// TODO: Write unit tests MNTOR-2560
+/* c8 ignore start */
 export const findFirstUnresolvedBreach = (
   breaches: GuidedExperienceBreaches,
   breachClassType: LeakedPasswordsTypes,
@@ -153,8 +132,6 @@ export const findFirstUnresolvedBreach = (
   );
 };
 
-// TODO: Write unit tests MNTOR-2560
-/* c8 ignore start */
 export async function updatePasswordsBreachStatus(
   email: string,
   id: number,
@@ -181,18 +158,17 @@ export async function updatePasswordsBreachStatus(
 }
 /* c8 ignore stop */
 
-function getLeakedPasswords(props: LeakedPassword) {
-  const { dataType, breaches, l10n, emailAffected } = props;
+function getLeakedPasswords(props: LeakedPasswordLayout) {
+  const { dataType, breaches, l10n, nextStep, emailAffected } = props;
 
   const unresolvedPasswordBreach = findFirstUnresolvedBreach(
     breaches,
     "passwords",
-  ) as SubscriberBreach;
+  );
   const unresolvedSecurityQuestionsBreach = findFirstUnresolvedBreach(
     breaches,
-    "security-question",
-  ) as SubscriberBreach;
->>>>>>> 31950ecce (remove secondary useEffect)
+    "security-questions",
+  );
   // This env var is always defined in test, so the other branch can't be covered:
   /* c8 ignore next */
   const blockList = (process.env.HIBP_BREACH_DOMAIN_BLOCKLIST ?? "").split(",");
@@ -221,7 +197,7 @@ function getLeakedPasswords(props: LeakedPassword) {
     breachSite: securityQuestionBreachSite,
   } = getBreachInfo(unresolvedSecurityQuestionsBreach);
 
-  const leakedPasswordsData: LeakedPasswordsLayout[] = [
+  const leakedPasswordsData: LeakedPassword[] = [
     {
       type: "passwords",
       title: l10n.getString("leaked-passwords-title", {
