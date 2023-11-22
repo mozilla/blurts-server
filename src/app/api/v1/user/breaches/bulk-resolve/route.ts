@@ -48,15 +48,12 @@ export async function PUT(req: NextRequest): Promise<NextResponse> {
 
         if (currentBreachDataTypes?.includes(dataTypeToResolve)) {
           const breachId = currentBreach.Id;
-          let currentResolutionsChecked =
+          const currentResolutionsChecked =
             currentBreachResolution[currentEmail]?.[breachId]
-              ?.resolutionsChecked;
-          if (currentResolutionsChecked) {
-            if (!currentResolutionsChecked.includes(dataTypeToResolve)) {
-              currentResolutionsChecked.push(dataTypeToResolve);
-            }
-          } else {
-            currentResolutionsChecked = [dataTypeToResolve];
+              ?.resolutionsChecked ?? [];
+
+          if (!currentResolutionsChecked.includes(dataTypeToResolve)) {
+            currentResolutionsChecked.push(dataTypeToResolve);
           }
 
           const isResolved =
