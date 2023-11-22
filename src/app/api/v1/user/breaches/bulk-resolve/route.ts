@@ -33,9 +33,8 @@ export async function PUT(req: NextRequest): Promise<NextResponse> {
         session?.user?.email,
       );
       const allBreaches = await getBreaches();
-      const j = await req.json();
-      const { dataType: dataTypeToResolve }: BreachBulkResolutionRequest = j;
-      console.log({ dataTypeToResolve });
+      const { dataType: dataTypeToResolve }: BreachBulkResolutionRequest =
+        await req.json();
 
       const { verifiedEmails } = await getAllEmailsAndBreaches(
         subscriber,
