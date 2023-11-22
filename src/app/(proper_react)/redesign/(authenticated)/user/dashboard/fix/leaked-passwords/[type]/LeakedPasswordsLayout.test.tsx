@@ -10,11 +10,7 @@ import { setupJestCanvasMock } from "jest-canvas-mock";
 import Meta, {
   PasswordsStory,
   SecurityQuestionsStory,
-  PasswordsDoneSecurityQuestionsNextStory,
-  PasswordsDoneSecurityTipsNextStory,
-  PasswordsDoneNoNextStepStory,
-  SecurityQuestionsDoneSecurityTipsNextStory,
-  SecurityQuestionsDoneNoNextStepStory,
+  LeakedPasswordsDoneStory,
 } from "./LeakedPasswords.stories";
 
 beforeEach(() => {
@@ -33,55 +29,21 @@ it("security questions component passes the axe accessibility test suite", async
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for the leaked passwords celebration view, next step is security questions", async () => {
-  const ComposedComponent = composeStory(
-    PasswordsDoneSecurityQuestionsNextStory,
-    Meta,
-  );
-  const { container } = render(<ComposedComponent />);
-  expect(await axe(container)).toHaveNoViolations();
-});
-
-it("passes the axe accessibility test suite for the leaked passwords celebration view, next step is security tips", async () => {
-  const ComposedComponent = composeStory(
-    PasswordsDoneSecurityTipsNextStory,
-    Meta,
-  );
-  const { container } = render(<ComposedComponent />);
-  expect(await axe(container)).toHaveNoViolations();
-});
-
-it("passes the axe accessibility test suite for the leaked passwords celebration view, no next step", async () => {
-  const ComposedComponent = composeStory(PasswordsDoneNoNextStepStory, Meta);
-  const { container } = render(<ComposedComponent />);
-  expect(await axe(container)).toHaveNoViolations();
-});
-
-it("passes the axe accessibility test suite for the security questions celebration view, next step is security tips", async () => {
-  const ComposedComponent = composeStory(
-    SecurityQuestionsDoneSecurityTipsNextStory,
-    Meta,
-  );
-  const { container } = render(<ComposedComponent />);
-  expect(await axe(container)).toHaveNoViolations();
-});
-
-it("passes the axe accessibility test suite for the security questions celebration view, no next step", async () => {
-  const ComposedComponent = composeStory(
-    SecurityQuestionsDoneNoNextStepStory,
-    Meta,
-  );
+it("passes the axe accessibility test suite for the leaked passwords celebration view", async () => {
+  const ComposedComponent = composeStory(LeakedPasswordsDoneStory, Meta);
   const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("shows the leaked passwords celebration view, next step is security questions", () => {
-  const ComposedComponent = composeStory(
-    PasswordsDoneSecurityQuestionsNextStory,
-    Meta,
-  );
+  const ComposedComponent = composeStory(LeakedPasswordsDoneStory, Meta);
 
-  render(<ComposedComponent />);
+  render(
+    <ComposedComponent
+      type="passwords-done"
+      nextUnresolvedBreachType="SecurityQuestions"
+    />,
+  );
 
   const viewHeading = screen.getByRole("heading", {
     name: "Your passwords are now protected!",
@@ -94,13 +56,15 @@ it("shows the leaked passwords celebration view, next step is security questions
   expect(buttonLink).toBeInTheDocument();
 });
 
-it("shows the leaked passwords celebration view, next step is passwords", () => {
-  const ComposedComponent = composeStory(
-    PasswordsDoneSecurityTipsNextStory,
-    Meta,
-  );
+it("shows the leaked passwords celebration view, next step is security tips", () => {
+  const ComposedComponent = composeStory(LeakedPasswordsDoneStory, Meta);
 
-  render(<ComposedComponent />);
+  render(
+    <ComposedComponent
+      type="passwords-done"
+      nextUnresolvedBreachType="Email"
+    />,
+  );
 
   const viewHeading = screen.getByRole("heading", {
     name: "Your passwords are now protected!",
@@ -114,9 +78,9 @@ it("shows the leaked passwords celebration view, next step is passwords", () => 
 });
 
 it("shows the leaked passwords celebration view, no next step", () => {
-  const ComposedComponent = composeStory(PasswordsDoneNoNextStepStory, Meta);
+  const ComposedComponent = composeStory(LeakedPasswordsDoneStory, Meta);
 
-  render(<ComposedComponent />);
+  render(<ComposedComponent type="passwords-done" />);
 
   const viewHeading = screen.getByRole("heading", {
     name: "Your passwords are now protected!",
@@ -130,12 +94,14 @@ it("shows the leaked passwords celebration view, no next step", () => {
 });
 
 it("shows the security questions celebration view, next step is security tips", () => {
-  const ComposedComponent = composeStory(
-    SecurityQuestionsDoneSecurityTipsNextStory,
-    Meta,
-  );
+  const ComposedComponent = composeStory(LeakedPasswordsDoneStory, Meta);
 
-  render(<ComposedComponent />);
+  render(
+    <ComposedComponent
+      type="security-questions-done"
+      nextUnresolvedBreachType="IP"
+    />,
+  );
 
   const viewHeading = screen.getByRole("heading", {
     name: "Your security questions are protected!",
@@ -149,12 +115,9 @@ it("shows the security questions celebration view, next step is security tips", 
 });
 
 it("shows the security questions celebration view, no next step", () => {
-  const ComposedComponent = composeStory(
-    SecurityQuestionsDoneNoNextStepStory,
-    Meta,
-  );
+  const ComposedComponent = composeStory(LeakedPasswordsDoneStory, Meta);
 
-  render(<ComposedComponent />);
+  render(<ComposedComponent type="security-questions-done" />);
 
   const viewHeading = screen.getByRole("heading", {
     name: "Your security questions are protected!",

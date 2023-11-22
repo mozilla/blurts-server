@@ -159,12 +159,12 @@ const preview: Preview = {
           ) {
             linkTo(
               "Pages/Guided resolution/2. High-risk data breaches",
-              "2e IV. Done (Next step: None)",
+              "2e. Done",
             )();
           }
 
           if (
-            path === "/redesign/user/dashboard/fix/leaked-passwords/password"
+            path === "/redesign/user/dashboard/fix/leaked-passwords/passwords"
           ) {
             linkTo(
               "Pages/Guided resolution/3. Leaked passwords",
@@ -184,22 +184,11 @@ const preview: Preview = {
 
           if (
             path ===
-            "/redesign/user/dashboard/fix/leaked-passwords/passwords-done"
-          ) {
-            linkTo(
-              "Pages/Guided resolution/3. Leaked passwords",
-              "3b I. Done (Next step: Security questions)",
-            )();
-          }
-
-          if (
+              "/redesign/user/dashboard/fix/leaked-passwords/passwords-done" ||
             path ===
-            "/redesign/user/dashboard/fix/leaked-passwords/security-questions-done"
+              "/redesign/user/dashboard/fix/leaked-passwords/security-questions-done"
           ) {
-            linkTo(
-              "Pages/Guided resolution/3. Leaked passwords",
-              "3d II. Done (Next step: None)",
-            )();
+            linkTo("Pages/Guided resolution/3. Leaked passwords", "3c. Done")();
           }
 
           if (

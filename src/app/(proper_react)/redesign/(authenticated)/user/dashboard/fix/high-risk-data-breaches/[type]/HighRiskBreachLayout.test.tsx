@@ -13,10 +13,7 @@ import Meta, {
   CreditCardStory,
   PinStory,
   SsnStory,
-  HighRiskBreachDonePasswordsNextStory,
-  HighRiskBreachDoneSecurityQuestionsNextStory,
-  HighRiskBreachDoneSecurityTipsNextStory,
-  HighRiskBreachDoneNoNextStepStory,
+  HighRiskBreachDoneStory,
 } from "./HighRiskDataBreach.stories";
 
 beforeEach(() => {
@@ -47,38 +44,8 @@ it("passes the axe accessibility test suite for PIN breaches", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite for the high-risk celebration view, next step is passwords", async () => {
-  const ComposedComponent = composeStory(
-    HighRiskBreachDonePasswordsNextStory,
-    Meta,
-  );
-  const { container } = render(<ComposedComponent />);
-  expect(await axe(container)).toHaveNoViolations();
-});
-
-it("passes the axe accessibility test suite for the high-risk celebration view, next step is security questions", async () => {
-  const ComposedComponent = composeStory(
-    HighRiskBreachDoneSecurityQuestionsNextStory,
-    Meta,
-  );
-  const { container } = render(<ComposedComponent />);
-  expect(await axe(container)).toHaveNoViolations();
-});
-
-it("passes the axe accessibility test suite for the high-risk celebration view, next step is security tips", async () => {
-  const ComposedComponent = composeStory(
-    HighRiskBreachDoneSecurityTipsNextStory,
-    Meta,
-  );
-  const { container } = render(<ComposedComponent />);
-  expect(await axe(container)).toHaveNoViolations();
-});
-
-it("passes the axe accessibility test suite for the high-risk celebration view, no next step", async () => {
-  const ComposedComponent = composeStory(
-    HighRiskBreachDoneNoNextStepStory,
-    Meta,
-  );
+it("passes the axe accessibility test suite for the high-risk celebration view", async () => {
+  const ComposedComponent = composeStory(HighRiskBreachDoneStory, Meta);
   const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
@@ -130,12 +97,9 @@ it("does not show the Broker step if the user is in a country where the data bro
 });
 
 it("shows the high-risk celebration view, next step is passwords", () => {
-  const ComposedComponent = composeStory(
-    HighRiskBreachDonePasswordsNextStory,
-    Meta,
-  );
+  const ComposedComponent = composeStory(HighRiskBreachDoneStory, Meta);
 
-  render(<ComposedComponent />);
+  render(<ComposedComponent nextUnresolvedBreachType="Passwords" />);
 
   const viewHeading = screen.getByRole("heading", {
     name: "You’ve fixed your high risk exposures!",
@@ -149,12 +113,9 @@ it("shows the high-risk celebration view, next step is passwords", () => {
 });
 
 it("shows the high-risk celebration view, next step is security questions", () => {
-  const ComposedComponent = composeStory(
-    HighRiskBreachDoneSecurityQuestionsNextStory,
-    Meta,
-  );
+  const ComposedComponent = composeStory(HighRiskBreachDoneStory, Meta);
 
-  render(<ComposedComponent />);
+  render(<ComposedComponent nextUnresolvedBreachType="SecurityQuestions" />);
 
   const viewHeading = screen.getByRole("heading", {
     name: "You’ve fixed your high risk exposures!",
@@ -168,12 +129,9 @@ it("shows the high-risk celebration view, next step is security questions", () =
 });
 
 it("shows the high-risk celebration view, next step is security tips", () => {
-  const ComposedComponent = composeStory(
-    HighRiskBreachDoneSecurityTipsNextStory,
-    Meta,
-  );
+  const ComposedComponent = composeStory(HighRiskBreachDoneStory, Meta);
 
-  render(<ComposedComponent />);
+  render(<ComposedComponent nextUnresolvedBreachType="Phone" />);
 
   const viewHeading = screen.getByRole("heading", {
     name: "You’ve fixed your high risk exposures!",
@@ -187,10 +145,7 @@ it("shows the high-risk celebration view, next step is security tips", () => {
 });
 
 it("shows the high-risk celebration view, next step is passwords, no next step", () => {
-  const ComposedComponent = composeStory(
-    HighRiskBreachDoneNoNextStepStory,
-    Meta,
-  );
+  const ComposedComponent = composeStory(HighRiskBreachDoneStory, Meta);
 
   render(<ComposedComponent />);
 

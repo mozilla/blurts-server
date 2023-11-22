@@ -10,7 +10,10 @@ import {
 import { Shell } from "../../../../../../Shell";
 import { getEnL10nSync } from "../../../../../../../../functions/server/mockL10n";
 import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
-import { HighRiskBreachTypes } from "../highRiskBreachData";
+import {
+  HighRiskBreachTypes,
+  highRiskBreachTypes,
+} from "../highRiskBreachData";
 import { BreachDataTypes } from "../../../../../../../../functions/universal/breach";
 import { StepDeterminationData } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { OnerepScanRow } from "knex/types/tables";
@@ -25,7 +28,7 @@ const mockedSession = {
 const HighRiskBreachWrapper = (props: {
   type: HighRiskBreachTypes;
   scanStatus?: "empty" | "not_started" | "unavailable";
-  nextUnresolvedBreachType?: keyof typeof BreachDataTypes;
+  nextUnresolvedBreachType?: keyof typeof BreachDataTypes | "None";
 }) => {
   const hasNextUnresolvedBreach = props.nextUnresolvedBreachType !== null;
   const mockedBreaches = [...Array(5)].map(() =>
@@ -50,7 +53,10 @@ const HighRiskBreachWrapper = (props: {
   );
 
   // Adds a breach with an unresolved breach type
-  if (props.nextUnresolvedBreachType) {
+  if (
+    props.nextUnresolvedBreachType &&
+    props.nextUnresolvedBreachType !== "None"
+  ) {
     mockedBreaches.push(
       createRandomBreach({
         dataClassesEffected: [
@@ -115,6 +121,33 @@ const HighRiskBreachWrapper = (props: {
 const meta: Meta<typeof HighRiskBreachWrapper> = {
   title: "Pages/Guided resolution/2. High-risk data breaches",
   component: HighRiskBreachWrapper,
+  argTypes: {
+    type: {
+      options: highRiskBreachTypes,
+      description: "Breach category",
+      control: {
+        type: "select",
+      },
+    },
+    nextUnresolvedBreachType: {
+      description: "Next unresolved breach type",
+      options: [
+        "None",
+        "SSN",
+        "CreditCard",
+        "BankAccount",
+        "PIN",
+        "Passwords",
+        "SecurityQuestions",
+        "Phone",
+        "Email",
+        "IP",
+      ],
+      control: {
+        type: "radio",
+      },
+    },
+  },
 };
 export default meta;
 type Story = StoryObj<typeof HighRiskBreachWrapper>;
@@ -147,33 +180,10 @@ export const PinStory: Story = {
   },
 };
 
-export const HighRiskBreachDonePasswordsNextStory: Story = {
-  name: "2e I. Done (Next step: Passwords)",
+export const HighRiskBreachDoneStory: Story = {
+  name: "2e. Done",
   args: {
     type: "done",
-    nextUnresolvedBreachType: "Passwords",
-  },
-};
-
-export const HighRiskBreachDoneSecurityQuestionsNextStory: Story = {
-  name: "2e II. Done (Next step: Security questions)",
-  args: {
-    type: "done",
-    nextUnresolvedBreachType: "SecurityQuestions",
-  },
-};
-
-export const HighRiskBreachDoneSecurityTipsNextStory: Story = {
-  name: "2e III. Done (Next step: Security tips)",
-  args: {
-    type: "done",
-    nextUnresolvedBreachType: "Phone",
-  },
-};
-
-export const HighRiskBreachDoneNoNextStepStory: Story = {
-  name: "2e IV. Done (Next step: None)",
-  args: {
-    type: "done",
+    nextUnresolvedBreachType: "None",
   },
 };

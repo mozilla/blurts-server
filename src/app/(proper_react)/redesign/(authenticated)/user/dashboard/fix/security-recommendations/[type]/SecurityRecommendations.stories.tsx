@@ -10,7 +10,10 @@ import {
 import { Shell } from "../../../../../../Shell";
 import { getEnL10nSync } from "../../../../../../../../functions/server/mockL10n";
 import { SecurityRecommendationsLayout } from "../SecurityRecommendationsLayout";
-import { SecurityRecommendationTypes } from "../securityRecommendationsData";
+import {
+  SecurityRecommendationTypes,
+  securityRecommendationTypes,
+} from "../securityRecommendationsData";
 import { BreachDataTypes } from "../../../../../../../../functions/universal/breach";
 
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
@@ -63,6 +66,15 @@ const SecurityRecommendationsWrapper = (props: {
 const meta: Meta<typeof SecurityRecommendationsWrapper> = {
   title: "Pages/Guided resolution/4. Security recommendations",
   component: SecurityRecommendationsWrapper,
+  argTypes: {
+    type: {
+      options: securityRecommendationTypes,
+      description: "Breach category",
+      control: {
+        type: "select",
+      },
+    },
+  },
 };
 export default meta;
 type Story = StoryObj<typeof SecurityRecommendationsWrapper>;
@@ -88,7 +100,7 @@ export const IpStory: Story = {
   },
 };
 
-export const Done: Story = {
+export const DoneStory: Story = {
   name: "4d. Done",
   args: {
     type: "done",

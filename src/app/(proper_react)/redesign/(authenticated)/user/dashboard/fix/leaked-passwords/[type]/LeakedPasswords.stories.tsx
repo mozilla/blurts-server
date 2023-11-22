@@ -10,7 +10,10 @@ import {
 import { Shell } from "../../../../../../Shell";
 import { getEnL10nSync } from "../../../../../../../../functions/server/mockL10n";
 import { LeakedPasswordsLayout } from "../LeakedPasswordsLayout";
-import { LeakedPasswordsTypes } from "../leakedPasswordsData";
+import {
+  LeakedPasswordsTypes,
+  leakedPasswordTypes,
+} from "../leakedPasswordsData";
 import { BreachDataTypes } from "../../../../../../../../functions/universal/breach";
 
 const user = createUserWithPremiumSubscription();
@@ -22,7 +25,7 @@ const mockedSession = {
 
 const LeakedPasswordsWrapper = (props: {
   type: LeakedPasswordsTypes;
-  nextUnresolvedBreachType?: keyof typeof BreachDataTypes;
+  nextUnresolvedBreachType?: keyof typeof BreachDataTypes | "None";
 }) => {
   const mockedBreaches = [...Array(5)].map(() =>
     createRandomBreach({
@@ -44,7 +47,10 @@ const LeakedPasswordsWrapper = (props: {
   );
 
   // Adds a breach with an unresolved breach type
-  if (props.nextUnresolvedBreachType) {
+  if (
+    props.nextUnresolvedBreachType &&
+    props.nextUnresolvedBreachType !== "None"
+  ) {
     mockedBreaches.push(
       createRandomBreach({
         dataClassesEffected: [
@@ -82,6 +88,22 @@ const LeakedPasswordsWrapper = (props: {
 const meta: Meta<typeof LeakedPasswordsWrapper> = {
   title: "Pages/Guided resolution/3. Leaked passwords",
   component: LeakedPasswordsWrapper,
+  argTypes: {
+    type: {
+      options: leakedPasswordTypes,
+      description: "Breach category",
+      control: {
+        type: "select",
+      },
+    },
+    nextUnresolvedBreachType: {
+      description: "Next unresolved breach type",
+      options: ["None", "SecurityQuestions", "Phone", "Email", "IP"],
+      control: {
+        type: "radio",
+      },
+    },
+  },
 };
 export default meta;
 type Story = StoryObj<typeof LeakedPasswordsWrapper>;
@@ -93,47 +115,17 @@ export const PasswordsStory: Story = {
   },
 };
 
-export const PasswordsDoneSecurityQuestionsNextStory: Story = {
-  name: "3b I. Done (Next step: Security questions)",
-  args: {
-    type: "passwords-done",
-    nextUnresolvedBreachType: "SecurityQuestions",
-  },
-};
-
-export const PasswordsDoneSecurityTipsNextStory: Story = {
-  name: "3b II. Done (Next step: Security tips)",
-  args: {
-    type: "passwords-done",
-    nextUnresolvedBreachType: "Email",
-  },
-};
-
-export const PasswordsDoneNoNextStepStory: Story = {
-  name: "3b III. Done (Next step: None)",
-  args: {
-    type: "passwords-done",
-  },
-};
-
 export const SecurityQuestionsStory: Story = {
-  name: "3c. Security questions",
+  name: "3b. Security questions",
   args: {
     type: "security-questions",
   },
 };
 
-export const SecurityQuestionsDoneSecurityTipsNextStory: Story = {
-  name: "3d I. Done (Next step: Security tips)",
+export const LeakedPasswordsDoneStory: Story = {
+  name: "3c. Done",
   args: {
-    type: "security-questions-done",
-    nextUnresolvedBreachType: "IP",
-  },
-};
-
-export const SecurityQuestionsDoneNoNextStepStory: Story = {
-  name: "3d II. Done (Next step: None)",
-  args: {
-    type: "security-questions-done",
+    type: "passwords-done",
+    nextUnresolvedBreachType: "None",
   },
 };

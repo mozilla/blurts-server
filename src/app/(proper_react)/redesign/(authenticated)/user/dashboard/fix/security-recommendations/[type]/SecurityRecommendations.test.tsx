@@ -11,7 +11,7 @@ import Meta, {
   EmailStory,
   IpStory,
   PhoneStory,
-  Done,
+  DoneStory,
 } from "./SecurityRecommendations.stories";
 
 beforeEach(() => {
@@ -37,13 +37,13 @@ it("passes the axe accessibility test suite for IP security recommendations", as
 });
 
 it("passes the axe accessibility test suite for the security recommendations celebration view", async () => {
-  const ComposedComponent = composeStory(Done, Meta);
+  const ComposedComponent = composeStory(DoneStory, Meta);
   const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("shows the security recommendations celebration view", () => {
-  const ComposedComponent = composeStory(Done, Meta);
+  const ComposedComponent = composeStory(DoneStory, Meta);
 
   render(<ComposedComponent />);
 
