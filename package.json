@@ -24,7 +24,8 @@
     "build-storybook": "storybook build",
     "create-location-data": "node src/scripts/uploadAutoCompleteLocations.js",
     "get-location-data": "node src/scripts/getAutoCompleteLocations.js",
-    "build-glean": "glean translate src/telemetry/metrics.yaml --format javascript --output src/telemetry/generated"
+    "build-glean": "glean translate src/telemetry/metrics.yaml --format javascript --output src/telemetry/generated",
+    "build-glean-docs": "glean translate src/telemetry/metrics.yaml --format markdown --output docs"
   },
   "nodemonConfig": {
     "watch": [
@@ -53,7 +54,7 @@
     "@fluent/react": "^0.15.2",
     "@google-cloud/logging-winston": "^6.0.0",
     "@google-cloud/pubsub": "^4.0.7",
-    "@grpc/grpc-js": "1.9.7",
+    "@grpc/grpc-js": "1.9.11",
     "@leeoniya/ufuzzy": "^1.0.11",
     "@mozilla/glean": "3.0.0",
     "@sentry/nextjs": "^7.80.1",
@@ -77,10 +78,10 @@
     "patch-package": "^8.0.0",
     "pg": "^8.11.3",
     "react": "^18.2.0",
-    "react-aria": "^3.30.0",
+    "react-aria": "^3.29.1",
     "react-cookie": "^6.1.1",
     "react-dom": "^18.2.0",
-    "react-stately": "^3.28.0",
+    "react-stately": "^3.27.1",
     "uuid": "^9.0.1",
     "winston": "^3.11.0"
   },
@@ -132,7 +133,6 @@
     "stylelint-config-recommended-scss": "^13.1.0",
     "stylelint-scss": "^5.3.1",
     "ts-jest": "^29.1.0",
-    "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   }
 }

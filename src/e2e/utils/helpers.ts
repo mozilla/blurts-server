@@ -9,7 +9,7 @@ enum ENV {
   local = "local",
   stage = "stage",
   prod = "prod",
-  dev = "dev",
+  heroku = "heroku",
 }
 
 interface DefaultScreenshotOpts {
@@ -28,9 +28,9 @@ export const defaultScreenshotOpts: Partial<DefaultScreenshotOpts> = {
 
 export const ENV_URLS = {
   local: "http://localhost:6060",
-  dev: "https://fx-breach-alerts.herokuapp.com",
+  heroku: "https://fx-breach-alerts.herokuapp.com",
   stage: "https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net",
-  prod: "https://monitor.firefox.com/",
+  prod: "https://monitor.firefox.com",
 };
 
 export const setEnvVariables = (email: string) => {
@@ -43,6 +43,30 @@ export const setEnvVariables = (email: string) => {
 
 export const getBaseUrl = () => {
   return ENV_URLS[process.env.E2E_TEST_ENV as ENV] || ENV_URLS.local;
+};
+
+export const delay = async (time: number) => {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, time);
+  });
+};
+
+// this is particular to the free email scan behavior -- fast follow to optimize
+export const waitForUrlOrTimeout = async (
+  page: Page,
+  urlSubstring: string,
+  timeout: number,
+) => {
+  let tries = 0;
+  const startTime = Date.now();
+  while (Date.now() - startTime > timeout || tries < 10) {
+    if (page.url().includes(urlSubstring)) {
+      return true;
+    }
+
+    tries++;
+    await delay(500);
+  }
 };
 
 export const getVerificationCode = async (

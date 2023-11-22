@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { createDbConnection } from "../connect";
+import createDbConnection from "../connect.js";
 import { CreateProfileRequest } from "../../app/functions/server/onerep.js";
 import { parseIso8601Datetime } from "../../utils/parse.js";
 
