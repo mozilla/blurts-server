@@ -46,7 +46,7 @@ export default async function AutomaticRemovePage() {
     <AutomaticRemoveView
       data={data}
       subscriberEmails={subscriberEmails}
-      nextStepHref={getNextGuidedStep(data, "Scan").href}
+      nextStep={getNextGuidedStep(data, "Scan")}
       currentSection="data-broker-profiles"
       monthlySubscriptionUrl={monthlySubscriptionUrl}
       yearlySubscriptionUrl={yearlySubscriptionUrl}

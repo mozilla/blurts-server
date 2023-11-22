@@ -6,8 +6,13 @@
   flex-direction: row;
 
   @media screen and (min-width: $screen-xl) {
-    grid-template-columns: 2fr 1fr;
     padding-inline: $layout-lg;
+  }
+
+  &.hasIllustration {
+    @media screen and (min-width: $screen-xl) {
+      grid-template-columns: 2fr 1fr;
+    }
   }
 
   .breachContentWrapper {
@@ -88,6 +93,23 @@
 
     img {
       width: 100%;
+    }
+  }
+
+  .doneContentWrapper {
+    display: grid;
+    gap: $layout-xs;
+    grid-template-columns: 1fr;
+
+    @media screen and (min-width: $screen-md) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .doneContent {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-md;
     }
   }
 }

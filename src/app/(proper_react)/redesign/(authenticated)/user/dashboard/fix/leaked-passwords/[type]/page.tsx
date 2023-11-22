@@ -7,17 +7,15 @@ import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
-import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
 import { LeakedPasswordsLayout } from "../LeakedPasswordsLayout";
 import {
   LeakedPasswordsTypes,
-  getLeakedPasswords,
+  leakedPasswordTypes,
 } from "../leakedPasswordsData";
 import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
 import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
-import { getL10n } from "../../../../../../../../functions/server/l10n";
 
 interface LeakedPasswordsProps {
   params: {
@@ -32,22 +30,11 @@ export default async function LeakedPasswords({
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
-  const l10n = getL10n();
   const breaches = await getSubscriberBreaches(session.user);
   const subscriberEmails = await getSubscriberEmails(session.user);
-  const guidedExperienceBreaches = getGuidedExperienceBreaches(
-    breaches,
-    subscriberEmails,
-  );
 
   const { type } = params;
-  const pageData = getLeakedPasswords({
-    dataType: type,
-    breaches: guidedExperienceBreaches,
-    l10n: l10n,
-  });
-
-  if (!pageData) {
+  if (!leakedPasswordTypes.includes(type)) {
     redirect("/redesign/user/dashboard");
   }
 

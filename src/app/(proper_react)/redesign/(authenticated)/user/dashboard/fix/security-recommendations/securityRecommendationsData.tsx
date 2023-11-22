@@ -9,6 +9,18 @@ import ipIllustration from "../images/security-recommendations-ip.svg";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
+import { Button } from "../../../../../../../components/server/Button";
+import { StepLink } from "../../../../../../../functions/server/getRelevantGuidedSteps";
+
+export const securityRecommendationTypes = [
+  "phone",
+  "email",
+  "ip",
+  "done",
+] as const;
+
+export type SecurityRecommendationTypes =
+  (typeof securityRecommendationTypes)[number];
 
 export type SecurityRecommendationContent = {
   summary: string;
@@ -19,8 +31,6 @@ export type SecurityRecommendationContent = {
     subtitle?: string;
   };
 };
-
-export type SecurityRecommendationTypes = "phone" | "email" | "ip";
 
 export type SecurityRecommendation = {
   type: SecurityRecommendationTypes;
@@ -34,10 +44,12 @@ function getSecurityRecommendationsByType({
   dataType,
   breaches,
   l10n,
+  nextStep,
 }: {
   dataType: string;
   breaches: GuidedExperienceBreaches;
   l10n: ExtendedReactLocalization;
+  nextStep?: StepLink;
 }) {
   const securityRecommendationsData: SecurityRecommendation[] = [
     {
@@ -163,6 +175,34 @@ function getSecurityRecommendationsByType({
             </p>
           ),
         },
+      },
+    },
+    {
+      type: "done",
+      title: l10n.getString(
+        "fix-flow-celebration-security-recommendations-title",
+      ),
+      illustration: "",
+      exposedData: [],
+      content: {
+        summary: "",
+        description: nextStep && (
+          <>
+            <p>
+              {l10n.getString(
+                "fix-flow-celebration-security-recommendations-description-next-dashboard",
+              )}
+            </p>
+            <Button
+              variant="primary"
+              small
+              href={nextStep.href}
+              autoFocus={true}
+            >
+              {l10n.getString("fix-flow-celebration-next-dashboard-label")}
+            </Button>
+          </>
+        ),
       },
     },
   ];

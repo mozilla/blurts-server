@@ -59,7 +59,7 @@ export function ManualRemoveView(props: Props) {
     <FixView
       data={data}
       subscriberEmails={props.subscriberEmails}
-      nextStepHref={stepAfterSkip.href}
+      nextStep={stepAfterSkip}
       currentSection="data-broker-profiles"
     >
       <div className={styles.main}>

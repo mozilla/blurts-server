@@ -8,6 +8,18 @@ import securityQuestionsIllustration from "../images/security-questions.svg";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
+import { Button } from "../../../../../../../components/server/Button";
+import { StepLink } from "../../../../../../../functions/server/getRelevantGuidedSteps";
+
+export const leakedPasswordTypes = [
+  "passwords",
+  "passwords-done",
+  "security-questions",
+  "security-questions-done",
+  "none",
+] as const;
+
+export type LeakedPasswordsTypes = (typeof leakedPasswordTypes)[number];
 
 export type LeakedPasswordsContent = {
   summary: string;
@@ -19,8 +31,6 @@ export type LeakedPasswordsContent = {
   };
 };
 
-export type LeakedPasswordsTypes = "password" | "security-question";
-
 export type LeakedPassword = {
   type: LeakedPasswordsTypes;
   title: string;
@@ -28,26 +38,92 @@ export type LeakedPassword = {
   content: LeakedPasswordsContent;
 };
 
+function getDoneStepContent(
+  l10n: ExtendedReactLocalization,
+  nextStep: StepLink,
+): { summary: string; description: ReactNode } {
+  // Security questions next
+  if (nextStep.id === "LeakedPasswordsSecurityQuestion") {
+    return {
+      summary: "",
+      description: (
+        <>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-leaked-passwords-description-next-security-questions",
+            )}
+          </p>
+          <Button variant="primary" small href={nextStep.href} autoFocus={true}>
+            {l10n.getString("fix-flow-celebration-next-label")}
+          </Button>
+        </>
+      ),
+    };
+  }
+
+  // Security tips next
+  if (
+    ["SecurityTipsPhone", "SecurityTipsEmail", "SecurityTipsIp"].includes(
+      nextStep.id,
+    )
+  ) {
+    return {
+      summary: "",
+      description: (
+        <>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-leaked-passwords-description-next-security-recommendations",
+            )}
+          </p>
+          <Button variant="primary" small href={nextStep.href} autoFocus={true}>
+            {l10n.getString("fix-flow-celebration-next-recommendations-label")}
+          </Button>
+        </>
+      ),
+    };
+  }
+
+  // No next steps
+  return {
+    summary: "",
+    description: (
+      <>
+        <p>
+          {l10n.getString(
+            "fix-flow-celebration-leaked-passwords-description-next-dashboard",
+          )}
+        </p>
+        <Button variant="primary" small href={nextStep.href} autoFocus={true}>
+          {l10n.getString("fix-flow-celebration-next-dashboard-label")}
+        </Button>
+      </>
+    ),
+  };
+}
+
 function getLeakedPasswords({
   dataType,
   breaches,
   l10n,
+  nextStep,
 }: {
   dataType: string;
   breaches: GuidedExperienceBreaches;
   l10n: ExtendedReactLocalization;
+  nextStep: StepLink;
 }) {
   const findFirstUnresolvedBreach = (breachClassType: LeakedPasswordsTypes) => {
     const leakedPasswordType =
-      breachClassType === "password" ? "passwords" : "securityQuestions";
+      breachClassType === "passwords" ? "passwords" : "securityQuestions";
     return Object.values(breaches.passwordBreaches[leakedPasswordType]).find(
       (breach) => !breach.isResolved,
     );
   };
 
-  const unresolvedPasswordBreach = findFirstUnresolvedBreach("password");
+  const unresolvedPasswordBreach = findFirstUnresolvedBreach("passwords");
   const unresolvedSecurityQuestionsBreach =
-    findFirstUnresolvedBreach("security-question");
+    findFirstUnresolvedBreach("security-questions");
   // This env var is always defined in test, so the other branch can't be covered:
   /* c8 ignore next */
   const blockList = (process.env.HIBP_BREACH_DOMAIN_BLOCKLIST ?? "").split(",");
@@ -78,7 +154,7 @@ function getLeakedPasswords({
 
   const leakedPasswordsData: LeakedPassword[] = [
     {
-      type: "password",
+      type: "passwords",
       title: l10n.getString("leaked-passwords-title", {
         breach_name: passwordBreachName,
       }),
@@ -116,7 +192,13 @@ function getLeakedPasswords({
       },
     },
     {
-      type: "security-question",
+      type: "passwords-done",
+      title: l10n.getString("fix-flow-celebration-leaked-passwords-title"),
+      illustration: "",
+      content: getDoneStepContent(l10n, nextStep),
+    },
+    {
+      type: "security-questions",
       title: l10n.getString("leaked-security-questions-title"),
       illustration: securityQuestionsIllustration,
       content: {
@@ -153,6 +235,12 @@ function getLeakedPasswords({
           ),
         },
       },
+    },
+    {
+      type: "security-questions-done",
+      title: l10n.getString("fix-flow-celebration-security-questions-title"),
+      illustration: "",
+      content: getDoneStepContent(l10n, nextStep),
     },
   ];
 

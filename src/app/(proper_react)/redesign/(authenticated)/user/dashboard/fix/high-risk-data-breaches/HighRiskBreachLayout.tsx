@@ -21,6 +21,7 @@ import {
   getNextGuidedStep,
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
+import { hasPremium } from "../../../../../../../functions/universal/user";
 
 export type HighRiskBreachLayoutProps = {
   type: HighRiskBreachTypes;
@@ -37,6 +38,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
     "bank-account": "HighRiskBankAccount",
     pin: "HighRiskPin",
     none: "HighRiskPin",
+    done: "HighRiskPin",
   };
 
   const guidedExperienceBreaches = getGuidedExperienceBreaches(
@@ -44,64 +46,70 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
     props.subscriberEmails,
   );
 
+  const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
   const pageData = getHighRiskBreachesByType({
     dataType: props.type,
     breaches: guidedExperienceBreaches,
     l10n: l10n,
+    nextStep,
   });
 
   // The non-null assertion here should be safe since we already did this check
   // in `./[type]/page.tsx`:
   const { title, illustration, content, exposedData, type } = pageData!;
   const hasBreaches = type !== "none";
+  const isStepDone = type === "done";
 
   return (
     <FixView
       subscriberEmails={props.subscriberEmails}
       data={props.data}
-      nextStepHref={getNextGuidedStep(props.data, stepMap[props.type]).href}
+      nextStep={nextStep}
       currentSection="high-risk-data-breach"
+      hideProgressIndicator={isStepDone}
+      showConfetti={isStepDone}
     >
       <ResolutionContainer
         type="securityRecommendations"
         title={title}
         illustration={illustration}
+        isPremiumUser={hasPremium(props.data.user)}
         cta={
-          <>
-            <Button
-              variant="primary"
-              small
-              // TODO: Add test once MNTOR-1700 logic is added
-              /* c8 ignore next 3 */
-              onPress={() => {
-                // TODO: MNTOR-1700 Add routing logic + fix event here
-              }}
-            >
-              {
-                // Theoretically, this page should never be shown if the user
-                // has no breaches, unless the user directly visits its URL, so
-                // no tests represents it either:
-                /* c8 ignore next 3 */
-                hasBreaches
-                  ? l10n.getString("high-risk-breach-mark-as-fixed")
-                  : l10n.getString("high-risk-breach-none-continue")
-              }
-            </Button>
-            {hasBreaches && (
-              <Link
+          !isStepDone && (
+            <>
+              <Button
+                variant="primary"
+                small
                 // TODO: Add test once MNTOR-1700 logic is added
-                href="/"
+                /* c8 ignore next 3 */
+                onPress={() => {
+                  // TODO: MNTOR-1700 Add routing logic + fix event here
+                }}
               >
-                {l10n.getString("high-risk-breach-skip")}
-              </Link>
-            )}
-          </>
+                {
+                  // Theoretically, this page should never be shown if the user
+                  // has no breaches, unless the user directly visits its URL, so
+                  // no tests represents it either:
+                  /* c8 ignore next 3 */
+                  hasBreaches
+                    ? l10n.getString("high-risk-breach-mark-as-fixed")
+                    : l10n.getString("high-risk-breach-none-continue")
+                }
+              </Button>
+              {hasBreaches && (
+                <Link href={nextStep.href}>
+                  {l10n.getString("high-risk-breach-skip")}
+                </Link>
+              )}
+            </>
+          )
         }
         // Theoretically, this page should never be shown if the user has no
         // breaches, unless the user directly visits its URL, so no tests
         // represents it either:
-        /* c8 ignore next */
-        estimatedTime={hasBreaches ? 15 : undefined}
+        estimatedTime={!isStepDone && hasBreaches ? 15 : undefined}
+        isStepDone={isStepDone}
+        data={props.data}
       >
         <ResolutionContent
           content={content}

@@ -155,7 +155,16 @@ const preview: Preview = {
           }
 
           if (
-            path === "/redesign/user/dashboard/fix/leaked-passwords/password"
+            path === "/redesign/user/dashboard/fix/high-risk-data-breaches/done"
+          ) {
+            linkTo(
+              "Pages/Guided resolution/2. High-risk data breaches",
+              "2e. Done",
+            )();
+          }
+
+          if (
+            path === "/redesign/user/dashboard/fix/leaked-passwords/passwords"
           ) {
             linkTo(
               "Pages/Guided resolution/3. Leaked passwords",
@@ -165,12 +174,21 @@ const preview: Preview = {
 
           if (
             path ===
-            "/redesign/user/dashboard/fix/leaked-passwords/security-question"
+            "/redesign/user/dashboard/fix/leaked-passwords/security-questions"
           ) {
             linkTo(
               "Pages/Guided resolution/3. Leaked passwords",
               "3b. Security questions",
             )();
+          }
+
+          if (
+            path ===
+              "/redesign/user/dashboard/fix/leaked-passwords/passwords-done" ||
+            path ===
+              "/redesign/user/dashboard/fix/leaked-passwords/security-questions-done"
+          ) {
+            linkTo("Pages/Guided resolution/3. Leaked passwords", "3c. Done")();
           }
 
           if (
@@ -199,6 +217,16 @@ const preview: Preview = {
             linkTo(
               "Pages/Guided resolution/4. Security recommendations",
               "4c. IP address",
+            )();
+          }
+
+          if (
+            path ===
+            "/redesign/user/dashboard/fix/security-recommendations/done"
+          ) {
+            linkTo(
+              "Pages/Guided resolution/4. Security recommendations",
+              "4d. Done",
             )();
           }
         },
