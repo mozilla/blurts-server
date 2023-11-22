@@ -65,7 +65,10 @@ export const AutomaticRemoveViewStory: Story = {
             user: mockedSession.user,
           }}
           subscriberEmails={[]}
-          nextStepHref="/redesign/user/dashboard/fix/high-risk-data-breaches/social-security-number"
+          nextStep={{
+            id: "HighRiskSsn",
+            href: "/redesign/user/dashboard/fix/high-risk-data-breaches/social-security-number",
+          }}
           currentSection="data-broker-profiles"
           monthlySubscriptionUrl=""
           yearlySubscriptionUrl=""

@@ -251,7 +251,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/leaked-passwords/password",
+        href: "/redesign/user/dashboard/fix/leaked-passwords/passwords",
         id: "LeakedPasswordsPassword",
         completed: false,
         eligible: true,
@@ -276,7 +276,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/leaked-passwords/security-question",
+        href: "/redesign/user/dashboard/fix/leaked-passwords/security-questions",
         id: "LeakedPasswordsSecurityQuestion",
         completed: false,
         eligible: true,
@@ -755,7 +755,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/leaked-passwords/password",
+        href: "/redesign/user/dashboard/fix/leaked-passwords/passwords",
         id: "LeakedPasswordsPassword",
         completed: false,
         eligible: true,
@@ -780,7 +780,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/leaked-passwords/security-question",
+        href: "/redesign/user/dashboard/fix/leaked-passwords/security-questions",
         id: "LeakedPasswordsSecurityQuestion",
         completed: false,
         eligible: true,
