@@ -21,6 +21,7 @@ import {
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../FixView";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
+import { hasPremium } from "../../../../../../../functions/universal/user";
 
 export interface LeakedPasswordsLayoutProps {
   type: LeakedPasswordsTypes;
@@ -32,8 +33,11 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   const l10n = useL10n();
 
   const stepMap: Record<LeakedPasswordsTypes, StepLink["id"]> = {
-    password: "LeakedPasswordsPassword",
-    "security-question": "LeakedPasswordsSecurityQuestion",
+    passwords: "LeakedPasswordsPassword",
+    "passwords-done": "LeakedPasswordsPassword",
+    "security-questions": "LeakedPasswordsSecurityQuestion",
+    "security-questions-done": "LeakedPasswordsSecurityQuestion",
+    none: "LeakedPasswordsSecurityQuestion",
   };
 
   const guidedExperienceBreaches = getGuidedExperienceBreaches(
@@ -41,50 +45,58 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     props.subscriberEmails,
   );
 
+  const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
   const pageData = getLeakedPasswords({
     dataType: props.type,
     breaches: guidedExperienceBreaches,
     l10n: l10n,
+    nextStep,
   });
 
   // The non-null assertion here should be safe since we already did this check
   // in `./[type]/page.tsx`:
   const { title, illustration, content } = pageData!;
+  const isStepDone =
+    props.type === "passwords-done" || props.type === "security-questions-done";
 
   return (
     <FixView
       subscriberEmails={props.subscriberEmails}
       data={props.data}
-      nextStepHref={getNextGuidedStep(props.data, stepMap[props.type]).href}
+      nextStep={nextStep}
       currentSection="leaked-passwords"
+      hideProgressIndicator={isStepDone}
+      showConfetti={isStepDone}
     >
       <ResolutionContainer
         type="leakedPasswords"
         title={title}
         illustration={illustration}
+        isPremiumUser={hasPremium(props.data.user)}
         cta={
-          <>
-            <Button
-              variant="primary"
-              small
-              // TODO: Add test once MNTOR-1700 logic is added
-              /* c8 ignore next 3 */
-              onPress={() => {
-                // TODO: MNTOR-1700 Add routing logic
-              }}
-              autoFocus={true}
-            >
-              {l10n.getString("leaked-passwords-mark-as-fixed")}
-            </Button>
-            <Link
-              // TODO: Add test once MNTOR-1700 logic is added
-              href="/"
-            >
-              {l10n.getString("leaked-passwords-skip")}
-            </Link>
-          </>
+          !isStepDone && (
+            <>
+              <Button
+                variant="primary"
+                small
+                // TODO: Add test once MNTOR-1700 logic is added
+                /* c8 ignore next 3 */
+                onPress={() => {
+                  // TODO: MNTOR-1700 Add routing logic
+                }}
+                autoFocus={true}
+              >
+                {l10n.getString("leaked-passwords-mark-as-fixed")}
+              </Button>
+              <Link href={nextStep.href}>
+                {l10n.getString("leaked-passwords-skip")}
+              </Link>
+            </>
+          )
         }
-        estimatedTime={4}
+        estimatedTime={!isStepDone ? 4 : undefined}
+        isStepDone={isStepDone}
+        data={props.data}
       >
         <ResolutionContent content={content} locale={getLocale(l10n)} />
       </ResolutionContainer>
