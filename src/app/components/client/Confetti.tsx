@@ -35,5 +35,5 @@ export const Confetti = () => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className={styles.confetti} />;
+  return <canvas ref={canvasRef} className={styles.confetti} aria-hidden />;
 };
