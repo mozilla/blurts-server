@@ -92,9 +92,9 @@ fix-flow-data-broker-profiles-automatic-remove-features-price = ${ $price }/mo
 
 ## Shared CTA labels
 
-fix-flow-celebration-NextLabel = Let’s keep going
-fix-flow-celebration-NextRecommendationsLabel = See recommendations
-fix-flow-celebration-NextDashboardLabel = Go to your Dashboard
+fix-flow-celebration-next-label = Let’s keep going
+fix-flow-celebration-next-recommendations-label = See recommendations
+fix-flow-celebration-next-dashboard-label = Go to your Dashboard
 
 ## High-risk flow
 

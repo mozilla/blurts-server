@@ -199,7 +199,7 @@ function getSecurityRecommendationsByType({
               href={nextStep.href}
               autoFocus={true}
             >
-              {l10n.getString("fix-flow-celebration-NextDashboardLabel")}
+              {l10n.getString("fix-flow-celebration-next-dashboard-label")}
             </Button>
           </>
         ),

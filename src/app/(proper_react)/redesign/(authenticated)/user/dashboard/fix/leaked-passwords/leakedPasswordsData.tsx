@@ -54,7 +54,7 @@ function getDoneStepContent(
             )}
           </p>
           <Button variant="primary" small href={nextStep.href} autoFocus={true}>
-            {l10n.getString("fix-flow-celebration-NextLabel")}
+            {l10n.getString("fix-flow-celebration-next-label")}
           </Button>
         </>
       ),
@@ -77,7 +77,7 @@ function getDoneStepContent(
             )}
           </p>
           <Button variant="primary" small href={nextStep.href} autoFocus={true}>
-            {l10n.getString("fix-flow-celebration-NextRecommendationsLabel")}
+            {l10n.getString("fix-flow-celebration-next-recommendations-label")}
           </Button>
         </>
       ),
@@ -95,7 +95,7 @@ function getDoneStepContent(
           )}
         </p>
         <Button variant="primary" small href={nextStep.href} autoFocus={true}>
-          {l10n.getString("fix-flow-celebration-NextDashboardLabel")}
+          {l10n.getString("fix-flow-celebration-next-dashboard-label")}
         </Button>
       </>
     ),
