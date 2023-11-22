@@ -10,26 +10,13 @@ import {
 import { Shell } from "../../../../../../Shell";
 import { getEnL10nSync } from "../../../../../../../../functions/server/mockL10n";
 import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
-import { HighRiskBreachTypes } from "../highRiskBreachData";
+import {
+  HighRiskBreachTypes,
+  highRiskBreachTypes,
+} from "../highRiskBreachData";
 import { BreachDataTypes } from "../../../../../../../../functions/universal/breach";
 import { StepDeterminationData } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { OnerepScanRow } from "knex/types/tables";
-
-const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
-// Ensure all high-risk data breaches are present in at least one breach:
-mockedBreaches.push(
-  createRandomBreach({
-    dataClassesEffected: [
-      {
-        [BreachDataTypes.SSN]: 42,
-        [BreachDataTypes.CreditCard]: 42,
-        [BreachDataTypes.BankAccount]: 42,
-        [BreachDataTypes.PIN]: 42,
-      },
-    ],
-    isResolved: false,
-  }),
-);
 
 const user = createUserWithPremiumSubscription();
 
@@ -41,7 +28,47 @@ const mockedSession = {
 const HighRiskBreachWrapper = (props: {
   type: HighRiskBreachTypes;
   scanStatus?: "empty" | "not_started" | "unavailable";
+  nextUnresolvedBreachType?: keyof typeof BreachDataTypes | "None";
 }) => {
+  const hasNextUnresolvedBreach = props.nextUnresolvedBreachType !== null;
+  const mockedBreaches = [...Array(5)].map(() =>
+    createRandomBreach({
+      isResolved: hasNextUnresolvedBreach,
+    }),
+  );
+
+  // Ensure all high-risk data breaches are present in at least one breach:
+  mockedBreaches.push(
+    createRandomBreach({
+      dataClassesEffected: [
+        {
+          [BreachDataTypes.SSN]: 42,
+          [BreachDataTypes.CreditCard]: 42,
+          [BreachDataTypes.BankAccount]: 42,
+          [BreachDataTypes.PIN]: 42,
+        },
+      ],
+      isResolved: false,
+    }),
+  );
+
+  // Adds a breach with an unresolved breach type
+  if (
+    props.nextUnresolvedBreachType &&
+    props.nextUnresolvedBreachType !== "None"
+  ) {
+    mockedBreaches.push(
+      createRandomBreach({
+        dataClassesEffected: [
+          {
+            [BreachDataTypes[props.nextUnresolvedBreachType]]: 42,
+          },
+        ],
+        isResolved: false,
+      }),
+    );
+  }
+
   const mockedScan: OnerepScanRow = {
     created_at: new Date(1998, 2, 31),
     updated_at: new Date(1998, 2, 31),
@@ -69,7 +96,7 @@ const HighRiskBreachWrapper = (props: {
           }
         : {
             countryCode: "nl",
-            latestScanData: { results: [], scan: null },
+            latestScanData: null,
             subscriberBreaches: mockedBreaches,
             user: mockedSession.user,
           };
@@ -94,6 +121,29 @@ const HighRiskBreachWrapper = (props: {
 const meta: Meta<typeof HighRiskBreachWrapper> = {
   title: "Pages/Guided resolution/2. High-risk data breaches",
   component: HighRiskBreachWrapper,
+  argTypes: {
+    type: {
+      options: highRiskBreachTypes,
+      description: "Breach category",
+      control: {
+        type: "select",
+      },
+    },
+    nextUnresolvedBreachType: {
+      description: "Next unresolved breach type",
+      options: [
+        "None",
+        "Passwords",
+        "SecurityQuestions",
+        "Phone",
+        "Email",
+        "IP",
+      ],
+      control: {
+        type: "radio",
+      },
+    },
+  },
 };
 export default meta;
 type Story = StoryObj<typeof HighRiskBreachWrapper>;
@@ -123,5 +173,13 @@ export const PinStory: Story = {
   name: "2d. PIN",
   args: {
     type: "pin",
+  },
+};
+
+export const HighRiskBreachDoneStory: Story = {
+  name: "2e. Done",
+  args: {
+    type: "done",
+    nextUnresolvedBreachType: "None",
   },
 };

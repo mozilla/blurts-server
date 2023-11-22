@@ -20,6 +20,7 @@ import {
   getNextGuidedStep,
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
+import { hasPremium } from "../../../../../../../functions/universal/user";
 
 export interface SecurityRecommendationsLayoutProps {
   type: SecurityRecommendationTypes;
@@ -34,19 +35,24 @@ export function SecurityRecommendationsLayout(
 
   const stepMap: Record<SecurityRecommendationTypes, StepLink["id"]> = {
     email: "SecurityTipsEmail",
-    ip: "SecurityTipsIp",
     phone: "SecurityTipsPhone",
+    ip: "SecurityTipsIp",
+    done: "SecurityTipsIp",
   };
+
+  const isStepDone = props.type === "done";
 
   const guidedExperienceBreaches = getGuidedExperienceBreaches(
     props.data.subscriberBreaches,
     props.subscriberEmails,
   );
 
+  const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
   const pageData = getSecurityRecommendationsByType({
     dataType: props.type,
     breaches: guidedExperienceBreaches,
     l10n: l10n,
+    nextStep,
   });
 
   // The non-null assertion here should be safe since we already did this check
@@ -57,26 +63,36 @@ export function SecurityRecommendationsLayout(
     <FixView
       subscriberEmails={props.subscriberEmails}
       data={props.data}
-      nextStepHref={getNextGuidedStep(props.data, stepMap[props.type]).href}
+      nextStep={getNextGuidedStep(props.data, stepMap[props.type])}
       currentSection="security-recommendations"
+      hideProgressIndicator={isStepDone}
+      showConfetti={isStepDone}
     >
       <ResolutionContainer
-        label={l10n.getString("security-recommendation-steps-label")}
+        label={
+          !isStepDone
+            ? l10n.getString("security-recommendation-steps-label")
+            : ""
+        }
         type="securityRecommendations"
         title={title}
         illustration={illustration}
+        isPremiumUser={hasPremium(props.data.user)}
         cta={
-          <Button
-            variant="primary"
-            small
-            // TODO: Add test once MNTOR-1700 logic is added
-            /* c8 ignore next 6 */
-            href={getNextGuidedStep(props.data, stepMap[props.type]).href}
-            autoFocus={true}
-          >
-            {l10n.getString("security-recommendation-steps-cta-label")}
-          </Button>
+          !isStepDone && (
+            <Button
+              variant="primary"
+              small
+              // TODO: Add test once MNTOR-1700 logic is added
+              href={nextStep.href}
+              autoFocus={true}
+            >
+              {l10n.getString("security-recommendation-steps-cta-label")}
+            </Button>
+          )
         }
+        isStepDone={isStepDone}
+        data={props.data}
       >
         <ResolutionContent
           content={content}

@@ -112,6 +112,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedUnresolvedScanResults: OnerepScanResultRow[] = [
     ...mockedInProgressScanResults,
     createRandomScanResult({ status: "new", manually_resolved: false }),
+    createRandomScanResult({ status: "new", manually_resolved: false }),
     createRandomScanResult({ status: "new", manually_resolved: true }),
   ];
 

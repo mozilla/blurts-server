@@ -70,7 +70,9 @@ export const View = (props: Props) => {
   };
   const [filters, setFilters] = useState<FilterState>(initialFilterState);
   const [selectedTab, setSelectedTab] = useState<TabType>("action-needed");
-  const [activeExposureCardKey, setActiveExposureCardKey] = useState("");
+  const [activeExposureCardKey, setActiveExposureCardKey] = useState<
+    string | null
+  >(null);
   const tabsData: TabData[] = [
     {
       name: l10n.getString("dashboard-tab-label-action-needed"),
@@ -116,17 +118,17 @@ export const View = (props: Props) => {
   const tabSpecificExposures = getTabSpecificExposures(selectedTab);
   const filteredExposures = filterExposures(tabSpecificExposures, filters);
   const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
-    const exposureCardKey = `${isScanResult(exposure) ? "scan" : "breach"}-${
-      exposure.id
-    }`;
+    const exposureCardKey = isScanResult(exposure)
+      ? "scan-" + exposure.onerep_scan_result_id
+      : "breach-" + exposure.id;
     return (
       <li key={exposureCardKey} className={styles.exposureListItem}>
         <ExposureCard
           exposureData={exposure}
           isExpanded={exposureCardKey === activeExposureCardKey}
-          setExpanded={() => {
+          onToggleExpanded={() => {
             if (exposureCardKey === activeExposureCardKey) {
-              setActiveExposureCardKey("");
+              setActiveExposureCardKey(null);
             } else {
               setActiveExposureCardKey(exposureCardKey);
             }

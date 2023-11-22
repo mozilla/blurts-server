@@ -4,15 +4,32 @@
 
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { usePathname } from "next/navigation";
-import { useGlean } from "../../../hooks/useGlean";
 import { useCookies } from "react-cookie";
+import { useGlean } from "../../../hooks/useGlean";
+import { ExtraMap } from "@mozilla/glean/dist/types/core/metrics/events_database/recorded_event";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 export type Props = {
   userId: string;
   channel: string;
   appEnv: string;
+  enabledFlags: FeatureFlagName[];
+};
+
+type RequiredKeys = {
+  path: string;
+};
+
+type OptionalKeys = {
+  user_id?: string;
+  referrer?: string;
+  utm_campaign?: string;
+  utm_content?: string;
+  utm_medium?: string;
+  utm_source?: string;
+  utm_term?: string;
 };
 
 // Empty component that records a page view on first load.
@@ -21,15 +38,70 @@ export const PageLoadEvent = (props: Props) => {
   const userId = props.userId;
 
   const { pageEvents } = useGlean(props.channel, props.appEnv);
-  const pathname = usePathname();
+  const path = usePathname();
+
+  const required: RequiredKeys = useMemo(() => {
+    return { path };
+  }, [path]);
+
+  const optional: OptionalKeys = useMemo(() => {
+    // If the user is not logged in, use randomly-generated user ID and store in cookie.
+    if (userId.startsWith("guest")) {
+      if (!cookies.userId) {
+        setCookie("userId", userId);
+      }
+      return { user_id: userId };
+    }
+
+    if (props.enabledFlags.includes("FxaUidTelemetry")) {
+      return { user_id: userId };
+    } else {
+      return {};
+    }
+  }, [cookies.userId, setCookie, userId, props.enabledFlags]);
+
+  if (
+    typeof window !== "undefined" &&
+    typeof document !== "undefined" &&
+    window.location
+  ) {
+    try {
+      const referrerUrl = new URL(document.referrer);
+      // Remove any query params.
+      referrerUrl.search = "";
+      // Remove any fragment identifiers.
+      referrerUrl.hash = "";
+
+      optional["referrer"] = referrerUrl.toString();
+    } catch (ex) {
+      console.error("Could not parse referrer as URL:", document.referrer);
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    (
+      [
+        "utm_campaign",
+        "utm_content",
+        "utm_medium",
+        "utm_source",
+        "utm_term",
+      ] as const
+    ).forEach((key) => {
+      if (params.has(key)) {
+        optional[key] = params.get(key) ?? "";
+      }
+    });
+  }
+
+  const keys = useMemo(
+    () => Object.assign(required, optional) as ExtraMap,
+    [required, optional],
+  );
 
   // On first load of the page, record a page view.
   useEffect(() => {
-    if (!cookies.userId && userId.startsWith("guest")) {
-      setCookie("userId", userId);
-    }
-    pageEvents.view.record({ path: pathname, user_id: userId });
-  }, [cookies.userId, setCookie, pageEvents.view, pathname, userId]);
+    pageEvents.view.record(keys);
+  }, [pageEvents.view, keys]);
 
   // This component doesn't render anything.
   return <></>;

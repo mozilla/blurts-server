@@ -48,14 +48,14 @@ async function getLatestOnerepScanResults(
   const results =
     typeof scan === "undefined"
       ? []
-      : await knex("onerep_scan_results")
-          .select()
+      : ((await knex("onerep_scan_results")
+          .select("onerep_scan_results.*")
           .where("onerep_profile_id", onerepProfileId)
           .innerJoin(
             "onerep_scans",
             "onerep_scan_results.onerep_scan_id",
             "onerep_scans.onerep_scan_id",
-          );
+          )) as OnerepScanResultRow[]);
 
   return {
     scan: scan ?? null,

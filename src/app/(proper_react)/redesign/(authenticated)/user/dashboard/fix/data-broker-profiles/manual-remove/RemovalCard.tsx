@@ -57,7 +57,7 @@ export const RemovalCard = (props: Props) => {
         ) : null
       }
       isExpanded={props.isExpanded}
-      setExpanded={props.setExpanded}
+      onToggleExpanded={props.setExpanded}
     />
   );
 };
