@@ -98,11 +98,11 @@
 
   .doneContentWrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: $layout-xs;
+    grid-template-columns: 1fr;
 
-    @media screen and (max-width: $screen-md) {
-      grid-template-columns: 1fr;
+    @media screen and (min-width: $screen-md) {
+      grid-template-columns: 1fr 1fr;
     }
 
     .doneContent {

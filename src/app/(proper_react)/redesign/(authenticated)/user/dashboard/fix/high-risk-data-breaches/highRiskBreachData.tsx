@@ -48,7 +48,7 @@ export type HighRiskBreach = {
 function getDoneStepContent(
   l10n: ExtendedReactLocalization,
   nextStep: StepLink,
-) {
+): { summary: string; description: ReactNode } {
   // Passwords next
   if (nextStep.id === "LeakedPasswordsPassword") {
     return {

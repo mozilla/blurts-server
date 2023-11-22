@@ -41,7 +41,7 @@ export type LeakedPassword = {
 function getDoneStepContent(
   l10n: ExtendedReactLocalization,
   nextStep: StepLink,
-) {
+): { summary: string; description: ReactNode } {
   // Security questions next
   if (nextStep.id === "LeakedPasswordsSecurityQuestion") {
     return {
