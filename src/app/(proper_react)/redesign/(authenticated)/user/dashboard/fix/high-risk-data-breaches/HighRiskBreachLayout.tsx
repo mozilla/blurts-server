@@ -64,7 +64,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
   const isStepDone = type === "done";
   const hasExposedData = exposedData.length;
 
-  if (hasExposedData) {
+  if (!hasExposedData) {
     router.push(nextStep.href);
   }
 
