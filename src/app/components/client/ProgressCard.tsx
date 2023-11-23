@@ -16,7 +16,7 @@ import { useL10n } from "../../hooks/l10n";
 import ExploringLaptopPlus from "./assets/exploring-laptop-check.svg";
 import ExploringLaptopMinus from "./assets/exploring-laptop-minus.svg";
 import ExploringLaptopInProgress from "./assets/exploring-laptop-in-progress.svg";
-import { QuestionMarkCircle } from "../server/Icons";
+import { LockIcon, QuestionMarkCircle } from "../server/Icons";
 import ModalImage from "../client/assets/modal-default-img.svg";
 
 export type Props = {
@@ -70,6 +70,23 @@ export const ProgressCard = (props: Props) => {
     explainerDialogTriggerRef,
   ).buttonProps;
 
+  const autoRemoved = (
+    <div
+      className={`${styles.progressItem} ${
+        !props.isPremiumUser && styles.greyedOut
+      }`}
+    >
+      <div className={styles.progressStat}>
+        <Image src={ExploringLaptopMinus} alt="" width="50" height="50" />
+        <span>{props.autoRemoved}</span>
+      </div>
+      <p>
+        <LockIcon alt="" width="10" height="10" />
+        {l10n.getString("progress-card-auto-removed-headline")}
+      </p>
+    </div>
+  );
+
   return (
     <div className={styles.progressCard}>
       <div className={styles.header}>
@@ -89,16 +106,10 @@ export const ProgressCard = (props: Props) => {
             <Image src={ExploringLaptopPlus} alt="" width="50" height="50" />
             <span>{props.resolvedByYou}</span>
           </div>
-          <p>{l10n.getString("progress-card-resolved-by-you-headline")}</p>
+          <p>{l10n.getString("progress-card-manually-fixed-headline")}</p>
         </div>
-        <div className={styles.progressItem}>
-          <div className={styles.progressStat}>
-            <Image src={ExploringLaptopMinus} alt="" width="50" height="50" />
-            <span>{props.autoRemoved}</span>
-          </div>
-          <p>{l10n.getString("progress-card-auto-removed-headline")}</p>
-        </div>
-        {!props.isPremiumUser && (
+        {autoRemoved}
+        {props.isPremiumUser && (
           <div className={styles.progressItem}>
             <div className={styles.progressStat}>
               <Image

@@ -127,6 +127,22 @@
           font-weight: 600;
         }
       }
+
+      &.greyedOut {
+        img {
+          filter: grayscale(100%);
+        }
+
+        span {
+          color: $color-grey-40;
+        }
+        p {
+          color: $color-grey-40;
+          display: flex;
+          align-items: center;
+          gap: $spacing-xs;
+        }
+      }
     }
   }
 }
