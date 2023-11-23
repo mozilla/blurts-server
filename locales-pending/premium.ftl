@@ -99,9 +99,9 @@ full-name = Full name
 # Here’s What We Fixed Modal
 
 modal-heres-what-we-fixed-title = About what we fixed
-modal-heres-what-we-fixed-description-part-one = <b>Manually fixed</b> includes anything you’ve fixed yourself. All data breaches that require access to your accounts need to be fixed manually, even if you’ve upgraded to { -brand-premium }.
-modal-heres-what-we-fixed-description-part-two = <b>Auto-removed</b> includes any exposures from data broker
-  profiles that we've removed for you. This is available only for
+modal-heres-what-we-fixed-description-part-one = <b>Manually fixed</b> includes anything you’ve fixed yourself. All data breaches that require access to your accounts need 
+  to be fixed manually, even if you’ve upgraded to { -brand-premium }.
+modal-heres-what-we-fixed-description-part-two = <b>Auto-removed</b> includes any exposures from data broker profiles that we've removed for you. This is available only for 
   { -brand-premium } subscribers.
 modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes anything that we are currently
   working on fixing. Removals typically take 7-14 days but the most
