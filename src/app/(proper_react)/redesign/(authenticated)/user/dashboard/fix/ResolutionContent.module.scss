@@ -8,27 +8,11 @@
   ul,
   ol {
     padding-top: $spacing-md;
-    list-style: none;
-    list-style-position: inside;
-    padding-left: 0;
-    counter-reset: item;
-
-    /* We're using 'counter-increment' and '::before' to manually add list item numbers instead of default list style styling.
-   This approach allows us to customize the appearance of the numbers and maintain control
-   over their positioning while working with 'display: flex' for list items.
-*/
+    padding-left: $spacing-lg;
 
     li {
-      counter-increment: item;
       margin-bottom: $spacing-xs;
-      display: flex;
       align-items: flex-start;
-      gap: $spacing-xs;
-
-      &::before {
-        content: counter(item) ". ";
-        margin-right: $spacing-xs;
-      }
     }
   }
 }
