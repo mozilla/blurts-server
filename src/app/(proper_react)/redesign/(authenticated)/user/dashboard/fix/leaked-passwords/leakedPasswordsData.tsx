@@ -177,27 +177,21 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
   });
 
   const {
-    name: passwordBreachName,
-    breachDate: passwordBreachDate,
-    breachSite: passwordBreachSite,
-  } = getBreachInfo(unresolvedBreach);
-
-  const {
-    name: securityQuestionBreachName,
-    breachDate: securityQuestionBreachDate,
-    breachSite: securityQuestionBreachSite,
+    name: breachName,
+    breachDate,
+    breachSite,
   } = getBreachInfo(unresolvedBreach);
 
   const leakedPasswordsData: LeakedPassword[] = [
     {
       type: "passwords",
       title: l10n.getString("leaked-passwords-title", {
-        breach_name: passwordBreachName,
+        breach_name: breachName,
       }),
       illustration: passwordIllustration,
       content: {
         summary: l10n.getString("leaked-passwords-summary", {
-          breach_date: passwordBreachDate,
+          breach_date: breachDate,
         }),
         description: <p>{l10n.getString("leaked-passwords-description")}</p>,
         recommendations: {
@@ -210,7 +204,7 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                     // TODO: Find a way  to go to the actual breach site
                     link_to_breach_site: (
                       <a
-                        href={passwordBreachSite}
+                        href={breachSite}
                         target="_blank"
                         rel="noopener noreferrer"
                       />
@@ -218,7 +212,7 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                     b: <strong />,
                   },
                   vars: {
-                    breach_name: passwordBreachName,
+                    breach_name: breachName,
                     email_affected: emailAffected,
                   },
                 })}
@@ -241,8 +235,8 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
       illustration: securityQuestionsIllustration,
       content: {
         summary: l10n.getString("leaked-security-questions-summary", {
-          breach_name: securityQuestionBreachName,
-          breach_date: securityQuestionBreachDate,
+          breach_name: breachName,
+          breach_date: breachDate,
         }),
         description: (
           <p>{l10n.getString("leaked-security-questions-description")}</p>
@@ -257,7 +251,7 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                     // TODO: Find a way  to go to the actual breach site
                     link_to_breach_site: (
                       <a
-                        href={securityQuestionBreachSite}
+                        href={breachSite}
                         target="_blank"
                         rel="noopener noreferrer"
                       />
@@ -265,7 +259,7 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                     b: <strong />,
                   },
                   vars: {
-                    breach_name: securityQuestionBreachName,
+                    breach_name: breachName,
                     email_affected: emailAffected,
                   },
                 })}

@@ -78,9 +78,9 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   const unresolvedPasswordBreachContent = getLeakedPasswords({
     dataType: props.type,
     breaches: guidedExperienceBreaches,
-    l10n: l10n,
-    emailAffected: emailAffected,
-    nextStep: nextStep,
+    l10n,
+    emailAffected,
+    nextStep,
   });
 
   const handleUpdateBreachStatus = async () => {
