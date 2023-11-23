@@ -16,89 +16,77 @@ import {
   getSubscriberByEmail,
   setBreachResolution,
 } from "../../../../../../db/tables/subscribers";
-import appConstants from "../../../../../../appConstants";
 
 export async function PUT(req: NextRequest): Promise<NextResponse> {
   const session = await getServerSession(authOptions);
-  if (!session?.user?.subscriber) {
+  if (!session?.user?.subscriber || typeof session.user?.email !== "string") {
     return new NextResponse(
       JSON.stringify({ success: false, message: "Unauthenticated" }),
       { status: 401 },
     );
   }
 
-  if (typeof session?.user?.email === "string") {
-    try {
-      const subscriber: Subscriber = await getSubscriberByEmail(
-        session?.user?.email,
-      );
-      const allBreaches = await getBreaches();
-      const j = await req.json();
-      const { dataType: dataTypeToResolve }: BreachBulkResolutionRequest = j;
-      console.log({ dataTypeToResolve });
+  try {
+    const subscriber: Subscriber = await getSubscriberByEmail(
+      session?.user?.email,
+    );
+    const allBreaches = await getBreaches();
+    const { dataType: dataTypeToResolve }: BreachBulkResolutionRequest =
+      await req.json();
 
-      const { verifiedEmails } = await getAllEmailsAndBreaches(
-        subscriber,
-        allBreaches,
-      );
+    const { verifiedEmails } = await getAllEmailsAndBreaches(
+      subscriber,
+      allBreaches,
+    );
 
-      const currentBreachResolution = subscriber.breach_resolution || {}; // get this from existing breach resolution if available
-      currentBreachResolution.useBreachId = true;
+    const currentBreachResolution = subscriber.breach_resolution || {}; // get this from existing breach resolution if available
 
-      for (const verifiedEmail of verifiedEmails) {
-        const currentEmail = verifiedEmail.email;
-        for (const currentBreach of verifiedEmail.breaches) {
-          const currentBreachDataTypes = currentBreach.DataClasses;
+    for (const verifiedEmail of verifiedEmails) {
+      const currentEmail = verifiedEmail.email;
+      for (const currentBreach of verifiedEmail.breaches) {
+        const currentBreachDataTypes = currentBreach.DataClasses;
 
-          if (currentBreachDataTypes?.includes(dataTypeToResolve)) {
-            const breachId = currentBreach.Id;
-            let currentResolutionsChecked =
-              currentBreachResolution[currentEmail]?.[breachId]
-                ?.resolutionsChecked;
-            if (currentResolutionsChecked) {
-              if (!currentResolutionsChecked.includes(dataTypeToResolve)) {
-                currentResolutionsChecked.push(dataTypeToResolve);
-              }
-            } else {
-              currentResolutionsChecked = [dataTypeToResolve];
-            }
+        if (currentBreachDataTypes?.includes(dataTypeToResolve)) {
+          const breachId = currentBreach.Id;
+          const currentResolutionsChecked =
+            currentBreachResolution[currentEmail]?.[breachId]
+              ?.resolutionsChecked ?? [];
 
-            const isResolved =
-              currentResolutionsChecked.length ===
-              currentBreachDataTypes.length;
-
-            currentBreachResolution[currentEmail] = {
-              ...(currentBreachResolution[currentEmail] || {}),
-              ...{
-                [breachId]: {
-                  resolutionsChecked: currentResolutionsChecked,
-                  isResolved,
-                },
-              },
-            };
+          if (!currentResolutionsChecked.includes(dataTypeToResolve)) {
+            currentResolutionsChecked.push(dataTypeToResolve);
           }
+
+          const isResolved =
+            currentResolutionsChecked.length === currentBreachDataTypes.length;
+
+          currentBreachResolution[currentEmail] = {
+            ...(currentBreachResolution[currentEmail] || {}),
+            ...{
+              [breachId]: {
+                resolutionsChecked: currentResolutionsChecked,
+                isResolved,
+              },
+            },
+          };
         }
       }
-
-      // set useBreachId to mark latest version of breach resolution
-      // without this line, the get call might assume recency index
-      currentBreachResolution.useBreachId = true;
-
-      const updatedSubscriber = await setBreachResolution(
-        subscriber,
-        currentBreachResolution,
-      );
-
-      return NextResponse.json({
-        success: true,
-        breachResolutions: updatedSubscriber.breach_resolution,
-      });
-    } catch (e) {
-      logger.error(e);
-      return NextResponse.json({ success: false }, { status: 500 });
     }
-  } else {
-    // Not Signed in, redirect to home
-    return NextResponse.redirect(appConstants.SERVER_URL);
+
+    // set useBreachId to mark latest version of breach resolution
+    // without this line, the get call might assume recency index
+    currentBreachResolution.useBreachId = true;
+
+    const updatedSubscriber = await setBreachResolution(
+      subscriber,
+      currentBreachResolution,
+    );
+
+    return NextResponse.json({
+      success: true,
+      breachResolutions: updatedSubscriber.breach_resolution,
+    });
+  } catch (e) {
+    logger.error(e);
+    return NextResponse.json({ success: false }, { status: 500 });
   }
 }
