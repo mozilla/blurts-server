@@ -16,6 +16,7 @@ import { FixView } from "../FixView";
 import {
   HighRiskBreachTypes,
   getHighRiskBreachesByType,
+  highRiskBreachTypes,
 } from "./highRiskBreachData";
 import {
   StepDeterminationData,
@@ -101,7 +102,13 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
         );
       }
 
-      router.push("/redesign/user/dashboard/fix/high-risk-data-breaches/done");
+      const nextStepMapId =
+        !isStepDone &&
+        highRiskBreachTypes[highRiskBreachTypes.indexOf(props.type) + 1];
+      const nextRoute = nextStepMapId
+        ? `/redesign/user/dashboard/fix/high-risk-data-breaches/${nextStepMapId}`
+        : nextStep.href;
+      router.push(nextRoute);
     } catch (_error) {
       setIsResolving(false);
     }

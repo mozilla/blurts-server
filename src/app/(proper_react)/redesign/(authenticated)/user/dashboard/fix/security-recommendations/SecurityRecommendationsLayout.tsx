@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import {
   SecurityRecommendationTypes,
   getSecurityRecommendationsByType,
+  securityRecommendationTypes,
 } from "./securityRecommendationsData";
 import { ResolutionContainer } from "../ResolutionContainer";
 import { ResolutionContent } from "../ResolutionContent";
@@ -99,7 +100,15 @@ export function SecurityRecommendationsLayout(
         );
       }
 
-      router.push("/redesign/user/dashboard/fix/high-risk-data-breaches/done");
+      const nextStepMapId =
+        !isStepDone &&
+        securityRecommendationTypes[
+          securityRecommendationTypes.indexOf(props.type) + 1
+        ];
+      const nextRoute = nextStepMapId
+        ? `/redesign/user/dashboard/fix/security-recommendations/${nextStepMapId}`
+        : nextStep.href;
+      router.push(nextRoute);
     } catch (_error) {
       setIsResolving(false);
     }
