@@ -27,7 +27,7 @@ export type TabListProps = TabsProps & {
 
 export interface TabParams {
   item: {
-    key: Key;
+    key: Parameters<typeof useTab>[0]["key"];
     rendered: ReactNode;
   };
   state: TabListState<object>;
