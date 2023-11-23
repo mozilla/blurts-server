@@ -160,17 +160,7 @@ export async function updatePasswordsBreachStatus(
 
 function getLeakedPasswords(props: LeakedPasswordLayout) {
   const { dataType, breaches, l10n, nextStep, emailAffected } = props;
-
-  // const unresolvedPasswordBreach = findFirstUnresolvedBreach(
-  //   breaches,
-  //   "passwords",
-  // );
-  // const unresolvedSecurityQuestionsBreach = findFirstUnresolvedBreach(
-  //   breaches,
-  //   "security-questions",
-  // );
   const unresolvedBreach = findFirstUnresolvedBreach(breaches, props.dataType);
-  // This env var is always defined in test, so the other branch can't be covered:
   /* c8 ignore next */
   const blockList = (process.env.HIBP_BREACH_DOMAIN_BLOCKLIST ?? "").split(",");
 
@@ -294,14 +284,7 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
     },
   ];
 
-  const unresolvedPasswordBreachContent = leakedPasswordsData.find(
-    (content) => content.type === dataType,
-  );
-
-  return {
-    unresolvedPasswordBreachContent,
-    unresolvedBreach,
-  };
+  return leakedPasswordsData.find((content) => content.type === dataType);
 }
 
 export { getLeakedPasswords };

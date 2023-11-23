@@ -9,8 +9,8 @@ import { ResolutionContent } from "../ResolutionContent";
 import { Button } from "../../../../../../../components/server/Button";
 import { useL10n } from "../../../../../../../hooks/l10n";
 import {
-  LeakedPasswordLayout,
   LeakedPasswordsTypes,
+  findFirstUnresolvedBreach,
   getLeakedPasswords,
   updatePasswordsBreachStatus,
 } from "./leakedPasswordsData";
@@ -25,7 +25,7 @@ import {
 import { FixView } from "../FixView";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
 import { hasPremium } from "../../../../../../../functions/universal/user";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export interface LeakedPasswordsLayoutProps {
@@ -54,22 +54,19 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     props.subscriberEmails,
   );
 
+  const unresolvedPasswordBreach = findFirstUnresolvedBreach(
+    guidedExperienceBreaches,
+    props.type,
+  );
+
   // TODO: Write unit tests MNTOR-2560
   /* c8 ignore start */
-  const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
-  const [emailAffected, setEmailAffected] = useState<string>();
-  const [pageDataContent, setPageDataContent] = useState<LeakedPasswordLayout>({
-    dataType: props.type,
-    breaches: guidedExperienceBreaches,
-    l10n: l10n,
-    emailAffected: emailAffected ?? "",
-    nextStep: nextStep,
-  });
+  const emailAffected =
+    props.subscriberEmails.find(
+      (email) => unresolvedPasswordBreach?.emailsAffected.includes(email),
+    ) ?? "";
 
-  const pageData = getLeakedPasswords(pageDataContent);
-  const unresolvedPasswordBreachContent =
-    pageData.unresolvedPasswordBreachContent;
-  const unresolvedPasswordBreach = pageData.unresolvedBreach;
+  const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
 
   // Data class string to push to resolutionsChecked array
   const resolvedDataClassName =
@@ -78,28 +75,13 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   const isStepDone =
     props.type === "passwords-done" || props.type === "security-questions-done";
 
-  useEffect(() => {
-    if (unresolvedPasswordBreach) {
-      // Check for the email assosciated with the leaked password/security question breach
-      const emailMatch = props.subscriberEmails.find((email) =>
-        unresolvedPasswordBreach.emailsAffected.includes(email),
-      );
-
-      if (emailMatch) {
-        setEmailAffected(emailMatch);
-        const newPageData: LeakedPasswordLayout = {
-          dataType: props.type,
-          breaches: guidedExperienceBreaches,
-          l10n: l10n,
-          emailAffected: emailMatch,
-          nextStep: nextStep,
-        };
-        setPageDataContent(newPageData);
-      }
-    }
-    // This should only run whenever unresolvedPasswordBreach changes
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [unresolvedPasswordBreach]);
+  const unresolvedPasswordBreachContent = getLeakedPasswords({
+    dataType: props.type,
+    breaches: guidedExperienceBreaches,
+    l10n: l10n,
+    emailAffected: emailAffected,
+    nextStep: nextStep,
+  });
 
   const handleUpdateBreachStatus = async () => {
     if (!unresolvedPasswordBreach || !emailAffected) {
@@ -108,7 +90,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
 
     try {
       unresolvedPasswordBreach.resolvedDataClasses.push(resolvedDataClassName);
-      // Remove empty [""] string
+      // FIXME/BUG: MNTOR-2562 Remove empty [""] string
       const formattedDataClasses =
         unresolvedPasswordBreach.resolvedDataClasses.filter(Boolean);
 
@@ -144,6 +126,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
       console.error("Error updating breach status", error);
     }
   };
+  /* c8 ignore stop */
 
   return (
     unresolvedPasswordBreachContent &&
@@ -167,6 +150,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
                 <Button
                   variant="primary"
                   small
+                  /* c8 ignore next 3 */
                   onPress={() => {
                     void handleUpdateBreachStatus();
                   }}
@@ -193,4 +177,3 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     )
   );
 }
-/* c8 ignore start */
