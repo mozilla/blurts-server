@@ -4,6 +4,7 @@
 
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ResolutionContainer } from "../ResolutionContainer";
@@ -32,6 +33,7 @@ export type HighRiskBreachLayoutProps = {
 };
 
 export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
+  const [isResolving, setIsResolving] = useState(false);
   const l10n = useL10n();
   const router = useRouter();
 
@@ -64,11 +66,8 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
   const isStepDone = type === "done";
   const hasExposedData = exposedData.length;
 
-  if (!hasExposedData) {
-    router.push(nextStep.href);
-  }
-
   const handlePrimaryButtonPress = async () => {
+    setIsResolving(true);
     const highRiskBreachClasses: Record<
       HighRiskBreachTypes,
       (typeof HighRiskDataTypes)[keyof typeof HighRiskDataTypes] | null
@@ -82,7 +81,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
     };
 
     const dataType = highRiskBreachClasses[type];
-    if (!dataType || !hasExposedData) {
+    if (!dataType || !hasExposedData || isResolving) {
       return;
     }
 
@@ -102,9 +101,9 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
         );
       }
 
-      router.push(nextStep.href);
+      router.push("/redesign/user/dashboard/fix/high-risk-data-breaches/done");
     } catch (_error) {
-      // do nothing
+      setIsResolving(false);
     }
   };
 
@@ -130,6 +129,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
                 small
                 autoFocus={true}
                 onPress={() => void handlePrimaryButtonPress()}
+                disabled={isResolving}
               >
                 {
                   // Theoretically, this page should never be shown if the user
