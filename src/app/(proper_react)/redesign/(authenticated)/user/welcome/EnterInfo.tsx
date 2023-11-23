@@ -325,7 +325,7 @@ export const EnterInfo = ({
                   )}
                   label={label}
                   isRequired={true}
-                  onInputChange={onChange}
+                  onChange={onChange}
                   placeholder={placeholder}
                   validationState={validationState}
                   inputValue={value}
