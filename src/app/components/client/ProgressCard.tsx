@@ -70,23 +70,6 @@ export const ProgressCard = (props: Props) => {
     explainerDialogTriggerRef,
   ).buttonProps;
 
-  const autoRemoved = (
-    <div
-      className={`${styles.progressItem} ${
-        !props.isPremiumUser && styles.greyedOut
-      }`}
-    >
-      <div className={styles.progressStat}>
-        <Image src={ExploringLaptopMinus} alt="" width="50" height="50" />
-        <span>{props.autoRemoved}</span>
-      </div>
-      <p>
-        <LockIcon alt="" width="10" height="10" />
-        {l10n.getString("progress-card-auto-removed-headline")}
-      </p>
-    </div>
-  );
-
   return (
     <div className={styles.progressCard}>
       <div className={styles.header}>
@@ -101,6 +84,8 @@ export const ProgressCard = (props: Props) => {
         </button>
       </div>
       <div className={styles.progressStatsWrapper}>
+        
+        {/* Manually fixed */}
         <div className={styles.progressItem}>
           <div className={styles.progressStat}>
             <Image src={ExploringLaptopPlus} alt="" width="50" height="50" />
@@ -108,7 +93,25 @@ export const ProgressCard = (props: Props) => {
           </div>
           <p>{l10n.getString("progress-card-manually-fixed-headline")}</p>
         </div>
-        {autoRemoved}
+
+        {/* Auto-removed */}
+        <div
+          className={`${styles.progressItem} ${
+            !props.isPremiumUser && styles.greyedOut
+          }`}
+        >
+          <div className={styles.progressStat}>
+            <Image src={ExploringLaptopMinus} alt="" width="50" height="50" />
+            <span>{props.autoRemoved}</span>
+          </div>
+          <p>
+            {!props.isPremiumUser && <LockIcon alt="" width="10" height="10" />}
+            {l10n.getString("progress-card-auto-removed-headline")}
+          </p>
+        </div>
+
+        {/* In Progress */}
+
         {props.isPremiumUser && (
           <div className={styles.progressItem}>
             <div className={styles.progressStat}>
