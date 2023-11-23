@@ -23,6 +23,7 @@ import {
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
 import { hasPremium } from "../../../../../../../functions/universal/user";
+import { HighRiskDataTypes } from "../../../../../../../functions/universal/breach";
 
 export type HighRiskBreachLayoutProps = {
   type: HighRiskBreachTypes;
@@ -63,9 +64,25 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
   const isStepDone = type === "done";
   const hasExposedData = exposedData.length;
 
+  if (hasExposedData) {
+    router.push(nextStep.href);
+  }
+
   const handlePrimaryButtonPress = async () => {
-    if (!isHighRiskBreachesStep || !hasExposedData) {
-      router.push(nextStep.href);
+    const highRiskBreachClasses: Record<
+      HighRiskBreachTypes,
+      (typeof HighRiskDataTypes)[keyof typeof HighRiskDataTypes] | null
+    > = {
+      ssn: HighRiskDataTypes.SSN,
+      "credit-card": HighRiskDataTypes.CreditCard,
+      "bank-account": HighRiskDataTypes.BankAccount,
+      pin: HighRiskDataTypes.PIN,
+      none: null,
+      done: null,
+    };
+
+    const dataType = highRiskBreachClasses[type];
+    if (!dataType || !hasExposedData) {
       return;
     }
 
@@ -75,9 +92,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          dataType: type,
-        }),
+        body: JSON.stringify({ dataType }),
       });
 
       const result = await response.json();
