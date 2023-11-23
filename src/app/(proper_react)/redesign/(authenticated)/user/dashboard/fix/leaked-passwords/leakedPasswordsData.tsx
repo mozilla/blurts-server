@@ -10,6 +10,10 @@ import { GuidedExperienceBreaches } from "../../../../../../../functions/server/
 import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
 import { Button } from "../../../../../../../components/server/Button";
 import { StepLink } from "../../../../../../../functions/server/getRelevantGuidedSteps";
+import {
+  BreachResolutionRequest,
+  HibpBreachDataTypes,
+} from "../../../../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
 
 export const leakedPasswordTypes = [
   "passwords",
@@ -36,6 +40,14 @@ export type LeakedPassword = {
   title: string;
   illustration: string;
   content: LeakedPasswordsContent;
+};
+
+export type LeakedPasswordLayout = {
+  dataType: LeakedPasswordsTypes;
+  breaches: GuidedExperienceBreaches;
+  l10n: ExtendedReactLocalization;
+  nextStep: StepLink;
+  emailAffected: string;
 };
 
 function getDoneStepContent(
@@ -102,29 +114,53 @@ function getDoneStepContent(
   };
 }
 
-function getLeakedPasswords({
-  dataType,
-  breaches,
-  l10n,
-  nextStep,
-}: {
-  dataType: string;
-  breaches: GuidedExperienceBreaches;
-  l10n: ExtendedReactLocalization;
-  nextStep: StepLink;
-}) {
-  const findFirstUnresolvedBreach = (breachClassType: LeakedPasswordsTypes) => {
-    const leakedPasswordType =
-      breachClassType === "passwords" ? "passwords" : "securityQuestions";
-    return Object.values(breaches.passwordBreaches[leakedPasswordType]).find(
-      (breach) => !breach.isResolved,
-    );
-  };
+// TODO: Write unit tests MNTOR-2560
+/* c8 ignore start */
+export const findFirstUnresolvedBreach = (
+  breaches: GuidedExperienceBreaches,
+  breachClassType: LeakedPasswordsTypes,
+) => {
+  const leakedPasswordType =
+    breachClassType === "passwords" ? "passwords" : "securityQuestions";
+  const resolvedDataClassName =
+    breachClassType === "passwords"
+      ? "passwords"
+      : "security-questions-and-answers";
 
-  const unresolvedPasswordBreach = findFirstUnresolvedBreach("passwords");
-  const unresolvedSecurityQuestionsBreach =
-    findFirstUnresolvedBreach("security-questions");
-  // This env var is always defined in test, so the other branch can't be covered:
+  return Object.values(breaches.passwordBreaches[leakedPasswordType]).find(
+    (breach) => !breach.resolvedDataClasses.includes(resolvedDataClassName),
+  );
+};
+
+export async function updatePasswordsBreachStatus(
+  email: string,
+  id: number,
+  resolvedDataClass: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>,
+) {
+  try {
+    const data: BreachResolutionRequest = {
+      affectedEmail: email,
+      breachId: id,
+      resolutionsChecked: resolvedDataClass,
+    };
+
+    const res = await fetch("/api/v1/user/breaches", {
+      method: "PUT",
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      throw new Error("Bad fetch response");
+    }
+  } catch (e) {
+    console.error("Could not update user breach resolve status:", e);
+  }
+}
+/* c8 ignore stop */
+
+function getLeakedPasswords(props: LeakedPasswordLayout) {
+  const { dataType, breaches, l10n, nextStep, emailAffected } = props;
+  const unresolvedBreach = findFirstUnresolvedBreach(breaches, props.dataType);
   /* c8 ignore next */
   const blockList = (process.env.HIBP_BREACH_DOMAIN_BLOCKLIST ?? "").split(",");
 
@@ -141,27 +177,21 @@ function getLeakedPasswords({
   });
 
   const {
-    name: passwordBreachName,
-    breachDate: passwordBreachDate,
-    breachSite: passwordBreachSite,
-  } = getBreachInfo(unresolvedPasswordBreach);
-
-  const {
-    name: securityQuestionBreachName,
-    breachDate: securityQuestionBreachDate,
-    breachSite: securityQuestionBreachSite,
-  } = getBreachInfo(unresolvedSecurityQuestionsBreach);
+    name: breachName,
+    breachDate,
+    breachSite,
+  } = getBreachInfo(unresolvedBreach);
 
   const leakedPasswordsData: LeakedPassword[] = [
     {
       type: "passwords",
       title: l10n.getString("leaked-passwords-title", {
-        breach_name: passwordBreachName,
+        breach_name: breachName,
       }),
       illustration: passwordIllustration,
       content: {
         summary: l10n.getString("leaked-passwords-summary", {
-          breach_date: passwordBreachDate,
+          breach_date: breachDate,
         }),
         description: <p>{l10n.getString("leaked-passwords-description")}</p>,
         recommendations: {
@@ -174,14 +204,16 @@ function getLeakedPasswords({
                     // TODO: Find a way  to go to the actual breach site
                     link_to_breach_site: (
                       <a
-                        href={passwordBreachSite}
+                        href={breachSite}
                         target="_blank"
                         rel="noopener noreferrer"
                       />
                     ),
+                    b: <strong />,
                   },
                   vars: {
-                    breach_name: passwordBreachName,
+                    breach_name: breachName,
+                    email_affected: emailAffected,
                   },
                 })}
               </li>
@@ -203,8 +235,8 @@ function getLeakedPasswords({
       illustration: securityQuestionsIllustration,
       content: {
         summary: l10n.getString("leaked-security-questions-summary", {
-          breach_name: securityQuestionBreachName,
-          breach_date: securityQuestionBreachDate,
+          breach_name: breachName,
+          breach_date: breachDate,
         }),
         description: (
           <p>{l10n.getString("leaked-security-questions-description")}</p>
@@ -219,14 +251,16 @@ function getLeakedPasswords({
                     // TODO: Find a way  to go to the actual breach site
                     link_to_breach_site: (
                       <a
-                        href={securityQuestionBreachSite}
+                        href={breachSite}
                         target="_blank"
                         rel="noopener noreferrer"
                       />
                     ),
+                    b: <strong />,
                   },
                   vars: {
-                    breach_name: securityQuestionBreachName,
+                    breach_name: breachName,
+                    email_affected: emailAffected,
                   },
                 })}
               </li>

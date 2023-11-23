@@ -129,7 +129,7 @@ export interface VerifiedEmail {
 export interface BreachResolutionRequest {
   affectedEmail: string;
   breachId: number;
-  resolutionsChecked: Array<keyof HibpBreachDataTypes>;
+  resolutionsChecked: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>;
 }
 
 export interface BreachBulkResolutionRequest {
