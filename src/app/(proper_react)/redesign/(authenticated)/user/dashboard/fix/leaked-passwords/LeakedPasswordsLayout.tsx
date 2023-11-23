@@ -69,9 +69,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   const pageData = getLeakedPasswords(pageDataContent);
   const unresolvedPasswordBreachContent =
     pageData.unresolvedPasswordBreachContent;
-  const unresolvedPasswordBreach =
-    pageData.unresolvedPasswordBreach ??
-    pageData.unresolvedSecurityQuestionsBreach;
+  const unresolvedPasswordBreach = pageData.unresolvedBreach;
 
   // Data class string to push to resolutionsChecked array
   const resolvedDataClassName =
@@ -140,7 +138,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
       }
       // If all breaches in the step is fully resolved, take users to the next step
       else {
-        router.push(getNextGuidedStep(props.data, stepMap[props.type]).href);
+        router.push(nextStep.href);
       }
     } catch (error) {
       console.error("Error updating breach status", error);
