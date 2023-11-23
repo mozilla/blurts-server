@@ -26,3 +26,9 @@ export const HighRiskDataTypes = {
   BankAccount: BreachDataTypes.BankAccount,
   PIN: BreachDataTypes.PIN,
 } as const;
+
+export const SecurityRecommendationDataTypes = {
+  Email: BreachDataTypes.Email,
+  Phone: BreachDataTypes.Phone,
+  IP: BreachDataTypes.IP,
+} as const;

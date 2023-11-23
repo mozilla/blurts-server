@@ -4,6 +4,7 @@
 
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   SecurityRecommendationTypes,
@@ -22,6 +23,7 @@ import {
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
 import { hasPremium } from "../../../../../../../functions/universal/user";
+import { SecurityRecommendationDataTypes } from "../../../../../../../functions/universal/breach";
 
 export interface SecurityRecommendationsLayoutProps {
   type: SecurityRecommendationTypes;
@@ -32,6 +34,7 @@ export interface SecurityRecommendationsLayoutProps {
 export function SecurityRecommendationsLayout(
   props: SecurityRecommendationsLayoutProps,
 ) {
+  const [isResolving, setIsResolving] = useState(false);
   const l10n = useL10n();
   const router = useRouter();
 
@@ -63,8 +66,20 @@ export function SecurityRecommendationsLayout(
   const hasExposedData = exposedData.length;
 
   const handlePrimaryButtonPress = async () => {
-    if (!hasExposedData) {
-      router.push(nextStep.href);
+    setIsResolving(true);
+    const securityRecommendatioBreachClasses: Record<
+      SecurityRecommendationTypes,
+      | (typeof SecurityRecommendationDataTypes)[keyof typeof SecurityRecommendationDataTypes]
+      | null
+    > = {
+      email: SecurityRecommendationDataTypes.Email,
+      phone: SecurityRecommendationDataTypes.Phone,
+      ip: SecurityRecommendationDataTypes.IP,
+      done: null,
+    };
+
+    const dataType = securityRecommendatioBreachClasses[props.type];
+    if (!dataType || !hasExposedData || isResolving) {
       return;
     }
 
@@ -74,9 +89,7 @@ export function SecurityRecommendationsLayout(
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          dataType: props.type,
-        }),
+        body: JSON.stringify({ dataType }),
       });
 
       const result = await response.json();
@@ -86,9 +99,9 @@ export function SecurityRecommendationsLayout(
         );
       }
 
-      router.push(nextStep.href);
+      router.push("/redesign/user/dashboard/fix/high-risk-data-breaches/done");
     } catch (_error) {
-      // do nothing
+      setIsResolving(false);
     }
   };
 
@@ -96,7 +109,7 @@ export function SecurityRecommendationsLayout(
     <FixView
       subscriberEmails={props.subscriberEmails}
       data={props.data}
-      nextStep={getNextGuidedStep(props.data, stepMap[props.type])}
+      nextStep={nextStep}
       currentSection="security-recommendations"
       hideProgressIndicator={isStepDone}
       showConfetti={isStepDone}
@@ -118,6 +131,7 @@ export function SecurityRecommendationsLayout(
               small
               autoFocus={true}
               onPress={() => void handlePrimaryButtonPress()}
+              disabled={isResolving}
             >
               {l10n.getString("security-recommendation-steps-cta-label")}
             </Button>
