@@ -5,11 +5,10 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   SecurityRecommendationTypes,
   getSecurityRecommendationsByType,
-  securityRecommendationTypes,
 } from "./securityRecommendationsData";
 import { ResolutionContainer } from "../ResolutionContainer";
 import { ResolutionContent } from "../ResolutionContent";
@@ -20,6 +19,7 @@ import { FixView } from "../FixView";
 import {
   StepDeterminationData,
   StepLink,
+  getIsNextStepSectionFromPathname,
   getNextGuidedStep,
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
@@ -35,9 +35,10 @@ export interface SecurityRecommendationsLayoutProps {
 export function SecurityRecommendationsLayout(
   props: SecurityRecommendationsLayoutProps,
 ) {
-  const [isResolving, setIsResolving] = useState(false);
   const l10n = useL10n();
   const router = useRouter();
+  const pathname = usePathname();
+  const [isResolving, setIsResolving] = useState(false);
 
   const stepMap: Record<SecurityRecommendationTypes, StepLink["id"]> = {
     email: "SecurityTipsEmail",
@@ -100,13 +101,11 @@ export function SecurityRecommendationsLayout(
         );
       }
 
-      const nextStepMapId =
-        !isStepDone &&
-        securityRecommendationTypes[
-          securityRecommendationTypes.indexOf(props.type) + 1
-        ];
-      const nextRoute = nextStepMapId
-        ? `/redesign/user/dashboard/fix/security-recommendations/${nextStepMapId}`
+      const nextRoute = getIsNextStepSectionFromPathname({
+        currentPath: pathname,
+        nextPath: nextStep.href,
+      })
+        ? "/redesign/user/dashboard/fix/security-recommendations/done"
         : nextStep.href;
       router.push(nextRoute);
     } catch (_error) {

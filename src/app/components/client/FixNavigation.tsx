@@ -57,8 +57,6 @@ export const Steps = (props: {
     breachesByClassification.highRisk,
   ).reduce((acc, array) => acc + array.length, 0);
   const totalDataBrokerProfiles =
-    // No tests simulate the absence of scan data yet:
-    /* c8 ignore next */
     props.data.latestScanData?.results.length ?? 0;
   const totalPasswordBreaches = Object.values(
     breachesByClassification.passwordBreaches,

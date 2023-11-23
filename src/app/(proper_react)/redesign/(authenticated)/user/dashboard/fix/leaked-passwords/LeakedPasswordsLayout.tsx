@@ -37,6 +37,7 @@ export interface LeakedPasswordsLayoutProps {
 export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   const l10n = useL10n();
   const router = useRouter();
+  const [isResolving, setIsResolving] = useState(false);
   const [subscriberBreaches, setSubscriberBreaches] = useState(
     props.data.subscriberBreaches,
   );
@@ -100,7 +101,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         formattedDataClasses,
       );
 
-      // Manually move to the next step when mark is fixed is selected
+      // Manually move to the next step when breach has been marked as fixed.
       const updatedSubscriberBreaches = subscriberBreaches.map(
         (subscriberBreach) => {
           if (subscriberBreach.id === unresolvedPasswordBreach.id) {
@@ -117,13 +118,13 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
 
       if (!isComplete) {
         setSubscriberBreaches(updatedSubscriberBreaches);
+        return;
       }
-      // If all breaches in the step is fully resolved, take users to the next step
-      else {
-        router.push(nextStep.href);
-      }
-    } catch (error) {
-      console.error("Error updating breach status", error);
+      // If all breaches in the step are fully resolved,
+      // take users to the celebration view.
+      router.push("/redesign/user/dashboard/fix/leaked-passwords/done");
+    } catch (_error) {
+      setIsResolving(false);
     }
   };
   /* c8 ignore stop */
@@ -155,6 +156,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
                     void handleUpdateBreachStatus();
                   }}
                   autoFocus={true}
+                  disabled={isResolving}
                 >
                   {l10n.getString("leaked-passwords-mark-as-fixed")}
                 </Button>

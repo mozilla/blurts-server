@@ -6,7 +6,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ResolutionContainer } from "../ResolutionContainer";
 import { ResolutionContent } from "../ResolutionContent";
 import { Button } from "../../../../../../../components/server/Button";
@@ -16,11 +16,11 @@ import { FixView } from "../FixView";
 import {
   HighRiskBreachTypes,
   getHighRiskBreachesByType,
-  highRiskBreachTypes,
 } from "./highRiskBreachData";
 import {
   StepDeterminationData,
   StepLink,
+  getIsNextStepSectionFromPathname,
   getNextGuidedStep,
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
@@ -34,9 +34,10 @@ export type HighRiskBreachLayoutProps = {
 };
 
 export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
-  const [isResolving, setIsResolving] = useState(false);
   const l10n = useL10n();
   const router = useRouter();
+  const pathname = usePathname();
+  const [isResolving, setIsResolving] = useState(false);
 
   const stepMap: Record<HighRiskBreachTypes, StepLink["id"]> = {
     ssn: "HighRiskSsn",
@@ -102,11 +103,11 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
         );
       }
 
-      const nextStepMapId =
-        !isStepDone &&
-        highRiskBreachTypes[highRiskBreachTypes.indexOf(props.type) + 1];
-      const nextRoute = nextStepMapId
-        ? `/redesign/user/dashboard/fix/high-risk-data-breaches/${nextStepMapId}`
+      const nextRoute = getIsNextStepSectionFromPathname({
+        currentPath: pathname,
+        nextPath: nextStep.href,
+      })
+        ? "/redesign/user/dashboard/fix/high-risk-data-breaches/done"
         : nextStep.href;
       router.push(nextRoute);
     } catch (_error) {

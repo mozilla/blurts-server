@@ -286,3 +286,15 @@ export function hasCompletedStep(
 
   return false as never;
 }
+
+export function getIsNextStepSectionFromPathname({
+  currentPath,
+  nextPath,
+}: {
+  currentPath: string;
+  nextPath: StepLink["href"];
+}): boolean {
+  const getBasePath = (path: string) =>
+    path.substring(0, path.lastIndexOf("/"));
+  return getBasePath(currentPath) !== getBasePath(nextPath);
+}
