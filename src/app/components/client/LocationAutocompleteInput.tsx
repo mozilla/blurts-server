@@ -4,16 +4,11 @@
 
 "use client";
 
-import { useDeferredValue, useEffect, useState } from "react";
 import { ComboBoxStateOptions, Item } from "react-stately";
 import { ComboBox } from "./ComboBox";
-import {
-  MatchingLocations,
-  SearchLocationParams,
-  SearchLocationResults,
-} from "../../api/v1/location-autocomplete/route";
 import { RelevantLocation } from "../../api/v1/location-autocomplete/types";
 import styles from "./LocationAutocomplete.module.scss";
+import { useLocationSuggestions } from "../../hooks/locationSuggestions";
 
 // TODO: Add unit test when changing this code:
 /* c8 ignore next 6 */
@@ -24,37 +19,6 @@ export function getDetailsFromLocationString(locationString: string) {
   return { city, state, countryCode };
 }
 
-// TODO: Add unit test when changing this code:
-/* c8 ignore start */
-const getLocationSuggestions = async ({
-  searchParams,
-  abortController,
-}: {
-  searchParams: SearchLocationParams;
-  abortController: AbortController;
-}): Promise<SearchLocationResults | null> => {
-  try {
-    const { signal } = abortController;
-    const response = await fetch("/api/v1/location-autocomplete", {
-      method: "POST",
-      body: JSON.stringify(searchParams),
-      signal,
-    });
-
-    if (!response.ok) {
-      return null;
-    }
-
-    const locationResults = await response.json();
-    return locationResults as SearchLocationResults;
-  } catch (_) {
-    return null;
-  }
-};
-/* c8 ignore stop */
-
-// TODO: Add unit test when changing this code:
-/* c8 ignore next 4 */
 function getLocationString(location: RelevantLocation) {
   const { name, stateCode, countryCode } = location;
   return `${name}, ${stateCode}, ${countryCode}`;
@@ -65,92 +29,29 @@ function getLocationStringByKey(
   key: ComboBoxStateOptions<object>["selectedKey"],
 ) {
   const location = locations.find(({ id }) => id === key);
-  // TODO: Add unit test when changing this code:
+  // We're mocking `useLocationSuggestions` in tests to always return matches;
+  // it's probably not worth the extra effort to simulate no matches for this:
   /* c8 ignore next */
   return location ? getLocationString(location) : "";
 }
 
-export const LocationAutocompleteInput = (
-  props: ComboBoxStateOptions<object>,
-) => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const deferredSearchQuery = useDeferredValue(searchQuery);
+export const LocationAutocompleteInput = ({
+  onChange,
+  ...props
+}: Exclude<
+  ComboBoxStateOptions<object>,
+  "onInputChange" | "onSelectionChange"
+> & { onChange: (_location: string) => void }) => {
+  const locationSuggestions = useLocationSuggestions();
 
-  const [locationSuggestions, setLocationSuggestions] =
-    useState<MatchingLocations>([]);
-  const [selectedKey, setSelectedKey] =
-    useState<ComboBoxStateOptions<object>["selectedKey"]>("");
-
-  useEffect(() => {
-    const abortController = new AbortController();
-
-    if (deferredSearchQuery) {
-      const searchParams = {
-        searchQuery: deferredSearchQuery,
-        config: {
-          minQueryLength: 1,
-          maxResults: 5,
-        },
-      };
-
-      getLocationSuggestions({
-        searchParams,
-        abortController: abortController,
-      })
-        .then((data) => {
-          // TODO: Add unit test when changing this code:
-          /* c8 ignore next 3 */
-          if (data) {
-            setLocationSuggestions(data.results);
-          }
-        })
-        .catch((error) => console.error(error));
-    } else {
-      setLocationSuggestions([]);
-    }
-
-    return () => {
-      abortController.abort();
-    };
-  }, [deferredSearchQuery]);
-
-  // TODO: Add unit test when changing this code:
-  /* c8 ignore start */
-  useEffect(() => {
-    if (!selectedKey) {
-      return;
-    }
-
-    const locationString = getLocationStringByKey(
-      locationSuggestions,
-      selectedKey,
-    );
-    setSearchQuery(locationString);
-  }, [selectedKey, locationSuggestions]);
-  /* c8 ignore stop */
-
-  const handleOnChange = (inputValue: string) => {
-    const locationString = getLocationStringByKey(
-      locationSuggestions,
-      selectedKey,
-    );
-    // Clear current selection if the input value changes
-    // TODO: Add unit test when changing this code:
-    /* c8 ignore next 3 */
-    if (locationString && locationString !== inputValue) {
-      setSelectedKey("");
-    }
-
-    setSearchQuery(inputValue);
-    props.onInputChange?.(inputValue);
-  };
-
-  // TODO: Add unit test when changing this code:
-  /* c8 ignore next 5 */
   const handleOnSelectionChange = (
     key: ComboBoxStateOptions<object>["selectedKey"],
   ) => {
-    setSelectedKey(key);
+    const locationString = getLocationStringByKey(
+      locationSuggestions.items,
+      key,
+    );
+    onChange(locationString);
   };
 
   return (
@@ -159,30 +60,26 @@ export const LocationAutocompleteInput = (
         {...props}
         allowsCustomValue={false}
         allowsEmptyCollection={true}
-        items={locationSuggestions}
-        onInputChange={handleOnChange}
+        items={locationSuggestions.items}
+        inputValue={locationSuggestions.filterText}
+        onInputChange={(value) => locationSuggestions.setFilterText(value)}
         onSelectionChange={handleOnSelectionChange}
-        selectedKey={selectedKey}
         shouldCloseOnBlur={true}
       >
-        {
-          // TODO: Add unit test when changing this code:
-          /* c8 ignore next 15 */
-          (location) => {
-            const relevantLocation = location as RelevantLocation;
-            const textValue = getLocationString(relevantLocation);
-            const { city, state, countryCode } =
-              getDetailsFromLocationString(textValue);
-            return (
-              <Item key={relevantLocation.id} textValue={textValue}>
-                <div className={styles.locationItem}>
-                  <strong>{city}</strong>
-                  <span>{`${state}, ${countryCode}`}</span>
-                </div>
-              </Item>
-            );
-          }
-        }
+        {(location) => {
+          const relevantLocation = location as RelevantLocation;
+          const textValue = getLocationString(relevantLocation);
+          const { city, state, countryCode } =
+            getDetailsFromLocationString(textValue);
+          return (
+            <Item key={relevantLocation.id} textValue={textValue}>
+              <div className={styles.locationItem}>
+                <strong>{city}</strong>
+                <span>{`${state}, ${countryCode}`}</span>
+              </div>
+            </Item>
+          );
+        }}
       </ComboBox>
     </div>
   );
