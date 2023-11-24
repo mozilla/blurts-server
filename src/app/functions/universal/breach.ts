@@ -27,6 +27,11 @@ export const HighRiskDataTypes = {
   PIN: BreachDataTypes.PIN,
 } as const;
 
+export const LeakedPasswordsDataTypes = {
+  Passwords: BreachDataTypes.Passwords,
+  SecurityQuestions: BreachDataTypes.SecurityQuestions,
+} as const;
+
 export const SecurityRecommendationDataTypes = {
   Email: BreachDataTypes.Email,
   Phone: BreachDataTypes.Phone,

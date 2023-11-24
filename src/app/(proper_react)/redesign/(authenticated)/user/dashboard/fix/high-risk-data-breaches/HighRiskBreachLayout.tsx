@@ -69,7 +69,6 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
   const hasExposedData = exposedData.length;
 
   const handlePrimaryButtonPress = async () => {
-    setIsResolving(true);
     const highRiskBreachClasses: Record<
       HighRiskBreachTypes,
       (typeof HighRiskDataTypes)[keyof typeof HighRiskDataTypes] | null
@@ -87,6 +86,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
       return;
     }
 
+    setIsResolving(true);
     try {
       const response = await fetch("/api/v1/user/breaches/bulk-resolve", {
         method: "PUT",

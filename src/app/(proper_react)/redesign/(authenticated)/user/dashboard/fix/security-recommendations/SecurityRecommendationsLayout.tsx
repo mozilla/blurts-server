@@ -68,7 +68,6 @@ export function SecurityRecommendationsLayout(
   const hasExposedData = exposedData.length;
 
   const handlePrimaryButtonPress = async () => {
-    setIsResolving(true);
     const securityRecommendatioBreachClasses: Record<
       SecurityRecommendationTypes,
       | (typeof SecurityRecommendationDataTypes)[keyof typeof SecurityRecommendationDataTypes]
@@ -85,6 +84,7 @@ export function SecurityRecommendationsLayout(
       return;
     }
 
+    setIsResolving(true);
     try {
       const response = await fetch("/api/v1/user/breaches/bulk-resolve", {
         method: "PUT",
