@@ -141,6 +141,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
           : "security-questions-done";
       router.push(`/redesign/user/dashboard/fix/leaked-passwords/${doneSlug}`);
     } catch (_error) {
+      // TODO: MNTOR-2563: Capture client error with @next/sentry
       setIsResolving(false);
     }
   };

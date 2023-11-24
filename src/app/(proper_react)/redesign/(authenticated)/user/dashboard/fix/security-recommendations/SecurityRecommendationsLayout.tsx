@@ -113,6 +113,7 @@ export function SecurityRecommendationsLayout(
         : "/redesign/user/dashboard/fix/security-recommendations/done";
       router.push(nextRoute);
     } catch (_error) {
+      // TODO: MNTOR-2563: Capture client error with @next/sentry
       setIsResolving(false);
     }
   };

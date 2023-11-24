@@ -115,6 +115,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
         : "/redesign/user/dashboard/fix/high-risk-data-breaches/done";
       router.push(nextRoute);
     } catch (_error) {
+      // TODO: MNTOR-2563: Capture client error with @next/sentry
       setIsResolving(false);
     }
   };
