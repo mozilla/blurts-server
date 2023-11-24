@@ -67,7 +67,7 @@ it("getGuidedExperienceBreaches: return all guided experience breaches if they h
   expect(guidedExp.securityRecommendations.IPAddress).toHaveLength(1);
 });
 
-it("getGuidedExperienceBreaches: exclude guided experience breaches if they do note have the relevant classes", () => {
+it("getGuidedExperienceBreaches: exclude guided experience breaches if they do not have the relevant classes", () => {
   const subBreach: SubscriberBreach = {
     addedDate: new Date(),
     breachDate: new Date(),
