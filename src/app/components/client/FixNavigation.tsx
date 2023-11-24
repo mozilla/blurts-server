@@ -4,6 +4,7 @@
 
 "use client";
 
+import { ReactNode } from "react";
 import Image from "next/image";
 import styles from "./FixNavigation.module.scss";
 import stepDataBrokerProfilesIcon from "../../(proper_react)/redesign/(authenticated)/user/dashboard/fix/images/step-counter-data-broker-profiles.svg";
@@ -67,6 +68,18 @@ export const Steps = (props: {
     return value.length > 0;
   }).length;
 
+  const StepLabel = ({
+    label,
+    count,
+  }: {
+    label: string;
+    count: number;
+  }): ReactNode => (
+    <div className={styles.stepLabel}>
+      {label} {count > 0 && `(${count})`}
+    </div>
+  );
+
   return (
     <ul className={styles.steps}>
       {isEligibleForStep(props.data, "Scan") && (
@@ -85,11 +98,10 @@ export const Steps = (props: {
           <div className={styles.stepIcon}>
             <StepImage data={props.data} section="Scan" />
           </div>
-
-          <div className={styles.stepLabel}>
-            {l10n.getString("fix-flow-nav-data-broker-profiles")} (
-            {totalDataBrokerProfiles})
-          </div>
+          <StepLabel
+            label={l10n.getString("fix-flow-nav-data-broker-profiles")}
+            count={totalDataBrokerProfiles}
+          />
         </li>
       )}
       <li
@@ -107,11 +119,10 @@ export const Steps = (props: {
         <div className={styles.stepIcon}>
           <StepImage data={props.data} section="HighRisk" />
         </div>
-
-        <div className={styles.stepLabel}>
-          {l10n.getString("fix-flow-nav-high-risk-data-breaches")} (
-          {totalHighRiskBreaches})
-        </div>
+        <StepLabel
+          label={l10n.getString("fix-flow-nav-high-risk-data-breaches")}
+          count={totalHighRiskBreaches}
+        />
       </li>
       <li
         aria-current={
@@ -128,11 +139,10 @@ export const Steps = (props: {
         <div className={styles.stepIcon}>
           <StepImage data={props.data} section="LeakedPasswords" />
         </div>
-
-        <div className={styles.stepLabel}>
-          {l10n.getString("fix-flow-nav-leaked-passwords")} (
-          {totalPasswordBreaches})
-        </div>
+        <StepLabel
+          label={l10n.getString("fix-flow-nav-leaked-passwords")}
+          count={totalPasswordBreaches}
+        />
       </li>
       <li
         aria-current={
@@ -153,11 +163,10 @@ export const Steps = (props: {
         <div className={styles.stepIcon}>
           <StepImage data={props.data} section="SecurityTips" />
         </div>
-
-        <div className={styles.stepLabel}>
-          {l10n.getString("fix-flow-nav-security-recommendations")} (
-          {totalSecurityRecommendations})
-        </div>
+        <StepLabel
+          label={l10n.getString("fix-flow-nav-security-recommendations")}
+          count={totalSecurityRecommendations}
+        />
       </li>
       <li className={styles.progressBarLineContainer} aria-hidden>
         <div className={styles.progressBarLineWrapper}>
