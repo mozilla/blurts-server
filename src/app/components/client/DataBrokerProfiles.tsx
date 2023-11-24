@@ -10,6 +10,7 @@ import { useL10n } from "../../hooks/l10n";
 import IconChevronDown from "./assets/icon-chevron-down.svg";
 import { useState } from "react";
 import { OnerepScanResultRow } from "knex/types/tables";
+import { OpenInNew } from "../server/Icons";
 
 export type Props = {
   data: OnerepScanResultRow[];
@@ -68,10 +69,17 @@ export const DataBrokerProfileCard = (props: DataBrokerProfileCardProps) => {
       />
       {/* TODO: Add logic to show unique image per data broker */}
       {/* <Image src={} alt={props.data.data_broker} /> */}
-      <a href={props.data.link}>
+      <a href={props.data.link} target="_blank">
         {l10n.getString(
           "fix-flow-data-broker-profiles-view-data-broker-profiles-view-profile",
         )}
+        <span className={styles.openInNewTab}>
+          <OpenInNew
+            alt={l10n.getString("open-in-new-tab-alt")}
+            width="13"
+            height="13"
+          />
+        </span>
       </a>
     </div>
   );

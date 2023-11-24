@@ -87,6 +87,15 @@
     height: auto;
     display: block;
   }
+
+  .openInNewTab {
+    color: $color-blue-50;
+    display: inline-block;
+
+    svg {
+      margin: 0 $spacing-xs;
+    }
+  }
 }
 
 .viewProfilesToggle {
