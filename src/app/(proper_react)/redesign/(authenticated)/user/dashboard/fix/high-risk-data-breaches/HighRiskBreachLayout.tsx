@@ -6,7 +6,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { ResolutionContainer } from "../ResolutionContainer";
 import { ResolutionContent } from "../ResolutionContent";
 import { Button } from "../../../../../../../components/server/Button";
@@ -20,7 +20,6 @@ import {
 import {
   StepDeterminationData,
   StepLink,
-  getIsNextStepSectionFromPathname,
   getNextGuidedStep,
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
@@ -36,7 +35,6 @@ export type HighRiskBreachLayoutProps = {
 export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
   const l10n = useL10n();
   const router = useRouter();
-  const pathname = usePathname();
   const [isResolving, setIsResolving] = useState(false);
 
   const stepMap: Record<HighRiskBreachTypes, StepLink["id"]> = {
@@ -105,12 +103,10 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
         );
       }
 
-      const nextRoute = getIsNextStepSectionFromPathname({
-        currentPath: pathname,
-        nextPath: nextStep.href,
-      })
-        ? "/redesign/user/dashboard/fix/high-risk-data-breaches/done"
-        : nextStep.href;
+      const isCurrentStepSection = Object.values(stepMap).includes(nextStep.id);
+      const nextRoute = isCurrentStepSection
+        ? nextStep.href
+        : "/redesign/user/dashboard/fix/high-risk-data-breaches/done";
       router.push(nextRoute);
     } catch (_error) {
       setIsResolving(false);

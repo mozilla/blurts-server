@@ -5,7 +5,7 @@
 "use client";
 
 import { useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import {
   SecurityRecommendationTypes,
   getSecurityRecommendationsByType,
@@ -19,7 +19,6 @@ import { FixView } from "../FixView";
 import {
   StepDeterminationData,
   StepLink,
-  getIsNextStepSectionFromPathname,
   getNextGuidedStep,
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
@@ -37,7 +36,6 @@ export function SecurityRecommendationsLayout(
 ) {
   const l10n = useL10n();
   const router = useRouter();
-  const pathname = usePathname();
   const [isResolving, setIsResolving] = useState(false);
 
   const stepMap: Record<SecurityRecommendationTypes, StepLink["id"]> = {
@@ -103,12 +101,10 @@ export function SecurityRecommendationsLayout(
         );
       }
 
-      const nextRoute = getIsNextStepSectionFromPathname({
-        currentPath: pathname,
-        nextPath: nextStep.href,
-      })
-        ? "/redesign/user/dashboard/fix/security-recommendations/done"
-        : nextStep.href;
+      const isCurrentStepSection = Object.values(stepMap).includes(nextStep.id);
+      const nextRoute = isCurrentStepSection
+        ? nextStep.href
+        : "/redesign/user/dashboard/fix/security-recommendations/done";
       router.push(nextRoute);
     } catch (_error) {
       setIsResolving(false);

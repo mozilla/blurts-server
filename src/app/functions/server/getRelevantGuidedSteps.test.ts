@@ -3,10 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { describe, expect, it } from "@jest/globals";
-import {
-  getNextGuidedStep,
-  getIsNextStepSectionFromPathname,
-} from "./getRelevantGuidedSteps";
+import { getNextGuidedStep } from "./getRelevantGuidedSteps";
 import {
   createRandomBreach,
   createRandomScanResult,
@@ -858,27 +855,5 @@ describe("getNextGuidedStep", () => {
         eligible: true,
       });
     });
-  });
-});
-
-describe("getIsNextStepSectionFromPathname", () => {
-  it("returns false if the next step pathname links to the next step section", () => {
-    expect(
-      getIsNextStepSectionFromPathname({
-        currentPath:
-          "/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card",
-        nextPath: "/redesign/user/dashboard/fix/high-risk-data-breaches/pin",
-      }),
-    ).toBeFalsy();
-  });
-
-  it("returns true if the next step pathname links to the next step section", () => {
-    expect(
-      getIsNextStepSectionFromPathname({
-        currentPath:
-          "/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card",
-        nextPath: "/redesign/user/dashboard/fix/security-recommendations/phone",
-      }),
-    ).toBeTruthy();
   });
 });
