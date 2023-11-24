@@ -25,6 +25,7 @@ import {
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
 import { hasPremium } from "../../../../../../../functions/universal/user";
 import { HighRiskDataTypes } from "../../../../../../../functions/universal/breach";
+import { BreachBulkResolutionRequest } from "../../../../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
 
 export type HighRiskBreachLayoutProps = {
   type: HighRiskBreachTypes;
@@ -92,12 +93,13 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
 
     setIsResolving(true);
     try {
+      const body: BreachBulkResolutionRequest = { dataType };
       const response = await fetch("/api/v1/user/breaches/bulk-resolve", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ dataType }),
+        body: JSON.stringify(body),
       });
 
       const result = await response.json();

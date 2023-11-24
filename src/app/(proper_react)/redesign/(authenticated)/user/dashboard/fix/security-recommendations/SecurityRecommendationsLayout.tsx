@@ -24,6 +24,7 @@ import {
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
 import { hasPremium } from "../../../../../../../functions/universal/user";
 import { SecurityRecommendationDataTypes } from "../../../../../../../functions/universal/breach";
+import { BreachBulkResolutionRequest } from "../../../../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
 
 export interface SecurityRecommendationsLayoutProps {
   type: SecurityRecommendationTypes;
@@ -90,12 +91,13 @@ export function SecurityRecommendationsLayout(
 
     setIsResolving(true);
     try {
+      const body: BreachBulkResolutionRequest = { dataType };
       const response = await fetch("/api/v1/user/breaches/bulk-resolve", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ dataType }),
+        body: JSON.stringify(body),
       });
 
       const result = await response.json();
