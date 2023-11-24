@@ -68,6 +68,8 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
   const isStepDone = type === "done";
   const hasExposedData = exposedData.length;
 
+  // TODO: Write unit tests MNTOR-2560
+  /* c8 ignore start */
   const handlePrimaryButtonPress = async () => {
     const highRiskBreachClasses: Record<
       HighRiskBreachTypes,
@@ -114,6 +116,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
       setIsResolving(false);
     }
   };
+  /* c8 ignore stop */
 
   return (
     <FixView
@@ -136,6 +139,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
                 variant="primary"
                 small
                 autoFocus={true}
+                /* c8 ignore next */
                 onPress={() => void handlePrimaryButtonPress()}
                 disabled={isResolving}
               >

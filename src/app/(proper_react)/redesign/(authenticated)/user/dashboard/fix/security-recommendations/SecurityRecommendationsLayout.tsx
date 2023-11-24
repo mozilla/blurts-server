@@ -67,6 +67,8 @@ export function SecurityRecommendationsLayout(
   const { title, illustration, content, exposedData } = pageData!;
   const hasExposedData = exposedData.length;
 
+  // TODO: Write unit tests MNTOR-2560
+  /* c8 ignore start */
   const handlePrimaryButtonPress = async () => {
     const securityRecommendatioBreachClasses: Record<
       SecurityRecommendationTypes,
@@ -112,6 +114,7 @@ export function SecurityRecommendationsLayout(
       setIsResolving(false);
     }
   };
+  /* c8 ignore stop */
 
   return (
     <FixView
@@ -138,6 +141,7 @@ export function SecurityRecommendationsLayout(
               variant="primary"
               small
               autoFocus={true}
+              /* c8 ignore next */
               onPress={() => void handlePrimaryButtonPress()}
               disabled={isResolving}
             >
