@@ -8,6 +8,7 @@ import { getSha1 } from "./fxa.js";
 import { filterBreachDataTypes } from "./breachResolution.js";
 import {
   Breach,
+  HibpBreachDataTypes,
   Subscriber,
 } from "../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 import { parseIso8601Datetime } from "./parse.js";
@@ -19,10 +20,8 @@ export type DataClassEffected = {
 export interface SubscriberBreach {
   addedDate: Date;
   breachDate: Date;
-  dataClasses: Array<(typeof BreachDataTypes)[keyof typeof BreachDataTypes]>;
-  resolvedDataClasses: Array<
-    (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
-  >;
+  dataClasses: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>;
+  resolvedDataClasses: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>;
   description: string;
   domain: string;
   id: number;

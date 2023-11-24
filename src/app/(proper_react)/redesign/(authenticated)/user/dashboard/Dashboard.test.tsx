@@ -1725,12 +1725,32 @@ it("expands one card at a time", async () => {
   );
   render(<ComposedDashboard />);
 
-  const expandButton = screen.getAllByRole("button", { name: "Expand" });
-  await user.click(expandButton[0]);
-  const afterExpand1 = screen.getAllByRole("button", { name: "Expand" });
-  await user.click(afterExpand1[0]);
-  const afterExpand2 = screen.getAllByRole("button", { name: "Expand" });
-  expect(afterExpand1.length).toBe(afterExpand2.length);
+  const expandButtons = screen.getAllByRole("button", { name: "Expand" });
+  const collapseButtons = screen.queryAllByRole("button", { name: "Collapse" });
+  // Only expanded cards have a collapse button:
+  expect(collapseButtons).toHaveLength(0);
+
+  await user.click(expandButtons[0]);
+  const afterExpand1ExpandButtons = screen.getAllByRole("button", {
+    name: "Expand",
+  });
+  const afterExpand1CollapseButtons = screen.queryAllByRole("button", {
+    name: "Collapse",
+  });
+  expect(afterExpand1ExpandButtons).toHaveLength(expandButtons.length - 1);
+  expect(afterExpand1CollapseButtons).toHaveLength(1);
+
+  await user.click(afterExpand1ExpandButtons[0]);
+  const afterExpand2ExpandButtons = screen.getAllByRole("button", {
+    name: "Expand",
+  });
+  const afterExpand2CollapseButtons = screen.queryAllByRole("button", {
+    name: "Collapse",
+  });
+  expect(afterExpand2ExpandButtons).toHaveLength(
+    afterExpand1ExpandButtons.length,
+  );
+  expect(afterExpand2CollapseButtons).toHaveLength(1);
 });
 
 it("closes previously active card onclick", async () => {

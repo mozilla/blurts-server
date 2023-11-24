@@ -98,22 +98,21 @@ export async function PUT(
     // Signed in as admin
     try {
       const primarySha1 = params.primarySha1;
-      if (!params.primarySha1) {
+      if (!primarySha1) {
         return NextResponse.json({ success: false }, { status: 400 });
       }
 
       const body = await req.json();
       const actions = body.actions;
 
-      if (!primarySha1) {
-        return NextResponse.json({ success: false }, { status: 400 });
-      }
-
       const subscriber = (await getSubscribersByHashes([primarySha1]))[0];
       const result = await getOnerepProfileId(subscriber.id);
       const onerepProfileId = result?.[0]?.["onerep_profile_id"] as number;
 
-      logger.debug("admin_subscription_change", JSON.stringify(result));
+      logger.info("admin_subscription_change", {
+        actions,
+        subscriberId: subscriber.id,
+      });
 
       for (const action of actions) {
         switch (action) {
@@ -150,7 +149,7 @@ export async function PUT(
             });
             break;
           }
-          case "delete_onrep_scan_results": {
+          case "delete_onerep_scan_results": {
             await deleteScanResultsForProfile(onerepProfileId);
             logger.info("delete_onerep_scan_results", {
               onerepProfileId,
@@ -167,7 +166,7 @@ export async function PUT(
             break;
           }
           default: {
-            logger.error("Unknown action:", action);
+            logger.error("unknown_action", action);
             return NextResponse.json({ success: false }, { status: 500 });
           }
         }

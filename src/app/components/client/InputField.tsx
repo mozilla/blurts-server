@@ -9,11 +9,14 @@ import { AriaTextFieldProps, useTextField } from "react-aria";
 import styles from "./InputField.module.scss";
 
 export const InputField = (props: AriaTextFieldProps) => {
-  const { isRequired, label, validationState, value } = props;
+  const { errorMessage, isRequired, label, validationState, value } = props;
   const inputRef = useRef(null);
-  const { errorMessageProps, validationErrors, inputProps, labelProps } =
-    useTextField(props, inputRef);
+  const { errorMessageProps, inputProps, labelProps } = useTextField(
+    props,
+    inputRef,
+  );
   const isInvalid = validationState === "invalid";
+  const showError = errorMessage && isInvalid;
 
   return (
     <div className={styles.input}>
@@ -32,16 +35,9 @@ export const InputField = (props: AriaTextFieldProps) => {
           isInvalid ? styles.hasError : ""
         }`}
       />
-      {isInvalid && (
+      {showError && (
         <div {...errorMessageProps} className={styles.inputMessage}>
-          {
-            // We always pass in a string at the time of writing, so we can't
-            // hit the "else" path with tests:
-            /* c8 ignore next 3 */
-            typeof props.errorMessage === "string"
-              ? props.errorMessage
-              : validationErrors.join(" ")
-          }
+          {errorMessage}
         </div>
       )}
     </div>

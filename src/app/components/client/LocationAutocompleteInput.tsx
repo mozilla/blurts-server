@@ -4,8 +4,9 @@
 
 "use client";
 
-import { useDeferredValue, useEffect, useState } from "react";
-import { ComboBoxStateOptions, Item } from "react-stately";
+import { Key, useDeferredValue, useEffect, useState } from "react";
+import { AriaTextFieldProps } from "react-aria";
+import { Item } from "react-stately";
 import { ComboBox } from "./ComboBox";
 import {
   MatchingLocations,
@@ -60,26 +61,20 @@ function getLocationString(location: RelevantLocation) {
   return `${name}, ${stateCode}, ${countryCode}`;
 }
 
-function getLocationStringByKey(
-  locations: Array<RelevantLocation>,
-  key: ComboBoxStateOptions<object>["selectedKey"],
-) {
+function getLocationStringByKey(locations: Array<RelevantLocation>, key: Key) {
   const location = locations.find(({ id }) => id === key);
   // TODO: Add unit test when changing this code:
   /* c8 ignore next */
   return location ? getLocationString(location) : "";
 }
 
-export const LocationAutocompleteInput = (
-  props: ComboBoxStateOptions<object>,
-) => {
+export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const deferredSearchQuery = useDeferredValue(searchQuery);
 
   const [locationSuggestions, setLocationSuggestions] =
     useState<MatchingLocations>([]);
-  const [selectedKey, setSelectedKey] =
-    useState<ComboBoxStateOptions<object>["selectedKey"]>("");
+  const [selectedKey, setSelectedKey] = useState<Key>("");
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -142,14 +137,12 @@ export const LocationAutocompleteInput = (
     }
 
     setSearchQuery(inputValue);
-    props.onInputChange?.(inputValue);
+    props.onChange?.(inputValue);
   };
 
   // TODO: Add unit test when changing this code:
-  /* c8 ignore next 5 */
-  const handleOnSelectionChange = (
-    key: ComboBoxStateOptions<object>["selectedKey"],
-  ) => {
+  /* c8 ignore next 3 */
+  const handleOnSelectionChange = (key: Key) => {
     setSelectedKey(key);
   };
 
