@@ -80,6 +80,10 @@ export function SecurityRecommendationsLayout(
     };
 
     const dataType = securityRecommendatioBreachClasses[props.type];
+    // Only attempt to resolve the breaches if the following conditions are true:
+    // - There is a matching data class type in this step
+    // - The current step has unresolved exposed data
+    // - There is no pending breach resolution request
     if (!dataType || !hasExposedData || isResolving) {
       return;
     }
