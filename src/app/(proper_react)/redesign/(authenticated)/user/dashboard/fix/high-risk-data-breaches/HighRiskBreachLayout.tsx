@@ -64,7 +64,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
   const { title, illustration, content, exposedData, type } = pageData!;
   const isHighRiskBreachesStep = type !== "none";
   const isStepDone = type === "done";
-  const hasExposedData = exposedData.length;
+  const hasExposedData = exposedData.length > 0;
 
   // TODO: Write unit tests MNTOR-2560
   /* c8 ignore start */

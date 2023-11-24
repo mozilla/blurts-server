@@ -63,7 +63,7 @@ export function SecurityRecommendationsLayout(
   // The non-null assertion here should be safe since we already did this check
   // in `./[type]/page.tsx`:
   const { title, illustration, content, exposedData } = pageData!;
-  const hasExposedData = exposedData.length;
+  const hasExposedData = exposedData.length > 0;
 
   // TODO: Write unit tests MNTOR-2560
   /* c8 ignore start */
