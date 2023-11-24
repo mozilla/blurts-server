@@ -95,7 +95,10 @@ it("getGuidedExperienceBreaches: exclude guided experience breaches if they do n
     name: "",
     title: "",
     emailsAffected: ["test@mozilla.com"],
-    dataClassesEffected: [{ [BreachDataTypes.PIN]: 1 }],
+    dataClassesEffected: [
+      { [BreachDataTypes.PIN]: 1 },
+      { [BreachDataTypes.Passwords]: 2 },
+    ],
   };
 
   const guidedExp = getGuidedExperienceBreaches(
@@ -107,7 +110,7 @@ it("getGuidedExperienceBreaches: exclude guided experience breaches if they do n
   expect(guidedExp.highRisk.ssnBreaches).toHaveLength(0);
   expect(guidedExp.highRisk.creditCardBreaches).toHaveLength(0);
   expect(guidedExp.highRisk.bankBreaches).toHaveLength(0);
-  expect(guidedExp.passwordBreaches.passwords).toHaveLength(0);
+  expect(guidedExp.passwordBreaches.passwords).toHaveLength(1);
   expect(guidedExp.passwordBreaches.securityQuestions).toHaveLength(0);
   expect(guidedExp.securityRecommendations.phoneNumber).toHaveLength(0);
   expect(guidedExp.securityRecommendations.emailAddress).toHaveLength(0);
