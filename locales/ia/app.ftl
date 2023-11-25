@@ -672,7 +672,8 @@ menu-item-logout = Clauder session
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Conditiones de uso e confidentialitate
+terms-of-service = Terminos de servicio
+privacy-notice = Aviso de confidentialitate
 github = { -brand-github }
 footer-nav-all-breaches = Tote le violationes
 
