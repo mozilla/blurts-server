@@ -4,25 +4,12 @@
 
 import "@testing-library/jest-dom";
 import "@testing-library/jest-dom/jest-globals";
-import { TestingLibraryMatchers } from "@testing-library/jest-dom/matchers";
+import "jest-axe/extend-expect";
 import { TextEncoder } from "util";
 import { setProjectAnnotations } from "@storybook/react";
 import { defaultFallbackInView } from "react-intersection-observer";
 import failOnConsole from "jest-fail-on-console";
 import * as globalStorybookConfig from "./.storybook/preview";
-import "jest-axe/extend-expect";
-
-// `@types/jest-axe` doesn't extend `expect` when imported from `@jest/globals`.
-// This manually sets the correct type. Note that it has to extend the
-// TestingLibraryMatchers to avoid overriding those.
-// Also see
-// https://github.com/DefinitelyTyped/DefinitelyTyped/pull/67495
-declare module "expect" {
-  interface Matchers<R = void>
-    extends TestingLibraryMatchers<typeof expect.stringContaining, R> {
-    toHaveNoViolations(): R;
-  }
-}
 
 setProjectAnnotations(
   globalStorybookConfig as Parameters<typeof setProjectAnnotations>[0],
