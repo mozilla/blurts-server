@@ -170,7 +170,7 @@ async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaPr
     .returning('*')
   const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
   if (updatedSubscriber && subscriber.fxa_refresh_token) {
-    destroyOAuthToken({ refresh_token: subscriber.fxa_refresh_token })
+    destroyOAuthToken({ token: subscriber.fxa_refresh_token, token_type_hint: "refresh_token" })
   }
   return updatedSubscriber
 }
@@ -220,10 +220,10 @@ async function removeFxAData (subscriber) {
     .returning('*')
   const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
   if (updatedSubscriber && subscriber.fxa_refresh_token) {
-    await destroyOAuthToken({ refresh_token: subscriber.fxa_refresh_token })
+    await destroyOAuthToken({ token: subscriber.fxa_refresh_token,  token_type_hint: "refresh_token" })
   }
   if (updatedSubscriber && subscriber.fxa_access_token) {
-    await destroyOAuthToken({ token: subscriber.fxa_access_token })
+    await destroyOAuthToken({ token: subscriber.fxa_access_token,  token_type_hint: "access_token" })
   }
   return updatedSubscriber
 }
