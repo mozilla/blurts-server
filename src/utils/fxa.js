@@ -80,7 +80,7 @@ async function verifyOAuthToken (token) {
 /**
  * fxa doc: https://mozilla.github.io/ecosystem-platform/api#tag/Oauth/operation/postOauthDestroy
  *
- * @param {{ token?: any; token_type_hint?: any; }} token
+ * @param {{ token?: string; token_type_hint?: string; }} token
  */
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
