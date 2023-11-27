@@ -27,6 +27,7 @@ import { getGuidedExperienceBreaches } from "../../../../../../../functions/univ
 import { hasPremium } from "../../../../../../../functions/universal/user";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { LeakedPasswordsDataTypes } from "../../../../../../../functions/universal/breach";
 
 export interface LeakedPasswordsLayoutProps {
   type: LeakedPasswordsTypes;
@@ -37,6 +38,7 @@ export interface LeakedPasswordsLayoutProps {
 export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   const l10n = useL10n();
   const router = useRouter();
+  const [isResolving, setIsResolving] = useState(false);
   const [subscriberBreaches, setSubscriberBreaches] = useState(
     props.data.subscriberBreaches,
   );
@@ -48,12 +50,13 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     "security-questions-done": "LeakedPasswordsSecurityQuestion",
     none: "LeakedPasswordsSecurityQuestion",
   };
+  const isStepDone =
+    props.type === "passwords-done" || props.type === "security-questions-done";
 
   const guidedExperienceBreaches = getGuidedExperienceBreaches(
     subscriberBreaches,
     props.subscriberEmails,
   );
-
   const unresolvedPasswordBreach = findFirstUnresolvedBreach(
     guidedExperienceBreaches,
     props.type,
@@ -67,15 +70,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     ) ?? "";
 
   const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
-
-  // Data class string to push to resolutionsChecked array
-  const resolvedDataClassName =
-    props.type === "passwords" ? "passwords" : "security-questions-and-answers";
-
-  const isStepDone =
-    props.type === "passwords-done" || props.type === "security-questions-done";
-
-  const unresolvedPasswordBreachContent = getLeakedPasswords({
+  const pageData = getLeakedPasswords({
     dataType: props.type,
     breaches: guidedExperienceBreaches,
     l10n,
@@ -83,13 +78,31 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     nextStep,
   });
 
+  // The non-null assertion here should be safe since we already did this check
+  // in `./[type]/page.tsx`:
+  const { title, illustration, content } = pageData!;
+
   const handleUpdateBreachStatus = async () => {
-    if (!unresolvedPasswordBreach || !emailAffected) {
+    const leakedPasswordsBreachClasses: Record<
+      LeakedPasswordsTypes,
+      | (typeof LeakedPasswordsDataTypes)[keyof typeof LeakedPasswordsDataTypes]
+      | null
+    > = {
+      passwords: LeakedPasswordsDataTypes.Passwords,
+      "passwords-done": null,
+      "security-questions": LeakedPasswordsDataTypes.SecurityQuestions,
+      "security-questions-done": null,
+      none: null,
+    };
+
+    const dataType = leakedPasswordsBreachClasses[props.type];
+    if (!dataType || !unresolvedPasswordBreach || !emailAffected) {
       return;
     }
 
+    setIsResolving(true);
     try {
-      unresolvedPasswordBreach.resolvedDataClasses.push(resolvedDataClassName);
+      unresolvedPasswordBreach.resolvedDataClasses.push(dataType);
       // FIXME/BUG: MNTOR-2562 Remove empty [""] string
       const formattedDataClasses =
         unresolvedPasswordBreach.resolvedDataClasses.filter(Boolean);
@@ -100,11 +113,11 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         formattedDataClasses,
       );
 
-      // Manually move to the next step when mark is fixed is selected
+      // Manually move to the next step when breach has been marked as fixed.
       const updatedSubscriberBreaches = subscriberBreaches.map(
         (subscriberBreach) => {
           if (subscriberBreach.id === unresolvedPasswordBreach.id) {
-            subscriberBreach.resolvedDataClasses.push(resolvedDataClassName);
+            subscriberBreach.resolvedDataClasses.push(dataType);
           }
           return subscriberBreach;
         },
@@ -117,63 +130,64 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
 
       if (!isComplete) {
         setSubscriberBreaches(updatedSubscriberBreaches);
+        setIsResolving(false);
+        return;
       }
-      // If all breaches in the step is fully resolved, take users to the next step
-      else {
-        router.push(nextStep.href);
-      }
-    } catch (error) {
-      console.error("Error updating breach status", error);
+      // If all breaches in the step are fully resolved,
+      // take users to the celebration view.
+      const doneSlug: LeakedPasswordsTypes =
+        props.type === "passwords"
+          ? "passwords-done"
+          : "security-questions-done";
+      router.push(`/redesign/user/dashboard/fix/leaked-passwords/${doneSlug}`);
+    } catch (_error) {
+      // TODO: MNTOR-2563: Capture client error with @next/sentry
+      setIsResolving(false);
     }
   };
   /* c8 ignore stop */
 
   return (
-    unresolvedPasswordBreachContent &&
-    unresolvedPasswordBreach && (
-      <FixView
-        subscriberEmails={props.subscriberEmails}
+    <FixView
+      subscriberEmails={props.subscriberEmails}
+      data={props.data}
+      nextStep={nextStep}
+      currentSection="leaked-passwords"
+      hideProgressIndicator={isStepDone}
+      showConfetti={isStepDone}
+    >
+      <ResolutionContainer
+        type="leakedPasswords"
+        title={title}
+        illustration={illustration}
+        isPremiumUser={hasPremium(props.data.user)}
+        cta={
+          !isStepDone && (
+            <>
+              <Button
+                variant="primary"
+                small
+                /* c8 ignore next 3 */
+                onPress={() => {
+                  void handleUpdateBreachStatus();
+                }}
+                autoFocus={true}
+                disabled={isResolving}
+              >
+                {l10n.getString("leaked-passwords-mark-as-fixed")}
+              </Button>
+              <Link href={nextStep.href}>
+                {l10n.getString("leaked-passwords-skip")}
+              </Link>
+            </>
+          )
+        }
+        estimatedTime={!isStepDone ? 4 : undefined}
+        isStepDone={isStepDone}
         data={props.data}
-        nextStep={nextStep}
-        currentSection="leaked-passwords"
-        hideProgressIndicator={isStepDone}
-        showConfetti={isStepDone}
       >
-        <ResolutionContainer
-          type="leakedPasswords"
-          title={unresolvedPasswordBreachContent.title}
-          illustration={unresolvedPasswordBreachContent.illustration}
-          isPremiumUser={hasPremium(props.data.user)}
-          cta={
-            !isStepDone && (
-              <>
-                <Button
-                  variant="primary"
-                  small
-                  /* c8 ignore next 3 */
-                  onPress={() => {
-                    void handleUpdateBreachStatus();
-                  }}
-                  autoFocus={true}
-                >
-                  {l10n.getString("leaked-passwords-mark-as-fixed")}
-                </Button>
-                <Link href={nextStep.href}>
-                  {l10n.getString("leaked-passwords-skip")}
-                </Link>
-              </>
-            )
-          }
-          estimatedTime={!isStepDone ? 4 : undefined}
-          isStepDone={isStepDone}
-          data={props.data}
-        >
-          <ResolutionContent
-            content={unresolvedPasswordBreachContent.content}
-            locale={getLocale(l10n)}
-          />
-        </ResolutionContainer>
-      </FixView>
-    )
+        <ResolutionContent content={content} locale={getLocale(l10n)} />
+      </ResolutionContainer>
+    </FixView>
   );
 }

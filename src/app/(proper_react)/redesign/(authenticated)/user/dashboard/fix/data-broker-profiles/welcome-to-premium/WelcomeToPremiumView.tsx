@@ -73,7 +73,6 @@ export function WelcomeToPremiumView(props: Props) {
             <Button
               variant="primary"
               href="/redesign/user/dashboard/fix/high-risk-data-breaches"
-              disabled
               wide
             >
               {l10n.getString(

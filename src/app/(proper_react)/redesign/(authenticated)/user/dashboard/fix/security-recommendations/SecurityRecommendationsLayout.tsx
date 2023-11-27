@@ -4,6 +4,8 @@
 
 "use client";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   SecurityRecommendationTypes,
   getSecurityRecommendationsByType,
@@ -21,6 +23,8 @@ import {
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
 import { hasPremium } from "../../../../../../../functions/universal/user";
+import { SecurityRecommendationDataTypes } from "../../../../../../../functions/universal/breach";
+import { BreachBulkResolutionRequest } from "../../../../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
 
 export interface SecurityRecommendationsLayoutProps {
   type: SecurityRecommendationTypes;
@@ -32,6 +36,8 @@ export function SecurityRecommendationsLayout(
   props: SecurityRecommendationsLayoutProps,
 ) {
   const l10n = useL10n();
+  const router = useRouter();
+  const [isResolving, setIsResolving] = useState(false);
 
   const stepMap: Record<SecurityRecommendationTypes, StepLink["id"]> = {
     email: "SecurityTipsEmail",
@@ -58,12 +64,66 @@ export function SecurityRecommendationsLayout(
   // The non-null assertion here should be safe since we already did this check
   // in `./[type]/page.tsx`:
   const { title, illustration, content, exposedData } = pageData!;
+  const hasExposedData = exposedData.length > 0;
+
+  // TODO: Write unit tests MNTOR-2560
+  /* c8 ignore start */
+  const handlePrimaryButtonPress = async () => {
+    const securityRecommendatioBreachClasses: Record<
+      SecurityRecommendationTypes,
+      | (typeof SecurityRecommendationDataTypes)[keyof typeof SecurityRecommendationDataTypes]
+      | null
+    > = {
+      email: SecurityRecommendationDataTypes.Email,
+      phone: SecurityRecommendationDataTypes.Phone,
+      ip: SecurityRecommendationDataTypes.IP,
+      done: null,
+    };
+
+    const dataType = securityRecommendatioBreachClasses[props.type];
+    // Only attempt to resolve the breaches if the following conditions are true:
+    // - There is a matching data class type in this step
+    // - The current step has unresolved exposed data
+    // - There is no pending breach resolution request
+    if (!dataType || !hasExposedData || isResolving) {
+      return;
+    }
+
+    setIsResolving(true);
+    try {
+      const body: BreachBulkResolutionRequest = { dataType };
+      const response = await fetch("/api/v1/user/breaches/bulk-resolve", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+
+      const result = await response.json();
+      if (!result?.success) {
+        throw new Error(
+          `Could not resolve breach data class of type: ${props.type}`,
+        );
+      }
+
+      const isCurrentStepSection = Object.values(stepMap).includes(nextStep.id);
+      const nextRoute = isCurrentStepSection
+        ? nextStep.href
+        : "/redesign/user/dashboard/fix/security-recommendations/done";
+      router.push(nextRoute);
+    } catch (_error) {
+      // TODO: MNTOR-2563: Capture client error with @next/sentry
+      setIsResolving(false);
+    }
+  };
+  /* c8 ignore stop */
 
   return (
     <FixView
       subscriberEmails={props.subscriberEmails}
       data={props.data}
-      nextStep={getNextGuidedStep(props.data, stepMap[props.type])}
+      nextStep={nextStep}
       currentSection="security-recommendations"
       hideProgressIndicator={isStepDone}
       showConfetti={isStepDone}
@@ -83,9 +143,10 @@ export function SecurityRecommendationsLayout(
             <Button
               variant="primary"
               small
-              // TODO: Add test once MNTOR-1700 logic is added
-              href={nextStep.href}
               autoFocus={true}
+              /* c8 ignore next */
+              onPress={() => void handlePrimaryButtonPress()}
+              disabled={isResolving}
             >
               {l10n.getString("security-recommendation-steps-cta-label")}
             </Button>

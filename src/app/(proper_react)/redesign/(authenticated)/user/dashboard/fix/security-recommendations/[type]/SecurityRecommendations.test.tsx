@@ -14,6 +14,11 @@ import Meta, {
   DoneStory,
 } from "./SecurityRecommendations.stories";
 
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(),
+  usePathname: jest.fn(),
+}));
+
 beforeEach(() => {
   setupJestCanvasMock();
 });
