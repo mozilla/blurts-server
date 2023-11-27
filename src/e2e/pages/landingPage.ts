@@ -43,7 +43,7 @@ export class LandingPage {
     this.MozillaFooterLogoLink = page.locator("footer a").first();
     this.AllBreachesLink = page.getByRole("link", { name: "All Breaches" });
     this.FAQLink = page.locator('footer a:has-text("faq")');
-    this.TermsLink = page.getByRole("link", { name: "Terms & Privacy" });
+    this.TermsLink = page.getByRole("link", { name: "Terms of Service" });
     this.GithubLink = page.getByRole("link", { name: "Github" });
     this.landingFooter = page.locator(".site-footer");
     this.ourMissionLink = page.locator(
@@ -79,7 +79,8 @@ export class LandingPage {
       mozillaLogoUrl: "https://www.mozilla.org",
       allBreachesUrl: "/breaches",
       FAQUrl: "https://support.mozilla.org/kb/firefox-monitor-faq",
-      TermsUrl: "https://www.mozilla.org/privacy/firefox-monitor",
+      TermsUrl:
+        "https://www.mozilla.org/about/legal/terms/subscription-services/",
       GithubUrl: "https://github.com/mozilla/blurts-server",
     };
   }
@@ -95,7 +96,7 @@ export class LandingPage {
   }
 
   async maybeClearBanner() {
-    if (await this.falseDoorBanner.isVisible()) {
+    if (await this.falseBannerCloseButton.isVisible()) {
       await this.falseBannerCloseButton.click();
     }
   }

@@ -31,6 +31,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Landingpage element verification`, 
       "href",
       links.allBreachesUrl,
     );
+
     await expect(landingPage.FAQLink).toHaveAttribute("href", links.FAQUrl);
     await expect(landingPage.TermsLink).toHaveAttribute("href", links.TermsUrl);
     await expect(landingPage.GithubLink).toHaveAttribute(
