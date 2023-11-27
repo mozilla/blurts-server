@@ -102,7 +102,7 @@ async function destroyOAuthToken (token) {
 /* c8 ignore stop */
 
 /**
- * @param {{ fxa_access_token: any; fxa_refresh_token: any; }} subscriber
+ * @param {{ fxa_access_token: string; fxa_refresh_token: string; }} subscriber
  */
 // TODO: Add unit test when changing this code:
 /* c8 ignore next 4 */
