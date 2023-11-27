@@ -84,7 +84,6 @@ export const ProgressCard = (props: Props) => {
         </button>
       </div>
       <div className={styles.progressStatsWrapper}>
-        
         {/* Manually fixed */}
         <div className={styles.progressItem}>
           <div className={styles.progressStat}>
