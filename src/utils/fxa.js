@@ -78,13 +78,20 @@ async function verifyOAuthToken (token) {
 /* c8 ignore stop */
 
 /**
- * @param {{ token?: any; refresh_token?: any; }} token
+ * fxa doc: https://mozilla.github.io/ecosystem-platform/api#tag/Oauth/operation/postOauthDestroy
+ *
+ * @param {{ token?: any; token_type_hint?: any; }} token
  */
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
 async function destroyOAuthToken (token) {
+  const tokenBody = {
+    ...token,
+    client_id: AppConstants.OAUTH_CLIENT_ID,
+    client_secret: AppConstants.OAUTH_CLIENT_SECRET
+  }
   try {
-    const response = await postTokenRequest('/v1/destroy', token)
+    const response = await postTokenRequest('/v1/oauth/destroy', tokenBody)
     return response
   } catch (e) {
     if (e instanceof Error) {
@@ -100,8 +107,8 @@ async function destroyOAuthToken (token) {
 // TODO: Add unit test when changing this code:
 /* c8 ignore next 4 */
 async function revokeOAuthTokens (subscriber) {
-  await destroyOAuthToken({ token: subscriber.fxa_access_token })
-  await destroyOAuthToken({ refresh_token: subscriber.fxa_refresh_token })
+  await destroyOAuthToken({ token: subscriber.fxa_access_token, token_type_hint: "access_token" })
+  await destroyOAuthToken({ token: subscriber.fxa_refresh_token, token_type_hint: "refresh_token" })
 }
 
 /**
