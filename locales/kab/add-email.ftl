@@ -6,3 +6,4 @@
 ### Dialog window that allows a user to add a new email address to be monitored
 
 add-email-address-input-label = Tansa imayl
+add-email-send-verification-button = Azen n useɣwen n usentem

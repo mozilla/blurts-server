@@ -38,11 +38,11 @@ export const stepLinks = [
     id: "HighRiskPin",
   },
   {
-    href: "/redesign/user/dashboard/fix/leaked-passwords/password",
+    href: "/redesign/user/dashboard/fix/leaked-passwords/passwords",
     id: "LeakedPasswordsPassword",
   },
   {
-    href: "/redesign/user/dashboard/fix/leaked-passwords/security-question",
+    href: "/redesign/user/dashboard/fix/leaked-passwords/security-questions",
     id: "LeakedPasswordsSecurityQuestion",
   },
   {

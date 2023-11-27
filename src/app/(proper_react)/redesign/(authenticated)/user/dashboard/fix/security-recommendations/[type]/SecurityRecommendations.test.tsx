@@ -2,30 +2,63 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { it, expect } from "@jest/globals";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
+import { setupJestCanvasMock } from "jest-canvas-mock";
 import Meta, {
   EmailStory,
   IpStory,
   PhoneStory,
+  DoneStory,
 } from "./SecurityRecommendations.stories";
 
-it("Phone security recommendations the axe accessibility test suite", async () => {
-  const ComposedHighRiskDataBreachComponent = composeStory(PhoneStory, Meta);
-  const { container } = render(<ComposedHighRiskDataBreachComponent />);
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(),
+  usePathname: jest.fn(),
+}));
+
+beforeEach(() => {
+  setupJestCanvasMock();
+});
+
+it("passes the axe accessibility test suite for phone security recommendations", async () => {
+  const ComposedComponent = composeStory(PhoneStory, Meta);
+  const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("Email security recommendations the axe accessibility test suite", async () => {
-  const ComposedHighRiskDataBreachComponent = composeStory(EmailStory, Meta);
-  const { container } = render(<ComposedHighRiskDataBreachComponent />);
+it("passes the axe accessibility test suite for email security recommendations", async () => {
+  const ComposedComponent = composeStory(EmailStory, Meta);
+  const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("IP security recommendations the axe accessibility test suite", async () => {
-  const ComposedHighRiskDataBreachComponent = composeStory(IpStory, Meta);
-  const { container } = render(<ComposedHighRiskDataBreachComponent />);
+it("passes the axe accessibility test suite for IP security recommendations", async () => {
+  const ComposedComponent = composeStory(IpStory, Meta);
+  const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite for the security recommendations celebration view", async () => {
+  const ComposedComponent = composeStory(DoneStory, Meta);
+  const { container } = render(<ComposedComponent />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("shows the security recommendations celebration view", () => {
+  const ComposedComponent = composeStory(DoneStory, Meta);
+
+  render(<ComposedComponent />);
+
+  const viewHeading = screen.getByRole("heading", {
+    name: "You’ve completed all your recommendations!",
+  });
+  expect(viewHeading).toBeInTheDocument();
+
+  const buttonLink = screen.getByRole("link", {
+    name: "Go to your Dashboard",
+  });
+  expect(buttonLink).toHaveAttribute("href", "/redesign/user/dashboard");
 });

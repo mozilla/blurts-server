@@ -28,7 +28,7 @@ export const ViewDataBrokersView = (props: Props) => {
     <FixView
       data={props.data}
       subscriberEmails={props.subscriberEmails}
-      nextStepHref={getNextGuidedStep(props.data, "Scan").href}
+      nextStep={getNextGuidedStep(props.data, "Scan")}
       currentSection="data-broker-profiles"
     >
       <div>

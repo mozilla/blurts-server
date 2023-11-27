@@ -36,7 +36,7 @@ export function WelcomeToPremiumView(props: Props) {
     <FixView
       data={props.data}
       subscriberEmails={props.subscriberEmails}
-      nextStepHref={getNextGuidedStep(props.data, "Scan").href}
+      nextStep={getNextGuidedStep(props.data, "Scan")}
       currentSection="data-broker-profiles"
     >
       <div className={styles.contentWrapper}>
@@ -73,7 +73,6 @@ export function WelcomeToPremiumView(props: Props) {
             <Button
               variant="primary"
               href="/redesign/user/dashboard/fix/high-risk-data-breaches"
-              disabled
               wide
             >
               {l10n.getString(

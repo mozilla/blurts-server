@@ -85,27 +85,19 @@ exposure-card-exposure-type = Exposure type
 exposure-card-date-found = Date of the exposure
 
 progress-card-heres-what-we-fixed-headline = Here’s what we fixed
-progress-card-resolved-by-you-headline = Resolved by you
+progress-card-manually-fixed-headline = Manually fixed
 progress-card-auto-removed-headline = Auto-removed
 progress-card-in-progress-headline = In progress
-# Variables:
-# $percentage is the percentage value of exposures fixed, e.g. 70%.
-progress-card-percentage-complete = { $percentage }% complete
-# Variables:
-# $percentage is the percentage value of exposures remaining, e.g. 70%.
-progress-card-percentage-remaining = { $percentage }% in progress
+progress-card-locked-alt = Only available with { -brand-premium }
 full-name = Full name
 
 # Here’s What We Fixed Modal
 
 modal-heres-what-we-fixed-title = About what we fixed
-modal-heres-what-we-fixed-description-part-one = <b>Resolved by you</b> includes anything you have manually fixed.
-  All data breaches that require access to your accounts need to be fixed manually,
-  even if you have upgraded to { -brand-premium }.
-modal-heres-what-we-fixed-description-part-two = <b>Auto-removed</b> includes any exposures from data broker
-  profiles that we have removed for you. This is available only for
-  { -brand-premium } subscribers. Complete includes anything resolved by you or
-  auto-removed by us.
+modal-heres-what-we-fixed-description-part-one = <b>Manually fixed</b> includes anything you’ve fixed yourself. All data breaches that require access to your accounts need 
+  to be fixed manually, even if you’ve upgraded to { -brand-premium }.
+modal-heres-what-we-fixed-description-part-two = <b>Auto-removed</b> includes any exposures from data broker profiles that we’ve removed for you. This is available only for 
+  { -brand-premium } subscribers.
 modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes anything that we are currently
   working on fixing. Removals typically take 7-14 days but the most
   difficult sites could take longer. You may also start to see removals
@@ -122,7 +114,7 @@ open-in-new-tab-alt = Open link in a new tab
 # Status Pill
 
 status-pill-action-needed = Action needed
-status-pill-progress = In progress
+status-pill-progress = Manually fixed
 status-pill-fixed = Fixed
 
 # Exposure Card
@@ -531,7 +523,7 @@ security-recommendation-ip-step-one = Use a VPN (such as <link_to_info>{ -brand-
 
 # Variables
 # $breach_name is the name of the breach where the leaked password was found.
-leaked-passwords-title = Your { $breach_name } password was exposed.
+leaked-passwords-title = Your { $breach_name } password was exposed
 # Variables
 # $breach_date is the date when the breach occurred.
 leaked-passwords-summary = It appeared in a data breach on { $breach_date }.
@@ -540,7 +532,8 @@ leaked-passwords-steps-title = Here’s what to do
 leaked-passwords-steps-subtitle = This requires access to your account, so you’ll need to manually fix it.
 # Variables
 # $breach_name is the name of the breach where the leaked password was found.
-leaked-passwords-step-one = Change your password on <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
+# $email_affected is the email assosciated with the breach.
+leaked-passwords-step-one = Change your password for <b>{ $email_affected }</b> on <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
 leaked-passwords-step-two = Change it anywhere else you’ve used it.
 leaked-passwords-mark-as-fixed = Mark as fixed
 leaked-passwords-skip = Skip for now
@@ -563,7 +556,8 @@ leaked-security-questions-steps-title = Here’s what to do
 leaked-security-questions-steps-subtitle = This requires access to your account, so you’ll need to manually fix it.
 # Variables
 # $breach_name is the name of the breach where the security questions were found.
-leaked-security-questions-step-one = Update your security questions on <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
+# $email_affected is the email assosciated with the breach.
+leaked-security-questions-step-one = Update your security questions for <b>{ $email_affected }</b> on <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
 leaked-security-questions-step-two = Update them on any other site where you used the same security questions. Be sure to use different security questions for every account.
 
 # Subscription
