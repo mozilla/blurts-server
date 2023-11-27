@@ -88,12 +88,7 @@ progress-card-heres-what-we-fixed-headline = Here’s what we fixed
 progress-card-manually-fixed-headline = Manually fixed
 progress-card-auto-removed-headline = Auto-removed
 progress-card-in-progress-headline = In progress
-# Variables:
-# $percentage is the percentage value of exposures fixed, e.g. 70%.
-progress-card-percentage-complete = { $percentage }% complete
-# Variables:
-# $percentage is the percentage value of exposures remaining, e.g. 70%.
-progress-card-percentage-remaining = { $percentage }% in progress
+progress-card-locked-alt = Only available with { -brand-premium }
 full-name = Full name
 
 # Here’s What We Fixed Modal

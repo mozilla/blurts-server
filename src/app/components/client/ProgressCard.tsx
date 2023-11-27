@@ -104,13 +104,18 @@ export const ProgressCard = (props: Props) => {
             <span>{props.autoRemoved}</span>
           </div>
           <p>
-            {!props.isPremiumUser && <LockIcon alt="" width="10" height="10" />}
+            {!props.isPremiumUser && (
+              <LockIcon
+                alt={l10n.getString("progress-card-locked-alt")}
+                width="10"
+                height="10"
+              />
+            )}
             {l10n.getString("progress-card-auto-removed-headline")}
           </p>
         </div>
 
         {/* In Progress */}
-
         {props.isPremiumUser && (
           <div className={styles.progressItem}>
             <div className={styles.progressStat}>
