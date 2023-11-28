@@ -760,7 +760,7 @@ menu-item-logout = Kijelentkezés
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-of-service = A szolgáltatás feltételei
+terms-of-service = Szolgáltatás feltételei
 privacy-notice = Adatvédelmi nyilatkozat
 github = { -brand-github }
 footer-nav-all-breaches = Összes adatvédelmi incidens
