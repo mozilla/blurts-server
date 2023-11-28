@@ -21,6 +21,7 @@ export class DashboardPage {
   readonly FAQsNavButton: Locator;
 
   readonly exposuresHeading: Locator;
+  readonly fixedHeading: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -52,6 +53,10 @@ export class DashboardPage {
     this.exposuresHeading = page.getByRole("heading", {
       name: "View all sites where your info is exposed",
     });
+    this.fixedHeading = page.getByRole("heading", {
+      name: "View all exposures that are fixed or in-progress",
+    });
+    // this.exposedListStatus = page.locator()
   }
 
   async open() {

@@ -50,16 +50,16 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
     });
 
     // verify the navigation bar left side elements
-    expect(
-      await dashboardPage.fireFoxMonitorLogoImgButton.isVisible(),
-    ).toBeTruthy();
-    expect(await dashboardPage.dashboardNavButton.isVisible()).toBeTruthy();
-    expect(await dashboardPage.exposuresHeading.isVisible()).toBeTruthy();
-    expect(await dashboardPage.FAQsNavButton.isVisible()).toBeTruthy();
+    expect(await dashboardPage.fireFoxMonitorLogoImgButton.isVisible()).toBe(
+      true,
+    );
+    expect(await dashboardPage.dashboardNavButton.isVisible()).toBe(true);
+    expect(await dashboardPage.exposuresHeading.isVisible()).toBe(true);
+    expect(await dashboardPage.FAQsNavButton.isVisible()).toBe(true);
 
     // verify the site header elements
-    expect(await dashboardPage.actionNeededTab.isVisible()).toBeTruthy();
-    expect(await dashboardPage.fixedTab.isVisible()).toBeTruthy();
+    expect(await dashboardPage.actionNeededTab.isVisible()).toBe(true);
+    expect(await dashboardPage.fixedTab.isVisible()).toBe(true);
   });
 });
 
@@ -88,6 +88,81 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers - Outs
     }
 
     // verify the site header elements
-    expect(await dashboardPage.upgradeToPremium.isHidden()).toBeTruthy();
+    expect(await dashboardPage.upgradeToPremium.isHidden()).toBe(true);
+  });
+});
+
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Content`, () => {
+  test.beforeEach(async ({ dashboardPage, page }) => {
+    await dashboardPage.open();
+
+    try {
+      await checkAuthState(page);
+    } catch {
+      console.log("[E2E_LOG] - No fxa auth required, proceeding...");
+    }
+  });
+
+  test("Verify that the exposure list contains action needed", async ({
+    dashboardPage,
+    page,
+  }) => {
+    // link to testrail
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2301533",
+    });
+
+    await expect(dashboardPage.exposuresHeading).toBeVisible();
+    const listCount = await page
+      .locator('//div[starts-with(@class, "StatusPill_pill")]')
+      .count();
+
+    // verify exposure list conatins only exposures that need to be fixed
+    if (listCount > 0) {
+      for (let i = 0; i < listCount; i++) {
+        expect(
+          await page
+            .locator(
+              `(//div[starts-with(@class, 'StatusPill_pill')])[${i + 1}]`,
+            )
+            .textContent(),
+        ).toEqual("Action needed");
+      }
+    }
+  });
+
+  test("Verify that the exposure list contains only fixed and in progress cards", async ({
+    dashboardPage,
+    page,
+  }) => {
+    // link to testrail
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2301533",
+    });
+
+    await expect(dashboardPage.exposuresHeading).toBeVisible();
+    await dashboardPage.fixedTab.click();
+
+    // verify fixed or in-progress
+    await expect(dashboardPage.fixedHeading).toBeVisible();
+
+    // TODO: add stubb to fill in fixed/in-progress items
+    const listCount = await page
+      .locator('//div[starts-with(@class, "StatusPill_pill")]')
+      .count();
+    // verify exposure list conatins only exposures that need to be fixed
+    if (listCount > 0) {
+      for (let i = 0; i < listCount; i++) {
+        await expect(
+          page.locator(
+            `(//div[starts-with(@class, "StatusPill_pill")])[${i + 1}]`,
+          ),
+        ).toHaveText(/In-progress|Fixed/);
+      }
+    }
   });
 });
