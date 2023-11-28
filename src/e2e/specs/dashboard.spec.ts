@@ -122,13 +122,11 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Content`, () =
     // verify exposure list conatins only exposures that need to be fixed
     if (listCount > 0) {
       for (let i = 0; i < listCount; i++) {
-        expect(
-          await page
-            .locator(
-              `(//div[starts-with(@class, 'StatusPill_pill')])[${i + 1}]`,
-            )
-            .textContent(),
-        ).toEqual("Action needed");
+        await expect(
+          page.locator(
+            `(//div[starts-with(@class, 'StatusPill_pill')])[${i + 1}]`,
+          ),
+        ).toHaveText("Action needed");
       }
     }
   });
