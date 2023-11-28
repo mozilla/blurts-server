@@ -7,28 +7,31 @@
 import { useGa } from "./useGa";
 import { useGlean } from "./useGlean";
 
-const APP_ENV = process.env.NEXT_PUBLIC_APP_ENV || ("" as const);
-
 type RecordParams = {
+  name: string;
   action: string;
   path: string;
+} & {
+  [key: string]: string;
 };
 
 export const useTelemetry = () => {
-  const { pageEvents } = useGlean(APP_ENV, APP_ENV);
+  const glean = useGlean();
   const { gtag } = useGa();
 
   const record = (eventName: string, params: RecordParams) => {
     // Record event via Glean
-    pageEvents.view.record(params);
+    glean?.page.view.record(params);
 
     // Record event via GA
+    const { action, path } = params;
     gtag.record({
       type: "event",
       name: eventName,
       params: {
-        action: params.action,
-        page_location: params.path,
+        ...params,
+        action,
+        page_location: path,
       },
     });
   };

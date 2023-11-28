@@ -7,8 +7,7 @@
 import { useEffect, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { useCookies } from "react-cookie";
-import { useGlean } from "../../../hooks/useGlean";
-import { ExtraMap } from "@mozilla/glean/dist/types/core/metrics/events_database/recorded_event";
+import { GleanExtraKeys, useGlean } from "../../../hooks/useGlean";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 export type Props = {
@@ -37,8 +36,8 @@ export const PageLoadEvent = (props: Props) => {
   const [cookies, setCookie] = useCookies(["userId"]);
   const userId = props.userId;
 
-  const { pageEvents } = useGlean(props.channel, props.appEnv);
   const path = usePathname();
+  const glean = useGlean();
 
   const required: RequiredKeys = useMemo(() => {
     return { path };
@@ -94,14 +93,14 @@ export const PageLoadEvent = (props: Props) => {
   }
 
   const keys = useMemo(
-    () => Object.assign(required, optional) as ExtraMap,
+    () => Object.assign(required, optional) as GleanExtraKeys,
     [required, optional],
   );
 
   // On first load of the page, record a page view.
   useEffect(() => {
-    pageEvents.view.record(keys);
-  }, [pageEvents.view, keys]);
+    glean?.page.view.record(keys);
+  }, [glean, keys]);
 
   // This component doesn't render anything.
   return <></>;

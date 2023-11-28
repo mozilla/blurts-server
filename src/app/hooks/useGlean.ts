@@ -8,6 +8,12 @@ import { useEffect, useState } from "react";
 import Glean from "@mozilla/glean/web";
 // @ts-expect-error We do not have type declarations for metrics.yaml, yet.
 import gleanMetrics from "../../telemetry/metrics.yaml";
+import {
+  SnakeToCamelCase,
+  convertSnakeToCamelCase,
+} from "../functions/universal/convertSnakeToCamelCase";
+
+const APP_ENV = process.env.NEXT_PUBLIC_APP_ENV || "";
 
 export type GleanExtraKeys = Record<string, string | boolean | number>;
 
@@ -35,53 +41,30 @@ type GleanMetrics = {
   $schema: string;
 } & GleanCategories;
 
-type SnakeToCamelCase<S extends string> = S extends `${infer T}_${infer U}`
-  ? `${T}${Capitalize<SnakeToCamelCase<U>>}`
-  : S;
-
-type GleanMetricModules = {
-  [K in keyof GleanCategories as SnakeToCamelCase<string>]: GleanCategories[K];
-};
-
-function convertSnakeToCamelCase(string: string): string {
-  const underscore = "_" as const;
-  if (!string.includes(underscore)) {
-    return string;
-  }
-
-  return string
-    .split(underscore)
-    .map((segment, segmentIndex) =>
-      segmentIndex === 0
-        ? segment
-        : `${segment[0].toUpperCase()}${segment.slice(1)}`,
-    )
-    .join("");
-}
-
 // We do not need $schema here — ignore it.
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function getMetrics({ $schema, ...metrics }: GleanMetrics): GleanCategories {
-  return metrics;
-}
+const { $schema, ...metrics }: GleanMetrics = gleanMetrics;
+
+type GleanMetricModules =
+  | {
+      [K in keyof GleanCategories as SnakeToCamelCase<string>]: GleanCategories[K];
+    }
+  | null;
 
 // Custom hook that initializes Glean and returns the Glean objects required
 // to record data.
-export const useGlean = (channel: string, appEnv: string) => {
-  const [gleanEvents, setGleanEvents] = useState<GleanMetricModules | null>(
-    null,
-  );
+export const useGlean = () => {
+  const [gleanEvents, setGleanEvents] = useState<GleanMetricModules>(null);
 
-  const loadGleanEvents = () => {
-    const metrics = getMetrics(gleanMetrics);
+  const loadGleanModules = () => {
     const gleanModuleNames = Object.keys(metrics).map((metricCategory) =>
       convertSnakeToCamelCase(metricCategory),
     );
-    Promise.all(
-      gleanModuleNames.map(
-        (moduleName) => import(`../../telemetry/generated/${moduleName}`),
-      ),
-    )
+    const modulePromises = gleanModuleNames.map(
+      (moduleName) => import(`../../telemetry/generated/${moduleName}`),
+    );
+
+    Promise.all(modulePromises)
       .then((importedModules) => {
         const exportModules = gleanModuleNames.reduce(
           (modules, moduleName, moduleIndex) => ({
@@ -90,7 +73,6 @@ export const useGlean = (channel: string, appEnv: string) => {
           }),
           {},
         );
-
         setGleanEvents(exportModules);
       })
       .catch((error) => {
@@ -107,34 +89,30 @@ export const useGlean = (channel: string, appEnv: string) => {
     // Enable upload only if the user has not opted out of tracking.
     const uploadEnabled = navigator.doNotTrack !== "1";
 
-    if (!channel) {
-      throw new ErrorEvent("No channel provided for Glean");
-    }
-
-    if (!appEnv) {
-      throw new ErrorEvent("No appEnv provided for Glean");
+    if (!APP_ENV) {
+      throw new ErrorEvent("No APP_ENV provided for Glean");
     }
 
     Glean.initialize("monitor.frontend", uploadEnabled, {
       // This will submit an events ping every time an event is recorded.
       maxEvents: 1,
-      channel,
+      channel: APP_ENV,
     });
 
     // Glean debugging options can be found here:
     // https://mozilla.github.io/glean/book/reference/debug/index.html
-    if (appEnv && ["local", "heroku"].includes(appEnv)) {
+    if (APP_ENV && ["local", "heroku"].includes(APP_ENV)) {
       // Enable logging pings to the browser console.
       Glean.setLogPings(true);
       // Tag pings for the Debug Viewer
       // @see https://debug-ping-preview.firebaseapp.com/pings/fx-monitor-local-dev
-      Glean.setDebugViewTag(`fx-monitor-${appEnv}-dev`);
+      Glean.setDebugViewTag(`fx-monitor-${APP_ENV}-dev`);
 
-      void loadGleanEvents();
+      void loadGleanModules();
     }
     // This effect should only run once
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [channel, appEnv]);
+  }, []);
 
   // Return all generated Glean objects required for recording data.
   return gleanEvents;
