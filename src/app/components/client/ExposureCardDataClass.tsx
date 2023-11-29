@@ -78,7 +78,12 @@ export const ExposureCardDataClassLayout = (
 ) => {
   const l10n = useL10n();
   const isPremiumUser = props.isPremiumUser;
+  // Premium users will have fully expanded lists under their respective data class header, managed in the <PremiumDataClassDetailsElem /> component.
+  // Breach cards should only have the emails list expanded.
+  const [detailsList, setDetailsList] = useState<ReactElement>();
 
+  // Default data class header format: "DataClass: [number]", e.g., "Phone number: 3".
+  // For premium users, data class headers for data broker cards will update to include just the data class, without the count, e.g., "Phone number". Breach cards remain unchanged.
   const [dataClassHeader, setDataClassHeader] = useState<ReactElement | string>(
     <>
       {l10n.getString("exposure-card-label-and-count", {
@@ -87,7 +92,6 @@ export const ExposureCardDataClassLayout = (
       })}
     </>,
   );
-  const [detailsList, setDetailsList] = useState<ReactElement>();
 
   useEffect(() => {
     // Data breach cards only
