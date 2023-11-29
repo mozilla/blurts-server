@@ -80,6 +80,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
       <DataBrokerDataClass
         scanResultData={scanResult}
         key="relatives"
+        dataBrokerResultType="relatives"
         icon={<MultipleUsersIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-family-members")}
         num={scanResult.relatives.length}
@@ -92,6 +93,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
       <DataBrokerDataClass
         scanResultData={scanResult}
         key="phones"
+        dataBrokerResultType="phones"
         icon={<PhoneIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
         num={scanResult.phones.length}
@@ -104,6 +106,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
       <DataBrokerDataClass
         scanResultData={scanResult}
         key="emails"
+        dataBrokerResultType="emails"
         icon={<EmailIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-email")}
         num={scanResult.emails.length}
@@ -116,28 +119,14 @@ const ScanResultCard = (props: ScanResultCardProps) => {
       <DataBrokerDataClass
         scanResultData={scanResult}
         key="addresses"
+        dataBrokerResultType="addresses"
         icon={<LocationPinIcon alt="" width="13" height="13" />}
         exposureCategoryLabel={l10n.getString("exposure-card-address")}
         num={scanResult.addresses.length}
         isPremiumUser={props.isPremiumUser}
       />,
     );
-    // TODO: Add unit test when changing this code:
-    /* c8 ignore next 13 */
-  } else {
-    // "Other" item when none of the conditions above are met
-    exposureCategoriesArray.push(
-      <DataBrokerDataClass
-        scanResultData={scanResult}
-        key="other"
-        icon={<QuestionMarkCircle alt="" width="13" height="13" />}
-        exposureCategoryLabel={l10n.getString("exposure-card-other")}
-        num={0}
-        isPremiumUser={props.isPremiumUser}
-      />,
-    );
   }
-
   const COMPANY_NAME_MAX_CHARACTER_COUNT = 20;
   const isCompanyNameTooLong =
     scanResult.data_broker.length > COMPANY_NAME_MAX_CHARACTER_COUNT;
