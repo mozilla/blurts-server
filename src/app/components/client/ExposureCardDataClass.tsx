@@ -76,7 +76,7 @@ export const ExposureCardDataClassLayout = (
   props: ExposureCardDataClassLayoutProps,
 ) => {
   const l10n = useL10n();
-  const isPremiumUser = props.isPremiumUser;
+  const isPremiumUser = !props.isPremiumUser;
   // Premium users will have fully expanded lists under their respective data class header.
   // Breach cards should only have the emails list expanded.
   const [detailsList, setDetailsList] = useState<ReactElement>();
