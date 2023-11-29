@@ -280,6 +280,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
         <ExposureCardDataClassLayout
           type={subscriberBreach}
           key={dataClass}
+          dataBreachDataType={dataClass}
           icon={<EmailIcon alt="" width="13" height="13" />}
           label={l10n.getString("exposure-card-email")}
           count={emailLength}
@@ -290,6 +291,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
         <ExposureCardDataClassLayout
           type={subscriberBreach}
           key={dataClass}
+          dataBreachDataType={dataClass}
           icon={<PasswordIcon alt="" width="13" height="13" />}
           label={l10n.getString("exposure-card-password")}
           count={emailLength}
@@ -300,6 +302,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
         <ExposureCardDataClassLayout
           type={subscriberBreach}
           key={dataClass}
+          dataBreachDataType={dataClass}
           icon={<PhoneIcon alt="" width="13" height="13" />}
           label={l10n.getString("exposure-card-phone-number")}
           count={emailLength}
@@ -310,6 +313,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
         <ExposureCardDataClassLayout
           type={subscriberBreach}
           key={dataClass}
+          dataBreachDataType={dataClass}
           icon={<QuestionMarkCircle alt="" width="13" height="13" />}
           label={l10n.getString("exposure-card-ip-address")}
           count={emailLength}

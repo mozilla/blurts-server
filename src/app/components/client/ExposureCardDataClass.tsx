@@ -10,6 +10,7 @@ import styles from "./ExposureCard.module.scss";
 import { useL10n } from "../../hooks/l10n";
 import { Exposure, isScanResult } from "./ExposureCard";
 import { StateAbbr } from "../../../utils/states";
+import { HibpBreachDataTypes } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
 
 type OnerepScanResultSerializedColumns = Extract<
   keyof OnerepScanResultRow,
@@ -39,8 +40,8 @@ const PremiumDataClassDetails = (props: PremiumDataClassDetailsProps) => {
     switch (dataBrokerDataType) {
       case "addresses":
         content = addresses.map(
-          ({ city, state, street, zip }: DataBrokerAddress) => (
-            <li key={`${city}-${String(state)}-${street}-${zip}`}>
+          ({ city, state, street, zip }: DataBrokerAddress, index: number) => (
+            <li key={`${props.dataBrokerDataType}-${index}`}>
               {street}, {city}, {String(state)}, {zip}
             </li>
           ),
@@ -51,18 +52,14 @@ const PremiumDataClassDetails = (props: PremiumDataClassDetailsProps) => {
       case "relatives": {
         const items = exposure[dataBrokerDataType] || [];
         content = items.map((item: string, index: number) => (
-          <li key={index}>{item}</li>
+          <li key={`${props.dataBrokerDataType}-${index}`}>{item}</li>
         ));
         break;
       }
     }
   }
 
-  return (
-    <div className={styles.dataClassListDetailsWrapper}>
-      <ul className={styles.dataClassListDetails}>{content}</ul>
-    </div>
-  );
+  return content;
 };
 
 type ExposureCardDataClassLayoutProps = {
@@ -72,6 +69,7 @@ type ExposureCardDataClassLayoutProps = {
   count: number;
   isPremiumUser?: boolean;
   dataBrokerDataType?: OnerepScanResultSerializedColumns;
+  dataBreachDataType?: HibpBreachDataTypes[keyof HibpBreachDataTypes];
 };
 
 export const ExposureCardDataClassLayout = (
@@ -99,14 +97,12 @@ export const ExposureCardDataClassLayout = (
     if (!isScanResult(props.type)) {
       const emailsList =
         // Displaying the list of monitored emails exclusively in a breach card
-        props.label === l10n.getString("exposure-card-email") ? (
-          <div className={styles.dataClassListDetailsWrapper}>
-            <ul className={styles.dataClassListDetails}>
-              {props.type.emailsAffected.map((email: string, index: number) => (
-                <li key={index}>{email}</li>
-              ))}
-            </ul>
-          </div>
+        props.dataBreachDataType === "email-addresses" ? (
+          <>
+            {props.type.emailsAffected.map((email: string, index: number) => (
+              <li key={`${props.dataBreachDataType}-${index}`}>{email}</li>
+            ))}
+          </>
         ) : (
           <></>
         );
@@ -142,7 +138,9 @@ export const ExposureCardDataClassLayout = (
         <span className={styles.exposureTypeIcon}>{props.icon}</span>
         <span>{dataClassHeader}</span>
       </div>
-      {detailsList}
+      <div className={styles.dataClassListDetailsWrapper}>
+        <ul className={styles.dataClassListDetails}>{detailsList}</ul>
+      </div>
     </div>
   );
 };
