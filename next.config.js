@@ -135,11 +135,6 @@ const nextConfig = {
       type: "asset/source",
     });
 
-    config.module.rules.push({
-      test: /\.ya?ml$/,
-      use: "yaml-loader",
-    });
-
     config.externals ??= {};
     config.externals.push({
       knex: "commonjs knex",
