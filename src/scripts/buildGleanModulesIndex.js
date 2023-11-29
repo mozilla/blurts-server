@@ -5,7 +5,7 @@
 import fs from "fs";
 import YAML from "yaml";
 
-const GLEAN_APP_DIR = "src/telemetry/";
+const GLEAN_APP_DIR = "src/telemetry";
 
 function convertSnakeToCamelCase(string) {
   const underscore = "_";

@@ -13,7 +13,7 @@ interface SessionProviderProps {
 }
 
 export const PublicEnvContext = createContext({
-  APP_ENV: "",
+  PUBLIC_APP_ENV: "",
 });
 
 export const PublicEnvProvider = ({
