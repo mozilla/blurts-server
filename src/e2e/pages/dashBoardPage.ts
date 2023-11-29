@@ -56,7 +56,6 @@ export class DashboardPage {
     this.fixedHeading = page.getByRole("heading", {
       name: "View all exposures that are fixed or in-progress",
     });
-    // this.exposedListStatus = page.locator()
   }
 
   async open() {
