@@ -5,14 +5,13 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import EventMetricType from "@mozilla/glean/private/metrics/event";
 import { useGa } from "./useGa";
 import { GleanEvents, useGlean } from "./useGlean";
 
 type RecordParams = {
-  action: string;
-} & {
-  [key: string]: string;
-};
+  action: "string";
+} & EventMetricType;
 
 export const useTelemetry = () => {
   const path = usePathname();
@@ -23,7 +22,8 @@ export const useTelemetry = () => {
     const { action, ...otherParams } = params;
 
     // Record event via Glean
-    glean[eventName]?.[action]?.record({ path, ...otherParams });
+    // @ts-ignore TODO: Get correct type for action
+    glean?.[eventName]?.[action].record({ path, ...otherParams });
 
     // Record event via GA
     gtag.record({
