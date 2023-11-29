@@ -7,8 +7,8 @@
 import { useEffect, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { useCookies } from "react-cookie";
-import { GleanExtraKeys, useGlean } from "../../../hooks/useGlean";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
+import { useTelemetry } from "../../../hooks/useTelemetry";
 
 export type Props = {
   userId: string;
@@ -37,7 +37,7 @@ export const PageLoadEvent = (props: Props) => {
   const userId = props.userId;
 
   const path = usePathname();
-  const glean = useGlean();
+  const telemetry = useTelemetry();
 
   const required: RequiredKeys = useMemo(() => {
     return { path };
@@ -93,14 +93,17 @@ export const PageLoadEvent = (props: Props) => {
   }
 
   const keys = useMemo(
-    () => Object.assign(required, optional) as GleanExtraKeys,
+    () => Object.assign(required, optional),
     [required, optional],
   );
 
   // On first load of the page, record a page view.
   useEffect(() => {
-    glean?.page.view.record(keys);
-  }, [glean, keys]);
+    telemetry.record("page", {
+      action: "view",
+      ...keys,
+    });
+  }, [telemetry, keys]);
 
   // This component doesn't render anything.
   return <></>;

@@ -8,7 +8,6 @@ import { useGa } from "./useGa";
 import { useGlean } from "./useGlean";
 
 type RecordParams = {
-  name: string;
   action: string;
   path: string;
 } & {
@@ -20,11 +19,16 @@ export const useTelemetry = () => {
   const { gtag } = useGa();
 
   const record = (eventName: string, params: RecordParams) => {
+    if (!glean) {
+      return;
+    }
+
+    const { action, path, ...otherParams } = params;
+
     // Record event via Glean
-    glean?.page.view.record(params);
+    glean[eventName]?.[action]?.record({ path, ...otherParams });
 
     // Record event via GA
-    const { action, path } = params;
     gtag.record({
       type: "event",
       name: eventName,
