@@ -23,19 +23,20 @@ type DataBrokerAddress = {
   zip?: string;
 };
 
-type DataClassDetails = {
+type PremiumDataClassDetailsProps = {
   exposure: Exposure;
-  dataBrokerResultType?: OnerepScanResultSerializedColumns;
+  dataBrokerDataType: OnerepScanResultSerializedColumns;
 };
 
-const PremiumDataClassDetailsElem = (props: DataClassDetails) => {
-  const { exposure, dataBrokerResultType } = props;
+// Only for data broker cards
+const PremiumDataClassDetails = (props: PremiumDataClassDetailsProps) => {
+  const { exposure, dataBrokerDataType } = props;
   let content: JSX.Element[] | null = null;
 
   if (isScanResult(exposure)) {
     const addresses = exposure.addresses || [];
 
-    switch (dataBrokerResultType) {
+    switch (dataBrokerDataType) {
       case "addresses":
         content = addresses.map(
           ({ city, state, street, zip }: DataBrokerAddress) => (
@@ -48,7 +49,7 @@ const PremiumDataClassDetailsElem = (props: DataClassDetails) => {
       case "emails":
       case "phones":
       case "relatives": {
-        const items = exposure[dataBrokerResultType] || [];
+        const items = exposure[dataBrokerDataType] || [];
         content = items.map((item: string, index: number) => (
           <li key={index}>{item}</li>
         ));
@@ -70,7 +71,7 @@ type ExposureCardDataClassLayoutProps = {
   label: string;
   count: number;
   isPremiumUser?: boolean;
-  dataBrokerResultType?: OnerepScanResultSerializedColumns;
+  dataBrokerDataType?: OnerepScanResultSerializedColumns;
 };
 
 export const ExposureCardDataClassLayout = (
@@ -78,7 +79,7 @@ export const ExposureCardDataClassLayout = (
 ) => {
   const l10n = useL10n();
   const isPremiumUser = props.isPremiumUser;
-  // Premium users will have fully expanded lists under their respective data class header, managed in the <PremiumDataClassDetailsElem /> component.
+  // Premium users will have fully expanded lists under their respective data class header.
   // Breach cards should only have the emails list expanded.
   const [detailsList, setDetailsList] = useState<ReactElement>();
 
@@ -120,14 +121,15 @@ export const ExposureCardDataClassLayout = (
       }
 
       // Render data class details for premium users
-      const dataClassExpandedDetails = isPremiumUser ? (
-        <PremiumDataClassDetailsElem
-          exposure={props.type}
-          dataBrokerResultType={props.dataBrokerResultType}
-        />
-      ) : (
-        <></>
-      );
+      const dataClassExpandedDetails =
+        isPremiumUser && props.dataBrokerDataType ? (
+          <PremiumDataClassDetails
+            exposure={props.type}
+            dataBrokerDataType={props.dataBrokerDataType}
+          />
+        ) : (
+          <></>
+        );
       setDetailsList(dataClassExpandedDetails);
     }
     // Only run this condition once

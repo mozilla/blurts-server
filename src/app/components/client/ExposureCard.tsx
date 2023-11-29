@@ -80,7 +80,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
       <ExposureCardDataClassLayout
         type={scanResult}
         key="relatives"
-        dataBrokerResultType="relatives"
+        dataBrokerDataType="relatives"
         icon={<MultipleUsersIcon alt="" width="13" height="13" />}
         label={l10n.getString("exposure-card-family-members")}
         count={scanResult.relatives.length}
@@ -93,7 +93,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
       <ExposureCardDataClassLayout
         type={scanResult}
         key="phones"
-        dataBrokerResultType="phones"
+        dataBrokerDataType="phones"
         icon={<PhoneIcon alt="" width="13" height="13" />}
         label={l10n.getString("exposure-card-phone-number")}
         count={scanResult.phones.length}
@@ -106,7 +106,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
       <ExposureCardDataClassLayout
         type={scanResult}
         key="emails"
-        dataBrokerResultType="emails"
+        dataBrokerDataType="emails"
         icon={<EmailIcon alt="" width="13" height="13" />}
         label={l10n.getString("exposure-card-email")}
         count={scanResult.emails.length}
@@ -119,7 +119,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
       <ExposureCardDataClassLayout
         type={scanResult}
         key="addresses"
-        dataBrokerResultType="addresses"
+        dataBrokerDataType="addresses"
         icon={<LocationPinIcon alt="" width="13" height="13" />}
         label={l10n.getString("exposure-card-address")}
         count={scanResult.addresses.length}
