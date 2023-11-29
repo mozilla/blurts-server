@@ -51,7 +51,7 @@ const PremiumDataClassDetailsElem = (props: DataClassDetails) => {
         content = addresses.map(
           ({ city, state, street, zip }: DataBrokerAddress) => (
             <li key={`${city}-${String(state)}-${street}-${zip}`}>
-              {city}, {String(state)}, {street}, {zip}
+              {street}, {city}, {String(state)}, {zip}
             </li>
           ),
         );
@@ -78,21 +78,13 @@ const PremiumDataClassDetailsElem = (props: DataClassDetails) => {
 };
 
 export const DataBrokerDataClass = (props: DataBrokerDataClassProps) => {
-  const emailsList = (
-    <ul className={styles.emailsList}>
-      {props.scanResultData.emails.map((email: string, index: number) => (
-        <li key={index}>{email}</li>
-      ))}
-    </ul>
-  );
-
   const dataClassExpandedDetails = !props.isPremiumUser ? (
     <PremiumDataClassDetailsElem
       exposure={props.scanResultData}
       dataBrokerResultType={props.dataBrokerResultType}
     />
   ) : (
-    emailsList
+    <></>
   );
   return (
     <ExposureCardDataClassLayout
