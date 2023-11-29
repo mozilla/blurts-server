@@ -25,10 +25,9 @@ export const PercentageChart = (props: WelcomeToPremiumProps) => {
   const circumference = 2 * Math.PI * radius;
   const sliceBorderWidth = 0;
   const headingNumberSize = diameter / 6;
-  const headingPercentageSize = diameter / 8;
-  const headingLabelSize = headingPercentageSize / 2;
+  const headingPercentageSize = diameter / 10;
+  const headingLabelSize = headingNumberSize / 3;
   const headingGap = 4;
-  const headingXOffset = 5;
 
   const slices = percentages.map(([label, percent], index) => {
     const percentOffset = percentages
@@ -76,29 +75,28 @@ export const PercentageChart = (props: WelcomeToPremiumProps) => {
             className={styles.gutter}
           />
           {slices}
-          {l10n.getFragment("exposure-reduction-chart-heading", {
-            elems: {
-              nr: (
-                <text
-                  className={styles.percentageHeadingNr}
-                  fontSize={headingNumberSize}
-                  x={diameter / 2 - headingXOffset}
-                  y={diameter / 2 - headingGap / 2}
-                  textAnchor="middle"
-                />
-              ),
-              percent: (
-                <text
-                  className={styles.percent}
-                  fontSize={headingPercentageSize}
-                  x={diameter / 2 + headingXOffset}
-                  y={diameter / 2 - headingGap / 2}
-                  textAnchor="middle"
-                />
-              ),
-            },
-            vars: { nr: props.exposureReduction },
-          })}
+          <text x="50%" y={diameter / 2 - headingGap / 2} textAnchor="middle">
+            {l10n.getFragment("exposure-reduction-chart-heading", {
+              elems: {
+                nr: (
+                  <tspan
+                    className={styles.percentageHeadingNr}
+                    fontSize={headingNumberSize}
+                  />
+                ),
+                percent: (
+                  <tspan
+                    className={styles.percent}
+                    fontSize={headingPercentageSize}
+                    dy={-(headingPercentageSize / 5)}
+                  />
+                ),
+              },
+              vars: {
+                nr: props.exposureReduction,
+              },
+            })}
+          </text>
           {l10n.getFragment("exposure-reduction-chart-explanation", {
             elems: {
               label_line_1: (
