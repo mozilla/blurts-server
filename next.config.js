@@ -135,7 +135,7 @@ const nextConfig = {
       type: "asset/source",
     });
 
-    config.module.rules.push(      {
+    config.module.rules.push({
       test: /\.ya?ml$/,
       use: "yaml-loader",
     });

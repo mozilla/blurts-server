@@ -4,17 +4,18 @@
 
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useGa } from "./useGa";
 import { useGlean } from "./useGlean";
 
 type RecordParams = {
   action: string;
-  path: string;
 } & {
   [key: string]: string;
 };
 
 export const useTelemetry = () => {
+  const path = usePathname();
   const glean = useGlean();
   const { gtag } = useGa();
 
@@ -23,7 +24,7 @@ export const useTelemetry = () => {
       return;
     }
 
-    const { action, path, ...otherParams } = params;
+    const { action, ...otherParams } = params;
 
     // Record event via Glean
     glean[eventName]?.[action]?.record({ path, ...otherParams });

@@ -5,23 +5,16 @@
 "use client";
 
 import { useEffect, useMemo } from "react";
-import { usePathname } from "next/navigation";
 import { useCookies } from "react-cookie";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 
 export type Props = {
   userId: string;
-  channel: string;
-  appEnv: string;
   enabledFlags: FeatureFlagName[];
 };
 
-type RequiredKeys = {
-  path: string;
-};
-
-type OptionalKeys = {
+type PageViewParams = {
   user_id?: string;
   referrer?: string;
   utm_campaign?: string;
@@ -36,14 +29,9 @@ export const PageLoadEvent = (props: Props) => {
   const [cookies, setCookie] = useCookies(["userId"]);
   const userId = props.userId;
 
-  const path = usePathname();
   const telemetry = useTelemetry();
 
-  const required: RequiredKeys = useMemo(() => {
-    return { path };
-  }, [path]);
-
-  const optional: OptionalKeys = useMemo(() => {
+  const pageViewParams: PageViewParams = useMemo(() => {
     // If the user is not logged in, use randomly-generated user ID and store in cookie.
     if (userId.startsWith("guest")) {
       if (!cookies.userId) {
@@ -71,7 +59,7 @@ export const PageLoadEvent = (props: Props) => {
       // Remove any fragment identifiers.
       referrerUrl.hash = "";
 
-      optional["referrer"] = referrerUrl.toString();
+      pageViewParams["referrer"] = referrerUrl.toString();
     } catch (ex) {
       console.error("Could not parse referrer as URL:", document.referrer);
     }
@@ -87,23 +75,18 @@ export const PageLoadEvent = (props: Props) => {
       ] as const
     ).forEach((key) => {
       if (params.has(key)) {
-        optional[key] = params.get(key) ?? "";
+        pageViewParams[key] = params.get(key) ?? "";
       }
     });
   }
-
-  const keys = useMemo(
-    () => Object.assign(required, optional),
-    [required, optional],
-  );
 
   // On first load of the page, record a page view.
   useEffect(() => {
     telemetry.record("page", {
       action: "view",
-      ...keys,
+      ...pageViewParams,
     });
-  }, [telemetry, keys]);
+  }, [telemetry, pageViewParams]);
 
   // This component doesn't render anything.
   return <></>;
