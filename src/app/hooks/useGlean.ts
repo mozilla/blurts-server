@@ -4,37 +4,40 @@
 
 "use client";
 
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import Glean from "@mozilla/glean/web";
 import * as gleanEvents from "../../telemetry/generated";
+import { PublicEnvContext } from "../../contextProviders/public-env";
 
-const APP_ENV = process.env.NEXT_PUBLIC_APP_ENV || "";
+export type GleanEvents = typeof gleanEvents;
 
 // Custom hook that initializes Glean and returns all available events.
-export const useGlean = () => {
+export const useGlean = (): GleanEvents => {
+  const { PUBLIC_APP_ENV } = useContext(PublicEnvContext);
+
   // Initialize Glean only on the first render of our custom hook.
   useEffect(() => {
     // Enable upload only if the user has not opted out of tracking.
     const uploadEnabled = navigator.doNotTrack !== "1";
 
-    if (!APP_ENV) {
-      throw new ErrorEvent("No APP_ENV provided for Glean");
+    if (!PUBLIC_APP_ENV) {
+      throw new ErrorEvent("No PUBLIC_APP_ENV provided for Glean");
     }
 
     Glean.initialize("monitor.frontend", uploadEnabled, {
       // This will submit an events ping every time an event is recorded.
       maxEvents: 1,
-      channel: APP_ENV,
+      channel: PUBLIC_APP_ENV,
     });
 
     // Glean debugging options can be found here:
     // https://mozilla.github.io/glean/book/reference/debug/index.html
-    if (APP_ENV && ["local", "heroku"].includes(APP_ENV)) {
+    if (PUBLIC_APP_ENV && ["local", "heroku"].includes(PUBLIC_APP_ENV)) {
       // Enable logging pings to the browser console.
       Glean.setLogPings(true);
       // Tag pings for the Debug Viewer
       // @see https://debug-ping-preview.firebaseapp.com/pings/fx-monitor-local-dev
-      Glean.setDebugViewTag(`fx-monitor-${APP_ENV}-dev`);
+      Glean.setDebugViewTag(`fx-monitor-${PUBLIC_APP_ENV}-dev`);
     }
     // This effect should only run once
     // eslint-disable-next-line react-hooks/exhaustive-deps
