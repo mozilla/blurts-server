@@ -320,7 +320,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
         />,
       );
       // TODO: Add unit test when changing this code:
-      /* c8 ignore next 12 */
+      /* c8 ignore next 13 */
     }
     // Handle all other breach categories
     else {
@@ -330,7 +330,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           key={dataClass}
           icon={<QuestionMarkCircle alt="" width="13" height="13" />} // default icon for categories without a unique one
           label={l10n.getString(dataClass)} // categories are localized in data-classes.ftl
-          count={3}
+          count={emailLength}
         />,
       );
     }
