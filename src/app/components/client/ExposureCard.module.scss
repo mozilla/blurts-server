@@ -198,7 +198,7 @@
         @media screen and (min-width: $screen-lg) {
           display: flex;
           flex-direction: row;
-          align-items: center;
+          align-items: start;
           gap: $layout-xs;
           flex-wrap: wrap;
           justify-content: flex-start;
@@ -215,12 +215,12 @@
             }
           }
 
-          .dataClassListWrapper {
+          .dataClassListDetailsWrapper {
             padding-inline-start: var(--exposureDetailsIconWidth);
             font: $text-body-xs;
             font-weight: 600;
 
-            .dataClassList {
+            .dataClassListDetails {
               list-style: none;
               margin: 0;
               padding: $spacing-xs 0 0 $spacing-xs;

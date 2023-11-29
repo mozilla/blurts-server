@@ -4,10 +4,9 @@
 
 "use client";
 
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./ExposureCard.module.scss";
-import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { useL10n } from "../../hooks/l10n";
 import { Exposure, isScanResult } from "./ExposureCard";
 import { StateAbbr } from "../../../utils/states";
@@ -16,15 +15,6 @@ type OnerepScanResultSerializedColumns = Extract<
   keyof OnerepScanResultRow,
   "emails" | "phones" | "addresses" | "relatives"
 >;
-
-type DataBrokerDataClassProps = {
-  scanResultData: OnerepScanResultRow;
-  exposureCategoryLabel: string;
-  num: number;
-  icon: ReactElement;
-  isPremiumUser: boolean;
-  dataBrokerResultType?: OnerepScanResultSerializedColumns;
-};
 
 type DataBrokerAddress = {
   city: string;
@@ -40,7 +30,6 @@ type DataClassDetails = {
 
 const PremiumDataClassDetailsElem = (props: DataClassDetails) => {
   const { exposure, dataBrokerResultType } = props;
-
   let content: JSX.Element[] | null = null;
 
   if (isScanResult(exposure)) {
@@ -65,68 +54,13 @@ const PremiumDataClassDetailsElem = (props: DataClassDetails) => {
         ));
         break;
       }
-      default:
-        break;
     }
   }
 
   return (
-    <div className={styles.dataClassListWrapper}>
-      <ul className={styles.dataClassList}>{content}</ul>
+    <div className={styles.dataClassListDetailsWrapper}>
+      <ul className={styles.dataClassListDetails}>{content}</ul>
     </div>
-  );
-};
-
-export const DataBrokerDataClass = (props: DataBrokerDataClassProps) => {
-  const dataClassExpandedDetails = !props.isPremiumUser ? (
-    <PremiumDataClassDetailsElem
-      exposure={props.scanResultData}
-      dataBrokerResultType={props.dataBrokerResultType}
-    />
-  ) : (
-    <></>
-  );
-  return (
-    <ExposureCardDataClassLayout
-      type={props.scanResultData}
-      icon={props.icon}
-      label={props.exposureCategoryLabel}
-      count={props.num}
-      isPremiumUser={props.isPremiumUser}
-      detailsList={dataClassExpandedDetails}
-    />
-  );
-};
-
-type BreachDataClassProps = {
-  subscriberBreachData: SubscriberBreach;
-  exposureCategoryLabel: string;
-  icon: ReactElement;
-};
-
-export const BreachDataClass = (props: BreachDataClassProps) => {
-  const emailLength = props.subscriberBreachData.emailsAffected.length;
-
-  const emailsList = (
-    <div className={styles.dataClassListWrapper}>
-      <ul className={styles.dataClassList}>
-        {props.subscriberBreachData.emailsAffected.map(
-          (email: string, index: number) => (
-            <li key={index}>{email}</li>
-          ),
-        )}
-      </ul>
-    </div>
-  );
-
-  return (
-    <ExposureCardDataClassLayout
-      type={props.subscriberBreachData}
-      icon={props.icon}
-      label={props.exposureCategoryLabel}
-      count={emailLength}
-      detailsList={emailsList}
-    />
   );
 };
 
@@ -135,32 +69,73 @@ type ExposureCardDataClassLayoutProps = {
   icon: ReactElement;
   label: string;
   count: number;
-  detailsList: ReactElement;
   isPremiumUser?: boolean;
+  dataBrokerResultType?: OnerepScanResultSerializedColumns;
 };
 
-const ExposureCardDataClassLayout = (
+export const ExposureCardDataClassLayout = (
   props: ExposureCardDataClassLayoutProps,
 ) => {
   const l10n = useL10n();
+  const isPremiumUser = props.isPremiumUser;
+
+  const [dataClassHeader, setDataClassHeader] = useState<ReactElement | string>(
+    <>
+      {l10n.getString("exposure-card-label-and-count", {
+        category_label: props.label,
+        count: props.count,
+      })}
+    </>,
+  );
+  const [detailsList, setDetailsList] = useState<ReactElement>();
+
+  useEffect(() => {
+    // Data breach
+    if (!isScanResult(props.type)) {
+      const emailsList =
+        props.label === l10n.getString("exposure-card-email") ? (
+          <div className={styles.dataClassListDetailsWrapper}>
+            <ul className={styles.dataClassListDetails}>
+              {props.type.emailsAffected.map((email: string, index: number) => (
+                <li key={index}>{email}</li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <></>
+        );
+      setDetailsList(emailsList);
+    }
+
+    // Data broker
+    else {
+      // Change default data class header when user is premium
+      if (isPremiumUser) {
+        setDataClassHeader(props.label);
+      }
+
+      // List out data class details when user is premium
+      const dataClassExpandedDetails = isPremiumUser ? (
+        <PremiumDataClassDetailsElem
+          exposure={props.type}
+          dataBrokerResultType={props.dataBrokerResultType}
+        />
+      ) : (
+        <></>
+      );
+      setDetailsList(dataClassExpandedDetails);
+    }
+    // Only run this condition once
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className={styles.detailsFoundItem}>
       <div className={styles.label}>
         <span className={styles.exposureTypeIcon}>{props.icon}</span>
-        <span>
-          {isScanResult(props.type) && !props.isPremiumUser
-            ? props.label
-            : l10n.getString("exposure-card-label-and-count", {
-                category_label: props.label,
-                count: props.count,
-              })}
-        </span>
+        <span>{dataClassHeader}</span>
       </div>
-
-      {isScanResult(props.type) && props.detailsList}
-      {!isScanResult(props.type) &&
-        props.label === l10n.getString("exposure-card-email") &&
-        props.detailsList}
+      {detailsList}
     </div>
   );
 };
