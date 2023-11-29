@@ -71,8 +71,8 @@ const PremiumDataClassDetailsElem = (props: DataClassDetails) => {
   }
 
   return (
-    <div className={styles.emails}>
-      <ul className={styles.emailsList}>{content}</ul>
+    <div className={styles.dataClassListWrapper}>
+      <ul className={styles.dataClassList}>{content}</ul>
     </div>
   );
 };
@@ -108,8 +108,8 @@ export const BreachDataClass = (props: BreachDataClassProps) => {
   const emailLength = props.subscriberBreachData.emailsAffected.length;
 
   const emailsList = (
-    <div className={styles.emails}>
-      <ul className={styles.emailsList}>
+    <div className={styles.dataClassListWrapper}>
+      <ul className={styles.dataClassList}>
         {props.subscriberBreachData.emailsAffected.map(
           (email: string, index: number) => (
             <li key={index}>{email}</li>
