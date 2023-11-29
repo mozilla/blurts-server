@@ -90,9 +90,10 @@ export const ExposureCardDataClassLayout = (
   const [detailsList, setDetailsList] = useState<ReactElement>();
 
   useEffect(() => {
-    // Data breach
+    // Data breach cards only
     if (!isScanResult(props.type)) {
       const emailsList =
+        // Displaying the list of monitored emails exclusively in a breach card
         props.label === l10n.getString("exposure-card-email") ? (
           <div className={styles.dataClassListDetailsWrapper}>
             <ul className={styles.dataClassListDetails}>
@@ -107,14 +108,14 @@ export const ExposureCardDataClassLayout = (
       setDetailsList(emailsList);
     }
 
-    // Data broker
+    // Data broker cards only
     else {
-      // Change default data class header when user is premium
+      // Update data class header for premium users
       if (isPremiumUser) {
         setDataClassHeader(props.label);
       }
 
-      // List out data class details when user is premium
+      // Render data class details for premium users
       const dataClassExpandedDetails = isPremiumUser ? (
         <PremiumDataClassDetailsElem
           exposure={props.type}
