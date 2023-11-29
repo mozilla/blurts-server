@@ -61,7 +61,8 @@ const optionalEnvVars = [
   'RECRUITMENT_BANNER_LINK',
   'RECRUITMENT_BANNER_TEXT',
   'SENTRY_DSN_LEGACY',
-  'FALSE_DOOR_TEST_LINK_PHASE_ONE'
+  'FALSE_DOOR_TEST_LINK_PHASE_ONE',
+  'HOW_IT_WORKS_SUMO_URL'
 ]
 
 /** @type {Record<string, string>} */
