@@ -6,6 +6,7 @@ import fs from "fs";
 import YAML from "yaml";
 
 const GLEAN_APP_DIR = "src/telemetry";
+const GLEAN_MODULE_INDEX_PATH = `${GLEAN_APP_DIR}/generated/index.ts`;
 
 function convertSnakeToCamelCase(string) {
   const underscore = "_";
@@ -15,17 +16,16 @@ function convertSnakeToCamelCase(string) {
 
   return string
     .split(underscore)
-    .map((segment, segmentIndex) =>
-      segmentIndex === 0
+    .map((segment, segmentIndex) => {
+      return segmentIndex === 0
         ? segment
-        : `${segment[0].toUpperCase()}${segment.slice(1)}`
-    )
+        : `${segment.charAt(0).toUpperCase()}${segment.slice(1)}`;
+    })
     .join("");
 }
 
-const getIndexFileContent = (
-  modules
-) => `/* This Source Code Form is subject to the terms of the Mozilla Public
+function getFileContent(modules) {
+  return `/* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
@@ -39,16 +39,10 @@ export {
 ${modules.map((module) => `\u0020\u0020${module},`).join("\n")}
 }
 `;
+}
 
 const metricsYaml = fs.readFileSync(`${GLEAN_APP_DIR}/metrics.yaml`, "utf8");
-// We do not use $schema — ignore it.
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { $schema, ...metrics } = YAML.parse(metricsYaml);
-const gleanModuleNames = Object.keys(metrics).map((metricCategory) =>
-  convertSnakeToCamelCase(metricCategory)
-);
+const modules = Object.keys(metrics).map(convertSnakeToCamelCase);
 
-fs.writeFileSync(
-  `${GLEAN_APP_DIR}/generated/index.ts`,
-  getIndexFileContent(gleanModuleNames)
-);
+fs.writeFileSync(GLEAN_MODULE_INDEX_PATH, getFileContent(modules));

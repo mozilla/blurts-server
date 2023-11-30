@@ -25,7 +25,7 @@
     "create-location-data": "node src/scripts/uploadAutoCompleteLocations.js",
     "get-location-data": "node src/scripts/getAutoCompleteLocations.js",
     "build-glean": "glean translate src/telemetry/metrics.yaml --format typescript --output src/telemetry/generated && npm run build-glean-index",
-    "build-glean-index": "node src/scripts/buildGleanModulesIndex.js",
+    "build-glean-index": "node src/scripts/buildGleanModuleIndex.js",
     "build-glean-docs": "glean translate src/telemetry/metrics.yaml --format markdown --output docs"
   },
   "nodemonConfig": {
