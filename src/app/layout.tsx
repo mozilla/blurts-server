@@ -14,8 +14,8 @@ import { SessionProvider } from "../contextProviders/session";
 import { authOptions } from "./api/utils/auth";
 import { metropolis } from "./fonts/Metropolis/metropolis";
 
-const PUBLIC_ENV = {
-  PUBLIC_APP_ENV: process.env.PUBLIC_APP_ENV || "",
+const PUBLIC_ENVS = {
+  PUBLIC_APP_ENV: process.env.APP_ENV || "",
 } as const;
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -63,7 +63,7 @@ export default async function RootLayout({
         data-ga4-measurement-id={process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID}
         data-node-env={process.env.NODE_ENV}
       >
-        <PublicEnvProvider publicEnv={PUBLIC_ENV}>
+        <PublicEnvProvider publicEnvs={PUBLIC_ENVS}>
           <SessionProvider session={session}>{children}</SessionProvider>
         </PublicEnvProvider>
       </body>

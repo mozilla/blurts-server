@@ -6,25 +6,25 @@
 
 import { ReactNode, createContext } from "react";
 
-const PUBLIC_ENV_DEFAULT: Record<string, string> = {
+const PUBLIC_ENVS_DEFAULT: Record<string, string> = {
   PUBLIC_APP_ENV: "",
 } as const;
 
 interface SessionProviderProps {
   children: ReactNode;
-  publicEnv: {
-    [key: keyof typeof PUBLIC_ENV_DEFAULT]: string;
+  publicEnvs: {
+    [key: keyof typeof PUBLIC_ENVS_DEFAULT]: string;
   };
 }
 
-export const PublicEnvContext = createContext(PUBLIC_ENV_DEFAULT);
+export const PublicEnvContext = createContext(PUBLIC_ENVS_DEFAULT);
 
 export const PublicEnvProvider = ({
   children,
-  publicEnv,
+  publicEnvs,
 }: SessionProviderProps) => {
   return (
-    <PublicEnvContext.Provider value={publicEnv}>
+    <PublicEnvContext.Provider value={publicEnvs}>
       {children}
     </PublicEnvContext.Provider>
   );
