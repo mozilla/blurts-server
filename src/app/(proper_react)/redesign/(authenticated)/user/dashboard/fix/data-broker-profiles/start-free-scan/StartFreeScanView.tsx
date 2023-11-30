@@ -51,7 +51,10 @@ export function StartFreeScanView(props: Props) {
             {l10n.getString(
               "fix-flow-data-broker-profiles-start-free-scan-content-p2",
             )}{" "}
-            <a href={process.env.HOW_IT_WORKS_SUMO_URL} target="_blank">
+            <a
+              href={process.env.NEXT_PUBLIC_HOW_IT_WORKS_SUMO_URL}
+              target="_blank"
+            >
               {l10n.getString(
                 "fix-flow-data-broker-profiles-start-free-scan-link-learn-more",
               )}
