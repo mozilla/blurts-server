@@ -5,16 +5,19 @@
 "use client";
 
 import { ReactNode, createContext } from "react";
-import { PUBLIC_ENV } from "../app/layout";
+
+const PUBLIC_ENV_DEFAULT: Record<string, string> = {
+  PUBLIC_APP_ENV: "",
+} as const;
 
 interface SessionProviderProps {
   children: ReactNode;
-  publicEnv: typeof PUBLIC_ENV;
+  publicEnv: {
+    [key: keyof typeof PUBLIC_ENV_DEFAULT]: string;
+  };
 }
 
-export const PublicEnvContext = createContext({
-  PUBLIC_APP_ENV: "",
-});
+export const PublicEnvContext = createContext(PUBLIC_ENV_DEFAULT);
 
 export const PublicEnvProvider = ({
   children,

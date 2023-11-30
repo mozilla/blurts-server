@@ -14,7 +14,7 @@ import { SessionProvider } from "../contextProviders/session";
 import { authOptions } from "./api/utils/auth";
 import { metropolis } from "./fonts/Metropolis/metropolis";
 
-export const PUBLIC_ENV = {
+const PUBLIC_ENV = {
   PUBLIC_APP_ENV: process.env.PUBLIC_APP_ENV || "",
 } as const;
 

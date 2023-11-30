@@ -5,13 +5,13 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import EventMetricType from "@mozilla/glean/private/metrics/event";
+import { ExtraMap } from "@mozilla/glean/dist/types/core/metrics/events_database/recorded_event.d";
 import { useGa } from "./useGa";
 import { GleanEvents, useGlean } from "./useGlean";
 
-type RecordParams = {
-  action: "string";
-} & EventMetricType;
+type RecordParams = ExtraMap & {
+  action: string;
+};
 
 export const useTelemetry = () => {
   const path = usePathname();

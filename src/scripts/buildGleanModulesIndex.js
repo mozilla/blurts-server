@@ -41,6 +41,8 @@ ${modules.map((module) => `\u0020\u0020${module},`).join("\n")}
 `;
 
 const metricsYaml = fs.readFileSync(`${GLEAN_APP_DIR}/metrics.yaml`, "utf8");
+// We do not use $schema — ignore it.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { $schema, ...metrics } = YAML.parse(metricsYaml);
 const gleanModuleNames = Object.keys(metrics).map((metricCategory) =>
   convertSnakeToCamelCase(metricCategory)
