@@ -153,9 +153,7 @@ export default async function Settings() {
   if (!session || !session.user?.subscriber) {
     return redirect("/");
   }
-  const enabledFlags = await getEnabledFeatureFlags({
-    email: session.user.email,
-  });
+
   // Re-fetch the subscriber every time, rather than reading it from `session`
   // - if the user changes their preferences on this page, the JSON web token
   // containing the subscriber data won't be updated until the next sign-in.
