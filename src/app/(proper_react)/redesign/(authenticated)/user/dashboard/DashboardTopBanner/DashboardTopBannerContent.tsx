@@ -192,7 +192,10 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               </Button>
             </div>
             <br />
-            <a href={process.env.HOW_IT_WORKS_SUMO_URL} target="_blank">
+            <a
+              href={process.env.NEXT_PUBLIC_HOW_IT_WORKS_SUMO_URL}
+              target="_blank"
+            >
               {l10n.getString(
                 "dashboard-top-banner-monitor-protects-your-even-more-learn-more",
               )}
