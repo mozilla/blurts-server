@@ -15,6 +15,7 @@ import { Button } from "../../../../../components/server/Button";
 
 import styles from "./GetStarted.module.scss";
 import { useRef } from "react";
+import { useTelemetry } from "../../../../../hooks/useTelemetry";
 
 export type Props = {
   dataBrokerCount: number;
@@ -23,6 +24,7 @@ export type Props = {
 
 export const GetStarted = (props: Props) => {
   const l10n = useL10n();
+  const telemetry = useTelemetry();
   const explainerDialogState = useOverlayTriggerState({});
   const explainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
@@ -44,7 +46,13 @@ export const GetStarted = (props: Props) => {
         <button
           {...buttonProps}
           ref={triggerRef}
-          onClick={() => explainerDialogState.open()}
+          onClick={() => {
+            telemetry.record("ctaButton", {
+              action: "click",
+              button_id: "welcome_data_protection",
+            });
+            explainerDialogState.open();
+          }}
           className={styles.explainerTrigger}
         >
           {l10n.getString("onboarding-get-started-content-explainer")}

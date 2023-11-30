@@ -19,6 +19,7 @@ import { FindExposures } from "./FindExposures";
 import { EnterInfo } from "./EnterInfo";
 import { useL10n } from "../../../../../hooks/l10n";
 import monitorLogo from "../../../../images/monitor-logo.webp";
+import { useTelemetry } from "../../../../../hooks/useTelemetry";
 
 type StepId = "getStarted" | "enterInfo" | "findExposures";
 
@@ -41,6 +42,7 @@ export const View = ({
   const skipInitialStep = stepId === "enterInfo";
   const [currentStep, setCurrentStep] = useState<StepId>(stepId);
   const router = useRouter();
+  const telemetry = useTelemetry();
 
   const currentComponent =
     currentStep === "findExposures" ? (
@@ -54,10 +56,21 @@ export const View = ({
         user={user}
         // TODO: Add unit test when changing this code:
         /* c8 ignore next */
-        onScanStarted={() => setCurrentStep("findExposures")}
+        onScanStarted={() => {
+          telemetry.record("ctaButton", {
+            action: "click",
+            button_id: "started_free_scan",
+          });
+          setCurrentStep("findExposures");
+        }}
         previousRoute={previousRoute}
         skipInitialStep={skipInitialStep}
         onGoBack={() => {
+          telemetry.record("ctaButton", {
+            action: "click",
+            button_id: "declined_free_scan",
+          });
+
           if (skipInitialStep && previousRoute) {
             router.push(previousRoute);
           } else {
@@ -68,7 +81,13 @@ export const View = ({
     ) : (
       <GetStarted
         dataBrokerCount={dataBrokerCount}
-        onStart={() => setCurrentStep("enterInfo")}
+        onStart={() => {
+          telemetry.record("ctaButton", {
+            action: "click",
+            button_id: "welcome_start",
+          });
+          setCurrentStep("enterInfo");
+        }}
       />
     );
 

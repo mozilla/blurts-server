@@ -25,6 +25,7 @@ import {
 } from "../../../../../api/v1/user/welcome-scan/create/route";
 import { meetsAgeRequirement } from "../../../../../functions/universal/user";
 import { getLocale } from "../../../../../functions/universal/getLocale";
+import { useTelemetry } from "../../../../../hooks/useTelemetry";
 
 import styles from "./EnterInfo.module.scss";
 
@@ -83,6 +84,7 @@ export const EnterInfo = ({
     confirmDialogState,
   );
 
+  const telemetry = useTelemetry();
   const l10n = useL10n();
   const userDetailsData = [
     {
@@ -304,7 +306,13 @@ export const EnterInfo = ({
           ref={triggerRef}
           // TODO: Add unit test when changing this code:
           /* c8 ignore next */
-          onClick={() => explainerDialogState.open()}
+          onClick={() => {
+            telemetry.record("ctaButton", {
+              action: "click",
+              button_id: "why_do_we_need_this_info",
+            });
+            explainerDialogState.open();
+          }}
           className={styles.explainerTrigger}
         >
           {l10n.getString("onboarding-enter-details-why-button-label")}
