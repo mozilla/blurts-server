@@ -14,6 +14,7 @@ import { SessionProvider } from "../contextProviders/session";
 import { authOptions } from "./api/utils/auth";
 import { metropolis } from "./fonts/Metropolis/metropolis";
 
+// DO NOT ADD SECRETS: Env variables added here become public.
 const PUBLIC_ENVS = {
   PUBLIC_APP_ENV: process.env.APP_ENV || "",
 } as const;
