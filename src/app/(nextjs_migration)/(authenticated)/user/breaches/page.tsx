@@ -23,6 +23,7 @@ import { BreachesTable } from "../../../components/server/BreachesTable";
 import { getComponentAsString } from "../../../functions/server/getComponentAsString";
 import { getCountryCode } from "../../../../functions/server/getCountryCode";
 import { getNonce } from "../../../functions/server/getNonce";
+import { SignInButton } from "../../../components/client/SignInButton";
 
 export function generateMetadata() {
   const l10n = getL10n();
@@ -68,14 +69,15 @@ declare global {
 
 export default async function UserBreaches() {
   const session = await getServerSession(authOptions);
+  if (!session || !session.user?.subscriber) {
+    return <SignInButton autoSignIn />;
+  }
+
   const l10n = getL10n();
   const headerList = headers();
 
   const userBreachesData: UserBreaches = await getUserBreaches({
-    // `(authenticated)/layout.tsx` ensures that `session` is not undefined,
-    // so the type assertion should be safe:
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    user: session!.user,
+    user: session.user,
     options: {
       countryCode: getCountryCode(headerList),
     },
