@@ -78,7 +78,23 @@ export const EnterInfo = ({
     explainerDialogState,
   );
 
-  const confirmDialogState = useOverlayTriggerState({});
+  const confirmDialogState = useOverlayTriggerState({
+    onOpenChange: (isOpen) => {
+      if (isOpen) {
+        telemetry.record("page", {
+          action: "view",
+          utm_campaign: "broker_scan",
+          utm_content: "enter_scan_info_confirmation_modal",
+          utm_term: skipInitialStep ? "legacy_user" : "new_user",
+        });
+      } else {
+        telemetry.record("ctaButton", {
+          action: "click",
+          button_id: "edit_free_scan",
+        });
+      }
+    },
+  });
   const confirmDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
     confirmDialogState,
@@ -147,6 +163,10 @@ export const EnterInfo = ({
     if (requestingScan) {
       return;
     }
+    telemetry.record("ctaButton", {
+      action: "click",
+      button_id: "confirmed_free_scan",
+    });
     setRequestingScan(true);
 
     const { city, state } = getDetailsFromLocationString(location);
@@ -272,13 +292,7 @@ export const EnterInfo = ({
       <div className={styles.stepButtonWrapper}>
         <Button
           variant="secondary"
-          onPress={() => {
-            telemetry.record("ctaButton", {
-              action: "click",
-              button_id: "edit_free_scan",
-            });
-            confirmDialogState.close();
-          }}
+          onPress={() => confirmDialogState.close()}
           className={styles.startButton}
         >
           {l10n.getString(
@@ -289,13 +303,7 @@ export const EnterInfo = ({
           variant="primary"
           // TODO: Figure out how to intercept the fetch request in a test:
           /* c8 ignore next */
-          onPress={() => {
-            telemetry.record("ctaButton", {
-              action: "click",
-              button_id: "confirmed_free_scan",
-            });
-            handleRequestScan();
-          }}
+          onPress={() => handleRequestScan()}
           autoFocus={true}
           className={styles.startButton}
           isLoading={requestingScan}
@@ -355,6 +363,12 @@ export const EnterInfo = ({
                   placeholder={placeholder}
                   validationState={validationState}
                   inputValue={value}
+                  onFocus={() => {
+                    telemetry.record("field", {
+                      action: "focus",
+                      field_id: key,
+                    });
+                  }}
                 />
               ) : (
                 <InputField
@@ -369,6 +383,12 @@ export const EnterInfo = ({
                   type={type}
                   validationState={validationState}
                   value={value}
+                  onFocus={() => {
+                    telemetry.record("field", {
+                      action: "focus",
+                      field_id: key,
+                    });
+                  }}
                 />
               );
             },

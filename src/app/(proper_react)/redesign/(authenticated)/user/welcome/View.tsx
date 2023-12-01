@@ -51,24 +51,17 @@ export const View = ({
     } else if (stepId === "findExposures") {
       pageName = "scanning_for_exposures";
     }
-    const userType = skipInitialStep ? "legacy_user" : "new_user";
 
     telemetry.record("page", {
       action: "view",
       utm_campaign: "broker_scan",
       utm_content: pageName,
-      utm_term: userType,
+      utm_term: skipInitialStep ? "legacy_user" : "new_user",
     });
 
     // Only capture telemetry on step changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stepId]);
-
-  telemetry.record("page", {
-    action: "view",
-    utm_campaign: "broker_scan",
-    utm_content: "enter_scan_info_confirmation_modal",
-  });
 
   const currentComponent =
     currentStep === "findExposures" ? (
