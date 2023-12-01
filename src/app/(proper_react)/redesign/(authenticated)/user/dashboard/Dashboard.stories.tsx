@@ -168,6 +168,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           monthlySubscriptionUrl={""}
           yearlySubscriptionUrl={""}
           scanCount={scanCount}
+          isPremium={false}
         />
       </Shell>
     </CountryCodeProvider>
