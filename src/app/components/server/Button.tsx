@@ -19,6 +19,7 @@ export interface Props {
   isLoading?: boolean;
   small?: boolean;
   wide?: boolean;
+  onPress?: () => void;
 }
 
 export const Button = (
@@ -34,11 +35,12 @@ export const Button = (
     isLoading,
     small,
     wide,
+    onPress,
     ...otherProps
   } = props;
 
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const { buttonProps } = useButton(otherProps, buttonRef);
+  const { buttonProps } = useButton({ ...otherProps, onPress }, buttonRef);
 
   const classes = [
     styles.button,
@@ -60,7 +62,7 @@ export const Button = (
     .join(" ");
 
   return typeof href === "string" ? (
-    <Link href={href} className={classes}>
+    <Link href={href} className={classes} onClick={onPress}>
       {children}
     </Link>
   ) : (

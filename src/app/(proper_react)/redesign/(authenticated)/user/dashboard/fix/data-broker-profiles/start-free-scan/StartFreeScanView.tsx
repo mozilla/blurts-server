@@ -2,16 +2,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+"use client";
+
 import Image from "next/image";
 import ImageCityScape from "./images/city-scape.svg";
 import styles from "../dataBrokerProfiles.module.scss";
 import { Button } from "../../../../../../../../components/server/Button";
-import { getL10n } from "../../../../../../../../functions/server/l10n";
+import { useL10n } from "../../../../../../../../hooks/l10n";
 import { FixView } from "../../FixView";
 import {
   StepDeterminationData,
   getNextGuidedStep,
 } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
+import { useTelemetry } from "../../../../../../../../hooks/useTelemetry";
 
 export type Props = {
   data: StepDeterminationData;
@@ -19,7 +22,8 @@ export type Props = {
 };
 
 export function StartFreeScanView(props: Props) {
-  const l10n = getL10n();
+  const l10n = useL10n();
+  const telemetry = useTelemetry();
 
   return (
     <FixView
@@ -54,6 +58,12 @@ export function StartFreeScanView(props: Props) {
             <a
               href="https://www.mozilla.org/products/monitor/how-it-works/"
               target="_blank"
+              onClick={() => {
+                telemetry.record("ctaButton", {
+                  action: "click",
+                  button_id: "returning_user_info_scan_learn_more",
+                });
+              }}
             >
               {l10n.getString(
                 "fix-flow-data-broker-profiles-start-free-scan-link-learn-more",
@@ -65,6 +75,12 @@ export function StartFreeScanView(props: Props) {
           <Button
             variant="primary"
             href="/redesign/user/welcome/free-scan?referrer=fix"
+            onPress={() => {
+              telemetry.record("ctaButton", {
+                action: "click",
+                button_id: "intent_to_start_free_scan",
+              });
+            }}
           >
             {l10n.getString(
               "fix-flow-data-broker-profiles-start-free-scan-button-start-scan",
@@ -73,6 +89,12 @@ export function StartFreeScanView(props: Props) {
           <Button
             variant="secondary"
             href="/redesign/user/dashboard/fix/high-risk-data-breaches"
+            onPress={() => {
+              telemetry.record("ctaButton", {
+                action: "click",
+                button_id: "skipped_free_scan",
+              });
+            }}
           >
             {l10n.getString(
               "fix-flow-data-broker-profiles-start-free-scan-button-skip",
