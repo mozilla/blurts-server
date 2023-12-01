@@ -184,7 +184,10 @@ const ScanResultCard = (props: ScanResultCardProps) => {
               {l10n.getString("exposure-card-label-status")}
             </dt>
             <dd>
-              <StatusPill exposure={scanResult} />
+              <StatusPill
+                exposure={scanResult}
+                isPremium={props.isPremiumUser}
+              />
             </dd>
           </dl>
           <button
@@ -269,6 +272,7 @@ export type SubscriberBreachCardProps = {
   locale: string;
   resolutionCta: ReactNode;
   isExpanded: boolean;
+  isPremiumUser: boolean;
   onToggleExpanded: () => void;
 };
 const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
@@ -388,7 +392,10 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
               {l10n.getString("exposure-card-label-status")}
             </dt>
             <dd>
-              <StatusPill exposure={subscriberBreach} />
+              <StatusPill
+                exposure={subscriberBreach}
+                isPremium={props.isPremiumUser}
+              />
             </dd>
           </dl>
           <button

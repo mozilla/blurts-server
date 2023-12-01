@@ -5,6 +5,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { StatusPill } from "../StatusPill";
+import { createRandomScanResult } from "../../../../apiMocks/mockData";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof StatusPill> = {
@@ -16,18 +17,27 @@ type Story = StoryObj<typeof StatusPill>;
 
 export const ActionNeeded: Story = {
   args: {
-    type: "needAction",
+    exposure: createRandomScanResult({ status: "new" }),
+    isPremium: false,
   },
 };
 
-export const InProgress: Story = {
+export const PremiumInProgress: Story = {
   args: {
-    type: "progress",
+    exposure: createRandomScanResult({ status: "new" }),
+    isPremium: false,
+  },
+};
+
+export const PremiumNewScan: Story = {
+  args: {
+    exposure: createRandomScanResult({ status: "new" }),
+    isPremium: true,
   },
 };
 
 export const Fixed: Story = {
   args: {
-    type: "fixed",
+    exposure: createRandomScanResult({ status: "removed" }),
   },
 };

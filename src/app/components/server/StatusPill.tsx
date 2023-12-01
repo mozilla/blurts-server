@@ -9,17 +9,15 @@ import { Exposure, isScanResult } from "../client/ExposureCard";
 
 export type StatusPillType = "needAction" | "progress" | "fixed";
 
-type DirectTypeProps = { type: StatusPillType };
-type ExposureProps = { exposure: Exposure };
-export type Props = DirectTypeProps | ExposureProps;
-
+type Props = {
+  exposure: Exposure;
+  isPremium: boolean;
+};
 // This component just renders HTML without business logic:
 /* c8 ignore start */
 export const StatusPill = (props: Props) => {
   const l10n = useL10n();
-  const type = hasDirectType(props)
-    ? props.type
-    : getExposureStatus(props.exposure);
+  const type = getExposureStatus(props.exposure, props.isPremium);
 
   let stringContent = "";
   let className = "";
@@ -40,26 +38,25 @@ export const StatusPill = (props: Props) => {
   );
 };
 
-function hasDirectType(props: Props): props is DirectTypeProps {
-  return typeof (props as DirectTypeProps).type === "string";
-}
-/* c8 ignore stop */
-
-export const getExposureStatus = (exposure: Exposure): StatusPillType => {
+export const getExposureStatus = (
+  exposure: Exposure,
+  isPremium: boolean,
+): StatusPillType => {
   if (isScanResult(exposure)) {
-    if (exposure.manually_resolved) {
+    if (exposure.manually_resolved || exposure.status === "removed") {
       return "fixed";
     }
 
-    switch (exposure.status) {
-      case "removed":
-        return "fixed";
-      case "waiting_for_verification":
-      case "optout_in_progress":
-        return "progress";
-      default:
-        return "needAction";
+    if (
+      isPremium &&
+      (exposure.status === "waiting_for_verification" ||
+        exposure.status === "optout_in_progress" ||
+        exposure.status === "new")
+    ) {
+      return "progress";
     }
+
+    return "needAction";
   }
 
   return exposure.isResolved ? "fixed" : "needAction";
