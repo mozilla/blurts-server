@@ -14,6 +14,7 @@ jest.mock("next/navigation", () => ({
     back: jest.fn(),
     push: jest.fn(),
   }),
+  usePathname: jest.fn(),
 }));
 jest.mock("../../../../../hooks/locationSuggestions");
 
