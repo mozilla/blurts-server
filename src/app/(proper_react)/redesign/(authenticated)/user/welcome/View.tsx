@@ -46,9 +46,9 @@ export const View = ({
 
   useEffect(() => {
     let pageName = "welcome";
-    if (stepId === "enterInfo") {
+    if (currentStep === "enterInfo") {
       pageName = "enter_scan_info";
-    } else if (stepId === "findExposures") {
+    } else if (currentStep === "findExposures") {
       pageName = "scanning_for_exposures";
     }
 
@@ -61,7 +61,7 @@ export const View = ({
 
     // Only capture telemetry on step changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stepId]);
+  }, [currentStep]);
 
   const currentComponent =
     currentStep === "findExposures" ? (
