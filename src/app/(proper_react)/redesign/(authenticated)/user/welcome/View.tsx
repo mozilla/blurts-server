@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -44,6 +44,32 @@ export const View = ({
   const router = useRouter();
   const telemetry = useTelemetry();
 
+  useEffect(() => {
+    let pageName = "welcome";
+    if (stepId === "enterInfo") {
+      pageName = "enter_scan_info";
+    } else if (stepId === "findExposures") {
+      pageName = "scanning_for_exposures";
+    }
+    const userType = skipInitialStep ? "legacy_user" : "new_user";
+
+    telemetry.record("page", {
+      action: "view",
+      utm_campaign: "broker_scan",
+      utm_content: pageName,
+      utm_term: userType,
+    });
+
+    // Only capture telemetry on step changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stepId]);
+
+  telemetry.record("page", {
+    action: "view",
+    utm_campaign: "broker_scan",
+    utm_content: "enter_scan_info_confirmation_modal",
+  });
+
   const currentComponent =
     currentStep === "findExposures" ? (
       <FindExposures
@@ -56,13 +82,7 @@ export const View = ({
         user={user}
         // TODO: Add unit test when changing this code:
         /* c8 ignore next */
-        onScanStarted={() => {
-          telemetry.record("ctaButton", {
-            action: "click",
-            button_id: "started_free_scan",
-          });
-          setCurrentStep("findExposures");
-        }}
+        onScanStarted={() => setCurrentStep("findExposures")}
         previousRoute={previousRoute}
         skipInitialStep={skipInitialStep}
         onGoBack={() => {

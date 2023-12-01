@@ -170,6 +170,12 @@ export const EnterInfo = ({
 
   const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    telemetry.record("ctaButton", {
+      action: "click",
+      button_id: "started_free_scan",
+    });
+
     const invalidInputKeys = getInvalidFields();
     if (invalidInputKeys?.length > 0) {
       setInvalidInputs(invalidInputKeys);
@@ -266,7 +272,13 @@ export const EnterInfo = ({
       <div className={styles.stepButtonWrapper}>
         <Button
           variant="secondary"
-          onPress={() => confirmDialogState.close()}
+          onPress={() => {
+            telemetry.record("ctaButton", {
+              action: "click",
+              button_id: "edit_free_scan",
+            });
+            confirmDialogState.close();
+          }}
           className={styles.startButton}
         >
           {l10n.getString(
@@ -277,7 +289,13 @@ export const EnterInfo = ({
           variant="primary"
           // TODO: Figure out how to intercept the fetch request in a test:
           /* c8 ignore next */
-          onPress={() => handleRequestScan()}
+          onPress={() => {
+            telemetry.record("ctaButton", {
+              action: "click",
+              button_id: "confirmed_free_scan",
+            });
+            handleRequestScan();
+          }}
           autoFocus={true}
           className={styles.startButton}
           isLoading={requestingScan}
