@@ -116,6 +116,7 @@ export default async function DashboardPage() {
       monthlySubscriptionUrl={monthlySubscriptionUrl}
       yearlySubscriptionUrl={yearlySubscriptionUrl}
       scanCount={scanCount}
+      isPremium={isPremiumUser}
     />
   );
 }

@@ -51,6 +51,7 @@ export type Props = {
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
   scanCount: number;
+  isPremium: boolean;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -108,7 +109,7 @@ export const View = (props: Props) => {
 
   const getTabSpecificExposures = (tabKey: TabType) =>
     arraySortedByDate.filter((exposure: Exposure) => {
-      const exposureStatus = getExposureStatus(exposure);
+      const exposureStatus = getExposureStatus(exposure, props.isPremium);
       return (
         (tabKey === "action-needed" && exposureStatus === "needAction") ||
         (tabKey === "fixed" && exposureStatus !== "needAction")
