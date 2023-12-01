@@ -474,7 +474,7 @@ breach-added-label = Mboguapy mbojuajupyre:
 how-hackers-work-desc = Emo’ã ne ñe’ẽñemi mba’evai apoha ñandutiguávagui, ha’éva pe eipotavéva.
 what-to-do-after-breach-desc = Ejoko ne mba’ete eguereko hag̃ua ne marandu mombyry iñañávagui.
 create-strong-passwords-desc = Ejapo ne ñe’ẽñemi imbaretéva, hekorosã ha hasýva ojekuaa hag̃ua.
-steps-to-protect-desc = Eikumby kyhyjerã hetavéva eikuaa hag̃ua mba’etépa pe ehekava’erã.
+steps-to-protect-desc = Eikũmby kyhyjerã hetavéva eikuaa hag̃ua mba’etépa pe ehekava’erã.
 five-myths-desc = Mba’éichapa emboykéta ñe’ẽñemi jeporuvai nombohasýiva hekovaíva rembiapo.
 take-further-steps-desc = Ehecha mba’éichapa emboykéta teratee ñemonda ani hag̃ua ñe apañuãi viru rekópe.
 # This message appears after a user has successfully updated their communication settings.
@@ -702,10 +702,6 @@ ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eiporu ñand
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account = Firefox mba’ete
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla mba’ete
@@ -734,11 +730,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Poruhára jeporavoha
 menu-button-alt = Embojuruja poruhára jeporavoha
 menu-list-accessible-label = Mba’ete jeporavoha
-# Deprecated
-menu-item-fxa = Eñangareko nde { -brand-fx-account }
 menu-item-fxa-2 = Eñangareko { -brand-mozilla-account } rehe
-# Deprecated
-menu-item-fxa-alt = Embojuruja { -brand-fx-account } kuatiarogue
 menu-item-fxa-alt-2 = Embojuruja { -brand-mozilla-account } kuatiarogue
 menu-item-settings = Ñemboheko
 menu-item-settings-alt = Embojuruja kuatiarogue ñemboheko
@@ -749,7 +741,6 @@ menu-item-logout = Emboty tembiapo
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Mboguatarã ha ñemigua
 github = { -brand-github }
 footer-nav-all-breaches = Opaite Ñembogua
 
