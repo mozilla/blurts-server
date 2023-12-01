@@ -154,5 +154,12 @@
   .lead,
   table {
     width: $content-lg;
+    max-width: 100%;
+  }
+
+  .planName,
+  .lead {
+    padding-inline: $spacing-lg;
+    text-align: center;
   }
 }
