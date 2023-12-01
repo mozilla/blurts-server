@@ -17,27 +17,30 @@ type Story = StoryObj<typeof StatusPill>;
 
 export const ActionNeeded: Story = {
   args: {
-    exposure: createRandomScanResult({ status: "new" }),
+    exposure: createRandomScanResult({
+      status: "new",
+      manually_resolved: false,
+    }),
     isPremium: false,
-  },
-};
-
-export const PremiumInProgress: Story = {
-  args: {
-    exposure: createRandomScanResult({ status: "new" }),
-    isPremium: false,
-  },
-};
-
-export const PremiumNewScan: Story = {
-  args: {
-    exposure: createRandomScanResult({ status: "new" }),
-    isPremium: true,
   },
 };
 
 export const Fixed: Story = {
   args: {
-    exposure: createRandomScanResult({ status: "removed" }),
+    exposure: createRandomScanResult({
+      status: "removed",
+      manually_resolved: false,
+    }),
+    isPremium: true,
+  },
+};
+
+export const InProgress: Story = {
+  args: {
+    exposure: createRandomScanResult({
+      status: "optout_in_progress",
+      manually_resolved: false,
+    }),
+    isPremium: true,
   },
 };
