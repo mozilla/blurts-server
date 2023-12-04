@@ -745,6 +745,7 @@ ad-unit-6-before-you-complete = Preden dokončate naslednjo prijavo, uporabite e
         [mestnik] Firefoxu
         [orodnik] Firefoxom
     }
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla =
     { $sklon ->
