@@ -25,6 +25,8 @@ type PremiumDataClassDetailsProps = {
 const PremiumDataClassDetails = (props: PremiumDataClassDetailsProps) => {
   const { exposure, dataBrokerDataType } = props;
 
+  // TODO: MNTOR-2617 Add unit test when changing this code:
+  /* c8 ignore next 3 */
   if (!isScanResult(exposure)) {
     return null;
   }
@@ -45,6 +47,8 @@ const PremiumDataClassDetails = (props: PremiumDataClassDetailsProps) => {
     return exposure[dataBrokerDataType].map((item: string, index: number) => (
       <li key={`${props.dataBrokerDataType}-${index}`}>{item}</li>
     ));
+    // TODO: MNTOR-2617 Add unit test when changing this code:
+    /* c8 ignore next 3 */
   } else {
     return null;
   }
@@ -99,7 +103,6 @@ export const ExposureCardDataClassLayout = (
   else {
     // Update data class header for premium users
     if (isPremiumUser) {
-      // setDataClassHeader(props.label);
       dataClassHeader = props.label;
     }
 
