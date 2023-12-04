@@ -47,8 +47,8 @@
     "npm": "10.2.4"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.454.0",
-    "@aws-sdk/lib-storage": "^3.454.0",
+    "@aws-sdk/client-s3": "^3.465.0",
+    "@aws-sdk/lib-storage": "^3.465.0",
     "@fluent/bundle": "^0.18.0",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
