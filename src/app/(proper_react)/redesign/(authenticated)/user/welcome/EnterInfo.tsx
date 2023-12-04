@@ -85,6 +85,8 @@ export const EnterInfo = ({
           action: "view",
           utm_campaign: "broker_scan",
           utm_content: "enter_scan_info_confirmation_modal",
+          // We are not explicitly testing telemetry
+          /* c8 ignore next */
           utm_term: skipInitialStep ? "legacy_user" : "new_user",
         });
       } else {

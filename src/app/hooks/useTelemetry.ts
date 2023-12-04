@@ -22,6 +22,9 @@ export const useTelemetry = () => {
     const { action, ...otherParams } = params;
 
     // Record event via Glean
+    // We are mocking the `useGlean` hook in the unit tests,
+    // but not the actual events.
+    /* c8 ignore next 2 */
     // @ts-ignore TODO: Get correct type for action
     glean?.[eventName]?.[action].record({ path, ...otherParams });
 
