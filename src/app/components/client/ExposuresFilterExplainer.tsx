@@ -10,7 +10,7 @@ import { OverlayTriggerState } from "react-stately";
 import { useL10n } from "../../hooks/l10n";
 import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
-import { Button } from "../server/Button";
+import { Button } from "../client/Button";
 
 type ExposuresFilterTypeExplainerProps = {
   explainerDialogState: OverlayTriggerState;

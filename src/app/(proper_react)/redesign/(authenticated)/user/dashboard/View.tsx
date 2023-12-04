@@ -32,7 +32,7 @@ import {
 } from "../../../../../functions/universal/user";
 import { LatestOnerepScanData } from "../../../../../../db/tables/onerep_scans";
 import { getLocale } from "../../../../../functions/universal/getLocale";
-import { Button } from "../../../../../components/server/Button";
+import { Button } from "../../../../../components/client/Button";
 
 import AllFixedIllustration from "./images/dashboard-all-fixed.svg";
 import NoExposuresIllustration from "./images/dashboard-no-exposures.svg";

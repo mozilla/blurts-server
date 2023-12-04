@@ -5,7 +5,7 @@
 "use client";
 
 import { OnerepScanResultRow } from "knex/types/tables";
-import { Button } from "../../../../../../../../components/server/Button";
+import { Button } from "../../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../../hooks/l10n";
 import { useState } from "react";
 import { ExposureCard } from "../../../../../../../../components/client/ExposureCard";

@@ -13,7 +13,7 @@ import whyWeNeedInfoHero from "./images/welcome-why-we-need-info.svg";
 import { useL10n } from "../../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../../components/client/dialog/Dialog";
-import { Button } from "../../../../../components/server/Button";
+import { Button } from "../../../../../components/client/Button";
 import { InputField } from "../../../../../components/client/InputField";
 import {
   LocationAutocompleteInput,

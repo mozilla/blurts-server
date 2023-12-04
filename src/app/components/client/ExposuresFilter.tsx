@@ -29,7 +29,7 @@ import {
   useRadioGroupState,
 } from "react-stately";
 import { useL10n } from "../../hooks/l10n";
-import { Button } from "../server/Button";
+import { Button } from "../client/Button";
 import NoteIcon from "./assets/note.svg";
 import CalendarIcon from "./assets/calendar.svg";
 import {

@@ -7,7 +7,7 @@
 import Image from "next/image";
 import ImageCityScape from "./images/city-scape.svg";
 import styles from "../dataBrokerProfiles.module.scss";
-import { Button } from "../../../../../../../../components/server/Button";
+import { Button } from "../../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../../hooks/l10n";
 import { FixView } from "../../FixView";
 import {

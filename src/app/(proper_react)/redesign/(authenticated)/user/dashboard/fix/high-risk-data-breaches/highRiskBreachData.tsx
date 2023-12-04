@@ -13,7 +13,7 @@ import { GuidedExperienceBreaches } from "../../../../../../../functions/server/
 import { FraudAlertModal } from "./FraudAlertModal";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
-import { Button } from "../../../../../../../components/server/Button";
+import { Button } from "../../../../../../../components/client/Button";
 import { StepLink } from "../../../../../../../functions/server/getRelevantGuidedSteps";
 
 export const highRiskBreachTypes = [

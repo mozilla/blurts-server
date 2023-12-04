@@ -9,7 +9,7 @@ import {
   getDashboardSummary,
   getExposureReduction,
 } from "../../../../../../../../functions/server/dashboard";
-import { Button } from "../../../../../../../../components/server/Button";
+import { Button } from "../../../../../../../../components/client/Button";
 import {
   StepDeterminationData,
   getNextGuidedStep,

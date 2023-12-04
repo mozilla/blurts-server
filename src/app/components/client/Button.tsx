@@ -6,8 +6,8 @@
 
 import { ReactNode, useRef } from "react";
 import Link from "next/link";
-import styles from "./button.module.scss";
-import { PressEvent, useButton } from "react-aria";
+import styles from "./Button.module.scss";
+import { useButton } from "react-aria";
 
 export interface Props {
   children: ReactNode;
@@ -19,7 +19,6 @@ export interface Props {
   isLoading?: boolean;
   small?: boolean;
   wide?: boolean;
-  onPress?: (event: PressEvent) => void;
   onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 }
 
@@ -36,13 +35,12 @@ export const Button = (
     isLoading,
     small,
     wide,
-    onPress,
     onClick,
     ...otherProps
   } = props;
 
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const { buttonProps } = useButton({ ...otherProps, onPress }, buttonRef);
+  const { buttonProps } = useButton(otherProps, buttonRef);
 
   const classes = [
     styles.button,
@@ -64,15 +62,7 @@ export const Button = (
     .join(" ");
 
   return typeof href === "string" ? (
-    <Link
-      href={href}
-      className={classes}
-      onClick={(event) => {
-        if (onClick) {
-          onClick(event);
-        }
-      }}
-    >
+    <Link href={href} className={classes} onClick={onClick}>
       {children}
     </Link>
   ) : (
