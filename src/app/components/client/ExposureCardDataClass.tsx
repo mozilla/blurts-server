@@ -24,40 +24,30 @@ type PremiumDataClassDetailsProps = {
 // Only for data broker cards
 const PremiumDataClassDetails = (props: PremiumDataClassDetailsProps) => {
   const { exposure, dataBrokerDataType } = props;
-  let content: JSX.Element[] | null = null;
 
-  if (isScanResult(exposure)) {
-    // TODO: Add unit test when changing this code:
-    /* c8 ignore next */
-    const addresses = exposure.addresses || [];
-
-    switch (dataBrokerDataType) {
-      case "addresses":
-        content = addresses.map(
-          ({ city, state, street, zip }, index: number) => (
-            <li key={`${props.dataBrokerDataType}-${index}`}>
-              {street}, {city}, {String(state)}, {zip}
-            </li>
-          ),
-        );
-        break;
-      case "emails":
-      case "phones":
-      case "relatives": {
-        // TODO: Add unit test when changing this code:
-        /* c8 ignore next */
-        const items = exposure[dataBrokerDataType] || [];
-        content = items.map((item: string, index: number) => (
-          <li key={`${props.dataBrokerDataType}-${index}`}>{item}</li>
-        ));
-        break;
-      }
-    }
+  if (!isScanResult(exposure)) {
+    return null;
+  }
+  if (dataBrokerDataType === "addresses") {
+    return exposure.addresses.map(
+      ({ city, state, street, zip }, index: number) => (
+        <li key={`${props.dataBrokerDataType}-${index}`}>
+          {street}, {city}, {String(state)}, {zip}
+        </li>
+      ),
+    );
+  }
+  if (
+    dataBrokerDataType === "emails" ||
+    dataBrokerDataType === "phones" ||
+    dataBrokerDataType === "relatives"
+  ) {
+    return exposure[dataBrokerDataType].map((item: string, index: number) => (
+      <li key={`${props.dataBrokerDataType}-${index}`}>{item}</li>
+    ));
   } else {
     return null;
   }
-
-  return content;
 };
 
 type ExposureCardDataClassLayoutProps = {
