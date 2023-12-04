@@ -35,6 +35,8 @@ const PremiumDataClassDetails = (props: PremiumDataClassDetailsProps) => {
   let content: JSX.Element[] | null = null;
 
   if (isScanResult(exposure)) {
+    // TODO: Add unit test when changing this code:
+    /* c8 ignore next */
     const addresses = exposure.addresses || [];
 
     switch (dataBrokerDataType) {
@@ -50,6 +52,8 @@ const PremiumDataClassDetails = (props: PremiumDataClassDetailsProps) => {
       case "emails":
       case "phones":
       case "relatives": {
+        // TODO: Add unit test when changing this code:
+        /* c8 ignore next */
         const items = exposure[dataBrokerDataType] || [];
         content = items.map((item: string, index: number) => (
           <li key={`${props.dataBrokerDataType}-${index}`}>{item}</li>
