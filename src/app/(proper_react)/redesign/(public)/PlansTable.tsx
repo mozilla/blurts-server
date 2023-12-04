@@ -140,21 +140,18 @@ export const PlansTable = (props: Props) => {
                       )}
                     </em>
                     &nbsp;•&nbsp;
+                    <span className={styles.sum}>
+                      {l10n.getString(
+                        "landing-premium-plans-table-price-plus-yearly-sum",
+                        {
+                          yearlyPrice: priceFormatter.format(
+                            12 * monthlyPriceAnnualBilling,
+                          ),
+                        },
+                      )}
+                    </span>
                   </>
                 )}
-                <span className={styles.sum}>
-                  {l10n.getString(
-                    "landing-premium-plans-table-price-plus-yearly-sum",
-                    {
-                      yearlyPrice: priceFormatter.format(
-                        12 *
-                          (billingPeriod === "yearly"
-                            ? monthlyPriceAnnualBilling
-                            : monthlyPriceMonthlyBilling),
-                      ),
-                    },
-                  )}
-                </span>
               </span>
             </p>
             <Button
@@ -686,33 +683,32 @@ export const PlansTable = (props: Props) => {
                   </b>
                   <span className={styles.total}>
                     {billingPeriod === "yearly" && (
-                      <em className={styles.discount}>
-                        {l10n.getString(
-                          "landing-premium-plans-table-price-plus-yearly-discount",
-                          {
-                            discountPercentage:
-                              ((monthlyPriceMonthlyBilling -
-                                monthlyPriceAnnualBilling) *
-                                100) /
-                              monthlyPriceMonthlyBilling,
-                          },
-                        )}
-                      </em>
+                      <>
+                        <em className={styles.discount}>
+                          {l10n.getString(
+                            "landing-premium-plans-table-price-plus-yearly-discount",
+                            {
+                              discountPercentage:
+                                ((monthlyPriceMonthlyBilling -
+                                  monthlyPriceAnnualBilling) *
+                                  100) /
+                                monthlyPriceMonthlyBilling,
+                            },
+                          )}
+                        </em>
+                        <br />
+                        <span className={styles.sum}>
+                          {l10n.getString(
+                            "landing-premium-plans-table-price-plus-yearly-sum",
+                            {
+                              yearlyPrice: priceFormatter.format(
+                                12 * monthlyPriceAnnualBilling,
+                              ),
+                            },
+                          )}
+                        </span>
+                      </>
                     )}
-                    <br />
-                    <span className={styles.sum}>
-                      {l10n.getString(
-                        "landing-premium-plans-table-price-plus-yearly-sum",
-                        {
-                          yearlyPrice: priceFormatter.format(
-                            12 *
-                              (billingPeriod === "yearly"
-                                ? monthlyPriceAnnualBilling
-                                : monthlyPriceMonthlyBilling),
-                          ),
-                        },
-                      )}
-                    </span>
                   </span>
                 </p>
                 <Button
