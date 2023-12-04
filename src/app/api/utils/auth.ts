@@ -64,6 +64,10 @@ export const authOptions: AuthOptions = {
   callbacks: {
     // Unused arguments also listed to show what's available:
     async jwt({ token, account, profile, trigger }) {
+      console.log("auth jwt token: ", { token });
+      console.log("auth jwt account: ", { account });
+      console.log("auth jwt profile: ", { profile });
+      console.log("auth jwt trigger: ", { trigger });
       if (trigger === "update") {
         // Refresh the user data from FxA, in case e.g. new subscriptions got added:
         profile = await fetchUserInfo(token.subscriber?.fxa_access_token ?? "");
@@ -99,6 +103,8 @@ export const authOptions: AuthOptions = {
               JSON.stringify(profile),
             );
             token.subscriber = updatedUser;
+            if (token.subscriber?.breach_resolution)
+              delete token.subscriber["breach_resolution"];
           }
         }
         if (!existingUser && email) {
@@ -147,9 +153,12 @@ export const authOptions: AuthOptions = {
           await sendEmail(data.recipientEmail, subject, emailTemplate);
         }
       }
+      console.log("token at end: ", { token });
       return token;
     },
     session({ session, token }) {
+      console.log("auth session:", { session });
+      console.log("auth token: ", { token });
       if (token.fxa) {
         session.user.fxa = {
           locale: token.fxa.locale,
