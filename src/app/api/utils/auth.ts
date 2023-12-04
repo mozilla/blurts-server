@@ -92,6 +92,7 @@ export const authOptions: AuthOptions = {
         //       multiple Accounts at multiple providers).
         const email = profile.email;
         const existingUser = await getSubscriberByEmail(email);
+        delete existingUser.breach_resolution;
 
         if (existingUser) {
           token.subscriber = existingUser;
