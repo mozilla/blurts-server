@@ -82,7 +82,7 @@ fxa-pwt-summary-2 =
     Korte passord med berre eitt ord er enkle for hackarar å gjette.
     Bruk minst to ord og ein kombinasjon av bokstavar, tal og spesialteikn.
 fxa-pwt-summary-4 =
-    Program for passordhandtering som 1Password, LastPass, Dashlane og Bitwarden lagrar passorda dine
+    Program for passordhandsaming som 1Password, LastPass, Dashlane og Bitwarden lagrar passorda dine
     og fyller dei ut på nettsider for deg. Dei hjelper deg til og med med å lage eit sterkt passord.
 fxa-pwt-summary-6 =
     Datalekkasjar aukar. Om din personlege informasjon vert avslørt i ein datalekkasje, 
@@ -707,9 +707,6 @@ ad-unit-5-use-on-phone = Bruk det på din telefon
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Firefox-konto
 
 ## Search Engine Optimization
 
@@ -724,7 +721,7 @@ sign-in = Logg inn
 site-nav-breaches-link = Løys datalekkasjar
 site-nav-settings-link = Innstillingar
 site-nav-help-link = Hjelp og brukarstøtte
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Prøv dei andre sikkerheitsverktøya våre:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -734,8 +731,6 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Bruklarmeny
 menu-button-alt = Opne brukarmeny
 menu-list-accessible-label = Kontomeny
-menu-item-fxa = Hasndsam { -brand-fx-account }-en din
-menu-item-fxa-alt = Opne sida { -brand-fx-account }
 menu-item-settings = Innstillingar
 menu-item-settings-alt = Opne sida for innstillingar
 menu-item-help = Hjelp og brukarstøtte
@@ -745,7 +740,6 @@ menu-item-logout = Logg ut
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Vilkår og personvern
 github = { -brand-github }
 footer-nav-all-breaches = Alle datalekkasjar
 
