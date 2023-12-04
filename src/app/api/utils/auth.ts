@@ -102,9 +102,9 @@ export const authOptions: AuthOptions = {
               account.refresh_token,
               JSON.stringify(profile),
             );
+            // MNTOR-2599: delete breach_resolution in token
+            delete updatedUser.breach_resolution;
             token.subscriber = updatedUser;
-            if (token.subscriber?.breach_resolution)
-              delete token.subscriber["breach_resolution"];
           }
         }
         if (!existingUser && email) {
