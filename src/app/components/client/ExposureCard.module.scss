@@ -224,14 +224,12 @@
               list-style: none;
               margin: 0;
               padding: $spacing-xs 0 0 $spacing-xs;
+              gap: $spacing-xs;
+              display: flex;
+              flex-direction: column;
 
               li {
                 list-style-type: none;
-                padding-bottom: $spacing-xs;
-
-                &:last-child {
-                  padding-bottom: 0;
-                }
               }
             }
           }
