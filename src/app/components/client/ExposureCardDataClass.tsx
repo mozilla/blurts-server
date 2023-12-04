@@ -4,25 +4,17 @@
 
 "use client";
 
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement } from "react";
 import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./ExposureCard.module.scss";
 import { useL10n } from "../../hooks/l10n";
 import { Exposure, isScanResult } from "./ExposureCard";
-import { StateAbbr } from "../../../utils/states";
 import { HibpBreachDataTypes } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
 
 type OnerepScanResultSerializedColumns = Extract<
   keyof OnerepScanResultRow,
   "emails" | "phones" | "addresses" | "relatives"
 >;
-
-type DataBrokerAddress = {
-  city: string;
-  state: StateAbbr;
-  street?: string;
-  zip?: string;
-};
 
 type PremiumDataClassDetailsProps = {
   exposure: Exposure;
@@ -42,7 +34,7 @@ const PremiumDataClassDetails = (props: PremiumDataClassDetailsProps) => {
     switch (dataBrokerDataType) {
       case "addresses":
         content = addresses.map(
-          ({ city, state, street, zip }: DataBrokerAddress, index: number) => (
+          ({ city, state, street, zip }, index: number) => (
             <li key={`${props.dataBrokerDataType}-${index}`}>
               {street}, {city}, {String(state)}, {zip}
             </li>
@@ -61,6 +53,8 @@ const PremiumDataClassDetails = (props: PremiumDataClassDetailsProps) => {
         break;
       }
     }
+  } else {
+    return null;
   }
 
   return content;
@@ -80,61 +74,57 @@ export const ExposureCardDataClassLayout = (
   props: ExposureCardDataClassLayoutProps,
 ) => {
   const l10n = useL10n();
-  const isPremiumUser = !props.isPremiumUser;
+  const isPremiumUser = props.isPremiumUser;
   // Premium users will have fully expanded lists under their respective data class header.
   // Breach cards should only have the emails list expanded.
-  const [detailsList, setDetailsList] = useState<ReactElement>();
-
+  let detailsList;
   // Default data class header format: "DataClass: [number]", e.g., "Phone number: 3".
   // For premium users, data class headers for data broker cards will update to include just the data class, without the count, e.g., "Phone number". Breach cards remain unchanged.
-  const [dataClassHeader, setDataClassHeader] = useState<ReactElement | string>(
+  let dataClassHeader: ReactElement | string = (
     <>
       {l10n.getString("exposure-card-label-and-count", {
         category_label: props.label,
         count: props.count,
       })}
-    </>,
+    </>
   );
 
-  useEffect(() => {
-    // Data breach cards only
-    if (!isScanResult(props.type)) {
-      const emailsList =
-        // Displaying the list of monitored emails exclusively in a breach card
-        props.dataBreachDataType === "email-addresses" ? (
-          <>
-            {props.type.emailsAffected.map((email: string, index: number) => (
-              <li key={`${props.dataBreachDataType}-${index}`}>{email}</li>
-            ))}
-          </>
-        ) : (
-          <></>
-        );
-      setDetailsList(emailsList);
+  // Data breach cards only
+  if (!isScanResult(props.type)) {
+    const emailsList =
+      // Displaying the list of monitored emails exclusively in a breach card
+      props.dataBreachDataType === "email-addresses" ? (
+        <>
+          {props.type.emailsAffected.map((email: string, index: number) => (
+            <li key={`${props.dataBreachDataType}-${index}`}>{email}</li>
+          ))}
+        </>
+      ) : (
+        <></>
+      );
+    detailsList = emailsList;
+  }
+
+  // Data broker cards only
+  else {
+    // Update data class header for premium users
+    if (isPremiumUser) {
+      // setDataClassHeader(props.label);
+      dataClassHeader = props.label;
     }
 
-    // Data broker cards only
-    else {
-      // Update data class header for premium users
-      if (isPremiumUser) {
-        setDataClassHeader(props.label);
-      }
-
-      // Render data class details for premium users
-      const dataClassExpandedDetails =
-        isPremiumUser && props.dataBrokerDataType ? (
-          <PremiumDataClassDetails
-            exposure={props.type}
-            dataBrokerDataType={props.dataBrokerDataType}
-          />
-        ) : (
-          <></>
-        );
-      setDetailsList(dataClassExpandedDetails);
-    }
-    // Only run this condition once
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    // Render data class details for premium users
+    const dataClassExpandedDetails =
+      isPremiumUser && props.dataBrokerDataType ? (
+        <PremiumDataClassDetails
+          exposure={props.type}
+          dataBrokerDataType={props.dataBrokerDataType}
+        />
+      ) : (
+        <></>
+      );
+    detailsList = dataClassExpandedDetails;
+  }
 
   return (
     <div className={styles.detailsFoundItem}>
