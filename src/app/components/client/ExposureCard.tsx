@@ -78,7 +78,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
   if (scanResult.relatives.length > 0) {
     exposureCategoriesArray.push(
       <ExposureCardDataClassLayout
-        type={scanResult}
+        exposure={scanResult}
         key="relatives"
         dataBrokerDataType="relatives"
         icon={<MultipleUsersIcon alt="" width="13" height="13" />}
@@ -91,7 +91,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
   if (scanResult.phones.length > 0) {
     exposureCategoriesArray.push(
       <ExposureCardDataClassLayout
-        type={scanResult}
+        exposure={scanResult}
         key="phones"
         dataBrokerDataType="phones"
         icon={<PhoneIcon alt="" width="13" height="13" />}
@@ -104,7 +104,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
   if (scanResult.emails.length > 0) {
     exposureCategoriesArray.push(
       <ExposureCardDataClassLayout
-        type={scanResult}
+        exposure={scanResult}
         key="emails"
         dataBrokerDataType="emails"
         icon={<EmailIcon alt="" width="13" height="13" />}
@@ -117,7 +117,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
   if (scanResult.addresses.length > 0) {
     exposureCategoriesArray.push(
       <ExposureCardDataClassLayout
-        type={scanResult}
+        exposure={scanResult}
         key="addresses"
         dataBrokerDataType="addresses"
         icon={<LocationPinIcon alt="" width="13" height="13" />}
@@ -278,7 +278,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
     if (dataClass === "email-addresses") {
       exposureCategoriesArray.push(
         <ExposureCardDataClassLayout
-          type={subscriberBreach}
+          exposure={subscriberBreach}
           key={dataClass}
           dataBreachDataType={dataClass}
           icon={<EmailIcon alt="" width="13" height="13" />}
@@ -289,7 +289,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
     } else if (dataClass === "passwords") {
       exposureCategoriesArray.push(
         <ExposureCardDataClassLayout
-          type={subscriberBreach}
+          exposure={subscriberBreach}
           key={dataClass}
           dataBreachDataType={dataClass}
           icon={<PasswordIcon alt="" width="13" height="13" />}
@@ -300,7 +300,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
     } else if (dataClass === "phone-numbers") {
       exposureCategoriesArray.push(
         <ExposureCardDataClassLayout
-          type={subscriberBreach}
+          exposure={subscriberBreach}
           key={dataClass}
           dataBreachDataType={dataClass}
           icon={<PhoneIcon alt="" width="13" height="13" />}
@@ -311,7 +311,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
     } else if (dataClass === "ip-addresses") {
       exposureCategoriesArray.push(
         <ExposureCardDataClassLayout
-          type={subscriberBreach}
+          exposure={subscriberBreach}
           key={dataClass}
           dataBreachDataType={dataClass}
           icon={<QuestionMarkCircle alt="" width="13" height="13" />}
@@ -326,7 +326,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
     else {
       exposureCategoriesArray.push(
         <ExposureCardDataClassLayout
-          type={subscriberBreach}
+          exposure={subscriberBreach}
           key={dataClass}
           icon={<QuestionMarkCircle alt="" width="13" height="13" />} // default icon for categories without a unique one
           label={l10n.getString(dataClass)} // categories are localized in data-classes.ftl

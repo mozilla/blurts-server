@@ -55,7 +55,7 @@ const PremiumDataClassDetails = (props: PremiumDataClassDetailsProps) => {
 };
 
 type ExposureCardDataClassLayoutProps = {
-  type: Exposure;
+  exposure: Exposure;
   icon: ReactElement;
   label: string;
   count: number;
@@ -84,12 +84,12 @@ export const ExposureCardDataClassLayout = (
   );
 
   // Data breach cards only
-  if (!isScanResult(props.type)) {
+  if (!isScanResult(props.exposure)) {
     const emailsList =
       // Displaying the list of monitored emails exclusively in a breach card
       props.dataBreachDataType === "email-addresses" ? (
         <>
-          {props.type.emailsAffected.map((email: string, index: number) => (
+          {props.exposure.emailsAffected.map((email: string, index: number) => (
             <li key={`${props.dataBreachDataType}-${index}`}>{email}</li>
           ))}
         </>
@@ -110,7 +110,7 @@ export const ExposureCardDataClassLayout = (
     const dataClassExpandedDetails =
       isPremiumUser && props.dataBrokerDataType ? (
         <PremiumDataClassDetails
-          exposure={props.type}
+          exposure={props.exposure}
           dataBrokerDataType={props.dataBrokerDataType}
         />
       ) : (
