@@ -130,15 +130,17 @@ async function subscribeLowercaseHashToHIBP(emailAddress) {
         console.log(`fixed email_addresses record ID: ${emailRecord.id}`);
       } catch (e) {
         await trx.rollback();
-        console.error(`Error fixing email_addresses record: ${emailRecord.id}`, e);
+        console.error(
+          `Error fixing email_addresses record: ${emailRecord.id}`,
+          e,
+        );
       }
-      
+
       emailPrevMaxId = emailRecord.id;
       emailRecordsFixed++;
     }
   }
 
-  
   console.log("done.");
   process.exit();
 })();
