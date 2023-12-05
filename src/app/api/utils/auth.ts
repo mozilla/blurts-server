@@ -88,6 +88,9 @@ export const authOptions: AuthOptions = {
         //       multiple Accounts at multiple providers).
         const email = profile.email;
         const existingUser = await getSubscriberByEmail(email);
+        // MNTOR-2599 The breach_resolution object can get pretty big,
+        // causing the session token cookie to balloon in size,
+        // eventually resulting in a 400 Bad Request due to headers being too large.
         delete existingUser.breach_resolution;
 
         if (existingUser) {
