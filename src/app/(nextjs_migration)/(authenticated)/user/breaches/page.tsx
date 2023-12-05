@@ -69,7 +69,7 @@ declare global {
 
 export default async function UserBreaches() {
   const session = await getServerSession(authOptions);
-  if (!session || !session.user?.subscriber) {
+  if (!session?.user?.subscriber) {
     return <SignInButton autoSignIn />;
   }
 

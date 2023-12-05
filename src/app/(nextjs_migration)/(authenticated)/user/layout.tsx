@@ -28,11 +28,11 @@ export type Props = {
 
 const MainLayout = async (props: Props) => {
   const session = await getServerSession(authOptions);
-  if (!session || !session.user?.subscriber) {
+  if (!session?.user?.subscriber) {
     return <SignInButton autoSignIn />;
   }
 
-  const userId = session?.user?.subscriber?.fxa_uid ?? "";
+  const userId = session.user.subscriber.fxa_uid ?? "";
 
   if (!userId) {
     logger.error("No user ID for telemetry");
