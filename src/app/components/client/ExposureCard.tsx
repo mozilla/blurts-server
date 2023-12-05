@@ -26,7 +26,7 @@ import {
   SubscriberBreach,
 } from "../../../utils/subscriberBreaches";
 import { FallbackLogo } from "../server/BreachLogo";
-import { BreachDataClass, DataBrokerDataClass } from "./ExposureCardDataClass";
+import { ExposureCardDataClassLayout } from "./ExposureCardDataClass";
 import { DataBrokerImage } from "./DataBrokerImage";
 
 export type Exposure = OnerepScanResultRow | SubscriberBreach;
@@ -77,67 +77,56 @@ const ScanResultCard = (props: ScanResultCardProps) => {
   // Scan Result Categories
   if (scanResult.relatives.length > 0) {
     exposureCategoriesArray.push(
-      <DataBrokerDataClass
-        scanResultData={scanResult}
+      <ExposureCardDataClassLayout
+        exposure={scanResult}
         key="relatives"
+        dataBrokerDataType="relatives"
         icon={<MultipleUsersIcon alt="" width="13" height="13" />}
-        exposureCategoryLabel={l10n.getString("exposure-card-family-members")}
-        num={scanResult.relatives.length}
+        label={l10n.getString("exposure-card-family-members")}
+        count={scanResult.relatives.length}
         isPremiumUser={props.isPremiumUser}
       />,
     );
   }
   if (scanResult.phones.length > 0) {
     exposureCategoriesArray.push(
-      <DataBrokerDataClass
-        scanResultData={scanResult}
+      <ExposureCardDataClassLayout
+        exposure={scanResult}
         key="phones"
+        dataBrokerDataType="phones"
         icon={<PhoneIcon alt="" width="13" height="13" />}
-        exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
-        num={scanResult.phones.length}
+        label={l10n.getString("exposure-card-phone-number")}
+        count={scanResult.phones.length}
         isPremiumUser={props.isPremiumUser}
       />,
     );
   }
   if (scanResult.emails.length > 0) {
     exposureCategoriesArray.push(
-      <DataBrokerDataClass
-        scanResultData={scanResult}
+      <ExposureCardDataClassLayout
+        exposure={scanResult}
         key="emails"
+        dataBrokerDataType="emails"
         icon={<EmailIcon alt="" width="13" height="13" />}
-        exposureCategoryLabel={l10n.getString("exposure-card-email")}
-        num={scanResult.emails.length}
+        label={l10n.getString("exposure-card-email")}
+        count={scanResult.emails.length}
         isPremiumUser={props.isPremiumUser}
       />,
     );
   }
   if (scanResult.addresses.length > 0) {
     exposureCategoriesArray.push(
-      <DataBrokerDataClass
-        scanResultData={scanResult}
+      <ExposureCardDataClassLayout
+        exposure={scanResult}
         key="addresses"
+        dataBrokerDataType="addresses"
         icon={<LocationPinIcon alt="" width="13" height="13" />}
-        exposureCategoryLabel={l10n.getString("exposure-card-address")}
-        num={scanResult.addresses.length}
-        isPremiumUser={props.isPremiumUser}
-      />,
-    );
-    // TODO: Add unit test when changing this code:
-    /* c8 ignore next 13 */
-  } else {
-    // "Other" item when none of the conditions above are met
-    exposureCategoriesArray.push(
-      <DataBrokerDataClass
-        scanResultData={scanResult}
-        key="other"
-        icon={<QuestionMarkCircle alt="" width="13" height="13" />}
-        exposureCategoryLabel={l10n.getString("exposure-card-other")}
-        num={0}
+        label={l10n.getString("exposure-card-address")}
+        count={scanResult.addresses.length}
         isPremiumUser={props.isPremiumUser}
       />,
     );
   }
-
   const COMPANY_NAME_MAX_CHARACTER_COUNT = 20;
   const isCompanyNameTooLong =
     scanResult.data_broker.length > COMPANY_NAME_MAX_CHARACTER_COUNT;
@@ -284,53 +273,64 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
   subscriberBreach.dataClassesEffected.map((item: DataClassEffected) => {
     const dataClass = Object.keys(item)[0];
 
+    const emailLength = subscriberBreach.emailsAffected.length;
+
     if (dataClass === "email-addresses") {
       exposureCategoriesArray.push(
-        <BreachDataClass
-          subscriberBreachData={subscriberBreach}
+        <ExposureCardDataClassLayout
+          exposure={subscriberBreach}
           key={dataClass}
+          dataBreachDataType={dataClass}
           icon={<EmailIcon alt="" width="13" height="13" />}
-          exposureCategoryLabel={l10n.getString("exposure-card-email")}
+          label={l10n.getString("exposure-card-email")}
+          count={emailLength}
         />,
       );
     } else if (dataClass === "passwords") {
       exposureCategoriesArray.push(
-        <BreachDataClass
-          subscriberBreachData={subscriberBreach}
+        <ExposureCardDataClassLayout
+          exposure={subscriberBreach}
           key={dataClass}
+          dataBreachDataType={dataClass}
           icon={<PasswordIcon alt="" width="13" height="13" />}
-          exposureCategoryLabel={l10n.getString("exposure-card-password")}
+          label={l10n.getString("exposure-card-password")}
+          count={emailLength}
         />,
       );
     } else if (dataClass === "phone-numbers") {
       exposureCategoriesArray.push(
-        <BreachDataClass
-          subscriberBreachData={subscriberBreach}
+        <ExposureCardDataClassLayout
+          exposure={subscriberBreach}
           key={dataClass}
+          dataBreachDataType={dataClass}
           icon={<PhoneIcon alt="" width="13" height="13" />}
-          exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
+          label={l10n.getString("exposure-card-phone-number")}
+          count={emailLength}
         />,
       );
     } else if (dataClass === "ip-addresses") {
       exposureCategoriesArray.push(
-        <BreachDataClass
-          subscriberBreachData={subscriberBreach}
+        <ExposureCardDataClassLayout
+          exposure={subscriberBreach}
           key={dataClass}
+          dataBreachDataType={dataClass}
           icon={<QuestionMarkCircle alt="" width="13" height="13" />}
-          exposureCategoryLabel={l10n.getString("exposure-card-ip-address")}
+          label={l10n.getString("exposure-card-ip-address")}
+          count={emailLength}
         />,
       );
       // TODO: Add unit test when changing this code:
-      /* c8 ignore next 12 */
+      /* c8 ignore next 13 */
     }
     // Handle all other breach categories
     else {
       exposureCategoriesArray.push(
-        <BreachDataClass
-          subscriberBreachData={subscriberBreach}
+        <ExposureCardDataClassLayout
+          exposure={subscriberBreach}
           key={dataClass}
           icon={<QuestionMarkCircle alt="" width="13" height="13" />} // default icon for categories without a unique one
-          exposureCategoryLabel={l10n.getString(dataClass)} // categories are localized in data-classes.ftl
+          label={l10n.getString(dataClass)} // categories are localized in data-classes.ftl
+          count={emailLength}
         />,
       );
     }
