@@ -780,6 +780,7 @@ ad-unit-6-before-you-complete = Během své další registrace použijte místo 
        *[nom] Firefox
     }
     .gender = masculine
+-brand-monitor = Monitor
 -brand-fx-monitor =
     { $case ->
         [gen] Firefox Monitoru
