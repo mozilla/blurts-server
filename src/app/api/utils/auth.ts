@@ -96,8 +96,6 @@ export const authOptions: AuthOptions = {
           delete existingUser.breach_resolution;
           token.subscriber = existingUser;
           if (account.access_token && account.refresh_token) {
-            console.log({ existingUser });
-            console.log({ profile });
             const updatedUser = await updateFxAData(
               existingUser,
               account.access_token,
