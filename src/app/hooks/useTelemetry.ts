@@ -5,39 +5,34 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { ExtraMap } from "@mozilla/glean/dist/types/core/metrics/events_database/recorded_event.d";
 import { useGa } from "./useGa";
-import { GleanEvents, useGlean } from "./useGlean";
-
-type RecordParams = ExtraMap & {
-  action: string;
-};
+import { useGlean } from "./useGlean";
+import { GleanMetricMap } from "../../telemetry/generated/_map";
 
 export const useTelemetry = () => {
   const path = usePathname();
-  const glean = useGlean();
+  const recordGlean = useGlean();
   const { gtag } = useGa();
 
-  const record = (eventName: keyof GleanEvents, params: RecordParams) => {
-    const { action, ...otherParams } = params;
-
-    // Record event via Glean
-    // @ts-ignore TODO: Get correct type for action
-    glean?.[eventName]?.[action].record({ path, ...otherParams });
-
-    // Record event via GA
+  const record = <
+    EventModule extends keyof GleanMetricMap,
+    EventName extends keyof GleanMetricMap[EventModule],
+  >(
+    eventModule: EventModule,
+    event: EventName,
+    data: GleanMetricMap[EventModule][EventName],
+  ) => {
+    void recordGlean(eventModule, event, data);
     gtag.record({
       type: "event",
-      name: eventName,
+      name: eventModule,
       params: {
-        ...params,
-        action,
+        ...data,
+        action: event,
         page_location: path,
       },
     });
   };
 
-  return {
-    record,
-  };
+  return record;
 };
