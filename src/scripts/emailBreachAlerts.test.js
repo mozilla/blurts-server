@@ -74,6 +74,10 @@ jest.mock("../views/emails/emailBreachAlert.js", () => {
   };
 });
 
+const testBreaches = [
+  { breachName: "000webhost", hashPrefix: "test", hashSuffixes: ["test"] },
+];
+
 const subClient = {
   subscriptionPath: jest.fn(),
   acknowledge: jest.fn(),
@@ -108,6 +112,7 @@ test("rejects invalid messages", async () => {
     .mockImplementation(() => {});
 
   await poll(
+    testBreaches,
     subClient,
     buildReceivedMessages({
       // missing breachName
@@ -121,6 +126,7 @@ test("rejects invalid messages", async () => {
   );
 
   await poll(
+    testBreaches,
     subClient,
     buildReceivedMessages({
       breachName: "test1",
@@ -134,6 +140,7 @@ test("rejects invalid messages", async () => {
   );
 
   await poll(
+    testBreaches,
     subClient,
     buildReceivedMessages({
       breachName: "test1",
@@ -147,6 +154,7 @@ test("rejects invalid messages", async () => {
   );
 
   await poll(
+    testBreaches,
     subClient,
     buildReceivedMessages({
       breachName: "test1",
@@ -179,7 +187,7 @@ test("processes valid messages", async () => {
 
   const { poll } = await import("./emailBreachAlerts.js");
 
-  await poll(subClient, receivedMessages);
+  await poll(testBreaches, subClient, receivedMessages);
   // Fabricated but valid breach is acknowledged.
   expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
   // Fabricated breaches are not emailed.
@@ -195,7 +203,7 @@ test("processes valid messages", async () => {
     IsSpamList: false,
   });
 
-  await poll(subClient, receivedMessages);
+  await poll(testBreaches, subClient, receivedMessages);
   // Unverified, not fabricated, not spam list breaches are acknowledged.
   expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
   // Unverified, not fabricated, not spam list breaches are not emailed.
@@ -211,7 +219,7 @@ test("processes valid messages", async () => {
     IsSpamList: true,
   });
 
-  await poll(subClient, receivedMessages);
+  await poll(testBreaches, subClient, receivedMessages);
   // Verified, not fabricated, spam list breaches are acknowledged.
   expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
   // Verified, not fabricated, spam list breaches are not emailed.
@@ -227,7 +235,7 @@ test("processes valid messages", async () => {
     IsSpamList: false,
   });
 
-  await poll(subClient, receivedMessages);
+  await poll(testBreaches, subClient, receivedMessages);
   // Verified, not fabricated, not spam list breaches are acknowledged.
   expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
   // Verified, not fabricated, not spam list breaches are emailed.
@@ -272,7 +280,7 @@ test("skipping email when subscriber id exists in email_notifications table", as
 
   const { poll } = await import("./emailBreachAlerts.js");
 
-  await poll(subClient, receivedMessages);
+  await poll(testBreaches, subClient, receivedMessages);
   // Verified, not fabricated, not spam list breaches are acknowledged.
   expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
   // Verified, not fabricated, not spam list breaches are emailed.
@@ -319,7 +327,7 @@ test("throws an error when addEmailNotification fails", async () => {
   const { poll } = await import("./emailBreachAlerts.js");
 
   try {
-    await poll(subClient, receivedMessages);
+    await poll(testBreaches, subClient, receivedMessages);
   } catch (e) {
     expect(console.error).toBeCalled();
     expect(e.message).toBe("add failed");
@@ -369,7 +377,7 @@ test("throws an error when markEmailAsNotified fails", async () => {
   const { poll } = await import("./emailBreachAlerts.js");
 
   try {
-    await poll(subClient, receivedMessages);
+    await poll(testBreaches, subClient, receivedMessages);
   } catch (e) {
     expect(console.error).toBeCalled();
     expect(e.message).toBe("mark failed");
