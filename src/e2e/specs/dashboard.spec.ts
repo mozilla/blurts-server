@@ -146,7 +146,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Content`, () =
     // verify fixed or in-progress
     await expect(dashboardPage.fixedHeading).toBeVisible();
 
-    // TODO: add stubb to fill in fixed/in-progress items
+    // TODO: add stub to fill in fixed/in-progress items
     const listCount = await page
       .locator('//div[starts-with(@class, "StatusPill_pill")]')
       .count();
