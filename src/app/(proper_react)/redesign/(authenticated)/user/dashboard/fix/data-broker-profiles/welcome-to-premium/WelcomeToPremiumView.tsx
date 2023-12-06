@@ -7,7 +7,7 @@ import { getL10n } from "../../../../../../../../functions/server/l10n";
 import { PercentageChart } from "../../../../../../../../components/client/PercentageChart";
 import {
   getDashboardSummary,
-  getExposureReduction,
+  getDataPointReduction,
 } from "../../../../../../../../functions/server/dashboard";
 import { Button } from "../../../../../../../../components/server/Button";
 import {
@@ -30,7 +30,7 @@ export function WelcomeToPremiumView(props: Props) {
     props.data.latestScanData?.results ?? [],
     props.data.subscriberBreaches,
   );
-  const exposureReduction = getExposureReduction(summary);
+  const dataPointReduction = getDataPointReduction(summary);
 
   return (
     <FixView
@@ -55,7 +55,7 @@ export function WelcomeToPremiumView(props: Props) {
               "welcome-to-premium-data-broker-profiles-description-part-one",
               {
                 profile_total_num: countOfDataBrokerProfiles,
-                exposure_reduction_percentage: exposureReduction,
+                exposure_reduction_percentage: dataPointReduction,
               },
             )}
           </p>
@@ -82,7 +82,7 @@ export function WelcomeToPremiumView(props: Props) {
           </div>
         </div>
         <div className={styles.chart}>
-          <PercentageChart exposureReduction={exposureReduction} />
+          <PercentageChart exposureReduction={dataPointReduction} />
         </div>
       </div>
     </FixView>
