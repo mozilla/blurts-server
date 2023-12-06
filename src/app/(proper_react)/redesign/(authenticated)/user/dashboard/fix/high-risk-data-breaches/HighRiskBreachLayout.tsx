@@ -74,7 +74,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
       HighRiskBreachTypes,
       (typeof HighRiskDataTypes)[keyof typeof HighRiskDataTypes] | null
     > = {
-      ssn: HighRiskDataTypes.SSN,
+      "social-security-number": HighRiskDataTypes.SSN,
       "credit-card": HighRiskDataTypes.CreditCard,
       "bank-account": HighRiskDataTypes.BankAccount,
       pin: HighRiskDataTypes.PIN,
