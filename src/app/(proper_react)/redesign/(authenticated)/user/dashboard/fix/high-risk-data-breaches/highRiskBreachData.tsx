@@ -18,7 +18,7 @@ import { StepLink } from "../../../../../../../functions/server/getRelevantGuide
 
 export const highRiskBreachTypes = [
   "credit-card",
-  "ssn",
+  "social-security-number",
   "bank-account",
   "pin",
   "done",
@@ -192,7 +192,7 @@ function getHighRiskBreachesByType({
       },
     },
     {
-      type: "ssn",
+      type: "social-security-number",
       title: l10n.getString("high-risk-breach-social-security-title"),
       illustration: socialSecurityNumberIllustration,
       exposedData: breaches.highRisk.ssnBreaches,
