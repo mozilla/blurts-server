@@ -61,6 +61,34 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
     expect(await dashboardPage.actionNeededTab.isVisible()).toBeTruthy();
     expect(await dashboardPage.fixedTab.isVisible()).toBeTruthy();
   });
+
+  test("Verify that the Fixed tab layout and tooltips are displayed correctly", async ({
+    dashboardPage,
+  }) => {
+    // link to testrail
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2301532",
+    });
+
+    // verify fixed tab's tooltips and popups
+    await dashboardPage.fixedTab.click();
+    await expect(dashboardPage.heresWhatsFixedCardTitle).toHaveText(
+      "Here’s what we fixed",
+    );
+    await expect(dashboardPage.fixedHeading).toBeVisible();
+    await dashboardPage.toolTip.click();
+    await expect(dashboardPage.whatsFixedPopup).toBeVisible();
+    await dashboardPage.popupOkButton.click();
+    await expect(dashboardPage.whatsFixedPopup).toBeHidden();
+
+    // verify second tooltip
+    await dashboardPage.chartTooltip.click();
+    await expect(dashboardPage.aboutActiveExposuresPopup).toBeVisible();
+    await dashboardPage.popupOkButton.click();
+    await expect(dashboardPage.aboutActiveExposuresPopup).toBeHidden();
+  });
 });
 
 test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers - Outside of U.S.`, () => {
