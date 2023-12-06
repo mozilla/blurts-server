@@ -437,19 +437,24 @@ function sanitizeDataPoints(
   if (breachesOnly) {
     numOfTopDataPoints = 2; // when we have breaches only
   }
-  const sanitizedExposures = Object.entries(dataPoints)
-    .sort((a, b) => b[1] - a[1])
-    .map((e) => {
-      const key = dataClassKeyMap[e[0]];
-      return { [key]: e[1] };
-    })
-    .splice(0, numOfTopDataPoints);
-  const other = sanitizedExposures.reduce(
+  const sanitizedAllDataPoints = Object.entries(dataPoints)
+    .sort(([_dataClassA, countA], [_dataClassB, countB]) => countB - countA)
+    .map(([dataClass, count]) => {
+      const key = dataClassKeyMap[dataClass];
+      return { [key]: count };
+    });
+  const sanitizedTopDataPoints = sanitizedAllDataPoints.slice(
+    0,
+    numOfTopDataPoints,
+  );
+
+  const otherCount = sanitizedTopDataPoints.reduce(
     (total, cur) => total - (Object.values(cur).pop() || 0),
     dataPointCount,
   );
-  sanitizedExposures.push({ "other-data-class": other });
-  return sanitizedExposures;
+  const sanitizedDataPoints = [...sanitizedTopDataPoints];
+  sanitizedDataPoints.push({ "other-data-class": otherCount });
+  return sanitizedDataPoints;
 }
 
 export function getDataPointReduction(summary: DashboardSummary): number {
