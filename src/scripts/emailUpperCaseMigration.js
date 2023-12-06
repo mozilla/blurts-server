@@ -1,6 +1,5 @@
-import Knex from "knex";
-import knexConfig from "../db/knexfile.js";
-const knex = Knex(knexConfig);
+import createDbConnection from "../db/connect.js";
+const knex = createDbConnection();
 
 import { subscribeHash } from "../utils/hibp.js";
 import { getSha1 } from "../utils/fxa.js";
