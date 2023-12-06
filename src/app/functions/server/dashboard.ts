@@ -208,7 +208,7 @@ export function getDashboardSummary(
   if (scannedResults) {
     scannedResults.forEach((r) => {
       // check removal status
-      const isManuallyResolved = r.manually_resolved;
+      const isManuallyResolved = r.status === "new" && r.manually_resolved;
       const isAutoFixed =
         r.status === RemovalStatusMap.Removed && !isManuallyResolved;
       const isInProgress =
@@ -388,7 +388,8 @@ export function getDashboardSummary(
       a[k as keyof DataPoints] =
         summary.allDataPoints[k as keyof DataPoints] -
         summary.fixedDataPoints[k as keyof DataPoints] -
-        summary.inProgressDataPoints[k as keyof DataPoints];
+        summary.inProgressDataPoints[k as keyof DataPoints] -
+        summary.manuallyResolvedDataBrokerDataPoints[k as keyof DataPoints];
       return a;
     },
     {} as DataPoints,
@@ -411,7 +412,8 @@ export function getDashboardSummary(
     summary.totalDataPointsNum -
       summary.dataBreachFixedDataPointsNum -
       summary.dataBrokerAutoFixedDataPointsNum -
-      summary.dataBrokerInProgressDataPointsNum,
+      summary.dataBrokerInProgressDataPointsNum -
+      summary.dataBrokerManuallyResolvedDataPointsNum,
     isBreachesOnly,
   );
 

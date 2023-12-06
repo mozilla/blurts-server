@@ -117,7 +117,8 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                     bannerData.totalDataPointsNum -
                     bannerData.dataBrokerAutoFixedDataPointsNum -
                     bannerData.dataBreachFixedDataPointsNum -
-                    bannerData.dataBrokerInProgressDataPointsNum,
+                    bannerData.dataBrokerInProgressDataPointsNum -
+                    bannerData.dataBrokerManuallyResolvedDataPointsNum,
                   data_breach_unresolved_num:
                     bannerData.dataBreachUnresolvedNum,
                 },
@@ -277,7 +278,8 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                     bannerData.totalDataPointsNum -
                     bannerData.dataBreachFixedDataPointsNum -
                     bannerData.dataBrokerAutoFixedDataPointsNum -
-                    bannerData.dataBrokerInProgressDataPointsNum,
+                    bannerData.dataBrokerInProgressDataPointsNum -
+                    bannerData.dataBrokerManuallyResolvedDataPointsNum,
                 },
               )}
             </p>
@@ -333,7 +335,8 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                     bannerData.totalDataPointsNum -
                     bannerData.dataBreachFixedDataPointsNum -
                     bannerData.dataBrokerAutoFixedDataPointsNum -
-                    bannerData.dataBrokerInProgressDataPointsNum,
+                    bannerData.dataBrokerInProgressDataPointsNum -
+                    bannerData.dataBrokerManuallyResolvedDataPointsNum,
                 },
               )}
             </p>
@@ -415,7 +418,8 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                     bannerData.totalDataPointsNum -
                     bannerData.dataBrokerAutoFixedDataPointsNum -
                     bannerData.dataBreachFixedDataPointsNum -
-                    bannerData.dataBrokerInProgressDataPointsNum,
+                    bannerData.dataBrokerInProgressDataPointsNum -
+                    bannerData.dataBrokerManuallyResolvedDataPointsNum,
                 },
               )}
               <br />
@@ -447,7 +451,8 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                     bannerData.totalDataPointsNum -
                     bannerData.dataBrokerAutoFixedDataPointsNum -
                     bannerData.dataBreachFixedDataPointsNum -
-                    bannerData.dataBrokerInProgressDataPointsNum,
+                    bannerData.dataBrokerInProgressDataPointsNum -
+                    bannerData.dataBrokerManuallyResolvedDataPointsNum,
                 },
               )}
               <br />
@@ -478,7 +483,8 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                   exposures_resolved_num:
                     bannerData.dataBrokerAutoFixedDataPointsNum +
                     bannerData.dataBreachFixedDataPointsNum +
-                    bannerData.dataBrokerInProgressDataPointsNum,
+                    bannerData.dataBrokerInProgressDataPointsNum -
+                    bannerData.dataBrokerManuallyResolvedDataPointsNum,
                 },
               )}
               <br />
