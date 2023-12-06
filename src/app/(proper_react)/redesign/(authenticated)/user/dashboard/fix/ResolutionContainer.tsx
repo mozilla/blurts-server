@@ -54,11 +54,11 @@ export const ResolutionContainer = (props: ResolutionContainerProps) => {
             <ProgressCard
               isPremiumUser={props.isPremiumUser}
               resolvedByYou={
-                resolutionSummary.dataBrokerManuallyResolvedExposuresNum +
-                resolutionSummary.dataBreachFixedExposuresNum
+                resolutionSummary.dataBrokerManuallyResolvedDataPointsNum +
+                resolutionSummary.dataBreachFixedDataPointsNum
               }
-              autoRemoved={resolutionSummary.dataBrokerFixedExposuresNum}
-              inProgress={resolutionSummary.dataBrokerInProgressExposuresNum}
+              autoRemoved={resolutionSummary.dataBrokerAutoFixedDataPointsNum}
+              inProgress={resolutionSummary.dataBrokerInProgressDataPointsNum}
             />
           </div>
         ) : (
