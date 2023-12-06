@@ -52,7 +52,7 @@ export function StartFreeScanView(props: Props) {
               "fix-flow-data-broker-profiles-start-free-scan-content-p2",
             )}{" "}
             <a
-              href="https://www.mozilla.org/products/monitor/how-it-works/"
+              href={process.env.NEXT_PUBLIC_HOW_IT_WORKS_SUMO_URL}
               target="_blank"
             >
               {l10n.getString(

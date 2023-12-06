@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import Image, { StaticImageData } from "next/image";
+import { notFound } from "next/navigation";
 import BreachDetailScanImage from "../../../../../client/images/breach-detail-scan.svg";
 import "../../../../../client/css/partials/breachDetail.css";
 import { getL10n } from "../../../../functions/server/l10n";
@@ -80,6 +81,10 @@ export default async function BreachDetail(props: {
   const breachName = props.params.breachName;
   const allBreaches = await getBreaches();
   const breach = getBreachByName(allBreaches, breachName);
+
+  if (!breach) {
+    return notFound();
+  }
 
   return (
     <div data-partial="breachDetail">

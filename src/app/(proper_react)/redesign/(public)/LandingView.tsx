@@ -6,6 +6,8 @@ import styles from "./LandingView.module.scss";
 import { HeroImageAll, HeroImagePremium } from "./HeroImage";
 import { SignUpForm } from "./SignUpForm";
 import { ExtendedReactLocalization } from "../../../hooks/l10n";
+import { PlansTable } from "./PlansTable";
+import { useId } from "react";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -37,6 +39,7 @@ export const View = (props: Props) => {
           <HeroImage {...props} />
         </div>
       </header>
+      <Plans {...props} />
     </main>
   );
 };
@@ -68,5 +71,25 @@ const HeroImage = (props: Props) => {
         </span>
       </div>
     </>
+  );
+};
+
+const Plans = (props: Props) => {
+  const headingId = useId();
+
+  if (!props.eligibleForPremium) {
+    return null;
+  }
+
+  return (
+    <section className={styles.plans}>
+      <h2 id={headingId} className={styles.planName}>
+        {props.l10n.getString("landing-premium-plans-heading")}
+      </h2>
+      <p className={styles.lead}>
+        {props.l10n.getString("landing-premium-plans-lead")}
+      </p>
+      <PlansTable aria-labelledby={headingId} />
+    </section>
   );
 };
