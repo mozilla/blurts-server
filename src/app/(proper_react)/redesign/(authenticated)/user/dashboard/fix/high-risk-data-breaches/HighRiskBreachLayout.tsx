@@ -39,7 +39,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
   const [isResolving, setIsResolving] = useState(false);
 
   const stepMap: Record<HighRiskBreachTypes, StepLink["id"]> = {
-    ssn: "HighRiskSsn",
+    "social-security-number": "HighRiskSsn",
     "credit-card": "HighRiskCreditCard",
     "bank-account": "HighRiskBankAccount",
     pin: "HighRiskPin",
