@@ -150,7 +150,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Content`, () =
     const listCount = await page
       .locator('//div[starts-with(@class, "StatusPill_pill")]')
       .count();
-    // verify exposure list conatins only exposures that need to be fixed
+    // verify exposure list contains only exposures that need to be fixed
     if (listCount > 0) {
       for (let i = 0; i < listCount; i++) {
         await expect(
