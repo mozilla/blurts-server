@@ -50,16 +50,14 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
     });
 
     // verify the navigation bar left side elements
-    expect(await dashboardPage.fireFoxMonitorLogoImgButton.isVisible()).toBe(
-      true,
-    );
-    expect(await dashboardPage.dashboardNavButton.isVisible()).toBe(true);
-    expect(await dashboardPage.exposuresHeading.isVisible()).toBe(true);
-    expect(await dashboardPage.FAQsNavButton.isVisible()).toBe(true);
+    await expect(dashboardPage.fireFoxMonitorLogoImgButton).toBeVisible();
+    await expect(dashboardPage.dashboardNavButton).toBeVisible();
+    await expect(dashboardPage.exposuresHeading).toBeVisible();
+    await expect(dashboardPage.FAQsNavButton).toBeVisible();
 
     // verify the site header elements
-    expect(await dashboardPage.actionNeededTab.isVisible()).toBe(true);
-    expect(await dashboardPage.fixedTab.isVisible()).toBe(true);
+    await expect(dashboardPage.actionNeededTab).toBeVisible();
+    await expect(dashboardPage.fixedTab).toBeVisible();
   });
 });
 
@@ -88,7 +86,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers - Outs
     }
 
     // verify the site header elements
-    expect(await dashboardPage.upgradeToPremium.isHidden()).toBe(true);
+    await expect(dashboardPage.upgradeToPremium).toBeHidden();
   });
 });
 
