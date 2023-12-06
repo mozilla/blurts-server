@@ -4,6 +4,7 @@
 
 "use client";
 
+import { useRouter } from "next/navigation";
 import { OnerepScanResultRow } from "knex/types/tables";
 import { Button } from "../../../../../../../../components/server/Button";
 import { useL10n } from "../../../../../../../../hooks/l10n";
@@ -20,6 +21,7 @@ export type Props = {
 
 export const RemovalCard = (props: Props) => {
   const l10n = useL10n();
+  const router = useRouter();
   const [isResolved, setIsResolved] = useState(
     props.scanResult.manually_resolved,
   );
@@ -33,6 +35,10 @@ export const RemovalCard = (props: Props) => {
         credentials: "same-origin",
       },
     );
+    // Ensure previously-visited pages that still have this scan result marked
+    // as unfixed are removed from the cache. See
+    // https://nextjs.org/docs/app/building-your-application/caching#invalidation-1
+    router.refresh();
     if (!response.ok) {
       setIsResolved(false);
     }
