@@ -711,6 +711,7 @@ ad-unit-6-before-you-complete = Maskér din mailadresse for at beskytte dine opl
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
@@ -722,10 +723,6 @@ ad-unit-6-before-you-complete = Maskér din mailadresse for at beskytte dine opl
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account = Firefox-konto
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla-konto
@@ -754,11 +751,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Brugermenu
 menu-button-alt = Åbn brugermenuen
 menu-list-accessible-label = Åbn kontomenuen
-# Deprecated
-menu-item-fxa = Håndter din { -brand-fx-account }
 menu-item-fxa-2 = Håndter din { -brand-mozilla-account }
-# Deprecated
-menu-item-fxa-alt = Åbn siden { -brand-fx-account }
 menu-item-fxa-alt-2 = Åbn siden { -brand-mozilla-account }
 menu-item-settings = Indstillinger
 menu-item-settings-alt = Åbn siden Indstillinger
@@ -769,7 +762,8 @@ menu-item-logout = Log ud
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Vilkår og beskyttelse af personlige oplysninger
+terms-of-service = Tjenestevilkår
+privacy-notice = Privatlivserklæring
 github = { -brand-github }
 footer-nav-all-breaches = Alle datalæk
 
