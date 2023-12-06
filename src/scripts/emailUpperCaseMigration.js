@@ -7,7 +7,7 @@ import { getSha1 } from "../utils/fxa.js";
 /**
  * MNTOR-2469: One-off script to lowercase email addresses of subscribers and emails before hashing
  */
-async function subscribeLowercaseHashToHIBP(emailAddress) {
+async function subscribeLowerCaseHashToHIBP(emailAddress) {
   const lowerCasedEmail = emailAddress.toLowerCase();
   const lowerCasedSha1 = getSha1(lowerCasedEmail);
   await subscribeHash(lowerCasedSha1);
@@ -47,7 +47,7 @@ async function subscribeLowercaseHashToHIBP(emailAddress) {
       const trx = await knex.transaction();
       try {
         // update sha1 and sub to HIBP with the new sha1
-        const lowerCasedSha1 = await subscribeLowercaseHashToHIBP(
+        const lowerCasedSha1 = await subscribeLowerCaseHashToHIBP(
           subRecord.primary_email,
         );
         await knex("subscribers")
@@ -108,7 +108,7 @@ async function subscribeLowercaseHashToHIBP(emailAddress) {
       const trx = await knex.transaction();
       try {
         // update sha1 and sub to HIBP with the new sha1
-        const lowerCasedSha1 = await subscribeLowercaseHashToHIBP(
+        const lowerCasedSha1 = await subscribeLowerCaseHashToHIBP(
           emailRecord.email,
         );
         await knex("email_addresses")
