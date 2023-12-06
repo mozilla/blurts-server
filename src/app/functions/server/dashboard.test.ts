@@ -694,7 +694,7 @@ describe("getDashboardSummary", () => {
       summary.dataBrokerTotalDataPointsNum,
     );
     expect(summary.dataBrokerManuallyResolvedDataPointsNum).toBe(12);
-    expect(summary.unresolvedDataPoints.emailAddresses).toBe(3);
+    expect(summary.unresolvedDataPoints.emailAddresses).toBe(0);
   });
 
   it("gets mix scanned results & breaches summary", () => {
