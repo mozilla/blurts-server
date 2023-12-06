@@ -90,6 +90,10 @@ export const authOptions: AuthOptions = {
         const existingUser = await getSubscriberByEmail(email);
 
         if (existingUser) {
+          // MNTOR-2599 The breach_resolution object can get pretty big,
+          // causing the session token cookie to balloon in size,
+          // eventually resulting in a 400 Bad Request due to headers being too large.
+          delete existingUser.breach_resolution;
           token.subscriber = existingUser;
           if (account.access_token && account.refresh_token) {
             const updatedUser = await updateFxAData(
@@ -98,6 +102,10 @@ export const authOptions: AuthOptions = {
               account.refresh_token,
               JSON.stringify(profile),
             );
+            // MNTOR-2599 The breach_resolution object can get pretty big,
+            // causing the session token cookie to balloon in size,
+            // eventually resulting in a 400 Bad Request due to headers being too large.
+            delete updatedUser.breach_resolution;
             token.subscriber = updatedUser;
           }
         }
