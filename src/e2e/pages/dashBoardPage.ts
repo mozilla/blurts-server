@@ -22,6 +22,14 @@ export class DashboardPage {
 
   readonly exposuresHeading: Locator;
   readonly fixedHeading: Locator;
+  readonly toolTip: Locator;
+  readonly heresWhatsFixedCardTitle: Locator;
+
+  readonly whatsFixedPopup: Locator;
+  readonly popupOkButton: Locator;
+
+  readonly chartTooltip: Locator;
+  readonly aboutActiveExposuresPopup: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -53,8 +61,30 @@ export class DashboardPage {
     this.exposuresHeading = page.getByRole("heading", {
       name: "View all sites where your info is exposed",
     });
+
     this.fixedHeading = page.getByRole("heading", {
       name: "View all exposures that are fixed or in-progress",
+    });
+
+    this.toolTip = page.locator(
+      '//div[starts-with(@class, "ProgressCard_header")]/button',
+    );
+    this.heresWhatsFixedCardTitle = page.locator(
+      '//div[starts-with(@class, "ProgressCard_header")]',
+    );
+
+    // here's what we fixed popup
+    this.whatsFixedPopup = page.getByRole("dialog", {
+      name: "About what we fixed",
+    });
+    this.popupOkButton = page.getByRole("button", { name: "OK" });
+
+    // chartTooltip
+    this.chartTooltip = page.locator(
+      '//div[starts-with(@class, "DashboardTopBanner_chart")]//button',
+    );
+    this.aboutActiveExposuresPopup = page.getByRole("dialog", {
+      name: "About your number of active exposures",
     });
   }
 

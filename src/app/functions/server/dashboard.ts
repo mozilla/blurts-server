@@ -7,7 +7,7 @@ import { BreachDataTypes } from "../universal/breach";
 import { RemovalStatusMap } from "../universal/scanResult";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 
-export type Exposures = {
+export type DataPoints = {
   // shared
   emailAddresses: number;
   phoneNumbers: number;
@@ -26,7 +26,7 @@ export type Exposures = {
   bankAccountNumbers: number;
 };
 
-type SanitizedExposures = Array<Record<string, number>>;
+type SanitizedDataPoints = Array<Record<string, number>>;
 export interface DashboardSummary {
   /** total number of user data breaches */
   dataBreachTotalNum: number;
@@ -34,47 +34,47 @@ export interface DashboardSummary {
   dataBreachUnresolvedNum: number;
   /** total number of user data breaches that are resolved */
   dataBreachResolvedNum: number;
-  /** total number of exposures from user breaches */
-  dataBreachTotalExposuresNum: number;
-  /**total number of fixed exposures from user breaches */
-  dataBreachFixedExposuresNum: number;
+  /** total number of data points from user breaches */
+  dataBreachTotalDataPointsNum: number;
+  /** total number of fixed data points from user breaches */
+  dataBreachFixedDataPointsNum: number;
   /** total number of user data broker scans */
   dataBrokerTotalNum: number;
-  /** total number of exposures from user data broker scanned results */
-  dataBrokerTotalExposuresNum: number;
+  /** total number of data points from user data broker scanned results */
+  dataBrokerTotalDataPointsNum: number;
   /** total number of fixed scans from user data broker scanned results */
-  dataBrokerFixedNum: number;
-  /** total number of fixed exposures from user data broker scanned results */
-  dataBrokerFixedExposuresNum: number;
+  dataBrokerAutoFixedNum: number;
+  /** total number of fixed data points from user data broker scanned results */
+  dataBrokerAutoFixedDataPointsNum: number;
   /** total number of in-progress scans from user data broker scanned results */
   dataBrokerInProgressNum: number;
-  /** total number of in-progress exposures from user data broker scanned results */
-  dataBrokerInProgressExposuresNum: number;
-  /** total number of exposures resolved manually */
-  dataBrokerManuallyResolvedExposuresNum: number;
+  /** total number of in-progress data points from user data broker scanned results */
+  dataBrokerInProgressDataPointsNum: number;
+  /** total number of data points resolved manually */
+  dataBrokerManuallyResolvedDataPointsNum: number;
 
-  /** total number of exposures: sum of data breaches & data broker exposures */
-  totalExposures: number;
-  /** all exposures separated by data types */
-  allExposures: Exposures;
-  /** unresolved exposures separated by data types */
-  unresolvedExposures: Exposures;
-  /** in-progress exposures separated by data types */
-  inProgressExposures: Exposures;
-  /** resolved/removed exposures separated by data types */
-  fixedExposures: Exposures;
-  /** manually resolved data broker exposures separated by data types */
-  manuallyResolvedDataBrokerExposures: Exposures;
-  /** in-progress & resolved/removed exposures separated by data types */
-  inProgressFixedExposures: Exposures;
+  /** total number of data points: sum of data breaches & data broker data points */
+  totalDataPointsNum: number;
+  /** all data points separated by data classes */
+  allDataPoints: DataPoints;
+  /** unresolved data points separated by data classes */
+  unresolvedDataPoints: DataPoints;
+  /** in-progress data points separated by data classes */
+  inProgressDataPoints: DataPoints;
+  /** resolved/removed data points separated by data classes */
+  fixedDataPoints: DataPoints;
+  /** manually resolved data broker data points separated by data classes */
+  manuallyResolvedDataBrokerDataPoints: DataPoints;
+  /** in-progress & resolved/removed data points separated by data classes */
+  inProgressFixedDataPoints: DataPoints;
 
-  /** sanitized all exposures for frontend display */
-  unresolvedSanitizedExposures: SanitizedExposures;
-  /** sanitized resolved/removed exposures for frontend display */
-  inProgressFixedSanitizedExposures: SanitizedExposures;
+  /** sanitized all data points for frontend display */
+  unresolvedSanitizedDataPoints: SanitizedDataPoints;
+  /** sanitized resolved/removed data points for frontend display */
+  inProgressFixedSanitizedDataPoints: SanitizedDataPoints;
 }
 
-const exposureKeyMap: Record<string, string> = {
+const dataClassKeyMap: Record<string, string> = {
   emailAddresses: "email-addresses",
   phoneNumbers: "phone-numbers",
 
@@ -100,17 +100,17 @@ export function getDashboardSummary(
     dataBreachTotalNum: 0,
     dataBreachResolvedNum: 0,
     dataBreachUnresolvedNum: 0,
-    dataBreachTotalExposuresNum: 0,
-    dataBreachFixedExposuresNum: 0,
+    dataBreachTotalDataPointsNum: 0,
+    dataBreachFixedDataPointsNum: 0,
     dataBrokerTotalNum: scannedResults.length,
-    dataBrokerTotalExposuresNum: 0,
-    dataBrokerFixedNum: 0,
-    dataBrokerFixedExposuresNum: 0,
+    dataBrokerTotalDataPointsNum: 0,
+    dataBrokerAutoFixedNum: 0,
+    dataBrokerAutoFixedDataPointsNum: 0,
     dataBrokerInProgressNum: 0,
-    dataBrokerInProgressExposuresNum: 0,
-    dataBrokerManuallyResolvedExposuresNum: 0,
-    totalExposures: 0,
-    allExposures: {
+    dataBrokerInProgressDataPointsNum: 0,
+    dataBrokerManuallyResolvedDataPointsNum: 0,
+    totalDataPointsNum: 0,
+    allDataPoints: {
       emailAddresses: 0,
       phoneNumbers: 0,
       addresses: 0,
@@ -125,7 +125,7 @@ export function getDashboardSummary(
       securityQuestions: 0,
       bankAccountNumbers: 0,
     },
-    unresolvedExposures: {
+    unresolvedDataPoints: {
       emailAddresses: 0,
       phoneNumbers: 0,
       addresses: 0,
@@ -140,7 +140,7 @@ export function getDashboardSummary(
       securityQuestions: 0,
       bankAccountNumbers: 0,
     },
-    inProgressExposures: {
+    inProgressDataPoints: {
       emailAddresses: 0,
       phoneNumbers: 0,
       addresses: 0,
@@ -155,7 +155,7 @@ export function getDashboardSummary(
       securityQuestions: 0,
       bankAccountNumbers: 0,
     },
-    fixedExposures: {
+    fixedDataPoints: {
       emailAddresses: 0,
       phoneNumbers: 0,
       addresses: 0,
@@ -170,7 +170,7 @@ export function getDashboardSummary(
       securityQuestions: 0,
       bankAccountNumbers: 0,
     },
-    manuallyResolvedDataBrokerExposures: {
+    manuallyResolvedDataBrokerDataPoints: {
       emailAddresses: 0,
       phoneNumbers: 0,
       addresses: 0,
@@ -185,7 +185,7 @@ export function getDashboardSummary(
       securityQuestions: 0,
       bankAccountNumbers: 0,
     },
-    inProgressFixedExposures: {
+    inProgressFixedDataPoints: {
       emailAddresses: 0,
       phoneNumbers: 0,
       addresses: 0,
@@ -200,16 +200,16 @@ export function getDashboardSummary(
       securityQuestions: 0,
       bankAccountNumbers: 0,
     },
-    unresolvedSanitizedExposures: [],
-    inProgressFixedSanitizedExposures: [],
+    unresolvedSanitizedDataPoints: [],
+    inProgressFixedSanitizedDataPoints: [],
   };
 
   // calculate broker summary from scanned results
   if (scannedResults) {
     scannedResults.forEach((r) => {
       // check removal status
-      const isManuallyResolved = r.manually_resolved;
-      const isFixed =
+      const isManuallyResolved = r.status === "new" && r.manually_resolved;
+      const isAutoFixed =
         r.status === RemovalStatusMap.Removed && !isManuallyResolved;
       const isInProgress =
         (r.status === RemovalStatusMap.OptOutInProgress ||
@@ -217,51 +217,51 @@ export function getDashboardSummary(
         !isManuallyResolved;
       if (isInProgress) {
         summary.dataBrokerInProgressNum++;
-      } else if (isFixed) {
-        summary.dataBrokerFixedNum++;
+      } else if (isAutoFixed) {
+        summary.dataBrokerAutoFixedNum++;
       }
-      // total exposure: add email, phones, addresses, relatives, full name (1)
-      const exposureIncrement =
+      // total data points: add email, phones, addresses, relatives, full name (1)
+      const dataPointsIncrement =
         r.emails.length +
         r.phones.length +
         r.addresses.length +
         r.relatives.length;
-      summary.totalExposures += exposureIncrement;
-      summary.dataBrokerTotalExposuresNum += exposureIncrement;
+      summary.totalDataPointsNum += dataPointsIncrement;
+      summary.dataBrokerTotalDataPointsNum += dataPointsIncrement;
 
-      // for all exposures: email, phones, addresses, relatives, full name (1)
-      summary.allExposures.emailAddresses += r.emails.length;
-      summary.allExposures.phoneNumbers += r.phones.length;
-      summary.allExposures.addresses += r.addresses.length;
-      summary.allExposures.familyMembers += r.relatives.length;
+      // for all data points: email, phones, addresses, relatives, full name (1)
+      summary.allDataPoints.emailAddresses += r.emails.length;
+      summary.allDataPoints.phoneNumbers += r.phones.length;
+      summary.allDataPoints.addresses += r.addresses.length;
+      summary.allDataPoints.familyMembers += r.relatives.length;
 
       if (isInProgress) {
-        summary.inProgressExposures.emailAddresses += r.emails.length;
-        summary.inProgressExposures.phoneNumbers += r.phones.length;
-        summary.inProgressExposures.addresses += r.addresses.length;
-        summary.inProgressExposures.familyMembers += r.relatives.length;
-        summary.dataBrokerInProgressExposuresNum += exposureIncrement;
+        summary.inProgressDataPoints.emailAddresses += r.emails.length;
+        summary.inProgressDataPoints.phoneNumbers += r.phones.length;
+        summary.inProgressDataPoints.addresses += r.addresses.length;
+        summary.inProgressDataPoints.familyMembers += r.relatives.length;
+        summary.dataBrokerInProgressDataPointsNum += dataPointsIncrement;
       }
 
-      // for fixed exposures: email, phones, addresses, relatives, full name (1)
-      if (isFixed) {
-        summary.fixedExposures.emailAddresses += r.emails.length;
-        summary.fixedExposures.phoneNumbers += r.phones.length;
-        summary.fixedExposures.addresses += r.addresses.length;
-        summary.fixedExposures.familyMembers += r.relatives.length;
-        summary.dataBrokerFixedExposuresNum += exposureIncrement;
+      // for fixed data points: email, phones, addresses, relatives, full name (1)
+      if (isAutoFixed) {
+        summary.fixedDataPoints.emailAddresses += r.emails.length;
+        summary.fixedDataPoints.phoneNumbers += r.phones.length;
+        summary.fixedDataPoints.addresses += r.addresses.length;
+        summary.fixedDataPoints.familyMembers += r.relatives.length;
+        summary.dataBrokerAutoFixedDataPointsNum += dataPointsIncrement;
       }
 
       if (isManuallyResolved) {
-        summary.manuallyResolvedDataBrokerExposures.emailAddresses +=
+        summary.manuallyResolvedDataBrokerDataPoints.emailAddresses +=
           r.emails.length;
-        summary.manuallyResolvedDataBrokerExposures.phoneNumbers +=
+        summary.manuallyResolvedDataBrokerDataPoints.phoneNumbers +=
           r.phones.length;
-        summary.manuallyResolvedDataBrokerExposures.addresses +=
+        summary.manuallyResolvedDataBrokerDataPoints.addresses +=
           r.addresses.length;
-        summary.manuallyResolvedDataBrokerExposures.familyMembers +=
+        summary.manuallyResolvedDataBrokerDataPoints.familyMembers +=
           r.relatives.length;
-        summary.dataBrokerManuallyResolvedExposuresNum += exposureIncrement;
+        summary.dataBrokerManuallyResolvedDataPointsNum += dataPointsIncrement;
       }
     });
   }
@@ -283,79 +283,79 @@ export function getDashboardSummary(
 
     // count emails
     if (dataClasses.includes(BreachDataTypes.Email)) {
-      summary.totalExposures += increment;
-      summary.dataBreachTotalExposuresNum += increment;
-      summary.allExposures.emailAddresses += increment;
+      summary.totalDataPointsNum += increment;
+      summary.dataBreachTotalDataPointsNum += increment;
+      summary.allDataPoints.emailAddresses += increment;
       if (b.isResolved) {
-        summary.fixedExposures.emailAddresses += increment;
-        summary.dataBreachFixedExposuresNum += increment;
+        summary.fixedDataPoints.emailAddresses += increment;
+        summary.dataBreachFixedDataPointsNum += increment;
       }
     }
 
     // count phone numbers
     if (dataClasses.includes(BreachDataTypes.Phone)) {
-      summary.totalExposures += increment;
-      summary.dataBreachTotalExposuresNum += increment;
-      summary.allExposures.phoneNumbers += increment;
+      summary.totalDataPointsNum += increment;
+      summary.dataBreachTotalDataPointsNum += increment;
+      summary.allDataPoints.phoneNumbers += increment;
       if (b.isResolved) {
-        summary.fixedExposures.phoneNumbers += increment;
-        summary.dataBreachFixedExposuresNum += increment;
+        summary.fixedDataPoints.phoneNumbers += increment;
+        summary.dataBreachFixedDataPointsNum += increment;
       }
     }
 
     // count password
     if (dataClasses.includes(BreachDataTypes.Passwords)) {
-      summary.totalExposures += increment;
-      summary.dataBreachTotalExposuresNum += increment;
-      summary.allExposures.passwords += increment;
+      summary.totalDataPointsNum += increment;
+      summary.dataBreachTotalDataPointsNum += increment;
+      summary.allDataPoints.passwords += increment;
       if (b.isResolved) {
-        summary.fixedExposures.passwords += increment;
-        summary.dataBreachFixedExposuresNum += increment;
+        summary.fixedDataPoints.passwords += increment;
+        summary.dataBreachFixedDataPointsNum += increment;
       }
     }
 
     // count ssn
     if (dataClasses.includes(BreachDataTypes.SSN)) {
-      summary.totalExposures += increment;
-      summary.dataBreachTotalExposuresNum += increment;
-      summary.allExposures.socialSecurityNumbers += increment;
+      summary.totalDataPointsNum += increment;
+      summary.dataBreachTotalDataPointsNum += increment;
+      summary.allDataPoints.socialSecurityNumbers += increment;
       if (b.isResolved) {
-        summary.fixedExposures.socialSecurityNumbers += increment;
-        summary.dataBreachFixedExposuresNum += increment;
+        summary.fixedDataPoints.socialSecurityNumbers += increment;
+        summary.dataBreachFixedDataPointsNum += increment;
       }
     }
 
     // count IP
     if (dataClasses.includes(BreachDataTypes.IP)) {
-      summary.totalExposures += increment;
-      summary.dataBreachTotalExposuresNum += increment;
-      summary.allExposures.ipAddresses += increment;
+      summary.totalDataPointsNum += increment;
+      summary.dataBreachTotalDataPointsNum += increment;
+      summary.allDataPoints.ipAddresses += increment;
       if (b.isResolved) {
-        summary.fixedExposures.ipAddresses += increment;
-        summary.dataBreachFixedExposuresNum += increment;
+        summary.fixedDataPoints.ipAddresses += increment;
+        summary.dataBreachFixedDataPointsNum += increment;
       }
     }
 
     // count credit card
     if (dataClasses.includes(BreachDataTypes.CreditCard)) {
-      summary.totalExposures += increment;
-      summary.dataBreachTotalExposuresNum += increment;
-      summary.allExposures.creditCardNumbers += increment;
+      summary.totalDataPointsNum += increment;
+      summary.dataBreachTotalDataPointsNum += increment;
+      summary.allDataPoints.creditCardNumbers += increment;
       if (b.isResolved) {
-        summary.fixedExposures.creditCardNumbers += increment;
-        summary.dataBreachFixedExposuresNum += increment;
+        summary.fixedDataPoints.creditCardNumbers += increment;
+        summary.dataBreachFixedDataPointsNum += increment;
       }
     }
 
     /* c8 ignore start */
     // count pin numbers
     if (dataClasses.includes(BreachDataTypes.PIN)) {
-      summary.totalExposures += increment;
-      summary.dataBreachTotalExposuresNum += increment;
-      summary.allExposures.pins += increment;
+      summary.totalDataPointsNum += increment;
+      summary.dataBreachTotalDataPointsNum += increment;
+      summary.allDataPoints.pins += increment;
       if (b.isResolved) {
-        summary.fixedExposures.pins += increment;
-        summary.dataBreachFixedExposuresNum += increment;
+        summary.fixedDataPoints.pins += increment;
+        summary.dataBreachFixedDataPointsNum += increment;
       }
     }
     /* c8 ignore stop */
@@ -363,12 +363,12 @@ export function getDashboardSummary(
     /** c8 ignore start */
     // count security questions
     if (dataClasses.includes(BreachDataTypes.SecurityQuestions)) {
-      summary.totalExposures += increment;
-      summary.dataBreachTotalExposuresNum += increment;
-      summary.allExposures.securityQuestions += increment;
+      summary.totalDataPointsNum += increment;
+      summary.dataBreachTotalDataPointsNum += increment;
+      summary.allDataPoints.securityQuestions += increment;
       if (b.isResolved) {
-        summary.fixedExposures.securityQuestions += increment;
-        summary.dataBreachFixedExposuresNum += increment;
+        summary.fixedDataPoints.securityQuestions += increment;
+        summary.dataBreachFixedDataPointsNum += increment;
       }
     }
     /** c8 ignore stop */
@@ -382,80 +382,86 @@ export function getDashboardSummary(
     summary.dataBreachTotalNum - summary.dataBreachResolvedNum;
   const isBreachesOnly = summary.dataBrokerTotalNum === 0;
 
-  // count unresolved exposures
-  summary.unresolvedExposures = Object.keys(summary.allExposures).reduce(
+  // count unresolved data points
+  summary.unresolvedDataPoints = Object.keys(summary.allDataPoints).reduce(
     (a, k) => {
-      a[k as keyof Exposures] =
-        summary.allExposures[k as keyof Exposures] -
-        summary.fixedExposures[k as keyof Exposures] -
-        summary.inProgressExposures[k as keyof Exposures];
+      a[k as keyof DataPoints] =
+        summary.allDataPoints[k as keyof DataPoints] -
+        summary.fixedDataPoints[k as keyof DataPoints] -
+        summary.inProgressDataPoints[k as keyof DataPoints] -
+        summary.manuallyResolvedDataBrokerDataPoints[k as keyof DataPoints];
       return a;
     },
-    {} as Exposures,
+    {} as DataPoints,
   );
 
-  // count fixed, in-progress, and manually resolved (data brokers) exposures
-  summary.inProgressFixedExposures = Object.keys(summary.fixedExposures).reduce(
-    (a, k) => {
-      a[k as keyof Exposures] =
-        summary.fixedExposures[k as keyof Exposures] +
-        summary.inProgressExposures[k as keyof Exposures] +
-        summary.manuallyResolvedDataBrokerExposures[k as keyof Exposures];
-      return a;
-    },
-    {} as Exposures,
-  );
+  // count fixed, in-progress, and manually resolved (data brokers) data points
+  summary.inProgressFixedDataPoints = Object.keys(
+    summary.fixedDataPoints,
+  ).reduce((a, k) => {
+    a[k as keyof DataPoints] =
+      summary.fixedDataPoints[k as keyof DataPoints] +
+      summary.inProgressDataPoints[k as keyof DataPoints] +
+      summary.manuallyResolvedDataBrokerDataPoints[k as keyof DataPoints];
+    return a;
+  }, {} as DataPoints);
 
-  // sanitize unresolved exposures
-  summary.unresolvedSanitizedExposures = sanitizeExposures(
-    summary.unresolvedExposures,
-    summary.totalExposures -
-      summary.dataBreachFixedExposuresNum -
-      summary.dataBrokerFixedExposuresNum -
-      summary.dataBrokerInProgressExposuresNum,
+  // sanitize unresolved data points
+  summary.unresolvedSanitizedDataPoints = sanitizeDataPoints(
+    summary.unresolvedDataPoints,
+    summary.totalDataPointsNum -
+      summary.dataBreachFixedDataPointsNum -
+      summary.dataBrokerAutoFixedDataPointsNum -
+      summary.dataBrokerInProgressDataPointsNum -
+      summary.dataBrokerManuallyResolvedDataPointsNum,
     isBreachesOnly,
   );
 
-  // sanitize fixed + inprogress exposures
-  summary.inProgressFixedSanitizedExposures = sanitizeExposures(
-    summary.inProgressFixedExposures,
-    summary.dataBreachFixedExposuresNum +
-      summary.dataBrokerFixedExposuresNum +
-      summary.dataBrokerInProgressExposuresNum +
-      summary.dataBrokerManuallyResolvedExposuresNum,
+  // sanitize fixed + inprogress data points
+  summary.inProgressFixedSanitizedDataPoints = sanitizeDataPoints(
+    summary.inProgressFixedDataPoints,
+    summary.dataBreachFixedDataPointsNum +
+      summary.dataBrokerAutoFixedDataPointsNum +
+      summary.dataBrokerInProgressDataPointsNum +
+      summary.dataBrokerManuallyResolvedDataPointsNum,
     isBreachesOnly,
   );
 
   return summary;
 }
 
-function sanitizeExposures(
-  exposures: Exposures,
-  totalExposures: number,
+function sanitizeDataPoints(
+  dataPoints: DataPoints,
+  dataPointCount: number,
   breachesOnly = false,
-): SanitizedExposures {
-  let numOfTopExposures = 4; // when we have both exposure types
+): SanitizedDataPoints {
+  let numOfTopDataPoints = 4; // when we have both exposure types
   if (breachesOnly) {
-    numOfTopExposures = 2; // when we have breaches only
+    numOfTopDataPoints = 2; // when we have breaches only
   }
-  const sanitizedExposures = Object.entries(exposures)
-    .sort((a, b) => b[1] - a[1])
-    .map((e) => {
-      const key = exposureKeyMap[e[0]];
-      return { [key]: e[1] };
-    })
-    .splice(0, numOfTopExposures);
-  const other = sanitizedExposures.reduce(
-    (total, cur) => total - (Object.values(cur).pop() || 0),
-    totalExposures,
+  const sanitizedAllDataPoints = Object.entries(dataPoints)
+    .sort(([_dataClassA, countA], [_dataClassB, countB]) => countB - countA)
+    .map(([dataClass, count]) => {
+      const key = dataClassKeyMap[dataClass];
+      return { [key]: count };
+    });
+  const sanitizedTopDataPoints = sanitizedAllDataPoints.slice(
+    0,
+    numOfTopDataPoints,
   );
-  sanitizedExposures.push({ "other-data-class": other });
-  return sanitizedExposures;
+
+  const otherCount = sanitizedTopDataPoints.reduce(
+    (total, cur) => total - (Object.values(cur).pop() || 0),
+    dataPointCount,
+  );
+  const sanitizedDataPoints = [...sanitizedTopDataPoints];
+  sanitizedDataPoints.push({ "other-data-class": otherCount });
+  return sanitizedDataPoints;
 }
 
-export function getExposureReduction(summary: DashboardSummary): number {
-  if (summary.totalExposures <= 0) return 100;
+export function getDataPointReduction(summary: DashboardSummary): number {
+  if (summary.totalDataPointsNum <= 0) return 100;
   return Math.round(
-    (summary.dataBrokerTotalExposuresNum / summary.totalExposures) * 100,
+    (summary.dataBrokerTotalDataPointsNum / summary.totalDataPointsNum) * 100,
   );
 }
