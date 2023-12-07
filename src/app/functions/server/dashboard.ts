@@ -286,7 +286,7 @@ export function getDashboardSummary(
       summary.totalDataPointsNum += increment;
       summary.dataBreachTotalDataPointsNum += increment;
       summary.allDataPoints.emailAddresses += increment;
-      if (b.isResolved) {
+      if (b.resolvedDataClasses.includes(BreachDataTypes.Email)) {
         summary.fixedDataPoints.emailAddresses += increment;
         summary.dataBreachFixedDataPointsNum += increment;
       }
@@ -297,7 +297,7 @@ export function getDashboardSummary(
       summary.totalDataPointsNum += increment;
       summary.dataBreachTotalDataPointsNum += increment;
       summary.allDataPoints.phoneNumbers += increment;
-      if (b.isResolved) {
+      if (b.resolvedDataClasses.includes(BreachDataTypes.Phone)) {
         summary.fixedDataPoints.phoneNumbers += increment;
         summary.dataBreachFixedDataPointsNum += increment;
       }
@@ -308,7 +308,7 @@ export function getDashboardSummary(
       summary.totalDataPointsNum += increment;
       summary.dataBreachTotalDataPointsNum += increment;
       summary.allDataPoints.passwords += increment;
-      if (b.isResolved) {
+      if (b.resolvedDataClasses.includes(BreachDataTypes.Passwords)) {
         summary.fixedDataPoints.passwords += increment;
         summary.dataBreachFixedDataPointsNum += increment;
       }
@@ -319,7 +319,7 @@ export function getDashboardSummary(
       summary.totalDataPointsNum += increment;
       summary.dataBreachTotalDataPointsNum += increment;
       summary.allDataPoints.socialSecurityNumbers += increment;
-      if (b.isResolved) {
+      if (b.resolvedDataClasses.includes(BreachDataTypes.SSN)) {
         summary.fixedDataPoints.socialSecurityNumbers += increment;
         summary.dataBreachFixedDataPointsNum += increment;
       }
@@ -330,7 +330,7 @@ export function getDashboardSummary(
       summary.totalDataPointsNum += increment;
       summary.dataBreachTotalDataPointsNum += increment;
       summary.allDataPoints.ipAddresses += increment;
-      if (b.isResolved) {
+      if (b.resolvedDataClasses.includes(BreachDataTypes.IP)) {
         summary.fixedDataPoints.ipAddresses += increment;
         summary.dataBreachFixedDataPointsNum += increment;
       }
@@ -341,7 +341,7 @@ export function getDashboardSummary(
       summary.totalDataPointsNum += increment;
       summary.dataBreachTotalDataPointsNum += increment;
       summary.allDataPoints.creditCardNumbers += increment;
-      if (b.isResolved) {
+      if (b.resolvedDataClasses.includes(BreachDataTypes.CreditCard)) {
         summary.fixedDataPoints.creditCardNumbers += increment;
         summary.dataBreachFixedDataPointsNum += increment;
       }
@@ -353,7 +353,7 @@ export function getDashboardSummary(
       summary.totalDataPointsNum += increment;
       summary.dataBreachTotalDataPointsNum += increment;
       summary.allDataPoints.pins += increment;
-      if (b.isResolved) {
+      if (b.resolvedDataClasses.includes(BreachDataTypes.PIN)) {
         summary.fixedDataPoints.pins += increment;
         summary.dataBreachFixedDataPointsNum += increment;
       }
@@ -366,7 +366,7 @@ export function getDashboardSummary(
       summary.totalDataPointsNum += increment;
       summary.dataBreachTotalDataPointsNum += increment;
       summary.allDataPoints.securityQuestions += increment;
-      if (b.isResolved) {
+      if (b.resolvedDataClasses.includes(BreachDataTypes.SecurityQuestions)) {
         summary.fixedDataPoints.securityQuestions += increment;
         summary.dataBreachFixedDataPointsNum += increment;
       }

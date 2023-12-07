@@ -368,7 +368,7 @@ const allResolvedBreaches: SubscriberBreach[] = [
     addedDate: new Date("2015-10-26T23:35:45.000Z"),
     breachDate: new Date("2015-03-01T08:00:00.000Z"),
     dataClasses: ["email-addresses", "ip-addresses", "passwords"],
-    resolvedDataClasses: [],
+    resolvedDataClasses: ["email-addresses", "ip-addresses", "passwords"],
     description:
       'In approximately March 2015, the free web hosting provider <a href="http://www.troyhunt.com/2015/10/breaches-traders-plain-text-passwords.html" target="_blank" rel="noopener">000webhost suffered a major data breach</a> that exposed almost 15 million customer records. The data was sold and traded before 000webhost was alerted in October. The breach included names, email addresses and plain text passwords.',
     domain: "000webhost.com",
@@ -400,7 +400,12 @@ const allResolvedBreaches: SubscriberBreach[] = [
       "ip-addresses",
       "passwords",
     ],
-    resolvedDataClasses: [],
+    resolvedDataClasses: [
+      "dates-of-birth",
+      "email-addresses",
+      "ip-addresses",
+      "passwords",
+    ],
     description:
       'In November 2014, the acne website <a href="http://www.acne.org/" target="_blank" rel="noopener">acne.org</a> suffered a data breach that exposed over 430k forum members\' accounts. The data was being actively traded on underground forums and included email addresses, birth dates and passwords.',
     domain: "acne.org",
@@ -431,7 +436,7 @@ const allResolvedBreaches: SubscriberBreach[] = [
     addedDate: new Date("2013-12-04T00:00:00.000Z"),
     breachDate: new Date("2013-10-04T07:00:00.000Z"),
     dataClasses: ["email-addresses", "passwords"],
-    resolvedDataClasses: [],
+    resolvedDataClasses: ["email-addresses", "passwords"],
     description:
       'In October 2013, 153 million Adobe accounts were breached with each containing an internal ID, username, email, <em>encrypted</em> password and a password hint in plain text. The password cryptography was poorly done and many were quickly resolved back to plain text. The unencrypted hints also <a href="http://www.troyhunt.com/2013/11/adobe-credentials-and-serious.html" target="_blank" rel="noopener">disclosed much about the passwords</a> adding further to the risk that hundreds of millions of Adobe customers already faced.',
     domain: "adobe.com",
