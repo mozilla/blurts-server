@@ -114,7 +114,7 @@ open-in-new-tab-alt = Open link in a new tab
 # Status Pill
 
 status-pill-action-needed = Action needed
-status-pill-progress = Manually fixed
+status-pill-progress = In progress
 status-pill-fixed = Fixed
 
 # Exposure Card
