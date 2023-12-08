@@ -227,6 +227,7 @@ export const PlansTable = (props: Props) => {
                       elems: { b: <b /> },
                     },
                   )}
+                  &nbsp;
                   <InfoPopover>
                     <PopoverContent>
                       {l10n.getString(
@@ -254,6 +255,7 @@ export const PlansTable = (props: Props) => {
                       elems: { b: <b /> },
                     },
                   )}
+                  &nbsp;
                   <InfoPopover>
                     <PopoverContent>
                       {l10n.getString(
@@ -399,6 +401,7 @@ export const PlansTable = (props: Props) => {
                       elems: { b: <b /> },
                     },
                   )}
+                  &nbsp;
                   <InfoPopover>
                     <PopoverContent>
                       {l10n.getString(
@@ -426,6 +429,7 @@ export const PlansTable = (props: Props) => {
                       elems: { b: <b /> },
                     },
                   )}
+                  &nbsp;
                   <InfoPopover>
                     <PopoverContent>
                       {l10n.getString(
@@ -539,6 +543,7 @@ export const PlansTable = (props: Props) => {
               {l10n.getString(
                 "landing-premium-plans-table-feature-removal-free",
               )}
+              &nbsp;
               <InfoPopover>
                 <PopoverContent>
                   {l10n.getString(
@@ -551,6 +556,7 @@ export const PlansTable = (props: Props) => {
               {l10n.getString(
                 "landing-premium-plans-table-feature-removal-plus",
               )}
+              &nbsp;
               <InfoPopover>
                 <PopoverContent>
                   {l10n.getString(
