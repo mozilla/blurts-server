@@ -78,3 +78,26 @@ landing-premium-plans-table-cta-free-label = Start free monitoring
 landing-premium-plans-table-cta-plus-label = Get data removal
 landing-premium-plans-table-reassurance-free-label = Upgrade anytime
 landing-premium-plans-table-reassurance-plus-label = Cancel anytime
+
+
+landing-premium-plans-cards-feature-included = Included:
+landing-premium-plans-cards-feature-not-included = Not included:
+# Variables:
+#   $dataBrokerTotalCount (number) - number of scanned data broker sites, e.g. 190
+landing-premium-plans-cards-feature-scan-free =
+    { $dataBrokerTotalCount ->
+        [one] <b>One-time</b> scan of { $dataBrokerTotalCount } data broker site that may be selling your personal info
+       *[other] <b>One-time</b> scan of { $dataBrokerTotalCount } data broker sites that may be selling your personal info
+    }
+# Variables:
+#   $dataBrokerTotalCount (number) - number of scanned data broker sites, e.g. 190
+landing-premium-plans-cards-feature-scan-plus =
+    { $dataBrokerTotalCount ->
+        [one] <b>Monthly</b> scan of { $dataBrokerTotalCount } data broker site that may be selling your personal info
+       *[other] <b>Monthly</b> scan of { $dataBrokerTotalCount } data broker sites that may be selling your personal info
+    }
+landing-premium-plans-cards-feature-removal-free = <b>Manual removal</b> of personal info from sites that are selling it
+landing-premium-plans-cards-feature-removal-plus = <b>Automatic removal</b> of personal info from sites that are selling it
+landing-premium-plans-cards-feature-alerts = Get alerts when your data has been breached
+landing-premium-plans-cards-feature-guidance = <b>Guided help</b> to fix high-risk data breaches
+landing-premium-plans-cards-feature-monitoring = Continuous monitoring
