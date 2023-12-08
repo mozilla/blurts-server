@@ -56,7 +56,7 @@ export const useGlean = () => {
       `../../telemetry/generated/${eventModule}`
     )) as Record<keyof GleanMetricMap[EventModule], EventMetricType>;
     // Instead of the specific type definitions we generated in the npm script
-    // `build-glean-index`, Glean takes a non-specific "ExtraArgs" type as
+    // `build-glean-types`, Glean takes a non-specific "ExtraArgs" type as
     // parameter to `record`.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mod[event].record(data as any);
