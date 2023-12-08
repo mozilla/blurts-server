@@ -9,11 +9,17 @@ import { useGa } from "./useGa";
 import { useGlean } from "./useGlean";
 import { GleanMetricMap } from "../../telemetry/generated/_map";
 
+const TelemetryPlatforms = {
+  Glean: "glean",
+  Ga: "ga",
+} as const;
+
 export const useTelemetry = () => {
   const path = usePathname();
   const recordGlean = useGlean();
   const { gtag } = useGa();
 
+  const { Glean, Ga } = TelemetryPlatforms;
   const record = <
     EventModule extends keyof GleanMetricMap,
     EventName extends keyof GleanMetricMap[EventModule],
@@ -21,17 +27,24 @@ export const useTelemetry = () => {
     eventModule: EventModule,
     event: EventName,
     data: GleanMetricMap[EventModule][EventName],
+    platforms: Array<
+      (typeof TelemetryPlatforms)[keyof typeof TelemetryPlatforms]
+    > = [Glean, Ga],
   ) => {
-    void recordGlean(eventModule, event, data);
-    gtag.record({
-      type: "event",
-      name: eventModule,
-      params: {
-        ...data,
-        action: event,
-        page_location: path,
-      },
-    });
+    if (platforms.includes(Glean)) {
+      void recordGlean(eventModule, event, data);
+    }
+    if (platforms.includes(Ga)) {
+      gtag.record({
+        type: "event",
+        name: eventModule,
+        params: {
+          ...data,
+          action: event,
+          page_location: path,
+        },
+      });
+    }
   };
 
   return record;

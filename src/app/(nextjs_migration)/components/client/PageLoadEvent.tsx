@@ -15,16 +15,6 @@ export type Props = {
   enabledFlags: FeatureFlagName[];
 };
 
-type PageViewParams = {
-  user_id?: string;
-  referrer?: string;
-  utm_campaign?: string;
-  utm_content?: string;
-  utm_medium?: string;
-  utm_source?: string;
-  utm_term?: string;
-};
-
 // Empty component that records a page view on first load.
 export const PageLoadEvent = (props: Props) => {
   const [cookies, setCookie] = useCookies(["userId"]);

@@ -10,6 +10,8 @@ import EventMetricType from "@mozilla/glean/private/metrics/event";
 import type { GleanMetricMap } from "../../telemetry/generated/_map";
 import { PublicEnvContext } from "../../contextProviders/public-env";
 
+// Note: Please refrain from using the `useGlean` hook directly.
+// The peferred way to record telemetry is through `useTelemetry`.
 // Custom hook that initializes Glean and returns all available events.
 export const useGlean = () => {
   const { PUBLIC_APP_ENV } = useContext(PublicEnvContext);
