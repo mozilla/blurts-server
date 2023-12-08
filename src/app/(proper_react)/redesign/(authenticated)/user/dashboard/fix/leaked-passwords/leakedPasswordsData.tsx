@@ -193,7 +193,12 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
         summary: l10n.getString("leaked-passwords-summary", {
           breach_date: breachDate,
         }),
-        description: <p>{l10n.getString("leaked-passwords-description")}</p>,
+        description: (
+          <>
+            <p>{l10n.getString("leaked-passwords-description")}</p>
+            <pre>{JSON.stringify(unresolvedBreach, null, 2)}</pre>
+          </>
+        ),
         recommendations: {
           title: l10n.getString("leaked-passwords-steps-title"),
           steps: (
