@@ -44,6 +44,7 @@ import styles from "./PlansTable.module.scss";
 import { useL10n } from "../../../hooks/l10n";
 import {
   CheckIcon,
+  CloseBigIcon,
   QuestionMarkCircle,
 } from "../../../components/server/Icons";
 import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
@@ -79,201 +80,53 @@ export const PlansTable = (props: Props) => {
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("yearly");
 
   return (
-    <Table aria-labelledby={props["aria-labelledby"]} selectionMode="none">
-      <TableHeader>
-        <Column>
-          {l10n.getString("landing-premium-plans-table-heading-feature")}
-        </Column>
-        <Column>
-          <h3>
-            {l10n.getString("landing-premium-plans-table-heading-free-title")}
-          </h3>
-          <p>
-            {l10n.getString(
-              "landing-premium-plans-table-heading-free-subtitle",
-            )}
-          </p>
-        </Column>
-        <Column>
-          <b className={styles.badge}>
-            {l10n.getString("landing-premium-plans-table-annotation-plus")}
-          </b>
-          <h3>
-            {l10n.getFragment(
-              "landing-premium-plans-table-heading-plus-title",
-              { elems: { b: <b /> } },
-            )}
-          </h3>
-          <p>
-            {l10n.getString(
-              "landing-premium-plans-table-heading-plus-subtitle",
-            )}
-          </p>
-        </Column>
-      </TableHeader>
-      <TableBody>
-        <Row>
-          <Cell>
-            {l10n.getString("landing-premium-plans-table-feature-scan-label", {
-              dataBrokerTotalCount: process.env
-                .NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-            })}
-          </Cell>
-          <Cell>
-            {l10n.getString("landing-premium-plans-table-feature-scan-free")}
-          </Cell>
-          <Cell>
-            {l10n.getString("landing-premium-plans-table-feature-scan-plus")}
-          </Cell>
-        </Row>
-        <Row>
-          <Cell>
-            {l10n.getString(
-              "landing-premium-plans-table-feature-removal-label",
-            )}
-          </Cell>
-          <Cell>
-            {l10n.getString("landing-premium-plans-table-feature-removal-free")}
-            <InfoPopover>
-              <PopoverContent>
-                {l10n.getString(
-                  "landing-premium-plans-table-feature-removal-free-callout",
-                )}
-              </PopoverContent>
-            </InfoPopover>
-          </Cell>
-          <Cell>
-            {l10n.getString("landing-premium-plans-table-feature-removal-plus")}
-            <InfoPopover>
-              <PopoverContent>
-                {l10n.getString(
-                  "landing-premium-plans-table-feature-removal-plus-callout",
-                  {
-                    dataBrokerTotalCount: process.env
-                      .NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-                  },
-                )}
-              </PopoverContent>
-            </InfoPopover>
-          </Cell>
-        </Row>
-        <Row>
-          <Cell>
-            {l10n.getString("landing-premium-plans-table-feature-alerts-label")}
-          </Cell>
-          <Cell>
-            <CheckIcon
-              className={styles.checkIcon}
-              alt={l10n.getString(
-                "landing-premium-plans-table-feature-alerts-free",
+    <>
+      <div className={styles.plansCards}>
+        <div role="group" className={styles.plusCard}>
+          <div className={styles.head}>
+            <b className={styles.badge}>
+              {l10n.getString("landing-premium-plans-table-annotation-plus")}
+            </b>
+            <h3>
+              {l10n.getFragment(
+                "landing-premium-plans-table-heading-plus-title",
+                { elems: { b: <b /> } },
               )}
-            />
-          </Cell>
-          <Cell>
-            <CheckIcon
-              className={styles.checkIcon}
-              alt={l10n.getString(
-                "landing-premium-plans-table-feature-alerts-plus",
+            </h3>
+            <p>
+              {l10n.getString(
+                "landing-premium-plans-table-heading-plus-subtitle",
               )}
+            </p>
+          </div>
+          <hr />
+          <div className={styles.priceSection}>
+            <BillingPeriodToggle
+              onChange={(newValue) => setBillingPeriod(newValue)}
             />
-          </Cell>
-        </Row>
-        <Row>
-          <Cell>
-            {l10n.getString(
-              "landing-premium-plans-table-feature-guidance-label",
-            )}
-          </Cell>
-          <Cell>
-            {l10n.getString(
-              "landing-premium-plans-table-feature-guidance-free",
-            )}
-          </Cell>
-          <Cell>
-            {l10n.getString(
-              "landing-premium-plans-table-feature-guidance-plus",
-            )}
-          </Cell>
-        </Row>
-        <Row>
-          <Cell>
-            {l10n.getString(
-              "landing-premium-plans-table-feature-monitoring-label",
-            )}
-          </Cell>
-          <Cell>
-            <CheckIcon
-              className={styles.checkIcon}
-              alt={l10n.getString(
-                "landing-premium-plans-table-feature-monitoring-free",
-              )}
-            />
-          </Cell>
-          <Cell>
-            <CheckIcon
-              className={styles.checkIcon}
-              alt={l10n.getString(
-                "landing-premium-plans-table-feature-monitoring-plus",
-              )}
-            />
-          </Cell>
-        </Row>
-        <Row>
-          <Cell>
-            <VisuallyHidden>
-              {l10n.getString("landing-premium-plans-table-billing-label")}
-            </VisuallyHidden>
-          </Cell>
-          <Cell>
-            <div className={styles.priceCell}>
-              <p className={styles.billingPeriod}>
-                {l10n.getString("landing-premium-plans-table-billing-free")}
-              </p>
-              <p className={styles.cost}>
-                <b className={styles.price}>
-                  {roundedPriceFormatter.format(0)}
-                </b>
-                <span className={styles.total} />
-              </p>
-              <Button variant="secondary" onPress={() => void signIn("fxa")}>
-                {l10n.getString("landing-premium-plans-table-cta-free-label")}
-              </Button>
-              <small className={styles.reassurance}>
-                {l10n.getString(
-                  "landing-premium-plans-table-reassurance-free-label",
-                )}
-              </small>
-            </div>
-          </Cell>
-          <Cell>
-            <div className={styles.priceCell}>
-              <div className={styles.billingPeriod}>
-                <BillingPeriodToggle
-                  onChange={(newValue) => setBillingPeriod(newValue)}
-                />
-              </div>
-              <p aria-live="polite" className={styles.cost}>
-                <b className={styles.price}>
-                  {billingPeriod === "yearly"
-                    ? l10n.getString(
-                        "landing-premium-plans-table-price-plus-yearly",
-                        {
-                          monthlyPrice: priceFormatter.format(
-                            monthlyPriceAnnualBilling,
-                          ),
-                        },
-                      )
-                    : l10n.getString(
-                        "landing-premium-plans-table-price-plus-monthly",
-                        {
-                          monthlyPrice: priceFormatter.format(
-                            monthlyPriceMonthlyBilling,
-                          ),
-                        },
-                      )}
-                </b>
-                <span className={styles.total}>
-                  {billingPeriod === "yearly" && (
+            <p aria-live="polite" className={styles.cost}>
+              <b className={styles.price}>
+                {billingPeriod === "yearly"
+                  ? l10n.getString(
+                      "landing-premium-plans-table-price-plus-yearly",
+                      {
+                        monthlyPrice: priceFormatter.format(
+                          monthlyPriceAnnualBilling,
+                        ),
+                      },
+                    )
+                  : l10n.getString(
+                      "landing-premium-plans-table-price-plus-monthly",
+                      {
+                        monthlyPrice: priceFormatter.format(
+                          monthlyPriceMonthlyBilling,
+                        ),
+                      },
+                    )}
+              </b>
+              <span className={styles.total}>
+                {billingPeriod === "yearly" && (
+                  <>
                     <em className={styles.discount}>
                       {l10n.getString(
                         "landing-premium-plans-table-price-plus-yearly-discount",
@@ -286,39 +139,595 @@ export const PlansTable = (props: Props) => {
                         },
                       )}
                     </em>
+                    &nbsp;•&nbsp;
+                    <span className={styles.sum}>
+                      {l10n.getString(
+                        "landing-premium-plans-table-price-plus-yearly-sum",
+                        {
+                          yearlyPrice: priceFormatter.format(
+                            12 * monthlyPriceAnnualBilling,
+                          ),
+                        },
+                      )}
+                    </span>
+                  </>
+                )}
+              </span>
+            </p>
+            <Button
+              variant="primary"
+              href={getPremiumSubscriptionUrl({ type: billingPeriod })}
+              className={styles.cta}
+            >
+              {l10n.getString("landing-premium-plans-table-cta-plus-label")}
+            </Button>
+            <small className={styles.reassurance}>
+              {l10n.getString(
+                "landing-premium-plans-table-reassurance-plus-label",
+              )}
+            </small>
+          </div>
+          <hr />
+          <div className={styles.featuresSection}>
+            <h4>
+              {l10n.getString("landing-premium-plans-table-heading-feature")}
+            </h4>
+            <ol className={styles.featureList}>
+              <li className={`${styles.feature} ${styles.included}`}>
+                <CheckIcon
+                  className={styles.inclusionIcon}
+                  alt={l10n.getString(
+                    "landing-premium-plans-cards-feature-included",
                   )}
-                  <br />
-                  <span className={styles.sum}>
-                    {l10n.getString(
-                      "landing-premium-plans-table-price-plus-yearly-sum",
-                      {
-                        yearlyPrice: priceFormatter.format(
-                          12 *
-                            (billingPeriod === "yearly"
-                              ? monthlyPriceAnnualBilling
-                              : monthlyPriceMonthlyBilling),
-                        ),
+                />
+                <span>
+                  {l10n.getFragment(
+                    "landing-premium-plans-cards-feature-scan-free",
+                    {
+                      elems: { b: <b /> },
+                      vars: {
+                        dataBrokerTotalCount: process.env
+                          .NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
                       },
+                    },
+                  )}
+                </span>
+              </li>
+              <li className={`${styles.feature} ${styles.included}`}>
+                <CheckIcon
+                  className={styles.inclusionIcon}
+                  alt={l10n.getString(
+                    "landing-premium-plans-cards-feature-included",
+                  )}
+                />
+                <span>
+                  {l10n.getFragment(
+                    "landing-premium-plans-cards-feature-scan-plus",
+                    {
+                      elems: { b: <b /> },
+                      vars: {
+                        dataBrokerTotalCount: process.env
+                          .NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                      },
+                    },
+                  )}
+                </span>
+              </li>
+              <li className={`${styles.feature} ${styles.included}`}>
+                <CheckIcon
+                  className={styles.inclusionIcon}
+                  alt={l10n.getString(
+                    "landing-premium-plans-cards-feature-included",
+                  )}
+                />
+                <span>
+                  {l10n.getFragment(
+                    "landing-premium-plans-cards-feature-removal-plus",
+                    {
+                      elems: { b: <b /> },
+                    },
+                  )}
+                  <InfoPopover>
+                    <PopoverContent>
+                      {l10n.getString(
+                        "landing-premium-plans-table-feature-removal-plus-callout",
+                        {
+                          dataBrokerTotalCount: process.env
+                            .NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                        },
+                      )}
+                    </PopoverContent>
+                  </InfoPopover>
+                </span>
+              </li>
+              <li className={`${styles.feature} ${styles.included}`}>
+                <CheckIcon
+                  className={styles.inclusionIcon}
+                  alt={l10n.getString(
+                    "landing-premium-plans-cards-feature-included",
+                  )}
+                />
+                <span>
+                  {l10n.getFragment(
+                    "landing-premium-plans-cards-feature-removal-free",
+                    {
+                      elems: { b: <b /> },
+                    },
+                  )}
+                  <InfoPopover>
+                    <PopoverContent>
+                      {l10n.getString(
+                        "landing-premium-plans-table-feature-removal-free-callout",
+                      )}
+                    </PopoverContent>
+                  </InfoPopover>
+                </span>
+              </li>
+              <li className={`${styles.feature} ${styles.included}`}>
+                <CheckIcon
+                  className={styles.inclusionIcon}
+                  alt={l10n.getString(
+                    "landing-premium-plans-cards-feature-included",
+                  )}
+                />
+                <span>
+                  {l10n.getString("landing-premium-plans-cards-feature-alerts")}
+                </span>
+              </li>
+              <li className={`${styles.feature} ${styles.included}`}>
+                <CheckIcon
+                  className={styles.inclusionIcon}
+                  alt={l10n.getString(
+                    "landing-premium-plans-cards-feature-included",
+                  )}
+                />
+                <span>
+                  {l10n.getFragment(
+                    "landing-premium-plans-cards-feature-guidance",
+                    {
+                      elems: { b: <b /> },
+                    },
+                  )}
+                </span>
+              </li>
+              <li className={`${styles.feature} ${styles.included}`}>
+                <CheckIcon
+                  className={styles.inclusionIcon}
+                  alt={l10n.getString(
+                    "landing-premium-plans-cards-feature-included",
+                  )}
+                />
+                <span>
+                  {l10n.getString(
+                    "landing-premium-plans-cards-feature-monitoring",
+                  )}
+                </span>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div role="group" className={styles.freeCard}>
+          <div className={styles.head}>
+            <h3>
+              {l10n.getString("landing-premium-plans-table-heading-free-title")}
+            </h3>
+            <p>
+              {l10n.getString(
+                "landing-premium-plans-table-heading-free-subtitle",
+              )}
+            </p>
+          </div>
+          <hr />
+          <div className={styles.priceSection}>
+            <p className={styles.billingPeriod}>
+              {l10n.getString("landing-premium-plans-table-billing-free")}
+            </p>
+            <p className={styles.cost}>
+              <b className={styles.price}>{roundedPriceFormatter.format(0)}</b>
+              <span className={styles.total} />
+            </p>
+            <Button
+              variant="secondary"
+              className={styles.cta}
+              onPress={() => void signIn("fxa")}
+            >
+              {l10n.getString("landing-premium-plans-table-cta-free-label")}
+            </Button>
+            <small className={styles.reassurance}>
+              {l10n.getString(
+                "landing-premium-plans-table-reassurance-free-label",
+              )}
+            </small>
+          </div>
+          <hr />
+          <div className={styles.featuresSection}>
+            <h4>
+              {l10n.getString("landing-premium-plans-table-heading-feature")}
+            </h4>
+            <ol className={styles.featureList}>
+              <li className={`${styles.feature} ${styles.included}`}>
+                <CheckIcon
+                  className={styles.inclusionIcon}
+                  alt={l10n.getString(
+                    "landing-premium-plans-cards-feature-included",
+                  )}
+                />
+                <span>
+                  {l10n.getFragment(
+                    "landing-premium-plans-cards-feature-scan-free",
+                    {
+                      elems: { b: <b /> },
+                      vars: {
+                        dataBrokerTotalCount: process.env
+                          .NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                      },
+                    },
+                  )}
+                </span>
+              </li>
+              <li className={`${styles.feature} ${styles.notIncluded}`}>
+                <CloseBigIcon
+                  className={styles.inclusionIcon}
+                  alt={l10n.getString(
+                    "landing-premium-plans-cards-feature-not-included",
+                  )}
+                />
+                <span>
+                  {l10n.getFragment(
+                    "landing-premium-plans-cards-feature-scan-plus",
+                    {
+                      elems: { b: <b /> },
+                      vars: {
+                        dataBrokerTotalCount: process.env
+                          .NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                      },
+                    },
+                  )}
+                </span>
+              </li>
+              <li className={`${styles.feature} ${styles.notIncluded}`}>
+                <CloseBigIcon
+                  className={styles.inclusionIcon}
+                  alt={l10n.getString(
+                    "landing-premium-plans-cards-feature-not-included",
+                  )}
+                />
+                <span>
+                  {l10n.getFragment(
+                    "landing-premium-plans-cards-feature-removal-plus",
+                    {
+                      elems: { b: <b /> },
+                    },
+                  )}
+                  <InfoPopover>
+                    <PopoverContent>
+                      {l10n.getString(
+                        "landing-premium-plans-table-feature-removal-plus-callout",
+                        {
+                          dataBrokerTotalCount: process.env
+                            .NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                        },
+                      )}
+                    </PopoverContent>
+                  </InfoPopover>
+                </span>
+              </li>
+              <li className={`${styles.feature} ${styles.included}`}>
+                <CheckIcon
+                  className={styles.inclusionIcon}
+                  alt={l10n.getString(
+                    "landing-premium-plans-cards-feature-included",
+                  )}
+                />
+                <span>
+                  {l10n.getFragment(
+                    "landing-premium-plans-cards-feature-removal-free",
+                    {
+                      elems: { b: <b /> },
+                    },
+                  )}
+                  <InfoPopover>
+                    <PopoverContent>
+                      {l10n.getString(
+                        "landing-premium-plans-table-feature-removal-free-callout",
+                      )}
+                    </PopoverContent>
+                  </InfoPopover>
+                </span>
+              </li>
+              <li className={`${styles.feature} ${styles.included}`}>
+                <CheckIcon
+                  className={styles.inclusionIcon}
+                  alt={l10n.getString(
+                    "landing-premium-plans-cards-feature-included",
+                  )}
+                />
+                <span>
+                  {l10n.getString("landing-premium-plans-cards-feature-alerts")}
+                </span>
+              </li>
+              <li className={`${styles.feature} ${styles.included}`}>
+                <CheckIcon
+                  className={styles.inclusionIcon}
+                  alt={l10n.getString(
+                    "landing-premium-plans-cards-feature-included",
+                  )}
+                />
+                <span>
+                  {l10n.getFragment(
+                    "landing-premium-plans-cards-feature-guidance",
+                    {
+                      elems: { b: <b /> },
+                    },
+                  )}
+                </span>
+              </li>
+              <li className={`${styles.feature} ${styles.included}`}>
+                <CheckIcon
+                  className={styles.inclusionIcon}
+                  alt={l10n.getString(
+                    "landing-premium-plans-cards-feature-included",
+                  )}
+                />
+                <span>
+                  {l10n.getString(
+                    "landing-premium-plans-cards-feature-monitoring",
+                  )}
+                </span>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <Table aria-labelledby={props["aria-labelledby"]} selectionMode="none">
+        <TableHeader>
+          <Column>
+            {l10n.getString("landing-premium-plans-table-heading-feature")}
+          </Column>
+          <Column>
+            <h3>
+              {l10n.getString("landing-premium-plans-table-heading-free-title")}
+            </h3>
+            <p>
+              {l10n.getString(
+                "landing-premium-plans-table-heading-free-subtitle",
+              )}
+            </p>
+          </Column>
+          <Column>
+            <b className={styles.badge}>
+              {l10n.getString("landing-premium-plans-table-annotation-plus")}
+            </b>
+            <h3>
+              {l10n.getFragment(
+                "landing-premium-plans-table-heading-plus-title",
+                { elems: { b: <b /> } },
+              )}
+            </h3>
+            <p>
+              {l10n.getString(
+                "landing-premium-plans-table-heading-plus-subtitle",
+              )}
+            </p>
+          </Column>
+        </TableHeader>
+        <TableBody>
+          <Row>
+            <Cell>
+              {l10n.getString(
+                "landing-premium-plans-table-feature-scan-label",
+                {
+                  dataBrokerTotalCount: process.env
+                    .NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                },
+              )}
+            </Cell>
+            <Cell>
+              {l10n.getString("landing-premium-plans-table-feature-scan-free")}
+            </Cell>
+            <Cell>
+              {l10n.getString("landing-premium-plans-table-feature-scan-plus")}
+            </Cell>
+          </Row>
+          <Row>
+            <Cell>
+              {l10n.getString(
+                "landing-premium-plans-table-feature-removal-label",
+              )}
+            </Cell>
+            <Cell>
+              {l10n.getString(
+                "landing-premium-plans-table-feature-removal-free",
+              )}
+              <InfoPopover>
+                <PopoverContent>
+                  {l10n.getString(
+                    "landing-premium-plans-table-feature-removal-free-callout",
+                  )}
+                </PopoverContent>
+              </InfoPopover>
+            </Cell>
+            <Cell>
+              {l10n.getString(
+                "landing-premium-plans-table-feature-removal-plus",
+              )}
+              <InfoPopover>
+                <PopoverContent>
+                  {l10n.getString(
+                    "landing-premium-plans-table-feature-removal-plus-callout",
+                    {
+                      dataBrokerTotalCount: process.env
+                        .NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                    },
+                  )}
+                </PopoverContent>
+              </InfoPopover>
+            </Cell>
+          </Row>
+          <Row>
+            <Cell>
+              {l10n.getString(
+                "landing-premium-plans-table-feature-alerts-label",
+              )}
+            </Cell>
+            <Cell>
+              <CheckIcon
+                className={styles.checkIcon}
+                alt={l10n.getString(
+                  "landing-premium-plans-table-feature-alerts-free",
+                )}
+              />
+            </Cell>
+            <Cell>
+              <CheckIcon
+                className={styles.checkIcon}
+                alt={l10n.getString(
+                  "landing-premium-plans-table-feature-alerts-plus",
+                )}
+              />
+            </Cell>
+          </Row>
+          <Row>
+            <Cell>
+              {l10n.getString(
+                "landing-premium-plans-table-feature-guidance-label",
+              )}
+            </Cell>
+            <Cell>
+              {l10n.getString(
+                "landing-premium-plans-table-feature-guidance-free",
+              )}
+            </Cell>
+            <Cell>
+              {l10n.getString(
+                "landing-premium-plans-table-feature-guidance-plus",
+              )}
+            </Cell>
+          </Row>
+          <Row>
+            <Cell>
+              {l10n.getString(
+                "landing-premium-plans-table-feature-monitoring-label",
+              )}
+            </Cell>
+            <Cell>
+              <CheckIcon
+                className={styles.checkIcon}
+                alt={l10n.getString(
+                  "landing-premium-plans-table-feature-monitoring-free",
+                )}
+              />
+            </Cell>
+            <Cell>
+              <CheckIcon
+                className={styles.checkIcon}
+                alt={l10n.getString(
+                  "landing-premium-plans-table-feature-monitoring-plus",
+                )}
+              />
+            </Cell>
+          </Row>
+          <Row>
+            <Cell>
+              <VisuallyHidden>
+                {l10n.getString("landing-premium-plans-table-billing-label")}
+              </VisuallyHidden>
+            </Cell>
+            <Cell>
+              <div className={styles.priceCell}>
+                <p className={styles.billingPeriod}>
+                  {l10n.getString("landing-premium-plans-table-billing-free")}
+                </p>
+                <p className={styles.cost}>
+                  <b className={styles.price}>
+                    {roundedPriceFormatter.format(0)}
+                  </b>
+                  <span className={styles.total} />
+                </p>
+                <Button variant="secondary" onPress={() => void signIn("fxa")}>
+                  {l10n.getString("landing-premium-plans-table-cta-free-label")}
+                </Button>
+                <small className={styles.reassurance}>
+                  {l10n.getString(
+                    "landing-premium-plans-table-reassurance-free-label",
+                  )}
+                </small>
+              </div>
+            </Cell>
+            <Cell>
+              <div className={styles.priceCell}>
+                <div className={styles.billingPeriod}>
+                  <BillingPeriodToggle
+                    onChange={(newValue) => setBillingPeriod(newValue)}
+                  />
+                </div>
+                <p aria-live="polite" className={styles.cost}>
+                  <b className={styles.price}>
+                    {billingPeriod === "yearly"
+                      ? l10n.getString(
+                          "landing-premium-plans-table-price-plus-yearly",
+                          {
+                            monthlyPrice: priceFormatter.format(
+                              monthlyPriceAnnualBilling,
+                            ),
+                          },
+                        )
+                      : l10n.getString(
+                          "landing-premium-plans-table-price-plus-monthly",
+                          {
+                            monthlyPrice: priceFormatter.format(
+                              monthlyPriceMonthlyBilling,
+                            ),
+                          },
+                        )}
+                  </b>
+                  <span className={styles.total}>
+                    {billingPeriod === "yearly" && (
+                      <>
+                        <em className={styles.discount}>
+                          {l10n.getString(
+                            "landing-premium-plans-table-price-plus-yearly-discount",
+                            {
+                              discountPercentage:
+                                ((monthlyPriceMonthlyBilling -
+                                  monthlyPriceAnnualBilling) *
+                                  100) /
+                                monthlyPriceMonthlyBilling,
+                            },
+                          )}
+                        </em>
+                        <br />
+                        <span className={styles.sum}>
+                          {l10n.getString(
+                            "landing-premium-plans-table-price-plus-yearly-sum",
+                            {
+                              yearlyPrice: priceFormatter.format(
+                                12 * monthlyPriceAnnualBilling,
+                              ),
+                            },
+                          )}
+                        </span>
+                      </>
                     )}
                   </span>
-                </span>
-              </p>
-              <Button
-                variant="primary"
-                href={getPremiumSubscriptionUrl({ type: billingPeriod })}
-              >
-                {l10n.getString("landing-premium-plans-table-cta-plus-label")}
-              </Button>
-              <small className={styles.reassurance}>
-                {l10n.getString(
-                  "landing-premium-plans-table-reassurance-plus-label",
-                )}
-              </small>
-            </div>
-          </Cell>
-        </Row>
-      </TableBody>
-    </Table>
+                </p>
+                <Button
+                  variant="primary"
+                  href={getPremiumSubscriptionUrl({ type: billingPeriod })}
+                >
+                  {l10n.getString("landing-premium-plans-table-cta-plus-label")}
+                </Button>
+                <small className={styles.reassurance}>
+                  {l10n.getString(
+                    "landing-premium-plans-table-reassurance-plus-label",
+                  )}
+                </small>
+              </div>
+            </Cell>
+          </Row>
+        </TableBody>
+      </Table>
+    </>
   );
 };
 
