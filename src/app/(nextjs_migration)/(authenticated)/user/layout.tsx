@@ -2,7 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { v5 as uuidv5 } from "uuid";
 import { ReactNode } from "react";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
@@ -29,11 +28,11 @@ export type Props = {
 
 const MainLayout = async (props: Props) => {
   const session = await getServerSession(authOptions);
-  if (!session) {
+  if (!session?.user?.subscriber) {
     return <SignInButton autoSignIn />;
   }
 
-  const userId = session?.user?.subscriber?.fxa_uid ?? "";
+  const userId = session.user.subscriber.fxa_uid ?? "";
 
   if (!userId) {
     logger.error("No user ID for telemetry");
