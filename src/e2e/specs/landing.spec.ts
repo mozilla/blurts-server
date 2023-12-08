@@ -23,19 +23,20 @@ test.describe(`${process.env.E2E_TEST_ENV} - Landingpage element verification`, 
     const links = landingPage.links();
 
     // verify the actual hrefs in the footer matches expected
-    await expect(landingPage.MozillaFooterLogoLink).toHaveAttribute(
+    await expect(landingPage.mozillaFooterLogoLink).toHaveAttribute(
       "href",
       links.mozillaLogoUrl,
     );
-    await expect(landingPage.AllBreachesLink).toHaveAttribute(
+    await expect(landingPage.allBreachesLink).toHaveAttribute(
       "href",
       links.allBreachesUrl,
     );
-    await expect(landingPage.FAQLink).toHaveAttribute("href", links.FAQUrl);
-    await expect(landingPage.TermsLink).toHaveAttribute("href", links.TermsUrl);
-    await expect(landingPage.GithubLink).toHaveAttribute(
+
+    await expect(landingPage.faqLink).toHaveAttribute("href", links.faqUrl);
+    await expect(landingPage.termsLink).toHaveAttribute("href", links.termsUrl);
+    await expect(landingPage.githubLink).toHaveAttribute(
       "href",
-      links.GithubUrl,
+      links.githubUrl,
     );
   });
 

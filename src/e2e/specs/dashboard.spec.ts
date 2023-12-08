@@ -50,16 +50,42 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
     });
 
     // verify the navigation bar left side elements
-    expect(
-      await dashboardPage.fireFoxMonitorLogoImgButton.isVisible(),
-    ).toBeTruthy();
-    expect(await dashboardPage.dashboardNavButton.isVisible()).toBeTruthy();
-    expect(await dashboardPage.exposuresHeading.isVisible()).toBeTruthy();
-    expect(await dashboardPage.FAQsNavButton.isVisible()).toBeTruthy();
+    await expect(dashboardPage.fireFoxMonitorLogoImgButton).toBeVisible();
+    await expect(dashboardPage.dashboardNavButton).toBeVisible();
+    await expect(dashboardPage.exposuresHeading).toBeVisible();
+    await expect(dashboardPage.FAQsNavButton).toBeVisible();
 
     // verify the site header elements
-    expect(await dashboardPage.actionNeededTab.isVisible()).toBeTruthy();
-    expect(await dashboardPage.fixedTab.isVisible()).toBeTruthy();
+    await expect(dashboardPage.actionNeededTab).toBeVisible();
+    await expect(dashboardPage.fixedTab).toBeVisible();
+  });
+
+  test("Verify that the Fixed tab layout and tooltips are displayed correctly", async ({
+    dashboardPage,
+  }) => {
+    // link to testrail
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2301532",
+    });
+
+    // verify fixed tab's tooltips and popups
+    await dashboardPage.fixedTab.click();
+    await expect(dashboardPage.heresWhatsFixedCardTitle).toHaveText(
+      "Here’s what we fixed",
+    );
+    await expect(dashboardPage.fixedHeading).toBeVisible();
+    await dashboardPage.toolTip.click();
+    await expect(dashboardPage.whatsFixedPopup).toBeVisible();
+    await dashboardPage.popupOkButton.click();
+    await expect(dashboardPage.whatsFixedPopup).toBeHidden();
+
+    // verify second tooltip
+    await dashboardPage.chartTooltip.click();
+    await expect(dashboardPage.aboutActiveExposuresPopup).toBeVisible();
+    await dashboardPage.popupOkButton.click();
+    await expect(dashboardPage.aboutActiveExposuresPopup).toBeHidden();
   });
 });
 
@@ -88,6 +114,79 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers - Outs
     }
 
     // verify the site header elements
-    expect(await dashboardPage.upgradeToPremium.isHidden()).toBeTruthy();
+    await expect(dashboardPage.upgradeToPremium).toBeHidden();
+  });
+});
+
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Content`, () => {
+  test.beforeEach(async ({ dashboardPage, page }) => {
+    await dashboardPage.open();
+
+    try {
+      await checkAuthState(page);
+    } catch {
+      console.log("[E2E_LOG] - No fxa auth required, proceeding...");
+    }
+  });
+
+  test("Verify that the exposure list contains action needed", async ({
+    dashboardPage,
+    page,
+  }) => {
+    // link to testrail
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2301533",
+    });
+
+    await expect(dashboardPage.exposuresHeading).toBeVisible();
+    const listCount = await page
+      .locator('//div[starts-with(@class, "StatusPill_pill")]')
+      .count();
+
+    // verify exposure list conatins only exposures that need to be fixed
+    if (listCount > 0) {
+      for (let i = 0; i < listCount; i++) {
+        await expect(
+          page.locator(
+            `(//div[starts-with(@class, 'StatusPill_pill')])[${i + 1}]`,
+          ),
+        ).toHaveText("Action needed");
+      }
+    }
+  });
+
+  test("Verify that the exposure list contains only fixed and in progress cards", async ({
+    dashboardPage,
+    page,
+  }) => {
+    // link to testrail
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2301533",
+    });
+
+    await expect(dashboardPage.exposuresHeading).toBeVisible();
+    await dashboardPage.fixedTab.click();
+
+    // verify fixed or in-progress
+    await expect(dashboardPage.fixedHeading).toBeVisible();
+
+    // TODO: add stub to fill in fixed/in-progress items
+    const listCount = await page
+      .locator('//div[starts-with(@class, "StatusPill_pill")]')
+      .count();
+    // verify exposure list contains only exposures that need to be fixed
+    if (listCount > 0) {
+      for (let i = 0; i < listCount; i++) {
+        await expect(
+          page.locator(
+            `(//div[starts-with(@class, "StatusPill_pill")])[${i + 1}]`,
+          ),
+        ).toHaveText(/In-progress|Fixed/);
+      }
+    }
   });
 });
