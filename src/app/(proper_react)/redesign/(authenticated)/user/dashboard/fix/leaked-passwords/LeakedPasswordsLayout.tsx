@@ -64,17 +64,13 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
 
   // TODO: Write unit tests MNTOR-2560
   /* c8 ignore start */
-  const emailAffected =
-    props.subscriberEmails.find(
-      (email) => unresolvedPasswordBreach?.emailsAffected.includes(email),
-    ) ?? "";
-
+  const emailsAffected = unresolvedPasswordBreach?.emailsAffected ?? [];
   const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
   const pageData = getLeakedPasswords({
     dataType: props.type,
     breaches: guidedExperienceBreaches,
     l10n,
-    emailAffected,
+    emailsAffected,
     nextStep,
   });
 
@@ -96,7 +92,11 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     };
 
     const dataType = leakedPasswordsBreachClasses[props.type];
-    if (!dataType || !unresolvedPasswordBreach || !emailAffected) {
+    if (
+      !dataType ||
+      !unresolvedPasswordBreach ||
+      emailsAffected?.length === 0
+    ) {
       return;
     }
 
@@ -108,7 +108,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         unresolvedPasswordBreach.resolvedDataClasses.filter(Boolean);
 
       await updatePasswordsBreachStatus(
-        emailAffected,
+        emailsAffected,
         unresolvedPasswordBreach.id,
         formattedDataClasses,
       );

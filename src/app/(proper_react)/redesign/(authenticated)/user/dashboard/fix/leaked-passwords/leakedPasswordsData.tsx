@@ -47,7 +47,7 @@ export type LeakedPasswordLayout = {
   breaches: GuidedExperienceBreaches;
   l10n: ExtendedReactLocalization;
   nextStep: StepLink;
-  emailAffected: string;
+  emailsAffected: string[];
 };
 
 function getDoneStepContent(
@@ -133,24 +133,26 @@ export const findFirstUnresolvedBreach = (
 };
 
 export async function updatePasswordsBreachStatus(
-  email: string,
+  emails: string,
   id: number,
   resolvedDataClass: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>,
 ) {
   try {
-    const data: BreachResolutionRequest = {
-      affectedEmail: email,
-      breachId: id,
-      resolutionsChecked: resolvedDataClass,
-    };
+    for (const email of emails) {
+      const data: BreachResolutionRequest = {
+        affectedEmail: email,
+        breachId: id,
+        resolutionsChecked: resolvedDataClass,
+      };
 
-    const res = await fetch("/api/v1/user/breaches", {
-      method: "PUT",
-      body: JSON.stringify(data),
-    });
+      const res = await fetch("/api/v1/user/breaches", {
+        method: "PUT",
+        body: JSON.stringify(data),
+      });
 
-    if (!res.ok) {
-      throw new Error("Bad fetch response");
+      if (!res.ok) {
+        throw new Error("Bad fetch response");
+      }
     }
   } catch (e) {
     console.error("Could not update user breach resolve status:", e);
@@ -159,7 +161,7 @@ export async function updatePasswordsBreachStatus(
 /* c8 ignore stop */
 
 function getLeakedPasswords(props: LeakedPasswordLayout) {
-  const { dataType, breaches, l10n, nextStep, emailAffected } = props;
+  const { dataType, breaches, l10n, nextStep, emailsAffected } = props;
   const unresolvedBreach = findFirstUnresolvedBreach(breaches, props.dataType);
   /* c8 ignore next */
   const blockList = (process.env.HIBP_BREACH_DOMAIN_BLOCKLIST ?? "").split(",");
@@ -193,12 +195,7 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
         summary: l10n.getString("leaked-passwords-summary", {
           breach_date: breachDate,
         }),
-        description: (
-          <>
-            <p>{l10n.getString("leaked-passwords-description")}</p>
-            <pre>{JSON.stringify(unresolvedBreach, null, 2)}</pre>
-          </>
-        ),
+        description: <p>{l10n.getString("leaked-passwords-description")}</p>,
         recommendations: {
           title: l10n.getString("leaked-passwords-steps-title"),
           steps: (
@@ -218,7 +215,7 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                   },
                   vars: {
                     breach_name: breachName,
-                    email_affected: emailAffected,
+                    email_affected: emailsAffected.join(", "),
                   },
                 })}
               </li>
@@ -265,7 +262,7 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                   },
                   vars: {
                     breach_name: breachName,
-                    email_affected: emailAffected,
+                    email_affected: emailsAffected.join(", "),
                   },
                 })}
               </li>
