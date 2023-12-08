@@ -759,6 +759,15 @@ ad-unit-6-before-you-complete = Pred dokončením vašej ďalšej registrácie p
         [loc] Firefoxe
         [ins] Firefoxom
     }
+-brand-monitor =
+    { $case ->
+        [gen] Monitora
+        [dat] Monitoru
+        [acc] Monitor
+        [loc] Monitore
+        [ins] Monitorom
+       *[nom] Monitor
+    }
 -brand-fx-monitor =
     { $case ->
         [gen] Firefox Monitora

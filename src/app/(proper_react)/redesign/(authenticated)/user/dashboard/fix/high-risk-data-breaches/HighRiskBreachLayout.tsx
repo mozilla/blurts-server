@@ -39,7 +39,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
   const [isResolving, setIsResolving] = useState(false);
 
   const stepMap: Record<HighRiskBreachTypes, StepLink["id"]> = {
-    ssn: "HighRiskSsn",
+    "social-security-number": "HighRiskSsn",
     "credit-card": "HighRiskCreditCard",
     "bank-account": "HighRiskBankAccount",
     pin: "HighRiskPin",
@@ -69,12 +69,12 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
 
   // TODO: Write unit tests MNTOR-2560
   /* c8 ignore start */
-  const handlePrimaryButtonPress = async () => {
+  const handleResolveBreach = async () => {
     const highRiskBreachClasses: Record<
       HighRiskBreachTypes,
       (typeof HighRiskDataTypes)[keyof typeof HighRiskDataTypes] | null
     > = {
-      ssn: HighRiskDataTypes.SSN,
+      "social-security-number": HighRiskDataTypes.SSN,
       "credit-card": HighRiskDataTypes.CreditCard,
       "bank-account": HighRiskDataTypes.BankAccount,
       pin: HighRiskDataTypes.PIN,
@@ -138,24 +138,27 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
         cta={
           !isStepDone && (
             <>
-              <Button
-                variant="primary"
-                small
-                autoFocus={true}
-                /* c8 ignore next */
-                onPress={() => void handlePrimaryButtonPress()}
-                disabled={isResolving}
-              >
-                {
-                  // Theoretically, this page should never be shown if the user
-                  // has no breaches, unless the user directly visits its URL, so
-                  // no tests represents it either:
-                  /* c8 ignore next 3 */
-                  isHighRiskBreachesStep
-                    ? l10n.getString("high-risk-breach-mark-as-fixed")
-                    : l10n.getString("high-risk-breach-none-continue")
-                }
-              </Button>
+              {isHighRiskBreachesStep ? (
+                <Button
+                  variant="primary"
+                  small
+                  autoFocus={true}
+                  /* c8 ignore next */
+                  onPress={() => void handleResolveBreach()}
+                  disabled={isResolving}
+                >
+                  {l10n.getString("high-risk-breach-mark-as-fixed")}
+                </Button>
+              ) : (
+                <Button
+                  variant="primary"
+                  small
+                  autoFocus={true}
+                  href={nextStep.href}
+                >
+                  {l10n.getString("high-risk-breach-none-continue")}
+                </Button>
+              )}
               {isHighRiskBreachesStep && (
                 <Link href={nextStep.href}>
                   {l10n.getString("high-risk-breach-skip")}

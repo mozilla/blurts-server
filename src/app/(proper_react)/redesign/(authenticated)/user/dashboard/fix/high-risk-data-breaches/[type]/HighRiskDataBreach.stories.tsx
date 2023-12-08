@@ -151,7 +151,7 @@ type Story = StoryObj<typeof HighRiskBreachWrapper>;
 export const SsnStory: Story = {
   name: "2a. Social Security Number",
   args: {
-    type: "ssn",
+    type: "social-security-number",
   },
 };
 

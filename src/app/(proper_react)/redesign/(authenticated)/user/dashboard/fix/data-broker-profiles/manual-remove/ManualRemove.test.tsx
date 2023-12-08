@@ -8,6 +8,16 @@ import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import { userEvent } from "@testing-library/user-event";
 
+const mockedRouterRefresh = jest.fn();
+
+jest.mock("next/navigation", () => {
+  return {
+    useRouter: () => ({
+      refresh: mockedRouterRefresh,
+    }),
+    usePathname: jest.fn(),
+  };
+});
 jest.mock("../../../../../../../../functions/server/l10n");
 
 import Meta, { ManualRemoveViewStory } from "./ManualRemove.stories";
@@ -47,6 +57,24 @@ it("removes the manual resolution button once a profile has been resolved", asyn
   expect(resolveButtonsAfterResolving.length).toBeLessThan(
     resolveButtonsBeforeResolving.length,
   );
+});
+
+it("refreshes the client-side router cache after resolving a profile", async () => {
+  const user = userEvent.setup();
+  global.fetch = jest.fn().mockResolvedValueOnce({ ok: true });
+  const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
+  render(<ComposedManualRemoveView />);
+
+  expect(mockedRouterRefresh).not.toHaveBeenCalled();
+
+  const resolveButtonsBeforeResolving = screen.getAllByRole("button", {
+    name: "Mark as fixed",
+  });
+
+  await user.click(resolveButtonsBeforeResolving[0]);
+
+  // See https://nextjs.org/docs/app/building-your-application/caching#4-nextjs-caching-on-the-client-router-cache
+  expect(mockedRouterRefresh).toHaveBeenCalledTimes(1);
 });
 
 it("keeps the manual resolution button if resolving a profile failed", async () => {
