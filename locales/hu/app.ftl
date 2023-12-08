@@ -710,6 +710,7 @@ ad-unit-6-before-you-complete = Mielőtt befejezné a következő regisztráció
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
@@ -760,7 +761,7 @@ menu-item-logout = Kijelentkezés
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-of-service = A szolgáltatás feltételei
+terms-of-service = Szolgáltatás feltételei
 privacy-notice = Adatvédelmi nyilatkozat
 github = { -brand-github }
 footer-nav-all-breaches = Összes adatvédelmi incidens

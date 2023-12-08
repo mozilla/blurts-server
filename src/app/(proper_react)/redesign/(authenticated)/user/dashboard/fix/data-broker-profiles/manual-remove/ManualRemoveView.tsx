@@ -17,7 +17,7 @@ import { LatestOnerepScanData } from "../../../../../../../../../db/tables/onere
 import { Button } from "../../../../../../../../components/server/Button";
 import {
   getDashboardSummary,
-  getExposureReduction,
+  getDataPointReduction,
 } from "../../../../../../../../functions/server/dashboard";
 import { SubscriberBreach } from "../../../../../../../../../utils/subscriberBreaches";
 import { RemovalCard } from "./RemovalCard";
@@ -44,7 +44,7 @@ export function ManualRemoveView(props: Props) {
 
   const countOfDataBrokerProfiles = props.scanData.results.length;
   const estimatedTime = countOfDataBrokerProfiles * 10; // 10 minutes per data broker site.
-  const exposureReduction = getExposureReduction(summary);
+  const dataPointReduction = getDataPointReduction(summary);
 
   const data: StepDeterminationData = {
     countryCode: props.countryCode,
@@ -178,7 +178,7 @@ export function ManualRemoveView(props: Props) {
           <div>
             <AvatarIcon width="18" height="18" alt="" />
             {l10n.getString("data-broker-profiles-exposure-reduction", {
-              exposure_reduction: exposureReduction,
+              exposure_reduction: dataPointReduction,
             })}
           </div>
         </div>
