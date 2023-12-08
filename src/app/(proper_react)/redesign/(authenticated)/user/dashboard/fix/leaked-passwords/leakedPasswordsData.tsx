@@ -14,6 +14,7 @@ import {
   BreachResolutionRequest,
   HibpBreachDataTypes,
 } from "../../../../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
+import { getLocale } from "../../../../../../../functions/universal/getLocale";
 
 export const leakedPasswordTypes = [
   "passwords",
@@ -184,6 +185,11 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
     breachSite,
   } = getBreachInfo(unresolvedBreach);
 
+  const emailsFormatter = new Intl.ListFormat(getLocale(l10n), {
+    style: "long",
+    type: "conjunction",
+  });
+
   const leakedPasswordsData: LeakedPassword[] = [
     {
       type: "passwords",
@@ -215,7 +221,7 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                   },
                   vars: {
                     breach_name: breachName,
-                    email_affected: emailsAffected.join(", "),
+                    emails_affected: emailsFormatter.format(emailsAffected),
                   },
                 })}
               </li>
@@ -262,7 +268,7 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                   },
                   vars: {
                     breach_name: breachName,
-                    email_affected: emailsAffected.join(", "),
+                    email_affected: emailsFormatter.format(emailsAffected),
                   },
                 })}
               </li>
