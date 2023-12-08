@@ -134,7 +134,7 @@ export const findFirstUnresolvedBreach = (
 };
 
 export async function updatePasswordsBreachStatus(
-  emails: string,
+  emails: string[],
   id: number,
   resolvedDataClass: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>,
 ) {
