@@ -44,7 +44,7 @@ type Ga4EventOptions = {
 };
 
 // Note: Please refrain from using the `useGA` hook directly.
-// The peferred way to record telemetry is through `useTelemetry`.
+// The preferred way to record telemetry is through `useTelemetry`.
 export const useGa = (): {
   gtag: {
     record: (options: Ga4EventOptions) => void;
