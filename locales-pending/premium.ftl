@@ -532,8 +532,8 @@ leaked-passwords-steps-title = Here’s what to do
 leaked-passwords-steps-subtitle = This requires access to your account, so you’ll need to manually fix it.
 # Variables
 # $breach_name is the name of the breach where the leaked password was found.
-# $email_affected is the email assosciated with the breach.
-leaked-passwords-step-one = Change your password for <b>{ $email_affected }</b> on <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
+# $emails_affected are the emails assosciated with the breach.
+leaked-passwords-step-one = Change your password for <b>{ $emails_affected }</b> on <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
 leaked-passwords-step-two = Change it anywhere else you’ve used it.
 leaked-passwords-mark-as-fixed = Mark as fixed
 leaked-passwords-skip = Skip for now
