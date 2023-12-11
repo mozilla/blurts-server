@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Firefox Monitor",
   "engines": {
-    "node": "20.9.x",
+    "node": "20.10.x",
     "npm": "10.2.x"
   },
   "type": "module",
@@ -43,12 +43,12 @@
   "homepage": "https://github.com/mozilla/blurts-server",
   "license": "MPL-2.0",
   "volta": {
-    "node": "20.9.0",
+    "node": "20.10.0",
     "npm": "10.2.4"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.454.0",
-    "@aws-sdk/lib-storage": "^3.454.0",
+    "@aws-sdk/client-s3": "^3.465.0",
+    "@aws-sdk/lib-storage": "^3.465.0",
     "@fluent/bundle": "^0.18.0",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
@@ -87,7 +87,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^8.3.1",
-    "@playwright/test": "^1.40.0",
+    "@playwright/test": "^1.40.1",
     "@storybook/addon-a11y": "^7.6.3",
     "@storybook/addon-essentials": "^7.6.3",
     "@storybook/addon-interactions": "^7.6.3",

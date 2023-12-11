@@ -178,12 +178,12 @@ export const View = (props: Props) => {
     const {
       dataBreachUnresolvedNum,
       dataBrokerTotalNum,
-      dataBrokerFixedNum,
+      dataBrokerAutoFixedNum,
       dataBrokerInProgressNum,
-      dataBreachFixedExposuresNum,
-      dataBrokerFixedExposuresNum,
-      dataBrokerInProgressExposuresNum,
-      totalExposures,
+      dataBreachFixedDataPointsNum,
+      dataBrokerAutoFixedDataPointsNum,
+      dataBrokerInProgressDataPointsNum,
+      totalDataPointsNum,
     } = dataSummary;
 
     let exposuresAreaDescription;
@@ -193,13 +193,15 @@ export const View = (props: Props) => {
         "dashboard-exposures-area-description",
         {
           exposures_unresolved_num:
-            totalExposures -
-            dataBrokerFixedExposuresNum -
-            dataBreachFixedExposuresNum -
-            dataBrokerInProgressExposuresNum,
+            totalDataPointsNum -
+            dataBrokerAutoFixedDataPointsNum -
+            dataBreachFixedDataPointsNum -
+            dataBrokerInProgressDataPointsNum,
           data_breach_unresolved_num: dataBreachUnresolvedNum,
           data_broker_unresolved_num:
-            dataBrokerTotalNum - dataBrokerFixedNum - dataBrokerInProgressNum,
+            dataBrokerTotalNum -
+            dataBrokerAutoFixedNum -
+            dataBrokerInProgressNum,
         },
       );
     }
@@ -209,10 +211,10 @@ export const View = (props: Props) => {
         "dashboard-exposures-breaches-scan-progress-description",
         {
           exposures_unresolved_num:
-            totalExposures -
-            dataBrokerFixedExposuresNum -
-            dataBreachFixedExposuresNum -
-            dataBrokerInProgressExposuresNum,
+            totalDataPointsNum -
+            dataBrokerAutoFixedDataPointsNum -
+            dataBreachFixedDataPointsNum -
+            dataBrokerInProgressDataPointsNum,
           data_breach_unresolved_num: dataBreachUnresolvedNum,
         },
       );
