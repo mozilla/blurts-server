@@ -5,8 +5,11 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+// Imports for the `useGlean` and `useGa` hooks are restricted.
+/* eslint-disable no-restricted-imports */
 import { useGa } from "./useGa";
 import { useGlean } from "./useGlean";
+/* eslint-enable no-restricted-imports */
 import { GleanMetricMap } from "../../telemetry/generated/_map";
 
 const TelemetryPlatforms = {
