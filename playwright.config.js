@@ -118,7 +118,7 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     command: 'npm run build; npm start',
-    port: 6060,
+    url: process.env.E2E_TEST_BASE_URL,
     reuseExistingServer: !process.env.CI,
     // Building the app can take some time:
     timeout: 600_000,
