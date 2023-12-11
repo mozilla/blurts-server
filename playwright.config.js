@@ -47,7 +47,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: process.env.CI ? 'github' : 'html',
+  reporter: process.env.CI ? [['github'], ['html']] : 'html',
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -118,8 +118,8 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     command: 'npm run build; npm start',
-    port: 6060,
-    reuseExistingServer: !process.env.CI,
+    url: 'http://localhost:6060',
+    reuseExistingServer: process.env.E2E_TEST_ENV === 'local',
     // Building the app can take some time:
     timeout: 600_000,
   }

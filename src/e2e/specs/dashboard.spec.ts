@@ -60,6 +60,22 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
     await expect(dashboardPage.fixedTab).toBeVisible();
   });
 
+  test("Verify that the correct message is displayed on the Action Needed tab when all the exposures are fixed", async ({
+    dashboardPage,
+  }) => {
+    // link to testrail
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2301511",
+    });
+
+    // verify overview card
+    await expect(dashboardPage.exposuresCardHeading).toBeVisible();
+
+    // TODO: add verifications for all fixed exposures state
+  });
+
   test("Verify that the Fixed tab layout and tooltips are displayed correctly", async ({
     dashboardPage,
   }) => {
