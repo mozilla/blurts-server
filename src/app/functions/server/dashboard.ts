@@ -65,13 +65,11 @@ export interface DashboardSummary {
   fixedDataPoints: DataPoints;
   /** manually resolved data broker data points separated by data classes */
   manuallyResolvedDataBrokerDataPoints: DataPoints;
-  /** in-progress & resolved/removed data points separated by data classes */
-  inProgressFixedDataPoints: DataPoints;
 
   /** sanitized all data points for frontend display */
   unresolvedSanitizedDataPoints: SanitizedDataPoints;
-  /** sanitized resolved/removed data points for frontend display */
-  inProgressFixedSanitizedDataPoints: SanitizedDataPoints;
+  /** sanitized resolved and removed data points for frontend display */
+  fixedSanitizedDataPoints: SanitizedDataPoints;
 }
 
 const dataClassKeyMap: Record<string, string> = {
@@ -185,23 +183,8 @@ export function getDashboardSummary(
       securityQuestions: 0,
       bankAccountNumbers: 0,
     },
-    inProgressFixedDataPoints: {
-      emailAddresses: 0,
-      phoneNumbers: 0,
-      addresses: 0,
-      familyMembers: 0,
-
-      // data breaches
-      socialSecurityNumbers: 0,
-      ipAddresses: 0,
-      passwords: 0,
-      creditCardNumbers: 0,
-      pins: 0,
-      securityQuestions: 0,
-      bankAccountNumbers: 0,
-    },
     unresolvedSanitizedDataPoints: [],
-    inProgressFixedSanitizedDataPoints: [],
+    fixedSanitizedDataPoints: [],
   };
 
   // calculate broker summary from scanned results
@@ -395,17 +378,6 @@ export function getDashboardSummary(
     {} as DataPoints,
   );
 
-  // count fixed, in-progress, and manually resolved (data brokers) data points
-  summary.inProgressFixedDataPoints = Object.keys(
-    summary.fixedDataPoints,
-  ).reduce((a, k) => {
-    a[k as keyof DataPoints] =
-      summary.fixedDataPoints[k as keyof DataPoints] +
-      summary.inProgressDataPoints[k as keyof DataPoints] +
-      summary.manuallyResolvedDataBrokerDataPoints[k as keyof DataPoints];
-    return a;
-  }, {} as DataPoints);
-
   // sanitize unresolved data points
   summary.unresolvedSanitizedDataPoints = sanitizeDataPoints(
     summary.unresolvedDataPoints,
@@ -417,12 +389,21 @@ export function getDashboardSummary(
     isBreachesOnly,
   );
 
-  // sanitize fixed + inprogress data points
-  summary.inProgressFixedSanitizedDataPoints = sanitizeDataPoints(
-    summary.inProgressFixedDataPoints,
+  // count fixed and manually resolved (data brokers) data points
+  const dataBrokerFixedManuallyResolved = Object.keys(
+    summary.fixedDataPoints,
+  ).reduce((a, k) => {
+    a[k as keyof DataPoints] =
+      summary.fixedDataPoints[k as keyof DataPoints] +
+      summary.manuallyResolvedDataBrokerDataPoints[k as keyof DataPoints];
+    return a;
+  }, {} as DataPoints);
+
+  // sanitize fixed and removed data points
+  summary.fixedSanitizedDataPoints = sanitizeDataPoints(
+    dataBrokerFixedManuallyResolved,
     summary.dataBreachFixedDataPointsNum +
       summary.dataBrokerAutoFixedDataPointsNum +
-      summary.dataBrokerInProgressDataPointsNum +
       summary.dataBrokerManuallyResolvedDataPointsNum,
     isBreachesOnly,
   );
