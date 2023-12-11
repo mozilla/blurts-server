@@ -400,12 +400,7 @@ const allResolvedBreaches: SubscriberBreach[] = [
       "ip-addresses",
       "passwords",
     ],
-    resolvedDataClasses: [
-      "dates-of-birth",
-      "email-addresses",
-      "ip-addresses",
-      "passwords",
-    ],
+    resolvedDataClasses: ["email-addresses", "ip-addresses", "passwords"],
     description:
       'In November 2014, the acne website <a href="http://www.acne.org/" target="_blank" rel="noopener">acne.org</a> suffered a data breach that exposed over 430k forum members\' accounts. The data was being actively traded on underground forums and included email addresses, birth dates and passwords.',
     domain: "acne.org",
