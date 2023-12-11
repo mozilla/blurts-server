@@ -6,6 +6,8 @@
 
 import { Key, useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 import type { OverlayTriggerProps, OverlayTriggerState } from "react-stately";
 import { Dialog } from "./dialog/Dialog";
 import { ModalOverlay } from "./dialog/ModalOverlay";
@@ -14,6 +16,7 @@ import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
 import ModalImage from "../client/assets/premium-upsell-dialog-icon.svg";
 import styles from "./PremiumUpsellDialog.module.scss";
+import { useTelemetry } from "../../hooks/useTelemetry";
 
 export interface PremiumUpsellDialogProps {
   state: OverlayTriggerState;
@@ -71,6 +74,9 @@ function PremiumUpsellDialogContent({
 }: PremiumUpsellDialogContentProps) {
   const l10n = useL10n();
   const [selectedTab, setSelectedTab] = useState<Key>("yearly");
+  const record = useTelemetry();
+  const currentPath = usePathname();
+  const session = useSession();
 
   const isMonthly = selectedTab === "monthly";
   const tabsData = [
@@ -139,6 +145,21 @@ function PremiumUpsellDialogContent({
       <Button
         className={styles.productCta}
         href={isMonthly ? monthlySubscriptionUrl : yearlySubscriptionUrl}
+        onPress={() => {
+          // Note: This doesn't currently work; the event is now never sent to
+          //       the back-end because the page unloads before we can do so.
+          //       This will be dealt with in upstream Glean:
+          //       https://matrix.to/#/!SCdsJdSTaQHjzEVrAE:mozilla.org/$muLULIgsOMaLwe3HR6HI_oJbMkyD5gZBoRN3GmDL8Ko
+          record("ctaButton", "click", {
+            button_id: isMonthly
+              ? "intent_to_purchase_monthly_plan_nav_modal"
+              : "intent_to_purchase_yearly_plan_nav_modal",
+            // Mocking the entire session object is too messy in tests:
+            /* c8 ignore next */
+            user_id: session.data?.user.subscriber?.fxa_uid ?? undefined,
+            path: currentPath,
+          });
+        }}
         variant="primary"
       >
         {isMonthly
