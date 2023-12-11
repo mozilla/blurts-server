@@ -55,6 +55,13 @@
     "no-restricted-imports": [
       "error",
       {
+        "patterns": [
+          {
+            "group": ["**/hooks/*"],
+            "importNames": ["useGlean", "useGa"],
+            "message": "Please refrain from using this hook standalone. The preferred way to record telemetry is through `useTelemetry`."
+          }
+        ],
         "paths": [
           {
             // react-aria's <VisuallyHidden> component adds inline styles to

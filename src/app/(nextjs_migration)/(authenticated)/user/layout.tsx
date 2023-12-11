@@ -63,12 +63,7 @@ const MainLayout = async (props: Props) => {
         src="/nextjs_migration/client/js/nav.js"
         nonce={getNonce()}
       />
-      <PageLoadEvent
-        userId={userId}
-        channel={process.env.APP_ENV ?? ""}
-        appEnv={process.env.APP_ENV ?? ""}
-        enabledFlags={enabledFlags}
-      />
+      <PageLoadEvent userId={userId} enabledFlags={enabledFlags} />
       <header>
         <div className="header-wrapper">
           <a href="/user/breaches">
