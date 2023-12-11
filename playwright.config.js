@@ -119,7 +119,7 @@ export default defineConfig({
   webServer: {
     command: 'npm run build; npm start',
     url: 'http://localhost:6060',
-    reuseExistingServer: process.env.E2E_TEST_ENV !== 'local',
+    reuseExistingServer: process.env.E2E_TEST_ENV === 'local',
     // Building the app can take some time:
     timeout: 600_000,
   }
