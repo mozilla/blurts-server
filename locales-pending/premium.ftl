@@ -532,7 +532,7 @@ leaked-passwords-steps-title = Here’s what to do
 leaked-passwords-steps-subtitle = This requires access to your account, so you’ll need to manually fix it.
 # Variables
 # $breach_name is the name of the breach where the leaked password was found.
-# $emails_affected are the emails assosciated with the breach.
+# $emails_affected are the emails associated with the breach.
 leaked-passwords-step-one = Change your password for <b>{ $emails_affected }</b> on <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
 leaked-passwords-step-two = Change it anywhere else you’ve used it.
 leaked-passwords-mark-as-fixed = Mark as fixed
@@ -556,7 +556,7 @@ leaked-security-questions-steps-title = Here’s what to do
 leaked-security-questions-steps-subtitle = This requires access to your account, so you’ll need to manually fix it.
 # Variables
 # $breach_name is the name of the breach where the security questions were found.
-# $email_affected is the email assosciated with the breach.
+# $email_affected is the email associated with the breach.
 leaked-security-questions-step-one = Update your security questions for <b>{ $email_affected }</b> on <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
 leaked-security-questions-step-two = Update them on any other site where you used the same security questions. Be sure to use different security questions for every account.
 
