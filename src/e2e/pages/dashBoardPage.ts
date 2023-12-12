@@ -21,6 +21,7 @@ export class DashboardPage {
   readonly FAQsNavButton: Locator;
 
   readonly exposuresHeading: Locator;
+  readonly exposuresCardHeading: Locator;
   readonly fixedHeading: Locator;
   readonly toolTip: Locator;
   readonly heresWhatsFixedCardTitle: Locator;
@@ -60,6 +61,10 @@ export class DashboardPage {
     // page elements
     this.exposuresHeading = page.getByRole("heading", {
       name: "View all sites where your info is exposed",
+    });
+
+    this.exposuresCardHeading = page.getByRole("heading", {
+      name: "Let’s protect your data",
     });
 
     this.fixedHeading = page.getByRole("heading", {

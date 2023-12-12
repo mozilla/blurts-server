@@ -45,7 +45,7 @@ export const Shell = (props: Props) => {
             className={styles.mainMenu}
             aria-label={l10n.getString("main-nav-label")}
           >
-            <Link href="/" className={styles.homeLink}>
+            <Link href="/redesign/user/dashboard" className={styles.homeLink}>
               <Image
                 src={monitorLogo}
                 alt={l10n.getString("main-nav-link-home-label")}
