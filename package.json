@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Firefox Monitor",
   "engines": {
-    "node": "20.10.x",
+    "node": "20.9.x",
     "npm": "10.2.x"
   },
   "type": "module",
@@ -44,7 +44,7 @@
   "homepage": "https://github.com/mozilla/blurts-server",
   "license": "MPL-2.0",
   "volta": {
-    "node": "20.10.0",
+    "node": "20.9.0",
     "npm": "10.2.4"
   },
   "dependencies": {
