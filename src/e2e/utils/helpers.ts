@@ -30,7 +30,7 @@ export const ENV_URLS = {
   local: "http://localhost:6060",
   heroku: "https://fx-breach-alerts.herokuapp.com",
   stage: "https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net",
-  prod: "https://monitor.firefox.com",
+  prod: "https://monitor.mozilla.org",
 };
 
 export const setEnvVariables = (email: string) => {
