@@ -246,11 +246,11 @@ export const DoughnutChart = (props: Props) => {
             ? l10n.getFragment("exposure-chart-caption-fixed", {
                 vars: {
                   total_fixed_exposures_num:
-                    props.summary.dataBreachFixedExposuresNum +
-                    props.summary.dataBrokerFixedExposuresNum +
-                    props.summary.dataBrokerInProgressExposuresNum +
-                    props.summary.dataBrokerManuallyResolvedExposuresNum,
-                  total_exposures_num: props.summary.totalExposures,
+                    props.summary.dataBreachFixedDataPointsNum +
+                    props.summary.dataBrokerAutoFixedDataPointsNum +
+                    props.summary.dataBrokerInProgressDataPointsNum +
+                    props.summary.dataBrokerManuallyResolvedDataPointsNum,
+                  total_exposures_num: props.summary.totalDataPointsNum,
                 },
               })
             : l10n.getString("exposure-chart-caption")}

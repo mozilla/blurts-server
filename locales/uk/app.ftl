@@ -754,6 +754,7 @@ ad-unit-6-before-you-complete = Перш ніж здійснити наступ�
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Преміум

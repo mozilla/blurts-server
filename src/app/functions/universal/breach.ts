@@ -20,6 +20,18 @@ export const BreachDataTypes = {
   General: "general",
 } as const;
 
+export const ResolutionRelevantBreachDataTypes = {
+  Passwords: BreachDataTypes.Passwords,
+  Email: BreachDataTypes.Email,
+  SSN: BreachDataTypes.SSN,
+  CreditCard: BreachDataTypes.CreditCard,
+  BankAccount: BreachDataTypes.BankAccount,
+  PIN: BreachDataTypes.PIN,
+  IP: BreachDataTypes.IP,
+  Phone: BreachDataTypes.Phone,
+  SecurityQuestions: BreachDataTypes.SecurityQuestions,
+} as const;
+
 export const HighRiskDataTypes = {
   SSN: BreachDataTypes.SSN,
   CreditCard: BreachDataTypes.CreditCard,

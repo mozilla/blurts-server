@@ -158,13 +158,13 @@
         }
 
         .exposedInfoTitle {
+          align-self: start;
+
           @media screen and (min-width: $screen-lg) {
-            align-self: center;
             flex: 0 0 90px; // fix width of categories title
           }
 
           @media screen and (min-width: $screen-xl) {
-            align-self: center;
             flex: 0 0 150px;
           }
         }
@@ -198,7 +198,7 @@
         @media screen and (min-width: $screen-lg) {
           display: flex;
           flex-direction: row;
-          align-items: center;
+          align-items: start;
           gap: $layout-xs;
           flex-wrap: wrap;
           justify-content: flex-start;
@@ -215,15 +215,18 @@
             }
           }
 
-          .emails {
+          .dataClassListDetailsWrapper {
             padding-inline-start: var(--exposureDetailsIconWidth);
             font: $text-body-xs;
             font-weight: 600;
 
-            .emailsList {
+            .dataClassListDetails {
               list-style: none;
-              padding: 0;
               margin: 0;
+              padding: $spacing-xs 0 0 $spacing-xs;
+              gap: $spacing-xs;
+              display: flex;
+              flex-direction: column;
 
               li {
                 list-style-type: none;
