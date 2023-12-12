@@ -72,7 +72,7 @@ export interface DashboardSummary {
   fixedSanitizedDataPoints: SanitizedDataPoints;
 }
 
-const dataClassKeyMap: Record<string, string> = {
+export const dataClassKeyMap: Record<string, string> = {
   emailAddresses: "email-addresses",
   phoneNumbers: "phone-numbers",
 

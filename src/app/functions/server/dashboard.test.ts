@@ -8,6 +8,7 @@ import {
   getDashboardSummary,
   getDataPointReduction,
   DataPoints,
+  dataClassKeyMap,
 } from "./dashboard";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { RemovalStatus, RemovalStatusMap } from "../universal/scanResult";
@@ -772,24 +773,29 @@ describe("getDashboardSummary", () => {
     );
   });
 
-  it("fixedDataPoints counts manually resolved exposures", () => {
+  it("fixedSanitizedDataPoints counts manually resolved exposures", () => {
     const combinedScannedResults = [
       ...unresolvedScannedResults,
       ...manuallyResolvedScannedResults,
     ];
     const summary = getDashboardSummary(combinedScannedResults, []);
     noNegativeCounts(summary);
-    expect(summary.manuallyResolvedDataBrokerDataPoints.passwords).toBe(
-      summary.fixedDataPoints.passwords,
+    const getSanitizedDataPoint = (
+      dataPoint: (typeof dataClassKeyMap)[keyof typeof dataClassKeyMap],
+    ) => {
+      const sanitizedDataPoint = summary.fixedSanitizedDataPoints.find(
+        (fixedData) => dataPoint in fixedData,
+      );
+      return sanitizedDataPoint?.[dataPoint] ?? 0;
+    };
+    expect(summary.manuallyResolvedDataBrokerDataPoints.emailAddresses).toBe(
+      getSanitizedDataPoint(dataClassKeyMap.emailAddresses),
+    );
+    expect(summary.manuallyResolvedDataBrokerDataPoints.phoneNumbers).toBe(
+      getSanitizedDataPoint(dataClassKeyMap.phoneNumbers),
     );
     expect(summary.manuallyResolvedDataBrokerDataPoints.addresses).toBe(
-      summary.fixedDataPoints.addresses,
+      getSanitizedDataPoint(dataClassKeyMap.addresses),
     );
-    // expect(summary.manuallyResolvedDataBrokerDataPoints.emailAddresses).toBe(
-    //   summary.fixedDataPoints.emailAddresses,
-    // );
-    // expect(summary.manuallyResolvedDataBrokerDataPoints.phoneNumbers).toBe(
-    //   summary.fixedDataPoints.phoneNumbers,
-    // );
   });
 });
