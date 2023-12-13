@@ -563,6 +563,11 @@ it("counts in Glean how often people click the upgrade CTA to purchase the yearl
     name: "Upgrade to ⁨Premium⁩",
   });
   await user.click(premiumCtas[0]);
+  // Switch to the monthly tab by clicking it...
+  const productTabMonthly = screen.getByRole("tab", { name: "Monthly" });
+  await user.click(productTabMonthly);
+  // ...then back to the yearly tab by pressing the left arrow on the keyboard.
+  await user.keyboard("[ArrowLeft]");
   const confirmButton = screen.getByRole("link", {
     name: "Select yearly plan",
   });

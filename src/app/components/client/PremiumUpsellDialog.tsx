@@ -73,7 +73,8 @@ function PremiumUpsellDialogContent({
   yearlySubscriptionUrl,
 }: PremiumUpsellDialogContentProps) {
   const l10n = useL10n();
-  const [selectedTab, setSelectedTab] = useState<Key>("yearly");
+  const defaultSelectedKey = "yearly";
+  const [selectedTab, setSelectedTab] = useState<Key>(defaultSelectedKey);
   const record = useTelemetry();
   const currentPath = usePathname();
   const session = useSession();
@@ -101,7 +102,20 @@ function PremiumUpsellDialogContent({
       <div className={styles.productPlans}>
         <TabList
           tabs={tabsData}
-          onSelectionChange={(selectedKey) => setSelectedTab(selectedKey)}
+          defaultSelectedKey={defaultSelectedKey}
+          onSelectionChange={(selectedKey) => {
+            record("button", "click", {
+              button_id:
+                selectedKey === "monthly"
+                  ? "selected_monthly_plan"
+                  : "selected_yearly_plan",
+              // Mocking the entire session object is too messy in tests:
+              /* c8 ignore next */
+              user_id: session.data?.user.subscriber?.fxa_uid ?? undefined,
+              path: currentPath,
+            });
+            return setSelectedTab(selectedKey);
+          }}
         />
       </div>
       <dl className={styles.list}>
@@ -181,6 +195,9 @@ function PremiumUpsellDialog({
   ...otherProps
 }: PremiumUpsellDialogProps & OverlayTriggerProps) {
   const l10n = useL10n();
+  const record = useTelemetry();
+  const currentPath = usePathname();
+  const session = useSession();
 
   return (
     <div className={styles.modal}>
@@ -189,7 +206,16 @@ function PremiumUpsellDialog({
           <Dialog
             title={l10n.getString("premium-upsell-dialog-title")}
             illustration={<Image src={ModalImage} alt="" />}
-            onDismiss={() => void state.close()}
+            onDismiss={() => {
+              record("button", "click", {
+                button_id: "close_upsell_modal",
+                // Mocking the entire session object is too messy in tests:
+                /* c8 ignore next */
+                user_id: session.data?.user.subscriber?.fxa_uid ?? undefined,
+                path: currentPath,
+              });
+              return void state.close();
+            }}
             variant="horizontal"
           >
             <PremiumUpsellDialogContent
