@@ -4,16 +4,24 @@
 
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ProgressBar } from "../../../../../components/client/ProgressBar";
 import styles from "./FindExposures.module.scss";
 import { useL10n } from "../../../../../hooks/l10n";
+// eslint-disable-next-line no-restricted-imports
+import { useGa } from "../../../../../hooks/useGa";
 
 export type Props = {
   dataBrokerCount: number;
   breachesTotalCount: number;
   previousRoute: string;
+};
+
+export type FindExposuresTelemetryParams = {
+  exit_time: number;
+  page_location: string;
+  user_type: "legacy" | "non_legacy";
 };
 
 const getCurrentScanCountForRange = ({
@@ -67,7 +75,17 @@ export const FindExposures = ({
     progressRange: [labelSwitchThreshold, 100],
   });
 
+  const { gtag } = useGa();
+  const pathName = usePathname();
+
   useEffect(() => {
+    // view page telemetry
+    const startScanTime = Date.now();
+    const telemetryParams: FindExposuresTelemetryParams = {
+      exit_time: 0,
+      page_location: pathName,
+      user_type: "non_legacy",
+    };
     // TODO: Add unit test when changing this code:
     /* c8 ignore start */
     const timeoutId = setTimeout(() => {
@@ -94,6 +112,13 @@ export const FindExposures = ({
     // TODO: Add unit test when changing this code:
     /* c8 ignore next 3 */
     if (scanProgress >= maxProgress) {
+      const endScanTime = Date.now();
+      telemetryParams.exit_time = endScanTime - startScanTime;
+      gtag.record({
+        type: "event",
+        name: "exited_scan",
+        params: telemetryParams,
+      });
       router.push(previousRoute);
     }
 
@@ -105,6 +130,8 @@ export const FindExposures = ({
     scanFinished,
     percentageSteps,
     previousRoute,
+    gtag,
+    pathName,
   ]);
 
   function ProgressLabel() {
