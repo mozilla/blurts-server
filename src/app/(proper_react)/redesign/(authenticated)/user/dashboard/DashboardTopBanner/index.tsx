@@ -31,7 +31,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   const isShowFixed = props.tabType === "fixed";
 
   const chartDataKey = isShowFixed
-    ? "inProgressFixedSanitizedDataPoints"
+    ? "fixedSanitizedDataPoints"
     : "unresolvedSanitizedDataPoints";
 
   const chartData: [string, number][] = props.bannerData[chartDataKey].map(
