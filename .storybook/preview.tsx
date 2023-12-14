@@ -13,7 +13,6 @@ import { L10nProvider } from "../src/contextProviders/localization";
 import { metropolis } from "../src/app/fonts/Metropolis/metropolis";
 import { ReactAriaI18nProvider } from "../src/contextProviders/react-aria";
 import { getEnL10nBundlesSync } from "../src/app/functions/server/mockL10n";
-import { PublicEnvProvider } from "../src/contextProviders/public-env";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -31,13 +30,11 @@ const AppDecorator: Preview["decorators"] = (storyFn) => {
   }, []);
 
   return (
-    <PublicEnvProvider publicEnvs={{ PUBLIC_APP_ENV: process.env.NODE_ENV }}>
-      <L10nProvider bundleSources={l10nBundles}>
-        <SessionProvider session={null}>
-          <ReactAriaI18nProvider locale="en">{storyFn()}</ReactAriaI18nProvider>
-        </SessionProvider>
-      </L10nProvider>
-    </PublicEnvProvider>
+    <L10nProvider bundleSources={l10nBundles}>
+      <SessionProvider session={null}>
+        <ReactAriaI18nProvider locale="en">{storyFn()}</ReactAriaI18nProvider>
+      </SessionProvider>
+    </L10nProvider>
   );
 };
 
