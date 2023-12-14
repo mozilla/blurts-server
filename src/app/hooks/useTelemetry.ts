@@ -5,6 +5,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 // Imports for the `useGlean` and `useGa` hooks are restricted.
 /* eslint-disable no-restricted-imports */
 import { useGa } from "./useGa";
@@ -19,6 +20,7 @@ const TelemetryPlatforms = {
 
 export const useTelemetry = () => {
   const path = usePathname();
+  const session = useSession();
   const recordGlean = useGlean();
   const { gtag } = useGa();
 
@@ -35,7 +37,11 @@ export const useTelemetry = () => {
     > = [Glean, Ga],
   ) => {
     if (platforms.includes(Glean)) {
-      void recordGlean(eventModule, event, data);
+      void recordGlean(eventModule, event, {
+        path: path,
+        user_id: session.data?.user.subscriber?.fxa_uid ?? undefined,
+        ...data,
+      });
     }
     if (platforms.includes(Ga)) {
       gtag.record({
