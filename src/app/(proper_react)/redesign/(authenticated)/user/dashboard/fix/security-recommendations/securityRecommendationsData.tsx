@@ -165,7 +165,7 @@ function getSecurityRecommendationsByType({
                 elems: {
                   link_to_info: (
                     <a
-                      href="https://www.mozilla.org/products/vpn/?entrypoint_experiment=vpn-refresh-pricing&entrypoint_variation=1"
+                      href="https://www.mozilla.org/products/vpn/?utm_medium=monitor&utm_source=security-reco&utm_campaign=ip-breach&utm_content=global"
                       target="_blank"
                       rel="noopener noreferrer"
                     />
