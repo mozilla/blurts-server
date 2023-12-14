@@ -13,7 +13,6 @@ export const SubscriptionCheck = () => {
   // Poll for the session every minute.
   useEffect(() => {
     const interval = setInterval(() => void update(), 1000 * 60);
-    console.debug("update");
     return () => clearInterval(interval);
   }, [update]);
 
