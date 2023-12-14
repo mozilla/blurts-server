@@ -10,12 +10,15 @@ import { useEffect } from "react";
 export const SubscriptionCheck = () => {
   const { update } = useSession();
 
+  // Polling the session every minute.
   useEffect(() => {
-    void update();
-
-    // This should only run once per page load - `update` will always appear to be changed.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    // TIP: You can also use `navigator.onLine` and some extra event handlers
+    // to check if the user is online and only update the session if they are.
+    // https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine
+    const interval = setInterval(() => void update(), 1000 * 60);
+    console.debug("update");
+    return () => clearInterval(interval);
+  }, [update]);
 
   return <></>;
 };
