@@ -86,6 +86,20 @@ export const FindExposures = ({
       page_location: pathName,
       user_type: "non_legacy",
     };
+
+    // handle window exit event
+    const handleBeforeUnload = (event: { preventDefault: () => void }) => {
+      // Perform actions before the component unloads
+      event.preventDefault();
+      const endScanTime = Date.now();
+      telemetryParams.exit_time = endScanTime - startScanTime;
+      gtag.record({
+        type: "event",
+        name: "exited_scan",
+        params: telemetryParams,
+      });
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
     // TODO: Add unit test when changing this code:
     /* c8 ignore start */
     const timeoutId = setTimeout(() => {
@@ -122,7 +136,10 @@ export const FindExposures = ({
       router.push(previousRoute);
     }
 
-    return () => clearTimeout(timeoutId);
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
   }, [
     scanProgress,
     router,
