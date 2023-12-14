@@ -49,7 +49,8 @@ Sentry.init({
 function getEnvironment() {
   if (
     document.location.origin === "https://monitor.firefox.com" ||
-    document.location.origin === "https://monitor.mozilla.com"
+    document.location.origin === "https://monitor.mozilla.com" ||
+    document.location.origin === "https://monitor.mozilla.org"
   ) {
     return "production";
   }

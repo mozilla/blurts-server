@@ -53,11 +53,11 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
       <ProgressCard
         isPremiumUser={isPremiumUser}
         resolvedByYou={
-          bannerData.dataBrokerManuallyResolvedExposuresNum +
-          bannerData.dataBreachFixedExposuresNum
+          bannerData.dataBrokerManuallyResolvedDataPointsNum +
+          bannerData.dataBreachFixedDataPointsNum
         }
-        autoRemoved={bannerData.dataBrokerFixedExposuresNum}
-        inProgress={bannerData.dataBrokerInProgressExposuresNum}
+        autoRemoved={bannerData.dataBrokerAutoFixedDataPointsNum}
+        inProgress={bannerData.dataBrokerInProgressDataPointsNum}
       />
     );
   }
@@ -114,10 +114,11 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 "dashboard-exposures-breaches-scan-progress-description",
                 {
                   exposures_unresolved_num:
-                    bannerData.totalExposures -
-                    bannerData.dataBrokerFixedExposuresNum -
-                    bannerData.dataBreachFixedExposuresNum -
-                    bannerData.dataBrokerInProgressExposuresNum,
+                    bannerData.totalDataPointsNum -
+                    bannerData.dataBrokerAutoFixedDataPointsNum -
+                    bannerData.dataBreachFixedDataPointsNum -
+                    bannerData.dataBrokerInProgressDataPointsNum -
+                    bannerData.dataBrokerManuallyResolvedDataPointsNum,
                   data_breach_unresolved_num:
                     bannerData.dataBreachUnresolvedNum,
                 },
@@ -142,7 +143,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString(
                 "dashboard-top-banner-non-us-your-data-is-protected-description",
                 {
-                  exposures_resolved_num: bannerData.totalExposures,
+                  exposures_resolved_num: bannerData.totalDataPointsNum,
                 },
               )}
             </p>
@@ -192,7 +193,10 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               </Button>
             </div>
             <br />
-            <a href="https://mozilla.org/products/monitor/how-it-works/">
+            <a
+              href={process.env.NEXT_PUBLIC_HOW_IT_WORKS_SUMO_URL}
+              target="_blank"
+            >
               {l10n.getString(
                 "dashboard-top-banner-monitor-protects-your-even-more-learn-more",
               )}
@@ -246,7 +250,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                     bannerData.dataBreachUnresolvedNum,
                   data_broker_unresolved_num:
                     bannerData.dataBrokerTotalNum -
-                    bannerData.dataBrokerFixedNum -
+                    bannerData.dataBrokerAutoFixedNum -
                     bannerData.dataBrokerInProgressNum,
                 },
               )}
@@ -271,10 +275,11 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 "dashboard-top-banner-lets-keep-protecting-description",
                 {
                   exposures_unresolved_num:
-                    bannerData.totalExposures -
-                    bannerData.dataBreachFixedExposuresNum -
-                    bannerData.dataBrokerFixedExposuresNum -
-                    bannerData.dataBrokerInProgressExposuresNum,
+                    bannerData.totalDataPointsNum -
+                    bannerData.dataBreachFixedDataPointsNum -
+                    bannerData.dataBrokerAutoFixedDataPointsNum -
+                    bannerData.dataBrokerInProgressDataPointsNum -
+                    bannerData.dataBrokerManuallyResolvedDataPointsNum,
                 },
               )}
             </p>
@@ -299,7 +304,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString(
                 "dashboard-top-banner-your-data-is-protected-all-fixed-description",
                 {
-                  starting_exposure_total_num: bannerData.totalExposures,
+                  starting_exposure_total_num: bannerData.totalDataPointsNum,
                 },
               )}
             </p>
@@ -327,10 +332,11 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 "dashboard-top-banner-lets-keep-protecting-description",
                 {
                   exposures_unresolved_num:
-                    bannerData.totalExposures -
-                    bannerData.dataBreachFixedExposuresNum -
-                    bannerData.dataBrokerFixedExposuresNum -
-                    bannerData.dataBrokerInProgressExposuresNum,
+                    bannerData.totalDataPointsNum -
+                    bannerData.dataBreachFixedDataPointsNum -
+                    bannerData.dataBrokerAutoFixedDataPointsNum -
+                    bannerData.dataBrokerInProgressDataPointsNum -
+                    bannerData.dataBrokerManuallyResolvedDataPointsNum,
                 },
               )}
             </p>
@@ -379,7 +385,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString(
                 "dashboard-top-banner-your-data-is-protected-description",
                 {
-                  starting_exposure_total_num: bannerData.totalExposures,
+                  starting_exposure_total_num: bannerData.totalDataPointsNum,
                 },
               )}
             </p>
@@ -409,10 +415,11 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 "dashboard-top-banner-scan-in-progress-unresolved-description",
                 {
                   unresolved_exposures:
-                    bannerData.totalExposures -
-                    bannerData.dataBrokerFixedExposuresNum -
-                    bannerData.dataBreachFixedExposuresNum -
-                    bannerData.dataBrokerInProgressExposuresNum,
+                    bannerData.totalDataPointsNum -
+                    bannerData.dataBrokerAutoFixedDataPointsNum -
+                    bannerData.dataBreachFixedDataPointsNum -
+                    bannerData.dataBrokerInProgressDataPointsNum -
+                    bannerData.dataBrokerManuallyResolvedDataPointsNum,
                 },
               )}
               <br />
@@ -441,10 +448,11 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 "dashboard-top-banner-scan-in-progress-unresolved-description",
                 {
                   unresolved_exposures:
-                    bannerData.totalExposures -
-                    bannerData.dataBrokerFixedExposuresNum -
-                    bannerData.dataBreachFixedExposuresNum -
-                    bannerData.dataBrokerInProgressExposuresNum,
+                    bannerData.totalDataPointsNum -
+                    bannerData.dataBrokerAutoFixedDataPointsNum -
+                    bannerData.dataBreachFixedDataPointsNum -
+                    bannerData.dataBrokerInProgressDataPointsNum -
+                    bannerData.dataBrokerManuallyResolvedDataPointsNum,
                 },
               )}
               <br />
@@ -473,9 +481,10 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 "dashboard-top-banner-your-data-scan-in-progress-all-fixed-description",
                 {
                   exposures_resolved_num:
-                    bannerData.dataBrokerFixedExposuresNum +
-                    bannerData.dataBreachFixedExposuresNum +
-                    bannerData.dataBrokerInProgressExposuresNum,
+                    bannerData.dataBrokerAutoFixedDataPointsNum +
+                    bannerData.dataBreachFixedDataPointsNum +
+                    bannerData.dataBrokerInProgressDataPointsNum -
+                    bannerData.dataBrokerManuallyResolvedDataPointsNum,
                 },
               )}
               <br />

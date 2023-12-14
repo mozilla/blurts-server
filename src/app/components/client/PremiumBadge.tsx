@@ -19,6 +19,9 @@ import {
 } from "../../functions/universal/user";
 import ShieldIcon from "./assets/shield-icon.svg";
 import styles from "./PremiumBadge.module.scss";
+// TODO: The use of `useGA` is restricted and will be cleaned up
+// together with MNTOR-2335.
+// eslint-disable-next-line no-restricted-imports
 import { useGa } from "../../hooks/useGa";
 import { CountryCodeContext } from "../../../contextProviders/country-code";
 

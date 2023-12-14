@@ -8,20 +8,11 @@ import { useEffect, useMemo } from "react";
 import { useCookies } from "react-cookie";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { useTelemetry } from "../../../hooks/useTelemetry";
+import { GleanMetricMap } from "../../../../telemetry/generated/_map";
 
 export type Props = {
   userId: string;
   enabledFlags: FeatureFlagName[];
-};
-
-type PageViewParams = {
-  user_id?: string;
-  referrer?: string;
-  utm_campaign?: string;
-  utm_content?: string;
-  utm_medium?: string;
-  utm_source?: string;
-  utm_term?: string;
 };
 
 // Empty component that records a page view on first load.
@@ -29,9 +20,9 @@ export const PageLoadEvent = (props: Props) => {
   const [cookies, setCookie] = useCookies(["userId"]);
   const userId = props.userId;
 
-  const telemetry = useTelemetry();
+  const recordTelemetry = useTelemetry();
 
-  const pageViewParams: PageViewParams = useMemo(() => {
+  const pageViewParams: GleanMetricMap["page"]["view"] = useMemo(() => {
     // If the user is not logged in, use randomly-generated user ID and store in cookie.
     if (userId.startsWith("guest")) {
       if (!cookies.userId) {
@@ -82,11 +73,8 @@ export const PageLoadEvent = (props: Props) => {
 
   // On first load of the page, record a page view.
   useEffect(() => {
-    telemetry.record("page", {
-      action: "view",
-      ...pageViewParams,
-    });
-  }, [telemetry, pageViewParams]);
+    recordTelemetry("page", "view", pageViewParams);
+  }, [recordTelemetry, pageViewParams]);
 
   // This component doesn't render anything.
   return <></>;

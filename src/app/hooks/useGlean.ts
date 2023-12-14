@@ -6,13 +6,11 @@
 
 import { useContext, useEffect } from "react";
 import Glean from "@mozilla/glean/web";
-import * as gleanEvents from "../../telemetry/generated";
+import EventMetricType from "@mozilla/glean/private/metrics/event";
+import type { GleanMetricMap } from "../../telemetry/generated/_map";
 import { PublicEnvContext } from "../../contextProviders/public-env";
 
-export type GleanEvents = typeof gleanEvents;
-
-// Custom hook that initializes Glean and returns all available events.
-export const useGlean = (): GleanEvents => {
+export const useGlean = () => {
   const { PUBLIC_APP_ENV } = useContext(PublicEnvContext);
 
   // Initialize Glean only on the first render of our custom hook.
@@ -43,5 +41,23 @@ export const useGlean = (): GleanEvents => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return gleanEvents;
+  const record = async <
+    EventModule extends keyof GleanMetricMap,
+    EventName extends keyof GleanMetricMap[EventModule],
+  >(
+    eventModule: EventModule,
+    event: keyof GleanMetricMap[EventModule],
+    data: GleanMetricMap[EventModule][EventName],
+  ) => {
+    const mod = (await import(
+      `../../telemetry/generated/${eventModule}`
+    )) as Record<keyof GleanMetricMap[EventModule], EventMetricType>;
+    // Instead of the specific type definitions we generated in the npm script
+    // `build-glean-types`, Glean takes a non-specific "ExtraArgs" type as
+    // parameter to `record`.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    mod[event].record(data as any);
+  };
+
+  return record;
 };

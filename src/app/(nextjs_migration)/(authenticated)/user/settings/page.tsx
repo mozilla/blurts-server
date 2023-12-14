@@ -21,7 +21,6 @@ import { getBreachesForEmail } from "../../../../../utils/hibp";
 import { getSha1 } from "../../../../../utils/fxa";
 import { getSubscriberById } from "../../../../../db/tables/subscribers";
 import { getNonce } from "../../../functions/server/getNonce";
-import { getEnabledFeatureFlags } from "../../../../../db/tables/featureFlags";
 
 const emailNeedsVerificationSub = (email: EmailRow) => {
   const l10n = getL10n();

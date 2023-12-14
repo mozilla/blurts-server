@@ -5,42 +5,50 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { ExtraMap } from "@mozilla/glean/dist/types/core/metrics/events_database/recorded_event.d";
+// Imports for the `useGlean` and `useGa` hooks are restricted.
+/* eslint-disable no-restricted-imports */
 import { useGa } from "./useGa";
-import { GleanEvents, useGlean } from "./useGlean";
+import { useGlean } from "./useGlean";
+/* eslint-enable no-restricted-imports */
+import { GleanMetricMap } from "../../telemetry/generated/_map";
 
-type RecordParams = ExtraMap & {
-  action: string;
-};
+const TelemetryPlatforms = {
+  Glean: "glean",
+  Ga: "ga",
+} as const;
 
 export const useTelemetry = () => {
   const path = usePathname();
-  const glean = useGlean();
+  const recordGlean = useGlean();
   const { gtag } = useGa();
 
-  const record = (eventName: keyof GleanEvents, params: RecordParams) => {
-    const { action, ...otherParams } = params;
-
-    // Record event via Glean
-    // We are mocking the `useGlean` hook in the unit tests,
-    // but not the actual events.
-    /* c8 ignore next 2 */
-    // @ts-ignore TODO: Get correct type for action
-    glean?.[eventName]?.[action].record({ path, ...otherParams });
-
-    // Record event via GA
-    gtag.record({
-      type: "event",
-      name: eventName,
-      params: {
-        ...params,
-        action,
-        page_location: path,
-      },
-    });
+  const { Glean, Ga } = TelemetryPlatforms;
+  const record = <
+    EventModule extends keyof GleanMetricMap,
+    EventName extends keyof GleanMetricMap[EventModule],
+  >(
+    eventModule: EventModule,
+    event: EventName,
+    data: GleanMetricMap[EventModule][EventName],
+    platforms: Array<
+      (typeof TelemetryPlatforms)[keyof typeof TelemetryPlatforms]
+    > = [Glean, Ga],
+  ) => {
+    if (platforms.includes(Glean)) {
+      void recordGlean(eventModule, event, data);
+    }
+    if (platforms.includes(Ga)) {
+      gtag.record({
+        type: "event",
+        name: eventModule,
+        params: {
+          ...data,
+          action: event,
+          page_location: path,
+        },
+      });
+    }
   };
 
-  return {
-    record,
-  };
+  return record;
 };

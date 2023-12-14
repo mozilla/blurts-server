@@ -17,9 +17,7 @@ import { PublicEnvProvider } from "../src/contextProviders/public-env";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-const AppDecorator: Exclude<Preview["decorators"], undefined>[0] = (
-  storyFn,
-) => {
+const AppDecorator: Preview["decorators"] = (storyFn) => {
   const l10nBundles = getEnL10nBundlesSync();
 
   useEffect(() => {

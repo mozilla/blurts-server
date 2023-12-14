@@ -674,6 +674,7 @@ ad-unit-6-before-you-complete = Antes de completar el próximo registro, usá un
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
