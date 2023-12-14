@@ -5,16 +5,22 @@
 "use client";
 
 import { useSession } from "next-auth/react";
+import { useInterval } from "../../hooks/useInterval";
 import { useEffect } from "react";
 
 export const SubscriptionCheck = () => {
   const { update } = useSession();
 
-  // Poll for the session every minute.
   useEffect(() => {
-    const interval = setInterval(() => void update(), 1000 * 60);
-    return () => clearInterval(interval);
-  }, [update]);
+    void update();
+    // This should only run once per page load - `update` will always appear to be changed.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Poll for the session every minute.
+  useInterval(() => {
+    void update();
+  }, 1000 * 60);
 
   return <></>;
 };
