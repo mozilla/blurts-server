@@ -6,8 +6,6 @@
 
 import { Key, useState } from "react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
 import type { OverlayTriggerProps, OverlayTriggerState } from "react-stately";
 import { Dialog } from "./dialog/Dialog";
 import { ModalOverlay } from "./dialog/ModalOverlay";
@@ -76,8 +74,6 @@ function PremiumUpsellDialogContent({
   const defaultSelectedKey = "yearly";
   const [selectedTab, setSelectedTab] = useState<Key>(defaultSelectedKey);
   const record = useTelemetry();
-  const currentPath = usePathname();
-  const session = useSession();
 
   const isMonthly = selectedTab === "monthly";
   const tabsData = [
@@ -109,10 +105,6 @@ function PremiumUpsellDialogContent({
                 selectedKey === "monthly"
                   ? "selected_monthly_plan"
                   : "selected_yearly_plan",
-              // Mocking the entire session object is too messy in tests:
-              /* c8 ignore next */
-              user_id: session.data?.user.subscriber?.fxa_uid ?? undefined,
-              path: currentPath,
             });
             return setSelectedTab(selectedKey);
           }}
@@ -168,10 +160,6 @@ function PremiumUpsellDialogContent({
             button_id: isMonthly
               ? "intent_to_purchase_monthly_plan_nav_modal"
               : "intent_to_purchase_yearly_plan_nav_modal",
-            // Mocking the entire session object is too messy in tests:
-            /* c8 ignore next */
-            user_id: session.data?.user.subscriber?.fxa_uid ?? undefined,
-            path: currentPath,
           });
         }}
         variant="primary"
@@ -196,8 +184,6 @@ function PremiumUpsellDialog({
 }: PremiumUpsellDialogProps & OverlayTriggerProps) {
   const l10n = useL10n();
   const record = useTelemetry();
-  const currentPath = usePathname();
-  const session = useSession();
 
   return (
     <div className={styles.modal}>
@@ -209,10 +195,6 @@ function PremiumUpsellDialog({
             onDismiss={() => {
               record("button", "click", {
                 button_id: "close_upsell_modal",
-                // Mocking the entire session object is too messy in tests:
-                /* c8 ignore next */
-                user_id: session.data?.user.subscriber?.fxa_uid ?? undefined,
-                path: currentPath,
               });
               return void state.close();
             }}
