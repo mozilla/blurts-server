@@ -30,7 +30,10 @@ export const useGlean = () => {
 
     // Glean debugging options can be found here:
     // https://mozilla.github.io/glean/book/reference/debug/index.html
-    if (PUBLIC_APP_ENV && ["local", "heroku"].includes(PUBLIC_APP_ENV)) {
+    if (
+      PUBLIC_APP_ENV &&
+      ["local", "heroku", "storybook"].includes(PUBLIC_APP_ENV)
+    ) {
       // Enable logging pings to the browser console.
       Glean.setLogPings(true);
       // Tag pings for the Debug Viewer

@@ -21,7 +21,7 @@
     "db:rollback": "node -r dotenv/config node_modules/knex/bin/cli.js migrate:rollback --knexfile src/db/knexfile.js",
     "prepare": "husky install",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build-storybook": "npm run build-glean && storybook build",
     "create-location-data": "node src/scripts/uploadAutoCompleteLocations.js",
     "get-location-data": "node src/scripts/getAutoCompleteLocations.js",
     "build-glean": "glean translate src/telemetry/metrics.yaml --format typescript --output src/telemetry/generated && npm run build-glean-types",
