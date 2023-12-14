@@ -41,7 +41,6 @@ export function WelcomeToPremiumView(props: Props) {
       if (!session?.user.fxa?.subscriptions.includes("monitor")) {
         logger.error("user_not_subscribed", {
           page: "welcome-to-premium",
-          subscriber_id: session?.user.subscriber?.id,
         });
       }
     })
