@@ -13,18 +13,17 @@ Sentry.init({
   dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
 
   // Adjust this value in production, or use tracesSampler for greater control
-  tracesSampleRate: ["development"].includes(process.env.NODE_ENV) ? 1.0 : 0.1,
+  tracesSampleRate: ["local"].includes(getEnvironment()) ? 1.0 : 0.1,
 
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
-  debug: false,
+  // FIXME set this to `false` after concluding testing, @see MNTOR-2643
+  debug: true,
 
   replaysOnErrorSampleRate: 1.0,
 
   // This sets the sample rate to be 10%. You may want this to be 100% while
   // in development and sample at a lower rate in production
-  replaysSessionSampleRate: ["development", "heroku"].includes(
-    process.env.NODE_ENV,
-  )
+  replaysSessionSampleRate: ["local", "heroku"].includes(getEnvironment())
     ? 1.0
     : 0.1,
 
@@ -32,8 +31,8 @@ Sentry.init({
   integrations: [
     new Sentry.Replay({
       // Additional Replay configuration goes in here, for example:
-      maskAllText: process.env.NODE_ENV === "development",
-      blockAllMedia: process.env.NODE_ENV === "development",
+      maskAllText: getEnvironment() === "local",
+      blockAllMedia: getEnvironment() === "local",
     }),
   ],
 });
