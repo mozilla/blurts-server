@@ -34,7 +34,7 @@ const AppDecorator: Preview["decorators"] = (storyFn) => {
     <L10nProvider bundleSources={l10nBundles}>
       <PublicEnvProvider
         publicEnvs={{
-          PUBLIC_APP_ENV: process.env.APP_ENV ?? "",
+          PUBLIC_APP_ENV: "storybook",
         }}
       >
         <SessionProvider session={null}>
