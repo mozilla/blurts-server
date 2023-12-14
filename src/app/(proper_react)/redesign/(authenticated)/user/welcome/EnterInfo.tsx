@@ -72,6 +72,7 @@ export const EnterInfo = ({
   const [invalidInputs, setInvalidInputs] = useState<Array<string>>([]);
   const [requestingScan, setRequestingScan] = useState(false);
 
+  const record = useTelemetry();
   const explainerDialogState = useOverlayTriggerState({});
   const explainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
@@ -81,8 +82,7 @@ export const EnterInfo = ({
   const confirmDialogState = useOverlayTriggerState({
     onOpenChange: (isOpen) => {
       if (isOpen) {
-        telemetry.record("page", {
-          action: "view",
+        record("page", "view", {
           utm_campaign: "broker_scan",
           utm_content: "enter_scan_info_confirmation_modal",
           // We are not explicitly testing telemetry
@@ -90,8 +90,7 @@ export const EnterInfo = ({
           utm_term: skipInitialStep ? "legacy_user" : "new_user",
         });
       } else {
-        telemetry.record("ctaButton", {
-          action: "click",
+        record("ctaButton", "click", {
           button_id: "edit_free_scan",
         });
       }
@@ -102,7 +101,6 @@ export const EnterInfo = ({
     confirmDialogState,
   );
 
-  const telemetry = useTelemetry();
   const l10n = useL10n();
   const userDetailsData = [
     {
@@ -165,8 +163,7 @@ export const EnterInfo = ({
     if (requestingScan) {
       return;
     }
-    telemetry.record("ctaButton", {
-      action: "click",
+    record("ctaButton", "click", {
       button_id: "confirmed_free_scan",
     });
     setRequestingScan(true);
@@ -193,8 +190,7 @@ export const EnterInfo = ({
   const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    telemetry.record("ctaButton", {
-      action: "click",
+    record("ctaButton", "click", {
       button_id: "started_free_scan",
     });
 
@@ -335,8 +331,7 @@ export const EnterInfo = ({
           // TODO: Add unit test when changing this code:
           /* c8 ignore next */
           onClick={() => {
-            telemetry.record("ctaButton", {
-              action: "click",
+            record("ctaButton", "click", {
               button_id: "why_do_we_need_this_info",
             });
             explainerDialogState.open();
@@ -366,8 +361,7 @@ export const EnterInfo = ({
                   validationState={validationState}
                   inputValue={value}
                   onFocus={() => {
-                    telemetry.record("field", {
-                      action: "focus",
+                    record("field", "focus", {
                       field_id: key,
                     });
                   }}
@@ -386,8 +380,7 @@ export const EnterInfo = ({
                   validationState={validationState}
                   value={value}
                   onFocus={() => {
-                    telemetry.record("field", {
-                      action: "focus",
+                    record("field", "focus", {
                       field_id: key,
                     });
                   }}

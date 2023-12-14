@@ -24,7 +24,7 @@ export type Props = {
 
 export const GetStarted = (props: Props) => {
   const l10n = useL10n();
-  const telemetry = useTelemetry();
+  const record = useTelemetry();
   const explainerDialogState = useOverlayTriggerState({});
   const explainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
@@ -47,8 +47,7 @@ export const GetStarted = (props: Props) => {
           {...buttonProps}
           ref={triggerRef}
           onClick={() => {
-            telemetry.record("ctaButton", {
-              action: "click",
+            record("ctaButton", "click", {
               button_id: "welcome_data_protection",
             });
             explainerDialogState.open();

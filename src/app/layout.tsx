@@ -16,7 +16,7 @@ import { metropolis } from "./fonts/Metropolis/metropolis";
 
 // DO NOT ADD SECRETS: Env variables added here become public.
 const PUBLIC_ENVS = {
-  PUBLIC_APP_ENV: process.env.APP_ENV,
+  PUBLIC_APP_ENV: process.env.APP_ENV ?? "",
 } as const;
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
