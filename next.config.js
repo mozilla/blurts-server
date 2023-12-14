@@ -28,6 +28,10 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "monitor.mozilla.org",
+      },
+      {
+        protocol: "https",
         hostname: "firefoxusercontent.com",
       },
       {

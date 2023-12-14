@@ -8,6 +8,7 @@ import {
   getDashboardSummary,
   getDataPointReduction,
   DataPoints,
+  dataClassKeyMap,
 } from "./dashboard";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { RemovalStatus, RemovalStatusMap } from "../universal/scanResult";
@@ -488,9 +489,9 @@ describe("getExposureReduction", () => {
       unresolvedDataPoints: testExposure,
       inProgressDataPoints: testExposure,
       fixedDataPoints: testExposure,
-      inProgressFixedDataPoints: testExposure,
+      manuallyResolvedDataBrokerDataPoints: testExposure,
       unresolvedSanitizedDataPoints: [],
-      inProgressFixedSanitizedDataPoints: [],
+      fixedSanitizedDataPoints: [],
       dataBreachUnresolvedNum: 0,
       dataBreachResolvedNum: 0,
     };
@@ -533,9 +534,9 @@ describe("getExposureReduction", () => {
       unresolvedDataPoints: testExposure,
       inProgressDataPoints: testExposure,
       fixedDataPoints: testExposure,
-      inProgressFixedDataPoints: testExposure,
+      manuallyResolvedDataBrokerDataPoints: testExposure,
       unresolvedSanitizedDataPoints: [],
-      inProgressFixedSanitizedDataPoints: [],
+      fixedSanitizedDataPoints: [],
       dataBreachUnresolvedNum: 0,
       dataBreachResolvedNum: 0,
     };
@@ -572,13 +573,11 @@ describe("getDashboardSummary", () => {
       },
     );
 
-    summary.inProgressFixedSanitizedDataPoints.forEach(
-      (inProgressFixedSanitizedExposure) => {
-        Object.values(inProgressFixedSanitizedExposure).forEach((count) => {
-          expect(count).toBeGreaterThanOrEqual(0);
-        });
-      },
-    );
+    summary.fixedSanitizedDataPoints.forEach((fixedSanitizedExposure) => {
+      Object.values(fixedSanitizedExposure).forEach((count) => {
+        expect(count).toBeGreaterThanOrEqual(0);
+      });
+    });
   };
 
   it("gets breaches only summary", () => {
@@ -663,21 +662,17 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBreachTotalDataPointsNum).toBe(0);
     expect(summary.dataBreachFixedDataPointsNum).toBe(0);
     expect(summary.dataBrokerTotalNum).toBe(4);
-    expect(summary.inProgressFixedDataPoints.emailAddresses).toBe(
-      summary.inProgressDataPoints.emailAddresses +
-        summary.fixedDataPoints.emailAddresses,
+    expect(summary.fixedDataPoints.emailAddresses).toBe(
+      summary.fixedDataPoints.emailAddresses,
     );
-    expect(summary.inProgressFixedDataPoints.phoneNumbers).toBe(
-      summary.inProgressDataPoints.phoneNumbers +
-        summary.fixedDataPoints.phoneNumbers,
+    expect(summary.fixedDataPoints.phoneNumbers).toBe(
+      summary.fixedDataPoints.phoneNumbers,
     );
-    expect(summary.inProgressFixedDataPoints.addresses).toBe(
-      summary.inProgressDataPoints.addresses +
-        summary.fixedDataPoints.addresses,
+    expect(summary.fixedDataPoints.addresses).toBe(
+      summary.fixedDataPoints.addresses,
     );
-    expect(summary.inProgressFixedDataPoints.familyMembers).toBe(
-      summary.inProgressDataPoints.familyMembers +
-        summary.fixedDataPoints.familyMembers,
+    expect(summary.fixedDataPoints.familyMembers).toBe(
+      summary.fixedDataPoints.familyMembers,
     );
     expect(summary.unresolvedDataPoints.emailAddresses).toBe(0);
   });
@@ -749,7 +744,7 @@ describe("getDashboardSummary", () => {
     expect(summary.dataBrokerManuallyResolvedDataPointsNum).toBe(12);
   });
 
-  it("inProgressFixedSanitizedExposures counts manually resolved exposures", () => {
+  it("fixedSanitizedExposures counts manually resolved exposures", () => {
     const combinedScannedResults = [
       ...unresolvedScannedResults,
       ...manuallyResolvedScannedResults,
@@ -773,30 +768,34 @@ describe("getDashboardSummary", () => {
     ];
     const summary = getDashboardSummary(combinedScannedResults, []);
     noNegativeCounts(summary);
-    console.log(
-      "yay ",
-      JSON.stringify(summary.inProgressFixedSanitizedDataPoints),
-    );
-    expect(summary.inProgressFixedSanitizedDataPoints).toEqual(
+    expect(summary.fixedSanitizedDataPoints).toEqual(
       expectedSanitizedExposures,
     );
   });
 
-  it("inProgressFixedExposures counts manually resolved exposures", () => {
+  it("fixedSanitizedDataPoints counts manually resolved exposures", () => {
     const combinedScannedResults = [
       ...unresolvedScannedResults,
       ...manuallyResolvedScannedResults,
     ];
     const summary = getDashboardSummary(combinedScannedResults, []);
     noNegativeCounts(summary);
-    expect(summary.manuallyResolvedDataBrokerDataPoints.passwords).toBe(
-      summary.inProgressFixedDataPoints.passwords,
-    );
-    expect(summary.manuallyResolvedDataBrokerDataPoints.pins).toBe(
-      summary.inProgressFixedDataPoints.pins,
+    const getSanitizedDataPoint = (
+      dataPoint: (typeof dataClassKeyMap)[keyof typeof dataClassKeyMap],
+    ) => {
+      const sanitizedDataPoint = summary.fixedSanitizedDataPoints.find(
+        (fixedData) => dataPoint in fixedData,
+      );
+      return sanitizedDataPoint?.[dataPoint] ?? 0;
+    };
+    expect(summary.manuallyResolvedDataBrokerDataPoints.emailAddresses).toBe(
+      getSanitizedDataPoint(dataClassKeyMap.emailAddresses),
     );
     expect(summary.manuallyResolvedDataBrokerDataPoints.phoneNumbers).toBe(
-      summary.inProgressFixedDataPoints.phoneNumbers,
+      getSanitizedDataPoint(dataClassKeyMap.phoneNumbers),
+    );
+    expect(summary.manuallyResolvedDataBrokerDataPoints.addresses).toBe(
+      getSanitizedDataPoint(dataClassKeyMap.addresses),
     );
   });
 });
