@@ -31,9 +31,7 @@ const AppDecorator: Preview["decorators"] = (storyFn) => {
   }, []);
 
   return (
-    <PublicEnvProvider
-      publicEnvs={{ PUBLIC_APP_ENV: process.env.NODE_ENV || "" }}
-    >
+    <PublicEnvProvider publicEnvs={{ PUBLIC_APP_ENV: process.env.NODE_ENV }}>
       <L10nProvider bundleSources={l10nBundles}>
         <SessionProvider session={null}>
           <ReactAriaI18nProvider locale="en">{storyFn()}</ReactAriaI18nProvider>
