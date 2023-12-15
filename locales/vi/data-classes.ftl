@@ -81,6 +81,7 @@ living-costs = Chi phí sinh hoạt
 # This string refers to financial loans.
 loan-information = Thông tin khoản vay
 login-histories = Lịch sử đăng nhập
+loyalty-program-details = Chi tiết chương trình khách hàng thân thiết
 mac-addresses = Địa chỉ MAC
 marital-statuses = Tình trạng hôn nhân
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -141,6 +142,7 @@ spouses-names = Tên vợ/chồng
 support-tickets = Vé hỗ trợ
 survey-results = Kết quả khảo sát
 taxation-records = Hồ sơ thuế
+telecommunications-carrier = Các hãng viễn thông
 time-zones = Múi giờ
 travel-habits = Thói quen du lịch
 user-statuses = Trạng thái người dùng
