@@ -2,6 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+// We need access to environment variables that are only available on the
+// server-side, because they're set by the server environment:
+import "server-only";
+
 interface GetPremiumSubscriptionUrlParams {
   type: "monthly" | "yearly";
 }
