@@ -12,7 +12,7 @@ import styles from "./Icons.module.scss";
 // These components just render HTML without business logic:
 /* c8 ignore start */
 
-// Keywords: cross, X
+// Keywords: Arrow
 export const ArrowIcon = ({
   alt,
   ...props

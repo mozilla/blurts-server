@@ -90,7 +90,7 @@ fxa-pwt-summary-6 =
 fxa-what-to-do-blurb-1 =
     Eñepyrũkuaárõ tembiapo, eñe’ẽ ñanduti renda ndive eporandu hag̃ua mba’éichapa embohekopyahúta. 
     ¿Ehecha peteĩ mba’ete eikuaa’ỹva? Ne mba’ekuaarã ikatu oñevendémara’e 
-    térã oñemyasãima. Kóva avei ikatu ha’e mba’ete nderesaráiva emoheñói hag̃ua térã  peteĩ mba’apohaguasu omoambuéva héra.
+    térã oñemoasãima. Kóva avei ikatu ha’e mba’ete nderesaráiva emoheñói hag̃ua térã  peteĩ mba’apohaguasu omoambuéva héra.
 fxa-what-to-do-subhead-2 = Anive eiporu ñe’ẽñemi ojekuaareíva ha emoambue opaite tenda eiporuhápe.
 fxa-wtd-blurb-2 = Umi mba’evaiapoha tembiporupyahugua oiporujeykuaa ñe’ẽñemi ojehechakuaáva eike hag̃ua ambue mba’etépe. Emoheñói ñe’ẽñemi pyahu ha ha ha’eñóva peteĩteĩva mba’etépe, ejapokuaáva ne mba’ete banco pegua, ne ñanduti veve ha ambue ñanduti renda eñongatu hague ne maranduete.
 fxa-what-to-do-blurb-3 =
@@ -474,7 +474,7 @@ breach-added-label = Mboguapy mbojuajupyre:
 how-hackers-work-desc = Emo’ã ne ñe’ẽñemi mba’evai apoha ñandutiguávagui, ha’éva pe eipotavéva.
 what-to-do-after-breach-desc = Ejoko ne mba’ete eguereko hag̃ua ne marandu mombyry iñañávagui.
 create-strong-passwords-desc = Ejapo ne ñe’ẽñemi imbaretéva, hekorosã ha hasýva ojekuaa hag̃ua.
-steps-to-protect-desc = Eikumby kyhyjerã hetavéva eikuaa hag̃ua mba’etépa pe ehekava’erã.
+steps-to-protect-desc = Eikũmby kyhyjerã hetavéva eikuaa hag̃ua mba’etépa pe ehekava’erã.
 five-myths-desc = Mba’éichapa emboykéta ñe’ẽñemi jeporuvai nombohasýiva hekovaíva rembiapo.
 take-further-steps-desc = Ehecha mba’éichapa emboykéta teratee ñemonda ani hag̃ua ñe apañuãi viru rekópe.
 # This message appears after a user has successfully updated their communication settings.
@@ -643,7 +643,7 @@ vpn-banner-step-2 = Eiporavo VPN rendaite
 vpn-banner-step-3 = Emyandy VPN ha eikundaha tekorosãme
 vpn-banner-cta = Erekóke { -brand-mozilla-vpn }
 # button to expand panel
-vpn-banner-cta-expand = Myasãi
+vpn-banner-cta-expand = Moasãi
 # button to close panel
 vpn-banner-cta-close = Mboty
 
@@ -682,7 +682,7 @@ ad-unit-5-use-on-phone = Eiporu ne pumbyrýpe
 ad-unit-5-no-matter-where = Tereime reimehápe, emoheñói peteĩ ñanduti veve rovara’ãnga nemba’eteéva sapy’aitépe ejapo hag̃ua ejaposéva uperire
 # ad 6 heading
 ad-unit-6-worry-free = Eñemboheraguapy apañuãi’ỹre
-ad-unit-6-want-to-start = Eñemboheraguapysépa, embohovái pe ñepepirũ térã ejerurekuaa ñemyasãirã ayvu pe spam oñuã’ỹre ne ñe’ẽmondo g̃uahẽha
+ad-unit-6-want-to-start = Eñemboheraguapysépa, embohovái pe ñepepirũ térã ejerurekuaa ñemoasãirã ayvu pe spam oñuã’ỹre ne ñe’ẽmondo g̃uahẽha
 ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eiporu ñanduti veve rovara’ãnga ne ñanduti vevetéva rendaguépe emo’ã hag̃ua ne marandu ha ehechamemekuaa hag̃ua ne ñe’ẽmondo g̃uahẽha
 
 # Monitor V2
@@ -702,10 +702,6 @@ ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eiporu ñand
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
-# Deprecated - to be replaced by -brand-mozilla-account
--brand-fx-account = Firefox mba’ete
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla mba’ete
@@ -734,11 +730,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Poruhára jeporavoha
 menu-button-alt = Embojuruja poruhára jeporavoha
 menu-list-accessible-label = Mba’ete jeporavoha
-# Deprecated
-menu-item-fxa = Eñangareko nde { -brand-fx-account }
 menu-item-fxa-2 = Eñangareko { -brand-mozilla-account } rehe
-# Deprecated
-menu-item-fxa-alt = Embojuruja { -brand-fx-account } kuatiarogue
 menu-item-fxa-alt-2 = Embojuruja { -brand-mozilla-account } kuatiarogue
 menu-item-settings = Ñemboheko
 menu-item-settings-alt = Embojuruja kuatiarogue ñemboheko
@@ -749,7 +741,6 @@ menu-item-logout = Emboty tembiapo
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Mboguatarã ha ñemigua
 github = { -brand-github }
 footer-nav-all-breaches = Opaite Ñembogua
 

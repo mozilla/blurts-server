@@ -4,7 +4,7 @@
 
 Firefox Monitor notifies users when their credentials have been compromised in a data breach.
 
-This code is for the monitor.firefox.com service & website.
+This code is for the monitor.mozilla.org service & website.
 
 Breach data is powered by [haveibeenpwned.com](https://haveibeenpwned.com/).
 
