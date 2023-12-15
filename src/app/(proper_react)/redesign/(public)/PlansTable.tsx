@@ -134,11 +134,12 @@ export const PlansTable = (props: Props) => {
                       {l10n.getString(
                         "landing-premium-plans-table-price-plus-yearly-discount",
                         {
-                          discountPercentage:
+                          discountPercentage: Math.floor(
                             ((monthlyPriceMonthlyBilling -
                               monthlyPriceAnnualBilling) *
                               100) /
-                            monthlyPriceMonthlyBilling,
+                              monthlyPriceMonthlyBilling,
+                          ),
                         },
                       )}
                     </em>
@@ -697,11 +698,12 @@ export const PlansTable = (props: Props) => {
                           {l10n.getString(
                             "landing-premium-plans-table-price-plus-yearly-discount",
                             {
-                              discountPercentage:
+                              discountPercentage: Math.floor(
                                 ((monthlyPriceMonthlyBilling -
                                   monthlyPriceAnnualBilling) *
                                   100) /
-                                monthlyPriceMonthlyBilling,
+                                  monthlyPriceMonthlyBilling,
+                              ),
                             },
                           )}
                         </em>
