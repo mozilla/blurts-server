@@ -34,6 +34,7 @@ Sentry.init({
       maskAllText: getEnvironment() === "local",
       blockAllMedia: getEnvironment() === "local",
     }),
+    new Sentry.BrowserTracing(),
   ],
 });
 
