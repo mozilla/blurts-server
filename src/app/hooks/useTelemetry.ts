@@ -35,7 +35,10 @@ export const useTelemetry = () => {
     > = [Glean, Ga],
   ) => {
     if (platforms.includes(Glean)) {
-      void recordGlean(eventModule, event, data);
+      void recordGlean(eventModule, event, {
+        path: path,
+        ...data,
+      });
     }
     if (platforms.includes(Ga)) {
       gtag.record({
