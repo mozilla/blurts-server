@@ -16,8 +16,7 @@ Sentry.init({
   tracesSampleRate: ["local"].includes(getEnvironment()) ? 1.0 : 0.1,
 
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
-  // FIXME set this to `false` after concluding testing, @see MNTOR-2643
-  debug: true,
+  debug: getEnvironment() !== "production",
 
   replaysOnErrorSampleRate: 1.0,
 
