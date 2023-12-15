@@ -71,201 +71,199 @@ const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
  *
  * More about how account identities are anonymized: https://blog.mozilla.org/security/2018/06/25/scanning-breached-accounts-k-anonymity/
  */
-export async function poll(breaches, subClient, message) {
+export async function poll(subClient, receivedMessages) {
   const formattedSubscription = subClient.subscriptionPath(
     projectId,
     subscriptionName,
   );
 
-  // Process the message. Skip any that cannot be processed, and do not mark as acknowledged.
-  console.log(`Received message: ${message.message.data}`);
-  const data = JSON.parse(message.message.data);
+  const breaches = await getAllBreachesFromDb();
 
-  if (!(data.breachName && data.hashPrefix && data.hashSuffixes)) {
-    console.error(
-      "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.",
-    );
+  // Process the messages. Skip any that cannot be processed, and do not mark as acknowledged.
+  for (const message of receivedMessages) {
+    console.log(`Received message: ${message.message.data}`);
+    const data = JSON.parse(message.message.data);
 
-    subClient.acknowledge({
-      subscription: formattedSubscription,
-      ackIds: [message.ackId],
-    });
-    return;
-  }
-
-  const { breachName, hashPrefix, hashSuffixes } = data;
-  const breachAlert = getBreachByName(breaches, breachName);
-
-  const {
-    IsVerified,
-    Domain,
-    IsFabricated,
-    IsSpamList,
-    Id: breachId,
-  } = breachAlert;
-
-  // If any of the following conditions are not satisfied:
-  // Do not send the breach alert email! The `logId`s are being used for
-  // logging in case we decide to not send the alert.
-  const emailDeliveryConditions = [
-    {
-      logId: "isNotVerified",
-      condition: !IsVerified,
-    },
-    {
-      logId: "domainEmpty",
-      condition: Domain === "",
-    },
-    {
-      logId: "isFabricated",
-      condition: IsFabricated,
-    },
-    {
-      logId: "isSpam",
-      condition: IsSpamList,
-    },
-  ];
-
-  const unsatisfiedConditions = emailDeliveryConditions.filter(
-    (condition) => condition.condition,
-  );
-
-  const doNotSendEmail = unsatisfiedConditions.length > 0;
-
-  if (doNotSendEmail) {
-    // Get a list of the failed condition `logId`s
-    const conditionLogIds = unsatisfiedConditions
-      .map((condition) => condition.logId)
-      .join(", ");
-
-    console.info("Breach alert email was not sent.", {
-      name: breachAlert.Name,
-      reason: `The following conditions were not satisfied: ${conditionLogIds}.`,
-    });
-
-    subClient.acknowledge({
-      subscription: formattedSubscription,
-      ackIds: [message.ackId],
-    });
-    return;
-  }
-
-  try {
-    const reqHashPrefix = hashPrefix.toLowerCase();
-    const hashes = hashSuffixes.map(
-      (suffix) => reqHashPrefix + suffix.toLowerCase(),
-    );
-
-    const subscribers = await getSubscribersByHashes(hashes);
-    const emailAddresses = await getEmailAddressesByHashes(hashes);
-    const recipients = subscribers.concat(emailAddresses);
-
-    console.info(EmailTemplateType.Notification, {
-      breachAlertName: breachAlert.Name,
-      length: recipients.length,
-    });
-
-    const utmCampaignId = "breach-alert";
-    const notifiedRecipients = [];
-
-    for (const recipient of recipients) {
-      const notifiedSubs = await getNotifiedSubscribersForBreach(breachId);
-
-      // Get subscriber ID from:
-      // - `subscriber_id`: if `email_addresses` record
-      // - `id`: if `subscribers` record
-      const subscriberId = recipient.subscriber_id ?? recipient.id;
-      if (notifiedSubs.includes(subscriberId)) {
-        console.info("Subscriber already notified, skipping: ", subscriberId);
-        subClient.acknowledge({
-          subscription: formattedSubscription,
-          ackIds: [message.ackId],
-        });
-        return;
-      }
-      const { recipientEmail, breachedEmail, signupLanguage } =
-        getAddressesAndLanguageForEmail(recipient);
-
-      /* c8 ignore start */
-      const requestedLanguage = signupLanguage
-        ? acceptedLanguages(signupLanguage)
-        : [];
-      /* c8 ignore stop */
-
-      const availableLanguages = process.env.SUPPORTED_LOCALES.split(",");
-      const supportedLocales = negotiateLanguages(
-        requestedLanguage,
-        availableLanguages,
-        { defaultLocale: "en" },
+    if (!(data.breachName && data.hashPrefix && data.hashSuffixes)) {
+      console.error(
+        "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.",
       );
-
-      await localStorage.run(new Map(), async () => {
-        localStorage.getStore().set("locale", supportedLocales);
-        await (async () => {
-          if (!notifiedRecipients.includes(breachedEmail)) {
-            const data = {
-              breachData: breachAlert,
-              breachedEmail,
-              ctaHref: getEmailCtaHref(utmCampaignId, "dashboard-cta"),
-              heading: getMessage("email-spotted-new-breach"),
-              recipientEmail,
-              subscriberId,
-              supportedLocales,
-              utmCampaign: utmCampaignId,
-            };
-
-            // try to append a new row into the email notifications table
-            // if the append fails, there might be already an entry, stop the script
-            try {
-              await addEmailNotification({
-                breachId,
-                subscriberId,
-                notified: false,
-                email: data.recipientEmail,
-                notificationType: "incident",
-              });
-
-              const emailTemplate = getTemplate(data, breachAlertEmailPartial);
-              const subject = getMessage("breach-alert-subject");
-
-              await sendEmail(data.recipientEmail, subject, emailTemplate);
-            } catch (e) {
-              console.error("Failed to add email notification to table: ", e);
-              setTimeout(process.exit, 1000);
-            }
-
-            // mark email as notified in database
-            // if this call ever fails, stop stop the script with an error
-            try {
-              await markEmailAsNotified(
-                subscriberId,
-                breachId,
-                data.recipientEmail,
-              );
-            } catch (e) {
-              console.error("Failed to mark email as notified: ", e);
-              throw new Error(e);
-            }
-            console.info(
-              "Notified subscriber",
-              subscriberId,
-              " about breachId:",
-              breachId,
-            );
-          }
-        })();
-      });
+      continue;
     }
 
-    subClient.acknowledge({
-      subscription: formattedSubscription,
-      ackIds: [message.ackId],
-    });
-    /* c8 ignore start */
-  } catch (error) {
-    console.error(`Notifying subscribers of breach failed: ${error}`);
+    const { breachName, hashPrefix, hashSuffixes } = data;
+    const breachAlert = getBreachByName(breaches, breachName);
+
+    const {
+      IsVerified,
+      Domain,
+      IsFabricated,
+      IsSpamList,
+      Id: breachId,
+    } = breachAlert;
+
+    // If any of the following conditions are not satisfied:
+    // Do not send the breach alert email! The `logId`s are being used for
+    // logging in case we decide to not send the alert.
+    const emailDeliveryConditions = [
+      {
+        logId: "isNotVerified",
+        condition: !IsVerified,
+      },
+      {
+        logId: "domainEmpty",
+        condition: Domain === "",
+      },
+      {
+        logId: "isFabricated",
+        condition: IsFabricated,
+      },
+      {
+        logId: "isSpam",
+        condition: IsSpamList,
+      },
+    ];
+
+    const unsatisfiedConditions = emailDeliveryConditions.filter(
+      (condition) => condition.condition,
+    );
+
+    const doNotSendEmail = unsatisfiedConditions.length > 0;
+
+    if (doNotSendEmail) {
+      // Get a list of the failed condition `logId`s
+      const conditionLogIds = unsatisfiedConditions
+        .map((condition) => condition.logId)
+        .join(", ");
+
+      console.info("Breach alert email was not sent.", {
+        name: breachAlert.Name,
+        reason: `The following conditions were not satisfied: ${conditionLogIds}.`,
+      });
+
+      subClient.acknowledge({
+        subscription: formattedSubscription,
+        ackIds: [message.ackId],
+      });
+
+      continue;
+    }
+
+    try {
+      const reqHashPrefix = hashPrefix.toLowerCase();
+      const hashes = hashSuffixes.map(
+        (suffix) => reqHashPrefix + suffix.toLowerCase(),
+      );
+
+      const subscribers = await getSubscribersByHashes(hashes);
+      const emailAddresses = await getEmailAddressesByHashes(hashes);
+      const recipients = subscribers.concat(emailAddresses);
+
+      console.info(EmailTemplateType.Notification, {
+        breachAlertName: breachAlert.Name,
+        length: recipients.length,
+      });
+
+      const utmCampaignId = "breach-alert";
+      const notifiedRecipients = [];
+
+      for (const recipient of recipients) {
+        console.info("notify", { recipient });
+
+        const notifiedSubs = await getNotifiedSubscribersForBreach(breachId);
+
+        // Get subscriber ID from:
+        // - `subscriber_id`: if `email_addresses` record
+        // - `id`: if `subscribers` record
+        const subscriberId = recipient.subscriber_id ?? recipient.id;
+        if (notifiedSubs.includes(subscriberId)) {
+          console.info("Subscriber already notified, skipping: ", subscriberId);
+          continue;
+        }
+        const { recipientEmail, breachedEmail, signupLanguage } =
+          getAddressesAndLanguageForEmail(recipient);
+
+        /* c8 ignore start */
+        const requestedLanguage = signupLanguage
+          ? acceptedLanguages(signupLanguage)
+          : [];
+        /* c8 ignore stop */
+
+        const availableLanguages = process.env.SUPPORTED_LOCALES.split(",");
+        const supportedLocales = negotiateLanguages(
+          requestedLanguage,
+          availableLanguages,
+          { defaultLocale: "en" },
+        );
+
+        await localStorage.run(new Map(), async () => {
+          localStorage.getStore().set("locale", supportedLocales);
+          await (async () => {
+            if (!notifiedRecipients.includes(breachedEmail)) {
+              const data = {
+                breachData: breachAlert,
+                breachedEmail,
+                ctaHref: getEmailCtaHref(utmCampaignId, "dashboard-cta"),
+                heading: getMessage("email-spotted-new-breach"),
+                recipientEmail,
+                subscriberId,
+                supportedLocales,
+                utmCampaign: utmCampaignId,
+              };
+
+              // try to append a new row into the email notifications table
+              // if the append fails, there might be already an entry, stop the script
+              try {
+                await addEmailNotification({
+                  breachId,
+                  subscriberId,
+                  notified: false,
+                  email: data.recipientEmail,
+                  notificationType: "incident",
+                });
+
+                const emailTemplate = getTemplate(
+                  data,
+                  breachAlertEmailPartial,
+                );
+                const subject = getMessage("breach-alert-subject");
+
+                await sendEmail(data.recipientEmail, subject, emailTemplate);
+              } catch (e) {
+                console.error("Failed to add email notification to table: ", e);
+                setTimeout(process.exit, 1000);
+              }
+
+              // mark email as notified in database
+              // if this call ever fails, stop stop the script with an error
+              try {
+                await markEmailAsNotified(
+                  subscriberId,
+                  breachId,
+                  data.recipientEmail,
+                );
+              } catch (e) {
+                console.error("Failed to mark email as notified: ", e);
+                throw new Error(e);
+              }
+              notifiedRecipients.push(breachedEmail);
+            }
+          })();
+        });
+      }
+
+      console.info("notified", { length: notifiedRecipients.length });
+
+      subClient.acknowledge({
+        subscription: formattedSubscription,
+        ackIds: [message.ackId],
+      });
+      /* c8 ignore start */
+    } catch (error) {
+      console.error(`Notifying subscribers of breach failed: ${error}`);
+    }
+    /* c8 ignore stop */
   }
-  /* c8 ignore stop */
 }
 
 /* c8 ignore start */
@@ -302,10 +300,7 @@ async function init() {
   await initEmail();
 
   const [subClient, receivedMessages] = await pullMessages();
-  const breaches = await getAllBreachesFromDb();
-  await Promise.allSettled(
-    receivedMessages.map((message) => poll(breaches, subClient, message)),
-  );
+  await poll(subClient, receivedMessages);
 }
 
 if (process.env.NODE_ENV !== "test") {
