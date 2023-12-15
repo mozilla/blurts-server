@@ -81,6 +81,7 @@ living-costs = Životní náklady
 # This string refers to financial loans.
 loan-information = Informace o půjčkách
 login-histories = Historie přihlášení
+loyalty-program-details = Podrobnosti o věrnostním programu
 mac-addresses = MAC adresy
 marital-statuses = Rodinné stavy
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -141,6 +142,7 @@ spouses-names = Jména manželů/manželek
 support-tickets = Tickety technické podpory
 survey-results = Výsledky průzkumů
 taxation-records = Daňové záznamy
+telecommunications-carrier = Telekomunikační operátoři
 time-zones = Časová pásma
 travel-habits = Cestovní návyky
 user-statuses = Stavy uživatelů

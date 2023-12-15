@@ -81,6 +81,7 @@ living-costs = Biaya hidup
 # This string refers to financial loans.
 loan-information = Informasi pinjol
 login-histories = Riwayat masuk
+loyalty-program-details = Detail program loyalitas
 mac-addresses = Alamat MAC
 marital-statuses = Status pernikahan
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -141,6 +142,7 @@ spouses-names = Nama pasangan
 support-tickets = Tiket dukungan
 survey-results = Hasil survei
 taxation-records = Catatan perpajakan
+telecommunications-carrier = Operator telekomunikasi
 time-zones = Zona waktu
 travel-habits = Kebiasaan bepergian
 user-statuses = Status pengguna
