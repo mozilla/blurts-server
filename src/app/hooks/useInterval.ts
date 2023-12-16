@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 "use client";
-// c8 ignore start
+/* c8 ignore start */
 import { MutableRefObject, useEffect, useRef } from "react";
 
 // Based on https://overreacted.io/making-setinterval-declarative-with-react-hooks/
@@ -28,4 +28,4 @@ export function useInterval(callback: () => void, delay: number) {
     }
   }, [delay]);
 }
-// c8 ignore stop
+/* c8 ignore stop */
