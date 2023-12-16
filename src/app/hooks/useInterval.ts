@@ -3,9 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 "use client";
-/* c8 ignore start */
 import { MutableRefObject, useEffect, useRef } from "react";
 
+// Ignored for test coverage, as tests would be too mock-heavy to be useful:
+/* c8 ignore start */
 // Based on https://overreacted.io/making-setinterval-declarative-with-react-hooks/
 export function useInterval(callback: () => void, delay: number) {
   const savedCallback: MutableRefObject<(() => void) | undefined> = useRef();
