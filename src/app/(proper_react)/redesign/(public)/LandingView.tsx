@@ -8,6 +8,7 @@ import { SignUpForm } from "./SignUpForm";
 import { ExtendedReactLocalization } from "../../../hooks/l10n";
 import { PlansTable } from "./PlansTable";
 import { useId } from "react";
+import getPremiumSubscriptionUrl from "../../../functions/server/getPremiumSubscriptionUrl";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -89,7 +90,13 @@ const Plans = (props: Props) => {
       <p className={styles.lead}>
         {props.l10n.getString("landing-premium-plans-lead")}
       </p>
-      <PlansTable aria-labelledby={headingId} />
+      <PlansTable
+        aria-labelledby={headingId}
+        premiumSubscriptionUrl={{
+          monthly: getPremiumSubscriptionUrl({ type: "monthly" }),
+          yearly: getPremiumSubscriptionUrl({ type: "yearly" }),
+        }}
+      />
     </section>
   );
 };
