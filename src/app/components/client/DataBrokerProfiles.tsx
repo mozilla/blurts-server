@@ -10,19 +10,11 @@ import { useL10n } from "../../hooks/l10n";
 import IconChevronDown from "./assets/icon-chevron-down.svg";
 import { useState } from "react";
 import { OnerepScanResultRow } from "knex/types/tables";
-import { DataBrokerNames } from "../../functions/universal/dataBrokerNames";
+import { getDataBrokerName } from "../../functions/universal/dataBrokerNames";
 
 export type Props = {
   data: OnerepScanResultRow[];
 };
-
-function getDataBrokerName(dataBrokerName: string) {
-  const result = DataBrokerNames.find(
-    ({ data_broker }) => data_broker === dataBrokerName,
-  );
-
-  return result?.data_broker_pretty || dataBrokerName;
-}
 
 export const DataBrokerProfiles = (props: Props) => {
   const l10n = useL10n();

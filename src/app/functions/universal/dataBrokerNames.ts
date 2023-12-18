@@ -765,3 +765,11 @@ export const DataBrokerNames: DataBrokerName[] = [
     data_broker_pretty: "411.info",
   },
 ];
+
+export function getDataBrokerName(dataBrokerName: string) {
+  const result = DataBrokerNames.find(
+    ({ data_broker }) => data_broker === dataBrokerName,
+  );
+
+  return result?.data_broker_pretty ?? dataBrokerName;
+}
