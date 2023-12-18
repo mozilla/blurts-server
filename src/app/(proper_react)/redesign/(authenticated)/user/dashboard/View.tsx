@@ -180,10 +180,12 @@ export const View = (props: Props) => {
       dataBreachUnresolvedNum,
       dataBrokerTotalNum,
       dataBrokerAutoFixedNum,
+      dataBrokerManuallyResolvedNum,
       dataBrokerInProgressNum,
       dataBreachFixedDataPointsNum,
       dataBrokerAutoFixedDataPointsNum,
       dataBrokerInProgressDataPointsNum,
+      dataBrokerManuallyResolvedDataPointsNum,
       totalDataPointsNum,
     } = dataSummary;
 
@@ -197,11 +199,13 @@ export const View = (props: Props) => {
             totalDataPointsNum -
             dataBrokerAutoFixedDataPointsNum -
             dataBreachFixedDataPointsNum -
-            dataBrokerInProgressDataPointsNum,
+            dataBrokerInProgressDataPointsNum -
+            dataBrokerManuallyResolvedDataPointsNum,
           data_breach_unresolved_num: dataBreachUnresolvedNum,
           data_broker_unresolved_num:
             dataBrokerTotalNum -
             dataBrokerAutoFixedNum -
+            dataBrokerManuallyResolvedNum -
             dataBrokerInProgressNum,
         },
       );
@@ -215,7 +219,8 @@ export const View = (props: Props) => {
             totalDataPointsNum -
             dataBrokerAutoFixedDataPointsNum -
             dataBreachFixedDataPointsNum -
-            dataBrokerInProgressDataPointsNum,
+            dataBrokerInProgressDataPointsNum -
+            dataBrokerManuallyResolvedDataPointsNum,
           data_breach_unresolved_num: dataBreachUnresolvedNum,
         },
       );
