@@ -80,13 +80,16 @@
     font-weight: 700;
   }
 
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-sm;
+  }
+
   .openInNewTab {
     color: $color-blue-50;
     display: inline-block;
-
-    svg {
-      margin: 0 $spacing-xs;
-    }
   }
 }
 
@@ -105,32 +108,5 @@
     img {
       transform: rotate(180deg);
     }
-  }
-}
-
-// TODO: Style actual data broker logo
-// TEMPORARY LOGO PLACEHOLDER
-.imagePlaceholder {
-  display: block;
-  height: 30px;
-  width: 120px;
-  max-width: 100%;
-  background-color: $color-grey-30;
-  margin: 0 auto $spacing-sm;
-  overflow: hidden;
-
-  &::after {
-    content: attr(data-broker);
-    color: $color-white;
-    font: $text-body-xs;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    padding-left: $spacing-xs;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    position: relative;
   }
 }
