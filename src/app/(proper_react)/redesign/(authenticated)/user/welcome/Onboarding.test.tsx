@@ -17,7 +17,7 @@ jest.mock("next/navigation", () => ({
   usePathname: jest.fn(),
 }));
 
-jest.mock("../../../../../hooks/useGlean");
+jest.mock("../../../../../hooks/useTelemetry");
 jest.mock("../../../../../hooks/locationSuggestions");
 
 it("passes the axe accessibility test suite on step 1", async () => {
