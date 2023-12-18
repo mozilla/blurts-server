@@ -81,6 +81,7 @@ living-costs = Levnadskostnader
 # This string refers to financial loans.
 loan-information = Låneinformation
 login-histories = Inloggningshistorik
+loyalty-program-details = Detaljer för lojalitetsprogram
 mac-addresses = MAC-adresser
 marital-statuses = Civilstånd
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -141,6 +142,7 @@ spouses-names = Makarnas namn
 support-tickets = Support-biljetter
 survey-results = Undersökningsresultat
 taxation-records = Skatteregister
+telecommunications-carrier = Teleoperatörer
 time-zones = Tidszoner
 travel-habits = Resevanor
 user-statuses = Användarstatusar
