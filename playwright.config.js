@@ -20,6 +20,9 @@ export default defineConfig({
   /* Global setup */
   globalSetup: 'src/e2e/global-setup.ts',
 
+  /* Global teardown */
+  globalTeardown: 'src/e2e/global-teardown.ts',
+
   /* Max time in milliseconds the whole test suite can to prevent CI breaking. */
   globalTimeout: 1_800_000,
 
@@ -118,8 +121,7 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     command: 'npm run build; npm start',
-    url: 'http://localhost:6060',
-    reuseExistingServer: process.env.E2E_TEST_ENV === 'local',
+    port: 6060,
     // Building the app can take some time:
     timeout: 600_000,
   }

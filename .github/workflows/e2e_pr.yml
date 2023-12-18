@@ -77,6 +77,8 @@ jobs:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/blurts
           HIBP_KANON_API_TOKEN: ${{ secrets.HIBP_KANON_API_TOKEN }}
           HIBP_API_TOKEN: ${{ secrets.HIBP_API_TOKEN }}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          IS_CRON: true
       - uses: actions/upload-artifact@v3
         if: always()
         with:
