@@ -16,6 +16,7 @@ import Meta, {
   HighRiskBreachDoneStory,
 } from "./HighRiskDataBreach.stories";
 
+jest.mock("../../../../../../../../hooks/useTelemetry");
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
   usePathname: jest.fn(),
