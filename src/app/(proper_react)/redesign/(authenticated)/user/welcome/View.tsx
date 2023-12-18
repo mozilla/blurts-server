@@ -78,7 +78,7 @@ export const View = ({
         previousRoute={previousRoute}
         skipInitialStep={skipInitialStep}
         onGoBack={() => {
-          record("ctaButton", "click", {
+          record("button", "click", {
             button_id: "declined_free_scan",
           });
 

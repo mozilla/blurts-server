@@ -90,7 +90,7 @@ export const EnterInfo = ({
           utm_term: skipInitialStep ? "legacy_user" : "new_user",
         });
       } else {
-        record("ctaButton", "click", {
+        record("button", "click", {
           button_id: "edit_free_scan",
         });
       }
@@ -331,7 +331,7 @@ export const EnterInfo = ({
           // TODO: Add unit test when changing this code:
           /* c8 ignore next */
           onClick={() => {
-            record("ctaButton", "click", {
+            record("button", "click", {
               button_id: "why_do_we_need_this_info",
             });
             explainerDialogState.open();
