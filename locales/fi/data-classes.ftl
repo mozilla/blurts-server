@@ -81,6 +81,7 @@ living-costs = Asumiskustannukset
 # This string refers to financial loans.
 loan-information = Lainatiedot
 login-histories = Kirjautumishistoria
+loyalty-program-details = Kanta-asiakasohjelman tiedot
 mac-addresses = MAC-osoitteet
 marital-statuses = Siviilisäädyt
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -141,6 +142,7 @@ spouses-names = Puolison nimet
 support-tickets = Tukitiketit
 survey-results = Tutkimustulokset
 taxation-records = Verotustiedot
+telecommunications-carrier = Televiestintäoperaattorit
 time-zones = Aikavyöhykkeet
 travel-habits = Matkustustottumukset
 user-statuses = Käyttäjätilatiedot
