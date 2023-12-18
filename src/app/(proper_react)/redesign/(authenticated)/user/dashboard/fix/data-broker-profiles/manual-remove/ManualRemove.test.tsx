@@ -22,6 +22,7 @@ jest.mock("../../../../../../../../functions/server/l10n");
 
 import Meta, { ManualRemoveViewStory } from "./ManualRemove.stories";
 
+jest.mock("../../../../../../../../hooks/useTelemetry");
 jest.mock("../../../../../../../../components/client/DataBrokerImage", () => {
   return {
     // Mock this with an empty React component. Otherwise, tests will complain:
