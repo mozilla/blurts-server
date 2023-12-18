@@ -15,9 +15,6 @@ import {
   getNextGuidedStep,
 } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../../FixView";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../../../../../../../api/utils/auth";
-import { logger } from "../../../../../../../../functions/server/logging";
 
 export type Props = {
   data: StepDeterminationData;
@@ -34,17 +31,6 @@ export function WelcomeToPremiumView(props: Props) {
     props.data.subscriberBreaches,
   );
   const dataPointReduction = getDataPointReduction(summary);
-
-  // MNTOR-2594 - log any users that are on welcome-to-premium page but not subscribed.
-  getServerSession(authOptions)
-    .then((session) => {
-      if (!session?.user.fxa?.subscriptions.includes("monitor")) {
-        logger.error("user_not_subscribed", {
-          page: "welcome-to-premium",
-        });
-      }
-    })
-    .catch((ex) => logger.error(ex));
 
   return (
     <FixView
