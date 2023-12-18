@@ -46,11 +46,13 @@ import Meta, {
   DashboardUsPremiumScanInProgressResolvedBreaches,
   DashboardInvalidPremiumUserNoScanResolvedBreaches,
 } from "./Dashboard.stories";
+import { useTelemetry } from "../../../../../hooks/useTelemetry";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
   usePathname: jest.fn(),
 }));
+jest.mock("../../../../../hooks/useTelemetry");
 
 jest.mock("../../../../../components/client/DataBrokerImage", () => {
   return {
@@ -368,6 +370,30 @@ it("switches between tab panels", async () => {
   expect(tabActionNeededTrigger.getAttribute("aria-selected")).toBe("false");
 });
 
+it("shows consistent counts in the chart on the fixed tab", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const tabFixedTrigger = screen.getByRole("tab", {
+    name: "Fixed",
+  });
+  await user.click(tabFixedTrigger);
+
+  const fixedCounter = 40;
+  const chartElement = screen.getByRole("img", {
+    name: `⁨${fixedCounter}⁩ exposures`,
+  });
+  expect(chartElement).toBeInTheDocument();
+  const chartCaption = screen.getByText(
+    `This chart shows the total exposures that are fixed (⁨${fixedCounter}⁩ out of ⁨81⁩)`,
+  );
+  expect(chartCaption).toBeInTheDocument();
+});
+
 it("shows US users with Premium the Premium badge", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanNoBreaches,
@@ -511,6 +537,77 @@ it("toggles between the product offerings in the premium upsell dialog", async (
     name: "Select monthly plan",
   });
   expect(productMontlyCta).toBeInTheDocument();
+});
+
+it("counts in Glean how often people click the upgrade CTA to purchase the monthly plan", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  const mockedRecord = useTelemetry();
+  render(<ComposedDashboard />);
+
+  // We show a CTA on desktop in the toolbar and in the mobile menu
+  const premiumCtas = screen.queryAllByRole("button", {
+    name: "Upgrade to ⁨Premium⁩",
+  });
+  await user.click(premiumCtas[0]);
+  const productTabMonthly = screen.getByRole("tab", { name: "Monthly" });
+  await user.click(productTabMonthly);
+  const confirmButton = screen.getByRole("link", {
+    name: "Select monthly plan",
+  });
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  await user.click(confirmButton);
+
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "intent_to_purchase_monthly_plan_nav_modal",
+    }),
+  );
+});
+
+it("counts in Glean how often people click the upgrade CTA to purchase the yearly plan", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  const mockedRecord = useTelemetry();
+  render(<ComposedDashboard />);
+
+  // We show a CTA on desktop in the toolbar and in the mobile menu
+  const premiumCtas = screen.queryAllByRole("button", {
+    name: "Upgrade to ⁨Premium⁩",
+  });
+  await user.click(premiumCtas[0]);
+  // Switch to the monthly tab by clicking it...
+  const productTabMonthly = screen.getByRole("tab", { name: "Monthly" });
+  await user.click(productTabMonthly);
+  // ...then back to the yearly tab by pressing the left arrow on the keyboard.
+  await user.keyboard("[ArrowLeft]");
+  const confirmButton = screen.getByRole("link", {
+    name: "Select yearly plan",
+  });
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  await user.click(confirmButton);
+
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "intent_to_purchase_yearly_plan_nav_modal",
+    }),
+  );
 });
 
 it("shows returned free user who has resolved all tasks premium upsell and all fixed description", async () => {

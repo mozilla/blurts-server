@@ -4,7 +4,7 @@
 
 "use client";
 
-import { ReactNode, useRef } from "react";
+import { ReactNode, RefObject, useRef } from "react";
 import Link from "next/link";
 import styles from "./Button.module.scss";
 import { useButton } from "react-aria";
@@ -35,11 +35,10 @@ export const Button = (
     isLoading,
     small,
     wide,
-    onClick,
     ...otherProps
   } = props;
 
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const buttonRef = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
   const { buttonProps } = useButton(otherProps, buttonRef);
 
   const classes = [
@@ -62,11 +61,20 @@ export const Button = (
     .join(" ");
 
   return typeof href === "string" ? (
-    <Link href={href} className={classes} onClick={onClick}>
+    <Link
+      {...buttonProps}
+      ref={buttonRef as RefObject<HTMLAnchorElement>}
+      href={href}
+      className={classes}
+    >
       {children}
     </Link>
   ) : (
-    <button {...buttonProps} ref={buttonRef} className={classes}>
+    <button
+      {...buttonProps}
+      ref={buttonRef as RefObject<HTMLButtonElement>}
+      className={classes}
+    >
       {children}
     </button>
   );

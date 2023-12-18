@@ -10,6 +10,8 @@ import { axe } from "jest-axe";
 
 import Meta, { AutomaticRemoveViewStory } from "./AutomaticRemove.stories";
 
+jest.mock("../../../../../../../../hooks/useTelemetry");
+
 it("passes the axe accessibility test suite", async () => {
   const AutomaticRemoveView = composeStory(AutomaticRemoveViewStory, Meta);
   const { container } = render(<AutomaticRemoveView />);

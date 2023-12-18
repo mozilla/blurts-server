@@ -248,7 +248,6 @@ export const DoughnutChart = (props: Props) => {
                   total_fixed_exposures_num:
                     props.summary.dataBreachFixedDataPointsNum +
                     props.summary.dataBrokerAutoFixedDataPointsNum +
-                    props.summary.dataBrokerInProgressDataPointsNum +
                     props.summary.dataBrokerManuallyResolvedDataPointsNum,
                   total_exposures_num: props.summary.totalDataPointsNum,
                 },
