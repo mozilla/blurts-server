@@ -50,13 +50,7 @@ export const ManualRemoveViewStory: Story = {
   name: "1a. Free scan",
   render: () => {
     return (
-      <Shell
-        l10n={getEnL10nSync()}
-        session={mockedSession}
-        nonce=""
-        monthlySubscriptionUrl=""
-        yearlySubscriptionUrl=""
-      >
+      <Shell l10n={getEnL10nSync()} session={mockedSession} nonce="">
         <StartFreeScanView
           data={{
             countryCode: "us",

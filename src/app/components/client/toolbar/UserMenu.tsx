@@ -33,6 +33,7 @@ import SignOutIcon from "./images/menu-icon-signout.svg";
 
 export type UserMenuProps = {
   user: Session["user"];
+  fxaSettingsUrl: string;
 };
 
 export const UserMenu = (props: UserMenuProps) => {
@@ -76,7 +77,7 @@ export const UserMenu = (props: UserMenuProps) => {
         <b>{props.user.email}</b>
         <a
           className={styles.menuItemCta}
-          href={process.env.FXA_SETTINGS_URL}
+          href={props.fxaSettingsUrl}
           ref={fxaItemRef}
           rel="noopener noreferrer"
           target="_blank"
