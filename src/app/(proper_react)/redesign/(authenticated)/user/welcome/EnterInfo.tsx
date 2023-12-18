@@ -105,7 +105,7 @@ export const EnterInfo = ({
   const userDetailsData = [
     {
       label: l10n.getString("onboarding-enter-details-label-first-name"),
-      key: "firstName",
+      key: "first_name",
       type: "text",
       placeholder: l10n.getString(
         "onboarding-enter-details-placeholder-first-name",
@@ -117,7 +117,7 @@ export const EnterInfo = ({
     },
     {
       label: l10n.getString("onboarding-enter-details-label-last-name"),
-      key: "lastName",
+      key: "last_name",
       type: "text",
       placeholder: l10n.getString(
         "onboarding-enter-details-placeholder-last-name",
@@ -141,7 +141,7 @@ export const EnterInfo = ({
     },
     {
       label: l10n.getString("onboarding-enter-details-label-date-of-birth"),
-      key: "dateOfBirth",
+      key: "date_of_birth",
       type: "date",
       placeholder: "",
       value: dateOfBirth,
@@ -163,9 +163,6 @@ export const EnterInfo = ({
     if (requestingScan) {
       return;
     }
-    record("ctaButton", "click", {
-      button_id: "confirmed_free_scan",
-    });
     setRequestingScan(true);
 
     const { city, state } = getDetailsFromLocationString(location);
@@ -301,7 +298,12 @@ export const EnterInfo = ({
           variant="primary"
           // TODO: Figure out how to intercept the fetch request in a test:
           /* c8 ignore next */
-          onPress={() => handleRequestScan()}
+          onPress={() => {
+            record("ctaButton", "click", {
+              button_id: "confirmed_free_scan",
+            });
+            handleRequestScan();
+          }}
           autoFocus={true}
           className={styles.startButton}
           isLoading={requestingScan}

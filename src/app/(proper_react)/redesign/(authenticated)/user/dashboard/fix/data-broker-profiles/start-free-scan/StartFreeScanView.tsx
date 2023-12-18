@@ -59,7 +59,7 @@ export function StartFreeScanView(props: Props) {
               href={process.env.NEXT_PUBLIC_HOW_IT_WORKS_SUMO_URL}
               target="_blank"
               onClick={() => {
-                record("ctaButton", "click", {
+                record("link", "click", {
                   button_id: "returning_user_info_scan_learn_more",
                 });
               }}

@@ -47,7 +47,7 @@ export const GetStarted = (props: Props) => {
           {...buttonProps}
           ref={triggerRef}
           onClick={() => {
-            record("ctaButton", "click", {
+            record("button", "click", {
               button_id: "welcome_data_protection",
             });
             explainerDialogState.open();
