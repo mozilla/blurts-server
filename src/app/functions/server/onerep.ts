@@ -468,7 +468,8 @@ export async function getProfilesStats(
 
   const profileStats: ProfileStats = await response.json();
 
-  // cache results in map
+  // cache results in map, with a flush hack to keep the size low
+  if (profileStatsCache.size > 5) profileStatsCache.clear();
   profileStatsCache.set(queryParamsString, profileStats);
   return profileStats;
 }
