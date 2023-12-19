@@ -140,42 +140,64 @@
   }
 }
 
-.valueProposition {
-  background: $color-grey-05;
-  @media screen and (min-width: $screen-lg) {
-    gap: $layout-xl;
-    padding-inline: $layout-lg;
-
-    @media screen and (min-width: $screen-xl) {
-      padding-inline: $layout-xl;
-    }
-  }
-
+.valuePropositionWrapper {
   .item {
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
     align-items: center;
     justify-content: space-between;
-    padding-inline: $layout-lg;
-    padding-block: $layout-sm;
-    gap: $layout-2xl;
+    padding: $spacing-2xl $spacing-md;
+    gap: $spacing-lg;
+
+    &.grayBg {
+      background: $color-grey-05;
+    }
+
+    @media screen and (min-width: $screen-md) {
+      padding-inline: $layout-lg;
+      padding-block: $layout-sm;
+      flex-direction: row;
+      gap: $spacing-xl;
+
+      &.reverseRow {
+        flex-direction: row-reverse;
+      }
+
+      @media screen and (min-width: $screen-lg) {
+        padding-inline: $layout-lg;
+        gap: $layout-xl;
+
+        @media screen and (min-width: $screen-xl) {
+          padding-inline: $layout-xl;
+        }
+      }
+    }
 
     span {
-      flex: 1.3;
       gap: $spacing-md;
       display: flex;
       flex-direction: column;
+
+      @media screen and (min-width: $screen-md) {
+        flex: 1.3;
+      }
+
       h2 {
         font: $text-title-xs;
         font-family: var(--font-inter);
         font-weight: 600;
       }
+
       p {
         font: $text-body-lg;
       }
     }
+
     .illustration {
-      flex: 1;
+      width: 100%;
+      @media screen and (min-width: $screen-md) {
+        flex: 1;
+      }
     }
   }
 }

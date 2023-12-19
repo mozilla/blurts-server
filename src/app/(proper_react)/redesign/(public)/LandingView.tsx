@@ -46,8 +46,8 @@ export const View = (props: Props) => {
         </div>
       </header>
 
-      <div className={styles.valueProposition}>
-        <div className={styles.item}>
+      <div className={styles.valuePropositionWrapper}>
+        <div className={`${styles.item} ${styles.grayBg}`}>
           <span>
             <h2>
               {props.l10n.getString("landing-all-value-prop-fix-exposures")}
@@ -66,13 +66,8 @@ export const View = (props: Props) => {
             <ScanningForExposures {...props} />
           </div>
         </div>
-      </div>
 
-      <div className={styles.valueProposition}>
-        <div className={styles.item}>
-          <div className={styles.illustration}>
-            <ExposureExampleImage {...props} />
-          </div>
+        <div className={`${styles.item} ${styles.reverseRow}`}>
           <span>
             <h2>
               {props.l10n.getString("landing-all-value-prop-info-at-risk")}
@@ -87,6 +82,9 @@ export const View = (props: Props) => {
               signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
             />
           </span>
+          <div className={styles.illustration}>
+            <ExposureExampleImage {...props} />
+          </div>
         </div>
       </div>
 
