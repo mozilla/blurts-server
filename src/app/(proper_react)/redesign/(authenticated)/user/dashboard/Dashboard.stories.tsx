@@ -148,13 +148,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
 
   return (
     <CountryCodeProvider countryCode={props.countryCode}>
-      <Shell
-        l10n={getEnL10nSync()}
-        session={mockedSession}
-        nonce=""
-        monthlySubscriptionUrl=""
-        yearlySubscriptionUrl=""
-      >
+      <Shell l10n={getEnL10nSync()} session={mockedSession} nonce="">
         <DashboardEl
           user={user}
           userBreaches={breaches}
@@ -165,8 +159,9 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           })}
           isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
           enabledFeatureFlags={["FreeBrokerScan", "PremiumBrokerRemoval"]}
-          monthlySubscriptionUrl={""}
-          yearlySubscriptionUrl={""}
+          monthlySubscriptionUrl=""
+          yearlySubscriptionUrl=""
+          fxaSettingsUrl=""
           scanCount={scanCount}
         />
       </Shell>

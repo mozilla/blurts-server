@@ -55,10 +55,13 @@ import {
 import { getLocale } from "../../../functions/universal/getLocale";
 import { Button } from "../../../components/server/Button";
 import { signIn } from "next-auth/react";
-import getPremiumSubscriptionUrl from "../../../functions/server/getPremiumSubscriptionUrl";
 
 export type Props = {
   "aria-labelledby": string;
+  premiumSubscriptionUrl: {
+    monthly: string;
+    yearly: string;
+  };
 };
 
 const monthlyPriceAnnualBilling = 13.37;
@@ -131,11 +134,12 @@ export const PlansTable = (props: Props) => {
                       {l10n.getString(
                         "landing-premium-plans-table-price-plus-yearly-discount",
                         {
-                          discountPercentage:
+                          discountPercentage: Math.floor(
                             ((monthlyPriceMonthlyBilling -
                               monthlyPriceAnnualBilling) *
                               100) /
-                            monthlyPriceMonthlyBilling,
+                              monthlyPriceMonthlyBilling,
+                          ),
                         },
                       )}
                     </em>
@@ -156,7 +160,7 @@ export const PlansTable = (props: Props) => {
             </p>
             <Button
               variant="primary"
-              href={getPremiumSubscriptionUrl({ type: billingPeriod })}
+              href={props.premiumSubscriptionUrl[billingPeriod]}
               className={styles.cta}
             >
               {l10n.getString("landing-premium-plans-table-cta-plus-label")}
@@ -694,11 +698,12 @@ export const PlansTable = (props: Props) => {
                           {l10n.getString(
                             "landing-premium-plans-table-price-plus-yearly-discount",
                             {
-                              discountPercentage:
+                              discountPercentage: Math.floor(
                                 ((monthlyPriceMonthlyBilling -
                                   monthlyPriceAnnualBilling) *
                                   100) /
-                                monthlyPriceMonthlyBilling,
+                                  monthlyPriceMonthlyBilling,
+                              ),
                             },
                           )}
                         </em>
@@ -719,7 +724,7 @@ export const PlansTable = (props: Props) => {
                 </p>
                 <Button
                   variant="primary"
-                  href={getPremiumSubscriptionUrl({ type: billingPeriod })}
+                  href={props.premiumSubscriptionUrl[billingPeriod]}
                 >
                   {l10n.getString("landing-premium-plans-table-cta-plus-label")}
                 </Button>
