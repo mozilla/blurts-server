@@ -81,13 +81,15 @@ export const EnterInfo = ({
 
   const confirmDialogState = useOverlayTriggerState({
     onOpenChange: (isOpen) => {
+      if (getInvalidFields().length > 0) {
+        return;
+      }
+
       if (isOpen) {
-        record("page", "view", {
-          utm_campaign: "broker_scan",
-          utm_content: "enter_scan_info_confirmation_modal",
-          // We are not explicitly testing telemetry
-          /* c8 ignore next */
-          utm_term: skipInitialStep ? "legacy_user" : "new_user",
+        // TODO: Uncomment popup_id after it has been added to metrics.yaml
+        // in https://github.com/mozilla/blurts-server/pull/3913.
+        record("popup", "view", {
+          // popup_id: "enter_scan_info_confirmation_modal",
         });
       } else {
         record("button", "click", {
