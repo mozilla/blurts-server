@@ -19,11 +19,9 @@ export const SubscriptionCheck = () => {
   }, []);
 
   // Poll for the session every minute.
-  /* c8 ignore next */
+  /* c8 ignore next 2 */
   useInterval(() => {
     void update();
   }, 1000 * 60);
-  /* c8 ignore stop */
-
   return <></>;
 };
