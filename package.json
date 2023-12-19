@@ -48,13 +48,13 @@
     "npm": "10.2.4"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.470.0",
-    "@aws-sdk/lib-storage": "^3.470.0",
+    "@aws-sdk/client-s3": "^3.474.0",
+    "@aws-sdk/lib-storage": "^3.474.0",
     "@fluent/bundle": "^0.18.0",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
     "@google-cloud/logging-winston": "^6.0.0",
-    "@google-cloud/pubsub": "^4.0.7",
+    "@google-cloud/pubsub": "^4.1.0",
     "@grpc/grpc-js": "1.9.13",
     "@leeoniya/ufuzzy": "^1.0.13",
     "@mozilla/glean": "3.0.0",
