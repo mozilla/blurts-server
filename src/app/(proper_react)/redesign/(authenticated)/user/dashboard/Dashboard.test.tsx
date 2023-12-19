@@ -370,6 +370,30 @@ it("switches between tab panels", async () => {
   expect(tabActionNeededTrigger.getAttribute("aria-selected")).toBe("false");
 });
 
+it("shows consistent counts in the chart on the fixed tab", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const tabFixedTrigger = screen.getByRole("tab", {
+    name: "Fixed",
+  });
+  await user.click(tabFixedTrigger);
+
+  const fixedCounter = 40;
+  const chartElement = screen.getByRole("img", {
+    name: `⁨${fixedCounter}⁩ exposures`,
+  });
+  expect(chartElement).toBeInTheDocument();
+  const chartCaption = screen.getByText(
+    `This chart shows the total exposures that are fixed (⁨${fixedCounter}⁩ out of ⁨81⁩)`,
+  );
+  expect(chartCaption).toBeInTheDocument();
+});
+
 it("shows US users with Premium the Premium badge", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanNoBreaches,
