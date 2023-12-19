@@ -22,8 +22,6 @@ export type Props = {
   session: Session;
   children: ReactNode;
   nonce: string;
-  monthlySubscriptionUrl: string;
-  yearlySubscriptionUrl: string;
 };
 
 export const Shell = (props: Props) => {
@@ -41,6 +39,7 @@ export const Shell = (props: Props) => {
         session={props.session}
         monthlySubscriptionUrl={monthlySubscriptionUrl}
         yearlySubscriptionUrl={yearlySubscriptionUrl}
+        fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
       >
         <div className={styles.wrapper}>
           <nav

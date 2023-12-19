@@ -10,6 +10,7 @@ import { useL10n } from "../../hooks/l10n";
 import IconChevronDown from "./assets/icon-chevron-down.svg";
 import { useState } from "react";
 import { OnerepScanResultRow } from "knex/types/tables";
+import { getDataBrokerName } from "../../functions/universal/dataBrokerNames";
 import { OpenInNew } from "../server/Icons";
 
 export type Props = {
@@ -63,12 +64,10 @@ export const DataBrokerProfileCard = (props: DataBrokerProfileCardProps) => {
 
   return (
     <div className={styles.dataBrokerProfileCard}>
-      <div
-        data-broker={props.data.data_broker}
-        className={styles.imagePlaceholder}
-      />
-      {/* TODO: Add logic to show unique image per data broker */}
-      {/* <Image src={} alt={props.data.data_broker} /> */}
+      <span className={styles.dataBrokerName}>
+        {getDataBrokerName(props.data.data_broker)}
+      </span>
+
       <a href={props.data.link} target="_blank">
         {l10n.getString(
           "fix-flow-data-broker-profiles-view-data-broker-profiles-view-profile",

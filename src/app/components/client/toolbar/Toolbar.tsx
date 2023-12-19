@@ -16,6 +16,7 @@ export type Props = {
   user: Session["user"];
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  fxaSettingsUrl: string;
   children?: ReactNode;
 };
 
@@ -33,7 +34,9 @@ export const Toolbar = (props: Props) => {
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
         />
         <AppPicker />
-        {props.user && <UserMenu user={props.user} />}
+        {props.user && (
+          <UserMenu user={props.user} fxaSettingsUrl={props.fxaSettingsUrl} />
+        )}
       </div>
     </nav>
   );

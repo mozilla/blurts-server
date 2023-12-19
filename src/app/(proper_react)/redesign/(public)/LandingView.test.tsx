@@ -194,6 +194,63 @@ describe("When Premium is available", () => {
     expect(queryByText(pricingTable, /Save (.+?)%/)).not.toBeInTheDocument();
   });
 
+  it("rounds the percentage savings of the yearly plan down (i.e. under- rather than overpromise) to whole numbers", async () => {
+    const user = userEvent.setup();
+
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+    // We limit our queries to the pricing table, so as not to match similar
+    // elements that are also present in the pricing _cards_, i.e. the elements
+    // shown on small screens:
+    const pricingTable = screen.getByRole("grid");
+
+    // Regular expression:
+    //
+    //   Save   Starts with the characters `Save `,
+    //
+    //   (.+?)  followed by one or more (`+`) arbitrary characters (`.`), until
+    //          the next part of the regular expression matches…
+    //
+    //   %      …which is a single `%` character.
+    //
+    // All that combines to a string like "Save 13.37%".
+    const savingsEl = getByText(pricingTable, /Save (.+?)%/);
+    // Regular expressions:
+    //
+    //   \$     Starts with the character `$`,
+    //
+    //   (.+?)  followed by one or more (`+`) arbitrary characters (`.`), until
+    //          the next part of the regular expression matches…
+    //
+    //   \/mo.  …which consists of the characters `/mo.`.
+    //
+    // All that combines to a string like "$13.37/mo.".
+    const priceRegex = /\$(.+?)\/mo./;
+    const yearlyPriceEl = getByText(pricingTable, priceRegex);
+    const yearlyPrice = Number.parseFloat(
+      yearlyPriceEl.textContent!.split("$")[1].split("/")[0],
+    );
+    const monthlyToggle = getByRole(pricingTable, "radio", { name: "Monthly" });
+    await user.click(monthlyToggle);
+    const monthlyPriceEl = getByText(pricingTable, priceRegex);
+    const monthlyPrice = Number.parseFloat(
+      monthlyPriceEl.textContent!.split("$")[1].split("/")[0],
+    );
+
+    expect(savingsEl.textContent).not.toMatch(".");
+    expect(
+      Number.parseInt(
+        savingsEl
+          .textContent!.split("%")[0]
+          .split("Save ")[1]
+          // Replace the special characters Fluent inserts around variables:
+          .replace("⁨", "")
+          .replace("⁩", ""),
+        10,
+      ),
+    ).toBeLessThanOrEqual(((monthlyPrice - yearlyPrice) * 100) / monthlyPrice);
+  });
+
   it("can move to the subscribe button with the keyboard", async () => {
     const user = userEvent.setup();
 
