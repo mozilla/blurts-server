@@ -19,7 +19,6 @@ export interface Props {
   isLoading?: boolean;
   small?: boolean;
   wide?: boolean;
-  onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 }
 
 export const Button = (

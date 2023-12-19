@@ -14,7 +14,6 @@ export type Props = {
   title?: ReactNode;
   illustration?: ReactNode;
   variant?: "vertical" | "horizontal";
-  onKeyDown?: (event: KeyboardEvent) => void;
 } & AriaDialogProps;
 
 export const Dialog = ({
