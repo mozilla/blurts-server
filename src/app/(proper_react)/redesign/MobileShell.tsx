@@ -70,7 +70,7 @@ export const MobileShell = (props: Props) => {
         </div>
         <div className={styles.headerMiddle}>
           <Link
-            href="/"
+            href="/redesign/user/dashboard"
             className={styles.homeLink}
             onClick={() => {
               recordTelemetry("ctaButton", "click", {
