@@ -430,18 +430,29 @@ export async function getAllScanResults(
   return scanPagesAll.flat();
 }
 
+// Local instance map to cache results to prevent excessive API requests
+// Would be nice to share this cache with other pod via Redis in the future
+const profileStatsCache = new Map<string, ProfileStats>();
 export async function getProfilesStats(
   from: Date,
   to?: Date,
-): Promise<ProfileStats> {
-  const queryParams = new URLSearchParams({
-    from: from.toISOString().substring(0, 10),
-    to: to
-      ? to.toISOString().substring(0, 10)
-      : new Date().toISOString().substring(0, 10),
-  });
+): Promise<ProfileStats | undefined> {
+  const fromDateString = from.toISOString().substring(0, 10);
+  const toDateString = to
+    ? to.toISOString().substring(0, 10)
+    : new Date().toISOString().substring(0, 10);
+
+  const queryParamsString = new URLSearchParams({
+    from: fromDateString,
+    to: toDateString,
+  }).toString();
+
+  // check for cache map first
+  if (profileStatsCache.has(queryParamsString))
+    return profileStatsCache.get(queryParamsString);
+
   const response: Response = await onerepFetch(
-    `/stats/profiles?${queryParams.toString()}`,
+    `/stats/profiles?${queryParamsString}`,
     {
       method: "GET",
     },
@@ -456,5 +467,8 @@ export async function getProfilesStats(
   }
 
   const profileStats: ProfileStats = await response.json();
+
+  // cache results in map
+  profileStatsCache.set(queryParamsString, profileStats);
   return profileStats;
 }
