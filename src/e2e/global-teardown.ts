@@ -2,10 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import https from "https";
 import { readFileSync, writeFileSync } from "fs";
 import { CustomTestResult } from "../../E2EReporter";
 
-function globalTearDown() {
+async function globalTearDown() {
   // check env for cron, teardown is only needed for teardown run
   if (process.env.IS_CRON) {
     // get data from e2e-reports branch files -- these are api calls
@@ -16,7 +17,7 @@ function globalTearDown() {
       newFullReportJson,
       newFailReportJson,
       newFlakeReportJson,
-    } = getExistingAndNewReports();
+    } = await getExistingAndNewReports();
 
     // merge new and existing reports
     existingFullReports.push(newFullReportJson as unknown as CustomTestResult);
@@ -46,7 +47,7 @@ function globalTearDown() {
   }
 }
 
-function getExistingAndNewReports() {
+async function getExistingAndNewReports() {
   let existingFullReports: CustomTestResult[] = [];
   let existingFlakeReports: CustomTestResult[] = [];
   let existingFailedReports: CustomTestResult[] = [];
@@ -55,10 +56,16 @@ function getExistingAndNewReports() {
   let newFailReportJson: CustomTestResult[] = [];
 
   try {
-    // existing files
-    const fullData = readFileSync("./full_test_report.json", "utf-8");
-    const flakeData = readFileSync("./flake_test_report.json", "utf-8");
-    const failData = readFileSync("./failed_test_report.json", "utf-8");
+    // fetch existing reports from repo
+    existingFullReports = (await fetchExistingReport(
+      "https://raw.githubusercontent.com/mozilla/blurts-server/e2e-report/full_test_report.json",
+    )) as CustomTestResult[];
+    existingFlakeReports = (await fetchExistingReport(
+      "https://raw.githubusercontent.com/mozilla/blurts-server/e2e-report/flake_test_report.json",
+    )) as CustomTestResult[];
+    existingFailedReports = (await fetchExistingReport(
+      "https://raw.githubusercontent.com/mozilla/blurts-server/e2e-report/failed_test_report.json",
+    )) as CustomTestResult[];
 
     // new test generated files
     const newFullReport = readFileSync("./new_full_test_report.json", "utf-8");
@@ -71,9 +78,7 @@ function getExistingAndNewReports() {
       "utf-8",
     );
 
-    existingFullReports = JSON.parse(fullData ?? "[]");
-    existingFlakeReports = JSON.parse(flakeData ?? "[]");
-    existingFailedReports = JSON.parse(failData ?? "[]");
+    // parse new test reports
     newFullReportJson = JSON.parse(newFullReport ?? "[]");
     newFlakeReportJson = JSON.parse(newFlakeReport ?? "[]");
     newFailReportJson = JSON.parse(newFailReport ?? "[]");
@@ -97,6 +102,31 @@ function getExistingAndNewReports() {
       newFailReportJson,
     };
   }
+}
+
+async function fetchExistingReport(url: string) {
+  return new Promise((resolve, reject) => {
+    https
+      .get(url, (response) => {
+        let data = "";
+
+        response.on("data", (chunk) => {
+          data += chunk;
+        });
+
+        response.on("end", () => {
+          try {
+            const parsedData = JSON.parse(data);
+            resolve(parsedData);
+          } catch (err) {
+            reject(err);
+          }
+        });
+      })
+      .on("error", (err) => {
+        reject(err);
+      });
+  });
 }
 
 export default globalTearDown;
