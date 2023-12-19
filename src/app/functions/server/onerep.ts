@@ -86,10 +86,6 @@ export type ScanResult = {
   created_at: ISO8601DateString;
   updated_at: ISO8601DateString;
 };
-export type ListScanResultsResponse = {
-  meta: OneRepMeta;
-  data: ScanResult[];
-};
 export type ProfileStats = {
   created: number;
   deleted: number;
