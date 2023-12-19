@@ -54,7 +54,7 @@ export const View = ({
 
     record("page", "view", {
       utm_campaign: "broker_scan",
-      utm_content: pageName,
+      utm_source: pageName,
       utm_term: skipInitialStep ? "legacy_user" : "new_user",
     });
   }, [currentStep, record, skipInitialStep]);
