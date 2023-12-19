@@ -15,7 +15,6 @@ import { ExtendedReactLocalization } from "../../hooks/l10n";
 import { GaScript } from "./GaScript";
 import getPremiumSubscriptionUrl from "../../functions/server/getPremiumSubscriptionUrl";
 import { SubscriptionCheck } from "../../components/client/SubscriptionCheck";
-import { useTelemetry } from "../../hooks/useTelemetry";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -28,7 +27,6 @@ export type Props = {
 
 export const Shell = (props: Props) => {
   const l10n = props.l10n;
-  const record = useTelemetry();
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
@@ -47,15 +45,7 @@ export const Shell = (props: Props) => {
             className={styles.mainMenu}
             aria-label={l10n.getString("main-nav-label")}
           >
-            <Link
-              href="/redesign/user/dashboard"
-              className={styles.homeLink}
-              onClick={() => {
-                record("ctaButton", "click", {
-                  button_id: "monitor_logo",
-                });
-              }}
-            >
+            <Link href="/redesign/user/dashboard" className={styles.homeLink}>
               <Image
                 src={monitorLogo}
                 alt={l10n.getString("main-nav-link-home-label")}
@@ -68,11 +58,6 @@ export const Shell = (props: Props) => {
                 <PageLink
                   href="/redesign/user/dashboard"
                   activeClassName={styles.isActive}
-                  onClick={() => {
-                    record("ctaButton", "click", {
-                      button_id: "navigation_dashboard",
-                    });
-                  }}
                 >
                   {l10n.getString("main-nav-link-dashboard-label")}
                 </PageLink>
@@ -81,11 +66,6 @@ export const Shell = (props: Props) => {
                 <a
                   href="https://support.mozilla.org/kb/firefox-monitor-faq"
                   title={l10n.getString("main-nav-link-faq-tooltip")}
-                  onClick={() => {
-                    record("ctaButton", "click", {
-                      button_id: "navigation_faq",
-                    });
-                  }}
                 >
                   {l10n.getString("main-nav-link-faq-label")}
                 </a>

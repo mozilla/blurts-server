@@ -15,6 +15,7 @@ import { CloseBigIcon, ListIcon } from "../../components/server/Icons";
 import { UserMenu } from "../../components/client/toolbar/UserMenu";
 import { useL10n } from "../../hooks/l10n";
 import { PageLink } from "./PageLink";
+import { useTelemetry } from "../../hooks/useTelemetry";
 
 export type Props = {
   session: Session;
@@ -26,6 +27,7 @@ export type Props = {
 export const MobileShell = (props: Props) => {
   const l10n = useL10n();
   const [isExpanded, setIsExpanded] = useState(false);
+  const recordTelemetry = useTelemetry();
 
   return (
     <div
@@ -66,7 +68,15 @@ export const MobileShell = (props: Props) => {
           </button>
         </div>
         <div className={styles.headerMiddle}>
-          <Link href="/" className={styles.homeLink}>
+          <Link
+            href="/"
+            className={styles.homeLink}
+            onClick={() => {
+              recordTelemetry("ctaButton", "click", {
+                button_id: "monitor_logo",
+              });
+            }}
+          >
             <Image
               src={monitorLogo}
               alt={l10n.getString("main-nav-link-home-label")}
@@ -89,6 +99,11 @@ export const MobileShell = (props: Props) => {
                 <PageLink
                   href="/redesign/user/dashboard"
                   activeClassName={styles.isActive}
+                  onClick={() => {
+                    recordTelemetry("ctaButton", "click", {
+                      button_id: "navigation_dashboard",
+                    });
+                  }}
                 >
                   {l10n.getString("main-nav-link-dashboard-label")}
                 </PageLink>
@@ -97,6 +112,11 @@ export const MobileShell = (props: Props) => {
                 <a
                   href="https://support.mozilla.org/kb/firefox-monitor-faq"
                   title={l10n.getString("main-nav-link-faq-tooltip")}
+                  onClick={() => {
+                    recordTelemetry("ctaButton", "click", {
+                      button_id: "navigation_faq",
+                    });
+                  }}
                 >
                   {l10n.getString("main-nav-link-faq-label")}
                 </a>
