@@ -565,7 +565,7 @@ it("counts in Glean how often people click the upgrade CTA to purchase the month
   await user.click(confirmButton);
 
   expect(mockedRecord).toHaveBeenCalledWith(
-    "ctaButton",
+    "upgradeIntent",
     "click",
     expect.objectContaining({
       button_id: "intent_to_purchase_monthly_plan_nav_modal",
@@ -602,7 +602,7 @@ it("counts in Glean how often people click the upgrade CTA to purchase the yearl
   await user.click(confirmButton);
 
   expect(mockedRecord).toHaveBeenCalledWith(
-    "ctaButton",
+    "upgradeIntent",
     "click",
     expect.objectContaining({
       button_id: "intent_to_purchase_yearly_plan_nav_modal",
