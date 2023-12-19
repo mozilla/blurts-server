@@ -89,6 +89,16 @@ export type ListScanResultsResponse = {
   meta: OneRepMeta;
   data: ScanResult[];
 };
+export type ProfileStats = {
+  created: number;
+  deleted: number;
+  activated: number;
+  reactivated: number;
+  deactivated: number;
+  total_active: number;
+  total_inactive: number;
+  total: number;
+};
 
 async function onerepFetch(
   path: string,
@@ -418,4 +428,33 @@ export async function getAllScanResults(
   }
 
   return scanPagesAll.flat();
+}
+
+export async function getProfilesStats(
+  from: Date,
+  to?: Date,
+): Promise<ProfileStats> {
+  const queryParams = new URLSearchParams({
+    from: from.toISOString().substring(0, 10),
+    to: to
+      ? to.toISOString().substring(0, 10)
+      : new Date().toISOString().substring(0, 10),
+  });
+  const response: Response = await onerepFetch(
+    `/stats/profiles?${queryParams.toString()}`,
+    {
+      method: "GET",
+    },
+  );
+  if (!response.ok) {
+    logger.error(
+      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
+    );
+    throw new Error(
+      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
+    );
+  }
+
+  const profileStats: ProfileStats = await response.json();
+  return profileStats;
 }
