@@ -81,7 +81,7 @@ living-costs = 生活成本
 # This string refers to financial loans.
 loan-information = 貸款資訊
 login-histories = 登入紀錄
-loyalty-program-details = 常客計劃詳細資訊
+loyalty-program-details = 會員方案詳細資訊
 mac-addresses = MAC 地址
 marital-statuses = 婚姻狀態
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
