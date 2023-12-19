@@ -46,7 +46,7 @@ const meta: Meta<typeof StartFreeScanView> = {
 export default meta;
 type Story = StoryObj<typeof StartFreeScanView>;
 
-export const ManualRemoveViewStory: Story = {
+export const StartFreeScanViewStory: Story = {
   name: "1a. Free scan",
   render: () => {
     return (
