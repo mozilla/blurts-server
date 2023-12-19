@@ -57,10 +57,7 @@ export const View = ({
       utm_content: pageName,
       utm_term: skipInitialStep ? "legacy_user" : "new_user",
     });
-
-    // Only capture telemetry on step changes.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentStep]);
+  }, [currentStep, record, skipInitialStep]);
 
   const currentComponent =
     currentStep === "findExposures" ? (
