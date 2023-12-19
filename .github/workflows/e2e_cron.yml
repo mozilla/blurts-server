@@ -83,4 +83,4 @@ jobs:
           git checkout -b e2e-report
           git add .
           git commit -m "Chore (automated): update dashboard data $(date)"
-          git push origin e2e-report
+          git push
