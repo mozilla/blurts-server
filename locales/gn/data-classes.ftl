@@ -81,6 +81,7 @@ living-costs = Tekove repy
 # This string refers to financial loans.
 loan-information = Ñemba’eporu marandu
 login-histories = Tembiapo ñepyrũ rembiasakue
+loyalty-program-details = Mba’emimi tembiaporape jeporumeme rehegua
 mac-addresses = MAC kundaharape
 marital-statuses = Emendávapa
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -141,6 +142,7 @@ spouses-names = Mendare réra
 support-tickets = Pytyvõ jerure
 survey-results = Ñeporandúgui osẽva
 taxation-records = Registro fiscal
+telecommunications-carrier = Momaranduhára ñemboguataha
 time-zones = Tendaguasu aravogua
 travel-habits = Jehokuévo ejapomeméva
 user-statuses = Poruhára rekotee
