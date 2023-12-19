@@ -25,6 +25,7 @@ if (APP_ENV === "heroku") {
 const RUNTIME_CONFIG = {
   client: "postgresql",
   connection: connectionObj,
+  pool: { min: 0, max: 5 }
 };
 
 // For tests, use test-DATABASE
