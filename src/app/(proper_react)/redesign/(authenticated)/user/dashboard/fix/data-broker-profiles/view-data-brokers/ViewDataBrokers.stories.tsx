@@ -93,13 +93,7 @@ const ViewWrapper = (props: ViewWrapperProps) => {
   };
 
   return (
-    <Shell
-      l10n={getEnL10nSync()}
-      session={mockedSession}
-      nonce=""
-      monthlySubscriptionUrl=""
-      yearlySubscriptionUrl=""
-    >
+    <Shell l10n={getEnL10nSync()} session={mockedSession} nonce="">
       <ViewDataBrokersView
         data={{
           latestScanData: scanData,

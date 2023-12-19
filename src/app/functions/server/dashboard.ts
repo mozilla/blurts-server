@@ -42,8 +42,10 @@ export interface DashboardSummary {
   dataBrokerTotalNum: number;
   /** total number of data points from user data broker scanned results */
   dataBrokerTotalDataPointsNum: number;
-  /** total number of fixed scans from user data broker scanned results */
+  /** total number of auto-fixed scans from user data broker scanned results */
   dataBrokerAutoFixedNum: number;
+  /** total number of manually fixed scans from user data broker scanned results */
+  dataBrokerManuallyResolvedNum: number;
   /** total number of fixed data points from user data broker scanned results */
   dataBrokerAutoFixedDataPointsNum: number;
   /** total number of in-progress scans from user data broker scanned results */
@@ -106,6 +108,7 @@ export function getDashboardSummary(
     dataBrokerAutoFixedDataPointsNum: 0,
     dataBrokerInProgressNum: 0,
     dataBrokerInProgressDataPointsNum: 0,
+    dataBrokerManuallyResolvedNum: 0,
     dataBrokerManuallyResolvedDataPointsNum: 0,
     totalDataPointsNum: 0,
     allDataPoints: {
@@ -202,6 +205,8 @@ export function getDashboardSummary(
         summary.dataBrokerInProgressNum++;
       } else if (isAutoFixed) {
         summary.dataBrokerAutoFixedNum++;
+      } else if (isManuallyResolved) {
+        summary.dataBrokerManuallyResolvedNum++;
       }
       // total data points: add email, phones, addresses, relatives, full name (1)
       const dataPointsIncrement =
