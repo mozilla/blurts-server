@@ -25,6 +25,7 @@ import type { ReactNode, Key } from "react";
 
 import { Popover } from "../Popover";
 import { useL10n } from "../../../hooks/l10n";
+import { useTelemetry } from "../../../hooks/useTelemetry";
 import styles from "./UserMenu.module.scss";
 import OpenInIcon from "./images/menu-icon-open-in.svg";
 import SettingsIcon from "./images/menu-icon-settings.svg";
@@ -142,6 +143,7 @@ type MenuTriggerComponentProps = MenuTriggerProps &
 
 function MenuTrigger(props: MenuTriggerComponentProps) {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
 
   const state = useMenuTriggerState(props);
   const ref = useRef(null);
@@ -160,7 +162,12 @@ function MenuTrigger(props: MenuTriggerComponentProps) {
         ref={ref}
         className={styles.trigger}
         title={l10n.getString("user-menu-trigger-tooltip")}
-        onClick={() => state.open()}
+        onClick={() => {
+          state.open();
+          recordTelemetry("ctaButton", "click", {
+            button_id: "opened_user_menu",
+          });
+        }}
       >
         {props.user.fxa?.avatar && (
           <Image
