@@ -19,6 +19,7 @@ export interface CustomTestResult {
   retries: number;
   errors: TestError[];
   browser: string;
+  time?: number;
 }
 
 interface CustomSuiteResult {
@@ -118,7 +119,7 @@ class E2EReporter implements Reporter {
 
       case "failed":
         this.tempData.testsFailed++;
-        this.tempData.failures.push(data);
+        this.tempData.failures.push({ ...data, time: Date.now() });
         break;
 
       case "timedOut":
