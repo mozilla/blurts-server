@@ -370,6 +370,27 @@ it("switches between tab panels", async () => {
   expect(tabActionNeededTrigger.getAttribute("aria-selected")).toBe("false");
 });
 
+it("shows consistent counts in the chart on the active tab", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const exposureCounter = 25;
+  const chartElement = screen.getByRole("img", {
+    name: `⁨${exposureCounter}⁩ exposures`,
+  });
+  expect(chartElement).toBeInTheDocument();
+
+  const listSubheading = screen.getByText(
+    new RegExp(
+      `We found your information exposed ⁨${exposureCounter}⁩ times over (.*?) data breaches and ⁨2⁩ data broker sites that are selling your personal info.`,
+    ),
+  );
+  expect(listSubheading).toBeInTheDocument();
+});
+
 it("shows consistent counts in the chart on the fixed tab", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
@@ -565,7 +586,7 @@ it("counts in Glean how often people click the upgrade CTA to purchase the month
   await user.click(confirmButton);
 
   expect(mockedRecord).toHaveBeenCalledWith(
-    "ctaButton",
+    "upgradeIntent",
     "click",
     expect.objectContaining({
       button_id: "intent_to_purchase_monthly_plan_nav_modal",
@@ -602,7 +623,7 @@ it("counts in Glean how often people click the upgrade CTA to purchase the yearl
   await user.click(confirmButton);
 
   expect(mockedRecord).toHaveBeenCalledWith(
-    "ctaButton",
+    "upgradeIntent",
     "click",
     expect.objectContaining({
       button_id: "intent_to_purchase_yearly_plan_nav_modal",

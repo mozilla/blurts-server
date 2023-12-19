@@ -691,6 +691,7 @@ ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eiporu ñand
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Iporãvéva
@@ -741,6 +742,8 @@ menu-item-logout = Emboty tembiapo
 ## Footer
 
 mozilla = { -brand-Mozilla }
+terms-of-service = Mba’epytyvõrã ñemboguata
+privacy-notice = Marandu’i ñemiguáva
 github = { -brand-github }
 footer-nav-all-breaches = Opaite Ñembogua
 
