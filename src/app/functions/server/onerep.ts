@@ -50,16 +50,17 @@ export type OneRepMeta = {
   to: number;
   total: number;
 };
+export type OneRepResponse<Data> = {
+  data: Data;
+  meta: OneRepMeta;
+};
 export type Scan = {
   id: number;
   profile_id: number;
   status: "in_progress" | "finished";
   reason: "initial" | "monitoring" | "manual";
 };
-export type ListScansResponse = {
-  meta: OneRepMeta;
-  data: Scan[];
-};
+export type ListScansResponse = OneRepResponse<Scan[]>;
 export type ScanResult = {
   id: number;
   scan_id: number;
@@ -85,10 +86,7 @@ export type ScanResult = {
   created_at: ISO8601DateString;
   updated_at: ISO8601DateString;
 };
-export type ListScanResultsResponse = {
-  meta: OneRepMeta;
-  data: ScanResult[];
-};
+export type ListScanResultsResponse = OneRepResponse<ScanResult[]>;
 
 async function onerepFetch(
   path: string,
@@ -398,24 +396,46 @@ export async function getScanDetails(
 export async function getAllScanResults(
   profileId: number,
 ): Promise<ScanResult[]> {
-  const scanPagesAll = [];
-  const firstPage = await listScanResults(profileId, {
-    per_page: 100,
+  return fetchAllPages((page: number) =>
+    listScanResults(profileId, { per_page: 100, page: page }),
+  );
+}
+
+export async function getAllDataBrokers() {
+  return fetchAllPages(async (page: number) => {
+    const response = await onerepFetch(
+      "/data-brokers?per_page=100&page=" + page.toString(),
+    );
+    const data: OneRepResponse<
+      Array<{
+        id: number;
+        data_broker: string;
+        status:
+          | "active"
+          | "scan_under_maintenance"
+          | "removal_under_maintenance"
+          | "on_hold"
+          | "ceased_operation";
+      }>
+    > = await response.json();
+    return data;
   });
+}
+
+export async function fetchAllPages<Data>(
+  fetchFunction: (_page: number) => Promise<OneRepResponse<Data[]>>,
+): Promise<Data[]> {
+  const firstPage = await fetchFunction(1);
+  const dataList: Data[][] = [firstPage.data];
   // Results are paginated, use per_page maximum and collect all pages into one result.
-  if (firstPage.meta.last_page > 1) {
+  for (
     let currentPage = 2;
-    while (currentPage <= firstPage.meta.last_page) {
-      const nextPage = await listScanResults(profileId, {
-        per_page: 100,
-        page: currentPage,
-      });
-      currentPage++;
-      nextPage.data.forEach((element: object) => scanPagesAll.push(element));
-    }
-  } else {
-    scanPagesAll.push(firstPage.data);
+    currentPage <= firstPage.meta.last_page;
+    currentPage++
+  ) {
+    const nextPage = await fetchFunction(currentPage);
+    dataList.push(nextPage.data);
   }
 
-  return scanPagesAll.flat();
+  return dataList.flat();
 }

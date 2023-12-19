@@ -50,6 +50,7 @@ export type Props = {
   isEligibleForPremium: boolean;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  fxaSettingsUrl: string;
   scanCount: number;
 };
 
@@ -301,6 +302,7 @@ export const View = (props: Props) => {
         user={props.user}
         monthlySubscriptionUrl={props.monthlySubscriptionUrl}
         yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+        fxaSettingsUrl={props.fxaSettingsUrl}
       >
         <TabList
           tabs={tabsData}
