@@ -81,7 +81,7 @@ jobs:
           git config --global user.name "Monitor Dashbaord Automation Commit"
           git checkout -b e2e-report
           if [[ -n "$(git status)" ]]; then
-            git pull
+            git pull e2e-report
             git add .
             git commit -m "Chore (automated): update dashboard data $(date)"
             git push origin e2e-report
