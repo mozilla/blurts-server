@@ -76,30 +76,6 @@
       font: $text-body-lg;
       color: $color-grey-50;
     }
-
-    form {
-      display: flex;
-      flex-wrap: wrap;
-      gap: $spacing-sm;
-
-      input {
-        flex: 1 0 auto;
-        border-radius: $border-radius-md;
-        border: 1px solid $color-grey-20;
-        padding: $spacing-md;
-        font: $text-body-xl;
-      }
-
-      button {
-        flex: 1 0 auto;
-        font: $text-title-xs;
-      }
-
-      label {
-        font: $text-body-sm;
-        font-weight: 500;
-      }
-    }
   }
 
   .heroImage {
@@ -161,5 +137,45 @@
   .lead {
     padding-inline: $spacing-lg;
     text-align: center;
+  }
+}
+
+.valueProposition {
+  background: $color-grey-05;
+  @media screen and (min-width: $screen-lg) {
+    gap: $layout-xl;
+    padding-inline: $layout-lg;
+
+    @media screen and (min-width: $screen-xl) {
+      padding-inline: $layout-xl;
+    }
+  }
+
+  .item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: $layout-lg;
+    padding-block: $layout-sm;
+    gap: $layout-2xl;
+
+    span {
+      flex: 1.3;
+      gap: $spacing-md;
+      display: flex;
+      flex-direction: column;
+      h2 {
+        font: $text-title-xs;
+        font-family: var(--font-inter);
+        font-weight: 600;
+      }
+      p {
+        font: $text-body-lg;
+      }
+    }
+    .illustration {
+      flex: 1;
+    }
   }
 }

@@ -9,6 +9,10 @@ import { ExtendedReactLocalization } from "../../../hooks/l10n";
 import { PlansTable } from "./PlansTable";
 import { useId } from "react";
 import getPremiumSubscriptionUrl from "../../../functions/server/getPremiumSubscriptionUrl";
+import {
+  ExposureExampleImage,
+  ScanningForExposuresImage,
+} from "./ValuePropositions";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -32,6 +36,7 @@ export const View = (props: Props) => {
             )}
           </p>
           <SignUpForm
+            isHero
             eligibleForPremium={props.eligibleForPremium}
             signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
           />
@@ -40,11 +45,59 @@ export const View = (props: Props) => {
           <HeroImage {...props} />
         </div>
       </header>
+
+      <div className={styles.valueProposition}>
+        <div className={styles.item}>
+          <span>
+            <h2>
+              {props.l10n.getString("landing-all-value-prop-fix-exposures")}
+            </h2>
+            <p>
+              {props.l10n.getString(
+                "landing-all-value-prop-fix-exposures-description",
+              )}
+            </p>
+            <SignUpForm
+              eligibleForPremium={props.eligibleForPremium}
+              signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
+            />
+          </span>
+          <div className={styles.illustration}>
+            <ScanningForExposures {...props} />
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.valueProposition}>
+        <div className={styles.item}>
+          <div className={styles.illustration}>
+            <ExposureExampleImage {...props} />
+          </div>
+          <span>
+            <h2>
+              {props.l10n.getString("landing-all-value-prop-info-at-risk")}
+            </h2>
+            <p>
+              {props.l10n.getString(
+                "landing-all-value-prop-info-at-risk-description",
+              )}
+            </p>
+            <SignUpForm
+              eligibleForPremium={props.eligibleForPremium}
+              signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
+            />
+          </span>
+        </div>
+      </div>
+
       <Plans {...props} />
     </main>
   );
 };
 
+const ScanningForExposures = (props: Props) => {
+  return <ScanningForExposuresImage l10n={props.l10n} />;
+};
 const HeroImage = (props: Props) => {
   if (!props.eligibleForPremium) {
     return (

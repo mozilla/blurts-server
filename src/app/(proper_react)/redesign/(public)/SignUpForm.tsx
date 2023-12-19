@@ -8,10 +8,12 @@ import { FormEventHandler, useId, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useL10n } from "../../../hooks/l10n";
 import { Button } from "../../../components/client/Button";
+import styles from "./SignUpForm.module.scss";
 
 export type Props = {
   eligibleForPremium: boolean;
   signUpCallbackUrl: string;
+  isHero?: boolean;
 };
 
 export const SignUpForm = (props: Props) => {
@@ -33,8 +35,9 @@ export const SignUpForm = (props: Props) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form className={styles.form} onSubmit={onSubmit}>
       <input
+        className={props.isHero ? styles.isHero : ""}
         name={emailInputId}
         id={emailInputId}
         onChange={(e) => setEmailInput(e.target.value)}
@@ -44,16 +47,25 @@ export const SignUpForm = (props: Props) => {
           "landing-all-hero-emailform-input-placeholder",
         )}
       />
-      <Button type="submit" variant="primary" wide>
+      <Button
+        type="submit"
+        variant="primary"
+        wide
+        className={props.isHero ? styles.isHero : ""}
+      >
         {l10n.getString("landing-all-hero-emailform-submit-label")}
       </Button>
-      <label htmlFor={emailInputId}>
-        {l10n.getString(
-          props.eligibleForPremium
-            ? "landing-premium-hero-emailform-input-label"
-            : "landing-all-hero-emailform-input-label",
-        )}
-      </label>
+      {props.isHero ? (
+        <label htmlFor={emailInputId}>
+          {l10n.getString(
+            props.eligibleForPremium
+              ? "landing-premium-hero-emailform-input-label"
+              : "landing-all-hero-emailform-input-label",
+          )}
+        </label>
+      ) : (
+        ""
+      )}
     </form>
   );
 };
