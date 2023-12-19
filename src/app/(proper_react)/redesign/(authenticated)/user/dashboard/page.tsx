@@ -104,6 +104,7 @@ export default async function DashboardPage() {
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
+  const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
 
   return (
     <View
@@ -115,6 +116,7 @@ export default async function DashboardPage() {
       enabledFeatureFlags={enabledFeatureFlags}
       monthlySubscriptionUrl={monthlySubscriptionUrl}
       yearlySubscriptionUrl={yearlySubscriptionUrl}
+      fxaSettingsUrl={fxaSettingsUrl}
       scanCount={scanCount}
     />
   );

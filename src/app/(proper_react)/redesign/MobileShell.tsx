@@ -21,6 +21,7 @@ export type Props = {
   session: Session;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  fxaSettingsUrl: string;
   children: ReactNode;
 };
 
@@ -85,7 +86,10 @@ export const MobileShell = (props: Props) => {
           </Link>
         </div>
         <div className={styles.headerEnd}>
-          <UserMenu user={props.session?.user} />
+          <UserMenu
+            user={props.session?.user}
+            fxaSettingsUrl={props.fxaSettingsUrl}
+          />
         </div>
       </header>
       <div className={styles.nonHeader}>
