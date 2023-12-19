@@ -1,1 +1,14 @@
-[]
+[
+  [
+    {
+      "title": "Verify landing page elements - free scan",
+      "status": "timedOut",
+      "duration": 60001,
+      "retries": 0,
+      "errors": [
+        { "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m" }
+      ],
+      "browser": "chromium"
+    }
+  ]
+]
