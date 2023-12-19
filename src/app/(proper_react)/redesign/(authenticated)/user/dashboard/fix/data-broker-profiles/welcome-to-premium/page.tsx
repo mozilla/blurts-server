@@ -14,6 +14,7 @@ import { getSubscriberEmails } from "../../../../../../../../functions/server/ge
 import { StepDeterminationData } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
 import { activateAndOptoutProfile } from "../../../../../../../../functions/server/onerep";
+import { logger } from "../../../../../../../../functions/server/logging";
 
 export default async function WelcomeToPremiumPage() {
   const session = await getServerSession(authOptions);
@@ -21,6 +22,13 @@ export default async function WelcomeToPremiumPage() {
   // Ensure user is logged in
   if (!session?.user?.subscriber?.id) {
     redirect("/redesign/user/dashboard/");
+  }
+
+  // MNTOR-2594 - log any users that are on welcome-to-premium page but not subscribed.
+  if (!session.user.fxa?.subscriptions.includes("monitor")) {
+    logger.error("user_not_subscribed", {
+      page: "welcome-to-premium",
+    });
   }
 
   const result = await getOnerepProfileId(session.user.subscriber.id);
