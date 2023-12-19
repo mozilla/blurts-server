@@ -81,6 +81,7 @@ living-costs = Расходы на проживание
 # This string refers to financial loans.
 loan-information = Информация о кредитах
 login-histories = Истории логинов
+loyalty-program-details = Подробности программы лояльности
 mac-addresses = MAC-адреса
 marital-statuses = Семейные положения
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -141,6 +142,7 @@ spouses-names = Имена супругов
 support-tickets = Заявки в службы поддержки
 survey-results = Результаты опросов
 taxation-records = Налоговые отчёты
+telecommunications-carrier = Операторы связи
 time-zones = Часовые пояса
 travel-habits = Туристические привычки
 user-statuses = Пользовательские статусы

@@ -81,6 +81,7 @@ living-costs = Costau byw
 # This string refers to financial loans.
 loan-information = Manylion benthyciad
 login-histories = Hanesion mewngofnodi
+loyalty-program-details = Manylion rhaglen teyrngarwch
 mac-addresses = Cyfeiriadau MAC
 marital-statuses = Statws priodasol
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -141,6 +142,7 @@ spouses-names = Enw'r priod
 support-tickets = Tocynnau cymorth
 survey-results = Canlyniadau arolwg
 taxation-records = Cofnodion trethiannol
+telecommunications-carrier = Cludwyr telathrebu
 time-zones = Cylchoedd amser
 travel-habits = Arferion teithio
 user-statuses = Statws defnyddwyr
