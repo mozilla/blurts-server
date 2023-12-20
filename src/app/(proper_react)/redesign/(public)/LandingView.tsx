@@ -24,6 +24,74 @@ export type Props = {
 };
 
 export const View = (props: Props) => {
+  const ScanningForExposuresIllustration = () => {
+    if (props.countryCode === "de") {
+      return (
+        <Image
+          src={ScanningForExposuresImageDe}
+          alt={props.l10n.getString(
+            "landing-all-value-prop-scanning-for-exposures-illustration-alt",
+          )}
+          data-testid="scanning-for-exposures-image"
+        />
+      );
+    }
+    if (props.countryCode === "fr") {
+      return (
+        <Image
+          src={ScanningForExposuresImageFr}
+          alt={props.l10n.getString(
+            "landing-all-value-prop-scanning-for-exposures-illustration-alt",
+          )}
+          data-testid="scanning-for-exposures-image"
+        />
+      );
+    }
+    return (
+      <Image
+        src={ScanningForExposuresImage}
+        alt={props.l10n.getString(
+          "landing-all-value-prop-scanning-for-exposures-illustration-alt",
+        )}
+        data-testid="scanning-for-exposures-image"
+      />
+    );
+  };
+
+  const LeakedPasswordExampleIllustration = () => {
+    if (props.countryCode === "de") {
+      return (
+        <Image
+          src={LeakedPasswordExampleImageDe}
+          alt={props.l10n.getString(
+            "landing-all-value-prop-scanning-for-exposures-illustration-alt",
+          )}
+          data-testid="scanning-for-exposures-image"
+        />
+      );
+    }
+    if (props.countryCode === "fr") {
+      return (
+        <Image
+          src={LeakedPasswordExampleImageFr}
+          alt={props.l10n.getString(
+            "landing-all-value-prop-scanning-for-exposures-illustration-alt",
+          )}
+          data-testid="scanning-for-exposures-image"
+        />
+      );
+    }
+    return (
+      <Image
+        src={LeakedPasswordExampleImage}
+        alt={props.l10n.getString(
+          "landing-all-value-prop-scanning-for-exposures-illustration-alt",
+        )}
+        data-testid="scanning-for-exposures-image"
+      />
+    );
+  };
+
   return (
     <main className={styles.wrapper}>
       <nav className={styles.nav}>
