@@ -118,6 +118,7 @@ export const View = (props: Props) => {
               }}
             />
           </span>
+          {/* TODO: Update this illustration with the US version when design is unblocked */}
           <div className={styles.illustration}>
             {props.eligibleForPremium ? (
               <Image
