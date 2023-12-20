@@ -10,7 +10,7 @@ import type { OverlayTriggerProps, OverlayTriggerState } from "react-stately";
 import { Dialog } from "./dialog/Dialog";
 import { ModalOverlay } from "./dialog/ModalOverlay";
 import { TabList } from "./TabList";
-import { Button } from "../server/Button";
+import { Button } from "../client/Button";
 import { useL10n } from "../../hooks/l10n";
 import ModalImage from "../client/assets/premium-upsell-dialog-icon.svg";
 import styles from "./PremiumUpsellDialog.module.scss";
