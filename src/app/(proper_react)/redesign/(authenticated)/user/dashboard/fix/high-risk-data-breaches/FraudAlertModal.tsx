@@ -13,7 +13,7 @@ import { ModalOverlay } from "../../../../../../../components/client/dialog/Moda
 import { Dialog } from "../../../../../../../components/client/dialog/Dialog";
 import Image from "next/image";
 import FraudAlertDialogIllustration from "../images/fraud-alert-modal-illustration.svg";
-import { Button } from "../../../../../../../components/server/Button";
+import { Button } from "../../../../../../../components/client/Button";
 import styles from "./FraudAlertModal.module.scss";
 
 export const FraudAlertModal = () => {

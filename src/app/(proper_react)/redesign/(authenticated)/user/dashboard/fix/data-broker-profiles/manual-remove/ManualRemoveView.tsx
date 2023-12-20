@@ -14,7 +14,7 @@ import {
   ClockIcon,
 } from "../../../../../../../../components/server/Icons";
 import { LatestOnerepScanData } from "../../../../../../../../../db/tables/onerep_scans";
-import { Button } from "../../../../../../../../components/server/Button";
+import { Button } from "../../../../../../../../components/client/Button";
 import {
   getDashboardSummary,
   getDataPointReduction,

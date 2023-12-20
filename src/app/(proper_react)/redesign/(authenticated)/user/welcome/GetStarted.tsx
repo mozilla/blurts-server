@@ -11,10 +11,11 @@ import howItWorksHero from "./images/welcome-how-it-works.svg";
 import { useL10n } from "../../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../../components/client/dialog/Dialog";
-import { Button } from "../../../../../components/server/Button";
+import { Button } from "../../../../../components/client/Button";
 
 import styles from "./GetStarted.module.scss";
 import { useRef } from "react";
+import { useTelemetry } from "../../../../../hooks/useTelemetry";
 
 export type Props = {
   dataBrokerCount: number;
@@ -23,6 +24,7 @@ export type Props = {
 
 export const GetStarted = (props: Props) => {
   const l10n = useL10n();
+  const record = useTelemetry();
   const explainerDialogState = useOverlayTriggerState({});
   const explainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
@@ -44,7 +46,12 @@ export const GetStarted = (props: Props) => {
         <button
           {...buttonProps}
           ref={triggerRef}
-          onClick={() => explainerDialogState.open()}
+          onClick={() => {
+            record("button", "click", {
+              button_id: "welcome_data_protection",
+            });
+            explainerDialogState.open();
+          }}
           className={styles.explainerTrigger}
         >
           {l10n.getString("onboarding-get-started-content-explainer")}

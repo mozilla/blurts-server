@@ -6,7 +6,7 @@
 
 import { ReactNode, RefObject, useRef } from "react";
 import Link from "next/link";
-import styles from "./button.module.scss";
+import styles from "./Button.module.scss";
 import { useButton } from "react-aria";
 
 export interface Props {
