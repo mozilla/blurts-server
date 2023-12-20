@@ -104,3 +104,4 @@ landing-premium-plans-cards-feature-monitoring = Continuous monitoring
 
 # Value proposition
 landing-premium-value-prop-info-at-risk-description = Details like your <exposure_type_list>home address, family members’ names, financial info</exposure_type_list> and more can be exposed when a website is hacked — or sold on data broker sites to anyone looking for you. Knowing what info is out there is the first step in protecting yourself.
+landing-premium-value-prop-progress-card-illustration-alt = Progress card delineating exposures that are fixed, in progress or manually fixed 

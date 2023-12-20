@@ -76,13 +76,17 @@ export const View = (props: Props) => {
             {props.eligibleForPremium ? (
               <Image
                 src={ProgressBarimage}
-                alt=""
+                alt={props.l10n.getString(
+                  "landing-premium-value-prop-progress-card-illustration-alt",
+                )}
                 data-testid="progress-bar-image"
               />
             ) : (
               <Image
                 src={ScanningForExposuresimage}
-                alt=""
+                alt={props.l10n.getString(
+                  "landing-all-value-prop-scanning-for-exposures-illustration-alt",
+                )}
                 data-testid="scanning-for-exposures-image"
               />
             )}
@@ -118,7 +122,9 @@ export const View = (props: Props) => {
           <div className={styles.illustration}>
             <Image
               src={LeakedPasswordExampleImage}
-              alt=""
+              alt={props.l10n.getString(
+                "landing-all-value-prop-leaked-password-illustration-alt",
+              )}
               data-testid="leaked-password-image"
             />
           </div>
