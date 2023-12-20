@@ -7,7 +7,7 @@ export async function up(knex) {
     .createTable('onerep_stats', table => {
       table.string('name').primary().unique()
       table.string('current')
-      table.sting('max')
+      table.string('max')
       table.timestamp('created_at').defaultTo(knex.fn.now())
       table.timestamp('modified_at').defaultTo(knex.fn.now())
     })
