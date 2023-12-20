@@ -50,13 +50,7 @@ export const ManualRemoveViewStory: Story = {
   name: "1e. Welcome to Premium",
   render: () => {
     return (
-      <Shell
-        l10n={getEnL10nSync()}
-        session={mockedSession}
-        nonce=""
-        monthlySubscriptionUrl=""
-        yearlySubscriptionUrl=""
-      >
+      <Shell l10n={getEnL10nSync()} session={mockedSession} nonce="">
         <WelcomeToPremiumView
           data={{
             countryCode: "us",

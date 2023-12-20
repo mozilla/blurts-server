@@ -156,7 +156,7 @@ function PremiumUpsellDialogContent({
           //       the back-end because the page unloads before we can do so.
           //       This will be dealt with in upstream Glean:
           //       https://matrix.to/#/!SCdsJdSTaQHjzEVrAE:mozilla.org/$muLULIgsOMaLwe3HR6HI_oJbMkyD5gZBoRN3GmDL8Ko
-          record("ctaButton", "click", {
+          record("upgradeIntent", "click", {
             button_id: isMonthly
               ? "intent_to_purchase_monthly_plan_nav_modal"
               : "intent_to_purchase_yearly_plan_nav_modal",

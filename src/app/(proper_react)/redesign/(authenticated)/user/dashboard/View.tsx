@@ -50,6 +50,7 @@ export type Props = {
   isEligibleForPremium: boolean;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  fxaSettingsUrl: string;
   scanCount: number;
 };
 
@@ -179,10 +180,12 @@ export const View = (props: Props) => {
       dataBreachUnresolvedNum,
       dataBrokerTotalNum,
       dataBrokerAutoFixedNum,
+      dataBrokerManuallyResolvedNum,
       dataBrokerInProgressNum,
       dataBreachFixedDataPointsNum,
       dataBrokerAutoFixedDataPointsNum,
       dataBrokerInProgressDataPointsNum,
+      dataBrokerManuallyResolvedDataPointsNum,
       totalDataPointsNum,
     } = dataSummary;
 
@@ -196,11 +199,13 @@ export const View = (props: Props) => {
             totalDataPointsNum -
             dataBrokerAutoFixedDataPointsNum -
             dataBreachFixedDataPointsNum -
-            dataBrokerInProgressDataPointsNum,
+            dataBrokerInProgressDataPointsNum -
+            dataBrokerManuallyResolvedDataPointsNum,
           data_breach_unresolved_num: dataBreachUnresolvedNum,
           data_broker_unresolved_num:
             dataBrokerTotalNum -
             dataBrokerAutoFixedNum -
+            dataBrokerManuallyResolvedNum -
             dataBrokerInProgressNum,
         },
       );
@@ -214,7 +219,8 @@ export const View = (props: Props) => {
             totalDataPointsNum -
             dataBrokerAutoFixedDataPointsNum -
             dataBreachFixedDataPointsNum -
-            dataBrokerInProgressDataPointsNum,
+            dataBrokerInProgressDataPointsNum -
+            dataBrokerManuallyResolvedDataPointsNum,
           data_breach_unresolved_num: dataBreachUnresolvedNum,
         },
       );
@@ -301,6 +307,7 @@ export const View = (props: Props) => {
         user={props.user}
         monthlySubscriptionUrl={props.monthlySubscriptionUrl}
         yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+        fxaSettingsUrl={props.fxaSettingsUrl}
       >
         <TabList
           tabs={tabsData}
