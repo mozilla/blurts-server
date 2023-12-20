@@ -10,16 +10,89 @@ import { PlansTable } from "./PlansTable";
 import { useId } from "react";
 import getPremiumSubscriptionUrl from "../../../functions/server/getPremiumSubscriptionUrl";
 import Image from "next/image";
-import ScanningForExposuresimage from "./value-prop-images/scanning-for-exposures.svg";
+import ScanningForExposuresImage from "./value-prop-images/scanning-for-exposures.svg";
 import LeakedPasswordExampleImage from "./value-prop-images/leaked-password-example.svg";
-import ProgressBarimage from "./value-prop-images/progress-card.svg";
+import ProgressBarImage from "./value-prop-images/progress-card.svg";
+import ScanningForExposuresImageDe from "./value-prop-images/de/scanning-for-exposures-de.svg";
+import LeakedPasswordExampleImageDe from "./value-prop-images/de/leaked-password-example-de.svg";
+import ScanningForExposuresImageFr from "./value-prop-images/fr/scanning-for-exposures-fr.svg";
+import LeakedPasswordExampleImageFr from "./value-prop-images/fr/leaked-password-example-fr.svg";
 
 export type Props = {
   eligibleForPremium: boolean;
   l10n: ExtendedReactLocalization;
+  countryCode: string;
 };
 
 export const View = (props: Props) => {
+  const ScanningForExposuresIllustration = () => {
+    if (props.countryCode === "de") {
+      return (
+        <Image
+          src={ScanningForExposuresImageDe}
+          alt={props.l10n.getString(
+            "landing-all-value-prop-scanning-for-exposures-illustration-alt",
+          )}
+          data-testid="scanning-for-exposures-image"
+        />
+      );
+    }
+    if (props.countryCode === "fr") {
+      return (
+        <Image
+          src={ScanningForExposuresImageFr}
+          alt={props.l10n.getString(
+            "landing-all-value-prop-scanning-for-exposures-illustration-alt",
+          )}
+          data-testid="scanning-for-exposures-image"
+        />
+      );
+    }
+    return (
+      <Image
+        src={ScanningForExposuresImage}
+        alt={props.l10n.getString(
+          "landing-all-value-prop-scanning-for-exposures-illustration-alt",
+        )}
+        data-testid="scanning-for-exposures-image"
+      />
+    );
+  };
+
+  const LeakedPasswordExampleIllustration = () => {
+    if (props.countryCode === "de") {
+      return (
+        <Image
+          src={LeakedPasswordExampleImageDe}
+          alt={props.l10n.getString(
+            "landing-all-value-prop-scanning-for-exposures-illustration-alt",
+          )}
+          data-testid="scanning-for-exposures-image"
+        />
+      );
+    }
+    if (props.countryCode === "fr") {
+      return (
+        <Image
+          src={LeakedPasswordExampleImageFr}
+          alt={props.l10n.getString(
+            "landing-all-value-prop-scanning-for-exposures-illustration-alt",
+          )}
+          data-testid="scanning-for-exposures-image"
+        />
+      );
+    }
+    return (
+      <Image
+        src={LeakedPasswordExampleImage}
+        alt={props.l10n.getString(
+          "landing-all-value-prop-scanning-for-exposures-illustration-alt",
+        )}
+        data-testid="scanning-for-exposures-image"
+      />
+    );
+  };
+
   return (
     <main className={styles.wrapper}>
       <nav className={styles.nav}>
@@ -75,20 +148,14 @@ export const View = (props: Props) => {
           <div className={styles.illustration}>
             {props.eligibleForPremium ? (
               <Image
-                src={ProgressBarimage}
+                src={ProgressBarImage}
                 alt={props.l10n.getString(
                   "landing-premium-value-prop-progress-card-illustration-alt",
                 )}
                 data-testid="progress-bar-image"
               />
             ) : (
-              <Image
-                src={ScanningForExposuresimage}
-                alt={props.l10n.getString(
-                  "landing-all-value-prop-scanning-for-exposures-illustration-alt",
-                )}
-                data-testid="scanning-for-exposures-image"
-              />
+              ScanningForExposuresIllustration()
             )}
           </div>
         </div>
@@ -120,13 +187,7 @@ export const View = (props: Props) => {
             />
           </span>
           <div className={styles.illustration}>
-            <Image
-              src={LeakedPasswordExampleImage}
-              alt={props.l10n.getString(
-                "landing-all-value-prop-leaked-password-illustration-alt",
-              )}
-              data-testid="leaked-password-image"
-            />
+            {LeakedPasswordExampleIllustration()}
           </div>
         </div>
       </div>
