@@ -16,7 +16,7 @@ import { ProgressCard } from "../../../../../../components/client/ProgressCard";
 import { Button } from "../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { PremiumButton } from "../../../../../../components/client/PremiumBadge";
-
+import { SubscriberWaitlistDialog } from "../../../../../../components/client/SubscriberWaitlistDialog";
 export interface ContentProps {
   relevantGuidedStep: StepLink;
   hasExposures: boolean;
@@ -182,6 +182,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
+              <SubscriberWaitlistDialog />
               <Button
                 href="/redesign/user/welcome/free-scan?referrer=dashboard"
                 small
@@ -192,7 +193,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 )}
               </Button>
             </div>
-            <br />
             <a
               href={process.env.NEXT_PUBLIC_HOW_IT_WORKS_SUMO_URL}
               target="_blank"
@@ -515,6 +515,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
       aria-label={l10n.getString("dashboard-top-banner-section-label")}
     >
       <div className={styles.explainerContent}>
+        {userDashboardState}
         {getDashboardBannerContent({ userDashboardState, relevantGuidedStep })}
       </div>
     </section>

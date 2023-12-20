@@ -19,6 +19,7 @@ export interface Props {
   isLoading?: boolean;
   small?: boolean;
   wide?: boolean;
+  ref?: RefObject<HTMLButtonElement | HTMLAnchorElement>;
 }
 
 export const Button = (
@@ -37,8 +38,9 @@ export const Button = (
     ...otherProps
   } = props;
 
-  const buttonRef = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
-  const { buttonProps } = useButton(otherProps, buttonRef);
+  const ref = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
+  const { buttonProps } = useButton(otherProps, ref);
+  const buttonRef = props.ref ?? ref;
 
   const classes = [
     styles.button,
