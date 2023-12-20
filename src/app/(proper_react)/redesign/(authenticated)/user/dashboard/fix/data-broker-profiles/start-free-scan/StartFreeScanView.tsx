@@ -60,7 +60,7 @@ export function StartFreeScanView(props: Props) {
               target="_blank"
               onClick={() => {
                 record("link", "click", {
-                  button_id: "returning_user_info_scan_learn_more",
+                  link_id: "returning_user_info_scan_learn_more",
                 });
               }}
             >

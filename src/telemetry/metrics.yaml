@@ -124,6 +124,8 @@ popup:
       flow_id:
         description: A randomly generated unique identifier for following user flows within the FxA system.
         type: string
+      popup_id:
+        description: The ID of the popup that was shown, or some way to identify where on the page the interaction is located.
 
   exit:
     type: event
@@ -239,8 +241,8 @@ link:
       flow_id:
         description: A randomly generated unique identifier for following user flows within the FxA system.
         type: string
-      button_id:
-        description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
+      link_id:
+        description: The ID of the link that was clicked on, or some way to identify where on the page the interaction is located.
 
 upgrade_intent:
   click:
