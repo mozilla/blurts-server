@@ -46,6 +46,16 @@ describe("When Premium is not available", () => {
       email: "mail@example.com",
     });
   });
+
+  it("shows the scannig for exposures illustration in the fix your exposures section", () => {
+    const ComposedDashboard = composeStory(LandingNonUs, Meta);
+    render(<ComposedDashboard />);
+
+    const scanningForExposuresIllustration = screen.getByTestId(
+      "scanning-for-exposures-image",
+    );
+    expect(scanningForExposuresIllustration).toBeInTheDocument();
+  });
 });
 
 describe("When Premium is available", () => {
@@ -305,5 +315,13 @@ describe("When Premium is available", () => {
     await user.click(signInButton);
 
     expect(signIn).toHaveBeenCalledTimes(1);
+  });
+
+  it("shows the progress card illustration in the fix your exposures section", () => {
+    const ComposedDashboard = composeStory(LandingNonUs, Meta);
+    render(<ComposedDashboard />);
+
+    const progressCardIllustration = screen.getByTestId("progress-bar-image");
+    expect(progressCardIllustration).toBeInTheDocument();
   });
 });

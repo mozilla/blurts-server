@@ -58,7 +58,10 @@ export const View = (props: Props) => {
                 {
                   elems: {
                     privacy_link: (
-                      <a href="https://www.mozilla.org/en-US/firefox/privacy/" />
+                      <a
+                        href="https://www.mozilla.org/en-US/firefox/privacy/"
+                        target="_blank"
+                      />
                     ),
                   },
                 },
@@ -69,12 +72,19 @@ export const View = (props: Props) => {
               signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
             />
           </span>
-          {/* TODO: Update this illustration with the US version when design is unblocked */}
           <div className={styles.illustration}>
             {props.eligibleForPremium ? (
-              <Image src={ProgressBarimage} alt="" />
+              <Image
+                src={ProgressBarimage}
+                alt=""
+                data-testid="progress-bar-image"
+              />
             ) : (
-              <Image src={ScanningForExposuresimage} alt="" />
+              <Image
+                src={ScanningForExposuresimage}
+                alt=""
+                data-testid="scanning-for-exposures-image"
+              />
             )}
           </div>
         </div>
@@ -106,7 +116,11 @@ export const View = (props: Props) => {
             />
           </span>
           <div className={styles.illustration}>
-            <Image src={LeakedPasswordExampleImage} alt="" />
+            <Image
+              src={LeakedPasswordExampleImage}
+              alt=""
+              data-testid="leaked-password-image"
+            />
           </div>
         </div>
       </div>
