@@ -40,6 +40,7 @@ import ScanProgressIllustration from "./images/scan-illustration.svg";
 import { CountryCodeContext } from "../../../../../../contextProviders/country-code";
 import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 import { getNextGuidedStep } from "../../../../../functions/server/getRelevantGuidedSteps";
+import { useTelemetry } from "../../../../../hooks/useTelemetry";
 
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
@@ -63,6 +64,7 @@ export type TabData = {
 
 export const View = (props: Props) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const countryCode = useContext(CountryCodeContext);
 
   const initialFilterState: FilterState = {
@@ -311,9 +313,16 @@ export const View = (props: Props) => {
       >
         <TabList
           tabs={tabsData}
-          onSelectionChange={(selectedKey) =>
-            setSelectedTab(selectedKey as TabType)
-          }
+          onSelectionChange={(selectedKey) => {
+            setSelectedTab(selectedKey as TabType);
+            const buttonId =
+              "header_" +
+              ((selectedKey as TabType) == "fixed" ? "fixed" : "action_needed");
+            console.log("set selected tab: ", selectedKey);
+            recordTelemetry("ctaButton", "click", {
+              button_id: buttonId,
+            });
+          }}
           selectedKey={selectedTab}
         />
       </Toolbar>
