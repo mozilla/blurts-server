@@ -42,13 +42,7 @@ const SecurityRecommendationsWrapper = (props: {
   type: SecurityRecommendationTypes;
 }) => {
   return (
-    <Shell
-      l10n={getEnL10nSync()}
-      session={mockedSession}
-      nonce=""
-      monthlySubscriptionUrl=""
-      yearlySubscriptionUrl=""
-    >
+    <Shell l10n={getEnL10nSync()} session={mockedSession} nonce="">
       <SecurityRecommendationsLayout
         subscriberEmails={[]}
         type={props.type}

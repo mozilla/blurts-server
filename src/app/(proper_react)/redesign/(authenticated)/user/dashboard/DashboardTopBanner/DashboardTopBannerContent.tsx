@@ -13,7 +13,7 @@ import {
   getNextGuidedStep,
 } from "../../../../../../functions/server/getRelevantGuidedSteps";
 import { ProgressCard } from "../../../../../../components/client/ProgressCard";
-import { Button } from "../../../../../../components/server/Button";
+import { Button } from "../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { PremiumButton } from "../../../../../../components/client/PremiumBadge";
 

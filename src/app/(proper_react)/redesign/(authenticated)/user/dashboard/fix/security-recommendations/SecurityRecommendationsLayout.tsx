@@ -12,7 +12,7 @@ import {
 } from "./securityRecommendationsData";
 import { ResolutionContainer } from "../ResolutionContainer";
 import { ResolutionContent } from "../ResolutionContent";
-import { Button } from "../../../../../../../components/server/Button";
+import { Button } from "../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../hooks/l10n";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { FixView } from "../FixView";

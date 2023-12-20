@@ -7,7 +7,7 @@
 import { FormEventHandler, useId, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useL10n } from "../../../hooks/l10n";
-import { Button } from "../../../components/server/Button";
+import { Button } from "../../../components/client/Button";
 
 export type Props = {
   eligibleForPremium: boolean;

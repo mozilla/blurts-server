@@ -20,6 +20,7 @@ export type Props = {
   session: Session;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  fxaSettingsUrl: string;
   children: ReactNode;
 };
 
@@ -66,7 +67,7 @@ export const MobileShell = (props: Props) => {
           </button>
         </div>
         <div className={styles.headerMiddle}>
-          <Link href="/" className={styles.homeLink}>
+          <Link href="/redesign/user/dashboard" className={styles.homeLink}>
             <Image
               src={monitorLogo}
               alt={l10n.getString("main-nav-link-home-label")}
@@ -75,7 +76,10 @@ export const MobileShell = (props: Props) => {
           </Link>
         </div>
         <div className={styles.headerEnd}>
-          <UserMenu user={props.session?.user} />
+          <UserMenu
+            user={props.session?.user}
+            fxaSettingsUrl={props.fxaSettingsUrl}
+          />
         </div>
       </header>
       <div className={styles.nonHeader}>
