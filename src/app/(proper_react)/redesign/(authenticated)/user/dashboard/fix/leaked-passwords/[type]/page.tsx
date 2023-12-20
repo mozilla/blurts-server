@@ -4,17 +4,22 @@
 
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
-import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
-import { getL10n } from "../../../../../../../../functions/server/l10n";
 import { LeakedPasswordsLayout } from "../LeakedPasswordsLayout";
-import { getLeakedPasswords } from "../leakedPasswordsData";
+import {
+  LeakedPasswordsTypes,
+  leakedPasswordTypes,
+} from "../leakedPasswordsData";
 import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
+import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
+import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
+import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
 
 interface LeakedPasswordsProps {
   params: {
-    type: string;
+    type: LeakedPasswordsTypes;
   };
 }
 
@@ -25,28 +30,28 @@ export default async function LeakedPasswords({
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
-  const l10n = getL10n();
   const breaches = await getSubscriberBreaches(session.user);
   const subscriberEmails = await getSubscriberEmails(session.user);
-  const guidedExperienceBreaches = getGuidedExperienceBreaches(
-    breaches,
-    subscriberEmails
-  );
 
   const { type } = params;
-  const pageData = getLeakedPasswords({
-    dataType: type,
-    breaches: guidedExperienceBreaches,
-  });
-
-  if (!pageData) {
+  if (!leakedPasswordTypes.includes(type)) {
     redirect("/redesign/user/dashboard");
   }
 
+  const result = await getOnerepProfileId(session.user.subscriber.id);
+  const profileId = result[0]["onerep_profile_id"] as number;
+  const scanData = await getLatestOnerepScanResults(profileId);
+
   return (
     <LeakedPasswordsLayout
-      label={l10n.getString("security-recommendation-steps-label")}
-      pageData={pageData}
+      subscriberEmails={subscriberEmails}
+      type={type}
+      data={{
+        countryCode: getCountryCode(headers()),
+        subscriberBreaches: breaches,
+        user: session.user,
+        latestScanData: scanData,
+      }}
     />
   );
 }

@@ -7,6 +7,7 @@
 import { signIn } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { useL10n } from "../../../hooks/l10n";
+import { useEffect } from "react";
 
 export type Props = {
   autoSignIn?: boolean;
@@ -19,10 +20,15 @@ function initSignIn(callbackUrl: string) {
 export const SignInButton = ({ autoSignIn }: Props) => {
   const l10n = useL10n();
   const pathname = usePathname();
-
   const callbackUrl = pathname === "/" ? "/user/breaches" : pathname;
+
+  useEffect(() => {
+    if (autoSignIn) {
+      initSignIn(callbackUrl);
+    }
+  }, [autoSignIn, callbackUrl]);
+
   if (autoSignIn) {
-    initSignIn(callbackUrl);
     return null;
   }
 

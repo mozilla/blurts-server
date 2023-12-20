@@ -33,6 +33,7 @@ import SignOutIcon from "./images/menu-icon-signout.svg";
 
 export type UserMenuProps = {
   user: Session["user"];
+  fxaSettingsUrl: string;
 };
 
 export const UserMenu = (props: UserMenuProps) => {
@@ -76,7 +77,7 @@ export const UserMenu = (props: UserMenuProps) => {
         <b>{props.user.email}</b>
         <a
           className={styles.menuItemCta}
-          href={process.env.NEXT_PUBLIC_FXA_SETTINGS_URL}
+          href={props.fxaSettingsUrl}
           ref={fxaItemRef}
           rel="noopener noreferrer"
           target="_blank"
@@ -105,7 +106,7 @@ export const UserMenu = (props: UserMenuProps) => {
       >
         <a
           className={styles.menuItemCta}
-          href={process.env.NEXT_PUBLIC_EXTERNAL_SUPPORT_URL}
+          href={process.env.NEXT_PUBLIC_MONITOR_SUPPORT_URL}
           ref={helpItemRef}
           rel="noopener noreferrer"
           target="_blank"
@@ -173,7 +174,7 @@ function MenuTrigger(props: MenuTriggerComponentProps) {
       </button>
       {state.isOpen && (
         <Popover
-          offset={16}
+          offset={20}
           popoverRef={popoverRef}
           state={state}
           triggerRef={ref}

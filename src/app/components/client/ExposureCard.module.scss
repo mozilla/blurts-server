@@ -1,9 +1,6 @@
 @import "../../tokens";
 
 .exposureCard {
-  // Variables
-  --exposureDetailsIconWidth: 28px;
-
   font: $text-body-sm;
   background-color: $color-white;
   border: 2px solid rgba($color-purple-70, 0.2);
@@ -28,7 +25,12 @@
       padding: 0;
       cursor: pointer;
       color: rgba($color-purple-70, 0.7);
-      height: 20px; //height of down chevron
+      width: 15px; // size of the chevron on mobile
+      height: 20px; // height of down chevron
+
+      @media screen and (min-width: $screen-md) {
+        width: 20px; // size of the chevron on larger devices
+      }
 
       .isOpen {
         transition: transform 0.2s ease-out;
@@ -50,6 +52,10 @@
       gap: $layout-md;
     }
 
+    .dataBrokerLogo {
+      object-fit: contain;
+    }
+
     .fallbackLogo {
       display: flex;
       align-items: center;
@@ -68,38 +74,36 @@
       &.hideOnMobile {
         display: none;
       }
-
       .exposureCompanyTitle {
         font: $text-body-sm;
-        max-width: 150px; // truncate long names for mobile view
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
 
-        @media screen and (min-width: $screen-sm) {
-          max-width: 250px; // truncate long names for mobile view
-        }
-
-        @media screen and (min-width: $screen-md) {
-          max-width: 100%;
-        }
-      }
-
-      @media screen and (min-width: $screen-lg) {
-        flex: 1 1 0%;
-
-        &.exposureImageWrapper {
-          flex: 0.2 0 $width-first-column-filter-bar;
-        }
-
-        &.hideOnMobile {
-          display: block;
+        @media screen and (max-width: $screen-sm) {
+          &.makeFontSmaller {
+            font: $text-body-2xs;
+          }
         }
       }
 
       .exposureImageWrapper {
         .exposureImage {
           height: 100%;
+        }
+      }
+
+      @media screen and (min-width: $screen-lg) {
+        &.exposureImageWrapper {
+          flex: 0.2 0 $width-first-column-filter-bar;
+        }
+      }
+
+      @media screen and (min-width: $screen-xl) {
+        flex: 1 1 0%;
+
+        &.hideOnMobile {
+          display: flex;
         }
       }
     }
@@ -140,6 +144,7 @@
       gap: $layout-xs;
 
       .exposedInfoWrapper {
+        font: $text-body-xs;
         display: flex;
         flex-direction: column;
         gap: $spacing-md;
@@ -153,13 +158,13 @@
         }
 
         .exposedInfoTitle {
+          align-self: start;
+
           @media screen and (min-width: $screen-lg) {
-            align-self: center;
             flex: 0 0 90px; // fix width of categories title
           }
 
           @media screen and (min-width: $screen-xl) {
-            align-self: center;
             flex: 0 0 150px;
           }
         }
@@ -178,16 +183,16 @@
       }
 
       .dataClassesList {
-        font: $text-body-sm;
         justify-content: space-between;
         margin-left: 0;
         padding-left: 0;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         grid-row-gap: $spacing-sm;
 
-        @media screen and (min-width: $screen-sm) {
+        @media screen and (min-width: $screen-md) {
           grid-template-columns: 1fr 1fr 1fr;
+          gap: $spacing-sm;
         }
 
         @media screen and (min-width: $screen-lg) {
@@ -203,24 +208,25 @@
           .label {
             display: flex;
             align-items: center;
+            gap: $spacing-xs;
 
             .exposureTypeIcon {
-              width: var(--exposureDetailsIconWidth);
               color: $color-purple-60;
-              display: flex;
-              justify-content: flex-start;
             }
           }
 
-          .emails {
+          .dataClassListDetailsWrapper {
             padding-inline-start: var(--exposureDetailsIconWidth);
             font: $text-body-xs;
             font-weight: 600;
 
-            .emailsList {
+            .dataClassListDetails {
               list-style: none;
-              padding: 0;
               margin: 0;
+              padding: $spacing-xs 0 0 $spacing-xs;
+              gap: $spacing-xs;
+              display: flex;
+              flex-direction: column;
 
               li {
                 list-style-type: none;
@@ -235,4 +241,8 @@
 
 .visuallyHidden {
   @include visually-hidden;
+}
+
+.companyNameArea {
+  @include company-name-area;
 }

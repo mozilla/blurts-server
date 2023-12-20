@@ -4,6 +4,7 @@
 
 "use client";
 
+import { useRouter } from "next/navigation";
 import { OnerepScanResultRow } from "knex/types/tables";
 import { Button } from "../../../../../../../../components/server/Button";
 import { useL10n } from "../../../../../../../../hooks/l10n";
@@ -13,13 +14,16 @@ import { getLocale } from "../../../../../../../../functions/universal/getLocale
 
 export type Props = {
   scanResult: OnerepScanResultRow;
-  isExpanded?: boolean;
+  isPremiumUser: boolean;
+  isExpanded: boolean;
+  setExpanded: () => void;
 };
 
 export const RemovalCard = (props: Props) => {
   const l10n = useL10n();
+  const router = useRouter();
   const [isResolved, setIsResolved] = useState(
-    props.scanResult.manually_resolved
+    props.scanResult.manually_resolved,
   );
 
   async function resolve() {
@@ -29,8 +33,12 @@ export const RemovalCard = (props: Props) => {
       {
         method: "POST",
         credentials: "same-origin",
-      }
+      },
     );
+    // Ensure previously-visited pages that still have this scan result marked
+    // as unfixed are removed from the cache. See
+    // https://nextjs.org/docs/app/building-your-application/caching#invalidation-1
+    router.refresh();
     if (!response.ok) {
       setIsResolved(false);
     }
@@ -43,17 +51,19 @@ export const RemovalCard = (props: Props) => {
         manually_resolved: isResolved,
       }}
       isPremiumBrokerRemovalEnabled={true}
+      isPremiumUser={props.isPremiumUser}
       locale={getLocale(l10n)}
       resolutionCta={
         !isResolved ? (
-          <Button variant="primary" wide onPress={() => void resolve()}>
+          <Button variant="primary" small onPress={() => void resolve()}>
             {l10n.getString(
-              "fix-flow-data-broker-profiles-manual-remove-button-mark-fixed"
+              "fix-flow-data-broker-profiles-manual-remove-button-mark-fixed",
             )}
           </Button>
         ) : null
       }
       isExpanded={props.isExpanded}
+      onToggleExpanded={props.setExpanded}
     />
   );
 };

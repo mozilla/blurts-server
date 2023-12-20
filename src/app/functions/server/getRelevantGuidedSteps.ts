@@ -7,7 +7,7 @@ import { LatestOnerepScanData } from "../../../db/tables/onerep_scans";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { BreachDataTypes, HighRiskDataTypes } from "../universal/breach";
 
-export type InputData = {
+export type StepDeterminationData = {
   user: Session["user"];
   countryCode: string;
   latestScanData: LatestOnerepScanData | null;
@@ -19,18 +19,14 @@ export type InputData = {
 export const stepLinks = [
   {
     href: "/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan",
-    id: "StartScan",
-  },
-  {
-    href: "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers",
-    id: "ScanResult",
+    id: "Scan",
   },
   {
     href: "/redesign/user/dashboard/fix/high-risk-data-breaches/social-security-number",
     id: "HighRiskSsn",
   },
   {
-    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card-number",
+    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card",
     id: "HighRiskCreditCard",
   },
   {
@@ -38,15 +34,15 @@ export const stepLinks = [
     id: "HighRiskBankAccount",
   },
   {
-    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/pin-number",
+    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/pin",
     id: "HighRiskPin",
   },
   {
-    href: "/redesign/user/dashboard/fix/leaked-passwords/password",
+    href: "/redesign/user/dashboard/fix/leaked-passwords/passwords",
     id: "LeakedPasswordsPassword",
   },
   {
-    href: "/redesign/user/dashboard/fix/leaked-passwords/security-question",
+    href: "/redesign/user/dashboard/fix/leaked-passwords/security-questions",
     id: "LeakedPasswordsSecurityQuestion",
   },
   {
@@ -73,43 +69,17 @@ export type StepLinkWithStatus = (typeof stepLinks)[number] & {
   completed: boolean;
 };
 
-export type OutputData = {
-  current: StepLink | null;
-  skipTarget: StepLink | null;
-};
-
-export function getRelevantGuidedSteps(
-  data: InputData,
-  afterStep?: StepLink["id"]
-): OutputData {
-  const current = getNextGuidedStep(data, afterStep);
-
-  // There should be a relevant current step for every user (even if it's just
-  // going back to the dashbord), so we can't hit this line in tests (and
-  // shouldn't be able to in production either):
-  /* c8 ignore next 11 */
-  if (current === null) {
-    console.error(
-      typeof afterStep === "string"
-        ? `Could not determine the current step for the current user, coming from step [${afterStep}].`
-        : "Could not determine the current step for the current user."
-    );
-    return {
-      current: null,
-      skipTarget: null,
-    };
-  }
-
-  return {
-    current: current,
-    skipTarget: getNextGuidedStep(data, current.id),
-  };
+export function isGuidedResolutionInProgress(stepId: StepLink["id"]) {
+  const inProgressStepIds = stepLinks
+    .filter((step) => step.id !== "Scan" && step.id !== "Done")
+    .map(({ id }) => id);
+  return inProgressStepIds.includes(stepId);
 }
 
-function getNextGuidedStep(
-  data: InputData,
-  afterStep?: StepLink["id"]
-): StepLink | null {
+export function getNextGuidedStep(
+  data: StepDeterminationData,
+  afterStep?: StepLink["id"],
+): StepLink {
   // Resisting the urge to add a state machine... ^.^
   const stepLinkStatuses = getGuidedStepStatuses(data);
   const fromIndex =
@@ -118,30 +88,49 @@ function getNextGuidedStep(
     return stepLink.eligible && !stepLink.completed;
   });
 
-  return nextStep ?? null;
+  if (!nextStep) {
+    // In practice, there should always be a next step (at least "Done").
+    // If for any reason there is not, `href` will be undefined, in which case
+    // links will just not do anything.
+    console.error(
+      `Could not determine the relevant next guided step for the user. Skipping step: [${
+        // We don't have a way to trigger an invalid state without skipping a
+        // valid one during tests:
+        /* c8 ignore next */
+        afterStep ?? "Not skipping any steps"
+      }]. Is \`data.user\` defined: [${!!data.user}]. Country code: [${
+        data.countryCode
+      }]. Is \`data.latestScanData.scan\` defined: [${!!data.latestScanData
+        ?.scan}]. Number of scan results: [${data.latestScanData?.results
+        .length}]. Number of breaches: [${data.subscriberBreaches.length}].`,
+    );
+    return { id: "InvalidStep" } as never;
+  }
+  return nextStep;
 }
 
-export function getGuidedStepStatuses(data: InputData): StepLinkWithStatus[] {
+export function getGuidedStepStatuses(
+  data: StepDeterminationData,
+): StepLinkWithStatus[] {
   return stepLinks.map((stepLink) => getStepWithStatus(data, stepLink));
 }
 
 function getStepWithStatus(
-  data: InputData,
-  stepLink: StepLink
+  data: StepDeterminationData,
+  stepLink: StepLink,
 ): StepLinkWithStatus {
   return {
     ...stepLink,
-    eligible: isEligibleFor(data, stepLink.id),
-    completed: hasCompleted(data, stepLink.id),
+    eligible: isEligibleForStep(data, stepLink.id),
+    completed: hasCompletedStep(data, stepLink.id),
   };
 }
 
-function isEligibleFor(data: InputData, stepId: StepLink["id"]): boolean {
-  if (stepId === "StartScan") {
-    return data.countryCode === "us";
-  }
-
-  if (stepId === "ScanResult") {
+export function isEligibleForStep(
+  data: StepDeterminationData,
+  stepId: StepLink["id"],
+): boolean {
+  if (stepId === "Scan") {
     return data.countryCode === "us";
   }
 
@@ -152,7 +141,7 @@ function isEligibleFor(data: InputData, stepId: StepLink["id"]): boolean {
 
   if (
     ["HighRiskCreditCard", "HighRiskBankAccount", "HighRiskPin"].includes(
-      stepId
+      stepId,
     )
   ) {
     // Anyone can view/resolve their high risk data breaches
@@ -161,7 +150,7 @@ function isEligibleFor(data: InputData, stepId: StepLink["id"]): boolean {
 
   if (
     ["LeakedPasswordsPassword", "LeakedPasswordsSecurityQuestion"].includes(
-      stepId
+      stepId,
     )
   ) {
     // Anyone can view/resolve their leaked passwords
@@ -170,7 +159,7 @@ function isEligibleFor(data: InputData, stepId: StepLink["id"]): boolean {
 
   if (
     ["SecurityTipsPhone", "SecurityTipsEmail", "SecurityTipsIp"].includes(
-      stepId
+      stepId,
     )
   ) {
     // Anyone can view security tips
@@ -186,67 +175,107 @@ function isEligibleFor(data: InputData, stepId: StepLink["id"]): boolean {
   return false as never;
 }
 
-function hasCompleted(data: InputData, stepId: StepLink["id"]): boolean {
-  if (stepId === "StartScan") {
-    return data.latestScanData?.scan !== null;
+export function hasCompletedStepSection(
+  data: StepDeterminationData,
+  section: "Scan" | "HighRisk" | "LeakedPasswords" | "SecurityTips",
+): boolean {
+  if (section === "Scan") {
+    return hasCompletedStep(data, "Scan");
   }
-
-  if (stepId === "ScanResult") {
+  if (section === "HighRisk") {
     return (
-      data.latestScanData !== null &&
-      Array.isArray(data.latestScanData?.results) &&
-      !data.latestScanData.results.some((scanResult) => {
-        return scanResult.status === "new" && !scanResult.manually_resolved;
-      }) &&
-      data.latestScanData?.scan?.onerep_scan_status === "finished"
+      hasCompletedStep(data, "HighRiskSsn") &&
+      hasCompletedStep(data, "HighRiskCreditCard") &&
+      hasCompletedStep(data, "HighRiskBankAccount") &&
+      hasCompletedStep(data, "HighRiskPin")
     );
   }
+  if (section === "LeakedPasswords") {
+    return (
+      hasCompletedStep(data, "LeakedPasswordsPassword") &&
+      hasCompletedStep(data, "LeakedPasswordsSecurityQuestion")
+    );
+  }
+  if (section === "SecurityTips") {
+    return (
+      hasCompletedStep(data, "SecurityTipsEmail") &&
+      hasCompletedStep(data, "SecurityTipsIp") &&
+      hasCompletedStep(data, "SecurityTipsPhone")
+    );
 
-  function isResolved(
-    dataClass: (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
+    // All steps should have been covered by the above conditions:
+    /* c8 ignore next 4 */
+  }
+
+  return false as never;
+}
+
+export function hasCompletedStep(
+  data: StepDeterminationData,
+  stepId: StepLink["id"],
+): boolean {
+  if (stepId === "Scan") {
+    const hasRunScan =
+      typeof data.latestScanData?.scan === "object" &&
+      data.latestScanData?.scan !== null;
+    const hasResolvedAllScanResults =
+      (data.latestScanData?.scan?.onerep_scan_status === "finished" ||
+        data.latestScanData?.scan?.onerep_scan_status === "in_progress") &&
+      data.latestScanData.results.every(
+        (scanResult) =>
+          scanResult.manually_resolved || scanResult.status !== "new",
+      );
+    return hasRunScan && hasResolvedAllScanResults;
+  }
+
+  function isBreachResolved(
+    dataClass: (typeof BreachDataTypes)[keyof typeof BreachDataTypes],
   ): boolean {
     return !data.subscriberBreaches.some((breach) => {
+      const affectedDataClasses = breach.dataClassesEffected.map(
+        (affectedDataClass) => Object.keys(affectedDataClass)[0],
+      );
       return (
-        breach.dataClasses.includes(dataClass) &&
+        affectedDataClasses.includes(dataClass) &&
         !breach.resolvedDataClasses.includes(dataClass)
       );
     });
   }
 
   if (stepId === "HighRiskSsn") {
-    return isResolved(HighRiskDataTypes.SSN);
+    return isBreachResolved(HighRiskDataTypes.SSN);
   }
 
   if (stepId === "HighRiskCreditCard") {
-    return isResolved(HighRiskDataTypes.CreditCard);
+    return isBreachResolved(HighRiskDataTypes.CreditCard);
   }
 
   if (stepId === "HighRiskBankAccount") {
-    return isResolved(HighRiskDataTypes.BankAccount);
+    return isBreachResolved(HighRiskDataTypes.BankAccount);
   }
 
   if (stepId === "HighRiskPin") {
-    return isResolved(HighRiskDataTypes.PIN);
+    return isBreachResolved(HighRiskDataTypes.PIN);
   }
 
   if (stepId === "LeakedPasswordsPassword") {
-    return isResolved(BreachDataTypes.Passwords);
+    return isBreachResolved(BreachDataTypes.Passwords);
   }
 
   if (stepId === "LeakedPasswordsSecurityQuestion") {
-    return isResolved(BreachDataTypes.SecurityQuestions);
+    return isBreachResolved(BreachDataTypes.SecurityQuestions);
   }
 
   if (stepId === "SecurityTipsPhone") {
-    return isResolved(BreachDataTypes.Phone);
+    return isBreachResolved(BreachDataTypes.Phone);
   }
 
   if (stepId === "SecurityTipsEmail") {
-    return isResolved(BreachDataTypes.Email);
+    return isBreachResolved(BreachDataTypes.Email);
   }
 
   if (stepId === "SecurityTipsIp") {
-    return isResolved(BreachDataTypes.IP);
+    return isBreachResolved(BreachDataTypes.IP);
   }
 
   if (stepId === "Done") {

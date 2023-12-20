@@ -21,12 +21,16 @@ export interface PopoverProps extends AriaPopoverProps {
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
 function Popover({ children, offset, state, ...props }: PopoverProps) {
-  const { popoverProps } = usePopover({ ...props, offset }, state);
+  const { popoverProps, underlayProps } = usePopover(
+    { ...props, offset },
+    state,
+  );
 
   // The <DismissButton> components allow screen reader users
   // to dismiss the popover easily.
   return (
     <Overlay>
+      <div {...underlayProps} className={styles.underlay} />
       <div
         {...popoverProps}
         ref={props.popoverRef as React.RefObject<HTMLDivElement>}

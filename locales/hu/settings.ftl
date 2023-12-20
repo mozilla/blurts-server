@@ -50,8 +50,12 @@ settings-cancel-premium-subscription-link-label = Lemondás a { -brand-fx-accoun
 ## Deactivate account
 
 settings-deactivate-account-title = Fiók deaktiválása
+# Deprecated
 settings-deactivate-account-info = A { -brand-fx-account }ja törlésével deaktiválhatja a { -product-short-name }t.
+settings-deactivate-account-info-2 = A { -brand-mozilla-account }ja törlésével kikapcsolhatja a { -product-short-name }t.
+# Deprecated
 settings-fxa-link-label = Ugorjon a { -brand-firefox } beállításaihoz
+settings-fxa-link-label-3 = Ugrás a { -brand-mozilla-account } beállításaihoz
 
 ## Add email dialog
 

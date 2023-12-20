@@ -11,7 +11,7 @@ rec-pw-1-subhead = Emoambue ne ñe’ẽñemi
 # Link title
 rec-pw-1-cta = Emoambue ñe’ẽñemi ko tendápe g̃uarã
 rec-pw-1-2 =
-    Ejapo ko ñe’ẽñemígui ha’eño ha iñambuéva oimeraẽva umi eipurúvagui.
+    Ejapo ko ñe’ẽñemígui ha’eño ha iñambuéva oimeraẽva umi eiporúvagui.
     Mba’e iporãva ha’e emojopyru mokõi térã hetave ñe’ẽ ojuehegua’ỹva
     emoheñói hag̃ua peteĩ ñe’ẽsyry ha emoinge papapy ha ta’ãnga’i.
 # Recommendation subhead
@@ -90,7 +90,7 @@ rec-pins = Peteĩ PIN hekorosãva ndorekói marandu ndejehegua, ne arareñói t�
 # Recommendation subhead
 rec-address-subhead = Aníke eiporu kundaharape ñe’ẽñemíme
 rec-address =
-    Eipurúrõ kundaharape térã tape eiko hague omokangy ne 
+    Eiporúrõ kundaharape térã tape eiko hague omokangy ne 
     ñe’ẽñemi. Mba’ekuaarã ndahasýiva ijuhu oimehápe, péva rupi ko’ã 
     ñe’ẽñemi ndahasýi ijekuaa.
 # Recommendation subhead

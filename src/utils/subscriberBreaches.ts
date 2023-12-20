@@ -5,13 +5,16 @@
 import { getUserEmails } from "../db/tables/emailAddresses.js";
 import { HibpLikeDbBreach, getBreachesForEmail } from "./hibp.js";
 import { getSha1 } from "./fxa.js";
-import { filterBreachDataTypes } from "./breachResolution.js";
 import {
   Breach,
+  HibpBreachDataTypes,
   Subscriber,
 } from "../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 import { parseIso8601Datetime } from "./parse.js";
-import { BreachDataTypes } from "../app/functions/universal/breach";
+import {
+  BreachDataTypes,
+  ResolutionRelevantBreachDataTypes,
+} from "../app/functions/universal/breach";
 
 export type DataClassEffected = {
   [dataType: string]: number | string[];
@@ -19,10 +22,8 @@ export type DataClassEffected = {
 export interface SubscriberBreach {
   addedDate: Date;
   breachDate: Date;
-  dataClasses: Array<(typeof BreachDataTypes)[keyof typeof BreachDataTypes]>;
-  resolvedDataClasses: Array<
-    (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
-  >;
+  dataClasses: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>;
+  resolvedDataClasses: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>;
   description: string;
   domain: string;
   id: number;
@@ -38,6 +39,20 @@ export interface SubscriberBreach {
 type SubscriberBreachMap = Record<number, SubscriberBreach>;
 
 /**
+ * Take the breach DataTypes array from HIBP and filter based on BreachDataTypes
+ *
+ * @param originalDataTypes
+ */
+function filterBreachDataTypes(
+  originalDataTypes: SubscriberBreach["dataClasses"],
+) {
+  const relevantDataTypes = Object.values(ResolutionRelevantBreachDataTypes);
+  return originalDataTypes.filter((d) =>
+    relevantDataTypes.some((t) => t === d),
+  );
+}
+
+/**
  * Replacing 'getAllEmailsAndBreaches' in breaches.js
  *
  * @param subscriber
@@ -45,7 +60,7 @@ type SubscriberBreachMap = Record<number, SubscriberBreach>;
  */
 export async function getSubBreaches(
   subscriber: Subscriber,
-  allBreaches: (Breach | HibpLikeDbBreach)[]
+  allBreaches: (Breach | HibpLikeDbBreach)[],
 ) {
   const uniqueBreaches: SubscriberBreachMap = {};
 
@@ -72,7 +87,7 @@ export async function getSubBreaches(
         !breach.IsSpamList &&
         !breach.IsFabricated &&
         breach.IsVerified &&
-        breach.Domain !== ""
+        breach.Domain !== "",
     );
 
     // breach resolution
@@ -84,6 +99,15 @@ export async function getSubBreaches(
       >;
       const filteredBreachDataClasses: ArrayOfDataClasses =
         filterBreachDataTypes(breach.DataClasses);
+      const resolvedDataClasses = (breachResolution[breach.Id]
+        ?.resolutionsChecked ?? []) as ArrayOfDataClasses;
+      const dataClassesEffected = filteredBreachDataClasses.map((c) => {
+        if (c === BreachDataTypes.Email) {
+          return { [c]: [email.email] };
+        } else {
+          return { [c]: 1 };
+        }
+      });
       // `allBreaches` is generally the return value of `getBreaches`, which
       // either loads breaches from the database, or fetches them from the HIBP
       // API. In the former csae, `AddedDate`, `BreachDate` and `ModifiedDate`
@@ -94,23 +118,26 @@ export async function getSubBreaches(
         addedDate: normalizeDate(breach.AddedDate),
         breachDate: normalizeDate(breach.BreachDate),
         dataClasses: filteredBreachDataClasses,
-        resolvedDataClasses: (breachResolution[breach.Id]?.resolutionsChecked ??
-          []) as ArrayOfDataClasses,
+        resolvedDataClasses,
         description: breach.Description,
         domain: breach.Domain,
-        isResolved: breachResolution[breach.Id]?.isResolved || false,
+        // TODO: MNTOR-2629
+        // On the current production site we only mark breaches as resolved when
+        // all relevant exposed data classes of a breach are fixed. In the
+        // first iteration of the redesign there are some data classes we do not
+        // ask a user to explicitly fix. Until we don’t have to support both
+        // versions of Monitor we’ll need to work around this gap until we can
+        // update this behaviour in our DB.
+        isResolved:
+          breachResolution[breach.Id]?.isResolved ||
+          resolvedDataClasses.length === dataClassesEffected.length ||
+          false,
         favIconUrl: breach.FaviconUrl,
         modifiedDate: normalizeDate(breach.ModifiedDate),
         name: breach.Name,
         title: breach.Title,
         emailsAffected: [email.email],
-        dataClassesEffected: filteredBreachDataClasses.map((c) => {
-          if (c === BreachDataTypes.Email) {
-            return { [c]: [email.email] };
-          } else {
-            return { [c]: 1 };
-          }
-        }),
+        dataClassesEffected,
       };
 
       // if current breach does not exist in breaches map
@@ -124,12 +151,14 @@ export async function getSubBreaches(
           const key = Object.keys(d)[0];
           if (key === BreachDataTypes.Email) {
             (curBreach.dataClassesEffected[index][key] as string[]).push(
-              email.email
+              email.email,
             );
           } else {
             (curBreach.dataClassesEffected[index][key] as number)++;
           }
         });
+        curBreach.isResolved =
+          curBreach.isResolved && subscriberBreach.isResolved;
       }
     }
   }

@@ -6,9 +6,12 @@ import { OnerepScanResultRow } from "knex/types/tables";
 import {
   DashboardSummary,
   getDashboardSummary,
-  getExposureReduction,
+  getDataPointReduction,
+  DataPoints,
+  dataClassKeyMap,
 } from "./dashboard";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
+import { RemovalStatus, RemovalStatusMap } from "../universal/scanResult";
 
 const unresolvedBreaches: SubscriberBreach[] = [
   {
@@ -138,53 +141,13 @@ const unresolvedScannedResults: OnerepScanResultRow[] = [
     relatives: ["Kyler Anderson", "Birdie Skiles", "Marshall Raynor"],
     first_name: "j",
     last_name: "j",
-    status: "new",
+    status: RemovalStatusMap.New as RemovalStatus,
     created_at: new Date("2023-09-26T16:59:04.046Z"),
     updated_at: new Date("2023-09-26T16:59:04.046Z"),
     manually_resolved: false,
   },
-  {
-    id: 2,
-    onerep_scan_result_id: 11237,
-    onerep_scan_id: 1594,
-    link: "http://ussearch.com/ab-dolore-voluptatem-accusamus-facilis",
-    age: 1,
-    data_broker: "ussearch.com",
-    data_broker_id: 12,
-    emails: [
-      "gonzalo85@konopelski.com",
-      "clifford.bailey@huel.net",
-      "rolfson.neil@gmail.com",
-    ],
-    phones: ["+5442849271748", "+8179265715457", "+3314606006541"],
-    addresses: [
-      {
-        zip: "50277",
-        city: "Seaside",
-        state: "CA",
-        street: "Clovis Square",
-      },
-      {
-        zip: "50146-7108",
-        city: "New Liliana",
-        state: "ND",
-        street: "Garnet Crossroad",
-      },
-      {
-        zip: "12582-3146",
-        city: "Port Julian",
-        state: "UT",
-        street: "Erdman Village",
-      },
-    ],
-    relatives: ["Nelson Boehm", "Brett Hand", "Cornelius Smitham"],
-    first_name: "j",
-    last_name: "j",
-    status: "new",
-    created_at: new Date("2023-09-26T16:59:04.046Z"),
-    updated_at: new Date("2023-09-26T16:59:04.046Z"),
-    manually_resolved: false,
-  },
+];
+const inProgressScannedResults: OnerepScanResultRow[] = [
   {
     id: 3,
     onerep_scan_result_id: 11236,
@@ -222,10 +185,54 @@ const unresolvedScannedResults: OnerepScanResultRow[] = [
     relatives: ["Nelson Boehm", "Brett Hand", "Cornelius Smitham"],
     first_name: "j",
     last_name: "j",
-    status: "new",
+    status: RemovalStatusMap.OptOutInProgress as RemovalStatus,
     created_at: new Date("2023-09-26T16:59:04.046Z"),
     updated_at: new Date("2023-09-26T16:59:04.046Z"),
     manually_resolved: false,
+  },
+];
+const manuallyResolvedScannedResults: OnerepScanResultRow[] = [
+  {
+    id: 3,
+    onerep_scan_result_id: 11236,
+    onerep_scan_id: 1594,
+    link: "http://instantcheckmate.com/sit-praesentium-voluptate-a-voluptas-quo-sapiente",
+    age: 1,
+    data_broker: "instantcheckmate.com",
+    data_broker_id: 11,
+    emails: [
+      "gonzalo85@konopelski.com",
+      "clifford.bailey@huel.net",
+      "rolfson.neil@gmail.com",
+    ],
+    phones: ["+5442849271748", "+8179265715457", "+3314606006541"],
+    addresses: [
+      {
+        zip: "50277",
+        city: "Seaside",
+        state: "CA",
+        street: "Clovis Square",
+      },
+      {
+        zip: "50146-7108",
+        city: "New Liliana",
+        state: "ND",
+        street: "Garnet Crossroad",
+      },
+      {
+        zip: "12582-3146",
+        city: "Port Julian",
+        state: "UT",
+        street: "Erdman Village",
+      },
+    ],
+    relatives: ["Nelson Boehm", "Brett Hand", "Cornelius Smitham"],
+    first_name: "j",
+    last_name: "j",
+    status: RemovalStatusMap.New as RemovalStatus,
+    created_at: new Date("2023-09-26T16:59:04.046Z"),
+    updated_at: new Date("2023-09-26T16:59:04.046Z"),
+    manually_resolved: true,
   },
 ];
 const allResolvedScannedResults: OnerepScanResultRow[] = [
@@ -266,7 +273,7 @@ const allResolvedScannedResults: OnerepScanResultRow[] = [
     relatives: ["Kyler Anderson", "Birdie Skiles", "Marshall Raynor"],
     first_name: "j",
     last_name: "j",
-    status: "removed",
+    status: RemovalStatusMap.Removed as RemovalStatus,
     created_at: new Date("2023-09-26T16:59:04.046Z"),
     updated_at: new Date("2023-09-26T16:59:04.046Z"),
     manually_resolved: false,
@@ -308,7 +315,7 @@ const allResolvedScannedResults: OnerepScanResultRow[] = [
     relatives: ["Nelson Boehm", "Brett Hand", "Cornelius Smitham"],
     first_name: "j",
     last_name: "j",
-    status: "removed",
+    status: RemovalStatusMap.Removed as RemovalStatus,
     created_at: new Date("2023-09-26T16:59:04.046Z"),
     updated_at: new Date("2023-09-26T16:59:04.046Z"),
     manually_resolved: false,
@@ -350,7 +357,7 @@ const allResolvedScannedResults: OnerepScanResultRow[] = [
     relatives: ["Nelson Boehm", "Brett Hand", "Cornelius Smitham"],
     first_name: "j",
     last_name: "j",
-    status: "removed",
+    status: RemovalStatusMap.Removed as RemovalStatus,
     created_at: new Date("2023-09-26T16:59:04.046Z"),
     updated_at: new Date("2023-09-26T16:59:04.046Z"),
     manually_resolved: false,
@@ -362,7 +369,7 @@ const allResolvedBreaches: SubscriberBreach[] = [
     addedDate: new Date("2015-10-26T23:35:45.000Z"),
     breachDate: new Date("2015-03-01T08:00:00.000Z"),
     dataClasses: ["email-addresses", "ip-addresses", "passwords"],
-    resolvedDataClasses: [],
+    resolvedDataClasses: ["email-addresses", "ip-addresses", "passwords"],
     description:
       'In approximately March 2015, the free web hosting provider <a href="http://www.troyhunt.com/2015/10/breaches-traders-plain-text-passwords.html" target="_blank" rel="noopener">000webhost suffered a major data breach</a> that exposed almost 15 million customer records. The data was sold and traded before 000webhost was alerted in October. The breach included names, email addresses and plain text passwords.',
     domain: "000webhost.com",
@@ -394,7 +401,7 @@ const allResolvedBreaches: SubscriberBreach[] = [
       "ip-addresses",
       "passwords",
     ],
-    resolvedDataClasses: [],
+    resolvedDataClasses: ["email-addresses", "ip-addresses", "passwords"],
     description:
       'In November 2014, the acne website <a href="http://www.acne.org/" target="_blank" rel="noopener">acne.org</a> suffered a data breach that exposed over 430k forum members\' accounts. The data was being actively traded on underground forums and included email addresses, birth dates and passwords.',
     domain: "acne.org",
@@ -425,7 +432,7 @@ const allResolvedBreaches: SubscriberBreach[] = [
     addedDate: new Date("2013-12-04T00:00:00.000Z"),
     breachDate: new Date("2013-10-04T07:00:00.000Z"),
     dataClasses: ["email-addresses", "passwords"],
-    resolvedDataClasses: [],
+    resolvedDataClasses: ["email-addresses", "passwords"],
     description:
       'In October 2013, 153 million Adobe accounts were breached with each containing an internal ID, username, email, <em>encrypted</em> password and a password hint in plain text. The password cryptography was poorly done and many were quickly resolved back to plain text. The unencrypted hints also <a href="http://www.troyhunt.com/2013/11/adobe-credentials-and-serious.html" target="_blank" rel="noopener">disclosed much about the passwords</a> adding further to the risk that hundreds of millions of Adobe customers already faced.',
     domain: "adobe.com",
@@ -456,7 +463,6 @@ describe("getExposureReduction", () => {
       // data brokers
       addresses: 0,
       familyMembers: 0,
-      fullNames: 0,
 
       // data breaches
       socialSecurityNumbers: 0,
@@ -469,96 +475,327 @@ describe("getExposureReduction", () => {
     };
     const testSummary: DashboardSummary = {
       dataBreachTotalNum: 10,
-      dataBreachTotalExposuresNum: 10,
-      dataBreachFixedExposuresNum: 10,
+      dataBreachTotalDataPointsNum: 10,
+      dataBreachFixedDataPointsNum: 10,
       dataBrokerTotalNum: 10,
-      dataBrokerTotalExposuresNum: 10,
-      dataBrokerFixedExposuresNum: 10,
-      dataBrokerFixedNum: 10,
+      dataBrokerTotalDataPointsNum: 8,
+      dataBrokerAutoFixedDataPointsNum: 8,
+      dataBrokerAutoFixedNum: 10,
+      dataBrokerInProgressDataPointsNum: 10,
       dataBrokerInProgressNum: 10,
-      totalExposures: 10,
-      allExposures: testExposure,
-      sanitizedExposures: [],
-      fixedExposures: testExposure,
-      fixedSanitizedExposures: [],
+      dataBrokerManuallyResolvedDataPointsNum: 0,
+      totalDataPointsNum: 10,
+      allDataPoints: testExposure,
+      unresolvedDataPoints: testExposure,
+      inProgressDataPoints: testExposure,
+      fixedDataPoints: testExposure,
+      manuallyResolvedDataBrokerDataPoints: testExposure,
+      unresolvedSanitizedDataPoints: [],
+      fixedSanitizedDataPoints: [],
+      dataBreachUnresolvedNum: 0,
+      dataBreachResolvedNum: 0,
     };
 
-    const exposureReduction = getExposureReduction(testSummary, []);
-    expect(exposureReduction).toBe(0);
+    const exposureReduction = getDataPointReduction(testSummary);
+    expect(exposureReduction).toBe(80);
+  });
+  it("gets exposure reduction number when total exposure is 0", () => {
+    const testExposure = {
+      // shared
+      emailAddresses: 0,
+      phoneNumbers: 0,
+
+      // data brokers
+      addresses: 0,
+      familyMembers: 0,
+
+      // data breaches
+      socialSecurityNumbers: 0,
+      ipAddresses: 0,
+      passwords: 0,
+      creditCardNumbers: 0,
+      pins: 0,
+      securityQuestions: 0,
+      bankAccountNumbers: 0,
+    };
+    const testSummary: DashboardSummary = {
+      dataBreachTotalNum: 10,
+      dataBreachTotalDataPointsNum: 10,
+      dataBreachFixedDataPointsNum: 10,
+      dataBrokerTotalNum: 10,
+      dataBrokerTotalDataPointsNum: 8,
+      dataBrokerAutoFixedDataPointsNum: 8,
+      dataBrokerAutoFixedNum: 10,
+      dataBrokerInProgressDataPointsNum: 10,
+      dataBrokerInProgressNum: 10,
+      dataBrokerManuallyResolvedDataPointsNum: 0,
+      totalDataPointsNum: 0,
+      allDataPoints: testExposure,
+      unresolvedDataPoints: testExposure,
+      inProgressDataPoints: testExposure,
+      fixedDataPoints: testExposure,
+      manuallyResolvedDataBrokerDataPoints: testExposure,
+      unresolvedSanitizedDataPoints: [],
+      fixedSanitizedDataPoints: [],
+      dataBreachUnresolvedNum: 0,
+      dataBreachResolvedNum: 0,
+    };
+
+    const exposureReduction = getDataPointReduction(testSummary);
+    expect(exposureReduction).toBe(100);
   });
 });
 
 describe("getDashboardSummary", () => {
+  // sanity checks
+  const noNegativeCounts = (summary: DashboardSummary) => {
+    for (const k in summary.unresolvedDataPoints) {
+      expect(
+        summary.unresolvedDataPoints[k as keyof DataPoints],
+      ).toBeGreaterThanOrEqual(0);
+    }
+    for (const k in summary.fixedDataPoints) {
+      expect(
+        summary.fixedDataPoints[k as keyof DataPoints],
+      ).toBeGreaterThanOrEqual(0);
+    }
+    for (const k in summary.inProgressDataPoints) {
+      expect(
+        summary.inProgressDataPoints[k as keyof DataPoints],
+      ).toBeGreaterThanOrEqual(0);
+    }
+
+    summary.unresolvedSanitizedDataPoints.forEach(
+      (unresolvedSanitizedExposure) => {
+        Object.values(unresolvedSanitizedExposure).forEach((count) => {
+          expect(count).toBeGreaterThanOrEqual(0);
+        });
+      },
+    );
+
+    summary.fixedSanitizedDataPoints.forEach((fixedSanitizedExposure) => {
+      Object.values(fixedSanitizedExposure).forEach((count) => {
+        expect(count).toBeGreaterThanOrEqual(0);
+      });
+    });
+  };
+
   it("gets breaches only summary", () => {
     const summary = getDashboardSummary([], unresolvedBreaches);
+    noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(3);
-    expect(summary.dataBreachFixedExposuresNum).toBe(0);
+    expect(summary.dataBreachFixedDataPointsNum).toBe(0);
     expect(summary.dataBrokerTotalNum).toBe(0);
-    expect(summary.dataBrokerTotalExposuresNum).toBe(0);
-    expect(summary.dataBrokerFixedNum).toBe(0);
-    expect(summary.totalExposures).toBe(summary.dataBreachTotalExposuresNum);
+    expect(summary.dataBrokerTotalDataPointsNum).toBe(0);
+    expect(summary.dataBrokerAutoFixedNum).toBe(0);
+    expect(summary.totalDataPointsNum).toBe(
+      summary.dataBreachTotalDataPointsNum,
+    );
+    expect(summary.dataBrokerInProgressDataPointsNum).toBe(0);
   });
 
   it("gets breaches only all fixed summary", () => {
     const summary = getDashboardSummary([], allResolvedBreaches);
+    noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(3);
     expect(summary.dataBrokerTotalNum).toBe(0);
-    expect(summary.dataBrokerTotalExposuresNum).toBe(0);
-    expect(summary.dataBrokerFixedNum).toBe(0);
-    expect(summary.totalExposures).toBe(summary.dataBreachTotalExposuresNum);
-    expect(summary.totalExposures).toBe(summary.dataBreachFixedExposuresNum);
+    expect(summary.dataBrokerTotalDataPointsNum).toBe(0);
+    expect(summary.dataBrokerAutoFixedNum).toBe(0);
+    expect(summary.totalDataPointsNum).toBe(
+      summary.dataBreachTotalDataPointsNum,
+    );
+    expect(summary.totalDataPointsNum).toBe(
+      summary.dataBreachFixedDataPointsNum,
+    );
+    expect(summary.dataBrokerInProgressDataPointsNum).toBe(0);
+    expect(summary.unresolvedDataPoints.emailAddresses).toBe(0);
   });
 
   it("gets scanned results only summary", () => {
     const summary = getDashboardSummary(unresolvedScannedResults, []);
+    noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(0);
-    expect(summary.dataBreachTotalExposuresNum).toBe(0);
-    expect(summary.dataBreachFixedExposuresNum).toBe(0);
-    expect(summary.dataBrokerTotalNum).toBe(3);
-    expect(summary.dataBrokerFixedNum).toBe(0);
-    expect(summary.totalExposures).toBe(summary.dataBrokerTotalExposuresNum);
+    expect(summary.dataBreachTotalDataPointsNum).toBe(0);
+    expect(summary.dataBreachFixedDataPointsNum).toBe(0);
+    expect(summary.dataBrokerTotalNum).toBe(1);
+    expect(summary.dataBrokerAutoFixedNum).toBe(0);
+    expect(summary.totalDataPointsNum).toBe(
+      summary.dataBrokerTotalDataPointsNum,
+    );
+    expect(summary.unresolvedDataPoints.emailAddresses).toBe(
+      summary.allDataPoints.emailAddresses,
+    );
+    expect(summary.unresolvedDataPoints.phoneNumbers).toBe(
+      summary.allDataPoints.phoneNumbers,
+    );
+    expect(summary.unresolvedDataPoints.addresses).toBe(
+      summary.allDataPoints.addresses,
+    );
+    expect(summary.unresolvedDataPoints.familyMembers).toBe(
+      summary.allDataPoints.familyMembers,
+    );
   });
 
   it("gets scanned results only all fixed summary", () => {
     const summary = getDashboardSummary(allResolvedScannedResults, []);
+    noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(0);
-    expect(summary.dataBreachTotalExposuresNum).toBe(0);
-    expect(summary.dataBreachFixedExposuresNum).toBe(0);
+    expect(summary.dataBreachTotalDataPointsNum).toBe(0);
+    expect(summary.dataBreachFixedDataPointsNum).toBe(0);
     expect(summary.dataBrokerTotalNum).toBe(3);
-    expect(summary.totalExposures).toBe(summary.dataBrokerTotalExposuresNum);
-    expect(summary.dataBrokerFixedExposuresNum).toBe(
-      summary.dataBrokerTotalExposuresNum
+    expect(summary.totalDataPointsNum).toBe(
+      summary.dataBrokerTotalDataPointsNum,
     );
+    expect(summary.dataBrokerAutoFixedDataPointsNum).toBe(
+      summary.dataBrokerTotalDataPointsNum,
+    );
+    expect(summary.unresolvedDataPoints.emailAddresses).toBe(0);
+  });
+
+  it("gets scanned results in-progress and fixed summary", () => {
+    const summary = getDashboardSummary(
+      [...allResolvedScannedResults, ...inProgressScannedResults],
+      [],
+    );
+    noNegativeCounts(summary);
+    expect(summary.dataBreachTotalNum).toBe(0);
+    expect(summary.dataBreachTotalDataPointsNum).toBe(0);
+    expect(summary.dataBreachFixedDataPointsNum).toBe(0);
+    expect(summary.dataBrokerTotalNum).toBe(4);
+    expect(summary.fixedDataPoints.emailAddresses).toBe(
+      summary.fixedDataPoints.emailAddresses,
+    );
+    expect(summary.fixedDataPoints.phoneNumbers).toBe(
+      summary.fixedDataPoints.phoneNumbers,
+    );
+    expect(summary.fixedDataPoints.addresses).toBe(
+      summary.fixedDataPoints.addresses,
+    );
+    expect(summary.fixedDataPoints.familyMembers).toBe(
+      summary.fixedDataPoints.familyMembers,
+    );
+    expect(summary.unresolvedDataPoints.emailAddresses).toBe(0);
+  });
+
+  it("gets scanned results manually removed summary", () => {
+    const summary = getDashboardSummary(manuallyResolvedScannedResults, []);
+    noNegativeCounts(summary);
+    expect(summary.dataBreachTotalNum).toBe(0);
+    expect(summary.dataBreachTotalDataPointsNum).toBe(0);
+    expect(summary.dataBreachFixedDataPointsNum).toBe(0);
+    expect(summary.dataBrokerTotalNum).toBe(1);
+    expect(summary.dataBrokerAutoFixedNum).toBe(0);
+    expect(summary.totalDataPointsNum).toBe(
+      summary.dataBrokerTotalDataPointsNum,
+    );
+    expect(summary.dataBrokerManuallyResolvedDataPointsNum).toBe(12);
+    expect(summary.unresolvedDataPoints.emailAddresses).toBe(0);
   });
 
   it("gets mix scanned results & breaches summary", () => {
     const summary = getDashboardSummary(
       unresolvedScannedResults,
-      unresolvedBreaches
+      unresolvedBreaches,
     );
+    noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(3);
-    expect(summary.dataBreachTotalExposuresNum).toBe(8);
-    expect(summary.dataBreachFixedExposuresNum).toBe(0);
-    expect(summary.dataBrokerTotalNum).toBe(3);
-    expect(summary.dataBrokerTotalExposuresNum).toBe(39);
-    expect(summary.totalExposures).toBe(
-      summary.dataBrokerTotalExposuresNum + summary.dataBreachTotalExposuresNum
+    expect(summary.dataBreachTotalDataPointsNum).toBe(8);
+    expect(summary.dataBreachFixedDataPointsNum).toBe(0);
+    expect(summary.dataBrokerTotalNum).toBe(1);
+    expect(summary.dataBrokerTotalDataPointsNum).toBe(12);
+    expect(summary.totalDataPointsNum).toBe(
+      summary.dataBrokerTotalDataPointsNum +
+        summary.dataBreachTotalDataPointsNum,
     );
+    expect(summary.unresolvedDataPoints.emailAddresses).toBe(6);
   });
 
   it("gets mix scanned results & breaches all resolved summary", () => {
     const summary = getDashboardSummary(
       allResolvedScannedResults,
-      allResolvedBreaches
+      allResolvedBreaches,
     );
+    noNegativeCounts(summary);
     expect(summary.dataBreachTotalNum).toBe(3);
-    expect(summary.dataBreachTotalExposuresNum).toBe(8);
-    expect(summary.dataBreachFixedExposuresNum).toBe(8);
+    expect(summary.dataBreachTotalDataPointsNum).toBe(8);
+    expect(summary.dataBreachFixedDataPointsNum).toBe(8);
     expect(summary.dataBrokerTotalNum).toBe(3);
-    expect(summary.dataBrokerTotalExposuresNum).toBe(39);
-    expect(summary.dataBrokerFixedExposuresNum).toBe(39);
-    expect(summary.totalExposures).toBe(
-      summary.dataBreachFixedExposuresNum + summary.dataBrokerFixedExposuresNum
+    expect(summary.dataBrokerTotalDataPointsNum).toBe(36);
+    expect(summary.dataBrokerAutoFixedDataPointsNum).toBe(36);
+    expect(summary.dataBrokerInProgressDataPointsNum).toBe(0);
+    expect(summary.totalDataPointsNum).toBe(
+      summary.dataBreachFixedDataPointsNum +
+        summary.dataBrokerAutoFixedDataPointsNum,
+    );
+    expect(summary.unresolvedDataPoints.emailAddresses).toBe(0);
+  });
+
+  it("manuallyResolvedDataBrokerExposures is counted once", () => {
+    const combinedScannedResults = [
+      ...unresolvedScannedResults,
+      ...manuallyResolvedScannedResults,
+    ];
+    const summary = getDashboardSummary(combinedScannedResults, []);
+    noNegativeCounts(summary);
+    expect(summary.dataBrokerTotalNum).toBe(2);
+    expect(summary.dataBrokerTotalDataPointsNum).toBe(24);
+    expect(summary.dataBrokerAutoFixedNum).toBe(0);
+    expect(summary.dataBrokerInProgressDataPointsNum).toBe(0);
+    expect(summary.dataBrokerManuallyResolvedDataPointsNum).toBe(12);
+  });
+
+  it("fixedSanitizedExposures counts manually resolved exposures", () => {
+    const combinedScannedResults = [
+      ...unresolvedScannedResults,
+      ...manuallyResolvedScannedResults,
+    ];
+    const expectedSanitizedExposures = [
+      {
+        "email-addresses": 3,
+      },
+      {
+        "phone-numbers": 3,
+      },
+      {
+        "physical-addresses": 3,
+      },
+      {
+        "family-members-names": 3,
+      },
+      {
+        "other-data-class": 0,
+      },
+    ];
+    const summary = getDashboardSummary(combinedScannedResults, []);
+    noNegativeCounts(summary);
+    expect(summary.fixedSanitizedDataPoints).toEqual(
+      expectedSanitizedExposures,
+    );
+  });
+
+  it("fixedSanitizedDataPoints counts manually resolved exposures", () => {
+    const combinedScannedResults = [
+      ...unresolvedScannedResults,
+      ...manuallyResolvedScannedResults,
+    ];
+    const summary = getDashboardSummary(combinedScannedResults, []);
+    noNegativeCounts(summary);
+    const getSanitizedDataPoint = (
+      dataPoint: (typeof dataClassKeyMap)[keyof typeof dataClassKeyMap],
+    ) => {
+      const sanitizedDataPoint = summary.fixedSanitizedDataPoints.find(
+        (fixedData) => dataPoint in fixedData,
+      );
+      return sanitizedDataPoint?.[dataPoint] ?? 0;
+    };
+    expect(summary.manuallyResolvedDataBrokerDataPoints.emailAddresses).toBe(
+      getSanitizedDataPoint(dataClassKeyMap.emailAddresses),
+    );
+    expect(summary.manuallyResolvedDataBrokerDataPoints.phoneNumbers).toBe(
+      getSanitizedDataPoint(dataClassKeyMap.phoneNumbers),
+    );
+    expect(summary.manuallyResolvedDataBrokerDataPoints.addresses).toBe(
+      getSanitizedDataPoint(dataClassKeyMap.addresses),
     );
   });
 });

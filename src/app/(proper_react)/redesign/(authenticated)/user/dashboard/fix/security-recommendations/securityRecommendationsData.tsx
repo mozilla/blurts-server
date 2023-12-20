@@ -6,9 +6,21 @@ import type { ReactNode } from "react";
 import emailIllustration from "../images/security-recommendations-email.svg";
 import phoneIllustration from "../images/security-recommendations-phone.svg";
 import ipIllustration from "../images/security-recommendations-ip.svg";
-import { getL10n } from "../../../../../../../functions/server/l10n";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
+import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
+import { Button } from "../../../../../../../components/server/Button";
+import { StepLink } from "../../../../../../../functions/server/getRelevantGuidedSteps";
+
+export const securityRecommendationTypes = [
+  "phone",
+  "email",
+  "ip",
+  "done",
+] as const;
+
+export type SecurityRecommendationTypes =
+  (typeof securityRecommendationTypes)[number];
 
 export type SecurityRecommendationContent = {
   summary: string;
@@ -19,8 +31,6 @@ export type SecurityRecommendationContent = {
     subtitle?: string;
   };
 };
-
-export type SecurityRecommendationTypes = "phone" | "email" | "ip";
 
 export type SecurityRecommendation = {
   type: SecurityRecommendationTypes;
@@ -33,12 +43,14 @@ export type SecurityRecommendation = {
 function getSecurityRecommendationsByType({
   dataType,
   breaches,
+  l10n,
+  nextStep,
 }: {
   dataType: string;
   breaches: GuidedExperienceBreaches;
+  l10n: ExtendedReactLocalization;
+  nextStep?: StepLink;
 }) {
-  const l10n = getL10n();
-
   const securityRecommendationsData: SecurityRecommendation[] = [
     {
       type: "phone",
@@ -148,29 +160,55 @@ function getSecurityRecommendationsByType({
         recommendations: {
           title: l10n.getString("security-recommendation-steps-title"),
           steps: (
-            <ul className="noList">
-              <li>
-                {l10n.getFragment("security-recommendation-ip-step-one", {
-                  elems: {
-                    link_to_info: (
-                      <a
-                        href="https://www.mozilla.org/products/vpn/?entrypoint_experiment=vpn-refresh-pricing&entrypoint_variation=1"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      />
-                    ),
-                  },
-                })}
-              </li>
-            </ul>
+            <p>
+              {l10n.getFragment("security-recommendation-ip-step-one", {
+                elems: {
+                  link_to_info: (
+                    <a
+                      href="https://www.mozilla.org/products/vpn/?utm_medium=monitor&utm_source=security-reco&utm_campaign=ip-breach&utm_content=global"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    />
+                  ),
+                },
+              })}
+            </p>
           ),
         },
+      },
+    },
+    {
+      type: "done",
+      title: l10n.getString(
+        "fix-flow-celebration-security-recommendations-title",
+      ),
+      illustration: "",
+      exposedData: [],
+      content: {
+        summary: "",
+        description: nextStep && (
+          <>
+            <p>
+              {l10n.getString(
+                "fix-flow-celebration-security-recommendations-description-next-dashboard",
+              )}
+            </p>
+            <Button
+              variant="primary"
+              small
+              href={nextStep.href}
+              autoFocus={true}
+            >
+              {l10n.getString("fix-flow-celebration-next-dashboard-label")}
+            </Button>
+          </>
+        ),
       },
     },
   ];
 
   return securityRecommendationsData.find(
-    (content) => content.type === dataType
+    (content) => content.type === dataType,
   );
 }
 

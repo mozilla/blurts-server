@@ -29,7 +29,9 @@
       var(--sidebarWidth) / 2 - var(--backgroundImageWidth) / 2
     ),
     center;
-  background-size: var(--backgroundImageWidth) auto, auto;
+  background-size:
+    var(--backgroundImageWidth) auto,
+    auto;
   padding-inline-start: var(--sidebarWidth);
   display: flex;
   flex-direction: column;
@@ -173,6 +175,17 @@
 
         img {
           background-color: $color-purple-70;
+        }
+      }
+    }
+
+    &.getStartedHidden {
+      li {
+        // If the first step indicator is hidden the space between the other two
+        // indicators grows. We’ll need to increase the length of the line that
+        // connects them:
+        &:nth-child(2)::before {
+          width: calc(50% + $stepGap);
         }
       }
     }

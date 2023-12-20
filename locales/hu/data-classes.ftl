@@ -10,7 +10,7 @@ apps-installed-on-devices = Eszközökre telepített alkalmazások
 astrological-signs = Asztrológiai jelek
 audio-recordings = Hangfelvételek
 auth-tokens = Hitelesítési tokenek
-avatars = Avatárok
+avatars = Profilképek
 bank-account-numbers = Bankszámlaszámok
 beauty-ratings = Szépség értékelések
 biometric-data = Biometrikus adatok
@@ -81,6 +81,7 @@ living-costs = Megélhetési költségek
 # This string refers to financial loans.
 loan-information = Hitelinformációk
 login-histories = Bejelentkezési előzmények
+loyalty-program-details = Hűségprogram részletei
 mac-addresses = MAC-címek
 marital-statuses = Családi állapotok
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -141,6 +142,7 @@ spouses-names = Házastársak nevei
 support-tickets = Támogatási jegyek
 survey-results = Felmérési eredmények
 taxation-records = Adózási nyilvántartások
+telecommunications-carrier = Távközlési szolgáltatók
 time-zones = Időzónák
 travel-habits = Utazási szokások
 user-statuses = Felhasználói állapotok

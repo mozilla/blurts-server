@@ -645,6 +645,7 @@ ad-unit-6-before-you-complete = Siteye kaydolurken bilgilerinizi korumak ve gele
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
@@ -656,9 +657,9 @@ ad-unit-6-before-you-complete = Siteye kaydolurken bilgilerinizi korumak ve gele
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
+# “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Firefox hesabı
+-brand-mozilla-account = Mozilla hesabı
 
 ## Search Engine Optimization
 
@@ -673,7 +674,7 @@ sign-in = Giriş yap
 site-nav-breaches-link = Veri ihlallerini çöz
 site-nav-settings-link = Ayarlar
 site-nav-help-link = Yardım ve destek
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Diğer güvenlik araçlarımızı deneyin:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -683,8 +684,8 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Kullanıcı menüsü
 menu-button-alt = Kullanıcı menüsünü aç
 menu-list-accessible-label = Hesap menüsü
-menu-item-fxa = { -brand-fx-account }nızı yönetin
-menu-item-fxa-alt = { -brand-fx-account } sayfasını aç
+menu-item-fxa-2 = { -brand-mozilla-account }nızı yönetin
+menu-item-fxa-alt-2 = { -brand-mozilla-account } sayfasını açın
 menu-item-settings = Ayarlar
 menu-item-settings-alt = Ayarlar sayfasını aç
 menu-item-help = Yardım ve destek
@@ -694,7 +695,8 @@ menu-item-logout = Çıkış yap
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Şartlar ve gizlilik
+terms-of-service = Kullanım Koşulları
+privacy-notice = Gizlilik Bildirimi
 github = { -brand-github }
 footer-nav-all-breaches = Tüm ihlaller
 

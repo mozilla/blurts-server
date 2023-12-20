@@ -604,6 +604,7 @@ ad-unit-6-before-you-complete = 您下次註冊帳號時，可使用轉寄信箱
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = 付費版
@@ -615,9 +616,9 @@ ad-unit-6-before-you-complete = 您下次註冊帳號時，可使用轉寄信箱
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
+# “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Firefox 帳號
+-brand-mozilla-account = Mozilla 帳號
 
 ## Search Engine Optimization
 
@@ -633,7 +634,7 @@ sign-in = 登入
 site-nav-breaches-link = 處理資料外洩事件
 site-nav-settings-link = 設定
 site-nav-help-link = 說明與技術支援
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = 歡迎試用我們其他的安全工具：
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -643,8 +644,8 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = 使用者選單
 menu-button-alt = 開啟使用者選單
 menu-list-accessible-label = 帳號選單
-menu-item-fxa = 管理您的 { -brand-fx-account }
-menu-item-fxa-alt = 開啟 { -brand-fx-account } 頁面
+menu-item-fxa-2 = 管理您的 { -brand-mozilla-account }
+menu-item-fxa-alt-2 = 開啟 { -brand-mozilla-account }頁面
 menu-item-settings = 設定
 menu-item-settings-alt = 開啟設定頁面
 menu-item-help = 說明與技術支援
@@ -654,7 +655,8 @@ menu-item-logout = 登出
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = 使用條款及隱私權
+terms-of-service = 服務條款
+privacy-notice = 隱私權公告
 github = { -brand-github }
 footer-nav-all-breaches = 所有資料外洩事件
 
@@ -689,14 +691,3 @@ breach-detail-cta-signup = 檢查是否有外洩事件
 floating-banner-text = 訂閱來自 { -brand-Mozilla } 的最新資訊與使用秘訣來加強您的線上安全。
 floating-banner-link-label = 訂閱
 floating-banner-dismiss-button-label = 不要，謝謝
-
-## False door test
-
-
-# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
-
-false-door-test-content-part-one = 不應有任何人能夠買到您的個人資訊。
-false-door-test-content-part-two = 自動從試圖銷售資料的網站移除資料。
-false-door-test-content-part-two-dashboard = 自動從試圖銷售資料的網站移除資料。
-false-door-test-cta = 也算我一份
-false-door-test-popup-close = 關閉

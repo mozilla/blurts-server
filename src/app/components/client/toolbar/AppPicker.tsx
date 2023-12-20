@@ -10,21 +10,18 @@ import {
   TreeState,
   Item,
   MenuTriggerProps,
-  OverlayTriggerState,
   Node,
 } from "react-stately";
 import {
   useMenuTrigger,
   useButton,
   useMenu,
-  DismissButton,
+  mergeProps,
   useMenuItem,
   AriaMenuProps,
-  AriaPopoverProps,
-  usePopover,
-  Overlay,
+  AriaMenuTriggerProps,
 } from "react-aria";
-import { Key, ReactNode, useRef, RefObject } from "react";
+import { Key, useRef, RefObject } from "react";
 import Image from "next/image";
 import { ReactLocalization } from "@fluent/react";
 import styles from "./AppPicker.module.scss";
@@ -37,12 +34,13 @@ import FxMobileLogo from "./images/fx-mobile.png";
 import { useL10n } from "../../../hooks/l10n";
 import { BentoIcon } from "../../server/Icons";
 import { gaEvent } from "../../../functions/client/gaEvent";
+import { Popover } from "../Popover";
 
 const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
   relay: {
     id: "relay",
     url: `https://relay.firefox.com/?utm_source=${encodeURIComponent(
-      referringHost
+      referringHost,
     )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
     title: l10n.getString("toolbar-app-picker-product-relay"),
     gaLabel: "fx-relay",
@@ -56,7 +54,7 @@ const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
   fxDesktop: {
     id: "fxDesktop",
     url: `https://www.mozilla.org/firefox/new/?utm_source=${encodeURIComponent(
-      referringHost
+      referringHost,
     )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
     title: l10n.getString("toolbar-app-picker-product-fx-desktop"),
     gaLabel: "fx-desktop",
@@ -64,7 +62,7 @@ const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
   fxMobile: {
     id: "fxMobile",
     url: `https://www.mozilla.org/firefox/browsers/mobile/?utm_source=${encodeURIComponent(
-      referringHost
+      referringHost,
     )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
     title: l10n.getString("toolbar-app-picker-product-fx-mobile"),
     gaLabel: "fx-mobile",
@@ -72,7 +70,7 @@ const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
   vpn: {
     id: "vpn",
     url: `https://www.mozilla.org/products/vpn/?utm_source=${encodeURIComponent(
-      referringHost
+      referringHost,
     )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`,
     title: l10n.getString("toolbar-app-picker-product-vpn"),
     gaLabel: "vpn",
@@ -202,7 +200,7 @@ export const AppPicker = () => {
         <a
           ref={mozillaLinkRef}
           href={`https://www.mozilla.org/?utm_source=${encodeURIComponent(
-            referringHost
+            referringHost,
           )}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`}
           className={`${styles["menuLink"]} ${styles["mozillaLink"]}`}
           target="_blank"
@@ -215,110 +213,57 @@ export const AppPicker = () => {
   );
 };
 
-type AppPickerTriggerProps<T> = AriaMenuProps<T> &
-  MenuTriggerProps & {
-    label: string;
-    referringHost: string;
-  };
-const AppPickerTrigger = <T extends object>({
-  label,
-  referringHost,
-  ...otherProps
-}: AppPickerTriggerProps<T>) => {
+type AppPickerTriggerProps = {
+  label: string;
+  referringHost: string;
+} & AriaMenuProps<object> &
+  MenuTriggerProps &
+  AriaMenuTriggerProps;
+
+function AppPickerTrigger(props: AppPickerTriggerProps) {
   const l10n = useL10n();
-  const appPickerTriggerState = useMenuTriggerState({
-    ...otherProps,
-    // TODO: Add unit test when changing this code:
-    /* c8 ignore start */
+  const state = useMenuTriggerState({
     onOpenChange: (isOpen) => {
-      otherProps.onOpenChange?.(isOpen);
       gaEvent({
         category: "bento",
-        action: appPickerTriggerState.isOpen ? "bento-opened" : "bento-closed",
-        label: referringHost,
+        action: isOpen ? "bento-opened" : "bento-closed",
+        label: props.referringHost,
       });
     },
-    /* c8 ignore stop */
   });
-
-  const triggerButtonRef = useRef<HTMLButtonElement>(null);
-  const { menuTriggerProps, menuProps } = useMenuTrigger<T>(
-    {},
-    appPickerTriggerState,
-    triggerButtonRef
-  );
-
-  const triggerButtonProps = useButton(
-    menuTriggerProps,
-    triggerButtonRef
-  ).buttonProps;
+  const ref = useRef<HTMLButtonElement | null>(null);
+  const popoverRef = useRef<HTMLDivElement | null>(null);
+  const { menuTriggerProps, menuProps } = useMenuTrigger({}, state, ref);
+  const items = menuProps.items as Array<Node<object>>;
+  const mergedMenuProps = mergeProps(props, { ...menuProps, items });
+  const menuTriggerButton = useButton(menuTriggerProps, ref);
 
   return (
-    <div className={styles.wrapper}>
+    <>
       <button
-        {...triggerButtonProps}
-        ref={triggerButtonRef}
+        {...menuTriggerButton.buttonProps}
+        ref={ref}
         title={l10n.getString("toolbar-app-picker-trigger-title")}
         className={styles.trigger}
       >
-        <BentoIcon alt={label} />
+        <BentoIcon alt={props.label} />
       </button>
-      {appPickerTriggerState.isOpen && (
-        <AppPickerPopover
-          state={appPickerTriggerState}
-          triggerRef={triggerButtonRef}
-          placement="bottom"
+      {state.isOpen && (
+        <Popover
+          offset={20}
+          popoverRef={popoverRef}
+          state={state}
+          triggerRef={ref}
         >
           <AppPickerMenu
-            {...otherProps}
-            {...menuProps}
+            {...mergedMenuProps}
             aria-label={l10n.getString("toolbar-app-picker-trigger-title")}
           />
-        </AppPickerPopover>
+        </Popover>
       )}
-    </div>
+    </>
   );
-};
-
-type AppPickerPopoverProps = Omit<AriaPopoverProps, "popoverRef"> & {
-  children: ReactNode;
-  state: OverlayTriggerState;
-};
-// TODO: Add unit test when changing this code:
-/* c8 ignore start */
-const AppPickerPopover = ({
-  children,
-  state,
-  ...otherProps
-}: AppPickerPopoverProps) => {
-  const popoverRef = useRef<HTMLDivElement>(null);
-  const { popoverProps, underlayProps, arrowProps, placement } = usePopover(
-    {
-      ...otherProps,
-      popoverRef: popoverRef,
-    },
-    state
-  );
-
-  // The <DismissButton> components allow screen reader users
-  // to dismiss the popover easily.
-  return (
-    <Overlay>
-      <div {...underlayProps} style={{ position: "fixed", inset: 0 }} />
-      <div {...popoverProps} ref={popoverRef} className={styles.popover}>
-        <div
-          {...arrowProps}
-          data-placement={placement}
-          className={styles.triggerAnchor}
-        />
-        <DismissButton onDismiss={() => state.close()} />
-        <div className={styles.popup}>{children}</div>
-        <DismissButton onDismiss={() => state.close()} />
-      </div>
-    </Overlay>
-  );
-};
-/* c8 ignore stop */
+}
 
 type AppPickerMenuProps<T> = AriaMenuProps<T>;
 
@@ -333,7 +278,7 @@ const AppPickerMenu = <T extends object>(props: AppPickerMenuProps<T>) => {
   const menuProps = useMenu(props, menuState, menuRef).menuProps;
 
   return (
-    <>
+    <div className={styles.popup}>
       <div className={styles.appPickerHeading}>
         <Image src={FirefoxLogo} alt="" width={32} height={32} />
         <h2>{l10n.getString("fx-makes-tech")}</h2>
@@ -343,7 +288,7 @@ const AppPickerMenu = <T extends object>(props: AppPickerMenuProps<T>) => {
           <AppPickerItem key={item.key} item={item} state={menuState} />
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 /* c8 ignore stop */
@@ -363,7 +308,7 @@ const AppPickerItem = <T extends object>(props: AppPickerItemProps<T>) => {
       key: props.item.key,
     },
     props.state,
-    menuItemRef
+    menuItemRef,
   );
 
   return (

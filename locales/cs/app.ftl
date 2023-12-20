@@ -780,6 +780,7 @@ ad-unit-6-before-you-complete = Během své další registrace použijte místo 
        *[nom] Firefox
     }
     .gender = masculine
+-brand-monitor = Monitor
 -brand-fx-monitor =
     { $case ->
         [gen] Firefox Monitoru
@@ -831,9 +832,41 @@ ad-unit-6-before-you-complete = Během své další registrace použijte místo 
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
+# “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Účet Firefoxu
+-brand-mozilla-account =
+    { $case ->
+        [gen]
+            { $capitalization ->
+                [lower] účtu Mozilla
+               *[upper] Účtu Mozilla
+            }
+        [dat]
+            { $capitalization ->
+                [lower] účtu Mozilla
+               *[upper] Účtu Mozilla
+            }
+        [acc]
+            { $capitalization ->
+                [lower] účet Mozilla
+               *[upper] Účet Mozilla
+            }
+        [loc]
+            { $capitalization ->
+                [lower] účte Mozilla
+               *[upper] Účte Mozilla
+            }
+        [ins]
+            { $capitalization ->
+                [lower] účtom Mozilla
+               *[upper] Účtom Mozilla
+            }
+       *[nom]
+            { $capitalization ->
+                [lower] účet Mozilla
+               *[upper] Účet Mozilla
+            }
+    }
 
 ## Search Engine Optimization
 
@@ -849,7 +882,7 @@ sign-in = Přihlásit se
 site-nav-breaches-link = Vyřešit úniky dat
 site-nav-settings-link = Nastavení
 site-nav-help-link = Nápověda a podpora
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Vyzkoušejte naše další bezpečnostní nástroje:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -859,8 +892,8 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Nabídka uživatele
 menu-button-alt = Otevřít nabídku uživatele
 menu-list-accessible-label = Nabídka účtu
-menu-item-fxa = Spravovat { -brand-fx-account(case: "acc", capitalization: "lower") }
-menu-item-fxa-alt = Otevřít stránku { -brand-fx-account }
+menu-item-fxa-2 = Spravovat { -brand-mozilla-account(case: "acc", capitalization: "lower") }
+menu-item-fxa-alt-2 = Otevřít stránku pro { -brand-mozilla-account(case: "acc") }
 menu-item-settings = Nastavení
 menu-item-settings-alt = Otevřít stránku nastavení
 menu-item-help = Nápověda a podpora
@@ -870,7 +903,8 @@ menu-item-logout = Odhlásit se
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Podmínky a ochrana soukromí
+terms-of-service = Podmínky služby
+privacy-notice = Zásady ochrany osobních údajů
 github = { -brand-github }
 footer-nav-all-breaches = Všechny úniky
 

@@ -90,7 +90,7 @@ fxa-pwt-summary-6 =
 fxa-what-to-do-blurb-1 =
     Eñepyrũkuaárõ tembiapo, eñe’ẽ ñanduti renda ndive eporandu hag̃ua mba’éichapa embohekopyahúta. 
     ¿Ehecha peteĩ mba’ete eikuaa’ỹva? Ne mba’ekuaarã ikatu oñevendémara’e 
-    térã oñemyasãima. Kóva avei ikatu ha’e mba’ete nderesaráiva emoheñói hag̃ua térã  peteĩ mba’apohaguasu omoambuéva héra.
+    térã oñemoasãima. Kóva avei ikatu ha’e mba’ete nderesaráiva emoheñói hag̃ua térã  peteĩ mba’apohaguasu omoambuéva héra.
 fxa-what-to-do-subhead-2 = Anive eiporu ñe’ẽñemi ojekuaareíva ha emoambue opaite tenda eiporuhápe.
 fxa-wtd-blurb-2 = Umi mba’evaiapoha tembiporupyahugua oiporujeykuaa ñe’ẽñemi ojehechakuaáva eike hag̃ua ambue mba’etépe. Emoheñói ñe’ẽñemi pyahu ha ha ha’eñóva peteĩteĩva mba’etépe, ejapokuaáva ne mba’ete banco pegua, ne ñanduti veve ha ambue ñanduti renda eñongatu hague ne maranduete.
 fxa-what-to-do-blurb-3 =
@@ -145,7 +145,7 @@ sensitive-sites-copy =
     ñembyai rehegua ojehechajey vove ñanduti veve kundaharape. Kóva he’ise nde ha’eha
     neañomi ehechataha ne marandúpa oñembyaikuaápara’e (peteĩva noiméiramo
     oikekuaa ne mba’ete ñanduti veve reheguápe).
-delayed-reporting-headline = Mba’ére eha’arõiterei ñembyai ñemomarandu
+delayed-reporting-headline = Mba’ére eha’ãrõiterei ñembyai ñemomarandu
 delayed-reporting-copy = Ikatu oraha heta jasy térã ary umi credencial ojehechakuaáva rehegua mba’ekuaarã ñembyaíva osẽkuaáva ñanduti ypytũme. Umi ñembyai ojuajúta ñane mba’ekuaarã rendápe pya’ete ojejuhu térã ojehechajey rire.
 about-fxm-headline = { -product-name } rehegua
 about-fxm-blurb = { -product-name } omombe’u ne mba’ete ñandutigua ivaikuaápara’e ne mba’ekuaarã. Ehecháke ne mba’ekuaarãpa imarãkuaára’e, og̃uahẽta kyhyjerã ñembyai pyahu ha ehecha mba’éichapa emo’ãkuaa ne mba’ete ñandutípe. { -brand-Mozilla } ohepyme’ẽ { -product-name }.
@@ -164,7 +164,7 @@ how-fxm-2-blurb =
     ñemboguapyre, oĩhápe marandu’i ojehayhúva.
 how-fxm-3-headline = Erekóta marandu’i kundahárape
 how-fxm-3-blurb =
-    Eipurúramo { -brand-name }, og̃uahẽta ndéve marandu’i eikéramo 
+    Eiporúramo { -brand-name }, og̃uahẽta ndéve marandu’i eikéramo 
     tenda ñembyaipyrépe. Ehecháke eimépara’e pe ñembyaípe ha mba’épa ikatu ejapo péva renondépe.
 wtd-after-website = Mba’e ejapóta ñanduti kuatiarogue oñembyai rire
 wtd-after-data-agg = Mba’e ejapóta oñembyai rire mba’ekuaarã mbojuapyhára
@@ -256,13 +256,13 @@ ba-next-step-2 = Anive eiporu ñe’ẽñemi ojekuaareíva.
 ba-next-step-blurb-2 =
     Umi hekovaíva ñadutípe ikatu ojuhu ne ñe’ẽñemi ñanduti ypytũme 
     ha oiporu ñepyrũ hag̃ua tembiapo ambue ne mba’etépe. Emo’ãporãve hag̃ua 
-    eipurúke ñe’ẽñemi ha’etéva peteĩteĩvape g̃uarã.
+    eiporúke ñe’ẽñemi ha’etéva peteĩteĩvape g̃uarã.
 ba-next-step-3 = Eñepytyvõuka emoheñói hag̃ua ñe’ẽñemi oikóva ha ereko tekorosãme.
 ba-next-step-blurb-3 =
     Oiporu ñe’ẽñemi ñangarekoha omoheñói hag̃ua ñe’ẽñemi hekorosãva ha ha’eñóva. Ko’ã ñangarekoha ombyaty opaite ne
     rembiapo ñepyrũ hekorosãva eike hag̃ua opaite ne mba’e’oka guive.
 faq1 = Ndaikuaái ko mba’apohaguasu térã ñanduti renda. ¿Mba’ére aime ko ñembyaípe?
-faq2 = ¿Mba’ére eha’arõite ko ñembyai ñemomarandu?
+faq2 = Mba’érepa eha’ãrõite ñembyai momarandu
 faq3 = ¿Mba’éicha aikuaáta ko ñanduti veve ha’eha { -product-name } mba’e?
 # Variables:
 #   $breachCount (Integer) - Number of breaches
@@ -305,7 +305,7 @@ facebook-breach-note =
     hákatu pe pumbyry papapy ikatu gueteri oñembyai.</span> Peteĩva umi mba’ete
     ivaikuaáva Facebook mboguaha ryepýpe oike pumbyry papapy ha ambue
     maranduete oike’ỹhápe ñanduti veve kundaharape. Eñemboheraguapýmaramo kuri
-    Facebook mba’etépe — ndereipurúiramo jepe — ro’e ndéve
+    Facebook mba’etépe — ndereiporúiramo jepe — ro’e ndéve
     ejapo hag̃ua ko’ã mba’e ne rekorosãrã.
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
@@ -322,7 +322,7 @@ facebook-breach-what-to-do-2-headline =
     popegua me’ẽhára rupi</a> emboyke hag̃ua SIM momokõi</span>.
 facebook-breach-what-to-do-2-copy =
     SIM moambue, ojeheróva SIM jejapyhy,
-    oiko mba’evaiapoha oipurúrõ pumbyry papapy, ára reñoiha ha ambue mba’ekuaarã oipe’a hag̃ua
+    oiko mba’evaiapoha oiporúrõ pumbyry papapy, ára reñoiha ha ambue mba’ekuaarã oipe’a hag̃ua
     tapicha pumbyry papapy ha upéi omonda ne ñanduti veve, ava ñandutieta ha ikatúramo virugua mba’ete.
 facebook-breach-what-to-do-3 = Ehechapaite umi ñemoñe’ẽ ore Facebook kuatiarogue mboguahápe
 # "Appears in-page as: Showing: All Breaches"
@@ -474,8 +474,8 @@ breach-added-label = Mboguapy mbojuajupyre:
 how-hackers-work-desc = Emo’ã ne ñe’ẽñemi mba’evai apoha ñandutiguávagui, ha’éva pe eipotavéva.
 what-to-do-after-breach-desc = Ejoko ne mba’ete eguereko hag̃ua ne marandu mombyry iñañávagui.
 create-strong-passwords-desc = Ejapo ne ñe’ẽñemi imbaretéva, hekorosã ha hasýva ojekuaa hag̃ua.
-steps-to-protect-desc = Eikumby kyhyjerã hetavéva eikuaa hag̃ua mba’etépa pe ehekava’erã.
-five-myths-desc = Eikuaa mb’aéichapa emboykéta ñe’ẽñemi jeporuvai nombohasýiva hekovaíva rembiapo.
+steps-to-protect-desc = Eikũmby kyhyjerã hetavéva eikuaa hag̃ua mba’etépa pe ehekava’erã.
+five-myths-desc = Mba’éichapa emboykéta ñe’ẽñemi jeporuvai nombohasýiva hekovaíva rembiapo.
 take-further-steps-desc = Ehecha mba’éichapa emboykéta teratee ñemonda ani hag̃ua ñe apañuãi viru rekópe.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = ¡Moambuepy ñongatupyre!
@@ -618,7 +618,7 @@ steps-to-resolve-headline = Tape emoĩporã hag̃ua ko ñembyai
 vpn-promo-headline = Ko’ág̃a emongakuaa tekorosã ñandutípe.
 vpn-promo-copy = { -brand-Mozilla } Virtual Private Network oipytyvõ emo’ã hag̃ua nde jeike ñandutípe umi mba’evai apohágui.
 vpn-promo-cta = Erekóke { -brand-mozilla-vpn }
-vpn-promo-headline-new = 50% sa’ivéta ehepyme’ẽramo ary pukukue
+vpn-promo-headline-new = 50% sa’ivéta ehepyme’ẽrõ ary pukukue
 vpn-promo-copy-new = Emo’ã ne mba’ekuaarã ñandutípe ha eiporavo—VPN-pe teraguapy ojokupytýva eikotevẽvare.
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
@@ -630,8 +630,8 @@ vpn-promo-copy-new = Emo’ã ne mba’ekuaarã ñandutípe ha eiporavo—VPN-pe
 vpn-banner-location = Ne rendaite: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Eñemo’ã</em> { -brand-mozilla-vpn } ndive.
 vpn-banner-protected-with-vpn = <em>Mo’ãmbyre</em> { -brand-mozilla-vpn } ndive.
-vpn-banner-title-1 = Reñemo’ãreína — aguyje reipurúre { -brand-mozilla-vpn }.
-vpn-banner-title-2 = Ne rendaite ojehapykuehokuaa ndereipurúiramo VPN.
+vpn-banner-title-1 = Reñemo’ãreína — aguyje reiporúre { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Ne rendaite ojehapykuehokuaa ndereiporúiramo VPN.
 vpn-banner-subtitle-2 = Emo’ã ne rendaite ha eikundaha tekorosãme 3 jeku’épe
 vpn-banner-status-protected = Nde rekoite: <em>Oĩ ñemo’ãme</em>
 vpn-banner-status-not-protected = Nde rekoite: <em>Noñemo’ãi⚠</em>
@@ -643,7 +643,7 @@ vpn-banner-step-2 = Eiporavo VPN rendaite
 vpn-banner-step-3 = Emyandy VPN ha eikundaha tekorosãme
 vpn-banner-cta = Erekóke { -brand-mozilla-vpn }
 # button to expand panel
-vpn-banner-cta-expand = Myasãi
+vpn-banner-cta-expand = Moasãi
 # button to close panel
 vpn-banner-cta-close = Mboty
 
@@ -682,7 +682,7 @@ ad-unit-5-use-on-phone = Eiporu ne pumbyrýpe
 ad-unit-5-no-matter-where = Tereime reimehápe, emoheñói peteĩ ñanduti veve rovara’ãnga nemba’eteéva sapy’aitépe ejapo hag̃ua ejaposéva uperire
 # ad 6 heading
 ad-unit-6-worry-free = Eñemboheraguapy apañuãi’ỹre
-ad-unit-6-want-to-start = Eñemboheraguapysépa, embohovái pe ñepepirũ térã ejerurekuaa ñemyasãirã ayvu pe spam oñuã’ỹre ne ñe’ẽmondo g̃uahẽha
+ad-unit-6-want-to-start = Eñemboheraguapysépa, embohovái pe ñepepirũ térã ejerurekuaa ñemoasãirã ayvu pe spam oñuã’ỹre ne ñe’ẽmondo g̃uahẽha
 ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eiporu ñanduti veve rovara’ãnga ne ñanduti vevetéva rendaguépe emo’ã hag̃ua ne marandu ha ehechamemekuaa hag̃ua ne ñe’ẽmondo g̃uahẽha
 
 # Monitor V2
@@ -691,6 +691,7 @@ ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eiporu ñand
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Iporãvéva
@@ -702,9 +703,9 @@ ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eiporu ñand
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
+# “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Firefox mba’ete
+-brand-mozilla-account = Mozilla mba’ete
 
 ## Search Engine Optimization
 
@@ -720,7 +721,7 @@ sign-in = Eñepyrũ tembiapo
 site-nav-breaches-link = Emoĩporã mba’ekuaarã ñembogua
 site-nav-settings-link = Ñemboheko
 site-nav-help-link = Ñepytvõ ha Pytyvõha
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Eiporu ore ambue rembiporu tekorosãrã:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -730,8 +731,8 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Poruhára jeporavoha
 menu-button-alt = Embojuruja poruhára jeporavoha
 menu-list-accessible-label = Mba’ete jeporavoha
-menu-item-fxa = Eñangareko nde { -brand-fx-account }
-menu-item-fxa-alt = Embojuruja { -brand-fx-account } kuatiarogue
+menu-item-fxa-2 = Eñangareko { -brand-mozilla-account } rehe
+menu-item-fxa-alt-2 = Embojuruja { -brand-mozilla-account } kuatiarogue
 menu-item-settings = Ñemboheko
 menu-item-settings-alt = Embojuruja kuatiarogue ñemboheko
 menu-item-help = Ñepytvõ ha Pytyvõha
@@ -741,7 +742,8 @@ menu-item-logout = Emboty tembiapo
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Mboguatarã ha ñemigua
+terms-of-service = Mba’epytyvõrã ñemboguata
+privacy-notice = Marandu’i ñemiguáva
 github = { -brand-github }
 footer-nav-all-breaches = Opaite Ñembogua
 

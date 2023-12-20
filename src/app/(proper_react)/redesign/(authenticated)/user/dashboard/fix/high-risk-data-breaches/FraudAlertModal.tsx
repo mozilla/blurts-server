@@ -23,7 +23,7 @@ export const FraudAlertModal = () => {
   });
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: "dialog" },
-    overlayTriggerState
+    overlayTriggerState,
   );
   const triggerRef = useRef<HTMLButtonElement>(null);
   const { buttonProps } = useButton(triggerProps, triggerRef);
@@ -44,7 +44,7 @@ export const FraudAlertModal = () => {
       >
         <QuestionMarkCircle
           alt={l10n.getString(
-            "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-trigger-label"
+            "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-trigger-label",
           )}
           width={18}
           height={18}
@@ -77,7 +77,7 @@ export const FraudAlertModal = () => {
                     elems: {
                       b: <strong />,
                     },
-                  }
+                  },
                 )}
                 &nbsp;
                 {l10n.getFragment(
@@ -106,7 +106,7 @@ export const FraudAlertModal = () => {
                         />
                       ),
                     },
-                  }
+                  },
                 )}
               </p>
               <p>
@@ -121,6 +121,8 @@ export const FraudAlertModal = () => {
               <div className={styles.confirmButtonWrapper}>
                 <Button
                   variant="primary"
+                  // TODO: Test dialog closing
+                  /* c8 ignore next */
                   onPress={() => overlayTriggerState.close()}
                   autoFocus={true}
                 >

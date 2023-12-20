@@ -689,6 +689,7 @@ ad-unit-6-before-you-complete = Sebelum menyelesaikan pendaftaran berikutnya, gu
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
@@ -700,9 +701,9 @@ ad-unit-6-before-you-complete = Sebelum menyelesaikan pendaftaran berikutnya, gu
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
+# “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Akun Firefox
+-brand-mozilla-account = Akun Mozilla
 
 ## Search Engine Optimization
 
@@ -718,7 +719,7 @@ sign-in = Masuk
 site-nav-breaches-link = Atasi Pembobolan Data
 site-nav-settings-link = Pengaturan
 site-nav-help-link = Bantuan dan Dukungan
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Coba alat keamanan kami lainnya:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -728,8 +729,8 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Menu pengguna
 menu-button-alt = Buka menu pengguna
 menu-list-accessible-label = Menu akun
-menu-item-fxa = Kelola { -brand-fx-account } Anda
-menu-item-fxa-alt = Buka laman { -brand-fx-account }
+menu-item-fxa-2 = Kelola { -brand-mozilla-account } Anda
+menu-item-fxa-alt-2 = Buka laman { -brand-mozilla-account }
 menu-item-settings = Pengaturan
 menu-item-settings-alt = Buka laman pengaturan
 menu-item-help = Bantuan dan dukungan
@@ -739,7 +740,8 @@ menu-item-logout = Keluar
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Ketentuan dan Privasi
+terms-of-service = Ketentuan Layanan
+privacy-notice = Kebijakan Privasi
 github = { -brand-github }
 footer-nav-all-breaches = Semua Pembobolan
 
@@ -774,14 +776,3 @@ breach-detail-cta-signup = Periksa pembobolan data
 floating-banner-text = Tingkatkan keamanan daring Anda dengan berita, kiat, dan pembaruan dari { -brand-Mozilla }.
 floating-banner-link-label = Daftar
 floating-banner-dismiss-button-label = Tidak, terima kasih
-
-## False door test
-
-
-# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
-
-false-door-test-content-part-one = Tidak seorang pun dapat membeli informasi pribadi Anda.
-false-door-test-content-part-two = Secara otomatis menghapus data dari situs yang mencoba menjualnya.
-false-door-test-content-part-two-dashboard = Hapus otomatis data dari situs yang mencoba menjualnya.
-false-door-test-cta = Hitung saya
-false-door-test-popup-close = Tutup

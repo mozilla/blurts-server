@@ -689,6 +689,7 @@ ad-unit-6-before-you-complete = Прежде чем завершить след�
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
@@ -700,13 +701,9 @@ ad-unit-6-before-you-complete = Прежде чем завершить след�
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
+# “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-fx-account =
-    { $case ->
-        [prepositional] Аккаунтом Firefox
-       *[nominative] Аккаунт Firefox
-    }
+-brand-mozilla-account = Аккаунт Mozilla
 
 ## Search Engine Optimization
 
@@ -722,7 +719,7 @@ sign-in = Войти
 site-nav-breaches-link = Разобраться с утечками данных
 site-nav-settings-link = Настройки
 site-nav-help-link = Помощь и Поддержка
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Попробуйте другие наши инструменты безопасности:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -732,8 +729,8 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Пользовательское меню
 menu-button-alt = Открыть пользовательское меню
 menu-list-accessible-label = Меню аккаунта
-menu-item-fxa = Управляйте своим { -brand-fx-account(case: "prepositional") }
-menu-item-fxa-alt = Открыть страницу { -brand-fx-account }
+menu-item-fxa-2 = Управляйте своим { -brand-mozilla-account }
+menu-item-fxa-alt-2 = Открыть страницу { -brand-mozilla-account }
 menu-item-settings = Настройки
 menu-item-settings-alt = Открыть страницу настроек
 menu-item-help = Справка и поддержка
@@ -743,7 +740,8 @@ menu-item-logout = Выйти
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Условия и конфиденциальность
+terms-of-service = Условия использования
+privacy-notice = Уведомление о конфиденциальности
 github = { -brand-github }
 footer-nav-all-breaches = Все утечки
 

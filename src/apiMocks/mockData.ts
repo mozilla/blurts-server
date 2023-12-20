@@ -46,7 +46,7 @@ export type RandomScanResultOptions = Partial<{
  * @returns A single scan result.
  */
 export function createRandomScanResult(
-  options: RandomScanResultOptions = {}
+  options: RandomScanResultOptions = {},
 ): OnerepScanResultRow {
   faker.seed(options.fakerSeed);
   return {
@@ -60,7 +60,7 @@ export function createRandomScanResult(
     status:
       options.status ??
       (faker.helpers.arrayElement(
-        Object.values(RemovalStatusMap)
+        Object.values(RemovalStatusMap),
       ) as RemovalStatus),
     manually_resolved: options.manually_resolved ?? faker.datatype.boolean(),
     addresses: Array.from({ length: 3 }, () => ({
@@ -81,7 +81,7 @@ export function createRandomScanResult(
 }
 
 export type RandomBreachOptions = Partial<{
-  dataClasses: string[];
+  dataClasses: SubscriberBreach["dataClasses"];
   addedDate: Date;
   isResolved: boolean;
   dataClassesEffected: DataClassEffected[];
@@ -91,14 +91,23 @@ export type RandomBreachOptions = Partial<{
 
 // TODO: MNTOR-2033 Update this random breach function with new data breach object, and deprecate all BreachMockItems
 export function createRandomBreach(
-  options: RandomBreachOptions = {}
+  options: RandomBreachOptions = {},
 ): SubscriberBreach {
   const dataClassTypes = options.isHighRiskOnly
     ? HighRiskDataTypes
     : BreachDataTypes;
-  const dataClasses = faker.helpers.arrayElements(
-    Object.values(dataClassTypes)
-  );
+  const dataClasses =
+    options.dataClasses ??
+    // If no explicit data-classes are passed, but affected data classes *are*,
+    // then the affected data classes will be used as the list of data classes:
+    (Array.isArray(options.dataClassesEffected)
+      ? options.dataClassesEffected
+          .map(
+            (affectedObj) =>
+              Object.keys(affectedObj) as SubscriberBreach["dataClasses"],
+          )
+          .flat()
+      : faker.helpers.arrayElements(Object.values(dataClassTypes)));
 
   faker.seed(options.fakerSeed);
   const isResolved = options.isResolved ?? faker.datatype.boolean();

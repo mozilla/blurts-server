@@ -4,7 +4,7 @@
 
 import { test, expect } from "../fixtures/basePage.js";
 
-test.describe("Authentication flow verification @smoke", () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @smoke`, () => {
   test.beforeEach(async ({ landingPage }) => {
     await landingPage.open();
   });
@@ -36,7 +36,7 @@ test.describe("Authentication flow verification @smoke", () => {
       {
         body: await page.screenshot(),
         contentType: "image/png",
-      }
+      },
     );
   });
 
@@ -66,7 +66,7 @@ test.describe("Authentication flow verification @smoke", () => {
       {
         body: await page.screenshot(),
         contentType: "image/png",
-      }
+      },
     );
   });
 });

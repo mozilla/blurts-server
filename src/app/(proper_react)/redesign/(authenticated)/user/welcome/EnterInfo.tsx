@@ -31,7 +31,7 @@ import styles from "./EnterInfo.module.scss";
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 const createProfileAndStartScan = async (
-  userInfo: UserInfo
+  userInfo: UserInfo,
 ): Promise<WelcomeScanBody> => {
   const response = await fetch("/api/v1/user/welcome-scan/create", {
     method: "POST",
@@ -54,9 +54,16 @@ export type Props = {
   onScanStarted: () => void;
   onGoBack: () => void;
   user: Session["user"];
+  skipInitialStep: boolean;
+  previousRoute: string | null;
 };
 
-export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
+export const EnterInfo = ({
+  onScanStarted,
+  onGoBack,
+  skipInitialStep,
+  previousRoute,
+}: Props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [location, setLocation] = useState("");
@@ -67,13 +74,13 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
   const explainerDialogState = useOverlayTriggerState({});
   const explainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
-    explainerDialogState
+    explainerDialogState,
   );
 
   const confirmDialogState = useOverlayTriggerState({});
   const confirmDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
-    confirmDialogState
+    confirmDialogState,
   );
 
   const l10n = useL10n();
@@ -83,13 +90,10 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       key: "firstName",
       type: "text",
       placeholder: l10n.getString(
-        "onboarding-enter-details-placeholder-first-name"
+        "onboarding-enter-details-placeholder-first-name",
       ),
       value: firstName,
       displayValue: firstName,
-      errorMessage: l10n.getString(
-        "onboarding-enter-details-input-error-message-generic"
-      ),
       isValid: firstName.trim() !== "",
       onChange: setFirstName,
     },
@@ -98,13 +102,10 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       key: "lastName",
       type: "text",
       placeholder: l10n.getString(
-        "onboarding-enter-details-placeholder-last-name"
+        "onboarding-enter-details-placeholder-last-name",
       ),
       value: lastName,
       displayValue: lastName,
-      errorMessage: l10n.getString(
-        "onboarding-enter-details-input-error-message-generic"
-      ),
       isValid: lastName.trim() !== "",
       onChange: setLastName,
     },
@@ -113,13 +114,10 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       key: "location",
       type: "text",
       placeholder: l10n.getString(
-        "onboarding-enter-details-placeholder-location"
+        "onboarding-enter-details-placeholder-location",
       ),
       value: location,
       displayValue: location,
-      errorMessage: l10n.getString(
-        "onboarding-enter-details-input-error-message-location"
-      ),
       isValid: location.trim() !== "",
       onChange: setLocation,
     },
@@ -133,9 +131,6 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         dateStyle: "medium",
         timeZone: "UTC",
       }),
-      errorMessage: l10n.getString(
-        "onboarding-enter-details-input-error-message-generic"
-      ),
       isValid: meetsAgeRequirement(dateOfBirth),
       onChange: setDateOfBirth,
     },
@@ -229,7 +224,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
                   />
                 ),
               },
-            }
+            },
           )}
         </p>
 
@@ -241,7 +236,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
             className={styles.startButton}
           >
             {l10n.getString(
-              "onboarding-get-started-how-it-works-dialog-confirm-label"
+              "onboarding-get-started-how-it-works-dialog-confirm-label",
             )}
           </Button>
         </div>
@@ -273,7 +268,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
           className={styles.startButton}
         >
           {l10n.getString(
-            "onboarding-enter-details-comfirm-dialog-button-edit"
+            "onboarding-enter-details-comfirm-dialog-button-edit",
           )}
         </Button>
         <Button
@@ -286,7 +281,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
           isLoading={requestingScan}
         >
           {l10n.getString(
-            "onboarding-enter-details-comfirm-dialog-button-confirm"
+            "onboarding-enter-details-comfirm-dialog-button-confirm",
           )}
         </Button>
       </div>
@@ -296,7 +291,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const { buttonProps } = useButton(
     explainerDialogTrigger.triggerProps,
-    triggerRef
+    triggerRef,
   );
 
   return (
@@ -319,34 +314,28 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       <form onSubmit={handleOnSubmit}>
         <div className={styles.inputContainer}>
           {userDetailsData.map(
-            ({
-              key,
-              errorMessage,
-              label,
-              onChange,
-              placeholder,
-              isValid,
-              type,
-              value,
-            }) => {
+            ({ key, label, onChange, placeholder, isValid, type, value }) => {
               const validationState =
                 !isValid && invalidInputs.includes(key) ? "invalid" : "valid";
               return key === "location" ? (
                 <LocationAutocompleteInput
                   key={key}
-                  errorMessage={errorMessage}
+                  errorMessage={l10n.getString(
+                    "onboarding-enter-details-input-error-message-location",
+                  )}
                   label={label}
                   isRequired={true}
                   onChange={onChange}
                   placeholder={placeholder}
-                  type={type}
                   validationState={validationState}
-                  value={value}
+                  inputValue={value}
                 />
               ) : (
                 <InputField
                   key={key}
-                  errorMessage={errorMessage}
+                  errorMessage={l10n.getString(
+                    "onboarding-enter-details-input-error-message-generic",
+                  )}
                   label={label}
                   isRequired={true}
                   onChange={onChange}
@@ -356,18 +345,20 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
                   value={value}
                 />
               );
-            }
+            },
           )}
         </div>
         <div className={styles.stepButtonWrapper}>
-          <Button
-            variant="secondary"
-            onPress={() => onGoBack()}
-            className={styles.startButton}
-            type="button"
-          >
-            {l10n.getString("onboarding-steps-enter-info-back")}
-          </Button>
+          {(!skipInitialStep || (skipInitialStep && previousRoute)) && (
+            <Button
+              variant="secondary"
+              onPress={() => onGoBack()}
+              className={styles.startButton}
+              type="button"
+            >
+              {l10n.getString("onboarding-steps-enter-info-back")}
+            </Button>
+          )}
           <Button
             {...confirmDialogTrigger.triggerProps}
             variant="primary"

@@ -644,6 +644,7 @@ ad-unit-6-before-you-complete = Pour finir cette inscription, utilisez un alias 
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
@@ -655,13 +656,9 @@ ad-unit-6-before-you-complete = Pour finir cette inscription, utilisez un alias 
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
+# “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-fx-account =
-    { $capitalization ->
-       *[lowercase] compte Firefox
-        [uppercase] Compte Firefox
-    }
+-brand-mozilla-account = Compte Mozilla
 
 ## Search Engine Optimization
 
@@ -677,7 +674,7 @@ sign-in = Se connecter
 site-nav-breaches-link = Régler vos fuites de données
 site-nav-settings-link = Paramètres
 site-nav-help-link = Aide et assistance
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Essayez nos autres outils de sécurité :
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -687,8 +684,8 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Menu utilisateur
 menu-button-alt = Ouvrir le menu utilisateur
 menu-list-accessible-label = Menu du compte
-menu-item-fxa = Gérer votre { -brand-fx-account }
-menu-item-fxa-alt = Ouvrir la page du { -brand-fx-account }
+menu-item-fxa-2 = Gérer votre { -brand-mozilla-account }
+menu-item-fxa-alt-2 = Ouvrir la page du { -brand-mozilla-account }
 menu-item-settings = Paramètres
 menu-item-settings-alt = Ouvrir la page des paramètres
 menu-item-help = Aide et assistance
@@ -698,7 +695,8 @@ menu-item-logout = Déconnexion
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Confidentialité et conditions d’utilisation
+terms-of-service = Conditions d’utilisation
+privacy-notice = Politique de confidentialité
 github = { -brand-github }
 footer-nav-all-breaches = Toutes les fuites de données
 
@@ -733,14 +731,3 @@ breach-detail-cta-signup = Vérifier les fuites de données
 floating-banner-text = Renforcez votre sécurité en ligne avec les actualités et les conseils de { -brand-Mozilla }.
 floating-banner-link-label = Je m’inscris
 floating-banner-dismiss-button-label = Non merci
-
-## False door test
-
-
-# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
-
-false-door-test-content-part-one = Personne ne devrait pouvoir acheter vos informations personnelles.
-false-door-test-content-part-two = Supprimez automatiquement vos données des sites qui tentent d’en vendre.
-false-door-test-content-part-two-dashboard = Supprimez automatiquement les données des sites qui tentent d’en vendre.
-false-door-test-cta = Participer
-false-door-test-popup-close = Fermer

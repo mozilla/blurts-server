@@ -676,6 +676,7 @@ ad-unit-6-before-you-complete = Antes de concluir o próximo cadastro, use uma m
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
@@ -687,9 +688,9 @@ ad-unit-6-before-you-complete = Antes de concluir o próximo cadastro, use uma m
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
+# “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Conta Firefox
+-brand-mozilla-account = Conta Mozilla
 
 ## Search Engine Optimization
 
@@ -705,7 +706,7 @@ sign-in = Entrar
 site-nav-breaches-link = Resolver vazamentos de dados
 site-nav-settings-link = Configurações
 site-nav-help-link = Ajuda e suporte
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Experimente nossas outras ferramentas de segurança:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -715,8 +716,8 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Menu do usuário
 menu-button-alt = Abrir menu do usuário
 menu-list-accessible-label = Menu da conta
-menu-item-fxa = Gerencie sua { -brand-fx-account }
-menu-item-fxa-alt = Abrir página da { -brand-fx-account }
+menu-item-fxa-2 = Gerencie sua { -brand-mozilla-account }
+menu-item-fxa-alt-2 = Abrir página da { -brand-mozilla-account }
 menu-item-settings = Configurações
 menu-item-settings-alt = Abrir página de configurações
 menu-item-help = Ajuda e suporte
@@ -726,7 +727,8 @@ menu-item-logout = Sair
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Termos e Privacidade
+terms-of-service = Termos do serviço
+privacy-notice = Aviso de privacidade
 github = { -brand-github }
 footer-nav-all-breaches = Todos os vazamentos
 

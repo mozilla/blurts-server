@@ -745,6 +745,7 @@ ad-unit-6-before-you-complete = Preden dokončate naslednjo prijavo, uporabite e
         [mestnik] Firefoxu
         [orodnik] Firefoxom
     }
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla =
     { $sklon ->
@@ -772,9 +773,17 @@ ad-unit-6-before-you-complete = Preden dokončate naslednjo prijavo, uporabite e
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
+# “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Firefox Račun
+-brand-mozilla-account =
+    { $sklon ->
+        [rodilnik] Računa Mozilla
+        [dajalnik] Računu Mozilla
+        [tozilnik] Račun Mozilla
+        [mestnik] Računu Mozilla
+        [orodnik] Računom Mozilla
+       *[imenovalnik] Račun Mozilla
+    }
 
 ## Search Engine Optimization
 
@@ -790,7 +799,7 @@ sign-in = Prijavite se
 site-nav-breaches-link = Razrešite kraje podatkov
 site-nav-settings-link = Nastavitve
 site-nav-help-link = Pomoč in podpora
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Preizkusite druga naša varnostna orodja:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -800,8 +809,8 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Uporabniški meni
 menu-button-alt = Odpri uporabniški meni
 menu-list-accessible-label = Meni računa
-menu-item-fxa = Upravljajte svoj { -brand-fx-account }
-menu-item-fxa-alt = Odpri stran { -brand-fx-account }
+menu-item-fxa-2 = Upravljajte svoj { -brand-mozilla-account }
+menu-item-fxa-alt-2 = Odpri stran { -brand-mozilla-account(sklon: "rodilnik") }
 menu-item-settings = Nastavitve
 menu-item-settings-alt = Odpri stran z nastavitvami
 menu-item-help = Pomoč in podpora
@@ -811,7 +820,8 @@ menu-item-logout = Odjava
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Pogoji in zasebnost
+terms-of-service = Pogoji uporabe
+privacy-notice = Obvestilo o zasebnosti
 github = { -brand-github }
 footer-nav-all-breaches = Vse kraje podatkov
 

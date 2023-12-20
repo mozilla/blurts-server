@@ -710,6 +710,7 @@ ad-unit-6-before-you-complete = Mielőtt befejezné a következő regisztráció
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
@@ -721,9 +722,9 @@ ad-unit-6-before-you-complete = Mielőtt befejezné a következő regisztráció
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
+# “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Firefox-fiók
+-brand-mozilla-account = Mozilla-fiók
 
 ## Search Engine Optimization
 
@@ -739,7 +740,7 @@ sign-in = Bejelentkezés
 site-nav-breaches-link = Adatvédelmi incidensek megoldása
 site-nav-settings-link = Beállítások
 site-nav-help-link = Súgó és támogatás
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Próbálja ki többi biztonsági eszközünket:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -749,8 +750,8 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Felhasználói menü
 menu-button-alt = Felhasználói menü megnyitása
 menu-list-accessible-label = Fiók menü
-menu-item-fxa = A { -brand-fx-account }ja kezelése
-menu-item-fxa-alt = A { -brand-fx-account } oldal megnyitása
+menu-item-fxa-2 = A { -brand-mozilla-account } kezelése
+menu-item-fxa-alt-2 = A { -brand-mozilla-account } oldal megnyitása
 menu-item-settings = Beállítások
 menu-item-settings-alt = Beállítások oldal megnyitása
 menu-item-help = Súgó és támogatás
@@ -760,7 +761,8 @@ menu-item-logout = Kijelentkezés
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Feltételek és adatvédelem
+terms-of-service = Szolgáltatás feltételei
+privacy-notice = Adatvédelmi nyilatkozat
 github = { -brand-github }
 footer-nav-all-breaches = Összes adatvédelmi incidens
 
@@ -795,14 +797,3 @@ breach-detail-cta-signup = Adatvédelmi incidensek keresése
 floating-banner-text = Növelje online biztonságát a { -brand-Mozilla } híreivel, tippjeivel és frissítéseivel.
 floating-banner-link-label = Regisztráció
 floating-banner-dismiss-button-label = Köszönöm, nem
-
-## False door test
-
-
-# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
-
-false-door-test-content-part-one = Senki sem vásárolhatja meg a személyes információit.
-false-door-test-content-part-two = Automatikusan távolítsa el az adatokat az azokat eladni próbáló oldalakról.
-false-door-test-content-part-two-dashboard = Adatok automatikus törlése az azokat eladni próbáló oldalakról.
-false-door-test-cta = Számítson rám
-false-door-test-popup-close = Bezárás

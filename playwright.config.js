@@ -47,7 +47,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: process.env.CI ? [['github'], ['html']] : 'html',
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -55,7 +55,7 @@ export default defineConfig({
     actionTimeout: 0,
 
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: process.env.E2E_TEST_BASE_URL || 'https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net',
+    baseURL: process.env.E2E_TEST_BASE_URL ?? 'https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net',
     // baseURL: 'http://localhost:6060',
 
     /* automatically take screenshot only on failures */
@@ -72,11 +72,23 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] }
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: {
+          width: 1920,
+          height: 1080
+        }
+      }
     },
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] }
+      use: {
+        ...devices['Desktop Firefox'],
+        viewport: {
+          width: 1920,
+          height: 1080
+        }
+      }
     },
 
     /* Test against mobile viewports. */
@@ -106,8 +118,9 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     command: 'npm run build; npm start',
-    port: 6060,
+    url: 'http://localhost:6060',
+    reuseExistingServer: process.env.E2E_TEST_ENV === 'local',
     // Building the app can take some time:
-    timeout: 1_800_000,
+    timeout: 600_000,
   }
 })

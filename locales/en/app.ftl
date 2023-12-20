@@ -853,6 +853,7 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
@@ -864,9 +865,9 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
+# “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Firefox account
+-brand-mozilla-account = Mozilla account
 
 ## Search Engine Optimization
 
@@ -882,7 +883,7 @@ sign-in = Sign In
 site-nav-breaches-link = Resolve Data Breaches
 site-nav-settings-link = Settings
 site-nav-help-link = Help and Support
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Try our other security tools:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -892,8 +893,8 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = User menu
 menu-button-alt = Open user menu
 menu-list-accessible-label = Account menu
-menu-item-fxa = Manage your { -brand-fx-account }
-menu-item-fxa-alt = Open { -brand-fx-account } page
+menu-item-fxa-2 = Manage your { -brand-mozilla-account }
+menu-item-fxa-alt-2 = Open { -brand-mozilla-account } page
 menu-item-settings = Settings
 menu-item-settings-alt = Open settings page
 menu-item-help = Help and support
@@ -903,7 +904,8 @@ menu-item-logout = Sign out
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Terms & Privacy
+terms-of-service = Terms of Service
+privacy-notice = Privacy Notice
 github = { -brand-github }
 footer-nav-all-breaches = All Breaches
 

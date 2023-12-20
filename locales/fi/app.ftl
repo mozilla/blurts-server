@@ -712,6 +712,7 @@ ad-unit-6-before-you-complete = Ennen kuin suoritat seuraavan rekisteröitymisen
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
@@ -723,9 +724,9 @@ ad-unit-6-before-you-complete = Ennen kuin suoritat seuraavan rekisteröitymisen
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
+# “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Firefox-tili
+-brand-mozilla-account = Mozilla-tili
 
 ## Search Engine Optimization
 
@@ -741,7 +742,7 @@ sign-in = Kirjaudu sisään
 site-nav-breaches-link = Selvitä tietovuodot
 site-nav-settings-link = Asetukset
 site-nav-help-link = Ohjeet ja tuki
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Kokeile muita suojaustyökalujamme:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -751,8 +752,8 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Käyttäjävalikko
 menu-button-alt = Avaa käyttäjävalikko
 menu-list-accessible-label = Tilivalikko
-menu-item-fxa = Hallitse { -brand-fx-account }äsi
-menu-item-fxa-alt = Avaa { -brand-fx-account } -sivu
+menu-item-fxa-2 = Hallitse { -brand-mozilla-account }äsi
+menu-item-fxa-alt-2 = Avaa { -brand-mozilla-account }n sivu
 menu-item-settings = Asetukset
 menu-item-settings-alt = Avaa asetussivu
 menu-item-help = Ohjeet ja tuki
@@ -762,7 +763,8 @@ menu-item-logout = Kirjaudu ulos
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Ehdot ja tietosuoja
+terms-of-service = Käyttöehdot
+privacy-notice = Tietosuojakäytäntö
 github = { -brand-github }
 footer-nav-all-breaches = Kaikki tietovuodot
 

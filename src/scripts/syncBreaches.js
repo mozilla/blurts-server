@@ -10,18 +10,17 @@
  */
 
 import { readdir } from "node:fs/promises";
-import { resolve as pathResolve } from "node:path";
-import { finished } from 'node:stream/promises';
-import { createWriteStream } from "node:fs";
-import { Readable } from 'node:stream';
-import os from 'node:os';
-import Sentry from "@sentry/nextjs"
-import { req, formatDataClassesArray } from '../utils/hibp.js'
-import { getAllBreaches, upsertBreaches, updateBreachFaviconUrl} from '../db/tables/breaches.js'
-import { uploadToS3 } from './s3.js'
+import os from "node:os";
+import Sentry from "@sentry/nextjs";
+import { req, formatDataClassesArray } from "../utils/hibp.js";
+import {
+  getAllBreaches,
+  upsertBreaches,
+  updateBreachFaviconUrl,
+} from "../db/tables/breaches.js";
+import { uploadToS3 } from "./s3.js";
 
-const SENTRY_SLUG = "cron-sync-breaches"
-
+const SENTRY_SLUG = "cron-sync-breaches";
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
@@ -30,86 +29,101 @@ Sentry.init({
 
 const checkInId = Sentry.captureCheckIn({
   monitorSlug: SENTRY_SLUG,
-  status: "in_progress"
+  status: "in_progress",
 });
 
 export async function getBreachIcons(breaches) {
-
   // make logofolder if it doesn't exist
   const logoFolder = os.tmpdir();
-  console.log(`Logo folder: ${logoFolder}`)
+  console.log(`Logo folder: ${logoFolder}`);
 
   // read existing logos
   const existingLogos = await readdir(logoFolder);
 
-  (await Promise.allSettled(
-    breaches.map(async ({Domain: breachDomain, Name: breachName}) => {
+  await Promise.allSettled(
+    breaches.map(async ({ Domain: breachDomain, Name: breachName }) => {
       if (!breachDomain || breachDomain.length == 0) {
-        console.log('empty domain: ', breachName)
-        await updateBreachFaviconUrl(breachName, null)
+        console.log("empty domain: ", breachName);
+        await updateBreachFaviconUrl(breachName, null);
         return;
       }
       const logoFilename = breachDomain.toLowerCase() + ".ico";
-      const logoPath = pathResolve(logoFolder, logoFilename);
       if (existingLogos.includes(logoFilename)) {
-        console.log('skipping ', logoFilename)
-        await updateBreachFaviconUrl(breachName, `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`)
+        console.log("skipping ", logoFilename);
+        await updateBreachFaviconUrl(
+          breachName,
+          `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`,
+        );
         return;
       }
-      console.log(`fetching: ${logoFilename}`)
+      console.log(`fetching: ${logoFilename}`);
       const res = await fetch(
-        `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`);
+        `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`,
+      );
       if (res.status !== 200) {
         // update logo path with null
-        console.log(`Logo does not exist for: ${breachName} ${breachDomain}`)
-        await updateBreachFaviconUrl(breachName, null)
+        console.log(`Logo does not exist for: ${breachName} ${breachDomain}`);
+        await updateBreachFaviconUrl(breachName, null);
         return;
       }
-      await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()))
-      const fileStream = createWriteStream(logoPath, { flags: 'wx' });
-      const bodyReadable = Readable.fromWeb(res.body)
-      await finished(bodyReadable.pipe(fileStream));
-      await updateBreachFaviconUrl(breachName, `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`)
-    })
-  ));
+
+      try {
+        await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()));
+        await updateBreachFaviconUrl(
+          breachName,
+          `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`,
+        );
+      } catch (e) {
+        console.error(e);
+        return;
+      }
+    }),
+  );
 }
 
 // Get breaches and upserts to DB
-const breachesResponse = await req('/breaches')
-const breaches = []
-const seen = new Set()
+const breachesResponse = await req("/breaches");
+const breaches = [];
+const seen = new Set();
 for (const breach of breachesResponse) {
-  breach.DataClasses = formatDataClassesArray(breach.DataClasses)
-  breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0]
-  breaches.push(breach)
-  seen.add(breach.Name + breach.BreachDate)
+  breach.DataClasses = formatDataClassesArray(breach.DataClasses);
+  breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0];
+  breaches.push(breach);
+  seen.add(breach.Name + breach.BreachDate);
 
   // sanity check: corrupt data structure
-  if (!isValidBreach(breach)) throw new Error('Breach data structure is not valid', JSON.stringify(breach))
+  if (!isValidBreach(breach))
+    throw new Error(
+      "Breach data structure is not valid",
+      JSON.stringify(breach),
+    );
 }
 
-console.log('Breaches found: ', breaches.length)
-console.log('Unique breaches based on Name + BreachDate', seen.size)
+console.log("Breaches found: ", breaches.length);
+console.log("Unique breaches based on Name + BreachDate", seen.size);
 
 // sanity check: no duplicate breaches with Name + BreachDate
 if (seen.size !== breaches.length) {
-  throw new Error('Breaches contain duplicates. Stopping script...')
+  throw new Error("Breaches contain duplicates. Stopping script...");
 } else {
-  await upsertBreaches(breaches)
+  await upsertBreaches(breaches);
 
   // get
-  const result = await getAllBreaches()
-  console.log("Number of breaches in the database after upsert:", result.length)
+  const result = await getAllBreaches();
+  console.log(
+    "Number of breaches in the database after upsert:",
+    result.length,
+  );
 }
 
-await getBreachIcons(breaches)
+await getBreachIcons(breaches);
 
 Sentry.captureCheckIn({
   checkInId,
   monitorSlug: SENTRY_SLUG,
-  status: "ok"
-})
-setTimeout(process.exit, 1000)
+  status: "ok",
+});
+setTimeout(process.exit, 1000);
 
 /**
  * Null check for some required field
@@ -118,9 +132,11 @@ setTimeout(process.exit, 1000)
  * @returns Boolean is it a valid breach
  */
 function isValidBreach(breach) {
-  return breach.Name !== undefined &&
+  return (
+    breach.Name !== undefined &&
     breach.BreachDate !== undefined &&
     breach.Title !== undefined &&
     breach.Domain !== undefined &&
     breach.DataClasses !== undefined
+  );
 }

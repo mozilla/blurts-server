@@ -4,6 +4,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
+import { logger } from "../../../../../functions/server/logging";
 import {
   enableFeatureFlagByName,
   getFeatureFlagByName,
@@ -17,7 +18,7 @@ import appConstants from "../../../../../../appConstants";
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { flagId: string } }
+  { params }: { params: { flagId: string } },
 ) {
   const session = await getServerSession(authOptions);
   if (isAdmin(session?.user?.email || "")) {
@@ -27,7 +28,7 @@ export async function GET(
       const flag = await getFeatureFlagByName(flagName);
       return NextResponse.json(flag);
     } catch (e) {
-      console.error(e);
+      logger.error(e);
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
@@ -65,7 +66,7 @@ export async function PUT(req: NextRequest) {
 
       return NextResponse.json({ success: true }, { status: 200 });
     } catch (e) {
-      console.error(e);
+      logger.error(e);
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {

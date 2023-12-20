@@ -58,7 +58,7 @@ const deleteButton = (email: EmailRow) => {
 
 const createEmailItem = (
   email: EmailRow & { primary?: boolean },
-  breachCounts: Map<string, number>
+  breachCounts: Map<string, number>,
 ) => {
   const l10n = getL10n();
 
@@ -97,12 +97,12 @@ const getSortedEmails = (emails: Array<EmailRow & { primary?: boolean }>) =>
 
 const createEmailList = (
   emails: EmailRow[],
-  breachCounts: Map<string, number>
+  breachCounts: Map<string, number>,
 ) => {
   return (
     <ul className="settings-email-list">
       {getSortedEmails(emails).map((email) =>
-        createEmailItem(email, breachCounts)
+        createEmailItem(email, breachCounts),
       )}
     </ul>
   );
@@ -152,6 +152,7 @@ export default async function Settings() {
   if (!session || !session.user?.subscriber) {
     return redirect("/");
   }
+
   // Re-fetch the subscriber every time, rather than reading it from `session`
   // - if the user changes their preferences on this page, the JSON web token
   // containing the subscriber data won't be updated until the next sign-in.
@@ -176,7 +177,7 @@ export default async function Settings() {
     const breaches = await getBreachesForEmail(
       getSha1(email.email),
       allBreaches,
-      true
+      true,
     );
     breachCounts.set(email.email, breaches?.length || 0);
   }
@@ -245,15 +246,15 @@ export default async function Settings() {
                 {l10n.getString("settings-deactivate-account-title")}
               </h3>
               <p className="settings-section-info">
-                {l10n.getString("settings-deactivate-account-info")}
+                {l10n.getString("settings-deactivate-account-info-2")}
               </p>
               <a
                 className="settings-link-fxa"
-                href={AppConstants.NEXT_PUBLIC_FXA_SETTINGS_URL}
+                href={AppConstants.FXA_SETTINGS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {l10n.getString("settings-fxa-link-label")}
+                {l10n.getString("settings-fxa-link-label-3")}
               </a>
             </section>
           </div>

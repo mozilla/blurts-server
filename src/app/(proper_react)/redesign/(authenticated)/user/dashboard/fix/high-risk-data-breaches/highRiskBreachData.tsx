@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { ReactNode } from "react";
-import { getL10n } from "../../../../../../../functions/server/l10n";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import creditCardIllustration from "../images/high-risk-data-breach-credit-card.svg";
 import socialSecurityNumberIllustration from "../images/high-risk-data-breach-ssn.svg";
@@ -13,6 +12,20 @@ import noBreachesIllustration from "../images/high-risk-breaches-none.svg";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { FraudAlertModal } from "./FraudAlertModal";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
+import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
+import { Button } from "../../../../../../../components/server/Button";
+import { StepLink } from "../../../../../../../functions/server/getRelevantGuidedSteps";
+
+export const highRiskBreachTypes = [
+  "credit-card",
+  "social-security-number",
+  "bank-account",
+  "pin",
+  "done",
+  "none",
+] as const;
+
+export type HighRiskBreachTypes = (typeof highRiskBreachTypes)[number];
 
 export type HighRiskBreachContent = {
   summary: string;
@@ -24,13 +37,6 @@ export type HighRiskBreachContent = {
   };
 };
 
-export type HighRiskBreachTypes =
-  | "credit-card"
-  | "ssn"
-  | "bank-account"
-  | "pin"
-  | "none";
-
 export type HighRiskBreach = {
   type: HighRiskBreachTypes;
   title: string;
@@ -39,15 +45,118 @@ export type HighRiskBreach = {
   exposedData: SubscriberBreach[];
 };
 
+function getDoneStepContent(
+  l10n: ExtendedReactLocalization,
+  nextStep: StepLink,
+): { summary: string; description: ReactNode } {
+  // Passwords next
+  if (nextStep.id === "LeakedPasswordsPassword") {
+    return {
+      summary: "",
+      description: (
+        <>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-high-risk-description-in-progress",
+            )}
+          </p>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-high-risk-description-next-passwords",
+            )}
+          </p>
+          <Button variant="primary" small href={nextStep.href} autoFocus={true}>
+            {l10n.getString("fix-flow-celebration-next-label")}
+          </Button>
+        </>
+      ),
+    };
+  }
+
+  // Security questions next
+  if (nextStep.id === "LeakedPasswordsSecurityQuestion") {
+    return {
+      summary: "",
+      description: (
+        <>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-high-risk-description-in-progress",
+            )}
+          </p>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-high-risk-description-next-security-questions",
+            )}
+          </p>
+          <Button variant="primary" small href={nextStep.href} autoFocus={true}>
+            {l10n.getString("fix-flow-celebration-next-label")}
+          </Button>
+        </>
+      ),
+    };
+  }
+
+  // Security tips next
+  if (
+    ["SecurityTipsPhone", "SecurityTipsEmail", "SecurityTipsIp"].includes(
+      nextStep.id,
+    )
+  ) {
+    return {
+      summary: "",
+      description: (
+        <>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-high-risk-description-in-progress",
+            )}
+          </p>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-high-risk-description-next-security-recommendations",
+            )}
+          </p>
+          <Button variant="primary" small href={nextStep.href} autoFocus={true}>
+            {l10n.getString("fix-flow-celebration-next-recommendations-label")}
+          </Button>
+        </>
+      ),
+    };
+  }
+
+  // No next steps
+  return {
+    summary: "",
+    description: (
+      <>
+        <p>
+          {l10n.getString("fix-flow-celebration-high-risk-description-done")}
+        </p>
+        <p>
+          {l10n.getString(
+            "fix-flow-celebration-high-risk-description-next-dashboard",
+          )}
+        </p>
+        <Button variant="primary" small href={nextStep.href} autoFocus={true}>
+          {l10n.getString("fix-flow-celebration-next-dashboard-label")}
+        </Button>
+      </>
+    ),
+  };
+}
+
 function getHighRiskBreachesByType({
   dataType,
   breaches,
+  l10n,
+  nextStep,
 }: {
-  dataType: string;
+  dataType: HighRiskBreachTypes;
   breaches: GuidedExperienceBreaches;
+  l10n: ExtendedReactLocalization;
+  nextStep: StepLink;
 }) {
-  const l10n = getL10n();
-
   // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
   const emailsFormatter = new Intl.ListFormat(getLocale(l10n), {
     style: "long",
@@ -62,7 +171,7 @@ function getHighRiskBreachesByType({
       exposedData: breaches.highRisk.creditCardBreaches,
       content: {
         summary: l10n.getString("high-risk-breach-summary", {
-          num_breaches: 0,
+          num_breaches: breaches.highRisk.creditCardBreaches.length,
         }),
         description: (
           <p>{l10n.getString("high-risk-breach-credit-card-description")}</p>
@@ -83,13 +192,13 @@ function getHighRiskBreachesByType({
       },
     },
     {
-      type: "ssn",
+      type: "social-security-number",
       title: l10n.getString("high-risk-breach-social-security-title"),
       illustration: socialSecurityNumberIllustration,
       exposedData: breaches.highRisk.ssnBreaches,
       content: {
         summary: l10n.getString("high-risk-breach-summary", {
-          num_breaches: 0,
+          num_breaches: breaches.highRisk.ssnBreaches.length,
         }),
         description: (
           <p>
@@ -140,7 +249,7 @@ function getHighRiskBreachesByType({
       exposedData: breaches.highRisk.bankBreaches,
       content: {
         summary: l10n.getString("high-risk-breach-summary", {
-          num_breaches: 0,
+          num_breaches: breaches.highRisk.bankBreaches.length,
         }),
         description: (
           <p>{l10n.getString("high-risk-breach-bank-account-description")}</p>
@@ -171,7 +280,7 @@ function getHighRiskBreachesByType({
       exposedData: breaches.highRisk.pinBreaches,
       content: {
         summary: l10n.getString("high-risk-breach-summary", {
-          num_breaches: 0,
+          num_breaches: breaches.highRisk.pinBreaches.length,
         }),
         description: (
           <p>{l10n.getString("high-risk-breach-pin-description")}</p>
@@ -188,6 +297,13 @@ function getHighRiskBreachesByType({
           ),
         },
       },
+    },
+    {
+      type: "done",
+      title: l10n.getString("fix-flow-celebration-high-risk-title"),
+      illustration: "",
+      exposedData: [],
+      content: getDoneStepContent(l10n, nextStep),
     },
     {
       type: "none",
@@ -213,12 +329,12 @@ function getHighRiskBreachesByType({
               </li>
               <li>
                 {l10n.getString(
-                  "high-risk-breach-none-sub-description-bank-account"
+                  "high-risk-breach-none-sub-description-bank-account",
                 )}
               </li>
               <li>
                 {l10n.getString(
-                  "high-risk-breach-none-sub-description-cc-number"
+                  "high-risk-breach-none-sub-description-cc-number",
                 )}
               </li>
               <li>

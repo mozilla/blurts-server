@@ -4,7 +4,7 @@
 
 Firefox Monitor notifies users when their credentials have been compromised in a data breach.
 
-This code is for the monitor.firefox.com service & website.
+This code is for the monitor.mozilla.org service & website.
 
 Breach data is powered by [haveibeenpwned.com](https://haveibeenpwned.com/).
 
@@ -163,9 +163,9 @@ To create the database tables ...
 
 Monitor generates multiple emails that get sent to subscribers. To preview or test-send these emails see documentation [here](docs/monitor-emails.md).
 
-### Firefox Accounts
+### Mozilla accounts ("FxA", formerly known as Firefox accounts)
 
-Subscribe with a Firefox Account is controlled via the `FXA_ENABLED`
+Subscribe with a Mozilla account is controlled via the `FXA_ENABLED`
 environment variable. (See `.env-dist`)
 
 The repo comes with a development FxA oauth app pre-configured in `.env`, which

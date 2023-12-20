@@ -7,7 +7,24 @@ import passwordIllustration from "../images/leaked-passwords.svg";
 import securityQuestionsIllustration from "../images/security-questions.svg";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
-import { getL10n } from "../../../../../../../functions/server/l10n";
+import { ExtendedReactLocalization } from "../../../../../../../hooks/l10n";
+import { Button } from "../../../../../../../components/server/Button";
+import { StepLink } from "../../../../../../../functions/server/getRelevantGuidedSteps";
+import {
+  BreachResolutionRequest,
+  HibpBreachDataTypes,
+} from "../../../../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
+import { getLocale } from "../../../../../../../functions/universal/getLocale";
+
+export const leakedPasswordTypes = [
+  "passwords",
+  "passwords-done",
+  "security-questions",
+  "security-questions-done",
+  "none",
+] as const;
+
+export type LeakedPasswordsTypes = (typeof leakedPasswordTypes)[number];
 
 export type LeakedPasswordsContent = {
   summary: string;
@@ -19,8 +36,6 @@ export type LeakedPasswordsContent = {
   };
 };
 
-export type LeakedPasswordsTypes = "password" | "security-question";
-
 export type LeakedPassword = {
   type: LeakedPasswordsTypes;
   title: string;
@@ -28,29 +43,134 @@ export type LeakedPassword = {
   content: LeakedPasswordsContent;
 };
 
-function getLeakedPasswords({
-  dataType,
-  breaches,
-}: {
-  dataType: string;
+export type LeakedPasswordLayout = {
+  dataType: LeakedPasswordsTypes;
   breaches: GuidedExperienceBreaches;
-}) {
-  const l10n = getL10n();
+  l10n: ExtendedReactLocalization;
+  nextStep: StepLink;
+  emailsAffected: string[];
+};
 
-  const findFirstUnresolvedBreach = (breachClassType: LeakedPasswordsTypes) => {
-    const leakedPasswordType =
-      breachClassType === "password" ? "passwords" : "securityQuestions";
-    return Object.values(breaches.passwordBreaches[leakedPasswordType]).find(
-      (breach) => !breach.isResolved
-    );
+function getDoneStepContent(
+  l10n: ExtendedReactLocalization,
+  nextStep: StepLink,
+): { summary: string; description: ReactNode } {
+  // Security questions next
+  if (nextStep.id === "LeakedPasswordsSecurityQuestion") {
+    return {
+      summary: "",
+      description: (
+        <>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-leaked-passwords-description-next-security-questions",
+            )}
+          </p>
+          <Button variant="primary" small href={nextStep.href} autoFocus={true}>
+            {l10n.getString("fix-flow-celebration-next-label")}
+          </Button>
+        </>
+      ),
+    };
+  }
+
+  // Security tips next
+  if (
+    ["SecurityTipsPhone", "SecurityTipsEmail", "SecurityTipsIp"].includes(
+      nextStep.id,
+    )
+  ) {
+    return {
+      summary: "",
+      description: (
+        <>
+          <p>
+            {l10n.getString(
+              "fix-flow-celebration-leaked-passwords-description-next-security-recommendations",
+            )}
+          </p>
+          <Button variant="primary" small href={nextStep.href} autoFocus={true}>
+            {l10n.getString("fix-flow-celebration-next-recommendations-label")}
+          </Button>
+        </>
+      ),
+    };
+  }
+
+  // No next steps
+  return {
+    summary: "",
+    description: (
+      <>
+        <p>
+          {l10n.getString(
+            "fix-flow-celebration-leaked-passwords-description-next-dashboard",
+          )}
+        </p>
+        <Button variant="primary" small href={nextStep.href} autoFocus={true}>
+          {l10n.getString("fix-flow-celebration-next-dashboard-label")}
+        </Button>
+      </>
+    ),
   };
+}
 
-  const unresolvedPasswordBreach = findFirstUnresolvedBreach("password");
-  const unresolvedSecurityQuestionsBreach =
-    findFirstUnresolvedBreach("security-question");
+// TODO: Write unit tests MNTOR-2560
+/* c8 ignore start */
+export const findFirstUnresolvedBreach = (
+  breaches: GuidedExperienceBreaches,
+  breachClassType: LeakedPasswordsTypes,
+) => {
+  const leakedPasswordType =
+    breachClassType === "passwords" ? "passwords" : "securityQuestions";
+  const resolvedDataClassName =
+    breachClassType === "passwords"
+      ? "passwords"
+      : "security-questions-and-answers";
+
+  return Object.values(breaches.passwordBreaches[leakedPasswordType]).find(
+    (breach) => !breach.resolvedDataClasses.includes(resolvedDataClassName),
+  );
+};
+
+export async function updatePasswordsBreachStatus(
+  emails: string[],
+  id: number,
+  resolvedDataClass: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>,
+) {
+  try {
+    for (const email of emails) {
+      const data: BreachResolutionRequest = {
+        affectedEmail: email,
+        breachId: id,
+        resolutionsChecked: resolvedDataClass,
+      };
+
+      const res = await fetch("/api/v1/user/breaches", {
+        method: "PUT",
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        throw new Error("Bad fetch response");
+      }
+    }
+  } catch (e) {
+    console.error("Could not update user breach resolve status:", e);
+  }
+}
+/* c8 ignore stop */
+
+function getLeakedPasswords(props: LeakedPasswordLayout) {
+  const { dataType, breaches, l10n, nextStep, emailsAffected } = props;
+  const unresolvedBreach = findFirstUnresolvedBreach(breaches, props.dataType);
+  /* c8 ignore next */
   const blockList = (process.env.HIBP_BREACH_DOMAIN_BLOCKLIST ?? "").split(",");
 
   const getBreachInfo = (breach?: SubscriberBreach) => ({
+    // Old code without tests for the case where `breach` is `undefined`
+    // (is that even possible?)
+    /* c8 ignore next 6 */
     name: breach ? breach.name : "",
     breachDate: breach ? breach.breachDate : "",
     breachSite:
@@ -60,27 +180,26 @@ function getLeakedPasswords({
   });
 
   const {
-    name: passwordBreachName,
-    breachDate: passwordBreachDate,
-    breachSite: passwordBreachSite,
-  } = getBreachInfo(unresolvedPasswordBreach);
+    name: breachName,
+    breachDate,
+    breachSite,
+  } = getBreachInfo(unresolvedBreach);
 
-  const {
-    name: securityQuestionBreachName,
-    breachDate: securityQuestionBreachDate,
-    breachSite: securityQuestionBreachSite,
-  } = getBreachInfo(unresolvedSecurityQuestionsBreach);
+  const emailsFormatter = new Intl.ListFormat(getLocale(l10n), {
+    style: "long",
+    type: "conjunction",
+  });
 
   const leakedPasswordsData: LeakedPassword[] = [
     {
-      type: "password",
+      type: "passwords",
       title: l10n.getString("leaked-passwords-title", {
-        breach_name: passwordBreachName,
+        breach_name: breachName,
       }),
       illustration: passwordIllustration,
       content: {
         summary: l10n.getString("leaked-passwords-summary", {
-          breach_date: passwordBreachDate,
+          breach_date: breachDate,
         }),
         description: <p>{l10n.getString("leaked-passwords-description")}</p>,
         recommendations: {
@@ -93,14 +212,16 @@ function getLeakedPasswords({
                     // TODO: Find a way  to go to the actual breach site
                     link_to_breach_site: (
                       <a
-                        href={passwordBreachSite}
+                        href={breachSite}
                         target="_blank"
                         rel="noopener noreferrer"
                       />
                     ),
+                    b: <strong />,
                   },
                   vars: {
-                    breach_name: passwordBreachName,
+                    breach_name: breachName,
+                    emails_affected: emailsFormatter.format(emailsAffected),
                   },
                 })}
               </li>
@@ -111,13 +232,19 @@ function getLeakedPasswords({
       },
     },
     {
-      type: "security-question",
+      type: "passwords-done",
+      title: l10n.getString("fix-flow-celebration-leaked-passwords-title"),
+      illustration: "",
+      content: getDoneStepContent(l10n, nextStep),
+    },
+    {
+      type: "security-questions",
       title: l10n.getString("leaked-security-questions-title"),
       illustration: securityQuestionsIllustration,
       content: {
         summary: l10n.getString("leaked-security-questions-summary", {
-          breach_name: securityQuestionBreachName,
-          breach_date: securityQuestionBreachDate,
+          breach_name: breachName,
+          breach_date: breachDate,
         }),
         description: (
           <p>{l10n.getString("leaked-security-questions-description")}</p>
@@ -132,14 +259,16 @@ function getLeakedPasswords({
                     // TODO: Find a way  to go to the actual breach site
                     link_to_breach_site: (
                       <a
-                        href={securityQuestionBreachSite}
+                        href={breachSite}
                         target="_blank"
                         rel="noopener noreferrer"
                       />
                     ),
+                    b: <strong />,
                   },
                   vars: {
-                    breach_name: securityQuestionBreachName,
+                    breach_name: breachName,
+                    email_affected: emailsFormatter.format(emailsAffected),
                   },
                 })}
               </li>
@@ -148,6 +277,12 @@ function getLeakedPasswords({
           ),
         },
       },
+    },
+    {
+      type: "security-questions-done",
+      title: l10n.getString("fix-flow-celebration-security-questions-title"),
+      illustration: "",
+      content: getDoneStepContent(l10n, nextStep),
     },
   ];
 

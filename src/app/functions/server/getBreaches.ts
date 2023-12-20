@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import mozlog from "../../../utils/log.js";
+import { logger } from "./logging";
 import {
   HibpLikeDbBreach,
   formatDataClassesArray,
@@ -12,7 +12,6 @@ import {
 import { upsertBreaches } from "../../../db/tables/breaches.js";
 import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 
-const log = mozlog("hibp");
 let breaches: Array<Breach | HibpLikeDbBreach>;
 
 export async function getBreaches() {
@@ -20,17 +19,17 @@ export async function getBreaches() {
     return breaches;
   }
   breaches = await getAllBreachesFromDb();
-  log.debug(
+  logger.debug(
     "loadBreachesIntoApp",
-    `loaded breaches from database: ${breaches.length}`
+    `loaded breaches from database: ${breaches.length}`,
   );
 
   // if "breaches" table does not return results, fall back to HIBP request
   if (breaches?.length < 1) {
     const breachesResponse = (await req("/breaches")) as Breach[];
-    log.debug(
+    logger.debug(
       "loadBreachesIntoApp",
-      `loaded breaches from HIBP: ${breachesResponse.length}`
+      `loaded breaches from HIBP: ${breachesResponse.length}`,
     );
 
     for (const breach of breachesResponse) {

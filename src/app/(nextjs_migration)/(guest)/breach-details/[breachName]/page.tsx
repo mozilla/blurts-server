@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import Image, { StaticImageData } from "next/image";
+import { notFound } from "next/navigation";
 import BreachDetailScanImage from "../../../../../client/images/breach-detail-scan.svg";
 import "../../../../../client/css/partials/breachDetail.css";
 import { getL10n } from "../../../../functions/server/l10n";
@@ -81,6 +82,10 @@ export default async function BreachDetail(props: {
   const allBreaches = await getBreaches();
   const breach = getBreachByName(allBreaches, breachName);
 
+  if (!breach) {
+    return notFound();
+  }
+
   return (
     <div data-partial="breachDetail">
       <header className="breach-detail-header">
@@ -125,7 +130,7 @@ export default async function BreachDetail(props: {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
-                }
+                },
               ),
               breachTitle: breach.Title,
               addedDate: (breach.AddedDate as unknown as Date).toLocaleString(
@@ -134,7 +139,7 @@ export default async function BreachDetail(props: {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
-                }
+                },
               ),
             })}
           </div>
@@ -251,7 +256,7 @@ function getBreachDetail(categoryId: ReturnType<typeof getBreachCategory>) {
 }
 
 function makeBreachDetail(
-  breachCategory: ReturnType<typeof getBreachCategory>
+  breachCategory: ReturnType<typeof getBreachCategory>,
 ) {
   const breachDetail = getBreachDetail(breachCategory);
   return (
@@ -299,13 +304,13 @@ function getSortedDataClasses(
   isUserBrowserFirefox = false,
   isUserLocaleEnUs = false,
   _isUserLocalEn = false,
-  changePWLink = false
+  changePWLink = false,
 ) {
   const l10n = getL10n();
   const priorityDataClasses: any = getAllPriorityDataClasses(
     isUserBrowserFirefox,
     isUserLocaleEnUs,
-    changePWLink
+    changePWLink,
   );
 
   const sortedDataClasses = {
@@ -327,7 +332,7 @@ function getSortedDataClasses(
     return b.weight - a.weight;
   });
   sortedDataClasses.lowerPriority = sortedDataClasses.lowerPriority.join(
-    ", "
+    ", ",
   ) as any;
   return sortedDataClasses;
 }
@@ -362,30 +367,31 @@ function makeRecommendationCards(breach: HibpLikeDbBreach) {
   const l10n = getL10n();
   const dataClasses = getSortedDataClasses(breach);
 
-  const priorityRecs = dataClasses.priority.map((dataClass) =>
-    // This code predates TypeScript:
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    dataClass.recommendations?.map((r: any) => (
-      <div
-        key={r.ctaHref}
-        className={`breach-detail-recommendation ${
-          r.recIconClassName as string
-        }`}
-      >
-        <dt>{l10n.getString(r.recommendationCopy.subhead)}</dt>
-        <dd>
-          <p>{l10n.getString(r.recommendationCopy.body)}</p>
-          {r.recommendationCopy.cta ? (
-            <a
-              href={r.ctaHref}
-              target={r.ctaShouldOpenInNewTab ? "_blank" : "_self"}
-            >
-              {l10n.getString(r.recommendationCopy.cta)}
-            </a>
-          ) : null}
-        </dd>
-      </div>
-    ))
+  const priorityRecs = dataClasses.priority.map(
+    (dataClass) =>
+      // This code predates TypeScript:
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+      dataClass.recommendations?.map((r: any) => (
+        <div
+          key={r.ctaHref}
+          className={`breach-detail-recommendation ${
+            r.recIconClassName as string
+          }`}
+        >
+          <dt>{l10n.getString(r.recommendationCopy.subhead)}</dt>
+          <dd>
+            <p>{l10n.getString(r.recommendationCopy.body)}</p>
+            {r.recommendationCopy.cta ? (
+              <a
+                href={r.ctaHref}
+                target={r.ctaShouldOpenInNewTab ? "_blank" : "_self"}
+              >
+                {l10n.getString(r.recommendationCopy.cta)}
+              </a>
+            ) : null}
+          </dd>
+        </div>
+      )),
   );
 
   const genericRecs = getAllGenericRecommendations().map((dataClass: any) => (

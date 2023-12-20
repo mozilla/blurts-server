@@ -23,14 +23,14 @@ export const AboutBrokersIcon = () => {
   });
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: "dialog" },
-    overlayTriggerState
+    overlayTriggerState,
   );
   const triggerRef = useRef<HTMLButtonElement>(null);
   const { buttonProps } = useButton(triggerProps, triggerRef);
 
   const dataBrokerCount = parseInt(
     process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-    10
+    10,
   );
 
   return (
@@ -42,7 +42,7 @@ export const AboutBrokersIcon = () => {
       >
         <QuestionMarkCircle
           alt={l10n.getString(
-            "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-trigger-label"
+            "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-trigger-label",
           )}
           width={18}
           height={18}
@@ -56,14 +56,14 @@ export const AboutBrokersIcon = () => {
         >
           <Dialog
             title={l10n.getString(
-              "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-title"
+              "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-title",
             )}
             illustration={<Image src={DialogIllustration} alt="" />}
           >
             <div className={styles.dialogContents}>
               <p>
                 {l10n.getString(
-                  "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph1"
+                  "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph1",
                 )}
               </p>
               <p>
@@ -71,7 +71,7 @@ export const AboutBrokersIcon = () => {
                   "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph2",
                   {
                     data_broker_sites_total_num: dataBrokerCount,
-                  }
+                  },
                 )}
               </p>
               <div className={styles.confirmButtonWrapper}>
@@ -82,7 +82,7 @@ export const AboutBrokersIcon = () => {
                   className={styles.startButton}
                 >
                   {l10n.getString(
-                    "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-confirm"
+                    "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-confirm",
                   )}
                 </Button>
               </div>

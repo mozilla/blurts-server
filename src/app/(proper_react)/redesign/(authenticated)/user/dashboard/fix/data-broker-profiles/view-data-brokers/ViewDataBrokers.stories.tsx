@@ -11,28 +11,7 @@ import {
 } from "../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../Shell";
 import { getEnL10nSync } from "../../../../../../../../functions/server/mockL10n";
-import { FixView } from "../../FixView";
-import { GuidedExperienceBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { LatestOnerepScanData } from "../../../../../../../../../db/tables/onerep_scans";
-
-const mockedBreachesEmpty: GuidedExperienceBreaches = {
-  emails: [],
-  highRisk: {
-    bankBreaches: [],
-    creditCardBreaches: [],
-    pinBreaches: [],
-    ssnBreaches: [],
-  },
-  passwordBreaches: {
-    passwords: [],
-    securityQuestions: [],
-  },
-  securityRecommendations: {
-    emailAddress: [],
-    IPAddress: [],
-    phoneNumber: [],
-  },
-};
 
 const brokerOptions = {
   "no-scan": "No scan started",
@@ -77,7 +56,7 @@ const ViewWrapper = (props: ViewWrapperProps) => {
   const mockedManyUnresolvedScanResults: OnerepScanResultRow[] = [
     ...Array(42),
   ].map(() =>
-    createRandomScanResult({ status: "new", manually_resolved: false })
+    createRandomScanResult({ status: "new", manually_resolved: false }),
   );
 
   const scanData: LatestOnerepScanData = { scan: null, results: [] };
@@ -114,19 +93,16 @@ const ViewWrapper = (props: ViewWrapperProps) => {
   };
 
   return (
-    <Shell
-      l10n={getEnL10nSync()}
-      session={mockedSession}
-      nonce=""
-      monthlySubscriptionUrl=""
-      yearlySubscriptionUrl=""
-    >
-      <FixView
-        breaches={mockedBreachesEmpty}
-        userScannedResults={scanData.results}
-      >
-        <ViewDataBrokersView scanData={scanData} />
-      </FixView>
+    <Shell l10n={getEnL10nSync()} session={mockedSession} nonce="">
+      <ViewDataBrokersView
+        data={{
+          latestScanData: scanData,
+          countryCode: "us",
+          subscriberBreaches: [],
+          user: mockedSession.user,
+        }}
+        subscriberEmails={[]}
+      />
     </Shell>
   );
 };

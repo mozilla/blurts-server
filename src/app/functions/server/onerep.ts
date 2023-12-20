@@ -4,16 +4,21 @@
 
 import type { Session } from "next-auth";
 import { getOnerepProfileId } from "../../../db/tables/subscribers.js";
-import mozlog from "../../../utils/log.js";
 import {
   E164PhoneNumberString,
   ISO8601DateString,
 } from "../../../utils/parse.js";
 import { StateAbbr } from "../../../utils/states.js";
-import { getLatestOnerepScanResults } from "../../../db/tables/onerep_scans";
-import { isFlagEnabled } from "./featureFlags";
+import {
+  getAllScansForProfile,
+  getLatestOnerepScanResults,
+} from "../../../db/tables/onerep_scans";
 import { RemovalStatus } from "../universal/scanResult.js";
-const log = mozlog("external.onerep");
+import {
+  FeatureFlagName,
+  getEnabledFeatureFlags,
+} from "../../../db/tables/featureFlags";
+import { logger } from "./logging";
 
 export type CreateProfileRequest = {
   first_name: string;
@@ -45,16 +50,17 @@ export type OneRepMeta = {
   to: number;
   total: number;
 };
+export type OneRepResponse<Data> = {
+  data: Data;
+  meta: OneRepMeta;
+};
 export type Scan = {
   id: number;
   profile_id: number;
   status: "in_progress" | "finished";
   reason: "initial" | "monitoring" | "manual";
 };
-export type ListScansResponse = {
-  meta: OneRepMeta;
-  data: Scan[];
-};
+export type ListScansResponse = OneRepResponse<Scan[]>;
 export type ScanResult = {
   id: number;
   scan_id: number;
@@ -80,14 +86,11 @@ export type ScanResult = {
   created_at: ISO8601DateString;
   updated_at: ISO8601DateString;
 };
-export type ListScanResultsResponse = {
-  meta: OneRepMeta;
-  data: ScanResult[];
-};
+export type ListScanResultsResponse = OneRepResponse<ScanResult[]>;
 
 async function onerepFetch(
   path: string,
-  options: Parameters<typeof fetch>[1] = {}
+  options: Parameters<typeof fetch>[1] = {},
 ) {
   const onerepApiBase = process.env.ONEREP_API_BASE;
   if (!onerepApiBase) {
@@ -106,7 +109,7 @@ async function onerepFetch(
 }
 
 export async function createProfile(
-  profileData: CreateProfileRequest
+  profileData: CreateProfileRequest,
 ): Promise<number> {
   const requestBody = {
     first_name: profileData.first_name,
@@ -124,13 +127,13 @@ export async function createProfile(
     body: JSON.stringify(requestBody),
   });
   if (!response.ok) {
-    log.info(
+    logger.error(
       `Failed to create OneRep profile: [${response.status}] [${
         response.statusText
-      }] [${JSON.stringify(await response.json())}]`
+      }] [${JSON.stringify(await response.json())}]`,
     );
     throw new Error(
-      `Failed to create OneRep profile: [${response.status}] [${response.statusText}]`
+      `Failed to create OneRep profile: [${response.status}] [${response.statusText}]`,
     );
   }
 
@@ -145,17 +148,17 @@ export async function createProfile(
 }
 
 export async function getProfile(
-  profileId: number
+  profileId: number,
 ): Promise<ShowProfileResponse> {
   const response: Response = await onerepFetch(`/profiles/${profileId}/`, {
     method: "GET",
   });
   if (!response.ok) {
-    log.info(
-      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`
+    logger.error(
+      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
-      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`
+      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
     );
   }
 
@@ -168,14 +171,14 @@ export async function activateProfile(profileId: number): Promise<void> {
     `/profiles/${profileId}/activate`,
     {
       method: "PUT",
-    }
+    },
   );
   if (!response.ok) {
-    log.info(
-      `Failed to activate OneRep profile: [${response.status}] [${response.statusText}]`
+    logger.error(
+      `Failed to activate OneRep profile: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
-      `Failed to activate OneRep profile: [${response.status}] [${response.statusText}]`
+      `Failed to activate OneRep profile: [${response.status}] [${response.statusText}]`,
     );
   }
 }
@@ -185,14 +188,14 @@ export async function deactivateProfile(profileId: number): Promise<void> {
     `/profiles/${profileId}/deactivate`,
     {
       method: "PUT",
-    }
+    },
   );
   if (!response.ok) {
-    log.info(
-      `Failed to deactivate OneRep profile: [${response.status}] [${response.statusText}]`
+    logger.error(
+      `Failed to deactivate OneRep profile: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
-      `Failed to deactivate OneRep profile: [${response.status}] [${response.statusText}]`
+      `Failed to deactivate OneRep profile: [${response.status}] [${response.statusText}]`,
     );
   }
 }
@@ -202,20 +205,44 @@ export async function optoutProfile(profileId: number): Promise<void> {
     method: "POST",
   });
   if (!response.ok) {
-    log.info(
+    logger.error(
       `Failed to opt-out OneRep profile: [${response.status}] [${
         response.statusText
-      }] [${JSON.stringify(await response.json())}]`
+      }] [${JSON.stringify(await response.json())}]`,
     );
     throw new Error(
       `Failed to opt-out OneRep profile: [${response.status}] [${
         response.statusText
-      }] [${JSON.stringify(await response.json())}]`
+      }] [${JSON.stringify(await response.json())}]`,
     );
   }
 }
+
+export async function activateAndOptoutProfile(
+  profileId: number,
+): Promise<void> {
+  try {
+    const scans = await getAllScansForProfile(profileId);
+    const hasInitialScan = scans.some(
+      (scan) => scan.onerep_scan_reason === "initial",
+    );
+    if (hasInitialScan) {
+      return;
+    }
+
+    const { status: profileStatus } = await getProfile(profileId);
+    if (profileStatus === "inactive") {
+      await activateProfile(profileId);
+    }
+
+    await optoutProfile(profileId);
+  } catch (error) {
+    logger.error("Failed to activate and optout profile:", error);
+  }
+}
+
 export async function createScan(
-  profileId: number
+  profileId: number,
 ): Promise<CreateScanResponse> {
   /**
    * See https://docs.onerep.com/#operation/createScan
@@ -224,11 +251,11 @@ export async function createScan(
     method: "POST",
   });
   if (!response.ok) {
-    log.info(
-      `Failed to create a scan: [${response.status}] [${response.statusText}]`
+    logger.error(
+      `Failed to create a scan: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
-      `Failed to create a scan: [${response.status}] [${response.statusText}]`
+      `Failed to create a scan: [${response.status}] [${response.statusText}]`,
     );
   }
   return response.json() as Promise<CreateScanResponse>;
@@ -236,7 +263,7 @@ export async function createScan(
 
 export async function listScans(
   profileId: number,
-  options: Partial<{ page: number; per_page: number }> = {}
+  options: Partial<{ page: number; per_page: number }> = {},
 ): Promise<ListScansResponse> {
   const queryParams = new URLSearchParams();
   if (options.page) {
@@ -249,14 +276,14 @@ export async function listScans(
     `/profiles/${profileId}/scans?` + queryParams.toString(),
     {
       method: "GET",
-    }
+    },
   );
   if (!response.ok) {
-    log.info(
-      `Failed to fetch scans: [${response.status}] [${response.statusText}]`
+    logger.error(
+      `Failed to fetch scans: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
-      `Failed to fetch scans: [${response.status}] [${response.statusText}]`
+      `Failed to fetch scans: [${response.status}] [${response.statusText}]`,
     );
   }
   return response.json() as Promise<ListScansResponse>;
@@ -268,7 +295,7 @@ export async function listScanResults(
     page: number;
     per_page: number;
     status: RemovalStatus;
-  }> = {}
+  }> = {},
 ): Promise<ListScanResultsResponse> {
   const queryParams = new URLSearchParams({
     "profile_id[]": profileId.toString(),
@@ -291,14 +318,14 @@ export async function listScanResults(
     "/scan-results/?" + queryParams.toString(),
     {
       method: "GET",
-    }
+    },
   );
   if (!response.ok) {
-    log.info(
-      `Failed to fetch scan results: [${response.status}] [${response.statusText}]`
+    logger.error(
+      `Failed to fetch scan results: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
-      `Failed to fetch scan results: [${response.status}] [${response.statusText}]`
+      `Failed to fetch scan results: [${response.status}] [${response.statusText}]`,
     );
   }
   return response.json() as Promise<ListScanResultsResponse>;
@@ -306,7 +333,7 @@ export async function listScanResults(
 
 export async function isEligibleForFreeScan(
   user: Session["user"],
-  countryCode: string
+  countryCode: string,
 ) {
   if (countryCode !== "us") {
     return false;
@@ -316,7 +343,8 @@ export async function isEligibleForFreeScan(
     throw new Error("No session");
   }
 
-  if (!(await isFlagEnabled("FreeBrokerScan", user))) {
+  const enabledFlags = await getEnabledFeatureFlags({ email: user.email });
+  if (!enabledFlags.includes("FreeBrokerScan")) {
     return false;
   }
 
@@ -324,31 +352,23 @@ export async function isEligibleForFreeScan(
   const profileId = result[0]["onerep_profile_id"] as number;
   const scanResult = await getLatestOnerepScanResults(profileId);
 
-  if (scanResult.results.length) {
-    console.warn("User has already used free scan");
+  if (scanResult.scan) {
+    logger.warn("User has already used free scan");
     return false;
   }
 
   return true;
 }
 
-export async function isEligibleForPremium(
-  user: Session["user"],
-  countryCode: string
+export function isEligibleForPremium(
+  countryCode: string,
+  enabledFlags: FeatureFlagName[],
 ) {
   if (countryCode !== "us") {
     return false;
   }
 
-  if (countryCode !== "us") {
-    return false;
-  }
-
-  if (!user?.subscriber?.id) {
-    throw new Error("No session");
-  }
-
-  if (!(await isFlagEnabled("PremiumBrokerRemoval", user))) {
+  if (!enabledFlags.includes("PremiumBrokerRemoval")) {
     return false;
   }
 
@@ -357,43 +377,65 @@ export async function isEligibleForPremium(
 
 export async function getScanDetails(
   profileId: number,
-  scanId: number
+  scanId: number,
 ): Promise<Scan> {
   const response = await onerepFetch(`/profiles/${profileId}/scans/${scanId}`, {
     method: "GET",
   });
   if (!response.ok) {
-    log.info(
-      `Failed to fetch scan details: [${response.status}] [${response.statusText}]`
+    logger.error(
+      `Failed to fetch scan details: [${response.status}] [${response.statusText}]`,
     );
     throw new Error(
-      `Failed to fetch scan details: [${response.status}] [${response.statusText}]`
+      `Failed to fetch scan details: [${response.status}] [${response.statusText}]`,
     );
   }
   return response.json() as Promise<Scan>;
 }
 
 export async function getAllScanResults(
-  profileId: number
+  profileId: number,
 ): Promise<ScanResult[]> {
-  const scanPagesAll = [];
-  const firstPage = await listScanResults(profileId, {
-    per_page: 100,
+  return fetchAllPages((page: number) =>
+    listScanResults(profileId, { per_page: 100, page: page }),
+  );
+}
+
+export async function getAllDataBrokers() {
+  return fetchAllPages(async (page: number) => {
+    const response = await onerepFetch(
+      "/data-brokers?per_page=100&page=" + page.toString(),
+    );
+    const data: OneRepResponse<
+      Array<{
+        id: number;
+        data_broker: string;
+        status:
+          | "active"
+          | "scan_under_maintenance"
+          | "removal_under_maintenance"
+          | "on_hold"
+          | "ceased_operation";
+      }>
+    > = await response.json();
+    return data;
   });
+}
+
+export async function fetchAllPages<Data>(
+  fetchFunction: (_page: number) => Promise<OneRepResponse<Data[]>>,
+): Promise<Data[]> {
+  const firstPage = await fetchFunction(1);
+  const dataList: Data[][] = [firstPage.data];
   // Results are paginated, use per_page maximum and collect all pages into one result.
-  if (firstPage.meta.last_page > 1) {
+  for (
     let currentPage = 2;
-    while (currentPage <= firstPage.meta.last_page) {
-      const nextPage = await listScanResults(profileId, {
-        per_page: 100,
-        page: currentPage,
-      });
-      currentPage++;
-      nextPage.data.forEach((element: object) => scanPagesAll.push(element));
-    }
-  } else {
-    scanPagesAll.push(firstPage.data);
+    currentPage <= firstPage.meta.last_page;
+    currentPage++
+  ) {
+    const nextPage = await fetchFunction(currentPage);
+    dataList.push(nextPage.data);
   }
 
-  return scanPagesAll.flat();
+  return dataList.flat();
 }

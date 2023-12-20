@@ -50,8 +50,12 @@ settings-cancel-premium-subscription-link-label = Annuller fra din { -brand-fx-a
 ## Deactivate account
 
 settings-deactivate-account-title = Deaktiver konto
+# Deprecated
 settings-deactivate-account-info = Du kan deaktivere { -product-short-name } ved at slette din { -brand-fx-account }.
+settings-deactivate-account-info-2 = Du kan deaktivere { -product-short-name } ved at slette din { -brand-mozilla-account }.
+# Deprecated
 settings-fxa-link-label = Gå til { -brand-firefox }-indstillinger
+settings-fxa-link-label-3 = Gå til indstillingerne for { -brand-mozilla-account }
 
 ## Add email dialog
 

@@ -14,6 +14,7 @@ import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
 import ModalImage from "../client/assets/premium-upsell-dialog-icon.svg";
 import styles from "./PremiumUpsellDialog.module.scss";
+import { useTelemetry } from "../../hooks/useTelemetry";
 
 export interface PremiumUpsellDialogProps {
   state: OverlayTriggerState;
@@ -29,30 +30,30 @@ function PremiumPricingLabel({ isMonthly }: { isMonthly?: boolean }) {
       <small className={styles.pricingInfo}>
         {l10n.getString(
           "fix-flow-data-broker-profiles-automatic-remove-save-percent",
-          { percent: 10 }
+          { percent: 10 },
         )}
       </small>
       <div className={styles.pricingPill}>
         <div className={styles.pricingLabel}>
           <b>
             {l10n.getString(
-              "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-headline"
+              "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-headline",
             )}
           </b>
           <small>
             {isMonthly
               ? l10n.getString(
-                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-frequency"
+                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-frequency",
                 )
               : l10n.getString(
-                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-frequency"
+                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-frequency",
                 )}
           </small>
         </div>
         <b>
           {l10n.getString(
             "fix-flow-data-broker-profiles-automatic-remove-features-price",
-            { price: isMonthly ? "X.XX" : "Y.YY" }
+            { price: isMonthly ? "X.XX" : "Y.YY" },
           )}
         </b>
       </div>
@@ -70,20 +71,22 @@ function PremiumUpsellDialogContent({
   yearlySubscriptionUrl,
 }: PremiumUpsellDialogContentProps) {
   const l10n = useL10n();
-  const [selectedTab, setSelectedTab] = useState<Key>("yearly");
+  const defaultSelectedKey = "yearly";
+  const [selectedTab, setSelectedTab] = useState<Key>(defaultSelectedKey);
+  const record = useTelemetry();
 
   const isMonthly = selectedTab === "monthly";
   const tabsData = [
     {
       name: l10n.getString(
-        "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-yearly"
+        "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-yearly",
       ),
       key: "yearly",
       content: <PremiumPricingLabel />,
     },
     {
       name: l10n.getString(
-        "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-monthly"
+        "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-monthly",
       ),
       key: "monthly",
       content: <PremiumPricingLabel isMonthly />,
@@ -95,13 +98,22 @@ function PremiumUpsellDialogContent({
       <div className={styles.productPlans}>
         <TabList
           tabs={tabsData}
-          onSelectionChange={(selectedKey) => setSelectedTab(selectedKey)}
+          defaultSelectedKey={defaultSelectedKey}
+          onSelectionChange={(selectedKey) => {
+            record("button", "click", {
+              button_id:
+                selectedKey === "monthly"
+                  ? "selected_monthly_plan"
+                  : "selected_yearly_plan",
+            });
+            return setSelectedTab(selectedKey);
+          }}
         />
       </div>
       <dl className={styles.list}>
         <dt>
           {l10n.getString(
-            "fix-flow-data-broker-profiles-automatic-remove-features-headline"
+            "fix-flow-data-broker-profiles-automatic-remove-features-headline",
           )}
         </dt>
         <dd>
@@ -110,43 +122,54 @@ function PremiumUpsellDialogContent({
             {
               data_broker_count: parseInt(
                 process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-                10
+                10,
               ),
-            }
+            },
           )}
         </dd>
         <dd>
           {l10n.getString(
-            "fix-flow-data-broker-profiles-automatic-remove-features-remove-personal-info"
+            "fix-flow-data-broker-profiles-automatic-remove-features-remove-personal-info",
           )}
         </dd>
         <dd>
           {l10n.getString(
-            "fix-flow-data-broker-profiles-automatic-remove-features-guided-experience"
+            "fix-flow-data-broker-profiles-automatic-remove-features-guided-experience",
           )}
         </dd>
         <dd>
           {l10n.getString(
-            "fix-flow-data-broker-profiles-automatic-remove-features-continuous-monitoring"
+            "fix-flow-data-broker-profiles-automatic-remove-features-continuous-monitoring",
           )}
         </dd>
         <dd>
           {l10n.getString(
-            "fix-flow-data-broker-profiles-automatic-remove-features-breach-alerts"
+            "fix-flow-data-broker-profiles-automatic-remove-features-breach-alerts",
           )}
         </dd>
       </dl>
       <Button
         className={styles.productCta}
         href={isMonthly ? monthlySubscriptionUrl : yearlySubscriptionUrl}
+        onPress={() => {
+          // Note: This doesn't currently work; the event is now never sent to
+          //       the back-end because the page unloads before we can do so.
+          //       This will be dealt with in upstream Glean:
+          //       https://matrix.to/#/!SCdsJdSTaQHjzEVrAE:mozilla.org/$muLULIgsOMaLwe3HR6HI_oJbMkyD5gZBoRN3GmDL8Ko
+          record("upgradeIntent", "click", {
+            button_id: isMonthly
+              ? "intent_to_purchase_monthly_plan_nav_modal"
+              : "intent_to_purchase_yearly_plan_nav_modal",
+          });
+        }}
         variant="primary"
       >
         {isMonthly
           ? l10n.getString(
-              "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-button"
+              "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-button",
             )
           : l10n.getString(
-              "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-button"
+              "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-button",
             )}
       </Button>
     </div>
@@ -160,6 +183,7 @@ function PremiumUpsellDialog({
   ...otherProps
 }: PremiumUpsellDialogProps & OverlayTriggerProps) {
   const l10n = useL10n();
+  const record = useTelemetry();
 
   return (
     <div className={styles.modal}>
@@ -168,7 +192,12 @@ function PremiumUpsellDialog({
           <Dialog
             title={l10n.getString("premium-upsell-dialog-title")}
             illustration={<Image src={ModalImage} alt="" />}
-            onDismiss={() => void state.close()}
+            onDismiss={() => {
+              record("button", "click", {
+                button_id: "close_upsell_modal",
+              });
+              return void state.close();
+            }}
             variant="horizontal"
           >
             <PremiumUpsellDialogContent

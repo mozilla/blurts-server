@@ -711,6 +711,7 @@ ad-unit-6-before-you-complete = Maskér din mailadresse for at beskytte dine opl
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
@@ -722,9 +723,9 @@ ad-unit-6-before-you-complete = Maskér din mailadresse for at beskytte dine opl
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
+# “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Firefox-konto
+-brand-mozilla-account = Mozilla-konto
 
 ## Search Engine Optimization
 
@@ -740,7 +741,7 @@ sign-in = Log ind
 site-nav-breaches-link = Løste datalæk
 site-nav-settings-link = Indstillinger
 site-nav-help-link = Hjælp og support
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Prøv vores andre sikkerhedsværktøjer:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -750,8 +751,8 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Brugermenu
 menu-button-alt = Åbn brugermenuen
 menu-list-accessible-label = Åbn kontomenuen
-menu-item-fxa = Håndter din { -brand-fx-account }
-menu-item-fxa-alt = Åbn siden { -brand-fx-account }
+menu-item-fxa-2 = Håndter din { -brand-mozilla-account }
+menu-item-fxa-alt-2 = Åbn siden { -brand-mozilla-account }
 menu-item-settings = Indstillinger
 menu-item-settings-alt = Åbn siden Indstillinger
 menu-item-help = Hjælp og support
@@ -761,7 +762,8 @@ menu-item-logout = Log ud
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Vilkår og beskyttelse af personlige oplysninger
+terms-of-service = Tjenestevilkår
+privacy-notice = Privatlivserklæring
 github = { -brand-github }
 footer-nav-all-breaches = Alle datalæk
 

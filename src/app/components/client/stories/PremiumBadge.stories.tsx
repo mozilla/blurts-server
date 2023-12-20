@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import PremiumBadge from "../PremiumBadge";
+import { PremiumBadge } from "../PremiumBadge";
 import { createUserWithPremiumSubscription } from "../../../../apiMocks/mockData";
 
 const meta: Meta<typeof PremiumBadge> = {

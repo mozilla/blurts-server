@@ -705,6 +705,7 @@ ad-unit-6-before-you-complete = Brûk, eardat jo jo folgjende registraasje folt�
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
@@ -716,9 +717,9 @@ ad-unit-6-before-you-complete = Brûk, eardat jo jo folgjende registraasje folt�
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
+# “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Firefox-account
+-brand-mozilla-account = Mozilla-account
 
 ## Search Engine Optimization
 
@@ -734,7 +735,7 @@ sign-in = Oanmelde
 site-nav-breaches-link = Datalekken oplosse
 site-nav-settings-link = Ynstellingen
 site-nav-help-link = Help en stipe
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Probearje ús oare befeiligingsark:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -744,8 +745,8 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Brûkersmenu
 menu-button-alt = Brûkersmenu iepenje
 menu-list-accessible-label = Accountmenu
-menu-item-fxa = Jo { -brand-fx-account } beheare
-menu-item-fxa-alt = { -brand-fx-account }-side iepenje
+menu-item-fxa-2 = Jo { -brand-mozilla-account } beheare
+menu-item-fxa-alt-2 = { -brand-mozilla-account }-side iepenje
 menu-item-settings = Ynstellingen
 menu-item-settings-alt = Ynstellingenside iepenje
 menu-item-help = Help en stipe
@@ -755,7 +756,8 @@ menu-item-logout = Ofmelde
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Betingsten en privacy
+terms-of-service = Tsjinstbetingsten
+privacy-notice = Privacyferklearring
 github = { -brand-github }
 footer-nav-all-breaches = Alle datalekken
 
@@ -790,14 +792,3 @@ breach-detail-cta-signup = Kontrolearje op datalekken
 floating-banner-text = Ferheegje jo online feiligens mei nijs, tips en updates fan { -brand-Mozilla }.
 floating-banner-link-label = Registrearje
 floating-banner-dismiss-button-label = Nee, tankewol
-
-## False door test
-
-
-# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
-
-false-door-test-content-part-one = Nimmen soe jo persoanlike ynformaasje keapje kinne moatte.
-false-door-test-content-part-two = Wiskje automatysk gegevens fan siden dy’t probearje it te ferkeapjen.
-false-door-test-content-part-two-dashboard = Smyt automatysk gegevens fan siden fuort dy’t probearje it te ferkeapjen.
-false-door-test-cta = Ik doch mei
-false-door-test-popup-close = Slute

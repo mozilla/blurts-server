@@ -49,7 +49,7 @@ fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-2-content = Some 
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-3-title = Mark as fixed on this page
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-3-content = This will help you keep track of which exposures still need your attention, and make your overall exposures go down.
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-title = Watch for re-exposures
-fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-content = This process does not remove your information from public records, so even after your information is removed, sites often add you back. If you’d like us to handle this for you and automatically remove any new exposures, upgrade to { -brand-monitor-premium }.
+fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-content = This process does not remove your information from public records, so even after your information is removed, sites often add you back. If you’d like us to handle this for you and automatically remove any new exposures, <upgrade_link>upgrade to { -brand-monitor-premium }</upgrade_link>.
 fix-flow-data-broker-profiles-manual-remove-review-profiles-headline = Review & remove your profiles
 fix-flow-data-broker-profiles-manual-remove-button-mark-fixed = Mark as fixed
 fix-flow-data-broker-profiles-manual-remove-button-remove-for-me = Remove them for me
@@ -87,3 +87,34 @@ fix-flow-data-broker-profiles-automatic-remove-features-monthly-scan =
 # Variables:
 # $price is the price of a monthly plan. "/mo" is short for "monthly"
 fix-flow-data-broker-profiles-automatic-remove-features-price = ${ $price }/mo
+
+# Celebration screens
+
+## Shared CTA labels
+
+fix-flow-celebration-next-label = Let’s keep going
+fix-flow-celebration-next-recommendations-label = See recommendations
+fix-flow-celebration-next-dashboard-label = Go to your Dashboard
+
+## High-risk flow
+
+fix-flow-celebration-high-risk-title = You’ve fixed your high risk exposures!
+fix-flow-celebration-high-risk-description-in-progress = Doing this work can feel like a lot, but it’s important to do so to keep yourself safe. Keep up the good work.
+fix-flow-celebration-high-risk-description-done = Doing this work can feel like a lot, but it’s important to do so to keep yourself safe.
+fix-flow-celebration-high-risk-description-next-passwords = Now let’s fix your exposed passwords.
+fix-flow-celebration-high-risk-description-next-security-questions = Now let’s fix your exposed security questions.
+fix-flow-celebration-high-risk-description-next-security-recommendations = Next, we’ll give you personalized security recommendations based on what data of yours has been exposed.
+fix-flow-celebration-high-risk-description-next-dashboard = You’ve reached the end of your steps. You can view any action items and track your progress on your dashboard.
+
+## Leaked passwords and security questions flow
+
+fix-flow-celebration-leaked-passwords-title = Your passwords are now protected!
+fix-flow-celebration-security-questions-title = Your security questions are protected!
+fix-flow-celebration-leaked-passwords-description-next-security-questions = Now let’s review and update your exposed security questions.
+fix-flow-celebration-leaked-passwords-description-next-security-recommendations = Next, we’ll give you personalized security recommendations based on what data of yours has been exposed.
+fix-flow-celebration-leaked-passwords-description-next-dashboard = Nicely done! You’ve reached the end of your steps. You can view any action items and track your progress on your dashboard.
+
+## Security recommendations flow
+
+fix-flow-celebration-security-recommendations-title = You’ve completed all your recommendations!
+fix-flow-celebration-security-recommendations-description-next-dashboard = Nicely done! You’ve reached the end of your steps. You can view any action items and track your progress on your dashboard.

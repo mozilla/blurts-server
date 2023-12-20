@@ -608,6 +608,7 @@ ad-unit-6-before-you-complete = 您在下次注册账号时，可使用马甲邮
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
@@ -619,9 +620,9 @@ ad-unit-6-before-you-complete = 您在下次注册账号时，可使用马甲邮
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
+# “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Firefox 账户
+-brand-mozilla-account = Mozilla 账户
 
 ## Search Engine Optimization
 
@@ -637,7 +638,7 @@ sign-in = 登录
 site-nav-breaches-link = 解决数据泄露
 site-nav-settings-link = 设置
 site-nav-help-link = 帮助和支持
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = 试试我们其他保护安全的工具：
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -647,8 +648,8 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = 用户菜单
 menu-button-alt = 打开用户菜单
 menu-list-accessible-label = 账户菜单
-menu-item-fxa = 管理您的 { -brand-fx-account }
-menu-item-fxa-alt = 打开 { -brand-fx-account } 页面
+menu-item-fxa-2 = 管理您的 { -brand-mozilla-account }
+menu-item-fxa-alt-2 = 打开 { -brand-mozilla-account }页面
 menu-item-settings = 设置
 menu-item-settings-alt = 打开设置页面
 menu-item-help = 帮助和支持
@@ -658,7 +659,8 @@ menu-item-logout = 退出
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = 使用条款和隐私
+terms-of-service = 服务条款
+privacy-notice = 隐私声明
 github = { -brand-github }
 footer-nav-all-breaches = 所有数据外泄事件
 

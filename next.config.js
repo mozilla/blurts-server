@@ -28,6 +28,10 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "monitor.mozilla.org",
+      },
+      {
+        protocol: "https",
         hostname: "firefoxusercontent.com",
       },
       {
@@ -160,4 +164,10 @@ const sentryWebpackPluginOptions = {
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };
 
-export default withSentryConfig(nextConfig, sentryWebpackPluginOptions)
+const sentryOptions = {
+  // Upload additional client files (increases upload size)
+  // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#widen-the-upload-scope
+  widenClientFileUpload: true,
+};
+
+export default withSentryConfig(nextConfig, sentryWebpackPluginOptions, sentryOptions)

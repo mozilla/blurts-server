@@ -6,6 +6,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  // Set position relative so the child <Confetti> canvas can overlay <FixView>
+  position: relative;
 
   @media screen and (min-width: $screen-md) {
     padding: $layout-sm;
@@ -14,12 +16,16 @@
   .fixWrapper {
     max-width: $content-xl;
     width: 100%;
-    padding: $layout-sm;
+    padding: $layout-xs;
     background-color: $color-white;
     background-size: cover;
     background-position: center;
     position: relative;
     background-image: url("./images/content-background.svg");
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-height: $content-sm;
 
     &.contentBackgroundImage {
       background-image: url("./images/high-risk-breaches-content-background.svg");
@@ -50,10 +56,12 @@
     .navArrow {
       flex: 0 0 auto;
       display: none;
+      position: absolute;
       align-items: center;
       justify-content: center;
       padding: $spacing-md;
       border-radius: $border-radius-sm;
+      right: $spacing-md;
 
       &:hover {
         background-color: $color-violet-20;

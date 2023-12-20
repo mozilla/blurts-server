@@ -12,13 +12,16 @@ loadtests/venv
 .tmp
 public/dist
 dist
+src/client/images/logo_cache/
+public/logo_cache/
+
+#e2e
 **/test-results/
 **/playwright-report/
 **/playwright/.cache/
 **/storageState.json
 state.json
-src/client/images/logo_cache/
-public/logo_cache/
+src/e2e/specs/*-snapshots/**
 
 # Storybook
 */storybook.log

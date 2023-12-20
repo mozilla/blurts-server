@@ -705,6 +705,7 @@ ad-unit-6-before-you-complete = Gebruik, voordat u uw volgende registratie volto
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
@@ -716,9 +717,9 @@ ad-unit-6-before-you-complete = Gebruik, voordat u uw volgende registratie volto
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
+# “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Firefox-account
+-brand-mozilla-account = Mozilla-account
 
 ## Search Engine Optimization
 
@@ -734,7 +735,7 @@ sign-in = Aanmelden
 site-nav-breaches-link = Datalekken oplossen
 site-nav-settings-link = Instellingen
 site-nav-help-link = Hulp en ondersteuning
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = Probeer onze andere beveiligingshulpmiddelen:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
@@ -744,8 +745,8 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Gebruikersmenu
 menu-button-alt = Gebruikersmenu openen
 menu-list-accessible-label = Accountmenu
-menu-item-fxa = Uw { -brand-fx-account } beheren
-menu-item-fxa-alt = { -brand-fx-account }-pagina openen
+menu-item-fxa-2 = Uw { -brand-mozilla-account } beheren
+menu-item-fxa-alt-2 = { -brand-mozilla-account }-pagina openen
 menu-item-settings = Instellingen
 menu-item-settings-alt = Instellingenpagina openen
 menu-item-help = Hulp en ondersteuning
@@ -755,7 +756,8 @@ menu-item-logout = Afmelden
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Voorwaarden en Privacy
+terms-of-service = Servicevoorwaarden
+privacy-notice = Privacyverklaring
 github = { -brand-github }
 footer-nav-all-breaches = Alle datalekken
 

@@ -10,7 +10,7 @@ import Image from "next/image";
 import { Session } from "next-auth";
 import styles from "./MobileShell.module.scss";
 import monitorLogo from "../images/monitor-logo.webp";
-import PremiumBadge from "../../components/client/PremiumBadge";
+import { PremiumBadge } from "../../components/client/PremiumBadge";
 import { CloseBigIcon, ListIcon } from "../../components/server/Icons";
 import { UserMenu } from "../../components/client/toolbar/UserMenu";
 import { useL10n } from "../../hooks/l10n";
@@ -20,6 +20,7 @@ export type Props = {
   session: Session;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  fxaSettingsUrl: string;
   children: ReactNode;
 };
 
@@ -47,7 +48,7 @@ export const MobileShell = (props: Props) => {
               /* c8 ignore next 2 */
               isExpanded
                 ? "main-nav-button-collapse-tooltip"
-                : "main-nav-button-expand-tooltip"
+                : "main-nav-button-expand-tooltip",
             )}
           >
             {
@@ -66,7 +67,7 @@ export const MobileShell = (props: Props) => {
           </button>
         </div>
         <div className={styles.headerMiddle}>
-          <Link href="/" className={styles.homeLink}>
+          <Link href="/redesign/user/dashboard" className={styles.homeLink}>
             <Image
               src={monitorLogo}
               alt={l10n.getString("main-nav-link-home-label")}
@@ -75,7 +76,10 @@ export const MobileShell = (props: Props) => {
           </Link>
         </div>
         <div className={styles.headerEnd}>
-          <UserMenu user={props.session?.user} />
+          <UserMenu
+            user={props.session?.user}
+            fxaSettingsUrl={props.fxaSettingsUrl}
+          />
         </div>
       </header>
       <div className={styles.nonHeader}>
@@ -104,6 +108,7 @@ export const MobileShell = (props: Props) => {
             </ul>
             <div className={styles.premiumCta}>
               <PremiumBadge
+                label={l10n.getString("premium-cta-label")}
                 user={props.session.user}
                 monthlySubscriptionUrl={props.monthlySubscriptionUrl}
                 yearlySubscriptionUrl={props.yearlySubscriptionUrl}

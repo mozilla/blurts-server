@@ -9,37 +9,70 @@ enum ENV {
   local = "local",
   stage = "stage",
   prod = "prod",
-  dev = "dev",
+  heroku = "heroku",
 }
 
-export const defaultScreenshotOpts = {
+interface DefaultScreenshotOpts {
+  animations: "disabled" | "allow";
+  maxDiffPixelRatio: number;
+  timeout: number;
+  caret?: "hide" | "initial" | undefined;
+  fullPage?: boolean;
+}
+
+export const defaultScreenshotOpts: Partial<DefaultScreenshotOpts> = {
   animations: "disabled",
   maxDiffPixelRatio: 0.04,
+  timeout: 5_000,
 };
 
 export const ENV_URLS = {
   local: "http://localhost:6060",
-  dev: "https://fx-breach-alerts.herokuapp.com",
+  heroku: "https://fx-breach-alerts.herokuapp.com",
   stage: "https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net",
-  prod: "https://monitor.firefox.com/",
+  prod: "https://monitor.mozilla.org",
 };
 
 export const setEnvVariables = (email: string) => {
-  process.env["E2E_TEST_ENV"] = (process.env.E2E_TEST_ENV as string) ?? "local";
+  process.env["E2E_TEST_ENV"] =
+    (process.env.E2E_TEST_ENV as string) ?? ENV.stage;
   process.env["E2E_TEST_ACCOUNT_EMAIL"] = email;
   process.env["E2E_TEST_BASE_URL"] =
-    ENV_URLS[process.env.E2E_TEST_ENV as ENV] ??
-    "https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net";
+    ENV_URLS[process.env.E2E_TEST_ENV as ENV] ?? ENV_URLS.stage;
 };
 
 export const getBaseUrl = () => {
   return ENV_URLS[process.env.E2E_TEST_ENV as ENV] || ENV_URLS.local;
 };
 
+export const delay = async (time: number) => {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, time);
+  });
+};
+
+// this is particular to the free email scan behavior -- fast follow to optimize
+export const waitForUrlOrTimeout = async (
+  page: Page,
+  urlSubstring: string,
+  timeout: number,
+) => {
+  let tries = 0;
+  const startTime = Date.now();
+  while (Date.now() - startTime > timeout || tries < 10) {
+    if (page.url().includes(urlSubstring)) {
+      return true;
+    }
+
+    tries++;
+    await delay(500);
+  }
+};
+
 export const getVerificationCode = async (
   testEmail: string,
   page: Page,
-  attempts = 10
+  attempts = 10,
 ): Promise<string> => {
   if (attempts === 0) {
     throw new InternalServerError("Unable to retrieve restmail data");
@@ -84,29 +117,32 @@ const enterYourPassword = async (page: Page) => {
 
 export const checkAuthState = async (page: Page) => {
   const authStateTitleString = await page
-    .locator("h1")
-    .textContent({ timeout: 4000 });
-  const checkIfTitleContains = (potentialTitle: string) => {
-    return authStateTitleString?.includes(potentialTitle);
-  };
+    .locator(".card-header")
+    .textContent({ timeout: 1000 });
 
-  switch (true) {
-    case checkIfTitleContains("Enter your email"):
-      await enterYourEmail(page);
-      break;
-    case checkIfTitleContains("Enter your password"):
-      await enterYourPassword(page);
-      break;
-    // case checkIfTitleContains('Set your password'):
-    //   await setYourPassword(page)
-    //   break
-    // case checkIfTitleContains('Enter confirmation code'):
-    //   await enterConfirmationCode(page)
-    //   break
-    // case checkIfTitleContains('Sign in'):
-    //   await signIn(page)
-    //   break
-    default:
-      break;
+  if (authStateTitleString) {
+    const checkIfTitleContains = (potentialTitle: string) => {
+      return authStateTitleString?.includes(potentialTitle);
+    };
+
+    switch (true) {
+      case checkIfTitleContains("Enter your email"):
+        await enterYourEmail(page);
+        break;
+      case checkIfTitleContains("Enter your password"):
+        await enterYourPassword(page);
+        break;
+      // case checkIfTitleContains('Set your password'):
+      //   await setYourPassword(page)
+      //   break
+      // case checkIfTitleContains('Enter confirmation code'):
+      //   await enterConfirmationCode(page)
+      //   break
+      // case checkIfTitleContains('Sign in'):
+      //   await signIn(page)
+      //   break
+      default:
+        break;
+    }
   }
 };

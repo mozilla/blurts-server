@@ -2,91 +2,55 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import styles from "./welcomeToPremium.module.scss";
-import { getL10n } from "../../../../../../../../functions/server/l10n";
 import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
 import { getServerSession } from "next-auth";
+import { headers } from "next/headers";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
 import { redirect } from "next/navigation";
-import { PercentageChart } from "../../../../../../../../components/client/PercentageChart";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
-import {
-  getDashboardSummary,
-  getExposureReduction,
-} from "../../../../../../../../functions/server/dashboard";
-import { Button } from "../../../../../../../../components/server/Button";
-import { hasPremium } from "../../../../../../../../functions/universal/user";
+import { WelcomeToPremiumView } from "./WelcomeToPremiumView";
+import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
+import { StepDeterminationData } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
+import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
+import { activateAndOptoutProfile } from "../../../../../../../../functions/server/onerep";
+import { logger } from "../../../../../../../../functions/server/logging";
 
-export default async function WelcomeToPremium() {
-  const l10n = getL10n();
+export default async function WelcomeToPremiumPage() {
   const session = await getServerSession(authOptions);
 
+  // Ensure user is logged in
   if (!session?.user?.subscriber?.id) {
     redirect("/redesign/user/dashboard/");
   }
 
-  // The user may have subscribed and just need their session updated - they will be redirected back to try again if it looks valid.
-  if (!hasPremium(session.user)) {
-    redirect(`${process.env.NEXTAUTH_URL}/redesign/user/dashboard/subscribed`);
+  // MNTOR-2594 - log any users that are on welcome-to-premium page but not subscribed.
+  if (!session.user.fxa?.subscriptions.includes("monitor")) {
+    logger.error("user_not_subscribed", {
+      page: "welcome-to-premium",
+    });
   }
 
   const result = await getOnerepProfileId(session.user.subscriber.id);
-  const profileId = result[0]["onerep_profile_id"] ?? -1;
-  const scanResultItems =
-    (await getLatestOnerepScanResults(profileId))?.results ?? [];
-  const countOfDataBrokerProfiles = scanResultItems.length;
+  const profileId = result[0]["onerep_profile_id"] as number;
+  const scanData = await getLatestOnerepScanResults(profileId);
   const subBreaches = await getSubscriberBreaches(session.user);
-  const summary = getDashboardSummary(scanResultItems, subBreaches);
-  const exposureReduction = getExposureReduction(summary, scanResultItems);
+  const subscriberEmails = await getSubscriberEmails(session.user);
+
+  const data: StepDeterminationData = {
+    countryCode: getCountryCode(headers()),
+    latestScanData: scanData,
+    subscriberBreaches: subBreaches,
+    user: session.user,
+  };
+
+  // If the current user is a subscriber and their OneRep profile is not
+  // activated: Most likely we were not able or failed to kick-off the
+  // auto-removal process.
+  // Let’s make sure the users OneRep profile is activated:
+  await activateAndOptoutProfile(profileId);
 
   return (
-    <div className={styles.contentWrapper}>
-      <div className={styles.content}>
-        <h3>
-          {l10n.getString(
-            "welcome-to-premium-data-broker-profiles-title-part-one"
-          )}
-          <br />
-          {l10n.getString(
-            "welcome-to-premium-data-broker-profiles-title-part-two"
-          )}
-        </h3>
-        <p>
-          {l10n.getString(
-            "welcome-to-premium-data-broker-profiles-description-part-one",
-            {
-              profile_total_num: countOfDataBrokerProfiles,
-              exposure_reduction_percentage: exposureReduction,
-            }
-          )}
-        </p>
-        <p>
-          {l10n.getString(
-            "welcome-to-premium-data-broker-profiles-description-part-two"
-          )}
-        </p>
-        <p>
-          {l10n.getString(
-            "welcome-to-premium-data-broker-profiles-description-part-three"
-          )}
-        </p>
-        <div className={styles.buttonsWrapper}>
-          <Button
-            variant="primary"
-            href="/redesign/user/dashboard/fix/high-risk-data-breaches"
-            disabled
-            wide
-          >
-            {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-cta-label"
-            )}
-          </Button>
-        </div>
-      </div>
-      <div className={styles.chart}>
-        <PercentageChart exposureReduction={exposureReduction} />
-      </div>
-    </div>
+    <WelcomeToPremiumView data={data} subscriberEmails={subscriberEmails} />
   );
 }

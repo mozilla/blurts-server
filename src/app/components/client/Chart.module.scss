@@ -3,9 +3,12 @@
 .chartContainer {
   text-align: center;
   display: flex;
-  gap: $spacing-lg;
+  gap: $spacing-md;
   flex-direction: column;
-  align-items: center;
+
+  @media screen and (min-width: $screen-lg) {
+    align-items: flex-end;
+  }
 
   figcaption {
     text-align: center;
@@ -44,7 +47,7 @@
   flex-direction: column;
   gap: $spacing-md;
 
-  @media screen and (min-width: $screen-sm) {
+  @media screen and (min-width: $screen-lg) {
     flex-direction: row;
     gap: $spacing-xl;
   }

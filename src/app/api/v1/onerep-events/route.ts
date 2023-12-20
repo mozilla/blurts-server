@@ -7,8 +7,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { captureException } from "@sentry/node";
 import crypto from "crypto";
 
-import { addOnerepScanResults } from "../../../../db/tables/onerep_scans";
-import { getAllScanResults, Scan } from "../../../functions/server/onerep";
+import { logger } from "../../../functions/server/logging";
+import { Scan } from "../../../functions/server/onerep";
+import { refreshStoredScanResults } from "../../../functions/server/refreshStoredScanResults";
 
 interface OnerepWebhookRequest {
   id: number;
@@ -53,7 +54,7 @@ export async function POST(req: NextRequest) {
       throw new Error("Webhook signature invalid");
     }
   } catch (ex) {
-    console.error(ex);
+    logger.error(ex);
     captureException(ex);
 
     return NextResponse.json({ success: false }, { status: 401 });
@@ -61,17 +62,17 @@ export async function POST(req: NextRequest) {
 
   try {
     const result: OnerepWebhookRequest = JSON.parse(finalBuffer.toString());
-    console.debug("OneRep Webhook Request received:", result);
+    logger.debug("OneRep Webhook Request received:", result);
 
     if (result.type !== "scan.completed") {
-      console.debug("Unexpected OneRep webhook type received:", result.type);
+      logger.debug("Unexpected OneRep webhook type received:", result.type);
       return;
     }
 
     if (result.data.object.status !== "finished") {
-      console.debug(
+      logger.debug(
         "Received OneRep webhook, but scan not finished",
-        result.data.object.status
+        result.data.object.status,
       );
       return;
     }
@@ -80,20 +81,14 @@ export async function POST(req: NextRequest) {
     const scanId = result.data.object.id;
     const reason = result.data.object.reason;
 
-    // The webhook just tells us which scan ID finished, we need to fetch the payload.
-    const scanListFull = await getAllScanResults(profileId);
-    // Store full list of results in the DB.
-    await addOnerepScanResults(
-      profileId,
-      scanId,
-      scanListFull,
-      reason,
-      result.data.object.status
-    );
+    logger.info("received_onerep_webhook", { profileId, scanId, reason });
+
+    // The webhook just tells us which scan ID finished, we need to fetch the payload and refresh.
+    await refreshStoredScanResults(profileId);
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (ex) {
-    console.error(ex);
+    logger.error(ex);
     captureException(ex);
 
     return NextResponse.json({ success: false }, { status: 500 });
