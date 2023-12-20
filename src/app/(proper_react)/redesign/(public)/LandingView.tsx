@@ -9,10 +9,10 @@ import { ExtendedReactLocalization } from "../../../hooks/l10n";
 import { PlansTable } from "./PlansTable";
 import { useId } from "react";
 import getPremiumSubscriptionUrl from "../../../functions/server/getPremiumSubscriptionUrl";
-import {
-  ExposureExampleImage,
-  ScanningForExposuresImage,
-} from "./ValuePropositions";
+import Image from "next/image";
+import ScanningForExposuresimage from "./value-prop-images/scanning-for-exposures.svg";
+import LeakedPasswordExampleImage from "./value-prop-images/leaked-password-example.svg";
+import ProgressBarimage from "./value-prop-images/progress-card.svg";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -71,7 +71,11 @@ export const View = (props: Props) => {
           </span>
           {/* TODO: Update this illustration with the US version when design is unblocked */}
           <div className={styles.illustration}>
-            <ScanningForExposuresImage {...props} />
+            {props.eligibleForPremium ? (
+              <Image src={ProgressBarimage} alt="" />
+            ) : (
+              <Image src={ScanningForExposuresimage} alt="" />
+            )}
           </div>
         </div>
 
@@ -102,7 +106,7 @@ export const View = (props: Props) => {
             />
           </span>
           <div className={styles.illustration}>
-            <ExposureExampleImage {...props} />
+            <Image src={LeakedPasswordExampleImage} alt="" />
           </div>
         </div>
       </div>
