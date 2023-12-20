@@ -11,7 +11,7 @@ import { Session } from "next-auth";
 import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "react-stately";
 import { PremiumUpsellDialog } from "./PremiumUpsellDialog";
-import { Button } from "../server/Button";
+import { Button } from "../client/Button";
 import { useL10n } from "../../hooks/l10n";
 import {
   canSubscribeToPremium,

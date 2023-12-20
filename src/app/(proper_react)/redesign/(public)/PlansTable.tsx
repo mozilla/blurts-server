@@ -53,7 +53,7 @@ import {
   BillingPeriodToggle,
 } from "../../../components/client/BillingPeriod";
 import { getLocale } from "../../../functions/universal/getLocale";
-import { Button } from "../../../components/server/Button";
+import { Button } from "../../../components/client/Button";
 import { signIn } from "next-auth/react";
 
 export type Props = {
