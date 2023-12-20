@@ -86,10 +86,8 @@ export const EnterInfo = ({
       }
 
       if (isOpen) {
-        // TODO: Uncomment popup_id after it has been added to metrics.yaml
-        // in https://github.com/mozilla/blurts-server/pull/3913.
         record("popup", "view", {
-          // popup_id: "enter_scan_info_confirmation_modal",
+          popup_id: "enter_scan_info_confirmation_modal",
         });
       } else {
         record("button", "click", {
