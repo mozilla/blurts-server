@@ -12,7 +12,7 @@ import styles from "./Chart.module.scss";
 import { QuestionMarkCircle } from "../server/Icons";
 import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "react-stately";
-import { Button } from "../server/Button";
+import { Button } from "../client/Button";
 import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import ModalImage from "../client/assets/modal-default-img.svg";

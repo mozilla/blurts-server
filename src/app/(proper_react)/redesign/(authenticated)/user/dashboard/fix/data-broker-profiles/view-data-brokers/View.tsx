@@ -6,7 +6,7 @@ import styles from "../dataBrokerProfiles.module.scss";
 import { getL10n } from "../../../../../../../../functions/server/l10n";
 import { DataBrokerProfiles } from "../../../../../../../../components/client/DataBrokerProfiles";
 import { AboutBrokersIcon } from "./AboutBrokersIcon";
-import { Button } from "../../../../../../../../components/server/Button";
+import { Button } from "../../../../../../../../components/client/Button";
 import { FixView } from "../../FixView";
 import {
   StepDeterminationData,
