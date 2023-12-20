@@ -98,7 +98,7 @@ async function onerepFetch(
   }
   const onerepApiKey = process.env.ONEREP_API_KEY;
   if (!onerepApiKey) {
-    throw new Error("ONEREP_API_BASE env var not set");
+    throw new Error("ONEREP_API_KEY env var not set");
   }
   const url = new URL(path, onerepApiBase);
   const headers = new Headers(options.headers);
