@@ -53,8 +53,15 @@ export const View = (props: Props) => {
               {props.l10n.getString("landing-all-value-prop-fix-exposures")}
             </h2>
             <p>
-              {props.l10n.getString(
+              {props.l10n.getFragment(
                 "landing-all-value-prop-fix-exposures-description",
+                {
+                  elems: {
+                    privacy_link: (
+                      <a href="https://www.mozilla.org/en-US/firefox/privacy/" />
+                    ),
+                  },
+                },
               )}
             </p>
             <SignUpForm
@@ -62,8 +69,9 @@ export const View = (props: Props) => {
               signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
             />
           </span>
+          {/* TODO: Update this illustration with the US version when design is unblocked */}
           <div className={styles.illustration}>
-            <ScanningForExposures {...props} />
+            <ScanningForExposuresImage {...props} />
           </div>
         </div>
 
@@ -73,9 +81,20 @@ export const View = (props: Props) => {
               {props.l10n.getString("landing-all-value-prop-info-at-risk")}
             </h2>
             <p>
-              {props.l10n.getString(
-                "landing-all-value-prop-info-at-risk-description",
-              )}
+              {props.eligibleForPremium
+                ? props.l10n.getFragment(
+                    "landing-premium-value-prop-info-at-risk-description",
+                    {
+                      elems: {
+                        exposure_type_list: (
+                          <span className={styles.exposureTypeList} />
+                        ),
+                      },
+                    },
+                  )
+                : props.l10n.getString(
+                    "landing-all-value-prop-info-at-risk-description",
+                  )}
             </p>
             <SignUpForm
               eligibleForPremium={props.eligibleForPremium}
@@ -93,9 +112,6 @@ export const View = (props: Props) => {
   );
 };
 
-const ScanningForExposures = (props: Props) => {
-  return <ScanningForExposuresImage l10n={props.l10n} />;
-};
 const HeroImage = (props: Props) => {
   if (!props.eligibleForPremium) {
     return (

@@ -153,6 +153,12 @@
       background: $color-grey-05;
     }
 
+    .exposureTypeList {
+      font-weight: 600;
+      color: $color-purple-70;
+      display: inline;
+    }
+
     @media screen and (min-width: $screen-md) {
       padding-inline: $layout-lg;
       padding-block: $layout-sm;
