@@ -220,9 +220,21 @@ type MenuItemProps = {
 function MenuItem({ item, state }: MenuItemProps) {
   const ref = useRef(null);
   const { menuItemProps } = useMenuItem({ key: item.key }, state, ref);
+  const recordTelemetry = useTelemetry();
 
   return (
-    <li {...menuItemProps} ref={ref} className={`${styles.menuItemWrapper}`}>
+    <li
+      {...menuItemProps}
+      ref={ref}
+      className={`${styles.menuItemWrapper}`}
+      onClick={() => {
+        const buttonId =
+          item.textValue.replaceAll(" ", "_").toLowerCase() + "_user_menu";
+        recordTelemetry("ctaButton", "click", {
+          button_id: buttonId,
+        });
+      }}
+    >
       {item.rendered}
     </li>
   );
