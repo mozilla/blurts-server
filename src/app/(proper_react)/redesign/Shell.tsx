@@ -53,7 +53,7 @@ export const Shell = (props: Props) => {
             </Link>
             <ul>
               {/* Note: If you add elements here, also add them to <MobileShell>'s navigation */}
-              <li>
+              <li key="home">
                 <PageLink
                   href="/redesign/user/dashboard"
                   activeClassName={styles.isActive}
@@ -61,7 +61,15 @@ export const Shell = (props: Props) => {
                   {l10n.getString("main-nav-link-dashboard-label")}
                 </PageLink>
               </li>
-              <li>
+              <li key="settings">
+                <PageLink
+                  href="/redesign/user/settings"
+                  activeClassName={styles.isActive}
+                >
+                  {l10n.getString("main-nav-link-settings-label")}
+                </PageLink>
+              </li>
+              <li key="faq">
                 <a
                   href="https://support.mozilla.org/kb/firefox-monitor-faq"
                   title={l10n.getString("main-nav-link-faq-tooltip")}

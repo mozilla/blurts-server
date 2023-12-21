@@ -1,0 +1,39 @@
+@import "../../../../../../tokens";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  h3 {
+    font: $text-title-3xs;
+  }
+
+  .radioGroup {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: $spacing-xs;
+
+      svg {
+        flex: 0 0 auto;
+      }
+    }
+
+    .radioButton {
+      stroke: $color-black;
+    }
+
+    .focusRing {
+      stroke: $color-blue-50;
+    }
+
+    .selectedFill {
+      fill: $color-black;
+    }
+  }
+}
