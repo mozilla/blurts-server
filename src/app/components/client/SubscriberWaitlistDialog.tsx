@@ -11,7 +11,7 @@ import { useOverlayTriggerState } from "react-stately";
 import { Button } from "./Button";
 import { Dialog } from "./dialog/Dialog";
 import { ModalOverlay } from "./dialog/ModalOverlay";
-import ModalImage from "../client/assets/modal-default-img.svg";
+import ModalImage from "../client/assets/subscriber-waitlist-dialog-icon.svg";
 import { useL10n } from "../../hooks/l10n";
 import styles from "./SubscriberWaitlistDialog.module.scss";
 
@@ -39,11 +39,27 @@ function SubscriberWaitlistDialog() {
           isDismissable={true}
         >
           <Dialog
-            title="Subscriber waitlist dialog"
+            title={l10n.getString("subscriber-waitlist-dialog-title")}
             illustration={<Image src={ModalImage} alt="" />}
             onDismiss={() => dialogTriggerState.close()}
           >
-            <div style={styles}>Dialog content</div>
+            <div className={styles.dialogContent}>
+              {l10n.getString("subscriber-waitlist-dialog-info-text")}
+              <br />
+              <br />
+              {l10n.getString("subscriber-waitlist-dialog-instruction-text")}
+            </div>
+            <div>
+              <Button variant="primary" onPress={() => {}}>
+                {l10n.getString("subscriber-waitlist-dialog-cta-button-label")}
+              </Button>
+              <Button
+                variant="secondary"
+                onPress={() => dialogTriggerState.close()}
+              >
+                {l10n.getString("subscriber-waitlist-dialog-skip-button-label")}
+              </Button>
+            </div>
           </Dialog>
         </ModalOverlay>
       )}
