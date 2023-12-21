@@ -32,3 +32,19 @@ export const LandingNonUs: Story = {
     countryCode: "nz",
   },
 };
+
+export const LandingNonUsDe: Story = {
+  name: "Non-US visitors",
+  args: {
+    eligibleForPremium: false,
+    countryCode: "de",
+  },
+};
+
+export const LandingNonUsFr: Story = {
+  name: "Non-US visitors",
+  args: {
+    eligibleForPremium: false,
+    countryCode: "fr",
+  },
+};

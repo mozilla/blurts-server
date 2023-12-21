@@ -10,7 +10,7 @@ import { PlansTable } from "./PlansTable";
 import { useId } from "react";
 import getPremiumSubscriptionUrl from "../../../functions/server/getPremiumSubscriptionUrl";
 import Image from "next/image";
-import ProgressBarImage from "./value-prop-images/progress-card.svg";
+import ProgressCardImage from "./value-prop-images/progress-card.svg";
 import {
   LeakedPasswordExampleIllustration,
   ScanningForExposuresIllustration,
@@ -78,11 +78,11 @@ export const View = (props: Props) => {
           <div className={styles.illustration}>
             {props.eligibleForPremium ? (
               <Image
-                src={ProgressBarImage}
+                src={ProgressCardImage}
                 alt={props.l10n.getString(
                   "landing-premium-value-prop-progress-card-illustration-alt",
                 )}
-                data-testid="progress-bar-image"
+                data-testid="progress-card-image"
               />
             ) : (
               <ScanningForExposuresIllustration {...props} />

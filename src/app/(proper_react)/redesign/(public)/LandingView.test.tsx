@@ -16,7 +16,12 @@ import {
 import { userEvent } from "@testing-library/user-event";
 import { axe } from "jest-axe";
 import { signIn } from "next-auth/react";
-import Meta, { LandingNonUs, LandingUs } from "./LandingView.stories";
+import Meta, {
+  LandingNonUs,
+  LandingNonUsDe,
+  LandingNonUsFr,
+  LandingUs,
+} from "./LandingView.stories";
 
 jest.mock("next-auth/react");
 
@@ -38,8 +43,10 @@ describe("When Premium is not available", () => {
     );
     await user.type(inputField, "mail@example.com");
 
-    const submitButton = screen.getByRole("button", { name: "Get free scan" });
-    await user.click(submitButton);
+    const submitButton = screen.getAllByRole("button", {
+      name: "Get free scan",
+    });
+    await user.click(submitButton[0]);
 
     expect(signIn).toHaveBeenCalledTimes(1);
     expect(signIn).toHaveBeenCalledWith("fxa", expect.any(Object), {
@@ -55,6 +62,30 @@ describe("When Premium is not available", () => {
       "scanning-for-exposures-image",
     );
     expect(scanningForExposuresIllustration).toBeInTheDocument();
+  });
+
+  it("shows the german scanning for exposures illustration", () => {
+    const ComposedDashboard = composeStory(LandingNonUsDe, Meta);
+    render(<ComposedDashboard />);
+    const scanningForExposuresIllustration = screen.getByTestId(
+      "scanning-for-exposures-image",
+    );
+    expect(scanningForExposuresIllustration).toHaveAttribute(
+      "country-code",
+      "de",
+    );
+  });
+
+  it("shows the french scanning for exposures illustration", () => {
+    const ComposedDashboard = composeStory(LandingNonUsFr, Meta);
+    render(<ComposedDashboard />);
+    const scanningForExposuresIllustration = screen.getByTestId(
+      "scanning-for-exposures-image",
+    );
+    expect(scanningForExposuresIllustration).toHaveAttribute(
+      "country-code",
+      "fr",
+    );
   });
 });
 

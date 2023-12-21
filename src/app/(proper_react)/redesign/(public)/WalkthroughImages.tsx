@@ -11,26 +11,31 @@ import LeakedPasswordExampleImageDe from "./value-prop-images/de/leaked-password
 import ScanningForExposuresImageFr from "./value-prop-images/fr/scanning-for-exposures-fr.svg";
 import LeakedPasswordExampleImageFr from "./value-prop-images/fr/leaked-password-example-fr.svg";
 
-type Props = {
-  countryCode: string;
-  l10n: ExtendedReactLocalization;
-};
-
 const IllustrationWrapper = ({
   image,
   l10n,
+  testId,
+  countryCode,
 }: {
   image: string;
   l10n: ExtendedReactLocalization;
+  testId: string;
+  countryCode: string;
 }) => (
   <Image
     src={image}
     alt={l10n.getString(
       "landing-all-value-prop-scanning-for-exposures-illustration-alt",
     )}
-    data-testid="scanning-for-exposures-image"
+    data-testid={testId}
+    country-code={countryCode}
   />
 );
+
+type Props = {
+  countryCode: string;
+  l10n: ExtendedReactLocalization;
+};
 
 export const ScanningForExposuresIllustration = (props: Props) => {
   let imageSrc;
@@ -43,7 +48,14 @@ export const ScanningForExposuresIllustration = (props: Props) => {
     imageSrc = ScanningForExposuresImage;
   }
 
-  return <IllustrationWrapper {...props} image={imageSrc} />;
+  return (
+    <IllustrationWrapper
+      {...props}
+      image={imageSrc}
+      testId="scanning-for-exposures-image"
+      countryCode={props.countryCode}
+    />
+  );
 };
 
 export const LeakedPasswordExampleIllustration = (props: Props) => {
@@ -57,5 +69,12 @@ export const LeakedPasswordExampleIllustration = (props: Props) => {
     imageSrc = LeakedPasswordExampleImage;
   }
 
-  return <IllustrationWrapper {...props} image={imageSrc} />;
+  return (
+    <IllustrationWrapper
+      {...props}
+      image={imageSrc}
+      testId="leaked-password-example"
+      countryCode={props.countryCode}
+    />
+  );
 };
