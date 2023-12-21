@@ -27,7 +27,12 @@ function SubscriberWaitlistDialog() {
 
   return (
     <>
-      <Button ref={triggerRef} variant={"primary"} small {...triggerProps}>
+      <Button
+        buttonRef={triggerRef}
+        variant={"primary"}
+        small
+        {...triggerProps}
+      >
         {l10n.getString(
           "dashboard-top-banner-monitor-protects-your-even-more-cta",
         )}
@@ -50,7 +55,10 @@ function SubscriberWaitlistDialog() {
               {l10n.getString("subscriber-waitlist-dialog-instruction-text")}
 
               <div className={styles.buttonWrapper}>
-                <Button variant="primary" onPress={() => {}}>
+                <Button
+                  variant="primary"
+                  href={process.env.NEXT_PUBLIC_WAITLIST_URL}
+                >
                   {l10n.getString(
                     "subscriber-waitlist-dialog-cta-button-label",
                   )}
