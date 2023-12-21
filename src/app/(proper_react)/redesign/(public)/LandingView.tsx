@@ -15,6 +15,7 @@ import {
   LeakedPasswordExampleIllustration,
   ScanningForExposuresIllustration,
 } from "./WalkthroughImages";
+import { FixExposuresDescription } from "./HyperlinkTelemetry";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -42,6 +43,10 @@ export const View = (props: Props) => {
             isHero
             eligibleForPremium={props.eligibleForPremium}
             signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
+            eventId={{
+              cta: "clicked_get_scan_header",
+              field: "entered_email_address_header",
+            }}
           />
         </div>
         <div className={styles.heroImage}>
@@ -74,23 +79,15 @@ export const View = (props: Props) => {
               {props.l10n.getString("landing-all-value-prop-fix-exposures")}
             </h2>
             <p>
-              {props.l10n.getFragment(
-                "landing-all-value-prop-fix-exposures-description",
-                {
-                  elems: {
-                    privacy_link: (
-                      <a
-                        href="https://www.mozilla.org/en-US/firefox/privacy/"
-                        target="_blank"
-                      />
-                    ),
-                  },
-                },
-              )}
+              <FixExposuresDescription />
             </p>
             <SignUpForm
               eligibleForPremium={props.eligibleForPremium}
               signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
+              eventId={{
+                cta: "clicked_get_scan_second",
+                field: "entered_email_address_second",
+              }}
             />
           </span>
           <div className={styles.illustration}>
@@ -132,6 +129,10 @@ export const View = (props: Props) => {
             <SignUpForm
               eligibleForPremium={props.eligibleForPremium}
               signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
+              eventId={{
+                cta: "clicked_get_scan_third",
+                field: "entered_email_address_third",
+              }}
             />
           </span>
           <div className={styles.illustration}>

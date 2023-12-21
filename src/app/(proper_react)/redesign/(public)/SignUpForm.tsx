@@ -9,21 +9,26 @@ import { signIn } from "next-auth/react";
 import { useL10n } from "../../../hooks/l10n";
 import { Button } from "../../../components/client/Button";
 import styles from "./SignUpForm.module.scss";
+import { useTelemetry } from "../../../hooks/useTelemetry";
 
 export type Props = {
   eligibleForPremium: boolean;
   signUpCallbackUrl: string;
   isHero?: boolean;
+  eventId: {
+    cta: string;
+    field: string;
+  };
 };
 
 export const SignUpForm = (props: Props) => {
   const emailInputId = useId();
   const l10n = useL10n();
   const [emailInput, setEmailInput] = useState("");
+  const record = useTelemetry();
 
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault();
-
     void signIn(
       "fxa",
       { callbackUrl: props.signUpCallbackUrl },
@@ -32,6 +37,9 @@ export const SignUpForm = (props: Props) => {
       // https://mozilla.github.io/ecosystem-platform/relying-parties/reference/query-parameters#email
       { email: emailInput },
     );
+    record("ctaButton", "click", {
+      button_id: props.eventId.cta,
+    });
   };
 
   return (
@@ -40,7 +48,12 @@ export const SignUpForm = (props: Props) => {
         className={props.isHero ? styles.isHero : ""}
         name={emailInputId}
         id={emailInputId}
-        onChange={(e) => setEmailInput(e.target.value)}
+        onChange={(e) => {
+          setEmailInput(e.target.value);
+          record("field", "focus", {
+            field_id: props.eventId.field,
+          });
+        }}
         value={emailInput}
         type="email"
         placeholder={l10n.getString(
