@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useRef } from "react";
+import { ReactElement, cloneElement, useRef } from "react";
 import Image from "next/image";
 import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "react-stately";
@@ -15,9 +15,9 @@ import ModalImage from "../client/assets/subscriber-waitlist-dialog-icon.svg";
 import { useL10n } from "../../hooks/l10n";
 import styles from "./SubscriberWaitlistDialog.module.scss";
 
-function SubscriberWaitlistDialog() {
+function SubscriberWaitlistDialog({ children }: { children: ReactElement }) {
   const l10n = useL10n();
-  const triggerRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
   const dialogTriggerState = useOverlayTriggerState({});
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: "dialog" },
@@ -27,16 +27,10 @@ function SubscriberWaitlistDialog() {
 
   return (
     <>
-      <Button
-        buttonRef={triggerRef}
-        variant={"primary"}
-        small
-        {...triggerProps}
-      >
-        {l10n.getString(
-          "dashboard-top-banner-monitor-protects-your-even-more-cta",
-        )}
-      </Button>
+      {cloneElement(children, {
+        ...triggerProps,
+        ref: triggerRef,
+      })}
       {dialogTriggerState.isOpen && (
         <ModalOverlay
           {...overlayProps}

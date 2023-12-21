@@ -11,7 +11,7 @@ import { useButton } from "react-aria";
 
 export interface Props {
   children: ReactNode;
-  variant: "primary" | "secondary";
+  variant: "primary" | "secondary" | "ternary";
   className?: string;
   destructive?: boolean;
   disabled?: boolean;

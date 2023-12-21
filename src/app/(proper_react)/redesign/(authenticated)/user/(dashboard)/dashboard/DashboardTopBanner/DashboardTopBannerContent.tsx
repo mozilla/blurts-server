@@ -195,7 +195,13 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                   )}
                 </Button>
               ) : (
-                <SubscriberWaitlistDialog />
+                <SubscriberWaitlistDialog>
+                  <Button variant={"primary"} small>
+                    {l10n.getString(
+                      "dashboard-top-banner-monitor-protects-your-even-more-cta",
+                    )}
+                  </Button>
+                </SubscriberWaitlistDialog>
               )}
             </div>
             <a

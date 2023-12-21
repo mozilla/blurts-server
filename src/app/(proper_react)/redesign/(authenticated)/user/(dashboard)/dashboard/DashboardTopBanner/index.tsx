@@ -68,6 +68,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
             isEligibleForFreeScan={props.isEligibleForFreeScan}
             isShowFixed={isShowFixed}
             summary={props.bannerData}
+            totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
           />
         </div>
       </div>
