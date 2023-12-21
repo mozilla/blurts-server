@@ -21,6 +21,7 @@ export const LandingUs: Story = {
   name: "US visitors",
   args: {
     eligibleForPremium: true,
+    countryCode: "us",
   },
 };
 
@@ -28,5 +29,6 @@ export const LandingNonUs: Story = {
   name: "Non-US visitors",
   args: {
     eligibleForPremium: false,
+    countryCode: "nz",
   },
 };

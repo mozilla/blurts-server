@@ -47,7 +47,7 @@ describe("When Premium is not available", () => {
     });
   });
 
-  it("shows the scannig for exposures illustration in the fix your exposures section", () => {
+  it("shows the scanning for exposures illustration in the fix your exposures section", () => {
     const ComposedDashboard = composeStory(LandingNonUs, Meta);
     render(<ComposedDashboard />);
 
@@ -318,10 +318,10 @@ describe("When Premium is available", () => {
   });
 
   it("shows the progress card illustration in the fix your exposures section", () => {
-    const ComposedDashboard = composeStory(LandingNonUs, Meta);
+    const ComposedDashboard = composeStory(LandingUs, Meta);
     render(<ComposedDashboard />);
 
-    const progressCardIllustration = screen.getByTestId("progress-bar-image");
+    const progressCardIllustration = screen.getByTestId("progress-card-image");
     expect(progressCardIllustration).toBeInTheDocument();
   });
 });
