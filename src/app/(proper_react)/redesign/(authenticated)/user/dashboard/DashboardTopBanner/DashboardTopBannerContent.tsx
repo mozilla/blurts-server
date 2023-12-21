@@ -76,6 +76,14 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     onShowFixed,
   };
   const userDashboardState = getUserDashboardState(contentProps);
+  // TODO: Fetch number of performed broker scans after
+  // https://github.com/mozilla/blurts-server/pull/3906 landed.
+  const numberOfPerformedScans = 0;
+
+  console.log(
+    numberOfPerformedScans,
+    parseInt(process.env.ONEREP_MAX_SCANS_THRESHOLD as string, 10),
+  );
 
   function getDashboardBannerContent({
     userDashboardState,
@@ -182,16 +190,20 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <SubscriberWaitlistDialog />
-              <Button
-                href="/redesign/user/welcome/free-scan?referrer=dashboard"
-                small
-                variant="primary"
-              >
-                {l10n.getString(
-                  "dashboard-top-banner-monitor-protects-your-even-more-cta",
-                )}
-              </Button>
+              {numberOfPerformedScans <
+              parseInt(process.env.ONEREP_MAX_SCANS_THRESHOLD as string, 10) ? (
+                <Button
+                  href="/redesign/user/welcome/free-scan?referrer=dashboard"
+                  small
+                  variant="primary"
+                >
+                  {l10n.getString(
+                    "dashboard-top-banner-monitor-protects-your-even-more-cta",
+                  )}
+                </Button>
+              ) : (
+                <SubscriberWaitlistDialog />
+              )}
             </div>
             <a
               href={process.env.NEXT_PUBLIC_HOW_IT_WORKS_SUMO_URL}
@@ -515,7 +527,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
       aria-label={l10n.getString("dashboard-top-banner-section-label")}
     >
       <div className={styles.explainerContent}>
-        {userDashboardState}
         {getDashboardBannerContent({ userDashboardState, relevantGuidedStep })}
       </div>
     </section>
