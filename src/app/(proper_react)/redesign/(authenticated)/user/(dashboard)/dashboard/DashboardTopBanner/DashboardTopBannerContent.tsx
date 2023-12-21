@@ -77,14 +77,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     onShowFixed,
   };
   const userDashboardState = getUserDashboardState(contentProps);
-  // TODO: Fetch number of performed broker scans after
-  // https://github.com/mozilla/blurts-server/pull/3906 landed.
-  const numberOfPerformedScans = 0;
-
-  console.log(
-    numberOfPerformedScans,
-    parseInt(process.env.ONEREP_MAX_SCANS_THRESHOLD as string, 10),
-  );
 
   function getDashboardBannerContent({
     userDashboardState,
@@ -191,7 +183,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              {numberOfPerformedScans <
+              {props.totalNumberOfPerformedScans <
               parseInt(process.env.ONEREP_MAX_SCANS_THRESHOLD as string, 10) ? (
                 <Button
                   href="/redesign/user/welcome/free-scan?referrer=dashboard"

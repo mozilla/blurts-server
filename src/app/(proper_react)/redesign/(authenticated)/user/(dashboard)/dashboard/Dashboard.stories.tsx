@@ -42,6 +42,7 @@ type DashboardWrapperProps = (
 ) & {
   brokers: keyof typeof brokerOptions;
   breaches: keyof typeof breachOptions;
+  totalNumberOfPerformedScans: number;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
@@ -163,6 +164,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           yearlySubscriptionUrl=""
           fxaSettingsUrl=""
           scanCount={scanCount}
+          totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
         />
       </Shell>
     </CountryCodeProvider>
@@ -244,6 +246,17 @@ export const DashboardUsNoPremiumNoScanResolvedBreaches: Story = {
     premium: false,
     breaches: "resolved",
     brokers: "no-scan",
+  },
+};
+
+export const DashboardUsNoPremiumNoScanNoBreachesScanLimitReached: Story = {
+  name: "US user, without Premium, without scan, with 0 breaches, Scan limit reached",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "empty",
+    brokers: "no-scan",
+    totalNumberOfPerformedScans: 280000,
   },
 };
 

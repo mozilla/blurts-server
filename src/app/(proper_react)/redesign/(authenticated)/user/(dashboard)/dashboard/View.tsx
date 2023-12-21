@@ -52,6 +52,7 @@ export type Props = {
   yearlySubscriptionUrl: string;
   fxaSettingsUrl: string;
   scanCount: number;
+  totalNumberOfPerformedScans: number;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -345,6 +346,7 @@ export const View = (props: Props) => {
           }}
           monthlySubscriptionUrl={props.monthlySubscriptionUrl}
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+          totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
         />
         <section className={styles.exposuresArea}>
           {selectedTab === "action-needed" ? (
