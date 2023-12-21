@@ -48,17 +48,22 @@ function SubscriberWaitlistDialog() {
               <br />
               <br />
               {l10n.getString("subscriber-waitlist-dialog-instruction-text")}
-            </div>
-            <div>
-              <Button variant="primary" onPress={() => {}}>
-                {l10n.getString("subscriber-waitlist-dialog-cta-button-label")}
-              </Button>
-              <Button
-                variant="secondary"
-                onPress={() => dialogTriggerState.close()}
-              >
-                {l10n.getString("subscriber-waitlist-dialog-skip-button-label")}
-              </Button>
+
+              <div className={styles.buttonWrapper}>
+                <Button variant="primary" onPress={() => {}}>
+                  {l10n.getString(
+                    "subscriber-waitlist-dialog-cta-button-label",
+                  )}
+                </Button>
+                <Button
+                  variant="secondary"
+                  onPress={() => dialogTriggerState.close()}
+                >
+                  {l10n.getString(
+                    "subscriber-waitlist-dialog-skip-button-label",
+                  )}
+                </Button>
+              </div>
             </div>
           </Dialog>
         </ModalOverlay>
