@@ -14,73 +14,48 @@ import LeakedPasswordExampleImageFr from "./value-prop-images/fr/leaked-password
 type Props = {
   countryCode: string;
   l10n: ExtendedReactLocalization;
-  eligibleForPremium: boolean;
 };
 
+const IllustrationWrapper = ({
+  image,
+  l10n,
+}: {
+  image: string;
+  l10n: ExtendedReactLocalization;
+}) => (
+  <Image
+    src={image}
+    alt={l10n.getString(
+      "landing-all-value-prop-scanning-for-exposures-illustration-alt",
+    )}
+    data-testid="scanning-for-exposures-image"
+  />
+);
+
 export const ScanningForExposuresIllustration = (props: Props) => {
+  let imageSrc;
+
   if (props.countryCode === "de") {
-    return (
-      <Image
-        src={ScanningForExposuresImageDe}
-        alt={props.l10n.getString(
-          "landing-all-value-prop-scanning-for-exposures-illustration-alt",
-        )}
-        data-testid="scanning-for-exposures-image"
-      />
-    );
+    imageSrc = ScanningForExposuresImageDe;
+  } else if (props.countryCode === "fr") {
+    imageSrc = ScanningForExposuresImageFr;
+  } else {
+    imageSrc = ScanningForExposuresImage;
   }
-  if (props.countryCode === "fr") {
-    return (
-      <Image
-        src={ScanningForExposuresImageFr}
-        alt={props.l10n.getString(
-          "landing-all-value-prop-scanning-for-exposures-illustration-alt",
-        )}
-        data-testid="scanning-for-exposures-image"
-      />
-    );
-  }
-  return (
-    <Image
-      src={ScanningForExposuresImage}
-      alt={props.l10n.getString(
-        "landing-all-value-prop-scanning-for-exposures-illustration-alt",
-      )}
-      data-testid="scanning-for-exposures-image"
-    />
-  );
+
+  return <IllustrationWrapper {...props} image={imageSrc} />;
 };
 
 export const LeakedPasswordExampleIllustration = (props: Props) => {
+  let imageSrc;
+
   if (props.countryCode === "de") {
-    return (
-      <Image
-        src={LeakedPasswordExampleImageDe}
-        alt={props.l10n.getString(
-          "landing-all-value-prop-scanning-for-exposures-illustration-alt",
-        )}
-        data-testid="scanning-for-exposures-image"
-      />
-    );
+    imageSrc = LeakedPasswordExampleImageDe;
+  } else if (props.countryCode === "fr") {
+    imageSrc = LeakedPasswordExampleImageFr;
+  } else {
+    imageSrc = LeakedPasswordExampleImage;
   }
-  if (props.countryCode === "fr") {
-    return (
-      <Image
-        src={LeakedPasswordExampleImageFr}
-        alt={props.l10n.getString(
-          "landing-all-value-prop-scanning-for-exposures-illustration-alt",
-        )}
-        data-testid="scanning-for-exposures-image"
-      />
-    );
-  }
-  return (
-    <Image
-      src={LeakedPasswordExampleImage}
-      alt={props.l10n.getString(
-        "landing-all-value-prop-scanning-for-exposures-illustration-alt",
-      )}
-      data-testid="scanning-for-exposures-image"
-    />
-  );
+
+  return <IllustrationWrapper {...props} image={imageSrc} />;
 };
