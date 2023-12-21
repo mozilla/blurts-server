@@ -54,6 +54,15 @@ describe("When Premium is not available", () => {
     });
   });
 
+  it("shows the data breaches quote", () => {
+    const ComposedDashboard = composeStory(LandingNonUs, Meta);
+    render(<ComposedDashboard />);
+    const quote = screen.getByText(
+      "Data breaches happen every 11 minutes, exposing your private information — but don’t worry, we can help.",
+    );
+    expect(quote).toBeInTheDocument();
+  });
+
   it("shows the scanning for exposures illustration in the fix your exposures section", () => {
     const ComposedDashboard = composeStory(LandingNonUs, Meta);
     render(<ComposedDashboard />);
@@ -346,6 +355,15 @@ describe("When Premium is available", () => {
     await user.click(signInButton);
 
     expect(signIn).toHaveBeenCalledTimes(1);
+  });
+
+  it("shows the data brokers quote", () => {
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+    const quote = screen.getByText(
+      "There’s a $240 billion industry of data brokers selling your private information for profit. It’s time to take back your privacy.",
+    );
+    expect(quote).toBeInTheDocument();
   });
 
   it("shows the progress card illustration in the fix your exposures section", () => {

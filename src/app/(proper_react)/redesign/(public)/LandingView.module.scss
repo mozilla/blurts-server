@@ -140,6 +140,32 @@
   }
 }
 
+.quoteWrapper {
+  padding: $layout-lg $spacing-md;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: $content-md) {
+    padding: $layout-lg;
+  }
+
+  .quote {
+    max-width: $content-lg;
+    text-align: center;
+    font: $text-title-3xs;
+    line-height: 1.4;
+    font-family: var(--font-inter);
+    font-weight: normal;
+
+    h2 {
+      .emphasis {
+        display: inline;
+        color: $color-violet-50;
+      }
+    }
+  }
+}
+
 .valuePropositionWrapper {
   .item {
     display: flex;

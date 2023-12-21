@@ -49,7 +49,25 @@ export const View = (props: Props) => {
         </div>
       </header>
 
-      <div className={styles.valuePropositionWrapper}>
+      <section className={styles.quoteWrapper}>
+        <div className={styles.quote}>
+          <h2>
+            {props.eligibleForPremium
+              ? props.l10n.getFragment("landing-premium-quote", {
+                  elems: {
+                    data_brokers: <span className={styles.emphasis} />,
+                  },
+                })
+              : props.l10n.getFragment("landing-all-quote", {
+                  elems: {
+                    data_breaches: <span className={styles.emphasis} />,
+                  },
+                })}
+          </h2>
+        </div>
+      </section>
+
+      <section className={styles.valuePropositionWrapper}>
         <div className={`${styles.item} ${styles.grayBg}`}>
           <span>
             <h2>
@@ -120,7 +138,7 @@ export const View = (props: Props) => {
             <LeakedPasswordExampleIllustration {...props} />
           </div>
         </div>
-      </div>
+      </section>
 
       <Plans {...props} />
     </main>
