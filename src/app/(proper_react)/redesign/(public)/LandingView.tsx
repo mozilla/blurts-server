@@ -15,7 +15,11 @@ import {
   LeakedPasswordExampleIllustration,
   ScanningForExposuresIllustration,
 } from "./WalkthroughImages";
+<<<<<<< HEAD
 import { TelemetryLink } from "./TelemetryLink";
+=======
+import { FixExposuresDescription } from "./HyperlinkTelemetry";
+>>>>>>> 3a4f2298f (Add telemetry to walkthrough section LP)
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -79,6 +83,7 @@ export const View = (props: Props) => {
               {props.l10n.getString("landing-all-value-prop-fix-exposures")}
             </h2>
             <p>
+<<<<<<< HEAD
               {props.eligibleForPremium
                 ? props.l10n.getFragment(
                     "landing-premium-value-prop-fix-exposures-description",
@@ -108,6 +113,9 @@ export const View = (props: Props) => {
                       },
                     },
                   )}
+=======
+              <FixExposuresDescription />
+>>>>>>> 3a4f2298f (Add telemetry to walkthrough section LP)
             </p>
             <SignUpForm
               eligibleForPremium={props.eligibleForPremium}
