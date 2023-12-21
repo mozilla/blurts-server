@@ -19,4 +19,8 @@ add-email-address-input-label = Email address
 add-email-send-verification-button = Send verification link
 
 # $email is the newly added email address. $settings-href is the URL for the Settings page. HTML tags should not be translated, e.g. `<a>`
+# This string will be deprecated when the new Plus plan is live.
 add-email-verify-the-link = Verify the link sent to { $email } to add it to { -brand-fx-monitor }. Manage all email addresses in <a { $settings-href }>Settings</a>.
+# Variables:
+#   $email (string) - An email address submitted by the user for monitoring, e.g. `example@example.com`
+add-email-verify-the-link-2 = Verify the link sent to <b>{ $email }</b> to add it to { -brand-mozilla-monitor }.

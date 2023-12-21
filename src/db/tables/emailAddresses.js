@@ -30,7 +30,7 @@ async function getEmailByToken (token) {
 /* c8 ignore stop */
 
 /**
- * @param {string} emailAddressId
+ * @param {number} emailAddressId
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -346,7 +346,7 @@ async function removeEmail (email) {
 /* c8 ignore stop */
 
 /**
- * @param {string} emailId
+ * @param {number} emailId
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
