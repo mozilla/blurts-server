@@ -15,7 +15,7 @@ import {
   LeakedPasswordExampleIllustration,
   ScanningForExposuresIllustration,
 } from "./WalkthroughImages";
-import { FixExposuresDescription } from "./HyperlinkTelemetry";
+import { TelemetryLink } from "./TelemetryLink";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -79,7 +79,20 @@ export const View = (props: Props) => {
               {props.l10n.getString("landing-all-value-prop-fix-exposures")}
             </h2>
             <p>
-              <FixExposuresDescription />
+              {props.l10n.getFragment(
+                "landing-all-value-prop-fix-exposures-description",
+                {
+                  elems: {
+                    privacy_link: (
+                      <TelemetryLink
+                        eventData={{ button_id: "privacy_information" }}
+                        href="https://www.mozilla.org/en-US/firefox/privacy/"
+                        target="_blank"
+                      />
+                    ),
+                  },
+                },
+              )}
             </p>
             <SignUpForm
               eligibleForPremium={props.eligibleForPremium}

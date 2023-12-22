@@ -24,6 +24,7 @@ import Meta, {
 } from "./LandingView.stories";
 
 jest.mock("next-auth/react");
+jest.mock("../../../hooks/useTelemetry");
 
 describe("When Premium is not available", () => {
   it("passes the axe accessibility test suite", async () => {
