@@ -1,0 +1,54 @@
+@import "../../../../../../tokens";
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: $color-grey-05;
+}
+
+.dashboardContent {
+  padding-block: $spacing-2xl;
+  padding-inline: $spacing-xl;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.exposuresArea {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  .exposuresAreaHeadline {
+    font: $text-body-xl;
+    font-weight: 600;
+  }
+
+  .exposuresAreaDescription {
+    font: $text-body-md;
+  }
+
+  .exposuresFilterWrapper {
+    padding-block: $spacing-md;
+  }
+}
+
+.exposureList {
+  list-style-type: none;
+  padding-inline: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.zeroStateIndicator {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: $spacing-sm;
+  padding: $spacing-md;
+}
+
+.visuallyHidden {
+  @include visually-hidden;
+}
