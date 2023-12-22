@@ -24,6 +24,11 @@ export type FindExposuresTelemetryParams = {
   user_type: "legacy" | "non_legacy";
 };
 
+export type ScanCompletedTelemetryParams = {
+  page_location: string;
+  user_type: "legacy" | "non_legacy";
+};
+
 const getCurrentScanCountForRange = ({
   totalCount,
   currentProgress,
@@ -81,8 +86,12 @@ export const FindExposures = ({
   useEffect(() => {
     // view page telemetry
     const startScanTime = Date.now();
-    const telemetryParams: FindExposuresTelemetryParams = {
+    const findExposuresTelemetryParams: FindExposuresTelemetryParams = {
       exit_time: 0,
+      page_location: pathName,
+      user_type: "non_legacy",
+    };
+    const scanCompletedTelemetryParams: ScanCompletedTelemetryParams = {
       page_location: pathName,
       user_type: "non_legacy",
     };
@@ -92,11 +101,11 @@ export const FindExposures = ({
       // Perform actions before the component unloads
       event.preventDefault();
       const endScanTime = Date.now();
-      telemetryParams.exit_time = endScanTime - startScanTime;
+      findExposuresTelemetryParams.exit_time = endScanTime - startScanTime;
       gtag.record({
         type: "event",
         name: "exited_scan",
-        params: telemetryParams,
+        params: findExposuresTelemetryParams,
       });
     };
     window.addEventListener("beforeunload", handleBeforeUnload);
@@ -114,6 +123,11 @@ export const FindExposures = ({
           .then((result) => {
             if (result.status && result.status === "finished") {
               setScanFinished(true);
+              gtag.record({
+                type: "event",
+                name: "free_scan_completed",
+                params: scanCompletedTelemetryParams,
+              });
             }
             setCheckingScanProgress(false);
           })
@@ -127,11 +141,11 @@ export const FindExposures = ({
     /* c8 ignore next 3 */
     if (scanProgress >= maxProgress) {
       const endScanTime = Date.now();
-      telemetryParams.exit_time = endScanTime - startScanTime;
+      findExposuresTelemetryParams.exit_time = endScanTime - startScanTime;
       gtag.record({
         type: "event",
         name: "exited_scan",
-        params: telemetryParams,
+        params: findExposuresTelemetryParams,
       });
       router.push(previousRoute);
     }
