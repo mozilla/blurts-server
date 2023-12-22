@@ -8,7 +8,7 @@ import { captureException } from "@sentry/node";
 import crypto from "crypto";
 
 import { logger } from "../../../functions/server/logging";
-import { Scan } from "../../../functions/server/onerep";
+import { Scan, optoutProfile } from "../../../functions/server/onerep";
 import { refreshStoredScanResults } from "../../../functions/server/refreshStoredScanResults";
 
 interface OnerepWebhookRequest {
@@ -82,6 +82,15 @@ export async function POST(req: NextRequest) {
     const reason = result.data.object.reason;
 
     logger.info("received_onerep_webhook", { profileId, scanId, reason });
+
+    if (reason === "monitoring") {
+      logger.info("auto_opt_out_monitoring_scan", {
+        profileId,
+        scanId,
+        reason,
+      });
+      await optoutProfile(profileId);
+    }
 
     // The webhook just tells us which scan ID finished, we need to fetch the payload and refresh.
     await refreshStoredScanResults(profileId);
