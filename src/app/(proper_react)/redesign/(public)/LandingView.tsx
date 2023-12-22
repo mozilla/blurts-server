@@ -79,20 +79,35 @@ export const View = (props: Props) => {
               {props.l10n.getString("landing-all-value-prop-fix-exposures")}
             </h2>
             <p>
-              {props.l10n.getFragment(
-                "landing-all-value-prop-fix-exposures-description",
-                {
-                  elems: {
-                    privacy_link: (
-                      <TelemetryLink
-                        eventData={{ button_id: "privacy_information" }}
-                        href="https://www.mozilla.org/en-US/firefox/privacy/"
-                        target="_blank"
-                      />
-                    ),
-                  },
-                },
-              )}
+              {props.eligibleForPremium
+                ? props.l10n.getFragment(
+                    "landing-premium-value-prop-fix-exposures-description",
+                    {
+                      elems: {
+                        privacy_link: (
+                          <TelemetryLink
+                            eventData={{ button_id: "privacy_information" }}
+                            href="https://www.mozilla.org/en-US/firefox/privacy/"
+                            target="_blank"
+                          />
+                        ),
+                      },
+                    },
+                  )
+                : props.l10n.getFragment(
+                    "landing-all-value-prop-fix-exposures-description",
+                    {
+                      elems: {
+                        privacy_link: (
+                          <TelemetryLink
+                            eventData={{ button_id: "privacy_information" }}
+                            href="https://www.mozilla.org/en-US/firefox/privacy/"
+                            target="_blank"
+                          />
+                        ),
+                      },
+                    },
+                  )}
             </p>
             <SignUpForm
               eligibleForPremium={props.eligibleForPremium}

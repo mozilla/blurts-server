@@ -34,7 +34,7 @@ export const LandingNonUs: Story = {
 };
 
 export const LandingNonUsDe: Story = {
-  name: "Non-US visitors",
+  name: "German",
   args: {
     eligibleForPremium: false,
     countryCode: "de",
@@ -42,7 +42,7 @@ export const LandingNonUsDe: Story = {
 };
 
 export const LandingNonUsFr: Story = {
-  name: "Non-US visitors",
+  name: "French",
   args: {
     eligibleForPremium: false,
     countryCode: "fr",
