@@ -184,7 +184,10 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </p>
             <div className={styles.cta}>
               {props.totalNumberOfPerformedScans <
-              parseInt(process.env.ONEREP_MAX_SCANS_THRESHOLD as string, 10) ? (
+              parseInt(
+                process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
+                10,
+              ) ? (
                 <Button
                   href="/redesign/user/welcome/free-scan?referrer=dashboard"
                   small

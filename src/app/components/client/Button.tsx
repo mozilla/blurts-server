@@ -10,8 +10,8 @@ import styles from "./Button.module.scss";
 import { useButton } from "react-aria";
 
 export interface Props {
-  children: ReactNode;
   variant: "primary" | "secondary" | "ternary";
+  children?: ReactNode;
   className?: string;
   destructive?: boolean;
   disabled?: boolean;

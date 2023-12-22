@@ -113,7 +113,10 @@ export const DoughnutChart = (props: Props) => {
             {l10n.getString("exposure-chart-returning-user-upgrade-prompt")}
           </p>
           {props.totalNumberOfPerformedScans <
-          parseInt(process.env.ONEREP_MAX_SCANS_THRESHOLD as string, 10) ? (
+          parseInt(
+            process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
+            10,
+          ) ? (
             <Link href="/redesign/user/welcome/free-scan?referrer=dashboard">
               {l10n.getString(
                 "exposure-chart-returning-user-upgrade-prompt-cta",

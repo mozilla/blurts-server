@@ -53,7 +53,7 @@
   &.ternary {
     background: none;
     color: $color-blue-50;
-    font-weight: 400;
+    font: inherit;
     padding: 0;
     text-decoration: underline;
   }
