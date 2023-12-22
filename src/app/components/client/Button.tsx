@@ -4,7 +4,7 @@
 
 "use client";
 
-import { ReactNode, RefObject, useRef } from "react";
+import { ReactNode, RefObject, forwardRef, useRef } from "react";
 import Link from "next/link";
 import styles from "./Button.module.scss";
 import { useButton } from "react-aria";
@@ -22,7 +22,7 @@ export interface Props {
   buttonRef?: RefObject<HTMLButtonElement | HTMLAnchorElement>;
 }
 
-export const Button = (
+const ButtonComponent = (
   props: Props & Parameters<typeof useButton>[0], // AriaButtonOptions
 ) => {
   const {
@@ -80,3 +80,5 @@ export const Button = (
     </button>
   );
 };
+
+export const Button = forwardRef(ButtonComponent);
