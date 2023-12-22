@@ -59,13 +59,6 @@ export const View = (props: Props) => {
           <span>
             <h2>
               {props.l10n.getString("landing-all-value-prop-fix-exposures")}
-              <TelemetryLink
-                eventData={{ button_id: "privacy_information" }}
-                href="https://www.mozilla.org/en-US/firefox/privacy/"
-                target="_blank"
-              >
-                Link
-              </TelemetryLink>
             </h2>
             <p>
               {props.l10n.getFragment(
