@@ -1000,7 +1000,7 @@ it("shows the correct dashboard banner CTA for US users, without Premium, no sca
   expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
-it("shows and skips a dialog that communicates to US users, without Premium, when we hit the broker scan limit", async () => {
+it("shows and skips a dialog that informs US users, without Premium, when we hit the broker scan limit", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
@@ -1031,7 +1031,7 @@ it("shows and skips a dialog that communicates to US users, without Premium, whe
   ).not.toBeInTheDocument();
 });
 
-it("shows and closes a dialog that communicates to US users, without Premium, when we hit the broker scan limit", async () => {
+it("shows and closes a dialog that informs US users, without Premium, when we hit the broker scan limit", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
@@ -1087,6 +1087,25 @@ it("shows a dialog with a link to the waitlist to US users, without Premium, whe
     "href",
     "https://www.mozilla.org/products/monitor/waitlist-scan/",
   );
+});
+
+it("shows a dialog that informs US users, without Premium, when we hit the broker scan limit when clicking the exporsures zero state link", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.getByRole("button", {
+    name: "start your free scan",
+  });
+  await user.click(dashboardTopBannerCta);
+  expect(
+    screen.getByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumEmptyScanNoBreaches
