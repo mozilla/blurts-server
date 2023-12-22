@@ -89,6 +89,9 @@ export const View = (props: Props) => {
             <p>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> db627a8f2 (update story titles)
               {props.eligibleForPremium
                 ? props.l10n.getFragment(
                     "landing-premium-value-prop-fix-exposures-description",
@@ -118,6 +121,7 @@ export const View = (props: Props) => {
                       },
                     },
                   )}
+<<<<<<< HEAD
 =======
               <FixExposuresDescription />
 >>>>>>> 3a4f2298f (Add telemetry to walkthrough section LP)
@@ -137,6 +141,8 @@ export const View = (props: Props) => {
                 },
               )}
 >>>>>>> e03f85ea2 (Walkthrough telemetry LP (#3920))
+=======
+>>>>>>> db627a8f2 (update story titles)
             </p>
             <SignUpForm
               eligibleForPremium={props.eligibleForPremium}
