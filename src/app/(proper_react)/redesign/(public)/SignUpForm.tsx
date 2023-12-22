@@ -50,6 +50,8 @@ export const SignUpForm = (props: Props) => {
         id={emailInputId}
         onChange={(e) => {
           setEmailInput(e.target.value);
+        }}
+        onFocus={() => {
           record("field", "focus", {
             field_id: props.eventId.field,
           });
