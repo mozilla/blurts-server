@@ -132,8 +132,18 @@ export const View = (props: Props) => {
           onToggleExpanded={() => {
             if (exposureCardKey === activeExposureCardKey) {
               setActiveExposureCardKey(null);
+              recordTelemetry("collapse", "click", {
+                button_id: exposureCardKey
+                  .replaceAll("scan-", "data_broker_card_")
+                  .replaceAll("breach-", "data_breach_card_"),
+              });
             } else {
               setActiveExposureCardKey(exposureCardKey);
+              recordTelemetry("expand", "click", {
+                button_id: exposureCardKey
+                  .replaceAll("scan-", "data_broker_card_")
+                  .replaceAll("breach-", "data_breach_card_"),
+              });
             }
           }}
           locale={getLocale(l10n)}
