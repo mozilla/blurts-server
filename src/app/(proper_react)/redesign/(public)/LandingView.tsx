@@ -16,10 +16,14 @@ import {
   ScanningForExposuresIllustration,
 } from "./WalkthroughImages";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { TelemetryLink } from "./TelemetryLink";
 =======
 import { FixExposuresDescription } from "./HyperlinkTelemetry";
 >>>>>>> 3a4f2298f (Add telemetry to walkthrough section LP)
+=======
+import { TelemetryLink } from "./TelemetryLink";
+>>>>>>> e03f85ea2 (Walkthrough telemetry LP (#3920))
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -84,6 +88,7 @@ export const View = (props: Props) => {
             </h2>
             <p>
 <<<<<<< HEAD
+<<<<<<< HEAD
               {props.eligibleForPremium
                 ? props.l10n.getFragment(
                     "landing-premium-value-prop-fix-exposures-description",
@@ -116,6 +121,22 @@ export const View = (props: Props) => {
 =======
               <FixExposuresDescription />
 >>>>>>> 3a4f2298f (Add telemetry to walkthrough section LP)
+=======
+              {props.l10n.getFragment(
+                "landing-all-value-prop-fix-exposures-description",
+                {
+                  elems: {
+                    privacy_link: (
+                      <TelemetryLink
+                        eventData={{ button_id: "privacy_information" }}
+                        href="https://www.mozilla.org/en-US/firefox/privacy/"
+                        target="_blank"
+                      />
+                    ),
+                  },
+                },
+              )}
+>>>>>>> e03f85ea2 (Walkthrough telemetry LP (#3920))
             </p>
             <SignUpForm
               eligibleForPremium={props.eligibleForPremium}
