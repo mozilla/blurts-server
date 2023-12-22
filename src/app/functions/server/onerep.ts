@@ -454,18 +454,13 @@ export async function fetchAllPages<Data>(
 // Would be nice to share this cache with other pod via Redis in the future
 const profileStatsCache = new Map<string, ProfileStats>();
 export async function getProfilesStats(
-  from: Date,
+  from?: Date,
   to?: Date,
 ): Promise<ProfileStats | undefined> {
-  const fromDateString = from.toISOString().substring(0, 10);
-  const toDateString = to
-    ? to.toISOString().substring(0, 10)
-    : new Date().toISOString().substring(0, 10);
-
-  const queryParamsString = new URLSearchParams({
-    from: fromDateString,
-    to: toDateString,
-  }).toString();
+  const queryParams = new URLSearchParams();
+  if (from) queryParams.set("from", from.toISOString().substring(0, 10));
+  if (to) queryParams.set("to", to.toISOString().substring(0, 10));
+  const queryParamsString = queryParams.toString();
 
   // check for cache map first
   if (profileStatsCache.has(queryParamsString))
