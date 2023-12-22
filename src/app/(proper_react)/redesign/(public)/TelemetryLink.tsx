@@ -8,6 +8,8 @@ import { useTelemetry } from "../../../hooks/useTelemetry";
 import { GleanMetricMap } from "../../../../telemetry/generated/_map";
 import { HTMLAttributes } from "react";
 
+// Telemetry link is shown in a fluent getFragment (which does not get rendered in tests)
+/* c8 ignore start */
 export const TelemetryLink = ({
   eventData,
   ...props
@@ -29,3 +31,4 @@ export const TelemetryLink = ({
     />
   );
 };
+/* c8 ignore stop */
