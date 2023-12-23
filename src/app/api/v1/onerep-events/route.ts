@@ -106,7 +106,5 @@ function contentSignatureValid(
     .update(buffer)
     .digest("hex");
 
-  console.debug("test:", signature, expectedSignature);
-
   return signature === expectedSignature;
 }
