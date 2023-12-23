@@ -56,12 +56,12 @@ it("accepts a valid initial OnerepWebhookRequest", async () => {
   await processOnerepWebhook(mockRequest);
 
   expect(logger.info).toHaveBeenCalledWith("received_onerep_webhook", {
-    profileId: 1133,
-    scanId: 0,
+    profileId: mockRequest.profile_id,
+    scanId: mockRequest.data.object.id,
     reason: "initial",
   });
   expect(optoutProfile).toHaveBeenCalledTimes(0);
-  expect(refreshStoredScanResults).toHaveBeenCalledWith(1133);
+  expect(refreshStoredScanResults).toHaveBeenCalledWith(mockRequest.profile_id);
 });
 
 it("accepts a valid manual OnerepWebhookRequest", async () => {
@@ -69,12 +69,12 @@ it("accepts a valid manual OnerepWebhookRequest", async () => {
   await processOnerepWebhook(mockRequest);
 
   expect(logger.info).toHaveBeenCalledWith("received_onerep_webhook", {
-    profileId: 1133,
-    scanId: 0,
+    profileId: mockRequest.profile_id,
+    scanId: mockRequest.data.object.id,
     reason: "manual",
   });
   expect(optoutProfile).toHaveBeenCalledTimes(0);
-  expect(refreshStoredScanResults).toHaveBeenCalledWith(1133);
+  expect(refreshStoredScanResults).toHaveBeenCalledWith(mockRequest.profile_id);
 });
 
 it("accepts a valid monitoring OnerepWebhookRequest", async () => {
@@ -82,10 +82,10 @@ it("accepts a valid monitoring OnerepWebhookRequest", async () => {
   await processOnerepWebhook(mockRequest);
 
   expect(logger.info).toHaveBeenCalledWith("received_onerep_webhook", {
-    profileId: 1133,
-    scanId: 0,
+    profileId: mockRequest.profile_id,
+    scanId: mockRequest.data.object.id,
     reason: "monitoring",
   });
   expect(optoutProfile).toHaveBeenCalledTimes(1);
-  expect(refreshStoredScanResults).toHaveBeenCalledWith(1133);
+  expect(refreshStoredScanResults).toHaveBeenCalledWith(mockRequest.profile_id);
 });
