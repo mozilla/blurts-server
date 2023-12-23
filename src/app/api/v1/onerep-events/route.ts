@@ -55,12 +55,12 @@ export async function POST(req: NextRequest) {
 
     if (result.type !== "scan.completed") {
       logger.info("ignored_onerep_webhook_type", result.type);
-      return NextResponse.json({ success: false }, { status: 202 });
+      return NextResponse.json({ success: true }, { status: 202 });
     }
 
     if (result.data.object.status !== "finished") {
       logger.info("ignored_onerep_webhook_status", result.data.object.status);
-      return NextResponse.json({ success: false }, { status: 202 });
+      return NextResponse.json({ success: true }, { status: 202 });
     }
 
     const profileId = result.data.object.profile_id;
