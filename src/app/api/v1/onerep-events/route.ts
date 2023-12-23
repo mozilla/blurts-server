@@ -11,7 +11,7 @@ import { logger } from "../../../functions/server/logging";
 import { Scan, optoutProfile } from "../../../functions/server/onerep";
 import { refreshStoredScanResults } from "../../../functions/server/refreshStoredScanResults";
 
-interface OnerepWebhookRequest {
+export interface OnerepWebhookRequest {
   id: number;
   profile_id: number;
   type: "scan.completed";
