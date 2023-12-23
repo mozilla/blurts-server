@@ -32,10 +32,6 @@ interface OnerepWebhookRequest {
 export async function POST(req: NextRequest) {
   let finalBuffer: Buffer;
   try {
-    if (!process.env.ONEREP_WEBHOOK_SECRET) {
-      throw new Error("env var ONEREP_WEBHOOK_SECRET must be set");
-    }
-
     const buffers: Buffer[] = [];
     // @ts-ignore FIXME Type error: Type 'ReadableStream<Uint8Array>' must have a '[Symbol.asyncIterator]()' method that returns an async iterator.
     for await (const data of req.body) {
@@ -43,38 +39,28 @@ export async function POST(req: NextRequest) {
     }
     finalBuffer = Buffer.concat(buffers);
 
-    const actualSignature = req.headers.get("signature");
-
-    const expectedSignature = crypto
-      .createHmac("sha256", process.env.ONEREP_WEBHOOK_SECRET)
-      .update(finalBuffer)
-      .digest("hex");
-
-    if (actualSignature !== expectedSignature) {
-      throw new Error("Webhook signature invalid");
+    if (!contentSignatureValid(finalBuffer, req.headers.get("signature"))) {
+      logger.error("onerep_webhook_signature_invalid");
+      return NextResponse.json({ success: false }, { status: 401 });
     }
   } catch (ex) {
-    logger.error(ex);
+    logger.error("onerep_webhook_auth_exception", ex);
     captureException(ex);
 
-    return NextResponse.json({ success: false }, { status: 401 });
+    return NextResponse.json({ success: false }, { status: 500 });
   }
-
   try {
     const result: OnerepWebhookRequest = JSON.parse(finalBuffer.toString());
     logger.debug("OneRep Webhook Request received:", result);
 
     if (result.type !== "scan.completed") {
-      logger.debug("Unexpected OneRep webhook type received:", result.type);
-      return;
+      logger.info("ignored_onerep_webhook_type", result.type);
+      return NextResponse.json({ success: false }, { status: 202 });
     }
 
     if (result.data.object.status !== "finished") {
-      logger.debug(
-        "Received OneRep webhook, but scan not finished",
-        result.data.object.status,
-      );
-      return;
+      logger.info("ignored_onerep_webhook_status", result.data.object.status);
+      return NextResponse.json({ success: false }, { status: 202 });
     }
 
     const profileId = result.data.object.profile_id;
@@ -89,6 +75,9 @@ export async function POST(req: NextRequest) {
         scanId,
         reason,
       });
+
+      // Automatically call opt-out for any new monthly automatic "monitoring" scans.
+      // This type of scan will only be called for activated profiles.
       await optoutProfile(profileId);
     }
 
@@ -97,9 +86,27 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (ex) {
-    logger.error(ex);
+    logger.error("onerep_webhook_exception", ex);
     captureException(ex);
 
     return NextResponse.json({ success: false }, { status: 500 });
   }
+}
+
+function contentSignatureValid(
+  buffer: Buffer | crypto.BinaryLike,
+  signature: string | null,
+) {
+  if (!process.env.ONEREP_WEBHOOK_SECRET) {
+    throw new Error("env var ONEREP_WEBHOOK_SECRET must be set");
+  }
+
+  const expectedSignature = crypto
+    .createHmac("sha256", process.env.ONEREP_WEBHOOK_SECRET)
+    .update(buffer)
+    .digest("hex");
+
+  console.debug("test:", signature, expectedSignature);
+
+  return signature === expectedSignature;
 }
