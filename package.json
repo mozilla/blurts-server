@@ -131,7 +131,7 @@
     "react-intersection-observer": "^9.5.3",
     "sass": "^1.69.5",
     "storybook": "^7.6.5",
-    "stylelint": "^16.0.2",
+    "stylelint": "^16.1.0",
     "stylelint-config-recommended-scss": "^14.0.0",
     "stylelint-scss": "^6.0.0",
     "ts-jest": "^29.1.0",
