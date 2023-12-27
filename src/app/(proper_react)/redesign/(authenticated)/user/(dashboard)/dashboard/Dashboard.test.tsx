@@ -1886,3 +1886,31 @@ it("closes previously active card onclick", async () => {
   const afterCollapse = screen.getAllByRole("button", { name: "Expand" });
   expect(initialState.length).toBe(afterCollapse.length);
 });
+
+it("counts in Glean when people click on free scans when all exposures are fixed", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  const mockedRecord = useTelemetry();
+  render(<ComposedDashboard />);
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+  // We show a CTA on desktop in the toolbar and in the mobile menu
+  const premiumCtas = screen.queryAllByRole("link", {
+    name: "start your free scan",
+  });
+  await user.click(premiumCtas[0]);
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "link",
+    "click",
+    expect.objectContaining({
+      link_id: "exposures_all_fixed_free_scan",
+    }),
+  );
+});
