@@ -10,6 +10,7 @@ import { useL10n } from "../../../hooks/l10n";
 import { Button } from "../../../components/client/Button";
 import styles from "./SignUpForm.module.scss";
 import { useTelemetry } from "../../../hooks/useTelemetry";
+import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -42,6 +43,16 @@ export const SignUpForm = (props: Props) => {
     });
   };
 
+  const labelContent = (
+    <label htmlFor={emailInputId}>
+      {l10n.getString(
+        props.eligibleForPremium
+          ? "landing-premium-hero-emailform-input-label"
+          : "landing-all-hero-emailform-input-label",
+      )}
+    </label>
+  );
+
   return (
     <form className={styles.form} onSubmit={onSubmit}>
       <input
@@ -71,15 +82,9 @@ export const SignUpForm = (props: Props) => {
         {l10n.getString("landing-all-hero-emailform-submit-label")}
       </Button>
       {props.isHero ? (
-        <label htmlFor={emailInputId}>
-          {l10n.getString(
-            props.eligibleForPremium
-              ? "landing-premium-hero-emailform-input-label"
-              : "landing-all-hero-emailform-input-label",
-          )}
-        </label>
+        labelContent
       ) : (
-        ""
+        <VisuallyHidden>{labelContent}</VisuallyHidden>
       )}
     </form>
   );
