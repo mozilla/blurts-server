@@ -80,10 +80,7 @@ describe("When Premium is not available", () => {
     const scanningForExposuresIllustration = screen.getByTestId(
       "scanning-for-exposures-image",
     );
-    expect(scanningForExposuresIllustration).toHaveAttribute(
-      "country-code",
-      "de",
-    );
+    expect(scanningForExposuresIllustration).toHaveAttribute("lang", "de");
   });
 
   it("shows the french scanning for exposures illustration", () => {
@@ -92,10 +89,7 @@ describe("When Premium is not available", () => {
     const scanningForExposuresIllustration = screen.getByTestId(
       "scanning-for-exposures-image",
     );
-    expect(scanningForExposuresIllustration).toHaveAttribute(
-      "country-code",
-      "fr",
-    );
+    expect(scanningForExposuresIllustration).toHaveAttribute("lang", "fr");
   });
 });
 

@@ -28,7 +28,7 @@ const IllustrationWrapper = ({
       "landing-all-value-prop-scanning-for-exposures-illustration-alt",
     )}
     data-testid={testId}
-    country-code={countryCode}
+    lang={countryCode}
   />
 );
 
