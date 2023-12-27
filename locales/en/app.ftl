@@ -862,6 +862,7 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
 
 ##
 

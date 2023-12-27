@@ -52,7 +52,9 @@ const glyphs: Record<string, StaticImageData> = {
 export function generateMetadata(props: { params: { breachName: string } }) {
   const l10n = getL10n();
   return {
-    title: `${l10n.getString("brand-fx-monitor")} - ${props.params.breachName}`,
+    title: `${l10n.getString("brand-mozilla-monitor")} - ${
+      props.params.breachName
+    }`,
     twitter: {
       card: "summary_large_image",
       title: l10n.getString("breach-detail-meta-social-title", {
@@ -66,7 +68,7 @@ export function generateMetadata(props: { params: { breachName: string } }) {
         company: props.params.breachName,
       }),
       description: l10n.getString("breach-detail-meta-social-description"),
-      siteName: l10n.getString("brand-fx-monitor"),
+      siteName: l10n.getString("brand-mozilla-monitor"),
       type: "website",
       url: process.env.SERVER_URL,
       images: ["/images/og-image.webp"],
