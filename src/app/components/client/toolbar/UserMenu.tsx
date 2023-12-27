@@ -39,6 +39,7 @@ export type UserMenuProps = {
 
 export const UserMenu = (props: UserMenuProps) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
 
   const fxaItemRef = useRef<HTMLAnchorElement>(null);
   const settingsItemRef = useRef<HTMLAnchorElement>(null);
@@ -82,6 +83,11 @@ export const UserMenu = (props: UserMenuProps) => {
           ref={fxaItemRef}
           rel="noopener noreferrer"
           target="_blank"
+          onClick={() =>
+            recordTelemetry("ctaButton", "click", {
+              button_id: "manage_account_user_menu",
+            })
+          }
         >
           {l10n.getString("user-menu-manage-fxa-label")}
           <Image src={OpenInIcon} alt="" height={24} width={24} />
