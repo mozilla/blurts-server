@@ -16,6 +16,8 @@ jest.mock("next/navigation", () => ({
   usePathname: jest.fn(),
 }));
 
+jest.mock("../../hooks/useTelemetry");
+
 it("passes the axe accessibility test suite", async () => {
   const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
   const { container } = render(<ExposuresFilter />);
