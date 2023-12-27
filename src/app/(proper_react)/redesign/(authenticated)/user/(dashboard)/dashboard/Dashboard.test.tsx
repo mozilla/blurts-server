@@ -2064,7 +2064,7 @@ it("send telemetry when users open/close 'number of active exposure' info popup"
   );
 });
 
-it("send telemetry when users clicks on data broker info link", async () => {
+it("send telemetry when users click on data broker info link", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanNoBreaches,
@@ -2095,7 +2095,7 @@ it("send telemetry when users clicks on data broker info link", async () => {
   );
 });
 
-it("send telemetry when users clicks on data breach link", async () => {
+it("send telemetry when users click on data breach link", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanUnresolvedBreaches,
@@ -2122,6 +2122,33 @@ it("send telemetry when users clicks on data breach link", async () => {
     "click",
     expect.objectContaining({
       link_id: expect.stringContaining("data_breach_"),
+    }),
+  );
+});
+
+it("send telemetry when users click on learn more link", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  const mockedRecord = useTelemetry();
+  render(<ComposedDashboard />);
+
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+  const learnMoreLink = screen.queryAllByRole("link", {
+    name: "Learn more",
+  });
+  await user.click(learnMoreLink[0]);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "link",
+    "click",
+    expect.objectContaining({
+      link_id: "learn_more",
     }),
   );
 });
