@@ -274,7 +274,16 @@ export const View = (props: Props) => {
           ),
         },
         elems: {
-          a: <a href="/redesign/user/welcome/free-scan?referrer=dashboard" />,
+          a: (
+            <a
+              href="/redesign/user/welcome/free-scan?referrer=dashboard"
+              onClick={() =>
+                recordTelemetry("link", "click", {
+                  link_id: "exposures_all_fixed_free_scan",
+                })
+              }
+            />
+          ),
         },
       })}
     </p>
