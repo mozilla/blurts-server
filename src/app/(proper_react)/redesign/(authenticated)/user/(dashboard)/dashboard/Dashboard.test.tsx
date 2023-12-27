@@ -1887,7 +1887,7 @@ it("closes previously active card onclick", async () => {
   expect(initialState.length).toBe(afterCollapse.length);
 });
 
-it("send Telemetry when people click on free scans when all exposures are fixed", async () => {
+it("send Telemetry when users click on free scans when all exposures are fixed", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
@@ -1915,7 +1915,7 @@ it("send Telemetry when people click on free scans when all exposures are fixed"
   );
 });
 
-it("send telemetry when people toggle between action needed and fixed tabs", async () => {
+it("send telemetry when users toggle between action needed and fixed tabs", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
@@ -1946,6 +1946,151 @@ it("send telemetry when people toggle between action needed and fixed tabs", asy
     "click",
     expect.objectContaining({
       button_id: "header_action_needed",
+    }),
+  );
+});
+
+it("send telemetry when users click on dashboard nav menu items", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  const mockedRecord = useTelemetry();
+  render(<ComposedDashboard />);
+
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+  const dashboardMenuItem = screen.queryAllByRole("link", {
+    name: "Dashboard",
+  });
+  await user.click(dashboardMenuItem[0]);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "navigation_dashboard",
+    }),
+  );
+});
+
+it("send telemetry when users click on the monitor logo", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  const mockedRecord = useTelemetry();
+  render(<ComposedDashboard />);
+
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+  const monitorLogo = screen.queryAllByAltText("Home");
+  await user.click(monitorLogo[0]);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "monitor_logo",
+    }),
+  );
+});
+
+it("send telemetry when users click on faq nav menu items", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  const mockedRecord = useTelemetry();
+  render(<ComposedDashboard />);
+
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+  const faqMenuItem = screen.queryAllByRole("link", { name: "FAQs" });
+  await user.click(faqMenuItem[0]);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "navigation_faq",
+    }),
+  );
+});
+
+it("send telemetry when users open/close 'number of active exposure' info popup", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  const mockedRecord = useTelemetry();
+  render(<ComposedDashboard />);
+
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+  const numberOfExposuresInfoPopup = screen.queryAllByLabelText("Open");
+  await user.click(numberOfExposuresInfoPopup[0]);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "popup",
+    "view",
+    expect.objectContaining({
+      popup_id: "number_of_exposures_info",
+    }),
+  );
+
+  const numberOfExposuresInfoPopupExit = screen.queryAllByRole("button", {
+    name: "OK",
+  });
+  await user.click(numberOfExposuresInfoPopupExit[0]);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "popup",
+    "exit",
+    expect.objectContaining({
+      popup_id: "number_of_exposures_info",
+    }),
+  );
+});
+
+it("send telemetry when users clicks on data broker info link", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanNoBreaches,
+    Meta,
+  );
+  const mockedRecord = useTelemetry();
+  render(<ComposedDashboard />);
+
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+  // expands first row
+  const expandButtons = screen.getAllByRole("button", { name: "Expand" });
+  await user.click(expandButtons[0]);
+
+  const detailsAboutYouLink = screen.queryAllByRole("link", {
+    name: "details about you.",
+  });
+  await user.click(detailsAboutYouLink[0]);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "link",
+    "click",
+    expect.objectContaining({
+      link_id: expect.stringContaining("data_broker_"),
     }),
   );
 });
