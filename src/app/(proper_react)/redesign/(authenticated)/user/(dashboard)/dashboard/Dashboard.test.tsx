@@ -2094,3 +2094,34 @@ it("send telemetry when users clicks on data broker info link", async () => {
     }),
   );
 });
+
+it("send telemetry when users clicks on data breach link", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanUnresolvedBreaches,
+    Meta,
+  );
+  const mockedRecord = useTelemetry();
+  render(<ComposedDashboard />);
+
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+  // expands first row
+  const expandButtons = screen.getAllByRole("button", { name: "Expand" });
+  await user.click(expandButtons[0]);
+
+  const dataBreachLink = screen.queryAllByRole("link", {
+    name: /^.*data breach on.*$/,
+  });
+  await user.click(dataBreachLink[0]);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "link",
+    "click",
+    expect.objectContaining({
+      link_id: expect.stringContaining("data_breach_"),
+    }),
+  );
+});
