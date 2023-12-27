@@ -863,6 +863,7 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
+-brand-plus = Monitor Plus
 
 ##
 
@@ -924,7 +925,7 @@ error-page-error-other-copy = Please try again or come back later
 
 ## Breach overview page
 
-all-breaches-headline-2 = All breaches detected by { -brand-fx-monitor }
+all-breaches-headline-2 = All breaches detected by { -brand-mozilla-monitor }
 all-breaches-lead = We monitor all known data breaches to find out if your personal information was compromised. Here’s a complete list of all of the breaches that have been reported since 2007.
 search-breaches = Search Breaches
 

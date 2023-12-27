@@ -36,8 +36,8 @@ user-menu-signout-tooltip = Sign out of { -brand-fx-monitor }
 footer-external-link-faq-label = FAQs
 footer-external-link-faq-tooltip = Frequently asked questions
 
-premium-badge-label = { -brand-premium }
-premium-cta-label = Upgrade to { -brand-premium }
+premium-badge-label = { -brand-plus }
+premium-cta-label = Subscribe to { -brand-plus }
 
 # Chart summarizing total exposures
 
@@ -88,16 +88,16 @@ progress-card-heres-what-we-fixed-headline = Here’s what we fixed
 progress-card-manually-fixed-headline = Manually fixed
 progress-card-auto-removed-headline = Auto-removed
 progress-card-in-progress-headline = In progress
-progress-card-locked-alt = Only available with { -brand-premium }
+progress-card-locked-alt = Only available with { -brand-plus }
 full-name = Full name
 
 # Here’s What We Fixed Modal
 
 modal-heres-what-we-fixed-title = About what we fixed
-modal-heres-what-we-fixed-description-part-one = <b>Manually fixed</b> includes anything you’ve fixed yourself. All data breaches that require access to your accounts need 
-  to be fixed manually, even if you’ve upgraded to { -brand-premium }.
+modal-heres-what-we-fixed-description-part-one = <b>Manually fixed</b> includes anything you’ve fixed yourself. All data breaches that require access to your accounts need
+  to be fixed manually, even if you’ve upgraded to { -brand-plus }.
 modal-heres-what-we-fixed-description-part-two = <b>Auto-removed</b> includes any exposures from data broker profiles that we’ve removed for you. This is available only for 
-  { -brand-premium } subscribers.
+  { -brand-plus } subscribers.
 modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes anything that we are currently
   working on fixing. Removals typically take 7-14 days but the most
   difficult sites could take longer. You may also start to see removals
@@ -156,10 +156,10 @@ modal-exposure-type-title = About exposure types
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.
 modal-exposure-type-description = We search for you in all known data breaches and { $data_broker_sites_total_num } data broker sites that sell your personal info. Here are the two types of exposures we find:
 modal-exposure-type-data-breach = <b>Data breach</b> means your information has been compromised in a breach and could be in the wrong hands.
-  Resolving these typically requires accessing your accounts, so you’ll need to take manual steps to resolve each breach even if you’ve upgraded to { -brand-premium }.
+  Resolving these typically requires accessing your accounts, so you’ll need to take manual steps to resolve each breach even if you’ve upgraded to { -brand-plus }.
 modal-exposure-type-data-broker-part-one = <b>Info for sale</b> means a data broker site is publicly publishing and selling your personal info.
   You’ll need to manually request removal from each site.
-modal-exposure-type-data-broker-part-two = If you’re a { -brand-premium } user, we automatically remove all profiles for you.
+modal-exposure-type-data-broker-part-two = If you’re a { -brand-plus } user, we automatically remove all profiles for you.
   In both cases, removals typically take 7-14 days. Some can take longer, while others can happen within the hour.
 
 # About Exposure Statuses Modal
@@ -170,7 +170,7 @@ modal-exposure-status-title = About exposure statuses
 modal-exposure-status-description = We search for exposures in all known data breaches and { $data_broker_sites_total_num } data broker sites that sell your personal info.
   Your exposures will have one of the following statuses:
 modal-exposure-status-action-needed = <b>Action needed</b> means it is currently active and you need to take steps to fix it.
-modal-exposure-status-in-progress = <b>In progress</b> means we are actively working on fixing the exposure for you. This is a { -brand-premium } feature.
+modal-exposure-status-in-progress = <b>In progress</b> means we are actively working on fixing the exposure for you. This is a { -brand-plus } feature.
 modal-exposure-status-fixed = <b>Fixed</b> means the exposure has been resolved and theres no action for you to take.
 
 # Dashboard
@@ -233,7 +233,7 @@ dashboard-top-banner-no-exposures-found-title = No exposures found
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. This will always be plural.
 dashboard-top-banner-no-exposures-found-description = Great news! We searched all known data breaches and { $data_broker_sites_total_num } data broker sites that sell personal info and found no exposures.
-dashboard-top-banner-no-exposures-found-upsell-info = Upgrade to { -brand-premium } and we’ll monitor for any new exposures.
+dashboard-top-banner-no-exposures-found-upsell-info = Subscribe to { -brand-plus } and we’ll monitor for any new exposures.
 dashboard-top-banner-no-exposures-found-cta = Get continuous protection
 dashboard-no-exposures-label = No exposures found
 
@@ -261,8 +261,8 @@ dashboard-top-banner-your-data-is-protected-cta = See what’s fixed
 # $starting_exposure_total_num is the number of exposures the user has resolved.
 dashboard-top-banner-your-data-is-protected-all-fixed-description =
   { $starting_exposure_total_num ->
-    [one] Great work, { $starting_exposure_total_num } exposure of your data is fixed! Upgrade to { -brand-premium } and we’ll continue to monitor for new exposures. Plus, we’ll automatically remove your info from any sites that are selling it.
-    *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed! Upgrade to { -brand-premium } and we’ll continue to monitor for new exposures. Plus, we’ll automatically remove your info from any sites that are selling it.
+    [one] Great work, { $starting_exposure_total_num } exposure of your data is fixed! Subscribe to { -brand-plus } and we’ll continue to monitor for new exposures. Plus, we’ll automatically remove your info from any sites that are selling it.
+    *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed! Subscribe to { -brand-plus } and we’ll continue to monitor for new exposures. Plus, we’ll automatically remove your info from any sites that are selling it.
   }
 
 # Variables:
@@ -385,7 +385,7 @@ data-broker-profiles-exposure-reduction = Exposure reduction: { $exposure_reduct
 exposure-reduction-chart-heading = <nr>{ $nr }</nr><percent>%</percent>
 exposure-reduction-chart-explanation = <label_line_1>exposures will</label_line_1><label_line_2>be reduced</label_line_2>
 
-welcome-to-premium-data-broker-profiles-title-part-one = Welcome to { -brand-premium }.
+welcome-to-premium-data-broker-profiles-title-part-one = Welcome to { -brand-plus }.
 welcome-to-premium-data-broker-profiles-title-part-two = We’ll remove those profiles ASAP.
 # Variables:
 # $profile_total_num is the number of exposures came back from user data broker scans.
