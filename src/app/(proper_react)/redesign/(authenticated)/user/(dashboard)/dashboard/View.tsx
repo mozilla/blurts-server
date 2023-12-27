@@ -336,7 +336,6 @@ export const View = (props: Props) => {
             setSelectedTab(selectedKey as TabType);
             const buttonId =
               "header_" + (selectedKey as TabType).replaceAll("-", "_");
-            console.log("set selected tab: ", selectedKey);
             recordTelemetry("ctaButton", "click", {
               button_id: buttonId,
             });
