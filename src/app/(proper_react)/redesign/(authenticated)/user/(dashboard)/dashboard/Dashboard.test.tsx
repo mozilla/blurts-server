@@ -1887,7 +1887,7 @@ it("closes previously active card onclick", async () => {
   expect(initialState.length).toBe(afterCollapse.length);
 });
 
-it("counts in Glean when people click on free scans when all exposures are fixed", async () => {
+it("send Telemetry when people click on free scans when all exposures are fixed", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
@@ -1895,22 +1895,57 @@ it("counts in Glean when people click on free scans when all exposures are fixed
   );
   const mockedRecord = useTelemetry();
   render(<ComposedDashboard />);
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
-  // We show a CTA on desktop in the toolbar and in the mobile menu
-  const premiumCtas = screen.queryAllByRole("link", {
-    name: "start your free scan",
-  });
-  await user.click(premiumCtas[0]);
   // jsdom will complain about not being able to navigate to a different page
   // after clicking the link; suppress that error, as it's not relevant to the
   // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+  const freeScanLink = screen.queryAllByRole("link", {
+    name: "start your free scan",
+  });
+  await user.click(freeScanLink[0]);
 
   expect(mockedRecord).toHaveBeenCalledWith(
     "link",
     "click",
     expect.objectContaining({
       link_id: "exposures_all_fixed_free_scan",
+    }),
+  );
+});
+
+it("send telemetry when people toggle between action needed and fixed tabs", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  const mockedRecord = useTelemetry();
+  render(<ComposedDashboard />);
+
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+  // We show a CTA on desktop in the toolbar and in the mobile menu
+  const fixedTab = screen.getByText("Fixed");
+  const actionNeededTab = screen.getByText("Action needed");
+  await user.click(fixedTab);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "header_fixed",
+    }),
+  );
+  await user.click(actionNeededTab);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "header_action_needed",
     }),
   );
 });
