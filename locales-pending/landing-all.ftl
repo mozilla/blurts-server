@@ -30,3 +30,12 @@ landing-all-social-proof-title = Trusted by { $num_users } million people worldw
 # $num_countries is the number of countries available.
 landing-all-social-proof-description = Since 2018, we’ve helped people in { $num_countries } countries protect their data when it has been exposed.
 landing-all-social-proof-press = As seen in
+
+# Here's How We Help
+
+landing-all-help-protect-you = Here’s how we help protect you 
+landing-all-help-protect-you-description = We believe in your right to privacy, so data breach monitoring protection is always free.
+landing-all-help-protect-you-feature-one = We’ll search for you in all known data breaches
+landing-all-help-protect-you-feature-two = We’ll guide you through the steps to resolve each breach
+landing-all-help-protect-you-feature-three = We’ll continuously monitor and send you alerts for any new breaches
+landing-all-help-protect-you-cta = Sign up for breach alerts

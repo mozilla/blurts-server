@@ -261,10 +261,6 @@
   padding: $spacing-2xl $spacing-md;
   gap: $spacing-sm;
 
-  .socialProofDescription {
-    font: $text-body-xs;
-  }
-
   .pressLogos {
     padding-top: $layout-md;
     display: flex;
@@ -279,7 +275,7 @@
       flex-wrap: nowrap;
     }
 
-    .asSeenIn {
+    .label {
       flex-basis: 100%;
       font: $text-body-sm;
       text-transform: uppercase;
@@ -291,5 +287,36 @@
         flex-basis: auto;
       }
     }
+  }
+}
+
+.heresHowWeHelpWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-2xl $spacing-md;
+  gap: $spacing-sm;
+  background-color: $color-grey-05;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    gap: $spacing-md;
+    padding-top: $layout-sm;
+    display: grid;
+
+    li {
+      display: flex;
+      gap: $spacing-md;
+      align-items: center;
+
+      svg {
+        color: $color-blue-50;
+      }
+    }
+  }
+
+  .heresHowWeHelpCta {
+    margin-top: $layout-sm;
   }
 }
