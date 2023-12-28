@@ -13,7 +13,6 @@ import LeakedPasswordExampleImageFr from "./value-prop-images/fr/leaked-password
 
 const IllustrationWrapper = ({
   image,
-  l10n,
   testId,
   countryCode,
 }: {
@@ -24,9 +23,7 @@ const IllustrationWrapper = ({
 }) => (
   <Image
     src={image}
-    alt={l10n.getString(
-      "landing-all-value-prop-scanning-for-exposures-illustration-alt",
-    )}
+    alt=""
     data-testid={testId}
     data-country-code={countryCode}
   />
