@@ -873,13 +873,13 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 
 ## Search Engine Optimization
 
-meta-desc-2 = Find out if you’ve been part of a data breach with { -brand-mozilla-monitor }. We’ll help you understand what to do next and continuously monitor for any new breaches.
+meta-desc-2 = Find out if you’ve been part of a data breach with { -brand-fx-monitor }. We’ll help you understand what to do next and continuously monitor for any new breaches.
 
 ## Header
 
-brand-fx-monitor = { -brand-mozilla-monitor }
+brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Sign In
-brand-mozilla-monitor = { -brand-mozilla-monitor }
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -926,7 +926,7 @@ error-page-error-other-copy = Please try again or come back later
 
 ## Breach overview page
 
-all-breaches-headline-2 = All breaches detected by { -brand-mozilla-monitor }
+all-breaches-headline-2 = All breaches detected by { -brand-fx-monitor }
 all-breaches-lead = We monitor all known data breaches to find out if your personal information was compromised. Here’s a complete list of all of the breaches that have been reported since 2007.
 search-breaches = Search Breaches
 
