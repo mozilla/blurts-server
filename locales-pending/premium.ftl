@@ -96,7 +96,7 @@ full-name = Full name
 modal-heres-what-we-fixed-title = About what we fixed
 modal-heres-what-we-fixed-description-part-one = <b>Manually fixed</b> includes anything you’ve fixed yourself. All data breaches that require access to your accounts need
   to be fixed manually, even if you’ve upgraded to { -brand-plus }.
-modal-heres-what-we-fixed-description-part-two = <b>Auto-removed</b> includes any exposures from data broker profiles that we’ve removed for you. This is available only for 
+modal-heres-what-we-fixed-description-part-two = <b>Auto-removed</b> includes any exposures from data broker profiles that we’ve removed for you. This is available only for
   { -brand-plus } subscribers.
 modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes anything that we are currently
   working on fixing. Removals typically take 7-14 days but the most
@@ -159,7 +159,7 @@ modal-exposure-type-data-breach = <b>Data breach</b> means your information has 
   Resolving these typically requires accessing your accounts, so you’ll need to take manual steps to resolve each breach even if you’ve upgraded to { -brand-plus }.
 modal-exposure-type-data-broker-part-one = <b>Info for sale</b> means a data broker site is publicly publishing and selling your personal info.
   You’ll need to manually request removal from each site.
-modal-exposure-type-data-broker-part-two = If you’re a { -brand-plus } user, we automatically remove all profiles for you.
+modal-exposure-type-data-broker-part-two = For { -brand-plus } subscribers, we auto-remove these profiles on your behalf and make sure they don’t re-add you.
   In both cases, removals typically take 7-14 days. Some can take longer, while others can happen within the hour.
 
 # About Exposure Statuses Modal
@@ -233,7 +233,7 @@ dashboard-top-banner-no-exposures-found-title = No exposures found
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. This will always be plural.
 dashboard-top-banner-no-exposures-found-description = Great news! We searched all known data breaches and { $data_broker_sites_total_num } data broker sites that sell personal info and found no exposures.
-dashboard-top-banner-no-exposures-found-upsell-info = Subscribe to { -brand-plus } and we’ll monitor for any new exposures.
+dashboard-top-banner-no-exposures-found-upsell-info = Subscribe to { -brand-plus } and we’ll scan for new exposures every month.
 dashboard-top-banner-no-exposures-found-cta = Get continuous protection
 dashboard-no-exposures-label = No exposures found
 
@@ -261,8 +261,8 @@ dashboard-top-banner-your-data-is-protected-cta = See what’s fixed
 # $starting_exposure_total_num is the number of exposures the user has resolved.
 dashboard-top-banner-your-data-is-protected-all-fixed-description =
   { $starting_exposure_total_num ->
-    [one] Great work, { $starting_exposure_total_num } exposure of your data is fixed! Subscribe to { -brand-plus } and we’ll continue to monitor for new exposures. Plus, we’ll automatically remove your info from any sites that are selling it.
-    *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed! Subscribe to { -brand-plus } and we’ll continue to monitor for new exposures. Plus, we’ll automatically remove your info from any sites that are selling it.
+    [one] Great work, { $starting_exposure_total_num } exposure of your data is fixed! Subscribe to { -brand-plus } and we’ll scan for new exposures every month. Plus, we’ll automatically remove your info from any sites that are selling it.
+    *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed! Subscribe to { -brand-plus } and we’ll and we’ll scan for new exposures every month. Plus, we’ll automatically remove your info from any sites that are selling it.
   }
 
 # Variables:
@@ -357,7 +357,7 @@ false-door-test-phase-3-content-part-two-dashboard = Automatically remove data f
 
 # Premium upsell dialog
 
-premium-upsell-dialog-title = Choose the level of protection that’s right for you
+premium-upsell-dialog-title = Turn on automatic data removal with Monitor Plus
 
 # Guided Resolution Flow
 

@@ -73,7 +73,7 @@ fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-butt
 fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-frequency = Billed yearly
 fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-button = Select yearly plan
 fix-flow-data-broker-profiles-automatic-remove-features-headline = Features:
-fix-flow-data-broker-profiles-automatic-remove-features-remove-personal-info = Automatic removal of personal info from sites that are selling it
+fix-flow-data-broker-profiles-automatic-remove-features-remove-personal-info = Automatic data removal from sites that are selling your personal info
 fix-flow-data-broker-profiles-automatic-remove-features-guided-experience = Guided experience through high risk data breaches that require manual steps
 fix-flow-data-broker-profiles-automatic-remove-features-continuous-monitoring = Continuous monitoring for new exposures
 fix-flow-data-broker-profiles-automatic-remove-features-breach-alerts = Alerts when your data has been breached
