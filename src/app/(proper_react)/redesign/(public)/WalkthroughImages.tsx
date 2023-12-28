@@ -38,14 +38,12 @@ type Props = {
 };
 
 export const ScanningForExposuresIllustration = (props: Props) => {
-  let imageSrc;
+  let imageSrc = ScanningForExposuresImage;
 
   if (props.countryCode === "de") {
     imageSrc = ScanningForExposuresImageDe;
   } else if (props.countryCode === "fr") {
     imageSrc = ScanningForExposuresImageFr;
-  } else {
-    imageSrc = ScanningForExposuresImage;
   }
 
   return (
@@ -59,14 +57,12 @@ export const ScanningForExposuresIllustration = (props: Props) => {
 };
 
 export const LeakedPasswordExampleIllustration = (props: Props) => {
-  let imageSrc;
+  let imageSrc = LeakedPasswordExampleImage;
 
   if (props.countryCode === "de") {
     imageSrc = LeakedPasswordExampleImageDe;
   } else if (props.countryCode === "fr") {
     imageSrc = LeakedPasswordExampleImageFr;
-  } else {
-    imageSrc = LeakedPasswordExampleImage;
   }
 
   return (
