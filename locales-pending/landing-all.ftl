@@ -1,4 +1,4 @@
-public-nav-name = { -brand-fx-monitor }
+public-nav-name = { -brand-mozilla-monitor }
 
 landing-all-hero-title = Find where your private info is exposed — and take it back
 landing-all-hero-lead = We scan data breaches to see if your data has been leaked and give you steps to fix it.
