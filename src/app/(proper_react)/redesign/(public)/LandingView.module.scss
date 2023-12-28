@@ -227,6 +227,12 @@
 
     .illustration {
       width: 100%;
+      display: flex;
+      justify-content: center;
+
+      img {
+        height: auto;
+      }
       @media screen and (min-width: $screen-md) {
         flex: 1;
       }
