@@ -99,7 +99,16 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button href="/redesign/user/settings" small variant="primary">
+              <Button
+                href="/redesign/user/settings"
+                small
+                variant="primary"
+                onPress={() => {
+                  recordTelemetry("ctaButton", "click", {
+                    button_id: "non_eligible_premium_no_breaches",
+                  });
+                }}
+              >
                 {l10n.getString("dashboard-top-banner-monitor-more-cta")}
               </Button>
             </div>
@@ -127,7 +136,16 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button href={relevantGuidedStep.href} small variant="primary">
+              <Button
+                href={relevantGuidedStep.href}
+                small
+                variant="primary"
+                onPress={() => {
+                  recordTelemetry("ctaButton", "click", {
+                    button_id: "non_eligible_premium_unresolved_breaches",
+                  });
+                }}
+              >
                 {l10n.getString("dashboard-top-banner-protect-your-data-cta")}
               </Button>
             </div>
@@ -153,6 +171,9 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               <Button
                 onPress={() => {
                   contentProps.onShowFixed();
+                  recordTelemetry("ctaButton", "click", {
+                    button_id: "non_eligible_premium_resolved_breaches",
+                  });
                 }}
                 small
                 variant="primary"
