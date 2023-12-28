@@ -39,10 +39,10 @@ describe("When Premium is not available", () => {
     const ComposedDashboard = composeStory(LandingNonUs, Meta);
     render(<ComposedDashboard />);
 
-    const inputField = screen.getByLabelText(
+    const inputField = screen.getAllByLabelText(
       "Enter your email address to check for data breach exposures.",
     );
-    await user.type(inputField, "mail@example.com");
+    await user.type(inputField[0], "mail@example.com");
 
     const submitButton = screen.getAllByRole("button", {
       name: "Get free scan",
@@ -80,7 +80,10 @@ describe("When Premium is not available", () => {
     const scanningForExposuresIllustration = screen.getByTestId(
       "scanning-for-exposures-image",
     );
-    expect(scanningForExposuresIllustration).toHaveAttribute("lang", "de");
+    expect(scanningForExposuresIllustration).toHaveAttribute(
+      "data-country-code",
+      "de",
+    );
   });
 
   it("shows the french scanning for exposures illustration", () => {
@@ -89,7 +92,10 @@ describe("When Premium is not available", () => {
     const scanningForExposuresIllustration = screen.getByTestId(
       "scanning-for-exposures-image",
     );
-    expect(scanningForExposuresIllustration).toHaveAttribute("lang", "fr");
+    expect(scanningForExposuresIllustration).toHaveAttribute(
+      "data-country-code",
+      "fr",
+    );
   });
 });
 
