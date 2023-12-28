@@ -97,7 +97,7 @@ landing-premium-plans-cards-feature-scan-plus =
        *[other] <b>Monthly</b> scan of { $dataBrokerTotalCount } data broker sites that may be selling your personal info
     }
 landing-premium-plans-cards-feature-removal-free = <b>Manual removal</b> of personal info from sites that are selling it
-landing-premium-plans-cards-feature-removal-plus = <b>Automatic removal</b> of personal info from sites that are selling it
+landing-premium-plans-cards-feature-removal-plus = <b>Automatic data removal</b> from sites that are selling your personal info
 landing-premium-plans-cards-feature-alerts = Get alerts when your data has been breached
 landing-premium-plans-cards-feature-guidance = <b>Guided help</b> to fix high-risk data breaches
 landing-premium-plans-cards-feature-monitoring = Continuous monitoring
