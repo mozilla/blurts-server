@@ -49,7 +49,7 @@ fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-2-content = Some 
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-3-title = Mark as fixed on this page
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-3-content = This will help you keep track of which exposures still need your attention, and make your overall exposures go down.
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-title = Watch for re-exposures
-fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-content = This process does not remove your information from public records, so even after your information is removed, sites often add you back. If you’d like us to handle this for you and automatically remove any new exposures, <upgrade_link>subscribe to { -brand-plus }</upgrade_link>.
+fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-content = This process does not remove your information from public records, so even after your information is removed, sites often add you back. If you’d like us to handle this for you and automatically remove any new exposures, <upgrade_link>subscribe to { -brand-monitor-plus }</upgrade_link>.
 fix-flow-data-broker-profiles-manual-remove-review-profiles-headline = Review & remove your profiles
 fix-flow-data-broker-profiles-manual-remove-button-mark-fixed = Mark as fixed
 fix-flow-data-broker-profiles-manual-remove-button-remove-for-me = Remove them for me
@@ -59,13 +59,13 @@ fix-flow-data-broker-profiles-automatic-remove-headline = We’ll auto-remove th
 # $data_broker_count is the number of data brokers scanned monthly
 fix-flow-data-broker-profiles-automatic-remove-subheadline = {
     $data_broker_count ->
-      [one] Removing these stops the sale of your personal info on { $data_broker_count } site. Subscribe to { -brand-plus } and you’ll get:
-      *[other] Removing these stops the sale of your personal info on { $data_broker_count } sites. Subscribe to { -brand-plus } and you’ll get:
+      [one] Removing these stops the sale of your personal info on { $data_broker_count } site. Subscribe to { -brand-monitor-plus } and you’ll get:
+      *[other] Removing these stops the sale of your personal info on { $data_broker_count } sites. Subscribe to { -brand-monitor-plus } and you’ll get:
 }
 # Variables:
 # $percent is the percentage you can save subscribing to an annual/yearly plan
 fix-flow-data-broker-profiles-automatic-remove-save-percent = Save { $percent }% with yearly plan 🎉
-fix-flow-data-broker-profiles-automatic-remove-features-select-plan-headline = { -brand-plus }
+fix-flow-data-broker-profiles-automatic-remove-features-select-plan-headline = { -brand-monitor-plus }
 fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-yearly = Yearly
 fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-monthly = Monthly
 fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-frequency = Billed monthly
