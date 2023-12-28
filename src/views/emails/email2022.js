@@ -208,7 +208,7 @@ const getStyles = () => `
       background-position: 50%;
       background-image: url('${images.logoLight}');
       background-repeat: no-repeat;
-      background-size: 240px 50px;
+      background-size: 343px 50px;
       width: 100%;
     }
 
