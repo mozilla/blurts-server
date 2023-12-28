@@ -873,12 +873,13 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 
 ## Search Engine Optimization
 
-meta-desc-2 = Find out if you’ve been part of a data breach with { -brand-fx-monitor }. We’ll help you understand what to do next and continuously monitor for any new breaches.
+meta-desc-2 = Find out if you’ve been part of a data breach with { -brand-mozilla-monitor }. We’ll help you understand what to do next and continuously monitor for any new breaches.
 
 ## Header
 
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Sign In
+brand-mozilla-monitor = { -brand-mozilla-monitor }
 
 ## Site navigation
 
