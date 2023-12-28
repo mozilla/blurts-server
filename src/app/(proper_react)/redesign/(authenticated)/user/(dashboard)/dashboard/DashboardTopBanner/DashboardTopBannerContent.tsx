@@ -209,6 +209,15 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 href="/redesign/user/welcome/free-scan?referrer=dashboard"
                 small
                 variant="primary"
+                onPress={() => {
+                  recordTelemetry("ctaButton", "click", {
+                    button_id:
+                      "us_non_premium_without_scan" +
+                      contentProps.hasUnresolvedBreaches
+                        ? "_unresolved_breaches"
+                        : "",
+                  });
+                }}
               >
                 {l10n.getString(
                   "dashboard-top-banner-monitor-protects-your-even-more-cta",
