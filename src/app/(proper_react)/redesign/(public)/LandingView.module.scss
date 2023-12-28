@@ -298,6 +298,7 @@
   padding: $spacing-2xl $spacing-md;
   gap: $spacing-sm;
   background-color: $color-grey-05;
+  text-align: center;
 
   ul {
     list-style: none;
@@ -305,6 +306,7 @@
     gap: $spacing-md;
     padding-top: $layout-sm;
     display: grid;
+    text-align: start;
 
     li {
       display: flex;
