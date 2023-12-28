@@ -260,6 +260,7 @@
   align-items: center;
   padding: $spacing-2xl $spacing-md;
   gap: $spacing-sm;
+  text-align: center;
 
   .pressLogos {
     padding-top: $layout-md;
@@ -311,6 +312,7 @@
       align-items: center;
 
       svg {
+        min-width: 20px; // width of check icon
         color: $color-blue-50;
       }
     }
