@@ -9,9 +9,11 @@ import { Button } from "../../../components/client/Button";
 import { useL10n } from "../../../hooks/l10n";
 import styles from "./LandingView.module.scss";
 import { CheckIcon } from "../../../components/server/Icons";
+import { useTelemetry } from "../../../hooks/useTelemetry";
 
 export const HeresHowWeHelp = () => {
   const l10n = useL10n();
+  const record = useTelemetry();
 
   return (
     <section className={styles.heresHowWeHelpWrapper}>
@@ -37,7 +39,12 @@ export const HeresHowWeHelp = () => {
       <Button
         className={styles.heresHowWeHelpCta}
         variant="primary"
-        onPress={() => void signIn("fxa")}
+        onPress={() => {
+          void signIn("fxa");
+          record("ctaButton", "click", {
+            button_id: "clicked_get_scan_fifth",
+          });
+        }}
       >
         {l10n.getString("landing-all-help-protect-you-cta")}
       </Button>
