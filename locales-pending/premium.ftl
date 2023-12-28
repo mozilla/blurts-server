@@ -357,7 +357,7 @@ false-door-test-phase-3-content-part-two-dashboard = Automatically remove data f
 
 # Premium upsell dialog
 
-premium-upsell-dialog-title = Turn on automatic data removal with Monitor Plus
+premium-upsell-dialog-title = Turn on automatic data removal with { -brand-monitor-plus }
 
 # Guided Resolution Flow
 
