@@ -34,32 +34,6 @@ type Props = {
   l10n: ExtendedReactLocalization;
 };
 
-const IllustrationWrapper = ({
-  image,
-  l10n,
-  testId,
-  countryCode,
-}: {
-  image: string;
-  l10n: ExtendedReactLocalization;
-  testId: string;
-  countryCode: string;
-}) => (
-  <Image
-    src={image}
-    alt={l10n.getString(
-      "landing-all-value-prop-scanning-for-exposures-illustration-alt",
-    )}
-    data-testid={testId}
-    data-country-code={countryCode}
-  />
-);
-
-type Props = {
-  countryCode: string;
-  l10n: ExtendedReactLocalization;
-};
-
 export const ScanningForExposuresIllustration = (props: Props) => {
   let imageSrc = ScanningForExposuresImage;
 
