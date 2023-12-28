@@ -23,6 +23,9 @@ landing-all-quote = <data_breaches>Data breaches</data_breaches> happen every 11
 
 # Non-US FAQ
 
+landing-all-faq-title = Frequently asked questions
+# FAQ is an acronym for Frequently Asked Questions
+landing-all-faq-see-all = See all FAQs
 landing-all-data-breach-definition-ans = What exactly is a data breach? 
 landing-all-data-breach-definition-qn = A data breach happens when personal or private information gets exposed, stolen or copied without permission. These security incidents can result from cyber attacks on websites, apps or any database where people’s personal information resides. A data breach can also happen accidentally, like if someone’s login credentials get posted publicly.
 landing-all-data-breach-next-steps-qn = I just found out I’m in a data breach. What do I do next?
