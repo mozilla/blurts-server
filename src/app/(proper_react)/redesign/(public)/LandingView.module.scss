@@ -253,3 +253,43 @@
     }
   }
 }
+
+.socialProofWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-2xl $spacing-md;
+  gap: $spacing-sm;
+
+  .socialProofDescription {
+    font: $text-body-xs;
+  }
+
+  .pressLogos {
+    padding-top: $layout-md;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: $spacing-lg;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (min-width: $content-md) {
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+
+    .asSeenIn {
+      flex-basis: 100%;
+      font: $text-body-sm;
+      text-transform: uppercase;
+      color: $color-grey-30;
+      font-weight: 600;
+      text-align: center;
+
+      @media screen and (min-width: $content-md) {
+        flex-basis: auto;
+      }
+    }
+  }
+}
