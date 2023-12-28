@@ -88,7 +88,7 @@ export const AppPicker = () => {
     /* c8 ignore next 3 */
     typeof document !== "undefined"
       ? document.location.host
-      : "monitor.firefox.com";
+      : "monitor.mozilla.org";
   const products = getProducts(referringHost, l10n);
   const linkRefs: Record<
     keyof typeof products,
