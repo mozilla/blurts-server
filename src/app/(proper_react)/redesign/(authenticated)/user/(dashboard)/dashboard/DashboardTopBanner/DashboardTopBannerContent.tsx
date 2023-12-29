@@ -212,7 +212,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 onPress={() => {
                   recordTelemetry("ctaButton", "click", {
                     button_id:
-                      "us_non_premium_without_scan" +
+                      "us_non_premium_no_scan" +
                       contentProps.hasUnresolvedBreaches
                         ? "_unresolved_breaches"
                         : "",
@@ -293,7 +293,22 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button href={relevantGuidedStep.href} small variant="primary">
+              <Button
+                href={relevantGuidedStep.href}
+                small
+                variant="primary"
+                onPress={() => {
+                  recordTelemetry("ctaButton", "click", {
+                    button_id:
+                      "us_non_premium_yes_scan" +
+                      contentProps.hasUnresolvedBreaches
+                        ? "_unresolved_breaches"
+                        : "" + contentProps.hasUnresolvedBrokers
+                          ? "_unresolved_exposures"
+                          : "",
+                  });
+                }}
+              >
                 {l10n.getString("dashboard-top-banner-protect-your-data-cta")}
               </Button>
             </div>
