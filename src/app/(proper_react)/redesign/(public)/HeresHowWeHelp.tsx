@@ -16,7 +16,7 @@ export const HeresHowWeHelp = () => {
   const record = useTelemetry();
 
   return (
-    <section className={styles.heresHowWeHelpWrapper}>
+    <div className={styles.heresHowWeHelpWrapper}>
       <h2>{l10n.getString("landing-all-help-protect-you")}</h2>
       <p className={styles.description}>
         {l10n.getString("landing-all-help-protect-you-description")}
@@ -48,6 +48,6 @@ export const HeresHowWeHelp = () => {
       >
         {l10n.getString("landing-all-help-protect-you-cta")}
       </Button>
-    </section>
+    </div>
   );
 };
