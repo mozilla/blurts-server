@@ -74,6 +74,20 @@ describe("When Premium is not available", () => {
     expect(scanningForExposuresIllustration).toBeInTheDocument();
   });
 
+  it("can initiate sign in from the Here's How We Help section", async () => {
+    const ComposedDashboard = composeStory(LandingNonUs, Meta);
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+
+    const signInButton = screen.getByRole("button", {
+      name: "Sign up for breach alerts",
+    });
+    await user.click(signInButton);
+
+    expect(signIn).toHaveBeenCalledTimes(1);
+  });
+
   it("shows the german scanning for exposures illustration", () => {
     const ComposedDashboard = composeStory(LandingNonUsDe, Meta);
     render(<ComposedDashboard />);
