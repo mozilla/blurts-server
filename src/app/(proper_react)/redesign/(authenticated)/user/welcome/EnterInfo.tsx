@@ -72,7 +72,7 @@ export const EnterInfo = ({
   const [invalidInputs, setInvalidInputs] = useState<Array<string>>([]);
   const [requestingScan, setRequestingScan] = useState(false);
 
-  const record = useTelemetry();
+  const recordTelemetry = useTelemetry();
   const explainerDialogState = useOverlayTriggerState({});
   const explainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
@@ -88,11 +88,11 @@ export const EnterInfo = ({
       if (isOpen) {
         // TODO: Uncomment popup_id after it has been added to metrics.yaml
         // in https://github.com/mozilla/blurts-server/pull/3913.
-        record("popup", "view", {
+        recordTelemetry("popup", "view", {
           // popup_id: "enter_scan_info_confirmation_modal",
         });
       } else {
-        record("button", "click", {
+        recordTelemetry("button", "click", {
           button_id: "edit_free_scan",
         });
       }
@@ -189,7 +189,7 @@ export const EnterInfo = ({
   const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    record("ctaButton", "click", {
+    recordTelemetry("ctaButton", "click", {
       button_id: "started_free_scan",
     });
 
@@ -301,7 +301,7 @@ export const EnterInfo = ({
           // TODO: Figure out how to intercept the fetch request in a test:
           /* c8 ignore next */
           onPress={() => {
-            record("ctaButton", "click", {
+            recordTelemetry("ctaButton", "click", {
               button_id: "confirmed_free_scan",
             });
             handleRequestScan();
@@ -335,7 +335,7 @@ export const EnterInfo = ({
           // TODO: Add unit test when changing this code:
           /* c8 ignore next */
           onClick={() => {
-            record("button", "click", {
+            recordTelemetry("button", "click", {
               button_id: "why_do_we_need_this_info",
             });
             explainerDialogState.open();
@@ -365,7 +365,7 @@ export const EnterInfo = ({
                   validationState={validationState}
                   inputValue={value}
                   onFocus={() => {
-                    record("field", "focus", {
+                    recordTelemetry("field", "focus", {
                       field_id: key,
                     });
                   }}
@@ -384,7 +384,7 @@ export const EnterInfo = ({
                   validationState={validationState}
                   value={value}
                   onFocus={() => {
-                    record("field", "focus", {
+                    recordTelemetry("field", "focus", {
                       field_id: key,
                     });
                   }}
