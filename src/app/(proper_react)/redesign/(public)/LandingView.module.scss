@@ -266,9 +266,9 @@
     }
 
     .label {
+      @include uppercase-only-english;
       flex-basis: 100%;
       font: $text-body-sm;
-      text-transform: uppercase;
       color: $color-grey-30;
       font-weight: 600;
       text-align: center;
