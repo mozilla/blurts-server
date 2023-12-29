@@ -152,16 +152,6 @@
   .quote {
     max-width: $content-lg;
     text-align: center;
-<<<<<<< HEAD
-    font: $text-title-2xs;
-    line-height: 1.5;
-    font-family: var(--font-inter);
-    font-weight: normal;
-
-    b {
-      em {
-        font-style: normal;
-=======
     font: $text-title-3xs;
     line-height: 1.4;
     font-family: var(--font-inter);
@@ -169,7 +159,6 @@
 
     h2 {
       .emphasis {
->>>>>>> e19efd7a5 (MNTOR-2647 - Quote LP)
         display: inline;
         color: $color-violet-50;
       }
