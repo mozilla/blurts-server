@@ -23,7 +23,7 @@ export type Props = {
 
 export function StartFreeScanView(props: Props) {
   const l10n = useL10n();
-  const record = useTelemetry();
+  const recordTelemetry = useTelemetry();
 
   return (
     <FixView
@@ -59,7 +59,7 @@ export function StartFreeScanView(props: Props) {
               href={process.env.NEXT_PUBLIC_HOW_IT_WORKS_SUMO_URL}
               target="_blank"
               onClick={() => {
-                record("link", "click", {
+                recordTelemetry("link", "click", {
                   link_id: "returning_user_info_scan_learn_more",
                 });
               }}
@@ -75,7 +75,7 @@ export function StartFreeScanView(props: Props) {
             variant="primary"
             href="/redesign/user/welcome/free-scan?referrer=fix"
             onPress={() => {
-              record("ctaButton", "click", {
+              recordTelemetry("ctaButton", "click", {
                 button_id: "intent_to_start_free_scan",
               });
             }}
@@ -88,7 +88,7 @@ export function StartFreeScanView(props: Props) {
             variant="secondary"
             href="/redesign/user/dashboard/fix/high-risk-data-breaches"
             onPress={() => {
-              record("ctaButton", "click", {
+              recordTelemetry("ctaButton", "click", {
                 button_id: "skipped_free_scan",
               });
             }}
