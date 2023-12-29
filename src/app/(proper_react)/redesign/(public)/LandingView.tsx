@@ -9,10 +9,18 @@ import { ExtendedReactLocalization } from "../../../hooks/l10n";
 import { PlansTable } from "./PlansTable";
 import { useId } from "react";
 import getPremiumSubscriptionUrl from "../../../functions/server/getPremiumSubscriptionUrl";
+import Image from "next/image";
+import ProgressCardImage from "./value-prop-images/progress-card.svg";
+import {
+  LeakedPasswordExampleIllustration,
+  ScanningForExposuresIllustration,
+} from "./WalkthroughImages";
+import { TelemetryLink } from "./TelemetryLink";
 
 export type Props = {
   eligibleForPremium: boolean;
   l10n: ExtendedReactLocalization;
+  countryCode: string;
 };
 
 export const View = (props: Props) => {
@@ -32,14 +40,135 @@ export const View = (props: Props) => {
             )}
           </p>
           <SignUpForm
+            isHero
             eligibleForPremium={props.eligibleForPremium}
             signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
+            eventId={{
+              cta: "clicked_get_scan_header",
+              field: "entered_email_address_header",
+            }}
           />
         </div>
         <div className={styles.heroImage}>
           <HeroImage {...props} />
         </div>
       </header>
+
+      <div className={styles.quoteWrapper}>
+        <div className={styles.quote}>
+          <b>
+            {props.eligibleForPremium
+              ? props.l10n.getFragment("landing-premium-quote", {
+                  elems: {
+                    data_brokers: <em />,
+                  },
+                })
+              : props.l10n.getFragment("landing-all-quote", {
+                  elems: {
+                    data_breaches: <em />,
+                  },
+                })}
+          </b>
+        </div>
+      </div>
+
+      <div className={styles.valuePropositionWrapper}>
+        <div className={`${styles.item} ${styles.grayBg}`}>
+          <span>
+            <h2>
+              {props.l10n.getString("landing-all-value-prop-fix-exposures")}
+            </h2>
+            <p>
+              {props.eligibleForPremium
+                ? props.l10n.getFragment(
+                    "landing-premium-value-prop-fix-exposures-description",
+                    {
+                      elems: {
+                        privacy_link: (
+                          <TelemetryLink
+                            eventData={{ button_id: "privacy_information" }}
+                            href="https://www.mozilla.org/en-US/firefox/privacy/"
+                            target="_blank"
+                          />
+                        ),
+                      },
+                    },
+                  )
+                : props.l10n.getFragment(
+                    "landing-all-value-prop-fix-exposures-description",
+                    {
+                      elems: {
+                        privacy_link: (
+                          <TelemetryLink
+                            eventData={{ button_id: "privacy_information" }}
+                            href="https://www.mozilla.org/en-US/firefox/privacy/"
+                            target="_blank"
+                          />
+                        ),
+                      },
+                    },
+                  )}
+            </p>
+            <SignUpForm
+              eligibleForPremium={props.eligibleForPremium}
+              signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
+              eventId={{
+                cta: "clicked_get_scan_second",
+                field: "entered_email_address_second",
+              }}
+            />
+          </span>
+          <div className={styles.illustration}>
+            {props.eligibleForPremium ? (
+              <Image
+                src={ProgressCardImage}
+                alt={props.l10n.getString(
+                  "landing-premium-value-prop-progress-card-illustration-alt",
+                )}
+                data-testid="progress-card-image"
+              />
+            ) : (
+              <ScanningForExposuresIllustration {...props} />
+            )}
+          </div>
+        </div>
+
+        <div className={`${styles.item} ${styles.reverseRow}`}>
+          <span>
+            <h2>
+              {props.l10n.getString("landing-all-value-prop-info-at-risk")}
+            </h2>
+            <p>
+              {props.eligibleForPremium
+                ? props.l10n.getFragment(
+                    "landing-premium-value-prop-info-at-risk-description",
+                    {
+                      elems: {
+                        exposure_type_list: (
+                          <span className={styles.exposureTypeList} />
+                        ),
+                      },
+                    },
+                  )
+                : props.l10n.getString(
+                    "landing-all-value-prop-info-at-risk-description",
+                  )}
+            </p>
+            <SignUpForm
+              eligibleForPremium={props.eligibleForPremium}
+              signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
+              eventId={{
+                cta: "clicked_get_scan_third",
+                field: "entered_email_address_third",
+              }}
+            />
+          </span>
+          <div className={styles.illustration}>
+            <LeakedPasswordExampleIllustration {...props} />
+          </div>
+        </div>
+      </div>
+
       <Plans {...props} />
     </main>
   );
@@ -83,7 +212,7 @@ const Plans = (props: Props) => {
   }
 
   return (
-    <section className={styles.plans}>
+    <div className={styles.plans}>
       <h2 id={headingId} className={styles.planName}>
         {props.l10n.getString("landing-premium-plans-heading")}
       </h2>
@@ -97,6 +226,6 @@ const Plans = (props: Props) => {
           yearly: getPremiumSubscriptionUrl({ type: "yearly" }),
         }}
       />
-    </section>
+    </div>
   );
 };
