@@ -336,7 +336,22 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button href={relevantGuidedStep.href} small variant="primary">
+              <Button
+                href={relevantGuidedStep.href}
+                small
+                variant="primary"
+                onPress={() => {
+                  recordTelemetry("ctaButton", "click", {
+                    button_id:
+                      "us_non_premium_yes_scan_remove_in_progress" +
+                      contentProps.hasUnresolvedBreaches
+                        ? "_unresolved_breaches"
+                        : "" + contentProps.hasUnresolvedBrokers
+                          ? "_unresolved_exposures"
+                          : "",
+                  });
+                }}
+              >
                 {l10n.getString(
                   "dashboard-top-banner-lets-keep-protecting-cta",
                 )}
