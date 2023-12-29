@@ -76,30 +76,6 @@
       font: $text-body-lg;
       color: $color-grey-50;
     }
-
-    form {
-      display: flex;
-      flex-wrap: wrap;
-      gap: $spacing-sm;
-
-      input {
-        flex: 1 0 auto;
-        border-radius: $border-radius-md;
-        border: 1px solid $color-grey-20;
-        padding: $spacing-md;
-        font: $text-body-xl;
-      }
-
-      button {
-        flex: 1 0 auto;
-        font: $text-title-xs;
-      }
-
-      label {
-        font: $text-body-sm;
-        font-weight: 500;
-      }
-    }
   }
 
   .heroImage {
@@ -161,5 +137,109 @@
   .lead {
     padding-inline: $spacing-lg;
     text-align: center;
+  }
+}
+
+.quoteWrapper {
+  padding: $layout-lg $spacing-md;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: $content-md) {
+    padding: $layout-lg;
+  }
+
+  .quote {
+    max-width: $content-lg;
+    text-align: center;
+    font: $text-title-2xs;
+    line-height: 1.5;
+    font-family: var(--font-inter);
+    font-weight: normal;
+
+    b {
+      em {
+        font-style: normal;
+        display: inline;
+        color: $color-violet-50;
+      }
+    }
+  }
+}
+
+.valuePropositionWrapper {
+  .item {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-2xl $spacing-md;
+    gap: $spacing-lg;
+
+    &.grayBg {
+      background: $color-grey-05;
+    }
+
+    .exposureTypeList {
+      font-weight: 600;
+      color: $color-purple-70;
+      display: inline;
+    }
+
+    @media screen and (min-width: $screen-md) {
+      padding-inline: $layout-lg;
+      padding-block: $layout-sm;
+      flex-direction: row;
+      gap: $spacing-xl;
+
+      &.reverseRow {
+        flex-direction: row-reverse;
+      }
+
+      @media screen and (min-width: $screen-lg) {
+        padding-inline: $layout-lg;
+        gap: $layout-xl;
+
+        @media screen and (min-width: $screen-xl) {
+          padding-inline: $layout-xl;
+        }
+      }
+    }
+
+    span {
+      gap: $spacing-md;
+      display: flex;
+      flex-direction: column;
+
+      h2 {
+        font: $text-title-xs;
+        font-family: var(--font-inter);
+        font-weight: 600;
+      }
+
+      p {
+        font: $text-body-lg;
+      }
+    }
+
+    .illustration {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      img {
+        height: auto;
+      }
+      @media screen and (min-width: $screen-md) {
+        flex: 1;
+      }
+    }
+
+    @media screen and (min-width: $screen-md) {
+      span,
+      .illustration {
+        flex: 1;
+      }
+    }
   }
 }
