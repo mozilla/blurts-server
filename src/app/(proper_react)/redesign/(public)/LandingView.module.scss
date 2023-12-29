@@ -152,13 +152,14 @@
   .quote {
     max-width: $content-lg;
     text-align: center;
-    font: $text-title-3xs;
-    line-height: 1.4;
+    font: $text-title-2xs;
+    line-height: 1.5;
     font-family: var(--font-inter);
     font-weight: normal;
 
-    h2 {
-      .emphasis {
+    b {
+      em {
+        font-style: normal;
         display: inline;
         color: $color-violet-50;
       }

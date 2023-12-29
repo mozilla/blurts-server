@@ -54,25 +54,25 @@ export const View = (props: Props) => {
         </div>
       </header>
 
-      <section className={styles.quoteWrapper}>
+      <div className={styles.quoteWrapper}>
         <div className={styles.quote}>
-          <h2>
+          <b>
             {props.eligibleForPremium
               ? props.l10n.getFragment("landing-premium-quote", {
                   elems: {
-                    data_brokers: <span className={styles.emphasis} />,
+                    data_brokers: <em />,
                   },
                 })
               : props.l10n.getFragment("landing-all-quote", {
                   elems: {
-                    data_breaches: <span className={styles.emphasis} />,
+                    data_breaches: <em />,
                   },
                 })}
-          </h2>
+          </b>
         </div>
-      </section>
+      </div>
 
-      <section className={styles.valuePropositionWrapper}>
+      <div className={styles.valuePropositionWrapper}>
         <div className={`${styles.item} ${styles.grayBg}`}>
           <span>
             <h2>
@@ -167,7 +167,7 @@ export const View = (props: Props) => {
             <LeakedPasswordExampleIllustration {...props} />
           </div>
         </div>
-      </section>
+      </div>
 
       <Plans {...props} />
     </main>
@@ -212,7 +212,7 @@ const Plans = (props: Props) => {
   }
 
   return (
-    <section className={styles.plans}>
+    <div className={styles.plans}>
       <h2 id={headingId} className={styles.planName}>
         {props.l10n.getString("landing-premium-plans-heading")}
       </h2>
@@ -226,6 +226,6 @@ const Plans = (props: Props) => {
           yearly: getPremiumSubscriptionUrl({ type: "yearly" }),
         }}
       />
-    </section>
+    </div>
   );
 };
