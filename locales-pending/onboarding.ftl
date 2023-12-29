@@ -21,7 +21,7 @@ onboarding-get-started-how-it-works-dialog-step1-content = {
 onboarding-get-started-how-it-works-dialog-step2-heading = Remove your personal info
 onboarding-get-started-how-it-works-dialog-step2-content = We’ll show you what personal info each data broker site is selling. You’ll need to contact each data broker to request removal. Removal typically takes 7-10 business days, but some can take longer. Subscribe to { -brand-monitor-plus } and we’ll handle this for you.
 onboarding-get-started-how-it-works-dialog-step3-heading = Resolve data breaches
-onboarding-get-started-how-it-works-dialog-step3-content = They’ll require access to your accounts, so you’ll need to resolve them manually even if you upgrade to { -brand-monitor-plus }.
+onboarding-get-started-how-it-works-dialog-step3-content = They’ll require access to your accounts, so you’ll need to resolve them manually even if you subscribe to { -brand-monitor-plus }.
 onboarding-get-started-how-it-works-dialog-confirm-label = OK
 
 onboarding-enter-details-title = Enter the details you want to protect
