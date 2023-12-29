@@ -171,7 +171,7 @@ modal-exposure-status-description = We search for exposures in all known data br
   Your exposures will have one of the following statuses:
 modal-exposure-status-action-needed = <b>Action needed</b> means it is currently active and you need to take steps to fix it.
 modal-exposure-status-in-progress = <b>In progress</b> means we are actively working on fixing the exposure for you. This is a { -brand-monitor-plus } feature.
-modal-exposure-status-fixed = <b>Fixed</b> means the exposure has been resolved and theres no action for you to take.
+modal-exposure-status-fixed = <b>Fixed</b> means the exposure has been resolved and there’s no action for you to take.
 
 # Dashboard
 
