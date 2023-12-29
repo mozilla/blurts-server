@@ -25,7 +25,7 @@ export function generateMetadata() {
     openGraph: {
       title: l10n.getString("breach-all-meta-social-title"),
       description: l10n.getString("breach-all-meta-social-description"),
-      siteName: l10n.getString("brand-mozilla-monitor"),
+      siteName: l10n.getString("brand-fx-monitor"),
       type: "website",
       url: process.env.SERVER_URL,
       images: ["/images/og-image.webp"],

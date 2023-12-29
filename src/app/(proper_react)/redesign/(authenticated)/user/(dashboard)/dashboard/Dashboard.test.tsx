@@ -478,23 +478,23 @@ it("opens and closes the premium upsell dialog via the Premium upsell badge)", a
   // Shows the modal for the desktop layout
   await user.click(premiumCtas[0]);
   expect(
-    screen.getByText("Turn on automatic data removal with Monitor Plus"),
+    screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).toBeInTheDocument();
   const closeButtonIcon1 = screen.getByLabelText("Close");
   await user.click(closeButtonIcon1.parentElement as HTMLElement);
   expect(
-    screen.queryByText("Turn on automatic data removal with Monitor Plus"),
+    screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).not.toBeInTheDocument();
 
   // Shows the modal for the mobile layout
   await user.click(premiumCtas[1]);
   expect(
-    screen.getByText("Turn on automatic data removal with Monitor Plus"),
+    screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).toBeInTheDocument();
   const closeButtonIcon2 = screen.getByLabelText("Close");
   await user.click(closeButtonIcon2.parentElement as HTMLElement);
   expect(
-    screen.queryByText("Turn on automatic data removal with Monitor Plus"),
+    screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).not.toBeInTheDocument();
 });
 
@@ -513,12 +513,12 @@ it("opens and closes the premium upsell dialog via the Premium upsell button)", 
 
   await user.click(premiumCta);
   expect(
-    screen.getByText("Turn on automatic data removal with Monitor Plus"),
+    screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).toBeInTheDocument();
   const closeButtonIcon1 = screen.getByLabelText("Close");
   await user.click(closeButtonIcon1.parentElement as HTMLElement);
   expect(
-    screen.queryByText("Turn on automatic data removal with Monitor Plus"),
+    screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).not.toBeInTheDocument();
 });
 
