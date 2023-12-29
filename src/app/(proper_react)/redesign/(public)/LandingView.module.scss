@@ -152,14 +152,13 @@
   .quote {
     max-width: $content-lg;
     text-align: center;
-    font: $text-title-2xs;
-    line-height: 1.5;
+    font: $text-title-3xs;
+    line-height: 1.4;
     font-family: var(--font-inter);
     font-weight: normal;
 
-    b {
-      em {
-        font-style: normal;
+    h2 {
+      .emphasis {
         display: inline;
         color: $color-violet-50;
       }
@@ -241,5 +240,76 @@
         flex: 1;
       }
     }
+  }
+}
+
+.socialProofWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-2xl $spacing-md;
+  gap: $spacing-sm;
+  text-align: center;
+
+  .pressLogos {
+    padding-top: $layout-md;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: $spacing-lg;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (min-width: $content-md) {
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+
+    .label {
+      @include uppercase-only-english;
+      flex-basis: 100%;
+      font: $text-body-sm;
+      color: $color-grey-30;
+      font-weight: 600;
+      text-align: center;
+
+      @media screen and (min-width: $content-md) {
+        flex-basis: auto;
+      }
+    }
+  }
+}
+
+.heresHowWeHelpWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-2xl $spacing-md;
+  gap: $spacing-sm;
+  background-color: $color-grey-05;
+  text-align: center;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    gap: $spacing-md;
+    padding-top: $layout-sm;
+    display: grid;
+    text-align: start;
+
+    li {
+      display: flex;
+      gap: $spacing-md;
+      align-items: center;
+
+      svg {
+        min-width: 20px; // width of check icon
+        color: $color-blue-50;
+      }
+    }
+  }
+
+  .heresHowWeHelpCta {
+    margin-top: $layout-sm;
   }
 }
