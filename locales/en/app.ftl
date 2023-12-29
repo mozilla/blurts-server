@@ -877,6 +877,7 @@ meta-desc-2 = Find out if you’ve been part of a data breach with { -brand-fx-m
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Sign In
 brand-mozilla-monitor = { -brand-fx-monitor }
