@@ -25,10 +25,14 @@ landing-all-quote = <data_breaches>Data breaches</data_breaches> happen every 11
 
 # Variables
 # $num_users is the number of users in the millions.
-landing-all-social-proof-title = Trusted by { $num_users } million people worldwide
+landing-all-social-proof-title = { $num_users ->
+   *[other] Trusted by { $num_users } million people worldwide
+}
 # Variables
 # $num_countries is the number of countries available.
-landing-all-social-proof-description = Since 2018, we’ve helped people in { $num_countries } countries protect their data when it has been exposed.
+landing-all-social-proof-description = { $num_countries ->
+   *[other] Since 2018, we’ve helped people in { $num_countries } countries protect their data when it has been exposed.
+}
 landing-all-social-proof-press = As seen in
 
 # Here's How We Help
