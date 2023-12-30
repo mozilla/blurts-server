@@ -135,14 +135,14 @@ export const View = (props: Props) => {
               recordTelemetry("collapse", "click", {
                 button_id: isScanResult(exposure)
                   ? `data_broker_card_${exposure.onerep_scan_result_id}`
-                  : `data_breach_card_${exposure.id}`
+                  : `data_breach_card_${exposure.id}`,
               });
             } else {
               setActiveExposureCardKey(exposureCardKey);
               recordTelemetry("expand", "click", {
                 button_id: isScanResult(exposure)
                   ? `data_broker_card_${exposure.onerep_scan_result_id}`
-                  : `data_breach_card_${exposure.id}`
+                  : `data_breach_card_${exposure.id}`,
               });
             }
           }}
