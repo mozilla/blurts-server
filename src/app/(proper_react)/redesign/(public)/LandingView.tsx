@@ -9,10 +9,24 @@ import { ExtendedReactLocalization } from "../../../hooks/l10n";
 import { PlansTable } from "./PlansTable";
 import { useId } from "react";
 import getPremiumSubscriptionUrl from "../../../functions/server/getPremiumSubscriptionUrl";
+import Image from "next/image";
+import ProgressCardImage from "./value-prop-images/progress-card.svg";
+import {
+  LeakedPasswordExampleIllustration,
+  ScanningForExposuresIllustration,
+} from "./WalkthroughImages";
+import CNETLogo from "./social-proof-images/cnet.svg";
+import ForbesLogo from "./social-proof-images/forbes.svg";
+import GoogleLogo from "./social-proof-images/google.svg";
+import PCMagLogo from "./social-proof-images/pcmag.svg";
+import TechCruchLogo from "./social-proof-images/techcrunch.svg";
+import { TelemetryLink } from "./TelemetryLink";
+import { HeresHowWeHelp } from "./HeresHowWeHelp";
 
 export type Props = {
   eligibleForPremium: boolean;
   l10n: ExtendedReactLocalization;
+  countryCode: string;
 };
 
 export const View = (props: Props) => {
@@ -32,14 +46,160 @@ export const View = (props: Props) => {
             )}
           </p>
           <SignUpForm
+            isHero
             eligibleForPremium={props.eligibleForPremium}
             signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
+            eventId={{
+              cta: "clicked_get_scan_header",
+              field: "entered_email_address_header",
+            }}
           />
         </div>
         <div className={styles.heroImage}>
           <HeroImage {...props} />
         </div>
       </header>
+
+      <section className={styles.quoteWrapper}>
+        <div className={styles.quote}>
+          <h2>
+            {props.eligibleForPremium
+              ? props.l10n.getFragment("landing-premium-quote", {
+                  elems: {
+                    data_brokers: <span className={styles.emphasis} />,
+                  },
+                })
+              : props.l10n.getFragment("landing-all-quote", {
+                  elems: {
+                    data_breaches: <span className={styles.emphasis} />,
+                  },
+                })}
+          </h2>
+        </div>
+      </section>
+
+      <section className={styles.valuePropositionWrapper}>
+        <div className={`${styles.item} ${styles.grayBg}`}>
+          <span>
+            <h2>
+              {props.l10n.getString("landing-all-value-prop-fix-exposures")}
+            </h2>
+            <p>
+              {props.eligibleForPremium
+                ? props.l10n.getFragment(
+                    "landing-premium-value-prop-fix-exposures-description",
+                    {
+                      elems: {
+                        privacy_link: (
+                          <TelemetryLink
+                            eventData={{ button_id: "privacy_information" }}
+                            href="https://www.mozilla.org/en-US/firefox/privacy/"
+                            target="_blank"
+                          />
+                        ),
+                      },
+                    },
+                  )
+                : props.l10n.getFragment(
+                    "landing-all-value-prop-fix-exposures-description",
+                    {
+                      elems: {
+                        privacy_link: (
+                          <TelemetryLink
+                            eventData={{ button_id: "privacy_information" }}
+                            href="https://www.mozilla.org/en-US/firefox/privacy/"
+                            target="_blank"
+                          />
+                        ),
+                      },
+                    },
+                  )}
+            </p>
+            <SignUpForm
+              eligibleForPremium={props.eligibleForPremium}
+              signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
+              eventId={{
+                cta: "clicked_get_scan_second",
+                field: "entered_email_address_second",
+              }}
+            />
+          </span>
+          <div className={styles.illustration}>
+            {props.eligibleForPremium ? (
+              <Image
+                src={ProgressCardImage}
+                alt={props.l10n.getString(
+                  "landing-premium-value-prop-progress-card-illustration-alt",
+                )}
+                data-testid="progress-card-image"
+              />
+            ) : (
+              <ScanningForExposuresIllustration {...props} />
+            )}
+          </div>
+        </div>
+
+        <div className={`${styles.item} ${styles.reverseRow}`}>
+          <span>
+            <h2>
+              {props.l10n.getString("landing-all-value-prop-info-at-risk")}
+            </h2>
+            <p>
+              {props.eligibleForPremium
+                ? props.l10n.getFragment(
+                    "landing-premium-value-prop-info-at-risk-description",
+                    {
+                      elems: {
+                        exposure_type_list: (
+                          <span className={styles.exposureTypeList} />
+                        ),
+                      },
+                    },
+                  )
+                : props.l10n.getString(
+                    "landing-all-value-prop-info-at-risk-description",
+                  )}
+            </p>
+            <SignUpForm
+              eligibleForPremium={props.eligibleForPremium}
+              signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
+              eventId={{
+                cta: "clicked_get_scan_third",
+                field: "entered_email_address_third",
+              }}
+            />
+          </span>
+          <div className={styles.illustration}>
+            <LeakedPasswordExampleIllustration {...props} />
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.socialProofWrapper}>
+        <h2>
+          {props.l10n.getString("landing-all-social-proof-title", {
+            num_users: 10,
+          })}
+        </h2>
+        <p className={styles.socialProofDescription}>
+          {props.l10n.getString("landing-all-social-proof-description", {
+            num_countries: 237,
+          })}
+        </p>
+        <div className={styles.pressLogos}>
+          <p className={styles.label}>
+            {props.l10n.getString("landing-all-social-proof-press")}
+          </p>
+          <Image src={ForbesLogo} alt="" />
+          <Image src={TechCruchLogo} alt="" />
+          <Image src={PCMagLogo} alt="" />
+          <Image src={CNETLogo} alt="" />
+          <Image src={GoogleLogo} alt="" />
+        </div>
+      </section>
+
+      {!props.eligibleForPremium && <HeresHowWeHelp />}
+
       <Plans {...props} />
     </main>
   );
