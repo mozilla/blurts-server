@@ -4,8 +4,8 @@
 
 import type { useTelemetry as ogUseTelemetry } from "../useTelemetry";
 
-const mockRecord = jest.fn();
+const mockedRecordTelemetry = jest.fn();
 
 export const useTelemetry: typeof ogUseTelemetry = () => {
-  return mockRecord as ReturnType<typeof ogUseTelemetry>;
+  return mockedRecordTelemetry as ReturnType<typeof ogUseTelemetry>;
 };

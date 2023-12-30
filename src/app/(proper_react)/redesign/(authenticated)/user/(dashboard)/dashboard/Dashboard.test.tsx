@@ -2093,6 +2093,10 @@ it("send telemetry when users click on data broker info link", async () => {
       link_id: expect.stringContaining("data_broker_"),
     }),
   );
+
+  // collapses first row
+  const collapseButton = screen.getAllByRole("button", { name: "Collapse" });
+  await user.click(collapseButton[0]);
 });
 
 it("send telemetry when users click on data breach link", async () => {
@@ -2124,6 +2128,10 @@ it("send telemetry when users click on data breach link", async () => {
       link_id: expect.stringContaining("data_breach_"),
     }),
   );
+
+  // collapses first row
+  const collapseButton = screen.getAllByRole("button", { name: "Collapse" });
+  await user.click(collapseButton[0]);
 });
 
 it("send telemetry when users click on learn more link", async () => {

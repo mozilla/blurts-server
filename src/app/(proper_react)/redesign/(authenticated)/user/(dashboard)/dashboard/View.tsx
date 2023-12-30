@@ -133,16 +133,16 @@ export const View = (props: Props) => {
             if (exposureCardKey === activeExposureCardKey) {
               setActiveExposureCardKey(null);
               recordTelemetry("collapse", "click", {
-                button_id: exposureCardKey
-                  .replaceAll("scan-", "data_broker_card_")
-                  .replaceAll("breach-", "data_breach_card_"),
+                button_id: isScanResult(exposure)
+                  ? `data_broker_card_${exposure.onerep_scan_result_id}`
+                  : `data_breach_card_${exposure.id}`,
               });
             } else {
               setActiveExposureCardKey(exposureCardKey);
               recordTelemetry("expand", "click", {
-                button_id: exposureCardKey
-                  .replaceAll("scan-", "data_broker_card_")
-                  .replaceAll("breach-", "data_breach_card_"),
+                button_id: isScanResult(exposure)
+                  ? `data_broker_card_${exposure.onerep_scan_result_id}`
+                  : `data_breach_card_${exposure.id}`,
               });
             }
           }}
