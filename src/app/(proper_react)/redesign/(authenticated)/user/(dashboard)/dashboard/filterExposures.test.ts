@@ -8,6 +8,7 @@ import {
   createRandomScanResult,
 } from "../../../../../../../apiMocks/mockData";
 import { filterExposures } from "./filterExposures";
+jest.mock("../../../../../../hooks/useTelemetry");
 
 const dayMilliseconds = 24 * 60 * 60 * 1000;
 const getDateDaysAgo = (daysAgo: number) =>
