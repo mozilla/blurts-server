@@ -592,7 +592,19 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button href="/redesign/user/settings" small variant="primary">
+              <Button
+                href="/redesign/user/settings"
+                small
+                variant="primary"
+                onPress={() => {
+                  recordTelemetry("ctaButton", "click", {
+                    button_id:
+                      "us_" + isPremiumUser
+                        ? ""
+                        : "non_" + "premium_scan_in_progress_resolved_breaches",
+                  });
+                }}
+              >
                 {l10n.getString(
                   "dashboard-top-banner-scan-in-progress-no-results-cta",
                 )}
