@@ -513,7 +513,6 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 small
                 variant="primary"
                 onPress={() => {
-                  contentProps.onShowFixed();
                   recordTelemetry("ctaButton", "click", {
                     button_id: "us_premium_scan_in_progress_no_breaches",
                   });
@@ -551,7 +550,17 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button href={relevantGuidedStep.href} small variant="primary">
+              <Button
+                href={relevantGuidedStep.href}
+                small
+                variant="primary"
+                onPress={() => {
+                  recordTelemetry("ctaButton", "click", {
+                    button_id:
+                      "us_premium_scan_in_progress_unresolved_breaches",
+                  });
+                }}
+              >
                 {l10n.getString(
                   "dashboard-top-banner-scan-in-progress-results-found-cta",
                 )}
