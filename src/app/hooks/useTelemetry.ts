@@ -23,7 +23,7 @@ export const useTelemetry = () => {
   const { gtag } = useGa();
 
   const { Glean, Ga } = TelemetryPlatforms;
-  const record = <
+  const recordTelemetry = <
     EventModule extends keyof GleanMetricMap,
     EventName extends keyof GleanMetricMap[EventModule],
   >(
@@ -53,5 +53,5 @@ export const useTelemetry = () => {
     }
   };
 
-  return record;
+  return recordTelemetry;
 };

@@ -14,5 +14,11 @@ export default async function Page() {
   const countryCode = getCountryCode(headers());
   const eligibleForPremium = isEligibleForPremium(countryCode, enabledFlags);
 
-  return <View eligibleForPremium={eligibleForPremium} l10n={getL10n()} />;
+  return (
+    <View
+      eligibleForPremium={eligibleForPremium}
+      l10n={getL10n()}
+      countryCode={countryCode}
+    />
+  );
 }
