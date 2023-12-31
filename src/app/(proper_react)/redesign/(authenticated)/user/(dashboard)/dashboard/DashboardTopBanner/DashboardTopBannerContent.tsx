@@ -469,6 +469,9 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               <Button
                 onPress={() => {
                   contentProps.onShowFixed();
+                  recordTelemetry("ctaButton", "click", {
+                    button_id: "us_premium_yes_scan_all_resolved",
+                  });
                 }}
                 small
                 variant="primary"
