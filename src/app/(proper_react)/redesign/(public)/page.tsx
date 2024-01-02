@@ -13,12 +13,15 @@ export default async function Page() {
   const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
   const countryCode = getCountryCode(headers());
   const eligibleForPremium = isEligibleForPremium(countryCode, enabledFlags);
+  // TODO: Swap scanLimit value for accurate logic check
+  const scanLimit = true;
 
   return (
     <View
       eligibleForPremium={eligibleForPremium}
       l10n={getL10n()}
       countryCode={countryCode}
+      scanLimit={scanLimit}
     />
   );
 }
