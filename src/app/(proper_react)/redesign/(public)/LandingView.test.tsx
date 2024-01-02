@@ -21,6 +21,7 @@ import Meta, {
   LandingNonUsDe,
   LandingNonUsFr,
   LandingUs,
+  LandingUsScanLimit,
 } from "./LandingView.stories";
 
 jest.mock("next-auth/react");
@@ -387,5 +388,30 @@ describe("When Premium is available", () => {
 
     const progressCardIllustration = screen.getByTestId("progress-card-image");
     expect(progressCardIllustration).toBeInTheDocument();
+  });
+
+  it("shows the scan limit and waitlist cta when it hits the threshold", () => {
+    const ComposedDashboard = composeStory(LandingUsScanLimit, Meta);
+    render(<ComposedDashboard />);
+
+    const limitDescription = screen.getByText(
+      "We’ve reached the maximum scans for the month. Enter your email to get on our waitlist.",
+    );
+    expect(limitDescription).toBeInTheDocument();
+  });
+
+  it("opens the waitlist page when the join waitlist cta is selected", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(LandingUsScanLimit, Meta);
+    render(<ComposedDashboard />);
+    const waitlistCta = screen.getByRole("button", {
+      name: "Join waitlist",
+    });
+    await user.click(waitlistCta);
+
+    expect(waitlistCta).toHaveAttribute(
+      "href",
+      "https://www.mozilla.org/products/monitor/waitlist-scan/",
+    );
   });
 });
