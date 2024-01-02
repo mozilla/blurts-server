@@ -6,8 +6,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { getScansCount } from "../../../../db/tables/onerep_scans";
 import { bearerToken } from "../../utils/auth";
 import {
-  monthlyScanQuota,
-  monthlySubscriberQuota,
+  monthlyScansQuota,
+  monthlySubscribersQuota,
 } from "../../../functions/server/onerep";
 export async function GET(req: NextRequest) {
   const headerToken = bearerToken(req);
@@ -38,11 +38,11 @@ export async function GET(req: NextRequest) {
 
   const message = {
     scans: {
-      quota: monthlyScanQuota,
+      quota: monthlyScansQuota,
       count: parseInt(manualScansCount),
     },
     subscribers: {
-      quota: monthlySubscriberQuota,
+      quota: monthlySubscribersQuota,
       count: parseInt(initialScansCount),
     },
   };

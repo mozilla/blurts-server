@@ -20,10 +20,10 @@ import {
 } from "../../../db/tables/featureFlags";
 import { logger } from "./logging";
 
-export const monthlyScanQuota = parseInt(
+export const monthlyScansQuota = parseInt(
   (process.env.MONTHLY_SCANS_QUOTA as string) || "0",
 );
-export const monthlySubscriberQuota = parseInt(
+export const monthlySubscribersQuota = parseInt(
   (process.env.MONTHLY_SUBSCRIBERS_QUOTA as string) || "0",
 );
 

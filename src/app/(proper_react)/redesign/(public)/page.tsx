@@ -7,7 +7,7 @@ import { getCountryCode } from "../../../functions/server/getCountryCode";
 import {
   isEligibleForPremium,
   getProfilesStats,
-  monthlySubscriberQuota,
+  monthlySubscribersQuota,
 } from "../../../functions/server/onerep";
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 import { getL10n } from "../../../functions/server/l10n";
@@ -20,16 +20,16 @@ export default async function Page() {
 
   // request the profile stats for the last 30 days
   const profileStats = await getProfilesStats(
-    new Date(new Date().setDate(new Date().getDate() - 30)),
+    new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
   );
-  const oneRepActivations = profileStats?.total_active || 0;
-  const scanLimit = oneRepActivations > monthlySubscriberQuota;
+  const oneRepActivations = profileStats?.total_active ?? 0;
+  const scanLimitReached = oneRepActivations > monthlySubscribersQuota;
   return (
     <View
       eligibleForPremium={eligibleForPremium}
       l10n={getL10n()}
       countryCode={countryCode}
-      scanLimit={scanLimit}
+      scanLimit={scanLimitReached}
     />
   );
 }
