@@ -305,7 +305,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                         : ""
                     }${
                       contentProps.hasUnresolvedBrokers
-                        ? "_unresolved_exposures"
+                        ? "_unresolved_brokers"
                         : ""
                     }`,
                   });
@@ -344,16 +344,15 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 variant="primary"
                 onPress={() => {
                   recordTelemetry("ctaButton", "click", {
-                    button_id: `us_non_premium_yes_scan_remove_in_progress
-                      ${
-                        contentProps.hasUnresolvedBreaches
-                          ? "_unresolved_breaches"
-                          : ""
-                      }${
-                        contentProps.hasUnresolvedBrokers
-                          ? "_unresolved_exposures"
-                          : ""
-                      }`,
+                    button_id: `us_non_premium_empty_scan${
+                      contentProps.hasUnresolvedBreaches
+                        ? "_unresolved_breaches"
+                        : ""
+                    }${
+                      contentProps.hasUnresolvedBrokers
+                        ? "_unresolved_brokers"
+                        : ""
+                    }`,
                   });
                 }}
               >
@@ -413,7 +412,24 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button href={relevantGuidedStep.href} small variant="primary">
+              <Button
+                href={relevantGuidedStep.href}
+                small
+                variant="primary"
+                onPress={() => {
+                  recordTelemetry("ctaButton", "click", {
+                    button_id: `us_${isPremiumUser ? "" : "non_"}premium${
+                      contentProps.hasUnresolvedBreaches
+                        ? "_unresolved_breaches"
+                        : ""
+                    }${
+                      contentProps.hasUnresolvedBrokers
+                        ? "_unresolved_brokers"
+                        : ""
+                    }`,
+                  });
+                }}
+              >
                 {l10n.getString(
                   "dashboard-top-banner-lets-keep-protecting-cta",
                 )}
