@@ -43,3 +43,6 @@ landing-all-help-protect-you-feature-one = We’ll search for you in all known d
 landing-all-help-protect-you-feature-two = We’ll guide you through the steps to resolve each breach
 landing-all-help-protect-you-feature-three = We’ll continuously monitor and send you alerts for any new breaches
 landing-all-help-protect-you-cta = Sign up for breach alerts
+
+landing-all-get-started = Scan your email to get started
+landing-all-take-back-data = Take back control of your data
