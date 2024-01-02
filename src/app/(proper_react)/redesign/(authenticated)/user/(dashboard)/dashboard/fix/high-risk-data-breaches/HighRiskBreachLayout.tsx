@@ -31,6 +31,7 @@ export type HighRiskBreachLayoutProps = {
   type: HighRiskBreachTypes;
   subscriberEmails: string[];
   data: StepDeterminationData;
+  isEligibleForPremium: boolean;
 };
 
 export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
@@ -135,6 +136,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
         title={title}
         illustration={illustration}
         isPremiumUser={hasPremium(props.data.user)}
+        isEligibleForPremium={props.isEligibleForPremium}
         cta={
           !isStepDone && (
             <>

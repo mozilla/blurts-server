@@ -24,6 +24,7 @@ export type Props = {
   autoRemoved: number;
   inProgress: number;
   isPremiumUser: boolean;
+  isEligibleForPremium: boolean;
 };
 
 export const ProgressCard = (props: Props) => {
@@ -73,15 +74,21 @@ export const ProgressCard = (props: Props) => {
   return (
     <div className={styles.progressCard}>
       <div className={styles.header}>
-        {l10n.getString("progress-card-heres-what-we-fixed-headline")}
-        <button
-          aria-label={l10n.getString("modal-open-alt")}
-          ref={explainerDialogTriggerRef}
-          {...explainerDialogTriggerProps}
-          onClick={() => explainerDialogState.open()}
-        >
-          <QuestionMarkCircle alt="" width="15" height="15" />
-        </button>
+        {l10n.getString(
+          props.isPremiumUser
+            ? "progress-card-heres-what-we-fixed-headline-premium"
+            : "progress-card-heres-what-we-fixed-headline-all",
+        )}
+        {props.isEligibleForPremium && (
+          <button
+            aria-label={l10n.getString("modal-open-alt")}
+            ref={explainerDialogTriggerRef}
+            {...explainerDialogTriggerProps}
+            onClick={() => explainerDialogState.open()}
+          >
+            <QuestionMarkCircle alt="" width="15" height="15" />
+          </button>
+        )}
       </div>
       <div className={styles.progressStatsWrapper}>
         {/* Manually fixed */}
@@ -94,26 +101,28 @@ export const ProgressCard = (props: Props) => {
         </div>
 
         {/* Auto-removed */}
-        <div
-          className={`${styles.progressItem} ${
-            !props.isPremiumUser && styles.greyedOut
-          }`}
-        >
-          <div className={styles.progressStat}>
-            <Image src={ExploringLaptopMinus} alt="" width="50" height="50" />
-            <span>{props.autoRemoved}</span>
+        {props.isEligibleForPremium && (
+          <div
+            className={`${styles.progressItem} ${
+              !props.isPremiumUser && styles.greyedOut
+            }`}
+          >
+            <div className={styles.progressStat}>
+              <Image src={ExploringLaptopMinus} alt="" width="50" height="50" />
+              <span>{props.autoRemoved}</span>
+            </div>
+            <p>
+              {!props.isPremiumUser && (
+                <LockIcon
+                  alt={l10n.getString("progress-card-locked-alt")}
+                  width="10"
+                  height="10"
+                />
+              )}
+              {l10n.getString("progress-card-auto-removed-headline")}
+            </p>
           </div>
-          <p>
-            {!props.isPremiumUser && (
-              <LockIcon
-                alt={l10n.getString("progress-card-locked-alt")}
-                width="10"
-                height="10"
-              />
-            )}
-            {l10n.getString("progress-card-auto-removed-headline")}
-          </p>
-        </div>
+        )}
 
         {/* In Progress */}
         {props.isPremiumUser && (
