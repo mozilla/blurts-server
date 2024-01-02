@@ -26,6 +26,10 @@ import Meta, {
 
 jest.mock("next-auth/react");
 jest.mock("../../../hooks/useTelemetry");
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(),
+  usePathname: jest.fn(),
+}));
 
 describe("When Premium is not available", () => {
   it("passes the axe accessibility test suite", async () => {
