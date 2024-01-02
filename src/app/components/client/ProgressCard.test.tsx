@@ -7,7 +7,9 @@ import { render, screen, within } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
-import Meta, { ProgressCardItem } from "./stories/ProgressCard.stories";
+import Meta, {
+  ProgressCardItemUsPremium,
+} from "./stories/ProgressCard.stories";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -15,14 +17,14 @@ jest.mock("next/navigation", () => ({
 }));
 
 it("passes the axe accessibility test suite", async () => {
-  const ComposedProgressCard = composeStory(ProgressCardItem, Meta);
+  const ComposedProgressCard = composeStory(ProgressCardItemUsPremium, Meta);
   const { container } = render(<ComposedProgressCard />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("shows and hides the explainer dialog", async () => {
   const user = userEvent.setup();
-  const ComposedProgressCard = composeStory(ProgressCardItem, Meta);
+  const ComposedProgressCard = composeStory(ProgressCardItemUsPremium, Meta);
   render(<ComposedProgressCard />);
 
   const progressCardHeader = screen.getByText("Here’s what we fixed");

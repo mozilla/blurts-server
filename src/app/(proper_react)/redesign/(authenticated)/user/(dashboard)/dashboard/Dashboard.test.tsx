@@ -1924,6 +1924,39 @@ it("shows the correct dashboard banner CTA for US user, with Premium, scan in pr
   expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
+it("does not explain what 'in progress' means for users who cannot get Plus", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  const statusHeading = screen.getByText("Status");
+  const statusExplainerDialogTrigger = getByRole(statusHeading, "button", {
+    name: "Open",
+  });
+  await user.click(statusExplainerDialogTrigger);
+  expect(
+    screen.queryByText("This is a ⁨Monitor Plus⁩ feature.", { exact: false }),
+  ).not.toBeInTheDocument();
+});
+
+it("explains what 'in progress' means for Plus users", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const statusHeading = screen.getByText("Status");
+  const statusExplainerDialogTrigger = getByRole(statusHeading, "button", {
+    name: "Open",
+  });
+  await user.click(statusExplainerDialogTrigger);
+  expect(
+    screen.getByText("This is a ⁨Monitor Plus⁩ feature.", { exact: false }),
+  ).toBeInTheDocument();
+});
+
 // Check dashboard banner content for story DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches
 it("logs a warning and error in the story for an invalid user state", () => {
   const ComposedDashboard = composeStory(

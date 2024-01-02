@@ -23,6 +23,7 @@ import { useTelemetry } from "../../hooks/useTelemetry";
 export type Props = {
   data: Array<[string, number]>;
   isEligibleForFreeScan: boolean;
+  isEligibleForPremium: boolean;
   scanInProgress: boolean;
   isShowFixed: boolean;
   summary: DashboardSummary;
@@ -92,12 +93,23 @@ export const DoughnutChart = (props: Props) => {
   const modalContent = (
     <div className={styles.modalBodyContent}>
       <p>
-        {l10n.getString("modal-active-number-of-exposures-part-one", {
-          limit: 5,
-        })}
+        {l10n.getString(
+          props.isEligibleForPremium
+            ? "modal-active-number-of-exposures-part-one-premium"
+            : "modal-active-number-of-exposures-part-one-all",
+          {
+            limit: process.env.NEXT_PUBLIC_MAX_NUM_ADDRESSES!,
+          },
+        )}
       </p>
       <p>{l10n.getString("modal-active-number-of-exposures-part-two")}</p>
-      <p>{l10n.getString("modal-active-number-of-exposures-part-three")}</p>
+      <p>
+        {l10n.getString(
+          props.isEligibleForPremium
+            ? "modal-active-number-of-exposures-part-three-premium"
+            : "modal-active-number-of-exposures-part-three-all",
+        )}
+      </p>
       <div className={styles.confirmButtonWrapper}>
         <Button
           variant="primary"

@@ -149,14 +149,14 @@ export default async function UserBreaches() {
             <figure
               className="email-stats"
               data-count={userBreachesData.emailTotalCount}
-              data-total={AppConstants.MAX_NUM_ADDRESSES}
+              data-total={AppConstants.NEXT_PUBLIC_MAX_NUM_ADDRESSES}
             >
               <Image src={ImageIconEmail} alt="" width={55} height={30} />
               <figcaption>
                 <strong>
                   {l10n.getString("emails-monitored", {
                     count: userBreachesData.emailVerifiedCount,
-                    total: AppConstants.MAX_NUM_ADDRESSES,
+                    total: AppConstants.NEXT_PUBLIC_MAX_NUM_ADDRESSES,
                   })}
                 </strong>
                 <a href="/user/settings">

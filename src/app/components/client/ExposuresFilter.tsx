@@ -48,12 +48,14 @@ type ExposuresFilterProps = {
   initialFilterValues: FilterState;
   filterValues: FilterState;
   setFilterValues: React.Dispatch<React.SetStateAction<FilterState>>;
+  isEligibleForPremium: boolean;
 };
 
 export const ExposuresFilter = ({
   initialFilterValues,
   filterValues,
   setFilterValues,
+  isEligibleForPremium,
 }: ExposuresFilterProps) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
@@ -247,17 +249,19 @@ export const ExposuresFilter = ({
           </li>
           <li className={styles.hideOnMobile}>
             {l10n.getString("dashboard-exposures-filter-exposure-type")}
-            <button
-              {...exposureTypeExplainerTriggerProps}
-              ref={exposureTypeExplainerTriggerRef}
-              aria-label={l10n.getString("modal-open-alt")}
-            >
-              <QuestionMarkCircle
-                width="15"
-                height="15"
-                alt={l10n.getString("modal-open-alt")}
-              />
-            </button>
+            {isEligibleForPremium && (
+              <button
+                {...exposureTypeExplainerTriggerProps}
+                ref={exposureTypeExplainerTriggerRef}
+                aria-label={l10n.getString("modal-open-alt")}
+              >
+                <QuestionMarkCircle
+                  width="15"
+                  height="15"
+                  alt={l10n.getString("modal-open-alt")}
+                />
+              </button>
+            )}
           </li>
           <li className={styles.hideOnMobile}>
             {l10n.getString("dashboard-exposures-filter-date-found")}
@@ -289,6 +293,7 @@ export const ExposuresFilter = ({
         <ExposuresFilterStatusExplainer
           explainerDialogProps={exposureStatusExplainerDialogTrigger}
           explainerDialogState={exposureStatusExplainerDialogState}
+          isEligibleForPremium={isEligibleForPremium}
         />
       )}
       {filterDialogState.isOpen && (

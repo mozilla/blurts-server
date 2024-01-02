@@ -12,6 +12,8 @@ import { getSubscriberBreaches } from "../../../../../../../../functions/server/
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
 import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
 import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
+import { getEnabledFeatureFlags } from "../../../../../../../../../db/tables/featureFlags";
+import { isEligibleForPremium } from "../../../../../../../../functions/server/onerep";
 
 export default async function HighRiskDataBreaches() {
   const session = await getServerSession(authOptions);
@@ -24,6 +26,9 @@ export default async function HighRiskDataBreaches() {
   const result = await getOnerepProfileId(session.user.subscriber.id);
   const profileId = result[0]["onerep_profile_id"] as number;
   const scanData = await getLatestOnerepScanResults(profileId);
+  const enabledFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
 
   return (
     <div>
@@ -37,6 +42,10 @@ export default async function HighRiskDataBreaches() {
           user: session.user,
           latestScanData: scanData,
         }}
+        isEligibleForPremium={isEligibleForPremium(
+          getCountryCode(headers()),
+          enabledFlags,
+        )}
       />
     </div>
   );
