@@ -42,7 +42,7 @@ export const View = ({
   const skipInitialStep = stepId === "enterInfo";
   const [currentStep, setCurrentStep] = useState<StepId>(stepId);
   const router = useRouter();
-  const record = useTelemetry();
+  const recordTelemetry = useTelemetry();
 
   useEffect(() => {
     let pageName = "welcome";
@@ -52,11 +52,11 @@ export const View = ({
       pageName = "scanning_for_exposures";
     }
 
-    record("page", "view", {
+    recordTelemetry("page", "view", {
       utm_campaign: skipInitialStep ? "legacy_user" : "new_user",
       utm_source: pageName,
     });
-  }, [currentStep, record, skipInitialStep]);
+  }, [currentStep, recordTelemetry, skipInitialStep]);
 
   const currentComponent =
     currentStep === "findExposures" ? (
@@ -74,7 +74,7 @@ export const View = ({
         previousRoute={previousRoute}
         skipInitialStep={skipInitialStep}
         onGoBack={() => {
-          record("button", "click", {
+          recordTelemetry("button", "click", {
             button_id: "declined_free_scan",
           });
 
@@ -89,7 +89,7 @@ export const View = ({
       <GetStarted
         dataBrokerCount={dataBrokerCount}
         onStart={() => {
-          record("ctaButton", "click", {
+          recordTelemetry("ctaButton", "click", {
             button_id: "welcome_start",
           });
           setCurrentStep("enterInfo");

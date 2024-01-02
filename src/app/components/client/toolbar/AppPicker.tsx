@@ -34,6 +34,7 @@ import FxMobileLogo from "./images/fx-mobile.png";
 import { useL10n } from "../../../hooks/l10n";
 import { BentoIcon } from "../../server/Icons";
 import { gaEvent } from "../../../functions/client/gaEvent";
+import { useTelemetry } from "../../../hooks/useTelemetry";
 import { Popover } from "../Popover";
 
 const getProducts = (referringHost: string, l10n: ReactLocalization) => ({
@@ -222,8 +223,14 @@ type AppPickerTriggerProps = {
 
 function AppPickerTrigger(props: AppPickerTriggerProps) {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const state = useMenuTriggerState({
     onOpenChange: (isOpen) => {
+      if (isOpen) {
+        recordTelemetry("ctaButton", "click", {
+          button_id: "bento_box",
+        });
+      }
       gaEvent({
         category: "bento",
         action: isOpen ? "bento-opened" : "bento-closed",
