@@ -2211,3 +2211,56 @@ it("send telemetry when non eligible users, unresolved breaches click on CTA", a
     }),
   );
 });
+
+it("send telemetry when US non-premium users, no scan, no breaches click on CTA", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  const mockedRecord = useTelemetry();
+  render(<ComposedDashboard />);
+
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+  const ctaButtons = screen.queryAllByRole("link", {
+    name: "Get first scan free",
+  });
+  await user.click(ctaButtons[0]);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: expect.stringContaining("us_non_premium_no_scan"),
+    }),
+  );
+});
+it("send telemetry when US non-premium users, no scan, unresolved breaches click on CTA", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanUnresolvedBreaches,
+    Meta,
+  );
+  const mockedRecord = useTelemetry();
+  render(<ComposedDashboard />);
+
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+  const ctaButtons = screen.queryAllByRole("link", {
+    name: "Get first scan free",
+  });
+  await user.click(ctaButtons[0]);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_non_premium_no_scan_unresolved_breaches",
+    }),
+  );
+});

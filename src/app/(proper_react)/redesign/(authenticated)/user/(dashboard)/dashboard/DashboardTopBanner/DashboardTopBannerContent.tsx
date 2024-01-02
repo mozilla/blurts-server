@@ -211,11 +211,11 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 variant="primary"
                 onPress={() => {
                   recordTelemetry("ctaButton", "click", {
-                    button_id:
-                      "us_non_premium_no_scan" +
+                    button_id: `us_non_premium_no_scan${
                       contentProps.hasUnresolvedBreaches
                         ? "_unresolved_breaches"
-                        : "",
+                        : ""
+                    }`,
                   });
                 }}
               >
