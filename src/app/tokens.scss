@@ -316,3 +316,19 @@ $width-first-column-filter-bar: 90px;
   width: 1px;
   white-space: nowrap;
 }
+
+// CSS uppercasing is not reliable for some locales, see
+// https://mozilla-l10n.github.io/documentation/localization/dev_best_practices.html#css-issues
+// However, uppercasing the source string directly isn't great for
+// accessibility, as it will cause screen readers to spell it out:
+// https://www.timdunklee.com/notes/use-css-text-transform-for-uppercase-letters-a11y/
+// Thus, we limit the uppercasing for English for now, where uppercasing
+// is reliable enough, and fallback to regular-casing for other locales:
+@mixin uppercase-only-english {
+  [lang="en"] &,
+  [lang="en-US"] &,
+  [lang="en-CA"] &,
+  [lang="en-GB"] & {
+    text-transform: uppercase;
+  }
+}

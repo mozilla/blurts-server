@@ -101,3 +101,13 @@ landing-premium-plans-cards-feature-removal-plus = <b>Automatic removal</b> of p
 landing-premium-plans-cards-feature-alerts = Get alerts when your data has been breached
 landing-premium-plans-cards-feature-guidance = <b>Guided help</b> to fix high-risk data breaches
 landing-premium-plans-cards-feature-monitoring = Continuous monitoring
+
+# Value proposition
+
+landing-premium-value-prop-fix-exposures-description = We provide steps to follow when you’ve been affected by a data breach and can even remove your data from more than 190 sites trying to sell it — and we <privacy_link>respect your privacy</privacy_link> in the process.
+landing-premium-value-prop-info-at-risk-description = Details like your <exposure_type_list>home address, family members’ names, financial info</exposure_type_list> and more can be exposed when a website is hacked — or sold on data broker sites to anyone looking for you. Knowing what info is out there is the first step in protecting yourself.
+landing-premium-value-prop-progress-card-illustration-alt = Progress card delineating exposures that are fixed, in progress or manually fixed 
+
+# Quote
+
+landing-premium-quote = There’s a $240 billion industry of <data_brokers>data brokers</data_brokers> selling your private information for profit. It’s time to take back your privacy.

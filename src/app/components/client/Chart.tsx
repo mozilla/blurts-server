@@ -18,6 +18,7 @@ import { Dialog } from "./dialog/Dialog";
 import ModalImage from "../client/assets/modal-default-img.svg";
 import { DashboardSummary } from "../../functions/server/dashboard";
 import { SubscriberWaitlistDialog } from "./SubscriberWaitlistDialog";
+import { useTelemetry } from "../../hooks/useTelemetry";
 
 export type Props = {
   data: Array<[string, number]>;
@@ -30,8 +31,15 @@ export type Props = {
 
 export const DoughnutChart = (props: Props) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
 
-  const explainerDialogState = useOverlayTriggerState({});
+  const explainerDialogState = useOverlayTriggerState({
+    onOpenChange: (isOpen) => {
+      recordTelemetry("popup", isOpen ? "view" : "exit", {
+        popup_id: `number_of_exposures_info`,
+      });
+    },
+  });
   const explainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
     explainerDialogState,
