@@ -299,13 +299,15 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 variant="primary"
                 onPress={() => {
                   recordTelemetry("ctaButton", "click", {
-                    button_id:
-                      "us_non_premium_yes_scan" +
+                    button_id: `us_non_premium_yes_scan${
                       contentProps.hasUnresolvedBreaches
                         ? "_unresolved_breaches"
-                        : "" + contentProps.hasUnresolvedBrokers
-                          ? "_unresolved_exposures"
-                          : "",
+                        : ""
+                    }${
+                      contentProps.hasUnresolvedBrokers
+                        ? "_unresolved_exposures"
+                        : ""
+                    }`,
                   });
                 }}
               >
