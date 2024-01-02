@@ -19,7 +19,6 @@ export interface Props {
   isLoading?: boolean;
   small?: boolean;
   wide?: boolean;
-  onPress?: () => void;
 }
 
 export const Button = (
