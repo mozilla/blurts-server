@@ -2292,3 +2292,30 @@ it("send telemetry when US non-premium users, yes scan, unresolved exposures cli
     }),
   );
 });
+
+it("send telemetry when US premium users, yes scan, no exposures click on CTA", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanNoBreaches,
+    Meta,
+  );
+  const mockedRecord = useTelemetry();
+  render(<ComposedDashboard />);
+
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+  const ctaButtons = screen.queryAllByRole("link", {
+    name: "Monitor more emails",
+  });
+  await user.click(ctaButtons[0]);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_premium_yes_scan_no_exposures",
+    }),
+  );
+});
