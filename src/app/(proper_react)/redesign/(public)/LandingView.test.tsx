@@ -404,7 +404,7 @@ describe("When Premium is available", () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(LandingUsScanLimit, Meta);
     render(<ComposedDashboard />);
-    const waitlistCta = screen.getByRole("button", {
+    const waitlistCta = screen.getByRole("link", {
       name: "Join waitlist",
     });
     await user.click(waitlistCta);
