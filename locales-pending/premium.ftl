@@ -1,41 +1,5 @@
 # Strings in this file are not yet final, and thus should not be localized yet.
 
--brand-fx-desktop = { -brand-firefox } for Desktop
--brand-fx-mobile = { -brand-firefox } for Mobile
-
-main-nav-button-collapse-label = Collapse menu
-main-nav-button-collapse-tooltip = Collapse menu
-main-nav-button-expand-label = Expand menu
-main-nav-button-expand-tooltip = Expand menu
-main-nav-label = Navigation
-main-nav-link-home-label = Home
-main-nav-link-dashboard-label = Dashboard
-main-nav-link-faq-label = FAQs
-main-nav-link-faq-tooltip = Frequently asked questions
-
-mobile-menu-label = Main menu
-
-toolbar-app-picker-trigger-title = { -brand-mozilla } apps and services
-toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
-toolbar-app-picker-product-relay = { -brand-relay }
-toolbar-app-picker-product-pocket = { -brand-pocket }
-toolbar-app-picker-product-fx-desktop = { -brand-fx-desktop }
-toolbar-app-picker-product-fx-mobile = { -brand-fx-mobile }
-toolbar-app-picker-by-mozilla = Made by { -brand-mozilla }
-
-user-menu-trigger-label = Open user menu
-user-menu-trigger-tooltip = Profile
-user-menu-manage-fxa-label = Manage your { -brand-mozilla-account }
-user-menu-settings-label = Settings
-user-menu-settings-tooltip = Configure { -brand-fx-monitor }
-user-menu-help-label = Help and support
-user-menu-help-tooltip = Get help using { -brand-fx-monitor }
-user-menu-signout-label = Sign out
-user-menu-signout-tooltip = Sign out of { -brand-fx-monitor }
-
-footer-external-link-faq-label = FAQs
-footer-external-link-faq-tooltip = Frequently asked questions
-
 premium-badge-label = { -brand-monitor-plus }
 premium-cta-label = Subscribe to { -brand-monitor-plus }
 
