@@ -111,3 +111,9 @@ landing-premium-value-prop-progress-card-illustration-alt = Progress card deline
 # Quote
 
 landing-premium-quote = There’s a $240 billion industry of <data_brokers>data brokers</data_brokers> selling your private information for profit. It’s time to take back your privacy.
+
+# Scan Limit
+
+landing-premium-max-scan = We’ve reached the maximum scans for the month. Enter your email to get on our waitlist. 
+landing-premium-max-scan-at-capacity = At capacity
+landing-premium-max-scan-waitlist = Join waitlist
