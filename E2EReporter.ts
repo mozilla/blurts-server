@@ -147,7 +147,7 @@ class E2EReporter implements Reporter {
     this.tempData.totalTests++;
 
     // add duration
-    this.tempData.duration = this.tempData.duration + result.duration;
+    this.tempData.duration += result.duration;
   }
 
   onEnd(result: FullResult) {
@@ -175,13 +175,13 @@ class E2EReporter implements Reporter {
     };
 
     // prepare the different json report
-    const reportJson = JSON.stringify(report, null, 2);
+    const reportJson = JSON.stringify(report);
 
     // flaky tests
-    const flakeJson = JSON.stringify(this.tempData.flakes, null, 2);
+    const flakeJson = JSON.stringify(this.tempData.flakes);
 
     // failed tests
-    const failedJson = JSON.stringify(this.tempData.failures, null, 2);
+    const failedJson = JSON.stringify(this.tempData.failures);
 
     try {
       fs.writeFileSync(
