@@ -47,10 +47,11 @@ export const View = (props: Props) => {
                 : "landing-all-hero-lead",
             )}
           </p>
-          {props.scanLimit ? (
+          {props.eligibleForPremium && props.scanLimit ? (
             <ScanLimit />
           ) : (
             <SignUpForm
+              scanLimit={props.scanLimit}
               isHero
               eligibleForPremium={props.eligibleForPremium}
               signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
@@ -122,6 +123,7 @@ export const View = (props: Props) => {
                   )}
             </p>
             <SignUpForm
+              scanLimit={props.scanLimit}
               eligibleForPremium={props.eligibleForPremium}
               signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
               eventId={{
@@ -167,6 +169,7 @@ export const View = (props: Props) => {
                   )}
             </p>
             <SignUpForm
+              scanLimit={props.scanLimit}
               eligibleForPremium={props.eligibleForPremium}
               signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
               eventId={{

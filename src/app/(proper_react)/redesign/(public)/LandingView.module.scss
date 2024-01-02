@@ -361,12 +361,12 @@
       }
     }
   }
+}
 
-  .waitlistCta {
-    align-self: flex-start;
+.waitlistCta {
+  align-self: flex-start;
 
-    @media screen and (min-width: $screen-md) {
-      min-width: 200px; // width of waitlist button
-    }
+  @media screen and (min-width: $screen-md) {
+    min-width: 200px; // width of waitlist button
   }
 }

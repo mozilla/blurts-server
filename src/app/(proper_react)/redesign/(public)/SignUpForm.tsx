@@ -11,6 +11,7 @@ import { Button } from "../../../components/client/Button";
 import styles from "./SignUpForm.module.scss";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
+import { WaitlistCta } from "./ScanLimit";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -20,6 +21,7 @@ export type Props = {
     cta: string;
     field: string;
   };
+  scanLimit: boolean;
 };
 
 export const SignUpForm = (props: Props) => {
@@ -53,7 +55,9 @@ export const SignUpForm = (props: Props) => {
     </label>
   );
 
-  return (
+  return props.scanLimit ? (
+    <WaitlistCta />
+  ) : (
     <form className={styles.form} onSubmit={onSubmit}>
       <input
         className={props.isHero ? styles.isHero : ""}
