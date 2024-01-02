@@ -184,6 +184,22 @@ export const View = (props: Props) => {
         </div>
       </div>
 
+      <div className={styles.signUpEncouragementWrapper}>
+        <p className={styles.title}>
+          {props.l10n.getString("landing-all-get-started")}
+        </p>
+        <SignUpForm
+          scanLimit={props.scanLimit}
+          isHero
+          eligibleForPremium={props.eligibleForPremium}
+          signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
+          eventId={{
+            cta: "clicked_get_scan_header",
+            field: "entered_email_address_header",
+          }}
+        />
+      </div>
+
       <div className={styles.socialProofWrapper}>
         <h2>
           {props.l10n.getString("landing-all-social-proof-title", {

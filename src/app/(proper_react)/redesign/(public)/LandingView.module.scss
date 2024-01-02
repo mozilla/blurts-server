@@ -353,3 +353,16 @@
     min-width: 200px; // width of waitlist button
   }
 }
+
+.signUpEncouragementWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $layout-sm;
+  background-color: $color-purple-10;
+
+  .title {
+    font: $text-title-3xs;
+  }
+}
