@@ -23,7 +23,7 @@ export const ScanLimit = () => {
         className={styles.waitlistCta}
         variant="primary"
         href={process.env.NEXT_PUBLIC_WAITLIST_URL}
-        onClick={() => {
+        onPress={() => {
           record("ctaButton", "click", {
             button_id: "intent_to_join_waitlist_header",
           });
