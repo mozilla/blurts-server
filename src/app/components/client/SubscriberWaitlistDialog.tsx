@@ -86,7 +86,7 @@ const WaitlistDialogWithTrigger = (props: DialogProps) => {
   const dialogTriggerState = props.dialogTriggerState ?? triggerState;
   const overlayTrigger = props.overlayTrigger ?? overlay;
 
-  const child = Children.only(props.children);
+  const child = props.children && Children.only(props.children);
   return (
     <>
       {child &&
