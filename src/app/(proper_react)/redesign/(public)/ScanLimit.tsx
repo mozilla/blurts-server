@@ -7,9 +7,11 @@
 import styles from "./LandingView.module.scss";
 import { useL10n } from "../../../hooks/l10n";
 import { Button } from "../../../components/client/Button";
+import { useTelemetry } from "../../../hooks/useTelemetry";
 
 export const ScanLimit = () => {
   const l10n = useL10n();
+  const record = useTelemetry();
 
   return (
     <div className={styles.scanLimitWrapper}>
@@ -17,7 +19,16 @@ export const ScanLimit = () => {
         <b>{l10n.getString("landing-premium-max-scan-at-capacity")}</b>
         <p>{l10n.getString("landing-premium-max-scan")}</p>
       </div>
-      <Button className={styles.waitlistCta} variant="primary">
+      <Button
+        className={styles.waitlistCta}
+        variant="primary"
+        href={process.env.NEXT_PUBLIC_WAITLIST_URL}
+        onClick={() => {
+          record("ctaButton", "click", {
+            button_id: "intent_to_join_waitlist_header",
+          });
+        }}
+      >
         {l10n.getString("landing-premium-max-scan-waitlist")}
       </Button>
     </div>
