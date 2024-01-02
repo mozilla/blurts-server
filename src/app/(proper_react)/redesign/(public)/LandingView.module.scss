@@ -313,3 +313,43 @@
     margin-top: $layout-sm;
   }
 }
+
+.scanLimitWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $layout-xs;
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+
+    @media screen and (min-width: $screen-md) {
+      flex-direction: row;
+    }
+
+    b {
+      @include uppercase-only-english;
+      white-space: nowrap;
+      align-self: flex-start;
+      border-radius: $border-radius-sm;
+      font: $text-body-sm;
+      font-weight: 600;
+      background: $color-purple-70;
+      color: $color-white;
+      padding: $spacing-sm $spacing-md;
+
+      @media screen and (min-width: $screen-md) {
+        align-self: center;
+      }
+    }
+  }
+
+  .waitlistCta {
+    align-self: flex-start;
+
+    @media screen and (min-width: $screen-md) {
+      min-width: 200px; // width of waitlist button
+    }
+  }
+}

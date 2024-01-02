@@ -22,11 +22,13 @@ import PCMagLogo from "./social-proof-images/pcmag.svg";
 import TechCruchLogo from "./social-proof-images/techcrunch.svg";
 import { TelemetryLink } from "./TelemetryLink";
 import { HeresHowWeHelp } from "./HeresHowWeHelp";
+import { ScanLimit } from "./ScanLimit";
 
 export type Props = {
   eligibleForPremium: boolean;
   l10n: ExtendedReactLocalization;
   countryCode: string;
+  scanLimit: boolean;
 };
 
 export const View = (props: Props) => {
@@ -45,22 +47,26 @@ export const View = (props: Props) => {
                 : "landing-all-hero-lead",
             )}
           </p>
-          <SignUpForm
-            isHero
-            eligibleForPremium={props.eligibleForPremium}
-            signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
-            eventId={{
-              cta: "clicked_get_scan_header",
-              field: "entered_email_address_header",
-            }}
-          />
+          {props.scanLimit ? (
+            <ScanLimit />
+          ) : (
+            <SignUpForm
+              isHero
+              eligibleForPremium={props.eligibleForPremium}
+              signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
+              eventId={{
+                cta: "clicked_get_scan_header",
+                field: "entered_email_address_header",
+              }}
+            />
+          )}
         </div>
         <div className={styles.heroImage}>
           <HeroImage {...props} />
         </div>
       </header>
 
-      <section className={styles.quoteWrapper}>
+      <div className={styles.quoteWrapper}>
         <div className={styles.quote}>
           <h2>
             {props.eligibleForPremium
@@ -76,9 +82,9 @@ export const View = (props: Props) => {
                 })}
           </h2>
         </div>
-      </section>
+      </div>
 
-      <section className={styles.valuePropositionWrapper}>
+      <div className={styles.valuePropositionWrapper}>
         <div className={`${styles.item} ${styles.grayBg}`}>
           <span>
             <h2>
@@ -173,9 +179,9 @@ export const View = (props: Props) => {
             <LeakedPasswordExampleIllustration {...props} />
           </div>
         </div>
-      </section>
+      </div>
 
-      <section className={styles.socialProofWrapper}>
+      <div className={styles.socialProofWrapper}>
         <h2>
           {props.l10n.getString("landing-all-social-proof-title", {
             num_users: 10,
@@ -196,7 +202,7 @@ export const View = (props: Props) => {
           <Image src={CNETLogo} alt="" />
           <Image src={GoogleLogo} alt="" />
         </div>
-      </section>
+      </div>
 
       {!props.eligibleForPremium && <HeresHowWeHelp />}
 
@@ -243,7 +249,7 @@ const Plans = (props: Props) => {
   }
 
   return (
-    <section className={styles.plans}>
+    <div className={styles.plans}>
       <h2 id={headingId} className={styles.planName}>
         {props.l10n.getString("landing-premium-plans-heading")}
       </h2>
@@ -257,6 +263,6 @@ const Plans = (props: Props) => {
           yearly: getPremiumSubscriptionUrl({ type: "yearly" }),
         }}
       />
-    </section>
+    </div>
   );
 };
