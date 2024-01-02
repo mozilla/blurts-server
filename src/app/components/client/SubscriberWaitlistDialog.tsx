@@ -5,6 +5,7 @@
 "use client";
 
 import {
+  Children,
   ReactElement,
   RefObject,
   cloneElement,
@@ -85,10 +86,11 @@ const WaitlistDialogWithTrigger = (props: DialogProps) => {
   const dialogTriggerState = props.dialogTriggerState ?? triggerState;
   const overlayTrigger = props.overlayTrigger ?? overlay;
 
+  const child = Children.only(props.children);
   return (
     <>
-      {props.children &&
-        cloneElement(props.children, {
+      {child &&
+        cloneElement(child, {
           ...overlayTrigger.triggerProps,
           ref: triggerRef,
         })}
