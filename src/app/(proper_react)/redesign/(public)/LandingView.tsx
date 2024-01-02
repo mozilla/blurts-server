@@ -183,8 +183,8 @@ export const View = (props: Props) => {
           eligibleForPremium={props.eligibleForPremium}
           signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
           eventId={{
-            cta: "clicked_get_scan_header",
-            field: "entered_email_address_header",
+            cta: "clicked_get_scan_fourth",
+            field: "entered_email_address_fourth",
           }}
         />
       </div>
@@ -224,8 +224,8 @@ export const View = (props: Props) => {
           eligibleForPremium={props.eligibleForPremium}
           signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
           eventId={{
-            cta: "clicked_get_scan_header",
-            field: "entered_email_address_header",
+            cta: "clicked_get_scan_last",
+            field: "entered_email_address_last",
           }}
         />
       </div>
