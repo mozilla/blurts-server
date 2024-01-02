@@ -80,6 +80,7 @@ living-costs = Yaşam maliyetleri
 # This string refers to financial loans.
 loan-information = Kredi bilgileri
 login-histories = Giriş geçmişleri
+loyalty-program-details = Sadakat programı ayrıntıları
 mac-addresses = MAC adresleri
 marital-statuses = Medeni durumları
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -140,6 +141,7 @@ spouses-names = Eşlerin adları
 support-tickets = Destek talepleri
 survey-results = Anket sonuçları
 taxation-records = Vergi kayıtları
+telecommunications-carrier = Telekomünikasyon operatörleri
 time-zones = Saat dilimleri
 travel-habits = Seyahat alışkanlıkları
 user-statuses = Kullanıcı durumları

@@ -1,0 +1,29 @@
+@import "../../../../../../../tokens";
+
+.container {
+  background-color: $color-white;
+  background-image: url("../images/dashboard-top-banner-wave.svg");
+  background-position: center;
+  background-size: cover;
+  border-radius: $border-radius-md;
+  border: 1px solid rgba($color-purple-50, 0.2);
+  display: flex;
+  flex-direction: column-reverse;
+  gap: $layout-sm;
+  padding: $layout-xs;
+
+  @media screen and (min-width: $screen-lg) {
+    padding: $layout-md;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .chart {
+    display: flex;
+    justify-content: center;
+
+    @media screen and (min-width: $screen-md) {
+      flex: 1 1 0%;
+    }
+  }
+}

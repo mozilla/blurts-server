@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -19,6 +19,7 @@ import { FindExposures } from "./FindExposures";
 import { EnterInfo } from "./EnterInfo";
 import { useL10n } from "../../../../../hooks/l10n";
 import monitorLogo from "../../../../images/monitor-logo.webp";
+import { useTelemetry } from "../../../../../hooks/useTelemetry";
 
 type StepId = "getStarted" | "enterInfo" | "findExposures";
 
@@ -41,6 +42,21 @@ export const View = ({
   const skipInitialStep = stepId === "enterInfo";
   const [currentStep, setCurrentStep] = useState<StepId>(stepId);
   const router = useRouter();
+  const recordTelemetry = useTelemetry();
+
+  useEffect(() => {
+    let pageName = "welcome";
+    if (currentStep === "enterInfo") {
+      pageName = "enter_scan_info";
+    } else if (currentStep === "findExposures") {
+      pageName = "scanning_for_exposures";
+    }
+
+    recordTelemetry("page", "view", {
+      utm_campaign: skipInitialStep ? "legacy_user" : "new_user",
+      utm_source: pageName,
+    });
+  }, [currentStep, recordTelemetry, skipInitialStep]);
 
   const currentComponent =
     currentStep === "findExposures" ? (
@@ -58,6 +74,10 @@ export const View = ({
         previousRoute={previousRoute}
         skipInitialStep={skipInitialStep}
         onGoBack={() => {
+          recordTelemetry("button", "click", {
+            button_id: "declined_free_scan",
+          });
+
           if (skipInitialStep && previousRoute) {
             router.push(previousRoute);
           } else {
@@ -68,7 +88,12 @@ export const View = ({
     ) : (
       <GetStarted
         dataBrokerCount={dataBrokerCount}
-        onStart={() => setCurrentStep("enterInfo")}
+        onStart={() => {
+          recordTelemetry("ctaButton", "click", {
+            button_id: "welcome_start",
+          });
+          setCurrentStep("enterInfo");
+        }}
       />
     );
 

@@ -19,6 +19,7 @@ export default async function FeatureFlagPage() {
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
+  const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
 
   if (!session?.user?.email) {
     return redirect("/");
@@ -31,7 +32,7 @@ export default async function FeatureFlagPage() {
   const AllFlagsTable = (featureFlags: { data: Array<FeatureFlagRow> }) => {
     const { data } = featureFlags;
 
-    if (!data || data.length == 0) {
+    if (!data || data.length === 0) {
       return <p>No data</p>;
     }
 
@@ -104,6 +105,7 @@ export default async function FeatureFlagPage() {
             user={session.user}
             monthlySubscriptionUrl={monthlySubscriptionUrl}
             yearlySubscriptionUrl={yearlySubscriptionUrl}
+            fxaSettingsUrl={fxaSettingsUrl}
           />
         </div>
       </nav>

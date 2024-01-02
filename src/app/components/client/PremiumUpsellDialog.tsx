@@ -10,7 +10,7 @@ import type { OverlayTriggerProps, OverlayTriggerState } from "react-stately";
 import { Dialog } from "./dialog/Dialog";
 import { ModalOverlay } from "./dialog/ModalOverlay";
 import { TabList } from "./TabList";
-import { Button } from "../server/Button";
+import { Button } from "../client/Button";
 import { useL10n } from "../../hooks/l10n";
 import ModalImage from "../client/assets/premium-upsell-dialog-icon.svg";
 import styles from "./PremiumUpsellDialog.module.scss";
@@ -73,7 +73,7 @@ function PremiumUpsellDialogContent({
   const l10n = useL10n();
   const defaultSelectedKey = "yearly";
   const [selectedTab, setSelectedTab] = useState<Key>(defaultSelectedKey);
-  const record = useTelemetry();
+  const recordTelemetry = useTelemetry();
 
   const isMonthly = selectedTab === "monthly";
   const tabsData = [
@@ -100,7 +100,7 @@ function PremiumUpsellDialogContent({
           tabs={tabsData}
           defaultSelectedKey={defaultSelectedKey}
           onSelectionChange={(selectedKey) => {
-            record("button", "click", {
+            recordTelemetry("button", "click", {
               button_id:
                 selectedKey === "monthly"
                   ? "selected_monthly_plan"
@@ -156,7 +156,7 @@ function PremiumUpsellDialogContent({
           //       the back-end because the page unloads before we can do so.
           //       This will be dealt with in upstream Glean:
           //       https://matrix.to/#/!SCdsJdSTaQHjzEVrAE:mozilla.org/$muLULIgsOMaLwe3HR6HI_oJbMkyD5gZBoRN3GmDL8Ko
-          record("ctaButton", "click", {
+          recordTelemetry("upgradeIntent", "click", {
             button_id: isMonthly
               ? "intent_to_purchase_monthly_plan_nav_modal"
               : "intent_to_purchase_yearly_plan_nav_modal",
@@ -183,7 +183,7 @@ function PremiumUpsellDialog({
   ...otherProps
 }: PremiumUpsellDialogProps & OverlayTriggerProps) {
   const l10n = useL10n();
-  const record = useTelemetry();
+  const recordTelemetry = useTelemetry();
 
   return (
     <div className={styles.modal}>
@@ -193,7 +193,7 @@ function PremiumUpsellDialog({
             title={l10n.getString("premium-upsell-dialog-title")}
             illustration={<Image src={ModalImage} alt="" />}
             onDismiss={() => {
-              record("button", "click", {
+              recordTelemetry("button", "click", {
                 button_id: "close_upsell_modal",
               });
               return void state.close();

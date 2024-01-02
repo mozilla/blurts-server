@@ -28,6 +28,7 @@ import {
 import { FallbackLogo } from "../server/BreachLogo";
 import { ExposureCardDataClassLayout } from "./ExposureCardDataClass";
 import { DataBrokerImage } from "./DataBrokerImage";
+import { useTelemetry } from "../../hooks/useTelemetry";
 
 export type Exposure = OnerepScanResultRow | SubscriberBreach;
 
@@ -67,6 +68,7 @@ export type ScanResultCardProps = {
 const ScanResultCard = (props: ScanResultCardProps) => {
   const { scanResult, locale, isPremiumBrokerRemovalEnabled } = props;
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
@@ -207,7 +209,15 @@ const ScanResultCard = (props: ScanResultCardProps) => {
                 {
                   elems: {
                     data_broker_link: (
-                      <a href={scanResult.link} target="_blank" />
+                      <a
+                        href={scanResult.link}
+                        target="_blank"
+                        onClick={() =>
+                          recordTelemetry("link", "click", {
+                            link_id: `data_broker_${scanResult.id}`,
+                          })
+                        }
+                      />
                     ),
                   },
                 },
@@ -264,6 +274,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
   const { exposureImg, subscriberBreach, locale } = props;
 
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
@@ -431,7 +442,14 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
                   },
                   elems: {
                     data_breach_link: (
-                      <Link href={`/breach-details/${subscriberBreach.name}`} />
+                      <Link
+                        href={`/breach-details/${subscriberBreach.name}`}
+                        onClick={() => {
+                          recordTelemetry("link", "click", {
+                            link_id: `data_breach_${subscriberBreach.id}`,
+                          });
+                        }}
+                      />
                     ),
                   },
                 },

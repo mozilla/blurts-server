@@ -1,0 +1,115 @@
+@import "../../../../../../../../../tokens";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-lg;
+}
+
+.buttonsWrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: $spacing-md;
+
+  a {
+    display: block;
+  }
+
+  @media screen and (min-width: $screen-sm) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.removalStepsList {
+  font: $text-body-md;
+  text-align: left;
+
+  li {
+    margin-bottom: $spacing-md;
+
+    > strong {
+      display: block;
+      margin-bottom: $spacing-xs;
+      font-weight: 700;
+    }
+
+    // The subhead/bullet content is wrapped in a span to style to OL marker (1.)
+    > span {
+      font: $text-body-sm;
+      font-weight: normal;
+    }
+  }
+}
+
+.content {
+  max-width: $content-md;
+
+  h3 {
+    font: $text-title-2xs;
+    text-align: center;
+  }
+
+  h4 {
+    font: $text-title-3xs;
+  }
+
+  p,
+  h3 {
+    margin-block-end: $spacing-md;
+  }
+
+  > a {
+    color: $color-blue-60;
+    display: inline-block;
+    margin-inline-start: $spacing-sm;
+  }
+}
+
+.exposureListing {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+
+  h3 {
+    font: $text-title-2xs;
+  }
+
+  .exposureList {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+
+    @media screen and (min-width: $screen-md) {
+      padding-inline: $spacing-lg;
+    }
+  }
+}
+
+.questionTooltipWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  font: $text-title-3xs;
+}
+
+.dataBrokerResolutionStats {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  justify-content: center;
+  padding-top: $layout-sm;
+
+  @media screen and (min-width: $screen-md) {
+    flex-direction: row;
+  }
+  div {
+    @include estimated-time;
+    justify-content: center;
+  }
+}

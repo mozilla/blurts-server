@@ -12,11 +12,12 @@ import styles from "./Chart.module.scss";
 import { QuestionMarkCircle } from "../server/Icons";
 import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "react-stately";
-import { Button } from "../server/Button";
+import { Button } from "../client/Button";
 import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import ModalImage from "../client/assets/modal-default-img.svg";
 import { DashboardSummary } from "../../functions/server/dashboard";
+import { useTelemetry } from "../../hooks/useTelemetry";
 
 export type Props = {
   data: Array<[string, number]>;
@@ -28,8 +29,15 @@ export type Props = {
 
 export const DoughnutChart = (props: Props) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
 
-  const explainerDialogState = useOverlayTriggerState({});
+  const explainerDialogState = useOverlayTriggerState({
+    onOpenChange: (isOpen) => {
+      recordTelemetry("popup", isOpen ? "view" : "exit", {
+        popup_id: `number_of_exposures_info`,
+      });
+    },
+  });
   const explainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
     explainerDialogState,
