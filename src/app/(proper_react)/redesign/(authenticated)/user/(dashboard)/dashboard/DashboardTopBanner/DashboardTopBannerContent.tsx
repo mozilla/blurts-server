@@ -298,16 +298,13 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 small
                 variant="primary"
                 onPress={() => {
+                  let buttonId = "us_non_premium_yes_scan";
+                  if (contentProps.hasUnresolvedBreaches)
+                    buttonId = buttonId.concat("_unresolved_breaches");
+                  if (contentProps.hasUnresolvedBrokers)
+                    buttonId = buttonId.concat("_unresolved_brokers");
                   recordTelemetry("ctaButton", "click", {
-                    button_id: `us_non_premium_yes_scan${
-                      contentProps.hasUnresolvedBreaches
-                        ? "_unresolved_breaches"
-                        : ""
-                    }${
-                      contentProps.hasUnresolvedBrokers
-                        ? "_unresolved_brokers"
-                        : ""
-                    }`,
+                    button_id: buttonId,
                   });
                 }}
               >
@@ -343,16 +340,11 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 small
                 variant="primary"
                 onPress={() => {
+                  let buttonId = "us_non_premium_yes_scan";
+                  if (contentProps.hasUnresolvedBreaches)
+                    buttonId = buttonId.concat("_unresolved_breaches");
                   recordTelemetry("ctaButton", "click", {
-                    button_id: `us_non_premium_empty_scan${
-                      contentProps.hasUnresolvedBreaches
-                        ? "_unresolved_breaches"
-                        : ""
-                    }${
-                      contentProps.hasUnresolvedBrokers
-                        ? "_unresolved_brokers"
-                        : ""
-                    }`,
+                    button_id: buttonId,
                   });
                 }}
               >
