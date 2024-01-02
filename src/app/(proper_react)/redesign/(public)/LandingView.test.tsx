@@ -408,12 +408,17 @@ describe("When Premium is available", () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(LandingUsScanLimit, Meta);
     render(<ComposedDashboard />);
-    const waitlistCta = screen.getByRole("link", {
+    const waitlistCta = screen.getAllByRole("link", {
       name: "Join waitlist",
     });
-    await user.click(waitlistCta);
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
-    expect(waitlistCta).toHaveAttribute(
+    await user.click(waitlistCta[0]);
+
+    expect(waitlistCta[0]).toHaveAttribute(
       "href",
       "https://www.mozilla.org/products/monitor/waitlist-scan/",
     );
