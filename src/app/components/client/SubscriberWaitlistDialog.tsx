@@ -44,11 +44,10 @@ function WaitlistDialog({
           onDismiss={() => dialogTriggerState.close()}
         >
           <div className={styles.dialogContent}>
-            {l10n.getString("subscriber-waitlist-dialog-info-text")}
-            <br />
-            <br />
-            {l10n.getString("subscriber-waitlist-dialog-instruction-text")}
-
+            <p>{l10n.getString("subscriber-waitlist-dialog-info-text")}</p>
+            <p>
+              {l10n.getString("subscriber-waitlist-dialog-instruction-text")}
+            </p>
             <div className={styles.buttonWrapper}>
               <Button
                 variant="primary"
