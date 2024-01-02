@@ -10,7 +10,7 @@ import styles from "./Button.module.scss";
 import { useButton } from "react-aria";
 
 export interface Props {
-  variant: "primary" | "secondary" | "ternary";
+  variant: "primary" | "secondary" | "tertiary";
   children?: ReactNode;
   className?: string;
   destructive?: boolean;

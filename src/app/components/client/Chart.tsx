@@ -132,7 +132,7 @@ export const DoughnutChart = (props: Props) => {
             </Link>
           ) : (
             <SubscriberWaitlistDialog>
-              <Button variant="ternary">
+              <Button variant="tertiary">
                 {l10n.getString(
                   "exposure-chart-returning-user-upgrade-prompt-cta",
                 )}

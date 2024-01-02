@@ -309,7 +309,7 @@ export const View = (props: Props) => {
                 />
               ) : (
                 <Button
-                  variant="ternary"
+                  variant="tertiary"
                   buttonRef={waitlistTriggerRef}
                   {...overlayTrigger.triggerProps}
                   onPress={() => {
