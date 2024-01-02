@@ -2160,3 +2160,27 @@ it("send telemetry when users click on learn more link", async () => {
     }),
   );
 });
+
+it("send telemetry when non eligible users, no breaches click on CTA", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+  const mockedRecord = useTelemetry();
+  render(<ComposedDashboard />);
+
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+  const ctaButtons = screen.queryAllByRole("link", {
+    name: "Monitor more emails",
+  });
+  await user.click(ctaButtons[0]);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "non_eligible_premium_no_breaches",
+    }),
+  );
+});
