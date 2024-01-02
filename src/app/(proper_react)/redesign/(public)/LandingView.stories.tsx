@@ -22,6 +22,16 @@ export const LandingUs: Story = {
   args: {
     eligibleForPremium: true,
     countryCode: "us",
+    scanLimit: false,
+  },
+};
+
+export const LandingUsScanLimit: Story = {
+  name: "US visitors",
+  args: {
+    eligibleForPremium: true,
+    countryCode: "us",
+    scanLimit: true,
   },
 };
 
