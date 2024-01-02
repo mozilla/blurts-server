@@ -13,9 +13,5 @@
     gap: $spacing-sm;
     min-width: $content-xs;
     padding-block-start: $spacing-md;
-
-    @media screen and (min-width: $screen-md) {
-      flex-direction: row;
-    }
   }
 }

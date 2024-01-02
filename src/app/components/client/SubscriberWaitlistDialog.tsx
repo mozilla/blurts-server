@@ -4,14 +4,7 @@
 
 "use client";
 
-import {
-  Children,
-  ReactElement,
-  RefObject,
-  cloneElement,
-  forwardRef,
-  useRef,
-} from "react";
+import { Children, ReactElement, RefObject, cloneElement, useRef } from "react";
 import Image from "next/image";
 import { OverlayTriggerAria, useOverlayTrigger } from "react-aria";
 import { OverlayTriggerState, useOverlayTriggerState } from "react-stately";
@@ -76,7 +69,7 @@ type DialogProps = {
   overlayTrigger?: OverlayTriggerAria;
 };
 
-const WaitlistDialogWithTrigger = (props: DialogProps) => {
+export const SubscriberWaitlistDialog = (props: DialogProps) => {
   const ref = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
   const triggerState = useOverlayTriggerState({});
   const overlay = useOverlayTrigger({ type: "dialog" }, triggerState, ref);
@@ -100,5 +93,3 @@ const WaitlistDialogWithTrigger = (props: DialogProps) => {
     </>
   );
 };
-
-export const SubscriberWaitlistDialog = forwardRef(WaitlistDialogWithTrigger);
