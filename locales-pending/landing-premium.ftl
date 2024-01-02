@@ -119,4 +119,6 @@ landing-premium-what-websites-sell-info-ans = Certain websites are in the busine
 landing-premium-continuous-data-removal-qn = What kinds of websites sell my personal information?
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be plural.
-landing-premium-continuous-data-removal-ans = Every month, we use the information you provided about yourself (name, location and birthdate) to search across { $data_broker_sites_total_num } data broker sites that sell people’s private information. If we find your data on any of these sites, we initiate the request for removal. Data removal can take anywhere from a day to a month. This feature is available for { -brand-monitor-plus } users only. <learn_more_link>Learn more here.</learn_more_link>
+landing-premium-continuous-data-removal-ans = { $data_broker_sites_total_num ->
+   *[other] Every month, we use the information you provided about yourself (name, location and birthdate) to search across { $data_broker_sites_total_num } data broker sites that sell people’s private information. If we find your data on any of these sites, we initiate the request for removal. Data removal can take anywhere from a day to a month. This feature is available for { -brand-monitor-plus } users only. <learn_more_link>Learn more here.</learn_more_link>
+}

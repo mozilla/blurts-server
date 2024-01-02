@@ -31,4 +31,5 @@ landing-all-data-breach-definition-qn = A data breach happens when personal or p
 landing-all-data-breach-next-steps-qn = I just found out I’m in a data breach. What do I do next?
 landing-all-data-breach-next-steps-ans = Visit { -brand-mozilla-monitor } to learn what to do after a data breach and get guided steps to resolve exposures of your personal info. Hackers rely on people reusing passwords, so it’s important to create strong, unique passwords for all your accounts. Keep your passwords in a safe place that only you have access to; this could be the same place where you store important documents or a password manager.
 landing-all-data-breach-info-qn = What information gets exposed in data breaches?
-landing-all-data-breach-info-ans = Not all breaches expose all the same info. It just depends on what hackers can access. Many data breaches expose email addresses and passwords. Others expose more sensitive information such as credit card numbers, pin numbers, and social security numbers.
+landing-all-data-breach-info-ans = Not all breaches expose all the same info. It just depends on what hackers can access. Many data breaches expose email addresses and passwords. Others expose more sensitive information such as credit card numbers, PIN numbers, and social security numbers.
+
