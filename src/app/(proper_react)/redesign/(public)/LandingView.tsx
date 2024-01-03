@@ -15,7 +15,13 @@ import {
   LeakedPasswordExampleIllustration,
   ScanningForExposuresIllustration,
 } from "./WalkthroughImages";
+import CNETLogo from "./social-proof-images/cnet.svg";
+import ForbesLogo from "./social-proof-images/forbes.svg";
+import GoogleLogo from "./social-proof-images/google.svg";
+import PCMagLogo from "./social-proof-images/pcmag.svg";
+import TechCruchLogo from "./social-proof-images/techcrunch.svg";
 import { TelemetryLink } from "./TelemetryLink";
+import { HeresHowWeHelp } from "./HeresHowWeHelp";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -54,25 +60,25 @@ export const View = (props: Props) => {
         </div>
       </header>
 
-      <div className={styles.quoteWrapper}>
+      <section className={styles.quoteWrapper}>
         <div className={styles.quote}>
-          <b>
+          <h2>
             {props.eligibleForPremium
               ? props.l10n.getFragment("landing-premium-quote", {
                   elems: {
-                    data_brokers: <em />,
+                    data_brokers: <span className={styles.emphasis} />,
                   },
                 })
               : props.l10n.getFragment("landing-all-quote", {
                   elems: {
-                    data_breaches: <em />,
+                    data_breaches: <span className={styles.emphasis} />,
                   },
                 })}
-          </b>
+          </h2>
         </div>
-      </div>
+      </section>
 
-      <div className={styles.valuePropositionWrapper}>
+      <section className={styles.valuePropositionWrapper}>
         <div className={`${styles.item} ${styles.grayBg}`}>
           <span>
             <h2>
@@ -167,7 +173,32 @@ export const View = (props: Props) => {
             <LeakedPasswordExampleIllustration {...props} />
           </div>
         </div>
-      </div>
+      </section>
+
+      <section className={styles.socialProofWrapper}>
+        <h2>
+          {props.l10n.getString("landing-all-social-proof-title", {
+            num_users: 10,
+          })}
+        </h2>
+        <p className={styles.socialProofDescription}>
+          {props.l10n.getString("landing-all-social-proof-description", {
+            num_countries: 237,
+          })}
+        </p>
+        <div className={styles.pressLogos}>
+          <p className={styles.label}>
+            {props.l10n.getString("landing-all-social-proof-press")}
+          </p>
+          <Image src={ForbesLogo} alt="" />
+          <Image src={TechCruchLogo} alt="" />
+          <Image src={PCMagLogo} alt="" />
+          <Image src={CNETLogo} alt="" />
+          <Image src={GoogleLogo} alt="" />
+        </div>
+      </section>
+
+      {!props.eligibleForPremium && <HeresHowWeHelp />}
 
       <Plans {...props} />
     </main>
@@ -212,7 +243,7 @@ const Plans = (props: Props) => {
   }
 
   return (
-    <div className={styles.plans}>
+    <section className={styles.plans}>
       <h2 id={headingId} className={styles.planName}>
         {props.l10n.getString("landing-premium-plans-heading")}
       </h2>
@@ -226,6 +257,6 @@ const Plans = (props: Props) => {
           yearly: getPremiumSubscriptionUrl({ type: "yearly" }),
         }}
       />
-    </div>
+    </section>
   );
 };

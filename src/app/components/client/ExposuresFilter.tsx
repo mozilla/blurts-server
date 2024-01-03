@@ -29,6 +29,7 @@ import {
   useRadioGroupState,
 } from "react-stately";
 import { useL10n } from "../../hooks/l10n";
+import { useTelemetry } from "../../hooks/useTelemetry";
 import { Button } from "../client/Button";
 import NoteIcon from "./assets/note.svg";
 import CalendarIcon from "./assets/calendar.svg";
@@ -55,9 +56,16 @@ export const ExposuresFilter = ({
   setFilterValues,
 }: ExposuresFilterProps) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
 
   // Type filter explainer dialog
-  const exposureTypeExplainerDialogState = useOverlayTriggerState({});
+  const exposureTypeExplainerDialogState = useOverlayTriggerState({
+    onOpenChange: (isOpen) => {
+      recordTelemetry("popup", isOpen ? "view" : "exit", {
+        popup_id: "exposure_type_info",
+      });
+    },
+  });
   const exposureTypeExplainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
     exposureTypeExplainerDialogState,
@@ -69,7 +77,13 @@ export const ExposuresFilter = ({
   ).buttonProps;
 
   // Status filter explainer dialog
-  const exposureStatusExplainerDialogState = useOverlayTriggerState({});
+  const exposureStatusExplainerDialogState = useOverlayTriggerState({
+    onOpenChange: (isOpen) => {
+      recordTelemetry("popup", isOpen ? "view" : "exit", {
+        popup_id: "exposure_status_info",
+      });
+    },
+  });
   const exposureStatusExplainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
     exposureStatusExplainerDialogState,

@@ -40,6 +40,7 @@ import ScanProgressIllustration from "./images/scan-illustration.svg";
 import { CountryCodeContext } from "../../../../../../../contextProviders/country-code";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { getNextGuidedStep } from "../../../../../../functions/server/getRelevantGuidedSteps";
+import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
@@ -63,6 +64,7 @@ export type TabData = {
 
 export const View = (props: Props) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const countryCode = useContext(CountryCodeContext);
 
   const initialFilterState: FilterState = {
@@ -130,8 +132,18 @@ export const View = (props: Props) => {
           onToggleExpanded={() => {
             if (exposureCardKey === activeExposureCardKey) {
               setActiveExposureCardKey(null);
+              recordTelemetry("collapse", "click", {
+                button_id: isScanResult(exposure)
+                  ? `data_broker_card_${exposure.onerep_scan_result_id}`
+                  : `data_breach_card_${exposure.id}`,
+              });
             } else {
               setActiveExposureCardKey(exposureCardKey);
+              recordTelemetry("expand", "click", {
+                button_id: isScanResult(exposure)
+                  ? `data_broker_card_${exposure.onerep_scan_result_id}`
+                  : `data_breach_card_${exposure.id}`,
+              });
             }
           }}
           locale={getLocale(l10n)}
@@ -262,7 +274,16 @@ export const View = (props: Props) => {
           ),
         },
         elems: {
-          a: <a href="/redesign/user/welcome/free-scan?referrer=dashboard" />,
+          a: (
+            <a
+              href="/redesign/user/welcome/free-scan?referrer=dashboard"
+              onClick={() =>
+                recordTelemetry("link", "click", {
+                  link_id: "exposures_all_fixed_free_scan",
+                })
+              }
+            />
+          ),
         },
       })}
     </p>
@@ -311,9 +332,14 @@ export const View = (props: Props) => {
       >
         <TabList
           tabs={tabsData}
-          onSelectionChange={(selectedKey) =>
-            setSelectedTab(selectedKey as TabType)
-          }
+          onSelectionChange={(selectedKey) => {
+            setSelectedTab(selectedKey as TabType);
+            const buttonId =
+              "header_" + (selectedKey as TabType).replaceAll("-", "_");
+            recordTelemetry("ctaButton", "click", {
+              button_id: buttonId,
+            });
+          }}
           selectedKey={selectedTab}
         />
       </Toolbar>

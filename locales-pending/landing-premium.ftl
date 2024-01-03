@@ -111,3 +111,20 @@ landing-premium-value-prop-progress-card-illustration-alt = Progress card deline
 # Quote
 
 landing-premium-quote = There’s a $240 billion industry of <data_brokers>data brokers</data_brokers> selling your private information for profit. It’s time to take back your privacy.
+
+# US FAQ
+
+landing-premium-what-websites-sell-info-qn = What kinds of websites sell my personal information?
+landing-premium-what-websites-sell-info-ans = Certain websites are in the business of collecting and selling people’s personal information without their consent, which is unfortunately legal in the US. These sites are called data brokers and they make up a $240 billion dollar industry. They use sophisticated methods to collect personal, financial, location, and even health information, often without your consent or even your knowledge. They’ll sell what they’ve collected to third parties, profiting from your information and leaving you open to violations of your privacy and security.
+landing-premium-continuous-data-removal-qn = What kinds of websites sell my personal information?
+# Variables:
+# $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be plural.
+landing-premium-continuous-data-removal-ans = { $data_broker_sites_total_num ->
+   *[other] Every month, we use the information you provided about yourself (name, location and birthdate) to search across { $data_broker_sites_total_num } data broker sites that sell people’s private information. If we find your data on any of these sites, we initiate the request for removal. Data removal can take anywhere from a day to a month. This feature is available for { -brand-monitor-plus } users only. <learn_more_link>Learn more here.</learn_more_link>
+}
+
+# Scan Limit
+
+landing-premium-max-scan = We’ve reached the maximum scans for the month. Enter your email to get on our waitlist. 
+landing-premium-max-scan-at-capacity = At capacity
+landing-premium-max-scan-waitlist = Join waitlist
