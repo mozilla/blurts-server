@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import Image from "next/image";
 import { Session } from "next-auth";
 import { OnerepScanResultRow } from "knex/types/tables";
@@ -40,6 +40,9 @@ import ScanProgressIllustration from "./images/scan-illustration.svg";
 import { CountryCodeContext } from "../../../../../../../contextProviders/country-code";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { getNextGuidedStep } from "../../../../../../functions/server/getRelevantGuidedSteps";
+import { SubscriberWaitlistDialog } from "../../../../../../components/client/SubscriberWaitlistDialog";
+import { useOverlayTriggerState } from "react-stately";
+import { useOverlayTrigger } from "react-aria";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 
 export type Props = {
@@ -53,6 +56,7 @@ export type Props = {
   yearlySubscriptionUrl: string;
   fxaSettingsUrl: string;
   scanCount: number;
+  totalNumberOfPerformedScans: number;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -264,29 +268,56 @@ export const View = (props: Props) => {
     </>
   );
 
+  const waitlistTriggerRef = useRef<HTMLAnchorElement>(null);
+  const dialogTriggerState = useOverlayTriggerState({});
+  const overlayTrigger = useOverlayTrigger(
+    { type: "dialog" },
+    dialogTriggerState,
+    waitlistTriggerRef,
+  );
+
   const freeScanCta = props.isEligibleForFreeScan && (
-    <p>
-      {l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
-        vars: {
-          data_broker_total_num: parseInt(
-            process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-            10,
-          ),
-        },
-        elems: {
-          a: (
-            <a
-              href="/redesign/user/welcome/free-scan?referrer=dashboard"
-              onClick={() =>
-                recordTelemetry("link", "click", {
-                  link_id: "exposures_all_fixed_free_scan",
-                })
-              }
-            />
-          ),
-        },
-      })}
-    </p>
+    <>
+      <SubscriberWaitlistDialog
+        triggerRef={waitlistTriggerRef}
+        dialogTriggerState={dialogTriggerState}
+        overlayTrigger={overlayTrigger}
+      />
+      <p>
+        {l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
+          vars: {
+            data_broker_total_num: parseInt(
+              process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+              10,
+            ),
+          },
+          elems: {
+            a:
+              props.totalNumberOfPerformedScans <
+              parseInt(
+                process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
+                10,
+              ) ? (
+                <a
+                  ref={waitlistTriggerRef}
+                  href="/redesign/user/welcome/free-scan?referrer=dashboard"
+                  onClick={() => {
+                    recordTelemetry("link", "click", {
+                      link_id: "exposures_all_fixed_free_scan",
+                    });
+                  }}
+                />
+              ) : (
+                <Button
+                  variant="tertiary"
+                  buttonRef={waitlistTriggerRef}
+                  {...overlayTrigger.triggerProps}
+                />
+              ),
+          },
+        })}
+      </p>
+    </>
   );
 
   const getZeroStateIndicator = () => {
@@ -371,6 +402,7 @@ export const View = (props: Props) => {
           }}
           monthlySubscriptionUrl={props.monthlySubscriptionUrl}
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+          totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
         />
         <section className={styles.exposuresArea}>
           {selectedTab === "action-needed" ? (
