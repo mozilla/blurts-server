@@ -25,6 +25,7 @@ import type { ReactNode, Key } from "react";
 
 import { Popover } from "../Popover";
 import { useL10n } from "../../../hooks/l10n";
+import { useTelemetry } from "../../../hooks/useTelemetry";
 import styles from "./UserMenu.module.scss";
 import OpenInIcon from "./images/menu-icon-open-in.svg";
 import SettingsIcon from "./images/menu-icon-settings.svg";
@@ -38,6 +39,7 @@ export type UserMenuProps = {
 
 export const UserMenu = (props: UserMenuProps) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
 
   const fxaItemRef = useRef<HTMLAnchorElement>(null);
   const settingsItemRef = useRef<HTMLAnchorElement>(null);
@@ -81,6 +83,11 @@ export const UserMenu = (props: UserMenuProps) => {
           ref={fxaItemRef}
           rel="noopener noreferrer"
           target="_blank"
+          onClick={() =>
+            recordTelemetry("ctaButton", "click", {
+              button_id: "manage_account_user_menu",
+            })
+          }
         >
           {l10n.getString("user-menu-manage-fxa-label")}
           <Image src={OpenInIcon} alt="" height={24} width={24} />
@@ -142,6 +149,7 @@ type MenuTriggerComponentProps = MenuTriggerProps &
 
 function MenuTrigger(props: MenuTriggerComponentProps) {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
 
   const state = useMenuTriggerState(props);
   const ref = useRef(null);
@@ -160,7 +168,12 @@ function MenuTrigger(props: MenuTriggerComponentProps) {
         ref={ref}
         className={styles.trigger}
         title={l10n.getString("user-menu-trigger-tooltip")}
-        onClick={() => state.open()}
+        onClick={() => {
+          state.open();
+          recordTelemetry("ctaButton", "click", {
+            button_id: "opened_user_menu",
+          });
+        }}
       >
         {props.user.fxa?.avatar && (
           <Image
@@ -213,9 +226,21 @@ type MenuItemProps = {
 function MenuItem({ item, state }: MenuItemProps) {
   const ref = useRef(null);
   const { menuItemProps } = useMenuItem({ key: item.key }, state, ref);
+  const recordTelemetry = useTelemetry();
 
   return (
-    <li {...menuItemProps} ref={ref} className={`${styles.menuItemWrapper}`}>
+    <li
+      {...menuItemProps}
+      ref={ref}
+      className={`${styles.menuItemWrapper}`}
+      onClick={() => {
+        const buttonId =
+          item.textValue.replaceAll(" ", "_").toLowerCase() + "_user_menu";
+        recordTelemetry("ctaButton", "click", {
+          button_id: buttonId,
+        });
+      }}
+    >
       {item.rendered}
     </li>
   );

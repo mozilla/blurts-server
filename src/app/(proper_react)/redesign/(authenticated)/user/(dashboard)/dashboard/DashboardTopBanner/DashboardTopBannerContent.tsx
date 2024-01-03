@@ -16,6 +16,7 @@ import { ProgressCard } from "../../../../../../../components/client/ProgressCar
 import { Button } from "../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../hooks/l10n";
 import { PremiumButton } from "../../../../../../../components/client/PremiumBadge";
+import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 
 export interface ContentProps {
   relevantGuidedStep: StepLink;
@@ -31,6 +32,7 @@ export interface ContentProps {
 
 export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
 
   const {
     tabType,
@@ -196,6 +198,11 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             <a
               href={process.env.NEXT_PUBLIC_HOW_IT_WORKS_SUMO_URL}
               target="_blank"
+              onClick={() =>
+                recordTelemetry("link", "click", {
+                  link_id: "learn_more",
+                })
+              }
             >
               {l10n.getString(
                 "dashboard-top-banner-monitor-protects-your-even-more-learn-more",

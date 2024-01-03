@@ -33,3 +33,28 @@ landing-all-data-breach-next-steps-ans = Visit { -brand-mozilla-monitor } to lea
 landing-all-data-breach-info-qn = What information gets exposed in data breaches?
 landing-all-data-breach-info-ans = Not all breaches expose all the same info. It just depends on what hackers can access. Many data breaches expose email addresses and passwords. Others expose more sensitive information such as credit card numbers, PIN numbers, and social security numbers.
 
+# Social proof
+
+# Variables
+# $num_users is the number of users in the millions.
+landing-all-social-proof-title = { $num_users ->
+   *[other] Trusted by { $num_users } million people worldwide
+}
+# Variables
+# $num_countries is the number of countries available.
+landing-all-social-proof-description = { $num_countries ->
+   *[other] Since 2018, we’ve helped people in { $num_countries } countries protect their data when it has been exposed.
+}
+landing-all-social-proof-press = As seen in
+
+# Here's How We Help
+
+landing-all-help-protect-you = Here’s how we help protect you 
+landing-all-help-protect-you-description = We believe in your right to privacy, so data breach monitoring protection is always free.
+landing-all-help-protect-you-feature-one = We’ll search for you in all known data breaches
+landing-all-help-protect-you-feature-two = We’ll guide you through the steps to resolve each breach
+landing-all-help-protect-you-feature-three = We’ll continuously monitor and send you alerts for any new breaches
+landing-all-help-protect-you-cta = Sign up for breach alerts
+
+landing-all-get-started = Scan your email to get started
+landing-all-take-back-data = Take back control of your data
