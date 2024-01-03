@@ -195,6 +195,7 @@ export const View = (props: Props) => {
             cta: "clicked_get_scan_fourth",
             field: "entered_email_address_fourth",
           }}
+          scanLimit={props.scanLimit}
         />
       </div>
 
@@ -236,6 +237,7 @@ export const View = (props: Props) => {
             cta: "clicked_get_scan_last",
             field: "entered_email_address_last",
           }}
+          scanLimit={props.scanLimit}
         />
       </div>
     </main>
