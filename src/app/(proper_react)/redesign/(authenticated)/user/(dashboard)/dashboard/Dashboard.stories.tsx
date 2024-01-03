@@ -42,7 +42,7 @@ type DashboardWrapperProps = (
 ) & {
   brokers: keyof typeof brokerOptions;
   breaches: keyof typeof breachOptions;
-  totalNumberOfPerformedScans?: number;
+  totalNumberOfPerformedScans: number;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({

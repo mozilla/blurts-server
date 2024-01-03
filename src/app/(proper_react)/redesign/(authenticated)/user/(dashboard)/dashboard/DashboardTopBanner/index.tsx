@@ -24,7 +24,7 @@ export type DashboardTopBannerProps = {
   onShowFixed: () => void;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
-  totalNumberOfPerformedScans?: number;
+  totalNumberOfPerformedScans: number;
 };
 
 export const DashboardTopBanner = (props: DashboardTopBannerProps) => {

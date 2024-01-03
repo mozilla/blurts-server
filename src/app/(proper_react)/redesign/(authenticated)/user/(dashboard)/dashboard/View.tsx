@@ -56,7 +56,7 @@ export type Props = {
   yearlySubscriptionUrl: string;
   fxaSettingsUrl: string;
   scanCount: number;
-  totalNumberOfPerformedScans?: number;
+  totalNumberOfPerformedScans: number;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -293,12 +293,11 @@ export const View = (props: Props) => {
           },
           elems: {
             a:
-              props.totalNumberOfPerformedScans &&
               props.totalNumberOfPerformedScans <
-                parseInt(
-                  process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
-                  10,
-                ) ? (
+              parseInt(
+                process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
+                10,
+              ) ? (
                 <a
                   ref={waitlistTriggerRef}
                   href="/redesign/user/welcome/free-scan?referrer=dashboard"
