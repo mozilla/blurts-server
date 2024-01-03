@@ -95,7 +95,7 @@ full-name = Full name
 
 modal-heres-what-we-fixed-title = About what we fixed
 modal-heres-what-we-fixed-description-part-one = <b>Manually fixed</b> includes anything you’ve fixed yourself. All data breaches that require access to your accounts need
-  to be fixed manually, even if you’ve upgraded to { -brand-monitor-plus }.
+  to be fixed manually, even if you’ve subscribed to { -brand-monitor-plus }.
 modal-heres-what-we-fixed-description-part-two = <b>Auto-removed</b> includes any exposures from data broker profiles that we’ve removed for you. This is available only for
   { -brand-monitor-plus } subscribers.
 modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes anything that we are currently
@@ -156,7 +156,7 @@ modal-exposure-type-title = About exposure types
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.
 modal-exposure-type-description = We search for you in all known data breaches and { $data_broker_sites_total_num } data broker sites that sell your personal info. Here are the two types of exposures we find:
 modal-exposure-type-data-breach = <b>Data breach</b> means your information has been compromised in a breach and could be in the wrong hands.
-  Resolving these typically requires accessing your accounts, so you’ll need to take manual steps to resolve each breach even if you’ve upgraded to { -brand-monitor-plus }.
+  Resolving these typically requires accessing your accounts, so you’ll need to take manual steps to resolve each breach even if you’ve subscribed to { -brand-monitor-plus }.
 modal-exposure-type-data-broker-part-one = <b>Info for sale</b> means a data broker site is publicly publishing and selling your personal info.
   You’ll need to manually request removal from each site.
 modal-exposure-type-data-broker-part-two = For { -brand-monitor-plus } subscribers, we auto-remove these profiles on your behalf and make sure they don’t re-add you.
