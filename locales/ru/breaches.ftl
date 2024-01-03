@@ -26,10 +26,10 @@ breach-heading-email = Утечки данных для { $email-select }
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored =
     { $total ->
-        [one] { $count } из { $total } отслеживаемого письма
-        [few] { $count } из { $total } отслеживаемых писем
-        [many] { $count } из { $total } отслеживаемых писем
-       *[other] { $count } из { $total } отслеживаемых писем
+        [one] { $count } из { $total } отслеживаемого ящика
+        [few] { $count } из { $total } отслеживаемых ящиков
+        [many] { $count } из { $total } отслеживаемых ящиков
+       *[other] { $count } из { $total } отслеживаемых ящиков
     }
 # link to Settings page where user can add/remove emails and set message preferences
 manage-emails-link = Управление электронными почтовыми адресами
