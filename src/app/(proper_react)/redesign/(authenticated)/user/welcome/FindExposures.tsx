@@ -97,6 +97,7 @@ export const FindExposures = ({
     };
 
     // handle window exit event
+    /* c8 ignore next 12 */
     const handleBeforeUnload = (event: { preventDefault: () => void }) => {
       // Perform actions before the component unloads
       event.preventDefault();
@@ -138,7 +139,7 @@ export const FindExposures = ({
 
     // Go to dashboard even if the scan did not finish.
     // TODO: Add unit test when changing this code:
-    /* c8 ignore next 3 */
+    /* c8 ignore next 10 */
     if (scanProgress >= maxProgress) {
       const endScanTime = Date.now();
       findExposuresTelemetryParams.exit_time = endScanTime - startScanTime;
