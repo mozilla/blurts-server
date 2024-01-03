@@ -20,6 +20,7 @@ import Meta, {
   DashboardUsNoPremiumNoScanNoBreaches,
   DashboardUsNoPremiumNoScanUnresolvedBreaches,
   DashboardUsNoPremiumNoScanResolvedBreaches,
+  DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
   DashboardUsNoPremiumEmptyScanNoBreaches,
   DashboardUsNoPremiumEmptyScanUnresolvedBreaches,
   DashboardUsNoPremiumEmptyScanResolvedBreaches,
@@ -997,6 +998,114 @@ it("shows the correct dashboard banner CTA for US users, without Premium, no sca
     name: "Get first scan free",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+});
+
+it("shows and skips a dialog that informs US users, without Premium, when we hit the broker scan limit", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "Get first scan free",
+  });
+  await user.click(dashboardTopBannerCta);
+  expect(
+    screen.getByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).toBeInTheDocument();
+  const closeButton = screen.getByRole("button", {
+    name: "Skip for now",
+  });
+  await user.click(closeButton);
+  expect(
+    screen.queryByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).not.toBeInTheDocument();
+});
+
+it("shows and closes a dialog that informs US users, without Premium, when we hit the broker scan limit", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "Get first scan free",
+  });
+  await user.click(dashboardTopBannerCta);
+  expect(
+    screen.getByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).toBeInTheDocument();
+  const closeButtonIcon1 = screen.getByLabelText("Close");
+  await user.click(closeButtonIcon1.parentElement as HTMLElement);
+  expect(
+    screen.queryByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).not.toBeInTheDocument();
+});
+
+it("shows a dialog with a link to the waitlist to US users, without Premium, when we hit the broker scan limit", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "Get first scan free",
+  });
+  await user.click(dashboardTopBannerCta);
+  expect(
+    screen.getByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).toBeInTheDocument();
+  const waitlistLink = screen.getByRole("link", {
+    name: "Join the waitlist",
+  });
+  expect(waitlistLink).toHaveAttribute(
+    "href",
+    "https://www.mozilla.org/products/monitor/waitlist-scan/",
+  );
+});
+
+it("shows a dialog that informs US users, without Premium, when we hit the broker scan limit when clicking the exporsures zero state link", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.getByRole("button", {
+    name: "start your free scan",
+  });
+  await user.click(dashboardTopBannerCta);
+  expect(
+    screen.getByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumEmptyScanNoBreaches

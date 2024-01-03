@@ -106,6 +106,10 @@ export default async function DashboardPage() {
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
 
+  // TODO: Fetch number of performed broker scans after
+  // https://github.com/mozilla/blurts-server/pull/3906 landed.
+  const totalNumberOfPerformedScans = 0;
+
   return (
     <View
       user={session.user}
@@ -118,6 +122,7 @@ export default async function DashboardPage() {
       yearlySubscriptionUrl={yearlySubscriptionUrl}
       fxaSettingsUrl={fxaSettingsUrl}
       scanCount={scanCount}
+      totalNumberOfPerformedScans={totalNumberOfPerformedScans}
     />
   );
 }

@@ -17,6 +17,7 @@ import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import ModalImage from "../client/assets/modal-default-img.svg";
 import { DashboardSummary } from "../../functions/server/dashboard";
+import { SubscriberWaitlistDialog } from "./SubscriberWaitlistDialog";
 import { useTelemetry } from "../../hooks/useTelemetry";
 
 export type Props = {
@@ -25,6 +26,7 @@ export type Props = {
   scanInProgress: boolean;
   isShowFixed: boolean;
   summary: DashboardSummary;
+  totalNumberOfPerformedScans: number;
 };
 
 export const DoughnutChart = (props: Props) => {
@@ -118,9 +120,25 @@ export const DoughnutChart = (props: Props) => {
           <p>
             {l10n.getString("exposure-chart-returning-user-upgrade-prompt")}
           </p>
-          <Link href="/redesign/user/welcome/free-scan?referrer=dashboard">
-            {l10n.getString("exposure-chart-returning-user-upgrade-prompt-cta")}
-          </Link>
+          {props.totalNumberOfPerformedScans <
+          parseInt(
+            process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
+            10,
+          ) ? (
+            <Link href="/redesign/user/welcome/free-scan?referrer=dashboard">
+              {l10n.getString(
+                "exposure-chart-returning-user-upgrade-prompt-cta",
+              )}
+            </Link>
+          ) : (
+            <SubscriberWaitlistDialog>
+              <Button variant="tertiary">
+                {l10n.getString(
+                  "exposure-chart-returning-user-upgrade-prompt-cta",
+                )}
+              </Button>
+            </SubscriberWaitlistDialog>
+          )}
         </>
       );
     }

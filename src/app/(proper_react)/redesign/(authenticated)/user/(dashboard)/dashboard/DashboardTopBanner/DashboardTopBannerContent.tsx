@@ -16,6 +16,7 @@ import { ProgressCard } from "../../../../../../../components/client/ProgressCar
 import { Button } from "../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../hooks/l10n";
 import { PremiumButton } from "../../../../../../../components/client/PremiumBadge";
+import { SubscriberWaitlistDialog } from "../../../../../../../components/client/SubscriberWaitlistDialog";
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 
 export interface ContentProps {
@@ -184,17 +185,30 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button
-                href="/redesign/user/welcome/free-scan?referrer=dashboard"
-                small
-                variant="primary"
-              >
-                {l10n.getString(
-                  "dashboard-top-banner-monitor-protects-your-even-more-cta",
-                )}
-              </Button>
+              {props.totalNumberOfPerformedScans <
+              parseInt(
+                process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
+                10,
+              ) ? (
+                <Button
+                  href="/redesign/user/welcome/free-scan?referrer=dashboard"
+                  small
+                  variant="primary"
+                >
+                  {l10n.getString(
+                    "dashboard-top-banner-monitor-protects-your-even-more-cta",
+                  )}
+                </Button>
+              ) : (
+                <SubscriberWaitlistDialog>
+                  <Button variant={"primary"} small>
+                    {l10n.getString(
+                      "dashboard-top-banner-monitor-protects-your-even-more-cta",
+                    )}
+                  </Button>
+                </SubscriberWaitlistDialog>
+              )}
             </div>
-            <br />
             <a
               href={process.env.NEXT_PUBLIC_HOW_IT_WORKS_SUMO_URL}
               target="_blank"
