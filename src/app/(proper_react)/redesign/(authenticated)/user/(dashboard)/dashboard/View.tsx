@@ -56,7 +56,7 @@ export type Props = {
   yearlySubscriptionUrl: string;
   fxaSettingsUrl: string;
   scanCount: number;
-  totalNumberOfPerformedScans: number;
+  totalNumberOfPerformedScans?: number;
 };
 
 export type TabType = "action-needed" | "fixed";
