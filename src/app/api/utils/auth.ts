@@ -25,7 +25,7 @@ import { SerializedSubscriber } from "../../../next-auth.js";
 const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   // As per https://mozilla.slack.com/archives/C4D36CAJW/p1683642497940629?thread_ts=1683642325.465929&cid=C4D36CAJW,
   // we should file a ticket against SVCSE with the `fxa` component to add
-  // a redirect URL of /api/auth/callback/fxa for Firefox Monitor,
+  // a redirect URL of /api/auth/callback/fxa for Mozilla Monitor,
   // for every environment we deploy to:
   id: "fxa",
   name: "Mozilla accounts",

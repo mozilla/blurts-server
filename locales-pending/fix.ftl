@@ -49,7 +49,7 @@ fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-2-content = Some 
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-3-title = Mark as fixed on this page
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-3-content = This will help you keep track of which exposures still need your attention, and make your overall exposures go down.
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-title = Watch for re-exposures
-fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-content = This process does not remove your information from public records, so even after your information is removed, sites often add you back. If you’d like us to handle this for you and automatically remove any new exposures, <upgrade_link>upgrade to { -brand-monitor-premium }</upgrade_link>.
+fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-content = This process does not remove your information from public records, so even after your information is removed, sites often add you back. If you’d like us to handle this for you and automatically remove any new exposures, <subscribe_link>subscribe to { -brand-monitor-plus }</subscribe_link>.
 fix-flow-data-broker-profiles-manual-remove-review-profiles-headline = Review & remove your profiles
 fix-flow-data-broker-profiles-manual-remove-button-mark-fixed = Mark as fixed
 fix-flow-data-broker-profiles-manual-remove-button-remove-for-me = Remove them for me
@@ -59,13 +59,13 @@ fix-flow-data-broker-profiles-automatic-remove-headline = We’ll auto-remove th
 # $data_broker_count is the number of data brokers scanned monthly
 fix-flow-data-broker-profiles-automatic-remove-subheadline = {
     $data_broker_count ->
-      [one] Removing these stops the sale of your personal info on { $data_broker_count } site. Upgrade to { -brand-monitor-premium } and you’ll get:
-      *[other] Removing these stops the sale of your personal info on { $data_broker_count } sites. Upgrade to { -brand-monitor-premium } and you’ll get:
+      [one] Removing these stops the sale of your personal info on { $data_broker_count } site. Subscribe to { -brand-monitor-plus } and you’ll get:
+      *[other] Removing these stops the sale of your personal info on { $data_broker_count } sites. Subscribe to { -brand-monitor-plus } and you’ll get:
 }
 # Variables:
 # $percent is the percentage you can save subscribing to an annual/yearly plan
 fix-flow-data-broker-profiles-automatic-remove-save-percent = Save { $percent }% with yearly plan 🎉
-fix-flow-data-broker-profiles-automatic-remove-features-select-plan-headline = { -brand-premium } Protection
+fix-flow-data-broker-profiles-automatic-remove-features-select-plan-headline = { -brand-monitor-plus }
 fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-yearly = Yearly
 fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-monthly = Monthly
 fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-frequency = Billed monthly
@@ -73,7 +73,7 @@ fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-butt
 fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-frequency = Billed yearly
 fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-button = Select yearly plan
 fix-flow-data-broker-profiles-automatic-remove-features-headline = Features:
-fix-flow-data-broker-profiles-automatic-remove-features-remove-personal-info = Automatic removal of personal info from sites that are selling it
+fix-flow-data-broker-profiles-automatic-remove-features-remove-personal-info = Automatic data removal from sites that are selling your personal info
 fix-flow-data-broker-profiles-automatic-remove-features-guided-experience = Guided experience through high risk data breaches that require manual steps
 fix-flow-data-broker-profiles-automatic-remove-features-continuous-monitoring = Continuous monitoring for new exposures
 fix-flow-data-broker-profiles-automatic-remove-features-breach-alerts = Alerts when your data has been breached
