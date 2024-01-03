@@ -1,3 +1,7 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 # Breach Data Classes
 
 account-balances = Account balances
@@ -14,7 +18,7 @@ avatars = Avatars
 bank-account-numbers = Bank account numbers
 beauty-ratings = Beauty ratings
 biometric-data = Biometric data
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Bios
 browser-user-agent-details = Browser user agent details
@@ -35,7 +39,7 @@ customer-interactions = Customer interactions
 dates-of-birth = Dates of birth
 deceased-date = Deceased date
 deceased-statuses = Deceased statuses
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Delivery instructions
 device-information = Device information
@@ -75,7 +79,7 @@ instant-messenger-identities = Instant messenger identities
 ip-addresses = IP addresses
 job-applications = Job applications
 job-titles = Job titles
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = License Plates
 living-costs = Living costs
 # This string refers to financial loans.
