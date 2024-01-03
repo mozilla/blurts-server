@@ -312,9 +312,6 @@ export const View = (props: Props) => {
                   variant="tertiary"
                   buttonRef={waitlistTriggerRef}
                   {...overlayTrigger.triggerProps}
-                  onPress={() => {
-                    dialogTriggerState.open();
-                  }}
                 />
               ),
           },
