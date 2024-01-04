@@ -28,9 +28,11 @@ learn-more-mission = Les meir om oppdraget vårt
 ## Top questions about Firefox Monitor
 
 top-questions-about-monitor = Dei vanlegaste spørsmåla om { -brand-fx-monitor }
+
 # question and answer
 what-is-breach = Kva er eigentleg ein datalekkasje?
 
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Sjå om du har vore utsett for ein datalekkasje.
+

@@ -37,12 +37,15 @@ learn-more-mission = Eñemomaranduve ore rembipotáre
 
 top-questions-about-monitor = Porandu { -brand-fx-monitor } rehegua
 see-all-faq = Ehechapa FAQs
+
 # question and answer
 what-is-breach = ¿Mba’épa pe mba’ekuaarã ñembyai?
 when-info-exposed = Mba’ekuaarã ñembogua oikórõ maranduete térã ñemiguáva oñeguenohẽrõ, oñemonda térã oñembokuatia moneĩ’ỹre. Ko’ã mba’e tekorosãgua oikokuaa mba’evaiapoha ñanditi rendagua rupive, tembiporu’i térã oimeraẽva mba’ekuaarã renda oĩhápe tapichakuéra maranduete. Umi mba’ekuaarã ñembogua oikokuaa ijehegui, techapyrãrõ peteĩ jeikerã ñemiguáva osẽrõ peichahágui jepota’ỹre.
+
 # question and answer
 what-do-i-do = Ajuhu ramoite mba’ekuaarã ñembyai. ¿Mba’e ajapokuaa?
 visit-monitor-to-learn = Eike { -brand-fx-monitor } eikuaa hag̃ua mba’épa ejapóta mba’ekuaarã ñembogua rire. Umi mba’evaiapoha ñanditigua orovia tapicha oiporujeyha ñe’ẽñemi, upévare emoheñói ñe’ẽñemi hekorosãva ha ha’eñóva ne mba’etépe g̃uarã. Eñongatu ñe’ẽñemi tenda hekorosãvape ne añoite eikekuaáva; ikatu ha’e pe eñongatuhavoi nde kutiakuéra térã ñe’ẽñemi ñangarekohápe.
+
 # question and answer
 what-gets-exposed = ¿Mba’e marandu ojehecha mba’ekuaarã ñemboguápe?
 depends-on-hackers = Ndahetái ñembogua ohechaukáta peteĩ marandúnte. Oikóta mba’ete og̃uahẽ mba’evaiapohape. Heta mba’ekuaarã ñembogua onohẽkuaa ñanduti veve kundaharape ha ñe’ẽñemi. Ambue onohẽ marandu ñemigua, kuatia’atã ñemurã papapy, pasaporte ha seguridad social papapy.
@@ -51,3 +54,4 @@ depends-on-hackers = Ndahetái ñembogua ohechaukáta peteĩ marandúnte. Oikót
 
 see-if-data-breach = Ehecha eimépara’e mba’ekuaarã ñembyaípe
 hibp-footer-attribution = Mba’ekuaarã ñembogua ome’ẽva <b>{ -brand-HIBP }</b>
+

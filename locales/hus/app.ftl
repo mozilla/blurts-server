@@ -1,7 +1,9 @@
+# Strings for the main app
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -15,8 +17,8 @@
 
 ##
 
-terms-and-privacy = Axi u awil ani yab u awil ka t'aja'
 GitHub-link-title = GitHub
+
 error-scan-page-token = A exa' ka aliy tekedh yán i correo electrónico al jun i k'ij lej tsipkats. Jaxtam i mapuy an alimtaláb, talbél ne'ets ka awits ka eyendha'.
 error-could-not-add-email = Yab u awil ka punwat an correo electrónico al an Base de datos.
 error-not-subscribed = Axi correo electrónico yab u eyendháb ti { -product-name }
@@ -28,6 +30,18 @@ error-must-be-signed-in = Ka japiy a k'al ti { -brand-fxa }
 ## What to do after data breach tips
 
 
+## Variables:
+##   $userName (String) - Username
+
+##
+
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
+##
+
+
 ## Updated error messages
 
 
@@ -36,7 +50,6 @@ error-must-be-signed-in = Ka japiy a k'al ti { -brand-fxa }
 
 
 ##
-
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
@@ -50,4 +63,32 @@ error-must-be-signed-in = Ka japiy a k'al ti { -brand-fxa }
 
 
 ##
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+## Relay and VPN educational/ad units
+
+# Monitor V2
+
+## The following messages are brands and should be kept entirely in English
+
+##
+
+## Search Engine Optimization
+
+## Header
+
+## Site navigation
+
+## User menu
+
+## Footer
+
+## Error page
+
+## Breach overview page
+
+## Public breach detail page
+
+## Floating banner
 
