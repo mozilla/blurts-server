@@ -128,7 +128,7 @@ export const FindExposures = ({
 
     // Go to dashboard even if the scan did not finish.
     // TODO: Add unit test when changing this code:
-    /* c8 ignore next 10 */
+    /* c8 ignore next 11 */
     if (scanProgress >= maxProgress) {
       userTimeSpentRef.current.endTime = Date.now();
       findExposuresTelemetryParams.exit_time =
