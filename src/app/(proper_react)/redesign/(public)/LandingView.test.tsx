@@ -456,4 +456,18 @@ describe("When Premium is available", () => {
     await user.click(faqQuestion2);
     expect(faqAnswer1).not.toHaveClass("expanded");
   });
+
+  it("opens the see all FAQ link into a new page", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+
+    const seeAllFaqBtn = screen.getByRole("button", { name: "See all FAQs" });
+    await user.click(seeAllFaqBtn);
+
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  });
 });
