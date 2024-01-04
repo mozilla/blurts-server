@@ -40,7 +40,7 @@ import ScanProgressIllustration from "./images/scan-illustration.svg";
 import { CountryCodeContext } from "../../../../../../../contextProviders/country-code";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { getNextGuidedStep } from "../../../../../../functions/server/getRelevantGuidedSteps";
-import { SubscriberWaitlistDialog } from "../../../../../../components/client/SubscriberWaitlistDialog";
+import { WaitlistDialog } from "../../../../../../components/client/SubscriberWaitlistDialog";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
@@ -298,10 +298,9 @@ export const View = (props: Props) => {
 
   const freeScanCta = props.isEligibleForFreeScan && (
     <>
-      <SubscriberWaitlistDialog
-        triggerRef={waitlistTriggerRef}
+      <WaitlistDialog
         dialogTriggerState={dialogTriggerState}
-        overlayTrigger={overlayTrigger}
+        {...overlayTrigger.overlayProps}
       />
       <p>
         {l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
