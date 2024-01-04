@@ -32,6 +32,10 @@ modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes a
   difficult sites could take longer. You may also start to see removals
   happening within the same day.
 
+dashboard-exposures-filter-exposure-type = Exposure type
+dashboard-exposures-filter-exposure-type-info-for-sale = Your info for sale
+dashboard-exposures-filter-exposure-type-data-breach = Data breach
+
 # About Exposure Types Modal
 
 modal-exposure-type-title = About exposure types

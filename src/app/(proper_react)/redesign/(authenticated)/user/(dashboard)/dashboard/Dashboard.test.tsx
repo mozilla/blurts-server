@@ -2029,6 +2029,48 @@ it("closes previously active card onclick", async () => {
   expect(initialState.length).toBe(afterCollapse.length);
 });
 
+it("does not allow non-US users to filter by exposure type, since they can only see a single exposure type (i.e. breaches)", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardNonUsUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const filterMenuButton = screen.getByRole("button", {
+    name: "Select filters",
+  });
+  await user.click(filterMenuButton);
+
+  const filterDialog = screen.getByRole("dialog");
+  const exposureTypeRadioGroup = queryByRole(filterDialog, "radiogroup", {
+    name: "Exposure type",
+  });
+
+  expect(exposureTypeRadioGroup).not.toBeInTheDocument();
+});
+
+it("allows Plus-eligible users to filter by exposure type", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const filterMenuButton = screen.getByRole("button", {
+    name: "Select filters",
+  });
+  await user.click(filterMenuButton);
+
+  const filterDialog = screen.getByRole("dialog");
+  const exposureTypeRadioGroup = getByRole(filterDialog, "radiogroup", {
+    name: "Exposure type",
+  });
+
+  expect(exposureTypeRadioGroup).toBeInTheDocument();
+});
+
 it("send Telemetry when users click on free scans when all exposures are fixed", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
