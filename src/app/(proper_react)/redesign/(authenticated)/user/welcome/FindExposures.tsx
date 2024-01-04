@@ -5,7 +5,7 @@
 "use client";
 
 import { useRouter, usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ProgressBar } from "../../../../../components/client/ProgressBar";
 import styles from "./FindExposures.module.scss";
 import { useL10n } from "../../../../../hooks/l10n";
@@ -62,6 +62,10 @@ export const FindExposures = ({
   const [scanProgress, setScanProgress] = useState(0);
   const [scanFinished, setScanFinished] = useState(false);
   const [checkingScanProgress, setCheckingScanProgress] = useState(false);
+  const userTimeSpentRef = useRef({
+    startTime: Date.now(),
+    endTime: Date.now(),
+  });
   const router = useRouter();
   const l10n = useL10n();
 
@@ -85,7 +89,6 @@ export const FindExposures = ({
 
   useEffect(() => {
     // view page telemetry
-    const startScanTime = Date.now();
     const findExposuresTelemetryParams: FindExposuresTelemetryParams = {
       exit_time: 0,
       page_location: pathName,
@@ -96,20 +99,6 @@ export const FindExposures = ({
       user_type: "non_legacy",
     };
 
-    // handle window exit event
-    /* c8 ignore next 12 */
-    const handleBeforeUnload = (event: { preventDefault: () => void }) => {
-      // Perform actions before the component unloads
-      event.preventDefault();
-      const endScanTime = Date.now();
-      findExposuresTelemetryParams.exit_time = endScanTime - startScanTime;
-      gtag.record({
-        type: "event",
-        name: "exited_scan",
-        params: findExposuresTelemetryParams,
-      });
-    };
-    window.addEventListener("beforeunload", handleBeforeUnload);
     // TODO: Add unit test when changing this code:
     /* c8 ignore start */
     const timeoutId = setTimeout(() => {
@@ -141,8 +130,9 @@ export const FindExposures = ({
     // TODO: Add unit test when changing this code:
     /* c8 ignore next 10 */
     if (scanProgress >= maxProgress) {
-      const endScanTime = Date.now();
-      findExposuresTelemetryParams.exit_time = endScanTime - startScanTime;
+      userTimeSpentRef.current.endTime = Date.now();
+      findExposuresTelemetryParams.exit_time =
+        userTimeSpentRef.current.endTime - userTimeSpentRef.current.startTime;
       gtag.record({
         type: "event",
         name: "exited_scan",
@@ -153,7 +143,6 @@ export const FindExposures = ({
 
     return () => {
       clearTimeout(timeoutId);
-      window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, [
     scanProgress,
