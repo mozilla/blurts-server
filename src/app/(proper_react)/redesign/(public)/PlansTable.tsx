@@ -89,12 +89,15 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
   return (
     <>
       <div className={styles.plansCards}>
-        <div role="group" className={styles.plusCard}>
+        <div
+          role="group"
+          className={props.scanLimit ? styles.freeCard : styles.plusCard}
+        >
           <div className={styles.head}>
             <b className={styles.badge}>
               {props.scanLimit
-                ? l10n.getString("landing-premium-plans-table-annotation-plus")
-                : l10n.getString("landing-premium-max-scan-at-capacity")}
+                ? l10n.getString("landing-premium-max-scan-at-capacity")
+                : l10n.getString("landing-premium-plans-table-annotation-plus")}
             </b>
             <h3>
               {l10n.getFragment(
@@ -323,9 +326,11 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
         </div>
         <div role="group" className={styles.freeCard}>
           <div className={styles.head}>
-            <b className={styles.badge}>
-              {l10n.getString("landing-premium-max-scan-at-capacity")}
-            </b>
+            {props.scanLimit && (
+              <b className={styles.badge}>
+                {l10n.getString("landing-premium-max-scan-at-capacity")}
+              </b>
+            )}
             <h3>
               {l10n.getString("landing-premium-plans-table-heading-free-title")}
             </h3>
@@ -512,9 +517,11 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
             {l10n.getString("landing-premium-plans-table-heading-feature")}
           </Column>
           <Column>
-            <b className={styles.badge}>
-              {l10n.getString("landing-premium-max-scan-at-capacity")}
-            </b>
+            {props.scanLimit && (
+              <b className={styles.badge}>
+                {l10n.getString("landing-premium-max-scan-at-capacity")}
+              </b>
+            )}
             <h3>
               {l10n.getString("landing-premium-plans-table-heading-free-title")}
             </h3>
