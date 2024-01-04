@@ -237,19 +237,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 </Button>
               ) : (
                 <SubscriberWaitlistDialog>
-                  <Button
-                    variant={"primary"}
-                    small
-                    onPress={() => {
-                      recordTelemetry("ctaButton", "click", {
-                        button_id: `us_non_premium_no_scan${
-                          contentProps.hasUnresolvedBreaches
-                            ? "_unresolved_breaches"
-                            : ""
-                        }`,
-                      });
-                    }}
-                  >
+                  <Button variant={"primary"} small>
                     {l10n.getString(
                       "dashboard-top-banner-monitor-protects-your-even-more-cta",
                     )}
