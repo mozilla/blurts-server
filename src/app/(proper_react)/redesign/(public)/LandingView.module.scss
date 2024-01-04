@@ -395,3 +395,60 @@
     align-self: center;
   }
 }
+
+.faqWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: $layout-md $spacing-md;
+  align-items: center;
+
+  dl {
+    display: flex;
+    flex-direction: column;
+    gap: $layout-xs;
+    width: 100%;
+
+    @media screen and (min-width: $screen-lg) {
+      width: $content-lg;
+    }
+
+    .faqQuestion {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: $layout-md;
+      font: $text-body-lg;
+
+      button {
+        color: $color-blue-60;
+        background: transparent;
+        border: none;
+        margin: 0;
+        padding: 0;
+        width: auto;
+        width: 12px;
+        height: 12px;
+        flex: none;
+
+        svg {
+          transform: rotate(135deg);
+          transition: transform 0.3s ease-in-out;
+
+          &.expanded {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+
+    .faqAnswer {
+      display: none;
+      height: 0;
+
+      &.expanded {
+        display: block;
+        height: auto;
+      }
+    }
+  }
+}
