@@ -462,7 +462,7 @@ describe("When Premium is available", () => {
     const ComposedDashboard = composeStory(LandingUs, Meta);
     render(<ComposedDashboard />);
 
-    const seeAllFaqBtn = screen.getByRole("button", { name: "See all FAQs" });
+    const seeAllFaqBtn = screen.getByRole("link", { name: "See all FAQs" });
     await user.click(seeAllFaqBtn);
 
     // jsdom will complain about not being able to navigate to a different page
