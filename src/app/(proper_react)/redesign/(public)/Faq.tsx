@@ -107,6 +107,8 @@ export const FaqSection = ({
             }
           />
         )}
+        {/* Ignore the remaining tests as testing the first two FAQ questions are sufficient */}
+        {/* c8 ignore start */}
         <FaqItem
           question={l10n.getString("landing-all-data-breach-definition-qn")}
           answer={l10n.getString("landing-all-data-breach-definition-ans")}
@@ -125,6 +127,7 @@ export const FaqSection = ({
           isExpanded={expandedQuestion === "data-breach-info"}
           onExpandAnswer={() => handleExpandAnswer("data-breach-info")}
         />
+        {/* c8 ignore stop */}
       </dl>
     </div>
   );

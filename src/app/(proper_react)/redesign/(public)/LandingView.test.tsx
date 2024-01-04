@@ -418,5 +418,42 @@ describe("When Premium is available", () => {
       "href",
       "https://www.mozilla.org/products/monitor/waitlist-scan/",
     );
+    });
+
+  it("opens and closes an FAQ accordion item", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+    const faqQuestion = screen.getByText(
+      "What kinds of websites sell my personal information?",
+    );
+    await user.click(faqQuestion);
+    const faqAnswer = screen.getByText(
+      "Certain websites are in the business of collecting and selling people’s personal information without their consent, which is unfortunately legal in the US.",
+      { exact: false },
+    );
+    expect(faqAnswer).toHaveClass("expanded");
+    await user.click(faqQuestion);
+    expect(faqAnswer).not.toHaveClass("expanded");
+  });
+
+  it("only opens one FAQ at a time", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+    const faqQuestion1 = screen.getByText(
+      "What kinds of websites sell my personal information?",
+    );
+    await user.click(faqQuestion1);
+    const faqAnswer1 = screen.getByText(
+      "Certain websites are in the business of collecting and selling people’s personal information without their consent, which is unfortunately legal in the US.",
+      { exact: false },
+    );
+    expect(faqAnswer1).toHaveClass("expanded");
+    const faqQuestion2 = screen.getByText(
+      "How does continuous data removal work?",
+    );
+    await user.click(faqQuestion2);
+    expect(faqAnswer1).not.toHaveClass("expanded");
   });
 });
