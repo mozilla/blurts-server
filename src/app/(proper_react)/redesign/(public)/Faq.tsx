@@ -4,7 +4,7 @@
 
 "use client";
 
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import { useL10n } from "../../../hooks/l10n";
 import styles from "./LandingView.module.scss";
 import { CloseBigIcon } from "../../../components/server/Icons";
@@ -12,27 +12,22 @@ import Link from "next/link";
 
 export type FaqItemProps = {
   question: string;
-  answer: string | ReactNode;
+  answer: string | React.ReactNode;
+  isExpanded: boolean;
+  onExpandAnswer: () => void;
 };
 
 const FaqItem = (props: FaqItemProps) => {
-  const [expandedAnswer, setExpandedAnswer] = useState(false);
-  const handleExpandAnswer = () => {
-    setExpandedAnswer(!expandedAnswer);
-  };
+  const { question, answer, isExpanded, onExpandAnswer } = props;
+
   return (
     <>
-      <dt className={styles.faqQuestion} onClick={handleExpandAnswer}>
-        {props.question}
-        <CloseBigIcon
-          alt=""
-          className={`${expandedAnswer && styles.expanded}`}
-        />
+      <dt className={styles.faqQuestion} onClick={onExpandAnswer}>
+        {question}
+        <CloseBigIcon alt="" className={`${isExpanded && styles.expanded}`} />
       </dt>
-      <dd
-        className={`${styles.faqAnswer} ${expandedAnswer && styles.expanded}`}
-      >
-        {props.answer}
+      <dd className={`${styles.faqAnswer} ${isExpanded && styles.expanded}`}>
+        {answer}
       </dd>
     </>
   );
@@ -44,6 +39,14 @@ export const FaqSection = ({
   isEligibleForPremium: boolean;
 }) => {
   const l10n = useL10n();
+  const [expandedQuestion, setExpandedQuestion] = useState<string | null>(null);
+
+  const handleExpandAnswer = (question: string) => {
+    setExpandedQuestion((prevQuestion) =>
+      prevQuestion === question ? null : question,
+    );
+  };
+
   return (
     <div className={styles.faqWrapper}>
       <b className={styles.faqTitle}>
@@ -65,6 +68,10 @@ export const FaqSection = ({
             answer={l10n.getString(
               "landing-premium-what-websites-sell-info-ans",
             )}
+            isExpanded={expandedQuestion === "premium-what-websites-sell-info"}
+            onExpandAnswer={() =>
+              handleExpandAnswer("premium-what-websites-sell-info")
+            }
           />
         )}
         {isEligibleForPremium && (
@@ -94,19 +101,29 @@ export const FaqSection = ({
                 },
               },
             )}
+            isExpanded={expandedQuestion === "premium-continuous-data-removal"}
+            onExpandAnswer={() =>
+              handleExpandAnswer("premium-continuous-data-removal")
+            }
           />
         )}
         <FaqItem
           question={l10n.getString("landing-all-data-breach-definition-qn")}
           answer={l10n.getString("landing-all-data-breach-definition-ans")}
+          isExpanded={expandedQuestion === "data-breach-definition"}
+          onExpandAnswer={() => handleExpandAnswer("data-breach-definition")}
         />
         <FaqItem
           question={l10n.getString("landing-all-data-breach-next-steps-qn")}
           answer={l10n.getString("landing-all-data-breach-next-steps-ans")}
+          isExpanded={expandedQuestion === "data-breach-next-steps"}
+          onExpandAnswer={() => handleExpandAnswer("data-breach-next-steps")}
         />
         <FaqItem
           question={l10n.getString("landing-all-data-breach-info-qn")}
           answer={l10n.getString("landing-all-data-breach-info-ans")}
+          isExpanded={expandedQuestion === "data-breach-info"}
+          onExpandAnswer={() => handleExpandAnswer("data-breach-info")}
         />
       </dl>
     </div>
