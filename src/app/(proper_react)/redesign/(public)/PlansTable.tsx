@@ -893,7 +893,7 @@ const TableColumnHeader = (props: {
       ref={columnRef}
       // We don't currently do anything with focused table cells, so we don't
       // have any tests for it either:
-      /* c8 ignore next */
+      /* c8 ignore next 2*/
       className={`${
         isFocusVisible ? styles.isFocused : styles.isBlurred
       } ${outlineStyle()}`}
