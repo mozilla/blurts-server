@@ -13,10 +13,10 @@ import { TabList } from "./TabList";
 import { Button } from "../client/Button";
 import { useL10n } from "../../hooks/l10n";
 import ModalImage from "../client/assets/premium-upsell-dialog-icon.svg";
-import styles from "./PremiumUpsellDialog.module.scss";
+import styles from "./UpsellDialog.module.scss";
 import { useTelemetry } from "../../hooks/useTelemetry";
 
-export interface PremiumUpsellDialogProps {
+export interface UpsellDialogProps {
   state: OverlayTriggerState;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
@@ -61,15 +61,15 @@ function PremiumPricingLabel({ isMonthly }: { isMonthly?: boolean }) {
   );
 }
 
-export interface PremiumUpsellDialogContentProps {
+export interface UpsellDialogContentProps {
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
 }
 
-function PremiumUpsellDialogContent({
+function UpsellDialogContent({
   monthlySubscriptionUrl,
   yearlySubscriptionUrl,
-}: PremiumUpsellDialogContentProps) {
+}: UpsellDialogContentProps) {
   const l10n = useL10n();
   const defaultSelectedKey = "yearly";
   const [selectedTab, setSelectedTab] = useState<Key>(defaultSelectedKey);
@@ -176,12 +176,12 @@ function PremiumUpsellDialogContent({
   );
 }
 
-function PremiumUpsellDialog({
+function UpsellDialog({
   state,
   yearlySubscriptionUrl,
   monthlySubscriptionUrl,
   ...otherProps
-}: PremiumUpsellDialogProps & OverlayTriggerProps) {
+}: UpsellDialogProps & OverlayTriggerProps) {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
 
@@ -200,7 +200,7 @@ function PremiumUpsellDialog({
             }}
             variant="horizontal"
           >
-            <PremiumUpsellDialogContent
+            <UpsellDialogContent
               monthlySubscriptionUrl={monthlySubscriptionUrl}
               yearlySubscriptionUrl={yearlySubscriptionUrl}
             />
@@ -211,4 +211,4 @@ function PremiumUpsellDialog({
   );
 }
 
-export { PremiumUpsellDialog };
+export { UpsellDialog };

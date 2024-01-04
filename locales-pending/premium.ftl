@@ -36,7 +36,7 @@ user-menu-signout-tooltip = Sign out of { -brand-fx-monitor }
 footer-external-link-faq-label = FAQs
 footer-external-link-faq-tooltip = Frequently asked questions
 
-premium-badge-label = { -brand-monitor-plus }
+upsell-badge-label = Automatic data removal:
 premium-cta-label = Subscribe to { -brand-monitor-plus }
 
 # Chart summarizing total exposures

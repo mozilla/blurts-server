@@ -9,7 +9,7 @@ import styles from "./Toolbar.module.scss";
 import { UserMenu } from "./UserMenu";
 import { Session } from "next-auth";
 import { AppPicker } from "./AppPicker";
-import { PremiumBadge } from "../../client/PremiumBadge";
+import { UpsellBadge } from "../../client/UpsellBadge";
 import { useL10n } from "../../../hooks/l10n";
 
 export type Props = {
@@ -27,7 +27,7 @@ export const Toolbar = (props: Props) => {
     <nav className={styles.toolbar}>
       <div className={styles.start}>{props.children}</div>
       <div className={styles.end}>
-        <PremiumBadge
+        <UpsellBadge
           label={l10n.getString("premium-cta-label")}
           user={props.user}
           monthlySubscriptionUrl={props.monthlySubscriptionUrl}

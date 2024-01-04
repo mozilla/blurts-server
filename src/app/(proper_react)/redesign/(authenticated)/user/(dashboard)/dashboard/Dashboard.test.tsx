@@ -424,8 +424,8 @@ it("shows US users with Premium the Premium badge", () => {
   render(<ComposedDashboard />);
 
   // We show a Premium badge on desktop in the toolbar and in the mobile menu
-  const premiumBadges = screen.queryAllByText("Monitor Plus");
-  expect(premiumBadges.length).toBe(2);
+  const UpsellBadges = screen.queryAllByText("Monitor Plus");
+  expect(UpsellBadges.length).toBe(2);
 });
 
 it("shows US users without Premium the upsell button", () => {
@@ -447,8 +447,8 @@ it("does not show non-US users the Premium badge", () => {
   render(<ComposedDashboard />);
 
   // We show a Premium badge on desktop in the toolbar and in the mobile menu
-  const premiumBadges = screen.queryAllByText("Monitor Plus");
-  expect(premiumBadges.length).toBe(0);
+  const UpsellBadges = screen.queryAllByText("Monitor Plus");
+  expect(UpsellBadges.length).toBe(0);
 });
 
 it("does not show non-US users the upsell button", () => {

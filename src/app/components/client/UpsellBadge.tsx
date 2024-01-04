@@ -4,21 +4,19 @@
 
 "use client";
 
-import { useContext } from "react";
-import Image from "next/image";
+import { useContext, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { Session } from "next-auth";
-import { useOverlayTrigger } from "react-aria";
-import { useOverlayTriggerState } from "react-stately";
-import { PremiumUpsellDialog } from "./PremiumUpsellDialog";
+import { useOverlayTrigger, useToggleButton } from "react-aria";
+import { useOverlayTriggerState, useToggleState } from "react-stately";
+import { UpsellDialog } from "./UpsellDialog";
 import { Button } from "../client/Button";
 import { useL10n } from "../../hooks/l10n";
 import {
   canSubscribeToPremium,
   hasPremium,
 } from "../../functions/universal/user";
-import ShieldIcon from "./assets/shield-icon.svg";
-import styles from "./PremiumBadge.module.scss";
+import styles from "./UpsellBadge.module.scss";
 // TODO: The use of `useGA` is restricted and will be cleaned up
 // together with MNTOR-2335.
 // eslint-disable-next-line no-restricted-imports
@@ -33,7 +31,7 @@ export type Props = {
   yearlySubscriptionUrl: string;
 };
 
-export function PremiumButton(props: Props) {
+export function UpsellButton(props: Props) {
   const { gtag } = useGa();
   const recordTelemetry = useTelemetry();
   const pathname = usePathname();
@@ -65,7 +63,7 @@ export function PremiumButton(props: Props) {
       <Button {...triggerProps} variant="primary" small>
         {props.label}
       </Button>
-      <PremiumUpsellDialog
+      <UpsellDialog
         {...overlayProps}
         state={dialogState}
         monthlySubscriptionUrl={props.monthlySubscriptionUrl}
@@ -75,23 +73,33 @@ export function PremiumButton(props: Props) {
   );
 }
 
-export function PremiumBadge(props: Props) {
+function UpsellToggleButton(props) {
   const l10n = useL10n();
+  const ref = useRef<HTMLButtonElement>(null);
+  const state = useToggleState(props);
+  const { buttonProps } = useToggleButton(props, state, ref);
+
+  return (
+    <button
+      {...buttonProps}
+      className={`${styles.upsellBadge} ${
+        state.isSelected ? styles.isSelected : ""
+      }`}
+      ref={ref}
+    >
+      {l10n.getString("upsell-badge-label")} {state.isSelected ? "On" : "Off"}
+      <span className={styles.toggleIndicator} />
+    </button>
+  );
+}
+
+export function UpsellBadge(props: Props) {
   const countryCode = useContext(CountryCodeContext);
 
   const { user } = props;
 
-  if (hasPremium(user)) {
-    return (
-      <div className={styles.badge}>
-        <Image src={ShieldIcon} alt="" width="24" height="24" />
-        {l10n.getString("premium-badge-label")}
-      </div>
-    );
-  }
-
-  if (canSubscribeToPremium({ user, countryCode })) {
-    return <PremiumButton {...props} />;
+  if (hasPremium(user) || canSubscribeToPremium({ user, countryCode })) {
+    return <UpsellToggleButton {...props} />;
   }
 
   return <></>;
