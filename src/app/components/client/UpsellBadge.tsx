@@ -76,20 +76,42 @@ export function UpsellButton(props: Props) {
 function UpsellToggleButton(props) {
   const l10n = useL10n();
   const ref = useRef<HTMLButtonElement>(null);
-  const state = useToggleState(props);
+  const state = useToggleState({
+    ...props,
+    isSelected: props.hasPremium,
+  });
   const { buttonProps } = useToggleButton(props, state, ref);
 
+  const dialogState = useOverlayTriggerState({
+    defaultOpen: false,
+  });
+  const { triggerProps, overlayProps } = useOverlayTrigger(
+    { type: "dialog" },
+    dialogState,
+  );
+
   return (
-    <button
-      {...buttonProps}
-      className={`${styles.upsellBadge} ${
-        state.isSelected ? styles.isSelected : ""
-      }`}
-      ref={ref}
-    >
-      {l10n.getString("upsell-badge-label")} {state.isSelected ? "On" : "Off"}
-      <span className={styles.toggleIndicator} />
-    </button>
+    <>
+      <button
+        {...buttonProps}
+        {...triggerProps}
+        onClick={() => dialogState.open()}
+        className={`${styles.upsellBadge} ${
+          state.isSelected ? styles.isSelected : ""
+        }`}
+        ref={ref}
+        disabled={state.isSelected}
+      >
+        {l10n.getString("upsell-badge-label")} {state.isSelected ? "On" : "Off"}
+        <span className={styles.toggleIndicator} />
+      </button>
+      <UpsellDialog
+        {...overlayProps}
+        state={dialogState}
+        monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+        yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+      />
+    </>
   );
 }
 
@@ -98,8 +120,9 @@ export function UpsellBadge(props: Props) {
 
   const { user } = props;
 
-  if (hasPremium(user) || canSubscribeToPremium({ user, countryCode })) {
-    return <UpsellToggleButton {...props} />;
+  const userHasPremium = hasPremium(user);
+  if (userHasPremium || canSubscribeToPremium({ user, countryCode })) {
+    return <UpsellToggleButton {...props} hasPremium={userHasPremium} />;
   }
 
   return <></>;

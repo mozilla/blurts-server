@@ -6,6 +6,7 @@
   border-radius: $border-radius-xl;
   border: 1px solid $color-grey-30;
   color: $color-black;
+  cursor: pointer;
   display: flex;
   font: $text-body-md;
   font-weight: 600;
@@ -39,6 +40,7 @@
 
   &.isSelected {
     border-color: transparent;
+    cursor: default;
 
     .toggleIndicator {
       background: none;
