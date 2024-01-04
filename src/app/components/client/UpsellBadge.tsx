@@ -104,7 +104,9 @@ function UpsellToggleButton(props) {
         ref={ref}
         disabled={state.isSelected}
       >
-        {l10n.getString("upsell-badge-label")} {state.isSelected ? "On" : "Off"}
+        {state.isSelected
+          ? l10n.getString("plus-indicator-label-active")
+          : l10n.getString("plus-indicator-label-inactive")}
         <span className={styles.toggleIndicator} />
       </button>
       {dialogState.isOpen && (
