@@ -222,14 +222,14 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                   small
                   variant="primary"
                   onPress={() => {
-                  recordTelemetry("ctaButton", "click", {
-                    button_id: `us_non_premium_no_scan${
-                      contentProps.hasUnresolvedBreaches
-                        ? "_unresolved_breaches"
-                        : ""
-                    }`,
-                  });
-                }}
+                    recordTelemetry("ctaButton", "click", {
+                      button_id: `us_non_premium_no_scan${
+                        contentProps.hasUnresolvedBreaches
+                          ? "_unresolved_breaches"
+                          : ""
+                      }`,
+                    });
+                  }}
                 >
                   {l10n.getString(
                     "dashboard-top-banner-monitor-protects-your-even-more-cta",
@@ -237,16 +237,19 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 </Button>
               ) : (
                 <SubscriberWaitlistDialog>
-                  <Button variant={"primary"} small
+                  <Button
+                    variant={"primary"}
+                    small
                     onPress={() => {
-                  recordTelemetry("ctaButton", "click", {
-                    button_id: `us_non_premium_no_scan${
-                      contentProps.hasUnresolvedBreaches
-                        ? "_unresolved_breaches"
-                        : ""
-                    }`,
-                  });
-                }}>
+                      recordTelemetry("ctaButton", "click", {
+                        button_id: `us_non_premium_no_scan${
+                          contentProps.hasUnresolvedBreaches
+                            ? "_unresolved_breaches"
+                            : ""
+                        }`,
+                      });
+                    }}
+                  >
                     {l10n.getString(
                       "dashboard-top-banner-monitor-protects-your-even-more-cta",
                     )}
