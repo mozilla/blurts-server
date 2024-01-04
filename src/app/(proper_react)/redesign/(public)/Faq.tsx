@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { useL10n } from "../../../hooks/l10n";
 import styles from "./LandingView.module.scss";
 import { CloseBigIcon } from "../../../components/server/Icons";
@@ -12,7 +12,7 @@ import Link from "next/link";
 
 export type FaqItemProps = {
   question: string;
-  answer: string | React.ReactNode;
+  answer: string | ReactNode;
   isExpanded: boolean;
   onExpandAnswer: () => void;
 };
