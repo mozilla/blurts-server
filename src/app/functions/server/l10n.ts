@@ -80,13 +80,14 @@ export function getL10nBundles(): LocaleData[] {
 
   const languages = acceptLangHeader ? acceptedLanguages(acceptLangHeader) : [];
   const supportedLocales = process.env.SUPPORTED_LOCALES?.split(",");
-  const currentLocales = negotiateLanguages(
-    languages,
-    Object.keys(bundleSources).filter(
-      (locale) => supportedLocales?.includes(locale),
-    ),
-    { defaultLocale: "en" },
-  );
+  const availableLocales = Object.keys(bundleSources);
+  const filteredLocales =
+    process.env.APP_ENV === "heroku"
+      ? availableLocales
+      : availableLocales.filter((locale) => supportedLocales?.includes(locale));
+  const currentLocales = negotiateLanguages(languages, filteredLocales, {
+    defaultLocale: "en",
+  });
 
   const relevantBundleSources = currentLocales.map((relevantLocale) => ({
     locale: relevantLocale,
