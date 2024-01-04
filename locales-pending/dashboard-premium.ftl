@@ -12,7 +12,7 @@ modal-active-number-of-exposures-part-one-premium =
     [one] This chart includes the total number of times we found each type of data exposed across all data broker profiles and all data breaches for the { $limit } email address that you are currently monitoring.
     *[other] This chart includes the total number of times we found each type of data exposed across all data broker profiles and all data breaches for up to { $limit } email addresses that you are currently monitoring.
   }
-modal-active-number-of-exposures-part-three-premium = This chart does not include any exposures that are in-progress of being auto-removed. Once your exposures are fixed, they will be added to your total number of fixed exposures on the Fixed page.
+modal-active-number-of-exposures-part-three-premium = This chart does not include any exposures that are in progress of being auto-removed. Once your exposures are fixed, they will be added to your total number of fixed exposures on the Fixed page.
 
 progress-card-auto-removed-headline = Auto-removed
 progress-card-in-progress-headline = In progress
@@ -87,7 +87,7 @@ dashboard-exposures-breaches-scan-progress-description = {
 dashboard-exposures-no-breaches-scan-progress-description = We didn’t find any data breaches, but we’re still scanning sites that may be selling your personal info.
 dashboard-exposures-scan-progress-label = Scan in progress
 
-dashboard-fixed-area-headline-premium = View all exposures that are fixed or in-progress
+dashboard-fixed-area-headline-premium = View all exposures that are fixed or in progress
 
 # Variables:
 # $data_broker_total_num is the total number of data brokers selling the user’s data.
