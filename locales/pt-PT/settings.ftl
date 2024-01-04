@@ -31,6 +31,7 @@ settings-email-verification-callout = Verificação de e-mail necessária
 settings-resend-email-verification-link = Reenviar e-mail de verificação
 settings-add-email-button = Adicionar endereço de e-mail
 settings-delete-email-button = Eliminar endereço de e-mail
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:

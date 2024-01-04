@@ -3,9 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-meta-title = { -brand-fx-monitor } - Oversigt
+
 breach-all-meta-title = { -brand-fx-monitor } - Alle datalæk
 breach-all-meta-social-title = Alle datalæk opdaget af { -brand-fx-monitor }
 breach-all-meta-social-description = Gennemse den komplette liste over kendte datalæk opdaget af { -brand-fx-monitor }, og find derefter ud af, om dine oplysninger blev eksponeret.
+
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = { -brand-fx-monitor } - Datalæk hos { $company }
@@ -13,6 +15,7 @@ breach-detail-meta-title = { -brand-fx-monitor } - Datalæk hos { $company }
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Blev du berørt af datalækken fra { $company }?
 breach-detail-meta-social-description = Brug { -brand-fx-monitor } til at finde ud af, om dine personlige oplysninger blev eksponeret i denne datalæk - og hvad du skal gøre nu.
+
 breach-scan-meta-title = { -brand-fx-monitor } - Læk-resultater
 breach-scan-meta-social-title = { -brand-fx-monitor } - Læk-resultater
 breach-scan-meta-social-description = Log ind på { -brand-fx-monitor } for at løse datalæk og få løbende overvågning for nye kendte datalæk.
@@ -21,14 +24,17 @@ breach-scan-meta-social-description = Log ind på { -brand-fx-monitor } for at l
 
 # Data classes pie chart title
 breach-chart-title = Lækket data
+
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Datalæk for { $email-select }
+
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored =
     { $total ->
         [one] { $count } af { $total } mailadresse overvåget
        *[other] { $count } af { $total } mailadresser overvåget
     }
+
 # link to Settings page where user can add/remove emails and set message preferences
 manage-emails-link = Håndter mailadresser
 
@@ -42,23 +48,28 @@ filter-label-resolved = Løste datalæk
 column-company = VIRKSOMHED
 column-breached-data = KOMPROMITTEREDE DATA
 column-detected = OPDAGET
+
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
 column-status-badge-resolved = Løst
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Aktiv
+
 breaches-resolve-heading = Løs denne datalæk:
+
 breaches-none-headline = Ingen datalæk fundet
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
 breaches-none-copy = Gode nyheder! { $email } har ikke været ramt af nogen kendte datalæk. Vi fortsætter med at overvåge mailadressen og giver dig besked, hvis der opstår nye datalæk.
 breaches-none-cta-blurb = Vil du overvåge endnu en mailadresse?
 breaches-none-cta-button = Tilføj mailadresse
+
 breaches-all-resolved-headline = Alle datalæk løst
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
 breaches-all-resolved-copy = Godt gået! Du har løst alle datalæk for { $email }. Vi fortsætter med at overvåge mailadressen og giver dig besked, hvis der opstår nye datalæk.
 breaches-all-resolved-cta-blurb = Vil du overvåge en mailadresse til?
 breaches-all-resolved-cta-button = Tilføj mailadresse
+
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 # Variables:
 #   $breachDate (String) - Date of the breach
@@ -74,6 +85,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Opdater dine adgangskoder og aktiver tofaktor-godkendelse (2FA).
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -142,6 +154,7 @@ breach-checklist-phone-header-2 = Beskyt dit telefonnummer med en maskerings-tje
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Opdater dine sikkerhedsspørgsmål.
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = I de fleste tilfælde vil vi anbefale, at du opdaterer dine sikkerhedsspørgsmål på virksomhedens websted. Men <b>deres websted kan være nede eller indeholde skadeligt indhold</b>, så vær forsigtig, hvis du <breached-company-link>besøger webstedet</breached-company-link>. For ekstra beskyttelse skal du sørge for, at du opdaterer disse sikkerhedsspørgsmål på alle vigtige konti, hvor du har brugt dem, og oprette unikke adgangskoder til alle konti.
 

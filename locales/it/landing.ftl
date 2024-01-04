@@ -37,12 +37,15 @@ learn-more-mission = Ulteriori informazioni sulla nostra missione
 
 top-questions-about-monitor = Domande più frequenti su { -brand-fx-monitor }
 see-all-faq = Visualizza tutte le domande più frequenti
+
 # question and answer
 what-is-breach = Che cos’è esattamente una violazione di dati?
 when-info-exposed = Una violazione di dati si verifica quando informazioni personali o private vengono pubblicate, rubate o copiate senza autorizzazione. Questi incidenti di sicurezza possono essere il risultato di attacchi informatici a siti web, applicazioni o database in cui risiedono informazioni personali. Una violazione di dati può verificarsi anche accidentalmente, per esempio se le credenziali di accesso di qualcuno vengono pubblicate per sbaglio.
+
 # question and answer
 what-do-i-do = Ho appena scoperto che il mio account è stato coinvolto in una violazione. Che cosa posso fare?
 visit-monitor-to-learn = Visita { -brand-fx-monitor } per scoprire cosa fare dopo una violazione di dati. Gli hacker contano sul fatto che le persone riutilizzano le proprie password, quindi è importante creare password complesse e uniche per tutti i tuoi account. Tieni le tue password in un luogo sicuro a cui solo tu hai accesso: può essere lo stesso posto in cui tieni i documenti importanti o un gestore di password.
+
 # question and answer
 what-gets-exposed = Quali informazioni vengono esposte in una violazione di dati?
 depends-on-hackers = Non tutte le violazioni espongono le stesse informazioni. Dipende da ciò a cui gli hacker hanno accesso. Molte violazioni di dati espongono indirizzi email e password, altre espongono informazioni sensibili come numeri di carte di credito, numeri di passaporto e numeri di previdenza sociale.
@@ -51,3 +54,4 @@ depends-on-hackers = Non tutte le violazioni espongono le stesse informazioni. D
 
 see-if-data-breach = Scopri se sei stato coinvolto in una violazione di dati
 hibp-footer-attribution = Dati sulle violazioni forniti da <b>{ -brand-HIBP }</b>
+

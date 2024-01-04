@@ -81,6 +81,7 @@ living-costs = Kosto jetese
 # This string refers to financial loans.
 loan-information = Hollësi kredie
 login-histories = Kronologji hyrjesh
+loyalty-program-details = Hollësi programi besnikërie
 mac-addresses = Adresa MAC
 marital-statuses = Gjendje martesore
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -140,6 +141,7 @@ spouses-names = Emra bashkëshortësh
 support-tickets = Kërkesa për asistencë
 survey-results = Përfundime anketimi
 taxation-records = Të dhëna tatimore
+telecommunications-carrier = Operatorë telekomunikacionesh
 time-zones = Zona kohore
 travel-habits = Zakone udhëtimesh
 user-statuses = Gjendje përdoruesi

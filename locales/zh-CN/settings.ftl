@@ -27,6 +27,7 @@ settings-email-verification-callout = 需要电子邮件验证
 settings-resend-email-verification-link = 重发验证邮件
 settings-add-email-button = 添加邮箱地址
 settings-delete-email-button = 删除电子邮件地址
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -37,16 +38,11 @@ settings-email-number-of-breaches-info = 出现在 { $breachCount } 次已知的
 
 settings-cancel-premium-subscription-title = 取消 { -brand-premium } 订阅
 settings-cancel-premium-subscription-info = 当前结算周期结束后，您的订阅将恢复为免费账户。您的隐私保护扫描结果将被永久删除，并将只能监控 1 个电子邮件地址。
-settings-cancel-premium-subscription-link-label = 取消 { -brand-fx-account } 的订阅
 
 ## Deactivate account
 
 settings-deactivate-account-title = 禁用账户
-# Deprecated
-settings-deactivate-account-info = 您可以通过删除您的 { -brand-fx-account } 来停用 { -product-short-name }。
 settings-deactivate-account-info-2 = 您可以通过删除 { -brand-mozilla-account }来停用 { -product-short-name }。
-# Deprecated
-settings-fxa-link-label = 转到 { -brand-firefox } 设置
 settings-fxa-link-label-3 = 前往 { -brand-mozilla-account }设置
 
 ## Add email dialog

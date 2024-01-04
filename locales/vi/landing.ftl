@@ -37,12 +37,15 @@ learn-more-mission = Tìm hiểu thêm về sứ mệnh của chúng tôi
 
 top-questions-about-monitor = Câu hỏi thường gặp về { -brand-fx-monitor }
 see-all-faq = Xem tất cả Câu hỏi thường gặp
+
 # question and answer
 what-is-breach = Chính xác thì rò rỉ dữ liệu là gì?
 when-info-exposed = Rò rỉ dữ liệu xảy ra khi thông tin cá nhân hoặc thông tin riêng tư bị lộ, bị đánh cắp hoặc sao chép trái phép. Những sự cố bảo mật này có thể là kết quả của các cuộc tấn công mạng vào các trang web, ứng dụng hoặc bất kỳ cơ sở dữ liệu nào chứa thông tin cá nhân của mọi người. Rò rỉ dữ liệu cũng có thể xảy ra do tai nạn như nếu thông tin đăng nhập của ai đó vô tình được đăng công khai.
+
 # question and answer
 what-do-i-do = Tôi vừa phát hiện ra thông tin của mình bị rò rỉ. Tôi làm gì?
 visit-monitor-to-learn = Truy cập { -brand-fx-monitor } để tìm hiểu những việc cần làm sau khi bị rò rỉ dữ liệu. Tin tặc dựa vào việc mọi người sử dụng lại mật khẩu, vì vậy điều quan trọng là phải tạo mật khẩu mạnh, duy nhất cho tất cả các tài khoản của bạn. Giữ mật khẩu của bạn ở nơi an toàn mà chỉ bạn mới có quyền truy cập; đây có thể là nơi bạn lưu trữ các tài liệu quan trọng hoặc trình quản lý mật khẩu.
+
 # question and answer
 what-gets-exposed = Thông tin nào bị lộ trong các rò rỉ dữ liệu?
 depends-on-hackers = Không phải tất cả các rò rỉ tiết lộ tất cả các thông tin giống nhau. Nó chỉ phụ thuộc vào những gì tin tặc có thể truy cập. Nhiều rò rỉ dữ liệu làm lộ địa chỉ email và mật khẩu. Những rò rỉ khác tiết lộ thông tin nhạy cảm hơn như số thẻ tín dụng, số hộ chiếu và số an sinh xã hội.
@@ -51,3 +54,4 @@ depends-on-hackers = Không phải tất cả các rò rỉ tiết lộ tất c�
 
 see-if-data-breach = Xem liệu bạn có bị rò rỉ dữ liệu không
 hibp-footer-attribution = Dữ liệu vụ rò rỉ do <b>{ -brand-HIBP }</b> cung cấp
+

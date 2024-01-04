@@ -6,3 +6,4 @@
 ### Dialog window that allows a user to add a new email address to be monitored
 
 add-email-add-another-heading = Afegeix una altra adreça electrònica
+

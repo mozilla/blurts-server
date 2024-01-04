@@ -31,6 +31,7 @@ settings-email-verification-callout = E-mailverificatie vereist
 settings-resend-email-verification-link = Verificatie-e-mailbericht opnieuw versturen
 settings-add-email-button = E-mailadres toevoegen
 settings-delete-email-button = E-mailadres verwijderen
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -45,16 +46,11 @@ settings-email-number-of-breaches-info =
 
 settings-cancel-premium-subscription-title = Abonnement op { -brand-premium } opzeggen
 settings-cancel-premium-subscription-info = Uw abonnement wordt teruggezet naar een gratis account nadat de huidige factureringscyclus is afgelopen. De resultaten van uw privacybeschermingsscan worden permanent verwijderd en u heeft datalekmonitoring voor slechts één e-mailadres.
-settings-cancel-premium-subscription-link-label = Annuleren vanaf uw { -brand-fx-account }
 
 ## Deactivate account
 
 settings-deactivate-account-title = Account deactiveren
-# Deprecated
-settings-deactivate-account-info = U kunt { -product-short-name } deactiveren door uw { -brand-fx-account } te verwijderen.
 settings-deactivate-account-info-2 = U kunt { -product-short-name } deactiveren door uw { -brand-mozilla-account } te verwijderen.
-# Deprecated
-settings-fxa-link-label = Naar { -brand-firefox }-instellingen
 settings-fxa-link-label-3 = Naar { -brand-mozilla-account }-instellingen
 
 ## Add email dialog

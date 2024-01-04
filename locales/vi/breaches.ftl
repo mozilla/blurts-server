@@ -3,9 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-meta-title = { -brand-fx-monitor } - Trang tổng quan
+
 breach-all-meta-title = { -brand-fx-monitor } - Tất cả vụ rò rỉ dữ liệu
 breach-all-meta-social-title = Tất cả vụ rò rỉ dữ liệu được phát hiện bởi { -brand-fx-monitor }
 breach-all-meta-social-description = Duyệt qua danh sách đầy đủ các rò rỉ đã biết do { -brand-fx-monitor } phát hiện, sau đó tìm hiểu xem thông tin của bạn có bị lộ hay không.
+
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = { -brand-fx-monitor } - Rò rỉ dữ liệu từ { $company }
@@ -13,6 +15,7 @@ breach-detail-meta-title = { -brand-fx-monitor } - Rò rỉ dữ liệu từ { $
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Bạn có bị ảnh hưởng bởi rò rỉ dữ liệu từ { $company } không?
 breach-detail-meta-social-description = Sử dụng { -brand-fx-monitor } để tìm hiểu xem thông tin cá nhân của bạn có bị lộ trong lần rò rỉ này hay không và biết phải làm gì tiếp theo.
+
 breach-scan-meta-title = { -brand-fx-monitor } - Kết quả kiểm tra rò rỉ
 breach-scan-meta-social-title = { -brand-fx-monitor } Kết quả kiểm tra rò rỉ
 breach-scan-meta-social-description = Đăng nhập vào { -brand-fx-monitor } để giải quyết các rò rỉ và liên tục theo dõi mọi rò rỉ mới đã biết.
@@ -21,10 +24,13 @@ breach-scan-meta-social-description = Đăng nhập vào { -brand-fx-monitor } �
 
 # Data classes pie chart title
 breach-chart-title = Dữ liệu bị rò rỉ
+
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Rò rỉ dữ liệu đến { $email-select }
+
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored = { $count } trong tổng số { $total } email được giám sát
+
 # link to Settings page where user can add/remove emails and set message preferences
 manage-emails-link = Quản lý email
 
@@ -38,23 +44,28 @@ filter-label-resolved = Rò rỉ dữ liệu đã giải quyết
 column-company = CÔNG TY
 column-breached-data = DỮ LIỆU BỊ XÂM PHẠM
 column-detected = PHÁT HIỆN
+
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
 column-status-badge-resolved = Đã giải quyết
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Hoạt động
+
 breaches-resolve-heading = Giải quyết vụ rò rỉ này:
+
 breaches-none-headline = Không tìm thấy rò rỉ dữ liệu
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
 breaches-none-copy = Tin tốt! Không có rò rỉ dữ liệu đã biết nào được báo cáo cho { $email }. Chúng tôi sẽ tiếp tục theo dõi email này và sẽ cho bạn biết nếu có bất kỳ rò rỉ dữ liệu mới nào xảy ra.
 breaches-none-cta-blurb = Bạn có muốn giám sát một email khác không?
 breaches-none-cta-button = Thêm địa chỉ email
+
 breaches-all-resolved-headline = Tất cả các rò rỉ được giải quyết
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
 breaches-all-resolved-copy = Làm tốt lắm! Bạn đã giải quyết tất cả rò rỉ dữ liệu cho { $email }. Chúng tôi sẽ tiếp tục theo dõi email này và sẽ cho bạn biết nếu có bất kỳ rò rỉ dữ liệu mới nào xảy ra.
 breaches-all-resolved-cta-blurb = Bạn có muốn giám sát một email khác không?
 breaches-all-resolved-cta-button = Thêm địa chỉ email
+
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 # Variables:
 #   $breachDate (String) - Date of the breach
@@ -70,6 +81,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Cập nhật mật khẩu của bạn và bật xác thực hai yếu tố (2FA).
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -138,6 +150,7 @@ breach-checklist-phone-header-2 = Bảo vệ số điện thoại của bạn b�
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Cập nhật các câu hỏi bảo mật của bạn.
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = Trong hầu hết các trường hợp, chúng tôi khuyên bạn nên cập nhật các câu hỏi bảo mật của mình trên trang web của công ty. Nhưng <b>trang web của họ có thể ngừng hoạt động hoặc chứa nội dung độc hại</b>, vì vậy hãy thận trọng nếu bạn <breached-company-link>truy cập trang web</breached-company-link>. Để tăng cường bảo vệ, hãy cập nhật các câu hỏi bảo mật này trên bất kỳ tài khoản quan trọng nào mà bạn đã sử dụng chúng và tạo các mật khẩu duy nhất cho tất cả các tài khoản.
 

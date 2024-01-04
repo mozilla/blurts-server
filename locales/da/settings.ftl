@@ -31,6 +31,7 @@ settings-email-verification-callout = Bekræftelse af mailadresse påkrævet
 settings-resend-email-verification-link = Send bekræftelsesmail igen
 settings-add-email-button = Tilføj mailadresse
 settings-delete-email-button = Slet mailadresse
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -45,16 +46,11 @@ settings-email-number-of-breaches-info =
 
 settings-cancel-premium-subscription-title = Annuller { -brand-premium }-abonnement
 settings-cancel-premium-subscription-info = Dit abonnement vender tilbage til at være en gratis konto, når den aktuelle faktureringsperiode slutter. Resultaterne af dine privatlivsscanninger slettes permanent, og kun én mailadresse overvåges for datalæk.
-settings-cancel-premium-subscription-link-label = Annuller fra din { -brand-fx-account }
 
 ## Deactivate account
 
 settings-deactivate-account-title = Deaktiver konto
-# Deprecated
-settings-deactivate-account-info = Du kan deaktivere { -product-short-name } ved at slette din { -brand-fx-account }.
 settings-deactivate-account-info-2 = Du kan deaktivere { -product-short-name } ved at slette din { -brand-mozilla-account }.
-# Deprecated
-settings-fxa-link-label = Gå til { -brand-firefox }-indstillinger
 settings-fxa-link-label-3 = Gå til indstillingerne for { -brand-mozilla-account }
 
 ## Add email dialog

@@ -3,9 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-meta-title = { -brand-fx-monitor } - 仪表板
+
 breach-all-meta-title = { -brand-fx-monitor } - 所有数据泄露
 breach-all-meta-social-title = { -brand-fx-monitor } 检测到的所有泄漏事件
 breach-all-meta-social-description = 浏览 { -brand-fx-monitor } 检测到的已知泄漏事件的完整列表，然后查明您的信息是否已泄露。
+
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = { -brand-fx-monitor } - { $company } 的数据泄露
@@ -13,6 +15,7 @@ breach-detail-meta-title = { -brand-fx-monitor } - { $company } 的数据泄露
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = 您是否受到 { $company } 数据泄露事件的影响？
 breach-detail-meta-social-description = 使用 { -brand-fx-monitor } 查明您的个人信息是否在此泄漏事件中暴露，并了解下一步该怎么做。
+
 breach-scan-meta-title = { -brand-fx-monitor } - 数据泄漏结果
 breach-scan-meta-social-title = { -brand-fx-monitor } 数据泄漏结果
 breach-scan-meta-social-description = 登录 { -brand-fx-monitor } 以解决数据泄漏并持续监控任何新的已知数据泄漏事件。
@@ -21,10 +24,13 @@ breach-scan-meta-social-description = 登录 { -brand-fx-monitor } 以解决数�
 
 # Data classes pie chart title
 breach-chart-title = 外泄的数据
+
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = { $email-select } 的数据外泄
+
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored = 已监控 { $count } 个邮箱，共 { $total } 个邮箱
+
 # link to Settings page where user can add/remove emails and set message preferences
 manage-emails-link = 管理电子邮件
 
@@ -38,23 +44,28 @@ filter-label-resolved = 已处理的数据外泄事件
 column-company = 公司
 column-breached-data = 外泄的数据
 column-detected = 监测到
+
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
 column-status-badge-resolved = 已解决
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = 未完成任务
+
 breaches-resolve-heading = 处理此外泄事件
+
 breaches-none-headline = 未发现数据泄漏
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
 breaches-none-copy = 好消息！ { $email } 没有已知的数据泄漏报告。我们将继续监控这封电子邮件，如果发生任何新的数据泄漏事件，我们会通知您。
 breaches-none-cta-blurb = 您想监控另一个邮箱吗？
 breaches-none-cta-button = 添加电子邮件地址
+
 breaches-all-resolved-headline = 所有数据泄漏均已解决
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
 breaches-all-resolved-copy = 做得很好！您已解决 { $email } 的所有数据泄漏问题。我们将继续监控这封电子邮件，如果发生任何新的数据泄漏事件，我们会通知您。
 breaches-all-resolved-cta-blurb = 您想监控另一个邮箱吗？
 breaches-all-resolved-cta-button = 添加电子邮件地址
+
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 # Variables:
 #   $breachDate (String) - Date of the breach
@@ -70,6 +81,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = 更新您的密码并启用双因子身份验证（2FA）。
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -138,6 +150,7 @@ breach-checklist-phone-header-2 = 使用 { $firefoxRelayLink } 等服务来保�
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = 更新您的安全问题。
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = 在大多数情况下，我们建议您在该公司的网站上更新您的安全问题。但是<b>他们的网站可能会关闭或包含恶意内容</b>，因此您<breached-company-link>访问该网站</breached-company-link>时，请谨慎行事。为了加强保护，请在您使用过的任何重要账户上更新这些安全问题，并为不同的账户创建不同的密码。
 

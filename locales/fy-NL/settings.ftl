@@ -31,6 +31,7 @@ settings-email-verification-callout = E-mailferifikaasje fereaske
 settings-resend-email-verification-link = Ferifikaasje-e-mailberjocht opnij ferstjoere
 settings-add-email-button = E-mailadres tafoegje
 settings-delete-email-button = E-mailadres fuortsmite
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -45,16 +46,11 @@ settings-email-number-of-breaches-info =
 
 settings-cancel-premium-subscription-title = Abonnemint op { -brand-premium } opsizze
 settings-cancel-premium-subscription-info = Jo abonnemint wurdt weromset nei in fergees account neidat de aktuele fakturearingssyklus ôfrûn is. De resultaten fan jo privacybeskermingsscan wurde permanint fuortsmiten en jo hawwe datalekmonitoring foar mar ien e-mailadres.
-settings-cancel-premium-subscription-link-label = Annulearje fan jo { -brand-fx-account } ôf
 
 ## Deactivate account
 
 settings-deactivate-account-title = Account de-aktivearje
-# Deprecated
-settings-deactivate-account-info = Jo kinne { -product-short-name } de-aktivearje troch jo { -brand-fx-account } fuort te smiten.
 settings-deactivate-account-info-2 = Jo kinne { -product-short-name } de-aktivearje troch jo { -brand-mozilla-account } fuort te smiten.
-# Deprecated
-settings-fxa-link-label = Gean nei { -brand-firefox }-ynstellingen
 settings-fxa-link-label-3 = Nei { -brand-mozilla-account }-ynstellingen
 
 ## Add email dialog
