@@ -63,12 +63,14 @@ export function UpsellButton(props: Props) {
       <Button {...triggerProps} variant="primary" small>
         {props.label}
       </Button>
-      <UpsellDialog
-        {...overlayProps}
-        state={dialogState}
-        monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-        yearlySubscriptionUrl={props.yearlySubscriptionUrl}
-      />
+      {dialogState.isOpen && (
+        <UpsellDialog
+          {...overlayProps}
+          state={dialogState}
+          monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+          yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+        />
+      )}
     </>
   );
 }
@@ -105,12 +107,14 @@ function UpsellToggleButton(props) {
         {l10n.getString("upsell-badge-label")} {state.isSelected ? "On" : "Off"}
         <span className={styles.toggleIndicator} />
       </button>
-      <UpsellDialog
-        {...overlayProps}
-        state={dialogState}
-        monthlySubscriptionUrl={props.monthlySubscriptionUrl}
-        yearlySubscriptionUrl={props.yearlySubscriptionUrl}
-      />
+      {dialogState.isOpen && (
+        <UpsellDialog
+          {...overlayProps}
+          state={dialogState}
+          monthlySubscriptionUrl={props.monthlySubscriptionUrl}
+          yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+        />
+      )}
     </>
   );
 }
