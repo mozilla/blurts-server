@@ -8,7 +8,7 @@ import { ReactNode, useState } from "react";
 import { useL10n } from "../../../hooks/l10n";
 import styles from "./LandingView.module.scss";
 import { CloseBigIcon } from "../../../components/server/Icons";
-import Link from "next/link";
+import { useTelemetry } from "../../../hooks/useTelemetry";
 
 export type FaqItemProps = {
   question: string;
@@ -39,6 +39,7 @@ export const FaqSection = ({
   isEligibleForPremium: boolean;
 }) => {
   const l10n = useL10n();
+  const record = useTelemetry();
   const [expandedQuestion, setExpandedQuestion] = useState<string | null>(null);
 
   const handleExpandAnswer = (question: string) => {
@@ -52,13 +53,18 @@ export const FaqSection = ({
       <b className={styles.faqTitle}>
         {l10n.getString("landing-all-faq-title")}
       </b>
-      <Link
+      <a
         className={styles.faqCta}
         href={process.env.NEXT_PUBLIC_FAQ_MONITOR as string}
         target="_blank"
+        onClick={() => {
+          record("link", "click", {
+            button_id: "see_all_faqs",
+          });
+        }}
       >
         {l10n.getString("landing-all-faq-see-all")}
-      </Link>
+      </a>
       <dl>
         {isEligibleForPremium && (
           <FaqItem
