@@ -107,6 +107,7 @@ const HighRiskBreachWrapper = (props: {
         subscriberEmails={[]}
         type={props.type}
         data={data}
+        isEligibleForPremium={true}
       />
     </Shell>
   );

@@ -208,7 +208,7 @@ export default async function Settings() {
               </h3>
               <p className="settings-section-info">
                 {l10n.getString("settings-email-limit-info", {
-                  limit: AppConstants.MAX_NUM_ADDRESSES,
+                  limit: AppConstants.NEXT_PUBLIC_MAX_NUM_ADDRESSES,
                 })}
               </p>
 
@@ -219,7 +219,10 @@ export default async function Settings() {
                 data-dialog="addEmail"
                 disabled={
                   emails.length >=
-                  Number.parseInt(AppConstants.MAX_NUM_ADDRESSES, 10)
+                  Number.parseInt(
+                    AppConstants.NEXT_PUBLIC_MAX_NUM_ADDRESSES,
+                    10,
+                  )
                 }
               >
                 {l10n.getString("settings-add-email-button")}

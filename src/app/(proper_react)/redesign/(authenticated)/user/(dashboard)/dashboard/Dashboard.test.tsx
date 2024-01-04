@@ -20,6 +20,7 @@ import Meta, {
   DashboardUsNoPremiumNoScanNoBreaches,
   DashboardUsNoPremiumNoScanUnresolvedBreaches,
   DashboardUsNoPremiumNoScanResolvedBreaches,
+  DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
   DashboardUsNoPremiumEmptyScanNoBreaches,
   DashboardUsNoPremiumEmptyScanUnresolvedBreaches,
   DashboardUsNoPremiumEmptyScanResolvedBreaches,
@@ -428,7 +429,7 @@ it("shows US users with Premium the Premium badge", () => {
   render(<ComposedDashboard />);
 
   // We show a Premium badge on desktop in the toolbar and in the mobile menu
-  const premiumBadges = screen.queryAllByText("Premium");
+  const premiumBadges = screen.queryAllByText("Monitor Plus");
   expect(premiumBadges.length).toBe(2);
 });
 
@@ -441,7 +442,7 @@ it("shows US users without Premium the upsell button", () => {
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
   const premiumCtas = screen.queryAllByRole("button", {
-    name: "Upgrade to ⁨Premium⁩",
+    name: "Subscribe to ⁨Monitor Plus⁩",
   });
   expect(premiumCtas.length).toBe(2);
 });
@@ -451,7 +452,7 @@ it("does not show non-US users the Premium badge", () => {
   render(<ComposedDashboard />);
 
   // We show a Premium badge on desktop in the toolbar and in the mobile menu
-  const premiumBadges = screen.queryAllByText("Premium");
+  const premiumBadges = screen.queryAllByText("Monitor Plus");
   expect(premiumBadges.length).toBe(0);
 });
 
@@ -461,7 +462,7 @@ it("does not show non-US users the upsell button", () => {
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
   const premiumCtas = screen.queryAllByRole("button", {
-    name: "Upgrade to ⁨Premium⁩",
+    name: "Subscribe to ⁨Monitor Plus⁩",
   });
   expect(premiumCtas.length).toBe(0);
 });
@@ -476,30 +477,30 @@ it("opens and closes the premium upsell dialog via the Premium upsell badge)", a
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
   const premiumCtas = screen.queryAllByRole("button", {
-    name: "Upgrade to ⁨Premium⁩",
+    name: "Subscribe to ⁨Monitor Plus⁩",
   });
   expect(premiumCtas.length).toBe(2);
 
   // Shows the modal for the desktop layout
   await user.click(premiumCtas[0]);
   expect(
-    screen.getByText("Choose the level of protection that’s right for you"),
+    screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).toBeInTheDocument();
   const closeButtonIcon1 = screen.getByLabelText("Close");
   await user.click(closeButtonIcon1.parentElement as HTMLElement);
   expect(
-    screen.queryByText("Choose the level of protection that’s right for you"),
+    screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).not.toBeInTheDocument();
 
   // Shows the modal for the mobile layout
   await user.click(premiumCtas[1]);
   expect(
-    screen.getByText("Choose the level of protection that’s right for you"),
+    screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).toBeInTheDocument();
   const closeButtonIcon2 = screen.getByLabelText("Close");
   await user.click(closeButtonIcon2.parentElement as HTMLElement);
   expect(
-    screen.queryByText("Choose the level of protection that’s right for you"),
+    screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).not.toBeInTheDocument();
 });
 
@@ -518,12 +519,12 @@ it("opens and closes the premium upsell dialog via the Premium upsell button)", 
 
   await user.click(premiumCta);
   expect(
-    screen.getByText("Choose the level of protection that’s right for you"),
+    screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).toBeInTheDocument();
   const closeButtonIcon1 = screen.getByLabelText("Close");
   await user.click(closeButtonIcon1.parentElement as HTMLElement);
   expect(
-    screen.queryByText("Choose the level of protection that’s right for you"),
+    screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).not.toBeInTheDocument();
 });
 
@@ -537,7 +538,7 @@ it("toggles between the product offerings in the premium upsell dialog", async (
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
   const premiumCtas = screen.queryAllByRole("button", {
-    name: "Upgrade to ⁨Premium⁩",
+    name: "Subscribe to ⁨Monitor Plus⁩",
   });
   expect(premiumCtas.length).toBe(2);
 
@@ -576,7 +577,7 @@ it("counts in Glean how often people click the upgrade CTA to purchase the month
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
   const premiumCtas = screen.queryAllByRole("button", {
-    name: "Upgrade to ⁨Premium⁩",
+    name: "Subscribe to ⁨Monitor Plus⁩",
   });
   await user.click(premiumCtas[0]);
   const productTabMonthly = screen.getByRole("tab", { name: "Monthly" });
@@ -610,7 +611,7 @@ it("counts in Glean how often people click the upgrade CTA to purchase the yearl
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
   const premiumCtas = screen.queryAllByRole("button", {
-    name: "Upgrade to ⁨Premium⁩",
+    name: "Subscribe to ⁨Monitor Plus⁩",
   });
   await user.click(premiumCtas[0]);
   // Switch to the monthly tab by clicking it...
@@ -646,7 +647,7 @@ it("shows returned free user who has resolved all tasks premium upsell and all f
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
   const premiumCtas = screen.queryAllByRole("button", {
-    name: "Upgrade to ⁨Premium⁩",
+    name: "Subscribe to ⁨Monitor Plus⁩",
   });
   expect(premiumCtas.length).toBe(2);
 
@@ -1086,6 +1087,114 @@ it("shows the correct dashboard banner CTA and sends telemetry for US users, wit
       button_id: "us_non_premium_no_scan",
     }),
   );
+});
+
+it("shows and skips a dialog that informs US users, without Premium, when we hit the broker scan limit", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "Get first scan free",
+  });
+  await user.click(dashboardTopBannerCta);
+  expect(
+    screen.getByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).toBeInTheDocument();
+  const closeButton = screen.getByRole("button", {
+    name: "Skip for now",
+  });
+  await user.click(closeButton);
+  expect(
+    screen.queryByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).not.toBeInTheDocument();
+});
+
+it("shows and closes a dialog that informs US users, without Premium, when we hit the broker scan limit", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "Get first scan free",
+  });
+  await user.click(dashboardTopBannerCta);
+  expect(
+    screen.getByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).toBeInTheDocument();
+  const closeButtonIcon1 = screen.getByLabelText("Close");
+  await user.click(closeButtonIcon1.parentElement as HTMLElement);
+  expect(
+    screen.queryByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).not.toBeInTheDocument();
+});
+
+it("shows a dialog with a link to the waitlist to US users, without Premium, when we hit the broker scan limit", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "Get first scan free",
+  });
+  await user.click(dashboardTopBannerCta);
+  expect(
+    screen.getByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).toBeInTheDocument();
+  const waitlistLink = screen.getByRole("link", {
+    name: "Join the waitlist",
+  });
+  expect(waitlistLink).toHaveAttribute(
+    "href",
+    "https://www.mozilla.org/products/monitor/waitlist-scan/",
+  );
+});
+
+it("shows a dialog that informs US users, without Premium, when we hit the broker scan limit when clicking the exporsures zero state link", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBannerCta = screen.getByRole("button", {
+    name: "start your free scan",
+  });
+  await user.click(dashboardTopBannerCta);
+  expect(
+    screen.getByRole("dialog", {
+      name: "⁨Monitor⁩ is currently at capacity",
+    }),
+  ).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumEmptyScanNoBreaches
@@ -2213,6 +2322,39 @@ it("shows the correct dashboard banner CTA and sends telemetry for US user, with
   );
 });
 
+it("does not explain what 'in progress' means for users who cannot get Plus", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  const statusHeading = screen.getByText("Status");
+  const statusExplainerDialogTrigger = getByRole(statusHeading, "button", {
+    name: "Open",
+  });
+  await user.click(statusExplainerDialogTrigger);
+  expect(
+    screen.queryByText("This is a ⁨Monitor Plus⁩ feature.", { exact: false }),
+  ).not.toBeInTheDocument();
+});
+
+it("explains what 'in progress' means for Plus users", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const statusHeading = screen.getByText("Status");
+  const statusExplainerDialogTrigger = getByRole(statusHeading, "button", {
+    name: "Open",
+  });
+  await user.click(statusExplainerDialogTrigger);
+  expect(
+    screen.getByText("This is a ⁨Monitor Plus⁩ feature.", { exact: false }),
+  ).toBeInTheDocument();
+});
+
 // Check dashboard banner content for story DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches
 it("logs a warning and error in the story for an invalid user state", () => {
   const ComposedDashboard = composeStory(
@@ -2283,6 +2425,48 @@ it("closes previously active card onclick", async () => {
   await user.click(afterExpand[0]);
   const afterCollapse = screen.getAllByRole("button", { name: "Expand" });
   expect(initialState.length).toBe(afterCollapse.length);
+});
+
+it("does not allow non-US users to filter by exposure type, since they can only see a single exposure type (i.e. breaches)", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardNonUsUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const filterMenuButton = screen.getByRole("button", {
+    name: "Select filters",
+  });
+  await user.click(filterMenuButton);
+
+  const filterDialog = screen.getByRole("dialog");
+  const exposureTypeRadioGroup = queryByRole(filterDialog, "radiogroup", {
+    name: "Exposure type",
+  });
+
+  expect(exposureTypeRadioGroup).not.toBeInTheDocument();
+});
+
+it("allows Plus-eligible users to filter by exposure type", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const filterMenuButton = screen.getByRole("button", {
+    name: "Select filters",
+  });
+  await user.click(filterMenuButton);
+
+  const filterDialog = screen.getByRole("dialog");
+  const exposureTypeRadioGroup = getByRole(filterDialog, "radiogroup", {
+    name: "Exposure type",
+  });
+
+  expect(exposureTypeRadioGroup).toBeInTheDocument();
 });
 
 it("send Telemetry when users click on free scans when all exposures are fixed", async () => {

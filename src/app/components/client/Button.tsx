@@ -4,14 +4,14 @@
 
 "use client";
 
-import { ReactNode, RefObject, useRef } from "react";
+import { ReactNode, RefObject, forwardRef, useRef } from "react";
 import Link from "next/link";
 import styles from "./Button.module.scss";
 import { useButton } from "react-aria";
 
 export interface Props {
-  children: ReactNode;
-  variant: "primary" | "secondary";
+  variant: "primary" | "secondary" | "tertiary";
+  children?: ReactNode;
   className?: string;
   destructive?: boolean;
   disabled?: boolean;
@@ -19,9 +19,10 @@ export interface Props {
   isLoading?: boolean;
   small?: boolean;
   wide?: boolean;
+  buttonRef?: RefObject<HTMLButtonElement | HTMLAnchorElement>;
 }
 
-export const Button = (
+const ButtonComponent = (
   props: Props & Parameters<typeof useButton>[0], // AriaButtonOptions
 ) => {
   const {
@@ -37,8 +38,9 @@ export const Button = (
     ...otherProps
   } = props;
 
-  const buttonRef = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
-  const { buttonProps } = useButton(otherProps, buttonRef);
+  const ref = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
+  const { buttonProps } = useButton(otherProps, ref);
+  const buttonRef = props.buttonRef ?? ref;
 
   const classes = [
     styles.button,
@@ -78,3 +80,5 @@ export const Button = (
     </button>
   );
 };
+
+export const Button = forwardRef(ButtonComponent);

@@ -7,5 +7,7 @@
 
 add-email-add-another-heading = Legg til ei ny e-postadresse
 close-dialog-alt = Lat att dialogboks
+
 add-email-address-input-label = E-postadresse
 add-email-send-verification-button = Send stadfestingslenke
+

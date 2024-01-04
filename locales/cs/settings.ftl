@@ -33,6 +33,7 @@ settings-email-verification-callout = Vyžadováno ověření e-mailové adresy
 settings-resend-email-verification-link = Znovu poslat ověřovací e-mail
 settings-add-email-button = Přidat e-mailové adresy
 settings-delete-email-button = Smazat e-mailovou adresu
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -49,16 +50,11 @@ settings-email-number-of-breaches-info =
 
 settings-cancel-premium-subscription-title = Zrušit předplatné { -brand-premium }
 settings-cancel-premium-subscription-info = Po skončení aktuálního fakturačního období se vaše předplatné vrátí na bezplatný účet. Vaše výsledky kontroly ochrany soukromí budou trvale smazány a budete mít monitorování narušení dat pouze pro 1 e-mailovou adresu.
-settings-cancel-premium-subscription-link-label = Zrušit z vašeho { -brand-fx-account(case: "gen", capitalization: "lower") }
 
 ## Deactivate account
 
 settings-deactivate-account-title = Deaktivovat účet
-# Deprecated
-settings-deactivate-account-info = Službu { -product-short-name } můžete deaktivovat smazáním svého { -brand-fx-account(case: "gen", capitalization: "lower") }.
 settings-deactivate-account-info-2 = { -product-short-name } můžete deaktivovat odstraněním svého { -brand-mozilla-account(case: "gen", capitalization: "lower") }.
-# Deprecated
-settings-fxa-link-label = Přejít do nastavení { -brand-firefox(case: "gen") }
 settings-fxa-link-label-3 = Přejít do nastavení { -brand-mozilla-account(case: "gen") }
 
 ## Add email dialog

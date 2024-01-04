@@ -37,12 +37,15 @@ learn-more-mission = Læs mere om vores mission
 
 top-questions-about-monitor = De almindeligste spørgsmål om { -brand-fx-monitor }
 see-all-faq = Se alle ofte stillede spørgsmål
+
 # question and answer
 what-is-breach = Hvad er en datalæk helt præcist?
 when-info-exposed = En datalæk er, når personlige eller private oplysninger bliver afsløret, stjålet eller kopieret uden tilladelse. Denne type af sikkerhedshændelser kan skyldes cyberangreb på websteder, apps eller databaser, hvor folks personlige oplysninger er lagret. En datalæk kan også ske tilfældigt, fx hvis en persons login-oplysninger ved et uheld bliver publiceret offentligt.
+
 # question and answer
 what-do-i-do = Jeg har lige fundet ud af, at jeg er omfattet af en datalæk. Hvad gør jeg?
 visit-monitor-to-learn = Besøg { -brand-fx-monitor } for at se, hvad du skal gøre, hvis du er blevet ramt af en datalæk. Hackere udnytter, at folk genbruger deres adgangskoder, så det er vigtigt, at du har stærke og unikke adgangskoder til alle dine konti. Opbevar dine adgangskoder et sikkert sted, som kun du har adgang til - fx samme sted, du opbevarer dine vigtige dokumenter, eller i et særligt program til at håndtere adgangskoder.
+
 # question and answer
 what-gets-exposed = Hvilke oplysninger bliver kompromitteret i datalæk?
 depends-on-hackers = Forskellige typer af oplysninger kan blive afsløret i forskellige datalæk. Det kommer helt an på, hvilke data hackerne kan få fat i. I mange datalæk bliver mailadresser og adgangskoder afsløret, i andre er det følsomme data som fx oplysninger om betalingskort, pasnumre eller personnumre.
@@ -51,3 +54,4 @@ depends-on-hackers = Forskellige typer af oplysninger kan blive afsløret i fors
 
 see-if-data-breach = Se om du er blevet ramt af en datalæk
 hibp-footer-attribution = Information om datalæk stammer fra <b>{ -brand-HIBP }</b>
+

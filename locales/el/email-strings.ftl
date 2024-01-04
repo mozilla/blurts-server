@@ -2,18 +2,23 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
+
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
+
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Αναφορά { -product-name }
 report-date = Ημερομηνία αναφοράς:
 email-address = Διεύθυνση email:
+
 # A link to legal information about mozilla products.
 legal = Νομικά
+
 # Unsubscribe link in email.
 email-unsub-link = Κατάργηση εγγραφής
+
 # This string appears in the footer of breach report and breach alert emails.
 # { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
 # and uses the text from { email-unsub-link }. { $faqLink } is a link to the
@@ -21,18 +26,23 @@ email-unsub-link = Κατάργηση εγγραφής
 email-footer-blurb =
     Λαμβάνετε αυτό το email επειδή έχετε εγγραφεί στις ειδοποιήσεις του { -product-name }.
     Δεν θέλετε πλέον αυτά τα email; { $unsubLink }. Αυτό είναι ένα αυτοματοποιημένο email. Για υποστήριξη, επισκεφθείτε τις { $faqLink }.
+
 # This string appears in the footer of verification emails. { $faqLink } is a link
 # to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-verify-footer-copy =
     Λαμβάνετε αυτό το email επειδή έχετε εγγραφεί στις ειδοποιήσεις του { -product-name }.
     Αυτό είναι ένα αυτοματοποιημένο email. Για υποστήριξη, επισκεφθείτε τις { $faqLink }.
+
 # Button text
 verify-email-cta = Επαλήθευση email
+
 # Button text
 see-all-breaches = Προβολή όλων των παραβιάσεων
+
 # Headline of verification email
 email-link-expires = Αυτός ο σύνδεσμος λήγει σε 24 ώρες
 email-verify-blurb = Επαληθεύστε το email σας για να το προσθέσετε στο { -product-name } και εγγραφείτε για ειδοποιήσεις παραβίασης.
+
 # Email headline
 email-found-breaches-hl = Ορίστε μια σύνοψη των προηγούμενων παραβιάσεων δεδομένων
 
@@ -41,8 +51,10 @@ email-found-breaches-hl = Ορίστε μια σύνοψη των προηγού
 
 # Email headline
 email-breach-summary-for-email = Περίληψη παραβίασης για το { $userEmail }
+
 # Email headline
 email-no-breaches-hl = Το { $userEmail } δεν εμφανίστηκε σε καμία παραβίαση δεδομένων
+
 # Email headline
 email-alert-hl = Το { $userEmail } εμφανίστηκε σε νέα παραβίαση δεδομένων
 
@@ -50,25 +62,33 @@ email-alert-hl = Το { $userEmail } εμφανίστηκε σε νέα παρα
 
 # Subject line of email
 email-subject-found-breaches = Το { -product-name } βρήκε τις πληροφορίες σας σε αυτές τις παραβιάσεις
+
 # Subject line of email
 email-subject-no-breaches = Το { -product-name } δεν βρήκε γνωστές παραβιάσεις
+
 # Subject line of email
 email-subject-verify = Επαλήθευση email για το { -product-name }
+
 # Variables:
 #   $fxmLink (string) - Link to Firefox Monitor that uses the text from { -product-name }.
 learn-more-about-fxm = Μάθετε περισσότερα σχετικά με το { $fxmLink }
+
 email-sensitive-disclaimer =
     Λόγω της ευαίσθητης φύσης της διαρροής, τα εμπλεκόμενα email δεν ανιχνεύονται δημόσια. 
     Λαμβάνετε αυτήν την ειδοποίηση επειδή είστε επαληθευμένος κάτοχος αυτής της διεύθυνσης email.
+
 fxm-warns-you-no-breaches =
     Το { -product-name } σας προειδοποιεί σχετικά με παραβιάσεις που αφορούν προσωπικά σας δεδομένα. 
     Μέχρι στιγμής, δεν έχουν βρεθεί διαρροές. Θα σας ειδοποιήσουμε αν εμφανιστεί η διεύθυνση email σας σε κάποια νέα παραβίαση.
+
 fxm-warns-you-found-breaches =
     Το { -product-name } σας προειδοποιεί σχετικά με παραβιάσεις που αφορούν προσωπικά σας δεδομένα. 
     Έχετε εγγραφεί για λήψη ειδοποιήσεων αν εμφανιστεί η διεύθυνση email σας σε κάποια νέα παραβίαση.
+
 email-breach-alert-blurb =
     Το { -product-name } σας προειδοποιεί σχετικά με παραβιάσεις που αφορούν προσωπικά σας δεδομένα. 
     Μόλις λάβαμε στοιχεία σχετικά με παραβίαση δεδομένων άλλης εταιρείας.
+
 # Section headline
 monitor-another-email = Θέλετε να παρακολουθήσετε κάποιο άλλο email;
 

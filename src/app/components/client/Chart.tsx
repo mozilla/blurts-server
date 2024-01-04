@@ -17,14 +17,17 @@ import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import ModalImage from "../client/assets/modal-default-img.svg";
 import { DashboardSummary } from "../../functions/server/dashboard";
+import { SubscriberWaitlistDialog } from "./SubscriberWaitlistDialog";
 import { useTelemetry } from "../../hooks/useTelemetry";
 
 export type Props = {
   data: Array<[string, number]>;
   isEligibleForFreeScan: boolean;
+  isEligibleForPremium: boolean;
   scanInProgress: boolean;
   isShowFixed: boolean;
   summary: DashboardSummary;
+  totalNumberOfPerformedScans: number;
 };
 
 export const DoughnutChart = (props: Props) => {
@@ -90,12 +93,23 @@ export const DoughnutChart = (props: Props) => {
   const modalContent = (
     <div className={styles.modalBodyContent}>
       <p>
-        {l10n.getString("modal-active-number-of-exposures-part-one", {
-          limit: 5,
-        })}
+        {l10n.getString(
+          props.isEligibleForPremium
+            ? "modal-active-number-of-exposures-part-one-premium"
+            : "modal-active-number-of-exposures-part-one-all",
+          {
+            limit: process.env.NEXT_PUBLIC_MAX_NUM_ADDRESSES!,
+          },
+        )}
       </p>
       <p>{l10n.getString("modal-active-number-of-exposures-part-two")}</p>
-      <p>{l10n.getString("modal-active-number-of-exposures-part-three")}</p>
+      <p>
+        {l10n.getString(
+          props.isEligibleForPremium
+            ? "modal-active-number-of-exposures-part-three-premium"
+            : "modal-active-number-of-exposures-part-three-all",
+        )}
+      </p>
       <div className={styles.confirmButtonWrapper}>
         <Button
           variant="primary"
@@ -118,16 +132,30 @@ export const DoughnutChart = (props: Props) => {
           <p>
             {l10n.getString("exposure-chart-returning-user-upgrade-prompt")}
           </p>
-          <Link
-            href="/redesign/user/welcome/free-scan?referrer=dashboard"
-            onClick={() => {
+          {props.totalNumberOfPerformedScans <
+          parseInt(
+            process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
+            10,
+          ) ? (
+            <Link href="/redesign/user/welcome/free-scan?referrer=dashboard"
+              onClick={() => {
               recordTelemetry("link", "click", {
                 link_id: "exposures_chart_free_scan",
               });
-            }}
-          >
-            {l10n.getString("exposure-chart-returning-user-upgrade-prompt-cta")}
-          </Link>
+            }}>
+              {l10n.getString(
+                "exposure-chart-returning-user-upgrade-prompt-cta",
+              )}
+            </Link>
+          ) : (
+            <SubscriberWaitlistDialog>
+              <Button variant="tertiary">
+                {l10n.getString(
+                  "exposure-chart-returning-user-upgrade-prompt-cta",
+                )}
+              </Button>
+            </SubscriberWaitlistDialog>
+          )}
         </>
       );
     }

@@ -37,12 +37,15 @@ learn-more-mission = Zjistěte více o naší misi
 
 top-questions-about-monitor = Nejčastější otázky o { -brand-fx-monitor(case: "loc") }
 see-all-faq = Prohlédněte si všechny často kladené otázky
+
 # question and answer
 what-is-breach = Co přesně je únik dat?
 when-info-exposed = Únik dat se odehraje, když dojde k vyzrazení, odcizení nebo zkopírování osobních údajů nebo soukromých informací bez udělení souhlasu. Tyto bezpečnostní incidenty mohou být důsledkem kybernetických útoků na webové stránky, aplikace nebo jakoukoli databázi, kde jsou uloženy osobní údaje lidí. K úniku dat může dojít také nedopatřením, například když se něčí přihlašovací údaje omylem zveřejní.
+
 # question and answer
 what-do-i-do = Právě jsem zjistil(a), že byly mé údaje součástí úniku dat. Co mám dělat?
 visit-monitor-to-learn = Navštivte { -brand-fx-monitor(case: "acc") } a zjistěte, co dělat po úniku dat. Hackeři spoléhají na to, že lidé budou hesla opakovaně používat, proto je důležité vytvořit silná a jedinečná hesla pro všechny vaše účty. Uchovávejte svá hesla na bezpečném místě, ke kterému máte přístup pouze vy. Může to být stejné místo, kam ukládáte důležité dokumenty nebo správce hesel.
+
 # question and answer
 what-gets-exposed = Jaké informace jsou při únicích dat vyzrazeny?
 depends-on-hackers = Ne všechny úniky vyzrazují stejné informace. Záleží jen na tom, k čemu mají hackeři přístup. Mnoho úniků dat vyzrazuje e-mailové adresy a hesla. Jiné vyzrazují citlivější informace, jako jsou čísla platebních karet, čísla pasů či rodná čísla.
@@ -51,3 +54,4 @@ depends-on-hackers = Ne všechny úniky vyzrazují stejné informace. Záleží 
 
 see-if-data-breach = Podívejte se, jestli jste součástí nějakého úniku dat.
 hibp-footer-attribution = Údaje o únicích poskytuje <b>{ -brand-HIBP }</b>
+

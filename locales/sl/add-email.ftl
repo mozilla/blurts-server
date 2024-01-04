@@ -7,6 +7,7 @@
 
 add-email-add-another-heading = Dodajte drug e-poštni naslov
 close-dialog-alt = Zapri pogovorno okno
+
 # $total is the number of emails a user is allowed to add
 add-email-your-account-includes =
     { $total ->
@@ -15,7 +16,9 @@ add-email-your-account-includes =
         [few] Vaš račun vključuje spremljanje največ { $total } e-poštnih naslovov. Dodajte nov e-poštni naslov in preverite, ali je bil vpleten v krajo podatkov.
        *[other] Vaš račun vključuje spremljanje največ { $total } e-poštnih naslovov. Dodajte nov e-poštni naslov in preverite, ali je bil vpleten v krajo podatkov.
     }
+
 add-email-address-input-label = E-poštni naslov
 add-email-send-verification-button = Pošlji potrditveno povezavo
+
 # $email is the newly added email address. $settings-href is the URL for the Settings page. HTML tags should not be translated, e.g. `<a>`
 add-email-verify-the-link = Potrdite povezavo, poslano na { $email }, da ga dodate v { -brand-fx-monitor }. Upravljajte vse e-poštne naslove v <a { $settings-href }>Nastavitvah</a>.

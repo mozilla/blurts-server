@@ -15,7 +15,6 @@ import {
 } from "../../../../../../../apiMocks/mockData";
 import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
 import { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
-import { canSubscribeToPremium } from "../../../../../../functions/universal/user";
 import { CountryCodeProvider } from "../../../../../../../contextProviders/country-code";
 
 const brokerOptions = {
@@ -42,6 +41,7 @@ type DashboardWrapperProps = (
 ) & {
   brokers: keyof typeof brokerOptions;
   breaches: keyof typeof breachOptions;
+  totalNumberOfPerformedScans?: number;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
@@ -153,16 +153,14 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           user={user}
           userBreaches={breaches}
           userScanData={scanData}
-          isEligibleForPremium={canSubscribeToPremium({
-            user,
-            countryCode: props.countryCode,
-          })}
+          isEligibleForPremium={props.countryCode === "us"}
           isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
           enabledFeatureFlags={["FreeBrokerScan", "PremiumBrokerRemoval"]}
           monthlySubscriptionUrl=""
           yearlySubscriptionUrl=""
           fxaSettingsUrl=""
           scanCount={scanCount}
+          totalNumberOfPerformedScans={props.totalNumberOfPerformedScans ?? 0}
         />
       </Shell>
     </CountryCodeProvider>
@@ -244,6 +242,17 @@ export const DashboardUsNoPremiumNoScanResolvedBreaches: Story = {
     premium: false,
     breaches: "resolved",
     brokers: "no-scan",
+  },
+};
+
+export const DashboardUsNoPremiumNoScanNoBreachesScanLimitReached: Story = {
+  name: "US user, without Premium, without scan, with 0 breaches, Scan limit reached",
+  args: {
+    countryCode: "us",
+    premium: false,
+    breaches: "empty",
+    brokers: "no-scan",
+    totalNumberOfPerformedScans: 280000,
   },
 };
 

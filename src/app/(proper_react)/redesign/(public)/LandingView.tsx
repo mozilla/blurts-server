@@ -175,6 +175,20 @@ export const View = (props: Props) => {
         </div>
       </section>
 
+      <div className={styles.signUpEncouragementWrapper}>
+        <p className={styles.title}>
+          {props.l10n.getString("landing-all-get-started")}
+        </p>
+        <SignUpForm
+          eligibleForPremium={props.eligibleForPremium}
+          signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
+          eventId={{
+            cta: "clicked_get_scan_fourth",
+            field: "entered_email_address_fourth",
+          }}
+        />
+      </div>
+
       <section className={styles.socialProofWrapper}>
         <h2>
           {props.l10n.getString("landing-all-social-proof-title", {
@@ -201,6 +215,20 @@ export const View = (props: Props) => {
       {!props.eligibleForPremium && <HeresHowWeHelp />}
 
       <Plans {...props} />
+
+      <div className={styles.signUpEncouragementWrapper}>
+        <p className={styles.title}>
+          {props.l10n.getString("landing-all-take-back-data")}
+        </p>
+        <SignUpForm
+          eligibleForPremium={props.eligibleForPremium}
+          signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
+          eventId={{
+            cta: "clicked_get_scan_last",
+            field: "entered_email_address_last",
+          }}
+        />
+      </div>
     </main>
   );
 };

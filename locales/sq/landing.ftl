@@ -37,12 +37,15 @@ learn-more-mission = Mësoni më tepër rreth misionit tonë
 
 top-questions-about-monitor = Pyetjet kryesuese mbi { -brand-fx-monitor }
 see-all-faq = Shihini krejt PBR-të
+
 # question and answer
 what-is-breach = Ç’është tamam tamam një cenim të dhënash?
 when-info-exposed = Një cenim të dhënash ndodh kur informacion personal ose privat ekspozohet, vidhet ose kopjohet pa leje. Këto incidente sigurie mund të sjellin sulme kibernetike ndaj sajtesh, aplikacionesh apo çfarëdo baze të dhënash ku gjenden hollësi personale të njerëzve. Një cenim të dhënash mund të ndodhë edhe aksidentalisht, nëse kredencialet e hyrjes së dikujt ekspozohen publikisht në mënyrë aksidentale.
+
 # question and answer
 what-do-i-do = Sapo pashë se jam pjesë e një cenimi të dhënash. Ç’të bëj?
 visit-monitor-to-learn = Që të mësoni ç’të bëhet pas një cenimi të dhënash, vizitoni { -brand-fx-monitor }. Hacker-at bazohen te fakti që njerëzit ripërdorin fjalëkalime, ndaj është e rëndësishme të krijohen fjalëkalime të fuqishëm, unikë për krejt llogaritë tuaja. Ruajini fjalëkalimet tuaj në një vend të parrezik, ku mund të hyni vetëm ju; ky mund të jetë i njëjti vend me atë ku depozitoni dokumente të rëndësishëm, ose një përgjegjës fjalëkalimesh.
+
 # question and answer
 what-gets-exposed = Ç’hollësi ekspozohen në cenime të dhënash?
 depends-on-hackers = Jo krejt cenimet ekspozojnë të njëjtat hollësi. Kjo varet thjesht nga fakti se ku mund të hyjnë hacker-at. Mjaft cenime të dhënash ekspozojnë adresa email dhe fjalëkalime. Të tjera ekspozojnë informacion më rezervat, bie fjala, numra kartash krediti, numra pasaportash dhe numra sigurimesh shoqërore.
@@ -51,3 +54,4 @@ depends-on-hackers = Jo krejt cenimet ekspozojnë të njëjtat hollësi. Kjo var
 
 see-if-data-breach = Shihni nëse jeni përfshirë në shkelje të dhënash
 hibp-footer-attribution = Të dhëna cenimesh furnizuar nga <b>{ -brand-HIBP }</b>
+
