@@ -883,8 +883,6 @@ const TableColumnHeader = (props: {
         return props.scanLimit
           ? `${styles.freeCell} ${styles.freeHeadingCell}`
           : `${styles.plusCell} ${styles.plusHeadingCell}`;
-      default:
-        return `${styles.freeCell} ${styles.freeHeadingCell}`;
     }
   };
 
