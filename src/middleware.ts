@@ -6,12 +6,29 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import nextConfig from "../next.config";
 import { NextConfig } from "next";
+import { getCountryCode } from "./app/functions/server/getCountryCode";
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
-  const { nonce, cspHeader } = generateCspData();
-
   const requestHeaders = new Headers(request.headers);
+
+  if (requestHeaders.has("Accept-Language")) {
+    if (getCountryCode(request.headers) === "us") {
+      const oldPathname = request.nextUrl.pathname;
+      request.nextUrl.pathname = `/1${oldPathname}`;
+
+      return NextResponse.rewrite(request.nextUrl);
+    } else {
+      // Breach index and details pages are still on old site.
+      if (request.nextUrl.pathname.startsWith("breaches")) {
+        const oldPathname = request.nextUrl.pathname;
+        request.nextUrl.pathname = `/1${oldPathname}`;
+        return NextResponse.rewrite(request.nextUrl);
+      }
+    }
+  }
+
+  const { nonce, cspHeader } = generateCspData();
   requestHeaders.set("x-nonce", nonce);
   // Add the CSP to the request headers - that will make Next.js detect it and
   // add it to the inline `<script>` tags that it injects itself, as per

@@ -2,8 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
- /* eslint @typescript-eslint/no-var-requires: "off" */
-import { withSentryConfig } from "@sentry/nextjs"
+/* eslint @typescript-eslint/no-var-requires: "off" */
+import { withSentryConfig } from "@sentry/nextjs";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -131,6 +131,11 @@ const nextConfig = {
         destination: "https://support.mozilla.org/kb/how-stay-safe-web",
         permanent: false,
       },
+      {
+        source: "/redesign/:path*",
+        destination: "/:path*",
+        permanent: false,
+      },
     ];
   },
   webpack: (config, options) => {
@@ -170,4 +175,8 @@ const sentryOptions = {
   widenClientFileUpload: true,
 };
 
-export default withSentryConfig(nextConfig, sentryWebpackPluginOptions, sentryOptions)
+export default withSentryConfig(
+  nextConfig,
+  sentryWebpackPluginOptions,
+  sentryOptions,
+);

@@ -6,11 +6,11 @@ import { ReactNode } from "react";
 import Script from "next/script";
 import { L10nProvider } from "../../contextProviders/localization";
 import { getL10nBundles } from "../functions/server/l10n";
-import { HandleFalseDoorTest } from "./components/client/FalseDoorBanner";
+import { HandleFalseDoorTest } from "./1/components/client/FalseDoorBanner";
 import { getCountryCode } from "../functions/server/getCountryCode";
 import { headers } from "next/headers";
 import AppConstants from "../../appConstants";
-import { getNonce } from "./functions/server/getNonce";
+import { getNonce } from "./1/functions/server/getNonce";
 import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
 
 export default async function MigrationLayout({
