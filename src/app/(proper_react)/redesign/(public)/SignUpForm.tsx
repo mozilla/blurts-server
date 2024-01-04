@@ -19,7 +19,7 @@ export type Props = {
   isHero?: boolean;
   eventId: {
     cta: string;
-    field: string;
+    field?: string;
   };
   scanLimit: boolean;
 };

@@ -374,3 +374,24 @@
     align-self: center;
   }
 }
+
+.waitlistSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-lg;
+  padding: $layout-md $spacing-md;
+
+  .waitlistTitle {
+    text-align: center;
+    font: $text-title-2xs;
+    font-weight: 600;
+    line-height: 1.4;
+    font-family: var(--font-inter);
+    color: $color-purple-70;
+  }
+
+  a {
+    align-self: center;
+  }
+}

@@ -120,7 +120,7 @@ landing-premium-quote = There’s a $240 billion industry of <data_brokers>data 
 
 landing-premium-what-websites-sell-info-qn = What kinds of websites sell my personal information?
 landing-premium-what-websites-sell-info-ans = Certain websites are in the business of collecting and selling people’s personal information without their consent, which is unfortunately legal in the US. These sites are called data brokers and they make up a $240 billion dollar industry. They use sophisticated methods to collect personal, financial, location, and even health information, often without your consent or even your knowledge. They’ll sell what they’ve collected to third parties, profiting from your information and leaving you open to violations of your privacy and security.
-landing-premium-continuous-data-removal-qn = What kinds of websites sell my personal information?
+landing-premium-continuous-data-removal-qn = How does continuous data removal work?
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be plural.
 landing-premium-continuous-data-removal-ans = { $data_broker_sites_total_num ->
@@ -132,3 +132,5 @@ landing-premium-continuous-data-removal-ans = { $data_broker_sites_total_num ->
 landing-premium-max-scan = We’ve reached the maximum scans for the month. Enter your email to get on our waitlist.
 landing-premium-max-scan-at-capacity = At capacity
 landing-premium-max-scan-waitlist = Join waitlist
+landing-premium-waitlist-section-pt-1 = We’ve reached the maximum scans for the month.
+landing-premium-waitlist-section-pt-2 = Enter your email to get on our waitlist.
