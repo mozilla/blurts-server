@@ -17,7 +17,12 @@ setProjectAnnotations(
 
 // Prevent logs from cluttering up actual problems in our tests:
 failOnConsole({
+  shouldFailOnError: true,
   shouldFailOnWarn: true,
+  shouldFailOnInfo: true,
+  shouldFailOnDebug: true,
+  shouldFailOnLog: true,
+  shouldFailOnAssert: true,
 });
 
 // See https://www.benmvp.com/blog/avoiding-react-act-warning-when-accessibility-testing-next-link-jest-axe/
