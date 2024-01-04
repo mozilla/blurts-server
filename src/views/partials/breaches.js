@@ -81,10 +81,10 @@ export const breaches = data => `
       data-txt-other='${getMessage('other-data-class')}' 
       data-txt-none='${getMessage('none-data-class')}'>
     </circle-chart>
-    <figure class='email-stats' data-count=${data.emailTotalCount} data-total=${AppConstants.MAX_NUM_ADDRESSES}>
+    <figure class='email-stats' data-count=${data.emailTotalCount} data-total=${AppConstants.NEXT_PUBLIC_MAX_NUM_ADDRESSES}>
       <img src='/images/icon-email.svg' alt='' width='55' height='30'>
       <figcaption>
-        <strong>${getMessage('emails-monitored', { count: data.emailVerifiedCount, total: AppConstants.MAX_NUM_ADDRESSES })}</strong>
+        <strong>${getMessage('emails-monitored', { count: data.emailVerifiedCount, total: AppConstants.NEXT_PUBLIC_MAX_NUM_ADDRESSES })}</strong>
         <a href='/user/settings'>${getMessage('manage-emails-link')}</a>
       </figcaption>
     </figure>

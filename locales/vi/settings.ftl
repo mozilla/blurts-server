@@ -27,6 +27,7 @@ settings-email-verification-callout = Yêu cầu xác minh email
 settings-resend-email-verification-link = Gửi lại email xác minh
 settings-add-email-button = Thêm địa chỉ email
 settings-delete-email-button = Xóa địa chỉ email
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -37,16 +38,11 @@ settings-email-number-of-breaches-info = Xuất hiện trong { $breachCount } r�
 
 settings-cancel-premium-subscription-title = Hủy thuê bao { -brand-premium }
 settings-cancel-premium-subscription-info = Thuê bao của bạn sẽ trở lại tài khoản miễn phí sau khi chu kỳ thanh toán hiện tại kết thúc. Kết quả quét bảo vệ quyền riêng tư của bạn sẽ bị xóa vĩnh viễn và bạn sẽ chỉ được giám sát rò rỉ dữ liệu cho 1 địa chỉ email.
-settings-cancel-premium-subscription-link-label = Hủy từ { -brand-fx-account } của bạn
 
 ## Deactivate account
 
 settings-deactivate-account-title = Hủy kích hoạt tài khoản
-# Deprecated
-settings-deactivate-account-info = Bạn có thể hủy kích hoạt { -product-short-name } bằng cách xóa { -brand-fx-account } của mình.
 settings-deactivate-account-info-2 = Bạn có thể vô hiệu hóa { -product-short-name } bằng cách xoá { -brand-mozilla-account } của bạn.
-# Deprecated
-settings-fxa-link-label = Đi đến cài đặt { -brand-firefox }
 settings-fxa-link-label-3 = Đi đến cài đặt { -brand-mozilla-account }
 
 ## Add email dialog

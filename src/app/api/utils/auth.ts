@@ -25,7 +25,7 @@ import { SerializedSubscriber } from "../../../next-auth.js";
 const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   // As per https://mozilla.slack.com/archives/C4D36CAJW/p1683642497940629?thread_ts=1683642325.465929&cid=C4D36CAJW,
   // we should file a ticket against SVCSE with the `fxa` component to add
-  // a redirect URL of /api/auth/callback/fxa for Firefox Monitor,
+  // a redirect URL of /api/auth/callback/fxa for Mozilla Monitor,
   // for every environment we deploy to:
   id: "fxa",
   name: "Mozilla accounts",
@@ -67,6 +67,14 @@ export const authOptions: AuthOptions = {
       if (trigger === "update") {
         // Refresh the user data from FxA, in case e.g. new subscriptions got added:
         profile = await fetchUserInfo(token.subscriber?.fxa_access_token ?? "");
+        if (token.email) {
+          const updatedSubscriberData = await getSubscriberByEmail(token.email);
+          // MNTOR-2599 The breach_resolution object can get pretty big,
+          // causing the session token cookie to balloon in size,
+          // eventually resulting in a 400 Bad Request due to headers being too large.
+          delete updatedSubscriberData.breach_resolution;
+          token.subscriber = updatedSubscriberData;
+        }
       }
       if (profile) {
         token.fxa = {

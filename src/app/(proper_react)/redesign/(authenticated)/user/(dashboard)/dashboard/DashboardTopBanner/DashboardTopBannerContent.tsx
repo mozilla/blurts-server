@@ -16,6 +16,7 @@ import { ProgressCard } from "../../../../../../../components/client/ProgressCar
 import { Button } from "../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../hooks/l10n";
 import { PremiumButton } from "../../../../../../../components/client/PremiumBadge";
+import { SubscriberWaitlistDialog } from "../../../../../../../components/client/SubscriberWaitlistDialog";
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 
 export interface ContentProps {
@@ -54,6 +55,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     return (
       <ProgressCard
         isPremiumUser={isPremiumUser}
+        isEligibleForPremium={isEligibleForPremium}
         resolvedByYou={
           bannerData.dataBrokerManuallyResolvedDataPointsNum +
           bannerData.dataBreachFixedDataPointsNum
@@ -99,7 +101,16 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button href="/redesign/user/settings" small variant="primary">
+              <Button
+                href="/redesign/user/settings"
+                small
+                variant="primary"
+                onPress={() => {
+                  recordTelemetry("ctaButton", "click", {
+                    button_id: "non_eligible_premium_no_breaches",
+                  });
+                }}
+              >
                 {l10n.getString("dashboard-top-banner-monitor-more-cta")}
               </Button>
             </div>
@@ -113,7 +124,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </h3>
             <p>
               {l10n.getString(
-                "dashboard-exposures-breaches-scan-progress-description",
+                "dashboard-top-banner-non-us-protect-your-data-description-line1",
                 {
                   exposures_unresolved_num:
                     bannerData.totalDataPointsNum -
@@ -121,13 +132,27 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                     bannerData.dataBreachFixedDataPointsNum -
                     bannerData.dataBrokerInProgressDataPointsNum -
                     bannerData.dataBrokerManuallyResolvedDataPointsNum,
+                },
+              )}{" "}
+              {l10n.getString(
+                "dashboard-top-banner-non-us-protect-your-data-description-line2",
+                {
                   data_breach_unresolved_num:
                     bannerData.dataBreachUnresolvedNum,
                 },
               )}
             </p>
             <div className={styles.cta}>
-              <Button href={relevantGuidedStep.href} small variant="primary">
+              <Button
+                href={relevantGuidedStep.href}
+                small
+                variant="primary"
+                onPress={() => {
+                  recordTelemetry("ctaButton", "click", {
+                    button_id: "non_eligible_premium_unresolved_breaches",
+                  });
+                }}
+              >
                 {l10n.getString("dashboard-top-banner-protect-your-data-cta")}
               </Button>
             </div>
@@ -153,6 +178,9 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               <Button
                 onPress={() => {
                   contentProps.onShowFixed();
+                  recordTelemetry("ctaButton", "click", {
+                    button_id: "non_eligible_premium_resolved_breaches",
+                  });
                 }}
                 small
                 variant="primary"
@@ -184,17 +212,39 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button
-                href="/redesign/user/welcome/free-scan?referrer=dashboard"
-                small
-                variant="primary"
-              >
-                {l10n.getString(
-                  "dashboard-top-banner-monitor-protects-your-even-more-cta",
-                )}
-              </Button>
+              {props.totalNumberOfPerformedScans <
+              parseInt(
+                process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
+                10,
+              ) ? (
+                <Button
+                  href="/redesign/user/welcome/free-scan?referrer=dashboard"
+                  small
+                  variant="primary"
+                  onPress={() => {
+                    recordTelemetry("ctaButton", "click", {
+                      button_id: `us_non_premium_no_scan${
+                        contentProps.hasUnresolvedBreaches
+                          ? "_unresolved_breaches"
+                          : ""
+                      }`,
+                    });
+                  }}
+                >
+                  {l10n.getString(
+                    "dashboard-top-banner-monitor-protects-your-even-more-cta",
+                  )}
+                </Button>
+              ) : (
+                <SubscriberWaitlistDialog>
+                  <Button variant={"primary"} small>
+                    {l10n.getString(
+                      "dashboard-top-banner-monitor-protects-your-even-more-cta",
+                    )}
+                  </Button>
+                </SubscriberWaitlistDialog>
+              )}
             </div>
-            <br />
             <a
               href={process.env.NEXT_PUBLIC_HOW_IT_WORKS_SUMO_URL}
               target="_blank"
@@ -263,7 +313,21 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button href={relevantGuidedStep.href} small variant="primary">
+              <Button
+                href={relevantGuidedStep.href}
+                small
+                variant="primary"
+                onPress={() => {
+                  let buttonId = "us_non_premium_yes_scan";
+                  if (contentProps.hasUnresolvedBreaches)
+                    buttonId = buttonId.concat("_unresolved_breaches");
+                  if (contentProps.hasUnresolvedBrokers)
+                    buttonId = buttonId.concat("_unresolved_brokers");
+                  recordTelemetry("ctaButton", "click", {
+                    button_id: buttonId,
+                  });
+                }}
+              >
                 {l10n.getString("dashboard-top-banner-protect-your-data-cta")}
               </Button>
             </div>
@@ -291,7 +355,19 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button href={relevantGuidedStep.href} small variant="primary">
+              <Button
+                href={relevantGuidedStep.href}
+                small
+                variant="primary"
+                onPress={() => {
+                  let buttonId = "us_non_premium_yes_scan";
+                  if (contentProps.hasUnresolvedBreaches)
+                    buttonId = buttonId.concat("_unresolved_breaches");
+                  recordTelemetry("ctaButton", "click", {
+                    button_id: buttonId,
+                  });
+                }}
+              >
                 {l10n.getString(
                   "dashboard-top-banner-lets-keep-protecting-cta",
                 )}
@@ -348,7 +424,24 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button href={relevantGuidedStep.href} small variant="primary">
+              <Button
+                href={relevantGuidedStep.href}
+                small
+                variant="primary"
+                onPress={() => {
+                  recordTelemetry("ctaButton", "click", {
+                    button_id: `us_${isPremiumUser ? "" : "non_"}premium${
+                      contentProps.hasUnresolvedBreaches
+                        ? "_unresolved_breaches"
+                        : ""
+                    }${
+                      contentProps.hasUnresolvedBrokers
+                        ? "_unresolved_brokers"
+                        : ""
+                    }`,
+                  });
+                }}
+              >
                 {l10n.getString(
                   "dashboard-top-banner-lets-keep-protecting-cta",
                 )}
@@ -374,7 +467,16 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button href="/redesign/user/settings" small variant="primary">
+              <Button
+                href="/redesign/user/settings"
+                small
+                variant="primary"
+                onPress={() => {
+                  recordTelemetry("ctaButton", "click", {
+                    button_id: "us_premium_yes_scan_no_exposures",
+                  });
+                }}
+              >
                 {l10n.getString("dashboard-top-banner-monitor-more-cta")}
               </Button>
             </div>
@@ -400,6 +502,9 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               <Button
                 onPress={() => {
                   contentProps.onShowFixed();
+                  recordTelemetry("ctaButton", "click", {
+                    button_id: "us_premium_yes_scan_all_resolved",
+                  });
                 }}
                 small
                 variant="primary"
@@ -436,7 +541,18 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button href="/redesign/user/settings" small variant="primary">
+              <Button
+                href="/redesign/user/settings"
+                small
+                variant="primary"
+                onPress={() => {
+                  recordTelemetry("ctaButton", "click", {
+                    button_id: `us_${
+                      isPremiumUser ? "" : "non_"
+                    }premium_scan_in_progress_no_breaches`,
+                  });
+                }}
+              >
                 {l10n.getString(
                   "dashboard-top-banner-scan-in-progress-no-results-cta",
                 )}
@@ -469,7 +585,18 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button href={relevantGuidedStep.href} small variant="primary">
+              <Button
+                href={relevantGuidedStep.href}
+                small
+                variant="primary"
+                onPress={() => {
+                  recordTelemetry("ctaButton", "click", {
+                    button_id: `us_${
+                      isPremiumUser ? "" : "non_"
+                    }premium_scan_in_progress_unresolved_breaches`,
+                  });
+                }}
+              >
                 {l10n.getString(
                   "dashboard-top-banner-scan-in-progress-results-found-cta",
                 )}
@@ -501,7 +628,18 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <Button href="/redesign/user/settings" small variant="primary">
+              <Button
+                href="/redesign/user/settings"
+                small
+                variant="primary"
+                onPress={() => {
+                  recordTelemetry("ctaButton", "click", {
+                    button_id: `us_${
+                      isPremiumUser ? "" : "non_"
+                    }premium_scan_in_progress_resolved_breaches`,
+                  });
+                }}
+              >
                 {l10n.getString(
                   "dashboard-top-banner-scan-in-progress-no-results-cta",
                 )}

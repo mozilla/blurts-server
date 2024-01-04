@@ -16,8 +16,12 @@ settings-page-title = Iɣewwaren n { -product-short-name }
 #   $email (string) - Email address
 settings-email-label-primary = { $email } (agejdan)
 
+## Cancel Premium subscription
+
 ## Deactivate account
 
 
 ## Add email dialog
+
+## Unsubscribe Dialog Survey
 

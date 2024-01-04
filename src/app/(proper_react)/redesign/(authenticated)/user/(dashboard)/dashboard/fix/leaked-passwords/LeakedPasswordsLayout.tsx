@@ -33,6 +33,7 @@ export interface LeakedPasswordsLayoutProps {
   type: LeakedPasswordsTypes;
   subscriberEmails: string[];
   data: StepDeterminationData;
+  isEligibleForPremium: boolean;
 }
 
 export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
@@ -185,6 +186,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         estimatedTime={!isStepDone ? 4 : undefined}
         isStepDone={isStepDone}
         data={props.data}
+        isEligibleForPremium={props.isEligibleForPremium}
       >
         <ResolutionContent content={content} locale={getLocale(l10n)} />
       </ResolutionContainer>

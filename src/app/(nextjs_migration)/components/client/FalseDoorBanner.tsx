@@ -5,7 +5,7 @@
 "use client";
 
 import Image from "next/image";
-import MozillaMonitorLogo from "../../../(proper_react)/images/firefox-monitor-logo.webp";
+import MozillaMonitorLogo from "../../../(proper_react)/images/monitor-logo.webp";
 import styles from "./FalseDoorBanner.module.scss";
 import { CloseBtn } from "../../../components/server/Icons";
 import { useEffect, useState } from "react";

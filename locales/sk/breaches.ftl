@@ -3,9 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-meta-title = { -brand-fx-monitor } - nástenka
+
 breach-all-meta-title = { -brand-fx-monitor } - všetky úniky údajov
 breach-all-meta-social-title = Všetky úniky údajov zistené službou { -brand-fx-monitor }
 breach-all-meta-social-description = Prezrite si úplný zoznam známych únikov údajov zistených službou { -brand-fx-monitor } a potom zistite, či boli vaše informácie odhalené.
+
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = { -brand-fx-monitor } - únik údajov spoločnosti { $company }
@@ -13,6 +15,7 @@ breach-detail-meta-title = { -brand-fx-monitor } - únik údajov spoločnosti { 
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Dotýka sa vás únik údajov spoločnosti { $company }?
 breach-detail-meta-social-description = Pomocou služby { -brand-fx-monitor } zistíte, či boli pri tomto úniku odhalené vaše osobné údaje, a dozviete sa, čo robiť ďalej.
+
 breach-scan-meta-title = { -brand-fx-monitor } - výsledky úniku údajov
 breach-scan-meta-social-title = { -brand-fx-monitor } - výsledky úniku údajov
 breach-scan-meta-social-description = Prihláste sa do služby { -brand-fx-monitor }, aby ste vyriešili úniky údajov a získali nepretržité monitorovanie všetkých nových známych únikov.
@@ -21,8 +24,10 @@ breach-scan-meta-social-description = Prihláste sa do služby { -brand-fx-monit
 
 # Data classes pie chart title
 breach-chart-title = Uniknuté údaje
+
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Úniky údajov pre { $email-select }
+
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored =
     { $total ->
@@ -31,6 +36,7 @@ emails-monitored =
         [many] Monitorované e‑maily: { $count } z { $total }
        *[other] Monitorované e‑maily: { $count } z { $total }
     }
+
 # link to Settings page where user can add/remove emails and set message preferences
 manage-emails-link = Spravovať e‑mailové adresy
 
@@ -44,23 +50,28 @@ filter-label-resolved = Vyriešené úniky
 column-company = SPOLOČNOSŤ
 column-breached-data = UNIKNUTÉ ÚDAJE
 column-detected = ZISTENÉ
+
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
 column-status-badge-resolved = Vyriešený
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Aktívny
+
 breaches-resolve-heading = Ako vyriešiť tento únik:
+
 breaches-none-headline = Neboli nájdené žiadne úniky údajov
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
 breaches-none-copy = Dobré správy! Pre adresu { $email } neboli hlásené žiadne známe úniky údajov. Túto adresu budeme naďalej sledovať a budeme vás informovať, ak dôjde k novým únikom.
 breaches-none-cta-blurb = Chcete monitorovať ďalšiu e‑mailovú adresu?
 breaches-none-cta-button = Pridať e‑mailovú adresu
+
 breaches-all-resolved-headline = Všetky úniky údajov vyriešené
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
 breaches-all-resolved-copy = Paráda! Vyriešili ste všetky úniky údajov pre adresu { $email }. Túto adresu budeme naďalej sledovať a budeme vás informovať, ak dôjde k novým únikom.
 breaches-all-resolved-cta-blurb = Chcete monitorovať ďalšiu e‑mailovú adresu?
 breaches-all-resolved-cta-button = Pridať e‑mailovú adresu
+
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 # Variables:
 #   $breachDate (String) - Date of the breach
@@ -76,6 +87,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Aktualizujte svoje heslá a povoľte dvojfaktorové overenie (2FA).
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -144,6 +156,7 @@ breach-checklist-phone-header-2 = Chráňte svoje telefónne číslo pomocou mas
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Aktualizujte svoje bezpečnostné otázky.
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = Vo väčšine prípadov vám odporúčame aktualizovať bezpečnostné otázky na webovej stránke spoločnosti. Ale <b>ich webová stránka môže byť nefunkčná alebo môže obsahovať škodlivý obsah</b>, preto buďte pri <breached-company-link>návšteve stránky</breached-company-link> opatrní. Ak chcete zvýšiť ochranu, aktualizujte tieto bezpečnostné otázky na všetkých dôležitých účtoch, kde ste ich používali, a vytvorte jedinečné heslá pre všetky účty.
 

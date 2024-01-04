@@ -52,6 +52,7 @@ const SecurityRecommendationsWrapper = (props: {
           subscriberBreaches: mockedBreaches,
           user: mockedSession.user,
         }}
+        isEligibleForPremium={true}
       />
     </Shell>
   );

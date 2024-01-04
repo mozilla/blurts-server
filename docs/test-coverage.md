@@ -14,6 +14,10 @@ For tests concerning the UI in particular, you can get the most bang for your bu
 
 Both of those measures ensure we won't have to update a whole bunch of unit tests unless we actually meaningfully change the behaviour for users, while still verifying the behaviour of a whole slew of components in one go.
 
+The easiest way to do so is usually by mock rendering a Storybook story in your test, and simulating user actions that you'd also run inside Storybook. To find examples of tests that do so, search the codebase for `composeStory`.
+
+If a page cannot be wrapped in a Storybook story (for example, because it calls [server actions](https://react.dev/reference/react/use-server), which Storybook [cannot ergonomically mock](https://storybook.js.org/blog/storybook-react-server-components/#mocked-and-loaded) at the time of writing), then you might need to render it directly inside your test. To ensure it doesn't trip over missing React Context variables while rendering, you'll probably want to wrap it in a `<TestComponentWrapper>` — again, search the codebase for it to find existing tests as examples.
+
 ## When is it OK not to add a test?
 
 What follows is a list of some reasons not to write a unit test - your ignore comments can refer to these reasons. However, this list is not exhaustive! If you come across another valid reason not to test a bit of code, feel free to add that to this list and then reference it in your code.

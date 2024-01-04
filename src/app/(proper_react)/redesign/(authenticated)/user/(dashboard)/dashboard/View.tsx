@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import Image from "next/image";
 import { Session } from "next-auth";
 import { OnerepScanResultRow } from "knex/types/tables";
@@ -40,6 +40,9 @@ import ScanProgressIllustration from "./images/scan-illustration.svg";
 import { CountryCodeContext } from "../../../../../../../contextProviders/country-code";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { getNextGuidedStep } from "../../../../../../functions/server/getRelevantGuidedSteps";
+import { SubscriberWaitlistDialog } from "../../../../../../components/client/SubscriberWaitlistDialog";
+import { useOverlayTriggerState } from "react-stately";
+import { useOverlayTrigger } from "react-aria";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 
 export type Props = {
@@ -53,6 +56,7 @@ export type Props = {
   yearlySubscriptionUrl: string;
   fxaSettingsUrl: string;
   scanCount: number;
+  totalNumberOfPerformedScans: number;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -204,23 +208,39 @@ export const View = (props: Props) => {
     let exposuresAreaDescription;
 
     if (hasUnresolvedExposures) {
-      exposuresAreaDescription = l10n.getString(
-        "dashboard-exposures-area-description",
-        {
-          exposures_unresolved_num:
-            totalDataPointsNum -
-            dataBrokerAutoFixedDataPointsNum -
-            dataBreachFixedDataPointsNum -
-            dataBrokerInProgressDataPointsNum -
-            dataBrokerManuallyResolvedDataPointsNum,
-          data_breach_unresolved_num: dataBreachUnresolvedNum,
-          data_broker_unresolved_num:
-            dataBrokerTotalNum -
-            dataBrokerAutoFixedNum -
-            dataBrokerManuallyResolvedNum -
-            dataBrokerInProgressNum,
-        },
-      );
+      if (props.isEligibleForPremium) {
+        exposuresAreaDescription = l10n.getString(
+          "dashboard-exposures-area-description-premium",
+          {
+            exposures_unresolved_num:
+              totalDataPointsNum -
+              dataBrokerAutoFixedDataPointsNum -
+              dataBreachFixedDataPointsNum -
+              dataBrokerInProgressDataPointsNum -
+              dataBrokerManuallyResolvedDataPointsNum,
+            data_breach_unresolved_num: dataBreachUnresolvedNum,
+            data_broker_unresolved_num:
+              dataBrokerTotalNum -
+              dataBrokerAutoFixedNum -
+              dataBrokerManuallyResolvedNum -
+              dataBrokerInProgressNum,
+          },
+        );
+      } else {
+        exposuresAreaDescription =
+          l10n.getString("dashboard-exposures-area-description-all-line1", {
+            exposures_unresolved_num:
+              totalDataPointsNum -
+              dataBrokerAutoFixedDataPointsNum -
+              dataBreachFixedDataPointsNum -
+              dataBrokerInProgressDataPointsNum -
+              dataBrokerManuallyResolvedDataPointsNum,
+          }) +
+          " " +
+          l10n.getString("dashboard-exposures-area-description-all-line2", {
+            data_breach_unresolved_num: dataBreachUnresolvedNum,
+          });
+      }
     }
 
     if (initialScanInProgress && !noUnresolvedExposures) {
@@ -259,34 +279,65 @@ export const View = (props: Props) => {
   const TabContentFixed = () => (
     <>
       <h2 className={styles.exposuresAreaHeadline}>
-        {l10n.getString("dashboard-fixed-area-headline")}
+        {l10n.getString(
+          props.isEligibleForPremium
+            ? "dashboard-fixed-area-headline-premium"
+            : "dashboard-fixed-area-headline-all",
+        )}
       </h2>
     </>
   );
 
+  const waitlistTriggerRef = useRef<HTMLAnchorElement>(null);
+  const dialogTriggerState = useOverlayTriggerState({});
+  const overlayTrigger = useOverlayTrigger(
+    { type: "dialog" },
+    dialogTriggerState,
+    waitlistTriggerRef,
+  );
+
   const freeScanCta = props.isEligibleForFreeScan && (
-    <p>
-      {l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
-        vars: {
-          data_broker_total_num: parseInt(
-            process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-            10,
-          ),
-        },
-        elems: {
-          a: (
-            <a
-              href="/redesign/user/welcome/free-scan?referrer=dashboard"
-              onClick={() =>
-                recordTelemetry("link", "click", {
-                  link_id: "exposures_all_fixed_free_scan",
-                })
-              }
-            />
-          ),
-        },
-      })}
-    </p>
+    <>
+      <SubscriberWaitlistDialog
+        triggerRef={waitlistTriggerRef}
+        dialogTriggerState={dialogTriggerState}
+        overlayTrigger={overlayTrigger}
+      />
+      <p>
+        {l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
+          vars: {
+            data_broker_total_num: parseInt(
+              process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+              10,
+            ),
+          },
+          elems: {
+            a:
+              props.totalNumberOfPerformedScans <
+              parseInt(
+                process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
+                10,
+              ) ? (
+                <a
+                  ref={waitlistTriggerRef}
+                  href="/redesign/user/welcome/free-scan?referrer=dashboard"
+                  onClick={() => {
+                    recordTelemetry("link", "click", {
+                      link_id: "exposures_all_fixed_free_scan",
+                    });
+                  }}
+                />
+              ) : (
+                <Button
+                  variant="tertiary"
+                  buttonRef={waitlistTriggerRef}
+                  {...overlayTrigger.triggerProps}
+                />
+              ),
+          },
+        })}
+      </p>
+    </>
   );
 
   const getZeroStateIndicator = () => {
@@ -371,6 +422,7 @@ export const View = (props: Props) => {
           }}
           monthlySubscriptionUrl={props.monthlySubscriptionUrl}
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+          totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
         />
         <section className={styles.exposuresArea}>
           {selectedTab === "action-needed" ? (
@@ -384,6 +436,7 @@ export const View = (props: Props) => {
             initialFilterValues={initialFilterState}
             filterValues={filters}
             setFilterValues={setFilters}
+            isEligibleForPremium={props.isEligibleForPremium}
           />
         </div>
         {noUnresolvedExposures ? (

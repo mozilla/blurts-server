@@ -16,6 +16,8 @@ settings-email-verification-callout = Runik'oxik taqoya'l xajowäx
 settings-resend-email-verification-link = Titaq chik jikib'an taqoya'l
 settings-add-email-button = Titz'aqatisäx rochochib'al taqoya'l
 
+## Cancel Premium subscription
+
 ## Deactivate account
 
 
@@ -23,3 +25,6 @@ settings-add-email-button = Titz'aqatisäx rochochib'al taqoya'l
 
 settings-email-input-label = Rochochib'al taqoya'l
 settings-send-email-verification-button = Titaq ruximonel jikib'anïk
+
+## Unsubscribe Dialog Survey
+

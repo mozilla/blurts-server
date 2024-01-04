@@ -4,7 +4,7 @@
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -711,7 +711,7 @@ ad-unit-6-before-you-complete = Mielőtt befejezné a következő regisztráció
 
 -brand-firefox = Firefox
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
 -brand-monitor-premium = Monitor Premium
@@ -719,6 +719,8 @@ ad-unit-6-before-you-complete = Mielőtt befejezné a következő regisztráció
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
@@ -732,8 +734,10 @@ meta-desc-2 = Tudja meg a { -brand-fx-monitor } segítségével, hogy érintett 
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Bejelentkezés
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
