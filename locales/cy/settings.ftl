@@ -35,6 +35,7 @@ settings-email-verification-callout = Mae angen gwirio'r e-bost
 settings-resend-email-verification-link = Ail-anfon yr e-bost gwirio
 settings-add-email-button = Ychwanegu cyfeiriad e-bost
 settings-delete-email-button = Dileu cyfeiriad e-bost
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -53,16 +54,11 @@ settings-email-number-of-breaches-info =
 
 settings-cancel-premium-subscription-title = Diddymu tanysgrifiad { -brand-premium }
 settings-cancel-premium-subscription-info = Bydd eich tanysgrifiad yn dychwelyd i gyfrif am ddim ar ôl i'r cylch bilio cyfredol ddod i ben. Bydd canlyniadau eich sgan diogelu preifatrwydd yn cael eu dileu'n barhaol, a dim ond ar gyfer 1 cyfeiriad e-bost y bydd gennych fonitro tor-data.
-settings-cancel-premium-subscription-link-label = Diddymu'ch { -brand-fx-account }
 
 ## Deactivate account
 
 settings-deactivate-account-title = Analluogi cyfrif
-# Deprecated
-settings-deactivate-account-info = Gallwch ddadalluogi { -product-short-name } drwy ddileu eich { -brand-fx-account }.
 settings-deactivate-account-info-2 = Gallwch ddadweithredu { -product-short-name } drwy ddileu eich { -brand-mozilla-account }.
-# Deprecated
-settings-fxa-link-label = Ewch i Gosodiadau { -brand-firefox }
 settings-fxa-link-label-3 = Ewch i Gosodiadau { -brand-mozilla-account }
 
 ## Add email dialog

@@ -27,6 +27,7 @@ settings-email-verification-callout = 需要驗證信箱
 settings-resend-email-verification-link = 重寄驗證信
 settings-add-email-button = 新增電子郵件地址
 settings-delete-email-button = 刪除電子郵件地址
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -37,16 +38,11 @@ settings-email-number-of-breaches-info = 出現在 { $breachCount } 場已知的
 
 settings-cancel-premium-subscription-title = 取消 { -brand-premium } 訂閱
 settings-cancel-premium-subscription-info = 將在目前的帳務週期結束後恢復為免費帳號訂閱。將永久刪除您的隱私保護掃描結果，且僅能監控 1 個信箱的資料外洩事件。
-settings-cancel-premium-subscription-link-label = 從 { -brand-fx-account } 取消
 
 ## Deactivate account
 
 settings-deactivate-account-title = 停用帳號
-# Deprecated
-settings-deactivate-account-info = 您可以刪除 { -brand-fx-account } 來停用 { -product-short-name }。
 settings-deactivate-account-info-2 = 您可以刪除 { -brand-mozilla-account }來停用 { -product-short-name }。
-# Deprecated
-settings-fxa-link-label = 前往 { -brand-firefox } 設定
 settings-fxa-link-label-3 = 前往 { -brand-mozilla-account }設定
 
 ## Add email dialog

@@ -37,12 +37,15 @@ learn-more-mission = Weitere Infos zu unserer Mission
 
 top-questions-about-monitor = Häufigste Fragen zu { -brand-fx-monitor }
 see-all-faq = Alle häufig gestellten Fragen anzeigen
+
 # question and answer
 what-is-breach = Was genau ist ein Datenleck?
 when-info-exposed = Ein Datenleck tritt auf, wenn persönliche oder private Informationen offengelegt, gestohlen oder ohne Erlaubnis kopiert werden. Diese Sicherheitsvorfälle können das Ergebnis von Cyberangriffen auf Websites, Apps oder andere Datenbanken sein, in denen sich personenbezogene Daten von Personen befinden. Ein Datenleck kann auch versehentlich passieren, beispielsweise wenn die Anmeldedaten einer Person versehentlich öffentlich gepostet werden.
+
 # question and answer
 what-do-i-do = Ich habe gerade erfahren, dass ich von einem Datenleck betroffen bin. Was muss ich als Nächstes tun?
 visit-monitor-to-learn = Besuchen Sie { -brand-fx-monitor }, um zu erfahren, was nach einem Datenleck zu tun ist. Hacker verlassen sich darauf, dass Menschen Passwörter wiederverwenden, daher ist es wichtig, starke, eindeutige Passwörter für alle Ihre Konten zu erstellen. Bewahren Sie Ihre Passwörter an einem sicheren Ort auf, auf den nur Sie Zugriff haben; dies kann derselbe Ort sein, an dem Sie wichtige Dokumente speichern, oder ein Passwort-Manager.
+
 # question and answer
 what-gets-exposed = Welche Informationen werden bei Datenlecks offengelegt?
 depends-on-hackers = Nicht alle Datenlecks legen dieselben Informationen offen. Es hängt nur davon ab, worauf Hacker zugreifen können. Viele Datenlecks legen E-Mail-Adressen und Passwörter offen. Andere geben sensiblere Informationen wie Kreditkartennummern, Passnummern und Sozialversicherungsnummern preis.
@@ -51,3 +54,4 @@ depends-on-hackers = Nicht alle Datenlecks legen dieselben Informationen offen. 
 
 see-if-data-breach = Überprüfen Sie, ob Sie von einem Datenleck betroffen sind
 hibp-footer-attribution = Die Informationen zu Datenlecks wurden bereitgestellt von <b>{ -brand-HIBP }</b>
+

@@ -6,6 +6,9 @@ fx-lockwise = { -brand-lockwise }
 ## If possible, keep "Firefox Browser" in English, but feel free 
 ## to translate browser if that doesn't work for your language.
 
+## If possible, keep "Firefox Browser" in English, but feel free
+## to translate browser if that doesn't work for your language.
+
 fx-desktop = { -brand-name } Navegador tein tajkuiloluapal escritorio
 fx-mobile = Navegador { -brand-name } itech teposuejkatanojnotsalonimej celulares
 
@@ -13,9 +16,12 @@ fx-mobile = Navegador { -brand-name } itech teposuejkatanojnotsalonimej celulare
 
 # Aria label for the Bento button
 bento-button-title = Tekimej aplicaciones uan tapaleuilmej tein kitemaka { -brand-name }
+
 # Bento headline
 fx-makes-tech = { -brand-name } yejua tepos tecnología tein motelchikaua uan ijkon Internetkopa kiyekpias tein moaxka
+
 # A link at the bottom of the Bento menu
 made-by-mozilla = Kichijchiuak { -brand-Mozilla }
+
 # Aria label for button that closes the Bento menu
 mobile-close-bento-button-title = Maj motsakua menú kampa se taixpejpena

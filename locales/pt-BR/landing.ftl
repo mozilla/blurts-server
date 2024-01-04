@@ -37,12 +37,15 @@ learn-more-mission = Saiba mais sobre nossa missão
 
 top-questions-about-monitor = Principais perguntas sobre o { -brand-fx-monitor }
 see-all-faq = Ver todas as perguntas frequentes
+
 # question and answer
 what-is-breach = O que é exatamente um vazamento de dados?
 when-info-exposed = Um vazamento de dados ocorre quando informações pessoais ou privativas são expostas, roubadas ou copiadas sem permissão. Esses incidentes de segurança podem ser resultado de ataques cibernéticos a sites, aplicativos ou qualquer banco de dados onde residem informações pessoais das pessoas. Um vazamento de dados também pode acontecer por acidente, por exemplo, caso as credenciais de acesso de alguém sejam publicadas acidentalmente.
+
 # question and answer
 what-do-i-do = Acabei de descobrir que estou em um vazamento de dados. O que fazer?
 visit-monitor-to-learn = Visite o { -brand-fx-monitor } para saber o que fazer após um vazamento de dados. Os hackers contam com o reuso de senhas pelas pessoas, então é importante criar senhas fortes e exclusivas em todas as suas contas. Guarde suas senhas em um local seguro, onde só você tenha acesso. Pode ser no mesmo lugar onde você guarda documentos importantes, ou em um gerenciador de senhas.
+
 # question and answer
 what-gets-exposed = Que informações são expostas em vazamentos de dados?
 depends-on-hackers = Nem todos os vazamentos expõem as mesmas informações. Depende do que os hackers conseguem acessar. Muitos vazamentos de dados expõem endereços de email e senhas. Outros expõem informações mais sensíveis, como números de cartões de crédito, números de passaporte e números de previdência social.
@@ -51,3 +54,4 @@ depends-on-hackers = Nem todos os vazamentos expõem as mesmas informações. De
 
 see-if-data-breach = Veja se você foi vítima de um vazamento de dados
 hibp-footer-attribution = Dados de vazamentos fornecidos por <b>{ -brand-HIBP }</b>
+

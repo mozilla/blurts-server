@@ -37,12 +37,15 @@ learn-more-mission = Pelajari lebih lanjut tentang misi kami
 
 top-questions-about-monitor = Pertanyaan teratas tentang { -brand-fx-monitor }
 see-all-faq = Lihat semua FAQ
+
 # question and answer
 what-is-breach = Apa sebenarnya pembobolan data?
 when-info-exposed = Pelanggaran data terjadi ketika informasi pribadi atau pribadi terekspos, dicuri, atau disalin tanpa izin. Insiden keamanan ini dapat disebabkan oleh serangan siber ke situs web, aplikasi, atau basis data apa pun tempat informasi pribadi seseorang berada. Pelanggaran data juga dapat terjadi secara tidak sengaja seperti jika kredensial masuk seseorang secara tidak sengaja diposting secara publik.
+
 # question and answer
 what-do-i-do = Saya baru tahu bahwa saya terlibat dalam pembobolan data. Apa yang harus saya lakukan?
 visit-monitor-to-learn = Kunjungi { -brand-fx-monitor } untuk mempelajari apa yang harus dilakukan setelah pembobolan data. Peretas mengandalkan orang yang menggunakan kembali kata sandi, jadi penting untuk membuat kata sandi yang kuat dan unik untuk semua akun Anda. Simpan kata sandi Anda di tempat yang aman yang hanya dapat diakses oleh Anda; ini bisa menjadi tempat yang sama di mana Anda menyimpan dokumen penting atau pengelola kata sandi.
+
 # question and answer
 what-gets-exposed = Informasi apa yang terekspos dalam pembobolan data?
 depends-on-hackers = Tidak semua pembobolan mengekspos semua info yang sama. Itu hanya tergantung pada apa yang dapat diakses peretas. Banyak pembobolan data mengekspos alamat surel dan kata sandi. Lainnya mengekspos informasi yang lebih sensitif seperti nomor kartu kredit, nomor paspor dan nomor jaminan sosial.
@@ -51,3 +54,4 @@ depends-on-hackers = Tidak semua pembobolan mengekspos semua info yang sama. Itu
 
 see-if-data-breach = Lihat apakah Anda pernah terlibat dalam pembobolan data
 hibp-footer-attribution = Data pembobolan disediakan oleh <b>{ -brand-HIBP }</b>
+
