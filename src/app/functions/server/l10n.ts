@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import "server-only";
 import { acceptedLanguages, negotiateLanguages } from "@fluent/langneg";
 import { headers } from "next/headers";
 import { ExtendedReactLocalization, GetFragment } from "../../hooks/l10n";
@@ -78,9 +79,12 @@ export function getL10nBundles(): LocaleData[] {
   }
 
   const languages = acceptLangHeader ? acceptedLanguages(acceptLangHeader) : [];
+  const supportedLocales = process.env.SUPPORTED_LOCALES?.split(",");
   const currentLocales = negotiateLanguages(
     languages,
-    Object.keys(bundleSources),
+    Object.keys(bundleSources).filter(
+      (locale) => supportedLocales?.includes(locale),
+    ),
     { defaultLocale: "en" },
   );
 
