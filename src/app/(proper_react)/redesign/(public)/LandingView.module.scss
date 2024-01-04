@@ -401,8 +401,20 @@
   flex-direction: column;
   padding: $layout-md $spacing-md;
   align-items: center;
+  gap: $spacing-md;
+
+  .faqTitle {
+    font: $text-title-2xs;
+    font-weight: 600;
+  }
+
+  .faqCta {
+    font-weight: 600;
+    color: $color-blue-50;
+  }
 
   dl {
+    padding-top: $spacing-md;
     display: flex;
     flex-direction: column;
     gap: $layout-xs;
@@ -419,19 +431,8 @@
       gap: $layout-md;
       font: $text-body-lg;
       cursor: pointer;
+      text-align: center;
 
-      button {
-        // color: $color-blue-60;
-        // background: transparent;
-        // border: none;
-        // margin: 0;
-        // padding: 0;
-        // width: auto;
-        // width: 12px;
-        // height: 12px;
-        // flex: none;
-        // cursor: pointer;
-      }
       svg {
         color: $color-blue-60;
         width: 12px;

@@ -8,6 +8,7 @@ import { ReactNode, useState } from "react";
 import { useL10n } from "../../../hooks/l10n";
 import styles from "./LandingView.module.scss";
 import { CloseBigIcon } from "../../../components/server/Icons";
+import Link from "next/link";
 
 export type FaqItemProps = {
   question: string;
@@ -45,6 +46,16 @@ export const FaqSection = ({
   const l10n = useL10n();
   return (
     <div className={styles.faqWrapper}>
+      <b className={styles.faqTitle}>
+        {l10n.getString("landing-all-faq-title")}
+      </b>
+      <Link
+        className={styles.faqCta}
+        href={process.env.NEXT_PUBLIC_FAQ_MONITOR as string}
+        target="_blank"
+      >
+        {l10n.getString("landing-all-faq-see-all")}
+      </Link>
       <dl>
         {isEligibleForPremium && (
           <FaqItem
