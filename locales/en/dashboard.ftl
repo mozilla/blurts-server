@@ -75,9 +75,6 @@ dashboard-fixed-area-headline-all = View all exposures that are fixed
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filter
 dashboard-exposures-filter-company = Company
-dashboard-exposures-filter-exposure-type = Exposure type
-dashboard-exposures-filter-exposure-type-info-for-sale = Your info for sale
-dashboard-exposures-filter-exposure-type-data-breach = Data breach
 dashboard-exposures-filter-date-found = Date found
 dashboard-exposures-filter-date-found-last-seven-days = Last 7 days
 dashboard-exposures-filter-date-found-last-thirty-days = Last 30 days
