@@ -3,7 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Averigua si has estado en una filtración de datos
 get-started = Comenzar
 
 ## Why use Firefox Monitor?
@@ -38,14 +37,18 @@ learn-more-mission = Saber más sobre nuestra misión
 
 top-questions-about-monitor = Principales preguntas sobre { -brand-fx-monitor }
 see-all-faq = Ver todas las preguntas frecuentes
+
 # question and answer
 what-is-breach = ¿Qué es exactamente una filtración de datos?
+
 # question and answer
 what-do-i-do = Acabo de ver que mis datos aparecen en una filtración. ¿Qué debo hacer?
 visit-monitor-to-learn = Visita { -brand-fx-monitor } para saber qué hacer después de una filtración de datos. Los piratas informáticos confían en que las personas reutilicen las contraseñas, por lo que es importante crear contraseñas seguras y únicas para todas tus cuentas. Guarda tus contraseñas en un lugar seguro al que solo tu tengas acceso; este podría ser el mismo lugar donde almacenas documentos importantes o un administrador de contraseñas.
+
 # question and answer
 what-gets-exposed = ¿Qué información queda expuesta en las filtraciones de datos?
 
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Descubre si has sido parte de una filtración de datos
+

@@ -37,12 +37,15 @@ learn-more-mission = Discoperi plus re nostre mission
 
 top-questions-about-monitor = Questiones principal re { -brand-fx-monitor }
 see-all-faq = Vide tote le FAQs
+
 # question and answer
 what-is-breach = Que es exactemente un violation de datos?
 when-info-exposed = Un violation de datos eveni quando informationes personal o private es exponite, robate o copiate sin permission. Iste securitate incidentes pote esser un resultato de cyber-attaccos a sitos web, apps o ulle base de datos ubi le informationes personal del gente demora. Un violation de datos pote alsi evenir per accidente como si le credentiales de accesso de alicuno accidentalmente es postate publicamente.
+
 # question and answer
 what-do-i-do = Io ha justo trovate que io es in un violation de datos. Que debe io facer?
 visit-monitor-to-learn = Visita { -brand-fx-monitor } pro apprender que facer post un violation de datos. Le piratas informatic conta sur gente que reusa le contrasignos, assi il es importante crear forte, unic contrasignos pro tote tu contos. Mantene tu contrasignos in un position secur al qual solo tu ha accesso; isto pote esser le mesme placia ubi tu immagazina importante documentos o un gestor de contrasignos.
+
 # question and answer
 what-gets-exposed = Qual informationes es exponite in le violationes de datos?
 depends-on-hackers = Non tote le violationes expone le mesme informationes. Illo justo depende de lo que le piratas informatic pote acceder. Multe violationes de datos expone adresses email e contrasignos.Alteres expone datos plus sensibile tal como numeros de carta de credito, numeros de passaporto e numeros de securitate social.
@@ -51,3 +54,4 @@ depends-on-hackers = Non tote le violationes expone le mesme informationes. Illo
 
 see-if-data-breach = Vide si tu ha essite in un violation de datos.
 hibp-footer-attribution = Violation datos fornite per <b>{ -brand-HIBP }</b>
+

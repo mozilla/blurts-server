@@ -1,3 +1,7 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 landing-premium-hero-lead = We scan to see if your phone number, passwords or home address have been leaked, and help you make it private again.
 
 landing-premium-hero-emailform-input-label = Enter your email address to check for data breach exposures and sites selling your info.
@@ -106,7 +110,7 @@ landing-premium-plans-cards-feature-monitoring = Continuous monitoring
 
 landing-premium-value-prop-fix-exposures-description = We provide steps to follow when you’ve been affected by a data breach and can even remove your data from more than 190 sites trying to sell it — and we <privacy_link>respect your privacy</privacy_link> in the process.
 landing-premium-value-prop-info-at-risk-description = Details like your <exposure_type_list>home address, family members’ names, financial info</exposure_type_list> and more can be exposed when a website is hacked — or sold on data broker sites to anyone looking for you. Knowing what info is out there is the first step in protecting yourself.
-landing-premium-value-prop-progress-card-illustration-alt = Progress card delineating exposures that are fixed, in progress or manually fixed 
+landing-premium-value-prop-progress-card-illustration-alt = Progress card delineating exposures that are fixed, in progress or manually fixed
 
 # Quote
 
@@ -125,6 +129,6 @@ landing-premium-continuous-data-removal-ans = { $data_broker_sites_total_num ->
 
 # Scan Limit
 
-landing-premium-max-scan = We’ve reached the maximum scans for the month. Enter your email to get on our waitlist. 
+landing-premium-max-scan = We’ve reached the maximum scans for the month. Enter your email to get on our waitlist.
 landing-premium-max-scan-at-capacity = At capacity
 landing-premium-max-scan-waitlist = Join waitlist

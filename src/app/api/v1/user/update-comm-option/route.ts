@@ -13,8 +13,9 @@ import {
   setAllEmailsToPrimary,
 } from "../../../../../db/tables/subscribers";
 
-interface EmailUpdateCommOptionRequest {
-  communicationOption: string;
+export interface EmailUpdateCommOptionRequest {
+  /** "1" to send breach alerts to the primary email address, "0" to send them to the affected address */
+  communicationOption: "0" | "1";
 }
 
 export async function POST(req: NextRequest) {

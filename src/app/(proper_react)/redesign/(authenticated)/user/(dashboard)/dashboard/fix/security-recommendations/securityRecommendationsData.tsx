@@ -45,11 +45,13 @@ function getSecurityRecommendationsByType({
   breaches,
   l10n,
   nextStep,
+  countryCode,
 }: {
   dataType: string;
   breaches: GuidedExperienceBreaches;
   l10n: ExtendedReactLocalization;
   nextStep?: StepLink;
+  countryCode: string;
 }) {
   const securityRecommendationsData: SecurityRecommendation[] = [
     {
@@ -74,19 +76,24 @@ function getSecurityRecommendationsByType({
               <li>
                 {l10n.getString("security-recommendation-phone-step-two")}
               </li>
-              <li>
-                {l10n.getFragment("security-recommendation-phone-step-three", {
-                  elems: {
-                    link_to_info: (
-                      <a
-                        href="https://relay.firefox.com/?utm_medium=monitor&utm_source=security-reco&utm_campaign=fxmonitor-xsell&utm_content=phone-recs-global"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      />
-                    ),
-                  },
-                })}
-              </li>
+              {countryCode.toLowerCase() === "us" && (
+                <li>
+                  {l10n.getFragment(
+                    "security-recommendation-phone-step-three",
+                    {
+                      elems: {
+                        link_to_info: (
+                          <a
+                            href="https://relay.firefox.com/?utm_medium=monitor&utm_source=security-reco&utm_campaign=fxmonitor-xsell&utm_content=phone-recs-global"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          />
+                        ),
+                      },
+                    },
+                  )}
+                </li>
+              )}
             </ol>
           ),
         },

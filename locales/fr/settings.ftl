@@ -31,6 +31,7 @@ settings-email-verification-callout = Vérification de l’adresse e-mail néces
 settings-resend-email-verification-link = Renvoyer l’e-mail de vérification
 settings-add-email-button = Ajouter une adresse e-mail
 settings-delete-email-button = Supprimer l’adresse e-mail
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -45,16 +46,11 @@ settings-email-number-of-breaches-info =
 
 settings-cancel-premium-subscription-title = Annuler l’abonnement à { -brand-premium }
 settings-cancel-premium-subscription-info = Votre abonnement redeviendra un compte gratuit une fois le cycle de facturation en cours terminé. Les résultats de vos scans de protection de la vie privée seront supprimés définitivement, et vous ne pourrez surveiller les fuites de données que pour une seule adresse e-mail.
-settings-cancel-premium-subscription-link-label = Annuler depuis votre { -brand-fx-account }
 
 ## Deactivate account
 
 settings-deactivate-account-title = Désactiver le compte
-# Deprecated
-settings-deactivate-account-info = Vous pouvez désactiver { -product-short-name } en supprimant votre { -brand-fx-account }.
 settings-deactivate-account-info-2 = Vous pouvez désactiver { -product-short-name } en supprimant votre { -brand-mozilla-account }.
-# Deprecated
-settings-fxa-link-label = Ouvrir les paramètres de { -brand-firefox }
 settings-fxa-link-label-3 = Ouvrir les paramètres du { -brand-mozilla-account }
 
 ## Add email dialog

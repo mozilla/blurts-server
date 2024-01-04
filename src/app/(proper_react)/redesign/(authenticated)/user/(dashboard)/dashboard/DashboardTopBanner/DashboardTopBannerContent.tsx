@@ -55,6 +55,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     return (
       <ProgressCard
         isPremiumUser={isPremiumUser}
+        isEligibleForPremium={isEligibleForPremium}
         resolvedByYou={
           bannerData.dataBrokerManuallyResolvedDataPointsNum +
           bannerData.dataBreachFixedDataPointsNum
@@ -114,7 +115,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </h3>
             <p>
               {l10n.getString(
-                "dashboard-exposures-breaches-scan-progress-description",
+                "dashboard-top-banner-non-us-protect-your-data-description-line1",
                 {
                   exposures_unresolved_num:
                     bannerData.totalDataPointsNum -
@@ -122,6 +123,11 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                     bannerData.dataBreachFixedDataPointsNum -
                     bannerData.dataBrokerInProgressDataPointsNum -
                     bannerData.dataBrokerManuallyResolvedDataPointsNum,
+                },
+              )}{" "}
+              {l10n.getString(
+                "dashboard-top-banner-non-us-protect-your-data-description-line2",
+                {
                   data_breach_unresolved_num:
                     bannerData.dataBreachUnresolvedNum,
                 },

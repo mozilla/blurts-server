@@ -7,3 +7,4 @@
 
 add-email-address-input-label = Tansa imayl
 add-email-send-verification-button = Azen n useɣwen n usentem
+

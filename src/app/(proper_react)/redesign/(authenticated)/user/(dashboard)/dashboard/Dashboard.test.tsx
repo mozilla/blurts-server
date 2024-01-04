@@ -1924,6 +1924,39 @@ it("shows the correct dashboard banner CTA for US user, with Premium, scan in pr
   expect(dashboardTopBannerCta).toBeInTheDocument();
 });
 
+it("does not explain what 'in progress' means for users who cannot get Plus", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  const statusHeading = screen.getByText("Status");
+  const statusExplainerDialogTrigger = getByRole(statusHeading, "button", {
+    name: "Open",
+  });
+  await user.click(statusExplainerDialogTrigger);
+  expect(
+    screen.queryByText("This is a ⁨Monitor Plus⁩ feature.", { exact: false }),
+  ).not.toBeInTheDocument();
+});
+
+it("explains what 'in progress' means for Plus users", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const statusHeading = screen.getByText("Status");
+  const statusExplainerDialogTrigger = getByRole(statusHeading, "button", {
+    name: "Open",
+  });
+  await user.click(statusExplainerDialogTrigger);
+  expect(
+    screen.getByText("This is a ⁨Monitor Plus⁩ feature.", { exact: false }),
+  ).toBeInTheDocument();
+});
+
 // Check dashboard banner content for story DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches
 it("logs a warning and error in the story for an invalid user state", () => {
   const ComposedDashboard = composeStory(
@@ -1994,6 +2027,48 @@ it("closes previously active card onclick", async () => {
   await user.click(afterExpand[0]);
   const afterCollapse = screen.getAllByRole("button", { name: "Expand" });
   expect(initialState.length).toBe(afterCollapse.length);
+});
+
+it("does not allow non-US users to filter by exposure type, since they can only see a single exposure type (i.e. breaches)", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardNonUsUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const filterMenuButton = screen.getByRole("button", {
+    name: "Select filters",
+  });
+  await user.click(filterMenuButton);
+
+  const filterDialog = screen.getByRole("dialog");
+  const exposureTypeRadioGroup = queryByRole(filterDialog, "radiogroup", {
+    name: "Exposure type",
+  });
+
+  expect(exposureTypeRadioGroup).not.toBeInTheDocument();
+});
+
+it("allows Plus-eligible users to filter by exposure type", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const filterMenuButton = screen.getByRole("button", {
+    name: "Select filters",
+  });
+  await user.click(filterMenuButton);
+
+  const filterDialog = screen.getByRole("dialog");
+  const exposureTypeRadioGroup = getByRole(filterDialog, "radiogroup", {
+    name: "Exposure type",
+  });
+
+  expect(exposureTypeRadioGroup).toBeInTheDocument();
 });
 
 it("send Telemetry when users click on free scans when all exposures are fixed", async () => {

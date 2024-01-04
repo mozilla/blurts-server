@@ -32,6 +32,7 @@ settings-email-verification-callout = Ñanduti veve jehechajey jerurepyre
 settings-resend-email-verification-link = Emondojey ñanduti veve jehechajeyrã
 settings-add-email-button = Embojuaju ñanduti veve kundaharape
 settings-delete-email-button = Embogue ñandutiveve kundaharape
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -47,16 +48,11 @@ settings-email-number-of-breaches-info =
 
 settings-cancel-premium-subscription-title = Eipe’a { -brand-premium } ñemboheraguapy
 settings-cancel-premium-subscription-info = Ne ñemboheraguapýgui oikojeýta mba’ete reiguáva opa rire ehepyme’ẽva reikóvo. Umi ñemo’ã resa’ỹijokuégui osẽva oñemboguetéta ha ehechameméta mba’ekuaarã ñembogua añoite 1 ñanduti veve kundaharapépe g̃uarã.
-settings-cancel-premium-subscription-link-label = Eipe’a ne { -brand-fx-account } guive
 
 ## Deactivate account
 
 settings-deactivate-account-title = Emboguete mba’ete
-# Deprecated
-settings-deactivate-account-info = Eipe’aitekuaa { -product-short-name } emboguévo nde { -brand-fx-account }.
 settings-deactivate-account-info-2 = Eipe’aitekuaa { -product-short-name } emboguévo nde { -brand-mozilla-account }.
-# Deprecated
-settings-fxa-link-label = Eho { -brand-firefox } poravorãme
 settings-fxa-link-label-3 = Eho { -brand-mozilla-account } ñembohekópe
 
 ## Add email dialog

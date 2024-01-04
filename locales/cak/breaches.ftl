@@ -13,8 +13,12 @@
 
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Tzijïl
+
 breaches-none-cta-button = Titz'aqatisäx rochochib'al taqoya'l
+
 breaches-all-resolved-cta-button = Titz'aqatisäx rochochib'al taqoya'l
+
+## Links that we might refer to when prompting the user to make changes after a breach
 
 ## Prompts the user for changes when there is a breach detected of password
 

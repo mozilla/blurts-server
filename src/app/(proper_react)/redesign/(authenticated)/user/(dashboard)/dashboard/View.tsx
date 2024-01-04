@@ -208,23 +208,39 @@ export const View = (props: Props) => {
     let exposuresAreaDescription;
 
     if (hasUnresolvedExposures) {
-      exposuresAreaDescription = l10n.getString(
-        "dashboard-exposures-area-description",
-        {
-          exposures_unresolved_num:
-            totalDataPointsNum -
-            dataBrokerAutoFixedDataPointsNum -
-            dataBreachFixedDataPointsNum -
-            dataBrokerInProgressDataPointsNum -
-            dataBrokerManuallyResolvedDataPointsNum,
-          data_breach_unresolved_num: dataBreachUnresolvedNum,
-          data_broker_unresolved_num:
-            dataBrokerTotalNum -
-            dataBrokerAutoFixedNum -
-            dataBrokerManuallyResolvedNum -
-            dataBrokerInProgressNum,
-        },
-      );
+      if (props.isEligibleForPremium) {
+        exposuresAreaDescription = l10n.getString(
+          "dashboard-exposures-area-description-premium",
+          {
+            exposures_unresolved_num:
+              totalDataPointsNum -
+              dataBrokerAutoFixedDataPointsNum -
+              dataBreachFixedDataPointsNum -
+              dataBrokerInProgressDataPointsNum -
+              dataBrokerManuallyResolvedDataPointsNum,
+            data_breach_unresolved_num: dataBreachUnresolvedNum,
+            data_broker_unresolved_num:
+              dataBrokerTotalNum -
+              dataBrokerAutoFixedNum -
+              dataBrokerManuallyResolvedNum -
+              dataBrokerInProgressNum,
+          },
+        );
+      } else {
+        exposuresAreaDescription =
+          l10n.getString("dashboard-exposures-area-description-all-line1", {
+            exposures_unresolved_num:
+              totalDataPointsNum -
+              dataBrokerAutoFixedDataPointsNum -
+              dataBreachFixedDataPointsNum -
+              dataBrokerInProgressDataPointsNum -
+              dataBrokerManuallyResolvedDataPointsNum,
+          }) +
+          " " +
+          l10n.getString("dashboard-exposures-area-description-all-line2", {
+            data_breach_unresolved_num: dataBreachUnresolvedNum,
+          });
+      }
     }
 
     if (initialScanInProgress && !noUnresolvedExposures) {
@@ -263,7 +279,11 @@ export const View = (props: Props) => {
   const TabContentFixed = () => (
     <>
       <h2 className={styles.exposuresAreaHeadline}>
-        {l10n.getString("dashboard-fixed-area-headline")}
+        {l10n.getString(
+          props.isEligibleForPremium
+            ? "dashboard-fixed-area-headline-premium"
+            : "dashboard-fixed-area-headline-all",
+        )}
       </h2>
     </>
   );
@@ -416,6 +436,7 @@ export const View = (props: Props) => {
             initialFilterValues={initialFilterState}
             filterValues={filters}
             setFilterValues={setFilters}
+            isEligibleForPremium={props.isEligibleForPremium}
           />
         </div>
         {noUnresolvedExposures ? (

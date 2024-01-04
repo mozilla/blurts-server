@@ -37,12 +37,15 @@ learn-more-mission = Spoznajte naše poslanstvo
 
 top-questions-about-monitor = Pogosta vprašanja o { -brand-fx-monitor }ju
 see-all-faq = Oglejte si vsa pogosta vprašanja
+
 # question and answer
 what-is-breach = Kaj pravzaprav je kraja podatkov?
 when-info-exposed = Do kraje podatkov pride, ko so osebni ali zasebni podatki izpostavljeni, ukradeni ali nedovoljeno kopirani. Ti varnostni incidenti so lahko posledica kibernetskih napadov na spletna mesta, aplikacije ali katero koli zbirko podatkov, v kateri so shranjeni osebni podatki ljudi. Do kraje podatkov lahko pride tudi po naključju, na primer, če so prijavni podatki pomotoma javno objavljeni.
+
 # question and answer
 what-do-i-do = Pravkar sem izvedel, da sem udeležen v kraji podatkov. Kaj naj naredim?
 visit-monitor-to-learn = Obiščite { -brand-fx-monitor } in preberite, kaj storiti po kraji podatkov. Hekerji se zanašajo na ponovno uporabo gesel, zato je pomembno, da ustvarite močna in edinstvena gesla za vsak svoj račun. Gesla hranite na varnem mestu, do katerega imate dostop samo vi. To je lahko mesto, kamor shranjujete pomembne dokumente, ali upravitelj gesel.
+
 # question and answer
 what-gets-exposed = Kateri podatki so izpostavljeni v krajah podatkov?
 depends-on-hackers = Vse kršitve ne razkrijejo istih podatkov. Odvisno od tega, do česa lahko hekerji dostopajo. Številne kraje podatkov razkrijejo e-poštne naslove in gesla. Druge razkrijejo občutljivejše podatke, kot so številke kreditnih kartic, številke potnih listov in davčne številke.
@@ -51,3 +54,4 @@ depends-on-hackers = Vse kršitve ne razkrijejo istih podatkov. Odvisno od tega,
 
 see-if-data-breach = Preverite, ali ste bili vpleteni v krajo podatkov
 hibp-footer-attribution = Podatke o krajah podatkov zagotavlja <b>{ -brand-HIBP }</b>
+
