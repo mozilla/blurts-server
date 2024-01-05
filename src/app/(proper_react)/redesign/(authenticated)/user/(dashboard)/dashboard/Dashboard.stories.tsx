@@ -137,7 +137,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   }
 
   const user = createUserWithPremiumSubscription();
-  if (props.countryCode !== "us" || !props.premium) {
+  if ((props.countryCode !== "us" || !props.premium) && user.fxa) {
     user.fxa.subscriptions = [];
   }
 
