@@ -20,6 +20,13 @@ import {
 } from "../../../db/tables/featureFlags";
 import { logger } from "./logging";
 
+export const monthlyScansQuota = parseInt(
+  (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
+);
+export const monthlySubscribersQuota = parseInt(
+  (process.env.MONTHLY_SUBSCRIBERS_QUOTA as string) ?? "0",
+);
+
 export type CreateProfileRequest = {
   first_name: string;
   last_name: string;
