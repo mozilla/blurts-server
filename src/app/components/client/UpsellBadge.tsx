@@ -103,7 +103,6 @@ function UpsellToggleButton(props: UpsellToggleButton) {
     <>
       <button
         {...buttonProps}
-        onClick={() => dialogState.open()}
         className={`${styles.upsellBadge} ${
           state.isSelected ? styles.isSelected : ""
         }`}
