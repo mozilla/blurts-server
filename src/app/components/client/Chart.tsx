@@ -17,7 +17,7 @@ import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import ModalImage from "../client/assets/modal-default-img.svg";
 import { DashboardSummary } from "../../functions/server/dashboard";
-import { SubscriberWaitlistDialog } from "./SubscriberWaitlistDialog";
+import { WaitlistDialog } from "./SubscriberWaitlistDialog";
 import { useTelemetry } from "../../hooks/useTelemetry";
 
 export type Props = {
@@ -44,6 +44,11 @@ export const DoughnutChart = (props: Props) => {
   const explainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
     explainerDialogState,
+  );
+  const waitlistDialogState = useOverlayTriggerState({});
+  const waitlistDialogTrigger = useOverlayTrigger(
+    { type: "dialog" },
+    waitlistDialogState,
   );
   const sumOfFixedExposures = props.data.reduce(
     (total, [_label, num]) => total + num,
@@ -151,13 +156,20 @@ export const DoughnutChart = (props: Props) => {
               )}
             </Link>
           ) : (
-            <SubscriberWaitlistDialog>
-              <Button variant="tertiary">
+            <>
+              <Button
+                variant="tertiary"
+                {...waitlistDialogTrigger.triggerProps}
+              >
                 {l10n.getString(
                   "exposure-chart-returning-user-upgrade-prompt-cta",
                 )}
               </Button>
-            </SubscriberWaitlistDialog>
+              <WaitlistDialog
+                dialogTriggerState={waitlistDialogState}
+                {...waitlistDialogTrigger.overlayProps}
+              />
+            </>
           )}
         </>
       );
