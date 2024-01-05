@@ -4,12 +4,14 @@
 
 export async function up(knex) {
   return knex.schema
-    .createTable('onerep_stats', table => {
-      table.string('name').primary().unique()
-      table.string('current')
-      table.string('max')
-      table.timestamp('created_at').defaultTo(knex.fn.now())
-      table.timestamp('modified_at').defaultTo(knex.fn.now())
+    .createTable("stats", table => {
+      table.increments('id').primary()
+      table.string("name")
+      table.string("current")
+      table.string("max")
+      table.string("type")
+      table.timestamp("created_at").defaultTo(knex.fn.now())
+      table.timestamp("modified_at").defaultTo(knex.fn.now())
     })
 }
 
@@ -19,5 +21,5 @@ export async function up(knex) {
  */
 export async function down(knex) {
   return knex.schema
-    .dropTableIfExists('onerep_scans')
+    .dropTableIfExists("stats")
 }

@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import Sentry from "@sentry/nextjs";
-import { addOnerepStats } from "../db/tables/onerep_stats";
+import { addOnerepStats } from "../db/tables/stats.js";
 
 const SENTRY_SLUG = "cron-onerep-stats-alerts";
 
@@ -34,10 +34,10 @@ export async function checkStats() {
   const profiles = await (await onerepFetch("/stats/profiles")).json();
 
   for (const alert of [
-    ["Free scans", scans.manual, MAX_MANUAL_SCANS],
-    ["Paid scans", scans.initial, MAX_INITIAL_SCANS],
-    ["Profiles activated", profiles.activated, MAX_PROFILES_ACTIVATED],
-    ["Profiles created", profiles.created, MAX_PROFILES_CREATED],
+    ["free_scans", scans.manual, MAX_MANUAL_SCANS],
+    ["paid_scans", scans.initial, MAX_INITIAL_SCANS],
+    ["profiles_activated", profiles.activated, MAX_PROFILES_ACTIVATED],
+    ["profiles_created", profiles.created, MAX_PROFILES_CREATED],
   ]) {
     const [name, current, max] = alert;
 
@@ -70,12 +70,13 @@ async function onerepFetch(path, options = {}) {
 }
 
 checkStats()
-  .then((_) => {
+  .then(async (_) => {
     Sentry.captureCheckIn({
       checkInId,
       monitorSlug: SENTRY_SLUG,
       status: "ok",
     });
+    await addOnerepStats.destroy();
   })
   .catch((err) => {
     console.error(err);
