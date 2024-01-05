@@ -32,12 +32,16 @@ settings-email-limit-info =
 settings-email-verification-callout = Требуется верификация электронной почты
 settings-resend-email-verification-link = Отправить письмо подтверждения заново
 settings-add-email-button = Добавить адрес электронной почты
+# Deprecated
 settings-delete-email-button = Удалить адрес электронной почты
-
+settings-remove-email-button-label = Удалить
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Перестать отслеживать { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] Найден в { $breachCount } известной утечке.

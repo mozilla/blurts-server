@@ -32,12 +32,16 @@ settings-email-limit-info =
 settings-email-verification-callout = Vyžadováno ověření e-mailové adresy
 settings-resend-email-verification-link = Znovu poslat ověřovací e-mail
 settings-add-email-button = Přidat e-mailové adresy
+# Deprecated
 settings-delete-email-button = Smazat e-mailovou adresu
-
+settings-remove-email-button-label = Odebrat
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Ukončit monitorování { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] Vyskytuje se v { $breachCount } známém úniku.
