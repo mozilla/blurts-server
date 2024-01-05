@@ -21,6 +21,7 @@ import { getOnerepProfileId } from "../../../../../../../db/tables/subscribers";
 
 import {
   activateAndOptoutProfile,
+  getProfilesStats,
   isEligibleForFreeScan,
   isEligibleForPremium,
 } from "../../../../../../functions/server/onerep";
@@ -105,10 +106,7 @@ export default async function DashboardPage() {
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
-
-  // TODO: Fetch number of performed broker scans after
-  // https://github.com/mozilla/blurts-server/pull/3906 landed.
-  const totalNumberOfPerformedScans = 0;
+  const profileStats = await getProfilesStats();
 
   return (
     <View
@@ -122,7 +120,7 @@ export default async function DashboardPage() {
       yearlySubscriptionUrl={yearlySubscriptionUrl}
       fxaSettingsUrl={fxaSettingsUrl}
       scanCount={scanCount}
-      totalNumberOfPerformedScans={totalNumberOfPerformedScans}
+      totalNumberOfPerformedScans={profileStats?.total}
     />
   );
 }

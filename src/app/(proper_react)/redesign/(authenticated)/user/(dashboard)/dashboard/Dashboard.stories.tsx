@@ -160,7 +160,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           yearlySubscriptionUrl=""
           fxaSettingsUrl=""
           scanCount={scanCount}
-          totalNumberOfPerformedScans={props.totalNumberOfPerformedScans ?? 0}
+          totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
         />
       </Shell>
     </CountryCodeProvider>

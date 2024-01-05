@@ -40,7 +40,7 @@ import ScanProgressIllustration from "./images/scan-illustration.svg";
 import { CountryCodeContext } from "../../../../../../../contextProviders/country-code";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { getNextGuidedStep } from "../../../../../../functions/server/getRelevantGuidedSteps";
-import { SubscriberWaitlistDialog } from "../../../../../../components/client/SubscriberWaitlistDialog";
+import { WaitlistDialog } from "../../../../../../components/client/SubscriberWaitlistDialog";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
@@ -56,7 +56,7 @@ export type Props = {
   yearlySubscriptionUrl: string;
   fxaSettingsUrl: string;
   scanCount: number;
-  totalNumberOfPerformedScans: number;
+  totalNumberOfPerformedScans?: number;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -298,10 +298,9 @@ export const View = (props: Props) => {
 
   const freeScanCta = props.isEligibleForFreeScan && (
     <>
-      <SubscriberWaitlistDialog
-        triggerRef={waitlistTriggerRef}
+      <WaitlistDialog
         dialogTriggerState={dialogTriggerState}
-        overlayTrigger={overlayTrigger}
+        {...overlayTrigger.overlayProps}
       />
       <p>
         {l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
@@ -313,11 +312,12 @@ export const View = (props: Props) => {
           },
           elems: {
             a:
+              typeof props.totalNumberOfPerformedScans === "undefined" ||
               props.totalNumberOfPerformedScans <
-              parseInt(
-                process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
-                10,
-              ) ? (
+                parseInt(
+                  process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
+                  10,
+                ) ? (
                 <a
                   ref={waitlistTriggerRef}
                   href="/redesign/user/welcome/free-scan?referrer=dashboard"

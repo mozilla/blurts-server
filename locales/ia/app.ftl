@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
@@ -660,18 +665,24 @@ site-nav-help-link = Adjuta e assistentia
 site-nav-ad-callout = Proba nostre altere utensiles de securitate:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+main-nav-button-collapse-label = Collaber menu
+main-nav-button-expand-label = Expander menu
 
 ## User menu
 
+# Obsolete
 menu-button-title = Menu de usator
+# Obsolete
 menu-button-alt = Aperir le menu de usator
+# Obsolete
 menu-list-accessible-label = Menu de conto
+# Obsolete
 menu-item-fxa-2 = Gere tu { -brand-mozilla-account }
-menu-item-fxa-alt-2 = Aperir le pagina de { -brand-mozilla-account }
+# Obsolete
 menu-item-settings = Parametros
-menu-item-settings-alt = Aperir le pagina del parametros
+# Obsolete
 menu-item-help = Adjuta e supporto
-menu-item-help-alt = Aperir le pagina del  adjuta e supporto
+# Obsolete
 menu-item-logout = Clauder session
 
 ## Footer

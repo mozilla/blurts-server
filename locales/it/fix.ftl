@@ -22,8 +22,8 @@ fix-flow-celebration-next-dashboard-label = Vai alla dashboard
 ## High-risk flow
 
 fix-flow-celebration-high-risk-title = Hai risolto le tue esposizioni ad alto rischio!
-fix-flow-celebration-high-risk-description-in-progress = Questo lavoro può sembrare impegnativo, ma è importante per mantenerti al sicuro. Continua così!
-fix-flow-celebration-high-risk-description-done = Questo lavoro può sembrare impegnativo, ma è importante per mantenerti al sicuro.
+fix-flow-celebration-high-risk-description-in-progress = È un lavoro impegnativo, ma è importante per mantenerti al sicuro. Continua così!
+fix-flow-celebration-high-risk-description-done = È un lavoro impegnativo, ma è importante per mantenerti al sicuro.
 fix-flow-celebration-high-risk-description-next-passwords = Ora correggiamo le password esposte.
 fix-flow-celebration-high-risk-description-next-security-questions = Ora risolviamo le tue domande di sicurezza esposte.
 fix-flow-celebration-high-risk-description-next-security-recommendations = Successivamente, ti forniremo consigli di sicurezza personalizzati in base ai tuoi dati che sono stati esposti.
@@ -31,7 +31,7 @@ fix-flow-celebration-high-risk-description-next-dashboard = Hai raggiunto la fin
 
 ## Leaked passwords and security questions flow
 
-fix-flow-celebration-leaked-passwords-title = Le tue password sono ora protette.
+fix-flow-celebration-leaked-passwords-title = Le tue password sono protette.
 fix-flow-celebration-security-questions-title = Le tue domande di sicurezza sono protette.
 fix-flow-celebration-leaked-passwords-description-next-security-questions = Ora esaminiamo e aggiorniamo le domande di sicurezza esposte.
 fix-flow-celebration-leaked-passwords-description-next-security-recommendations = Successivamente, ti forniremo consigli di sicurezza personalizzati in base ai tuoi dati che sono stati esposti.
@@ -44,8 +44,8 @@ fix-flow-celebration-security-recommendations-description-next-dashboard = Compl
 
 # High Risk Data Breaches
 
-high-risk-breach-heading = Ecco cosa fare
-high-risk-breach-subheading = Questo richiede accesso alle tue informazioni sensibili, quindi dovrai risolverlo manualmente.
+high-risk-breach-heading = Ecco che cosa fare
+high-risk-breach-subheading = Questa operazione richiede accesso alle tue informazioni sensibili, quindi dovrai procedere manualmente.
 # Variables
 # $num_breaches is the number of breaches where the high risk data was found.
 high-risk-breach-summary =
@@ -80,7 +80,7 @@ high-risk-breach-credit-card-step-three = Controlla i tuoi conti per rilevare ad
 # Bank Account Breaches
 
 high-risk-breach-bank-account-title = Il tuo conto bancario è stato esposto
-high-risk-breach-bank-account-description = Intervenire il prima possibile potrebbe offrirti maggiori protezioni legali per aiutarti a recuperare eventuali perdite.
+high-risk-breach-bank-account-description = Intervenire il prima possibile potrebbe offrirti maggiori protezioni legali per recuperare eventuali perdite.
 high-risk-breach-bank-account-step-one = Avvisa immediatamente la tua banca se ti accorgi che il tuo conto corrente è stato violato.
 high-risk-breach-bank-account-step-two = Cambia il tuo numero di conto.
 high-risk-breach-bank-account-step-three = Controlla i tuoi conti per rilevare addebiti non autorizzati.
@@ -88,7 +88,7 @@ high-risk-breach-bank-account-step-three = Controlla i tuoi conti per rilevare a
 # Social Security Number Breaches
 
 high-risk-breach-social-security-title = Il tuo numero di previdenza sociale è stato esposto
-high-risk-breach-social-security-description = I truffatori possono aprire nuovi prestiti o carte di credito con il tuo numero di previdenza sociale. Agisci in fretta per prevenire danni finanziari.
+high-risk-breach-social-security-description = I truffatori possono richiedere prestiti o carte di credito con il tuo numero di previdenza sociale. Agisci in fretta per prevenire danni finanziari.
 high-risk-breach-social-security-step-one = Proteggiti <link_to_info>impostando un avviso contro le frodi o bloccando il tuo credito.</link_to_info>
 high-risk-breach-social-security-step-two = <link_to_info>Controlla il tuo rapporto di credito</link_to_info> per verificare la presenza di conti che non riconosci.
 
@@ -105,9 +105,9 @@ ssn-modal-ok = OK
 # PIN Breaches
 
 high-risk-breach-pin-title = Il PIN è stato esposto
-high-risk-breach-pin-description = Intervenire il prima possibile potrebbe offrirti maggiori protezioni legali per aiutarti a recuperare eventuali perdite.
+high-risk-breach-pin-description = Intervenire il prima possibile potrebbe offrirti maggiori protezioni legali per recuperare eventuali perdite.
 high-risk-breach-pin-step-one = Avvisa immediatamente la tua banca che il tuo PIN è stato esposto.
-high-risk-breach-pin-step-two = Cambia il tuo PIN ovunque tu abbia utilizzato lo stesso PIN.
+high-risk-breach-pin-step-two = Cambia il tuo PIN ovunque tu abbia utilizzato lo stesso codice.
 high-risk-breach-pin-step-three = Controlla i tuoi conti per rilevare addebiti non autorizzati.
 
 # No high risk breaches found
@@ -138,7 +138,7 @@ security-recommendation-phone-summary =
         [one] Il tuo numero di telefono è stato coinvolto in { $num_breaches } violazione di dati:
        *[other] Il tuo numero di telefono è stato coinvolto in { $num_breaches } violazioni di dati:
     }
-security-recommendation-phone-description = Purtroppo non è possibile tornare indietro. Ma ci sono dei passaggi che puoi adottare per assicurarti di rimanere al sicuro.
+security-recommendation-phone-description = Purtroppo non è possibile tornare indietro e nascondere questa informazione. Ma ci sono dei passaggi che puoi adottare per assicurarti di rimanere al sicuro.
 security-recommendation-phone-step-one = Blocca i numeri che generano spam per evitare chiamate indesiderate
 security-recommendation-phone-step-two = Non fare clic su link in SMS provenienti da mittenti sconosciuti; se sembra che provenga da una fonte attendibile, chiamali direttamente per confermare
 
@@ -151,40 +151,40 @@ security-recommendation-email-summary =
         [one] Il tuo indirizzo email è stato coinvolto in { $num_breaches } violazione di dati:
        *[other] Il tuo indirizzo email è stato esposto in { $num_breaches } violazioni di dati:
     }
-security-recommendation-email-description = Purtroppo non è possibile risolvere il problema. Ma ci sono dei passaggi che puoi adottare per proteggerti.
+security-recommendation-email-description = Purtroppo non è possibile tornare indietro e nascondere questa informazione. Ma ci sono dei passaggi che puoi adottare per proteggerti.
 security-recommendation-email-step-one = Non fare clic sui link nelle email provenienti da mittenti sconosciuti; se sembra provenire da una fonte attendibile, chiamali direttamente per confermare
 security-recommendation-email-step-two = Fai attenzione alle <link_to_info>truffe di phishing</link_to_info>
 security-recommendation-email-step-three = Contrassegna le email sospette come spam e blocca il mittente
-security-recommendation-email-step-four = Utilizza gli <link_to_info>alias di posta elettronica { -brand-relay }</link_to_info> per proteggere la tua email in futuro
+security-recommendation-email-step-four = Utilizza gli <link_to_info>alias di posta elettronica di { -brand-relay }</link_to_info> per proteggere la tua email in futuro
 
 # IP security recommendation
 
-security-recommendation-ip-title = Utilizza una VPN per una maggiore privacy
+security-recommendation-ip-title = Utilizza una VPN per una privacy maggiore
 # $num_breaches is the number of breaches where the IP address was found.
 security-recommendation-ip-summary =
     { $num_breaches ->
         [one] Il tuo indirizzo IP è stato coinvolto in { $num_breaches } violazione di dati:
        *[other] Il tuo indirizzo IP è stato coinvolto in { $num_breaches } violazioni di dati:
     }
-security-recommendation-ip-description = Il tuo indirizzo IP identifica la tua posizione e il tuo fornitore di servizi internet. Gli hacker potrebbero utilizzare queste informazioni per trovare la tua posizione o tentare di connettersi ai tuoi dispositivi.
+security-recommendation-ip-description = Il tuo indirizzo IP identifica la tua posizione e il tuo fornitore di servizi internet. Gli hacker potrebbero utilizzare queste informazioni per identificare la tua posizione o tentare di connettersi ai tuoi dispositivi.
 security-recommendation-ip-step-one = Utilizza una VPN (come <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) per nascondere il tuo indirizzo IP reale e utilizzare Internet in modo riservato.
 
 # Leaked Passwords
 
 # Variables
 # $breach_name is the name of the breach where the leaked password was found.
-leaked-passwords-title = La password di { $breach_name } è stata esposta
+leaked-passwords-title = La password di “{ $breach_name }” è stata esposta
 # Variables
 # $breach_date is the date when the breach occurred.
 leaked-passwords-summary = È stata esposta in una violazione di dati il { $breach_date }.
-leaked-passwords-description = I truffatori possono accedere al tuo account e probabilmente cercheranno di accedere ad altri account per vedere se hai utilizzato la stessa password. Cambiala ovunque hai utilizzato questa password per proteggerti.
-leaked-passwords-steps-title = Ecco cosa fare
-leaked-passwords-steps-subtitle = Questo richiede accesso alle tue informazioni sensibili, quindi dovrai risolverlo manualmente.
+leaked-passwords-description = I truffatori possono accedere al tuo account e probabilmente cercheranno di accedere ad altri account per vedere se hai utilizzato la stessa password. Per proteggerti, cambiala ovunque hai utilizzato la stessa password.
+leaked-passwords-steps-title = Ecco che cosa fare
+leaked-passwords-steps-subtitle = Questa operazione richiede accesso alle tue informazioni sensibili, quindi dovrai procedere manualmente.
 # Variables
 # $breach_name is the name of the breach where the leaked password was found.
 # $emails_affected are the emails associated with the breach.
 leaked-passwords-step-one = Modifica la password per <b>{ $emails_affected }</b> su <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
-leaked-passwords-step-two = Cambiala in qualsiasi altro servizio in cui l’hai utilizzata.
+leaked-passwords-step-two = Cambiala in qualsiasi altro servizio in cui hai utilizzato la stessa password.
 leaked-passwords-mark-as-fixed = Segna come risolta
 leaked-passwords-skip = Ignora per il momento
 # Variables
@@ -204,10 +204,10 @@ leaked-security-questions-title = Le tue domande di sicurezza sono state esposte
 # $breach_name is the name of the breach where the leaked security questions were found.
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
-leaked-security-questions-summary = Sono state esposte in una violazione di dati il { $breach_name } il { $breach_date }.
+leaked-security-questions-summary = Sono state esposte in una violazione di dati su “{ $breach_name }” il { $breach_date }.
 leaked-security-questions-description = I truffatori possono utilizzarle per accedere ai tuoi account e a qualsiasi altro sito in cui hai utilizzato le stesse domande di sicurezza. Aggiornale ora per proteggere i tuoi account.
-leaked-security-questions-steps-title = Ecco cosa fare
-leaked-security-questions-steps-subtitle = Questo richiede accesso alle tue informazioni sensibili, quindi dovrai risolverlo manualmente.
+leaked-security-questions-steps-title = Ecco che cosa fare
+leaked-security-questions-steps-subtitle = Questa operazione richiede accesso alle tue informazioni sensibili, quindi dovrai procedere manualmente.
 # Variables
 # $breach_name is the name of the breach where the security questions were found.
 # $email_affected is the email associated with the breach.

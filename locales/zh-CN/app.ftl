@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
@@ -649,15 +654,19 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
+# Obsolete
 menu-button-title = 用户菜单
+# Obsolete
 menu-button-alt = 打开用户菜单
+# Obsolete
 menu-list-accessible-label = 账户菜单
+# Obsolete
 menu-item-fxa-2 = 管理您的 { -brand-mozilla-account }
-menu-item-fxa-alt-2 = 打开 { -brand-mozilla-account }页面
+# Obsolete
 menu-item-settings = 设置
-menu-item-settings-alt = 打开设置页面
+# Obsolete
 menu-item-help = 帮助和支持
-menu-item-help-alt = 打开帮助和支持页面
+# Obsolete
 menu-item-logout = 退出
 
 ## Footer
@@ -686,12 +695,12 @@ all-breaches-headline-2 = { -brand-fx-monitor } 检测到的所有数据外泄�
 all-breaches-lead = 我们会监控所有已知的数据外泄事件，并检查是否牵涉到您的个人信息。这是自 2007 年以来所有被报告的数据外泄事件的清单。
 search-breaches = 搜索数据外泄事件
 # the kind of user data exposed to hackers in data breach.
-exposed-data = 外泄的数据：
+exposed-data = 泄露的数据：
 
 ## Public breach detail page
 
 find-out-if-2 = 查看自己是否受此外泄事件影响
-find-out-if-description = 我们将帮助您快速了解自己的邮箱地址是否遭到外泄，并指导您进行接下来的操作。
+find-out-if-description = 我们将帮助您快速了解自己的邮箱地址是否遭到泄露，并指导您进行接下来的操作。
 breach-detail-cta-signup = 检查是否有外泄事件
 
 ## Floating banner

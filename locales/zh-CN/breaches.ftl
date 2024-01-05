@@ -12,7 +12,7 @@ breach-detail-meta-title = { -brand-fx-monitor } - { $company } 的数据泄露
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = 您是否受到 { $company } 数据泄露事件的影响？
-breach-detail-meta-social-description = 使用 { -brand-fx-monitor } 查明您的个人信息是否在此泄漏事件中暴露，并了解下一步该怎么做。
+breach-detail-meta-social-description = 使用 { -brand-fx-monitor } 查明您的个人信息是否在此外泄事件中泄露，并了解下一步该怎么做。
 breach-scan-meta-title = { -brand-fx-monitor } - 数据泄漏结果
 breach-scan-meta-social-title = { -brand-fx-monitor } 数据泄漏结果
 breach-scan-meta-social-description = 登录 { -brand-fx-monitor } 以解决数据泄漏并持续监控任何新的已知数据泄漏事件。
