@@ -337,38 +337,6 @@ async function setWaitlistsJoined (options) {
 }
 /* c8 ignore stop */
 
-/**
- * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
- */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function removeSubscriber (subscriber) {
-  await knex('email_addresses').where({ subscriber_id: subscriber.id }).del()
-  await knex('subscribers').where({ id: subscriber.id }).del()
-}
-/* c8 ignore stop */
-
-/**
- * @param {string} token
- * @param {string} emailSha1
- */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function removeSubscriberByToken (token, emailSha1) {
-  const subscriber = await getSubscriberByTokenAndHash(token, emailSha1)
-  if (!subscriber) {
-    return false
-  }
-  await knex('subscribers')
-    .where({
-      primary_verification_token: subscriber.primary_verification_token,
-      primary_sha1: subscriber.primary_sha1
-    })
-    .del()
-  return subscriber
-}
-/* c8 ignore stop */
-
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function deleteUnverifiedSubscribers () {
@@ -572,8 +540,6 @@ export {
   updateBreachStats,
   updateMonthlyEmailTimestamp,
   updateMonthlyEmailOptout,
-  removeSubscriber,
-  removeSubscriberByToken,
   deleteUnverifiedSubscribers,
   deleteSubscriber,
   deleteResolutionsWithEmail,
