@@ -75,14 +75,19 @@ export function UpsellButton(props: Props) {
   );
 }
 
-function UpsellToggleButton(props) {
+function UpsellToggleButton(
+  props: Props &
+    Parameters<typeof useToggleButton>[0] & {
+      // AriaToggleButtonOptions
+      hasPremium: boolean;
+    },
+) {
   const l10n = useL10n();
   const ref = useRef<HTMLButtonElement>(null);
   const state = useToggleState({
     ...props,
     isSelected: props.hasPremium,
   });
-  const { buttonProps } = useToggleButton(props, state, ref);
 
   const dialogState = useOverlayTriggerState({
     defaultOpen: false,
@@ -91,12 +96,12 @@ function UpsellToggleButton(props) {
     { type: "dialog" },
     dialogState,
   );
+  const { buttonProps } = useToggleButton(triggerProps, state, ref);
 
   return (
     <>
       <button
         {...buttonProps}
-        {...triggerProps}
         onClick={() => dialogState.open()}
         className={`${styles.upsellBadge} ${
           state.isSelected ? styles.isSelected : ""
