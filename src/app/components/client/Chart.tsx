@@ -27,7 +27,7 @@ export type Props = {
   scanInProgress: boolean;
   isShowFixed: boolean;
   summary: DashboardSummary;
-  totalNumberOfPerformedScans: number;
+  totalNumberOfPerformedScans?: number;
 };
 
 export const DoughnutChart = (props: Props) => {
@@ -137,11 +137,12 @@ export const DoughnutChart = (props: Props) => {
           <p>
             {l10n.getString("exposure-chart-returning-user-upgrade-prompt")}
           </p>
-          {props.totalNumberOfPerformedScans <
-          parseInt(
-            process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
-            10,
-          ) ? (
+          {typeof props.totalNumberOfPerformedScans === "undefined" ||
+          props.totalNumberOfPerformedScans <
+            parseInt(
+              process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
+              10,
+            ) ? (
             <Link
               href="/redesign/user/welcome/free-scan?referrer=dashboard"
               onClick={() => {
