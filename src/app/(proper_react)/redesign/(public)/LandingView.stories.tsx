@@ -22,7 +22,7 @@ export const LandingUs: Story = {
   args: {
     eligibleForPremium: true,
     countryCode: "us",
-    scanLimit: false,
+    scanLimitReached: false,
   },
 };
 
@@ -31,7 +31,7 @@ export const LandingUsScanLimit: Story = {
   args: {
     eligibleForPremium: true,
     countryCode: "us",
-    scanLimit: true,
+    scanLimitReached: true,
   },
 };
 
