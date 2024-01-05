@@ -223,7 +223,6 @@ export const View = (props: Props) => {
       </div>
 
       {!props.eligibleForPremium && <HeresHowWeHelp />}
-
       <Plans {...props} />
 
       <div className={styles.signUpEncouragementWrapper}>
@@ -289,12 +288,32 @@ const Plans = (props: Props) => {
       <p className={styles.lead}>
         {props.l10n.getString("landing-premium-plans-lead")}
       </p>
+
+      {props.eligibleForPremium && props.scanLimit && (
+        <div className={styles.waitlistSection}>
+          <b className={styles.waitlistTitle}>
+            {props.l10n.getString("landing-premium-waitlist-section-pt-1")}
+            <br />
+            {props.l10n.getString("landing-premium-waitlist-section-pt-2")}
+          </b>
+          <SignUpForm
+            eligibleForPremium={props.eligibleForPremium}
+            signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
+            eventId={{
+              cta: "intent_to_join_waitlist_third",
+            }}
+            scanLimit={props.scanLimit}
+          />
+        </div>
+      )}
+
       <PlansTable
         aria-labelledby={headingId}
         premiumSubscriptionUrl={{
           monthly: getPremiumSubscriptionUrl({ type: "monthly" }),
           yearly: getPremiumSubscriptionUrl({ type: "yearly" }),
         }}
+        scanLimit={props.scanLimit}
       />
     </div>
   );

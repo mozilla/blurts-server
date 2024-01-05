@@ -64,10 +64,14 @@ export type Props = {
   };
 };
 
+type ScanLimitProp = {
+  scanLimit: boolean;
+};
+
 const monthlyPriceAnnualBilling = 13.37;
 const monthlyPriceMonthlyBilling = 42.42;
 
-export const PlansTable = (props: Props) => {
+export const PlansTable = (props: Props & ScanLimitProp) => {
   const l10n = useL10n();
   const roundedPriceFormatter = new Intl.NumberFormat(getLocale(l10n), {
     style: "currency",
@@ -85,10 +89,15 @@ export const PlansTable = (props: Props) => {
   return (
     <>
       <div className={styles.plansCards}>
-        <div role="group" className={styles.plusCard}>
+        <div
+          role="group"
+          className={props.scanLimit ? styles.freeCard : styles.plusCard}
+        >
           <div className={styles.head}>
             <b className={styles.badge}>
-              {l10n.getString("landing-premium-plans-table-annotation-plus")}
+              {props.scanLimit
+                ? l10n.getString("landing-premium-max-scan-at-capacity")
+                : l10n.getString("landing-premium-plans-table-annotation-plus")}
             </b>
             <h3>
               {l10n.getFragment(
@@ -159,17 +168,20 @@ export const PlansTable = (props: Props) => {
               </span>
             </p>
             <Button
+              disabled={props.scanLimit}
               variant="primary"
               href={props.premiumSubscriptionUrl[billingPeriod]}
               className={styles.cta}
             >
               {l10n.getString("landing-premium-plans-table-cta-plus-label")}
             </Button>
-            <small className={styles.reassurance}>
-              {l10n.getString(
-                "landing-premium-plans-table-reassurance-plus-label",
-              )}
-            </small>
+            {!props.scanLimit && (
+              <small className={styles.reassurance}>
+                {l10n.getString(
+                  "landing-premium-plans-table-reassurance-plus-label",
+                )}
+              </small>
+            )}
           </div>
           <hr />
           <div className={styles.featuresSection}>
@@ -314,6 +326,11 @@ export const PlansTable = (props: Props) => {
         </div>
         <div role="group" className={styles.freeCard}>
           <div className={styles.head}>
+            {props.scanLimit && (
+              <b className={styles.badge}>
+                {l10n.getString("landing-premium-max-scan-at-capacity")}
+              </b>
+            )}
             <h3>
               {l10n.getString("landing-premium-plans-table-heading-free-title")}
             </h3>
@@ -333,17 +350,20 @@ export const PlansTable = (props: Props) => {
               <span className={styles.total} />
             </p>
             <Button
-              variant="secondary"
+              disabled={props.scanLimit}
+              variant="primary"
               className={styles.cta}
               onPress={() => void signIn("fxa")}
             >
               {l10n.getString("landing-premium-plans-table-cta-free-label")}
             </Button>
-            <small className={styles.reassurance}>
-              {l10n.getString(
-                "landing-premium-plans-table-reassurance-free-label",
-              )}
-            </small>
+            {!props.scanLimit && (
+              <small className={styles.reassurance}>
+                {l10n.getString(
+                  "landing-premium-plans-table-reassurance-free-label",
+                )}
+              </small>
+            )}
           </div>
           <hr />
           <div className={styles.featuresSection}>
@@ -487,12 +507,21 @@ export const PlansTable = (props: Props) => {
           </div>
         </div>
       </div>
-      <Table aria-labelledby={props["aria-labelledby"]} selectionMode="none">
+      <Table
+        aria-labelledby={props["aria-labelledby"]}
+        selectionMode="none"
+        scanLimit={props.scanLimit}
+      >
         <TableHeader>
           <Column>
             {l10n.getString("landing-premium-plans-table-heading-feature")}
           </Column>
           <Column>
+            {props.scanLimit && (
+              <b className={styles.badge}>
+                {l10n.getString("landing-premium-max-scan-at-capacity")}
+              </b>
+            )}
             <h3>
               {l10n.getString("landing-premium-plans-table-heading-free-title")}
             </h3>
@@ -504,7 +533,9 @@ export const PlansTable = (props: Props) => {
           </Column>
           <Column>
             <b className={styles.badge}>
-              {l10n.getString("landing-premium-plans-table-annotation-plus")}
+              {props.scanLimit
+                ? l10n.getString("landing-premium-max-scan-at-capacity")
+                : l10n.getString("landing-premium-plans-table-annotation-plus")}
             </b>
             <h3>
               {l10n.getFragment(
@@ -654,14 +685,20 @@ export const PlansTable = (props: Props) => {
                   </b>
                   <span className={styles.total} />
                 </p>
-                <Button variant="secondary" onPress={() => void signIn("fxa")}>
+                <Button
+                  disabled={props.scanLimit}
+                  variant="secondary"
+                  onPress={() => void signIn("fxa")}
+                >
                   {l10n.getString("landing-premium-plans-table-cta-free-label")}
                 </Button>
-                <small className={styles.reassurance}>
-                  {l10n.getString(
-                    "landing-premium-plans-table-reassurance-free-label",
-                  )}
-                </small>
+                {!props.scanLimit && (
+                  <small className={styles.reassurance}>
+                    {l10n.getString(
+                      "landing-premium-plans-table-reassurance-free-label",
+                    )}
+                  </small>
+                )}
               </div>
             </Cell>
             <Cell>
@@ -723,16 +760,19 @@ export const PlansTable = (props: Props) => {
                   </span>
                 </p>
                 <Button
+                  disabled={props.scanLimit}
                   variant="primary"
                   href={props.premiumSubscriptionUrl[billingPeriod]}
                 >
                   {l10n.getString("landing-premium-plans-table-cta-plus-label")}
                 </Button>
-                <small className={styles.reassurance}>
-                  {l10n.getString(
-                    "landing-premium-plans-table-reassurance-plus-label",
-                  )}
-                </small>
+                {!props.scanLimit && (
+                  <small className={styles.reassurance}>
+                    {l10n.getString(
+                      "landing-premium-plans-table-reassurance-plus-label",
+                    )}
+                  </small>
+                )}
               </div>
             </Cell>
           </Row>
@@ -742,7 +782,9 @@ export const PlansTable = (props: Props) => {
   );
 };
 
-const Table = (props: TableStateProps<object> & AriaTableProps<object>) => {
+const Table = (
+  props: TableStateProps<object> & AriaTableProps<object> & ScanLimitProp,
+) => {
   const tableRef = useRef<HTMLTableElement>(null);
   const tableState = useTableState(props);
   const { collection } = tableState;
@@ -759,6 +801,7 @@ const Table = (props: TableStateProps<object> & AriaTableProps<object>) => {
           >
             {[...headerRow.childNodes].map((column) => (
               <TableColumnHeader
+                scanLimit={props.scanLimit}
                 key={column.key}
                 column={column}
                 state={tableState}
@@ -771,7 +814,12 @@ const Table = (props: TableStateProps<object> & AriaTableProps<object>) => {
         {[...collection.body.childNodes].map((row) => (
           <TableRow key={row.key} item={row} state={tableState}>
             {[...row.childNodes].map((cell) => (
-              <TableCell key={cell.key} cell={cell} state={tableState} />
+              <TableCell
+                scanLimit={props.scanLimit}
+                key={cell.key}
+                cell={cell}
+                state={tableState}
+              />
             ))}
           </TableRow>
         ))}
@@ -815,6 +863,7 @@ const TableHeaderRow = (props: {
 const TableColumnHeader = (props: {
   column: AriaTableColumnHeaderProps<unknown>["node"];
   state: TableState<object>;
+  scanLimit: boolean;
 }) => {
   const columnRef = useRef<HTMLTableCellElement>(null);
   const { columnHeaderProps } = useTableColumnHeader(
@@ -824,6 +873,19 @@ const TableColumnHeader = (props: {
   );
   const { isFocusVisible, focusProps } = useFocusRing();
 
+  const outlineStyle = () => {
+    switch (props.column.index) {
+      case 0:
+        return `${styles.featureCell} ${styles.featureHeadingCell}`;
+      case 1:
+        return `${styles.freeCell} ${styles.freeHeadingCell}`;
+      case 2:
+        return props.scanLimit
+          ? `${styles.freeCell} ${styles.freeHeadingCell}`
+          : `${styles.plusCell} ${styles.plusHeadingCell}`;
+    }
+  };
+
   return (
     <th
       {...mergeProps(columnHeaderProps, focusProps)}
@@ -831,14 +893,10 @@ const TableColumnHeader = (props: {
       ref={columnRef}
       // We don't currently do anything with focused table cells, so we don't
       // have any tests for it either:
-      /* c8 ignore next */
-      className={`${isFocusVisible ? styles.isFocused : styles.isBlurred} ${
-        props.column.index === 0
-          ? `${styles.featureCell} ${styles.featureHeadingCell}`
-          : props.column.index === 1
-            ? `${styles.freeCell} ${styles.freeHeadingCell}`
-            : `${styles.plusCell} ${styles.plusHeadingCell}`
-      }`}
+      /* c8 ignore next 2*/
+      className={`${
+        isFocusVisible ? styles.isFocused : styles.isBlurred
+      } ${outlineStyle()}`}
     >
       {props.column.rendered}
     </th>
@@ -877,6 +935,7 @@ const TableRow = (props: {
 const TableCell = (props: {
   cell: AriaTableCellProps["node"];
   state: TableState<object>;
+  scanLimit: boolean;
 }) => {
   const cellRef = useRef<HTMLTableCellElement>(null);
   const { gridCellProps } = useTableCell(
@@ -903,6 +962,17 @@ const TableCell = (props: {
     );
   }
 
+  const outlineStyle = () => {
+    if (!props.scanLimit) {
+      if (props.cell.column?.index === 1) {
+        return `${styles.freeCell} ${styles.freeBodyCell}`;
+      } else {
+        return `${styles.plusCell} ${styles.plusBodyCell}`;
+      }
+    }
+    return `${styles.freeCell} ${styles.freeBodyCell}`;
+  };
+
   return (
     <td
       {...mergeProps(gridCellProps, focusProps)}
@@ -912,11 +982,7 @@ const TableCell = (props: {
         // have any tests for it either:
         /* c8 ignore next */
         isFocusVisible ? styles.isFocused : styles.isBlurred
-      } ${
-        props.cell.column?.index === 1
-          ? `${styles.freeCell} ${styles.freeBodyCell}`
-          : `${styles.plusCell} ${styles.plusBodyCell}`
-      }`}
+      } ${outlineStyle()}`}
     >
       <span className={styles.cellWrapper}>{props.cell.rendered}</span>
     </td>
