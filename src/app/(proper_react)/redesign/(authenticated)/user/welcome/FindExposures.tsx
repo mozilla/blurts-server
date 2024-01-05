@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ProgressBar } from "../../../../../components/client/ProgressBar";
 import styles from "./FindExposures.module.scss";
@@ -86,17 +86,20 @@ export const FindExposures = ({
 
   const { gtag } = useGa();
   const pathName = usePathname();
+  const searchParams = useSearchParams();
+  const userType =
+    searchParams.get("referrer") === "dashboard" ? "non_legacy" : "legacy";
 
   useEffect(() => {
     // view page telemetry
     const findExposuresTelemetryParams: FindExposuresTelemetryParams = {
       exit_time: 0,
       page_location: pathName,
-      user_type: "non_legacy",
+      user_type: userType,
     };
     const scanCompletedTelemetryParams: ScanCompletedTelemetryParams = {
       page_location: pathName,
-      user_type: "non_legacy",
+      user_type: userType,
     };
 
     // TODO: Add unit test when changing this code:
