@@ -24,14 +24,17 @@ import { useGa } from "../../hooks/useGa";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import { CountryCodeContext } from "../../../contextProviders/country-code";
 
-export type Props = {
-  label: string;
-  user?: Session["user"];
+export type UpsellButtonProps = {
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  user?: Session["user"];
 };
 
-export function UpsellButton(props: Props) {
+export function UpsellButton(
+  props: UpsellButtonProps & {
+    label: string;
+  },
+) {
   const { gtag } = useGa();
   const recordTelemetry = useTelemetry();
   const pathname = usePathname();
@@ -75,13 +78,11 @@ export function UpsellButton(props: Props) {
   );
 }
 
-function UpsellToggleButton(
-  props: Props &
-    Parameters<typeof useToggleButton>[0] & {
-      // AriaToggleButtonOptions
-      hasPremium: boolean;
-    },
-) {
+export type UpsellToggleButton = UpsellButtonProps & {
+  hasPremium: boolean;
+};
+
+function UpsellToggleButton(props: UpsellToggleButton) {
   const l10n = useL10n();
   const ref = useRef<HTMLButtonElement>(null);
   const state = useToggleState({
@@ -126,7 +127,7 @@ function UpsellToggleButton(
   );
 }
 
-export function UpsellBadge(props: Props) {
+export function UpsellBadge(props: UpsellButtonProps) {
   const countryCode = useContext(CountryCodeContext);
 
   const { user } = props;

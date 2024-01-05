@@ -23,7 +23,6 @@ const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
       {props.isBadge ? (
         <UpsellBadge
           user={props.user}
-          label="Subscribe to Monitor Plus"
           monthlySubscriptionUrl={monthlySubscriptionUrl}
           yearlySubscriptionUrl={yearlySubscriptionUrl}
         />
