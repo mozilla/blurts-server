@@ -3,7 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
-landing-all-hero-title = Scopri dove sono esposte le tue informazioni private e riprendine possesso
+landing-all-hero-title = Scopri dove sono esposte le tue informazioni personali e riprendine possesso
 landing-all-hero-lead = Analizziamo le violazioni di dati per verificare se i tuoi dati sono stati esposti e ti forniamo suggerimenti per risolvere il problema.
 landing-all-hero-emailform-input-placeholder = iltuonome@example.com
 landing-all-hero-emailform-input-label = Inserisci il tuo indirizzo email per verificare la presenza di violazioni di dati.
@@ -14,13 +14,13 @@ landing-all-hero-image-chart-label = esposizioni
 # Value Proposition
 
 landing-all-value-prop-fix-exposures = Ti aiuteremo a risolvere le esposizioni
-landing-all-value-prop-fix-exposures-description = La nostra missione è rimettere nelle tue mani il controllo dei tuoi dati personali. Ti aiuteremo a risolvere le violazioni di dati e a mantenere private le tue informazioni, sempre <privacy_link>rispettando la tua privacy</privacy_link>.
+landing-all-value-prop-fix-exposures-description = La nostra missione è rimettere nelle tue mani il controllo dei tuoi dati personali. Ti aiuteremo a risolvere le violazioni di dati e a mantenere le tue informazioni personali al sicuro, sempre <privacy_link>rispettando la tua privacy</privacy_link>.
 landing-all-value-prop-info-at-risk = Quali informazioni potrebbero essere a rischio?
-landing-all-value-prop-info-at-risk-description = Le fughe di dati purtroppo fanno parte della nostra vita digitale. Password, dati di contatto, dati finanziari e altre informazioni personali possono essere esposti, esponendoti al rischio di furto d’identità.
+landing-all-value-prop-info-at-risk-description = Le fughe di dati purtroppo fanno parte della nostra vita digitale. Password, dati di contatto, dati finanziari e altre informazioni personali possono essere compromessi, esponendoti al rischio di furto d’identità.
 
 # Quote
 
-landing-all-quote = Ogni 11 minuti si verifica una <data_breaches>violazione di dati</data_breaches> che espone informazioni private — ma non preoccuparti, possiamo aiutarti.
+landing-all-quote = Ogni 11 minuti si verifica una <data_breaches>violazione di dati</data_breaches> che espone informazioni personali — ma non preoccuparti, possiamo aiutarti.
 
 # Non-US FAQ
 
@@ -45,16 +45,13 @@ landing-all-social-proof-title =
     }
 # Variables
 # $num_countries is the number of countries available.
-landing-all-social-proof-description =
-    { $num_countries ->
-       *[other] Dal 2018 aiutiamo persone in { $num_countries } Paesi a proteggere i propri dati quando vengono esposti.
-    }
+landing-all-social-proof-description = Dal 2018 aiutiamo persone in { $num_countries } Paesi a proteggere i propri dati in caso di esposizione.
 landing-all-social-proof-press = Come visto in
 
 # Here's How We Help
 
-landing-all-help-protect-you = Ecco come ti aiutiamo a proteggerti
-landing-all-help-protect-you-description = Crediamo nel tuo diritto alla privacy, quindi la protezione tramite il monitoraggio delle violazioni di dati è sempre gratuita.
+landing-all-help-protect-you = Ecco come ti aiutiamo a proteggere i tuoi dati
+landing-all-help-protect-you-description = Crediamo nel tuo diritto alla privacy. Per questo motivo, la protezione tramite il monitoraggio delle violazioni di dati è sempre gratuita.
 landing-all-help-protect-you-feature-one = Ti cercheremo in tutte le violazioni di dati conosciute
 landing-all-help-protect-you-feature-two = Ti guideremo attraverso i passaggi per risolvere ogni violazione
 landing-all-help-protect-you-feature-three = Continueremo a monitorare e ti invieremo avvisi per qualsiasi nuova violazione

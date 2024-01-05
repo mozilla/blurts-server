@@ -31,12 +31,13 @@ settings-email-limit-info =
 settings-email-verification-callout = Ñanduti veve jehechajey jerurepyre
 settings-resend-email-verification-link = Emondojey ñanduti veve jehechajeyrã
 settings-add-email-button = Embojuaju ñanduti veve kundaharape
+# Deprecated
 settings-delete-email-button = Embogue ñandutiveve kundaharape
-
+settings-remove-email-button-label = Mboguete
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] Ojekuaa { $breachCount }-pe ñembyaikuéra ojehecháva.

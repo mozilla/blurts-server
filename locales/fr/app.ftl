@@ -49,7 +49,7 @@ user-add-duplicate-email = Cette adresse e-mail a déjà été ajoutée à { -pr
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Consultez les { $preferencesLink } pour vérifier l’état de { $userEmail }.
 user-add-verification-email-just-sent = Un autre e-mail de vérification ne peut pas être envoyé aussi rapidement. Veuillez réessayer plus tard.
-user-add-unknown-error = Une erreur s’est produite lors de l’ajout d’une autre adresse électronique. Veuillez réessayer plus tard.
+user-add-unknown-error = Une erreur s’est produite lors de l’ajout d’une autre adresse e-mail. Veuillez réessayer plus tard.
 error-headline = Erreur
 user-verify-token-error = Un jeton de vérification est nécessaire.
 user-verify-email-report-subject = Votre rapport { -product-name }

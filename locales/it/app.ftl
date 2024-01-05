@@ -657,8 +657,8 @@ ad-unit-6-before-you-complete = La prossima volta che devi registrarti, utilizza
 # and kept in English.
 -brand-mozilla-account =
     { $capitalization ->
-        [uppercase] Account Firefox
-       *[lowercase] account Firefox
+        [uppercase] Account Mozilla
+       *[lowercase] account Mozilla
     }
 open-in-new-tab-alt = Apri in una nuova scheda
 

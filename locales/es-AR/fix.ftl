@@ -113,6 +113,9 @@ high-risk-breach-pin-step-three = Verificá tus cuentas por cargos no autorizado
 # No high risk breaches found
 
 high-risk-breach-none-title = Buenas noticias, no encontramos ninguna filtración de datos de alto riesgo
+# Variables
+# $email_list is list of emails that the user is monitoring for breaches. E.g. john@yahoo.com, ali@gmail.com, sam@hotmail.com
+high-risk-breach-none-description = Detectamos filtraciones de datos basándonos en tu dirección de correo electrónico y no encontramos ninguna filtración de datos de alto riesgo para { $email_list }.
 high-risk-breach-none-sub-description-part-one = Las filtraciones de datos de alto riesgo incluyen:
 high-risk-breach-none-sub-description-ssn = Número de seguridad social
 high-risk-breach-none-sub-description-bank-account = Información de la cuenta bancaria
@@ -205,4 +208,8 @@ leaked-security-questions-summary = Aparecieron en una filtración de datos en {
 leaked-security-questions-description = Los estafadores pueden usarlos para acceder a tus cuentas y a cualquier otro sitio donde hayas usado las mismas preguntas de seguridad. Actualízalas ahora para proteger tus cuentas.
 leaked-security-questions-steps-title = Esto es lo que tienes que hacer
 leaked-security-questions-steps-subtitle = Esto requiere acceso a tu cuenta, por lo que tendrás que solucionarlo manualmente.
+# Variables
+# $breach_name is the name of the breach where the security questions were found.
+# $email_affected is the email associated with the breach.
+leaked-security-questions-step-one = Actualizá tus preguntas de seguridad para <b>{ $email_affected }</b> en <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
 leaked-security-questions-step-two = Actualízalas en cualquier otro sitio donde hayas usado las mismas preguntas de seguridad. Asegúrate de usar diferentes preguntas de seguridad para cada cuenta.
