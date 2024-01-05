@@ -47,6 +47,8 @@ user-add-duplicate-email = This email has already been added to { -product-name 
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Visit your { $preferencesLink } to check the status of { $userEmail }.
+user-add-verification-email-just-sent = Another verification email can’t be sent this quickly. Please try again later.
+user-add-unknown-error = Something went wrong adding another email address. Please try again later.
 
 error-headline = Error
 user-verify-token-error = Verification token is required.

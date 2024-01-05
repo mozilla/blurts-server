@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
@@ -49,6 +54,8 @@ user-add-duplicate-email = Этот адрес электронной почты
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Посетите { $preferencesLink }, чтобы проверить статус { $userEmail }.
+user-add-verification-email-just-sent = Невозможно так быстро отправить ещё одно письмо для подтверждения. Подождите некоторое время и попробуйте снова.
+user-add-unknown-error = Что-то пошло не так при добавлении ещё одного адреса электронной почты. Подождите некоторое время и попробуйте снова.
 error-headline = Ошибка
 user-verify-token-error = Требуется токен подтверждения.
 user-verify-email-report-subject = Ваш отчёт от { -product-name }
@@ -706,6 +713,7 @@ ad-unit-6-before-you-complete = Прежде чем завершить след�
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Аккаунт Mozilla
+open-in-new-tab-alt = Открыть ссылку в новой вкладке
 
 ## Search Engine Optimization
 
@@ -727,19 +735,43 @@ site-nav-help-link = Помощь и Поддержка
 site-nav-ad-callout = Попробуйте другие наши инструменты безопасности:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Основное меню
+main-nav-button-collapse-label = Свернуть меню
+main-nav-button-collapse-tooltip = Свернуть меню
+main-nav-button-expand-label = Развернуть меню
+main-nav-button-expand-tooltip = Развернуть меню
+main-nav-label = Навигация
+main-nav-link-home-label = Домой
+main-nav-link-dashboard-label = Панель управления
+main-nav-link-settings-label = Настройки
+main-nav-link-faq-label = ЧЗВ
+main-nav-link-faq-tooltip = Часто задаваемые вопросы
 
 ## User menu
 
+# Obsolete
 menu-button-title = Пользовательское меню
+# Obsolete
 menu-button-alt = Открыть пользовательское меню
+# Obsolete
 menu-list-accessible-label = Меню аккаунта
+# Obsolete
 menu-item-fxa-2 = Управляйте своим { -brand-mozilla-account }
-menu-item-fxa-alt-2 = Открыть страницу { -brand-mozilla-account }
+# Obsolete
 menu-item-settings = Настройки
-menu-item-settings-alt = Открыть страницу настроек
+# Obsolete
 menu-item-help = Справка и поддержка
-menu-item-help-alt = Открыть страницу справки и поддержки
+# Obsolete
 menu-item-logout = Выйти
+user-menu-trigger-label = Открыть пользовательское меню
+user-menu-trigger-tooltip = Профиль
+user-menu-manage-fxa-label = Управляйте своим { -brand-mozilla-account }
+user-menu-settings-label = Настройки
+user-menu-settings-tooltip = Настройка { -brand-mozilla-monitor }
+user-menu-help-label = Справка и поддержка
+user-menu-help-tooltip = Получите помощь по использованию { -brand-mozilla-monitor }
+user-menu-signout-label = Выйти
+user-menu-signout-tooltip = Выйти из { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -748,6 +780,8 @@ terms-of-service = Условия использования
 privacy-notice = Уведомление о конфиденциальности
 github = { -brand-github }
 footer-nav-all-breaches = Все утечки
+footer-external-link-faq-label = ЧЗВ
+footer-external-link-faq-tooltip = Часто задаваемые вопросы
 
 ## Error page
 
