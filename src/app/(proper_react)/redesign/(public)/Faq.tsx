@@ -4,11 +4,12 @@
 
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode, useRef, useState } from "react";
 import { useL10n } from "../../../hooks/l10n";
 import styles from "./LandingView.module.scss";
 import { CloseBigIcon } from "../../../components/server/Icons";
 import { useTelemetry } from "../../../hooks/useTelemetry";
+import { useButton, useFocusRing } from "react-aria";
 
 export type FaqItemProps = {
   question: string;
@@ -18,11 +19,26 @@ export type FaqItemProps = {
 };
 
 const FaqItem = (props: FaqItemProps) => {
-  const { question, answer, isExpanded, onExpandAnswer } = props;
+  // const { question, answer, isExpanded, onExpandAnswer } = props;
+  const { question, answer } = props;
+  const [isExpanded, onExpandAnswer] = useState(false);
+  const buttonRef = useRef(null);
+  const { buttonProps } = useButton(
+    {
+      onPress: () => onExpandAnswer(!isExpanded),
+    },
+    buttonRef,
+  );
+  const { focusProps } = useFocusRing();
 
   return (
     <>
-      <dt className={styles.faqQuestion} onClick={onExpandAnswer}>
+      <dt
+        {...buttonProps}
+        {...focusProps}
+        tabIndex={0}
+        className={styles.faqQuestion}
+      >
         {question}
         <CloseBigIcon alt="" className={`${isExpanded && styles.expanded}`} />
       </dt>
