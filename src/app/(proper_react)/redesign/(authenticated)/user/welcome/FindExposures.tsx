@@ -87,12 +87,12 @@ export const FindExposures = ({
   const { gtag } = useGa();
   const pathName = usePathname();
   const searchParams = useSearchParams();
-  /* c8 ignore next 2 */
-  const userType =
-    searchParams.get("referrer") === "dashboard" ? "non_legacy" : "legacy";
 
   useEffect(() => {
-    // view page telemetry
+    // TODO: Add unit test when changing this code:
+    /* c8 ignore start */
+    const userType =
+      searchParams.get("referrer") === "dashboard" ? "non_legacy" : "legacy";
     const findExposuresTelemetryParams: FindExposuresTelemetryParams = {
       exit_time: 0,
       page_location: pathName,
@@ -103,8 +103,6 @@ export const FindExposures = ({
       user_type: userType,
     };
 
-    // TODO: Add unit test when changing this code:
-    /* c8 ignore start */
     const timeoutId = setTimeout(() => {
       const nextProgress = scanProgress + percentageSteps;
       setScanProgress(Math.min(nextProgress, maxProgress));
@@ -157,6 +155,7 @@ export const FindExposures = ({
     previousRoute,
     gtag,
     pathName,
+    searchParams,
   ]);
 
   function ProgressLabel() {
