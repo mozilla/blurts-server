@@ -23,13 +23,15 @@ export default async function Page() {
     new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
   );
   const oneRepActivations = profileStats?.total_active;
-  const scanLimitReached = typeof oneRepActivations === "undefined" || oneRepActivations > monthlySubscribersQuota;
+  const scanLimitReached =
+    typeof oneRepActivations === "undefined" ||
+    oneRepActivations > monthlySubscribersQuota;
   return (
     <View
       eligibleForPremium={eligibleForPremium}
       l10n={getL10n()}
       countryCode={countryCode}
-      scanLimit={scanLimitReached}
+      scanLimitReached={scanLimitReached}
     />
   );
 }
