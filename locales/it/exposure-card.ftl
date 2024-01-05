@@ -11,7 +11,7 @@ exposure-card-date-found = Data esposizione
 
 status-pill-action-needed = Richiede attenzione
 status-pill-progress = In corso
-status-pill-fixed = Risolte
+status-pill-fixed = Risolta
 
 # Exposure Card
 

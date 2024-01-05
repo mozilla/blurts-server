@@ -58,7 +58,7 @@ dashboard-exposures-area-description-all-line2 =
     { $data_breach_unresolved_num ->
        *[other] 出現在 { $data_breach_unresolved_num } 場資料外洩事件中。
     }
-dashboard-fixed-area-headline-all = 檢視所有修正過的暴露程度
+dashboard-fixed-area-headline-all = 檢視所有處理過的資料外洩事件
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = 篩選
 dashboard-exposures-filter-company = 公司
@@ -78,7 +78,7 @@ dashboard-exposures-filter-reset = 重設
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = 儀錶板摘要
-dashboard-top-banner-scan-in-progress-title = 您的掃描仍在進行中
+dashboard-top-banner-scan-in-progress-title = 仍在掃描中
 dashboard-top-banner-your-data-is-protected-title = 您的資料受到保護
 dashboard-top-banner-your-data-is-protected-cta = 看看處理了哪些事件
 dashboard-top-banner-lets-keep-protecting-title = 讓我們持續保護您的資料
@@ -86,37 +86,38 @@ dashboard-top-banner-lets-keep-protecting-title = 讓我們持續保護您的資
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
 dashboard-top-banner-lets-keep-protecting-description =
     { $exposures_unresolved_num ->
-       *[other] 您還有 { $exposures_unresolved_num } 次曝光需要修正。繼續保護好自己。我們將逐步指導您。
+       *[other] 您還有 { $exposures_unresolved_num } 筆曝光資料需要處理。請繼續採取行動，我們將逐步協助。
     }
-dashboard-top-banner-lets-keep-protecting-cta = 讓我們繼續前進
+dashboard-top-banner-lets-keep-protecting-cta = 讓我們前進下一步
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
 dashboard-top-banner-non-us-protect-your-data-description-line1 =
     { $exposures_unresolved_num ->
-       *[other] 發現您的資料有 { $exposures_unresolved_num } 次被曝光的事件。
+       *[other] 我們發現您的資料曾被外洩 { $exposures_unresolved_num } 次。
     }
 # Note: this line is preceded by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $data_breach_unresolved_num (number) - the total number of data breaches the user has.
 dashboard-top-banner-non-us-protect-your-data-description-line2 =
     { $data_breach_unresolved_num ->
-       *[other] 出現在 { $data_breach_unresolved_num } 場資料外洩事件中。我們將逐步指導您修復此問題。
+       *[other] 出現在 { $data_breach_unresolved_num } 場資料外洩事件中，我們將帶您逐步處理此問題。
     }
 dashboard-top-banner-no-exposures-found-title = 沒有找到曝光資料
-dashboard-top-banner-non-us-no-exposures-found-description = 好消息我們搜尋了所有已知的資料外洩事件並未找到。我們會持續監控您的電子郵件信箱並在有新的外洩事件發生時通知您。
+dashboard-top-banner-non-us-no-exposures-found-description = 好消息！我們搜尋了所有已知的資料外洩事件，當中並未找到與您有關的曝光情形。我們會持續監控您的電子郵件信箱，並在有新的外洩事件發生時通知。
 dashboard-no-exposures-label = 沒有曝光紀錄
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
 dashboard-top-banner-non-us-your-data-is-protected-description =
     { $exposures_resolved_num ->
-       *[other] 做得好您已修正 { $exposures_resolved_num } 場資料外洩事件我們會持續監控並在有新事件時通知您。
+        [one] 做得好，您已經處理完曝光的資料了！我們將持續監控，並且在新的資料外洩事件發生時通知。
+       *[other] 做得好，您已經處理完全部 { $exposures_resolved_num } 筆曝光的資料了！我們將持續監控，並且在新的資料外洩事件發生時通知。
     }
 dashboard-top-banner-monitor-more-cta = 監控更多電子郵件地址
 
 # About Exposure Statuses Modal
 
 modal-exposure-status-title = 關於資料曝光狀態
-modal-exposure-status-description-all = 我們搜尋所有已知的資料外洩事件中的風險。您的曝光狀況將處於下列狀態之一:
-modal-exposure-status-action-needed = <b>Action needed</b> 表示它目前處於活動狀態您需要採取措施來修正它。
-modal-exposure-status-fixed = <b>已修復</b> 表示問題已處理並您無需採取任何行動。
+modal-exposure-status-description-all = 我們會在所有已知的資料外洩事件中搜尋曝光的資料。您被曝光的資料會有下列一種狀態：
+modal-exposure-status-action-needed = <b>需要採取行動</b>表示事件已經發生，請採取行動處理。
+modal-exposure-status-fixed = <b>已處理</b>表示資料外洩事件已處理完成，無需再採取任何行動。
