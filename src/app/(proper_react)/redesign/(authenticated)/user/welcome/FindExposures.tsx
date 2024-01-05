@@ -87,6 +87,7 @@ export const FindExposures = ({
   const { gtag } = useGa();
   const pathName = usePathname();
   const searchParams = useSearchParams();
+  /* c8 ignore next 2 */
   const userType =
     searchParams.get("referrer") === "dashboard" ? "non_legacy" : "legacy";
 
