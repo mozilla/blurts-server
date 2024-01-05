@@ -8,12 +8,9 @@ import type { Preview } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import "../src/app/globals.css";
-import { SessionProvider } from "../src/contextProviders/session";
-import { L10nProvider } from "../src/contextProviders/localization";
 import { metropolis } from "../src/app/fonts/Metropolis/metropolis";
-import { ReactAriaI18nProvider } from "../src/contextProviders/react-aria";
 import { getEnL10nBundlesSync } from "../src/app/functions/server/mockL10n";
-import { PublicEnvProvider } from "../src/contextProviders/public-env";
+import { TestComponentWrapper } from "../src/TestComponentWrapper";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -30,19 +27,7 @@ const AppDecorator: Preview["decorators"] = (storyFn) => {
     document.body.classList.add(metropolis.variable);
   }, []);
 
-  return (
-    <L10nProvider bundleSources={l10nBundles}>
-      <PublicEnvProvider
-        publicEnvs={{
-          PUBLIC_APP_ENV: "storybook",
-        }}
-      >
-        <SessionProvider session={null}>
-          <ReactAriaI18nProvider locale="en">{storyFn()}</ReactAriaI18nProvider>
-        </SessionProvider>
-      </PublicEnvProvider>
-    </L10nProvider>
-  );
+  return <TestComponentWrapper>{storyFn()}</TestComponentWrapper>;
 };
 
 // Arguments to the `storySort` callback, left as documentation.

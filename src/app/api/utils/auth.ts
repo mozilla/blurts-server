@@ -67,6 +67,14 @@ export const authOptions: AuthOptions = {
       if (trigger === "update") {
         // Refresh the user data from FxA, in case e.g. new subscriptions got added:
         profile = await fetchUserInfo(token.subscriber?.fxa_access_token ?? "");
+        if (token.email) {
+          const updatedSubscriberData = await getSubscriberByEmail(token.email);
+          // MNTOR-2599 The breach_resolution object can get pretty big,
+          // causing the session token cookie to balloon in size,
+          // eventually resulting in a 400 Bad Request due to headers being too large.
+          delete updatedSubscriberData.breach_resolution;
+          token.subscriber = updatedSubscriberData;
+        }
       }
       if (profile) {
         token.fxa = {

@@ -144,28 +144,30 @@ export const ExposuresFilter = ({
   const ExposuresFilterContent = (
     <form onSubmit={handleSaveButtonClick}>
       <div className={styles.exposuresFilterRadioButtons}>
-        <FilterRadioGroup
-          type="exposure-type"
-          value={filterState.exposureType}
-          // TODO: Add unit test when changing this code:
-          /* c8 ignore next */
-          onChange={(value) => handleRadioChange("exposureType", value)}
-          label={l10n.getString("dashboard-exposures-filter-exposure-type")}
-        >
-          <Radio value="show-all-exposure-type">
-            {l10n.getString("dashboard-exposures-filter-show-all")}
-          </Radio>
-          <Radio value="data-broker">
-            {l10n.getString(
-              "dashboard-exposures-filter-exposure-type-info-for-sale",
-            )}
-          </Radio>
-          <Radio value="data-breach">
-            {l10n.getString(
-              "dashboard-exposures-filter-exposure-type-data-breach",
-            )}
-          </Radio>
-        </FilterRadioGroup>
+        {isEligibleForPremium && (
+          <FilterRadioGroup
+            type="exposure-type"
+            value={filterState.exposureType}
+            // TODO: Add unit test when changing this code:
+            /* c8 ignore next */
+            onChange={(value) => handleRadioChange("exposureType", value)}
+            label={l10n.getString("dashboard-exposures-filter-exposure-type")}
+          >
+            <Radio value="show-all-exposure-type">
+              {l10n.getString("dashboard-exposures-filter-show-all")}
+            </Radio>
+            <Radio value="data-broker">
+              {l10n.getString(
+                "dashboard-exposures-filter-exposure-type-info-for-sale",
+              )}
+            </Radio>
+            <Radio value="data-breach">
+              {l10n.getString(
+                "dashboard-exposures-filter-exposure-type-data-breach",
+              )}
+            </Radio>
+          </FilterRadioGroup>
+        )}
         <FilterRadioGroup
           value={filterState.dateFound}
           // TODO: Add unit test when changing this code:
