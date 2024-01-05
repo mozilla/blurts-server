@@ -7,21 +7,29 @@
 import { FormEventHandler, useId, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useL10n } from "../../../hooks/l10n";
-import { Button } from "../../../components/server/Button";
+import { Button } from "../../../components/client/Button";
+import styles from "./SignUpForm.module.scss";
+import { useTelemetry } from "../../../hooks/useTelemetry";
+import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
 
 export type Props = {
   eligibleForPremium: boolean;
   signUpCallbackUrl: string;
+  isHero?: boolean;
+  eventId: {
+    cta: string;
+    field: string;
+  };
 };
 
 export const SignUpForm = (props: Props) => {
   const emailInputId = useId();
   const l10n = useL10n();
   const [emailInput, setEmailInput] = useState("");
+  const record = useTelemetry();
 
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault();
-
     void signIn(
       "fxa",
       { callbackUrl: props.signUpCallbackUrl },
@@ -30,30 +38,54 @@ export const SignUpForm = (props: Props) => {
       // https://mozilla.github.io/ecosystem-platform/relying-parties/reference/query-parameters#email
       { email: emailInput },
     );
+    record("ctaButton", "click", {
+      button_id: props.eventId.cta,
+    });
   };
 
+  const labelContent = (
+    <label htmlFor={emailInputId}>
+      {l10n.getString(
+        props.eligibleForPremium
+          ? "landing-premium-hero-emailform-input-label"
+          : "landing-all-hero-emailform-input-label",
+      )}
+    </label>
+  );
+
   return (
-    <form onSubmit={onSubmit}>
+    <form className={styles.form} onSubmit={onSubmit}>
       <input
+        className={props.isHero ? styles.isHero : ""}
         name={emailInputId}
         id={emailInputId}
-        onChange={(e) => setEmailInput(e.target.value)}
+        onChange={(e) => {
+          setEmailInput(e.target.value);
+        }}
+        onFocus={() => {
+          record("field", "focus", {
+            field_id: props.eventId.field,
+          });
+        }}
         value={emailInput}
         type="email"
         placeholder={l10n.getString(
           "landing-all-hero-emailform-input-placeholder",
         )}
       />
-      <Button type="submit" variant="primary" wide>
+      <Button
+        type="submit"
+        variant="primary"
+        wide
+        className={props.isHero ? styles.isHero : ""}
+      >
         {l10n.getString("landing-all-hero-emailform-submit-label")}
       </Button>
-      <label htmlFor={emailInputId}>
-        {l10n.getString(
-          props.eligibleForPremium
-            ? "landing-premium-hero-emailform-input-label"
-            : "landing-all-hero-emailform-input-label",
-        )}
-      </label>
+      {props.isHero ? (
+        labelContent
+      ) : (
+        <VisuallyHidden>{labelContent}</VisuallyHidden>
+      )}
     </form>
   );
 };

@@ -3,9 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-meta-title = { -brand-fx-monitor } - Dangosfwrdd
+
 breach-all-meta-title = { -brand-fx-monitor } - Pob Tor-data
 breach-all-meta-social-title = Pob Tor-data Wedi ei Ganfod gan { -brand-fx-monitor }
 breach-all-meta-social-description = Porwch y rhestr lawn o dor-data hysbys a ganfuwyd gan { -brand-fx-monitor }, yna gweld a ddatgelwyd eich manylion chi.
+
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = { -brand-fx-monitor } - Tor-data { $company }
@@ -13,6 +15,7 @@ breach-detail-meta-title = { -brand-fx-monitor } - Tor-data { $company }
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = A oedd y Tor-data { $company } wedi effeithio arnoch chi?
 breach-detail-meta-social-description = Defnyddiwch { -brand-fx-monitor } i ddarganfod a gafodd eich manylion personol chi eu datgelu yn y tor-data hwn, a chael gwybod beth i'w wneud nesaf.
+
 breach-scan-meta-title = { -brand-fx-monitor } - Canlyniadau Tor-data
 breach-scan-meta-social-title = { -brand-fx-monitor } Canlyniadau Tor-data
 breach-scan-meta-social-description = Mewngofnodwch i { -brand-fx-monitor } i ddatrys unrhyw dor-data a chael monitro parhaus am unrhyw dor-data hysbys newydd.
@@ -21,8 +24,10 @@ breach-scan-meta-social-description = Mewngofnodwch i { -brand-fx-monitor } i dd
 
 # Data classes pie chart title
 breach-chart-title = Data tor-data
+
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Tor-data ar gyfer { $email-select }
+
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored =
     { $total ->
@@ -33,6 +38,7 @@ emails-monitored =
         [many] { $count } o { $total } e-bost wedi'u monitro
        *[other] { $count } o { $total } e-bost wedi'u monitro
     }
+
 # link to Settings page where user can add/remove emails and set message preferences
 manage-emails-link = Rheoli arallenwau
 
@@ -46,23 +52,28 @@ filter-label-resolved = Tor-data wedi'u datrys
 column-company = CWMNI
 column-breached-data = TOR-DATA
 column-detected = CANFOD
+
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
 column-status-badge-resolved = Datryswyd
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Gweithredol
+
 breaches-resolve-heading = Datrys y tor-data hwn:
+
 breaches-none-headline = Heb ganfod tor-data
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
 breaches-none-copy = Newyddion da! Nid oes adroddiad am unrhyw dor-data hysbys am { $email }. Byddwn yn parhau i fonitro'r e-bost hwn a byddwn yn rhoi gwybod i chi os bydd unrhyw dor-data newydd yn digwydd.
 breaches-none-cta-blurb = Hoffech chi fonitro e-bost arall?
 breaches-none-cta-button = Ychwanegwch gyfeiriad e-bost
+
 breaches-all-resolved-headline = Mae pob tor-data wedi'u datrys
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
 breaches-all-resolved-copy = Da iawn! Rydych chi wedi datrys pob tor-data ar gyfer { $email }. Byddwn yn parhau i fonitro'r e-bost hwn a byddwn yn rhoi gwybod i chi os bydd unrhyw dor-data newydd yn digwydd.
 breaches-all-resolved-cta-blurb = Hoffech chi fonitro e-bost arall?
 breaches-all-resolved-cta-button = Ychwanegwch gyfeiriad e-bost
+
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 # Variables:
 #   $breachDate (String) - Date of the breach
@@ -78,6 +89,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Diweddarwch eich cyfrineiriau a galluogi dilysu dau ffactor (2FA).
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -146,6 +158,7 @@ breach-checklist-phone-header-2 = Diogelwch eich rhif ffôn gyda gwasanaeth cudd
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Diweddarwch eich cwestiynau diogelwch.
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = Yn y rhan fwyaf o achosion, byddem yn argymell eich bod yn diweddaru eich cwestiynau diogelwch ar wefan y cwmni. Ond <b>efallai bod eu gwefan wedi torri neu'n cynnwys cynnwys maleisus</b>, felly byddwch yn ofalus os byddwch <breached-company-link>yn ymweld â'r wefan</breached-company-link>. I gael diogelwch ychwanegol, diweddarwch y cwestiynau diogelwch hyn ar unrhyw gyfrifon pwysig lle rydych chi wedi'u defnyddio, a chreu cyfrineiriau unigryw ar gyfer pob cyfrif.
 

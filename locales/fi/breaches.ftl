@@ -3,9 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-meta-title = { -brand-fx-monitor } - Kojelauta
+
 breach-all-meta-title = { -brand-fx-monitor } - Kaikki tietovuodot
 breach-all-meta-social-title = Kaikki { -brand-fx-monitor }in havaitsemat tietovuodot
 breach-all-meta-social-description = Selaa täydellistä luetteloa { -brand-fx-monitor }in havaitsemista tietovuodoista, ja selvitä sitten, paljastuivatko tietosi.
+
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = { -brand-fx-monitor } - Yritykseen { $company } kohdistunut tietovuoto
@@ -13,6 +15,7 @@ breach-detail-meta-title = { -brand-fx-monitor } - Yritykseen { $company } kohdi
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Vaikuttiko yritykseen { $company } kohdistunut tietovuoto sinuun?
 breach-detail-meta-social-description = Käytä { -brand-fx-monitor }ia selvittääksesi, paljastuiko henkilökohtaisia tietojasi tämän tietovuodon yhteydessä, ja ymmärrä, mitä tehdä seuraavaksi.
+
 breach-scan-meta-title = { -brand-fx-monitor } - Tietovuodon tulokset
 breach-scan-meta-social-title = { -brand-fx-monitor }, tietovuodon tulokset
 breach-scan-meta-social-description = Kirjaudu sisään { -brand-fx-monitor }iin selvittääksesi tietovuodot ja saadaksesi jatkuvaa seurantaa uusien tunnettujen tietovuotojen varalta.
@@ -21,14 +24,17 @@ breach-scan-meta-social-description = Kirjaudu sisään { -brand-fx-monitor }iin
 
 # Data classes pie chart title
 breach-chart-title = Vuodetut tiedot
+
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Osoitetta { $email-select } koskevat tietovuodot
+
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored =
     { $total ->
         [one] { $count }/{ $total } sähköpostiosoite valvonnassa
        *[other] { $count }/{ $total } sähköpostiosoitetta valvonnassa
     }
+
 # link to Settings page where user can add/remove emails and set message preferences
 manage-emails-link = Hallitse sähköpostiosoitteita
 
@@ -42,23 +48,28 @@ filter-label-resolved = Selvitetyt vuodot
 column-company = YHTIÖ
 column-breached-data = VUODETUT TIEDOT
 column-detected = HAVAITTU
+
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
 column-status-badge-resolved = Selvitetty
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Aktiivinen
+
 breaches-resolve-heading = Selvitä tämä vuoto:
+
 breaches-none-headline = Tietovuotoja ei löytynyt
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
 breaches-none-copy = Hyviä uutisia! Sähköpostiosoitetta { $email } ei löytynyt tunnettuista tietovuodoista. Seuraamme tätä sähköpostiosoitetta ja ilmoitamme sinulle, jos tietovuotoja havaitaan.
 breaches-none-cta-blurb = Haluatko seurata myös muita sähköpostiosoitteita?
 breaches-none-cta-button = Lisää sähköpostiosoite
+
 breaches-all-resolved-headline = Kaikki tietovuodot selvitetty
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
 breaches-all-resolved-copy = Hyvin toimittu! Olet selvittänyt kaikki sähköpostiosoitetta { $email } koskevat tietovuodot. Seuraamme tätä sähköpostia ja ilmoitamme sinulle, jos tietovuotoja havaitaan.
 breaches-all-resolved-cta-blurb = Haluatko seurata myös muita sähköpostiosoitteita?
 breaches-all-resolved-cta-button = Lisää sähköpostiosoite
+
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 # Variables:
 #   $breachDate (String) - Date of the breach
@@ -74,6 +85,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Päivitä salasanasi ja ota käyttöön kaksivaiheinen todennus (2FA).
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -142,6 +154,7 @@ breach-checklist-phone-header-2 = Suojaa puhelinnumerosi maskipalvelulla, kuten 
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Päivitä turvallisuuskysymyksesi.
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = Useimmissa tapauksissa suosittelemme, että päivität turvakysymyksesi yrityksen verkkosivustolla. Mutta <b>yrityksen verkkosivusto saattaa olla poissa käytöstä tai sisältää haitallista sisältöä</b>, joten ole varovainen, jos <breached-company-link>vierailet sivustolla</breached-company-link>. Saat lisää suojaa päivittämällä nämä turvakysymykset kaikilla tileillä, joilla olet käyttänyt samoja turvallisuuskysymyksiä, ja luomalla yksilölliset salasanat kaikille tileille.
 

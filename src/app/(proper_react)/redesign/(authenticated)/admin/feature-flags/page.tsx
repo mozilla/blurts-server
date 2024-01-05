@@ -32,7 +32,7 @@ export default async function FeatureFlagPage() {
   const AllFlagsTable = (featureFlags: { data: Array<FeatureFlagRow> }) => {
     const { data } = featureFlags;
 
-    if (!data || data.length == 0) {
+    if (!data || data.length === 0) {
       return <p>No data</p>;
     }
 

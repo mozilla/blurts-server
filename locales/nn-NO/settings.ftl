@@ -32,7 +32,6 @@ settings-cancel-premium-subscription-title = Avslutt abonnementet på { -brand-p
 ## Deactivate account
 
 settings-deactivate-account-title = Deaktiver kontoen
-settings-fxa-link-label = Gå til { -brand-firefox }-innstillingar
 
 ## Add email dialog
 

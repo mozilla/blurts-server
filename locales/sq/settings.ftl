@@ -31,6 +31,7 @@ settings-email-verification-callout = Lypset verifikim email-i
 settings-resend-email-verification-link = Ridërgo email verifikimi
 settings-add-email-button = Shtoni adresë email
 settings-delete-email-button = Fshije adresën email
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:

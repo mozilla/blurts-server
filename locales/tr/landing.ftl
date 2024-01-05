@@ -34,10 +34,13 @@ learn-more-mission = Misyonumuz hakkında bilgi alın
 
 top-questions-about-monitor = { -brand-fx-monitor } hakkında en çok sorulan sorular
 see-all-faq = Tüm SSS’lere bakın
+
 # question and answer
 what-is-breach = Veri ihlali tam olarak nedir?
+
 # question and answer
 what-do-i-do = Bilgilerimin ele geçirildiğini öğrendim. Ne yapmalıyım?
+
 # question and answer
 what-gets-exposed = Veri ihlallerinde hangi bilgiler açığa çıkar?
 depends-on-hackers = Tüm ihlallerde aynı bilgiler açığa çıkmaz. Sonuç, bilgisayar korsanlarının hangi bilgilere erişebildiğine bağlıdır. Birçok veri ihlalinde e-posta adresleri ve parolalar ele geçirilir. Bazılarında kredi kartı numaraları, pasaport numaraları ve sosyal güvenlik numaraları gibi daha hassas bilgiler de ele geçirilebilir.
@@ -46,3 +49,4 @@ depends-on-hackers = Tüm ihlallerde aynı bilgiler açığa çıkmaz. Sonuç, b
 
 see-if-data-breach = Verilerinizin çalınıp çalınmadığını kontrol edin
 hibp-footer-attribution = İhlal verileri <b>{ -brand-HIBP }</b> tarafından sağlanmaktadır
+

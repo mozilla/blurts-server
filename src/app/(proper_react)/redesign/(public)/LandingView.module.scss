@@ -76,30 +76,6 @@
       font: $text-body-lg;
       color: $color-grey-50;
     }
-
-    form {
-      display: flex;
-      flex-wrap: wrap;
-      gap: $spacing-sm;
-
-      input {
-        flex: 1 0 auto;
-        border-radius: $border-radius-md;
-        border: 1px solid $color-grey-20;
-        padding: $spacing-md;
-        font: $text-body-xl;
-      }
-
-      button {
-        flex: 1 0 auto;
-        font: $text-title-xs;
-      }
-
-      label {
-        font: $text-body-sm;
-        font-weight: 500;
-      }
-    }
   }
 
   .heroImage {
@@ -161,5 +137,196 @@
   .lead {
     padding-inline: $spacing-lg;
     text-align: center;
+  }
+}
+
+.quoteWrapper {
+  padding: $layout-lg $spacing-md;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: $content-md) {
+    padding: $layout-lg;
+  }
+
+  .quote {
+    max-width: $content-lg;
+    text-align: center;
+    font: $text-title-3xs;
+    line-height: 1.4;
+    font-family: var(--font-inter);
+    font-weight: normal;
+
+    h2 {
+      .emphasis {
+        display: inline;
+        color: $color-violet-50;
+      }
+    }
+  }
+}
+
+.valuePropositionWrapper {
+  .item {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-2xl $spacing-md;
+    gap: $spacing-lg;
+
+    &.grayBg {
+      background: $color-grey-05;
+    }
+
+    .exposureTypeList {
+      font-weight: 600;
+      color: $color-purple-70;
+      display: inline;
+    }
+
+    @media screen and (min-width: $screen-md) {
+      padding-inline: $layout-lg;
+      padding-block: $layout-sm;
+      flex-direction: row;
+      gap: $spacing-xl;
+
+      &.reverseRow {
+        flex-direction: row-reverse;
+      }
+
+      @media screen and (min-width: $screen-lg) {
+        padding-inline: $layout-lg;
+        gap: $layout-xl;
+
+        @media screen and (min-width: $screen-xl) {
+          padding-inline: $layout-xl;
+        }
+      }
+    }
+
+    span {
+      gap: $spacing-md;
+      display: flex;
+      flex-direction: column;
+
+      h2 {
+        font: $text-title-xs;
+        font-family: var(--font-inter);
+        font-weight: 600;
+      }
+
+      p {
+        font: $text-body-lg;
+      }
+    }
+
+    .illustration {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      img {
+        height: auto;
+      }
+      @media screen and (min-width: $screen-md) {
+        flex: 1;
+      }
+    }
+
+    @media screen and (min-width: $screen-md) {
+      span,
+      .illustration {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.socialProofWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-2xl $spacing-md;
+  gap: $spacing-sm;
+  text-align: center;
+
+  .pressLogos {
+    padding-top: $layout-md;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: $spacing-lg;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (min-width: $content-md) {
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+
+    .label {
+      @include uppercase-only-english;
+      flex-basis: 100%;
+      font: $text-body-sm;
+      color: $color-grey-30;
+      font-weight: 600;
+      text-align: center;
+
+      @media screen and (min-width: $content-md) {
+        flex-basis: auto;
+      }
+    }
+  }
+}
+
+.heresHowWeHelpWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $spacing-2xl $spacing-md;
+  gap: $spacing-sm;
+  background-color: $color-grey-05;
+  text-align: center;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    gap: $spacing-md;
+    padding-top: $layout-sm;
+    display: grid;
+    text-align: start;
+
+    li {
+      display: flex;
+      gap: $spacing-md;
+      align-items: center;
+
+      svg {
+        min-width: 20px; // width of check icon
+        color: $color-blue-50;
+      }
+    }
+  }
+
+  .heresHowWeHelpCta {
+    margin-top: $layout-sm;
+  }
+}
+
+.signUpEncouragementWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $layout-sm;
+  background-color: $color-purple-05;
+  padding: $layout-md $spacing-md;
+  text-align: center;
+
+  .title {
+    font: $text-title-2xs;
+    font-family: var(--font-inter);
+    font-weight: 500;
   }
 }

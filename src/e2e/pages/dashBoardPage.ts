@@ -49,7 +49,7 @@ export class DashboardPage {
       name: "Mozilla apps and services",
     });
     this.upgradeToPremium = page.getByRole("button", {
-      name: "Upgrade To Premium",
+      name: "Subscribe to Monitor Plus",
     });
 
     //sidebar nav

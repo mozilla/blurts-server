@@ -9,7 +9,7 @@ import { getL10n } from "../../../functions/server/l10n";
 
 export default function AddEmailDialog() {
   const l10n = getL10n();
-  const emailLimit = AppConstants.MAX_NUM_ADDRESSES;
+  const emailLimit = AppConstants.NEXT_PUBLIC_MAX_NUM_ADDRESSES;
 
   return (
     <>

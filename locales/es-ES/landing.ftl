@@ -37,12 +37,15 @@ learn-more-mission = Saber más sobre nuestra misión
 
 top-questions-about-monitor = Principales preguntas acerca de { -brand-fx-monitor }
 see-all-faq = Ver todas las preguntas frecuentes
+
 # question and answer
 what-is-breach = ¿Qué es exactamente una filtración de datos?
 when-info-exposed = Una filtración de datos ocurre cuando la información personal o privada se expone, se roba o se copia sin permiso. Estos incidentes de seguridad pueden ser el resultado de ataques cibernéticos a sitios web, aplicaciones o cualquier base de datos donde resida la información personal de las personas. Una filtración de datos también puede ocurrir por accidente, por ejemplo si las credenciales de conexión de alguien se publicaran accidentalmente.
+
 # question and answer
 what-do-i-do = Acabo de enterarme de que estoy en una filtración de datos. ¿Qué hago?
 visit-monitor-to-learn = Visita { -brand-fx-monitor } para saber qué hacer después de una filtración de datos. Los piratas informáticos confían en que las personas reutilizan las contraseñas, por lo que es importante crear contraseñas seguras y únicas para todas tus cuentas. Guarda tus contraseñas en un lugar seguro al que solo tú tengas acceso; éste podría ser el mismo lugar donde almacenas documentos importantes o un administrador de contraseñas.
+
 # question and answer
 what-gets-exposed = ¿Qué información queda expuesta en las filtraciones de datos?
 depends-on-hackers = No todas las filtraciones exponen la misma información. Solo depende de a qué puedan acceder los piratas informáticos. Muchas filtraciones de datos exponen direcciones de correo electrónico y contraseñas. Otras exponen información más confidencial, como números de tarjetas de crédito, números de pasaporte y números de seguridad social.
@@ -51,3 +54,4 @@ depends-on-hackers = No todas las filtraciones exponen la misma información. So
 
 see-if-data-breach = Descubre si has sido afectado por una filtración de datos
 hibp-footer-attribution = Datos de filtración proporcionados por <b>{ -brand-HIBP }</b>
+

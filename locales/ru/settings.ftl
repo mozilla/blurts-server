@@ -33,6 +33,7 @@ settings-email-verification-callout = Требуется верификация 
 settings-resend-email-verification-link = Отправить письмо подтверждения заново
 settings-add-email-button = Добавить адрес электронной почты
 settings-delete-email-button = Удалить адрес электронной почты
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -49,16 +50,11 @@ settings-email-number-of-breaches-info =
 
 settings-cancel-premium-subscription-title = Отменить подписку на { -brand-premium }
 settings-cancel-premium-subscription-info = Ваша подписка вернется к бесплатному аккаунту после окончания текущего платежного цикла. Ваши результаты проверки защиты конфиденциальности будут удалены без возможности восстановления, и вы сможете отслеживать утечки данных только для 1 адреса электронной почты.
-settings-cancel-premium-subscription-link-label = Отменить с вашего { -brand-fx-account }
 
 ## Deactivate account
 
 settings-deactivate-account-title = Деактивировать аккаунт
-# Deprecated
-settings-deactivate-account-info = Вы можете деактивировать { -product-short-name }, удалив свой { -brand-fx-account(case: "nominative") }.
 settings-deactivate-account-info-2 = Вы можете деактивировать { -product-short-name }, удалив свой { -brand-mozilla-account }.
-# Deprecated
-settings-fxa-link-label = Перейти в настройки { -brand-firefox }.
 settings-fxa-link-label-3 = Перейти в настройки { -brand-mozilla-account }.
 
 ## Add email dialog

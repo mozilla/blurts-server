@@ -52,10 +52,6 @@ const MainLayout = async (props: Props) => {
     email: session.user.email,
   });
 
-  const enabledFlags = await getEnabledFeatureFlags({
-    email: session?.user.email ?? "",
-  });
-
   return (
     <>
       <Script
@@ -63,7 +59,7 @@ const MainLayout = async (props: Props) => {
         src="/nextjs_migration/client/js/nav.js"
         nonce={getNonce()}
       />
-      <PageLoadEvent userId={userId} enabledFlags={enabledFlags} />
+      <PageLoadEvent userId={userId} enabledFlags={enabledFeatureFlags} />
       <header>
         <div className="header-wrapper">
           <a href="/user/breaches">
@@ -72,7 +68,7 @@ const MainLayout = async (props: Props) => {
               src={MonitorLogo}
               width="213"
               height="33"
-              alt={l10n.getString("brand-fx-monitor")}
+              alt={l10n.getString("brand-mozilla-monitor")}
               priority
             />
           </a>

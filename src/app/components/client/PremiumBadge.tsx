@@ -11,7 +11,7 @@ import { Session } from "next-auth";
 import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "react-stately";
 import { PremiumUpsellDialog } from "./PremiumUpsellDialog";
-import { Button } from "../server/Button";
+import { Button } from "../client/Button";
 import { useL10n } from "../../hooks/l10n";
 import {
   canSubscribeToPremium,
@@ -23,6 +23,7 @@ import styles from "./PremiumBadge.module.scss";
 // together with MNTOR-2335.
 // eslint-disable-next-line no-restricted-imports
 import { useGa } from "../../hooks/useGa";
+import { useTelemetry } from "../../hooks/useTelemetry";
 import { CountryCodeContext } from "../../../contextProviders/country-code";
 
 export type Props = {
@@ -34,11 +35,17 @@ export type Props = {
 
 export function PremiumButton(props: Props) {
   const { gtag } = useGa();
+  const recordTelemetry = useTelemetry();
   const pathname = usePathname();
 
   const dialogState = useOverlayTriggerState({
     defaultOpen: false,
     onOpenChange: (isOpen) => {
+      if (isOpen) {
+        recordTelemetry("upgradeIntent", "click", {
+          button_id: "nav_upsell",
+        });
+      }
       gtag.record({
         type: "event",
         name: "premium_upsell_modal",

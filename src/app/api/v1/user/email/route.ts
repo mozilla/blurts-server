@@ -45,7 +45,10 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      if (emailCount >= Number.parseInt(AppConstants.MAX_NUM_ADDRESSES, 10)) {
+      if (
+        emailCount >=
+        Number.parseInt(AppConstants.NEXT_PUBLIC_MAX_NUM_ADDRESSES, 10)
+      ) {
         return NextResponse.json(
           {
             success: false,
