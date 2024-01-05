@@ -31,6 +31,7 @@ settings-email-verification-callout = Verification del email requirite.
 settings-resend-email-verification-link = Reinviar email de verification
 settings-add-email-button = Adder adresse email
 settings-delete-email-button = Deler adresse email
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -45,16 +46,11 @@ settings-email-number-of-breaches-info =
 
 settings-cancel-premium-subscription-title = Cancellar abonamento { -brand-premium }
 settings-cancel-premium-subscription-info = Tu abonamento revertera a un conto gratuite post que le currente termino de facturation fini. Le resultatos de tu scansion de protection del confidentialitate sera permanentemente delite, e tu habera solo surveliantia de violation de datos pro 1 adresse email.
-settings-cancel-premium-subscription-link-label = Cancellar de tu { -brand-fx-account }
 
 ## Deactivate account
 
 settings-deactivate-account-title = Disactivar le conto
-# Deprecated
-settings-deactivate-account-info = Tu pote disactivar { -product-short-name } delente tu { -brand-fx-account }.
 settings-deactivate-account-info-2 = Tu pote disactivar { -product-short-name } delente tu { -brand-mozilla-account }.
-# Deprecated
-settings-fxa-link-label = Ir a parametros de { -brand-firefox }
 settings-fxa-link-label-3 = Ir a parametros de { -brand-mozilla-account }
 
 ## Add email dialog

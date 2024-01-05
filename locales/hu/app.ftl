@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -39,6 +44,8 @@ user-add-duplicate-email = Ez az e-mail-cím már hozzáadásra került a { -pro
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Keresse fel a { $preferencesLink } oldalt, és ellenőrizze a(z) { $userEmail } állapotát.
+user-add-verification-email-just-sent = Nem küldhető ilyen gyorsan újabb ellenőrző e-mail. Próbálja újra később.
+user-add-unknown-error = Hiba történt egy másik e-mail cím hozzáadásakor. Próbálja újra később.
 error-headline = Hiba
 user-verify-token-error = Az ellenőrzési token lejárt.
 user-verify-email-report-subject = Az Ön { -product-name } jelentése
@@ -711,7 +718,7 @@ ad-unit-6-before-you-complete = Mielőtt befejezné a következő regisztráció
 
 -brand-firefox = Firefox
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
 -brand-monitor-premium = Monitor Premium
@@ -719,12 +726,15 @@ ad-unit-6-before-you-complete = Mielőtt befejezné a következő regisztráció
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla-fiók
+open-in-new-tab-alt = Hivatkozás megnyitása új lapon
 
 ## Search Engine Optimization
 
@@ -732,8 +742,10 @@ meta-desc-2 = Tudja meg a { -brand-fx-monitor } segítségével, hogy érintett 
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Bejelentkezés
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -744,19 +756,43 @@ site-nav-help-link = Súgó és támogatás
 site-nav-ad-callout = Próbálja ki többi biztonsági eszközünket:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Főmenü
+main-nav-button-collapse-label = Menü összecsukása
+main-nav-button-collapse-tooltip = Menü összecsukása
+main-nav-button-expand-label = Menü kinyitása
+main-nav-button-expand-tooltip = Menü kinyitása
+main-nav-label = Navigáció
+main-nav-link-home-label = Kezdőlap
+main-nav-link-dashboard-label = Vezérlőpult
+main-nav-link-settings-label = Beállítások
+main-nav-link-faq-label = GYIK
+main-nav-link-faq-tooltip = Gyakran ismételt kérdések
 
 ## User menu
 
+# Obsolete
 menu-button-title = Felhasználói menü
+# Obsolete
 menu-button-alt = Felhasználói menü megnyitása
+# Obsolete
 menu-list-accessible-label = Fiók menü
+# Obsolete
 menu-item-fxa-2 = A { -brand-mozilla-account } kezelése
-menu-item-fxa-alt-2 = A { -brand-mozilla-account } oldal megnyitása
+# Obsolete
 menu-item-settings = Beállítások
-menu-item-settings-alt = Beállítások oldal megnyitása
+# Obsolete
 menu-item-help = Súgó és támogatás
-menu-item-help-alt = Súgó és támogatás oldal megnyitása
+# Obsolete
 menu-item-logout = Kijelentkezés
+user-menu-trigger-label = Felhasználói menü megnyitása
+user-menu-trigger-tooltip = Profil
+user-menu-manage-fxa-label = A { -brand-mozilla-account } kezelése
+user-menu-settings-label = Beállítások
+user-menu-settings-tooltip = { -brand-mozilla-monitor } beállítása
+user-menu-help-label = Súgó és támogatás
+user-menu-help-tooltip = Segítség a { -brand-mozilla-monitor } használatához
+user-menu-signout-label = Kijelentkezés
+user-menu-signout-tooltip = Kijelentkezés a { -brand-mozilla-monitor }ból
 
 ## Footer
 
@@ -765,6 +801,8 @@ terms-of-service = Szolgáltatás feltételei
 privacy-notice = Adatvédelmi nyilatkozat
 github = { -brand-github }
 footer-nav-all-breaches = Összes adatvédelmi incidens
+footer-external-link-faq-label = GYIK
+footer-external-link-faq-tooltip = Gyakran ismételt kérdések
 
 ## Error page
 

@@ -1,9 +1,10 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 # Strings in this file are not yet final, and thus should not be localised yet.
 
 fix-flow-nav-data-broker-profiles = Data broker profiles
-fix-flow-nav-high-risk-data-breaches = High risk data breaches
-fix-flow-nav-leaked-passwords = Leaked passwords
-fix-flow-nav-security-recommendations = Security recommendations
 fix-flow-data-broker-profiles-start-free-scan-headline = Find out which sites are selling your personal info
 # Variables:
 # $data_broker_count is the number of data brokers scanned monthly
@@ -88,33 +89,41 @@ fix-flow-data-broker-profiles-automatic-remove-features-monthly-scan =
 # $price is the price of a monthly plan. "/mo" is short for "monthly"
 fix-flow-data-broker-profiles-automatic-remove-features-price = ${ $price }/mo
 
-# Celebration screens
+# Variables
+# $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
+# "Est." is shortform for "Estimated".
+# "mins" is shortform for "minutes".
+data-broker-profiles-estimated-time = { $estimated_time ->
+   *[other] Est. time to complete: { $estimated_time } mins
+}
 
-## Shared CTA labels
+# Variables
+# $exposure_reduction is the percentage of exposures that are data brokers.
+data-broker-profiles-exposure-reduction = Exposure reduction: { $exposure_reduction }%
 
-fix-flow-celebration-next-label = Let’s keep going
-fix-flow-celebration-next-recommendations-label = See recommendations
-fix-flow-celebration-next-dashboard-label = Go to your Dashboard
+# Welcome to Premium Data Broker Profiles
 
-## High-risk flow
+# Exposure reduction chart
+# The number inside <nr> will be displayed in a large font,
+# the label inside <label_line_1> will be shown in a smaller font. First line of the label
+# the label inside <label_line_2> will be shown in smaller font. Second line of the label
+# Variables:
+#   $nr (number) - % of exposures reduced for the user
+exposure-reduction-chart-heading = <nr>{ $nr }</nr><percent>%</percent>
+exposure-reduction-chart-explanation = <label_line_1>exposures will</label_line_1><label_line_2>be reduced</label_line_2>
 
-fix-flow-celebration-high-risk-title = You’ve fixed your high risk exposures!
-fix-flow-celebration-high-risk-description-in-progress = Doing this work can feel like a lot, but it’s important to do so to keep yourself safe. Keep up the good work.
-fix-flow-celebration-high-risk-description-done = Doing this work can feel like a lot, but it’s important to do so to keep yourself safe.
-fix-flow-celebration-high-risk-description-next-passwords = Now let’s fix your exposed passwords.
-fix-flow-celebration-high-risk-description-next-security-questions = Now let’s fix your exposed security questions.
-fix-flow-celebration-high-risk-description-next-security-recommendations = Next, we’ll give you personalized security recommendations based on what data of yours has been exposed.
-fix-flow-celebration-high-risk-description-next-dashboard = You’ve reached the end of your steps. You can view any action items and track your progress on your dashboard.
+welcome-to-premium-data-broker-profiles-title-part-one = Welcome to { -brand-monitor-plus }.
+welcome-to-premium-data-broker-profiles-title-part-two = We’ll remove those profiles ASAP.
+# Variables:
+# $profile_total_num is the number of exposures came back from user data broker scans.
+# $exposure_reduction_percentage is the percent by which exposures are reduced
+welcome-to-premium-data-broker-profiles-description-part-one =
+  { $profile_total_num ->
+    [one] We’ve already started our auto-removal process of 1 profile — which will reduce your exposures by { $exposure_reduction_percentage }%.
+    *[other] We’ve already started our auto-removal process of { $profile_total_num } profiles — which will reduce your exposures by { $exposure_reduction_percentage }%.
+  }
+welcome-to-premium-data-broker-profiles-description-part-two = Removals typically take 7-14 days, but some may happen within the hour. No matter how long it takes, we’ll keep working on it.
+welcome-to-premium-data-broker-profiles-description-part-three = Next we’ll guide you through high risk data breaches that require manual steps.
+welcome-to-premium-data-broker-profiles-cta-label = Let’s keep going
 
-## Leaked passwords and security questions flow
-
-fix-flow-celebration-leaked-passwords-title = Your passwords are now protected!
-fix-flow-celebration-security-questions-title = Your security questions are protected!
-fix-flow-celebration-leaked-passwords-description-next-security-questions = Now let’s review and update your exposed security questions.
-fix-flow-celebration-leaked-passwords-description-next-security-recommendations = Next, we’ll give you personalized security recommendations based on what data of yours has been exposed.
-fix-flow-celebration-leaked-passwords-description-next-dashboard = Nicely done! You’ve reached the end of your steps. You can view any action items and track your progress on your dashboard.
-
-## Security recommendations flow
-
-fix-flow-celebration-security-recommendations-title = You’ve completed all your recommendations!
-fix-flow-celebration-security-recommendations-description-next-dashboard = Nicely done! You’ve reached the end of your steps. You can view any action items and track your progress on your dashboard.
+security-recommendation-phone-step-three = Use a <link_to_info>{ -brand-relay } phone mask</link_to_info> to protect your phone in the future

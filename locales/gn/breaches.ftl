@@ -3,9 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-meta-title = { -brand-fx-monitor } - Mba’erupa
+
 breach-all-meta-title = { -brand-fx-monitor } - Opaite mba’ekuaarã ñembogua
 breach-all-meta-social-title = Opaite ñembogua ohecháva { -brand-fx-monitor }
 breach-all-meta-social-description = Ehapykueho { -brand-fx-monitor } ñemboguakuaa rysýi ojehechakuaáva, upéi ehecha ne marandúpa oñemboguakuaápara’e.
+
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = { -brand-fx-monitor } - { $company } Mba’ekuaarã Ñembogua
@@ -13,6 +15,7 @@ breach-detail-meta-title = { -brand-fx-monitor } - { $company } Mba’ekuaarã �
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = ¿Ne myangekói { $company } mba’ekuaarã ñembogua?
 breach-detail-meta-social-description = Eiporu { -brand-fx-monitor } eikuaa hag̃ua ne maranduetépa oñemboguakuaára’e ha péicha rupi eikuaa mba’etépa ejapóta.
+
 breach-scan-meta-title = { -brand-fx-monitor } - Ñembogua Rehegua
 breach-scan-meta-social-title = { -brand-fx-monitor } - Ñembogua Rehegua
 breach-scan-meta-social-description = Eñepyrũ tembiapo { -brand-fx-monitor } ndive emoĩporã hag̃ua ñembogua ha ereko jehechameme ñembogua pyahu rovake.
@@ -21,8 +24,10 @@ breach-scan-meta-social-description = Eñepyrũ tembiapo { -brand-fx-monitor } n
 
 # Data classes pie chart title
 breach-chart-title = Mba’ekuaarã mboguapyre
+
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Mba’ekuaarã ñembogua { $email-select } peg̃uarã
+
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored =
     { $total ->
@@ -30,6 +35,7 @@ emails-monitored =
         [many] { $count } { $total } ñanduti veve jehechapyre
        *[other] { $count } { $total } ñanduti veve jehechapyre
     }
+
 # link to Settings page where user can add/remove emails and set message preferences
 manage-emails-link = Eñangareko ñanduti vevére
 
@@ -43,23 +49,28 @@ filter-label-resolved = Ñembogua moĩporãmbyre
 column-company = MBA’APOHAGUASU
 column-breached-data = MBA’EKUAARÃ MBOGUAPYRE
 column-detected = HECHAPYRE
+
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
 column-status-badge-resolved = Japopáma
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Hendýva
+
 breaches-resolve-heading = Emoĩporã ko ñembogua:
+
 breaches-none-headline = Ndojejuhúi ñembogua
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
 breaches-none-copy = ¡Marandu iporãva! Ndaipóri ñembogua ojehecháva oñemomarandúva { $email }-pe. Rohecháta ko ñanduti veve ha roikuaaukáta osẽramo ñembogua pyahu.
 breaches-none-cta-blurb = ¿Ehechamemese ambue ñanduti veve?
 breaches-none-cta-button = Embojuaju ñanduti veve kundaharape
+
 breaches-all-resolved-headline = Opaite umi ñembogua oĩporãma
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
 breaches-all-resolved-copy = ¡Ejapoporã! Emoĩporãma opaite ñembogua { $email }-pe g̃uarã. Rohecháta ko ñanduti veve ha roikuaaukáta ndéve osẽramo ñembogua ipyahúva.
 breaches-all-resolved-cta-blurb = ¿Ehechamemesépa ambue ñanduti veve?
 breaches-all-resolved-cta-button = Embojuaju ñanduti veve kundaharape
+
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 # Variables:
 #   $breachDate (String) - Date of the breach
@@ -75,6 +86,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Embohekopyahu ñe’ẽñemi ha embojuruja mokõi papapyñemi (2FA).
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -143,6 +155,7 @@ breach-checklist-phone-header-2 = Emo’ã ne pumbyry papapy mba’eporu rovamo�
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Embopyahu porandu tekorosãgua.
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = Hetavejey, ro’e ndéve embohekopyahu hag̃ua porandu tekorosãgua mba’apohaguasu ñanduti rendápe. Hákatu <b>iñanduti renda hekopytakuaa térã oreko tetepy ivaikuaáva</b>, upévare ema’ẽke <breached-company-link>rendápe jeike</breached-company-link>. Eñemo’ãve hag̃ua, embohekopyahu ko’ã porandu tekorosãgua oimeraẽva mba’ete eiporuvéva peteĩva hendápe, ha emoheñói ñe’ẽñemi oiko ha iñambuéva peteĩteĩva ñe’ẽñemíme.
 

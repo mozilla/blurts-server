@@ -1,3 +1,7 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 exposure-landing-hero-heading = 查看您的个人信息是否已被泄露
 exposure-landing-hero-lead = 使用来自 { -brand-firefox } 的隐私工具保持安全，保护您免受骇客和公司通过发布和出售您的个人信息带来的侵害。我们会提醒您任何已知的数据泄露，查找并删除您公开的信息，并持续关注新的信息安全公开信息。
 exposure-landing-hero-email-label = 电子邮件地址
@@ -19,6 +23,6 @@ exposure-landing-result-overflow-footer-cta-label = 登录查看全部
 exposure-landing-result-some-hero-lead = 登录以获取关于如何解决这些泄漏事件的明确步骤、查看所有泄漏事件并持续监控任何新的已知泄漏事件。
 exposure-landing-result-some-hero-cta-label = 登录以解决数据泄漏问题
 exposure-landing-result-some-footer-cta-label = 登录以解决数据泄漏问题
-exposure-landing-result-none-hero-lead = 好消息！没有发现已知的数据泄漏问题。通过注册接收新的数据泄漏警报来保持安全。我们将继续监控此电子邮件地址，如果它出现在新的数据泄漏事件中，就会通知您。
+exposure-landing-result-none-hero-lead = 好消息！没有发现已知的数据泄漏问题。通过注册接收新的数据泄漏警报来保持安全。我们将继续监控此邮箱地址，如果它出现在新的数据外泄事件中，就会通知您。
 exposure-landing-result-none-hero-cta-label = 接收新外泄事件警报
 exposure-landing-result-none-footer-cta-label = 订阅警报

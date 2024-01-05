@@ -22,7 +22,7 @@ breach-scan-meta-social-description = Đăng nhập vào { -brand-fx-monitor } �
 # Data classes pie chart title
 breach-chart-title = Dữ liệu bị rò rỉ
 # $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = Rò rỉ dữ liệu đến { $email-select }
+breach-heading-email = Vụ rò rỉ dữ liệu tới { $email-select }
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored = { $count } trong tổng số { $total } email được giám sát
 # link to Settings page where user can add/remove emails and set message preferences

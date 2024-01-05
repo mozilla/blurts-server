@@ -1,3 +1,7 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 public-nav-name = { -brand-mozilla-monitor }
 
 landing-all-hero-title = Find where your private info is exposed — and take it back
@@ -10,7 +14,7 @@ landing-all-hero-emailform-submit-label = Get free scan
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = exposures
 
-# Value Proposition 
+# Value Proposition
 
 landing-all-value-prop-fix-exposures = We’ll help you fix your exposures
 landing-all-value-prop-fix-exposures-description = Our mission is to put control of your personal data back in your hands. We’ll help you resolve data breaches and keep your info private — and we’ll <privacy_link>respect your privacy</privacy_link> in the process.
@@ -26,8 +30,8 @@ landing-all-quote = <data_breaches>Data breaches</data_breaches> happen every 11
 landing-all-faq-title = Frequently asked questions
 # FAQ is an acronym for Frequently Asked Questions
 landing-all-faq-see-all = See all FAQs
-landing-all-data-breach-definition-ans = What exactly is a data breach? 
-landing-all-data-breach-definition-qn = A data breach happens when personal or private information gets exposed, stolen or copied without permission. These security incidents can result from cyber attacks on websites, apps or any database where people’s personal information resides. A data breach can also happen accidentally, like if someone’s login credentials get posted publicly.
+landing-all-data-breach-definition-qn = What exactly is a data breach?
+landing-all-data-breach-definition-ans = A data breach happens when personal or private information gets exposed, stolen or copied without permission. These security incidents can result from cyber attacks on websites, apps or any database where people’s personal information resides. A data breach can also happen accidentally, like if someone’s login credentials get posted publicly.
 landing-all-data-breach-next-steps-qn = I just found out I’m in a data breach. What do I do next?
 landing-all-data-breach-next-steps-ans = Visit { -brand-mozilla-monitor } to learn what to do after a data breach and get guided steps to resolve exposures of your personal info. Hackers rely on people reusing passwords, so it’s important to create strong, unique passwords for all your accounts. Keep your passwords in a safe place that only you have access to; this could be the same place where you store important documents or a password manager.
 landing-all-data-breach-info-qn = What information gets exposed in data breaches?
@@ -49,7 +53,7 @@ landing-all-social-proof-press = As seen in
 
 # Here's How We Help
 
-landing-all-help-protect-you = Here’s how we help protect you 
+landing-all-help-protect-you = Here’s how we help protect you
 landing-all-help-protect-you-description = We believe in your right to privacy, so data breach monitoring protection is always free.
 landing-all-help-protect-you-feature-one = We’ll search for you in all known data breaches
 landing-all-help-protect-you-feature-two = We’ll guide you through the steps to resolve each breach

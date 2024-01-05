@@ -3,9 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-meta-title = { -brand-fx-monitor } – Übersicht
+
 breach-all-meta-title = { -brand-fx-monitor } – Alle Datenlecks
 breach-all-meta-social-title = Alle von { -brand-fx-monitor } erkannten Datenlecks
 breach-all-meta-social-description = Durchsuchen Sie die vollständige Liste der bekannten und von { -brand-fx-monitor } erkannten Datenlecks und finden Sie heraus, ob Ihre Daten offengelegt wurden.
+
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = { -brand-fx-monitor } – Datenleck bei { $company }
@@ -13,6 +15,7 @@ breach-detail-meta-title = { -brand-fx-monitor } – Datenleck bei { $company }
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Waren Sie vom Datenleck bei { $company } betroffen?
 breach-detail-meta-social-description = Verwenden Sie { -brand-fx-monitor }, um herauszufinden, ob Ihre persönlichen Daten bei diesem Datenleck offengelegt wurden, und verstehen Sie, was als nächstes zu tun ist.
+
 breach-scan-meta-title = { -brand-fx-monitor } – Ergebnisse von Datenlecks
 breach-scan-meta-social-title = { -brand-fx-monitor } Ergebnisse von Datenlecks
 breach-scan-meta-social-description = Melden Sie sich bei { -brand-fx-monitor } an, um Datenlecks zu beheben und kontinuierlich auf neue bekannte Datenlecks überwacht zu werden.
@@ -21,14 +24,17 @@ breach-scan-meta-social-description = Melden Sie sich bei { -brand-fx-monitor } 
 
 # Data classes pie chart title
 breach-chart-title = Vom Leck betroffene Daten
+
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Datenlecks für { $email-select }
+
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored =
     { $total ->
         [one] { $count } von { $total } überwachten E-Mail-Adresse
        *[other] { $count } von { $total } überwachten E-Mail-Adressen
     }
+
 # link to Settings page where user can add/remove emails and set message preferences
 manage-emails-link = E-Mail-Adressen verwalten
 
@@ -42,23 +48,28 @@ filter-label-resolved = Behobene Datenlecks
 column-company = UNTERNEHMEN
 column-breached-data = VOM LECK BETROFFENE DATEN
 column-detected = ENTDECKT
+
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
 column-status-badge-resolved = Gelöst
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Aktiv
+
 breaches-resolve-heading = Dieses Datenleck beheben:
+
 breaches-none-headline = Keine Datenlecks gefunden
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
 breaches-none-copy = Gute Nachrichten! Für { $email } wurden keine bekannten Datenlecks gemeldet. Wir werden diese E-Mail-Adresse weiter überwachen und Ihnen mitteilen, ob neue Datenlecks auftreten.
 breaches-none-cta-blurb = Möchten Sie eine weitere E-Mail-Adresse überwachen?
 breaches-none-cta-button = E-Mail-Adresse hinzufügen
+
 breaches-all-resolved-headline = Alle Datenlecks wurden behoben
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
 breaches-all-resolved-copy = Gut gemacht! Sie haben alle Datenlecks für { $email } behoben. Wir werden diese E-Mail weiter überwachen und Ihnen mitteilen, ob neue Datenlecks auftreten.
 breaches-all-resolved-cta-blurb = Möchten Sie eine weitere E-Mail-Adresse überwachen?
 breaches-all-resolved-cta-button = E-Mail-Adresse hinzufügen
+
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 # Variables:
 #   $breachDate (String) - Date of the breach
@@ -74,6 +85,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Aktualisieren Sie Ihre Passwörter und aktivieren Sie die Zwei-Faktor-Authentifizierung (2FA).
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -142,6 +154,7 @@ breach-checklist-phone-header-2 = Schützen Sie Ihre Telefonnummer mit einem Mas
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Aktualisieren Sie Ihre Sicherheitsfragen.
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = In den meisten Fällen empfehlen wir Ihnen, Ihre Sicherheitsfragen über die Website des Unternehmens zu aktualisieren. Aber <b>die Website könnte nicht erreichbar sein oder böswillige Inhalte enthalten</b>, also seien Sie vorsichtig, wenn Sie <breached-company-link>die Website besuchen</breached-company-link>. Schützen Sie sich außerdem, indem Sie diese Sicherheitsfragen auf allen Konten aktualisieren, wo sie genutzt werden und erstellen Sie eindeutige Passwörter für alle Konten.
 

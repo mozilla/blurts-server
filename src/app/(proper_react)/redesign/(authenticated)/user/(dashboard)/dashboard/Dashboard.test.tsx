@@ -66,268 +66,273 @@ jest.mock("../../../../../../components/client/DataBrokerImage", () => {
   };
 });
 
-it("passes the axe accessibility test suite for DashboardNonUsNoBreaches", async () => {
-  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+describe("axe accessibility test suite", () => {
+  it("passes the axe accessibility test suite for DashboardNonUsNoBreaches", async () => {
+    const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardNonUsUnresolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardNonUsUnresolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardNonUsUnresolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardNonUsUnresolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardNonUsResolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardNonUsResolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardNonUsResolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsNoPremiumNoScanNoBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumNoScanNoBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsNoPremiumNoScanNoBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumNoScanNoBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsNoPremiumNoScanUnresolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumNoScanUnresolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsNoPremiumNoScanUnresolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumNoScanUnresolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsNoPremiumNoScanResolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumNoScanResolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsNoPremiumNoScanResolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumNoScanResolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsNoPremiumEmptyScanNoBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumEmptyScanNoBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsNoPremiumEmptyScanNoBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumEmptyScanNoBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsNoPremiumEmptyScanUnresolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumEmptyScanUnresolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsNoPremiumEmptyScanUnresolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumEmptyScanUnresolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsNoPremiumEmptyScanResolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumEmptyScanResolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsNoPremiumEmptyScanResolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumEmptyScanResolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsNoPremiumUnresolvedScanNoBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumUnresolvedScanNoBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsNoPremiumUnresolvedScanNoBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumUnresolvedScanNoBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsNoPremiumUnresolvedScanResolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumUnresolvedScanResolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsNoPremiumUnresolvedScanResolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumUnresolvedScanResolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsNoPremiumResolvedScanNoBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumResolvedScanNoBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsNoPremiumResolvedScanNoBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsNoPremiumResolvedScanUnresolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsNoPremiumResolvedScanUnresolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsNoPremiumResolvedScanResolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumResolvedScanResolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsNoPremiumResolvedScanResolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumResolvedScanResolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumEmptyScanNoBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumEmptyScanNoBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsPremiumEmptyScanNoBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumEmptyScanNoBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumEmptyScanUnresolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumEmptyScanUnresolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsPremiumEmptyScanUnresolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumEmptyScanUnresolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumEmptyScanResolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumEmptyScanResolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsPremiumEmptyScanResolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumEmptyScanResolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumUnresolvedScanNoBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumUnresolvedScanNoBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsPremiumUnresolvedScanNoBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumUnresolvedScanNoBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumUnresolvedScanUnresolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsPremiumUnresolvedScanUnresolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumUnresolvedScanResolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumUnresolvedScanResolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsPremiumUnresolvedScanResolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumUnresolvedScanResolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumResolvedScanNoBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumResolvedScanNoBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsPremiumResolvedScanNoBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumResolvedScanUnresolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumResolvedScanUnresolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsPremiumResolvedScanUnresolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanUnresolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumResolvedScanResolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumResolvedScanResolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsPremiumResolvedScanResolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanResolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumScanEmptyInProgressNoBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumScanInProgressNoBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsPremiumScanEmptyInProgressNoBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumScanInProgressNoBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumScanInProgressUnresolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsPremiumScanEmptyInProgressUnresolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumScanInProgressUnresolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumScanUnresolvedInProgressNoBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsNoPremiumScanInProgressResolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsPremiumScanUnresolvedInProgressNoBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumScanInProgressResolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumScanInProgressNoBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsPremiumScanUnresolvedInProgressUnresolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumScanInProgressNoBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumScanInProgressUnresolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumScanInProgressUnresolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
-});
+  it("passes the axe accessibility test suite for DashboardUsPremiumScanInProgressUnresolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumScanInProgressUnresolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 
-it("passes the axe accessibility test suite for DashboardUsPremiumScanInProgressResolvedBreaches", async () => {
-  const ComposedDashboard = composeStory(
-    DashboardUsPremiumScanInProgressResolvedBreaches,
-    Meta,
-  );
-  const { container } = render(<ComposedDashboard />);
-  expect(await axe(container)).toHaveNoViolations();
+  it("passes the axe accessibility test suite for DashboardUsPremiumScanInProgressResolvedBreaches", async () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumScanInProgressResolvedBreaches,
+      Meta,
+    );
+    const { container } = render(<ComposedDashboard />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
 });
 
 it("shows the 'Start a free scan' CTA to free US-based users who haven't performed a scan yet", () => {
@@ -827,8 +832,14 @@ it("shows the correct dashboard banner title for non-US users, no breaches", () 
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for non-US users, no breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for non-US users, no breaches", async () => {
   const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -838,6 +849,14 @@ it("shows the correct dashboard banner CTA for non-US users, no breaches", () =>
     name: "Monitor more emails",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "non_eligible_premium_no_breaches",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardNonUsUnresolvedBreaches
@@ -858,11 +877,17 @@ it("shows the correct dashboard banner title for non-US users, unresolved breach
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for non-US users, unresolved breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for non-US users, unresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardNonUsUnresolvedBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -872,6 +897,14 @@ it("shows the correct dashboard banner CTA for non-US users, unresolved breaches
     name: "Let’s fix it",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "non_eligible_premium_unresolved_breaches",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardNonUsResolvedBreaches
@@ -889,8 +922,14 @@ it("shows the correct dashboard banner title for non-US users, resolved breaches
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for non-US users, resolved breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for non-US users, resolved breaches", async () => {
   const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -900,6 +939,14 @@ it("shows the correct dashboard banner CTA for non-US users, resolved breaches",
     name: "See what’s fixed",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "non_eligible_premium_resolved_breaches",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumNoScanNoBreaches
@@ -920,11 +967,17 @@ it("shows the correct dashboard banner title for US users, without Premium, no s
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US users, without Premium, no scan, no breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US users, without Premium, no scan, no breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -934,6 +987,14 @@ it("shows the correct dashboard banner CTA for US users, without Premium, no sca
     name: "Get first scan free",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_non_premium_no_scan",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumNoScanUnresolvedBreaches
@@ -954,11 +1015,17 @@ it("shows the correct dashboard banner title for US users, without Premium, no s
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US users, without Premium, no scan, unresolved breaches", () => {
+it("shows the correct dashboard banner CTA for US users, without Premium, no scan, unresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanUnresolvedBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -968,6 +1035,14 @@ it("shows the correct dashboard banner CTA for US users, without Premium, no sca
     name: "Get first scan free",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_non_premium_no_scan_unresolved_breaches",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumNoScanResolvedBreaches
@@ -988,11 +1063,17 @@ it("shows the correct dashboard banner title for US users, without Premium, no s
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US users, without Premium, no scan, resolved breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US users, without Premium, no scan, resolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanResolvedBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1002,6 +1083,14 @@ it("shows the correct dashboard banner CTA for US users, without Premium, no sca
     name: "Get first scan free",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_non_premium_no_scan",
+    }),
+  );
 });
 
 it("shows and skips a dialog that informs US users, without Premium, when we hit the broker scan limit", async () => {
@@ -1164,11 +1253,17 @@ it("shows the correct dashboard banner title for US users, without Premium, empt
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US users, without Premium, empty scan, unresolved breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US users, without Premium, empty scan, unresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanUnresolvedBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1178,6 +1273,14 @@ it("shows the correct dashboard banner CTA for US users, without Premium, empty 
     name: "Let’s keep going",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_non_premium_yes_scan_unresolved_breaches",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumEmptyScanResolvedBreaches
@@ -1232,11 +1335,17 @@ it("shows the correct dashboard banner title for US users, without Premium, unre
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US users, without Premium, unresolved scan, no breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US users, without Premium, unresolved scan, no breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanNoBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1246,6 +1355,14 @@ it("shows the correct dashboard banner CTA for US users, without Premium, unreso
     name: "Let’s fix it",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_non_premium_yes_scan_unresolved_brokers",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches
@@ -1266,11 +1383,17 @@ it("shows the correct dashboard banner title for US users, without Premium, Unre
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US users, without Premium, UnresolvedScanUnresolved breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US users, without Premium, Unresolved Scan, Unresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1280,6 +1403,14 @@ it("shows the correct dashboard banner CTA for US users, without Premium, Unreso
     name: "Let’s keep going",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_non_premium_unresolved_breaches_unresolved_brokers",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumUnresolvedScanResolvedBreaches
@@ -1300,11 +1431,17 @@ it("shows the correct dashboard banner title for US users, without Premium, unre
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US users, without Premium, unresolved scan, resolved breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US users, without Premium, unresolved scan, resolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumUnresolvedScanResolvedBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1314,6 +1451,14 @@ it("shows the correct dashboard banner CTA for US users, without Premium, unreso
     name: "Let’s fix it",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_non_premium_yes_scan_unresolved_brokers",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumResolvedScanNoBreaches
@@ -1334,11 +1479,17 @@ it("shows the correct dashboard banner title for US users, without Premium, reso
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US users, without Premium, resolved scan, no breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US users, without Premium, resolved scan, no breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanNoBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1348,6 +1499,14 @@ it("shows the correct dashboard banner CTA for US users, without Premium, resolv
     name: "Get continuous protection",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "upgradeIntent",
+    "click",
+    expect.objectContaining({
+      button_id: "nav_upsell",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumResolvedScanUnresolvedBreaches
@@ -1368,11 +1527,17 @@ it("shows the correct dashboard banner title for US users, without Premium, reso
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US users, without Premium, resolved scan, unresolved breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US users, without Premium, resolved scan, unresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanUnresolvedBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1382,6 +1547,14 @@ it("shows the correct dashboard banner CTA for US users, without Premium, resolv
     name: "Let’s keep going",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_non_premium_yes_scan_unresolved_breaches",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumResolvedScanResolvedBreaches
@@ -1402,11 +1575,17 @@ it("shows the correct dashboard banner title for US users, without Premium, reso
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US users, without Premium, resolved scan, resolved breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US users, without Premium, resolved scan, resolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumResolvedScanResolvedBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1416,6 +1595,14 @@ it("shows the correct dashboard banner CTA for US users, without Premium, resolv
     name: "Get continuous protection",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "upgradeIntent",
+    "click",
+    expect.objectContaining({
+      button_id: "nav_upsell",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsPremiumEmptyScanNoBreaches
@@ -1436,11 +1623,17 @@ it("shows the correct dashboard banner title for US user, with Premium, empty sc
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US user, with Premium, empty scan, no breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US user, with Premium, empty scan, no breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanNoBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1450,6 +1643,14 @@ it("shows the correct dashboard banner CTA for US user, with Premium, empty scan
     name: "Monitor more emails",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_premium_yes_scan_no_exposures",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsPremiumEmptyScanUnresolvedBreaches
@@ -1470,11 +1671,17 @@ it("shows the correct dashboard banner title for US user, with Premium, empty sc
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US user, with Premium, empty scan, unresolved breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US user, with Premium, empty scan, unresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanUnresolvedBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1484,6 +1691,14 @@ it("shows the correct dashboard banner CTA for US user, with Premium, empty scan
     name: "Let’s keep going",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_premium_unresolved_breaches",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsPremiumEmptyScanResolvedBreaches
@@ -1504,11 +1719,17 @@ it("shows the correct dashboard banner title for US user, with Premium, empty sc
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US user, with Premium, empty scan, resolved breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US user, with Premium, empty scan, resolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanResolvedBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1518,6 +1739,14 @@ it("shows the correct dashboard banner CTA for US user, with Premium, empty scan
     name: "See what’s fixed",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_premium_yes_scan_all_resolved",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsPremiumUnresolvedScanNoBreaches
@@ -1538,11 +1767,17 @@ it("shows the correct dashboard banner title for US user, with Premium, unresolv
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US user, with Premium, unresolved scan, no breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US user, with Premium, unresolved scan, no breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanNoBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1552,10 +1787,18 @@ it("shows the correct dashboard banner CTA for US user, with Premium, unresolved
     name: "Let’s keep going",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_premium_unresolved_brokers",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsPremiumUnresolvedScanUnresolvedBreaches
-it("shows the correct dashboard banner title for US user, with Premium, UnresolvedScanUnresolved breaches", () => {
+it("shows the correct dashboard banner title for US user, with Premium, UnresolvedScan, Unresolved breaches", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
     Meta,
@@ -1572,11 +1815,17 @@ it("shows the correct dashboard banner title for US user, with Premium, Unresolv
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US user, with Premium, UnresolvedScanUnresolved breaches", () => {
+it("shows the correct dashboard banner CTA for US user, with Premium, UnresolvedScan, Unresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1586,6 +1835,15 @@ it("shows the correct dashboard banner CTA for US user, with Premium, Unresolved
     name: "Let’s fix it",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id:
+        "us_non_premium_yes_scan_unresolved_breaches_unresolved_brokers",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsPremiumUnresolvedScanResolvedBreaches
@@ -1606,11 +1864,17 @@ it("shows the correct dashboard banner title for US user, with Premium, unresolv
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US user, with Premium, unresolved scan, resolved breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US user, with Premium, unresolved scan, resolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanResolvedBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1620,6 +1884,14 @@ it("shows the correct dashboard banner CTA for US user, with Premium, unresolved
     name: "Let’s keep going",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_premium_unresolved_brokers",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsPremiumResolvedScanNoBreaches
@@ -1640,11 +1912,17 @@ it("shows the correct dashboard banner title for US user, with Premium, resolved
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US user, with Premium, resolved scan, no breaches", () => {
+it("shows the correct dashboard banner CTA for US user, with Premium, resolved scan, no breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanNoBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1654,6 +1932,14 @@ it("shows the correct dashboard banner CTA for US user, with Premium, resolved s
     name: "See what’s fixed",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_premium_yes_scan_all_resolved",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsPremiumResolvedScanUnresolvedBreaches
@@ -1674,11 +1960,17 @@ it("shows the correct dashboard banner title for US user, with Premium, resolved
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US user, with Premium, resolved scan, unresolved breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US user, with Premium, resolved scan, unresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanUnresolvedBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1688,6 +1980,14 @@ it("shows the correct dashboard banner CTA for US user, with Premium, resolved s
     name: "Let’s keep going",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_premium_unresolved_breaches",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsPremiumResolvedScanResolvedBreaches
@@ -1708,11 +2008,17 @@ it("shows the correct dashboard banner title for US user, with Premium, resolved
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US user, with Premium, resolved scan, resolved breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US user, with Premium, resolved scan, resolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanResolvedBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1722,6 +2028,14 @@ it("shows the correct dashboard banner CTA for US user, with Premium, resolved s
     name: "See what’s fixed",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_premium_yes_scan_all_resolved",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumScanInProgressNoBreaches
@@ -1742,11 +2056,17 @@ it("shows the correct dashboard banner title for US user, without Premium, scan 
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US user, without Premium, scan in progress, no breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US user, without Premium, scan in progress, no breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumScanInProgressNoBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1756,6 +2076,14 @@ it("shows the correct dashboard banner CTA for US user, without Premium, scan in
     name: "Check more email addresses",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_non_premium_scan_in_progress_no_breaches",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumScanInProgressUnresolvedBreaches
@@ -1776,11 +2104,17 @@ it("shows the correct dashboard banner title for US user, without Premium, scan 
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US user, without Premium, scan in progress, unresolved breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US user, without Premium, scan in progress, unresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumScanInProgressUnresolvedBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1790,6 +2124,14 @@ it("shows the correct dashboard banner CTA for US user, without Premium, scan in
     name: "See what’s ready now",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_non_premium_scan_in_progress_unresolved_breaches",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumScanInProgressResolvedBreaches
@@ -1810,11 +2152,17 @@ it("shows the correct dashboard banner title for US user, without Premium, scan 
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US user, without Premium, scan in progress, resolved breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US user, without Premium, scan in progress, resolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumScanInProgressResolvedBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1824,6 +2172,14 @@ it("shows the correct dashboard banner CTA for US user, without Premium, scan in
     name: "Check more email addresses",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_non_premium_scan_in_progress_resolved_breaches",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsPremiumScanInProgressNoBreaches
@@ -1844,11 +2200,17 @@ it("shows the correct dashboard banner title for US user, with Premium, scan in 
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US user, with Premium, scan in progress, no breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US user, with Premium, scan in progress, no breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanInProgressNoBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1858,6 +2220,14 @@ it("shows the correct dashboard banner CTA for US user, with Premium, scan in pr
     name: "Check more email addresses",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_premium_scan_in_progress_no_breaches",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsPremiumScanInProgressUnresolvedBreaches
@@ -1878,11 +2248,17 @@ it("shows the correct dashboard banner title for US user, with Premium, scan in 
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US user, with Premium, scan in progress, unresolved breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US user, with Premium, scan in progress, unresolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanInProgressUnresolvedBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1892,6 +2268,14 @@ it("shows the correct dashboard banner CTA for US user, with Premium, scan in pr
     name: "See what’s ready now",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_premium_scan_in_progress_unresolved_breaches",
+    }),
+  );
 });
 
 // Check dashboard banner content for story DashboardUsPremiumScanInProgressResolvedBreaches
@@ -1912,11 +2296,17 @@ it("shows the correct dashboard banner title for US user, with Premium, scan in 
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA for US user, with Premium, scan in progress, resolved breaches", () => {
+it("shows the correct dashboard banner CTA and sends telemetry for US user, with Premium, scan in progress, resolved breaches", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumScanInProgressResolvedBreaches,
     Meta,
   );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   render(<ComposedDashboard />);
 
   const dashboardTopBanner = screen.getByRole("region", {
@@ -1926,6 +2316,47 @@ it("shows the correct dashboard banner CTA for US user, with Premium, scan in pr
     name: "Check more email addresses",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "us_premium_scan_in_progress_resolved_breaches",
+    }),
+  );
+});
+
+it("does not explain what 'in progress' means for users who cannot get Plus", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  const statusHeading = screen.getByText("Status");
+  const statusExplainerDialogTrigger = getByRole(statusHeading, "button", {
+    name: "Open",
+  });
+  await user.click(statusExplainerDialogTrigger);
+  expect(
+    screen.queryByText("This is a ⁨Monitor Plus⁩ feature.", { exact: false }),
+  ).not.toBeInTheDocument();
+});
+
+it("explains what 'in progress' means for Plus users", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const statusHeading = screen.getByText("Status");
+  const statusExplainerDialogTrigger = getByRole(statusHeading, "button", {
+    name: "Open",
+  });
+  await user.click(statusExplainerDialogTrigger);
+  expect(
+    screen.getByText("This is a ⁨Monitor Plus⁩ feature.", { exact: false }),
+  ).toBeInTheDocument();
 });
 
 // Check dashboard banner content for story DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches
@@ -1998,6 +2429,48 @@ it("closes previously active card onclick", async () => {
   await user.click(afterExpand[0]);
   const afterCollapse = screen.getAllByRole("button", { name: "Expand" });
   expect(initialState.length).toBe(afterCollapse.length);
+});
+
+it("does not allow non-US users to filter by exposure type, since they can only see a single exposure type (i.e. breaches)", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardNonUsUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const filterMenuButton = screen.getByRole("button", {
+    name: "Select filters",
+  });
+  await user.click(filterMenuButton);
+
+  const filterDialog = screen.getByRole("dialog");
+  const exposureTypeRadioGroup = queryByRole(filterDialog, "radiogroup", {
+    name: "Exposure type",
+  });
+
+  expect(exposureTypeRadioGroup).not.toBeInTheDocument();
+});
+
+it("allows Plus-eligible users to filter by exposure type", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const filterMenuButton = screen.getByRole("button", {
+    name: "Select filters",
+  });
+  await user.click(filterMenuButton);
+
+  const filterDialog = screen.getByRole("dialog");
+  const exposureTypeRadioGroup = getByRole(filterDialog, "radiogroup", {
+    name: "Exposure type",
+  });
+
+  expect(exposureTypeRadioGroup).toBeInTheDocument();
 });
 
 it("send Telemetry when users click on free scans when all exposures are fixed", async () => {
@@ -2270,6 +2743,33 @@ it("send telemetry when users click on learn more link", async () => {
     "click",
     expect.objectContaining({
       link_id: "learn_more",
+    }),
+  );
+});
+
+it("send telemetry when users click on exposure chart free scan", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  const mockedRecord = useTelemetry();
+  render(<ComposedDashboard />);
+
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+
+  const ctaButton = screen.queryAllByRole("link", {
+    name: "Start a free scan",
+  });
+  await user.click(ctaButton[0]);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "link",
+    "click",
+    expect.objectContaining({
+      link_id: "exposures_chart_free_scan",
     }),
   );
 });

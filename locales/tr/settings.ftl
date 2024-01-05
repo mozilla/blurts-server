@@ -24,6 +24,7 @@ settings-email-verification-callout = E-posta doğrulaması gerekiyor
 settings-resend-email-verification-link = Doğrulama e-postasını yeniden gönder
 settings-add-email-button = E-posta adresi ekle
 settings-delete-email-button = E-posta adresini sil
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -37,16 +38,11 @@ settings-email-number-of-breaches-info =
 ## Cancel Premium subscription
 
 settings-cancel-premium-subscription-title = { -brand-premium } aboneliğini iptal et
-settings-cancel-premium-subscription-link-label = { -brand-fx-account }nızdan iptal edin
 
 ## Deactivate account
 
 settings-deactivate-account-title = Hesabı devre dışı bırak
-# Deprecated
-settings-deactivate-account-info = { -product-short-name }’ü { -brand-fx-account }nızı silerek devre dışı bırakabilirsiniz.
 settings-deactivate-account-info-2 = { -product-short-name }’ü { -brand-mozilla-account }nızı silerek devre dışı bırakabilirsiniz.
-# Deprecated
-settings-fxa-link-label = { -brand-firefox } ayarlarına git
 settings-fxa-link-label-3 = { -brand-mozilla-account } ayarlarına gidin
 
 ## Add email dialog

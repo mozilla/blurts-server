@@ -20,6 +20,7 @@ type ResolutionContainerProps = {
   estimatedTime?: number;
   children: ReactNode;
   isPremiumUser: boolean;
+  isEligibleForPremium: boolean;
   isStepDone: boolean;
   data: StepDeterminationData;
   label?: string;
@@ -53,6 +54,7 @@ export const ResolutionContainer = (props: ResolutionContainerProps) => {
             <div className={styles.doneContent}>{props.children}</div>
             <ProgressCard
               isPremiumUser={props.isPremiumUser}
+              isEligibleForPremium={props.isEligibleForPremium}
               resolvedByYou={
                 resolutionSummary.dataBrokerManuallyResolvedDataPointsNum +
                 resolutionSummary.dataBreachFixedDataPointsNum

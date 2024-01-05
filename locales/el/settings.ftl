@@ -31,6 +31,7 @@ settings-email-verification-callout = Απαιτείται επαλήθευση 
 settings-resend-email-verification-link = Εκ νέου αποστολή email επαλήθευσης
 settings-add-email-button = Προσθήκη διεύθυνσης email
 settings-delete-email-button = Διαγραφή διεύθυνσης email
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -45,16 +46,11 @@ settings-email-number-of-breaches-info =
 
 settings-cancel-premium-subscription-title = Ακύρωση συνδρομής { -brand-premium }
 settings-cancel-premium-subscription-info = Η συνδρομή σας θα μετατραπεί σε δωρεάν λογαριασμό μετά το πέρας του τρέχοντος κύκλου χρέωσης. Τα αποτελέσματα της σάρωσης προστασίας απορρήτου θα διαγραφούν οριστικά και θα έχετε την εποπτεία μόνο 1 διεύθυνσης email για παραβιάσεις δεδομένων.
-settings-cancel-premium-subscription-link-label = Κάντε ακύρωση από τον { -brand-fx-account(case: "acc", capitalization: "lower") } σας
 
 ## Deactivate account
 
 settings-deactivate-account-title = Απενεργοποίηση λογαριασμού
-# Deprecated
-settings-deactivate-account-info = Μπορείτε να απενεργοποιήσετε το { -product-short-name } διαγράφοντας τον { -brand-fx-account(case: "acc", capitalization: "lower") } σας.
 settings-deactivate-account-info-2 = Μπορείτε να απενεργοποιήσετε το { -product-short-name } διαγράφοντας τον { -brand-mozilla-account(case: "acc", capitalization: "lower") } σας.
-# Deprecated
-settings-fxa-link-label = Μεταβείτε στις ρυθμίσεις του { -brand-firefox }
 settings-fxa-link-label-3 = Μετάβαση στις ρυθμίσεις { -brand-mozilla-account(case: "gen", capitalization: "lower") }
 
 ## Add email dialog

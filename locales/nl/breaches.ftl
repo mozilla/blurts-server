@@ -3,9 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-meta-title = { -brand-fx-monitor } – Dashboard
+
 breach-all-meta-title = { -brand-fx-monitor } – Alle datalekken
 breach-all-meta-social-title = Alle door { -brand-fx-monitor } gedetecteerde datalekken
 breach-all-meta-social-description = Blader door de volledige lijst met bekende datalekken die zijn gedetecteerd door { -brand-fx-monitor } en zoek vervolgens uit of uw informatie is gelekt.
+
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = { -brand-fx-monitor } – { $company } Datalek
@@ -13,6 +15,7 @@ breach-detail-meta-title = { -brand-fx-monitor } – { $company } Datalek
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Bent u getroffen door het datalek van { $company }?
 breach-detail-meta-social-description = Gebruik { -brand-fx-monitor } om erachter te komen of uw persoonlijke gegevens bij dit datalek zijn gelekt en om te begrijpen wat u vervolgens moet doen.
+
 breach-scan-meta-title = { -brand-fx-monitor } – Resultaten datalek
 breach-scan-meta-social-title = { -brand-fx-monitor }-datalekresultaten
 breach-scan-meta-social-description = Meld u aan bij { -brand-fx-monitor } om datalekken op te lossen en continu inzicht te krijgen over nieuwe bekende datalekken.
@@ -21,14 +24,17 @@ breach-scan-meta-social-description = Meld u aan bij { -brand-fx-monitor } om da
 
 # Data classes pie chart title
 breach-chart-title = Gelekte gegevens
+
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Datalekken voor { $email-select }
+
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored =
     { $total ->
         [one] { $count } van { $total } gemonitord e-mailadres
        *[other] { $count } van { $total } gemonitorde e-mailadressen
     }
+
 # link to Settings page where user can add/remove emails and set message preferences
 manage-emails-link = E-mailadressen beheren
 
@@ -42,23 +48,28 @@ filter-label-resolved = Opgeloste datalekken
 column-company = BEDRIJF
 column-breached-data = GELEKTE GEGEVENS
 column-detected = GEDETECTEERD
+
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
 column-status-badge-resolved = Opgelost
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Actief
+
 breaches-resolve-heading = Dit datalek oplossen:
+
 breaches-none-headline = Geen datalekken gevonden
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
 breaches-none-copy = Goed nieuws! Er zijn geen bekende datalekken gemeld voor { $email }. We blijven dit e-mailadres monitoren en laten het u weten als er datalekken optreden.
 breaches-none-cta-blurb = Wilt u een ander e-mailadres volgen?
 breaches-none-cta-button = E-mailadres toevoegen
+
 breaches-all-resolved-headline = Alle datalekken zijn opgelost
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
 breaches-all-resolved-copy = Netjes! U hebt alle inbreuken voor { $email } opgelost. We monitoren dit e-mailadres en laten het u weten als er nieuwe datalekken optreden.
 breaches-all-resolved-cta-blurb = Wilt u een ander e-mailadres volgen?
 breaches-all-resolved-cta-button = E-mailadres toevoegen
+
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 # Variables:
 #   $breachDate (String) - Date of the breach
@@ -74,6 +85,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Werk uw wachtwoorden bij en schakel tweefactorauthenticatie (2FA) in.
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -142,6 +154,7 @@ breach-checklist-phone-header-2 = Bescherm uw telefoonnummer met een maskeerserv
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Werk uw beveiligingsvragen bij.
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = In de meeste gevallen raden we u aan uw beveiligingsvragen bij te werken op de website van het bedrijf. Maar <b>hun website kan offline zijn of schadelijke inhoud bevatten</b>, dus wees voorzichtig als u <breached-company-link>de website bezoekt</breached-company-link>. Werk voor extra bescherming deze beveiligingsvragen bij voor alle belangrijke accounts waarop u ze hebt gebruikt en maak unieke wachtwoorden aan voor al uw accounts.
 
