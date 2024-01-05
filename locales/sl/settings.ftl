@@ -32,12 +32,16 @@ settings-email-limit-info =
 settings-email-verification-callout = Zahtevana je potrditev e-poštnega naslova
 settings-resend-email-verification-link = Ponovno pošlji potrditveno e-pošto
 settings-add-email-button = Dodaj e-poštni naslov
+# Deprecated
 settings-delete-email-button = Izbriši e-poštni naslov
-
+settings-remove-email-button-label = Odstrani
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Nehaj spremljati { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] Pojavlja se v { $breachCount } znani kraji.
