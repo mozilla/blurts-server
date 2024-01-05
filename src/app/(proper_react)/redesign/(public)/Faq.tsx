@@ -19,7 +19,6 @@ export type FaqItemProps = {
 };
 
 const FaqItem = (props: FaqItemProps) => {
-  // const { question, answer, isExpanded, onExpandAnswer } = props;
   const { question, answer } = props;
   const [isExpanded, onExpandAnswer] = useState(false);
   const buttonRef = useRef(null);
