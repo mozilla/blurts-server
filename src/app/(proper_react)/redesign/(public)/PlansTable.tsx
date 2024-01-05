@@ -65,7 +65,7 @@ export type Props = {
 };
 
 type ScanLimitProp = {
-  scanLimit: boolean;
+  scanLimitReached: boolean;
 };
 
 const monthlyPriceAnnualBilling = 13.37;
@@ -91,11 +91,11 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
       <div className={styles.plansCards}>
         <div
           role="group"
-          className={props.scanLimit ? styles.freeCard : styles.plusCard}
+          className={props.scanLimitReached ? styles.freeCard : styles.plusCard}
         >
           <div className={styles.head}>
             <b className={styles.badge}>
-              {props.scanLimit
+              {props.scanLimitReached
                 ? l10n.getString("landing-premium-max-scan-at-capacity")
                 : l10n.getString("landing-premium-plans-table-annotation-plus")}
             </b>
@@ -168,14 +168,14 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
               </span>
             </p>
             <Button
-              disabled={props.scanLimit}
+              disabled={props.scanLimitReached}
               variant="primary"
               href={props.premiumSubscriptionUrl[billingPeriod]}
               className={styles.cta}
             >
               {l10n.getString("landing-premium-plans-table-cta-plus-label")}
             </Button>
-            {!props.scanLimit && (
+            {!props.scanLimitReached && (
               <small className={styles.reassurance}>
                 {l10n.getString(
                   "landing-premium-plans-table-reassurance-plus-label",
@@ -326,7 +326,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
         </div>
         <div role="group" className={styles.freeCard}>
           <div className={styles.head}>
-            {props.scanLimit && (
+            {props.scanLimitReached && (
               <b className={styles.badge}>
                 {l10n.getString("landing-premium-max-scan-at-capacity")}
               </b>
@@ -350,14 +350,14 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
               <span className={styles.total} />
             </p>
             <Button
-              disabled={props.scanLimit}
+              disabled={props.scanLimitReached}
               variant="primary"
               className={styles.cta}
               onPress={() => void signIn("fxa")}
             >
               {l10n.getString("landing-premium-plans-table-cta-free-label")}
             </Button>
-            {!props.scanLimit && (
+            {!props.scanLimitReached && (
               <small className={styles.reassurance}>
                 {l10n.getString(
                   "landing-premium-plans-table-reassurance-free-label",
@@ -510,14 +510,14 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
       <Table
         aria-labelledby={props["aria-labelledby"]}
         selectionMode="none"
-        scanLimit={props.scanLimit}
+        scanLimitReached={props.scanLimitReached}
       >
         <TableHeader>
           <Column>
             {l10n.getString("landing-premium-plans-table-heading-feature")}
           </Column>
           <Column>
-            {props.scanLimit && (
+            {props.scanLimitReached && (
               <b className={styles.badge}>
                 {l10n.getString("landing-premium-max-scan-at-capacity")}
               </b>
@@ -533,7 +533,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
           </Column>
           <Column>
             <b className={styles.badge}>
-              {props.scanLimit
+              {props.scanLimitReached
                 ? l10n.getString("landing-premium-max-scan-at-capacity")
                 : l10n.getString("landing-premium-plans-table-annotation-plus")}
             </b>
@@ -686,13 +686,13 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   <span className={styles.total} />
                 </p>
                 <Button
-                  disabled={props.scanLimit}
+                  disabled={props.scanLimitReached}
                   variant="secondary"
                   onPress={() => void signIn("fxa")}
                 >
                   {l10n.getString("landing-premium-plans-table-cta-free-label")}
                 </Button>
-                {!props.scanLimit && (
+                {!props.scanLimitReached && (
                   <small className={styles.reassurance}>
                     {l10n.getString(
                       "landing-premium-plans-table-reassurance-free-label",
@@ -760,13 +760,13 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   </span>
                 </p>
                 <Button
-                  disabled={props.scanLimit}
+                  disabled={props.scanLimitReached}
                   variant="primary"
                   href={props.premiumSubscriptionUrl[billingPeriod]}
                 >
                   {l10n.getString("landing-premium-plans-table-cta-plus-label")}
                 </Button>
-                {!props.scanLimit && (
+                {!props.scanLimitReached && (
                   <small className={styles.reassurance}>
                     {l10n.getString(
                       "landing-premium-plans-table-reassurance-plus-label",
@@ -801,7 +801,7 @@ const Table = (
           >
             {[...headerRow.childNodes].map((column) => (
               <TableColumnHeader
-                scanLimit={props.scanLimit}
+                scanLimitReached={props.scanLimitReached}
                 key={column.key}
                 column={column}
                 state={tableState}
@@ -815,7 +815,7 @@ const Table = (
           <TableRow key={row.key} item={row} state={tableState}>
             {[...row.childNodes].map((cell) => (
               <TableCell
-                scanLimit={props.scanLimit}
+                scanLimitReached={props.scanLimitReached}
                 key={cell.key}
                 cell={cell}
                 state={tableState}
@@ -863,7 +863,7 @@ const TableHeaderRow = (props: {
 const TableColumnHeader = (props: {
   column: AriaTableColumnHeaderProps<unknown>["node"];
   state: TableState<object>;
-  scanLimit: boolean;
+  scanLimitReached: boolean;
 }) => {
   const columnRef = useRef<HTMLTableCellElement>(null);
   const { columnHeaderProps } = useTableColumnHeader(
@@ -880,7 +880,7 @@ const TableColumnHeader = (props: {
       case 1:
         return `${styles.freeCell} ${styles.freeHeadingCell}`;
       case 2:
-        return props.scanLimit
+        return props.scanLimitReached
           ? `${styles.freeCell} ${styles.freeHeadingCell}`
           : `${styles.plusCell} ${styles.plusHeadingCell}`;
     }
@@ -935,7 +935,7 @@ const TableRow = (props: {
 const TableCell = (props: {
   cell: AriaTableCellProps["node"];
   state: TableState<object>;
-  scanLimit: boolean;
+  scanLimitReached: boolean;
 }) => {
   const cellRef = useRef<HTMLTableCellElement>(null);
   const { gridCellProps } = useTableCell(
@@ -963,7 +963,7 @@ const TableCell = (props: {
   }
 
   const outlineStyle = () => {
-    if (!props.scanLimit) {
+    if (!props.scanLimitReached) {
       if (props.cell.column?.index === 1) {
         return `${styles.freeCell} ${styles.freeBodyCell}`;
       } else {

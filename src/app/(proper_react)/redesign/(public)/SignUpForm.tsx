@@ -21,7 +21,7 @@ export type Props = {
     cta: string;
     field?: string;
   };
-  scanLimit: boolean;
+  scanLimitReached: boolean;
 };
 
 export const SignUpForm = (props: Props) => {
@@ -55,7 +55,7 @@ export const SignUpForm = (props: Props) => {
     </label>
   );
 
-  return props.scanLimit ? (
+  return props.scanLimitReached ? (
     <WaitlistCta />
   ) : (
     <form className={styles.form} onSubmit={onSubmit}>

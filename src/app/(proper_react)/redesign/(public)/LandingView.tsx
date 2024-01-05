@@ -28,7 +28,7 @@ export type Props = {
   eligibleForPremium: boolean;
   l10n: ExtendedReactLocalization;
   countryCode: string;
-  scanLimit: boolean;
+  scanLimitReached: boolean;
 };
 
 export const View = (props: Props) => {
@@ -47,11 +47,11 @@ export const View = (props: Props) => {
                 : "landing-all-hero-lead",
             )}
           </p>
-          {props.eligibleForPremium && props.scanLimit ? (
+          {props.eligibleForPremium && props.scanLimitReached ? (
             <ScanLimit />
           ) : (
             <SignUpForm
-              scanLimit={props.scanLimit}
+              scanLimitReached={props.scanLimitReached}
               isHero
               eligibleForPremium={props.eligibleForPremium}
               signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
@@ -123,7 +123,7 @@ export const View = (props: Props) => {
                   )}
             </p>
             <SignUpForm
-              scanLimit={props.scanLimit}
+              scanLimitReached={props.scanLimitReached}
               eligibleForPremium={props.eligibleForPremium}
               signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
               eventId={{
@@ -169,7 +169,7 @@ export const View = (props: Props) => {
                   )}
             </p>
             <SignUpForm
-              scanLimit={props.scanLimit}
+              scanLimitReached={props.scanLimitReached}
               eligibleForPremium={props.eligibleForPremium}
               signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
               eventId={{
@@ -195,7 +195,7 @@ export const View = (props: Props) => {
             cta: "clicked_get_scan_fourth",
             field: "entered_email_address_fourth",
           }}
-          scanLimit={props.scanLimit}
+          scanLimitReached={props.scanLimitReached}
         />
       </div>
 
@@ -236,7 +236,7 @@ export const View = (props: Props) => {
             cta: "clicked_get_scan_last",
             field: "entered_email_address_last",
           }}
-          scanLimit={props.scanLimit}
+          scanLimitReached={props.scanLimitReached}
         />
       </div>
     </main>
@@ -289,7 +289,7 @@ const Plans = (props: Props) => {
         {props.l10n.getString("landing-premium-plans-lead")}
       </p>
 
-      {props.eligibleForPremium && props.scanLimit && (
+      {props.eligibleForPremium && props.scanLimitReached && (
         <div className={styles.waitlistSection}>
           <b className={styles.waitlistTitle}>
             {props.l10n.getString("landing-premium-waitlist-section-pt-1")}
@@ -302,7 +302,7 @@ const Plans = (props: Props) => {
             eventId={{
               cta: "intent_to_join_waitlist_third",
             }}
-            scanLimit={props.scanLimit}
+            scanLimitReached={props.scanLimitReached}
           />
         </div>
       )}
@@ -313,7 +313,7 @@ const Plans = (props: Props) => {
           monthly: getPremiumSubscriptionUrl({ type: "monthly" }),
           yearly: getPremiumSubscriptionUrl({ type: "yearly" }),
         }}
-        scanLimit={props.scanLimit}
+        scanLimitReached={props.scanLimitReached}
       />
     </div>
   );
