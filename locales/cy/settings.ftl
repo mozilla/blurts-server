@@ -34,12 +34,16 @@ settings-email-limit-info =
 settings-email-verification-callout = Mae angen gwirio'r e-bost
 settings-resend-email-verification-link = Ail-anfon yr e-bost gwirio
 settings-add-email-button = Ychwanegu cyfeiriad e-bost
+# Deprecated
 settings-delete-email-button = Dileu cyfeiriad e-bost
-
+settings-remove-email-button-label = Tynnu
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Rhoi'r gorau i fonitro { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [zero] Yn ymddangos mewn { $breachCount } tor-data.

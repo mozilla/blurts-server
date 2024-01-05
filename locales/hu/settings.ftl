@@ -30,12 +30,16 @@ settings-email-limit-info =
 settings-email-verification-callout = E-mail ellenőrzés szükséges
 settings-resend-email-verification-link = Ellenőrző e-mail újraküldése
 settings-add-email-button = E-mail-cím hozzáadása
+# Deprecated
 settings-delete-email-button = E-mail-cím törlése
-
+settings-remove-email-button-label = Eltávolítás
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = { $emailAddress } figyelésének leállítása
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] { $breachCount } ismert adatvédelmi incidensben szerepel.

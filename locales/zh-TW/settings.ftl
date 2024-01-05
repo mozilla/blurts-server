@@ -26,12 +26,16 @@ settings-email-limit-info = 您的帳號可監控最多 { $limit } 組信箱。
 settings-email-verification-callout = 需要驗證信箱
 settings-resend-email-verification-link = 重寄驗證信
 settings-add-email-button = 新增電子郵件地址
+# Deprecated
 settings-delete-email-button = 刪除電子郵件地址
-
+settings-remove-email-button-label = 移除
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = 停止監控 { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info = 出現在 { $breachCount } 場已知的外洩事件中。
 
 ## Cancel Premium subscription

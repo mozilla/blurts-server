@@ -18,6 +18,8 @@ interface InitGaProps {
 }
 
 const initGa4 = ({ ga4MeasurementId, debugMode }: InitGaProps) => {
+  // Never run in tests:
+  /* c8 ignore next 3 */
   if (debugMode) {
     console.info("Initialize GA4");
   }
@@ -48,13 +50,17 @@ export const useGa = (): {
     record: (options: Ga4EventOptions) => void;
   };
 } => {
-  const debugMode = process.env.NEXT_PUBLIC_NODE_ENV !== "production";
+  const debugMode =
+    process.env.NEXT_PUBLIC_NODE_ENV !== "production" &&
+    process.env.NODE_ENV !== "test";
 
   useEffect(() => {
     // Enable upload only if the user has not opted out of tracking.
     const uploadEnabled = navigator.doNotTrack !== "1";
 
     if (!uploadEnabled) {
+      // Never run in tests:
+      /* c8 ignore next 3 */
       if (debugMode) {
         console.info("Did not initialize GA4 due to DoNotTrack.");
       }
