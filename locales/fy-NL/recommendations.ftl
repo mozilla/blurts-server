@@ -1,3 +1,4 @@
+
 # Recommendation subhead
 rec-ssn-subhead = Besjoch jo creditkaartoersjoch
 # Link title
@@ -6,6 +7,7 @@ rec-ssn =
     Jo krije wetlik trije fergeze creditkaartoersichten yn it jier. 
     It oanfreegjen en beoardielen derfan hat gjin ynfloed op jo kredietwurdichheid. 
     Sykje nei accounts, lieningen of creditcards dy’t jo net werkenne.
+
 # Recommendation subhead
 rec-pw-1-subhead = Jo wachtwurd wizigje
 # Link title
@@ -14,6 +16,7 @@ rec-pw-1-2 =
     Meitsje dit wachtwurd unyk en oars dan oare dy’t jo brûke. 
     In goede te folgjen strategy is om twa of mear net-ferwante wurden te kombinearjen 
     om in folsleine wachtwurdsin te meitsjen en sifers en symboalen op te nimmen.
+
 # Recommendation subhead
 rec-pw-2-subhead = Wurkje oare oanmeldingen mei itselde wachtwurd by
 # Link title
@@ -21,6 +24,7 @@ rec-pw-2-cta-fx = Oanmeldingen besjen yn { -brand-name }
 rec-pw-2 =
     Troch wachtwurden opnij te brûken, wiziget ien inkeld datalek yn folle mear. No dit 
     wachtwurd lekt is, kinne hackers it brûke om tagong ta oare accounts te krijen.
+
 # Recommendation subhead
 rec-pw-3-subhead = Brûk in wachtwurdbehearder om jo wachtwurden oeral mei hinne te nimmen
 # Link title
@@ -31,6 +35,7 @@ rec-pw-3-fx =
 rec-pw-3-non-fx =
     Brûk { -brand-lockwise } om al jo wachtwurden by te hâlden 
     en se feilich fan jo telefoan of tablet ôf te benaderjen.
+
 # Recommendation subhead
 rec-pw-4-subhead = Twafaktorautentikaasje (2FA) ynstelle
 # Link title
@@ -39,16 +44,19 @@ rec-pw-4 =
     In protte websites biede 2FA as ekstra befeiligingsmaatregel. Dit fereasket 
     in oar stikje ynformaasje om jo oan te melden by jo account, lykas ien 
     kear in koade dy’t jo fia sms ûntfange.
+
 # Recommendation subhead
 rec-bank-acc-subhead = Jo bankôfskriften kontrolearje
 rec-bank-acc =
     Kontrolearje jo bankôfskriften op fertochte aktiviteit of ûngebrûklike 
     kosten. Stel jo bank op de hichte as jo wat sjogge dat jo net werkenne
+
 # Recommendation subhead
 rec-cc-subhead = Jo creditcardôfskriften kontrolearje
 rec-cc =
     Let op frjemde kosten op jo creditcard. Jo wolle miskien 
     in nije kaart mei in nij nûmer oanfreegje by jo creditcardmaatskippij.
+
 # Recommendation subhead
 rec-email-mask-subhead = In e-mailmasker brûke
 rec-email-cta = { -brand-relay } probearje
@@ -56,47 +64,56 @@ rec-email =
     Troch jo echte e-mailadres te jaan, meitsje jo it makliker foar hackers of trackers om
     jo wachtwurden te finen of jo online op it harspit nimme. In tsjinst as { -brand-relay }
     ferberget jo wiere e-mailadres en stjoert e-mailberjochten troch nei jo wiere postfek.
+
 # Recommendation subhead
 rec-ip-subhead-2 = Brûk in VPN om jo IP-adres te maskearjen
+
 # Recommendation subhead
 rec-moz-vpn-cta = Probearje { -brand-mozilla-vpn }
 rec-moz-vpn-update-2 =
     Jo Internet Protocol-adres (IP-adres) bringt jo lokaasje  
     en ynternetprovider oan it ljocht. In tsjinst as { -brand-mozilla-vpn }
     maskearret jo IP-adres om jo lokaasje te ferbergjen.
+
 rec-hist-pw-subhead = Mij opnij gebrûk fan wachtwurden
 # Link title
 rec-hist-pw-cta-fx = Oanmeldingen besjen yn { -brand-name }
 rec-hist-pw =
     Brûk unike sterke wachtwurden foar elke account. As ien wachtwurd lekt wurdt 
     yn in datalek hoege jo allinnich dit wachtwurd by te wurkjen.
+
 # Recommendation subhead
 rec-sec-qa-subhead = Meitsje unike antwurden foar befeiligingsfragen
 rec-sec-qa =
     In protte websites stelle deselde fragen. As ien antwurd lekt wurdt, lizze de 
     gegevens op strjitte. Meitsje lange, ferskate antwurden en bewarje se op in feilich plak.
+
 # Recommendation subhead
 rec-phone-num-subhead = Mij it ferstrekken fan jo telefoannûmer
 rec-phone-num =
     Probearje it ferstrekken fan jo telefoannûmer te mijen wannear jo jo oanmelde foar nije 
     accounts of tsjinsten. As in telefoannûmer net fereaske is, fier it dan net yn.
+
 # Recommendation subhead
 rec-dob-subhead = Mij it gebrûk fan persoanlike gegevens yn pinkoaden
 rec-dob =
     Omdat jo bertedatum maklik te finen is yn iepenbiere registers, 
     kinne jo gebrûk derfan it beste mije yn wachtwurden en pinkoaden. Minsken dy’t 
     jo jierdei witte soene ek hiel maklik jo pinkoade riede kinne.
+
 # Recommendation subhead
 rec-pins-subhead = Ferbetterje de befeiliging fan jo pinkoaden
 rec-pins =
     In sterke pinkoade befettet gjin persoanlike gegevens, lykas jo bertedatum 
     of adres. It moat in nûmer binne dat allinnich jo kenne en net maklik riede wurde kin.
+
 # Recommendation subhead
 rec-address-subhead = Mij gebrûk fan adressen yn wachtwurden
 rec-address =
     Adressen of de strjitte wêryn jo opgroeid binne brûke makket jo wachtwurden minder 
     sterk. Omdat it maklik is om dizze gegevens te finen yn iepenbiere registers, binne dizze 
     wachtwurden ienfâldich te rieden.
+
 # Recommendation subhead
 rec-gen-1-subhead = Brûk unike, sterke wachtwurden foar elke account
 # Link title
@@ -104,6 +121,7 @@ rec-gen-1-cta = Sterke wachtwurden meitsje
 rec-gen-1 =
     Opnij brûken fan in wachtwurd bringt al jo accounts yn gefaar. Dit betsjut dat as 
     ien wachtwurd lekt wurdt, hackers de kaaien fan in protte accounts hawwe.
+
 # Recommendation subhead
 rec-gen-2-subhead = Bewarje wachtwurden op in feilich plak
 # Link title
@@ -111,6 +129,7 @@ rec-gen-2-cta = Myten oer wachtwurdbehearders
 rec-gen-2 =
     Bewarje jo oanmeldingsgegevens op in feilich plak wêr’t allinnich jo by kinne, lykas in 
     wachtwurdbehearder. Hjirmei kinne jo al jo ferskate wachtwurden ienfâldich byhâlde.
+
 # Recommendation subhead
 rec-gen-3-subhead = Wês foarsichtich mei it ferstrekken fan persoanlike ynformaasje
 # Link title
@@ -118,6 +137,7 @@ rec-gen-3-cta = Mear befeiligingstips
 rec-gen-3 =
     Jou gjin persoanlike ynformaasje as dit net nedich is. As jo frege wurdt om jo e-mailadres, 
     postkoade of telefoannûmer yn te jaan of te ferstrekken, kinne jo wegerje.
+
 # Recommendation subhead
 rec-gen-4-subhead = Wurkje software en apps regelmjittich by
 rec-gen-4 =

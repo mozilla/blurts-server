@@ -12,4 +12,8 @@ add-email-your-account-includes = Tài khoản của bạn bao gồm giám sát 
 add-email-address-input-label = Địa chỉ email
 add-email-send-verification-button = Gửi liên kết xác minh
 # $email is the newly added email address. $settings-href is the URL for the Settings page. HTML tags should not be translated, e.g. `<a>`
+# This string will be deprecated when the new Plus plan is live.
 add-email-verify-the-link = Liên kết xác minh được gửi tới { $email } để thêm nó vào { -brand-fx-monitor }. Quản lý tất cả địa chỉ email trong <a { $settings-href }>Cài đặt</a>.
+# Variables:
+#   $email (string) - An email address submitted by the user for monitoring, e.g. `example@example.com`
+add-email-verify-the-link-2 = Liên kết xác minh đã được gửi tới <b>{ $email }</b> để thêm nó vào { -brand-mozilla-monitor }.

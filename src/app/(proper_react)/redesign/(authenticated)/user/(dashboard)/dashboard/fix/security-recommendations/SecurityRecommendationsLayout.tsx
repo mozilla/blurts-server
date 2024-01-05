@@ -30,6 +30,7 @@ export interface SecurityRecommendationsLayoutProps {
   type: SecurityRecommendationTypes;
   subscriberEmails: string[];
   data: StepDeterminationData;
+  isEligibleForPremium: boolean;
 }
 
 export function SecurityRecommendationsLayout(
@@ -59,6 +60,7 @@ export function SecurityRecommendationsLayout(
     breaches: guidedExperienceBreaches,
     l10n: l10n,
     nextStep,
+    countryCode: props.data.countryCode,
   });
 
   // The non-null assertion here should be safe since we already did this check
@@ -154,6 +156,7 @@ export function SecurityRecommendationsLayout(
         }
         isStepDone={isStepDone}
         data={props.data}
+        isEligibleForPremium={props.isEligibleForPremium}
       >
         <ResolutionContent
           content={content}

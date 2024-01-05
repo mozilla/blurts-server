@@ -3,9 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-meta-title = { -brand-fx-monitor } - Dashboard
+
 breach-all-meta-title = { -brand-fx-monitor } - Tutte le violazioni di dati
 breach-all-meta-social-title = Tutte le violazioni rilevate da { -brand-fx-monitor }
 breach-all-meta-social-description = Sfoglia l’elenco completo delle violazioni note rilevate da { -brand-fx-monitor }, quindi scopri se le tue informazioni sono state esposte.
+
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = { -brand-fx-monitor } - Violazione di dati per { $company }
@@ -13,6 +15,7 @@ breach-detail-meta-title = { -brand-fx-monitor } - Violazione di dati per { $com
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Sei stato coinvolto nella violazione di dati per { $company }?
 breach-detail-meta-social-description = Utilizza { -brand-fx-monitor } per scoprire se le tue informazioni personali sono state esposte in questa violazione e capire come procedere.
+
 breach-scan-meta-title = { -brand-fx-monitor } - Risultati violazione
 breach-scan-meta-social-title = { -brand-fx-monitor } - Risultati violazione
 breach-scan-meta-social-description = Accedi a { -brand-fx-monitor } per risolvere le violazioni e ottenere un monitoraggio continuo per ogni nuova violazione nota.
@@ -21,14 +24,17 @@ breach-scan-meta-social-description = Accedi a { -brand-fx-monitor } per risolve
 
 # Data classes pie chart title
 breach-chart-title = Dati violati
+
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Violazioni di dati per { $email-select }
+
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored =
     { $total ->
         [one] { $count } di { $total } email monitorata
        *[other] { $count } di { $total } email monitorate
     }
+
 # link to Settings page where user can add/remove emails and set message preferences
 manage-emails-link = Gestisci email
 
@@ -42,23 +48,28 @@ filter-label-resolved = Violazioni risolte
 column-company = AZIENDA
 column-breached-data = DATI VIOLATI
 column-detected = RILEVATA
+
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
 column-status-badge-resolved = Risolta
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Attiva
+
 breaches-resolve-heading = Risolvi questa violazione:
+
 breaches-none-headline = Nessuna violazione rilevata
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
 breaches-none-copy = Buone notizie! Non sono state segnalate violazioni conosciute per { $email }. Continueremo a controllare questa email e ti faremo sapere se si verificano nuove violazioni.
 breaches-none-cta-blurb = Controllare un’altra email?
 breaches-none-cta-button = Aggiungi un indirizzo email
+
 breaches-all-resolved-headline = Tutte le violazioni sono state risolte
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
 breaches-all-resolved-copy = Ben fatto! Hai risolto tutte le violazioni per { $email }. Continueremo a controllare questa email e ti faremo sapere se si verificano nuove violazioni.
 breaches-all-resolved-cta-blurb = Controllare un’altra email?
 breaches-all-resolved-cta-button = Aggiungi un indirizzo email
+
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 # Variables:
 #   $breachDate (String) - Date of the breach
@@ -74,6 +85,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Aggiorna le password e attiva l’autenticazione a due fattori (2FA).
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -142,6 +154,7 @@ breach-checklist-phone-header-2 = Proteggi il tuo numero di telefono con un serv
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Aggiorna le domande di sicurezza.
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = Nella maggior parte dei casi, ti consigliamo di aggiornare le domande di sicurezza sul sito web dell’azienda. Tuttavia, <b>il sito web potrebbe non essere più disponibile o contenere contenuti dannosi</b>, quindi fai attenzione quando <breached-company-link>visiti il sito</breached-company-link>. Per una maggiore protezione, aggiorna queste domande di sicurezza su tutti gli account importanti in cui le hai utilizzate e crea password univoche per tutti gli account.
 

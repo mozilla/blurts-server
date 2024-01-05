@@ -4,7 +4,7 @@
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -609,7 +609,7 @@ ad-unit-6-before-you-complete = 您在下次注册账号时，可使用马甲邮
 
 -brand-firefox = Firefox
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
 -brand-monitor-premium = Monitor Premium
@@ -617,6 +617,8 @@ ad-unit-6-before-you-complete = 您在下次注册账号时，可使用马甲邮
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
@@ -630,8 +632,10 @@ meta-desc-2 = 使用 { -brand-fx-monitor } 查看您是否涉及数据泄露。�
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = 登录
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 

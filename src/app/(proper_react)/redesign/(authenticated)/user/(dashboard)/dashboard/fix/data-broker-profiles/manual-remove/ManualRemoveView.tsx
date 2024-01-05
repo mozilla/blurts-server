@@ -117,7 +117,7 @@ export function ManualRemoveView(props: Props) {
                   "fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-content",
                   {
                     elems: {
-                      upgrade_link: (
+                      subscribe_link: (
                         <Link href="/redesign/user/dashboard/fix/data-broker-profiles/automatic-remove" />
                       ),
                     },

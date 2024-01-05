@@ -4,7 +4,7 @@
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -619,26 +619,27 @@ ad-unit-5-use-on-phone = Seqdec ɣef tiliɣri-inek·inem
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
--brand-fx-monitor = Firefox Monitor
+-brand-monitor = Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-mozilla-foundation = Tasbeddit Mozilla
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Amiḍan Firefox
 
 ## Search Engine Optimization
 
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Kcem
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -657,7 +658,8 @@ menu-item-logout = Ffeɣ
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Tiwtilin akked tbaḍnit
+terms-of-service = Tiwtilin n useqdec
+privacy-notice = Tasertit n tbaḍnit
 github = { -brand-github }
 footer-nav-all-breaches = Meṛṛa tirewliwin
 
@@ -672,3 +674,6 @@ search-breaches = Nadi tirewliwin n yisefka
 ## Public breach detail page
 
 breach-detail-cta-signup = Senqed tarewla n yisefka
+
+## Floating banner
+

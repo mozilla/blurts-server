@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -43,6 +48,8 @@ user-add-duplicate-email = Questo indirizzo email è già stato aggiunto a { -pr
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Vai su { $preferencesLink } per controllare lo stato di { $userEmail }.
+user-add-verification-email-just-sent = Non è possibile inviare un’altra email di verifica così rapidamente. Riprova più tardi.
+user-add-unknown-error = Si è verificato un errore durante l’aggiunta di un altro indirizzo email. Riprova più tardi.
 error-headline = Errore
 user-verify-token-error = È richiesto un token di verifica.
 user-verify-email-report-subject = Il tuo rapporto di { -product-name }
@@ -633,7 +640,7 @@ ad-unit-6-before-you-complete = La prossima volta che devi registrarti, utilizza
 
 -brand-firefox = Firefox
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
 -brand-monitor-premium = Monitor Premium
@@ -641,6 +648,8 @@ ad-unit-6-before-you-complete = La prossima volta che devi registrarti, utilizza
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
@@ -651,6 +660,7 @@ ad-unit-6-before-you-complete = La prossima volta che devi registrarti, utilizza
         [uppercase] Account Firefox
        *[lowercase] account Firefox
     }
+open-in-new-tab-alt = Apri in una nuova scheda
 
 ## Search Engine Optimization
 
@@ -658,8 +668,10 @@ meta-desc-2 = Scopri se sei stato coinvolto in una violazione di dati con { -bra
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Accedi
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -670,19 +682,43 @@ site-nav-help-link = Guida e supporto
 site-nav-ad-callout = Prova i nostri altri strumenti di sicurezza:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Menu principale
+main-nav-button-collapse-label = Comprimi il menu
+main-nav-button-collapse-tooltip = Comprimi il menu
+main-nav-button-expand-label = Espandi il menu
+main-nav-button-expand-tooltip = Espandi il menu
+main-nav-label = Navigazione
+main-nav-link-home-label = Pagina iniziale
+main-nav-link-dashboard-label = Pannello
+main-nav-link-settings-label = Impostazioni
+main-nav-link-faq-label = FAQ
+main-nav-link-faq-tooltip = Domande più frequenti
 
 ## User menu
 
+# Obsolete
 menu-button-title = Menu utente
+# Obsolete
 menu-button-alt = Apri il menu utente
+# Obsolete
 menu-list-accessible-label = Menu dell’account
+# Obsolete
 menu-item-fxa-2 = Gestisci il tuo { -brand-mozilla-account }
-menu-item-fxa-alt-2 = Apri la pagina dell’{ -brand-mozilla-account }
+# Obsolete
 menu-item-settings = Impostazioni
-menu-item-settings-alt = Apri la pagina delle impostazioni
+# Obsolete
 menu-item-help = Guida e supporto
-menu-item-help-alt = Apri la pagina di aiuto e supporto
+# Obsolete
 menu-item-logout = Disconnetti
+user-menu-trigger-label = Apri il menu utente
+user-menu-trigger-tooltip = Profilo
+user-menu-manage-fxa-label = Gestisci il tuo { -brand-mozilla-account }
+user-menu-settings-label = Impostazioni
+user-menu-settings-tooltip = Configura { -brand-mozilla-monitor }
+user-menu-help-label = Guida e supporto
+user-menu-help-tooltip = Ottieni assistenza per { -brand-mozilla-monitor }
+user-menu-signout-label = Disconnetti
+user-menu-signout-tooltip = Esci da { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -691,6 +727,8 @@ terms-of-service = Condizioni di utilizzo del servizio
 privacy-notice = Informativa sulla privacy
 github = { -brand-github }
 footer-nav-all-breaches = Tutte le violazioni
+footer-external-link-faq-label = FAQ
+footer-external-link-faq-tooltip = Domande più frequenti
 
 ## Error page
 

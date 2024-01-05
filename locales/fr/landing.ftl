@@ -37,12 +37,15 @@ learn-more-mission = En savoir plus sur notre mission
 
 top-questions-about-monitor = Questions fréquentes à propos de { -brand-fx-monitor }
 see-all-faq = Voir toute la FAQ
+
 # question and answer
 what-is-breach = Qu’est-ce qu’une fuite de données exactement ?
 when-info-exposed = Une fuite de données se produit lorsque des données personnelles ou privées sont exposées, dérobées ou copiées sans autorisation. Ces incidents de sécurité peuvent être le résultat de cyberattaques contre des sites web, des applications ou toute base de données où sont conservées les données personnelles des personnes. Une fuite de données peut également se produire par accident, comme lorsque les identifiants de connexion de quelqu’un sont accidentellement publiés publiquement.
+
 # question and answer
 what-do-i-do = Je viens de découvrir qu’une fuite de données me concerne. Que dois-je faire ?
 visit-monitor-to-learn = Consultez { -brand-fx-monitor } pour savoir ce qu’il faut faire suite à une fuite de données. Les pirates informatiques misent sur la réutilisation des mots de passe, il est donc important de créer des mots de passe forts et uniques pour tous vos comptes. Conservez vos mots de passe dans un endroit sûr auquel vous seul·e avez accès ; il peut s’agir du même endroit où vous conservez vos documents importants ou d’un gestionnaire de mots de passe.
+
 # question and answer
 what-gets-exposed = Quelles informations sont compromises dans les fuites de données ?
 depends-on-hackers = Toutes les fuites de données n’exposent pas toutes les mêmes informations. Cela dépend simplement de ce à quoi les pirates peuvent accéder. De nombreuses fuites de données exposent les adresses e-mail et les mots de passe. D’autres exposent des informations plus sensibles telles que les numéros de carte bancaire, les numéros de passeport et les numéros de sécurité sociale.
@@ -51,3 +54,4 @@ depends-on-hackers = Toutes les fuites de données n’exposent pas toutes les m
 
 see-if-data-breach = Vérifiez si une fuite de données vous concerne
 hibp-footer-attribution = Les informations sur les fuites de données sont fournies par <b>{ -brand-HIBP }</b>
+

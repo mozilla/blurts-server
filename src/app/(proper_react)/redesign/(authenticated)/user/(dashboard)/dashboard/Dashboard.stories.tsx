@@ -15,7 +15,6 @@ import {
 } from "../../../../../../../apiMocks/mockData";
 import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
 import { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
-import { canSubscribeToPremium } from "../../../../../../functions/universal/user";
 import { CountryCodeProvider } from "../../../../../../../contextProviders/country-code";
 
 const brokerOptions = {
@@ -154,10 +153,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           user={user}
           userBreaches={breaches}
           userScanData={scanData}
-          isEligibleForPremium={canSubscribeToPremium({
-            user,
-            countryCode: props.countryCode,
-          })}
+          isEligibleForPremium={props.countryCode === "us"}
           isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
           enabledFeatureFlags={["FreeBrokerScan", "PremiumBrokerRemoval"]}
           monthlySubscriptionUrl=""

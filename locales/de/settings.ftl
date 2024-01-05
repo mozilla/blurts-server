@@ -30,11 +30,16 @@ settings-email-limit-info =
 settings-email-verification-callout = E-Mail-Bestätigung erforderlich
 settings-resend-email-verification-link = Bestätigungs-Mail erneut versenden
 settings-add-email-button = E-Mail-Adresse hinzufügen
+# Deprecated
 settings-delete-email-button = E-Mail-Adresse löschen
+settings-remove-email-button-label = Entfernen
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = { $emailAddress } nicht mehr überwachen
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] Ist von { $breachCount } bekannten Datenleck betroffen.
@@ -45,16 +50,11 @@ settings-email-number-of-breaches-info =
 
 settings-cancel-premium-subscription-title = { -brand-premium }-Abonnement kündigen
 settings-cancel-premium-subscription-info = Ihr Abonnement wird nach Ende des aktuellen Abrechnungszeitraums auf ein kostenloses Konto zurückgesetzt. Die Ergebnisse Ihrer Datenschutz-Scans werden dauerhaft gelöscht und es wird nur eine E-Mail-Adresse auf Datenlecks überwacht.
-settings-cancel-premium-subscription-link-label = Kündigen über Ihr { -brand-fx-account }
 
 ## Deactivate account
 
 settings-deactivate-account-title = Konto deaktivieren
-# Deprecated
-settings-deactivate-account-info = Sie können { -product-short-name } deaktivieren, indem Sie Ihr { -brand-fx-account } löschen.
 settings-deactivate-account-info-2 = Sie können { -product-short-name } deaktivieren, indem Sie Ihr { -brand-mozilla-account } löschen.
-# Deprecated
-settings-fxa-link-label = { -brand-firefox }-Einstellungen aufrufen
 settings-fxa-link-label-3 = Zu den { -brand-mozilla-account }-Einstellungen gehen
 
 ## Add email dialog

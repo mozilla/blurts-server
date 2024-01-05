@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -39,6 +44,8 @@ user-add-duplicate-email = 此帳號已經加入 { -product-name }。
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = 請到您的 { $preferencesLink } 檢查 { $userEmail } 的目前狀態。
+user-add-verification-email-just-sent = 沒辦法這麼快就寄出另一封驗證信，請稍後再試。
+user-add-unknown-error = 新增電子郵件地址時發生錯誤，請稍後再試。
 error-headline = 錯誤
 user-verify-token-error = 缺少驗證 token。
 user-verify-email-report-subject = 您的 { -product-name } 掃描報告
@@ -354,7 +361,7 @@ monitor-preferences = { -product-short-name } 偏好設定
 signed-in-as = 已登入為: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
-filter-by = 依照分類過濾:
+filter-by = 依照分類篩選：
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = 選單
 to-affected-email = 傳送資料外洩警報到受影響的電子郵件信箱
@@ -605,7 +612,7 @@ ad-unit-6-before-you-complete = 您下次註冊帳號時，可使用轉寄信箱
 
 -brand-firefox = Firefox
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = 付費版
 -brand-monitor-premium = Monitor Premium
@@ -613,12 +620,15 @@ ad-unit-6-before-you-complete = 您下次註冊帳號時，可使用轉寄信箱
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla 帳號
+open-in-new-tab-alt = 用新分頁開啟鏈結
 
 ## Search Engine Optimization
 
@@ -626,8 +636,10 @@ meta-desc-2 = 使用 { -brand-fx-monitor } 看看您是否也處於資料外洩�
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = 登入
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -638,19 +650,43 @@ site-nav-help-link = 說明與技術支援
 site-nav-ad-callout = 歡迎試用我們其他的安全工具：
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = 主選單
+main-nav-button-collapse-label = 折疊選單
+main-nav-button-collapse-tooltip = 折疊選單
+main-nav-button-expand-label = 展開選單
+main-nav-button-expand-tooltip = 展開選單
+main-nav-label = 導覽
+main-nav-link-home-label = 首頁
+main-nav-link-dashboard-label = 儀錶板
+main-nav-link-settings-label = 設定
+main-nav-link-faq-label = 常見問題
+main-nav-link-faq-tooltip = 常見問題
 
 ## User menu
 
+# Obsolete
 menu-button-title = 使用者選單
+# Obsolete
 menu-button-alt = 開啟使用者選單
+# Obsolete
 menu-list-accessible-label = 帳號選單
+# Obsolete
 menu-item-fxa-2 = 管理您的 { -brand-mozilla-account }
-menu-item-fxa-alt-2 = 開啟 { -brand-mozilla-account }頁面
+# Obsolete
 menu-item-settings = 設定
-menu-item-settings-alt = 開啟設定頁面
+# Obsolete
 menu-item-help = 說明與技術支援
-menu-item-help-alt = 開啟說明與技術支援頁面
+# Obsolete
 menu-item-logout = 登出
+user-menu-trigger-label = 開啟使用者選單
+user-menu-trigger-tooltip = 個人資料
+user-menu-manage-fxa-label = 管理您的 { -brand-mozilla-account }
+user-menu-settings-label = 設定
+user-menu-settings-tooltip = 設定 { -brand-mozilla-monitor }
+user-menu-help-label = 說明與技術支援
+user-menu-help-tooltip = 獲得 { -brand-mozilla-monitor } 的使用說明
+user-menu-signout-label = 登出
+user-menu-signout-tooltip = 從 { -brand-mozilla-monitor } 登出
 
 ## Footer
 
@@ -659,6 +695,8 @@ terms-of-service = 服務條款
 privacy-notice = 隱私權公告
 github = { -brand-github }
 footer-nav-all-breaches = 所有資料外洩事件
+footer-external-link-faq-label = 常見問題
+footer-external-link-faq-tooltip = 常見問題
 
 ## Error page
 

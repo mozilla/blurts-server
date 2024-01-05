@@ -30,6 +30,7 @@ settings-email-limit-info =
 settings-email-verification-callout = Se requiere verificación de correo electrónico
 settings-resend-email-verification-link = Reenviar correo electrónico de verificación
 settings-add-email-button = Agregar dirección de correo electrónico
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -41,11 +42,11 @@ settings-email-number-of-breaches-info =
        *[other] Aparece en { $breachCount } filtración conocida.
     }
 
+## Cancel Premium subscription
+
 ## Deactivate account
 
 settings-deactivate-account-title = Desactivar cuenta
-settings-deactivate-account-info = Puedes desactivar { -product-short-name } eliminando tu { -brand-fx-account }.
-settings-fxa-link-label = Ir a ajustes de { -brand-firefox }
 
 ## Add email dialog
 
@@ -53,3 +54,6 @@ settings-email-dialog-title = Agregar otra dirección de correo electrónico
 settings-add-email-text = Agregar una nueva dirección de correo electrónico para ver si ha estado involucrada en una filtración de datos.
 settings-email-input-label = Dirección de correo electrónico
 settings-send-email-verification-button = Enviar enlace de verificación
+
+## Unsubscribe Dialog Survey
+
