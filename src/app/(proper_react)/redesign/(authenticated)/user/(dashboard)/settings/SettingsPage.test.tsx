@@ -7,7 +7,7 @@ import { render, screen } from "@testing-library/react";
 import { axe } from "jest-axe";
 import { Session } from "next-auth";
 import { userEvent } from "@testing-library/user-event";
-import { getEnL10nSync } from "../../../../../../functions/server/mockL10n";
+import { getOneL10nSync } from "../../../../../../functions/server/mockL10n";
 import { TestComponentWrapper } from "../../../../../../../TestComponentWrapper";
 import { EmailRow } from "../../../../../../../db/tables/emailAddresses";
 import { SerializedSubscriber } from "../../../../../../../next-auth";
@@ -61,7 +61,7 @@ it("passes the axe accessibility audit", async () => {
   const { container } = render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getEnL10nSync()}
+        l10n={getOneL10nSync()}
         user={mockedUser}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
@@ -85,7 +85,7 @@ it("preselects 'Send all breach alerts to the primary email address' if that's t
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getEnL10nSync()}
+        l10n={getOneL10nSync()}
         user={{
           ...mockedUser,
           subscriber: {
@@ -120,7 +120,7 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getEnL10nSync()}
+        l10n={getOneL10nSync()}
         user={{
           ...mockedUser,
           subscriber: {
@@ -157,7 +157,7 @@ it("sends a call to the API to change the email alert preferences when changing 
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getEnL10nSync()}
+        l10n={getOneL10nSync()}
         user={{
           ...mockedUser,
           subscriber: {
@@ -203,7 +203,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getEnL10nSync()}
+        l10n={getOneL10nSync()}
         user={{
           ...mockedUser,
           subscriber: {
@@ -235,7 +235,7 @@ it("marks unverified email addresses as such", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getEnL10nSync()}
+        l10n={getOneL10nSync()}
         user={mockedUser}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
@@ -266,7 +266,7 @@ it("calls the API to resend a verification email if requested to", async () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getEnL10nSync()}
+        l10n={getOneL10nSync()}
         user={mockedUser}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
@@ -307,7 +307,7 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getEnL10nSync()}
+        l10n={getOneL10nSync()}
         user={mockedUser}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
@@ -342,7 +342,7 @@ it.skip("calls the 'add' action when adding another email address", async () => 
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getEnL10nSync()}
+        l10n={getOneL10nSync()}
         user={mockedUser}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
