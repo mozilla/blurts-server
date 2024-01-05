@@ -3,24 +3,24 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
-landing-all-hero-title = 尋找您的私人資訊都跑到哪裡了然後拿回來
+landing-all-hero-title = 看看您的隱私資訊在哪裡外洩，並且搶回控制權
 landing-all-hero-lead = 我們可掃描已知的資安事件，看看您的資料是否已遭外洩並建議您處理方式。
 landing-all-hero-emailform-input-placeholder = yourname@example.com
 landing-all-hero-emailform-input-label = 輸入您的電子郵件地址，即可檢查是否曾遭資料外洩。
 landing-all-hero-emailform-submit-label = 免費掃描
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
-landing-all-hero-image-chart-label = 曝光
+landing-all-hero-image-chart-label = 資料曝光事件
 
 # Value Proposition
 
-landing-all-value-prop-fix-exposures = 我們會幫助您修正風險
-landing-all-value-prop-fix-exposures-description = 我們的使命是讓您能自行控制個人資料。我們會幫助您處理資料外洩事件並保護您的資訊隱私。我們也會在這個過程中<privacy_link>尊重您的隱私</privacy_link>。
+landing-all-value-prop-fix-exposures = 我們可協助您處理遭到外洩的資料
+landing-all-value-prop-fix-exposures-description = 我們的使命是要讓您能夠自行控制自己的個人資料。我們會協助您處理資料外洩事件，並協助您保持資料的隱私 — 這個過程當然也會<privacy_link>尊重您的隱私</privacy_link>。
 landing-all-value-prop-info-at-risk = 哪些資訊可能有風險？
 landing-all-value-prop-info-at-risk-description = 我們的數位生活常會遇到資料外洩事件。您的密碼、聯絡資訊、財務資訊等個資都可能遭到外洩，讓您的身分有遭受盜用的風險。
 
 # Quote
 
-landing-all-quote = 每 11 分鐘就有一次 <data_breaches>資料外洩事件</data_breaches> 洩漏您的隱私資訊。別擔心我們可以幫忙。
+landing-all-quote = 每 11 分鐘就會發生一場<data_breaches>資料外洩事件</data_breaches>，讓私人資訊遭到公開 — 別擔心，我們可以幫忙。
 
 # Non-US FAQ
 
@@ -29,10 +29,10 @@ landing-all-faq-title = 常見問題
 landing-all-faq-see-all = 檢視所有常見問題
 landing-all-data-breach-definition-qn = 「資料洩漏事件」究竟是什麼？
 landing-all-data-breach-definition-ans = 「資料外洩事件」的意思是當個人或私人的資料發生洩露、遭竊或未經授權遭到複製。這可能是有人攻擊任何存放了個人資訊的網站、應用程式或資料庫所發生的結果。此類事件也有可能是因某人的登入資訊意外公開而發生。
-landing-all-data-breach-next-steps-qn = 我剛發現某場資料外洩事件當中包含我的資料。接下來該怎麼做？
-landing-all-data-breach-next-steps-ans = 請到 { -brand-mozilla-monitor } 了解發生資料外洩事件後應該採取哪些行動並取得如何解決您的個人資訊遭到外洩的問題。駭客寄希望於人們重複使用密碼所以為您的所有帳號設定強大而獨特的密碼相當重要。將您的密碼保存在只有您能存取的安全之處這可能是您儲存重要文件或密碼管理員的地方。
+landing-all-data-breach-next-steps-qn = 我剛發現某場資料外洩事件當中包含我的資料，接下來該怎麼辦？
+landing-all-data-breach-next-steps-ans = 造訪 { -brand-mozilla-monitor } 即可了解發生資料外洩事件後要如何處理，並且了解要如何處理已外洩的個資。駭客們依靠人們重複使用密碼來做案，所以針對您的每一個帳號都使用強大而不同的密碼相當重要。請將您的密碼保存在只有您可以接觸到的安全位置，這個地方可能會是您存放重要文件的位置或密碼管理員。
 landing-all-data-breach-info-qn = 發生資料外洩事件時，會洩露哪些資訊？
-landing-all-data-breach-info-ans = 並非所有資料外洩事件都會洩露相同的資訊。還要看駭客可以存取哪些東西。許多資料外洩事件都會洩露電子郵件地址與密碼。其他的則會公開信用卡卡號、PIN 碼、社會安全號碼等敏感資訊。
+landing-all-data-breach-info-ans = 每場事件外洩的資訊不一定相同，要視駭客獲得了哪些資訊而定。許多資料外洩事件會洩露電子郵件信箱與密碼，而有的是會洩露信用卡卡號、提款卡密碼、身分證字號等敏感資訊。
 
 # Social proof
 
@@ -40,13 +40,13 @@ landing-all-data-breach-info-ans = 並非所有資料外洩事件都會洩露相
 # $num_users is the number of users in the millions.
 landing-all-social-proof-title =
     { $num_users ->
-       *[other] 已被全球 { $num_users } 百萬使用者信任
+       *[other] 受全球 { $num_users } 百萬使用者信任
     }
 # Variables
 # $num_countries is the number of countries available.
 landing-all-social-proof-description =
     { $num_countries ->
-       *[other] 自 2018 年起我們已幫助 { $num_countries } 個國家的人們在資料外洩時保護他們的安全。
+       *[other] 自 2018 年起，我們已幫助 { $num_countries } 個國家的人們，在資料外洩時保護他們的資料安全。
     }
 landing-all-social-proof-press = 出現於
 

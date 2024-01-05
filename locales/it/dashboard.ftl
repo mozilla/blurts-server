@@ -43,11 +43,11 @@ modal-active-number-of-exposures-part-three-all = Una volta risolte, verranno ag
 modal-cta-ok = OK
 modal-open-alt = Apri
 modal-close-alt = Chiudi
-progress-card-heres-what-we-fixed-headline-all = Ecco cosa hai corretto
-progress-card-manually-fixed-headline = Risolta manualmente
-dashboard-tab-label-action-needed = richiede attenzione
-dashboard-tab-label-fixed = Risolto
-dashboard-exposures-all-fixed-label = Tutto risolto qui.
+progress-card-heres-what-we-fixed-headline-all = Ecco che cosa hai risolto
+progress-card-manually-fixed-headline = Risolte manualmente
+dashboard-tab-label-action-needed = Richiede attenzione
+dashboard-tab-label-fixed = Risolte
+dashboard-exposures-all-fixed-label = Tutto risolto!
 dashboard-exposures-area-headline = Visualizza tutti i siti in cui le tue informazioni sono esposte
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
@@ -62,8 +62,8 @@ dashboard-exposures-area-description-all-line1 =
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
 dashboard-exposures-area-description-all-line2 =
     { $data_breach_unresolved_num ->
-        [one] È stato coinvolto in { $data_breach_unresolved_num } violazione di dati.
-       *[other] È stato coinvolto in { $data_breach_unresolved_num } violazioni di dati.
+        [one] Sei stato coinvolto in { $data_breach_unresolved_num } violazione di dati.
+       *[other] Sei stato coinvolto in { $data_breach_unresolved_num } violazioni di dati.
     }
 dashboard-fixed-area-headline-all = Visualizza tutte le esposizioni risolte
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
@@ -87,7 +87,7 @@ dashboard-exposures-filter-reset = Ripristina
 dashboard-top-banner-section-label = Riepilogo dashboard
 dashboard-top-banner-scan-in-progress-title = La scansione è ancora in corso
 dashboard-top-banner-your-data-is-protected-title = I tuoi dati sono protetti
-dashboard-top-banner-your-data-is-protected-cta = Scopri cosa è stato risolto
+dashboard-top-banner-your-data-is-protected-cta = Scopri che cosa è stato risolto
 dashboard-top-banner-lets-keep-protecting-title = Continuiamo a proteggere i tuoi dati
 # Variables:
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
@@ -110,11 +110,11 @@ dashboard-top-banner-non-us-protect-your-data-description-line1 =
 #   $data_breach_unresolved_num (number) - the total number of data breaches the user has.
 dashboard-top-banner-non-us-protect-your-data-description-line2 =
     { $data_breach_unresolved_num ->
-        [one] È stato coinvolto in { $data_breach_unresolved_num } violazione di dati. Ti guideremo passo dopo passo su come risolvere.
-       *[other] È stato coinvolto in { $data_breach_unresolved_num } violazioni di dati. Ti guideremo passo dopo passo su come risolvere.
+        [one] Sei stato coinvolto in { $data_breach_unresolved_num } violazione di dati. Ti guideremo passo dopo passo su come risolvere.
+       *[other] Sei stato coinvolto in { $data_breach_unresolved_num } violazioni di dati. Ti guideremo passo dopo passo su come risolvere.
     }
 dashboard-top-banner-no-exposures-found-title = Nessuna esposizione trovata
-dashboard-top-banner-non-us-no-exposures-found-description = Ottime notizie! Abbiamo cercato tutte le violazioni di dati conosciute e non abbiamo trovato alcuna esposizione. Continueremo a monitorare il tuo indirizzo email e ti avviseremo se si verifica una nuova violazione.
+dashboard-top-banner-non-us-no-exposures-found-description = Buone notizie: abbiamo cercato in tutte le violazioni di dati conosciute e non abbiamo trovato alcuna esposizione. Continueremo a monitorare il tuo indirizzo email e ti avviseremo se si verifica una nuova violazione.
 dashboard-no-exposures-label = Nessuna esposizione trovata
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
@@ -123,7 +123,7 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
         [one] Ottimo lavoro, l’esposizione dei tuoi dati è stata risolta. Continueremo a monitorare e ti avviseremo di eventuali nuove esposizioni.
        *[other] Ottimo lavoro, tutte le { $exposures_resolved_num } esposizioni dei tuoi dati sono state risolte. Continueremo a monitorare e ti avviseremo di eventuali nuove esposizioni.
     }
-dashboard-top-banner-monitor-more-cta = Tieni sotto controllo più email
+dashboard-top-banner-monitor-more-cta = Tieni sotto controllo altre email
 
 # About Exposure Statuses Modal
 
