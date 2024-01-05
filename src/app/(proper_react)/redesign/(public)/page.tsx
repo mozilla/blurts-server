@@ -22,8 +22,8 @@ export default async function Page() {
   const profileStats = await getProfilesStats(
     new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
   );
-  const oneRepActivations = profileStats?.total_active ?? 0;
-  const scanLimitReached = oneRepActivations > monthlySubscribersQuota;
+  const oneRepActivations = profileStats?.total_active;
+  const scanLimitReached = typeof oneRepActivations === "undefined" || oneRepActivations > monthlySubscribersQuota;
   return (
     <View
       eligibleForPremium={eligibleForPremium}

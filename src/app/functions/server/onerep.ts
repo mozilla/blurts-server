@@ -21,10 +21,10 @@ import {
 import { logger } from "./logging";
 
 export const monthlyScansQuota = parseInt(
-  (process.env.MONTHLY_SCANS_QUOTA as string) || "0",
+  (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
 );
 export const monthlySubscribersQuota = parseInt(
-  (process.env.MONTHLY_SUBSCRIBERS_QUOTA as string) || "0",
+  (process.env.MONTHLY_SUBSCRIBERS_QUOTA as string) ?? "0",
 );
 
 export type CreateProfileRequest = {
