@@ -22,11 +22,13 @@ import PCMagLogo from "./social-proof-images/pcmag.svg";
 import TechCruchLogo from "./social-proof-images/techcrunch.svg";
 import { TelemetryLink } from "./TelemetryLink";
 import { HeresHowWeHelp } from "./HeresHowWeHelp";
+import { ScanLimit } from "./ScanLimit";
 
 export type Props = {
   eligibleForPremium: boolean;
   l10n: ExtendedReactLocalization;
   countryCode: string;
+  scanLimitReached: boolean;
 };
 
 export const View = (props: Props) => {
@@ -45,22 +47,27 @@ export const View = (props: Props) => {
                 : "landing-all-hero-lead",
             )}
           </p>
-          <SignUpForm
-            isHero
-            eligibleForPremium={props.eligibleForPremium}
-            signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
-            eventId={{
-              cta: "clicked_get_scan_header",
-              field: "entered_email_address_header",
-            }}
-          />
+          {props.eligibleForPremium && props.scanLimitReached ? (
+            <ScanLimit />
+          ) : (
+            <SignUpForm
+              scanLimitReached={props.scanLimitReached}
+              isHero
+              eligibleForPremium={props.eligibleForPremium}
+              signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
+              eventId={{
+                cta: "clicked_get_scan_header",
+                field: "entered_email_address_header",
+              }}
+            />
+          )}
         </div>
         <div className={styles.heroImage}>
           <HeroImage {...props} />
         </div>
       </header>
 
-      <section className={styles.quoteWrapper}>
+      <div className={styles.quoteWrapper}>
         <div className={styles.quote}>
           <h2>
             {props.eligibleForPremium
@@ -76,9 +83,9 @@ export const View = (props: Props) => {
                 })}
           </h2>
         </div>
-      </section>
+      </div>
 
-      <section className={styles.valuePropositionWrapper}>
+      <div className={styles.valuePropositionWrapper}>
         <div className={`${styles.item} ${styles.grayBg}`}>
           <span>
             <h2>
@@ -116,6 +123,7 @@ export const View = (props: Props) => {
                   )}
             </p>
             <SignUpForm
+              scanLimitReached={props.scanLimitReached}
               eligibleForPremium={props.eligibleForPremium}
               signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
               eventId={{
@@ -161,6 +169,7 @@ export const View = (props: Props) => {
                   )}
             </p>
             <SignUpForm
+              scanLimitReached={props.scanLimitReached}
               eligibleForPremium={props.eligibleForPremium}
               signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
               eventId={{
@@ -173,7 +182,7 @@ export const View = (props: Props) => {
             <LeakedPasswordExampleIllustration {...props} />
           </div>
         </div>
-      </section>
+      </div>
 
       <div className={styles.signUpEncouragementWrapper}>
         <p className={styles.title}>
@@ -186,10 +195,11 @@ export const View = (props: Props) => {
             cta: "clicked_get_scan_fourth",
             field: "entered_email_address_fourth",
           }}
+          scanLimitReached={props.scanLimitReached}
         />
       </div>
 
-      <section className={styles.socialProofWrapper}>
+      <div className={styles.socialProofWrapper}>
         <h2>
           {props.l10n.getString("landing-all-social-proof-title", {
             num_users: 10,
@@ -210,10 +220,9 @@ export const View = (props: Props) => {
           <Image src={CNETLogo} alt="" />
           <Image src={GoogleLogo} alt="" />
         </div>
-      </section>
+      </div>
 
       {!props.eligibleForPremium && <HeresHowWeHelp />}
-
       <Plans {...props} />
 
       <div className={styles.signUpEncouragementWrapper}>
@@ -227,6 +236,7 @@ export const View = (props: Props) => {
             cta: "clicked_get_scan_last",
             field: "entered_email_address_last",
           }}
+          scanLimitReached={props.scanLimitReached}
         />
       </div>
     </main>
@@ -271,20 +281,40 @@ const Plans = (props: Props) => {
   }
 
   return (
-    <section className={styles.plans}>
+    <div className={styles.plans}>
       <h2 id={headingId} className={styles.planName}>
         {props.l10n.getString("landing-premium-plans-heading")}
       </h2>
       <p className={styles.lead}>
         {props.l10n.getString("landing-premium-plans-lead")}
       </p>
+
+      {props.eligibleForPremium && props.scanLimitReached && (
+        <div className={styles.waitlistSection}>
+          <b className={styles.waitlistTitle}>
+            {props.l10n.getString("landing-premium-waitlist-section-pt-1")}
+            <br />
+            {props.l10n.getString("landing-premium-waitlist-section-pt-2")}
+          </b>
+          <SignUpForm
+            eligibleForPremium={props.eligibleForPremium}
+            signUpCallbackUrl={`${process.env.SERVER_URL}/redesign/user/dashboard/`}
+            eventId={{
+              cta: "intent_to_join_waitlist_third",
+            }}
+            scanLimitReached={props.scanLimitReached}
+          />
+        </div>
+      )}
+
       <PlansTable
         aria-labelledby={headingId}
         premiumSubscriptionUrl={{
           monthly: getPremiumSubscriptionUrl({ type: "monthly" }),
           yearly: getPremiumSubscriptionUrl({ type: "yearly" }),
         }}
+        scanLimitReached={props.scanLimitReached}
       />
-    </section>
+    </div>
   );
 };

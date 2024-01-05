@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { useOverlayTriggerState } from "react-stately";
+import { useOverlayTrigger } from "react-aria";
 import { DashboardTopBannerProps } from "./index";
 import styles from "./DashboardTopBannerContent.module.scss";
 import {
@@ -16,7 +18,7 @@ import { ProgressCard } from "../../../../../../../components/client/ProgressCar
 import { Button } from "../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../hooks/l10n";
 import { PremiumButton } from "../../../../../../../components/client/PremiumBadge";
-import { SubscriberWaitlistDialog } from "../../../../../../../components/client/SubscriberWaitlistDialog";
+import { WaitlistDialog } from "../../../../../../../components/client/SubscriberWaitlistDialog";
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 
 export interface ContentProps {
@@ -50,6 +52,12 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     monthlySubscriptionUrl,
     yearlySubscriptionUrl,
   } = props;
+
+  const waitlistDialogState = useOverlayTriggerState({});
+  const waitlistDialogTrigger = useOverlayTrigger(
+    { type: "dialog" },
+    waitlistDialogState,
+  );
 
   if (tabType === "fixed") {
     return (
@@ -212,11 +220,12 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              {props.totalNumberOfPerformedScans <
-              parseInt(
-                process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
-                10,
-              ) ? (
+              {typeof props.totalNumberOfPerformedScans === "undefined" ||
+              props.totalNumberOfPerformedScans <
+                parseInt(
+                  process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
+                  10,
+                ) ? (
                 <Button
                   href="/redesign/user/welcome/free-scan?referrer=dashboard"
                   small
@@ -236,13 +245,21 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                   )}
                 </Button>
               ) : (
-                <SubscriberWaitlistDialog>
-                  <Button variant={"primary"} small>
+                <>
+                  <Button
+                    variant={"primary"}
+                    small
+                    {...waitlistDialogTrigger.triggerProps}
+                  >
                     {l10n.getString(
                       "dashboard-top-banner-monitor-protects-your-even-more-cta",
                     )}
                   </Button>
-                </SubscriberWaitlistDialog>
+                  <WaitlistDialog
+                    dialogTriggerState={waitlistDialogState}
+                    {...waitlistDialogTrigger.triggerProps}
+                  />
+                </>
               )}
             </div>
             <a

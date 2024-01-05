@@ -29,12 +29,16 @@ settings-email-limit-info =
 settings-email-verification-callout = Verifikasi surel diperlukan
 settings-resend-email-verification-link = Kirim ulang verifikasi surel
 settings-add-email-button = Tambahkan alamat surel
+# Deprecated
 settings-delete-email-button = Hapus alamat surel
-
+settings-remove-email-button-label = Hapus
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Hentikan pemantauan { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
        *[other] Muncul dalam { $breachCount } pembobolan yang diketahui.
