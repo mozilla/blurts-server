@@ -41,7 +41,7 @@ type DashboardWrapperProps = (
 ) & {
   brokers: keyof typeof brokerOptions;
   breaches: keyof typeof breachOptions;
-  totalNumberOfPerformedScans: number;
+  totalNumberOfPerformedScans?: number;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
@@ -160,7 +160,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           yearlySubscriptionUrl=""
           fxaSettingsUrl=""
           scanCount={scanCount}
-          totalNumberOfPerformedScans={props.totalNumberOfPerformedScans ?? 0}
+          totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
         />
       </Shell>
     </CountryCodeProvider>

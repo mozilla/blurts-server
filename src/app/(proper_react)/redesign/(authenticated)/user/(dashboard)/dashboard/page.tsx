@@ -120,14 +120,7 @@ export default async function DashboardPage() {
       yearlySubscriptionUrl={yearlySubscriptionUrl}
       fxaSettingsUrl={fxaSettingsUrl}
       scanCount={scanCount}
-      // Fallback to max scan threshold so we can’t exceed the limit
-      totalNumberOfPerformedScans={
-        profileStats?.total ??
-        parseInt(
-          process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
-          10,
-        )
-      }
+      totalNumberOfPerformedScans={profileStats?.total}
     />
   );
 }
