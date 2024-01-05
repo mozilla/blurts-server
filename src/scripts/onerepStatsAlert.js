@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import Sentry from "@sentry/nextjs";
-import { addOnerepStats } from "../db/tables/stats.js";
+import { addOnerepStats, knexStats } from "../db/tables/stats.js";
 
 const SENTRY_SLUG = "cron-onerep-stats-alerts";
 
@@ -76,7 +76,7 @@ checkStats()
       monitorSlug: SENTRY_SLUG,
       status: "ok",
     });
-    await addOnerepStats.destroy();
+    knexStats.destroy();
   })
   .catch((err) => {
     console.error(err);

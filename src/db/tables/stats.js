@@ -5,6 +5,8 @@
  import createDbConnection from "../connect.js";
  const knex = createDbConnection();
 
+ export { knex as knexStats }
+
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 
