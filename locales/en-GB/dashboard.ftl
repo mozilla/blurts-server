@@ -69,9 +69,67 @@ dashboard-fixed-area-headline-all = View all exposures that are fixed
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filter
 dashboard-exposures-filter-company = Company
+dashboard-exposures-filter-date-found = Date found
+dashboard-exposures-filter-date-found-last-seven-days = Last 7 days
+dashboard-exposures-filter-date-found-last-thirty-days = Last 30 days
+dashboard-exposures-filter-date-found-last-year = Last year
+dashboard-exposures-filter-status = Status
+dashboard-exposures-filter-status-action-needed = Action Needed
+dashboard-exposures-filter-status-in-progress = In Progress
+dashboard-exposures-filter-status-fixed = Fixed
+popover-open-filter-settings-alt = Select filters
+dashboard-exposures-filter-show-all = Show all
+dashboard-exposures-filter-show-results = Show results
+dashboard-exposures-filter-reset = Reset
 
 ## Top banner on the dashboard
 
+dashboard-top-banner-section-label = Dashboard summary
+dashboard-top-banner-scan-in-progress-title = Your scan is still in progress
+dashboard-top-banner-your-data-is-protected-title = Your data is protected
+dashboard-top-banner-your-data-is-protected-cta = See what’s fixed
+dashboard-top-banner-lets-keep-protecting-title = Let’s keep protecting your data
+# Variables:
+# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
+dashboard-top-banner-lets-keep-protecting-description =
+    { $exposures_unresolved_num ->
+        [one] You still have { $exposures_unresolved_num } exposure left to fix. Keep going and protect yourself. We’ll guide you step-by-step.
+       *[other] You still have { $exposures_unresolved_num } exposures left to fix. Keep going and protect yourself. We’ll guide you step-by-step.
+    }
+dashboard-top-banner-lets-keep-protecting-cta = Let’s keep going
+# Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
+# Variables:
+#   $exposures_unresolved_num (number) - the total number of exposures the user has.
+dashboard-top-banner-non-us-protect-your-data-description-line1 =
+    { $exposures_unresolved_num ->
+        [one] We found { $exposures_unresolved_num } exposure of your data.
+       *[other] We found { $exposures_unresolved_num } exposures of your data.
+    }
+# Note: this line is preceded by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
+# Variables:
+#   $data_breach_unresolved_num (number) - the total number of data breaches the user has.
+dashboard-top-banner-non-us-protect-your-data-description-line2 =
+    { $data_breach_unresolved_num ->
+        [one] It appeared in { $data_breach_unresolved_num } data breach. We’ll guide you step-by-step on how to fix it.
+       *[other] It appeared across { $data_breach_unresolved_num } data breaches. We’ll guide you step-by-step on how to fix it.
+    }
+dashboard-top-banner-no-exposures-found-title = No exposures found
+dashboard-top-banner-non-us-no-exposures-found-description = Great news! We searched all known data breaches and found no exposures. We’ll keep monitoring your email address and will alert you if a new breach occurs.
+dashboard-no-exposures-label = No exposures found
+# Variables:
+# $exposures_resolved_num is the number of exposures the user has resolved.
+dashboard-top-banner-non-us-your-data-is-protected-description =
+    { $exposures_resolved_num ->
+        [one] Great work, the exposure of your data is fixed! We’ll keep monitoring and will alert you of any new exposures.
+       *[other] Great work, all { $exposures_resolved_num } exposures of your data are fixed! We’ll keep monitoring and will alert you of any new exposures.
+    }
+dashboard-top-banner-monitor-more-cta = Monitor more emails
 
 # About Exposure Statuses Modal
 
+modal-exposure-status-title = About exposure statuses
+modal-exposure-status-description-all =
+    We search for exposures in all known data breaches.
+    Your exposures will have one of the following statuses:
+modal-exposure-status-action-needed = <b>Action needed</b> means it is currently active and you need to take steps to fix it.
+modal-exposure-status-fixed = <b>Fixed</b> means the exposure has been resolved and there’s no action for you to take.

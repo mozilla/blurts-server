@@ -926,7 +926,7 @@ menu-item-settings = Nastavení
 menu-item-help = Nápověda a podpora
 # Obsolete
 menu-item-logout = Odhlásit se
-user-menu-trigger-label = Otevřít nabídku uživatele
+user-menu-trigger-label = Otevřít uživatelskou nabídku
 user-menu-trigger-tooltip = Profil
 user-menu-manage-fxa-label = Spravovat { -brand-mozilla-account(case: "acc", capitalization: "lower") }
 user-menu-settings-label = Nastavení
