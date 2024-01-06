@@ -44,6 +44,8 @@ user-add-duplicate-email = 此电子邮件地址已添加到 { -product-name }�
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = 访问 { $preferencesLink } 以查看 { $userEmail } 的状态。
+user-add-verification-email-just-sent = 验证邮件发送间隔过短，请稍后再试。
+user-add-unknown-error = 添加邮箱地址时发生错误，请稍后再试。
 error-headline = 错误
 user-verify-token-error = 必须持有验证令牌（Token）。
 user-verify-email-report-subject = 您的 { -product-name } 报告
@@ -630,6 +632,7 @@ ad-unit-6-before-you-complete = 您在下次注册账号时，可使用马甲邮
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla 账户
+open-in-new-tab-alt = 新建标签页打开链接
 
 ## Search Engine Optimization
 
@@ -644,13 +647,24 @@ brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
-site-nav-breaches-link = 解决数据泄露
+site-nav-breaches-link = 解决数据外泄事件
 site-nav-settings-link = 设置
 site-nav-help-link = 帮助和支持
 # This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = 试试我们其他保护安全的工具：
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = 主菜单
+main-nav-button-collapse-label = 收起菜单
+main-nav-button-collapse-tooltip = 收起菜单
+main-nav-button-expand-label = 展开菜单
+main-nav-button-expand-tooltip = 展开菜单
+main-nav-label = 导航
+main-nav-link-home-label = 主页
+main-nav-link-dashboard-label = 面板
+main-nav-link-settings-label = 设置
+main-nav-link-faq-label = 常见问题
+main-nav-link-faq-tooltip = 常见问题
 
 ## User menu
 
@@ -668,6 +682,15 @@ menu-item-settings = 设置
 menu-item-help = 帮助和支持
 # Obsolete
 menu-item-logout = 退出
+user-menu-trigger-label = 打开用户菜单
+user-menu-trigger-tooltip = 个人资料
+user-menu-manage-fxa-label = 管理 { -brand-mozilla-account }
+user-menu-settings-label = 设置
+user-menu-settings-tooltip = 配置 { -brand-mozilla-monitor }
+user-menu-help-label = 帮助和支持
+user-menu-help-tooltip = 获取 { -brand-mozilla-monitor } 的使用帮助
+user-menu-signout-label = 退出
+user-menu-signout-tooltip = 退出 { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -676,6 +699,8 @@ terms-of-service = 服务条款
 privacy-notice = 隐私声明
 github = { -brand-github }
 footer-nav-all-breaches = 所有数据外泄事件
+footer-external-link-faq-label = 常见问题
+footer-external-link-faq-tooltip = 常见问题
 
 ## Error page
 

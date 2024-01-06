@@ -19,19 +19,19 @@ settings-alert-preferences-option-two = 向所有受影响的电子邮件地址�
 # Variables:
 #   $email (string) - Email address
 settings-email-label-primary = { $email } （主邮箱）
-settings-email-list-title = 受监控的电子邮件地址
+settings-email-list-title = 受监控的邮箱地址
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
 settings-email-limit-info = 您的账户最多可对 { $limit } 个邮箱进行监控。
 settings-email-verification-callout = 需要电子邮件验证
 settings-resend-email-verification-link = 重发验证邮件
 settings-add-email-button = 添加邮箱地址
+# Deprecated
 settings-delete-email-button = 删除电子邮件地址
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info = 出现在 { $breachCount } 次已知的数据泄漏事件中。
 
 ## Cancel Premium subscription
@@ -41,7 +41,7 @@ settings-cancel-premium-subscription-info = 当前结算周期结束后，您的
 
 ## Deactivate account
 
-settings-deactivate-account-title = 禁用账户
+settings-deactivate-account-title = 停用账户
 settings-deactivate-account-info-2 = 您可以通过删除 { -brand-mozilla-account }来停用 { -product-short-name }。
 settings-fxa-link-label-3 = 前往 { -brand-mozilla-account }设置
 

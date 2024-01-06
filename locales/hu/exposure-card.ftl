@@ -2,10 +2,10 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Nyissa le
-chevron-up-alt = Csukja fel
-exposure-card-exposure-type = Az expozíció típusa
-exposure-card-date-found = Az exponálás dátuma
+chevron-down-alt = Kibontás
+chevron-up-alt = Összecsukás
+exposure-card-exposure-type = Incidens típusa
+exposure-card-date-found = Az incidens dátuma
 
 # Status Pill
 
@@ -16,10 +16,10 @@ status-pill-fixed = Javítva
 # Exposure Card
 
 exposure-card-family-members = Családtagok
-exposure-card-email = E-mail
+exposure-card-email = E-mail-cím
 exposure-card-phone-number = Telefonszám
 exposure-card-address = Cím
-exposure-card-credit-card = Hitelkártya lehetőségre
+exposure-card-credit-card = Hitelkártya
 exposure-card-password = Jelszó
 exposure-card-ip-address = IP-cím
 exposure-card-other = Egyéb

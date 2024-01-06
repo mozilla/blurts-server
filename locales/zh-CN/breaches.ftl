@@ -43,7 +43,7 @@ column-status-badge-resolved = 已解决
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = 未完成任务
 breaches-resolve-heading = 处理此外泄事件
-breaches-none-headline = 未发现数据泄漏
+breaches-none-headline = 未发现外泄
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
 breaches-none-copy = 好消息！ { $email } 没有已知的数据泄漏报告。我们将继续监控此邮箱地址，如果发生任何新的数据泄漏事件，我们会通知您。

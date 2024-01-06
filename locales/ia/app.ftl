@@ -644,6 +644,7 @@ ad-unit-6-before-you-complete = Ante que tu completa tu proxime registration, us
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Conto Mozilla
+open-in-new-tab-alt = Aperir le ligamine in un nove scheda
 
 ## Search Engine Optimization
 
@@ -665,8 +666,17 @@ site-nav-help-link = Adjuta e assistentia
 site-nav-ad-callout = Proba nostre altere utensiles de securitate:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Menu principal
 main-nav-button-collapse-label = Collaber menu
+main-nav-button-collapse-tooltip = Collaber menu
 main-nav-button-expand-label = Expander menu
+main-nav-button-expand-tooltip = Expander menu
+main-nav-label = Navigation
+main-nav-link-home-label = Initio
+main-nav-link-dashboard-label = Tabuliero
+main-nav-link-settings-label = Parametros
+main-nav-link-faq-label = Folios a questiones
+main-nav-link-faq-tooltip = Folio a questiones
 
 ## User menu
 
@@ -684,6 +694,15 @@ menu-item-settings = Parametros
 menu-item-help = Adjuta e supporto
 # Obsolete
 menu-item-logout = Clauder session
+user-menu-trigger-label = Aperir le menu de usator
+user-menu-trigger-tooltip = Profilo
+user-menu-manage-fxa-label = Gere tu { -brand-mozilla-account }
+user-menu-settings-label = Parametros
+user-menu-settings-tooltip = Configurar { -brand-mozilla-monitor }
+user-menu-help-label = Auxilio e supporto
+user-menu-help-tooltip = Obtener adjuta per { -brand-mozilla-monitor }
+user-menu-signout-label = Clauder session
+user-menu-signout-tooltip = Clauder session de { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -692,6 +711,8 @@ terms-of-service = Terminos de servicio
 privacy-notice = Aviso de confidentialitate
 github = { -brand-github }
 footer-nav-all-breaches = Tote le violationes
+footer-external-link-faq-label = Folios a questiones
+footer-external-link-faq-tooltip = Folio a questiones
 
 ## Error page
 

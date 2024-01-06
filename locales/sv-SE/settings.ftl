@@ -30,12 +30,16 @@ settings-email-limit-info =
 settings-email-verification-callout = E-postverifiering krävs
 settings-resend-email-verification-link = Skicka e-postverifiering igen
 settings-add-email-button = Lägg till e-postadress
+# Deprecated
 settings-delete-email-button = Ta bort e-postadress
-
+settings-remove-email-button-label = Ta bort
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Sluta övervaka { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] Förekommer i { $breachCount } känt intrång.

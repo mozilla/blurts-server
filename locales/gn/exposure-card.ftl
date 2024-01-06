@@ -4,18 +4,33 @@
 
 chevron-down-alt = Moasãi
 chevron-up-alt = Pa’ãmba
+exposure-card-exposure-type = Mba’eichagua jehechauka
+exposure-card-date-found = Mba’e árapa oiko jehechauka
 
 # Status Pill
 
+status-pill-action-needed = Tekotevẽva ojejapo
+status-pill-progress = Oikovahína
+status-pill-fixed = Opytáva
 
 # Exposure Card
 
+exposure-card-family-members = Pehẽngue rehegua
 exposure-card-email = Ñanduti veve
+exposure-card-phone-number = Pumbyry papapy
 exposure-card-address = Kundaharape
 exposure-card-credit-card = Kuatia’atã ñemurã
 exposure-card-password = Ñe’ẽñemi
 exposure-card-ip-address = IP kundaharape
 exposure-card-other = Ambue
+exposure-card-your-exposed-info = Ne marandu ivaikuaa:
+exposure-card-exposure-type-data-broker = Marandu ñevendepy
+exposure-card-exposure-type-data-breach = Mba’ekuaarã ñembogua
+exposure-card-cta = Emyatyrõ opaite jehechaukakue
+exposure-card-label-company-logo = Atyguasu ra’ãnga’i
+exposure-card-label-company = Atyguasu
+exposure-card-label-exposure-type = Mba’eichagua jehechauka
+exposure-card-label-date-found = Arange juhupyre
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Tekotee
 # Variables:

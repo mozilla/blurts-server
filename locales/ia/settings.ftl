@@ -30,12 +30,13 @@ settings-email-limit-info =
 settings-email-verification-callout = Verification del email requirite.
 settings-resend-email-verification-link = Reinviar email de verification
 settings-add-email-button = Adder adresse email
+# Deprecated
 settings-delete-email-button = Deler adresse email
-
+settings-remove-email-button-label = Remover
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] Appare in { $breachCount } violation note.

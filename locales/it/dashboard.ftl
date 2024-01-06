@@ -35,8 +35,8 @@ modal-active-number-of-exposures-title = Informazioni sul numero di esposizioni 
 #   $limit (number) - Number of email addresses included in the plan
 modal-active-number-of-exposures-part-one-all =
     { $limit ->
-        [one] Questo grafico include il numero totale di volte in cui abbiamo trovato ogni tipo di dato esposto in tutte le violazioni per l’indirizzo email { $limit } che stai attualmente monitorando.
-       *[other] Questo grafico include il numero totale di volte in cui ogni tipo di dato è stato trovato esposto in tutte le violazioni per un massimo di { $limit } indirizzi email che stai attualmente monitorando.
+        [one] Questo grafico mostra quante volte abbiamo trovato esposto ogni tipo di dato in tutte le violazioni relative all’indirizzo email che stai attualmente monitorando.
+       *[other] Questo grafico mostra quante volte abbiamo trovato esposto ogni tipo di dato in tutte le violazioni relative ai { $limit } indirizzi email che stai attualmente monitorando.
     }
 modal-active-number-of-exposures-part-two = Ad esempio, se si hanno 10 esposizioni del numero di telefono, ciò potrebbe significare che un numero di telefono è esposto su 10 siti diversi, oppure potrebbe significare che 2 numeri di telefono diversi sono stati esposti in 5 siti diversi.
 modal-active-number-of-exposures-part-three-all = Una volta risolte, verranno aggiunti al numero totale di esposizioni risolte nella pagina Risolte.
