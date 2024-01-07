@@ -12,7 +12,7 @@
 exposure-chart-heading = <nr>{ $nr }</nr><label>次暴露</label>
 # Variables:
 #   $nr (number) - Number of fixed exposures found for the user
-exposure-chart-heading-fixed = <nr>{ $nr }</nr><label>个已处理</label>
+exposure-chart-heading-fixed = <nr>{ $nr }</nr><label>次已处理</label>
 exposure-chart-legend-heading-type = 暴露
 exposure-chart-legend-heading-nr = 数字
 # Variables:
@@ -29,7 +29,7 @@ exposure-chart-scan-in-progress-prompt = <b>正在扫描：</b>地址、家庭�
 modal-active-number-of-exposures-title = 关于正在暴露的数量
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
-modal-active-number-of-exposures-part-one-all = 此图标展示了我们在您当前监控的 { $limit } 个邮箱地址的所有数据外泄事件中，发现的每类数据的暴露总次数。
+modal-active-number-of-exposures-part-one-all = 此图表展示了我们在您当前监控的 { $limit } 个邮箱地址的所有数据外泄事件中，检测到的每类数据的暴露总次数。
 modal-active-number-of-exposures-part-two = 举例来说，如果您的电话号码暴露了 10 次，则可能代表 1 个电话号码在 10 个不同网站上被暴露，也可能代表 2 个电话号码 5 个不同网站上被暴露。
 modal-active-number-of-exposures-part-three-all = 问题解决后，就会添加到”已处理“页面上已处理的暴露总数中。
 modal-cta-ok = 确定
@@ -44,14 +44,14 @@ dashboard-exposures-area-headline = 查看暴露了您信息的所有网站
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
 #   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
-dashboard-exposures-area-description-all-line1 = 我们发现您的数据有 { $exposures_unresolved_num } 次暴露。
+dashboard-exposures-area-description-all-line1 = 我们检测到您的数据有 { $exposures_unresolved_num } 次暴露。
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
-dashboard-exposures-area-description-all-line2 = 它在 { $data_breach_unresolved_num } 次数据外泄事件中出现过。
+dashboard-exposures-area-description-all-line2 = 在 { $data_breach_unresolved_num } 次数据外泄事件中出现过。
 dashboard-fixed-area-headline-all = 查看所有已处理的暴露
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
-dashboard-exposures-filter = 筛选器
+dashboard-exposures-filter = 筛选
 dashboard-exposures-filter-company = 公司
 dashboard-exposures-filter-date-found = 发现日期
 dashboard-exposures-filter-date-found-last-seven-days = 过去 7 天
@@ -80,14 +80,14 @@ dashboard-top-banner-lets-keep-protecting-cta = 继续处理
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
-dashboard-top-banner-non-us-protect-your-data-description-line1 = 我们发现您的数据有 { $exposures_unresolved_num } 次暴露。
+dashboard-top-banner-non-us-protect-your-data-description-line1 = 我们检测到您的数据有 { $exposures_unresolved_num } 次暴露。
 # Note: this line is preceded by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $data_breach_unresolved_num (number) - the total number of data breaches the user has.
-dashboard-top-banner-non-us-protect-your-data-description-line2 = 它在 { $data_breach_unresolved_num } 次数据外泄事件中出现过。我们会一步步指导您处理。
-dashboard-top-banner-no-exposures-found-title = 没有发现暴露
-dashboard-top-banner-non-us-no-exposures-found-description = 好消息！我们搜索了所有已知的数据外泄事件，没有发现存在暴露。我们将继续监控此邮箱地址，并在发生新的外泄事件时向您发出警报。
-dashboard-no-exposures-label = 没有发现暴露
+dashboard-top-banner-non-us-protect-your-data-description-line2 = 在 { $data_breach_unresolved_num } 次数据外泄事件中出现过。我们会一步步指导您处理。
+dashboard-top-banner-no-exposures-found-title = 没有检测到暴露
+dashboard-top-banner-non-us-no-exposures-found-description = 好消息！我们搜索了所有已知的数据外泄事件，没有检测到存在暴露。我们将继续监控此邮箱地址，并在发生新的外泄事件时向您发出警报。
+dashboard-no-exposures-label = 没有检测到暴露
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
 dashboard-top-banner-non-us-your-data-is-protected-description = 很好！您数据的 { $exposures_resolved_num } 次暴露已全部处理完毕。我们将继续监控此邮箱地址，并在发生新的外泄事件时向您发出警报。
@@ -99,5 +99,5 @@ modal-exposure-status-title = 关于暴露状态
 modal-exposure-status-description-all =
     我们会搜索所有已知的数据外泄事件。
     您的暴露状态将是以下状态中的一种。
-modal-exposure-status-action-needed = <b>需要行动</b>代表您的数据当前正在暴露，需要采取措施将其处理。
+modal-exposure-status-action-needed = <b>需要处理</b>代表您的数据当前正在暴露，需要采取措施将其处理。
 modal-exposure-status-fixed = <b>已解决</b>代表暴露问题已解决，无需再采取行动。

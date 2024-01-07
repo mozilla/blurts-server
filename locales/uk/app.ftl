@@ -76,6 +76,8 @@ user-add-duplicate-email = Цю адресу електронної пошти �
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Відвідайте { $preferencesLink }, щоб перевірити стан { $userEmail }.
+user-add-verification-email-just-sent = Наразі не можна повторно надіслати електронний лист із підтвердженням. Спробуйте знову пізніше.ч
+user-add-unknown-error = Під час додавання іншої адреси електронної пошти сталася помилка. Повторіть спробу пізніше.
 error-headline = Помилка
 user-verify-token-error = Необхідний токен підтвердження.
 user-verify-email-report-subject = Ваш звіт від { -product-name }
@@ -837,7 +839,9 @@ main-nav-button-expand-label = Розгорнути меню
 main-nav-button-expand-tooltip = Розгорнути меню
 main-nav-label = Навігація
 main-nav-link-home-label = Домівка
+main-nav-link-dashboard-label = Панель керування
 main-nav-link-settings-label = Налаштування
+main-nav-link-faq-label = Поширені запитання
 main-nav-link-faq-tooltip = Поширені запитання
 
 ## User menu
@@ -864,7 +868,7 @@ user-menu-settings-label = Налаштування
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-of-service = Умови використання
+terms-of-service = Умови надання послуг
 privacy-notice = Положення про приватність
 github = { -brand-github }
 footer-nav-all-breaches = Усі витоки

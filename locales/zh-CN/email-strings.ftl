@@ -110,5 +110,5 @@ email-dashboard-cta = 前往面板
 
 ## Breach alert
 
-email-may-have-been-exposed = 您的电子邮件地址可能在数据外泄事件中泄露了
+email-may-have-been-exposed = 您的邮箱地址可能在数据外泄事件中泄露了
 email-spotted-new-breach = 我们发现新的数据外泄事件

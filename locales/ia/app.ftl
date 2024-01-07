@@ -44,6 +44,7 @@ user-add-duplicate-email = Iste email ha jam essite addite a { -product-name }.
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Vade sur { $preferencesLink } pro controlar le stato de { $userEmail }.
+user-add-unknown-error = Alco errate eveniva addente le adresse email. Reproba.
 error-headline = Error
 user-verify-token-error = Un token de verification es necessari.
 user-verify-email-report-subject = Tu reporto de { -product-name }
@@ -476,7 +477,7 @@ generic-confirmation-message =
        *[other] Pro vider le violationes restante, va a tu pannello de controlo.
     }
 return-to-breach-details-link = Retornar al detalios del violation
-go-to-dashboard-link = Ir al pannello de controlo
+go-to-dashboard-link = Va al pannello de controlo
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 # Variables:
@@ -673,7 +674,7 @@ main-nav-button-expand-label = Expander menu
 main-nav-button-expand-tooltip = Expander menu
 main-nav-label = Navigation
 main-nav-link-home-label = Initio
-main-nav-link-dashboard-label = Tabuliero
+main-nav-link-dashboard-label = Pannello de controlo
 main-nav-link-settings-label = Parametros
 main-nav-link-faq-label = Folios a questiones
 main-nav-link-faq-tooltip = Folio a questiones

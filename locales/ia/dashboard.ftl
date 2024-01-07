@@ -49,6 +49,7 @@ dashboard-exposures-filter-reset = Reinitialisar
 
 ## Top banner on the dashboard
 
+dashboard-top-banner-section-label = Summario pannello de controlo
 dashboard-top-banner-your-data-is-protected-title = Tu datos es protegite
 dashboard-top-banner-no-exposures-found-title = Nulle expositiones trovate.
 dashboard-no-exposures-label = Nulle expositiones trovate.

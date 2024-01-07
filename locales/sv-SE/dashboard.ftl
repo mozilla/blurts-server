@@ -18,7 +18,7 @@ exposure-chart-heading =
 #   $nr (number) - Number of fixed exposures found for the user
 exposure-chart-heading-fixed = <nr>{ $nr }</nr> <label>Fixat</label>
 exposure-chart-legend-heading-type = Exponering
-exposure-chart-legend-heading-nr = Nummer
+exposure-chart-legend-heading-nr = Antal
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
@@ -35,19 +35,19 @@ modal-active-number-of-exposures-title = Om ditt antal aktiva exponeringar
 #   $limit (number) - Number of email addresses included in the plan
 modal-active-number-of-exposures-part-one-all =
     { $limit ->
-        [one] Det här diagrammet visar det totala antalet gånger vi hittade varje typ av data exponerad för alla dataintrång för den e-postadress { $limit } som du för närvarande övervakar.
-       *[other] Det här diagrammet visar det totala antalet gånger vi hittade varje typ av data exponerad för alla dataintrång för upp till { $limit } e-postadresser som du för närvarande övervakar.
+        [one] Det här diagrammet visar det totala antalet gånger vi hittade varje typ av data exponerad i dataintrång för { $limit } e-postadress som du för närvarande övervakar.
+       *[other] Det här diagrammet visar det totala antalet gånger vi hittade varje typ av data exponerad i dataintrång för upp till { $limit } e-postadresser som du för närvarande övervakar.
     }
 modal-active-number-of-exposures-part-two = Till exempel, om du har 10 exponeringar av ditt telefonnummer, kan det betyda att ett telefonnummer exponeras på 10 olika webbplatser eller så kan det betyda att 2 olika telefonnummer exponerades på 5 olika webbplatser.
 modal-active-number-of-exposures-part-three-all = När de är lösta läggs de till ditt totala antal fasta exponeringar på sidan Fasta.
 modal-cta-ok = OK
 modal-open-alt = Öppna
 modal-close-alt = Stäng
-progress-card-heres-what-we-fixed-headline-all = Det här fixade du
-progress-card-manually-fixed-headline = Manuellt fixad
+progress-card-heres-what-we-fixed-headline-all = Det här löste du
+progress-card-manually-fixed-headline = Manuellt löst
 dashboard-tab-label-action-needed = Åtgärd behövs
-dashboard-tab-label-fixed = Fixad
-dashboard-exposures-all-fixed-label = Allt fixat här!
+dashboard-tab-label-fixed = Löst
+dashboard-exposures-all-fixed-label = Allt löst här!
 dashboard-exposures-area-headline = Se alla webbplatser där din information är exponerad
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
@@ -62,10 +62,10 @@ dashboard-exposures-area-description-all-line1 =
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
 dashboard-exposures-area-description-all-line2 =
     { $data_breach_unresolved_num ->
-        [one] Det förekom i { $data_breach_unresolved_num } dataintrång.
+        [one] Den förekom i { $data_breach_unresolved_num } dataintrång.
        *[other] Den förekom i { $data_breach_unresolved_num } dataintrång.
     }
-dashboard-fixed-area-headline-all = Visa alla exponeringar som är fasta
+dashboard-fixed-area-headline-all = Visa alla exponeringar som är lösta
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filter
 dashboard-exposures-filter-company = Företag
@@ -76,7 +76,7 @@ dashboard-exposures-filter-date-found-last-year = Förra året
 dashboard-exposures-filter-status = Status
 dashboard-exposures-filter-status-action-needed = Åtgärd behövs
 dashboard-exposures-filter-status-in-progress = Pågående
-dashboard-exposures-filter-status-fixed = Fixad
+dashboard-exposures-filter-status-fixed = Löst
 popover-open-filter-settings-alt = Välj filter
 dashboard-exposures-filter-show-all = Visa alla
 dashboard-exposures-filter-show-results = Visa resultat
