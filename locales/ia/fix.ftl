@@ -2,6 +2,11 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+fix-flow-nav-high-risk-data-breaches = Violationes de datos a alte risco
+fix-flow-nav-leaked-passwords = Contrasignos revelate
+fix-flow-nav-security-recommendations = Recommendationes de securitate
+guided-resolution-flow-exit = Retornar a pannello de controlo
+guided-resolution-flow-back-arrow = Va al previe passo
 guided-resolution-flow-next-arrow = Va al passo successive
 
 # Celebration screens
@@ -10,7 +15,7 @@ guided-resolution-flow-next-arrow = Va al passo successive
 ## Shared CTA labels
 
 fix-flow-celebration-next-recommendations-label = Vide le recommendationes
-fix-flow-celebration-next-dashboard-label = Va a tu quadro de controlo
+fix-flow-celebration-next-dashboard-label = Va a tu pannello de controlo
 
 ## High-risk flow
 

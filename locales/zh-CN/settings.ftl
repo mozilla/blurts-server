@@ -28,11 +28,15 @@ settings-resend-email-verification-link = 重发验证邮件
 settings-add-email-button = 添加邮箱地址
 # Deprecated
 settings-delete-email-button = 删除电子邮件地址
+settings-remove-email-button-label = 移除
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = 停止监控 { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
 #   $breachCount (number) - Number of breaches
-settings-email-number-of-breaches-info = 出现在 { $breachCount } 次已知的数据泄漏事件中。
+settings-email-number-of-breaches-info = 出现在 { $breachCount } 次已知的外泄事件中。
 
 ## Cancel Premium subscription
 

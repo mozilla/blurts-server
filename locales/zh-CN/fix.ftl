@@ -27,7 +27,7 @@ fix-flow-celebration-high-risk-description-done = 这些问题处理起来可能
 fix-flow-celebration-high-risk-description-next-passwords = 现在来处理暴露的密码。
 fix-flow-celebration-high-risk-description-next-security-questions = 现在来处理暴露的安全问题。
 fix-flow-celebration-high-risk-description-next-security-recommendations = 接下来，我们会根据您数据的暴露日期，提供个性化的安全建议。
-fix-flow-celebration-high-risk-description-next-dashboard = 已完成全部步骤。您可以在面板上查看所有操作项目并跟踪进度。
+fix-flow-celebration-high-risk-description-next-dashboard = 您已完成全部步骤，现在可在面板上查看所有操作项目并跟踪进度。
 
 ## Leaked passwords and security questions flow
 
@@ -63,9 +63,9 @@ high-risk-breach-estimated-time = 预计需要时间：{ $estimated_time }+ 分�
 
 # Credit Card Breaches
 
-high-risk-breach-credit-card-title = 您的信用卡号码已暴露
+high-risk-breach-credit-card-title = 您的信用卡卡号已暴露
 high-risk-breach-credit-card-description = 任何获得了此信息的人都可以用其进行未经授权的交易，而您可能要为此负责。立即处理以免造成财产损失。
-high-risk-breach-credit-card-step-one = 如果您仍持有此卡，请联系发卡行挂失。
+high-risk-breach-credit-card-step-one = 如果您仍持有此卡，请通知发卡行此卡片信息已被窃取。
 high-risk-breach-credit-card-step-two = 申领使用新卡号的新卡。
 high-risk-breach-credit-card-step-three = 检查您的账户是否有未经授权的扣款。
 
@@ -81,17 +81,17 @@ high-risk-breach-bank-account-step-three = 检查您的账户是否有未经授�
 
 high-risk-breach-social-security-title = 您的社会保障号码已暴露
 high-risk-breach-social-security-description = 如果您在美国，诈骗分子可使用您的社会保障号码来申请新的贷款或信用卡。尽快采取行动，以免造成财产损失。
-high-risk-breach-social-security-step-one = <link_to_info>设置欺诈警报或冻结账户</link_to_info>来保护自己。
+high-risk-breach-social-security-step-one = <link_to_info>设置欺诈警报或冻结信用</link_to_info>来保护自己。
 high-risk-breach-social-security-step-two = <link_to_info>检查您的信用报告</link_to_info>中是否有不熟悉的账户。
 
 # Social Security Number Modal
 
-ssn-modal-title = 关于欺诈警报和信用额度冻结
+ssn-modal-title = 关于欺诈警报和信用冻结
 ssn-modal-description-fraud-part-one = <b>欺诈警报</b>会要求商业机构先验证您的身份，然后才将新的信贷签发到您的名下。此服务免费提供，有效期为一年，且不会对您的信用评分产生负面影响。
 ssn-modal-description-fraud-part-two = 若要申请，请联系三大征信机构中的任意一家，无需全部联系。
 ssn-modal-description-freeze-credit-part-one = <b>冻结信用</b>可防止任何人以您的名义开设新账户。此操作无需付费，也不会对您的信用评分产生负面影响，不过在开设新账户前需要先解冻。
 ssn-modal-description-freeze-credit-part-two = 若要冻结信用，请联系 <equifax_link>Equifax</equifax_link>、<experian_link>Experian</experian_link>、<transunion_link>TransUnion</transunion_link> 三家征信机构。
-ssn-modal-learn-more = 详细了解欺诈警报和信用额度冻结
+ssn-modal-learn-more = 详细了解欺诈警报和信用冻结
 ssn-modal-ok = 确定
 
 # PIN Breaches
@@ -111,7 +111,7 @@ high-risk-breach-none-description = 我们按照您的邮箱地址来检测数�
 high-risk-breach-none-sub-description-part-one = 高风险的数据外泄包括：
 high-risk-breach-none-sub-description-ssn = 美国社会保障号码
 high-risk-breach-none-sub-description-bank-account = 银行账户信息
-high-risk-breach-none-sub-description-cc-number = 信用卡号
+high-risk-breach-none-sub-description-cc-number = 信用卡卡号
 high-risk-breach-none-sub-description-pin = PIN
 high-risk-breach-none-continue = 继续
 
@@ -126,7 +126,7 @@ security-recommendation-steps-cta-label = 明白了！
 security-recommendation-phone-title = 保护您的电话号码
 # $num_breaches is the number of breaches where the phone number was found.
 security-recommendation-phone-summary = 您的电话号码出现在 { $num_breaches } 次数据外泄事件中：
-security-recommendation-phone-description = 虽然您没有办法索回此信息，但可以按照以下步骤来确保自身安全。
+security-recommendation-phone-description = 虽然您没有办法收回此信息，但还是可以按照以下步骤来确保自身安全。
 security-recommendation-phone-step-one = 拦截骚扰号码以避免接到骚扰电话
 security-recommendation-phone-step-two = 不要点击未知发件人发来的信息当中的链接。如果认为是来自可信来源，请直接向其致电确认
 

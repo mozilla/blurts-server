@@ -21,7 +21,7 @@ fix-flow-celebration-next-dashboard-label = Gå till din översikt
 
 ## High-risk flow
 
-fix-flow-celebration-high-risk-title = Du har fixat dina högriskexponeringar!
+fix-flow-celebration-high-risk-title = Du har löst dina högriskexponeringar!
 fix-flow-celebration-high-risk-description-in-progress = Att göra det här arbetet kan kännas mycket, men det är viktigt att göra det för att skydda dig själv. Fortsätt med det goda arbetet.
 fix-flow-celebration-high-risk-description-done = Att göra det här arbetet kan kännas mycket, men det är viktigt att göra det för att skydda dig själv.
 fix-flow-celebration-high-risk-description-next-passwords = Låt oss nu fixa dina exponerade lösenord.
@@ -185,7 +185,7 @@ leaked-passwords-steps-subtitle = Detta kräver åtkomst till ditt konto, så du
 # $emails_affected are the emails associated with the breach.
 leaked-passwords-step-one = Ändra ditt lösenord för <b>{ $emails_affected }</b> på <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
 leaked-passwords-step-two = Ändra den någon annanstans där du har använt den.
-leaked-passwords-mark-as-fixed = Markera som fixad
+leaked-passwords-mark-as-fixed = Markera som löst
 leaked-passwords-skip = Hoppa över nu
 # Variables
 # $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
@@ -193,7 +193,7 @@ leaked-passwords-skip = Hoppa över nu
 # "mins" is shortform for "minutes".
 leaked-passwords-estimated-time =
     { $estimated_time ->
-        [one] Uppskattad tid att slutföra: { $estimated_time } minuter per webbplats
+        [one] Uppskattad tid att slutföra: { $estimated_time } minut per webbplats
        *[other] Uppskattad tid att slutföra: { $estimated_time } minuter per webbplats
     }
 

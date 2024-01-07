@@ -209,7 +209,7 @@ link-change-primary = 更改主邮箱地址
 remove-fxm = 移除 { -product-name }
 remove-fxm-blurb = 关闭 { -product-name } 的警报。您的 { -brand-fxa }仍然有效，您可能会收到其他与账户有关的通讯。
 # Button title
-manage-email-addresses = 管理电子邮件地址
+manage-email-addresses = 管理邮箱地址
 # Link title
 latest-breach-link = 看看您是否也在这次外泄事件中
 
