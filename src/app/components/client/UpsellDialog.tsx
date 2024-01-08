@@ -186,28 +186,26 @@ function UpsellDialog({
   const recordTelemetry = useTelemetry();
 
   return (
-    <div className={styles.modal}>
-      {state.isOpen && (
-        <ModalOverlay state={state} {...otherProps} isDismissable={true}>
-          <Dialog
-            title={l10n.getString("premium-upsell-dialog-title")}
-            illustration={<Image src={ModalImage} alt="" />}
-            onDismiss={() => {
-              recordTelemetry("button", "click", {
-                button_id: "close_upsell_modal",
-              });
-              return void state.close();
-            }}
-            variant="horizontal"
-          >
-            <UpsellDialogContent
-              monthlySubscriptionUrl={monthlySubscriptionUrl}
-              yearlySubscriptionUrl={yearlySubscriptionUrl}
-            />
-          </Dialog>
-        </ModalOverlay>
-      )}
-    </div>
+    state.isOpen && (
+      <ModalOverlay state={state} {...otherProps} isDismissable={true}>
+        <Dialog
+          title={l10n.getString("premium-upsell-dialog-title")}
+          illustration={<Image src={ModalImage} alt="" />}
+          onDismiss={() => {
+            recordTelemetry("button", "click", {
+              button_id: "close_upsell_modal",
+            });
+            return void state.close();
+          }}
+          variant="horizontal"
+        >
+          <UpsellDialogContent
+            monthlySubscriptionUrl={monthlySubscriptionUrl}
+            yearlySubscriptionUrl={yearlySubscriptionUrl}
+          />
+        </Dialog>
+      </ModalOverlay>
+    )
   );
 }
 
