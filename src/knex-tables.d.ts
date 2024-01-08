@@ -370,4 +370,10 @@ declare module "knex/types/tables" {
         Pick<EmailNotificationRow, "updated_at">
     >;
   }
+  interface StatsRow {
+    name: string;
+    current: string;
+    max: string;
+    type: string;
+  }
 }

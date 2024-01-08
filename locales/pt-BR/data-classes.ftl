@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = Saldos de conta
@@ -14,7 +19,7 @@ avatars = Avatares
 bank-account-numbers = Números de contas bancárias
 beauty-ratings = Avaliações de beleza
 biometric-data = Dados biométricos
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Biografia
 browser-user-agent-details = Detalhes de navegador
@@ -35,7 +40,7 @@ customer-interactions = Interações com clientes
 dates-of-birth = Datas de nascimento
 deceased-date = Datas de falecimento
 deceased-statuses = Status de falecimento
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Instruções de entrega
 device-information = Informação de dispositivo
@@ -75,7 +80,7 @@ instant-messenger-identities = Identidades em comunicadores instantâneos
 ip-addresses = Endereços IP
 job-applications = Pedidos de emprego
 job-titles = Cargo profissional
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Placas de identificação de veículos
 living-costs = Custo de vida
 # This string refers to financial loans.
@@ -136,7 +141,7 @@ smoking-habits = Hábitos de fumo
 sms-messages = Mensagens de texto
 social-connections = Conexões sociais
 social-media-profiles = Perfis de mídias sociais
-social-security-numbers = Números de segurança social
+social-security-numbers = Números de previdência social
 spoken-languages = Idiomas falados
 spouses-names = Nomes dos cônjuges
 support-tickets = Tickets de suporte

@@ -132,3 +132,5 @@ landing-premium-continuous-data-removal-ans = { $data_broker_sites_total_num ->
 landing-premium-max-scan = We’ve reached the maximum scans for the month. Enter your email to get on our waitlist.
 landing-premium-max-scan-at-capacity = At capacity
 landing-premium-max-scan-waitlist = Join waitlist
+landing-premium-waitlist-section-pt-1 = We’ve reached the maximum scans for the month.
+landing-premium-waitlist-section-pt-2 = Enter your email to get on our waitlist.

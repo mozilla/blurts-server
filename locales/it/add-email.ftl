@@ -10,7 +10,7 @@ close-dialog-alt = Chiudi finestra di dialogo
 # $total is the number of emails a user is allowed to add
 add-email-your-account-includes =
     { $total ->
-        [one] Il tuo account include il controllo di { $total } indirizzi email. Aggiungi un nuovo indirizzo per verificare se è stato coinvolto in una violazione.
+        [one] Il tuo account include il controllo di { $total } indirizzo email. Aggiungi un nuovo indirizzo per verificare se è stato coinvolto in una violazione.
        *[other] Il tuo account include il controllo di un massimo di { $total } indirizzi email. Aggiungi un nuovo indirizzo per verificare se è stato coinvolto in una violazione.
     }
 add-email-address-input-label = Indirizzo email

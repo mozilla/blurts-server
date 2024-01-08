@@ -23,12 +23,16 @@ settings-email-list-title = İzlenen e-posta adresleri
 settings-email-verification-callout = E-posta doğrulaması gerekiyor
 settings-resend-email-verification-link = Doğrulama e-postasını yeniden gönder
 settings-add-email-button = E-posta adresi ekle
+# Deprecated
 settings-delete-email-button = E-posta adresini sil
-
+settings-remove-email-button-label = Kaldır
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = { $emailAddress } adresini izlemeyi durdur
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] Bilinen { $breachCount } ihlalde yer alıyor.

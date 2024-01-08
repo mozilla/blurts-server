@@ -314,6 +314,46 @@
   }
 }
 
+.scanLimitWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $layout-xs;
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+
+    @media screen and (min-width: $screen-md) {
+      flex-direction: row;
+    }
+
+    b {
+      @include uppercase-only-english;
+      white-space: nowrap;
+      align-self: flex-start;
+      border-radius: $border-radius-sm;
+      font: $text-body-sm;
+      font-weight: 600;
+      background: $color-purple-70;
+      color: $color-white;
+      padding: $spacing-sm $spacing-md;
+
+      @media screen and (min-width: $screen-md) {
+        align-self: center;
+      }
+    }
+  }
+}
+
+.waitlistCta {
+  align-self: flex-start;
+
+  @media screen and (min-width: $screen-md) {
+    min-width: 200px; // width of waitlist button
+  }
+}
+
 .signUpEncouragementWrapper {
   display: flex;
   flex-direction: column;
@@ -328,5 +368,30 @@
     font: $text-title-2xs;
     font-family: var(--font-inter);
     font-weight: 500;
+  }
+
+  .waitlistCta {
+    align-self: center;
+  }
+}
+
+.waitlistSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-lg;
+  padding: $layout-md $spacing-md;
+
+  .waitlistTitle {
+    text-align: center;
+    font: $text-title-2xs;
+    font-weight: 600;
+    line-height: 1.4;
+    font-family: var(--font-inter);
+    color: $color-purple-70;
+  }
+
+  a {
+    align-self: center;
   }
 }

@@ -4,7 +4,11 @@
 
 import { headers } from "next/headers";
 import { getCountryCode } from "../../../functions/server/getCountryCode";
-import { isEligibleForPremium } from "../../../functions/server/onerep";
+import {
+  isEligibleForPremium,
+  getProfilesStats,
+  monthlySubscribersQuota,
+} from "../../../functions/server/onerep";
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 import { getL10n } from "../../../functions/server/l10n";
 import { View } from "./LandingView";
@@ -14,11 +18,20 @@ export default async function Page() {
   const countryCode = getCountryCode(headers());
   const eligibleForPremium = isEligibleForPremium(countryCode, enabledFlags);
 
+  // request the profile stats for the last 30 days
+  const profileStats = await getProfilesStats(
+    new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
+  );
+  const oneRepActivations = profileStats?.total_active;
+  const scanLimitReached =
+    typeof oneRepActivations === "undefined" ||
+    oneRepActivations > monthlySubscribersQuota;
   return (
     <View
       eligibleForPremium={eligibleForPremium}
       l10n={getL10n()}
       countryCode={countryCode}
+      scanLimitReached={scanLimitReached}
     />
   );
 }
