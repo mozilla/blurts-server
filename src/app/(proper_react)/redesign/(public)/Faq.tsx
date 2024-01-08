@@ -19,12 +19,10 @@ export type FaqItemProps = {
 };
 
 const FaqItem = (props: FaqItemProps) => {
-  const { question, answer } = props;
-  const [isExpanded, onExpandAnswer] = useState(false);
   const buttonRef = useRef(null);
   const { buttonProps } = useButton(
     {
-      onPress: () => onExpandAnswer(!isExpanded),
+      onPress: props.onExpandAnswer,
     },
     buttonRef,
   );
@@ -38,11 +36,16 @@ const FaqItem = (props: FaqItemProps) => {
         tabIndex={0}
         className={styles.faqQuestion}
       >
-        {question}
-        <CloseBigIcon alt="" className={`${isExpanded && styles.expanded}`} />
+        {props.question}
+        <CloseBigIcon
+          alt=""
+          className={`${props.isExpanded && styles.expanded}`}
+        />
       </dt>
-      <dd className={`${styles.faqAnswer} ${isExpanded && styles.expanded}`}>
-        {answer}
+      <dd
+        className={`${styles.faqAnswer} ${props.isExpanded && styles.expanded}`}
+      >
+        {props.answer}
       </dd>
     </>
   );
