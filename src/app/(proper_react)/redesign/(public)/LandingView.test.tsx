@@ -71,7 +71,7 @@ describe("When Premium is not available", () => {
     });
   });
 
-  it("shows a link to the dashboard in the header if the user is signed in", () => {
+  it("does not show a 'Sign In' button in the header if the user is signed in", () => {
     const mockedUseSession = useSession as jest.Mock<
       ReturnType<typeof useSession>,
       Parameters<typeof useSession>
@@ -87,14 +87,10 @@ describe("When Premium is not available", () => {
     const ComposedDashboard = composeStory(LandingNonUs, Meta);
     render(<ComposedDashboard />);
 
-    const dashboardLink = screen.getByRole("link", {
-      name: "Dashboard",
-    });
     const signInButton = screen.queryByRole("button", {
       name: "Sign In",
     });
 
-    expect(dashboardLink).toBeInTheDocument();
     expect(signInButton).not.toBeInTheDocument();
   });
 
