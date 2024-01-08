@@ -4,16 +4,29 @@
 
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { ProgressBar } from "../../../../../components/client/ProgressBar";
 import styles from "./FindExposures.module.scss";
 import { useL10n } from "../../../../../hooks/l10n";
+// eslint-disable-next-line no-restricted-imports
+import { useGa } from "../../../../../hooks/useGa";
 
 export type Props = {
   dataBrokerCount: number;
   breachesTotalCount: number;
   previousRoute: string;
+};
+
+export type FindExposuresTelemetryParams = {
+  exit_time: number;
+  page_location: string;
+  user_type: "legacy" | "non_legacy";
+};
+
+export type ScanCompletedTelemetryParams = {
+  page_location: string;
+  user_type: "legacy" | "non_legacy";
 };
 
 const getCurrentScanCountForRange = ({
@@ -49,6 +62,10 @@ export const FindExposures = ({
   const [scanProgress, setScanProgress] = useState(0);
   const [scanFinished, setScanFinished] = useState(false);
   const [checkingScanProgress, setCheckingScanProgress] = useState(false);
+  const userTimeSpentRef = useRef({
+    startTime: Date.now(),
+    endTime: Date.now(),
+  });
   const router = useRouter();
   const l10n = useL10n();
 
@@ -67,9 +84,25 @@ export const FindExposures = ({
     progressRange: [labelSwitchThreshold, 100],
   });
 
+  const { gtag } = useGa();
+  const pathName = usePathname();
+  const searchParams = useSearchParams();
+
   useEffect(() => {
     // TODO: Add unit test when changing this code:
     /* c8 ignore start */
+    const userType =
+      searchParams.get("referrer") === "dashboard" ? "non_legacy" : "legacy";
+    const findExposuresTelemetryParams: FindExposuresTelemetryParams = {
+      exit_time: 0,
+      page_location: pathName,
+      user_type: userType,
+    };
+    const scanCompletedTelemetryParams: ScanCompletedTelemetryParams = {
+      page_location: pathName,
+      user_type: userType,
+    };
+
     const timeoutId = setTimeout(() => {
       const nextProgress = scanProgress + percentageSteps;
       setScanProgress(Math.min(nextProgress, maxProgress));
@@ -82,6 +115,11 @@ export const FindExposures = ({
           .then((result) => {
             if (result.status && result.status === "finished") {
               setScanFinished(true);
+              gtag.record({
+                type: "event",
+                name: "free_scan_completed",
+                params: scanCompletedTelemetryParams,
+              });
             }
             setCheckingScanProgress(false);
           })
@@ -92,12 +130,22 @@ export const FindExposures = ({
 
     // Go to dashboard even if the scan did not finish.
     // TODO: Add unit test when changing this code:
-    /* c8 ignore next 3 */
+    /* c8 ignore next 11 */
     if (scanProgress >= maxProgress) {
+      userTimeSpentRef.current.endTime = Date.now();
+      findExposuresTelemetryParams.exit_time =
+        userTimeSpentRef.current.endTime - userTimeSpentRef.current.startTime;
+      gtag.record({
+        type: "event",
+        name: "exited_scan",
+        params: findExposuresTelemetryParams,
+      });
       router.push(previousRoute);
     }
 
-    return () => clearTimeout(timeoutId);
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [
     scanProgress,
     router,
@@ -105,6 +153,9 @@ export const FindExposures = ({
     scanFinished,
     percentageSteps,
     previousRoute,
+    gtag,
+    pathName,
+    searchParams,
   ]);
 
   function ProgressLabel() {
