@@ -421,16 +421,18 @@ it("shows consistent counts in the chart on the fixed tab", async () => {
   expect(chartCaption).toBeInTheDocument();
 });
 
-it("shows US users with Premium the Premium badge", () => {
+it("shows US users with Premium the upsell badge", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumEmptyScanNoBreaches,
     Meta,
   );
   render(<ComposedDashboard />);
 
-  // We show a Premium badge on desktop in the toolbar and in the mobile menu
-  const premiumBadges = screen.queryAllByText("Monitor Plus");
-  expect(premiumBadges.length).toBe(2);
+  // We show an upsell badge on desktop in the toolbar and in the mobile menu
+  const upsellBadges = screen.queryAllByRole("button", {
+    name: "Automatic data removal: On",
+  });
+  expect(upsellBadges.length).toBe(2);
 });
 
 it("shows US users without Premium the upsell button", () => {
@@ -442,18 +444,20 @@ it("shows US users without Premium the upsell button", () => {
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
   const premiumCtas = screen.queryAllByRole("button", {
-    name: "Subscribe to ⁨Monitor Plus⁩",
+    name: "Automatic data removal: Off",
   });
   expect(premiumCtas.length).toBe(2);
 });
 
-it("does not show non-US users the Premium badge", () => {
+it("does not show non-US users the upsell badge", () => {
   const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
   render(<ComposedDashboard />);
 
-  // We show a Premium badge on desktop in the toolbar and in the mobile menu
-  const premiumBadges = screen.queryAllByText("Monitor Plus");
-  expect(premiumBadges.length).toBe(0);
+  // We show an upsell badge on desktop in the toolbar and in the mobile menu
+  const upsellBadges = screen.queryAllByRole("button", {
+    name: "Automatic data removal: On",
+  });
+  expect(upsellBadges.length).toBe(0);
 });
 
 it("does not show non-US users the upsell button", () => {
@@ -462,7 +466,7 @@ it("does not show non-US users the upsell button", () => {
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
   const premiumCtas = screen.queryAllByRole("button", {
-    name: "Subscribe to ⁨Monitor Plus⁩",
+    name: "Automatic data removal: Off",
   });
   expect(premiumCtas.length).toBe(0);
 });
@@ -477,7 +481,7 @@ it("opens and closes the premium upsell dialog via the Premium upsell badge)", a
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
   const premiumCtas = screen.queryAllByRole("button", {
-    name: "Subscribe to ⁨Monitor Plus⁩",
+    name: "Automatic data removal: Off",
   });
   expect(premiumCtas.length).toBe(2);
 
@@ -538,7 +542,7 @@ it("toggles between the product offerings in the premium upsell dialog", async (
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
   const premiumCtas = screen.queryAllByRole("button", {
-    name: "Subscribe to ⁨Monitor Plus⁩",
+    name: "Automatic data removal: Off",
   });
   expect(premiumCtas.length).toBe(2);
 
@@ -577,7 +581,7 @@ it("counts in Glean how often people click the upgrade CTA to purchase the month
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
   const premiumCtas = screen.queryAllByRole("button", {
-    name: "Subscribe to ⁨Monitor Plus⁩",
+    name: "Automatic data removal: Off",
   });
   await user.click(premiumCtas[0]);
   const productTabMonthly = screen.getByRole("tab", { name: "Monthly" });
@@ -611,7 +615,7 @@ it("counts in Glean how often people click the upgrade CTA to purchase the yearl
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
   const premiumCtas = screen.queryAllByRole("button", {
-    name: "Subscribe to ⁨Monitor Plus⁩",
+    name: "Automatic data removal: Off",
   });
   await user.click(premiumCtas[0]);
   // Switch to the monthly tab by clicking it...
@@ -647,7 +651,7 @@ it("shows returned free user who has resolved all tasks premium upsell and all f
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
   const premiumCtas = screen.queryAllByRole("button", {
-    name: "Subscribe to ⁨Monitor Plus⁩",
+    name: "Automatic data removal: Off",
   });
   expect(premiumCtas.length).toBe(2);
 

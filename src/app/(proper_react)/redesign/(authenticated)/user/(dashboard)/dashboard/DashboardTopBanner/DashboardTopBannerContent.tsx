@@ -17,7 +17,7 @@ import {
 import { ProgressCard } from "../../../../../../../components/client/ProgressCard";
 import { Button } from "../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../hooks/l10n";
-import { PremiumButton } from "../../../../../../../components/client/PremiumBadge";
+import { UpsellButton } from "../../../../../../../components/client/UpsellBadge";
 import { WaitlistDialog } from "../../../../../../../components/client/SubscriberWaitlistDialog";
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 
@@ -300,7 +300,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <PremiumButton
+              <UpsellButton
                 label={l10n.getString(
                   "dashboard-top-banner-no-exposures-found-cta",
                 )}
@@ -409,7 +409,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              <PremiumButton
+              <UpsellButton
                 label={l10n.getString(
                   "dashboard-top-banner-no-exposures-found-cta",
                 )}
