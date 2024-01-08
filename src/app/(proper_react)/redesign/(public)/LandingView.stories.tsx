@@ -4,13 +4,13 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { View } from "./LandingView";
-import { getEnL10nSync } from "../../../functions/server/mockL10n";
+import { getOneL10nSync } from "../../../functions/server/mockL10n";
 
 const meta: Meta<typeof View> = {
   title: "Pages/Public landing page",
   component: View,
   args: {
-    l10n: getEnL10nSync(),
+    l10n: getOneL10nSync(),
   },
 };
 
@@ -48,6 +48,7 @@ export const LandingNonUsDe: Story = {
   args: {
     eligibleForPremium: false,
     countryCode: "de",
+    l10n: getOneL10nSync("de"),
   },
 };
 
@@ -56,5 +57,6 @@ export const LandingNonUsFr: Story = {
   args: {
     eligibleForPremium: false,
     countryCode: "fr",
+    l10n: getOneL10nSync("fr"),
   },
 };
