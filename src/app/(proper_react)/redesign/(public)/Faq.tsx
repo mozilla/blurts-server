@@ -15,11 +15,14 @@ export type FaqItemProps = {
   question: string;
   answer: string | ReactNode;
   isExpanded: boolean;
+  id: string;
   onExpandAnswer: () => void;
 };
 
 const FaqItem = (props: FaqItemProps) => {
+  const l10n = useL10n();
   const buttonRef = useRef(null);
+
   const { buttonProps } = useButton(
     {
       onPress: props.onExpandAnswer,
@@ -35,14 +38,17 @@ const FaqItem = (props: FaqItemProps) => {
         {...focusProps}
         tabIndex={0}
         className={styles.faqQuestion}
+        aria-expanded={props.isExpanded}
+        aria-controls={`faq-${props.id}`}
       >
         {props.question}
         <CloseBigIcon
-          alt=""
+          alt={l10n.getString("landing-all-close-faq-alt")}
           className={`${props.isExpanded && styles.expanded}`}
         />
       </dt>
       <dd
+        aria-hidden={!props.isExpanded}
         className={`${styles.faqAnswer} ${props.isExpanded && styles.expanded}`}
       >
         {props.answer}
@@ -96,6 +102,7 @@ export const FaqSection = ({
             onExpandAnswer={() =>
               handleExpandAnswer("premium-what-websites-sell-info")
             }
+            id="premium-what-websites-sell-info"
           />
         )}
         {isEligibleForPremium && (
@@ -129,6 +136,7 @@ export const FaqSection = ({
             onExpandAnswer={() =>
               handleExpandAnswer("premium-continuous-data-removal")
             }
+            id="premium-continuous-data-removal"
           />
         )}
         {/* Ignore the remaining tests as testing the first two FAQ questions are sufficient */}
@@ -138,18 +146,21 @@ export const FaqSection = ({
           answer={l10n.getString("landing-all-data-breach-definition-ans")}
           isExpanded={expandedQuestion === "data-breach-definition"}
           onExpandAnswer={() => handleExpandAnswer("data-breach-definition")}
+          id="data-breach-definition"
         />
         <FaqItem
           question={l10n.getString("landing-all-data-breach-next-steps-qn")}
           answer={l10n.getString("landing-all-data-breach-next-steps-ans")}
           isExpanded={expandedQuestion === "data-breach-next-steps"}
           onExpandAnswer={() => handleExpandAnswer("data-breach-next-steps")}
+          id="data-breach-next-steps"
         />
         <FaqItem
           question={l10n.getString("landing-all-data-breach-info-qn")}
           answer={l10n.getString("landing-all-data-breach-info-ans")}
           isExpanded={expandedQuestion === "data-breach-info"}
           onExpandAnswer={() => handleExpandAnswer("data-breach-info")}
+          id="data-breach-info"
         />
         {/* c8 ignore stop */}
       </dl>

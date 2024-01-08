@@ -418,7 +418,7 @@ describe("When Premium is available", () => {
       "href",
       "https://www.mozilla.org/products/monitor/waitlist-scan/",
     );
-    });
+  });
 
   it("opens and closes an FAQ accordion item", async () => {
     const user = userEvent.setup();
@@ -432,9 +432,9 @@ describe("When Premium is available", () => {
       "Certain websites are in the business of collecting and selling people’s personal information without their consent, which is unfortunately legal in the US.",
       { exact: false },
     );
-    expect(faqAnswer).toHaveClass("expanded");
+    expect(faqAnswer).toHaveAttribute("aria-hidden", "false");
     await user.click(faqQuestion);
-    expect(faqAnswer).not.toHaveClass("expanded");
+    expect(faqAnswer).toHaveAttribute("aria-hidden", "true");
   });
 
   it("only opens one FAQ at a time", async () => {
@@ -449,12 +449,12 @@ describe("When Premium is available", () => {
       "Certain websites are in the business of collecting and selling people’s personal information without their consent, which is unfortunately legal in the US.",
       { exact: false },
     );
-    expect(faqAnswer1).toHaveClass("expanded");
+    expect(faqAnswer1).toHaveAttribute("aria-hidden", "false");
     const faqQuestion2 = screen.getByText(
       "How does continuous data removal work?",
     );
     await user.click(faqQuestion2);
-    expect(faqAnswer1).not.toHaveClass("expanded");
+    expect(faqAnswer1).toHaveAttribute("aria-hidden", "true");
   });
 
   it("opens the see all FAQ link into a new page", async () => {
