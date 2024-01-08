@@ -464,6 +464,7 @@ describe("When Premium is available", () => {
 
     const seeAllFaqBtn = screen.getByRole("link", { name: "See all FAQs" });
     await user.click(seeAllFaqBtn);
+    expect(seeAllFaqBtn).toHaveAttribute("target", "_blank");
 
     // jsdom will complain about not being able to navigate to a different page
     // after clicking the link; suppress that error, as it's not relevant to the
