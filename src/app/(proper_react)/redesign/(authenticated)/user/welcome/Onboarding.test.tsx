@@ -16,6 +16,9 @@ jest.mock("next/navigation", () => ({
     push: jest.fn(),
   }),
   usePathname: jest.fn(),
+  useSearchParams: () => ({
+    get: jest.fn(),
+  }),
 }));
 
 jest.mock("../../../../../hooks/useTelemetry");
