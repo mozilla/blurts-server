@@ -3,7 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
-landing-all-hero-title = Encuentre dónde está expuesta su información privada y reconectela
+landing-all-hero-title = Fijate si tu información privada fue expuesta — y recuperala
 landing-all-hero-lead = Analizamos las filtraciones de datos para ver si tus datos se han filtrado y te brindamos pasos para solucionarlo.
 landing-all-hero-emailform-input-placeholder = yourname@example.com
 landing-all-hero-emailform-input-label = Ingresá tu dirección de correo electrónico para verificar si hay exposiciones a filtraciones de datos.
@@ -13,14 +13,14 @@ landing-all-hero-image-chart-label = exposiciones
 
 # Value Proposition
 
-landing-all-value-prop-fix-exposures = Lo ayudaremos a corregir sus exposiciones
-landing-all-value-prop-fix-exposures-description = Nuestra misión es devolver el control de sus datos personales. Te ayudaremos a resolver las filtraciones de datos y a mantener tu información privada, y <privacy_link> respetaremos tu privacidad </privacy_link> en el proceso.
+landing-all-value-prop-fix-exposures = Te ayudaremos a corregir tus exposiciones
+landing-all-value-prop-fix-exposures-description = Nuestra misión es devolver el control de tus datos personales a tus manos. Te ayudaremos a resolver filtraciones de datos y a mantener tu información privada, y <privacy_link>respetaremos tu privacidad</privacy_link> en el proceso.
 landing-all-value-prop-info-at-risk = ¿Qué información podría estar en riesgo?
-landing-all-value-prop-info-at-risk-description = Lamentablemente, las fugas de datos forman parte de nuestra vida digital. tus contraseñas, datos de contacto, información financiera y otra información personal pueden quedar expuestas, poniéndote en riesgo de robo de identidad.
+landing-all-value-prop-info-at-risk-description = Lamentablemente, las filtraciones de datos forman parte de nuestra vida digital. Tus contraseñas, datos de contacto, información financiera y otra información personal pueden quedar expuestas, poniéndote en riesgo de robo de identidad.
 
 # Quote
 
-landing-all-quote = <data_breaches> Las filtraciones de datos </data_breaches> ocurren cada 11 minutos y exponen tu información privada, pero no te preocupes, podemos ayudarte.
+landing-all-quote = Las <data_breaches>filtraciones de datos</data_breaches> ocurren cada 11 minutos, exponiendo tu información privada, pero no te preocupés, podemos ayudarte.
 
 # Non-US FAQ
 
@@ -29,10 +29,10 @@ landing-all-faq-title = Preguntas frecuentes
 landing-all-faq-see-all = Ver todas las preguntas frecuentes
 landing-all-data-breach-definition-qn = ¿Qué es exactamente una filtración de datos?
 landing-all-data-breach-definition-ans = Una filtración de datos ocurre cuando la información personal o privada se expone, se roba o se copia sin permiso. Estos incidentes de seguridad pueden ser el resultado de ciberataques a sitios web, aplicaciones o cualquier base de datos donde resida la información personal de las personas. Una filtración de datos también puede ocurrir por accidente, por ejemplo si las credenciales de inicio de sesión de alguien se publican accidentalmente.
-landing-all-data-breach-next-steps-qn = Recién de descubrí una filtración de datos. ¿Qué tengo que hacer?
-landing-all-data-breach-next-steps-ans = Visitá { -brand-mozilla-monitor } para saber qué hacer después de una violación de datos y obtener pasos guiados para resolver las exposiciones de tu información personal. Los piratas informáticos dependen de que las personas reutilicen las contraseñas, por lo que es importante crear contraseñas seguras y únicas para todas tus cuentas. Mantenga sus contraseñas en un lugar seguro al que solo usted tenga acceso; este podría ser el mismo lugar donde guardas los documentos importantes o un administrador de contraseñas.
+landing-all-data-breach-next-steps-qn = Recién descubrí una filtración de datos. ¿Qué tengo que hacer?
+landing-all-data-breach-next-steps-ans = Visitá { -brand-mozilla-monitor } para saber qué hacer después de una filtración de datos y obtener pasos guiados para resolver las exposiciones de tu información personal. Los hackers dependen de que las personas reutilicen contraseñas, por lo que es importante crear contraseñas seguras y únicas para todas tus cuentas. Guardá tus contraseñas en un lugar seguro al que solo vos tengás acceso; este podría ser el mismo lugar donde guardás documentos importantes o un administrador de contraseñas.
 landing-all-data-breach-info-qn = ¿Qué información queda expuesta en las filtraciones de datos?
-landing-all-data-breach-info-ans = No todas las violaciones exponen la misma información. Depende de a qué puedan acceder los piratas. Muchas violaciones de datos exponen direcciones de correo electrónico y contraseñas. Otros exponen información más confidencial, como números de tarjetas de crédito, números PIN y números de seguridad social.
+landing-all-data-breach-info-ans = No todas las filtraciones exponen la misma información. Solo depende de a qué puedan acceder los hackers. Muchas filtraciones de datos exponen direcciones de correo electrónico y contraseñas. Otras exponen información más confidencial, como números de tarjetas de crédito, números de PIN y números de seguridad social.
 
 # Social proof
 
@@ -40,14 +40,14 @@ landing-all-data-breach-info-ans = No todas las violaciones exponen la misma inf
 # $num_users is the number of users in the millions.
 landing-all-social-proof-title =
     { $num_users ->
-        [one] Con la confianza de { $num_users } millones de personas en todo el mundo
+        [one] Con la confianza de { $num_users } millón de personas en todo el mundo
        *[other] Con la confianza de { $num_users } millones de personas en todo el mundo
     }
 # Variables
 # $num_countries is the number of countries available.
 landing-all-social-proof-description =
     { $num_countries ->
-        [one] Desde 2018, hemos ayudado a personas en { $num_countries } países a proteger sus datos cuando estaban expuestos.
+        [one] Desde 2018, hemos ayudado a personas en { $num_countries } país a proteger sus datos cuando estaban expuestos.
        *[other] Desde 2018, hemos ayudado a personas en { $num_countries } países a proteger sus datos cuando estaban expuestos.
     }
 landing-all-social-proof-press = Como se ve en

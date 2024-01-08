@@ -24,7 +24,7 @@ settings-email-list-title = Indirizzi email controllati
 #   $limit (number) - Number of email addresses included in the plan
 settings-email-limit-info =
     { $limit ->
-        [one] Il tuo account include il controllo di un massimo di { $limit } email.
+        [one] Il tuo account include il controllo di una email.
        *[other] Il tuo account include il controllo di un massimo di { $limit } email.
     }
 settings-email-verification-callout = Richiesta verifica email

@@ -34,6 +34,9 @@ settings-add-email-button = Embojuaju ñanduti veve kundaharape
 # Deprecated
 settings-delete-email-button = Embogue ñandutiveve kundaharape
 settings-remove-email-button-label = Mboguete
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Anive ema’ẽagui { $emailAddress } rehe
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:

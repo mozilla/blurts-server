@@ -11,7 +11,7 @@ exposure-card-date-found = Fecha de la exposición
 
 status-pill-action-needed = Acción necesaria
 status-pill-progress = En proceso
-status-pill-fixed = Fijo
+status-pill-fixed = Corregida
 
 # Exposure Card
 
@@ -23,12 +23,12 @@ exposure-card-credit-card = Tarjeta de crédito
 exposure-card-password = Contraseña
 exposure-card-ip-address = Dirección IP
 exposure-card-other = Otros
-exposure-card-description-info-for-sale-part-one = Este sitio vende y publica <data_broker_link> detalles sobre usted. </data_broker_link>
-exposure-card-description-info-for-sale-part-two = Elimina este perfil para proteger tu privacidad.
+exposure-card-description-info-for-sale-part-one = Este sitio vende y publica <data_broker_link>detalles sobre vos.</data_broker_link>
+exposure-card-description-info-for-sale-part-two = Eliminá este perfil para proteger tu privacidad.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = Tu información fue expuesta en la violación de datos de <data_breach_link> { $data_breach_company } el { $data_breach_date }. </data_breach_link>
+exposure-card-description-data-breach-part-one = Tu información fue expuesta en la <data_breach_link>filtración de datos de { $data_breach_company } el { $data_breach_date }.</data_breach_link>
 exposure-card-description-data-breach-part-two = Te guiaremos a través de los pasos para solucionarlo.
 exposure-card-your-exposed-info = Tu información expuesta:
 exposure-card-exposure-type-data-broker = Información a la venta

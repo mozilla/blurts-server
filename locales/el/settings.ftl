@@ -30,12 +30,16 @@ settings-email-limit-info =
 settings-email-verification-callout = Απαιτείται επαλήθευση email
 settings-resend-email-verification-link = Εκ νέου αποστολή email επαλήθευσης
 settings-add-email-button = Προσθήκη διεύθυνσης email
+# Deprecated
 settings-delete-email-button = Διαγραφή διεύθυνσης email
-
+settings-remove-email-button-label = Αφαίρεση
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Διακοπή εποπτείας του { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] Εμφανίζεται σε { $breachCount } γνωστή παραβίαση.
