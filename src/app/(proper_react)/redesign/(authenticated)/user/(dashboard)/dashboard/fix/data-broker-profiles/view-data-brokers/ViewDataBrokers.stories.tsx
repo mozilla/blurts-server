@@ -83,7 +83,7 @@ const ViewWrapper = (props: ViewWrapperProps) => {
   }
 
   const user = createUserWithPremiumSubscription();
-  if (!props.premium) {
+  if (!props.premium && user.fxa) {
     user.fxa.subscriptions = [];
   }
 

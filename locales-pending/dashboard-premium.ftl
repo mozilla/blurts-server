@@ -2,8 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-premium-badge-label = { -brand-monitor-plus }
-premium-cta-label = Subscribe to { -brand-monitor-plus }
+plus-indicator-label-active = Automatic data removal: On
+plus-indicator-label-inactive = Automatic data removal: Off
 
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
