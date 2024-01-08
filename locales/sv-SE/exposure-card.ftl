@@ -5,13 +5,13 @@
 chevron-down-alt = Expandera
 chevron-up-alt = Fäll ihop
 exposure-card-exposure-type = Exponeringstyp
-exposure-card-date-found = Datum för exponeringen
+exposure-card-date-found = Datum för exponering
 
 # Status Pill
 
 status-pill-action-needed = Åtgärd behövs
 status-pill-progress = Pågår
-status-pill-fixed = Fixad
+status-pill-fixed = Löst
 
 # Exposure Card
 
@@ -28,16 +28,16 @@ exposure-card-description-info-for-sale-part-two = Ta bort den här profilen fö
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = Din information avslöjades i ett dataintrång <data_breach_link>{ $data_breach_company } den { $data_breach_date }.</data_breach_link>
+exposure-card-description-data-breach-part-one = Din information avslöjades i ett dataintrång på <data_breach_link>{ $data_breach_company } den { $data_breach_date }.</data_breach_link>
 exposure-card-description-data-breach-part-two = Vi går igenom stegen för att åtgärda det.
 exposure-card-your-exposed-info = Din exponerade information:
 exposure-card-exposure-type-data-broker = Info till salu
 exposure-card-exposure-type-data-breach = Dataintrång
-exposure-card-cta = Fixa alla exponeringar
+exposure-card-cta = Lös alla exponeringar
 exposure-card-label-company-logo = Företagets logotyp
 exposure-card-label-company = Företag
 exposure-card-label-exposure-type = Exponeringstyp
-exposure-card-label-date-found = Datum hittades
+exposure-card-label-date-found = Datum för upptäckt
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Status
 # Variables:

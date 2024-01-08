@@ -16,7 +16,7 @@ exposure-chart-heading =
     }
 # Variables:
 #   $nr (number) - Number of fixed exposures found for the user
-exposure-chart-heading-fixed = <nr>{ $nr }</nr> <label>Διορθώθηκε</label>
+exposure-chart-heading-fixed = <nr>{ $nr }</nr> <label>διορθώσεις</label>
 exposure-chart-legend-heading-type = Έκθεση
 exposure-chart-legend-heading-nr = Αριθμός
 # Variables:
@@ -30,7 +30,7 @@ exposure-chart-caption-fixed = Αυτό το γράφημα εμφανίζει �
 exposure-chart-returning-user-upgrade-prompt = Η διεύθυνση οικίας, τα μέλη της οικογένειας και πολλά άλλα δεν έχουν συμπεριληφθεί ακόμα.
 exposure-chart-returning-user-upgrade-prompt-cta = Έναρξη δωρεάν σάρωσης
 exposure-chart-scan-in-progress-prompt = <b>Σάρωση σε εξέλιξη:</b> η διεύθυνση, τα μέλη της οικογένειας και πολλά άλλα δεν έχουν συμπεριληφθεί ακόμα.
-modal-active-number-of-exposures-title = Σχετικά με τον αριθμό των ενεργών προβολών σας
+modal-active-number-of-exposures-title = Σχετικά με τον αριθμό των ενεργών εκθέσεών σας
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
 modal-active-number-of-exposures-part-one-all =
@@ -40,7 +40,7 @@ modal-active-number-of-exposures-part-one-all =
     }
 modal-active-number-of-exposures-part-two = Για παράδειγμα, αν έχετε 10 προβολές του αριθμού τηλεφώνου σας, αυτό μπορεί να σημαίνει ότι ένας αριθμός τηλεφώνου εκτίθεται σε 10 διαφορετικούς ιστοτόπους, ή μπορεί να σημαίνει ότι 2 διαφορετικοί αριθμοί τηλεφώνου έχουν εκτεθεί σε 5 διαφορετικές ιστοσελίδες.
 modal-active-number-of-exposures-part-three-all = Μόλις επιλυθούν, θα προστεθούν στον συνολικό αριθμό σταθερών προβολών στη σελίδα Διόρθωση.
-modal-cta-ok = ΟΚ
+modal-cta-ok = OK
 modal-open-alt = Άνοιγμα
 modal-close-alt = Κλείσιμο
 progress-card-heres-what-we-fixed-headline-all = Ορίστε τι διορθώσατε
@@ -55,7 +55,7 @@ dashboard-exposures-area-headline = Προβολή όλων των ιστοτό�
 dashboard-exposures-area-description-all-line1 =
     { $exposures_unresolved_num ->
         [one] Βρήκαμε { $exposures_unresolved_num } έκθεση των δεδομένων σας.
-       *[other] Βρήκαμε { $exposures_unresolved_num } ανοίγματα των δεδομένων σας.
+       *[other] Βρήκαμε { $exposures_unresolved_num } εκθέσεις των δεδομένων σας.
     }
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
@@ -103,7 +103,7 @@ dashboard-top-banner-lets-keep-protecting-cta = Ας συνεχίσουμε
 dashboard-top-banner-non-us-protect-your-data-description-line1 =
     { $exposures_unresolved_num ->
         [one] Βρήκαμε { $exposures_unresolved_num } έκθεση των δεδομένων σας.
-       *[other] Βρήκαμε { $exposures_unresolved_num } ανοίγματα των δεδομένων σας.
+       *[other] Βρήκαμε { $exposures_unresolved_num } εκθέσεις των δεδομένων σας.
     }
 # Note: this line is preceded by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
@@ -113,9 +113,9 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
         [one] Εμφανίστηκε σε { $data_breach_unresolved_num } παραβίαση δεδομένων. Θα σας καθοδηγήσουμε βήμα προς βήμα για το πώς να το διορθώσετε.
        *[other] Εμφανίστηκε σε { $data_breach_unresolved_num } παραβιάσεις δεδομένων. Θα σας καθοδηγήσουμε βήμα προς βήμα για το πώς να το διορθώσετε.
     }
-dashboard-top-banner-no-exposures-found-title = Δεν βρέθηκαν προβολές
+dashboard-top-banner-no-exposures-found-title = Δεν βρέθηκαν εκθέσεις
 dashboard-top-banner-non-us-no-exposures-found-description = Εξαιρετικά νέα! Αναζητήσαμε όλες τις γνωστές παραβιάσεις δεδομένων και δεν βρήκαμε έκθεση. Θα συνεχίσουμε να εποπτεύουμε τη διεύθυνση email σας και θα σας ειδοποιήσουμε αν συμβεί νέα παραβίαση.
-dashboard-no-exposures-label = Δεν βρέθηκαν προβολές
+dashboard-no-exposures-label = Δεν βρέθηκαν εκθέσεις
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
 dashboard-top-banner-non-us-your-data-is-protected-description =
