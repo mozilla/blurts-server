@@ -48,8 +48,8 @@
     "npm": "10.2.4"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.484.0",
-    "@aws-sdk/lib-storage": "^3.484.0",
+    "@aws-sdk/client-s3": "^3.485.0",
+    "@aws-sdk/lib-storage": "^3.485.0",
     "@fluent/bundle": "^0.18.0",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
@@ -111,7 +111,6 @@
     "@typescript-eslint/eslint-plugin": "^6.18.0",
     "@typescript-eslint/parser": "^6.18.0",
     "adm-zip": "^0.5.10",
-    "c8": "^8.0.1",
     "eslint": "^8.56.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-check-file": "^2.6.2",
