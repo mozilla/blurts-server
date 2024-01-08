@@ -59,6 +59,7 @@ export const ManualRemoveViewStory: Story = {
           user={mockedSession.user}
           subscriberEmails={[]}
           isPremiumUser={hasPremium(user)}
+          isEligibleForPremium={true}
         />
       </Shell>
     );

@@ -2355,6 +2355,56 @@ it("explains what 'in progress' means for Plus users", async () => {
   ).toBeInTheDocument();
 });
 
+it("does not show the 'exposure type' column for users who cannot scan for exposures other than data breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardNonUsUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  // List items apparently don't have get their accessible name  from the
+  // content by default, so we can't use `getByRole("listitem")`. See
+  // https://stackoverflow.com/a/63080940:
+  const exposureTypeColumnHeader = screen.queryByText("Exposure type", {
+    selector: "li",
+    exact: false,
+  });
+  // Likewise, `term`s and `definitions don't get their accessible name from the
+  // content by default either, so we can't use `getByRole("term")`. See
+  // https://github.com/testing-library/dom-testing-library/issues/1083#issuecomment-1003096525
+  const exposureTypeCardLabels = screen.queryAllByText("Exposure type", {
+    selector: "dt",
+    exact: false,
+  });
+  expect(exposureTypeColumnHeader).not.toBeInTheDocument();
+  expect(exposureTypeCardLabels).toHaveLength(0);
+});
+
+it("shows the 'exposure type' column for users who can scan for exposures other than data breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  // List items apparently don't have get their accessible name  from the
+  // content by default, so we can't use `getByRole("listitem")`. See
+  // https://stackoverflow.com/a/63080940:
+  const exposureTypeColumnHeader = screen.getByText("Exposure type", {
+    selector: "li",
+    exact: false,
+  });
+  // Likewise, `term`s and `definitions don't get their accessible name from the
+  // content by default either, so we can't use `getByRole("term")`. See
+  // https://github.com/testing-library/dom-testing-library/issues/1083#issuecomment-1003096525
+  const exposureTypeCardLabels = screen.getAllByText("Exposure type", {
+    selector: "dt",
+    exact: false,
+  });
+  expect(exposureTypeColumnHeader).toBeInTheDocument();
+  expect(exposureTypeCardLabels.length).toBeGreaterThan(0);
+});
+
 // Check dashboard banner content for story DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches
 it("logs a warning and error in the story for an invalid user state", () => {
   const ComposedDashboard = composeStory(
