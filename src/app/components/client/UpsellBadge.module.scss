@@ -1,0 +1,55 @@
+@import "../../tokens";
+
+.upsellBadge {
+  align-items: center;
+  background: none;
+  border-radius: $border-radius-xl;
+  border: 1px solid $color-grey-30;
+  color: $color-black;
+  cursor: pointer;
+  display: flex;
+  font: $text-body-md;
+  font-weight: 600;
+  gap: $spacing-sm;
+  justify-content: center;
+  padding: $spacing-sm $spacing-md;
+  user-select: none;
+
+  .toggleIndicator {
+    background: $color-grey-30;
+    border-radius: $border-radius-md;
+    display: block;
+    position: relative;
+    outline: $border-focus-width solid $color-grey-30;
+    height: 16px;
+    width: 32px;
+
+    &::after {
+      background-color: $color-white;
+      border-radius: 50%;
+      content: "";
+      display: block;
+      height: 16px;
+      left: 0;
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: 16px;
+    }
+  }
+
+  &.isSelected {
+    border-color: transparent;
+    cursor: default;
+
+    .toggleIndicator {
+      background: none;
+      outline: none;
+      width: 16px;
+
+      &::after {
+        background-color: $color-green-50;
+      }
+    }
+  }
+}

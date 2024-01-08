@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
 import { View as DashboardEl } from "./View";
 import { Shell } from "../../../../Shell";
-import { getEnL10nSync } from "../../../../../../functions/server/mockL10n";
+import { getOneL10nSync } from "../../../../../../functions/server/mockL10n";
 import {
   createRandomScanResult,
   createRandomBreach,
@@ -137,7 +137,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   }
 
   const user = createUserWithPremiumSubscription();
-  if (props.countryCode !== "us" || !props.premium) {
+  if ((props.countryCode !== "us" || !props.premium) && user.fxa) {
     user.fxa.subscriptions = [];
   }
 
@@ -148,7 +148,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
 
   return (
     <CountryCodeProvider countryCode={props.countryCode}>
-      <Shell l10n={getEnL10nSync()} session={mockedSession} nonce="">
+      <Shell l10n={getOneL10nSync()} session={mockedSession} nonce="">
         <DashboardEl
           user={user}
           userBreaches={breaches}
