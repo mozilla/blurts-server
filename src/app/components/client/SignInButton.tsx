@@ -5,7 +5,6 @@
 "use client";
 
 import { signIn, useSession } from "next-auth/react";
-import Link from "next/link";
 import { useL10n } from "../../hooks/l10n";
 import { Button } from "./Button";
 
@@ -14,11 +13,7 @@ export const SignInButton = () => {
   const session = useSession();
 
   if (typeof session.data?.user.email === "string") {
-    return (
-      <Link href="/redesign/user/dashboard">
-        {l10n.getString("main-nav-link-dashboard-label")}
-      </Link>
-    );
+    return null;
   }
 
   return (
