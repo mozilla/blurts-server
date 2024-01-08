@@ -31,13 +31,13 @@
     }
 -product-short-name =
     { $case ->
-        [nom] Monitor
         [gen] Monitoru
         [dat] Monitoru
         [acc] Monitor
         [voc] Monitore
         [loc] Monitoru
-       *[ins] Monitorem
+        [ins] Monitorem
+       *[nom] Monitor
     }
 -brand-name =
     { $case ->

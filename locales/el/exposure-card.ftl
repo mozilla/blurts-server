@@ -23,15 +23,15 @@ exposure-card-credit-card = Πιστωτική κάρτα
 exposure-card-password = Κωδικός πρόσβασης
 exposure-card-ip-address = Διεύθυνση IP
 exposure-card-other = Άλλο
-exposure-card-description-info-for-sale-part-one = Αυτός ο ιστότοπος πουλά και δημοσιεύει <data_broker_link>λεπτομέρειες σχετικά με εσάς.</data_broker_link>
-exposure-card-description-info-for-sale-part-two = Αφαιρέστε αυτό το προφίλ για την προστασία του απορρήτου σας.
+exposure-card-description-info-for-sale-part-one = Αυτός ο ιστότοπος πουλά και δημοσιεύει <data_broker_link>λεπτομέρειες σχετικά με εσάς</data_broker_link>.
+exposure-card-description-info-for-sale-part-two = Καταργήστε αυτό το προφίλ για την προστασία του απορρήτου σας.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = Οι πληροφορίες σας εκτέθηκαν στην <data_breach_link>παραβίαση δεδομένων του { $data_breach_company } στις { $data_breach_date }.</data_breach_link>
+exposure-card-description-data-breach-part-one = Οι πληροφορίες σας εκτέθηκαν στην <data_breach_link>παραβίαση δεδομένων της { $data_breach_company } στις { $data_breach_date }</data_breach_link>.
 exposure-card-description-data-breach-part-two = Θα σας καθοδηγήσουμε στα βήματα για τη διόρθωσή του.
 exposure-card-your-exposed-info = Οι εκτεθειμένες πληροφορίες σας:
-exposure-card-exposure-type-data-broker = Πληροφορίες για πώληση
+exposure-card-exposure-type-data-broker = Πληροφορίες προς πώληση
 exposure-card-exposure-type-data-breach = Παραβίαση δεδομένων
 exposure-card-cta = Διόρθωση όλων των προθέσεων
 exposure-card-label-company-logo = Λογότυπο εταιρείας

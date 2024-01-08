@@ -59,7 +59,7 @@ settings-cancel-premium-subscription-info = Po skončení aktuálního fakturač
 
 settings-deactivate-account-title = Deaktivovat účet
 settings-deactivate-account-info-2 = { -product-short-name } můžete deaktivovat odstraněním svého { -brand-mozilla-account(case: "gen", capitalization: "lower") }.
-settings-fxa-link-label-3 = Přejít do nastavení { -brand-mozilla-account(case: "gen") }
+settings-fxa-link-label-3 = Přejít do nastavení { -brand-mozilla-account(case: "gen", capitalization: "lower") }.
 
 ## Add email dialog
 

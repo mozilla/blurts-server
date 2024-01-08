@@ -21,9 +21,14 @@ fix-flow-celebration-next-dashboard-label = Eho ne mba’erupa rendápe
 
 ## High-risk flow
 
+fix-flow-celebration-high-risk-title = ¡Emoĩporãma nde jehechauka ivaikuaavéva!
+fix-flow-celebration-high-risk-description-next-passwords = Ko’ág̃a ñamoĩporãta ne ñe’ẽñemi ivaikuaáva.
+fix-flow-celebration-high-risk-description-next-security-questions = Ko’ág̃a ñamoĩporãta umi porandu tekorosãrã ivaikuaáva.
 
 ## Leaked passwords and security questions flow
 
+fix-flow-celebration-leaked-passwords-title = ¡Ne ñe’ẽñemi ko’ág̃a oñemo’ãma!
+fix-flow-celebration-security-questions-title = ¡Ne porandu tekorosãrãva oñemo’ãma!
 
 ## Security recommendations flow
 
