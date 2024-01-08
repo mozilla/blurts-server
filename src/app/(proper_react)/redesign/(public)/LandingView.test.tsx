@@ -15,7 +15,7 @@ import {
 } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { axe } from "jest-axe";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Meta, {
   LandingNonUs,
   LandingNonUsDe,
@@ -24,8 +24,23 @@ import Meta, {
   LandingUsScanLimit,
 } from "./LandingView.stories";
 
-jest.mock("next-auth/react");
+jest.mock("next-auth/react", () => {
+  return {
+    signIn: jest.fn(),
+    useSession: jest.fn(() => {
+      return {};
+    }),
+  };
+});
 jest.mock("../../../hooks/useTelemetry");
+
+beforeEach(() => {
+  // For reasons that are unclear to me, the mock implementation defind in the
+  // call to `jest.mock` above forgets the implementation. I've spent way too
+  // long debugging that already, so I'm settling for this :(
+  const mockedUseSession = useSession as jest.Mock;
+  mockedUseSession.mockReturnValue({});
+});
 
 describe("When Premium is not available", () => {
   it("passes the axe accessibility test suite", async () => {
@@ -54,6 +69,48 @@ describe("When Premium is not available", () => {
     expect(signIn).toHaveBeenCalledWith("fxa", expect.any(Object), {
       email: "mail@example.com",
     });
+  });
+
+  it("shows a link to the dashboard in the header if the user is signed in", () => {
+    const mockedUseSession = useSession as jest.Mock<
+      ReturnType<typeof useSession>,
+      Parameters<typeof useSession>
+    >;
+    mockedUseSession.mockReturnValue({
+      data: {
+        user: {
+          email: "arbitrary@example.com",
+        },
+      },
+    });
+
+    const ComposedDashboard = composeStory(LandingNonUs, Meta);
+    render(<ComposedDashboard />);
+
+    const dashboardLink = screen.getByRole("link", {
+      name: "Dashboard",
+    });
+    const signInButton = screen.queryByRole("button", {
+      name: "Sign In",
+    });
+
+    expect(dashboardLink).toBeInTheDocument();
+    expect(signInButton).not.toBeInTheDocument();
+  });
+
+  it("shows a 'Sign In' button in the header if the user is not signed in", async () => {
+    const ComposedDashboard = composeStory(LandingNonUs, Meta);
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+
+    const signInButton = screen.getByRole("button", {
+      name: "Sign In",
+    });
+    await user.click(signInButton);
+
+    expect(signInButton).toBeInTheDocument();
+    expect(signIn).toHaveBeenCalledTimes(1);
   });
 
   it("shows the data breaches quote", () => {
