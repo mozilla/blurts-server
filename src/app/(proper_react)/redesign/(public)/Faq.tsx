@@ -83,7 +83,7 @@ export const FaqSection = ({
         target="_blank"
         onClick={() => {
           record("link", "click", {
-            button_id: "see_all_faqs",
+            link_id: "see_all_faqs",
           });
         }}
       >
