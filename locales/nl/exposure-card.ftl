@@ -4,8 +4,8 @@
 
 chevron-down-alt = Uitvouwen
 chevron-up-alt = Samenvouwen
-exposure-card-exposure-type = Belichtingstype
-exposure-card-date-found = Datum van de blootstelling
+exposure-card-exposure-type = Type lek
+exposure-card-date-found = Datum van het lek
 
 # Status Pill
 
@@ -23,8 +23,8 @@ exposure-card-credit-card = Creditcard
 exposure-card-password = Wachtwoord
 exposure-card-ip-address = IP-adres
 exposure-card-other = Overig
-exposure-card-description-info-for-sale-part-one = Deze website verkoopt en publiceert <data_broker_link>details over u.</data_broker_link>
-exposure-card-description-info-for-sale-part-two = Verwijder dit profiel om uw privacy te beschermen.
+exposure-card-description-info-for-sale-part-one = Deze website verkoopt en publiceert <data_broker_link>gegevens over u.</data_broker_link>
+exposure-card-description-info-for-sale-part-two = Dit profiel verwijderen om uw privacy te beschermen.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
@@ -33,11 +33,11 @@ exposure-card-description-data-breach-part-two = We leiden u door de stappen om 
 exposure-card-your-exposed-info = Uw gelekte gegevens:
 exposure-card-exposure-type-data-broker = Info te koop
 exposure-card-exposure-type-data-breach = Datalek
-exposure-card-cta = Alle blootstellingen herstellen
+exposure-card-cta = Alle lekken herstellen
 exposure-card-label-company-logo = Bedrijfslogo
 exposure-card-label-company = Bedrijf
-exposure-card-label-exposure-type = Belichtingstype
-exposure-card-label-date-found = Gevonden datum
+exposure-card-label-exposure-type = Type lek
+exposure-card-label-date-found = Datum gevonden
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Status
 # Variables:
