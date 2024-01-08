@@ -9,14 +9,11 @@ import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import "../src/app/globals.css";
 import { metropolis } from "../src/app/fonts/Metropolis/metropolis";
-import { getEnL10nBundlesSync } from "../src/app/functions/server/mockL10n";
 import { TestComponentWrapper } from "../src/TestComponentWrapper";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 const AppDecorator: Preview["decorators"] = (storyFn) => {
-  const l10nBundles = getEnL10nBundlesSync();
-
   useEffect(() => {
     // We have to add these classes to the body, rather than simply wrapping the
     // storyFn in a container, because some components (most notably, the ones
