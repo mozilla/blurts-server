@@ -111,7 +111,7 @@
     "@typescript-eslint/eslint-plugin": "^6.18.0",
     "@typescript-eslint/parser": "^6.18.0",
     "adm-zip": "^0.5.10",
-    "c8": "^8.0.1",
+    "c8": "^9.0.0",
     "eslint": "^8.56.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-check-file": "^2.6.2",
