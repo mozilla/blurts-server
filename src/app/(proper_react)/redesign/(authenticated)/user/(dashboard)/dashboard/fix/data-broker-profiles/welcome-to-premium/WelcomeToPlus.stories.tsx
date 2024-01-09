@@ -48,7 +48,7 @@ type Story = StoryObj<typeof WelcomeToPlusView>;
 
 const l10n = getOneL10nSync();
 
-export const ManualRemoveViewStory: Story = {
+export const WelcomeToPlusViewStory: Story = {
   name: "1e. Welcome to Plus",
   render: () => {
     return (
