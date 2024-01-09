@@ -65,7 +65,7 @@ export const FaqSection = ({
   isEligibleForPremium: boolean;
 }) => {
   const l10n = useL10n();
-  const record = useTelemetry();
+  const recordTelemetry = useTelemetry();
   const [expandedQuestion, setExpandedQuestion] = useState<string | null>(null);
 
   const handleExpandAnswer = (question: string) => {
@@ -84,7 +84,7 @@ export const FaqSection = ({
         href={process.env.NEXT_PUBLIC_FAQ_MONITOR as string}
         target="_blank"
         onClick={() => {
-          record("link", "click", {
+          recordTelemetry("link", "click", {
             link_id: "see_all_faqs",
           });
         }}
