@@ -24,6 +24,7 @@ import { TelemetryLink } from "./TelemetryLink";
 import { HeresHowWeHelp } from "./HeresHowWeHelp";
 import { ScanLimit } from "./ScanLimit";
 import { Footer } from "../Footer";
+import { FaqSection } from "./Faq";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -225,6 +226,8 @@ export const View = (props: Props) => {
 
       {!props.eligibleForPremium && <HeresHowWeHelp />}
       <Plans {...props} />
+
+      <FaqSection isEligibleForPremium={props.eligibleForPremium} />
 
       <div className={styles.signUpEncouragementWrapper}>
         <p className={styles.title}>
