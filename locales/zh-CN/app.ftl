@@ -24,9 +24,9 @@
 ##
 
 GitHub-link-title = GitHub
-error-scan-page-token = 您试图在短时间内扫描过多的电子邮件地址。出于安全原因，我们暂时阻止您进行新的搜索。请您稍后再试。
-error-could-not-add-email = 无法将电子邮件地址添加到数据库。
-error-not-subscribed = 此电子邮件地址未订阅 { -product-name }。
+error-scan-page-token = 您试图在短时间内扫描过多的邮箱地址。出于安全原因，我们暂时阻止您进行新的搜索。请您稍后再试。
+error-could-not-add-email = 无法将邮箱地址添加到数据库。
+error-not-subscribed = 此邮箱地址未订阅 { -product-name }。
 error-hibp-throttled = 与 { -brand-HIBP } 的连接过多。
 error-hibp-connect = 连接 { -brand-HIBP } 时出错。
 error-hibp-load-breaches = 未能加载泄露信息。
@@ -36,10 +36,10 @@ home-title = { -product-name }
 home-not-found = 找不到网页。
 oauth-invalid-session = 无效会话
 scan-title = { -product-name }：扫描结果
-user-add-invalid-email = 无效的电子邮件地址
-user-add-too-many-emails = 已达到监控电子邮件地址数量设定上限。
+user-add-invalid-email = 无效的邮箱地址
+user-add-too-many-emails = 已达到监控邮箱地址数量设定上限。
 user-add-email-verify-subject = 确认您要订阅 { -product-name }。
-user-add-duplicate-email = 此电子邮件地址已添加到 { -product-name }。
+user-add-duplicate-email = 此邮箱地址已添加到 { -product-name }。
 # Variables:
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
@@ -54,14 +54,14 @@ user-unsubscribe-token-email-error = 退订需要令牌（Token）与 emailHash�
 user-unsubscribe-title = { -product-name }：退订
 pwt-section-headline = 更强的密码 = 更好的保护
 landing-headline = 您获得安全，免受黑客影响的权利，从这里开始。
-scan-placeholder = 输入电子邮件地址
-scan-submit = 搜索您的电子邮件地址
-scan-error = 须为有效的电子邮件地址。
+scan-placeholder = 输入邮箱地址
+scan-submit = 搜索您的邮箱地址
+scan-error = 须为有效的邮箱地址。
 download-firefox-banner-button = 下载 { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = 发送成功！
 sign-up = 注册
-form-signup-error = 须为有效的电子邮件地址
+form-signup-error = 须为有效的邮箱地址
 # breach-date = the calendar date a particular data theft occurred.
 breach-date = 泄露日期
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -69,7 +69,7 @@ compromised-accounts = 泄露账户数量
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = 泄露的数据
 unsub-headline = 退订 { -product-name-nowrap }
-unsub-blurb = 这将使您的电子邮件地址移出 { -product-name-nowrap } 列表，在发生新的数据外泄事件时，您将不再收到警报。
+unsub-blurb = 这将使您的邮箱地址移出 { -product-name-nowrap } 列表，在发生新的数据外泄事件时，您将不再收到警报。
 unsub-button = 退订
 # Breach data provided by Have I Been Pwned.
 # Variables:
@@ -80,7 +80,7 @@ share-facebook-headline = 看看您的账号是否也在数据外泄事件当中
 share-facebook-blurb = 您的账号也出现在数据外泄事件当中吗？
 og-site-description = 使用 { -product-name }，看看您的账号是否也在数据外泄事件当中。订阅以在未来发生外泄事件时收到警报，并获取确保账号安全的小贴士。
 show-all = 全部显示
-fxa-scan-another-email = 想要检查其他电子邮件地址？
+fxa-scan-another-email = 想要检查其他邮箱地址？
 sign-out = 退出
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = 管理 { -brand-fxa }
@@ -94,7 +94,7 @@ fxa-wtd-blurb-2 =
     黑客很可能利用您已遭泄露的密码，尝试登录您在其他网站上的账号，这也被称为“撞库”攻击。
     请为每个网站设置不同的密码，尤其是银行账号、电子邮件账号，以及其他您用来存储个人信息的网站。
 fxa-what-to-do-blurb-3 =
-    大多数的数据泄漏事件只会泄漏电子邮件地址与密码，但某些事件中也会包含敏感的个人财务信息。
+    大多数的数据泄漏事件只会泄漏邮箱地址与密码，但某些事件中也会包含敏感的个人财务信息。
     若您的银行账户或信用卡卡号也遭泄漏，请通知银行以预防盗用，并检查月结账单，检查是否有不明的交易记录。
 fxa-what-to-do-subhead-4 = 获取能帮助您记住所有密码，并确保密码安全的建议。
 fxa-what-to-do-blurb-4 = 如 1Password、LastPass、Dashlane 和 Bitwarden 等密码管理器可以安全地存储密码，并为您自动填写到网站上。在您的手机与计算机上使用密码管理器，不必再记忆密码。
@@ -124,7 +124,7 @@ monitor-your-online-accounts = 使用 { -brand-fxa }订阅数据外泄警报
 stay-alert = 时刻留意新的数据外泄事件
 if-your-info = 如果您的信息出现于新的数据外泄事件中，我们会向您发送警报。
 search-all-emails = 搜索您在使用的所有邮箱地址，检查是否有数据外泄事件，也在有新威胁时收到警报。
-monitor-several-emails = 监控多个电子邮件地址
+monitor-several-emails = 监控多个邮箱地址
 take-action = 采取措施保护您的账户
 keep-your-data-safe = 了解您需要做些什么来保护您的数据，以免受网络犯罪的影响。
 website-breach = 网站信息外泄
@@ -139,16 +139,16 @@ unverified-breach-plural = 未经证实的信息外泄
 spam-list-breach-plural = 垃圾邮件列表信息外泄
 what-data = 泄露的数据：
 sensitive-sites = { -product-name } 如何处理这些敏感网站？
-sensitive-sites-copy = { -product-name } 仅会在电子邮件地址验证后，才显示与这些数据外泄事件相关联的账号。也就是说只有您能看到您的账号是否与此事件有关（除非有他人也能使用使用您的邮箱账号。）
+sensitive-sites-copy = { -product-name } 仅会在邮箱地址验证后，才显示与这些数据外泄事件相关联的账号。也就是说只有您能看到您的账号是否与此事件有关（除非有他人也能使用使用您的邮箱账号。）
 delayed-reporting-headline = 为什么要这么久才公开这些事件？
 delayed-reporting-copy = 有的时候，数据外泄后可能要几个月甚至几年，您的登录信息才会出现在暗网上。当我们发现外泄的数据并确认无误后，就会加入数据库。
 about-fxm-headline = 关于 { -product-name }
 about-fxm-blurb = { -product-name } 会在您的账号出现于数据外泄事件时警告您。您可以在此看看账号是否出现于某次数据外泄事件、在有新的外泄事件时收到警报，并采取行动保护您的在线账号。{ -product-name } 由 { -brand-Mozilla } 提供。
-fxm-warns-you = { -product-name } 会在您的电子邮件地址出现于数据外泄事件时警告您。可以在此看看有哪些信息已遭外泄、了解如何保护在线账号，并在您的邮箱地址出现于新的外泄事件时接收警报。
+fxm-warns-you = { -product-name } 会在您的邮箱地址出现于数据外泄事件时警告您。可以在此看看有哪些信息已遭外泄、了解如何保护在线账号，并在您的邮箱地址出现于新的外泄事件时接收警报。
 # How Firefox Monitor works
 how-fxm-works = { -product-name } 工作原理
 how-fxm-1-headline = 进行基本搜索
-how-fxm-1-blurb = 搜索您的电子邮件地址，是否出现于 2007 年起，已公开的数据外泄事件数据库中。基本搜索可找出大部分数据外泄事件，但不会列出包含个人敏感信息的事件。
+how-fxm-1-blurb = 搜索您的邮箱地址，是否出现于 2007 年起，已公开的数据外泄事件数据库中。基本搜索可找出大部分数据外泄事件，但不会列出包含个人敏感信息的事件。
 how-fxm-2-headline = 订阅数据外泄事件警报
 how-fxm-2-blurb = 注册 { -brand-fxa }来监控您的邮箱是否出现于各种数据外泄事件中。确认账号后，也会收到包含外泄的敏感信息等过去事件的相关完整报告。
 how-fxm-3-headline = 在浏览器中收到通知
@@ -188,15 +188,15 @@ appears-in-x-breaches =
 check-for-breaches = 检查是否有外泄事件
 find-out-what-hackers-know = 看看黑客已经掌握了您哪些资料，并了解如何先发制人。
 get-email-alerts = 保持安全：当您的信息出现在已知外泄事件中时，将获得邮件警报
-search-for-your-email = 搜索自 2007 年起的公开数据外泄事件当中，是否包含您的电子邮件地址。
+search-for-your-email = 搜索自 2007 年起的公开数据外泄事件当中，是否包含您的邮箱地址。
 back-to-top = 回到顶端
-comm-opt-0 = 如果我的某个电子邮件地址出现在数据外泄事件中，请发邮件通知我。
+comm-opt-0 = 如果我的某个邮箱地址出现在数据外泄事件中，请发邮件通知我。
 # Variables:
 #   $primaryEmail (String) - User primary email address
 comm-opt-1 = 将所有外泄警报发送到 { $primaryEmail }。
-stop-monitoring-this = 停止监控此电子邮件地址。
+stop-monitoring-this = 停止监控此邮箱地址。
 resend-verification = 重发验证邮件
-add-new-email = 添加新电子邮件地址
+add-new-email = 添加新邮箱地址
 send-verification = 发送验证邮件
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
@@ -254,12 +254,12 @@ other-breaches-found =
     { $breachCount ->
        *[other] 但出现在其他 { $breachCount } 次外泄事件中。
     }
-fb-comp-only = 此电子邮件地址出现在 { $breachName } 外泄事件中。
+fb-comp-only = 此邮箱地址出现在 { $breachName } 外泄事件中。
 # Variables:
 #   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
-       *[other] 此电子邮件地址出现在 { $breachCount } 次外泄事件中，包括 { $breachName } 事件。
+       *[other] 此邮箱地址出现在 { $breachCount } 次外泄事件中，包括 { $breachName } 事件。
     }
 
 ##
@@ -268,7 +268,7 @@ no-other-breaches-found = 在基本搜索中未找到其他外泄事件。
 no-results-blurb = 很抱歉，我们的数据库中没有该外泄事件相关信息。
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
-facebook-breach-note = <span>您的电子邮件地址未出现在此次泄露事件中，但您的手机号码很可能已经中招。</span>部分 Facebook 账户泄露的是手机号码和其他个人信息，而非电子邮件地址。若您曾经注册过 Facebook 账户——即使现在已不使用——我们还是建议您采取以下步骤保护自己
+facebook-breach-note = <span>您的邮箱地址未出现在此次泄露事件中，但您的电话号码很可能已经中招。</span>部分 Facebook 账户泄露的是电话号码和其他个人信息，而非邮箱地址。若您曾经注册过 Facebook 账户——即使现在已不使用——我们还是建议您采取以下步骤保护自己
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>到<a>你的 Facebook 信息</a>页将您的个人信息设为“仅限自己”或其他非公开设置。</span>
@@ -276,7 +276,7 @@ facebook-breach-what-to-do-1-copy = 在此次泄露事件中，黑客采集了�
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-2-headline = <span>更改您手机上<a>电信运营商账户</a>的密码、PIN 码或其他安全凭证，以防止“SIM 卡交换（SIM-swapping）”诈骗</span>。
-facebook-breach-what-to-do-2-copy = SIM 卡交换，也被称为“SIM 卡劫持（SIM-jacking）”，是指黑客用手机号码、出生日期和其他数据来接管一个人的手机号码，然后入侵他们的邮箱，社交媒体甚至财务账户。
+facebook-breach-what-to-do-2-copy = SIM 卡交换，也被称为“SIM 卡劫持（SIM-jacking）”，是指黑客用电话号码、出生日期和其他数据来接管一个人的电话号码，然后入侵他们的邮箱，社交媒体甚至财务账户。
 facebook-breach-what-to-do-3 = 到我们的 Facebook 泄露页面查看所有建议
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = 显示：
@@ -294,7 +294,7 @@ error-invalid-unsub-blurb = 您可以从任何 { -product-name } 发送的邮件
 # your localization, because it would result in the number showing twice.
 email-addresses-being-monitored =
     { $emails ->
-       *[other] 正在监控的电子邮件地址
+       *[other] 正在监控的邮箱地址
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -316,7 +316,7 @@ see-additional-breaches = 查看其他外泄事件
 #   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
-       *[other] 此电子邮件地址出现在 { $breachCount } 次已知数据外泄事件中。
+       *[other] 此邮箱地址出现在 { $breachCount } 次已知数据外泄事件中。
     }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
@@ -334,7 +334,7 @@ steps-to-protect = 采取措施保护您的在线身份
 take-further-steps = 采取更多措施保护身份信息
 alert-about-new-breaches = 有新的外泄事件时通知我
 see-if-youve-been-part = 看看您是否也处于数据外泄事件之中。
-get-ongoing-breach-monitoring = 不间断监控多个电子邮件地址是否存在数据外泄。
+get-ongoing-breach-monitoring = 不间断监控多个邮箱地址是否存在数据外泄。
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = 找找看
 new-unsub-error = 您可以从任何一封 { -product-name } 发送的邮件取消订阅。
@@ -348,7 +348,7 @@ other-known-breaches-found =
 # of data classes that the breach exposed.
 additional-information-including = 其他信息，包括：
 # Title
-email-addresses-title = 电子邮件地址
+email-addresses-title = 邮箱地址
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = 总览
@@ -368,14 +368,14 @@ signed-in-as = 已登录为：{ $userEmail }
 filter-by = 按分类筛选：
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = 菜单
-to-affected-email = 向受影响的电子邮件地址发送外泄警报
+to-affected-email = 向受影响的邮箱地址发送外泄警报
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = 捍卫隐私不是幻想。加入 { -brand-name } 一同抗争。
 # Link title
 learn-more-link = 详细了解。
 email-sent = 邮件发送成功！
 # Form title
-want-to-add = 要添加其他电子邮件地址吗？
+want-to-add = 要添加其他邮箱地址吗？
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 # Variables:
@@ -391,7 +391,7 @@ email-verified = 邮箱已通过验证！
 email-added-to-subscription = 若 { $email } 出现在新的数据外泄事件中，我们会通知您。
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
-email-verified-view-dashboard = 要查看或管理您所有设为监控的电子邮件地址，请访问 { $nestedSignInLink }。
+email-verified-view-dashboard = 要查看或管理您所有设为监控的邮箱地址，请访问 { $nestedSignInLink }。
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = 请登录
 
@@ -403,7 +403,7 @@ sign-in-nested = 请登录
 # using the { preferences } string.
 # Variables:
 #   $preferencesLink (String) - Link to preferences
-manage-all-emails = 管理 { $preferencesLink } 中的所有电子邮件地址。
+manage-all-emails = 管理 { $preferencesLink } 中的所有邮箱地址。
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach

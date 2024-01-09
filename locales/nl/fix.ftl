@@ -148,7 +148,7 @@ security-recommendation-email-title = Bescherm uw e-mailadres
 # $num_breaches is the number of breaches where the email address was found.
 security-recommendation-email-summary =
     { $num_breaches ->
-        [one] Uw e-mailadres is gelekt in { $num_breaches } datalek:
+        [one] Uw e-mailadres is gelekt bij { $num_breaches } datalek:
        *[other] Uw e-mailadres is gelekt bij { $num_breaches } datalekken:
     }
 security-recommendation-email-description = Helaas kunt u dit niet oplossen. Maar er zijn stappen die u kunt nemen om uzelf te beschermen.

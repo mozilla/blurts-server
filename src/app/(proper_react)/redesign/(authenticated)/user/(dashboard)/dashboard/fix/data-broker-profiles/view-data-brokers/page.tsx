@@ -13,6 +13,7 @@ import { StepDeterminationData } from "../../../../../../../../../functions/serv
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getUserBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
+import { getL10n } from "../../../../../../../../../functions/server/l10n";
 
 export default async function ViewDataBrokers() {
   const session = await getServerSession(authOptions);
@@ -33,6 +34,10 @@ export default async function ViewDataBrokers() {
   const subscriberEmails = await getSubscriberEmails(session.user);
 
   return (
-    <ViewDataBrokersView data={data} subscriberEmails={subscriberEmails} />
+    <ViewDataBrokersView
+      data={data}
+      subscriberEmails={subscriberEmails}
+      l10n={getL10n()}
+    />
   );
 }

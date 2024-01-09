@@ -31,6 +31,7 @@ exposure-card-description-info-for-sale-part-two = Odstráňte tento profil, aby
 exposure-card-description-data-breach-part-one = Vaše informácie boli odhalené pri <data_breach_link>úniku údajov spoločnosti { $data_breach_company } dňa { $data_breach_date }</data_breach_link>.
 exposure-card-description-data-breach-part-two = Prevedieme vás krokmi, pomocou ktorých vykonáte nápravu.
 exposure-card-your-exposed-info = Vaše odhalené informácie:
+exposure-card-exposure-type-data-broker = Informácie na predaj
 exposure-card-exposure-type-data-breach = Únik údajov
 exposure-card-cta = Vyriešiť všetky odhalenia
 exposure-card-label-company-logo = Logo spoločnosti
