@@ -17,7 +17,7 @@ import { activateAndOptoutProfile } from "../../../../../../../../../functions/s
 import { logger } from "../../../../../../../../../functions/server/logging";
 import { getL10n } from "../../../../../../../../../functions/server/l10n";
 
-export default async function WelcomeToPremiumPage() {
+export default async function WelcomeToPlusPage() {
   const session = await getServerSession(authOptions);
 
   // Ensure user is logged in

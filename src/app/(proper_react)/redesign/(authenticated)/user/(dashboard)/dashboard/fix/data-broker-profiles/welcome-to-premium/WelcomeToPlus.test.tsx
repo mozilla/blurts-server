@@ -27,6 +27,32 @@ it("shows the progress indicator on the “Welcome to Plus” view", () => {
   expect(guidedStepsNavigation).toBeInTheDocument();
 });
 
+it("shows the correct number of broker profiles with no broker scan results", () => {
+  const ComposedWelcomeToPlusView = composeStory(WelcomeToPlusViewStory, Meta);
+  const brokerScanCount = 0;
+  render(<ComposedWelcomeToPlusView brokerScanCount={brokerScanCount} />);
+
+  const paragraphElement = screen.getByText(
+    `We’ve already started our auto-removal process of ⁨${brokerScanCount}⁩ profiles`,
+    { exact: false },
+  );
+
+  expect(paragraphElement).toBeInTheDocument();
+});
+
+it("shows the correct number of broker profiles with broker scan results", () => {
+  const ComposedWelcomeToPlusView = composeStory(WelcomeToPlusViewStory, Meta);
+  const brokerScanCount = 5;
+  render(<ComposedWelcomeToPlusView brokerScanCount={brokerScanCount} />);
+
+  const paragraphElement = screen.getByText(
+    `We’ve already started our auto-removal process of ⁨${brokerScanCount}⁩ profiles`,
+    { exact: false },
+  );
+
+  expect(paragraphElement).toBeInTheDocument();
+});
+
 it("checks the CTA button link to the next step in the guided resolution flow", () => {
   const ComposedWelcomeToPlusView = composeStory(WelcomeToPlusViewStory, Meta);
   render(<ComposedWelcomeToPlusView />);

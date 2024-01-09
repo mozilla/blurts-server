@@ -24,12 +24,15 @@ const mockedScan: OnerepScanRow = {
   onerep_scan_status: "finished",
 };
 
-const mockedScanData: LatestOnerepScanData = {
-  scan: mockedScan,
-  results: [...Array(5)].map(() =>
-    createRandomScanResult({ status: "new", manually_resolved: false }),
-  ),
-};
+function getMockedScanData(brokerScanCount: number): LatestOnerepScanData {
+  return {
+    scan: mockedScan,
+    results: [...Array(brokerScanCount)].map(() =>
+      createRandomScanResult({ status: "new", manually_resolved: false }),
+    ),
+  };
+}
+
 const mockedBreaches = [...Array(5)].map(() => createRandomBreach());
 
 const user = createUserWithPremiumSubscription();
@@ -39,30 +42,46 @@ const mockedSession = {
   user: user,
 };
 
-const meta: Meta<typeof WelcomeToPlusView> = {
+const WelcomeToPlusViewWrapper = (props: { brokerScanCount: number }) => {
+  return (
+    <>
+      <WelcomeToPlusView
+        data={{
+          countryCode: "us",
+          latestScanData:
+            props.brokerScanCount > 0
+              ? getMockedScanData(props.brokerScanCount)
+              : null,
+          subscriberBreaches: mockedBreaches,
+          user: mockedSession.user,
+        }}
+        l10n={l10n}
+        subscriberEmails={[]}
+      />
+    </>
+  );
+};
+
+const meta: Meta<typeof WelcomeToPlusViewWrapper> = {
   title: "Pages/Guided resolution/1e. Welcome to Plus",
-  component: WelcomeToPlusView,
+  component: WelcomeToPlusViewWrapper,
+  argTypes: {
+    brokerScanCount: {
+      control: { type: "number", min: 0 },
+    },
+  },
 };
 export default meta;
-type Story = StoryObj<typeof WelcomeToPlusView>;
+type Story = StoryObj<typeof WelcomeToPlusViewWrapper>;
 
 const l10n = getOneL10nSync();
 
 export const WelcomeToPlusViewStory: Story = {
   name: "1e. Welcome to Plus",
-  render: () => {
+  render: (props) => {
     return (
       <Shell l10n={l10n} session={mockedSession} nonce="">
-        <WelcomeToPlusView
-          data={{
-            countryCode: "us",
-            latestScanData: mockedScanData,
-            subscriberBreaches: mockedBreaches,
-            user: mockedSession.user,
-          }}
-          l10n={l10n}
-          subscriberEmails={[]}
-        />
+        <WelcomeToPlusViewWrapper brokerScanCount={props.brokerScanCount} />
       </Shell>
     );
   },
