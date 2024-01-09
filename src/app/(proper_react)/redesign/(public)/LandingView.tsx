@@ -23,6 +23,7 @@ import TechCruchLogo from "./social-proof-images/techcrunch.svg";
 import { TelemetryLink } from "./TelemetryLink";
 import { HeresHowWeHelp } from "./HeresHowWeHelp";
 import { ScanLimit } from "./ScanLimit";
+import { Footer } from "../Footer";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -239,6 +240,7 @@ export const View = (props: Props) => {
           scanLimitReached={props.scanLimitReached}
         />
       </div>
+      <Footer l10n={props.l10n} />
     </main>
   );
 };
