@@ -26,7 +26,6 @@ const FaqItem = (props: FaqItemProps) => {
   const { buttonProps } = useButton(
     {
       onPress: props.onExpandAnswer,
-      elementType: "dt",
     },
     buttonRef,
   );
