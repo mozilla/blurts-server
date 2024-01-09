@@ -72,7 +72,7 @@ export function WelcomeToPremiumView(props: Props) {
           <div className={styles.buttonsWrapper}>
             <Button
               variant="primary"
-              href="/redesign/user/dashboard/fix/high-risk-data-breaches"
+              href={getNextGuidedStep(props.data, "Scan").href}
               wide
             >
               {l10n.getString(
