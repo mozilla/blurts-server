@@ -424,9 +424,9 @@ describe("When Premium is available", () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(LandingUs, Meta);
     render(<ComposedDashboard />);
-    const faqQuestion = screen.getByText(
-      "What kinds of websites sell my personal information?",
-    );
+    const faqQuestion = screen.getByRole("button", {
+      name: new RegExp("What kinds of websites sell my personal information?"),
+    });
     await user.click(faqQuestion);
     const faqAnswer = screen.getByText(
       "Certain websites are in the business of collecting and selling people’s personal information without their consent, which is unfortunately legal in the US.",
@@ -441,18 +441,20 @@ describe("When Premium is available", () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(LandingUs, Meta);
     render(<ComposedDashboard />);
-    const faqQuestion1 = screen.getByText(
-      "What kinds of websites sell my personal information?",
-    );
+    const faqQuestion1 = screen.getByRole("button", {
+      // Partial match to avoid the CloseIcon svg
+      name: new RegExp("What kinds of websites sell my personal information?"),
+    });
     await user.click(faqQuestion1);
     const faqAnswer1 = screen.getByText(
       "Certain websites are in the business of collecting and selling people’s personal information without their consent, which is unfortunately legal in the US.",
       { exact: false },
     );
     expect(faqAnswer1).toHaveAttribute("aria-hidden", "false");
-    const faqQuestion2 = screen.getByText(
-      "How does continuous data removal work?",
-    );
+    const faqQuestion2 = screen.getByRole("button", {
+      // Partial match to avoid the CloseIcon svg
+      name: new RegExp("How does continuous data removal work?"),
+    });
     await user.click(faqQuestion2);
     expect(faqAnswer1).toHaveAttribute("aria-hidden", "true");
   });
