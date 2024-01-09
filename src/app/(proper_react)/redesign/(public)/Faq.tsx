@@ -34,18 +34,20 @@ const FaqItem = (props: FaqItemProps) => {
 
   return (
     <>
-      <dt
-        {...buttonProps}
-        {...focusProps}
-        className={styles.faqQuestion}
-        aria-expanded={props.isExpanded}
-        aria-controls={`faq-${props.id}`}
-      >
-        {props.question}
-        <CloseBigIcon
-          alt={l10n.getString("landing-all-close-faq-alt")}
-          className={`${props.isExpanded && styles.expanded}`}
-        />
+      <dt>
+        <button
+          {...buttonProps}
+          {...focusProps}
+          aria-expanded={props.isExpanded}
+          aria-controls={`faq-${props.id}`}
+          className={styles.faqQuestion}
+        >
+          {props.question}
+          <CloseBigIcon
+            alt={l10n.getString("landing-all-close-faq-alt")}
+            className={`${props.isExpanded && styles.expanded}`}
+          />
+        </button>
       </dt>
       <dd
         aria-hidden={!props.isExpanded}
