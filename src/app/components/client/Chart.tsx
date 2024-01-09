@@ -24,6 +24,7 @@ export type Props = {
   data: Array<[string, number]>;
   isEligibleForFreeScan: boolean;
   isEligibleForPremium: boolean;
+  isPremiumUser: boolean;
   scanInProgress: boolean;
   isShowFixed: boolean;
   summary: DashboardSummary;
@@ -95,11 +96,13 @@ export const DoughnutChart = (props: Props) => {
       />
     );
   });
-  const modalContent = (
+
+  const includesDataBrokers = props.isEligibleForPremium || props.isPremiumUser;
+  const modalContentActionNeeded = (
     <div className={styles.modalBodyContent}>
       <p>
         {l10n.getString(
-          props.isEligibleForPremium
+          includesDataBrokers
             ? "modal-active-number-of-exposures-part-one-premium"
             : "modal-active-number-of-exposures-part-one-all",
           {
@@ -110,7 +113,7 @@ export const DoughnutChart = (props: Props) => {
       <p>{l10n.getString("modal-active-number-of-exposures-part-two")}</p>
       <p>
         {l10n.getString(
-          props.isEligibleForPremium
+          includesDataBrokers
             ? "modal-active-number-of-exposures-part-three-premium"
             : "modal-active-number-of-exposures-part-three-all",
         )}
@@ -127,6 +130,18 @@ export const DoughnutChart = (props: Props) => {
           {l10n.getString("modal-cta-ok")}
         </Button>
       </div>
+    </div>
+  );
+
+  const modalContentFixed = (
+    <div className={styles.modalBodyContent}>
+      {l10n.getString(
+        includesDataBrokers
+          ? "modal-fixed-number-of-exposures-part-one"
+          : "modal-fixed-number-of-exposures-all",
+      )}
+      {includesDataBrokers &&
+        l10n.getString("modal-fixed-number-of-exposures-part-two")}
     </div>
   );
 
@@ -338,7 +353,7 @@ export const DoughnutChart = (props: Props) => {
             /* c8 ignore next */
             onDismiss={() => explainerDialogState.close()}
           >
-            {modalContent}
+            {props.isShowFixed ? modalContentFixed : modalContentActionNeeded}
           </Dialog>
         </ModalOverlay>
       )}
