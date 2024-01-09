@@ -240,7 +240,7 @@ export const View = (props: Props) => {
           scanLimitReached={props.scanLimitReached}
         />
       </div>
-      <Footer />
+      <Footer l10n={props.l10n} />
     </main>
   );
 };

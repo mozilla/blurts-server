@@ -2,16 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-"use client";
-
 import styles from "./Shell.module.scss";
 import Image from "next/image";
 import mozillaLogo from "../images/mozilla-logo.svg";
-import { useL10n } from "../../hooks/l10n";
+import { ExtendedReactLocalization } from "../../hooks/l10n";
 
-export const Footer = () => {
-  const l10n = useL10n();
-
+export const Footer = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
   return (
     <footer className={styles.footer}>
       <a

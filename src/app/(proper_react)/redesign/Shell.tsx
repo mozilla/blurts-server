@@ -81,7 +81,7 @@ export const Shell = (props: Props) => {
           </nav>
           <div className={styles.content}>
             <div className={styles.page}>{props.children}</div>
-            <Footer />
+            <Footer l10n={props.l10n} />
           </div>
         </div>
       </MobileShell>
