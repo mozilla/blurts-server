@@ -26,6 +26,7 @@ const FaqItem = (props: FaqItemProps) => {
   const { buttonProps } = useButton(
     {
       onPress: props.onExpandAnswer,
+      elementType: "dt",
     },
     buttonRef,
   );
@@ -36,7 +37,6 @@ const FaqItem = (props: FaqItemProps) => {
       <dt
         {...buttonProps}
         {...focusProps}
-        tabIndex={0}
         className={styles.faqQuestion}
         aria-expanded={props.isExpanded}
         aria-controls={`faq-${props.id}`}
