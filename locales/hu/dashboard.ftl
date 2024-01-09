@@ -47,29 +47,29 @@ progress-card-heres-what-we-fixed-headline-all = Itt van amit kijavított
 progress-card-manually-fixed-headline = Kézzel javítva
 dashboard-tab-label-action-needed = Intézkedés szükséges
 dashboard-tab-label-fixed = Javítva
-dashboard-exposures-all-fixed-label = Itt mindent javítottak!
-dashboard-exposures-area-headline = Az összes webhely megjelenítése, ahol az Ön adatai megjelennek
+dashboard-exposures-all-fixed-label = Itt minden javítva lett!
+dashboard-exposures-area-headline = Az összes webhely megjelenítése, ahol az Ön adatai kikerültek
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
 #   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
 dashboard-exposures-area-description-all-line1 =
     { $exposures_unresolved_num ->
-        [one] Az adatai { $exposures_unresolved_num } kikerülését találtuk.
-       *[other] { $exposures_unresolved_num } adatmegjelenítést találtunk.
+        [one] { $exposures_unresolved_num } adatkikerülést találtuk.
+       *[other] { $exposures_unresolved_num } adatkikerülést találtuk.
     }
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
 dashboard-exposures-area-description-all-line2 =
     { $data_breach_unresolved_num ->
-        [one] { $data_breach_unresolved_num } adatsértésben jelent meg.
-       *[other] { $data_breach_unresolved_num } adatvédelmi incidens miatt jelent meg.
+        [one] { $data_breach_unresolved_num } adatvédelmi incidensben jelent meg.
+       *[other] { $data_breach_unresolved_num } adatvédelmi incidensben jelent meg.
     }
 dashboard-fixed-area-headline-all = Összes javított expozíció megjelenítése
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Szűrő
 dashboard-exposures-filter-company = Cég
-dashboard-exposures-filter-date-found = Találás dátuma
+dashboard-exposures-filter-date-found = Találat dátuma
 dashboard-exposures-filter-date-found-last-seven-days = Elmúlt 7 nap
 dashboard-exposures-filter-date-found-last-thirty-days = Elmúlt 30 nap
 dashboard-exposures-filter-date-found-last-year = Tavaly

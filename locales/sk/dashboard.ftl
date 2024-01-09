@@ -72,6 +72,8 @@ dashboard-exposures-filter-reset = Vynulovať
 
 ## Top banner on the dashboard
 
+dashboard-top-banner-scan-in-progress-title = Skenovanie stále prebieha
+dashboard-top-banner-your-data-is-protected-title = Vaše údaje sú chránené
 dashboard-top-banner-your-data-is-protected-cta = Pozrite sa, čo je vyriešené
 # Variables:
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
@@ -93,6 +95,7 @@ dashboard-top-banner-non-us-protect-your-data-description-line1 =
        *[other] Našli sme { $exposures_unresolved_num } odhalení vašich údajov.
     }
 dashboard-top-banner-no-exposures-found-title = Neboli nájdené žiadne odhalenia
+dashboard-top-banner-non-us-no-exposures-found-description = Skvelá správa! Prehľadali sme všetky známe úniky údajov a nenašli sme žiadne odhalenia. Budeme naďalej sledovať vašu e‑mailovú adresu a upozorníme vás, ak dôjde k novému úniku.
 dashboard-no-exposures-label = Neboli nájdené žiadne odhalenia
 
 # About Exposure Statuses Modal
