@@ -18,11 +18,11 @@ exposure-chart-legend-heading-nr = Số
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
-exposure-chart-caption = Biểu đồ này hiển thị số lần thông tin của bạn bị rò rỉ.
+exposure-chart-caption = Biểu đồ này hiển thị số lần thông tin của bạn bị lộ.
 # Variables:
 #   $total_fixed_exposures_num (number) - Number of fixed exposures
 #   $total_exposures_num (number) - Number of total exposures
-exposure-chart-caption-fixed = Biểu đồ này hiển thị tổng số vụ rò rỉ đã giải quyết ({ $total_fixed_exposures_num } trên tổng số { $total_exposures_num })
+exposure-chart-caption-fixed = Biểu đồ này hiển thị tổng số dữ liệu bị lộ đã được giải quyết ({ $total_fixed_exposures_num } trên tổng số { $total_exposures_num })
 exposure-chart-returning-user-upgrade-prompt = Chưa bao gồm địa chỉ nhà, thành viên gia đình và nhiều thông tin khác.
 exposure-chart-returning-user-upgrade-prompt-cta = Bắt đầu quét miễn phí
 exposure-chart-scan-in-progress-prompt = <b>Đang quét:</b> chưa bao gồm địa chỉ, thành viên gia đình và nhiều thông tin khác.
@@ -30,7 +30,7 @@ modal-active-number-of-exposures-title = Về số vụ rò rỉ của bạn
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
 modal-active-number-of-exposures-part-one-all = Biểu đồ này bao gồm tổng số lần chúng tôi phát hiện từng loại dữ liệu bị lộ trong tất cả các vụ rò rỉ dữ liệu trong tối đa { $limit } địa chỉ email mà bạn hiện đang giám sát.
-modal-active-number-of-exposures-part-two = Ví dụ: nếu bạn có 10 lần rò rỉ số điện thoại của mình, điều đó có thể có nghĩa là một số điện thoại bị rò rỉ trên 10 trang web khác nhau hoặc có thể có nghĩa là 2 số điện thoại khác nhau, mỗi số bị rò rỉ trên 5 trang web khác nhau.
+modal-active-number-of-exposures-part-two = Ví dụ, nếu bạn có 10 lần rò rỉ số điện thoại của mình, điều đó có thể có nghĩa là một số điện thoại bị rò rỉ trên 10 trang web khác nhau hoặc có thể có nghĩa là 2 số điện thoại khác nhau, mỗi số bị rò rỉ trên 5 trang web khác nhau.
 modal-active-number-of-exposures-part-three-all = Khi chúng đã được giải quyết, chúng sẽ được thêm vào tổng số vụ rò rỉ đã giải quyết của bạn trên trang Đã giải quyết.
 modal-cta-ok = OK
 modal-open-alt = Mở
@@ -40,7 +40,7 @@ progress-card-manually-fixed-headline = Đã giải quyết thủ công
 dashboard-tab-label-action-needed = Cần hành động
 dashboard-tab-label-fixed = Đã giải quyết
 dashboard-exposures-all-fixed-label = Tất cả đã được giải quyết ở đây!
-dashboard-exposures-area-headline = Xem tất cả các trang web nơi thông tin của bạn bị rò rỉ
+dashboard-exposures-area-headline = Xem tất cả các trang web nơi thông tin của bạn bị lộ
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
 #   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
@@ -75,7 +75,7 @@ dashboard-top-banner-your-data-is-protected-cta = Xem những gì đã được 
 dashboard-top-banner-lets-keep-protecting-title = Hãy tiếp tục bảo vệ dữ liệu của bạn
 # Variables:
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
-dashboard-top-banner-lets-keep-protecting-description = Bạn vẫn còn { $exposures_unresolved_num } vụ rò rỉ chưa được giải quyết. Hãy tiếp tục và bảo vệ chính mình. Chúng tôi sẽ hướng dẫn bạn từng bước.
+dashboard-top-banner-lets-keep-protecting-description = Bạn vẫn còn { $exposures_unresolved_num } dữ liệu bị lộ chưa được giải quyết. Hãy tiếp tục và bảo vệ chính mình. Chúng tôi sẽ hướng dẫn bạn từng bước.
 dashboard-top-banner-lets-keep-protecting-cta = Hãy tiếp tục
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:

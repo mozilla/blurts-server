@@ -44,7 +44,7 @@ dashboard-exposures-area-headline = 查看暴露了您信息的所有网站
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
 #   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
-dashboard-exposures-area-description-all-line1 = 我们检测到您的数据有 { $exposures_unresolved_num } 次暴露。
+dashboard-exposures-area-description-all-line1 = 我们检测到您的数据存在 { $exposures_unresolved_num } 次暴露。
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
@@ -70,7 +70,7 @@ dashboard-exposures-filter-reset = 重置
 
 dashboard-top-banner-section-label = 面板摘要
 dashboard-top-banner-scan-in-progress-title = 您的扫描还在进行
-dashboard-top-banner-your-data-is-protected-title = 您的数据受到保护
+dashboard-top-banner-your-data-is-protected-title = 您的数据已受保护
 dashboard-top-banner-your-data-is-protected-cta = 看看处理了哪些暴露
 dashboard-top-banner-lets-keep-protecting-title = 让我们继续保护您的数据
 # Variables:
@@ -80,7 +80,7 @@ dashboard-top-banner-lets-keep-protecting-cta = 继续处理
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
-dashboard-top-banner-non-us-protect-your-data-description-line1 = 我们检测到您的数据有 { $exposures_unresolved_num } 次暴露。
+dashboard-top-banner-non-us-protect-your-data-description-line1 = 我们检测到您的数据存在 { $exposures_unresolved_num } 次暴露。
 # Note: this line is preceded by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $data_breach_unresolved_num (number) - the total number of data breaches the user has.
