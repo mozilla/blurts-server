@@ -5,7 +5,7 @@
 public-nav-name = { -brand-mozilla-monitor }
 landing-all-hero-title = Ontdek waar uw privégegevens zijn gelekt – en neem ze terug
 landing-all-hero-lead = We scannen datalekken om te zien of uw gegevens zijn gelekt en bieden u stappen om dit op te lossen.
-landing-all-hero-emailform-input-placeholder = uwnaam@voorbeeld.com
+landing-all-hero-emailform-input-placeholder = uwnaam@example.com
 landing-all-hero-emailform-input-label = Voer uw e-mailadres in om te controleren op datalekken.
 landing-all-hero-emailform-submit-label = Ontvang een gratis scan
 # This is a label underneath a big number "14" - it's an image that demos Monitor.

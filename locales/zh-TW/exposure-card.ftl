@@ -28,7 +28,7 @@ exposure-card-description-info-for-sale-part-two = 為了保護您的隱私，�
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = 您的資訊於 { $data_breach_date } 出現在 <data_breach_link>{ $data_breach_company } 的資料外洩事件中。</data_breach_link>
+exposure-card-description-data-breach-part-one = 您的資訊於 { $data_breach_date } 出現在 <data_breach_link>{ $data_breach_company }</data_breach_link> 的資料外洩事件中。
 exposure-card-description-data-breach-part-two = 我們將帶您逐步處理此問題。
 exposure-card-your-exposed-info = 您曝光的資訊：
 exposure-card-exposure-type-data-broker = 資訊被出售
