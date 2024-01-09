@@ -6,7 +6,7 @@
 
 import { ReactNode, useRef, useState } from "react";
 import { useL10n } from "../../../hooks/l10n";
-import styles from "./LandingView.module.scss";
+import styles from "./Faq.module.scss";
 import { CloseBigIcon } from "../../../components/server/Icons";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { useButton, useFocusRing } from "react-aria";
