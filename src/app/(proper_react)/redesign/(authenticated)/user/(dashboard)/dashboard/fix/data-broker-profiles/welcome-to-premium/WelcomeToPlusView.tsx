@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import styles from "./welcomeToPremium.module.scss";
+import styles from "./welcomeToPlus.module.scss";
 import { PercentageChart } from "../../../../../../../../../components/client/PercentageChart";
 import {
   getDashboardSummary,
@@ -22,7 +22,7 @@ export type Props = {
   l10n: ExtendedReactLocalization;
 };
 
-export function WelcomeToPremiumView(props: Props) {
+export function WelcomeToPlusView(props: Props) {
   const l10n = props.l10n;
 
   const countOfDataBrokerProfiles =

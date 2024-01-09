@@ -9,7 +9,7 @@ import { authOptions } from "../../../../../../../../../api/utils/auth";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { redirect } from "next/navigation";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getUserBreaches";
-import { WelcomeToPremiumView } from "./WelcomeToPremiumView";
+import { WelcomeToPlusView } from "./WelcomeToPlusView";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
@@ -52,7 +52,7 @@ export default async function WelcomeToPremiumPage() {
   await activateAndOptoutProfile(profileId);
 
   return (
-    <WelcomeToPremiumView
+    <WelcomeToPlusView
       data={data}
       subscriberEmails={subscriberEmails}
       l10n={getL10n()}

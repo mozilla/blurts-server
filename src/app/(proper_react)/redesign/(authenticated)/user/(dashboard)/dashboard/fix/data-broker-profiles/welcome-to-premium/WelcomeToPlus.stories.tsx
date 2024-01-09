@@ -4,7 +4,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { OnerepScanRow } from "knex/types/tables";
-import { WelcomeToPremiumView } from "./WelcomeToPremiumView";
+import { WelcomeToPlusView } from "./WelcomeToPlusView";
 import {
   createRandomBreach,
   createRandomScanResult,
@@ -39,21 +39,21 @@ const mockedSession = {
   user: user,
 };
 
-const meta: Meta<typeof WelcomeToPremiumView> = {
-  title: "Pages/Guided resolution/1e. Welcome to Premium",
-  component: WelcomeToPremiumView,
+const meta: Meta<typeof WelcomeToPlusView> = {
+  title: "Pages/Guided resolution/1e. Welcome to Plus",
+  component: WelcomeToPlusView,
 };
 export default meta;
-type Story = StoryObj<typeof WelcomeToPremiumView>;
+type Story = StoryObj<typeof WelcomeToPlusView>;
 
 const l10n = getOneL10nSync();
 
 export const ManualRemoveViewStory: Story = {
-  name: "1e. Welcome to Premium",
+  name: "1e. Welcome to Plus",
   render: () => {
     return (
       <Shell l10n={l10n} session={mockedSession} nonce="">
-        <WelcomeToPremiumView
+        <WelcomeToPlusView
           data={{
             countryCode: "us",
             latestScanData: mockedScanData,
