@@ -46,11 +46,13 @@ const meta: Meta<typeof WelcomeToPremiumView> = {
 export default meta;
 type Story = StoryObj<typeof WelcomeToPremiumView>;
 
+const l10n = getOneL10nSync();
+
 export const ManualRemoveViewStory: Story = {
   name: "1e. Welcome to Premium",
   render: () => {
     return (
-      <Shell l10n={getOneL10nSync()} session={mockedSession} nonce="">
+      <Shell l10n={l10n} session={mockedSession} nonce="">
         <WelcomeToPremiumView
           data={{
             countryCode: "us",
@@ -58,6 +60,7 @@ export const ManualRemoveViewStory: Story = {
             subscriberBreaches: mockedBreaches,
             user: mockedSession.user,
           }}
+          l10n={l10n}
           subscriberEmails={[]}
         />
       </Shell>

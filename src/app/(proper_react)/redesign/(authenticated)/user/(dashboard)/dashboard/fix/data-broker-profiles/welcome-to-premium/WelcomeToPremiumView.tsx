@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import styles from "./welcomeToPremium.module.scss";
-import { getL10n } from "../../../../../../../../../functions/server/l10n";
 import { PercentageChart } from "../../../../../../../../../components/client/PercentageChart";
 import {
   getDashboardSummary,
@@ -15,14 +14,16 @@ import {
   getNextGuidedStep,
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../../FixView";
+import { ExtendedReactLocalization } from "../../../../../../../../../hooks/l10n";
 
 export type Props = {
   data: StepDeterminationData;
   subscriberEmails: string[];
+  l10n: ExtendedReactLocalization;
 };
 
 export function WelcomeToPremiumView(props: Props) {
-  const l10n = getL10n();
+  const l10n = props.l10n;
 
   const countOfDataBrokerProfiles =
     props.data.latestScanData?.results.length ?? 0;

@@ -15,6 +15,7 @@ import { StepDeterminationData } from "../../../../../../../../../functions/serv
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { activateAndOptoutProfile } from "../../../../../../../../../functions/server/onerep";
 import { logger } from "../../../../../../../../../functions/server/logging";
+import { getL10n } from "../../../../../../../../../functions/server/l10n";
 
 export default async function WelcomeToPremiumPage() {
   const session = await getServerSession(authOptions);
@@ -51,6 +52,10 @@ export default async function WelcomeToPremiumPage() {
   await activateAndOptoutProfile(profileId);
 
   return (
-    <WelcomeToPremiumView data={data} subscriberEmails={subscriberEmails} />
+    <WelcomeToPremiumView
+      data={data}
+      subscriberEmails={subscriberEmails}
+      l10n={getL10n()}
+    />
   );
 }
