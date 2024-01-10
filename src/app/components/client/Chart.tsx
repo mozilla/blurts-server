@@ -347,7 +347,11 @@ export const DoughnutChart = (props: Props) => {
           isDismissable={true}
         >
           <Dialog
-            title={l10n.getString("modal-active-number-of-exposures-title")}
+            title={
+              props.isShowFixed
+                ? l10n.getString("modal-fixed-number-of-exposures-title")
+                : l10n.getString("modal-active-number-of-exposures-title")
+            }
             illustration={<Image src={ModalImage} alt="" />}
             // TODO: Add unit test when changing this code:
             /* c8 ignore next */
