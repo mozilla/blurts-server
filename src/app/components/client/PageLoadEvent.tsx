@@ -7,9 +7,9 @@
 import { useEffect, useMemo } from "react";
 import { useCookies } from "react-cookie";
 import { usePathname } from "next/navigation";
-import { FeatureFlagName } from "../../../../db/tables/featureFlags";
-import { useTelemetry } from "../../../hooks/useTelemetry";
-import { GleanMetricMap } from "../../../../telemetry/generated/_map";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
+import { useTelemetry } from "../../hooks/useTelemetry";
+import { GleanMetricMap } from "../../../telemetry/generated/_map";
 
 export type Props = {
   userId: string;
