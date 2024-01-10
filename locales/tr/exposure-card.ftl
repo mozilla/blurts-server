@@ -9,6 +9,7 @@ chevron-up-alt = Daralt
 
 status-pill-action-needed = İşlem gerekli
 status-pill-progress = Devam ediyor
+status-pill-fixed = Düzeltildi
 
 # Exposure Card
 
@@ -26,6 +27,9 @@ exposure-card-exposure-type-data-broker = Satılık bilgiler
 exposure-card-exposure-type-data-breach = Veri ihlali
 exposure-card-label-company-logo = Şirket logosu
 exposure-card-label-company = Şirket
+exposure-card-label-date-found = Bulunma tarihi
+# Status of the exposure card, could be In Progress, Fixed or Action Needed
+exposure-card-label-status = Durum
 # Variables:
 # $category_label is the data breach exposure type that was leaked. Eg. Email, IP Address.
 # $count is the number of times that the data type was leaked.

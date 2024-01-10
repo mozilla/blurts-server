@@ -22,7 +22,7 @@ exposure-chart-caption = 此图表展示了您信息正在暴露的次数。
 # Variables:
 #   $total_fixed_exposures_num (number) - Number of fixed exposures
 #   $total_exposures_num (number) - Number of total exposures
-exposure-chart-caption-fixed = 此图标展示了已处理的暴露总数（共 { $total_exposures_num } 起，已处理 { $total_fixed_exposures_num } 起）
+exposure-chart-caption-fixed = 此图表展示了已处理的暴露总数（共 { $total_exposures_num } 次，已处理其中 { $total_fixed_exposures_num } 次）
 exposure-chart-returning-user-upgrade-prompt = 家庭地址、家庭成员等未包括在内。
 exposure-chart-returning-user-upgrade-prompt-cta = 免费扫描
 exposure-chart-scan-in-progress-prompt = <b>正在扫描：</b>地址、家庭成员等未包括在内。
@@ -35,7 +35,7 @@ modal-active-number-of-exposures-part-three-all = 问题解决后，就会添加
 modal-cta-ok = 确定
 modal-open-alt = 打开
 modal-close-alt = 关闭
-progress-card-heres-what-we-fixed-headline-all = 已处理的事件
+progress-card-heres-what-we-fixed-headline-all = 已处理的项目
 progress-card-manually-fixed-headline = 已手动处理
 dashboard-tab-label-action-needed = 需要处理
 dashboard-tab-label-fixed = 已处理
