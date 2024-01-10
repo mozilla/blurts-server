@@ -24,6 +24,7 @@ export default async function SettingsPage() {
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
+  const fxaSubscriptionsUrl = process.env.FXA_SUBSCRIPTIONS_URL!;
 
   const allBreaches = await getBreaches();
   const breachCountByEmailAddress: Record<string, number> = {};
@@ -47,6 +48,7 @@ export default async function SettingsPage() {
       emailAddresses={emailAddresses}
       breachCountByEmailAddress={breachCountByEmailAddress}
       fxaSettingsUrl={fxaSettingsUrl}
+      fxaSubscriptionsUrl={fxaSubscriptionsUrl}
       monthlySubscriptionUrl={monthlySubscriptionUrl}
       yearlySubscriptionUrl={yearlySubscriptionUrl}
     />
