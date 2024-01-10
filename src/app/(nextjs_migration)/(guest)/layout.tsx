@@ -14,11 +14,10 @@ import { SignInButton } from "../components/client/SignInButton";
 import { getL10n } from "../../functions/server/l10n";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../api/utils/auth";
-import { cookies } from "next/headers";
-import { randomUUID } from "crypto";
 import { PageLoadEvent } from "../components/client/PageLoadEvent";
 import { getExperiments } from "../../functions/server/getExperiments";
 import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
+import { getUserId } from "../../functions/server/getUserId";
 
 export type Props = {
   children: ReactNode;
@@ -29,26 +28,7 @@ const GuestLayout = async (props: Props) => {
 
   // If the user is logged in, use UUID derived from FxA UID as Nimbus user ID.
   const session = await getServerSession(authOptions);
-  const accountId = session?.user?.subscriber?.fxa_uid;
-  let userId = "";
-
-  if (accountId && typeof accountId === "string") {
-    // If the user is logged in, use the FxA User ID.
-    // Note: we may want to use the FxA UID here, but we need approval for that first.
-    userId = accountId;
-  } else {
-    // if the user is not logged in, use a cookie with a randomly-generated Nimbus user ID.
-    // TODO: could we use client ID for this? There's no supported way to get it from GleanJS.
-    const cookie = cookies().get("userId");
-    if (cookie) {
-      userId = cookie.value;
-    } else {
-      // TODO Cookies can only be set in server action or route handler
-      // @see https://nextjs.org/docs/app/api-reference/functions/cookies#cookiessetname-value-options
-      // This is set client-side in PageLoadEvent.
-      userId = `guest-${randomUUID()}`;
-    }
-  }
+  const userId = getUserId(session);
 
   if (!userId) {
     logger.error("No user ID for Nimbus telemetry");
