@@ -40,7 +40,7 @@ landing-all-data-breach-info-ans = 每場事件外洩的資訊不一定相同，
 # $num_users is the number of users in the millions.
 landing-all-social-proof-title =
     { $num_users ->
-       *[other] 受全球 { $num_users } 百萬使用者信任
+       *[other] 受全球 { NUMBER($num_users, maximumFractionDigits: 0) }00 萬使用者信任
     }
 # Variables
 # $num_countries is the number of countries available.

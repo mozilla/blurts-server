@@ -51,8 +51,11 @@ dashboard-exposures-filter-reset = Reinitialisar
 
 dashboard-top-banner-section-label = Summario pannello de controlo
 dashboard-top-banner-your-data-is-protected-title = Tu datos es protegite
+dashboard-top-banner-your-data-is-protected-cta = Vide cosa ha essite remediate.
+dashboard-top-banner-lets-keep-protecting-cta = Que nos persevera
 dashboard-top-banner-no-exposures-found-title = Nulle expositiones trovate.
 dashboard-no-exposures-label = Nulle expositiones trovate.
+dashboard-top-banner-monitor-more-cta = Surveliar plus emails
 
 # About Exposure Statuses Modal
 

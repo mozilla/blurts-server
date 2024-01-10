@@ -140,6 +140,16 @@ security-recommendation-steps-cta-label = Iawn!
 # Phone security recommendation
 
 security-recommendation-phone-title = Diogelwch eich rhif ffôn
+# $num_breaches is the number of breaches where the phone number was found.
+security-recommendation-phone-summary =
+    { $num_breaches ->
+        [zero] Amlygwyd eich rhif ffôn mewn { $num_breaches } toriad data:
+        [one] Amlygwyd eich rhif ffôn mewn { $num_breaches } toriad data:
+        [two] Amlygwyd eich rhif ffôn mewn { $num_breaches } doriad data:
+        [few] Amlygwyd eich rhif ffôn mewn { $num_breaches } thoriad data:
+        [many] Amlygwyd eich rhif ffôn mewn { $num_breaches } thoriad data:
+       *[other] Amlygwyd eich rhif ffôn mewn { $num_breaches } toriad data:
+    }
 security-recommendation-phone-description = Yn anffodus ni allwch ei gymryd yn ôl. Ond mae yna gamau y gallwch eu cymryd i sicrhau eich bod yn aros yn ddiogel.
 security-recommendation-phone-step-one = Rhwystro rhifau sbam i atal mwy o alwadau sothach
 security-recommendation-phone-step-two = Peidiwch â chlicio ar ddolenni mewn testunau gan anfonwyr anhysbys; os yw'n ymddangos ei fod o ffynhonnell ddibynadwy, ffoniwch yn uniongyrchol i gadarnhau
@@ -166,11 +176,24 @@ security-recommendation-email-step-four = Defnyddiwch <link_to_info>{ -brand-rel
 # IP security recommendation
 
 security-recommendation-ip-title = Defnyddiwch VPN i gael preifatrwydd ychwanegol
+# $num_breaches is the number of breaches where the IP address was found.
+security-recommendation-ip-summary =
+    { $num_breaches ->
+        [zero] Amlygwyd eich cyfeiriad IP mewn { $num_breaches } toriad data:
+        [one] Amlygwyd eich cyfeiriad IP mewn { $num_breaches } toriad data:
+        [two] Amlygwyd eich cyfeiriad IP mewn { $num_breaches } doriad data:
+        [few] Amlygwyd eich cyfeiriad IP mewn { $num_breaches } thoriad data:
+        [many] Amlygwyd eich cyfeiriad IP mewn { $num_breaches } thoriad data:
+       *[other] Amlygwyd eich cyfeiriad IP mewn { $num_breaches } thoriad data:
+    }
 security-recommendation-ip-description = Mae eich cyfeiriad IP yn nodi'ch lleoliad a'ch darparwr gwasanaeth rhyngrwyd. Gallai hacwyr ddefnyddio'r wybodaeth hon i ddod o hyd i'ch lleoliad neu geisio cysylltu â'ch dyfeisiau.
 security-recommendation-ip-step-one = Defnyddiwch VPN (fel <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) i guddio'ch cyfeiriad IP go iawn a defnyddio'r rhyngrwyd yn breifat.
 
 # Leaked Passwords
 
+# Variables
+# $breach_name is the name of the breach where the leaked password was found.
+leaked-passwords-title = Datgelwyd eich cyfrinair gan { $breach_name }
 # Variables
 # $breach_date is the date when the breach occurred.
 leaked-passwords-summary = Ymddangosodd mewn toriad data ar { $breach_date }.
@@ -201,6 +224,11 @@ leaked-passwords-estimated-time =
 # Leaked Security Questions
 
 leaked-security-questions-title = Datgelwyd eich cwestiynau diogelwch
+# Variables
+# $breach_name is the name of the breach where the leaked security questions were found.
+# $breach_date is the date when the breach occurred.
+# An example of this string is Twitter on 13/09/18.
+leaked-security-questions-summary = Mae nhw wedi ymddangos mewn toriad data ar { $breach_name } ar { $breach_date }.
 leaked-security-questions-description = Gall sgamwyr ddefnyddio'r rhain i gael mynediad i'ch cyfrifon, ac unrhyw wefan arall lle rydych chi wedi defnyddio'r un cwestiynau diogelwch. Diweddarwch nhw nawr i amddiffyn eich cyfrifon.
 leaked-security-questions-steps-title = Dyma beth i'w wneud
 leaked-security-questions-steps-subtitle = Mae hyn yn gofyn am fynediad i'ch cyfrif, felly bydd angen i chi ei drwsio â llaw.

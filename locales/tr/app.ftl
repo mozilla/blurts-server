@@ -44,6 +44,7 @@ user-add-duplicate-email = Bu e-posta zaten { -product-name }'e eklenmiş.
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = { $userEmail } adresinin durumunu kontrol etmek için { $preferencesLink }inizi ziyaret edin.
+user-add-verification-email-just-sent = Bu kadar sıra sürede başka doğrulama e-postası gönderemiyoruz. Lütfen daha sonra yeniden deneyin.
 user-add-unknown-error = Başka bir e-posta adresi eklenirken bir sorun oluştu. Lütfen daha sonra yeniden deneyin.
 error-headline = Hata
 user-verify-token-error = Doğrulama jetonu gerekli.
@@ -695,6 +696,7 @@ main-nav-button-collapse-tooltip = Menüyü daralt
 main-nav-button-expand-label = Menüyü genişlet
 main-nav-button-expand-tooltip = Menüyü genişlet
 main-nav-label = Gezinti
+main-nav-link-home-label = Ana sayfa
 main-nav-link-dashboard-label = Kontrol paneli
 main-nav-link-settings-label = Ayarlar
 main-nav-link-faq-label = SSS

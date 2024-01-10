@@ -6,8 +6,8 @@ fix-flow-nav-high-risk-data-breaches = Fuites de données à haut risque
 fix-flow-nav-leaked-passwords = Mots de passe divulgués
 fix-flow-nav-security-recommendations = Recommandations de sécurité
 guided-resolution-flow-exit = Retourner au tableau de bord
-guided-resolution-flow-back-arrow = Aller à l’étape précédente
-guided-resolution-flow-next-arrow = Aller à l’étape suivante
+guided-resolution-flow-back-arrow = Revenir à l’étape précédente
+guided-resolution-flow-next-arrow = Passer à l’étape suivante
 guided-resolution-flow-step-navigation-label = Étapes guidées
 
 # Celebration screens
@@ -58,8 +58,8 @@ high-risk-breach-summary =
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
 high-risk-breach-name-and-date = { $breach_name } <breach_date>le { $breach_date }</breach_date>
-high-risk-breach-mark-as-fixed = Marquer comme corrigé
-high-risk-breach-skip = Passer pour le moment
+high-risk-breach-mark-as-fixed = Marquer comme résolue
+high-risk-breach-skip = Ignorer pour l’instant
 
 # Credit Card Breaches
 
