@@ -191,7 +191,7 @@ export async function POST(request: NextRequest) {
           event
         ] as ProfileChangeEvent;
         logger.info("fxa_profile_update", {
-          subscriber: subscriber.id,
+          subscriber_id: subscriber.id,
           event,
           updatedProfileFromEvent,
         });
@@ -245,14 +245,16 @@ export async function POST(request: NextRequest) {
         const result = await getOnerepProfileId(subscriber.id);
         const oneRepProfileId = result?.[0]?.["onerep_profile_id"] as number;
 
-        logger.info("fxa_subscription_change", JSON.stringify(result));
+        logger.info("get_onerep_profile", {
+          subscriber_id: subscriber.id,
+          result: JSON.stringify(result),
+        });
 
         // MNTOR-2103: if one rep profile id doesn't exist in the db, fail silently
         if (!oneRepProfileId) {
-          logger.error(
-            "No OneRep profile Id found, subscriber: ",
-            subscriber.id,
-          );
+          logger.error("onerep_profile_not_found", {
+            subscriber_id: subscriber.id,
+          });
 
           captureException(
             new Error(`No OneRep profile Id found, subscriber: ${
@@ -274,6 +276,9 @@ export async function POST(request: NextRequest) {
             // activate and opt out profiles
             await activateProfile(oneRepProfileId);
             await optoutProfile(oneRepProfileId);
+            logger.info("activated_onerep_profile", {
+              subscriber_id: subscriber.id,
+            });
           } else if (
             !updatedSubscriptionFromEvent.isActive &&
             updatedSubscriptionFromEvent.capabilities.includes(
@@ -282,6 +287,9 @@ export async function POST(request: NextRequest) {
           ) {
             // deactivation stops opt out process
             await deactivateProfile(oneRepProfileId);
+            logger.info("deactivated_onerep_profile", {
+              subscriber_id: subscriber.id,
+            });
           }
         } catch (e) {
           captureException(
