@@ -60,5 +60,5 @@ landing-all-help-protect-you-feature-one = Te buscaremos en todas las filtracion
 landing-all-help-protect-you-feature-two = Te guiaremos a través de los pasos necesarios para resolver cada filtración
 landing-all-help-protect-you-feature-three = Monitorearemos continuamente y te enviaremos alertas sobre cualquier nueva filtración.
 landing-all-help-protect-you-cta = Registrate para recibir alertas de filtraciones
-landing-all-get-started = Escanea tu correo electrónico para empezar
+landing-all-get-started = Escaneá tu correo electrónico para empezar
 landing-all-take-back-data = Recuperá el control de tus datos

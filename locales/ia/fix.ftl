@@ -109,7 +109,10 @@ high-risk-breach-pin-step-three = Verifica tu contos pro debitos non autorisate.
 
 # No high risk breaches found
 
+high-risk-breach-none-title = Grande novas, nos non trovava alcun violationes de datos a alte risco
+high-risk-breach-none-sub-description-part-one = Violationes de datos a alte risco include:
 high-risk-breach-none-sub-description-ssn = Numero de securitate social
+high-risk-breach-none-sub-description-bank-account = Informationes de conto bancari
 high-risk-breach-none-sub-description-cc-number = Numeros de carta de credito
 high-risk-breach-none-sub-description-pin = PINs
 high-risk-breach-none-continue = Continuar
@@ -117,6 +120,7 @@ high-risk-breach-none-continue = Continuar
 # Security recommendations
 
 security-recommendation-steps-label = Recommendationes de securitate
+security-recommendation-steps-title = Ecce nostre consilio:
 security-recommendation-steps-cta-label = OK
 
 # Phone security recommendation
@@ -132,6 +136,8 @@ security-recommendation-email-title = Protege tu adresse email
 
 # Leaked Passwords
 
+leaked-passwords-steps-title = Ecce que facer
+leaked-passwords-steps-subtitle = Isto require accesso a tu conto, assi tu debera manualmente corriger lo.
 leaked-passwords-skip = Saltar pro iste momento
 
 # Leaked Security Questions

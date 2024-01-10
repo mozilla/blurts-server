@@ -20,7 +20,10 @@ exposure-card-credit-card = Carta de credito
 exposure-card-password = Contrasigno
 exposure-card-ip-address = Adresse IP
 exposure-card-other = Altero
+exposure-card-exposure-type-data-breach = Violation de datos
+exposure-card-label-company-logo = Logo del interprisa
 exposure-card-label-company = Interprisa
+exposure-card-label-exposure-type = Typo de exposition
 exposure-card-label-date-found = Data de relevamento
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Stato
