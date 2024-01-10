@@ -7,7 +7,7 @@ fix-flow-nav-leaked-passwords = Uniklá hesla
 fix-flow-nav-security-recommendations = Bezpečnostní doporučení
 guided-resolution-flow-exit = Zpět na nástěnku
 guided-resolution-flow-back-arrow = Přejít na předchozí krok
-guided-resolution-flow-next-arrow = Přejde na další krok
+guided-resolution-flow-next-arrow = Přejít na další krok
 guided-resolution-flow-step-navigation-label = Návody
 
 # Celebration screens
@@ -44,7 +44,7 @@ fix-flow-celebration-security-recommendations-description-next-dashboard = Výbo
 
 # High Risk Data Breaches
 
-high-risk-breach-heading = Co dělat
+high-risk-breach-heading = Zde je návod, jak postupovat
 high-risk-breach-subheading = Tento problém vyžaduje přístup k vašim citlivým údajům, které proto musíte opravit ručně.
 # Variables
 # $num_breaches is the number of breaches where the high risk data was found.
@@ -59,7 +59,7 @@ high-risk-breach-summary =
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
 high-risk-breach-name-and-date = { $breach_name } <breach_date> dne { $breach_date }</breach_date>
-high-risk-breach-mark-as-fixed = Označit jako opravené
+high-risk-breach-mark-as-fixed = Označit jako vyřešené
 high-risk-breach-skip = Nyní přeskočit
 # Variables:
 # $estimated_time is the estimated time it would take for a user to complete breach resolution steps. It not be singular, and the + is meant as "or more".
@@ -128,7 +128,7 @@ high-risk-breach-none-continue = Pokračovat
 # Security recommendations
 
 security-recommendation-steps-label = Bezpečnostní doporučení
-security-recommendation-steps-title = Naše rady:
+security-recommendation-steps-title = Zde je naše rada:
 security-recommendation-steps-cta-label = Rozumím
 
 # Phone security recommendation
@@ -190,7 +190,7 @@ leaked-passwords-steps-subtitle = Tato chyba vyžaduje přístup k vašemu účt
 # $emails_affected are the emails associated with the breach.
 leaked-passwords-step-one = Změňte si své heslo pro <b>{ $emails_affected }</b> na <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
 leaked-passwords-step-two = Změňte ho všude tam, kde jste ho použili.
-leaked-passwords-mark-as-fixed = Označit jako opravené
+leaked-passwords-mark-as-fixed = Označit jako vyřešené
 leaked-passwords-skip = Nyní přeskočit
 # Variables
 # $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
@@ -212,7 +212,7 @@ leaked-security-questions-title = Vaše bezpečnostní otázky byly odhaleny
 # An example of this string is Twitter on 13/09/18.
 leaked-security-questions-summary = Objevily se v úniku dat z { $breach_name } dne { $breach_date }.
 leaked-security-questions-description = Podvodníci je mohou použít pro přístup k vašim účtům a jakýmkoli dalším stránkám, kde jste použili stejné bezpečnostní otázky. Pro ochranu vašich účtů je aktualizujte.
-leaked-security-questions-steps-title = Co dělat
+leaked-security-questions-steps-title = Zde je návod, jak postupovat
 leaked-security-questions-steps-subtitle = Tato chyba vyžaduje přístup k vašemu účtu, takže ji budete muset opravit ručně.
 # Variables
 # $breach_name is the name of the breach where the security questions were found.

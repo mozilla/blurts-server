@@ -62,8 +62,8 @@ dashboard-exposures-area-description-all-line1 =
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
 dashboard-exposures-area-description-all-line2 =
     { $data_breach_unresolved_num ->
-        [one] Apareció en { $data_breach_unresolved_num } filtración de datos.
-       *[other] Apareció en { $data_breach_unresolved_num } filtraciones de datos.
+        [one] Apareciste en { $data_breach_unresolved_num } filtración de datos.
+       *[other] Apareciste en { $data_breach_unresolved_num } filtraciones de datos.
     }
 dashboard-fixed-area-headline-all = Ver todas las exposiciones que están arregladas
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
@@ -110,8 +110,8 @@ dashboard-top-banner-non-us-protect-your-data-description-line1 =
 #   $data_breach_unresolved_num (number) - the total number of data breaches the user has.
 dashboard-top-banner-non-us-protect-your-data-description-line2 =
     { $data_breach_unresolved_num ->
-        [one] Apareció en { $data_breach_unresolved_num } filtración de datos. Te guiaremos paso a paso para solucionarlo.
-       *[other] Apareció en { $data_breach_unresolved_num } filtraciones de datos. Te guiaremos paso a paso para solucionarlo.
+        [one] Apareciste en { $data_breach_unresolved_num } filtración de datos. Te guiaremos paso a paso para solucionarlo.
+       *[other] Apareciste en { $data_breach_unresolved_num } filtraciones de datos. Te guiaremos paso a paso para solucionarlo.
     }
 dashboard-top-banner-no-exposures-found-title = No se encontraron exposiciones
 dashboard-top-banner-non-us-no-exposures-found-description = ¡Buenas noticias! Buscamos todas las filtraciones de datos conocidas y no encontramos exposiciones. Seguiremos monitoreando tu dirección de correo electrónico y te avisaremos si ocurre una nueva filtración.

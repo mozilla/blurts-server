@@ -9,6 +9,7 @@ import {
   queryByRole,
   render,
   screen,
+  within,
 } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
@@ -508,7 +509,7 @@ it("opens and closes the premium upsell dialog via the Premium upsell badge)", a
   ).not.toBeInTheDocument();
 });
 
-it("opens and closes the premium upsell dialog via the Premium upsell button)", async () => {
+it("opens and closes the premium upsell dialog via the Premium upsell button", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumEmptyScanResolvedBreaches,
@@ -568,6 +569,126 @@ it("toggles between the product offerings in the premium upsell dialog", async (
     name: "Select monthly plan",
   });
   expect(productMontlyCta).toBeInTheDocument();
+});
+
+it("shows chart tooltip on the action needed tab, non-US user", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  const chartCaption = screen.getByText(
+    "This chart shows how many times your info is actively exposed.",
+  );
+  expect(chartCaption).toBeInTheDocument();
+  const chartTooltip = within(chartCaption).getByRole("button", {
+    name: "Open",
+  });
+  expect(chartTooltip).toBeInTheDocument();
+  await user.click(chartTooltip);
+
+  expect(
+    screen.getByRole("dialog", {
+      name: "About your number of active exposures",
+    }),
+  ).toBeInTheDocument();
+
+  const dialogContentPart = screen.getByText(
+    "This chart includes the total number of times we found each type of data exposed across all data breaches for up to ⁨5⁩ email addresses that you are currently monitoring.",
+  );
+  expect(dialogContentPart).toBeInTheDocument();
+});
+
+it("shows chart tooltip on the fixed tab, non-US user", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  const fixedTab = screen.getByText("Fixed");
+  await user.click(fixedTab);
+
+  const chartCaption = screen.getByText(
+    "This chart shows the total exposures that are fixed (⁨0⁩ out of ⁨0⁩)",
+  );
+  expect(chartCaption).toBeInTheDocument();
+  const chartTooltip = within(chartCaption).getByRole("button", {
+    name: "Open",
+  });
+  expect(chartTooltip).toBeInTheDocument();
+  await user.click(chartTooltip);
+
+  expect(
+    screen.getByRole("dialog", {
+      name: "About your number of fixed exposures",
+    }),
+  ).toBeInTheDocument();
+
+  const dialogContentPart = screen.getByText(
+    "This chart includes the total number of data breaches that have been fixed for all email addresses you’re currently monitoring. Once exposures are marked as fixed, they’ll be added to the total here.",
+  );
+  expect(dialogContentPart).toBeInTheDocument();
+});
+
+it("shows chart tooltip on the action needed tab, US user", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const chartCaption = screen.getByText(
+    "This chart shows how many times your info is actively exposed.",
+  );
+  expect(chartCaption).toBeInTheDocument();
+  const chartTooltip = within(chartCaption).getByRole("button", {
+    name: "Open",
+  });
+  expect(chartTooltip).toBeInTheDocument();
+  await user.click(chartTooltip);
+
+  expect(
+    screen.getByRole("dialog", {
+      name: "About your number of active exposures",
+    }),
+  ).toBeInTheDocument();
+
+  const dialogContentPart = screen.getByText(
+    "This chart includes the total number of times we found each type of data exposed across all data broker profiles and all data breaches for up to ⁨5⁩ email addresses that you are currently monitoring.",
+  );
+  expect(dialogContentPart).toBeInTheDocument();
+});
+
+it("shows chart tooltip on the fixed tab, US user", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const fixedTab = screen.getByText("Fixed");
+  await user.click(fixedTab);
+
+  const chartCaption = screen.getByText(
+    "This chart shows the total exposures that are fixed (⁨0⁩ out of ⁨0⁩)",
+  );
+  expect(chartCaption).toBeInTheDocument();
+  const chartTooltip = within(chartCaption).getByRole("button", {
+    name: "Open",
+  });
+  expect(chartTooltip).toBeInTheDocument();
+  await user.click(chartTooltip);
+
+  expect(
+    screen.getByRole("dialog", {
+      name: "About your number of fixed exposures",
+    }),
+  ).toBeInTheDocument();
+
+  const dialogContentPart = screen.getByText(
+    "This chart includes the total number of exposures that have been fixed across all data broker profiles and data breaches.It does not include any exposures that are in progress of being auto-removed. Once they are fully removed, they’ll be added to the total here.",
+  );
+  expect(dialogContentPart).toBeInTheDocument();
 });
 
 it("counts in Glean how often people click the upgrade CTA to purchase the monthly plan", async () => {
@@ -2357,6 +2478,56 @@ it("explains what 'in progress' means for Plus users", async () => {
   expect(
     screen.getByText("This is a ⁨Monitor Plus⁩ feature.", { exact: false }),
   ).toBeInTheDocument();
+});
+
+it("does not show the 'exposure type' column for users who cannot scan for exposures other than data breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardNonUsUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  // List items apparently don't have get their accessible name  from the
+  // content by default, so we can't use `getByRole("listitem")`. See
+  // https://stackoverflow.com/a/63080940:
+  const exposureTypeColumnHeader = screen.queryByText("Exposure type", {
+    selector: "li",
+    exact: false,
+  });
+  // Likewise, `term`s and `definitions don't get their accessible name from the
+  // content by default either, so we can't use `getByRole("term")`. See
+  // https://github.com/testing-library/dom-testing-library/issues/1083#issuecomment-1003096525
+  const exposureTypeCardLabels = screen.queryAllByText("Exposure type", {
+    selector: "dt",
+    exact: false,
+  });
+  expect(exposureTypeColumnHeader).not.toBeInTheDocument();
+  expect(exposureTypeCardLabels).toHaveLength(0);
+});
+
+it("shows the 'exposure type' column for users who can scan for exposures other than data breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  // List items apparently don't have get their accessible name  from the
+  // content by default, so we can't use `getByRole("listitem")`. See
+  // https://stackoverflow.com/a/63080940:
+  const exposureTypeColumnHeader = screen.getByText("Exposure type", {
+    selector: "li",
+    exact: false,
+  });
+  // Likewise, `term`s and `definitions don't get their accessible name from the
+  // content by default either, so we can't use `getByRole("term")`. See
+  // https://github.com/testing-library/dom-testing-library/issues/1083#issuecomment-1003096525
+  const exposureTypeCardLabels = screen.getAllByText("Exposure type", {
+    selector: "dt",
+    exact: false,
+  });
+  expect(exposureTypeColumnHeader).toBeInTheDocument();
+  expect(exposureTypeCardLabels.length).toBeGreaterThan(0);
 });
 
 // Check dashboard banner content for story DashboardInvalidNonPremiumUserScanUnresolvedInProgressResolvedBreaches

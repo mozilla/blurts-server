@@ -249,22 +249,24 @@ export const ExposuresFilter = ({
           <li className={`${styles.hideOnMobile} ${styles.companyNameArea}`}>
             {l10n.getString("dashboard-exposures-filter-company")}
           </li>
-          <li className={styles.hideOnMobile}>
-            {l10n.getString("dashboard-exposures-filter-exposure-type")}
-            {isEligibleForPremium && (
-              <button
-                {...exposureTypeExplainerTriggerProps}
-                ref={exposureTypeExplainerTriggerRef}
-                aria-label={l10n.getString("modal-open-alt")}
-              >
-                <QuestionMarkCircle
-                  width="15"
-                  height="15"
-                  alt={l10n.getString("modal-open-alt")}
-                />
-              </button>
-            )}
-          </li>
+          {isEligibleForPremium && (
+            <li className={styles.hideOnMobile}>
+              {l10n.getString("dashboard-exposures-filter-exposure-type")}
+              {isEligibleForPremium && (
+                <button
+                  {...exposureTypeExplainerTriggerProps}
+                  ref={exposureTypeExplainerTriggerRef}
+                  aria-label={l10n.getString("modal-open-alt")}
+                >
+                  <QuestionMarkCircle
+                    width="15"
+                    height="15"
+                    alt={l10n.getString("modal-open-alt")}
+                  />
+                </button>
+              )}
+            </li>
+          )}
           <li className={styles.hideOnMobile}>
             {l10n.getString("dashboard-exposures-filter-date-found")}
           </li>

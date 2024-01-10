@@ -27,7 +27,7 @@ fix-flow-celebration-high-risk-description-done = 这些问题处理起来可能
 fix-flow-celebration-high-risk-description-next-passwords = 现在来处理暴露的密码。
 fix-flow-celebration-high-risk-description-next-security-questions = 现在来处理暴露的安全问题。
 fix-flow-celebration-high-risk-description-next-security-recommendations = 接下来，我们会根据您数据的暴露日期，提供个性化的安全建议。
-fix-flow-celebration-high-risk-description-next-dashboard = 您已完成全部步骤，现在可在面板上查看所有操作项目并跟踪进度。
+fix-flow-celebration-high-risk-description-next-dashboard = 您已完成全部步骤，现在可在面板中查看所有操作项目并跟踪进度。
 
 ## Leaked passwords and security questions flow
 
@@ -35,12 +35,12 @@ fix-flow-celebration-leaked-passwords-title = 您的密码已受到保护！
 fix-flow-celebration-security-questions-title = 您的安全问题已受到保护！
 fix-flow-celebration-leaked-passwords-description-next-security-questions = 现在来检查并更新您已暴露的安全问题。
 fix-flow-celebration-leaked-passwords-description-next-security-recommendations = 接下来，我们会根据您暴露的数据类型，提供个性化的安全建议。
-fix-flow-celebration-leaked-passwords-description-next-dashboard = 很好！您已完成全部步骤，现在可在面板上查看所有操作项目并跟踪进度。
+fix-flow-celebration-leaked-passwords-description-next-dashboard = 很好！您已完成全部步骤，现在可在面板中查看所有操作项目并跟踪进度。
 
 ## Security recommendations flow
 
 fix-flow-celebration-security-recommendations-title = 您已完成全部建议！
-fix-flow-celebration-security-recommendations-description-next-dashboard = 很好！您已完成全部步骤，现在可在面板上查看所有操作项目并跟踪进度。
+fix-flow-celebration-security-recommendations-description-next-dashboard = 很好！您已完成全部步骤，现在可在面板中查看所有操作项目并跟踪进度。
 
 # High Risk Data Breaches
 
@@ -53,7 +53,7 @@ high-risk-breach-summary = 在 { $num_breaches } 次数据外泄事件中出现�
 # $breach_name is the name of the breach where the high risk data was found.
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
-high-risk-breach-name-and-date = { $breach_name } <breach_date>发生于 { $breach_date }</breach_date>
+high-risk-breach-name-and-date = { $breach_name }<breach_date>（发生于 { $breach_date }）</breach_date>
 high-risk-breach-mark-as-fixed = 标记为已处理
 high-risk-breach-skip = 暂时跳过
 # Variables:
@@ -147,7 +147,7 @@ security-recommendation-ip-title = 使用 VPN 加强隐私保护
 # $num_breaches is the number of breaches where the IP address was found.
 security-recommendation-ip-summary = 您的 IP 地址出现在 { $num_breaches } 次数据外泄事件中：
 security-recommendation-ip-description = 您的 IP 地址可用于精准确定您的位置和互联网服务提供商。黑客可通过此信息找到您的位置，或尝试连接您的设备。
-security-recommendation-ip-step-one = 使用 VPN（例如 <link_to_info>{ -brand-mozilla-vpn }</link_to_info>）来隐藏您的真实 IP 地址，私密上网。
+security-recommendation-ip-step-one = 使用 VPN（例如 <link_to_info>{ -brand-mozilla-vpn }</link_to_info>）隐藏您的真实 IP 地址，私密上网。
 
 # Leaked Passwords
 

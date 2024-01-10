@@ -751,6 +751,17 @@ site-nav-help-link = Help en stipe
 site-nav-ad-callout = Probearje ús oare befeiligingsark:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Haadmenu
+main-nav-button-collapse-label = Menu ynklappe
+main-nav-button-collapse-tooltip = Menu ynklappe
+main-nav-button-expand-label = Menu útklappe
+main-nav-button-expand-tooltip = Menu útklappe
+main-nav-label = Navigaasje
+main-nav-link-home-label = Startside
+main-nav-link-dashboard-label = Dashboerd
+main-nav-link-settings-label = Ynstellingen
+main-nav-link-faq-label = FAQ’s
+main-nav-link-faq-tooltip = Faak stelde fragen
 
 ## User menu
 
@@ -768,6 +779,15 @@ menu-item-settings = Ynstellingen
 menu-item-help = Help en stipe
 # Obsolete
 menu-item-logout = Ofmelde
+user-menu-trigger-label = Brûkersmenu iepenje
+user-menu-trigger-tooltip = Profyl
+user-menu-manage-fxa-label = Jo { -brand-mozilla-account } beheare
+user-menu-settings-label = Ynstellingen
+user-menu-settings-tooltip = { -brand-mozilla-monitor } konfigurearje
+user-menu-help-label = Help en stipe
+user-menu-help-tooltip = Krij help mei it brûken fan { -brand-mozilla-monitor }
+user-menu-signout-label = Ofmelde
+user-menu-signout-tooltip = Ofmelde by { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -776,6 +796,8 @@ terms-of-service = Tsjinstbetingsten
 privacy-notice = Privacyferklearring
 github = { -brand-github }
 footer-nav-all-breaches = Alle datalekken
+footer-external-link-faq-label = FAQ’s
+footer-external-link-faq-tooltip = Faak stelde fragen
 
 ## Error page
 

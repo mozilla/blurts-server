@@ -2,7 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-fix-flow-nav-high-risk-data-breaches = Magas kockázatú adatsértések
+fix-flow-nav-high-risk-data-breaches = Magas kockázatú adatvédelmi incidensek
 fix-flow-nav-leaked-passwords = Kiszivárgott jelszavak
 fix-flow-nav-security-recommendations = Biztonsági javaslatok
 guided-resolution-flow-exit = Vissza a vezérlőpulthoz
@@ -16,8 +16,8 @@ guided-resolution-flow-step-navigation-label = Irányított lépések
 ## Shared CTA labels
 
 fix-flow-celebration-next-label = Folytassa
-fix-flow-celebration-next-recommendations-label = Lásd az ajánlásokat
-fix-flow-celebration-next-dashboard-label = Ugrás a vezérlőpultra
+fix-flow-celebration-next-recommendations-label = Ajánlások megtekintése
+fix-flow-celebration-next-dashboard-label = Ugrás a vezérlőpulthoz
 
 ## High-risk flow
 

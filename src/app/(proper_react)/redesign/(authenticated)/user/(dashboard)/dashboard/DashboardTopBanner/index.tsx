@@ -67,6 +67,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
             data={chartData}
             isEligibleForFreeScan={props.isEligibleForFreeScan}
             isEligibleForPremium={props.isEligibleForPremium}
+            isPremiumUser={props.isPremiumUser}
             isShowFixed={isShowFixed}
             summary={props.bannerData}
             totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
