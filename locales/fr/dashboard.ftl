@@ -11,12 +11,16 @@
 #   $nr (number) - Number of unresolved exposures for the user
 exposure-chart-heading =
     { $nr ->
-        [one] <nr>{ $nr }</nr> <label>exposition</label>
-       *[other] <nr>{ $nr }</nr> <label>expositions</label>
+        [one] <nr>{ $nr }</nr> <label>fuite</label>
+       *[other] <nr>{ $nr }</nr> <label>fuites</label>
     }
 # Variables:
 #   $nr (number) - Number of fixed exposures found for the user
-exposure-chart-heading-fixed = <nr>{ $nr }</nr> <label>Résolu</label>
+exposure-chart-heading-fixed =
+    { $nr ->
+        [one] <nr>{ $nr }</nr> <label>résolue</label>
+       *[other] <nr>{ $nr }</nr> <label>résolues</label>
+    }
 exposure-chart-legend-heading-type = l’exposition ;
 exposure-chart-legend-heading-nr = Nombre
 # Variables:
@@ -43,11 +47,11 @@ modal-active-number-of-exposures-part-three-all = Une fois résolus, ils seront 
 modal-cta-ok = OK
 modal-open-alt = Ouvrir
 modal-close-alt = Fermer
-progress-card-heres-what-we-fixed-headline-all = Voici ce que vous avez corrigé
-progress-card-manually-fixed-headline = Corrigé manuellement
+progress-card-heres-what-we-fixed-headline-all = Voici les fuites que vous avez résolues
+progress-card-manually-fixed-headline = Résolue manuellement
 dashboard-tab-label-action-needed = Action nécessaire
-dashboard-tab-label-fixed = Corrigé
-dashboard-exposures-all-fixed-label = Tout est corrigé ici !
+dashboard-tab-label-fixed = Résolue
+dashboard-exposures-all-fixed-label = Toutes les fuites ont été résolues !
 dashboard-exposures-area-headline = Voir tous les sites où vos informations sont exposées
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
@@ -65,18 +69,18 @@ dashboard-exposures-area-description-all-line2 =
         [one] Elle apparaît dans { $data_breach_unresolved_num } fuite de données.
        *[other] Elle apparaît à travers { $data_breach_unresolved_num } fuites de données.
     }
-dashboard-fixed-area-headline-all = Afficher toutes les expositions qui sont corrigées
+dashboard-fixed-area-headline-all = Afficher toutes les fuites résolues
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filtrer
 dashboard-exposures-filter-company = Entreprise
 dashboard-exposures-filter-date-found = Date d’identification
 dashboard-exposures-filter-date-found-last-seven-days = Les 7 derniers jours
 dashboard-exposures-filter-date-found-last-thirty-days = Les 30 derniers jours
-dashboard-exposures-filter-date-found-last-year = Année précédente
+dashboard-exposures-filter-date-found-last-year = L’année dernière
 dashboard-exposures-filter-status = État
 dashboard-exposures-filter-status-action-needed = Action nécessaire
 dashboard-exposures-filter-status-in-progress = En cours
-dashboard-exposures-filter-status-fixed = Corrigé
+dashboard-exposures-filter-status-fixed = Résolue
 popover-open-filter-settings-alt = Sélectionner des filtres
 dashboard-exposures-filter-show-all = Tout afficher
 dashboard-exposures-filter-show-results = Afficher les résultats
@@ -87,7 +91,7 @@ dashboard-exposures-filter-reset = Réinitialiser
 dashboard-top-banner-section-label = Résumé du tableau de bord
 dashboard-top-banner-scan-in-progress-title = L’analyse est toujours en cours
 dashboard-top-banner-your-data-is-protected-title = Vos données sont protégées
-dashboard-top-banner-your-data-is-protected-cta = Voir les corrections
+dashboard-top-banner-your-data-is-protected-cta = Voir les fuites résolues
 dashboard-top-banner-lets-keep-protecting-title = Continuons à protéger vos données
 # Variables:
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
@@ -123,7 +127,7 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
         [one] Excellent travail, l’exposition de vos données est corrigée ! Nous continuerons de vous surveiller et vous avertirons en cas de nouveau risque.
        *[other] Excellent travail, tous les risques de { $exposures_resolved_num } de vos données sont corrigés ! Nous continuerons de vous surveiller et vous avertirons en cas de nouveau risque.
     }
-dashboard-top-banner-monitor-more-cta = Surveillez davantage de adresses e-mail
+dashboard-top-banner-monitor-more-cta = Surveiller davantage d’adresses e-mail
 
 # About Exposure Statuses Modal
 

@@ -23,6 +23,7 @@ exposure-card-credit-card = Cerdyn Credyd
 exposure-card-password = Cyfrinair
 exposure-card-ip-address = Cyfeiriad IP
 exposure-card-other = Arall
+exposure-card-description-info-for-sale-part-one = Mae'r wefan hon yn gwerthu a chyhoeddi <data_broker_link>manylion amdanoch chi.</data_broker_link>
 exposure-card-description-info-for-sale-part-two = Tynnwch y proffil hwn i amddiffyn eich preifatrwydd.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
