@@ -21,7 +21,7 @@ it("shows the progress indicator on the “Welcome to Plus” view", () => {
   const ComposedWelcomeToPlusView = composeStory(WelcomeToPlusViewStory, Meta);
   render(<ComposedWelcomeToPlusView />);
 
-  const guidedStepsNavigation = screen.queryByRole("navigation", {
+  const guidedStepsNavigation = screen.getByRole("navigation", {
     name: "Guided steps",
   });
   expect(guidedStepsNavigation).toBeInTheDocument();
