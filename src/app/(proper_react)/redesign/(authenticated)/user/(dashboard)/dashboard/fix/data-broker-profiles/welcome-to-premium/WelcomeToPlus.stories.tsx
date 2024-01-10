@@ -44,21 +44,19 @@ const mockedSession = {
 
 const WelcomeToPlusViewWrapper = (props: { brokerScanCount: number }) => {
   return (
-    <>
-      <WelcomeToPlusView
-        data={{
-          countryCode: "us",
-          latestScanData:
-            props.brokerScanCount > 0
-              ? getMockedScanData(props.brokerScanCount)
-              : null,
-          subscriberBreaches: mockedBreaches,
-          user: mockedSession.user,
-        }}
-        l10n={l10n}
-        subscriberEmails={[]}
-      />
-    </>
+    <WelcomeToPlusView
+      data={{
+        countryCode: "us",
+        latestScanData:
+          props.brokerScanCount > 0
+            ? getMockedScanData(props.brokerScanCount)
+            : null,
+        subscriberBreaches: mockedBreaches,
+        user: mockedSession.user,
+      }}
+      l10n={l10n}
+      subscriberEmails={[]}
+    />
   );
 };
 
