@@ -7,10 +7,12 @@
 import { signIn, useSession } from "next-auth/react";
 import { useL10n } from "../../hooks/l10n";
 import { Button } from "./Button";
+import { useTelemetry } from "../../hooks/useTelemetry";
 
 export const SignInButton = () => {
   const l10n = useL10n();
   const session = useSession();
+  const recordTelemetry = useTelemetry();
 
   if (typeof session.data?.user.email === "string") {
     return null;
@@ -19,9 +21,12 @@ export const SignInButton = () => {
   return (
     <Button
       variant="secondary"
-      onPress={() =>
-        void signIn("fxa", { callbackUrl: "/redesign/user/dashboard/" })
-      }
+      onPress={() => {
+        recordTelemetry("ctaButton", "click", {
+          button_id: "sign_in",
+        });
+        void signIn("fxa", { callbackUrl: "/redesign/user/dashboard/" });
+      }}
     >
       {l10n.getString("sign-in")}
     </Button>

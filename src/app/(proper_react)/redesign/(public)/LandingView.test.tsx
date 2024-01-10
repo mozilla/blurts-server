@@ -16,6 +16,7 @@ import {
 import { userEvent } from "@testing-library/user-event";
 import { axe } from "jest-axe";
 import { signIn, useSession } from "next-auth/react";
+import { useTelemetry } from "../../../hooks/useTelemetry";
 import Meta, {
   LandingNonUs,
   LandingNonUsDe,
@@ -107,6 +108,27 @@ describe("When Premium is not available", () => {
 
     expect(signInButton).toBeInTheDocument();
     expect(signIn).toHaveBeenCalledTimes(1);
+  });
+
+  it("counts the number of clicks on the sign-in button at the top", async () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingNonUs, Meta);
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+
+    const signInButton = screen.getByRole("button", {
+      name: "Sign In",
+    });
+    await user.click(signInButton);
+
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "ctaButton",
+      "click",
+      expect.objectContaining({
+        button_id: "sign_in",
+      }),
+    );
   });
 
   it("shows the data breaches quote", () => {
