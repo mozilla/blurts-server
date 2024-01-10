@@ -14,7 +14,7 @@ import { SignInButton } from "../components/client/SignInButton";
 import { getL10n } from "../../functions/server/l10n";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../api/utils/auth";
-import { PageLoadEvent } from "../components/client/PageLoadEvent";
+import { PageLoadEvent } from "../../components/client/PageLoadEvent";
 import { getExperiments } from "../../functions/server/getExperiments";
 import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
 import { getUserId } from "../../functions/server/getUserId";
