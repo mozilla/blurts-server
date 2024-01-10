@@ -22,7 +22,15 @@ exposure-chart-legend-heading-nr = Papapy
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
+exposure-chart-caption = Ko ta’ãnga ohechauka mba’eichaitépa ne marandu oñembyaikuaa.
+# Variables:
+#   $total_fixed_exposures_num (number) - Number of fixed exposures
+#   $total_exposures_num (number) - Number of total exposures
+exposure-chart-caption-fixed = Ko ta’ãnga ohechauka mboyjeýpa jehechauka oñemoĩporã ({ $total_fixed_exposures_num } { $total_exposures_num }) mba’e
+exposure-chart-returning-user-upgrade-prompt = Pe óga, pehẽnguekuéra ha ambue mba’ekuaarã ndoikéi gueteri.
 exposure-chart-returning-user-upgrade-prompt-cta = Emoha’ãnga reiete
+exposure-chart-scan-in-progress-prompt = <b>Oñemoha’ãngahína:</b> kundaharenda, pehẽnguekuéra ha hetave ndoikéi gueteri.
+modal-active-number-of-exposures-title = Mboyjeýmapa ipapapy jehechauka hendýva
 modal-cta-ok = MONEĨ
 modal-open-alt = Ijurujáva
 modal-close-alt = Mboty

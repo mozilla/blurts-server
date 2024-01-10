@@ -21,7 +21,7 @@ exposure-chart-legend-heading-nr = 次數
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
-exposure-chart-caption = 此圖表顯示您的資訊被主動曝光的次數。
+exposure-chart-caption = 這張圖顯示您的資訊被外流的次數。
 # Variables:
 #   $total_fixed_exposures_num (number) - Number of fixed exposures
 #   $total_exposures_num (number) - Number of total exposures
@@ -56,6 +56,7 @@ dashboard-exposures-area-description-all-line1 =
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
 dashboard-exposures-area-description-all-line2 =
     { $data_breach_unresolved_num ->
+        [zero] 沒有出現在資料外洩事件中。
        *[other] 出現在 { $data_breach_unresolved_num } 場資料外洩事件中。
     }
 dashboard-fixed-area-headline-all = 檢視所有處理過的資料外洩事件
@@ -118,6 +119,6 @@ dashboard-top-banner-monitor-more-cta = 監控更多電子郵件地址
 # About Exposure Statuses Modal
 
 modal-exposure-status-title = 關於資料曝光狀態
-modal-exposure-status-description-all = 我們會在所有已知的資料外洩事件中搜尋曝光的資料。您被曝光的資料會有下列一種狀態：
-modal-exposure-status-action-needed = <b>需要採取行動</b>表示事件已經發生，請採取行動處理。
-modal-exposure-status-fixed = <b>已處理</b>表示資料外洩事件已處理完成，無需再採取任何行動。
+modal-exposure-status-description-all = 我們會在所有已知的資料外洩事件中搜尋曝光的資料。您的資料曝光事件會有下列任一種狀態：
+modal-exposure-status-action-needed = <b>需要採取行動</b>：表示事件已經發生，請採取行動處理。
+modal-exposure-status-fixed = <b>已處理</b>：表示資料外洩事件已處理完成，無需再採取任何行動。

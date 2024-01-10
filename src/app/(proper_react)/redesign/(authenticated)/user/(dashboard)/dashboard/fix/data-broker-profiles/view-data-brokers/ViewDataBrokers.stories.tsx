@@ -10,7 +10,7 @@ import {
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../../Shell";
-import { getEnL10nSync } from "../../../../../../../../../functions/server/mockL10n";
+import { getOneL10nSync } from "../../../../../../../../../functions/server/mockL10n";
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 
 const brokerOptions = {
@@ -83,7 +83,7 @@ const ViewWrapper = (props: ViewWrapperProps) => {
   }
 
   const user = createUserWithPremiumSubscription();
-  if (!props.premium) {
+  if (!props.premium && user.fxa) {
     user.fxa.subscriptions = [];
   }
 
@@ -91,9 +91,10 @@ const ViewWrapper = (props: ViewWrapperProps) => {
     expires: new Date().toISOString(),
     user: user,
   };
+  const l10n = getOneL10nSync();
 
   return (
-    <Shell l10n={getEnL10nSync()} session={mockedSession} nonce="">
+    <Shell l10n={l10n} session={mockedSession} nonce="">
       <ViewDataBrokersView
         data={{
           latestScanData: scanData,
@@ -101,6 +102,7 @@ const ViewWrapper = (props: ViewWrapperProps) => {
           subscriberBreaches: [],
           user: mockedSession.user,
         }}
+        l10n={l10n}
         subscriberEmails={[]}
       />
     </Shell>

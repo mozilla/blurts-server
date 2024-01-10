@@ -7,7 +7,7 @@ landing-all-hero-title = Découvrez où sont exposées vos informations personne
 landing-all-hero-lead = Nous analysons les fuites de données pour voir si vos données ont été divulguées et nous vous indiquons les étapes pour y remédier.
 landing-all-hero-emailform-input-placeholder = votrenom@example.com
 landing-all-hero-emailform-input-label = Saisissez votre adresse e-mail pour vérifier l’existence de fuites de données.
-landing-all-hero-emailform-submit-label = Obtenir un scan gratuit
+landing-all-hero-emailform-submit-label = Effectuer un scan gratuit
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = expositions
 
@@ -59,6 +59,6 @@ landing-all-help-protect-you-description = Nous croyons en votre droit à la con
 landing-all-help-protect-you-feature-one = Nous vous rechercherons dans toutes les fuites de données connues
 landing-all-help-protect-you-feature-two = Nous vous guiderons à travers les étapes pour résoudre chaque fuite
 landing-all-help-protect-you-feature-three = Nous surveillerons et vous enverrons des alertes en permanence pour toute nouvelle fuite de données
-landing-all-help-protect-you-cta = S’inscrire pour les alertes
-landing-all-get-started = Scannez vos e-mails pour commencer
+landing-all-help-protect-you-cta = S’inscrire aux alertes de fuites de données
+landing-all-get-started = Scannez votre adresse e-mail pour commencer
 landing-all-take-back-data = Reprenez le contrôle de vos données

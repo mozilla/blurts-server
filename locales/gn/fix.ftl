@@ -21,12 +21,19 @@ fix-flow-celebration-next-dashboard-label = Eho ne mba’erupa rendápe
 
 ## High-risk flow
 
+fix-flow-celebration-high-risk-title = ¡Emoĩporãma nde jehechauka ivaikuaavéva!
+fix-flow-celebration-high-risk-description-next-passwords = Ko’ág̃a ñamoĩporãta ne ñe’ẽñemi ivaikuaáva.
+fix-flow-celebration-high-risk-description-next-security-questions = Ko’ág̃a ñamoĩporãta umi porandu tekorosãrã ivaikuaáva.
 
 ## Leaked passwords and security questions flow
 
+fix-flow-celebration-leaked-passwords-title = ¡Ne ñe’ẽñemi ko’ág̃a oñemo’ãma!
+fix-flow-celebration-security-questions-title = ¡Ne porandu tekorosãrãva oñemo’ãma!
+fix-flow-celebration-leaked-passwords-description-next-security-questions = Ko’ág̃a jahecha ha ñambohekopyahúta umi porandu tekorosãrã ivaikuaáva.
 
 ## Security recommendations flow
 
+fix-flow-celebration-security-recommendations-title = ¡Emyanyhẽmapa opaite ne ñemoñe’ẽporã!
 
 # High Risk Data Breaches
 
@@ -41,22 +48,37 @@ high-risk-breach-skip = Ehasa ko’ág̃a
 
 # Credit Card Breaches
 
+high-risk-breach-credit-card-title = Nde kuatia’atã papapy ojehechakuaa
+high-risk-breach-credit-card-step-one = Erekóramo gueteri ko kuatia’atã, emombe’u ime’ẽhárape oñemondaha.
+high-risk-breach-credit-card-step-two = Ejerure kuatia’atã papapy pyahu reheve.
+high-risk-breach-credit-card-step-three = Ehechajey ne mba’ete oĩre tepyme’ẽrã nemba’e’ỹva.
 
 # Bank Account Breaches
 
+high-risk-breach-bank-account-title = Nde mba’ete banco pegua ojehechakuaa
+high-risk-breach-bank-account-step-two = Emoambue ne mba’ete papapy
+high-risk-breach-bank-account-step-three = Ehechajey ne mba’ete oĩre tepyme’ẽrã nemba’e’ỹva.
 
 # Social Security Number Breaches
 
+high-risk-breach-social-security-title = Nde seguridad social papapy ojehechakuaa
+high-risk-breach-social-security-step-two = <link_to_info>Ehecha nde deveha marandu’i</link_to_info> eikuaa hag̃ua oĩpa emonei’ỹva.
 
 # Social Security Number Modal
 
+ssn-modal-title = Ñemonge rehegua ha nde jedeverã jejoko
+ssn-modal-learn-more = Eikuaave ñemonge rehegua ha nde jedeverã jejoko
 ssn-modal-ok = MONEĨ
 
 # PIN Breaches
 
+high-risk-breach-pin-title = Nde PIN ojehechakuaákuri
+high-risk-breach-pin-step-two = Emoambue ne PIN oimeraẽva tenda eiporuhaguépe.
+high-risk-breach-pin-step-three = Ehechajey ne mba’ete oĩre tepyme’ẽrã nemba’e’ỹva.
 
 # No high risk breaches found
 
+high-risk-breach-none-title = Marandu iporãva, ndorojuhúi mba’ekuaarã ñembogua ivaikuaáva
 high-risk-breach-none-sub-description-part-one = Mba’ekuaarã ñembyai oikokuaávape oĩ:
 high-risk-breach-none-sub-description-ssn = Seguro social papapy
 high-risk-breach-none-sub-description-bank-account = Marandu mba’ete banco pegua
@@ -73,19 +95,47 @@ security-recommendation-steps-cta-label = ¡Aikũmby!
 # Phone security recommendation
 
 security-recommendation-phone-title = Emo’ã ne pumbyry papapy
+security-recommendation-phone-step-one = Ejoko spam papapy emboyke hag̃ua ñehenói oiko’ỹva
 
 # Email security recommendation
 
+security-recommendation-email-title = Emo’ã ñanduti veve kundaharape
+security-recommendation-email-step-two = Ema’ẽke <link_to_info>phishing jehode</link_to_info> rehe
+security-recommendation-email-step-three = Emongurusu ñanduti veve ikatúva spam ha emboyke imbouhára
 
 # IP security recommendation
 
+security-recommendation-ip-title = Eiporu VPN nde rekoñemiverã
 
 # Leaked Passwords
 
+# Variables
+# $breach_name is the name of the breach where the leaked password was found.
+leaked-passwords-title = Ne ñe’ẽñemi { $breach_name } pegua ojehechakuaa
+# Variables
+# $breach_date is the date when the breach occurred.
+leaked-passwords-summary = Osẽ peteĩ mba’ekuaarã ñembogua { $breach_date }.
 leaked-passwords-steps-title = Kóva pe rejapova’erã
+leaked-passwords-step-two = Emoambue oimeraẽva tenda eiporuhaguépe.
 leaked-passwords-mark-as-fixed = Embokurusu oĩporãmaha
 leaked-passwords-skip = Ehasa ko’ág̃a
+# Variables
+# $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
+# "Est." is shortform for "Estimated".
+# "mins" is shortform for "minutes".
+leaked-passwords-estimated-time =
+    { $estimated_time ->
+        [one] Aravo eikotevẽva emoĩmba hag̃ua: { $estimated_time } aravo’i tendápe
+       *[other] Aravo eikotevẽva emoĩmba hag̃ua: { $estimated_time } aravo’i tendápe
+    }
 
 # Leaked Security Questions
 
+leaked-security-questions-title = Ne porandu tekorosãrãva ojehechakakuaa
+# Variables
+# $breach_name is the name of the breach where the leaked security questions were found.
+# $breach_date is the date when the breach occurred.
+# An example of this string is Twitter on 13/09/18.
+leaked-security-questions-summary = Osẽ peteĩ mba’ekuaarã ñembogua { $breach_name }-pe { $breach_date }.
 leaked-security-questions-steps-title = Kóva pe rejapova’erã
+leaked-security-questions-steps-subtitle = Kóva oikotevẽ ne mba’etépe jeike, ikatuhápe emoĩporã nde poite rupive.

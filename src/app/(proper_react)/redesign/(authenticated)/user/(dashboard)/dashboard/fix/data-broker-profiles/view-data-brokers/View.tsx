@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import styles from "../dataBrokerProfiles.module.scss";
-import { getL10n } from "../../../../../../../../../functions/server/l10n";
 import { DataBrokerProfiles } from "../../../../../../../../../components/client/DataBrokerProfiles";
 import { AboutBrokersIcon } from "./AboutBrokersIcon";
 import { Button } from "../../../../../../../../../components/client/Button";
@@ -12,14 +11,16 @@ import {
   StepDeterminationData,
   getNextGuidedStep,
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
+import { ExtendedReactLocalization } from "../../../../../../../../../hooks/l10n";
 
 export type Props = {
   data: StepDeterminationData;
   subscriberEmails: string[];
+  l10n: ExtendedReactLocalization;
 };
 
 export const ViewDataBrokersView = (props: Props) => {
-  const l10n = getL10n();
+  const l10n = props.l10n;
 
   const countOfDataBrokerProfiles =
     props.data.latestScanData?.results.length ?? 0;

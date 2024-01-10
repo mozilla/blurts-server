@@ -44,8 +44,8 @@ user-add-duplicate-email = Mae'r e-bost hwn eisoes wedi'i ychwanegu at { -produc
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Ewch i'ch { $preferencesLink } i wirio statws { $userEmail }.
-user-add-verification-email-just-sent = Ni ellir anfon e-bost dilysu arall hwn yn gyflym. Ceisiwch eto yn nes ymlaen.
-user-add-unknown-error = Aeth rhywbeth o'i le gan ychwanegu cyfeiriad e-bost arall. Ceisiwch eto yn nes ymlaen.
+user-add-verification-email-just-sent = Nid oes modd anfon yr e-bost dilysu arall hwn mor yn gyflym. Ceisiwch eto yn nes ymlaen.
+user-add-unknown-error = Aeth rhywbeth o'i le wrth ychwanegu cyfeiriad e-bost arall. Ceisiwch eto yn nes ymlaen.
 error-headline = Gwall
 user-verify-token-error = Mae angen tocyn dilysu.
 user-verify-email-report-subject = Eich adroddiad { -product-name }
@@ -783,8 +783,8 @@ site-nav-ad-callout = Rhowch gynnig ar ein hoffer diogelwch eraill:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
 mobile-menu-label = Prif ddewislen
-main-nav-button-collapse-label = Cwymp y ddewislen
-main-nav-button-collapse-tooltip = Cwymp y ddewislen
+main-nav-button-collapse-label = Cau'r ddewislen
+main-nav-button-collapse-tooltip = Cau'r ddewislen
 main-nav-button-expand-label = Ehangu'r ddewislen
 main-nav-button-expand-tooltip = Ehangu'r ddewislen
 main-nav-label = Llywio
@@ -816,7 +816,7 @@ user-menu-manage-fxa-label = Rheoli eich cyfrif { -brand-mozilla-account }
 user-menu-settings-label = Gosodiadau
 user-menu-settings-tooltip = Ffurfweddu { -brand-mozilla-monitor }
 user-menu-help-label = Cymorth a chefnogaeth
-user-menu-help-tooltip = Cael help gan ddefnyddio { -brand-mozilla-monitor }
+user-menu-help-tooltip = Cael cymorth wrth ddefnyddio { -brand-mozilla-monitor }
 user-menu-signout-label = Allgofnodi
 user-menu-signout-tooltip = Allgofnodi o { -brand-mozilla-monitor }
 
