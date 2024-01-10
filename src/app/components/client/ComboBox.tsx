@@ -81,12 +81,14 @@ function ComboBox(props: ComboBoxProps) {
             state={state}
             triggerRef={inputRef}
           >
-            <ListBox
-              {...listBoxProps}
-              listBoxRef={listBoxRef}
-              parentRef={inputRef}
-              state={state}
-            />
+            <div className={styles.popoverList}>
+              <ListBox
+                {...listBoxProps}
+                listBoxRef={listBoxRef}
+                parentRef={inputRef}
+                state={state}
+              />
+            </div>
           </Popover>
         )
       }
