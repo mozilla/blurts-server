@@ -44,6 +44,8 @@ modal-active-number-of-exposures-part-one-all =
     }
 modal-active-number-of-exposures-part-two = Par exemple, si vous avez 10 expositions de votre numéro de téléphone, cela peut signifier qu’un numéro de téléphone est exposé sur 10 sites différents, ou cela pourrait signifier que 2 numéros de téléphone différents ont été exposés sur 5 sites différents.
 modal-active-number-of-exposures-part-three-all = Une fois résolus, ils seront ajoutés à votre nombre total de risques corrigés sur la page Corrigés.
+modal-fixed-number-of-exposures-title = À propos du nombre d’expositions fixées
+modal-fixed-number-of-exposures-all = Ce graphique comprend le nombre total de fuites de données qui ont été corrigées pour toutes les adresses e-mail que vous surveillez actuellement. Une fois les risques marqués comme corrigés, ils seront ajoutés au total ici.
 modal-cta-ok = OK
 modal-open-alt = Ouvrir
 modal-close-alt = Fermer
@@ -101,6 +103,8 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] Il vous reste encore { $exposures_unresolved_num } à corriger. Continuez et protégez-vous. Nous vous guiderons pas à pas.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Continuons
+dashboard-top-banner-protect-your-data-title = Protégeons vos données
+dashboard-top-banner-protect-your-data-cta = Correction d’un problème
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.

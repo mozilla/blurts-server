@@ -65,6 +65,8 @@ dashboard-top-banner-your-data-is-protected-title = Ne mba’ekuaarã oñemo’�
 dashboard-top-banner-your-data-is-protected-cta = Ehecha oĩporãmava
 dashboard-top-banner-lets-keep-protecting-title = Romo’ãta gueteri ne mba’ekuaarã
 dashboard-top-banner-lets-keep-protecting-cta = Jaku’ejeýke
+dashboard-top-banner-protect-your-data-title = Romo’ãta ne mba’ekuaarã
+dashboard-top-banner-protect-your-data-cta = Romoĩ porãta
 dashboard-top-banner-no-exposures-found-title = Ndojejuhúi máva jehechauka
 dashboard-no-exposures-label = Ndojejuhúi máva jehechauka
 dashboard-top-banner-monitor-more-cta = Roma’ẽag̃uíta hetave ñanduti vevére
@@ -72,3 +74,5 @@ dashboard-top-banner-monitor-more-cta = Roma’ẽag̃uíta hetave ñanduti vev�
 # About Exposure Statuses Modal
 
 modal-exposure-status-title = Jehechauka rekotee rehegua
+modal-exposure-status-action-needed = <b>Jeku’e tekotevẽva</b> he’ise reku’eha ko’ág̃a ha ejapo tekotevẽva emoĩporã hag̃ua.
+modal-exposure-status-fixed = <b>Oĩporãma</b> he’ise pe jehechaukakue oĩporãma ha natekotevẽvéima ejapo mba’evete.

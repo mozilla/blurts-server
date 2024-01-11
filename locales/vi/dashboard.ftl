@@ -32,6 +32,8 @@ modal-active-number-of-exposures-title = Về số vụ rò rỉ của bạn
 modal-active-number-of-exposures-part-one-all = Biểu đồ này bao gồm tổng số lần chúng tôi phát hiện từng loại dữ liệu bị lộ trong tất cả các vụ rò rỉ dữ liệu trong tối đa { $limit } địa chỉ email mà bạn hiện đang giám sát.
 modal-active-number-of-exposures-part-two = Ví dụ, nếu bạn có 10 lần rò rỉ số điện thoại của mình, điều đó có thể có nghĩa là một số điện thoại bị rò rỉ trên 10 trang web khác nhau hoặc có thể có nghĩa là 2 số điện thoại khác nhau, mỗi số bị rò rỉ trên 5 trang web khác nhau.
 modal-active-number-of-exposures-part-three-all = Khi chúng đã được giải quyết, chúng sẽ được thêm vào tổng số vụ rò rỉ đã giải quyết của bạn trên trang Đã giải quyết.
+modal-fixed-number-of-exposures-title = Về số dữ liệu bị lộ đã giải quyết của bạn
+modal-fixed-number-of-exposures-all = Biểu đồ này bao gồm tổng số vụ rò rỉ dữ liệu đã giải quyết cho tất cả các địa chỉ email mà bạn hiện đang theo dõi. Sau khi số dữ liệu bị lộ được đánh dấu là đã giải quyết, chúng sẽ được thêm vào tổng số tại đây.
 modal-cta-ok = OK
 modal-open-alt = Mở
 modal-close-alt = Đóng
@@ -77,6 +79,8 @@ dashboard-top-banner-lets-keep-protecting-title = Hãy tiếp tục bảo vệ d
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
 dashboard-top-banner-lets-keep-protecting-description = Bạn vẫn còn { $exposures_unresolved_num } dữ liệu bị lộ chưa được giải quyết. Hãy tiếp tục và bảo vệ chính mình. Chúng tôi sẽ hướng dẫn bạn từng bước.
 dashboard-top-banner-lets-keep-protecting-cta = Hãy tiếp tục
+dashboard-top-banner-protect-your-data-title = Hãy bảo vệ dữ liệu của bạn
+dashboard-top-banner-protect-your-data-cta = Hãy giải quyết nó
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
