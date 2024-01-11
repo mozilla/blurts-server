@@ -101,34 +101,28 @@ export const ProgressCard = (props: Props) => {
         </div>
 
         {/* Auto-removed */}
-        {props.isEligibleForPremium ||
-          (props.isPremiumUser && (
-            <div
-              className={`${styles.progressItem} ${
-                !props.isPremiumUser && styles.greyedOut
-              }`}
-            >
-              <div className={styles.progressStat}>
-                <Image
-                  src={ExploringLaptopMinus}
-                  alt=""
-                  width="50"
-                  height="50"
-                />
-                <span>{props.autoRemoved}</span>
-              </div>
-              <p>
-                {!props.isPremiumUser && (
-                  <LockIcon
-                    alt={l10n.getString("progress-card-locked-alt")}
-                    width="10"
-                    height="10"
-                  />
-                )}
-                {l10n.getString("progress-card-auto-removed-headline")}
-              </p>
+        {(props.isEligibleForPremium || props.isPremiumUser) && (
+          <div
+            className={`${styles.progressItem} ${
+              !props.isPremiumUser && styles.greyedOut
+            }`}
+          >
+            <div className={styles.progressStat}>
+              <Image src={ExploringLaptopMinus} alt="" width="50" height="50" />
+              <span>{props.autoRemoved}</span>
             </div>
-          ))}
+            <p>
+              {!props.isPremiumUser && (
+                <LockIcon
+                  alt={l10n.getString("progress-card-locked-alt")}
+                  width="10"
+                  height="10"
+                />
+              )}
+              {l10n.getString("progress-card-auto-removed-headline")}
+            </p>
+          </div>
+        )}
 
         {/* In Progress */}
         {props.isPremiumUser && (
