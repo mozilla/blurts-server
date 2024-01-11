@@ -134,12 +134,10 @@ dashboard-top-banner-scan-in-progress-no-results-cta = Check more email addresse
 dashboard-top-banner-scan-in-progress-fix-now-hint = You can come back later, or start fixing your data breaches now.
 dashboard-top-banner-scan-in-progress-results-found-cta = See what’s ready now
 
-dashboard-top-banner-protect-your-data-title = Let’s protect your data
 # Variables:
 # $data_breach_unresolved_num is the unresolved number of data breaches the user has.
 # $data_broker_unresolved_num is the unresolved number of data brokers selling the user’s data.
 dashboard-top-banner-protect-your-data-description = We found your data in { $data_breach_unresolved_num } data breaches and { $data_broker_unresolved_num } sites selling your personal info. We’ll guide you step-by-step on how to fix it.
-dashboard-top-banner-protect-your-data-cta = Let’s fix it
 
 dashboard-top-banner-monitor-protects-your-even-more-title = { -product-short-name } now protects you even more
 # Variables:

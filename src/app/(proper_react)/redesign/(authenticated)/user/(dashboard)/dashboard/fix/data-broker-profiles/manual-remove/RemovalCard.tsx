@@ -15,6 +15,7 @@ import { getLocale } from "../../../../../../../../../functions/universal/getLoc
 export type Props = {
   scanResult: OnerepScanResultRow;
   isPremiumUser: boolean;
+  isEligibleForPremium: boolean;
   isExpanded: boolean;
   setExpanded: () => void;
 };
@@ -52,6 +53,7 @@ export const RemovalCard = (props: Props) => {
       }}
       isPremiumBrokerRemovalEnabled={true}
       isPremiumUser={props.isPremiumUser}
+      isEligibleForPremium={props.isEligibleForPremium}
       locale={getLocale(l10n)}
       resolutionCta={
         !isResolved ? (
