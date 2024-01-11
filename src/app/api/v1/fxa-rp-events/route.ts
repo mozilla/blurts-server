@@ -312,6 +312,13 @@ export async function POST(request: NextRequest) {
           Event: ${event}\n
           updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`),
           );
+          logger.error("failed_activating_subscription", {
+            subscriber_id: subscriber.id,
+          });
+          return NextResponse.json(
+            { success: false, message: "failed_activating_subscription" },
+            { status: 500 },
+          );
         }
         break;
       }
