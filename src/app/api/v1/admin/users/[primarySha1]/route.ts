@@ -14,8 +14,9 @@ import {
   updateFxAProfileData,
 } from "../../../../../../db/tables/subscribers";
 import {
-  activateAndOptoutProfile,
+  activateProfile,
   deactivateProfile,
+  optoutProfile,
 } from "../../../../../functions/server/onerep";
 import { captureException } from "@sentry/node";
 import { deleteProfileDetails } from "../../../../../../db/tables/onerep_profiles";
@@ -132,7 +133,8 @@ export async function PUT(
             await updateFxAProfileData(sub, JSON.stringify(currentFxAProfile));
 
             // activate and opt out profiles
-            await activateAndOptoutProfile(onerepProfileId);
+            await activateProfile(onerepProfileId);
+            await optoutProfile(onerepProfileId);
             logger.info("force_user_subscribe", {
               onerepProfileId,
               primarySha1,
