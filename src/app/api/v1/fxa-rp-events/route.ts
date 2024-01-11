@@ -283,7 +283,6 @@ export async function POST(request: NextRequest) {
           ) {
             subscriptions.add(MONITOR_PREMIUM_CAPABILITY);
 
-            currentFxAProfile.subscriptions = Array.from(subscriptions);
             // activate and opt out profiles
             await activateProfile(oneRepProfileId);
             await optoutProfile(oneRepProfileId);
@@ -304,7 +303,9 @@ export async function POST(request: NextRequest) {
               subscriber_id: subscriber.id,
             });
           }
-          // update fxa profile data
+
+          // update fxa profile data to match subscription status
+          currentFxAProfile.subscriptions = Array.from(subscriptions);
           await updateFxAProfileData(subscriber, currentFxAProfile);
         } catch (e) {
           captureException(
