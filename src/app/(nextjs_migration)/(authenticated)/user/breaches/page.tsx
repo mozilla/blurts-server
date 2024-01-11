@@ -8,7 +8,6 @@ import { getServerSession } from "next-auth";
 import { headers } from "next/headers";
 import { CircleChartProps } from "./breaches.d";
 
-import AppConstants from "../../../../../appConstants.js";
 import { getL10n } from "../../../../functions/server/l10n";
 import {
   getUserBreaches,
@@ -24,6 +23,7 @@ import { getComponentAsString } from "../../../functions/server/getComponentAsSt
 import { getCountryCode } from "../../../../functions/server/getCountryCode";
 import { getNonce } from "../../../functions/server/getNonce";
 import { SignInButton } from "../../../components/client/SignInButton";
+import { CONST_MAX_NUM_ADDRESSES } from "../../../../../constants";
 
 export function generateMetadata() {
   const l10n = getL10n();
@@ -149,14 +149,14 @@ export default async function UserBreaches() {
             <figure
               className="email-stats"
               data-count={userBreachesData.emailTotalCount}
-              data-total={AppConstants.NEXT_PUBLIC_MAX_NUM_ADDRESSES}
+              data-total={CONST_MAX_NUM_ADDRESSES}
             >
               <Image src={ImageIconEmail} alt="" width={55} height={30} />
               <figcaption>
                 <strong>
                   {l10n.getString("emails-monitored", {
                     count: userBreachesData.emailVerifiedCount,
-                    total: AppConstants.NEXT_PUBLIC_MAX_NUM_ADDRESSES,
+                    total: CONST_MAX_NUM_ADDRESSES,
                   })}
                 </strong>
                 <a href="/user/settings">

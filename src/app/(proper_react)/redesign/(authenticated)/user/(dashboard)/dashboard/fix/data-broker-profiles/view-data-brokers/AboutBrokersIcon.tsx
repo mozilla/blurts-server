@@ -15,6 +15,7 @@ import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../../../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../../../../../../components/client/dialog/Dialog";
 import { Button } from "../../../../../../../../../components/client/Button";
+import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
 
 export const AboutBrokersIcon = () => {
   const l10n = useL10n();
@@ -28,10 +29,7 @@ export const AboutBrokersIcon = () => {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const { buttonProps } = useButton(triggerProps, triggerRef);
 
-  const dataBrokerCount = parseInt(
-    process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-    10,
-  );
+  const dataBrokerCount = CONST_ONEREP_DATA_BROKER_COUNT;
 
   return (
     <>

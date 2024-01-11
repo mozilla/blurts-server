@@ -13,6 +13,7 @@ import { PublicEnvProvider } from "../contextProviders/public-env";
 import { SessionProvider } from "../contextProviders/session";
 import { authOptions } from "./api/utils/auth";
 import { metropolis } from "./fonts/Metropolis/metropolis";
+import { CONST_GA4_MEASUREMENT_ID } from "../constants";
 
 // DO NOT ADD SECRETS: Env variables added here become public.
 const PUBLIC_ENVS = {
@@ -61,7 +62,7 @@ export default async function RootLayout({
         className={`${inter.className} ${inter.variable} ${metropolis.variable}`}
         // DO NOT ADD SECRETS HERE: The following data attributes expose
         // variables that are being used in the public analytics scripts
-        data-ga4-measurement-id={process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID}
+        data-ga4-measurement-id={CONST_GA4_MEASUREMENT_ID}
         data-node-env={process.env.NODE_ENV}
       >
         <PublicEnvProvider publicEnvs={PUBLIC_ENVS}>

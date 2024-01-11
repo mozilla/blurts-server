@@ -31,6 +31,7 @@ import OpenInIcon from "./images/menu-icon-open-in.svg";
 import SettingsIcon from "./images/menu-icon-settings.svg";
 import HelpIcon from "./images/menu-icon-help.svg";
 import SignOutIcon from "./images/menu-icon-signout.svg";
+import { CONST_URL_SUMO_MONITOR_SUPPORT } from "../../../../constants";
 
 export type UserMenuProps = {
   user: Session["user"];
@@ -113,7 +114,7 @@ export const UserMenu = (props: UserMenuProps) => {
       >
         <a
           className={styles.menuItemCta}
-          href={process.env.NEXT_PUBLIC_MONITOR_SUPPORT_URL}
+          href={CONST_URL_SUMO_MONITOR_SUPPORT}
           ref={helpItemRef}
           rel="noopener noreferrer"
           target="_blank"
