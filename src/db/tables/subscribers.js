@@ -360,20 +360,13 @@ async function deleteUnverifiedSubscribers () {
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function deleteSubscriber (sub) {
-  const trx = await knex.transaction()
   console.debug('deleteSubscriber', JSON.stringify(sub))
-
   try {
-    await knex('email_addresses').where({ subscriber_id: sub.id }).del().transacting(trx)
-    await knex('subscribers').returning('id').where('fxa_uid', sub.fxa_uid).del().transacting(trx)
-    await trx.commit()
+    await knex('subscribers').returning('id').where('fxa_uid', sub.fxa_uid).del()
   } catch (error) {
-    await trx.rollback()
     // @ts-ignore Type annotations added later; type unknown:
     console.error('deleteSubscriber', error)
   }
-  //  const subscriber = await knex('subscribers').returning('id').where('fxa_uid', fxaUID).del()
-  //  if (subscriber && subscriber[0]) { await knex('email_addresses').where({ subscriber_id: subscriber[0].id }).del() }
 }
 /* c8 ignore stop */
 
