@@ -1,0 +1,74 @@
+@import "../../../tokens";
+
+.faqWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: $layout-md $spacing-md;
+  align-items: center;
+  gap: $spacing-md;
+
+  .faqTitle {
+    font: $text-title-2xs;
+    font-weight: 600;
+  }
+
+  .faqCta {
+    font-weight: 600;
+    color: $color-blue-50;
+  }
+
+  dl {
+    padding-top: $spacing-md;
+    display: flex;
+    flex-direction: column;
+    gap: $layout-xs;
+    width: 100%;
+
+    @media screen and (min-width: $screen-lg) {
+      width: $content-lg;
+    }
+
+    .faqQuestion {
+      width: 100%;
+      background: none;
+      border: none;
+      color: inherit;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: $layout-md;
+      align-items: center;
+      font: $text-body-lg;
+      cursor: pointer;
+      text-align: center;
+
+      svg {
+        color: $color-blue-60;
+        width: 12px;
+        height: 12px;
+        transform: rotate(135deg);
+        transition: transform 0.3s ease-in-out;
+
+        &.expanded {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    .faqAnswer {
+      display: none;
+      height: 0;
+
+      @media screen and (min-width: $screen-lg) {
+        padding-right: $spacing-lg;
+      }
+
+      &.expanded {
+        display: block;
+        height: auto;
+      }
+    }
+  }
+}

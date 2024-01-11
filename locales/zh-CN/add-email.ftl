@@ -13,7 +13,7 @@ add-email-address-input-label = 邮箱地址
 add-email-send-verification-button = 发送验证链接
 # $email is the newly added email address. $settings-href is the URL for the Settings page. HTML tags should not be translated, e.g. `<a>`
 # This string will be deprecated when the new Plus plan is live.
-add-email-verify-the-link = 验证发送到 { $email } 的链接以将该邮箱添加到 { -brand-fx-monitor }。在<a { $settings-href }>设置</a>中管理所有电子邮件地址。
+add-email-verify-the-link = 验证发送到 { $email } 的链接以将该邮箱添加到 { -brand-fx-monitor }。在<a { $settings-href }>设置</a>中管理所有邮箱地址。
 # Variables:
 #   $email (string) - An email address submitted by the user for monitoring, e.g. `example@example.com`
 add-email-verify-the-link-2 = 请验证发送到 <b>{ $email }</b> 的链接，以将其添加到 { -brand-mozilla-monitor }。

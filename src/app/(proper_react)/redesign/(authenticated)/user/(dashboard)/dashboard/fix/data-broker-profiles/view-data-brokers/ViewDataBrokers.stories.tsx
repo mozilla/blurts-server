@@ -91,9 +91,10 @@ const ViewWrapper = (props: ViewWrapperProps) => {
     expires: new Date().toISOString(),
     user: user,
   };
+  const l10n = getOneL10nSync();
 
   return (
-    <Shell l10n={getOneL10nSync()} session={mockedSession} nonce="">
+    <Shell l10n={l10n} session={mockedSession} nonce="">
       <ViewDataBrokersView
         data={{
           latestScanData: scanData,
@@ -101,6 +102,7 @@ const ViewWrapper = (props: ViewWrapperProps) => {
           subscriberBreaches: [],
           user: mockedSession.user,
         }}
+        l10n={l10n}
         subscriberEmails={[]}
       />
     </Shell>

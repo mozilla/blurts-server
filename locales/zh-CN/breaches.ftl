@@ -48,13 +48,13 @@ breaches-none-headline = 未发现外泄
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
 breaches-none-copy = 好消息！ { $email } 没有已知的外泄事件报告。我们将继续监控此邮箱地址，如果发生任何新的外泄事件，我们会通知您。
 breaches-none-cta-blurb = 您想监控另一个邮箱吗？
-breaches-none-cta-button = 添加电子邮件地址
+breaches-none-cta-button = 添加邮箱地址
 breaches-all-resolved-headline = 所有数据泄漏均已解决
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
 breaches-all-resolved-copy = 很好！您已解决 { $email } 的所有数据外泄问题。我们将继续监控此邮箱地址，如果发生任何新的数据外泄事件，我们会通知您。
 breaches-all-resolved-cta-blurb = 您想监控另一个邮箱吗？
-breaches-all-resolved-cta-button = 添加电子邮件地址
+breaches-all-resolved-cta-button = 添加邮箱地址
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 # Variables:
 #   $breachDate (String) - Date of the breach

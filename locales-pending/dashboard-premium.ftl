@@ -13,6 +13,8 @@ modal-active-number-of-exposures-part-one-premium =
     *[other] This chart includes the total number of times we found each type of data exposed across all data broker profiles and all data breaches for up to { $limit } email addresses that you are currently monitoring.
   }
 modal-active-number-of-exposures-part-three-premium = This chart does not include any exposures that are in progress of being auto-removed. Once your exposures are fixed, they will be added to your total number of fixed exposures on the Fixed page.
+modal-fixed-number-of-exposures-part-one = This chart includes the total number of exposures that have been fixed across all data broker profiles and data breaches.
+modal-fixed-number-of-exposures-part-two = It does not include any exposures that are in progress of being auto-removed. Once they are fully removed, they’ll be added to the total here.
 
 progress-card-auto-removed-headline = Auto-removed
 progress-card-in-progress-headline = In progress

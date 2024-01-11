@@ -37,7 +37,7 @@ exposure-card-cta = Alle lekken herstellen
 exposure-card-label-company-logo = Bedrijfslogo
 exposure-card-label-company = Bedrijf
 exposure-card-label-exposure-type = Type lek
-exposure-card-label-date-found = Datum gevonden
+exposure-card-label-date-found = Datum ontdekt
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Status
 # Variables:
