@@ -366,6 +366,11 @@ export const EnterInfo = ({
                       field_id: key,
                     });
                   }}
+                  onFocusChange={(isFocussed) => {
+                    if (!isFocussed && !value) {
+                      setInvalidInputs([...invalidInputs, key]);
+                    }
+                  }}
                 />
               ) : (
                 <InputField
