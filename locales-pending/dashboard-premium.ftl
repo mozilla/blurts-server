@@ -13,6 +13,8 @@ modal-active-number-of-exposures-part-one-premium =
     *[other] This chart includes the total number of times we found each type of data exposed across all data broker profiles and all data breaches for up to { $limit } email addresses that you are currently monitoring.
   }
 modal-active-number-of-exposures-part-three-premium = This chart does not include any exposures that are in progress of being auto-removed. Once your exposures are fixed, they will be added to your total number of fixed exposures on the Fixed page.
+modal-fixed-number-of-exposures-part-one = This chart includes the total number of exposures that have been fixed across all data broker profiles and data breaches.
+modal-fixed-number-of-exposures-part-two = It does not include any exposures that are in progress of being auto-removed. Once they are fully removed, they’ll be added to the total here.
 
 progress-card-auto-removed-headline = Auto-removed
 progress-card-in-progress-headline = In progress
@@ -132,12 +134,10 @@ dashboard-top-banner-scan-in-progress-no-results-cta = Check more email addresse
 dashboard-top-banner-scan-in-progress-fix-now-hint = You can come back later, or start fixing your data breaches now.
 dashboard-top-banner-scan-in-progress-results-found-cta = See what’s ready now
 
-dashboard-top-banner-protect-your-data-title = Let’s protect your data
 # Variables:
 # $data_breach_unresolved_num is the unresolved number of data breaches the user has.
 # $data_broker_unresolved_num is the unresolved number of data brokers selling the user’s data.
 dashboard-top-banner-protect-your-data-description = We found your data in { $data_breach_unresolved_num } data breaches and { $data_broker_unresolved_num } sites selling your personal info. We’ll guide you step-by-step on how to fix it.
-dashboard-top-banner-protect-your-data-cta = Let’s fix it
 
 dashboard-top-banner-monitor-protects-your-even-more-title = { -product-short-name } now protects you even more
 # Variables:

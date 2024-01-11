@@ -4,22 +4,22 @@
 
 chevron-down-alt = Développer
 chevron-up-alt = Réduire
-exposure-card-exposure-type = Type d’exposition
-exposure-card-date-found = Date de l’exposition
+exposure-card-exposure-type = Type de fuite
+exposure-card-date-found = Date de la fuite
 
 # Status Pill
 
 status-pill-action-needed = Action nécessaire
 status-pill-progress = En cours
-status-pill-fixed = Corrigé
+status-pill-fixed = Résolue
 
 # Exposure Card
 
 exposure-card-family-members = Membres de la famille
-exposure-card-email = Adresse électronique
+exposure-card-email = Adresse e-mail
 exposure-card-phone-number = Numéro de téléphone
 exposure-card-address = Adresse
-exposure-card-credit-card = carte bancaire
+exposure-card-credit-card = Carte bancaire
 exposure-card-password = Mot de passe
 exposure-card-ip-address = Adresse IP
 exposure-card-other = Autre
@@ -36,7 +36,7 @@ exposure-card-exposure-type-data-breach = Fuite de données
 exposure-card-cta = Corriger tous les problèmes d’exposition
 exposure-card-label-company-logo = Logo de l’entreprise
 exposure-card-label-company = Entreprise
-exposure-card-label-exposure-type = Type d’exposition
+exposure-card-label-exposure-type = Type de fuite
 exposure-card-label-date-found = Date d’identification
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = État

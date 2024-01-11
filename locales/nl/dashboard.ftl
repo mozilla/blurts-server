@@ -97,6 +97,7 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] U hebt nog { $exposures_unresolved_num } lekken op te lossen. Ga door en bescherm uzelf. We leiden u stap voor stap erdoorheen.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Laten we doorgaan
+dashboard-top-banner-protect-your-data-title = Laten we uw gegevens beschermen
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.

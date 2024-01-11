@@ -814,3 +814,9 @@ breach-detail-cta-signup = Periksa pembobolan data
 floating-banner-text = Tingkatkan keamanan daring Anda dengan berita, kiat, dan pembaruan dari { -brand-Mozilla }.
 floating-banner-link-label = Daftar
 floating-banner-dismiss-button-label = Tidak, terima kasih
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nama baru, tampilan, dan lebih banyak cara untuk <b>mendapatkan kembali privasi Anda</b>.
+banner-monitor-rebrand-dismiss-button-label = Oke
+banner-monitor-rebrand-dismiss-button-tooltip = Tutup

@@ -33,6 +33,7 @@ landing-all-data-breach-next-steps-qn = Tôi mới phát hiện ra tôi đã n�
 landing-all-data-breach-next-steps-ans = Truy cập { -brand-mozilla-monitor } để tìm hiểu những việc cần làm sau khi xảy ra sự cố rò rỉ dữ liệu và nhận các bước hướng dẫn để giải quyết việc thông tin cá nhân của bạn bị lộ. Tin tặc dựa vào việc mọi người sử dụng lại mật khẩu, vì vậy điều quan trọng là tạo mật khẩu mạnh, duy nhất cho tất cả tài khoản của bạn. Giữ mật khẩu của bạn ở nơi an toàn mà chỉ bạn mới có quyền truy cập; đây có thể là nơi bạn lưu trữ các tài liệu quan trọng hoặc trình quản lý mật khẩu.
 landing-all-data-breach-info-qn = Thông tin nào bị lộ trong các rò rỉ dữ liệu?
 landing-all-data-breach-info-ans = Không phải tất cả các rò rỉ tiết lộ tất cả các thông tin giống nhau. Nó chỉ phụ thuộc vào những gì tin tặc có thể truy cập. Nhiều rò rỉ dữ liệu làm lộ địa chỉ email và mật khẩu. Những rò rỉ khác tiết lộ thông tin nhạy cảm hơn như số thẻ tín dụng, mã PIN và số an sinh xã hội.
+landing-all-close-faq-alt = Đóng
 
 # Social proof
 

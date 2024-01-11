@@ -33,6 +33,7 @@ landing-all-data-breach-next-steps-qn = Recién descubrí una filtración de dat
 landing-all-data-breach-next-steps-ans = Visitá { -brand-mozilla-monitor } para saber qué hacer después de una filtración de datos y obtener pasos guiados para resolver las exposiciones de tu información personal. Los hackers dependen de que las personas reutilicen contraseñas, por lo que es importante crear contraseñas seguras y únicas para todas tus cuentas. Guardá tus contraseñas en un lugar seguro al que solo vos tengás acceso; este podría ser el mismo lugar donde guardás documentos importantes o un administrador de contraseñas.
 landing-all-data-breach-info-qn = ¿Qué información queda expuesta en las filtraciones de datos?
 landing-all-data-breach-info-ans = No todas las filtraciones exponen la misma información. Solo depende de a qué puedan acceder los hackers. Muchas filtraciones de datos exponen direcciones de correo electrónico y contraseñas. Otras exponen información más confidencial, como números de tarjetas de crédito, números de PIN y números de seguridad social.
+landing-all-close-faq-alt = Cerrar
 
 # Social proof
 
@@ -60,5 +61,5 @@ landing-all-help-protect-you-feature-one = Te buscaremos en todas las filtracion
 landing-all-help-protect-you-feature-two = Te guiaremos a través de los pasos necesarios para resolver cada filtración
 landing-all-help-protect-you-feature-three = Monitorearemos continuamente y te enviaremos alertas sobre cualquier nueva filtración.
 landing-all-help-protect-you-cta = Registrate para recibir alertas de filtraciones
-landing-all-get-started = Escanea tu correo electrónico para empezar
+landing-all-get-started = Escaneá tu correo electrónico para empezar
 landing-all-take-back-data = Recuperá el control de tus datos

@@ -23,6 +23,7 @@ exposure-card-credit-card = Kuatia’atã ñemurã
 exposure-card-password = Ñe’ẽñemi
 exposure-card-ip-address = IP kundaharape
 exposure-card-other = Ambue
+exposure-card-description-info-for-sale-part-one = Ko tenda ovende ha omoherakuã <data_broker_link>mba’emimi nde rehegua.</data_broker_link>
 exposure-card-description-info-for-sale-part-two = Embguete ko mba’ete emo’ã hag̃ua nde rekoñemi.
 exposure-card-description-data-breach-part-two = Rombohapéta emoĩporãkuaa hag̃uáicha.
 exposure-card-your-exposed-info = Ne marandu ivaikuaa:
