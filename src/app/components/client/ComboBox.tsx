@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useRef } from "react";
+import { ReactElement, useRef } from "react";
 import { useComboBox } from "react-aria";
 import { useComboBoxState, ComboBoxStateOptions } from "react-stately";
 import { ListBox } from "./ListBox";
@@ -13,10 +13,11 @@ import styles from "./ComboBox.module.scss";
 
 interface ComboBoxProps extends ComboBoxStateOptions<object> {
   items: Array<object>;
+  listPlaceholder?: ReactElement;
 }
 
 function ComboBox(props: ComboBoxProps) {
-  const { label, isRequired, validationState } = props;
+  const { label, isRequired, isInvalid } = props;
   const inputRef = useRef(null);
   const listBoxRef = useRef(null);
   const popoverRef = useRef(null);
@@ -36,7 +37,6 @@ function ComboBox(props: ComboBoxProps) {
     },
     state,
   );
-  const isInvalid = validationState === "invalid";
 
   return (
     <>
@@ -74,9 +74,9 @@ function ComboBox(props: ComboBoxProps) {
       {
         // TODO: Add unit test when changing this code:
         /* c8 ignore next */
-        state.isOpen && props.items?.length > 0 && (
+        state.isOpen && (
           <Popover
-            offset={4}
+            offset={8}
             popoverRef={popoverRef}
             state={state}
             triggerRef={inputRef}
@@ -85,6 +85,7 @@ function ComboBox(props: ComboBoxProps) {
               <ListBox
                 {...listBoxProps}
                 listBoxRef={listBoxRef}
+                listPlaceholder={props.listPlaceholder}
                 parentRef={inputRef}
                 state={state}
               />

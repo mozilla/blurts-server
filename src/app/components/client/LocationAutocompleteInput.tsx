@@ -58,13 +58,18 @@ export const LocationAutocompleteInput = ({
     <div className={styles.locationAutocomplete}>
       <ComboBox
         {...props}
-        allowsCustomValue={false}
+        allowsCustomValue={true}
         allowsEmptyCollection={true}
         items={locationSuggestions.items}
         inputValue={locationSuggestions.filterText}
         onInputChange={(value) => locationSuggestions.setFilterText(value)}
         onSelectionChange={handleOnSelectionChange}
         shouldCloseOnBlur={true}
+        listPlaceholder={
+          <div className={styles.locationItem}>
+            <strong>No locations found for search</strong>
+          </div>
+        }
       >
         {(location) => {
           const relevantLocation = location as RelevantLocation;
