@@ -816,3 +816,8 @@ breach-detail-cta-signup = Ehechajey oĩpa ñembogua
 floating-banner-text = Eñemohekorosãve ñandutípe marandu, ha { -brand-Mozilla } ñembohekopyahu ndive.
 floating-banner-link-label = Eñemboheraguapy
 floating-banner-dismiss-button-label = Nahániri, aguyje
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-dismiss-button-label = MONEĨ
+banner-monitor-rebrand-dismiss-button-tooltip = Mboyke

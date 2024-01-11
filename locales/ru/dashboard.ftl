@@ -42,6 +42,8 @@ modal-active-number-of-exposures-part-one-all =
     }
 modal-active-number-of-exposures-part-two = Например, если у вас есть 10 утечек вашего номера телефона, это может значить, что один номер телефона утёк на 10 различных сайтах, или это может значить, что 2 разных номера телефона утекли на 5 разных сайтах.
 modal-active-number-of-exposures-part-three-all = Как только они будут решены, они будут добавлены к вашему общему числу зафиксированных утечек на странице Исправленные.
+modal-fixed-number-of-exposures-title = О вашем числе зафиксированных сеансов
+modal-fixed-number-of-exposures-all = Эта диаграмма показывает общее число утечек данных, которые были устранены для всех адресов электронной почты, которые вы сейчас отслеживаете. Как только риски будут отмечены как зафиксированные, они будут добавлены к общему количеству здесь.
 modal-cta-ok = OK
 modal-open-alt = Открыть
 modal-close-alt = Закрыть
@@ -102,6 +104,8 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[many] Вам осталось исправить { $exposures_unresolved_num } утечек. Продолжайте и защитите себя. Мы поможем вам шаг за шагом.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Давайте продолжим
+dashboard-top-banner-protect-your-data-title = Давайте защитим ваши данные
+dashboard-top-banner-protect-your-data-cta = Давайте это исправим
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
