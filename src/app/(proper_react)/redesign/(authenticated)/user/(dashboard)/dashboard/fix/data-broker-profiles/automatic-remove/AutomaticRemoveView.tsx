@@ -9,6 +9,7 @@ import styles from "../dataBrokerProfiles.module.scss";
 import { Button } from "../../../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { FixView } from "../../FixView";
+import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
 
 export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
   monthlySubscriptionUrl: string;
@@ -20,10 +21,7 @@ export function AutomaticRemoveView(props: Props) {
 
   const [selectedPlanIsYearly, setSelectedPlanIsYearly] = useState(true);
 
-  const dataBrokerCount = parseInt(
-    process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-    10,
-  );
+  const dataBrokerCount = CONST_ONEREP_DATA_BROKER_COUNT;
 
   const { monthlySubscriptionUrl, yearlySubscriptionUrl, ...fixViewProps } =
     props;

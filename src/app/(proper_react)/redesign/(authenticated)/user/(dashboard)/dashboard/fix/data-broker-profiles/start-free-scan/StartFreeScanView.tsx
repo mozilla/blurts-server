@@ -15,6 +15,10 @@ import {
   getNextGuidedStep,
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
+import {
+  CONST_URL_SUMO_HOW_IT_WORKS,
+  CONST_ONEREP_DATA_BROKER_COUNT,
+} from "../../../../../../../../../../constants";
 
 export type Props = {
   data: StepDeterminationData;
@@ -44,10 +48,7 @@ export function StartFreeScanView(props: Props) {
             {l10n.getString(
               "fix-flow-data-broker-profiles-start-free-scan-content-p1",
               {
-                data_broker_count: parseInt(
-                  process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-                  10,
-                ),
+                data_broker_count: CONST_ONEREP_DATA_BROKER_COUNT,
               },
             )}
           </p>
@@ -56,7 +57,7 @@ export function StartFreeScanView(props: Props) {
               "fix-flow-data-broker-profiles-start-free-scan-content-p2",
             )}{" "}
             <a
-              href={process.env.NEXT_PUBLIC_HOW_IT_WORKS_SUMO_URL}
+              href={CONST_URL_SUMO_HOW_IT_WORKS}
               target="_blank"
               onClick={() => {
                 recordTelemetry("link", "click", {

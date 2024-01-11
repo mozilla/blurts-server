@@ -13,6 +13,7 @@ import { ModalOverlay } from "./dialog/ModalOverlay";
 import ModalImage from "../client/assets/subscriber-waitlist-dialog-icon.svg";
 import { useL10n } from "../../hooks/l10n";
 import styles from "./SubscriberWaitlistDialog.module.scss";
+import { CONST_URL_WAITLIST } from "../../../constants";
 
 export function WaitlistDialog({
   dialogTriggerState,
@@ -40,10 +41,7 @@ export function WaitlistDialog({
               {l10n.getString("subscriber-waitlist-dialog-instruction-text")}
             </p>
             <div className={styles.buttonWrapper}>
-              <Button
-                variant="primary"
-                href={process.env.NEXT_PUBLIC_WAITLIST_URL}
-              >
+              <Button variant="primary" href={CONST_URL_WAITLIST}>
                 {l10n.getString("subscriber-waitlist-dialog-cta-button-label")}
               </Button>
               <Button

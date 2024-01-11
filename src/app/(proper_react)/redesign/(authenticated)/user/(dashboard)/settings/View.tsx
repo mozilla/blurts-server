@@ -11,6 +11,7 @@ import { OpenInNew } from "../../../../../../components/server/Icons";
 import { EmailListing } from "./EmailListing";
 import { EmailAddressAdder } from "./EmailAddressAdder";
 import { AlertAddressForm } from "./AlertAddressForm";
+import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -43,7 +44,7 @@ export const SettingsView = (props: Props) => {
             <h3>{l10n.getString("settings-email-list-title")}</h3>
             <p className={styles.description}>
               {l10n.getString("settings-email-limit-info", {
-                limit: process.env.NEXT_PUBLIC_MAX_NUM_ADDRESSES!,
+                limit: CONST_MAX_NUM_ADDRESSES,
               })}
             </p>
           </div>
