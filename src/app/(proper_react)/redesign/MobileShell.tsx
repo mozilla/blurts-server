@@ -10,7 +10,7 @@ import Image from "next/image";
 import { Session } from "next-auth";
 import styles from "./MobileShell.module.scss";
 import monitorLogo from "../images/monitor-logo.webp";
-import { PremiumBadge } from "../../components/client/PremiumBadge";
+import { UpsellBadge } from "../../components/client/UpsellBadge";
 import { CloseBigIcon, ListIcon } from "../../components/server/Icons";
 import { UserMenu } from "../../components/client/toolbar/UserMenu";
 import { useL10n } from "../../hooks/l10n";
@@ -135,8 +135,7 @@ export const MobileShell = (props: Props) => {
               </li>
             </ul>
             <div className={styles.premiumCta}>
-              <PremiumBadge
-                label={l10n.getString("premium-cta-label")}
+              <UpsellBadge
                 user={props.session.user}
                 monthlySubscriptionUrl={props.monthlySubscriptionUrl}
                 yearlySubscriptionUrl={props.yearlySubscriptionUrl}

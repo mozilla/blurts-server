@@ -31,13 +31,13 @@
     }
 -product-short-name =
     { $case ->
-        [nom] Monitor
         [gen] Monitoru
         [dat] Monitoru
         [acc] Monitor
         [voc] Monitore
         [loc] Monitoru
-       *[ins] Monitorem
+        [ins] Monitorem
+       *[nom] Monitor
     }
 -brand-name =
     { $case ->
@@ -926,7 +926,7 @@ menu-item-settings = Nastavení
 menu-item-help = Nápověda a podpora
 # Obsolete
 menu-item-logout = Odhlásit se
-user-menu-trigger-label = Otevřít nabídku uživatele
+user-menu-trigger-label = Otevřít uživatelskou nabídku
 user-menu-trigger-tooltip = Profil
 user-menu-manage-fxa-label = Spravovat { -brand-mozilla-account(case: "acc", capitalization: "lower") }
 user-menu-settings-label = Nastavení
@@ -977,3 +977,9 @@ breach-detail-cta-signup = Prohledat úniky
 floating-banner-text = Zvyšte své online zabezpečení pomocí novinek, tipů a aktualizací od { -brand-Mozilla(case: "gen") }.
 floating-banner-link-label = Přihlásit se
 floating-banner-dismiss-button-label = Ne, díky
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nové jméno, vzhled a ještě více způsobů, jak <b>získat zpět vaše soukromí</b>.
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Zavřít

@@ -13,10 +13,10 @@ import { TabList } from "./TabList";
 import { Button } from "../client/Button";
 import { useL10n } from "../../hooks/l10n";
 import ModalImage from "../client/assets/premium-upsell-dialog-icon.svg";
-import styles from "./PremiumUpsellDialog.module.scss";
+import styles from "./UpsellDialog.module.scss";
 import { useTelemetry } from "../../hooks/useTelemetry";
 
-export interface PremiumUpsellDialogProps {
+export interface UpsellDialogProps {
   state: OverlayTriggerState;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
@@ -61,15 +61,15 @@ function PremiumPricingLabel({ isMonthly }: { isMonthly?: boolean }) {
   );
 }
 
-export interface PremiumUpsellDialogContentProps {
+export interface UpsellDialogContentProps {
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
 }
 
-function PremiumUpsellDialogContent({
+function UpsellDialogContent({
   monthlySubscriptionUrl,
   yearlySubscriptionUrl,
-}: PremiumUpsellDialogContentProps) {
+}: UpsellDialogContentProps) {
   const l10n = useL10n();
   const defaultSelectedKey = "yearly";
   const [selectedTab, setSelectedTab] = useState<Key>(defaultSelectedKey);
@@ -176,39 +176,37 @@ function PremiumUpsellDialogContent({
   );
 }
 
-function PremiumUpsellDialog({
+function UpsellDialog({
   state,
   yearlySubscriptionUrl,
   monthlySubscriptionUrl,
   ...otherProps
-}: PremiumUpsellDialogProps & OverlayTriggerProps) {
+}: UpsellDialogProps & OverlayTriggerProps) {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
 
   return (
-    <div className={styles.modal}>
-      {state.isOpen && (
-        <ModalOverlay state={state} {...otherProps} isDismissable={true}>
-          <Dialog
-            title={l10n.getString("premium-upsell-dialog-title")}
-            illustration={<Image src={ModalImage} alt="" />}
-            onDismiss={() => {
-              recordTelemetry("button", "click", {
-                button_id: "close_upsell_modal",
-              });
-              return void state.close();
-            }}
-            variant="horizontal"
-          >
-            <PremiumUpsellDialogContent
-              monthlySubscriptionUrl={monthlySubscriptionUrl}
-              yearlySubscriptionUrl={yearlySubscriptionUrl}
-            />
-          </Dialog>
-        </ModalOverlay>
-      )}
-    </div>
+    state.isOpen && (
+      <ModalOverlay state={state} {...otherProps} isDismissable={true}>
+        <Dialog
+          title={l10n.getString("premium-upsell-dialog-title")}
+          illustration={<Image src={ModalImage} alt="" />}
+          onDismiss={() => {
+            recordTelemetry("button", "click", {
+              button_id: "close_upsell_modal",
+            });
+            return void state.close();
+          }}
+          variant="horizontal"
+        >
+          <UpsellDialogContent
+            monthlySubscriptionUrl={monthlySubscriptionUrl}
+            yearlySubscriptionUrl={yearlySubscriptionUrl}
+          />
+        </Dialog>
+      </ModalOverlay>
+    )
   );
 }
 
-export { PremiumUpsellDialog };
+export { UpsellDialog };

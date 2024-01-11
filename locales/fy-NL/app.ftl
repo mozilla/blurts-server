@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
@@ -39,6 +44,8 @@ user-add-duplicate-email = Dit e-mailadres is al oan { -product-name } tafoege.
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Besykje jo { $preferencesLink } om de steat fan { $userEmail } te kontrolearjen.
+user-add-verification-email-just-sent = Sa gau kin in oar ferifikaasje-e-mailberjocht net ferstjoerd wurde. Probearje it letter opnij.
+user-add-unknown-error = Der is wat misgien by it tafoegjen fan in oar e-mailadres. Probearje it letter opnij.
 error-headline = Flater
 user-verify-token-error = Ferifikaasjetoken is fereaske.
 user-verify-email-report-subject = Jo { -product-name }-rapport
@@ -722,6 +729,7 @@ ad-unit-6-before-you-complete = Brûk, eardat jo jo folgjende registraasje folt�
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla-account
+open-in-new-tab-alt = Keppeling iepenje yn in nij ljepblêd
 
 ## Search Engine Optimization
 
@@ -743,19 +751,43 @@ site-nav-help-link = Help en stipe
 site-nav-ad-callout = Probearje ús oare befeiligingsark:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Haadmenu
+main-nav-button-collapse-label = Menu ynklappe
+main-nav-button-collapse-tooltip = Menu ynklappe
+main-nav-button-expand-label = Menu útklappe
+main-nav-button-expand-tooltip = Menu útklappe
+main-nav-label = Navigaasje
+main-nav-link-home-label = Startside
+main-nav-link-dashboard-label = Dashboerd
+main-nav-link-settings-label = Ynstellingen
+main-nav-link-faq-label = FAQ’s
+main-nav-link-faq-tooltip = Faak stelde fragen
 
 ## User menu
 
+# Obsolete
 menu-button-title = Brûkersmenu
+# Obsolete
 menu-button-alt = Brûkersmenu iepenje
+# Obsolete
 menu-list-accessible-label = Accountmenu
+# Obsolete
 menu-item-fxa-2 = Jo { -brand-mozilla-account } beheare
-menu-item-fxa-alt-2 = { -brand-mozilla-account }-side iepenje
+# Obsolete
 menu-item-settings = Ynstellingen
-menu-item-settings-alt = Ynstellingenside iepenje
+# Obsolete
 menu-item-help = Help en stipe
-menu-item-help-alt = Help- en stipeside iepenje
+# Obsolete
 menu-item-logout = Ofmelde
+user-menu-trigger-label = Brûkersmenu iepenje
+user-menu-trigger-tooltip = Profyl
+user-menu-manage-fxa-label = Jo { -brand-mozilla-account } beheare
+user-menu-settings-label = Ynstellingen
+user-menu-settings-tooltip = { -brand-mozilla-monitor } konfigurearje
+user-menu-help-label = Help en stipe
+user-menu-help-tooltip = Krij help mei it brûken fan { -brand-mozilla-monitor }
+user-menu-signout-label = Ofmelde
+user-menu-signout-tooltip = Ofmelde by { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -764,6 +796,8 @@ terms-of-service = Tsjinstbetingsten
 privacy-notice = Privacyferklearring
 github = { -brand-github }
 footer-nav-all-breaches = Alle datalekken
+footer-external-link-faq-label = FAQ’s
+footer-external-link-faq-tooltip = Faak stelde fragen
 
 ## Error page
 
@@ -796,3 +830,9 @@ breach-detail-cta-signup = Kontrolearje op datalekken
 floating-banner-text = Ferheegje jo online feiligens mei nijs, tips en updates fan { -brand-Mozilla }.
 floating-banner-link-label = Registrearje
 floating-banner-dismiss-button-label = Nee, tankewol
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nije namme, uterlik en noch mear manieren om <b>jo privacy werom te winnen</b>.
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Slute

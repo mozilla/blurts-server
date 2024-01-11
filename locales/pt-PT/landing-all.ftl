@@ -33,6 +33,7 @@ landing-all-data-breach-next-steps-qn = Acabei de descobrir que estou numa falha
 landing-all-data-breach-next-steps-ans = Visite a { -brand-mozilla-monitor } para saber o que fazer após uma violação de dados e obter os passos guiados para resolver a exposição da sua informação pessoal. Os hackers confiam que as pessoas reutilizam as palavras-passe, por isso é importante criar palavras-passe fortes e únicas para todas as suas contas. Mantenha as suas palavras-passe num local seguro ao qual apenas você tem acesso; este pode ser o mesmo sítio onde guarda documentos importantes ou um gestor de palavras-passe.
 landing-all-data-breach-info-qn = Que informação é exposta em violações de dados?
 landing-all-data-breach-info-ans = Não todas as violações de dados expõem a mesma informação. Depende apenas do que os piratas informáticos podem aceder. Muitas brechas de dados expõem endereços de e-mail e palavras-passe. Outros expõem informação mais sensível, como números de cartão de crédito, números PIN e números da segurança social.
+landing-all-close-faq-alt = Fechar
 
 # Social proof
 

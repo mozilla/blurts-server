@@ -5,11 +5,11 @@
 public-nav-name = { -brand-mozilla-monitor }
 landing-all-hero-title = Zjistěte, kde jsou vaše soukromé informace vystaveny - a vezměte si je zpět
 landing-all-hero-lead = Prověřujeme úniky dat a zjišťujeme, zda nedošlo k úniku vašich dat, a nabízíme vám kroky k nápravě.
-landing-all-hero-emailform-input-placeholder = vase-adresa@example.com
+landing-all-hero-emailform-input-placeholder = vasejmeno@example.com
 landing-all-hero-emailform-input-label = Zadejte svou e-mailovou adresu a zkontrolujte, zda nedošlo k úniku dat.
 landing-all-hero-emailform-submit-label = Zkontrolovat
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
-landing-all-hero-image-chart-label = expozic
+landing-all-hero-image-chart-label = odhalení
 
 # Value Proposition
 
@@ -33,6 +33,7 @@ landing-all-data-breach-next-steps-qn = Právě jsem zjistil, že byly mé údaj
 landing-all-data-breach-next-steps-ans = Navštivte stránku { -brand-mozilla-monitor }, kde se dozvíte, co dělat po úniku dat, a získáte návod, jak vyřešit vyzrazení vašich osobních údajů. Hackeři spoléhají na to, že lidé opakovaně používají hesla, proto je důležité vytvářet silná a jedinečná hesla pro všechny vaše účty. Uchovávejte svá hesla na bezpečném místě, ke kterému máte přístup pouze vy; může to být stejné místo, kam ukládáte důležité dokumenty, nebo správce hesel.
 landing-all-data-breach-info-qn = Jaké informace jsou při únicích dat vyzrazeny?
 landing-all-data-breach-info-ans = Ne všechny úniky poskytují stejné informace. Záleží na tom, k čemu mají hackeři přístup. Mnoho úniků dat vyzrazuje e-mailové adresy a hesla. Jiné vyzrazují citlivější informace, jako jsou čísla platebních karet, čísla PIN a rodná čísla.
+landing-all-close-faq-alt = Zavřít
 
 # Social proof
 

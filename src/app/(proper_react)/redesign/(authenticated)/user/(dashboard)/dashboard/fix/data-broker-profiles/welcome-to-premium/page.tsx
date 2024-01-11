@@ -9,14 +9,15 @@ import { authOptions } from "../../../../../../../../../api/utils/auth";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { redirect } from "next/navigation";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getUserBreaches";
-import { WelcomeToPremiumView } from "./WelcomeToPremiumView";
+import { WelcomeToPlusView } from "./WelcomeToPlusView";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { activateAndOptoutProfile } from "../../../../../../../../../functions/server/onerep";
 import { logger } from "../../../../../../../../../functions/server/logging";
+import { getL10n } from "../../../../../../../../../functions/server/l10n";
 
-export default async function WelcomeToPremiumPage() {
+export default async function WelcomeToPlusPage() {
   const session = await getServerSession(authOptions);
 
   // Ensure user is logged in
@@ -51,6 +52,10 @@ export default async function WelcomeToPremiumPage() {
   await activateAndOptoutProfile(profileId);
 
   return (
-    <WelcomeToPremiumView data={data} subscriberEmails={subscriberEmails} />
+    <WelcomeToPlusView
+      data={data}
+      subscriberEmails={subscriberEmails}
+      l10n={getL10n()}
+    />
   );
 }

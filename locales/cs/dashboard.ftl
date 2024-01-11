@@ -18,12 +18,16 @@ exposure-chart-heading =
 # Variables:
 #   $nr (number) - Number of fixed exposures found for the user
 exposure-chart-heading-fixed = <nr>{ $nr }</nr> <label>Opraveno</label>
-exposure-chart-legend-heading-type = Expozice
-exposure-chart-legend-heading-nr = Číslice
+exposure-chart-legend-heading-type = Odhalení
+exposure-chart-legend-heading-nr = Počet
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
 exposure-chart-caption = Tento graf ukazuje, kolikrát jsou vaše informace aktivně zpřístupňovány.
+# Variables:
+#   $total_fixed_exposures_num (number) - Number of fixed exposures
+#   $total_exposures_num (number) - Number of total exposures
+exposure-chart-caption-fixed = Tento graf ukazuje celkový počet fixovaných expozic ({ $total_fixed_exposures_num } z { $total_exposures_num })
 exposure-chart-returning-user-upgrade-prompt = Adresa domů, členové rodiny a další zatím nejsou zahrnuti.
 exposure-chart-returning-user-upgrade-prompt-cta = Spustit bezplatné skenování
 exposure-chart-scan-in-progress-prompt = <b>Probíhá sken:</b> adresy, rodinné příslušníky a další lidé ještě nejsou zahrnuti.
@@ -38,10 +42,12 @@ modal-active-number-of-exposures-part-one-all =
     }
 modal-active-number-of-exposures-part-two = Pokud máte například 10 zpřístupnění svého telefonního čísla, může to znamenat, že jedno telefonní číslo je zpřístupněno na 10 různých stránkách, nebo naopak 2 různá telefonní čísla na 5 různých serverech.
 modal-active-number-of-exposures-part-three-all = Jakmile budou vyřešeny, budou přidány k vašemu celkovému počtu pevných expozic na stránce Pevná.
+modal-fixed-number-of-exposures-title = O vašem počtu stálých expozic
+modal-fixed-number-of-exposures-all = Tento graf obsahuje celkový počet úniků dat, které byly opraveny pro všechny e-mailové adresy, které aktuálně sledujete. Jakmile jsou expozice označeny jako pevné, budou zde přičteny k celkovému součtu.
 modal-cta-ok = OK
 modal-open-alt = Otevřít
 modal-close-alt = Zavřít
-progress-card-heres-what-we-fixed-headline-all = Co jste opravili
+progress-card-heres-what-we-fixed-headline-all = Tady je, co jste opravili
 progress-card-manually-fixed-headline = Ručně opraveno
 dashboard-tab-label-action-needed = Vyžadována akce
 dashboard-tab-label-fixed = Opraveno
@@ -67,25 +73,25 @@ dashboard-exposures-area-description-all-line2 =
     }
 dashboard-fixed-area-headline-all = Zobrazí všechny pevně dané expozice
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
-dashboard-exposures-filter = Filtr
-dashboard-exposures-filter-company = Firma
-dashboard-exposures-filter-date-found = Datum nalezeno
+dashboard-exposures-filter = Filtrovat
+dashboard-exposures-filter-company = Společnost
+dashboard-exposures-filter-date-found = Datum nalezení
 dashboard-exposures-filter-date-found-last-seven-days = Posledních 7 dní
-dashboard-exposures-filter-date-found-last-thirty-days = Posledních 30 dnů
-dashboard-exposures-filter-date-found-last-year = Minulý rok
+dashboard-exposures-filter-date-found-last-thirty-days = Posledních 30 dní
+dashboard-exposures-filter-date-found-last-year = Poslední rok
 dashboard-exposures-filter-status = Stav
 dashboard-exposures-filter-status-action-needed = Vyžadována akce
 dashboard-exposures-filter-status-in-progress = Probíhá
-dashboard-exposures-filter-status-fixed = Opraveno
-popover-open-filter-settings-alt = Volba filtrů
+dashboard-exposures-filter-status-fixed = Vyřešeno
+popover-open-filter-settings-alt = Zvolte filtry
 dashboard-exposures-filter-show-all = Zobrazit vše
 dashboard-exposures-filter-show-results = Zobrazit výsledky
 dashboard-exposures-filter-reset = Obnovit
 
 ## Top banner on the dashboard
 
-dashboard-top-banner-section-label = Souhrn na nástěnce
-dashboard-top-banner-scan-in-progress-title = Vaše skenování stále probíhá
+dashboard-top-banner-section-label = Shrnutí na nástěnce
+dashboard-top-banner-scan-in-progress-title = Skenování stále probíhá
 dashboard-top-banner-your-data-is-protected-title = Vaše data jsou chráněna
 dashboard-top-banner-your-data-is-protected-cta = Podívejte se, co je opraveno
 dashboard-top-banner-lets-keep-protecting-title = Pojďme chránit vaše data
@@ -98,6 +104,8 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] Stále vám zbývá opravit { $exposures_unresolved_num } úniků. Pokračujte a chraňte se. Provedeme vás krok za krokem.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Pojďme dál
+dashboard-top-banner-protect-your-data-title = Chraňme vaše data
+dashboard-top-banner-protect-your-data-cta = Pojďme to napravit
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.

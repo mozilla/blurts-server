@@ -42,6 +42,8 @@ modal-active-number-of-exposures-part-one-all =
     }
 modal-active-number-of-exposures-part-two = Например, если у вас есть 10 утечек вашего номера телефона, это может значить, что один номер телефона утёк на 10 различных сайтах, или это может значить, что 2 разных номера телефона утекли на 5 разных сайтах.
 modal-active-number-of-exposures-part-three-all = Как только они будут решены, они будут добавлены к вашему общему числу зафиксированных утечек на странице Исправленные.
+modal-fixed-number-of-exposures-title = О вашем числе зафиксированных сеансов
+modal-fixed-number-of-exposures-all = Эта диаграмма показывает общее число утечек данных, которые были устранены для всех адресов электронной почты, которые вы сейчас отслеживаете. Как только риски будут отмечены как зафиксированные, они будут добавлены к общему количеству здесь.
 modal-cta-ok = OK
 modal-open-alt = Открыть
 modal-close-alt = Закрыть
@@ -65,9 +67,9 @@ dashboard-exposures-area-description-all-line1 =
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
 dashboard-exposures-area-description-all-line2 =
     { $data_breach_unresolved_num ->
-        [one] Он обнаружен в { $data_breach_unresolved_num } утечке данных.
-        [few] Он был обнаружен в { $data_breach_unresolved_num } утечках данных.
-       *[many] Он был обнаружен в { $data_breach_unresolved_num } утечках данных.
+        [one] Обнаружено в { $data_breach_unresolved_num } утечке данных.
+        [few] Обнаружено в { $data_breach_unresolved_num } утечках данных.
+       *[many] Обнаружено в { $data_breach_unresolved_num } утечках данных.
     }
 dashboard-fixed-area-headline-all = Просмотреть все исправленные утечки
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
@@ -102,6 +104,8 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[many] Вам осталось исправить { $exposures_unresolved_num } утечек. Продолжайте и защитите себя. Мы поможем вам шаг за шагом.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Давайте продолжим
+dashboard-top-banner-protect-your-data-title = Давайте защитим ваши данные
+dashboard-top-banner-protect-your-data-cta = Давайте это исправим
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
@@ -116,9 +120,9 @@ dashboard-top-banner-non-us-protect-your-data-description-line1 =
 #   $data_breach_unresolved_num (number) - the total number of data breaches the user has.
 dashboard-top-banner-non-us-protect-your-data-description-line2 =
     { $data_breach_unresolved_num ->
-        [one] Он обнаружен в { $data_breach_unresolved_num } утечке данных. Мы пошагово поможем вам это исправить.
-        [few] Он был обнаружен в { $data_breach_unresolved_num } утечках данных. Мы пошагово поможем вам это исправить.
-       *[many] Он был обнаружен в { $data_breach_unresolved_num } утечках данных. Мы пошагово поможем вам это исправить.
+        [one] Обнаружено в { $data_breach_unresolved_num } утечке данных. Мы пошагово поможем вам это исправить.
+        [few] Обнаружено в { $data_breach_unresolved_num } утечках данных. Мы пошагово поможем вам это исправить.
+       *[many] Обнаружено в { $data_breach_unresolved_num } утечках данных. Мы пошагово поможем вам это исправить.
     }
 dashboard-top-banner-no-exposures-found-title = Утечек не найдено
 dashboard-top-banner-non-us-no-exposures-found-description = Отличные новости! Мы проверили все известные утечки данных и не обнаружили ни одного раскрытия ваших данных. Мы продолжим отслеживать вашу электронную почту и сообщим вам, если возникнет новая утечка.

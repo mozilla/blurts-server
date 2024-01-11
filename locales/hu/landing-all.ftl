@@ -33,6 +33,7 @@ landing-all-data-breach-next-steps-qn = Észrevettem, hogy szereplek egy adatvé
 landing-all-data-breach-next-steps-ans = Látogasson el a { -brand-mozilla-monitor } oldalra, hogy megtudja, mi a teendő egy adatvédelmi incidens után, és útmutatót kapjon a személyes adatainak kikerülésének megoldásához. A hackerek bíznak abban, hogy az emberek újra felhasználják a jelszavakat, ezért fontos, hogy erős, egyedi jelszavakat hozzon létre az összes fiókjához. Tartsa a jelszavait biztonságos helyen, ahová csak Ön férhet hozzá; ez lehet a hely, ahol a fontos dokumentumokat vagy egy jelszókezelőt tárol.
 landing-all-data-breach-info-qn = Milyen információk kerülnek nyilvánosságra egy adatvédelmi incidens során?
 landing-all-data-breach-info-ans = Nem minden adatvédelmi incidens fed fel ugyanazokat az információkat. Ez csak attól függ, hogy a hackerek mit férhetnek hozzá. Számos adatvédelmi incidens feszeget e-mail-címeket és jelszavakat. Mások érzékenyebb információkat tesznek közzé, például bankkártyaszámokat, PIN kódokat és TB számokat.
+landing-all-close-faq-alt = Bezárás
 
 # Social proof
 

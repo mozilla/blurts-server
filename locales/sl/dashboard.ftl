@@ -44,6 +44,8 @@ modal-active-number-of-exposures-part-one-all =
     }
 modal-active-number-of-exposures-part-two = Na primer, če imate 10 izpostavljenosti svoje telefonske številke, to lahko pomeni, da je ena telefonska številka izpostavljena na 10 različnih spletnih mestih ali pa da sta bili 2 različni telefonski številki izpostavljeni na 5 različnih mestih.
 modal-active-number-of-exposures-part-three-all = Ko bodo razrešene, bodo dodane vašemu skupnemu številu fiksiranih izpostavljenosti na strani Fiksno.
+modal-fixed-number-of-exposures-title = O številu določenih izpostavljenosti
+modal-fixed-number-of-exposures-all = Ta grafikon vključuje skupno število odpravljenih kraj podatkov za vse e-poštne naslove, ki jih trenutno spremljate. Ko so izpostavljenosti označene kot fiksne, bodo tukaj dodane skupni vsoti.
 modal-cta-ok = V redu
 modal-open-alt = Odpri
 modal-close-alt = Zapri
@@ -107,6 +109,8 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] Imate še { $exposures_unresolved_num } izpostavljenosti, ki jih morate popraviti. Le tako naprej in se zaščitite. Vodili vas bomo korak za korakom.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Gremo naprej
+dashboard-top-banner-protect-your-data-title = Varujmo vaše podatke
+dashboard-top-banner-protect-your-data-cta = Popravimo zadevo
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.

@@ -44,8 +44,8 @@ user-add-duplicate-email = Ez az e-mail-cím már hozzáadásra került a { -pro
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Keresse fel a { $preferencesLink } oldalt, és ellenőrizze a(z) { $userEmail } állapotát.
-user-add-verification-email-just-sent = Nem küldhető ilyen gyorsan újabb ellenőrző e-mail. Próbálja újra később.
-user-add-unknown-error = Hiba történt egy másik e-mail cím hozzáadásakor. Próbálja újra később.
+user-add-verification-email-just-sent = Nem küldhető ilyen gyorsan újabb megerősítő e-mail. Próbálja újra később.
+user-add-unknown-error = Hiba történt egy másik e-mail-cím hozzáadása során. Próbálja újra később.
 error-headline = Hiba
 user-verify-token-error = Az ellenőrzési token lejárt.
 user-verify-email-report-subject = Az Ön { -product-name } jelentése
@@ -554,11 +554,11 @@ generic-confirmation-subhead = Ez az adatvédelmi incidens megoldottként lett m
 #   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
-        [one] A fennmaradt adatvédelmi incidens megtekintéséhez ugorjon az irányítópulthoz.
-       *[other] Az összes fennmaradt adatvédelmi incidens megtekintéséhez ugorjon az irányítópulthoz.
+        [one] A fennmaradt adatvédelmi incidens megtekintéséhez ugorjon a vezérlőpulthoz.
+       *[other] Az összes fennmaradt adatvédelmi incidens megtekintéséhez ugorjon a vezérlőpulthoz.
     }
 return-to-breach-details-link = Vissza az adatvédelmi incidens részleteihez
-go-to-dashboard-link = Ugrás a vezérlőpultra
+go-to-dashboard-link = Ugrás a vezérlőpulthoz
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 # Variables:
@@ -788,9 +788,9 @@ user-menu-trigger-label = Felhasználói menü megnyitása
 user-menu-trigger-tooltip = Profil
 user-menu-manage-fxa-label = A { -brand-mozilla-account } kezelése
 user-menu-settings-label = Beállítások
-user-menu-settings-tooltip = { -brand-mozilla-monitor } beállítása
+user-menu-settings-tooltip = A { -brand-mozilla-monitor } beállítása
 user-menu-help-label = Súgó és támogatás
-user-menu-help-tooltip = Segítség a { -brand-mozilla-monitor } használatához
+user-menu-help-tooltip = Kérjen segítséget a { -brand-mozilla-monitor } használatához
 user-menu-signout-label = Kijelentkezés
 user-menu-signout-tooltip = Kijelentkezés a { -brand-mozilla-monitor }ból
 
@@ -835,3 +835,9 @@ breach-detail-cta-signup = Adatvédelmi incidensek keresése
 floating-banner-text = Növelje online biztonságát a { -brand-Mozilla } híreivel, tippjeivel és frissítéseivel.
 floating-banner-link-label = Regisztráció
 floating-banner-dismiss-button-label = Köszönöm, nem
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Új név, kinézet és még több módja annak, hogy <b>visszaszerezze a magánszféráját</b>.
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Eltüntetés

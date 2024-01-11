@@ -44,6 +44,7 @@ user-add-duplicate-email = Iste email ha jam essite addite a { -product-name }.
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Vade sur { $preferencesLink } pro controlar le stato de { $userEmail }.
+user-add-unknown-error = Alco errate eveniva addente le adresse email. Reproba.
 error-headline = Error
 user-verify-token-error = Un token de verification es necessari.
 user-verify-email-report-subject = Tu reporto de { -product-name }
@@ -476,7 +477,7 @@ generic-confirmation-message =
        *[other] Pro vider le violationes restante, va a tu pannello de controlo.
     }
 return-to-breach-details-link = Retornar al detalios del violation
-go-to-dashboard-link = Ir al pannello de controlo
+go-to-dashboard-link = Va al pannello de controlo
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 # Variables:
@@ -644,6 +645,7 @@ ad-unit-6-before-you-complete = Ante que tu completa tu proxime registration, us
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Conto Mozilla
+open-in-new-tab-alt = Aperir le ligamine in un nove scheda
 
 ## Search Engine Optimization
 
@@ -665,8 +667,17 @@ site-nav-help-link = Adjuta e assistentia
 site-nav-ad-callout = Proba nostre altere utensiles de securitate:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Menu principal
 main-nav-button-collapse-label = Collaber menu
+main-nav-button-collapse-tooltip = Collaber menu
 main-nav-button-expand-label = Expander menu
+main-nav-button-expand-tooltip = Expander menu
+main-nav-label = Navigation
+main-nav-link-home-label = Initio
+main-nav-link-dashboard-label = Pannello de controlo
+main-nav-link-settings-label = Parametros
+main-nav-link-faq-label = Folios a questiones
+main-nav-link-faq-tooltip = Folio a questiones
 
 ## User menu
 
@@ -684,6 +695,15 @@ menu-item-settings = Parametros
 menu-item-help = Adjuta e supporto
 # Obsolete
 menu-item-logout = Clauder session
+user-menu-trigger-label = Aperir le menu de usator
+user-menu-trigger-tooltip = Profilo
+user-menu-manage-fxa-label = Gere tu { -brand-mozilla-account }
+user-menu-settings-label = Parametros
+user-menu-settings-tooltip = Configurar { -brand-mozilla-monitor }
+user-menu-help-label = Auxilio e supporto
+user-menu-help-tooltip = Obtener adjuta per { -brand-mozilla-monitor }
+user-menu-signout-label = Clauder session
+user-menu-signout-tooltip = Clauder session de { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -692,6 +712,8 @@ terms-of-service = Terminos de servicio
 privacy-notice = Aviso de confidentialitate
 github = { -brand-github }
 footer-nav-all-breaches = Tote le violationes
+footer-external-link-faq-label = Folios a questiones
+footer-external-link-faq-tooltip = Folio a questiones
 
 ## Error page
 

@@ -33,6 +33,7 @@ landing-all-data-breach-next-steps-qn = Pravkar sem ugotovil, da sem vpleten v k
 landing-all-data-breach-next-steps-ans = Obiščite { -brand-mozilla-monitor }, če želite izvedeti, kaj storiti po kraji podatkov, in si oglejte navodila po korakih za rešitev problema izpostavljenosti vaših osebnih podatkov. Hekerji se zanašajo na ponovno uporabo gesel, zato je pomembno, da ustvarite močna in edinstvena gesla za vse svoje račune. Gesla hranite na varnem mestu, do katerega imate dostop samo vi; to je lahko isto mesto, kjer shranjujete pomembne dokumente ali upravitelja gesel.
 landing-all-data-breach-info-qn = Kateri podatki so izpostavljeni v krajah podatkov?
 landing-all-data-breach-info-ans = Vse kršitve ne razkrijejo istih podatkov. Odvisno od tega, do česa lahko hekerji dostopajo. Številne kraje podatkov razkrijejo e-poštne naslove in gesla. Drugi razkrijejo občutljivejše podatke, kot so številke kreditnih kartic, PIN številke in številke socialnega zavarovanja.
+landing-all-close-faq-alt = Zapri
 
 # Social proof
 

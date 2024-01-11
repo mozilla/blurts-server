@@ -44,8 +44,8 @@ user-add-duplicate-email = Este correo electrónico ya se agregó a { -product-n
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Andá a tu { $preferencesLink } para verificar el estado de { $userEmail }.
-user-add-verification-email-just-sent = No se puede enviar otro correo electrónico de verificación tan rápido. Inténtelo más tarde.
-user-add-unknown-error = Algo salió mal al agregar otra dirección de correo electrónico. Inténtelo más tarde.
+user-add-verification-email-just-sent = No se puede enviar otro correo electrónico de verificación tan rápido. Intentalo más tarde.
+user-add-unknown-error = Algo salió mal al agregar otra dirección de correo electrónico. Intentalo más tarde.
 error-headline = Error
 user-verify-token-error = Se requiere identificador de verificación.
 user-verify-email-report-subject = Tu informe de { -product-name }
@@ -721,10 +721,10 @@ site-nav-ad-callout = Probá nuestras otras herramientas de seguridad:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
 mobile-menu-label = Menú principal
-main-nav-button-collapse-label = Colapsar menú
-main-nav-button-collapse-tooltip = Colapsar menú
-main-nav-button-expand-label = Expandir menú
-main-nav-button-expand-tooltip = Expandir menú
+main-nav-button-collapse-label = Colapsar el menú
+main-nav-button-collapse-tooltip = Colapsar el menú
+main-nav-button-expand-label = Expandir el menú
+main-nav-button-expand-tooltip = Expandir el menú
 main-nav-label = Navegación
 main-nav-link-home-label = Inicio
 main-nav-link-dashboard-label = Tablero
@@ -748,15 +748,15 @@ menu-item-settings = Opciones
 menu-item-help = Ayuda y soporte
 # Obsolete
 menu-item-logout = Cerrar sesión
-user-menu-trigger-label = Abrir menú de usuario
+user-menu-trigger-label = Abrir el menú de usuario
 user-menu-trigger-tooltip = Perfil
 user-menu-manage-fxa-label = Administrar tu { -brand-mozilla-account }
 user-menu-settings-label = Configuración
 user-menu-settings-tooltip = Configurar { -brand-mozilla-monitor }
-user-menu-help-label = Ayuda y soporte
-user-menu-help-tooltip = Obtenga ayuda para usar { -brand-mozilla-monitor }
-user-menu-signout-label = Cerrar sesión
-user-menu-signout-tooltip = Cerrar sesión en { -brand-mozilla-monitor }
+user-menu-help-label = Ayuda
+user-menu-help-tooltip = Obtener ayuda para usar { -brand-mozilla-monitor }
+user-menu-signout-label = Cerrar la sesión
+user-menu-signout-tooltip = Cerrar la sesión en { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -799,3 +799,9 @@ breach-detail-cta-signup = Verificá si hay filtraciones
 floating-banner-text = Aumentá tu seguridad en línea con noticias, consejos y actualizaciones de { -brand-Mozilla }.
 floating-banner-link-label = Registrate
 floating-banner-dismiss-button-label = No, gracias
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b> { -brand-mozilla-monitor } </b>: Nuevo nombre, apariencia e incluso más formas de <b> recuperar tu privacidad </b>.
+banner-monitor-rebrand-dismiss-button-label = Aceptar
+banner-monitor-rebrand-dismiss-button-tooltip = Descartar

@@ -517,6 +517,24 @@ async function joinEmailAddressesToSubscriber (subscriber) {
 }
 /* c8 ignore stop */
 
+/* c8 ignore start */
+/**
+ * @param {number} subscriberId
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function deleteOnerepProfileId (subscriberId) {
+  return await knex('subscribers')
+    .where('id', subscriberId)
+    .update({
+      onerep_profile_id: null,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
+    })
+}
+/* c8 ignore stop */
+
 export {
   getOnerepProfileId,
   getSubscriberByToken,
@@ -543,5 +561,6 @@ export {
   deleteUnverifiedSubscribers,
   deleteSubscriber,
   deleteResolutionsWithEmail,
+  deleteOnerepProfileId,
   knex as knexSubscribers
 }

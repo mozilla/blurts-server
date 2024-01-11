@@ -50,9 +50,9 @@ high-risk-breach-subheading = Для этого требуется доступ 
 # $num_breaches is the number of breaches where the high risk data was found.
 high-risk-breach-summary =
     { $num_breaches ->
-        [one] Он обнаружен в { $num_breaches } утечке данных:
-        [few] Он был обнаружен в { $num_breaches } утечках данных:
-       *[many] Он был обнаружен в { $num_breaches } утечках данных:
+        [one] Обнаружено в { $num_breaches } утечке данных:
+        [few] Обнаружено в { $num_breaches } утечках данных:
+       *[many] Обнаружено в { $num_breaches } утечках данных:
     }
 # Variables
 # $breach_name is the name of the breach where the high risk data was found.
@@ -181,7 +181,7 @@ security-recommendation-ip-step-one = Используйте VPN (наприме
 leaked-passwords-title = Ваш пароль { $breach_name } был раскрыт
 # Variables
 # $breach_date is the date when the breach occurred.
-leaked-passwords-summary = Он затронут утечкой данных от { $breach_date }.
+leaked-passwords-summary = Обнаружен в утечке данных от { $breach_date }.
 leaked-passwords-description = Мошенники могут получить доступ к вашему аккаунту и, скорее всего, попытаются использовать его в других аккаунтах, чтобы узнать, использовали ли вы тот же пароль. Измените его везде, где вы его использовали, чтобы защитить себя.
 leaked-passwords-steps-title = Вот что нужно сделать
 leaked-passwords-steps-subtitle = Для этого требуется доступ к вашему аккаунту, поэтому вам нужно исправить это вручную.
@@ -210,7 +210,7 @@ leaked-security-questions-title = Ваши контрольные вопросы
 # $breach_name is the name of the breach where the leaked security questions were found.
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
-leaked-security-questions-summary = Они затронуты утечкой данных { $breach_name } от { $breach_date }.
+leaked-security-questions-summary = Обнаружены в утечке данных { $breach_name } от { $breach_date }.
 leaked-security-questions-description = Мошенники могут использовать их для доступа к вашим аккаунтам, а также к любым сайтам, на которых вы использовали те же контрольные вопросы. Обновите их сейчас, чтобы защитить свои аккаунты.
 leaked-security-questions-steps-title = Вот что нужно сделать
 leaked-security-questions-steps-subtitle = Для этого требуется доступ к вашему аккаунту, поэтому вам нужно исправить это вручную.

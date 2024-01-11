@@ -11,7 +11,7 @@ import {
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../../Shell";
-import { getEnL10nSync } from "../../../../../../../../../functions/server/mockL10n";
+import { getOneL10nSync } from "../../../../../../../../../functions/server/mockL10n";
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 
@@ -51,7 +51,7 @@ export const ManualRemoveViewStory: Story = {
   name: "1c. Manually resolve brokers",
   render: () => {
     return (
-      <Shell l10n={getEnL10nSync()} session={mockedSession} nonce="">
+      <Shell l10n={getOneL10nSync()} session={mockedSession} nonce="">
         <ManualRemoveView
           scanData={mockedScanData}
           breaches={mockedBreaches}
@@ -59,6 +59,7 @@ export const ManualRemoveViewStory: Story = {
           user={mockedSession.user}
           subscriberEmails={[]}
           isPremiumUser={hasPremium(user)}
+          isEligibleForPremium={true}
         />
       </Shell>
     );
