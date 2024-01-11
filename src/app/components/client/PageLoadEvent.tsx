@@ -96,6 +96,10 @@ function getUtmParams() {
         utmParams[key] = params.get(key) ?? "";
       }
     });
+    // record attributions on page load
+    if (params.size > 0 && !localStorage.getItem("attributions")) {
+      localStorage.setItem("attributions", window.location.search);
+    }
   }
 
   return utmParams;
