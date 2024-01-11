@@ -100,8 +100,8 @@ export const ProgressCard = (props: Props) => {
           <p>{l10n.getString("progress-card-manually-fixed-headline")}</p>
         </div>
 
-        {/* Auto-removed */}
-        {(props.isEligibleForPremium || props.isPremiumUser) && (
+            {/* Auto-removed */}
+            {(props.isEligibleForPremium || props.isPremiumUser) && (
           <div
             className={`${styles.progressItem} ${
               !props.isPremiumUser && styles.greyedOut
