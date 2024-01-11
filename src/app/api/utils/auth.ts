@@ -83,7 +83,7 @@ export const authOptions: AuthOptions = {
           metricsEnabled: profile.metricsEnabled,
           avatar: profile.avatar,
           avatarDefault: profile.avatarDefault,
-          subscriptions: profile.subscriptions!,
+          subscriptions: profile.subscriptions ?? [],
         };
       }
       if (account && typeof profile?.email === "string") {
@@ -216,7 +216,7 @@ function convertFxaProfile(profile: FxaProfile): User {
     twoFactorAuthentication: profile.twoFactorAuthentication,
     metricsEnabled: profile.metricsEnabled,
     locale: profile.locale,
-    subscriptions: profile.subscriptions!,
+    subscriptions: profile.subscriptions ?? [],
   };
 }
 

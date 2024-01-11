@@ -244,15 +244,6 @@ export async function POST(request: NextRequest) {
         // get current profiledata
         const currentFxAProfile = subscriber?.fxa_profile_json || {};
 
-        // merge new event into existing profile data
-        const subscriptions = new Set(currentFxAProfile.subscriptions);
-
-        if (!subscriptions.has("monitor")) {
-          subscriptions.add("monitor");
-        }
-        // update fxa profile data
-        await updateFxAProfileData(subscriber, currentFxAProfile);
-
         logger.info("fxa_profile_subscription", {
           subscriber_id: subscriber.id,
         });
@@ -283,12 +274,16 @@ export async function POST(request: NextRequest) {
         }
 
         try {
+          const subscriptions = new Set(currentFxAProfile.subscriptions);
           if (
             updatedSubscriptionFromEvent.isActive &&
             updatedSubscriptionFromEvent.capabilities.includes(
               MONITOR_PREMIUM_CAPABILITY,
             )
           ) {
+            subscriptions.add(MONITOR_PREMIUM_CAPABILITY);
+
+            currentFxAProfile.subscriptions = Array.from(subscriptions);
             // activate and opt out profiles
             await activateProfile(oneRepProfileId);
             await optoutProfile(oneRepProfileId);
@@ -301,12 +296,16 @@ export async function POST(request: NextRequest) {
               MONITOR_PREMIUM_CAPABILITY,
             )
           ) {
+            subscriptions.delete(MONITOR_PREMIUM_CAPABILITY);
+
             // deactivation stops opt out process
             await deactivateProfile(oneRepProfileId);
             logger.info("deactivated_onerep_profile", {
               subscriber_id: subscriber.id,
             });
           }
+          // update fxa profile data
+          await updateFxAProfileData(subscriber, currentFxAProfile);
         } catch (e) {
           captureException(
             new Error(`${(e as Error).message}\n
