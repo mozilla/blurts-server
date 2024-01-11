@@ -241,6 +241,22 @@ export async function POST(request: NextRequest) {
           updatedSubscriptionFromEvent,
         });
 
+        // get current profiledata
+        const currentFxAProfile = subscriber?.fxa_profile_json || {};
+
+        // merge new event into existing profile data
+        const subscriptions = new Set(currentFxAProfile.subscriptions);
+
+        if (!subscriptions.has("monitor")) {
+          subscriptions.add("monitor");
+        }
+        // update fxa profile data
+        await updateFxAProfileData(subscriber, currentFxAProfile);
+
+        logger.info("fxa_profile_subscription", {
+          subscriber_id: subscriber.id,
+        });
+
         // get profile id
         const result = await getOnerepProfileId(subscriber.id);
         const oneRepProfileId = result?.[0]?.["onerep_profile_id"] as number;
