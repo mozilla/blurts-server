@@ -31,6 +31,7 @@ export type Props = {
   scanData: LatestOnerepScanData;
   breaches: SubscriberBreach[];
   isPremiumUser: boolean;
+  isEligibleForPremium: boolean;
   user: Session["user"];
   countryCode: string;
   subscriberEmails: string[];
@@ -141,6 +142,7 @@ export function ManualRemoveView(props: Props) {
                   scanResult={scanResult}
                   isExpanded={index === activeExposureCardKey}
                   isPremiumUser={props.isPremiumUser}
+                  isEligibleForPremium={props.isEligibleForPremium}
                   setExpanded={() => {
                     if (index === activeExposureCardKey) {
                       setActiveExposureCardKey(-1);

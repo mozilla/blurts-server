@@ -21,6 +21,7 @@ exposure-chart-legend-heading-type = Altistuminen
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
+exposure-chart-returning-user-upgrade-prompt = Kotiosoite, perheenjäsenet ja muut eivät vielä sisälly.
 modal-cta-ok = OK
 modal-open-alt = Avaa
 modal-close-alt = Sulje
@@ -47,6 +48,10 @@ dashboard-exposures-filter-show-results = Näytä tulokset
 
 ## Top banner on the dashboard
 
+dashboard-top-banner-your-data-is-protected-title = Tietosi on suojattu
+dashboard-top-banner-lets-keep-protecting-cta = Jatketaan
+dashboard-top-banner-protect-your-data-title = Suojataan tietosi
+dashboard-top-banner-protect-your-data-cta = Korjataan se
 dashboard-top-banner-no-exposures-found-title = Vuotoja ei löytynyt
 dashboard-no-exposures-label = Vuotoja ei löytynyt
 dashboard-top-banner-monitor-more-cta = Tarkkaile useampia sähköpostiosoitteita

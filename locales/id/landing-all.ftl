@@ -33,6 +33,7 @@ landing-all-data-breach-next-steps-qn = Saya baru tahu saya termasuk korban pemb
 landing-all-data-breach-next-steps-ans = Kunjungi { -brand-mozilla-monitor } untuk mempelajari apa yang harus dilakukan setelah pembobolan data dan dapatkan panduan langkah-langkah untuk mengatasi paparan informasi pribadi Anda. Peretas mengandalkan orang yang menggunakan kembali kata sandi, jadi penting untuk membuat kata sandi yang kuat dan unik untuk semua akun Anda. Simpan kata sandi Anda di tempat yang aman yang hanya dapat diakses oleh Anda; ini bisa menjadi tempat yang sama di mana Anda menyimpan dokumen penting atau pengelola kata sandi.
 landing-all-data-breach-info-qn = Informasi apa yang terekspos dalam pembobolan data?
 landing-all-data-breach-info-ans = Tidak semua pembobolan mengekspos semua info yang sama. Itu hanya tergantung pada apa yang dapat diakses peretas. Banyak pembobolan data mengekspos alamat surel dan kata sandi. Lainnya mengekspos informasi yang lebih sensitif seperti nomor kartu kredit, nomor PIN, dan nomor jaminan sosial.
+landing-all-close-faq-alt = Tutup
 
 # Social proof
 
