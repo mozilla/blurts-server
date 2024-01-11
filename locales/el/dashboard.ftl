@@ -40,6 +40,8 @@ modal-active-number-of-exposures-part-one-all =
     }
 modal-active-number-of-exposures-part-two = Για παράδειγμα, αν έχετε 10 εκθέσεις του αριθμού τηλεφώνου σας, αυτό μπορεί να σημαίνει ότι ένας αριθμός τηλεφώνου εκτίθεται σε 10 διαφορετικούς ιστοτόπους ή ότι 2 διαφορετικοί αριθμοί τηλεφώνου έχουν εκτεθεί σε 5 διαφορετικούς ιστοτόπους.
 modal-active-number-of-exposures-part-three-all = Μόλις επιλυθούν, θα προστεθούν στον συνολικό αριθμό διορθωμένων εκθέσεων στη σελίδα «Διορθώσεις».
+modal-fixed-number-of-exposures-title = Σχετικά με τον αριθμό σταθερών προβολών σας
+modal-fixed-number-of-exposures-all = Αυτό το γράφημα περιλαμβάνει τον συνολικό αριθμό παραβιάσεων δεδομένων που έχουν διορθωθεί για όλες τις διευθύνσεις email που εποπτεύετε αυτήν τη στιγμή. Μόλις οι προθέσεις επισημανθούν ως σταθερές, θα προστεθούν στο σύνολο εδώ.
 modal-cta-ok = OK
 modal-open-alt = Άνοιγμα
 modal-close-alt = Κλείσιμο
@@ -97,6 +99,8 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] Σας απομένουν ακόμα { $exposures_unresolved_num } εκθέσεις προς διόρθωση. Συνεχίστε και προστατευτείτε. Θα σας καθοδηγήσουμε βήμα προς βήμα.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Ας συνεχίσουμε
+dashboard-top-banner-protect-your-data-title = Ας προστατέψουμε τα δεδομένα σας
+dashboard-top-banner-protect-your-data-cta = Ας το διορθώσουμε
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.

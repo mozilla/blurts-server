@@ -33,6 +33,7 @@ landing-all-data-breach-next-steps-qn = Je viens de découvrir qu’une fuite de
 landing-all-data-breach-next-steps-ans = Consultez { -brand-mozilla-monitor } pour savoir ce qu’il faut faire après une fuite de données et suivre la marche à suivre pour résoudre les problèmes de l’exposition de vos informations personnelles. Les pirates dépendent de la réutilisation des mots de passe. Il est donc important de créer des mots de passe forts et uniques pour tous vos comptes. Conservez vos mots de passe dans un endroit sûr auquel vous seul·e avez accès. il pourrait s’agir du même endroit où vous stockez des documents importants ou d’un gestionnaire de mots de passe.
 landing-all-data-breach-info-qn = Quelles informations sont compromises dans les fuites de données ?
 landing-all-data-breach-info-ans = Toutes les fuites de données n’exposent pas les mêmes informations. Tout dépend ce à quoi les pirates peuvent accéder. De nombreuses fuites de données compromettent les adresses e-mail et les mots de passe. D’autres exposent des informations plus sensibles, telles que les numéros de cartes bancaires, les codes PIN et les numéros de sécurité sociale.
+landing-all-close-faq-alt = Fermer
 
 # Social proof
 

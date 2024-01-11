@@ -894,3 +894,9 @@ breach-detail-cta-signup = Preverite kraje podatkov
 floating-banner-text = Okrepite svojo spletno varnost z novicami, nasveti in posodobitvami { -brand-Mozilla(sklon: "rodilnik") }.
 floating-banner-link-label = Prijava
 floating-banner-dismiss-button-label = Ne, hvala
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Novo ime, podoba in še več načinov za <b>ponovno pridobitev zasebnosti</b>.
+banner-monitor-rebrand-dismiss-button-label = V redu
+banner-monitor-rebrand-dismiss-button-tooltip = Opusti

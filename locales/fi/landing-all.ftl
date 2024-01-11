@@ -24,9 +24,11 @@ landing-all-faq-title = Usein kysytyt kysymykset
 landing-all-faq-see-all = Katso kaikki UKK:t
 landing-all-data-breach-definition-qn = Mitä tietomurto oikein on?
 landing-all-data-breach-next-steps-qn = Minulle selvisi juuri, että olen osallisena tietovuodossa. Mitä teen seuraavaksi?
+landing-all-close-faq-alt = Sulje
 
 # Social proof
 
+landing-all-social-proof-press = Valokeilassa
 
 # Here's How We Help
 

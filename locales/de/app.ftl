@@ -782,3 +782,9 @@ breach-detail-cta-signup = Auf Datenlecks überprüfen
 floating-banner-text = Erhöhen Sie Ihre Online-Sicherheit mit Nachrichten, Tipps und Updates von { -brand-Mozilla }.
 floating-banner-link-label = Registrieren
 floating-banner-dismiss-button-label = Nein, danke
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Neuer Name, Aussehen und noch mehr Möglichkeiten für <b>Ihre Privatsphäre zurückgewinnen</b>.
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Schließen
