@@ -2,7 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-fix-flow-nav-high-risk-data-breaches = Högrisk dataintrång
+fix-flow-nav-high-risk-data-breaches = Dataintrång med hög risk
 fix-flow-nav-leaked-passwords = Läckta lösenord
 fix-flow-nav-security-recommendations = Säkerhetsrekommendationer
 guided-resolution-flow-exit = Tillbaka till översikten
@@ -21,26 +21,26 @@ fix-flow-celebration-next-dashboard-label = Gå till din översikt
 
 ## High-risk flow
 
-fix-flow-celebration-high-risk-title = Du har fixat dina högriskexponeringar!
-fix-flow-celebration-high-risk-description-in-progress = Att göra det här arbetet kan kännas mycket, men det är viktigt att göra det för att skydda dig själv. Fortsätt med det goda arbetet.
-fix-flow-celebration-high-risk-description-done = Att göra det här arbetet kan kännas mycket, men det är viktigt att göra det för att skydda dig själv.
-fix-flow-celebration-high-risk-description-next-passwords = Låt oss nu fixa dina exponerade lösenord.
-fix-flow-celebration-high-risk-description-next-security-questions = Låt oss nu fixa dina utsatta säkerhetsfrågor.
-fix-flow-celebration-high-risk-description-next-security-recommendations = Därefter ger vi dig personliga säkerhetsrekommendationer baserat på vilken data om din som har exponerats.
-fix-flow-celebration-high-risk-description-next-dashboard = Du har nått slutet på dina steg. Du kan se alla åtgärder och följa dina framsteg på översikten.
+fix-flow-celebration-high-risk-title = Du har löst dina högriskexponeringar!
+fix-flow-celebration-high-risk-description-in-progress = Att göra det här arbetet kan kännas som mycket, men det är viktigt att göra det för att hålla dig själv säker. Fortsätt så.
+fix-flow-celebration-high-risk-description-done = Att göra det här arbetet kan kännas som mycket, men det är viktigt att göra det för att skydda dig själv.
+fix-flow-celebration-high-risk-description-next-passwords = Låt oss nu lösa dina exponerade lösenord.
+fix-flow-celebration-high-risk-description-next-security-questions = Låt oss lösa dina utsatta säkerhetsfrågor.
+fix-flow-celebration-high-risk-description-next-security-recommendations = Därefter ger vi dig personliga säkerhetsrekommendationer baserat på vilken data som har exponerats.
+fix-flow-celebration-high-risk-description-next-dashboard = Du har nått till slutet. Du kan se alla åtgärder och följa dina framsteg på översikten.
 
 ## Leaked passwords and security questions flow
 
 fix-flow-celebration-leaked-passwords-title = Dina lösenord är nu skyddade!
 fix-flow-celebration-security-questions-title = Dina säkerhetsfrågor är skyddade!
 fix-flow-celebration-leaked-passwords-description-next-security-questions = Låt oss nu granska och uppdatera dina exponerade säkerhetsfrågor.
-fix-flow-celebration-leaked-passwords-description-next-security-recommendations = Därefter ger vi dig personliga säkerhetsrekommendationer baserat på vilken data om din som har exponerats.
-fix-flow-celebration-leaked-passwords-description-next-dashboard = Bra gjort! Du har nått slutet på dina steg. Du kan se alla åtgärder och följa dina framsteg på översikten.
+fix-flow-celebration-leaked-passwords-description-next-security-recommendations = Därefter ger vi dig personliga säkerhetsrekommendationer baserat på vilken data som har exponerats.
+fix-flow-celebration-leaked-passwords-description-next-dashboard = Bra gjort! Du har nått till slutet. Du kan se alla åtgärder och följa dina framsteg på översikten.
 
 ## Security recommendations flow
 
 fix-flow-celebration-security-recommendations-title = Du har slutfört alla dina rekommendationer!
-fix-flow-celebration-security-recommendations-description-next-dashboard = Bra gjort! Du har nått slutet på dina steg. Du kan se alla åtgärder och följa dina framsteg på översikten.
+fix-flow-celebration-security-recommendations-description-next-dashboard = Bra gjort! Du har nått till slutet. Du kan se alla åtgärder och följa dina framsteg på översikten.
 
 # High Risk Data Breaches
 
@@ -50,8 +50,8 @@ high-risk-breach-subheading = Detta kräver tillgång till din känsliga informa
 # $num_breaches is the number of breaches where the high risk data was found.
 high-risk-breach-summary =
     { $num_breaches ->
-        [one] Det förekom i { $num_breaches } dataintrång:
-       *[other] Det förekom i { $num_breaches } dataintrång:
+        [one] Den förekom i { $num_breaches } dataintrång:
+       *[other] Den förekom i { $num_breaches } dataintrång:
     }
 # Variables
 # $breach_name is the name of the breach where the high risk data was found.
@@ -139,7 +139,7 @@ security-recommendation-phone-summary =
        *[other] Ditt telefonnummer avslöjades i { $num_breaches } dataintrång:
     }
 security-recommendation-phone-description = Tyvärr kan du inte ta tillbaka den. Men det finns åtgärder du kan vidta för att se till att du är säker.
-security-recommendation-phone-step-one = Blockera skräppostnummer för att förhindra fler skräpsamtal
+security-recommendation-phone-step-one = Blockera nummer för att förhindra fler skräpsamtal
 security-recommendation-phone-step-two = Klicka inte på länkar i texter från okända avsändare; om den verkar komma från en tillförlitlig källa, ring direkt för att bekräfta
 
 # Email security recommendation
@@ -151,7 +151,7 @@ security-recommendation-email-summary =
         [one] Din e-postadress avslöjades i { $num_breaches } dataintrång:
        *[other] Din e-postadress avslöjades i { $num_breaches } dataintrång:
     }
-security-recommendation-email-description = Tyvärr kan du inte fixa detta. Men det finns åtgärder du kan vidta för att skydda dig själv.
+security-recommendation-email-description = Tyvärr kan du inte lösa detta. Men det finns åtgärder du kan vidta för att skydda dig själv.
 security-recommendation-email-step-one = Klicka inte på länkar i e-postmeddelanden från okända avsändare; om den verkar komma från en tillförlitlig källa, ring direkt för att bekräfta
 security-recommendation-email-step-two = Var medveten om <link_to_info>nätfiskebedrägerier</link_to_info>
 security-recommendation-email-step-three = Markera misstänkta e-postmeddelanden som skräppost och blockera avsändaren
@@ -177,15 +177,15 @@ leaked-passwords-title = Ditt lösenord för { $breach_name } exponerades
 # Variables
 # $breach_date is the date when the breach occurred.
 leaked-passwords-summary = Det förekom i ett dataintrång den { $breach_date }.
-leaked-passwords-description = Bedragare kan komma åt ditt konto och kommer sannolikt att försöka använda det på andra konton för att se om du har använt samma lösenord. Ändra den överallt där du har använt den för att skydda dig själv.
+leaked-passwords-description = Bedragare kan komma åt ditt konto och kommer sannolikt att försöka använda det på andra konton för att se om du har använt samma lösenord. Ändra det överallt där du har använt det för att skydda dig själv.
 leaked-passwords-steps-title = Så här gör du
 leaked-passwords-steps-subtitle = Detta kräver åtkomst till ditt konto, så du måste åtgärda det manuellt.
 # Variables
 # $breach_name is the name of the breach where the leaked password was found.
 # $emails_affected are the emails associated with the breach.
 leaked-passwords-step-one = Ändra ditt lösenord för <b>{ $emails_affected }</b> på <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
-leaked-passwords-step-two = Ändra den någon annanstans där du har använt den.
-leaked-passwords-mark-as-fixed = Markera som fixad
+leaked-passwords-step-two = Ändra det på alla ställen du använt det.
+leaked-passwords-mark-as-fixed = Markera som löst
 leaked-passwords-skip = Hoppa över nu
 # Variables
 # $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
@@ -193,18 +193,18 @@ leaked-passwords-skip = Hoppa över nu
 # "mins" is shortform for "minutes".
 leaked-passwords-estimated-time =
     { $estimated_time ->
-        [one] Uppskattad tid att slutföra: { $estimated_time } minuter per webbplats
+        [one] Uppskattad tid att slutföra: { $estimated_time } minut per webbplats
        *[other] Uppskattad tid att slutföra: { $estimated_time } minuter per webbplats
     }
 
 # Leaked Security Questions
 
-leaked-security-questions-title = Dina säkerhetsfrågor avslöjades
+leaked-security-questions-title = Dina säkerhetsfrågor har avslöjats
 # Variables
 # $breach_name is the name of the breach where the leaked security questions were found.
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
-leaked-security-questions-summary = De förekom i ett dataintrång den { $breach_name } den { $breach_date }.
+leaked-security-questions-summary = De förekom i ett dataintrång på { $breach_name } den { $breach_date }.
 leaked-security-questions-description = Bedragare kan använda dessa för att komma åt dina konton och alla andra webbplatser där du har använt samma säkerhetsfrågor. Uppdatera dem nu för att skydda dina konton.
 leaked-security-questions-steps-title = Så här gör du
 leaked-security-questions-steps-subtitle = Detta kräver åtkomst till ditt konto, så du måste åtgärda det manuellt.

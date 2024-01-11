@@ -17,6 +17,7 @@ import {
   DataClassEffected,
   SubscriberBreach,
 } from "../utils/subscriberBreaches";
+import { Session } from "next-auth";
 
 // Setting this to a constant value produces the same result when the same methods
 // with the same version of faker are called.
@@ -129,7 +130,7 @@ export function createRandomBreach(
   };
 }
 
-export function createUserWithPremiumSubscription() {
+export function createUserWithPremiumSubscription(): Session["user"] {
   return {
     email: "example@example.com",
     fxa: {

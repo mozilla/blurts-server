@@ -23,21 +23,21 @@ exposure-card-credit-card = Hitelkártya
 exposure-card-password = Jelszó
 exposure-card-ip-address = IP-cím
 exposure-card-other = Egyéb
-exposure-card-description-info-for-sale-part-one = Ez az oldal <data_broker_link>részleteket árul és tesz közzé Önről.</data_broker_link>
-exposure-card-description-info-for-sale-part-two = A profil eltávolítása a személyes adatainak védelme érdekében.
+exposure-card-description-info-for-sale-part-one = Ez az oldal eladja és közzéteszi az <data_broker_link>Ön információit.</data_broker_link>
+exposure-card-description-info-for-sale-part-two = Távolítsa el ezt a profilt az adatvédelme érdekében.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = Az Ön adatai kikerültek a <data_breach_link>{ $data_breach_company } adatvédelmi incidensben, ekkor: { $data_breach_date }.</data_breach_link>
+exposure-card-description-data-breach-part-one = Az Ön adatai kikerültek a(z) <data_breach_link>{ $data_breach_company } adatvédelmi incidensében, ekkor: { $data_breach_date }.</data_breach_link>
 exposure-card-description-data-breach-part-two = Végigvezetjük a javítás lépésein.
-exposure-card-your-exposed-info = Kitett információi:
+exposure-card-your-exposed-info = Érintett információk:
 exposure-card-exposure-type-data-broker = Eladó információk
 exposure-card-exposure-type-data-breach = Adatvédelmi incidens
 exposure-card-cta = Javítsa az összes expozíciót
-exposure-card-label-company-logo = Cég logó
+exposure-card-label-company-logo = Céglogó
 exposure-card-label-company = Cég
-exposure-card-label-exposure-type = Az expozíció típusa
-exposure-card-label-date-found = Találás dátuma
+exposure-card-label-exposure-type = Incidens típusa
+exposure-card-label-date-found = Találat dátuma
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Állapot
 # Variables:

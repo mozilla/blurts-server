@@ -23,7 +23,12 @@ exposure-card-credit-card = Luottokortti
 exposure-card-password = Salasana
 exposure-card-ip-address = IP-osoite
 exposure-card-other = Muu
+exposure-card-description-info-for-sale-part-one = Tämä sivusto myy ja julkaisee <data_broker_link>tietoja sinusta.</data_broker_link>
 exposure-card-description-info-for-sale-part-two = Poista tämä profiili suojellaksesi yksityisyyttäsi.
+# Variables:
+# $data_breach_company is the company associated with the data breach.
+# $data_breach_date is the date of the data breach.
+exposure-card-description-data-breach-part-one = Tietosi paljastuivat <data_breach_link>yritykseen { $data_breach_company } kohdistuneen tietovuodon { $data_breach_date } seurauksena.</data_breach_link>
 exposure-card-your-exposed-info = Altistuneet tietosi:
 exposure-card-exposure-type-data-broker = Tiedot myynnissä
 exposure-card-exposure-type-data-breach = Tietovuoto

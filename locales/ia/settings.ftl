@@ -33,6 +33,9 @@ settings-add-email-button = Adder adresse email
 # Deprecated
 settings-delete-email-button = Deler adresse email
 settings-remove-email-button-label = Remover
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Cessar de surveliar { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:

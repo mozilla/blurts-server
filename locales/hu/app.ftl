@@ -554,11 +554,11 @@ generic-confirmation-subhead = Ez az adatvédelmi incidens megoldottként lett m
 #   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
-        [one] A fennmaradt adatvédelmi incidens megtekintéséhez ugorjon az irányítópulthoz.
-       *[other] Az összes fennmaradt adatvédelmi incidens megtekintéséhez ugorjon az irányítópulthoz.
+        [one] A fennmaradt adatvédelmi incidens megtekintéséhez ugorjon a vezérlőpulthoz.
+       *[other] Az összes fennmaradt adatvédelmi incidens megtekintéséhez ugorjon a vezérlőpulthoz.
     }
 return-to-breach-details-link = Vissza az adatvédelmi incidens részleteihez
-go-to-dashboard-link = Ugrás a vezérlőpultra
+go-to-dashboard-link = Ugrás a vezérlőpulthoz
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 # Variables:
@@ -835,3 +835,9 @@ breach-detail-cta-signup = Adatvédelmi incidensek keresése
 floating-banner-text = Növelje online biztonságát a { -brand-Mozilla } híreivel, tippjeivel és frissítéseivel.
 floating-banner-link-label = Regisztráció
 floating-banner-dismiss-button-label = Köszönöm, nem
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Új név, kinézet és még több módja annak, hogy <b>visszaszerezze a magánszféráját</b>.
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Eltüntetés

@@ -43,6 +43,7 @@ export type ExposureCardProps = {
   locale: string;
   isPremiumBrokerRemovalEnabled: boolean;
   isPremiumUser: boolean;
+  isEligibleForPremium: boolean;
   resolutionCta: ReactNode;
   isExpanded: boolean;
   onToggleExpanded: () => void;
@@ -267,6 +268,7 @@ export type SubscriberBreachCardProps = {
   subscriberBreach: SubscriberBreach;
   locale: string;
   resolutionCta: ReactNode;
+  isEligibleForPremium: boolean;
   isExpanded: boolean;
   onToggleExpanded: () => void;
 };
@@ -383,12 +385,16 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
                 {subscriberBreach.title}
               </span>
             </dd>
-            <dt className={styles.visuallyHidden}>
-              {l10n.getString("exposure-card-exposure-type")}
-            </dt>
-            <dd className={styles.hideOnMobile}>
-              {l10n.getString("exposure-card-exposure-type-data-breach")}
-            </dd>
+            {props.isEligibleForPremium && (
+              <>
+                <dt className={styles.visuallyHidden}>
+                  {l10n.getString("exposure-card-exposure-type")}
+                </dt>
+                <dd className={styles.hideOnMobile}>
+                  {l10n.getString("exposure-card-exposure-type-data-breach")}
+                </dd>
+              </>
+            )}
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-date-found")}
             </dt>

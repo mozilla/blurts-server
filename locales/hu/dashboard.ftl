@@ -22,24 +22,26 @@ exposure-chart-legend-heading-nr = Szám
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
-exposure-chart-caption = Ez a diagram azt mutatja, hogy az adatai hányszor lettek aktívan kitéve.
+exposure-chart-caption = Ez a diagram azt jeleníti meg, hogy az adatai hányszor szivárogtak ki aktívan.
 # Variables:
 #   $total_fixed_exposures_num (number) - Number of fixed exposures
 #   $total_exposures_num (number) - Number of total exposures
-exposure-chart-caption-fixed = Ez a diagram az összes javított kitettséget mutatja ({ $total_fixed_exposures_num } / { $total_exposures_num })
-exposure-chart-returning-user-upgrade-prompt = Az otthoni cím, a családtagok és egyebek még nincsenek benne.
+exposure-chart-caption-fixed = Ez a diagram az összes javított kiszivárgást jeleníti meg ({ $total_fixed_exposures_num } / { $total_exposures_num })
+exposure-chart-returning-user-upgrade-prompt = Az otthoni cím, a családtagok és egyebek még nem szerepelnek benne.
 exposure-chart-returning-user-upgrade-prompt-cta = Indítson egy ingyenes vizsgálatot
 exposure-chart-scan-in-progress-prompt = <b>Vizsgálat folyamatban:</b> a cím, családtagok és egyebek még nincsenek benne.
-modal-active-number-of-exposures-title = Az aktív expozíciók számáról
+modal-active-number-of-exposures-title = Az aktív kiszivárgások számáról
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
 modal-active-number-of-exposures-part-one-all =
     { $limit ->
-        [one] Ez a diagram tartalmazza, hogy hányszor találtunk minden adattípust a jelenleg megfigyelt { $limit } e-mail-címhez tartozó adatsértésekben.
-       *[other] Ez a diagram tartalmazza, hogy hányszor találtunk minden adatot kitéve az adatsértéseket illetően, legfeljebb { $limit } jelenleg megfigyelt e-mail-címről.
+        [one] Ez a diagram tartalmazza, hogy hányszor találtuk meg az egyes adattípusokat a jelenleg megfigyelt { $limit } e-mail-címhez tartozó adatvédelmi incidensekben.
+       *[other] Ez a diagram tartalmazza, hogy hányszor találtuk meg az egyes adattípusokat a jelenleg megfigyelt { $limit } e-mail-címhez tartozó adatvédelmi incidensekben.
     }
-modal-active-number-of-exposures-part-two = Például ha 10 alkalommal került nyilvánosságra a telefonszáma, ez azt jelentheti, hogy egy telefonszám 10 különböző oldalon, vagy 2 különböző telefonszám 5 különböző oldalon jelent meg.
-modal-active-number-of-exposures-part-three-all = Amint meg lettek oldva, hozzáadódnak az összes fix expozícióhoz a Javítva oldalon.
+modal-active-number-of-exposures-part-two = Például ha 10 alkalommal szivárgott ki a telefonszáma, akkor ez azt jelentheti, hogy egy telefonszám 10 különböző oldalon, vagy 2 különböző telefonszám 5 különböző oldalon jelent meg.
+modal-active-number-of-exposures-part-three-all = Amint megoldja őket, hozzáadódnak az összes javított kiszivárgáshoz a Javítva oldalon.
+modal-fixed-number-of-exposures-title = A javított kiszivárgások számáról
+modal-fixed-number-of-exposures-all = Ez a diagram a jelenleg figyelt e-mail-címek kijavított adatsértéseinek teljes számát tartalmazza. Amint a kitettségek rögzítettként lettek megjelölve, hozzáadódnak az összeshez itt.
 modal-cta-ok = OK
 modal-open-alt = Megnyitás
 modal-close-alt = Bezárás
@@ -47,29 +49,29 @@ progress-card-heres-what-we-fixed-headline-all = Itt van amit kijavított
 progress-card-manually-fixed-headline = Kézzel javítva
 dashboard-tab-label-action-needed = Intézkedés szükséges
 dashboard-tab-label-fixed = Javítva
-dashboard-exposures-all-fixed-label = Itt mindent javítottak!
-dashboard-exposures-area-headline = Az összes webhely megjelenítése, ahol az Ön adatai megjelennek
+dashboard-exposures-all-fixed-label = Itt minden javítva lett!
+dashboard-exposures-area-headline = Az összes webhely megjelenítése, ahol az Ön adatai kikerültek
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
 #   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
 dashboard-exposures-area-description-all-line1 =
     { $exposures_unresolved_num ->
-        [one] Az adatai { $exposures_unresolved_num } kikerülését találtuk.
-       *[other] { $exposures_unresolved_num } adatmegjelenítést találtunk.
+        [one] { $exposures_unresolved_num } adatkikerülést találtuk.
+       *[other] { $exposures_unresolved_num } adatkikerülést találtuk.
     }
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
 dashboard-exposures-area-description-all-line2 =
     { $data_breach_unresolved_num ->
-        [one] { $data_breach_unresolved_num } adatsértésben jelent meg.
-       *[other] { $data_breach_unresolved_num } adatvédelmi incidens miatt jelent meg.
+        [one] { $data_breach_unresolved_num } adatvédelmi incidensben jelent meg.
+       *[other] { $data_breach_unresolved_num } adatvédelmi incidensben jelent meg.
     }
-dashboard-fixed-area-headline-all = Összes javított expozíció megjelenítése
+dashboard-fixed-area-headline-all = Összes javított kiszivárgás megtekintése
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Szűrő
 dashboard-exposures-filter-company = Cég
-dashboard-exposures-filter-date-found = Találás dátuma
+dashboard-exposures-filter-date-found = Találat dátuma
 dashboard-exposures-filter-date-found-last-seven-days = Elmúlt 7 nap
 dashboard-exposures-filter-date-found-last-thirty-days = Elmúlt 30 nap
 dashboard-exposures-filter-date-found-last-year = Tavaly
@@ -97,6 +99,8 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] Még { $exposures_unresolved_num } javítanivalója van. Folytassa, és védje meg magát. Lépésről lépésre végigvezetjük.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Folytassa
+dashboard-top-banner-protect-your-data-title = Védjük meg az adatait
+dashboard-top-banner-protect-your-data-cta = Javítsuk ki
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
@@ -127,7 +131,7 @@ dashboard-top-banner-monitor-more-cta = További e-mail-címek figyelése
 
 # About Exposure Statuses Modal
 
-modal-exposure-status-title = A kitettségi állapotokról
+modal-exposure-status-title = A kiszivárgások állapotáról
 modal-exposure-status-description-all = Az összes ismert adatsértésben kitettségeket keresünk. A megjelenítései a következő állapotok egyikében lesznek:
 modal-exposure-status-action-needed = A <b>Teendők szükségesek</b> azt jelenti, hogy aktív, és Önnek lépéseket kell tennie a javításához.
 modal-exposure-status-fixed = A <b>Rögzített</b> azt jelenti, hogy a kitettség megoldódott, és nincs tennivalója.

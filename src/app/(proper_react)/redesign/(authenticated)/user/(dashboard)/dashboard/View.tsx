@@ -155,6 +155,7 @@ export const View = (props: Props) => {
             "PremiumBrokerRemoval",
           )}
           isPremiumUser={hasPremium(props.user)}
+          isEligibleForPremium={props.isEligibleForPremium}
           resolutionCta={
             <Button
               variant="primary"

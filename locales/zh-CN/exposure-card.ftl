@@ -23,7 +23,7 @@ exposure-card-credit-card = 信用卡
 exposure-card-password = 密码
 exposure-card-ip-address = IP 地址
 exposure-card-other = 其他
-exposure-card-description-info-for-sale-part-one = 此网站正在出售和发布<data_broker_link>有关您的详细信息</data_broker_link>。
+exposure-card-description-info-for-sale-part-one = 此网站正在出售和发布<data_broker_link>您的详细信息</data_broker_link>。
 exposure-card-description-info-for-sale-part-two = 移除此个人资料以保护您的隐私。
 # Variables:
 # $data_breach_company is the company associated with the data breach.

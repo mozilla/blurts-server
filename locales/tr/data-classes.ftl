@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = Hesap bakiyeleri
@@ -14,7 +19,7 @@ avatars = Avatarlar
 bank-account-numbers = Banka hesap numaraları
 beauty-ratings = Güzellik derecelendirmeleri
 biometric-data = Biyometrik veriler
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Biyografiler
 browser-user-agent-details = Tarayıcı istemcisi ayrıntıları
@@ -25,6 +30,7 @@ career-levels = Kariyer seviyeleri
 cellular-network-names = Hücresel şebeke adları
 charitable-donations = Bağışlar
 chat-logs = Sohbet kayıtları
+clothing-sizes = Kıyafet bedenleri
 credit-card-cvv = Kredi kartı CVV
 credit-cards = Kredi kartları
 credit-status-information = Kredi durumu bilgisi
@@ -34,7 +40,7 @@ customer-interactions = Müşteri etkileşimleri
 dates-of-birth = Doğum tarihleri
 deceased-date = Ölüm tarihi
 deceased-statuses = Ölüm durumları
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Teslimat talimatları
 device-information = Cihaz bilgileri
@@ -74,7 +80,7 @@ instant-messenger-identities = Anlık mesajlaşma kimlikleri
 ip-addresses = IP adresleri
 job-applications = İş başvuruları
 job-titles = İş unvanları
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Plaka numaraları
 living-costs = Yaşam maliyetleri
 # This string refers to financial loans.

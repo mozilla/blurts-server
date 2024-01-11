@@ -26,7 +26,7 @@ breach-heading-email = { $email-select } 的数据外泄
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored = 已监控 { $count } 个邮箱，共 { $total } 个邮箱
 # link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = 管理电子邮件
+manage-emails-link = 管理邮箱
 
 ## Breaches resolved filter
 
@@ -46,15 +46,15 @@ breaches-resolve-heading = 处理此外泄事件
 breaches-none-headline = 未发现外泄
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
-breaches-none-copy = 好消息！ { $email } 没有已知的数据泄漏报告。我们将继续监控此邮箱地址，如果发生任何新的数据泄漏事件，我们会通知您。
+breaches-none-copy = 好消息！ { $email } 没有已知的外泄事件报告。我们将继续监控此邮箱地址，如果发生任何新的外泄事件，我们会通知您。
 breaches-none-cta-blurb = 您想监控另一个邮箱吗？
-breaches-none-cta-button = 添加电子邮件地址
+breaches-none-cta-button = 添加邮箱地址
 breaches-all-resolved-headline = 所有数据泄漏均已解决
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = 很好！您已解决 { $email } 的所有数据泄漏问题。我们将继续监控这封电子邮件，如果发生任何新的数据泄漏事件，我们会通知您。
+breaches-all-resolved-copy = 很好！您已解决 { $email } 的所有数据外泄问题。我们将继续监控此邮箱地址，如果发生任何新的数据外泄事件，我们会通知您。
 breaches-all-resolved-cta-blurb = 您想监控另一个邮箱吗？
-breaches-all-resolved-cta-button = 添加电子邮件地址
+breaches-all-resolved-cta-button = 添加邮箱地址
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 # Variables:
 #   $breachDate (String) - Date of the breach

@@ -33,12 +33,13 @@ landing-all-data-breach-next-steps-qn = 我刚刚发现自己遭受了数据外�
 landing-all-data-breach-next-steps-ans = 访问 { -brand-mozilla-monitor } 可了解数据外泄后的应对方案，我们会指导您采取措施解决个人信息外泄问题。为不同账户使用相同密码会给黑客可乘之机，因此请务必为您的所有账户创建不同且高强度的密码。将密码保存在只有您能够访问的安全位置，可以是您存储其他重要文件的地方，也可以使用密码管理器。
 landing-all-data-breach-info-qn = 数据外泄会泄露哪些信息？
 landing-all-data-breach-info-ans = 并非所有外泄事件都会泄露同样的信息，这具体取决于黑客取得了哪些信息。许多数据外泄会泄露邮箱地址和密码，有些还会泄露更敏感的信息，例如信用卡号、PIN 码和社保号。
+landing-all-close-faq-alt = 关闭
 
 # Social proof
 
 # Variables
 # $num_users is the number of users in the millions.
-landing-all-social-proof-title = 全球 { $num_users } 百万用户信任之选
+landing-all-social-proof-title = 全球 { NUMBER($num_users, maximumFractionDigits: 0) }00 万用户信任之选
 # Variables
 # $num_countries is the number of countries available.
 landing-all-social-proof-description = 自 2018 年以来，我们已帮助 { $num_countries } 个国家/地区的用户在数据泄露时保护数据安全。

@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
@@ -646,14 +651,25 @@ brand-mozilla-monitor = { -brand-fx-monitor }
 site-nav-settings-link = Iɣewwaren
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Umuɣ agejdan
+main-nav-button-collapse-label = Fneẓ umuɣ
+main-nav-button-collapse-tooltip = Fneẓ umuɣ
 
 ## User menu
 
+# Obsolete
 menu-button-title = Umuɣ n useqdac
+# Obsolete
 menu-button-alt = Ldi umuɣ n useqdac
+# Obsolete
 menu-list-accessible-label = Umuɣ n umiḍan
+# Obsolete
 menu-item-settings = Iɣewwaren
+# Obsolete
 menu-item-logout = Ffeɣ
+user-menu-settings-label = Iɣewwaṛen
+user-menu-settings-tooltip = Sbadu { -brand-mozilla-monitor }
+user-menu-help-label = Tallalt
 
 ## Footer
 
