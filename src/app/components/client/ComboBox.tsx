@@ -4,7 +4,7 @@
 
 "use client";
 
-import { ReactElement, useRef } from "react";
+import { ReactElement, useEffect, useRef } from "react";
 import { useComboBox } from "react-aria";
 import { useComboBoxState, ComboBoxStateOptions } from "react-stately";
 import { ListBox } from "./ListBox";
@@ -17,7 +17,7 @@ interface ComboBoxProps extends ComboBoxStateOptions<object> {
 }
 
 function ComboBox(props: ComboBoxProps) {
-  const { label, isRequired, isInvalid } = props;
+  const { errorMessage, isInvalid, isRequired, label, listPlaceholder } = props;
   const inputRef = useRef(null);
   const listBoxRef = useRef(null);
   const popoverRef = useRef(null);
@@ -37,6 +37,12 @@ function ComboBox(props: ComboBoxProps) {
     },
     state,
   );
+
+  useEffect(() => {
+    if (inputProps.value === "") {
+      state.close();
+    }
+  }, [inputProps.value, state]);
 
   return (
     <>
@@ -64,8 +70,8 @@ function ComboBox(props: ComboBoxProps) {
               // We always pass in a string at the time of writing, so we can't
               // hit the "else" path with tests:
               /* c8 ignore next 3 */
-              typeof props.errorMessage === "string"
-                ? props.errorMessage
+              typeof errorMessage === "string"
+                ? errorMessage
                 : validationErrors.join(" ")
             }
           </div>
@@ -85,7 +91,7 @@ function ComboBox(props: ComboBoxProps) {
               <ListBox
                 {...listBoxProps}
                 listBoxRef={listBoxRef}
-                listPlaceholder={props.listPlaceholder}
+                listPlaceholder={listPlaceholder}
                 parentRef={inputRef}
                 state={state}
               />
