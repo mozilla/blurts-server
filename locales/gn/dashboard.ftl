@@ -31,6 +31,7 @@ exposure-chart-returning-user-upgrade-prompt = Pe óga, pehẽnguekuéra ha ambu
 exposure-chart-returning-user-upgrade-prompt-cta = Emoha’ãnga reiete
 exposure-chart-scan-in-progress-prompt = <b>Oñemoha’ãngahína:</b> kundaharenda, pehẽnguekuéra ha hetave ndoikéi gueteri.
 modal-active-number-of-exposures-title = Mboyjeýmapa ipapapy jehechauka hendýva
+modal-fixed-number-of-exposures-title = Mboyjeýmapa ipapapy jehechauka opytáva
 modal-cta-ok = MONEĨ
 modal-open-alt = Ijurujáva
 modal-close-alt = Mboty
@@ -40,6 +41,22 @@ dashboard-tab-label-action-needed = Tekotevẽva ojejapo
 dashboard-tab-label-fixed = Opytáva
 dashboard-exposures-all-fixed-label = ¡Oĩporãma ko’ápe!
 dashboard-exposures-area-headline = Ehecha umi tenda ne marandu oñembyaikuaaha
+# Note: this line precedes dashboard-exposures-area-description-all-line2.
+# Variables:
+#   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
+dashboard-exposures-area-description-all-line1 =
+    { $exposures_unresolved_num ->
+        [one] Rojuhu { $exposures_unresolved_num } ne mba’ekuaarã jehechauka.
+       *[other] Rojuhu { $exposures_unresolved_num } ne mba’ekuaarã jehechauka.
+    }
+# Note: this line follows dashboard-exposures-area-description-all-line1.
+# Variables:
+#   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
+dashboard-exposures-area-description-all-line2 =
+    { $data_breach_unresolved_num ->
+        [one] Ojehecha { $data_breach_unresolved_num } mba’ekuaarã ñemboguápe:
+       *[other] Ojehecha { $data_breach_unresolved_num } mba’ekuaarã ñemboguápe:
+    }
 dashboard-fixed-area-headline-all = Ehecha umi jehechaukakue oĩporãjeýmava
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Mbogua
@@ -67,6 +84,14 @@ dashboard-top-banner-lets-keep-protecting-title = Romo’ãta gueteri ne mba’e
 dashboard-top-banner-lets-keep-protecting-cta = Jaku’ejeýke
 dashboard-top-banner-protect-your-data-title = Romo’ãta ne mba’ekuaarã
 dashboard-top-banner-protect-your-data-cta = Romoĩ porãta
+# Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
+# Variables:
+#   $exposures_unresolved_num (number) - the total number of exposures the user has.
+dashboard-top-banner-non-us-protect-your-data-description-line1 =
+    { $exposures_unresolved_num ->
+        [one] Rojuhu { $exposures_unresolved_num } ne mba’ekuaarã jehechauka.
+       *[other] Rojuhu { $exposures_unresolved_num } ne mba’ekuaarã jehechauka.
+    }
 dashboard-top-banner-no-exposures-found-title = Ndojejuhúi máva jehechauka
 dashboard-no-exposures-label = Ndojejuhúi máva jehechauka
 dashboard-top-banner-monitor-more-cta = Roma’ẽag̃uíta hetave ñanduti vevére

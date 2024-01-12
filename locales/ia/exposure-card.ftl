@@ -4,6 +4,8 @@
 
 chevron-down-alt = Expander
 chevron-up-alt = Contraher
+exposure-card-exposure-type = Typo de exposition
+exposure-card-date-found = Data de exposition
 
 # Status Pill
 
@@ -13,6 +15,7 @@ status-pill-fixed = Remediate
 
 # Exposure Card
 
+exposure-card-family-members = Membros del familia
 exposure-card-email = Email
 exposure-card-phone-number = Numero de telephono
 exposure-card-address = Adresse
@@ -20,6 +23,7 @@ exposure-card-credit-card = Carta de credito
 exposure-card-password = Contrasigno
 exposure-card-ip-address = Adresse IP
 exposure-card-other = Altero
+exposure-card-exposure-type-data-broker = Informationes a vender
 exposure-card-exposure-type-data-breach = Violation de datos
 exposure-card-label-company-logo = Logo del interprisa
 exposure-card-label-company = Interprisa
