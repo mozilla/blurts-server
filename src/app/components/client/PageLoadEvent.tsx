@@ -43,9 +43,11 @@ export const PageLoadEvent = (props: Props) => {
   useEffect(() => {
     const pageViewParams: GleanMetricMap["page"]["view"] = {
       ...getUtmParams(),
-      user_id: userId,
       path: pathname,
     };
+    if (typeof userId === "string") {
+      pageViewParams.user_id = userId;
+    }
 
     recordTelemetry("page", "view", pageViewParams);
   }, [recordTelemetry, pathname, userId]);

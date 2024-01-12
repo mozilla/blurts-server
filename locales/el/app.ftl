@@ -866,3 +866,9 @@ breach-detail-cta-signup = Έλεγχος για παραβιάσεις
 floating-banner-text = Ενισχύστε την ασφάλειά σας στο διαδίκτυο με νέα, συμβουλές και ενημερώσεις από τη { -brand-Mozilla }.
 floating-banner-link-label = Εγγραφή
 floating-banner-dismiss-button-label = Όχι, ευχαριστώ
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Νέο όνομα, εμφάνιση και ακόμα περισσότεροι τρόποι <b>διεκδίκησης του απορρήτου σας</b>.
+banner-monitor-rebrand-dismiss-button-label = ΟΚ
+banner-monitor-rebrand-dismiss-button-tooltip = Απόρριψη

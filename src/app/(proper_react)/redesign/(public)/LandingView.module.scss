@@ -9,6 +9,7 @@
 .nav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: $spacing-lg $layout-xl;
   background-color: $color-grey-05;
 

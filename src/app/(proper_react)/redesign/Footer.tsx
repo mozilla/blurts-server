@@ -6,6 +6,12 @@ import styles from "./Shell.module.scss";
 import Image from "next/image";
 import mozillaLogo from "../images/mozilla-logo.svg";
 import { ExtendedReactLocalization } from "../../hooks/l10n";
+import {
+  CONST_URL_SUMO_MONITOR_FAQ,
+  CONST_URL_MONITOR_GITHUB,
+  CONST_URL_TERMS,
+  CONST_URL_PRIVACY_POLICY,
+} from "../../../constants";
 
 export const Footer = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
   return (
@@ -20,7 +26,7 @@ export const Footer = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
       <ul className={styles.externalLinks}>
         <li>
           <a
-            href={process.env.NEXT_PUBLIC_MONITOR_FAQ}
+            href={CONST_URL_SUMO_MONITOR_FAQ}
             target="_blank"
             title={l10n.getString("footer-external-link-faq-tooltip")}
           >
@@ -28,20 +34,17 @@ export const Footer = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
           </a>
         </li>
         <li>
-          <a href={process.env.NEXT_PUBLIC_MONITOR_LEGAL} target="_blank">
+          <a href={CONST_URL_TERMS} target="_blank">
             {l10n.getString("terms-of-service")}
           </a>
         </li>
         <li>
-          <a
-            href={process.env.NEXT_PUBLIC_MONITOR_SUBSCRIPTION_SERVICES}
-            target="_blank"
-          >
+          <a href={CONST_URL_PRIVACY_POLICY} target="_blank">
             {l10n.getString("privacy-notice")}
           </a>
         </li>
         <li>
-          <a href={process.env.NEXT_PUBLIC_MONITOR_GITHUB} target="_blank">
+          <a href={CONST_URL_MONITOR_GITHUB} target="_blank">
             {l10n.getString("github")}
           </a>
         </li>

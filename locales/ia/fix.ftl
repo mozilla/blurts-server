@@ -95,7 +95,10 @@ high-risk-breach-social-security-step-two = <link_to_info>Verifica tu reporto de
 # Social Security Number Modal
 
 ssn-modal-title = Re avisos de fraude e blocadas de credito
-ssn-modal-description-fraud-part-one = <b>Un aviso de fraude</b> require al negotios de verificar tu identitate ante que illo attribue nove credito in tu nomine. Illo es gratuite, dura un anno, e non afficera negativemente afficer tu punctuation de credito.
+ssn-modal-description-fraud-part-one = <b>Un aviso de fraude</b> require al negotios de verificar tu identitate ante que illo attribue nove credito in tu nomine. Illo es gratuite, dura un anno, e non afficera negativemente tu punctuation de credito.
+ssn-modal-description-fraud-part-two = Pro crear uno, contacta un del tres bureaus de credito. Tu non debe contactar tote tres.
+ssn-modal-description-freeze-credit-part-one = <b>Gelar tu credito</b> impedi a quicunque de aperir un nove conto in tu nomine. Illo es libere e non afficera negativemente tu punctuation de credito, ma tu besoniara de disgelar lo ante aperir ulle nove contos.
+ssn-modal-description-freeze-credit-part-two = Pro gelar tu credito, contacta cata del tres bureaus de credito: <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link>, e <transunion_link>TransUnion</transunion_link>.
 ssn-modal-learn-more = Saper plus circa avisos de fraude e blocadas de credito
 ssn-modal-ok = OK
 
@@ -110,6 +113,9 @@ high-risk-breach-pin-step-three = Verifica tu contos pro debitos non autorisate.
 # No high risk breaches found
 
 high-risk-breach-none-title = Grande novas, nos non trovava alcun violationes de datos a alte risco
+# Variables
+# $email_list is list of emails that the user is monitoring for breaches. E.g. john@yahoo.com, ali@gmail.com, sam@hotmail.com
+high-risk-breach-none-description = Nos discoperi violationes de datos in base a tu adresse email, e nos non trova alcun violationes de datos a alte risco pro { $email_list }
 high-risk-breach-none-sub-description-part-one = Violationes de datos a alte risco include:
 high-risk-breach-none-sub-description-ssn = Numero de securitate social
 high-risk-breach-none-sub-description-bank-account = Informationes de conto bancari
@@ -126,19 +132,72 @@ security-recommendation-steps-cta-label = OK
 # Phone security recommendation
 
 security-recommendation-phone-title = Protege tu numero de telephono
+# $num_breaches is the number of breaches where the phone number was found.
+security-recommendation-phone-summary =
+    { $num_breaches ->
+        [one] Tu numero de telephono era exponite in { $num_breaches } violation de datos:
+       *[other] Tu numero de telephono era exponite in { $num_breaches } violationes de datos:
+    }
+security-recommendation-phone-description = Infortunatemente tu non pote recuperar lo. Ma il ha passos que tu pote facer pro verificar que tu sta secur.
+security-recommendation-phone-step-one = Bloca le numeros spam pro impedir altere appellos immunditia
+security-recommendation-phone-step-two = Non clicca sur ligamines in textos de expeditores incognite; si illo pare esser ab un fonte digne de fide, appella directemente pro confirmar
 
 # Email security recommendation
 
 security-recommendation-email-title = Protege tu adresse email
+# $num_breaches is the number of breaches where the email address was found.
+security-recommendation-email-summary =
+    { $num_breaches ->
+        [one] Tu adresse email era exponite in { $num_breaches } violation de datos:
+       *[other] Tu adresse email era exponite in { $num_breaches } violationes de datos:
+    }
+security-recommendation-email-description = Infortunatemente tu non pote remediar a isto. Ma il ha passos que tu pote facer pro proteger te.
+security-recommendation-email-step-one = Non clicca sur ligamines in emails de expeditores incognite; si illo appare esser ab fonte digne de fide, appella directemente pro confirmar
+security-recommendation-email-step-two = Sia conscie de <link_to_info>attaccos fraudulente</link_to_info>
+security-recommendation-email-step-three = Marcar emails suspecte como spam e blocar le expeditor
 
 # IP security recommendation
 
+security-recommendation-ip-title = Usa un VPN pro ulterior confidentialitate
+# $num_breaches is the number of breaches where the IP address was found.
+security-recommendation-ip-summary =
+    { $num_breaches ->
+        [one] Adresse adresse IP era exponite in { $num_breaches } violation de datos:
+       *[other] Tu adresse IP era exponite in { $num_breaches } violationes de datos:
+    }
+security-recommendation-ip-description = Tu adresse IP indica tu position e fornitor de servicio internet. Piratas informatic poterea usar iste informationes pro trovar tu position o tentar de connecter se a tu apparatos.
+security-recommendation-ip-step-one = Usa un VPN (tal como <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) pro celar tu real adresse IP e usar internet reservatemente.
 
 # Leaked Passwords
 
+# Variables
+# $breach_name is the name of the breach where the leaked password was found.
+leaked-passwords-title = Tu { $breach_name } contrasigno era exponite
+# Variables
+# $breach_date is the date when the breach occurred.
+leaked-passwords-summary = Illo appareva in un violation de datos le { $breach_date }.
+leaked-passwords-description = Fraudatores pote acceder tu conto e probabilemente tentara de usar lo sur altere contos pro vider si tu ha usate le mesme contrasigno. Cambia lo ubique tu lo ha usate pro proteger te.
 leaked-passwords-steps-title = Ecce que facer
 leaked-passwords-steps-subtitle = Isto require accesso a tu conto, assi tu debera manualmente corriger lo.
+leaked-passwords-mark-as-fixed = Marcar como remediate
 leaked-passwords-skip = Saltar pro iste momento
+# Variables
+# $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
+# "Est." is shortform for "Estimated".
+# "mins" is shortform for "minutes".
+leaked-passwords-estimated-time =
+    { $estimated_time ->
+        [one] Tempore ext. pro completar: { $estimated_time } minuta per sito
+       *[other] Tempore ext. pro completar: { $estimated_time } minutas per sito
+    }
 
 # Leaked Security Questions
 
+leaked-security-questions-title = Tu demandas de securitate era exponite
+# Variables
+# $breach_name is the name of the breach where the leaked security questions were found.
+# $breach_date is the date when the breach occurred.
+# An example of this string is Twitter on 13/09/18.
+leaked-security-questions-summary = Illos appareva in un violation de datos sur { $breach_name } le { $breach_date }.
+leaked-security-questions-steps-title = Ecce que facer
+leaked-security-questions-steps-subtitle = Isto require accesso a tu conto, assi tu debera manualmente corriger lo.
