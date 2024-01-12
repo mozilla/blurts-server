@@ -16,7 +16,9 @@ export const useGlean = () => {
   // Initialize Glean only on the first render of our custom hook.
   useEffect(() => {
     // Enable upload only if the user has not opted out of tracking.
-    const uploadEnabled = navigator.doNotTrack !== "1";
+    const uploadEnabled =
+      navigator.doNotTrack !== "1" ||
+      document.location.hostname === "localhost";
 
     if (!PUBLIC_APP_ENV) {
       throw new ErrorEvent("No PUBLIC_APP_ENV provided for Glean");
