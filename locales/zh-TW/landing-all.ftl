@@ -33,6 +33,7 @@ landing-all-data-breach-next-steps-qn = 我剛發現某場資料外洩事件當�
 landing-all-data-breach-next-steps-ans = 造訪 { -brand-mozilla-monitor } 即可了解發生資料外洩事件後要如何處理，並且了解要如何處理已外洩的個資。駭客們倚靠人們重複使用的密碼來作案，所以針對您的每一個帳號都使用強大而不同的密碼相當重要。請將您的密碼保存在只有您可以接觸到的安全位置，這個地方可能會是您存放重要文件的位置或密碼管理員。
 landing-all-data-breach-info-qn = 發生資料外洩事件時，會洩露哪些資訊？
 landing-all-data-breach-info-ans = 每場事件外洩的資訊不一定相同，要視駭客獲得了哪些資訊而定。許多資料外洩事件會洩露電子郵件信箱與密碼，而有的是會洩露信用卡卡號、提款卡密碼、身分證字號等敏感資訊。
+landing-all-close-faq-alt = 關閉
 
 # Social proof
 

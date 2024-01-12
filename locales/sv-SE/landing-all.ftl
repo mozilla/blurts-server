@@ -33,6 +33,7 @@ landing-all-data-breach-next-steps-qn = Jag fick reda på att jag finns med i et
 landing-all-data-breach-next-steps-ans = Besök { -brand-mozilla-monitor } för att lära dig vad du ska göra efter ett dataintrång och få guidade steg för att lösa exponeringar av din personliga information. Hackare förlitar sig på att människor återanvänder lösenord, så det är viktigt att skapa starka, unika lösenord för alla dina konton. Förvara dina lösenord på en säker plats som bara du har tillgång till; det kan vara på samma plats där du lagrar viktiga dokument eller en lösenordshanterare.
 landing-all-data-breach-info-qn = Vilken information avslöjas vid dataintrång?
 landing-all-data-breach-info-ans = Inte alla intrång avslöjar samma information. Det beror bara på vad hackare kan komma åt. Många dataintrång avslöjar e-postadresser och lösenord. Andra avslöjar känsligare information som kreditkortsnummer, PIN-koder och personnummer.
+landing-all-close-faq-alt = Stäng
 
 # Social proof
 

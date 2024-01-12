@@ -830,3 +830,9 @@ breach-detail-cta-signup = Kontrolearje op datalekken
 floating-banner-text = Ferheegje jo online feiligens mei nijs, tips en updates fan { -brand-Mozilla }.
 floating-banner-link-label = Registrearje
 floating-banner-dismiss-button-label = Nee, tankewol
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nije namme, uterlik en noch mear manieren om <b>jo privacy werom te winnen</b>.
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Slute

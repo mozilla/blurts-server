@@ -25,6 +25,7 @@ import { HeresHowWeHelp } from "./HeresHowWeHelp";
 import { ScanLimit } from "./ScanLimit";
 import { Footer } from "../Footer";
 import { FaqSection } from "./Faq";
+import { SignInButton } from "../../../components/client/SignInButton";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -38,6 +39,7 @@ export const View = (props: Props) => {
     <main className={styles.wrapper}>
       <nav className={styles.nav}>
         <h1>{props.l10n.getString("public-nav-name")}</h1>
+        <SignInButton />
       </nav>
       <header className={styles.hero}>
         <div className={styles.heroContent}>
