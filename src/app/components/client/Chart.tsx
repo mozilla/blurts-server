@@ -19,6 +19,10 @@ import ModalImage from "../client/assets/modal-default-img.svg";
 import { DashboardSummary } from "../../functions/server/dashboard";
 import { WaitlistDialog } from "./SubscriberWaitlistDialog";
 import { useTelemetry } from "../../hooks/useTelemetry";
+import {
+  CONST_MAX_NUM_ADDRESSES,
+  CONST_ONEREP_MAX_SCANS_THRESHOLD,
+} from "../../../constants";
 
 export type Props = {
   data: Array<[string, number]>;
@@ -106,7 +110,7 @@ export const DoughnutChart = (props: Props) => {
             ? "modal-active-number-of-exposures-part-one-premium"
             : "modal-active-number-of-exposures-part-one-all",
           {
-            limit: process.env.NEXT_PUBLIC_MAX_NUM_ADDRESSES!,
+            limit: CONST_MAX_NUM_ADDRESSES,
           },
         )}
       </p>
@@ -154,10 +158,7 @@ export const DoughnutChart = (props: Props) => {
           </p>
           {typeof props.totalNumberOfPerformedScans === "undefined" ||
           props.totalNumberOfPerformedScans <
-            parseInt(
-              process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
-              10,
-            ) ? (
+            CONST_ONEREP_MAX_SCANS_THRESHOLD ? (
             <Link
               href="/redesign/user/welcome/free-scan?referrer=dashboard"
               onClick={() => {

@@ -5,6 +5,7 @@
 "use client";
 
 import Script from "next/script";
+import { CONST_GA4_MEASUREMENT_ID } from "../../../constants";
 
 export type Props = {
   nonce: string;
@@ -12,8 +13,7 @@ export type Props = {
 
 export const GaScript = ({ nonce }: Props) => {
   /* c8 ignore next 2 */
-  const ga4MeasurementId =
-    process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID || "G-CXG8K4KW4P";
+  const ga4MeasurementId = CONST_GA4_MEASUREMENT_ID || "G-CXG8K4KW4P";
 
   return typeof navigator !== "undefined" && navigator.doNotTrack !== "1" ? (
     <Script

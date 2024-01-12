@@ -12,6 +12,7 @@ import { getCountryCode } from "../../../../../../functions/server/getCountryCod
 import { headers } from "next/headers";
 import { authOptions } from "../../../../../../api/utils/auth";
 import { getReferrerUrl } from "../../../../../../functions/server/getReferrerUrl";
+import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../constants";
 
 const FreeScanSlug = "free-scan" as const;
 
@@ -61,10 +62,7 @@ export default async function Onboarding({ params, searchParams }: Props) {
   return (
     <View
       user={session.user}
-      dataBrokerCount={parseInt(
-        process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-        10,
-      )}
+      dataBrokerCount={CONST_ONEREP_DATA_BROKER_COUNT}
       breachesTotalCount={allBreachesCount}
       stepId={firstSlug === FreeScanSlug ? "enterInfo" : "getStarted"}
       previousRoute={previousRoute}

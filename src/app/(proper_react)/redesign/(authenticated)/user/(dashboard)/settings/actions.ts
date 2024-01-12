@@ -21,6 +21,7 @@ import { initEmail } from "../../../../../../../utils/email";
 import { sendVerificationEmail } from "../../../../../../api/utils/email";
 import { getL10n } from "../../../../../../functions/server/l10n";
 import { logger } from "../../../../../../functions/server/logging";
+import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 
 export type AddEmailFormState =
   | { success?: never }
@@ -71,10 +72,7 @@ export async function onAddEmail(
   const existingAddresses = [session.user.email]
     .concat(subscriber.email_addresses.map((emailRow) => emailRow.email))
     .map((address) => address.toLowerCase());
-  if (
-    existingAddresses.length >=
-    Number.parseInt(process.env.NEXT_PUBLIC_MAX_NUM_ADDRESSES!, 10)
-  ) {
+  if (existingAddresses.length >= CONST_MAX_NUM_ADDRESSES) {
     return {
       success: false,
       error: "too-many-emails",
