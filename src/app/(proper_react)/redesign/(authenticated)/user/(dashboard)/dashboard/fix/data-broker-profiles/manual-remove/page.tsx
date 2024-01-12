@@ -13,6 +13,8 @@ import { authOptions } from "../../../../../../../../../api/utils/auth";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
+import { isEligibleForPremium } from "../../../../../../../../../functions/server/onerep";
+import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 export default async function ManualRemovePage() {
   const session = await getServerSession(authOptions);
@@ -26,12 +28,19 @@ export default async function ManualRemovePage() {
   const scanData = await getLatestOnerepScanResults(profileId);
   const subBreaches = await getSubscriberBreaches(session.user);
   const subscriberEmails = await getSubscriberEmails(session.user);
+  const enabledFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
 
   return (
     <ManualRemoveView
       breaches={subBreaches}
       scanData={scanData}
       isPremiumUser={hasPremium(session.user)}
+      isEligibleForPremium={isEligibleForPremium(
+        getCountryCode(headers()),
+        enabledFlags,
+      )}
       user={session.user}
       countryCode={getCountryCode(headers())}
       subscriberEmails={subscriberEmails}

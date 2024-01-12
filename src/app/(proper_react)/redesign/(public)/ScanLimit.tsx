@@ -8,6 +8,7 @@ import styles from "./LandingView.module.scss";
 import { useL10n } from "../../../hooks/l10n";
 import { Button } from "../../../components/client/Button";
 import { useTelemetry } from "../../../hooks/useTelemetry";
+import { CONST_URL_WAITLIST } from "../../../../constants";
 
 export const ScanLimit = () => {
   const l10n = useL10n();
@@ -31,7 +32,7 @@ export const WaitlistCta = () => {
     <Button
       className={styles.waitlistCta}
       variant="primary"
-      href={process.env.NEXT_PUBLIC_WAITLIST_URL}
+      href={CONST_URL_WAITLIST}
       onPress={() => {
         record("ctaButton", "click", {
           button_id: "intent_to_join_waitlist_header",

@@ -44,6 +44,10 @@ import { WaitlistDialog } from "../../../../../../components/client/SubscriberWa
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
+import {
+  CONST_ONEREP_DATA_BROKER_COUNT,
+  CONST_ONEREP_MAX_SCANS_THRESHOLD,
+} from "../../../../../../../constants";
 
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
@@ -155,6 +159,7 @@ export const View = (props: Props) => {
             "PremiumBrokerRemoval",
           )}
           isPremiumUser={hasPremium(props.user)}
+          isEligibleForPremium={props.isEligibleForPremium}
           resolutionCta={
             <Button
               variant="primary"
@@ -305,19 +310,13 @@ export const View = (props: Props) => {
       <p>
         {l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
           vars: {
-            data_broker_total_num: parseInt(
-              process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-              10,
-            ),
+            data_broker_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
           },
           elems: {
             a:
               typeof props.totalNumberOfPerformedScans === "undefined" ||
               props.totalNumberOfPerformedScans <
-                parseInt(
-                  process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
-                  10,
-                ) ? (
+                CONST_ONEREP_MAX_SCANS_THRESHOLD ? (
                 <a
                   ref={waitlistTriggerRef}
                   href="/redesign/user/welcome/free-scan?referrer=dashboard"

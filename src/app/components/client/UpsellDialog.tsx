@@ -15,6 +15,7 @@ import { useL10n } from "../../hooks/l10n";
 import ModalImage from "../client/assets/premium-upsell-dialog-icon.svg";
 import styles from "./UpsellDialog.module.scss";
 import { useTelemetry } from "../../hooks/useTelemetry";
+import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../constants";
 
 export interface UpsellDialogProps {
   state: OverlayTriggerState;
@@ -120,10 +121,7 @@ function UpsellDialogContent({
           {l10n.getString(
             "fix-flow-data-broker-profiles-automatic-remove-features-monthly-scan",
             {
-              data_broker_count: parseInt(
-                process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-                10,
-              ),
+              data_broker_count: CONST_ONEREP_DATA_BROKER_COUNT,
             },
           )}
         </dd>

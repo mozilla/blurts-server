@@ -6,10 +6,11 @@ import React from "react";
 import cloudImage from "../../../../client/images/dialog-email-clouds.svg";
 import AppConstants from "../../../../appConstants";
 import { getL10n } from "../../../functions/server/l10n";
+import { CONST_MAX_NUM_ADDRESSES } from "../../../../constants";
 
 export default function AddEmailDialog() {
   const l10n = getL10n();
-  const emailLimit = AppConstants.NEXT_PUBLIC_MAX_NUM_ADDRESSES;
+  const emailLimit = CONST_MAX_NUM_ADDRESSES;
 
   return (
     <>

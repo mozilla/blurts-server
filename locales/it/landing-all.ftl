@@ -33,6 +33,7 @@ landing-all-data-breach-next-steps-qn = Ho appena scoperto che il mio account è
 landing-all-data-breach-next-steps-ans = Visita { -brand-mozilla-monitor } per scoprire le procedure da seguire in caso di violazione di dati e segui attentamente i passaggi indicati per risolvere la divulgazione delle tue informazioni personali. È importante comprendere che gli hacker si affidano al fatto che molte persone riutilizzano le password in diversi contesti, pertanto è di vitale importanza creare password robuste e uniche per ciascuno dei tuoi account. Assicurati di conservare le tue password in un luogo sicuro a cui solo tu puoi accedere; questo può coincidere con il luogo in cui conservi documenti importanti, oppure un gestore di password.
 landing-all-data-breach-info-qn = Quali informazioni vengono esposte in una violazione di dati?
 landing-all-data-breach-info-ans = Non tutte le violazioni espongono le stesse informazioni. Dipende da ciò a cui gli hacker hanno accesso. Molte violazioni di dati espongono indirizzi email e password, altre espongono informazioni sensibili come numeri di carte di credito, PIN e numeri di previdenza sociale.
+landing-all-close-faq-alt = Chiudi
 
 # Social proof
 

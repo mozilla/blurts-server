@@ -31,6 +31,14 @@ progress-card-manually-fixed-headline = Remediate manualmente
 dashboard-tab-label-action-needed = Action necessari
 dashboard-tab-label-fixed = Remediate
 dashboard-exposures-all-fixed-label = Toto remediate ci!
+# Note: this line follows dashboard-exposures-area-description-all-line1.
+# Variables:
+#   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
+dashboard-exposures-area-description-all-line2 =
+    { $data_breach_unresolved_num ->
+        [one] Illo appareva in { $data_breach_unresolved_num } violation de datos:
+       *[other] Illo appareva in { $data_breach_unresolved_num } violationes de datos:
+    }
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filtro
 dashboard-exposures-filter-company = Interprisa
@@ -59,3 +67,4 @@ dashboard-top-banner-monitor-more-cta = Surveliar plus emails
 
 # About Exposure Statuses Modal
 
+modal-exposure-status-title = Re le statos de exposition

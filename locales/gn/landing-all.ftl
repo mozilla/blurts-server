@@ -27,6 +27,7 @@ landing-all-faq-see-all = Ehechapa FAQs
 landing-all-data-breach-definition-qn = Mba’épa pe mba’ekuaarã ñembyai
 landing-all-data-breach-next-steps-qn = Ajuhu ramoite peteĩ mba’ekuaarã ñembyai. ¿Mba’e ajapokuaa?
 landing-all-data-breach-info-qn = Mba’e marandúpa ojehecha mba’ekuaarã ñemboguápe
+landing-all-close-faq-alt = Mboty
 
 # Social proof
 
@@ -44,6 +45,8 @@ landing-all-social-proof-press = Ojehechaháicha
 landing-all-help-protect-you = Péicha roipytyvõ eñemo’ã hag̃ua
 landing-all-help-protect-you-description = Romomba’e nde derécho tekoñemirã, upévare ñemo’ã mba’ekuaarã ñembogua roikuave’ẽ reiete.
 landing-all-help-protect-you-feature-one = Rohekáta opaite mba’ekuaarã ñembogua ojekuaáavape
+landing-all-help-protect-you-feature-two = Rombohapéta mba’éichapa remboykéta peteĩteĩva ñembogua
+landing-all-help-protect-you-feature-three = Rohechameméta ha romondóta kyhyjerã oimeraẽva ñembogua pyahu rehegua.
 landing-all-help-protect-you-cta = Eñemboheraguapy og̃uahẽ hag̃ua ñembyai rehegua
 landing-all-get-started = Emoha’ãnga ñanduti veve eñepyrũ hag̃ua
 landing-all-take-back-data = Eguerujey ne mba’ekuaarã rechameme
