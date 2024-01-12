@@ -26,6 +26,7 @@ import {
   getNextGuidedStep,
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../../FixView";
+import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 
 export type Props = {
   scanData: LatestOnerepScanData;
@@ -39,6 +40,7 @@ export type Props = {
 
 export function ManualRemoveView(props: Props) {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const [activeExposureCardKey, setActiveExposureCardKey] = useState(0);
 
   const summary = getDashboardSummary(props.scanData.results, props.breaches);
@@ -119,7 +121,14 @@ export function ManualRemoveView(props: Props) {
                   {
                     elems: {
                       subscribe_link: (
-                        <Link href="/user/dashboard/fix/data-broker-profiles/automatic-remove" />
+                        <Link 
+                        href="/user/dashboard/fix/data-broker-profiles/automatic-remove" 
+                        onClick={() => {
+                          recordTelemetry("link", "click", {
+                            link_id: "manual_removal_instructions_upsell",
+                          });
+                        }}
+                        />
                       ),
                     },
                   },
