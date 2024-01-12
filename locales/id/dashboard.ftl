@@ -38,6 +38,8 @@ modal-active-number-of-exposures-part-one-all =
     }
 modal-active-number-of-exposures-part-two = Misalnya, jika Anda memiliki 10 eksposur nomor telepon Anda, itu mungkin berarti satu nomor telepon terpapar di 10 situs berbeda, atau bisa berarti 2 nomor telepon berbeda terpapar di 5 situs berbeda.
 modal-active-number-of-exposures-part-three-all = Setelah mereka diselesaikan, mereka akan ditambahkan ke jumlah total eksposur tetap Anda pada halaman Tetap.
+modal-fixed-number-of-exposures-title = Tentang jumlah eksposur tetap Anda
+modal-fixed-number-of-exposures-all = Bagan ini mencakup jumlah kebocoran data yang telah diperbaiki untuk semua alamat surel yang sedang Anda pantau. Setelah eksposur ditandai sebagai tetap, mereka akan ditambahkan ke total di sini.
 modal-cta-ok = Oke
 modal-open-alt = Buka
 modal-close-alt = Tutup
@@ -92,6 +94,8 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] Anda masih memiliki { $exposures_unresolved_num } eksposur yang tersisa untuk diperbaiki. Lanjutkan dan lindungi diri Anda. Kami akan memandu Anda langkah demi langkah.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Ayo lanjutkan
+dashboard-top-banner-protect-your-data-title = Mari lindungi data Anda
+dashboard-top-banner-protect-your-data-cta = Mari kita perbaiki
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.

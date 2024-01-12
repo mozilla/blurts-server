@@ -33,6 +33,7 @@ landing-all-data-breach-next-steps-qn = Ik kaam der krekt efter dat ik yn in dat
 landing-all-data-breach-next-steps-ans = Besykje { -brand-mozilla-monitor } om te sjen wat jo dwaan moatte nei in datalek en krij begeliede stappen om bleatstellingen fan jo persoanlike ynformaasje op te lossen. Hackers fertrouwe op minsken dy’t wachtwurden opnij brûke, dus it is wichtich om sterke, unike wachtwurden te meitsjen foar al jo accounts. Hâld jo wachtwurden op in feilich plak dêr’t allinnich jo tagong ta hawwe; dit kin itselde plak wêze as wêr't jo wichtige dokuminten bewarje of in wachtwurdbehearder.
 landing-all-data-breach-info-qn = Hokker gegevens wurde lekt by datalekken?
 landing-all-data-breach-info-ans = Net alle lekken litte allegearre deselde ynformaasje sjen. It hinget der mar fan ôf wêr’t hackers tagong ta hawwe. In protte datalekken litte e-mailadressen en wachtwurden sjen. Oare jouwe mear gefoelige ynformaasje frij, lykas creditcardnûmers, pinkoaden en boargerservicenûmers.
+landing-all-close-faq-alt = Slute
 
 # Social proof
 

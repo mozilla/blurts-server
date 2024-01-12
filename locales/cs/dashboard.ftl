@@ -42,6 +42,8 @@ modal-active-number-of-exposures-part-one-all =
     }
 modal-active-number-of-exposures-part-two = Pokud máte například 10 zpřístupnění svého telefonního čísla, může to znamenat, že jedno telefonní číslo je zpřístupněno na 10 různých stránkách, nebo naopak 2 různá telefonní čísla na 5 různých serverech.
 modal-active-number-of-exposures-part-three-all = Jakmile budou vyřešeny, budou přidány k vašemu celkovému počtu pevných expozic na stránce Pevná.
+modal-fixed-number-of-exposures-title = O vašem počtu stálých expozic
+modal-fixed-number-of-exposures-all = Tento graf obsahuje celkový počet úniků dat, které byly opraveny pro všechny e-mailové adresy, které aktuálně sledujete. Jakmile jsou expozice označeny jako pevné, budou zde přičteny k celkovému součtu.
 modal-cta-ok = OK
 modal-open-alt = Otevřít
 modal-close-alt = Zavřít
@@ -102,6 +104,8 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] Stále vám zbývá opravit { $exposures_unresolved_num } úniků. Pokračujte a chraňte se. Provedeme vás krok za krokem.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Pojďme dál
+dashboard-top-banner-protect-your-data-title = Chraňme vaše data
+dashboard-top-banner-protect-your-data-cta = Pojďme to napravit
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
