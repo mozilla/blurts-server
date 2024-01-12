@@ -23,7 +23,7 @@ import {
 import { bearerToken } from "../../utils/auth";
 import { revokeOAuthTokens } from "../../../../utils/fxa";
 import appConstants from "../../../../appConstants";
-import { changeSubscription } from "../../../functions/server/changeSubscription.js";
+import { changeSubscription } from "../../../functions/server/changeSubscription";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
