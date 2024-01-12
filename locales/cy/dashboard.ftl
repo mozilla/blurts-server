@@ -33,8 +33,8 @@ exposure-chart-caption = Mae'r siart hwn yn dangos sawl gwaith y mae eich manyli
 exposure-chart-caption-fixed = Mae'r siart hwn yn dangos cyfanswm y datgeliadau sydd wedi'u trwsio ( { $total_fixed_exposures_num } allan o { $total_exposures_num })
 exposure-chart-returning-user-upgrade-prompt = Nid yw cyfeiriad cartref, aelodau teulu a rhagor wedi'u cynnwys eto.
 exposure-chart-returning-user-upgrade-prompt-cta = Dechreuwch sgan rhad ac am ddim
-exposure-chart-scan-in-progress-prompt = <b>Wrthi'n sganio:</b>  nid yw cyfeiriad, aelodau'r teulu, a rhagor wedi'u cynnwys eto.
-modal-active-number-of-exposures-title = Ynglŷn â'ch nifer o ddatguddiadau gweithredol
+exposure-chart-scan-in-progress-prompt = <b>Wrthi'n sganio:</b> nid yw cyfeiriad, aelodau'r teulu, a rhagor wedi'u cynnwys eto.
+modal-active-number-of-exposures-title = Ynghylch eich nifer o ddatgeliadau gweithredol
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
 modal-active-number-of-exposures-part-one-all =
@@ -47,12 +47,14 @@ modal-active-number-of-exposures-part-one-all =
        *[other] Mae'r siart hwn yn cynnwys cyfanswm y nifer o weithiau rydym wedi dod o hyn i unrhyw fath o ddata a ddatgelwyd ar draws yr holl doriadau data am y { $limit } cyfeiriad e-bost rydych yn eu monitro ar hyn o bryd.
     }
 modal-active-number-of-exposures-part-two = Er enghraifft, os oes gennych 10 datgeliad o'ch rhif ffôn, gall hynny olygu bod un rhif ffôn yn cael ei ddatgelu ar 10 gwefan gwahanol, neu gall olygu bod 2 rif ffôn gwahanol wedi'u datgelu ar 5 gwefan gwahanol.
-modal-active-number-of-exposures-part-three-all = Unwaith y byddan nhw wedi'u datrys, byddan nhw'n cael eu hychwanegu at gyfanswm eich datguddiadau wedi'u trwsio ar y dudalen Wedi Trwsio.
+modal-active-number-of-exposures-part-three-all = Unwaith y byddan nhw wedi'u datrys, byddan nhw'n cael eu hychwanegu at gyfanswm eich datgeliadau wedi'u trwsio ar y dudalen Wedi Trwsio.
+modal-fixed-number-of-exposures-title = Ynghylch eich nifer o ddatgeliadau wedi'u trwsio
+modal-fixed-number-of-exposures-all = Mae'r siart hwn yn cynnwys cyfanswm nifer yr achosion o dor-data sydd wedi'u pennu ar gyfer yr holl gyfeiriadau e-bost rydych chi'n eu monitro ar hyn o bryd. Unwaith y bydd datgeliadau wedi'u marcio fel wedi eu trwsio, byddan nhw'n cael eu hychwanegu at y cyfanswm yma.
 modal-cta-ok = Iawn
 modal-open-alt = Agor
 modal-close-alt = Cau
 progress-card-heres-what-we-fixed-headline-all = Dyma beth rydych wedi'u trwsio
-progress-card-manually-fixed-headline = Wedi'i drwsio â llaw
+progress-card-manually-fixed-headline = Wedi'u trwsio â llaw
 dashboard-tab-label-action-needed = Angen gweithredu
 dashboard-tab-label-fixed = Wedi Trwsio
 dashboard-exposures-all-fixed-label = Popeth wedi'i drwsio yma!
@@ -62,12 +64,12 @@ dashboard-exposures-area-headline = Gweld pob gwefan lle mae'ch manylion yn cael
 #   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
 dashboard-exposures-area-description-all-line1 =
     { $exposures_unresolved_num ->
-        [zero] Heb ganfod { $exposures_unresolved_num } datguddiad o'ch data.
-        [one] Wedi canfod { $exposures_unresolved_num } datguddiad o'ch data.
-        [two] Wedi canfod { $exposures_unresolved_num } ddatguddiad o'ch data.
-        [few] Wedi canfod { $exposures_unresolved_num } datguddiad o'ch data.
-        [many] Wedi canfod { $exposures_unresolved_num } datguddiad o'ch data.
-       *[other] Wedi canfod { $exposures_unresolved_num } datguddiad o'ch data.
+        [zero] Heb ganfod { $exposures_unresolved_num } datgeliad o'ch data.
+        [one] Wedi canfod { $exposures_unresolved_num } datgeliad o'ch data.
+        [two] Wedi canfod { $exposures_unresolved_num } ddatgeliad o'ch data.
+        [few] Wedi canfod { $exposures_unresolved_num } datgeliad o'ch data.
+        [many] Wedi canfod { $exposures_unresolved_num } datgeliad o'ch data.
+       *[other] Wedi canfod { $exposures_unresolved_num } datgeliad o'ch data.
     }
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
@@ -75,11 +77,11 @@ dashboard-exposures-area-description-all-line1 =
 dashboard-exposures-area-description-all-line2 =
     { $data_breach_unresolved_num ->
         [zero] Heb ymddangosodd ar { $data_breach_unresolved_num } toriad data.
-        [one] Wedi ymddangosodd mewn { $data_breach_unresolved_num } tor-data .
-        [two] Wedi ymddangosodd mewn { $data_breach_unresolved_num } tor-data .
-        [few] Wedi ymddangosodd mewn { $data_breach_unresolved_num } tor-data .
-        [many] Wedi ymddangosodd mewn { $data_breach_unresolved_num } tor-data .
-       *[other] Wedi ymddangosodd mewn { $data_breach_unresolved_num } tor-data .
+        [one] Wedi ymddangos mewn { $data_breach_unresolved_num } tor-data .
+        [two] Wedi ymddangos mewn { $data_breach_unresolved_num } tor-data .
+        [few] Wedi ymddangos mewn { $data_breach_unresolved_num } tor-data .
+        [many] Wedi ymddangos mewn { $data_breach_unresolved_num } tor-data .
+       *[other] Wedi ymddangos mewn { $data_breach_unresolved_num } tor-data .
     }
 dashboard-fixed-area-headline-all = Gweld pob datgeliad sydd wedi'i drwsio
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
@@ -103,63 +105,65 @@ dashboard-exposures-filter-reset = Ailosod
 dashboard-top-banner-section-label = Crynodeb bwrdd gwaith
 dashboard-top-banner-scan-in-progress-title = Mae eich sgan yn dal ar waith
 dashboard-top-banner-your-data-is-protected-title = Mae eich data wedi'i ddiogelu
-dashboard-top-banner-your-data-is-protected-cta = Gweld beth sy'n sefydlog
-dashboard-top-banner-lets-keep-protecting-title = Gadewch i ni barhau i amddiffyn eich data
+dashboard-top-banner-your-data-is-protected-cta = Gweld beth sydd wedi'i drwsio
+dashboard-top-banner-lets-keep-protecting-title = Gadewch i ni barhau i ddiogelu eich data
 # Variables:
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
 dashboard-top-banner-lets-keep-protecting-description =
     { $exposures_unresolved_num ->
-        [zero] Mae gennych { $exposures_unresolved_num } amlygiad ar ôl i'w trwsio o hyd. Daliwch ati ac amddiffyn eich hun. Byddwn yn eich arwain gam wrth gam.
-        [one] Mae gennych { $exposures_unresolved_num } amlygiad ar ôl i'w drwsio o hyd. Daliwch ati ac amddiffyn eich hun. Byddwn yn eich arwain gam wrth gam.
-        [two] Mae gennych { $exposures_unresolved_num } amlygiad ar ôl i'w trwsio o hyd. Daliwch ati ac amddiffyn eich hun. Byddwn yn eich arwain gam wrth gam.
-        [few] Mae gennych { $exposures_unresolved_num } amlygiad ar ôl i'w trwsio o hyd. Daliwch ati ac amddiffyn eich hun. Byddwn yn eich arwain gam wrth gam.
-        [many] Mae gennych { $exposures_unresolved_num } amlygiad ar ôl i'w trwsio o hyd. Daliwch ati ac amddiffyn eich hun. Byddwn yn eich arwain gam wrth gam.
-       *[other] Mae gennych { $exposures_unresolved_num } amlygiad ar ôl i'w trwsio o hyd. Daliwch ati ac amddiffyn eich hun. Byddwn yn eich arwain gam wrth gam.
+        [zero] Does gennych chi { $exposures_unresolved_num } datgeliadau ar ôl i'w trwsio. Llongyfarchiadau! Daliwch ati i ddiogelu eich hun.
+        [one] Mae gennych { $exposures_unresolved_num } datgeliad ar ôl i'w drwsio. Daliwch ati i ddiogelu eich hun. Byddwn yn eich arwain gam wrth gam.
+        [two] Mae gennych { $exposures_unresolved_num } ddatgeliad ar ôl i'w trwsio. Daliwch ati i ddiogelu eich hun. Byddwn yn eich arwain gam wrth gam.
+        [few] Mae gennych { $exposures_unresolved_num } datgeliad ar ôl i'w trwsio. Daliwch ati i ddiogelu eich hun. Byddwn yn eich arwain gam wrth gam.
+        [many] Mae gennych { $exposures_unresolved_num } datgeliad ar ôl i'w trwsio o hyd. Daliwch ati i ddiogelu eich hun. Byddwn yn eich arwain gam wrth gam.
+       *[other] Mae gennych { $exposures_unresolved_num } datgeliad ar ôl i'w trwsio o hyd. Daliwch ati i ddiogelu eich hun. Byddwn yn eich arwain gam wrth gam.
     }
-dashboard-top-banner-lets-keep-protecting-cta = Gadewch i ni ddal ati
+dashboard-top-banner-lets-keep-protecting-cta = Daliwch ati!
+dashboard-top-banner-protect-your-data-title = Gadewch i ni ddiogelu eich data
+dashboard-top-banner-protect-your-data-cta = Gadewch i ni ei drwsio
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
 dashboard-top-banner-non-us-protect-your-data-description-line1 =
     { $exposures_unresolved_num ->
-        [zero] Canfuwyd { $exposures_unresolved_num } datguddiad o'ch data.
-        [one] Canfuwyd { $exposures_unresolved_num } datguddiad eich data.
-        [two] Canfuwyd { $exposures_unresolved_num } datguddiad o'ch data.
-        [few] Canfuwyd { $exposures_unresolved_num } datguddiad o'ch data.
-        [many] Canfuwyd { $exposures_unresolved_num } datguddiad o'ch data.
-       *[other] Canfuwyd { $exposures_unresolved_num } datguddiad o'ch data.
+        [zero] Heb ganfod { $exposures_unresolved_num } datgeliad o'ch data.
+        [one] Wedi canfod { $exposures_unresolved_num } datgeliad o'ch data.
+        [two] Wedi canfod { $exposures_unresolved_num } ddatggeliad o'ch data.
+        [few] Wedi canfod { $exposures_unresolved_num } datgeliad o'ch data.
+        [many] Wedi canfod { $exposures_unresolved_num } datgeliad o'ch data.
+       *[other] Wedi canfod { $exposures_unresolved_num } datgeliad o'ch data.
     }
 # Note: this line is preceded by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $data_breach_unresolved_num (number) - the total number of data breaches the user has.
 dashboard-top-banner-non-us-protect-your-data-description-line2 =
     { $data_breach_unresolved_num ->
-        [zero] Ymddangosodd ar draws { $data_breach_unresolved_num } toriad data. Byddwn yn eich arwain gam wrth gam ar sut i'w drwsio.
-        [one] Ymddangosodd mewn toriad data { $data_breach_unresolved_num }. Byddwn yn eich arwain gam wrth gam ar sut i'w drwsio.
-        [two] Ymddangosodd ar draws { $data_breach_unresolved_num } toriad data. Byddwn yn eich arwain gam wrth gam ar sut i'w drwsio.
-        [few] Ymddangosodd ar draws { $data_breach_unresolved_num } toriad data. Byddwn yn eich arwain gam wrth gam ar sut i'w drwsio.
-        [many] Ymddangosodd ar draws { $data_breach_unresolved_num } toriad data. Byddwn yn eich arwain gam wrth gam ar sut i'w drwsio.
-       *[other] Ymddangosodd ar draws { $data_breach_unresolved_num } toriad data. Byddwn yn eich arwain gam wrth gam ar sut i'w drwsio.
+        [zero] Heb ymddangos ar { $data_breach_unresolved_num } tor-data. Llongyfarchiadau!
+        [one] Mae wedi ymddangos mewn { $data_breach_unresolved_num } tor-data. Byddwn yn eich arwain gam wrth gam ar sut i'w drwsio.
+        [two] Mae wedi ymddangos mewn { $data_breach_unresolved_num } dor-data. Byddwn yn eich arwain gam wrth gam ar sut i'w drwsio.
+        [few] Mae wedi ymddangos mewn { $data_breach_unresolved_num } tor-data. Byddwn yn eich arwain gam wrth gam ar sut i'w drwsio.
+        [many] Mae wedi ymddangos mewn { $data_breach_unresolved_num } thor-data. Byddwn yn eich arwain gam wrth gam ar sut i'w drwsio.
+       *[other] Mae wedi ymddangos mewn { $data_breach_unresolved_num } tor-data. Byddwn yn eich arwain gam wrth gam ar sut i'w drwsio.
     }
-dashboard-top-banner-no-exposures-found-title = Ni chanfuwyd unrhyw ddatguddiadau
-dashboard-top-banner-non-us-no-exposures-found-description = Newyddion gwych! Fe wnaethom chwilio'r holl doriadau data hysbys ac ni chanfuwyd unrhyw ddatguddiadau. Byddwn yn parhau i fonitro eich cyfeiriad e-bost a byddwn yn eich rhybuddio os bydd toriad newydd yn digwydd.
-dashboard-no-exposures-label = Ni chanfuwyd unrhyw ddatguddiadau
+dashboard-top-banner-no-exposures-found-title = Heb ganfod unrhyw ddatgeliadau
+dashboard-top-banner-non-us-no-exposures-found-description = Newyddion gwych! Rydym wedi chwilio'r holl doriadau data hysbys a heb ganfod unrhyw ddatgeliadau. Byddwn yn parhau i fonitro eich cyfeiriad e-bost a byddwn yn eich rhybuddio os bydd tor-data newydd yn digwydd.
+dashboard-no-exposures-label = Heb ganfod unrhyw ddatgeliadau
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
 dashboard-top-banner-non-us-your-data-is-protected-description =
     { $exposures_resolved_num ->
-        [zero] Gwaith gwych, mae pob { $exposures_resolved_num } datguddiad o'ch data wedi'u trwsio! Byddwn yn parhau i fonitro ac yn rhoi gwybod i chi am unrhyw ddatguddiadau newydd.
-        [one] Gwaith gwych, mae datguddiad eich data yn sefydlog! Byddwn yn parhau i fonitro ac yn rhoi gwybod i chi am unrhyw ddatguddiadau newydd.
-        [two] Gwaith gwych, mae pob { $exposures_resolved_num } datguddiad o'ch data wedi'u trwsio! Byddwn yn parhau i fonitro ac yn rhoi gwybod i chi am unrhyw ddatguddiadau newydd.
-        [few] Gwaith gwych, mae pob { $exposures_resolved_num } datguddiad o'ch data wedi'u trwsio! Byddwn yn parhau i fonitro ac yn rhoi gwybod i chi am unrhyw ddatguddiadau newydd.
-        [many] Gwaith gwych, mae pob { $exposures_resolved_num } datguddiad o'ch data wedi'u trwsio! Byddwn yn parhau i fonitro ac yn rhoi gwybod i chi am unrhyw ddatguddiadau newydd.
-       *[other] Gwaith gwych, mae pob { $exposures_resolved_num } datguddiad o'ch data wedi'u trwsio! Byddwn yn parhau i fonitro ac yn rhoi gwybod i chi am unrhyw ddatguddiadau newydd.
+        [zero] Gwaith da, doedd dim datgeliad o'ch data. Byddwn yn parhau i fonitro ac yn rhoi gwybod i chi am unrhyw ddatgeliadau.
+        [one] Gwaith da, mae'r datgeliad o'ch data wedi'i drwsio! Byddwn yn parhau i fonitro ac yn rhoi gwybod i chi am unrhyw ddatgeliadau newydd.
+        [two] Gwaith da, mae'r { $exposures_resolved_num } ddatgeliad o'ch data wedi'u trwsio! Byddwn yn parhau i fonitro ac yn rhoi gwybod i chi am unrhyw ddatgeliadau newydd.
+        [few] Gwaith da, mae'r { $exposures_resolved_num } datgeliad o'ch data wedi'u trwsio! Byddwn yn parhau i fonitro ac yn rhoi gwybod i chi am unrhyw ddatgeliadau newydd.
+        [many] Gwaith da, mae'r { $exposures_resolved_num } datgeliad o'ch data wedi'u trwsio! Byddwn yn parhau i fonitro ac yn rhoi gwybod i chi am unrhyw ddatgeliadau newydd.
+       *[other] Gwaith da, mae'r { $exposures_resolved_num } ddatgeliad o'ch data wedi'u trwsio! Byddwn yn parhau i fonitro ac yn rhoi gwybod i chi am unrhyw ddatgeliadau newydd.
     }
 dashboard-top-banner-monitor-more-cta = Monitro mwy o e-byst
 
 # About Exposure Statuses Modal
 
-modal-exposure-status-title = Ynglŷn â statws datguddiad
-modal-exposure-status-description-all = Rydym yn chwilio am ddatguddiadau ym mhob achos hysbys o dorri data. Bydd gan eich datguddiadau un o'r statwsau canlynol:
-modal-exposure-status-action-needed = Mae <b>Gweithredu sydd ei angen</b> yn golygu ei fod yn weithredol ar hyn o bryd a bod angen i chi gymryd camau i'w drwsio.
-modal-exposure-status-fixed = Mae <b>Sefydlog</b> yn golygu bod y datguddiad wedi'i ddatrys ac nid oes unrhyw gamau i chi eu cymryd.
+modal-exposure-status-title = Ynghylch statws datgeliadau
+modal-exposure-status-description-all = Rydym yn chwilio am ddatgeliadau ym mhob achos hysbys o dor-data. Bydd gan eich datgeliadau o'r cyflyrau canlynol:
+modal-exposure-status-action-needed = <b>Angen gweithredu</b>, sef, ei fod yn weithredol ar hyn o bryd a bod angen i chi gymryd camau i'w drwsio.
+modal-exposure-status-fixed = <b>Wedi'i drwsio</b>, sef, fod y datgeliad wedi'i ddatrys ac nid oes unrhyw gamau i chi eu cymryd.

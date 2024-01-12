@@ -7,6 +7,7 @@ import { getServerSession } from "next-auth";
 import { logger } from "../../../../../functions/server/logging";
 import { isAdmin, authOptions } from "../../../../utils/auth";
 import {
+  deleteOnerepProfileId,
   deleteSubscriber,
   getOnerepProfileId,
   getSubscriberByFxaUid,
@@ -18,7 +19,6 @@ import {
   deactivateProfile,
   optoutProfile,
 } from "../../../../../functions/server/onerep";
-import { captureException } from "@sentry/node";
 import { deleteProfileDetails } from "../../../../../../db/tables/onerep_profiles";
 import {
   deleteScanResultsForProfile,
@@ -157,6 +157,7 @@ export async function PUT(
           }
           case "delete_onerep_profile": {
             await deleteProfileDetails(onerepProfileId);
+            await deleteOnerepProfileId(subscriber.id);
             logger.info("delete_onerep_profile", {
               onerepProfileId,
               primarySha1,
@@ -193,8 +194,8 @@ export async function PUT(
           }
         }
       }
-    } catch (ex) {
-      captureException(ex);
+    } catch (e) {
+      logger.error(e);
       return NextResponse.json({ success: false }, { status: 500 });
     }
 

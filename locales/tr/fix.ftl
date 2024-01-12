@@ -29,10 +29,20 @@ fix-flow-celebration-security-questions-title = Güvenlik sorularınız koruma a
 
 ## Security recommendations flow
 
+fix-flow-celebration-security-recommendations-title = Tüm önerileri tamamladınız!
+fix-flow-celebration-security-recommendations-description-next-dashboard = Tebrikler! Adımlarınızın sonuna geldiniz. Kontrol panelinizden istediğiniz işlemi görebilir ve ilerlemenizi takip edebilirsiniz.
 
 # High Risk Data Breaches
 
 high-risk-breach-heading = İşte yapmanız gerekenler
+high-risk-breach-subheading = Bu işlem hassas bilgilerinize erişilmesini gerektirdiği için bunları kendiniz düzeltmeniz gerekiyor.
+# Variables
+# $num_breaches is the number of breaches where the high risk data was found.
+high-risk-breach-summary =
+    { $num_breaches ->
+        [one] { $num_breaches } veri ihlalinde yer alıyor:
+       *[other] { $num_breaches } veri ihlalinde yer alıyor:
+    }
 high-risk-breach-mark-as-fixed = Düzeltildi olarak işaretle
 high-risk-breach-skip = Şimdilik geç
 # Variables:
@@ -47,6 +57,9 @@ high-risk-breach-estimated-time =
 # Credit Card Breaches
 
 high-risk-breach-credit-card-title = Kredi kartı numaranız ele geçirildi
+high-risk-breach-credit-card-step-one = Bu kartı hâlâ kullanıyorsanız  kartı düzenleyen kuruluşla iletişime geçerek kartın çalındığını bildirin.
+high-risk-breach-credit-card-step-two = Yeni bir numaraya sahip yeni bir kart isteyin.
+high-risk-breach-credit-card-step-three = Hesaplarınızda tanımadığınız ödemeler olup olmadığını kontrol edin.
 
 # Bank Account Breaches
 
@@ -79,6 +92,7 @@ high-risk-breach-none-continue = Devam et
 # Security recommendations
 
 security-recommendation-steps-label = Güvenlik önerileri
+security-recommendation-steps-title = Tavsiyemiz:
 security-recommendation-steps-cta-label = Anladım!
 
 # Phone security recommendation
@@ -87,13 +101,31 @@ security-recommendation-phone-title = Telefon numaranızı koruyun
 
 # Email security recommendation
 
+security-recommendation-email-title = E-posta adresinizi koruyun
+# $num_breaches is the number of breaches where the email address was found.
+security-recommendation-email-summary =
+    { $num_breaches ->
+        [one] E-posta adresiniz { $num_breaches } veri ihlalinde ele geçirildi:
+       *[other] E-posta adresiniz { $num_breaches } veri ihlalinde ele geçirildi:
+    }
+security-recommendation-email-description = Maalesef bunu düzeltemezsiniz. Ancak kendinizi korumak için atabileceğiniz adımlar var.
+security-recommendation-email-step-three = Şüpheli e-postaları spam olarak işaretleyip göndereni engelleyin
+security-recommendation-email-step-four = E-postalarınızı korumak için <link_to_info>{ -brand-relay } e-posta maskelerini</link_to_info> kullanabilirsiniz
 
 # IP security recommendation
 
+security-recommendation-ip-title = Daha fazla gizlilik için VPN kullanabilirsiniz
+# $num_breaches is the number of breaches where the IP address was found.
+security-recommendation-ip-summary =
+    { $num_breaches ->
+        [one] IP adresiniz { $num_breaches } veri ihlalinde ele geçirildi:
+       *[other] IP adresiniz { $num_breaches } veri ihlalinde ele geçirildi:
+    }
 
 # Leaked Passwords
 
 leaked-passwords-steps-title = İşte yapmanız gerekenler
+leaked-passwords-steps-subtitle = Bunun için hesabınıza erişim gerekiyor, o yüzden kendiniz düzeltmeniz gerekecek.
 leaked-passwords-mark-as-fixed = Düzeltildi olarak işaretle
 leaked-passwords-skip = Şimdilik geç
 # Variables
@@ -110,3 +142,4 @@ leaked-passwords-estimated-time =
 
 leaked-security-questions-title = Güvenlik sorularınız ele geçirilmiş
 leaked-security-questions-steps-title = İşte yapmanız gerekenler
+leaked-security-questions-steps-subtitle = Bunun için hesabınıza erişim gerekiyor, o yüzden kendiniz düzeltmeniz gerekecek.

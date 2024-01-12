@@ -40,6 +40,8 @@ modal-active-number-of-exposures-part-one-all =
     }
 modal-active-number-of-exposures-part-two = Ad esempio, se si hanno 10 esposizioni del numero di telefono, ciò potrebbe significare che un numero di telefono è esposto su 10 siti diversi, oppure potrebbe significare che 2 numeri di telefono diversi sono stati esposti in 5 siti diversi.
 modal-active-number-of-exposures-part-three-all = Una volta risolte, verranno aggiunti al numero totale di esposizioni risolte nella pagina Risolte.
+modal-fixed-number-of-exposures-title = Informazioni sul numero di esposizioni risolte
+modal-fixed-number-of-exposures-all = Questo grafico include il numero totale di violazioni di dati che sono state risolte per tutti gli indirizzi email che stai attualmente monitorando. Una volta che le esposizioni sono contrassegnate come risolte, verranno aggiunte al totale qui.
 modal-cta-ok = OK
 modal-open-alt = Apri
 modal-close-alt = Chiudi
@@ -97,6 +99,8 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] Rimangono ancora { $exposures_unresolved_num } esposizioni da risolvere. Continua e proteggiti. Ti guideremo passo dopo passo.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Continuiamo
+dashboard-top-banner-protect-your-data-title = Proteggiamo i tuoi dati
+dashboard-top-banner-protect-your-data-cta = Risolviamo il problema
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.

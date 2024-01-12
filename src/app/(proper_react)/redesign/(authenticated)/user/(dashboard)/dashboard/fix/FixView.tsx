@@ -17,6 +17,7 @@ import {
   StepDeterminationData,
   StepLink,
 } from "../../../../../../../functions/server/getRelevantGuidedSteps";
+import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 
 export type FixViewProps = {
   children: ReactNode;
@@ -34,6 +35,7 @@ export type FixViewProps = {
 
 export const FixView = (props: FixViewProps) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const isResolutionLayout = [
     "high-risk-data-breach",
     "leaked-passwords",
@@ -46,6 +48,11 @@ export const FixView = (props: FixViewProps) => {
         href="/redesign/user/dashboard"
         className={styles.navClose}
         aria-label={l10n.getString("guided-resolution-flow-exit")}
+        onClick={() => {
+          recordTelemetry("button", "click", {
+            button_id: "exited_guided_experience",
+          });
+        }}
       >
         <Image alt="" src={ImageClose} />
       </Link>
@@ -77,6 +84,11 @@ export const FixView = (props: FixViewProps) => {
             className={`${styles.navArrow} ${styles.navArrowNext}`}
             href={props.nextStep.href}
             aria-label={l10n.getString("guided-resolution-flow-next-arrow")}
+            onClick={() => {
+              recordTelemetry("button", "click", {
+                button_id: "next_arrow",
+              });
+            }}
           >
             <Image alt="" src={ImageArrowRight} />
           </Link>

@@ -8,7 +8,7 @@ Telemetry code is generated from `metrics.yml` by running `npm run build-glean`,
 
 ## Debugging
 
-Make sure you are testing in a browser that does not set DoNotTrack.
+Make sure you are testing in a browser that does not set DoNotTrack, and that the value of `APP_ENV` in your `.env` file is `local`.
 
 ### Glean
 

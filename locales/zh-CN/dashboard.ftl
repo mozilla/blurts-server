@@ -32,6 +32,8 @@ modal-active-number-of-exposures-title = 关于正在暴露的数量
 modal-active-number-of-exposures-part-one-all = 此图表展示了我们在您当前监控的 { $limit } 个邮箱地址的所有数据外泄事件中，检测到的每类数据的暴露总次数。
 modal-active-number-of-exposures-part-two = 举例来说，如果您的电话号码暴露了 10 次，则可能代表 1 个电话号码在 10 个不同网站上被暴露，也可能代表 2 个电话号码 5 个不同网站上被暴露。
 modal-active-number-of-exposures-part-three-all = 问题解决后，就会添加到”已处理“页面上已处理的暴露总数中。
+modal-fixed-number-of-exposures-title = 关于已处理暴露的数量
+modal-fixed-number-of-exposures-all = 此图表展示了您当前监控的所有邮箱地址中，已处理的数据外泄事件总数。暴露被标记为已处理后，就会添加到此处的总数中。
 modal-cta-ok = 确定
 modal-open-alt = 打开
 modal-close-alt = 关闭
@@ -77,6 +79,8 @@ dashboard-top-banner-lets-keep-protecting-title = 让我们继续保护您的数
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
 dashboard-top-banner-lets-keep-protecting-description = 您还有 { $exposures_unresolved_num } 次暴露未处理。继续处理，保护自己。我们会一步步指导您操作。
 dashboard-top-banner-lets-keep-protecting-cta = 继续处理
+dashboard-top-banner-protect-your-data-title = 一起保护您的数据
+dashboard-top-banner-protect-your-data-cta = 一起处理此暴露
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.

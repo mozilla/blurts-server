@@ -822,3 +822,9 @@ breach-detail-cta-signup = Kiểm tra rò rỉ
 floating-banner-text = Tăng cường bảo mật trực tuyến của bạn với tin tức, mẹo và thông tin cập nhật từ { -brand-Mozilla }.
 floating-banner-link-label = Đăng ký
 floating-banner-dismiss-button-label = Không, cảm ơn
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Tên, giao diện mới và thậm chí nhiều hơn thế để <b>lấy lại quyền riêng tư cho bạn</b>.
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Bỏ qua

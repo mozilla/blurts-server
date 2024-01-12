@@ -170,7 +170,6 @@ export async function POST(request: NextRequest) {
       `could not find subscriber with fxa user id: ${fxaUserId}`,
     );
     logger.error("fxaRpEvents", e);
-    captureException(e);
     return NextResponse.json({ success: true, message: "OK" }, { status: 200 });
   }
 

@@ -35,6 +35,8 @@ modal-active-number-of-exposures-title = 您被外洩的資料數量
 modal-active-number-of-exposures-part-one-all = 此圖表顯示了我們發現到，您目前監控的 { $limit } 組電子郵件地址的各類外洩資料的合計次數。
 modal-active-number-of-exposures-part-two = 舉例來說：假設您的電話號碼外洩 10 次，可能代表的是曾經在 10 個網站被外洩，或是有 2 組不同號碼各自在 5 個網站中被外洩。
 modal-active-number-of-exposures-part-three-all = 事件處理完後，就會加入到「已處理」頁面中的已處理事件總數。
+modal-fixed-number-of-exposures-title = 關於您已處理過的資料曝光數
+modal-fixed-number-of-exposures-all = 此圖表包含您目前監控的所有信箱當中已修正的資料外洩事件總數。曝光次數被標示為「固定」後就會在此累計。
 modal-cta-ok = 確定
 modal-open-alt = 開啟
 modal-close-alt = 關閉
@@ -90,6 +92,8 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] 您還有 { $exposures_unresolved_num } 筆曝光資料需要處理。請繼續採取行動，我們將逐步協助。
     }
 dashboard-top-banner-lets-keep-protecting-cta = 讓我們前進下一步
+dashboard-top-banner-protect-your-data-title = 一起保護您的資料
+dashboard-top-banner-protect-your-data-cta = 讓我們一起修正它
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.

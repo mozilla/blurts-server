@@ -33,6 +33,7 @@ landing-all-data-breach-next-steps-qn = Io ha justo trovate que io es in un viol
 landing-all-data-breach-next-steps-ans = Visita { -brand-mozilla-monitor } pro apprender que facer post un violation de datos e obtener passos guidate pro resolver expositiones de tu informationes personal. Le piratas informatic conta sur gente que reusa le contrasignos, assi il es importante crear forte, unic contrasignos pro tote tu contos. Mantene tu contrasignos in un position secur al qual solo tu ha accesso; isto pote esser le mesme placia ubi tu immagazina importante documentos o un gestor de contrasignos.
 landing-all-data-breach-info-qn = Qual informationes es exponite in le violationes de datos?
 landing-all-data-breach-info-ans = Non tote le violationes expone le mesme informationes. Illo justo depende de lo que le piratas informatic pote acceder. Multe violationes de datos expone adresses email e contrasignos.Alteres expone datos plus sensibile tal como numeros de carta de credito, numeros de PIN, e numeros de securitate social.
+landing-all-close-faq-alt = Clauder
 
 # Social proof
 
