@@ -101,7 +101,7 @@ export const ProgressCard = (props: Props) => {
         </div>
 
         {/* Auto-removed */}
-        {props.isEligibleForPremium && (
+        {(props.isEligibleForPremium || props.isPremiumUser) && (
           <div
             className={`${styles.progressItem} ${
               !props.isPremiumUser && styles.greyedOut

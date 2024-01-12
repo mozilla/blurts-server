@@ -29,6 +29,7 @@ landing-all-data-breach-next-steps-qn = Acabei de descobrir que fui vítima de u
 landing-all-data-breach-next-steps-ans = Visite o { -brand-mozilla-monitor } para saber o que fazer após um vazamento de dados e receber instruções para resolver a exposição de suas informações pessoais. Os hackers contam com reuso de senhas, por isso é importante criar senhas fortes e exclusivas em todas as suas contas. Guarde suas senhas em um local seguro, que somente você tenha acesso. Pode ser o mesmo local onde você guarda documentos importantes, ou um gerenciador de senhas.
 landing-all-data-breach-info-qn = Que informações são expostas em vazamentos de dados?
 landing-all-data-breach-info-ans = Nem todos os vazamentos expõem as mesmas informações. Depende do que os hackers conseguem acessar. Muitos vazamentos de dados expõem endereços de email e senhas. Outros expõem informações mais sensíveis, como números de cartões de crédito, números de PIN e números de previdência social.
+landing-all-close-faq-alt = Fechar
 
 # Social proof
 

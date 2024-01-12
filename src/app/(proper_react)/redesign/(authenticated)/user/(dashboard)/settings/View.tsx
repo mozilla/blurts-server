@@ -18,6 +18,7 @@ export type Props = {
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
   fxaSettingsUrl: string;
+  fxaSubscriptionsUrl: string;
   emailAddresses: EmailRow[];
   breachCountByEmailAddress: Record<string, number>;
 };
@@ -75,6 +76,23 @@ export const SettingsView = (props: Props) => {
                 : "affected"
             }
           />
+          <hr />
+          <div className={styles.cancelSection}>
+            <h3>{l10n.getString("settings-cancel-plus-title")}</h3>
+            <p>{l10n.getString("settings-cancel-plus-details")}</p>
+            <a
+              href={props.fxaSubscriptionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {l10n.getString("settings-cancel-plus-link-label")}
+              <OpenInNew
+                alt={l10n.getString("open-in-new-tab-alt")}
+                width="13"
+                height="13"
+              />
+            </a>
+          </div>
           <hr />
           <div className={styles.deactivateSection}>
             <h3>{l10n.getString("settings-deactivate-account-title")}</h3>
