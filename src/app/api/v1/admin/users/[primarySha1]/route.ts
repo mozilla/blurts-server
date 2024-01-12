@@ -10,9 +10,8 @@ import {
   deleteOnerepProfileId,
   deleteSubscriber,
   getOnerepProfileId,
-  getSubscriberByFxaUid,
+  getSubscriberByEmail,
   getSubscribersByHashes,
-  updateFxAProfileData,
 } from "../../../../../../db/tables/subscribers";
 import {
   activateProfile,
@@ -24,8 +23,7 @@ import {
   deleteScanResultsForProfile,
   deleteScansForProfile,
 } from "../../../../../../db/tables/onerep_scans";
-
-const MONITOR_PREMIUM_CAPABILITY = "monitor";
+import { changeSubscription } from "../../../../../functions/server/changeSubscription";
 
 /**
  * Look up a subscriber based on SHA1 hash of their email address.
@@ -110,7 +108,10 @@ export async function PUT(
       const body = await req.json();
       const actions = body.actions;
 
-      const subscriber = (await getSubscribersByHashes([primarySha1]))[0];
+      const subscriberRow = (await getSubscribersByHashes([primarySha1]))[0];
+      const subscriber = await getSubscriberByEmail(
+        subscriberRow.primary_email,
+      );
 
       const result = await getOnerepProfileId(subscriber.id);
       const onerepProfileId = result?.[0]?.["onerep_profile_id"] as number;
@@ -123,13 +124,7 @@ export async function PUT(
       for (const action of actions) {
         switch (action) {
           case "subscribe": {
-            const currentFxAProfile =
-              subscriber?.fxa_profile_json as FxaProfile;
-            currentFxAProfile.subscriptions =
-              currentFxAProfile.subscriptions?.filter(
-                (sub) => sub !== MONITOR_PREMIUM_CAPABILITY,
-              );
-            await updateFxAProfileData(sub, JSON.stringify(currentFxAProfile));
+            await changeSubscription(subscriber, true);
 
             // activate and opt out profiles
             await activateProfile(onerepProfileId);
@@ -141,14 +136,7 @@ export async function PUT(
             break;
           }
           case "unsubscribe": {
-            const sub = await getSubscriberByFxaUid(subscriber.fxa_uid!);
-            const currentFxAProfile = sub.fxa_profile_json as FxaProfile;
-            // update fxa profile data to match subscription status
-            currentFxAProfile.subscriptions =
-              currentFxAProfile.subscriptions?.filter(
-                (sub) => sub !== MONITOR_PREMIUM_CAPABILITY,
-              );
-            await updateFxAProfileData(sub, JSON.stringify(currentFxAProfile));
+            await changeSubscription(subscriber, false);
 
             await deactivateProfile(onerepProfileId);
             logger.info("force_user_unsubscribe", {

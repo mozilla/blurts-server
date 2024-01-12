@@ -23,6 +23,7 @@ import {
 import { bearerToken } from "../../utils/auth";
 import { revokeOAuthTokens } from "../../../../utils/fxa";
 import appConstants from "../../../../appConstants";
+import { changeSubscription } from "../../../functions/server/changeSubscription.js";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -240,9 +241,6 @@ export async function POST(request: NextRequest) {
           updatedSubscriptionFromEvent,
         });
 
-        // get current profiledata
-        const currentFxAProfile = subscriber?.fxa_profile_json || {};
-
         logger.info("fxa_profile_subscription", {
           subscriber_id: subscriber.id,
         });
@@ -282,6 +280,10 @@ export async function POST(request: NextRequest) {
             // activate and opt out profiles
             await activateProfile(oneRepProfileId);
             await optoutProfile(oneRepProfileId);
+
+            // update fxa profile data to match subscription status
+            await changeSubscription(subscriber, true);
+
             logger.info("activated_onerep_profile", {
               subscriber_id: subscriber.id,
             });
@@ -293,20 +295,14 @@ export async function POST(request: NextRequest) {
           ) {
             // deactivation stops opt out process
             await deactivateProfile(oneRepProfileId);
+
+            // update fxa profile data to match subscription status
+            await changeSubscription(subscriber, false);
+
             logger.info("deactivated_onerep_profile", {
               subscriber_id: subscriber.id,
             });
           }
-
-          // update fxa profile data to match subscription status
-          currentFxAProfile.subscriptions =
-            currentFxAProfile.subscriptions?.filter(
-              (sub: string) => sub !== MONITOR_PREMIUM_CAPABILITY,
-            );
-          await updateFxAProfileData(
-            currentFxAProfile,
-            JSON.stringify(currentFxAProfile),
-          );
         } catch (e) {
           captureException(
             new Error(`${(e as Error).message}\n
