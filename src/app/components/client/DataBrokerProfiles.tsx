@@ -12,6 +12,7 @@ import { useState } from "react";
 import { OnerepScanResultRow } from "knex/types/tables";
 import { getDataBrokerName } from "../../functions/universal/dataBrokerNames";
 import { OpenInNew } from "../server/Icons";
+import { useTelemetry } from "../../hooks/useTelemetry";
 
 export type Props = {
   data: OnerepScanResultRow[];
@@ -19,6 +20,7 @@ export type Props = {
 
 export const DataBrokerProfiles = (props: Props) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const [showAllProfiles, setShowAllProfiles] = useState(false);
 
   return (
@@ -38,7 +40,12 @@ export const DataBrokerProfiles = (props: Props) => {
         className={`${styles.viewProfilesToggle} ${
           showAllProfiles ? styles.active : ""
         }`}
-        onClick={() => setShowAllProfiles(!showAllProfiles)}
+        onClick={() => {
+          setShowAllProfiles(!showAllProfiles);
+          recordTelemetry("button", "click", {
+            button_id: "see_more_profiles",
+          });
+        }}
       >
         <span>
           {showAllProfiles
@@ -61,14 +68,22 @@ export type DataBrokerProfileCardProps = {
 
 export const DataBrokerProfileCard = (props: DataBrokerProfileCardProps) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
 
   return (
     <div className={styles.dataBrokerProfileCard}>
       <span className={styles.dataBrokerName}>
         {getDataBrokerName(props.data.data_broker)}
       </span>
-
-      <a href={props.data.link} target="_blank">
+      <a
+        href={props.data.link}
+        target="_blank"
+        onClick={() => {
+          recordTelemetry("link", "click", {
+            button_id: `viewed_${props.data.data_broker}`,
+          });
+        }}
+      >
         {l10n.getString(
           "fix-flow-data-broker-profiles-view-data-broker-profiles-view-profile",
         )}

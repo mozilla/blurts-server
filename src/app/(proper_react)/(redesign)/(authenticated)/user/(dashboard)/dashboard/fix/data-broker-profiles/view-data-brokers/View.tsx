@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+"use client";
+
 import styles from "../dataBrokerProfiles.module.scss";
 import { DataBrokerProfiles } from "../../../../../../../../../components/client/DataBrokerProfiles";
 import { AboutBrokersIcon } from "./AboutBrokersIcon";
@@ -12,6 +14,7 @@ import {
   getNextGuidedStep,
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { ExtendedReactLocalization } from "../../../../../../../../../hooks/l10n";
+import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 
 export type Props = {
   data: StepDeterminationData;
@@ -21,6 +24,7 @@ export type Props = {
 
 export const ViewDataBrokersView = (props: Props) => {
   const l10n = props.l10n;
+  const recordTelemetry = useTelemetry();
 
   const countOfDataBrokerProfiles =
     props.data.latestScanData?.results.length ?? 0;
