@@ -44,7 +44,7 @@ user-add-duplicate-email = Mae'r e-bost hwn eisoes wedi'i ychwanegu at { -produc
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Ewch i'ch { $preferencesLink } i wirio statws { $userEmail }.
-user-add-verification-email-just-sent = Nid oes modd anfon yr e-bost dilysu arall hwn mor yn gyflym. Ceisiwch eto yn nes ymlaen.
+user-add-verification-email-just-sent = Nid oes modd anfon yr e-bost dilysu arall hwn mor fuan. Ceisiwch eto yn nes ymlaen.
 user-add-unknown-error = Aeth rhywbeth o'i le wrth ychwanegu cyfeiriad e-bost arall. Ceisiwch eto yn nes ymlaen.
 error-headline = Gwall
 user-verify-token-error = Mae angen tocyn dilysu.
@@ -764,7 +764,7 @@ open-in-new-tab-alt = Agorwch y ddolen mewn tab newydd
 
 ## Search Engine Optimization
 
-meta-desc-2 = Darganfyddwch od ydych chi wedi bod yn rhan o dor-data gyda { -brand-fx-monitor }. Byddwn yn eich helpu i wybod beth i'w wneud nesaf ac yn monitro am unrhyw dor-data newydd yn barhaus.
+meta-desc-2 = Darganfyddwch os ydych wedi bod yn rhan o dor-data gyda { -brand-fx-monitor }. Byddwn yn eich helpu i wybod beth i'w wneud nesaf ac yn monitro am unrhyw dor-data newydd ar ôl hynny.
 
 ## Header
 
@@ -844,7 +844,7 @@ error-page-error-other-copy = Ceisiwch eto neu dewch yn ôl yn nes ymlaen
 
 ## Breach overview page
 
-all-breaches-headline-2 = Pob tor-data canfuwyd gan { -brand-fx-monitor }
+all-breaches-headline-2 = Pob tor-data wedi'i ganfod gan { -brand-fx-monitor }
 all-breaches-lead = Rydym yn monitro'r holl achosion hysbys o dor-data i ganfod a gafodd eich manylion personol eu peryglu. Dyma restr lawn o’r holl dor-data sydd wedi’u hadrodd ers 2007.
 search-breaches = Chwilio am Dor-data
 # the kind of user data exposed to hackers in data breach.
@@ -861,3 +861,9 @@ breach-detail-cta-signup = Gwiriwch am dor-data
 floating-banner-text = Rhowch hwb i'ch diogelwch ar-lein gyda newyddion, awgrymiadau a diweddariadau gan { -brand-Mozilla }.
 floating-banner-link-label = Ymuno
 floating-banner-dismiss-button-label = Dim diolch
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Enw, golwg newydd a rhagor o ffyrdd i <b>adennill eich preifatrwydd</b>.
+banner-monitor-rebrand-dismiss-button-label = Iawn
+banner-monitor-rebrand-dismiss-button-tooltip = Cau

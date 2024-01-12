@@ -40,6 +40,7 @@ modal-active-number-of-exposures-part-one-all =
     }
 modal-active-number-of-exposures-part-two = Por exemplo, se você tiver 10 exposições do seu número de celular, pode significar que um número de celular foi exposto em 10 sites diferentes ou pode significar que 2 números de celular foram expostos em 5 sites diferentes.
 modal-active-number-of-exposures-part-three-all = Depois de resolvidas, elas são adicionadas ao número total de exposições resolvidas na página 'Resolvido'.
+modal-fixed-number-of-exposures-title = Informações sobre seu número de exposições resolvidas
 modal-cta-ok = OK
 modal-open-alt = Abrir
 modal-close-alt = Fechar
@@ -97,6 +98,8 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] Você ainda tem { $exposures_unresolved_num } exposições para resolver. Continue e proteja-se. Orientamos passo a passo.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Vamos continuar
+dashboard-top-banner-protect-your-data-title = Vamos proteger seus dados
+dashboard-top-banner-protect-your-data-cta = Vamos resolver
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.

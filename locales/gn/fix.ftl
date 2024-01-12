@@ -22,6 +22,8 @@ fix-flow-celebration-next-dashboard-label = Eho ne mba’erupa rendápe
 ## High-risk flow
 
 fix-flow-celebration-high-risk-title = ¡Emoĩporãma nde jehechauka ivaikuaavéva!
+fix-flow-celebration-high-risk-description-in-progress = Ejapóvo ko tembiapo erekuaa hetaha, hákatu ejapomanteva’erã eime hag̃ua tekorosãme. Emba’apo porãmeme ehóvo.
+fix-flow-celebration-high-risk-description-done = Ejapóvo ko tembiapo erekuaa hetaha, hákatu ejapomanteva’erã eime hag̃ua tekorosãme.
 fix-flow-celebration-high-risk-description-next-passwords = Ko’ág̃a ñamoĩporãta ne ñe’ẽñemi ivaikuaáva.
 fix-flow-celebration-high-risk-description-next-security-questions = Ko’ág̃a ñamoĩporãta umi porandu tekorosãrã ivaikuaáva.
 
@@ -38,6 +40,14 @@ fix-flow-celebration-security-recommendations-title = ¡Emyanyhẽmapa opaite ne
 # High Risk Data Breaches
 
 high-risk-breach-heading = Kóva pe rejapova’erã
+high-risk-breach-subheading = Kóva oikotevẽ ne maranduetépe jeike, ikatuhápe emoĩporã nde poite rupive.
+# Variables
+# $num_breaches is the number of breaches where the high risk data was found.
+high-risk-breach-summary =
+    { $num_breaches ->
+        [one] Ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
+       *[other] Ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
+    }
 # Variables
 # $breach_name is the name of the breach where the high risk data was found.
 # $breach_date is the date when the breach occurred.
@@ -45,6 +55,14 @@ high-risk-breach-heading = Kóva pe rejapova’erã
 high-risk-breach-name-and-date = { $breach_name } <breach_date> { $breach_date }</breach_date>-pe
 high-risk-breach-mark-as-fixed = Embokurusu oĩporãmaha
 high-risk-breach-skip = Ehasa ko’ág̃a
+# Variables:
+# $estimated_time is the estimated time it would take for a user to complete breach resolution steps. It not be singular, and the + is meant as "or more".
+# An example of this string is Your estimated time: 15+ minutes.
+high-risk-breach-estimated-time =
+    { $estimated_time ->
+        [one] Mboy aravópa: hetave { $estimated_time } aravo’ígui
+       *[other] Mboy aravópa: hetave { $estimated_time } aravo’ígui
+    }
 
 # Credit Card Breaches
 
@@ -56,23 +74,27 @@ high-risk-breach-credit-card-step-three = Ehechajey ne mba’ete oĩre tepyme’
 # Bank Account Breaches
 
 high-risk-breach-bank-account-title = Nde mba’ete banco pegua ojehechakuaa
+high-risk-breach-bank-account-step-one = Emomarandu pya’eterei ne banco-pe ne mba’ete papapy ikatuháre ojeporu.
 high-risk-breach-bank-account-step-two = Emoambue ne mba’ete papapy
 high-risk-breach-bank-account-step-three = Ehechajey ne mba’ete oĩre tepyme’ẽrã nemba’e’ỹva.
 
 # Social Security Number Breaches
 
 high-risk-breach-social-security-title = Nde seguridad social papapy ojehechakuaa
+high-risk-breach-social-security-step-one = Eñemo’ã <link_to_info>embohekóvo kyhyjerã ani ejehode térã ejokóvo viru jeporu.</link_to_info>
 high-risk-breach-social-security-step-two = <link_to_info>Ehecha nde deveha marandu’i</link_to_info> eikuaa hag̃ua oĩpa emonei’ỹva.
 
 # Social Security Number Modal
 
 ssn-modal-title = Ñemonge rehegua ha nde jedeverã jejoko
+ssn-modal-description-fraud-part-two = Emboheko hag̃ua, eñe’ẽ peteĩva umi mbohapy oporombodevéva ndive. Natekotevẽi eñe’ẽ mbohapyvéva ndive.
 ssn-modal-learn-more = Eikuaave ñemonge rehegua ha nde jedeverã jejoko
 ssn-modal-ok = MONEĨ
 
 # PIN Breaches
 
 high-risk-breach-pin-title = Nde PIN ojehechakuaákuri
+high-risk-breach-pin-step-one = Emomarandu pya’e ne banco-pe ne mba’ete papapy ojeporukuaátarõ.
 high-risk-breach-pin-step-two = Emoambue ne PIN oimeraẽva tenda eiporuhaguépe.
 high-risk-breach-pin-step-three = Ehechajey ne mba’ete oĩre tepyme’ẽrã nemba’e’ỹva.
 
@@ -95,17 +117,36 @@ security-recommendation-steps-cta-label = ¡Aikũmby!
 # Phone security recommendation
 
 security-recommendation-phone-title = Emo’ã ne pumbyry papapy
+# $num_breaches is the number of breaches where the phone number was found.
+security-recommendation-phone-summary =
+    { $num_breaches ->
+        [one] Ne pumbyry papapy ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
+       *[other] Ne pumbyry papapy ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
+    }
 security-recommendation-phone-step-one = Ejoko spam papapy emboyke hag̃ua ñehenói oiko’ỹva
 
 # Email security recommendation
 
 security-recommendation-email-title = Emo’ã ñanduti veve kundaharape
+# $num_breaches is the number of breaches where the email address was found.
+security-recommendation-email-summary =
+    { $num_breaches ->
+        [one] Ne ñanduti veve kundaharape ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
+       *[other] Ne ñanduti veve kundaharape ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
+    }
+security-recommendation-email-description = Rombyasyeterei, ndaikatumo’ãi emyatyrõ ko apañuãi. Hákatu eku’ekuaa eñemo’ã hag̃ua.
 security-recommendation-email-step-two = Ema’ẽke <link_to_info>phishing jehode</link_to_info> rehe
 security-recommendation-email-step-three = Emongurusu ñanduti veve ikatúva spam ha emboyke imbouhára
 
 # IP security recommendation
 
 security-recommendation-ip-title = Eiporu VPN nde rekoñemiverã
+# $num_breaches is the number of breaches where the IP address was found.
+security-recommendation-ip-summary =
+    { $num_breaches ->
+        [one] Ne IP kundaharenda ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
+       *[other] Ne IP kundaharenda ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
+    }
 
 # Leaked Passwords
 
@@ -116,6 +157,11 @@ leaked-passwords-title = Ne ñe’ẽñemi { $breach_name } pegua ojehechakuaa
 # $breach_date is the date when the breach occurred.
 leaked-passwords-summary = Osẽ peteĩ mba’ekuaarã ñembogua { $breach_date }.
 leaked-passwords-steps-title = Kóva pe rejapova’erã
+leaked-passwords-steps-subtitle = Kóva oikotevẽ ne mba’etépe jeike, ikatuhápe emoĩporã nde poite rupive.
+# Variables
+# $breach_name is the name of the breach where the leaked password was found.
+# $emails_affected are the emails associated with the breach.
+leaked-passwords-step-one = Emoambue ne ñe’ẽñemi <b>{ $emails_affected }</b> peg̃uarã <link_to_breach_site>{ $breach_name }</link_to_breach_site>-pe.
 leaked-passwords-step-two = Emoambue oimeraẽva tenda eiporuhaguépe.
 leaked-passwords-mark-as-fixed = Embokurusu oĩporãmaha
 leaked-passwords-skip = Ehasa ko’ág̃a

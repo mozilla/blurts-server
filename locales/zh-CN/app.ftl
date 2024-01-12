@@ -733,3 +733,9 @@ breach-detail-cta-signup = 检查是否有外泄事件
 floating-banner-text = 通过来自 { -brand-Mozilla } 的新闻、提示和更新提高您的网络浏览安全。
 floating-banner-link-label = 注册
 floating-banner-dismiss-button-label = 不了，谢谢
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>：新名字，新界面，带来<b>取回隐私</b>新招式。
+banner-monitor-rebrand-dismiss-button-label = 确定
+banner-monitor-rebrand-dismiss-button-tooltip = 知道了
