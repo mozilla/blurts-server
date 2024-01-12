@@ -458,10 +458,10 @@ manage-all-emails = Administra todas las direcciones de correo electrónico en {
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single
 # email address.
-breach-alert-notifications = Notificaciones de alerta de incumplimiento
+breach-alert-notifications = Notificaciones de alerta de filtración
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date.
-breach-added-label = Incumplimiento añadido:
+breach-added-label = Filtración agregada:
 how-hackers-work-desc = Protejé tus contraseñas de los delincuentes cibernéticos, ya que eso es lo que más les importa.
 what-to-do-after-breach-desc = Bloqueá tus cuentas para mantener tu información fuera de las manos equivocadas.
 create-strong-passwords-desc = Hacé que tus contraseñas sean fuertes, seguras y difíciles de adivinar.
@@ -802,6 +802,6 @@ floating-banner-dismiss-button-label = No, gracias
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
-banner-monitor-rebrand-text = <b> { -brand-mozilla-monitor } </b>: Nuevo nombre, apariencia e incluso más formas de <b> recuperar tu privacidad </b>.
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nuevo nombre, apariencia e incluso más formas de <b>recuperar tu privacidad</b>.
 banner-monitor-rebrand-dismiss-button-label = Aceptar
 banner-monitor-rebrand-dismiss-button-tooltip = Descartar

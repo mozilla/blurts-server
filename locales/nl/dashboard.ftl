@@ -40,6 +40,8 @@ modal-active-number-of-exposures-part-one-all =
     }
 modal-active-number-of-exposures-part-two = Als u bijvoorbeeld 10 lekken van uw telefoonnummer hebt, kan dat betekenen dat één telefoonnummer op 10 verschillende websites wordt gelekt, of het kan betekenen dat 2 verschillende telefoonnummers op 5 verschillende websites zijn gelekt.
 modal-active-number-of-exposures-part-three-all = Zodra ze zijn opgelost, worden ze toegevoegd aan uw totale aantal opgeloste lekken op de pagina Opgelost.
+modal-fixed-number-of-exposures-title = Over uw aantal opgeloste lekken
+modal-fixed-number-of-exposures-all = Deze grafiek toont het totale aantal opgeloste datalekken voor alle e-mailadressen die u momenteel monitort. Zodra lekken als opgelost zijn gemarkeerd, worden ze hier aan het totaal toegevoegd.
 modal-cta-ok = OK
 modal-open-alt = Openen
 modal-close-alt = Sluiten
@@ -98,6 +100,7 @@ dashboard-top-banner-lets-keep-protecting-description =
     }
 dashboard-top-banner-lets-keep-protecting-cta = Laten we doorgaan
 dashboard-top-banner-protect-your-data-title = Laten we uw gegevens beschermen
+dashboard-top-banner-protect-your-data-cta = Laten we het oplossen
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.

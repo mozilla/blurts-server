@@ -675,6 +675,7 @@ ad-unit-6-before-you-complete = Para se të plotësoni regjistrimin tuaj të rad
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Llogari Mozilla
+open-in-new-tab-alt = Hape lidhjen në skedë të re
 
 ## Search Engine Optimization
 
@@ -696,6 +697,9 @@ site-nav-help-link = Ndihmë dhe Asistencë
 site-nav-ad-callout = Provoni mjete sigurie të tjera tonat:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+main-nav-label = Lëvizje
+main-nav-link-home-label = Kreu
+main-nav-link-dashboard-label = Pult
 main-nav-link-settings-label = Rregullime
 main-nav-link-faq-label = PBR
 main-nav-link-faq-tooltip = Pyetje të bëra rëndom
@@ -720,6 +724,8 @@ user-menu-trigger-label = Hap menu përdoruesi
 user-menu-trigger-tooltip = Profil
 user-menu-manage-fxa-label = Administroni { -brand-mozilla-account } tuaj
 user-menu-settings-label = Rregullime
+user-menu-settings-tooltip = Formësoni { -brand-mozilla-monitor }
+user-menu-help-label = Ndihmë dhe asistencë
 
 ## Footer
 
@@ -760,3 +766,6 @@ breach-detail-cta-signup = Kontrolloni për cenime
 floating-banner-text = Fuziqoni sigurinë tuaj internetore, përmes lajmesh, ndihmëzash dhe përditësimesh nga { -brand-Mozilla }.
 floating-banner-link-label = Regjistrohuni
 floating-banner-dismiss-button-label = Jo, faleminderit
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+

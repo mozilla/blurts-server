@@ -27,6 +27,7 @@ landing-all-faq-see-all = Ehechapa FAQs
 landing-all-data-breach-definition-qn = Mba’épa pe mba’ekuaarã ñembyai
 landing-all-data-breach-next-steps-qn = Ajuhu ramoite peteĩ mba’ekuaarã ñembyai. ¿Mba’e ajapokuaa?
 landing-all-data-breach-info-qn = Mba’e marandúpa ojehecha mba’ekuaarã ñemboguápe
+landing-all-close-faq-alt = Mboty
 
 # Social proof
 

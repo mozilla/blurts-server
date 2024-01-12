@@ -819,4 +819,4 @@ floating-banner-dismiss-button-label = Нет, спасибо
 
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Новое имя, внешний вид и ещё больше способов <b>восстановить вашу приватность</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
-banner-monitor-rebrand-dismiss-button-tooltip = Убрать
+banner-monitor-rebrand-dismiss-button-tooltip = Скрыть
