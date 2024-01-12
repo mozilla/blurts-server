@@ -32,7 +32,6 @@ export default async function Page() {
   const scanLimitReached =
     typeof oneRepActivations === "undefined" ||
     oneRepActivations > monthlySubscribersQuota;
-
   return (
     <View
       eligibleForPremium={eligibleForPremium}

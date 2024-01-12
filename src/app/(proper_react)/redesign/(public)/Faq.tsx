@@ -68,9 +68,15 @@ export const FaqSection = ({
   const [expandedQuestion, setExpandedQuestion] = useState<string | null>(null);
 
   const handleExpandAnswer = (question: string) => {
-    setExpandedQuestion((prevQuestion) =>
-      prevQuestion === question ? null : question,
-    );
+    setExpandedQuestion((prevQuestion) => {
+      if (prevQuestion === question) {
+        return null;
+      }
+      recordTelemetry("expand", "click", {
+        button_id: `expand_faq_${question}`,
+      });
+      return question;
+    });
   };
 
   return (
