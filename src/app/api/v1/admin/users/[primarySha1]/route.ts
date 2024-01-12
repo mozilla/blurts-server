@@ -144,11 +144,8 @@ export async function PUT(
           case "unsubscribe": {
             const sub = await getSubscriberByFxaUid(subscriber.fxa_uid!);
             const currentFxAProfile = sub.fxa_profile_json as FxaProfile;
-            const subscriptions = new Set(currentFxAProfile.subscriptions);
-
-            subscriptions.delete(MONITOR_PREMIUM_CAPABILITY);
             // update fxa profile data to match subscription status
-            currentFxAProfile.subscriptions = Array.from(subscriptions);
+            currentFxAProfile.subscriptions = currentFxAProfile.subscriptions.filter(sub => sub !== MONITOR_PREMIUM_CAPABILITY);
             await updateFxAProfileData(sub, JSON.stringify(currentFxAProfile));
 
             await deactivateProfile(onerepProfileId);
