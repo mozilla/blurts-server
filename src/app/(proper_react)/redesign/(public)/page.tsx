@@ -3,6 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { headers } from "next/headers";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 import { getCountryCode } from "../../../functions/server/getCountryCode";
 import {
   isEligibleForPremium,
@@ -14,6 +16,10 @@ import { getL10n } from "../../../functions/server/l10n";
 import { View } from "./LandingView";
 
 export default async function Page() {
+  const session = await getServerSession();
+  if (typeof session?.user.email === "string") {
+    return redirect("/redesign/user/dashboard/");
+  }
   const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
   const countryCode = getCountryCode(headers());
   const eligibleForPremium = isEligibleForPremium(countryCode, enabledFlags);

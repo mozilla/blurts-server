@@ -15,6 +15,7 @@ import { useL10n } from "../../../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../../../components/client/dialog/Dialog";
 import { onAddEmail } from "./actions";
+import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 
 export const EmailAddressAdder = () => {
   const l10n = useL10n();
@@ -66,7 +67,7 @@ const EmailAddressAddForm = () => {
     <>
       <p>
         {l10n.getString("add-email-your-account-includes", {
-          total: process.env.NEXT_PUBLIC_MAX_NUM_ADDRESSES!,
+          total: CONST_MAX_NUM_ADDRESSES,
         })}
       </p>
       <form action={formAction} className={styles.newEmailAddressForm}>

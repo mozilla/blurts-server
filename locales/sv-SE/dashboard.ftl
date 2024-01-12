@@ -44,8 +44,8 @@ modal-active-number-of-exposures-part-one-all =
     }
 modal-active-number-of-exposures-part-two = Till exempel, om du har 10 exponeringar av ditt telefonnummer, kan det betyda att ett telefonnummer exponerats på 10 olika webbplatser eller så kan det betyda att 2 olika telefonnummer exponerades på 5 olika webbplatser.
 modal-active-number-of-exposures-part-three-all = När de är lösta läggs de till ditt totala antal lösta exponeringar på sidan Lösta.
-modal-fixed-number-of-exposures-title = Om ditt antal fasta exponeringar
-modal-fixed-number-of-exposures-all = Det här diagrammet innehåller det totala antalet dataintrång som har åtgärdats för alla e-postadresser du för närvarande övervakar. När exponeringar är markerade som fasta läggs de till den totala här.
+modal-fixed-number-of-exposures-title = Om ditt antal lösta exponeringar
+modal-fixed-number-of-exposures-all = Det här diagrammet innehåller det totala antalet dataintrång som har åtgärdats för alla e-postadresser du för närvarande övervakar. När exponeringar är markerade som lösta läggs de till den totala här.
 modal-cta-ok = OK
 modal-open-alt = Öppna
 modal-close-alt = Stäng
@@ -104,7 +104,7 @@ dashboard-top-banner-lets-keep-protecting-description =
     }
 dashboard-top-banner-lets-keep-protecting-cta = Låt oss fortsätta
 dashboard-top-banner-protect-your-data-title = Låt oss skydda din data
-dashboard-top-banner-protect-your-data-cta = Låt oss fixa det
+dashboard-top-banner-protect-your-data-cta = Låt oss lösa det
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.

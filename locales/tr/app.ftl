@@ -673,6 +673,7 @@ open-in-new-tab-alt = Bağlantıyı yeni sekmede aç
 
 ## Search Engine Optimization
 
+meta-desc-2 = { -brand-fx-monitor } ile verilerinizin çalınıp çalınmadığını öğrenin. Bundan sonra ne yapacağınızı anlamanıza yardımcı olacağız ve yeni ihlalleri sürekli olarak izleyeceğiz.
 
 ## Header
 
@@ -761,6 +762,7 @@ exposed-data = Ele geçirilen veriler:
 ## Public breach detail page
 
 find-out-if-2 = Bu ihlale karışıp karışmadığınızı öğrenin
+find-out-if-description = Bu ihlalde e-posta adresinizin ele geçirilip geçirilmediğini hızlıca görmenize ve bundan sonra ne yapacağınızı anlamanıza yardımcı olacağız.
 breach-detail-cta-signup = İhlalleri kontrol et
 
 ## Floating banner
@@ -768,3 +770,8 @@ breach-detail-cta-signup = İhlalleri kontrol et
 floating-banner-text = { -brand-Mozilla }’dan haberler ve ipuçlarıyla çevrimiçi güvenliğinizi artırın.
 floating-banner-link-label = Kaydol
 floating-banner-dismiss-button-label = Gerek yok
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-dismiss-button-label = Tamam
+banner-monitor-rebrand-dismiss-button-tooltip = Kapat

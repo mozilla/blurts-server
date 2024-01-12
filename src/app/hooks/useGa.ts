@@ -5,6 +5,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { CONST_GA4_MEASUREMENT_ID } from "../../constants";
 
 declare global {
   interface Window {
@@ -69,8 +70,7 @@ export const useGa = (): {
 
     if (!window.gtag) {
       /* c8 ignore next 2 */
-      const ga4MeasurementId =
-        process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID || "G-CXG8K4KW4P";
+      const ga4MeasurementId = CONST_GA4_MEASUREMENT_ID || "G-CXG8K4KW4P";
       initGa4({ ga4MeasurementId, debugMode });
     }
   }, [debugMode]);
