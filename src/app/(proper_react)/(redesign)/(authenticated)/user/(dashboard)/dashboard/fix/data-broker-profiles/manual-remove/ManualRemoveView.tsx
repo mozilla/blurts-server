@@ -167,13 +167,25 @@ export function ManualRemoveView(props: Props) {
         <div className={styles.buttonsWrapper}>
           <Button
             variant="primary"
+            onPress={() => {
+              recordTelemetry("ctaButton", "click", {
+                button_id: "manual_removal_upsell",
+              })}}
             href="/user/dashboard/fix/data-broker-profiles/automatic-remove"
           >
             {l10n.getString(
               "fix-flow-data-broker-profiles-manual-remove-button-remove-for-me",
             )}
           </Button>
-          <Button variant="secondary" href={stepAfterSkip.href}>
+          <Button
+            variant="secondary"
+            href={stepAfterSkip.href}
+            onPress={() => {
+              recordTelemetry("ctaButton", "click", {
+                button_id: "skip_manual_resolution",
+              });
+            }}
+          >
             {l10n.getString(
               "fix-flow-data-broker-profiles-manual-remove-button-skip",
             )}

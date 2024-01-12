@@ -11,6 +11,7 @@ import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { useState } from "react";
 import { ExposureCard } from "../../../../../../../../../components/client/ExposureCard";
 import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
+import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 
 export type Props = {
   scanResult: OnerepScanResultRow;
@@ -23,6 +24,7 @@ export type Props = {
 export const RemovalCard = (props: Props) => {
   const l10n = useL10n();
   const router = useRouter();
+  const recordTelemetry = useTelemetry();
   const [isResolved, setIsResolved] = useState(
     props.scanResult.manually_resolved,
   );
@@ -57,7 +59,16 @@ export const RemovalCard = (props: Props) => {
       locale={getLocale(l10n)}
       resolutionCta={
         !isResolved ? (
-          <Button variant="primary" small onPress={() => void resolve()}>
+          <Button
+            variant="primary"
+            small
+            onPress={() => {
+              void resolve();
+              recordTelemetry("ctaButton", "click", {
+                button_id: `mark_as_fixed_${props.scanResult.data_broker}`,
+              });
+            }}
+          >
             {l10n.getString(
               "fix-flow-data-broker-profiles-manual-remove-button-mark-fixed",
             )}
