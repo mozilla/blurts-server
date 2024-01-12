@@ -29,6 +29,7 @@ exposure-card-description-info-for-sale-part-two = Poista tämä profiili suojel
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
 exposure-card-description-data-breach-part-one = Tietosi paljastuivat <data_breach_link>yritykseen { $data_breach_company } kohdistuneen tietovuodon { $data_breach_date } seurauksena.</data_breach_link>
+exposure-card-description-data-breach-part-two = Ohjaamme sinut seuraavien vaiheiden läpi korjataksesi asian.
 exposure-card-your-exposed-info = Altistuneet tietosi:
 exposure-card-exposure-type-data-broker = Tiedot myynnissä
 exposure-card-exposure-type-data-breach = Tietovuoto
