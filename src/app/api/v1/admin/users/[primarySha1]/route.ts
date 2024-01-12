@@ -123,13 +123,12 @@ export async function PUT(
       for (const action of actions) {
         switch (action) {
           case "subscribe": {
-            const sub = await getSubscriberByFxaUid(subscriber.fxa_uid!);
-            const currentFxAProfile = sub.fxa_profile_json as FxaProfile;
-            const subscriptions = new Set(currentFxAProfile.subscriptions);
-
-            subscriptions.add(MONITOR_PREMIUM_CAPABILITY);
-            // update fxa profile data to match subscription status
-            currentFxAProfile.subscriptions = Array.from(subscriptions);
+            const currentFxAProfile =
+              subscriber?.fxa_profile_json as FxaProfile;
+            currentFxAProfile.subscriptions =
+              currentFxAProfile.subscriptions?.filter(
+                (sub) => sub !== MONITOR_PREMIUM_CAPABILITY,
+              );
             await updateFxAProfileData(sub, JSON.stringify(currentFxAProfile));
 
             // activate and opt out profiles
@@ -145,7 +144,10 @@ export async function PUT(
             const sub = await getSubscriberByFxaUid(subscriber.fxa_uid!);
             const currentFxAProfile = sub.fxa_profile_json as FxaProfile;
             // update fxa profile data to match subscription status
-            currentFxAProfile.subscriptions = currentFxAProfile.subscriptions.filter(sub => sub !== MONITOR_PREMIUM_CAPABILITY);
+            currentFxAProfile.subscriptions =
+              currentFxAProfile.subscriptions?.filter(
+                (sub) => sub !== MONITOR_PREMIUM_CAPABILITY,
+              );
             await updateFxAProfileData(sub, JSON.stringify(currentFxAProfile));
 
             await deactivateProfile(onerepProfileId);
