@@ -68,7 +68,7 @@ export class DashboardPage {
     });
 
     this.fixedHeading = page.getByRole("heading", {
-      name: "View all exposures that are fixed or in-progress",
+      name: "View all exposures that are fixed or in progress",
     });
 
     this.toolTip = page.locator(
