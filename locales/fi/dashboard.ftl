@@ -21,7 +21,11 @@ exposure-chart-legend-heading-type = Altistuminen
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
+exposure-chart-caption = Tämä kaavio näyttää, kuinka monta kertaa tietosi ovat aktiivisesti altistuneet.
 exposure-chart-returning-user-upgrade-prompt = Kotiosoite, perheenjäsenet ja muut eivät vielä sisälly.
+exposure-chart-returning-user-upgrade-prompt-cta = Aloita ilmainen tarkistus
+exposure-chart-scan-in-progress-prompt = <b>Tarkistus käynnissä:</b> osoite, perheenjäsenet ja muut eivät vielä sisälly.
+modal-active-number-of-exposures-title = Tietoja aktiivisten altistumisten määrästä
 modal-cta-ok = OK
 modal-open-alt = Avaa
 modal-close-alt = Sulje
@@ -29,6 +33,7 @@ progress-card-heres-what-we-fixed-headline-all = Tämän korjasit
 progress-card-manually-fixed-headline = Käsin korjattu
 dashboard-tab-label-action-needed = Toimenpiteitä tarvitaan
 dashboard-tab-label-fixed = Korjattu
+dashboard-exposures-all-fixed-label = Kaikki korjattu täällä!
 dashboard-exposures-area-headline = Näytä kaikki sivustot, joissa tietosi ovat altistuneet
 dashboard-fixed-area-headline-all = Näytä kaikki altistumiset, jotka on korjattu
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
@@ -48,6 +53,7 @@ dashboard-exposures-filter-show-results = Näytä tulokset
 
 ## Top banner on the dashboard
 
+dashboard-top-banner-scan-in-progress-title = Tarkistus on edelleen kesken
 dashboard-top-banner-your-data-is-protected-title = Tietosi on suojattu
 dashboard-top-banner-lets-keep-protecting-cta = Jatketaan
 dashboard-top-banner-protect-your-data-title = Suojataan tietosi
@@ -59,3 +65,4 @@ dashboard-top-banner-monitor-more-cta = Tarkkaile useampia sähköpostiosoitteit
 # About Exposure Statuses Modal
 
 modal-exposure-status-title = Tietoja altistumistiloista
+modal-exposure-status-fixed = <b>Korjattu</b> tarkoittaa, että altistuminen on ratkaistu, eikä sinun tarvitse tehdä mitään.
