@@ -3,6 +3,8 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
+landing-all-hero-title = Descubra onde suas informações privativas estão sendo expostas e recupere o controle sobre elas
+landing-all-hero-lead = Verificamos vazamentos de dados para ver se seus dados foram expostos e fornecemos instruções passo a passo para resolver.
 landing-all-hero-emailform-input-placeholder = seunome@example.com
 landing-all-hero-emailform-input-label = Insira seu endereço de email para verificar exposição em vazamentos de dados.
 landing-all-hero-emailform-submit-label = Obtenha uma verificação gratuita
@@ -12,11 +14,13 @@ landing-all-hero-image-chart-label = exposições
 # Value Proposition
 
 landing-all-value-prop-fix-exposures = Ajudamos a corrigir suas exposições
+landing-all-value-prop-fix-exposures-description = Nossa missão é devolver às suas mãos o controle sobre seus dados pessoais. Ajudamos a resolver vazamentos de dados e manter a privacidade de suas informações. Além disso, <privacy_link>respeitamos sua privacidade</privacy_link> durante o processo.
 landing-all-value-prop-info-at-risk = Que informações podem estar em risco?
 landing-all-value-prop-info-at-risk-description = Infelizmente, vazamentos de dados fazem parte de nossa vida digital. Suas senhas, detalhes de contatos, informações financeiras e outras informações pessoais podem ser expostas, colocando você em risco de roubo de identidade.
 
 # Quote
 
+landing-all-quote = <data_breaches>Vazamentos de dados</data_breaches> acontecem a cada 11 minutos, expondo suas informações privativas. Mas não se preocupe, nós podemos ajudar.
 
 # Non-US FAQ
 
