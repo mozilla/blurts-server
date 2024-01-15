@@ -63,7 +63,7 @@ const preview: Preview = {
         push(path: string, ...otherArgs: unknown[]) {
           action("nextNavigation.push")(path, ...otherArgs);
 
-          if (path === "/redesign/user/dashboard") {
+          if (path === "/user/dashboard") {
             linkTo(
               "Pages/Dashboard",
               "US user, without Premium, with unresolved scan results, with unresolved breaches",
@@ -72,14 +72,14 @@ const preview: Preview = {
 
           if (
             path ===
-            "/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan"
+            "/user/dashboard/fix/data-broker-profiles/start-free-scan"
           ) {
             linkTo("Pages/Guided resolution/1a. Free scan")();
           }
 
           if (
             path ===
-            "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers"
+            "/user/dashboard/fix/data-broker-profiles/view-data-brokers"
           ) {
             linkTo(
               "Pages/Guided resolution/1b. Scan results",
@@ -89,14 +89,14 @@ const preview: Preview = {
 
           if (
             path ===
-            "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove"
+            "/user/dashboard/fix/data-broker-profiles/manual-remove"
           ) {
             linkTo("Pages/Guided resolution/1c. Manually resolve brokers")();
           }
 
           if (
             path ===
-            "/redesign/user/dashboard/fix/data-broker-profiles/automatic-remove"
+            "/user/dashboard/fix/data-broker-profiles/automatic-remove"
           ) {
             linkTo(
               "Pages/Guided resolution/1d. Automatically resolve brokers",
@@ -104,7 +104,7 @@ const preview: Preview = {
           }
 
           if (
-            path === "/redesign/user/dashboard/fix/high-risk-data-breaches/ssn"
+            path === "/user/dashboard/fix/high-risk-data-breaches/ssn"
           ) {
             linkTo(
               "Pages/Guided resolution/2. High-risk data breaches",
@@ -114,7 +114,7 @@ const preview: Preview = {
 
           if (
             path ===
-            "/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card"
+            "/user/dashboard/fix/high-risk-data-breaches/credit-card"
           ) {
             linkTo(
               "Pages/Guided resolution/2. High-risk data breaches",
@@ -124,7 +124,7 @@ const preview: Preview = {
 
           if (
             path ===
-            "/redesign/user/dashboard/fix/high-risk-data-breaches/bank-account"
+            "/user/dashboard/fix/high-risk-data-breaches/bank-account"
           ) {
             linkTo(
               "Pages/Guided resolution/2. High-risk data breaches",
@@ -133,7 +133,7 @@ const preview: Preview = {
           }
 
           if (
-            path === "/redesign/user/dashboard/fix/high-risk-data-breaches/pin"
+            path === "/user/dashboard/fix/high-risk-data-breaches/pin"
           ) {
             linkTo(
               "Pages/Guided resolution/2. High-risk data breaches",
@@ -142,7 +142,7 @@ const preview: Preview = {
           }
 
           if (
-            path === "/redesign/user/dashboard/fix/high-risk-data-breaches/done"
+            path === "/user/dashboard/fix/high-risk-data-breaches/done"
           ) {
             linkTo(
               "Pages/Guided resolution/2. High-risk data breaches",
@@ -151,7 +151,7 @@ const preview: Preview = {
           }
 
           if (
-            path === "/redesign/user/dashboard/fix/leaked-passwords/passwords"
+            path === "/user/dashboard/fix/leaked-passwords/passwords"
           ) {
             linkTo(
               "Pages/Guided resolution/3. Leaked passwords",
@@ -161,7 +161,7 @@ const preview: Preview = {
 
           if (
             path ===
-            "/redesign/user/dashboard/fix/leaked-passwords/security-questions"
+            "/user/dashboard/fix/leaked-passwords/security-questions"
           ) {
             linkTo(
               "Pages/Guided resolution/3. Leaked passwords",
@@ -171,16 +171,16 @@ const preview: Preview = {
 
           if (
             path ===
-              "/redesign/user/dashboard/fix/leaked-passwords/passwords-done" ||
+              "/user/dashboard/fix/leaked-passwords/passwords-done" ||
             path ===
-              "/redesign/user/dashboard/fix/leaked-passwords/security-questions-done"
+              "/user/dashboard/fix/leaked-passwords/security-questions-done"
           ) {
             linkTo("Pages/Guided resolution/3. Leaked passwords", "3c. Done")();
           }
 
           if (
             path ===
-            "/redesign/user/dashboard/fix/security-recommendations/phone"
+            "/user/dashboard/fix/security-recommendations/phone"
           ) {
             linkTo(
               "Pages/Guided resolution/4. Security recommendations",
@@ -190,7 +190,7 @@ const preview: Preview = {
 
           if (
             path ===
-            "/redesign/user/dashboard/fix/security-recommendations/email"
+            "/user/dashboard/fix/security-recommendations/email"
           ) {
             linkTo(
               "Pages/Guided resolution/4. Security recommendations",
@@ -199,7 +199,7 @@ const preview: Preview = {
           }
 
           if (
-            path === "/redesign/user/dashboard/fix/security-recommendations/ip"
+            path === "/user/dashboard/fix/security-recommendations/ip"
           ) {
             linkTo(
               "Pages/Guided resolution/4. Security recommendations",
@@ -209,7 +209,7 @@ const preview: Preview = {
 
           if (
             path ===
-            "/redesign/user/dashboard/fix/security-recommendations/done"
+            "/user/dashboard/fix/security-recommendations/done"
           ) {
             linkTo(
               "Pages/Guided resolution/4. Security recommendations",

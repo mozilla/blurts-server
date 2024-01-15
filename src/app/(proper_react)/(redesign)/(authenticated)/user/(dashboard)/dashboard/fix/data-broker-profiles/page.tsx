@@ -5,5 +5,5 @@
 import { redirect } from "next/navigation";
 
 export default function DataBrokerProfiles() {
-  redirect("/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan");
+  redirect("/user/dashboard/fix/data-broker-profiles/start-free-scan");
 }

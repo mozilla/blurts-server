@@ -61,7 +61,7 @@ it("checks the CTA button link to the next step in the guided resolution flow", 
     name: "Let’s keep going",
   });
 
-  expect(ctaButtonLink).toHaveAttribute("href", "/redesign/user/dashboard");
+  expect(ctaButtonLink).toHaveAttribute("href", "/user/dashboard");
 });
 
 it("checks the arrow button link to the next step in the guided resolution flow", () => {
@@ -70,5 +70,5 @@ it("checks the arrow button link to the next step in the guided resolution flow"
 
   const arrowButtonLink = screen.getByLabelText("Go to next step");
 
-  expect(arrowButtonLink).toHaveAttribute("href", "/redesign/user/dashboard");
+  expect(arrowButtonLink).toHaveAttribute("href", "/user/dashboard");
 });

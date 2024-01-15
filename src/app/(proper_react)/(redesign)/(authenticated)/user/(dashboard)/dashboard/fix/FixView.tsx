@@ -45,7 +45,7 @@ export const FixView = (props: FixViewProps) => {
   const navigationClose = () => {
     return (
       <Link
-        href="/redesign/user/dashboard"
+        href="/user/dashboard"
         className={styles.navClose}
         aria-label={l10n.getString("guided-resolution-flow-exit")}
         onClick={() => {

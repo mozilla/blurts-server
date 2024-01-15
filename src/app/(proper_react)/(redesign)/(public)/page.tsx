@@ -18,7 +18,7 @@ import { View } from "./LandingView";
 export default async function Page() {
   const session = await getServerSession();
   if (typeof session?.user.email === "string") {
-    return redirect("/redesign/user/dashboard/");
+    return redirect("/user/dashboard/");
   }
   const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
   const countryCode = getCountryCode(headers());

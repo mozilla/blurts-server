@@ -61,5 +61,5 @@ it("shows the security recommendations celebration view", () => {
   const buttonLink = screen.getByRole("link", {
     name: "Go to your Dashboard",
   });
-  expect(buttonLink).toHaveAttribute("href", "/redesign/user/dashboard");
+  expect(buttonLink).toHaveAttribute("href", "/user/dashboard");
 });

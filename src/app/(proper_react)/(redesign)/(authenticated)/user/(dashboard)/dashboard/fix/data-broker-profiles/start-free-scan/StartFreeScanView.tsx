@@ -74,7 +74,7 @@ export function StartFreeScanView(props: Props) {
         <div className={styles.buttonsWrapper}>
           <Button
             variant="primary"
-            href="/redesign/user/welcome/free-scan?referrer=fix"
+            href="/user/welcome/free-scan?referrer=fix"
             onPress={() => {
               recordTelemetry("ctaButton", "click", {
                 button_id: "intent_to_start_free_scan",
@@ -87,7 +87,7 @@ export function StartFreeScanView(props: Props) {
           </Button>
           <Button
             variant="secondary"
-            href="/redesign/user/dashboard/fix/high-risk-data-breaches"
+            href="/user/dashboard/fix/high-risk-data-breaches"
             onPress={() => {
               recordTelemetry("ctaButton", "click", {
                 button_id: "skipped_free_scan",

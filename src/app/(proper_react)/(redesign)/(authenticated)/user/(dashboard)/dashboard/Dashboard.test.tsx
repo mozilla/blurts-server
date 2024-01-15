@@ -2542,7 +2542,7 @@ it("logs a warning and error in the story for an invalid user state", () => {
   render(<ComposedDashboard />);
 
   expect(errorLogSpy).toHaveBeenCalledWith(
-    `InvalidUserState: {"relevantGuidedStep":{"href":"/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan","id":"Scan","eligible":true,"completed":false},"hasExposures":true,"hasUnresolvedBreaches":false,"hasUnresolvedBrokers":false,"isEligibleForFreeScan":true,"isEligibleForPremium":false,"isPremiumUser":true,"scanInProgress":false}`,
+    `InvalidUserState: {"relevantGuidedStep":{"href":"/user/dashboard/fix/data-broker-profiles/start-free-scan","id":"Scan","eligible":true,"completed":false},"hasExposures":true,"hasUnresolvedBreaches":false,"hasUnresolvedBrokers":false,"isEligibleForFreeScan":true,"isEligibleForPremium":false,"isPremiumUser":true,"scanInProgress":false}`,
   );
   expect(warnLogSpy).toHaveBeenCalledWith(
     "No matching condition for dashboard state found.",

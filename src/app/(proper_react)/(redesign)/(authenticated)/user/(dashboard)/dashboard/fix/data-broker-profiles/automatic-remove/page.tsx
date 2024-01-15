@@ -26,7 +26,7 @@ export default async function AutomaticRemovePage() {
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.subscriber?.id) {
-    redirect("/redesign/user/dashboard/");
+    redirect("/user/dashboard/");
   }
 
   const result = await getOnerepProfileId(session.user.subscriber.id);

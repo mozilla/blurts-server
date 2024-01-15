@@ -112,7 +112,7 @@ export function SecurityRecommendationsLayout(
       const isCurrentStepSection = Object.values(stepMap).includes(nextStep.id);
       const nextRoute = isCurrentStepSection
         ? nextStep.href
-        : "/redesign/user/dashboard/fix/security-recommendations/done";
+        : "/user/dashboard/fix/security-recommendations/done";
       router.push(nextRoute);
     } catch (_error) {
       // TODO: MNTOR-2563: Capture client error with @next/sentry

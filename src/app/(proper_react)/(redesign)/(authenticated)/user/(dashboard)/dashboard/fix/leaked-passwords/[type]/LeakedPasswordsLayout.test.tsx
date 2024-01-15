@@ -61,7 +61,7 @@ it("shows the leaked passwords celebration view, next step is security questions
   });
   expect(buttonLink).toHaveAttribute(
     "href",
-    "/redesign/user/dashboard/fix/leaked-passwords/security-questions",
+    "/user/dashboard/fix/leaked-passwords/security-questions",
   );
 });
 
@@ -85,7 +85,7 @@ it("shows the leaked passwords celebration view, next step is security tips", ()
   });
   expect(buttonLink).toHaveAttribute(
     "href",
-    "/redesign/user/dashboard/fix/security-recommendations/email",
+    "/user/dashboard/fix/security-recommendations/email",
   );
 });
 
@@ -102,7 +102,7 @@ it("shows the leaked passwords celebration view, no next step", () => {
   const buttonLink = screen.getByRole("link", {
     name: "Go to your Dashboard",
   });
-  expect(buttonLink).toHaveAttribute("href", "/redesign/user/dashboard");
+  expect(buttonLink).toHaveAttribute("href", "/user/dashboard");
 });
 
 it("shows the security questions celebration view, next step is security tips", () => {
@@ -125,7 +125,7 @@ it("shows the security questions celebration view, next step is security tips", 
   });
   expect(buttonLink).toHaveAttribute(
     "href",
-    "/redesign/user/dashboard/fix/security-recommendations/ip",
+    "/user/dashboard/fix/security-recommendations/ip",
   );
 });
 
@@ -142,5 +142,5 @@ it("shows the security questions celebration view, no next step", () => {
   const buttonLink = screen.getByRole("link", {
     name: "Go to your Dashboard",
   });
-  expect(buttonLink).toHaveAttribute("href", "/redesign/user/dashboard");
+  expect(buttonLink).toHaveAttribute("href", "/user/dashboard");
 });
