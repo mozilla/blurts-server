@@ -40,8 +40,8 @@ modal-active-number-of-exposures-part-one-all =
     }
 modal-active-number-of-exposures-part-two = Wenn Sie beispielsweise 10 Offenlegungen Ihrer Telefonnummer haben, kann dies bedeuten, dass eine Telefonnummer auf 10 verschiedenen Websites offengelegt wurde, oder es könnte bedeuten, dass 2 verschiedene Telefonnummern auf 5 verschiedenen Websites offengelegt wurden.
 modal-active-number-of-exposures-part-three-all = Sobald sie behoben wurden, werden sie zur Gesamtzahl der behobenen Offenlegungen auf der Seite „Behoben“ hinzugefügt.
-modal-fixed-number-of-exposures-title = Über die Anzahl der festgelegten Aufnahmen
-modal-fixed-number-of-exposures-all = Diese Tabelle enthält die Gesamtzahl der Datenlecks, die für alle E-Mail-Adressen behoben wurden, die Sie derzeit überwachen. Sobald Engagements als behoben markiert werden, werden sie hier zur Gesamtsumme hinzugefügt.
+modal-fixed-number-of-exposures-title = Über die Anzahl der behobenen Offenlegungen
+modal-fixed-number-of-exposures-all = Diese Tabelle enthält die Gesamtzahl der Datenlecks, die für alle E-Mail-Adressen behoben wurden, die Sie derzeit überwachen. Sobald Offenlegungen als behoben markiert werden, werden sie hier zur Gesamtsumme hinzugefügt.
 modal-cta-ok = OK
 modal-open-alt = Öffnen
 modal-close-alt = Schließen
@@ -100,7 +100,7 @@ dashboard-top-banner-lets-keep-protecting-description =
     }
 dashboard-top-banner-lets-keep-protecting-cta = Machen wir weiter
 dashboard-top-banner-protect-your-data-title = Schützen wir Ihre Daten
-dashboard-top-banner-protect-your-data-cta = Holen Sie sich das Problem
+dashboard-top-banner-protect-your-data-cta = Lösen wir das Problem
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.

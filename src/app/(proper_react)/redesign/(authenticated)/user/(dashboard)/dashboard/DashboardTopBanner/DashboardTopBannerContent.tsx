@@ -20,6 +20,11 @@ import { useL10n } from "../../../../../../../hooks/l10n";
 import { UpsellButton } from "../../../../../../../components/client/UpsellBadge";
 import { WaitlistDialog } from "../../../../../../../components/client/SubscriberWaitlistDialog";
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
+import {
+  CONST_URL_SUMO_HOW_IT_WORKS,
+  CONST_ONEREP_DATA_BROKER_COUNT,
+  CONST_ONEREP_MAX_SCANS_THRESHOLD,
+} from "../../../../../../../../constants";
 
 export interface ContentProps {
   relevantGuidedStep: StepLink;
@@ -212,20 +217,14 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString(
                 "dashboard-top-banner-monitor-protects-your-even-more-description",
                 {
-                  data_broker_sites_total_num: parseInt(
-                    process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-                    10,
-                  ),
+                  data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
                 },
               )}
             </p>
             <div className={styles.cta}>
               {typeof props.totalNumberOfPerformedScans === "undefined" ||
               props.totalNumberOfPerformedScans <
-                parseInt(
-                  process.env.NEXT_PUBLIC_ONEREP_MAX_SCANS_THRESHOLD as string,
-                  10,
-                ) ? (
+                CONST_ONEREP_MAX_SCANS_THRESHOLD ? (
                 <Button
                   href="/redesign/user/welcome/free-scan?referrer=dashboard"
                   small
@@ -263,7 +262,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </div>
             <a
-              href={process.env.NEXT_PUBLIC_HOW_IT_WORKS_SUMO_URL}
+              href={CONST_URL_SUMO_HOW_IT_WORKS}
               target="_blank"
               onClick={() =>
                 recordTelemetry("link", "click", {
@@ -287,10 +286,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString(
                 "dashboard-top-banner-no-exposures-found-description",
                 {
-                  data_broker_sites_total_num: parseInt(
-                    process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-                    10,
-                  ),
+                  data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
                 },
               )}
             </p>
@@ -476,10 +472,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString(
                 "dashboard-top-banner-no-exposures-found-description",
                 {
-                  data_broker_sites_total_num: parseInt(
-                    process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-                    10,
-                  ),
+                  data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
                 },
               )}
             </p>

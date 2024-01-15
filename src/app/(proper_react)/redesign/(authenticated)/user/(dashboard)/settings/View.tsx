@@ -11,6 +11,7 @@ import { OpenInNew } from "../../../../../../components/server/Icons";
 import { EmailListing } from "./EmailListing";
 import { EmailAddressAdder } from "./EmailAddressAdder";
 import { AlertAddressForm } from "./AlertAddressForm";
+import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -18,6 +19,7 @@ export type Props = {
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
   fxaSettingsUrl: string;
+  fxaSubscriptionsUrl: string;
   emailAddresses: EmailRow[];
   breachCountByEmailAddress: Record<string, number>;
 };
@@ -42,7 +44,7 @@ export const SettingsView = (props: Props) => {
             <h3>{l10n.getString("settings-email-list-title")}</h3>
             <p className={styles.description}>
               {l10n.getString("settings-email-limit-info", {
-                limit: process.env.NEXT_PUBLIC_MAX_NUM_ADDRESSES!,
+                limit: CONST_MAX_NUM_ADDRESSES,
               })}
             </p>
           </div>
@@ -75,6 +77,23 @@ export const SettingsView = (props: Props) => {
                 : "affected"
             }
           />
+          <hr />
+          <div className={styles.cancelSection}>
+            <h3>{l10n.getString("settings-cancel-plus-title")}</h3>
+            <p>{l10n.getString("settings-cancel-plus-details")}</p>
+            <a
+              href={props.fxaSubscriptionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {l10n.getString("settings-cancel-plus-link-label")}
+              <OpenInNew
+                alt={l10n.getString("open-in-new-tab-alt")}
+                width="13"
+                height="13"
+              />
+            </a>
+          </div>
           <hr />
           <div className={styles.deactivateSection}>
             <h3>{l10n.getString("settings-deactivate-account-title")}</h3>

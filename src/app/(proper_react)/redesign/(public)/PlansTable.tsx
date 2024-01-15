@@ -55,6 +55,7 @@ import {
 import { getLocale } from "../../../functions/universal/getLocale";
 import { Button } from "../../../components/client/Button";
 import { signIn } from "next-auth/react";
+import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../constants";
 
 export type Props = {
   "aria-labelledby": string;
@@ -202,8 +203,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                     {
                       elems: { b: <b /> },
                       vars: {
-                        dataBrokerTotalCount: process.env
-                          .NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                        dataBrokerTotalCount: CONST_ONEREP_DATA_BROKER_COUNT,
                       },
                     },
                   )}
@@ -222,8 +222,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                     {
                       elems: { b: <b /> },
                       vars: {
-                        dataBrokerTotalCount: process.env
-                          .NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                        dataBrokerTotalCount: CONST_ONEREP_DATA_BROKER_COUNT,
                       },
                     },
                   )}
@@ -249,8 +248,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                       {l10n.getString(
                         "landing-premium-plans-table-feature-removal-plus-callout",
                         {
-                          dataBrokerTotalCount: process.env
-                            .NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                          dataBrokerTotalCount: CONST_ONEREP_DATA_BROKER_COUNT,
                         },
                       )}
                     </PopoverContent>
@@ -384,8 +382,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                     {
                       elems: { b: <b /> },
                       vars: {
-                        dataBrokerTotalCount: process.env
-                          .NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                        dataBrokerTotalCount: CONST_ONEREP_DATA_BROKER_COUNT,
                       },
                     },
                   )}
@@ -404,8 +401,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                     {
                       elems: { b: <b /> },
                       vars: {
-                        dataBrokerTotalCount: process.env
-                          .NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                        dataBrokerTotalCount: CONST_ONEREP_DATA_BROKER_COUNT,
                       },
                     },
                   )}
@@ -431,8 +427,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                       {l10n.getString(
                         "landing-premium-plans-table-feature-removal-plus-callout",
                         {
-                          dataBrokerTotalCount: process.env
-                            .NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                          dataBrokerTotalCount: CONST_ONEREP_DATA_BROKER_COUNT,
                         },
                       )}
                     </PopoverContent>
@@ -556,8 +551,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
               {l10n.getString(
                 "landing-premium-plans-table-feature-scan-label",
                 {
-                  dataBrokerTotalCount: process.env
-                    .NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                  dataBrokerTotalCount: CONST_ONEREP_DATA_BROKER_COUNT,
                 },
               )}
             </Cell>
@@ -597,8 +591,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   {l10n.getString(
                     "landing-premium-plans-table-feature-removal-plus-callout",
                     {
-                      dataBrokerTotalCount: process.env
-                        .NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                      dataBrokerTotalCount: CONST_ONEREP_DATA_BROKER_COUNT,
                     },
                   )}
                 </PopoverContent>

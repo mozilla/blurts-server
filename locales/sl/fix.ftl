@@ -5,7 +5,7 @@
 fix-flow-nav-high-risk-data-breaches = Visoko tvegane kraje podatkov
 fix-flow-nav-leaked-passwords = Razkrita gesla
 fix-flow-nav-security-recommendations = Varnostna priporočila
-guided-resolution-flow-exit = Nazaj na nadzorno ploščo
+guided-resolution-flow-exit = Nazaj na pregledno ploščo
 guided-resolution-flow-back-arrow = Pojdi na prejšnji korak
 guided-resolution-flow-next-arrow = Pojdi na naslednji korak
 guided-resolution-flow-step-navigation-label = Vodeni koraki

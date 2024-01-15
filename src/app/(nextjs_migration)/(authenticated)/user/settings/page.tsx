@@ -21,6 +21,7 @@ import { getBreachesForEmail } from "../../../../../utils/hibp";
 import { getSha1 } from "../../../../../utils/fxa";
 import { getSubscriberById } from "../../../../../db/tables/subscribers";
 import { getNonce } from "../../../functions/server/getNonce";
+import { CONST_MAX_NUM_ADDRESSES } from "../../../../../constants";
 
 const emailNeedsVerificationSub = (email: EmailRow) => {
   const l10n = getL10n();
@@ -208,7 +209,7 @@ export default async function Settings() {
               </h3>
               <p className="settings-section-info">
                 {l10n.getString("settings-email-limit-info", {
-                  limit: AppConstants.NEXT_PUBLIC_MAX_NUM_ADDRESSES,
+                  limit: CONST_MAX_NUM_ADDRESSES,
                 })}
               </p>
 
@@ -217,13 +218,7 @@ export default async function Settings() {
                 aria-label={l10n.getString("settings-add-email-button")}
                 className="primary settings-add-email-button"
                 data-dialog="addEmail"
-                disabled={
-                  emails.length >=
-                  Number.parseInt(
-                    AppConstants.NEXT_PUBLIC_MAX_NUM_ADDRESSES,
-                    10,
-                  )
-                }
+                disabled={emails.length >= CONST_MAX_NUM_ADDRESSES}
               >
                 {l10n.getString("settings-add-email-button")}
               </button>

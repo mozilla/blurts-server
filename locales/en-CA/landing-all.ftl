@@ -28,7 +28,7 @@ landing-all-faq-title = Frequently asked questions
 # FAQ is an acronym for Frequently Asked Questions
 landing-all-faq-see-all = See all FAQs
 landing-all-data-breach-definition-qn = What exactly is a data breach?
-landing-all-data-breach-definition-ans = A data breach happens when personal or private information gets exposed, stolen or copied without permission. These security incidents can result from cyber attacks on web sites, apps or any database where people’s personal information resides. A data breach can also happen accidentally, like if someone’s login credentials get posted publicly.
+landing-all-data-breach-definition-ans = A data breach happens when personal or private information gets exposed, stolen or copied without permission. These security incidents can result from cyber attacks on websites, apps or any database where people’s personal information resides. A data breach can also happen accidentally, like if someone’s login credentials get posted publicly.
 landing-all-data-breach-next-steps-qn = I just found out I’m in a data breach. What do I do next?
 landing-all-data-breach-next-steps-ans = Visit { -brand-mozilla-monitor } to learn what to do after a data breach and get guided steps to resolve exposures of your personal info. Hackers rely on people reusing passwords, so it’s important to create strong, unique passwords for all your accounts. Keep your passwords in a safe place that only you have access to; this could be the same place where you store important documents or a password manager.
 landing-all-data-breach-info-qn = What information gets exposed in data breaches?
@@ -37,18 +37,6 @@ landing-all-close-faq-alt = Close
 
 # Social proof
 
-# Variables
-# $num_users is the number of users in the millions.
-landing-all-social-proof-title =
-    { $num_users ->
-       *[other] Trusted by { $num_users } million people worldwide
-    }
-# Variables
-# $num_countries is the number of countries available.
-landing-all-social-proof-description =
-    { $num_countries ->
-       *[other] Since 2018, we’ve helped people in { $num_countries } countries protect their data when it has been exposed.
-    }
 landing-all-social-proof-press = As seen in
 
 # Here's How We Help
