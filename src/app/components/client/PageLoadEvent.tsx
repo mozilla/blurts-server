@@ -49,16 +49,16 @@ export const PageLoadEvent = (props: Props) => {
       pageViewParams.user_id = userId;
     }
 
+    // record attributions on page load
+    if (window.location.search?.length > 0) {
+      if (!localStorage.getItem("attributionsFirstTouch")) {
+        localStorage.setItem("attributionsFirstTouch", window.location.search);
+      }
+      localStorage.setItem("attributionsLastTouch", window.location.search);
+    }
+
     recordTelemetry("page", "view", pageViewParams);
   }, [recordTelemetry, pathname, userId]);
-
-  // record attributions on page load
-  if (window.location.search?.length > 0) {
-    if (!localStorage.getItem("attributionsFirstTouch")) {
-      localStorage.setItem("attributionsFirstTouch", window.location.search);
-    }
-    localStorage.setItem("attributionsLastTouch", window.location.search);
-  }
   // This component doesn't render anything.
   return <></>;
 };
