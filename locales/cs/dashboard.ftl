@@ -93,7 +93,7 @@ dashboard-exposures-filter-reset = Obnovit
 dashboard-top-banner-section-label = Shrnutí na nástěnce
 dashboard-top-banner-scan-in-progress-title = Skenování stále probíhá
 dashboard-top-banner-your-data-is-protected-title = Vaše data jsou chráněna
-dashboard-top-banner-your-data-is-protected-cta = Podívejte se, co je opraveno
+dashboard-top-banner-your-data-is-protected-cta = Podívejte se, co je vyřešené
 dashboard-top-banner-lets-keep-protecting-title = Pojďme chránit vaše data
 # Variables:
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
@@ -124,7 +124,7 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
         [few] Objevila se v { $data_breach_unresolved_num } únikech dat. Ukážeme vám, jak to krok za krokem vyřešit.
        *[other] Objevila se v { $data_breach_unresolved_num } únikech dat. Ukážeme vám, jak to krok za krokem vyřešit.
     }
-dashboard-top-banner-no-exposures-found-title = Nebyly nalezeny žádné kontakty
+dashboard-top-banner-no-exposures-found-title = Nebyla nalezena žádná odhalení
 dashboard-top-banner-non-us-no-exposures-found-description = Skvělá zpráva! Prohledali jsme všechny známé úniky dat a nenašli jsme žádný kontakt. Vaši e-mailovou adresu budeme průběžně monitorovat a pokud dojde k novému úniku, dáme vám vědět.
 dashboard-no-exposures-label = Nebyly nalezeny žádné kontakty
 # Variables:

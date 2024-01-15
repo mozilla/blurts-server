@@ -54,6 +54,8 @@ landing-all-social-proof-press = Valokeilassa
 
 landing-all-help-protect-you = Näin autamme suojaamaan sinua
 landing-all-help-protect-you-feature-one = Etsimme sinua kaikista tunnetuista tietovuodoista
+landing-all-help-protect-you-feature-two = Opastamme sinua kunkin tietovuodon ratkaisemiseksi
+landing-all-help-protect-you-feature-three = Jatkamme tarkkailua ja lähetämme sinulle ilmoituksia uusista tietovuodoista
 landing-all-help-protect-you-cta = Tilaa vuotohälytykset
 landing-all-get-started = Tarkista sähköpostiosoitteesi aloittaaksesi
 landing-all-take-back-data = Ota henkilökohtaiset tietosi takaisin hallintaasi

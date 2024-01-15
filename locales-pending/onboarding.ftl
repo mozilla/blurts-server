@@ -50,6 +50,7 @@ onboarding-enter-details-label-last-name = Last name
 onboarding-enter-details-placeholder-last-name = Enter last name
 onboarding-enter-details-label-location = City and state
 onboarding-enter-details-placeholder-location = Enter city and state
+onboarding-enter-details-placeholder-location-results = No location found
 onboarding-enter-details-label-date-of-birth = Date of birth
 onboarding-enter-details-input-error-message-generic = Required to complete the scan
 onboarding-enter-details-input-error-message-location = Type location and select from list

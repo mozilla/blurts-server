@@ -33,6 +33,7 @@ landing-all-data-breach-next-steps-qn = Moje údaje boli súčasťou úniku dát
 landing-all-data-breach-next-steps-ans = Navštívte { -brand-mozilla-monitor }, kde sa dozviete, čo robiť po úniku údajov, a získate postupy krok za krokom na vyriešenie úniku vašich osobných údajov. Hackeri sa spoliehajú na to, že ľudia opakovane používajú heslá, preto je dôležité vytvárať silné a jedinečné heslá pre každý váš účet. Uchovávajte svoje heslá na bezpečnom mieste, ku ktorému máte prístup iba vy; mohlo by to byť rovnaké miesto, kde ukladáte dôležité dokumenty alebo správca hesiel.
 landing-all-data-breach-info-qn = Aké informácie sú odhalené pri úniku údajov?
 landing-all-data-breach-info-ans = Nie všetky úniky odhaľujú rovnaké informácie. Záleží len na tom, k čomu majú hackeri prístup. Mnoho únikov údajov odhaľuje e‑mailové adresy a heslá. Iné odhaľujú citlivejšie informácie, ako sú čísla kreditných kariet, PIN kódy a čísla sociálneho zabezpečenia.
+landing-all-close-faq-alt = Zavrieť
 
 # Social proof
 
