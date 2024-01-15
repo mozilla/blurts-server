@@ -7,8 +7,8 @@ import { getServerSession } from "next-auth";
 import { getL10n, getL10nBundles } from "../../../../../functions/server/l10n";
 import { authOptions } from "../../../../../api/utils/auth";
 import { Shell } from "../../../Shell";
-import { SignInButton } from "../../../../../(nextjs_migration)/components/client/SignInButton";
 import { headers } from "next/headers";
+import { AutoSignIn } from "../../../../../components/client/AutoSignIn";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();
@@ -16,7 +16,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
   const session = await getServerSession(authOptions);
 
   if (!session) {
-    return <SignInButton autoSignIn={true} />;
+    return <AutoSignIn />;
   }
 
   const nonce = headers().get("x-nonce") ?? "";

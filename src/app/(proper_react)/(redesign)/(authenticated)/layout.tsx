@@ -5,13 +5,13 @@
 import { ReactNode } from "react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../../api/utils/auth";
-import { SignInButton } from "../../../(nextjs_migration)/components/client/SignInButton";
+import { AutoSignIn } from "../../../components/client/AutoSignIn";
 
 export default async function Layout(props: { children: ReactNode }) {
   const session = await getServerSession(authOptions);
 
   if (!session) {
-    return <SignInButton autoSignIn={true} />;
+    return <AutoSignIn />;
   }
 
   return <>{props.children}</>;

@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getServerSession } from "next-auth";
-import { SignInButton } from "../../../../../../(nextjs_migration)/components/client/SignInButton";
 import { notFound } from "next/navigation";
 import { isEligibleForFreeScan } from "../../../../../../functions/server/onerep";
 import { View } from "../View";
@@ -13,6 +12,7 @@ import { headers } from "next/headers";
 import { authOptions } from "../../../../../../api/utils/auth";
 import { getReferrerUrl } from "../../../../../../functions/server/getReferrerUrl";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../constants";
+import { AutoSignIn } from "../../../../../../components/client/AutoSignIn";
 
 const FreeScanSlug = "free-scan" as const;
 
@@ -28,7 +28,7 @@ type Props = {
 export default async function Onboarding({ params, searchParams }: Props) {
   const session = await getServerSession(authOptions);
   if (!session) {
-    return <SignInButton autoSignIn={true} />;
+    return <AutoSignIn />;
   }
 
   const { slug } = params;
