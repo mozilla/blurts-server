@@ -6,7 +6,7 @@ export async function up(knex) {
   return knex.schema
     .createTable("attributions", table => {
       table.increments('id').primary()
-      table.integer("subscriber_id").references("subscribers.id").notNullable();
+      table.integer("subscriber_id").references("subscribers.id").notNullable().onDelete("CASCADE").onUpdate("CASCADE");
       table.string("type").notNullable()
       table.string("utm_source")
       table.string("utm_campaign")
