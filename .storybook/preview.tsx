@@ -71,8 +71,7 @@ const preview: Preview = {
           }
 
           if (
-            path ===
-            "/user/dashboard/fix/data-broker-profiles/start-free-scan"
+            path === "/user/dashboard/fix/data-broker-profiles/start-free-scan"
           ) {
             linkTo("Pages/Guided resolution/1a. Free scan")();
           }
@@ -88,15 +87,13 @@ const preview: Preview = {
           }
 
           if (
-            path ===
-            "/user/dashboard/fix/data-broker-profiles/manual-remove"
+            path === "/user/dashboard/fix/data-broker-profiles/manual-remove"
           ) {
             linkTo("Pages/Guided resolution/1c. Manually resolve brokers")();
           }
 
           if (
-            path ===
-            "/user/dashboard/fix/data-broker-profiles/automatic-remove"
+            path === "/user/dashboard/fix/data-broker-profiles/automatic-remove"
           ) {
             linkTo(
               "Pages/Guided resolution/1d. Automatically resolve brokers",
@@ -104,7 +101,8 @@ const preview: Preview = {
           }
 
           if (
-            path === "/user/dashboard/fix/high-risk-data-breaches/ssn"
+            path ===
+            "/user/dashboard/fix/high-risk-data-breaches/social-security-number"
           ) {
             linkTo(
               "Pages/Guided resolution/2. High-risk data breaches",
@@ -113,8 +111,7 @@ const preview: Preview = {
           }
 
           if (
-            path ===
-            "/user/dashboard/fix/high-risk-data-breaches/credit-card"
+            path === "/user/dashboard/fix/high-risk-data-breaches/credit-card"
           ) {
             linkTo(
               "Pages/Guided resolution/2. High-risk data breaches",
@@ -123,8 +120,7 @@ const preview: Preview = {
           }
 
           if (
-            path ===
-            "/user/dashboard/fix/high-risk-data-breaches/bank-account"
+            path === "/user/dashboard/fix/high-risk-data-breaches/bank-account"
           ) {
             linkTo(
               "Pages/Guided resolution/2. High-risk data breaches",
@@ -132,27 +128,21 @@ const preview: Preview = {
             )();
           }
 
-          if (
-            path === "/user/dashboard/fix/high-risk-data-breaches/pin"
-          ) {
+          if (path === "/user/dashboard/fix/high-risk-data-breaches/pin") {
             linkTo(
               "Pages/Guided resolution/2. High-risk data breaches",
               "2d. PIN",
             )();
           }
 
-          if (
-            path === "/user/dashboard/fix/high-risk-data-breaches/done"
-          ) {
+          if (path === "/user/dashboard/fix/high-risk-data-breaches/done") {
             linkTo(
               "Pages/Guided resolution/2. High-risk data breaches",
               "2e. Done",
             )();
           }
 
-          if (
-            path === "/user/dashboard/fix/leaked-passwords/passwords"
-          ) {
+          if (path === "/user/dashboard/fix/leaked-passwords/passwords") {
             linkTo(
               "Pages/Guided resolution/3. Leaked passwords",
               "3a. Passwords",
@@ -160,8 +150,7 @@ const preview: Preview = {
           }
 
           if (
-            path ===
-            "/user/dashboard/fix/leaked-passwords/security-questions"
+            path === "/user/dashboard/fix/leaked-passwords/security-questions"
           ) {
             linkTo(
               "Pages/Guided resolution/3. Leaked passwords",
@@ -170,47 +159,35 @@ const preview: Preview = {
           }
 
           if (
-            path ===
-              "/user/dashboard/fix/leaked-passwords/passwords-done" ||
+            path === "/user/dashboard/fix/leaked-passwords/passwords-done" ||
             path ===
               "/user/dashboard/fix/leaked-passwords/security-questions-done"
           ) {
             linkTo("Pages/Guided resolution/3. Leaked passwords", "3c. Done")();
           }
 
-          if (
-            path ===
-            "/user/dashboard/fix/security-recommendations/phone"
-          ) {
+          if (path === "/user/dashboard/fix/security-recommendations/phone") {
             linkTo(
               "Pages/Guided resolution/4. Security recommendations",
               "4a. Phone number",
             )();
           }
 
-          if (
-            path ===
-            "/user/dashboard/fix/security-recommendations/email"
-          ) {
+          if (path === "/user/dashboard/fix/security-recommendations/email") {
             linkTo(
               "Pages/Guided resolution/4. Security recommendations",
               "4b. Email address",
             )();
           }
 
-          if (
-            path === "/user/dashboard/fix/security-recommendations/ip"
-          ) {
+          if (path === "/user/dashboard/fix/security-recommendations/ip") {
             linkTo(
               "Pages/Guided resolution/4. Security recommendations",
               "4c. IP address",
             )();
           }
 
-          if (
-            path ===
-            "/user/dashboard/fix/security-recommendations/done"
-          ) {
+          if (path === "/user/dashboard/fix/security-recommendations/done") {
             linkTo(
               "Pages/Guided resolution/4. Security recommendations",
               "4d. Done",
