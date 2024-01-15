@@ -13,7 +13,7 @@ import { StepLink } from "../../../../../../../../functions/server/getRelevantGu
 import {
   BreachResolutionRequest,
   HibpBreachDataTypes,
-} from "../../../../../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
+} from "../../../../../../../../deprecated/(authenticated)/user/breaches/breaches";
 import { getLocale } from "../../../../../../../../functions/universal/getLocale";
 
 export const leakedPasswordTypes = [

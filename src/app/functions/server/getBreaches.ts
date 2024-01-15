@@ -10,7 +10,7 @@ import {
   req,
 } from "../../../utils/hibp.js";
 import { upsertBreaches } from "../../../db/tables/breaches.js";
-import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
+import { Breach } from "../../deprecated/(authenticated)/user/breaches/breaches.js";
 
 let breaches: Array<Breach | HibpLikeDbBreach>;
 
