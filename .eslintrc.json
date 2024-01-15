@@ -118,6 +118,7 @@
         "src/middleware/**/*.js",
         "src/controllers/**/*.js",
         "src/app/deprecated/**/*",
+        "src/app/(migration_remnants)/**/*",
         "src/app/functions/server/breachResolution.ts"
       ],
       "rules": {
@@ -136,7 +137,8 @@
       // to avoid a barrage of warnings for older code:
       "files": ["**/*.{ts,tsx}"],
       "excludedFiles": [
-        "./src/app/deprecated/**/*"
+        "./src/app/deprecated/**/*",
+        "./src/app/(migration_remnants)/**/*"
       ],
       "extends": [
         "plugin:@typescript-eslint/recommended-requiring-type-checking"
