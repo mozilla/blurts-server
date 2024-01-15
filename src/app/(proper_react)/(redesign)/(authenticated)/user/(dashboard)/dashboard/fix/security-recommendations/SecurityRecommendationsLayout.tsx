@@ -24,7 +24,7 @@ import {
 import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
 import { hasPremium } from "../../../../../../../../functions/universal/user";
 import { SecurityRecommendationDataTypes } from "../../../../../../../../functions/universal/breach";
-import { BreachBulkResolutionRequest } from "../../../../../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
+import { BreachBulkResolutionRequest } from "../../../../../../../../deprecated/(authenticated)/user/breaches/breaches";
 
 export interface SecurityRecommendationsLayoutProps {
   type: SecurityRecommendationTypes;

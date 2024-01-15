@@ -4,7 +4,7 @@
 
 import { getL10n } from "./l10n";
 import AppConstants from "../../../appConstants.js";
-import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
+import { Breach } from "../../deprecated/(authenticated)/user/breaches/breaches";
 import { BreachDataTypes } from "../universal/breach";
 
 /**

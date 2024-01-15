@@ -74,7 +74,7 @@ import { getSubBreaches } from "./subscriberBreaches";
 import {
   Breach,
   Subscriber,
-} from "../app/(nextjs_migration)/(authenticated)/user/breaches/breaches";
+} from "../app/deprecated/(authenticated)/user/breaches/breaches";
 
 jest.mock("../db/tables/emailAddresses.js", () => ({
   getUserEmails: jest.fn(),
