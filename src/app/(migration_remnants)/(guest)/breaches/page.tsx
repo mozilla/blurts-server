@@ -9,8 +9,8 @@ import { getL10n } from "../../../functions/server/l10n";
 import { getLocale } from "../../../functions/universal/getLocale";
 import { BreachLogo } from "../../../components/server/BreachLogo";
 import { HibpLikeDbBreach } from "../../../../utils/hibp";
-import { Breach } from "../../(authenticated)/user/breaches/breaches";
-import { getNonce } from "../../functions/server/getNonce";
+import { Breach } from "../../../deprecated/(authenticated)/user/breaches/breaches";
+import { getNonce } from "../../../deprecated/functions/server/getNonce";
 
 export function generateMetadata() {
   const l10n = getL10n();
