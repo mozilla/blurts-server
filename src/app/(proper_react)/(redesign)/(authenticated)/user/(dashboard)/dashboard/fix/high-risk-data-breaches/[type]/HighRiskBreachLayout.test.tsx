@@ -117,7 +117,7 @@ it("shows the high-risk celebration view, next step is passwords", () => {
   });
   expect(buttonLink).toHaveAttribute(
     "href",
-    "/redesign/user/dashboard/fix/leaked-passwords/passwords",
+    "/user/dashboard/fix/leaked-passwords/passwords",
   );
 });
 
@@ -136,7 +136,7 @@ it("shows the high-risk celebration view, next step is security questions", () =
   });
   expect(buttonLink).toHaveAttribute(
     "href",
-    "/redesign/user/dashboard/fix/leaked-passwords/security-questions",
+    "/user/dashboard/fix/leaked-passwords/security-questions",
   );
 });
 
@@ -155,7 +155,7 @@ it("shows the high-risk celebration view, next step is security tips", () => {
   });
   expect(buttonLink).toHaveAttribute(
     "href",
-    "/redesign/user/dashboard/fix/security-recommendations/phone",
+    "/user/dashboard/fix/security-recommendations/phone",
   );
 });
 
@@ -172,5 +172,5 @@ it("shows the high-risk celebration view, next step is passwords, no next step",
   const buttonLink = screen.getByRole("link", {
     name: "Go to your Dashboard",
   });
-  expect(buttonLink).toHaveAttribute("href", "/redesign/user/dashboard");
+  expect(buttonLink).toHaveAttribute("href", "/user/dashboard");
 });

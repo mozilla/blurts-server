@@ -63,7 +63,7 @@ export const View = ({
       <FindExposures
         dataBrokerCount={dataBrokerCount}
         breachesTotalCount={breachesTotalCount}
-        previousRoute={previousRoute ?? "/redesign/user/dashboard"}
+        previousRoute={previousRoute ?? "/user/dashboard"}
       />
     ) : currentStep === "enterInfo" ? (
       <EnterInfo

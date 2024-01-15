@@ -119,7 +119,7 @@ export function ManualRemoveView(props: Props) {
                   {
                     elems: {
                       subscribe_link: (
-                        <Link href="/redesign/user/dashboard/fix/data-broker-profiles/automatic-remove" />
+                        <Link href="/user/dashboard/fix/data-broker-profiles/automatic-remove" />
                       ),
                     },
                   },
@@ -158,7 +158,7 @@ export function ManualRemoveView(props: Props) {
         <div className={styles.buttonsWrapper}>
           <Button
             variant="primary"
-            href="/redesign/user/dashboard/fix/data-broker-profiles/automatic-remove"
+            href="/user/dashboard/fix/data-broker-profiles/automatic-remove"
           >
             {l10n.getString(
               "fix-flow-data-broker-profiles-manual-remove-button-remove-for-me",

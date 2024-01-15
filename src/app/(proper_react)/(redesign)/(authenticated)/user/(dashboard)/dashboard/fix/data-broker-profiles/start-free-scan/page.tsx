@@ -17,7 +17,7 @@ import { StartFreeScanView } from "./StartFreeScanView";
 export default async function StartFreeScanPage() {
   const countryCode = getCountryCode(headers());
   if (countryCode !== "us") {
-    redirect("/redesign/user/dashboard");
+    redirect("/user/dashboard");
   }
 
   const session = await getServerSession(authOptions);
@@ -35,7 +35,7 @@ export default async function StartFreeScanPage() {
   if (latestScanData?.scan) {
     // If the user already has done a scan, let them view their results:
     return redirect(
-      "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers",
+      "/user/dashboard/fix/data-broker-profiles/view-data-brokers",
     );
   }
 

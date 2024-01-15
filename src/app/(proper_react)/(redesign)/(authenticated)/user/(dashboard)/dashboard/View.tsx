@@ -319,7 +319,7 @@ export const View = (props: Props) => {
                 CONST_ONEREP_MAX_SCANS_THRESHOLD ? (
                 <a
                   ref={waitlistTriggerRef}
-                  href="/redesign/user/welcome/free-scan?referrer=dashboard"
+                  href="/user/welcome/free-scan?referrer=dashboard"
                   onClick={() => {
                     recordTelemetry("link", "click", {
                       link_id: "exposures_all_fixed_free_scan",

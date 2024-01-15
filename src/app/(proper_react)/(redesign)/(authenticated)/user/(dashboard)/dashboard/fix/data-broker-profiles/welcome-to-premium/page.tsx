@@ -22,7 +22,7 @@ export default async function WelcomeToPlusPage() {
 
   // Ensure user is logged in
   if (!session?.user?.subscriber?.id) {
-    redirect("/redesign/user/dashboard/");
+    redirect("/user/dashboard/");
   }
 
   // MNTOR-2594 - log any users that are on welcome-to-premium page but not subscribed.

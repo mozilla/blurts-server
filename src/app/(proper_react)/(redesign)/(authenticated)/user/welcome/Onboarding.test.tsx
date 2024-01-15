@@ -255,10 +255,7 @@ it("does not navigate back to step 1 of the onboarding when directly linking to 
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   render(
-    <ComposedOnboarding
-      stepId="enterInfo"
-      previousRoute="/redesign/user/dashboard/"
-    />,
+    <ComposedOnboarding stepId="enterInfo" previousRoute="/user/dashboard/" />,
   );
 
   const backButton = screen.getByRole("button", {

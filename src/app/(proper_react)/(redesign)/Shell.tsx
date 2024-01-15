@@ -44,7 +44,7 @@ export const Shell = (props: Props) => {
             className={styles.mainMenu}
             aria-label={l10n.getString("main-nav-label")}
           >
-            <Link href="/redesign/user/dashboard" className={styles.homeLink}>
+            <Link href="/user/dashboard" className={styles.homeLink}>
               <Image
                 src={monitorLogo}
                 alt={l10n.getString("main-nav-link-home-label")}
@@ -55,7 +55,7 @@ export const Shell = (props: Props) => {
               {/* Note: If you add elements here, also add them to <MobileShell>'s navigation */}
               <li key="home">
                 <PageLink
-                  href="/redesign/user/dashboard"
+                  href="/user/dashboard"
                   activeClassName={styles.isActive}
                 >
                   {l10n.getString("main-nav-link-dashboard-label")}
@@ -63,7 +63,7 @@ export const Shell = (props: Props) => {
               </li>
               <li key="settings">
                 <PageLink
-                  href="/redesign/user/settings"
+                  href="/user/settings"
                   activeClassName={styles.isActive}
                 >
                   {l10n.getString("main-nav-link-settings-label")}

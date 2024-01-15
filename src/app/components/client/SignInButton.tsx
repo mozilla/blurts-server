@@ -25,7 +25,7 @@ export const SignInButton = () => {
         recordTelemetry("ctaButton", "click", {
           button_id: "sign_in",
         });
-        void signIn("fxa", { callbackUrl: "/redesign/user/dashboard/" });
+        void signIn("fxa", { callbackUrl: "/user/dashboard/" });
       }}
     >
       {l10n.getString("sign-in")}

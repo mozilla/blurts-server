@@ -115,7 +115,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </p>
             <div className={styles.cta}>
               <Button
-                href="/redesign/user/settings"
+                href="/user/settings"
                 small
                 variant="primary"
                 onPress={() => {
@@ -226,7 +226,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               props.totalNumberOfPerformedScans <
                 CONST_ONEREP_MAX_SCANS_THRESHOLD ? (
                 <Button
-                  href="/redesign/user/welcome/free-scan?referrer=dashboard"
+                  href="/user/welcome/free-scan?referrer=dashboard"
                   small
                   variant="primary"
                   onPress={() => {
@@ -478,7 +478,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </p>
             <div className={styles.cta}>
               <Button
-                href="/redesign/user/settings"
+                href="/user/settings"
                 small
                 variant="primary"
                 onPress={() => {
@@ -552,7 +552,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </p>
             <div className={styles.cta}>
               <Button
-                href="/redesign/user/settings"
+                href="/user/settings"
                 small
                 variant="primary"
                 onPress={() => {
@@ -639,7 +639,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
             </p>
             <div className={styles.cta}>
               <Button
-                href="/redesign/user/settings"
+                href="/user/settings"
                 small
                 variant="primary"
                 onPress={() => {

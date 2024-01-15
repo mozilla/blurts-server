@@ -140,7 +140,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         props.type === "passwords"
           ? "passwords-done"
           : "security-questions-done";
-      router.push(`/redesign/user/dashboard/fix/leaked-passwords/${doneSlug}`);
+      router.push(`/user/dashboard/fix/leaked-passwords/${doneSlug}`);
     } catch (_error) {
       // TODO: MNTOR-2563: Capture client error with @next/sentry
       setIsResolving(false);

@@ -70,7 +70,7 @@ export const MobileShell = (props: Props) => {
         </div>
         <div className={styles.headerMiddle}>
           <Link
-            href="/redesign/user/dashboard"
+            href="/user/dashboard"
             className={styles.homeLink}
             onClick={() => {
               recordTelemetry("ctaButton", "click", {
@@ -101,7 +101,7 @@ export const MobileShell = (props: Props) => {
             <ul>
               <li key="home">
                 <PageLink
-                  href="/redesign/user/dashboard"
+                  href="/user/dashboard"
                   activeClassName={styles.isActive}
                   onClick={() => {
                     recordTelemetry("ctaButton", "click", {
@@ -114,7 +114,7 @@ export const MobileShell = (props: Props) => {
               </li>
               <li key="settings">
                 <PageLink
-                  href="/redesign/user/settings"
+                  href="/user/settings"
                   activeClassName={styles.isActive}
                 >
                   {l10n.getString("main-nav-link-settings-label")}

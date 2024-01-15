@@ -37,7 +37,7 @@ export default async function SecurityRecommendations({
 
   const { type } = params;
   if (!highRiskBreachTypes.includes(type)) {
-    redirect("/redesign/user/dashboard");
+    redirect("/user/dashboard");
   }
 
   const result = await getOnerepProfileId(session.user.subscriber.id);

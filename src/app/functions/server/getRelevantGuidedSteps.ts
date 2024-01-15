@@ -18,47 +18,47 @@ export type StepDeterminationData = {
 //       guided through the pages.
 export const stepLinks = [
   {
-    href: "/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan",
+    href: "/user/dashboard/fix/data-broker-profiles/start-free-scan",
     id: "Scan",
   },
   {
-    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/social-security-number",
+    href: "/user/dashboard/fix/high-risk-data-breaches/social-security-number",
     id: "HighRiskSsn",
   },
   {
-    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card",
+    href: "/user/dashboard/fix/high-risk-data-breaches/credit-card",
     id: "HighRiskCreditCard",
   },
   {
-    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/bank-account",
+    href: "/user/dashboard/fix/high-risk-data-breaches/bank-account",
     id: "HighRiskBankAccount",
   },
   {
-    href: "/redesign/user/dashboard/fix/high-risk-data-breaches/pin",
+    href: "/user/dashboard/fix/high-risk-data-breaches/pin",
     id: "HighRiskPin",
   },
   {
-    href: "/redesign/user/dashboard/fix/leaked-passwords/passwords",
+    href: "/user/dashboard/fix/leaked-passwords/passwords",
     id: "LeakedPasswordsPassword",
   },
   {
-    href: "/redesign/user/dashboard/fix/leaked-passwords/security-questions",
+    href: "/user/dashboard/fix/leaked-passwords/security-questions",
     id: "LeakedPasswordsSecurityQuestion",
   },
   {
-    href: "/redesign/user/dashboard/fix/security-recommendations/phone",
+    href: "/user/dashboard/fix/security-recommendations/phone",
     id: "SecurityTipsPhone",
   },
   {
-    href: "/redesign/user/dashboard/fix/security-recommendations/email",
+    href: "/user/dashboard/fix/security-recommendations/email",
     id: "SecurityTipsEmail",
   },
   {
-    href: "/redesign/user/dashboard/fix/security-recommendations/ip",
+    href: "/user/dashboard/fix/security-recommendations/ip",
     id: "SecurityTipsIp",
   },
   {
-    href: "/redesign/user/dashboard",
+    href: "/user/dashboard",
     id: "Done",
   },
 ] as const satisfies ReadonlyArray<{ href: string; id: string }>;

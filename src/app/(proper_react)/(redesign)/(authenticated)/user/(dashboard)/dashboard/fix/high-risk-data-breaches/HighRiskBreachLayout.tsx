@@ -113,7 +113,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
       const isCurrentStepSection = Object.values(stepMap).includes(nextStep.id);
       const nextRoute = isCurrentStepSection
         ? nextStep.href
-        : "/redesign/user/dashboard/fix/high-risk-data-breaches/done";
+        : "/user/dashboard/fix/high-risk-data-breaches/done";
       router.push(nextRoute);
     } catch (_error) {
       // TODO: MNTOR-2563: Capture client error with @next/sentry

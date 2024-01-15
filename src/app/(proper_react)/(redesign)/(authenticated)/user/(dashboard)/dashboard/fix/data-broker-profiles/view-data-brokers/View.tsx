@@ -58,7 +58,7 @@ export const ViewDataBrokersView = (props: Props) => {
         <div className={styles.buttonsWrapper}>
           <Button
             variant="primary"
-            href="/redesign/user/dashboard/fix/data-broker-profiles/automatic-remove"
+            href="/user/dashboard/fix/data-broker-profiles/automatic-remove"
           >
             {l10n.getString(
               "fix-flow-data-broker-profiles-view-data-broker-profiles-button-remove-for-me",
@@ -66,9 +66,7 @@ export const ViewDataBrokersView = (props: Props) => {
           </Button>
           <Button
             variant="secondary"
-            href={
-              "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove"
-            }
+            href={"/user/dashboard/fix/data-broker-profiles/manual-remove"}
           >
             {l10n.getString(
               "fix-flow-data-broker-profiles-view-data-broker-profiles-button-remove-manually",
