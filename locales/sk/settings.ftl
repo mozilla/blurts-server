@@ -12,7 +12,7 @@ settings-page-title = Nastavenia { -product-short-name(case: "gen") }
 
 settings-alert-preferences-title = Predvoľby upozornení na únik údajov
 settings-alert-preferences-option-one = Upozornenia na únik údajov posielať na dotknutú e‑mailovú adresu
-settings-alert-preferences-option-two = Všetky upozornenia na únik údajov posielať na primárnu e‑mailovú adresu
+settings-alert-preferences-option-two = Všetky upozornenia na únik údajov posielať na hlavnú e‑mailovú adresu
 
 ## Monitored email addresses
 
@@ -24,10 +24,10 @@ settings-email-list-title = Monitorované e‑mailové adresy
 #   $limit (number) - Number of email addresses included in the plan
 settings-email-limit-info =
     { $limit ->
-        [one] Váš účet zahŕňa sledovanie { $limit } e‑mailovej adresy.
-        [few] Váš účet zahŕňa sledovanie až { $limit } e‑mailových adries.
-        [many] Váš účet zahŕňa sledovanie až { $limit } e‑mailových adries.
-       *[other] Váš účet zahŕňa sledovanie až { $limit } e‑mailových adries.
+        [one] Váš účet umožňuje sledovanie { $limit } e‑mailovej adresy.
+        [few] Váš účet umožňuje sledovanie až { $limit } e‑mailových adries.
+        [many] Váš účet umožňuje sledovanie až { $limit } e‑mailových adries.
+       *[other] Váš účet umožňuje sledovanie až { $limit } e‑mailových adries.
     }
 settings-email-verification-callout = Vyžaduje sa overenie e‑mailovej adresy
 settings-resend-email-verification-link = Znova poslať overovací e‑mail
