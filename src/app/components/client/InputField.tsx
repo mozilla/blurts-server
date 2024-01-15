@@ -9,11 +9,10 @@ import { AriaTextFieldProps, useTextField } from "react-aria";
 import styles from "./InputField.module.scss";
 
 export const InputField = (props: AriaTextFieldProps) => {
-  const { isRequired, label, validationState, value } = props;
+  const { isRequired, label, isInvalid, value } = props;
   const inputRef = useRef(null);
   const { errorMessageProps, validationErrors, inputProps, labelProps } =
     useTextField(props, inputRef);
-  const isInvalid = validationState === "invalid";
 
   return (
     <div className={styles.input}>

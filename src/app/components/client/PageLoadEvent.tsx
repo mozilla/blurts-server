@@ -59,7 +59,6 @@ export const PageLoadEvent = (props: Props) => {
     }
     localStorage.setItem("attributionsLastTouch", window.location.search);
   }
-
   // This component doesn't render anything.
   return <></>;
 };
