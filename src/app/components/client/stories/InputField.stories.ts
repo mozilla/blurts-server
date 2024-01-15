@@ -44,7 +44,7 @@ export const TextInputFieldInvalid: Story = {
     label: "Text input label",
     placeholder: "Type here",
     type: "text",
-    validationState: "invalid",
+    isInvalid: false,
   },
 };
 
@@ -53,7 +53,7 @@ export const TextInputFieldInvalidWithMessage: Story = {
     label: "Text input label",
     placeholder: "Type here",
     type: "text",
-    validationState: "invalid",
+    isInvalid: false,
     errorMessage: "Type something",
   },
 };
@@ -69,7 +69,7 @@ export const DateInputFieldInvalid: Story = {
   args: {
     label: "Date label",
     type: "date",
-    validationState: "invalid",
+    isInvalid: false,
   },
 };
 
@@ -77,7 +77,7 @@ export const DateInputFieldInvalidWithMessage: Story = {
   args: {
     label: "Date label",
     type: "date",
-    validationState: "invalid",
+    isInvalid: false,
     errorMessage: "Select a date",
   },
 };
