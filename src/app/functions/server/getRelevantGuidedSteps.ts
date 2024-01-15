@@ -101,8 +101,9 @@ export function getNextGuidedStep(
       }]. Is \`data.user\` defined: [${!!data.user}]. Country code: [${
         data.countryCode
       }]. Is \`data.latestScanData.scan\` defined: [${!!data.latestScanData
-        ?.scan}]. Number of scan results: [${data.latestScanData?.results
-        .length}]. Number of breaches: [${data.subscriberBreaches.length}].`,
+        ?.scan}]. Number of scan results: [${
+        data.latestScanData?.results.length
+      }]. Number of breaches: [${data.subscriberBreaches.length}].`,
     );
     return { id: "InvalidStep" } as never;
   }
