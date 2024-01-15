@@ -10,10 +10,10 @@ close-dialog-alt = Zavrieť dialógové okno
 # $total is the number of emails a user is allowed to add
 add-email-your-account-includes =
     { $total ->
-        [one] Váš účet zahŕňa sledovanie { $total } e‑mailovej adresy. Pridajte novú e‑mailovú adresu, aby ste zistili, či nebola súčasťou nejakého úniku.
-        [few] Váš účet zahŕňa sledovanie až { $total } e‑mailových adries. Pridajte novú e‑mailovú adresu, aby ste zistili, či nebola súčasťou nejakého úniku.
-        [many] Váš účet zahŕňa sledovanie až { $total } e‑mailových adries. Pridajte novú e‑mailovú adresu, aby ste zistili, či nebola súčasťou nejakého úniku.
-       *[other] Váš účet zahŕňa sledovanie až { $total } e‑mailových adries. Pridajte novú e‑mailovú adresu, aby ste zistili, či nebola súčasťou nejakého úniku.
+        [one] Váš účet umožňuje sledovanie { $total } e‑mailovej adresy. Pridajte novú e‑mailovú adresu, aby ste zistili, či nebola súčasťou nejakého úniku.
+        [few] Váš účet umožňuje sledovanie až { $total } e‑mailových adries. Pridajte novú e‑mailovú adresu, aby ste zistili, či nebola súčasťou nejakého úniku.
+        [many] Váš účet umožňuje sledovanie až { $total } e‑mailových adries. Pridajte novú e‑mailovú adresu, aby ste zistili, či nebola súčasťou nejakého úniku.
+       *[other] Váš účet umožňuje sledovanie až { $total } e‑mailových adries. Pridajte novú e‑mailovú adresu, aby ste zistili, či nebola súčasťou nejakého úniku.
     }
 add-email-address-input-label = E‑mailová adresa
 add-email-send-verification-button = Odoslať overovací odkaz

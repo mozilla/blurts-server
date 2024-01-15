@@ -948,3 +948,9 @@ breach-detail-cta-signup = Skontrolovať úniky
 floating-banner-text = Zvýšte svoju bezpečnosť online pomocou noviniek, tipov a aktualizácií od { -brand-Mozilla(case: "gen") }.
 floating-banner-link-label = Zaregistrovať sa
 floating-banner-dismiss-button-label = Nie, ďakujem
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: nový názov, vzhľad a ešte viac spôsobov, ako <b>získať späť svoje súkromie</b>.
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Zavrieť
