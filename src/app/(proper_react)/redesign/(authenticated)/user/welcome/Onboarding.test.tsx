@@ -159,8 +159,8 @@ it("confirm dialog is showing on step 2", async () => {
   const dobField = screen.getByLabelText("Date of birth*");
   await user.type(firstNameField, "User");
   await user.type(lastNameField, "Name");
-  await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
   await user.type(dobField, "2000-01-01");
+  await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
 
   await user.click(proceedButton);
 
@@ -344,8 +344,8 @@ it("sends telemetry to Glean when entering info", async () => {
   const dobField = screen.getByLabelText("Date of birth*");
   await user.type(firstNameField, "User");
   await user.type(lastNameField, "Name");
-  await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
   await user.type(dobField, "2000-01-01");
+  await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
 
   ["first_name", "last_name", "location", "date_of_birth"].forEach(
     (inputKey) => {
@@ -382,8 +382,8 @@ it("sends telemetry to Glean editing info", async () => {
   const dobField = screen.getByLabelText("Date of birth*");
   await user.type(firstNameField, "User");
   await user.type(lastNameField, "Name");
-  await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
   await user.type(dobField, "2000-01-01");
+  await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
   await user.click(proceedButton);
 
   const editButton = screen.getByRole("button", {
@@ -430,8 +430,8 @@ it("sends telemetry to Glean when starting the scan", async () => {
   const dobField = screen.getByLabelText("Date of birth*");
   await user.type(firstNameField, "User");
   await user.type(lastNameField, "Name");
-  await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
   await user.type(dobField, "2000-01-01");
+  await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
   await user.click(proceedButton);
 
   const confirmButton = screen.getByRole("button", {

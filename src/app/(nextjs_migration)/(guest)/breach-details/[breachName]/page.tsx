@@ -369,31 +369,30 @@ function makeRecommendationCards(breach: HibpLikeDbBreach) {
   const l10n = getL10n();
   const dataClasses = getSortedDataClasses(breach);
 
-  const priorityRecs = dataClasses.priority.map(
-    (dataClass) =>
-      // This code predates TypeScript:
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-      dataClass.recommendations?.map((r: any) => (
-        <div
-          key={r.ctaHref}
-          className={`breach-detail-recommendation ${
-            r.recIconClassName as string
-          }`}
-        >
-          <dt>{l10n.getString(r.recommendationCopy.subhead)}</dt>
-          <dd>
-            <p>{l10n.getString(r.recommendationCopy.body)}</p>
-            {r.recommendationCopy.cta ? (
-              <a
-                href={r.ctaHref}
-                target={r.ctaShouldOpenInNewTab ? "_blank" : "_self"}
-              >
-                {l10n.getString(r.recommendationCopy.cta)}
-              </a>
-            ) : null}
-          </dd>
-        </div>
-      )),
+  const priorityRecs = dataClasses.priority.map((dataClass) =>
+    // This code predates TypeScript:
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    dataClass.recommendations?.map((r: any) => (
+      <div
+        key={r.ctaHref}
+        className={`breach-detail-recommendation ${
+          r.recIconClassName as string
+        }`}
+      >
+        <dt>{l10n.getString(r.recommendationCopy.subhead)}</dt>
+        <dd>
+          <p>{l10n.getString(r.recommendationCopy.body)}</p>
+          {r.recommendationCopy.cta ? (
+            <a
+              href={r.ctaHref}
+              target={r.ctaShouldOpenInNewTab ? "_blank" : "_self"}
+            >
+              {l10n.getString(r.recommendationCopy.cta)}
+            </a>
+          ) : null}
+        </dd>
+      </div>
+    )),
   );
 
   const genericRecs = getAllGenericRecommendations().map((dataClass: any) => (

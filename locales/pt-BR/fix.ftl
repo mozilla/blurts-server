@@ -22,21 +22,29 @@ fix-flow-celebration-next-dashboard-label = Ir para seu painel
 ## High-risk flow
 
 fix-flow-celebration-high-risk-title = Você resolveu suas exposições de alto risco!
+fix-flow-celebration-high-risk-description-in-progress = Pode parecer trabalhoso, mas é importante para sua segurança. Mantenha o bom trabalho!
+fix-flow-celebration-high-risk-description-done = Pode parecer trabalhoso, mas é importante para sua segurança.
 fix-flow-celebration-high-risk-description-next-passwords = Agora vamos resolver suas senhas expostas.
 fix-flow-celebration-high-risk-description-next-security-questions = Agora vamos resolver suas perguntas de segurança expostas.
+fix-flow-celebration-high-risk-description-next-security-recommendations = A seguir, fornecemos recomendações de segurança personalizadas com base em quais dados seus foram expostos.
+fix-flow-celebration-high-risk-description-next-dashboard = Você chegou ao final das etapas. Pode ver qualquer item de ação e acompanhar o andamento no seu painel.
 
 ## Leaked passwords and security questions flow
 
 fix-flow-celebration-leaked-passwords-title = Suas senhas agora estão protegidas!
 fix-flow-celebration-security-questions-title = Suas perguntas de segurança estão protegidas!
 fix-flow-celebration-leaked-passwords-description-next-security-questions = Agora vamos revisar e alterar suas perguntas de segurança expostas.
+fix-flow-celebration-leaked-passwords-description-next-security-recommendations = A seguir, fornecemos recomendações de segurança personalizadas com base em quais dados seus foram expostos.
+fix-flow-celebration-leaked-passwords-description-next-dashboard = Ótimo! Você chegou ao final das etapas. Pode ver qualquer item de ação e acompanhar o andamento no seu painel.
 
 ## Security recommendations flow
 
 fix-flow-celebration-security-recommendations-title = Você concluiu todas as recomendações!
+fix-flow-celebration-security-recommendations-description-next-dashboard = Ótimo! Você chegou ao final das etapas. Pode ver qualquer item de ação e acompanhar o andamento no seu painel.
 
 # High Risk Data Breaches
 
+high-risk-breach-heading = O que fazer
 high-risk-breach-subheading = Isso requer acesso a suas informações confidenciais, então você precisa resolver manualmente.
 # Variables
 # $num_breaches is the number of breaches where the high risk data was found.
@@ -64,6 +72,7 @@ high-risk-breach-estimated-time =
 # Credit Card Breaches
 
 high-risk-breach-credit-card-title = O número do seu cartão de crédito foi exposto
+high-risk-breach-credit-card-description = Qualquer pessoa que obtiver pode fazer compras não autorizadas, pelas quais você poderá ser responsabilizado. Aja agora para evitar danos financeiros.
 high-risk-breach-credit-card-step-one = Se você ainda tiver este cartão, entre em contato com o emissor para relatar o roubo.
 high-risk-breach-credit-card-step-two = Solicite um novo cartão com outro número.
 high-risk-breach-credit-card-step-three = Verifique se há cobranças não autorizadas em suas contas.
@@ -79,12 +88,17 @@ high-risk-breach-bank-account-step-three = Verifique se há cobranças não auto
 # Social Security Number Breaches
 
 high-risk-breach-social-security-title = Seu número de previdência social foi exposto
+high-risk-breach-social-security-description = Fraudadores podem obter novos empréstimos ou cartões de crédito com seu número de previdência social. Aja rápido para evitar danos financeiros.
 high-risk-breach-social-security-step-one = Proteja-se <link_to_info>criando um alerta de fraude ou congelando seu crédito</link_to_info>.
 high-risk-breach-social-security-step-two = <link_to_info>Verifique seu relatório de crédito</link_to_info> para ver se há contas não reconhecidas.
 
 # Social Security Number Modal
 
 ssn-modal-title = Informações sobre alertas de fraude e congelamento de crédito
+ssn-modal-description-fraud-part-one = <b>Um alerta de fraude</b> exige que empresas verifiquem sua identidade antes de emitir novos créditos em seu nome. É gratuito, dura um ano e não afeta negativamente sua pontuação de crédito.
+ssn-modal-description-fraud-part-two = Para criar um, entre em contato com qualquer uma das três agências de crédito. Você não precisa entrar em contato com todas.
+ssn-modal-description-freeze-credit-part-one = <b>Congelar seu crédito</b> impede que alguém abra uma nova conta em seu nome. É gratuito e não afeta negativamente sua pontuação de crédito, mas você precisa descongelar antes de abrir novas contas.
+ssn-modal-description-freeze-credit-part-two = Para congelar seu crédito, entre em contato com cada uma das três agências de crédito — <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link> e <transunion_link>TransUnion</transunion_link>.
 ssn-modal-learn-more = Saiba mais sobre alertas de fraude e congelamento de crédito
 ssn-modal-ok = OK
 
@@ -152,6 +166,8 @@ security-recommendation-ip-summary =
         [one] Seu endereço IP foi exposto em { $num_breaches } vazamento de dados:
        *[other] Seu endereço IP foi exposto em { $num_breaches } vazamentos de dados:
     }
+security-recommendation-ip-description = Seu endereço IP identifica sua localização e provedor de serviços de internet. Hackers podem usar essas informações para encontrar sua localização ou tentar se conectar a seus dispositivos.
+security-recommendation-ip-step-one = Use uma VPN (como o <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) para ocultar seu endereço IP real e usar a internet de forma privativa.
 
 # Leaked Passwords
 
@@ -161,6 +177,8 @@ leaked-passwords-title = Sua senha em { $breach_name } foi exposta
 # Variables
 # $breach_date is the date when the breach occurred.
 leaked-passwords-summary = Apareceu em um vazamento de dados em { $breach_date }.
+leaked-passwords-description = Fraudadores podem acessar sua conta e provavelmente tentar usar em outras contas para ver se você usou a mesma senha. Altere em todo lugar onde você usou para se proteger.
+leaked-passwords-steps-title = O que fazer
 leaked-passwords-steps-subtitle = Isso requer acesso à sua conta, então você precisa resolver manualmente.
 # Variables
 # $breach_name is the name of the breach where the leaked password was found.
@@ -169,6 +187,15 @@ leaked-passwords-step-one = Mude sua senha de <b>{ $emails_affected }</b> em <li
 leaked-passwords-step-two = Mude em qualquer outro lugar onde a tenha usado.
 leaked-passwords-mark-as-fixed = Marcar como resolvido
 leaked-passwords-skip = Ignorar por enquanto
+# Variables
+# $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
+# "Est." is shortform for "Estimated".
+# "mins" is shortform for "minutes".
+leaked-passwords-estimated-time =
+    { $estimated_time ->
+        [one] Tempo estimado para concluir: { $estimated_time } minuto por site
+       *[other] Tempo estimado para concluir: { $estimated_time } minutos por site
+    }
 
 # Leaked Security Questions
 
@@ -178,4 +205,11 @@ leaked-security-questions-title = Suas perguntas de segurança foram expostas
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
 leaked-security-questions-summary = Apareceram em um vazamento de dados de { $breach_name } em { $breach_date }.
+leaked-security-questions-description = Fraudadores podem usar para acessar suas contas e qualquer outro site onde você tenha usado as mesmas perguntas de segurança. Altere agora mesmo para proteger suas contas.
+leaked-security-questions-steps-title = O que fazer
 leaked-security-questions-steps-subtitle = Isso requer acesso à sua conta, então você precisa resolver manualmente.
+# Variables
+# $breach_name is the name of the breach where the security questions were found.
+# $email_affected is the email associated with the breach.
+leaked-security-questions-step-one = Altere suas perguntas de segurança de <b>{ $email_affected }</b> em <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
+leaked-security-questions-step-two = Altere em qualquer outro site onde tenha usado as mesmas perguntas de segurança. Certifique-se de usar perguntas de segurança diferentes em cada conta.

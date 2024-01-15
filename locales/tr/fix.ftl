@@ -43,6 +43,11 @@ high-risk-breach-summary =
         [one] { $num_breaches } veri ihlalinde yer alıyor:
        *[other] { $num_breaches } veri ihlalinde yer alıyor:
     }
+# Variables
+# $breach_name is the name of the breach where the high risk data was found.
+# $breach_date is the date when the breach occurred.
+# An example of this string is Twitter on 13/09/18.
+high-risk-breach-name-and-date = { $breach_name }, <breach_date>{ $breach_date } tarihinde</breach_date>
 high-risk-breach-mark-as-fixed = Düzeltildi olarak işaretle
 high-risk-breach-skip = Şimdilik geç
 # Variables:
@@ -57,7 +62,7 @@ high-risk-breach-estimated-time =
 # Credit Card Breaches
 
 high-risk-breach-credit-card-title = Kredi kartı numaranız ele geçirildi
-high-risk-breach-credit-card-step-one = Bu kartı hâlâ kullanıyorsanız  kartı düzenleyen kuruluşla iletişime geçerek kartın çalındığını bildirin.
+high-risk-breach-credit-card-step-one = Bu kartı hâlâ kullanıyorsanız kartı düzenleyen kuruluşla iletişime geçerek kartın çalındığını bildirin.
 high-risk-breach-credit-card-step-two = Yeni bir numaraya sahip yeni bir kart isteyin.
 high-risk-breach-credit-card-step-three = Hesaplarınızda tanımadığınız ödemeler olup olmadığını kontrol edin.
 
@@ -126,6 +131,11 @@ security-recommendation-ip-summary =
 
 leaked-passwords-steps-title = İşte yapmanız gerekenler
 leaked-passwords-steps-subtitle = Bunun için hesabınıza erişim gerekiyor, o yüzden kendiniz düzeltmeniz gerekecek.
+# Variables
+# $breach_name is the name of the breach where the leaked password was found.
+# $emails_affected are the emails associated with the breach.
+leaked-passwords-step-one = <link_to_breach_site>{ $breach_name }</link_to_breach_site> sitesindeki/uygulamasındaki <b>{ $emails_affected }</b> hesabınızın parolasını değiştirin.
+leaked-passwords-step-two = Kullandığınız her yerde değiştirin.
 leaked-passwords-mark-as-fixed = Düzeltildi olarak işaretle
 leaked-passwords-skip = Şimdilik geç
 # Variables

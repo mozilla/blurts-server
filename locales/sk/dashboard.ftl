@@ -32,7 +32,7 @@ exposure-chart-caption-fixed = Tento graf zobrazuje celkový odhalení, ktoré s
 exposure-chart-returning-user-upgrade-prompt = Adresa bydliska, rodinní príslušníci a ďalšie položky zatiaľ nie sú zahrnuté.
 exposure-chart-returning-user-upgrade-prompt-cta = Spustiť bezplatné skenovanie
 exposure-chart-scan-in-progress-prompt = <b>Prebieha skenovanie:</b> adresa bydliska, rodinní príslušníci a ďalšie položky zatiaľ nie sú zahrnuté.
-modal-active-number-of-exposures-title = O vašom počte aktívnych odhalení
+modal-active-number-of-exposures-title = O počte aktívnych odhalení
 modal-active-number-of-exposures-part-three-all = Keď budú vyriešené, budú pridané k vášmu celkovému počtu vyriešených odhalení na stránke Vyriešené.
 modal-cta-ok = OK
 modal-open-alt = Otvoriť
@@ -52,6 +52,16 @@ dashboard-exposures-area-description-all-line1 =
         [few] Našli sme { $exposures_unresolved_num } odhalenia vašich údajov.
         [many] Našli sme { $exposures_unresolved_num } odhalení vašich údajov.
        *[other] Našli sme { $exposures_unresolved_num } odhalení vašich údajov.
+    }
+# Note: this line follows dashboard-exposures-area-description-all-line1.
+# Variables:
+#   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
+dashboard-exposures-area-description-all-line2 =
+    { $data_breach_unresolved_num ->
+        [one] Objavili sa pri { $data_breach_unresolved_num } úniku údajov.
+        [few] Objavili sa pri { $data_breach_unresolved_num } únikoch údajov.
+        [many] Objavili sa pri { $data_breach_unresolved_num } únikoch údajov.
+       *[other] Objavili sa pri { $data_breach_unresolved_num } únikoch údajov.
     }
 dashboard-fixed-area-headline-all = Pozrite si všetky odhalenia, ktoré sú vyriešené
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
@@ -75,6 +85,7 @@ dashboard-exposures-filter-reset = Vynulovať
 dashboard-top-banner-scan-in-progress-title = Skenovanie stále prebieha
 dashboard-top-banner-your-data-is-protected-title = Vaše údaje sú chránené
 dashboard-top-banner-your-data-is-protected-cta = Pozrite sa, čo je vyriešené
+dashboard-top-banner-lets-keep-protecting-title = Poďme ochrániť vaše údaje
 # Variables:
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
 dashboard-top-banner-lets-keep-protecting-description =
@@ -84,6 +95,7 @@ dashboard-top-banner-lets-keep-protecting-description =
         [many] Stále vám zostáva vyriešiť { $exposures_unresolved_num } odhalení. Pokračujte a chráňte sa. Prevedieme vás krok za krokom.
        *[other] Stále vám zostáva vyriešiť { $exposures_unresolved_num } odhalení. Pokračujte a chráňte sa. Prevedieme vás krok za krokom.
     }
+dashboard-top-banner-protect-your-data-cta = Poďme to napraviť
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
@@ -93,6 +105,16 @@ dashboard-top-banner-non-us-protect-your-data-description-line1 =
         [few] Našli sme { $exposures_unresolved_num } odhalenia vašich údajov.
         [many] Našli sme { $exposures_unresolved_num } odhalení vašich údajov.
        *[other] Našli sme { $exposures_unresolved_num } odhalení vašich údajov.
+    }
+# Note: this line is preceded by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
+# Variables:
+#   $data_breach_unresolved_num (number) - the total number of data breaches the user has.
+dashboard-top-banner-non-us-protect-your-data-description-line2 =
+    { $data_breach_unresolved_num ->
+        [one] Našli sme { $data_breach_unresolved_num } odhalenie vašich údajov. Prevedieme vás krokmi, pomocou ktorých vykonáte nápravu.
+        [few] Našli sme { $data_breach_unresolved_num } odhalenia vašich údajov. Prevedieme vás krokmi, pomocou ktorých vykonáte nápravu.
+        [many] Našli sme { $data_breach_unresolved_num } odhalení vašich údajov. Prevedieme vás krokmi, pomocou ktorých vykonáte nápravu.
+       *[other] Našli sme { $data_breach_unresolved_num } odhalení vašich údajov. Prevedieme vás krokmi, pomocou ktorých vykonáte nápravu.
     }
 dashboard-top-banner-no-exposures-found-title = Neboli nájdené žiadne odhalenia
 dashboard-top-banner-non-us-no-exposures-found-description = Skvelá správa! Prehľadali sme všetky známe úniky údajov a nenašli sme žiadne odhalenia. Budeme naďalej sledovať vašu e‑mailovú adresu a upozorníme vás, ak dôjde k novému úniku.
