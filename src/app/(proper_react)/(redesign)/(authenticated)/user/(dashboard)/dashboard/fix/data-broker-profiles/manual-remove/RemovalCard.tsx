@@ -65,7 +65,7 @@ export const RemovalCard = (props: Props) => {
             onPress={() => {
               void resolve();
               recordTelemetry("ctaButton", "click", {
-                button_id: `manually_resolve_data_broker`,
+                button_id: "manually_resolve_data_broker",
               });
               recordTelemetry("ctaButton", "click", {
                 button_id: `mark_as_fixed_${props.scanResult.data_broker}`,
