@@ -1,0 +1,18 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: mozilla-monitor
+  annotations:
+    github.com/project-slug: mozilla/blurts-server
+    github.com/team-slug: smozilla/teams/firefox-monitor-engineering
+    circleci.com/project-slug: github/mozilla/blurts-server
+    sentry.io/project-slug: mozilla/firefox-monitor
+  description: Firefox Monitor notifies users when their credentials have been compromised in a data breach.
+  tags:
+    - nextjs
+    - nodejs
+    - reactjs
+spec:
+  type: website
+  lifecycle: production
+  owner: group:firefox-monitor-engineering
