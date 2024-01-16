@@ -12,6 +12,7 @@ import {
   queryByText,
   render,
   screen,
+  within,
 } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { axe } from "jest-axe";
@@ -162,6 +163,39 @@ describe("When Premium is not available", () => {
     await user.click(signInButton);
 
     expect(signIn).toHaveBeenCalledTimes(1);
+  });
+
+  it("displays a banner announcing the rebrand to 'Mozilla Monitor' by default", () => {
+    const ComposedDashboard = composeStory(LandingNonUs, Meta);
+    render(<ComposedDashboard />);
+
+    const rebrandAnnouncement = screen.getByText(
+      "New name, look and even more ways to",
+      { exact: false },
+    );
+
+    expect(rebrandAnnouncement).toBeInTheDocument();
+  });
+
+  it("hides the banner announcing the rebrand to 'Mozilla Monitor' after clicking the dismiss button", async () => {
+    const ComposedDashboard = composeStory(LandingNonUs, Meta);
+    render(<ComposedDashboard />);
+
+    const rebrandAnnouncement = screen
+      .getAllByRole("complementary")
+      .find((el) =>
+        el.textContent?.includes(
+          "⁨Mozilla Monitor⁩: New name, look and even more ways to reclaim your privacy.",
+        ),
+      )!;
+    const dismissButton = within(rebrandAnnouncement).getByRole("button", {
+      name: "OK",
+    });
+
+    const user = userEvent.setup();
+    await user.click(dismissButton);
+
+    expect(rebrandAnnouncement).not.toBeInTheDocument();
   });
 
   it("shows the german scanning for exposures illustration", () => {
