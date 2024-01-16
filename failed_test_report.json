@@ -10,5 +10,177 @@
       ],
       "browser": "chromium"
     }
+  ],
+  [
+    {
+      "title": "Verify that the site header is displayed correctly for signed in users",
+      "status": "failed",
+      "duration": 8517,
+      "retries": 0,
+      "errors": [
+        {
+          "message": "Error: \u001b[31mTimed out 2000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByAltText('Firefox Monitor')\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByAltText('Firefox Monitor')\u001b[22m\n",
+          "stack": "Error: \u001b[31mTimed out 2000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByAltText('Firefox Monitor')\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByAltText('Firefox Monitor')\u001b[22m\n\n    at /Users/rokafor/github/monitor/reporter/src/e2e/specs/breachResolution.spec.ts:24:51",
+          "location": {
+            "file": "/Users/rokafor/github/monitor/reporter/src/e2e/specs/breachResolution.spec.ts",
+            "column": 51,
+            "line": 24
+          },
+          "snippet": "\u001b[0m \u001b[90m 22 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 23 |\u001b[39m     \u001b[90m// verify logo and profile button\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m expect(dataBreachPage\u001b[33m.\u001b[39mdataBreachesLogo)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 25 |\u001b[39m     \u001b[36mawait\u001b[39m expect(dataBreachPage\u001b[33m.\u001b[39mdataBreachesNavbarProfile)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 26 |\u001b[39m   })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 27 |\u001b[39m\u001b[0m"
+        }
+      ],
+      "browser": "chromium",
+      "time": 1705331511598
+    },
+    {
+      "title": "Verify that the Fixed tab layout and tooltips are displayed correctly",
+      "status": "failed",
+      "duration": 12416,
+      "retries": 0,
+      "errors": [
+        {
+          "message": "Error: \u001b[31mTimed out 2000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: locator('//div[starts-with(@class, \"ProgressCard_header\")]')\nExpected string: \u001b[32m\"Here’s what \u001b[7mwe\u001b[27m fixed\"\u001b[39m\nReceived string: \u001b[31m\"Here’s what \u001b[7myou\u001b[27m fixed\"\u001b[39m\nCall log:\n  \u001b[2m- expect.toHaveText with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for locator('//div[starts-with(@class, \"ProgressCard_header\")]')\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n",
+          "stack": "Error: \u001b[31mTimed out 2000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: locator('//div[starts-with(@class, \"ProgressCard_header\")]')\nExpected string: \u001b[32m\"Here’s what \u001b[7mwe\u001b[27m fixed\"\u001b[39m\nReceived string: \u001b[31m\"Here’s what \u001b[7myou\u001b[27m fixed\"\u001b[39m\nCall log:\n  \u001b[2m- expect.toHaveText with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for locator('//div[starts-with(@class, \"ProgressCard_header\")]')\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\n    at /Users/rokafor/github/monitor/reporter/src/e2e/specs/dashboard.spec.ts:91:58",
+          "location": {
+            "file": "/Users/rokafor/github/monitor/reporter/src/e2e/specs/dashboard.spec.ts",
+            "column": 58,
+            "line": 91
+          },
+          "snippet": "\u001b[0m \u001b[90m 89 |\u001b[39m     \u001b[90m// verify fixed tab's tooltips and popups\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 90 |\u001b[39m     \u001b[36mawait\u001b[39m dashboardPage\u001b[33m.\u001b[39mfixedTab\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 91 |\u001b[39m     \u001b[36mawait\u001b[39m expect(dashboardPage\u001b[33m.\u001b[39mheresWhatsFixedCardTitle)\u001b[33m.\u001b[39mtoHaveText(\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 92 |\u001b[39m       \u001b[32m\"Here’s what we fixed\"\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 93 |\u001b[39m     )\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 94 |\u001b[39m     \u001b[36mawait\u001b[39m expect(dashboardPage\u001b[33m.\u001b[39mfixedHeading)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m"
+        }
+      ],
+      "browser": "chromium",
+      "time": 1705331524636
+    },
+    {
+      "title": "Verify that the correct message is displayed on the Action Needed tab when all the exposures are fixed",
+      "status": "failed",
+      "duration": 14911,
+      "retries": 0,
+      "errors": [
+        {
+          "message": "Error: \u001b[31mTimed out 2000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByRole('heading', { name: 'Let’s keep protecting your data' })\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Let’s keep protecting your data' })\u001b[22m\n",
+          "stack": "Error: \u001b[31mTimed out 2000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByRole('heading', { name: 'Let’s keep protecting your data' })\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Let’s keep protecting your data' })\u001b[22m\n\n    at /Users/rokafor/github/monitor/reporter/src/e2e/specs/dashboard.spec.ts:74:54",
+          "location": {
+            "file": "/Users/rokafor/github/monitor/reporter/src/e2e/specs/dashboard.spec.ts",
+            "column": 54,
+            "line": 74
+          },
+          "snippet": "\u001b[0m \u001b[90m 72 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 73 |\u001b[39m     \u001b[90m// verify overview card\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 74 |\u001b[39m     \u001b[36mawait\u001b[39m expect(dashboardPage\u001b[33m.\u001b[39mexposuresCardHeading)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 75 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 76 |\u001b[39m     \u001b[90m// TODO: add verifications for all fixed exposures state\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 77 |\u001b[39m   })\u001b[33m;\u001b[39m\u001b[0m"
+        }
+      ],
+      "browser": "chromium",
+      "time": 1705331524849
+    },
+    {
+      "title": "Verify that the exposure list contains only fixed and in progress cards",
+      "status": "failed",
+      "duration": 7603,
+      "retries": 0,
+      "errors": [
+        {
+          "message": "Error: \u001b[31mTimed out 2000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByRole('heading', { name: 'View all exposures that are fixed or in-progress' })\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'View all exposures that are fixed or in-progress' })\u001b[22m\n",
+          "stack": "Error: \u001b[31mTimed out 2000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByRole('heading', { name: 'View all exposures that are fixed or in-progress' })\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'View all exposures that are fixed or in-progress' })\u001b[22m\n\n    at /Users/rokafor/github/monitor/reporter/src/e2e/specs/dashboard.spec.ts:191:46",
+          "location": {
+            "file": "/Users/rokafor/github/monitor/reporter/src/e2e/specs/dashboard.spec.ts",
+            "column": 46,
+            "line": 191
+          },
+          "snippet": "\u001b[0m \u001b[90m 189 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 190 |\u001b[39m     \u001b[90m// verify fixed or in-progress\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 191 |\u001b[39m     \u001b[36mawait\u001b[39m expect(dashboardPage\u001b[33m.\u001b[39mfixedHeading)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 192 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 193 |\u001b[39m     \u001b[90m// TODO: add stub to fill in fixed/in-progress items\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 194 |\u001b[39m     \u001b[36mconst\u001b[39m listCount \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[0m"
+        }
+      ],
+      "browser": "chromium",
+      "time": 1705331532940
+    },
+    {
+      "title": "Verify that the site header is displayed correctly for signed in users",
+      "status": "failed",
+      "duration": 5742,
+      "retries": 0,
+      "errors": [
+        {
+          "message": "Error: \u001b[31mTimed out 2000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByAltText('Firefox Monitor')\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByAltText('Firefox Monitor')\u001b[22m\n",
+          "stack": "Error: \u001b[31mTimed out 2000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByAltText('Firefox Monitor')\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByAltText('Firefox Monitor')\u001b[22m\n\n    at /Users/rokafor/github/monitor/reporter/src/e2e/specs/breachResolution.spec.ts:24:51",
+          "location": {
+            "file": "/Users/rokafor/github/monitor/reporter/src/e2e/specs/breachResolution.spec.ts",
+            "column": 51,
+            "line": 24
+          },
+          "snippet": "\u001b[0m \u001b[90m 22 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 23 |\u001b[39m     \u001b[90m// verify logo and profile button\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m expect(dataBreachPage\u001b[33m.\u001b[39mdataBreachesLogo)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 25 |\u001b[39m     \u001b[36mawait\u001b[39m expect(dataBreachPage\u001b[33m.\u001b[39mdataBreachesNavbarProfile)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 26 |\u001b[39m   })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 27 |\u001b[39m\u001b[0m"
+        }
+      ],
+      "browser": "firefox",
+      "time": 1705331543428
+    },
+    {
+      "title": "Verify that the correct message is displayed on the Action Needed tab when all the exposures are fixed",
+      "status": "failed",
+      "duration": 6163,
+      "retries": 0,
+      "errors": [
+        {
+          "message": "Error: \u001b[31mTimed out 2000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByRole('heading', { name: 'Let’s keep protecting your data' })\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Let’s keep protecting your data' })\u001b[22m\n",
+          "stack": "Error: \u001b[31mTimed out 2000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByRole('heading', { name: 'Let’s keep protecting your data' })\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Let’s keep protecting your data' })\u001b[22m\n\n    at /Users/rokafor/github/monitor/reporter/src/e2e/specs/dashboard.spec.ts:74:54",
+          "location": {
+            "file": "/Users/rokafor/github/monitor/reporter/src/e2e/specs/dashboard.spec.ts",
+            "column": 54,
+            "line": 74
+          },
+          "snippet": "\u001b[0m \u001b[90m 72 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 73 |\u001b[39m     \u001b[90m// verify overview card\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 74 |\u001b[39m     \u001b[36mawait\u001b[39m expect(dashboardPage\u001b[33m.\u001b[39mexposuresCardHeading)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 75 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 76 |\u001b[39m     \u001b[90m// TODO: add verifications for all fixed exposures state\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 77 |\u001b[39m   })\u001b[33m;\u001b[39m\u001b[0m"
+        }
+      ],
+      "browser": "firefox",
+      "time": 1705331556124
+    },
+    {
+      "title": "Verify that the Fixed tab layout and tooltips are displayed correctly",
+      "status": "failed",
+      "duration": 11590,
+      "retries": 0,
+      "errors": [
+        {
+          "message": "Error: \u001b[31mTimed out 2000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: locator('//div[starts-with(@class, \"ProgressCard_header\")]')\nExpected string: \u001b[32m\"Here’s what \u001b[7mwe\u001b[27m fixed\"\u001b[39m\nReceived string: \u001b[31m\"Here’s what \u001b[7myou\u001b[27m fixed\"\u001b[39m\nCall log:\n  \u001b[2m- expect.toHaveText with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for locator('//div[starts-with(@class, \"ProgressCard_header\")]')\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n",
+          "stack": "Error: \u001b[31mTimed out 2000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: locator('//div[starts-with(@class, \"ProgressCard_header\")]')\nExpected string: \u001b[32m\"Here’s what \u001b[7mwe\u001b[27m fixed\"\u001b[39m\nReceived string: \u001b[31m\"Here’s what \u001b[7myou\u001b[27m fixed\"\u001b[39m\nCall log:\n  \u001b[2m- expect.toHaveText with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for locator('//div[starts-with(@class, \"ProgressCard_header\")]')\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\u001b[2m  -   locator resolved to <div class=\"ProgressCard_header__StUxr\">…</div>\u001b[22m\n\u001b[2m  -   unexpected value \"Here’s what you fixed\"\u001b[22m\n\n    at /Users/rokafor/github/monitor/reporter/src/e2e/specs/dashboard.spec.ts:91:58",
+          "location": {
+            "file": "/Users/rokafor/github/monitor/reporter/src/e2e/specs/dashboard.spec.ts",
+            "column": 58,
+            "line": 91
+          },
+          "snippet": "\u001b[0m \u001b[90m 89 |\u001b[39m     \u001b[90m// verify fixed tab's tooltips and popups\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 90 |\u001b[39m     \u001b[36mawait\u001b[39m dashboardPage\u001b[33m.\u001b[39mfixedTab\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 91 |\u001b[39m     \u001b[36mawait\u001b[39m expect(dashboardPage\u001b[33m.\u001b[39mheresWhatsFixedCardTitle)\u001b[33m.\u001b[39mtoHaveText(\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 92 |\u001b[39m       \u001b[32m\"Here’s what we fixed\"\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 93 |\u001b[39m     )\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 94 |\u001b[39m     \u001b[36mawait\u001b[39m expect(dashboardPage\u001b[33m.\u001b[39mfixedHeading)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m"
+        }
+      ],
+      "browser": "firefox",
+      "time": 1705331563064
+    },
+    {
+      "title": "Verify that the exposure list contains only fixed and in progress cards",
+      "status": "failed",
+      "duration": 5674,
+      "retries": 0,
+      "errors": [
+        {
+          "message": "Error: \u001b[31mTimed out 2000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByRole('heading', { name: 'View all exposures that are fixed or in-progress' })\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'View all exposures that are fixed or in-progress' })\u001b[22m\n",
+          "stack": "Error: \u001b[31mTimed out 2000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: getByRole('heading', { name: 'View all exposures that are fixed or in-progress' })\nExpected: visible\nReceived: hidden\nCall log:\n  \u001b[2m- expect.toBeVisible with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'View all exposures that are fixed or in-progress' })\u001b[22m\n\n    at /Users/rokafor/github/monitor/reporter/src/e2e/specs/dashboard.spec.ts:191:46",
+          "location": {
+            "file": "/Users/rokafor/github/monitor/reporter/src/e2e/specs/dashboard.spec.ts",
+            "column": 46,
+            "line": 191
+          },
+          "snippet": "\u001b[0m \u001b[90m 189 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 190 |\u001b[39m     \u001b[90m// verify fixed or in-progress\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 191 |\u001b[39m     \u001b[36mawait\u001b[39m expect(dashboardPage\u001b[33m.\u001b[39mfixedHeading)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 192 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 193 |\u001b[39m     \u001b[90m// TODO: add stub to fill in fixed/in-progress items\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 194 |\u001b[39m     \u001b[36mconst\u001b[39m listCount \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[0m"
+        }
+      ],
+      "browser": "firefox",
+      "time": 1705331569687
+    },
+    {
+      "title": "Verify landing page elements - free scan",
+      "status": "timedOut",
+      "duration": 60003,
+      "retries": 0,
+      "errors": [
+        { "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m" }
+      ],
+      "browser": "chromium"
+    }
   ]
 ]
