@@ -168,7 +168,7 @@ export function ManualRemoveView(props: Props) {
           <Button
             variant="primary"
             onPress={() => {
-              recordTelemetry("ctaButton", "click", {
+              recordTelemetry("upgradeIntent", "click", {
                 button_id: "manual_removal_upsell",
               })}}
             href="/user/dashboard/fix/data-broker-profiles/automatic-remove"
