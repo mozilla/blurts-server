@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { headers } from "next/headers";
+import { headers, cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { View } from "./View";
@@ -29,6 +29,7 @@ import getPremiumSubscriptionUrl from "../../../../../../functions/server/getPre
 import { refreshStoredScanResults } from "../../../../../../functions/server/refreshStoredScanResults";
 import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
 import { parseIso8601Datetime } from "../../../../../../../utils/parse";
+import { addAttributionForSubscriber } from "../../../../../../../db/tables/attributions";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
@@ -37,7 +38,52 @@ export default async function DashboardPage() {
   }
 
   const headersList = headers();
+  const cookiesList = cookies();
   const countryCode = getCountryCode(headersList);
+
+  if (cookiesList.get("attributionsFirstTouch")?.value) {
+    const searchParams = new URLSearchParams(
+      cookiesList.get("attributionsFirstTouch")?.value,
+    );
+    const attribution = {
+      type: "firstTouch",
+      entrypoint: searchParams.get("entrypoint") ?? "",
+      utm_campaign: searchParams.get("utm_campaign") ?? "",
+      utm_medium: searchParams.get("utm_medium") ?? "",
+      utm_source: searchParams.get("utm_source") ?? "",
+      utm_term: searchParams.get("utm_term") ?? "",
+    };
+    try {
+      await addAttributionForSubscriber(
+        session.user.subscriber.id,
+        attribution,
+      );
+    } catch (e) {
+      //ignore
+    }
+  }
+
+  if (cookiesList.get("attributionsLastTouch")) {
+    const searchParams = new URLSearchParams(
+      cookiesList.get("attributionsLastTouch") ?? "",
+    );
+    const attribution = {
+      type: "lastTouch",
+      entrypoint: searchParams.get("entrypoint") ?? "",
+      utm_campaign: searchParams.get("utm_campaign") ?? "",
+      utm_medium: searchParams.get("utm_medium") ?? "",
+      utm_source: searchParams.get("utm_source") ?? "",
+      utm_term: searchParams.get("utm_term") ?? "",
+    };
+    try {
+      await addAttributionForSubscriber(
+        session.user.subscriber.id,
+        attribution,
+      );
+    } catch (e) {
+      //ignore
+    }
+  }
 
   const result = await getOnerepProfileId(session.user.subscriber.id);
   const profileId = result[0]["onerep_profile_id"] as number;
