@@ -30,12 +30,16 @@ settings-email-limit-info =
 settings-email-verification-callout = Lypset verifikim email-i
 settings-resend-email-verification-link = Ridërgo email verifikimi
 settings-add-email-button = Shtoni adresë email
+# Deprecated
 settings-delete-email-button = Fshije adresën email
-
+settings-remove-email-button-label = Hiqe
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Ndale mbikëqyrjen për { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] Shfaqet në { $breachCount } cenim të ditur.

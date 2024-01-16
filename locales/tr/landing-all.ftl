@@ -3,12 +3,16 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
+landing-all-hero-lead = Verilerinizin sızdırılıp sızdırılmadığını görmek için veri ihlallerini tarıyor ve bunları düzeltmeniz için gereken adımları söylüyoruz.
 landing-all-hero-emailform-input-placeholder = kullanici@example.com
 landing-all-hero-emailform-input-label = Veri ihlali risklerini kontrol etmek için e-posta adresinizi yazın.
 landing-all-hero-emailform-submit-label = Ücretsiz taramayı başlat
+# This is a label underneath a big number "14" - it's an image that demos Monitor.
+landing-all-hero-image-chart-label = veri ihlali
 
 # Value Proposition
 
+landing-all-value-prop-fix-exposures = Veri ihlallerini çözmenize yardımcı oluyoruz
 landing-all-value-prop-info-at-risk = Hangi bilgilerim risk altında olabilir?
 
 # Quote

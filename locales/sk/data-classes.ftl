@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = zostatky na účtoch
@@ -14,7 +19,7 @@ avatars = avatary
 bank-account-numbers = čísla bankových účtov
 beauty-ratings = hodnotenia krásy
 biometric-data = biometrické údaje
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = biografické údaje
 browser-user-agent-details = podrobnosti o user agentoch používateľov
@@ -35,9 +40,9 @@ customer-interactions = interakcie so zákazníkmi
 dates-of-birth = dátumy narodenia
 deceased-date = dátumy úmrtia
 deceased-statuses = stavy zosnulých
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
-delivery-instructions = Pokyny na doručenie
+delivery-instructions = pokyny na doručenie
 device-information = informácie o zariadeniach
 device-serial-numbers = sériové čísla zariadení
 device-usage-tracking-data = údaje o využívaní zariadenia
@@ -75,13 +80,13 @@ instant-messenger-identities = identity z chatových služieb
 ip-addresses = IP adresy
 job-applications = žiadosti o zamestnanie
 job-titles = názvy pracovných pozícií
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = evidenčné čísla vozidiel
 living-costs = životné náklady
 # This string refers to financial loans.
-loan-information = Informácie o pôžičke
+loan-information = informácie o pôžičke
 login-histories = história prihlasovania
-loyalty-program-details = Podrobnosti o vernostnom programe
+loyalty-program-details = podrobnosti o vernostnom programe
 mac-addresses = MAC adresy
 marital-statuses = informácie o rodinnom stave
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -92,14 +97,14 @@ nationalities = národnosti
 net-worths = čistá hodnota
 nicknames = prezývky
 # no data classes found
-none-data-class = Žiadne
+none-data-class = žiadne
 occupations = zamestnania
 # various data classes grouped together
-other-data-class = Iné
+other-data-class = iné
 parenting-plans = rodičovské plány
 partial-credit-card-data = čiastočné údaje o platobných kartách
 partial-dates-of-birth = čiastočné dátumy narodenia
-partial-phone-numbers = Čiastočné telefónne čísla
+partial-phone-numbers = čiastočné telefónne čísla
 passport-numbers = čísla cestovných pasov
 password-hints = pomôcky k heslám
 password-strengths = sila hesla
@@ -150,7 +155,7 @@ user-website-urls = URL adresy webových stránok používateľov
 usernames = používateľské mená
 utility-bills = účty
 vehicle-details = informácie o vozidlách
-vehicle-identification-numbers-vins = Identifikačné čísla vozidiel (VIN)
+vehicle-identification-numbers-vins = identifikačné čísla vozidiel (VIN)
 website-activity = záznam aktivity na webovej stránke
 work-habits = pracovné návyky
 years-of-birth = roky narodenia
