@@ -187,7 +187,7 @@ section + section {
 .mobile .site-footer > menu {
   flex-basis: 100%;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
 }
 
 button,
