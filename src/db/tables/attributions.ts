@@ -21,6 +21,7 @@ async function addAttributionForSubscriber(
   attribution: Partial<AttributionRow>,
 ) {
   logger.info("addAttributionForSubscriber", { subscriberId, attribution });
+  attribution.subscriber_id = subscriberId;
   const res = await knex("attributions").insert(attribution).returning("*");
   return res[0] as AttributionRow;
 }

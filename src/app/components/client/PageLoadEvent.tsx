@@ -18,7 +18,11 @@ export type Props = {
 
 // Empty component that records a page view on first load.
 export const PageLoadEvent = (props: Props) => {
-  const [cookies, setCookie] = useCookies(["userId"]);
+  const [cookies, setCookie] = useCookies([
+    "userId",
+    "attributionsFirstTouch",
+    "attributionsLastTouch",
+  ]);
   const pathname = usePathname();
 
   const recordTelemetry = useTelemetry();
@@ -51,14 +55,20 @@ export const PageLoadEvent = (props: Props) => {
 
     // record attributions on page load
     if (window.location.search?.length > 0) {
-      if (!localStorage.getItem("attributionsFirstTouch")) {
-        localStorage.setItem("attributionsFirstTouch", window.location.search);
+      if (!cookies.attributionsFirstTouch) {
+        setCookie("attributionsFirstTouch", window.location.search);
       }
-      localStorage.setItem("attributionsLastTouch", window.location.search);
+      setCookie("attributionsLastTouch", window.location.search);
     }
 
     recordTelemetry("page", "view", pageViewParams);
-  }, [recordTelemetry, pathname, userId]);
+  }, [
+    recordTelemetry,
+    setCookie,
+    cookies.attributionsFirstTouch,
+    pathname,
+    userId,
+  ]);
   // This component doesn't render anything.
   return <></>;
 };
