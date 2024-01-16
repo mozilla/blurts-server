@@ -25,9 +25,10 @@ import {
 import { FixView } from "../FixView";
 import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
 import { hasPremium } from "../../../../../../../../functions/universal/user";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LeakedPasswordsDataTypes } from "../../../../../../../../functions/universal/breach";
+import { useTelemetry } from "../../../../../../../../hooks/useTelemetry";
 
 export interface LeakedPasswordsLayoutProps {
   type: LeakedPasswordsTypes;
@@ -39,6 +40,7 @@ export interface LeakedPasswordsLayoutProps {
 export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   const l10n = useL10n();
   const router = useRouter();
+  const recordTelemetry = useTelemetry();
   const [isResolving, setIsResolving] = useState(false);
   const [subscriberBreaches, setSubscriberBreaches] = useState(
     props.data.subscriberBreaches,
@@ -148,6 +150,16 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   };
   /* c8 ignore stop */
 
+  useEffect(() => {
+    recordTelemetry("page", "view", {
+      utm_campaign:
+        props.type === "passwords"
+          ? "password_exposed"
+          : "security_question_exposed",
+      utm_source: "guided_experience",
+    });
+  }, [props.type, recordTelemetry]);
+
   return (
     <FixView
       subscriberEmails={props.subscriberEmails}
@@ -168,16 +180,31 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
               <Button
                 variant="primary"
                 small
-                /* c8 ignore next 3 */
                 onPress={() => {
                   void handleUpdateBreachStatus();
+                  recordTelemetry("ctaButton", "click", {
+                    button_id:
+                      props.type === "passwords"
+                        ? "mark_as_fixed_password_[name of breach]"
+                        : "mark_as_fixed_security_question_[name of breach]",
+                  });
                 }}
                 autoFocus={true}
                 disabled={isResolving}
               >
                 {l10n.getString("leaked-passwords-mark-as-fixed")}
               </Button>
-              <Link href={nextStep.href}>
+              <Link
+                href={nextStep.href}
+                onClick={() => {
+                  recordTelemetry("ctaButton", "click", {
+                    button_id:
+                      props.type === "passwords"
+                        ? "skip_resolution_password"
+                        : "skip_resolution_security_question",
+                  });
+                }}
+              >
                 {l10n.getString("leaked-passwords-skip")}
               </Link>
             </>

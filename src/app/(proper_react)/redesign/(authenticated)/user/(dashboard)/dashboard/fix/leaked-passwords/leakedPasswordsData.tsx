@@ -209,12 +209,17 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
               <li>
                 {l10n.getFragment("leaked-passwords-step-one", {
                   elems: {
-                    // TODO: Find a way  to go to the actual breach site
+                    // TODO: Find a way to go to the actual breach site
                     link_to_breach_site: (
                       <a
                         href={breachSite}
                         target="_blank"
                         rel="noopener noreferrer"
+                        // onClick={() => {
+                        //   recordTelemetry("link", "click", {
+                        //     link_id: `changed_password_${breachName}`,
+                        //   });
+                        // }}
                       />
                     ),
                     b: <strong />,
@@ -262,6 +267,11 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                         href={breachSite}
                         target="_blank"
                         rel="noopener noreferrer"
+                        // onClick={() => {
+                        //   recordTelemetry("link", "click", {
+                        //     link_id: `changed_security_question_${breachName}`,
+                        //   });
+                        // }}
                       />
                     ),
                     b: <strong />,
