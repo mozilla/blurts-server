@@ -13,7 +13,6 @@ export async function up(knex) {
       table.string("utm_medium")
       table.string("utm_term")
       table.string("entrypoint")
-      table.string("flow_id")
       table.jsonb("other_utm_parameters")
       table.timestamp("created_at").defaultTo(knex.fn.now())
       table.timestamp("modified_at").defaultTo(knex.fn.now())

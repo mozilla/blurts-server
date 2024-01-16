@@ -43,7 +43,6 @@ type UpdateAttribution = Pick<
   | "utm_medium"
   | "utm_term"
   | "entrypoint"
-  | "flow_id"
   | "other_utm_parameters"
   | "updated_at"
 >;

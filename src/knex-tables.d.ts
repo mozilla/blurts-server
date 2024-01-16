@@ -20,7 +20,6 @@ declare module "knex/types/tables" {
     utm_medium?: string;
     utm_term?: string;
     entrypoint?: string;
-    flow_id?: string;
     other_utm_parameters?: Record<string, string>;
     created_at: Date;
     updated_at: Date;
@@ -33,7 +32,6 @@ declare module "knex/types/tables" {
     | "utm_medium"
     | "utm_term"
     | "entrypoint"
-    | "flow_id"
     | "other_utm_parameters"
   >;
   type AttributionAutoInsertedColumns = Extract<
