@@ -18,7 +18,7 @@ import MozillaLogo from "../../../../client/images/moz-logo-1color-white-rgb-01.
 import { getL10n } from "../../../functions/server/l10n";
 import { authOptions } from "../../../api/utils/auth";
 import { getNonce } from "../../functions/server/getNonce";
-import { PageLoadEvent } from "../../components/client/PageLoadEvent";
+import { PageLoadEvent } from "../../../components/client/PageLoadEvent";
 import { getExperiments } from "../../../functions/server/getExperiments";
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 
