@@ -27,12 +27,14 @@ import { Footer } from "../Footer";
 import { FaqSection } from "./Faq";
 import { SignInButton } from "../../../components/client/SignInButton";
 import { RebrandAnnouncement } from "./RebrandAnnouncement";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 export type Props = {
   eligibleForPremium: boolean;
   l10n: ExtendedReactLocalization;
   countryCode: string;
   scanLimitReached: boolean;
+  enabledFlags: FeatureFlagName[];
 };
 
 export const View = (props: Props) => {
@@ -247,7 +249,9 @@ export const View = (props: Props) => {
         />
       </div>
       <Footer l10n={props.l10n} />
-      <RebrandAnnouncement />
+      {props.enabledFlags.includes("RebrandAnnouncement") && (
+        <RebrandAnnouncement />
+      )}
     </main>
   );
 };

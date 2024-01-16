@@ -11,6 +11,7 @@ const meta: Meta<typeof View> = {
   component: View,
   args: {
     l10n: getOneL10nSync(),
+    enabledFlags: ["RebrandAnnouncement"],
   },
 };
 
