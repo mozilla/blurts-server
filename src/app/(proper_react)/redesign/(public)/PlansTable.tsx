@@ -55,6 +55,7 @@ import {
 import { getLocale } from "../../../functions/universal/getLocale";
 import { Button } from "../../../components/client/Button";
 import { signIn } from "next-auth/react";
+import { useTelemetry } from "../../../hooks/useTelemetry";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../constants";
 
 export type Props = {
@@ -74,6 +75,7 @@ const monthlyPriceMonthlyBilling = 42.42;
 
 export const PlansTable = (props: Props & ScanLimitProp) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const roundedPriceFormatter = new Intl.NumberFormat(getLocale(l10n), {
     style: "currency",
     currency: "USD",
@@ -115,7 +117,15 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
           <hr />
           <div className={styles.priceSection}>
             <BillingPeriodToggle
-              onChange={(newValue) => setBillingPeriod(newValue)}
+              onChange={(newValue) => {
+                setBillingPeriod(newValue);
+                recordTelemetry("button", "click", {
+                  button_id:
+                    newValue === "yearly"
+                      ? "selected_yearly_plan"
+                      : "selected_monthly_plan",
+                });
+              }}
             />
             <p aria-live="polite" className={styles.cost}>
               <b className={styles.price}>
@@ -173,6 +183,14 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
               variant="primary"
               href={props.premiumSubscriptionUrl[billingPeriod]}
               className={styles.cta}
+              onPress={() => {
+                recordTelemetry("upgradeIntent", "click", {
+                  button_id:
+                    billingPeriod === "yearly"
+                      ? "purchase_yearly_landing_page"
+                      : "purchase_monthly_landing_page",
+                });
+              }}
             >
               {l10n.getString("landing-premium-plans-table-cta-plus-label")}
             </Button>
@@ -351,7 +369,12 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
               disabled={props.scanLimitReached}
               variant="primary"
               className={styles.cta}
-              onPress={() => void signIn("fxa")}
+              onPress={() => {
+                recordTelemetry("ctaButton", "click", {
+                  button_id: "clicked_free_pricing_grid",
+                });
+                void signIn("fxa");
+              }}
             >
               {l10n.getString("landing-premium-plans-table-cta-free-label")}
             </Button>
@@ -681,7 +704,12 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                 <Button
                   disabled={props.scanLimitReached}
                   variant="secondary"
-                  onPress={() => void signIn("fxa")}
+                  onPress={() => {
+                    recordTelemetry("ctaButton", "click", {
+                      button_id: "clicked_free_pricing_grid",
+                    });
+                    void signIn("fxa");
+                  }}
                 >
                   {l10n.getString("landing-premium-plans-table-cta-free-label")}
                 </Button>
@@ -698,7 +726,15 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
               <div className={styles.priceCell}>
                 <div className={styles.billingPeriod}>
                   <BillingPeriodToggle
-                    onChange={(newValue) => setBillingPeriod(newValue)}
+                    onChange={(newValue) => {
+                      setBillingPeriod(newValue);
+                      recordTelemetry("button", "click", {
+                        button_id:
+                          newValue === "yearly"
+                            ? "selected_yearly_plan"
+                            : "selected_monthly_plan",
+                      });
+                    }}
                   />
                 </div>
                 <p aria-live="polite" className={styles.cost}>
@@ -756,6 +792,14 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   disabled={props.scanLimitReached}
                   variant="primary"
                   href={props.premiumSubscriptionUrl[billingPeriod]}
+                  onPress={() => {
+                    recordTelemetry("upgradeIntent", "click", {
+                      button_id:
+                        billingPeriod === "yearly"
+                          ? "purchase_yearly_landing_page"
+                          : "purchase_monthly_landing_page",
+                    });
+                  }}
                 >
                   {l10n.getString("landing-premium-plans-table-cta-plus-label")}
                 </Button>

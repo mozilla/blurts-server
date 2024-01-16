@@ -21,11 +21,18 @@ fix-flow-celebration-next-dashboard-label = Kontrol panelinize gidin
 
 ## High-risk flow
 
+fix-flow-celebration-high-risk-description-next-passwords = Şimdi açığa çıkmış parolaları düzeltelim.
+fix-flow-celebration-high-risk-description-next-security-questions = Şimdi açığa çıkmış güvenlik sorularınızı düzeltelim.
+fix-flow-celebration-high-risk-description-next-security-recommendations = Ardından, hangi verilerinizin ele geçirildiğine göre size kişiselleştirilmiş güvenlik önerileri sunacağız.
+fix-flow-celebration-high-risk-description-next-dashboard = Adımlarınızın sonuna geldiniz. Kontrol panelinizden istediğiniz işlemi görebilir ve ilerlemenizi takip edebilirsiniz.
 
 ## Leaked passwords and security questions flow
 
 fix-flow-celebration-leaked-passwords-title = Parolalarınız artık koruma altında!
 fix-flow-celebration-security-questions-title = Güvenlik sorularınız koruma altında!
+fix-flow-celebration-leaked-passwords-description-next-security-questions = Şimdi açığa çıkmış güvenlik sorularınızı inceleyip güncelleyelim.
+fix-flow-celebration-leaked-passwords-description-next-security-recommendations = Ardından, hangi verilerinizin ele geçirildiğine göre size kişiselleştirilmiş güvenlik önerileri sunacağız.
+fix-flow-celebration-leaked-passwords-description-next-dashboard = Tebrikler! Adımlarınızın sonuna geldiniz. Kontrol panelinizden istediğiniz işlemi görebilir ve ilerlemenizi takip edebilirsiniz.
 
 ## Security recommendations flow
 
@@ -84,9 +91,17 @@ ssn-modal-ok = Tamam
 
 # PIN Breaches
 
+high-risk-breach-pin-title = PIN’iniz ele geçirilmiş
+high-risk-breach-pin-description = En kısa sürede harekete geçmeniz, kayıplarınızı karşılamanıza yardımcı olacak daha fazla hukuki koruma sağlayabilir.
+high-risk-breach-pin-step-one = PIN’inizin ele geçirildiğini hemen bankanıza bildirin.
+high-risk-breach-pin-step-two = Aynı PIN’i kullandığınız her yerde PIN’lerinizi değiştirin.
+high-risk-breach-pin-step-three = Hesaplarınızda tanımadığınız ödemeler olup olmadığını kontrol edin.
 
 # No high risk breaches found
 
+# Variables
+# $email_list is list of emails that the user is monitoring for breaches. E.g. john@yahoo.com, ali@gmail.com, sam@hotmail.com
+high-risk-breach-none-description = E-posta adresinize bağlı olarak veri ihlalleri tespit ettik. { $email_list } için yüksek riskli veri ihlalleri bulamadık.
 high-risk-breach-none-sub-description-part-one = Yüksek riskli veri ihlalleri şunlardır:
 high-risk-breach-none-sub-description-ssn = Sosyal güvenlik numarası
 high-risk-breach-none-sub-description-bank-account = Banka hesap bilgileri
@@ -103,6 +118,14 @@ security-recommendation-steps-cta-label = Anladım!
 # Phone security recommendation
 
 security-recommendation-phone-title = Telefon numaranızı koruyun
+# $num_breaches is the number of breaches where the phone number was found.
+security-recommendation-phone-summary =
+    { $num_breaches ->
+        [one] Telefon numaranız { $num_breaches } veri ihlalinde ele geçirildi:
+       *[other] Telefon numaranız { $num_breaches } veri ihlalinde ele geçirildi:
+    }
+security-recommendation-phone-description = Maalesef bunu geri alamazsınız ama güvende kalmak için atabileceğiniz adımlar var.
+security-recommendation-phone-step-one = Daha fazla gereksiz aramayı önlemek için spam numaraları engelleyebilirsiniz
 
 # Email security recommendation
 
@@ -114,6 +137,7 @@ security-recommendation-email-summary =
        *[other] E-posta adresiniz { $num_breaches } veri ihlalinde ele geçirildi:
     }
 security-recommendation-email-description = Maalesef bunu düzeltemezsiniz. Ancak kendinizi korumak için atabileceğiniz adımlar var.
+security-recommendation-email-step-two = <link_to_info>Kimlik avı dolandırıcılığına</link_to_info> dikkat edin
 security-recommendation-email-step-three = Şüpheli e-postaları spam olarak işaretleyip göndereni engelleyin
 security-recommendation-email-step-four = E-postalarınızı korumak için <link_to_info>{ -brand-relay } e-posta maskelerini</link_to_info> kullanabilirsiniz
 
@@ -126,9 +150,17 @@ security-recommendation-ip-summary =
         [one] IP adresiniz { $num_breaches } veri ihlalinde ele geçirildi:
        *[other] IP adresiniz { $num_breaches } veri ihlalinde ele geçirildi:
     }
+security-recommendation-ip-description = IP adresiniz konumunuzu ve internet servis sağlayıcınızı ifşa edebilir. Hacker’lar konumunuzu bulmak veya cihazlarınıza bağlanmak için bu bilgileri kullanabilir.
+security-recommendation-ip-step-one = Gerçek IP adresinizi gizlemek ve internette daha az iz bırakmak için VPN (örn. <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) kullanabilirsiniz.
 
 # Leaked Passwords
 
+# Variables
+# $breach_name is the name of the breach where the leaked password was found.
+leaked-passwords-title = { $breach_name } parolanız ele geçirildi
+# Variables
+# $breach_date is the date when the breach occurred.
+leaked-passwords-summary = { $breach_date } tarihinde meydana gelen bir veri ihlalinde yer alıyor.
 leaked-passwords-steps-title = İşte yapmanız gerekenler
 leaked-passwords-steps-subtitle = Bunun için hesabınıza erişim gerekiyor, o yüzden kendiniz düzeltmeniz gerekecek.
 # Variables
@@ -151,5 +183,15 @@ leaked-passwords-estimated-time =
 # Leaked Security Questions
 
 leaked-security-questions-title = Güvenlik sorularınız ele geçirilmiş
+# Variables
+# $breach_name is the name of the breach where the leaked security questions were found.
+# $breach_date is the date when the breach occurred.
+# An example of this string is Twitter on 13/09/18.
+leaked-security-questions-summary = { $breach_date } tarihinde meydana gelen { $breach_name } veri ihlalinde yer alıyorlar.
+leaked-security-questions-description = Dolandırıcılar bunları hesaplarınıza ve aynı güvenlik sorularını kullandığınız diğer sitelere erişmek için kullanabilir. Hesaplarınızı korumak için güvenlik sorularını hemen şimdi güncelleyin.
 leaked-security-questions-steps-title = İşte yapmanız gerekenler
 leaked-security-questions-steps-subtitle = Bunun için hesabınıza erişim gerekiyor, o yüzden kendiniz düzeltmeniz gerekecek.
+# Variables
+# $breach_name is the name of the breach where the security questions were found.
+# $email_affected is the email associated with the breach.
+leaked-security-questions-step-one = <link_to_breach_site>{ $breach_name }</link_to_breach_site> sitesindeki/uygulamasındaki <b>{ $email_affected }</b> hesabınızın güvenlik sorularını güncelleyin.
