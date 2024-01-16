@@ -53,7 +53,14 @@ export default async function DashboardPage() {
       utm_source: searchParams.get("utm_source") ?? "",
       utm_term: searchParams.get("utm_term") ?? "",
     };
-    await addAttributionForSubscriber(session.user.subscriber.id, attribution);
+    try {
+      await addAttributionForSubscriber(
+        session.user.subscriber.id,
+        attribution,
+      );
+    } catch (e) {
+      //ignore
+    }
   }
 
   if (cookiesList.get("attributionsLastTouch")) {
@@ -68,7 +75,14 @@ export default async function DashboardPage() {
       utm_source: searchParams.get("utm_source") ?? "",
       utm_term: searchParams.get("utm_term") ?? "",
     };
-    await addAttributionForSubscriber(session.user.subscriber.id, attribution);
+    try {
+      await addAttributionForSubscriber(
+        session.user.subscriber.id,
+        attribution,
+      );
+    } catch (e) {
+      //ignore
+    }
   }
 
   const result = await getOnerepProfileId(session.user.subscriber.id);

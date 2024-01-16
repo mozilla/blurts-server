@@ -16,6 +16,7 @@ export async function up(knex) {
       table.jsonb("other_utm_parameters")
       table.timestamp("created_at").defaultTo(knex.fn.now())
       table.timestamp("modified_at").defaultTo(knex.fn.now())
+      table.unique(["subscriber_id", "type", "utm_source", "utm_campaign", "utm_medium", "utm_term", "entrypoint"])
     })
 }
 
