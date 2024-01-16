@@ -80,7 +80,10 @@ export const DataBrokerProfileCard = (props: DataBrokerProfileCardProps) => {
         target="_blank"
         onClick={() => {
           recordTelemetry("link", "click", {
-            link_id: `viewed_${props.data.data_broker}`,
+            link_id: "viewed_data_broker",
+          });
+          recordTelemetry("link", "click", {
+            link_id: `viewed_data_broker_${props.data.data_broker}`,
           });
         }}
       >
