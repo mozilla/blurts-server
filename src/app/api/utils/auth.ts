@@ -43,8 +43,14 @@ const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   token: AppConstants.OAUTH_TOKEN_URI,
   // userinfo: AppConstants.OAUTH_PROFILE_URI,
   userinfo: {
-    request: async (context) =>
-      fetchUserInfo(context.tokens.access_token ?? ""),
+    request: async (context) => {
+      const response = await fetch(AppConstants.OAUTH_PROFILE_URI, {
+        headers: {
+          Authorization: `Bearer ${context.tokens.access_token ?? ""}`,
+        },
+      });
+      return (await response.json()) as FxaProfile;
+    },
   },
   clientId: AppConstants.OAUTH_CLIENT_ID,
   clientSecret: AppConstants.OAUTH_CLIENT_SECRET,
@@ -66,7 +72,9 @@ export const authOptions: AuthOptions = {
     async jwt({ token, account, profile, trigger }) {
       if (trigger === "update") {
         // Refresh the user data from FxA, in case e.g. new subscriptions got added:
-        profile = await fetchUserInfo(token.subscriber?.fxa_access_token ?? "");
+        const subscriber = await getSubscriberByEmail(token.email ?? "");
+        profile = subscriber.fxa_profile_json as FxaProfile;
+
         if (token.email) {
           const updatedSubscriberData = await getSubscriberByEmail(token.email);
           // MNTOR-2599 The breach_resolution object can get pretty big,
@@ -191,16 +199,6 @@ export const authOptions: AuthOptions = {
     },
   },
 };
-
-async function fetchUserInfo(accessToken: string) {
-  const response = await fetch(AppConstants.OAUTH_PROFILE_URI, {
-    headers: {
-      Authorization: `Bearer ${accessToken ?? ""}`,
-    },
-  });
-  const userInfo = (await response.json()) as FxaProfile;
-  return userInfo;
-}
 
 /**
  * Converts an FxAProfile to a Next-Auth user object

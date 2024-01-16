@@ -4,23 +4,36 @@
 
 import { ReactNode } from "react";
 import { headers } from "next/headers";
+import { getServerSession } from "next-auth";
 import { getL10nBundles } from "../functions/server/l10n";
 import { getLocale } from "../functions/universal/getLocale";
 import { L10nProvider } from "../../contextProviders/localization";
 import { ReactAriaI18nProvider } from "../../contextProviders/react-aria";
 import { CountryCodeProvider } from "../../contextProviders/country-code";
 import { getCountryCode } from "../functions/server/getCountryCode";
+import { PageLoadEvent } from "../components/client/PageLoadEvent";
+import { authOptions } from "../api/utils/auth";
+import { getUserId } from "../functions/server/getUserId";
+import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
 
-export default function Layout({ children }: { children: ReactNode }) {
+export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();
   const headersList = headers();
   const countryCode = getCountryCode(headersList);
+  const session = await getServerSession(authOptions);
+  const enabledFlags = await getEnabledFeatureFlags({
+    email: session?.user.email ?? "",
+  });
 
   return (
     <L10nProvider bundleSources={l10nBundles}>
       <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
         <CountryCodeProvider countryCode={countryCode}>
           {children}
+          <PageLoadEvent
+            userId={getUserId(session)}
+            enabledFlags={enabledFlags}
+          />
         </CountryCodeProvider>
       </ReactAriaI18nProvider>
     </L10nProvider>

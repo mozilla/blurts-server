@@ -40,6 +40,8 @@ modal-active-number-of-exposures-part-one-all =
     }
 modal-active-number-of-exposures-part-two = For example, if you have 10 exposures of your phone number, that might mean one phone number is exposed across 10 different sites, or it could mean 2 different phone numbers were exposed across 5 different sites.
 modal-active-number-of-exposures-part-three-all = Once they are resolved, they will be added to your total number of fixed exposures on the Fixed page.
+modal-fixed-number-of-exposures-title = About your number of fixed exposures
+modal-fixed-number-of-exposures-all = This chart includes the total number of data breaches that have been fixed for all email addresses you’re currently monitoring. Once exposures are marked as fixed, they’ll be added to the total here.
 modal-cta-ok = OK
 modal-open-alt = Open
 modal-close-alt = Close
@@ -97,6 +99,8 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] You still have { $exposures_unresolved_num } exposures left to fix. Keep going and protect yourself. We’ll guide you step-by-step.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Let’s keep going
+dashboard-top-banner-protect-your-data-title = Let’s protect your data
+dashboard-top-banner-protect-your-data-cta = Let’s fix it
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.

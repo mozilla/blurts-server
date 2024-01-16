@@ -52,6 +52,8 @@ user-add-duplicate-email = Tämä sähköposti on jo lisätty tuotteeseen { -pro
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Tarkista sähköpostiosoitteen { $userEmail } tila { $preferencesLink }-sivulta.
+user-add-verification-email-just-sent = Toista vahvistussähköpostia ei voi lähettää näin nopeasti. Yritä uudelleen myöhemmin.
+user-add-unknown-error = Jotain meni pieleen toisen sähköpostiosoitteen lisäämisessä. Yritä uudelleen myöhemmin.
 error-headline = Virhe
 user-verify-token-error = Vahvistuspoletti vaaditaan.
 user-verify-email-report-subject = { -product-name } -raporttisi
@@ -726,6 +728,8 @@ ad-unit-6-before-you-complete = Ennen kuin suoritat seuraavan rekisteröitymisen
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
@@ -755,6 +759,11 @@ site-nav-ad-callout = Kokeile muita suojaustyökalujamme:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
 mobile-menu-label = Päävalikko
+main-nav-button-collapse-label = Supista valikko
+main-nav-button-collapse-tooltip = Supista valikko
+main-nav-button-expand-label = Laajenna valikko
+main-nav-button-expand-tooltip = Laajenna valikko
+main-nav-label = Navigointi
 main-nav-link-home-label = Etusivu
 main-nav-link-dashboard-label = Kojelauta
 main-nav-link-settings-label = Asetukset
@@ -781,6 +790,7 @@ user-menu-trigger-label = Avaa käyttäjävalikko
 user-menu-trigger-tooltip = Profiili
 user-menu-manage-fxa-label = Hallitse { -brand-mozilla-account }äsi
 user-menu-settings-label = Asetukset
+user-menu-settings-tooltip = Määritä { -brand-mozilla-monitor }
 user-menu-help-label = Ohjeet ja tuki
 user-menu-help-tooltip = Ohjeita { -brand-mozilla-monitor }in käyttöön
 user-menu-signout-label = Kirjaudu ulos
@@ -793,6 +803,7 @@ terms-of-service = Käyttöehdot
 privacy-notice = Tietosuojakäytäntö
 github = { -brand-github }
 footer-nav-all-breaches = Kaikki tietovuodot
+footer-external-link-faq-label = UKK:t
 footer-external-link-faq-tooltip = Usein kysytyt kysymykset
 
 ## Error page
@@ -829,5 +840,6 @@ floating-banner-dismiss-button-label = Ei kiitos
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Uusi nimi, ulkoasu ja lisää tapoja <b>palauttaa yksityisyys</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Hylkää

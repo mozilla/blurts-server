@@ -448,6 +448,187 @@ describe("When Premium is available", () => {
     expect(signIn).toHaveBeenCalledTimes(1);
   });
 
+  it("counts the number of clicks on the pricing table billing period toggle", async () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+    const pricingTable = screen.getByRole("grid");
+    const monthlyToggle = getByRole(pricingTable, "radio", { name: "Monthly" });
+    const yearlyToggle = getByRole(pricingTable, "radio", { name: "Yearly" });
+
+    await user.click(monthlyToggle);
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "button",
+      "click",
+      expect.objectContaining({
+        button_id: "selected_monthly_plan",
+      }),
+    );
+
+    await user.click(yearlyToggle);
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "button",
+      "click",
+      expect.objectContaining({
+        button_id: "selected_yearly_plan",
+      }),
+    );
+  });
+
+  it("counts the number of clicks on the pricing table free tier button", async () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+    const pricingTable = screen.getByRole("grid");
+    const freeButton = getByRole(pricingTable, "button", {
+      name: "Start free monitoring",
+    });
+
+    await user.click(freeButton);
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "ctaButton",
+      "click",
+      expect.objectContaining({
+        button_id: "clicked_free_pricing_grid",
+      }),
+    );
+  });
+
+  it("counts the number of clicks on the pricing table upsell button", async () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+    const pricingTable = screen.getByRole("grid");
+    const monthlyToggle = getByRole(pricingTable, "radio", { name: "Monthly" });
+    const upsellButton = getByRole(pricingTable, "link", {
+      name: "Get data removal",
+    });
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest
+      .spyOn(console, "error")
+      .mockImplementationOnce(() => undefined)
+      .mockImplementationOnce(() => undefined);
+
+    await user.click(upsellButton);
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "upgradeIntent",
+      "click",
+      expect.objectContaining({
+        button_id: "purchase_yearly_landing_page",
+      }),
+    );
+
+    await user.click(monthlyToggle);
+    await user.click(upsellButton);
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "upgradeIntent",
+      "click",
+      expect.objectContaining({
+        button_id: "purchase_monthly_landing_page",
+      }),
+    );
+  });
+
+  it("counts the number of clicks on the pricing card billing period toggle", async () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+    const cards = screen.getAllByRole("group");
+    const premiumCard = cards[0];
+    const monthlyToggle = getByRole(premiumCard, "radio", { name: "Monthly" });
+    const yearlyToggle = getByRole(premiumCard, "radio", { name: "Yearly" });
+
+    await user.click(monthlyToggle);
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "button",
+      "click",
+      expect.objectContaining({
+        button_id: "selected_monthly_plan",
+      }),
+    );
+
+    await user.click(yearlyToggle);
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "button",
+      "click",
+      expect.objectContaining({
+        button_id: "selected_yearly_plan",
+      }),
+    );
+  });
+
+  it("counts the number of clicks on the pricing card upsell button", async () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+    const cards = screen.getAllByRole("group");
+    const premiumCard = cards[0];
+    const upsellButton = getByRole(premiumCard, "link", {
+      name: "Get data removal",
+    });
+    const monthlyToggle = getByRole(premiumCard, "radio", { name: "Monthly" });
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest
+      .spyOn(console, "error")
+      .mockImplementationOnce(() => undefined)
+      .mockImplementationOnce(() => undefined);
+
+    await user.click(upsellButton);
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "upgradeIntent",
+      "click",
+      expect.objectContaining({
+        button_id: "purchase_yearly_landing_page",
+      }),
+    );
+
+    await user.click(monthlyToggle);
+    await user.click(upsellButton);
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "upgradeIntent",
+      "click",
+      expect.objectContaining({
+        button_id: "purchase_monthly_landing_page",
+      }),
+    );
+  });
+
+  it("counts the number of clicks on the pricing card free button", async () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+    const cards = screen.getAllByRole("group");
+    const freeCard = cards[1];
+    const freeButton = getByRole(freeCard, "button", {
+      name: "Start free monitoring",
+    });
+
+    await user.click(freeButton);
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "ctaButton",
+      "click",
+      expect.objectContaining({
+        button_id: "clicked_free_pricing_grid",
+      }),
+    );
+  });
+
   it("shows the data brokers quote", () => {
     const ComposedDashboard = composeStory(LandingUs, Meta);
     render(<ComposedDashboard />);

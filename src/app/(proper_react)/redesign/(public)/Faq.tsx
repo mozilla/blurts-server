@@ -10,6 +10,11 @@ import styles from "./Faq.module.scss";
 import { CloseBigIcon } from "../../../components/server/Icons";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { useButton, useFocusRing } from "react-aria";
+import {
+  CONST_URL_SUMO_MONITOR_FAQ,
+  CONST_ONEREP_DATA_BROKER_COUNT,
+  CONST_URL_SUMO_MONITOR_PLUS,
+} from "../../../../constants";
 
 export type FaqItemProps = {
   question: string;
@@ -68,9 +73,15 @@ export const FaqSection = ({
   const [expandedQuestion, setExpandedQuestion] = useState<string | null>(null);
 
   const handleExpandAnswer = (question: string) => {
-    setExpandedQuestion((prevQuestion) =>
-      prevQuestion === question ? null : question,
-    );
+    setExpandedQuestion((prevQuestion) => {
+      if (prevQuestion === question) {
+        return null;
+      }
+      recordTelemetry("expand", "click", {
+        button_id: `expand_faq_${question}`,
+      });
+      return question;
+    });
   };
 
   return (
@@ -80,7 +91,7 @@ export const FaqSection = ({
       </b>
       <a
         className={styles.faqCta}
-        href={process.env.NEXT_PUBLIC_FAQ_MONITOR as string}
+        href={CONST_URL_SUMO_MONITOR_FAQ}
         target="_blank"
         onClick={() => {
           recordTelemetry("link", "click", {
@@ -115,20 +126,11 @@ export const FaqSection = ({
               "landing-premium-continuous-data-removal-ans",
               {
                 vars: {
-                  data_broker_sites_total_num: parseInt(
-                    process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-                    10,
-                  ),
+                  data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
                 },
                 elems: {
                   learn_more_link: (
-                    <a
-                      href={
-                        process.env
-                          .NEXT_PUBLIC_LEARN_MORE_ABOUT_MONITOR_PLUS_URL
-                      }
-                      target="_blank"
-                    />
+                    <a href={CONST_URL_SUMO_MONITOR_PLUS} target="_blank" />
                   ),
                 },
               },

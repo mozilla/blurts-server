@@ -41,6 +41,7 @@ modal-active-number-of-exposures-part-one-all =
 modal-active-number-of-exposures-part-two = Por exemplo, se você tiver 10 exposições do seu número de celular, pode significar que um número de celular foi exposto em 10 sites diferentes ou pode significar que 2 números de celular foram expostos em 5 sites diferentes.
 modal-active-number-of-exposures-part-three-all = Depois de resolvidas, elas são adicionadas ao número total de exposições resolvidas na página 'Resolvido'.
 modal-fixed-number-of-exposures-title = Informações sobre seu número de exposições resolvidas
+modal-fixed-number-of-exposures-all = Este gráfico inclui o número total de vazamentos de dados que foram resolvidos em todos os endereços de email que você está monitorando atualmente. Exposições marcadas como resolvidas são adicionadas ao total aqui.
 modal-cta-ok = OK
 modal-open-alt = Abrir
 modal-close-alt = Fechar
@@ -119,6 +120,13 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
 dashboard-top-banner-no-exposures-found-title = Nenhuma exposição encontrada
 dashboard-top-banner-non-us-no-exposures-found-description = Boa notícia! Pesquisamos em todos os vazamentos conhecidos de dados, não encontramos nenhuma exposição. Continuaremos monitorando seu endereço de email e alertaremos você se ocorrer um novo vazamento.
 dashboard-no-exposures-label = Nenhuma exposição encontrada
+# Variables:
+# $exposures_resolved_num is the number of exposures the user has resolved.
+dashboard-top-banner-non-us-your-data-is-protected-description =
+    { $exposures_resolved_num ->
+        [one] Bom trabalho, a exposição de seus dados foi resolvida! Continuamos monitorando e alertaremos você sobre quaisquer novas exposições.
+       *[other] Bom trabalho, todas as { $exposures_resolved_num } exposições de seus dados foram resolvidas! Continuamos monitorando e alertaremos você sobre quaisquer novas exposições.
+    }
 dashboard-top-banner-monitor-more-cta = Monitorar mais emails
 
 # About Exposure Statuses Modal

@@ -86,10 +86,8 @@ export const EnterInfo = ({
       }
 
       if (isOpen) {
-        // TODO: Uncomment popup_id after it has been added to metrics.yaml
-        // in https://github.com/mozilla/blurts-server/pull/3913.
         recordTelemetry("popup", "view", {
-          // popup_id: "enter_scan_info_confirmation_modal",
+          popup_id: "enter_scan_info_confirmation_modal",
         });
       } else {
         recordTelemetry("button", "click", {
@@ -130,18 +128,6 @@ export const EnterInfo = ({
       onChange: setLastName,
     },
     {
-      label: l10n.getString("onboarding-enter-details-label-location"),
-      key: "location",
-      type: "text",
-      placeholder: l10n.getString(
-        "onboarding-enter-details-placeholder-location",
-      ),
-      value: location,
-      displayValue: location,
-      isValid: location.trim() !== "",
-      onChange: setLocation,
-    },
-    {
       label: l10n.getString("onboarding-enter-details-label-date-of-birth"),
       key: "date_of_birth",
       type: "date",
@@ -153,6 +139,18 @@ export const EnterInfo = ({
       }),
       isValid: meetsAgeRequirement(dateOfBirth),
       onChange: setDateOfBirth,
+    },
+    {
+      label: l10n.getString("onboarding-enter-details-label-location"),
+      key: "location",
+      type: "text",
+      placeholder: l10n.getString(
+        "onboarding-enter-details-placeholder-location",
+      ),
+      value: location,
+      displayValue: location,
+      isValid: location.trim() !== "",
+      onChange: setLocation,
     },
   ];
 
@@ -350,8 +348,7 @@ export const EnterInfo = ({
         <div className={styles.inputContainer}>
           {userDetailsData.map(
             ({ key, label, onChange, placeholder, isValid, type, value }) => {
-              const validationState =
-                !isValid && invalidInputs.includes(key) ? "invalid" : "valid";
+              const isInvalid = !isValid && invalidInputs.includes(key);
               return key === "location" ? (
                 <LocationAutocompleteInput
                   key={key}
@@ -362,12 +359,17 @@ export const EnterInfo = ({
                   isRequired={true}
                   onChange={onChange}
                   placeholder={placeholder}
-                  validationState={validationState}
+                  isInvalid={isInvalid}
                   inputValue={value}
                   onFocus={() => {
                     recordTelemetry("field", "focus", {
                       field_id: key,
                     });
+                  }}
+                  onFocusChange={(isFocussed) => {
+                    if (!isFocussed && !value) {
+                      setInvalidInputs([...invalidInputs, key]);
+                    }
                   }}
                 />
               ) : (
@@ -381,7 +383,7 @@ export const EnterInfo = ({
                   onChange={onChange}
                   placeholder={placeholder}
                   type={type}
-                  validationState={validationState}
+                  isInvalid={isInvalid}
                   value={value}
                   onFocus={() => {
                     recordTelemetry("field", "focus", {
