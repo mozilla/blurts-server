@@ -26,6 +26,7 @@ import { ScanLimit } from "./ScanLimit";
 import { Footer } from "../Footer";
 import { FaqSection } from "./Faq";
 import { SignInButton } from "../../../components/client/SignInButton";
+import { RebrandAnnouncement } from "./RebrandAnnouncement";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -246,6 +247,7 @@ export const View = (props: Props) => {
         />
       </div>
       <Footer l10n={props.l10n} />
+      <RebrandAnnouncement />
     </main>
   );
 };
