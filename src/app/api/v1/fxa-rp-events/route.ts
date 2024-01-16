@@ -348,7 +348,18 @@ export async function POST(request: NextRequest) {
             }
 
             // deactivation stops opt out process
-            await deactivateProfile(oneRepProfileId);
+            try {
+              await deactivateProfile(oneRepProfileId);
+            } catch (ex) {
+              if (
+                (ex as Error).message ===
+                "Failed to deactivate OneRep profile: [403] [Forbidden]"
+              )
+                logger.error("profile_already_opted_out", {
+                  subscriber_id: subscriber.id,
+                  exception: ex,
+                });
+            }
 
             logger.info("deactivated_onerep_profile", {
               subscriber_id: subscriber.id,
