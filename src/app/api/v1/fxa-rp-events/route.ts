@@ -286,8 +286,31 @@ export async function POST(request: NextRequest) {
             }
 
             // activate and opt out profiles
-            await activateProfile(oneRepProfileId);
-            await optoutProfile(oneRepProfileId);
+            try {
+              await activateProfile(oneRepProfileId);
+            } catch (ex) {
+              if (
+                (ex as Error).message ===
+                "Failed to activate OneRep profile: [403] [Forbidden]"
+              )
+                logger.error("profile_already_activated", {
+                  subscriber_id: subscriber.id,
+                  exception: ex,
+                });
+            }
+
+            try {
+              await optoutProfile(oneRepProfileId);
+            } catch (ex) {
+              if (
+                (ex as Error).message ===
+                "Failed to opt-out OneRep profile: [403] [Forbidden]"
+              )
+                logger.error("profile_already_opted_out", {
+                  subscriber_id: subscriber.id,
+                  exception: ex,
+                });
+            }
 
             logger.info("activated_onerep_profile", {
               subscriber_id: subscriber.id,
