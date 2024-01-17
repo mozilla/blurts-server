@@ -9,9 +9,11 @@ import { CloseBtn } from "../../../components/server/Icons";
 import { useL10n } from "../../../hooks/l10n";
 import { useLocalDismissal } from "../../../hooks/useLocalDismissal";
 import { useHasRenderedClientSide } from "../../../hooks/useHasRenderedClientSide";
+import { useTelemetry } from "../../../hooks/useTelemetry";
 
 export const RebrandAnnouncement = () => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const dismissal = useLocalDismissal("mozilla-monitor-rebrand", {
     duration: Number.MAX_SAFE_INTEGER,
   });
@@ -30,7 +32,12 @@ export const RebrandAnnouncement = () => {
         })}
       </span>
       <button
-        onClick={() => dismissal.dismiss()}
+        onClick={() => {
+          recordTelemetry("button", "click", {
+            button_id: "rebrand_announcement_dismiss",
+          });
+          dismissal.dismiss();
+        }}
         title={l10n.getString("banner-monitor-rebrand-dismiss-button-tooltip")}
       >
         <CloseBtn
