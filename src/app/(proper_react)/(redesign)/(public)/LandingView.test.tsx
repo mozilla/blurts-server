@@ -42,6 +42,14 @@ beforeEach(() => {
   // long debugging that already, so I'm settling for this :(
   const mockedUseSession = useSession as jest.Mock;
   mockedUseSession.mockReturnValue({});
+
+  // Delete all cookies, to make the rebrand announcement banner show up by
+  // default (I hate the document.cookie API ¬_¬):
+  const cookieParts = document.cookie.split(";");
+  const cookieNames = cookieParts.map((part) => part.split("=")[0]);
+  cookieNames.forEach((cookieName) => {
+    document.cookie = `${cookieName}=; Thu, 01 Jan 1970 00:00:00 GMT`;
+  });
 });
 
 describe("When Premium is not available", () => {
@@ -196,6 +204,30 @@ describe("When Premium is not available", () => {
     await user.click(dismissButton);
 
     expect(rebrandAnnouncement).not.toBeInTheDocument();
+  });
+
+  it("counts how often people close the banner announcing the rebrand to `'Mozilla Monitor'", async () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingNonUs, Meta);
+    render(<ComposedDashboard />);
+
+    const rebrandAnnouncement = screen.getByText(
+      "New name, look and even more ways to",
+      { exact: false },
+    );
+    const dismissButton = within(rebrandAnnouncement.parentElement!).getByRole(
+      "button",
+      { name: "OK" },
+    );
+
+    const user = userEvent.setup();
+    await user.click(dismissButton);
+
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "button",
+      "click",
+      expect.objectContaining({ button_id: "rebrand_announcement_dismiss" }),
+    );
   });
 
   it("shows the german scanning for exposures illustration", () => {
