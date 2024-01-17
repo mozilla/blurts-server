@@ -63,9 +63,9 @@ export default async function DashboardPage() {
     }
   }
 
-  if (cookiesList.get("attributionsLastTouch")) {
+  if (cookiesList.get("attributionsLastTouch")?.value) {
     const searchParams = new URLSearchParams(
-      cookiesList.get("attributionsLastTouch") ?? "",
+      cookiesList.get("attributionsLastTouch")?.value ?? "",
     );
     const attribution = {
       type: "lastTouch",
