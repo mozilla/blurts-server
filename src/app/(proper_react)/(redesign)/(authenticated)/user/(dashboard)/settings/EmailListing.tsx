@@ -15,12 +15,14 @@ import {
   DeleteIcon,
   ErrorIcon,
 } from "../../../../../../components/server/Icons";
+import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 
 export const EmailListing = (props: {
   email: EmailRow | string;
   breachCount: number;
 }) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const email = props.email;
   const emailAddress = isSecondaryEmail(email) ? email.email : email;
   const [isVerificationEmailResent, setIsVerificationEmailResent] =
@@ -87,7 +89,12 @@ export const EmailListing = (props: {
           title={l10n.getString("settings-remove-email-button-tooltip", {
             emailAddress: emailAddress,
           })}
-          onClick={() => void onRemoveEmail(email)}
+          onClick={() => {
+            recordTelemetry("button", "click", {
+              button_id: "removed_email_address",
+            });
+            void onRemoveEmail(email);
+          }}
         >
           <DeleteIcon
             alt={l10n.getString("settings-remove-email-button-label")}

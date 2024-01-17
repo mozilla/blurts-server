@@ -12,6 +12,7 @@ import { EmailListing } from "./EmailListing";
 import { EmailAddressAdder } from "./EmailAddressAdder";
 import { AlertAddressForm } from "./AlertAddressForm";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
+import { TelemetryLink } from "../../../../../../components/client/TelemetryLink";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -81,10 +82,13 @@ export const SettingsView = (props: Props) => {
           <div className={styles.cancelSection}>
             <h3>{l10n.getString("settings-cancel-plus-title")}</h3>
             <p>{l10n.getString("settings-cancel-plus-details")}</p>
-            <a
+            <TelemetryLink
               href={props.fxaSubscriptionsUrl}
               target="_blank"
               rel="noopener noreferrer"
+              eventData={{
+                link_id: "cancel_plus",
+              }}
             >
               {l10n.getString("settings-cancel-plus-link-label")}
               <OpenInNew
@@ -92,16 +96,19 @@ export const SettingsView = (props: Props) => {
                 width="13"
                 height="13"
               />
-            </a>
+            </TelemetryLink>
           </div>
           <hr />
           <div className={styles.deactivateSection}>
             <h3>{l10n.getString("settings-deactivate-account-title")}</h3>
             <p>{l10n.getString("settings-deactivate-account-info-2")}</p>
-            <a
+            <TelemetryLink
               href={props.fxaSettingsUrl}
               target="_blank"
               rel="noopener noreferrer"
+              eventData={{
+                link_id: "deactivate_account",
+              }}
             >
               {l10n.getString("settings-fxa-link-label-3")}
               <OpenInNew
@@ -109,7 +116,7 @@ export const SettingsView = (props: Props) => {
                 width="13"
                 height="13"
               />
-            </a>
+            </TelemetryLink>
           </div>
         </div>
       </main>
