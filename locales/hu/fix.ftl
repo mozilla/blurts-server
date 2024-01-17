@@ -44,14 +44,14 @@ fix-flow-celebration-security-recommendations-description-next-dashboard = Szép
 
 # High Risk Data Breaches
 
-high-risk-breach-heading = Itt van a teendő
+high-risk-breach-heading = Ezeket kellene tennie
 high-risk-breach-subheading = Ehhez hozzá kell férnie az érzékeny információihoz, ezért kézileg kell kijavítania.
 # Variables
 # $num_breaches is the number of breaches where the high risk data was found.
 high-risk-breach-summary =
     { $num_breaches ->
-        [one] { $num_breaches } adatsértésben jelent meg:
-       *[other] { $num_breaches } adatsértésben jelent meg:
+        [one] { $num_breaches } adatvédelmi incidensben szerepelt:
+       *[other] { $num_breaches } adatvédelmi incidensben szerepelt:
     }
 # Variables
 # $breach_name is the name of the breach where the high risk data was found.
@@ -71,24 +71,24 @@ high-risk-breach-estimated-time =
 
 # Credit Card Breaches
 
-high-risk-breach-credit-card-title = A bankkártyaszáma nyilvánosságra került
-high-risk-breach-credit-card-description = Aki megkapja, jogosulatlanul vásárolhat, amiért Önt vonhatja a felelősség. Cselekedjen most, hogy megakadályozza a pénzügyi károkat.
-high-risk-breach-credit-card-step-one = Ha még mindig megvan ez a kártya, forduljon a kibocsátóhoz, hogy jelentse az ellopást.
+high-risk-breach-credit-card-title = A bankkártyaszáma kikerült
+high-risk-breach-credit-card-description = Aki megszerzi, jogosulatlanul vásárolhat, amiért Ön felelős lehet. Cselekedjen gyorsan az anyagi károk megelőzése érdekében.
+high-risk-breach-credit-card-step-one = Ha még mindig megvan ez a kártya, forduljon a kibocsátóhoz, és jelentse, hogy ellopták.
 high-risk-breach-credit-card-step-two = Kérjen új kártyát új számmal.
-high-risk-breach-credit-card-step-three = Ellenőrizze a fiókjait, hogy nincsenek-e jogosulatlan terhelések.
+high-risk-breach-credit-card-step-three = Ellenőrizze a számlaszámait, hogy nincsenek-e jogosulatlan terhelések.
 
 # Bank Account Breaches
 
-high-risk-breach-bank-account-title = A bankszámlája nyilvánosságra került
-high-risk-breach-bank-account-description = A lehető leghamarabbi intézkedés több jogi védelmet nyújthat az esetleges veszteségek megtérítésében.
-high-risk-breach-bank-account-step-one = Azonnal értesítse bankját, ha számlaszámát feltörték.
-high-risk-breach-bank-account-step-two = Módosítsa a fiókszámát.
-high-risk-breach-bank-account-step-three = Ellenőrizze a fiókjait, hogy nincsenek-e jogosulatlan terhelések.
+high-risk-breach-bank-account-title = Kikerült a bankszámlája
+high-risk-breach-bank-account-description = A lehető leghamarabbi intézkedés több jogi védelmet nyújthat az esetleges veszteségek megtérítéséhez.
+high-risk-breach-bank-account-step-one = Azonnal értesítse bankját, ha a számlaszámát feltörték.
+high-risk-breach-bank-account-step-two = Módosítsa a számlaszámát.
+high-risk-breach-bank-account-step-three = Ellenőrizze a számlaszámait, hogy nincsenek-e jogosulatlan terhelések.
 
 # Social Security Number Breaches
 
 high-risk-breach-social-security-title = Kikerült a társadalombiztosítási száma
-high-risk-breach-social-security-description = A csalók új hiteleket vagy bankkártyákat nyithatnak az Ön TAJ-számával. Cselekedjen gyorsan az anyagi károk megelőzése érdekében.
+high-risk-breach-social-security-description = A csalók új hiteleket vagy bankkártyákat nyithatnak az Ön társadalombiztosítási számával. Cselekedjen gyorsan az anyagi károk megelőzése érdekében.
 high-risk-breach-social-security-step-one = Védje meg magát egy <link_to_info>csalási riasztás beállításával, vagy a hitelkeretének befagyasztásával.</link_to_info>
 high-risk-breach-social-security-step-two = <link_to_info>Ellenőrizze a hitelkártya-jelentését</link_to_info>, hogy vannak-e fel nem ismert fiókok.
 

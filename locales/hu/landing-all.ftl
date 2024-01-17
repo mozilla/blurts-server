@@ -9,11 +9,11 @@ landing-all-hero-emailform-input-placeholder = email@example.com
 landing-all-hero-emailform-input-label = Adja meg az e-mail-címét, hogy ellenőrizze az adatvédelmi incidenseket.
 landing-all-hero-emailform-submit-label = Ellenőrzés kérése
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
-landing-all-hero-image-chart-label = expozíciókat
+landing-all-hero-image-chart-label = kitettség
 
 # Value Proposition
 
-landing-all-value-prop-fix-exposures = Segítünk kijavítani a kitettségeit
+landing-all-value-prop-fix-exposures = Segítünk javítani a kitettségeit
 landing-all-value-prop-fix-exposures-description = A küldetésünk, hogy visszaadjuk a személyes adatainak ellenőrzését az Ön kezébe. Segítünk megoldani az adatvédelmi incidenseket, és bizalmasan kezeljük az adatait – és közben <privacy_link>tiszteljük az adatvédelmét</privacy_link>.
 landing-all-value-prop-info-at-risk = Milyen információk lehetnek veszélyben?
 landing-all-value-prop-info-at-risk-description = Az adatszivárgás sajnos a digitális életünk része. Jelszavai, elérhetőségei, pénzügyi információi és más személyes adatai is kikerülhetnek, amivel személyazonosság-lopás áldozata lehet.

@@ -25,8 +25,8 @@ exposure-chart-legend-heading-type = l’exposition ;
 exposure-chart-legend-heading-nr = Nombre
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
-exposure-chart-legend-value-nr = × { $nr }×
-exposure-chart-caption = Ce graphique montre combien de fois vos informations sont activement exposées.
+exposure-chart-legend-value-nr = { $nr }×
+exposure-chart-caption = Ce graphique montre combien de fois vos informations sont activement révélées.
 # Variables:
 #   $total_fixed_exposures_num (number) - Number of fixed exposures
 #   $total_exposures_num (number) - Number of total exposures
@@ -45,7 +45,7 @@ modal-active-number-of-exposures-part-one-all =
 modal-active-number-of-exposures-part-two = Par exemple, si vous avez 10 expositions de votre numéro de téléphone, cela peut signifier qu’un numéro de téléphone est exposé sur 10 sites différents, ou cela pourrait signifier que 2 numéros de téléphone différents ont été exposés sur 5 sites différents.
 modal-active-number-of-exposures-part-three-all = Une fois résolus, ils seront ajoutés à votre nombre total de risques corrigés sur la page Corrigés.
 modal-fixed-number-of-exposures-title = À propos du nombre d’expositions fixées
-modal-fixed-number-of-exposures-all = Ce graphique comprend le nombre total de fuites de données qui ont été corrigées pour toutes les adresses e-mail que vous surveillez actuellement. Une fois les risques marqués comme corrigés, ils seront ajoutés au total ici.
+modal-fixed-number-of-exposures-all = Ce graphique comprend le nombre total de fuites de données qui ont été corrigées pour toutes les adresses e-mail que vous surveillez actuellement. Une fois les fuites marquées comme corrigées, elles seront ajoutées au total ici.
 modal-cta-ok = OK
 modal-open-alt = Ouvrir
 modal-close-alt = Fermer
@@ -54,22 +54,22 @@ progress-card-manually-fixed-headline = Résolue manuellement
 dashboard-tab-label-action-needed = Action nécessaire
 dashboard-tab-label-fixed = Résolue
 dashboard-exposures-all-fixed-label = Toutes les fuites ont été résolues !
-dashboard-exposures-area-headline = Voir tous les sites où vos informations sont exposées
+dashboard-exposures-area-headline = Voir tous les sites où vos informations ont fuité
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
 #   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
 dashboard-exposures-area-description-all-line1 =
     { $exposures_unresolved_num ->
-        [one] Nous avons détecté { $exposures_unresolved_num } pour vos données.
-       *[other] Nous avons trouvé { $exposures_unresolved_num } risques de vos données.
+        [one] Nous avons détecté { $exposures_unresolved_num } fuite de vos données.
+       *[other] Nous avons détecté { $exposures_unresolved_num } fuites de vos données.
     }
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
 dashboard-exposures-area-description-all-line2 =
     { $data_breach_unresolved_num ->
-        [one] Elle apparaît dans { $data_breach_unresolved_num } fuite de données.
-       *[other] Elle apparaît à travers { $data_breach_unresolved_num } fuites de données.
+        [one] Elles apparaissent dans { $data_breach_unresolved_num } fuite de données.
+       *[other] Elles apparaissent dans { $data_breach_unresolved_num } fuites de données.
     }
 dashboard-fixed-area-headline-all = Afficher toutes les fuites résolues
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
