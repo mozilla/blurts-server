@@ -107,7 +107,7 @@ export const View = (props: Props) => {
                         privacy_link: (
                           <TelemetryLink
                             eventData={{ link_id: "privacy_information" }}
-                            href="https://www.mozilla.org/en-US/firefox/privacy/"
+                            href="https://www.mozilla.org/firefox/privacy/"
                             target="_blank"
                           />
                         ),
@@ -121,7 +121,7 @@ export const View = (props: Props) => {
                         privacy_link: (
                           <TelemetryLink
                             eventData={{ link_id: "privacy_information" }}
-                            href="https://www.mozilla.org/en-US/firefox/privacy/"
+                            href="https://www.mozilla.org/firefox/privacy/"
                             target="_blank"
                           />
                         ),
