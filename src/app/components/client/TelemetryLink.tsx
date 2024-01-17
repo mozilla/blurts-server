@@ -14,7 +14,7 @@ export const TelemetryLink = ({
   eventData,
   ...props
 }: {
-  eventData: GleanMetricMap["button"]["click"];
+  eventData: GleanMetricMap["link"]["click"];
   href: string;
   target: string;
 } & HTMLAttributes<HTMLAnchorElement>) => {
@@ -24,7 +24,7 @@ export const TelemetryLink = ({
     <a
       {...props}
       onClick={(event) => {
-        record("button", "click", eventData);
+        record("link", "click", eventData);
 
         props.onClick?.(event);
       }}
