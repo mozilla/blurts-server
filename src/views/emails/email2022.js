@@ -321,7 +321,7 @@ const getTemplate = (data, partial, l10n) => {
         <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 
         <title>
-          ${getMessage('brand-mozilla-monitor')}
+          ${getMessage('brand-fx-monitor')}
         </title>
 
         ${getStyles()}

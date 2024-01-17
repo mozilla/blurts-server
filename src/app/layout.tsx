@@ -25,7 +25,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export function generateMetadata(): Metadata {
   const l10n = getL10n();
   return {
-    title: l10n.getString("brand-mozilla-monitor"),
+    title: l10n.getString("brand-fx-monitor"),
     description: l10n.getString("meta-desc-2"),
     metadataBase:
       typeof process.env.SERVER_URL === "string"
@@ -33,14 +33,14 @@ export function generateMetadata(): Metadata {
         : undefined,
     twitter: {
       card: "summary_large_image",
-      title: l10n.getString("brand-mozilla-monitor"),
+      title: l10n.getString("brand-fx-monitor"),
       description: l10n.getString("meta-desc-2"),
       images: ["/images/og-image.webp"],
     },
     openGraph: {
-      title: l10n.getString("brand-mozilla-monitor"),
+      title: l10n.getString("brand-fx-monitor"),
       description: l10n.getString("meta-desc-2"),
-      siteName: l10n.getString("brand-mozilla-monitor"),
+      siteName: l10n.getString("brand-fx-monitor"),
       type: "website",
       url: process.env.SERVER_URL,
       images: ["/images/og-image.webp"],

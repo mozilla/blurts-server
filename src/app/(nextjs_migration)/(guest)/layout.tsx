@@ -58,7 +58,7 @@ const GuestLayout = async (props: Props) => {
               src={MonitorLogo}
               width="213"
               height="33"
-              alt={l10n.getString("brand-mozilla-monitor")}
+              alt={l10n.getString("brand-fx-monitor")}
               priority
             />
           </a>

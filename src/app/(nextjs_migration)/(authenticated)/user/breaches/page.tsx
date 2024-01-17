@@ -31,14 +31,14 @@ export function generateMetadata() {
     title: l10n.getString("breach-meta-title"),
     twitter: {
       card: "summary_large_image",
-      title: l10n.getString("brand-mozilla-monitor"),
+      title: l10n.getString("brand-fx-monitor"),
       description: l10n.getString("meta-desc-2"),
       images: ["/images/og-image.webp"],
     },
     openGraph: {
-      title: l10n.getString("brand-mozilla-monitor"),
+      title: l10n.getString("brand-fx-monitor"),
       description: l10n.getString("meta-desc-2"),
-      siteName: l10n.getString("brand-mozilla-monitor"),
+      siteName: l10n.getString("brand-fx-monitor"),
       type: "website",
       url: process.env.SERVER_URL,
       images: ["/images/og-image.webp"],

@@ -2,7 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-public-nav-name = { -brand-mozilla-monitor }
+public-nav-name = { -brand-fx-monitor }
 
 landing-all-hero-title = Find where your private info is exposed — and take it back
 landing-all-hero-lead = We scan data breaches to see if your data has been leaked and give you steps to fix it.
