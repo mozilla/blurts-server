@@ -26,8 +26,6 @@ interface CustomSuiteResult {
   title: string;
   tests: CustomTestResult[];
   duration?: number;
-  suiteId: string;
-  fileName: string;
 }
 
 interface CustomReport {
@@ -74,15 +72,13 @@ class E2EReporter implements Reporter {
   }
 
   onTestBegin(test: TestCase) {
-    const suiteId = test.parent.title.split(" ").join(" ");
-    const suiteResult = this.suites.find((s) => s.suiteId === suiteId);
+    const component = test.parent.parent!.title;
+    const suiteResult = this.suites.find((s) => s.title === component);
 
     const data: CustomSuiteResult = {
-      title: test.parent.title,
-      fileName: test.parent.parent!.title,
+      title: component,
       duration: 0,
       tests: [],
-      suiteId: suiteId,
     };
 
     if (!suiteResult) {
@@ -92,8 +88,10 @@ class E2EReporter implements Reporter {
 
   onTestEnd(test: TestCase, result: TestResult) {
     // find the suite this test belongs to
-    const suiteId = test.parent.title.split(" ").join(" ");
-    const suiteResult = this.suites.find((s) => s.suiteId === suiteId);
+    const component = test.parent.parent!.title;
+    const existingComponentTests = this.suites.find(
+      (s) => s.title === component,
+    );
 
     // @ts-ignore - using _projectId as projectId is not in the testCase types
     const browserName = test._projectId as string;
@@ -108,8 +106,11 @@ class E2EReporter implements Reporter {
       browser: browserName,
     };
 
-    // add this to test to its suite
-    suiteResult?.tests.push(data);
+    if (existingComponentTests) {
+      // add this to test to its suite
+      existingComponentTests.tests.push(data);
+      existingComponentTests.duration! += result.duration;
+    }
 
     // build test stats
     switch (result.status) {

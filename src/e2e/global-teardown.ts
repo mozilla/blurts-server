@@ -4,7 +4,7 @@
 
 import https from "https";
 import { readFileSync, writeFileSync } from "fs";
-import { CustomTestResult } from "../../E2EReporter";
+import { CustomTestResult } from "../../e2ereporter";
 
 async function globalTearDown() {
   if (!process.env.IS_CRON) {
