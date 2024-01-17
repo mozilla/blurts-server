@@ -870,5 +870,5 @@ floating-banner-dismiss-button-label = Όχι, ευχαριστώ
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Νέο όνομα, εμφάνιση και ακόμα περισσότεροι τρόποι <b>διεκδίκησης του απορρήτου σας</b>.
-banner-monitor-rebrand-dismiss-button-label = ΟΚ
+banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Απόρριψη

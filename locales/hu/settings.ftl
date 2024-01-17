@@ -35,7 +35,7 @@ settings-delete-email-button = E-mail-cím törlése
 settings-remove-email-button-label = Eltávolítás
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
-settings-remove-email-button-tooltip = { $emailAddress } figyelésének leállítása
+settings-remove-email-button-tooltip = A(z) { $emailAddress } figyelésének leállítása
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
