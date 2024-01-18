@@ -16,11 +16,11 @@ import { WaitlistCta } from "./ScanLimit";
 export type Props = {
   eligibleForPremium: boolean;
   signUpCallbackUrl: string;
-  isHero?: boolean;
   eventId: {
     cta: string;
     field?: string;
   };
+  isHero?: boolean;
   scanLimitReached: boolean;
 };
 
@@ -60,7 +60,6 @@ export const SignUpForm = (props: Props) => {
   ) : (
     <form className={styles.form} onSubmit={onSubmit}>
       <input
-        className={props.isHero ? styles.isHero : ""}
         name={emailInputId}
         id={emailInputId}
         onChange={(e) => {
@@ -77,12 +76,7 @@ export const SignUpForm = (props: Props) => {
           "landing-all-hero-emailform-input-placeholder",
         )}
       />
-      <Button
-        type="submit"
-        variant="primary"
-        wide
-        className={props.isHero ? styles.isHero : ""}
-      >
+      <Button type="submit" variant="primary" wide>
         {l10n.getString("landing-all-hero-emailform-submit-label")}
       </Button>
       {props.isHero ? (
