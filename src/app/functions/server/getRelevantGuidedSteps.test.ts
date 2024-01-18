@@ -49,7 +49,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard",
+        href: "/user/dashboard",
         id: "Done",
         completed: false,
         eligible: true,
@@ -72,7 +72,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card",
+        href: "/user/dashboard/fix/high-risk-data-breaches/credit-card",
         id: "HighRiskCreditCard",
         completed: false,
         eligible: true,
@@ -100,7 +100,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card",
+        href: "/user/dashboard/fix/high-risk-data-breaches/credit-card",
         id: "HighRiskCreditCard",
         completed: false,
         eligible: true,
@@ -128,7 +128,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card",
+        href: "/user/dashboard/fix/high-risk-data-breaches/credit-card",
         id: "HighRiskCreditCard",
         completed: false,
         eligible: true,
@@ -151,7 +151,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/high-risk-data-breaches/bank-account",
+        href: "/user/dashboard/fix/high-risk-data-breaches/bank-account",
         id: "HighRiskBankAccount",
         completed: false,
         eligible: true,
@@ -178,7 +178,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/high-risk-data-breaches/bank-account",
+        href: "/user/dashboard/fix/high-risk-data-breaches/bank-account",
         id: "HighRiskBankAccount",
         completed: false,
         eligible: true,
@@ -205,7 +205,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/high-risk-data-breaches/bank-account",
+        href: "/user/dashboard/fix/high-risk-data-breaches/bank-account",
         id: "HighRiskBankAccount",
         completed: false,
         eligible: true,
@@ -228,7 +228,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/high-risk-data-breaches/pin",
+        href: "/user/dashboard/fix/high-risk-data-breaches/pin",
         id: "HighRiskPin",
         completed: false,
         eligible: true,
@@ -251,7 +251,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/leaked-passwords/passwords",
+        href: "/user/dashboard/fix/leaked-passwords/passwords",
         id: "LeakedPasswordsPassword",
         completed: false,
         eligible: true,
@@ -276,7 +276,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/leaked-passwords/security-questions",
+        href: "/user/dashboard/fix/leaked-passwords/security-questions",
         id: "LeakedPasswordsSecurityQuestion",
         completed: false,
         eligible: true,
@@ -299,7 +299,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/security-recommendations/phone",
+        href: "/user/dashboard/fix/security-recommendations/phone",
         id: "SecurityTipsPhone",
         completed: false,
         eligible: true,
@@ -322,7 +322,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/security-recommendations/email",
+        href: "/user/dashboard/fix/security-recommendations/email",
         id: "SecurityTipsEmail",
         completed: false,
         eligible: true,
@@ -345,7 +345,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/security-recommendations/ip",
+        href: "/user/dashboard/fix/security-recommendations/ip",
         id: "SecurityTipsIp",
         completed: false,
         eligible: true,
@@ -378,7 +378,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard",
+        href: "/user/dashboard",
         id: "Done",
         completed: false,
         eligible: true,
@@ -399,7 +399,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan",
+        href: "/user/dashboard/fix/data-broker-profiles/start-free-scan",
         id: "Scan",
         completed: false,
         eligible: true,
@@ -428,7 +428,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan",
+        href: "/user/dashboard/fix/data-broker-profiles/start-free-scan",
         id: "Scan",
         completed: false,
         eligible: true,
@@ -457,7 +457,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan",
+        href: "/user/dashboard/fix/data-broker-profiles/start-free-scan",
         id: "Scan",
         completed: false,
         eligible: true,
@@ -576,7 +576,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card",
+        href: "/user/dashboard/fix/high-risk-data-breaches/credit-card",
         id: "HighRiskCreditCard",
         completed: false,
         eligible: true,
@@ -604,7 +604,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card",
+        href: "/user/dashboard/fix/high-risk-data-breaches/credit-card",
         id: "HighRiskCreditCard",
         completed: false,
         eligible: true,
@@ -632,7 +632,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card",
+        href: "/user/dashboard/fix/high-risk-data-breaches/credit-card",
         id: "HighRiskCreditCard",
         completed: false,
         eligible: true,
@@ -655,7 +655,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/high-risk-data-breaches/bank-account",
+        href: "/user/dashboard/fix/high-risk-data-breaches/bank-account",
         id: "HighRiskBankAccount",
         completed: false,
         eligible: true,
@@ -682,7 +682,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/high-risk-data-breaches/bank-account",
+        href: "/user/dashboard/fix/high-risk-data-breaches/bank-account",
         id: "HighRiskBankAccount",
         completed: false,
         eligible: true,
@@ -709,7 +709,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/high-risk-data-breaches/bank-account",
+        href: "/user/dashboard/fix/high-risk-data-breaches/bank-account",
         id: "HighRiskBankAccount",
         completed: false,
         eligible: true,
@@ -732,7 +732,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/high-risk-data-breaches/pin",
+        href: "/user/dashboard/fix/high-risk-data-breaches/pin",
         id: "HighRiskPin",
         completed: false,
         eligible: true,
@@ -755,7 +755,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/leaked-passwords/passwords",
+        href: "/user/dashboard/fix/leaked-passwords/passwords",
         id: "LeakedPasswordsPassword",
         completed: false,
         eligible: true,
@@ -780,7 +780,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/leaked-passwords/security-questions",
+        href: "/user/dashboard/fix/leaked-passwords/security-questions",
         id: "LeakedPasswordsSecurityQuestion",
         completed: false,
         eligible: true,
@@ -803,7 +803,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/security-recommendations/phone",
+        href: "/user/dashboard/fix/security-recommendations/phone",
         id: "SecurityTipsPhone",
         completed: false,
         eligible: true,
@@ -826,7 +826,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/security-recommendations/email",
+        href: "/user/dashboard/fix/security-recommendations/email",
         id: "SecurityTipsEmail",
         completed: false,
         eligible: true,
@@ -849,7 +849,7 @@ describe("getNextGuidedStep", () => {
           },
         }),
       ).toStrictEqual({
-        href: "/redesign/user/dashboard/fix/security-recommendations/ip",
+        href: "/user/dashboard/fix/security-recommendations/ip",
         id: "SecurityTipsIp",
         completed: false,
         eligible: true,
