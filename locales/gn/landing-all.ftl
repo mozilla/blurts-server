@@ -38,6 +38,13 @@ landing-all-social-proof-title =
         [one] { $num_users } jeroviápe hetaiterei yvypóra arapy tuichakue
        *[other] { $num_users } jeroviápe hetaiterei yvypóra arapy tuichakue
     }
+# Variables
+# $num_countries is the number of countries available.
+landing-all-social-proof-description =
+    { $num_countries ->
+        [one] 2018 guive, roipytyvõ tapichakuéra { $num_countries } tetãme omo’ã hag̃ua imba’ekuaarã ivaikuaáva.
+       *[other] 2018 guive, roipytyvõ tapichakuéra { $num_countries } tetãme omo’ã hag̃ua imba’ekuaarã ivaikuaáva.
+    }
 landing-all-social-proof-press = Ojehechaháicha
 
 # Here's How We Help

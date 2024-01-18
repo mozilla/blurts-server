@@ -160,7 +160,7 @@ export const DoughnutChart = (props: Props) => {
           props.totalNumberOfPerformedScans <
             CONST_ONEREP_MAX_SCANS_THRESHOLD ? (
             <Link
-              href="/redesign/user/welcome/free-scan?referrer=dashboard"
+              href="/user/welcome/free-scan?referrer=dashboard"
               onClick={() => {
                 recordTelemetry("link", "click", {
                   link_id: "exposures_chart_free_scan",

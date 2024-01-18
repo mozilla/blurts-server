@@ -9,7 +9,7 @@ import {
   Breach,
   HibpBreachDataTypes,
   Subscriber,
-} from "../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
+} from "../app/deprecated/(authenticated)/user/breaches/breaches.js";
 import { parseIso8601Datetime } from "./parse.js";
 import {
   BreachDataTypes,
