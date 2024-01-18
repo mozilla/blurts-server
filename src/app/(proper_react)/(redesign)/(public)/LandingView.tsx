@@ -55,8 +55,8 @@ export const View = (props: Props) => {
             <ScanLimit />
           ) : (
             <SignUpForm
-              isHero
               scanLimitReached={props.scanLimitReached}
+              isHero
               eligibleForPremium={props.eligibleForPremium}
               signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard/`}
               eventId={{

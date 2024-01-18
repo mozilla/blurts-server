@@ -16,11 +16,11 @@ import { WaitlistCta } from "./ScanLimit";
 export type Props = {
   eligibleForPremium: boolean;
   signUpCallbackUrl: string;
+  isHero?: boolean;
   eventId: {
     cta: string;
     field?: string;
   };
-  isHero?: boolean;
   scanLimitReached: boolean;
 };
 
