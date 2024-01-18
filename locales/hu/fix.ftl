@@ -90,21 +90,21 @@ high-risk-breach-bank-account-step-three = Ellenőrizze a számlaszámait, hogy 
 high-risk-breach-social-security-title = Kikerült a társadalombiztosítási száma
 high-risk-breach-social-security-description = A csalók új hiteleket vagy bankkártyákat nyithatnak az Ön társadalombiztosítási számával. Cselekedjen gyorsan az anyagi károk megelőzése érdekében.
 high-risk-breach-social-security-step-one = Védje meg magát egy <link_to_info>csalási riasztás beállításával, vagy a hitelkeretének befagyasztásával.</link_to_info>
-high-risk-breach-social-security-step-two = <link_to_info>Ellenőrizze a hitelkártya-jelentését</link_to_info>, hogy vannak-e fel nem ismert fiókok.
+high-risk-breach-social-security-step-two = <link_to_info>Ellenőrizze a hitelkártya-jelentését</link_to_info>, hogy szerepelnek-e benne fel nem ismert számlaszámok.
 
 # Social Security Number Modal
 
 ssn-modal-title = A csalási riasztásokról és a hitelkeret befagyasztásáról
-ssn-modal-description-fraud-part-one = <b>Csalási riasztás</b> megköveteli, hogy a vállalkozások igazolják a személyazonosságát, mielőtt új jóváírást adnak ki az Ön nevében. Ingyenes, egy évig használható, és nem befolyásolja negatívan a hitelképességét.
-ssn-modal-description-fraud-part-two = Hogy állítson be egyet, lépjen kapcsolatba a három hiteliroda bármelyikével. Nem kell kapcsolatba lépnie mindhárommal.
-ssn-modal-description-freeze-credit-part-one = <b>A keretének befagyasztása</b> megakadályozza, hogy bárki is új számlát nyisson az Ön nevében. Ingyenes és nem befolyásolja negatívan a hitelképességi mutatóját, de fel kell oldania, mielőtt új fiókot nyit.
+ssn-modal-description-fraud-part-one = <b>A csalási riasztás</b> megköveteli, hogy a vállalkozások igazolják a személyazonosságát, mielőtt új jóváírást adnak ki az Ön nevében. Ingyenes, egy évig használható, és nem befolyásolja negatívan a hitelképességi mutatóját.
+ssn-modal-description-fraud-part-two = Hogy beállítson egyet, lépjen kapcsolatba a három hiteliroda bármelyikével. Nem kell kapcsolatba lépnie mindhárommal.
+ssn-modal-description-freeze-credit-part-one = <b>A hitelkeretének befagyasztása</b> megakadályozza, hogy új számlát nyissanak az Ön nevében. Ingyenes és nem befolyásolja negatívan a hitelképességi mutatóját, de fel kell oldania, mielőtt új bankszámlákat nyit.
 ssn-modal-description-freeze-credit-part-two = A hitelkeretének befagyasztásához vegye fel a kapcsolatot a három hitelinformációs irodával – az <equifax_link>Equifaxszal</equifax_link>, az <experian_link>Experiannal</experian_link> és a <transunion_link>TransUnionnal</transunion_link>.
-ssn-modal-learn-more = Tudjon meg többet a csalási figyelmeztetésekről és a hitelkeretek befagyasztásáról
+ssn-modal-learn-more = Tudjon meg többet a csalási riasztásokról és a hitelkeretek befagyasztásáról
 ssn-modal-ok = OK
 
 # PIN Breaches
 
-high-risk-breach-pin-title = A PIN kikerült
+high-risk-breach-pin-title = A PIN-kód kikerült
 high-risk-breach-pin-description = A lehető leghamarabbi intézkedés több jogi védelmet nyújthat az esetleges veszteségek megtérítésében.
 high-risk-breach-pin-step-one = Azonnal értesítse bankját, ha PIN-kódját feltörték.
 high-risk-breach-pin-step-two = Módosítsa a PIN-kódját mindenütt, ahol ugyanazt használta.
@@ -112,13 +112,13 @@ high-risk-breach-pin-step-three = Ellenőrizze a fiókjait, hogy nincsenek-e jog
 
 # No high risk breaches found
 
-high-risk-breach-none-title = Jó hír, hogy nem találtunk magas kockázatú adatsértéseket
+high-risk-breach-none-title = Jó hír, hogy nem találtunk magas kockázatú adatvédelmi incidenseket
 # Variables
 # $email_list is list of emails that the user is monitoring for breaches. E.g. john@yahoo.com, ali@gmail.com, sam@hotmail.com
-high-risk-breach-none-description = Adatvédelmi incidenseket észlelünk az e-mail-címe alapján, és nem találtunk magas kockázatú adatvédelmi incidenst az { $email_list } körében.
-high-risk-breach-none-sub-description-part-one = Magas kockázatú adatsértések többek között:
-high-risk-breach-none-sub-description-ssn = Társadalombiztosítási szám
-high-risk-breach-none-sub-description-bank-account = Bankszámlainformációk
+high-risk-breach-none-description = Az adatvédelmi incidenseket az e-mail-címe alapján észleljük, és nem találtunk magas kockázatú adatvédelmi incidenst a következővel kapcsolatban: { $email_list }.
+high-risk-breach-none-sub-description-part-one = Magas kockázatú adatvédelmi incidensek, többek között:
+high-risk-breach-none-sub-description-ssn = Társadalombiztosítási azonosító
+high-risk-breach-none-sub-description-bank-account = Bankszámla-információk
 high-risk-breach-none-sub-description-cc-number = Hitelkártyaszámok
 high-risk-breach-none-sub-description-pin = PIN-kódok
 high-risk-breach-none-continue = Folytatás
@@ -135,8 +135,8 @@ security-recommendation-phone-title = Védje meg a telefonszámát
 # $num_breaches is the number of breaches where the phone number was found.
 security-recommendation-phone-summary =
     { $num_breaches ->
-        [one] A telefonszáma { $num_breaches } adatsértésben jelent meg:
-       *[other] A telefonszáma { $num_breaches } adatsértésben jelent meg:
+        [one] A telefonszáma { $num_breaches } adatvédelmi incidensben szerepelt:
+       *[other] A telefonszáma { $num_breaches } adatvédelmi incidensben szerepelt:
     }
 security-recommendation-phone-description = Sajnos nem veheti vissza. De vannak lépések, amelyeket tehet a biztonsága érdekében.
 security-recommendation-phone-step-one = Blokkolja a kéretlen számokat, hogy megakadályozza a kéretlen hívások számát
