@@ -215,11 +215,13 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                       <TelemetryButton
                         href={breachSite}
                         variant="tertiary"
-                        module="link"
-                        name="click"
-                        data={{
-                          link_id: "changed_password",
-                          link_name: `changed_password_${breachName}`,
+                        event={{
+                          module: "link",
+                          name: "click",
+                          data: {
+                            link_id: "changed_password",
+                            link_name: `changed_password_${breachName}`,
+                          },
                         }}
                       />
                     ),
@@ -267,11 +269,13 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                       <TelemetryButton
                         href={breachSite}
                         variant="tertiary"
-                        module="link"
-                        name="click"
-                        data={{
-                          link_id: `changed_security_question_${breachName}`,
-                          link_name: `changed_security_question_${breachName}`,
+                        event={{
+                          module: "link",
+                          name: "click",
+                          data: {
+                            link_id: `changed_security_question_${breachName}`,
+                            link_name: `changed_security_question_${breachName}`,
+                          },
                         }}
                       />
                     ),
