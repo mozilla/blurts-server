@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { it, expect } from "@jest/globals";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
@@ -12,6 +12,8 @@ import Meta, {
   SecurityQuestionsStory,
   LeakedPasswordsDoneStory,
 } from "./LeakedPasswords.stories";
+import { userEvent } from "@testing-library/user-event";
+import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 
 jest.mock("../../../../../../../../../hooks/useTelemetry");
 jest.mock("next/navigation", () => ({
@@ -143,4 +145,132 @@ it("shows the security questions celebration view, no next step", () => {
     name: "Go to your Dashboard",
   });
   expect(buttonLink).toHaveAttribute("href", "/user/dashboard");
+});
+
+it("records telemetry when resolving a password", async () => {
+  const mockedRecord = useTelemetry();
+  const ComposedComponent = composeStory(PasswordsStory, Meta);
+  render(<ComposedComponent type="passwords" />);
+  const user = userEvent.setup();
+
+  const buttonLink = screen.getByRole("button", {
+    name: "Mark as fixed",
+  });
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  await user.click(buttonLink);
+
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "marked_fixed",
+      // button_name: "mark_as_fixed_password_",
+    }),
+  );
+});
+
+it("records telemetry when resolving a security question", async () => {
+  const mockedRecord = useTelemetry();
+  const ComposedComponent = composeStory(SecurityQuestionsStory, Meta);
+  render(<ComposedComponent type="security-questions" />);
+  const user = userEvent.setup();
+
+  const buttonLink = screen.getByRole("button", {
+    name: "Mark as fixed",
+  });
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  await user.click(buttonLink);
+
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "marked_fixed",
+      // button_name: "mark_as_fixed_security_question_",
+    }),
+  );
+});
+
+it("records telemetry when skipping the passwords step", async () => {
+  const mockedRecord = useTelemetry();
+  const ComposedComponent = composeStory(PasswordsStory, Meta);
+  render(<ComposedComponent type="passwords" />);
+  const user = userEvent.setup();
+
+  const buttonLink = screen.getByRole("link", {
+    name: "Skip for now",
+  });
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  await user.click(buttonLink);
+
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "skipped_resolution",
+      // button_name: "skip_for_now_password_question_",
+    }),
+  );
+});
+
+it("records telemetry when skipping the security questions step", async () => {
+  const mockedRecord = useTelemetry();
+  const ComposedComponent = composeStory(SecurityQuestionsStory, Meta);
+  render(<ComposedComponent type="security-questions" />);
+  const user = userEvent.setup();
+
+  const buttonLink = screen.getByRole("link", {
+    name: "Skip for now",
+  });
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  await user.click(buttonLink);
+
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "skipped_resolution",
+      // button_name: "skip_for_now_security_question_",
+    }),
+  );
+});
+
+it("records telemetry when clicking the breach link on a leaked password resolution step", async () => {
+  const mockedRecord = useTelemetry();
+  const ComposedComponent = composeStory(PasswordsStory, Meta);
+  render(<ComposedComponent type="passwords" />);
+  const user = userEvent.setup();
+
+  const changeInfoBullet = screen.getByText("Change your password for", {
+    exact: false,
+  });
+  const buttonLink = within(changeInfoBullet).getByRole("link");
+  expect(buttonLink).toBeInTheDocument();
+
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  await user.click(buttonLink);
+
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "link",
+    "click",
+    expect.objectContaining({
+      link_id: "changed_password",
+      // link_name: `changed_password_${breachName}`,
+    }),
+  );
 });

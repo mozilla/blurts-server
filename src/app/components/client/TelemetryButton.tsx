@@ -28,6 +28,7 @@ export const TelemetryButton = <
     <Button
       {...props}
       onPress={(e) => {
+        /* c8 ignore next 3 */
         if (onPress) {
           onPress(e);
         }

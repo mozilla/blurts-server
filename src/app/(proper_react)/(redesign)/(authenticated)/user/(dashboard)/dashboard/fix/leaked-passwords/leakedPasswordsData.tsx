@@ -220,7 +220,7 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                           name: "click",
                           data: {
                             link_id: "changed_password",
-                            link_name: `changed_password_${breachName}`,
+                            // link_name: `changed_password_${breachName}`,
                           },
                         }}
                       />
@@ -273,8 +273,8 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                           module: "link",
                           name: "click",
                           data: {
-                            link_id: `changed_security_question_${breachName}`,
-                            link_name: `changed_security_question_${breachName}`,
+                            link_id: "changed_security_question",
+                            // link_name: `changed_security_question_${breachName}`,
                           },
                         }}
                       />
