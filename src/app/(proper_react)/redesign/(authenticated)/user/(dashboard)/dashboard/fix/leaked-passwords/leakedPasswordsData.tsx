@@ -15,6 +15,7 @@ import {
   HibpBreachDataTypes,
 } from "../../../../../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
 import { getLocale } from "../../../../../../../../functions/universal/getLocale";
+import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
 
 export const leakedPasswordTypes = [
   "passwords",
@@ -211,15 +212,14 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                   elems: {
                     // TODO: Find a way to go to the actual breach site
                     link_to_breach_site: (
-                      <a
+                      <TelemetryButton
                         href={breachSite}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        // onClick={() => {
-                        //   recordTelemetry("link", "click", {
-                        //     link_id: `changed_password_${breachName}`,
-                        //   });
-                        // }}
+                        variant="tertiary"
+                        module="link"
+                        name="click"
+                        data={{
+                          link_id: `changed_password_${breachName}`,
+                        }}
                       />
                     ),
                     b: <strong />,
@@ -261,17 +261,16 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
               <li>
                 {l10n.getFragment("leaked-security-questions-step-one", {
                   elems: {
-                    // TODO: Find a way  to go to the actual breach site
+                    // TODO: Find a way to go to the actual breach site
                     link_to_breach_site: (
-                      <a
+                      <TelemetryButton
                         href={breachSite}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        // onClick={() => {
-                        //   recordTelemetry("link", "click", {
-                        //     link_id: `changed_security_question_${breachName}`,
-                        //   });
-                        // }}
+                        variant="tertiary"
+                        module="link"
+                        name="click"
+                        data={{
+                          link_id: `changed_security_question_${breachName}`,
+                        }}
                       />
                     ),
                     b: <strong />,

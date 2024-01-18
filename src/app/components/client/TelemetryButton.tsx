@@ -8,26 +8,24 @@ import { Button, ButtonProps } from "./Button";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import { GleanMetricMap } from "../../../telemetry/generated/_map";
 
-type EventModule = keyof GleanMetricMap;
-type EventName = keyof GleanMetricMap[EventModule];
-type TelemetryButtonProps = ButtonProps & {
-  eventModule: EventModule;
-  event: EventName;
-  data: GleanMetricMap[EventModule][EventName];
-};
+interface TelemetryProps {
+  eventModule: keyof GleanMetricMap;
+  eventName: keyof GleanMetricMap[];
+  eventData: unknown;
+}
 
-export const TelemetryButton = (props: TelemetryButtonProps) => {
-  const { eventModule, event, data, onPress } = props;
+export const TelemetryButton = (props: TelemetryProps & ButtonProps) => {
+  const { eventModule, eventName, eventData, onPress } = props;
   const recordTelemetry = useTelemetry();
 
   return (
     <Button
       {...props}
-      onPress={(e) => {
+      onPress={(event) => {
         if (onPress) {
-          onPress(e);
+          onPress(event);
         }
-        recordTelemetry(eventModule, event, data);
+        recordTelemetry(eventModule, eventName, eventData);
       }}
     />
   );
