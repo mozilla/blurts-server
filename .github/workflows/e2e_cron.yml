@@ -14,7 +14,7 @@ on:
           - prod
           - heroku
 jobs:
-  test:
+  e2e-tests:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
