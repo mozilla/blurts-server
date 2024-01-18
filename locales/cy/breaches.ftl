@@ -49,7 +49,7 @@ column-detected = CANFOD
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
 column-status-badge-resolved = Datryswyd
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = Gweithredol
+column-status-badge-active = Gweithredu
 breaches-resolve-heading = Datrys y tor-data hwn:
 breaches-none-headline = Heb ganfod tor-data
 # Variables:

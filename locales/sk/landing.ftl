@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Landing page
 
 
@@ -45,7 +50,7 @@ what-do-i-do = Moje údaje boli súčasťou úniku údajov. Čo teraz?
 visit-monitor-to-learn = Navštívte stránku služby { -brand-fx-monitor } a zistite, čo robiť po úniku údajov. Hackeri sa spoliehajú na to, že ľudia opakovane používajú heslá, preto je dôležité vytvárať silné a jedinečné heslá pre každý váš účet. Uchovávajte svoje heslá na bezpečnom mieste, ku ktorému máte prístup iba vy; mohlo by to byť rovnaké miesto, kam ukladáte dôležité dokumenty alebo správcu hesiel.
 # question and answer
 what-gets-exposed = Aké informácie sú odhalené pri úniku údajov?
-depends-on-hackers = Nie všetky úniky odhaľujú rovnaké informácie. Záleží len na tom, k čomu majú hackeri prístup. Mnoho únikov údajov odhaľuje e‑mailové adresy a heslá. Iné odhaľujú citlivejšie informácie, ako sú čísla kreditných kariet, čísla pasov a rodné čísla.
+depends-on-hackers = Nie všetky úniky odhaľujú rovnaké informácie. Záleží len na tom, k čomu majú hackeri prístup. Mnoho únikov údajov odhaľuje e‑mailové adresy a heslá. Iné odhaľujú citlivejšie informácie, ako sú čísla kreditných kariet, čísla pasov a čísla sociálneho zabezpečenia.
 
 ## See if you’ve been in a data breach
 

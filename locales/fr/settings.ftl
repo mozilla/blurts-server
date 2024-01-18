@@ -30,11 +30,16 @@ settings-email-limit-info =
 settings-email-verification-callout = Vérification de l’adresse e-mail nécessaire
 settings-resend-email-verification-link = Renvoyer l’e-mail de vérification
 settings-add-email-button = Ajouter une adresse e-mail
+# Deprecated
 settings-delete-email-button = Supprimer l’adresse e-mail
+settings-remove-email-button-label = Supprimer
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Arrêter de surveiller { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] Apparaît dans { $breachCount } fuite de données connue.
@@ -45,16 +50,11 @@ settings-email-number-of-breaches-info =
 
 settings-cancel-premium-subscription-title = Annuler l’abonnement à { -brand-premium }
 settings-cancel-premium-subscription-info = Votre abonnement redeviendra un compte gratuit une fois le cycle de facturation en cours terminé. Les résultats de vos scans de protection de la vie privée seront supprimés définitivement, et vous ne pourrez surveiller les fuites de données que pour une seule adresse e-mail.
-settings-cancel-premium-subscription-link-label = Annuler depuis votre { -brand-fx-account }
 
 ## Deactivate account
 
 settings-deactivate-account-title = Désactiver le compte
-# Deprecated
-settings-deactivate-account-info = Vous pouvez désactiver { -product-short-name } en supprimant votre { -brand-fx-account }.
 settings-deactivate-account-info-2 = Vous pouvez désactiver { -product-short-name } en supprimant votre { -brand-mozilla-account }.
-# Deprecated
-settings-fxa-link-label = Ouvrir les paramètres de { -brand-firefox }
 settings-fxa-link-label-3 = Ouvrir les paramètres du { -brand-mozilla-account }
 
 ## Add email dialog

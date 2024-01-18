@@ -14,7 +14,8 @@ import { sendVerificationEmail } from "../../../utils/email";
 import { validateEmailAddress } from "../../../../../utils/emailAddress";
 import { getL10n } from "../../../../functions/server/l10n";
 import { initEmail } from "../../../../../utils/email";
-import { Subscriber } from "../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
+import { Subscriber } from "../../../../deprecated/(authenticated)/user/breaches/breaches";
+import { CONST_MAX_NUM_ADDRESSES } from "../../../../../constants";
 
 interface EmailAddRequest {
   email: string;
@@ -45,7 +46,7 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      if (emailCount >= Number.parseInt(AppConstants.MAX_NUM_ADDRESSES, 10)) {
+      if (emailCount >= CONST_MAX_NUM_ADDRESSES) {
         return NextResponse.json(
           {
             success: false,

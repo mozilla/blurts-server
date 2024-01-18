@@ -17,22 +17,43 @@ import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import ModalImage from "../client/assets/modal-default-img.svg";
 import { DashboardSummary } from "../../functions/server/dashboard";
+import { WaitlistDialog } from "./SubscriberWaitlistDialog";
+import { useTelemetry } from "../../hooks/useTelemetry";
+import {
+  CONST_MAX_NUM_ADDRESSES,
+  CONST_ONEREP_MAX_SCANS_THRESHOLD,
+} from "../../../constants";
 
 export type Props = {
   data: Array<[string, number]>;
   isEligibleForFreeScan: boolean;
+  isEligibleForPremium: boolean;
+  isPremiumUser: boolean;
   scanInProgress: boolean;
   isShowFixed: boolean;
   summary: DashboardSummary;
+  totalNumberOfPerformedScans?: number;
 };
 
 export const DoughnutChart = (props: Props) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
 
-  const explainerDialogState = useOverlayTriggerState({});
+  const explainerDialogState = useOverlayTriggerState({
+    onOpenChange: (isOpen) => {
+      recordTelemetry("popup", isOpen ? "view" : "exit", {
+        popup_id: `number_of_exposures_info`,
+      });
+    },
+  });
   const explainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
     explainerDialogState,
+  );
+  const waitlistDialogState = useOverlayTriggerState({});
+  const waitlistDialogTrigger = useOverlayTrigger(
+    { type: "dialog" },
+    waitlistDialogState,
   );
   const sumOfFixedExposures = props.data.reduce(
     (total, [_label, num]) => total + num,
@@ -79,15 +100,28 @@ export const DoughnutChart = (props: Props) => {
       />
     );
   });
-  const modalContent = (
+
+  const includesDataBrokers = props.isEligibleForPremium || props.isPremiumUser;
+  const modalContentActionNeeded = (
     <div className={styles.modalBodyContent}>
       <p>
-        {l10n.getString("modal-active-number-of-exposures-part-one", {
-          limit: 5,
-        })}
+        {l10n.getString(
+          includesDataBrokers
+            ? "modal-active-number-of-exposures-part-one-premium"
+            : "modal-active-number-of-exposures-part-one-all",
+          {
+            limit: CONST_MAX_NUM_ADDRESSES,
+          },
+        )}
       </p>
       <p>{l10n.getString("modal-active-number-of-exposures-part-two")}</p>
-      <p>{l10n.getString("modal-active-number-of-exposures-part-three")}</p>
+      <p>
+        {l10n.getString(
+          includesDataBrokers
+            ? "modal-active-number-of-exposures-part-three-premium"
+            : "modal-active-number-of-exposures-part-three-all",
+        )}
+      </p>
       <div className={styles.confirmButtonWrapper}>
         <Button
           variant="primary"
@@ -103,6 +137,18 @@ export const DoughnutChart = (props: Props) => {
     </div>
   );
 
+  const modalContentFixed = (
+    <div className={styles.modalBodyContent}>
+      {l10n.getString(
+        includesDataBrokers
+          ? "modal-fixed-number-of-exposures-part-one"
+          : "modal-fixed-number-of-exposures-all",
+      )}
+      {includesDataBrokers &&
+        l10n.getString("modal-fixed-number-of-exposures-part-two")}
+    </div>
+  );
+
   const getPromptContent = () => {
     if (!props.scanInProgress && props.isEligibleForFreeScan) {
       return (
@@ -110,9 +156,37 @@ export const DoughnutChart = (props: Props) => {
           <p>
             {l10n.getString("exposure-chart-returning-user-upgrade-prompt")}
           </p>
-          <Link href="/redesign/user/welcome/free-scan?referrer=dashboard">
-            {l10n.getString("exposure-chart-returning-user-upgrade-prompt-cta")}
-          </Link>
+          {typeof props.totalNumberOfPerformedScans === "undefined" ||
+          props.totalNumberOfPerformedScans <
+            CONST_ONEREP_MAX_SCANS_THRESHOLD ? (
+            <Link
+              href="/user/welcome/free-scan?referrer=dashboard"
+              onClick={() => {
+                recordTelemetry("link", "click", {
+                  link_id: "exposures_chart_free_scan",
+                });
+              }}
+            >
+              {l10n.getString(
+                "exposure-chart-returning-user-upgrade-prompt-cta",
+              )}
+            </Link>
+          ) : (
+            <>
+              <Button
+                variant="tertiary"
+                {...waitlistDialogTrigger.triggerProps}
+              >
+                {l10n.getString(
+                  "exposure-chart-returning-user-upgrade-prompt-cta",
+                )}
+              </Button>
+              <WaitlistDialog
+                dialogTriggerState={waitlistDialogState}
+                {...waitlistDialogTrigger.overlayProps}
+              />
+            </>
+          )}
         </>
       );
     }
@@ -274,13 +348,17 @@ export const DoughnutChart = (props: Props) => {
           isDismissable={true}
         >
           <Dialog
-            title={l10n.getString("modal-active-number-of-exposures-title")}
+            title={
+              props.isShowFixed
+                ? l10n.getString("modal-fixed-number-of-exposures-title")
+                : l10n.getString("modal-active-number-of-exposures-title")
+            }
             illustration={<Image src={ModalImage} alt="" />}
             // TODO: Add unit test when changing this code:
             /* c8 ignore next */
             onDismiss={() => explainerDialogState.close()}
           >
-            {modalContent}
+            {props.isShowFixed ? modalContentFixed : modalContentActionNeeded}
           </Dialog>
         </ModalOverlay>
       )}

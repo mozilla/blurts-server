@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -39,6 +44,8 @@ user-add-duplicate-email = 이 이메일은 이미 { -product-name }에 추가�
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = { $preferencesLink }를 방문하여 { $userEmail }의 상태를 확인하세요.
+user-add-verification-email-just-sent = 이렇게 빨리 또 다른 확인 이메일을 보낼 수 없습니다. 나중에 다시 시도 해주십시오.
+user-add-unknown-error = 다른 이메일 주소를 추가하는 중에 문제가 발생했습니다. 나중에 다시 시도 해주십시오.
 error-headline = 오류
 user-verify-token-error = 확인 토큰이 필요합니다.
 user-verify-email-report-subject = { -product-name } 보고서
@@ -599,6 +606,8 @@ vpn-promo-headline-new = 1년 구독으로 50% 할인
 #                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
 #                           provides its own localization.
 vpn-banner-location = 현재 위치: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = { -brand-mozilla-vpn }와 함께 <em>자신을 보호하세요</em>.
+vpn-banner-subtitle-2 = 3단계로 위치를 보호하고 안전하게 탐색하세요.
 vpn-banner-status-protected = 현재 상태: <em>보호됨 ✓</em>
 vpn-banner-status-not-protected = 현재 상태: <em>보호되지 않음 ⚠</em>
 # Variables:
@@ -615,6 +624,32 @@ vpn-banner-cta-close = 닫기
 
 ## Relay and VPN educational/ad units
 
+ad-unit-relay-cta = { -brand-relay }에 대해 더 알아보기
+# ad 1 heading
+ad-unit-1-how-do-you-keep = 이메일 주소를 어떻게 비밀로 유지하시나요?
+# ad 2 heading
+ad-unit-2-do-you-worry = 공용 Wi-Fi의 안전이 걱정되나요?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = 우리와 계속 함께하세요!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } 사용 시 게임을 하거나 영화를 스트리밍하는 동안 안정적인 연결을 안전하게 유지할 수 있습니다.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = 스로틀링 방지
+# ad 4 heading
+ad-unit-4-shopping-with = 이메일 마스크하고 쇼핑하기
+ad-unit-4-want-to-buy = 온라인으로 무언가를 구매하고 싶은데 해당 매장을 잘 모르거나 완전히 신뢰하지 못하나요?
+ad-unit-4-shop-online = 온라인 쇼핑을 할 때마다 이메일 마스크를 사용하세요. 실제 이메일로 확인 메시지를 받은 후 나중에 언제든지 쉽게 마스킹을 끌 수 있습니다.
+# ad 5 heading
+ad-unit-5-on-the-go = { -brand-relay }와 함께하세요
+ad-unit-5-instantly-make = 어디를 가든지 즉각적으로 맞춤형 이메일 마스크를 만들어보세요!
+ad-unit-5-privately-sign-in = 좋아하는 커피숍이나 공용 Wi-Fi에 비공개로 로그인하려면 이메일 마스크를 사용하세요.
+# ad 5 subheading 2
+ad-unit-5-email-receipts = 이메일 영수증 받기
+ad-unit-5-share-custom-email = 실제 이메일을 공유하지 않고 매장의 쇼핑 영수증 용 이메일 마스크를 사용하세요.
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = 핸드폰에서 사용
+ad-unit-5-no-matter-where = 어디에 있든 원하는 작업을 위해 몇 초 안에 맞춤형 이메일 마스크를 만드세요.
+# ad 6 heading
+ad-unit-6-worry-free = 걱정 없는 가입
 
 # Monitor V2
 
@@ -622,7 +657,7 @@ vpn-banner-cta-close = 닫기
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-mozilla-foundation = Mozilla 재단
 -brand-github = GitHub
@@ -631,15 +666,13 @@ vpn-banner-cta-close = 닫기
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Firefox 계정
 
 ## Search Engine Optimization
 
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = 로그인
 
@@ -648,25 +681,29 @@ sign-in = 로그인
 site-nav-breaches-link = 데이터 유출 해결
 site-nav-settings-link = 설정
 site-nav-help-link = 도움말 및 지원
-# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
 site-nav-ad-callout = 다른 보완 도구를 사용해보세요:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
+# Obsolete
 menu-button-title = 사용자 메뉴
+# Obsolete
 menu-button-alt = 사용자 메뉴 열기
+# Obsolete
 menu-list-accessible-label = 계정 메뉴
-menu-item-fxa = { -brand-fx-account } 관리
+# Obsolete
 menu-item-settings = 설정
+# Obsolete
 menu-item-help = 도움말 및 지원
+# Obsolete
 menu-item-logout = 로그아웃
 
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = 약관 및 개인 정보 보호 정책
 github = { -brand-github }
 
 ## Error page
@@ -685,4 +722,7 @@ search-breaches = 유출 내역 검색하기
 
 
 ## Floating banner
+
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
 

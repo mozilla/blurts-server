@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useRef } from "react";
+import { ReactElement, useEffect, useRef } from "react";
 import { useComboBox } from "react-aria";
 import { useComboBoxState, ComboBoxStateOptions } from "react-stately";
 import { ListBox } from "./ListBox";
@@ -13,10 +13,11 @@ import styles from "./ComboBox.module.scss";
 
 interface ComboBoxProps extends ComboBoxStateOptions<object> {
   items: Array<object>;
+  listPlaceholder?: ReactElement;
 }
 
 function ComboBox(props: ComboBoxProps) {
-  const { label, isRequired, validationState } = props;
+  const { errorMessage, isInvalid, isRequired, label, listPlaceholder } = props;
   const inputRef = useRef(null);
   const listBoxRef = useRef(null);
   const popoverRef = useRef(null);
@@ -36,7 +37,12 @@ function ComboBox(props: ComboBoxProps) {
     },
     state,
   );
-  const isInvalid = validationState === "invalid";
+
+  useEffect(() => {
+    if (inputProps.value === "") {
+      state.close();
+    }
+  }, [inputProps.value, state]);
 
   return (
     <>
@@ -64,8 +70,8 @@ function ComboBox(props: ComboBoxProps) {
               // We always pass in a string at the time of writing, so we can't
               // hit the "else" path with tests:
               /* c8 ignore next 3 */
-              typeof props.errorMessage === "string"
-                ? props.errorMessage
+              typeof errorMessage === "string"
+                ? errorMessage
                 : validationErrors.join(" ")
             }
           </div>
@@ -74,19 +80,22 @@ function ComboBox(props: ComboBoxProps) {
       {
         // TODO: Add unit test when changing this code:
         /* c8 ignore next */
-        state.isOpen && props.items?.length > 0 && (
+        state.isOpen && (
           <Popover
-            offset={4}
+            offset={8}
             popoverRef={popoverRef}
             state={state}
             triggerRef={inputRef}
           >
-            <ListBox
-              {...listBoxProps}
-              listBoxRef={listBoxRef}
-              parentRef={inputRef}
-              state={state}
-            />
+            <div className={styles.popoverList}>
+              <ListBox
+                {...listBoxProps}
+                listBoxRef={listBoxRef}
+                listPlaceholder={listPlaceholder}
+                parentRef={inputRef}
+                state={state}
+              />
+            </div>
           </Popover>
         )
       }

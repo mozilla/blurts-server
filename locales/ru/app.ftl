@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -49,6 +54,8 @@ user-add-duplicate-email = Этот адрес электронной почты
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Посетите { $preferencesLink }, чтобы проверить статус { $userEmail }.
+user-add-verification-email-just-sent = Невозможно так быстро отправить ещё одно письмо для подтверждения. Подождите некоторое время и попробуйте снова.
+user-add-unknown-error = Что-то пошло не так при добавлении ещё одного адреса электронной почты. Подождите некоторое время и попробуйте снова.
 error-headline = Ошибка
 user-verify-token-error = Требуется токен подтверждения.
 user-verify-email-report-subject = Ваш отчёт от { -product-name }
@@ -177,7 +184,7 @@ what-is-data-agg-blurb =
     Агрегаторы или брокеры данных собирают данные из публичных источников информации, а также покупают их у других компаний. Они собирают эти данные для продажи другим компаниям
     в рекламных целях. Жертвы этих утечек менее подвержены угрозе финансового мошенничества, но хакеры могут использовать эти данные для их профилирования или кражи личности.
 protect-your-privacy = Защитите свою приватность в Интернете
-no-pw-to-change = В отличие от ситуации со взломом сайта, здесь нет пароля, который можно было бы сменить.
+no-pw-to-change = В отличие от ситуации с утечкой с сайта, здесь нет пароля, который можно было бы сменить.
 avoid-personal-info = Избегайте использования личной информации в паролях
 avoid-personal-info-blurb = Найти дату рождения, адрес или имена членов семьи не составляет труда. Не используйте подобные слова в ваших паролях.
 
@@ -194,8 +201,8 @@ create-unique-pw = Создавайте уникальные пароли и с�
 five-myths = 5 мифов о менеджерах паролей
 create-a-fxa = Создайте { -brand-fxa }, чтобы получить ваш полный отчёт об утечках, и получать уведомления.
 feat-security-tips = Советы по безопасности для защиты ваших аккаунтов
-feat-sensitive = Продвинутый поиск по важным взломам
-feat-enroll-multiple = Укажите несколько адресов электронной почты для отслеживания взломов
+feat-sensitive = Расширенный поиск по важным утечкам
+feat-enroll-multiple = Укажите несколько адресов электронной почты для отслеживания утечек
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -690,7 +697,7 @@ ad-unit-6-before-you-complete = Прежде чем завершить след�
 
 -brand-firefox = Firefox
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
 -brand-monitor-premium = Monitor Premium
@@ -698,12 +705,15 @@ ad-unit-6-before-you-complete = Прежде чем завершить след�
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Аккаунт Mozilla
+open-in-new-tab-alt = Открыть ссылку в новой вкладке
 
 ## Search Engine Optimization
 
@@ -711,8 +721,10 @@ meta-desc-2 = Узнайте, были ли вы затронуты утечко
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Войти
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -723,19 +735,43 @@ site-nav-help-link = Помощь и Поддержка
 site-nav-ad-callout = Попробуйте другие наши инструменты безопасности:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Основное меню
+main-nav-button-collapse-label = Свернуть меню
+main-nav-button-collapse-tooltip = Свернуть меню
+main-nav-button-expand-label = Развернуть меню
+main-nav-button-expand-tooltip = Развернуть меню
+main-nav-label = Навигация
+main-nav-link-home-label = Домой
+main-nav-link-dashboard-label = Панель управления
+main-nav-link-settings-label = Настройки
+main-nav-link-faq-label = ЧЗВ
+main-nav-link-faq-tooltip = Часто задаваемые вопросы
 
 ## User menu
 
+# Obsolete
 menu-button-title = Пользовательское меню
+# Obsolete
 menu-button-alt = Открыть пользовательское меню
+# Obsolete
 menu-list-accessible-label = Меню аккаунта
+# Obsolete
 menu-item-fxa-2 = Управляйте своим { -brand-mozilla-account }
-menu-item-fxa-alt-2 = Открыть страницу { -brand-mozilla-account }
+# Obsolete
 menu-item-settings = Настройки
-menu-item-settings-alt = Открыть страницу настроек
+# Obsolete
 menu-item-help = Справка и поддержка
-menu-item-help-alt = Открыть страницу справки и поддержки
+# Obsolete
 menu-item-logout = Выйти
+user-menu-trigger-label = Открыть пользовательское меню
+user-menu-trigger-tooltip = Профиль
+user-menu-manage-fxa-label = Управляйте своим { -brand-mozilla-account }
+user-menu-settings-label = Настройки
+user-menu-settings-tooltip = Настройка { -brand-mozilla-monitor }
+user-menu-help-label = Справка и поддержка
+user-menu-help-tooltip = Получите помощь по использованию { -brand-mozilla-monitor }
+user-menu-signout-label = Выйти
+user-menu-signout-tooltip = Выйти из { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -744,6 +780,8 @@ terms-of-service = Условия использования
 privacy-notice = Уведомление о конфиденциальности
 github = { -brand-github }
 footer-nav-all-breaches = Все утечки
+footer-external-link-faq-label = ЧЗВ
+footer-external-link-faq-tooltip = Часто задаваемые вопросы
 
 ## Error page
 
@@ -776,3 +814,9 @@ breach-detail-cta-signup = Проверить на утечки
 floating-banner-text = Повысьте свою безопасность в Интернете с помощью новостей, советов и обновлений от { -brand-Mozilla }.
 floating-banner-link-label = Зарегистрироваться
 floating-banner-dismiss-button-label = Нет, спасибо
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Новое имя, внешний вид и ещё больше способов <b>восстановить вашу приватность</b>.
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Скрыть

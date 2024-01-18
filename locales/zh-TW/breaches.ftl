@@ -24,25 +24,25 @@ breach-chart-title = 外洩資料
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = { $email-select } 的資料外洩事件
 # $count is the number of emails a user has added out of $total allowed
-emails-monitored = 監控 { $count } 組，共 { $total } 組電子郵件信箱
+emails-monitored = 已監控 { $count } 組，最多 { $total } 組電子郵件信箱
 # link to Settings page where user can add/remove emails and set message preferences
 manage-emails-link = 管理信箱
 
 ## Breaches resolved filter
 
-filter-label-unresolved = 未處理的事件
-filter-label-resolved = 處理過的事件
+filter-label-unresolved = 場未處理的事件
+filter-label-resolved = 場處理過的事件
 
 ## Breaches table
 
 column-company = 公司
 column-breached-data = 外洩資料
-column-detected = 偵測到
+column-detected = 事件偵測日期
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
 column-status-badge-resolved = 已解決
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = 進行中
-breaches-resolve-heading = 處理此次事件了：
+breaches-resolve-heading = 事件處理方式：
 breaches-none-headline = 找不到資料外洩事件
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
@@ -59,7 +59,7 @@ breaches-all-resolved-cta-button = 新增電子郵件地址
 # Variables:
 #   $breachDate (String) - Date of the breach
 #   $companyName (String) - Name of the company where the breach occurred
-breach-description = { $companyName } 於 { $breachDate } 發生了資料外洩事件。事件發生並經過驗證後，已於 { $addedDate } 列入我們的資料庫。此次事件外洩了下列資料：{ $dataClasses }
+breach-description = { $companyName } 於 { $breachDate }發生了資料外洩事件。事件發生並經過驗證後，已於 { $addedDate }列入我們的資料庫。此次事件外洩了下列資料：{ $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 

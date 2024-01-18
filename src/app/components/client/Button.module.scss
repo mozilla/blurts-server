@@ -50,6 +50,14 @@
     }
   }
 
+  &.tertiary {
+    background: none;
+    color: $color-blue-50;
+    font: inherit;
+    padding: 0;
+    text-decoration: underline;
+  }
+
   &.isLoading {
     cursor: progress;
     opacity: 0.4;
@@ -65,7 +73,9 @@
   }
 
   &.disabled {
-    opacity: 0.3;
+    color: $color-grey-20;
+    background: transparent;
+    box-shadow: inset 0 0 0 2px $color-grey-20;
     pointer-events: none;
   }
 }

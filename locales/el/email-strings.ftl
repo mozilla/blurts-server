@@ -1,3 +1,7 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
@@ -114,7 +118,7 @@ email-verify-simply-click = Κάντε απλώς κλικ στον παρακά
 email-breach-summary = Ακολουθεί η σύνοψη παραβίασης δεδομένων σας
 email-breach-detected = Τα αποτελέσματα αναζήτησης για το { $email-address } δείχνουν ότι το email σας μπορεί να έχει εκτεθεί. Σας συνιστούμε να ενεργήσετε τώρα για να επιλύσετε αυτήν την παραβίαση.
 email-no-breach-detected = Θαυμάσια νέα! Δεν βρήκαμε παραβιάσεις δεδομένων που να επηρεάζουν το email σας, { $email-address }.
-email-dashboard-cta = Μετάβαση στον πίνακα
+email-dashboard-cta = Μετάβαση στον πίνακα ελέγχου
 
 ## Breach alert
 

@@ -30,11 +30,16 @@ settings-email-limit-info =
 settings-email-verification-callout = E-postverifiering krävs
 settings-resend-email-verification-link = Skicka e-postverifiering igen
 settings-add-email-button = Lägg till e-postadress
+# Deprecated
 settings-delete-email-button = Ta bort e-postadress
+settings-remove-email-button-label = Ta bort
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Sluta övervaka { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] Förekommer i { $breachCount } känt intrång.
@@ -45,16 +50,11 @@ settings-email-number-of-breaches-info =
 
 settings-cancel-premium-subscription-title = Avsluta prenumerationen på { -brand-premium }
 settings-cancel-premium-subscription-info = Ditt abonnemang kommer att återgå till ett gratiskonto efter att den aktuella faktureringsperioden är slut. Resultaten av din integritetsskyddsskanning kommer att raderas permanent och du kommer bara att ha övervakning av dataintrång för en e-postadress.
-settings-cancel-premium-subscription-link-label = Avsluta från ditt { -brand-fx-account }
 
 ## Deactivate account
 
 settings-deactivate-account-title = Inaktivera konto
-# Deprecated
-settings-deactivate-account-info = Du kan inaktivera { -product-short-name } genom att ta bort ditt { -brand-fx-account }.
 settings-deactivate-account-info-2 = Du kan inaktivera { -product-short-name } genom att ta bort ditt { -brand-mozilla-account }.
-# Deprecated
-settings-fxa-link-label = Gå till { -brand-firefox }-inställningar
 settings-fxa-link-label-3 = Gå till inställningarna för { -brand-mozilla-account }
 
 ## Add email dialog

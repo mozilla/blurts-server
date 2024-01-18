@@ -34,11 +34,16 @@ test('EmailUtils.sendEmail before .init() fails', async () => {
 })
 
 test('EmailUtils.init with empty host uses jsonTransport', async () => {
+  const mockedConsoleInfo = jest.spyOn(console, 'info').mockImplementation();
   const mockedNodemailer = jest.requireMock('nodemailer')
   const { initEmail } = await import('./email.js')
 
   await expect(await initEmail('')).toBe(true);
   expect(mockedNodemailer.createTransport).toHaveBeenCalledWith({ jsonTransport: true });
+  expect(mockedConsoleInfo).toHaveBeenCalledWith(
+    'smtpUrl-empty',
+    { message: 'EmailUtils will log a JSON response instead of sending emails.' },
+  );
 })
 
 test('EmailUtils.init with SMTP URL invokes nodemailer.createTransport', async () => {

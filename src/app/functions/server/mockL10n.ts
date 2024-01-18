@@ -17,22 +17,29 @@ import type { LocaleData } from "./l10n";
 // Code in this file is only used in tests and Storybook, not in production:
 /* c8 ignore start */
 
-export function getEnL10nBundlesSync(): LocaleData[] {
+export function getOneL10nBundleSync(locale = detectLocale()): LocaleData[] {
   return process.env.STORYBOOK === "true"
-    ? getEnL10nBundlesInWebpackContext()
-    : getEnL10nBundlesInNodeContext();
+    ? getOneL10nBundleInWebpackContext(locale)
+    : getOneL10nBundleInNodeContext(locale);
 }
 
-export function getEnL10nBundlesInWebpackContext(): LocaleData[] {
-  const referenceStringsContext: { keys: () => string[] } & ((
+export function getOneL10nBundleInWebpackContext(
+  locale = detectLocale(),
+): LocaleData[] {
+  const allStringsContext: { keys: () => string[] } & ((
     path: string,
     // `require` isn't usually valid JS, so skip type checking for that:
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ) => string) = (require as any).context(
-    "../../../../locales/en",
+    "../../../../locales/",
     true,
     /\.ftl$/,
   );
+  const allStringFilenames = allStringsContext.keys();
+  const localeStringFilenames = allStringFilenames.filter((filepath) =>
+    filepath.startsWith(`./${locale}/`),
+  );
+
   const pendingTranslationsContext: { keys: () => string[] } & ((
     path: string,
     // `require` isn't usually valid JS, so skip type checking for that:
@@ -42,10 +49,9 @@ export function getEnL10nBundlesInWebpackContext(): LocaleData[] {
     true,
     /\.ftl$/,
   );
-  const referenceSourceFilenames = referenceStringsContext.keys();
   const pendingSourceFilenames = pendingTranslationsContext.keys();
-  const bundleSources: string[] = referenceSourceFilenames
-    .map((filePath) => referenceStringsContext(filePath))
+  const bundleSources: string[] = localeStringFilenames
+    .map((filePath) => allStringsContext(filePath))
     .concat(
       pendingSourceFilenames.map((filePath) =>
         pendingTranslationsContext(filePath),
@@ -54,13 +60,15 @@ export function getEnL10nBundlesInWebpackContext(): LocaleData[] {
 
   return [
     {
-      locale: "en",
+      locale: locale,
       bundleSources: bundleSources,
     },
   ];
 }
 
-export function getEnL10nBundlesInNodeContext(): LocaleData[] {
+export function getOneL10nBundleInNodeContext(
+  locale = detectLocale(),
+): LocaleData[] {
   const {
     readdirSync: nodeReaddirSync,
     readFileSync: nodeReadFileSync,
@@ -71,7 +79,7 @@ export function getEnL10nBundlesInNodeContext(): LocaleData[] {
   const { resolve: resolvePath }: { resolve: typeof resolve } = require("path");
   const referenceStringsPath = resolvePath(
     __dirname,
-    "../../../../locales/en/",
+    `../../../../locales/${locale}/`,
   );
   const pendingStringsPath = resolvePath(
     __dirname,
@@ -91,7 +99,7 @@ export function getEnL10nBundlesInNodeContext(): LocaleData[] {
 
   return [
     {
-      locale: "en",
+      locale: locale,
       bundleSources: bundleSources,
     },
   ];
@@ -122,15 +130,19 @@ function getBundle(localeData: LocaleData): FluentBundle {
 }
 
 /**
- * This function loads a ReactLocalization instance with the `en` and pending strings.
+ * This function loads a ReactLocalization instance with the given locale (`en` by default) and pending strings.
  *
  * This is useful in tests and Storybook, where we can't call `headers` from
  * `next/headers` to determine the user's locale, and even just importing from a
  * module that references it can result in an error about only being able to use
  * it in Server Components.
+ *
+ * @param locale {string} Locale to load; `en` by default.
  */
-export function getEnL10nSync(): ExtendedReactLocalization {
-  const localeData: LocaleData[] = getEnL10nBundlesSync();
+export function getOneL10nSync(
+  locale = detectLocale(),
+): ExtendedReactLocalization {
+  const localeData: LocaleData[] = getOneL10nBundleSync(locale);
   const bundles: FluentBundle[] = localeData.map((data) => getBundle(data));
 
   // The ReactLocalization instance stores and caches the sequence of generated
@@ -150,4 +162,13 @@ export function getEnL10nSync(): ExtendedReactLocalization {
   extendedL10n.getFragment = getFragment;
 
   return extendedL10n;
+}
+
+function detectLocale() {
+  const locale =
+    typeof document !== "undefined"
+      ? new URLSearchParams(document.location.search).get("locale") ?? undefined
+      : undefined;
+
+  return locale ?? "en";
 }

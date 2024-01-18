@@ -12,6 +12,7 @@
 ## Breaches table
 
 column-company = TKEBBANIT
+
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
 column-status-badge-resolved = Yefra
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.

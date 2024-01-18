@@ -9,7 +9,7 @@ import { logger } from "../../../../../functions/server/logging";
 import {
   BreachBulkResolutionRequest,
   Subscriber,
-} from "../../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
+} from "../../../../../deprecated/(authenticated)/user/breaches/breaches.js";
 import { getBreaches } from "../../../../../functions/server/getBreaches";
 import { getAllEmailsAndBreaches } from "../../../../../../utils/breaches";
 import {

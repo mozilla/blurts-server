@@ -30,11 +30,16 @@ settings-email-limit-info =
 settings-email-verification-callout = E-mail ellenőrzés szükséges
 settings-resend-email-verification-link = Ellenőrző e-mail újraküldése
 settings-add-email-button = E-mail-cím hozzáadása
+# Deprecated
 settings-delete-email-button = E-mail-cím törlése
+settings-remove-email-button-label = Eltávolítás
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = A(z) { $emailAddress } figyelésének leállítása
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] { $breachCount } ismert adatvédelmi incidensben szerepel.
@@ -45,16 +50,11 @@ settings-email-number-of-breaches-info =
 
 settings-cancel-premium-subscription-title = A { -brand-premium } előfizetés megszüntetése
 settings-cancel-premium-subscription-info = Az előfizetése ingyenes fiókká változik a jelenlegi számlázási ciklus végén. Az adatvédelmi vizsgálati eredményei véglegesen törlésre kerülnek, és csak 1 e-mail-címhez lesz bekapcsolva az adatvédelmi incidensek figyelése.
-settings-cancel-premium-subscription-link-label = Lemondás a { -brand-fx-account }jából
 
 ## Deactivate account
 
 settings-deactivate-account-title = Fiók deaktiválása
-# Deprecated
-settings-deactivate-account-info = A { -brand-fx-account }ja törlésével deaktiválhatja a { -product-short-name }t.
 settings-deactivate-account-info-2 = A { -brand-mozilla-account }ja törlésével kikapcsolhatja a { -product-short-name }t.
-# Deprecated
-settings-fxa-link-label = Ugorjon a { -brand-firefox } beállításaihoz
 settings-fxa-link-label-3 = Ugrás a { -brand-mozilla-account } beállításaihoz
 
 ## Add email dialog

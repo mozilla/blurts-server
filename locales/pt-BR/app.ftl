@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -39,6 +44,8 @@ user-add-duplicate-email = Este email já foi adicionado ao { -product-name }.
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Visite suas { $preferencesLink } para verificar o status de { $userEmail }.
+user-add-verification-email-just-sent = Outro email de verificação não pode ser enviado tão rapidamente. Tente novamente mais tarde.
+user-add-unknown-error = Algo deu errado ao adicionar outro endereço de email. Tente novamente mais tarde.
 error-headline = Erro
 user-verify-token-error = Token de verificação é necessário.
 user-verify-email-report-subject = Seu relatório do { -product-name }
@@ -677,7 +684,7 @@ ad-unit-6-before-you-complete = Antes de concluir o próximo cadastro, use uma m
 
 -brand-firefox = Firefox
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
 -brand-monitor-premium = Monitor Premium
@@ -685,12 +692,15 @@ ad-unit-6-before-you-complete = Antes de concluir o próximo cadastro, use uma m
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Conta Mozilla
+open-in-new-tab-alt = Abrir link em nova aba
 
 ## Search Engine Optimization
 
@@ -698,8 +708,10 @@ meta-desc-2 = Descubra se você foi vítima de um vazamento de dados com o { -br
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Entrar
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -710,19 +722,43 @@ site-nav-help-link = Ajuda e suporte
 site-nav-ad-callout = Experimente nossas outras ferramentas de segurança:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Menu principal
+main-nav-button-collapse-label = Recolher menu
+main-nav-button-collapse-tooltip = Recolher menu
+main-nav-button-expand-label = Expandir menu
+main-nav-button-expand-tooltip = Expandir menu
+main-nav-label = Navegação
+main-nav-link-home-label = Início
+main-nav-link-dashboard-label = Painel
+main-nav-link-settings-label = Configurações
+main-nav-link-faq-label = Dúvidas frequentes
+main-nav-link-faq-tooltip = Dúvidas frequentes
 
 ## User menu
 
+# Obsolete
 menu-button-title = Menu do usuário
+# Obsolete
 menu-button-alt = Abrir menu do usuário
+# Obsolete
 menu-list-accessible-label = Menu da conta
+# Obsolete
 menu-item-fxa-2 = Gerencie sua { -brand-mozilla-account }
-menu-item-fxa-alt-2 = Abrir página da { -brand-mozilla-account }
+# Obsolete
 menu-item-settings = Configurações
-menu-item-settings-alt = Abrir página de configurações
+# Obsolete
 menu-item-help = Ajuda e suporte
-menu-item-help-alt = Abrir página de ajuda e suporte
+# Obsolete
 menu-item-logout = Sair
+user-menu-trigger-label = Abrir menu do usuário
+user-menu-trigger-tooltip = Perfil
+user-menu-manage-fxa-label = Gerenciar sua { -brand-mozilla-account }
+user-menu-settings-label = Configurações
+user-menu-settings-tooltip = Configurar o { -brand-mozilla-monitor }
+user-menu-help-label = Ajuda e suporte
+user-menu-help-tooltip = Obtenha ajuda em como usar o { -brand-mozilla-monitor }
+user-menu-signout-label = Sair
+user-menu-signout-tooltip = Sair do { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -731,6 +767,8 @@ terms-of-service = Termos do serviço
 privacy-notice = Aviso de privacidade
 github = { -brand-github }
 footer-nav-all-breaches = Todos os vazamentos
+footer-external-link-faq-label = Dúvidas frequentes
+footer-external-link-faq-tooltip = Dúvidas frequentes
 
 ## Error page
 
@@ -763,3 +801,9 @@ breach-detail-cta-signup = Verificar se há vazamentos
 floating-banner-text = Aumente sua segurança online com notícias, dicas e novidades da { -brand-Mozilla }.
 floating-banner-link-label = inscrever-se
 floating-banner-dismiss-button-label = Não, obrigado
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Novo nome, aparência e ainda mais formas de <b>recuperar sua privacidade</b>.
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Descartar

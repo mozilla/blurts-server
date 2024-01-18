@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -696,7 +701,7 @@ ad-unit-5-use-on-phone = Bruk det på din telefon
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
 -brand-monitor-premium = Monitor Premium
@@ -713,6 +718,7 @@ ad-unit-5-use-on-phone = Bruk det på din telefon
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Logg inn
 
@@ -725,29 +731,60 @@ site-nav-help-link = Hjelp og brukarstøtte
 site-nav-ad-callout = Prøv dei andre sikkerheitsverktøya våre:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Hovudmeny
+main-nav-button-collapse-label = Slå saman menyen
+main-nav-button-collapse-tooltip = Slå saman menyen
+main-nav-button-expand-label = Utvid meny
+main-nav-button-expand-tooltip = Utvid meny
+main-nav-label = Navigasjon
+main-nav-link-home-label = Heim
+main-nav-link-dashboard-label = Dashboard
+main-nav-link-settings-label = Innstillingar
+main-nav-link-faq-label = Vanlege spørsmål (FAQ)
+main-nav-link-faq-tooltip = Vanlege spørsmål
 
 ## User menu
 
+# Obsolete
 menu-button-title = Bruklarmeny
+# Obsolete
 menu-button-alt = Opne brukarmeny
+# Obsolete
 menu-list-accessible-label = Kontomeny
+# Obsolete
+menu-item-fxa-2 = Handsam { -brand-mozilla-account }en din
+# Obsolete
 menu-item-settings = Innstillingar
-menu-item-settings-alt = Opne sida for innstillingar
+# Obsolete
 menu-item-help = Hjelp og brukarstøtte
-menu-item-help-alt = Opne hjelp- og brukarstøttesida
+# Obsolete
 menu-item-logout = Logg ut
+user-menu-trigger-label = Opne brukarmeny
+user-menu-trigger-tooltip = Profil
+user-menu-manage-fxa-label = Handsam { -brand-mozilla-account }en din
+user-menu-settings-label = Innstillingar
+user-menu-settings-tooltip = Konfigurer { -brand-mozilla-monitor }
+user-menu-help-label = Hjelp og brukarstøtte
+user-menu-help-tooltip = Få hjelp til å bruke { -brand-mozilla-monitor }
+user-menu-signout-label = Logg ut
+user-menu-signout-tooltip = Logg ut frå { -brand-mozilla-monitor }
 
 ## Footer
 
 mozilla = { -brand-Mozilla }
+terms-of-service = Tenestevilkår
+privacy-notice = Personvernerklæring
 github = { -brand-github }
 footer-nav-all-breaches = Alle datalekkasjar
+footer-external-link-faq-label = Vanlege spørsmål (FAQ)
+footer-external-link-faq-tooltip = Vanlege spørsmål
 
 ## Error page
 
 # Variables:
 #   $errorCode (number) - "404"
 error-page-error-404-title = { $errorCode } Fann ikkje sida
+error-page-error-404-copy = Vi beklagar, sida du ser etter finst ikkje lenger.
 error-page-error-404-cta-button = Gå tilbake
 # Variables:
 #   $errorCode (number) - the status code of the error, e.g. 403

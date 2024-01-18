@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = 账户余额
@@ -14,7 +19,7 @@ avatars = 头像
 bank-account-numbers = 银行账号
 beauty-ratings = 颜值
 biometric-data = 生物特征数据
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = 自传
 browser-user-agent-details = 浏览器 User Agent 详细信息
@@ -35,7 +40,7 @@ customer-interactions = 顾客互动
 dates-of-birth = 生日
 deceased-date = 死亡日期
 deceased-statuses = 死亡状态
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = 发货指导
 device-information = 设备信息
@@ -46,7 +51,7 @@ driver-s-licenses = 驾照信息
 drug-habits = 用药习惯
 eating-habits = 饮食习惯
 education-levels = 教育水平
-email-addresses = 电子邮件地址
+email-addresses = 邮箱地址
 email-messages = 电子邮件消息
 employers = 雇主
 employment-statuses = 就业状况
@@ -75,7 +80,7 @@ instant-messenger-identities = 即时通讯身份
 ip-addresses = IP 地址
 job-applications = 求职经历
 job-titles = 职务
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = 车牌号
 living-costs = 生活费用
 # This string refers to financial loans.
@@ -109,7 +114,7 @@ payment-methods = 付款方式
 personal-descriptions = 个人简介
 personal-health-data = 个人健康数据
 personal-interests = 个人兴趣
-phone-numbers = 手机号码
+phone-numbers = 电话号码
 photos = 照片
 physical-addresses = 现实地址
 physical-attributes = 体貌特征
@@ -136,7 +141,7 @@ smoking-habits = 吸烟习惯
 sms-messages = 短信内容
 social-connections = 社交关系
 social-media-profiles = 社交媒体资料
-social-security-numbers = 社会安全号码
+social-security-numbers = 美国社会保障号码
 spoken-languages = 掌握的语言
 spouses-names = 配偶姓名
 support-tickets = 技术支持请求

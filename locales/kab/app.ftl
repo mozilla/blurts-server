@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -619,45 +624,58 @@ ad-unit-5-use-on-phone = Seqdec ɣef tiliɣri-inek·inem
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
--brand-fx-monitor = Firefox Monitor
+-brand-monitor = Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-mozilla-foundation = Tasbeddit Mozilla
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Amiḍan Firefox
 
 ## Search Engine Optimization
 
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Kcem
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
 site-nav-settings-link = Iɣewwaren
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Umuɣ agejdan
+main-nav-button-collapse-label = Fneẓ umuɣ
+main-nav-button-collapse-tooltip = Fneẓ umuɣ
 
 ## User menu
 
+# Obsolete
 menu-button-title = Umuɣ n useqdac
+# Obsolete
 menu-button-alt = Ldi umuɣ n useqdac
+# Obsolete
 menu-list-accessible-label = Umuɣ n umiḍan
+# Obsolete
 menu-item-settings = Iɣewwaren
+# Obsolete
 menu-item-logout = Ffeɣ
+user-menu-settings-label = Iɣewwaṛen
+user-menu-settings-tooltip = Sbadu { -brand-mozilla-monitor }
+user-menu-help-label = Tallalt
 
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-and-privacy = Tiwtilin akked tbaḍnit
+terms-of-service = Tiwtilin n useqdec
+privacy-notice = Tasertit n tbaḍnit
 github = { -brand-github }
 footer-nav-all-breaches = Meṛṛa tirewliwin
 
@@ -672,3 +690,6 @@ search-breaches = Nadi tirewliwin n yisefka
 ## Public breach detail page
 
 breach-detail-cta-signup = Senqed tarewla n yisefka
+
+## Floating banner
+

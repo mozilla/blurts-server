@@ -28,6 +28,7 @@ import {
 import { FallbackLogo } from "../server/BreachLogo";
 import { ExposureCardDataClassLayout } from "./ExposureCardDataClass";
 import { DataBrokerImage } from "./DataBrokerImage";
+import { useTelemetry } from "../../hooks/useTelemetry";
 
 export type Exposure = OnerepScanResultRow | SubscriberBreach;
 
@@ -42,6 +43,7 @@ export type ExposureCardProps = {
   locale: string;
   isPremiumBrokerRemovalEnabled: boolean;
   isPremiumUser: boolean;
+  isEligibleForPremium: boolean;
   resolutionCta: ReactNode;
   isExpanded: boolean;
   onToggleExpanded: () => void;
@@ -67,6 +69,7 @@ export type ScanResultCardProps = {
 const ScanResultCard = (props: ScanResultCardProps) => {
   const { scanResult, locale, isPremiumBrokerRemovalEnabled } = props;
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
@@ -207,7 +210,15 @@ const ScanResultCard = (props: ScanResultCardProps) => {
                 {
                   elems: {
                     data_broker_link: (
-                      <a href={scanResult.link} target="_blank" />
+                      <a
+                        href={scanResult.link}
+                        target="_blank"
+                        onClick={() =>
+                          recordTelemetry("link", "click", {
+                            link_id: `data_broker_${scanResult.id}`,
+                          })
+                        }
+                      />
                     ),
                   },
                 },
@@ -257,6 +268,7 @@ export type SubscriberBreachCardProps = {
   subscriberBreach: SubscriberBreach;
   locale: string;
   resolutionCta: ReactNode;
+  isEligibleForPremium: boolean;
   isExpanded: boolean;
   onToggleExpanded: () => void;
 };
@@ -264,6 +276,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
   const { exposureImg, subscriberBreach, locale } = props;
 
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
@@ -372,12 +385,16 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
                 {subscriberBreach.title}
               </span>
             </dd>
-            <dt className={styles.visuallyHidden}>
-              {l10n.getString("exposure-card-exposure-type")}
-            </dt>
-            <dd className={styles.hideOnMobile}>
-              {l10n.getString("exposure-card-exposure-type-data-breach")}
-            </dd>
+            {props.isEligibleForPremium && (
+              <>
+                <dt className={styles.visuallyHidden}>
+                  {l10n.getString("exposure-card-exposure-type")}
+                </dt>
+                <dd className={styles.hideOnMobile}>
+                  {l10n.getString("exposure-card-exposure-type-data-breach")}
+                </dd>
+              </>
+            )}
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-date-found")}
             </dt>
@@ -431,7 +448,14 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
                   },
                   elems: {
                     data_breach_link: (
-                      <Link href={`/breach-details/${subscriberBreach.name}`} />
+                      <Link
+                        href={`/breach-details/${subscriberBreach.name}`}
+                        onClick={() => {
+                          recordTelemetry("link", "click", {
+                            link_id: `data_breach_${subscriberBreach.id}`,
+                          });
+                        }}
+                      />
                     ),
                   },
                 },

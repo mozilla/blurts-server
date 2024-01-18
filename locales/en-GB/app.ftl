@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -39,6 +44,8 @@ user-add-duplicate-email = This email has already been added to { -product-name 
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Visit your { $preferencesLink } to check the status of { $userEmail }.
+user-add-verification-email-just-sent = Another verification email can’t be sent this quickly. Please try again later.
+user-add-unknown-error = Something went wrong adding another email address. Please try again later.
 error-headline = Error
 user-verify-token-error = Verification token is required.
 user-verify-email-report-subject = Your { -product-name } report
@@ -708,7 +715,7 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 
 -brand-firefox = Firefox
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
 -brand-monitor-premium = Monitor Premium
@@ -716,12 +723,15 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla account
+open-in-new-tab-alt = Open link in a new tab
 
 ## Search Engine Optimization
 
@@ -729,8 +739,10 @@ meta-desc-2 = Find out if you’ve been part of a data breach with { -brand-fx-m
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Sign In
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -741,19 +753,43 @@ site-nav-help-link = Help and Support
 site-nav-ad-callout = Try our other security tools:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Main menu
+main-nav-button-collapse-label = Collapse menu
+main-nav-button-collapse-tooltip = Collapse menu
+main-nav-button-expand-label = Expand menu
+main-nav-button-expand-tooltip = Expand menu
+main-nav-label = Navigation
+main-nav-link-home-label = Home
+main-nav-link-dashboard-label = Dashboard
+main-nav-link-settings-label = Settings
+main-nav-link-faq-label = FAQs
+main-nav-link-faq-tooltip = Frequently asked questions
 
 ## User menu
 
+# Obsolete
 menu-button-title = User menu
+# Obsolete
 menu-button-alt = Open user menu
+# Obsolete
 menu-list-accessible-label = Account menu
+# Obsolete
 menu-item-fxa-2 = Manage your { -brand-mozilla-account }
-menu-item-fxa-alt-2 = Open { -brand-mozilla-account } page
+# Obsolete
 menu-item-settings = Settings
-menu-item-settings-alt = Open settings page
+# Obsolete
 menu-item-help = Help and support
-menu-item-help-alt = Open help and support page
+# Obsolete
 menu-item-logout = Sign out
+user-menu-trigger-label = Open user menu
+user-menu-trigger-tooltip = Profile
+user-menu-manage-fxa-label = Manage your { -brand-mozilla-account }
+user-menu-settings-label = Settings
+user-menu-settings-tooltip = Configure { -brand-mozilla-monitor }
+user-menu-help-label = Help and support
+user-menu-help-tooltip = Get help using { -brand-mozilla-monitor }
+user-menu-signout-label = Sign out
+user-menu-signout-tooltip = Sign out of { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -762,6 +798,8 @@ terms-of-service = Terms of Service
 privacy-notice = Privacy Notice
 github = { -brand-github }
 footer-nav-all-breaches = All Breaches
+footer-external-link-faq-label = FAQs
+footer-external-link-faq-tooltip = Frequently asked questions
 
 ## Error page
 
@@ -794,3 +832,9 @@ breach-detail-cta-signup = Check for breaches
 floating-banner-text = Boost your online security with news, tips, and updates from { -brand-Mozilla }.
 floating-banner-link-label = Sign up
 floating-banner-dismiss-button-label = No thanks
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: New name, look and even more ways to <b>reclaim your privacy</b>.
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Dismiss

@@ -31,7 +31,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
 
     await expect(dashboardPage.dashboardNavButton).toHaveAttribute(
       "href",
-      "/redesign/user/dashboard",
+      "/user/dashboard",
     );
     await expect(dashboardPage.FAQsNavButton).toHaveAttribute(
       "href",
@@ -89,7 +89,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
     // verify fixed tab's tooltips and popups
     await dashboardPage.fixedTab.click();
     await expect(dashboardPage.heresWhatsFixedCardTitle).toHaveText(
-      "Here’s what we fixed",
+      "Here’s what you fixed",
     );
     await expect(dashboardPage.fixedHeading).toBeVisible();
     await dashboardPage.toolTip.click();

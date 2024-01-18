@@ -1,0 +1,42 @@
+@import "../../../../../../../tokens";
+
+.explainerContentWrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex: 1 1 0%;
+
+  @media screen and (min-width: $screen-sm) and (max-width: calc($screen-md - 1px)) {
+    justify-content: center;
+    flex: 0.5 1 0%;
+    text-align: center;
+  }
+
+  .explainerContent {
+    display: flex;
+    gap: $spacing-md;
+    flex-direction: column;
+
+    @media screen and (min-width: $screen-md) {
+      max-width: $content-sm;
+    }
+
+    h3 {
+      font: $text-title-2xs;
+    }
+
+    .cta {
+      align-self: start;
+
+      @media screen and (min-width: $screen-sm) and (max-width: calc($screen-md - 1px)) {
+        align-self: center;
+      }
+
+      @media screen and (max-width: calc($screen-md - 1px)) {
+        display: grid;
+        max-width: $content-sm;
+        width: 100%;
+      }
+    }
+  }
+}

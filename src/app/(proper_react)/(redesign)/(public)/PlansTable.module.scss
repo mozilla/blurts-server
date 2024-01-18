@@ -1,0 +1,405 @@
+@import "../../../tokens";
+
+.plansTable {
+  border-spacing: $spacing-xl 0;
+  table-layout: fixed;
+  width: 100%;
+
+  // Set column widths:
+  thead th {
+    width: calc(30% - $spacing-xl);
+  }
+
+  // Styles for the column headings
+  thead {
+    th.featureHeadingCell {
+      text-align: start;
+      vertical-align: bottom;
+      padding-block: $spacing-lg;
+    }
+
+    .freeHeadingCell,
+    .plusHeadingCell {
+      padding-block: $spacing-2xl;
+      position: relative;
+    }
+
+    h3 {
+      font: $text-title-xs;
+      font-weight: 600;
+
+      b {
+        color: $color-purple-70;
+      }
+    }
+  }
+
+  // Styles for the non-heading parts of the columns:
+  tbody {
+    // Ideally, the top border would span the entire row, but then it won't show
+    // up because we haven't set `border-collapse: collapse` today. So as a
+    // compromise, we only show it on individual cells, rather than on the `tr`:
+    tr td,
+    tr th {
+      border-top: 1px solid $color-grey-20;
+      font-weight: 400;
+    }
+
+    .featureBodyCell {
+      text-align: start;
+    }
+
+    // This rule is less specific than the `tr td, tr th` above, but since
+    // that line ideally would have been just `tr`, I'm leaving it up there:
+    /* stylelint-disable-next-line no-descending-specificity */
+    th,
+    td {
+      padding-block: $spacing-md;
+
+      .cellWrapper {
+        display: flex;
+        align-items: center;
+      }
+
+      svg.checkIcon {
+        display: inline-block;
+        color: $color-blue-50;
+      }
+    }
+
+    .priceCell {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: $spacing-lg;
+      text-align: center;
+      padding-block-end: $spacing-md;
+      padding-inline: $spacing-md;
+      width: 100%;
+
+      .billingPeriod {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: $layout-md;
+        font-weight: 500;
+        color: $color-blue-50;
+      }
+
+      .price {
+        font: $text-title-sm;
+      }
+
+      .total {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: $layout-xl;
+        font: $text-body-lg;
+
+        .discount {
+          color: $color-purple-70;
+          font-weight: 700;
+          font-style: normal;
+        }
+
+        .sum {
+          color: $color-grey-40;
+          font-weight: 500;
+        }
+      }
+
+      button {
+        font-weight: 700;
+      }
+
+      .reassurance {
+        font: $text-body-sm;
+        font-weight: 400;
+      }
+    }
+  }
+
+  // Draw purple border around the Plus plan column:
+  .freeCell,
+  .plusCell {
+    background-color: $color-white;
+    vertical-align: middle;
+    color: $color-grey-50;
+
+    .cellWrapper {
+      justify-content: center;
+    }
+  }
+
+  .plusCell {
+    font-weight: 700;
+    border-inline: 4px solid $color-purple-70;
+  }
+
+  .badge {
+    position: absolute;
+    top: 0;
+    background-color: $color-purple-70;
+    color: $color-white;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: $border-radius-md;
+    font: $text-body-sm;
+    font-weight: 600;
+    padding: $spacing-sm $spacing-md;
+
+    @include uppercase-only-english;
+  }
+
+  th.plusHeadingCell {
+    border-top: 4px solid $color-purple-70;
+    border-top-right-radius: $border-radius-md;
+    border-top-left-radius: $border-radius-md;
+
+    &::before {
+      content: "+";
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $color-purple-70;
+      color: $color-white;
+      width: $spacing-2xl;
+      height: $spacing-2xl;
+      border-radius: $border-radius-xl;
+      font: $text-title-sm;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+
+  tbody tr:last-child .plusBodyCell {
+    border-bottom: 4px solid $color-purple-70;
+    border-bottom-right-radius: $border-radius-md;
+    border-bottom-left-radius: $border-radius-md;
+  }
+
+  // Draw a light-grey line around the Free plan column:
+  .freeCell {
+    border-inline: 1px solid $color-grey-20;
+  }
+
+  th.freeHeadingCell {
+    border-top: 1px solid $color-grey-20;
+    border-top-right-radius: $border-radius-md;
+    border-top-left-radius: $border-radius-md;
+  }
+
+  tbody tr:last-child td:nth-child(2) {
+    border-bottom: 1px solid $color-grey-20;
+    border-bottom-right-radius: $border-radius-md;
+    border-bottom-left-radius: $border-radius-md;
+  }
+}
+
+.plansCards {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  gap: $spacing-xl;
+  padding: $spacing-md;
+
+  [role="group"] {
+    flex: 1 1 $content-sm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: $spacing-lg;
+    background-color: $color-white;
+    border-radius: $border-radius-md;
+    padding: $spacing-2xl $spacing-md;
+
+    hr {
+      border-style: none;
+      border-top: 1px solid $color-grey-20;
+      width: 100%;
+    }
+
+    .head {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: $spacing-sm;
+
+      h3 {
+        font: $text-title-xs;
+        font-weight: 600;
+
+        b {
+          color: $color-purple-70;
+        }
+      }
+    }
+
+    .priceSection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: $spacing-lg;
+
+      .cost {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $spacing-md;
+
+        .price {
+          font: $text-title-sm;
+        }
+
+        .total {
+          display: block;
+          color: $color-grey-40;
+
+          em {
+            font-weight: 700;
+            font-style: normal;
+          }
+        }
+      }
+
+      .cta {
+        font-weight: 700;
+      }
+
+      .reassurance {
+        font: $text-body-sm;
+        font-weight: 400;
+      }
+    }
+
+    .featuresSection {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-md;
+      padding-inline: $spacing-sm;
+
+      h4 {
+        font: $text-title-3xs;
+      }
+
+      .featureList {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: $spacing-lg;
+        margin: 0;
+        padding: 0;
+
+        li {
+          display: flex;
+          align-items: flex-start;
+          gap: $spacing-xs;
+
+          .inclusionIcon {
+            margin: $spacing-xs;
+            flex: 1 0 auto;
+          }
+
+          &.included .inclusionIcon {
+            color: $color-green-90;
+          }
+
+          &.notIncluded .inclusionIcon {
+            color: $color-red-60;
+          }
+
+          button {
+            flex: 1 0 auto;
+          }
+        }
+      }
+    }
+
+    &.plusCard {
+      position: relative;
+      border: 4px solid $color-purple-70;
+    }
+
+    &.freeCard {
+      position: relative;
+      border: 2px solid $color-grey-20;
+    }
+    .badge {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateY(-50%) translateX(-50%);
+      background-color: $color-purple-70;
+      color: $color-white;
+      border-radius: $border-radius-md;
+      font: $text-body-sm;
+      font-weight: 600;
+      padding: $spacing-sm $spacing-md;
+
+      @include uppercase-only-english;
+    }
+  }
+}
+
+.popoverTrigger {
+  background-color: transparent;
+  border-style: none;
+  cursor: pointer;
+  border-radius: $border-radius-md;
+  padding: 0;
+
+  svg {
+    width: $layout-2xs;
+    height: $layout-2xs;
+  }
+}
+
+.popoverUnderlay {
+  position: fixed;
+  inset: 0;
+}
+
+.popover {
+  box-shadow: $box-shadow-sm;
+  background-color: $color-white;
+  border: 1px solid $color-grey-20;
+  border-radius: $border-radius-md;
+  padding: $spacing-md;
+  max-width: $content-sm;
+}
+
+.popoverArrow {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  fill: $color-white;
+  stroke: $color-grey-20;
+  stroke-width: 1px;
+
+  &[data-placement="top"] {
+    top: 100%;
+    transform: translateX(-50%);
+  }
+
+  &[data-placement="bottom"] {
+    bottom: 100%;
+    transform: translateX(-50%) rotate(180deg);
+  }
+}
+
+@media (max-width: $screen-lg) {
+  .plansTable {
+    display: none;
+  }
+}
+@media (min-width: calc($screen-lg + 1px)) {
+  .plansCards {
+    display: none;
+  }
+}

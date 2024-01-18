@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -39,6 +44,8 @@ user-add-duplicate-email = Ky email është shtuar tashmë te { -product-name }.
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Shkoni te { $preferencesLink } tuaja që të shihni gjendjen e { $userEmail }.
+user-add-verification-email-just-sent = Një email tjetër verifikimi s’mund të dërgohet kaq shpejt. Ju lutemi, riprovoni më vonë.
+user-add-unknown-error = Diç shkoi ters me shtimin e një tjetre adrese email. Ju lutemi, riprovoni më vonë.
 error-headline = Gabim
 user-verify-token-error = Token-i i verifikimit është i domosdoshëm.
 user-verify-email-report-subject = Raporti juaj { -product-name }
@@ -654,7 +661,7 @@ ad-unit-6-before-you-complete = Para se të plotësoni regjistrimin tuaj të rad
 
 -brand-firefox = Firefox
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
 -brand-monitor-premium = Monitor Premium
@@ -662,12 +669,15 @@ ad-unit-6-before-you-complete = Para se të plotësoni regjistrimin tuaj të rad
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Llogari Mozilla
+open-in-new-tab-alt = Hape lidhjen në skedë të re
 
 ## Search Engine Optimization
 
@@ -675,8 +685,10 @@ meta-desc-2 = Shihni nëse keni qenë pjesë e një cenimi të dhënash, me { -b
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Hyni
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -687,19 +699,43 @@ site-nav-help-link = Ndihmë dhe Asistencë
 site-nav-ad-callout = Provoni mjete sigurie të tjera tonat:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Menuja kryesore
+main-nav-button-collapse-label = Tkurre menunë
+main-nav-button-collapse-tooltip = Tkurre menunë
+main-nav-button-expand-label = Zgjeroje menunë
+main-nav-button-expand-tooltip = Zgjeroje menunë
+main-nav-label = Lëvizje
+main-nav-link-home-label = Kreu
+main-nav-link-dashboard-label = Pult
+main-nav-link-settings-label = Rregullime
+main-nav-link-faq-label = PBR
+main-nav-link-faq-tooltip = Pyetje të bëra rëndom
 
 ## User menu
 
+# Obsolete
 menu-button-title = Menu përdoruesi
+# Obsolete
 menu-button-alt = Hap menu përdoruesi
+# Obsolete
 menu-list-accessible-label = Menu llogarish
+# Obsolete
 menu-item-fxa-2 = Administroni { -brand-mozilla-account } tuaj
-menu-item-fxa-alt-2 = Hapni faqe { -brand-mozilla-account }
+# Obsolete
 menu-item-settings = Rregullime
-menu-item-settings-alt = Hap faqen e rregullimeve
+# Obsolete
 menu-item-help = Ndihmë dhe asistencë
-menu-item-help-alt = Hapni faqen e ndihmës dhe asistencës
+# Obsolete
 menu-item-logout = Dilni
+user-menu-trigger-label = Hap menu përdoruesi
+user-menu-trigger-tooltip = Profil
+user-menu-manage-fxa-label = Administroni { -brand-mozilla-account } tuaj
+user-menu-settings-label = Rregullime
+user-menu-settings-tooltip = Formësoni { -brand-mozilla-monitor }
+user-menu-help-label = Ndihmë dhe asistencë
+user-menu-help-tooltip = Merrni ndihmë rreth përdorimit të { -brand-mozilla-monitor }
+user-menu-signout-label = Dilni
+user-menu-signout-tooltip = Dilni nga { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -708,6 +744,8 @@ terms-of-service = Kushtet e Shërbimit
 privacy-notice = Shënim Mbi Privatësinë
 github = { -brand-github }
 footer-nav-all-breaches = Krejt Cenimet
+footer-external-link-faq-label = PBR
+footer-external-link-faq-tooltip = Pyetje të bëra rëndom
 
 ## Error page
 
@@ -740,3 +778,9 @@ breach-detail-cta-signup = Kontrolloni për cenime
 floating-banner-text = Fuziqoni sigurinë tuaj internetore, përmes lajmesh, ndihmëzash dhe përditësimesh nga { -brand-Mozilla }.
 floating-banner-link-label = Regjistrohuni
 floating-banner-dismiss-button-label = Jo, faleminderit
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Emër, pamje dhe më tepër rrugë të reja për <b> të pretenduar privatësinë tuaj</b>.
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Hidhe tej

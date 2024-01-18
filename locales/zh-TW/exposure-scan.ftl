@@ -1,3 +1,7 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 exposure-landing-hero-heading = 看看您的個人資訊是否已遭外洩
 exposure-landing-hero-lead = 使用來自 { -brand-firefox } 開發者所打造的隱私權保護工具來確保安全。這些工具可以保護您不被公開或出賣您個資的駭客或公司所侵害。我們也會在有任何資料外洩事件發生時通知您，為您尋找並移除外洩的資訊，並持續尋找新的資料外洩事件。
 exposure-landing-hero-email-label = 電子郵件地址
@@ -10,6 +14,7 @@ exposure-landing-result-error = 檢查資料外洩事件時有點東西不對勁
 #   $count (number) - Number of data breaches in which the user's data was found
 exposure-landing-result-hero-heading =
     { $count ->
+        [zero] 我們<count>沒有</count>發現 <email>{ $email }</email> 出現在資料外洩事件中。
        *[other] 我們發現 <email>{ $email }</email> 出現在 <count>{ $count }</count> 場資料外洩事件中。
     }
 exposure-landing-result-card-added = 事件紀錄時間：

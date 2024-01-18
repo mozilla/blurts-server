@@ -95,7 +95,7 @@ async function getSubscriberByEmail (email) {
 /**
  * Update primary email for subscriber
  *
- * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
+ * @param {import('../../app/deprecated/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
  * @param {string} updatedEmail primary email to be updated to
  * @returns {Promise<import('knex/types/tables').SubscriberRow | null>} updated subscriber
  */
@@ -179,7 +179,7 @@ async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaPr
 /**
  * Update fxa_profile_json for subscriber
  *
- * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber knex object in DB
+ * @param {import('../../app/deprecated/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber knex object in DB
  * @param {string} fxaProfileData from Firefox Account
  * @returns {Promise<object>} updated subscriber knex object in DB
  */
@@ -200,7 +200,7 @@ async function updateFxAProfileData (subscriber, fxaProfileData) {
 /**
  * Remove fxa tokens and profile data for subscriber
  *
- * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber knex object in DB
+ * @param {import('../../app/deprecated/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber knex object in DB
  * @returns {Promise<import('knex/types/tables').SubscriberRow | null>} updated subscriber knex object in DB
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
@@ -230,7 +230,7 @@ async function removeFxAData (subscriber) {
 /* c8 ignore stop */
 
 /**
- * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
+ * @param {import('../../app/deprecated/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -251,7 +251,7 @@ async function setBreachesLastShownNow (subscriber) {
 /* c8 ignore stop */
 
 /**
- * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
+ * @param {import('../../app/deprecated/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
  * @param {boolean} allEmailsToPrimary
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
@@ -299,7 +299,7 @@ async function setBreachesResolved (options) {
  * This column is meant to replace "breaches_resolved" column, which was used
  * for v1.
  *
- * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} user user object that contains the id of a user
+ * @param {import('../../app/deprecated/(authenticated)/user/breaches/breaches.js').Subscriber} user user object that contains the id of a user
  * @param {any} updatedBreachesResolution {emailId: [{breachId: {isResolved: bool, resolutionsChecked: [BreachType]}}, {}...]}
  * @returns subscriber
  */
@@ -319,7 +319,7 @@ async function setBreachResolution (user, updatedBreachesResolution) {
 /* c8 ignore stop */
 
 /**
- * @param {{ user: import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber; updatedWaitlistsJoined: any; }} options
+ * @param {{ user: import('../../app/deprecated/(authenticated)/user/breaches/breaches.js').Subscriber; updatedWaitlistsJoined: any; }} options
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -334,38 +334,6 @@ async function setWaitlistsJoined (options) {
       updated_at: knex.fn.now(),
     })
   return getSubscriberByEmail(user.primary_email)
-}
-/* c8 ignore stop */
-
-/**
- * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
- */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function removeSubscriber (subscriber) {
-  await knex('email_addresses').where({ subscriber_id: subscriber.id }).del()
-  await knex('subscribers').where({ id: subscriber.id }).del()
-}
-/* c8 ignore stop */
-
-/**
- * @param {string} token
- * @param {string} emailSha1
- */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
-/* c8 ignore start */
-async function removeSubscriberByToken (token, emailSha1) {
-  const subscriber = await getSubscriberByTokenAndHash(token, emailSha1)
-  if (!subscriber) {
-    return false
-  }
-  await knex('subscribers')
-    .where({
-      primary_verification_token: subscriber.primary_verification_token,
-      primary_sha1: subscriber.primary_sha1
-    })
-    .del()
-  return subscriber
 }
 /* c8 ignore stop */
 
@@ -392,20 +360,13 @@ async function deleteUnverifiedSubscribers () {
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function deleteSubscriber (sub) {
-  const trx = await knex.transaction()
   console.debug('deleteSubscriber', JSON.stringify(sub))
-
   try {
-    await knex('email_addresses').where({ subscriber_id: sub.id }).del().transacting(trx)
-    await knex('subscribers').returning('id').where('fxa_uid', sub.fxa_uid).del().transacting(trx)
-    await trx.commit()
+    await knex('subscribers').returning('id').where('fxa_uid', sub.fxa_uid).del()
   } catch (error) {
-    await trx.rollback()
     // @ts-ignore Type annotations added later; type unknown:
     console.error('deleteSubscriber', error)
   }
-  //  const subscriber = await knex('subscribers').returning('id').where('fxa_uid', fxaUID).del()
-  //  if (subscriber && subscriber[0]) { await knex('email_addresses').where({ subscriber_id: subscriber[0].id }).del() }
 }
 /* c8 ignore stop */
 
@@ -549,6 +510,24 @@ async function joinEmailAddressesToSubscriber (subscriber) {
 }
 /* c8 ignore stop */
 
+/* c8 ignore start */
+/**
+ * @param {number} subscriberId
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function deleteOnerepProfileId (subscriberId) {
+  return await knex('subscribers')
+    .where('id', subscriberId)
+    .update({
+      onerep_profile_id: null,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
+    })
+}
+/* c8 ignore stop */
+
 export {
   getOnerepProfileId,
   getSubscriberByToken,
@@ -572,10 +551,9 @@ export {
   updateBreachStats,
   updateMonthlyEmailTimestamp,
   updateMonthlyEmailOptout,
-  removeSubscriber,
-  removeSubscriberByToken,
   deleteUnverifiedSubscribers,
   deleteSubscriber,
   deleteResolutionsWithEmail,
+  deleteOnerepProfileId,
   knex as knexSubscribers
 }

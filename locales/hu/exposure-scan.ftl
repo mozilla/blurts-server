@@ -1,5 +1,9 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 exposure-landing-hero-heading = Tudja meg, hogy kikerültek-e a személyes adatai
-exposure-landing-hero-lead = Maradjon biztonságban a { -brand-firefox } készítőinek adatvédelmi eszközeivel, amelyek megvédik Önt a hackerektől, és a személyes adatait közzétevő és értékesítő cégektől. Figyelmeztetni fogjuk az összes ismert adatvédelmi incidensről, megtaláljuk és eltávolítjuk a kikerült adatait, és folyamatosan figyeljük az új kikerüléseket.
+exposure-landing-hero-lead = Maradjon biztonságban a { -brand-firefox } készítőinek adatvédelmi eszközeivel, amelyek megvédik Önt a hackerektől, és a személyes adatait közzétevő és értékesítő cégektől. Figyelmeztetni fogjuk az összes ismert adatvédelmi incidensről, megtaláljuk és eltávolítjuk a kikerült adatait, és folyamatosan figyeljük az új kitettségeket.
 exposure-landing-hero-email-label = E-mail-cím
 exposure-landing-hero-email-placeholder = Adja meg az e-mail-címét
 exposure-landing-hero-cta-label = Adatvédelmi incidensek keresése

@@ -25,7 +25,7 @@ import { SerializedSubscriber } from "../../../next-auth.js";
 const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   // As per https://mozilla.slack.com/archives/C4D36CAJW/p1683642497940629?thread_ts=1683642325.465929&cid=C4D36CAJW,
   // we should file a ticket against SVCSE with the `fxa` component to add
-  // a redirect URL of /api/auth/callback/fxa for Firefox Monitor,
+  // a redirect URL of /api/auth/callback/fxa for Mozilla Monitor,
   // for every environment we deploy to:
   id: "fxa",
   name: "Mozilla accounts",
@@ -43,8 +43,14 @@ const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   token: AppConstants.OAUTH_TOKEN_URI,
   // userinfo: AppConstants.OAUTH_PROFILE_URI,
   userinfo: {
-    request: async (context) =>
-      fetchUserInfo(context.tokens.access_token ?? ""),
+    request: async (context) => {
+      const response = await fetch(AppConstants.OAUTH_PROFILE_URI, {
+        headers: {
+          Authorization: `Bearer ${context.tokens.access_token ?? ""}`,
+        },
+      });
+      return (await response.json()) as FxaProfile;
+    },
   },
   clientId: AppConstants.OAUTH_CLIENT_ID,
   clientSecret: AppConstants.OAUTH_CLIENT_SECRET,
@@ -66,7 +72,17 @@ export const authOptions: AuthOptions = {
     async jwt({ token, account, profile, trigger }) {
       if (trigger === "update") {
         // Refresh the user data from FxA, in case e.g. new subscriptions got added:
-        profile = await fetchUserInfo(token.subscriber?.fxa_access_token ?? "");
+        const subscriber = await getSubscriberByEmail(token.email ?? "");
+        profile = subscriber.fxa_profile_json as FxaProfile;
+
+        if (token.email) {
+          const updatedSubscriberData = await getSubscriberByEmail(token.email);
+          // MNTOR-2599 The breach_resolution object can get pretty big,
+          // causing the session token cookie to balloon in size,
+          // eventually resulting in a 400 Bad Request due to headers being too large.
+          delete updatedSubscriberData.breach_resolution;
+          token.subscriber = updatedSubscriberData;
+        }
       }
       if (profile) {
         token.fxa = {
@@ -183,16 +199,6 @@ export const authOptions: AuthOptions = {
     },
   },
 };
-
-async function fetchUserInfo(accessToken: string) {
-  const response = await fetch(AppConstants.OAUTH_PROFILE_URI, {
-    headers: {
-      Authorization: `Bearer ${accessToken ?? ""}`,
-    },
-  });
-  const userInfo = (await response.json()) as FxaProfile;
-  return userInfo;
-}
 
 /**
  * Converts an FxAProfile to a Next-Auth user object

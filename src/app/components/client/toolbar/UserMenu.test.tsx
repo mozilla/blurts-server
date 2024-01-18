@@ -18,6 +18,8 @@ jest.mock("next-auth/react", () => ({
   signOut: jest.fn(),
 }));
 
+jest.mock("../../../hooks/useTelemetry");
+
 it("passes the axe accessibility test suite", async () => {
   const ComposedDashboard = composeStory(UserMenuDefault, Meta);
   const { container } = render(<ComposedDashboard />);

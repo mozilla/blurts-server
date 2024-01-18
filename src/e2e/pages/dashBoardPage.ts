@@ -49,7 +49,7 @@ export class DashboardPage {
       name: "Mozilla apps and services",
     });
     this.upgradeToPremium = page.getByRole("button", {
-      name: "Upgrade To Premium",
+      name: "Automatic data removal: Off",
     });
 
     //sidebar nav
@@ -68,7 +68,7 @@ export class DashboardPage {
     });
 
     this.fixedHeading = page.getByRole("heading", {
-      name: "View all exposures that are fixed or in-progress",
+      name: "View all exposures that are fixed or in progress",
     });
 
     this.toolTip = page.locator(
@@ -94,6 +94,6 @@ export class DashboardPage {
   }
 
   async open() {
-    await this.page.goto("/redesign/user/dashboard");
+    await this.page.goto("/user/dashboard");
   }
 }

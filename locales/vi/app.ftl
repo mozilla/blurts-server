@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -39,6 +44,8 @@ user-add-duplicate-email = Email này đã được thêm vào { -product-name }
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Truy cập { $preferencesLink } của bạn để kiểm tra trạng thái của { $userEmail }.
+user-add-verification-email-just-sent = Bạn đã yêu cầu email xác minh khác quá nhanh. Vui lòng thử lại sau.
+user-add-unknown-error = Đã xảy ra lỗi khi thêm địa chỉ email khác. Vui lòng thử lại sau.
 error-headline = Lỗi
 user-verify-token-error = Token xác minh được yêu cầu.
 user-verify-email-report-subject = Báo cáo của { -product-name } gửi của bạn
@@ -698,7 +705,7 @@ ad-unit-6-before-you-complete = Trước khi bạn hoàn tất lần đăng ký 
 
 -brand-firefox = Firefox
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
 -brand-monitor-premium = Monitor Premium
@@ -706,12 +713,15 @@ ad-unit-6-before-you-complete = Trước khi bạn hoàn tất lần đăng ký 
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Tài khoản Mozilla
+open-in-new-tab-alt = Mở liên kết trong thẻ mới
 
 ## Search Engine Optimization
 
@@ -719,8 +729,10 @@ meta-desc-2 = Tìm hiểu xem bạn có phải là một phần của rò rỉ d
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Đăng nhập
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -731,19 +743,43 @@ site-nav-help-link = Trợ giúp và hỗ trợ
 site-nav-ad-callout = Hãy thử các công cụ bảo mật khác của chúng tôi:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Menu chính
+main-nav-button-collapse-label = Thu gọn menu
+main-nav-button-collapse-tooltip = Thu gọn menu
+main-nav-button-expand-label = Mở rộng menu
+main-nav-button-expand-tooltip = Mở rộng menu
+main-nav-label = Điều hướng
+main-nav-link-home-label = Trang chủ
+main-nav-link-dashboard-label = Bảng điều khiển
+main-nav-link-settings-label = Cài đặt
+main-nav-link-faq-label = Câu hỏi thường gặp
+main-nav-link-faq-tooltip = Câu hỏi thường gặp
 
 ## User menu
 
+# Obsolete
 menu-button-title = Menu người dùng
+# Obsolete
 menu-button-alt = Mở menu người dùng
+# Obsolete
 menu-list-accessible-label = Menu tài khoản
+# Obsolete
 menu-item-fxa-2 = Quản lý { -brand-mozilla-account } của bạn
-menu-item-fxa-alt-2 = Mở trang { -brand-mozilla-account }
+# Obsolete
 menu-item-settings = Cài đặt
-menu-item-settings-alt = Mở trang cài đặt
+# Obsolete
 menu-item-help = Trợ giúp và hỗ trợ
-menu-item-help-alt = Mở trang trợ giúp và hỗ trợ
+# Obsolete
 menu-item-logout = Đăng xuất
+user-menu-trigger-label = Mở menu người dùng
+user-menu-trigger-tooltip = Hồ sơ
+user-menu-manage-fxa-label = Quản lý { -brand-mozilla-account } của bạn
+user-menu-settings-label = Cài đặt
+user-menu-settings-tooltip = Cấu hình { -brand-mozilla-monitor }
+user-menu-help-label = Trợ giúp và hỗ trợ
+user-menu-help-tooltip = Nhận trợ giúp sử dụng { -brand-mozilla-monitor }
+user-menu-signout-label = Đăng xuất
+user-menu-signout-tooltip = Đăng xuất khỏi { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -752,6 +788,8 @@ terms-of-service = Điều khoản dịch vụ
 privacy-notice = Thông báo về quyền riêng tư
 github = { -brand-github }
 footer-nav-all-breaches = Tất cả vụ rò rỉ
+footer-external-link-faq-label = Câu hỏi thường gặp
+footer-external-link-faq-tooltip = Câu hỏi thường gặp
 
 ## Error page
 
@@ -784,3 +822,9 @@ breach-detail-cta-signup = Kiểm tra rò rỉ
 floating-banner-text = Tăng cường bảo mật trực tuyến của bạn với tin tức, mẹo và thông tin cập nhật từ { -brand-Mozilla }.
 floating-banner-link-label = Đăng ký
 floating-banner-dismiss-button-label = Không, cảm ơn
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Tên, giao diện mới và thậm chí nhiều hơn thế để <b>lấy lại quyền riêng tư cho bạn</b>.
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Bỏ qua

@@ -20,6 +20,13 @@ import {
 } from "../../../db/tables/featureFlags";
 import { logger } from "./logging";
 
+export const monthlyScansQuota = parseInt(
+  (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
+);
+export const monthlySubscribersQuota = parseInt(
+  (process.env.MONTHLY_SUBSCRIBERS_QUOTA as string) ?? "0",
+);
+
 export type CreateProfileRequest = {
   first_name: string;
   last_name: string;
@@ -86,6 +93,16 @@ export type ScanResult = {
   created_at: ISO8601DateString;
   updated_at: ISO8601DateString;
 };
+export type ProfileStats = {
+  created: number;
+  deleted: number;
+  activated: number;
+  reactivated: number;
+  deactivated: number;
+  total_active: number;
+  total_inactive: number;
+  total: number;
+};
 export type ListScanResultsResponse = OneRepResponse<ScanResult[]>;
 
 async function onerepFetch(
@@ -98,7 +115,7 @@ async function onerepFetch(
   }
   const onerepApiKey = process.env.ONEREP_API_KEY;
   if (!onerepApiKey) {
-    throw new Error("ONEREP_API_BASE env var not set");
+    throw new Error("ONEREP_API_KEY env var not set");
   }
   const url = new URL(path, onerepApiBase);
   const headers = new Headers(options.headers);
@@ -438,4 +455,43 @@ export async function fetchAllPages<Data>(
   }
 
   return dataList.flat();
+}
+
+// Local instance map to cache results to prevent excessive API requests
+// Would be nice to share this cache with other pod via Redis in the future
+const profileStatsCache = new Map<string, ProfileStats>();
+export async function getProfilesStats(
+  from?: Date,
+  to?: Date,
+): Promise<ProfileStats | undefined> {
+  const queryParams = new URLSearchParams();
+  if (from) queryParams.set("from", from.toISOString().substring(0, 10));
+  if (to) queryParams.set("to", to.toISOString().substring(0, 10));
+  const queryParamsString = queryParams.toString();
+
+  // check for cache map first
+  if (profileStatsCache.has(queryParamsString))
+    return profileStatsCache.get(queryParamsString);
+
+  const response: Response = await onerepFetch(
+    `/stats/profiles?${queryParamsString}`,
+    {
+      method: "GET",
+    },
+  );
+  if (!response.ok) {
+    logger.error(
+      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
+    );
+    throw new Error(
+      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
+    );
+  }
+
+  const profileStats: ProfileStats = await response.json();
+
+  // cache results in map, with a flush hack to keep the size low
+  if (profileStatsCache.size > 5) profileStatsCache.clear();
+  profileStatsCache.set(queryParamsString, profileStats);
+  return profileStats;
 }

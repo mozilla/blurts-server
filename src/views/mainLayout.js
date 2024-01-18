@@ -10,8 +10,8 @@ import { getFloatingBanner } from '../views/partials/floatingBanner.js'
  * @type {ViewPartial<MainViewPartialData<any>>}
  */
 const mainLayout = data => {
-  const siteTitle = data.meta?.title ?? getMessage('brand-fx-monitor')
-  const metaTitle = data.meta?.socialTitle ?? getMessage('brand-fx-monitor')
+  const siteTitle = data.meta?.title ?? getMessage('brand-mozilla-monitor')
+  const metaTitle = data.meta?.socialTitle ?? getMessage('brand-mozilla-monitor')
   const metaDescription = data.meta?.socialDescription ?? getMessage('meta-desc-2')
   const pageUrl = `${AppConstants.SERVER_URL}${data.pathname ?? '/'}`
 
@@ -54,7 +54,7 @@ const mainLayout = data => {
         <meta name='twitter:image' content='${AppConstants.SERVER_URL}/images/og-image.webp'>
         <meta property='og:title' content='${metaTitle}'>
         <meta property='og:description' content='${metaDescription}'>
-        <meta property='og:site_name' content='${getMessage('brand-fx-monitor')}'>
+        <meta property='og:site_name' content='${getMessage('brand-mozilla-monitor')}'>
         <meta property='og:type' content='website'>
         <meta property='og:url' content='${pageUrl}'>
         <meta property='og:image' content='${AppConstants.SERVER_URL}/images/og-image.webp'>
@@ -80,7 +80,7 @@ const mainLayout = data => {
           ${showRecruitmentBanner()}
           <div class="header-wrapper">
             <a href='/user/breaches'>
-              <img class='monitor-logo' srcset='/images/monitor-logo-transparent.webp 213w, /images/monitor-logo-transparent@2x.webp 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
+              <img class='monitor-logo' srcset='/images/monitor-logo-transparent.webp 213w, /images/monitor-logo-transparent@2x.webp 425w' width='213' height='33' alt='${getMessage('brand-mozilla-monitor')}'>
             </a>
             <div class='nav-wrapper'>
               <button class='nav-toggle'>

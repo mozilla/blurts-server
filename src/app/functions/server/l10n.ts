@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import "server-only";
 import { acceptedLanguages, negotiateLanguages } from "@fluent/langneg";
 import { headers } from "next/headers";
 import { ExtendedReactLocalization, GetFragment } from "../../hooks/l10n";
@@ -78,11 +79,15 @@ export function getL10nBundles(): LocaleData[] {
   }
 
   const languages = acceptLangHeader ? acceptedLanguages(acceptLangHeader) : [];
-  const currentLocales = negotiateLanguages(
-    languages,
-    Object.keys(bundleSources),
-    { defaultLocale: "en" },
-  );
+  const supportedLocales = process.env.SUPPORTED_LOCALES?.split(",");
+  const availableLocales = Object.keys(bundleSources);
+  const filteredLocales =
+    process.env.APP_ENV === "heroku"
+      ? availableLocales
+      : availableLocales.filter((locale) => supportedLocales?.includes(locale));
+  const currentLocales = negotiateLanguages(languages, filteredLocales, {
+    defaultLocale: "en",
+  });
 
   const relevantBundleSources = currentLocales.map((relevantLocale) => ({
     locale: relevantLocale,

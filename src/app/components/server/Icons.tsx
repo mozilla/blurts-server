@@ -255,6 +255,56 @@ export const QuestionMarkCircle = ({
   );
 };
 
+// Keywords: error, warning, exclamation mark
+// https://www.figma.com/file/olFHozlwrdYlCkZaG4B262/Nebula-Design-System-V2-(WIP)?type=design&node-id=109-1376
+export const ErrorIcon = ({
+  alt,
+  ...props
+}: SVGProps<SVGSVGElement> & { alt: string }) => {
+  return (
+    <svg
+      role="img"
+      aria-label={alt}
+      aria-hidden={alt === ""}
+      xmlns="http://www.w3.org/2000/svg"
+      width={14}
+      height={14}
+      viewBox="0 0 14 14"
+      {...props}
+      className={`${props.className ?? ""} ${styles.colorifyFill}`}
+    >
+      <path d="M13.6929 11.0119L8.73994 1.10586C8.57386 0.773576 8.31852 0.494108 8.00254 0.298784C7.68656 0.10346 7.32242 0 6.95094 0C6.57946 0 6.21532 0.10346 5.89934 0.298784C5.58336 0.494108 5.32802 0.773576 5.16194 1.10586L0.20894 11.0159C0.0574972 11.3206 -0.0136719 11.659 0.00216778 11.999C0.0180075 12.3389 0.120332 12.6692 0.299458 12.9586C0.478583 13.2479 0.728584 13.4868 1.0258 13.6526C1.32302 13.8183 1.65762 13.9055 1.99794 13.9059H11.9029C12.2439 13.906 12.5792 13.819 12.8771 13.6531C13.1749 13.4872 13.4255 13.2479 13.6048 12.9579C13.7842 12.668 13.8864 12.337 13.9018 11.9964C13.9172 11.6557 13.8453 11.3169 13.6929 11.0119ZM5.95094 3.90586C5.95094 3.64065 6.0563 3.38629 6.24383 3.19876C6.43137 3.01122 6.68572 2.90586 6.95094 2.90586C7.21616 2.90586 7.47051 3.01122 7.65805 3.19876C7.84558 3.38629 7.95094 3.64065 7.95094 3.90586V7.90586C7.95094 8.17108 7.84558 8.42543 7.65805 8.61297C7.47051 8.80051 7.21616 8.90586 6.95094 8.90586C6.68572 8.90586 6.43137 8.80051 6.24383 8.61297C6.0563 8.42543 5.95094 8.17108 5.95094 7.90586V3.90586ZM6.95094 12.1559C6.70371 12.1559 6.46204 12.0826 6.25648 11.9452C6.05092 11.8078 5.8907 11.6126 5.79609 11.3842C5.70148 11.1558 5.67673 10.9045 5.72496 10.662C5.77319 10.4195 5.89224 10.1968 6.06706 10.022C6.24187 9.84717 6.4646 9.72811 6.70708 9.67988C6.94955 9.63165 7.20089 9.65641 7.42929 9.75101C7.6577 9.84562 7.85292 10.0058 7.99028 10.2114C8.12763 10.417 8.20094 10.6586 8.20094 10.9059C8.20094 11.2374 8.06924 11.5553 7.83482 11.7897C7.6004 12.0242 7.28246 12.1559 6.95094 12.1559Z" />
+    </svg>
+  );
+};
+
+// Keywords: delete, remove, trash can, rubbish bin
+// https://www.figma.com/file/olFHozlwrdYlCkZaG4B262/Nebula-Design-System-V2-(WIP)?type=design&node-id=109-1398
+export const DeleteIcon = ({
+  alt,
+  ...props
+}: SVGProps<SVGSVGElement> & { alt: string }) => {
+  return (
+    <svg
+      role="img"
+      aria-label={alt}
+      aria-hidden={alt === ""}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      {...props}
+      className={`${props.className ?? ""} ${styles.colorifyFill}`}
+    >
+      <path
+        fillRule="evenodd"
+        d="M14.95 6H18a1 1 0 110 2v9a3 3 0 01-3 3h-5a3 3 0 01-3-3V8a1 1 0 110-2h3.05a2.5 2.5 0 014.9 0zm-1.059 0A1.489 1.489 0 0012.5 5a1.489 1.489 0 00-1.391 1h2.782zM16 17a1 1 0 01-1 1h-5a1 1 0 01-1-1V8h7v9zm-5-1.5a.5.5 0 01-1 0v-6a.5.5 0 011 0v6zm2 0a.5.5 0 01-1 0v-6a.5.5 0 011 0v6zm1.5.5a.5.5 0 00.5-.5v-6a.5.5 0 00-1 0v6a.5.5 0 00.5.5z"
+        clipRule="evenodd"
+      ></path>
+    </svg>
+  );
+};
+
 // Keywords: close, exit, cross
 // https://www.figma.com/file/olFHozlwrdYlCkZaG4B262/Nebula-Design-System-V2-(WIP)?type=design&node-id=109-1385&t=kxEcvIQoafGdPZ3y-4
 export const CloseBtn = ({

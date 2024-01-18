@@ -7,20 +7,23 @@ import { getServerSession } from "next-auth";
 import { logger } from "../../../../../functions/server/logging";
 import { isAdmin, authOptions } from "../../../../utils/auth";
 import {
+  deleteOnerepProfileId,
   deleteSubscriber,
   getOnerepProfileId,
+  getSubscriberByEmail,
   getSubscribersByHashes,
 } from "../../../../../../db/tables/subscribers";
 import {
-  activateAndOptoutProfile,
+  activateProfile,
   deactivateProfile,
+  optoutProfile,
 } from "../../../../../functions/server/onerep";
-import { captureException } from "@sentry/node";
 import { deleteProfileDetails } from "../../../../../../db/tables/onerep_profiles";
 import {
   deleteScanResultsForProfile,
   deleteScansForProfile,
 } from "../../../../../../db/tables/onerep_scans";
+import { changeSubscription } from "../../../../../functions/server/changeSubscription";
 
 /**
  * Look up a subscriber based on SHA1 hash of their email address.
@@ -105,7 +108,11 @@ export async function PUT(
       const body = await req.json();
       const actions = body.actions;
 
-      const subscriber = (await getSubscribersByHashes([primarySha1]))[0];
+      const subscriberRow = (await getSubscribersByHashes([primarySha1]))[0];
+      const subscriber = await getSubscriberByEmail(
+        subscriberRow.primary_email,
+      );
+
       const result = await getOnerepProfileId(subscriber.id);
       const onerepProfileId = result?.[0]?.["onerep_profile_id"] as number;
 
@@ -117,8 +124,11 @@ export async function PUT(
       for (const action of actions) {
         switch (action) {
           case "subscribe": {
+            await changeSubscription(subscriber, true);
+
             // activate and opt out profiles
-            await activateAndOptoutProfile(onerepProfileId);
+            await activateProfile(onerepProfileId);
+            await optoutProfile(onerepProfileId);
             logger.info("force_user_subscribe", {
               onerepProfileId,
               primarySha1,
@@ -126,6 +136,8 @@ export async function PUT(
             break;
           }
           case "unsubscribe": {
+            await changeSubscription(subscriber, false);
+
             await deactivateProfile(onerepProfileId);
             logger.info("force_user_unsubscribe", {
               onerepProfileId,
@@ -135,6 +147,7 @@ export async function PUT(
           }
           case "delete_onerep_profile": {
             await deleteProfileDetails(onerepProfileId);
+            await deleteOnerepProfileId(subscriber.id);
             logger.info("delete_onerep_profile", {
               onerepProfileId,
               primarySha1,
@@ -171,8 +184,8 @@ export async function PUT(
           }
         }
       }
-    } catch (ex) {
-      captureException(ex);
+    } catch (e) {
+      logger.error(e);
       return NextResponse.json({ success: false }, { status: 500 });
     }
 
