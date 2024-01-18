@@ -69,7 +69,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   /* c8 ignore start */
   const emailsAffected = unresolvedPasswordBreach?.emailsAffected ?? [];
   const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
-  const pageData = getLeakedPasswords({
+  const { data: pageData, breachName } = getLeakedPasswords({
     dataType: props.type,
     breaches: guidedExperienceBreaches,
     l10n,
@@ -183,10 +183,11 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
                 onPress={() => {
                   void handleUpdateBreachStatus();
                   recordTelemetry("ctaButton", "click", {
-                    button_id:
+                    button_id: "marked_fixed",
+                    button_name:
                       props.type === "passwords"
-                        ? "mark_as_fixed_password_[name of breach]"
-                        : "mark_as_fixed_security_question_[name of breach]",
+                        ? "mark_as_fixed_security_question"
+                        : `mark_as_fixed_security_question_${breachName}`,
                   });
                 }}
                 autoFocus={true}
@@ -198,10 +199,11 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
                 href={nextStep.href}
                 onClick={() => {
                   recordTelemetry("ctaButton", "click", {
-                    button_id:
+                    button_id: "skipped_resolution",
+                    button_name:
                       props.type === "passwords"
-                        ? "skip_resolution_password"
-                        : "skip_resolution_security_question",
+                        ? `skip_for_now_password_question_${breachName}`
+                        : `skip_for_now_security_question_${breachName}`,
                   });
                 }}
               >
