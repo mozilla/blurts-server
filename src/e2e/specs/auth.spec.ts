@@ -19,7 +19,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
       await route.abort();
     });
 
-    await page.pause();
     // start authentication flow
     await landingPage.goToSignIn();
 
