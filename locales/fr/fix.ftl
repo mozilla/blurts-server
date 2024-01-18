@@ -96,11 +96,11 @@ ssn-modal-ok = OK
 
 # PIN Breaches
 
-high-risk-breach-pin-title = Votre code PIN a été compromis
+high-risk-breach-pin-title = Votre code PIN a fuité
 high-risk-breach-pin-description = Agir dès que possible pourrait vous donner plus de protections juridiques pour vous aider à récupérer les pertes éventuelles.
 high-risk-breach-pin-step-one = Informez immédiatement votre banque que votre code PIN a été compromis.
-high-risk-breach-pin-step-two = Changez votre code PIN chaque fois que vous avez utilisé le même.
-high-risk-breach-pin-step-three = Vérifiez vos comptes sans frais non autorisés.
+high-risk-breach-pin-step-two = Changez votre code PIN partout où vous l’avez réutilisé.
+high-risk-breach-pin-step-three = Surveillez vos comptes pour détecter les transactions non autorisées.
 
 # No high risk breaches found
 
@@ -109,10 +109,10 @@ high-risk-breach-none-title = Bonne nouvelle, nous n’avons trouvé aucune fuit
 # $email_list is list of emails that the user is monitoring for breaches. E.g. john@yahoo.com, ali@gmail.com, sam@hotmail.com
 high-risk-breach-none-description = Nous détectons les fuites de données d’après votre adresse e-mail, et nous n’avons trouvé aucune fuite de données à haut risque pour { $email_list }.
 high-risk-breach-none-sub-description-part-one = Les fuites de données à haut risque incluent :
-high-risk-breach-none-sub-description-ssn = numéro de sécurité sociale
-high-risk-breach-none-sub-description-bank-account = coordonnées bancaires
-high-risk-breach-none-sub-description-cc-number = numéros de cartes bancaires
-high-risk-breach-none-sub-description-pin = codes PIN
+high-risk-breach-none-sub-description-ssn = Le numéro de sécurité sociale
+high-risk-breach-none-sub-description-bank-account = Les coordonnées bancaires
+high-risk-breach-none-sub-description-cc-number = Les numéros de cartes bancaires
+high-risk-breach-none-sub-description-pin = Les codes PIN
 high-risk-breach-none-continue = Continuer
 
 # Security recommendations
@@ -144,10 +144,10 @@ security-recommendation-email-summary =
        *[other] Votre adresse e-mail a été exposée dans { $num_breaches } fuites de données :
     }
 security-recommendation-email-description = Malheureusement, vous ne pouvez pas résoudre ce problème. Cependant, vous pouvez prendre certaines mesures pour vous protéger.
-security-recommendation-email-step-one = ne cliquez pas sur les liens dans les courriels d’expéditeurs inconnus. si l’appel semble provenir de source digne de confiance, appeler directement pour confirmer
+security-recommendation-email-step-one = Ne cliquez pas sur les liens dans les e-mails d’expéditeurs inconnus. Si l’e-mail semble provenir de source digne de confiance, appelez directement pour confirmer
 security-recommendation-email-step-two = Méfiez-vous des <link_to_info>escroqueries par hameçonnage</link_to_info>
-security-recommendation-email-step-three = Marquer les e-mails suspects comme spam et bloquer l’expéditeur
-security-recommendation-email-step-four = Utilisez <link_to_info>alias de messagerie de { -brand-relay }</link_to_info> pour protéger votre e-mail à l’avenir
+security-recommendation-email-step-three = Marquez les e-mails suspects comme spam et bloquez l’expéditeur
+security-recommendation-email-step-four = Utilisez les <link_to_info>alias de messagerie de { -brand-relay }</link_to_info> pour protéger votre adresse e-mail à l’avenir
 
 # IP security recommendation
 
@@ -168,15 +168,15 @@ security-recommendation-ip-step-one = Utilisez un VPN (tel que <link_to_info>{ -
 leaked-passwords-title = Votre mot de passe { $breach_name } a été compromis
 # Variables
 # $breach_date is the date when the breach occurred.
-leaked-passwords-summary = Elle apparaît dans une fuite de données du { $breach_date }.
-leaked-passwords-description = Les fraudeurs peuvent accéder à votre compte et vont probablement essayer de l’utiliser sur d’autres comptes pour voir si vous avez utilisé le même mot de passe. Changez-le partout où vous l’avez utilisé pour vous protéger.
+leaked-passwords-summary = Il apparaît dans une fuite de données du { $breach_date }.
+leaked-passwords-description = Les fraudeurs peuvent accéder à votre compte et vont probablement essayer de l’utiliser sur d’autres comptes pour voir si vous avez utilisé le même mot de passe. Changez-le partout où vous l’avez réutilisé pour vous protéger.
 leaked-passwords-steps-title = Voici la marche à suivre
 leaked-passwords-steps-subtitle = Ce problème nécessite d’accéder à votre compte, vous devrez donc le corriger manuellement.
 # Variables
 # $breach_name is the name of the breach where the leaked password was found.
 # $emails_affected are the emails associated with the breach.
 leaked-passwords-step-one = Modifiez votre mot de passe pour <b>{ $emails_affected }</b> sur <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
-leaked-passwords-step-two = Modifiez-le partout où vous l’avez utilisé.
+leaked-passwords-step-two = Modifiez-le partout où vous l’avez réutilisé.
 leaked-passwords-mark-as-fixed = Marquer comme corrigé
 leaked-passwords-skip = Passer pour le moment
 

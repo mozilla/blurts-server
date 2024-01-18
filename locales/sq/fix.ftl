@@ -204,5 +204,5 @@ leaked-security-questions-steps-subtitle = Kjo lyp hyrje te llogaria juaj, ndaj 
 # Variables
 # $breach_name is the name of the breach where the security questions were found.
 # $email_affected is the email associated with the breach.
-leaked-security-questions-step-one = Përditësoni pyetjet tuaja të sigurisë për <b>{ $emails_affected }</b> te <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
+leaked-security-questions-step-one = Përditësoni pyetjet tuaja të sigurisë për <b>{ $email_affected }</b> te <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
 leaked-security-questions-step-two = Përditësojini në çfarëdo sajti tjetër ku keni përdorur të njëjtat pyetje sigurie. Mos harroni të përdorni pyetje të ndryshme sigurie për çdo llogari.
