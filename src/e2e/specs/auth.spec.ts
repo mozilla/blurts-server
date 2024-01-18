@@ -13,7 +13,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     page,
     authPage,
     landingPage,
-    dataBreachPage,
   }, testInfo) => {
     // speed up test by ignore non necessary requests
     await page.route(/(analytics)/, async (route) => {
@@ -28,8 +27,8 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     await authPage.signUp(randomEmail, page);
 
     // assert successful login
-    await expect(dataBreachPage.dataBreachesHeader).toBeVisible();
-    await expect(dataBreachPage.breachesFilter).toBeVisible();
+    // will poll for url as Fxa takes some time
+    expect(page.url()).toBe(`${process.env.E2E_TEST_BASE_URL}/user/dashboard`);
 
     await testInfo.attach(
       `${process.env.E2E_TEST_ENV}-signup-monitor-dashboard.png`,
@@ -44,7 +43,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     page,
     authPage,
     landingPage,
-    dataBreachPage,
+    dashboardPage,
   }, testInfo) => {
     // speed up test by ignore non necessary requests
     await page.route(/(analytics)/, async (route) => {
@@ -58,8 +57,8 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     await authPage.signIn(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
 
     // assert successful login
-    await expect(dataBreachPage.dataBreachesHeader).toBeVisible();
-    await expect(dataBreachPage.breachesFilter).toBeVisible();
+    await expect(dashboardPage.fixedTab).toBeVisible();
+    await expect(dashboardPage.actionNeededTab).toBeVisible();
 
     await testInfo.attach(
       `${process.env.E2E_TEST_ENV}-signin-monitor-dashboard.png`,
