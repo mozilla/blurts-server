@@ -82,9 +82,6 @@ export const DataBrokerProfileCard = (props: DataBrokerProfileCardProps) => {
           recordTelemetry("link", "click", {
             link_id: "viewed_data_broker",
           });
-          recordTelemetry("link", "click", {
-            link_id: `viewed_data_broker_${props.data.data_broker}`,
-          });
         }}
       >
         {l10n.getString(
