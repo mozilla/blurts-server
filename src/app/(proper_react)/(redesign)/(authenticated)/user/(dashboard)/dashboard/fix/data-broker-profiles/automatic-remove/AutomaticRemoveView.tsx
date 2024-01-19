@@ -26,6 +26,45 @@ export function AutomaticRemoveView(props: Props) {
   const { monthlySubscriptionUrl, yearlySubscriptionUrl, ...fixViewProps } =
     props;
 
+  // format subscription urls
+  const monthlyUrl = new URL(monthlySubscriptionUrl);
+  const yearlyUrl = new URL(yearlySubscriptionUrl);
+  const monthlyParams = monthlyUrl.searchParams;
+  const yearlyParams = yearlyUrl.searchParams;
+  // overwrite the three params below
+  monthlyParams.set(
+    "entrypoint",
+    "monitor.mozilla.org-monitor-in-product-guided-upsell",
+  );
+  yearlyParams.set(
+    "entrypoint",
+    "monitor.mozilla.org-monitor-in-product-guided-upsell",
+  );
+  monthlyParams.set("form_type", "button");
+  yearlyParams.set("form_type", "button");
+
+  // placeholder utms if acquisition source is unknown
+  if (!monthlyParams.has("utm_source")) {
+    monthlyParams.append("utm_source", "product");
+  }
+  if (!monthlyParams.has("utm_medium")) {
+    monthlyParams.append("utm_medium", "monitor");
+  }
+  if (!monthlyParams.has("utm_campaign")) {
+    monthlyParams.append("utm_campaign", "guided-upsell");
+  }
+  if (!yearlyParams.has("utm_source")) {
+    yearlyParams.append("utm_source", "product");
+  }
+  if (!yearlyParams.has("utm_medium")) {
+    yearlyParams.append("utm_medium", "monitor");
+  }
+  if (!yearlyParams.has("utm_campaign")) {
+    yearlyParams.append("utm_campaign", "guided-upsell");
+  }
+  monthlySubscriptionUrl = `${monthlyUrl.pathname}?${monthlyParams.toString()}`;
+  yearlySubscriptionUrl = `${yearlyUrl.pathname}?${yearlyParams.toString()}`;
+
   return (
     <FixView {...fixViewProps} hideProgressIndicator>
       <div>
