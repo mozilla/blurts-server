@@ -57,6 +57,7 @@ import { Button } from "../../../components/client/Button";
 import { signIn } from "next-auth/react";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../constants";
+import { useCookies } from "react-cookie";
 
 export type Props = {
   "aria-labelledby": string;
@@ -75,6 +76,7 @@ const monthlyPriceMonthlyBilling = 42.42;
 
 export const PlansTable = (props: Props & ScanLimitProp) => {
   const l10n = useL10n();
+  const [cookies, _] = useCookies(["attributionsLastTouch"]);
   const recordTelemetry = useTelemetry();
   const roundedPriceFormatter = new Intl.NumberFormat(getLocale(l10n), {
     style: "currency",
@@ -88,6 +90,10 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
     currencyDisplay: "narrowSymbol",
   });
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("yearly");
+  const searchParam = new URLSearchParams(cookies.attributionsLastTouch);
+  searchParam.set("entrypoint", "monitor.mozilla.org-monitor-product-page");
+  searchParam.set("form_type", "button");
+  searchParam.set("data_cta_position", "pricing");
 
   return (
     <>
@@ -181,7 +187,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
             <Button
               disabled={props.scanLimitReached}
               variant="primary"
-              href={props.premiumSubscriptionUrl[billingPeriod]}
+              href={`${props.premiumSubscriptionUrl[billingPeriod]}&${searchParam.toString()}`}
               className={styles.cta}
               onPress={() => {
                 recordTelemetry("upgradeIntent", "click", {
@@ -791,7 +797,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                 <Button
                   disabled={props.scanLimitReached}
                   variant="primary"
-                  href={props.premiumSubscriptionUrl[billingPeriod]}
+                  href={`${props.premiumSubscriptionUrl[billingPeriod]}&${searchParam.toString()}`}
                   onPress={() => {
                     recordTelemetry("upgradeIntent", "click", {
                       button_id:
