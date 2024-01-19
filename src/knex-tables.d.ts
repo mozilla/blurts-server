@@ -11,6 +11,34 @@ import { BreachDataTypes } from "./app/functions/universal/breach";
 
 // See https://knexjs.org/guide/#typescript
 declare module "knex/types/tables" {
+  interface AttributionRow {
+    id: number;
+    subscriber_id: number;
+    type: string; // first, last touch
+    utm_source?: string;
+    utm_campaign?: string;
+    utm_medium?: string;
+    utm_term?: string;
+    entrypoint?: string;
+    other_utm_parameters?: Record<string, string>;
+    created_at: Date;
+    updated_at: Date;
+  }
+
+  type AttributionOptionalColumns = Extract<
+    keyof AttributionRow,
+    | "utm_source"
+    | "utm_campaign"
+    | "utm_medium"
+    | "utm_term"
+    | "entrypoint"
+    | "other_utm_parameters"
+  >;
+  type AttributionAutoInsertedColumns = Extract<
+    keyof AttributionRow,
+    "id" | "subscriber_id" | "created_at" | "updated_at"
+  >;
+
   interface FeatureFlagRow {
     name: string;
     is_enabled: boolean;

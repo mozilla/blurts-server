@@ -8,7 +8,7 @@ import { sendEmail, getVerificationUrl } from "../../../utils/email";
 import { getStringLookup } from "../../../utils/fluent.js";
 import { getTemplate } from "../../../views/emails/email2022.js";
 import { verifyPartial } from "../../../views/emails/emailVerify.js";
-import { Subscriber } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
+import { Subscriber } from "../../deprecated/(authenticated)/user/breaches/breaches";
 
 export async function sendVerificationEmail(
   user: Subscriber,

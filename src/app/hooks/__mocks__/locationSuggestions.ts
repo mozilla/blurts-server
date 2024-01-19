@@ -26,7 +26,7 @@ export const useLocationSuggestions: typeof ogUseLocationSuggestions = () => {
       },
     ] as RelevantLocation[],
     setFilterText: mockSetFilterText,
-    filterText: "Tu",
+    filterText: "Tulsa, OK, USA",
     isLoading: false,
     loadingState: "idle",
   };

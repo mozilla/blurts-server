@@ -94,6 +94,6 @@ export class DashboardPage {
   }
 
   async open() {
-    await this.page.goto("/redesign/user/dashboard");
+    await this.page.goto("/user/dashboard");
   }
 }

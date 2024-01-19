@@ -51,6 +51,14 @@ dashboard-tab-label-action-needed = Action necessari
 dashboard-tab-label-fixed = Remediate
 dashboard-exposures-all-fixed-label = Toto remediate ci!
 dashboard-exposures-area-headline = Vide tote le sitos ubi tu info es exponite
+# Note: this line precedes dashboard-exposures-area-description-all-line2.
+# Variables:
+#   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
+dashboard-exposures-area-description-all-line1 =
+    { $exposures_unresolved_num ->
+        [one] Nos trovava { $exposures_unresolved_num } exposition de tu datos.
+       *[other] Nos trovava { $exposures_unresolved_num } expositiones de tu datos.
+    }
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
@@ -59,6 +67,7 @@ dashboard-exposures-area-description-all-line2 =
         [one] Illo appareva in { $data_breach_unresolved_num } violation de datos:
        *[other] Illo appareva in { $data_breach_unresolved_num } violationes de datos:
     }
+dashboard-fixed-area-headline-all = Vider tote le expositiones remediate
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filtro
 dashboard-exposures-filter-company = Interprisa
@@ -78,9 +87,28 @@ dashboard-exposures-filter-reset = Reinitialisar
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = Summario pannello de controlo
+dashboard-top-banner-scan-in-progress-title = Tu scansion es ancora in curso
 dashboard-top-banner-your-data-is-protected-title = Tu datos es protegite
 dashboard-top-banner-your-data-is-protected-cta = Vide cosa ha essite remediate.
+dashboard-top-banner-lets-keep-protecting-title = Que nos continua a proteger tu datos
+# Variables:
+# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
+dashboard-top-banner-lets-keep-protecting-description =
+    { $exposures_unresolved_num ->
+        [one] Tu ancora ha { $exposures_unresolved_num } exposition a remediar.
+       *[other] Tu ancora ha { $exposures_unresolved_num } expositiones a remediar.
+    }
 dashboard-top-banner-lets-keep-protecting-cta = Que nos persevera
+dashboard-top-banner-protect-your-data-title = Que nos protege tu datos
+dashboard-top-banner-protect-your-data-cta = Que nos lo remedia
+# Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
+# Variables:
+#   $exposures_unresolved_num (number) - the total number of exposures the user has.
+dashboard-top-banner-non-us-protect-your-data-description-line1 =
+    { $exposures_unresolved_num ->
+        [one] Nos trovava { $exposures_unresolved_num } exposition de tu datos.
+       *[other] Nos trovava { $exposures_unresolved_num } expositiones de tu datos.
+    }
 dashboard-top-banner-no-exposures-found-title = Nulle expositiones trovate.
 dashboard-no-exposures-label = Nulle expositiones trovate.
 dashboard-top-banner-monitor-more-cta = Surveliar plus emails

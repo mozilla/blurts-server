@@ -66,21 +66,21 @@ high-risk-breach-skip = Ignorer pour l’instant
 high-risk-breach-credit-card-title = Votre numéro de carte bancaire a été compromis
 high-risk-breach-credit-card-description = Toute personne qui les obtient peut effectuer des achats non autorisés pour lesquels vous pouvez être tenu responsable. Agissez maintenant pour prévenir les pertes financières.
 high-risk-breach-credit-card-step-one = Si vous avez toujours cette carte, contactez l’émetteur pour signaler qu’elle a été volée.
-high-risk-breach-credit-card-step-two = Demander une nouvelle carte avec un nouveau numéro.
-high-risk-breach-credit-card-step-three = Vérifiez vos comptes sans frais non autorisés.
+high-risk-breach-credit-card-step-two = Demandez une nouvelle carte avec un nouveau numéro.
+high-risk-breach-credit-card-step-three = Surveillez vos comptes pour détecter les transactions non autorisées.
 
 # Bank Account Breaches
 
-high-risk-breach-bank-account-title = Votre compte bancaire a été exposé
+high-risk-breach-bank-account-title = Votre compte bancaire a été compromis
 high-risk-breach-bank-account-description = Agir dès que possible pourrait vous donner plus de protections juridiques pour vous aider à récupérer les pertes éventuelles.
 high-risk-breach-bank-account-step-one = Informez immédiatement votre banque que votre numéro de compte a été compromis.
 high-risk-breach-bank-account-step-two = Changer votre numéro de compte.
-high-risk-breach-bank-account-step-three = Vérifiez vos comptes sans frais non autorisés.
+high-risk-breach-bank-account-step-three = Surveillez vos comptes pour détecter les transactions non autorisées.
 
 # Social Security Number Breaches
 
 high-risk-breach-social-security-title = Votre numéro de sécurité sociale a été compromis
-high-risk-breach-social-security-description = Les fraudeurs peuvent négocier de nouveaux prêts ou cartes bancaires à votre numéro de sécurité sociale. Agissez rapidement pour éviter les préjudices financiers.
+high-risk-breach-social-security-description = Les fraudeurs peuvent négocier de nouveaux prêts ou cartes de crédit avec votre numéro de sécurité sociale. Agissez rapidement pour éviter les préjudices financiers.
 high-risk-breach-social-security-step-one = Protégez-vous en <link_to_info>créant une alerte de fraude ou en gelant votre crédit.</link_to_info>
 high-risk-breach-social-security-step-two = <link_to_info>Vérifiez la présence de comptes non reconnus dans votre rapport de crédit</link_to_info>.
 
@@ -96,11 +96,11 @@ ssn-modal-ok = OK
 
 # PIN Breaches
 
-high-risk-breach-pin-title = Votre code PIN a été compromis
+high-risk-breach-pin-title = Votre code PIN a fuité
 high-risk-breach-pin-description = Agir dès que possible pourrait vous donner plus de protections juridiques pour vous aider à récupérer les pertes éventuelles.
 high-risk-breach-pin-step-one = Informez immédiatement votre banque que votre code PIN a été compromis.
-high-risk-breach-pin-step-two = Changez votre code PIN chaque fois que vous avez utilisé le même.
-high-risk-breach-pin-step-three = Vérifiez vos comptes sans frais non autorisés.
+high-risk-breach-pin-step-two = Changez votre code PIN partout où vous l’avez réutilisé.
+high-risk-breach-pin-step-three = Surveillez vos comptes pour détecter les transactions non autorisées.
 
 # No high risk breaches found
 
@@ -109,10 +109,10 @@ high-risk-breach-none-title = Bonne nouvelle, nous n’avons trouvé aucune fuit
 # $email_list is list of emails that the user is monitoring for breaches. E.g. john@yahoo.com, ali@gmail.com, sam@hotmail.com
 high-risk-breach-none-description = Nous détectons les fuites de données d’après votre adresse e-mail, et nous n’avons trouvé aucune fuite de données à haut risque pour { $email_list }.
 high-risk-breach-none-sub-description-part-one = Les fuites de données à haut risque incluent :
-high-risk-breach-none-sub-description-ssn = numéro de sécurité sociale
-high-risk-breach-none-sub-description-bank-account = coordonnées bancaires
-high-risk-breach-none-sub-description-cc-number = numéros de cartes bancaires
-high-risk-breach-none-sub-description-pin = codes PIN
+high-risk-breach-none-sub-description-ssn = Le numéro de sécurité sociale
+high-risk-breach-none-sub-description-bank-account = Les coordonnées bancaires
+high-risk-breach-none-sub-description-cc-number = Les numéros de cartes bancaires
+high-risk-breach-none-sub-description-pin = Les codes PIN
 high-risk-breach-none-continue = Continuer
 
 # Security recommendations
@@ -132,7 +132,7 @@ security-recommendation-phone-summary =
     }
 security-recommendation-phone-description = Malheureusement, vous ne pouvez pas le reprendre. Cependant, vous pouvez prendre certaines mesures pour assurer votre sécurité.
 security-recommendation-phone-step-one = Bloquez les numéros indésirables pour empêcher davantage d’appels indésirables
-security-recommendation-phone-step-two = Ne cliquez pas sur les liens dans les SMS dont l’expéditeur est inconnu. si l’appel semble provenir d’une source sûre, appeler directement pour confirmer
+security-recommendation-phone-step-two = Ne cliquez pas sur les liens dans les SMS d’expéditeurs inconnus. Si le SMS semble provenir de source digne de confiance, appelez directement pour confirmer
 
 # Email security recommendation
 
@@ -140,14 +140,14 @@ security-recommendation-email-title = Protégez votre adresse e-mail
 # $num_breaches is the number of breaches where the email address was found.
 security-recommendation-email-summary =
     { $num_breaches ->
-        [one] Votre adresse e-mail figure dans { $num_breaches } de fuite de données :
-       *[other] Votre adresse e-mail a été exposée dans { $num_breaches } fuites de données :
+        [one] Votre adresse e-mail figure dans { $num_breaches } fuite de données :
+       *[other] Votre adresse e-mail figure dans { $num_breaches } fuites de données :
     }
 security-recommendation-email-description = Malheureusement, vous ne pouvez pas résoudre ce problème. Cependant, vous pouvez prendre certaines mesures pour vous protéger.
-security-recommendation-email-step-one = ne cliquez pas sur les liens dans les courriels d’expéditeurs inconnus. si l’appel semble provenir de source digne de confiance, appeler directement pour confirmer
+security-recommendation-email-step-one = Ne cliquez pas sur les liens dans les e-mails d’expéditeurs inconnus. Si l’e-mail semble provenir de source digne de confiance, appelez directement pour confirmer
 security-recommendation-email-step-two = Méfiez-vous des <link_to_info>escroqueries par hameçonnage</link_to_info>
-security-recommendation-email-step-three = Marquer les e-mails suspects comme spam et bloquer l’expéditeur
-security-recommendation-email-step-four = Utilisez <link_to_info>alias de messagerie de { -brand-relay }</link_to_info> pour protéger votre e-mail à l’avenir
+security-recommendation-email-step-three = Marquez les e-mails suspects comme spam et bloquez l’expéditeur
+security-recommendation-email-step-four = Utilisez les <link_to_info>alias de messagerie de { -brand-relay }</link_to_info> pour protéger votre adresse e-mail à l’avenir
 
 # IP security recommendation
 
@@ -155,8 +155,8 @@ security-recommendation-ip-title = Utilisez un VPN pour plus de confidentialité
 # $num_breaches is the number of breaches where the IP address was found.
 security-recommendation-ip-summary =
     { $num_breaches ->
-        [one] Votre adresse IP a été compromise dans { $num_breaches } fuite de données :
-       *[other] Votre adresse IP a été exposée dans { $num_breaches } fuites de données :
+        [one] Votre adresse IP figure dans { $num_breaches } fuite de données :
+       *[other] Votre adresse IP figure dans { $num_breaches } fuites de données :
     }
 security-recommendation-ip-description = Votre adresse IP identifie votre emplacement et votre fournisseur d’accès à Internet. Des pirates pourraient utiliser ces informations pour trouver votre emplacement ou essayer de se connecter à vos appareils.
 security-recommendation-ip-step-one = Utilisez un VPN (tel que <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) pour masquer votre véritable adresse IP et utiliser Internet en privé.
@@ -168,26 +168,26 @@ security-recommendation-ip-step-one = Utilisez un VPN (tel que <link_to_info>{ -
 leaked-passwords-title = Votre mot de passe { $breach_name } a été compromis
 # Variables
 # $breach_date is the date when the breach occurred.
-leaked-passwords-summary = Elle apparaît dans une fuite de données du { $breach_date }.
-leaked-passwords-description = Les fraudeurs peuvent accéder à votre compte et vont probablement essayer de l’utiliser sur d’autres comptes pour voir si vous avez utilisé le même mot de passe. Changez-le partout où vous l’avez utilisé pour vous protéger.
+leaked-passwords-summary = Il apparaît dans une fuite de données du { $breach_date }.
+leaked-passwords-description = Les fraudeurs peuvent accéder à votre compte et vont probablement essayer de l’utiliser sur d’autres comptes pour voir si vous avez utilisé le même mot de passe. Changez-le partout où vous l’avez réutilisé pour vous protéger.
 leaked-passwords-steps-title = Voici la marche à suivre
 leaked-passwords-steps-subtitle = Ce problème nécessite d’accéder à votre compte, vous devrez donc le corriger manuellement.
 # Variables
 # $breach_name is the name of the breach where the leaked password was found.
 # $emails_affected are the emails associated with the breach.
 leaked-passwords-step-one = Modifiez votre mot de passe pour <b>{ $emails_affected }</b> sur <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
-leaked-passwords-step-two = Modifiez-le partout où vous l’avez utilisé.
+leaked-passwords-step-two = Modifiez-le partout où vous l’avez réutilisé.
 leaked-passwords-mark-as-fixed = Marquer comme corrigé
-leaked-passwords-skip = Passer pour le moment
+leaked-passwords-skip = Ignorer pour le moment
 
 # Leaked Security Questions
 
-leaked-security-questions-title = Vos questions de sécurité ont été exposées
+leaked-security-questions-title = Vos questions de sécurité ont été compromises
 # Variables
 # $breach_name is the name of the breach where the leaked security questions were found.
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
-leaked-security-questions-summary = Elles sont apparues dans une fuite de données sur { $breach_name } le { $breach_date }.
+leaked-security-questions-summary = Elles figurent dans une fuite de données sur { $breach_name } le { $breach_date }.
 leaked-security-questions-description = Les fraudeurs peuvent les utiliser pour accéder à vos comptes et à tout autre site où vous avez posé les mêmes questions de sécurité. Mettez-les à jour maintenant pour protéger vos comptes.
 leaked-security-questions-steps-title = Voici la marche à suivre
 leaked-security-questions-steps-subtitle = Ce problème nécessite d’accéder à votre compte, vous devrez donc le corriger manuellement.
