@@ -9,7 +9,7 @@ import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./ExposureCard.module.scss";
 import { useL10n } from "../../hooks/l10n";
 import { Exposure, isScanResult } from "./ExposureCard";
-import { HibpBreachDataTypes } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
+import { HibpBreachDataTypes } from "../../deprecated/(authenticated)/user/breaches/breaches";
 
 type OnerepScanResultSerializedColumns = Extract<
   keyof OnerepScanResultRow,

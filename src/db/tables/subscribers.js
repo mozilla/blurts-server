@@ -95,7 +95,7 @@ async function getSubscriberByEmail (email) {
 /**
  * Update primary email for subscriber
  *
- * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
+ * @param {import('../../app/deprecated/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
  * @param {string} updatedEmail primary email to be updated to
  * @returns {Promise<import('knex/types/tables').SubscriberRow | null>} updated subscriber
  */
@@ -179,7 +179,7 @@ async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaPr
 /**
  * Update fxa_profile_json for subscriber
  *
- * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber knex object in DB
+ * @param {import('../../app/deprecated/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber knex object in DB
  * @param {string} fxaProfileData from Firefox Account
  * @returns {Promise<object>} updated subscriber knex object in DB
  */
@@ -200,7 +200,7 @@ async function updateFxAProfileData (subscriber, fxaProfileData) {
 /**
  * Remove fxa tokens and profile data for subscriber
  *
- * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber knex object in DB
+ * @param {import('../../app/deprecated/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber knex object in DB
  * @returns {Promise<import('knex/types/tables').SubscriberRow | null>} updated subscriber knex object in DB
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
@@ -230,7 +230,7 @@ async function removeFxAData (subscriber) {
 /* c8 ignore stop */
 
 /**
- * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
+ * @param {import('../../app/deprecated/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -251,7 +251,7 @@ async function setBreachesLastShownNow (subscriber) {
 /* c8 ignore stop */
 
 /**
- * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
+ * @param {import('../../app/deprecated/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
  * @param {boolean} allEmailsToPrimary
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
@@ -299,7 +299,7 @@ async function setBreachesResolved (options) {
  * This column is meant to replace "breaches_resolved" column, which was used
  * for v1.
  *
- * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} user user object that contains the id of a user
+ * @param {import('../../app/deprecated/(authenticated)/user/breaches/breaches.js').Subscriber} user user object that contains the id of a user
  * @param {any} updatedBreachesResolution {emailId: [{breachId: {isResolved: bool, resolutionsChecked: [BreachType]}}, {}...]}
  * @returns subscriber
  */
@@ -319,7 +319,7 @@ async function setBreachResolution (user, updatedBreachesResolution) {
 /* c8 ignore stop */
 
 /**
- * @param {{ user: import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber; updatedWaitlistsJoined: any; }} options
+ * @param {{ user: import('../../app/deprecated/(authenticated)/user/breaches/breaches.js').Subscriber; updatedWaitlistsJoined: any; }} options
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */

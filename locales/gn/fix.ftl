@@ -123,7 +123,9 @@ security-recommendation-phone-summary =
         [one] Ne pumbyry papapy ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
        *[other] Ne pumbyry papapy ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
     }
+security-recommendation-phone-description = Rombyasyeterei, ndaikatumo’ãi eipe’a. Hákatu eku’ekuaa eñemo’ãve hag̃ua.
 security-recommendation-phone-step-one = Ejoko spam papapy emboyke hag̃ua ñehenói oiko’ỹva
+security-recommendation-phone-step-two = Ani eikutu juajuha moñe’ẽrã eikua’ỹva omboúvagui; eimo’ãramo ouha ejeroviahágui, ehenói eikuaa porã hag̃ua
 
 # Email security recommendation
 
@@ -135,8 +137,10 @@ security-recommendation-email-summary =
        *[other] Ne ñanduti veve kundaharape ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
     }
 security-recommendation-email-description = Rombyasyeterei, ndaikatumo’ãi emyatyrõ ko apañuãi. Hákatu eku’ekuaa eñemo’ã hag̃ua.
+security-recommendation-email-step-one = Ani eikutu juajuha ñanduti veve eikua’ỹva omboúvagui; eimo’ãramo ouha ejeroviahágui, ehenói eikuaa porã hag̃ua
 security-recommendation-email-step-two = Ema’ẽke <link_to_info>phishing jehode</link_to_info> rehe
 security-recommendation-email-step-three = Emongurusu ñanduti veve ikatúva spam ha emboyke imbouhára
+security-recommendation-email-step-four = Eiporu <link_to_info>{ -brand-relay } ñanduti veve rovamo’ãha</link_to_info> mba’éva emo’ã hag̃ua ne ñanduti veve tenondeve
 
 # IP security recommendation
 

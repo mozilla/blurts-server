@@ -48,8 +48,8 @@
     "npm": "10.2.4"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.485.0",
-    "@aws-sdk/lib-storage": "^3.485.0",
+    "@aws-sdk/client-s3": "^3.490.0",
+    "@aws-sdk/lib-storage": "^3.490.0",
     "@fluent/bundle": "^0.18.0",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
@@ -58,9 +58,9 @@
     "@grpc/grpc-js": "1.9.13",
     "@leeoniya/ufuzzy": "^1.0.14",
     "@mozilla/glean": "3.0.0",
-    "@sentry/nextjs": "^7.92.0",
+    "@sentry/nextjs": "^7.93.0",
     "@sentry/node": "^7.58.1",
-    "@sentry/tracing": "^7.92.0",
+    "@sentry/tracing": "^7.93.0",
     "@types/jsdom": "^21.1.5",
     "@types/node": "^20.11.2",
     "@types/react": "^18.2.48",

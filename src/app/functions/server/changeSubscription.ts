@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { Subscriber } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
+import { Subscriber } from "../../deprecated/(authenticated)/user/breaches/breaches";
 import { updateFxAProfileData } from "../../../db/tables/subscribers";
 
 const MONITOR_PREMIUM_CAPABILITY = "monitor";

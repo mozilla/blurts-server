@@ -17,10 +17,10 @@ export class AuthPage {
   constructor(page: Page) {
     this.page = page;
     this.emailInputField = page.locator('input[name="email"]');
-    this.passwordInputField = page.locator("#password");
-    this.passwordConfirmInputField = page.locator("#vpassword");
-    this.ageInputField = page.locator("#age");
-    this.continueButton = page.locator("#submit-btn");
+    this.passwordInputField = page.locator('[type="password"]').nth(0);
+    this.passwordConfirmInputField = page.locator('[type="password"]').nth(1);
+    this.ageInputField = page.getByLabel("How old are you?");
+    this.continueButton = page.locator('[type="submit"]').first();
     this.verifyCodeInputField = page.locator("div.card input");
   }
 
