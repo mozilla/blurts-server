@@ -54,7 +54,7 @@
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
     "@google-cloud/logging-winston": "^6.0.0",
-    "@google-cloud/pubsub": "^4.1.0",
+    "@google-cloud/pubsub": "^4.1.1",
     "@grpc/grpc-js": "1.9.13",
     "@leeoniya/ufuzzy": "^1.0.14",
     "@mozilla/glean": "3.0.0",
