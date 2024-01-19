@@ -16,6 +16,28 @@ async function getAttributionsForSubscriber(subscriberId: number) {
     .returning("*")) as AttributionRow[];
 }
 
+async function getLatestAttributionForSubscriberWithType(
+  subscriberId: number,
+  type: string,
+) {
+  logger.info("getLatestAttributionForSubscriberWithType", {
+    subscriberId,
+    type,
+  });
+  const res = await knex("attributions")
+    .orderBy("created_at")
+    .where("subscriber_id", subscriberId)
+    .andWhere("type", type)
+    .returning([
+      "entrypoint",
+      "utm_source",
+      "utm_medium",
+      "utm_term",
+      "utm_campaign",
+    ]);
+  return res[0] as Partial<AttributionRow>;
+}
+
 async function addAttributionForSubscriber(
   subscriberId: number,
   attribution: Partial<AttributionRow>,
@@ -66,6 +88,7 @@ async function updateAttribution(
 
 export {
   getAttributionsForSubscriber,
+  getLatestAttributionForSubscriberWithType,
   addAttributionForSubscriber,
   deleteAttributionById,
   deleteAttributionsForSubscriber,
