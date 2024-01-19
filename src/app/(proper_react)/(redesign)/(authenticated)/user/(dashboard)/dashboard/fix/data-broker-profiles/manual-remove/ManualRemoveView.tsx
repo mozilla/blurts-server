@@ -121,13 +121,13 @@ export function ManualRemoveView(props: Props) {
                   {
                     elems: {
                       subscribe_link: (
-                        <Link 
-                        href="/user/dashboard/fix/data-broker-profiles/automatic-remove" 
-                        onClick={() => {
-                          recordTelemetry("link", "click", {
-                            link_id: "manual_removal_instructions_upsell",
-                          });
-                        }}
+                        <Link
+                          href="/user/dashboard/fix/data-broker-profiles/automatic-remove"
+                          onClick={() => {
+                            recordTelemetry("link", "click", {
+                              link_id: "manual_removal_instructions_upsell",
+                            });
+                          }}
                         />
                       ),
                     },
@@ -170,7 +170,8 @@ export function ManualRemoveView(props: Props) {
             onPress={() => {
               recordTelemetry("upgradeIntent", "click", {
                 button_id: "manual_removal_upsell",
-              })}}
+              });
+            }}
             href="/user/dashboard/fix/data-broker-profiles/automatic-remove"
           >
             {l10n.getString(
