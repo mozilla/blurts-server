@@ -184,6 +184,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
                   void handleUpdateBreachStatus();
                   recordTelemetry("ctaButton", "click", {
                     button_id: "marked_fixed",
+                    // TODO: Enable after the parameter has been added to metrics.yaml.
                     // button_name:
                     //   props.type === "passwords"
                     //     ? "mark_as_fixed_password_${breachName}"
@@ -200,6 +201,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
                 onClick={() => {
                   recordTelemetry("ctaButton", "click", {
                     button_id: "skipped_resolution",
+                    // TODO: Enable after the parameter has been added to metrics.yaml.
                     // button_name:
                     // props.type === "passwords"
                     //   ? `skip_for_now_password_${breachName}`

@@ -220,6 +220,7 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                           name: "click",
                           data: {
                             link_id: "changed_password",
+                            // TODO: Enable after the parameter has been added to metrics.yaml.
                             // link_name: `changed_password_${breachName}`,
                           },
                         }}
@@ -274,6 +275,7 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                           name: "click",
                           data: {
                             link_id: "changed_security_question",
+                            // TODO: Enable after the parameter has been added to metrics.yaml.
                             // link_name: `changed_security_question_${breachName}`,
                           },
                         }}
