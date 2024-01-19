@@ -8,6 +8,8 @@
 		"stylelint.vscode-stylelint",
 		"esbenp.prettier-vscode",
 		"eamodio.gitlens",
+		"Orta.vscode-jest",
+		"macabeus.vscode-fluent",
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": []
