@@ -90,18 +90,29 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
     currencyDisplay: "narrowSymbol",
   });
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("yearly");
-  const searchParam = useRef(
-    new URLSearchParams(cookies.attributionsLastTouch),
-  );
+  const searchParam = useRef(new URLSearchParams());
 
   useEffect(() => {
     const newSearchParam = new URLSearchParams(cookies.attributionsLastTouch);
+
+    // overwrite the three params below
     newSearchParam.set(
       "entrypoint",
       "monitor.mozilla.org-monitor-product-page",
     );
     newSearchParam.set("form_type", "button");
     newSearchParam.set("data_cta_position", "pricing");
+
+    // placeholder utms if acquisition source is unknown
+    if (!newSearchParam.has("utm_source")) {
+      newSearchParam.append("utm_source", "product");
+    }
+    if (!newSearchParam.has("utm_medium")) {
+      newSearchParam.append("utm_medium", "monitor");
+    }
+    if (!newSearchParam.has("utm_campaign")) {
+      newSearchParam.append("utm_campaign", "pricing");
+    }
     searchParam.current = newSearchParam;
   });
 
