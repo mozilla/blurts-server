@@ -41,25 +41,21 @@ landing-all-close-faq-alt = Fermer
 # $num_users is the number of users in the millions.
 landing-all-social-proof-title =
     { $num_users ->
-        [one] Adopté par { $num_users } millions de personnes dans le monde entier
+        [one] Adopté par { $num_users } million de personnes dans le monde entier
        *[other] Adopté par { $num_users } millions de personnes dans le monde entier
     }
 # Variables
 # $num_countries is the number of countries available.
-landing-all-social-proof-description =
-    { $num_countries ->
-        [one] Depuis 2018, nous avons aidé des personnes dans { $num_countries } pays à protéger leurs données compromises.
-       *[other] Depuis 2018, nous avons aidé des personnes dans { $num_countries } pays à protéger leurs données compromises.
-    }
+landing-all-social-proof-description = Depuis 2018, nous avons aidé des personnes dans { $num_countries } pays à protéger leurs données compromises.
 landing-all-social-proof-press = Tel que vu dans 
 
 # Here's How We Help
 
-landing-all-help-protect-you = Voici comment nous vous protégeons
+landing-all-help-protect-you = Voici comment nous vous aidons à protéger vos données
 landing-all-help-protect-you-description = Nous croyons en votre droit à la confidentialité, c’est pourquoi la protection contre les fuites de données est toujours gratuite.
 landing-all-help-protect-you-feature-one = Nous vous rechercherons dans toutes les fuites de données connues
 landing-all-help-protect-you-feature-two = Nous vous guiderons à travers les étapes pour résoudre chaque fuite
-landing-all-help-protect-you-feature-three = Nous surveillerons et vous enverrons des alertes en permanence pour toute nouvelle fuite de données
+landing-all-help-protect-you-feature-three = Nous effectuerons une surveillance permanente et vous enverrons des alertes lors de toute nouvelle fuite de données
 landing-all-help-protect-you-cta = S’inscrire aux alertes de fuites de données
 landing-all-get-started = Scannez votre adresse e-mail pour commencer
 landing-all-take-back-data = Reprenez le contrôle de vos données
