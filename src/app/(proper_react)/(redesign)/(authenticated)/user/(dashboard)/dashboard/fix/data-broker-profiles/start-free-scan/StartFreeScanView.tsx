@@ -87,7 +87,7 @@ export function StartFreeScanView(props: Props) {
           </Button>
           <Button
             variant="secondary"
-            href="/user/dashboard/fix/high-risk-data-breaches"
+            href={getNextGuidedStep(props.data, "Scan").href}
             onPress={() => {
               recordTelemetry("ctaButton", "click", {
                 button_id: "skipped_free_scan",
