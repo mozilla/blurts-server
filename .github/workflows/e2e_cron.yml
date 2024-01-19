@@ -56,6 +56,7 @@ jobs:
           ADMINS: ${{ secrets.ADMINS }}
           FXA_ENABLED: true
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
+          ONEREP_API_KEY: ${{ secrets.ONEREP_API_KEY }}
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
           NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
           HIBP_KANON_API_TOKEN: ${{ secrets.HIBP_KANON_API_TOKEN }}

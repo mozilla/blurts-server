@@ -72,6 +72,7 @@ jobs:
           ADMINS: ${{ secrets.ADMINS }}
           FXA_ENABLED: true
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
+          ONEREP_API_KEY: ${{ secrets.ONEREP_API_KEY }}
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
           NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/blurts
