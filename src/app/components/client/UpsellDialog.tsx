@@ -84,11 +84,11 @@ function UpsellDialogContent({
   // overwrite the three params below
   monthlyParams.set(
     "entrypoint",
-    "monitor.mozilla.org-monitor-in-product-guided-upsell",
+    "monitor.mozilla.org-monitor-in-product-navigation-upsell",
   );
   yearlyParams.set(
     "entrypoint",
-    "monitor.mozilla.org-monitor-in-product-guided-upsell",
+    "monitor.mozilla.org-monitor-in-product-navigation-upsell",
   );
   monthlyParams.set("form_type", "button");
   yearlyParams.set("form_type", "button");
