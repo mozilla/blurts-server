@@ -4,7 +4,7 @@ on:
   pull_request:
   workflow_dispatch:
 jobs:
-  linter:
+  l10n-lint:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository

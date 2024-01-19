@@ -31,6 +31,7 @@ exposure-chart-returning-user-upgrade-prompt = Pe óga, pehẽnguekuéra ha ambu
 exposure-chart-returning-user-upgrade-prompt-cta = Emoha’ãnga reiete
 exposure-chart-scan-in-progress-prompt = <b>Oñemoha’ãngahína:</b> kundaharenda, pehẽnguekuéra ha hetave ndoikéi gueteri.
 modal-active-number-of-exposures-title = Mboyjeýmapa ipapapy jehechauka hendýva
+modal-active-number-of-exposures-part-three-all = Oñemoĩporã vove, oñembojuajúta nde papapy jehechapy oĩporãmava kuatiarogue Moĩporãhápe.
 modal-fixed-number-of-exposures-title = Mboyjeýmapa ipapapy jehechauka opytáva
 modal-cta-ok = MONEĨ
 modal-open-alt = Ijurujáva

@@ -6,7 +6,7 @@ import createDbConnection from "../connect.js";
 import { logger } from "../../app/functions/server/logging";
 
 import { ScanResult, Scan } from "../../app/functions/server/onerep.js";
-import { Subscriber } from "../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
+import { Subscriber } from "../../app/deprecated/(authenticated)/user/breaches/breaches.js";
 import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
 
 const knex = createDbConnection();

@@ -155,6 +155,7 @@ security-recommendation-email-description = Infortunatemente tu non pote remedia
 security-recommendation-email-step-one = Non clicca sur ligamines in emails de expeditores incognite; si illo appare esser ab fonte digne de fide, appella directemente pro confirmar
 security-recommendation-email-step-two = Sia conscie de <link_to_info>attaccos fraudulente</link_to_info>
 security-recommendation-email-step-three = Marcar emails suspecte como spam e blocar le expeditor
+security-recommendation-email-step-four = Usa <link_to_info>le mascas de emails de { -brand-relay }</link_to_info> pro proteger tu email in le futuro
 
 # IP security recommendation
 
@@ -179,6 +180,10 @@ leaked-passwords-summary = Illo appareva in un violation de datos le { $breach_d
 leaked-passwords-description = Fraudatores pote acceder tu conto e probabilemente tentara de usar lo sur altere contos pro vider si tu ha usate le mesme contrasigno. Cambia lo ubique tu lo ha usate pro proteger te.
 leaked-passwords-steps-title = Ecce que facer
 leaked-passwords-steps-subtitle = Isto require accesso a tu conto, assi tu debera manualmente corriger lo.
+# Variables
+# $breach_name is the name of the breach where the leaked password was found.
+# $emails_affected are the emails associated with the breach.
+leaked-passwords-step-one = Cambia tu contrasigno pro <b>{ $emails_affected }</b> sur <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
 leaked-passwords-mark-as-fixed = Marcar como remediate
 leaked-passwords-skip = Saltar pro iste momento
 # Variables
