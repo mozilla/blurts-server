@@ -21,7 +21,7 @@ exposure-chart-heading-fixed =
         [one] <nr>{ $nr }</nr> <label>résolue</label>
        *[other] <nr>{ $nr }</nr> <label>résolues</label>
     }
-exposure-chart-legend-heading-type = l’exposition ;
+exposure-chart-legend-heading-type = Détections de fuites
 exposure-chart-legend-heading-nr = Nombre
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
