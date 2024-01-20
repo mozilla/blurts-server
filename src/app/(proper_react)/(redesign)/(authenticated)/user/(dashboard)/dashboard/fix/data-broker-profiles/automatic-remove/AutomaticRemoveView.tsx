@@ -23,8 +23,8 @@ export function AutomaticRemoveView(props: Props) {
 
   const dataBrokerCount = CONST_ONEREP_DATA_BROKER_COUNT;
 
-  const { monthlySubscriptionUrl, yearlySubscriptionUrl, ...fixViewProps } =
-    props;
+  let { monthlySubscriptionUrl, yearlySubscriptionUrl } = props;
+  const { ...fixViewProps } = props;
 
   // format subscription urls
   const monthlyUrl = new URL(monthlySubscriptionUrl);
