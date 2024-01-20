@@ -206,3 +206,7 @@ leaked-security-questions-title = Tu demandas de securitate era exponite
 leaked-security-questions-summary = Illos appareva in un violation de datos sur { $breach_name } le { $breach_date }.
 leaked-security-questions-steps-title = Ecce que facer
 leaked-security-questions-steps-subtitle = Isto require accesso a tu conto, assi tu debera manualmente corriger lo.
+# Variables
+# $breach_name is the name of the breach where the security questions were found.
+# $email_affected is the email associated with the breach.
+leaked-security-questions-step-one = Actualisa tu demandas de securitate pro <b>{ $emails_affected }</b> sur <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
