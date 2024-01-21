@@ -184,6 +184,7 @@ leaked-passwords-steps-subtitle = Isto require accesso a tu conto, assi tu deber
 # $breach_name is the name of the breach where the leaked password was found.
 # $emails_affected are the emails associated with the breach.
 leaked-passwords-step-one = Cambia tu contrasigno pro <b>{ $emails_affected }</b> sur <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
+leaked-passwords-step-two = Cambia lo ubique tu lo ha usate.
 leaked-passwords-mark-as-fixed = Marcar como remediate
 leaked-passwords-skip = Saltar pro iste momento
 # Variables
@@ -204,9 +205,11 @@ leaked-security-questions-title = Tu demandas de securitate era exponite
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
 leaked-security-questions-summary = Illos appareva in un violation de datos sur { $breach_name } le { $breach_date }.
+leaked-security-questions-description = Fraudatores pote usar los pro acceder a tu contos, e ulle altere sito ubi tu ha usate le mesme demandas de securitate.
 leaked-security-questions-steps-title = Ecce que facer
 leaked-security-questions-steps-subtitle = Isto require accesso a tu conto, assi tu debera manualmente corriger lo.
 # Variables
 # $breach_name is the name of the breach where the security questions were found.
 # $email_affected is the email associated with the breach.
 leaked-security-questions-step-one = Actualisa tu demandas de securitate pro <b>{ $emails_affected }</b> sur <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
+leaked-security-questions-step-two = Actualisa los sur ulle altere sito ubi tu usava le mesme demandas de securitate. Cura de usar differente demandas de securitate pro cata conto.
