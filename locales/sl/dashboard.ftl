@@ -109,7 +109,7 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] Imate še { $exposures_unresolved_num } izpostavljenosti, ki jih morate popraviti. Le tako naprej in se zaščitite. Vodili vas bomo korak za korakom.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Gremo naprej
-dashboard-top-banner-protect-your-data-title = Varujmo vaše podatke
+dashboard-top-banner-protect-your-data-title = Zaščitimo vaše podatke
 dashboard-top-banner-protect-your-data-cta = Popravimo zadevo
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:

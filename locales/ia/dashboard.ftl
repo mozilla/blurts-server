@@ -109,10 +109,31 @@ dashboard-top-banner-non-us-protect-your-data-description-line1 =
         [one] Nos trovava { $exposures_unresolved_num } exposition de tu datos.
        *[other] Nos trovava { $exposures_unresolved_num } expositiones de tu datos.
     }
+# Note: this line is preceded by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
+# Variables:
+#   $data_breach_unresolved_num (number) - the total number of data breaches the user has.
+dashboard-top-banner-non-us-protect-your-data-description-line2 =
+    { $data_breach_unresolved_num ->
+        [one] Illo appareva in { $data_breach_unresolved_num } violation de datos. Nos te guidara passo per passo a corriger lo.
+       *[other] Illo appareva inter { $data_breach_unresolved_num } violationes de datos. Nos te guidara passo per passo a corriger lo.
+    }
 dashboard-top-banner-no-exposures-found-title = Nulle expositiones trovate.
+dashboard-top-banner-non-us-no-exposures-found-description = Formidabile novas! Nos recercava pro tote le violationes de datos note e non trovava ulle expositiones. Nos continuara a surveliar tu adresse email e te avisara si un nove violation occurre.
 dashboard-no-exposures-label = Nulle expositiones trovate.
+# Variables:
+# $exposures_resolved_num is the number of exposures the user has resolved.
+dashboard-top-banner-non-us-your-data-is-protected-description =
+    { $exposures_resolved_num ->
+        [one] Grande labor, le exposition de tu datos es remediate! Nos continuara a surveliar e te avisara de omne nove expositiones.
+       *[other] Grande labor, tote le { $exposures_resolved_num } expositiones de tu datos es remediate! Nos continuara a surveliar e te avisara de omne nove expositiones.
+    }
 dashboard-top-banner-monitor-more-cta = Surveliar plus emails
 
 # About Exposure Statuses Modal
 
 modal-exposure-status-title = Re le statos de exposition
+modal-exposure-status-description-all =
+    Nos cerca pro expositiones in tote le violationes de datos note.
+    Tu expositiones habera uno del sequente statos:
+modal-exposure-status-action-needed = <b>Action necessari</b> significa que illo es currentemente active e tu debe prender mesuras pro corriger lo.
+modal-exposure-status-fixed = <b>Remediate</b> significa que le exposition ha essite remediate e il ha nulle action a prender pro te.
