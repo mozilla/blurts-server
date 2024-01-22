@@ -97,7 +97,14 @@ function UpsellToggleButton(props: UpsellToggleButton) {
     { type: "dialog" },
     dialogState,
   );
-  const { buttonProps } = useToggleButton(triggerProps, state, ref);
+  const { buttonProps } = useToggleButton(
+    {
+      ...triggerProps,
+      isDisabled: state.isSelected,
+    },
+    state,
+    ref,
+  );
 
   return (
     <>
@@ -107,7 +114,6 @@ function UpsellToggleButton(props: UpsellToggleButton) {
           state.isSelected ? styles.isSelected : ""
         }`}
         ref={ref}
-        disabled={state.isSelected}
       >
         {state.isSelected
           ? l10n.getString("plus-indicator-label-active")
