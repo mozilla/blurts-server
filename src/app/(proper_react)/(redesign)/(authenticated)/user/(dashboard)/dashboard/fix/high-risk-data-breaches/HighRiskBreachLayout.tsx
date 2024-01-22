@@ -5,11 +5,9 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ResolutionContainer } from "../ResolutionContainer";
 import { ResolutionContent } from "../ResolutionContent";
-import { Button } from "../../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../../hooks/l10n";
 import { getLocale } from "../../../../../../../../functions/universal/getLocale";
 import { FixView } from "../FixView";
@@ -26,6 +24,8 @@ import { getGuidedExperienceBreaches } from "../../../../../../../../functions/u
 import { hasPremium } from "../../../../../../../../functions/universal/user";
 import { HighRiskDataTypes } from "../../../../../../../../functions/universal/breach";
 import { BreachBulkResolutionRequest } from "../../../../../../../../deprecated/(authenticated)/user/breaches/breaches";
+import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
+import { TelemetryLink } from "../../../../../../../../components/client/TelemetryLink";
 
 export type HighRiskBreachLayoutProps = {
   type: HighRiskBreachTypes;
@@ -120,6 +120,30 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
       setIsResolving(false);
     }
   };
+
+  let markedAsFixedInstrumentation;
+
+  switch (props.type) {
+    case "social-security-number":
+      markedAsFixedInstrumentation = "marked_fixed_social_security";
+      break;
+    case "credit-card":
+      markedAsFixedInstrumentation = "marked_fixed_credit_card";
+      break;
+    case "bank-account":
+      markedAsFixedInstrumentation = "marked_fixed_bank_account";
+      break;
+    case "pin":
+      markedAsFixedInstrumentation = "marked_fixed_pin";
+      break;
+    case "done":
+      markedAsFixedInstrumentation = "continue_celebrate_high_risk";
+      break;
+    case "none":
+      markedAsFixedInstrumentation = "continue_high_risk_zero_state";
+      break;
+  }
+
   /* c8 ignore stop */
 
   return (
@@ -141,30 +165,49 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
           !isStepDone && (
             <>
               {isHighRiskBreachesStep ? (
-                <Button
+                <TelemetryButton
                   variant="primary"
                   small
                   autoFocus={true}
+                  event={{
+                    module: "ctaButton",
+                    name: "click",
+                    data: {
+                      button_id: markedAsFixedInstrumentation,
+                    },
+                  }}
                   /* c8 ignore next */
                   onPress={() => void handleResolveBreach()}
                   disabled={isResolving}
                 >
                   {l10n.getString("high-risk-breach-mark-as-fixed")}
-                </Button>
+                </TelemetryButton>
               ) : (
-                <Button
+                <TelemetryButton
                   variant="primary"
                   small
                   autoFocus={true}
+                  event={{
+                    module: "ctaButton",
+                    name: "click",
+                    data: {
+                      button_id: "continue_high_risk_zero_state",
+                    },
+                  }}
                   href={nextStep.href}
                 >
                   {l10n.getString("high-risk-breach-none-continue")}
-                </Button>
+                </TelemetryButton>
               )}
               {isHighRiskBreachesStep && (
-                <Link href={nextStep.href}>
+                <TelemetryLink
+                  href={nextStep.href}
+                  eventData={{
+                    link_id: "skipped_resolution",
+                  }}
+                >
                   {l10n.getString("high-risk-breach-skip")}
-                </Link>
+                </TelemetryLink>
               )}
             </>
           )
