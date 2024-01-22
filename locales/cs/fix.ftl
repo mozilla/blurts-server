@@ -17,7 +17,7 @@ guided-resolution-flow-step-navigation-label = Návody
 
 fix-flow-celebration-next-label = Pojďme dál
 fix-flow-celebration-next-recommendations-label = Podívejte se na doporučení
-fix-flow-celebration-next-dashboard-label = Přejděte na svou nástěnku
+fix-flow-celebration-next-dashboard-label = Přejít na svou nástěnku
 
 ## High-risk flow
 
@@ -39,7 +39,7 @@ fix-flow-celebration-leaked-passwords-description-next-dashboard = Výborně! Do
 
 ## Security recommendations flow
 
-fix-flow-celebration-security-recommendations-title = Vyplnili jste všechna vaše doporučení!
+fix-flow-celebration-security-recommendations-title = Dokončili jste všechna naše doporučení!
 fix-flow-celebration-security-recommendations-description-next-dashboard = Výborně! Dosáhli jste konce svých kroků. Na nástěnce si můžete zobrazit úkoly a sledovat svůj postup.
 
 # High Risk Data Breaches
@@ -73,7 +73,7 @@ high-risk-breach-estimated-time =
 
 # Credit Card Breaches
 
-high-risk-breach-credit-card-title = Číslo vaší platební karty bylo vyzrazeno
+high-risk-breach-credit-card-title = Číslo vaší platební karty bylo odhaleno
 high-risk-breach-credit-card-description = Každý, kdo ho získá, může provádět neoprávněné nákupy, za které můžete nést odpovědnost. Jednejte hned a vyhněte se finančním škodám.
 high-risk-breach-credit-card-step-one = Pokud tuto kartu stále máte, kontaktujte vydavatele a nahlaste nám, že je karta ukradena.
 high-risk-breach-credit-card-step-two = Požádat o novou kartu s novým číslem.
@@ -81,22 +81,22 @@ high-risk-breach-credit-card-step-three = Zkontrolujte účty za neoprávněné 
 
 # Bank Account Breaches
 
-high-risk-breach-bank-account-title = Váš bankovní účet byl odhalen
+high-risk-breach-bank-account-title = Číslo vašeho bankovního účtu bylo odhaleno
 high-risk-breach-bank-account-description = Pokud podniknete kroky co nejdříve, můžete získat další právní ochranu, která vám pomůže získat zpět jakékoli ztráty.
 high-risk-breach-bank-account-step-one = Okamžitě informujte svou banku, že číslo vašeho účtu bylo prozrazeno.
 high-risk-breach-bank-account-step-two = Změňte si číslo svého účtu.
-high-risk-breach-bank-account-step-three = Zkontrolujte účty za neoprávněné platby.
+high-risk-breach-bank-account-step-three = Zkontrolujte, zda na vašich účtech nejsou neoprávněně pohyby.
 
 # Social Security Number Breaches
 
-high-risk-breach-social-security-title = Vaše rodné číslo bylo vyzrazeno
+high-risk-breach-social-security-title = Vaše číslo sociálního zabezpečení bylo odhalené
 high-risk-breach-social-security-description = Podvodníci si mohou otevřít nové půjčky nebo kreditní karty s vaším číslem sociálního zabezpečení. Jednejte rychle, abyste předešli finančním škodám.
 high-risk-breach-social-security-step-one = Chraňte se tím, že si <link_to_info>nastavíte upozornění na podvod nebo si nastavíte zmrazení svého kreditu.</link_to_info>
 high-risk-breach-social-security-step-two = <link_to_info>Zkontrolujte stav svého účtu</link_to_info>, jestli neobsahuje nerozpoznané účty.
 
 # Social Security Number Modal
 
-ssn-modal-title = Informace o upozorněních na podvodné jednání a zamrznutí úvěruschopnosti
+ssn-modal-title = O upozorněních na podvody a zmrazení úvěrů
 ssn-modal-description-fraud-part-one = <b>Upozornění na podvod</b> vyžaduje od firem ověření vaší identity dříve, než bude připsána na vaše jméno další kredit. Je zdarma, trvá jeden rok a nebude negativně ovlivňovat vaše kreditní skóre.
 ssn-modal-description-fraud-part-two = Pro založení kontaktujte kteroukoliv ze tří úvěrových institucí. Nemusíte kontaktovat všechny tři.
 ssn-modal-description-freeze-credit-part-one = <b>Zmrazení vašeho kreditu</b> zabrání komukoliv otevřít nový účet vedený na vaše jméno. Je zdarma a neovlivní negativně vaše kreditní skóre, ale před otevřením jakéhokoli nového účtu jej musíte rozmrazit.
@@ -118,7 +118,7 @@ high-risk-breach-none-title = Skvělá zpráva, neobjevili jsme žádný vysoce 
 # Variables
 # $email_list is list of emails that the user is monitoring for breaches. E.g. john@yahoo.com, ali@gmail.com, sam@hotmail.com
 high-risk-breach-none-description = Únik dat zjišťujeme na základě vaší e-mailové adresy a pro { $email_list } jsme nezaznamenali žádný vysoce rizikový únik dat.
-high-risk-breach-none-sub-description-part-one = Mezi vysoce rizikové úniky dat patří:
+high-risk-breach-none-sub-description-part-one = Mezi vysoce rizikové úniky údajů patří:
 high-risk-breach-none-sub-description-ssn = Číslo sociálního zabezpečení
 high-risk-breach-none-sub-description-bank-account = Informace o bankovním účtu
 high-risk-breach-none-sub-description-cc-number = Čísla platebních karet
@@ -137,12 +137,12 @@ security-recommendation-phone-title = Chraňte své telefonní číslo
 # $num_breaches is the number of breaches where the phone number was found.
 security-recommendation-phone-summary =
     { $num_breaches ->
-        [one] Vaše telefonní číslo bylo vyzrazeno při { $num_breaches } únikech dat:
-        [few] Vaše telefonní číslo bylo vyzrazeno v { $num_breaches } únikech:
-       *[other] Vaše telefonní číslo bylo vyzrazeno v { $num_breaches } únikech:
+        [one] Vaše telefonní číslo bylo odhaleno při { $num_breaches } úniků údajů:
+        [few] Vaše telefonní číslo bylo odhaleno v { $num_breaches } únicích údajů:
+       *[other] Vaše telefonní číslo bylo odhaleno v { $num_breaches } únicích údajů:
     }
-security-recommendation-phone-description = Bohužel už to vzít zpět nejde. Existují však kroky, které můžete podniknout, abyste se ujistili, že zůstanete v bezpečí.
-security-recommendation-phone-step-one = Blokujte nevyžádaná čísla a vyhněte se dalším nevyžádaným hovorům
+security-recommendation-phone-description = Bohužel to nelze vzít zpět. Můžete však podniknout určité kroky, abyste zůstali v bezpečí.
+security-recommendation-phone-step-one = Blokujte nevyžádana čísla, abyste zabránili dalším nevyžádaným hovorům
 security-recommendation-phone-step-two = Neklikejte na odkazy v textech od neznámých odesílatelů; pokud se zdá, že pochází z důvěryhodného zdroje, zavolejte pro potvrzení
 
 # Email security recommendation
@@ -183,7 +183,7 @@ leaked-passwords-title = Vaše heslo v režimu { $breach_name } bylo prozrazeno
 # $breach_date is the date when the breach occurred.
 leaked-passwords-summary = Objevila se v úniku dat dne { $breach_date }.
 leaked-passwords-description = Podvodníci mají přístup k vašemu účtu a pravděpodobně se ho pokusí použít na jiných účtech, aby zjistili, zda jste nepoužili stejné heslo. Změňte ho všude, kde jste ho použili pro vaši ochranu.
-leaked-passwords-steps-title = Co dělat
+leaked-passwords-steps-title = Toto je potřeba udělat
 leaked-passwords-steps-subtitle = Tato chyba vyžaduje přístup k vašemu účtu, takže ji budete muset opravit ručně.
 # Variables
 # $breach_name is the name of the breach where the leaked password was found.

@@ -12,7 +12,7 @@ settings-page-title = Nastavitve { -product-short-name(sklon: "rodilnik") }
 
 settings-alert-preferences-title = Nastavitve opozoril o krajah
 settings-alert-preferences-option-one = Pošlji opozorila na ogrožen e-poštni naslov
-settings-alert-preferences-option-two = Pošlji vsa opozorila o krajah podatkov na primarni e-poštni naslov
+settings-alert-preferences-option-two = Pošlji vsa opozorila o krajah podatkov na glavni e-poštni naslov
 
 ## Monitored email addresses
 

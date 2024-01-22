@@ -5,13 +5,24 @@
 
 # Chart summarizing total exposures
 
+# The number inside <nr> will be displayed in a large font,
+# the label inside <label> will be shown underneath, in a smaller font.
+# Variables:
+#   $nr (number) - Number of unresolved exposures for the user
+exposure-chart-heading =
+    { $nr ->
+        [one] <nr>{ $nr }</nr> <label> ihlal</label>
+       *[other] <nr>{ $nr }</nr> <label> ihlal</label>
+    }
 # Variables:
 #   $nr (number) - Number of fixed exposures found for the user
 exposure-chart-heading-fixed = <nr>{ $nr }</nr> <label>Düzeltildi</label>
+exposure-chart-legend-heading-type = İhlal
 exposure-chart-legend-heading-nr = Sayı
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
+exposure-chart-caption = Bu tablo, bilgilerinizin kaç kez ele geçirildiğini gösterir.
 exposure-chart-returning-user-upgrade-prompt = Ev adresi, aile üyeleri ve diğer bilgiler henüz dahil edilmemiştir.
 exposure-chart-returning-user-upgrade-prompt-cta = Ücretsiz tarama başlatın
 exposure-chart-scan-in-progress-prompt = <b>Tarama devam ediyor:</b> Adres, aile üyeleri ve diğer bilgiler henüz dahil edilmedi.
@@ -24,6 +35,14 @@ dashboard-tab-label-action-needed = İşlem gerekli
 dashboard-tab-label-fixed = Düzeltildi
 dashboard-exposures-all-fixed-label = Hepsi düzeltildi!
 dashboard-exposures-area-headline = Bilgilerinizin ele geçirildiği tüm siteleri görün
+# Note: this line precedes dashboard-exposures-area-description-all-line2.
+# Variables:
+#   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
+dashboard-exposures-area-description-all-line1 =
+    { $exposures_unresolved_num ->
+        [one] Verilerinizin ele geçirildiği { $exposures_unresolved_num } veri ihlali bulduk.
+       *[other] Verilerinizin ele geçirildiği { $exposures_unresolved_num } veri ihlali bulduk.
+    }
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
@@ -32,6 +51,7 @@ dashboard-exposures-area-description-all-line2 =
         [one] { $data_breach_unresolved_num } veri ihlalinde karşımıza çıktı.
        *[other] { $data_breach_unresolved_num } veri ihlalinde karşımıza çıktı.
     }
+dashboard-fixed-area-headline-all = Tüm düzeltilmiş veri ihlallerini göster
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filtrele
 dashboard-exposures-filter-company = Şirket
@@ -58,6 +78,14 @@ dashboard-top-banner-lets-keep-protecting-title = Verilerinizi korumaya devam ed
 dashboard-top-banner-lets-keep-protecting-cta = Devam edelim
 dashboard-top-banner-protect-your-data-title = Verilerinizi koruyalım
 dashboard-top-banner-protect-your-data-cta = Hadi düzeltelim
+# Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
+# Variables:
+#   $exposures_unresolved_num (number) - the total number of exposures the user has.
+dashboard-top-banner-non-us-protect-your-data-description-line1 =
+    { $exposures_unresolved_num ->
+        [one] Verilerinizin ele geçirildiği { $exposures_unresolved_num } veri ihlali bulduk.
+       *[other] Verilerinizin ele geçirildiği { $exposures_unresolved_num } veri ihlali bulduk.
+    }
 # Note: this line is preceded by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $data_breach_unresolved_num (number) - the total number of data breaches the user has.
@@ -66,7 +94,10 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
         [one] { $data_breach_unresolved_num } veri ihlalinde karşımıza çıktı. Sorunu nasıl çözeceğinizi adım adım anlatacağız.
        *[other] { $data_breach_unresolved_num } veri ihlalinde karşımıza çıktı. Sorunu nasıl çözeceğinizi adım adım anlatacağız.
     }
+dashboard-top-banner-no-exposures-found-title = Hiç veri ihlali bulunamadı
+dashboard-no-exposures-label = Hiç veri ihlali bulunamadı
 dashboard-top-banner-monitor-more-cta = Daha fazla e-postayı izleyin
 
 # About Exposure Statuses Modal
 
+modal-exposure-status-title = Veri ihlali durumları hakkında

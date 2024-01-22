@@ -24,10 +24,10 @@ fix-flow-celebration-next-dashboard-label = Accédez au tableau de bord
 fix-flow-celebration-high-risk-title = Vous avez corrigé vos expositions à haut risque !
 fix-flow-celebration-high-risk-description-in-progress = Faire ce travail peut paraitre beaucoup, mais il est important de le faire pour votre sécurité. Continuez votre bon travail.
 fix-flow-celebration-high-risk-description-done = Faire ce travail peut paraitre beaucoup, mais il est important de le faire pour votre sécurité.
-fix-flow-celebration-high-risk-description-next-passwords = Réparons vos mots de passe compromis.
-fix-flow-celebration-high-risk-description-next-security-questions = Résolvons à présent vos questions de sécurité révélées.
-fix-flow-celebration-high-risk-description-next-security-recommendations = Ensuite, nous vous donnerons des recommandations de sécurité personnalisées en fonction de vos données qui ont été exposées.
-fix-flow-celebration-high-risk-description-next-dashboard = Vous avez atteint le terme. Vous pouvez visualiser les actions à accomplir et suivre vos progrès sur votre tableau de bord.
+fix-flow-celebration-high-risk-description-next-passwords = Occupons-nous à présent de vos mots de passe compromis.
+fix-flow-celebration-high-risk-description-next-security-questions = Occupons-nous à présent de vos questions de sécurité compromises.
+fix-flow-celebration-high-risk-description-next-security-recommendations = Ensuite, nous vous proposerons des recommandations de sécurité personnalisées en fonction des données qui ont été divulguées.
+fix-flow-celebration-high-risk-description-next-dashboard = Vous avez atteint la dernière étape. Vous pouvez visualiser les actions à accomplir et suivre vos progrès sur votre tableau de bord.
 
 ## Leaked passwords and security questions flow
 
@@ -40,7 +40,7 @@ fix-flow-celebration-leaked-passwords-description-next-dashboard = Bien joué !
 ## Security recommendations flow
 
 fix-flow-celebration-security-recommendations-title = Vous avez appliqué toutes vos recommandations.
-fix-flow-celebration-security-recommendations-description-next-dashboard = Bien joué ! Vous avez atteint le terme. Vous pouvez visualiser les actions à accomplir et suivre vos progrès sur votre tableau de bord.
+fix-flow-celebration-security-recommendations-description-next-dashboard = Bien joué ! Vous avez atteint la dernière étape. Vous pouvez visualiser les actions à accomplir et suivre vos progrès sur votre tableau de bord.
 
 # High Risk Data Breaches
 
@@ -57,9 +57,13 @@ high-risk-breach-summary =
 # $breach_name is the name of the breach where the high risk data was found.
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
-high-risk-breach-name-and-date = { $breach_name } <breach_date>le { $breach_date }</breach_date>
+high-risk-breach-name-and-date = { $breach_name } <breach_date>du { $breach_date }</breach_date>
 high-risk-breach-mark-as-fixed = Marquer comme résolue
 high-risk-breach-skip = Ignorer pour l’instant
+# Variables:
+# $estimated_time is the estimated time it would take for a user to complete breach resolution steps. It not be singular, and the + is meant as "or more".
+# An example of this string is Your estimated time: 15+ minutes.
+high-risk-breach-estimated-time = Temps estimé : plus de { $estimated_time } minutes
 
 # Credit Card Breaches
 
@@ -88,7 +92,7 @@ high-risk-breach-social-security-step-two = <link_to_info>Vérifiez la présence
 
 ssn-modal-title = À propos des alertes de fraude et du gel du crédit
 ssn-modal-description-fraud-part-one = <b>Une alerte à la fraude</b> demande aux entreprises de vérifier votre identité avant d’attribuer un nouveau crédit en votre nom. C’est gratuit, dure un an et n’affectera pas négativement votre score de crédit.
-ssn-modal-description-fraud-part-two = Pour en créer un, contactez l’une des trois agences d’évaluation du crédit. Vous n’êtes pas obligé·e de contacter les trois.
+ssn-modal-description-fraud-part-two = Pour en créer une, contactez l’une des trois agences d’évaluation du crédit. Vous n’êtes pas obligé·e de contacter les trois.
 ssn-modal-description-freeze-credit-part-one = <b>Le gel de votre crédit</b> empêche quiconque d’ouvrir un nouveau compte à votre nom. C’est gratuit et ça n’affectera pas négativement votre score de crédit, mais vous devrez le débloquer avant d’ouvrir de nouveaux comptes.
 ssn-modal-description-freeze-credit-part-two = Pour geler votre crédit, contactez chacune des trois agences d’évaluation du crédit : <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link> et <transunion_link>TransUnion</transunion_link>.
 ssn-modal-learn-more = En savoir plus sur les alertes à la fraude et le gel du crédit
@@ -127,10 +131,10 @@ security-recommendation-phone-title = Protégez votre numéro de téléphone
 # $num_breaches is the number of breaches where the phone number was found.
 security-recommendation-phone-summary =
     { $num_breaches ->
-        [one] Votre numéro de téléphone a été exposé dans { $num_breaches } fuite de données :
-       *[other] Votre numéro de téléphone a été exposé dans { $num_breaches } fuites de données :
+        [one] Votre numéro de téléphone figure dans { $num_breaches } fuite de données :
+       *[other] Votre numéro de téléphone figure dans { $num_breaches } fuites de données :
     }
-security-recommendation-phone-description = Malheureusement, vous ne pouvez pas le reprendre. Cependant, vous pouvez prendre certaines mesures pour assurer votre sécurité.
+security-recommendation-phone-description = Malheureusement, vous ne pouvez pas le retirer. Cependant, vous pouvez prendre certaines mesures pour assurer votre sécurité.
 security-recommendation-phone-step-one = Bloquez les numéros indésirables pour empêcher davantage d’appels indésirables
 security-recommendation-phone-step-two = Ne cliquez pas sur les liens dans les SMS d’expéditeurs inconnus. Si le SMS semble provenir de source digne de confiance, appelez directement pour confirmer
 
@@ -171,14 +175,19 @@ leaked-passwords-title = Votre mot de passe { $breach_name } a été compromis
 leaked-passwords-summary = Il apparaît dans une fuite de données du { $breach_date }.
 leaked-passwords-description = Les fraudeurs peuvent accéder à votre compte et vont probablement essayer de l’utiliser sur d’autres comptes pour voir si vous avez utilisé le même mot de passe. Changez-le partout où vous l’avez réutilisé pour vous protéger.
 leaked-passwords-steps-title = Voici la marche à suivre
-leaked-passwords-steps-subtitle = Ce problème nécessite d’accéder à votre compte, vous devrez donc le corriger manuellement.
+leaked-passwords-steps-subtitle = Ce problème nécessite d’accéder à votre compte, vous devrez donc le résoudre manuellement.
 # Variables
 # $breach_name is the name of the breach where the leaked password was found.
 # $emails_affected are the emails associated with the breach.
 leaked-passwords-step-one = Modifiez votre mot de passe pour <b>{ $emails_affected }</b> sur <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
 leaked-passwords-step-two = Modifiez-le partout où vous l’avez réutilisé.
-leaked-passwords-mark-as-fixed = Marquer comme corrigé
+leaked-passwords-mark-as-fixed = Marquer comme résolu
 leaked-passwords-skip = Ignorer pour le moment
+# Variables
+# $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
+# "Est." is shortform for "Estimated".
+# "mins" is shortform for "minutes".
+leaked-passwords-estimated-time = Temps estimé : { $estimated_time } minutes par site
 
 # Leaked Security Questions
 
@@ -190,7 +199,7 @@ leaked-security-questions-title = Vos questions de sécurité ont été compromi
 leaked-security-questions-summary = Elles figurent dans une fuite de données sur { $breach_name } le { $breach_date }.
 leaked-security-questions-description = Les fraudeurs peuvent les utiliser pour accéder à vos comptes et à tout autre site où vous avez posé les mêmes questions de sécurité. Mettez-les à jour maintenant pour protéger vos comptes.
 leaked-security-questions-steps-title = Voici la marche à suivre
-leaked-security-questions-steps-subtitle = Ce problème nécessite d’accéder à votre compte, vous devrez donc le corriger manuellement.
+leaked-security-questions-steps-subtitle = Ce problème nécessite d’accéder à votre compte, vous devrez donc le résoudre manuellement.
 # Variables
 # $breach_name is the name of the breach where the security questions were found.
 # $email_affected is the email associated with the breach.
