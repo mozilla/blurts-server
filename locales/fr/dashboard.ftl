@@ -99,12 +99,12 @@ dashboard-top-banner-lets-keep-protecting-title = Continuons à protéger vos do
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
 dashboard-top-banner-lets-keep-protecting-description =
     { $exposures_unresolved_num ->
-        [one] Vous avez encore { $exposures_unresolved_num } exposition à corriger. Continuez et protégez-vous. Nous vous guiderons pas à pas.
-       *[other] Il vous reste encore { $exposures_unresolved_num } à corriger. Continuez et protégez-vous. Nous vous guiderons pas à pas.
+        [one] Il vous reste { $exposures_unresolved_num } fuite à résoudre. Continuez et protégez-vous. Nous vous guiderons pas à pas.
+       *[other] Il vous reste { $exposures_unresolved_num } fuites à résoudre. Continuez et protégez-vous. Nous vous guiderons pas à pas.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Continuons
 dashboard-top-banner-protect-your-data-title = Protégeons vos données
-dashboard-top-banner-protect-your-data-cta = Correction d’un problème
+dashboard-top-banner-protect-your-data-cta = Résoudre
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
@@ -121,9 +121,7 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
         [one] Elle apparaît dans { $data_breach_unresolved_num } fuite de données. Nous vous guiderons pas à pas pour résoudre le problème.
        *[other] Elle apparaît à travers { $data_breach_unresolved_num } fuites de données. Nous vous guiderons pas à pas pour résoudre le problème.
     }
-dashboard-top-banner-no-exposures-found-title = Aucun QR code trouvé
 dashboard-top-banner-non-us-no-exposures-found-description = Bonne nouvelle ! Nous avons cherché toutes les fuites de données connues et n’avons trouvé aucune exposition. Nous continuerons à surveiller votre adresse électronique et vous informerons si une nouvelle fuite de données se produit.
-dashboard-no-exposures-label = Aucun QR code trouvé
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
 dashboard-top-banner-non-us-your-data-is-protected-description =
