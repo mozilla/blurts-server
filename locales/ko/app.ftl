@@ -625,6 +625,7 @@ vpn-banner-cta-close = 닫기
 ## Relay and VPN educational/ad units
 
 ad-unit-relay-cta = { -brand-relay }에 대해 더 알아보기
+ad-unit-vpn-cta = { -brand-mozilla-vpn }에 대해 더 알아보기
 # ad 1 heading
 ad-unit-1-how-do-you-keep = 이메일 주소를 어떻게 비밀로 유지하시나요?
 # ad 2 heading
@@ -650,6 +651,8 @@ ad-unit-5-use-on-phone = 핸드폰에서 사용
 ad-unit-5-no-matter-where = 어디에 있든 원하는 작업을 위해 몇 초 안에 맞춤형 이메일 마스크를 만드세요.
 # ad 6 heading
 ad-unit-6-worry-free = 걱정 없는 가입
+ad-unit-6-want-to-start = 받은 편지함에 스팸 메일이 넘쳐나지 않으면서 구독을 새로 시작하거나 초대에 응답하거나 저렴한 프로모션 코드를 받으시겠습니까?
+ad-unit-6-before-you-complete = 가입을 완료하기 전에 실제 이메일 대신 이메일 마스크를 사용하여 정보를 보호하고 받은편지함을 관리하세요.
 
 # Monitor V2
 
@@ -657,15 +660,24 @@ ad-unit-6-worry-free = 걱정 없는 가입
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = 모니터
 -brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
+-brand-premium = 프리미엄
+-brand-monitor-premium = 모니터 프리미엄
 -brand-mozilla-foundation = Mozilla 재단
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = 모니터 플러스
 
 ##
 
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account = Mozilla 계정
+open-in-new-tab-alt = 새 탭에서 링크 열기
 
 ## Search Engine Optimization
 
@@ -685,6 +697,13 @@ site-nav-help-link = 도움말 및 지원
 site-nav-ad-callout = 다른 보완 도구를 사용해보세요:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = 메인 메뉴
+main-nav-button-expand-tooltip = 메뉴 펼치기
+main-nav-label = 탐색
+main-nav-link-home-label = 홈
+main-nav-link-settings-label = 설정
+main-nav-link-faq-label = FAQ
+main-nav-link-faq-tooltip = 자주 묻는 질문
 
 ## User menu
 
@@ -700,11 +719,21 @@ menu-item-settings = 설정
 menu-item-help = 도움말 및 지원
 # Obsolete
 menu-item-logout = 로그아웃
+user-menu-trigger-label = 사용자 메뉴 열기
+user-menu-trigger-tooltip = 프로필
+user-menu-settings-label = 설정
+user-menu-help-label = 도움말 및 지원
+user-menu-signout-label = 로그아웃
+user-menu-signout-tooltip = { -brand-mozilla-monitor }에서 로그아웃
 
 ## Footer
 
 mozilla = { -brand-Mozilla }
+terms-of-service = 이용 약관
+privacy-notice = 개인정보 보호정책
 github = { -brand-github }
+footer-external-link-faq-label = FAQ
+footer-external-link-faq-tooltip = 자주 묻는 질문
 
 ## Error page
 
@@ -713,16 +742,29 @@ github = { -brand-github }
 error-page-error-404-title = { $errorCode } 페이지를 찾을 수 없음
 error-page-error-404-copy = 죄송합니다. 찾으시는 페이지가 더 이상 존재하지 않습니다.
 error-page-error-404-cta-button = 뒤로 가기
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } 문제가 발생했습니다.
+error-page-error-other-copy = 다시 시도하거나 나중에 다시 방문해 주세요.
 
 ## Breach overview page
 
+all-breaches-headline-2 = { -brand-fx-monitor }가 감지한 모든 위반
 search-breaches = 유출 내역 검색하기
+# the kind of user data exposed to hackers in data breach.
+exposed-data = 노출된 데이터:
 
 ## Public breach detail page
 
+find-out-if-2 = 이번 위반에 포함되었는지 알아보세요.
+breach-detail-cta-signup = 유출 여부 확인하기
 
 ## Floating banner
 
+floating-banner-link-label = 가입하기
+floating-banner-dismiss-button-label = 아니요
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
+banner-monitor-rebrand-dismiss-button-label = 예
+banner-monitor-rebrand-dismiss-button-tooltip = 닫기

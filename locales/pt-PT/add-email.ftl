@@ -20,4 +20,4 @@ add-email-send-verification-button = Enviar ligação de verificação
 add-email-verify-the-link = Verifique a ligação enviada para { $email } para a adicionar ao { -brand-fx-monitor }. Controle todos os endereços de e-mail nas <a { $settings-href }>Definições</a>.
 # Variables:
 #   $email (string) - An email address submitted by the user for monitoring, e.g. `example@example.com`
-add-email-verify-the-link-2 = Verifique a ligação enviada para <b>{ $email }</b> para adicioná-la ao { -brand-mozilla-monitor }.
+add-email-verify-the-link-2 = Verifique a ligação enviada para <b>{ $email }</b> para a adicionar ao { -brand-mozilla-monitor }.

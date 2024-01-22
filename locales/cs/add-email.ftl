@@ -22,4 +22,4 @@ add-email-send-verification-button = Zaslat ověřovací odkaz
 add-email-verify-the-link = Ověřte odkaz odeslaný na adresu { $email } pro její přidání do { -brand-fx-monitor(case: "gen") }. Všechny své e-mailové adresy můžete spravovat v <a { $settings-href }>Nastavení</a>.
 # Variables:
 #   $email (string) - An email address submitted by the user for monitoring, e.g. `example@example.com`
-add-email-verify-the-link-2 = Ověřte odkaz zaslaný na adresu <b>{ $email }</b> pro přidání do { -brand-mozilla-monitor(case: "gen") }.
+add-email-verify-the-link-2 = Pomocí odkazu odeslaného na adresu <b>{ $email }</b> tuto přidáte do služby { -brand-mozilla-monitor }.

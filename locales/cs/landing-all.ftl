@@ -13,7 +13,7 @@ landing-all-hero-image-chart-label = odhalení
 
 # Value Proposition
 
-landing-all-value-prop-fix-exposures = Pomůžeme vám opravit výskyty kontaktů
+landing-all-value-prop-fix-exposures = Pomůžeme vám vyřešit nalezené úniky
 landing-all-value-prop-fix-exposures-description = Naším posláním je vrátit kontrolu nad vašimi osobními údaji zpět do vašich rukou. Pomůžeme vám vyřešit úniky dat a udržet vaše informace v soukromí – a přitom budeme <privacy_link>respektovat vaše soukromí</privacy_link>.
 landing-all-value-prop-info-at-risk = Jaké informace mohou být ohroženy?
 landing-all-value-prop-info-at-risk-description = Úniky dat jsou bohužel součástí našeho digitálního života. Vaše hesla, kontaktní údaje, finanční informace a další osobní údaje mohou být odhaleny, což vás vystavuje riziku krádeže identity.
@@ -27,7 +27,7 @@ landing-all-quote = <data_breaches>K únikům dat</data_breaches> dochází kaž
 landing-all-faq-title = Často kladené otázky
 # FAQ is an acronym for Frequently Asked Questions
 landing-all-faq-see-all = Prohlédněte si všechny často kladené otázky
-landing-all-data-breach-definition-qn = Co přesně je únik dat?
+landing-all-data-breach-definition-qn = Co přesně je únik údajů?
 landing-all-data-breach-definition-ans = K narušení bezpečnosti dat dochází, když jsou osobní nebo soukromé informace odhaleny, odcizeny nebo zkopírovány bez povolení. Tyto bezpečnostní incidenty mohou být důsledkem kybernetických útoků na webové stránky, aplikace nebo jakékoli databáze, kde se nacházejí osobní údaje lidí. K narušení bezpečnosti údajů může dojít také náhodně, například když se něčí přihlašovací údaje dostanou na veřejnost.
 landing-all-data-breach-next-steps-qn = Právě jsem zjistil, že byly mé údaje součástí úniku dat. Co mám dělat dál?
 landing-all-data-breach-next-steps-ans = Navštivte stránku { -brand-mozilla-monitor }, kde se dozvíte, co dělat po úniku dat, a získáte návod, jak vyřešit vyzrazení vašich osobních údajů. Hackeři spoléhají na to, že lidé opakovaně používají hesla, proto je důležité vytvářet silná a jedinečná hesla pro všechny vaše účty. Uchovávejte svá hesla na bezpečném místě, ke kterému máte přístup pouze vy; může to být stejné místo, kam ukládáte důležité dokumenty, nebo správce hesel.

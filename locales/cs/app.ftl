@@ -136,8 +136,8 @@ user-add-duplicate-email = Tato e-mailová adresa již byla do { -product-name(c
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Chcete-li zkontrolovat stav e-mailové adresy { $userEmail }, navštivte své { $preferencesLink }.
-user-add-verification-email-just-sent = Další ověřovací e-mail nemůže být odeslán na tuto adresu. Zkuste to prosím znovu později.
-user-add-unknown-error = Při přidávání další e-mailové adresy se něco pokazilo. Zkuste to prosím znovu později.
+user-add-verification-email-just-sent = Další ověřovací e-mail nelze odeslat tak rychle. Zkuste to prosím později.
+user-add-unknown-error = Něco se pokazilo při přidávání další e-mailové adresy. Zkuste to prosím později.
 error-headline = Chyba
 user-verify-token-error = Je vyžadován ověřovací token.
 user-verify-email-report-subject = Vaše hlášení od { -product-name(case: "gen") }
@@ -930,7 +930,7 @@ user-menu-trigger-label = Otevřít uživatelskou nabídku
 user-menu-trigger-tooltip = Profil
 user-menu-manage-fxa-label = Spravovat { -brand-mozilla-account(case: "acc", capitalization: "lower") }
 user-menu-settings-label = Nastavení
-user-menu-settings-tooltip = Nastavit { -brand-mozilla-monitor(case: "acc") }
+user-menu-settings-tooltip = Upravit { -brand-mozilla-monitor(case: "acc", capitalization: "lower") }
 user-menu-help-label = Nápověda a podpora
 user-menu-help-tooltip = Získat pomoc s používáním { -brand-mozilla-monitor(case: "gen") }
 user-menu-signout-label = Odhlásit se
@@ -980,6 +980,6 @@ floating-banner-dismiss-button-label = Ne, díky
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
-banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nové jméno, vzhled a ještě více způsobů, jak <b>získat zpět vaše soukromí</b>.
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nové jméno, vzhled a ještě více způsobů, jak <b>získat zpět své soukromí</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Zavřít

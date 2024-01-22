@@ -4,7 +4,6 @@
 
 chevron-down-alt = Razširi
 chevron-up-alt = Strni
-exposure-card-exposure-type = Vrsta osvetlitve
 exposure-card-date-found = Datum izpostavljenosti
 
 # Status Pill
@@ -23,7 +22,7 @@ exposure-card-credit-card = Kreditna kartica
 exposure-card-password = Geslo
 exposure-card-ip-address = Naslov IP
 exposure-card-other = Drugo
-exposure-card-description-info-for-sale-part-one = Ta stran prodaja in objavlja <data_broker_link>podrobnosti o vas.</data_broker_link>
+exposure-card-description-info-for-sale-part-one = To spletno mesto prodaja in objavlja <data_broker_link>podrobnosti o vas</data_broker_link>.
 exposure-card-description-info-for-sale-part-two = Zaradi zaščite zasebnosti odstranite ta profil.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
