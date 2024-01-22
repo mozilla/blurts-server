@@ -98,7 +98,7 @@ function UpsellDialogContent({
     monthlyParams.append("utm_source", "product");
   }
   if (!monthlyParams.has("utm_medium")) {
-    monthlyParams.append("utm_medium", "website");
+    monthlyParams.append("utm_medium", "monitor");
   }
   if (!monthlyParams.has("utm_campaign")) {
     monthlyParams.append("utm_campaign", "navigation-upsell");
@@ -107,7 +107,7 @@ function UpsellDialogContent({
     yearlyParams.append("utm_source", "product");
   }
   if (!yearlyParams.has("utm_medium")) {
-    yearlyParams.append("utm_medium", "website");
+    yearlyParams.append("utm_medium", "monitor");
   }
   if (!yearlyParams.has("utm_campaign")) {
     yearlyParams.append("utm_campaign", "navigation-upsell");
