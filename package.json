@@ -69,7 +69,7 @@
     "client-oauth2": "^4.3.3",
     "dotenv": "^16.3.1",
     "eslint-config-next": "^14.0.4",
-    "jsdom": "^23.2.0",
+    "jsdom": "^24.0.0",
     "jsonwebtoken": "^9.0.2",
     "jwk-to-pem": "^2.0.5",
     "knex": "^3.1.0",
