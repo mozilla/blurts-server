@@ -13,9 +13,9 @@ import { GuidedExperienceBreaches } from "../../../../../../../../functions/serv
 import { FraudAlertModal } from "./FraudAlertModal";
 import { getLocale } from "../../../../../../../../functions/universal/getLocale";
 import { ExtendedReactLocalization } from "../../../../../../../../hooks/l10n";
-import { Button } from "../../../../../../../../components/client/Button";
 import { StepLink } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { TelemetryLink } from "../../../../../../../../components/client/TelemetryLink";
+import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
 
 export const highRiskBreachTypes = [
   "credit-card",
@@ -66,9 +66,21 @@ function getDoneStepContent(
               "fix-flow-celebration-high-risk-description-next-passwords",
             )}
           </p>
-          <Button variant="primary" small href={nextStep.href} autoFocus={true}>
+          <TelemetryButton
+            event={{
+              module: "ctaButton",
+              name: "click",
+              data: {
+                button_id: "continue_celebrate_high_risk",
+              },
+            }}
+            variant="primary"
+            small
+            href={nextStep.href}
+            autoFocus={true}
+          >
             {l10n.getString("fix-flow-celebration-next-label")}
-          </Button>
+          </TelemetryButton>
         </>
       ),
     };
@@ -90,9 +102,21 @@ function getDoneStepContent(
               "fix-flow-celebration-high-risk-description-next-security-questions",
             )}
           </p>
-          <Button variant="primary" small href={nextStep.href} autoFocus={true}>
+          <TelemetryButton
+            event={{
+              module: "ctaButton",
+              name: "click",
+              data: {
+                button_id: "continue_celebrate_high_risk",
+              },
+            }}
+            variant="primary"
+            small
+            href={nextStep.href}
+            autoFocus={true}
+          >
             {l10n.getString("fix-flow-celebration-next-label")}
-          </Button>
+          </TelemetryButton>
         </>
       ),
     };
@@ -118,9 +142,21 @@ function getDoneStepContent(
               "fix-flow-celebration-high-risk-description-next-security-recommendations",
             )}
           </p>
-          <Button variant="primary" small href={nextStep.href} autoFocus={true}>
+          <TelemetryButton
+            event={{
+              module: "ctaButton",
+              name: "click",
+              data: {
+                button_id: "continue_celebrate_high_risk",
+              },
+            }}
+            variant="primary"
+            small
+            href={nextStep.href}
+            autoFocus={true}
+          >
             {l10n.getString("fix-flow-celebration-next-recommendations-label")}
-          </Button>
+          </TelemetryButton>
         </>
       ),
     };
@@ -139,9 +175,21 @@ function getDoneStepContent(
             "fix-flow-celebration-high-risk-description-next-dashboard",
           )}
         </p>
-        <Button variant="primary" small href={nextStep.href} autoFocus={true}>
+        <TelemetryButton
+          event={{
+            module: "ctaButton",
+            name: "click",
+            data: {
+              button_id: "continue_celebrate_high_risk",
+            },
+          }}
+          variant="primary"
+          small
+          href={nextStep.href}
+          autoFocus={true}
+        >
           {l10n.getString("fix-flow-celebration-next-dashboard-label")}
-        </Button>
+        </TelemetryButton>
       </>
     ),
   };
