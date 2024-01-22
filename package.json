@@ -133,7 +133,7 @@
     "stylelint": "^16.1.0",
     "stylelint-config-recommended-scss": "^14.0.0",
     "stylelint-scss": "^6.0.0",
-    "ts-jest": "^29.1.0",
+    "ts-jest": "^29.1.2",
     "typescript": "^5.3.3"
   }
 }
