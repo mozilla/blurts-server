@@ -3,7 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 fix-flow-nav-high-risk-data-breaches = Violações de dados de alto risco
-fix-flow-nav-leaked-passwords = Palavras-passe vazadas
+fix-flow-nav-leaked-passwords = Palavras-passe divulgadas
 fix-flow-nav-security-recommendations = Recomendações de segurança
 guided-resolution-flow-exit = Voltar ao painel
 guided-resolution-flow-back-arrow = Ir para o passo anterior
@@ -17,11 +17,11 @@ guided-resolution-flow-step-navigation-label = Passos guiados
 
 fix-flow-celebration-next-label = Vamos continuar
 fix-flow-celebration-next-recommendations-label = Ver recomendações
-fix-flow-celebration-next-dashboard-label = Ir para o seu painel
+fix-flow-celebration-next-dashboard-label = Ir para o seu Painel
 
 ## High-risk flow
 
-fix-flow-celebration-high-risk-title = Corrigiu as suas posições de alto risco!
+fix-flow-celebration-high-risk-title = Corrigiu as suas exposições de alto risco!
 fix-flow-celebration-high-risk-description-in-progress = Fazer este trabalho pode parecer muito, mas é importante fazê-lo para se manter seguro. Continue com o bom trabalho.
 fix-flow-celebration-high-risk-description-done = Fazer este trabalho pode parecer muito, mas é importante fazê-lo para se manter seguro.
 fix-flow-celebration-high-risk-description-next-passwords = Agora vamos corrigir as suas palavras-passe expostas.
@@ -34,7 +34,7 @@ fix-flow-celebration-high-risk-description-next-dashboard = Chegou ao fim dos se
 fix-flow-celebration-leaked-passwords-title = As suas palavras-passe estão agora protegidas!
 fix-flow-celebration-security-questions-title = As suas perguntas de segurança estão protegidas!
 fix-flow-celebration-leaked-passwords-description-next-security-questions = Agora vamos rever e atualizar as suas perguntas de segurança expostas.
-fix-flow-celebration-leaked-passwords-description-next-security-recommendations = A seguir, iremos dar-lhe recomendações de segurança personalizadas com base nos dados seus que foram expostos.
+fix-flow-celebration-leaked-passwords-description-next-security-recommendations = A seguir, iremos dar-lhe recomendações de segurança personalizadas com base nos seus dados que foram expostos.
 fix-flow-celebration-leaked-passwords-description-next-dashboard = Boa! Chegou ao fim dos seus passos. Pode ver quaisquer itens de ação e acompanhar o seu progresso no seu painel.
 
 ## Security recommendations flow

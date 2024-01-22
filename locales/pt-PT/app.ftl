@@ -44,7 +44,7 @@ user-add-duplicate-email = Este e-mail já foi adicionado ao { -product-name }.
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Consulte as suas { $preferencesLink } para consultar o estado para { $userEmail }.
-user-add-verification-email-just-sent = Não é possível enviar outro email de verificação tão rapidamente. Por favor, tente novamente mais tarde.
+user-add-verification-email-just-sent = Não é possível enviar outro e-mail de verificação num intervalo de tempo tão curto. Por favor, tente novamente mais tarde.
 user-add-unknown-error = Algo correu mal ao adicionar outro endereço de e-mail. Por favor, tente novamente mais tarde.
 error-headline = Erro
 user-verify-token-error = É necessário um código de verificação.
@@ -786,9 +786,9 @@ user-menu-manage-fxa-label = Gerir a sua { -brand-mozilla-account }
 user-menu-settings-label = Definições
 user-menu-settings-tooltip = Configurar a { -brand-mozilla-monitor }
 user-menu-help-label = Ajuda e apoio
-user-menu-help-tooltip = Obter ajuda na utilização da { -brand-mozilla-monitor }
+user-menu-help-tooltip = Obter ajuda na utilização do { -brand-mozilla-monitor }
 user-menu-signout-label = Terminar sessão
-user-menu-signout-tooltip = Terminar sessão da { -brand-mozilla-monitor }?
+user-menu-signout-tooltip = Terminar sessão do { -brand-mozilla-monitor }?
 
 ## Footer
 
@@ -834,6 +834,6 @@ floating-banner-dismiss-button-label = Não, obrigado
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
-banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Novo nome, visual e ainda mais formas de <b>recuperar a sua privacidade</b>.
-banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Um novo nome, visual e ainda mais formas de <b>recuperar a sua privacidade</b>.
+banner-monitor-rebrand-dismiss-button-label = Ok
 banner-monitor-rebrand-dismiss-button-tooltip = Dispensar
