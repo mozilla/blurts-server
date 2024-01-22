@@ -99,9 +99,9 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
 
     // verify second tooltip
     await dashboardPage.chartTooltip.click();
-    await expect(dashboardPage.aboutActiveExposuresPopup).toBeVisible();
+    await expect(dashboardPage.aboutFixedExposuresPopup).toBeVisible();
     await dashboardPage.popupCloseButton.click();
-    await expect(dashboardPage.aboutActiveExposuresPopup).toBeHidden();
+    await expect(dashboardPage.aboutFixedExposuresPopup).toBeHidden();
   });
 });
 

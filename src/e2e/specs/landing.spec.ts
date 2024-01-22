@@ -27,6 +27,8 @@ test.describe(`${process.env.E2E_TEST_ENV} - Landingpage element verification`, 
       "href",
       links.mozillaLogoUrl,
     );
+
+    // Temporarily disabled; this link will be added back later
     // await expect(landingPage.allBreachesLink).toHaveAttribute(
     //   "href",
     //   links.allBreachesUrl,
@@ -49,7 +51,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Landingpage element verification`, 
     await expect(landingPage.seeIfDataBreachSec).toBeVisible();
   });
 
-  // same as above
+  // skipping for now, as testrail for landing page needs to be updated
   test.skip("Verify that the site footer is displayed correctly @ui", async ({
     landingPage,
   }) => {
@@ -71,7 +73,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Landingpage element verification`, 
   });
 });
 
-// same as above
+// skipping for now, as testrail for landing page needs to be updated
 test.describe.skip(
   `${process.env.E2E_TEST_ENV} - Landingpage Functionality Verification`,
   () => {

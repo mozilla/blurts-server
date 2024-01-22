@@ -31,7 +31,7 @@ export class DashboardPage {
   readonly popupCloseButton: Locator;
 
   readonly chartTooltip: Locator;
-  readonly aboutActiveExposuresPopup: Locator;
+  readonly aboutFixedExposuresPopup: Locator;
 
   readonly subscribeButton: Locator;
   readonly subscribeDialog: Locator;
@@ -103,7 +103,7 @@ export class DashboardPage {
     this.chartTooltip = page.locator(
       '//div[starts-with(@class, "DashboardTopBanner_chart")]//button',
     );
-    this.aboutActiveExposuresPopup = page.getByRole("dialog", {
+    this.aboutFixedExposuresPopup = page.getByRole("dialog", {
       name: "About your number of fixed exposures",
     });
 
