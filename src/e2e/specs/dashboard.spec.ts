@@ -100,39 +100,43 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
     // verify second tooltip
     await dashboardPage.chartTooltip.click();
     await expect(dashboardPage.aboutActiveExposuresPopup).toBeVisible();
-    await dashboardPage.popupOkButton.click();
+    await dashboardPage.popupCloseButton.click();
     await expect(dashboardPage.aboutActiveExposuresPopup).toBeHidden();
   });
 });
 
-test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers - Outside of U.S.`, () => {
-  test("Verify that the site header and navigation bar is displayed correctly", async ({
-    context,
-  }) => {
-    // link to testrail
-    test.info().annotations.push({
-      type: "testrail",
-      description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2301511",
+// fix coming - playwright does not currently have access to the aws headers, skipping for now
+test.describe.skip(
+  `${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers - Outside of U.S.`,
+  () => {
+    test("Verify that the site header and navigation bar is displayed correctly", async ({
+      context,
+    }) => {
+      // link to testrail
+      test.info().annotations.push({
+        type: "testrail",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2301511",
+      });
+
+      const page = await context.newPage();
+      await context.grantPermissions(["geolocation"]);
+      await context.setGeolocation({ latitude: 55.9533, longitude: -3.1883 }); // Set location to Edinburgh
+
+      const dashboardPage = new DashboardPage(page);
+      await dashboardPage.open();
+
+      try {
+        await checkAuthState(page);
+      } catch {
+        console.log("[E2E_LOG] - No fxa auth required, proceeding...");
+      }
+
+      // verify the site header elements
+      await expect(dashboardPage.upgradeToPremium).toBeHidden();
     });
-
-    const page = await context.newPage();
-    await context.grantPermissions(["geolocation"]);
-    await context.setGeolocation({ latitude: 55.9533, longitude: -3.1883 }); // Set location to Edinburgh
-
-    const dashboardPage = new DashboardPage(page);
-    await dashboardPage.open();
-
-    try {
-      await checkAuthState(page);
-    } catch {
-      console.log("[E2E_LOG] - No fxa auth required, proceeding...");
-    }
-
-    // verify the site header elements
-    await expect(dashboardPage.upgradeToPremium).toBeHidden();
-  });
-});
+  },
+);
 
 test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Content`, () => {
   test.beforeEach(async ({ dashboardPage, page }) => {

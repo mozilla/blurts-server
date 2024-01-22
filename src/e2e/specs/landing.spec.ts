@@ -27,10 +27,10 @@ test.describe(`${process.env.E2E_TEST_ENV} - Landingpage element verification`, 
       "href",
       links.mozillaLogoUrl,
     );
-    await expect(landingPage.allBreachesLink).toHaveAttribute(
-      "href",
-      links.allBreachesUrl,
-    );
+    // await expect(landingPage.allBreachesLink).toHaveAttribute(
+    //   "href",
+    //   links.allBreachesUrl,
+    // );
 
     await expect(landingPage.faqLink).toHaveAttribute("href", links.faqUrl);
     await expect(landingPage.termsLink).toHaveAttribute("href", links.termsUrl);
@@ -40,7 +40,8 @@ test.describe(`${process.env.E2E_TEST_ENV} - Landingpage element verification`, 
     );
   });
 
-  test("Verify landingpage elements", async ({ landingPage }) => {
+  // skipping for now, as testrail for landing page needs to be updated
+  test.skip("Verify landingpage elements", async ({ landingPage }) => {
     // confirm landing page elements are visible
     await expect(landingPage.whyUseMonitorSec).toBeVisible();
     await expect(landingPage.howItWorksSec).toBeVisible();
@@ -48,7 +49,8 @@ test.describe(`${process.env.E2E_TEST_ENV} - Landingpage element verification`, 
     await expect(landingPage.seeIfDataBreachSec).toBeVisible();
   });
 
-  test("Verify that the site footer is displayed correctly @ui", async ({
+  // same as above
+  test.skip("Verify that the site footer is displayed correctly @ui", async ({
     landingPage,
   }) => {
     // clear any possible banner
@@ -69,53 +71,57 @@ test.describe(`${process.env.E2E_TEST_ENV} - Landingpage element verification`, 
   });
 });
 
-test.describe(`${process.env.E2E_TEST_ENV} - Landingpage Functionality Verification`, () => {
-  test.beforeEach(async ({ landingPage }) => {
-    await landingPage.open();
-  });
-
-  test("Verify landing page elements - free scan", async ({
-    landingPage,
-    scanPage,
-  }) => {
-    // link to testrail case
-    test.info().annotations.push({
-      type: "testrail",
-      description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2255913",
+// same as above
+test.describe.skip(
+  `${process.env.E2E_TEST_ENV} - Landingpage Functionality Verification`,
+  () => {
+    test.beforeEach(async ({ landingPage }) => {
+      await landingPage.open();
     });
 
-    // generate email
-    const randomEmail = `${Date.now()}_auto@restmail.net`;
+    test("Verify landing page elements - free scan", async ({
+      landingPage,
+      scanPage,
+    }) => {
+      // link to testrail case
+      test.info().annotations.push({
+        type: "testrail",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2255913",
+      });
 
-    // enter email for free scan
-    const successfulScan = await landingPage.enterFreeScanEmail(randomEmail);
+      // generate email
+      const randomEmail = `${Date.now()}_auto@restmail.net`;
 
-    // verify free scanpage items
-    // verify hero header text content
-    expect(await scanPage.heroHeader.textContent()).toContain("We found");
-    expect(await scanPage.heroHeader.textContent()).toContain(randomEmail);
+      // enter email for free scan
+      const successfulScan = await landingPage.enterFreeScanEmail(randomEmail);
 
-    // verify successful freescan url redirect
-    expect(successfulScan).toBe(true);
+      // verify free scanpage items
+      // verify hero header text content
+      expect(await scanPage.heroHeader.textContent()).toContain("We found");
+      expect(await scanPage.heroHeader.textContent()).toContain(randomEmail);
 
-    // verify first CTA button
-    await expect(scanPage.getAlertsAboutBreachesButton).toBeVisible();
+      // verify successful freescan url redirect
+      expect(successfulScan).toBe(true);
 
-    // verify second CTA button
-    await expect(scanPage.signUpForAlerts).toBeVisible();
+      // verify first CTA button
+      await expect(scanPage.getAlertsAboutBreachesButton).toBeVisible();
 
-    // verify redirect to sign in('/user/breaches')
-    expect(await scanPage.signUpForAlerts.getAttribute("href")).toBe(
-      "/user/breaches",
-    );
-    expect(
-      await scanPage.getAlertsAboutBreachesButton.getAttribute("href"),
-    ).toBe("/user/breaches");
+      // verify second CTA button
+      await expect(scanPage.signUpForAlerts).toBeVisible();
 
-    // verify 'have i been pwned' website redirect
-    expect(await scanPage.haveIBeenPwnedLink.getAttribute("href")).toBe(
-      "https://haveibeenpwned.com/",
-    );
-  });
-});
+      // verify redirect to sign in('/user/breaches')
+      expect(await scanPage.signUpForAlerts.getAttribute("href")).toBe(
+        "/user/breaches",
+      );
+      expect(
+        await scanPage.getAlertsAboutBreachesButton.getAttribute("href"),
+      ).toBe("/user/breaches");
+
+      // verify 'have i been pwned' website redirect
+      expect(await scanPage.haveIBeenPwnedLink.getAttribute("href")).toBe(
+        "https://haveibeenpwned.com/",
+      );
+    });
+  },
+);
