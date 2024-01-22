@@ -15,6 +15,7 @@ import { getLocale } from "../../../../../../../../functions/universal/getLocale
 import { ExtendedReactLocalization } from "../../../../../../../../hooks/l10n";
 import { Button } from "../../../../../../../../components/client/Button";
 import { StepLink } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
+import { TelemetryLink } from "../../../../../../../../components/client/TelemetryLink";
 
 export const highRiskBreachTypes = [
   "credit-card",
@@ -214,7 +215,10 @@ function getHighRiskBreachesByType({
                 {l10n.getFragment("high-risk-breach-social-security-step-one", {
                   elems: {
                     link_to_info: (
-                      <a
+                      <TelemetryLink
+                        eventData={{
+                          link_id: "freeze_credit_outbound",
+                        }}
                         href="https://consumer.ftc.gov/articles/what-know-about-credit-freezes-fraud-alerts"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -228,7 +232,10 @@ function getHighRiskBreachesByType({
                 {l10n.getFragment("high-risk-breach-social-security-step-two", {
                   elems: {
                     link_to_info: (
-                      <a
+                      <TelemetryLink
+                        eventData={{
+                          link_id: "credit_report_outbound",
+                        }}
                         href="https://www.annualcreditreport.com/index.action"
                         target="_blank"
                         rel="noopener noreferrer"
