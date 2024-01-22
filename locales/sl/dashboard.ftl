@@ -19,7 +19,6 @@ exposure-chart-heading =
 # Variables:
 #   $nr (number) - Number of fixed exposures found for the user
 exposure-chart-heading-fixed = <nr>{ $nr }</nr> <label>Popravljeno</label>
-exposure-chart-legend-heading-type = Osvetlitev
 exposure-chart-legend-heading-nr = Števila
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
@@ -30,7 +29,7 @@ exposure-chart-caption = Ta grafikon prikazuje, kolikokrat so vaši podatki akti
 #   $total_exposures_num (number) - Number of total exposures
 exposure-chart-caption-fixed = Ta grafikon prikazuje skupne izpostavljenosti, ki so fiksne ({ $total_fixed_exposures_num } od { $total_exposures_num })
 exposure-chart-returning-user-upgrade-prompt = Domači naslov, družinski člani in drugo še niso vključeni.
-exposure-chart-returning-user-upgrade-prompt-cta = Začnite brezplačno skeniranje
+exposure-chart-returning-user-upgrade-prompt-cta = Začnite brezplačen pregled
 exposure-chart-scan-in-progress-prompt = <b>Iskanje v teku:</b> naslov, družinski člani in drugo še niso vključeni.
 modal-active-number-of-exposures-title = O številu aktivnih izpostavljenosti
 # Variables:
@@ -79,7 +78,7 @@ dashboard-fixed-area-headline-all = Oglejte si vse izpostavljenosti, ki so fiksn
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filter
 dashboard-exposures-filter-company = Podjetje
-dashboard-exposures-filter-date-found = Datum najden
+dashboard-exposures-filter-date-found = Datum zaznave
 dashboard-exposures-filter-date-found-last-seven-days = Zadnjih 7 dni
 dashboard-exposures-filter-date-found-last-thirty-days = Zadnjih 30 dni
 dashboard-exposures-filter-date-found-last-year = Lansko leto
@@ -95,7 +94,7 @@ dashboard-exposures-filter-reset = Ponastavi
 ## Top banner on the dashboard
 
 dashboard-top-banner-section-label = Povzetek nadzorne plošče
-dashboard-top-banner-scan-in-progress-title = Vaše skeniranje še poteka
+dashboard-top-banner-scan-in-progress-title = Pregledovanje še poteka
 dashboard-top-banner-your-data-is-protected-title = Vaši podatki so zaščiteni
 dashboard-top-banner-your-data-is-protected-cta = Oglejte si, kaj je popravljeno
 dashboard-top-banner-lets-keep-protecting-title = Varujmo vaše podatke še naprej

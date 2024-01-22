@@ -211,5 +211,5 @@ leaked-security-questions-steps-subtitle = Isto require accesso a tu conto, assi
 # Variables
 # $breach_name is the name of the breach where the security questions were found.
 # $email_affected is the email associated with the breach.
-leaked-security-questions-step-one = Actualisa tu demandas de securitate pro <b>{ $emails_affected }</b> sur <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
+leaked-security-questions-step-one = Actualisa tu demandas de securitate pro <b>{ $email_affected }</b> sur <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
 leaked-security-questions-step-two = Actualisa los sur ulle altere sito ubi tu usava le mesme demandas de securitate. Cura de usar differente demandas de securitate pro cata conto.

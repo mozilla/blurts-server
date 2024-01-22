@@ -50,6 +50,7 @@ landing-all-social-proof-press = Övgüyle bahsedenler
 # Here's How We Help
 
 landing-all-help-protect-you = Sizi nasıl koruyoruz?
+landing-all-help-protect-you-description = Gizliliğiniz bizce vazgeçilmez bir hak. Bu yüzden veri ihlali izleme korumamız her zaman ücretsiz.
 landing-all-help-protect-you-feature-one = Bilinen veri ihlallerinde yer alıp almadığınızı kontrol edeceğiz
 landing-all-help-protect-you-feature-two = İhlalleri çözmeniz için gereken adımlarda size rehberlik edeceğiz
 landing-all-help-protect-you-feature-three = Yeni ihlalleri sürekli olarak izleyip size uyarı göndereceğiz
