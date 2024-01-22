@@ -1,171 +1,173 @@
 version: 2.1
 
 executors:
-    node:
-        docker:
-            - image: cimg/node:20.9.0
-              auth:
-                username: $DOCKER_USER
-                password: $DOCKER_PASS
+  node:
+    docker:
+      - image: cimg/node:20.9.0
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
 
-    node_with_python:
-        docker:
-            - image: cimg/node:20.9.0
-              auth:
-                username: $DOCKER_USER
-                password: $DOCKER_PASS
-            - image: cimg/python:3.9.7
-              auth:
-                username: $DOCKER_USER
-                password: $DOCKER_PASS
+  node_with_python:
+    docker:
+      - image: cimg/node:20.9.0
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
+      - image: cimg/python:3.9.7
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
 
-    python:
-        docker:
-            - image: cimg/python:3.9.7
-              auth:
-                username: $DOCKER_USER
-                password: $DOCKER_PASS
-    ubuntu:
-        machine:
-            image: ubuntu-2004:202107-02
+  python:
+    docker:
+      - image: cimg/python:3.9.7
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
+  ubuntu:
+    machine:
+      image: ubuntu-2004:202107-02
 
-    node_with_postgres:
-        parameters:
-            postgres_version:
-                description: "Which cimg/postgres tag to use"
-                type: string
-        docker:
-            - image: cimg/node:20.9
-              auth:
-                username: $DOCKER_USER
-                password: $DOCKER_PASS
-            - image: cimg/postgres:<< parameters.postgres_version >>
-              environment:
-                  POSTGRES_USER: postgres
-                  POSTGRES_PASSWORD: 93e389316eaf4ea2be4010d526cc1468
-                  POSTGRES_DB: test-circle
-              auth:
-                  username: $DOCKER_USER
-                  password: $DOCKER_PASS
+  node_with_postgres:
+    parameters:
+      postgres_version:
+        description: "Which cimg/postgres tag to use"
+        type: string
+    docker:
+      - image: cimg/node:20.9
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
+      - image: cimg/postgres:<< parameters.postgres_version >>
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: 93e389316eaf4ea2be4010d526cc1468
+          POSTGRES_DB: test-circle
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
 
 orbs:
-    node: circleci/node@5.1.0
-    python: circleci/python@1.4.0
-    heroku: circleci/heroku@1.2.6
+  node: circleci/node@5.1.0
+  python: circleci/python@1.4.0
+  heroku: circleci/heroku@1.2.6
 
 jobs:
-    lint:
-        executor: node_with_python
-        steps:
-            - checkout
-            - node/install-packages
-            - run: sudo apt-get update
-            - run: sudo apt-get install python3.10-venv
-            - run: npm run build-glean
-            - run: npm run lint
-            - run: cp .env-dist .env
-            # Runs type checking:
-            - run: npm run build
-    deploy:
-        docker:
-            - image: docker:stable-git
-              auth:
-                username: $DOCKER_USER
-                password: $DOCKER_PASS
-        working_directory: /dockerflow
-        steps:
-            - checkout
-            - setup_remote_docker
-            - run:
-                name: Create version.json
-                # create version.json per https://github.com/mozilla-services/Dockerflow/blob/main/docs/version_object.md
-                command: |
-                    printf '{"commit":"%s","version":"%s","source":"https://github.com/%s/%s","build":"%s"}\n' \
-                    "$CIRCLE_SHA1" \
-                    "$CIRCLE_TAG" \
-                    "$CIRCLE_PROJECT_USERNAME" \
-                    "$CIRCLE_PROJECT_REPONAME" \
-                    "$CIRCLE_BUILD_URL" > version.json
-            - run:
-                name: Build Docker image
-                command: |
-                  docker build --tag blurts-server \
-                  --build-arg SENTRY_RELEASE="$CIRCLE_TAG" \
-                  .
-            - run:
-                name: Deploy to Dockerhub
-                command: |
-                    echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-                    if [ "${CIRCLE_BRANCH}" == "main" ]; then
-                        # deploy main
-                        docker tag blurts-server ${DOCKERHUB_REPO}:latest
-                        docker push ${DOCKERHUB_REPO}:latest
-                    elif  [ ! -z "${CIRCLE_TAG}" ]; then
-                        # deploy a release tag...
-                        echo "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
-                        docker tag blurts-server "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
-                        docker images
-                        docker push "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
-                    fi
+  lint:
+    executor: node_with_python
+    steps:
+      - checkout
+      - node/install-packages
+      - run: sudo apt-get update
+      - run: sudo apt-get install python3.10-venv
+      - run: npm run build-glean
+      - run: npm run lint
+      - run: cp .env-dist .env
+      # Runs type checking:
+      - run: npm run build
+    # The resource_class feature allows configuring CPU and RAM resources for each job. Different resource classes are available for different executors. https://circleci.com/docs/2.0/configuration-reference/#resourceclass
+    resource_class: large
+  deploy:
+    docker:
+      - image: docker:stable-git
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
+    working_directory: /dockerflow
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Create version.json
+          # create version.json per https://github.com/mozilla-services/Dockerflow/blob/main/docs/version_object.md
+          command: |
+            printf '{"commit":"%s","version":"%s","source":"https://github.com/%s/%s","build":"%s"}\n' \
+            "$CIRCLE_SHA1" \
+            "$CIRCLE_TAG" \
+            "$CIRCLE_PROJECT_USERNAME" \
+            "$CIRCLE_PROJECT_REPONAME" \
+            "$CIRCLE_BUILD_URL" > version.json
+      - run:
+          name: Build Docker image
+          command: |
+            docker build --tag blurts-server \
+            --build-arg SENTRY_RELEASE="$CIRCLE_TAG" \
+            .
+      - run:
+          name: Deploy to Dockerhub
+          command: |
+            echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+            if [ "${CIRCLE_BRANCH}" == "main" ]; then
+                # deploy main
+                docker tag blurts-server ${DOCKERHUB_REPO}:latest
+                docker push ${DOCKERHUB_REPO}:latest
+            elif  [ ! -z "${CIRCLE_TAG}" ]; then
+                # deploy a release tag...
+                echo "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
+                docker tag blurts-server "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
+                docker images
+                docker push "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
+            fi
 
-    deploy_static:
-        executor: python
-        steps:
-            - checkout
-            - run:
-                  name: Install AWS CLI
-                  command: pip install awscli
-            - run:
-                  name: Sync static content to S3
-                  command: ./.circleci/scripts/sync-static
+  deploy_static:
+    executor: python
+    steps:
+      - checkout
+      - run:
+          name: Install AWS CLI
+          command: pip install awscli
+      - run:
+          name: Sync static content to S3
+          command: ./.circleci/scripts/sync-static
 
-    deploy_heroku:
-        # Attempt to deploy, but do not fail job if the push fails. The push will fail if a
-        # developer has manually pushed a branch, usually for review purposes. This command
-        # is based on:
-        # https://github.com/CircleCI-Public/heroku-orb/blob/master/src/jobs/deploy-via-git.yml
-        # https://github.com/CircleCI-Public/heroku-orb/blob/master/src/commands/deploy-via-git.yml
-        executor: heroku/default
-        parameters:
-            app-name:
-                description: "The name of the Heroku App"
-                type: string
-        steps:
-            - heroku/install
-            - heroku/check-authentication
-            - checkout
-            - run:
-                  name: Attempt to deploy to Heroku via git push
-                  command: |
-                      set -x
-                      heroku_url="https://heroku:${HEROKU_API_KEY}@git.heroku.com/<< parameters.app-name >>.git"
-                      git push -f $heroku_url $CIRCLE_BRANCH:main
+  deploy_heroku:
+    # Attempt to deploy, but do not fail job if the push fails. The push will fail if a
+    # developer has manually pushed a branch, usually for review purposes. This command
+    # is based on:
+    # https://github.com/CircleCI-Public/heroku-orb/blob/master/src/jobs/deploy-via-git.yml
+    # https://github.com/CircleCI-Public/heroku-orb/blob/master/src/commands/deploy-via-git.yml
+    executor: heroku/default
+    parameters:
+      app-name:
+        description: "The name of the Heroku App"
+        type: string
+    steps:
+      - heroku/install
+      - heroku/check-authentication
+      - checkout
+      - run:
+          name: Attempt to deploy to Heroku via git push
+          command: |
+            set -x
+            heroku_url="https://heroku:${HEROKU_API_KEY}@git.heroku.com/<< parameters.app-name >>.git"
+            git push -f $heroku_url $CIRCLE_BRANCH:main
 
 workflows:
-    lint-and-deploy:
-        jobs:
+  lint-and-deploy:
+    jobs:
+      - lint
+      - deploy:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              only: main
+
+      - deploy_heroku:
+          name: Deploy main to Heroku
+          app-name: $HEROKU_MAIN_APP_NAME
+          requires:
             - lint
-            - deploy:
-                filters:
-                    tags:
-                        only: /.*/
-                    branches:
-                        only: main
+          filters:
+            branches:
+              only: main
 
-            - deploy_heroku:
-                name: Deploy main to Heroku
-                app-name: $HEROKU_MAIN_APP_NAME
-                requires:
-                    - lint
-                filters:
-                    branches:
-                        only: main
-
-            - deploy_heroku:
-                name: Deploy l10n to Heroku
-                app-name: $HEROKU_LOCALIZATION_APP_NAME
-                requires:
-                    - lint
-                filters:
-                    branches:
-                        only: localization
+      - deploy_heroku:
+          name: Deploy l10n to Heroku
+          app-name: $HEROKU_LOCALIZATION_APP_NAME
+          requires:
+            - lint
+          filters:
+            branches:
+              only: localization
