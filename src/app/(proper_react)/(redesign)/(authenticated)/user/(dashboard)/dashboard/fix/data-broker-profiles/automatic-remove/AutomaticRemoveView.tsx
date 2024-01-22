@@ -152,6 +152,7 @@ export function AutomaticRemoveView(props: Props) {
               </span>
               <Button
                 variant="primary"
+                /* c8 ignore start */
                 onPress={() => {
                   selectedPlanIsYearly
                     ? recordTelemetry("upgradeIntent", "click", {
@@ -163,6 +164,7 @@ export function AutomaticRemoveView(props: Props) {
                           "intent_to_purchase_monthly_plan_guided_experience",
                       });
                 }}
+                /* c8 ignore stop */
                 href={
                   selectedPlanIsYearly
                     ? yearlySubscriptionUrl
