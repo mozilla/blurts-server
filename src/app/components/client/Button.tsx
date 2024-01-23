@@ -22,9 +22,9 @@ export interface Props {
   buttonRef?: RefObject<HTMLButtonElement | HTMLAnchorElement>;
 }
 
-export const Button = (
-  props: Props & Parameters<typeof useButton>[0], // AriaButtonOptions
-) => {
+export type ButtonProps = Props & Parameters<typeof useButton>[0]; // AriaButtonOptions
+
+export const Button = (props: ButtonProps) => {
   const {
     children,
     variant,
