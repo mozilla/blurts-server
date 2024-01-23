@@ -10,7 +10,7 @@ import { PlansTable } from "./PlansTable";
 import { useId } from "react";
 import getPremiumSubscriptionUrl from "../../../functions/server/getPremiumSubscriptionUrl";
 import Image from "next/image";
-import ProgressCardImage from "./value-prop-images/progress-card.svg";
+import ProgressCardImage from "./value-prop-images/progress-card.png";
 import {
   LeakedPasswordExampleIllustration,
   ScanningForExposuresIllustration,
