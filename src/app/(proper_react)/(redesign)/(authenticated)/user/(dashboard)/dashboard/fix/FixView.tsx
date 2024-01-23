@@ -6,7 +6,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode } from "react";
 import { Confetti } from "../../../../../../../components/client/Confetti";
 import { FixNavigation } from "../../../../../../../components/client/FixNavigation";
 import styles from "./fix.module.scss";
@@ -59,14 +59,8 @@ export const FixView = (props: FixViewProps) => {
     );
   };
 
-  const fixViewRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    fixViewRef.current?.focus();
-  }, []);
-
   return (
-    <div tabIndex={-1} ref={fixViewRef} className={styles.fixContainer}>
+    <div className={styles.fixContainer}>
       {props.showConfetti && <Confetti />}
       <div
         className={`${styles.fixWrapper} ${
