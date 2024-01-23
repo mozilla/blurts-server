@@ -38,6 +38,7 @@ export default async function Page() {
       l10n={getL10n()}
       countryCode={countryCode}
       scanLimitReached={scanLimitReached}
+      enabledFlags={enabledFlags}
     />
   );
 }

@@ -22,11 +22,11 @@ fix-flow-celebration-next-dashboard-label = Ir para o seu Painel
 ## High-risk flow
 
 fix-flow-celebration-high-risk-title = Corrigiu as suas exposições de alto risco!
-fix-flow-celebration-high-risk-description-in-progress = Fazer este trabalho pode parecer muito, mas é importante fazê-lo para se manter seguro. Continue com o bom trabalho.
-fix-flow-celebration-high-risk-description-done = Fazer este trabalho pode parecer muito, mas é importante fazê-lo para se manter seguro.
-fix-flow-celebration-high-risk-description-next-passwords = Agora vamos corrigir as suas palavras-passe expostas.
-fix-flow-celebration-high-risk-description-next-security-questions = Agora vamos corrigir as suas questões de segurança expostas.
-fix-flow-celebration-high-risk-description-next-security-recommendations = A seguir, iremos dar-lhe recomendações de segurança personalizadas com base nos dados seus que foram expostos.
+fix-flow-celebration-high-risk-description-in-progress = Fazer este trabalho pode parecer demasiado, mas é importante para se manter em segurança. Continue com o bom trabalho.
+fix-flow-celebration-high-risk-description-done = Fazer este trabalho pode parecer demasiado, mas é importante para se manter em segurança.
+fix-flow-celebration-high-risk-description-next-passwords = Vamos corrigir agora as suas palavras-passe expostas.
+fix-flow-celebration-high-risk-description-next-security-questions = Vamos corrigir agora as suas questões de segurança expostas.
+fix-flow-celebration-high-risk-description-next-security-recommendations = De seguida iremos fornecer-lhe recomendações de segurança personalizadas com base nos seus dados que foram expostos.
 fix-flow-celebration-high-risk-description-next-dashboard = Chegou ao fim dos seus passos. Pode ver quaisquer itens de ação e acompanhar o seu progresso no seu painel.
 
 ## Leaked passwords and security questions flow
@@ -50,8 +50,8 @@ high-risk-breach-subheading = Isto requer acesso à sua informação sensível, 
 # $num_breaches is the number of breaches where the high risk data was found.
 high-risk-breach-summary =
     { $num_breaches ->
-        [one] Este apareceu em { $num_breaches } violações de dados:
-       *[other] Este apareceu em { $num_breaches } violações de dados:
+        [one] Apareceu em { $num_breaches } violação de dados:
+       *[other] Apareceu em { $num_breaches } violações de dados:
     }
 # Variables
 # $breach_name is the name of the breach where the high risk data was found.
@@ -65,69 +65,69 @@ high-risk-breach-skip = Ignorar por agora
 # An example of this string is Your estimated time: 15+ minutes.
 high-risk-breach-estimated-time =
     { $estimated_time ->
-        [one] O tempo estimado: +{ $estimated_time } minutos
-       *[other] O tempo estimado: +{ $estimated_time } minutos
+        [one] O seu tempo estimado: mais de { $estimated_time } minuto
+       *[other] O seu tempo estimado: mais de { $estimated_time } minutos
     }
 
 # Credit Card Breaches
 
 high-risk-breach-credit-card-title = O número do seu cartão de crédito foi exposto
-high-risk-breach-credit-card-description = Qualquer pessoa que os obtenha pode fazer compras não autorizadas que podem ser responsáveis. Aja agora para evitar problemas financeiros.
-high-risk-breach-credit-card-step-one = Se ainda tem este cartão, contacte o emissor para reportar o roubo.
+high-risk-breach-credit-card-description = Qualquer pessoa que obtenha o mesmo pode fazer compras não autorizadas relativamente às quais você pode ser responsável. Aja agora para evitar problemas financeiros.
+high-risk-breach-credit-card-step-one = Se ainda tem este cartão, contacte o emissor para reportar o furto.
 high-risk-breach-credit-card-step-two = Solicite um novo cartão com um novo número.
-high-risk-breach-credit-card-step-three = Verifique as suas contas por cobranças não autorizadas.
+high-risk-breach-credit-card-step-three = Verifique se tem cobranças não autorizadas nas suas contas.
 
 # Bank Account Breaches
 
 high-risk-breach-bank-account-title = A sua conta bancária foi exposta
-high-risk-breach-bank-account-description = Agir o mais rapidamente possível pode fornecer mais proteções legais para ajudar a recuperar quaisquer perda.
-high-risk-breach-bank-account-step-one = Notifique imediatamente o seu banco que o número da sua conta foi comprometido.
+high-risk-breach-bank-account-description = Agir o mais rapidamente possível pode fornecer mais proteções legais para ajudar a recuperar qualquer perda.
+high-risk-breach-bank-account-step-one = Notifique imediatamente o seu banco que o seu número de conta foi comprometido.
 high-risk-breach-bank-account-step-two = Altere o número da sua conta.
-high-risk-breach-bank-account-step-three = Verifique as suas contas por cobranças não autorizadas.
+high-risk-breach-bank-account-step-three = Verifique se tem cobranças não autorizadas nas suas contas.
 
 # Social Security Number Breaches
 
 high-risk-breach-social-security-title = O seu número da segurança social foi exposto
 high-risk-breach-social-security-description = Os burlões podem conseguir novos empréstimos ou cartões de crédito com o seu número da segurança social. Aja rapidamente para evitar danos financeiros.
 high-risk-breach-social-security-step-one = Proteja-se <link_to_info>configurando um alerta de fraude ou congelando o seu crédito.</link_to_info>
-high-risk-breach-social-security-step-two = <link_to_info>Confirme o seu relatório de crédito</link_to_info> para contas desconhecidas.
+high-risk-breach-social-security-step-two = <link_to_info>Confirme o seu extracto de crédito</link_to_info> por contas desconhecidas.
 
 # Social Security Number Modal
 
-ssn-modal-title = Acerca de alertas de fraude e bloqueios de crédito
-ssn-modal-description-fraud-part-one = <b>Um alerta de fraude</b> requer que as empresas verifiquem a sua identidade antes de emitir um novo crédito em seu nome. É gratuito, termina um ano e não afeta negativamente a sua pontuação de crédito.
-ssn-modal-description-fraud-part-two = Para configurar um, contacte qualquer um dos três serviços de crédito. Não precisa de contactar os três.
-ssn-modal-description-freeze-credit-part-one = <b>Congerar o seu crédito</b> impede que alguém abra uma nova conta em seu nome. É gratuito e não irá afetar negativamente a sua pontuação de crédito, mas irá precisar de o desbloquear antes de abrir quaisquer novas contas.
-ssn-modal-description-freeze-credit-part-two = Para congelar o seu crédito, contacte cada uma das três empresas de crédito — <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link> e <transunion_link>TransUnion</transunion_link>.
-ssn-modal-learn-more = Saber mais acerca de alertas de fraude e bloqueios de crédito
-ssn-modal-ok = OK
+ssn-modal-title = Sobre os alertas de fraude e bloqueios de crédito
+ssn-modal-description-fraud-part-one = <b>Um alerta de fraude</b> requer que as empresas verifiquem a sua identidade antes de emitir um novo crédito em seu nome. É gratuito, tem a duração de um ano e não afeta negativamente a sua pontuação de crédito.
+ssn-modal-description-fraud-part-two = Para configurar um alerta, contacte qualquer um dos três serviços de crédito. Não precisa de contactar todos os três.
+ssn-modal-description-freeze-credit-part-one = <b>Congelar o seu crédito</b> impede que alguém abra uma nova conta em seu nome. É gratuito e não irá afetar negativamente a sua pontuação de crédito, mas irá precisar de o desbloquear antes de abrir quaisquer novas contas.
+ssn-modal-description-freeze-credit-part-two = Para congelar o seu crédito, contacte cada uma das três empresas de crédito – <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link> e <transunion_link>TransUnion</transunion_link>.
+ssn-modal-learn-more = Saber mais sobre alertas de fraude e bloqueios de crédito
+ssn-modal-ok = Ok
 
 # PIN Breaches
 
 high-risk-breach-pin-title = O seu PIN foi exposto
-high-risk-breach-pin-description = Agir o mais rapidamente possível pode fornecer mais proteções legais para ajudar a recuperar quaisquer perda.
-high-risk-breach-pin-step-one = Notifique o seu banco imediatamente que o seu PIN foi comprometido.
-high-risk-breach-pin-step-two = Altere o seu PIN em qualquer lugar em que utilizou o mesmo.
-high-risk-breach-pin-step-three = Verifique as suas contas por cobranças não autorizadas.
+high-risk-breach-pin-description = Agir o mais rapidamente possível pode fornecer mais proteções legais para ajudar a recuperar qualquer perda.
+high-risk-breach-pin-step-one = Notifique imediatamente o seu banco que o seu PIN foi comprometido.
+high-risk-breach-pin-step-two = Altere o seu PIN em qualquer sítio onde tenha utilizado o mesmo.
+high-risk-breach-pin-step-three = Verifique se tem cobranças não autorizadas nas suas contas.
 
 # No high risk breaches found
 
-high-risk-breach-none-title = Boas notícias, não encontrámos nenhuma violação de dados de alto risco
+high-risk-breach-none-title = Boas notícias: não encontrámos nenhuma violação de dados de alto risco
 # Variables
 # $email_list is list of emails that the user is monitoring for breaches. E.g. john@yahoo.com, ali@gmail.com, sam@hotmail.com
-high-risk-breach-none-description = Detetámos as violações de dados com base no seu endereço de e-mail e não encontrámos nenhuma violação de dados de alto risco para { $email_list }.
-high-risk-breach-none-sub-description-part-one = As brechas de dados de alto risco incluem:
+high-risk-breach-none-description = Detetámos violações de dados com base no seu endereço de e-mail e não encontrámos nenhuma violação de dados de alto risco para { $email_list }.
+high-risk-breach-none-sub-description-part-one = As violações de dados de alto risco incluem:
 high-risk-breach-none-sub-description-ssn = Número da segurança social
-high-risk-breach-none-sub-description-bank-account = Informações da conta
+high-risk-breach-none-sub-description-bank-account = Informações da conta bancária
 high-risk-breach-none-sub-description-cc-number = Números de cartão de crédito
-high-risk-breach-none-sub-description-pin = PINs
+high-risk-breach-none-sub-description-pin = PIN
 high-risk-breach-none-continue = Continuar
 
 # Security recommendations
 
 security-recommendation-steps-label = Recomendações de segurança
 security-recommendation-steps-title = Eis o nosso conselho:
-security-recommendation-steps-cta-label = Percebi!
+security-recommendation-steps-cta-label = Compreendi!
 
 # Phone security recommendation
 
@@ -135,7 +135,7 @@ security-recommendation-phone-title = Proteja o seu número de telefone
 # $num_breaches is the number of breaches where the phone number was found.
 security-recommendation-phone-summary =
     { $num_breaches ->
-        [one] O seu número de telefone foi exposto em { $num_breaches } violações de dados:
+        [one] O seu número de telefone foi exposto em { $num_breaches } violação de dados:
        *[other] O seu número de telefone foi exposto em { $num_breaches } violações de dados:
     }
 security-recommendation-phone-description = Infelizmente não pode recuperá-la. Mas existem passos que pode tomar para ter a certeza que está seguro(a).
