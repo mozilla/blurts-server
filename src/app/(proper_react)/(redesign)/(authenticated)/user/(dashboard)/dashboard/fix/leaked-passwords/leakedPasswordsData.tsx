@@ -15,6 +15,7 @@ import {
   HibpBreachDataTypes,
 } from "../../../../../../../../deprecated/(authenticated)/user/breaches/breaches";
 import { getLocale } from "../../../../../../../../functions/universal/getLocale";
+import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
 
 export const leakedPasswordTypes = [
   "passwords",
@@ -209,12 +210,20 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
               <li>
                 {l10n.getFragment("leaked-passwords-step-one", {
                   elems: {
-                    // TODO: Find a way  to go to the actual breach site
+                    // TODO: Find a way to go to the actual breach site
                     link_to_breach_site: (
-                      <a
+                      <TelemetryButton
                         href={breachSite}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        variant="tertiary"
+                        event={{
+                          module: "link",
+                          name: "click",
+                          data: {
+                            link_id: "changed_password",
+                            // TODO: Enable after the parameter has been added to metrics.yaml.
+                            // link_name: `changed_password_${breachName}`,
+                          },
+                        }}
                       />
                     ),
                     b: <strong />,
@@ -256,12 +265,20 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
               <li>
                 {l10n.getFragment("leaked-security-questions-step-one", {
                   elems: {
-                    // TODO: Find a way  to go to the actual breach site
+                    // TODO: Find a way to go to the actual breach site
                     link_to_breach_site: (
-                      <a
+                      <TelemetryButton
                         href={breachSite}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        variant="tertiary"
+                        event={{
+                          module: "link",
+                          name: "click",
+                          data: {
+                            link_id: "changed_security_question",
+                            // TODO: Enable after the parameter has been added to metrics.yaml.
+                            // link_name: `changed_security_question_${breachName}`,
+                          },
+                        }}
                       />
                     ),
                     b: <strong />,

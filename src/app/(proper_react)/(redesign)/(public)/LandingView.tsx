@@ -20,7 +20,7 @@ import ForbesLogo from "./social-proof-images/forbes.svg";
 import GoogleLogo from "./social-proof-images/google.svg";
 import PCMagLogo from "./social-proof-images/pcmag.svg";
 import TechCruchLogo from "./social-proof-images/techcrunch.svg";
-import { TelemetryLink } from "./TelemetryLink";
+import { TelemetryLink } from "../../../components/client/TelemetryLink";
 import { HeresHowWeHelp } from "./HeresHowWeHelp";
 import { ScanLimit } from "./ScanLimit";
 import { Footer } from "../Footer";
