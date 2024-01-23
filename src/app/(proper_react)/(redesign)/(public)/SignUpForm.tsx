@@ -12,6 +12,7 @@ import styles from "./SignUpForm.module.scss";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
 import { WaitlistCta } from "./ScanLimit";
+import { useCookies } from "react-cookie";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -29,6 +30,25 @@ export const SignUpForm = (props: Props) => {
   const l10n = useL10n();
   const [emailInput, setEmailInput] = useState("");
   const record = useTelemetry();
+  const [cookies] = useCookies(["attributionsFirstTouch"]);
+  const attributionSearchParams = new URLSearchParams(
+    cookies.attributionsFirstTouch,
+  );
+  attributionSearchParams.set(
+    "entrypoint",
+    "monitor.mozilla.org-monitor-product-page",
+  );
+  attributionSearchParams.set("email", emailInput);
+  attributionSearchParams.set("form_type", "button");
+  if (!attributionSearchParams.has("utm_source")) {
+    attributionSearchParams.append("utm_source", "product");
+  }
+  if (!attributionSearchParams.has("utm_medium")) {
+    attributionSearchParams.append("utm_medium", "monitor");
+  }
+  if (!attributionSearchParams.has("utm_campaign")) {
+    attributionSearchParams.append("utm_campaign", "get_free_scan");
+  }
 
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault();
@@ -38,7 +58,7 @@ export const SignUpForm = (props: Props) => {
       // This passes an `?email=` query parameter to FxA, causing it to prefill
       // the email address in the sign-up form. See
       // https://mozilla.github.io/ecosystem-platform/relying-parties/reference/query-parameters#email
-      { email: emailInput },
+      attributionSearchParams.toString(),
     );
     record("ctaButton", "click", {
       button_id: props.eventId.cta,
