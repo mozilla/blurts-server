@@ -43,6 +43,7 @@ error-headline = שגיאה
 user-verify-token-error = נדרש אסימון אימות.
 user-verify-email-report-subject = דוח { -product-name } שלך
 user-unsubscribe-token-error = ביטול הרשמה דורש אסימון.
+user-unsubscribe-token-email-error = ביטול הרישום דורש אסימון וגיבוב דוא״ל.
 user-unsubscribe-title = { -product-name } : ביטול הרשמה
 pwt-section-headline = ססמאות חזקות יותר = הגנה טובה יותר
 landing-headline = זכותך להגנה מפני פצחנים מתחילה כאן.
@@ -70,7 +71,6 @@ hibp-attribution = נתוני הדליפה מסופקים על־ידי { $hibp-l
 share-twitter = לרוב האנשים יש כ־100 חשבונות מקוונים. האם החשבונות שלך נחשפו בדליפת נתונים?
 share-facebook-headline = האם היית חלק מדליפת נתונים
 share-facebook-blurb = האם החשבונות המקוונים שלך נחשפו בדליפת נתונים?
-og-site-description = { -product-name } יבדוק האם היית חלק מפרצה. באפשרותך להירשם להתראות על פרצות עתידיות ועצות לשמירת החשבונות שלך בטוחים.
 show-all = הצגת הכל
 fxa-scan-another-email = רוצה לבדוק כתובת דוא״ל נוספת?
 sign-out = התנתקות

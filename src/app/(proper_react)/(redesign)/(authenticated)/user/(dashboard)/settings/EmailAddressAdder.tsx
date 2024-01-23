@@ -4,6 +4,7 @@
 
 "use client";
 
+import { useEffect } from "react";
 import { useFormState } from "react-dom";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
@@ -16,10 +17,31 @@ import { ModalOverlay } from "../../../../../../components/client/dialog/ModalOv
 import { Dialog } from "../../../../../../components/client/dialog/Dialog";
 import { onAddEmail } from "./actions";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
+import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 
 export const EmailAddressAdder = () => {
   const l10n = useL10n();
-  const dialogState = useOverlayTriggerState({ defaultOpen: false });
+  const recordTelemetry = useTelemetry();
+  const dialogState = useOverlayTriggerState({
+    defaultOpen: false,
+    // Unfortunately we're currently running into a bug testing code that hits
+    // `useFormState`, which would happen when the dialog is opened.
+    // See the comment for the test "counts how often people click the 'Add
+    // email address' button":
+    /* c8 ignore start */
+    onOpenChange(isOpen) {
+      if (isOpen) {
+        recordTelemetry("ctaButton", "click", {
+          button_id: "add_email_address",
+        });
+      } else {
+        recordTelemetry("button", "click", {
+          button_id: "close_add_email_modal",
+        });
+      }
+    },
+    /* c8 ignore stop */
+  });
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: "dialog" },
     dialogState,
@@ -61,7 +83,16 @@ export const EmailAddressAdder = () => {
 /* c8 ignore start */
 const EmailAddressAddForm = () => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const [formState, formAction] = useFormState(onAddEmail, {});
+
+  useEffect(() => {
+    if (typeof formState.success !== "undefined") {
+      recordTelemetry("ctaButton", "click", {
+        button_id: "add_email_verification",
+      });
+    }
+  }, [formState, recordTelemetry]);
 
   return !formState.success ? (
     <>

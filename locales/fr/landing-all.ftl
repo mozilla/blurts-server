@@ -20,7 +20,7 @@ landing-all-value-prop-info-at-risk-description = Les fuites de données font ma
 
 # Quote
 
-landing-all-quote = <data_breaches>Des fuites de données</data_breaches> se produisent toutes les 11 minutes, exposer vos informations privées, mais ne vous inquiétez pas, nous pouvons vous aider.
+landing-all-quote = <data_breaches>Des fuites de données</data_breaches> ont lieu toutes les 11 minutes et divulguent vos informations privées. Mais ne vous inquiétez pas, nous pouvons vous aider.
 
 # Non-US FAQ
 
@@ -28,7 +28,7 @@ landing-all-faq-title = Questions fréquentes
 # FAQ is an acronym for Frequently Asked Questions
 landing-all-faq-see-all = Voir toute la FAQ
 landing-all-data-breach-definition-qn = Qu’est-ce qu’une fuite de données exactement ?
-landing-all-data-breach-definition-ans = Une fuite de données se produit lorsque des informations personnelles ou privées sont exposées, volées ou copiées sans autorisation. Ces incidents de sécurité peuvent être le résultat de cyberattaques contre des sites web, des applications ou toute base de données où sont conservées les données personnelles des personnes. Une fuite de données peut également se produire accidentellement, comme lorsque les identifiants de connexion de quelqu’un sont publiés publiquement.
+landing-all-data-breach-definition-ans = Une fuite de données se produit lorsque des informations personnelles ou privées sont divulguées, volées ou copiées sans autorisation. Ces incidents de sécurité peuvent être le résultat de cyberattaques contre des sites web, des applications ou toute base de données où sont conservées les données personnelles des personnes. Une fuite de données peut également se produire accidentellement, comme lorsque les identifiants de connexion de quelqu’un sont publiés publiquement.
 landing-all-data-breach-next-steps-qn = Je viens de découvrir qu’une fuite de données me concerne. Que dois-je faire ?
 landing-all-data-breach-next-steps-ans = Consultez { -brand-mozilla-monitor } pour savoir ce qu’il faut faire après une fuite de données et suivre la marche à suivre pour résoudre les problèmes de l’exposition de vos informations personnelles. Les pirates dépendent de la réutilisation des mots de passe. Il est donc important de créer des mots de passe forts et uniques pour tous vos comptes. Conservez vos mots de passe dans un endroit sûr auquel vous seul·e avez accès. il pourrait s’agir du même endroit où vous stockez des documents importants ou d’un gestionnaire de mots de passe.
 landing-all-data-breach-info-qn = Quelles informations sont compromises dans les fuites de données ?
