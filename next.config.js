@@ -2,11 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
- /* eslint @typescript-eslint/no-var-requires: "off" */
-import { withSentryConfig } from "@sentry/nextjs"
+/* eslint @typescript-eslint/no-var-requires: "off" */
+import { withSentryConfig } from "@sentry/nextjs";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  productionBrowserSourceMaps: true,
   images: {
     remotePatterns: [
       {
@@ -134,8 +135,8 @@ const nextConfig = {
       // /redesign subpath. In case we still have lingering links to there
       // anywhere, this redirect should have people end up at the right place:
       {
-        source: '/redesign/:path*',
-        destination: '/:path*',
+        source: "/redesign/:path*",
+        destination: "/:path*",
         permanent: true,
       },
       // We used to have a page with security tips;
@@ -183,6 +184,11 @@ const sentryOptions = {
   // Upload additional client files (increases upload size)
   // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#widen-the-upload-scope
   widenClientFileUpload: true,
+  hideSourceMaps: false,
 };
 
-export default withSentryConfig(nextConfig, sentryWebpackPluginOptions, sentryOptions)
+export default withSentryConfig(
+  nextConfig,
+  sentryWebpackPluginOptions,
+  sentryOptions,
+);
