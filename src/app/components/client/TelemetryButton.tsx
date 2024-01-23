@@ -28,6 +28,7 @@ export const TelemetryButton = <
     <Button
       {...props}
       onPress={(e) => {
+        // Consumers of this component do not currently have tests that actually click the button
         /* c8 ignore next 3 */
         if (onPress) {
           onPress(e);
