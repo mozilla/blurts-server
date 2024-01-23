@@ -8,6 +8,12 @@ import { withSentryConfig } from "@sentry/nextjs";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   productionBrowserSourceMaps: true,
+  sentry: {
+    disableServerWebpackPlugin:
+      process.env.UPLOAD_SENTRY_SOURCEMAPS === "true" ?? "false",
+    disableClientWebpackPlugin:
+      process.env.UPLOAD_SENTRY_SOURCEMAPS === "true" ?? "false",
+  },
   images: {
     remotePatterns: [
       {
@@ -174,15 +180,11 @@ const sentryWebpackPluginOptions = {
   org: "mozilla",
   project: "firefox-monitor",
   silent: true, // Suppresses all logs
+  authToken: process.env.SENTRY_AUTH_TOKEN,
 
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };
-
-if (process.env.UPLOAD_SENTRY_SOURCEMAPS === "true") {
-  // @ts-ignore Add authToken only if variable is set.
-  sentryWebpackPluginOptions.authToken = process.env.SENTRY_AUTH_TOKEN;
-}
 
 const sentryOptions = {
   // Upload additional client files (increases upload size)
