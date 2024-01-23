@@ -649,11 +649,18 @@ brand-mozilla-monitor = { -brand-fx-monitor }
 ## Site navigation
 
 site-nav-settings-link = Iɣewwaren
+site-nav-help-link = Tallalt
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
 mobile-menu-label = Umuɣ agejdan
 main-nav-button-collapse-label = Fneẓ umuɣ
 main-nav-button-collapse-tooltip = Fneẓ umuɣ
+main-nav-label = Tunigin
+main-nav-link-home-label = Asebter agejdan
+main-nav-link-dashboard-label = Tafelwit n usenqed
+main-nav-link-settings-label = Iɣewwaren
+main-nav-link-faq-label = Isteqsiyen FAQ
+main-nav-link-faq-tooltip = Isteqsiyen i d-yettuɣalen s waṭas.
 
 ## User menu
 
@@ -664,12 +671,20 @@ menu-button-alt = Ldi umuɣ n useqdac
 # Obsolete
 menu-list-accessible-label = Umuɣ n umiḍan
 # Obsolete
+menu-item-fxa-2 = Sefrek { -brand-mozilla-account }
+# Obsolete
 menu-item-settings = Iɣewwaren
 # Obsolete
+menu-item-help = Tallalt
+# Obsolete
 menu-item-logout = Ffeɣ
+user-menu-trigger-label = Ldi umuɣ n useqdac
+user-menu-trigger-tooltip = Amaɣnu
+user-menu-manage-fxa-label = Sefrek { -brand-mozilla-account }
 user-menu-settings-label = Iɣewwaṛen
 user-menu-settings-tooltip = Sbadu { -brand-mozilla-monitor }
 user-menu-help-label = Tallalt
+user-menu-signout-label = Ffeɣ
 
 ## Footer
 
@@ -678,9 +693,14 @@ terms-of-service = Tiwtilin n useqdec
 privacy-notice = Tasertit n tbaḍnit
 github = { -brand-github }
 footer-nav-all-breaches = Meṛṛa tirewliwin
+footer-external-link-faq-label = Isteqsiyen FAQ
+footer-external-link-faq-tooltip = Isteqsiyen i d-yettuɣalen s waṭas.
 
 ## Error page
 
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } - asebter ur yettwaf ara
 error-page-error-404-cta-button = Uɣal
 
 ## Breach overview page
@@ -693,3 +713,10 @@ breach-detail-cta-signup = Senqed tarewla n yisefka
 
 ## Floating banner
 
+floating-banner-link-label = Jerred
+floating-banner-dismiss-button-label = Ala, tanemmirt
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-dismiss-button-label = IH
+banner-monitor-rebrand-dismiss-button-tooltip = Zgel
