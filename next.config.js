@@ -174,11 +174,15 @@ const sentryWebpackPluginOptions = {
   org: "mozilla",
   project: "firefox-monitor",
   silent: true, // Suppresses all logs
-  authToken: process.env.SENTRY_AUTH_TOKEN,
 
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };
+
+if (process.env.SENTRY_AUTH_TOKEN) {
+  // @ts-ignore Add authToken only if variable is set.
+  sentryWebpackPluginOptions.authToken = process.env.SENTRY_AUTH_TOKEN;
+}
 
 const sentryOptions = {
   // Upload additional client files (increases upload size)
