@@ -38,6 +38,9 @@ export const SignUpForm = (props: Props) => {
     "entrypoint",
     "monitor.mozilla.org-monitor-product-page",
   );
+  // This passes an `?email=` query parameter to FxA, causing it to prefill
+  // the email address in the sign-up form. See
+  // https://mozilla.github.io/ecosystem-platform/relying-parties/reference/query-parameters#email
   attributionSearchParams.set("email", emailInput);
   attributionSearchParams.set("form_type", "button");
   if (!attributionSearchParams.has("utm_source")) {
@@ -55,9 +58,6 @@ export const SignUpForm = (props: Props) => {
     void signIn(
       "fxa",
       { callbackUrl: props.signUpCallbackUrl },
-      // This passes an `?email=` query parameter to FxA, causing it to prefill
-      // the email address in the sign-up form. See
-      // https://mozilla.github.io/ecosystem-platform/relying-parties/reference/query-parameters#email
       attributionSearchParams.toString(),
     );
     record("ctaButton", "click", {
