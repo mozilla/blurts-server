@@ -303,10 +303,7 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
     },
   ];
 
-  return {
-    breachName,
-    data: leakedPasswordsData.find((content) => content.type === dataType),
-  };
+  return leakedPasswordsData.find((content) => content.type === dataType);
 }
 
 export { getLeakedPasswords };

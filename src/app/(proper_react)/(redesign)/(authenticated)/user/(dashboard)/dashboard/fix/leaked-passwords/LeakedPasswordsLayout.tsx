@@ -69,7 +69,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   /* c8 ignore start */
   const emailsAffected = unresolvedPasswordBreach?.emailsAffected ?? [];
   const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
-  const { data: pageData } = getLeakedPasswords({
+  const pageData = getLeakedPasswords({
     dataType: props.type,
     breaches: guidedExperienceBreaches,
     l10n,
