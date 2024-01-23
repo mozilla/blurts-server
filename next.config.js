@@ -9,10 +9,8 @@ import { withSentryConfig } from "@sentry/nextjs";
 const nextConfig = {
   productionBrowserSourceMaps: true,
   sentry: {
-    disableServerWebpackPlugin:
-      process.env.UPLOAD_SENTRY_SOURCEMAPS === "true" ?? "false",
-    disableClientWebpackPlugin:
-      process.env.UPLOAD_SENTRY_SOURCEMAPS === "true" ?? "false",
+    disableServerWebpackPlugin: process.env.UPLOAD_SENTRY_SOURCEMAPS ?? "false",
+    disableClientWebpackPlugin: process.env.UPLOAD_SENTRY_SOURCEMAPS ?? "false",
   },
   images: {
     remotePatterns: [
