@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -39,6 +44,8 @@ user-add-duplicate-email = 此帳號已經加入 { -product-name }。
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = 請到您的 { $preferencesLink } 檢查 { $userEmail } 的目前狀態。
+user-add-verification-email-just-sent = 沒辦法這麼快就寄出另一封驗證信，請稍後再試。
+user-add-unknown-error = 新增電子郵件地址時發生錯誤，請稍後再試。
 error-headline = 錯誤
 user-verify-token-error = 缺少驗證 token。
 user-verify-email-report-subject = 您的 { -product-name } 掃描報告
@@ -56,11 +63,11 @@ signup-modal-sent = 已送出！
 sign-up = 訂閱
 form-signup-error = 必須是有效的電子郵件地址
 # breach-date = the calendar date a particular data theft occurred.
-breach-date = 發生日期:
+breach-date = 發生日期：
 # compromised accounts = the total number of user accounts exposed in data breach
-compromised-accounts = 洩漏帳號數量:
+compromised-accounts = 洩漏帳號數量：
 # compromised-data = the kind of user data exposed to hackers in data breach.
-compromised-data = 洩漏資料內容:
+compromised-data = 洩漏資料內容：
 unsub-headline = 取消訂閱 { -product-name-nowrap }
 unsub-blurb = 將會從 { -product-name-nowrap } 郵寄清單把您的信箱移除，您不會再於有新的資料外洩事件發生時收到警報。
 unsub-button = 取消訂閱
@@ -126,7 +133,7 @@ sensitive-breach-plural = 敏感性資料外洩
 data-aggregator-breach-plural = 資料收集器資訊外洩
 unverified-breach-plural = 未經查證的資料外洩
 spam-list-breach-plural = 垃圾郵件清單資料外洩
-what-data = 洩漏了哪些資料:
+what-data = 洩漏了哪些資料：
 sensitive-sites = { -product-name } 如何對待這些敏感性網站？
 sensitive-sites-copy = { -product-name } 僅會在電子郵件信箱驗證後，才顯示與這些資料外洩事件相關聯的帳號。也就是說只有您能看到您的帳號是否與此事件有關（除非有別人也能使用使用您的信箱帳號。）
 delayed-reporting-headline = 為什麼要這麼久才公開這些事件？
@@ -142,7 +149,7 @@ how-fxm-2-headline = 訂閱資料外洩事件警報
 how-fxm-2-blurb = 註冊 { -brand-fxa } 來監控您的信箱是否出現於各種資料外洩事件中。確認帳號後，也會收到包含外洩的敏感資料等過去事件的相關完整報告。
 how-fxm-3-headline = 在瀏覽器中接收通知
 how-fxm-3-blurb = 使用 { -brand-name } 的時候，當您開啟曾發生外洩事故的網站時將會收到通知。可以立即了解您是否也身處資料外洩事件之中，可以採取哪些行動。
-wtd-after-website = 發生網站資料外洩事件後該做什麼
+wtd-after-website = 發生網站資料外洩事件後該做什麼：
 wtd-after-data-agg = 資料收集器發生資訊外洩後，要作什麼事？
 what-is-data-agg = 「資料收集器」是什麼？
 what-is-data-agg-blurb = 資料收集器，或是資料的交易商，會自行收集公開資料或向其他公司購買資料。他們會整合好資料，再銷售給其他公司做行銷用途。受這類事件影響的人較不容易遇到財務詐欺，但駭客可以使用此資料來假裝為他人，或進行分類。
@@ -176,7 +183,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = 檢查是否有外洩事件
 find-out-what-hackers-know = 看看駭客已經知道你的哪些事情，也了解如何搶先一步遠離他們。
-get-email-alerts = 確保安全: 當您的資訊出現在已知的資料外洩事件時，收到警報通知
+get-email-alerts = 確保安全：當您的資訊出現在已知的資料外洩事件時，收到警報通知
 search-for-your-email = 搜尋自 2007 年起的公開資料外洩事故當中，是否包含您的電子郵件帳號。
 back-to-top = 回到頁面頂端
 comm-opt-0 = 當下列我的任一個電子郵件信箱地址出現在資料外洩事故時，發信通知我。
@@ -268,7 +275,7 @@ facebook-breach-what-to-do-2-headline = <span>更改您<a>手機門號業者網�
 facebook-breach-what-to-do-2-copy = SIM 卡更換攻擊（又稱 SIM 卡綁架攻擊）是指當駭客使用手機門號、生日等各種資料欺騙電信業者，來接管受害者的手機門號，再駭入其信箱、社群網路，甚至金融機構帳號的行為。
 facebook-breach-what-to-do-3 = 到我們的 Facebook 資料外洩頁面看看完整建議
 # "Appears in-page as: Showing: All Breaches"
-currently-showing = 列出:
+currently-showing = 列出：
 
 ## Updated error messages
 
@@ -312,7 +319,7 @@ scan-results-known-breaches =
 # In page, it reads "Results for: searchedEmail@monitor.com"
 # Variables:
 #   $userEmail (String) - User email address
-results-for = { $userEmail } 的搜尋結果:
+results-for = { $userEmail } 的搜尋結果：
 other-monitored-emails = 其他監控的信箱
 email-verification-required = 需要驗證信箱
 fxa-primary-email = { -brand-fxa } 郵件 - 主要帳號
@@ -335,7 +342,7 @@ other-known-breaches-found =
     }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
-additional-information-including = 其他資訊，包含:
+additional-information-including = 其他資訊，包含：
 # Title
 email-addresses-title = 電子郵件地址
 # This is a section headline on the breach detail page that appears above
@@ -344,17 +351,17 @@ breach-overview-title = 概觀
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview-new = { $breachTitle } 於 { $breachDate } 發生了資料外洩事件。事件發生並經過驗證後，已於 { $addedDate } 列入我們的資料庫。
+breach-overview-new = { $breachTitle } 於 { $breachDate }發生了資料外洩事件。事件發生並經過驗證後，已於 { $addedDate }列入我們的資料庫。
 # Title appearing on the Preferences dashboard.
 monitor-preferences = { -product-short-name } 偏好設定
 # When a user is signed in, this appears in the drop down menu
 # and is followed by the user's primary Firefox Account email.
 # Variables:
 #   $userEmail (String) - User email address
-signed-in-as = 已登入為: { $userEmail }
+signed-in-as = 已登入為：{ $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
-filter-by = 依照分類過濾:
+filter-by = 依照分類篩選：
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = 選單
 to-affected-email = 傳送資料外洩警報到受影響的電子郵件信箱
@@ -401,7 +408,7 @@ manage-all-emails = 於 { $preferencesLink } 管理所有電子郵件地址。
 breach-alert-notifications = 資料外洩警報通知
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date.
-breach-added-label = 事件紀錄時間:
+breach-added-label = 事件紀錄時間：
 how-hackers-work-desc = 保護您的密碼不受網路犯罪侵害，這是他們最關心的議題。
 what-to-do-after-breach-desc = 鎖定帳號，讓您的個人資料不落入他人之手。
 create-strong-passwords-desc = 讓您的密碼更強大、更安全、更難猜測。
@@ -471,7 +478,7 @@ num-resolved =
     { $numResolvedBreaches ->
        *[other] 已處理 { $numResolvedBreaches } 筆事件
     }
-progress-intro-subhead = { -product-name } 新功能: 將資料外洩事件標示為已處理
+progress-intro-subhead = { -product-name } 新功能：將資料外洩事件標示為已處理
 progress-intro-message = 確認事件詳細資訊並採取行動保護自己的資料後，就可以將事件標示為「已處理」。
 # Variables:
 #   $numResolvedBreaches (Integer) - Number of resolved breaches
@@ -496,7 +503,7 @@ progress-complete-message = <span>覺得很棒對不對？</span>若您想要繼
 resolve-this-breach-link = 處理過此次事件了
 # This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
-marked-resolved = 已標示為處理完成:
+marked-resolved = 已標示為處理完成：
 hide-resolved-button = 隱藏處理過的事件
 show-resolved-button = 顯示處理過的事件
 # Variables:
@@ -605,7 +612,7 @@ ad-unit-6-before-you-complete = 您下次註冊帳號時，可使用轉寄信箱
 
 -brand-firefox = Firefox
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = 付費版
 -brand-monitor-premium = Monitor Premium
@@ -613,12 +620,15 @@ ad-unit-6-before-you-complete = 您下次註冊帳號時，可使用轉寄信箱
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla 帳號
+open-in-new-tab-alt = 用新分頁開啟鏈結
 
 ## Search Engine Optimization
 
@@ -626,8 +636,10 @@ meta-desc-2 = 使用 { -brand-fx-monitor } 看看您是否也處於資料外洩�
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = 登入
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -638,19 +650,43 @@ site-nav-help-link = 說明與技術支援
 site-nav-ad-callout = 歡迎試用我們其他的安全工具：
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = 主選單
+main-nav-button-collapse-label = 折疊選單
+main-nav-button-collapse-tooltip = 折疊選單
+main-nav-button-expand-label = 展開選單
+main-nav-button-expand-tooltip = 展開選單
+main-nav-label = 導覽
+main-nav-link-home-label = 首頁
+main-nav-link-dashboard-label = 儀錶板
+main-nav-link-settings-label = 設定
+main-nav-link-faq-label = 常見問題
+main-nav-link-faq-tooltip = 常見問題
 
 ## User menu
 
+# Obsolete
 menu-button-title = 使用者選單
+# Obsolete
 menu-button-alt = 開啟使用者選單
+# Obsolete
 menu-list-accessible-label = 帳號選單
+# Obsolete
 menu-item-fxa-2 = 管理您的 { -brand-mozilla-account }
-menu-item-fxa-alt-2 = 開啟 { -brand-mozilla-account }頁面
+# Obsolete
 menu-item-settings = 設定
-menu-item-settings-alt = 開啟設定頁面
+# Obsolete
 menu-item-help = 說明與技術支援
-menu-item-help-alt = 開啟說明與技術支援頁面
+# Obsolete
 menu-item-logout = 登出
+user-menu-trigger-label = 開啟使用者選單
+user-menu-trigger-tooltip = 個人資料
+user-menu-manage-fxa-label = 管理您的 { -brand-mozilla-account }
+user-menu-settings-label = 設定
+user-menu-settings-tooltip = 設定 { -brand-mozilla-monitor }
+user-menu-help-label = 說明與技術支援
+user-menu-help-tooltip = 獲得 { -brand-mozilla-monitor } 的使用說明
+user-menu-signout-label = 登出
+user-menu-signout-tooltip = 從 { -brand-mozilla-monitor } 登出
 
 ## Footer
 
@@ -659,6 +695,8 @@ terms-of-service = 服務條款
 privacy-notice = 隱私權公告
 github = { -brand-github }
 footer-nav-all-breaches = 所有資料外洩事件
+footer-external-link-faq-label = 常見問題
+footer-external-link-faq-tooltip = 常見問題
 
 ## Error page
 
@@ -691,3 +729,9 @@ breach-detail-cta-signup = 檢查是否有外洩事件
 floating-banner-text = 訂閱來自 { -brand-Mozilla } 的最新資訊與使用秘訣來加強您的線上安全。
 floating-banner-link-label = 訂閱
 floating-banner-dismiss-button-label = 不要，謝謝
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>：全新名稱、外觀與更多<b>奪回隱私權</b>的方式。
+banner-monitor-rebrand-dismiss-button-label = 確定
+banner-monitor-rebrand-dismiss-button-tooltip = 知道了！

@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -39,6 +44,8 @@ user-add-duplicate-email = Surel ini telah ditambahkan ke { -product-name }.
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Kunjungi { $preferencesLink } Anda untuk memeriksa status { $userEmail }.
+user-add-verification-email-just-sent = Surel verifikasi lainnya tidak dapat dikirim secepat ini. Silakan coba lagi nanti.
+user-add-unknown-error = Terjadi kesalahan saat menambahkan alamat surel lainnya. Silakan coba lagi nanti.
 error-headline = Masalah
 user-verify-token-error = Token verifikasi diperlukan.
 user-verify-email-report-subject = Laporan { -product-name } Anda
@@ -690,7 +697,7 @@ ad-unit-6-before-you-complete = Sebelum menyelesaikan pendaftaran berikutnya, gu
 
 -brand-firefox = Firefox
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
 -brand-monitor-premium = Monitor Premium
@@ -698,12 +705,15 @@ ad-unit-6-before-you-complete = Sebelum menyelesaikan pendaftaran berikutnya, gu
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Akun Mozilla
+open-in-new-tab-alt = Buka tautan di tab baru
 
 ## Search Engine Optimization
 
@@ -711,8 +721,10 @@ meta-desc-2 = Cari tahu apakah Anda telah menjadi bagian dari pembobolan data de
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Masuk
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -723,19 +735,43 @@ site-nav-help-link = Bantuan dan Dukungan
 site-nav-ad-callout = Coba alat keamanan kami lainnya:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Menu utama
+main-nav-button-collapse-label = Ciutkan menu
+main-nav-button-collapse-tooltip = Ciutkan menu
+main-nav-button-expand-label = Bentangkan menu
+main-nav-button-expand-tooltip = Bentangkan menu
+main-nav-label = Navigasi
+main-nav-link-home-label = Beranda
+main-nav-link-dashboard-label = Dasbor
+main-nav-link-settings-label = Pengaturan
+main-nav-link-faq-label = T&amp;J
+main-nav-link-faq-tooltip = Tanya-Jawab
 
 ## User menu
 
+# Obsolete
 menu-button-title = Menu pengguna
+# Obsolete
 menu-button-alt = Buka menu pengguna
+# Obsolete
 menu-list-accessible-label = Menu akun
+# Obsolete
 menu-item-fxa-2 = Kelola { -brand-mozilla-account } Anda
-menu-item-fxa-alt-2 = Buka laman { -brand-mozilla-account }
+# Obsolete
 menu-item-settings = Pengaturan
-menu-item-settings-alt = Buka laman pengaturan
+# Obsolete
 menu-item-help = Bantuan dan dukungan
-menu-item-help-alt = Buka laman bantuan dan dukungan
+# Obsolete
 menu-item-logout = Keluar
+user-menu-trigger-label = Buka menu pengguna
+user-menu-trigger-tooltip = Profil
+user-menu-manage-fxa-label = Kelola { -brand-mozilla-account } Anda
+user-menu-settings-label = Pengaturan
+user-menu-settings-tooltip = Konfigurasikan { -brand-mozilla-monitor }
+user-menu-help-label = Bantuan dan dukungan
+user-menu-help-tooltip = Dapatkan bantuan menggunakan { -brand-mozilla-monitor }
+user-menu-signout-label = Keluar
+user-menu-signout-tooltip = Keluar dari { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -744,6 +780,8 @@ terms-of-service = Ketentuan Layanan
 privacy-notice = Kebijakan Privasi
 github = { -brand-github }
 footer-nav-all-breaches = Semua Pembobolan
+footer-external-link-faq-label = T&amp;J
+footer-external-link-faq-tooltip = Tanya-Jawab
 
 ## Error page
 
@@ -776,3 +814,9 @@ breach-detail-cta-signup = Periksa pembobolan data
 floating-banner-text = Tingkatkan keamanan daring Anda dengan berita, kiat, dan pembaruan dari { -brand-Mozilla }.
 floating-banner-link-label = Daftar
 floating-banner-dismiss-button-label = Tidak, terima kasih
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nama baru, tampilan, dan lebih banyak cara untuk <b>mendapatkan kembali privasi Anda</b>.
+banner-monitor-rebrand-dismiss-button-label = Oke
+banner-monitor-rebrand-dismiss-button-tooltip = Tutup

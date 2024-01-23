@@ -18,4 +18,8 @@ add-email-your-account-includes =
 add-email-address-input-label = E-mailová adresa
 add-email-send-verification-button = Zaslat ověřovací odkaz
 # $email is the newly added email address. $settings-href is the URL for the Settings page. HTML tags should not be translated, e.g. `<a>`
+# This string will be deprecated when the new Plus plan is live.
 add-email-verify-the-link = Ověřte odkaz odeslaný na adresu { $email } pro její přidání do { -brand-fx-monitor(case: "gen") }. Všechny své e-mailové adresy můžete spravovat v <a { $settings-href }>Nastavení</a>.
+# Variables:
+#   $email (string) - An email address submitted by the user for monitoring, e.g. `example@example.com`
+add-email-verify-the-link-2 = Pomocí odkazu odeslaného na adresu <b>{ $email }</b> tuto přidáte do služby { -brand-mozilla-monitor }.

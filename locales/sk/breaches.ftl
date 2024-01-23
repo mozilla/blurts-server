@@ -101,7 +101,7 @@ breach-checklist-ssn-header = Sledujte podozrivé pôžičky a pohyby na svojich
 #   $equifaxLink (string) - a link to the Equifax website
 #   $experianLink (string) - a link to the Experian website
 #   $transUnionLink (string) - a link to the TransUnion website
-breach-checklist-ssn-body-2 = Môžete tiež zvážiť zmrazenie svojho kreditu na { $equifaxLink }, { $experianLink } a { $transUnionLink }, aby ste zabránili podvodníkom otvárať si nové účty na vaše meno. Je to zadarmo a neovplyvní to vaše kreditné skóre.
+breach-checklist-ssn-body-2 = Môžete tiež zvážiť zmrazenie úverov na { $equifaxLink }, { $experianLink } a { $transUnionLink }, aby ste zabránili podvodníkom otvárať si nové účty na vaše meno. Je to zadarmo a neovplyvní to vaše kreditné skóre.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 

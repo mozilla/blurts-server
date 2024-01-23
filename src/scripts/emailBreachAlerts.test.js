@@ -106,6 +106,7 @@ test("rejects invalid messages", async () => {
   const consoleError = jest
     .spyOn(console, "error")
     .mockImplementation(() => {});
+  const consoleLog = jest.spyOn(console, "log").mockImplementation();
 
   await poll(
     subClient,
@@ -118,6 +119,9 @@ test("rejects invalid messages", async () => {
   expect(subClient.acknowledge).toBeCalledTimes(0);
   expect(consoleError).toBeCalledWith(
     "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.",
+  );
+  expect(consoleLog).toHaveBeenCalledWith(
+    'Received message: {"hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
   );
 
   await poll(
@@ -132,6 +136,9 @@ test("rejects invalid messages", async () => {
   expect(consoleError).toBeCalledWith(
     "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.",
   );
+  expect(consoleLog).toHaveBeenCalledWith(
+    'Received message: {"breachName":"test1","hashSuffixes":["test-suffix1"]}',
+  );
 
   await poll(
     subClient,
@@ -144,6 +151,9 @@ test("rejects invalid messages", async () => {
   expect(subClient.acknowledge).toBeCalledTimes(0);
   expect(consoleError).toBeCalledWith(
     "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.",
+  );
+  expect(consoleLog).toHaveBeenCalledWith(
+    'Received message: {"breachName":"test1","hashPrefix":"test-prefix1"}',
   );
 
   await poll(
@@ -158,9 +168,17 @@ test("rejects invalid messages", async () => {
   expect(consoleError).toBeCalledWith(
     "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.",
   );
+  expect(consoleLog).toHaveBeenCalledWith(
+    'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":""}',
+  );
 });
 
 test("processes valid messages", async () => {
+  const consoleLog = jest.spyOn(console, "log").mockImplementation();
+  // It's not clear if the calls to console.info are important enough to remain,
+  // but since they were already there when adding the "no logs" rule in tests,
+  // I'm respecting Chesterton's Fence and leaving them in place for now:
+  jest.spyOn(console, "info").mockImplementation();
   const { sendEmail } = await import("../utils/email.js");
 
   const mockedUtilsHibp = jest.requireMock("../utils/hibp.js");
@@ -184,6 +202,9 @@ test("processes valid messages", async () => {
   expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
   // Fabricated breaches are not emailed.
   expect(sendEmail).toHaveBeenCalledTimes(0);
+  expect(consoleLog).toHaveBeenCalledWith(
+    'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
+  );
 
   subClient.acknowledge.mockReset();
   sendEmail.mockReset();
@@ -200,6 +221,9 @@ test("processes valid messages", async () => {
   expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
   // Unverified, not fabricated, not spam list breaches are not emailed.
   expect(sendEmail).toHaveBeenCalledTimes(0);
+  expect(consoleLog).toHaveBeenCalledWith(
+    'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
+  );
 
   subClient.acknowledge.mockReset();
   sendEmail.mockReset();
@@ -216,6 +240,9 @@ test("processes valid messages", async () => {
   expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
   // Verified, not fabricated, spam list breaches are not emailed.
   expect(sendEmail).toHaveBeenCalledTimes(0);
+  expect(consoleLog).toHaveBeenCalledWith(
+    'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
+  );
 
   subClient.acknowledge.mockReset();
   sendEmail.mockReset();
@@ -232,9 +259,17 @@ test("processes valid messages", async () => {
   expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
   // Verified, not fabricated, not spam list breaches are emailed.
   expect(sendEmail).toHaveBeenCalledTimes(1);
+  expect(consoleLog).toHaveBeenCalledWith(
+    'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
+  );
 });
 
 test("skipping email when subscriber id exists in email_notifications table", async () => {
+  const consoleLog = jest.spyOn(console, "log").mockImplementation();
+  // It's not clear if the calls to console.info are important enough to remain,
+  // but since they were already there when adding the "no logs" rule in tests,
+  // I'm respecting Chesterton's Fence and leaving them in place for now:
+  jest.spyOn(console, "info").mockImplementation();
   const { sendEmail } = await import("../utils/email.js");
   const mockedUtilsHibp = jest.requireMock("../utils/hibp.js");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
@@ -277,9 +312,17 @@ test("skipping email when subscriber id exists in email_notifications table", as
   expect(subClient.acknowledge).toHaveBeenCalledTimes(1);
   // Verified, not fabricated, not spam list breaches are emailed.
   expect(sendEmail).toHaveBeenCalledTimes(0);
+  expect(consoleLog).toHaveBeenCalledWith(
+    'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
+  );
 });
 
 test("throws an error when addEmailNotification fails", async () => {
+  const consoleLog = jest.spyOn(console, "log").mockImplementation();
+  // It's not clear if the calls to console.info are important enough to remain,
+  // but since they were already there when adding the "no logs" rule in tests,
+  // I'm respecting Chesterton's Fence and leaving them in place for now:
+  jest.spyOn(console, "info").mockImplementation();
   const { sendEmail } = await import("../utils/email.js");
   const mockedUtilsHibp = jest.requireMock("../utils/hibp.js");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
@@ -325,10 +368,18 @@ test("throws an error when addEmailNotification fails", async () => {
     expect(e.message).toBe("add failed");
   }
 
+  expect(consoleLog).toHaveBeenCalledWith(
+    'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
+  );
   expect(sendEmail).toHaveBeenCalledTimes(0);
 });
 
 test("throws an error when markEmailAsNotified fails", async () => {
+  const consoleLog = jest.spyOn(console, "log").mockImplementation();
+  // It's not clear if the calls to console.info are important enough to remain,
+  // but since they were already there when adding the "no logs" rule in tests,
+  // I'm respecting Chesterton's Fence and leaving them in place for now:
+  jest.spyOn(console, "info").mockImplementation();
   const { sendEmail } = await import("../utils/email.js");
   const mockedUtilsHibp = jest.requireMock("../utils/hibp.js");
   mockedUtilsHibp.getBreachByName.mockReturnValue({
@@ -374,5 +425,8 @@ test("throws an error when markEmailAsNotified fails", async () => {
     expect(console.error).toBeCalled();
     expect(e.message).toBe("mark failed");
   }
+  expect(consoleLog).toHaveBeenCalledWith(
+    'Received message: {"breachName":"test1","hashPrefix":"test-prefix1","hashSuffixes":["test-suffix1"]}',
+  );
   expect(sendEmail).toHaveBeenCalledTimes(1);
 });

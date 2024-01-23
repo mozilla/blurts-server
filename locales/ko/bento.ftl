@@ -1,21 +1,13 @@
-fx-monitor = { -product-name }
-pocket = { -brand-pocket }
-fx-send = { -brand-send }
-fx-lockwise = { -brand-lockwise }
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-## If possible, keep "Firefox Browser" in English, but feel free 
-## to translate browser if that doesn't work for your language.
-
-fx-desktop = { -brand-name } 데스크톱용 브라우저
-fx-mobile = { -brand-name } 모바일 브라우저
-
-##
-
-# Aria label for the Bento button
-bento-button-title = { -brand-name } 앱 및 서비스
+toolbar-app-picker-trigger-title = { -brand-mozilla } 앱 및 서비스
+toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
+toolbar-app-picker-product-relay = { -brand-relay }
+toolbar-app-picker-product-pocket = { -brand-pocket }
+toolbar-app-picker-product-fx-desktop = 데스크톱 용 { -brand-firefox }
+toolbar-app-picker-product-fx-mobile = 모바일 용 { -brand-firefox }
+toolbar-app-picker-by-mozilla = { -brand-mozilla } 제작
 # Bento headline
 fx-makes-tech = { -brand-name }은 온라인 개인 정보 보호를 위한 기술입니다.
-# A link at the bottom of the Bento menu
-made-by-mozilla = { -brand-Mozilla } 제작
-# Aria label for button that closes the Bento menu
-mobile-close-bento-button-title = 메뉴 닫기

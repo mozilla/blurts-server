@@ -32,6 +32,15 @@ export class DashboardPage {
   readonly chartTooltip: Locator;
   readonly aboutActiveExposuresPopup: Locator;
 
+  readonly subscribeButton: Locator;
+  readonly subscribeDialog: Locator;
+  readonly subscribeDialogCloseButton: Locator;
+  readonly subscribeDialogSelectYearlyPlanLink: Locator;
+  readonly subscribeDialogSelectMonthlyPlanLink: Locator;
+  readonly yearlyMonthlyTablist: Locator;
+  readonly yearlyTab: Locator;
+  readonly monthlyTab: Locator;
+
   constructor(page: Page) {
     this.page = page;
     this.dataBreachEmailDropdown = page.locator("custom-select");
@@ -49,7 +58,7 @@ export class DashboardPage {
       name: "Mozilla apps and services",
     });
     this.upgradeToPremium = page.getByRole("button", {
-      name: "Upgrade To Premium",
+      name: "Automatic data removal: Off",
     });
 
     //sidebar nav
@@ -68,7 +77,7 @@ export class DashboardPage {
     });
 
     this.fixedHeading = page.getByRole("heading", {
-      name: "View all exposures that are fixed or in-progress",
+      name: "View all exposures that are fixed or in progress",
     });
 
     this.toolTip = page.locator(
@@ -91,9 +100,28 @@ export class DashboardPage {
     this.aboutActiveExposuresPopup = page.getByRole("dialog", {
       name: "About your number of active exposures",
     });
+
+    this.subscribeButton = page.getByRole("button", {
+      name: "Automatic data removal: Off",
+    });
+    this.subscribeDialog = page.getByRole("dialog", {
+      name: "Turn on automatic data removal with Monitor Plus",
+    });
+    this.subscribeDialogCloseButton = page.getByRole("button", {
+      name: "Close",
+    });
+    this.subscribeDialogSelectYearlyPlanLink = page.getByRole("link", {
+      name: "Select yearly plan",
+    });
+    this.subscribeDialogSelectMonthlyPlanLink = page.getByRole("link", {
+      name: "Select monthly plan",
+    });
+    this.yearlyMonthlyTablist = page.getByText("YearlyMonthly");
+    this.yearlyTab = page.getByRole("tab", { name: "Yearly" });
+    this.monthlyTab = page.getByRole("tab", { name: "Monthly" });
   }
 
   async open() {
-    await this.page.goto("/redesign/user/dashboard");
+    await this.page.goto("/user/dashboard");
   }
 }

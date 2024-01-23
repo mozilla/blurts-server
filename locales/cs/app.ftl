@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
@@ -6,13 +11,13 @@
 
 -product-name =
     { $case ->
-       *[nom] Firefox Monitor
-        [gen] Firefox Monitoru
-        [dat] Firefox Monitoru
-        [acc] Firefox Monitor
-        [voc] Firefox Monitore
-        [loc] Firefox Monitoru
-        [ins] Firefox Monitorem
+        [gen] Mozilla Monitoru
+        [dat] Mozilla Monitoru
+        [acc] Mozilla Monitor
+        [voc] Mozilla Monitore
+        [loc] Mozilla Monitoru
+        [ins] Mozilla Monitorem
+       *[nom] Mozilla Monitor
     }
 -product-name-nowrap =
     { $case ->
@@ -26,13 +31,13 @@
     }
 -product-short-name =
     { $case ->
-        [nom] Monitor
         [gen] Monitoru
         [dat] Monitoru
         [acc] Monitor
         [voc] Monitore
         [loc] Monitoru
-       *[ins] Monitorem
+        [ins] Monitorem
+       *[nom] Monitor
     }
 -brand-name =
     { $case ->
@@ -131,6 +136,8 @@ user-add-duplicate-email = Tato e-mailová adresa již byla do { -product-name(c
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Chcete-li zkontrolovat stav e-mailové adresy { $userEmail }, navštivte své { $preferencesLink }.
+user-add-verification-email-just-sent = Další ověřovací e-mail nelze odeslat tak rychle. Zkuste to prosím později.
+user-add-unknown-error = Něco se pokazilo při přidávání další e-mailové adresy. Zkuste to prosím později.
 error-headline = Chyba
 user-verify-token-error = Je vyžadován ověřovací token.
 user-verify-email-report-subject = Vaše hlášení od { -product-name(case: "gen") }
@@ -783,13 +790,13 @@ ad-unit-6-before-you-complete = Během své další registrace použijte místo 
 -brand-monitor = Monitor
 -brand-fx-monitor =
     { $case ->
-        [gen] Firefox Monitoru
-        [dat] Firefox Monitoru
-        [acc] Firefox Monitor
-        [voc] Firefox Monitore
-        [loc] Firefox Monitoru
-        [ins] Firefox Monitorem
-       *[nom] Firefox Monitor
+        [gen] Mozilla Monitoru
+        [dat] Mozilla Monitoru
+        [acc] Mozilla Monitor
+        [voc] Mozilla Monitore
+        [loc] Mozilla Monitoru
+        [ins] Mozilla Monitorem
+       *[nom] Mozilla Monitor
     }
     .gender = masculine
 -brand-mozilla =
@@ -829,6 +836,8 @@ ad-unit-6-before-you-complete = Během své další registrace použijte místo 
     .gender = masculine
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
@@ -867,6 +876,7 @@ ad-unit-6-before-you-complete = Během své další registrace použijte místo 
                *[upper] Účet Mozilla
             }
     }
+open-in-new-tab-alt = Otevřít odkaz v novém panelu
 
 ## Search Engine Optimization
 
@@ -874,8 +884,10 @@ meta-desc-2 = Zjistěte pomocí { -brand-fx-monitor }, zda jste nebyli součást
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Přihlásit se
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -886,19 +898,43 @@ site-nav-help-link = Nápověda a podpora
 site-nav-ad-callout = Vyzkoušejte naše další bezpečnostní nástroje:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Hlavní nabídka
+main-nav-button-collapse-label = Sbalit nabídku
+main-nav-button-collapse-tooltip = Sbalit nabídku
+main-nav-button-expand-label = Rozbalit nabídku
+main-nav-button-expand-tooltip = Rozbalit nabídku
+main-nav-label = Navigace
+main-nav-link-home-label = Domů
+main-nav-link-dashboard-label = Nástěnka
+main-nav-link-settings-label = Nastavení
+main-nav-link-faq-label = FAQ
+main-nav-link-faq-tooltip = Často kladené otázky
 
 ## User menu
 
+# Obsolete
 menu-button-title = Nabídka uživatele
+# Obsolete
 menu-button-alt = Otevřít nabídku uživatele
+# Obsolete
 menu-list-accessible-label = Nabídka účtu
+# Obsolete
 menu-item-fxa-2 = Spravovat { -brand-mozilla-account(case: "acc", capitalization: "lower") }
-menu-item-fxa-alt-2 = Otevřít stránku pro { -brand-mozilla-account(case: "acc") }
+# Obsolete
 menu-item-settings = Nastavení
-menu-item-settings-alt = Otevřít stránku nastavení
+# Obsolete
 menu-item-help = Nápověda a podpora
-menu-item-help-alt = Otevřít stránku nápovědy a podpory
+# Obsolete
 menu-item-logout = Odhlásit se
+user-menu-trigger-label = Otevřít uživatelskou nabídku
+user-menu-trigger-tooltip = Profil
+user-menu-manage-fxa-label = Spravovat { -brand-mozilla-account(case: "acc", capitalization: "lower") }
+user-menu-settings-label = Nastavení
+user-menu-settings-tooltip = Upravit { -brand-mozilla-monitor(case: "acc", capitalization: "lower") }
+user-menu-help-label = Nápověda a podpora
+user-menu-help-tooltip = Získat pomoc s používáním { -brand-mozilla-monitor(case: "gen") }
+user-menu-signout-label = Odhlásit se
+user-menu-signout-tooltip = Odhlásit se z { -brand-mozilla-monitor(case: "gen") }
 
 ## Footer
 
@@ -907,6 +943,8 @@ terms-of-service = Podmínky služby
 privacy-notice = Zásady ochrany osobních údajů
 github = { -brand-github }
 footer-nav-all-breaches = Všechny úniky
+footer-external-link-faq-label = FAQ
+footer-external-link-faq-tooltip = Často kladené otázky
 
 ## Error page
 
@@ -939,3 +977,9 @@ breach-detail-cta-signup = Prohledat úniky
 floating-banner-text = Zvyšte své online zabezpečení pomocí novinek, tipů a aktualizací od { -brand-Mozilla(case: "gen") }.
 floating-banner-link-label = Přihlásit se
 floating-banner-dismiss-button-label = Ne, díky
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nové jméno, vzhled a ještě více způsobů, jak <b>získat zpět své soukromí</b>.
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Zavřít

@@ -18,7 +18,7 @@ import {
 import { getL10n } from "../../../../functions/server/l10n";
 
 interface EmailDeleteRequest {
-  emailId: string;
+  emailId: number;
 }
 
 export async function POST(req: NextRequest) {

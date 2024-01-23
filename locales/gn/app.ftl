@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -39,6 +44,8 @@ user-add-duplicate-email = Ko ñanduti veve ojuajúma { -product-name } rehe.
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Eho nde { $preferencesLink }-pe ehechajey hag̃ua { $userEmail } rekotee.
+user-add-verification-email-just-sent = Ndereguerahaukakuaái ambue ñanduti veve rechajeyha ipya’éva. Eha’ãjey ag̃ave.
+user-add-unknown-error = Oĩ osẽvaíva embojuajúvo ambue ñanduti veve kundaharape. Ikatu eha’ãjey ag̃ave.
 error-headline = Javy
 user-verify-token-error = Oñekotevẽ token jehechajeyrã.
 user-verify-email-report-subject = Ne marandu { -product-name } rehe
@@ -692,7 +699,7 @@ ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eiporu ñand
 
 -brand-firefox = Firefox
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Iporãvéva
 -brand-monitor-premium = Mba’erechaha iporãvéva
@@ -700,12 +707,15 @@ ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eiporu ñand
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla mba’ete
+open-in-new-tab-alt = Embojuruja juajuha tendayke pyahúpe
 
 ## Search Engine Optimization
 
@@ -713,8 +723,10 @@ meta-desc-2 = Ehecha { -brand-fx-monitor } ndive eguerekópa mba’ekuaarã ñem
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Eñepyrũ tembiapo
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -725,19 +737,43 @@ site-nav-help-link = Ñepytvõ ha Pytyvõha
 site-nav-ad-callout = Eiporu ore ambue rembiporu tekorosãrã:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Poravorã tuichavéva
+main-nav-button-collapse-label = Poravorã pa’ãmbyre
+main-nav-button-collapse-tooltip = Poravorã pa’ãmbyre
+main-nav-button-expand-label = Emyasãi poravorã
+main-nav-button-expand-tooltip = Emyasãi poravorã
+main-nav-label = Ñeikundaha
+main-nav-link-home-label = Óga
+main-nav-link-dashboard-label = Mba’erupa
+main-nav-link-settings-label = Ñemboheko
+main-nav-link-faq-label = FAQs
+main-nav-link-faq-tooltip = Porandu py’ỹiguáva
 
 ## User menu
 
+# Obsolete
 menu-button-title = Poruhára jeporavoha
+# Obsolete
 menu-button-alt = Embojuruja poruhára jeporavoha
+# Obsolete
 menu-list-accessible-label = Mba’ete jeporavoha
+# Obsolete
 menu-item-fxa-2 = Eñangareko { -brand-mozilla-account } rehe
-menu-item-fxa-alt-2 = Embojuruja { -brand-mozilla-account } kuatiarogue
+# Obsolete
 menu-item-settings = Ñemboheko
-menu-item-settings-alt = Embojuruja kuatiarogue ñemboheko
+# Obsolete
 menu-item-help = Ñepytvõ ha Pytyvõha
-menu-item-help-alt = Embojuruja kuatiarogue ñepytyvõha
+# Obsolete
 menu-item-logout = Emboty tembiapo
+user-menu-trigger-label = Embojuruja poruhára jeporavoha
+user-menu-trigger-tooltip = Mba’ete
+user-menu-manage-fxa-label = Eñangareko { -brand-mozilla-account } rehe
+user-menu-settings-label = Ñemboheko
+user-menu-settings-tooltip = Emboheko { -brand-mozilla-monitor }
+user-menu-help-label = Ñepytvõ ha jeykeko
+user-menu-help-tooltip = Eñepytyvõuka eiporu hag̃ua { -brand-mozilla-monitor }
+user-menu-signout-label = Emboty tembiapo
+user-menu-signout-tooltip = Emboty tembiapo { -brand-mozilla-monitor }-pe
 
 ## Footer
 
@@ -746,6 +782,8 @@ terms-of-service = Mba’epytyvõrã ñemboguata
 privacy-notice = Marandu’i ñemiguáva
 github = { -brand-github }
 footer-nav-all-breaches = Opaite Ñembogua
+footer-external-link-faq-label = FAQs
+footer-external-link-faq-tooltip = Porandu py’ỹiguáva
 
 ## Error page
 
@@ -778,3 +816,9 @@ breach-detail-cta-signup = Ehechajey oĩpa ñembogua
 floating-banner-text = Eñemohekorosãve ñandutípe marandu, ha { -brand-Mozilla } ñembohekopyahu ndive.
 floating-banner-link-label = Eñemboheraguapy
 floating-banner-dismiss-button-label = Nahániri, aguyje
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Héra pyahu, ha’ãnga ha avei mba’éichapa <b>erujeýta nde rekoñemi</b>.
+banner-monitor-rebrand-dismiss-button-label = MONEĨ
+banner-monitor-rebrand-dismiss-button-tooltip = Mboyke

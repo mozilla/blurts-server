@@ -2,11 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
- /* eslint @typescript-eslint/no-var-requires: "off" */
-import { withSentryConfig } from "@sentry/nextjs"
+/* eslint @typescript-eslint/no-var-requires: "off" */
+import { withSentryConfig } from "@sentry/nextjs";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  productionBrowserSourceMaps: true,
   images: {
     remotePatterns: [
       {
@@ -123,6 +124,21 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Before we redesigned the website, the dashboard would be reachable
+      // via /user/breaches:
+      {
+        source: "/user/breaches",
+        destination: "/user/dashboard",
+        permanent: true,
+      },
+      // While we were implementing a redesign, we made it available at the
+      // /redesign subpath. In case we still have lingering links to there
+      // anywhere, this redirect should have people end up at the right place:
+      {
+        source: "/redesign/:path*",
+        destination: "/:path*",
+        permanent: true,
+      },
       // We used to have a page with security tips;
       // if folks get sent there via old lnks, redirect them to the most
       // relevant page on SuMo:
@@ -168,6 +184,11 @@ const sentryOptions = {
   // Upload additional client files (increases upload size)
   // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#widen-the-upload-scope
   widenClientFileUpload: true,
+  hideSourceMaps: false,
 };
 
-export default withSentryConfig(nextConfig, sentryWebpackPluginOptions, sentryOptions)
+export default withSentryConfig(
+  nextConfig,
+  sentryWebpackPluginOptions,
+  sentryOptions,
+);

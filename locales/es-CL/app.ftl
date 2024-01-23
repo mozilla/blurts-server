@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -679,7 +684,7 @@ ad-unit-6-before-you-complete = Antes de completar el próximo registro, usa una
 
 -brand-firefox = Firefox
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
 -brand-monitor-premium = Monitor Premium
@@ -687,12 +692,15 @@ ad-unit-6-before-you-complete = Antes de completar el próximo registro, usa una
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Cuenta de Mozilla
+open-in-new-tab-alt = Abrir enlace en una nueva pestaña
 
 ## Search Engine Optimization
 
@@ -700,8 +708,10 @@ meta-desc-2 = Descubre si has sido parte de una filtración de datos con { -bran
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Conectarse
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -712,19 +722,43 @@ site-nav-help-link = Ayuda y soporte
 site-nav-ad-callout = Prueba nuestras otras herramientas de seguridad:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Menú principal
+main-nav-button-collapse-label = Contraer menú
+main-nav-button-collapse-tooltip = Contraer menú
+main-nav-button-expand-label = Expandir menú
+main-nav-button-expand-tooltip = Expandir menú
+main-nav-label = Navegación
+main-nav-link-home-label = Inicio
+main-nav-link-dashboard-label = Panel
+main-nav-link-settings-label = Ajustes
+main-nav-link-faq-label = Preguntas frecuentes
+main-nav-link-faq-tooltip = Preguntas frecuentes
 
 ## User menu
 
+# Obsolete
 menu-button-title = Menú del usuario
+# Obsolete
 menu-button-alt = Abrir menú del usuario
+# Obsolete
 menu-list-accessible-label = Menú de la cuenta
+# Obsolete
 menu-item-fxa-2 = Gestiona tu { -brand-mozilla-account }
-menu-item-fxa-alt-2 = Abrir la página de { -brand-mozilla-account }
+# Obsolete
 menu-item-settings = Ajustes
-menu-item-settings-alt = Abrir la página de ajustes
+# Obsolete
 menu-item-help = Ayuda y soporte
-menu-item-help-alt = Abrir la página de ayuda y soporte
+# Obsolete
 menu-item-logout = Salir
+user-menu-trigger-label = Abrir menú del usuario
+user-menu-trigger-tooltip = Perfil
+user-menu-manage-fxa-label = Gestiona tu { -brand-mozilla-account }
+user-menu-settings-label = Ajustes
+user-menu-settings-tooltip = Configurar { -brand-mozilla-monitor }
+user-menu-help-label = Ayuda y soporte
+user-menu-help-tooltip = Obtén ayuda para usar { -brand-mozilla-monitor }
+user-menu-signout-label = Salir
+user-menu-signout-tooltip = Salir de { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -733,6 +767,8 @@ terms-of-service = Términos del servicio
 privacy-notice = Política de privacidad
 github = { -brand-github }
 footer-nav-all-breaches = Todas las filtraciones
+footer-external-link-faq-label = Preguntas frecuentes
+footer-external-link-faq-tooltip = Preguntas frecuentes
 
 ## Error page
 
@@ -765,3 +801,8 @@ breach-detail-cta-signup = Busca filtraciones
 floating-banner-text = Mejora tu seguridad en línea con noticias, consejos y actualizaciones de { -brand-Mozilla }.
 floating-banner-link-label = Registrarse
 floating-banner-dismiss-button-label = No, gracias
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-dismiss-button-label = Aceptar
+banner-monitor-rebrand-dismiss-button-tooltip = Ocultar

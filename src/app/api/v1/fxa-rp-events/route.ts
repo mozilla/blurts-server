@@ -23,6 +23,7 @@ import {
 import { bearerToken } from "../../utils/auth";
 import { revokeOAuthTokens } from "../../../../utils/fxa";
 import appConstants from "../../../../appConstants";
+import { changeSubscription } from "../../../functions/server/changeSubscription";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -170,7 +171,6 @@ export async function POST(request: NextRequest) {
       `could not find subscriber with fxa user id: ${fxaUserId}`,
     );
     logger.error("fxaRpEvents", e);
-    captureException(e);
     return NextResponse.json({ success: true, message: "OK" }, { status: 200 });
   }
 
@@ -191,7 +191,7 @@ export async function POST(request: NextRequest) {
           event
         ] as ProfileChangeEvent;
         logger.info("fxa_profile_update", {
-          subscriber: subscriber.id,
+          subscriber_id: subscriber.id,
           event,
           updatedProfileFromEvent,
         });
@@ -241,53 +241,143 @@ export async function POST(request: NextRequest) {
           updatedSubscriptionFromEvent,
         });
 
-        // get profile id
-        const result = await getOnerepProfileId(subscriber.id);
-        const oneRepProfileId = result?.[0]?.["onerep_profile_id"] as number;
-
-        logger.info("fxa_subscription_change", JSON.stringify(result));
-
-        // MNTOR-2103: if one rep profile id doesn't exist in the db, fail silently
-        if (!oneRepProfileId) {
-          logger.error(
-            "No OneRep profile Id found, subscriber: ",
-            subscriber.id,
-          );
-
-          captureException(
-            new Error(`No OneRep profile Id found, subscriber: ${
-              subscriber.id as string
-            }\n
-            Event: ${event}\n
-            updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`),
-          );
-          break;
-        }
+        logger.info("fxa_profile_subscription", {
+          subscriber_id: subscriber.id,
+        });
 
         try {
+          // get profile id
+          const result = await getOnerepProfileId(subscriber.id);
+          const oneRepProfileId = result?.[0]?.["onerep_profile_id"] as number;
+
+          logger.info("get_onerep_profile", {
+            subscriber_id: subscriber.id,
+            result: JSON.stringify(result),
+          });
+
           if (
             updatedSubscriptionFromEvent.isActive &&
             updatedSubscriptionFromEvent.capabilities.includes(
               MONITOR_PREMIUM_CAPABILITY,
             )
           ) {
+            // Update fxa profile data to match subscription status.
+            // This is done before trying to activate the OneRep subscription, in case there are
+            // any problems with activation.
+            await changeSubscription(subscriber, true);
+
+            // MNTOR-2103: if one rep profile id doesn't exist in the db, fail immediately
+            if (!oneRepProfileId) {
+              logger.error("onerep_profile_not_found", {
+                subscriber_id: subscriber.id,
+              });
+
+              captureException(
+                new Error(`No OneRep profile Id found, subscriber: ${
+                  subscriber.id as string
+                }\n
+            Event: ${event}\n
+            updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`),
+              );
+              return NextResponse.json(
+                { success: false, message: "failed_activating_subscription" },
+                { status: 500 },
+              );
+            }
+
             // activate and opt out profiles
-            await activateProfile(oneRepProfileId);
-            await optoutProfile(oneRepProfileId);
+            try {
+              await activateProfile(oneRepProfileId);
+            } catch (ex) {
+              if (
+                (ex as Error).message ===
+                "Failed to activate OneRep profile: [403] [Forbidden]"
+              )
+                logger.error("profile_already_activated", {
+                  subscriber_id: subscriber.id,
+                  exception: ex,
+                });
+            }
+
+            try {
+              await optoutProfile(oneRepProfileId);
+            } catch (ex) {
+              if (
+                (ex as Error).message ===
+                "Failed to opt-out OneRep profile: [403] [Forbidden]"
+              )
+                logger.error("profile_already_opted_out", {
+                  subscriber_id: subscriber.id,
+                  exception: ex,
+                });
+            }
+
+            logger.info("activated_onerep_profile", {
+              subscriber_id: subscriber.id,
+            });
           } else if (
             !updatedSubscriptionFromEvent.isActive &&
             updatedSubscriptionFromEvent.capabilities.includes(
               MONITOR_PREMIUM_CAPABILITY,
             )
           ) {
+            // Update fxa profile data to match subscription status.
+            // This is done before trying to deactivate the OneRep subscription, in case there are
+            // any problems with deactivation.
+            await changeSubscription(subscriber, false);
+
+            // MNTOR-2103: if one rep profile id doesn't exist in the db, fail immediately
+            if (!oneRepProfileId) {
+              logger.error("onerep_profile_not_found", {
+                subscriber_id: subscriber.id,
+              });
+
+              captureException(
+                new Error(`No OneRep profile Id found, subscriber: ${
+                  subscriber.id as string
+                }\n
+                        Event: ${event}\n
+                        updateFromEvent: ${JSON.stringify(
+                          updatedSubscriptionFromEvent,
+                        )}`),
+              );
+              return NextResponse.json(
+                { success: false, message: "failed_activating_subscription" },
+                { status: 500 },
+              );
+            }
+
             // deactivation stops opt out process
-            await deactivateProfile(oneRepProfileId);
+            try {
+              await deactivateProfile(oneRepProfileId);
+            } catch (ex) {
+              if (
+                (ex as Error).message ===
+                "Failed to deactivate OneRep profile: [403] [Forbidden]"
+              )
+                logger.error("profile_already_opted_out", {
+                  subscriber_id: subscriber.id,
+                  exception: ex,
+                });
+            }
+
+            logger.info("deactivated_onerep_profile", {
+              subscriber_id: subscriber.id,
+            });
           }
         } catch (e) {
           captureException(
             new Error(`${(e as Error).message}\n
           Event: ${event}\n
           updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`),
+          );
+          logger.error("failed_activating_subscription", {
+            subscriber_id: subscriber.id,
+            exception: e,
+          });
+          return NextResponse.json(
+            { success: false, message: "failed_activating_subscription" },
+            { status: 500 },
           );
         }
         break;

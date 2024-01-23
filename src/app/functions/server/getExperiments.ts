@@ -15,7 +15,6 @@ import { logger } from "./logging";
 export async function getExperiments(
   userId: string | undefined,
 ): Promise<unknown> {
-  let features;
   if (["stage", "production"].includes(process.env.APP_ENV ?? "local")) {
     const serverUrl = process.env.NIMBUS_SIDECAR_URL;
     if (!serverUrl) {
@@ -23,7 +22,7 @@ export async function getExperiments(
     }
 
     try {
-      features = await fetch(`${serverUrl}/v1/features/`, {
+      const features = await fetch(`${serverUrl}/v1/features/`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -33,11 +32,11 @@ export async function getExperiments(
           context: { key: "example-key" },
         }),
       });
+
+      return features?.json();
     } catch (ex) {
       logger.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
       captureException(ex);
     }
   }
-
-  return features?.json();
 }

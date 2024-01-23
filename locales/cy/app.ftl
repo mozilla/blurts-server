@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -39,6 +44,8 @@ user-add-duplicate-email = Mae'r e-bost hwn eisoes wedi'i ychwanegu at { -produc
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Ewch i'ch { $preferencesLink } i wirio statws { $userEmail }.
+user-add-verification-email-just-sent = Nid oes modd anfon yr e-bost dilysu arall hwn mor fuan. Ceisiwch eto yn nes ymlaen.
+user-add-unknown-error = Aeth rhywbeth o'i le wrth ychwanegu cyfeiriad e-bost arall. Ceisiwch eto yn nes ymlaen.
 error-headline = Gwall
 user-verify-token-error = Mae angen tocyn dilysu.
 user-verify-email-report-subject = Eich adroddiad { -product-name }
@@ -737,7 +744,7 @@ ad-unit-6-before-you-complete = Cyn i chi gwblhau'r cofrestriad nesaf hwnnw, def
 
 -brand-firefox = Firefox
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premiwm
 -brand-monitor-premium = Monitro Premiwm
@@ -745,21 +752,26 @@ ad-unit-6-before-you-complete = Cyn i chi gwblhau'r cofrestriad nesaf hwnnw, def
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Cyfrif Mozilla
+open-in-new-tab-alt = Agorwch y ddolen mewn tab newydd
 
 ## Search Engine Optimization
 
-meta-desc-2 = Darganfyddwch od ydych chi wedi bod yn rhan o dor-data gyda { -brand-fx-monitor }. Byddwn yn eich helpu i wybod beth i'w wneud nesaf ac yn monitro am unrhyw dor-data newydd yn barhaus.
+meta-desc-2 = Darganfyddwch os ydych wedi bod yn rhan o dor-data gyda { -brand-fx-monitor }. Byddwn yn eich helpu i wybod beth i'w wneud nesaf ac yn monitro am unrhyw dor-data newydd ar ôl hynny.
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Mewngofnodi
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -770,19 +782,43 @@ site-nav-help-link = Cymorth a Chefnogaeth
 site-nav-ad-callout = Rhowch gynnig ar ein hoffer diogelwch eraill:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Prif ddewislen
+main-nav-button-collapse-label = Cau'r ddewislen
+main-nav-button-collapse-tooltip = Cau'r ddewislen
+main-nav-button-expand-label = Ehangu'r ddewislen
+main-nav-button-expand-tooltip = Ehangu'r ddewislen
+main-nav-label = Llywio
+main-nav-link-home-label = Cartref
+main-nav-link-dashboard-label = Bwrdd Gwaith
+main-nav-link-settings-label = Gosodiadau
+main-nav-link-faq-label = Cwestiynau Cyffredin
+main-nav-link-faq-tooltip = Cwestiynau cyffredin
 
 ## User menu
 
+# Obsolete
 menu-button-title = Dewislen defnyddiwr
+# Obsolete
 menu-button-alt = Agor dewislen defnyddiwr
+# Obsolete
 menu-list-accessible-label = Dewislen cyfrif
+# Obsolete
 menu-item-fxa-2 = Rheoli eich cyfrif { -brand-mozilla-account }
-menu-item-fxa-alt-2 = Agor tudalen cyfrif { -brand-mozilla-account }
+# Obsolete
 menu-item-settings = Gosodiadau
-menu-item-settings-alt = Agor tudalen gosodiadau
+# Obsolete
 menu-item-help = Cymorth a chefnogaeth
-menu-item-help-alt = Agor y dudalen cymorth a chefnogaeth
+# Obsolete
 menu-item-logout = Allgofnodi
+user-menu-trigger-label = Agor dewislen defnyddiwr
+user-menu-trigger-tooltip = Proffil
+user-menu-manage-fxa-label = Rheoli eich cyfrif { -brand-mozilla-account }
+user-menu-settings-label = Gosodiadau
+user-menu-settings-tooltip = Ffurfweddu { -brand-mozilla-monitor }
+user-menu-help-label = Cymorth a chefnogaeth
+user-menu-help-tooltip = Cael cymorth wrth ddefnyddio { -brand-mozilla-monitor }
+user-menu-signout-label = Allgofnodi
+user-menu-signout-tooltip = Allgofnodi o { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -791,6 +827,8 @@ terms-of-service = Amodau Gwasanaeth
 privacy-notice = Hysbysiad Preifatrwydd
 github = { -brand-github }
 footer-nav-all-breaches = Pob Tor-data
+footer-external-link-faq-label = Cwestiynau Cyffredin
+footer-external-link-faq-tooltip = Cwestiynau cyffredin
 
 ## Error page
 
@@ -806,7 +844,7 @@ error-page-error-other-copy = Ceisiwch eto neu dewch yn ôl yn nes ymlaen
 
 ## Breach overview page
 
-all-breaches-headline-2 = Pob tor-data canfuwyd gan { -brand-fx-monitor }
+all-breaches-headline-2 = Pob tor-data wedi'i ganfod gan { -brand-fx-monitor }
 all-breaches-lead = Rydym yn monitro'r holl achosion hysbys o dor-data i ganfod a gafodd eich manylion personol eu peryglu. Dyma restr lawn o’r holl dor-data sydd wedi’u hadrodd ers 2007.
 search-breaches = Chwilio am Dor-data
 # the kind of user data exposed to hackers in data breach.
@@ -823,3 +861,9 @@ breach-detail-cta-signup = Gwiriwch am dor-data
 floating-banner-text = Rhowch hwb i'ch diogelwch ar-lein gyda newyddion, awgrymiadau a diweddariadau gan { -brand-Mozilla }.
 floating-banner-link-label = Ymuno
 floating-banner-dismiss-button-label = Dim diolch
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Enw, golwg newydd a rhagor o ffyrdd i <b>adennill eich preifatrwydd</b>.
+banner-monitor-rebrand-dismiss-button-label = Iawn
+banner-monitor-rebrand-dismiss-button-tooltip = Cau

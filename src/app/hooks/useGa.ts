@@ -5,6 +5,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { CONST_GA4_MEASUREMENT_ID } from "../../constants";
 
 declare global {
   interface Window {
@@ -18,6 +19,8 @@ interface InitGaProps {
 }
 
 const initGa4 = ({ ga4MeasurementId, debugMode }: InitGaProps) => {
+  // Never run in tests:
+  /* c8 ignore next 3 */
   if (debugMode) {
     console.info("Initialize GA4");
   }
@@ -48,13 +51,17 @@ export const useGa = (): {
     record: (options: Ga4EventOptions) => void;
   };
 } => {
-  const debugMode = process.env.NEXT_PUBLIC_NODE_ENV !== "production";
+  const debugMode =
+    process.env.NEXT_PUBLIC_NODE_ENV !== "production" &&
+    process.env.NODE_ENV !== "test";
 
   useEffect(() => {
     // Enable upload only if the user has not opted out of tracking.
     const uploadEnabled = navigator.doNotTrack !== "1";
 
     if (!uploadEnabled) {
+      // Never run in tests:
+      /* c8 ignore next 3 */
       if (debugMode) {
         console.info("Did not initialize GA4 due to DoNotTrack.");
       }
@@ -63,8 +70,7 @@ export const useGa = (): {
 
     if (!window.gtag) {
       /* c8 ignore next 2 */
-      const ga4MeasurementId =
-        process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID || "G-CXG8K4KW4P";
+      const ga4MeasurementId = CONST_GA4_MEASUREMENT_ID || "G-CXG8K4KW4P";
       initGa4({ ga4MeasurementId, debugMode });
     }
   }, [debugMode]);

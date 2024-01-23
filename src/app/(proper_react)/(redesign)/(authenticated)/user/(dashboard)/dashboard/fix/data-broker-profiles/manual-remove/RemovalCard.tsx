@@ -1,0 +1,71 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+"use client";
+
+import { useRouter } from "next/navigation";
+import { OnerepScanResultRow } from "knex/types/tables";
+import { Button } from "../../../../../../../../../components/client/Button";
+import { useL10n } from "../../../../../../../../../hooks/l10n";
+import { useState } from "react";
+import { ExposureCard } from "../../../../../../../../../components/client/ExposureCard";
+import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
+
+export type Props = {
+  scanResult: OnerepScanResultRow;
+  isPremiumUser: boolean;
+  isEligibleForPremium: boolean;
+  isExpanded: boolean;
+  setExpanded: () => void;
+};
+
+export const RemovalCard = (props: Props) => {
+  const l10n = useL10n();
+  const router = useRouter();
+  const [isResolved, setIsResolved] = useState(
+    props.scanResult.manually_resolved,
+  );
+
+  async function resolve() {
+    setIsResolved(true);
+    const response = await fetch(
+      `/api/v1/user/scan-result/${props.scanResult.onerep_scan_result_id}/resolution/`,
+      {
+        method: "POST",
+        credentials: "same-origin",
+      },
+    );
+    // Ensure previously-visited pages that still have this scan result marked
+    // as unfixed are removed from the cache. See
+    // https://nextjs.org/docs/app/building-your-application/caching#invalidation-1
+    router.refresh();
+    if (!response.ok) {
+      setIsResolved(false);
+    }
+  }
+
+  return (
+    <ExposureCard
+      exposureData={{
+        ...props.scanResult,
+        manually_resolved: isResolved,
+      }}
+      isPremiumBrokerRemovalEnabled={true}
+      isPremiumUser={props.isPremiumUser}
+      isEligibleForPremium={props.isEligibleForPremium}
+      locale={getLocale(l10n)}
+      resolutionCta={
+        !isResolved ? (
+          <Button variant="primary" small onPress={() => void resolve()}>
+            {l10n.getString(
+              "fix-flow-data-broker-profiles-manual-remove-button-mark-fixed",
+            )}
+          </Button>
+        ) : null
+      }
+      isExpanded={props.isExpanded}
+      onToggleExpanded={props.setExpanded}
+    />
+  );
+};

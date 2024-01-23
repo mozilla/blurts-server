@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -71,6 +76,8 @@ user-add-duplicate-email = Цю адресу електронної пошти �
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Відвідайте { $preferencesLink }, щоб перевірити стан { $userEmail }.
+user-add-verification-email-just-sent = Наразі не можна повторно надіслати електронний лист із підтвердженням. Спробуйте знову пізніше.ч
+user-add-unknown-error = Під час додавання іншої адреси електронної пошти сталася помилка. Повторіть спробу пізніше.
 error-headline = Помилка
 user-verify-token-error = Необхідний токен підтвердження.
 user-verify-email-report-subject = Ваш звіт від { -product-name }
@@ -755,7 +762,7 @@ ad-unit-6-before-you-complete = Перш ніж здійснити наступ�
 
 -brand-firefox = Firefox
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Преміум
 -brand-monitor-premium = Monitor Premium
@@ -763,6 +770,8 @@ ad-unit-6-before-you-complete = Перш ніж здійснити наступ�
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
@@ -801,6 +810,7 @@ ad-unit-6-before-you-complete = Перш ніж здійснити наступ�
                *[lower] обліковий запис Mozilla
             }
     }
+open-in-new-tab-alt = Відкрити посилання в новій вкладці
 
 ## Search Engine Optimization
 
@@ -808,8 +818,10 @@ meta-desc-2 = Дізнайтеся за допомогою { -brand-fx-monitor }
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Увійти
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -820,24 +832,43 @@ site-nav-help-link = Довідка та підтримка
 site-nav-ad-callout = Спробуйте інші наші інструменти безпеки:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Головне меню
+main-nav-button-collapse-label = Згорнути меню
+main-nav-button-collapse-tooltip = Згорнути меню
+main-nav-button-expand-label = Розгорнути меню
+main-nav-button-expand-tooltip = Розгорнути меню
+main-nav-label = Навігація
+main-nav-link-home-label = Домівка
+main-nav-link-dashboard-label = Панель керування
+main-nav-link-settings-label = Налаштування
+main-nav-link-faq-label = Поширені запитання
+main-nav-link-faq-tooltip = Поширені запитання
 
 ## User menu
 
+# Obsolete
 menu-button-title = Меню користувача
+# Obsolete
 menu-button-alt = Відкрити меню користувача
+# Obsolete
 menu-list-accessible-label = Меню облікового запису
+# Obsolete
 menu-item-fxa-2 = Керуйте своїм { -brand-mozilla-account(case: "abl") }
-menu-item-fxa-alt-2 = Відкрити сторінку { -brand-mozilla-account(case: "gen") }
+# Obsolete
 menu-item-settings = Налаштування
-menu-item-settings-alt = Відкрити сторінку налаштувань
+# Obsolete
 menu-item-help = Довідка та підтримка
-menu-item-help-alt = Відкрити сторінку довідки та підтримки
+# Obsolete
 menu-item-logout = Вийти
+user-menu-trigger-label = Відкрити меню користувача
+user-menu-trigger-tooltip = Профіль
+user-menu-manage-fxa-label = Керуйте своїм { -brand-mozilla-account }
+user-menu-settings-label = Налаштування
 
 ## Footer
 
 mozilla = { -brand-Mozilla }
-terms-of-service = Умови використання
+terms-of-service = Умови надання послуг
 privacy-notice = Положення про приватність
 github = { -brand-github }
 footer-nav-all-breaches = Усі витоки

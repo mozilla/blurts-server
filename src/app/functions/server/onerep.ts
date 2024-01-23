@@ -20,6 +20,13 @@ import {
 } from "../../../db/tables/featureFlags";
 import { logger } from "./logging";
 
+export const monthlyScansQuota = parseInt(
+  (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
+);
+export const monthlySubscribersQuota = parseInt(
+  (process.env.MONTHLY_SUBSCRIBERS_QUOTA as string) ?? "0",
+);
+
 export type CreateProfileRequest = {
   first_name: string;
   last_name: string;
@@ -108,7 +115,7 @@ async function onerepFetch(
   }
   const onerepApiKey = process.env.ONEREP_API_KEY;
   if (!onerepApiKey) {
-    throw new Error("ONEREP_API_BASE env var not set");
+    throw new Error("ONEREP_API_KEY env var not set");
   }
   const url = new URL(path, onerepApiBase);
   const headers = new Headers(options.headers);

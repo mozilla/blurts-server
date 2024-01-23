@@ -23,7 +23,9 @@ settings-email-list-title = Overvaka e-postadresser
 settings-email-verification-callout = Stadfesting av e-post påkravd
 settings-resend-email-verification-link = Send stadfestings e-posten på nytt
 settings-add-email-button = Legg til e-postadresse
+# Deprecated
 settings-delete-email-button = Slett e-postadresse
+settings-remove-email-button-label = Fjern
 
 ## Cancel Premium subscription
 
@@ -32,7 +34,7 @@ settings-cancel-premium-subscription-title = Avslutt abonnementet på { -brand-p
 ## Deactivate account
 
 settings-deactivate-account-title = Deaktiver kontoen
-settings-fxa-link-label = Gå til { -brand-firefox }-innstillingar
+settings-fxa-link-label-3 = Gå til { -brand-mozilla-account }-innstillingane
 
 ## Add email dialog
 

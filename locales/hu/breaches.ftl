@@ -3,9 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-meta-title = { -brand-fx-monitor } – Vezérlőpult
+
 breach-all-meta-title = { -brand-fx-monitor } – Minden adatvédelmi incidens
 breach-all-meta-social-title = Az összes, a { -brand-fx-monitor } által észlelt adatvédelmi incidens
 breach-all-meta-social-description = Böngéssze a { -brand-fx-monitor } által észlelt ismert adatvédelmi incidensek teljes listáját, és tudja meg, hogy kikerültek-e az információi.
+
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = { -brand-fx-monitor } – { $company } adatvédelmi incidens
@@ -13,6 +15,7 @@ breach-detail-meta-title = { -brand-fx-monitor } – { $company } adatvédelmi i
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Érintette a(z) { $company } adatvédelmi incidense?
 breach-detail-meta-social-description = Használja a { -brand-fx-monitor }t, hogy megtudja, hogy kikerültek-e a személyes információi ebben az adatvédelmi incidensben, és hogy megtudja, mit kell tennie.
+
 breach-scan-meta-title = { -brand-fx-monitor } – Adatvédelmi incidensek eredményei
 breach-scan-meta-social-title = { -brand-fx-monitor } adatvédelmi incidensek eredményei
 breach-scan-meta-social-description = Jelentkezzen be a { -brand-fx-monitor }ba a adatvédelmi incidensek megoldásához, és kapjon folyamatos ellenőrzést az új ismert adatvédelmi incidensekről.
@@ -21,14 +24,17 @@ breach-scan-meta-social-description = Jelentkezzen be a { -brand-fx-monitor }ba 
 
 # Data classes pie chart title
 breach-chart-title = Incidensben érintett adatok
+
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Adatvédelmi incidensek a következőnél: { $email-select }
+
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored =
     { $total ->
         [one] { $count } / { $total } e-mail figyelve
        *[other] { $count } / { $total } e-mail figyelve
     }
+
 # link to Settings page where user can add/remove emails and set message preferences
 manage-emails-link = E-mail-címek kezelése
 
@@ -42,23 +48,28 @@ filter-label-resolved = Megoldott adatvédelmi incidensek
 column-company = VÁLLALAT
 column-breached-data = KIKERÜLT ADATOK
 column-detected = ÉSZLELVE
+
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
 column-status-badge-resolved = Megoldva
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Aktív
+
 breaches-resolve-heading = Ezen adatvédelmi incidens megoldása:
+
 breaches-none-headline = Nem találhatók adatvédelmi incidensek
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
 breaches-none-copy = Jó hírek! Nem jelentettek a(z) { $email } címéhez köthető ismert adatvédelmi incidenseket. Folyamatosan figyelemmel kísérjük ezt az e-mail-címet, és értesíteni fogjuk, ha bármilyen új adatvédelmi incidens történik.
 breaches-none-cta-blurb = Szeretne egy másik e-mail-címet is figyelni?
 breaches-none-cta-button = E-mail-cím hozzáadása
+
 breaches-all-resolved-headline = Összes adatvédelmi incidens megoldva
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
 breaches-all-resolved-copy = Szép munka! Megoldotta a(z) { $email } címéhez köthető összes adatvédelmi incidenst. Folyamatosan figyelemmel kísérjük ezt az e-mail-címet, és értesíteni fogjuk, ha bármilyen új adatvédelmi incidens történik.
 breaches-all-resolved-cta-blurb = Szeretne egy másik e-mail-címet is figyelni?
 breaches-all-resolved-cta-button = E-mail-cím hozzáadása
+
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 # Variables:
 #   $breachDate (String) - Date of the breach
@@ -74,6 +85,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }-nel
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Frissítse jelszavait és engedélyezze a kétfaktoros hitelesítést (2FA).
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -142,6 +154,7 @@ breach-checklist-phone-header-2 = Védje telefonszámát egy olyan maszkoló szo
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Frissítse a biztonsági kérdéseit.
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = A legtöbb esetben azt javasoljuk, hogy frissítse a biztonsági kérdéseket a cég weboldalán. De <b>a weboldaluk lehet, hogy nem működik vagy rosszindulatú tartalmat tartalmaz</b>, ezért legyen óvatos, ha <breached-company-link>felkeresi a webhelyet</breached-company-link>. A nagyobb védelem érdekében frissítse ezeket a biztonsági kérdéseket minden olyan fontos fiókban, ahol használta őket, és hozzon létre egyedi jelszavakat az összes fiókhoz.
 

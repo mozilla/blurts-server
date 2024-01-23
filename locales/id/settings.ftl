@@ -29,11 +29,16 @@ settings-email-limit-info =
 settings-email-verification-callout = Verifikasi surel diperlukan
 settings-resend-email-verification-link = Kirim ulang verifikasi surel
 settings-add-email-button = Tambahkan alamat surel
+# Deprecated
 settings-delete-email-button = Hapus alamat surel
+settings-remove-email-button-label = Hapus
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Hentikan pemantauan { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
        *[other] Muncul dalam { $breachCount } pembobolan yang diketahui.
@@ -43,16 +48,11 @@ settings-email-number-of-breaches-info =
 
 settings-cancel-premium-subscription-title = Batalkan langganan { -brand-premium }
 settings-cancel-premium-subscription-info = Langganan Anda akan kembali ke akun gratis setelah siklus penagihan saat ini berakhir. Hasil pemindaian perlindungan privasi Anda akan dihapus secara permanen, dan Anda hanya akan memiliki pemantauan pelanggaran data untuk 1 alamat email.
-settings-cancel-premium-subscription-link-label = Batalkan dari { -brand-fx-account } Anda
 
 ## Deactivate account
 
 settings-deactivate-account-title = Nonaktifkan akun
-# Deprecated
-settings-deactivate-account-info = Anda dapat menonaktifkan { -product-short-name } dengan menghapus { -brand-fx-account } Anda.
 settings-deactivate-account-info-2 = Anda dapat menonaktifkan { -product-short-name } dengan menghapus { -brand-mozilla-account } Anda.
-# Deprecated
-settings-fxa-link-label = Buka Pengaturan { -brand-firefox }
 settings-fxa-link-label-3 = Buka pengaturan { -brand-mozilla-account }
 
 ## Add email dialog

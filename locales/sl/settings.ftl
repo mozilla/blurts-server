@@ -12,7 +12,7 @@ settings-page-title = Nastavitve { -product-short-name(sklon: "rodilnik") }
 
 settings-alert-preferences-title = Nastavitve opozoril o krajah
 settings-alert-preferences-option-one = Pošlji opozorila na ogrožen e-poštni naslov
-settings-alert-preferences-option-two = Pošlji vsa opozorila o krajah podatkov na primarni e-poštni naslov
+settings-alert-preferences-option-two = Pošlji vsa opozorila o krajah podatkov na glavni e-poštni naslov
 
 ## Monitored email addresses
 
@@ -32,11 +32,16 @@ settings-email-limit-info =
 settings-email-verification-callout = Zahtevana je potrditev e-poštnega naslova
 settings-resend-email-verification-link = Ponovno pošlji potrditveno e-pošto
 settings-add-email-button = Dodaj e-poštni naslov
+# Deprecated
 settings-delete-email-button = Izbriši e-poštni naslov
+settings-remove-email-button-label = Odstrani
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Nehaj spremljati { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] Pojavlja se v { $breachCount } znani kraji.
@@ -49,16 +54,11 @@ settings-email-number-of-breaches-info =
 
 settings-cancel-premium-subscription-title = Prekliči naročnino na { -brand-premium }
 settings-cancel-premium-subscription-info = Vaša naročnina se bo po koncu trenutnega obračunskega obdobja vrnila v brezplačen račun. Vaši rezultati pregleda zaščite zasebnosti bodo trajno izbrisani, nadzor nad krajami podatkov pa bo na voljo samo za en e-poštni naslov.
-settings-cancel-premium-subscription-link-label = Prekliči iz svojega { -brand-fx-account }a
 
 ## Deactivate account
 
 settings-deactivate-account-title = Deaktiviraj račun
-# Deprecated
-settings-deactivate-account-info = { -product-short-name } lahko deaktivirate tako, da izbrišete { -brand-fx-account }.
 settings-deactivate-account-info-2 = { -product-short-name } lahko izključite tako, da izbrišete svoj { -brand-mozilla-account }.
-# Deprecated
-settings-fxa-link-label = Odpri nastavitve { -brand-firefox(sklon: "rodilnik") }
 settings-fxa-link-label-3 = Pojdite v Nastavitve { -brand-mozilla-account(sklon: "rodilnik") }
 
 ## Add email dialog

@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Landing page
 
 
@@ -42,9 +47,9 @@ what-is-breach = Beth yn union yw tor-data?
 when-info-exposed = Mae tor-data'n digwydd pan fydd manylion personol neu breifat yn cael eu datgelu, eu dwyn neu eu copïo heb ganiatâd. Gall y digwyddiadau diogelwch hyn fod o ganlyniad i ymosodiadau seiber ar wefannau, apiau neu unrhyw gronfa ddata lle mae manylion personol pobl yn cael eu cadw. Gall tor-data ddigwydd ar ddamwain hefyd, fel pan mae manylion mewngofnodi rhywun yn cael eu postio'n gyhoeddus yn ddamweiniol.
 # question and answer
 what-do-i-do = Rwyf newydd ddeall fy mod i mewn tor-data. Beth ddylwn i ei wneud nesaf?
-visit-monitor-to-learn = Ewch i { -brand-fx-monitor } i ddysgu beth i'w wneud ar ôl tor-data. Mae hacwyr yn dibynnu ar bobl yn ailddefnyddio cyfrineiriau, felly mae'n bwysig creu cyfrineiriau cryf, unigryw ar gyfer eich holl gyfrifon. Cadwch eich cyfrineiriau mewn man diogel, a dim ond  chi sydd â mynediad iddo; gall hwn fod yr un man lle rydych yn storio dogfennau pwysig neu reolwr cyfrinair.mewnforio
+visit-monitor-to-learn = Ewch i { -brand-fx-monitor } i ddysgu beth i'w wneud ar ôl tor-data. Mae hacwyr yn dibynnu ar bobl yn ailddefnyddio cyfrineiriau, felly mae'n bwysig creu cyfrineiriau cryf, unigryw ar gyfer eich holl gyfrifon. Cadwch eich cyfrineiriau mewn man diogel, a dim ond  chi sydd â mynediad iddo; gall hwn fod yr un man lle rydych yn storio dogfennau pwysig neu reolwr cyfrinair.
 # question and answer
-what-gets-exposed = Pa wybodaeth sy'n cael ei datgelu mewn achosion o dorri data?
+what-gets-exposed = Pa wybodaeth sy'n cael ei datgelu mewn achosion o dor-data?
 depends-on-hackers = Nid yw pob tor-data'n amlygu'r un wybodaeth. Mae'n dibynnu ar yr hyn y gall hacwyr gael mynediad ato. Mae llawer o achosion o dor-data yn amlygu cyfeiriadau e-bost a chyfrineiriau. Mae eraill yn datgelu manylion mwy sensitif fel rhifau cardiau credyd, rhifau pasbort a rhifau nawdd cymdeithasol.
 
 ## See if you’ve been in a data breach

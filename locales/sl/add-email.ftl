@@ -18,4 +18,8 @@ add-email-your-account-includes =
 add-email-address-input-label = E-poštni naslov
 add-email-send-verification-button = Pošlji potrditveno povezavo
 # $email is the newly added email address. $settings-href is the URL for the Settings page. HTML tags should not be translated, e.g. `<a>`
-add-email-verify-the-link = Potrdite povezavo, poslano na { $email }, da ga dodate v { -brand-fx-monitor }. Upravljajte vse e-poštne naslove v <a { $settings-href }>Nastavitvah</a>.
+# This string will be deprecated when the new Plus plan is live.
+add-email-verify-the-link = Potrdite povezavo, poslano na { $email }, da ga dodate v { -brand-fx-monitor }. Vse e-poštne naslove lahko upravljajte v <a { $settings-href }>nastavitvah</a>.
+# Variables:
+#   $email (string) - An email address submitted by the user for monitoring, e.g. `example@example.com`
+add-email-verify-the-link-2 = Potrdite povezavo, poslano na <b>{ $email }</b>, da ga dodate na { -brand-mozilla-monitor }.

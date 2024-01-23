@@ -11,6 +11,7 @@ import { useL10n } from "../../hooks/l10n";
 import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import { Button } from "../client/Button";
+import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../constants";
 
 type ExposuresFilterTypeExplainerProps = {
   explainerDialogState: OverlayTriggerState;
@@ -38,10 +39,7 @@ export const ExposuresFilterTypeExplainer = (
         <div className={styles.modalBodyContent}>
           <p>
             {l10n.getString("modal-exposure-type-description", {
-              data_broker_sites_total_num: parseInt(
-                process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-                10,
-              ),
+              data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
             })}
           </p>
           <br />
@@ -74,6 +72,7 @@ export const ExposuresFilterTypeExplainer = (
 type ExposuresFilterStatusExplainerProps = {
   explainerDialogState: OverlayTriggerState;
   explainerDialogProps: OverlayTriggerAria;
+  isEligibleForPremium: boolean;
 };
 
 export const ExposuresFilterStatusExplainer = (
@@ -96,12 +95,14 @@ export const ExposuresFilterStatusExplainer = (
       >
         <div className={styles.modalBodyContent}>
           <p>
-            {l10n.getString("modal-exposure-status-description", {
-              data_broker_sites_total_num: parseInt(
-                process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
-                10,
-              ),
-            })}
+            {l10n.getString(
+              props.isEligibleForPremium
+                ? "modal-exposure-status-description-premium"
+                : "modal-exposure-status-description-all",
+              {
+                data_broker_sites_total_num: CONST_ONEREP_DATA_BROKER_COUNT,
+              },
+            )}
           </p>
           <br />
           <ul>
@@ -110,11 +111,13 @@ export const ExposuresFilterStatusExplainer = (
                 elems: { b: <strong /> },
               })}
             </li>
-            <li>
-              {l10n.getFragment("modal-exposure-status-in-progress", {
-                elems: { b: <strong /> },
-              })}
-            </li>
+            {props.isEligibleForPremium && (
+              <li>
+                {l10n.getFragment("modal-exposure-status-in-progress", {
+                  elems: { b: <strong /> },
+                })}
+              </li>
+            )}
             <li>
               {l10n.getFragment("modal-exposure-status-fixed", {
                 elems: { b: <strong /> },

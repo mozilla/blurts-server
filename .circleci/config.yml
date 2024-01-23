@@ -64,8 +64,6 @@ jobs:
             - run: npm run build-glean
             - run: npm run lint
             - run: cp .env-dist .env
-            # Runs type checking:
-            - run: npm run build
     deploy:
         docker:
             - image: docker:stable-git

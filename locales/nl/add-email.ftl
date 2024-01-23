@@ -16,4 +16,8 @@ add-email-your-account-includes =
 add-email-address-input-label = E-mailadres
 add-email-send-verification-button = Verificatiekoppeling versturen
 # $email is the newly added email address. $settings-href is the URL for the Settings page. HTML tags should not be translated, e.g. `<a>`
+# This string will be deprecated when the new Plus plan is live.
 add-email-verify-the-link = Verifieer de koppeling die is verstuurd naar { $email } om dit aan { -brand-fx-monitor } toe te voegen. U kunt alle e-mailadressen beheren in <a { $settings-href }>Instellingen</a>.
+# Variables:
+#   $email (string) - An email address submitted by the user for monitoring, e.g. `example@example.com`
+add-email-verify-the-link-2 = Verifieer de koppeling die naar <b>{ $email }</b> is verzonden om dit aan { -brand-mozilla-monitor } toe te voegen.

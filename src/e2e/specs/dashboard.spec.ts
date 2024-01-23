@@ -31,7 +31,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
 
     await expect(dashboardPage.dashboardNavButton).toHaveAttribute(
       "href",
-      "/redesign/user/dashboard",
+      "/user/dashboard",
     );
     await expect(dashboardPage.FAQsNavButton).toHaveAttribute(
       "href",
@@ -89,7 +89,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
     // verify fixed tab's tooltips and popups
     await dashboardPage.fixedTab.click();
     await expect(dashboardPage.heresWhatsFixedCardTitle).toHaveText(
-      "Here’s what we fixed",
+      "Here’s what you fixed",
     );
     await expect(dashboardPage.fixedHeading).toBeVisible();
     await dashboardPage.toolTip.click();
@@ -204,5 +204,43 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Content`, () =
         ).toHaveText(/In-progress|Fixed/);
       }
     }
+  });
+});
+
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dasboard  - Payment`, () => {
+  test.beforeEach(async ({ dashboardPage, page }) => {
+    await dashboardPage.open();
+
+    try {
+      await checkAuthState(page);
+    } catch {
+      console.log("[E2E_LOG] - No fxa auth required, proceeding...");
+    }
+  });
+
+  test("Verify that the user can select what type of plan they want", async ({
+    dashboardPage,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2301529",
+    });
+
+    // verify subscription dialog elements
+    await dashboardPage.subscribeButton.click();
+    await expect(dashboardPage.subscribeDialogCloseButton).toBeVisible();
+    await expect(dashboardPage.yearlyMonthlyTablist).toBeVisible();
+
+    // verify user purchase choices
+    await dashboardPage.yearlyTab.click();
+    await expect(
+      dashboardPage.subscribeDialogSelectYearlyPlanLink,
+    ).toBeVisible();
+
+    await dashboardPage.monthlyTab.click();
+    await expect(
+      dashboardPage.subscribeDialogSelectMonthlyPlanLink,
+    ).toBeVisible();
   });
 });

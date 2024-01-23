@@ -16,4 +16,8 @@ add-email-your-account-includes =
 add-email-address-input-label = Adresse email
 add-email-send-verification-button = Inviar ligamine de verification
 # $email is the newly added email address. $settings-href is the URL for the Settings page. HTML tags should not be translated, e.g. `<a>`
+# This string will be deprecated when the new Plus plan is live.
 add-email-verify-the-link = Verifica le ligamine inviate a { $email } pro adder lo a { -brand-fx-monitor }. Gere tote le adresses email in <a { $settings-href }>Parametros</a>.
+# Variables:
+#   $email (string) - An email address submitted by the user for monitoring, e.g. `example@example.com`
+add-email-verify-the-link-2 = Verifica le ligamine inviate a <b>{ $email }</b> pro adder lo a  { -brand-mozilla-monitor }.

@@ -4,13 +4,13 @@
 
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import Image from "next/image";
 import styles from "./FixNavigation.module.scss";
-import stepDataBrokerProfilesIcon from "../../(proper_react)/redesign/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-data-broker-profiles.svg";
-import stepHighRiskDataBreachesIcon from "../../(proper_react)/redesign/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-high-risk.svg";
-import stepLeakedPasswordsIcon from "../../(proper_react)/redesign/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-leaked-passwords.svg";
-import stepSecurityRecommendationsIcon from "../../(proper_react)/redesign/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-security-recommendations.svg";
+import stepDataBrokerProfilesIcon from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-data-broker-profiles.svg";
+import stepHighRiskDataBreachesIcon from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-high-risk.svg";
+import stepLeakedPasswordsIcon from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-leaked-passwords.svg";
+import stepSecurityRecommendationsIcon from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-security-recommendations.svg";
 import { useL10n } from "../../hooks/l10n";
 import {
   StepDeterminationData,
@@ -32,8 +32,19 @@ export type Props = {
 };
 
 export const FixNavigation = (props: Props) => {
+  const navRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    navRef.current?.focus();
+  }, []);
+
   return (
-    <nav className={styles.stepsWrapper} aria-label={props.label}>
+    <nav
+      tabIndex={-1}
+      ref={navRef}
+      className={styles.stepsWrapper}
+      aria-label={props.label}
+    >
       <Steps
         currentSection={props.currentSection}
         subscriberEmails={props.subscriberEmails}

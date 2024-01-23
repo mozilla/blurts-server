@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -56,6 +61,8 @@ user-add-duplicate-email = Αυτό το email έχει ήδη προστεθε�
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Επισκεφθείτε τις { $preferencesLink } σας για να ελέγξετε την κατάσταση του { $userEmail }.
+user-add-verification-email-just-sent = Δεν μπορεί να αποσταλεί άλλο email επαλήθευσης τόσο γρήγορα. Δοκιμάστε ξανά αργότερα.
+user-add-unknown-error = Κάτι πήγε στραβά με την προσθήκη της άλλης διεύθυνσης email. Δοκιμάστε ξανά αργότερα.
 error-headline = Σφάλμα
 user-verify-token-error = Απαιτείται διακριτικό επαλήθευσης.
 user-verify-email-report-subject = Η αναφορά σας για το { -product-name }
@@ -567,7 +574,7 @@ generic-confirmation-message =
        *[other] Για να δείτε τις εναπομείνουσες διαρροές, μεταβείτε στον πίνακα ελέγχου.
     }
 return-to-breach-details-link = Επιστροφή στις λεπτομέρειες παραβίασης
-go-to-dashboard-link = Μετάβαση στον πίνακα
+go-to-dashboard-link = Μετάβαση στον πίνακα ελέγχου
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 # Variables:
@@ -725,7 +732,7 @@ ad-unit-6-before-you-complete = Πριν ολοκληρώσετε την επό�
 
 -brand-firefox = Firefox
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
 -brand-monitor-premium = Monitor Premium
@@ -733,6 +740,8 @@ ad-unit-6-before-you-complete = Πριν ολοκληρώσετε την επό�
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
@@ -756,6 +765,7 @@ ad-unit-6-before-you-complete = Πριν ολοκληρώσετε την επό�
                *[upper] Λογαριασμός Mozilla
             }
     }
+open-in-new-tab-alt = Άνοιγμα συνδέσμου σε νέα καρτέλα
 
 ## Search Engine Optimization
 
@@ -763,8 +773,10 @@ meta-desc-2 = Μάθετε εάν έχετε εμπλακεί σε παραβί�
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Σύνδεση
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -775,19 +787,43 @@ site-nav-help-link = Βοήθεια και υποστήριξη
 site-nav-ad-callout = Δοκιμάστε τα άλλα εργαλεία ασφαλείας μας:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Κύριο μενού
+main-nav-button-collapse-label = Σύμπτυξη μενού
+main-nav-button-collapse-tooltip = Σύμπτυξη μενού
+main-nav-button-expand-label = Ανάπτυξη μενού
+main-nav-button-expand-tooltip = Ανάπτυξη μενού
+main-nav-label = Πλοήγηση
+main-nav-link-home-label = Αρχική
+main-nav-link-dashboard-label = Πίνακας ελέγχου
+main-nav-link-settings-label = Ρυθμίσεις
+main-nav-link-faq-label = Συχνές ερωτήσεις
+main-nav-link-faq-tooltip = Συχνές ερωτήσεις
 
 ## User menu
 
+# Obsolete
 menu-button-title = Μενού χρήστη
+# Obsolete
 menu-button-alt = Άνοιγμα μενού χρήστη
+# Obsolete
 menu-list-accessible-label = Μενού λογαριασμού
+# Obsolete
 menu-item-fxa-2 = Διαχείριση { -brand-mozilla-account(case: "gen", capitalization: "lower") }
-menu-item-fxa-alt-2 = Άνοιγμα σελίδας { -brand-mozilla-account(case: "gen", capitalization: "lower") }
+# Obsolete
 menu-item-settings = Ρυθμίσεις
-menu-item-settings-alt = Άνοιγμα σελίδας ρυθμίσεων
+# Obsolete
 menu-item-help = Βοήθεια και υποστήριξη
-menu-item-help-alt = Άνοιγμα σελίδας βοήθειας και υποστήριξης
+# Obsolete
 menu-item-logout = Αποσύνδεση
+user-menu-trigger-label = Άνοιγμα μενού χρήστη
+user-menu-trigger-tooltip = Προφίλ
+user-menu-manage-fxa-label = Διαχείριση { -brand-mozilla-account(case: "gen", capitalization: "lower") }
+user-menu-settings-label = Ρυθμίσεις
+user-menu-settings-tooltip = Ρύθμιση του { -brand-mozilla-monitor }
+user-menu-help-label = Βοήθεια και υποστήριξη
+user-menu-help-tooltip = Λήψη βοήθειας με το { -brand-mozilla-monitor }
+user-menu-signout-label = Αποσύνδεση
+user-menu-signout-tooltip = Αποσύνδεση από το { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -796,6 +832,8 @@ terms-of-service = Όροι υπηρεσίας
 privacy-notice = Σημείωση απορρήτου
 github = { -brand-github }
 footer-nav-all-breaches = Όλες οι παραβιάσεις
+footer-external-link-faq-label = Συχνές ερωτήσεις
+footer-external-link-faq-tooltip = Συχνές ερωτήσεις
 
 ## Error page
 
@@ -828,3 +866,9 @@ breach-detail-cta-signup = Έλεγχος για παραβιάσεις
 floating-banner-text = Ενισχύστε την ασφάλειά σας στο διαδίκτυο με νέα, συμβουλές και ενημερώσεις από τη { -brand-Mozilla }.
 floating-banner-link-label = Εγγραφή
 floating-banner-dismiss-button-label = Όχι, ευχαριστώ
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Νέο όνομα, εμφάνιση και ακόμα περισσότεροι τρόποι <b>διεκδίκησης του απορρήτου σας</b>.
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Απόρριψη

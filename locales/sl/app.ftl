@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name =
@@ -46,7 +51,7 @@ error-hibp-throttled = Preveč povezav na { -brand-HIBP }.
 error-hibp-connect = Napaka pri povezovanju na { -brand-HIBP }.
 error-hibp-load-breaches = Ni bilo mogoče naložiti podatkov o krajah.
 error-must-be-signed-in = Prijaviti se morate v svoj { -brand-fxa }.
-error-to-finish-verifying = Če želite dokončati preverjanje tega e-poštnega naslova za { -product-name }, morate biti prijavljeni z e-poštnim naslovom primarnega računa.
+error-to-finish-verifying = Če želite dokončati preverjanje tega e-poštnega naslova za { -product-name }, morate biti prijavljeni z e-poštnim naslovom glavnega računa.
 home-title = { -product-name }
 home-not-found = Strani ni mogoče najti.
 oauth-invalid-session = Neveljavna seja
@@ -59,6 +64,8 @@ user-add-duplicate-email = Ta e-poštni naslov je že bil dodan v { -product-nam
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Obiščite { $preferencesLink } in preverite stanje za { $userEmail }.
+user-add-verification-email-just-sent = Drugega potrditvenega e-poštnega sporočila ni mogoče poslati tako hitro. Poskusite znova pozneje.
+user-add-unknown-error = Pri dodajanju drugega e-poštnega naslova je prišlo do napake. Poskusite znova pozneje.
 error-headline = Napaka
 user-verify-token-error = Zahtevan je potrditveni žeton.
 user-verify-email-report-subject = Vaše poročilo { -product-name }
@@ -746,7 +753,7 @@ ad-unit-6-before-you-complete = Preden dokončate naslednjo prijavo, uporabite e
         [orodnik] Firefoxom
     }
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla =
     { $sklon ->
        *[imenovalnik] Mozilla
@@ -770,6 +777,8 @@ ad-unit-6-before-you-complete = Preden dokončate naslednjo prijavo, uporabite e
     }
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
@@ -784,6 +793,7 @@ ad-unit-6-before-you-complete = Preden dokončate naslednjo prijavo, uporabite e
         [orodnik] Računom Mozilla
        *[imenovalnik] Račun Mozilla
     }
+open-in-new-tab-alt = Odpri povezavo v novem zavihku
 
 ## Search Engine Optimization
 
@@ -791,8 +801,10 @@ meta-desc-2 = Ugotovite, ali ste bili vpleteni v krajo podatkov s { -brand-fx-mo
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Prijavite se
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -803,19 +815,43 @@ site-nav-help-link = Pomoč in podpora
 site-nav-ad-callout = Preizkusite druga naša varnostna orodja:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Glavni meni
+main-nav-button-collapse-label = Strni meni
+main-nav-button-collapse-tooltip = Strni meni
+main-nav-button-expand-label = Razširi meni
+main-nav-button-expand-tooltip = Razširi meni
+main-nav-label = Navigacija
+main-nav-link-home-label = Domov
+main-nav-link-dashboard-label = Nadzorna plošča
+main-nav-link-settings-label = Nastavitve
+main-nav-link-faq-label = Pogosta vprašanja
+main-nav-link-faq-tooltip = Pogosto zastavljena vprašanja
 
 ## User menu
 
+# Obsolete
 menu-button-title = Uporabniški meni
+# Obsolete
 menu-button-alt = Odpri uporabniški meni
+# Obsolete
 menu-list-accessible-label = Meni računa
+# Obsolete
 menu-item-fxa-2 = Upravljajte svoj { -brand-mozilla-account }
-menu-item-fxa-alt-2 = Odpri stran { -brand-mozilla-account(sklon: "rodilnik") }
+# Obsolete
 menu-item-settings = Nastavitve
-menu-item-settings-alt = Odpri stran z nastavitvami
+# Obsolete
 menu-item-help = Pomoč in podpora
-menu-item-help-alt = Odpri stran za pomoč in podporo
+# Obsolete
 menu-item-logout = Odjava
+user-menu-trigger-label = Odpri uporabniški meni
+user-menu-trigger-tooltip = Profil
+user-menu-manage-fxa-label = Upravljajte svoj { -brand-mozilla-account }
+user-menu-settings-label = Nastavitve
+user-menu-settings-tooltip = Nastavi { -brand-mozilla-monitor }
+user-menu-help-label = Pomoč in podpora
+user-menu-help-tooltip = Pomoč pri uporabi { -brand-mozilla-monitor }
+user-menu-signout-label = Odjava
+user-menu-signout-tooltip = Odjava iz { -brand-mozilla-monitor(sklon: "tozilnik") }
 
 ## Footer
 
@@ -824,6 +860,8 @@ terms-of-service = Pogoji uporabe
 privacy-notice = Obvestilo o zasebnosti
 github = { -brand-github }
 footer-nav-all-breaches = Vse kraje podatkov
+footer-external-link-faq-label = Pogosta vprašanja
+footer-external-link-faq-tooltip = Pogosto zastavljena vprašanja
 
 ## Error page
 
@@ -856,3 +894,9 @@ breach-detail-cta-signup = Preverite kraje podatkov
 floating-banner-text = Okrepite svojo spletno varnost z novicami, nasveti in posodobitvami { -brand-Mozilla(sklon: "rodilnik") }.
 floating-banner-link-label = Prijava
 floating-banner-dismiss-button-label = Ne, hvala
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Novo ime, podoba in še več načinov za <b>ponovno pridobitev zasebnosti</b>.
+banner-monitor-rebrand-dismiss-button-label = V redu
+banner-monitor-rebrand-dismiss-button-tooltip = Opusti

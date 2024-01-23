@@ -30,11 +30,16 @@ settings-email-limit-info =
 settings-email-verification-callout = Verificação de email é necessária
 settings-resend-email-verification-link = Enviar email de verificação novamente
 settings-add-email-button = Adicionar endereço de email
+# Deprecated
 settings-delete-email-button = Excluir endereço de email
+settings-remove-email-button-label = Remover
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Parar de monitorar { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] Aparece em { $breachCount } vazamento conhecido.
@@ -45,16 +50,11 @@ settings-email-number-of-breaches-info =
 
 settings-cancel-premium-subscription-title = Cancelar assinatura do { -brand-premium }
 settings-cancel-premium-subscription-info = Sua assinatura será revertida para uma conta gratuita após o término do ciclo de cobrança atual. Os resultados de varredura de proteção de privacidade serão excluídos permanentemente e você só terá monitoramento de vazamento de dados de 1 endereço de email.
-settings-cancel-premium-subscription-link-label = Cancelar da sua { -brand-fx-account }
 
 ## Deactivate account
 
 settings-deactivate-account-title = Desativar conta
-# Deprecated
-settings-deactivate-account-info = Você pode desativar o { -product-short-name } excluindo sua { -brand-fx-account }.
 settings-deactivate-account-info-2 = Você pode desativar o { -product-short-name } excluindo sua { -brand-mozilla-account }.
-# Deprecated
-settings-fxa-link-label = Ir para as configurações do { -brand-firefox }
 settings-fxa-link-label-3 = Ir para as configurações da { -brand-mozilla-account }
 
 ## Add email dialog

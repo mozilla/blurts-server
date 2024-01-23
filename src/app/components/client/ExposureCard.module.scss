@@ -198,7 +198,7 @@
         @media screen and (min-width: $screen-lg) {
           display: flex;
           flex-direction: row;
-          align-items: start;
+          align-items: flex-start;
           gap: $layout-xs;
           flex-wrap: wrap;
           justify-content: flex-start;

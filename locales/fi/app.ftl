@@ -1,10 +1,15 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Strings for the main app
 
 
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-name = Firefox Monitor
+-product-name = Mozilla Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
@@ -47,6 +52,8 @@ user-add-duplicate-email = Tämä sähköposti on jo lisätty tuotteeseen { -pro
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Tarkista sähköpostiosoitteen { $userEmail } tila { $preferencesLink }-sivulta.
+user-add-verification-email-just-sent = Toista vahvistussähköpostia ei voi lähettää näin nopeasti. Yritä uudelleen myöhemmin.
+user-add-unknown-error = Jotain meni pieleen toisen sähköpostiosoitteen lisäämisessä. Yritä uudelleen myöhemmin.
 error-headline = Virhe
 user-verify-token-error = Vahvistuspoletti vaaditaan.
 user-verify-email-report-subject = { -product-name } -raporttisi
@@ -713,7 +720,7 @@ ad-unit-6-before-you-complete = Ennen kuin suoritat seuraavan rekisteröitymisen
 
 -brand-firefox = Firefox
 -brand-monitor = Monitor
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
 -brand-monitor-premium = Monitor Premium
@@ -721,12 +728,15 @@ ad-unit-6-before-you-complete = Ennen kuin suoritat seuraavan rekisteröitymisen
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
 -brand-mozilla-account = Mozilla-tili
+open-in-new-tab-alt = Avaa linkki uuteen välilehteen
 
 ## Search Engine Optimization
 
@@ -734,8 +744,10 @@ meta-desc-2 = Selvitä { -brand-fx-monitor }illa, oletko joutunut osalliseksi ti
 
 ## Header
 
+# Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Kirjaudu sisään
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -746,19 +758,43 @@ site-nav-help-link = Ohjeet ja tuki
 site-nav-ad-callout = Kokeile muita suojaustyökalujamme:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
+mobile-menu-label = Päävalikko
+main-nav-button-collapse-label = Supista valikko
+main-nav-button-collapse-tooltip = Supista valikko
+main-nav-button-expand-label = Laajenna valikko
+main-nav-button-expand-tooltip = Laajenna valikko
+main-nav-label = Navigointi
+main-nav-link-home-label = Etusivu
+main-nav-link-dashboard-label = Kojelauta
+main-nav-link-settings-label = Asetukset
+main-nav-link-faq-label = UKK
+main-nav-link-faq-tooltip = Usein kysytyt kysymykset
 
 ## User menu
 
+# Obsolete
 menu-button-title = Käyttäjävalikko
+# Obsolete
 menu-button-alt = Avaa käyttäjävalikko
+# Obsolete
 menu-list-accessible-label = Tilivalikko
+# Obsolete
 menu-item-fxa-2 = Hallitse { -brand-mozilla-account }äsi
-menu-item-fxa-alt-2 = Avaa { -brand-mozilla-account }n sivu
+# Obsolete
 menu-item-settings = Asetukset
-menu-item-settings-alt = Avaa asetussivu
+# Obsolete
 menu-item-help = Ohjeet ja tuki
-menu-item-help-alt = Avaa ohje- ja tukisivu
+# Obsolete
 menu-item-logout = Kirjaudu ulos
+user-menu-trigger-label = Avaa käyttäjävalikko
+user-menu-trigger-tooltip = Profiili
+user-menu-manage-fxa-label = Hallitse { -brand-mozilla-account }äsi
+user-menu-settings-label = Asetukset
+user-menu-settings-tooltip = Määritä { -brand-mozilla-monitor }
+user-menu-help-label = Ohjeet ja tuki
+user-menu-help-tooltip = Ohjeita { -brand-mozilla-monitor }in käyttöön
+user-menu-signout-label = Kirjaudu ulos
+user-menu-signout-tooltip = Kirjaudu ulos { -brand-mozilla-monitor }ista
 
 ## Footer
 
@@ -767,6 +803,8 @@ terms-of-service = Käyttöehdot
 privacy-notice = Tietosuojakäytäntö
 github = { -brand-github }
 footer-nav-all-breaches = Kaikki tietovuodot
+footer-external-link-faq-label = UKK:t
+footer-external-link-faq-tooltip = Usein kysytyt kysymykset
 
 ## Error page
 
@@ -799,3 +837,9 @@ breach-detail-cta-signup = Tarkista vuotojen varalta
 floating-banner-text = Paranna verkkoturvaasi { -brand-Mozilla }-uutisten, -vinkkien ja -päivitysten avulla.
 floating-banner-link-label = Rekisteröidy
 floating-banner-dismiss-button-label = Ei kiitos
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Uusi nimi, ulkoasu ja lisää tapoja <b>palauttaa yksityisyys</b>.
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Hylkää

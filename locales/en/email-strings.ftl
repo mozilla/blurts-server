@@ -1,3 +1,7 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
