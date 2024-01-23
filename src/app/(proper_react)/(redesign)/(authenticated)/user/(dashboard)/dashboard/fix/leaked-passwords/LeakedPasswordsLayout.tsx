@@ -199,7 +199,7 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
               <Link
                 href={nextStep.href}
                 onClick={() => {
-                  recordTelemetry("ctaButton", "click", {
+                  recordTelemetry("button", "click", {
                     button_id: "skipped_resolution",
                     // TODO: Enable after the parameter has been added to metrics.yaml.
                     // button_name:

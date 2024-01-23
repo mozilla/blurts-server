@@ -213,7 +213,7 @@ it("records telemetry when skipping the passwords step", async () => {
   await user.click(buttonLink);
 
   expect(mockedRecord).toHaveBeenCalledWith(
-    "ctaButton",
+    "button",
     "click",
     expect.objectContaining({
       button_id: "skipped_resolution",
@@ -238,7 +238,7 @@ it("records telemetry when skipping the security questions step", async () => {
   await user.click(buttonLink);
 
   expect(mockedRecord).toHaveBeenCalledWith(
-    "ctaButton",
+    "button",
     "click",
     expect.objectContaining({
       button_id: "skipped_resolution",
