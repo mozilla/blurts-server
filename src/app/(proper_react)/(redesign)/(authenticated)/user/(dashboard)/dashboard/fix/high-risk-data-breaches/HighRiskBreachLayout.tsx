@@ -121,28 +121,14 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
     }
   };
 
-  let markedAsFixedInstrumentation;
-
-  switch (props.type) {
-    case "social-security-number":
-      markedAsFixedInstrumentation = "marked_fixed_social_security";
-      break;
-    case "credit-card":
-      markedAsFixedInstrumentation = "marked_fixed_credit_card";
-      break;
-    case "bank-account":
-      markedAsFixedInstrumentation = "marked_fixed_bank_account";
-      break;
-    case "pin":
-      markedAsFixedInstrumentation = "marked_fixed_pin";
-      break;
-    case "done":
-      markedAsFixedInstrumentation = "continue_celebrate_high_risk";
-      break;
-    case "none":
-      markedAsFixedInstrumentation = "continue_high_risk_zero_state";
-      break;
-  }
+  const telemetryEventMap: Record<HighRiskBreachTypes, string> = {
+    "social-security-number": "marked_fixed_social_security",
+    "credit-card": "marked_fixed_credit_card",
+    "bank-account": "marked_fixed_bank_account",
+    pin: "marked_fixed_pin",
+    done: "continue_celebrate_high_risk",
+    none: "continue_high_risk_zero_state",
+  };
 
   /* c8 ignore stop */
 
@@ -173,7 +159,7 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
                     module: "ctaButton",
                     name: "click",
                     data: {
-                      button_id: markedAsFixedInstrumentation,
+                      button_id: telemetryEventMap[props.type],
                     },
                   }}
                   /* c8 ignore next */
