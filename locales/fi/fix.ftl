@@ -41,6 +41,13 @@ fix-flow-celebration-leaked-passwords-description-next-security-recommendations 
 
 # High Risk Data Breaches
 
+# Variables
+# $num_breaches is the number of breaches where the high risk data was found.
+high-risk-breach-summary =
+    { $num_breaches ->
+        [one] Se esiintyi { $num_breaches } tietovuodon yhteydessä:
+       *[other] Se esiintyi { $num_breaches } tietovuodon yhteydessä:
+    }
 high-risk-breach-mark-as-fixed = Merkitse korjatuksi
 high-risk-breach-skip = Ohita nyt
 # Variables:
@@ -104,10 +111,19 @@ security-recommendation-phone-title = Suojaa puhelinnumerosi
 # Email security recommendation
 
 security-recommendation-email-title = Suojaa sähköpostiosoitteesi
+security-recommendation-email-step-two = Ole tietoinen <link_to_info>kalasteluhuijauksista</link_to_info>
+security-recommendation-email-step-three = Merkitse epäilyttävät sähköpostit roskapostiksi ja estä lähettäjä
+security-recommendation-email-step-four = Käytä <link_to_info>{ -brand-relay }-sähköpostimaskeja</link_to_info> suojataksesi sähköpostiosoitettasi jatkossa
 
 # IP security recommendation
 
 security-recommendation-ip-title = Käytä VPN:ää yksityisyyden lisäämiseksi
+# $num_breaches is the number of breaches where the IP address was found.
+security-recommendation-ip-summary =
+    { $num_breaches ->
+        [one] IP-osoitteesi paljastui { $num_breaches } tietovuodon yhteydessä:
+       *[other] IP-osoitteesi paljastui { $num_breaches } tietovuodon yhteydessä:
+    }
 
 # Leaked Passwords
 

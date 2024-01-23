@@ -21,6 +21,7 @@ fix-flow-celebration-next-dashboard-label = Kontrol panelinize gidin
 
 ## High-risk flow
 
+fix-flow-celebration-high-risk-title = Yüksek riskli ihlallerinizi düzeltdiniz!
 fix-flow-celebration-high-risk-description-next-passwords = Şimdi açığa çıkmış parolaları düzeltelim.
 fix-flow-celebration-high-risk-description-next-security-questions = Şimdi açığa çıkmış güvenlik sorularınızı düzeltelim.
 fix-flow-celebration-high-risk-description-next-security-recommendations = Ardından, hangi verilerinizin ele geçirildiğine göre size kişiselleştirilmiş güvenlik önerileri sunacağız.

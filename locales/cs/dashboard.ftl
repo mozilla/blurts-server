@@ -11,9 +11,9 @@
 #   $nr (number) - Number of unresolved exposures for the user
 exposure-chart-heading =
     { $nr ->
-        [one] <nr>{ $nr }</nr> <label>exposure</label>
-        [few] <nr>{ $nr }</nr> <label>expozice</label>
-       *[other] <nr>{ $nr }</nr> <label>expozice</label>
+        [one] <nr>{ $nr }</nr> <label>odhalení</label>
+        [few] <nr>{ $nr }</nr> <label>odhalení</label>
+       *[other] <nr>{ $nr }</nr> <label>odhalení</label>
     }
 # Variables:
 #   $nr (number) - Number of fixed exposures found for the user
@@ -23,15 +23,15 @@ exposure-chart-legend-heading-nr = Počet
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
-exposure-chart-caption = Tento graf ukazuje, kolikrát jsou vaše informace aktivně zpřístupňovány.
+exposure-chart-caption = Tento graf ukazuje, kolikrát jsou vaše informace aktivně odhalené.
 # Variables:
 #   $total_fixed_exposures_num (number) - Number of fixed exposures
 #   $total_exposures_num (number) - Number of total exposures
 exposure-chart-caption-fixed = Tento graf ukazuje celkový počet fixovaných expozic ({ $total_fixed_exposures_num } z { $total_exposures_num })
-exposure-chart-returning-user-upgrade-prompt = Adresa domů, členové rodiny a další zatím nejsou zahrnuti.
+exposure-chart-returning-user-upgrade-prompt = Adresa domů, členové rodiny a další zatím nejsou zahrnuté.
 exposure-chart-returning-user-upgrade-prompt-cta = Spustit bezplatné skenování
-exposure-chart-scan-in-progress-prompt = <b>Probíhá sken:</b> adresy, rodinné příslušníky a další lidé ještě nejsou zahrnuti.
-modal-active-number-of-exposures-title = O vašem počtu aktivních expozic
+exposure-chart-scan-in-progress-prompt = <b>Probíhá skenování:</b> adresa, rodinní příslušníci a další údaje zatím nejsou zahrnuty.
+modal-active-number-of-exposures-title = O počtu aktivních odhalení
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
 modal-active-number-of-exposures-part-one-all =
@@ -139,7 +139,7 @@ dashboard-top-banner-monitor-more-cta = Monitorovat více e-mailů
 
 # About Exposure Statuses Modal
 
-modal-exposure-status-title = Stavy vystavení riziku
+modal-exposure-status-title = O stavech odhalení
 modal-exposure-status-description-all = Hledáme úniky dat ve všech známých únicích dat. Váš kontakt bude mít jeden z následujících stavů:
-modal-exposure-status-action-needed = <b>Vyžadována akce</b> znamená, že je problém vyřešen a je potřeba jej opravit.
-modal-exposure-status-fixed = <b>Opravená</b> znamená, že ohrožení bylo vyřešeno a nemusíte nic dělat.
+modal-exposure-status-action-needed = <b>Vyžadována akce</b> znamená, že odhalení je momentálně aktivní a musíte podniknout kroky k jeho vyřešení
+modal-exposure-status-fixed = <b>Vyřešené</b> znamená, že odhalení bylo vyřešeno a nemusíte podnikat žádné další kroky.
