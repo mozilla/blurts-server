@@ -21,7 +21,7 @@ fix-flow-celebration-next-dashboard-label = Accédez au tableau de bord
 
 ## High-risk flow
 
-fix-flow-celebration-high-risk-title = Vous avez corrigé vos expositions à haut risque !
+fix-flow-celebration-high-risk-title = Vous avez résolu les fuites à haut risque !
 fix-flow-celebration-high-risk-description-in-progress = Faire ce travail peut paraitre beaucoup, mais il est important de le faire pour votre sécurité. Continuez votre bon travail.
 fix-flow-celebration-high-risk-description-done = Faire ce travail peut paraitre beaucoup, mais il est important de le faire pour votre sécurité.
 fix-flow-celebration-high-risk-description-next-passwords = Occupons-nous à présent de vos mots de passe compromis.
