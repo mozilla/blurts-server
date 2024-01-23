@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { headers, cookies } from "next/headers";
+import { headers } from "next/headers";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { getCountryCode } from "../../../functions/server/getCountryCode";
@@ -17,8 +17,6 @@ import { View } from "./LandingView";
 
 export default async function Page() {
   const session = await getServerSession();
-  const cookiesList = cookies();
-
   if (typeof session?.user.email === "string") {
     return redirect("/user/dashboard/");
   }
@@ -34,31 +32,12 @@ export default async function Page() {
   const scanLimitReached =
     typeof oneRepActivations === "undefined" ||
     oneRepActivations > monthlySubscribersQuota;
-
-  const attributionSearchParams = new URLSearchParams(
-    cookiesList.get("attributionsFirstTouch")?.value,
-  );
-  attributionSearchParams.set(
-    "entrypoint",
-    "monitor.mozilla.org-monitor-product-page",
-  );
-  attributionSearchParams.set("form_type", "button");
-  if (!attributionSearchParams.has("utm_source")) {
-    attributionSearchParams.append("utm_source", "product");
-  }
-  if (!attributionSearchParams.has("utm_medium")) {
-    attributionSearchParams.append("utm_medium", "monitor");
-  }
-  if (!attributionSearchParams.has("utm_campaign")) {
-    attributionSearchParams.append("utm_campaign", "get_free_scan");
-  }
   return (
     <View
       eligibleForPremium={eligibleForPremium}
       l10n={getL10n()}
       countryCode={countryCode}
       scanLimitReached={scanLimitReached}
-      attributions={attributionSearchParams}
     />
   );
 }

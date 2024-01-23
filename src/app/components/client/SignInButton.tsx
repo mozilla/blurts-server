@@ -9,9 +9,7 @@ import { useL10n } from "../../hooks/l10n";
 import { Button } from "./Button";
 import { useTelemetry } from "../../hooks/useTelemetry";
 
-export const SignInButton = (props: {
-  params: URLSearchParams | undefined;
-}) => {
+export const SignInButton = () => {
   const l10n = useL10n();
   const session = useSession();
   const recordTelemetry = useTelemetry();
@@ -27,7 +25,7 @@ export const SignInButton = (props: {
         recordTelemetry("ctaButton", "click", {
           button_id: "sign_in",
         });
-        void signIn("fxa", { callbackUrl: "/user/dashboard/" }, props.params);
+        void signIn("fxa", { callbackUrl: "/user/dashboard/" });
       }}
     >
       {l10n.getString("sign-in")}

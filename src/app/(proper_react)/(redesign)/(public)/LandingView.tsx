@@ -26,12 +26,12 @@ import { ScanLimit } from "./ScanLimit";
 import { Footer } from "../Footer";
 import { FaqSection } from "./Faq";
 import { SignInButton } from "../../../components/client/SignInButton";
+
 export type Props = {
   eligibleForPremium: boolean;
   l10n: ExtendedReactLocalization;
   countryCode: string;
   scanLimitReached: boolean;
-  attributions?: URLSearchParams;
 };
 
 export const View = (props: Props) => {
@@ -39,7 +39,7 @@ export const View = (props: Props) => {
     <main className={styles.wrapper}>
       <nav className={styles.nav}>
         <h1>{props.l10n.getString("public-nav-name")}</h1>
-        <SignInButton params={props.attributions} />
+        <SignInButton />
       </nav>
       <header className={styles.hero}>
         <div className={styles.heroContent}>
