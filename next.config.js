@@ -179,7 +179,7 @@ const sentryWebpackPluginOptions = {
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };
 
-if (process.env.SENTRY_AUTH_TOKEN) {
+if (process.env.UPLOAD_SENTRY_SOURCEMAPS === "true") {
   // @ts-ignore Add authToken only if variable is set.
   sentryWebpackPluginOptions.authToken = process.env.SENTRY_AUTH_TOKEN;
 }
