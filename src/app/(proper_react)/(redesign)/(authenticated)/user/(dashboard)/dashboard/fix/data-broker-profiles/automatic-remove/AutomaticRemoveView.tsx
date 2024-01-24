@@ -10,6 +10,7 @@ import { Button } from "../../../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { FixView } from "../../FixView";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
+import { modifyAttributionsForUrl } from "../../../../../../../../../functions/universal/attributions";
 
 export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
   monthlySubscriptionUrl: string;
@@ -23,52 +24,35 @@ export function AutomaticRemoveView(props: Props) {
 
   const dataBrokerCount = CONST_ONEREP_DATA_BROKER_COUNT;
 
-  let { monthlySubscriptionUrl, yearlySubscriptionUrl } = props;
+  const { monthlySubscriptionUrl, yearlySubscriptionUrl } = props;
   const { ...fixViewProps } = props;
 
   // format subscription urls
-  if (monthlySubscriptionUrl) {
-    const monthlyUrl = new URL(monthlySubscriptionUrl);
-    const monthlyParams = monthlyUrl.searchParams;
-    // overwrite the three params below
-    monthlyParams.set(
-      "entrypoint",
-      "monitor.mozilla.org-monitor-in-product-guided-upsell",
-    );
-    monthlyParams.set("form_type", "button");
-    // placeholder utms if acquisition source is unknown
-    if (!monthlyParams.has("utm_source")) {
-      monthlyParams.append("utm_source", "product");
-    }
-    if (!monthlyParams.has("utm_medium")) {
-      monthlyParams.append("utm_medium", "monitor");
-    }
-    if (!monthlyParams.has("utm_campaign")) {
-      monthlyParams.append("utm_campaign", "guided-upsell");
-    }
-    monthlySubscriptionUrl = `${monthlyUrl.pathname}?${monthlyParams.toString()}`;
-  }
-  if (yearlySubscriptionUrl) {
-    const yearlyUrl = new URL(yearlySubscriptionUrl);
-    const yearlyParams = yearlyUrl.searchParams;
+  const monthlySubscriptionUrlWithAttributions = modifyAttributionsForUrl(
+    monthlySubscriptionUrl,
+    {
+      entrypoint: "monitor.mozilla.org-monitor-in-product-guided-upsell",
+      form_type: "button",
+    },
+    {
+      utm_source: "product",
+      utm_medium: "monitor",
+      utm_campaign: "guided-upsell",
+    },
+  );
+  const yearlySubscriptionUrlWithAttributions = modifyAttributionsForUrl(
+    yearlySubscriptionUrl,
+    {
+      entrypoint: "monitor.mozilla.org-monitor-in-product-guided-upsell",
+      form_type: "button",
+    },
+    {
+      utm_source: "product",
+      utm_medium: "monitor",
+      utm_campaign: "guided-upsell",
+    },
+  );
 
-    yearlyParams.set(
-      "entrypoint",
-      "monitor.mozilla.org-monitor-in-product-guided-upsell",
-    );
-    yearlyParams.set("form_type", "button");
-
-    if (!yearlyParams.has("utm_source")) {
-      yearlyParams.append("utm_source", "product");
-    }
-    if (!yearlyParams.has("utm_medium")) {
-      yearlyParams.append("utm_medium", "monitor");
-    }
-    if (!yearlyParams.has("utm_campaign")) {
-      yearlyParams.append("utm_campaign", "guided-upsell");
-    }
-    yearlySubscriptionUrl = `${yearlyUrl.pathname}?${yearlyParams.toString()}`;
-  }
   return (
     <FixView {...fixViewProps} hideProgressIndicator>
       <div>
@@ -185,8 +169,8 @@ export function AutomaticRemoveView(props: Props) {
                 variant="primary"
                 href={
                   selectedPlanIsYearly
-                    ? yearlySubscriptionUrl
-                    : monthlySubscriptionUrl
+                    ? yearlySubscriptionUrlWithAttributions
+                    : monthlySubscriptionUrlWithAttributions
                 }
               >
                 {selectedPlanIsYearly
