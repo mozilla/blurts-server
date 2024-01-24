@@ -14,6 +14,7 @@ import { SerializedSubscriber } from "../../../../../../../next-auth";
 import { onAddEmail, onRemoveEmail } from "./actions";
 
 const mockedSessionUpdate = jest.fn();
+const mockedRecordTelemetry = jest.fn();
 jest.mock("next-auth/react", () => {
   return {
     useSession: () => {
@@ -23,7 +24,11 @@ jest.mock("next-auth/react", () => {
     },
   };
 });
-jest.mock("../../../../../../hooks/useTelemetry");
+jest.mock("../../../../../../hooks/useTelemetry", () => {
+  return {
+    useTelemetry: () => mockedRecordTelemetry,
+  };
+});
 jest.mock("./actions", () => {
   return {
     onRemoveEmail: jest.fn(),
@@ -41,6 +46,14 @@ const mockedSubscriber: SerializedSubscriber = {
 const mockedUser: Session["user"] = {
   email: "primary@example.com",
   subscriber: mockedSubscriber,
+  fxa: {
+    subscriptions: ["monitor"],
+    avatar: "",
+    avatarDefault: false,
+    locale: "en-GB",
+    metricsEnabled: false,
+    twoFactorAuthentication: false,
+  },
 };
 const mockedSecondaryVerifiedEmail: EmailRow = {
   id: 1337,
@@ -73,6 +86,7 @@ it("passes the axe accessibility audit", async () => {
           mockedSecondaryUnverifiedEmail,
         ]}
         fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
       />
@@ -99,6 +113,7 @@ it("preselects 'Send all breach alerts to the primary email address' if that's t
         }}
         emailAddresses={[mockedSecondaryVerifiedEmail]}
         fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
       />
@@ -134,6 +149,7 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
         }}
         emailAddresses={[mockedSecondaryVerifiedEmail]}
         fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
       />
@@ -171,6 +187,7 @@ it("sends a call to the API to change the email alert preferences when changing 
         }}
         emailAddresses={[mockedSecondaryVerifiedEmail]}
         fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
       />
@@ -217,6 +234,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
         }}
         emailAddresses={[mockedSecondaryVerifiedEmail]}
         fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
       />
@@ -247,6 +265,7 @@ it("marks unverified email addresses as such", () => {
           mockedSecondaryUnverifiedEmail,
         ]}
         fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
       />
@@ -278,6 +297,7 @@ it("calls the API to resend a verification email if requested to", async () => {
           mockedSecondaryUnverifiedEmail,
         ]}
         fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
       />
@@ -319,6 +339,7 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
           mockedSecondaryUnverifiedEmail,
         ]}
         fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
       />
@@ -329,6 +350,68 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
   await user.click(removeButtons[0]);
 
   expect(onRemoveEmail).toHaveBeenCalledWith(mockedSecondaryVerifiedEmail);
+});
+
+it("hides the Plus cancellation link if the user doesn't have Plus", () => {
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getOneL10nSync()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: [],
+          } as Session["user"]["fxa"],
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+      />
+    </TestComponentWrapper>,
+  );
+
+  const cancellationHeading = screen.queryByRole("heading", {
+    name: "Cancel ⁨Monitor Plus⁩ subscription",
+  });
+
+  expect(cancellationHeading).not.toBeInTheDocument();
+});
+
+it("shows the Plus cancellation link if the user has Plus", () => {
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getOneL10nSync()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: ["monitor"],
+          } as Session["user"]["fxa"],
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+      />
+    </TestComponentWrapper>,
+  );
+
+  const cancellationHeading = screen.getByRole("heading", {
+    name: "Cancel ⁨Monitor Plus⁩ subscription",
+  });
+
+  expect(cancellationHeading).toBeInTheDocument();
 });
 
 // This test doesn't currently work because, as soon as we click `addButton`,
@@ -354,6 +437,7 @@ it.skip("calls the 'add' action when adding another email address", async () => 
           mockedSecondaryUnverifiedEmail,
         ]}
         fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
       />
@@ -367,4 +451,187 @@ it.skip("calls the 'add' action when adding another email address", async () => 
   await user.type(emailAddressInput, "new_address@example.com[Enter]");
 
   expect(onAddEmail).toHaveBeenCalledWith({}, "TODO");
+});
+
+describe("to learn about usage", () => {
+  it("counts how often people delete an email address", async () => {
+    const user = userEvent.setup();
+    render(
+      <TestComponentWrapper>
+        <SettingsView
+          l10n={getOneL10nSync()}
+          user={mockedUser}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+            [mockedSecondaryVerifiedEmail.email]: 42,
+          }}
+          emailAddresses={[mockedSecondaryVerifiedEmail]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+        />
+      </TestComponentWrapper>,
+    );
+
+    const deleteEmailButton = screen.getByRole("button", {
+      name: "Remove",
+    });
+    await user.click(deleteEmailButton);
+
+    expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+      "button",
+      "click",
+      expect.objectContaining({
+        button_id: "removed_email_address",
+      }),
+    );
+  });
+
+  it("counts how often people go to SubPlat to cancel their Plus subscription", async () => {
+    const user = userEvent.setup();
+    render(
+      <TestComponentWrapper>
+        <SettingsView
+          l10n={getOneL10nSync()}
+          user={mockedUser}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+            [mockedSecondaryVerifiedEmail.email]: 42,
+          }}
+          emailAddresses={[mockedSecondaryVerifiedEmail]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+        />
+      </TestComponentWrapper>,
+    );
+
+    const cancelPlusLink = screen.getByRole("link", {
+      name: "Cancel from your ⁨Mozilla account⁩ Open link in a new tab",
+    });
+    await user.click(cancelPlusLink);
+
+    expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+      "link",
+      "click",
+      expect.objectContaining({
+        link_id: "cancel_plus",
+      }),
+    );
+  });
+
+  it("counts how often people go to Mozilla Accounts to delete their account", async () => {
+    const user = userEvent.setup();
+    render(
+      <TestComponentWrapper>
+        <SettingsView
+          l10n={getOneL10nSync()}
+          user={mockedUser}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+            [mockedSecondaryVerifiedEmail.email]: 42,
+          }}
+          emailAddresses={[mockedSecondaryVerifiedEmail]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+        />
+      </TestComponentWrapper>,
+    );
+
+    const deactivateAccountLink = screen.getByRole("link", {
+      name: "Go to ⁨Mozilla account⁩ settings Open link in a new tab",
+    });
+    await user.click(deactivateAccountLink);
+
+    expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+      "link",
+      "click",
+      expect.objectContaining({
+        link_id: "deactivate_account",
+      }),
+    );
+  });
+
+  // This test doesn't currently work because, as soon as we click `addButton`,
+  // Jest complains that `useFormState` "is not a function or its return value
+  // is not iterable". It's unclear why that is, but as Server Actions get more
+  // widely used, hopefully the community/Vercel comes up with a way to resolve:
+  // https://stackoverflow.com/q/77705420
+  // eslint-disable-next-line jest/no-disabled-tests
+  it.skip("counts how often people click the 'Add email address' button", async () => {
+    const user = userEvent.setup();
+    render(
+      <TestComponentWrapper>
+        <SettingsView
+          l10n={getOneL10nSync()}
+          user={mockedUser}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+          }}
+          emailAddresses={[]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+        />
+      </TestComponentWrapper>,
+    );
+
+    const addEmailButton = screen.getByRole("button", {
+      name: "Add email address",
+    });
+    await user.click(addEmailButton);
+
+    expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+      "ctaButton",
+      "click",
+      expect.objectContaining({
+        button_id: "add_email_address",
+      }),
+    );
+  });
+
+  // This test doesn't currently work because, as soon as we click `addButton`,
+  // Jest complains that `useFormState` "is not a function or its return value
+  // is not iterable". It's unclear why that is, but as Server Actions get more
+  // widely used, hopefully the community/Vercel comes up with a way to resolve:
+  // https://stackoverflow.com/q/77705420
+  // eslint-disable-next-line jest/no-disabled-tests
+  it.skip("counts how often people close the 'Add email address' dialog", async () => {
+    const user = userEvent.setup();
+    render(
+      <TestComponentWrapper>
+        <SettingsView
+          l10n={getOneL10nSync()}
+          user={mockedUser}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+          }}
+          emailAddresses={[]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+        />
+      </TestComponentWrapper>,
+    );
+
+    const addEmailButton = screen.getByRole("button", {
+      name: "Add email address",
+    });
+    await user.click(addEmailButton);
+    await user.keyboard("[Escape]");
+
+    expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+      "button",
+      "click",
+      expect.objectContaining({
+        button_id: "close_add_email_modal",
+      }),
+    );
+  });
 });
