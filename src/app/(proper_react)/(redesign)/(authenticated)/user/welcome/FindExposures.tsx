@@ -160,7 +160,7 @@ export const FindExposures = ({
 
   function ProgressLabel() {
     return (
-      <div className={styles.progressLabel}>
+      <div tabIndex={0} className={styles.progressLabel}>
         {l10n.getString("onboarding-find-exposures-progress-label")}
         <div className={styles.progressLabelIndicator}>
           {

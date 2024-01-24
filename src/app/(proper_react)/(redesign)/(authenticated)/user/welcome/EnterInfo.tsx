@@ -255,7 +255,6 @@ export const EnterInfo = ({
           <Button
             variant="primary"
             onPress={() => explainerDialogState.close()}
-            autoFocus={true}
             className={styles.startButton}
           >
             {l10n.getString(
@@ -304,7 +303,6 @@ export const EnterInfo = ({
             });
             handleRequestScan();
           }}
-          autoFocus={true}
           className={styles.startButton}
           isLoading={requestingScan}
         >
@@ -323,7 +321,7 @@ export const EnterInfo = ({
   );
 
   return (
-    <div className={styles.stepContent}>
+    <div tabIndex={0} className={styles.stepContent}>
       <h1>{l10n.getString("onboarding-enter-details-title")}</h1>
       <p>
         {l10n.getString("onboarding-enter-details-text")}
@@ -409,7 +407,6 @@ export const EnterInfo = ({
           <Button
             {...confirmDialogTrigger.triggerProps}
             variant="primary"
-            autoFocus={true}
             type="submit"
             className={styles.startButton}
           >

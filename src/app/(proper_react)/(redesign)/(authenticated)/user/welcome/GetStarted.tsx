@@ -38,7 +38,7 @@ export const GetStarted = (props: Props) => {
   );
 
   return (
-    <div className={styles.stepContent}>
+    <div tabIndex={0} className={styles.stepContent}>
       <h1>{l10n.getString("onboarding-get-started-heading")}</h1>
       <p>{l10n.getString("onboarding-get-started-content-data")}</p>
       <p>{l10n.getString("onboarding-get-started-content-price")}</p>

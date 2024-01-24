@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { ReactNode, useRef } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import { AriaDialogProps, useButton, useDialog } from "react-aria";
 import styles from "./Dialog.module.scss";
 import { CloseBtn } from "../../server/Icons";
@@ -26,13 +26,18 @@ export const Dialog = ({
 }: Props) => {
   const l10n = useL10n();
   const dialogRef = useRef<HTMLDivElement>(null);
+  const dialogTitleRef = useRef<HTMLDivElement>(null);
   const { dialogProps, titleProps } = useDialog(otherProps, dialogRef);
-
   const dismissButtonRef = useRef<HTMLButtonElement>(null);
   const dismissButtonProps = useButton(
     { onPress: onDismiss },
     dismissButtonRef,
   ).buttonProps;
+
+  useEffect(() => {
+    dialogTitleRef.current?.focus();
+  }, []);
+
   const dismissButton =
     typeof onDismiss === "function" ? (
       <button
@@ -58,7 +63,7 @@ export const Dialog = ({
       className={`${styles.dialog} ${variant ? styles[variant] : ""}`}
     >
       {dismissButton}
-      <div className={styles.header}>
+      <div tabIndex={-1} ref={dialogTitleRef} className={styles.header}>
         {illustration && (
           <div className={styles.illustrationWrapper}>{illustration}</div>
         )}
