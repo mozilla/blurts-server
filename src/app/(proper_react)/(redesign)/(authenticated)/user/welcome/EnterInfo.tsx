@@ -321,7 +321,7 @@ export const EnterInfo = ({
   );
 
   return (
-    <div tabIndex={0} className={styles.stepContent}>
+    <div className={styles.stepContent}>
       <h1>{l10n.getString("onboarding-enter-details-title")}</h1>
       <p>
         {l10n.getString("onboarding-enter-details-text")}
