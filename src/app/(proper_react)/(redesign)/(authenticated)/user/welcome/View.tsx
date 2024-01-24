@@ -122,7 +122,6 @@ export const Steps = (props: {
 }) => {
   const l10n = useL10n();
   const navRef = useRef<HTMLUListElement>(null);
-  navRef.current?.focus();
 
   useEffect(() => {
     navRef.current?.focus();
