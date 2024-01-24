@@ -98,7 +98,8 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     if (
       !dataType ||
       !unresolvedPasswordBreach ||
-      emailsAffected?.length === 0
+      emailsAffected?.length === 0 ||
+      isResolving
     ) {
       return;
     }

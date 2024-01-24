@@ -46,6 +46,14 @@ const mockedSubscriber: SerializedSubscriber = {
 const mockedUser: Session["user"] = {
   email: "primary@example.com",
   subscriber: mockedSubscriber,
+  fxa: {
+    subscriptions: ["monitor"],
+    avatar: "",
+    avatarDefault: false,
+    locale: "en-GB",
+    metricsEnabled: false,
+    twoFactorAuthentication: false,
+  },
 };
 const mockedSecondaryVerifiedEmail: EmailRow = {
   id: 1337,
@@ -342,6 +350,68 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
   await user.click(removeButtons[0]);
 
   expect(onRemoveEmail).toHaveBeenCalledWith(mockedSecondaryVerifiedEmail);
+});
+
+it("hides the Plus cancellation link if the user doesn't have Plus", () => {
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getOneL10nSync()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: [],
+          } as Session["user"]["fxa"],
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+      />
+    </TestComponentWrapper>,
+  );
+
+  const cancellationHeading = screen.queryByRole("heading", {
+    name: "Cancel ⁨Monitor Plus⁩ subscription",
+  });
+
+  expect(cancellationHeading).not.toBeInTheDocument();
+});
+
+it("shows the Plus cancellation link if the user has Plus", () => {
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getOneL10nSync()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: ["monitor"],
+          } as Session["user"]["fxa"],
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+      />
+    </TestComponentWrapper>,
+  );
+
+  const cancellationHeading = screen.getByRole("heading", {
+    name: "Cancel ⁨Monitor Plus⁩ subscription",
+  });
+
+  expect(cancellationHeading).toBeInTheDocument();
 });
 
 // This test doesn't currently work because, as soon as we click `addButton`,
