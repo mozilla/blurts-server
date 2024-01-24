@@ -22,8 +22,8 @@ fix-flow-celebration-next-dashboard-label = Accédez au tableau de bord
 ## High-risk flow
 
 fix-flow-celebration-high-risk-title = Vous avez résolu les fuites à haut risque !
-fix-flow-celebration-high-risk-description-in-progress = Faire ce travail peut paraitre beaucoup, mais il est important de le faire pour votre sécurité. Continuez votre bon travail.
-fix-flow-celebration-high-risk-description-done = Faire ce travail peut paraitre beaucoup, mais il est important de le faire pour votre sécurité.
+fix-flow-celebration-high-risk-description-in-progress = Ces tâches peuvent sembler rébarbatives, mais elles sont cruciales pour assurer votre sécurité. Continuez, vous êtes sur la bonne voie !
+fix-flow-celebration-high-risk-description-done = Ces tâches peuvent sembler rébarbatives, mais elles sont cruciales pour assurer votre sécurité.
 fix-flow-celebration-high-risk-description-next-passwords = Occupons-nous à présent de vos mots de passe compromis.
 fix-flow-celebration-high-risk-description-next-security-questions = Occupons-nous à présent de vos questions de sécurité compromises.
 fix-flow-celebration-high-risk-description-next-security-recommendations = Ensuite, nous vous proposerons des recommandations de sécurité personnalisées en fonction des données qui ont été divulguées.
@@ -33,9 +33,9 @@ fix-flow-celebration-high-risk-description-next-dashboard = Vous avez atteint la
 
 fix-flow-celebration-leaked-passwords-title = Vos mots de passe sont désormais protégés !
 fix-flow-celebration-security-questions-title = Vos questions de sécurité sont protégées !
-fix-flow-celebration-leaked-passwords-description-next-security-questions = Revoyons et mettons à jour les questions de sécurité qui vous ont été signalées.
-fix-flow-celebration-leaked-passwords-description-next-security-recommendations = Ensuite, nous vous donnerons des recommandations de sécurité personnalisées en fonction de vos données qui ont été exposées.
-fix-flow-celebration-leaked-passwords-description-next-dashboard = Bien joué ! Vous avez atteint le terme. Vous pouvez visualiser les actions à accomplir et suivre vos progrès sur votre tableau de bord.
+fix-flow-celebration-leaked-passwords-description-next-security-questions = Occupons-nous à présent de vérifier et mettre à jour vos questions de sécurité compromises.
+fix-flow-celebration-leaked-passwords-description-next-security-recommendations = Ensuite, nous vous proposerons des recommandations de sécurité personnalisées en fonction des données qui ont été divulguées.
+fix-flow-celebration-leaked-passwords-description-next-dashboard = Bien joué ! Vous avez atteint la dernière étape. Vous pouvez visualiser les actions à accomplir et suivre vos progrès sur votre tableau de bord.
 
 ## Security recommendations flow
 
@@ -45,13 +45,13 @@ fix-flow-celebration-security-recommendations-description-next-dashboard = Bien 
 # High Risk Data Breaches
 
 high-risk-breach-heading = Voici la marche à suivre
-high-risk-breach-subheading = Ce problème nécessite d’accéder à vos informations sensibles, vous devrez donc le corriger manuellement.
+high-risk-breach-subheading = Ce problème nécessite d’accéder à vos informations sensibles, vous devrez donc le résoudre manuellement.
 # Variables
 # $num_breaches is the number of breaches where the high risk data was found.
 high-risk-breach-summary =
     { $num_breaches ->
-        [one] Elle apparaît dans { $num_breaches } fuite de données :
-       *[other] Elle apparaît dans { $num_breaches } fuites de données :
+        [one] Elles apparaissent dans { $num_breaches } fuite de données :
+       *[other] Elles apparaissent dans { $num_breaches } fuites de données :
     }
 # Variables
 # $breach_name is the name of the breach where the high risk data was found.
@@ -68,7 +68,7 @@ high-risk-breach-estimated-time = Temps estimé : plus de { $estimated_time } 
 # Credit Card Breaches
 
 high-risk-breach-credit-card-title = Votre numéro de carte bancaire a été compromis
-high-risk-breach-credit-card-description = Toute personne qui les obtient peut effectuer des achats non autorisés pour lesquels vous pouvez être tenu responsable. Agissez maintenant pour prévenir les pertes financières.
+high-risk-breach-credit-card-description = Toute personne qui obtient ces informations peut effectuer des achats non autorisés pour lesquels vous pouvez être tenu·e responsable. Agissez maintenant pour éviter toute perte financière.
 high-risk-breach-credit-card-step-one = Si vous avez toujours cette carte, contactez l’émetteur pour signaler qu’elle a été volée.
 high-risk-breach-credit-card-step-two = Demandez une nouvelle carte avec un nouveau numéro.
 high-risk-breach-credit-card-step-three = Surveillez vos comptes pour détecter les transactions non autorisées.
@@ -86,7 +86,7 @@ high-risk-breach-bank-account-step-three = Surveillez vos comptes pour détecter
 high-risk-breach-social-security-title = Votre numéro de sécurité sociale a été compromis
 high-risk-breach-social-security-description = Les fraudeurs peuvent négocier de nouveaux prêts ou cartes de crédit avec votre numéro de sécurité sociale. Agissez rapidement pour éviter les préjudices financiers.
 high-risk-breach-social-security-step-one = Protégez-vous en <link_to_info>créant une alerte de fraude ou en gelant votre crédit.</link_to_info>
-high-risk-breach-social-security-step-two = <link_to_info>Vérifiez la présence de comptes non reconnus dans votre rapport de crédit</link_to_info>.
+high-risk-breach-social-security-step-two = <link_to_info>Vérifiez la présence de comptes inconnus dans votre rapport de crédit</link_to_info>.
 
 # Social Security Number Modal
 
