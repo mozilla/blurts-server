@@ -16,6 +16,7 @@ import ModalImage from "../client/assets/premium-upsell-dialog-icon.svg";
 import styles from "./UpsellDialog.module.scss";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../constants";
+import { modifyAttributionsForUrl } from "../../functions/universal/attributions";
 
 export interface UpsellDialogProps {
   state: OverlayTriggerState;
@@ -77,50 +78,37 @@ function UpsellDialogContent({
   const recordTelemetry = useTelemetry();
 
   // format subscription urls
-  if (monthlySubscriptionUrl) {
-    const monthlyUrl = new URL(monthlySubscriptionUrl);
-    const monthlyParams = monthlyUrl.searchParams;
-    monthlyParams.set("form_type", "button");
-    monthlyParams.set(
-      "entrypoint",
-      "monitor.mozilla.org-monitor-in-product-navigation-upsell",
-    );
-    if (!monthlyParams.has("utm_source")) {
-      monthlyParams.append("utm_source", "product");
-    }
-    if (!monthlyParams.has("utm_medium")) {
-      monthlyParams.append("utm_medium", "monitor");
-    }
-    if (!monthlyParams.has("utm_campaign")) {
-      monthlyParams.append("utm_campaign", "navigation-upsell");
-    }
-    monthlySubscriptionUrl = `${monthlyUrl.pathname}?${monthlyParams.toString()}`;
-  }
+  const monthlySubscriptionUrlWithAttributions = monthlySubscriptionUrl
+    ? modifyAttributionsForUrl(
+        monthlySubscriptionUrl,
+        {
+          form_type: "button",
+          entrypoint:
+            "monitor.mozilla.org-monitor-in-product-navigation-upsell",
+        },
+        {
+          utm_source: "product",
+          utm_medium: "monitor",
+          utm_campaign: "navigation-upsell",
+        },
+      )
+    : monthlySubscriptionUrl;
+  const yearlySubscriptionUrlWithAttributions = yearlySubscriptionUrl
+    ? modifyAttributionsForUrl(
+        yearlySubscriptionUrl,
+        {
+          form_type: "button",
+          entrypoint:
+            "monitor.mozilla.org-monitor-in-product-navigation-upsell",
+        },
+        {
+          utm_source: "product",
+          utm_medium: "monitor",
+          utm_campaign: "navigation-upsell",
+        },
+      )
+    : yearlySubscriptionUrl;
 
-  if (yearlySubscriptionUrl) {
-    const yearlyUrl = new URL(yearlySubscriptionUrl);
-    const yearlyParams = yearlyUrl.searchParams;
-    // overwrite the three params below
-
-    yearlyParams.set(
-      "entrypoint",
-      "monitor.mozilla.org-monitor-in-product-navigation-upsell",
-    );
-    yearlyParams.set("form_type", "button");
-
-    // placeholder utms if acquisition source is unknown
-
-    if (!yearlyParams.has("utm_source")) {
-      yearlyParams.append("utm_source", "product");
-    }
-    if (!yearlyParams.has("utm_medium")) {
-      yearlyParams.append("utm_medium", "monitor");
-    }
-    if (!yearlyParams.has("utm_campaign")) {
-      yearlyParams.append("utm_campaign", "navigation-upsell");
-    }
-    yearlySubscriptionUrl = `${yearlyUrl.pathname}?${yearlyParams.toString()}`;
-  }
   const isMonthly = selectedTab === "monthly";
   const tabsData = [
     {
@@ -193,7 +181,11 @@ function UpsellDialogContent({
       </dl>
       <Button
         className={styles.productCta}
-        href={isMonthly ? monthlySubscriptionUrl : yearlySubscriptionUrl}
+        href={
+          isMonthly
+            ? monthlySubscriptionUrlWithAttributions
+            : yearlySubscriptionUrlWithAttributions
+        }
         onPress={() => {
           // Note: This doesn't currently work; the event is now never sent to
           //       the back-end because the page unloads before we can do so.
