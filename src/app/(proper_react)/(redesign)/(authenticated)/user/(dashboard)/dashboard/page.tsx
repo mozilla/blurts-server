@@ -179,7 +179,7 @@ export default async function DashboardPage() {
       userBreaches={subBreaches}
       enabledFeatureFlags={enabledFeatureFlags}
       monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
-      yearlySubscriptionUrl={`${yearlySubscriptionUrl}&&${additionalSubplatParams.toString()}`}
+      yearlySubscriptionUrl={`${yearlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
       fxaSettingsUrl={fxaSettingsUrl}
       scanCount={scanCount}
       totalNumberOfPerformedScans={profileStats?.total}
