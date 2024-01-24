@@ -58,7 +58,7 @@ export const SignUpForm = (props: Props) => {
     void signIn(
       "fxa",
       { callbackUrl: props.signUpCallbackUrl },
-      attributionSearchParams.toString(),
+      attributionSearchParams,
     );
     record("ctaButton", "click", {
       button_id: props.eventId.cta,

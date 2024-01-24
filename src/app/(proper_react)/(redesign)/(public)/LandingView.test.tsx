@@ -79,7 +79,7 @@ describe("When Premium is not available", () => {
     expect(signIn).toHaveBeenCalledWith(
       "fxa",
       expect.any(Object),
-      expect.stringContaining(`email=`),
+      expect.stringContaining(`email=mail@example.com`),
     );
   });
 
