@@ -35,13 +35,18 @@ function PremiumPricingLabel({
   isMonthly?: boolean;
 }) {
   const l10n = useL10n();
+  const yearlyPrice = subscriptionBillingAmount["yearly"];
+  const monthlyPrice = subscriptionBillingAmount["monthly"];
+  const discountPercentage = Math.floor(
+    ((monthlyPrice - yearlyPrice) * 100) / monthlyPrice,
+  );
 
   return (
     <>
       <small className={styles.pricingInfo}>
         {l10n.getString(
           "fix-flow-data-broker-profiles-automatic-remove-save-percent",
-          { percent: 10 },
+          { percent: discountPercentage },
         )}
       </small>
       <div className={styles.pricingPill}>
@@ -65,9 +70,7 @@ function PremiumPricingLabel({
           {l10n.getString(
             "fix-flow-data-broker-profiles-automatic-remove-features-price",
             {
-              price: isMonthly
-                ? subscriptionBillingAmount["monthly"]
-                : subscriptionBillingAmount["yearly"],
+              price: isMonthly ? monthlyPrice : yearlyPrice,
             },
           )}
         </b>

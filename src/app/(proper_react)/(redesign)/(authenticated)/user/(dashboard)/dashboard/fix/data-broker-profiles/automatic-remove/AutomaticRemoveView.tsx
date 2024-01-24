@@ -27,8 +27,18 @@ export function AutomaticRemoveView(props: Props) {
 
   const dataBrokerCount = CONST_ONEREP_DATA_BROKER_COUNT;
 
-  const { monthlySubscriptionUrl, yearlySubscriptionUrl, ...fixViewProps } =
-    props;
+  const {
+    monthlySubscriptionUrl,
+    yearlySubscriptionUrl,
+    subscriptionBillingAmount,
+    ...fixViewProps
+  } = props;
+
+  const yearlyPrice = subscriptionBillingAmount["yearly"];
+  const monthlyPrice = subscriptionBillingAmount["monthly"];
+  const discountPercentage = Math.floor(
+    ((monthlyPrice - yearlyPrice) * 100) / monthlyPrice,
+  );
 
   return (
     <FixView {...fixViewProps} hideProgressIndicator>
@@ -71,7 +81,7 @@ export function AutomaticRemoveView(props: Props) {
             <span>
               {l10n.getString(
                 "fix-flow-data-broker-profiles-automatic-remove-save-percent",
-                { percent: 10 },
+                { percent: discountPercentage },
               )}
             </span>
           </div>
@@ -135,11 +145,11 @@ export function AutomaticRemoveView(props: Props) {
                 {selectedPlanIsYearly
                   ? l10n.getString(
                       "fix-flow-data-broker-profiles-automatic-remove-features-price",
-                      { price: props.subscriptionBillingAmount["yearly"] },
+                      { price: yearlyPrice },
                     )
                   : l10n.getString(
                       "fix-flow-data-broker-profiles-automatic-remove-features-price",
-                      { price: props.subscriptionBillingAmount["monthly"] },
+                      { price: monthlyPrice },
                     )}
               </span>
               <Button
