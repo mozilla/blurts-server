@@ -121,16 +121,16 @@ export const Steps = (props: {
   skipInitialStep?: boolean;
 }) => {
   const l10n = useL10n();
-  const navRef = useRef<HTMLUListElement>(null);
+  const stepsRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    navRef.current?.focus();
+    stepsRef.current?.focus();
   }, [props.currentStep]);
 
   return (
     <ul
       tabIndex={-1}
-      ref={navRef}
+      ref={stepsRef}
       className={`${styles.steps} ${
         props.skipInitialStep ? styles.getStartedHidden : ""
       }`}
