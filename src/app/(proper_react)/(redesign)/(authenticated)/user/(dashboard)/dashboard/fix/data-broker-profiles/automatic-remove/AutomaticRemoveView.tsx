@@ -14,6 +14,10 @@ import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../co
 export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  subscriptionBillingAmount: {
+    yearly: number;
+    monthly: number;
+  };
 };
 
 export function AutomaticRemoveView(props: Props) {
@@ -131,11 +135,11 @@ export function AutomaticRemoveView(props: Props) {
                 {selectedPlanIsYearly
                   ? l10n.getString(
                       "fix-flow-data-broker-profiles-automatic-remove-features-price",
-                      { price: "X.XX" },
+                      { price: props.subscriptionBillingAmount["yearly"] },
                     )
                   : l10n.getString(
                       "fix-flow-data-broker-profiles-automatic-remove-features-price",
-                      { price: "X.XX" },
+                      { price: props.subscriptionBillingAmount["monthly"] },
                     )}
               </span>
               <Button

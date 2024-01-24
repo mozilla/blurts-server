@@ -326,6 +326,14 @@ const Plans = (props: Props) => {
           monthly: getPremiumSubscriptionUrl({ type: "monthly" }),
           yearly: getPremiumSubscriptionUrl({ type: "yearly" }),
         }}
+        subscriptionBillingAmount={{
+          yearly: parseFloat(
+            process.env.SUBSCRIPTION_BILLING_AMOUNT_YEARLY_US as string,
+          ),
+          monthly: parseFloat(
+            process.env.SUBSCRIPTION_BILLING_AMOUNT_MONTHLY_US as string,
+          ),
+        }}
         scanLimitReached={props.scanLimitReached}
       />
     </div>

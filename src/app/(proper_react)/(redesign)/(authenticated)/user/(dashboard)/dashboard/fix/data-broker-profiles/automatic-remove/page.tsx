@@ -50,6 +50,14 @@ export default async function AutomaticRemovePage() {
       currentSection="data-broker-profiles"
       monthlySubscriptionUrl={monthlySubscriptionUrl}
       yearlySubscriptionUrl={yearlySubscriptionUrl}
+      subscriptionBillingAmount={{
+        yearly: parseFloat(
+          process.env.SUBSCRIPTION_BILLING_AMOUNT_YEARLY_US as string,
+        ),
+        monthly: parseFloat(
+          process.env.SUBSCRIPTION_BILLING_AMOUNT_MONTHLY_US as string,
+        ),
+      }}
     />
   );
 }

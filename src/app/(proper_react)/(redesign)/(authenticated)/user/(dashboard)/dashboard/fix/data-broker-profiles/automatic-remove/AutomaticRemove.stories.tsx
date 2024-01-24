@@ -66,6 +66,10 @@ export const AutomaticRemoveViewStory: Story = {
           currentSection="data-broker-profiles"
           monthlySubscriptionUrl=""
           yearlySubscriptionUrl=""
+          subscriptionBillingAmount={{
+            yearly: 13.37,
+            monthly: 42.42,
+          }}
         />
       </Shell>
     );

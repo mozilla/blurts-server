@@ -51,6 +51,14 @@ export default async function SettingsPage() {
       fxaSubscriptionsUrl={fxaSubscriptionsUrl}
       monthlySubscriptionUrl={monthlySubscriptionUrl}
       yearlySubscriptionUrl={yearlySubscriptionUrl}
+      subscriptionBillingAmount={{
+        yearly: parseFloat(
+          process.env.SUBSCRIPTION_BILLING_AMOUNT_YEARLY_US as string,
+        ),
+        monthly: parseFloat(
+          process.env.SUBSCRIPTION_BILLING_AMOUNT_MONTHLY_US as string,
+        ),
+      }}
     />
   );
 }

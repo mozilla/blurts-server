@@ -164,6 +164,14 @@ export default async function DashboardPage() {
       enabledFeatureFlags={enabledFeatureFlags}
       monthlySubscriptionUrl={monthlySubscriptionUrl}
       yearlySubscriptionUrl={yearlySubscriptionUrl}
+      subscriptionBillingAmount={{
+        yearly: parseFloat(
+          process.env.SUBSCRIPTION_BILLING_AMOUNT_YEARLY_US as string,
+        ),
+        monthly: parseFloat(
+          process.env.SUBSCRIPTION_BILLING_AMOUNT_MONTHLY_US as string,
+        ),
+      }}
       fxaSettingsUrl={fxaSettingsUrl}
       scanCount={scanCount}
       totalNumberOfPerformedScans={profileStats?.total}

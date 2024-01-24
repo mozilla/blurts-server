@@ -105,6 +105,14 @@ export default async function FeatureFlagPage() {
             user={session.user}
             monthlySubscriptionUrl={monthlySubscriptionUrl}
             yearlySubscriptionUrl={yearlySubscriptionUrl}
+            subscriptionBillingAmount={{
+              yearly: parseFloat(
+                process.env.SUBSCRIPTION_BILLING_AMOUNT_YEARLY_US as string,
+              ),
+              monthly: parseFloat(
+                process.env.SUBSCRIPTION_BILLING_AMOUNT_MONTHLY_US as string,
+              ),
+            }}
             fxaSettingsUrl={fxaSettingsUrl}
           />
         </div>

@@ -38,6 +38,14 @@ export const Shell = (props: Props) => {
         monthlySubscriptionUrl={monthlySubscriptionUrl}
         yearlySubscriptionUrl={yearlySubscriptionUrl}
         fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
+        subscriptionBillingAmount={{
+          yearly: parseFloat(
+            process.env.SUBSCRIPTION_BILLING_AMOUNT_YEARLY_US as string,
+          ),
+          monthly: parseFloat(
+            process.env.SUBSCRIPTION_BILLING_AMOUNT_MONTHLY_US as string,
+          ),
+        }}
       >
         <div className={styles.wrapper}>
           <nav
