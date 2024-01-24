@@ -58,6 +58,7 @@ import { signIn } from "next-auth/react";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../constants";
 import { useCookies } from "react-cookie";
+import { modifyAttributionsForUrlSearchParams } from "../../../functions/universal/attributions";
 
 export type Props = {
   "aria-labelledby": string;
@@ -92,23 +93,20 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("yearly");
   const searchParam = useRef(new URLSearchParams());
 
-  const newSearchParam = new URLSearchParams(cookies.attributionsLastTouch);
-
-  // overwrite the three params below
-  newSearchParam.set("entrypoint", "monitor.mozilla.org-monitor-product-page");
-  newSearchParam.set("form_type", "button");
-  newSearchParam.set("data_cta_position", "pricing");
-
-  // placeholder utms if acquisition source is unknown
-  if (!newSearchParam.has("utm_source")) {
-    newSearchParam.append("utm_source", "product");
-  }
-  if (!newSearchParam.has("utm_medium")) {
-    newSearchParam.append("utm_medium", "monitor");
-  }
-  if (!newSearchParam.has("utm_campaign")) {
-    newSearchParam.append("utm_campaign", "pricing");
-  }
+  let newSearchParam = new URLSearchParams(cookies.attributionsLastTouch);
+  newSearchParam = modifyAttributionsForUrlSearchParams(
+    newSearchParam,
+    {
+      entrypoint: "monitor.mozilla.org-monitor-product-page",
+      form_type: "button",
+      data_cta_position: "pricing",
+    },
+    {
+      utm_source: "product",
+      utm_medium: "monitor",
+      utm_campaign: "pricing",
+    },
+  );
   searchParam.current = newSearchParam;
 
   return (

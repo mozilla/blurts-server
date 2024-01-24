@@ -13,6 +13,7 @@ import { useTelemetry } from "../../../hooks/useTelemetry";
 import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
 import { WaitlistCta } from "./ScanLimit";
 import { useCookies } from "react-cookie";
+import { modifyAttributionsForUrlSearchParams } from "../../../functions/universal/attributions";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -31,27 +32,22 @@ export const SignUpForm = (props: Props) => {
   const [emailInput, setEmailInput] = useState("");
   const record = useTelemetry();
   const [cookies] = useCookies(["attributionsFirstTouch"]);
-  const attributionSearchParams = new URLSearchParams(
+  let attributionSearchParams = new URLSearchParams(
     cookies.attributionsFirstTouch,
   );
-  attributionSearchParams.set(
-    "entrypoint",
-    "monitor.mozilla.org-monitor-product-page",
+  attributionSearchParams = modifyAttributionsForUrlSearchParams(
+    attributionSearchParams,
+    {
+      entrypoint: "monitor.mozilla.org-monitor-product-page",
+      email: emailInput,
+      form_type: "button",
+    },
+    {
+      utm_source: "product",
+      utm_medium: "monitor",
+      utm_campaign: "get_free_scan",
+    },
   );
-  // This passes an `?email=` query parameter to FxA, causing it to prefill
-  // the email address in the sign-up form. See
-  // https://mozilla.github.io/ecosystem-platform/relying-parties/reference/query-parameters#email
-  attributionSearchParams.set("email", emailInput);
-  attributionSearchParams.set("form_type", "button");
-  if (!attributionSearchParams.has("utm_source")) {
-    attributionSearchParams.append("utm_source", "product");
-  }
-  if (!attributionSearchParams.has("utm_medium")) {
-    attributionSearchParams.append("utm_medium", "monitor");
-  }
-  if (!attributionSearchParams.has("utm_campaign")) {
-    attributionSearchParams.append("utm_campaign", "get_free_scan");
-  }
 
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault();
