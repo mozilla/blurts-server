@@ -73,6 +73,10 @@ export const UserAdmin = () => {
     }
 
     setStatus(`[${action}] succeeded for email address [${emailInput}].`);
+    const refreshResponse = await fetch(`/api/v1/admin/users/${emailHash}`);
+    if (refreshResponse.ok) {
+      setSubscriberData(await refreshResponse.json());
+    }
   };
 
   return (
