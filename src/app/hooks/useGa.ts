@@ -51,9 +51,7 @@ export const useGa = (): {
     record: (options: Ga4EventOptions) => void;
   };
 } => {
-  const debugMode =
-    process.env.NEXT_PUBLIC_NODE_ENV !== "production" &&
-    process.env.NODE_ENV !== "test";
+  const debugMode = process.env.NEXT_PUBLIC_GA4_DEBUG_MODE !== "true";
 
   useEffect(() => {
     // Enable upload only if the user has not opted out of tracking.
