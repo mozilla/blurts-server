@@ -21,7 +21,7 @@ export function modifyAttributionsForUrl(
     }
   }
 
-  return `${originalUrl.pathname}?${searchParams.toString()}`;
+  return `${originalUrl.href.split("?")[0]}?${searchParams.toString()}`;
 }
 
 export function modifyAttributionsForUrlSearchParams(
