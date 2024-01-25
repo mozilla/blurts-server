@@ -13,8 +13,9 @@ import { ModalOverlay } from "../../../../../../../../components/client/dialog/M
 import { Dialog } from "../../../../../../../../components/client/dialog/Dialog";
 import Image from "next/image";
 import FraudAlertDialogIllustration from "../images/fraud-alert-modal-illustration.svg";
-import { Button } from "../../../../../../../../components/client/Button";
 import styles from "./FraudAlertModal.module.scss";
+import { TelemetryLink } from "../../../../../../../../components/client/TelemetryLink";
+import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
 
 export const FraudAlertModal = () => {
   const l10n = useL10n();
@@ -85,21 +86,30 @@ export const FraudAlertModal = () => {
                   {
                     elems: {
                       equifax_link: (
-                        <a
+                        <TelemetryLink
+                          eventData={{
+                            link_id: "equifax_outbound",
+                          }}
                           href={equifaxLink}
                           rel="noopener noreferrer"
                           target="_blank"
                         />
                       ),
                       experian_link: (
-                        <a
+                        <TelemetryLink
+                          eventData={{
+                            link_id: "experian_outbound",
+                          }}
                           href={experianLink}
                           rel="noopener noreferrer"
                           target="_blank"
                         />
                       ),
                       transunion_link: (
-                        <a
+                        <TelemetryLink
+                          eventData={{
+                            link_id: "transunion_outbound",
+                          }}
                           href={transunionLink}
                           rel="noopener noreferrer"
                           target="_blank"
@@ -110,16 +120,26 @@ export const FraudAlertModal = () => {
                 )}
               </p>
               <p>
-                <a
+                <TelemetryLink
+                  eventData={{
+                    link_id: "learn_freezes_outbound",
+                  }}
                   href={fraudAlertLink}
                   rel="noopener noreferrer"
                   target="_blank"
                 >
                   {l10n.getString("ssn-modal-learn-more")}
-                </a>
+                </TelemetryLink>
               </p>
               <div className={styles.confirmButtonWrapper}>
-                <Button
+                <TelemetryButton
+                  event={{
+                    module: "ctaButton",
+                    name: "click",
+                    data: {
+                      button_id: "ok_social_security_tool_tip",
+                    },
+                  }}
                   variant="primary"
                   // TODO: Test dialog closing
                   /* c8 ignore next */
@@ -127,7 +147,7 @@ export const FraudAlertModal = () => {
                   autoFocus={true}
                 >
                   {l10n.getString("ssn-modal-ok")}
-                </Button>
+                </TelemetryButton>
               </div>
             </div>
           </Dialog>
