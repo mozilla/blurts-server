@@ -23,9 +23,15 @@ exposure-chart-legend-heading-nr = Sayı
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
 exposure-chart-caption = Bu tablo, bilgilerinizin kaç kez ele geçirildiğini gösterir.
+# Variables:
+#   $total_fixed_exposures_num (number) - Number of fixed exposures
+#   $total_exposures_num (number) - Number of total exposures
+exposure-chart-caption-fixed = Bu grafik, düzelttiğiniz veri ihlallerini gösterir ({ $total_fixed_exposures_num } / { $total_exposures_num })
 exposure-chart-returning-user-upgrade-prompt = Ev adresi, aile üyeleri ve diğer bilgiler henüz dahil edilmemiştir.
 exposure-chart-returning-user-upgrade-prompt-cta = Ücretsiz tarama başlatın
 exposure-chart-scan-in-progress-prompt = <b>Tarama devam ediyor:</b> Adres, aile üyeleri ve diğer bilgiler henüz dahil edilmedi.
+modal-active-number-of-exposures-title = Aktif veri ihlali sayınız hakkında
+modal-fixed-number-of-exposures-title = Düzeltilmiş veri ihlali sayınız hakkında
 modal-cta-ok = Tamam
 modal-open-alt = Aç
 modal-close-alt = Kapat
@@ -75,6 +81,13 @@ dashboard-top-banner-scan-in-progress-title = Taramanız hâlâ devam ediyor
 dashboard-top-banner-your-data-is-protected-title = Verileriniz korunuyor
 dashboard-top-banner-your-data-is-protected-cta = Nelerin düzeltildiğini görün
 dashboard-top-banner-lets-keep-protecting-title = Verilerinizi korumaya devam edelim
+# Variables:
+# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
+dashboard-top-banner-lets-keep-protecting-description =
+    { $exposures_unresolved_num ->
+        [one] Hâlâ düzeltmeniz gereken { $exposures_unresolved_num } veri ihlali var. Düzeltmeye devam ederek kendinizi koruyun. Size adım adım rehberlik edeceğiz.
+       *[other] Hâlâ düzeltmeniz gereken { $exposures_unresolved_num } veri ihlali var. Düzeltmeye devam ederek kendinizi koruyun. Size adım adım rehberlik edeceğiz.
+    }
 dashboard-top-banner-lets-keep-protecting-cta = Devam edelim
 dashboard-top-banner-protect-your-data-title = Verilerinizi koruyalım
 dashboard-top-banner-protect-your-data-cta = Hadi düzeltelim

@@ -8,13 +8,13 @@ import {
   getDashboardSummary,
   getDataPointReduction,
 } from "../../../../../../../../../functions/server/dashboard";
-import { Button } from "../../../../../../../../../components/client/Button";
 import {
   StepDeterminationData,
   getNextGuidedStep,
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../../FixView";
 import { ExtendedReactLocalization } from "../../../../../../../../../hooks/l10n";
+import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 
 export type Props = {
   data: StepDeterminationData;
@@ -71,15 +71,22 @@ export function WelcomeToPlusView(props: Props) {
             )}
           </p>
           <div className={styles.buttonsWrapper}>
-            <Button
+            <TelemetryButton
               variant="primary"
               href={getNextGuidedStep(props.data, "Scan").href}
               wide
+              event={{
+                module: "ctaButton",
+                name: "click",
+                data: {
+                  button_id: "guided_experience_progress",
+                },
+              }}
             >
               {l10n.getString(
                 "welcome-to-premium-data-broker-profiles-cta-label",
               )}
-            </Button>
+            </TelemetryButton>
           </div>
         </div>
         <div className={styles.chart}>
