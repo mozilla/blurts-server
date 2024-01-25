@@ -20,6 +20,13 @@ settings-alert-preferences-option-two = Tüm ihlal uyarılarını birinci e-post
 #   $email (string) - Email address
 settings-email-label-primary = { $email } (birinci)
 settings-email-list-title = İzlenen e-posta adresleri
+# Variables:
+#   $limit (number) - Number of email addresses included in the plan
+settings-email-limit-info =
+    { $limit ->
+        [one] Hesabınız toplam { $limit } e-posta adresini izlemenize olanak veriyor.
+       *[other] Hesabınız toplam { $limit } e-posta adresini izlemenize olanak veriyor.
+    }
 settings-email-verification-callout = E-posta doğrulaması gerekiyor
 settings-resend-email-verification-link = Doğrulama e-postasını yeniden gönder
 settings-add-email-button = E-posta adresi ekle
