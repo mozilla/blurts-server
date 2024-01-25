@@ -332,3 +332,10 @@ $width-first-column-filter-bar: 90px;
     text-transform: uppercase;
   }
 }
+
+/* Apply this class to remove default focus outline styles for non-interactive elements */
+@mixin no-focus-outline {
+  &:focus {
+    outline: none;
+  }
+}
