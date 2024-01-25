@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getServerSession } from "next-auth";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { isEligibleForFreeScan } from "../../../../../../functions/server/onerep";
 import { View } from "../View";
 import { getAllBreachesCount } from "../../../../../../../db/tables/breaches";
@@ -47,9 +47,10 @@ export default async function Onboarding({ params, searchParams }: Props) {
   );
 
   if (!userIsEligible) {
-    throw new Error(
+    console.error(
       `Subscriber not eligible for free scan, ID: ${session?.user?.subscriber?.id}`,
     );
+    return redirect("/user/dashboard");
   }
 
   const allBreachesCount = await getAllBreachesCount();
