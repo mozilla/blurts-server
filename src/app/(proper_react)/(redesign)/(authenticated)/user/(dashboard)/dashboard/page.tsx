@@ -119,7 +119,7 @@ export default async function DashboardPage() {
   // store utm attributions if present in cookies
   if (cookiesList.get("attributionsFirstTouch")?.value) {
     const searchParams = new URLSearchParams(
-      cookiesList.get("attributionsFirstTouch").value,
+      cookiesList.get("attributionsFirstTouch")?.value,
     );
     const attribution = {
       type: "firstTouch",

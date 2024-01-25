@@ -28,29 +28,25 @@ export function AutomaticRemoveView(props: Props) {
     props;
 
   // format subscription urls
-  const monthlySubscriptionUrlWithAttributions = modifyAttributionsForUrl(
+  const addAttributions = (url: string) =>
+    modifyAttributionsForUrl(
+      url,
+      {
+        entrypoint: "monitor.mozilla.org-monitor-in-product-guided-upsell",
+        form_type: "button",
+      },
+      {
+        utm_source: "product",
+        utm_medium: "monitor",
+        utm_campaign: "guided-upsell",
+      },
+    );
+
+  const monthlySubscriptionUrlWithAttributions = addAttributions(
     monthlySubscriptionUrl,
-    {
-      entrypoint: "monitor.mozilla.org-monitor-in-product-guided-upsell",
-      form_type: "button",
-    },
-    {
-      utm_source: "product",
-      utm_medium: "monitor",
-      utm_campaign: "guided-upsell",
-    },
   );
-  const yearlySubscriptionUrlWithAttributions = modifyAttributionsForUrl(
+  const yearlySubscriptionUrlWithAttributions = addAttributions(
     yearlySubscriptionUrl,
-    {
-      entrypoint: "monitor.mozilla.org-monitor-in-product-guided-upsell",
-      form_type: "button",
-    },
-    {
-      utm_source: "product",
-      utm_medium: "monitor",
-      utm_campaign: "guided-upsell",
-    },
   );
 
   return (
