@@ -29,16 +29,16 @@ export async function up(knex) {
  */
 export async function down(knex) {
   await knex.schema.alterTable("email_notifications", table => {
-    table.foreign("subscriber_id").references("subscribers.id")
-    table.foreign("breach_id").references("breaches.id")
+    table.dropForeign("subscriber_id").foreign("subscriber_id").references("subscribers.id")
+    table.dropForeign("breach_id").foreign("breach_id").references("breaches.id")
   });
   await knex.schema.alterTable("onerep_scan_results", table => {
-    table.foreign("onerep_scan_id").references("onerep_scans.onerep_scan_id")
+    table.dropForeign("onerep_scan_id").foreign("onerep_scan_id").references("onerep_scans.onerep_scan_id")
   });
   await knex.schema.alterTable("onerep_scans", table => {
-    table.foreign("onerep_profile_id").references("subscribers.onerep_profile_id")
+    table.dropForeign("onerep_profile_id").foreign("onerep_profile_id").references("subscribers.onerep_profile_id")
   });
   await knex.schema.alterTable("onerep_profiles", table => {
-    table.foreign("onerep_profile_id").references("subscribers.onerep_profile_id")
+    table.dropForeign("onerep_profile_id").foreign("onerep_profile_id").references("subscribers.onerep_profile_id")
   });
 }
