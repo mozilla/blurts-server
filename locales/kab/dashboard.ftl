@@ -5,6 +5,10 @@
 
 # Chart summarizing total exposures
 
+exposure-chart-legend-heading-nr = Amḍan
+# Variables:
+#   $nr (number) - Number of a particular type of exposure found for the user
+exposure-chart-legend-value-nr = { $nr }×
 modal-cta-ok = IH
 modal-open-alt = Ldi
 modal-close-alt = Mdel

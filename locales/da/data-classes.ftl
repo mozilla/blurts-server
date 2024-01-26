@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = Konto-saldoer
@@ -14,7 +19,7 @@ avatars = Avatarer
 bank-account-numbers = Bankkontonumre
 beauty-ratings = Skønheds-vurderinger
 biometric-data = Biometriske data
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Personoplysninger
 browser-user-agent-details = Information om browserens user agent
@@ -35,7 +40,7 @@ customer-interactions = Kunde-interaktioner
 dates-of-birth = Fødselsdatoer
 deceased-date = Dødsdato
 deceased-statuses = Status for afdøde
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Instruktioner til leverandøren
 device-information = Information om enheder
@@ -75,12 +80,13 @@ instant-messenger-identities = Identiteter på Instant messenger-tjenester
 ip-addresses = IP-adresser
 job-applications = Jobansøgninger
 job-titles = Jobtitler
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Nummerplader
 living-costs = Leveomkostninger
 # This string refers to financial loans.
 loan-information = Oplysninger om lån
 login-histories = Indlognings-historik
+loyalty-program-details = Detaljer om loyalitetsprogrammet
 mac-addresses = MAC-adresser
 marital-statuses = Civilstand
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -141,6 +147,7 @@ spouses-names = Ægtefælles navn
 support-tickets = Support-spørgsmål
 survey-results = Undersøgelses-resultater
 taxation-records = Skatte-oplysninger
+telecommunications-carrier = Teleoperatører
 time-zones = Tidszoner
 travel-habits = Rejsevaner
 user-statuses = Bruger-statusser

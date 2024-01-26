@@ -138,9 +138,9 @@ security-recommendation-phone-summary =
         [one] O seu número de telefone foi exposto em { $num_breaches } violação de dados:
        *[other] O seu número de telefone foi exposto em { $num_breaches } violações de dados:
     }
-security-recommendation-phone-description = Infelizmente não pode recuperá-la. Mas existem passos que pode tomar para ter a certeza que está seguro(a).
-security-recommendation-phone-step-one = Bloqueie números de spam para evitar mais chamadas de lixo eletrónico
-security-recommendation-phone-step-two = Não clique em ligações em mensagens de remetentes desconhecidos; se parece ser de uma fonte confiável, ligar diretamente para confirmar
+security-recommendation-phone-description = Infelizmente não a pode recuperar. Mas existem passos que pode tomar para ter a certeza que está seguro(a).
+security-recommendation-phone-step-one = Bloqueie números de spam para evitar mais chamadas que não interessam
+security-recommendation-phone-step-two = Não clique em ligações em mensagens de remetentes desconhecidos; se parecer ser de uma fonte confiável, ligue diretamente para confirmar
 
 # Email security recommendation
 

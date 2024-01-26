@@ -14,11 +14,13 @@ if (!process.env.STORYBOOK) {
   import("server-only");
 }
 
+type SubscriptionPeriod = "monthly" | "yearly";
+
 interface GetPremiumSubscriptionUrlParams {
-  type: "monthly" | "yearly";
+  type: SubscriptionPeriod;
 }
 
-function getPremiumSubscriptionUrl({
+export function getPremiumSubscriptionUrl({
   type,
 }: GetPremiumSubscriptionUrlParams): string {
   const subscriptionUrl = process.env.FXA_SUBSCRIPTIONS_URL as string;
@@ -32,4 +34,15 @@ function getPremiumSubscriptionUrl({
   return `${subscriptionUrl}/products/${productId}?plan=${planId}`;
 }
 
-export default getPremiumSubscriptionUrl;
+type SubscriptionBillingAmount = Record<SubscriptionPeriod, number>;
+
+export function getSubscriptionBillingAmount(): SubscriptionBillingAmount {
+  return {
+    yearly: parseFloat(
+      process.env.SUBSCRIPTION_BILLING_AMOUNT_YEARLY_US as string,
+    ),
+    monthly: parseFloat(
+      process.env.SUBSCRIPTION_BILLING_AMOUNT_MONTHLY_US as string,
+    ),
+  };
+}

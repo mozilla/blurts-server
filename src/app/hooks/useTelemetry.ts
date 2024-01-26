@@ -11,6 +11,7 @@ import { useGa } from "./useGa";
 import { useGlean } from "./useGlean";
 /* eslint-enable no-restricted-imports */
 import { GleanMetricMap } from "../../telemetry/generated/_map";
+import { convertCamelToSnakeCase } from "../functions/universal/convertCamelToSnakeCase";
 
 const TelemetryPlatforms = {
   Glean: "glean",
@@ -43,7 +44,9 @@ export const useTelemetry = () => {
     if (platforms.includes(Ga)) {
       gtag.record({
         type: "event",
-        name: eventModule,
+        // Convert event category keys from camelCase to snake_case for GA
+        // so they match the telemetry that is reported by Glean.
+        name: convertCamelToSnakeCase(eventModule),
         params: {
           ...data,
           action: event,
