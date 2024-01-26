@@ -4,6 +4,10 @@
 
 import { captureException } from "@sentry/node";
 import { logger } from "./logging";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../api/utils/auth";
+import { getCountryCode } from "./getCountryCode";
+import { headers } from "next/headers";
 
 /**
  * Call the Cirrus sidecar, which returns a list of eligible experiments for the current user.
@@ -15,6 +19,9 @@ import { logger } from "./logging";
 export async function getExperiments(
   userId: string | undefined,
 ): Promise<unknown> {
+  const session = await getServerSession(authOptions);
+  const headerList = headers();
+
   if (["stage", "production"].includes(process.env.APP_ENV ?? "local")) {
     const serverUrl = process.env.NIMBUS_SIDECAR_URL;
     if (!serverUrl) {
@@ -29,7 +36,10 @@ export async function getExperiments(
         method: "POST",
         body: JSON.stringify({
           client_id: userId,
-          context: { key: "example-key" },
+          context: {
+            locale: session?.user.fxa?.locale,
+            countryCode: getCountryCode(headerList),
+          },
         }),
       });
 

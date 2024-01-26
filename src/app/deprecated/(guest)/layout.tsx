@@ -28,23 +28,15 @@ const GuestLayout = async (props: Props) => {
 
   // If the user is logged in, use UUID derived from FxA UID as Nimbus user ID.
   const session = await getServerSession(authOptions);
-  const userId = getUserId(session);
 
-  if (!userId) {
-    logger.error("No user ID for Nimbus telemetry");
+  if (!session) {
+    throw new Error("No session");
   }
 
-  try {
-    // TODO For initial A/A testing `features` is unused. https://mozilla-hub.atlassian.net/browse/MNTOR-2182
-    const features = await getExperiments(userId);
-    // TODO remove debug for A/A testing https://mozilla-hub.atlassian.net/browse/MNTOR-2182
-    logger.debug("Nimbus features in guest session:", features);
-  } catch (ex) {
-    logger.error("Could not fetch Nimbus features:", ex);
-  }
+  const userId = getUserId(session.user);
 
   const enabledFlags = await getEnabledFeatureFlags({
-    email: session?.user.email ?? "",
+    user: session.user,
   });
 
   return (

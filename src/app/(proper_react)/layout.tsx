@@ -21,8 +21,12 @@ export default async function Layout({ children }: { children: ReactNode }) {
   const headersList = headers();
   const countryCode = getCountryCode(headersList);
   const session = await getServerSession(authOptions);
+
+  if (!session) {
+    throw new Error("No session");
+  }
   const enabledFlags = await getEnabledFeatureFlags({
-    email: session?.user.email ?? "",
+    user: session.user,
   });
 
   return (

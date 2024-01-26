@@ -7,12 +7,12 @@ import { cookies } from "next/headers";
 import { randomUUID } from "crypto";
 import { Session } from "next-auth";
 
-export function getUserId(session: Session | null) {
-  const accountId = session?.user?.subscriber?.fxa_uid;
+export function getUserId(user: Session["user"] | null) {
+  const accountId = user?.subscriber?.id;
   let userId = "";
 
   if (accountId && typeof accountId === "string") {
-    // If the user is logged in, use the FxA User ID.
+    // If the user is logged in, use the Subscriber ID.
     // Note: we may want to use the FxA UID here, but we need approval for that first.
     userId = accountId;
   } else {

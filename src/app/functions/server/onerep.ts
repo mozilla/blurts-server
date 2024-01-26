@@ -364,7 +364,7 @@ export async function isEligibleForFreeScan(
     throw new Error("No session");
   }
 
-  const enabledFlags = await getEnabledFeatureFlags({ email: user.email });
+  const enabledFlags = await getEnabledFeatureFlags({ user });
   if (!enabledFlags.includes("FreeBrokerScan")) {
     return false;
   }

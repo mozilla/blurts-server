@@ -20,7 +20,9 @@ export default async function Page() {
   if (typeof session?.user.email === "string") {
     return redirect("/user/dashboard/");
   }
-  const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
+  const enabledFlags = await getEnabledFeatureFlags({
+    ignoreExperiments: true,
+  });
   const countryCode = getCountryCode(headers());
   const eligibleForPremium = isEligibleForPremium(countryCode, enabledFlags);
 

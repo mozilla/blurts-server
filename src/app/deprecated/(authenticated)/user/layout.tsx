@@ -49,7 +49,7 @@ const MainLayout = async (props: Props) => {
 
   const l10n = getL10n();
   const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: session.user.email,
+    user: session.user,
   });
 
   return (

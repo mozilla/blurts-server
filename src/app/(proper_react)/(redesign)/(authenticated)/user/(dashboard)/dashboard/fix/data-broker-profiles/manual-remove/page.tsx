@@ -29,7 +29,7 @@ export default async function ManualRemovePage() {
   const subBreaches = await getSubscriberBreaches(session.user);
   const subscriberEmails = await getSubscriberEmails(session.user);
   const enabledFlags = await getEnabledFeatureFlags({
-    email: session.user.email,
+    user: session.user,
   });
 
   return (

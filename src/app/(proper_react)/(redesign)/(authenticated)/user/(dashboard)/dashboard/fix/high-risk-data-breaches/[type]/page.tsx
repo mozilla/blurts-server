@@ -44,7 +44,7 @@ export default async function SecurityRecommendations({
   const profileId = result[0]["onerep_profile_id"] as number;
   const scanData = await getLatestOnerepScanResults(profileId);
   const enabledFlags = await getEnabledFeatureFlags({
-    email: session.user.email,
+    user: session.user,
   });
 
   return (

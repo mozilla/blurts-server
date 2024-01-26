@@ -5,6 +5,9 @@
 import createDbConnection from "../connect.js";
 import { logger } from "../../app/functions/server/logging";
 import { FeatureFlagRow } from "knex/types/tables";
+import { getExperiments } from "../../app/functions/server/getExperiments.js";
+import { Session } from "next-auth";
+import { getUserId } from "../../app/functions/server/getUserId.jsx";
 
 const knex = createDbConnection();
 
@@ -38,24 +41,35 @@ export type FeatureFlagName =
 
 export async function getEnabledFeatureFlags(
   options:
-    | { ignoreAllowlist?: false; email: string }
-    | { ignoreAllowlist: true },
+    | { ignoreExperiments?: false; user: Session["user"] }
+    | { ignoreExperiments: true },
 ): Promise<FeatureFlagName[]> {
-  let query = knex("feature_flags")
+  const query = knex("feature_flags")
     .select("name")
     .where("deleted_at", null)
     .and.where("expired_at", null)
     .and.where("is_enabled", true);
 
-  if (!options.ignoreAllowlist) {
-    query = query.and
-      .whereRaw("ARRAY_LENGTH(allow_list, 1) IS NULL")
-      .orWhereRaw("? = ANY(allow_list)", options.email);
+  const result = await query;
+
+  const enabledFlagNames = result.map((row) => row.name as FeatureFlagName);
+
+  // Use Nimbus to allow features per-user.
+  if (!options.ignoreExperiments) {
+    const userId = getUserId(options.user);
+    const features = await getExperiments(userId);
+
+    const monitorPlusEnabled = features["monitor-plus"]["enabled"];
+    if (monitorPlusEnabled === "true") {
+      for (const flag of ["FreeBrokerScan", "PremiumBrokerRemoval"]) {
+        if (!enabledFlagNames.includes(flag as FeatureFlagName)) {
+          enabledFlagNames.push(flag as FeatureFlagName);
+        }
+      }
+    }
   }
 
-  const enabledFlagNames = await query;
-
-  return enabledFlagNames.map((row) => row.name as FeatureFlagName);
+  return enabledFlagNames;
 }
 
 async function getFeatureFlagByName(name: string) {
