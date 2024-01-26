@@ -23,6 +23,10 @@ exposure-chart-legend-heading-nr = Sayı
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
 exposure-chart-caption = Bu tablo, bilgilerinizin kaç kez ele geçirildiğini gösterir.
+# Variables:
+#   $total_fixed_exposures_num (number) - Number of fixed exposures
+#   $total_exposures_num (number) - Number of total exposures
+exposure-chart-caption-fixed = Bu grafik, düzelttiğiniz veri ihlallerini gösterir ({ $total_fixed_exposures_num } / { $total_exposures_num })
 exposure-chart-returning-user-upgrade-prompt = Ev adresi, aile üyeleri ve diğer bilgiler henüz dahil edilmemiştir.
 exposure-chart-returning-user-upgrade-prompt-cta = Ücretsiz tarama başlatın
 exposure-chart-scan-in-progress-prompt = <b>Tarama devam ediyor:</b> Adres, aile üyeleri ve diğer bilgiler henüz dahil edilmedi.
@@ -42,16 +46,16 @@ dashboard-exposures-area-headline = Bilgilerinizin ele geçirildiği tüm sitele
 #   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
 dashboard-exposures-area-description-all-line1 =
     { $exposures_unresolved_num ->
-        [one] Verilerinizin ele geçirildiği { $exposures_unresolved_num } veri ihlali bulduk.
-       *[other] Verilerinizin ele geçirildiği { $exposures_unresolved_num } veri ihlali bulduk.
+        [one] { $exposures_unresolved_num } verinizin ele geçirildiğini bulduk.
+       *[other] { $exposures_unresolved_num } verinizin ele geçirildiğini bulduk.
     }
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
 dashboard-exposures-area-description-all-line2 =
     { $data_breach_unresolved_num ->
-        [one] { $data_breach_unresolved_num } veri ihlalinde karşımıza çıktı.
-       *[other] { $data_breach_unresolved_num } veri ihlalinde karşımıza çıktı.
+        [one] Verileriniz { $data_breach_unresolved_num } veri ihlalinde karşımıza çıktı.
+       *[other] Verileriniz { $data_breach_unresolved_num } veri ihlalinde karşımıza çıktı.
     }
 dashboard-fixed-area-headline-all = Tüm düzeltilmiş veri ihlallerini göster
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
@@ -77,6 +81,13 @@ dashboard-top-banner-scan-in-progress-title = Taramanız hâlâ devam ediyor
 dashboard-top-banner-your-data-is-protected-title = Verileriniz korunuyor
 dashboard-top-banner-your-data-is-protected-cta = Nelerin düzeltildiğini görün
 dashboard-top-banner-lets-keep-protecting-title = Verilerinizi korumaya devam edelim
+# Variables:
+# $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
+dashboard-top-banner-lets-keep-protecting-description =
+    { $exposures_unresolved_num ->
+        [one] Hâlâ düzeltmeniz gereken { $exposures_unresolved_num } veri ihlali var. Düzeltmeye devam ederek kendinizi koruyun. Size adım adım rehberlik edeceğiz.
+       *[other] Hâlâ düzeltmeniz gereken { $exposures_unresolved_num } veri ihlali var. Düzeltmeye devam ederek kendinizi koruyun. Size adım adım rehberlik edeceğiz.
+    }
 dashboard-top-banner-lets-keep-protecting-cta = Devam edelim
 dashboard-top-banner-protect-your-data-title = Verilerinizi koruyalım
 dashboard-top-banner-protect-your-data-cta = Hadi düzeltelim
@@ -93,8 +104,8 @@ dashboard-top-banner-non-us-protect-your-data-description-line1 =
 #   $data_breach_unresolved_num (number) - the total number of data breaches the user has.
 dashboard-top-banner-non-us-protect-your-data-description-line2 =
     { $data_breach_unresolved_num ->
-        [one] { $data_breach_unresolved_num } veri ihlalinde karşımıza çıktı. Sorunu nasıl çözeceğinizi adım adım anlatacağız.
-       *[other] { $data_breach_unresolved_num } veri ihlalinde karşımıza çıktı. Sorunu nasıl çözeceğinizi adım adım anlatacağız.
+        [one] Verileriniz { $data_breach_unresolved_num } veri ihlalinde karşımıza çıktı. Sorunu nasıl çözeceğinizi adım adım anlatacağız.
+       *[other] Verileriniz { $data_breach_unresolved_num } veri ihlalinde karşımıza çıktı. Sorunu nasıl çözeceğinizi adım adım anlatacağız.
     }
 dashboard-top-banner-no-exposures-found-title = Hiç veri ihlali bulunamadı
 dashboard-no-exposures-label = Hiç veri ihlali bulunamadı

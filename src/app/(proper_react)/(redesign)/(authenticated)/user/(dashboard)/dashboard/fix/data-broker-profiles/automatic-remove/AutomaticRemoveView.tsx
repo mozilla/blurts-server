@@ -10,6 +10,7 @@ import { Button } from "../../../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { FixView } from "../../FixView";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
+import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 
 export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
   monthlySubscriptionUrl: string;
@@ -22,6 +23,7 @@ export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
 
 export function AutomaticRemoveView(props: Props) {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
 
   const [selectedPlanIsYearly, setSelectedPlanIsYearly] = useState(true);
 
@@ -62,7 +64,12 @@ export function AutomaticRemoveView(props: Props) {
           <div className={styles.upgradeToggleWrapper}>
             <div className={styles.upgradeToggle}>
               <button
-                onClick={() => setSelectedPlanIsYearly(!selectedPlanIsYearly)}
+                onClick={() => {
+                  setSelectedPlanIsYearly(!selectedPlanIsYearly);
+                  recordTelemetry("button", "click", {
+                    button_id: "selected_yearly_plan",
+                  });
+                }}
                 className={`${selectedPlanIsYearly ? styles.isActive : ""}`}
               >
                 {l10n.getString(
@@ -70,7 +77,12 @@ export function AutomaticRemoveView(props: Props) {
                 )}
               </button>
               <button
-                onClick={() => setSelectedPlanIsYearly(!selectedPlanIsYearly)}
+                onClick={() => {
+                  setSelectedPlanIsYearly(!selectedPlanIsYearly);
+                  recordTelemetry("button", "click", {
+                    button_id: "selected_monthly_plan",
+                  });
+                }}
                 className={`${selectedPlanIsYearly ? "" : styles.isActive}`}
               >
                 {l10n.getString(
@@ -154,6 +166,19 @@ export function AutomaticRemoveView(props: Props) {
               </span>
               <Button
                 variant="primary"
+                /* c8 ignore start */
+                onPress={() => {
+                  selectedPlanIsYearly
+                    ? recordTelemetry("upgradeIntent", "click", {
+                        button_id:
+                          "intent_to_purchase_yearly_plan_guided_experience",
+                      })
+                    : recordTelemetry("upgradeIntent", "click", {
+                        button_id:
+                          "intent_to_purchase_monthly_plan_guided_experience",
+                      });
+                }}
+                /* c8 ignore stop */
                 href={
                   selectedPlanIsYearly
                     ? yearlySubscriptionUrl
