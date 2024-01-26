@@ -58,6 +58,10 @@ export type Props = {
   isEligibleForPremium: boolean;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  subscriptionBillingAmount: {
+    yearly: number;
+    monthly: number;
+  };
   fxaSettingsUrl: string;
   scanCount: number;
   totalNumberOfPerformedScans?: number;
@@ -378,6 +382,7 @@ export const View = (props: Props) => {
         user={props.user}
         monthlySubscriptionUrl={props.monthlySubscriptionUrl}
         yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+        subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
       >
         <TabList
@@ -421,6 +426,7 @@ export const View = (props: Props) => {
           }}
           monthlySubscriptionUrl={props.monthlySubscriptionUrl}
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+          subscriptionBillingAmount={props.subscriptionBillingAmount}
           totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
         />
         <section className={styles.exposuresArea}>

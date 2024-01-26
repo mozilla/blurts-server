@@ -66,14 +66,15 @@ export type Props = {
     monthly: string;
     yearly: string;
   };
+  subscriptionBillingAmount: {
+    yearly: number;
+    monthly: number;
+  };
 };
 
 type ScanLimitProp = {
   scanLimitReached: boolean;
 };
-
-const monthlyPriceAnnualBilling = 13.37;
-const monthlyPriceMonthlyBilling = 42.42;
 
 export const PlansTable = (props: Props & ScanLimitProp) => {
   const l10n = useL10n();
@@ -108,6 +109,8 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
     },
   );
   searchParam.current = newSearchParam;
+  const monthlyPriceAnnualBilling = props.subscriptionBillingAmount["yearly"];
+  const monthlyPriceMonthlyBilling = props.subscriptionBillingAmount["monthly"];
 
   return (
     <>

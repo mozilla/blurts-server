@@ -6,7 +6,6 @@
 
 import { useState } from "react";
 import { Session } from "next-auth";
-import Link from "next/link";
 import styles from "./ManualRemoveView.module.scss";
 import { useL10n } from "../../../../../../../../../hooks/l10n";
 import {
@@ -14,7 +13,6 @@ import {
   ClockIcon,
 } from "../../../../../../../../../components/server/Icons";
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
-import { Button } from "../../../../../../../../../components/client/Button";
 import {
   getDashboardSummary,
   getDataPointReduction,
@@ -26,6 +24,8 @@ import {
   getNextGuidedStep,
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../../FixView";
+import { TelemetryLink } from "../../../../../../../../../components/client/TelemetryLink";
+import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 
 export type Props = {
   scanData: LatestOnerepScanData;
@@ -119,7 +119,12 @@ export function ManualRemoveView(props: Props) {
                   {
                     elems: {
                       subscribe_link: (
-                        <Link href="/user/dashboard/fix/data-broker-profiles/automatic-remove" />
+                        <TelemetryLink
+                          href="/user/dashboard/fix/data-broker-profiles/automatic-remove"
+                          eventData={{
+                            link_id: "manual_removal_instructions_upsell",
+                          }}
+                        />
                       ),
                     },
                   },
@@ -156,19 +161,36 @@ export function ManualRemoveView(props: Props) {
           </div>
         </div>
         <div className={styles.buttonsWrapper}>
-          <Button
+          <TelemetryButton
             variant="primary"
+            event={{
+              module: "upgradeIntent",
+              name: "click",
+              data: {
+                button_id: "manual_removal_upsell",
+              },
+            }}
             href="/user/dashboard/fix/data-broker-profiles/automatic-remove"
           >
             {l10n.getString(
               "fix-flow-data-broker-profiles-manual-remove-button-remove-for-me",
             )}
-          </Button>
-          <Button variant="secondary" href={stepAfterSkip.href}>
+          </TelemetryButton>
+          <TelemetryButton
+            variant="secondary"
+            href={stepAfterSkip.href}
+            event={{
+              module: "ctaButton",
+              name: "click",
+              data: {
+                button_id: "skip_manual_resolution",
+              },
+            }}
+          >
             {l10n.getString(
               "fix-flow-data-broker-profiles-manual-remove-button-skip",
             )}
-          </Button>
+          </TelemetryButton>
         </div>
         <div className={styles.dataBrokerResolutionStats}>
           <div>

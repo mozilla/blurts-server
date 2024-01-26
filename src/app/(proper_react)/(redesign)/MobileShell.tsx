@@ -21,6 +21,10 @@ export type Props = {
   session: Session;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  subscriptionBillingAmount: {
+    yearly: number;
+    monthly: number;
+  };
   fxaSettingsUrl: string;
   children: ReactNode;
 };
@@ -139,6 +143,7 @@ export const MobileShell = (props: Props) => {
                 user={props.session.user}
                 monthlySubscriptionUrl={props.monthlySubscriptionUrl}
                 yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+                subscriptionBillingAmount={props.subscriptionBillingAmount}
               />
             </div>
           </div>

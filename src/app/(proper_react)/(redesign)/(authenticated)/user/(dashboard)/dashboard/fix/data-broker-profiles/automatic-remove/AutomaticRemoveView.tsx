@@ -11,21 +11,37 @@ import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { FixView } from "../../FixView";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
 import { modifyAttributionsForUrl } from "../../../../../../../../../functions/universal/attributions";
+import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 
 export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  subscriptionBillingAmount: {
+    yearly: number;
+    monthly: number;
+  };
 };
 
 export function AutomaticRemoveView(props: Props) {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
 
   const [selectedPlanIsYearly, setSelectedPlanIsYearly] = useState(true);
 
   const dataBrokerCount = CONST_ONEREP_DATA_BROKER_COUNT;
 
-  const { monthlySubscriptionUrl, yearlySubscriptionUrl, ...fixViewProps } =
-    props;
+  const {
+    monthlySubscriptionUrl,
+    yearlySubscriptionUrl,
+    subscriptionBillingAmount,
+    ...fixViewProps
+  } = props;
+
+  const yearlyPrice = subscriptionBillingAmount["yearly"];
+  const monthlyPrice = subscriptionBillingAmount["monthly"];
+  const discountPercentage = Math.floor(
+    ((monthlyPrice - yearlyPrice) * 100) / monthlyPrice,
+  );
 
   // format subscription urls
   const addAttributions = (url: string) =>
@@ -71,7 +87,12 @@ export function AutomaticRemoveView(props: Props) {
           <div className={styles.upgradeToggleWrapper}>
             <div className={styles.upgradeToggle}>
               <button
-                onClick={() => setSelectedPlanIsYearly(!selectedPlanIsYearly)}
+                onClick={() => {
+                  setSelectedPlanIsYearly(!selectedPlanIsYearly);
+                  recordTelemetry("button", "click", {
+                    button_id: "selected_yearly_plan",
+                  });
+                }}
                 className={`${selectedPlanIsYearly ? styles.isActive : ""}`}
               >
                 {l10n.getString(
@@ -79,7 +100,12 @@ export function AutomaticRemoveView(props: Props) {
                 )}
               </button>
               <button
-                onClick={() => setSelectedPlanIsYearly(!selectedPlanIsYearly)}
+                onClick={() => {
+                  setSelectedPlanIsYearly(!selectedPlanIsYearly);
+                  recordTelemetry("button", "click", {
+                    button_id: "selected_monthly_plan",
+                  });
+                }}
                 className={`${selectedPlanIsYearly ? "" : styles.isActive}`}
               >
                 {l10n.getString(
@@ -90,7 +116,7 @@ export function AutomaticRemoveView(props: Props) {
             <span>
               {l10n.getString(
                 "fix-flow-data-broker-profiles-automatic-remove-save-percent",
-                { percent: 10 },
+                { percent: discountPercentage },
               )}
             </span>
           </div>
@@ -154,15 +180,28 @@ export function AutomaticRemoveView(props: Props) {
                 {selectedPlanIsYearly
                   ? l10n.getString(
                       "fix-flow-data-broker-profiles-automatic-remove-features-price",
-                      { price: "X.XX" },
+                      { price: yearlyPrice },
                     )
                   : l10n.getString(
                       "fix-flow-data-broker-profiles-automatic-remove-features-price",
-                      { price: "X.XX" },
+                      { price: monthlyPrice },
                     )}
               </span>
               <Button
                 variant="primary"
+                /* c8 ignore start */
+                onPress={() => {
+                  selectedPlanIsYearly
+                    ? recordTelemetry("upgradeIntent", "click", {
+                        button_id:
+                          "intent_to_purchase_yearly_plan_guided_experience",
+                      })
+                    : recordTelemetry("upgradeIntent", "click", {
+                        button_id:
+                          "intent_to_purchase_monthly_plan_guided_experience",
+                      });
+                }}
+                /* c8 ignore stop */
                 href={
                   selectedPlanIsYearly
                     ? yearlySubscriptionUrlWithAttributions

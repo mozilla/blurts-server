@@ -38,6 +38,7 @@ fix-flow-celebration-leaked-passwords-description-next-security-recommendations 
 
 ## Security recommendations flow
 
+fix-flow-celebration-security-recommendations-title = Hienoa, olet seurannut kaikkia suosituksia!
 
 # High Risk Data Breaches
 
@@ -48,6 +49,11 @@ high-risk-breach-summary =
         [one] Se esiintyi { $num_breaches } tietovuodon yhteydessä:
        *[other] Se esiintyi { $num_breaches } tietovuodon yhteydessä:
     }
+# Variables
+# $breach_name is the name of the breach where the high risk data was found.
+# $breach_date is the date when the breach occurred.
+# An example of this string is Twitter on 13/09/18.
+high-risk-breach-name-and-date = { $breach_name } <breach_date> { $breach_date }</breach_date>
 high-risk-breach-mark-as-fixed = Merkitse korjatuksi
 high-risk-breach-skip = Ohita nyt
 # Variables:
@@ -62,6 +68,7 @@ high-risk-breach-estimated-time =
 # Credit Card Breaches
 
 high-risk-breach-credit-card-title = Luottokorttisi numero paljastui
+high-risk-breach-credit-card-description = Jokainen, joka saa sen, voi tehdä luvattomia ostoksia, joista saatat olla vastuussa. Toimi nyt estääksesi taloudelliset harmit.
 high-risk-breach-credit-card-step-one = Jos sinulla on edelleen tämä kortti, ota yhteyttä sen myöntäjään ja ilmoita se varastetuksi.
 high-risk-breach-credit-card-step-two = Pyydä uusi kortti uudella numerolla.
 high-risk-breach-credit-card-step-three = Tarkista tilisi luvattomien maksujen varalta.
@@ -138,9 +145,22 @@ leaked-passwords-steps-subtitle = Tämä vaatii pääsyn tiliisi, joten sinun on
 leaked-passwords-step-two = Vaihda se missä tahansa muualla, missä olet käyttänyt sitä.
 leaked-passwords-mark-as-fixed = Merkitse korjatuksi
 leaked-passwords-skip = Ohita nyt
+# Variables
+# $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
+# "Est." is shortform for "Estimated".
+# "mins" is shortform for "minutes".
+leaked-passwords-estimated-time =
+    { $estimated_time ->
+        [one] Arvioitu valmistumisaika: { $estimated_time } min per sivusto
+       *[other] Arvioitu valmistumisaika: { $estimated_time } min per sivusto
+    }
 
 # Leaked Security Questions
 
 leaked-security-questions-title = Turvakysymyksesi paljastettiin
 leaked-security-questions-steps-title = Tämän kaiken voit tehdä
 leaked-security-questions-steps-subtitle = Tämä vaatii pääsyn tiliisi, joten sinun on korjattava se manuaalisesti.
+# Variables
+# $breach_name is the name of the breach where the security questions were found.
+# $email_affected is the email associated with the breach.
+leaked-security-questions-step-one = Päivitä tilin <b>{ $email_affected }</b> turvakysymykset sivustolla <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
