@@ -59,6 +59,7 @@ export async function getEnabledFeatureFlags(
     const userId = getUserId(options.user);
     const features = await getExperiments(userId);
 
+    //@ts-ignore FIXME provide a type for the `features` result from Cirrus
     const monitorPlusEnabled = features["monitor-plus"]["enabled"];
     if (monitorPlusEnabled === "true") {
       for (const flag of ["FreeBrokerScan", "PremiumBrokerRemoval"]) {
