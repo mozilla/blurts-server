@@ -5,7 +5,7 @@
 import { test, expect } from "../fixtures/basePage.js";
 import { defaultScreenshotOpts } from "../utils/helpers.js";
 
-test.describe(`${process.env.E2E_TEST_ENV} - Verify the new Landing Page content`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, () => {
   test.beforeEach(async ({ landingPage }) => {
     await landingPage.open();
   });
