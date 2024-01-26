@@ -7,7 +7,7 @@ import { logger } from "../../app/functions/server/logging";
 import { FeatureFlagRow } from "knex/types/tables";
 import { getExperiments } from "../../app/functions/server/getExperiments";
 import { Session } from "next-auth";
-import { getUserId } from "../../app/functions/server/getUserId.jsx";
+import { getUserId } from "../../app/functions/server/getUserId";
 
 const knex = createDbConnection();
 
