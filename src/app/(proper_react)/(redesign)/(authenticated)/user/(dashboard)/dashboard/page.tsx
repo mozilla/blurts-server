@@ -129,7 +129,7 @@ export default async function DashboardPage() {
   // auto-removal process.
   // Let’s make sure the users OneRep profile is activated:
   if (isPremiumUser) {
-    await activateAndOptoutProfile(profileId);
+    await activateAndOptoutProfile({ profileId });
   }
 
   const latestScan = await getLatestOnerepScanResults(profileId);

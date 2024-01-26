@@ -49,7 +49,7 @@ export default async function WelcomeToPlusPage() {
   // activated: Most likely we were not able or failed to kick-off the
   // auto-removal process.
   // Let’s make sure the users OneRep profile is activated:
-  await activateAndOptoutProfile(profileId);
+  await activateAndOptoutProfile({ profileId, forceActivation: true });
 
   return (
     <WelcomeToPlusView

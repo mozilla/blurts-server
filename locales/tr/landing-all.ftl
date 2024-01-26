@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
+landing-all-hero-title = Kişisel bilgilerinizin nerede ele geçirildiğini öğrenin
 landing-all-hero-lead = Verilerinizin sızdırılıp sızdırılmadığını görmek için veri ihlallerini tarıyor ve bunları düzeltmeniz için gereken adımları söylüyoruz.
 landing-all-hero-emailform-input-placeholder = kullanici@example.com
 landing-all-hero-emailform-input-label = Veri ihlali risklerini kontrol etmek için e-posta adresinizi yazın.
@@ -13,10 +14,13 @@ landing-all-hero-image-chart-label = veri ihlali
 # Value Proposition
 
 landing-all-value-prop-fix-exposures = Veri ihlallerini çözmenize yardımcı oluyoruz
+landing-all-value-prop-fix-exposures-description = Misyonumuz, kişisel verilerinizin kontrolünü size geri vermek. Veri ihlallerini çözmenize ve bilgilerinizi gizli tutmanıza yardımcı oluyoruz. Bunu yaparken de <privacy_link>gizliliğinize saygı gösteriyoruz</privacy_link>.
 landing-all-value-prop-info-at-risk = Hangi bilgilerim risk altında olabilir?
+landing-all-value-prop-info-at-risk-description = Veri sızıntıları maalesef dijital hayatımızın bir parçası. Ancak parolalarınızın, iletişim bilgilerinizin, finansal bilgilerinizin ve diğer kişisel bilgilerinizin ele geçirilmesi sizi kimlik hırsızlığı riskiyle baş başa bırakabilir.
 
 # Quote
 
+landing-all-quote = 11 dakikada bir <data_breaches>yeni bir veri ihlali</data_breaches> yaşanıyor ve kişisel bilgileriniz ele geçiriliyor; ama merak etmeyin, biz yanınızdayız.
 
 # Non-US FAQ
 
@@ -24,6 +28,7 @@ landing-all-faq-title = Sıkça sorulan sorular
 # FAQ is an acronym for Frequently Asked Questions
 landing-all-faq-see-all = Tüm SSS’lere bakın
 landing-all-data-breach-definition-qn = Veri ihlali tam olarak nedir?
+landing-all-data-breach-definition-ans = Kişisel veya özel bilgilerinizin ifşa olmasına, çalınmasına veya sizden izinsiz kopyalanmasına veri ihlali denir. Bu olaylar; kişisel bilgilerin barındırıldığı web sitelerine, uygulamalara ve veritabanlarına yapılan siber saldırılardan kaynaklanabilir. Bazı veri ihlalleri yanlışlıkla da gerçekleşebilir (örn. birine ait hesap bilgilerinin herkese açık bir şekilde paylaşılması).
 landing-all-data-breach-next-steps-qn = Bilgilerimin ele geçirildiğini öğrendim. Ne yapmalıyım?
 landing-all-data-breach-info-qn = Veri ihlallerinde hangi bilgiler açığa çıkar?
 landing-all-data-breach-info-ans = Tüm ihlallerde aynı bilgiler açığa çıkmaz. Sonuç, bilgisayar korsanlarının hangi bilgilere erişebildiğine bağlıdır. Birçok veri ihlalinde e-posta adresleri ve parolalar ele geçirilir. Bazılarında kredi kartı numaraları, PIN numaraları ve kimlik numaraları gibi daha hassas bilgiler de ele geçirilebilir.
