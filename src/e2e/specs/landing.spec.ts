@@ -42,7 +42,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     await expect(landingPage.monitorLandingMidHeading).toBeVisible();
   });
 
-  test('Observe "We'll help you fix your exposures" section', async ({
+  test('Observe "We will help you fix your exposures" section', async ({
     landingPage,
   }) => {
     test.info().annotations.push({
