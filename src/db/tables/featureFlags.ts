@@ -44,13 +44,11 @@ export async function getEnabledFeatureFlags(
     | { ignoreExperiments?: false; user: Session["user"] }
     | { ignoreExperiments: true },
 ): Promise<FeatureFlagName[]> {
-  const query = knex("feature_flags")
+  const result = await knex("feature_flags")
     .select("name")
     .where("deleted_at", null)
     .and.where("expired_at", null)
     .and.where("is_enabled", true);
-
-  const result = await query;
 
   const enabledFlagNames = result.map((row) => row.name as FeatureFlagName);
 
@@ -60,15 +58,17 @@ export async function getEnabledFeatureFlags(
     const features = await getExperiments(userId);
 
     if (
+      features &&
       //@ts-ignore FIXME provide a type for the `features` result from Cirrus
       features["rebrand-announcement"] &&
       //@ts-ignore FIXME provide a type for the `features` result from Cirrus
       features["rebrand-announcement"]["enabled"]
     ) {
       //@ts-ignore FIXME provide a type for the `features` result from Cirrus
-      const monitorPlusEnabled = features["rebrand-announcement"]["enabled"];
-      if (monitorPlusEnabled === "true") {
-        for (const flag of ["FreeBrokerScan", "PremiumBrokerRemoval"]) {
+      const rebrandAnnouncementEnabled =
+        features["rebrand-announcement"]["enabled"];
+      if (rebrandAnnouncementEnabled === "true") {
+        for (const flag of ["RebrandAnnouncement"]) {
           if (!enabledFlagNames.includes(flag as FeatureFlagName)) {
             enabledFlagNames.push(flag as FeatureFlagName);
           }
