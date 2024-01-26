@@ -59,12 +59,19 @@ export async function getEnabledFeatureFlags(
     const userId = getUserId(options.user);
     const features = await getExperiments(userId);
 
-    //@ts-ignore FIXME provide a type for the `features` result from Cirrus
-    const monitorPlusEnabled = features["monitor-plus"]["enabled"];
-    if (monitorPlusEnabled === "true") {
-      for (const flag of ["FreeBrokerScan", "PremiumBrokerRemoval"]) {
-        if (!enabledFlagNames.includes(flag as FeatureFlagName)) {
-          enabledFlagNames.push(flag as FeatureFlagName);
+    if (
+      //@ts-ignore FIXME provide a type for the `features` result from Cirrus
+      features["rebrand-announcement"] &&
+      //@ts-ignore FIXME provide a type for the `features` result from Cirrus
+      features["rebrand-announcement"]["enabled"]
+    ) {
+      //@ts-ignore FIXME provide a type for the `features` result from Cirrus
+      const monitorPlusEnabled = features["rebrand-announcement"]["enabled"];
+      if (monitorPlusEnabled === "true") {
+        for (const flag of ["FreeBrokerScan", "PremiumBrokerRemoval"]) {
+          if (!enabledFlagNames.includes(flag as FeatureFlagName)) {
+            enabledFlagNames.push(flag as FeatureFlagName);
+          }
         }
       }
     }

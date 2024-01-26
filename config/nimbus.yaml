@@ -4,8 +4,8 @@ channels:
   - staging
   - production
 features:
-  monitor-plus:
-    description: Monitor Plus broker scan and removal 
+  rebrand-announcement:
+    description: Rebranding announcement
     variables:
       enabled:
         description: If the feature is enabled
