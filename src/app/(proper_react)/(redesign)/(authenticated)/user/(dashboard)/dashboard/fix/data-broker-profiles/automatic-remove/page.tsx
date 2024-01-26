@@ -17,7 +17,10 @@ import {
   StepDeterminationData,
   getNextGuidedStep,
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
-import getPremiumSubscriptionUrl from "../../../../../../../../../functions/server/getPremiumSubscriptionUrl";
+import {
+  getSubscriptionBillingAmount,
+  getPremiumSubscriptionUrl,
+} from "../../../../../../../../../functions/server/getPremiumSubscriptionInfo";
 
 const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
 const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
@@ -50,6 +53,7 @@ export default async function AutomaticRemovePage() {
       currentSection="data-broker-profiles"
       monthlySubscriptionUrl={monthlySubscriptionUrl}
       yearlySubscriptionUrl={yearlySubscriptionUrl}
+      subscriptionBillingAmount={getSubscriptionBillingAmount()}
     />
   );
 }

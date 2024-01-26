@@ -48,6 +48,16 @@
       background-color: $color-blue-50;
       color: $color-white;
     }
+
+    &.destructive {
+      color: $color-red-70;
+      box-shadow: inset 0 0 0 2px $color-red-70;
+
+      &:hover {
+        background-color: $color-red-70;
+        color: $color-white;
+      }
+    }
   }
 
   &.tertiary {

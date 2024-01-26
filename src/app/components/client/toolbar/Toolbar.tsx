@@ -15,6 +15,10 @@ export type Props = {
   user: Session["user"];
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  subscriptionBillingAmount: {
+    yearly: number;
+    monthly: number;
+  };
   fxaSettingsUrl: string;
   children?: ReactNode;
 };
@@ -28,6 +32,7 @@ export const Toolbar = (props: Props) => {
           user={props.user}
           monthlySubscriptionUrl={props.monthlySubscriptionUrl}
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+          subscriptionBillingAmount={props.subscriptionBillingAmount}
         />
         <AppPicker />
         {props.user && (

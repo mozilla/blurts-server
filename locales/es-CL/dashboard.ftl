@@ -31,9 +31,17 @@ exposure-chart-returning-user-upgrade-prompt = El domicilio, los miembros de la 
 exposure-chart-returning-user-upgrade-prompt-cta = Iniciar un escaneo gratuito
 exposure-chart-scan-in-progress-prompt = <b> Escaneo en proceso: </b> direcciones, miembros de la familia y otros aún no están incluidos.
 modal-active-number-of-exposures-title = Acerca del número de exposiciones activas
+# Variables:
+#   $limit (number) - Number of email addresses included in the plan
+modal-active-number-of-exposures-part-one-all =
+    { $limit ->
+        [one] Este gráfico incluye la cantidad total de veces que encontramos cada tipo de datos expuestos en todas las filtraciones de datos para hasta { $limit } dirección de correo electrónico que estás monitoreando.
+       *[other] Este gráfico incluye la cantidad total de veces que encontramos cada tipo de datos expuestos en todas las filtraciones de datos para hasta { $limit } direcciones de correo electrónico que estás monitoreando.
+    }
 modal-active-number-of-exposures-part-two = Por ejemplo, si tienes 10 exposiciones de tu número de teléfono, eso podría significar que 1 número de teléfono está expuesto en 10 sitios diferentes o podría significar que 2 números de teléfono diferentes se expusieron en 5 sitios diferentes.
 modal-active-number-of-exposures-part-three-all = Una vez que se resuelvan, se agregarán a tu número total de exposiciones corregidas en la página de Corregidas.
 modal-fixed-number-of-exposures-title = Acerca del número de exposiciones arregladas
+modal-fixed-number-of-exposures-all = Este gráfico incluye el número total de filtraciones de datos que se han solucionado para todas las direcciones de correo electrónico que estás monitoreando actualmente. Una vez que las exposiciones se marquen como corregidas, se agregarán al total aquí.
 modal-cta-ok = Aceptar
 modal-open-alt = Abrir
 modal-close-alt = Cerrar
