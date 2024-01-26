@@ -59,12 +59,9 @@ export async function getEnabledFeatureFlags(
 
     if (
       features &&
-      //@ts-ignore FIXME provide a type for the `features` result from Cirrus
       features["rebrand-announcement"] &&
-      //@ts-ignore FIXME provide a type for the `features` result from Cirrus
       features["rebrand-announcement"]["enabled"]
     ) {
-      //@ts-ignore FIXME provide a type for the `features` result from Cirrus
       const rebrandAnnouncementEnabled =
         features["rebrand-announcement"]["enabled"];
       if (rebrandAnnouncementEnabled === "true") {

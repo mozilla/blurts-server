@@ -9,6 +9,11 @@ import { authOptions } from "../../api/utils/auth";
 import { getCountryCode } from "./getCountryCode";
 import { headers } from "next/headers";
 
+interface Features {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [propName: string]: any;
+}
+
 /**
  * Call the Cirrus sidecar, which returns a list of eligible experiments for the current user.
  *
@@ -18,7 +23,7 @@ import { headers } from "next/headers";
  */
 export async function getExperiments(
   userId: string | undefined,
-): Promise<unknown> {
+): Promise<Features | undefined> {
   const session = await getServerSession(authOptions);
   const headerList = headers();
 
@@ -43,7 +48,7 @@ export async function getExperiments(
         }),
       });
 
-      return features?.json();
+      return features?.json() as unknown as Features;
     } catch (ex) {
       logger.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
       captureException(ex);
