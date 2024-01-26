@@ -627,14 +627,21 @@ ad-unit-5-use-on-phone = Seqdec ɣef tiliɣri-inek·inem
 -brand-monitor = Monitor
 -brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Tasbeddit Mozilla
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account = Amiḍan n Mozilla
+open-in-new-tab-alt = Ldi aseɣwen deg yiccer amaynut
 
 ## Search Engine Optimization
 
@@ -648,6 +655,7 @@ brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
+site-nav-breaches-link = Fru tirewliwin n yisefka
 site-nav-settings-link = Iɣewwaren
 site-nav-help-link = Tallalt
 brand-relay = { -brand-relay }
