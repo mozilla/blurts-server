@@ -16,14 +16,47 @@ async function getAttributionsForSubscriber(subscriberId: number) {
     .returning("*")) as AttributionRow[];
 }
 
+async function getLatestAttributionForSubscriberWithType(
+  subscriberId: number,
+  type: string,
+) {
+  logger.info("getLatestAttributionForSubscriberWithType", {
+    subscriberId,
+    type,
+  });
+  const res = await knex("attributions")
+    .orderBy("created_at")
+    .where("subscriber_id", subscriberId)
+    .andWhere("type", type)
+    .returning([
+      "entrypoint",
+      "utm_source",
+      "utm_medium",
+      "utm_term",
+      "utm_campaign",
+    ]);
+  return res[0];
+}
+
+type AddAttribution = {
+  subscriber_id?: number;
+  type: string; // firstTouch, lastTouch
+  utm_source?: string;
+  utm_campaign?: string;
+  utm_medium?: string;
+  utm_term?: string;
+  entrypoint?: string;
+  other_utm_parameters?: Record<string, string>;
+};
+
 async function addAttributionForSubscriber(
   subscriberId: number,
-  attribution: Partial<AttributionRow>,
+  attribution: AddAttribution,
 ) {
   logger.info("addAttributionForSubscriber", { subscriberId, attribution });
   attribution.subscriber_id = subscriberId;
   const res = await knex("attributions").insert(attribution).returning("*");
-  return res[0] as AttributionRow;
+  return res[0];
 }
 
 async function deleteAttributionById(attributionId: number) {
@@ -61,11 +94,12 @@ async function updateAttribution(
     .update(attributionToUpdate)
     .returning("*");
 
-  return res[0] as AttributionRow;
+  return res[0];
 }
 
 export {
   getAttributionsForSubscriber,
+  getLatestAttributionForSubscriberWithType,
   addAttributionForSubscriber,
   deleteAttributionById,
   deleteAttributionsForSubscriber,

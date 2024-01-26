@@ -7,25 +7,35 @@
 import { useTelemetry } from "../../hooks/useTelemetry";
 import { GleanMetricMap } from "../../../telemetry/generated/_map";
 import { HTMLAttributes } from "react";
+import Link from "next/link";
 
 // Telemetry link is shown in a fluent getFragment (which does not get rendered in tests)
 /* c8 ignore start */
 export const TelemetryLink = ({
   eventData,
+  target,
   ...props
 }: {
   eventData: GleanMetricMap["link"]["click"];
   href: string;
-  target: string;
+  target?: string;
 } & HTMLAttributes<HTMLAnchorElement>) => {
   const record = useTelemetry();
 
-  return (
+  return target ? (
     <a
       {...props}
       onClick={(event) => {
         record("link", "click", eventData);
-
+        props.onClick?.(event);
+      }}
+    />
+  ) : (
+    // For internal links
+    <Link
+      {...props}
+      onClick={(event) => {
+        record("link", "click", eventData);
         props.onClick?.(event);
       }}
     />

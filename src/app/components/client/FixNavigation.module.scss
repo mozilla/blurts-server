@@ -18,6 +18,10 @@
   @media screen and (min-width: $screen-lg) {
     padding-inline: $layout-xl;
   }
+
+  .steps {
+    @include no-focus-outline;
+  }
 }
 
 @media screen and (min-width: $screen-md) {

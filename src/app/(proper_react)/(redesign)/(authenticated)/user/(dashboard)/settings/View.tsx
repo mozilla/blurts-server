@@ -13,12 +13,17 @@ import { EmailAddressAdder } from "./EmailAddressAdder";
 import { AlertAddressForm } from "./AlertAddressForm";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 import { TelemetryLink } from "../../../../../../components/client/TelemetryLink";
+import { hasPremium } from "../../../../../../functions/universal/user";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
   user: Session["user"];
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  subscriptionBillingAmount: {
+    yearly: number;
+    monthly: number;
+  };
   fxaSettingsUrl: string;
   fxaSubscriptionsUrl: string;
   emailAddresses: EmailRow[];
@@ -34,6 +39,7 @@ export const SettingsView = (props: Props) => {
         user={props.user}
         monthlySubscriptionUrl={props.monthlySubscriptionUrl}
         yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+        subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
       />
       <main>
@@ -78,26 +84,30 @@ export const SettingsView = (props: Props) => {
                 : "affected"
             }
           />
-          <hr />
-          <div className={styles.cancelSection}>
-            <h3>{l10n.getString("settings-cancel-plus-title")}</h3>
-            <p>{l10n.getString("settings-cancel-plus-details")}</p>
-            <TelemetryLink
-              href={props.fxaSubscriptionsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              eventData={{
-                link_id: "cancel_plus",
-              }}
-            >
-              {l10n.getString("settings-cancel-plus-link-label")}
-              <OpenInNew
-                alt={l10n.getString("open-in-new-tab-alt")}
-                width="13"
-                height="13"
-              />
-            </TelemetryLink>
-          </div>
+          {hasPremium(props.user) && (
+            <>
+              <hr />
+              <div className={styles.cancelSection}>
+                <h3>{l10n.getString("settings-cancel-plus-title")}</h3>
+                <p>{l10n.getString("settings-cancel-plus-details")}</p>
+                <TelemetryLink
+                  href={props.fxaSubscriptionsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  eventData={{
+                    link_id: "cancel_plus",
+                  }}
+                >
+                  {l10n.getString("settings-cancel-plus-link-label")}
+                  <OpenInNew
+                    alt={l10n.getString("open-in-new-tab-alt")}
+                    width="13"
+                    height="13"
+                  />
+                </TelemetryLink>
+              </div>
+            </>
+          )}
           <hr />
           <div className={styles.deactivateSection}>
             <h3>{l10n.getString("settings-deactivate-account-title")}</h3>

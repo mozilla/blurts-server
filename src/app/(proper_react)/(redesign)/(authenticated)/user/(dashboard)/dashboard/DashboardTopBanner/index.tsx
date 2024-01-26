@@ -24,6 +24,10 @@ export type DashboardTopBannerProps = {
   onShowFixed: () => void;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  subscriptionBillingAmount: {
+    yearly: number;
+    monthly: number;
+  };
   totalNumberOfPerformedScans?: number;
 };
 
@@ -59,6 +63,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           onShowFixed={props.onShowFixed}
           monthlySubscriptionUrl={props.monthlySubscriptionUrl}
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+          subscriptionBillingAmount={props.subscriptionBillingAmount}
           totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
         />
         <div className={styles.chart}>
