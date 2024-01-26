@@ -12,7 +12,10 @@ import { authOptions, isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import styles from "./page.module.scss";
 import { ModifyInputField } from "./components/ModifyInputField";
-import getPremiumSubscriptionUrl from "../../../../../functions/server/getPremiumSubscriptionUrl";
+import {
+  getSubscriptionBillingAmount,
+  getPremiumSubscriptionUrl,
+} from "../../../../../functions/server/getPremiumSubscriptionInfo";
 
 export default async function FeatureFlagPage() {
   const session = await getServerSession(authOptions);
@@ -105,6 +108,7 @@ export default async function FeatureFlagPage() {
             user={session.user}
             monthlySubscriptionUrl={monthlySubscriptionUrl}
             yearlySubscriptionUrl={yearlySubscriptionUrl}
+            subscriptionBillingAmount={getSubscriptionBillingAmount()}
             fxaSettingsUrl={fxaSettingsUrl}
           />
         </div>

@@ -806,3 +806,8 @@ breach-detail-cta-signup = Sjå etter datalekkasjar
 
 floating-banner-link-label = Registrer deg
 floating-banner-dismiss-button-label = Nei takk
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Ignorer

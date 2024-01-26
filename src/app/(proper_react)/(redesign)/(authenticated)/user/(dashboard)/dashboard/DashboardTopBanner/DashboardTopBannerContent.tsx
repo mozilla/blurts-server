@@ -56,6 +56,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     onShowFixed,
     monthlySubscriptionUrl,
     yearlySubscriptionUrl,
+    subscriptionBillingAmount,
   } = props;
 
   const waitlistDialogState = useOverlayTriggerState({});
@@ -302,6 +303,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 )}
                 monthlySubscriptionUrl={monthlySubscriptionUrl}
                 yearlySubscriptionUrl={yearlySubscriptionUrl}
+                subscriptionBillingAmount={subscriptionBillingAmount}
               />
             </div>
           </>
@@ -411,6 +413,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 )}
                 monthlySubscriptionUrl={monthlySubscriptionUrl}
                 yearlySubscriptionUrl={yearlySubscriptionUrl}
+                subscriptionBillingAmount={subscriptionBillingAmount}
               />
             </div>
           </>

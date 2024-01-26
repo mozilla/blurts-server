@@ -76,9 +76,11 @@ describe("When Premium is not available", () => {
     await user.click(submitButton[0]);
 
     expect(signIn).toHaveBeenCalledTimes(1);
-    expect(signIn).toHaveBeenCalledWith("fxa", expect.any(Object), {
-      email: "mail@example.com",
-    });
+    expect(signIn).toHaveBeenCalledWith(
+      "fxa",
+      expect.any(Object),
+      expect.stringContaining(`email=mail%40example.com`),
+    );
   });
 
   it("does not show a 'Sign In' button in the header if the user is signed in", () => {

@@ -161,6 +161,10 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           fxaSettingsUrl=""
           scanCount={scanCount}
           totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
+          subscriptionBillingAmount={{
+            yearly: 13.37,
+            monthly: 42.42,
+          }}
         />
       </Shell>
     </CountryCodeProvider>
