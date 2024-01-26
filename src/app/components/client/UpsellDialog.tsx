@@ -21,17 +21,32 @@ export interface UpsellDialogProps {
   state: OverlayTriggerState;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  subscriptionBillingAmount: {
+    yearly: number;
+    monthly: number;
+  };
 }
 
-function PremiumPricingLabel({ isMonthly }: { isMonthly?: boolean }) {
+function PremiumPricingLabel({
+  subscriptionBillingAmount,
+  isMonthly,
+}: {
+  subscriptionBillingAmount: UpsellDialogProps["subscriptionBillingAmount"];
+  isMonthly?: boolean;
+}) {
   const l10n = useL10n();
+  const yearlyPrice = subscriptionBillingAmount["yearly"];
+  const monthlyPrice = subscriptionBillingAmount["monthly"];
+  const discountPercentage = Math.floor(
+    ((monthlyPrice - yearlyPrice) * 100) / monthlyPrice,
+  );
 
   return (
     <>
       <small className={styles.pricingInfo}>
         {l10n.getString(
           "fix-flow-data-broker-profiles-automatic-remove-save-percent",
-          { percent: 10 },
+          { percent: discountPercentage },
         )}
       </small>
       <div className={styles.pricingPill}>
@@ -54,7 +69,9 @@ function PremiumPricingLabel({ isMonthly }: { isMonthly?: boolean }) {
         <b>
           {l10n.getString(
             "fix-flow-data-broker-profiles-automatic-remove-features-price",
-            { price: isMonthly ? "X.XX" : "Y.YY" },
+            {
+              price: isMonthly ? monthlyPrice : yearlyPrice,
+            },
           )}
         </b>
       </div>
@@ -65,11 +82,16 @@ function PremiumPricingLabel({ isMonthly }: { isMonthly?: boolean }) {
 export interface UpsellDialogContentProps {
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  subscriptionBillingAmount: {
+    yearly: number;
+    monthly: number;
+  };
 }
 
 function UpsellDialogContent({
   monthlySubscriptionUrl,
   yearlySubscriptionUrl,
+  subscriptionBillingAmount,
 }: UpsellDialogContentProps) {
   const l10n = useL10n();
   const defaultSelectedKey = "yearly";
@@ -83,14 +105,23 @@ function UpsellDialogContent({
         "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-yearly",
       ),
       key: "yearly",
-      content: <PremiumPricingLabel />,
+      content: (
+        <PremiumPricingLabel
+          subscriptionBillingAmount={subscriptionBillingAmount}
+        />
+      ),
     },
     {
       name: l10n.getString(
         "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-monthly",
       ),
       key: "monthly",
-      content: <PremiumPricingLabel isMonthly />,
+      content: (
+        <PremiumPricingLabel
+          subscriptionBillingAmount={subscriptionBillingAmount}
+          isMonthly
+        />
+      ),
     },
   ];
 
@@ -178,6 +209,7 @@ function UpsellDialog({
   state,
   yearlySubscriptionUrl,
   monthlySubscriptionUrl,
+  subscriptionBillingAmount,
   ...otherProps
 }: UpsellDialogProps & OverlayTriggerProps) {
   const l10n = useL10n();
@@ -200,6 +232,7 @@ function UpsellDialog({
           <UpsellDialogContent
             monthlySubscriptionUrl={monthlySubscriptionUrl}
             yearlySubscriptionUrl={yearlySubscriptionUrl}
+            subscriptionBillingAmount={subscriptionBillingAmount}
           />
         </Dialog>
       </ModalOverlay>

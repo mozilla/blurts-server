@@ -17,6 +17,10 @@ type UpsellCtaWrapperProps = {
 const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
   const monthlySubscriptionUrl = "price_monthly";
   const yearlySubscriptionUrl = "price_yearly";
+  const subscriptionBillingAmount = {
+    yearly: 13.37,
+    monthly: 42.42,
+  };
 
   return (
     <CountryCodeProvider countryCode={props.countryCode}>
@@ -25,12 +29,14 @@ const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
           user={props.user}
           monthlySubscriptionUrl={monthlySubscriptionUrl}
           yearlySubscriptionUrl={yearlySubscriptionUrl}
+          subscriptionBillingAmount={subscriptionBillingAmount}
         />
       ) : (
         <UpsellButton
           label="Get continuous protection"
           monthlySubscriptionUrl={monthlySubscriptionUrl}
           yearlySubscriptionUrl={yearlySubscriptionUrl}
+          subscriptionBillingAmount={subscriptionBillingAmount}
         />
       )}
     </CountryCodeProvider>

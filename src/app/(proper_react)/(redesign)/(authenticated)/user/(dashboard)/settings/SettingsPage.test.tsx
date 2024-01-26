@@ -69,6 +69,10 @@ const mockedSecondaryUnverifiedEmail: EmailRow = {
   subscriber_id: subscriberId,
   verified: false,
 };
+const mockedSubscriptionBillingAmount = {
+  yearly: 13.37,
+  monthly: 42.42,
+};
 
 it("passes the axe accessibility audit", async () => {
   const { container } = render(
@@ -89,6 +93,7 @@ it("passes the axe accessibility audit", async () => {
         fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
       />
     </TestComponentWrapper>,
   );
@@ -116,6 +121,7 @@ it("preselects 'Send all breach alerts to the primary email address' if that's t
         fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
       />
     </TestComponentWrapper>,
   );
@@ -152,6 +158,7 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
         fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
       />
     </TestComponentWrapper>,
   );
@@ -190,6 +197,7 @@ it("sends a call to the API to change the email alert preferences when changing 
         fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
       />
     </TestComponentWrapper>,
   );
@@ -237,6 +245,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
         fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
       />
     </TestComponentWrapper>,
   );
@@ -268,6 +277,7 @@ it("marks unverified email addresses as such", () => {
         fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
       />
     </TestComponentWrapper>,
   );
@@ -300,6 +310,7 @@ it("calls the API to resend a verification email if requested to", async () => {
         fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
       />
     </TestComponentWrapper>,
   );
@@ -342,6 +353,7 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
         fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
       />
     </TestComponentWrapper>,
   );
@@ -372,6 +384,7 @@ it("hides the Plus cancellation link if the user doesn't have Plus", () => {
         fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
       />
     </TestComponentWrapper>,
   );
@@ -403,6 +416,7 @@ it("shows the Plus cancellation link if the user has Plus", () => {
         fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
       />
     </TestComponentWrapper>,
   );
@@ -440,6 +454,7 @@ it.skip("calls the 'add' action when adding another email address", async () => 
         fxaSubscriptionsUrl=""
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
       />
     </TestComponentWrapper>,
   );
@@ -470,6 +485,7 @@ describe("to learn about usage", () => {
           fxaSubscriptionsUrl=""
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         />
       </TestComponentWrapper>,
     );
@@ -504,6 +520,7 @@ describe("to learn about usage", () => {
           fxaSubscriptionsUrl=""
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         />
       </TestComponentWrapper>,
     );
@@ -538,6 +555,7 @@ describe("to learn about usage", () => {
           fxaSubscriptionsUrl=""
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         />
       </TestComponentWrapper>,
     );
@@ -577,6 +595,7 @@ describe("to learn about usage", () => {
           fxaSubscriptionsUrl=""
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         />
       </TestComponentWrapper>,
     );
@@ -616,6 +635,7 @@ describe("to learn about usage", () => {
           fxaSubscriptionsUrl=""
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         />
       </TestComponentWrapper>,
     );
