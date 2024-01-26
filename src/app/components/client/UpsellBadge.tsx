@@ -27,6 +27,10 @@ import { CountryCodeContext } from "../../../contextProviders/country-code";
 export type UpsellButtonProps = {
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  subscriptionBillingAmount: {
+    yearly: number;
+    monthly: number;
+  };
   user?: Session["user"];
 };
 
@@ -72,6 +76,7 @@ export function UpsellButton(
           state={dialogState}
           monthlySubscriptionUrl={props.monthlySubscriptionUrl}
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+          subscriptionBillingAmount={props.subscriptionBillingAmount}
         />
       )}
     </>
@@ -126,6 +131,7 @@ function UpsellToggleButton(props: UpsellToggleButton) {
           state={dialogState}
           monthlySubscriptionUrl={props.monthlySubscriptionUrl}
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+          subscriptionBillingAmount={props.subscriptionBillingAmount}
         />
       )}
     </>

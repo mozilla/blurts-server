@@ -20,6 +20,10 @@ export type Props = {
   user: Session["user"];
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
+  subscriptionBillingAmount: {
+    yearly: number;
+    monthly: number;
+  };
   fxaSettingsUrl: string;
   fxaSubscriptionsUrl: string;
   emailAddresses: EmailRow[];
@@ -35,6 +39,7 @@ export const SettingsView = (props: Props) => {
         user={props.user}
         monthlySubscriptionUrl={props.monthlySubscriptionUrl}
         yearlySubscriptionUrl={props.yearlySubscriptionUrl}
+        subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
       />
       <main>

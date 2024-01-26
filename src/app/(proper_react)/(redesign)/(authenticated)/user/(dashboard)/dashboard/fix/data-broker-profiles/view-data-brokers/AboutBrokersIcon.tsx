@@ -16,6 +16,7 @@ import { ModalOverlay } from "../../../../../../../../../components/client/dialo
 import { Dialog } from "../../../../../../../../../components/client/dialog/Dialog";
 import { Button } from "../../../../../../../../../components/client/Button";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
+import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 
 export const AboutBrokersIcon = () => {
   const l10n = useL10n();
@@ -28,6 +29,7 @@ export const AboutBrokersIcon = () => {
   );
   const triggerRef = useRef<HTMLButtonElement>(null);
   const { buttonProps } = useButton(triggerProps, triggerRef);
+  const recordTelemetry = useTelemetry();
 
   const dataBrokerCount = CONST_ONEREP_DATA_BROKER_COUNT;
 
@@ -37,6 +39,11 @@ export const AboutBrokersIcon = () => {
         {...buttonProps}
         className={styles.triggerButton}
         ref={triggerRef}
+        onClick={() => {
+          recordTelemetry("button", "click", {
+            button_id: "guided_experience_data_brokers",
+          });
+        }}
       >
         <QuestionMarkCircle
           alt={l10n.getString(

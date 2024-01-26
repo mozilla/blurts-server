@@ -57,6 +57,8 @@ import { Button } from "../../../components/client/Button";
 import { signIn } from "next-auth/react";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../constants";
+import { useCookies } from "react-cookie";
+import { modifyAttributionsForUrlSearchParams } from "../../../functions/universal/attributions";
 
 export type Props = {
   "aria-labelledby": string;
@@ -64,17 +66,19 @@ export type Props = {
     monthly: string;
     yearly: string;
   };
+  subscriptionBillingAmount: {
+    yearly: number;
+    monthly: number;
+  };
 };
 
 type ScanLimitProp = {
   scanLimitReached: boolean;
 };
 
-const monthlyPriceAnnualBilling = 13.37;
-const monthlyPriceMonthlyBilling = 42.42;
-
 export const PlansTable = (props: Props & ScanLimitProp) => {
   const l10n = useL10n();
+  const [cookies] = useCookies(["attributionsLastTouch"]);
   const recordTelemetry = useTelemetry();
   const roundedPriceFormatter = new Intl.NumberFormat(getLocale(l10n), {
     style: "currency",
@@ -88,6 +92,25 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
     currencyDisplay: "narrowSymbol",
   });
   const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("yearly");
+  const searchParam = useRef(new URLSearchParams());
+
+  let newSearchParam = new URLSearchParams(cookies.attributionsLastTouch);
+  newSearchParam = modifyAttributionsForUrlSearchParams(
+    newSearchParam,
+    {
+      entrypoint: "monitor.mozilla.org-monitor-product-page",
+      form_type: "button",
+      data_cta_position: "pricing",
+    },
+    {
+      utm_source: "product",
+      utm_medium: "monitor",
+      utm_campaign: "pricing",
+    },
+  );
+  searchParam.current = newSearchParam;
+  const monthlyPriceAnnualBilling = props.subscriptionBillingAmount["yearly"];
+  const monthlyPriceMonthlyBilling = props.subscriptionBillingAmount["monthly"];
 
   return (
     <>
@@ -181,7 +204,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
             <Button
               disabled={props.scanLimitReached}
               variant="primary"
-              href={props.premiumSubscriptionUrl[billingPeriod]}
+              href={`${props.premiumSubscriptionUrl[billingPeriod]}&${searchParam.current.toString()}`}
               className={styles.cta}
               onPress={() => {
                 recordTelemetry("upgradeIntent", "click", {
@@ -791,7 +814,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                 <Button
                   disabled={props.scanLimitReached}
                   variant="primary"
-                  href={props.premiumSubscriptionUrl[billingPeriod]}
+                  href={`${props.premiumSubscriptionUrl[billingPeriod]}&${searchParam.current.toString()}`}
                   onPress={() => {
                     recordTelemetry("upgradeIntent", "click", {
                       button_id:

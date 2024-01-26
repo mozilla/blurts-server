@@ -235,20 +235,24 @@ export async function optoutProfile(profileId: number): Promise<void> {
   }
 }
 
-export async function activateAndOptoutProfile(
-  profileId: number,
-): Promise<void> {
+export async function activateAndOptoutProfile({
+  profileId,
+  forceActivation = false,
+}: {
+  profileId: number;
+  forceActivation?: boolean;
+}): Promise<void> {
   try {
     const scans = await getAllScansForProfile(profileId);
     const hasInitialScan = scans.some(
       (scan) => scan.onerep_scan_reason === "initial",
     );
-    if (hasInitialScan) {
+    if (hasInitialScan && !forceActivation) {
       return;
     }
 
     const { status: profileStatus } = await getProfile(profileId);
-    if (profileStatus === "inactive") {
+    if (profileStatus === "inactive" && !forceActivation) {
       await activateProfile(profileId);
     }
 
