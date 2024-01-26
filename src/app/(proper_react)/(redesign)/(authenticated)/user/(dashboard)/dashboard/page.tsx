@@ -25,7 +25,10 @@ import {
   isEligibleForFreeScan,
   isEligibleForPremium,
 } from "../../../../../../functions/server/onerep";
-import getPremiumSubscriptionUrl from "../../../../../../functions/server/getPremiumSubscriptionInfo";
+import {
+  getPremiumSubscriptionBillingAmount,
+  getPremiumSubscriptionUrl,
+} from "../../../../../../functions/server/getPremiumSubscriptionInfo";
 import { refreshStoredScanResults } from "../../../../../../functions/server/refreshStoredScanResults";
 import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
 import { parseIso8601Datetime } from "../../../../../../../utils/parse";
@@ -164,14 +167,7 @@ export default async function DashboardPage() {
       enabledFeatureFlags={enabledFeatureFlags}
       monthlySubscriptionUrl={monthlySubscriptionUrl}
       yearlySubscriptionUrl={yearlySubscriptionUrl}
-      subscriptionBillingAmount={{
-        yearly: parseFloat(
-          process.env.SUBSCRIPTION_BILLING_AMOUNT_YEARLY_US as string,
-        ),
-        monthly: parseFloat(
-          process.env.SUBSCRIPTION_BILLING_AMOUNT_MONTHLY_US as string,
-        ),
-      }}
+      subscriptionBillingAmount={getPremiumSubscriptionBillingAmount()}
       fxaSettingsUrl={fxaSettingsUrl}
       scanCount={scanCount}
       totalNumberOfPerformedScans={profileStats?.total}

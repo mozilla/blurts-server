@@ -8,7 +8,10 @@ import { SignUpForm } from "./SignUpForm";
 import { ExtendedReactLocalization } from "../../../hooks/l10n";
 import { PlansTable } from "./PlansTable";
 import { useId } from "react";
-import getPremiumSubscriptionUrl from "../../../functions/server/getPremiumSubscriptionInfo";
+import {
+  getPremiumSubscriptionBillingAmount,
+  getPremiumSubscriptionUrl,
+} from "../../../functions/server/getPremiumSubscriptionInfo";
 import Image from "next/image";
 import ProgressCardImage from "./value-prop-images/progress-card.png";
 import {
@@ -326,14 +329,7 @@ const Plans = (props: Props) => {
           monthly: getPremiumSubscriptionUrl({ type: "monthly" }),
           yearly: getPremiumSubscriptionUrl({ type: "yearly" }),
         }}
-        subscriptionBillingAmount={{
-          yearly: parseFloat(
-            process.env.SUBSCRIPTION_BILLING_AMOUNT_YEARLY_US as string,
-          ),
-          monthly: parseFloat(
-            process.env.SUBSCRIPTION_BILLING_AMOUNT_MONTHLY_US as string,
-          ),
-        }}
+        subscriptionBillingAmount={getPremiumSubscriptionBillingAmount()}
         scanLimitReached={props.scanLimitReached}
       />
     </div>

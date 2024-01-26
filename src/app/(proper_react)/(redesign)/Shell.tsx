@@ -12,7 +12,10 @@ import Link from "next/link";
 import { PageLink } from "./PageLink";
 import { ExtendedReactLocalization } from "../../hooks/l10n";
 import { GaScript } from "./GaScript";
-import getPremiumSubscriptionUrl from "../../functions/server/getPremiumSubscriptionInfo";
+import {
+  getPremiumSubscriptionBillingAmount,
+  getPremiumSubscriptionUrl,
+} from "../../functions/server/getPremiumSubscriptionInfo";
 import { SubscriptionCheck } from "../../components/client/SubscriptionCheck";
 import { Footer } from "./Footer";
 
@@ -38,14 +41,7 @@ export const Shell = (props: Props) => {
         monthlySubscriptionUrl={monthlySubscriptionUrl}
         yearlySubscriptionUrl={yearlySubscriptionUrl}
         fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
-        subscriptionBillingAmount={{
-          yearly: parseFloat(
-            process.env.SUBSCRIPTION_BILLING_AMOUNT_YEARLY_US as string,
-          ),
-          monthly: parseFloat(
-            process.env.SUBSCRIPTION_BILLING_AMOUNT_MONTHLY_US as string,
-          ),
-        }}
+        subscriptionBillingAmount={getPremiumSubscriptionBillingAmount()}
       >
         <div className={styles.wrapper}>
           <nav
