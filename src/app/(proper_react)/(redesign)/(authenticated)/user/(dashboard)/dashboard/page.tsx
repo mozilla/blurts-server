@@ -26,7 +26,7 @@ import {
   isEligibleForPremium,
 } from "../../../../../../functions/server/onerep";
 import {
-  getPremiumSubscriptionBillingAmount,
+  getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
 } from "../../../../../../functions/server/getPremiumSubscriptionInfo";
 import { refreshStoredScanResults } from "../../../../../../functions/server/refreshStoredScanResults";
@@ -167,7 +167,7 @@ export default async function DashboardPage() {
       enabledFeatureFlags={enabledFeatureFlags}
       monthlySubscriptionUrl={monthlySubscriptionUrl}
       yearlySubscriptionUrl={yearlySubscriptionUrl}
-      subscriptionBillingAmount={getPremiumSubscriptionBillingAmount()}
+      subscriptionBillingAmount={getSubscriptionBillingAmount()}
       fxaSettingsUrl={fxaSettingsUrl}
       scanCount={scanCount}
       totalNumberOfPerformedScans={profileStats?.total}

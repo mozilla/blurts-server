@@ -13,7 +13,7 @@ import { PageLink } from "./PageLink";
 import { ExtendedReactLocalization } from "../../hooks/l10n";
 import { GaScript } from "./GaScript";
 import {
-  getPremiumSubscriptionBillingAmount,
+  getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
 } from "../../functions/server/getPremiumSubscriptionInfo";
 import { SubscriptionCheck } from "../../components/client/SubscriptionCheck";
@@ -41,7 +41,7 @@ export const Shell = (props: Props) => {
         monthlySubscriptionUrl={monthlySubscriptionUrl}
         yearlySubscriptionUrl={yearlySubscriptionUrl}
         fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
-        subscriptionBillingAmount={getPremiumSubscriptionBillingAmount()}
+        subscriptionBillingAmount={getSubscriptionBillingAmount()}
       >
         <div className={styles.wrapper}>
           <nav

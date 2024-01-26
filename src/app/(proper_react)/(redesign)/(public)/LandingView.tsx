@@ -9,7 +9,7 @@ import { ExtendedReactLocalization } from "../../../hooks/l10n";
 import { PlansTable } from "./PlansTable";
 import { useId } from "react";
 import {
-  getPremiumSubscriptionBillingAmount,
+  getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
 } from "../../../functions/server/getPremiumSubscriptionInfo";
 import Image from "next/image";
@@ -329,7 +329,7 @@ const Plans = (props: Props) => {
           monthly: getPremiumSubscriptionUrl({ type: "monthly" }),
           yearly: getPremiumSubscriptionUrl({ type: "yearly" }),
         }}
-        subscriptionBillingAmount={getPremiumSubscriptionBillingAmount()}
+        subscriptionBillingAmount={getSubscriptionBillingAmount()}
         scanLimitReached={props.scanLimitReached}
       />
     </div>

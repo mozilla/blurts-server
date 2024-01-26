@@ -18,7 +18,7 @@ import {
   getNextGuidedStep,
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import {
-  getPremiumSubscriptionBillingAmount,
+  getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
 } from "../../../../../../../../../functions/server/getPremiumSubscriptionInfo";
 
@@ -53,7 +53,7 @@ export default async function AutomaticRemovePage() {
       currentSection="data-broker-profiles"
       monthlySubscriptionUrl={monthlySubscriptionUrl}
       yearlySubscriptionUrl={yearlySubscriptionUrl}
-      subscriptionBillingAmount={getPremiumSubscriptionBillingAmount()}
+      subscriptionBillingAmount={getSubscriptionBillingAmount()}
     />
   );
 }

@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import { authOptions } from "../../../../../../api/utils/auth";
 import { SettingsView } from "./View";
 import {
-  getPremiumSubscriptionBillingAmount,
+  getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
 } from "../../../../../../functions/server/getPremiumSubscriptionInfo";
 import { getL10n } from "../../../../../../functions/server/l10n";
@@ -54,7 +54,7 @@ export default async function SettingsPage() {
       fxaSubscriptionsUrl={fxaSubscriptionsUrl}
       monthlySubscriptionUrl={monthlySubscriptionUrl}
       yearlySubscriptionUrl={yearlySubscriptionUrl}
-      subscriptionBillingAmount={getPremiumSubscriptionBillingAmount()}
+      subscriptionBillingAmount={getSubscriptionBillingAmount()}
     />
   );
 }

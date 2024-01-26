@@ -13,7 +13,7 @@ import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import styles from "./page.module.scss";
 import { ModifyInputField } from "./components/ModifyInputField";
 import {
-  getPremiumSubscriptionBillingAmount,
+  getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
 } from "../../../../../functions/server/getPremiumSubscriptionInfo";
 
@@ -108,7 +108,7 @@ export default async function FeatureFlagPage() {
             user={session.user}
             monthlySubscriptionUrl={monthlySubscriptionUrl}
             yearlySubscriptionUrl={yearlySubscriptionUrl}
-            subscriptionBillingAmount={getPremiumSubscriptionBillingAmount()}
+            subscriptionBillingAmount={getSubscriptionBillingAmount()}
             fxaSettingsUrl={fxaSettingsUrl}
           />
         </div>

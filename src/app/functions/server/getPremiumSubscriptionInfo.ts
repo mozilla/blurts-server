@@ -34,11 +34,11 @@ export function getPremiumSubscriptionUrl({
   return `${subscriptionUrl}/products/${productId}?plan=${planId}`;
 }
 
-type GetPremiumSubscriptionBillingAmount = {
+type GetSubscriptionBillingAmount = {
   [key in SubscriptionPeriod]: number;
 };
 
-export function getPremiumSubscriptionBillingAmount(): GetPremiumSubscriptionBillingAmount {
+export function getSubscriptionBillingAmount(): GetSubscriptionBillingAmount {
   return {
     yearly: parseFloat(
       process.env.SUBSCRIPTION_BILLING_AMOUNT_YEARLY_US as string,
