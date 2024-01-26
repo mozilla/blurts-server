@@ -12,7 +12,7 @@ import { authOptions, isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import styles from "./page.module.scss";
 import { ModifyInputField } from "./components/ModifyInputField";
-import getPremiumSubscriptionUrl from "../../../../../functions/server/getPremiumSubscriptionUrl";
+import getPremiumSubscriptionUrl from "../../../../../functions/server/getPremiumSubscriptionInfo";
 
 export default async function FeatureFlagPage() {
   const session = await getServerSession(authOptions);

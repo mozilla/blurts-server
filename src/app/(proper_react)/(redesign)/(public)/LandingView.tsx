@@ -8,7 +8,7 @@ import { SignUpForm } from "./SignUpForm";
 import { ExtendedReactLocalization } from "../../../hooks/l10n";
 import { PlansTable } from "./PlansTable";
 import { useId } from "react";
-import getPremiumSubscriptionUrl from "../../../functions/server/getPremiumSubscriptionUrl";
+import getPremiumSubscriptionUrl from "../../../functions/server/getPremiumSubscriptionInfo";
 import Image from "next/image";
 import ProgressCardImage from "./value-prop-images/progress-card.png";
 import {

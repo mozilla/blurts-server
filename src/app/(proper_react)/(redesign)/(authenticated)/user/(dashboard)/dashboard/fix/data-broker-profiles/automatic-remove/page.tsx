@@ -17,7 +17,7 @@ import {
   StepDeterminationData,
   getNextGuidedStep,
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
-import getPremiumSubscriptionUrl from "../../../../../../../../../functions/server/getPremiumSubscriptionUrl";
+import getPremiumSubscriptionUrl from "../../../../../../../../../functions/server/getPremiumSubscriptionInfo";
 
 const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
 const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });

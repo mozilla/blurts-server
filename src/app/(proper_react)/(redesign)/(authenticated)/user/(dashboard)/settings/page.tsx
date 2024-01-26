@@ -6,7 +6,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { authOptions } from "../../../../../../api/utils/auth";
 import { SettingsView } from "./View";
-import getPremiumSubscriptionUrl from "../../../../../../functions/server/getPremiumSubscriptionUrl";
+import getPremiumSubscriptionUrl from "../../../../../../functions/server/getPremiumSubscriptionInfo";
 import { getL10n } from "../../../../../../functions/server/l10n";
 import { getUserEmails } from "../../../../../../../db/tables/emailAddresses";
 import { getBreaches } from "../../../../../../functions/server/getBreaches";

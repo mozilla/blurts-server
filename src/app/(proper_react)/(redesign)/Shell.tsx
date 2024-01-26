@@ -12,7 +12,7 @@ import Link from "next/link";
 import { PageLink } from "./PageLink";
 import { ExtendedReactLocalization } from "../../hooks/l10n";
 import { GaScript } from "./GaScript";
-import getPremiumSubscriptionUrl from "../../functions/server/getPremiumSubscriptionUrl";
+import getPremiumSubscriptionUrl from "../../functions/server/getPremiumSubscriptionInfo";
 import { SubscriptionCheck } from "../../components/client/SubscriptionCheck";
 import { Footer } from "./Footer";
 
