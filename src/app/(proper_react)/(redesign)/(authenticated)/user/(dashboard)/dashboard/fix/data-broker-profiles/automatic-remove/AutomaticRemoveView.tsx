@@ -4,7 +4,7 @@
 
 "use client";
 
-import React, { ComponentProps, useState } from "react";
+import React, { ComponentProps, useEffect, useRef, useState } from "react";
 import styles from "../dataBrokerProfiles.module.scss";
 import { Button } from "../../../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../../../hooks/l10n";
@@ -42,11 +42,17 @@ export function AutomaticRemoveView(props: Props) {
     ((monthlyPrice - yearlyPrice) * 100) / monthlyPrice,
   );
 
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    titleRef.current?.focus();
+  }, []);
+
   return (
     <FixView {...fixViewProps} hideProgressIndicator>
       <div>
         <div className={`${styles.content} ${styles.contentAutomaticRemove}`}>
-          <h3>
+          <h3 tabIndex={-1} ref={titleRef}>
             {l10n.getString(
               "fix-flow-data-broker-profiles-automatic-remove-headline",
             )}
