@@ -32,7 +32,10 @@ import {
 import { refreshStoredScanResults } from "../../../../../../functions/server/refreshStoredScanResults";
 import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
 import { parseIso8601Datetime } from "../../../../../../../utils/parse";
-import { addAttributionForSubscriber } from "../../../../../../../db/tables/attributions";
+import {
+  addAttributionForSubscriber,
+  getLatestAttributionForSubscriberWithType,
+} from "../../../../../../../db/tables/attributions";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
@@ -43,50 +46,6 @@ export default async function DashboardPage() {
   const headersList = headers();
   const cookiesList = cookies();
   const countryCode = getCountryCode(headersList);
-
-  if (cookiesList.get("attributionsFirstTouch")?.value) {
-    const searchParams = new URLSearchParams(
-      cookiesList.get("attributionsFirstTouch")?.value,
-    );
-    const attribution = {
-      type: "firstTouch",
-      entrypoint: searchParams.get("entrypoint") ?? "",
-      utm_campaign: searchParams.get("utm_campaign") ?? "",
-      utm_medium: searchParams.get("utm_medium") ?? "",
-      utm_source: searchParams.get("utm_source") ?? "",
-      utm_term: searchParams.get("utm_term") ?? "",
-    };
-    try {
-      await addAttributionForSubscriber(
-        session.user.subscriber.id,
-        attribution,
-      );
-    } catch (e) {
-      //ignore
-    }
-  }
-
-  if (cookiesList.get("attributionsLastTouch")) {
-    const searchParams = new URLSearchParams(
-      cookiesList.get("attributionsLastTouch") ?? "",
-    );
-    const attribution = {
-      type: "lastTouch",
-      entrypoint: searchParams.get("entrypoint") ?? "",
-      utm_campaign: searchParams.get("utm_campaign") ?? "",
-      utm_medium: searchParams.get("utm_medium") ?? "",
-      utm_source: searchParams.get("utm_source") ?? "",
-      utm_term: searchParams.get("utm_term") ?? "",
-    };
-    try {
-      await addAttributionForSubscriber(
-        session.user.subscriber.id,
-        attribution,
-      );
-    } catch (e) {
-      //ignore
-    }
-  }
 
   const result = await getOnerepProfileId(session.user.subscriber.id);
   const profileId = result[0]["onerep_profile_id"] as number;
@@ -156,6 +115,63 @@ export default async function DashboardPage() {
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
   const profileStats = await getProfilesStats();
+  let additionalSubplatParams = new URLSearchParams(
+    cookiesList.get("attributionsLastTouch")?.value,
+  );
+
+  // store utm attributions if present in cookies
+  if (cookiesList.get("attributionsFirstTouch")?.value) {
+    const searchParams = new URLSearchParams(
+      cookiesList.get("attributionsFirstTouch")?.value,
+    );
+    const attribution = {
+      type: "firstTouch",
+      entrypoint: searchParams.get("entrypoint") ?? "",
+      utm_campaign: searchParams.get("utm_campaign") ?? "",
+      utm_medium: searchParams.get("utm_medium") ?? "",
+      utm_source: searchParams.get("utm_source") ?? "",
+      utm_term: searchParams.get("utm_term") ?? "",
+    };
+    try {
+      await addAttributionForSubscriber(
+        session.user.subscriber.id,
+        attribution,
+      );
+    } catch (e) {
+      //ignore
+    }
+  }
+
+  if (additionalSubplatParams.size > 0) {
+    const attribution = {
+      type: "lastTouch",
+      entrypoint: additionalSubplatParams.get("entrypoint") ?? "",
+      utm_campaign: additionalSubplatParams.get("utm_campaign") ?? "",
+      utm_medium: additionalSubplatParams.get("utm_medium") ?? "",
+      utm_source: additionalSubplatParams.get("utm_source") ?? "",
+      utm_term: additionalSubplatParams.get("utm_term") ?? "",
+    };
+    try {
+      await addAttributionForSubscriber(
+        session.user.subscriber.id,
+        attribution,
+      );
+    } catch (e) {
+      //ignore
+    }
+  } else {
+    // if "attributionsLastTouch" cookie isn't present, try to load the attribution from the db
+    const attributionLastTouch =
+      await getLatestAttributionForSubscriberWithType(
+        session.user.subscriber.id,
+        "lastTouch",
+      );
+    if (attributionLastTouch) {
+      additionalSubplatParams = new URLSearchParams(
+        attributionLastTouch as Record<string, string>,
+      );
+    }
+  }
 
   return (
     <View
@@ -165,8 +181,8 @@ export default async function DashboardPage() {
       userScanData={latestScan}
       userBreaches={subBreaches}
       enabledFeatureFlags={enabledFeatureFlags}
-      monthlySubscriptionUrl={monthlySubscriptionUrl}
-      yearlySubscriptionUrl={yearlySubscriptionUrl}
+      monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
+      yearlySubscriptionUrl={`${yearlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
       subscriptionBillingAmount={getSubscriptionBillingAmount()}
       fxaSettingsUrl={fxaSettingsUrl}
       scanCount={scanCount}
