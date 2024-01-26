@@ -12,6 +12,8 @@ import styles from "./SignUpForm.module.scss";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
 import { WaitlistCta } from "./ScanLimit";
+import { useCookies } from "react-cookie";
+import { modifyAttributionsForUrlSearchParams } from "../../../functions/universal/attributions";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -29,16 +31,30 @@ export const SignUpForm = (props: Props) => {
   const l10n = useL10n();
   const [emailInput, setEmailInput] = useState("");
   const record = useTelemetry();
+  const [cookies] = useCookies(["attributionsFirstTouch"]);
+  let attributionSearchParams = new URLSearchParams(
+    cookies.attributionsFirstTouch,
+  );
+  attributionSearchParams = modifyAttributionsForUrlSearchParams(
+    attributionSearchParams,
+    {
+      entrypoint: "monitor.mozilla.org-monitor-product-page",
+      email: emailInput,
+      form_type: "button",
+    },
+    {
+      utm_source: "product",
+      utm_medium: "monitor",
+      utm_campaign: "get_free_scan",
+    },
+  );
 
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault();
     void signIn(
       "fxa",
       { callbackUrl: props.signUpCallbackUrl },
-      // This passes an `?email=` query parameter to FxA, causing it to prefill
-      // the email address in the sign-up form. See
-      // https://mozilla.github.io/ecosystem-platform/relying-parties/reference/query-parameters#email
-      { email: emailInput },
+      attributionSearchParams.toString(),
     );
     record("ctaButton", "click", {
       button_id: props.eventId.cta,
