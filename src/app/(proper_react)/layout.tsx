@@ -22,22 +22,24 @@ export default async function Layout({ children }: { children: ReactNode }) {
   const countryCode = getCountryCode(headersList);
   const session = await getServerSession(authOptions);
 
-  if (!session) {
-    throw new Error("No session");
+  let enabledFlags = [];
+  let userId;
+  if (session) {
+    enabledFlags = await getEnabledFeatureFlags({
+      user: session.user,
+    });
+    userId = getUserId(session.user);
+  } else {
+    enabledFlags = await getEnabledFeatureFlags({ ignoreExperiments: true });
+    userId = getUserId(null);
   }
-  const enabledFlags = await getEnabledFeatureFlags({
-    user: session.user,
-  });
 
   return (
     <L10nProvider bundleSources={l10nBundles}>
       <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
         <CountryCodeProvider countryCode={countryCode}>
           {children}
-          <PageLoadEvent
-            userId={getUserId(session.user)}
-            enabledFlags={enabledFlags}
-          />
+          <PageLoadEvent userId={userId} enabledFlags={enabledFlags} />
         </CountryCodeProvider>
       </ReactAriaI18nProvider>
     </L10nProvider>
