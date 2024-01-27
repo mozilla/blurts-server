@@ -38,6 +38,7 @@ test.describe(`${process.env.E2E_TEST_ENV} Settings Page`, () => {
 
     await expect(async () => {
       // select "send breach alerts to the affected email address" option
+      // force is needed when another element intercepts pointer events
       await settingsPage.sendToAffectedEmailRadioButton.click({ force: true });
 
       // verify option is selected
@@ -46,6 +47,7 @@ test.describe(`${process.env.E2E_TEST_ENV} Settings Page`, () => {
 
     await expect(async () => {
       // select "send all breach alerts to the primary email address"
+      // force is needed when another element intercepts pointer events
       await settingsPage.sendToPrimaryEmailRadioButton.click({ force: true });
 
       // verify option is selected

@@ -5,7 +5,7 @@
 import { test, expect } from "../fixtures/basePage.js";
 import { defaultScreenshotOpts } from "../utils/helpers.js";
 
-test.describe(`${process.env.E2E_TEST_ENV} - Verify the new Landing Page content`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, () => {
   test.beforeEach(async ({ landingPage }) => {
     await landingPage.open();
   });
@@ -42,7 +42,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the new Landing Page content
     await expect(landingPage.monitorLandingMidHeading).toBeVisible();
   });
 
-  test('Observe "We&apos;ll help you fix your exposures" section', async ({
+  test('Observe "We will help you fix your exposures" section', async ({
     landingPage,
   }) => {
     test.info().annotations.push({
