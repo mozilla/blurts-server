@@ -22,6 +22,9 @@ COPY --chown=app:app . /app
 RUN npm ci --audit=false && rm -rf ~app/.npm /tmp/*
 
 COPY .env-dist ./.env
+
+ENV NEXT_PUBLIC_GA4_DEBUG_MODE=false
+
 ARG S3_BUCKET
 ENV S3_BUCKET=$S3_BUCKET
 RUN GLEAN_PYTHON=python GLEAN_PIP=pip npm run build
