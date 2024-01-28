@@ -139,7 +139,12 @@ async function onerepFetch(
         stack: e.stack,
       });
     } else {
-      logger.error("bad_onerep_result", { message: e.message, stack: e.stack });
+      if (e instanceof Error) {
+        logger.error("bad_onerep_result", {
+          message: e.message,
+          stack: e.stack,
+        });
+      }
     }
   }
 }
@@ -158,16 +163,17 @@ export async function createProfile(
       },
     ],
   };
-  const savedProfile: {
+
+  const savedProfile = (await onerepFetch("/profiles", {
+    method: "POST",
+    body: JSON.stringify(requestBody),
+  })) as {
     id: number;
     status: "active" | "inactive";
     created_at: ISO8601DateString;
     updated_at: ISO8601DateString;
     url: string;
-  } = await onerepFetch("/profiles", {
-    method: "POST",
-    body: JSON.stringify(requestBody),
-  });
+  };
 
   return savedProfile.id;
 }
@@ -364,7 +370,8 @@ export async function getAllDataBrokers() {
     const response = await onerepFetch(
       "/data-brokers?per_page=100&page=" + page.toString(),
     );
-    const data: OneRepResponse<
+    const data = await response;
+    return data as OneRepResponse<
       Array<{
         id: number;
         data_broker: string;
@@ -375,8 +382,7 @@ export async function getAllDataBrokers() {
           | "on_hold"
           | "ceased_operation";
       }>
-    > = await response;
-    return data;
+    >;
   });
 }
 
