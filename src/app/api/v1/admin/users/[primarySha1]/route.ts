@@ -4,7 +4,11 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { Profile, getServerSession } from "next-auth";
-import { SubscriberRow } from "knex/types/tables";
+import {
+  OnerepScanResultRow,
+  OnerepScanRow,
+  SubscriberRow,
+} from "knex/types/tables";
 import { logger } from "../../../../../functions/server/logging";
 import { isAdmin, authOptions } from "../../../../utils/auth";
 import {
@@ -23,6 +27,8 @@ import { deleteProfileDetails } from "../../../../../../db/tables/onerep_profile
 import {
   deleteScanResultsForProfile,
   deleteScansForProfile,
+  getAllScansForProfile,
+  getScanResults,
 } from "../../../../../../db/tables/onerep_scans";
 import { changeSubscription } from "../../../../../functions/server/changeSubscription";
 
@@ -34,6 +40,8 @@ export type GetUserStateResponseBody = {
   signupLanguage: SubscriberRow["signup_language"];
   all_emails_to_primary: SubscriberRow["all_emails_to_primary"];
   subscriptions: Profile["subscriptions"];
+  onerep_scans: OnerepScanRow[];
+  onerep_scan_results: OnerepScanResultRow[][];
 };
 
 /**
@@ -60,6 +68,17 @@ export async function GET(
 
       const primarySha1 = params.primarySha1;
       const subscriber = (await getSubscribersByHashes([primarySha1]))[0];
+
+      let scanData: OnerepScanRow[] = [];
+      const scanResultData: OnerepScanResultRow[][] = [];
+      if (subscriber.onerep_profile_id) {
+        scanData = await getAllScansForProfile(subscriber.onerep_profile_id);
+        for (const scan of scanData) {
+          const scanResult = await getScanResults(scan.onerep_scan_id);
+          scanResultData.push(scanResult);
+        }
+      }
+
       const responseBody: GetUserStateResponseBody = {
         subscriberId: subscriber.id,
         onerepProfileId: subscriber.onerep_profile_id,
@@ -68,7 +87,10 @@ export async function GET(
         signupLanguage: subscriber.signup_language,
         all_emails_to_primary: subscriber.all_emails_to_primary,
         subscriptions: subscriber.fxa_profile_json?.subscriptions,
+        onerep_scans: scanData,
+        onerep_scan_results: scanResultData,
       };
+
       return NextResponse.json(responseBody);
     } catch (e) {
       logger.error(e);
