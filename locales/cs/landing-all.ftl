@@ -3,10 +3,10 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
-landing-all-hero-title = Zjistěte, kde jsou vaše soukromé informace vystaveny - a vezměte si je zpět
-landing-all-hero-lead = Prověřujeme úniky dat a zjišťujeme, zda nedošlo k úniku vašich dat, a nabízíme vám kroky k nápravě.
+landing-all-hero-title = Zjistěte, kde jsou vaše soukromé informace odhalené — a vezměte si je zpět
+landing-all-hero-lead = Prověřujeme úniky údajů a zjišťujeme, zda nedošlo k úniku vašich údajů. Následně vám nabízíme kroky k nápravě.
 landing-all-hero-emailform-input-placeholder = vasejmeno@example.com
-landing-all-hero-emailform-input-label = Zadejte svou e-mailovou adresu a zkontrolujte, zda nedošlo k úniku dat.
+landing-all-hero-emailform-input-label = Zadejte svou e-mailovou adresu a zkontrolujte, zda nedošlo k úniku údajů.
 landing-all-hero-emailform-submit-label = Zkontrolovat
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = odhalení
@@ -16,11 +16,11 @@ landing-all-hero-image-chart-label = odhalení
 landing-all-value-prop-fix-exposures = Pomůžeme vám vyřešit nalezené úniky
 landing-all-value-prop-fix-exposures-description = Naším posláním je vrátit kontrolu nad vašimi osobními údaji zpět do vašich rukou. Pomůžeme vám vyřešit úniky dat a udržet vaše informace v soukromí – a přitom budeme <privacy_link>respektovat vaše soukromí</privacy_link>.
 landing-all-value-prop-info-at-risk = Jaké informace mohou být ohroženy?
-landing-all-value-prop-info-at-risk-description = Úniky dat jsou bohužel součástí našeho digitálního života. Vaše hesla, kontaktní údaje, finanční informace a další osobní údaje mohou být odhaleny, což vás vystavuje riziku krádeže identity.
+landing-all-value-prop-info-at-risk-description = Úniky údajů jsou bohužel součástí našeho digitálního života. Vaše hesla, kontaktní údaje, finanční informace a další osobní údaje mohou být odhaleny, což vás vystavuje riziku krádeže identity.
 
 # Quote
 
-landing-all-quote = <data_breaches>K únikům dat</data_breaches> dochází každých 11 minut, což vede k odhalení vašich soukromých informací - ale nebojte se, můžeme vám pomoci.
+landing-all-quote = <data_breaches>K únikům údajů</data_breaches> dochází každých 11 minut, což vede k odhalení vašich soukromých informací — ale nebojte se, můžeme vám pomoci.
 
 # Non-US FAQ
 
@@ -29,9 +29,9 @@ landing-all-faq-title = Často kladené otázky
 landing-all-faq-see-all = Prohlédněte si všechny často kladené otázky
 landing-all-data-breach-definition-qn = Co přesně je únik údajů?
 landing-all-data-breach-definition-ans = K narušení bezpečnosti dat dochází, když jsou osobní nebo soukromé informace odhaleny, odcizeny nebo zkopírovány bez povolení. Tyto bezpečnostní incidenty mohou být důsledkem kybernetických útoků na webové stránky, aplikace nebo jakékoli databáze, kde se nacházejí osobní údaje lidí. K narušení bezpečnosti údajů může dojít také náhodně, například když se něčí přihlašovací údaje dostanou na veřejnost.
-landing-all-data-breach-next-steps-qn = Právě jsem zjistil, že byly mé údaje součástí úniku dat. Co mám dělat dál?
+landing-all-data-breach-next-steps-qn = Právě jsem zjistil, že byly mé údaje součástí úniku údajů. Co mám dělat dál?
 landing-all-data-breach-next-steps-ans = Navštivte stránku { -brand-mozilla-monitor }, kde se dozvíte, co dělat po úniku dat, a získáte návod, jak vyřešit vyzrazení vašich osobních údajů. Hackeři spoléhají na to, že lidé opakovaně používají hesla, proto je důležité vytvářet silná a jedinečná hesla pro všechny vaše účty. Uchovávejte svá hesla na bezpečném místě, ke kterému máte přístup pouze vy; může to být stejné místo, kam ukládáte důležité dokumenty, nebo správce hesel.
-landing-all-data-breach-info-qn = Jaké informace jsou při únicích dat vyzrazeny?
+landing-all-data-breach-info-qn = Jaké informace jsou při únicích údajů vyzrazeny?
 landing-all-data-breach-info-ans = Ne všechny úniky poskytují stejné informace. Záleží na tom, k čemu mají hackeři přístup. Mnoho úniků dat vyzrazuje e-mailové adresy a hesla. Jiné vyzrazují citlivější informace, jako jsou čísla platebních karet, čísla PIN a rodná čísla.
 landing-all-close-faq-alt = Zavřít
 
@@ -62,6 +62,6 @@ landing-all-help-protect-you-description = Věříme ve vaše právo na soukrom�
 landing-all-help-protect-you-feature-one = Vyhledáme vás ve všech známých případech narušení bezpečnosti dat.
 landing-all-help-protect-you-feature-two = Provedeme vás kroky k vyřešení každého úniku.
 landing-all-help-protect-you-feature-three = Průběžně budeme monitorovat a zasílat vám upozornění na nové úniky.
-landing-all-help-protect-you-cta = Nastavit upozornění na úniky dat
-landing-all-get-started = Pro začátek naskenujte svou e-mailovou schránku
-landing-all-take-back-data = Získejte opět kontrolu nad svými daty.
+landing-all-help-protect-you-cta = Přihlásit se k odběru upozornění na úniky
+landing-all-get-started = Zadejte svou e-mailovou adresu a začněte
+landing-all-take-back-data = Získejte opět kontrolu nad svými údaji
