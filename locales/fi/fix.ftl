@@ -114,10 +114,19 @@ security-recommendation-steps-cta-label = Selvä!
 # Phone security recommendation
 
 security-recommendation-phone-title = Suojaa puhelinnumerosi
+security-recommendation-phone-step-two = Älä napsauta tuntemattomien lähettäjien tekstiviesteissä olevia linkkejä. Jos viesti vaikuttaa olevan luotettavasta lähteestä, soita lähettäjälle vahvistaaksesi
 
 # Email security recommendation
 
 security-recommendation-email-title = Suojaa sähköpostiosoitteesi
+# $num_breaches is the number of breaches where the email address was found.
+security-recommendation-email-summary =
+    { $num_breaches ->
+        [one] Sähköpostiosoitteesi altistui { $num_breaches } tietovuodossa:
+       *[other] Sähköpostiosoitteesi altistui { $num_breaches } tietovuodossa:
+    }
+security-recommendation-email-description = Valitettavasti et voi korjata tätä. On olemassa toimenpiteitä, joiden avulla voit silti suojata itseäsi.
+security-recommendation-email-step-one = Älä napsauta tuntemattomien lähettäjien sähköpostiviesteissä olevia linkkejä. Jos viesti vaikuttaa olevan luotettavasta lähteestä, soita lähettäjälle vahvistaaksesi
 security-recommendation-email-step-two = Ole tietoinen <link_to_info>kalasteluhuijauksista</link_to_info>
 security-recommendation-email-step-three = Merkitse epäilyttävät sähköpostit roskapostiksi ja estä lähettäjä
 security-recommendation-email-step-four = Käytä <link_to_info>{ -brand-relay }-sähköpostimaskeja</link_to_info> suojataksesi sähköpostiosoitettasi jatkossa

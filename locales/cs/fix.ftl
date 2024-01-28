@@ -21,38 +21,38 @@ fix-flow-celebration-next-dashboard-label = Přejít na svou nástěnku
 
 ## High-risk flow
 
-fix-flow-celebration-high-risk-title = Opravili jste své vysoce rizikové expozice!
-fix-flow-celebration-high-risk-description-in-progress = Tato práce může být náročná, ale je důležitá pro vaši bezpečnost. Pokračujte v dobré práci.
-fix-flow-celebration-high-risk-description-done = Tato práce může být náročná, ale je důležitá pro vaši bezpečnost.
-fix-flow-celebration-high-risk-description-next-passwords = Pojďme opravit vaše vyzrazená hesla.
-fix-flow-celebration-high-risk-description-next-security-questions = Pojďme na opravu odhalených bezpečnostních otázek.
-fix-flow-celebration-high-risk-description-next-security-recommendations = Dále vám dáme osobní bezpečnostní doporučení na základě toho, jaká vaše data byla vyzrazena.
-fix-flow-celebration-high-risk-description-next-dashboard = Dosáhli jste konce svých kroků. Na nástěnce si můžete zobrazit úkoly a sledovat svůj postup.
+fix-flow-celebration-high-risk-title = Vyřešili jste svoje vysoce rizikové úniky!
+fix-flow-celebration-high-risk-description-in-progress = Tato práce se může zdát náročná, ale je důležité ji vykonávat, abyste byli v bezpečí. Pokračujte v dobré práci.
+fix-flow-celebration-high-risk-description-done = Tato práce se může zdát náročná, ale je důležité ji vykonávat, abyste byli v bezpečí.
+fix-flow-celebration-high-risk-description-next-passwords = Nyní pojďme vyřešit vaše odhalená hesla.
+fix-flow-celebration-high-risk-description-next-security-questions = Nyní pojďme vyřešit vaše odhalené bezpečnostní otázky.
+fix-flow-celebration-high-risk-description-next-security-recommendations = Dále vám poskytneme personalizovaná bezpečnostní doporučení na základě toho, jaká vaše data byla odhalena.
+fix-flow-celebration-high-risk-description-next-dashboard = Dostali jste se na poslední krok. Na nástěnce si můžete zobrazit všechny položky, vykonávat akce a sledovat svůj pokrok.
 
 ## Leaked passwords and security questions flow
 
 fix-flow-celebration-leaked-passwords-title = Vaše hesla jsou nyní chráněna!
 fix-flow-celebration-security-questions-title = Vaše bezpečnostní otázky jsou chráněny!
-fix-flow-celebration-leaked-passwords-description-next-security-questions = Nyní zkontrolujeme a aktualizujeme vaše odhalené bezpečnostní otázky.
-fix-flow-celebration-leaked-passwords-description-next-security-recommendations = Dále vám dáme osobní bezpečnostní doporučení na základě toho, jaká vaše data byla vyzrazena.
-fix-flow-celebration-leaked-passwords-description-next-dashboard = Výborně! Dosáhli jste konce svých kroků. Na nástěnce si můžete zobrazit úkoly a sledovat svůj postup.
+fix-flow-celebration-leaked-passwords-description-next-security-questions = Nyní zkontrolujme a aktualizujme vaše odhalené bezpečnostní otázky.
+fix-flow-celebration-leaked-passwords-description-next-security-recommendations = Dále vám poskytneme osobní bezpečnostní doporučení na základě toho, jaká vaše data byla odhalena.
+fix-flow-celebration-leaked-passwords-description-next-dashboard = Velmi dobré! Dostali jste se na poslední krok. Na nástěnce si můžete prohlédnout všechny položky akcí a sledovat svůj pokrok.
 
 ## Security recommendations flow
 
 fix-flow-celebration-security-recommendations-title = Dokončili jste všechna naše doporučení!
-fix-flow-celebration-security-recommendations-description-next-dashboard = Výborně! Dosáhli jste konce svých kroků. Na nástěnce si můžete zobrazit úkoly a sledovat svůj postup.
+fix-flow-celebration-security-recommendations-description-next-dashboard = Výborně! Dostali jste se na poslední krok. Na nástěnce si můžete zobrazit všechny položky a sledovat svůj postup.
 
 # High Risk Data Breaches
 
 high-risk-breach-heading = Zde je návod, jak postupovat
-high-risk-breach-subheading = Tento problém vyžaduje přístup k vašim citlivým údajům, které proto musíte opravit ručně.
+high-risk-breach-subheading = Toto vyžaduje přístup k vašim citlivým informacím, takže to budete muset vyřešit ručně.
 # Variables
 # $num_breaches is the number of breaches where the high risk data was found.
 high-risk-breach-summary =
     { $num_breaches ->
-        [one] Bylo to nalezeno v { $num_breaches } únikech:
-        [few] Vyskytla se v { $num_breaches } únicích dat:
-       *[other] Vyskytla se v { $num_breaches } únicích dat:
+        [one] Údaj se objevil v { $num_breaches } úniku údajů:
+        [few] Údaj se objevil v { $num_breaches } únicích údajů:
+       *[other] Údaj se objevil v { $num_breaches } únicích údajů:
     }
 # Variables
 # $breach_name is the name of the breach where the high risk data was found.
@@ -66,40 +66,40 @@ high-risk-breach-skip = Nyní přeskočit
 # An example of this string is Your estimated time: 15+ minutes.
 high-risk-breach-estimated-time =
     { $estimated_time ->
-        [one] Váš odhadovaný čas: více než { $estimated_time } minut
-        [few] Váš odhadovaný čas: více než { $estimated_time } minut
-       *[other] Váš odhadovaný čas: více než { $estimated_time } minut
+        [one] Odhadovaný čas: více než { $estimated_time } minuta
+        [few] Odhadovaný čas: více než { $estimated_time } minuty
+       *[other] Odhadovaný čas: více než { $estimated_time } minut
     }
 
 # Credit Card Breaches
 
 high-risk-breach-credit-card-title = Číslo vaší platební karty bylo odhaleno
 high-risk-breach-credit-card-description = Každý, kdo ho získá, může provádět neoprávněné nákupy, za které můžete nést odpovědnost. Jednejte hned a vyhněte se finančním škodám.
-high-risk-breach-credit-card-step-one = Pokud tuto kartu stále máte, kontaktujte vydavatele a nahlaste nám, že je karta ukradena.
-high-risk-breach-credit-card-step-two = Požádat o novou kartu s novým číslem.
-high-risk-breach-credit-card-step-three = Zkontrolujte účty za neoprávněné platby.
+high-risk-breach-credit-card-step-one = Pokud tuto kartu stále máte, kontaktujte jejího vydavatele a nahlaste její zcizení.
+high-risk-breach-credit-card-step-two = Požádejte o novou kartu s novým číslem.
+high-risk-breach-credit-card-step-three = Zkontrolujte své účty, zda na nich nemáte neoprávněné pohyby.
 
 # Bank Account Breaches
 
 high-risk-breach-bank-account-title = Číslo vašeho bankovního účtu bylo odhaleno
-high-risk-breach-bank-account-description = Pokud podniknete kroky co nejdříve, můžete získat další právní ochranu, která vám pomůže získat zpět jakékoli ztráty.
-high-risk-breach-bank-account-step-one = Okamžitě informujte svou banku, že číslo vašeho účtu bylo prozrazeno.
+high-risk-breach-bank-account-description = Pokud podniknete kroky co nejdříve, získáte větší právní ochranu, která vám pomůže získat zpět případné ztráty.
+high-risk-breach-bank-account-step-one = Okamžitě oznamte své bance, že bylo zneužito číslo vašeho účtu.
 high-risk-breach-bank-account-step-two = Změňte si číslo svého účtu.
 high-risk-breach-bank-account-step-three = Zkontrolujte, zda na vašich účtech nejsou neoprávněně pohyby.
 
 # Social Security Number Breaches
 
 high-risk-breach-social-security-title = Vaše číslo sociálního zabezpečení bylo odhalené
-high-risk-breach-social-security-description = Podvodníci si mohou otevřít nové půjčky nebo kreditní karty s vaším číslem sociálního zabezpečení. Jednejte rychle, abyste předešli finančním škodám.
+high-risk-breach-social-security-description = Podvodníci si mohou otevřít nové půjčky nebo kreditní karty s vaším číslem sociálního pojištění. Jednejte rychle, abyste předešli finanční újmě.
 high-risk-breach-social-security-step-one = Chraňte se tím, že si <link_to_info>nastavíte upozornění na podvod nebo si nastavíte zmrazení svého kreditu.</link_to_info>
-high-risk-breach-social-security-step-two = <link_to_info>Zkontrolujte stav svého účtu</link_to_info>, jestli neobsahuje nerozpoznané účty.
+high-risk-breach-social-security-step-two = <link_to_info>Zkontrolujte si pohyby na kreditní kartě</link_to_info>, zda se tam nenachází neznámé platby.
 
 # Social Security Number Modal
 
 ssn-modal-title = O upozorněních na podvody a zmrazení úvěrů
-ssn-modal-description-fraud-part-one = <b>Upozornění na podvod</b> vyžaduje od firem ověření vaší identity dříve, než bude připsána na vaše jméno další kredit. Je zdarma, trvá jeden rok a nebude negativně ovlivňovat vaše kreditní skóre.
-ssn-modal-description-fraud-part-two = Pro založení kontaktujte kteroukoliv ze tří úvěrových institucí. Nemusíte kontaktovat všechny tři.
-ssn-modal-description-freeze-credit-part-one = <b>Zmrazení vašeho kreditu</b> zabrání komukoliv otevřít nový účet vedený na vaše jméno. Je zdarma a neovlivní negativně vaše kreditní skóre, ale před otevřením jakéhokoli nového účtu jej musíte rozmrazit.
+ssn-modal-description-fraud-part-one = <b>Upozornění na podvod</b> vyžaduje od firem ověření vaší identity dříve, než bude připsán na vaše jméno další kredit. Je zdarma, trvá jeden rok a nebude negativně ovlivňovat vaše kreditní skóre.
+ssn-modal-description-fraud-part-two = Chcete-li si ho zřídit, obraťte se na kterýkoli ze tří úvěrových úřadů. Nemusíte kontaktovat všechny tři.
+ssn-modal-description-freeze-credit-part-one = <b>Zmrazení vašeho úvěru</b> zabrání komukoli, aby si na vaše jméno otevřel nový účet. Je to zdarma a nemá to negativní vliv na vaše kreditní skóre, ale před otevřením nových účtů ho musíte rozmrazit.
 ssn-modal-description-freeze-credit-part-two = Pro zmrazení svého kreditu kontaktujte každou ze tří úvěrových institucí — <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link> a <transunion_link>TransUnion</transunion_link>.
 ssn-modal-learn-more = Zjistěte více o upozorněních na podvody a zmrazení kreditu
 ssn-modal-ok = OK
@@ -108,13 +108,13 @@ ssn-modal-ok = OK
 
 high-risk-breach-pin-title = Váš PIN byl prozrazen
 high-risk-breach-pin-description = Pokud podniknete kroky co nejdříve, můžete získat další právní ochranu, která vám pomůže získat zpět jakékoli ztráty.
-high-risk-breach-pin-step-one = Okamžitě informujte svou banku, že byl váš PIN vyzrazen.
-high-risk-breach-pin-step-two = Změňte svůj PIN všude, kde jste použili stejný PIN.
-high-risk-breach-pin-step-three = Zkontrolujte účty za neoprávněné platby.
+high-risk-breach-pin-step-one = Okamžitě oznamte své bance, že byl váš PIN kód prozrazen.
+high-risk-breach-pin-step-two = Změňte si PIN kdekoli, kde jste použili stejný.
+high-risk-breach-pin-step-three = Zkontrolujte, zda na vašich účtech nejsou neoprávněné pohyby.
 
 # No high risk breaches found
 
-high-risk-breach-none-title = Skvělá zpráva, neobjevili jsme žádný vysoce rizikový únik dat
+high-risk-breach-none-title = Skvělá zpráva, neobjevili jsme žádný vysoce rizikový únik údajů
 # Variables
 # $email_list is list of emails that the user is monitoring for breaches. E.g. john@yahoo.com, ali@gmail.com, sam@hotmail.com
 high-risk-breach-none-description = Únik dat zjišťujeme na základě vaší e-mailové adresy a pro { $email_list } jsme nezaznamenali žádný vysoce rizikový únik dat.
@@ -178,18 +178,18 @@ security-recommendation-ip-step-one = Použijte VPN (například <link_to_info>{
 
 # Variables
 # $breach_name is the name of the breach where the leaked password was found.
-leaked-passwords-title = Vaše heslo v režimu { $breach_name } bylo prozrazeno
+leaked-passwords-title = Vaše heslo pro { $breach_name } bylo odhaleno
 # Variables
 # $breach_date is the date when the breach occurred.
-leaked-passwords-summary = Objevila se v úniku dat dne { $breach_date }.
+leaked-passwords-summary = Objevilo se při úniku údajů dne { $breach_date }.
 leaked-passwords-description = Podvodníci mají přístup k vašemu účtu a pravděpodobně se ho pokusí použít na jiných účtech, aby zjistili, zda jste nepoužili stejné heslo. Změňte ho všude, kde jste ho použili pro vaši ochranu.
 leaked-passwords-steps-title = Toto je potřeba udělat
-leaked-passwords-steps-subtitle = Tato chyba vyžaduje přístup k vašemu účtu, takže ji budete muset opravit ručně.
+leaked-passwords-steps-subtitle = To vyžaduje přístup k vašemu účtu, takže to budete muset vyřešit ručně.
 # Variables
 # $breach_name is the name of the breach where the leaked password was found.
 # $emails_affected are the emails associated with the breach.
-leaked-passwords-step-one = Změňte si své heslo pro <b>{ $emails_affected }</b> na <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
-leaked-passwords-step-two = Změňte ho všude tam, kde jste ho použili.
+leaked-passwords-step-one = Změňte si heslo pro účet <b>{ $emails_affected }</b> na stránkách<link_to_breach_site>{ $breach_name }</link_to_breach_site>.
+leaked-passwords-step-two = Změňte si ho i kdekoliv jinde, kde jste ho používali.
 leaked-passwords-mark-as-fixed = Označit jako vyřešené
 leaked-passwords-skip = Nyní přeskočit
 # Variables
@@ -198,9 +198,9 @@ leaked-passwords-skip = Nyní přeskočit
 # "mins" is shortform for "minutes".
 leaked-passwords-estimated-time =
     { $estimated_time ->
-        [one] Odh. čas do dokončení: { $estimated_time } minut na stránku
-        [few] Odh. čas do dokončení: { $estimated_time } minut na stránku
-       *[other] Odh. čas do dokončení: { $estimated_time } minut na stránku
+        [one] Odhadovaný čas: { $estimated_time } minuta na stránku
+        [few] Odhadovaný čas: { $estimated_time } minuty na stránku
+       *[other] Odhadovaný čas: { $estimated_time } minut na stránku
     }
 
 # Leaked Security Questions
@@ -210,12 +210,12 @@ leaked-security-questions-title = Vaše bezpečnostní otázky byly odhaleny
 # $breach_name is the name of the breach where the leaked security questions were found.
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
-leaked-security-questions-summary = Objevily se v úniku dat z { $breach_name } dne { $breach_date }.
+leaked-security-questions-summary = Objevily se v úniku údajů ze stránky { $breach_name } dne { $breach_date }.
 leaked-security-questions-description = Podvodníci je mohou použít pro přístup k vašim účtům a jakýmkoli dalším stránkám, kde jste použili stejné bezpečnostní otázky. Pro ochranu vašich účtů je aktualizujte.
 leaked-security-questions-steps-title = Zde je návod, jak postupovat
-leaked-security-questions-steps-subtitle = Tato chyba vyžaduje přístup k vašemu účtu, takže ji budete muset opravit ručně.
+leaked-security-questions-steps-subtitle = To vyžaduje přístup k vašemu účtu, takže to budete muset vyřešit ručně.
 # Variables
 # $breach_name is the name of the breach where the security questions were found.
 # $email_affected is the email associated with the breach.
-leaked-security-questions-step-one = Aktualizujte bezpečnostní otázku pro účet <b>{ $email_affected }</b> na <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
+leaked-security-questions-step-one = Aktualizujte svoje bezpečnostní otázky pro <b>{ $email_affected }</b> na stránce <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
 leaked-security-questions-step-two = Aktualizujte je na jakékoliv jiné stránce, kde používáte stejné bezpečnostní otázky. Ujistěte se, že pro každý účet používáte jiné bezpečnostní otázky.
