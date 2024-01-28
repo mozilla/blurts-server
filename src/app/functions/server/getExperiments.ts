@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { captureException } from "@sentry/node";
+import { captureException, captureMessage } from "@sentry/node";
 import { logger } from "./logging";
 
 /**
@@ -34,9 +34,17 @@ export async function getExperiments(
       });
 
       return features?.json();
-    } catch (ex) {
-      logger.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
-      captureException(ex);
+    } catch (e) {
+      if (e instanceof Error) {
+        const error = e.message;
+        const stack = e.stack;
+        logger.error("cirrus_connection_error", { serverUrl, error, stack });
+        captureException(e);
+      } else {
+        const error = String(e);
+        logger.error("cirrus_connection_error", { serverUrl, error });
+        captureMessage(error);
+      }
     }
   }
 }
