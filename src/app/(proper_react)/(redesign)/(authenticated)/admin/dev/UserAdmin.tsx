@@ -7,6 +7,7 @@
 import { ChangeEventHandler, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import styles from "./UserAdmin.module.scss";
+import { JSONTree } from "react-json-tree";
 import { Button } from "../../../../../components/client/Button";
 import {
   type UserStateAction,
@@ -96,12 +97,28 @@ export const UserAdmin = () => {
               id="email"
             />
           </label>
-          {subscriberData && (
-            <pre>{JSON.stringify(subscriberData, null, 2)}</pre>
-          )}
+          <JSONTree data={subscriberData} />;
         </div>
         {subscriberData && (
           <div className={styles.actions}>
+            <Button
+              variant="secondary"
+              onPress={() => void performAction("manual_scan")}
+            >
+              Manual Scan
+            </Button>
+            <Button
+              variant="secondary"
+              onPress={() => void performAction("initial_scan")}
+            >
+              Initial Scan
+            </Button>
+            <Button
+              variant="secondary"
+              onPress={() => void performAction("monitoring_scan")}
+            >
+              Monitoring Scan
+            </Button>
             <Button
               variant="secondary"
               onPress={() => void performAction("subscribe")}
