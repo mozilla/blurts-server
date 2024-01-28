@@ -61,6 +61,7 @@ jobs:
           NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
           HIBP_KANON_API_TOKEN: ${{ secrets.HIBP_KANON_API_TOKEN }}
           HIBP_API_TOKEN: ${{ secrets.HIBP_API_TOKEN }}
+          E2E_TEST_RUN_WEBSERVER: false
       - uses: actions/upload-artifact@v3
         if: always()
         with:
