@@ -117,12 +117,31 @@ async function onerepFetch(
   if (!onerepApiKey) {
     throw new Error("ONEREP_API_KEY env var not set");
   }
-  const url = new URL(path, onerepApiBase);
-  const headers = new Headers(options.headers);
-  headers.set("Authorization", `Bearer ${onerepApiKey}`);
-  headers.set("Accept", "application/json");
-  headers.set("Content-Type", "application/json");
-  return fetch(url, { ...options, headers });
+  try {
+    const url = `${onerepApiBase}${path}`;
+    const headers = new Headers(options.headers);
+    headers.set("Authorization", `Bearer ${onerepApiKey}`);
+    headers.set("Accept", "application/json");
+    headers.set("Content-Type", "application/json");
+
+    const response = await fetch(url, { ...options, headers });
+
+    if (!response.ok) {
+      logger.error(
+        `OneRep request failed: [${response.status}] [${response.statusText}]`,
+      );
+    }
+    return (await response.json()) as Promise<unknown>;
+  } catch (e) {
+    if (e instanceof SyntaxError) {
+      logger.error("onerep_invalid_json", {
+        message: e.message,
+        stack: e.stack,
+      });
+    } else {
+      logger.error("bad_onerep_result", { message: e.message, stack: e.stack });
+    }
+  }
 }
 
 export async function createProfile(
@@ -139,100 +158,48 @@ export async function createProfile(
       },
     ],
   };
-  const response = await onerepFetch("/profiles", {
-    method: "POST",
-    body: JSON.stringify(requestBody),
-  });
-  if (!response.ok) {
-    logger.error(
-      `Failed to create OneRep profile: [${response.status}] [${
-        response.statusText
-      }] [${JSON.stringify(await response.json())}]`,
-    );
-    throw new Error(
-      `Failed to create OneRep profile: [${response.status}] [${response.statusText}]`,
-    );
-  }
-
   const savedProfile: {
     id: number;
     status: "active" | "inactive";
     created_at: ISO8601DateString;
     updated_at: ISO8601DateString;
     url: string;
-  } = await response.json();
+  } = await onerepFetch("/profiles", {
+    method: "POST",
+    body: JSON.stringify(requestBody),
+  });
+
   return savedProfile.id;
 }
 
 export async function getProfile(
   profileId: number,
 ): Promise<ShowProfileResponse> {
-  const response: Response = await onerepFetch(`/profiles/${profileId}/`, {
+  const response = await onerepFetch(`/profiles/${profileId}/`, {
     method: "GET",
   });
-  if (!response.ok) {
-    logger.error(
-      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
-    );
-    throw new Error(
-      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
-    );
-  }
 
-  const profile: ShowProfileResponse = await response.json();
-  return profile;
+  const profile = await response;
+
+  return profile as ShowProfileResponse;
 }
 
 export async function activateProfile(profileId: number): Promise<void> {
-  const response: Response = await onerepFetch(
-    `/profiles/${profileId}/activate`,
-    {
-      method: "PUT",
-    },
-  );
-  if (!response.ok) {
-    logger.error(
-      `Failed to activate OneRep profile: [${response.status}] [${response.statusText}]`,
-    );
-    throw new Error(
-      `Failed to activate OneRep profile: [${response.status}] [${response.statusText}]`,
-    );
-  }
+  await onerepFetch(`/profiles/${profileId}/activate`, {
+    method: "PUT",
+  });
 }
 
 export async function deactivateProfile(profileId: number): Promise<void> {
-  const response: Response = await onerepFetch(
-    `/profiles/${profileId}/deactivate`,
-    {
-      method: "PUT",
-    },
-  );
-  if (!response.ok) {
-    logger.error(
-      `Failed to deactivate OneRep profile: [${response.status}] [${response.statusText}]`,
-    );
-    throw new Error(
-      `Failed to deactivate OneRep profile: [${response.status}] [${response.statusText}]`,
-    );
-  }
+  await onerepFetch(`/profiles/${profileId}/deactivate`, {
+    method: "PUT",
+  });
 }
 
 export async function optoutProfile(profileId: number): Promise<void> {
-  const response = await onerepFetch(`/profiles/${profileId}/optout`, {
+  await onerepFetch(`/profiles/${profileId}/optout`, {
     method: "POST",
   });
-  if (!response.ok) {
-    logger.error(
-      `Failed to opt-out OneRep profile: [${response.status}] [${
-        response.statusText
-      }] [${JSON.stringify(await response.json())}]`,
-    );
-    throw new Error(
-      `Failed to opt-out OneRep profile: [${response.status}] [${
-        response.statusText
-      }] [${JSON.stringify(await response.json())}]`,
-    );
-  }
 }
 
 export async function activateAndOptoutProfile({
@@ -271,15 +238,8 @@ export async function createScan(
   const response = await onerepFetch(`/profiles/${profileId}/scans`, {
     method: "POST",
   });
-  if (!response.ok) {
-    logger.error(
-      `Failed to create a scan: [${response.status}] [${response.statusText}]`,
-    );
-    throw new Error(
-      `Failed to create a scan: [${response.status}] [${response.statusText}]`,
-    );
-  }
-  return response.json() as Promise<CreateScanResponse>;
+
+  return response as Promise<CreateScanResponse>;
 }
 
 export async function listScans(
@@ -293,21 +253,13 @@ export async function listScans(
   if (options.per_page) {
     queryParams.set("per_page", options.per_page.toString());
   }
-  const response: Response = await onerepFetch(
+  const response = await onerepFetch(
     `/profiles/${profileId}/scans?` + queryParams.toString(),
     {
       method: "GET",
     },
   );
-  if (!response.ok) {
-    logger.error(
-      `Failed to fetch scans: [${response.status}] [${response.statusText}]`,
-    );
-    throw new Error(
-      `Failed to fetch scans: [${response.status}] [${response.statusText}]`,
-    );
-  }
-  return response.json() as Promise<ListScansResponse>;
+  return response as Promise<ListScansResponse>;
 }
 
 export async function listScanResults(
@@ -335,21 +287,13 @@ export async function listScanResults(
       queryParams.append("status[]", status);
     });
   }
-  const response: Response = await onerepFetch(
+  const response = await onerepFetch(
     "/scan-results/?" + queryParams.toString(),
     {
       method: "GET",
     },
   );
-  if (!response.ok) {
-    logger.error(
-      `Failed to fetch scan results: [${response.status}] [${response.statusText}]`,
-    );
-    throw new Error(
-      `Failed to fetch scan results: [${response.status}] [${response.statusText}]`,
-    );
-  }
-  return response.json() as Promise<ListScanResultsResponse>;
+  return response as Promise<ListScanResultsResponse>;
 }
 
 export async function isEligibleForFreeScan(
@@ -403,15 +347,8 @@ export async function getScanDetails(
   const response = await onerepFetch(`/profiles/${profileId}/scans/${scanId}`, {
     method: "GET",
   });
-  if (!response.ok) {
-    logger.error(
-      `Failed to fetch scan details: [${response.status}] [${response.statusText}]`,
-    );
-    throw new Error(
-      `Failed to fetch scan details: [${response.status}] [${response.statusText}]`,
-    );
-  }
-  return response.json() as Promise<Scan>;
+
+  return response as Promise<Scan>;
 }
 
 export async function getAllScanResults(
@@ -438,7 +375,7 @@ export async function getAllDataBrokers() {
           | "on_hold"
           | "ceased_operation";
       }>
-    > = await response.json();
+    > = await response;
     return data;
   });
 }
@@ -477,25 +414,16 @@ export async function getProfilesStats(
   if (profileStatsCache.has(queryParamsString))
     return profileStatsCache.get(queryParamsString);
 
-  const response: Response = await onerepFetch(
+  const profileStats = (await onerepFetch(
     `/stats/profiles?${queryParamsString}`,
     {
       method: "GET",
     },
-  );
-  if (!response.ok) {
-    logger.error(
-      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
-    );
-    throw new Error(
-      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
-    );
-  }
-
-  const profileStats: ProfileStats = await response.json();
+  )) as Promise<ProfileStats>;
 
   // cache results in map, with a flush hack to keep the size low
   if (profileStatsCache.size > 5) profileStatsCache.clear();
-  profileStatsCache.set(queryParamsString, profileStats);
+  profileStatsCache.set(queryParamsString, await profileStats);
   return profileStats;
 }
+export { getLatestOnerepScanResults };
