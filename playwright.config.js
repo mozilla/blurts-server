@@ -20,7 +20,7 @@ const webServerConfig = {
   port: 6060
 }
 
-const shouldStartWebServer = process.env.E2E_TEST_RUN_WEBSERVER === "true"
+const shouldStartWebServer = process.env.E2E_TEST_RUN_WEBSERVER !== "false"
 
 export default defineConfig({
   testDir: 'src/e2e/specs',
