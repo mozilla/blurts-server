@@ -86,7 +86,7 @@ export function StartFreeScanView(props: Props) {
           </TelemetryButton>
           <TelemetryButton
             variant="secondary"
-            href="/user/dashboard/fix/high-risk-data-breaches"
+            href={getNextGuidedStep(props.data, "Scan").href}
             event={{
               module: "button",
               name: "click",

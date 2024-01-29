@@ -12,6 +12,16 @@ dotenv.config()
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
+
+const webServerConfig = {
+  command: 'npm run build; npm start',
+  // Building the app can take some time:
+  timeout: 600_000,
+  port: 6060
+}
+
+const shouldStartWebServer = process.env.E2E_TEST_ENV === "local"
+
 export default defineConfig({
   testDir: 'src/e2e/specs',
   /* Maximum time one test can run for. */
@@ -115,11 +125,6 @@ export default defineConfig({
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
   outputDir: 'src/e2e/test-results/',
 
-  /* Run your local dev server before starting the tests */
-  webServer: {
-    command: 'npm run build; npm start',
-    port: 6060,
-    // Building the app can take some time:
-    timeout: 600_000,
-  }
+  // Run your local dev server before starting the tests -- should run only on PRs or when prompted
+  ...(shouldStartWebServer && { webServer: webServerConfig })
 })

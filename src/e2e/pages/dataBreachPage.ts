@@ -33,9 +33,11 @@ export class DataBreachPage {
 
     // navbar
     this.dataBreachesNavbar = page.locator(".header-wrapper");
-    this.dataBreachesLogo = page.getByAltText("Mozilla Monitor");
+    this.dataBreachesLogo = page.getByRole("link", { name: "Home" });
     this.dataBreachesLogoLink = page.locator(".header-wrapper a");
-    this.dataBreachesNavbarProfile = page.locator(".user-menu-button");
+    this.dataBreachesNavbarProfile = page.getByRole("button", {
+      name: "Open user menu",
+    });
     this.dataBreachesNavbarProfileButton = page.locator(".nav-toggle");
 
     // profile menu items
@@ -73,16 +75,6 @@ export class DataBreachPage {
     this.helpAndSupportNavButton = page.getByRole("link", {
       name: "Help and Support",
     });
-  }
-
-  dashboardLinks() {
-    return {
-      // identify expected URLs
-      settingsNavButtonLink: "/user/settings",
-      resolveDataBreachesNavButtonLink: "/user/breaches",
-      helpAndSupportNavButtonLink:
-        "https://support.mozilla.org/kb/firefox-monitor",
-    };
   }
 
   async open() {

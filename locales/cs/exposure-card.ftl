@@ -28,8 +28,8 @@ exposure-card-description-info-for-sale-part-two = Odeberte tento profil z důvo
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = Vaše údaje byly dne { $data_breach_date } vyzrazeny při úniku dat z <data_breach_link>{ $data_breach_company }.</data_breach_link>
-exposure-card-description-data-breach-part-two = Provedeme vás jednotlivými kroky, jak to napravit.
+exposure-card-description-data-breach-part-one = Vaše údaje byly dne { $data_breach_date } vyzrazeny při úniku údajů společnosti <data_breach_link>{ $data_breach_company }.</data_breach_link>
+exposure-card-description-data-breach-part-two = Provedeme vás jednotlivými kroky, jak to vyřešit.
 exposure-card-your-exposed-info = Vaše odhalené informace:
 exposure-card-exposure-type-data-broker = Informace k prodeji
 exposure-card-exposure-type-data-breach = Únik údajů
