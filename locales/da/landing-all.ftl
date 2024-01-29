@@ -13,12 +13,14 @@ landing-all-hero-image-chart-label = eksponeringer
 
 # Value Proposition
 
+landing-all-value-prop-fix-exposures = Vi hjælper dig med at løse dine eksponeringer
 landing-all-value-prop-fix-exposures-description = Vores mission er at give dig kontrollen over dine private data tilbage. Vi hjælper dig med at løse datalæk og holde dine data beskyttet - og vi <privacy_link>respekterer din ret til privatliv</privacy_link> undervejs.
 landing-all-value-prop-info-at-risk = Hvilke oplysninger kan være i fare?
 landing-all-value-prop-info-at-risk-description = Datalæk er en beklagelig del af vores digitale liv. Dine adgangskoder og kontaktoplysninger, information om din økonomi og andre personlige oplysninger kan være eksponeret og udsætte dig for risiko for identitetstyveri.
 
 # Quote
 
+landing-all-quote = Hver 11. minut sker en nyt <data_breaches>datalæk</data_breaches>, der kan eksponere dine personlige oplysninger. Men bare rolig, vi hjælper dig.
 
 # Non-US FAQ
 
@@ -44,16 +46,13 @@ landing-all-social-proof-title =
     }
 # Variables
 # $num_countries is the number of countries available.
-landing-all-social-proof-description =
-    { $num_countries ->
-        [one] { "" }
-       *[other] Siden 2018 har vi hjulpet mennesker i { $num_countries } lande med at beskytte deres eksponerede data.
-    }
+landing-all-social-proof-description = Siden 2018 har vi hjulpet mennesker i { $num_countries } lande med at beskytte deres eksponerede data.
 landing-all-social-proof-press = Kendt fra
 
 # Here's How We Help
 
 landing-all-help-protect-you = Se hvordan, vi hjælper med at beskytte dig
+landing-all-help-protect-you-description = Vi mener, at retten til privatliv er grundlæggende - derfor er beskyttelse i form af overvågning af datalæk altid gratis.
 landing-all-help-protect-you-feature-one = Vi søger efter dine oplysninger i alle kendte datalæk
 landing-all-help-protect-you-feature-two = Vi guider dig trin for trin til at løse hver datalæk
 landing-all-help-protect-you-feature-three = Vi holder løbende øje med dine oplysninger og giver dig besked, hvis de optræder i en ny datalæk

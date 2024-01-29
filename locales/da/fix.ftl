@@ -4,6 +4,8 @@
 
 fix-flow-nav-high-risk-data-breaches = Datalæk med høj risiko
 fix-flow-nav-leaked-passwords = Lækkede adgangskoder
+fix-flow-nav-security-recommendations = Sikkerhedsanbefalinger
+guided-resolution-flow-exit = Tilbage til oversigten
 guided-resolution-flow-back-arrow = Gå til foregående trin
 guided-resolution-flow-next-arrow = Gå til næste trin
 guided-resolution-flow-step-navigation-label = Trin i vejledningen
@@ -25,6 +27,7 @@ fix-flow-celebration-high-risk-description-done = Det her virker måske som mege
 fix-flow-celebration-high-risk-description-next-passwords = Lad os nu få styr på dine eksponerede adgangskoder.
 fix-flow-celebration-high-risk-description-next-security-questions = Lad os nu få styr på dine eksponerede sikkerhedsspørgsmål.
 fix-flow-celebration-high-risk-description-next-security-recommendations = Næste skridt er, at vi giver dig nogle sikkerhedsanbefalinger baseret på, hvilke af dine data, som er blevet eksponeret.
+fix-flow-celebration-high-risk-description-next-dashboard = Du har gennemført det sidste trin. Du kan se eventuelle påkrævede handlinger samt dit fremskridt på oversigtssiden.
 
 ## Leaked passwords and security questions flow
 
@@ -32,10 +35,12 @@ fix-flow-celebration-leaked-passwords-title = Dine adgangskoder er nu beskyttet!
 fix-flow-celebration-security-questions-title = Dine sikkerhedsspørgsmål er beskyttet!
 fix-flow-celebration-leaked-passwords-description-next-security-questions = Lad os nu gennemgå og opdatere dine eksponerede sikkerhedsspørgsmål.
 fix-flow-celebration-leaked-passwords-description-next-security-recommendations = Næste skridt er, at vi giver dig nogle sikkerhedsanbefalinger baseret på, hvilke af dine data, som er blevet eksponeret.
+fix-flow-celebration-leaked-passwords-description-next-dashboard = Godt gået! Du har gennemført det sidste trin. Du kan se eventuelle påkrævede handlinger samt dit fremskridt på oversigtssiden.
 
 ## Security recommendations flow
 
 fix-flow-celebration-security-recommendations-title = Du har gennemført alle dine anbefalinger!
+fix-flow-celebration-security-recommendations-description-next-dashboard = Godt gået! Du har gennemført det sidste trin. Du kan se eventuelle påkrævede handlinger samt dit fremskridt på oversigtssiden.
 
 # High Risk Data Breaches
 
@@ -66,6 +71,7 @@ high-risk-breach-estimated-time =
 
 # Credit Card Breaches
 
+high-risk-breach-credit-card-title = Dit betalingskort-nummer er blevet eksponeret
 high-risk-breach-credit-card-description = Alle, som kan få adgang til det, kan udføre uautoriserede køb, som du kan blive ansvarlig for. Handl nu for at undgå økonomiske problemer.
 high-risk-breach-credit-card-step-one = Hvis du stadig har kortet, så kontakt udstederen for at anmelde, at det er blevet stjålet.
 high-risk-breach-credit-card-step-two = Anmod om et kort med et nyt nummer.
@@ -81,9 +87,19 @@ high-risk-breach-bank-account-step-three = Undersøg om dine kontoudtog indehold
 
 # Social Security Number Breaches
 
+high-risk-breach-social-security-title = Dit personnummer er blevet eksponeret
+high-risk-breach-social-security-description = Svindlere kan bruge dit personnummer til at optage nye lån eller bestille kreditkort med dit personnummer. Gør noget i en fart for at undgå økonomiske problemer.
+high-risk-breach-social-security-step-one = Beskyt dig selv ved at <link_to_info>sætte advarsler om svindel op eller fryse din kredit.</link_to_info>
+high-risk-breach-social-security-step-two = <link_to_info>Undersøg din kredit-rapport</link_to_info> for ukendte konti.
 
 # Social Security Number Modal
 
+ssn-modal-title = Om advarsler om svindel og frysning af kredit
+ssn-modal-description-fraud-part-one = <b>En advarsel om svindel</b> kræver, at virksomheder bekræfter din identitet, før de udsteder nye kreditter i dit navn. Det er gratis, gælder i et år og påvirker ikke dine kredit-score negativt.
+ssn-modal-description-fraud-part-two = Kontakt ét af de tre kredit-bureauer for at sætte en advarsel op. Du behøver ikke kontakte alle tre.
+ssn-modal-description-freeze-credit-part-one = <b>At fryse din kredit</b> forhindrer, at nogen kan åbne nye konti i dit navn. Det er gratis og påvirker ikke din kredit-score, men du skal omgøre handlingen for at kunne åbne nye konti.
+ssn-modal-description-freeze-credit-part-two = For at fryse din kredit skal du kontakte ét af kredit-bureauerne, <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link> eller <transunion_link>TransUnion</transunion_link>.
+ssn-modal-learn-more = Læs mere om advarsel om svindel og frysning af kredit
 ssn-modal-ok = OK
 
 # PIN Breaches
@@ -103,6 +119,7 @@ high-risk-breach-none-description = Vi opdager datalæk med udgangspunkt i din m
 high-risk-breach-none-sub-description-part-one = Datalæk med høj risiko inkluderer:
 high-risk-breach-none-sub-description-ssn = Personnummer
 high-risk-breach-none-sub-description-bank-account = Oplysninger om bankkonti
+high-risk-breach-none-sub-description-cc-number = Betalingskort-numre
 high-risk-breach-none-sub-description-pin = Pinkoder
 high-risk-breach-none-continue = Fortsæt
 
@@ -143,6 +160,12 @@ security-recommendation-email-step-four = Brug <link_to_info>mail-masker med { -
 # IP security recommendation
 
 security-recommendation-ip-title = Brug en VPN for bedre beskyttelse af dit privatliv
+# $num_breaches is the number of breaches where the IP address was found.
+security-recommendation-ip-summary =
+    { $num_breaches ->
+        [one] Din IP-adresse er blevet eksponeret i { $num_breaches } datalæk:
+       *[other] Din IP-adresse er blevet eksponeret i { $num_breaches } datalæk:
+    }
 security-recommendation-ip-description = Din IP-adresse fastslår din placering og din internetudbyder. Hackere kan bruge disse oplysninger til at finde frem til din placering eller forsøge at oprette forbindelse til dine enheder.
 security-recommendation-ip-step-one = Brug en VPN (som fx <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) til at skjule din rigtige IP-adresse og beskytte dit privatliv på nettet.
 

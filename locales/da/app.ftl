@@ -764,8 +764,9 @@ main-nav-button-expand-label = Åbn menu
 main-nav-button-expand-tooltip = Åbn menu
 main-nav-label = Navigation
 main-nav-link-home-label = Hjem
+main-nav-link-dashboard-label = Oversigt
 main-nav-link-settings-label = Indstillinger
-main-nav-link-faq-label = Ofte stillede spørgsmål
+main-nav-link-faq-label = FAQ
 main-nav-link-faq-tooltip = Ofte stillede spørgsmål
 
 ## User menu
