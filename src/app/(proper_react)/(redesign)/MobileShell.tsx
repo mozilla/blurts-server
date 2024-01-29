@@ -4,7 +4,7 @@
 
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Session } from "next-auth";
@@ -16,6 +16,7 @@ import { UserMenu } from "../../components/client/toolbar/UserMenu";
 import { useL10n } from "../../hooks/l10n";
 import { PageLink } from "./PageLink";
 import { useTelemetry } from "../../hooks/useTelemetry";
+import { usePathname } from "next/navigation";
 
 export type Props = {
   session: Session;
@@ -33,9 +34,23 @@ export const MobileShell = (props: Props) => {
   const l10n = useL10n();
   const [isExpanded, setIsExpanded] = useState(false);
   const recordTelemetry = useTelemetry();
+  const pathName = usePathname();
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // As we transition focus away from the navigation bar in deeper sections
+    // of the experience, it's best to ensure its focus on the dashboard page,
+    // where users first encounter it and when they return to it
+    /* c8 ignore next 3 */
+    if (pathName === "/user/dashboard") {
+      wrapperRef.current?.focus();
+    }
+  }, [pathName]);
 
   return (
     <div
+      ref={wrapperRef}
+      tabIndex={-1}
       className={`${styles.wrapper} ${
         // TODO: Add unit test when changing this code:
         /* c8 ignore next */
