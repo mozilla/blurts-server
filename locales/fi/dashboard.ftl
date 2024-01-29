@@ -64,6 +64,7 @@ dashboard-exposures-filter-show-results = Näytä tulokset
 dashboard-top-banner-section-label = Hallintapaneelin yhteenveto
 dashboard-top-banner-scan-in-progress-title = Tarkistus on edelleen kesken
 dashboard-top-banner-your-data-is-protected-title = Tietosi on suojattu
+dashboard-top-banner-lets-keep-protecting-title = Jatketaan tietojesi suojaamista
 dashboard-top-banner-lets-keep-protecting-cta = Jatketaan
 dashboard-top-banner-protect-your-data-title = Suojataan tietosi
 dashboard-top-banner-protect-your-data-cta = Korjataan se

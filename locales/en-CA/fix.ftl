@@ -186,6 +186,14 @@ leaked-passwords-step-one = Change your password for <b>{ $emails_affected }</b>
 leaked-passwords-step-two = Change it anywhere else you’ve used it.
 leaked-passwords-mark-as-fixed = Mark as fixed
 leaked-passwords-skip = Skip for now
+# Variables
+# $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
+# "Est." is shortform for "Estimated".
+# "mins" is shortform for "minutes".
+leaked-passwords-estimated-time =
+    { $estimated_time ->
+       *[other] Est. time to complete: { $estimated_time } mins per site
+    }
 
 # Leaked Security Questions
 
