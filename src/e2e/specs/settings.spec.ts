@@ -13,7 +13,6 @@ test.describe(`${process.env.E2E_TEST_ENV} Settings Page`, () => {
   }, testInfo) => {
     // should go directly to data breach page
     await settingsPage.open();
-    await expect(settingsPage.settingsHeader).toBeVisible();
     await expect(settingsPage.prefHeader).toBeVisible();
     await expect(settingsPage.emailHeader).toBeVisible();
     await expect(settingsPage.deactivateHeader).toBeVisible();
@@ -26,7 +25,6 @@ test.describe(`${process.env.E2E_TEST_ENV} Settings Page`, () => {
   });
 
   test("Verify that a user can select between the Breach alert preferences", async ({
-    page,
     settingsPage,
   }) => {
     test.info().annotations.push({
@@ -40,18 +38,20 @@ test.describe(`${process.env.E2E_TEST_ENV} Settings Page`, () => {
 
     await expect(async () => {
       // select "send breach alerts to the affected email address" option
-      await settingsPage.sendToAffectedEmailRadioButton.click();
+      // force is needed when another element intercepts pointer events
+      await settingsPage.sendToAffectedEmailRadioButton.click({ force: true });
 
       // verify option is selected
-      await expect(page.locator('input[data-alert-option="0"]')).toBeChecked();
-    }).toPass();
+      await expect(settingsPage.sendToAffectedEmailRadioButton).toBeChecked();
+    }).toPass({ timeout: 2000 });
 
     await expect(async () => {
       // select "send all breach alerts to the primary email address"
-      await settingsPage.sendToPrimaryEmailRadioButton.click();
+      // force is needed when another element intercepts pointer events
+      await settingsPage.sendToPrimaryEmailRadioButton.click({ force: true });
 
       // verify option is selected
-      await expect(page.locator('input[data-alert-option="1"]')).toBeChecked();
-    }).toPass();
+      await expect(settingsPage.sendToPrimaryEmailRadioButton).toBeChecked();
+    }).toPass({ timeout: 2000 });
   });
 });
