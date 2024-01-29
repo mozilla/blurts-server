@@ -23,6 +23,7 @@ import styles from "./UpsellBadge.module.scss";
 import { useGa } from "../../hooks/useGa";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import { CountryCodeContext } from "../../../contextProviders/country-code";
+import { useSession } from "next-auth/react";
 
 export type UpsellButtonProps = {
   monthlySubscriptionUrl: string;
@@ -140,9 +141,9 @@ function UpsellToggleButton(props: UpsellToggleButton) {
 
 export function UpsellBadge(props: UpsellButtonProps) {
   const countryCode = useContext(CountryCodeContext);
+  const session = useSession();
 
-  const { user } = props;
-
+  const user = session.data?.user ?? props.user;
   const userHasPremium = hasPremium(user);
   if (userHasPremium || canSubscribeToPremium({ user, countryCode })) {
     return <UpsellToggleButton {...props} hasPremium={userHasPremium} />;
