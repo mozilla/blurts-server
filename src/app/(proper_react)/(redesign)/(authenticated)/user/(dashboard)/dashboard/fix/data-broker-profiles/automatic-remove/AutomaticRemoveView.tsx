@@ -10,6 +10,7 @@ import { Button } from "../../../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { FixView } from "../../FixView";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
+import { modifyAttributionsForUrl } from "../../../../../../../../../functions/universal/attributions";
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 
 export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
@@ -47,6 +48,28 @@ export function AutomaticRemoveView(props: Props) {
   useEffect(() => {
     titleRef.current?.focus();
   }, []);
+    
+  // format subscription urls
+  const addAttributions = (url: string) =>
+    modifyAttributionsForUrl(
+      url,
+      {
+        entrypoint: "monitor.mozilla.org-monitor-in-product-guided-upsell",
+        form_type: "button",
+      },
+      {
+        utm_source: "product",
+        utm_medium: "monitor",
+        utm_campaign: "guided-upsell",
+      },
+    );
+
+  const monthlySubscriptionUrlWithAttributions = addAttributions(
+    monthlySubscriptionUrl,
+  );
+  const yearlySubscriptionUrlWithAttributions = addAttributions(
+    yearlySubscriptionUrl,
+  );
 
   return (
     <FixView {...fixViewProps} hideProgressIndicator>
@@ -187,8 +210,8 @@ export function AutomaticRemoveView(props: Props) {
                 /* c8 ignore stop */
                 href={
                   selectedPlanIsYearly
-                    ? yearlySubscriptionUrl
-                    : monthlySubscriptionUrl
+                    ? yearlySubscriptionUrlWithAttributions
+                    : monthlySubscriptionUrlWithAttributions
                 }
               >
                 {selectedPlanIsYearly

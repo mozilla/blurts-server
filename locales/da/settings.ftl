@@ -30,12 +30,16 @@ settings-email-limit-info =
 settings-email-verification-callout = Bekræftelse af mailadresse påkrævet
 settings-resend-email-verification-link = Send bekræftelsesmail igen
 settings-add-email-button = Tilføj mailadresse
+# Deprecated
 settings-delete-email-button = Slet mailadresse
-
+settings-remove-email-button-label = Fjern
+# Variables:
+#   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
+settings-remove-email-button-tooltip = Stop med at holde øje med { $emailAddress }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
-#   $breachCount (numer) - Number of breaches
+#   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
         [one] Optræder i { $breachCount } kendt datalæk
