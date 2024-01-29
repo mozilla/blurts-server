@@ -30,6 +30,11 @@
     background-color: transparent;
     border-style: none;
     cursor: pointer;
+    padding: 0 $spacing-xs;
+
+    svg {
+      color: $color-black;
+    }
 
     &:hover svg {
       color: $color-white;
