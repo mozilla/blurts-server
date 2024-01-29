@@ -38,6 +38,7 @@ export const MobileShell = (props: Props) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    /* c8 ignore next 3 */
     if (pathName === "/user/dashboard") {
       wrapperRef.current?.focus();
     }
