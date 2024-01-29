@@ -48,7 +48,7 @@ export function AutomaticRemoveView(props: Props) {
   useEffect(() => {
     titleRef.current?.focus();
   }, []);
-    
+
   // format subscription urls
   const addAttributions = (url: string) =>
     modifyAttributionsForUrl(
