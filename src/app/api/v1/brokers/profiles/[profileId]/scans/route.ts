@@ -5,16 +5,20 @@
 import { NextRequest, NextResponse } from "next/server";
 import { CreateScanResponse } from "../../../../../../functions/server/onerep";
 
-export function GET(_request: NextRequest, { params }) {
-  console.debug(params);
+export function GET(req: NextRequest) {
+  const query = req.nextUrl.searchParams;
+  let subscribed = false;
+  if (query.has("subscribed") && query.get("subscribed") === "true") {
+    subscribed = true;
+  }
 
   const response = {
     data: [
       {
         id: 1,
         profile_id: 1,
-        status: "finished", // FIXME make dynamic
-        reason: "manual", // FIXME make dynamic
+        status: "finished",
+        reason: "manual",
         created_at: "2019-06-05T11:11:11+0000",
         updated_at: "2019-06-05T11:11:11+0000",
         url: "https://api.onerep.com/scans/1",
@@ -36,6 +40,27 @@ export function GET(_request: NextRequest, { params }) {
       total: 1,
     },
   };
+
+  if (subscribed) {
+    response.data.push({
+      id: 21,
+      profile_id: 1,
+      status: "finished",
+      reason: "initial",
+      created_at: "2019-06-06T11:11:11+0000",
+      updated_at: "2019-06-06T11:11:11+0000",
+      url: "https://api.onerep.com/scans/2",
+    });
+    response.data.push({
+      id: 3,
+      profile_id: 1,
+      status: "finished",
+      reason: "monitoring",
+      created_at: "2019-07-01T11:11:11+0000",
+      updated_at: "2019-07-01T11:11:11+0000",
+      url: "https://api.onerep.com/scans/3",
+    });
+  }
 
   return NextResponse.json(response, { status: 200 });
 }

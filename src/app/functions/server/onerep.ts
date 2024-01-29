@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import type { Session } from "next-auth";
+import { getServerSession, type Session } from "next-auth";
 import { getOnerepProfileId } from "../../../db/tables/subscribers.js";
 import {
   E164PhoneNumberString,
@@ -19,6 +19,8 @@ import {
   getEnabledFeatureFlags,
 } from "../../../db/tables/featureFlags";
 import { logger } from "./logging";
+import { authOptions } from "../../api/utils/auth";
+import { hasPremium } from "../universal/user";
 
 export const monthlyScansQuota = parseInt(
   (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
@@ -259,6 +261,12 @@ export async function listScans(
   if (options.per_page) {
     queryParams.set("per_page", options.per_page.toString());
   }
+  if (process.env.NODE_ENV === "development") {
+    const session = await getServerSession(authOptions);
+    if (hasPremium(session?.user)) {
+      queryParams.set("subscribed", "true");
+    }
+  }
   const response = await onerepFetch(
     `/profiles/${profileId}/scans?` + queryParams.toString(),
     {
@@ -293,6 +301,14 @@ export async function listScanResults(
       queryParams.append("status[]", status);
     });
   }
+
+  if (process.env.NODE_ENV === "development") {
+    const session = await getServerSession(authOptions);
+    if (hasPremium(session?.user)) {
+      queryParams.set("subscribed", "true");
+    }
+  }
+
   const response = await onerepFetch(
     "/scan-results/?" + queryParams.toString(),
     {
