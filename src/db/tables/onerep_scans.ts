@@ -136,10 +136,12 @@ async function addOnerepScanResults(
     }),
   });
 
-  await knex("onerep_scan_results")
-    .insert(scanResultsMap)
-    .onConflict("onerep_scan_result_id")
-    .merge();
+  if (scanResultsMap.length > 0) {
+    await knex("onerep_scan_results")
+      .insert(scanResultsMap)
+      .onConflict("onerep_scan_result_id")
+      .merge();
+  }
 }
 
 async function isOnerepScanResultForSubscriber(params: {

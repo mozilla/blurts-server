@@ -378,8 +378,8 @@ facebook-breach-what-to-do-1-copy =
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-2-headline =
-    <span>Змініть пароль, ПІН-код, або інші облікові дані, пов'язані з безпекою, в обліковому записі
-    <a>свого мобільного оператора</a> з метою недопущення підміни SIM-картки</span>.
+    <span>Змініть пароль, PIN-код, або інші облікові дані, пов'язані з безпекою, в обліковому записі
+    <a>свого мобільного оператора,</a> щоб запобігти підміні SIM-картки</span>.
 facebook-breach-what-to-do-2-copy =
     Підміна SIM-картки, яку також називають перехопленням,
     — це коли хакер використовує номери телефонів, дату народження та інші дані, щоб привласнити
@@ -904,3 +904,6 @@ breach-detail-cta-signup = Перевірити на витік даних
 floating-banner-text = Підвищте онлайн-безпеку за допомогою новин, порад і оновлень від { -brand-Mozilla }.
 floating-banner-link-label = Зареєструватись
 floating-banner-dismiss-button-label = Ні, дякую
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+

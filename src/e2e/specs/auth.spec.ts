@@ -27,7 +27,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     await authPage.signUp(randomEmail, page);
 
     // assert successful login
-    // will poll for url as Fxa takes some time
     expect(page.url()).toBe(`${process.env.E2E_TEST_BASE_URL}/user/dashboard`);
 
     await testInfo.attach(
