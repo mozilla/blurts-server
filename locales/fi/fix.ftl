@@ -35,13 +35,16 @@ fix-flow-celebration-leaked-passwords-title = Salasanasi ovat nyt suojattu!
 fix-flow-celebration-security-questions-title = Turvakysymyksesi ovat suojattuja!
 fix-flow-celebration-leaked-passwords-description-next-security-questions = Katselmoidaan ja päivitetään nyt altistuneet turvallisuuskysymyksesi.
 fix-flow-celebration-leaked-passwords-description-next-security-recommendations = Seuraavaksi annamme sinulle räätälöityjä tietoturvasuosituksia sen perusteella, mitä tietojasi on vuodettu.
+fix-flow-celebration-leaked-passwords-description-next-dashboard = Hyvä, olet saavuttanut vaiheesi loppuun. Voit tarkastella mitä tahansa toimintokohteita ja seurata edistymistäsi hallintapaneelissa.
 
 ## Security recommendations flow
 
 fix-flow-celebration-security-recommendations-title = Hienoa, olet seurannut kaikkia suosituksia!
+fix-flow-celebration-security-recommendations-description-next-dashboard = Hyvä, olet saavuttanut vaiheesi loppuun. Voit tarkastella mitä tahansa toimintokohteita ja seurata edistymistäsi hallintapaneelissa.
 
 # High Risk Data Breaches
 
+high-risk-breach-heading = Tämän kaiken voit tehdä
 # Variables
 # $num_breaches is the number of breaches where the high risk data was found.
 high-risk-breach-summary =
@@ -114,10 +117,19 @@ security-recommendation-steps-cta-label = Selvä!
 # Phone security recommendation
 
 security-recommendation-phone-title = Suojaa puhelinnumerosi
+security-recommendation-phone-step-two = Älä napsauta tuntemattomien lähettäjien tekstiviesteissä olevia linkkejä. Jos viesti vaikuttaa olevan luotettavasta lähteestä, soita lähettäjälle vahvistaaksesi
 
 # Email security recommendation
 
 security-recommendation-email-title = Suojaa sähköpostiosoitteesi
+# $num_breaches is the number of breaches where the email address was found.
+security-recommendation-email-summary =
+    { $num_breaches ->
+        [one] Sähköpostiosoitteesi altistui { $num_breaches } tietovuodossa:
+       *[other] Sähköpostiosoitteesi altistui { $num_breaches } tietovuodossa:
+    }
+security-recommendation-email-description = Valitettavasti et voi korjata tätä. On olemassa toimenpiteitä, joiden avulla voit silti suojata itseäsi.
+security-recommendation-email-step-one = Älä napsauta tuntemattomien lähettäjien sähköpostiviesteissä olevia linkkejä. Jos viesti vaikuttaa olevan luotettavasta lähteestä, soita lähettäjälle vahvistaaksesi
 security-recommendation-email-step-two = Ole tietoinen <link_to_info>kalasteluhuijauksista</link_to_info>
 security-recommendation-email-step-three = Merkitse epäilyttävät sähköpostit roskapostiksi ja estä lähettäjä
 security-recommendation-email-step-four = Käytä <link_to_info>{ -brand-relay }-sähköpostimaskeja</link_to_info> suojataksesi sähköpostiosoitettasi jatkossa
@@ -142,6 +154,10 @@ leaked-passwords-title = Salasanasi kohteessa { $breach_name } vuodettiin
 leaked-passwords-summary = Se esiintyi tietovuodossa { $breach_date }.
 leaked-passwords-steps-title = Tämän kaiken voit tehdä
 leaked-passwords-steps-subtitle = Tämä vaatii pääsyn tiliisi, joten sinun on korjattava se manuaalisesti.
+# Variables
+# $breach_name is the name of the breach where the leaked password was found.
+# $emails_affected are the emails associated with the breach.
+leaked-passwords-step-one = Vaihda tilisi <b>{ $emails_affected }</b> salasana sivustolla <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
 leaked-passwords-step-two = Vaihda se missä tahansa muualla, missä olet käyttänyt sitä.
 leaked-passwords-mark-as-fixed = Merkitse korjatuksi
 leaked-passwords-skip = Ohita nyt
