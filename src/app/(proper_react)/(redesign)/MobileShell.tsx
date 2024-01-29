@@ -42,7 +42,7 @@ export const MobileShell = (props: Props) => {
     if (pathName === "/user/dashboard") {
       wrapperRef.current?.focus();
     }
-  }, []);
+  }, [pathName]);
 
   return (
     <div
