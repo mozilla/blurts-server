@@ -9,7 +9,7 @@ import { ReactNode, useEffect } from "react";
 
 export const AutoSignIn = (): ReactNode => {
   useEffect(() => {
-    void signIn("fxa", { callbackUrl: "/user/breaches" });
+    void signIn("fxa");
   }, []);
 
   return null;
