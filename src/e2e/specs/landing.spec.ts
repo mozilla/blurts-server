@@ -98,6 +98,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
         "https://testrail.stage.mozaws.net/index.php?/cases/view/2463517",
     });
 
+    // temp fix to clear rebrand banner before image comparison
     try {
       const rebrandBanner = page.getByTitle("dismiss");
       if (rebrandBanner) {
