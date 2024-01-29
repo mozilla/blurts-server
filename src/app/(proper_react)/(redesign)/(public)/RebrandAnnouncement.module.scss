@@ -14,7 +14,7 @@
 
   @media screen and (max-width: $screen-md) {
     // (button width) + (.rebrandAnnouncement gap) + (2 * inline button padding)
-    padding-inline-end: calc(24px + calc($spacing-xs + calc(2 * $spacing-sm)));
+    padding-inline-end: calc(24px + calc($spacing-xs + calc(2 * $spacing-xs)));
 
     button {
       position: absolute;
