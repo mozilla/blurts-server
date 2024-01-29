@@ -27,7 +27,11 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     await authPage.signUp(randomEmail, page);
 
     // assert successful login
-    expect(page.url()).toBe(`${process.env.E2E_TEST_BASE_URL}/user/dashboard`);
+    const successUrl =
+      process.env.E2E_TEST_ENV === "local"
+        ? "/user/dashboard"
+        : "/user/welcome";
+    expect(page.url()).toBe(`${process.env.E2E_TEST_BASE_URL}${successUrl}`);
 
     await testInfo.attach(
       `${process.env.E2E_TEST_ENV}-signup-monitor-dashboard.png`,
