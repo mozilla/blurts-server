@@ -103,24 +103,6 @@ export const UserAdmin = () => {
           <div className={styles.actions}>
             <Button
               variant="secondary"
-              onPress={() => void performAction("manual_scan")}
-            >
-              Manual Scan
-            </Button>
-            <Button
-              variant="secondary"
-              onPress={() => void performAction("initial_scan")}
-            >
-              Initial Scan
-            </Button>
-            <Button
-              variant="secondary"
-              onPress={() => void performAction("monitoring_scan")}
-            >
-              Monitoring Scan
-            </Button>
-            <Button
-              variant="secondary"
               onPress={() => void performAction("subscribe")}
             >
               Give Plus
