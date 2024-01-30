@@ -101,6 +101,7 @@ latest-breach = הדליפה העדכנית ביותר שנוספה
 more-about-this-breach = עוד על הדליפה הזו
 take-control = קבלת השליטה על הנתונים האישיים שלך בחזרה.
 cant-stop-hackers = אי אפשר למנוע מהאקרים לפרוץ. אבל אפשר להימנע מהרגלים רעים שמקלים על עבודתם.
+read-more-tips = הצגת עצות נוספות בנושא אבטחה
 if-your-info = אם המידע שלך נחשף בדליפת נתונים חדשה, נשלח לך התרעה.
 monitor-several-emails = ניטור אחר מספר כתובות דוא״ל
 sensitive-sites = כיצד { -product-name } מתייחס לאתרים רגישים?
@@ -108,6 +109,7 @@ about-fxm-headline = על אודות { -product-name }
 # How Firefox Monitor works
 how-fxm-works = איך { -product-name } עובד
 protect-your-privacy = הגנה על הפרטיות המקוונת שלך
+avoid-personal-info = כדאי להימנע משימוש בפרטים אישיים בססמאות
 
 ## What to do after data breach tips
 
@@ -222,6 +224,8 @@ known-data-breaches-exposed =
         [one] דליפת נתונים מוכרת אחת חשפה מידע עליך
        *[other] דליפות נתונים מוכרות חשפו מידע עליך
     }
+# Button
+see-additional-breaches = הצגת דליפות נוספות
 # Variables:
 #   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
@@ -229,6 +233,13 @@ scan-results-known-breaches =
         [one] דוא״ל זה נחשף בדליפת נתונים מוכרת אחת.
        *[other] דוא״ל זה נחשף ב־{ $breachCount } דליפות נתונים מוכרות.
     }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
+results-for = תוצאות עבור: { $userEmail }
+alert-about-new-breaches = להודיע לי על דליפות חדשות
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = מידע נוסף, כולל:

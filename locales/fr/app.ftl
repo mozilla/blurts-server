@@ -667,7 +667,11 @@ ad-unit-6-before-you-complete = Pour finir cette inscription, utilisez un alias 
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-mozilla-account = Compte Mozilla
+-brand-mozilla-account =
+    { $capitalization ->
+        [uppercase] Compte Mozilla
+       *[lowercase] compte Mozilla
+    }
 open-in-new-tab-alt = Ouvrir le lien dans un nouvel onglet
 
 ## Search Engine Optimization

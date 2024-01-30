@@ -34,11 +34,9 @@ export function getPremiumSubscriptionUrl({
   return `${subscriptionUrl}/products/${productId}?plan=${planId}`;
 }
 
-type GetSubscriptionBillingAmount = {
-  [key in SubscriptionPeriod]: number;
-};
+type SubscriptionBillingAmount = Record<SubscriptionPeriod, number>;
 
-export function getSubscriptionBillingAmount(): GetSubscriptionBillingAmount {
+export function getSubscriptionBillingAmount(): SubscriptionBillingAmount {
   return {
     yearly: parseFloat(
       process.env.SUBSCRIPTION_BILLING_AMOUNT_YEARLY_US as string,

@@ -35,6 +35,14 @@ dashboard-tab-label-action-needed = Toimenpiteitä tarvitaan
 dashboard-tab-label-fixed = Korjattu
 dashboard-exposures-all-fixed-label = Kaikki korjattu täällä!
 dashboard-exposures-area-headline = Näytä kaikki sivustot, joissa tietosi ovat altistuneet
+# Note: this line follows dashboard-exposures-area-description-all-line1.
+# Variables:
+#   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
+dashboard-exposures-area-description-all-line2 =
+    { $data_breach_unresolved_num ->
+        [one] Se esiintyi { $data_breach_unresolved_num } tietovuodossa.
+       *[other] Se esiintyi { $data_breach_unresolved_num } tietovuodossa.
+    }
 dashboard-fixed-area-headline-all = Näytä kaikki altistumiset, jotka on korjattu
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Suodatin
@@ -53,8 +61,10 @@ dashboard-exposures-filter-show-results = Näytä tulokset
 
 ## Top banner on the dashboard
 
+dashboard-top-banner-section-label = Hallintapaneelin yhteenveto
 dashboard-top-banner-scan-in-progress-title = Tarkistus on edelleen kesken
 dashboard-top-banner-your-data-is-protected-title = Tietosi on suojattu
+dashboard-top-banner-lets-keep-protecting-title = Jatketaan tietojesi suojaamista
 dashboard-top-banner-lets-keep-protecting-cta = Jatketaan
 dashboard-top-banner-protect-your-data-title = Suojataan tietosi
 dashboard-top-banner-protect-your-data-cta = Korjataan se

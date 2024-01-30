@@ -107,6 +107,7 @@
 
 .contentAutomaticRemove {
   h3 {
+    @include no-focus-outline;
     text-align: left;
   }
 }

@@ -85,7 +85,7 @@ export const FaqSection = ({
   };
 
   return (
-    <div className={styles.faqWrapper}>
+    <div id="faq" className={styles.faqWrapper}>
       <b className={styles.faqTitle}>
         {l10n.getString("landing-all-faq-title")}
       </b>

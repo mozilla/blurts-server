@@ -52,7 +52,7 @@ export const useGa = (): {
   };
 } => {
   const debugMode =
-    process.env.NEXT_PUBLIC_NODE_ENV !== "production" &&
+    process.env.NEXT_PUBLIC_GA4_DEBUG_MODE === "true" &&
     process.env.NODE_ENV !== "test";
 
   useEffect(() => {

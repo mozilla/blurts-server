@@ -5,13 +5,13 @@
 import styles from "../dataBrokerProfiles.module.scss";
 import { DataBrokerProfiles } from "../../../../../../../../../components/client/DataBrokerProfiles";
 import { AboutBrokersIcon } from "./AboutBrokersIcon";
-import { Button } from "../../../../../../../../../components/client/Button";
 import { FixView } from "../../FixView";
 import {
   StepDeterminationData,
   getNextGuidedStep,
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { ExtendedReactLocalization } from "../../../../../../../../../hooks/l10n";
+import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 
 export type Props = {
   data: StepDeterminationData;
@@ -56,22 +56,36 @@ export const ViewDataBrokersView = (props: Props) => {
           <DataBrokerProfiles data={props.data.latestScanData?.results ?? []} />
         </div>
         <div className={styles.buttonsWrapper}>
-          <Button
+          <TelemetryButton
             variant="primary"
             href="/user/dashboard/fix/data-broker-profiles/automatic-remove"
+            event={{
+              module: "upgradeIntent",
+              name: "click",
+              data: {
+                button_id: "guided_experience_upsell",
+              },
+            }}
           >
             {l10n.getString(
               "fix-flow-data-broker-profiles-view-data-broker-profiles-button-remove-for-me",
             )}
-          </Button>
-          <Button
+          </TelemetryButton>
+          <TelemetryButton
             variant="secondary"
-            href={"/user/dashboard/fix/data-broker-profiles/manual-remove"}
+            href="/user/dashboard/fix/data-broker-profiles/manual-remove"
+            event={{
+              module: "upgradeIntent",
+              name: "click",
+              data: {
+                button_id: "guided_experience_remove_manually",
+              },
+            }}
           >
             {l10n.getString(
               "fix-flow-data-broker-profiles-view-data-broker-profiles-button-remove-manually",
             )}
-          </Button>
+          </TelemetryButton>
         </div>
       </div>
     </FixView>

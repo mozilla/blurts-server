@@ -57,6 +57,10 @@
       // on desktop
       height: 20%;
     }
+
+    .steps {
+      @include no-focus-outline;
+    }
   }
 
   .stepsWrapper,

@@ -99,6 +99,8 @@ const enterYourEmail = async (page: Page) => {
   await page
     .locator(maybeEmailInput)
     .fill(process.env.E2E_TEST_ACCOUNT_EMAIL_FREE as string);
+
+  // force is needed when another element intercepts pointer events
   await signInButton.click({ force: true });
   await page.waitForTimeout(500);
   await checkAuthState(page);
