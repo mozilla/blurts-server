@@ -81,6 +81,26 @@ export const View = (props: Props) => {
   const recordTelemetry = useTelemetry();
   const countryCode = useContext(CountryCodeContext);
 
+  const adjustedScanResults = props.userScanData.results.map((scanResult) => {
+    if (scanResult.status === "new" && hasPremium(props.user)) {
+      // Even if the user has Plus, OneRep won't automatically start removing
+      // found exposures; it first sends a request to our webhook, and then the
+      // webhook sends an opt-out request to OneRep. Meanwhile, however, we're
+      // just waiting for the systems to do their thing, and there's no action
+      // for the user to take; hence, we also mark the exposures as being in
+      // progress:
+      return {
+        ...scanResult,
+        status: "optout_in_progress",
+      } as OnerepScanResultRow;
+    }
+    return scanResult;
+  });
+  const adjustedScanData: LatestOnerepScanData = {
+    scan: props.userScanData.scan,
+    results: adjustedScanResults,
+  };
+
   const initialFilterState: FilterState = {
     exposureType: "show-all-exposure-type",
     dateFound: "show-all-date-found",
@@ -102,11 +122,11 @@ export const View = (props: Props) => {
   ];
   const breachesDataArray = props.userBreaches.flat();
   const initialScanInProgress =
-    props.userScanData.scan?.onerep_scan_status === "in_progress" &&
+    adjustedScanData.scan?.onerep_scan_status === "in_progress" &&
     props.scanCount === 1;
 
   // Merge exposure cards
-  const combinedArray = [...breachesDataArray, ...props.userScanData.results];
+  const combinedArray = [...breachesDataArray, ...adjustedScanResults];
 
   // Sort in descending order
   const arraySortedByDate = combinedArray.sort((a, b) => {
@@ -174,7 +194,7 @@ export const View = (props: Props) => {
                 getNextGuidedStep({
                   user: props.user,
                   countryCode,
-                  latestScanData: props.userScanData,
+                  latestScanData: adjustedScanData,
                   subscriberBreaches: props.userBreaches,
                 }).href
               }
@@ -188,7 +208,7 @@ export const View = (props: Props) => {
   });
   const noUnresolvedExposures = exposureCardElems.length === 0;
   const dataSummary = getDashboardSummary(
-    props.userScanData.results,
+    adjustedScanResults,
     props.userBreaches,
   );
 
@@ -422,12 +442,12 @@ export const View = (props: Props) => {
           hasUnresolvedBreaches={hasUnresolvedBreaches}
           hasUnresolvedBrokers={hasUnresolvedBrokers}
           bannerData={getDashboardSummary(
-            props.userScanData.results,
+            adjustedScanResults,
             props.userBreaches,
           )}
           stepDeterminationData={{
             countryCode,
-            latestScanData: props.userScanData,
+            latestScanData: adjustedScanData,
             subscriberBreaches: props.userBreaches,
             user: props.user,
           }}
