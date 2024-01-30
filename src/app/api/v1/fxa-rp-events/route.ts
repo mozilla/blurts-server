@@ -177,15 +177,38 @@ export async function POST(request: NextRequest) {
   // reference example events: https://github.com/mozilla/fxa/blob/main/packages/fxa-event-broker/README.md
   for (const event in decodedJWT?.events) {
     switch (event) {
-      case FXA_DELETE_USER_EVENT:
+      case FXA_DELETE_USER_EVENT: {
         logger.info("fxa_delete_user", {
           subscriber: subscriber.id,
           event,
         });
 
+        // get profile id
+        const result = await getOnerepProfileId(subscriber.id);
+        const oneRepProfileId = result?.[0]?.["onerep_profile_id"] as number;
+        if (oneRepProfileId) {
+          try {
+            await deactivateProfile(oneRepProfileId);
+          } catch (ex) {
+            if (
+              (ex as Error).message ===
+              "Failed to deactivate OneRep profile: [403] [Forbidden]"
+            )
+              logger.error("profile_already_opted_out", {
+                subscriber_id: subscriber.id,
+                exception: ex,
+              });
+          }
+
+          logger.info("deactivated_onerep_profile", {
+            subscriber_id: subscriber.id,
+          });
+        }
+
         // delete user events only have keys. Keys point to empty objects
         await deleteSubscriber(subscriber);
         break;
+      }
       case FXA_PROFILE_CHANGE_EVENT: {
         const updatedProfileFromEvent = decodedJWT.events[
           event
@@ -239,10 +262,6 @@ export async function POST(request: NextRequest) {
           subscriber: subscriber.id,
           event,
           updatedSubscriptionFromEvent,
-        });
-
-        logger.info("fxa_profile_subscription", {
-          subscriber_id: subscriber.id,
         });
 
         try {
