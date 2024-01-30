@@ -6,7 +6,7 @@
 
 import React, {
   ComponentProps,
-  ReactElement,
+  ReactNode,
   createContext,
   useContext,
   useEffect,
@@ -20,9 +20,18 @@ import { FixView } from "../../FixView";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
 import { modifyAttributionsForUrl } from "../../../../../../../../../functions/universal/attributions";
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
-import { RadioGroupState, useRadioGroupState } from "react-stately";
+import {
+  RadioGroupProps,
+  RadioGroupState,
+  useRadioGroupState,
+} from "react-stately";
 import { AriaRadioProps, useRadio, useRadioGroup } from "react-aria";
 import { VisuallyHidden } from "../../../../../../../../../components/server/VisuallyHidden";
+import { BillingPeriod } from "../../../../../../../../../components/client/BillingPeriod";
+
+export type BillingProps = {
+  onChange: (_selectedBillingPeriod: BillingPeriod) => void;
+};
 
 export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
   monthlySubscriptionUrl: string;
@@ -31,17 +40,20 @@ export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
     yearly: number;
     monthly: number;
   };
-};
+} & BillingProps;
 
 const ToggleContext = createContext<RadioGroupState | null>(null);
 
 type ToggleMenuProps = {
-  children: ReactElement[];
+  children: ReactNode;
   label: string;
   description: string;
 };
 
-const SubscriptionFrequencyToggleMenu = (props: ToggleMenuProps) => {
+const SubscriptionFrequencyToggleMenu = (
+  props: ToggleMenuProps & RadioGroupProps,
+  //  & {  onChange: (_selectedBillingPeriod: BillingPeriod) => void; }
+) => {
   const state = useRadioGroupState({ ...props, defaultValue: "yearly" });
   const { radioGroupProps } = useRadioGroup(props, state);
 
@@ -56,10 +68,10 @@ const SubscriptionFrequencyToggleMenu = (props: ToggleMenuProps) => {
 
 const SubscriptionFrequencyToggleItem = (props: AriaRadioProps) => {
   const { children } = props;
-  const state = useContext(ToggleContext);
+  const state = useContext(ToggleContext)!;
   const ref = useRef(null);
 
-  const { inputProps } = useRadio(props, state!, ref);
+  const { inputProps } = useRadio(props, state, ref);
 
   return (
     <label>
@@ -68,7 +80,7 @@ const SubscriptionFrequencyToggleItem = (props: AriaRadioProps) => {
       </VisuallyHidden>
       <div
         className={`${styles.toggleBtn} ${
-          state!.selectedValue === props.value ? styles.isActive : ""
+          state.selectedValue === props.value ? styles.isActive : ""
         }`}
       >
         {children}
@@ -125,12 +137,6 @@ export function AutomaticRemoveView(props: Props) {
 
   const [selectedPlanIsYearly, setSelectedPlanIsYearly] = useState(true);
 
-  const toggleState = useContext(ToggleContext);
-
-  useEffect(() => {
-    setSelectedPlanIsYearly(!selectedPlanIsYearly);
-  }, [toggleState]);
-
   return (
     <FixView {...fixViewProps} hideProgressIndicator>
       <div>
@@ -151,7 +157,11 @@ export function AutomaticRemoveView(props: Props) {
         </div>
         <div className={styles.content}>
           <div className={styles.upgradeToggleWrapper}>
-            <SubscriptionFrequencyToggleMenu label="" description="">
+            <SubscriptionFrequencyToggleMenu
+              label=""
+              description=""
+              onChange={() => setSelectedPlanIsYearly(!selectedPlanIsYearly)}
+            >
               <SubscriptionFrequencyToggleItem value="monthly">
                 {l10n.getString(
                   "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-monthly",
