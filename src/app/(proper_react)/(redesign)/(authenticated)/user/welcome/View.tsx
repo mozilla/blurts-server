@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Session } from "next-auth";
+import { useSession } from "next-auth/react";
 import styles from "./View.module.scss";
 import stepGetStartedIcon from "./images/step-counter-get-started.svg";
 import stepEnterInfoIcon from "./images/step-counter-enter-info.svg";
@@ -24,7 +24,6 @@ import { useTelemetry } from "../../../../../hooks/useTelemetry";
 type StepId = "getStarted" | "enterInfo" | "findExposures";
 
 export type Props = {
-  user: Session["user"];
   dataBrokerCount: number;
   breachesTotalCount: number;
   stepId?: StepId;
@@ -32,7 +31,6 @@ export type Props = {
 };
 
 export const View = ({
-  user,
   dataBrokerCount,
   breachesTotalCount,
   stepId = "getStarted",
@@ -43,6 +41,7 @@ export const View = ({
   const [currentStep, setCurrentStep] = useState<StepId>(stepId);
   const router = useRouter();
   const recordTelemetry = useTelemetry();
+  const session = useSession();
 
   useEffect(() => {
     let pageName = "welcome";
@@ -57,6 +56,22 @@ export const View = ({
       utm_source: pageName,
     });
   }, [currentStep, recordTelemetry, skipInitialStep]);
+
+  useEffect(() => {
+    // Refresh session token data, in case the user subscribed to Plus since
+    // logging in:
+    void session.update();
+    // We only need to do this on first load; `session` will update when we call
+    // `.update()`, so adding it to the dependencies array would cause an
+    // infinite loop. If `session` changes afterwards, we won't need to call
+    // `.update` again; after all, it has just been updated.
+  }, [session]);
+
+  const user = session.data?.user;
+  if (!user) {
+    router.push("/");
+    return;
+  }
 
   const currentComponent =
     currentStep === "findExposures" ? (
