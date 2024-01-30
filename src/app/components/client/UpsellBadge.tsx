@@ -6,7 +6,6 @@
 
 import { useContext, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { Session } from "next-auth";
 import { useOverlayTrigger, useToggleButton } from "react-aria";
 import { useOverlayTriggerState, useToggleState } from "react-stately";
 import { UpsellDialog } from "./UpsellDialog";
@@ -32,7 +31,6 @@ export type UpsellButtonProps = {
     yearly: number;
     monthly: number;
   };
-  user?: Session["user"];
 };
 
 export function UpsellButton(
@@ -143,10 +141,11 @@ export function UpsellBadge(props: UpsellButtonProps) {
   const countryCode = useContext(CountryCodeContext);
   const session = useSession();
 
-  // Check subscription status of the user using the session from the
-  // `useSession` hook to get the latest info client-side.
-  /* c8 ignore next */
-  const user = session.data?.user ?? props.user;
+  if (!session.data) {
+    return <></>;
+  }
+
+  const { user } = session.data;
   const userHasPremium = hasPremium(user);
   if (userHasPremium || canSubscribeToPremium({ user, countryCode })) {
     return <UpsellToggleButton {...props} hasPremium={userHasPremium} />;
