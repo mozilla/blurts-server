@@ -4,7 +4,15 @@
 
 "use client";
 
-import React, { ComponentProps, useEffect, useRef, useState } from "react";
+import React, {
+  ComponentProps,
+  ReactElement,
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import styles from "../dataBrokerProfiles.module.scss";
 import { Button } from "../../../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../../../hooks/l10n";
@@ -12,6 +20,9 @@ import { FixView } from "../../FixView";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
 import { modifyAttributionsForUrl } from "../../../../../../../../../functions/universal/attributions";
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
+import { RadioGroupState, useRadioGroupState } from "react-stately";
+import { AriaRadioProps, useRadio, useRadioGroup } from "react-aria";
+import { VisuallyHidden } from "../../../../../../../../../components/server/VisuallyHidden";
 
 export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
   monthlySubscriptionUrl: string;
@@ -22,12 +33,53 @@ export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
   };
 };
 
+const ToggleContext = createContext<RadioGroupState | null>(null);
+
+type ToggleMenuProps = {
+  children: ReactElement[];
+  label: string;
+  description: string;
+};
+
+const SubscriptionFrequencyToggleMenu = (props: ToggleMenuProps) => {
+  const state = useRadioGroupState({ ...props, defaultValue: "yearly" });
+  const { radioGroupProps } = useRadioGroup(props, state);
+
+  return (
+    <div {...radioGroupProps} className={styles.upgradeToggle}>
+      <ToggleContext.Provider value={state}>
+        {props.children}
+      </ToggleContext.Provider>
+    </div>
+  );
+};
+
+const SubscriptionFrequencyToggleItem = (props: AriaRadioProps) => {
+  const { children } = props;
+  const state = useContext(ToggleContext);
+  const ref = useRef(null);
+
+  const { inputProps } = useRadio(props, state!, ref);
+
+  return (
+    <label>
+      <VisuallyHidden>
+        <input {...inputProps} ref={ref} />
+      </VisuallyHidden>
+      <div
+        className={`${styles.toggleBtn} ${
+          state!.selectedValue === props.value ? styles.isActive : ""
+        }`}
+      >
+        {children}
+      </div>
+    </label>
+  );
+};
+
 export function AutomaticRemoveView(props: Props) {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
-
-  const [selectedPlanIsYearly, setSelectedPlanIsYearly] = useState(true);
-
   const dataBrokerCount = CONST_ONEREP_DATA_BROKER_COUNT;
 
   const {
@@ -71,6 +123,14 @@ export function AutomaticRemoveView(props: Props) {
     yearlySubscriptionUrl,
   );
 
+  const [selectedPlanIsYearly, setSelectedPlanIsYearly] = useState(true);
+
+  const toggleState = useContext(ToggleContext);
+
+  useEffect(() => {
+    setSelectedPlanIsYearly(!selectedPlanIsYearly);
+  }, [toggleState]);
+
   return (
     <FixView {...fixViewProps} hideProgressIndicator>
       <div>
@@ -91,34 +151,18 @@ export function AutomaticRemoveView(props: Props) {
         </div>
         <div className={styles.content}>
           <div className={styles.upgradeToggleWrapper}>
-            <div className={styles.upgradeToggle}>
-              <button
-                onClick={() => {
-                  setSelectedPlanIsYearly(!selectedPlanIsYearly);
-                  recordTelemetry("button", "click", {
-                    button_id: "selected_yearly_plan",
-                  });
-                }}
-                className={`${selectedPlanIsYearly ? styles.isActive : ""}`}
-              >
-                {l10n.getString(
-                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-yearly",
-                )}
-              </button>
-              <button
-                onClick={() => {
-                  setSelectedPlanIsYearly(!selectedPlanIsYearly);
-                  recordTelemetry("button", "click", {
-                    button_id: "selected_monthly_plan",
-                  });
-                }}
-                className={`${selectedPlanIsYearly ? "" : styles.isActive}`}
-              >
+            <SubscriptionFrequencyToggleMenu label="" description="">
+              <SubscriptionFrequencyToggleItem value="monthly">
                 {l10n.getString(
                   "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-monthly",
                 )}
-              </button>
-            </div>
+              </SubscriptionFrequencyToggleItem>
+              <SubscriptionFrequencyToggleItem value="yearly">
+                {l10n.getString(
+                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-yearly",
+                )}
+              </SubscriptionFrequencyToggleItem>
+            </SubscriptionFrequencyToggleMenu>
             <span>
               {l10n.getString(
                 "fix-flow-data-broker-profiles-automatic-remove-save-percent",
