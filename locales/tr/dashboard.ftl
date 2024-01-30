@@ -108,6 +108,7 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
        *[other] Verileriniz { $data_breach_unresolved_num } veri ihlalinde karşımıza çıktı. Sorunu nasıl çözeceğinizi adım adım anlatacağız.
     }
 dashboard-top-banner-no-exposures-found-title = Hiç veri ihlali bulunamadı
+dashboard-top-banner-non-us-no-exposures-found-description = Haberler güzel! Bilinen tüm veri ihlallerini araştırdık ve hiçbir ihlal bulamadık. E-posta adresinizi izlemeye devam edeceğiz ve yeni bir ihlal olursa sizi uyaracağız.
 dashboard-no-exposures-label = Hiç veri ihlali bulunamadı
 dashboard-top-banner-monitor-more-cta = Daha fazla e-postayı izleyin
 
