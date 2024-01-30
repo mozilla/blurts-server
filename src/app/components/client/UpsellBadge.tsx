@@ -143,6 +143,9 @@ export function UpsellBadge(props: UpsellButtonProps) {
   const countryCode = useContext(CountryCodeContext);
   const session = useSession();
 
+  // Check subscription status of the user using the session from the
+  // `useSession` hook to get the latest info client-side.
+  /* c8 ignore next */
   const user = session.data?.user ?? props.user;
   const userHasPremium = hasPremium(user);
   if (userHasPremium || canSubscribeToPremium({ user, countryCode })) {
