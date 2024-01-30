@@ -14,7 +14,7 @@ landing-all-hero-image-chart-label = odhalení
 # Value Proposition
 
 landing-all-value-prop-fix-exposures = Pomůžeme vám vyřešit nalezené úniky
-landing-all-value-prop-fix-exposures-description = Naším posláním je vrátit kontrolu nad vašimi osobními údaji zpět do vašich rukou. Pomůžeme vám vyřešit úniky dat a udržet vaše informace v soukromí – a přitom budeme <privacy_link>respektovat vaše soukromí</privacy_link>.
+landing-all-value-prop-fix-exposures-description = Naším posláním je vrátit kontrolu nad vašimi osobními údaji zpět do vašich rukou. Pomůžeme vám vyřešit narušení bezpečnosti dat a udržet vaše informace v soukromí - a přitom <privacy_link>budeme respektovat vaše soukromí</privacy_link>.
 landing-all-value-prop-info-at-risk = Jaké informace mohou být ohroženy?
 landing-all-value-prop-info-at-risk-description = Úniky údajů jsou bohužel součástí našeho digitálního života. Vaše hesla, kontaktní údaje, finanční informace a další osobní údaje mohou být odhaleny, což vás vystavuje riziku krádeže identity.
 
@@ -30,9 +30,9 @@ landing-all-faq-see-all = Prohlédněte si všechny často kladené otázky
 landing-all-data-breach-definition-qn = Co přesně je únik údajů?
 landing-all-data-breach-definition-ans = K narušení bezpečnosti dat dochází, když jsou osobní nebo soukromé informace odhaleny, odcizeny nebo zkopírovány bez povolení. Tyto bezpečnostní incidenty mohou být důsledkem kybernetických útoků na webové stránky, aplikace nebo jakékoli databáze, kde se nacházejí osobní údaje lidí. K narušení bezpečnosti údajů může dojít také náhodně, například když se něčí přihlašovací údaje dostanou na veřejnost.
 landing-all-data-breach-next-steps-qn = Právě jsem zjistil, že byly mé údaje součástí úniku údajů. Co mám dělat dál?
-landing-all-data-breach-next-steps-ans = Navštivte stránku { -brand-mozilla-monitor }, kde se dozvíte, co dělat po úniku dat, a získáte návod, jak vyřešit vyzrazení vašich osobních údajů. Hackeři spoléhají na to, že lidé opakovaně používají hesla, proto je důležité vytvářet silná a jedinečná hesla pro všechny vaše účty. Uchovávejte svá hesla na bezpečném místě, ke kterému máte přístup pouze vy; může to být stejné místo, kam ukládáte důležité dokumenty, nebo správce hesel.
+landing-all-data-breach-next-steps-ans = Navštivte stránku { -brand-mozilla-monitor }, kde se dozvíte, co dělat po úniku dat, a získáte návod, jak vyřešit odhalení vašich osobních údajů. Hackeři spoléhají na to, že lidé používají hesla opakovaně, proto je důležité vytvářet silná a jedinečná hesla pro všechny účty. Hesla uchovávejte na bezpečném místě, ke kterému máte přístup pouze vy; může to být stejné místo, kde uchováváte důležité dokumenty, nebo správce hesel.
 landing-all-data-breach-info-qn = Jaké informace jsou při únicích údajů vyzrazeny?
-landing-all-data-breach-info-ans = Ne všechny úniky poskytují stejné informace. Záleží na tom, k čemu mají hackeři přístup. Mnoho úniků dat vyzrazuje e-mailové adresy a hesla. Jiné vyzrazují citlivější informace, jako jsou čísla platebních karet, čísla PIN a rodná čísla.
+landing-all-data-breach-info-ans = Ne všechna narušení odhalují stejné informace. Záleží jen na tom, k čemu mají hackeři přístup. Mnoho případů narušení dat odhaluje e-mailové adresy a hesla. Jiné odhalují citlivější informace, jako jsou čísla kreditních karet, kódy PIN a čísla sociálního pojištění.
 landing-all-close-faq-alt = Zavřít
 
 # Social proof
@@ -41,7 +41,7 @@ landing-all-close-faq-alt = Zavřít
 # $num_users is the number of users in the millions.
 landing-all-social-proof-title =
     { $num_users ->
-        [one] Ověřeno { $num_users } miliony lidí po celém světě
+        [one] Ověřeno { $num_users } miliónem lidí po celém světě
         [few] Ověřeno { $num_users } miliony lidí po celém světě
        *[other] Ověřeno { $num_users } miliony lidí po celém světě
     }
@@ -49,7 +49,7 @@ landing-all-social-proof-title =
 # $num_countries is the number of countries available.
 landing-all-social-proof-description =
     { $num_countries ->
-        [one] Od roku 2018 pomáháme lidem v { $num_countries } zemích chránit jejich data, když byla odhalena.
+        [one] Od roku 2018 pomáháme lidem v { $num_countries } zemi chránit jejich data, když byla odhalena.
         [few] Od roku 2018 pomáháme lidem v { $num_countries } zemích chránit jejich data, když byla odhalena.
        *[other] Od roku 2018 pomáháme lidem v { $num_countries } zemích chránit jejich data, když byla odhalena.
     }
