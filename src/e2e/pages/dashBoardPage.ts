@@ -78,7 +78,7 @@ export class DashboardPage {
     });
 
     this.exposuresCardHeading = page.getByRole("heading", {
-      name: "Let’s protect your data",
+      name: "Let’s keep protecting your data",
     });
 
     this.fixedHeading = page.getByRole("heading", {
