@@ -445,7 +445,7 @@ it("switches between tab panels", async () => {
 
 it("shows consistent counts in the chart on the active tab", () => {
   const ComposedDashboard = composeStory(
-    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
     Meta,
   );
   render(<ComposedDashboard />);
@@ -467,7 +467,7 @@ it("shows consistent counts in the chart on the active tab", () => {
 it("shows consistent counts in the chart on the fixed tab", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
-    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
     Meta,
   );
   render(<ComposedDashboard />);
@@ -1949,12 +1949,29 @@ it("shows the correct dashboard banner title for US user, with Premium, unresolv
   });
   const dashboardTopBannerTitle = getByText(
     dashboardTopBanner,
-    "Let’s keep protecting your data",
+    "Your data is protected",
   );
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA and sends telemetry for US user, with Premium, unresolved scan, no breaches", async () => {
+it("tells the user that they don't need to do anything now if they have Premium and have no breaches, even if there are still new scan results (for which opt-out requests will be sent later)", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanNoBreaches,
+    Meta,
+  );
+
+  render(<ComposedDashboard />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "See what’s fixed",
+  });
+  expect(dashboardTopBannerCta).toBeInTheDocument();
+});
+
+it("sends telemetry when a US user, with Premium, an unresolved scan, and no breaches clicks the top banner CTA", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanNoBreaches,
     Meta,
@@ -1970,16 +1987,15 @@ it("shows the correct dashboard banner CTA and sends telemetry for US user, with
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
-    name: "Let’s keep going",
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "See what’s fixed",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "ctaButton",
     "click",
     expect.objectContaining({
-      button_id: "us_premium_unresolved_brokers",
+      button_id: "us_premium_yes_scan_all_resolved",
     }),
   );
 });
@@ -1997,7 +2013,7 @@ it("shows the correct dashboard banner title for US user, with Premium, Unresolv
   });
   const dashboardTopBannerTitle = getByText(
     dashboardTopBanner,
-    "Let’s protect your data",
+    "Let’s keep protecting your data",
   );
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
@@ -2019,7 +2035,7 @@ it("shows the correct dashboard banner CTA for US user, with Premium, Unresolved
     name: "Dashboard summary",
   });
   const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
-    name: "Let’s fix it",
+    name: "Let’s keep going",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
@@ -2027,8 +2043,7 @@ it("shows the correct dashboard banner CTA for US user, with Premium, Unresolved
     "ctaButton",
     "click",
     expect.objectContaining({
-      button_id:
-        "us_non_premium_yes_scan_unresolved_breaches_unresolved_brokers",
+      button_id: "us_premium_unresolved_breaches",
     }),
   );
 });
@@ -2046,12 +2061,29 @@ it("shows the correct dashboard banner title for US user, with Premium, unresolv
   });
   const dashboardTopBannerTitle = getByText(
     dashboardTopBanner,
-    "Let’s keep protecting your data",
+    "Your data is protected",
   );
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA and sends telemetry for US user, with Premium, unresolved scan, resolved breaches", async () => {
+it("tells the user that they don't need to do anything now if they have Premium and have resolved all breaches, even if there are still new scan results (for which opt-out requests will be sent later)", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanResolvedBreaches,
+    Meta,
+  );
+
+  render(<ComposedDashboard />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "See what’s fixed",
+  });
+  expect(dashboardTopBannerCta).toBeInTheDocument();
+});
+
+it("sends telemetry when a US user, with Premium, an unresolved scan, and resolved breaches clicks the top banner CTA", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanResolvedBreaches,
     Meta,
@@ -2067,16 +2099,15 @@ it("shows the correct dashboard banner CTA and sends telemetry for US user, with
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
-    name: "Let’s keep going",
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "See what’s fixed",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "ctaButton",
     "click",
     expect.objectContaining({
-      button_id: "us_premium_unresolved_brokers",
+      button_id: "us_premium_yes_scan_all_resolved",
     }),
   );
 });
@@ -2691,7 +2722,7 @@ it("logs a warning and error in the story for an invalid user state", () => {
 it("expands one card at a time", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
-    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
     Meta,
   );
   render(<ComposedDashboard />);
