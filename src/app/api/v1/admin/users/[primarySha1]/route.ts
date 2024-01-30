@@ -137,8 +137,7 @@ export async function PUT(
         subscriberRow.primary_email,
       );
 
-      const result = await getOnerepProfileId(subscriber.id);
-      const onerepProfileId = result?.[0]?.["onerep_profile_id"] as number;
+      const onerepProfileId = await getOnerepProfileId(subscriber.id);
 
       logger.info("admin_subscription_change", {
         actions,
