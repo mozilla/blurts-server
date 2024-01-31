@@ -74,6 +74,10 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Parolalarınızı güncelleyip iki aşamalı kimlik doğrulamayı (2FA) etkinleştirin.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-text = Çoğu durumda şirketin web sitesine girip parolanızı değiştirmenizi öneririz. Ancak bazı durumlarda <b>site kapalı olabilir veya kötü amaçlı içerik barındırıyor olabilir</b>. Bu yüzden <breached-company-link>siteyi ziyaret ederken</breached-company-link> dikkatli olun. Ek bir önlem olarak, tüm hesaplarınızda birbirinden farklı parolalar kullanmalısınız. Böylece, ele geçirilen parolalarınız diğer hesaplarınıza erişmek için kullanılamaz. { $passwordManagerLink }, tüm parolalarınızı güvenli bir şekilde kaydetmenize yardımcı olabilir.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -84,6 +88,18 @@ breach-checklist-email-body = Böylece e-postaları gelen kutunuza yönlendirirk
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
+# Credit reports list your bill payment history, loans, current debt, and other financial information.
+# They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
+breach-checklist-ssn-header = Kredi raporunuzda tanımadığınız hesaplar, krediler ve kredi kartları olup olmadığını kontrol edin.
+# A security freeze prevents prospective creditors from accessing your credit file.
+# Creditors typically won't offer you credit if they can't access your credit reporting file,
+# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
+# This will only be shown to users in the US.
+# Variables:
+#   $equifaxLink (string) - a link to the Equifax website
+#   $experianLink (string) - a link to the Experian website
+#   $transUnionLink (string) - a link to the TransUnion website
+breach-checklist-ssn-body-2 = Ayrıca dolandırıcıların adınıza yeni hesap açmasını önlemek için { $equifaxLink }, { $experianLink } ve { $transUnionLink } üzerindeki kredinizi dondurmayı da düşünebilirsiniz. Bu işlem ücretsizdir ve kredi skorunuzu etkilemez.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -130,6 +146,13 @@ breach-checklist-sq-header-text = Güvenlik sorularınızı güncelleyin.
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Aynı parolayı kullandığınız tüm hesaplar için benzersiz, güçlü parolalar oluşturun.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = { $passwordManagerLink } (Ücretsizdir { -brand-firefox } tarayıcısıyla birlikte gelir.) veya başka bir parola yöneticisi kullanarak tüm parolalarınızı kaydedebilir ve tüm cihazlarınızdan güvenli bir şekilde parolalarınıza erişebilirsiniz.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
+breach-checklist-general-header = { $companyName } ile iletişime geçerek onlara bu ihlal hakkında bilgi verin ve ne yapmanız gerektiğini öğrenin.

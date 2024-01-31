@@ -47,8 +47,7 @@ export default async function DashboardPage() {
   const cookiesList = cookies();
   const countryCode = getCountryCode(headersList);
 
-  const result = await getOnerepProfileId(session.user.subscriber.id);
-  const profileId = result[0]["onerep_profile_id"] as number;
+  const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const brokerScanReleaseDateParts = (
     process.env.BROKER_SCAN_RELEASE_DATE ?? ""
   ).split("-");
