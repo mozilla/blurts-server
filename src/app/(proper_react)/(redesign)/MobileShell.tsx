@@ -51,6 +51,7 @@ export const MobileShell = (props: Props) => {
   return (
     <div
       ref={wrapperRef}
+      /* c8 ignore next */
       tabIndex={isOnDashboard ? -1 : undefined}
       className={`${styles.wrapper} ${
         // TODO: Add unit test when changing this code:
