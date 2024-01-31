@@ -6,6 +6,8 @@ export const CONST_ONEREP_MAX_SCANS_THRESHOLD = 280000 as const;
 export const CONST_MAX_NUM_ADDRESSES = 5 as const;
 export const CONST_GA4_MEASUREMENT_ID = "G-CXG8K4KW4P" as const;
 export const CONST_ONEREP_DATA_BROKER_COUNT = 190 as const;
+export const CONST_URL_PLUS_CONTACT_SUPPORT =
+  "https://support.mozilla.org/questions/new/monitor/form" as const;
 export const CONST_URL_SUMO_MONITOR_SUPPORT =
   "https://support.mozilla.org/kb/firefox-monitor" as const;
 export const CONST_URL_SUMO_HOW_IT_WORKS =
