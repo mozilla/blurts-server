@@ -27,7 +27,7 @@ fix-flow-celebration-high-risk-description-done = Ezt a munkát soknak érezheti
 fix-flow-celebration-high-risk-description-next-passwords = Most pedig javítsuk ki a kikerült jelszavait.
 fix-flow-celebration-high-risk-description-next-security-questions = Most pedig javítsuk ki a kikerült biztonsági kérdéseit.
 fix-flow-celebration-high-risk-description-next-security-recommendations = Ezután személyre szabott biztonsági javaslatokat adunk az alapján, hogy mely adatai kerültek ki.
-fix-flow-celebration-high-risk-description-next-dashboard = Elérte a lépései végét. A műveletelemeket megtekintheti, és az előrehaladást követheti a vezérlőpulton.
+fix-flow-celebration-high-risk-description-next-dashboard = Elérte a lépései végét. A műveletelemeket megtekintheti, és követheti az előrehaladást az irányítópulton.
 
 ## Leaked passwords and security questions flow
 
@@ -35,12 +35,12 @@ fix-flow-celebration-leaked-passwords-title = A jelszavai mostantól védettek!
 fix-flow-celebration-security-questions-title = A biztonsági kérdései védettek!
 fix-flow-celebration-leaked-passwords-description-next-security-questions = Most pedig nézzük át és frissítsük a kikerült biztonsági kérdéseket.
 fix-flow-celebration-leaked-passwords-description-next-security-recommendations = Ezután személyre szabott biztonsági javaslatokat adunk az alapján, hogy mely adatai kerültek ki.
-fix-flow-celebration-leaked-passwords-description-next-dashboard = Szép munka! Elérte a lépései végét. A műveletelemeket megtekintheti, és az előrehaladást követheti a vezérlőpulton.
+fix-flow-celebration-leaked-passwords-description-next-dashboard = Szép munka! Elérte a lépései végét. A műveletelemeket megtekintheti, és követheti az előrehaladást az irányítópulton.
 
 ## Security recommendations flow
 
 fix-flow-celebration-security-recommendations-title = Teljesítette az összes javaslatot.
-fix-flow-celebration-security-recommendations-description-next-dashboard = Szép munka! Elérte a lépései végét. A műveletelemeket megtekintheti, és az előrehaladást követheti a vezérlőpulton.
+fix-flow-celebration-security-recommendations-description-next-dashboard = Szép munka! Elérte a lépései végét. A műveletelemeket megtekintheti, és követheti az előrehaladást az irányítópulton.
 
 # High Risk Data Breaches
 
@@ -138,8 +138,8 @@ security-recommendation-phone-summary =
         [one] A telefonszáma { $num_breaches } adatvédelmi incidensben szerepelt:
        *[other] A telefonszáma { $num_breaches } adatvédelmi incidensben szerepelt:
     }
-security-recommendation-phone-description = Sajnos nem veheti vissza. De vannak lépések, amelyeket tehet a biztonsága érdekében.
-security-recommendation-phone-step-one = Blokkolja a kéretlen számokat, hogy megakadályozza a kéretlen hívások számát
+security-recommendation-phone-description = Sajnos nem szerezheti vissza. De vannak lépések, amelyeket tehet a biztonsága érdekében.
+security-recommendation-phone-step-one = Blokkolja a kéretlen hívások számait, hogy megakadályozza a további kéretlen hívásokat
 security-recommendation-phone-step-two = Ne kattintson az ismeretlen feladótól származó szövegekben lévő hivatkozásokra; ha úgy tűnik, hogy megbízható forrásból származik, hívja közvetlenül a megerősítéshez
 
 # Email security recommendation
