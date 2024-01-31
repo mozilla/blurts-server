@@ -194,7 +194,7 @@ export function getDashboardSummary(
   if (scannedResults) {
     scannedResults.forEach((r) => {
       // check removal status
-      const isManuallyResolved = r.status === "new" && r.manually_resolved;
+      const isManuallyResolved = r.manually_resolved;
       const isAutoFixed =
         r.status === RemovalStatusMap.Removed && !isManuallyResolved;
       const isInProgress =
