@@ -52,6 +52,7 @@ export const useGa = (): {
   };
 } => {
   const debugMode =
+    /* c8 ignore next 2 */
     process.env.NEXT_PUBLIC_GA4_DEBUG_MODE === "true" &&
     process.env.NODE_ENV !== "test";
 
