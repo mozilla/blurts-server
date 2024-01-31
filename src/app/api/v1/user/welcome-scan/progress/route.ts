@@ -41,9 +41,7 @@ export async function GET(
   if (typeof session?.user?.email === "string") {
     try {
       const subscriber = await getSubscriberByEmail(session.user.email);
-      const profileId = (await getOnerepProfileId(subscriber.id))[0][
-        "onerep_profile_id"
-      ] as number;
+      const profileId = await getOnerepProfileId(subscriber.id);
 
       const latestScan = await getLatestOnerepScanResults(profileId);
       const latestScanId = latestScan.scan?.onerep_scan_id;
