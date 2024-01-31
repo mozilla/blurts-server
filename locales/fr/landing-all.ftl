@@ -52,7 +52,7 @@ landing-all-social-proof-press = Tel que vu dans 
 # Here's How We Help
 
 landing-all-help-protect-you = Voici comment nous vous aidons à protéger vos données
-landing-all-help-protect-you-description = Nous croyons en votre droit à la confidentialité, c’est pourquoi la protection contre les fuites de données est toujours gratuite.
+landing-all-help-protect-you-description = Nous croyons en votre droit à la confidentialité, c’est pourquoi la protection via la surveillance des fuites de données est toujours gratuite.
 landing-all-help-protect-you-feature-one = Nous vous rechercherons dans toutes les fuites de données connues
 landing-all-help-protect-you-feature-two = Nous vous guiderons à travers les étapes pour résoudre chaque fuite
 landing-all-help-protect-you-feature-three = Nous effectuerons une surveillance permanente et vous enverrons des alertes lors de toute nouvelle fuite de données
