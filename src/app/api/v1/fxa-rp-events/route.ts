@@ -184,8 +184,7 @@ export async function POST(request: NextRequest) {
         });
 
         // get profile id
-        const result = await getOnerepProfileId(subscriber.id);
-        const oneRepProfileId = result?.[0]?.["onerep_profile_id"] as number;
+        const oneRepProfileId = await getOnerepProfileId(subscriber.id);
         if (oneRepProfileId) {
           try {
             await deactivateProfile(oneRepProfileId);
@@ -266,12 +265,11 @@ export async function POST(request: NextRequest) {
 
         try {
           // get profile id
-          const result = await getOnerepProfileId(subscriber.id);
-          const oneRepProfileId = result?.[0]?.["onerep_profile_id"] as number;
+          const oneRepProfileId = await getOnerepProfileId(subscriber.id);
 
           logger.info("get_onerep_profile", {
             subscriber_id: subscriber.id,
-            result: JSON.stringify(result),
+            oneRepProfileId,
           });
 
           if (

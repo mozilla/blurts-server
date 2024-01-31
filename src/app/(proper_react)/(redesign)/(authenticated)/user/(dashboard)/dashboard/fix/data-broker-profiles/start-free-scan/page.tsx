@@ -25,8 +25,7 @@ export default async function StartFreeScanPage() {
     return redirect("/");
   }
 
-  const result = await getOnerepProfileId(session.user.subscriber.id);
-  const onerepProfileId = result[0]["onerep_profile_id"];
+  const onerepProfileId = await getOnerepProfileId(session.user.subscriber.id);
 
   const latestScanData =
     typeof onerepProfileId === "number"
