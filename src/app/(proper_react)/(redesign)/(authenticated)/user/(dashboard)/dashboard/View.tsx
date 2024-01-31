@@ -52,7 +52,7 @@ import {
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
   user: Session["user"];
-  userId: string;
+  userId?: string;
   userBreaches: SubscriberBreach[];
   userScanData: LatestOnerepScanData;
   isEligibleForFreeScan: boolean;
