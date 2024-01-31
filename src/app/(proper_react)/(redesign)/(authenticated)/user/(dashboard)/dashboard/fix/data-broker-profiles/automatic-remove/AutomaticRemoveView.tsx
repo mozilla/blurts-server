@@ -27,11 +27,6 @@ import {
 } from "react-stately";
 import { AriaRadioProps, useRadio, useRadioGroup } from "react-aria";
 import { VisuallyHidden } from "../../../../../../../../../components/server/VisuallyHidden";
-import { BillingPeriod } from "../../../../../../../../../components/client/BillingPeriod";
-
-export type BillingProps = {
-  onChange: (_selectedBillingPeriod: BillingPeriod) => void;
-};
 
 export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
   monthlySubscriptionUrl: string;
@@ -40,7 +35,7 @@ export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
     yearly: number;
     monthly: number;
   };
-} & BillingProps;
+};
 
 const ToggleContext = createContext<RadioGroupState | null>(null);
 
@@ -50,10 +45,7 @@ type ToggleMenuProps = {
   description: string;
 };
 
-const SubscriptionFrequencyToggleMenu = (
-  props: ToggleMenuProps & RadioGroupProps,
-  //  & {  onChange: (_selectedBillingPeriod: BillingPeriod) => void; }
-) => {
+const BillingPeriodToggleMenu = (props: ToggleMenuProps & RadioGroupProps) => {
   const state = useRadioGroupState({ ...props, defaultValue: "yearly" });
   const { radioGroupProps } = useRadioGroup(props, state);
 
@@ -66,7 +58,7 @@ const SubscriptionFrequencyToggleMenu = (
   );
 };
 
-const SubscriptionFrequencyToggleItem = (props: AriaRadioProps) => {
+const BillingPeriodToggleItem = (props: AriaRadioProps) => {
   const { children } = props;
   const state = useContext(ToggleContext)!;
   const ref = useRef(null);
@@ -76,7 +68,7 @@ const SubscriptionFrequencyToggleItem = (props: AriaRadioProps) => {
   return (
     <label>
       <VisuallyHidden>
-        <input {...inputProps} ref={ref} />
+        <input aria-label={state.selectedValue!} {...inputProps} ref={ref} />
       </VisuallyHidden>
       <div
         className={`${styles.toggleBtn} ${
@@ -157,22 +149,22 @@ export function AutomaticRemoveView(props: Props) {
         </div>
         <div className={styles.content}>
           <div className={styles.upgradeToggleWrapper}>
-            <SubscriptionFrequencyToggleMenu
+            <BillingPeriodToggleMenu
               label=""
               description=""
               onChange={() => setSelectedPlanIsYearly(!selectedPlanIsYearly)}
             >
-              <SubscriptionFrequencyToggleItem value="monthly">
+              <BillingPeriodToggleItem value="monthly">
                 {l10n.getString(
                   "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-monthly",
                 )}
-              </SubscriptionFrequencyToggleItem>
-              <SubscriptionFrequencyToggleItem value="yearly">
+              </BillingPeriodToggleItem>
+              <BillingPeriodToggleItem value="yearly">
                 {l10n.getString(
                   "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-yearly",
                 )}
-              </SubscriptionFrequencyToggleItem>
-            </SubscriptionFrequencyToggleMenu>
+              </BillingPeriodToggleItem>
+            </BillingPeriodToggleMenu>
             <span>
               {l10n.getString(
                 "fix-flow-data-broker-profiles-automatic-remove-save-percent",
