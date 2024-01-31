@@ -35,6 +35,9 @@ export const Shell = (props: Props) => {
   return (
     <>
       <GaScript nonce={props.nonce} />
+      {/* This component ensures that the client session is synced with the
+      server session and is not being mounted when running unit tests. */}
+      {/* c8 ignore next */}
       {process.env.NODE_ENV !== "test" && <SubscriptionCheck />}
       <MobileShell
         session={props.session}
