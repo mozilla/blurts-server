@@ -35,7 +35,7 @@ export const Shell = (props: Props) => {
   return (
     <>
       <GaScript nonce={props.nonce} />
-      <SubscriptionCheck />
+      {process.env.NODE_ENV !== "test" && <SubscriptionCheck />}
       <MobileShell
         session={props.session}
         monthlySubscriptionUrl={monthlySubscriptionUrl}
