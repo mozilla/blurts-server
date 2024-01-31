@@ -37,46 +37,43 @@ export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
   };
 };
 
-const ToggleContext = createContext<RadioGroupState | null>(null);
+const RadioContext = createContext<RadioGroupState | null>(null);
 
-type ToggleMenuProps = {
+type RadioMenuProps = {
   children: ReactNode;
-  label: string;
-  description: string;
 };
 
-const BillingPeriodToggleMenu = (props: ToggleMenuProps & RadioGroupProps) => {
+const BillingPeriodRadioMenu = (props: RadioMenuProps & RadioGroupProps) => {
   const state = useRadioGroupState({ ...props, defaultValue: "yearly" });
   const { radioGroupProps } = useRadioGroup(props, state);
 
   return (
     <div {...radioGroupProps} className={styles.upgradeToggle}>
-      <ToggleContext.Provider value={state}>
+      <RadioContext.Provider value={state}>
         {props.children}
-      </ToggleContext.Provider>
+      </RadioContext.Provider>
     </div>
   );
 };
 
-const BillingPeriodToggleItem = (props: AriaRadioProps) => {
+const BillingPeriodRadioItem = (props: AriaRadioProps) => {
   const { children } = props;
-  const state = useContext(ToggleContext)!;
-  const ref = useRef(null);
+  const state = useContext(RadioContext)!;
+  const ref = useRef<HTMLInputElement>(null);
 
   const { inputProps } = useRadio(props, state, ref);
 
   return (
-    <label>
+    <label
+      className={`${styles.toggleBtn} ${
+        state.selectedValue === props.value ? styles.isActive : ""
+      }`}
+    >
       <VisuallyHidden>
-        <input aria-label={state.selectedValue!} {...inputProps} ref={ref} />
+        <input {...inputProps} ref={ref} />
       </VisuallyHidden>
-      <div
-        className={`${styles.toggleBtn} ${
-          state.selectedValue === props.value ? styles.isActive : ""
-        }`}
-      >
-        {children}
-      </div>
+
+      {children}
     </label>
   );
 };
@@ -149,22 +146,23 @@ export function AutomaticRemoveView(props: Props) {
         </div>
         <div className={styles.content}>
           <div className={styles.upgradeToggleWrapper}>
-            <BillingPeriodToggleMenu
-              label=""
-              description=""
+            <BillingPeriodRadioMenu
+              aria-label={l10n.getString(
+                "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-button",
+              )}
               onChange={() => setSelectedPlanIsYearly(!selectedPlanIsYearly)}
             >
-              <BillingPeriodToggleItem value="monthly">
+              <BillingPeriodRadioItem value="monthly">
                 {l10n.getString(
                   "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-monthly",
                 )}
-              </BillingPeriodToggleItem>
-              <BillingPeriodToggleItem value="yearly">
+              </BillingPeriodRadioItem>
+              <BillingPeriodRadioItem value="yearly">
                 {l10n.getString(
                   "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-yearly",
                 )}
-              </BillingPeriodToggleItem>
-            </BillingPeriodToggleMenu>
+              </BillingPeriodRadioItem>
+            </BillingPeriodRadioMenu>
             <span>
               {l10n.getString(
                 "fix-flow-data-broker-profiles-automatic-remove-save-percent",
