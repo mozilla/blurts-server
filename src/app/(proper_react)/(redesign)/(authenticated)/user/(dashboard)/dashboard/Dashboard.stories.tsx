@@ -99,14 +99,20 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   };
 
   const mockedInProgressScanResults: OnerepScanResultRow[] = [
-    createRandomScanResult({ status: "removed" }),
-    createRandomScanResult({ status: "waiting_for_verification" }),
-    createRandomScanResult({ status: "optout_in_progress" }),
+    createRandomScanResult({ status: "removed", manually_resolved: false }),
+    createRandomScanResult({
+      status: "waiting_for_verification",
+      manually_resolved: false,
+    }),
+    createRandomScanResult({
+      status: "optout_in_progress",
+      manually_resolved: false,
+    }),
   ];
 
   const mockedAllResolvedScanResults: OnerepScanResultRow[] = [
-    createRandomScanResult({ status: "removed" }),
-    createRandomScanResult({ status: "removed" }),
+    createRandomScanResult({ status: "removed", manually_resolved: false }),
+    createRandomScanResult({ status: "removed", manually_resolved: false }),
   ];
 
   const mockedUnresolvedScanResults: OnerepScanResultRow[] = [
