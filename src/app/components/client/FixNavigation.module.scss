@@ -1,6 +1,7 @@
 @import "../../tokens";
 
 .stepsWrapper {
+  @include no-focus-outline;
   margin-block-end: $layout-lg;
   display: flex;
   align-items: center;

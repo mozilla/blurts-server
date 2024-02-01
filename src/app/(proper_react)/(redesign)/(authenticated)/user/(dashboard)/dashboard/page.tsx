@@ -36,6 +36,7 @@ import {
   addAttributionForSubscriber,
   getLatestAttributionForSubscriberWithType,
 } from "../../../../../../../db/tables/attributions";
+import { getUserId } from "../../../../../../functions/server/getUserId";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
@@ -47,8 +48,7 @@ export default async function DashboardPage() {
   const cookiesList = cookies();
   const countryCode = getCountryCode(headersList);
 
-  const result = await getOnerepProfileId(session.user.subscriber.id);
-  const profileId = result[0]["onerep_profile_id"] as number;
+  const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const brokerScanReleaseDateParts = (
     process.env.BROKER_SCAN_RELEASE_DATE ?? ""
   ).split("-");
@@ -176,6 +176,7 @@ export default async function DashboardPage() {
   return (
     <View
       user={session.user}
+      userId={getUserId(session)}
       isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
       userScanData={latestScan}
@@ -187,6 +188,7 @@ export default async function DashboardPage() {
       fxaSettingsUrl={fxaSettingsUrl}
       scanCount={scanCount}
       totalNumberOfPerformedScans={profileStats?.total}
+      isNewUser={isNewUser}
     />
   );
 }

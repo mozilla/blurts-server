@@ -40,8 +40,7 @@ export default async function LeakedPasswords({
     redirect("/user/dashboard");
   }
 
-  const result = await getOnerepProfileId(session.user.subscriber.id);
-  const profileId = result[0]["onerep_profile_id"] as number;
+  const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const scanData = await getLatestOnerepScanResults(profileId);
   const enabledFlags = await getEnabledFeatureFlags({
     user: session.user,

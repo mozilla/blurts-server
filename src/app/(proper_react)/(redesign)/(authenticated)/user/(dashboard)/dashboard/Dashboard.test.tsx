@@ -355,6 +355,71 @@ it("does not show the 'Start a free scan' CTA for non-US users", () => {
   expect(freeScanCta).not.toBeInTheDocument();
 });
 
+it("does not show a 'Contact Us' link for non-Plus users", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  // Note: there are two user menus, for both small and wide screens:
+  const userMenuTrigger = screen.getAllByRole("button", {
+    name: "Open user menu",
+  })[0];
+  await user.click(userMenuTrigger);
+
+  const contactUsEntry = screen.queryByRole("menuitem", { name: "Contact us" });
+
+  expect(contactUsEntry).not.toBeInTheDocument();
+});
+
+it("shows a 'Contact Us' link for Plus users", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  // Note: there are two user menus, for both small and wide screens:
+  const userMenuTrigger = screen.getAllByRole("button", {
+    name: "Open user menu",
+  })[0];
+  await user.click(userMenuTrigger);
+
+  const contactUsEntry = screen.getByRole("menuitem", { name: "Contact us" });
+
+  expect(contactUsEntry).toBeInTheDocument();
+});
+
+it("counts how often people click the 'Contact us' link", async () => {
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  // Note: there are two user menus, for both small and wide screens:
+  const userMenuTrigger = screen.getAllByRole("button", {
+    name: "Open user menu",
+  })[0];
+  await user.click(userMenuTrigger);
+
+  const contactUsEntry = screen.getByRole("menuitem", { name: "Contact us" });
+  await user.click(contactUsEntry);
+
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "contact_us_user_menu",
+    }),
+  );
+});
+
 it("switches between tab panels", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
