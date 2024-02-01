@@ -157,7 +157,6 @@ export const MobileShell = (props: Props) => {
             </ul>
             <div className={styles.premiumCta}>
               <UpsellBadge
-                user={props.session.user}
                 monthlySubscriptionUrl={props.monthlySubscriptionUrl}
                 yearlySubscriptionUrl={props.yearlySubscriptionUrl}
                 subscriptionBillingAmount={props.subscriptionBillingAmount}
