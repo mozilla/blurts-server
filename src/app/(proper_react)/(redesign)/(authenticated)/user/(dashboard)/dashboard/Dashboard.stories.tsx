@@ -16,6 +16,7 @@ import {
 import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
 import { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
 import { CountryCodeProvider } from "../../../../../../../contextProviders/country-code";
+import { SessionProvider } from "../../../../../../../contextProviders/session";
 
 const brokerOptions = {
   "no-scan": "No scan started",
@@ -147,27 +148,29 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   };
 
   return (
-    <CountryCodeProvider countryCode={props.countryCode}>
-      <Shell l10n={getOneL10nSync()} session={mockedSession} nonce="">
-        <DashboardEl
-          user={user}
-          userBreaches={breaches}
-          userScanData={scanData}
-          isEligibleForPremium={props.countryCode === "us"}
-          isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
-          enabledFeatureFlags={["FreeBrokerScan", "PremiumBrokerRemoval"]}
-          monthlySubscriptionUrl=""
-          yearlySubscriptionUrl=""
-          fxaSettingsUrl=""
-          scanCount={scanCount}
-          totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
-          subscriptionBillingAmount={{
-            yearly: 13.37,
-            monthly: 42.42,
-          }}
-        />
-      </Shell>
-    </CountryCodeProvider>
+    <SessionProvider session={mockedSession}>
+      <CountryCodeProvider countryCode={props.countryCode}>
+        <Shell l10n={getOneL10nSync()} session={mockedSession} nonce="">
+          <DashboardEl
+            user={user}
+            userBreaches={breaches}
+            userScanData={scanData}
+            isEligibleForPremium={props.countryCode === "us"}
+            isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
+            enabledFeatureFlags={["FreeBrokerScan", "PremiumBrokerRemoval"]}
+            monthlySubscriptionUrl=""
+            yearlySubscriptionUrl=""
+            fxaSettingsUrl=""
+            scanCount={scanCount}
+            totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
+            subscriptionBillingAmount={{
+              yearly: 13.37,
+              monthly: 42.42,
+            }}
+          />
+        </Shell>
+      </CountryCodeProvider>
+    </SessionProvider>
   );
 };
 

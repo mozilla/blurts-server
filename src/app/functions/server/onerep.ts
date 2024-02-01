@@ -369,8 +369,7 @@ export async function isEligibleForFreeScan(
     return false;
   }
 
-  const result = await getOnerepProfileId(user.subscriber.id);
-  const profileId = result[0]["onerep_profile_id"] as number;
+  const profileId = await getOnerepProfileId(user.subscriber.id);
   const scanResult = await getLatestOnerepScanResults(profileId);
 
   if (scanResult.scan) {
