@@ -451,9 +451,10 @@ async function updateMonthlyEmailOptout (token) {
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function getOnerepProfileId (subscriberId) {
-  return await knex('subscribers')
+  const res = await knex('subscribers')
     .select('onerep_profile_id')
     .where('id', subscriberId)
+  return res?.[0]?.["onerep_profile_id"] ?? -1
 }
 /* c8 ignore stop */
 
