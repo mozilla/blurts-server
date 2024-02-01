@@ -30,6 +30,7 @@ export default async function Page() {
   );
   const oneRepActivations = profileStats?.total_active;
   const scanLimitReached =
+    !enabledFlags.includes("MonitorPlus") ||
     typeof oneRepActivations === "undefined" ||
     oneRepActivations > monthlySubscribersQuota;
   return (
