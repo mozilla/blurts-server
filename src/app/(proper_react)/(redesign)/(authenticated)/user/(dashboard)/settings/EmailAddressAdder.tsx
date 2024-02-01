@@ -68,7 +68,7 @@ export const EmailAddressAdder = () => {
             onDismiss={() => dialogState.close()}
           >
             <div className={styles.dialogContents}>
-              <EmailAddressAddForm />
+              <EmailAddressAddForm onDismiss={() => dialogState.close()} />
             </div>
           </Dialog>
         </ModalOverlay>
@@ -81,7 +81,7 @@ export const EmailAddressAdder = () => {
 // `useFormState`. See the comment for the test
 // "calls the 'add' action when adding another email address":
 /* c8 ignore start */
-const EmailAddressAddForm = () => {
+const EmailAddressAddForm = ({ onDismiss }: { onDismiss: () => void }) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const [formState, formAction] = useFormState(onAddEmail, {});
@@ -106,7 +106,7 @@ const EmailAddressAddForm = () => {
           {l10n.getString("add-email-address-input-label")}
         </label>
         <input type="email" name="newEmailAddress" id="newEmailAddress" />
-        <Button type="submit" variant="primary">
+        <Button type="submit" variant="primary" onPress={() => onDismiss()}>
           {l10n.getString("add-email-send-verification-button")}
         </Button>
       </form>
