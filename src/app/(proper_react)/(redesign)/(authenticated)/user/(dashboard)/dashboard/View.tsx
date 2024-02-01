@@ -329,8 +329,9 @@ export const View = (props: Props) => {
           elems: {
             a:
               typeof props.totalNumberOfPerformedScans === "undefined" ||
-              props.totalNumberOfPerformedScans <
-                CONST_ONEREP_MAX_SCANS_THRESHOLD ? (
+              (props.totalNumberOfPerformedScans <
+                CONST_ONEREP_MAX_SCANS_THRESHOLD &&
+                props.enabledFeatureFlags.includes("MonitorPlus")) ? (
                 <a
                   ref={waitlistTriggerRef}
                   href="/user/welcome/free-scan?referrer=dashboard"

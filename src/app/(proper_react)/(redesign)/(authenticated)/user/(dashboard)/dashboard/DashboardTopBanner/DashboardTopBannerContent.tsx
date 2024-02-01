@@ -223,9 +223,10 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              {typeof props.totalNumberOfPerformedScans === "undefined" ||
-              props.totalNumberOfPerformedScans <
-                CONST_ONEREP_MAX_SCANS_THRESHOLD ? (
+              {props.enabledFeatureFlags.includes("MonitorPlus") &&
+              (typeof props.totalNumberOfPerformedScans === "undefined" ||
+                props.totalNumberOfPerformedScans <
+                  CONST_ONEREP_MAX_SCANS_THRESHOLD) ? (
                 <Button
                   href="/user/welcome/free-scan?referrer=dashboard"
                   small

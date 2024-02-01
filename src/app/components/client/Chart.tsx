@@ -23,6 +23,7 @@ import {
   CONST_MAX_NUM_ADDRESSES,
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../constants";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type Props = {
   data: Array<[string, number]>;
@@ -33,6 +34,7 @@ export type Props = {
   isShowFixed: boolean;
   summary: DashboardSummary;
   totalNumberOfPerformedScans?: number;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const DoughnutChart = (props: Props) => {
@@ -156,9 +158,10 @@ export const DoughnutChart = (props: Props) => {
           <p>
             {l10n.getString("exposure-chart-returning-user-upgrade-prompt")}
           </p>
-          {typeof props.totalNumberOfPerformedScans === "undefined" ||
-          props.totalNumberOfPerformedScans <
-            CONST_ONEREP_MAX_SCANS_THRESHOLD ? (
+          {props.enabledFeatureFlags.includes("MonitorPlus") &&
+          (typeof props.totalNumberOfPerformedScans === "undefined" ||
+            props.totalNumberOfPerformedScans <
+              CONST_ONEREP_MAX_SCANS_THRESHOLD) ? (
             <Link
               href="/user/welcome/free-scan?referrer=dashboard"
               onClick={() => {
