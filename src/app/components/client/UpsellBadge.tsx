@@ -6,7 +6,6 @@
 
 import { useContext, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { Session } from "next-auth";
 import { useOverlayTrigger, useToggleButton } from "react-aria";
 import { useOverlayTriggerState, useToggleState } from "react-stately";
 import { UpsellDialog } from "./UpsellDialog";
@@ -23,6 +22,7 @@ import styles from "./UpsellBadge.module.scss";
 import { useGa } from "../../hooks/useGa";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import { CountryCodeContext } from "../../../contextProviders/country-code";
+import { useSession } from "next-auth/react";
 
 export type UpsellButtonProps = {
   monthlySubscriptionUrl: string;
@@ -31,7 +31,6 @@ export type UpsellButtonProps = {
     yearly: number;
     monthly: number;
   };
-  user?: Session["user"];
 };
 
 export function UpsellButton(
@@ -140,9 +139,13 @@ function UpsellToggleButton(props: UpsellToggleButton) {
 
 export function UpsellBadge(props: UpsellButtonProps) {
   const countryCode = useContext(CountryCodeContext);
+  const session = useSession();
 
-  const { user } = props;
+  if (!session.data) {
+    return <></>;
+  }
 
+  const { user } = session.data;
   const userHasPremium = hasPremium(user);
   if (userHasPremium || canSubscribeToPremium({ user, countryCode })) {
     return <UpsellToggleButton {...props} hasPremium={userHasPremium} />;

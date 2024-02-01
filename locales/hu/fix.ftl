@@ -138,9 +138,9 @@ security-recommendation-phone-summary =
         [one] A telefonszáma { $num_breaches } adatvédelmi incidensben szerepelt:
        *[other] A telefonszáma { $num_breaches } adatvédelmi incidensben szerepelt:
     }
-security-recommendation-phone-description = Sajnos nem szerezheti vissza. De vannak lépések, amelyeket tehet a biztonsága érdekében.
+security-recommendation-phone-description = Sajnos nem szerezheti vissza. De vannak lépések, amelyeket megtehet a biztonsága érdekében.
 security-recommendation-phone-step-one = Blokkolja a kéretlen hívások számait, hogy megakadályozza a további kéretlen hívásokat
-security-recommendation-phone-step-two = Ne kattintson az ismeretlen feladótól származó szövegekben lévő hivatkozásokra; ha úgy tűnik, hogy megbízható forrásból származik, hívja közvetlenül a megerősítéshez
+security-recommendation-phone-step-two = Ne kattintson az ismeretlen feladótól származó szövegekben lévő hivatkozásokra; ha úgy tűnik, hogy megbízható forrásból származik, hívja fel közvetlenül a megerősítéséhez
 
 # Email security recommendation
 
@@ -148,14 +148,14 @@ security-recommendation-email-title = Védje meg az e-mail-címét
 # $num_breaches is the number of breaches where the email address was found.
 security-recommendation-email-summary =
     { $num_breaches ->
-        [one] Az e-mail-címe { $num_breaches } adatsértésben jelent meg:
-       *[other] Az e-mail-címe { $num_breaches } adatsértésben jelent meg:
+        [one] Az e-mail-címe { $num_breaches } adatvédelmi incidensben szerepelt:
+       *[other] Az e-mail-címe { $num_breaches } adatvédelmi incidensben szerepelt:
     }
-security-recommendation-email-description = Sajnos ezt nem tudja kijavítani. De vannak lépések, amelyeket megtehet, hogy megvédje magát.
-security-recommendation-email-step-one = Ne kattintson az ismeretlen feladótól érkező e-mailek hivatkozásaira; ha úgy tűnik, hogy megbízható forrásból származik, hívja közvetlenül a megerősítéshez
+security-recommendation-email-description = Sajnos ezt nem tudja kijavítani. De vannak lépések, amelyeket megtehet a biztonsága érdekében.
+security-recommendation-email-step-one = Ne kattintson az ismeretlen feladótól származó e-mailekben lévő hivatkozásokra; ha úgy tűnik, hogy megbízható forrásból származik, hívja fel közvetlenül a megerősítéséhez
 security-recommendation-email-step-two = Legyen tudatában az <link_to_info>adathalász csalásoknak</link_to_info>
-security-recommendation-email-step-three = A gyanús levelek megjelölése spamként, és a feladó blokkolása
-security-recommendation-email-step-four = Használjon <link_to_info>{ -brand-relay } e-mail-maszkokat</link_to_info>, hogy megvédje leveleit a jövőben
+security-recommendation-email-step-three = Jelölje levélszemétnek a gyanús leveleket, és blokkolja a feladót
+security-recommendation-email-step-four = Használjon <link_to_info>{ -brand-relay } e-mail-maszkokat</link_to_info>, hogy megvédje az e-mail-címét a jövőben
 
 # IP security recommendation
 
@@ -163,11 +163,11 @@ security-recommendation-ip-title = Használjon VPN-t a nagyobb adatvédelem érd
 # $num_breaches is the number of breaches where the IP address was found.
 security-recommendation-ip-summary =
     { $num_breaches ->
-        [one] Az IP-címe { $num_breaches } adatsértésben került nyilvánosságra:
-       *[other] Az IP-címe { $num_breaches } adatsértésben jelent meg:
+        [one] Az IP-címe { $num_breaches } adatvédelmi incidensben szerepelt:
+       *[other] Az IP-címe { $num_breaches } adatvédelmi incidensben szerepelt:
     }
-security-recommendation-ip-description = Az IP-címe meghatározza a tartózkodási helyét és internetszolgáltatóját. A hackerek felhasználhatják ezeket az információkat a tartózkodási helyének megtalálására, vagy megpróbálhatnak csatlakozni az eszközeihez.
-security-recommendation-ip-step-one = Használjon VPN-t (például a <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) elrejtse a valódi IP-címét, és bizalmasan használja az internetet.
+security-recommendation-ip-description = Az IP-címe meghatározza a tartózkodási helyét és az internetszolgáltatóját. A hackerek felhasználhatják ezeket az információkat a tartózkodási helyének megtalálására, vagy megpróbálhatnak csatlakozni az eszközeihez.
+security-recommendation-ip-step-one = Használjon VPN-t (például a <link_to_info>{ -brand-mozilla-vpn }-t</link_to_info>), hogy elrejtse a valódi IP-címét, és bizalmasabban használja az internetet.
 
 # Leaked Passwords
 
@@ -177,24 +177,24 @@ leaked-passwords-title = Kikerült a(z) { $breach_name } jelszava
 # Variables
 # $breach_date is the date when the breach occurred.
 leaked-passwords-summary = Egy adatvédelmi incidensben jelent meg ekkor: { $breach_date }.
-leaked-passwords-description = A csalók hozzáférnek a fiókjához, és valószínűleg megpróbálják más fiókokban is használni, hogy megnézzék, hogy használta-e ugyanazt a jelszót. Cserélje le bárhol, ahol használta, hogy megvédje magát.
-leaked-passwords-steps-title = Itt van a teendő
-leaked-passwords-steps-subtitle = Ez hozzáférést igényel a fiókjához, így kézileg kell javítania.
+leaked-passwords-description = A csalók hozzáférnek a fiókjához, és valószínűleg megpróbálják más fiókokhoz is használni, hogy megnézzék, hogy ugyanazt a jelszót használja-e. Cserélje le mindenhol, ahol használta, hogy megvédje magát.
+leaked-passwords-steps-title = Ezeket kellene tennie
+leaked-passwords-steps-subtitle = Ehhez hozzá kell férnie a fiókjához, ezért kézileg kell kijavítania.
 # Variables
 # $breach_name is the name of the breach where the leaked password was found.
 # $emails_affected are the emails associated with the breach.
-leaked-passwords-step-one = Változtassa meg a <b>{ $emails_affected }</b> jelszavát itt: <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
-leaked-passwords-step-two = Módosítsa bárhol máshol, ahol használta.
+leaked-passwords-step-one = Változtassa meg a(z) <b>{ $emails_affected }</b> jelszavát itt: <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
+leaked-passwords-step-two = Módosítsa mindenhol, ahol használta.
 leaked-passwords-mark-as-fixed = Megjelölés javítottként
-leaked-passwords-skip = Kihagyás
+leaked-passwords-skip = Egyelőre kihagyás
 # Variables
 # $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
 # "Est." is shortform for "Estimated".
 # "mins" is shortform for "minutes".
 leaked-passwords-estimated-time =
     { $estimated_time ->
-        [one] Becs. befejezési idő: { $estimated_time } perc webhelyenként
-       *[other] Becs. befejezési idő: { $estimated_time } perc webhelyenként
+        [one] Becsült befejezési idő: webhelyenként { $estimated_time } perc
+       *[other] Becsült befejezési idő: webhelyenként { $estimated_time } perc
     }
 
 # Leaked Security Questions
@@ -204,12 +204,12 @@ leaked-security-questions-title = A biztonsági kérdései nyilvánosságra ker�
 # $breach_name is the name of the breach where the leaked security questions were found.
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
-leaked-security-questions-summary = Egy adatvédelmi incidensben jelentek meg ekkor: { $breach_name }, ekkor: { $breach_date }.
-leaked-security-questions-description = A csalók ezeket használhatják, hogy hozzáférjenek a fiókjaihoz, és minden olyan webhelyhez, ahol ugyanazokat a biztonsági kérdéseket használta. Frissítse őket most, hogy megvédje a fiókjait.
-leaked-security-questions-steps-title = Itt van a teendő
-leaked-security-questions-steps-subtitle = Ez hozzáférést igényel a fiókjához, így kézileg kell javítania.
+leaked-security-questions-summary = Ebben az adatvédelmi incidensben jelentek meg: { $breach_name }, ekkor: { $breach_date }.
+leaked-security-questions-description = A csalók ezeket arra használhatják, hogy hozzáférjenek a fiókjaihoz, és minden olyan webhelyhez, ahol ugyanazokat a biztonsági kérdéseket használta. Frissítse őket most, hogy megvédje a fiókjait.
+leaked-security-questions-steps-title = Ezeket kellene tennie
+leaked-security-questions-steps-subtitle = Ehhez hozzá kell férnie a fiókjához, ezért kézileg kell kijavítania.
 # Variables
 # $breach_name is the name of the breach where the security questions were found.
 # $email_affected is the email associated with the breach.
 leaked-security-questions-step-one = Frissítse a(z) <b>{ $email_affected }</b> biztonsági kérdéseit itt: <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
-leaked-security-questions-step-two = Frissítse azokat minden olyan oldalon, ahol ugyanazokat a biztonsági kérdéseket használta. Győződjön meg róla, hogy különböző biztonsági kérdéseket használ minden fiókhoz.
+leaked-security-questions-step-two = Frissítse minden olyan oldalon, ahol ugyanazokat a biztonsági kérdéseket használta. Győződjön meg róla, hogy különböző biztonsági kérdéseket használ minden fiókhoz.
