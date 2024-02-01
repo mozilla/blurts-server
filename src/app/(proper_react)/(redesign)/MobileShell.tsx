@@ -41,7 +41,7 @@ export const MobileShell = (props: Props) => {
   useEffect(() => {
     // As we transition focus away from the navigation bar in deeper sections
     // of the experience, it's best to ensure its focus on the dashboard page,
-    // where users first encounter it and when they return to ihit
+    // where users first encounter it and when they return to it
     /* c8 ignore next 3 */
     if (isOnDashboard) {
       wrapperRef.current?.focus();
