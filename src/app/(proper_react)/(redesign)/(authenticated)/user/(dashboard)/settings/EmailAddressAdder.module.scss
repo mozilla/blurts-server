@@ -1,9 +1,14 @@
 @import "../../../../../../tokens";
+@import "../../../../../../loader";
 
 .dialogContents {
   display: flex;
   flex-direction: column;
   gap: $spacing-md;
+
+  .description {
+    text-align: center;
+  }
 }
 
 .newEmailAddressForm {
@@ -23,5 +28,9 @@
     color: $color-black;
     padding: $spacing-sm $spacing-md;
     width: 100%;
+  }
+
+  .btn {
+    width: 300px;
   }
 }

@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
@@ -68,7 +68,7 @@ export const EmailAddressAdder = () => {
             onDismiss={() => dialogState.close()}
           >
             <div className={styles.dialogContents}>
-              <EmailAddressAddForm onDismiss={() => dialogState.close()} />
+              <EmailAddressAddForm />
             </div>
           </Dialog>
         </ModalOverlay>
@@ -81,10 +81,11 @@ export const EmailAddressAdder = () => {
 // `useFormState`. See the comment for the test
 // "calls the 'add' action when adding another email address":
 /* c8 ignore start */
-const EmailAddressAddForm = ({ onDismiss }: { onDismiss: () => void }) => {
+const EmailAddressAddForm = () => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const [formState, formAction] = useFormState(onAddEmail, {});
+  const [hasPressedButton, setHasPressedButton] = useState(false);
 
   useEffect(() => {
     if (typeof formState.success !== "undefined") {
@@ -93,6 +94,7 @@ const EmailAddressAddForm = ({ onDismiss }: { onDismiss: () => void }) => {
       });
     }
   }, [formState, recordTelemetry]);
+  console.log(hasPressedButton);
 
   return !formState.success ? (
     <>
@@ -106,13 +108,29 @@ const EmailAddressAddForm = ({ onDismiss }: { onDismiss: () => void }) => {
           {l10n.getString("add-email-address-input-label")}
         </label>
         <input type="email" name="newEmailAddress" id="newEmailAddress" />
-        <Button type="submit" variant="primary" onPress={() => onDismiss()}>
-          {l10n.getString("add-email-send-verification-button")}
+        <Button
+          type="submit"
+          variant="primary"
+          className={styles.btn}
+          onPress={() => {
+            setHasPressedButton(true);
+          }}
+        >
+          {hasPressedButton ? (
+            <div className={styles.ldsRing}>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          ) : (
+            l10n.getString("add-email-send-verification-button")
+          )}
         </Button>
       </form>
     </>
   ) : (
-    <p>
+    <p className={styles.description}>
       {l10n.getFragment("add-email-verify-the-link-2", {
         vars: { email: formState.submittedAddress },
         elems: { b: <b /> },
