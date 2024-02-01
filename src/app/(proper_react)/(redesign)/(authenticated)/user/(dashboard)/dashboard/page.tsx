@@ -69,30 +69,32 @@ export default async function DashboardPage() {
     brokerScanReleaseDate.getTime();
   const isPremiumUser = hasPremium(session.user);
 
-  if (
-    !hasRunScan &&
-    (isPremiumUser ||
-      (isNewUser &&
-        canSubscribeToPremium({
-          user: session.user,
-          countryCode: countryCode,
-        })))
+  if (hasRunScan) {
+    await refreshStoredScanResults(profileId);
+
+    // If the current user is a subscriber and their OneRep profile is not
+    // activated: Most likely we were not able or failed to kick-off the
+    // auto-removal process.
+    // Let’s make sure the users OneRep profile is activated:
+    if (isPremiumUser) {
+      await activateAndOptoutProfile({ profileId });
+    }
+  } else if (
+    isPremiumUser ||
+    (isNewUser &&
+      canSubscribeToPremium({
+        user: session.user,
+        countryCode: countryCode,
+      }))
   ) {
     return redirect("/user/welcome/");
   }
 
-  await refreshStoredScanResults(profileId);
-
-  // If the current user is a subscriber and their OneRep profile is not
-  // activated: Most likely we were not able or failed to kick-off the
-  // auto-removal process.
-  // Let’s make sure the users OneRep profile is activated:
-  if (isPremiumUser) {
-    await activateAndOptoutProfile({ profileId });
-  }
-
   const latestScan = await getLatestOnerepScanResults(profileId);
-  const scanCount = await getScansCountForProfile(profileId);
+  const scanCount =
+    typeof profileId === "number"
+      ? await getScansCountForProfile(profileId)
+      : 0;
   const subBreaches = await getSubscriberBreaches(session.user);
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(

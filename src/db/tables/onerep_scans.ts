@@ -38,8 +38,15 @@ async function getScanResults(
 }
 
 async function getLatestOnerepScanResults(
-  onerepProfileId: number,
+  onerepProfileId: number | null,
 ): Promise<LatestOnerepScanData> {
+  if (onerepProfileId === null) {
+    return {
+      scan: null,
+      results: [],
+    };
+  }
+
   const scan = await knex("onerep_scans")
     .first()
     .where("onerep_profile_id", onerepProfileId)

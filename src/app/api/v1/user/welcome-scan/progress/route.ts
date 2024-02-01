@@ -46,7 +46,10 @@ export async function GET(
       const latestScan = await getLatestOnerepScanResults(profileId);
       const latestScanId = latestScan.scan?.onerep_scan_id;
 
-      if (typeof latestScanId !== "undefined") {
+      if (
+        typeof latestScanId !== "undefined" &&
+        typeof profileId === "number"
+      ) {
         const scan = await getScanDetails(profileId, latestScanId);
 
         // Store scan results.
