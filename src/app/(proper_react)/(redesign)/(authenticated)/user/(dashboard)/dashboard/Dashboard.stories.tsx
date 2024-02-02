@@ -24,6 +24,7 @@ const brokerOptions = {
   unresolved: "With unresolved scan results",
   resolved: "All scan results resolved",
   "scan-in-progress": "Scan is in progress",
+  "manually-resolved": "Manually resolved",
 };
 const breachOptions = {
   empty: "No data breaches",
@@ -123,6 +124,19 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
     createRandomScanResult({ status: "new", manually_resolved: true }),
   ];
 
+  const mockedManuallyResolvedScanResults: OnerepScanResultRow[] = [
+    createRandomScanResult({ status: "new", manually_resolved: true }),
+    createRandomScanResult({
+      status: "waiting_for_verification",
+      manually_resolved: true,
+    }),
+    createRandomScanResult({
+      status: "optout_in_progress",
+      manually_resolved: true,
+    }),
+    createRandomScanResult({ status: "removed", manually_resolved: true }),
+  ];
+
   const scanData: LatestOnerepScanData = { scan: null, results: [] };
   let scanCount = 0;
 
@@ -139,6 +153,10 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
       }
       if (props.brokers === "unresolved") {
         scanData.results = mockedUnresolvedScanResults;
+      }
+
+      if (props.brokers === "manually-resolved") {
+        scanData.results = mockedManuallyResolvedScanResults;
       }
     }
   }
@@ -486,6 +504,16 @@ export const DashboardUsPremiumScanInProgressNoBreaches: Story = {
     premium: true,
     breaches: "empty",
     brokers: "scan-in-progress",
+  },
+};
+
+export const DashboardUsPremiumManuallyResolvedScansNoBreaches: Story = {
+  name: "US user, with Premium, scan manually resolved, with no breaches",
+  args: {
+    countryCode: "us",
+    premium: true,
+    breaches: "empty",
+    brokers: "manually-resolved",
   },
 };
 

@@ -47,6 +47,7 @@ import Meta, {
   DashboardUsPremiumScanInProgressUnresolvedBreaches,
   DashboardUsPremiumScanInProgressResolvedBreaches,
   DashboardInvalidPremiumUserNoScanResolvedBreaches,
+  DashboardUsPremiumManuallyResolvedScansNoBreaches,
 } from "./Dashboard.stories";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 
@@ -2508,6 +2509,54 @@ it("shows the correct dashboard banner CTA and sends telemetry for US user, with
     "click",
     expect.objectContaining({
       button_id: "us_premium_scan_in_progress_resolved_breaches",
+    }),
+  );
+});
+
+// Check dashboard banner content for story DashboardUsPremiumScanInProgressNoBreaches
+it("shows the correct dashboard banner title for US user, with Premium, scan manually resolved, no breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumManuallyResolvedScansNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
+    "Your data is protected",
+  );
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA and sends telemetry for US user, with Premium, scan manually resolved, no breaches", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumManuallyResolvedScansNoBreaches,
+    Meta,
+  );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  render(<ComposedDashboard />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "See what’s fixed",
+  });
+  expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "dashboard",
+    "view",
+    expect.objectContaining({
+      broker_count: 4,
     }),
   );
 });
