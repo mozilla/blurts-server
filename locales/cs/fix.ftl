@@ -100,14 +100,14 @@ ssn-modal-title = O upozorněních na podvody a zmrazení úvěrů
 ssn-modal-description-fraud-part-one = <b>Upozornění na podvod</b> vyžaduje od firem ověření vaší identity dříve, než bude připsán na vaše jméno další kredit. Je zdarma, trvá jeden rok a nebude negativně ovlivňovat vaše kreditní skóre.
 ssn-modal-description-fraud-part-two = Chcete-li si ho zřídit, obraťte se na kterýkoli ze tří úvěrových úřadů. Nemusíte kontaktovat všechny tři.
 ssn-modal-description-freeze-credit-part-one = <b>Zmrazení vašeho úvěru</b> zabrání komukoli, aby si na vaše jméno otevřel nový účet. Je to zdarma a nemá to negativní vliv na vaše kreditní skóre, ale před otevřením nových účtů ho musíte rozmrazit.
-ssn-modal-description-freeze-credit-part-two = Pro zmrazení svého kreditu kontaktujte každou ze tří úvěrových institucí — <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link> a <transunion_link>TransUnion</transunion_link>.
-ssn-modal-learn-more = Zjistěte více o upozorněních na podvody a zmrazení kreditu
+ssn-modal-description-freeze-credit-part-two = Pro zmrazení svého úvěru kontaktujte každou ze tří úvěrových institucí — <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link> či<transunion_link>TransUnion</transunion_link>.
+ssn-modal-learn-more = Další informace o upozorněních na podvody a zmrazení úvěrů
 ssn-modal-ok = OK
 
 # PIN Breaches
 
 high-risk-breach-pin-title = Váš PIN byl prozrazen
-high-risk-breach-pin-description = Pokud podniknete kroky co nejdříve, můžete získat další právní ochranu, která vám pomůže získat zpět jakékoli ztráty.
+high-risk-breach-pin-description = Pokud podniknete kroky co nejdříve, získáte větší právní ochranu, která vám pomůže získat zpět případné ztráty.
 high-risk-breach-pin-step-one = Okamžitě oznamte své bance, že byl váš PIN kód prozrazen.
 high-risk-breach-pin-step-two = Změňte si PIN kdekoli, kde jste použili stejný.
 high-risk-breach-pin-step-three = Zkontrolujte, zda na vašich účtech nejsou neoprávněné pohyby.
@@ -117,7 +117,7 @@ high-risk-breach-pin-step-three = Zkontrolujte, zda na vašich účtech nejsou n
 high-risk-breach-none-title = Skvělá zpráva, neobjevili jsme žádný vysoce rizikový únik údajů
 # Variables
 # $email_list is list of emails that the user is monitoring for breaches. E.g. john@yahoo.com, ali@gmail.com, sam@hotmail.com
-high-risk-breach-none-description = Únik dat zjišťujeme na základě vaší e-mailové adresy a pro { $email_list } jsme nezaznamenali žádný vysoce rizikový únik dat.
+high-risk-breach-none-description = Úniky údajů zjišťujeme na základě vaší e-mailové adresy a pro { $email_list } jsme nenašli žádné vysoce rizikové úniky dat.
 high-risk-breach-none-sub-description-part-one = Mezi vysoce rizikové úniky údajů patří:
 high-risk-breach-none-sub-description-ssn = Číslo sociálního zabezpečení
 high-risk-breach-none-sub-description-bank-account = Informace o bankovním účtu
@@ -143,7 +143,7 @@ security-recommendation-phone-summary =
     }
 security-recommendation-phone-description = Bohužel to nelze vzít zpět. Můžete však podniknout určité kroky, abyste zůstali v bezpečí.
 security-recommendation-phone-step-one = Blokujte nevyžádana čísla, abyste zabránili dalším nevyžádaným hovorům
-security-recommendation-phone-step-two = Neklikejte na odkazy v textech od neznámých odesílatelů; pokud se zdá, že pochází z důvěryhodného zdroje, zavolejte pro potvrzení
+security-recommendation-phone-step-two = Neklikejte na odkazy v textových zprávách od neznámých odesílatelů. Pokud se zdá, že je zpráva z důvěryhodného zdroje, zavolejte přímo a ověřte si to.
 
 # Email security recommendation
 
@@ -151,14 +151,14 @@ security-recommendation-email-title = Chraňte svou e-mailovou adresu
 # $num_breaches is the number of breaches where the email address was found.
 security-recommendation-email-summary =
     { $num_breaches ->
-        [one] Vaše e-mailová adresa byla vyzrazena při { $num_breaches } úniku dat:
-        [few] Vaše e-mailová adresa byla vyzrazena v { $num_breaches } únikech:
-       *[other] Vaše e-mailová adresa byla vyzrazena v { $num_breaches } únikech:
+        [one] Vaše e-mailová adresa byla vyzrazena při { $num_breaches } úniku údajů:
+        [few] Vaše e-mailová adresa byla vyzrazena v { $num_breaches } únicích údajů:
+       *[other] Vaše e-mailová adresa byla vyzrazena v { $num_breaches } únicích údajů:
     }
-security-recommendation-email-description = Toto bohužel nenapravíte. Existují však kroky, které můžete podniknout, abyste se ochránili.
-security-recommendation-email-step-one = Neklikejte na odkazy v e-mailech od neznámých odesílatelů; pokud se zdá, že pochází z důvěryhodného zdroje, zavolejte pro potvrzení
+security-recommendation-email-description = Bohužel to nelze opravit. Můžete však podniknout určité kroky, abyste se ochránili.
+security-recommendation-email-step-one = Neklikejte na odkazy v e-mailech od neznámých odesílatelů. Pokud se zdá, že pochází z důvěryhodného zdroje, zavolejte mu a ověřte si to.
 security-recommendation-email-step-two = Pozor na <link_to_info>phishingové podvody</link_to_info>
-security-recommendation-email-step-three = Označí podezřelé e-maily jako spam a zablokuje odesílatele
+security-recommendation-email-step-three = Označte podezřelé e-maily jako nevyžádanou poštu a zablokuje odesílatele
 security-recommendation-email-step-four = Používejte <link_to_info>e-mailové masky služby { -brand-relay }</link_to_info> pro budoucí ochranu svých e-mailů
 
 # IP security recommendation
@@ -167,11 +167,11 @@ security-recommendation-ip-title = Pro větší soukromí použijte VPN
 # $num_breaches is the number of breaches where the IP address was found.
 security-recommendation-ip-summary =
     { $num_breaches ->
-        [one] Vaše IP adresa byla vyzrazena při { $num_breaches } úniku dat:
-        [few] Vaše IP adresa byla vyzrazena v { $num_breaches } únikech:
-       *[other] Vaše IP adresa byla vyzrazena v { $num_breaches } únikech:
+        [one] Vaše IP adresa byla vyzrazena při { $num_breaches } úniku údajů:
+        [few] Vaše IP adresa byla vyzrazena v { $num_breaches } únicích údajů:
+       *[other] Vaše IP adresa byla vyzrazena v { $num_breaches } únicích údajů:
     }
-security-recommendation-ip-description = Vaše IP adresa přesně určuje vaši pozici a poskytovatele internetových služeb. Hackeři mohou tyto informace použít k zjištění vaší polohy nebo k pokusu připojit se k vašim zařízením.
+security-recommendation-ip-description = Vaše IP adresa určuje vaši polohu a poskytovatele internetových služeb. Hackeři mohou tyto informace použít k nalezení vaší polohy nebo k pokusu o připojení k vašim zařízením.
 security-recommendation-ip-step-one = Použijte VPN (například <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) ke skrytí své skutečné IP adresy a používejte internet soukromě.
 
 # Leaked Passwords
@@ -182,7 +182,7 @@ leaked-passwords-title = Vaše heslo pro { $breach_name } bylo odhaleno
 # Variables
 # $breach_date is the date when the breach occurred.
 leaked-passwords-summary = Objevilo se při úniku údajů dne { $breach_date }.
-leaked-passwords-description = Podvodníci mají přístup k vašemu účtu a pravděpodobně se ho pokusí použít na jiných účtech, aby zjistili, zda jste nepoužili stejné heslo. Změňte ho všude, kde jste ho použili pro vaši ochranu.
+leaked-passwords-description = Podvodníci mohou získat přístup k vašemu účtu a pravděpodobně se ho pokusí použít na jiných účtech, aby zjistili, zda jste použili stejné heslo. Změňte si ho všude, kde jste ho použili, abyste se ochránili.
 leaked-passwords-steps-title = Toto je potřeba udělat
 leaked-passwords-steps-subtitle = To vyžaduje přístup k vašemu účtu, takže to budete muset vyřešit ručně.
 # Variables
@@ -211,7 +211,7 @@ leaked-security-questions-title = Vaše bezpečnostní otázky byly odhaleny
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
 leaked-security-questions-summary = Objevily se v úniku údajů ze stránky { $breach_name } dne { $breach_date }.
-leaked-security-questions-description = Podvodníci je mohou použít pro přístup k vašim účtům a jakýmkoli dalším stránkám, kde jste použili stejné bezpečnostní otázky. Pro ochranu vašich účtů je aktualizujte.
+leaked-security-questions-description = Podvodníci je mohou použít k přístupu k vašim účtům a k jakémukoli jinému webu, kde jste použili stejné bezpečnostní otázky. Aktualizujte je nyní, abyste ochránili své účty.
 leaked-security-questions-steps-title = Zde je návod, jak postupovat
 leaked-security-questions-steps-subtitle = To vyžaduje přístup k vašemu účtu, takže to budete muset vyřešit ručně.
 # Variables

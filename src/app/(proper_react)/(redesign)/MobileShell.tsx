@@ -36,21 +36,23 @@ export const MobileShell = (props: Props) => {
   const recordTelemetry = useTelemetry();
   const pathName = usePathname();
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const isOnDashboard = pathName === "/user/dashboard";
 
   useEffect(() => {
     // As we transition focus away from the navigation bar in deeper sections
     // of the experience, it's best to ensure its focus on the dashboard page,
     // where users first encounter it and when they return to it
     /* c8 ignore next 3 */
-    if (pathName === "/user/dashboard") {
+    if (isOnDashboard) {
       wrapperRef.current?.focus();
     }
-  }, [pathName]);
+  }, [isOnDashboard]);
 
   return (
     <div
       ref={wrapperRef}
-      tabIndex={-1}
+      /* c8 ignore next */
+      tabIndex={isOnDashboard ? -1 : undefined}
       className={`${styles.wrapper} ${
         // TODO: Add unit test when changing this code:
         /* c8 ignore next */
@@ -155,7 +157,6 @@ export const MobileShell = (props: Props) => {
             </ul>
             <div className={styles.premiumCta}>
               <UpsellBadge
-                user={props.session.user}
                 monthlySubscriptionUrl={props.monthlySubscriptionUrl}
                 yearlySubscriptionUrl={props.yearlySubscriptionUrl}
                 subscriptionBillingAmount={props.subscriptionBillingAmount}

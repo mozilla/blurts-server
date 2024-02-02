@@ -32,8 +32,12 @@ export default async function WelcomeToPlusPage() {
     });
   }
 
-  const result = await getOnerepProfileId(session.user.subscriber.id);
-  const profileId = result[0]["onerep_profile_id"] as number;
+  const profileId = await getOnerepProfileId(session.user.subscriber.id);
+  if (profileId === null) {
+    // If the user subscribed to Plus before running a scan, have them run one now:
+    redirect("/user/welcome/");
+  }
+
   const scanData = await getLatestOnerepScanResults(profileId);
   const subBreaches = await getSubscriberBreaches(session.user);
   const subscriberEmails = await getSubscriberEmails(session.user);
