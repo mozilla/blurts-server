@@ -335,7 +335,6 @@ export function getDashboardSummary(
       }
     }
 
-    /* c8 ignore start */
     // count pin numbers
     if (dataClasses.includes(BreachDataTypes.PIN)) {
       summary.totalDataPointsNum += increment;
@@ -346,9 +345,7 @@ export function getDashboardSummary(
         summary.dataBreachFixedDataPointsNum += increment;
       }
     }
-    /* c8 ignore stop */
 
-    /** c8 ignore start */
     // count security questions
     if (dataClasses.includes(BreachDataTypes.SecurityQuestions)) {
       summary.totalDataPointsNum += increment;
@@ -359,7 +356,6 @@ export function getDashboardSummary(
         summary.dataBreachFixedDataPointsNum += increment;
       }
     }
-    /** c8 ignore stop */
 
     if (dataClasses.includes(BreachDataTypes.BankAccount)) {
       summary.totalDataPointsNum += increment;
