@@ -71,6 +71,9 @@ const BillingPeriodRadioItem = (props: AriaRadioProps) => {
   return (
     <label
       className={`${styles.toggleBtn} ${
+        // We don't currently do anything with focused cells, so we don't
+        // have any tests for it either:
+        /* c8 ignore next */
         isFocusVisible ? styles.isFocused : ""
       } ${state.selectedValue === props.value ? styles.isActive : ""}`}
     >
