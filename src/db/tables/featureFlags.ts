@@ -37,7 +37,8 @@ export type FeatureFlagName =
   | "FalseDoorTest"
   | "HibpBreachNotifications"
   | "FxaUidTelemetry"
-  | "RebrandAnnouncement";
+  | "RebrandAnnouncement"
+  | "MonitorPlus";
 
 export async function getEnabledFeatureFlags(
   options:
@@ -53,25 +54,25 @@ export async function getEnabledFeatureFlags(
   const enabledFlagNames = result.map((row) => row.name as FeatureFlagName);
 
   // Use Nimbus to allow features per-user.
-  if (!options.ignoreExperiments) {
-    const userId = getUserId(options.user);
-    const features = await getExperiments(userId);
+  try {
+    if (!options.ignoreExperiments) {
+      const userId = getUserId(options.user);
+      const features = await getExperiments(userId);
 
-    if (
-      features &&
-      features["rebrand-announcement"] &&
-      features["rebrand-announcement"]["enabled"]
-    ) {
-      const rebrandAnnouncementEnabled =
-        features["rebrand-announcement"]["enabled"];
-      if (rebrandAnnouncementEnabled === "true") {
-        for (const flag of ["RebrandAnnouncement"]) {
-          if (!enabledFlagNames.includes(flag as FeatureFlagName)) {
-            enabledFlagNames.push(flag as FeatureFlagName);
+      if (features) {
+        for (const feature of Object.keys(features)) {
+          const enabled = features[feature].enabled;
+          if (
+            enabled &&
+            !enabledFlagNames.includes(feature as FeatureFlagName)
+          ) {
+            enabledFlagNames.push(feature as FeatureFlagName);
           }
         }
       }
     }
+  } catch (e) {
+    console.error(e);
   }
 
   return enabledFlagNames;
