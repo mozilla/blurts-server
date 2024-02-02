@@ -144,8 +144,9 @@
     appearance: none;
     background-color: transparent;
     border: 0;
-    color: $color-grey-40;
+    color: $color-grey-50;
     padding: $spacing-xs $spacing-md;
+    font-weight: 500;
 
     &.isActive,
     &:hover {
