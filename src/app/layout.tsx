@@ -14,6 +14,7 @@ import { SessionProvider } from "../contextProviders/session";
 import { authOptions } from "./api/utils/auth";
 import { metropolis } from "./fonts/Metropolis/metropolis";
 import { CONST_GA4_MEASUREMENT_ID } from "../constants";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 // DO NOT ADD SECRETS: Env variables added here become public.
 const PUBLIC_ENVS = {
@@ -69,6 +70,7 @@ export default async function RootLayout({
           <SessionProvider session={session}>{children}</SessionProvider>
         </PublicEnvProvider>
       </body>
+      <GoogleAnalytics gaId={CONST_GA4_MEASUREMENT_ID} />
     </html>
   );
 }
