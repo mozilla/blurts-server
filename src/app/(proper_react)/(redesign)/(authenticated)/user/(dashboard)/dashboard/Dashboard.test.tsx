@@ -2561,6 +2561,30 @@ it("shows the correct dashboard banner CTA and sends telemetry for US user, with
   );
 });
 
+it("dashboard calculation for US user, with Premium, scan manually resolved, no breaches", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumManuallyResolvedScansNoBreaches,
+    Meta,
+  );
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  render(<ComposedDashboard />);
+
+  const tabFixedTrigger = screen.getByRole("tab", {
+    name: "Fixed",
+  });
+  await user.click(tabFixedTrigger);
+
+  const fixedCounter = 32;
+  const chartCaption = screen.getByText(
+    `This chart shows the total exposures that are fixed (⁨${fixedCounter}⁩ out of ⁨${fixedCounter}⁩)`,
+  );
+  expect(chartCaption).toBeInTheDocument();
+});
+
 it("does not explain what 'in progress' means for users who cannot get Plus", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
