@@ -46,7 +46,6 @@ const RadioContext = createContext<RadioGroupState | null>(null);
 
 type RadioMenuProps = {
   children: ReactNode;
-  // onChange: (selectedBillingPeriod: "yearly" | "monthly") => void;
 };
 
 const BillingPeriodRadioMenu = (props: RadioMenuProps & RadioGroupProps) => {
@@ -156,8 +155,7 @@ export function AutomaticRemoveView(props: Props) {
               aria-label={l10n.getString(
                 "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-button",
               )}
-              // onChange={() => setSelectedPlanIsYearly(!selectedPlanIsYearly)}
-              onChange={(selectedBillingPeriod: "yearly" | "monthly") =>
+              onChange={(selectedBillingPeriod: string) =>
                 setSelectedPlanIsYearly(selectedBillingPeriod === "yearly")
               }
             >
