@@ -57,7 +57,7 @@ export default async function WelcomeToPlusPage() {
   await activateAndOptoutProfile({ profileId, forceActivation: true });
 
   // Make sure the current state of the stored scan results is being reflected
-  // after we just initiated autmatic removal.
+  // after we just initiated automatic removal.
   await refreshStoredScanResults(profileId);
 
   return (
