@@ -1206,6 +1206,15 @@ describe("getDashboardSummary", () => {
       fc.assert(outputCountsMatchInputCounts);
     });
 
+    // The `expect` is called in `outputCountsMatchInputCounts`
+    // eslint-disable-next-line jest/expect-expect
+    it("also counts bank account number breaches", () => {
+      fc.assert(outputCountsMatchInputCounts, {
+        seed: 2102994438,
+        path: "0:0:0:0:0:0:0:0:0:0:0:0:0:1:0:1:1:1:1:1:1:1:1:1:1:1:1:1",
+      });
+    });
+
     function getEmptyDashboardSummary(): Omit<
       DashboardSummary,
       "fixedSanitizedDataPoints" | "unresolvedSanitizedDataPoints"

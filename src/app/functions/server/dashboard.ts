@@ -361,6 +361,16 @@ export function getDashboardSummary(
     }
     /** c8 ignore stop */
 
+    if (dataClasses.includes(BreachDataTypes.BankAccount)) {
+      summary.totalDataPointsNum += increment;
+      summary.dataBreachTotalDataPointsNum += increment;
+      summary.allDataPoints.bankAccountNumbers += increment;
+      if (b.resolvedDataClasses.includes(BreachDataTypes.BankAccount)) {
+        summary.fixedDataPoints.bankAccountNumbers += increment;
+        summary.dataBreachFixedDataPointsNum += increment;
+      }
+    }
+
     if (b.isResolved) summary.dataBreachResolvedNum++;
   });
 
