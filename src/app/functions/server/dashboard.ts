@@ -74,7 +74,7 @@ export interface DashboardSummary {
   fixedSanitizedDataPoints: SanitizedDataPoints;
 }
 
-export const dataClassKeyMap: Record<string, string> = {
+export const dataClassKeyMap: Record<keyof DataPoints, string> = {
   emailAddresses: "email-addresses",
   phoneNumbers: "phone-numbers",
 
@@ -86,7 +86,7 @@ export const dataClassKeyMap: Record<string, string> = {
   socialSecurityNumbers: "social-security-numbers",
   ipAddresses: "ip-addresses",
   passwords: "passwords",
-  creditCardNumbers: "credit-cards",
+  creditCardNumbers: "partial-credit-card-data",
   pins: "pins",
   securityQuestions: "security-questions-and-answers",
   bankAccountNumbers: "bank-account-numbers",
@@ -435,7 +435,11 @@ function sanitizeDataPoints(
   if (breachesOnly) {
     numOfTopDataPoints = 2; // when we have breaches only
   }
-  const sanitizedAllDataPoints = Object.entries(dataPoints)
+  const sanitizedAllDataPoints = (
+    Object.entries(dataPoints) as Array<
+      [keyof DataPoints, DataPoints[keyof DataPoints]]
+    >
+  )
     .sort(([_dataClassA, countA], [_dataClassB, countB]) => countB - countA)
     .map(([dataClass, count]) => {
       const key = dataClassKeyMap[dataClass];

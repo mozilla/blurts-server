@@ -1215,6 +1215,15 @@ describe("getDashboardSummary", () => {
       });
     });
 
+    // The `expect` is called in `outputCountsMatchInputCounts`
+    // eslint-disable-next-line jest/expect-expect
+    it("also counts credit card breaches", () => {
+      fc.assert(outputCountsMatchInputCounts, {
+        seed: 1708637594,
+        path: "0:0:0:0:0:0:0:0:0:0:0:1:0:0:0:1:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0",
+      });
+    });
+
     function getEmptyDashboardSummary(): Omit<
       DashboardSummary,
       "fixedSanitizedDataPoints" | "unresolvedSanitizedDataPoints"
