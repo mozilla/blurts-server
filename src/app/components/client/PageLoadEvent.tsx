@@ -53,6 +53,10 @@ export const PageLoadEvent = (props: Props) => {
       pageViewParams.user_id = userId;
     }
 
+    recordTelemetry("page", "view", pageViewParams);
+  }, [recordTelemetry, pathname, userId]);
+
+  useEffect(() => {
     // record attributions on page load
     if (window.location.search?.length > 0) {
       if (!cookies.attributionsFirstTouch) {
@@ -60,15 +64,7 @@ export const PageLoadEvent = (props: Props) => {
       }
       setCookie("attributionsLastTouch", window.location.search);
     }
-
-    recordTelemetry("page", "view", pageViewParams);
-  }, [
-    recordTelemetry,
-    setCookie,
-    cookies.attributionsFirstTouch,
-    pathname,
-    userId,
-  ]);
+  }, [setCookie, cookies.attributionsFirstTouch]);
   // This component doesn't render anything.
   return <></>;
 };
