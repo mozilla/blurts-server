@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { OnerepScanResultRow } from "knex/types/tables";
+import * as fc from "fast-check";
 import {
   DashboardSummary,
   getDashboardSummary,
@@ -797,5 +798,480 @@ describe("getDashboardSummary", () => {
     expect(summary.manuallyResolvedDataBrokerDataPoints.addresses).toBe(
       getSanitizedDataPoint(dataClassKeyMap.addresses),
     );
+  });
+
+  describe("property-based tests", () => {
+    function getBreach(
+      resolution: "unresolved" | "resolved",
+      dataPoint: SubscriberBreach["dataClasses"][number],
+      count: number,
+    ): SubscriberBreach {
+      return {
+        addedDate: new Date(),
+        breachDate: new Date(),
+        dataClasses: [dataPoint],
+        // TODO: Multiple data classes in a single breach?
+        dataClassesEffected: [{ [dataPoint]: count }],
+        description: "",
+        domain: "",
+        emailsAffected: Array(count).fill("test@example.com"),
+        favIconUrl: "",
+        id: 0,
+        modifiedDate: new Date(),
+        name: "",
+        resolvedDataClasses: resolution === "resolved" ? [dataPoint] : [],
+        isResolved: resolution === "resolved",
+        title: "",
+      };
+    }
+
+    function getScanResult(
+      resolution:
+        | "unresolved"
+        | "in-progress"
+        | "auto-resolved"
+        | "manually-resolved",
+      dataPoint:
+        | "emailAddresses"
+        | "phoneNumbers"
+        | "addresses"
+        | "familyMembers",
+      count: number,
+    ): OnerepScanResultRow {
+      return {
+        addresses:
+          dataPoint === "addresses"
+            ? Array(count).fill({
+                city: "Tulsa",
+                state: "OK",
+              })
+            : [],
+        created_at: new Date(),
+        data_broker: "",
+        data_broker_id: 0,
+        emails: dataPoint === "emailAddresses" ? Array(count).fill("") : [],
+        first_name: "",
+        id: 0,
+        last_name: "",
+        link: "",
+        manually_resolved: resolution === "manually-resolved",
+        onerep_scan_id: 0,
+        onerep_scan_result_id: 0,
+        phones: dataPoint === "phoneNumbers" ? Array(count).fill("") : [],
+        relatives: dataPoint === "familyMembers" ? Array(count).fill("") : [],
+        status:
+          resolution === "auto-resolved"
+            ? "removed"
+            : resolution === "in-progress"
+              ? "optout_in_progress"
+              : "new",
+        updated_at: new Date(),
+      };
+    }
+
+    it("returns the number of exposures that we put in", () => {
+      // We'll generate breaches with 7 different types of exposed data
+      // points, each of which can be in one of two states (unresolved, resolved):
+      const breachDataPointCountsToGenerate = 2 * 7;
+      // We'll generate scan results with 4 different types of exposed data
+      // points, each of which can be in one of four states (unresolved, in
+      // progress, auto-resolved or manually resolved):
+      const scanResultDataPointCountsToGenerate = 4 * 4;
+      fc.assert(
+        fc.property(
+          fc
+            .tuple(
+              fc.array(fc.integer({ min: 0, max: 20 }), {
+                minLength: breachDataPointCountsToGenerate,
+                maxLength: breachDataPointCountsToGenerate,
+              }),
+              fc.array(fc.integer({ min: 0, max: 20 }), {
+                minLength: scanResultDataPointCountsToGenerate,
+                maxLength: scanResultDataPointCountsToGenerate,
+              }),
+            )
+            .map(([breachDataPointCounts, scanResultDataPointCounts]) => {
+              const unresolvedDataPointCounts: DashboardSummary["unresolvedDataPoints"] =
+                {
+                  emailAddresses: scanResultDataPointCounts[0],
+                  phoneNumbers: scanResultDataPointCounts[1],
+                  addresses: scanResultDataPointCounts[2],
+                  familyMembers: scanResultDataPointCounts[3],
+
+                  socialSecurityNumbers: breachDataPointCounts[0],
+                  ipAddresses: breachDataPointCounts[1],
+                  passwords: breachDataPointCounts[2],
+                  creditCardNumbers: breachDataPointCounts[3],
+                  pins: breachDataPointCounts[4],
+                  securityQuestions: breachDataPointCounts[5],
+                  bankAccountNumbers: breachDataPointCounts[6],
+                };
+              const resolvedDataPointCounts: DashboardSummary["fixedDataPoints"] =
+                {
+                  emailAddresses: scanResultDataPointCounts[4],
+                  phoneNumbers: scanResultDataPointCounts[5],
+                  addresses: scanResultDataPointCounts[6],
+                  familyMembers: scanResultDataPointCounts[7],
+
+                  socialSecurityNumbers: breachDataPointCounts[7],
+                  ipAddresses: breachDataPointCounts[8],
+                  passwords: breachDataPointCounts[9],
+                  creditCardNumbers: breachDataPointCounts[10],
+                  pins: breachDataPointCounts[11],
+                  securityQuestions: breachDataPointCounts[12],
+                  bankAccountNumbers: breachDataPointCounts[13],
+                };
+              const inProgressDataPointCounts: DashboardSummary["inProgressDataPoints"] =
+                {
+                  emailAddresses: scanResultDataPointCounts[8],
+                  phoneNumbers: scanResultDataPointCounts[9],
+                  addresses: scanResultDataPointCounts[10],
+                  familyMembers: scanResultDataPointCounts[11],
+
+                  socialSecurityNumbers: 0,
+                  ipAddresses: 0,
+                  passwords: 0,
+                  creditCardNumbers: 0,
+                  pins: 0,
+                  securityQuestions: 0,
+                  bankAccountNumbers: 0,
+                };
+              const manuallyResolvedDataPointCounts: DashboardSummary["manuallyResolvedDataBrokerDataPoints"] =
+                {
+                  emailAddresses: scanResultDataPointCounts[12],
+                  phoneNumbers: scanResultDataPointCounts[13],
+                  addresses: scanResultDataPointCounts[14],
+                  familyMembers: scanResultDataPointCounts[15],
+
+                  socialSecurityNumbers: 0,
+                  ipAddresses: 0,
+                  passwords: 0,
+                  creditCardNumbers: 0,
+                  pins: 0,
+                  securityQuestions: 0,
+                  bankAccountNumbers: 0,
+                };
+              const allDataPointCounts: DashboardSummary["allDataPoints"] =
+                Object.fromEntries(
+                  Object.keys(unresolvedDataPointCounts).map((key) => [
+                    key,
+                    unresolvedDataPointCounts[key as keyof DataPoints] +
+                      resolvedDataPointCounts[key as keyof DataPoints] +
+                      inProgressDataPointCounts[key as keyof DataPoints] +
+                      manuallyResolvedDataPointCounts[key as keyof DataPoints],
+                  ]),
+                ) as DataPoints;
+
+              function countTotalDataPoints(
+                counts: DataPoints,
+                type: "breach" | "scan-result",
+              ): number {
+                return type === "scan-result"
+                  ? counts.emailAddresses +
+                      counts.phoneNumbers +
+                      counts.addresses +
+                      counts.familyMembers
+                  : counts.socialSecurityNumbers +
+                      counts.ipAddresses +
+                      counts.passwords +
+                      counts.creditCardNumbers +
+                      counts.pins +
+                      counts.securityQuestions +
+                      counts.bankAccountNumbers;
+              }
+
+              function countTotalExposures(
+                counts: DataPoints,
+                type: "breach" | "scan-result",
+              ): number {
+                const pointCounts =
+                  type === "scan-result"
+                    ? [
+                        counts.emailAddresses,
+                        counts.phoneNumbers,
+                        counts.addresses,
+                        counts.familyMembers,
+                      ]
+                    : [
+                        counts.socialSecurityNumbers,
+                        counts.ipAddresses,
+                        counts.passwords,
+                        counts.creditCardNumbers,
+                        counts.pins,
+                        counts.securityQuestions,
+                        counts.bankAccountNumbers,
+                      ];
+
+                return pointCounts.filter((count) => count > 0).length;
+              }
+
+              const dataBreachResolvedNum = countTotalExposures(
+                resolvedDataPointCounts,
+                "breach",
+              );
+              const dataBreachUnresolvedNum = countTotalExposures(
+                unresolvedDataPointCounts,
+                "breach",
+              );
+              const dataBreachTotalNum =
+                dataBreachResolvedNum + dataBreachUnresolvedNum;
+              const dataBreachFixedDataPointsNum = countTotalDataPoints(
+                resolvedDataPointCounts,
+                "breach",
+              );
+              const dataBreachTotalDataPointsNum = countTotalDataPoints(
+                allDataPointCounts,
+                "breach",
+              );
+              const dataBrokerAutoFixedNum = countTotalExposures(
+                resolvedDataPointCounts,
+                "scan-result",
+              );
+              const dataBrokerAutoFixedDataPointsNum = countTotalDataPoints(
+                resolvedDataPointCounts,
+                "scan-result",
+              );
+              const dataBrokerInProgressNum = countTotalExposures(
+                inProgressDataPointCounts,
+                "scan-result",
+              );
+              const dataBrokerInProgressDataPointsNum = countTotalDataPoints(
+                inProgressDataPointCounts,
+                "scan-result",
+              );
+              const dataBrokerManuallyResolvedNum = countTotalExposures(
+                manuallyResolvedDataPointCounts,
+                "scan-result",
+              );
+              const dataBrokerManuallyResolvedDataPointsNum =
+                countTotalDataPoints(
+                  manuallyResolvedDataPointCounts,
+                  "scan-result",
+                );
+              const dataBrokerUnresolvedNum = countTotalExposures(
+                unresolvedDataPointCounts,
+                "scan-result",
+              );
+              const dataBrokerUnresolvedDataPointsNum = countTotalDataPoints(
+                unresolvedDataPointCounts,
+                "scan-result",
+              );
+              const dataBrokerTotalNum =
+                dataBrokerUnresolvedNum +
+                dataBrokerAutoFixedNum +
+                dataBrokerInProgressNum +
+                dataBrokerManuallyResolvedNum;
+              const dataBrokerTotalDataPointsNum =
+                dataBrokerUnresolvedDataPointsNum +
+                dataBrokerAutoFixedDataPointsNum +
+                dataBrokerInProgressDataPointsNum +
+                dataBrokerManuallyResolvedDataPointsNum;
+              const totalDataPointsNum =
+                dataBreachTotalDataPointsNum + dataBrokerTotalDataPointsNum;
+
+              const expectedSummary: Omit<
+                DashboardSummary,
+                "fixedSanitizedDataPoints" | "unresolvedSanitizedDataPoints"
+              > = {
+                allDataPoints: allDataPointCounts,
+                unresolvedDataPoints: unresolvedDataPointCounts,
+                inProgressDataPoints: inProgressDataPointCounts,
+                manuallyResolvedDataBrokerDataPoints:
+                  manuallyResolvedDataPointCounts,
+                fixedDataPoints: resolvedDataPointCounts,
+                dataBreachTotalNum: dataBreachTotalNum,
+                dataBreachResolvedNum: dataBreachResolvedNum,
+                dataBreachUnresolvedNum: dataBreachUnresolvedNum,
+                dataBreachTotalDataPointsNum: dataBreachTotalDataPointsNum,
+                dataBreachFixedDataPointsNum: dataBreachFixedDataPointsNum,
+                dataBrokerTotalNum: dataBrokerTotalNum,
+                dataBrokerTotalDataPointsNum: dataBrokerTotalDataPointsNum,
+                dataBrokerAutoFixedNum: dataBrokerAutoFixedNum,
+                dataBrokerAutoFixedDataPointsNum:
+                  dataBrokerAutoFixedDataPointsNum,
+                dataBrokerInProgressNum: dataBrokerInProgressNum,
+                dataBrokerInProgressDataPointsNum:
+                  dataBrokerInProgressDataPointsNum,
+                dataBrokerManuallyResolvedNum: dataBrokerManuallyResolvedNum,
+                dataBrokerManuallyResolvedDataPointsNum:
+                  dataBrokerManuallyResolvedDataPointsNum,
+                totalDataPointsNum: totalDataPointsNum,
+                // TODO: Figure out what these should be and, when we do,
+                //       replace `toMatchObject` by `toStrictEqual`:
+                // unresolvedSanitizedDataPoints: [],
+                // fixedSanitizedDataPoints: [],
+              };
+
+              return expectedSummary;
+            }),
+          (expectedSummary) => {
+            function isNotNull<X>(value: X | null): value is X {
+              return value !== null;
+            }
+
+            function getBreachesForCounts(
+              dataPointCounts: DataPoints,
+              resolution: Parameters<typeof getBreach>[0],
+            ): SubscriberBreach[] {
+              return (
+                Object.keys(dataClassKeyMap)
+                  // While the following data types can also be found in breaches,
+                  // for these tests we're only generating them for scan results.
+                  // (Because we start out with the final counts, this way we can
+                  // avoid double-counting them.)
+                  .filter(
+                    (dataType) =>
+                      dataType !== "emailAddresses" &&
+                      dataType !== "phoneNumbers" &&
+                      dataType !== "addresses" &&
+                      dataType !== "familyMembers",
+                  )
+                  .map((dataType) => {
+                    const count =
+                      dataPointCounts[dataType as keyof DataPoints] ?? 0;
+
+                    if (count === 0) {
+                      return null;
+                    }
+
+                    return getBreach(
+                      resolution,
+                      dataClassKeyMap[
+                        dataType
+                      ] as SubscriberBreach["dataClasses"][number],
+                      count,
+                    );
+                  })
+                  .filter(isNotNull)
+              );
+            }
+
+            function getScanResultsForCounts(
+              dataPointCounts: DataPoints,
+              resolution: Parameters<typeof getScanResult>[0],
+            ): OnerepScanResultRow[] {
+              return (
+                [
+                  "emailAddresses",
+                  "phoneNumbers",
+                  "addresses",
+                  "familyMembers",
+                ] as const
+              )
+                .map((dataType) => {
+                  const count =
+                    dataPointCounts[dataType as keyof DataPoints] ?? 0;
+
+                  if (count === 0) {
+                    return null;
+                  }
+
+                  return getScanResult(resolution, dataType, count);
+                })
+                .filter(isNotNull);
+            }
+
+            const scanResults = [
+              ...getScanResultsForCounts(
+                expectedSummary.unresolvedDataPoints,
+                "unresolved",
+              ),
+              ...getScanResultsForCounts(
+                expectedSummary.fixedDataPoints,
+                "auto-resolved",
+              ),
+              ...getScanResultsForCounts(
+                expectedSummary.inProgressDataPoints,
+                "in-progress",
+              ),
+              ...getScanResultsForCounts(
+                expectedSummary.manuallyResolvedDataBrokerDataPoints,
+                "manually-resolved",
+              ),
+            ];
+
+            const breaches = [
+              ...getBreachesForCounts(
+                expectedSummary.unresolvedDataPoints,
+                "unresolved",
+              ),
+              ...getBreachesForCounts(
+                expectedSummary.fixedDataPoints,
+                "resolved",
+              ),
+            ];
+
+            const resultingSummary = getDashboardSummary(scanResults, breaches);
+
+            expect(resultingSummary).toMatchObject(expectedSummary);
+          },
+        ),
+      );
+    });
+
+    function getEmptyDashboardSummary(): Omit<
+      DashboardSummary,
+      "fixedSanitizedDataPoints" | "unresolvedSanitizedDataPoints"
+    > {
+      const emptyDataPoints = {
+        emailAddresses: 0,
+        phoneNumbers: 0,
+        addresses: 0,
+        familyMembers: 0,
+
+        // data breaches
+        socialSecurityNumbers: 0,
+        ipAddresses: 0,
+        passwords: 0,
+        creditCardNumbers: 0,
+        pins: 0,
+        securityQuestions: 0,
+        bankAccountNumbers: 0,
+      };
+
+      return {
+        dataBreachTotalNum: 0,
+        dataBreachResolvedNum: 0,
+        dataBreachUnresolvedNum: 0,
+        dataBreachTotalDataPointsNum: 0,
+        dataBreachFixedDataPointsNum: 0,
+        dataBrokerTotalNum: 0,
+        dataBrokerTotalDataPointsNum: 0,
+        dataBrokerAutoFixedNum: 0,
+        dataBrokerAutoFixedDataPointsNum: 0,
+        dataBrokerInProgressNum: 0,
+        dataBrokerInProgressDataPointsNum: 0,
+        dataBrokerManuallyResolvedNum: 0,
+        dataBrokerManuallyResolvedDataPointsNum: 0,
+        totalDataPointsNum: 0,
+        allDataPoints: emptyDataPoints,
+        unresolvedDataPoints: emptyDataPoints,
+        inProgressDataPoints: emptyDataPoints,
+        fixedDataPoints: emptyDataPoints,
+        manuallyResolvedDataBrokerDataPoints: emptyDataPoints,
+      };
+    }
+
+    it("counts a single manually-resolved scan result as 1", () => {
+      const scanResult = getScanResult("manually-resolved", "familyMembers", 1);
+      const emptySummary = getEmptyDashboardSummary();
+
+      expect(getDashboardSummary([scanResult], [])).toMatchObject({
+        ...emptySummary,
+        allDataPoints: {
+          ...emptySummary.allDataPoints,
+          familyMembers: 1,
+        },
+        manuallyResolvedDataBrokerDataPoints: {
+          ...emptySummary.manuallyResolvedDataBrokerDataPoints,
+          familyMembers: 1,
+        },
+        dataBrokerManuallyResolvedNum: 1,
+        dataBrokerManuallyResolvedDataPointsNum: 1,
+        dataBrokerTotalNum: 1,
+        dataBrokerTotalDataPointsNum: 1,
+        totalDataPointsNum: 1,
+      });
+    });
   });
 });
