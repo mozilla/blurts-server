@@ -25,7 +25,12 @@ import {
   RadioGroupState,
   useRadioGroupState,
 } from "react-stately";
-import { AriaRadioProps, useRadio, useRadioGroup } from "react-aria";
+import {
+  AriaRadioProps,
+  useFocusRing,
+  useRadio,
+  useRadioGroup,
+} from "react-aria";
 import { VisuallyHidden } from "../../../../../../../../../components/server/VisuallyHidden";
 
 export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
@@ -41,6 +46,7 @@ const RadioContext = createContext<RadioGroupState | null>(null);
 
 type RadioMenuProps = {
   children: ReactNode;
+  // onChange: (selectedBillingPeriod: "yearly" | "monthly") => void;
 };
 
 const BillingPeriodRadioMenu = (props: RadioMenuProps & RadioGroupProps) => {
@@ -60,17 +66,17 @@ const BillingPeriodRadioItem = (props: AriaRadioProps) => {
   const { children } = props;
   const state = useContext(RadioContext)!;
   const ref = useRef<HTMLInputElement>(null);
-
+  const { isFocusVisible, focusProps } = useFocusRing();
   const { inputProps } = useRadio(props, state, ref);
 
   return (
     <label
       className={`${styles.toggleBtn} ${
-        state.selectedValue === props.value ? styles.isActive : ""
-      }`}
+        isFocusVisible ? styles.isFocused : ""
+      } ${state.selectedValue === props.value ? styles.isActive : ""}`}
     >
       <VisuallyHidden>
-        <input {...inputProps} ref={ref} />
+        <input {...inputProps} {...focusProps} ref={ref} />
       </VisuallyHidden>
 
       {children}
@@ -150,7 +156,10 @@ export function AutomaticRemoveView(props: Props) {
               aria-label={l10n.getString(
                 "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-button",
               )}
-              onChange={() => setSelectedPlanIsYearly(!selectedPlanIsYearly)}
+              // onChange={() => setSelectedPlanIsYearly(!selectedPlanIsYearly)}
+              onChange={(selectedBillingPeriod: "yearly" | "monthly") =>
+                setSelectedPlanIsYearly(selectedBillingPeriod === "yearly")
+              }
             >
               <BillingPeriodRadioItem value="monthly">
                 {l10n.getString(
