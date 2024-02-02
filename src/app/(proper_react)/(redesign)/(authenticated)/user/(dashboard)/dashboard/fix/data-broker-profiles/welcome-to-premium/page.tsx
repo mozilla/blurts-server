@@ -16,6 +16,7 @@ import { getCountryCode } from "../../../../../../../../../functions/server/getC
 import { activateAndOptoutProfile } from "../../../../../../../../../functions/server/onerep";
 import { logger } from "../../../../../../../../../functions/server/logging";
 import { getL10n } from "../../../../../../../../../functions/server/l10n";
+import { refreshStoredScanResults } from "../../../../../../../../../functions/server/refreshStoredScanResults";
 
 export default async function WelcomeToPlusPage() {
   const session = await getServerSession(authOptions);
@@ -54,6 +55,10 @@ export default async function WelcomeToPlusPage() {
   // auto-removal process.
   // Let’s make sure the users OneRep profile is activated:
   await activateAndOptoutProfile({ profileId, forceActivation: true });
+
+  // Make sure the current state of the stored scan results is being reflected
+  // after we just initiated autmatic removal.
+  await refreshStoredScanResults(profileId);
 
   return (
     <WelcomeToPlusView
