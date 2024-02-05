@@ -18,6 +18,7 @@
     align-items: center;
     gap: $spacing-sm;
     padding: $spacing-xs $spacing-sm;
+    z-index: 1;
 
     .headerStart {
       flex: 0 0 20%;
@@ -67,6 +68,8 @@
   // https://developer.mozilla.org/en-US/docs/Web/CSS/position#syntax
   overflow: auto;
   height: 100%;
+  // `position: relative` prevents the content from overflowing and causing an
+  // additionnal overflow scroll on the body element in webkit-based browsers.
   position: relative;
 
   .mainMenuLayer {
