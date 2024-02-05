@@ -67,6 +67,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
           subscriptionBillingAmount={props.subscriptionBillingAmount}
           totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
+          enabledFeatureFlags={props.enabledFeatureFlags}
         />
         <div className={styles.chart}>
           <Chart
@@ -78,6 +79,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
             isShowFixed={isShowFixed}
             summary={props.bannerData}
             totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
+            enabledFeatureFlags={props.enabledFeatureFlags}
           />
         </div>
       </div>
