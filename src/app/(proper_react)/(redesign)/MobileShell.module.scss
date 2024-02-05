@@ -67,6 +67,7 @@
   // https://developer.mozilla.org/en-US/docs/Web/CSS/position#syntax
   overflow: auto;
   height: 100%;
+  position: relative;
 
   .mainMenuLayer {
     display: none;
