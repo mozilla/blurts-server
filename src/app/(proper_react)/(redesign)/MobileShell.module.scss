@@ -18,6 +18,8 @@
     align-items: center;
     gap: $spacing-sm;
     padding: $spacing-xs $spacing-sm;
+    // Overlay `.nonHeader` so that the box-shadow of this element
+    // is not covered.
     z-index: 1;
 
     .headerStart {
