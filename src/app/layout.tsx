@@ -70,7 +70,7 @@ export default async function RootLayout({
           <SessionProvider session={session}>{children}</SessionProvider>
         </PublicEnvProvider>
       </body>
-      <GoogleAnalytics gaId={CONST_GA4_MEASUREMENT_ID} />
+      {headers().get("DNT") !== "1" && (<GoogleAnalytics gaId={CONST_GA4_MEASUREMENT_ID} />)}
     </html>
   );
 }
