@@ -52,6 +52,9 @@ export const useGa = (): {
   };
 } => {
   const debugMode =
+    // `NEXT_PUBLIC_GA4_DEBUG_MODE` being false doesn't negatively impact
+    // the reliability of our tests:
+    /* c8 ignore next 2 */
     process.env.NEXT_PUBLIC_GA4_DEBUG_MODE === "true" &&
     process.env.NODE_ENV !== "test";
 

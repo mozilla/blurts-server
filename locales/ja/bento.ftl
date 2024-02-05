@@ -1,27 +1,8 @@
-fx-monitor = { -product-name }
-pocket = { -brand-pocket }
-fx-send = { -brand-send }
-fx-lockwise = { -brand-lockwise }
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-## If possible, keep "Firefox Browser" in English, but feel free 
-## to translate browser if that doesn't work for your language.
-
-## If possible, keep "Firefox Browser" in English, but feel free
-## to translate browser if that doesn't work for your language.
-
-fx-desktop = デスクトップ向け { -brand-name } Browser
-fx-mobile = モバイル向け { -brand-name } Browser
-
-##
-
-# Aria label for the Bento button
-bento-button-title = { -brand-name } アプリとサービス
-
+toolbar-app-picker-trigger-title = { -brand-mozilla } アプリとサービス
+toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 # Bento headline
 fx-makes-tech = { -brand-name } は、オンラインプライバシーに立ち向かう技術です。
-
-# A link at the bottom of the Bento menu
-made-by-mozilla = Made by { -brand-Mozilla }
-
-# Aria label for button that closes the Bento menu
-mobile-close-bento-button-title = メニューを閉じる
