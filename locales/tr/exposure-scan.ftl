@@ -20,6 +20,7 @@ exposure-landing-result-card-added = Eklenme tarihi:
 exposure-landing-result-card-data = Ele geçirilen veriler:
 exposure-landing-result-card-nothing = İhlal bulunamadı
 exposure-landing-result-footer-attribution = İhlal verileri <hibp-link>{ -brand-HIBP }</hibp-link> tarafından sağlanmaktadır
+exposure-landing-result-overflow-hero-lead = Bu ihlalleri nasıl çözeceğinizi öğrenmek, tüm ihlalleri görmek ve tespit edilen yeni ihlalleri sürekli olarak izlemek için giriş yapın.
 exposure-landing-result-overflow-hero-cta-label = İhlalleri çözmek için giriş yapın
 exposure-landing-result-overflow-footer-cta-label = Tümünü görüntülemek için giriş yapın
 exposure-landing-result-some-hero-lead = Bu ihlalleri nasıl çözeceğinizi öğrenmek, tüm ihlalleri görmek ve tespit edilen yeni ihlalleri sürekli olarak izlemek için giriş yapın.
