@@ -22,7 +22,7 @@ exposure-chart-legend-heading-nr = Sayı
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
-exposure-chart-caption = Bu tablo, bilgilerinizin kaç kez ele geçirildiğini gösterir.
+exposure-chart-caption = Bu grafik, bilgilerinizin kaç kez ele geçirildiğini gösterir.
 # Variables:
 #   $total_fixed_exposures_num (number) - Number of fixed exposures
 #   $total_exposures_num (number) - Number of total exposures
@@ -31,6 +31,7 @@ exposure-chart-returning-user-upgrade-prompt = Ev adresi, aile üyeleri ve diğe
 exposure-chart-returning-user-upgrade-prompt-cta = Ücretsiz tarama başlatın
 exposure-chart-scan-in-progress-prompt = <b>Tarama devam ediyor:</b> Adres, aile üyeleri ve diğer bilgiler henüz dahil edilmedi.
 modal-active-number-of-exposures-title = Aktif veri ihlali sayınız hakkında
+modal-active-number-of-exposures-part-three-all = Çözülen ihlaller, Düzeltildi sayfasındaki toplan düzeltilen ihlal sayısına eklenecektir.
 modal-fixed-number-of-exposures-title = Düzeltilmiş veri ihlali sayınız hakkında
 modal-cta-ok = Tamam
 modal-open-alt = Aç
@@ -110,8 +111,20 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
 dashboard-top-banner-no-exposures-found-title = Hiç veri ihlali bulunamadı
 dashboard-top-banner-non-us-no-exposures-found-description = Haberler güzel! Bilinen tüm veri ihlallerini araştırdık ve hiçbir ihlal bulamadık. E-posta adresinizi izlemeye devam edeceğiz ve yeni bir ihlal olursa sizi uyaracağız.
 dashboard-no-exposures-label = Hiç veri ihlali bulunamadı
+# Variables:
+# $exposures_resolved_num is the number of exposures the user has resolved.
+dashboard-top-banner-non-us-your-data-is-protected-description =
+    { $exposures_resolved_num ->
+        [one] İyi iş çıkardınız! Veri ihlaliniz düzeltildi. İhalleri izlemeye devam edeceğiz ve yeni bir ihlal yaşanırsa sizi uyaracağız.
+       *[other] İyi iş çıkardınız! { $exposures_resolved_num } veri ihlalinizin hepsi düzeltildi. İhalleri izlemeye devam edeceğiz ve yeni bir ihlal yaşanırsa sizi uyaracağız.
+    }
 dashboard-top-banner-monitor-more-cta = Daha fazla e-postayı izleyin
 
 # About Exposure Statuses Modal
 
 modal-exposure-status-title = Veri ihlali durumları hakkında
+modal-exposure-status-description-all =
+    Bilinen tüm veri ihlallerindeki riskleri araştırıyoruz.
+    Riskleriniz aşağıdaki durumlardan birine sahip olacaktır:
+modal-exposure-status-action-needed = <b>İşlem gerekiyor</b> demek, ihlal şu anda aktif durumda ve sorunu gidermek için önlem almanız gerekiyor demektir.
+modal-exposure-status-fixed = <b>Düzeltildi</b> demek, ihlal çözülmüş ve herhangi bir işlem yapmanız gerekmiyor demektir.
