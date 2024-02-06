@@ -4,6 +4,7 @@
 
 "use client";
 
+import Script from "next/script";
 import { CONST_GA4_MEASUREMENT_ID } from "../../../constants";
 
 export type Props = {
@@ -23,23 +24,22 @@ export const GaScript = ({ nonce }: Props) => {
 
   return typeof navigator !== "undefined" && navigator.doNotTrack !== "1" ? (
     <>
-      <script
+      <Script
         async
+        strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${ga4MeasurementId}`}
         nonce={nonce}
       />
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
             window.dataLayer = window.dataLayer || [];
             window.gtag = function (...args: unknown[]) {
               window.dataLayer.push(args);
             };
             gtag('js', new Date());
             gtag('config', ${CONST_GA4_MEASUREMENT_ID}, debug_mode: ${debugMode});
-              `,
-        }}
-      ></script>
+        `}
+      </Script>
     </>
   ) : (
     <></>
