@@ -85,7 +85,7 @@
     display: none;
   }
 
-  @media screen and (max-width: $screen-lg) {
+  @media screen and (max-width: $screen-xl) {
     .hasOpenMenu & .mainMenuLayer {
       display: block;
       position: sticky;
