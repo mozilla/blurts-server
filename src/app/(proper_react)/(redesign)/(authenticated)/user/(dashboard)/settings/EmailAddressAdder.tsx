@@ -136,8 +136,6 @@ const EmailAddressAddForm = () => {
           {hasPressedButton ? (
             <Loader />
           ) : (
-            // <Loader />
-
             l10n.getString("add-email-send-verification-button")
           )}
         </Button>
