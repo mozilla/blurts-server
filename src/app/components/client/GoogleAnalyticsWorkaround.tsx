@@ -28,13 +28,20 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 "use client";
 
 import { GAParams } from "@next/third-parties/dist/types/google";
-import Script from "next/script";
+import Script, { ScriptProps } from "next/script";
 import { useEffect } from "react";
 
 let currDataLayerName: string | undefined = undefined;
 
-export const GoogleAnalyticsWorkaround = (props: GAParams) => {
-  const { gaId, dataLayerName = "dataLayer" } = props;
+/**
+ * This component is based on <GoogleAnalytics> from `@next/third-parties`, but accepting a nonce
+ *
+ * @param props
+ */
+export const GoogleAnalyticsWorkaround = (
+  props: GAParams & { nonce: ScriptProps["nonce"] },
+) => {
+  const { gaId, dataLayerName = "dataLayer", nonce } = props;
 
   if (currDataLayerName === undefined) {
     currDataLayerName = dataLayerName;
@@ -65,10 +72,12 @@ export const GoogleAnalyticsWorkaround = (props: GAParams) => {
 
           gtag('config', '${gaId}');`,
         }}
+        nonce={nonce}
       />
       <Script
         id="_next-ga"
         src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+        nonce={nonce}
       />
     </>
   );
