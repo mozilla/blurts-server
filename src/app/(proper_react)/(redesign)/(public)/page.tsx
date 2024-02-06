@@ -32,6 +32,8 @@ export default async function Page() {
   const scanLimitReached =
     typeof oneRepActivations === "undefined" ||
     oneRepActivations > monthlySubscribersQuota;
+
+  const nonce = headers().get("x-nonce") ?? "";
   return (
     <View
       eligibleForPremium={eligibleForPremium}
@@ -39,6 +41,7 @@ export default async function Page() {
       countryCode={countryCode}
       scanLimitReached={scanLimitReached}
       enabledFlags={enabledFlags}
+      nonce={nonce}
     />
   );
 }
