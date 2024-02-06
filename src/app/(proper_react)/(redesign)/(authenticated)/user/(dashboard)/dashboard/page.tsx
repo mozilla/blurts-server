@@ -134,14 +134,7 @@ export default async function DashboardPage() {
       utm_source: searchParams.get("utm_source") ?? "",
       utm_term: searchParams.get("utm_term") ?? "",
     };
-    try {
-      await addAttributionForSubscriber(
-        session.user.subscriber.id,
-        attribution,
-      );
-    } catch (e) {
-      //ignore
-    }
+    await addAttributionForSubscriber(session.user.subscriber.id, attribution);
   }
 
   if (additionalSubplatParams.size > 0) {
@@ -153,14 +146,7 @@ export default async function DashboardPage() {
       utm_source: additionalSubplatParams.get("utm_source") ?? "",
       utm_term: additionalSubplatParams.get("utm_term") ?? "",
     };
-    try {
-      await addAttributionForSubscriber(
-        session.user.subscriber.id,
-        attribution,
-      );
-    } catch (e) {
-      //ignore
-    }
+    await addAttributionForSubscriber(session.user.subscriber.id, attribution);
   } else {
     // if "attributionsLastTouch" cookie isn't present, try to load the attribution from the db
     const attributionLastTouch =
