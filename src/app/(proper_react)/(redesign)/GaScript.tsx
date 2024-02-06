@@ -25,21 +25,20 @@ export const GaScript = ({ nonce }: Props) => {
   return typeof navigator !== "undefined" && navigator.doNotTrack !== "1" ? (
     <>
       <Script
-        async
-        strategy="afterInteractive"
+        id="google-analytics"
         src={`https://www.googletagmanager.com/gtag/js?id=${ga4MeasurementId}`}
         nonce={nonce}
+        onLoad={() => {
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function (...args: unknown[]) {
+            window.dataLayer?.push(args);
+          };
+          window.gtag("js", new Date());
+          window.gtag("config", CONST_GA4_MEASUREMENT_ID, {
+            debug_mode: debugMode,
+          });
+        }}
       />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-            window.dataLayer = window.dataLayer || [];
-            window.gtag = function (...args: unknown[]) {
-              window.dataLayer.push(args);
-            };
-            gtag('js', new Date());
-            gtag('config', ${CONST_GA4_MEASUREMENT_ID}, debug_mode: ${debugMode});
-        `}
-      </Script>
     </>
   ) : (
     <></>
