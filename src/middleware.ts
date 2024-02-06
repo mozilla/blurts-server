@@ -57,8 +57,11 @@ function generateCspData() {
   const cspHeaderParts = [
     "default-src 'self'",
     "base-uri 'self'",
-    // FIXME use nonce or hash https://mozilla-hub.atlassian.net/browse/MNTOR-2904
-    "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.googletagmanager.com",
+    `script-src 'self' ` +
+      (process.env.NODE_ENV === "development"
+        ? "'unsafe-eval' 'unsafe-inline'"
+        : `'nonce-${nonce}'`) +
+      ` https://*.googletagmanager.com`,
     `connect-src 'self' ${
       process.env.NODE_ENV === "development" ? "webpack://*" : ""
     } https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.ingest.sentry.io https://incoming.telemetry.mozilla.org`,
