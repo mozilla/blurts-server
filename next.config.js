@@ -151,6 +151,13 @@ const nextConfig = {
         destination: "https://support.mozilla.org/kb/how-stay-safe-web",
         permanent: false,
       },
+      // Some subset of users still find their way to the old login
+      // link, which redirects to a now-404 endpoint. Add a redirect
+      // to the new endpoint while we are investigating.
+      {
+        source: "/oauth/confirmed*",
+        destination: "/api/auth/callback/fxa*"
+      },
     ];
   },
   webpack: (config, options) => {
