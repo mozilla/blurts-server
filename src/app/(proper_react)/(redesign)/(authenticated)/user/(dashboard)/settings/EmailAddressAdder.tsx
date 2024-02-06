@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
@@ -18,6 +18,7 @@ import { Dialog } from "../../../../../../components/client/dialog/Dialog";
 import { onAddEmail } from "./actions";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
+import { Loader } from "../../../../../../components/client/Loader";
 
 export const EmailAddressAdder = () => {
   const l10n = useL10n();
@@ -86,6 +87,7 @@ const EmailAddressAddForm = () => {
   const recordTelemetry = useTelemetry();
   const [formState, formAction] = useFormState(onAddEmail, {});
   const [hasPressedButton, setHasPressedButton] = useState(false);
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     if (typeof formState.success !== "undefined") {
@@ -94,7 +96,16 @@ const EmailAddressAddForm = () => {
       });
     }
   }, [formState, recordTelemetry]);
-  console.log(hasPressedButton);
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const isEmailValid = () => {
+    // Regex for checking email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   return !formState.success ? (
     <>
@@ -107,23 +118,26 @@ const EmailAddressAddForm = () => {
         <label htmlFor="newEmailAddress">
           {l10n.getString("add-email-address-input-label")}
         </label>
-        <input type="email" name="newEmailAddress" id="newEmailAddress" />
+        <input
+          type="email"
+          name="newEmailAddress"
+          id="newEmailAddress"
+          onChange={handleInputChange}
+        />
         <Button
           type="submit"
           variant="primary"
           className={styles.btn}
+          disabled={!isEmailValid()}
           onPress={() => {
             setHasPressedButton(true);
           }}
         >
           {hasPressedButton ? (
-            <div className={styles.ldsRing}>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
+            <Loader />
           ) : (
+            // <Loader />
+
             l10n.getString("add-email-send-verification-button")
           )}
         </Button>
