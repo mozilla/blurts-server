@@ -125,12 +125,17 @@ export function AutomaticRemoveView(props: Props) {
       },
     );
 
+  console.log({ monthlySubscriptionUrl });
+  console.log({ yearlySubscriptionUrl });
   const monthlySubscriptionUrlWithAttributions = addAttributions(
     monthlySubscriptionUrl,
   );
   const yearlySubscriptionUrlWithAttributions = addAttributions(
     yearlySubscriptionUrl,
   );
+
+  console.log({ monthlySubscriptionUrlWithAttributions });
+  console.log({ yearlySubscriptionUrlWithAttributions });
 
   const [selectedPlanIsYearly, setSelectedPlanIsYearly] = useState(true);
 
