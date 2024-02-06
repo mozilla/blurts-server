@@ -45,7 +45,6 @@ export type Props = {
 export const View = (props: Props) => {
   return (
     <>
-      <GaScript nonce={props.nonce} />
       <main className={styles.wrapper}>
         <nav className={styles.nav}>
           <h1>{props.l10n.getString("public-nav-name")}</h1>
