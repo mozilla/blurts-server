@@ -16,6 +16,7 @@ import { getCountryCode } from "../../../../../../../../../functions/server/getC
 import { activateAndOptoutProfile } from "../../../../../../../../../functions/server/onerep";
 import { logger } from "../../../../../../../../../functions/server/logging";
 import { getL10n } from "../../../../../../../../../functions/server/l10n";
+import { refreshStoredScanResults } from "../../../../../../../../../functions/server/refreshStoredScanResults";
 
 export default async function WelcomeToPlusPage() {
   const session = await getServerSession(authOptions);
@@ -33,6 +34,11 @@ export default async function WelcomeToPlusPage() {
   }
 
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
+  if (profileId === null) {
+    // If the user subscribed to Plus before running a scan, have them run one now:
+    redirect("/user/welcome/");
+  }
+
   const scanData = await getLatestOnerepScanResults(profileId);
   const subBreaches = await getSubscriberBreaches(session.user);
   const subscriberEmails = await getSubscriberEmails(session.user);
@@ -49,6 +55,13 @@ export default async function WelcomeToPlusPage() {
   // auto-removal process.
   // Let’s make sure the users OneRep profile is activated:
   await activateAndOptoutProfile({ profileId, forceActivation: true });
+
+  // NOTE: This has been added in the hopes to fix MNTOR-2690 and needs to be
+  // verified in a live environment. If this issue persists or is solved
+  // otherwise this this line is safe to be removed.
+  // Make sure the current state of the stored scan results is being reflected
+  // after we just initiated automatic removal.
+  await refreshStoredScanResults(profileId);
 
   return (
     <WelcomeToPlusView

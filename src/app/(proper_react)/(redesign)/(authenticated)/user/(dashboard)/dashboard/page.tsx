@@ -36,6 +36,7 @@ import {
   addAttributionForSubscriber,
   getLatestAttributionForSubscriberWithType,
 } from "../../../../../../../db/tables/attributions";
+import { getUserId } from "../../../../../../functions/server/getUserId";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
@@ -68,30 +69,32 @@ export default async function DashboardPage() {
     brokerScanReleaseDate.getTime();
   const isPremiumUser = hasPremium(session.user);
 
-  if (
-    !hasRunScan &&
-    (isPremiumUser ||
-      (isNewUser &&
-        canSubscribeToPremium({
-          user: session.user,
-          countryCode: countryCode,
-        })))
+  if (hasRunScan) {
+    await refreshStoredScanResults(profileId);
+
+    // If the current user is a subscriber and their OneRep profile is not
+    // activated: Most likely we were not able or failed to kick-off the
+    // auto-removal process.
+    // Let’s make sure the users OneRep profile is activated:
+    if (isPremiumUser) {
+      await activateAndOptoutProfile({ profileId });
+    }
+  } else if (
+    isPremiumUser ||
+    (isNewUser &&
+      canSubscribeToPremium({
+        user: session.user,
+        countryCode: countryCode,
+      }))
   ) {
     return redirect("/user/welcome/");
   }
 
-  await refreshStoredScanResults(profileId);
-
-  // If the current user is a subscriber and their OneRep profile is not
-  // activated: Most likely we were not able or failed to kick-off the
-  // auto-removal process.
-  // Let’s make sure the users OneRep profile is activated:
-  if (isPremiumUser) {
-    await activateAndOptoutProfile({ profileId });
-  }
-
   const latestScan = await getLatestOnerepScanResults(profileId);
-  const scanCount = await getScansCountForProfile(profileId);
+  const scanCount =
+    typeof profileId === "number"
+      ? await getScansCountForProfile(profileId)
+      : 0;
   const subBreaches = await getSubscriberBreaches(session.user);
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(
@@ -131,14 +134,7 @@ export default async function DashboardPage() {
       utm_source: searchParams.get("utm_source") ?? "",
       utm_term: searchParams.get("utm_term") ?? "",
     };
-    try {
-      await addAttributionForSubscriber(
-        session.user.subscriber.id,
-        attribution,
-      );
-    } catch (e) {
-      //ignore
-    }
+    await addAttributionForSubscriber(session.user.subscriber.id, attribution);
   }
 
   if (additionalSubplatParams.size > 0) {
@@ -150,14 +146,7 @@ export default async function DashboardPage() {
       utm_source: additionalSubplatParams.get("utm_source") ?? "",
       utm_term: additionalSubplatParams.get("utm_term") ?? "",
     };
-    try {
-      await addAttributionForSubscriber(
-        session.user.subscriber.id,
-        attribution,
-      );
-    } catch (e) {
-      //ignore
-    }
+    await addAttributionForSubscriber(session.user.subscriber.id, attribution);
   } else {
     // if "attributionsLastTouch" cookie isn't present, try to load the attribution from the db
     const attributionLastTouch =
@@ -175,6 +164,7 @@ export default async function DashboardPage() {
   return (
     <View
       user={session.user}
+      userId={getUserId(session)}
       isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
       userScanData={latestScan}
@@ -186,6 +176,7 @@ export default async function DashboardPage() {
       fxaSettingsUrl={fxaSettingsUrl}
       scanCount={scanCount}
       totalNumberOfPerformedScans={profileStats?.total}
+      isNewUser={isNewUser}
     />
   );
 }

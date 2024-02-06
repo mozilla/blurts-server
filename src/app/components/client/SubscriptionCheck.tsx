@@ -8,6 +8,9 @@ import { useSession } from "next-auth/react";
 import { useInterval } from "../../hooks/useInterval";
 import { useEffect } from "react";
 
+// This component ensures that the client session is synced with the
+// server session and is not being mounted when running unit tests.
+/* c8 ignore start */
 export const SubscriptionCheck = () => {
   const { update } = useSession();
 
@@ -19,9 +22,9 @@ export const SubscriptionCheck = () => {
   }, []);
 
   // Poll for the session every minute.
-  /* c8 ignore next 2 */
   useInterval(() => {
     void update();
   }, 1000 * 60);
   return <></>;
 };
+/* c8 ignore end */

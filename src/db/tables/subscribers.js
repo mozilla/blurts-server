@@ -454,7 +454,7 @@ async function getOnerepProfileId (subscriberId) {
   const res = await knex('subscribers')
     .select('onerep_profile_id')
     .where('id', subscriberId)
-  return res?.[0]?.["onerep_profile_id"] ?? -1
+  return res?.[0]?.["onerep_profile_id"] ?? null
 }
 /* c8 ignore stop */
 

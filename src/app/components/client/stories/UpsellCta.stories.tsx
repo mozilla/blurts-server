@@ -3,10 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/react";
+import { Session } from "next-auth";
+import { SessionProvider } from "next-auth/react";
 import { UpsellBadge, UpsellButton } from "../UpsellBadge";
 import { createUserWithPremiumSubscription } from "../../../../apiMocks/mockData";
 import { CountryCodeProvider } from "../../../../contextProviders/country-code";
-import { Session } from "next-auth";
 
 type UpsellCtaWrapperProps = {
   countryCode: string;
@@ -21,25 +22,30 @@ const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
     yearly: 13.37,
     monthly: 42.42,
   };
+  const mockedSession = {
+    expires: new Date().toISOString(),
+    user: props.user,
+  };
 
   return (
-    <CountryCodeProvider countryCode={props.countryCode}>
-      {props.isBadge ? (
-        <UpsellBadge
-          user={props.user}
-          monthlySubscriptionUrl={monthlySubscriptionUrl}
-          yearlySubscriptionUrl={yearlySubscriptionUrl}
-          subscriptionBillingAmount={subscriptionBillingAmount}
-        />
-      ) : (
-        <UpsellButton
-          label="Get continuous protection"
-          monthlySubscriptionUrl={monthlySubscriptionUrl}
-          yearlySubscriptionUrl={yearlySubscriptionUrl}
-          subscriptionBillingAmount={subscriptionBillingAmount}
-        />
-      )}
-    </CountryCodeProvider>
+    <SessionProvider session={mockedSession}>
+      <CountryCodeProvider countryCode={props.countryCode}>
+        {props.isBadge ? (
+          <UpsellBadge
+            monthlySubscriptionUrl={monthlySubscriptionUrl}
+            yearlySubscriptionUrl={yearlySubscriptionUrl}
+            subscriptionBillingAmount={subscriptionBillingAmount}
+          />
+        ) : (
+          <UpsellButton
+            label="Get continuous protection"
+            monthlySubscriptionUrl={monthlySubscriptionUrl}
+            yearlySubscriptionUrl={yearlySubscriptionUrl}
+            subscriptionBillingAmount={subscriptionBillingAmount}
+          />
+        )}
+      </CountryCodeProvider>
+    </SessionProvider>
   );
 };
 
