@@ -14,12 +14,33 @@ export const GaScript = ({ nonce }: Props) => {
   /* c8 ignore next 2 */
   const ga4MeasurementId = CONST_GA4_MEASUREMENT_ID || "G-CXG8K4KW4P";
 
+  const debugMode =
+    // `NEXT_PUBLIC_GA4_DEBUG_MODE` being false doesn't negatively impact
+    // the reliability of our tests:
+    /* c8 ignore next 2 */
+    process.env.NEXT_PUBLIC_GA4_DEBUG_MODE === "true" &&
+    process.env.NODE_ENV !== "test";
+
   return typeof navigator !== "undefined" && navigator.doNotTrack !== "1" ? (
-    <script
-      async
-      src={`https://www.googletagmanager.com/gtag/js?id=${ga4MeasurementId}`}
-      nonce={nonce}
-    />
+    <>
+      <script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${ga4MeasurementId}`}
+        nonce={nonce}
+      />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function (...args: unknown[]) {
+              window.dataLayer.push(args);
+            };
+            gtag('js', new Date());
+            gtag('config', ${CONST_GA4_MEASUREMENT_ID}, debug_mode: ${debugMode});
+              `,
+        }}
+      ></script>
+    </>
   ) : (
     <></>
   );

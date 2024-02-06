@@ -5,40 +5,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { CONST_GA4_MEASUREMENT_ID } from "../../constants";
-
-declare global {
-  interface Window {
-    dataLayer: unknown[];
-  }
-}
-
-interface InitGaProps {
-  ga4MeasurementId: string;
-  debugMode: boolean;
-}
-
-const initGa4 = ({ ga4MeasurementId, debugMode }: InitGaProps) => {
-  // Never run in tests:
-  /* c8 ignore next 3 */
-  if (debugMode) {
-    console.info("Initialize GA4");
-  }
-
-  // GA4 setup
-  window.dataLayer = window.dataLayer || [];
-  if (!window.gtag) {
-    window.gtag = function (...args: unknown[]) {
-      window.dataLayer.push(args);
-    };
-    window.gtag("js", new Date());
-    window.gtag("config", ga4MeasurementId, {
-      cookie_domain: window.location.hostname,
-      cookie_flags: "SameSite=None;Secure",
-      debug_mode: debugMode,
-    });
-  }
-};
 
 type Ga4EventOptions = {
   type: "event";
@@ -69,12 +35,6 @@ export const useGa = (): {
         console.info("Did not initialize GA4 due to DoNotTrack.");
       }
       return;
-    }
-
-    if (!window.gtag) {
-      /* c8 ignore next 2 */
-      const ga4MeasurementId = CONST_GA4_MEASUREMENT_ID || "G-CXG8K4KW4P";
-      initGa4({ ga4MeasurementId, debugMode });
     }
   }, [debugMode]);
 
