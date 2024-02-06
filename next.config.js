@@ -155,8 +155,9 @@ const nextConfig = {
       // link, which redirects to a now-404 endpoint. Add a redirect
       // to the new endpoint while we are investigating.
       {
-        source: "/oauth/confirmed*",
-        destination: "/api/auth/callback/fxa*"
+        source: "/oauth/confirmed",
+        destination: "/api/auth/callback/fxa",
+        permanent: false
       },
     ];
   },
