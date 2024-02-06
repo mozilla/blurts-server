@@ -81,7 +81,7 @@ export const useGa = (): {
   return {
     gtag: {
       record: (options) => {
-        if (window.gtag) {
+        if (window !== undefined && window.gtag) {
           window.gtag(options);
           // Only relevant for local development
           /* c8 ignore next 3 */
