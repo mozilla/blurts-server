@@ -4,7 +4,6 @@
 
 "use client";
 
-import Script from "next/script";
 import { CONST_GA4_MEASUREMENT_ID } from "../../../constants";
 
 export type Props = {
@@ -16,7 +15,8 @@ export const GaScript = ({ nonce }: Props) => {
   const ga4MeasurementId = CONST_GA4_MEASUREMENT_ID || "G-CXG8K4KW4P";
 
   return typeof navigator !== "undefined" && navigator.doNotTrack !== "1" ? (
-    <Script
+    <script
+      async
       src={`https://www.googletagmanager.com/gtag/js?id=${ga4MeasurementId}`}
       nonce={nonce}
     />
