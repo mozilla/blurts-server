@@ -31,6 +31,8 @@ import { FaqSection } from "./Faq";
 import { SignInButton } from "../../../components/client/SignInButton";
 import { RebrandAnnouncement } from "./RebrandAnnouncement";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
+import MonitorLogo from "../../images/monitor-logo.svg";
+import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -44,7 +46,14 @@ export const View = (props: Props) => {
   return (
     <main className={styles.wrapper}>
       <nav className={styles.nav}>
-        <h1>{props.l10n.getString("public-nav-name")}</h1>
+        <VisuallyHidden>
+          <h1>{props.l10n.getString("public-nav-name")}</h1>
+        </VisuallyHidden>
+        <Image
+          className={styles.logo}
+          src={MonitorLogo}
+          alt={props.l10n.getString("public-nav-name")}
+        />
         <SignInButton />
       </nav>
       <header className={styles.hero}>
