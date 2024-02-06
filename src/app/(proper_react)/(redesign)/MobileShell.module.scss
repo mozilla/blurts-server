@@ -72,11 +72,11 @@
   height: 100%;
   // I’m not entirely sure if this is the case, but my suspicion is
   // the following: Adding `position: relative` makes this the most top-level
-  // relative positionend element in the DOM branch its in. This instructs it to
+  // relative positionend element in the DOM branch it’s in. This instructs it to
   // orient its `height: 100%` with regards to the window and not itself.
   // Otherwise, WebKit based browsers seem to take the entire inner size of
-  // `.nonHeader` into account when calculating the height of `body` the entire,
-  //  which causes an additonal scroll on the `body` element.
+  // `.nonHeader` into account when calculating the height of `body` and that
+  // causes an additonal scroll on the `body` element.
   // An alternative option would be to set `height: 100vw`. Since `vw` units
   // can have unexpected behaviour on mobile devices this should do for now.
   position: relative;
