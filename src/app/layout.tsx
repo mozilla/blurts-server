@@ -16,7 +16,6 @@ import { metropolis } from "./fonts/Metropolis/metropolis";
 import { CONST_GA4_MEASUREMENT_ID } from "../constants";
 import { headers } from "next/headers";
 import { GoogleAnalyticsWorkaround } from "./components/client/GoogleAnalyticsWorkaround";
-import { getNonce } from "./deprecated/functions/server/getNonce";
 
 // DO NOT ADD SECRETS: Env variables added here become public.
 const PUBLIC_ENVS = {
@@ -58,6 +57,7 @@ export default async function RootLayout({
 }) {
   const currentLocale = getLocale(getL10nBundles());
   const session = await getServerSession(authOptions);
+  const nonce = headers().get("x-nonce") ?? "";
 
   return (
     <html lang={currentLocale}>
@@ -75,7 +75,7 @@ export default async function RootLayout({
       {headers().get("DNT") !== "1" && (
         <GoogleAnalyticsWorkaround
           gaId={CONST_GA4_MEASUREMENT_ID}
-          nonce={getNonce()}
+          nonce={nonce}
         />
       )}
     </html>
