@@ -11,6 +11,7 @@ import { MobileShell } from "./MobileShell";
 import Link from "next/link";
 import { PageLink } from "./PageLink";
 import { ExtendedReactLocalization } from "../../hooks/l10n";
+import { GaScript } from "./GaScript";
 import {
   getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
@@ -33,6 +34,7 @@ export const Shell = (props: Props) => {
 
   return (
     <>
+      <GaScript nonce={props.nonce} />
       {/* This component ensures that the client session is synced with the
       server session and is not being mounted when running unit tests. */}
       {/* c8 ignore next */}

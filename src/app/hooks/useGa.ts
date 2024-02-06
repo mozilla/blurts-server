@@ -7,7 +7,11 @@
 import { useEffect } from "react";
 import { CONST_GA4_MEASUREMENT_ID } from "../../constants";
 
-// TODO replace with sendGAEvent from '@next/third-parties/google'
+declare global {
+  interface Window {
+    dataLayer: unknown[];
+  }
+}
 
 interface InitGaProps {
   ga4MeasurementId: string;
@@ -16,21 +20,16 @@ interface InitGaProps {
 
 const initGa4 = ({ ga4MeasurementId, debugMode }: InitGaProps) => {
   // Never run in tests:
-  /* c8 ignore next 8 */
+  /* c8 ignore next 3 */
   if (debugMode) {
-    console.info("Initialize GA4 debug mode");
-  }
-
-  if (typeof navigator !== "undefined" && navigator.doNotTrack === "1") {
-    console.info("doNotTrack enabled, not initializing GA4");
-    return;
+    console.info("Initialize GA4");
   }
 
   // GA4 setup
   window.dataLayer = window.dataLayer || [];
   if (!window.gtag) {
     window.gtag = function (...args: unknown[]) {
-      window.dataLayer?.push(args);
+      window.dataLayer.push(args);
     };
     window.gtag("js", new Date());
     window.gtag("config", ga4MeasurementId, {
@@ -82,12 +81,6 @@ export const useGa = (): {
   return {
     gtag: {
       record: (options) => {
-        // Guard against this running server-side.
-        /* c8 ignore next 4 */
-        if (typeof window === "undefined") {
-          console.warn("window is not defined");
-          return;
-        }
         if (window.gtag) {
           window.gtag(options);
           // Only relevant for local development
