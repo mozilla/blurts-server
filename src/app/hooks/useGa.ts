@@ -5,6 +5,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { useHasRenderedClientSide } from "./useHasRenderedClientSide";
 
 type Ga4EventOptions = {
   type: "event";
@@ -17,6 +18,7 @@ export const useGa = (): {
     record: (options: Ga4EventOptions) => void;
   };
 } => {
+  const hasRenderedClientSide = useHasRenderedClientSide();
   const debugMode =
     // `NEXT_PUBLIC_GA4_DEBUG_MODE` being false doesn't negatively impact
     // the reliability of our tests:
@@ -41,11 +43,11 @@ export const useGa = (): {
   return {
     gtag: {
       record: (options) => {
-        if (window !== undefined && window.gtag) {
+        if (hasRenderedClientSide && window !== undefined && window.gtag) {
           window.gtag(options);
           // Only relevant for local development
           /* c8 ignore next 3 */
-        } else if (!window.gtag && debugMode) {
+        } else if (hasRenderedClientSide && !window.gtag && debugMode) {
           console.info("GA4 is not initialized.");
         }
       },

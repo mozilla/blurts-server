@@ -5,6 +5,7 @@
 "use client";
 
 import Script from "next/script";
+import { useHasRenderedClientSide } from "../../hooks/useHasRenderedClientSide";
 
 export type Props = {
   nonce: string;
@@ -17,9 +18,10 @@ declare global {
 }
 
 export const GaScript = ({ nonce }: Props) => {
-  /* c8 ignore next 2 */
-
-  return typeof navigator !== "undefined" && navigator.doNotTrack !== "1" ? (
+  const hasRenderedClientSide = useHasRenderedClientSide();
+  return hasRenderedClientSide &&
+    typeof navigator !== "undefined" &&
+    navigator.doNotTrack !== "1" ? (
     <Script
       type="module"
       src="/nextjs_migration/client/js/analytics.js"

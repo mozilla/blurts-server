@@ -9,9 +9,7 @@ import { GaScript } from "./GaScript";
 afterEach(() => {
   // Clean up script elements
   [...document.getElementsByTagName("script")].forEach((element) => {
-    const isGaScriptElement = element.src.includes(
-      "https://www.googletagmanager.com/gtag/js",
-    );
+    const isGaScriptElement = element.src.includes("analytics.js");
     if (isGaScriptElement) {
       element.remove();
     }
