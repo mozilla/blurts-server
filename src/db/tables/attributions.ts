@@ -55,8 +55,20 @@ async function addAttributionForSubscriber(
 ) {
   logger.info("addAttributionForSubscriber", { subscriberId, attribution });
   attribution.subscriber_id = subscriberId;
-  const res = await knex("attributions").insert(attribution).returning("*");
-  return res[0];
+  let res;
+  try {
+    res = await knex("attributions").insert(attribution).returning("*");
+  } catch (e) {
+    if ((e as Error).message.includes("violates unique constraint")) {
+      logger.info("addAttributionForSubscriber", {
+        subscriberId,
+        error: (e as Error).message,
+      });
+    } else {
+      logger.error(e);
+    }
+  }
+  return res?.[0];
 }
 
 async function deleteAttributionById(attributionId: number) {
