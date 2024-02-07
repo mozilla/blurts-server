@@ -239,9 +239,8 @@ try {
       const isPopulatedPlaceOfInterest =
         featureClass === allowedFeatureClass &&
         allowedFeatureCodes.includes(featureCode);
-      const hasPopulation = Number(population) !== 0;
 
-      if (isPopulatedPlaceOfInterest && hasPopulation) {
+      if (isPopulatedPlaceOfInterest) {
         const alternateNames = parsedAlternateNames.filter(
           ({ alternateOf, name: alternateName }) =>
             alternateOf === geonameId && alternateName !== name,
