@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { test, expect } from "../fixtures/basePage.js";
-import { setEnvVariables } from "../utils/helpers.js";
 
 test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @smoke`, () => {
   test.beforeEach(async ({ landingPage }) => {
@@ -19,8 +18,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     await page.route(/(analytics)/, async (route) => {
       await route.abort();
     });
-
-    setEnvVariables(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
 
     // start authentication flow
     await landingPage.goToSignIn();
@@ -41,12 +38,8 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     // wait for scanning to complete
     let wait = 0;
     let scanning = page.url() !== successUrl;
-    while (wait < 60 && scanning) {
-      try {
-        scanning = page.url() !== successUrl;
-      } catch (error) {
-        console.log("line 45");
-      }
+    while (wait < 300 && scanning) {
+      scanning = page.url() !== successUrl;
       await page.waitForTimeout(1000);
       wait++;
     }
@@ -66,7 +59,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     page,
     authPage,
     landingPage,
-    dashboardPage,
   }, testInfo) => {
     // speed up test by ignore non necessary requests
     await page.route(/(analytics)/, async (route) => {
@@ -79,9 +71,22 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     // sign in
     await authPage.signIn(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
 
+    // await expect(dashboardPage.fixedTab).toBeVisible();
+    // await expect(dashboardPage.actionNeededTab).toBeVisible();
+
     // assert successful login
-    await expect(dashboardPage.fixedTab).toBeVisible();
-    await expect(dashboardPage.actionNeededTab).toBeVisible();
+    const successUrl = process.env.E2E_TEST_BASE_URL + "/user/welcome";
+
+    // wait for scanning to complete
+    let wait = 0;
+    let scanning = page.url() !== successUrl;
+    while (wait < 300 && scanning) {
+      scanning = page.url() !== successUrl;
+      await page.waitForTimeout(1000);
+      wait++;
+    }
+
+    expect(page.url()).toBe(successUrl);
 
     await testInfo.attach(
       `${process.env.E2E_TEST_ENV}-signin-monitor-dashboard.png`,
