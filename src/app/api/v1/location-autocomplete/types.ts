@@ -834,6 +834,8 @@ export type LocationData = [
   LocationModificationDate,
 ];
 
+// NOTE: The location JSON uses short keys and
+// optional properties to reduce filesize.
 export interface RelevantLocation {
   id: string; // GeoName location ID
   n: string; // location name

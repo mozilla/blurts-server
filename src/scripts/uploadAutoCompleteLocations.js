@@ -258,6 +258,8 @@ try {
           return alternateName.name;
         });
 
+        // NOTE: Using short keys and only including entries when available
+        // keeps the resulting JSON significantly smaller.
         relevantLocations.push({
           id: geonameId,
           // switch names if an alternate name is the preferred location name
