@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { test, expect } from "../fixtures/basePage.js";
+import { setEnvVariables } from "../utils/helpers.js";
 
 test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @smoke`, () => {
   test.beforeEach(async ({ landingPage }) => {
@@ -19,6 +20,8 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
       await route.abort();
     });
 
+    setEnvVariables(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
+
     // start authentication flow
     await landingPage.goToSignIn();
 
@@ -28,10 +31,27 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
 
     // assert successful login
     const successUrl =
-      process.env.E2E_TEST_ENV === "local"
-        ? "/user/dashboard"
-        : "/user/welcome";
-    expect(page.url()).toBe(`${process.env.E2E_TEST_BASE_URL}${successUrl}`);
+      process.env.E2E_TEST_BASE_URL +
+      `${
+        process.env.E2E_TEST_ENV === "local"
+          ? "/user/dashboard"
+          : "/user/welcome"
+      }`;
+
+    // wait for scanning to complete
+    let wait = 0;
+    let scanning = page.url() !== successUrl;
+    while (wait < 60 && scanning) {
+      try {
+        scanning = page.url() !== successUrl;
+      } catch (error) {
+        console.log("line 45");
+      }
+      await page.waitForTimeout(1000);
+      wait++;
+    }
+
+    expect(page.url()).toBe(successUrl);
 
     await testInfo.attach(
       `${process.env.E2E_TEST_ENV}-signup-monitor-dashboard.png`,
