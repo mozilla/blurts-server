@@ -25,10 +25,7 @@ export class AuthPage {
   }
 
   async continue() {
-    await Promise.all([
-      this.page.waitForNavigation(),
-      this.continueButton.click(),
-    ]);
+    await Promise.all([this.continueButton.click()]);
   }
 
   async enterVerificationCode(code: string) {
