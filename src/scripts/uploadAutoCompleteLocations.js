@@ -264,8 +264,8 @@ try {
           n: preferredName ? preferredName.name : name,
           s: admin1Code,
           ...(Number(population) > 0 && {
-              p: population,
-            }),
+            p: population,
+          }),
           ...(alternateNames &&
             alternateNames.length > 0 && {
               a: alternateNamesFinal,
