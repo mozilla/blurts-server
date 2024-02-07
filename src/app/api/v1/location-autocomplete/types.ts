@@ -835,14 +835,11 @@ export type LocationData = [
 ];
 
 export interface RelevantLocation {
-  id: string;
-  name: string;
-  stateCode: string;
-  countryCode: string;
-  featureClass: string;
-  featureCode: string;
-  population: string;
-  alternateNames?: Array<string>;
+  id: string; // GeoName location ID
+  n: string; // location name
+  s: string; // state code
+  p?: string; // population
+  a?: Array<string>; // alternate location names
 }
 
 export interface RelevantLocationAlternate {

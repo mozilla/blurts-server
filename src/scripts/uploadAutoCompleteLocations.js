@@ -261,15 +261,14 @@ try {
         relevantLocations.push({
           id: geonameId,
           // switch names if an alternate name is the preferred location name
-          name: preferredName ? preferredName.name : name,
-          stateCode: admin1Code,
-          countryCode: "USA",
-          featureClass,
-          featureCode,
-          population,
+          n: preferredName ? preferredName.name : name,
+          s: admin1Code,
+          ...(Number(population) > 0 && {
+              p: population,
+            }),
           ...(alternateNames &&
             alternateNames.length > 0 && {
-              alternateNames: alternateNamesFinal,
+              a: alternateNamesFinal,
             }),
         });
       }

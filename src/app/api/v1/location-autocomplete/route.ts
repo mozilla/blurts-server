@@ -34,10 +34,11 @@ function getLocationsByQuery(searchQuery: string) {
   }
 
   const locationNames = locationData.data.map((location: RelevantLocation) => {
-    const { name, stateCode, countryCode, alternateNames } = location;
-    const alternateNamesJoined = alternateNames ? alternateNames.join(" ") : "";
+    const { n, s, a } = location;
+    const alternateNamesJoined = a ? a.join(" ") : "";
+    const countryCode = "USA";
 
-    return `${name} ${stateCode} ${countryCode} ${alternateNamesJoined}`;
+    return `${n} ${s} ${countryCode} ${alternateNamesJoined}`;
   });
 
   // For search options see: https://github.com/leeoniya/uFuzzy#options
@@ -79,7 +80,7 @@ function getLocationsByQuery(searchQuery: string) {
       .slice(0, locationSplitIndex)
       .sort(
         (a: RelevantLocation, b: RelevantLocation) =>
-          Number(b.population) - Number(a.population),
+          Number(b.p ?? 0) - Number(a.p ?? 0),
       ),
     ...resultsOrdered.slice(locationSplitIndex + 1),
   ];
