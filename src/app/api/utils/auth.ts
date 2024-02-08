@@ -124,8 +124,7 @@ export const authOptions: AuthOptions = {
             delete updatedUser.breach_resolution;
             token.subscriber = updatedUser;
           }
-        }
-        if (!existingUser && email) {
+        } else if (!existingUser && email) {
           const verifiedSubscriber = await addSubscriber(
             email,
             profile.locale,
@@ -169,7 +168,21 @@ export const authOptions: AuthOptions = {
 
           await initEmail(process.env.SMTP_URL);
           await sendEmail(data.recipientEmail, subject, emailTemplate);
+        } else {
+          logger.warn("new_user_no_email", {
+            token,
+            account,
+            profile,
+            trigger,
+          });
         }
+      } else {
+        logger.warn("new_user_no_account", {
+          token,
+          account,
+          profile,
+          trigger,
+        });
       }
       return token;
     },
