@@ -36,7 +36,7 @@ export class AuthPage {
 
   async enterEmail(email: string) {
     await this.emailInputField.fill(email);
-    await this.continue({ waitForURL: "**/accounts.stage.mozaws.net/**" });
+    await this.continue({ waitForURL: "**/oauth/**" });
   }
 
   async enterPassword() {
@@ -60,7 +60,7 @@ export class AuthPage {
       process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
     );
     await this.ageInputField.type("31");
-    await this.continue({ waitForURL: "**/accounts.stage.mozaws.net/**" });
+    await this.continue({ waitForURL: "**/oauth/**" });
     const vc = await getVerificationCode(email, page);
     await this.enterVerificationCode(vc);
   }
