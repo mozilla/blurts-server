@@ -86,11 +86,15 @@ high-risk-breach-bank-account-step-three = Hesaplarınızda tanımadığınız �
 
 high-risk-breach-social-security-title = Sosyal güvenlik numaranız ele geçirildi
 high-risk-breach-social-security-description = Dolandırıcılar sosyal güvenlik numaranızla kredi başvurusunda bulunabilir veya kredi kartı talep edebilir. Mali zararı önlemek için hemen harekete geçin.
+high-risk-breach-social-security-step-one = <link_to_info>Dolandırıcılık uyarısını açarak veya kredinizi dondurarak</link_to_info> kendinizi koruyun.
 high-risk-breach-social-security-step-two = <link_to_info>Kredi raporunuzda</link_to_info> tanımadığınız hesaplar olup olmadığını kontrol edin.
 
 # Social Security Number Modal
 
 ssn-modal-title = Dolandırıcılık uyarıları ve kredi dondurmaları hakkında
+ssn-modal-description-fraud-part-one = <b>Dolandırıcılık uyarısını</b> açarsanız işletmelerin adınıza kredi kullanmak için kimliğinizi doğrulaması gerekir. Ücretsizdir, bir yıl sürer ve kredi puanınızı olumsuz etkilemez.
+ssn-modal-description-fraud-part-two = Süreci başlatmak için ABD'deki üç kredi ofisinden biriyle iletişime geçin. Üçüyle birden iletişime geçmeniz gerekmiyor.
+ssn-modal-description-freeze-credit-part-two = Kredinizi dondurmak için üç kredi ofisinden biriyle iletişime geçin: <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link> ve <transunion_link>TransUnion</transunion_link>.
 ssn-modal-learn-more = Dolandırıcılık uyarıları ve kredi dondurmaları hakkında bilgi alın
 ssn-modal-ok = Tamam
 
