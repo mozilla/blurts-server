@@ -34,10 +34,11 @@ import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFl
 import { parseIso8601Datetime } from "../../../../../../../utils/parse";
 import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
 import { getUserId } from "../../../../../../functions/server/getUserId";
+import { checkSession } from "../../../../../../functions/server/checkSession";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
-  if (!session?.user?.subscriber?.id) {
+  if (!checkSession(session) || !session?.user?.subscriber?.id) {
     return redirect("/");
   }
 
