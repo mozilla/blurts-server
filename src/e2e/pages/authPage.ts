@@ -43,7 +43,7 @@ export class AuthPage {
     await this.passwordInputField.fill(
       process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
     );
-    await this.continue({ waitForURL: "**/accounts.stage.mozaws.net/**" });
+    await this.continue({ waitForURL: "**/user/**" });
   }
 
   async signIn(email: string) {
