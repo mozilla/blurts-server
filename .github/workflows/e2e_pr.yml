@@ -82,6 +82,9 @@ jobs:
           # old user accounts, so let's pretend they all are:
           BROKER_SCAN_RELEASE_DATE: "3000-12-31"
           DEBUG: pw:api
+          # Our tests are currently set up to expect accounts to act like
+          # old user accounts, so let's pretend they all are:
+          BROKER_SCAN_RELEASE_DATE: "3000-12-31"
       - uses: actions/upload-artifact@v3
         if: always()
         with:
