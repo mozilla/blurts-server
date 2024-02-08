@@ -24,28 +24,26 @@ export class AuthPage {
     this.verifyCodeInputField = page.locator("div.card input");
   }
 
-  async continue() {
-    await Promise.all([
-      this.page.waitForNavigation(),
-      this.continueButton.click(),
-    ]);
+  async continue({ waitForURL = "**/*" }) {
+    await this.continueButton.click();
+    await this.page.waitForURL(waitForURL);
   }
 
   async enterVerificationCode(code: string) {
     await this.verifyCodeInputField.fill(code);
-    await this.continue();
+    await this.continue({ waitForURL: "**/user/**" });
   }
 
   async enterEmail(email: string) {
     await this.emailInputField.fill(email);
-    await this.continue();
+    await this.continue({ waitForURL: "**/accounts.stage.mozaws.net/**" });
   }
 
   async enterPassword() {
     await this.passwordInputField.fill(
       process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
     );
-    await this.continue();
+    await this.continue({ waitForURL: "**/accounts.stage.mozaws.net/**" });
   }
 
   async signIn(email: string) {
@@ -62,7 +60,7 @@ export class AuthPage {
       process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
     );
     await this.ageInputField.type("31");
-    await this.continue();
+    await this.continue({ waitForURL: "**/accounts.stage.mozaws.net/**" });
     const vc = await getVerificationCode(email, page);
     await this.enterVerificationCode(vc);
   }

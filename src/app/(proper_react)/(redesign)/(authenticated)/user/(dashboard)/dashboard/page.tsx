@@ -83,7 +83,7 @@ export default async function DashboardPage() {
         countryCode: countryCode,
       }))
   ) {
-    return redirect("/user/welcome/");
+    // return redirect("/user/welcome/");
   }
 
   const latestScan = await getLatestOnerepScanResults(profileId);
