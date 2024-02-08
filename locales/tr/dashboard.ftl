@@ -97,8 +97,8 @@ dashboard-top-banner-protect-your-data-cta = Hadi düzeltelim
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
 dashboard-top-banner-non-us-protect-your-data-description-line1 =
     { $exposures_unresolved_num ->
-        [one] Verilerinizin ele geçirildiği { $exposures_unresolved_num } veri ihlali bulduk.
-       *[other] Verilerinizin ele geçirildiği { $exposures_unresolved_num } veri ihlali bulduk.
+        [one] { $exposures_unresolved_num } verinizin ele geçirildiğini bulduk.
+       *[other] { $exposures_unresolved_num } verinizin ele geçirildiğini bulduk.
     }
 # Note: this line is preceded by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
