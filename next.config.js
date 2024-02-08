@@ -143,6 +143,11 @@ const nextConfig = {
         destination: "/:path*",
         permanent: true,
       },
+      {
+        source: "/user/dashboard/fix/data-broker-profiles/welcome-to-premium",
+        destination: "/user/dashboard/fix/data-broker-profiles/welcome-to-plus",
+        permanent: true,
+      },
       // We used to have a page with security tips;
       // if folks get sent there via old lnks, redirect them to the most
       // relevant page on SuMo:
