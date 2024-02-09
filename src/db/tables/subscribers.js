@@ -85,7 +85,7 @@ async function getSubscriberByFxaUid (uid) {
 async function getSubscriberByEmail (email) {
   const [subscriber] = await knex('subscribers')
   .where("primary_verified", true)
-  .whereILike('primary_email', email)
+  .whereILike("primary_email", email)
   const subscriberAndEmails = await joinEmailAddressesToSubscriber(subscriber)
   return subscriberAndEmails
 }
