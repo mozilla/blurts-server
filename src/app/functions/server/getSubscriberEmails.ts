@@ -3,9 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Session } from "next-auth";
-import { getSubscriberByEmail } from "../../../db/tables/subscribers.js";
+import { getSubscriberByFxaUid } from "../../../db/tables/subscribers.js";
 import { getUserEmails } from "../../../db/tables/emailAddresses.js";
-import { logger } from "./logging";
 
 /**
  * NOTE: new function to replace getUserBreaches
@@ -15,22 +14,11 @@ import { logger } from "./logging";
 export async function getSubscriberEmails(
   user: Session["user"],
 ): Promise<string[]> {
+  if (!user.subscriber?.fxa_uid) {
+    throw new Error("No session");
+  }
   const emailArray: string[] = [user.email];
-  // FIXME case-insensitivity issues, fallback to previous behavior https://mozilla-hub.atlassian.net/browse/MNTOR-2936
-  const email = user.subscriber?.fxa_profile_json?.email;
-
-  let subscriber;
-  if (email) {
-    subscriber = await getSubscriberByEmail(email);
-  }
-  if (!subscriber?.id) {
-    logger.warn("fallback_subscriber_email", { user });
-    subscriber = await getSubscriberByEmail(user.email);
-  }
-  if (!subscriber?.id) {
-    logger.error("no_subscriber_for_email", { user });
-    throw new Error("no subscriber ID for email");
-  }
+  const subscriber = await getSubscriberByFxaUid(user.subscriber?.fxa_uid);
   (await getUserEmails(subscriber.id)).forEach((e) => emailArray.push(e.email));
   return emailArray;
 }

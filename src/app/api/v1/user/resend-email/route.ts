@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { logger } from "../../../../functions/server/logging";
 import AppConstants from "../../../../../appConstants";
-import { getSubscriberByEmail } from "../../../../../db/tables/subscribers";
+import { getSubscriberByFxaUid } from "../../../../../db/tables/subscribers";
 import { getUserEmails } from "../../../../../db/tables/emailAddresses";
 import { sendVerificationEmail } from "../../../utils/email";
 import { getL10n } from "../../../../functions/server/l10n";
@@ -21,10 +21,10 @@ export async function POST(req: NextRequest) {
   const token = await getToken({ req });
   const l10n = getL10n();
 
-  if (typeof token?.email === "string") {
+  if (typeof token?.subscriber?.fxa_uid === "string") {
     try {
       const { emailId }: EmailResendRequest = await req.json();
-      const subscriber = await getSubscriberByEmail(token.email);
+      const subscriber = await getSubscriberByFxaUid(token.subscriber?.fxa_uid);
       const existingEmail = await getUserEmails(subscriber.id);
 
       const filteredEmail = existingEmail.filter(
