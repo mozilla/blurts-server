@@ -97,8 +97,17 @@ export async function getUserBreaches({
 export async function getSubscriberBreaches(
   user: Session["user"],
 ): Promise<SubscriberBreach[]> {
-  // FIXME this does not always return a subscriber https://mozilla-hub.atlassian.net/browse/MNTOR-2936
-  const subscriber = await getSubscriberByEmail(user.email);
+  // FIXME case-insensitivity issues, fallback to previous behavior https://mozilla-hub.atlassian.net/browse/MNTOR-2936
+  const email = user.subscriber?.fxa_profile_json?.email;
+
+  let subscriber;
+  if (email) {
+    subscriber = await getSubscriberByEmail(email);
+  }
+  if (!subscriber?.id) {
+    logger.warn("fallback_subscriber_email", { user });
+    subscriber = await getSubscriberByEmail(user.email);
+  }
   if (!subscriber?.id) {
     logger.error("no_subscriber_for_email", { user });
     throw new Error("no subscriber ID for email");
