@@ -6,12 +6,11 @@
 
 import { usePathname } from "next/navigation";
 // Imports for the `useGlean` and `useGa` hooks are restricted.
-/* eslint-disable no-restricted-imports */
-import { useGa } from "./useGa";
+/* eslint-disable-next-line no-restricted-imports */
 import { useGlean } from "./useGlean";
-/* eslint-enable no-restricted-imports */
 import { GleanMetricMap } from "../../telemetry/generated/_map";
 import { convertCamelToSnakeCase } from "../functions/universal/convertCamelToSnakeCase";
+import { sendGAEvent } from "../components/client/GoogleAnalyticsWorkaround";
 
 const TelemetryPlatforms = {
   Glean: "glean",
@@ -21,7 +20,6 @@ const TelemetryPlatforms = {
 export const useTelemetry = () => {
   const path = usePathname();
   const recordGlean = useGlean();
-  const { gtag } = useGa();
 
   const { Glean, Ga } = TelemetryPlatforms;
   const recordTelemetry = <
@@ -42,16 +40,11 @@ export const useTelemetry = () => {
       });
     }
     if (platforms.includes(Ga)) {
-      gtag.record({
-        type: "event",
-        // Convert event category keys from camelCase to snake_case for GA
-        // so they match the telemetry that is reported by Glean.
-        name: convertCamelToSnakeCase(eventModule),
-        params: {
-          ...data,
-          action: event,
-          page_location: path,
-        },
+      sendGAEvent({
+        event: convertCamelToSnakeCase(eventModule),
+        ...data,
+        action: event,
+        page_location: path,
       });
     }
   };

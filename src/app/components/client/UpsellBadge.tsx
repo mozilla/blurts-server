@@ -16,13 +16,10 @@ import {
   hasPremium,
 } from "../../functions/universal/user";
 import styles from "./UpsellBadge.module.scss";
-// TODO: The use of `useGA` is restricted and will be cleaned up
-// together with MNTOR-2335.
-// eslint-disable-next-line no-restricted-imports
-import { useGa } from "../../hooks/useGa";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import { CountryCodeContext } from "../../../contextProviders/country-code";
 import { useSession } from "next-auth/react";
+import { sendGAEvent } from "./GoogleAnalyticsWorkaround";
 
 export type UpsellButtonProps = {
   monthlySubscriptionUrl: string;
@@ -38,7 +35,6 @@ export function UpsellButton(
     label: string;
   },
 ) {
-  const { gtag } = useGa();
   const recordTelemetry = useTelemetry();
   const pathname = usePathname();
 
@@ -50,13 +46,10 @@ export function UpsellButton(
           button_id: "nav_upsell",
         });
       }
-      gtag.record({
-        type: "event",
-        name: "premium_upsell_modal",
-        params: {
-          action: isOpen ? "opened" : "closed",
-          page_location: pathname,
-        },
+      sendGAEvent({
+        event: "premium_upsell_modal",
+        action: isOpen ? "opened" : "closed",
+        page_location: pathname,
       });
     },
   });

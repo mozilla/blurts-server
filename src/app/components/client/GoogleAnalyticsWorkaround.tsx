@@ -83,7 +83,10 @@ export const GoogleAnalyticsWorkaround = (
   );
 };
 
-export const sendGAEvent = (...args: object[]) => {
+export type GAEvent = Record<string, unknown> & {
+  event: string;
+};
+export const sendGAEvent = (...args: GAEvent[]) => {
   if (currDataLayerName === undefined) {
     console.warn(`@next/third-parties: GA has not been initialized`);
     return;
