@@ -85,11 +85,16 @@ jobs:
                     "$CIRCLE_PROJECT_REPONAME" \
                     "$CIRCLE_BUILD_URL" > version.json
             - run:
+                name: Create sentry_auth_token
+                command: |
+                    printf "$SENTRY_AUTH_TOKEN" > /root/sentry_auth_token
+            - run:
                 name: Build Docker image
                 command: |
                   docker build --tag blurts-server \
+                  --no-cache \
                   --progress=plain \
-                  --secret id=SENTRY_AUTH_TOKEN \
+                  --secret id=/root/sentry_auth_token \
                   --build-arg SENTRY_RELEASE="$CIRCLE_TAG" \
                   .
             - run:
