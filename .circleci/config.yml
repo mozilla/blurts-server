@@ -89,6 +89,7 @@ jobs:
                 command: |
                   docker build --tag blurts-server \
                   --progress=plain \
+                  --secret id=SENTRY_AUTH_TOKEN
                   --build-arg SENTRY_RELEASE="$CIRCLE_TAG" \
                   .
             - run:
