@@ -94,7 +94,12 @@ export const authOptions: AuthOptions = {
           subscriptions: profile.subscriptions ?? [],
         };
       }
-      if (account && typeof profile?.email === "string") {
+
+      if (!account) {
+        return token;
+      }
+
+      if (typeof profile?.email === "string") {
         // We're signing in with FxA; store user in database if not present yet.
 
         // Note: we could create an [Adapter](https://next-auth.js.org/tutorials/creating-a-database-adapter)
@@ -124,8 +129,7 @@ export const authOptions: AuthOptions = {
             delete updatedUser.breach_resolution;
             token.subscriber = updatedUser;
           }
-        }
-        if (!existingUser && email) {
+        } else if (!existingUser && email) {
           const verifiedSubscriber = await addSubscriber(
             email,
             profile.locale,
@@ -169,7 +173,21 @@ export const authOptions: AuthOptions = {
 
           await initEmail(process.env.SMTP_URL);
           await sendEmail(data.recipientEmail, subject, emailTemplate);
+        } else {
+          logger.warn("no_existing_user_or_email", {
+            token,
+            account,
+            profile,
+            trigger,
+          });
         }
+      } else {
+        logger.warn("profile_email_not_string", {
+          token,
+          account,
+          profile,
+          trigger,
+        });
       }
       return token;
     },

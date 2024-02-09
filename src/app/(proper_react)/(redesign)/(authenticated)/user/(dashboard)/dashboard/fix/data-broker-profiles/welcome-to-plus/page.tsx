@@ -17,12 +17,13 @@ import { activateAndOptoutProfile } from "../../../../../../../../../functions/s
 import { logger } from "../../../../../../../../../functions/server/logging";
 import { getL10n } from "../../../../../../../../../functions/server/l10n";
 import { refreshStoredScanResults } from "../../../../../../../../../functions/server/refreshStoredScanResults";
+import { checkSession } from "../../../../../../../../../functions/server/checkSession";
 
 export default async function WelcomeToPlusPage() {
   const session = await getServerSession(authOptions);
 
   // Ensure user is logged in
-  if (!session?.user?.subscriber?.id) {
+  if (!checkSession(session) || !session?.user?.subscriber?.id) {
     redirect("/user/dashboard/");
   }
 
