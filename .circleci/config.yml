@@ -149,7 +149,7 @@ workflows:
                     tags:
                         only: /.*/
                     branches:
-                        only: main
+                        only: debug-sentry-sourcemap-upload
 
             - deploy_heroku:
                 name: Deploy main to Heroku
