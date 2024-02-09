@@ -44,7 +44,7 @@ export async function POST(
 ): Promise<NextResponse<WelcomeScanBody> | NextResponse<unknown>> {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber) {
-    throw new Error("No session");
+    throw new Error("No fxa_uid found in session");
   }
 
   const eligible = await isEligibleForFreeScan(
