@@ -31,6 +31,9 @@ import { GAParams } from "@next/third-parties/dist/types/google";
 import Script, { ScriptProps } from "next/script";
 import { useEffect } from "react";
 
+// We don't send Analytics events in tests:
+/* c8 ignore start */
+
 let currDataLayerName: string | undefined = undefined;
 
 /**
@@ -39,7 +42,7 @@ let currDataLayerName: string | undefined = undefined;
  * @param props
  */
 export const GoogleAnalyticsWorkaround = (
-  props: GAParams & { nonce: ScriptProps["nonce"] },
+  props: GAParams & { nonce?: ScriptProps["nonce"] },
 ) => {
   const { gaId, dataLayerName = "dataLayer", nonce } = props;
 
@@ -87,6 +90,10 @@ export type GAEvent = Record<string, unknown> & {
   event: string;
 };
 export const sendGAEvent = (...args: GAEvent[]) => {
+  if (process.env.NODE_ENV === "test") {
+    return;
+  }
+
   if (currDataLayerName === undefined) {
     console.warn(`@next/third-parties: GA has not been initialized`);
     return;
@@ -100,3 +107,4 @@ export const sendGAEvent = (...args: GAEvent[]) => {
     );
   }
 };
+/* c8 ignore stop */
