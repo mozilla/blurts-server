@@ -42,7 +42,10 @@ export async function getUserBreaches({
   user: Session["user"];
   options?: Parameters<typeof appendBreachResolutionChecklist>[1];
 }): Promise<UserBreaches> {
-  const subscriber = await getSubscriberByFxaUid(user.subscriber?.fxa_uid);
+  if (!user.subscriber?.fxa_uid) {
+    throw new Error("No fxa_uid found in session");
+  }
+  const subscriber = await getSubscriberByFxaUid(user.subscriber.fxa_uid);
   const allBreaches = await getBreaches();
   const breachesData = await getAllEmailsAndBreaches(subscriber, allBreaches);
   appendBreachResolutionChecklist(breachesData, options);
@@ -97,9 +100,9 @@ export async function getSubscriberBreaches(
   user: Session["user"],
 ): Promise<SubscriberBreach[]> {
   if (!user.subscriber?.fxa_uid) {
-    throw new Error("No session");
+    throw new Error("No fxa_uid found in session");
   }
-  const subscriber = await getSubscriberByFxaUid(user.subscriber?.fxa_uid);
+  const subscriber = await getSubscriberByFxaUid(user.subscriber.fxa_uid);
   const allBreaches = await getBreaches();
   const breachesData = await getSubBreaches(subscriber, allBreaches);
   return breachesData;

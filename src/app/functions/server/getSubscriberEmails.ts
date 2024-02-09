@@ -15,7 +15,7 @@ export async function getSubscriberEmails(
   user: Session["user"],
 ): Promise<string[]> {
   if (!user.subscriber?.fxa_uid) {
-    throw new Error("No session");
+    throw new Error("No fxa_uid found in session");
   }
   const emailArray: string[] = [user.email];
   const subscriber = await getSubscriberByFxaUid(user.subscriber?.fxa_uid);
