@@ -19,6 +19,7 @@ import {
 } from "../../../utils/subscriberBreaches";
 import { EmailRow } from "../../../db/tables/emailAddresses";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
+import { logger } from "./logging";
 
 //TODO: deprecate with MNTOR-2021
 export type UserBreaches = {
@@ -96,7 +97,12 @@ export async function getUserBreaches({
 export async function getSubscriberBreaches(
   user: Session["user"],
 ): Promise<SubscriberBreach[]> {
+  // FIXME this does not always return a subscriber https://mozilla-hub.atlassian.net/browse/MNTOR-2936
   const subscriber = await getSubscriberByEmail(user.email);
+  if (!subscriber?.id) {
+    logger.warn("no_subscriber_for_email", { user });
+    return [];
+  }
   const allBreaches = await getBreaches();
   const breachesData = await getSubBreaches(subscriber, allBreaches);
   return breachesData;
