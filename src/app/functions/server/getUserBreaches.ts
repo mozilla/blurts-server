@@ -101,7 +101,7 @@ export async function getSubscriberBreaches(
   const subscriber = await getSubscriberByEmail(user.email);
   if (!subscriber?.id) {
     logger.error("no_subscriber_for_email", { user });
-    return [];
+    throw new Error("no subscriber ID for email");
   }
   const allBreaches = await getBreaches();
   const breachesData = await getSubBreaches(subscriber, allBreaches);
