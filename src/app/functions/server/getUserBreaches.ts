@@ -8,7 +8,7 @@ import { Session } from "next-auth";
 import { getBreaches } from "./getBreaches";
 import { appendBreachResolutionChecklist } from "./breachResolution";
 import { BreachDataTypes } from "../universal/breach";
-import { getSubscriberByEmail } from "../../../../src/db/tables/subscribers.js";
+import { getSubscriberByFxaUid } from "../../../../src/db/tables/subscribers.js";
 import {
   BundledVerifiedEmails,
   getAllEmailsAndBreaches,
@@ -19,7 +19,6 @@ import {
 } from "../../../utils/subscriberBreaches";
 import { EmailRow } from "../../../db/tables/emailAddresses";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
-import { logger } from "./logging";
 
 //TODO: deprecate with MNTOR-2021
 export type UserBreaches = {
@@ -43,7 +42,7 @@ export async function getUserBreaches({
   user: Session["user"];
   options?: Parameters<typeof appendBreachResolutionChecklist>[1];
 }): Promise<UserBreaches> {
-  const subscriber = await getSubscriberByEmail(user.email);
+  const subscriber = await getSubscriberByFxaUid(user.subscriber?.fxa_uid);
   const allBreaches = await getBreaches();
   const breachesData = await getAllEmailsAndBreaches(subscriber, allBreaches);
   appendBreachResolutionChecklist(breachesData, options);
@@ -97,21 +96,10 @@ export async function getUserBreaches({
 export async function getSubscriberBreaches(
   user: Session["user"],
 ): Promise<SubscriberBreach[]> {
-  // FIXME case-insensitivity issues, fallback to previous behavior https://mozilla-hub.atlassian.net/browse/MNTOR-2936
-  const email = user.subscriber?.fxa_profile_json?.email;
-
-  let subscriber;
-  if (email) {
-    subscriber = await getSubscriberByEmail(email);
+  if (!user.subscriber?.fxa_uid) {
+    throw new Error("No session");
   }
-  if (!subscriber?.id) {
-    logger.warn("fallback_subscriber_email", { user });
-    subscriber = await getSubscriberByEmail(user.email);
-  }
-  if (!subscriber?.id) {
-    logger.error("no_subscriber_for_email", { user });
-    throw new Error("no subscriber ID for email");
-  }
+  const subscriber = await getSubscriberByFxaUid(user.subscriber?.fxa_uid);
   const allBreaches = await getBreaches();
   const breachesData = await getSubBreaches(subscriber, allBreaches);
   return breachesData;

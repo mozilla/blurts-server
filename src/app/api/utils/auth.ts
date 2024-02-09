@@ -8,7 +8,7 @@ import { logger } from "../../functions/server/logging";
 
 import AppConstants from "../../../appConstants.js";
 import {
-  getSubscriberByEmail,
+  getSubscriberByFxaUid,
   updateFxAData,
 } from "../../../db/tables/subscribers.js";
 import { addSubscriber } from "../../../db/tables/emailAddresses.js";
@@ -72,11 +72,15 @@ export const authOptions: AuthOptions = {
     async jwt({ token, account, profile, trigger }) {
       if (trigger === "update") {
         // Refresh the user data from FxA, in case e.g. new subscriptions got added:
-        const subscriber = await getSubscriberByEmail(token.email ?? "");
+        const subscriber = await getSubscriberByFxaUid(
+          token.subscriber?.fxa_uid ?? "",
+        );
         profile = subscriber.fxa_profile_json as FxaProfile;
 
-        if (token.email) {
-          const updatedSubscriberData = await getSubscriberByEmail(token.email);
+        if (token.subscriber?.fxa_uid) {
+          const updatedSubscriberData = await getSubscriberByFxaUid(
+            token.subscriber.fxa_uid,
+          );
           // MNTOR-2599 The breach_resolution object can get pretty big,
           // causing the session token cookie to balloon in size,
           // eventually resulting in a 400 Bad Request due to headers being too large.
@@ -99,7 +103,7 @@ export const authOptions: AuthOptions = {
         return token;
       }
 
-      if (typeof profile?.email === "string") {
+      if (typeof profile?.uid === "string") {
         // We're signing in with FxA; store user in database if not present yet.
 
         // Note: we could create an [Adapter](https://next-auth.js.org/tutorials/creating-a-database-adapter)
@@ -107,8 +111,7 @@ export const authOptions: AuthOptions = {
         //       we can also store FxA account data. We also don't have to worry
         //       about model mismatches (i.e. Next-Auth expecting one User to have
         //       multiple Accounts at multiple providers).
-        const email = profile.email;
-        const existingUser = await getSubscriberByEmail(email);
+        const existingUser = await getSubscriberByFxaUid(profile.uid);
 
         if (existingUser) {
           // MNTOR-2599 The breach_resolution object can get pretty big,
@@ -129,9 +132,9 @@ export const authOptions: AuthOptions = {
             delete updatedUser.breach_resolution;
             token.subscriber = updatedUser;
           }
-        } else if (!existingUser && email) {
+        } else if (!existingUser && profile.email) {
           const verifiedSubscriber = await addSubscriber(
-            email,
+            profile.email,
             profile.locale,
             account.access_token,
             account.refresh_token,
@@ -144,7 +147,7 @@ export const authOptions: AuthOptions = {
 
           const allBreaches = await getBreaches();
           const unsafeBreachesForEmail = await getBreachesForEmail(
-            getSha1(email),
+            getSha1(profile.email),
             allBreaches,
             true,
           );
@@ -157,10 +160,10 @@ export const authOptions: AuthOptions = {
             : l10n.getString("email-subject-no-breaches");
 
           const data = {
-            breachedEmail: email,
+            breachedEmail: profile.email,
             ctaHref: getEmailCtaHref(utmCampaignId, "dashboard-cta"),
             heading: "email-breach-summary",
-            recipientEmail: email,
+            recipientEmail: profile.email,
             subscriberId: verifiedSubscriber,
             unsafeBreachesForEmail,
             utmCampaign: utmCampaignId,
