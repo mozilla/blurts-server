@@ -83,9 +83,10 @@ async function getSubscriberByFxaUid (uid) {
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function getSubscriberByEmail (email) {
-  const [subscriber] = await knex('subscribers')
-  .where("primary_verified", true)
-  .whereILike("primary_email", email)
+  const [subscriber] = await knex('subscribers').where({
+    primary_email: email,
+    primary_verified: true
+  })
   const subscriberAndEmails = await joinEmailAddressesToSubscriber(subscriber)
   return subscriberAndEmails
 }
