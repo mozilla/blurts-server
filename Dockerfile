@@ -29,9 +29,7 @@ ENV NEXT_PUBLIC_GA4_DEBUG_MODE=false
 ARG S3_BUCKET
 ENV S3_BUCKET=$S3_BUCKET
 
-RUN --mount=type=secret,id=/root/sentry_auth_token,uid=10001 \
-  export SENTRY_AUTH_TOKEN=$(cat /run/secrets/sentry_auth_token) \
-  GLEAN_PYTHON=python GLEAN_PIP=pip npm run build
+RUN GLEAN_PYTHON=python GLEAN_PIP=pip npm run build
 
 ARG SENTRY_RELEASE
 ENV SENTRY_RELEASE=$SENTRY_RELEASE
