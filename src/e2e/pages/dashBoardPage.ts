@@ -77,9 +77,7 @@ export class DashboardPage {
       name: "View all sites where your info is exposed",
     });
 
-    this.exposuresCardHeading = page.getByRole("heading", {
-      name: "Let’s keep protecting your data",
-    });
+    this.exposuresCardHeading = page.getByRole("link", { name: "Home" });
 
     this.fixedHeading = page.getByRole("heading", {
       name: "View all exposures that are fixed or in progress",
