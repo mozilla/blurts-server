@@ -5,7 +5,7 @@
 import { Session } from "next-auth";
 import { getSubscriberByEmail } from "../../../db/tables/subscribers.js";
 import { getUserEmails } from "../../../db/tables/emailAddresses.js";
-import { logger } from "./logging.js";
+import { logger } from "./logging";
 
 /**
  * NOTE: new function to replace getUserBreaches
