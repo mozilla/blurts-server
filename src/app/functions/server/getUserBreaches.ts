@@ -100,7 +100,7 @@ export async function getSubscriberBreaches(
   // FIXME this does not always return a subscriber https://mozilla-hub.atlassian.net/browse/MNTOR-2936
   const subscriber = await getSubscriberByEmail(user.email);
   if (!subscriber?.id) {
-    logger.warn("no_subscriber_for_email", { user });
+    logger.error("no_subscriber_for_email", { user });
     return [];
   }
   const allBreaches = await getBreaches();
