@@ -9,10 +9,8 @@ import { withSentryConfig } from "@sentry/nextjs";
 const nextConfig = {
   productionBrowserSourceMaps: true,
   sentry: {
-    disableServerWebpackPlugin:
-      process.env.UPLOAD_SENTRY_SOURCEMAPS === "true" ? false : true,
-    disableClientWebpackPlugin:
-      process.env.UPLOAD_SENTRY_SOURCEMAPS === "true" ? false : true,
+    disableServerWebpackPlugin: !process.env.UPLOAD_SENTRY_SOURCEMAPS,
+    disableClientWebpackPlugin: !process.env.UPLOAD_SENTRY_SOURCEMAPS,
   },
   images: {
     remotePatterns: [
@@ -164,7 +162,7 @@ const nextConfig = {
       {
         source: "/oauth/confirmed",
         destination: "/api/auth/callback/fxa",
-        permanent: false
+        permanent: false,
       },
     ];
   },
