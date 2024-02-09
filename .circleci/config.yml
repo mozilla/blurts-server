@@ -88,7 +88,7 @@ jobs:
                 name: Build Docker image
                 command: |
                   docker build --tag blurts-server \
-                  --progress=plain
+                  --progress=plain \
                   --build-arg SENTRY_RELEASE="$CIRCLE_TAG" \
                   .
             - run:
