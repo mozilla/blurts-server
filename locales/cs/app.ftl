@@ -19,6 +19,7 @@
         [ins] Mozilla Monitorem
        *[nom] Mozilla Monitor
     }
+    .gender = masculine
 -product-name-nowrap =
     { $case ->
        *[nom] <span class="nowrap">{ -product-name(case: "nom") }</span>
