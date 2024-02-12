@@ -205,7 +205,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Content`, () =
           page.locator(
             `(//div[starts-with(@class, "StatusPill_pill")])[${i + 1}]`,
           ),
-        ).toHaveText(/In-progress|Fixed/);
+        ).toHaveText(/In progress|Fixed/);
       }
     }
   });

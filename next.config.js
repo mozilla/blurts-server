@@ -143,6 +143,11 @@ const nextConfig = {
         destination: "/:path*",
         permanent: true,
       },
+      {
+        source: "/user/dashboard/fix/data-broker-profiles/welcome-to-premium",
+        destination: "/user/dashboard/fix/data-broker-profiles/welcome-to-plus",
+        permanent: true,
+      },
       // We used to have a page with security tips;
       // if folks get sent there via old lnks, redirect them to the most
       // relevant page on SuMo:
@@ -150,6 +155,14 @@ const nextConfig = {
         source: "/security-tips",
         destination: "https://support.mozilla.org/kb/how-stay-safe-web",
         permanent: false,
+      },
+      // Some subset of users still find their way to the old login
+      // link, which redirects to a now-404 endpoint. Add a redirect
+      // to the new endpoint while we are investigating.
+      {
+        source: "/oauth/confirmed",
+        destination: "/api/auth/callback/fxa",
+        permanent: false
       },
     ];
   },
