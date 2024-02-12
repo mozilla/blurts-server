@@ -9,8 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import { ProgressBar } from "../../../../../components/client/ProgressBar";
 import styles from "./FindExposures.module.scss";
 import { useL10n } from "../../../../../hooks/l10n";
-// eslint-disable-next-line no-restricted-imports
-import { useGa } from "../../../../../hooks/useGa";
+import { sendGAEvent } from "../../../../../components/client/GoogleAnalyticsWorkaround";
 
 export type Props = {
   dataBrokerCount: number;
@@ -84,7 +83,6 @@ export const FindExposures = ({
     progressRange: [labelSwitchThreshold, 100],
   });
 
-  const { gtag } = useGa();
   const pathName = usePathname();
   const searchParams = useSearchParams();
 
@@ -115,11 +113,11 @@ export const FindExposures = ({
           .then((result) => {
             if (result.status && result.status === "finished") {
               setScanFinished(true);
-              gtag.record({
-                type: "event",
-                name: "free_scan_completed",
-                params: scanCompletedTelemetryParams,
-              });
+              sendGAEvent(
+                "event",
+                "free_scan_completed",
+                scanCompletedTelemetryParams,
+              );
             }
             setCheckingScanProgress(false);
           })
@@ -135,11 +133,7 @@ export const FindExposures = ({
       userTimeSpentRef.current.endTime = Date.now();
       findExposuresTelemetryParams.exit_time =
         userTimeSpentRef.current.endTime - userTimeSpentRef.current.startTime;
-      gtag.record({
-        type: "event",
-        name: "exited_scan",
-        params: findExposuresTelemetryParams,
-      });
+      sendGAEvent("event", "exited_scan", findExposuresTelemetryParams);
       router.push(previousRoute);
     }
 
@@ -153,7 +147,6 @@ export const FindExposures = ({
     scanFinished,
     percentageSteps,
     previousRoute,
-    gtag,
     pathName,
     searchParams,
   ]);
