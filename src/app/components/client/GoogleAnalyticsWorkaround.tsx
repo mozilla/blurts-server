@@ -101,7 +101,7 @@ export const sendGAEvent = (
   }
 
   if (window[currDataLayerName]) {
-    window[currDataLayerName].push(["event", eventName, ...args]);
+    window.gtag(type, eventName, { args });
   } else {
     console.warn(
       `@next/third-parties: GA dataLayer ${currDataLayerName} does not exist`,
