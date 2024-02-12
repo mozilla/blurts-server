@@ -103,6 +103,8 @@ const EmailAddressAddForm = () => {
 
   const isEmailValid = () => {
     // Regex for checking email format
+    // ensuring it contains a local part, an "@" symbol,
+    // and a domain part.
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
