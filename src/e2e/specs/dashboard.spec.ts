@@ -71,7 +71,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
     });
 
     // verify overview card
-    await expect(dashboardPage.exposuresCardHeading).toBeVisible();
+    await expect(dashboardPage.dashboardMozLogo).toBeVisible();
 
     // TODO: add verifications for all fixed exposures state
   });
