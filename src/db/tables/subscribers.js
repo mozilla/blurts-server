@@ -80,6 +80,7 @@ async function getSubscriberByFxaUid (uid) {
 
 /**
  * @param {string} email
+ * @returns {Promise<undefined | import("knex/types/tables").SubscriberRow & { email_addresses: Array<{ id: import("knex/types/tables").EmailAddressRow["id"]; email: import("knex/types/tables").EmailAddressRow["email"]; }> }>}
  * @deprecated Use [[getSubscriberByFxAUid]] instead, as email identifiers are unstable (e.g. we've had issues with case-sensitivity).
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy

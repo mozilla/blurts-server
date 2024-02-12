@@ -145,6 +145,9 @@ export async function PUT(req: NextRequest) {
         subscriber,
         currentBreachResolution,
       );
+      if (!updatedSubscriber) {
+        throw new Error("Could not retrieve updated subscriber data.");
+      }
 
       return NextResponse.json({
         success: true,
