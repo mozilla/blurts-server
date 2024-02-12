@@ -46,8 +46,7 @@ export function UpsellButton(
           button_id: "nav_upsell",
         });
       }
-      sendGAEvent({
-        event: "premium_upsell_modal",
+      sendGAEvent("event", "premium_upsell_modal", {
         action: isOpen ? "opened" : "closed",
         page_location: pathname,
       });

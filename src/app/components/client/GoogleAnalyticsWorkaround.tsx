@@ -86,10 +86,11 @@ export const GoogleAnalyticsWorkaround = (
   );
 };
 
-export type GAEvent = Record<string, unknown> & {
-  event: string;
-};
-export const sendGAEvent = (...args: GAEvent[]) => {
+export const sendGAEvent = (
+  type: "event",
+  eventName: string,
+  ...args: object[]
+) => {
   if (process.env.NODE_ENV === "test") {
     return;
   }
@@ -100,7 +101,7 @@ export const sendGAEvent = (...args: GAEvent[]) => {
   }
 
   if (window[currDataLayerName]) {
-    window[currDataLayerName].push(...args);
+    window[currDataLayerName].push(["event", eventName, ...args]);
   } else {
     console.warn(
       `@next/third-parties: GA dataLayer ${currDataLayerName} does not exist`,

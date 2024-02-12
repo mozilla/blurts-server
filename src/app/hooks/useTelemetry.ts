@@ -40,8 +40,7 @@ export const useTelemetry = () => {
       });
     }
     if (platforms.includes(Ga)) {
-      sendGAEvent({
-        event: convertCamelToSnakeCase(eventModule),
+      sendGAEvent("event", convertCamelToSnakeCase(eventModule), {
         ...data,
         action: event,
         page_location: path,

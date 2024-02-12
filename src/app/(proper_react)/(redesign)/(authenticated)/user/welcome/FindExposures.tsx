@@ -113,10 +113,11 @@ export const FindExposures = ({
           .then((result) => {
             if (result.status && result.status === "finished") {
               setScanFinished(true);
-              sendGAEvent({
-                event: "free_scan_completed",
-                ...scanCompletedTelemetryParams,
-              });
+              sendGAEvent(
+                "event",
+                "free_scan_completed",
+                scanCompletedTelemetryParams,
+              );
             }
             setCheckingScanProgress(false);
           })
@@ -132,10 +133,7 @@ export const FindExposures = ({
       userTimeSpentRef.current.endTime = Date.now();
       findExposuresTelemetryParams.exit_time =
         userTimeSpentRef.current.endTime - userTimeSpentRef.current.startTime;
-      sendGAEvent({
-        event: "exited_scan",
-        ...findExposuresTelemetryParams,
-      });
+      sendGAEvent("event", "exited_scan", findExposuresTelemetryParams);
       router.push(previousRoute);
     }
 
