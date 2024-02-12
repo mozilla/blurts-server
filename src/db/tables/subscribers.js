@@ -80,6 +80,7 @@ async function getSubscriberByFxaUid (uid) {
 
 /**
  * @param {string} email
+ * @deprecated Use [[getSubscriberByFxAUid]] instead, as email identifiers are unstable (e.g. we've had issues with case-sensitivity).
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
