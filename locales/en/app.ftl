@@ -990,5 +990,5 @@ banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: New name, look 
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Dismiss
 
-loading-sr-announcement = Loading
+loading-accessibility = Loading
 

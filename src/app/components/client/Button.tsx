@@ -90,9 +90,7 @@ export const Loader = () => {
 
   return (
     <div className={styles.ldsRing}>
-      <VisuallyHidden>
-        {l10n.getString("loading-sr-announcement")}
-      </VisuallyHidden>
+      <VisuallyHidden>{l10n.getString("loading-accessibility")}</VisuallyHidden>
       <div></div>
       <div></div>
       <div></div>
