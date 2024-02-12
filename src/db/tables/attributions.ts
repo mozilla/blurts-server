@@ -60,7 +60,10 @@ async function addAttributionForSubscriber(
     res = await knex("attributions").insert(attribution).returning("*");
   } catch (e) {
     if ((e as Error).message.includes("violates unique constraint")) {
-      logger.info("Ignoring unique constraints");
+      logger.info("addAttributionForSubscriber", {
+        subscriberId,
+        error: (e as Error).message,
+      });
     } else {
       logger.error(e);
     }
