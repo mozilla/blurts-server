@@ -361,7 +361,7 @@ export async function isEligibleForFreeScan(
   }
 
   if (!user?.subscriber?.id) {
-    throw new Error("No fxa_uid found in session");
+    throw new Error("No session with a known subscriber found");
   }
 
   const enabledFlags = await getEnabledFeatureFlags({ email: user.email });
