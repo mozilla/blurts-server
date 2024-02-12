@@ -43,6 +43,9 @@ export async function GET(
       const subscriber = await getSubscriberByFxaUid(
         session.user.subscriber?.fxa_uid,
       );
+      if (!subscriber) {
+        throw new Error("No subscriber found for current session.");
+      }
       const profileId = await getOnerepProfileId(subscriber.id);
 
       const latestScan = await getLatestOnerepScanResults(profileId);

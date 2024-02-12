@@ -2,13 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { Subscriber } from "../../deprecated/(authenticated)/user/breaches/breaches";
+import { SubscriberRow } from "knex/types/tables";
 import { updateFxAProfileData } from "../../../db/tables/subscribers";
 
 const MONITOR_PREMIUM_CAPABILITY = "monitor";
 
 export async function changeSubscription(
-  subscriber: Subscriber,
+  subscriber: SubscriberRow,
   enabled: boolean,
 ) {
   const currentFxAProfile = subscriber?.fxa_profile_json as FxaProfile;

@@ -3,15 +3,15 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ReactLocalization } from "@fluent/react";
+import { SubscriberRow } from "knex/types/tables";
 import { resetUnverifiedEmailAddress } from "../../../db/tables/emailAddresses.js";
 import { sendEmail, getVerificationUrl } from "../../../utils/email";
 import { getStringLookup } from "../../../utils/fluent.js";
 import { getTemplate } from "../../../views/emails/email2022.js";
 import { verifyPartial } from "../../../views/emails/emailVerify.js";
-import { Subscriber } from "../../deprecated/(authenticated)/user/breaches/breaches";
 
 export async function sendVerificationEmail(
-  user: Subscriber,
+  user: SubscriberRow,
   emailId: number,
   l10n: ReactLocalization,
 ) {
