@@ -134,6 +134,7 @@ const EmailAddressAddForm = () => {
           onPress={() => {
             setHasPressedButton(true);
           }}
+          aria-live="polite"
         >
           {hasPressedButton ? (
             <Loader />
