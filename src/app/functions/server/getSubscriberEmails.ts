@@ -19,6 +19,9 @@ export async function getSubscriberEmails(
   }
   const emailArray: string[] = [user.email];
   const subscriber = await getSubscriberByFxaUid(user.subscriber?.fxa_uid);
+  if (!subscriber) {
+    throw new Error("No subscriber found for current session.");
+  }
   (await getUserEmails(subscriber.id)).forEach((e) => emailArray.push(e.email));
   return emailArray;
 }
