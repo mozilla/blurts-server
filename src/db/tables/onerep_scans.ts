@@ -6,8 +6,11 @@ import createDbConnection from "../connect.js";
 import { logger } from "../../app/functions/server/logging";
 
 import { ScanResult, Scan } from "../../app/functions/server/onerep.js";
-import { Subscriber } from "../../app/deprecated/(authenticated)/user/breaches/breaches.js";
-import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
+import {
+  OnerepScanResultRow,
+  OnerepScanRow,
+  SubscriberRow,
+} from "knex/types/tables";
 
 const knex = createDbConnection();
 
@@ -72,7 +75,7 @@ async function getLatestOnerepScanResults(
 }
 
 async function setOnerepProfileId(
-  subscriber: Subscriber,
+  subscriber: SubscriberRow,
   onerepProfileId: number,
 ) {
   await knex("subscribers").where("id", subscriber.id).update({

@@ -25,6 +25,9 @@ export async function POST(req: NextRequest) {
     try {
       const { emailId }: EmailResendRequest = await req.json();
       const subscriber = await getSubscriberByFxaUid(token.subscriber?.fxa_uid);
+      if (!subscriber) {
+        throw new Error("No subscriber found for current session.");
+      }
       const existingEmail = await getUserEmails(subscriber.id);
 
       const filteredEmail = existingEmail.filter(

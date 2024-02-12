@@ -26,6 +26,9 @@ export async function POST(req: NextRequest) {
       const { communicationOption }: EmailUpdateCommOptionRequest =
         await req.json();
       const subscriber = await getSubscriberByFxaUid(token.subscriber?.fxa_uid);
+      if (!subscriber) {
+        throw new Error("No subscriber found for current session.");
+      }
       // 0 = Send breach alerts to the corresponding affected emails.
       // 1 = Send all breach alerts to user's primary email address.
       const allEmailsToPrimary = Number(communicationOption) === 1 ?? false;

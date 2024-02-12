@@ -86,6 +86,9 @@ export async function POST(
         session.user.subscriber.fxa_uid,
       );
 
+      if (!subscriber) {
+        throw new Error("No subscriber found for current session.");
+      }
       if (!subscriber.onerep_profile_id) {
         // Create OneRep profile
         const profileId = await createProfile(profileData);
