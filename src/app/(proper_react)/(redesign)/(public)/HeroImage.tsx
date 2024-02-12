@@ -291,13 +291,14 @@ export const HeroImageAll = ({
         </text>
         <text
           fill="#5B5B5B"
-          style={{ whiteSpace: "pre" }}
+          style={{ whiteSpace: "pre", width: "100%", textAnchor: "middle" }}
           fontFamily="var(--font-inter)"
           fontSize="21"
           fontWeight="500"
           letterSpacing="0em"
+          x="58.007492"
         >
-          <tspan x="199.295" y="373.251">
+          <tspan x="250.30249" y="373.251">
             {l10n.getString("landing-all-hero-image-chart-label")}
           </tspan>
         </text>
