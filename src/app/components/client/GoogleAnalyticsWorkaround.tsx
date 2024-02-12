@@ -42,9 +42,9 @@ let currDataLayerName: string | undefined = undefined;
  * @param props
  */
 export const GoogleAnalyticsWorkaround = (
-  props: GAParams & { nonce?: ScriptProps["nonce"] },
+  props: GAParams & { nonce?: ScriptProps["nonce"]; debugMode?: boolean },
 ) => {
-  const { gaId, dataLayerName = "dataLayer", nonce } = props;
+  const { gaId, dataLayerName = "dataLayer", nonce, debugMode } = props;
 
   if (currDataLayerName === undefined) {
     currDataLayerName = dataLayerName;
@@ -73,7 +73,7 @@ export const GoogleAnalyticsWorkaround = (
           function gtag(){window['${dataLayerName}'].push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', '${gaId}');`,
+          gtag('config', '${gaId}', { 'debug_mode': ${debugMode} });`,
         }}
         nonce={nonce}
       />
