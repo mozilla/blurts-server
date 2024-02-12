@@ -68,7 +68,7 @@
     "@types/react-dom": "^18.2.19",
     "canvas-confetti": "^1.9.1",
     "client-oauth2": "^4.3.3",
-    "dotenv": "^16.4.1",
+    "dotenv": "^16.4.2",
     "eslint-config-next": "^14.1.0",
     "jsdom": "^24.0.0",
     "jsonwebtoken": "^9.0.2",
