@@ -13,7 +13,7 @@ import {
 import { getBreaches } from "../../../../functions/server/getBreaches";
 import { getAllEmailsAndBreaches } from "../../../../../utils/breaches";
 import {
-  getSubscriberByEmail,
+  getSubscriberByFxaUid,
   setBreachResolution,
 } from "../../../../../db/tables/subscribers";
 import appConstants from "../../../../../appConstants";
@@ -21,10 +21,12 @@ import appConstants from "../../../../../appConstants";
 // Get breaches data
 export async function GET(req: NextRequest) {
   const token = await getToken({ req });
-  if (typeof token?.email === "string") {
+  if (typeof token?.subscriber?.fxa_uid === "string") {
     // Signed in
     try {
-      const subscriber: Subscriber = await getSubscriberByEmail(token.email);
+      const subscriber: Subscriber = await getSubscriberByFxaUid(
+        token.subscriber?.fxa_uid,
+      );
       const allBreaches = await getBreaches();
       const breaches = await getAllEmailsAndBreaches(subscriber, allBreaches);
       const successResponse = {
@@ -44,9 +46,11 @@ export async function GET(req: NextRequest) {
 
 export async function PUT(req: NextRequest) {
   const token = await getToken({ req });
-  if (typeof token?.email === "string") {
+  if (typeof token?.subscriber?.fxa_uid === "string") {
     try {
-      const subscriber: Subscriber = await getSubscriberByEmail(token.email);
+      const subscriber: Subscriber = await getSubscriberByFxaUid(
+        token.subscriber?.fxa_uid,
+      );
       const allBreaches = await getBreaches();
       const j = await req.json();
       const {

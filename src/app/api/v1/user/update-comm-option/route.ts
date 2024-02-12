@@ -9,7 +9,7 @@ import { logger } from "../../../../functions/server/logging";
 import AppConstants from "../../../../../appConstants";
 
 import {
-  getSubscriberByEmail,
+  getSubscriberByFxaUid,
   setAllEmailsToPrimary,
 } from "../../../../../db/tables/subscribers";
 
@@ -21,11 +21,11 @@ export interface EmailUpdateCommOptionRequest {
 export async function POST(req: NextRequest) {
   const token = await getToken({ req });
 
-  if (typeof token?.email === "string") {
+  if (typeof token?.subscriber?.fxa_uid === "string") {
     try {
       const { communicationOption }: EmailUpdateCommOptionRequest =
         await req.json();
-      const subscriber = await getSubscriberByEmail(token.email);
+      const subscriber = await getSubscriberByFxaUid(token.subscriber?.fxa_uid);
       // 0 = Send breach alerts to the corresponding affected emails.
       // 1 = Send all breach alerts to user's primary email address.
       const allEmailsToPrimary = Number(communicationOption) === 1 ?? false;

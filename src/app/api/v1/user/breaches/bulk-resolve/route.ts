@@ -13,13 +13,16 @@ import {
 import { getBreaches } from "../../../../../functions/server/getBreaches";
 import { getAllEmailsAndBreaches } from "../../../../../../utils/breaches";
 import {
-  getSubscriberByEmail,
+  getSubscriberByFxaUid,
   setBreachResolution,
 } from "../../../../../../db/tables/subscribers";
 
 export async function PUT(req: NextRequest): Promise<NextResponse> {
   const session = await getServerSession(authOptions);
-  if (!session?.user?.subscriber || typeof session?.user?.email !== "string") {
+  if (
+    !session?.user?.subscriber ||
+    typeof session?.user?.subscriber.fxa_uid !== "string"
+  ) {
     return new NextResponse(
       JSON.stringify({ success: false, message: "Unauthenticated" }),
       { status: 401 },
@@ -27,8 +30,8 @@ export async function PUT(req: NextRequest): Promise<NextResponse> {
   }
 
   try {
-    const subscriber: Subscriber = await getSubscriberByEmail(
-      session.user.email,
+    const subscriber: Subscriber = await getSubscriberByFxaUid(
+      session.user.subscriber.fxa_uid,
     );
     const allBreaches = await getBreaches();
     const { dataType: dataTypeToResolve }: BreachBulkResolutionRequest =

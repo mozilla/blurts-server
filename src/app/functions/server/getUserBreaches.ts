@@ -8,7 +8,7 @@ import { Session } from "next-auth";
 import { getBreaches } from "./getBreaches";
 import { appendBreachResolutionChecklist } from "./breachResolution";
 import { BreachDataTypes } from "../universal/breach";
-import { getSubscriberByEmail } from "../../../../src/db/tables/subscribers.js";
+import { getSubscriberByFxaUid } from "../../../../src/db/tables/subscribers.js";
 import {
   BundledVerifiedEmails,
   getAllEmailsAndBreaches,
@@ -19,7 +19,6 @@ import {
 } from "../../../utils/subscriberBreaches";
 import { EmailRow } from "../../../db/tables/emailAddresses";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
-import { logger } from "./logging";
 
 //TODO: deprecate with MNTOR-2021
 export type UserBreaches = {
@@ -43,7 +42,10 @@ export async function getUserBreaches({
   user: Session["user"];
   options?: Parameters<typeof appendBreachResolutionChecklist>[1];
 }): Promise<UserBreaches> {
-  const subscriber = await getSubscriberByEmail(user.email);
+  if (!user.subscriber?.fxa_uid) {
+    throw new Error("No fxa_uid found in session");
+  }
+  const subscriber = await getSubscriberByFxaUid(user.subscriber.fxa_uid);
   const allBreaches = await getBreaches();
   const breachesData = await getAllEmailsAndBreaches(subscriber, allBreaches);
   appendBreachResolutionChecklist(breachesData, options);
@@ -97,12 +99,10 @@ export async function getUserBreaches({
 export async function getSubscriberBreaches(
   user: Session["user"],
 ): Promise<SubscriberBreach[]> {
-  // FIXME this does not always return a subscriber https://mozilla-hub.atlassian.net/browse/MNTOR-2936
-  const subscriber = await getSubscriberByEmail(user.email);
-  if (!subscriber?.id) {
-    logger.error("no_subscriber_for_email", { user });
-    throw new Error("no subscriber ID for email");
+  if (!user.subscriber?.fxa_uid) {
+    throw new Error("No fxa_uid found in session");
   }
+  const subscriber = await getSubscriberByFxaUid(user.subscriber.fxa_uid);
   const allBreaches = await getBreaches();
   const breachesData = await getSubBreaches(subscriber, allBreaches);
   return breachesData;

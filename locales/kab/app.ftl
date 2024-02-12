@@ -615,6 +615,12 @@ ad-unit-2-do-you-worry = Tettagadeḍ ɣef tɣellist deg Wi-Fi azayaz?
 ad-unit-3-stay-in-the-game = Qqim deg wurar!
 # ad 3 list item 2
 ad-unit-3-be-anywhere = Ili-k·kem deg yal adeg deg umaḍal
+# ad 3 list item 3
+ad-unit-3-access-more = Kcem ɣer wugar n ugbur
+# ad 4 heading
+ad-unit-4-shopping-with = Aɣ-d s mefferismawen
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Qqen anda ma telliḍ
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Seqdec ɣef tiliɣri-inek·inem
 
@@ -658,11 +664,15 @@ brand-mozilla-monitor = { -brand-fx-monitor }
 site-nav-breaches-link = Fru tirewliwin n yisefka
 site-nav-settings-link = Iɣewwaren
 site-nav-help-link = Tallalt
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
+site-nav-ad-callout = Ԑreḍ ifecka-nneɣ niḍen n teɣelist:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
 mobile-menu-label = Umuɣ agejdan
 main-nav-button-collapse-label = Fneẓ umuɣ
 main-nav-button-collapse-tooltip = Fneẓ umuɣ
+main-nav-button-expand-label = Snefli umuɣ
+main-nav-button-expand-tooltip = Snefli umuɣ
 main-nav-label = Tunigin
 main-nav-link-home-label = Asebter agejdan
 main-nav-link-dashboard-label = Tafelwit n usenqed
@@ -692,7 +702,9 @@ user-menu-manage-fxa-label = Sefrek { -brand-mozilla-account }
 user-menu-settings-label = Iɣewwaṛen
 user-menu-settings-tooltip = Sbadu { -brand-mozilla-monitor }
 user-menu-help-label = Tallalt
+user-menu-help-tooltip = Awi tallalt i useqdec n { -brand-mozilla-monitor }
 user-menu-signout-label = Ffeɣ
+user-menu-signout-tooltip = Ffeɣ deg { -brand-mozilla-monitor }
 
 ## Footer
 

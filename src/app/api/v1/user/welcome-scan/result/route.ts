@@ -12,7 +12,7 @@ import { logger } from "../../../../../functions/server/logging";
 import AppConstants from "../../../../../../appConstants";
 import {
   getOnerepProfileId,
-  getSubscriberByEmail,
+  getSubscriberByFxaUid,
 } from "../../../../../../db/tables/subscribers";
 
 import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
@@ -26,9 +26,11 @@ export type WelcomeScanResultResponse =
 
 export async function GET() {
   const session = await getServerSession(authOptions);
-  if (typeof session?.user?.email === "string") {
+  if (typeof session?.user?.subscriber?.fxa_uid === "string") {
     try {
-      const subscriber = await getSubscriberByEmail(session.user.email);
+      const subscriber = await getSubscriberByFxaUid(
+        session.user.subscriber?.fxa_uid,
+      );
       const profileId = await getOnerepProfileId(subscriber.id);
 
       const scanResults = await getLatestOnerepScanResults(profileId);
