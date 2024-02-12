@@ -18,7 +18,6 @@ import { Dialog } from "../../../../../../components/client/dialog/Dialog";
 import { onAddEmail } from "./actions";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
-import { Loader } from "../../../../../../components/client/Loader";
 
 export const EmailAddressAdder = () => {
   const l10n = useL10n();
@@ -134,13 +133,10 @@ const EmailAddressAddForm = () => {
           onPress={() => {
             setHasPressedButton(true);
           }}
+          isLoading={hasPressedButton}
           aria-live="polite"
         >
-          {hasPressedButton ? (
-            <Loader />
-          ) : (
-            l10n.getString("add-email-send-verification-button")
-          )}
+          {l10n.getString("add-email-send-verification-button")}
         </Button>
       </form>
     </>
