@@ -57,14 +57,16 @@ function filterBreachDataTypes(
  *
  * @param subscriber
  * @param allBreaches
+ * @param countryCode
  */
 export async function getSubBreaches(
   subscriber: Subscriber,
   allBreaches: (Breach | HibpLikeDbBreach)[],
+  countryCode: string,
 ) {
   const uniqueBreaches: SubscriberBreachMap = {};
-
   let verifiedEmails = await getUserEmails(subscriber.id);
+
   verifiedEmails.push({
     id: -1,
     subscriber_id: subscriber.id,
@@ -101,13 +103,23 @@ export async function getSubBreaches(
         filterBreachDataTypes(breach.DataClasses);
       const resolvedDataClasses = (breachResolution[breach.Id]
         ?.resolutionsChecked ?? []) as ArrayOfDataClasses;
-      const dataClassesEffected = filteredBreachDataClasses.map((c) => {
-        if (c === BreachDataTypes.Email) {
-          return { [c]: [email.email] };
-        } else {
-          return { [c]: 1 };
-        }
-      });
+      const dataClassesEffected = filteredBreachDataClasses
+        .map((c) => {
+          // Filter SSN breaches out for non-US users as they are only relevant
+          // for US users as of now.
+          if (BreachDataTypes.SSN && countryCode !== "us") {
+            return null;
+          }
+          if (c === BreachDataTypes.Email) {
+            return { [c]: [email.email] };
+          } else {
+            return { [c]: 1 };
+          }
+        })
+        .filter(
+          (dataClassEffected) => dataClassEffected,
+        ) as DataClassEffected[];
+
       // `allBreaches` is generally the return value of `getBreaches`, which
       // either loads breaches from the database, or fetches them from the HIBP
       // API. In the former csae, `AddedDate`, `BreachDate` and `ModifiedDate`
