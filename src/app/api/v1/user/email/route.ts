@@ -6,7 +6,7 @@ import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 import AppConstants from "../../../../../appConstants";
 
-import { getSubscriberByEmail } from "../../../../../db/tables/subscribers";
+import { getSubscriberByFxaUid } from "../../../../../db/tables/subscribers";
 import { addSubscriberUnverifiedEmailHash } from "../../../../../db/tables/emailAddresses.js";
 
 import { sendVerificationEmail } from "../../../utils/email";
@@ -25,11 +25,11 @@ export async function POST(req: NextRequest) {
   const token = await getToken({ req });
   const l10n = getL10n();
 
-  if (typeof token?.email === "string") {
+  if (typeof token?.subscriber?.fxa_uid === "string") {
     try {
       const body: EmailAddRequest = await req.json();
-      const subscriber = (await getSubscriberByEmail(
-        token.email,
+      const subscriber = (await getSubscriberByFxaUid(
+        token.subscriber?.fxa_uid,
       )) as Subscriber & {
         email_addresses: Array<{ id: number; email: string }>;
       };
