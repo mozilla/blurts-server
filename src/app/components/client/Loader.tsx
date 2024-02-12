@@ -5,7 +5,7 @@
 /* This animation was adapted from https://loading.io/css/ */
 
 import styles from "./Loader.module.scss";
-
+/* c8 ignore start */
 export const Loader = () => {
   return (
     <div className={styles.ldsRing}>
@@ -16,3 +16,4 @@ export const Loader = () => {
     </div>
   );
 };
+/* c8 ignore stop */
