@@ -29,11 +29,6 @@ export const useGlean = () => {
       throw new ErrorEvent("No PUBLIC_APP_ENV provided for Glean");
     }
 
-    if (typeof window === "undefined") {
-      console.warn("Glean should only be used on the client");
-      return;
-    }
-
     Glean.initialize("monitor.frontend", uploadEnabled, {
       // This will submit an events ping every time an event is recorded.
       maxEvents: 1,
