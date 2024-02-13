@@ -15,6 +15,11 @@ export const useGlean = () => {
 
   // Initialize Glean only on the first render of our custom hook.
   useEffect(() => {
+    if (typeof window === "undefined") {
+      console.warn("Glean should only be used on the client");
+      return;
+    }
+
     // Enable upload only if the user has not opted out of tracking.
     const uploadEnabled =
       navigator.doNotTrack !== "1" ||
@@ -22,6 +27,11 @@ export const useGlean = () => {
 
     if (!PUBLIC_APP_ENV) {
       throw new ErrorEvent("No PUBLIC_APP_ENV provided for Glean");
+    }
+
+    if (typeof window === "undefined") {
+      console.warn("Glean should only be used on the client");
+      return;
     }
 
     Glean.initialize("monitor.frontend", uploadEnabled, {
@@ -54,6 +64,10 @@ export const useGlean = () => {
     event: keyof GleanMetricMap[EventModule],
     data: GleanMetricMap[EventModule][EventName],
   ) => {
+    if (typeof window === "undefined") {
+      console.warn("Glean should only be used on the client");
+      return;
+    }
     const mod = (await import(
       `../../telemetry/generated/${eventModule}`
     )) as Record<keyof GleanMetricMap[EventModule], EventMetricType>;

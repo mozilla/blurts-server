@@ -91,6 +91,11 @@ export const sendGAEvent = (type: "event", eventName: string, args: object) => {
     return;
   }
 
+  if (typeof window === "undefined") {
+    console.warn("GA4 should only be used on the client");
+    return;
+  }
+
   if (currDataLayerName === undefined) {
     console.warn(`@next/third-parties: GA has not been initialized`);
     return;
