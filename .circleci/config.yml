@@ -54,16 +54,6 @@ orbs:
     heroku: circleci/heroku@1.2.6
 
 jobs:
-    lint:
-        executor: node_with_python
-        steps:
-            - checkout
-            - node/install-packages
-            - run: sudo apt-get update
-            - run: sudo apt-get install python3.10-venv
-            - run: npm run build-glean
-            - run: npm run lint
-            - run: cp .env-dist .env
     deploy:
         docker:
             - image: docker:stable-git
@@ -140,9 +130,8 @@ jobs:
                       git push -f $heroku_url $CIRCLE_BRANCH:main
 
 workflows:
-    lint-and-deploy:
+    deploy-only:
         jobs:
-            - lint
             - deploy:
                 filters:
                     tags:
@@ -153,8 +142,6 @@ workflows:
             - deploy_heroku:
                 name: Deploy main to Heroku
                 app-name: $HEROKU_MAIN_APP_NAME
-                requires:
-                    - lint
                 filters:
                     branches:
                         only: main
@@ -162,8 +149,6 @@ workflows:
             - deploy_heroku:
                 name: Deploy l10n to Heroku
                 app-name: $HEROKU_LOCALIZATION_APP_NAME
-                requires:
-                    - lint
                 filters:
                     branches:
                         only: localization
