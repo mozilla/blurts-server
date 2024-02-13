@@ -18,7 +18,7 @@ import { authOptions } from "../../../api/utils/auth";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
-  if (typeof session?.user.email === "string") {
+  if (typeof session?.user.subscriber?.fxa_uid === "string") {
     return redirect("/user/dashboard/");
   }
   const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
