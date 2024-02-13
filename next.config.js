@@ -190,7 +190,7 @@ const sentryWebpackPluginOptions = {
 
   org: "mozilla",
   project: "firefox-monitor",
-  silent: true, // Suppresses all logs
+  silent: false, // Suppresses all logs
   authToken: process.env.SENTRY_AUTH_TOKEN,
 
   // For all available options, see:
