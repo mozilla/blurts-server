@@ -867,3 +867,4 @@ floating-banner-dismiss-button-label = Dim diolch
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Enw, golwg newydd a rhagor o ffyrdd i <b>adennill eich preifatrwydd</b>.
 banner-monitor-rebrand-dismiss-button-label = Iawn
 banner-monitor-rebrand-dismiss-button-tooltip = Cau
+loading-accessibility = Llwytho
