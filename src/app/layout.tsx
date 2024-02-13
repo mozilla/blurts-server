@@ -76,6 +76,10 @@ export default async function RootLayout({
         <GoogleAnalyticsWorkaround
           gaId={CONST_GA4_MEASUREMENT_ID}
           nonce={getNonce()}
+          debugMode={
+            process.env.NEXT_PUBLIC_GA4_DEBUG_MODE === "true" &&
+            process.env.NODE_ENV !== "test"
+          }
         />
       )}
     </html>
