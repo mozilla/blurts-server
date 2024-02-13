@@ -130,7 +130,7 @@ export async function onAddEmail(
 }
 
 export async function onRemoveEmail(email: EmailRow) {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
   if (!session?.user.subscriber?.fxa_uid) {
     logger.error(
       `Tried to delete email [${email.id}] without an active session.`,
