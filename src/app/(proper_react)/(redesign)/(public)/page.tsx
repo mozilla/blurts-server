@@ -14,9 +14,10 @@ import {
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 import { getL10n } from "../../../functions/server/l10n";
 import { View } from "./LandingView";
+import { authOptions } from "../../../api/utils/auth";
 
 export default async function Page() {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
   if (typeof session?.user.email === "string") {
     return redirect("/user/dashboard/");
   }
