@@ -22,6 +22,7 @@ import { sendVerificationEmail } from "../../../../../../api/utils/email";
 import { getL10n } from "../../../../../../functions/server/l10n";
 import { logger } from "../../../../../../functions/server/logging";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
+import { authOptions } from "../../../../../../api/utils/auth";
 
 export type AddEmailFormState =
   | { success?: never }
@@ -37,7 +38,7 @@ export async function onAddEmail(
   formData: FormData,
 ): Promise<AddEmailFormState> {
   const l10n = getL10n();
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
   if (!session?.user.subscriber?.fxa_uid) {
     return {
       success: false,
