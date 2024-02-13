@@ -3,7 +3,7 @@ name: Build
 on: [push]
 
 jobs:
-  build:
+  npm-build:
 
     runs-on: ubuntu-latest
 
