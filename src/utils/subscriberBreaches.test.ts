@@ -193,7 +193,7 @@ describe("getSubBreaches", () => {
         Parameters<typeof getBreachesForEmail>
       >
     ).mockResolvedValueOnce(breachesWithNoneResolved);
-    const subBreaches = await getSubBreaches(subscriber, []);
+    const subBreaches = await getSubBreaches(subscriber, [], "us");
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].isResolved).toBe(false);
     expect(subBreaches[0].dataClasses).toStrictEqual([
@@ -223,7 +223,54 @@ describe("getSubBreaches", () => {
       >
     ).mockResolvedValueOnce(breachesWithOneResolved);
 
-    const subBreaches = await getSubBreaches(subscriber, []);
+    const subBreaches = await getSubBreaches(subscriber, [], "us");
+    expect(subBreaches.length).toEqual(1);
+    expect(subBreaches[0].isResolved).toBe(true);
+  });
+
+  it("returns that a breach is resolved for non-US users", async () => {
+    const breachesWithOneResolved = [
+      {
+        Id: 1,
+        IsRetired: true,
+        IsSpamList: false,
+        IsFabricated: false,
+        IsVerified: true,
+        Domain: "something",
+        DataClasses: ["email-addresses", "passwords", "something else"],
+      },
+      {
+        Id: 40,
+        IsRetired: false,
+        IsSpamList: false,
+        IsFabricated: false,
+        IsVerified: true,
+        Domain: "something",
+        DataClasses: [
+          "email-addresses",
+          "passwords",
+          "social-security-numbers",
+          "something else",
+        ],
+      },
+    ];
+    (
+      getUserEmails as jest.Mock<
+        ReturnType<typeof getUserEmails>,
+        Parameters<typeof getUserEmails>
+      >
+    )
+      // The only affected email is the user's primary email; they have no
+      // additional email addresses in this test:
+      .mockResolvedValueOnce([]);
+    (
+      getBreachesForEmail as jest.Mock<
+        ReturnType<typeof getBreachesForEmail>,
+        Parameters<typeof getBreachesForEmail>
+      >
+    ).mockResolvedValueOnce(breachesWithOneResolved);
+
+    const subBreaches = await getSubBreaches(subscriber, allBreaches, "nl");
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].isResolved).toBe(true);
   });
@@ -251,7 +298,7 @@ describe("getSubBreaches", () => {
     )
       .mockResolvedValueOnce(breachesWithNoneResolved)
       .mockResolvedValueOnce(breachesWithNoneResolved);
-    const subBreaches = await getSubBreaches(subscriber, allBreaches);
+    const subBreaches = await getSubBreaches(subscriber, allBreaches, "us");
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].dataClasses).toEqual([
       "email-addresses",
@@ -286,7 +333,11 @@ describe("getSubBreaches", () => {
         Parameters<typeof getBreachesForEmail>
       >
     ).mockResolvedValueOnce(breachesWithNoneResolved);
-    const subBreaches = await getSubBreaches(differentSubscriber, allBreaches);
+    const subBreaches = await getSubBreaches(
+      differentSubscriber,
+      allBreaches,
+      "us",
+    );
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].dataClasses).toEqual([
       "email-addresses",
@@ -324,7 +375,7 @@ describe("getSubBreaches", () => {
       })),
     );
 
-    const subBreaches = await getSubBreaches(subscriber, []);
+    const subBreaches = await getSubBreaches(subscriber, [], "us");
 
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].addedDate).toBeInstanceOf(Date);
@@ -419,7 +470,7 @@ describe("getSubBreaches", () => {
       .mockResolvedValueOnce(breachesWithOneResolved)
       .mockResolvedValueOnce(breachesWithOneResolved);
 
-    const subBreaches = await getSubBreaches(subscriber, []);
+    const subBreaches = await getSubBreaches(subscriber, [], "us");
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].isResolved).toBe(false);
   });
@@ -521,7 +572,7 @@ describe("getSubBreaches", () => {
       .mockResolvedValueOnce(breachesWithOneResolved)
       .mockResolvedValueOnce(breachesWithOneResolved);
 
-    const subBreaches = await getSubBreaches(subscriber, []);
+    const subBreaches = await getSubBreaches(subscriber, [], "us");
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].isResolved).toBe(true);
   });

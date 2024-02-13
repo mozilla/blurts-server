@@ -105,8 +105,8 @@ export async function getSubBreaches(
         ?.resolutionsChecked ?? []) as ArrayOfDataClasses;
       const dataClassesEffected = filteredBreachDataClasses
         .map((c) => {
-          // Filter SSN breaches out for non-US users as they are only relevant
-          // for US users as of now.
+          // Exclude SSN breaches for non-US users as they are only relevant
+          // to US users as of now.
           if (BreachDataTypes.SSN && countryCode !== "us") {
             return null;
           }
@@ -133,17 +133,14 @@ export async function getSubBreaches(
         resolvedDataClasses,
         description: breach.Description,
         domain: breach.Domain,
-        // TODO: MNTOR-2629
-        // On the current production site we only mark breaches as resolved when
-        // all relevant exposed data classes of a breach are fixed. In the
-        // first iteration of the redesign there are some data classes we do not
-        // ask a user to explicitly fix. Until we don’t have to support both
-        // versions of Monitor we’ll need to work around this gap until we can
-        // update this behaviour in our DB.
         isResolved:
-          breachResolution[breach.Id]?.isResolved ||
-          resolvedDataClasses.length === dataClassesEffected.length ||
-          false,
+          dataClassesEffected.every((dataClassEffected) =>
+            resolvedDataClasses.includes(
+              Object.keys(
+                dataClassEffected,
+              )[0] as (typeof BreachDataTypes)[keyof typeof BreachDataTypes],
+            ),
+          ) || false,
         favIconUrl: breach.FaviconUrl,
         modifiedDate: normalizeDate(breach.ModifiedDate),
         name: breach.Name,
