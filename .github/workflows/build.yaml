@@ -19,5 +19,12 @@ jobs:
       # Verify that the build (incl. type-checking) succeeds
       - run: npm run build
         env:
-          UPLOAD_SENTRY_SOURCEMAPS: true
+          UPLOAD_SENTRY_SOURCEMAPS: false
+        if: ${{ !startsWith(github.ref, 'refs/tags/') }}
+      # Verify that the build (incl. type-checking) succeeds
+      # Upload sourcemaps to Sentry
+      - run: npm run build
+        env:
+          UPLOAD_SENTRY_SOURCEMAPS: ${{ env.UPLOAD_SENTRY_SOURCEMAPS }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
