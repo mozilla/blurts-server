@@ -86,10 +86,16 @@ high-risk-breach-bank-account-step-three = Hesaplarınızda tanımadığınız �
 
 high-risk-breach-social-security-title = Sosyal güvenlik numaranız ele geçirildi
 high-risk-breach-social-security-description = Dolandırıcılar sosyal güvenlik numaranızla kredi başvurusunda bulunabilir veya kredi kartı talep edebilir. Mali zararı önlemek için hemen harekete geçin.
+high-risk-breach-social-security-step-one = <link_to_info>Dolandırıcılık uyarısını açarak veya kredinizi dondurarak</link_to_info> kendinizi koruyun.
 high-risk-breach-social-security-step-two = <link_to_info>Kredi raporunuzda</link_to_info> tanımadığınız hesaplar olup olmadığını kontrol edin.
 
 # Social Security Number Modal
 
+ssn-modal-title = Dolandırıcılık uyarıları ve kredi dondurmaları hakkında
+ssn-modal-description-fraud-part-one = <b>Dolandırıcılık uyarısını</b> açarsanız işletmelerin adınıza kredi kullanmak için kimliğinizi doğrulaması gerekir. Ücretsizdir, bir yıl sürer ve kredi puanınızı olumsuz etkilemez.
+ssn-modal-description-fraud-part-two = Süreci başlatmak için ABD'deki üç kredi ofisinden biriyle iletişime geçin. Üçüyle birden iletişime geçmeniz gerekmiyor.
+ssn-modal-description-freeze-credit-part-two = Kredinizi dondurmak için üç kredi ofisinden biriyle iletişime geçin: <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link> ve <transunion_link>TransUnion</transunion_link>.
+ssn-modal-learn-more = Dolandırıcılık uyarıları ve kredi dondurmaları hakkında bilgi alın
 ssn-modal-ok = Tamam
 
 # PIN Breaches
@@ -166,7 +172,7 @@ security-recommendation-ip-step-one = Gerçek IP adresinizi gizlemek ve internet
 leaked-passwords-title = { $breach_name } parolanız ele geçirildi
 # Variables
 # $breach_date is the date when the breach occurred.
-leaked-passwords-summary = { $breach_date } tarihinde meydana gelen bir veri ihlalinde yer alıyor.
+leaked-passwords-summary = Bilgileriniz { $breach_date } tarihinde meydana gelen bir veri ihlalinde yer alıyor.
 leaked-passwords-description = Dolandırıcılar bu bilgiyi kullanarak hesabınıza erişebilir. Ayrıca, aynı parolayla başka sitelerdeki hesaplarınıza girmeyi de deneyeceklerdir. Kendinizi korumak için bu parolayı kullandığınız her yerde değiştirin.
 leaked-passwords-steps-title = İşte yapmanız gerekenler
 leaked-passwords-steps-subtitle = Bunun için hesabınıza erişim gerekiyor, o yüzden kendiniz düzeltmeniz gerekecek.
@@ -202,3 +208,4 @@ leaked-security-questions-steps-subtitle = Bunun için hesabınıza erişim gere
 # $breach_name is the name of the breach where the security questions were found.
 # $email_affected is the email associated with the breach.
 leaked-security-questions-step-one = <link_to_breach_site>{ $breach_name }</link_to_breach_site> sitesindeki/uygulamasındaki <b>{ $email_affected }</b> hesabınızın güvenlik sorularını güncelleyin.
+leaked-security-questions-step-two = Aynı güvenlik sorularını kullandığınız başka siteler varsa o güvenlik sorularını da güncelleyin. Her hesap için farklı güvenlik soruları kullanmaya özen gösterin.

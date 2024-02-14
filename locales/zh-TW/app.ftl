@@ -735,3 +735,4 @@ floating-banner-dismiss-button-label = 不要，謝謝
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>：全新名稱、外觀與更多<b>奪回隱私權</b>的方式。
 banner-monitor-rebrand-dismiss-button-label = 確定
 banner-monitor-rebrand-dismiss-button-tooltip = 知道了！
+loading-accessibility = 載入中

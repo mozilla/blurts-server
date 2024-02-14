@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { headers, cookies } from "next/headers";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { View } from "./View";
@@ -32,20 +32,17 @@ import {
 import { refreshStoredScanResults } from "../../../../../../functions/server/refreshStoredScanResults";
 import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
 import { parseIso8601Datetime } from "../../../../../../../utils/parse";
-import {
-  addAttributionForSubscriber,
-  getLatestAttributionForSubscriberWithType,
-} from "../../../../../../../db/tables/attributions";
+import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
 import { getUserId } from "../../../../../../functions/server/getUserId";
+import { checkSession } from "../../../../../../functions/server/checkSession";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
-  if (!session?.user?.subscriber?.id) {
+  if (!checkSession(session) || !session?.user?.subscriber?.id) {
     return redirect("/");
   }
 
   const headersList = headers();
-  const cookiesList = cookies();
   const countryCode = getCountryCode(headersList);
 
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
@@ -69,30 +66,32 @@ export default async function DashboardPage() {
     brokerScanReleaseDate.getTime();
   const isPremiumUser = hasPremium(session.user);
 
-  if (
-    !hasRunScan &&
-    (isPremiumUser ||
-      (isNewUser &&
-        canSubscribeToPremium({
-          user: session.user,
-          countryCode: countryCode,
-        })))
+  if (hasRunScan) {
+    await refreshStoredScanResults(profileId);
+
+    // If the current user is a subscriber and their OneRep profile is not
+    // activated: Most likely we were not able or failed to kick-off the
+    // auto-removal process.
+    // Let’s make sure the users OneRep profile is activated:
+    if (isPremiumUser) {
+      await activateAndOptoutProfile({ profileId });
+    }
+  } else if (
+    isPremiumUser ||
+    (isNewUser &&
+      canSubscribeToPremium({
+        user: session.user,
+        countryCode: countryCode,
+      }))
   ) {
     return redirect("/user/welcome/");
   }
 
-  await refreshStoredScanResults(profileId);
-
-  // If the current user is a subscriber and their OneRep profile is not
-  // activated: Most likely we were not able or failed to kick-off the
-  // auto-removal process.
-  // Let’s make sure the users OneRep profile is activated:
-  if (isPremiumUser) {
-    await activateAndOptoutProfile({ profileId });
-  }
-
   const latestScan = await getLatestOnerepScanResults(profileId);
-  const scanCount = await getScansCountForProfile(profileId);
+  const scanCount =
+    typeof profileId === "number"
+      ? await getScansCountForProfile(profileId)
+      : 0;
   const subBreaches = await getSubscriberBreaches(session.user);
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(
@@ -115,63 +114,9 @@ export default async function DashboardPage() {
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
   const profileStats = await getProfilesStats();
-  let additionalSubplatParams = new URLSearchParams(
-    cookiesList.get("attributionsLastTouch")?.value,
+  const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
+    session.user.subscriber.id,
   );
-
-  // store utm attributions if present in cookies
-  if (cookiesList.get("attributionsFirstTouch")?.value) {
-    const searchParams = new URLSearchParams(
-      cookiesList.get("attributionsFirstTouch")?.value,
-    );
-    const attribution = {
-      type: "firstTouch",
-      entrypoint: searchParams.get("entrypoint") ?? "",
-      utm_campaign: searchParams.get("utm_campaign") ?? "",
-      utm_medium: searchParams.get("utm_medium") ?? "",
-      utm_source: searchParams.get("utm_source") ?? "",
-      utm_term: searchParams.get("utm_term") ?? "",
-    };
-    try {
-      await addAttributionForSubscriber(
-        session.user.subscriber.id,
-        attribution,
-      );
-    } catch (e) {
-      //ignore
-    }
-  }
-
-  if (additionalSubplatParams.size > 0) {
-    const attribution = {
-      type: "lastTouch",
-      entrypoint: additionalSubplatParams.get("entrypoint") ?? "",
-      utm_campaign: additionalSubplatParams.get("utm_campaign") ?? "",
-      utm_medium: additionalSubplatParams.get("utm_medium") ?? "",
-      utm_source: additionalSubplatParams.get("utm_source") ?? "",
-      utm_term: additionalSubplatParams.get("utm_term") ?? "",
-    };
-    try {
-      await addAttributionForSubscriber(
-        session.user.subscriber.id,
-        attribution,
-      );
-    } catch (e) {
-      //ignore
-    }
-  } else {
-    // if "attributionsLastTouch" cookie isn't present, try to load the attribution from the db
-    const attributionLastTouch =
-      await getLatestAttributionForSubscriberWithType(
-        session.user.subscriber.id,
-        "lastTouch",
-      );
-    if (attributionLastTouch) {
-      additionalSubplatParams = new URLSearchParams(
-        attributionLastTouch as Record<string, string>,
-      );
-    }
-  }
 
   return (
     <View

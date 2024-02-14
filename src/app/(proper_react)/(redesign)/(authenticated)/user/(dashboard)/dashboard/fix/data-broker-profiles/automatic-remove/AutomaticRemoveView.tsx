@@ -4,7 +4,15 @@
 
 "use client";
 
-import React, { ComponentProps, useEffect, useRef, useState } from "react";
+import React, {
+  ComponentProps,
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import styles from "../dataBrokerProfiles.module.scss";
 import { Button } from "../../../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../../../hooks/l10n";
@@ -12,6 +20,18 @@ import { FixView } from "../../FixView";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
 import { modifyAttributionsForUrl } from "../../../../../../../../../functions/universal/attributions";
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
+import {
+  RadioGroupProps,
+  RadioGroupState,
+  useRadioGroupState,
+} from "react-stately";
+import {
+  AriaRadioProps,
+  useFocusRing,
+  useRadio,
+  useRadioGroup,
+} from "react-aria";
+import { VisuallyHidden } from "../../../../../../../../../components/server/VisuallyHidden";
 
 export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
   monthlySubscriptionUrl: string;
@@ -22,12 +42,53 @@ export type Props = Omit<ComponentProps<typeof FixView>, "children"> & {
   };
 };
 
+const RadioContext = createContext<RadioGroupState | null>(null);
+
+type RadioMenuProps = {
+  children: ReactNode;
+};
+
+const BillingPeriodRadioMenu = (props: RadioMenuProps & RadioGroupProps) => {
+  const state = useRadioGroupState({ ...props, defaultValue: "yearly" });
+  const { radioGroupProps } = useRadioGroup(props, state);
+
+  return (
+    <div {...radioGroupProps} className={styles.upgradeToggle}>
+      <RadioContext.Provider value={state}>
+        {props.children}
+      </RadioContext.Provider>
+    </div>
+  );
+};
+
+const BillingPeriodRadioItem = (props: AriaRadioProps) => {
+  const { children } = props;
+  const state = useContext(RadioContext)!;
+  const ref = useRef<HTMLInputElement>(null);
+  const { isFocusVisible, focusProps } = useFocusRing();
+  const { inputProps } = useRadio(props, state, ref);
+
+  return (
+    <label
+      className={`${styles.toggleBtn} ${
+        // We don't currently do anything with focused cells, so we don't
+        // have any tests for it either:
+        /* c8 ignore next */
+        isFocusVisible ? styles.isFocused : ""
+      } ${state.selectedValue === props.value ? styles.isActive : ""}`}
+    >
+      <VisuallyHidden>
+        <input {...inputProps} {...focusProps} ref={ref} />
+      </VisuallyHidden>
+
+      {children}
+    </label>
+  );
+};
+
 export function AutomaticRemoveView(props: Props) {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
-
-  const [selectedPlanIsYearly, setSelectedPlanIsYearly] = useState(true);
-
   const dataBrokerCount = CONST_ONEREP_DATA_BROKER_COUNT;
 
   const {
@@ -71,6 +132,8 @@ export function AutomaticRemoveView(props: Props) {
     yearlySubscriptionUrl,
   );
 
+  const [selectedPlanIsYearly, setSelectedPlanIsYearly] = useState(true);
+
   return (
     <FixView {...fixViewProps} hideProgressIndicator>
       <div>
@@ -91,34 +154,25 @@ export function AutomaticRemoveView(props: Props) {
         </div>
         <div className={styles.content}>
           <div className={styles.upgradeToggleWrapper}>
-            <div className={styles.upgradeToggle}>
-              <button
-                onClick={() => {
-                  setSelectedPlanIsYearly(!selectedPlanIsYearly);
-                  recordTelemetry("button", "click", {
-                    button_id: "selected_yearly_plan",
-                  });
-                }}
-                className={`${selectedPlanIsYearly ? styles.isActive : ""}`}
-              >
-                {l10n.getString(
-                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-yearly",
-                )}
-              </button>
-              <button
-                onClick={() => {
-                  setSelectedPlanIsYearly(!selectedPlanIsYearly);
-                  recordTelemetry("button", "click", {
-                    button_id: "selected_monthly_plan",
-                  });
-                }}
-                className={`${selectedPlanIsYearly ? "" : styles.isActive}`}
-              >
+            <BillingPeriodRadioMenu
+              aria-label={l10n.getString(
+                "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-button",
+              )}
+              onChange={(selectedBillingPeriod: string) =>
+                setSelectedPlanIsYearly(selectedBillingPeriod === "yearly")
+              }
+            >
+              <BillingPeriodRadioItem value="monthly">
                 {l10n.getString(
                   "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-monthly",
                 )}
-              </button>
-            </div>
+              </BillingPeriodRadioItem>
+              <BillingPeriodRadioItem value="yearly">
+                {l10n.getString(
+                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-yearly",
+                )}
+              </BillingPeriodRadioItem>
+            </BillingPeriodRadioMenu>
             <span>
               {l10n.getString(
                 "fix-flow-data-broker-profiles-automatic-remove-save-percent",
