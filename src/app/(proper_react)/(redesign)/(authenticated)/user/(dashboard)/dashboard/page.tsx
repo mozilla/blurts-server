@@ -33,7 +33,6 @@ import { refreshStoredScanResults } from "../../../../../../functions/server/ref
 import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
 import { parseIso8601Datetime } from "../../../../../../../utils/parse";
 import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
-import { getUserId } from "../../../../../../functions/server/getUserId";
 import { checkSession } from "../../../../../../functions/server/checkSession";
 
 export default async function DashboardPage() {
@@ -121,7 +120,6 @@ export default async function DashboardPage() {
   return (
     <View
       user={session.user}
-      userId={getUserId(session)}
       isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
       userScanData={latestScan}
@@ -133,7 +131,6 @@ export default async function DashboardPage() {
       fxaSettingsUrl={fxaSettingsUrl}
       scanCount={scanCount}
       totalNumberOfPerformedScans={profileStats?.total}
-      isNewUser={isNewUser}
     />
   );
 }
