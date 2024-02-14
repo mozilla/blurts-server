@@ -53,7 +53,11 @@ const subscriber: Subscriber = {
       },
       "40": {
         isResolved: true,
-        resolutionsChecked: ["email-addresses", "phone-numbers"],
+        resolutionsChecked: [
+          "email-addresses",
+          "passwords",
+          "social-security-numbers",
+        ],
       },
       "252": {
         isResolved: true,
@@ -568,7 +572,7 @@ describe("getSubBreaches", () => {
         "test@test.com": {
           "40": {
             isResolved: true,
-            resolutionsChecked: ["email-addresses", "phone-numbers"],
+            resolutionsChecked: ["email-addresses", "passwords"],
           },
         },
         "additional@test.com": {

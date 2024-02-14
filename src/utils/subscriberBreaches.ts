@@ -104,6 +104,7 @@ export async function getSubBreaches(
         filterBreachDataTypes(breach.DataClasses);
       const resolvedDataClasses = (breachResolution[breach.Id]
         ?.resolutionsChecked ?? []) as ArrayOfDataClasses;
+
       const dataClassesEffected = filteredBreachDataClasses
         .map((c) => {
           // Exclude SSN breaches for non-US users as they are only relevant
@@ -152,6 +153,11 @@ export async function getSubBreaches(
         curBreach.emailsAffected.push(email.email);
         curBreach.dataClassesEffected.forEach((d, index) => {
           const key = Object.keys(d)[0];
+          // Exclude SSN breaches for non-US users as they are only relevant
+          // to US users as of now.
+          if (key === BreachDataTypes.SSN && countryCode !== "us") {
+            return null;
+          }
           if (key === BreachDataTypes.Email) {
             (curBreach.dataClassesEffected[index][key] as string[]).push(
               email.email,
@@ -160,8 +166,17 @@ export async function getSubBreaches(
             (curBreach.dataClassesEffected[index][key] as number)++;
           }
         });
+        curBreach.resolvedDataClasses = [
+          ...new Set([
+            ...curBreach.resolvedDataClasses,
+            ...resolvedDataClasses,
+          ]),
+        ];
         curBreach.isResolved =
-          curBreach.isResolved && subscriberBreach.isResolved;
+          isBreachResolved(
+            curBreach.dataClassesEffected,
+            curBreach.resolvedDataClasses,
+          ) && subscriberBreach.isResolved;
       }
     }
   }
