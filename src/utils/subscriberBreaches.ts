@@ -14,6 +14,7 @@ import { parseIso8601Datetime } from "./parse.js";
 import {
   BreachDataTypes,
   ResolutionRelevantBreachDataTypes,
+  isBreachResolved,
 } from "../app/functions/universal/breach";
 
 export type DataClassEffected = {
@@ -133,14 +134,7 @@ export async function getSubBreaches(
         resolvedDataClasses,
         description: breach.Description,
         domain: breach.Domain,
-        isResolved:
-          dataClassesEffected.every((dataClassEffected) =>
-            resolvedDataClasses.includes(
-              Object.keys(
-                dataClassEffected,
-              )[0] as (typeof BreachDataTypes)[keyof typeof BreachDataTypes],
-            ),
-          ) || false,
+        isResolved: isBreachResolved(dataClassesEffected, resolvedDataClasses),
         favIconUrl: breach.FaviconUrl,
         modifiedDate: normalizeDate(breach.ModifiedDate),
         name: breach.Name,

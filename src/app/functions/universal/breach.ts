@@ -2,6 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { DataClassEffected } from "../../../utils/subscriberBreaches";
+import { HibpBreachDataTypes } from "../../deprecated/(authenticated)/user/breaches/breaches";
+
 // TODO: Move pure functions that operate on breaches to this file
 
 export const BreachDataTypes = {
@@ -49,3 +52,17 @@ export const SecurityRecommendationDataTypes = {
   Phone: BreachDataTypes.Phone,
   IP: BreachDataTypes.IP,
 } as const;
+
+export function isBreachResolved(
+  dataClassesAffected: DataClassEffected[],
+  resolvedDataClasses: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>,
+) {
+  return (
+    dataClassesAffected.every((dataClassAffected) => {
+      const dataClassAffectedKey = Object.keys(
+        dataClassAffected,
+      )[0] as (typeof BreachDataTypes)[keyof typeof BreachDataTypes];
+      return resolvedDataClasses.includes(dataClassAffectedKey);
+    }) || false
+  );
+}
