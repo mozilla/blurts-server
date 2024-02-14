@@ -130,6 +130,7 @@ export async function onAddEmail(
 }
 
 export async function onRemoveEmail(email: EmailRow) {
+  const l10n = getL10n();
   const session = await getServerSession(authOptions);
   if (!session?.user.subscriber?.fxa_uid) {
     logger.error(
@@ -138,7 +139,7 @@ export async function onRemoveEmail(email: EmailRow) {
     return {
       success: false,
       error: "delete-email-without-active-session",
-      errorMessage: `Tried to delete email [${email.id}] without an active session.`,
+      errorMessage: `User tried to delete email without an active session.`,
     };
   }
   const subscriber = (await getSubscriberByFxaUid(
@@ -151,7 +152,7 @@ export async function onRemoveEmail(email: EmailRow) {
     return {
       success: false,
       error: "delete-email-without-permission",
-      errorMessage: `User [${subscriber?.id}] tried to delete email [${email.id}], which belongs to another user.`,
+      errorMessage: `User tried to delete an email that belongs to another user.`,
     };
   }
 
@@ -163,7 +164,7 @@ export async function onRemoveEmail(email: EmailRow) {
     return {
       success: false,
       error: "delete-email-error",
-      errorMessage: (e as Error).message,
+      errorMessage: l10n.getString("user-delete-unknown-error"),
     };
   }
 }
