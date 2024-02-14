@@ -71,7 +71,7 @@ high-risk-breach-estimated-time =
 # Credit Card Breaches
 
 high-risk-breach-credit-card-title = Ο αριθμός της πιστωτικής σας κάρτας εκτέθηκε
-high-risk-breach-credit-card-description = Οποιοσδήποτε το αποκτήσει μπορεί να κάνει μη εξουσιοδοτημένες αγορές για τις οποίες ενδέχεται να ευθύνεστε εσείς. Δράστε τώρα για να αποτρέψετε την οικονομική ζημιά.
+high-risk-breach-credit-card-description = Οποιοσδήποτε τον αποκτήσει μπορεί να πραγματοποιήσει μη εξουσιοδοτημένες αγορές για τις οποίες μπορεί να θεωρηθείτε υπεύθυνοι. Ενεργήστε τώρα για να αποφύγετε οποιαδήποτε οικονομική απώλεια.
 high-risk-breach-credit-card-step-one = Αν έχετε ακόμα αυτήν την κάρτα, επικοινωνήστε με τον εκδότη της για να αναφέρετε την υποκλοπή της.
 high-risk-breach-credit-card-step-two = Ζητήστε μια νέα κάρτα με νέο αριθμό.
 high-risk-breach-credit-card-step-three = Ελέγξτε τους λογαριασμούς σας για μη εξουσιοδοτημένες χρεώσεις.
@@ -79,7 +79,7 @@ high-risk-breach-credit-card-step-three = Ελέγξτε τους λογαρια
 # Bank Account Breaches
 
 high-risk-breach-bank-account-title = Ο τραπεζικός σας λογαριασμός εκτέθηκε
-high-risk-breach-bank-account-description = Αν λάβετε δράση το συντομότερο δυνατό, θα έχετε περισσότερη νομική προστασία που θα σας βοηθήσει να ανακτήσετε τυχόν απώλειες.
+high-risk-breach-bank-account-description = Αν λάβετε μέτρα το συντομότερο δυνατόν, θα έχετε πιθανότατα περισσότερη νομική προστασία που θα σας βοηθήσει να ανακτήσετε τυχόν απώλειες.
 high-risk-breach-bank-account-step-one = Ενημερώστε αμέσως την τράπεζά σας σχετικά με την παραβίαση του αριθμού του λογαριασμού σας.
 high-risk-breach-bank-account-step-two = Αλλάξτε τον αριθμό του λογαριασμού σας.
 high-risk-breach-bank-account-step-three = Ελέγξτε τους λογαριασμούς σας για μη εξουσιοδοτημένες χρεώσεις.
@@ -87,24 +87,24 @@ high-risk-breach-bank-account-step-three = Ελέγξτε τους λογαρι�
 # Social Security Number Breaches
 
 high-risk-breach-social-security-title = Ο αριθμός κοινωνικής ασφάλισής σας εκτέθηκε
-high-risk-breach-social-security-description = Οι απατεώνες μπορούν να συνάψουν νέα δάνεια ή πιστωτικές κάρτες με τον αριθμό κοινωνικής ασφάλισής σας. Δράστε γρήγορα για να αποτρέψετε την οικονομική ζημιά.
-high-risk-breach-social-security-step-one = Προστατευτείτε <link_to_info>ρυθμίζοντας μια ειδοποίηση απάτης ή "παγώνοντας" την πίστωσή σας.</link_to_info>
-high-risk-breach-social-security-step-two = <link_to_info>Ελέγξτε την αναφορά πίστωσής σας</link_to_info> για μη αναγνωρισμένους λογαριασμούς.
+high-risk-breach-social-security-description = Οι απατεώνες μπορούν να εκδώσουν νέα δάνεια ή πιστωτικές κάρτες με τον αριθμό κοινωνικής ασφάλισής σας. Ενεργήστε γρήγορα για να αποφύγετε οικονομική ζημία.
+high-risk-breach-social-security-step-one = Προστατευτείτε <link_to_info>δημιουργώντας μια ειδοποίηση απάτης ή «παγώνοντας» τη πιστωτική σας ικανότητα.</link_to_info>
+high-risk-breach-social-security-step-two = <link_to_info>Ελέγξτε την πιστωτική σας αναφορά</link_to_info> για άγνωστους λογαριασμούς.
 
 # Social Security Number Modal
 
-ssn-modal-title = Σχετικά με τις ειδοποιήσεις απάτης και τη δέσμευση πιστώσεων
+ssn-modal-title = Σχετικά με τις ειδοποιήσεις απάτης και το «πάγωμα» πιστωτικής ικανότητας
 ssn-modal-description-fraud-part-one = <b>Μια ειδοποίηση απάτης</b> απαιτεί από τις επιχειρήσεις να επαληθεύσουν την ταυτότητά σας πριν εκδώσουν νέα πίστωση στο όνομά σας. Είναι δωρεάν, διαρκεί ένα έτος και δεν θα επηρεάσει αρνητικά την πιστωτική σας ικανότητα.
 ssn-modal-description-fraud-part-two = Για να ρυθμίσετε ένα, επικοινωνήστε με οποιοδήποτε από τα τρία πιστωτικά ιδρύματα. Δεν χρειάζεται να επικοινωνήσετε και με τις τρεις.
 ssn-modal-description-freeze-credit-part-one = <b>Η δέσμευση της πίστωσής σας</b> εμποδίζει τον οποιονδήποτε από το άνοιγμα ενός νέου λογαριασμού στο όνομά σας. Είναι δωρεάν και δεν θα επηρεάσει αρνητικά την πιστωτική σας ικανότητα, αλλά θα πρέπει να την απενεργοποιήσετε πριν ανοίξετε νέους λογαριασμούς.
-ssn-modal-description-freeze-credit-part-two = Για να δεσμεύσετε την πίστωσή σας, επικοινωνήστε με κάθε ένα από τα τρία πιστωτικά ιδρύματα — <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link> και <transunion_link>TransUnion</transunion_link>.
-ssn-modal-learn-more = Μάθετε περισσότερα σχετικά με τις ειδοποιήσεις απάτης και τη δέσμευση πιστώσεων
+ssn-modal-description-freeze-credit-part-two = Για να «παγώσετε» την πιστωτική σας ικανότητα, επικοινωνήστε με καθένα από τα τρία πιστωτικά ιδρύματα: <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link> και <transunion_link>TransUnion</transunion_link>.
+ssn-modal-learn-more = Μάθετε περισσότερα σχετικά με τις ειδοποιήσεις απάτης και το «πάγωμα» πιστωτικής ικανότητας
 ssn-modal-ok = OK
 
 # PIN Breaches
 
 high-risk-breach-pin-title = Το PIN σας εκτέθηκε
-high-risk-breach-pin-description = Αν λάβετε δράση το συντομότερο δυνατό, θα έχετε περισσότερη νομική προστασία που θα σας βοηθήσει να ανακτήσετε τυχόν απώλειες.
+high-risk-breach-pin-description = Αν λάβετε μέτρα το συντομότερο δυνατόν, θα έχετε πιθανότατα περισσότερη νομική προστασία που θα σας βοηθήσει να ανακτήσετε τυχόν απώλειες.
 high-risk-breach-pin-step-one = Ενημερώστε αμέσως την τράπεζά σας σχετικά με την παραβίαση του PIN σας.
 high-risk-breach-pin-step-two = Αλλάξτε το PIN σας οπουδήποτε έχετε χρησιμοποιήσει το ίδιο.
 high-risk-breach-pin-step-three = Ελέγξτε τους λογαριασμούς σας για μη εξουσιοδοτημένες χρεώσεις.

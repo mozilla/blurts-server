@@ -21,8 +21,8 @@ export function getDetailsFromLocationString(locationString: string) {
 }
 
 function getLocationString(location: RelevantLocation) {
-  const { name, stateCode, countryCode } = location;
-  return `${name}, ${stateCode}, ${countryCode}`;
+  const { n: name, s: stateCode } = location;
+  return `${name}, ${stateCode}, USA`;
 }
 
 function getLocationStringByKey(

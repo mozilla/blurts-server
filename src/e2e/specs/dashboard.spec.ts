@@ -71,7 +71,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
     });
 
     // verify overview card
-    await expect(dashboardPage.exposuresCardHeading).toBeVisible();
+    await expect(dashboardPage.dashboardMozLogo).toBeVisible();
 
     // TODO: add verifications for all fixed exposures state
   });
@@ -205,7 +205,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Content`, () =
           page.locator(
             `(//div[starts-with(@class, "StatusPill_pill")])[${i + 1}]`,
           ),
-        ).toHaveText(/In-progress|Fixed/);
+        ).toHaveText(/In progress|Fixed/);
       }
     }
   });

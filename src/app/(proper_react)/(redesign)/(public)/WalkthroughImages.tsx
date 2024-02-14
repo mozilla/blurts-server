@@ -10,6 +10,7 @@ import ScanningForExposuresImageDe from "./value-prop-images/de/scanning-for-exp
 import LeakedPasswordExampleImageDe from "./value-prop-images/de/leaked-password-example-de.svg";
 import ScanningForExposuresImageFr from "./value-prop-images/fr/scanning-for-exposures-fr.svg";
 import LeakedPasswordExampleImageFr from "./value-prop-images/fr/leaked-password-example-fr.svg";
+import { getLocale } from "../../../functions/universal/getLocale";
 
 const IllustrationWrapper = ({
   image,
@@ -30,16 +31,16 @@ const IllustrationWrapper = ({
 );
 
 type Props = {
-  countryCode: string;
   l10n: ExtendedReactLocalization;
 };
 
 export const ScanningForExposuresIllustration = (props: Props) => {
   let imageSrc = ScanningForExposuresImage;
+  const language = getLanguage(getLocale(props.l10n));
 
-  if (props.countryCode === "de") {
+  if (language === "de") {
     imageSrc = ScanningForExposuresImageDe;
-  } else if (props.countryCode === "fr") {
+  } else if (language === "fr") {
     imageSrc = ScanningForExposuresImageFr;
   }
 
@@ -48,17 +49,18 @@ export const ScanningForExposuresIllustration = (props: Props) => {
       {...props}
       image={imageSrc}
       testId="scanning-for-exposures-image"
-      countryCode={props.countryCode}
+      countryCode={language}
     />
   );
 };
 
 export const LeakedPasswordExampleIllustration = (props: Props) => {
   let imageSrc = LeakedPasswordExampleImage;
+  const language = getLanguage(getLocale(props.l10n));
 
-  if (props.countryCode === "de") {
+  if (language === "de") {
     imageSrc = LeakedPasswordExampleImageDe;
-  } else if (props.countryCode === "fr") {
+  } else if (language === "fr") {
     imageSrc = LeakedPasswordExampleImageFr;
   }
 
@@ -67,7 +69,11 @@ export const LeakedPasswordExampleIllustration = (props: Props) => {
       {...props}
       image={imageSrc}
       testId="leaked-password-example"
-      countryCode={props.countryCode}
+      countryCode={language}
     />
   );
 };
+
+function getLanguage(locale: string): string {
+  return locale.split("_")[0].toLowerCase();
+}

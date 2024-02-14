@@ -47,6 +47,7 @@ import Meta, {
   DashboardUsPremiumScanInProgressUnresolvedBreaches,
   DashboardUsPremiumScanInProgressResolvedBreaches,
   DashboardInvalidPremiumUserNoScanResolvedBreaches,
+  DashboardUsPremiumManuallyResolvedScansNoBreaches,
 } from "./Dashboard.stories";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 
@@ -355,6 +356,71 @@ it("does not show the 'Start a free scan' CTA for non-US users", () => {
   expect(freeScanCta).not.toBeInTheDocument();
 });
 
+it("does not show a 'Contact Us' link for non-Plus users", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  // Note: there are two user menus, for both small and wide screens:
+  const userMenuTrigger = screen.getAllByRole("button", {
+    name: "Open user menu",
+  })[0];
+  await user.click(userMenuTrigger);
+
+  const contactUsEntry = screen.queryByRole("menuitem", { name: "Contact us" });
+
+  expect(contactUsEntry).not.toBeInTheDocument();
+});
+
+it("shows a 'Contact Us' link for Plus users", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  // Note: there are two user menus, for both small and wide screens:
+  const userMenuTrigger = screen.getAllByRole("button", {
+    name: "Open user menu",
+  })[0];
+  await user.click(userMenuTrigger);
+
+  const contactUsEntry = screen.getByRole("menuitem", { name: "Contact us" });
+
+  expect(contactUsEntry).toBeInTheDocument();
+});
+
+it("counts how often people click the 'Contact us' link", async () => {
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  // Note: there are two user menus, for both small and wide screens:
+  const userMenuTrigger = screen.getAllByRole("button", {
+    name: "Open user menu",
+  })[0];
+  await user.click(userMenuTrigger);
+
+  const contactUsEntry = screen.getByRole("menuitem", { name: "Contact us" });
+  await user.click(contactUsEntry);
+
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "contact_us_user_menu",
+    }),
+  );
+});
+
 it("switches between tab panels", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
@@ -379,7 +445,7 @@ it("switches between tab panels", async () => {
 
 it("shows consistent counts in the chart on the active tab", () => {
   const ComposedDashboard = composeStory(
-    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
     Meta,
   );
   render(<ComposedDashboard />);
@@ -401,7 +467,7 @@ it("shows consistent counts in the chart on the active tab", () => {
 it("shows consistent counts in the chart on the fixed tab", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
-    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
     Meta,
   );
   render(<ComposedDashboard />);
@@ -1883,12 +1949,29 @@ it("shows the correct dashboard banner title for US user, with Premium, unresolv
   });
   const dashboardTopBannerTitle = getByText(
     dashboardTopBanner,
-    "Let’s keep protecting your data",
+    "Your data is protected",
   );
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA and sends telemetry for US user, with Premium, unresolved scan, no breaches", async () => {
+it("tells the user that they don't need to do anything now if they have Premium and have no breaches, even if there are still new scan results (for which opt-out requests will be sent later)", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanNoBreaches,
+    Meta,
+  );
+
+  render(<ComposedDashboard />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "See what’s fixed",
+  });
+  expect(dashboardTopBannerCta).toBeInTheDocument();
+});
+
+it("sends telemetry when a US user, with Premium, an unresolved scan, and no breaches clicks the top banner CTA", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanNoBreaches,
     Meta,
@@ -1904,16 +1987,15 @@ it("shows the correct dashboard banner CTA and sends telemetry for US user, with
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
-    name: "Let’s keep going",
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "See what’s fixed",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "ctaButton",
     "click",
     expect.objectContaining({
-      button_id: "us_premium_unresolved_brokers",
+      button_id: "us_premium_yes_scan_all_resolved",
     }),
   );
 });
@@ -1931,7 +2013,7 @@ it("shows the correct dashboard banner title for US user, with Premium, Unresolv
   });
   const dashboardTopBannerTitle = getByText(
     dashboardTopBanner,
-    "Let’s protect your data",
+    "Let’s keep protecting your data",
   );
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
@@ -1953,7 +2035,7 @@ it("shows the correct dashboard banner CTA for US user, with Premium, Unresolved
     name: "Dashboard summary",
   });
   const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
-    name: "Let’s fix it",
+    name: "Let’s keep going",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
@@ -1961,8 +2043,7 @@ it("shows the correct dashboard banner CTA for US user, with Premium, Unresolved
     "ctaButton",
     "click",
     expect.objectContaining({
-      button_id:
-        "us_non_premium_yes_scan_unresolved_breaches_unresolved_brokers",
+      button_id: "us_premium_unresolved_breaches",
     }),
   );
 });
@@ -1980,12 +2061,29 @@ it("shows the correct dashboard banner title for US user, with Premium, unresolv
   });
   const dashboardTopBannerTitle = getByText(
     dashboardTopBanner,
-    "Let’s keep protecting your data",
+    "Your data is protected",
   );
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
-it("shows the correct dashboard banner CTA and sends telemetry for US user, with Premium, unresolved scan, resolved breaches", async () => {
+it("tells the user that they don't need to do anything now if they have Premium and have resolved all breaches, even if there are still new scan results (for which opt-out requests will be sent later)", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanResolvedBreaches,
+    Meta,
+  );
+
+  render(<ComposedDashboard />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "See what’s fixed",
+  });
+  expect(dashboardTopBannerCta).toBeInTheDocument();
+});
+
+it("sends telemetry when a US user, with Premium, an unresolved scan, and resolved breaches clicks the top banner CTA", async () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumUnresolvedScanResolvedBreaches,
     Meta,
@@ -2001,16 +2099,15 @@ it("shows the correct dashboard banner CTA and sends telemetry for US user, with
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "link", {
-    name: "Let’s keep going",
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "See what’s fixed",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "ctaButton",
     "click",
     expect.objectContaining({
-      button_id: "us_premium_unresolved_brokers",
+      button_id: "us_premium_yes_scan_all_resolved",
     }),
   );
 });
@@ -2447,6 +2544,78 @@ it("shows the correct dashboard banner CTA and sends telemetry for US user, with
   );
 });
 
+// Check dashboard banner content for story DashboardUsPremiumScanInProgressNoBreaches
+it("shows the correct dashboard banner title for US user, with Premium, scan manually resolved, no breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumManuallyResolvedScansNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerTitle = getByText(
+    dashboardTopBanner,
+    "Your data is protected",
+  );
+  expect(dashboardTopBannerTitle).toBeInTheDocument();
+});
+
+it("shows the correct dashboard banner CTA and sends telemetry for US user, with Premium, scan manually resolved, no breaches", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumManuallyResolvedScansNoBreaches,
+    Meta,
+  );
+  const mockedRecord = useTelemetry();
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  render(<ComposedDashboard />);
+
+  const dashboardTopBanner = screen.getByRole("region", {
+    name: "Dashboard summary",
+  });
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
+    name: "See what’s fixed",
+  });
+  expect(dashboardTopBannerCta).toBeInTheDocument();
+  await user.click(dashboardTopBannerCta);
+  expect(mockedRecord).toHaveBeenCalledWith(
+    "dashboard",
+    "view",
+    expect.objectContaining({
+      broker_count: 4,
+    }),
+  );
+});
+
+it("dashboard calculation for US user, with Premium, scan manually resolved, no breaches", async () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumManuallyResolvedScansNoBreaches,
+    Meta,
+  );
+  const user = userEvent.setup();
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  render(<ComposedDashboard />);
+
+  const tabFixedTrigger = screen.getByRole("tab", {
+    name: "Fixed",
+  });
+  await user.click(tabFixedTrigger);
+
+  const fixedCounter = 32;
+  const chartCaption = screen.getByText(
+    `This chart shows the total exposures that are fixed (⁨${fixedCounter}⁩ out of ⁨${fixedCounter}⁩)`,
+  );
+  expect(chartCaption).toBeInTheDocument();
+});
+
 it("does not explain what 'in progress' means for users who cannot get Plus", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
@@ -2553,7 +2722,7 @@ it("logs a warning and error in the story for an invalid user state", () => {
 it("expands one card at a time", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
-    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
     Meta,
   );
   render(<ComposedDashboard />);
@@ -2691,18 +2860,18 @@ it("send telemetry when users toggle between action needed and fixed tabs", asyn
   const actionNeededTab = screen.getByText("Action needed");
   await user.click(fixedTab);
   expect(mockedRecord).toHaveBeenCalledWith(
-    "ctaButton",
-    "click",
+    "dashboard",
+    "view",
     expect.objectContaining({
-      button_id: "header_fixed",
+      dashboard_tab: "fixed",
     }),
   );
   await user.click(actionNeededTab);
   expect(mockedRecord).toHaveBeenCalledWith(
-    "ctaButton",
-    "click",
+    "dashboard",
+    "view",
     expect.objectContaining({
-      button_id: "header_action_needed",
+      dashboard_tab: "action-needed",
     }),
   );
 });

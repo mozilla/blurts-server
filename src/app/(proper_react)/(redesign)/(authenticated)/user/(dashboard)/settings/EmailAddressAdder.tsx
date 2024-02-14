@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useEffect } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
@@ -85,6 +85,8 @@ const EmailAddressAddForm = () => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const [formState, formAction] = useFormState(onAddEmail, {});
+  const [hasPressedButton, setHasPressedButton] = useState(false);
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     if (typeof formState.success !== "undefined") {
@@ -93,6 +95,18 @@ const EmailAddressAddForm = () => {
       });
     }
   }, [formState, recordTelemetry]);
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const isEmailValid = () => {
+    // Regex for checking email format
+    // ensuring it contains a local part, an "@" symbol,
+    // and a domain part.
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   return !formState.success ? (
     <>
@@ -105,14 +119,29 @@ const EmailAddressAddForm = () => {
         <label htmlFor="newEmailAddress">
           {l10n.getString("add-email-address-input-label")}
         </label>
-        <input type="email" name="newEmailAddress" id="newEmailAddress" />
-        <Button type="submit" variant="primary">
+        <input
+          type="email"
+          name="newEmailAddress"
+          id="newEmailAddress"
+          onChange={handleInputChange}
+        />
+        <Button
+          type="submit"
+          variant="primary"
+          className={styles.btn}
+          disabled={!isEmailValid()}
+          onPress={() => {
+            setHasPressedButton(true);
+          }}
+          isLoading={hasPressedButton}
+          aria-live="polite"
+        >
           {l10n.getString("add-email-send-verification-button")}
         </Button>
       </form>
     </>
   ) : (
-    <p>
+    <p className={styles.description}>
       {l10n.getFragment("add-email-verify-the-link-2", {
         vars: { email: formState.submittedAddress },
         elems: { b: <b /> },
