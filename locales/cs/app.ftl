@@ -19,6 +19,7 @@
         [ins] Mozilla Monitorem
        *[nom] Mozilla Monitor
     }
+    .gender = masculine
 -product-name-nowrap =
     { $case ->
        *[nom] <span class="nowrap">{ -product-name(case: "nom") }</span>
@@ -983,3 +984,4 @@ floating-banner-dismiss-button-label = Ne, díky
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nové jméno, vzhled a ještě více způsobů, jak <b>získat zpět své soukromí</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Zavřít
+loading-accessibility = Načítání

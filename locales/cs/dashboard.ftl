@@ -42,7 +42,7 @@ modal-active-number-of-exposures-part-one-all =
     }
 modal-active-number-of-exposures-part-two = Například, pokud máte 10 odhalení svého telefonního čísla, může to znamenat, že jedno telefonní číslo je zveřejněné na 10 různých stránkách nebo to může znamenat, že na 5 různých stránkách došlo k odhalení 2 různých telefonních čísel.
 modal-active-number-of-exposures-part-three-all = Když budou vyřešeny, budou přidány k vašemu celkovému počtu vyřešených odhalení na podstránce Vyřešené.
-modal-fixed-number-of-exposures-title = O počte vyřešených odhalení
+modal-fixed-number-of-exposures-title = O počtu vyřešených odhalení
 modal-fixed-number-of-exposures-all = Tento graf obsahuje celkový počet úniků údajů, které byly vyřešeny pro všechny e-mailové adresy, které aktuálně sledujete. Jakmile jsou odhalení označeny jako vyřešené, připočítají se zde k celkovému součtu.
 modal-cta-ok = OK
 modal-open-alt = Otevřít
@@ -126,7 +126,7 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
     }
 dashboard-top-banner-no-exposures-found-title = Nebyla nalezena žádná odhalení
 dashboard-top-banner-non-us-no-exposures-found-description = Skvělá zpráva! Prohledali jsme všechny známé úniky údajů a nenašli jsme žádné odhalení. Vaši e-mailovou adresu budeme průběžně monitorovat a pokud dojde k novému úniku, dáme vám vědět.
-dashboard-no-exposures-label = Nebyly nalezeny žádné odhalení
+dashboard-no-exposures-label = Nebylo nalezeno žádné odhalení
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
 dashboard-top-banner-non-us-your-data-is-protected-description =

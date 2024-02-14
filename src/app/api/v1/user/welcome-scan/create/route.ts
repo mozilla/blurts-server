@@ -16,7 +16,7 @@ import {
 import type { CreateProfileRequest } from "../../../../../functions/server/onerep";
 import { meetsAgeRequirement } from "../../../../../functions/universal/user";
 import AppConstants from "../../../../../../appConstants";
-import { getSubscriberByEmail } from "../../../../../../db/tables/subscribers";
+import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
 import {
   setOnerepProfileId,
   setOnerepScan,
@@ -44,7 +44,7 @@ export async function POST(
 ): Promise<NextResponse<WelcomeScanBody> | NextResponse<unknown>> {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber) {
-    throw new Error("No session");
+    throw new Error("No fxa_uid found in session");
   }
 
   const eligible = await isEligibleForFreeScan(
@@ -80,10 +80,15 @@ export async function POST(
     birth_date: dateOfBirth,
   };
 
-  if (typeof session?.user?.email === "string") {
+  if (typeof session?.user?.subscriber.fxa_uid === "string") {
     try {
-      const subscriber = await getSubscriberByEmail(session.user.email);
+      const subscriber = await getSubscriberByFxaUid(
+        session.user.subscriber.fxa_uid,
+      );
 
+      if (!subscriber) {
+        throw new Error("No subscriber found for current session.");
+      }
       if (!subscriber.onerep_profile_id) {
         // Create OneRep profile
         const profileId = await createProfile(profileData);
