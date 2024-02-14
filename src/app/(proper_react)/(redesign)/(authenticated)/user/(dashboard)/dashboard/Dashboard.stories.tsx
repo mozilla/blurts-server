@@ -191,6 +191,8 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
               yearly: 13.37,
               monthly: 42.42,
             }}
+            isNewUser={true}
+            telemetryId="arbitrary-telemetry-id"
           />
         </Shell>
       </CountryCodeProvider>
