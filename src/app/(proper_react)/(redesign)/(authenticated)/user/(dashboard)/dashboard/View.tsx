@@ -52,7 +52,6 @@ import {
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
   user: Session["user"];
-  userId?: string;
   userBreaches: SubscriberBreach[];
   userScanData: LatestOnerepScanData;
   isEligibleForFreeScan: boolean;
@@ -66,7 +65,6 @@ export type Props = {
   fxaSettingsUrl: string;
   scanCount: number;
   totalNumberOfPerformedScans?: number;
-  isNewUser?: boolean;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -292,14 +290,6 @@ export const View = (props: Props) => {
         "dashboard-exposures-no-breaches-scan-progress-description",
       );
     }
-
-    recordTelemetry("dashboard", "view", {
-      user_id: props.userId,
-      dashboard_tab: selectedTab,
-      legacy_user: props.isNewUser,
-      breach_count: breachesDataArray.length,
-      broker_count: dataBrokerTotalNum,
-    });
 
     return (
       <>
