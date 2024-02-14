@@ -31,10 +31,10 @@ import {
 } from "../../../../../../functions/server/getPremiumSubscriptionInfo";
 import { refreshStoredScanResults } from "../../../../../../functions/server/refreshStoredScanResults";
 import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
-import { parseIso8601Datetime } from "../../../../../../../utils/parse";
 import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
-import { getUserId } from "../../../../../../functions/server/getUserId";
 import { checkSession } from "../../../../../../functions/server/checkSession";
+import { isPrePlusUser } from "../../../../../../functions/server/isPrePlusUser";
+import { getUserId } from "../../../../../../functions/server/getUserId";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
@@ -46,24 +46,8 @@ export default async function DashboardPage() {
   const countryCode = getCountryCode(headersList);
 
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const brokerScanReleaseDateParts = (
-    process.env.BROKER_SCAN_RELEASE_DATE ?? ""
-  ).split("-");
-  if (brokerScanReleaseDateParts[0] === "") {
-    brokerScanReleaseDateParts[0] = "2023";
-  }
-  const brokerScanReleaseDate = new Date(
-    Date.UTC(
-      Number.parseInt(brokerScanReleaseDateParts[0], 10),
-      Number.parseInt(brokerScanReleaseDateParts[1] ?? "12", 10) - 1,
-      Number.parseInt(brokerScanReleaseDateParts[2] ?? "05", 10),
-    ),
-  );
-
   const hasRunScan = typeof profileId === "number";
-  const isNewUser =
-    (parseIso8601Datetime(session.user.subscriber.created_at)?.getTime() ?? 0) >
-    brokerScanReleaseDate.getTime();
+  const isNewUser = !isPrePlusUser(session.user);
   const isPremiumUser = hasPremium(session.user);
 
   if (hasRunScan) {
@@ -121,7 +105,6 @@ export default async function DashboardPage() {
   return (
     <View
       user={session.user}
-      userId={getUserId(session)}
       isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
       userScanData={latestScan}
@@ -134,6 +117,7 @@ export default async function DashboardPage() {
       scanCount={scanCount}
       totalNumberOfPerformedScans={profileStats?.total}
       isNewUser={isNewUser}
+      telemetryId={getUserId(session)}
     />
   );
 }

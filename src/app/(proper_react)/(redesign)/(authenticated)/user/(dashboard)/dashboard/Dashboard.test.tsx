@@ -2860,18 +2860,18 @@ it("send telemetry when users toggle between action needed and fixed tabs", asyn
   const actionNeededTab = screen.getByText("Action needed");
   await user.click(fixedTab);
   expect(mockedRecord).toHaveBeenCalledWith(
-    "ctaButton",
-    "click",
+    "dashboard",
+    "view",
     expect.objectContaining({
-      button_id: "header_fixed",
+      dashboard_tab: "fixed",
     }),
   );
   await user.click(actionNeededTab);
   expect(mockedRecord).toHaveBeenCalledWith(
-    "ctaButton",
-    "click",
+    "dashboard",
+    "view",
     expect.objectContaining({
-      button_id: "header_action_needed",
+      dashboard_tab: "action-needed",
     }),
   );
 });
