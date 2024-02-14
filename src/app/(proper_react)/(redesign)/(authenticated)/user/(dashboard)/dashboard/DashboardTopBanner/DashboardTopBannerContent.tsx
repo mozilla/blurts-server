@@ -223,7 +223,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </p>
             <div className={styles.cta}>
-              {!props.enabledFeatureFlags.includes("MonitorPlus") ||
+              {!props.enabledFeatureFlags.includes("ForceWaitlist") ||
               typeof props.totalNumberOfPerformedScans === "undefined" ||
               props.totalNumberOfPerformedScans <
                 CONST_ONEREP_MAX_SCANS_THRESHOLD ? (

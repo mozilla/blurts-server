@@ -35,7 +35,7 @@ export type FeatureFlagName =
   | "HibpBreachNotifications"
   | "FxaUidTelemetry"
   | "RebrandAnnouncement"
-  | "MonitorPlus";
+  | "ForceWaitlist";
 
 export async function getEnabledFeatureFlags(
   options:

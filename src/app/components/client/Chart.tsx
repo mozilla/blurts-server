@@ -158,7 +158,7 @@ export const DoughnutChart = (props: Props) => {
           <p>
             {l10n.getString("exposure-chart-returning-user-upgrade-prompt")}
           </p>
-          {!props.enabledFeatureFlags.includes("MonitorPlus") ||
+          {!props.enabledFeatureFlags.includes("ForceWaitlist") ||
           typeof props.totalNumberOfPerformedScans === "undefined" ||
           props.totalNumberOfPerformedScans <
             CONST_ONEREP_MAX_SCANS_THRESHOLD ? (
