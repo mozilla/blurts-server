@@ -837,3 +837,4 @@ floating-banner-dismiss-button-label = Não, obrigado
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Um novo nome, visual e ainda mais formas de <b>recuperar a sua privacidade</b>.
 banner-monitor-rebrand-dismiss-button-label = Ok
 banner-monitor-rebrand-dismiss-button-tooltip = Dispensar
+loading-accessibility = A carregar

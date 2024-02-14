@@ -24,14 +24,14 @@ it("toggles between the monthly and yearly plan view", async () => {
   const AutomaticRemoveView = composeStory(AutomaticRemoveViewStory, Meta);
   render(<AutomaticRemoveView />);
 
-  const productButtonMonthly = screen.getByRole("button", { name: "Monthly" });
+  const productButtonMonthly = screen.getByRole("radio", { name: "Monthly" });
   await user.click(productButtonMonthly);
   const selectPlanButtonMonthly = screen.getByRole("link", {
     name: "Select monthly plan",
   });
   expect(selectPlanButtonMonthly).toBeInTheDocument();
 
-  const productButtonYearly = screen.getByRole("button", { name: "Yearly" });
+  const productButtonYearly = screen.getByRole("radio", { name: "Yearly" });
   await user.click(productButtonYearly);
   const selectPlanButtonYearly = screen.getByRole("link", {
     name: "Select yearly plan",

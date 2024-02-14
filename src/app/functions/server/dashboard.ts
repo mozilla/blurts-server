@@ -74,7 +74,7 @@ export interface DashboardSummary {
   fixedSanitizedDataPoints: SanitizedDataPoints;
 }
 
-export const dataClassKeyMap: Record<string, string> = {
+export const dataClassKeyMap: Record<keyof DataPoints, string> = {
   emailAddresses: "email-addresses",
   phoneNumbers: "phone-numbers",
 
@@ -86,7 +86,7 @@ export const dataClassKeyMap: Record<string, string> = {
   socialSecurityNumbers: "social-security-numbers",
   ipAddresses: "ip-addresses",
   passwords: "passwords",
-  creditCardNumbers: "credit-cards",
+  creditCardNumbers: "partial-credit-card-data",
   pins: "pins",
   securityQuestions: "security-questions-and-answers",
   bankAccountNumbers: "bank-account-numbers",
@@ -194,7 +194,7 @@ export function getDashboardSummary(
   if (scannedResults) {
     scannedResults.forEach((r) => {
       // check removal status
-      const isManuallyResolved = r.status === "new" && r.manually_resolved;
+      const isManuallyResolved = r.manually_resolved;
       const isAutoFixed =
         r.status === RemovalStatusMap.Removed && !isManuallyResolved;
       const isInProgress =
@@ -335,7 +335,6 @@ export function getDashboardSummary(
       }
     }
 
-    /* c8 ignore start */
     // count pin numbers
     if (dataClasses.includes(BreachDataTypes.PIN)) {
       summary.totalDataPointsNum += increment;
@@ -346,9 +345,7 @@ export function getDashboardSummary(
         summary.dataBreachFixedDataPointsNum += increment;
       }
     }
-    /* c8 ignore stop */
 
-    /** c8 ignore start */
     // count security questions
     if (dataClasses.includes(BreachDataTypes.SecurityQuestions)) {
       summary.totalDataPointsNum += increment;
@@ -359,7 +356,16 @@ export function getDashboardSummary(
         summary.dataBreachFixedDataPointsNum += increment;
       }
     }
-    /** c8 ignore stop */
+
+    if (dataClasses.includes(BreachDataTypes.BankAccount)) {
+      summary.totalDataPointsNum += increment;
+      summary.dataBreachTotalDataPointsNum += increment;
+      summary.allDataPoints.bankAccountNumbers += increment;
+      if (b.resolvedDataClasses.includes(BreachDataTypes.BankAccount)) {
+        summary.fixedDataPoints.bankAccountNumbers += increment;
+        summary.dataBreachFixedDataPointsNum += increment;
+      }
+    }
 
     if (b.isResolved) summary.dataBreachResolvedNum++;
   });
@@ -425,7 +431,11 @@ function sanitizeDataPoints(
   if (breachesOnly) {
     numOfTopDataPoints = 2; // when we have breaches only
   }
-  const sanitizedAllDataPoints = Object.entries(dataPoints)
+  const sanitizedAllDataPoints = (
+    Object.entries(dataPoints) as Array<
+      [keyof DataPoints, DataPoints[keyof DataPoints]]
+    >
+  )
     .sort(([_dataClassA, countA], [_dataClassB, countB]) => countB - countA)
     .map(([dataClass, count]) => {
       const key = dataClassKeyMap[dataClass];

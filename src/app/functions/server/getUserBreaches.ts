@@ -8,7 +8,7 @@ import { Session } from "next-auth";
 import { getBreaches } from "./getBreaches";
 import { appendBreachResolutionChecklist } from "./breachResolution";
 import { BreachDataTypes } from "../universal/breach";
-import { getSubscriberByEmail } from "../../../../src/db/tables/subscribers.js";
+import { getSubscriberByFxaUid } from "../../../../src/db/tables/subscribers.js";
 import {
   BundledVerifiedEmails,
   getAllEmailsAndBreaches,
@@ -42,7 +42,10 @@ export async function getUserBreaches({
   user: Session["user"];
   options?: Parameters<typeof appendBreachResolutionChecklist>[1];
 }): Promise<UserBreaches> {
-  const subscriber = await getSubscriberByEmail(user.email);
+  if (!user.subscriber?.fxa_uid) {
+    throw new Error("No fxa_uid found in session");
+  }
+  const subscriber = await getSubscriberByFxaUid(user.subscriber.fxa_uid);
   const allBreaches = await getBreaches();
   const breachesData = await getAllEmailsAndBreaches(subscriber, allBreaches);
   appendBreachResolutionChecklist(breachesData, options);
@@ -96,7 +99,13 @@ export async function getUserBreaches({
 export async function getSubscriberBreaches(
   user: Session["user"],
 ): Promise<SubscriberBreach[]> {
-  const subscriber = await getSubscriberByEmail(user.email);
+  if (!user.subscriber?.fxa_uid) {
+    throw new Error("No fxa_uid found in session");
+  }
+  const subscriber = await getSubscriberByFxaUid(user.subscriber.fxa_uid);
+  if (!subscriber) {
+    throw new Error("No subscriber found for the given user data.");
+  }
   const allBreaches = await getBreaches();
   const breachesData = await getSubBreaches(subscriber, allBreaches);
   return breachesData;

@@ -14,10 +14,11 @@ import {
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 import { getL10n } from "../../../functions/server/l10n";
 import { View } from "./LandingView";
+import { authOptions } from "../../../api/utils/auth";
 
 export default async function Page() {
-  const session = await getServerSession();
-  if (typeof session?.user.email === "string") {
+  const session = await getServerSession(authOptions);
+  if (typeof session?.user.subscriber?.fxa_uid === "string") {
     return redirect("/user/dashboard/");
   }
   const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });

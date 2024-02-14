@@ -820,3 +820,4 @@ floating-banner-dismiss-button-label = Tidak, terima kasih
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nama baru, tampilan, dan lebih banyak cara untuk <b>mendapatkan kembali privasi Anda</b>.
 banner-monitor-rebrand-dismiss-button-label = Oke
 banner-monitor-rebrand-dismiss-button-tooltip = Tutup
+loading-accessibility = Memuat
