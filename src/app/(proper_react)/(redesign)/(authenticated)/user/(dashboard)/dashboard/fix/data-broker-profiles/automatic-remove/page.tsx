@@ -21,6 +21,7 @@ import {
   getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
 } from "../../../../../../../../../functions/server/getPremiumSubscriptionInfo";
+import { getAttributionsFromCookiesOrDb } from "../../../../../../../../../functions/server/attributions";
 
 const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
 const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
@@ -32,8 +33,11 @@ export default async function AutomaticRemovePage() {
     redirect("/user/dashboard/");
   }
 
-  const result = await getOnerepProfileId(session.user.subscriber.id);
-  const profileId = result[0]["onerep_profile_id"] as number;
+  const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
+    session.user.subscriber.id,
+  );
+
+  const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const scanData = await getLatestOnerepScanResults(profileId);
   const subBreaches = await getSubscriberBreaches(session.user);
   const subscriberEmails = await getSubscriberEmails(session.user);
@@ -51,8 +55,8 @@ export default async function AutomaticRemovePage() {
       subscriberEmails={subscriberEmails}
       nextStep={getNextGuidedStep(data, "Scan")}
       currentSection="data-broker-profiles"
-      monthlySubscriptionUrl={monthlySubscriptionUrl}
-      yearlySubscriptionUrl={yearlySubscriptionUrl}
+      monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
+      yearlySubscriptionUrl={`${yearlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
       subscriptionBillingAmount={getSubscriptionBillingAmount()}
     />
   );

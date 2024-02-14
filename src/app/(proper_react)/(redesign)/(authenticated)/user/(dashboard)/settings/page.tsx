@@ -15,6 +15,7 @@ import { getUserEmails } from "../../../../../../../db/tables/emailAddresses";
 import { getBreaches } from "../../../../../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../../../../../utils/hibp";
 import { getSha1 } from "../../../../../../../utils/fxa";
+import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
 
 export default async function SettingsPage() {
   const session = await getServerSession(authOptions);
@@ -28,7 +29,9 @@ export default async function SettingsPage() {
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
   const fxaSettingsUrl = process.env.FXA_SETTINGS_URL!;
   const fxaSubscriptionsUrl = process.env.FXA_SUBSCRIPTIONS_URL!;
-
+  const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
+    session.user.subscriber.id,
+  );
   const allBreaches = await getBreaches();
   const breachCountByEmailAddress: Record<string, number> = {};
   const emailAddressStrings = emailAddresses.map(
@@ -52,8 +55,8 @@ export default async function SettingsPage() {
       breachCountByEmailAddress={breachCountByEmailAddress}
       fxaSettingsUrl={fxaSettingsUrl}
       fxaSubscriptionsUrl={fxaSubscriptionsUrl}
-      monthlySubscriptionUrl={monthlySubscriptionUrl}
-      yearlySubscriptionUrl={yearlySubscriptionUrl}
+      monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
+      yearlySubscriptionUrl={`${yearlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
       subscriptionBillingAmount={getSubscriptionBillingAmount()}
     />
   );

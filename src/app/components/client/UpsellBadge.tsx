@@ -6,7 +6,6 @@
 
 import { useContext, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { Session } from "next-auth";
 import { useOverlayTrigger, useToggleButton } from "react-aria";
 import { useOverlayTriggerState, useToggleState } from "react-stately";
 import { UpsellDialog } from "./UpsellDialog";
@@ -17,12 +16,10 @@ import {
   hasPremium,
 } from "../../functions/universal/user";
 import styles from "./UpsellBadge.module.scss";
-// TODO: The use of `useGA` is restricted and will be cleaned up
-// together with MNTOR-2335.
-// eslint-disable-next-line no-restricted-imports
-import { useGa } from "../../hooks/useGa";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import { CountryCodeContext } from "../../../contextProviders/country-code";
+import { useSession } from "next-auth/react";
+import { sendGAEvent } from "./GoogleAnalyticsWorkaround";
 
 export type UpsellButtonProps = {
   monthlySubscriptionUrl: string;
@@ -31,7 +28,6 @@ export type UpsellButtonProps = {
     yearly: number;
     monthly: number;
   };
-  user?: Session["user"];
 };
 
 export function UpsellButton(
@@ -39,7 +35,6 @@ export function UpsellButton(
     label: string;
   },
 ) {
-  const { gtag } = useGa();
   const recordTelemetry = useTelemetry();
   const pathname = usePathname();
 
@@ -51,13 +46,9 @@ export function UpsellButton(
           button_id: "nav_upsell",
         });
       }
-      gtag.record({
-        type: "event",
-        name: "premium_upsell_modal",
-        params: {
-          action: isOpen ? "opened" : "closed",
-          page_location: pathname,
-        },
+      sendGAEvent("event", "premium_upsell_modal", {
+        action: isOpen ? "opened" : "closed",
+        page_location: pathname,
       });
     },
   });
@@ -140,9 +131,13 @@ function UpsellToggleButton(props: UpsellToggleButton) {
 
 export function UpsellBadge(props: UpsellButtonProps) {
   const countryCode = useContext(CountryCodeContext);
+  const session = useSession();
 
-  const { user } = props;
+  if (!session.data) {
+    return <></>;
+  }
 
+  const { user } = session.data;
   const userHasPremium = hasPremium(user);
   if (userHasPremium || canSubscribeToPremium({ user, countryCode })) {
     return <UpsellToggleButton {...props} hasPremium={userHasPremium} />;

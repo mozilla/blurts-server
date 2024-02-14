@@ -65,6 +65,7 @@ async function getSubscriberById (id) {
 
 /**
  * @param {string} uid
+ * @returns {Promise<undefined | import("knex/types/tables").SubscriberRow & { email_addresses: Array<{ id: import("knex/types/tables").EmailAddressRow["id"]; email: import("knex/types/tables").EmailAddressRow["email"]; }> }>}
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -79,6 +80,8 @@ async function getSubscriberByFxaUid (uid) {
 
 /**
  * @param {string} email
+ * @returns {Promise<undefined | import("knex/types/tables").SubscriberRow & { email_addresses: Array<{ id: import("knex/types/tables").EmailAddressRow["id"]; email: import("knex/types/tables").EmailAddressRow["email"]; }> }>}
+ * @deprecated Use [[getSubscriberByFxAUid]] instead, as email identifiers are unstable (e.g. we've had issues with case-sensitivity).
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -95,7 +98,7 @@ async function getSubscriberByEmail (email) {
 /**
  * Update primary email for subscriber
  *
- * @param {import('../../app/deprecated/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
+ * @param {import("knex/types/tables").SubscriberRow} subscriber
  * @param {string} updatedEmail primary email to be updated to
  * @returns {Promise<import('knex/types/tables').SubscriberRow | null>} updated subscriber
  */
@@ -179,8 +182,8 @@ async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaPr
 /**
  * Update fxa_profile_json for subscriber
  *
- * @param {import('../../app/deprecated/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber knex object in DB
- * @param {string} fxaProfileData from Firefox Account
+ * @param {import("knex/types/tables").SubscriberRow} subscriber knex object in DB
+ * @param {import("next-auth").Profile | string} fxaProfileData from Firefox Account
  * @returns {Promise<object>} updated subscriber knex object in DB
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
@@ -188,6 +191,8 @@ async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaPr
 async function updateFxAProfileData (subscriber, fxaProfileData) {
   await knex('subscribers').where('id', subscriber.id)
     .update({
+      // @ts-ignore Our old code is inconsistent about passing in objects or serialised strings,
+      //            which confuses the typings:
       fxa_profile_json: fxaProfileData,
       // @ts-ignore knex.fn.now() results in it being set to a date,
       // even if it's not typed as a JS date object:
@@ -251,7 +256,7 @@ async function setBreachesLastShownNow (subscriber) {
 /* c8 ignore stop */
 
 /**
- * @param {import('../../app/deprecated/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
+ * @param {import("knex/types/tables").SubscriberRow} subscriber
  * @param {boolean} allEmailsToPrimary
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
@@ -299,7 +304,7 @@ async function setBreachesResolved (options) {
  * This column is meant to replace "breaches_resolved" column, which was used
  * for v1.
  *
- * @param {import('../../app/deprecated/(authenticated)/user/breaches/breaches.js').Subscriber} user user object that contains the id of a user
+ * @param {import("knex/types/tables").SubscriberRow} user user object that contains the id of a user
  * @param {any} updatedBreachesResolution {emailId: [{breachId: {isResolved: bool, resolutionsChecked: [BreachType]}}, {}...]}
  * @returns subscriber
  */
@@ -451,9 +456,10 @@ async function updateMonthlyEmailOptout (token) {
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function getOnerepProfileId (subscriberId) {
-  return await knex('subscribers')
+  const res = await knex('subscribers')
     .select('onerep_profile_id')
     .where('id', subscriberId)
+  return res?.[0]?.["onerep_profile_id"] ?? null
 }
 /* c8 ignore stop */
 

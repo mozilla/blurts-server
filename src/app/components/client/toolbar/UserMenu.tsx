@@ -29,9 +29,14 @@ import { useTelemetry } from "../../../hooks/useTelemetry";
 import styles from "./UserMenu.module.scss";
 import OpenInIcon from "./images/menu-icon-open-in.svg";
 import SettingsIcon from "./images/menu-icon-settings.svg";
+import ContactIcon from "./images/menu-icon-contact.svg";
 import HelpIcon from "./images/menu-icon-help.svg";
 import SignOutIcon from "./images/menu-icon-signout.svg";
-import { CONST_URL_SUMO_MONITOR_SUPPORT } from "../../../../constants";
+import {
+  CONST_URL_PLUS_CONTACT_SUPPORT,
+  CONST_URL_SUMO_MONITOR_SUPPORT,
+} from "../../../../constants";
+import { hasPremium } from "../../../functions/universal/user";
 
 export type UserMenuProps = {
   user: Session["user"];
@@ -44,12 +49,14 @@ export const UserMenu = (props: UserMenuProps) => {
 
   const fxaItemRef = useRef<HTMLAnchorElement>(null);
   const settingsItemRef = useRef<HTMLAnchorElement>(null);
+  const contactItemRef = useRef<HTMLAnchorElement>(null);
   const helpItemRef = useRef<HTMLAnchorElement>(null);
   const signOutItemRef = useRef<HTMLButtonElement>(null);
 
   const itemKeys = {
     fxa: "fxa",
     settings: "settings",
+    contact: "contact",
     help: "help",
     signout: "signout",
   };
@@ -61,6 +68,9 @@ export const UserMenu = (props: UserMenuProps) => {
         break;
       case itemKeys.settings:
         settingsItemRef.current?.click();
+        break;
+      case itemKeys.contact:
+        contactItemRef.current?.click();
         break;
       case itemKeys.help:
         helpItemRef.current?.click();
@@ -108,6 +118,24 @@ export const UserMenu = (props: UserMenuProps) => {
           {l10n.getString("user-menu-settings-label")}
         </Link>
       </Item>
+      {hasPremium(props.user) && (
+        <Item
+          key={itemKeys.contact}
+          textValue={l10n.getString("user-menu-contact-label")}
+        >
+          <a
+            className={styles.menuItemCta}
+            href={CONST_URL_PLUS_CONTACT_SUPPORT}
+            ref={contactItemRef}
+            rel="noopener noreferrer"
+            target="_blank"
+            title={l10n.getString("user-menu-contact-tooltip")}
+          >
+            <Image src={ContactIcon} alt="" height={24} width={24} />
+            {l10n.getString("user-menu-contact-label")}
+          </a>
+        </Item>
+      )}
       <Item
         key={itemKeys.help}
         textValue={l10n.getString("user-menu-help-label")}

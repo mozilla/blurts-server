@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Session } from "next-auth";
-import { getSubscriberByEmail } from "../../../db/tables/subscribers.js";
+import { getSubscriberByFxaUid } from "../../../db/tables/subscribers.js";
 import { getUserEmails } from "../../../db/tables/emailAddresses.js";
 
 /**
@@ -14,8 +14,14 @@ import { getUserEmails } from "../../../db/tables/emailAddresses.js";
 export async function getSubscriberEmails(
   user: Session["user"],
 ): Promise<string[]> {
+  if (!user.subscriber?.fxa_uid) {
+    throw new Error("No fxa_uid found in session");
+  }
   const emailArray: string[] = [user.email];
-  const subscriber = await getSubscriberByEmail(user.email);
+  const subscriber = await getSubscriberByFxaUid(user.subscriber?.fxa_uid);
+  if (!subscriber) {
+    throw new Error("No subscriber found for current session.");
+  }
   (await getUserEmails(subscriber.id)).forEach((e) => emailArray.push(e.email));
   return emailArray;
 }

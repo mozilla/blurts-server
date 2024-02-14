@@ -26,11 +26,11 @@ exposure-chart-legend-heading-nr = Nombre
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
-exposure-chart-caption = Ce graphique montre combien de fois vos informations sont activement révélées.
+exposure-chart-caption = Ce graphique montre combien de fois vos informations ont été activement révélées.
 # Variables:
 #   $total_fixed_exposures_num (number) - Number of fixed exposures
 #   $total_exposures_num (number) - Number of total exposures
-exposure-chart-caption-fixed = Ce graphique affiche le nombre total de fuites résolues ({ $total_fixed_exposures_num } sur { $total_exposures_num })
+exposure-chart-caption-fixed = Ce graphique montre le nombre total de fuites résolues ({ $total_fixed_exposures_num } sur { $total_exposures_num })
 exposure-chart-returning-user-upgrade-prompt = L’adresse personnelle, les membres de la famille et d’autres données ne sont pas encore inclus.
 exposure-chart-returning-user-upgrade-prompt-cta = Lancer une analyse gratuite
 exposure-chart-scan-in-progress-prompt = <b>Scan en cours :</b> l’adresse, les membres de la famille et d’autres données ne sont pas encore inclus.
@@ -52,17 +52,13 @@ modal-close-alt = Fermer
 progress-card-heres-what-we-fixed-headline-all = Voici les fuites que vous avez résolues
 progress-card-manually-fixed-headline = Résolue manuellement
 dashboard-tab-label-action-needed = Action nécessaire
-dashboard-tab-label-fixed = Résolue
+dashboard-tab-label-fixed = Fuites résolues
 dashboard-exposures-all-fixed-label = Toutes les fuites ont été résolues !
 dashboard-exposures-area-headline = Voir tous les sites où vos informations ont fuité
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
 #   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
-dashboard-exposures-area-description-all-line1 =
-    { $exposures_unresolved_num ->
-        [one] Nous avons détecté { $exposures_unresolved_num } fuite de vos données.
-       *[other] Nous avons détecté { $exposures_unresolved_num } fuites de vos données.
-    }
+dashboard-exposures-area-description-all-line1 = Nous avons détecté vos données { $exposures_unresolved_num } fois.
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.

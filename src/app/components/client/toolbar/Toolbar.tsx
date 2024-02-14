@@ -29,7 +29,6 @@ export const Toolbar = (props: Props) => {
       <div className={styles.start}>{props.children}</div>
       <div className={styles.end}>
         <UpsellBadge
-          user={props.user}
           monthlySubscriptionUrl={props.monthlySubscriptionUrl}
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
           subscriptionBillingAmount={props.subscriptionBillingAmount}

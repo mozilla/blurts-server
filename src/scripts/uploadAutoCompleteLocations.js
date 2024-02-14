@@ -239,9 +239,8 @@ try {
       const isPopulatedPlaceOfInterest =
         featureClass === allowedFeatureClass &&
         allowedFeatureCodes.includes(featureCode);
-      const hasPopulation = Number(population) !== 0;
 
-      if (isPopulatedPlaceOfInterest && hasPopulation) {
+      if (isPopulatedPlaceOfInterest) {
         const alternateNames = parsedAlternateNames.filter(
           ({ alternateOf, name: alternateName }) =>
             alternateOf === geonameId && alternateName !== name,
@@ -259,18 +258,19 @@ try {
           return alternateName.name;
         });
 
+        // NOTE: Using short keys and only including entries when available
+        // keeps the resulting JSON significantly smaller.
         relevantLocations.push({
           id: geonameId,
           // switch names if an alternate name is the preferred location name
-          name: preferredName ? preferredName.name : name,
-          stateCode: admin1Code,
-          countryCode: "USA",
-          featureClass,
-          featureCode,
-          population,
+          n: preferredName ? preferredName.name : name,
+          s: admin1Code,
+          ...(Number(population) > 0 && {
+            p: population,
+          }),
           ...(alternateNames &&
             alternateNames.length > 0 && {
-              alternateNames: alternateNamesFinal,
+              a: alternateNamesFinal,
             }),
         });
       }

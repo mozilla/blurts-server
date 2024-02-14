@@ -136,9 +136,11 @@ export async function PUT(
       const subscriber = await getSubscriberByEmail(
         subscriberRow.primary_email,
       );
+      if (!subscriber) {
+        throw new Error("No subscriber found for given email.");
+      }
 
-      const result = await getOnerepProfileId(subscriber.id);
-      const onerepProfileId = result?.[0]?.["onerep_profile_id"] as number;
+      const onerepProfileId = await getOnerepProfileId(subscriber.id);
 
       logger.info("admin_subscription_change", {
         actions,
@@ -150,9 +152,11 @@ export async function PUT(
           case "subscribe": {
             await changeSubscription(subscriber, true);
 
-            // activate and opt out profiles
-            await activateProfile(onerepProfileId);
-            await optoutProfile(onerepProfileId);
+            // activate and opt out profiles, if any
+            if (typeof onerepProfileId === "number") {
+              await activateProfile(onerepProfileId);
+              await optoutProfile(onerepProfileId);
+            }
             logger.info("force_user_subscribe", {
               onerepProfileId,
               primarySha1,
@@ -162,7 +166,9 @@ export async function PUT(
           case "unsubscribe": {
             await changeSubscription(subscriber, false);
 
-            await deactivateProfile(onerepProfileId);
+            if (typeof onerepProfileId === "number") {
+              await deactivateProfile(onerepProfileId);
+            }
             logger.info("force_user_unsubscribe", {
               onerepProfileId,
               primarySha1,
@@ -170,6 +176,11 @@ export async function PUT(
             break;
           }
           case "delete_onerep_profile": {
+            if (typeof onerepProfileId !== "number") {
+              throw new Error(
+                `Could not force-delete the OneRep profile of subscriber [${primarySha1}], as they do not have a OneRep profile known to us.`,
+              );
+            }
             await deleteProfileDetails(onerepProfileId);
             await deleteOnerepProfileId(subscriber.id);
             logger.info("delete_onerep_profile", {
@@ -179,6 +190,11 @@ export async function PUT(
             break;
           }
           case "delete_onerep_scans": {
+            if (typeof onerepProfileId !== "number") {
+              throw new Error(
+                `Could not force-delete OneRep scans for subscriber [${primarySha1}], as they do not have a OneRep profile known to us.`,
+              );
+            }
             await deleteScansForProfile(onerepProfileId);
             logger.info("delete_onerep_scans", {
               onerepProfileId,
@@ -187,6 +203,11 @@ export async function PUT(
             break;
           }
           case "delete_onerep_scan_results": {
+            if (typeof onerepProfileId !== "number") {
+              throw new Error(
+                `Could not force-delete OneRep scan results for subscriber [${primarySha1}], as they do not have a OneRep profile known to us.`,
+              );
+            }
             await deleteScanResultsForProfile(onerepProfileId);
             logger.info("delete_onerep_scan_results", {
               onerepProfileId,

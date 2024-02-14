@@ -841,3 +841,4 @@ floating-banner-dismiss-button-label = Köszönöm, nem
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Új név, kinézet és még több módja annak, hogy <b>visszaszerezze a magánszféráját</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Eltüntetés
+loading-accessibility = Betöltés

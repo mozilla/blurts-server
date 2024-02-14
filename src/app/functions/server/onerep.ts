@@ -361,7 +361,7 @@ export async function isEligibleForFreeScan(
   }
 
   if (!user?.subscriber?.id) {
-    throw new Error("No session");
+    throw new Error("No session with a known subscriber found");
   }
 
   const enabledFlags = await getEnabledFeatureFlags({ email: user.email });
@@ -369,8 +369,7 @@ export async function isEligibleForFreeScan(
     return false;
   }
 
-  const result = await getOnerepProfileId(user.subscriber.id);
-  const profileId = result[0]["onerep_profile_id"] as number;
+  const profileId = await getOnerepProfileId(user.subscriber.id);
   const scanResult = await getLatestOnerepScanResults(profileId);
 
   if (scanResult.scan) {
