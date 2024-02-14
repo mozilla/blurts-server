@@ -19,4 +19,5 @@ jobs:
       # Verify that the build (incl. type-checking) succeeds
       - run: npm run build
         env:
+          UPLOAD_SENTRY_SOURCEMAPS: true
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
