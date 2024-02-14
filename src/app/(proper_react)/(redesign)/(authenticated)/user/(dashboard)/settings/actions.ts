@@ -135,18 +135,35 @@ export async function onRemoveEmail(email: EmailRow) {
     logger.error(
       `Tried to delete email [${email.id}] without an active session.`,
     );
-    return;
+    return {
+      success: false,
+      error: "delete-email-without-active-session",
+      errorMessage: `Tried to delete email [${email.id}] without an active session.`,
+    };
   }
   const subscriber = (await getSubscriberByFxaUid(
     session.user.subscriber.fxa_uid,
   )) as SubscriberRow | null;
   if (email.subscriber_id !== subscriber?.id) {
     logger.error(
-      `Subscriber [${subscriber?.id}] tried to delete email [${email.id}], which belongs to another subscriber.`,
+      `User [${subscriber?.id}] tried to delete email [${email.id}], which belongs to another user.`,
     );
-    return;
+    return {
+      success: false,
+      error: "delete-email-without-permission",
+      errorMessage: `User [${subscriber?.id}] tried to delete email [${email.id}], which belongs to another user.`,
+    };
   }
-  await removeOneSecondaryEmail(email.id);
-  await deleteResolutionsWithEmail(email.subscriber_id, email.email);
-  revalidatePath("/user/settings/");
+
+  try {
+    await removeOneSecondaryEmail(email.id);
+    await deleteResolutionsWithEmail(email.subscriber_id, email.email);
+    revalidatePath("/user/settings/");
+  } catch (e) {
+    return {
+      success: false,
+      error: "delete-email-error",
+      errorMessage: (e as Error).message,
+    };
+  }
 }
