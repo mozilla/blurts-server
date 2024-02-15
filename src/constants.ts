@@ -16,6 +16,8 @@ export const CONST_URL_SUMO_MONITOR_FAQ =
   "https://support.mozilla.org/kb/firefox-monitor-faq" as const;
 export const CONST_URL_SUMO_MONITOR_PLUS =
   "https://support.mozilla.org/kb/how-does-monitor-plus-work" as const;
+export const CONST_URL_SUMO_MONITOR_REMOVAL =
+  "https://support.mozilla.org/en-US/kb/how-does-monitor-plus-work#w_we-automatically-remove-your-information" as const;
 export const CONST_URL_WAITLIST =
   "https://www.mozilla.org/products/monitor/waitlist-scan/" as const;
 export const CONST_URL_TERMS =

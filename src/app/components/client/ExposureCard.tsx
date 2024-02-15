@@ -15,7 +15,6 @@ import {
   EmailIcon,
   LocationPinIcon,
   MultipleUsersIcon,
-  OpenInNew,
   PasswordIcon,
   PhoneIcon,
   QuestionMarkCircle,
@@ -29,6 +28,9 @@ import { FallbackLogo } from "../server/BreachLogo";
 import { ExposureCardDataClassLayout } from "./ExposureCardDataClass";
 import { DataBrokerImage } from "./DataBrokerImage";
 import { useTelemetry } from "../../hooks/useTelemetry";
+import { CONST_URL_SUMO_MONITOR_REMOVAL } from "../../../constants";
+import { TelemetryLink } from "./TelemetryLink";
+import { usePathname } from "next/navigation";
 
 export type Exposure = OnerepScanResultRow | SubscriberBreach;
 
@@ -69,13 +71,14 @@ export type ScanResultCardProps = {
 const ScanResultCard = (props: ScanResultCardProps) => {
   const { scanResult, locale, isPremiumBrokerRemovalEnabled } = props;
   const l10n = useL10n();
-  const recordTelemetry = useTelemetry();
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
   });
   const exposureCategoriesArray: React.ReactElement[] = [];
   const cardId = useId();
+  const isOnManualRemovePage =
+    "/user/dashboard/fix/data-broker-profiles/manual-remove" === usePathname();
 
   // Scan Result Categories
   if (scanResult.relatives.length > 0) {
@@ -133,6 +136,95 @@ const ScanResultCard = (props: ScanResultCardProps) => {
   const COMPANY_NAME_MAX_CHARACTER_COUNT = 20;
   const isCompanyNameTooLong =
     scanResult.data_broker.length > COMPANY_NAME_MAX_CHARACTER_COUNT;
+
+  const dataBrokerProfileLink = (
+    <TelemetryLink
+      href={scanResult.link}
+      target="_blank"
+      eventData={{
+        link_id: `data_broker_${scanResult.id}`,
+      }}
+    />
+  );
+
+  const removalInfoLink = (
+    <TelemetryLink
+      href={CONST_URL_SUMO_MONITOR_REMOVAL}
+      target="_blank"
+      eventData={{
+        link_id: "explanation_of_removal_time",
+      }}
+    />
+  );
+
+  const upsellLink = (
+    <TelemetryLink
+      upsell
+      eventData={{
+        // TODO: Check that this attribution id is accurate
+        link_id: "clicked_upsell",
+      }}
+      href="/user/dashboard/fix/data-broker-profiles/automatic-remove"
+    />
+  );
+
+  const dataBrokerDescription = () => {
+    switch (scanResult.status) {
+      case "optout_in_progress":
+      case "waiting_for_verification":
+        return l10n.getFragment(
+          "exposure-card-description-info-for-sale-in-progress",
+          {
+            elems: {
+              data_broker_profile: dataBrokerProfileLink,
+              removal_info: removalInfoLink,
+            },
+          },
+        );
+      case "new":
+        // Data broker cards manually resolved do not change their status to "removed";
+        // instead, we track them using the "manually_resolved" property.
+        if (scanResult.manually_resolved) {
+          return l10n.getFragment(
+            "exposure-card-description-info-for-sale-fixed-manually-fixed",
+            {
+              elems: {
+                data_broker_profile: dataBrokerProfileLink,
+              },
+            },
+          );
+        }
+        if (isOnManualRemovePage) {
+          return l10n.getFragment(
+            "exposure-card-description-info-for-sale-action-needed-manual-fix-page",
+            {
+              elems: {
+                data_broker_profile: dataBrokerProfileLink,
+                upsell_link: upsellLink,
+              },
+            },
+          );
+        }
+        return l10n.getFragment(
+          "exposure-card-description-info-for-sale-action-needed-dashboard",
+          {
+            elems: {
+              data_broker_profile: dataBrokerProfileLink,
+              upsell_link: upsellLink,
+            },
+          },
+        );
+      case "removed":
+        return l10n.getFragment(
+          "exposure-card-description-info-for-sale-fixed",
+          {
+            elems: {
+              data_broker_profile: dataBrokerProfileLink,
+            },
+          },
+        );
+    }
+  };
 
   const exposureCard = (
     <div>
@@ -204,38 +296,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
           }`}
         >
           <div>
-            <p>
-              {l10n.getFragment(
-                "exposure-card-description-info-for-sale-part-one",
-                {
-                  elems: {
-                    data_broker_link: (
-                      <a
-                        href={scanResult.link}
-                        target="_blank"
-                        onClick={() =>
-                          recordTelemetry("link", "click", {
-                            link_id: `data_broker_${scanResult.id}`,
-                          })
-                        }
-                      />
-                    ),
-                  },
-                },
-              )}
-              <a href={scanResult.link} target="_blank">
-                <span className={styles.openInNewTab}>
-                  <OpenInNew
-                    alt={l10n.getString("open-in-new-tab-alt")}
-                    width="13"
-                    height="13"
-                  />
-                </span>
-              </a>
-              {l10n.getString(
-                "exposure-card-description-info-for-sale-part-two",
-              )}
-            </p>
+            <p>{dataBrokerDescription()}</p>
           </div>
           <div className={styles.exposedInfoContainer}>
             <div className={styles.exposedInfoWrapper}>
@@ -349,6 +410,39 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
     }
   });
 
+  const dataBreachLink = (
+    <Link
+      href={`/breach-details/${subscriberBreach.name}`}
+      target="_blank"
+      onClick={() => {
+        recordTelemetry("link", "click", {
+          link_id: `data_breach_${subscriberBreach.id}`,
+        });
+      }}
+    />
+  );
+
+  const dataBreachDescription = () => {
+    return subscriberBreach.isResolved
+      ? l10n.getFragment("exposure-card-description-data-breach-fixed", {
+          elems: {
+            data_breach_link: dataBreachLink,
+          },
+        })
+      : l10n.getFragment(
+          "exposure-card-description-data-breach-action-needed",
+          {
+            vars: {
+              data_breach_company: subscriberBreach.title,
+              data_breach_date: subscriberBreach.breachDate,
+            },
+            elems: {
+              data_breach_link: dataBreachLink,
+            },
+          },
+        );
+  };
+
   const exposureCard = (
     <div>
       <div className={styles.exposureCard}>
@@ -438,43 +532,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           }`}
         >
           <div>
-            <p>
-              {l10n.getFragment(
-                "exposure-card-description-data-breach-part-one",
-                {
-                  vars: {
-                    data_breach_company: subscriberBreach.title,
-                    data_breach_date: subscriberBreach.breachDate,
-                  },
-                  elems: {
-                    data_breach_link: (
-                      <Link
-                        href={`/breach-details/${subscriberBreach.name}`}
-                        target="_blank"
-                        onClick={() => {
-                          recordTelemetry("link", "click", {
-                            link_id: `data_breach_${subscriberBreach.id}`,
-                          });
-                        }}
-                      />
-                    ),
-                  },
-                },
-              )}
-              <a
-                href={`/breach-details/${subscriberBreach.name}`}
-                target="_blank"
-              >
-                <span className={styles.openInNewTab}>
-                  <OpenInNew
-                    alt={l10n.getString("open-in-new-tab-alt")}
-                    width="13"
-                    height="13"
-                  />
-                </span>
-              </a>
-              {l10n.getString("exposure-card-description-data-breach-part-two")}
-            </p>
+            <p>{dataBreachDescription()}</p>
           </div>
 
           <div className={styles.exposedInfoContainer}>
