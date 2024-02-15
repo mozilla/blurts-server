@@ -299,6 +299,43 @@ describe("getSubBreaches", () => {
     expect(subBreaches[0].isResolved).toBe(true);
   });
 
+  it("returns that a breach containing a SSN is unresolved for US users", async () => {
+    const subscriberWithoutSsnResolved: SubscriberRow = {
+      ...subscriber,
+      breach_resolution: {
+        useBreachId: true,
+        "test@test.com": {
+          "40": {
+            resolutionsChecked: ["email-addresses", "passwords"],
+          },
+        },
+      },
+    };
+    (
+      getUserEmails as jest.Mock<
+        ReturnType<typeof getUserEmails>,
+        Parameters<typeof getUserEmails>
+      >
+    )
+      // The only affected email is the user's primary email; they have no
+      // additional email addresses in this test:
+      .mockResolvedValueOnce([]);
+    (
+      getBreachesForEmail as jest.Mock<
+        ReturnType<typeof getBreachesForEmail>,
+        Parameters<typeof getBreachesForEmail>
+      >
+    ).mockResolvedValueOnce(breachesWithOneResolvedSsn);
+
+    const subBreaches = await getSubBreaches(
+      subscriberWithoutSsnResolved,
+      allBreaches,
+      "us",
+    );
+    expect(subBreaches.length).toEqual(1);
+    expect(subBreaches[0].isResolved).toBe(false);
+  });
+
   it("returns that a breach containing a SSN is resolved for non-US users", async () => {
     (
       getUserEmails as jest.Mock<
