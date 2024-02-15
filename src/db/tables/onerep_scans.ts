@@ -6,8 +6,11 @@ import createDbConnection from "../connect.js";
 import { logger } from "../../app/functions/server/logging";
 
 import { ScanResult, Scan } from "../../app/functions/server/onerep.js";
-import { Subscriber } from "../../app/deprecated/(authenticated)/user/breaches/breaches.js";
-import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
+import {
+  OnerepScanResultRow,
+  OnerepScanRow,
+  SubscriberRow,
+} from "knex/types/tables";
 
 const knex = createDbConnection();
 
@@ -38,8 +41,15 @@ async function getScanResults(
 }
 
 async function getLatestOnerepScanResults(
-  onerepProfileId: number,
+  onerepProfileId: number | null,
 ): Promise<LatestOnerepScanData> {
+  if (onerepProfileId === null) {
+    return {
+      scan: null,
+      results: [],
+    };
+  }
+
   const scan = await knex("onerep_scans")
     .first()
     .where("onerep_profile_id", onerepProfileId)
@@ -65,7 +75,7 @@ async function getLatestOnerepScanResults(
 }
 
 async function setOnerepProfileId(
-  subscriber: Subscriber,
+  subscriber: SubscriberRow,
   onerepProfileId: number,
 ) {
   await knex("subscribers").where("id", subscriber.id).update({
@@ -136,10 +146,12 @@ async function addOnerepScanResults(
     }),
   });
 
-  await knex("onerep_scan_results")
-    .insert(scanResultsMap)
-    .onConflict("onerep_scan_result_id")
-    .merge();
+  if (scanResultsMap.length > 0) {
+    await knex("onerep_scan_results")
+      .insert(scanResultsMap)
+      .onConflict("onerep_scan_result_id")
+      .merge();
+  }
 }
 
 async function isOnerepScanResultForSubscriber(params: {

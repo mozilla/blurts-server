@@ -3,10 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/react";
+import { Session } from "next-auth";
+import { SessionProvider } from "next-auth/react";
 import { UpsellBadge, UpsellButton } from "../UpsellBadge";
 import { createUserWithPremiumSubscription } from "../../../../apiMocks/mockData";
 import { CountryCodeProvider } from "../../../../contextProviders/country-code";
-import { Session } from "next-auth";
 
 type UpsellCtaWrapperProps = {
   countryCode: string;
@@ -17,23 +18,34 @@ type UpsellCtaWrapperProps = {
 const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
   const monthlySubscriptionUrl = "price_monthly";
   const yearlySubscriptionUrl = "price_yearly";
+  const subscriptionBillingAmount = {
+    yearly: 13.37,
+    monthly: 42.42,
+  };
+  const mockedSession = {
+    expires: new Date().toISOString(),
+    user: props.user,
+  };
 
   return (
-    <CountryCodeProvider countryCode={props.countryCode}>
-      {props.isBadge ? (
-        <UpsellBadge
-          user={props.user}
-          monthlySubscriptionUrl={monthlySubscriptionUrl}
-          yearlySubscriptionUrl={yearlySubscriptionUrl}
-        />
-      ) : (
-        <UpsellButton
-          label="Get continuous protection"
-          monthlySubscriptionUrl={monthlySubscriptionUrl}
-          yearlySubscriptionUrl={yearlySubscriptionUrl}
-        />
-      )}
-    </CountryCodeProvider>
+    <SessionProvider session={mockedSession}>
+      <CountryCodeProvider countryCode={props.countryCode}>
+        {props.isBadge ? (
+          <UpsellBadge
+            monthlySubscriptionUrl={monthlySubscriptionUrl}
+            yearlySubscriptionUrl={yearlySubscriptionUrl}
+            subscriptionBillingAmount={subscriptionBillingAmount}
+          />
+        ) : (
+          <UpsellButton
+            label="Get continuous protection"
+            monthlySubscriptionUrl={monthlySubscriptionUrl}
+            yearlySubscriptionUrl={yearlySubscriptionUrl}
+            subscriptionBillingAmount={subscriptionBillingAmount}
+          />
+        )}
+      </CountryCodeProvider>
+    </SessionProvider>
   );
 };
 

@@ -21,16 +21,17 @@ export class DashboardPage {
   readonly FAQsNavButton: Locator;
 
   readonly exposuresHeading: Locator;
-  readonly exposuresCardHeading: Locator;
+  readonly dashboardMozLogo: Locator;
   readonly fixedHeading: Locator;
   readonly toolTip: Locator;
   readonly heresWhatsFixedCardTitle: Locator;
 
   readonly whatsFixedPopup: Locator;
   readonly popupOkButton: Locator;
+  readonly popupCloseButton: Locator;
 
   readonly chartTooltip: Locator;
-  readonly aboutActiveExposuresPopup: Locator;
+  readonly aboutFixedExposuresPopup: Locator;
 
   readonly subscribeButton: Locator;
   readonly subscribeDialog: Locator;
@@ -40,6 +41,10 @@ export class DashboardPage {
   readonly yearlyMonthlyTablist: Locator;
   readonly yearlyTab: Locator;
   readonly monthlyTab: Locator;
+
+  readonly dashboardPageLink: Locator;
+  readonly settingsPageLink: Locator;
+  readonly faqsPageLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -72,9 +77,7 @@ export class DashboardPage {
       name: "View all sites where your info is exposed",
     });
 
-    this.exposuresCardHeading = page.getByRole("heading", {
-      name: "Let’s protect your data",
-    });
+    this.dashboardMozLogo = page.getByRole("link", { name: "Home" });
 
     this.fixedHeading = page.getByRole("heading", {
       name: "View all exposures that are fixed or in progress",
@@ -92,13 +95,14 @@ export class DashboardPage {
       name: "About what we fixed",
     });
     this.popupOkButton = page.getByRole("button", { name: "OK" });
+    this.popupCloseButton = page.getByRole("button", { name: "Close" });
 
     // chartTooltip
     this.chartTooltip = page.locator(
       '//div[starts-with(@class, "DashboardTopBanner_chart")]//button',
     );
-    this.aboutActiveExposuresPopup = page.getByRole("dialog", {
-      name: "About your number of active exposures",
+    this.aboutFixedExposuresPopup = page.getByRole("dialog", {
+      name: "About your number of fixed exposures",
     });
 
     this.subscribeButton = page.getByRole("button", {
@@ -119,9 +123,39 @@ export class DashboardPage {
     this.yearlyMonthlyTablist = page.getByText("YearlyMonthly");
     this.yearlyTab = page.getByRole("tab", { name: "Yearly" });
     this.monthlyTab = page.getByRole("tab", { name: "Monthly" });
+
+    // nav menu
+    this.settingsPageLink = page.getByRole("link", { name: "Settings" });
+    this.dashboardPageLink = page.getByRole("link", { name: "Dashboard" });
+    this.faqsPageLink = page.getByTitle("Frequently asked questions").first();
+  }
+
+  dashboardLinks() {
+    return {
+      // identify expected URLs
+      settingsNavButtonLink: "/user/settings",
+      resolveDataBreachesNavButtonLink: "/user/dashboard",
+      helpAndSupportNavButtonLink:
+        "https://support.mozilla.org/kb/firefox-monitor-faq",
+    };
   }
 
   async open() {
     await this.page.goto("/user/dashboard");
+  }
+
+  async goToSettings() {
+    await this.settingsPageLink.click();
+    await this.page.waitForURL("**/settings");
+  }
+
+  async goToDashboard() {
+    await this.dashboardPageLink.click();
+    await this.page.waitForURL("**/dashboard");
+  }
+
+  async goToFAQs() {
+    await this.faqsPageLink.click();
+    await this.page.waitForURL("**/firefox-monitor-faq");
   }
 }

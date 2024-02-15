@@ -7,18 +7,18 @@
 import Image from "next/image";
 import ImageCityScape from "./images/city-scape.svg";
 import styles from "../dataBrokerProfiles.module.scss";
-import { Button } from "../../../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { FixView } from "../../FixView";
 import {
   StepDeterminationData,
   getNextGuidedStep,
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
-import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 import {
   CONST_URL_SUMO_HOW_IT_WORKS,
   CONST_ONEREP_DATA_BROKER_COUNT,
 } from "../../../../../../../../../../constants";
+import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
+import { TelemetryLink } from "../../../../../../../../../components/client/TelemetryLink";
 
 export type Props = {
   data: StepDeterminationData;
@@ -27,7 +27,6 @@ export type Props = {
 
 export function StartFreeScanView(props: Props) {
   const l10n = useL10n();
-  const recordTelemetry = useTelemetry();
 
   return (
     <FixView
@@ -56,48 +55,50 @@ export function StartFreeScanView(props: Props) {
             {l10n.getString(
               "fix-flow-data-broker-profiles-start-free-scan-content-p2",
             )}{" "}
-            <a
+            <TelemetryLink
               href={CONST_URL_SUMO_HOW_IT_WORKS}
               target="_blank"
-              onClick={() => {
-                recordTelemetry("link", "click", {
-                  link_id: "returning_user_info_scan_learn_more",
-                });
+              eventData={{
+                link_id: "returning_user_info_scan_learn_more",
               }}
             >
               {l10n.getString(
                 "fix-flow-data-broker-profiles-start-free-scan-link-learn-more",
               )}
-            </a>
+            </TelemetryLink>
           </p>
         </div>
         <div className={styles.buttonsWrapper}>
-          <Button
+          <TelemetryButton
             variant="primary"
             href="/user/welcome/free-scan?referrer=fix"
-            onPress={() => {
-              recordTelemetry("ctaButton", "click", {
+            event={{
+              module: "ctaButton",
+              name: "click",
+              data: {
                 button_id: "intent_to_start_free_scan",
-              });
+              },
             }}
           >
             {l10n.getString(
               "fix-flow-data-broker-profiles-start-free-scan-button-start-scan",
             )}
-          </Button>
-          <Button
+          </TelemetryButton>
+          <TelemetryButton
             variant="secondary"
             href={getNextGuidedStep(props.data, "Scan").href}
-            onPress={() => {
-              recordTelemetry("ctaButton", "click", {
+            event={{
+              module: "button",
+              name: "click",
+              data: {
                 button_id: "skipped_free_scan",
-              });
+              },
             }}
           >
             {l10n.getString(
               "fix-flow-data-broker-profiles-start-free-scan-button-skip",
             )}
-          </Button>
+          </TelemetryButton>
         </div>
       </div>
     </FixView>

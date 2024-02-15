@@ -8,6 +8,8 @@ import { ReactNode, RefObject, useRef } from "react";
 import Link from "next/link";
 import styles from "./Button.module.scss";
 import { useButton } from "react-aria";
+import { useL10n } from "../../hooks/l10n";
+import { VisuallyHidden } from "../server/VisuallyHidden";
 
 export interface Props {
   variant: "primary" | "secondary" | "tertiary";
@@ -22,9 +24,9 @@ export interface Props {
   buttonRef?: RefObject<HTMLButtonElement | HTMLAnchorElement>;
 }
 
-export const Button = (
-  props: Props & Parameters<typeof useButton>[0], // AriaButtonOptions
-) => {
+export type ButtonProps = Props & Parameters<typeof useButton>[0]; // AriaButtonOptions
+
+export const Button = (props: ButtonProps) => {
   const {
     children,
     variant,
@@ -76,7 +78,24 @@ export const Button = (
       ref={buttonRef as RefObject<HTMLButtonElement>}
       className={classes}
     >
-      {children}
+      {isLoading ? <Loader /> : children}
     </button>
   );
 };
+
+/* This animation was adapted from https://loading.io/css/ */
+/* c8 ignore start */
+export const Loader = () => {
+  const l10n = useL10n();
+
+  return (
+    <div className={styles.ldsRing}>
+      <VisuallyHidden>{l10n.getString("loading-accessibility")}</VisuallyHidden>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  );
+};
+/* c8 ignore stop */

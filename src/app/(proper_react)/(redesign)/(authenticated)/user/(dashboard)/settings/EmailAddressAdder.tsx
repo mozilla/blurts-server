@@ -4,6 +4,7 @@
 
 "use client";
 
+import { ChangeEvent, useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
@@ -16,10 +17,31 @@ import { ModalOverlay } from "../../../../../../components/client/dialog/ModalOv
 import { Dialog } from "../../../../../../components/client/dialog/Dialog";
 import { onAddEmail } from "./actions";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
+import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 
 export const EmailAddressAdder = () => {
   const l10n = useL10n();
-  const dialogState = useOverlayTriggerState({ defaultOpen: false });
+  const recordTelemetry = useTelemetry();
+  const dialogState = useOverlayTriggerState({
+    defaultOpen: false,
+    // Unfortunately we're currently running into a bug testing code that hits
+    // `useFormState`, which would happen when the dialog is opened.
+    // See the comment for the test "counts how often people click the 'Add
+    // email address' button":
+    /* c8 ignore start */
+    onOpenChange(isOpen) {
+      if (isOpen) {
+        recordTelemetry("ctaButton", "click", {
+          button_id: "add_email_address",
+        });
+      } else {
+        recordTelemetry("button", "click", {
+          button_id: "close_add_email_modal",
+        });
+      }
+    },
+    /* c8 ignore stop */
+  });
   const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: "dialog" },
     dialogState,
@@ -61,7 +83,30 @@ export const EmailAddressAdder = () => {
 /* c8 ignore start */
 const EmailAddressAddForm = () => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const [formState, formAction] = useFormState(onAddEmail, {});
+  const [hasPressedButton, setHasPressedButton] = useState(false);
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    if (typeof formState.success !== "undefined") {
+      recordTelemetry("ctaButton", "click", {
+        button_id: "add_email_verification",
+      });
+    }
+  }, [formState, recordTelemetry]);
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const isEmailValid = () => {
+    // Regex for checking email format
+    // ensuring it contains a local part, an "@" symbol,
+    // and a domain part.
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   return !formState.success ? (
     <>
@@ -74,14 +119,29 @@ const EmailAddressAddForm = () => {
         <label htmlFor="newEmailAddress">
           {l10n.getString("add-email-address-input-label")}
         </label>
-        <input type="email" name="newEmailAddress" id="newEmailAddress" />
-        <Button type="submit" variant="primary">
+        <input
+          type="email"
+          name="newEmailAddress"
+          id="newEmailAddress"
+          onChange={handleInputChange}
+        />
+        <Button
+          type="submit"
+          variant="primary"
+          className={styles.btn}
+          disabled={!isEmailValid()}
+          onPress={() => {
+            setHasPressedButton(true);
+          }}
+          isLoading={hasPressedButton}
+          aria-live="polite"
+        >
           {l10n.getString("add-email-send-verification-button")}
         </Button>
       </form>
     </>
   ) : (
-    <p>
+    <p className={styles.description}>
       {l10n.getFragment("add-email-verify-the-link-2", {
         vars: { email: formState.submittedAddress },
         elems: { b: <b /> },

@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -121,9 +121,16 @@ export const Steps = (props: {
   skipInitialStep?: boolean;
 }) => {
   const l10n = useL10n();
+  const stepsRef = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    stepsRef.current?.focus();
+  }, [props.currentStep]);
 
   return (
     <ul
+      tabIndex={-1}
+      ref={stepsRef}
       className={`${styles.steps} ${
         props.skipInitialStep ? styles.getStartedHidden : ""
       }`}

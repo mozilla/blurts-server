@@ -33,7 +33,8 @@ export type FeatureFlagName =
   | "PremiumBrokerRemoval"
   | "FalseDoorTest"
   | "HibpBreachNotifications"
-  | "FxaUidTelemetry";
+  | "FxaUidTelemetry"
+  | "RebrandAnnouncement";
 
 export async function getEnabledFeatureFlags(
   options:

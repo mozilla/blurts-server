@@ -107,6 +107,7 @@
 
 .contentAutomaticRemove {
   h3 {
+    @include no-focus-outline;
     text-align: left;
   }
 }
@@ -138,19 +139,25 @@
   font: $text-body-sm;
   margin-bottom: $spacing-md;
 
-  button {
+  .toggleBtn {
     cursor: pointer;
     appearance: none;
     background-color: transparent;
     border: 0;
-    color: $color-grey-40;
+    color: $color-grey-50;
     padding: $spacing-xs $spacing-md;
+    font-weight: 500;
 
     &.isActive,
     &:hover {
       background-color: $color-white;
       border-radius: $border-radius-xl;
       color: $color-informational;
+    }
+
+    &.isFocused {
+      outline: 2px solid $color-purple-70;
+      background-color: $color-purple-10;
     }
   }
 }

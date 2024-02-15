@@ -4,6 +4,7 @@
 
 chevron-down-alt = Razširi
 chevron-up-alt = Strni
+exposure-card-exposure-type = vrsta izpostavljenosti
 exposure-card-date-found = Datum izpostavljenosti
 
 # Status Pill
@@ -32,10 +33,10 @@ exposure-card-description-data-breach-part-two = Vodili vas bomo skozi korake za
 exposure-card-your-exposed-info = Vaši izpostavljeni podatki:
 exposure-card-exposure-type-data-broker = Info za prodajo
 exposure-card-exposure-type-data-breach = Kraja podatkov
-exposure-card-cta = Popravi vse osvetlitve
+exposure-card-cta = Popravi vse izpostavljenosti
 exposure-card-label-company-logo = Logotip podjetja
 exposure-card-label-company = Podjetje
-exposure-card-label-exposure-type = Vrsta osvetlitve
+exposure-card-label-exposure-type = vrsta izpostavljenosti
 exposure-card-label-date-found = Datum najden
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Stanje

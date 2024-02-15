@@ -615,6 +615,12 @@ ad-unit-2-do-you-worry = Tettagadeḍ ɣef tɣellist deg Wi-Fi azayaz?
 ad-unit-3-stay-in-the-game = Qqim deg wurar!
 # ad 3 list item 2
 ad-unit-3-be-anywhere = Ili-k·kem deg yal adeg deg umaḍal
+# ad 3 list item 3
+ad-unit-3-access-more = Kcem ɣer wugar n ugbur
+# ad 4 heading
+ad-unit-4-shopping-with = Aɣ-d s mefferismawen
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Qqen anda ma telliḍ
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Seqdec ɣef tiliɣri-inek·inem
 
@@ -627,14 +633,21 @@ ad-unit-5-use-on-phone = Seqdec ɣef tiliɣri-inek·inem
 -brand-monitor = Monitor
 -brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Tasbeddit Mozilla
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account = Amiḍan n Mozilla
+open-in-new-tab-alt = Ldi aseɣwen deg yiccer amaynut
 
 ## Search Engine Optimization
 
@@ -648,12 +661,24 @@ brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
+site-nav-breaches-link = Fru tirewliwin n yisefka
 site-nav-settings-link = Iɣewwaren
+site-nav-help-link = Tallalt
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN
+site-nav-ad-callout = Ԑreḍ ifecka-nneɣ niḍen n teɣelist:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
 mobile-menu-label = Umuɣ agejdan
 main-nav-button-collapse-label = Fneẓ umuɣ
 main-nav-button-collapse-tooltip = Fneẓ umuɣ
+main-nav-button-expand-label = Snefli umuɣ
+main-nav-button-expand-tooltip = Snefli umuɣ
+main-nav-label = Tunigin
+main-nav-link-home-label = Asebter agejdan
+main-nav-link-dashboard-label = Tafelwit n usenqed
+main-nav-link-settings-label = Iɣewwaren
+main-nav-link-faq-label = Isteqsiyen FAQ
+main-nav-link-faq-tooltip = Isteqsiyen i d-yettuɣalen s waṭas.
 
 ## User menu
 
@@ -664,12 +689,22 @@ menu-button-alt = Ldi umuɣ n useqdac
 # Obsolete
 menu-list-accessible-label = Umuɣ n umiḍan
 # Obsolete
+menu-item-fxa-2 = Sefrek { -brand-mozilla-account }
+# Obsolete
 menu-item-settings = Iɣewwaren
 # Obsolete
+menu-item-help = Tallalt
+# Obsolete
 menu-item-logout = Ffeɣ
+user-menu-trigger-label = Ldi umuɣ n useqdac
+user-menu-trigger-tooltip = Amaɣnu
+user-menu-manage-fxa-label = Sefrek { -brand-mozilla-account }
 user-menu-settings-label = Iɣewwaṛen
 user-menu-settings-tooltip = Sbadu { -brand-mozilla-monitor }
 user-menu-help-label = Tallalt
+user-menu-help-tooltip = Awi tallalt i useqdec n { -brand-mozilla-monitor }
+user-menu-signout-label = Ffeɣ
+user-menu-signout-tooltip = Ffeɣ deg { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -678,9 +713,14 @@ terms-of-service = Tiwtilin n useqdec
 privacy-notice = Tasertit n tbaḍnit
 github = { -brand-github }
 footer-nav-all-breaches = Meṛṛa tirewliwin
+footer-external-link-faq-label = Isteqsiyen FAQ
+footer-external-link-faq-tooltip = Isteqsiyen i d-yettuɣalen s waṭas.
 
 ## Error page
 
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } - asebter ur yettwaf ara
 error-page-error-404-cta-button = Uɣal
 
 ## Breach overview page
@@ -693,3 +733,10 @@ breach-detail-cta-signup = Senqed tarewla n yisefka
 
 ## Floating banner
 
+floating-banner-link-label = Jerred
+floating-banner-dismiss-button-label = Ala, tanemmirt
+
+## Firefox Monitor -> Mozilla Monitor rebrand banner
+
+banner-monitor-rebrand-dismiss-button-label = IH
+banner-monitor-rebrand-dismiss-button-tooltip = Zgel

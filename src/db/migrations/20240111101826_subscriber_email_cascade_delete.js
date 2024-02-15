@@ -19,6 +19,6 @@ export async function up(knex) {
  */
 export async function down(knex) {
   await knex.schema.alterTable("email_addresses", table => {
-    table.foreign("subscriber_id").references("subscribers.id")
+    table.dropForeign("subscriber_id").foreign("subscriber_id").references("subscribers.id")
   });
 }

@@ -5,6 +5,9 @@
 plus-indicator-label-active = Automatic data removal: On
 plus-indicator-label-inactive = Automatic data removal: Off
 
+user-menu-contact-label = Contact us
+user-menu-contact-tooltip = Contact { -brand-monitor-plus } support
+
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
 modal-active-number-of-exposures-part-one-premium =

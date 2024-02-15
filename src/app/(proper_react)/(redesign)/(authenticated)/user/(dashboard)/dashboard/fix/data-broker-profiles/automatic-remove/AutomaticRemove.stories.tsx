@@ -64,8 +64,12 @@ export const AutomaticRemoveViewStory: Story = {
             href: "/user/dashboard/fix/high-risk-data-breaches/social-security-number",
           }}
           currentSection="data-broker-profiles"
-          monthlySubscriptionUrl=""
-          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl="https://example.com/subscribe/monthly"
+          yearlySubscriptionUrl="https://example.com/subscribe/yearly"
+          subscriptionBillingAmount={{
+            yearly: 13.37,
+            monthly: 42.42,
+          }}
         />
       </Shell>
     );

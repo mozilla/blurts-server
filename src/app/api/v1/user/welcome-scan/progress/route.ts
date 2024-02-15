@@ -11,7 +11,7 @@ import { logger } from "../../../../../functions/server/logging";
 import AppConstants from "../../../../../../appConstants";
 import {
   getOnerepProfileId,
-  getSubscriberByEmail,
+  getSubscriberByFxaUid,
 } from "../../../../../../db/tables/subscribers";
 
 import {
@@ -38,17 +38,23 @@ export async function GET(
   _req: NextRequest,
 ): Promise<NextResponse<ScanProgressBody> | NextResponse<unknown>> {
   const session = await getServerSession(authOptions);
-  if (typeof session?.user?.email === "string") {
+  if (typeof session?.user?.subscriber?.fxa_uid === "string") {
     try {
-      const subscriber = await getSubscriberByEmail(session.user.email);
-      const profileId = (await getOnerepProfileId(subscriber.id))[0][
-        "onerep_profile_id"
-      ] as number;
+      const subscriber = await getSubscriberByFxaUid(
+        session.user.subscriber?.fxa_uid,
+      );
+      if (!subscriber) {
+        throw new Error("No subscriber found for current session.");
+      }
+      const profileId = await getOnerepProfileId(subscriber.id);
 
       const latestScan = await getLatestOnerepScanResults(profileId);
       const latestScanId = latestScan.scan?.onerep_scan_id;
 
-      if (typeof latestScanId !== "undefined") {
+      if (
+        typeof latestScanId !== "undefined" &&
+        typeof profileId === "number"
+      ) {
         const scan = await getScanDetails(profileId, latestScanId);
 
         // Store scan results.

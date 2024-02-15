@@ -11,8 +11,10 @@ import { MobileShell } from "./MobileShell";
 import Link from "next/link";
 import { PageLink } from "./PageLink";
 import { ExtendedReactLocalization } from "../../hooks/l10n";
-import { GaScript } from "./GaScript";
-import getPremiumSubscriptionUrl from "../../functions/server/getPremiumSubscriptionUrl";
+import {
+  getSubscriptionBillingAmount,
+  getPremiumSubscriptionUrl,
+} from "../../functions/server/getPremiumSubscriptionInfo";
 import { SubscriptionCheck } from "../../components/client/SubscriptionCheck";
 import { Footer } from "./Footer";
 
@@ -31,13 +33,16 @@ export const Shell = (props: Props) => {
 
   return (
     <>
-      <GaScript nonce={props.nonce} />
-      <SubscriptionCheck />
+      {/* This component ensures that the client session is synced with the
+      server session and is not being mounted when running unit tests. */}
+      {/* c8 ignore next */}
+      {process.env.NODE_ENV !== "test" && <SubscriptionCheck />}
       <MobileShell
         session={props.session}
         monthlySubscriptionUrl={monthlySubscriptionUrl}
         yearlySubscriptionUrl={yearlySubscriptionUrl}
         fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
+        subscriptionBillingAmount={getSubscriptionBillingAmount()}
       >
         <div className={styles.wrapper}>
           <nav

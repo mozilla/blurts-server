@@ -3,7 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
+import { Profile, getServerSession } from "next-auth";
+import { SubscriberRow } from "knex/types/tables";
 import { logger } from "../../../../../functions/server/logging";
 import { isAdmin, authOptions } from "../../../../utils/auth";
 import {
@@ -24,6 +25,16 @@ import {
   deleteScansForProfile,
 } from "../../../../../../db/tables/onerep_scans";
 import { changeSubscription } from "../../../../../functions/server/changeSubscription";
+
+export type GetUserStateResponseBody = {
+  subscriberId: SubscriberRow["id"];
+  onerepProfileId: SubscriberRow["onerep_profile_id"];
+  createdAt: SubscriberRow["created_at"];
+  updatedAt: SubscriberRow["updated_at"];
+  signupLanguage: SubscriberRow["signup_language"];
+  all_emails_to_primary: SubscriberRow["all_emails_to_primary"];
+  subscriptions: Profile["subscriptions"];
+};
 
 /**
  * Look up a subscriber based on SHA1 hash of their email address.
@@ -49,14 +60,16 @@ export async function GET(
 
       const primarySha1 = params.primarySha1;
       const subscriber = (await getSubscribersByHashes([primarySha1]))[0];
-      return NextResponse.json({
+      const responseBody: GetUserStateResponseBody = {
         subscriberId: subscriber.id,
         onerepProfileId: subscriber.onerep_profile_id,
         createdAt: subscriber.created_at,
         updatedAt: subscriber.updated_at,
         signupLanguage: subscriber.signup_language,
         all_emails_to_primary: subscriber.all_emails_to_primary,
-      });
+        subscriptions: subscriber.fxa_profile_json?.subscriptions,
+      };
+      return NextResponse.json(responseBody);
     } catch (e) {
       logger.error(e);
       return NextResponse.json({ success: false }, { status: 500 });
@@ -66,6 +79,17 @@ export async function GET(
     return NextResponse.json({ success: false }, { status: 401 });
   }
 }
+
+export type UserStateAction =
+  | "subscribe"
+  | "unsubscribe"
+  | "delete_onerep_profile"
+  | "delete_onerep_scans"
+  | "delete_onerep_scan_results"
+  | "delete_subscriber";
+export type PutUserStateRequestBody = {
+  actions: UserStateAction[];
+};
 
 /**
  * Change user state based on subscriber ID.
@@ -112,9 +136,11 @@ export async function PUT(
       const subscriber = await getSubscriberByEmail(
         subscriberRow.primary_email,
       );
+      if (!subscriber) {
+        throw new Error("No subscriber found for given email.");
+      }
 
-      const result = await getOnerepProfileId(subscriber.id);
-      const onerepProfileId = result?.[0]?.["onerep_profile_id"] as number;
+      const onerepProfileId = await getOnerepProfileId(subscriber.id);
 
       logger.info("admin_subscription_change", {
         actions,
@@ -126,9 +152,11 @@ export async function PUT(
           case "subscribe": {
             await changeSubscription(subscriber, true);
 
-            // activate and opt out profiles
-            await activateProfile(onerepProfileId);
-            await optoutProfile(onerepProfileId);
+            // activate and opt out profiles, if any
+            if (typeof onerepProfileId === "number") {
+              await activateProfile(onerepProfileId);
+              await optoutProfile(onerepProfileId);
+            }
             logger.info("force_user_subscribe", {
               onerepProfileId,
               primarySha1,
@@ -138,7 +166,9 @@ export async function PUT(
           case "unsubscribe": {
             await changeSubscription(subscriber, false);
 
-            await deactivateProfile(onerepProfileId);
+            if (typeof onerepProfileId === "number") {
+              await deactivateProfile(onerepProfileId);
+            }
             logger.info("force_user_unsubscribe", {
               onerepProfileId,
               primarySha1,
@@ -146,6 +176,11 @@ export async function PUT(
             break;
           }
           case "delete_onerep_profile": {
+            if (typeof onerepProfileId !== "number") {
+              throw new Error(
+                `Could not force-delete the OneRep profile of subscriber [${primarySha1}], as they do not have a OneRep profile known to us.`,
+              );
+            }
             await deleteProfileDetails(onerepProfileId);
             await deleteOnerepProfileId(subscriber.id);
             logger.info("delete_onerep_profile", {
@@ -155,6 +190,11 @@ export async function PUT(
             break;
           }
           case "delete_onerep_scans": {
+            if (typeof onerepProfileId !== "number") {
+              throw new Error(
+                `Could not force-delete OneRep scans for subscriber [${primarySha1}], as they do not have a OneRep profile known to us.`,
+              );
+            }
             await deleteScansForProfile(onerepProfileId);
             logger.info("delete_onerep_scans", {
               onerepProfileId,
@@ -163,6 +203,11 @@ export async function PUT(
             break;
           }
           case "delete_onerep_scan_results": {
+            if (typeof onerepProfileId !== "number") {
+              throw new Error(
+                `Could not force-delete OneRep scan results for subscriber [${primarySha1}], as they do not have a OneRep profile known to us.`,
+              );
+            }
             await deleteScanResultsForProfile(onerepProfileId);
             logger.info("delete_onerep_scan_results", {
               onerepProfileId,

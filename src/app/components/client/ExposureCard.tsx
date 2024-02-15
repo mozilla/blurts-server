@@ -450,6 +450,7 @@ const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
                     data_breach_link: (
                       <Link
                         href={`/breach-details/${subscriberBreach.name}`}
+                        target="_blank"
                         onClick={() => {
                           recordTelemetry("link", "click", {
                             link_id: `data_breach_${subscriberBreach.id}`,

@@ -667,7 +667,11 @@ ad-unit-6-before-you-complete = Pour finir cette inscription, utilisez un alias 
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
--brand-mozilla-account = Compte Mozilla
+-brand-mozilla-account =
+    { $capitalization ->
+        [uppercase] Compte Mozilla
+       *[lowercase] compte Mozilla
+    }
 open-in-new-tab-alt = Ouvrir le lien dans un nouvel onglet
 
 ## Search Engine Optimization
@@ -775,3 +779,4 @@ floating-banner-dismiss-button-label = Non merci
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b> : un nouveau nom, une nouvelle interface et encore de nouvelles façons de <b>reprendre le contrôle de votre vie privée</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Ignorer
+loading-accessibility = Chargement…

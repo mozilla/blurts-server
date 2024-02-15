@@ -8,9 +8,12 @@ import { SignUpForm } from "./SignUpForm";
 import { ExtendedReactLocalization } from "../../../hooks/l10n";
 import { PlansTable } from "./PlansTable";
 import { useId } from "react";
-import getPremiumSubscriptionUrl from "../../../functions/server/getPremiumSubscriptionUrl";
+import {
+  getSubscriptionBillingAmount,
+  getPremiumSubscriptionUrl,
+} from "../../../functions/server/getPremiumSubscriptionInfo";
 import Image from "next/image";
-import ProgressCardImage from "./value-prop-images/progress-card.svg";
+import ProgressCardImage from "./value-prop-images/progress-card.png";
 import {
   LeakedPasswordExampleIllustration,
   ScanningForExposuresIllustration,
@@ -20,25 +23,35 @@ import ForbesLogo from "./social-proof-images/forbes.svg";
 import GoogleLogo from "./social-proof-images/google.svg";
 import PCMagLogo from "./social-proof-images/pcmag.svg";
 import TechCruchLogo from "./social-proof-images/techcrunch.svg";
-import { TelemetryLink } from "./TelemetryLink";
+import { TelemetryLink } from "../../../components/client/TelemetryLink";
 import { HeresHowWeHelp } from "./HeresHowWeHelp";
 import { ScanLimit } from "./ScanLimit";
 import { Footer } from "../Footer";
 import { FaqSection } from "./Faq";
 import { SignInButton } from "../../../components/client/SignInButton";
+import { RebrandAnnouncement } from "./RebrandAnnouncement";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
+import MonitorLogo from "../../images/monitor-logo.svg";
 
 export type Props = {
   eligibleForPremium: boolean;
   l10n: ExtendedReactLocalization;
   countryCode: string;
   scanLimitReached: boolean;
+  enabledFlags: FeatureFlagName[];
 };
 
 export const View = (props: Props) => {
   return (
     <main className={styles.wrapper}>
       <nav className={styles.nav}>
-        <h1>{props.l10n.getString("public-nav-name")}</h1>
+        <h1>
+          <Image
+            className={styles.logo}
+            src={MonitorLogo}
+            alt={props.l10n.getString("public-nav-name")}
+          />
+        </h1>
         <SignInButton />
       </nav>
       <header className={styles.hero}>
@@ -103,8 +116,8 @@ export const View = (props: Props) => {
                       elems: {
                         privacy_link: (
                           <TelemetryLink
-                            eventData={{ button_id: "privacy_information" }}
-                            href="https://www.mozilla.org/en-US/firefox/privacy/"
+                            eventData={{ link_id: "privacy_information" }}
+                            href="https://www.mozilla.org/firefox/privacy/"
                             target="_blank"
                           />
                         ),
@@ -117,8 +130,8 @@ export const View = (props: Props) => {
                       elems: {
                         privacy_link: (
                           <TelemetryLink
-                            eventData={{ button_id: "privacy_information" }}
-                            href="https://www.mozilla.org/en-US/firefox/privacy/"
+                            eventData={{ link_id: "privacy_information" }}
+                            href="https://www.mozilla.org/firefox/privacy/"
                             target="_blank"
                           />
                         ),
@@ -246,6 +259,9 @@ export const View = (props: Props) => {
         />
       </div>
       <Footer l10n={props.l10n} />
+      {props.enabledFlags.includes("RebrandAnnouncement") && (
+        <RebrandAnnouncement />
+      )}
     </main>
   );
 };
@@ -320,6 +336,7 @@ const Plans = (props: Props) => {
           monthly: getPremiumSubscriptionUrl({ type: "monthly" }),
           yearly: getPremiumSubscriptionUrl({ type: "yearly" }),
         }}
+        subscriptionBillingAmount={getSubscriptionBillingAmount()}
         scanLimitReached={props.scanLimitReached}
       />
     </div>

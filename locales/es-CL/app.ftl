@@ -44,6 +44,8 @@ user-add-duplicate-email = Este correo ya ha sido añadido a { -product-name }.
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Visita tus { $preferencesLink } para revisar el estado de { $userEmail }.
+user-add-verification-email-just-sent = No se puede enviar otro correo electrónico de verificación tan pronto. Por favor, vuelve a intentarlo más tarde.
+user-add-unknown-error = Algo falló al agregar otra dirección de correo electrónico. Por favor, vuelve a intentarlo más tarde.
 error-headline = Error
 user-verify-token-error = Toquen de verificación requerido.
 user-verify-email-report-subject = Tu reporte de { -product-name }
@@ -804,5 +806,6 @@ floating-banner-dismiss-button-label = No, gracias
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: nuevo nombre, apariencia e incluso más formas de <b>recuperar tu privacidad</b>.
 banner-monitor-rebrand-dismiss-button-label = Aceptar
 banner-monitor-rebrand-dismiss-button-tooltip = Ocultar

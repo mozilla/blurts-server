@@ -85,7 +85,7 @@ dashboard:
         description: Either [action_needed, fixed] depending on where the user is in their dashboard.
         type: string
       legacy_user:
-        description: True for users who signed up after data broker scanning was released to the welcome flow.
+        description: True for users who signed up before data broker scanning was released to the welcome flow.
         type: boolean
       breach_count:
         description: Users who run the new free scan will be notified of breaches found during the scan.

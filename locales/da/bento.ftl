@@ -1,29 +1,13 @@
-fx-monitor = { -product-name }
-pocket = { -brand-pocket }
-fx-send = { -brand-send }
-fx-lockwise = { -brand-lockwise }
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-## If possible, keep "Firefox Browser" in English, but feel free 
-## to translate browser if that doesn't work for your language.
-
-## If possible, keep "Firefox Browser" in English, but feel free
-## to translate browser if that doesn't work for your language.
-
-fx-desktop = { -brand-name } Browser til din computer
-fx-mobile = { -brand-name } Browser til din telefon
-
-
-
-##
-
-# Aria label for the Bento button
-bento-button-title = Apps og tjenester fra { -brand-name }
-
+toolbar-app-picker-trigger-title = Apps og tjenester fra { -brand-mozilla }
+toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
+toolbar-app-picker-product-relay = { -brand-relay }
+toolbar-app-picker-product-pocket = { -brand-pocket }
+toolbar-app-picker-product-fx-desktop = { -brand-firefox } til computere
+toolbar-app-picker-product-fx-mobile = { -brand-firefox } til mobilen
+toolbar-app-picker-by-mozilla = Lavet af { -brand-mozilla }
 # Bento headline
 fx-makes-tech = { -brand-name } er teknologi, der kæmper for at beskytte dit privatliv på nettet.
-
-# A link at the bottom of the Bento menu
-made-by-mozilla = Lavet af { -brand-Mozilla }
-
-# Aria label for button that closes the Bento menu
-mobile-close-bento-button-title = Luk menu

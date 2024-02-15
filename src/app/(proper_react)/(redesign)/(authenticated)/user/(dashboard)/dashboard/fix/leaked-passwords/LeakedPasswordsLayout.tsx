@@ -25,9 +25,10 @@ import {
 import { FixView } from "../FixView";
 import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
 import { hasPremium } from "../../../../../../../../functions/universal/user";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LeakedPasswordsDataTypes } from "../../../../../../../../functions/universal/breach";
+import { useTelemetry } from "../../../../../../../../hooks/useTelemetry";
 
 export interface LeakedPasswordsLayoutProps {
   type: LeakedPasswordsTypes;
@@ -39,6 +40,7 @@ export interface LeakedPasswordsLayoutProps {
 export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   const l10n = useL10n();
   const router = useRouter();
+  const recordTelemetry = useTelemetry();
   const [isResolving, setIsResolving] = useState(false);
   const [subscriberBreaches, setSubscriberBreaches] = useState(
     props.data.subscriberBreaches,
@@ -96,7 +98,8 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
     if (
       !dataType ||
       !unresolvedPasswordBreach ||
-      emailsAffected?.length === 0
+      emailsAffected?.length === 0 ||
+      isResolving
     ) {
       return;
     }
@@ -113,6 +116,13 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         unresolvedPasswordBreach.id,
         formattedDataClasses,
       );
+
+      // Make sure the dashboard re-fetches the breaches on the next visit,
+      // in order to make resolved breaches move to the "Fixed" tab.
+      // If we had used server actions, we could've called
+      // `revalidatePath("/user/dashboard")` there, but the API doesn't appear
+      // to necessarily share a cache with the client.
+      router.refresh();
 
       // Manually move to the next step when breach has been marked as fixed.
       const updatedSubscriberBreaches = subscriberBreaches.map(
@@ -148,6 +158,16 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   };
   /* c8 ignore stop */
 
+  useEffect(() => {
+    recordTelemetry("page", "view", {
+      utm_campaign:
+        props.type === "passwords"
+          ? "password_exposed"
+          : "security_question_exposed",
+      utm_source: "guided_experience",
+    });
+  }, [props.type, recordTelemetry]);
+
   return (
     <FixView
       subscriberEmails={props.subscriberEmails}
@@ -168,16 +188,35 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
               <Button
                 variant="primary"
                 small
-                /* c8 ignore next 3 */
                 onPress={() => {
                   void handleUpdateBreachStatus();
+                  recordTelemetry("ctaButton", "click", {
+                    button_id: "marked_fixed",
+                    // TODO: Enable after the parameter has been added to metrics.yaml.
+                    // button_name:
+                    //   props.type === "passwords"
+                    //     ? "mark_as_fixed_password_${breachName}"
+                    //     : `mark_as_fixed_security_question_${breachName}`,
+                  });
                 }}
                 autoFocus={true}
                 disabled={isResolving}
               >
                 {l10n.getString("leaked-passwords-mark-as-fixed")}
               </Button>
-              <Link href={nextStep.href}>
+              <Link
+                href={nextStep.href}
+                onClick={() => {
+                  recordTelemetry("button", "click", {
+                    button_id: "skipped_resolution",
+                    // TODO: Enable after the parameter has been added to metrics.yaml.
+                    // button_name:
+                    // props.type === "passwords"
+                    //   ? `skip_for_now_password_${breachName}`
+                    //   : `skip_for_now_security_question_${breachName}`,
+                  });
+                }}
+              >
                 {l10n.getString("leaked-passwords-skip")}
               </Link>
             </>

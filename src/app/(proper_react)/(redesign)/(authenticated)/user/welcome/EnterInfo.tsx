@@ -26,6 +26,7 @@ import {
 import { meetsAgeRequirement } from "../../../../../functions/universal/user";
 import { getLocale } from "../../../../../functions/universal/getLocale";
 import { useTelemetry } from "../../../../../hooks/useTelemetry";
+import { CONST_URL_PRIVACY_POLICY } from "../../../../../../constants";
 
 import styles from "./EnterInfo.module.scss";
 
@@ -235,10 +236,7 @@ export const EnterInfo = ({
             {
               elems: {
                 "privacy-policy-link": (
-                  <a
-                    href="https://www.mozilla.org/privacy/firefox-monitor"
-                    target="_blank"
-                  />
+                  <a href={CONST_URL_PRIVACY_POLICY} target="_blank" />
                 ),
                 "privacy-protection-link": (
                   <a
@@ -255,7 +253,6 @@ export const EnterInfo = ({
           <Button
             variant="primary"
             onPress={() => explainerDialogState.close()}
-            autoFocus={true}
             className={styles.startButton}
           >
             {l10n.getString(
@@ -304,7 +301,6 @@ export const EnterInfo = ({
             });
             handleRequestScan();
           }}
-          autoFocus={true}
           className={styles.startButton}
           isLoading={requestingScan}
         >
@@ -409,7 +405,6 @@ export const EnterInfo = ({
           <Button
             {...confirmDialogTrigger.triggerProps}
             variant="primary"
-            autoFocus={true}
             type="submit"
             className={styles.startButton}
           >

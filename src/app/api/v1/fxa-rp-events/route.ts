@@ -177,15 +177,37 @@ export async function POST(request: NextRequest) {
   // reference example events: https://github.com/mozilla/fxa/blob/main/packages/fxa-event-broker/README.md
   for (const event in decodedJWT?.events) {
     switch (event) {
-      case FXA_DELETE_USER_EVENT:
+      case FXA_DELETE_USER_EVENT: {
         logger.info("fxa_delete_user", {
           subscriber: subscriber.id,
           event,
         });
 
+        // get profile id
+        const oneRepProfileId = await getOnerepProfileId(subscriber.id);
+        if (oneRepProfileId) {
+          try {
+            await deactivateProfile(oneRepProfileId);
+          } catch (ex) {
+            if (
+              (ex as Error).message ===
+              "Failed to deactivate OneRep profile: [403] [Forbidden]"
+            )
+              logger.error("profile_already_opted_out", {
+                subscriber_id: subscriber.id,
+                exception: ex,
+              });
+          }
+
+          logger.info("deactivated_onerep_profile", {
+            subscriber_id: subscriber.id,
+          });
+        }
+
         // delete user events only have keys. Keys point to empty objects
         await deleteSubscriber(subscriber);
         break;
+      }
       case FXA_PROFILE_CHANGE_EVENT: {
         const updatedProfileFromEvent = decodedJWT.events[
           event
@@ -197,7 +219,10 @@ export async function POST(request: NextRequest) {
         });
 
         // get current profiledata
-        const currentFxAProfile = subscriber?.fxa_profile_json || {};
+        // Typed as `any` because `subscriber` used to be typed as `any`, and
+        // making that type more specific was enough work just by itself:
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const currentFxAProfile: any = subscriber?.fxa_profile_json;
 
         // merge new event into existing profile data
         for (const key in updatedProfileFromEvent) {
@@ -227,8 +252,25 @@ export async function POST(request: NextRequest) {
           updateFromEvent,
         });
 
+        const refreshToken = subscriber.fxa_refresh_token;
+        const accessToken = subscriber.fxa_access_token;
+        if (refreshToken === null || accessToken === null) {
+          logger.error("failed_changing_password", {
+            subscriber_id: subscriber.id,
+            fxa_refresh_token: subscriber.fxa_refresh_token,
+            fxa_access_token: subscriber.fxa_access_token,
+          });
+          return NextResponse.json(
+            { success: false, message: "failed_changing_password" },
+            { status: 500 },
+          );
+        }
+
         // MNTOR-1932: Change password should revoke sessions
-        await revokeOAuthTokens(subscriber);
+        await revokeOAuthTokens({
+          fxa_access_token: accessToken,
+          fxa_refresh_token: refreshToken,
+        });
         break;
       }
       case FXA_SUBSCRIPTION_CHANGE_EVENT: {
@@ -241,18 +283,13 @@ export async function POST(request: NextRequest) {
           updatedSubscriptionFromEvent,
         });
 
-        logger.info("fxa_profile_subscription", {
-          subscriber_id: subscriber.id,
-        });
-
         try {
           // get profile id
-          const result = await getOnerepProfileId(subscriber.id);
-          const oneRepProfileId = result?.[0]?.["onerep_profile_id"] as number;
+          const oneRepProfileId = await getOnerepProfileId(subscriber.id);
 
           logger.info("get_onerep_profile", {
             subscriber_id: subscriber.id,
-            result: JSON.stringify(result),
+            oneRepProfileId,
           });
 
           if (
@@ -274,7 +311,7 @@ export async function POST(request: NextRequest) {
 
               captureException(
                 new Error(`No OneRep profile Id found, subscriber: ${
-                  subscriber.id as string
+                  subscriber.id
                 }\n
             Event: ${event}\n
             updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`),
@@ -334,7 +371,7 @@ export async function POST(request: NextRequest) {
 
               captureException(
                 new Error(`No OneRep profile Id found, subscriber: ${
-                  subscriber.id as string
+                  subscriber.id
                 }\n
                         Event: ${event}\n
                         updateFromEvent: ${JSON.stringify(

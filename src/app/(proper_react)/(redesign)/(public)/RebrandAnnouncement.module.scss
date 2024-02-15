@@ -1,0 +1,43 @@
+@import "../../../tokens";
+
+.rebrandAnnouncement {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  padding: $spacing-lg;
+  background-color: $color-blue-20;
+  font: $text-body-lg;
+
+  @media screen and (max-width: $screen-md) {
+    // (button width) + (.rebrandAnnouncement gap) + (2 * inline button padding)
+    padding-inline-end: calc(24px + calc($spacing-xs + calc(2 * $spacing-xs)));
+
+    button {
+      position: absolute;
+      inset-block-start: $spacing-sm;
+      inset-inline-end: $spacing-sm;
+    }
+  }
+
+  button {
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border-style: none;
+    cursor: pointer;
+    padding: 0 $spacing-xs;
+
+    svg {
+      color: $color-black;
+    }
+
+    &:hover svg {
+      color: $color-white;
+    }
+  }
+}

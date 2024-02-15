@@ -28,8 +28,11 @@ landing-all-faq-title = Usein kysytyt kysymykset
 # FAQ is an acronym for Frequently Asked Questions
 landing-all-faq-see-all = Katso kaikki UKK:t
 landing-all-data-breach-definition-qn = Mitä tietomurto oikein on?
+landing-all-data-breach-definition-ans = Tietovuoto tapahtuu, kun henkilökohtaisia tai yksityisiä tietoja paljastetaan, varastetaan tai kopioidaan ilman lupaa. Nämä tietoturvaloukkaukset voivat johtua kyberhyökkäyksistä  ihmisten henkilökohtaisia tietoja sisältäviin verkkosivustoihin, sovelluksiin tai tietokantoihin. Tietovuoto voi tapahtua myös vahingossa, esimerkiksi jos jonkun kirjautumistiedot päätyvät vahingossa julkaistuksi.
 landing-all-data-breach-next-steps-qn = Minulle selvisi juuri, että olen osallisena tietovuodossa. Mitä teen seuraavaksi?
+landing-all-data-breach-next-steps-ans = Käy { -brand-mozilla-monitor }issa, niin saat tietoja siitä, mitä tehdä tietovuodon jälkeen, ja ohjeita henkilötietojesi paljastumisen ratkaisemiseksi. Pahantahtoiset tahot luottavat siihen, että ihmiset käyttävät salasanoja uudelleen, joten on tärkeää luoda vahvat ja ainutlaatuiset salasanat kaikille tileillesi. Säilytä salasanasi turvallisessa paikassa, johon vain sinulla on pääsy; se voi olla sama paikka, johon tallennat tärkeitä asiakirjoja tai salasanojen hallintaan tarkoitettu ohjelma.
 landing-all-data-breach-info-qn = Mitä tietoja tietovuodoissa paljastuu?
+landing-all-data-breach-info-ans = Kaikki tietovuodot eivät sisällä samoja tietoja. Paljon riippuu siitä, mihin pahantahtoinen tekijä pääsee käsiksi. Monet tietovuodot sisältävät sähköpostiosoitteet ja salasanat. Jotkin tietovuodot sisältävät arkaluontoisempia tietoja, kuten luottokorttinumeroita, PIN-koodeja ja henkilötunnuksia.
 landing-all-close-faq-alt = Sulje
 
 # Social proof
@@ -53,6 +56,7 @@ landing-all-social-proof-press = Valokeilassa
 # Here's How We Help
 
 landing-all-help-protect-you = Näin autamme suojaamaan sinua
+landing-all-help-protect-you-description = Uskomme oikeuteesi yksityisyyteen, joten tietovuotojen valvonta on aina ilmaista.
 landing-all-help-protect-you-feature-one = Etsimme sinua kaikista tunnetuista tietovuodoista
 landing-all-help-protect-you-feature-two = Opastamme sinua kunkin tietovuodon ratkaisemiseksi
 landing-all-help-protect-you-feature-three = Jatkamme tarkkailua ja lähetämme sinulle ilmoituksia uusista tietovuodoista

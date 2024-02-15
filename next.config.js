@@ -2,11 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
- /* eslint @typescript-eslint/no-var-requires: "off" */
-import { withSentryConfig } from "@sentry/nextjs"
+/* eslint @typescript-eslint/no-var-requires: "off" */
+import { withSentryConfig } from "@sentry/nextjs";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  productionBrowserSourceMaps: true,
+  sentry: {
+    disableServerWebpackPlugin: process.env.UPLOAD_SENTRY_SOURCEMAPS ?? "false",
+    disableClientWebpackPlugin: process.env.UPLOAD_SENTRY_SOURCEMAPS ?? "false",
+  },
   images: {
     remotePatterns: [
       {
@@ -134,8 +139,13 @@ const nextConfig = {
       // /redesign subpath. In case we still have lingering links to there
       // anywhere, this redirect should have people end up at the right place:
       {
-        source: '/redesign/:path*',
-        destination: '/:path*',
+        source: "/redesign/:path*",
+        destination: "/:path*",
+        permanent: true,
+      },
+      {
+        source: "/user/dashboard/fix/data-broker-profiles/welcome-to-premium",
+        destination: "/user/dashboard/fix/data-broker-profiles/welcome-to-plus",
         permanent: true,
       },
       // We used to have a page with security tips;
@@ -145,6 +155,14 @@ const nextConfig = {
         source: "/security-tips",
         destination: "https://support.mozilla.org/kb/how-stay-safe-web",
         permanent: false,
+      },
+      // Some subset of users still find their way to the old login
+      // link, which redirects to a now-404 endpoint. Add a redirect
+      // to the new endpoint while we are investigating.
+      {
+        source: "/oauth/confirmed",
+        destination: "/api/auth/callback/fxa",
+        permanent: false
       },
     ];
   },
@@ -172,8 +190,8 @@ const sentryWebpackPluginOptions = {
 
   org: "mozilla",
   project: "firefox-monitor",
-
   silent: true, // Suppresses all logs
+  authToken: process.env.SENTRY_AUTH_TOKEN,
 
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
@@ -183,6 +201,11 @@ const sentryOptions = {
   // Upload additional client files (increases upload size)
   // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#widen-the-upload-scope
   widenClientFileUpload: true,
+  hideSourceMaps: false,
 };
 
-export default withSentryConfig(nextConfig, sentryWebpackPluginOptions, sentryOptions)
+export default withSentryConfig(
+  nextConfig,
+  sentryWebpackPluginOptions,
+  sentryOptions,
+);
