@@ -94,8 +94,8 @@ export async function getUserBreaches({
 /**
  * NOTE: new function to replace getUserBreaches
  *
- * @param user.user
  * @param user
+ * @param user.user
  * @param user.countryCode
  */
 export async function getSubscriberBreaches({
