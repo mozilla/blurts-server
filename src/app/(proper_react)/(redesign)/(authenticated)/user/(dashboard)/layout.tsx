@@ -3,9 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ReactNode } from "react";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { getL10n, getL10nBundles } from "../../../../../functions/server/l10n";
-import { authOptions } from "../../../../../api/utils/auth";
 import { Shell } from "../../../Shell";
 import { headers } from "next/headers";
 import { AutoSignIn } from "../../../../../components/client/AutoSignIn";
@@ -13,7 +12,7 @@ import { AutoSignIn } from "../../../../../components/client/AutoSignIn";
 export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();
   const l10n = getL10n(l10nBundles);
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
 
   if (!session) {
     return <AutoSignIn />;

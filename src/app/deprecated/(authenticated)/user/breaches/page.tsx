@@ -4,8 +4,8 @@
 
 import Image from "next/image";
 import Script from "next/script";
-import { getServerSession } from "next-auth";
 import { headers } from "next/headers";
+import { getServerSession } from "../../../../functions/server/getServerSession";
 import { CircleChartProps } from "./breaches.d";
 
 import { getL10n } from "../../../../functions/server/l10n";
@@ -13,7 +13,6 @@ import {
   getUserBreaches,
   UserBreaches,
 } from "../../../../functions/server/getUserBreaches";
-import { authOptions } from "../../../../api/utils/auth";
 
 import "../../../../../client/css/partials/breaches.css";
 import ImageIconEmail from "../../../../../client/images/icon-email.svg";
@@ -68,7 +67,7 @@ declare global {
 }
 
 export default async function UserBreaches() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (!session?.user?.subscriber) {
     return <SignInButton autoSignIn />;
   }

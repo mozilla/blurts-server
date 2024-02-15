@@ -2,14 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getServerSession } from "next-auth";
 import { notFound, redirect } from "next/navigation";
+import { getServerSession } from "../../../../../../functions/server/getServerSession";
 import { isEligibleForFreeScan } from "../../../../../../functions/server/onerep";
 import { View } from "../View";
 import { getAllBreachesCount } from "../../../../../../../db/tables/breaches";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
-import { authOptions } from "../../../../../../api/utils/auth";
 import { getReferrerUrl } from "../../../../../../functions/server/getReferrerUrl";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../constants";
 import { AutoSignIn } from "../../../../../../components/client/AutoSignIn";
@@ -26,7 +25,7 @@ type Props = {
 };
 
 export default async function Onboarding({ params, searchParams }: Props) {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (!session) {
     return <AutoSignIn />;
   }
