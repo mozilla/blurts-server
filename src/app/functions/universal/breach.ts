@@ -57,12 +57,10 @@ export function isBreachResolved(
   dataClassesAffected: DataClassEffected[],
   resolvedDataClasses: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>,
 ) {
-  return (
-    dataClassesAffected.every((dataClassAffected) => {
-      const dataClassAffectedKey = Object.keys(
-        dataClassAffected,
-      )[0] as (typeof BreachDataTypes)[keyof typeof BreachDataTypes];
-      return resolvedDataClasses.includes(dataClassAffectedKey);
-    }) || false
-  );
+  return dataClassesAffected.every((dataClassAffected) => {
+    const dataClassAffectedKey = Object.keys(
+      dataClassAffected,
+    )[0] as (typeof BreachDataTypes)[keyof typeof BreachDataTypes];
+    return resolvedDataClasses.includes(dataClassAffectedKey);
+  });
 }
