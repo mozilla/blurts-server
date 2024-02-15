@@ -293,7 +293,7 @@ export const HeroImageAll = ({
           fill="#5B5B5B"
           style={{ whiteSpace: "pre", width: "100%", textAnchor: "middle" }}
           fontFamily="var(--font-inter)"
-          fontSize="21"
+          fontSize="20"
           fontWeight="500"
           letterSpacing="0em"
           x="58.007492"
@@ -690,7 +690,7 @@ export const HeroImagePremium = ({
         fill="#5B5B5B"
         style={{ whiteSpace: "pre" }}
         fontFamily="var(--font-inter)"
-        fontSize="21"
+        fontSize="20"
         fontWeight="500"
         letterSpacing="0em"
       >
