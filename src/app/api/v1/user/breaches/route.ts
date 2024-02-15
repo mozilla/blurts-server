@@ -118,22 +118,17 @@ export async function PUT(req: NextRequest) {
       //   email_id: {
       //     recency_index: {
       //       resolutions: ['email', ...],
-      //       isResolved: true
       //     }
       //   }
       // }
       // */
 
-      const currentBreachDataTypes = currentBreaches[0].DataClasses; // get this from existing breaches
       const currentBreachResolution = subscriber.breach_resolution || {}; // get this from existing breach resolution if available
-      const isResolved =
-        resolutionsChecked.length === currentBreachDataTypes.length;
       currentBreachResolution[affectedEmail] = {
         ...(currentBreachResolution[affectedEmail] || {}),
         ...{
           [breachIdNumber]: {
             resolutionsChecked,
-            isResolved,
           },
         },
       };

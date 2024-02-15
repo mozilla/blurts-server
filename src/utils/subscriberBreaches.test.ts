@@ -48,11 +48,9 @@ const subscriber: Subscriber = {
   breach_resolution: {
     "test@test.com": {
       "8": {
-        isResolved: false,
         resolutionsChecked: ["passwords", "email-addresses"],
       },
       "40": {
-        isResolved: true,
         resolutionsChecked: [
           "email-addresses",
           "passwords",
@@ -60,11 +58,9 @@ const subscriber: Subscriber = {
         ],
       },
       "252": {
-        isResolved: true,
         resolutionsChecked: ["email-addresses"],
       },
       "320": {
-        isResolved: true,
         resolutionsChecked: ["email-addresses"],
       },
     },
@@ -480,13 +476,11 @@ describe("getSubBreaches", () => {
       breach_resolution: {
         "test@test.com": {
           "40": {
-            isResolved: true,
             resolutionsChecked: ["email-addresses", "phone-numbers"],
           },
         },
         "additional@test.com": {
           "40": {
-            isResolved: false,
             resolutionsChecked: ["email-addresses"],
           },
         },
@@ -571,13 +565,11 @@ describe("getSubBreaches", () => {
       breach_resolution: {
         "test@test.com": {
           "40": {
-            isResolved: true,
             resolutionsChecked: ["email-addresses", "passwords"],
           },
         },
         "additional@test.com": {
           "40": {
-            isResolved: true,
             resolutionsChecked: ["email-addresses"],
           },
         },
