@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 exposure-landing-hero-heading = Kişisel bilgilerinizin ele geçirilip geçirilmediğini öğrenin
+exposure-landing-hero-lead = Hacker’lardan ve kişisel bilgilerinizi paylaşıp satan şirketlerden { -brand-firefox } güvencesiyle korunun. Bilinen veri ihlalleri konusunda sizi uyaracak, açığa çıkan bilgilerinizi bulup düzeltmenize yardımcı olacak ve yeni ihlalleri sürekli olarak izleyeceğiz.
 exposure-landing-hero-email-label = E-posta adresi
 exposure-landing-hero-email-placeholder = E-posta adresinizi girin
 exposure-landing-hero-cta-label = İhlalleri kontrol edin
@@ -20,6 +21,7 @@ exposure-landing-result-card-added = Eklenme tarihi:
 exposure-landing-result-card-data = Ele geçirilen veriler:
 exposure-landing-result-card-nothing = İhlal bulunamadı
 exposure-landing-result-footer-attribution = İhlal verileri <hibp-link>{ -brand-HIBP }</hibp-link> tarafından sağlanmaktadır
+exposure-landing-result-overflow-hero-lead = Bu ihlalleri nasıl çözeceğinizi öğrenmek, tüm ihlalleri görmek ve tespit edilen yeni ihlalleri sürekli olarak izlemek için giriş yapın.
 exposure-landing-result-overflow-hero-cta-label = İhlalleri çözmek için giriş yapın
 exposure-landing-result-overflow-footer-cta-label = Tümünü görüntülemek için giriş yapın
 exposure-landing-result-some-hero-lead = Bu ihlalleri nasıl çözeceğinizi öğrenmek, tüm ihlalleri görmek ve tespit edilen yeni ihlalleri sürekli olarak izlemek için giriş yapın.

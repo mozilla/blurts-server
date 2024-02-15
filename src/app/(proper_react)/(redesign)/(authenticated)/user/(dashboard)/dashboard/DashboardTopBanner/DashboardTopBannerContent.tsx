@@ -336,6 +336,15 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 onPress={() => {
                   let buttonId = "us_non_premium_yes_scan";
                   if (contentProps.hasUnresolvedBreaches)
+                    // Plus users will no longer have unresolved scan results,
+                    // as we'll send opt-out requests for them - i.e. there's
+                    // nothing for the user to do. That means that there is no
+                    // more code path that will hit this line: instead this
+                    // combination will result in `UsUserNonPremiumNoExposures`.
+                    // Ideally, we'd narrow down the different permutations to
+                    // remove code that's no longer relevant, but to minimise
+                    // disruptions and potential bugs, we're leaving it for now:
+                    /* c8 ignore next */
                     buttonId = buttonId.concat("_unresolved_breaches");
                   if (contentProps.hasUnresolvedBrokers)
                     buttonId = buttonId.concat("_unresolved_brokers");
@@ -448,6 +457,16 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 onPress={() => {
                   recordTelemetry("ctaButton", "click", {
                     button_id: `us_${isPremiumUser ? "" : "non_"}premium${
+                      // Plus users will no longer have unresolved scan results,
+                      // as we'll send opt-out requests for them - i.e. there's
+                      // nothing for the user to do. That means that there is no
+                      // more code path that will hit this line: instead this
+                      // combination will result in
+                      // `UsUserNonPremiumWithScanRemovalInProgress`.
+                      // Ideally, we'd narrow down the different permutations to
+                      // remove code that's no longer relevant, but to minimise
+                      // disruptions and potential bugs, we're leaving it for now:
+                      /* c8 ignore next 3 */
                       contentProps.hasUnresolvedBreaches
                         ? "_unresolved_breaches"
                         : ""
