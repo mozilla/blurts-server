@@ -7,8 +7,6 @@ import Image from "next/image";
 import Script from "next/script";
 import AppConstants from "../../../../../appConstants";
 import { getL10n } from "../../../../functions/server/l10n";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../../../api/utils/auth";
 import ImageIconDelete from "../../../../../client/images/icon-delete.svg";
 import "../../../../../client/css/partials/settings.css";
 import React from "react";
@@ -22,6 +20,7 @@ import { getSha1 } from "../../../../../utils/fxa";
 import { getSubscriberById } from "../../../../../db/tables/subscribers";
 import { getNonce } from "../../../functions/server/getNonce";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../constants";
+import { getServerSession } from "../../../../functions/server/getServerSession";
 
 const emailNeedsVerificationSub = (email: EmailRow) => {
   const l10n = getL10n();
@@ -149,7 +148,7 @@ const alertOptions = ({
 
 export default async function Settings() {
   const l10n = getL10n();
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (!session || !session.user?.subscriber) {
     return redirect("/");
   }
