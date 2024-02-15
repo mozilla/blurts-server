@@ -81,6 +81,9 @@ export interface Breach {
   Title: string;
 }
 
+/**
+ * @deprecated Use {@see SubscriberRow} instead
+ */
 export interface Subscriber {
   id: number;
   primary_sha1: string;

@@ -2,13 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { SubscriberRow } from "knex/types/tables";
 import { getUserEmails } from "../db/tables/emailAddresses.js";
 import { HibpLikeDbBreach, getBreachesForEmail } from "./hibp.js";
 import { getSha1 } from "./fxa.js";
 import {
   Breach,
   HibpBreachDataTypes,
-  Subscriber,
 } from "../app/deprecated/(authenticated)/user/breaches/breaches.js";
 import { parseIso8601Datetime } from "./parse.js";
 import {
@@ -61,7 +61,7 @@ function filterBreachDataTypes(
  * @param countryCode
  */
 export async function getSubBreaches(
-  subscriber: Subscriber,
+  subscriber: SubscriberRow,
   allBreaches: (Breach | HibpLikeDbBreach)[],
   countryCode: string,
 ) {

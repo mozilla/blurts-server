@@ -841,3 +841,4 @@ floating-banner-dismiss-button-label = Nej tack
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nytt namn, utseende och ännu fler sätt att <b>återställa din integritet</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Ignorera
+loading-accessibility = Laddar

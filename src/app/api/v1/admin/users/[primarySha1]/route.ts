@@ -136,6 +136,9 @@ export async function PUT(
       const subscriber = await getSubscriberByEmail(
         subscriberRow.primary_email,
       );
+      if (!subscriber) {
+        throw new Error("No subscriber found for given email.");
+      }
 
       const onerepProfileId = await getOnerepProfileId(subscriber.id);
 

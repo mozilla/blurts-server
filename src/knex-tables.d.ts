@@ -333,10 +333,9 @@ declare module "knex/types/tables" {
       > &
         Partial<Pick<SubscriberRow, SubscriberOptionalColumns>>,
       // On updates, don't allow updating the ID and created date; all
-      // otherfields are optional, except updated_at. Also, fxa_profile_json
-      // takes the data as a serialised string:
-      Partial<Omit<SubscriberRow, "id" | "created_at" | "fxa_profile_json">> &
-        Pick<SubscriberRow, "updated_at"> & { fxa_profile_json: string | null }
+      // otherfields are optional, except updated_at:
+      Partial<Omit<SubscriberRow, "id" | "created_at">> &
+        Pick<SubscriberRow, "updated_at">
     >;
 
     email_addresses: Knex.CompositeTableType<

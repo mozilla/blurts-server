@@ -14,7 +14,6 @@ import { sendVerificationEmail } from "../../../utils/email";
 import { validateEmailAddress } from "../../../../../utils/emailAddress";
 import { getL10n } from "../../../../functions/server/l10n";
 import { initEmail } from "../../../../../utils/email";
-import { Subscriber } from "../../../../deprecated/(authenticated)/user/breaches/breaches";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../constants";
 
 interface EmailAddRequest {
@@ -28,11 +27,10 @@ export async function POST(req: NextRequest) {
   if (typeof token?.subscriber?.fxa_uid === "string") {
     try {
       const body: EmailAddRequest = await req.json();
-      const subscriber = (await getSubscriberByFxaUid(
-        token.subscriber?.fxa_uid,
-      )) as Subscriber & {
-        email_addresses: Array<{ id: number; email: string }>;
-      };
+      const subscriber = await getSubscriberByFxaUid(token.subscriber?.fxa_uid);
+      if (!subscriber) {
+        throw new Error("No subscriber found for current session.");
+      }
       const emailCount = 1 + (subscriber.email_addresses?.length ?? 0); // primary + verified + unverified emails
       const validatedEmail = validateEmailAddress(body.email);
 

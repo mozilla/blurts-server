@@ -828,3 +828,4 @@ floating-banner-dismiss-button-label = Không, cảm ơn
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Tên, giao diện mới và thậm chí nhiều hơn thế để <b>lấy lại quyền riêng tư cho bạn</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Bỏ qua
+loading-accessibility = Đang tải

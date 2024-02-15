@@ -3,7 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { test, expect } from "../fixtures/basePage.js";
-import { defaultScreenshotOpts } from "../utils/helpers.js";
+import {
+  defaultScreenshotOpts,
+  getVerificationCode,
+} from "../utils/helpers.js";
 
 test.describe.configure({ mode: "parallel" });
 test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, () => {
@@ -154,5 +157,87 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     await expect(landingPage.termsLink).toBeVisible();
     await expect(landingPage.privacyLink).toBeVisible();
     await expect(landingPage.githubLink).toBeVisible();
+  });
+});
+
+test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionality - without existing Account`, () => {
+  test.beforeEach(async ({ landingPage }) => {
+    await landingPage.open();
+  });
+
+  test('Verify "Get free scan" buttons functionality without existing account', async ({
+    landingPage,
+    page,
+    authPage,
+  }) => {
+    // link to testrail case
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463502",
+    });
+
+    // fill out free scan form
+    const randomEmail = `${Date.now()}_tstact@restmail.net`;
+    await landingPage.monitorHeroFormEmailInputField.fill(randomEmail);
+    await landingPage.monitorHeroFormInputSubmitButton.click();
+    await page.waitForURL("**/oauth/**", { timeout: 120 * 1000 });
+
+    // complete registration form
+    await authPage.passwordInputField.fill(
+      process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
+    );
+    await authPage.passwordConfirmInputField.fill(
+      process.env.E2E_TEST_ACCOUNT_PASSWORD as string,
+    );
+    await authPage.ageInputField.fill("31");
+    await authPage.continueButton.click();
+
+    // enter registration verification code
+    const vc = await getVerificationCode(randomEmail, page);
+    await authPage.enterVerificationCode(vc);
+
+    // verify dashboard redirect
+    const successUrl = process.env.E2E_TEST_BASE_URL + "/user/welcome";
+    expect(page.url()).toBe(successUrl);
+  });
+});
+
+test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionality - with existing account`, () => {
+  test.beforeEach(async ({ landingPage }) => {
+    await landingPage.open();
+  });
+
+  test('Verify "Get free scan" buttons functionality with existing account', async ({
+    landingPage,
+    page,
+    authPage,
+  }) => {
+    // link to testrail case
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463503",
+    });
+
+    // fill out free scan form
+    await landingPage.monitorHeroFormEmailInputField.fill(
+      process.env.E2E_TEST_ACCOUNT_EMAIL as string,
+    );
+    await landingPage.monitorHeroFormInputSubmitButton.click();
+    await page.waitForURL("**/oauth/**", { timeout: 120 * 1000 });
+
+    // complete sign in form
+    await authPage.enterPassword();
+
+    // verify dashboard redirect
+    const successUrl =
+      process.env.E2E_TEST_BASE_URL +
+      `${
+        process.env.E2E_TEST_ENV === "local"
+          ? "/user/welcome"
+          : "/user/dashboard"
+      }`;
+    expect(page.url()).toBe(successUrl);
   });
 });

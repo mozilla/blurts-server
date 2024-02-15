@@ -2,7 +2,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const subscriber: Subscriber = {
+import { SubscriberRow } from "knex/types/tables";
+import { getBreachesForEmail } from "./hibp";
+import { getSubBreaches } from "./subscriberBreaches";
+import { getUserEmails } from "../db/tables/emailAddresses";
+import { Breach } from "../app/deprecated/(authenticated)/user/breaches/breaches";
+
+jest.mock("../db/tables/emailAddresses.js", () => ({
+  getUserEmails: jest.fn(),
+}));
+
+jest.mock("./hibp.js", () => ({
+  getBreachesForEmail: jest.fn(),
+}));
+
+const subscriber: SubscriberRow = {
   updated_at: new Date(),
   fx_newsletter: true,
   all_emails_to_primary: true,
@@ -46,6 +60,7 @@ const subscriber: Subscriber = {
     },
   },
   breach_resolution: {
+    useBreachId: true,
     "test@test.com": {
       "8": {
         resolutionsChecked: ["passwords", "email-addresses"],
@@ -68,24 +83,10 @@ const subscriber: Subscriber = {
   monthly_email_at: new Date("2022-08-07 14:22:00.000-05"),
   monthly_email_optout: false,
   signup_language: "fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5",
+  db_migration_1: undefined,
+  db_migration_2: undefined,
+  onerep_profile_id: null,
 };
-
-import { getSubBreaches } from "./subscriberBreaches";
-import {
-  Breach,
-  Subscriber,
-} from "../app/deprecated/(authenticated)/user/breaches/breaches";
-
-jest.mock("../db/tables/emailAddresses.js", () => ({
-  getUserEmails: jest.fn(),
-}));
-
-jest.mock("./hibp.js", () => ({
-  getBreachesForEmail: jest.fn(),
-}));
-
-import { getUserEmails } from "../db/tables/emailAddresses";
-import { getBreachesForEmail } from "./hibp";
 
 const allBreaches: Breach[] = [
   {
@@ -430,7 +431,7 @@ describe("getSubBreaches", () => {
 
   // MNTOR-2125
   it("same breach, two emails: mark as unresolved if one email isn't resolved", async () => {
-    const subscriber: Subscriber = {
+    const subscriber: SubscriberRow = {
       updated_at: new Date(),
       fx_newsletter: true,
       all_emails_to_primary: true,
@@ -474,6 +475,7 @@ describe("getSubBreaches", () => {
         },
       },
       breach_resolution: {
+        useBreachId: true,
         "test@test.com": {
           "40": {
             resolutionsChecked: ["email-addresses", "phone-numbers"],
@@ -519,7 +521,7 @@ describe("getSubBreaches", () => {
   });
   // MNTOR-2125
   it("same breach, two emails: mark as resolved only if both emails are resolved", async () => {
-    const subscriber: Subscriber = {
+    const subscriber: SubscriberRow = {
       updated_at: new Date(),
       fx_newsletter: true,
       all_emails_to_primary: true,
@@ -563,6 +565,7 @@ describe("getSubBreaches", () => {
         },
       },
       breach_resolution: {
+        useBreachId: true,
         "test@test.com": {
           "40": {
             resolutionsChecked: ["email-addresses", "passwords"],

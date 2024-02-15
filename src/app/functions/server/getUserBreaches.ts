@@ -109,6 +109,9 @@ export async function getSubscriberBreaches({
     throw new Error("No fxa_uid found in session");
   }
   const subscriber = await getSubscriberByFxaUid(user.subscriber.fxa_uid);
+  if (!subscriber) {
+    throw new Error("No subscriber found for the given user data.");
+  }
   const allBreaches = await getBreaches();
   const breachesData = await getSubBreaches(
     subscriber,
