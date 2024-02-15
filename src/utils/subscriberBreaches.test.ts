@@ -429,8 +429,101 @@ describe("getSubBreaches", () => {
     expect(subBreaches[0].modifiedDate).toBeInstanceOf(Date);
   });
 
-  // MNTOR-2125
-  it("same breach, two emails: mark as unresolved if one email isn't resolved", async () => {
+  it("same breach, two emails: mark as unresolved if one email isn't resolved for US user", async () => {
+    const subscriber: SubscriberRow = {
+      updated_at: new Date(),
+      fx_newsletter: true,
+      all_emails_to_primary: true,
+      waitlists_joined: true,
+      email_addresses: [],
+      id: 12346,
+      created_at: new Date("2022-06-07 14:29:00.000-05"),
+      primary_sha1: "abcabc",
+      primary_email: "test@test.com",
+      primary_verification_token: "c165711a-69d1-42f1-9850-ce74754f36de",
+      primary_verified: true,
+      fxa_access_token:
+        "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc0",
+      fxa_refresh_token:
+        "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc1",
+      fxa_uid: "12346",
+      fxa_profile_json: {
+        uid: "123",
+        email: "additional@test.com",
+        avatar: "https://profile.stage.mozaws.net/v1/avatar/abc",
+        locale: "en-US,en;q=0.5",
+        amrValues: ["pwd", "email"],
+        avatarDefault: false,
+        metricsEnabled: true,
+        twoFactorAuthentication: false,
+      },
+      breaches_last_shown: new Date("2022-07-08 14:19:00.000-05"),
+      breaches_resolved: { "has-breaches@example.com": [] },
+      breach_stats: {
+        passwords: {
+          count: 1,
+          numResolved: 0,
+        },
+        numBreaches: {
+          count: 2,
+          numResolved: 1,
+          numUnresolved: 1,
+        },
+        monitoredEmails: {
+          count: 1,
+        },
+      },
+      breach_resolution: {
+        useBreachId: true,
+        "test@test.com": {
+          "40": {
+            resolutionsChecked: [
+              "email-addresses",
+              "phone-numbers",
+              "social-security-numbers",
+            ],
+          },
+        },
+        "additional@test.com": {
+          "40": {
+            resolutionsChecked: ["email-addresses"],
+          },
+        },
+      },
+      monthly_email_at: new Date("2022-08-07 14:22:00.000-05"),
+      monthly_email_optout: false,
+      signup_language: "fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5",
+    };
+
+    (
+      getUserEmails as jest.Mock<
+        ReturnType<typeof getUserEmails>,
+        Parameters<typeof getUserEmails>
+      >
+    ).mockResolvedValueOnce([
+      {
+        id: -1,
+        subscriber_id: 2,
+        email: "additional@test.com",
+        verified: true,
+        sha1: "",
+      },
+    ]);
+    (
+      getBreachesForEmail as jest.Mock<
+        ReturnType<typeof getBreachesForEmail>,
+        Parameters<typeof getBreachesForEmail>
+      >
+    )
+      .mockResolvedValueOnce(breachesWithOneResolvedSsn)
+      .mockResolvedValueOnce(breachesWithOneResolved);
+
+    const subBreaches = await getSubBreaches(subscriber, [], "us");
+    expect(subBreaches.length).toEqual(1);
+    expect(subBreaches[0].isResolved).toBe(false);
+  });
+
+  it("same breach, two emails: mark as unresolved if one email isn't resolved for non-US user", async () => {
     const subscriber: SubscriberRow = {
       updated_at: new Date(),
       fx_newsletter: true,
@@ -512,15 +605,120 @@ describe("getSubBreaches", () => {
         Parameters<typeof getBreachesForEmail>
       >
     )
-      .mockResolvedValueOnce(breachesWithOneResolved)
+      .mockResolvedValueOnce(breachesWithOneResolvedSsn)
+      .mockResolvedValueOnce(breachesWithOneResolvedSsn);
+
+    const subBreaches = await getSubBreaches(subscriber, [], "nl");
+    expect(subBreaches.length).toEqual(1);
+    expect(subBreaches[0].isResolved).toBe(false);
+  });
+
+  it("same breach, two emails: mark as resolved only if both emails are resolved for US user", async () => {
+    const subscriber: SubscriberRow = {
+      updated_at: new Date(),
+      fx_newsletter: true,
+      all_emails_to_primary: true,
+      waitlists_joined: true,
+      email_addresses: [],
+      id: 12346,
+      created_at: new Date("2022-06-07 14:29:00.000-05"),
+      primary_sha1: "abcabc",
+      primary_email: "test@test.com",
+      primary_verification_token: "c165711a-69d1-42f1-9850-ce74754f36de",
+      primary_verified: true,
+      fxa_access_token:
+        "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc0",
+      fxa_refresh_token:
+        "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc1",
+      fxa_uid: "12346",
+      fxa_profile_json: {
+        uid: "123",
+        email: "additional@test.com",
+        avatar: "https://profile.stage.mozaws.net/v1/avatar/abc",
+        locale: "en-US,en;q=0.5",
+        amrValues: ["pwd", "email"],
+        avatarDefault: false,
+        metricsEnabled: true,
+        twoFactorAuthentication: false,
+      },
+      breaches_last_shown: new Date("2022-07-08 14:19:00.000-05"),
+      breaches_resolved: { "has-breaches@example.com": [] },
+      breach_stats: {
+        passwords: {
+          count: 1,
+          numResolved: 0,
+        },
+        numBreaches: {
+          count: 2,
+          numResolved: 1,
+          numUnresolved: 1,
+        },
+        monitoredEmails: {
+          count: 1,
+        },
+      },
+      breach_resolution: {
+        useBreachId: true,
+        "test@test.com": {
+          "40": {
+            resolutionsChecked: [
+              "email-addresses",
+              "passwords",
+              "social-security-numbers",
+            ],
+          },
+        },
+        "additional@test.com": {
+          "40": {
+            resolutionsChecked: ["email-addresses"],
+          },
+        },
+      },
+      monthly_email_at: new Date("2022-08-07 14:22:00.000-05"),
+      monthly_email_optout: false,
+      signup_language: "fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5",
+    };
+
+    (
+      getUserEmails as jest.Mock<
+        ReturnType<typeof getUserEmails>,
+        Parameters<typeof getUserEmails>
+      >
+    )
+      .mockResolvedValueOnce([
+        {
+          id: -1,
+          subscriber_id: 2,
+          email: "additional@test.com",
+          verified: true,
+          sha1: "",
+        },
+      ])
+      .mockResolvedValueOnce([
+        {
+          id: -1,
+          subscriber_id: 2,
+          email: "additional@test.com",
+          verified: true,
+          sha1: "",
+        },
+      ]);
+
+    (
+      getBreachesForEmail as jest.Mock<
+        ReturnType<typeof getBreachesForEmail>,
+        Parameters<typeof getBreachesForEmail>
+      >
+    )
+      .mockResolvedValueOnce(breachesWithOneResolvedSsn)
       .mockResolvedValueOnce(breachesWithOneResolved);
 
     const subBreaches = await getSubBreaches(subscriber, [], "us");
     expect(subBreaches.length).toEqual(1);
-    expect(subBreaches[0].isResolved).toBe(false);
+    expect(subBreaches[0].isResolved).toBe(true);
   });
-  // MNTOR-2125
-  it("same breach, two emails: mark as resolved only if both emails are resolved", async () => {
+
+  it("same breach, two emails: mark as resolved only if both emails are resolved for non-US user", async () => {
     const subscriber: SubscriberRow = {
       updated_at: new Date(),
       fx_newsletter: true,
@@ -573,7 +771,7 @@ describe("getSubBreaches", () => {
         },
         "additional@test.com": {
           "40": {
-            resolutionsChecked: ["email-addresses"],
+            resolutionsChecked: ["email-addresses", "social-security-numbers"],
           },
         },
       },
@@ -614,9 +812,9 @@ describe("getSubBreaches", () => {
       >
     )
       .mockResolvedValueOnce(breachesWithOneResolved)
-      .mockResolvedValueOnce(breachesWithOneResolved);
+      .mockResolvedValueOnce(breachesWithOneResolvedSsn);
 
-    const subBreaches = await getSubBreaches(subscriber, [], "us");
+    const subBreaches = await getSubBreaches(subscriber, [], "nl");
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].isResolved).toBe(true);
   });

@@ -109,7 +109,7 @@ export async function getSubBreaches(
         .map((c) => {
           // Exclude SSN breaches for non-US users as they are only relevant
           // to US users as of now.
-          if (BreachDataTypes.SSN && countryCode !== "us") {
+          if (c === BreachDataTypes.SSN && countryCode !== "us") {
             return null;
           }
           if (c === BreachDataTypes.Email) {
@@ -153,11 +153,6 @@ export async function getSubBreaches(
         curBreach.emailsAffected.push(email.email);
         curBreach.dataClassesEffected.forEach((d, index) => {
           const key = Object.keys(d)[0];
-          // Exclude SSN breaches for non-US users as they are only relevant
-          // to US users as of now.
-          if (key === BreachDataTypes.SSN && countryCode !== "us") {
-            return null;
-          }
           if (key === BreachDataTypes.Email) {
             (curBreach.dataClassesEffected[index][key] as string[]).push(
               email.email,
