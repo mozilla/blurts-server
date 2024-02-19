@@ -17,6 +17,7 @@ import { CONST_GA4_MEASUREMENT_ID } from "../constants";
 import { headers } from "next/headers";
 import { GoogleAnalyticsWorkaround } from "./components/client/GoogleAnalyticsWorkaround";
 import { getNonce } from "./deprecated/functions/server/getNonce";
+import StripeScript from "./components/client/StripeScript";
 
 // DO NOT ADD SECRETS: Env variables added here become public.
 const PUBLIC_ENVS = {
@@ -72,6 +73,7 @@ export default async function RootLayout({
           <SessionProvider session={session}>{children}</SessionProvider>
         </PublicEnvProvider>
       </body>
+      <StripeScript />
       {headers().get("DNT") !== "1" && (
         <GoogleAnalyticsWorkaround
           gaId={CONST_GA4_MEASUREMENT_ID}
