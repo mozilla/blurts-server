@@ -776,3 +776,4 @@ floating-banner-dismiss-button-label = Gerek yok
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Yeni isim, yeni görünüm ve <b>gizliliğinizi geri almanın</b> yeni yolları.
 banner-monitor-rebrand-dismiss-button-label = Tamam
 banner-monitor-rebrand-dismiss-button-tooltip = Kapat
+loading-accessibility = Yükleniyor
