@@ -31,6 +31,9 @@ import { GAParams } from "@next/third-parties/dist/types/google";
 import Script, { ScriptProps } from "next/script";
 import { useEffect } from "react";
 
+// We don't send Analytics events in tests:
+/* c8 ignore start */
+
 let currDataLayerName: string | undefined = undefined;
 
 /**
@@ -39,9 +42,9 @@ let currDataLayerName: string | undefined = undefined;
  * @param props
  */
 export const GoogleAnalyticsWorkaround = (
-  props: GAParams & { nonce: ScriptProps["nonce"] },
+  props: GAParams & { nonce?: ScriptProps["nonce"]; debugMode?: boolean },
 ) => {
-  const { gaId, dataLayerName = "dataLayer", nonce } = props;
+  const { gaId, dataLayerName = "dataLayer", nonce, debugMode } = props;
 
   if (currDataLayerName === undefined) {
     currDataLayerName = dataLayerName;
@@ -70,7 +73,7 @@ export const GoogleAnalyticsWorkaround = (
           function gtag(){window['${dataLayerName}'].push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', '${gaId}');`,
+          gtag('config', '${gaId}', { 'debug_mode': ${debugMode} });`,
         }}
         nonce={nonce}
       />
@@ -83,17 +86,22 @@ export const GoogleAnalyticsWorkaround = (
   );
 };
 
-export const sendGAEvent = (...args: object[]) => {
+export const sendGAEvent = (type: "event", eventName: string, args: object) => {
+  if (process.env.NODE_ENV === "test") {
+    return;
+  }
+
   if (currDataLayerName === undefined) {
     console.warn(`@next/third-parties: GA has not been initialized`);
     return;
   }
 
   if (window[currDataLayerName]) {
-    window[currDataLayerName].push(...args);
+    window.gtag(type, eventName, args);
   } else {
     console.warn(
       `@next/third-parties: GA dataLayer ${currDataLayerName} does not exist`,
     );
   }
 };
+/* c8 ignore stop */

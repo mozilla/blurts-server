@@ -20,7 +20,7 @@ landing-all-value-prop-info-at-risk-description = Uhajanje podatkov je žal del 
 
 # Quote
 
-landing-all-quote = <data_breaches>Vraki podatkov</data_breaches> se zgodijo vsakih 11 minut in razkrijejo vaše zasebne podatke – a brez skrbi, pomagamo vam lahko.
+landing-all-quote = <data_breaches>Kraje podatkov</data_breaches> se zgodijo vsakih 11 minut in razkrijejo vaše zasebne podatke – a brez skrbi, lahko vam pomagamo.
 
 # Non-US FAQ
 

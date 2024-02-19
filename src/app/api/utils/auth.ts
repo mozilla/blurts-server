@@ -4,6 +4,7 @@
 
 import { NextRequest } from "next/server";
 import { AuthOptions, Profile as FxaProfile, User } from "next-auth";
+import { SubscriberRow } from "knex/types/tables";
 import { logger } from "../../functions/server/logging";
 
 import AppConstants from "../../../appConstants.js";
@@ -72,20 +73,19 @@ export const authOptions: AuthOptions = {
     async jwt({ token, account, profile, trigger }) {
       if (trigger === "update") {
         // Refresh the user data from FxA, in case e.g. new subscriptions got added:
-        const subscriber = await getSubscriberByFxaUid(
+        const subscriberFromDb = await getSubscriberByFxaUid(
           token.subscriber?.fxa_uid ?? "",
         );
-        profile = subscriber.fxa_profile_json as FxaProfile;
 
-        if (token.subscriber?.fxa_uid) {
-          const updatedSubscriberData = await getSubscriberByFxaUid(
-            token.subscriber.fxa_uid,
-          );
+        if (subscriberFromDb) {
+          profile = subscriberFromDb.fxa_profile_json as FxaProfile;
+
           // MNTOR-2599 The breach_resolution object can get pretty big,
           // causing the session token cookie to balloon in size,
           // eventually resulting in a 400 Bad Request due to headers being too large.
-          delete updatedSubscriberData.breach_resolution;
-          token.subscriber = updatedSubscriberData;
+          delete (subscriberFromDb as Partial<SubscriberRow>).breach_resolution;
+          token.subscriber =
+            subscriberFromDb as unknown as SerializedSubscriber;
         }
       }
       if (profile) {
@@ -117,8 +117,8 @@ export const authOptions: AuthOptions = {
           // MNTOR-2599 The breach_resolution object can get pretty big,
           // causing the session token cookie to balloon in size,
           // eventually resulting in a 400 Bad Request due to headers being too large.
-          delete existingUser.breach_resolution;
-          token.subscriber = existingUser;
+          delete (existingUser as Partial<SubscriberRow>).breach_resolution;
+          token.subscriber = existingUser as unknown as SerializedSubscriber;
           if (account.access_token && account.refresh_token) {
             const updatedUser = await updateFxAData(
               existingUser,

@@ -984,3 +984,4 @@ floating-banner-dismiss-button-label = Ne, díky
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nové jméno, vzhled a ještě více způsobů, jak <b>získat zpět své soukromí</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Zavřít
+loading-accessibility = Načítání
