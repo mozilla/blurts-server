@@ -119,7 +119,7 @@ export function createRandomBreach(
     addedDate: options.addedDate ?? faker.date.recent(),
     breachDate: faker.date.recent(),
     dataClasses: dataClasses,
-    resolvedDataClasses: resolvedDataClasses,
+    resolvedDataClasses,
     description: faker.word.words(),
     domain: faker.internet.domainName(),
     id: faker.number.int(),

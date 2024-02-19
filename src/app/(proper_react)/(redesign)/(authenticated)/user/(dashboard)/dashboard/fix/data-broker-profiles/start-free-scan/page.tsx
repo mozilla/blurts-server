@@ -39,7 +39,7 @@ export default async function StartFreeScanPage() {
   }
 
   const data: StepDeterminationData = {
-    countryCode: countryCode,
+    countryCode,
     user: session.user,
     latestScanData: latestScanData ?? null,
     subscriberBreaches: await getSubscriberBreaches({

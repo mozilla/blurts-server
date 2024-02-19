@@ -65,7 +65,7 @@ export default async function DashboardPage() {
     (isNewUser &&
       canSubscribeToPremium({
         user: session.user,
-        countryCode: countryCode,
+        countryCode,
       }))
   ) {
     return redirect("/user/welcome/");

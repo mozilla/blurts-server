@@ -55,7 +55,7 @@ export default async function LeakedPasswords({
       subscriberEmails={subscriberEmails}
       type={type}
       data={{
-        countryCode: countryCode,
+        countryCode,
         subscriberBreaches: breaches,
         user: session.user,
         latestScanData: scanData,
