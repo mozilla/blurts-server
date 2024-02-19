@@ -64,7 +64,7 @@ user-add-duplicate-email = Ta e-poštni naslov je že bil dodan v { -product-nam
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Obiščite { $preferencesLink } in preverite stanje za { $userEmail }.
-user-add-verification-email-just-sent = Drugega potrditvenega e-poštnega sporočila ni mogoče poslati tako hitro. Poskusite znova pozneje.
+user-add-verification-email-just-sent = Drugega potrditvenega sporočila ni mogoče poslati tako hitro. Poskusite znova pozneje.
 user-add-unknown-error = Pri dodajanju drugega e-poštnega naslova je prišlo do napake. Poskusite znova pozneje.
 error-headline = Napaka
 user-verify-token-error = Zahtevan je potrditveni žeton.
@@ -777,8 +777,24 @@ ad-unit-6-before-you-complete = Preden dokončate naslednjo prijavo, uporabite e
     }
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
--brand-mozilla-monitor = Mozilla Monitor
--brand-monitor-plus = Monitor Plus
+-brand-mozilla-monitor =
+    { $sklon ->
+        [rodilnik] Mozilla Monitorja
+        [dajalnik] Mozilla Monitorju
+        [tozilnik] Mozilla Monitor
+        [mestnik] Mozilla Monitorju
+        [orodnik] Mozilla Monitorjem
+       *[imenovalnik] Mozilla Monitor
+    }
+-brand-monitor-plus =
+    { $sklon ->
+        [rodilnik] Monitorja Plus
+        [dajalnik] Monitorju Plus
+        [tozilnik] Monitor Plus
+        [mestnik] Monitorju Plus
+        [orodnik] Monitorjem Plus
+       *[imenovalnik] Monitor Plus
+    }
 
 ##
 
@@ -820,7 +836,7 @@ main-nav-button-collapse-label = Strni meni
 main-nav-button-collapse-tooltip = Strni meni
 main-nav-button-expand-label = Razširi meni
 main-nav-button-expand-tooltip = Razširi meni
-main-nav-label = Navigacija
+main-nav-label = Krmarjenje
 main-nav-link-home-label = Domov
 main-nav-link-dashboard-label = Nadzorna plošča
 main-nav-link-settings-label = Nastavitve
@@ -849,9 +865,9 @@ user-menu-manage-fxa-label = Upravljajte svoj { -brand-mozilla-account }
 user-menu-settings-label = Nastavitve
 user-menu-settings-tooltip = Nastavi { -brand-mozilla-monitor }
 user-menu-help-label = Pomoč in podpora
-user-menu-help-tooltip = Pomoč pri uporabi { -brand-mozilla-monitor }
+user-menu-help-tooltip = Pomoč pri uporabi { -brand-mozilla-monitor(sklon: "rodilnik") }
 user-menu-signout-label = Odjava
-user-menu-signout-tooltip = Odjava iz { -brand-mozilla-monitor(sklon: "tozilnik") }
+user-menu-signout-tooltip = Odjava iz { -brand-mozilla-monitor(sklon: "rodilnik") }
 
 ## Footer
 
@@ -897,7 +913,7 @@ floating-banner-dismiss-button-label = Ne, hvala
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
-banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Novo ime, podoba in še več načinov za <b>ponovno pridobitev zasebnosti</b>.
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Novo ime, nova podoba in novi načini za <b>povrnitev zasebnosti</b>.
 banner-monitor-rebrand-dismiss-button-label = V redu
-banner-monitor-rebrand-dismiss-button-tooltip = Opusti
+banner-monitor-rebrand-dismiss-button-tooltip = Skrij
 loading-accessibility = Nalaganje
