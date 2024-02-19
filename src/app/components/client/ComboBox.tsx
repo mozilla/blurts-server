@@ -22,21 +22,16 @@ function ComboBox(props: ComboBoxProps) {
   const listBoxRef = useRef(null);
   const popoverRef = useRef(null);
   const state = useComboBoxState({ ...props });
-  const {
-    inputProps,
-    listBoxProps,
-    labelProps,
-    errorMessageProps,
-    validationErrors,
-  } = useComboBox(
-    {
-      ...props,
-      inputRef,
-      listBoxRef,
-      popoverRef,
-    },
-    state,
-  );
+  const { inputProps, listBoxProps, labelProps, errorMessageProps } =
+    useComboBox(
+      {
+        ...props,
+        inputRef,
+        listBoxRef,
+        popoverRef,
+      },
+      state,
+    );
 
   useEffect(() => {
     if (inputProps.value === "") {
@@ -49,13 +44,7 @@ function ComboBox(props: ComboBoxProps) {
       <div className={styles.comboBox}>
         <label {...labelProps} className={styles.inputLabel}>
           {label}
-          {isRequired ? (
-            <span aria-hidden="true">*</span>
-          ) : (
-            // TODO: Add unit test when changing this code:
-            /* c8 ignore next */
-            ""
-          )}
+          {isRequired ? <span aria-hidden="true">*</span> : ""}
         </label>
         <input
           {...inputProps}
@@ -64,41 +53,30 @@ function ComboBox(props: ComboBoxProps) {
             !inputProps.value ? styles.noValue : ""
           } ${isInvalid ? styles.hasError : ""}`}
         />
-        {isInvalid && (
+        {isInvalid && typeof errorMessage === "string" && (
           <div {...errorMessageProps} className={styles.inputMessage}>
-            {
-              // We always pass in a string at the time of writing, so we can't
-              // hit the "else" path with tests:
-              /* c8 ignore next 3 */
-              typeof errorMessage === "string"
-                ? errorMessage
-                : validationErrors.join(" ")
-            }
+            {errorMessage}
           </div>
         )}
       </div>
-      {
-        // TODO: Add unit test when changing this code:
-        /* c8 ignore next */
-        state.isOpen && (
-          <Popover
-            offset={8}
-            popoverRef={popoverRef}
-            state={state}
-            triggerRef={inputRef}
-          >
-            <div className={styles.popoverList}>
-              <ListBox
-                {...listBoxProps}
-                listBoxRef={listBoxRef}
-                listPlaceholder={listPlaceholder}
-                parentRef={inputRef}
-                state={state}
-              />
-            </div>
-          </Popover>
-        )
-      }
+      {state.isOpen && (
+        <Popover
+          offset={8}
+          popoverRef={popoverRef}
+          state={state}
+          triggerRef={inputRef}
+        >
+          <div className={styles.popoverList}>
+            <ListBox
+              {...listBoxProps}
+              listBoxRef={listBoxRef}
+              listPlaceholder={listPlaceholder}
+              parentRef={inputRef}
+              state={state}
+            />
+          </div>
+        </Popover>
+      )}
     </>
   );
 }
