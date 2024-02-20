@@ -4,10 +4,14 @@
 
 "use client";
 
-// Load stripe.js for fraud resistance.
-// https://stripe.com/guides/radar-rules-101#importance-of-using-stripejs
-import "@stripe/stripe-js";
+import { useEffect } from "react";
 
 export default function StripeScript() {
+  useEffect(() => {
+    // Load stripe.js for fraud resistance.
+    // https://stripe.com/guides/radar-rules-101#importance-of-using-stripejs
+    import("@stripe/stripe-js");
+  }, []);
+
   return <></>;
 }
