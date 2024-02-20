@@ -28,7 +28,7 @@ exposure-card-other = Other
 exposure-card-description-info-for-sale-part-one = This site is selling and publishing <data_broker_link>details about you.</data_broker_link>
 # deprecated
 exposure-card-description-info-for-sale-part-two = Remove this profile to protect your privacy.
-exposure-card-description-info-for-sale-action-needed-manual-fix-page = This site is selling <data_broker_profile>these details about you</data_broker_profile>. Contact the site for removal, or <upsell_link>subscribe to { -brand-monitor-plus }</upsell_link> and we’ll do it for you.
+exposure-card-description-info-for-sale-action-needed-manual-fix-page = This site is selling <data_broker_profile>these details about you.</data_broker_profile> Contact the site for removal, or <upsell_link>subscribe to { -brand-monitor-plus }</upsell_link> and we’ll do it for you.
 exposure-card-description-info-for-sale-action-needed-dashboard = This site is publicly publishing and selling <data_broker_profile>these details about you</data_broker_profile>. Remove this profile to protect your privacy.
 exposure-card-description-info-for-sale-in-progress = We’ve started our auto-removal process of <data_broker_profile>this profile</data_broker_profile> to protect your information. <removal_info>Removals typically take 7-14 days.</removal_info>
 exposure-card-description-info-for-sale-fixed = As a { -brand-premium } member, we’ve <data_broker_profile>removed this profile</data_broker_profile> for you and will continually monitor to make sure they don’t add you back.
