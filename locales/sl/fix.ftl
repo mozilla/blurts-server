@@ -61,7 +61,7 @@ high-risk-breach-summary =
 # An example of this string is Twitter on 13/09/18.
 high-risk-breach-name-and-date = { $breach_name } <breach_date>dne { $breach_date }</breach_date>
 high-risk-breach-mark-as-fixed = Označi kot popravljeno
-high-risk-breach-skip = Preskoči za zdaj
+high-risk-breach-skip = Zaenkrat preskoči
 # Variables:
 # $estimated_time is the estimated time it would take for a user to complete breach resolution steps. It not be singular, and the + is meant as "or more".
 # An example of this string is Your estimated time: 15+ minutes.
@@ -196,7 +196,7 @@ leaked-passwords-steps-subtitle = To zahteva dostop do vašega računa, zato ga 
 leaked-passwords-step-one = Spremenite geslo za <b>{ $emails_affected }</b> na spletnem mestu <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
 leaked-passwords-step-two = Spremenite ga kjerkoli drugje, kjer ste ga uporabljali.
 leaked-passwords-mark-as-fixed = Označi kot popravljeno
-leaked-passwords-skip = Preskoči za zdaj
+leaked-passwords-skip = Zaenkrat preskoči
 # Variables
 # $estimated_time is the amount of time it would take for a user to manually resolve a leaked password breach. It will always be a number greater than 1.
 # "Est." is shortform for "Estimated".
