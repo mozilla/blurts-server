@@ -836,3 +836,4 @@ floating-banner-dismiss-button-label = Nee, tankewol
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nije namme, uterlik en noch mear manieren om <b>jo privacy werom te winnen</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Slute
+loading-accessibility = Lade
