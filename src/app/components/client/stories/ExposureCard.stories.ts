@@ -39,6 +39,10 @@ export const DataBrokerActionNeeded: Story = {
   args: {
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemNew,
+<<<<<<< HEAD
+=======
+    status: "needAction",
+>>>>>>> ef9e0c2ff (pass status val in exposurecard)
   },
 };
 
@@ -46,6 +50,10 @@ export const DataBrokerRemoved: Story = {
   args: {
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemRemoved,
+<<<<<<< HEAD
+=======
+    status: "fixed",
+>>>>>>> ef9e0c2ff (pass status val in exposurecard)
   },
 };
 
@@ -53,6 +61,10 @@ export const DataBrokerManualRemoved: Story = {
   args: {
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemManualRemoved,
+<<<<<<< HEAD
+=======
+    status: "fixed",
+>>>>>>> ef9e0c2ff (pass status val in exposurecard)
   },
 };
 
@@ -60,6 +72,10 @@ export const DataBrokerInProgress: Story = {
   args: {
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemInProgress,
+<<<<<<< HEAD
+=======
+    status: "progress",
+>>>>>>> ef9e0c2ff (pass status val in exposurecard)
   },
 };
 
@@ -67,6 +83,10 @@ export const DataBreachActionNeeded: Story = {
   args: {
     exposureImg: TwitterImage,
     exposureData: BreachMockItemNew,
+<<<<<<< HEAD
+=======
+    status: "needAction",
+>>>>>>> ef9e0c2ff (pass status val in exposurecard)
   },
 };
 
@@ -74,5 +94,9 @@ export const DataBreachFixed: Story = {
   args: {
     exposureImg: TwitterImage,
     exposureData: BreachMockItemRemoved,
+<<<<<<< HEAD
+=======
+    status: "needAction",
+>>>>>>> ef9e0c2ff (pass status val in exposurecard)
   },
 };

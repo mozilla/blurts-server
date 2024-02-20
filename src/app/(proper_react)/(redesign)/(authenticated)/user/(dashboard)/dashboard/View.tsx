@@ -163,6 +163,7 @@ export const View = (props: Props) => {
       <li key={exposureCardKey} className={styles.exposureListItem}>
         <ExposureCard
           exposureData={exposure}
+          status={getExposureStatus(exposure)}
           isExpanded={exposureCardKey === activeExposureCardKey}
           onToggleExpanded={() => {
             if (exposureCardKey === activeExposureCardKey) {
