@@ -87,6 +87,7 @@ high-risk-breach-bank-account-step-three = Kontrolloni llogaritë tuaja për vep
 # Social Security Number Breaches
 
 high-risk-breach-social-security-title = Numri juaj i sigurimeve shoqërore qe ekspozuar
+high-risk-breach-social-security-description = Me numrin tuaj të sigurimeve shoqërore, mashtruesit mund të marrin kredi të reja, ose të hapin karta krediti. Veproni shpejt, për të parandaluar dëm financiar.
 high-risk-breach-social-security-step-one = Mbroni veten duke <link_to_info>ujdisur një sinjalizim mashtrimi, ose duke ngrirë kartën tuaj të kreditit.</link_to_info>
 high-risk-breach-social-security-step-two = <link_to_info>Kontrolloni raportin e kartës tuaj të kreditit</link_to_info> për llogari të panjohura.
 
@@ -95,6 +96,8 @@ high-risk-breach-social-security-step-two = <link_to_info>Kontrolloni raportin e
 ssn-modal-title = Mbi sinjalizime mashtrimesh dhe ngrirje karte krediti
 ssn-modal-description-fraud-part-one = <b>Një sinjalizim mashtrimi</b> lyp që biznese të verifikojnë identitetin tuaj, para se të emetojë kredit të ri në emrin tuaj. Është falas, zgjat një vi dhe s’do të ndikojë negativisht në vlerësimin e kreditit tuaj.
 ssn-modal-description-fraud-part-two = Që të ujdisni një të tillë, lidhuni me një nga tre zyrat e kreditit. Nuk ju duhet të kontaktoni që të treja.
+ssn-modal-description-freeze-credit-part-one = <b>Bllokimi i kreditit tuaj</b> i pengon cilitdo të hapë një llogari të re në emrin tuaj. Është falas dhe s’do të ndikojë negativisht në vlerësimin tuaj lidhur me kreditin, por do t’ju duhet ta zhbllokoni, para se të hapni çfarëdo llogarie të re.
+ssn-modal-description-freeze-credit-part-two = Që të bllokoni kreditin tuaj, lidhuni me cilëndo nga tre zyrat e kreditit — <equifax_link>Equifax</equifax_link>, <experian_link>Experian</experian_link> dhe <transunion_link>TransUnion</transunion_link>.
 ssn-modal-learn-more = Mësoni më tepër mbi sinjalizime mashtrimesh dhe ngrirje karte krediti
 ssn-modal-ok = OK
 
@@ -173,6 +176,7 @@ leaked-passwords-title = Fjalëkalimi juaj { $breach_name } qe ekspozuar
 # Variables
 # $breach_date is the date when the breach occurred.
 leaked-passwords-summary = U shfaq në një cenim të dhënash më { $breach_date }.
+leaked-passwords-description = Mashtruesit mund të hyjnë në llogarinë tuaj dhe, me gjasa, do të rreken ta përdorin në llogari të tjera, për të parë nëse keni përdorur të njëjtin fjalëkalim. Që të mbroni veten, ndryshojeni, kudo që e keni përdorur.
 leaked-passwords-steps-title = Ja ç’të bëni
 leaked-passwords-steps-subtitle = Kjo lyp hyrje te llogaria juaj, ndaj do të duhet ta ndreqni dorazi ju vetë këtë.
 # Variables
@@ -199,6 +203,7 @@ leaked-security-questions-title = Pyetjet tuaja të sigurisë qenë ekspozuar
 # $breach_date is the date when the breach occurred.
 # An example of this string is Twitter on 13/09/18.
 leaked-security-questions-summary = U shfaqën në një cenim të dhënash te { $breach_name } më { $breach_date }.
+leaked-security-questions-description = Mashtruesit mund t’i përdorin për të hyrë në llogaritë tuaja dhe çfarëdo sajtesh të tjerë ku keni përdorur të njëjtat pyetje sigurie. Që të mbroni llogaritë tuaja, përditësojini pa humbur kohë.
 leaked-security-questions-steps-title = Ja ç’të bëni
 leaked-security-questions-steps-subtitle = Kjo lyp hyrje te llogaria juaj, ndaj do të duhet ta ndreqni dorazi ju vetë këtë.
 # Variables

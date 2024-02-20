@@ -30,7 +30,9 @@ landing-all-faq-see-all = Shihini krejt PBR-të
 landing-all-data-breach-definition-qn = Ç’është tamam tamam një cenim të dhënash?
 landing-all-data-breach-definition-ans = Një cenim të dhënash ndodh kur informacion personal ose privat ekspozohet, vidhet ose kopjohet pa leje. Këto incidente sigurie mund të vijnë nga sulme kibernetike ndaj sajtesh, aplikacionesh apo çfarëdo baze të dhënash ku gjenden hollësi personale të njerëzve. Një cenim të dhënash mund të ndodhë edhe aksidentalisht, si në rastin kur kredencialet e hyrjes së dikujt ekspozohen publikisht.
 landing-all-data-breach-next-steps-qn = Sapo pashë se jam pjesë e një cenimi të dhënash. Ç’të bëj më tej?
+landing-all-data-breach-next-steps-ans = Që të mësoni ç’të bëhet pas një cenimi të dhënash dhe për të marrë hapa zgjidhjeje ekspozimesh të të dhënave tuaja personale, vizitoni { -brand-mozilla-monitor }. Hacker-at bazohen te ripërdorimi që u bëjnë njerëzit fjalëkalimeve, ndaj është e rëndësishme të krijohen fjalëkalime unikë, të fuqishëm, për krejt llogaritë tuaja. Mbajini fjalëkalimet tuaja në një vend të parrezik, që e dini vetëm ju; ky mund të ishte i njëjti vend ku depozitoni dokumentet tuaj të rëndësishëm, ose një përgjegjës fjalëkalimesh.
 landing-all-data-breach-info-qn = Ç’hollësi ekspozohen në cenime të dhënash?
+landing-all-data-breach-info-ans = Jo të tëra cenimet ekspozojnë të njëjtat hollësi. Kjo varet nga ku mund të hyjnë hacker-at. Mjaft cenime të dhënash ekspozojnë adresa email dhe fjalëkalime. Të tjera ekspozojnë informacion më me spec, b.f.m numra kartash krediti, PIN-e dhe numra sigurimesh shoqërore.
 landing-all-close-faq-alt = Mbylle
 
 # Social proof

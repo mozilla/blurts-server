@@ -32,7 +32,11 @@ export default async function LeakedPasswords({
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
-  const breaches = await getSubscriberBreaches(session.user);
+  const countryCode = getCountryCode(headers());
+  const breaches = await getSubscriberBreaches({
+    user: session.user,
+    countryCode,
+  });
   const subscriberEmails = await getSubscriberEmails(session.user);
 
   const { type } = params;
@@ -51,15 +55,12 @@ export default async function LeakedPasswords({
       subscriberEmails={subscriberEmails}
       type={type}
       data={{
-        countryCode: getCountryCode(headers()),
+        countryCode,
         subscriberBreaches: breaches,
         user: session.user,
         latestScanData: scanData,
       }}
-      isEligibleForPremium={isEligibleForPremium(
-        getCountryCode(headers()),
-        enabledFlags,
-      )}
+      isEligibleForPremium={isEligibleForPremium(countryCode, enabledFlags)}
     />
   );
 }
