@@ -41,11 +41,15 @@ export default async function WelcomeToPlusPage() {
   }
 
   const scanData = await getLatestOnerepScanResults(profileId);
-  const subBreaches = await getSubscriberBreaches(session.user);
+  const countryCode = getCountryCode(headers());
+  const subBreaches = await getSubscriberBreaches({
+    user: session.user,
+    countryCode,
+  });
   const subscriberEmails = await getSubscriberEmails(session.user);
 
   const data: StepDeterminationData = {
-    countryCode: getCountryCode(headers()),
+    countryCode,
     latestScanData: scanData,
     subscriberBreaches: subBreaches,
     user: session.user,
