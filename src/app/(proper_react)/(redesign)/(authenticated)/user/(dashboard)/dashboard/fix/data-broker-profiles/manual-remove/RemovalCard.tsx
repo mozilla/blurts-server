@@ -12,6 +12,7 @@ import { useState } from "react";
 import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 import { ScanResultCard } from "../../../../../../../../../components/client/ScanResultCard";
+import { getExposureStatus } from "../../../../../../../../../components/server/StatusPill";
 
 export type Props = {
   scanResult: OnerepScanResultRow;
