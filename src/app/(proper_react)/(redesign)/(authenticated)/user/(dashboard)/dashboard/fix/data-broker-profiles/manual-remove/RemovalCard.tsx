@@ -12,6 +12,7 @@ import { useState } from "react";
 import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
 import { ScanResultCard } from "../../../../../../../../../components/client/ScanResultCard";
+import { getExposureStatus } from "../../../../../../../../../components/server/StatusPill";
 
 export type Props = {
   scanResult: OnerepScanResultRow;
@@ -54,7 +55,7 @@ export const RemovalCard = (props: Props) => {
         manually_resolved: isResolved,
       }}
       isOnManualRemovePage={true}
-      status={props.scanResult.status}
+      status={getExposureStatus(props.scanResult)}
       isPremiumBrokerRemovalEnabled={true}
       isPremiumUser={props.isPremiumUser}
       locale={getLocale(l10n)}

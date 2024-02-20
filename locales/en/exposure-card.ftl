@@ -34,6 +34,9 @@ exposure-card-description-info-for-sale-in-progress = We’ve started our auto-r
 exposure-card-description-info-for-sale-fixed = As a { -brand-premium } member, we’ve <data_broker_profile>removed this profile</data_broker_profile> for you and will continually monitor to make sure they don’t add you back.
 exposure-card-description-info-for-sale-fixed-manually-fixed =  You marked this profile as fixed.  Be sure you’ve followed all instructions on <data_broker_profile>the site</data_broker_profile> to ensure they remove your personal info.
 # deprecated
+# Variables:
+# $data_breach_company is the company associated with the data breach.
+# $data_breach_date is the date of the data breach.
 exposure-card-description-data-breach-part-one = Your information was exposed in the <data_breach_link>{ $data_breach_company } data breach on { $data_breach_date }.</data_breach_link>
 # deprecated
 exposure-card-description-data-breach-part-two = We’ll walk you through the steps to fix it.
