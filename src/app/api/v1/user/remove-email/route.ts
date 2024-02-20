@@ -8,7 +8,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { logger } from "../../../../functions/server/logging";
 import AppConstants from "../../../../../appConstants";
 import {
-  getSubscriberByEmail,
+  getSubscriberByFxaUid,
   deleteResolutionsWithEmail,
 } from "../../../../../db/tables/subscribers";
 import {
@@ -25,10 +25,13 @@ export async function POST(req: NextRequest) {
   const l10n = getL10n();
   const token = await getToken({ req });
 
-  if (typeof token?.email === "string") {
+  if (typeof token?.subscriber?.fxa_uid === "string") {
     try {
       const { emailId }: EmailDeleteRequest = await req.json();
-      const subscriber = await getSubscriberByEmail(token.email);
+      const subscriber = await getSubscriberByFxaUid(token.subscriber?.fxa_uid);
+      if (!subscriber) {
+        throw new Error("No subscriber found for current session.");
+      }
       const existingEmail = await getEmailById(emailId);
 
       if (existingEmail?.subscriber_id !== subscriber.id) {

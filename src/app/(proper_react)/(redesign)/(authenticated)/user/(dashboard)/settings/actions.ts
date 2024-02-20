@@ -14,7 +14,7 @@ import {
 } from "../../../../../../../db/tables/emailAddresses";
 import {
   deleteResolutionsWithEmail,
-  getSubscriberByEmail,
+  getSubscriberByFxaUid,
 } from "../../../../../../../db/tables/subscribers";
 import { validateEmailAddress } from "../../../../../../../utils/emailAddress";
 import { initEmail } from "../../../../../../../utils/email";
@@ -22,6 +22,7 @@ import { sendVerificationEmail } from "../../../../../../api/utils/email";
 import { getL10n } from "../../../../../../functions/server/l10n";
 import { logger } from "../../../../../../functions/server/logging";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
+import { authOptions } from "../../../../../../api/utils/auth";
 
 export type AddEmailFormState =
   | { success?: never }
@@ -37,16 +38,16 @@ export async function onAddEmail(
   formData: FormData,
 ): Promise<AddEmailFormState> {
   const l10n = getL10n();
-  const session = await getServerSession();
-  if (!session?.user.email) {
+  const session = await getServerSession(authOptions);
+  if (!session?.user.subscriber?.fxa_uid) {
     return {
       success: false,
       error: "add-email-without-active-session",
       errorMessage: l10n.getString("user-add-invalid-email"),
     };
   }
-  const subscriber = (await getSubscriberByEmail(
-    session.user.email,
+  const subscriber = (await getSubscriberByFxaUid(
+    session.user.subscriber?.fxa_uid,
   )) as SubscriberRow | null;
   if (!subscriber) {
     return {
@@ -129,15 +130,15 @@ export async function onAddEmail(
 }
 
 export async function onRemoveEmail(email: EmailRow) {
-  const session = await getServerSession();
-  if (!session?.user.email) {
+  const session = await getServerSession(authOptions);
+  if (!session?.user.subscriber?.fxa_uid) {
     logger.error(
       `Tried to delete email [${email.id}] without an active session.`,
     );
     return;
   }
-  const subscriber = (await getSubscriberByEmail(
-    session.user.email,
+  const subscriber = (await getSubscriberByFxaUid(
+    session.user.subscriber.fxa_uid,
   )) as SubscriberRow | null;
   if (email.subscriber_id !== subscriber?.id) {
     logger.error(

@@ -61,10 +61,10 @@ function generateCspData() {
       (process.env.NODE_ENV === "development"
         ? "'unsafe-eval' 'unsafe-inline'"
         : `'nonce-${nonce}'`) +
-      ` https://*.googletagmanager.com`,
+      ` https://*.googletagmanager.com https://js.stripe.com`,
     `connect-src 'self' ${
       process.env.NODE_ENV === "development" ? "webpack://*" : ""
-    } https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.ingest.sentry.io https://incoming.telemetry.mozilla.org`,
+    } https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.ingest.sentry.io https://incoming.telemetry.mozilla.org https://api.stripe.com`,
     // `withSentryConfig` in next.config.js messes up the type, but we know that
     // it's a valid NextConfig with `images.remotePatterns` set:
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -86,6 +86,7 @@ function generateCspData() {
     "font-src 'self'",
     "form-action 'self'",
     "frame-ancestors 'self'",
+    "frame-src 'self' https://js.stripe.com",
     "object-src 'none'",
     "block-all-mixed-content",
     "upgrade-insecure-requests",
