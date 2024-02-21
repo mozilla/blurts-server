@@ -8,7 +8,7 @@ import { checkAuthState, setEnvVariables } from "../utils/helpers.js";
 test.describe(`${process.env.E2E_TEST_ENV} - Monitor Plus Purchase Flow Yearly`, () => {
   test.beforeEach(async ({ page, authPage, landingPage, welcomePage }) => {
     // this test runs through the welcome scan flow, increasing timeout to address it
-    test.setTimeout(120000);
+    test.slow();
 
     setEnvVariables(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
 
@@ -89,7 +89,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Monitor Plus Purchase Flow Yearly`,
     await purchasePage.subscriptionHeader.waitFor();
 
     // fill out subscription payment
-    // expect(purchasePage.subscriptionHeader).toBeVisible();
     await purchasePage.authorizationCheckbox.check();
     await purchasePage.fillOutStripeCardInfo();
     await purchasePage.payNowButton.click();
