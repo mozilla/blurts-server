@@ -12,7 +12,7 @@ export type Props = {
 };
 
 export const GaScript = ({ nonce }: Props) => {
-  /* c8 ignore next 2 */
+  /* c8 ignore next */
   const ga4MeasurementId = CONST_GA4_MEASUREMENT_ID || "G-CXG8K4KW4P";
 
   return typeof navigator !== "undefined" && navigator.doNotTrack !== "1" ? (
@@ -21,6 +21,8 @@ export const GaScript = ({ nonce }: Props) => {
       nonce={nonce}
     />
   ) : (
+    /* c8 ignore next 2 */
+    // `navigator` is always defined in tests, thanks to jsdom:
     <></>
   );
 };

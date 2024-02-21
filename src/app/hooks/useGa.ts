@@ -19,8 +19,8 @@ interface InitGaProps {
 }
 
 const initGa4 = ({ ga4MeasurementId, debugMode }: InitGaProps) => {
+  /* c8 ignore next 4 */
   // Never run in tests:
-  /* c8 ignore next 3 */
   if (debugMode) {
     console.info("Initialize GA4");
   }
@@ -59,9 +59,9 @@ export const useGa = (): {
     // Enable upload only if the user has not opted out of tracking.
     const uploadEnabled = navigator.doNotTrack !== "1";
 
+    /* c8 ignore next 7 */
+    // Never run in tests:
     if (!uploadEnabled) {
-      // Never run in tests:
-      /* c8 ignore next 3 */
       if (debugMode) {
         console.info("Did not initialize GA4 due to DoNotTrack.");
       }
