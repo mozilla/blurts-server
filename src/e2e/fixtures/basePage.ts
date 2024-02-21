@@ -9,6 +9,8 @@ import { DashboardPage } from "../pages/dashBoardPage.js";
 import { DataBreachPage } from "../pages/dataBreachPage.js";
 import { SettingsPage } from "../pages/settingsPage.js";
 import { ScanPage } from "../pages/scanPage.js";
+import { PurchasePage } from "../pages/purchasePage.js";
+import { WelcomePage } from "../pages/welcomeScanPage.js";
 
 const test = base.extend<{
   landingPage: LandingPage;
@@ -17,6 +19,8 @@ const test = base.extend<{
   dataBreachPage: DataBreachPage;
   settingsPage: SettingsPage;
   scanPage: ScanPage;
+  purchasePage: PurchasePage;
+  welcomePage: WelcomePage;
 }>({
   authPage: async ({ page }, use) => {
     await use(new AuthPage(page));
@@ -35,6 +39,12 @@ const test = base.extend<{
   },
   scanPage: async ({ page }, use) => {
     await use(new ScanPage(page));
+  },
+  purchasePage: async ({ page }, use) => {
+    await use(new PurchasePage(page));
+  },
+  welcomePage: async ({ page }, use) => {
+    await use(new WelcomePage(page));
   },
 });
 
