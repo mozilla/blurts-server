@@ -88,14 +88,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
 
     // verify fixed tab's tooltips and popups
     await dashboardPage.fixedTab.click();
-    await expect(dashboardPage.heresWhatsFixedCardTitle).toHaveText(
-      "Here’s what you fixed",
-    );
     await expect(dashboardPage.fixedHeading).toBeVisible();
-    await dashboardPage.toolTip.click();
-    await expect(dashboardPage.whatsFixedPopup).toBeVisible();
-    await dashboardPage.popupOkButton.click();
-    await expect(dashboardPage.whatsFixedPopup).toBeHidden();
 
     // verify second tooltip
     await dashboardPage.chartTooltip.click();

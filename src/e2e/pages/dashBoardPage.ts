@@ -23,10 +23,7 @@ export class DashboardPage {
   readonly exposuresHeading: Locator;
   readonly dashboardMozLogo: Locator;
   readonly fixedHeading: Locator;
-  readonly toolTip: Locator;
-  readonly heresWhatsFixedCardTitle: Locator;
 
-  readonly whatsFixedPopup: Locator;
   readonly popupOkButton: Locator;
   readonly popupCloseButton: Locator;
 
@@ -53,9 +50,7 @@ export class DashboardPage {
     this.breachStats = page.locator("breach-stats");
 
     // top nav
-    this.fireFoxMonitorLogoImgButton = page.locator(
-      '//a[starts-with(@class, "Shell_homeLink_")]/img',
-    );
+    this.fireFoxMonitorLogoImgButton = page.getByRole("img", { name: "Home" });
     this.actionNeededTab = page.getByRole("tab", { name: "Action needed" });
     this.fixedTab = page.getByRole("tab", { name: "Fixed" });
     this.profileButton = page.getByRole("button", { name: "Profile" });
@@ -83,24 +78,13 @@ export class DashboardPage {
       name: "View all exposures that are fixed or in progress",
     });
 
-    this.toolTip = page.locator(
-      '//div[starts-with(@class, "ProgressCard_header")]/button',
-    );
-    this.heresWhatsFixedCardTitle = page.locator(
-      '//div[starts-with(@class, "ProgressCard_header")]',
-    );
-
-    // here's what we fixed popup
-    this.whatsFixedPopup = page.getByRole("dialog", {
-      name: "About what we fixed",
-    });
     this.popupOkButton = page.getByRole("button", { name: "OK" });
     this.popupCloseButton = page.getByRole("button", { name: "Close" });
 
     // chartTooltip
-    this.chartTooltip = page.locator(
-      '//div[starts-with(@class, "DashboardTopBanner_chart")]//button',
-    );
+    this.chartTooltip = page
+      .getByRole("figure", { name: "This chart shows the total" })
+      .getByRole("button");
     this.aboutFixedExposuresPopup = page.getByRole("dialog", {
       name: "About your number of fixed exposures",
     });
