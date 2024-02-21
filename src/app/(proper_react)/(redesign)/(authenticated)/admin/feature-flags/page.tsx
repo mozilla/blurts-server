@@ -3,12 +3,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { notFound, redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { getAllFeatureFlags } from "../../../../../../db/tables/featureFlags";
 import { AddFeatureFlag } from "./components/AddFeatureFlag";
 import { ToggleFlagEnabled } from "./components/ToggleFlagEnabled";
 import { FeatureFlagRow } from "knex/types/tables";
-import { authOptions, isAdmin } from "../../../../../api/utils/auth";
+import { isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import styles from "./page.module.scss";
 import { ModifyInputField } from "./components/ModifyInputField";
@@ -18,7 +18,7 @@ import {
 } from "../../../../../functions/server/getPremiumSubscriptionInfo";
 
 export default async function FeatureFlagPage() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });

@@ -5,8 +5,7 @@
 import { headers } from "next/headers";
 import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
 import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../../../../../../../../api/utils/auth";
+import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
@@ -20,7 +19,7 @@ export default async function StartFreeScanPage() {
     redirect("/user/dashboard");
   }
 
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }

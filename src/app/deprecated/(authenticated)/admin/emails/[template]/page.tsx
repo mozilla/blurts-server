@@ -4,7 +4,6 @@
 
 import { redirect } from "next/navigation";
 import Script from "next/script";
-import { getServerSession } from "next-auth";
 import appConstants from "../../../../../../appConstants";
 import {
   EmailTemplateType,
@@ -18,10 +17,10 @@ import { verifyPartial } from "../../../../../../views/emails/emailVerify";
 import { breachAlertEmailPartial } from "../../../../../../views/emails/emailBreachAlert";
 import { monthlyUnresolvedEmailPartial } from "../../../../../../views/emails/emailMonthlyUnresolved";
 import { signupReportEmailPartial } from "../../../../../../views/emails/emailSignupReport";
-import { authOptions } from "../../../../../api/utils/auth";
 import { getL10n } from "../../../../../functions/server/l10n";
 import { ReactLocalization } from "@fluent/react";
 import { getNonce } from "../../../../functions/server/getNonce";
+import { getServerSession } from "../../../../../functions/server/getServerSession";
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -38,7 +37,7 @@ declare global {
 export default async function EmailTemplatePage(props: {
   params: { template: string };
 }) {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
 
   if (!session?.user.email) {
     return redirect("/");

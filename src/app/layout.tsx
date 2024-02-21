@@ -6,12 +6,11 @@ import { ReactNode } from "react";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { getServerSession } from "next-auth";
 import { getL10n, getL10nBundles } from "./functions/server/l10n";
 import { getLocale } from "./functions/universal/getLocale";
 import { PublicEnvProvider } from "../contextProviders/public-env";
 import { SessionProvider } from "../contextProviders/session";
-import { authOptions } from "./api/utils/auth";
+import { getServerSession } from "./functions/server/getServerSession";
 import { metropolis } from "./fonts/Metropolis/metropolis";
 import { CONST_GA4_MEASUREMENT_ID } from "../constants";
 import { headers } from "next/headers";
@@ -58,7 +57,7 @@ export default async function RootLayout({
   children: ReactNode;
 }) {
   const currentLocale = getLocale(getL10nBundles());
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
 
   return (
     <html lang={currentLocale}>
