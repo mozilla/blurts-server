@@ -163,7 +163,6 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             {
               elems: {
                 data_broker_profile: dataBrokerProfileLink,
-                upsell_link: upsellLink,
               },
             },
           );
