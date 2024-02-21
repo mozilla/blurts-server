@@ -63,7 +63,6 @@ it("doesn't filter out anything by default", () => {
     filterExposures(exposures, {
       dateFound: "show-all-date-found",
       exposureType: "show-all-exposure-type",
-      status: "show-all-status",
     }),
   ).toStrictEqual(exposures);
 });
@@ -84,7 +83,6 @@ it("can filter out breaches", () => {
     filterExposures(exposures, {
       dateFound: "show-all-date-found",
       exposureType: "data-broker",
-      status: "show-all-status",
     }),
   ).toStrictEqual([
     scanResultThisWeek,
@@ -110,7 +108,6 @@ it("can filter out data brokers", () => {
     filterExposures(exposures, {
       dateFound: "show-all-date-found",
       exposureType: "data-breach",
-      status: "show-all-status",
     }),
   ).toStrictEqual([breachThisWeek, breachThisMonth, breachThisYear, breachOld]);
 });
@@ -131,7 +128,6 @@ it("can filter out exposures older than a year", () => {
     filterExposures(exposures, {
       dateFound: "last-year",
       exposureType: "show-all-exposure-type",
-      status: "show-all-status",
     }),
   ).toStrictEqual([
     breachThisWeek,
@@ -159,7 +155,6 @@ it("can filter out exposures older than a month", () => {
     filterExposures(exposures, {
       dateFound: "thirty-days",
       exposureType: "show-all-exposure-type",
-      status: "show-all-status",
     }),
   ).toStrictEqual([
     breachThisWeek,
@@ -185,7 +180,6 @@ it("can filter out exposures older than a week", () => {
     filterExposures(exposures, {
       dateFound: "seven-days",
       exposureType: "show-all-exposure-type",
-      status: "show-all-status",
     }),
   ).toStrictEqual([breachThisWeek, scanResultThisWeek]);
 });
@@ -206,7 +200,6 @@ it("filters out anything that doesn't match *all* filters", () => {
     filterExposures(exposures, {
       dateFound: "last-year",
       exposureType: "data-breach",
-      status: "show-all-status",
     }),
   ).toStrictEqual([breachThisWeek, breachThisMonth, breachThisYear]);
 });

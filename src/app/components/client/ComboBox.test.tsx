@@ -56,3 +56,11 @@ it("shows error messages", () => {
   const errorMessage = screen.getByText("Input invalid");
   expect(errorMessage).toBeInTheDocument();
 });
+
+it("shows combobox as not required", () => {
+  const ComposedTextComboBox = composeStory(TextComboBoxEmpty, Meta);
+  render(<ComposedTextComboBox />);
+
+  const comboBoxLabel = screen.getByLabelText("ComboBox label");
+  expect(comboBoxLabel).toBeInTheDocument();
+});
