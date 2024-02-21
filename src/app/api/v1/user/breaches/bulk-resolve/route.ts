@@ -3,8 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { authOptions } from "../../../../utils/auth";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { logger } from "../../../../../functions/server/logging";
 import { BreachBulkResolutionRequest } from "../../../../../deprecated/(authenticated)/user/breaches/breaches.js";
 import { getBreaches } from "../../../../../functions/server/getBreaches";
@@ -15,7 +14,7 @@ import {
 } from "../../../../../../db/tables/subscribers";
 
 export async function PUT(req: NextRequest): Promise<NextResponse> {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (
     !session?.user?.subscriber ||
     typeof session?.user?.subscriber.fxa_uid !== "string"

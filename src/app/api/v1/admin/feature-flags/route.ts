@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "../../../../functions/server/getServerSession";
 import { logger } from "../../../../functions/server/logging";
 import {
   getAllFeatureFlags,
@@ -15,11 +15,11 @@ import {
   FeatureFlag,
 } from "../../../../../db/tables/featureFlags";
 
-import { isAdmin, authOptions } from "../../../utils/auth";
+import { isAdmin } from "../../../utils/auth";
 import appConstants from "../../../../../appConstants";
 
 export async function GET() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in
     try {
@@ -35,7 +35,7 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in
     try {
@@ -63,7 +63,7 @@ export type FeatureFlagPutRequest = {
 };
 
 export async function PUT(req: NextRequest) {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in
     try {

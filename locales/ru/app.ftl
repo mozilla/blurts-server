@@ -56,6 +56,7 @@ user-add-duplicate-email = Этот адрес электронной почты
 user-add-duplicate-email-part-2 = Посетите { $preferencesLink }, чтобы проверить статус { $userEmail }.
 user-add-verification-email-just-sent = Невозможно так быстро отправить ещё одно письмо для подтверждения. Подождите некоторое время и попробуйте снова.
 user-add-unknown-error = Что-то пошло не так при добавлении ещё одного адреса электронной почты. Подождите некоторое время и попробуйте снова.
+user-delete-unknown-error = Что-то пошло не так при удалении адреса электронной почты. Подождите некоторое время и попробуйте снова.
 error-headline = Ошибка
 user-verify-token-error = Требуется токен подтверждения.
 user-verify-email-report-subject = Ваш отчёт от { -product-name }

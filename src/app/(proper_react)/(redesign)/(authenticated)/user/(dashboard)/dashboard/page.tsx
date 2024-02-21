@@ -4,9 +4,8 @@
 
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "../../../../../../functions/server/getServerSession";
 import { View } from "./View";
-import { authOptions } from "../../../../../../api/utils/auth";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../../functions/server/getUserBreaches";
 import {
@@ -37,7 +36,7 @@ import { isPrePlusUser } from "../../../../../../functions/server/isPrePlusUser"
 import { getUserId } from "../../../../../../functions/server/getUserId";
 
 export default async function DashboardPage() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (!checkSession(session) || !session?.user?.subscriber?.id) {
     return redirect("/");
   }

@@ -2,13 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getServerSession } from "next-auth";
 import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
-import { authOptions } from "../../../../utils/auth";
 import { NextResponse } from "next/server";
 
 import { logger } from "../../../../../functions/server/logging";
 
+import { getServerSession } from "../../../../../functions/server/getServerSession";
 import AppConstants from "../../../../../../appConstants";
 import {
   getOnerepProfileId,
@@ -25,7 +24,7 @@ export type WelcomeScanResultResponse =
   | { success: false };
 
 export async function GET() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (typeof session?.user?.subscriber?.fxa_uid === "string") {
     try {
       const subscriber = await getSubscriberByFxaUid(

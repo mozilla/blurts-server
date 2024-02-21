@@ -2,11 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
+import { getServerSession } from "../../../../../../../../functions/server/getServerSession";
 import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
-import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
@@ -16,7 +15,7 @@ import { getEnabledFeatureFlags } from "../../../../../../../../../db/tables/fea
 import { isEligibleForPremium } from "../../../../../../../../functions/server/onerep";
 
 export default async function HighRiskDataBreaches() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }

@@ -2,9 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { authOptions } from "../../../../../../api/utils/auth";
+import { getServerSession } from "../../../../../../functions/server/getServerSession";
 import { SettingsView } from "./View";
 import {
   getSubscriptionBillingAmount,
@@ -18,7 +17,7 @@ import { getSha1 } from "../../../../../../../utils/fxa";
 import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
 
 export default async function SettingsPage() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
