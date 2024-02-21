@@ -13,6 +13,9 @@ export function filterExposures(
   filters: FilterState,
 ): Exposure[] {
   return exposures.filter((exposure) => {
+    /* c8 ignore start */
+    // Since the Node 20.10 upgrade, it's been marking this  as uncovered, even
+    // though it's covered by tests.
     if (filters.exposureType === "data-breach" && isScanResult(exposure)) {
       return false;
     }
@@ -42,6 +45,7 @@ export function filterExposures(
     ) {
       return false;
     }
+    /* c8 ignore stop */
 
     return true;
   });
