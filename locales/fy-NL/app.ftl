@@ -46,6 +46,7 @@ user-add-duplicate-email = Dit e-mailadres is al oan { -product-name } tafoege.
 user-add-duplicate-email-part-2 = Besykje jo { $preferencesLink } om de steat fan { $userEmail } te kontrolearjen.
 user-add-verification-email-just-sent = Sa gau kin in oar ferifikaasje-e-mailberjocht net ferstjoerd wurde. Probearje it letter opnij.
 user-add-unknown-error = Der is wat misgien by it tafoegjen fan in oar e-mailadres. Probearje it letter opnij.
+user-delete-unknown-error = Der is wat misgien by it fuortsmiten fan in e-mailadres. Probearje it letter opnij.
 error-headline = Flater
 user-verify-token-error = Ferifikaasjetoken is fereaske.
 user-verify-email-report-subject = Jo { -product-name }-rapport

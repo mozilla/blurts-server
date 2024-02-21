@@ -50,6 +50,7 @@ user-add-duplicate-email = Questo indirizzo email è già stato aggiunto a { -pr
 user-add-duplicate-email-part-2 = Vai su { $preferencesLink } per controllare lo stato di { $userEmail }.
 user-add-verification-email-just-sent = Non è possibile inviare un’altra email di verifica così rapidamente. Riprova più tardi.
 user-add-unknown-error = Si è verificato un errore durante l’aggiunta di un altro indirizzo email. Riprova più tardi.
+user-delete-unknown-error = Si è verificato un errore durante la rimozione di un indirizzo email. Riprova più tardi.
 error-headline = Errore
 user-verify-token-error = È richiesto un token di verifica.
 user-verify-email-report-subject = Il tuo rapporto di { -product-name }
