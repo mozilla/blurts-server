@@ -46,6 +46,7 @@ user-add-duplicate-email = Ez az e-mail-cím már hozzáadásra került a { -pro
 user-add-duplicate-email-part-2 = Keresse fel a { $preferencesLink } oldalt, és ellenőrizze a(z) { $userEmail } állapotát.
 user-add-verification-email-just-sent = Nem küldhető ilyen gyorsan újabb megerősítő e-mail. Próbálja újra később.
 user-add-unknown-error = Hiba történt egy másik e-mail-cím hozzáadása során. Próbálja újra később.
+user-delete-unknown-error = Hiba történt egy e-mail-cím eltávolításakor. Próbálja újra később.
 error-headline = Hiba
 user-verify-token-error = Az ellenőrzési token lejárt.
 user-verify-email-report-subject = Az Ön { -product-name } jelentése

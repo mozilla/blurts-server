@@ -46,6 +46,7 @@ user-add-duplicate-email = 此帳號已經加入 { -product-name }。
 user-add-duplicate-email-part-2 = 請到您的 { $preferencesLink } 檢查 { $userEmail } 的目前狀態。
 user-add-verification-email-just-sent = 沒辦法這麼快就寄出另一封驗證信，請稍後再試。
 user-add-unknown-error = 新增電子郵件地址時發生錯誤，請稍後再試。
+user-delete-unknown-error = 移除電子郵件地址時發生錯誤，請稍後再試。
 error-headline = 錯誤
 user-verify-token-error = 缺少驗證 token。
 user-verify-email-report-subject = 您的 { -product-name } 掃描報告
