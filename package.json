@@ -13,7 +13,7 @@
     "start": "next start",
     "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint --max-warnings=0",
     "fix": "prettier --write './src' && next lint --fix && stylelint --fix '**/*.scss'",
-    "test": "jest",
+    "test": "jest --no-cache",
     "e2e": "playwright test src/e2e/",
     "e2e:debug": "playwright test src/e2e/ --ui",
     "e2e:smoke": "playwright test src/e2e/ --grep @smoke",

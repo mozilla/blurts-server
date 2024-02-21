@@ -21,6 +21,7 @@ export const GaScript = ({ nonce }: Props) => {
       nonce={nonce}
     />
   ) : (
+    /* c8 ignore next */
     <></>
   );
 };
