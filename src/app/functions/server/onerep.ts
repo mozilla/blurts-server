@@ -162,7 +162,7 @@ export async function createProfile(
     url: string;
   } = await response.json();
 
-  logger.info("onerep_profile_created", { onerepProfileId: savedProfile.id });
+  logger.info("onerep_profile_created");
 
   return savedProfile.id;
 }
