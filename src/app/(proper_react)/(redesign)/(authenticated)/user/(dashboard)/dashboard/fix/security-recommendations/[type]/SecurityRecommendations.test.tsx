@@ -48,6 +48,18 @@ it("passes the axe accessibility test suite for the security recommendations cel
   expect(await axe(container)).toHaveNoViolations();
 });
 
+it("marks the security recommendations step as the current one", () => {
+  const ComposedComponent = composeStory(PhoneStory, Meta);
+
+  render(<ComposedComponent />);
+
+  const stepIndicator = screen
+    .getAllByRole("listitem")
+    .find((el) => el.textContent?.match(/Security recommendations/));
+  expect(stepIndicator).toBeInTheDocument();
+  expect(stepIndicator).toHaveAttribute("aria-current", "step");
+});
+
 it("shows the security recommendations celebration view", () => {
   const ComposedComponent = composeStory(DoneStory, Meta);
 

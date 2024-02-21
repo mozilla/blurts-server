@@ -15,7 +15,9 @@ export class DashboardPage {
   readonly fixedTab: Locator;
   readonly profileButton: Locator;
   readonly appsAndServices: Locator;
-  readonly upgradeToPremium: Locator;
+  readonly upgradeToPlus: Locator;
+  readonly plusSubscription: Locator;
+  readonly startAFreeScanLink: Locator;
 
   readonly dashboardNavButton: Locator;
   readonly FAQsNavButton: Locator;
@@ -57,8 +59,14 @@ export class DashboardPage {
     this.appsAndServices = page.getByRole("menu", {
       name: "Mozilla apps and services",
     });
-    this.upgradeToPremium = page.getByRole("button", {
+    this.upgradeToPlus = page.getByRole("button", {
       name: "Automatic data removal: Off",
+    });
+    this.plusSubscription = page.getByRole("button", {
+      name: "Automatic data removal: On",
+    });
+    this.startAFreeScanLink = page.getByRole("link", {
+      name: "Start a free scan",
     });
 
     //sidebar nav

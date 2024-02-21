@@ -88,15 +88,15 @@ export function getNextGuidedStep(
     return stepLink.eligible && !stepLink.completed;
   });
 
+  // We don't have a way to trigger an invalid state without skipping a
+  // valid one during tests:
+  /* c8 ignore next 16 */
   if (!nextStep) {
     // In practice, there should always be a next step (at least "Done").
     // If for any reason there is not, `href` will be undefined, in which case
     // links will just not do anything.
     console.error(
       `Could not determine the relevant next guided step for the user. Skipping step: [${
-        // We don't have a way to trigger an invalid state without skipping a
-        // valid one during tests:
-        /* c8 ignore next */
         afterStep ?? "Not skipping any steps"
       }]. Is \`data.user\` defined: [${!!data.user}]. Country code: [${
         data.countryCode
@@ -184,6 +184,9 @@ export function hasCompletedStepSection(
     return hasCompletedStep(data, "Scan");
   }
   if (section === "HighRisk") {
+    /* c8 ignore next 7 */
+    // I believe this *is* covered by unit tests, but for some reason,
+    // since the upgrade to Node 20.10, it doesn't get marked as covered anymore:
     return (
       hasCompletedStep(data, "HighRiskSsn") &&
       hasCompletedStep(data, "HighRiskCreditCard") &&

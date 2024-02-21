@@ -89,8 +89,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
     // verify fixed tab's tooltips and popups
     await dashboardPage.fixedTab.click();
     await expect(dashboardPage.fixedHeading).toBeVisible();
-
-    // verify second tooltip
     await dashboardPage.chartTooltip.click();
     await expect(dashboardPage.aboutFixedExposuresPopup).toBeVisible();
     await dashboardPage.popupCloseButton.click();
@@ -126,7 +124,7 @@ test.describe.skip(
       }
 
       // verify the site header elements
-      await expect(dashboardPage.upgradeToPremium).toBeHidden();
+      await expect(dashboardPage.upgradeToPlus).toBeHidden();
     });
   },
 );
