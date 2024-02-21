@@ -2,7 +2,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const subscriber: Subscriber = {
+import { SubscriberRow } from "knex/types/tables";
+import { getBreachesForEmail } from "./hibp";
+import { getSubBreaches } from "./subscriberBreaches";
+import { getUserEmails } from "../db/tables/emailAddresses";
+import { Breach } from "../app/deprecated/(authenticated)/user/breaches/breaches";
+
+jest.mock("../db/tables/emailAddresses.js", () => ({
+  getUserEmails: jest.fn(),
+}));
+
+jest.mock("./hibp.js", () => ({
+  getBreachesForEmail: jest.fn(),
+}));
+
+const subscriber: SubscriberRow = {
   updated_at: new Date(),
   fx_newsletter: true,
   all_emails_to_primary: true,
@@ -46,21 +60,22 @@ const subscriber: Subscriber = {
     },
   },
   breach_resolution: {
+    useBreachId: true,
     "test@test.com": {
       "8": {
-        isResolved: false,
         resolutionsChecked: ["passwords", "email-addresses"],
       },
       "40": {
-        isResolved: true,
-        resolutionsChecked: ["email-addresses", "phone-numbers"],
+        resolutionsChecked: [
+          "email-addresses",
+          "passwords",
+          "social-security-numbers",
+        ],
       },
       "252": {
-        isResolved: true,
         resolutionsChecked: ["email-addresses"],
       },
       "320": {
-        isResolved: true,
         resolutionsChecked: ["email-addresses"],
       },
     },
@@ -68,24 +83,10 @@ const subscriber: Subscriber = {
   monthly_email_at: new Date("2022-08-07 14:22:00.000-05"),
   monthly_email_optout: false,
   signup_language: "fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5",
+  db_migration_1: undefined,
+  db_migration_2: undefined,
+  onerep_profile_id: null,
 };
-
-import { getSubBreaches } from "./subscriberBreaches";
-import {
-  Breach,
-  Subscriber,
-} from "../app/deprecated/(authenticated)/user/breaches/breaches";
-
-jest.mock("../db/tables/emailAddresses.js", () => ({
-  getUserEmails: jest.fn(),
-}));
-
-jest.mock("./hibp.js", () => ({
-  getBreachesForEmail: jest.fn(),
-}));
-
-import { getUserEmails } from "../db/tables/emailAddresses";
-import { getBreachesForEmail } from "./hibp";
 
 const allBreaches: Breach[] = [
   {
@@ -176,6 +177,32 @@ const breachesWithOneResolved = [
   },
 ];
 
+const breachesWithOneResolvedSsn = [
+  {
+    Id: 1,
+    IsRetired: true,
+    IsSpamList: false,
+    IsFabricated: false,
+    IsVerified: true,
+    Domain: "something",
+    DataClasses: ["email-addresses", "passwords", "something else"],
+  },
+  {
+    Id: 40,
+    IsRetired: false,
+    IsSpamList: false,
+    IsFabricated: false,
+    IsVerified: true,
+    Domain: "something",
+    DataClasses: [
+      "email-addresses",
+      "passwords",
+      "social-security-numbers",
+      "something else",
+    ],
+  },
+];
+
 describe("getSubBreaches", () => {
   it("summarises which dataClasses and emails are breached for the given user", async () => {
     (
@@ -193,7 +220,7 @@ describe("getSubBreaches", () => {
         Parameters<typeof getBreachesForEmail>
       >
     ).mockResolvedValueOnce(breachesWithNoneResolved);
-    const subBreaches = await getSubBreaches(subscriber, []);
+    const subBreaches = await getSubBreaches(subscriber, [], "us");
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].isResolved).toBe(false);
     expect(subBreaches[0].dataClasses).toStrictEqual([
@@ -206,7 +233,7 @@ describe("getSubBreaches", () => {
     expect(subBreaches[0].dataClassesEffected[1]).toEqual({ passwords: 1 });
   });
 
-  it("returns that a breach is resolved", async () => {
+  it("returns that a breach is resolved for US users", async () => {
     (
       getUserEmails as jest.Mock<
         ReturnType<typeof getUserEmails>,
@@ -223,7 +250,110 @@ describe("getSubBreaches", () => {
       >
     ).mockResolvedValueOnce(breachesWithOneResolved);
 
-    const subBreaches = await getSubBreaches(subscriber, []);
+    const subBreaches = await getSubBreaches(subscriber, [], "us");
+    expect(subBreaches.length).toEqual(1);
+    expect(subBreaches[0].isResolved).toBe(true);
+  });
+
+  it("returns that a breach is resolved for non-US users", async () => {
+    (
+      getUserEmails as jest.Mock<
+        ReturnType<typeof getUserEmails>,
+        Parameters<typeof getUserEmails>
+      >
+    )
+      // The only affected email is the user's primary email; they have no
+      // additional email addresses in this test:
+      .mockResolvedValueOnce([]);
+    (
+      getBreachesForEmail as jest.Mock<
+        ReturnType<typeof getBreachesForEmail>,
+        Parameters<typeof getBreachesForEmail>
+      >
+    ).mockResolvedValueOnce(breachesWithOneResolved);
+
+    const subBreaches = await getSubBreaches(subscriber, [], "nl");
+    expect(subBreaches.length).toEqual(1);
+    expect(subBreaches[0].isResolved).toBe(true);
+  });
+
+  it("returns that a breach containing a SSN is resolved for US users", async () => {
+    (
+      getUserEmails as jest.Mock<
+        ReturnType<typeof getUserEmails>,
+        Parameters<typeof getUserEmails>
+      >
+    )
+      // The only affected email is the user's primary email; they have no
+      // additional email addresses in this test:
+      .mockResolvedValueOnce([]);
+    (
+      getBreachesForEmail as jest.Mock<
+        ReturnType<typeof getBreachesForEmail>,
+        Parameters<typeof getBreachesForEmail>
+      >
+    ).mockResolvedValueOnce(breachesWithOneResolvedSsn);
+
+    const subBreaches = await getSubBreaches(subscriber, allBreaches, "us");
+    expect(subBreaches.length).toEqual(1);
+    expect(subBreaches[0].isResolved).toBe(true);
+  });
+
+  it("returns that a breach containing a SSN is unresolved for US users", async () => {
+    const subscriberWithoutSsnResolved: SubscriberRow = {
+      ...subscriber,
+      breach_resolution: {
+        useBreachId: true,
+        "test@test.com": {
+          "40": {
+            resolutionsChecked: ["email-addresses", "passwords"],
+          },
+        },
+      },
+    };
+    (
+      getUserEmails as jest.Mock<
+        ReturnType<typeof getUserEmails>,
+        Parameters<typeof getUserEmails>
+      >
+    )
+      // The only affected email is the user's primary email; they have no
+      // additional email addresses in this test:
+      .mockResolvedValueOnce([]);
+    (
+      getBreachesForEmail as jest.Mock<
+        ReturnType<typeof getBreachesForEmail>,
+        Parameters<typeof getBreachesForEmail>
+      >
+    ).mockResolvedValueOnce(breachesWithOneResolvedSsn);
+
+    const subBreaches = await getSubBreaches(
+      subscriberWithoutSsnResolved,
+      allBreaches,
+      "us",
+    );
+    expect(subBreaches.length).toEqual(1);
+    expect(subBreaches[0].isResolved).toBe(false);
+  });
+
+  it("returns that a breach containing a SSN is resolved for non-US users", async () => {
+    (
+      getUserEmails as jest.Mock<
+        ReturnType<typeof getUserEmails>,
+        Parameters<typeof getUserEmails>
+      >
+    )
+      // The only affected email is the user's primary email; they have no
+      // additional email addresses in this test:
+      .mockResolvedValueOnce([]);
+    (
+      getBreachesForEmail as jest.Mock<
+        ReturnType<typeof getBreachesForEmail>,
+        Parameters<typeof getBreachesForEmail>
+      >
+    ).mockResolvedValueOnce(breachesWithOneResolvedSsn);
+
+    const subBreaches = await getSubBreaches(subscriber, allBreaches, "nl");
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].isResolved).toBe(true);
   });
@@ -251,7 +381,7 @@ describe("getSubBreaches", () => {
     )
       .mockResolvedValueOnce(breachesWithNoneResolved)
       .mockResolvedValueOnce(breachesWithNoneResolved);
-    const subBreaches = await getSubBreaches(subscriber, allBreaches);
+    const subBreaches = await getSubBreaches(subscriber, allBreaches, "us");
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].dataClasses).toEqual([
       "email-addresses",
@@ -286,7 +416,11 @@ describe("getSubBreaches", () => {
         Parameters<typeof getBreachesForEmail>
       >
     ).mockResolvedValueOnce(breachesWithNoneResolved);
-    const subBreaches = await getSubBreaches(differentSubscriber, allBreaches);
+    const subBreaches = await getSubBreaches(
+      differentSubscriber,
+      allBreaches,
+      "us",
+    );
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].dataClasses).toEqual([
       "email-addresses",
@@ -324,7 +458,7 @@ describe("getSubBreaches", () => {
       })),
     );
 
-    const subBreaches = await getSubBreaches(subscriber, []);
+    const subBreaches = await getSubBreaches(subscriber, [], "us");
 
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].addedDate).toBeInstanceOf(Date);
@@ -332,9 +466,8 @@ describe("getSubBreaches", () => {
     expect(subBreaches[0].modifiedDate).toBeInstanceOf(Date);
   });
 
-  // MNTOR-2125
-  it("same breach, two emails: mark as unresolved if one email isn't resolved", async () => {
-    const subscriber: Subscriber = {
+  it("same breach, two emails: mark as unresolved if one email isn't resolved for US user", async () => {
+    const subscriber: SubscriberRow = {
       updated_at: new Date(),
       fx_newsletter: true,
       all_emails_to_primary: true,
@@ -378,15 +511,18 @@ describe("getSubBreaches", () => {
         },
       },
       breach_resolution: {
+        useBreachId: true,
         "test@test.com": {
           "40": {
-            isResolved: true,
-            resolutionsChecked: ["email-addresses", "phone-numbers"],
+            resolutionsChecked: [
+              "email-addresses",
+              "phone-numbers",
+              "social-security-numbers",
+            ],
           },
         },
         "additional@test.com": {
           "40": {
-            isResolved: false,
             resolutionsChecked: ["email-addresses"],
           },
         },
@@ -416,16 +552,16 @@ describe("getSubBreaches", () => {
         Parameters<typeof getBreachesForEmail>
       >
     )
-      .mockResolvedValueOnce(breachesWithOneResolved)
+      .mockResolvedValueOnce(breachesWithOneResolvedSsn)
       .mockResolvedValueOnce(breachesWithOneResolved);
 
-    const subBreaches = await getSubBreaches(subscriber, []);
+    const subBreaches = await getSubBreaches(subscriber, [], "us");
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].isResolved).toBe(false);
   });
-  // MNTOR-2125
-  it("same breach, two emails: mark as resolved only if both emails are resolved", async () => {
-    const subscriber: Subscriber = {
+
+  it("same breach, two emails: mark as unresolved if one email isn't resolved for non-US user", async () => {
+    const subscriber: SubscriberRow = {
       updated_at: new Date(),
       fx_newsletter: true,
       all_emails_to_primary: true,
@@ -469,15 +605,108 @@ describe("getSubBreaches", () => {
         },
       },
       breach_resolution: {
+        useBreachId: true,
         "test@test.com": {
           "40": {
-            isResolved: true,
             resolutionsChecked: ["email-addresses", "phone-numbers"],
           },
         },
         "additional@test.com": {
           "40": {
-            isResolved: true,
+            resolutionsChecked: ["email-addresses"],
+          },
+        },
+      },
+      monthly_email_at: new Date("2022-08-07 14:22:00.000-05"),
+      monthly_email_optout: false,
+      signup_language: "fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5",
+    };
+
+    (
+      getUserEmails as jest.Mock<
+        ReturnType<typeof getUserEmails>,
+        Parameters<typeof getUserEmails>
+      >
+    ).mockResolvedValueOnce([
+      {
+        id: -1,
+        subscriber_id: 2,
+        email: "additional@test.com",
+        verified: true,
+        sha1: "",
+      },
+    ]);
+    (
+      getBreachesForEmail as jest.Mock<
+        ReturnType<typeof getBreachesForEmail>,
+        Parameters<typeof getBreachesForEmail>
+      >
+    )
+      .mockResolvedValueOnce(breachesWithOneResolvedSsn)
+      .mockResolvedValueOnce(breachesWithOneResolvedSsn);
+
+    const subBreaches = await getSubBreaches(subscriber, [], "nl");
+    expect(subBreaches.length).toEqual(1);
+    expect(subBreaches[0].isResolved).toBe(false);
+  });
+
+  it("same breach, two emails: mark as resolved only if both emails are resolved for US user", async () => {
+    const subscriber: SubscriberRow = {
+      updated_at: new Date(),
+      fx_newsletter: true,
+      all_emails_to_primary: true,
+      waitlists_joined: true,
+      email_addresses: [],
+      id: 12346,
+      created_at: new Date("2022-06-07 14:29:00.000-05"),
+      primary_sha1: "abcabc",
+      primary_email: "test@test.com",
+      primary_verification_token: "c165711a-69d1-42f1-9850-ce74754f36de",
+      primary_verified: true,
+      fxa_access_token:
+        "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc0",
+      fxa_refresh_token:
+        "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc1",
+      fxa_uid: "12346",
+      fxa_profile_json: {
+        uid: "123",
+        email: "additional@test.com",
+        avatar: "https://profile.stage.mozaws.net/v1/avatar/abc",
+        locale: "en-US,en;q=0.5",
+        amrValues: ["pwd", "email"],
+        avatarDefault: false,
+        metricsEnabled: true,
+        twoFactorAuthentication: false,
+      },
+      breaches_last_shown: new Date("2022-07-08 14:19:00.000-05"),
+      breaches_resolved: { "has-breaches@example.com": [] },
+      breach_stats: {
+        passwords: {
+          count: 1,
+          numResolved: 0,
+        },
+        numBreaches: {
+          count: 2,
+          numResolved: 1,
+          numUnresolved: 1,
+        },
+        monitoredEmails: {
+          count: 1,
+        },
+      },
+      breach_resolution: {
+        useBreachId: true,
+        "test@test.com": {
+          "40": {
+            resolutionsChecked: [
+              "email-addresses",
+              "passwords",
+              "social-security-numbers",
+            ],
+          },
+        },
+        "additional@test.com": {
+          "40": {
             resolutionsChecked: ["email-addresses"],
           },
         },
@@ -518,10 +747,111 @@ describe("getSubBreaches", () => {
         Parameters<typeof getBreachesForEmail>
       >
     )
-      .mockResolvedValueOnce(breachesWithOneResolved)
+      .mockResolvedValueOnce(breachesWithOneResolvedSsn)
       .mockResolvedValueOnce(breachesWithOneResolved);
 
-    const subBreaches = await getSubBreaches(subscriber, []);
+    const subBreaches = await getSubBreaches(subscriber, [], "us");
+    expect(subBreaches.length).toEqual(1);
+    expect(subBreaches[0].isResolved).toBe(true);
+  });
+
+  it("same breach, two emails: mark as resolved only if both emails are resolved for non-US user", async () => {
+    const subscriber: SubscriberRow = {
+      updated_at: new Date(),
+      fx_newsletter: true,
+      all_emails_to_primary: true,
+      waitlists_joined: true,
+      email_addresses: [],
+      id: 12346,
+      created_at: new Date("2022-06-07 14:29:00.000-05"),
+      primary_sha1: "abcabc",
+      primary_email: "test@test.com",
+      primary_verification_token: "c165711a-69d1-42f1-9850-ce74754f36de",
+      primary_verified: true,
+      fxa_access_token:
+        "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc0",
+      fxa_refresh_token:
+        "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc1",
+      fxa_uid: "12346",
+      fxa_profile_json: {
+        uid: "123",
+        email: "additional@test.com",
+        avatar: "https://profile.stage.mozaws.net/v1/avatar/abc",
+        locale: "en-US,en;q=0.5",
+        amrValues: ["pwd", "email"],
+        avatarDefault: false,
+        metricsEnabled: true,
+        twoFactorAuthentication: false,
+      },
+      breaches_last_shown: new Date("2022-07-08 14:19:00.000-05"),
+      breaches_resolved: { "has-breaches@example.com": [] },
+      breach_stats: {
+        passwords: {
+          count: 1,
+          numResolved: 0,
+        },
+        numBreaches: {
+          count: 2,
+          numResolved: 1,
+          numUnresolved: 1,
+        },
+        monitoredEmails: {
+          count: 1,
+        },
+      },
+      breach_resolution: {
+        useBreachId: true,
+        "test@test.com": {
+          "40": {
+            resolutionsChecked: ["email-addresses", "passwords"],
+          },
+        },
+        "additional@test.com": {
+          "40": {
+            resolutionsChecked: ["email-addresses", "social-security-numbers"],
+          },
+        },
+      },
+      monthly_email_at: new Date("2022-08-07 14:22:00.000-05"),
+      monthly_email_optout: false,
+      signup_language: "fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5",
+    };
+
+    (
+      getUserEmails as jest.Mock<
+        ReturnType<typeof getUserEmails>,
+        Parameters<typeof getUserEmails>
+      >
+    )
+      .mockResolvedValueOnce([
+        {
+          id: -1,
+          subscriber_id: 2,
+          email: "additional@test.com",
+          verified: true,
+          sha1: "",
+        },
+      ])
+      .mockResolvedValueOnce([
+        {
+          id: -1,
+          subscriber_id: 2,
+          email: "additional@test.com",
+          verified: true,
+          sha1: "",
+        },
+      ]);
+
+    (
+      getBreachesForEmail as jest.Mock<
+        ReturnType<typeof getBreachesForEmail>,
+        Parameters<typeof getBreachesForEmail>
+      >
+    )
+      .mockResolvedValueOnce(breachesWithOneResolved)
+      .mockResolvedValueOnce(breachesWithOneResolvedSsn);
+
+    const subBreaches = await getSubBreaches(subscriber, [], "nl");
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].isResolved).toBe(true);
   });

@@ -4,9 +4,8 @@
 
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "../../../../../../functions/server/getServerSession";
 import { View } from "./View";
-import { authOptions } from "../../../../../../api/utils/auth";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../../functions/server/getUserBreaches";
 import {
@@ -31,13 +30,13 @@ import {
 } from "../../../../../../functions/server/getPremiumSubscriptionInfo";
 import { refreshStoredScanResults } from "../../../../../../functions/server/refreshStoredScanResults";
 import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
-import { parseIso8601Datetime } from "../../../../../../../utils/parse";
 import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
-import { getUserId } from "../../../../../../functions/server/getUserId";
 import { checkSession } from "../../../../../../functions/server/checkSession";
+import { isPrePlusUser } from "../../../../../../functions/server/isPrePlusUser";
+import { getUserId } from "../../../../../../functions/server/getUserId";
 
 export default async function DashboardPage() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (!checkSession(session) || !session?.user?.subscriber?.id) {
     return redirect("/");
   }
@@ -46,24 +45,8 @@ export default async function DashboardPage() {
   const countryCode = getCountryCode(headersList);
 
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
-  const brokerScanReleaseDateParts = (
-    process.env.BROKER_SCAN_RELEASE_DATE ?? ""
-  ).split("-");
-  if (brokerScanReleaseDateParts[0] === "") {
-    brokerScanReleaseDateParts[0] = "2023";
-  }
-  const brokerScanReleaseDate = new Date(
-    Date.UTC(
-      Number.parseInt(brokerScanReleaseDateParts[0], 10),
-      Number.parseInt(brokerScanReleaseDateParts[1] ?? "12", 10) - 1,
-      Number.parseInt(brokerScanReleaseDateParts[2] ?? "05", 10),
-    ),
-  );
-
   const hasRunScan = typeof profileId === "number";
-  const isNewUser =
-    (parseIso8601Datetime(session.user.subscriber.created_at)?.getTime() ?? 0) >
-    brokerScanReleaseDate.getTime();
+  const isNewUser = !isPrePlusUser(session.user);
   const isPremiumUser = hasPremium(session.user);
 
   if (hasRunScan) {
@@ -81,7 +64,7 @@ export default async function DashboardPage() {
     (isNewUser &&
       canSubscribeToPremium({
         user: session.user,
-        countryCode: countryCode,
+        countryCode,
       }))
   ) {
     return redirect("/user/welcome/");
@@ -92,7 +75,10 @@ export default async function DashboardPage() {
     typeof profileId === "number"
       ? await getScansCountForProfile(profileId)
       : 0;
-  const subBreaches = await getSubscriberBreaches(session.user);
+  const subBreaches = await getSubscriberBreaches({
+    user: session.user,
+    countryCode,
+  });
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(
     session.user,
@@ -121,7 +107,6 @@ export default async function DashboardPage() {
   return (
     <View
       user={session.user}
-      userId={getUserId(session)}
       isEligibleForPremium={userIsEligibleForPremium}
       isEligibleForFreeScan={userIsEligibleForFreeScan}
       userScanData={latestScan}
@@ -134,6 +119,7 @@ export default async function DashboardPage() {
       scanCount={scanCount}
       totalNumberOfPerformedScans={profileStats?.total}
       isNewUser={isNewUser}
+      telemetryId={getUserId(session)}
     />
   );
 }

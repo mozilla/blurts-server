@@ -753,3 +753,4 @@ floating-banner-dismiss-button-label = No, gratias
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Nove nomine, nove apparentia e ancora plus manieras pro <b>recuperar tu confidentialitate</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Dimitter
+loading-accessibility = Cargamento

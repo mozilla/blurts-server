@@ -4,9 +4,8 @@
 
 import React from "react";
 import { AutomaticRemoveView } from "./AutomaticRemoveView";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
 import { headers } from "next/headers";
-import { authOptions } from "../../../../../../../../../api/utils/auth";
 import { redirect } from "next/navigation";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
@@ -27,7 +26,7 @@ const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
 const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
 
 export default async function AutomaticRemovePage() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
 
   if (!session?.user?.subscriber?.id) {
     redirect("/user/dashboard/");
@@ -37,13 +36,17 @@ export default async function AutomaticRemovePage() {
     session.user.subscriber.id,
   );
 
+  const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const scanData = await getLatestOnerepScanResults(profileId);
-  const subBreaches = await getSubscriberBreaches(session.user);
+  const subBreaches = await getSubscriberBreaches({
+    user: session.user,
+    countryCode,
+  });
   const subscriberEmails = await getSubscriberEmails(session.user);
 
   const data: StepDeterminationData = {
-    countryCode: getCountryCode(headers()),
+    countryCode,
     latestScanData: scanData,
     subscriberBreaches: subBreaches,
     user: session.user,

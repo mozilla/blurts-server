@@ -8,6 +8,9 @@ import { LocaleData } from "../server/l10n";
 export function getLocale(
   localeData: LocaleData[] | ReactLocalization,
 ): string {
+  // In tests, we only load "en", always (see <TestComponentWrapper>), so our
+  // tests will never hit the other test cases, hence the `c8 ignore`:
+  /* c8 ignore next 5 */
   return (
     (Array.isArray(localeData)
       ? localeData[0]?.locale

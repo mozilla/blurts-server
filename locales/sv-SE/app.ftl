@@ -46,6 +46,7 @@ user-add-duplicate-email = Det här e-postadressen har redan lagts till i { -pro
 user-add-duplicate-email-part-2 = Besök { $preferencesLink } för att kontrollera statusen för { $userEmail }.
 user-add-verification-email-just-sent = Ett annat verifieringsmeddelande kan inte skickas så här snabbt. Försök igen senare.
 user-add-unknown-error = Något gick fel när ytterligare en e-postadress skulle läggas till. Försök igen senare.
+user-delete-unknown-error = Något gick fel när en e-postadress skulle tas bort. Försök igen senare.
 error-headline = Fel
 user-verify-token-error = Verifieringstecken är obligatoriskt.
 user-verify-email-report-subject = Ditt rapport för { -product-name }
