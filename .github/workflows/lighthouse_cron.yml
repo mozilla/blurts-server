@@ -13,10 +13,10 @@ jobs:
           urls: |
             https://monitor.mozilla.org
             https://monitor.mozilla.org/breaches
-            https://monitor.mozilla.org/breaches/NazApi
+            https://monitor.mozilla.org/breach-details/NazApi
             https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net/
             https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net/breaches
-            https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net/breaches/NazApi
+            https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net/breach-details/NazApi
           budgetPath: ./budget.json # test performance budgets
           uploadArtifacts: true # save results as an action artifacts
           temporaryPublicStorage: true # upload lighthouse report to the temporary storage
