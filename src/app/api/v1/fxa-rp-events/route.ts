@@ -225,18 +225,20 @@ export async function POST(request: NextRequest) {
         const currentFxAProfile: any = subscriber?.fxa_profile_json;
 
         // merge new event into existing profile data
-        for (const key in updatedProfileFromEvent) {
-          // primary email change
-          if (key === "email") {
-            await updatePrimaryEmail(
-              subscriber,
-              updatedProfileFromEvent[key as keyof ProfileChangeEvent] ||
-                subscriber.primary_email,
-            );
-          }
-          if (currentFxAProfile[key]) {
-            currentFxAProfile[key] =
-              updatedProfileFromEvent[key as keyof ProfileChangeEvent];
+        if (Object.keys(updatedProfileFromEvent).length !== 0) {
+          for (const key in updatedProfileFromEvent) {
+            // primary email change
+            if (key === "email") {
+              await updatePrimaryEmail(
+                subscriber,
+                updatedProfileFromEvent[key as keyof ProfileChangeEvent] ||
+                  subscriber.primary_email,
+              );
+            }
+            if (currentFxAProfile[key]) {
+              currentFxAProfile[key] =
+                updatedProfileFromEvent[key as keyof ProfileChangeEvent];
+            }
           }
         }
 
