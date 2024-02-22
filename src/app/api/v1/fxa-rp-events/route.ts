@@ -310,15 +310,19 @@ export async function POST(request: NextRequest) {
               });
 
               captureException(
-                new Error(`No OneRep profile Id found, subscriber: ${
+                new Error(`User subscribed but no OneRep profile Id found, user: ${
                   subscriber.id
                 }\n
             Event: ${event}\n
             updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`),
               );
               return NextResponse.json(
-                { success: false, message: "failed_activating_subscription" },
-                { status: 500 },
+                {
+                  success: false,
+                  message:
+                    "failed_activating_subscription, user hasn't ran scan yet",
+                },
+                { status: 200 },
               );
             }
 
