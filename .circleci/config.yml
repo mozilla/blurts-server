@@ -148,7 +148,7 @@ workflows:
                     tags:
                         only: /.*/
                     branches:
-                        only: main
+                        only: MNTOR-2985/fix-deploy-remove-pip
 
             - deploy_heroku:
                 name: Deploy main to Heroku
