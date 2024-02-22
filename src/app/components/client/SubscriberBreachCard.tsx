@@ -7,7 +7,7 @@
 import React, { ReactNode } from "react";
 import Link from "next/link";
 import styles from "./ExposureCard.module.scss";
-import { StatusPill, StatusPillType } from "../server/StatusPill";
+import { StatusPill } from "../server/StatusPill";
 import Image, { StaticImageData } from "next/image";
 import {
   ChevronDown,
@@ -32,7 +32,6 @@ export type SubscriberBreachCardProps = {
   resolutionCta: ReactNode;
   isEligibleForPremium: boolean;
   isExpanded: boolean;
-  status: StatusPillType;
   onToggleExpanded: () => void;
 };
 
@@ -202,7 +201,7 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
               {l10n.getString("exposure-card-label-status")}
             </dt>
             <dd>
-              <StatusPill type={props.status} />
+              <StatusPill exposure={subscriberBreach} />
             </dd>
           </dl>
           <button

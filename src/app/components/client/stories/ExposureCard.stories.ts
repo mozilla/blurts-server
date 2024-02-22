@@ -39,7 +39,6 @@ export const DataBrokerActionNeeded: Story = {
   args: {
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemNew,
-    status: "needAction",
   },
 };
 
@@ -47,7 +46,6 @@ export const DataBrokerRemoved: Story = {
   args: {
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemRemoved,
-    status: "fixed",
   },
 };
 
@@ -55,7 +53,6 @@ export const DataBrokerManualRemoved: Story = {
   args: {
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemManualRemoved,
-    status: "fixed",
   },
 };
 
@@ -63,7 +60,6 @@ export const DataBrokerInProgress: Story = {
   args: {
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemInProgress,
-    status: "progress",
   },
 };
 
@@ -71,7 +67,6 @@ export const DataBreachActionNeeded: Story = {
   args: {
     exposureImg: TwitterImage,
     exposureData: BreachMockItemNew,
-    status: "needAction",
   },
 };
 
@@ -79,6 +74,5 @@ export const DataBreachFixed: Story = {
   args: {
     exposureImg: TwitterImage,
     exposureData: BreachMockItemRemoved,
-    status: "needAction",
   },
 };

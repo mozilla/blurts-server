@@ -7,7 +7,7 @@
 import React, { ReactNode, useId } from "react";
 import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./ExposureCard.module.scss";
-import { StatusPill, StatusPillType } from "../server/StatusPill";
+import { StatusPill } from "../server/StatusPill";
 import {
   ChevronDown,
   EmailIcon,
@@ -29,7 +29,6 @@ export type ScanResultCardProps = {
   isPremiumUser: boolean;
   isExpanded: boolean;
   isOnManualRemovePage?: boolean;
-  status: StatusPillType;
   onToggleExpanded: () => void;
 };
 
@@ -230,7 +229,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
               {l10n.getString("exposure-card-label-status")}
             </dt>
             <dd>
-              <StatusPill type={props.status} />
+              <StatusPill exposure={scanResult} />
             </dd>
           </dl>
           <button

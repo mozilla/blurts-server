@@ -10,22 +10,27 @@ import { Exposure, isScanResult } from "../client/ExposureCard";
 export type StatusPillType = "needAction" | "progress" | "fixed";
 
 type DirectTypeProps = { type: StatusPillType };
+type ExposureProps = { exposure: Exposure };
+export type Props = DirectTypeProps | ExposureProps;
 
 // This component just renders HTML without business logic:
 /* c8 ignore start */
-export const StatusPill = (props: DirectTypeProps) => {
+export const StatusPill = (props: Props) => {
   const l10n = useL10n();
+  const type = hasDirectType(props)
+    ? props.type
+    : getExposureStatus(props.exposure);
 
   let stringContent = "";
   let className = "";
 
-  if (props.type === "needAction") {
+  if (type === "needAction") {
     stringContent = l10n.getString("status-pill-action-needed");
     className = "actionNeeded";
-  } else if (props.type === "progress") {
+  } else if (type === "progress") {
     stringContent = l10n.getString("status-pill-progress");
     className = "inProgress";
-  } else if (props.type === "fixed") {
+  } else if (type === "fixed") {
     stringContent = l10n.getString("status-pill-fixed");
     className = "isFixed";
   }
@@ -35,6 +40,9 @@ export const StatusPill = (props: DirectTypeProps) => {
   );
 };
 
+function hasDirectType(props: Props): props is DirectTypeProps {
+  return typeof (props as DirectTypeProps).type === "string";
+}
 /* c8 ignore stop */
 
 export const getExposureStatus = (exposure: Exposure): StatusPillType => {

@@ -7,11 +7,9 @@
 import React, { ReactNode } from "react";
 import { OnerepScanResultRow } from "knex/types/tables";
 import { StaticImageData } from "next/image";
-
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { ScanResultCard } from "./ScanResultCard";
 import { SubscriberBreachCard } from "./SubscriberBreachCard";
-import { StatusPillType } from "../server/StatusPill";
 
 export type Exposure = OnerepScanResultRow | SubscriberBreach;
 
@@ -22,7 +20,6 @@ export function isScanResult(obj: Exposure): obj is OnerepScanResultRow {
 
 export type ExposureCardProps = {
   exposureImg?: StaticImageData;
-  status: StatusPillType;
   exposureData: Exposure;
   locale: string;
   isPremiumBrokerRemovalEnabled: boolean;
