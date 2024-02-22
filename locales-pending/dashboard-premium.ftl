@@ -183,3 +183,9 @@ dashboard-top-banner-your-data-scan-in-progress-all-fixed-description =
     [one] Great work fixing { $exposures_resolved_num } exposure so far! We’re still scanning sites that sell your personal info. This should be done within a few minutes.
     *[other] Great work fixing { $exposures_resolved_num } exposures so far! We’re still scanning sites that sell your personal info. This should be done within a few minutes.
   }
+
+exposure-card-description-info-for-sale-action-needed-manual-fix-page = This site is selling <data_broker_profile>these details about you.</data_broker_profile> Contact the site for removal, or <upsell_link>subscribe to { -brand-monitor-plus }</upsell_link> and we’ll do it for you.
+exposure-card-description-info-for-sale-action-needed-dashboard = This site is publicly publishing and selling <data_broker_profile>these details about you.</data_broker_profile> Remove this profile to protect your privacy.
+exposure-card-description-info-for-sale-in-progress = We’ve started our auto-removal process of <data_broker_profile>this profile</data_broker_profile> to protect your information. <removal_info>Removals typically take 7-14 days.</removal_info>
+exposure-card-description-info-for-sale-fixed = As a { -brand-plus } member, we’ve <data_broker_profile>removed this profile</data_broker_profile> for you and will continually monitor to make sure they don’t add you back.
+exposure-card-description-info-for-sale-fixed-manually-fixed =  You marked this profile as fixed. Be sure you’ve followed all instructions on <data_broker_profile>the site</data_broker_profile> to ensure they remove your personal info.
