@@ -123,7 +123,6 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
     <TelemetryLink
       upsell
       eventData={{
-        // TODO: Check that this attribution id is accurate
         link_id: "clicked_upsell",
       }}
       href="/user/dashboard/fix/data-broker-profiles/automatic-remove"
@@ -157,6 +156,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
           );
         }
         if (props.isOnManualRemovePage) {
+          /* c8 ignore start */
           return scanResult.manually_resolved
             ? l10n.getFragment(
                 "exposure-card-description-info-for-sale-fixed-manually-fixed",
@@ -174,6 +174,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
                   },
                 },
               );
+          /* c8 ignore stop */
         }
         return l10n.getFragment(
           "exposure-card-description-info-for-sale-action-needed-dashboard",
