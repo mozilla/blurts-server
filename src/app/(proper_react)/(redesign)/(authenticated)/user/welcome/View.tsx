@@ -65,7 +65,8 @@ export const View = ({
     // `.update()`, so adding it to the dependencies array would cause an
     // infinite loop. If `session` changes afterwards, we won't need to call
     // `.update` again; after all, it has just been updated.
-  }, [session]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const user = session.data?.user;
   if (!user) {

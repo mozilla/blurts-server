@@ -17,7 +17,6 @@ export const Onboarding: Story = {
   render: (props) => (
     <OnboardingEl
       {...props}
-      user={{ email: "example@example.com" }}
       dataBrokerCount={190}
       breachesTotalCount={678}
       previousRoute={props.previousRoute}

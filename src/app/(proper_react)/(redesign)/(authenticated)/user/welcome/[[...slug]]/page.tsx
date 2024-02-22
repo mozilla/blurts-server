@@ -61,7 +61,6 @@ export default async function Onboarding({ params, searchParams }: Props) {
 
   return (
     <View
-      user={session.user}
       dataBrokerCount={CONST_ONEREP_DATA_BROKER_COUNT}
       breachesTotalCount={allBreachesCount}
       stepId={firstSlug === FreeScanSlug ? "enterInfo" : "getStarted"}
