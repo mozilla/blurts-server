@@ -46,6 +46,7 @@ user-add-duplicate-email = Surel ini telah ditambahkan ke { -product-name }.
 user-add-duplicate-email-part-2 = Kunjungi { $preferencesLink } Anda untuk memeriksa status { $userEmail }.
 user-add-verification-email-just-sent = Surel verifikasi lainnya tidak dapat dikirim secepat ini. Silakan coba lagi nanti.
 user-add-unknown-error = Terjadi kesalahan saat menambahkan alamat surel lainnya. Silakan coba lagi nanti.
+user-delete-unknown-error = Terjadi kesalahan saat menghapus alamat surel. Silakan coba lagi nanti.
 error-headline = Masalah
 user-verify-token-error = Token verifikasi diperlukan.
 user-verify-email-report-subject = Laporan { -product-name } Anda

@@ -3,17 +3,16 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ReactNode } from "react";
-import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
+import { getServerSession } from "../../../functions/server/getServerSession";
 
 import "../../../../client/css/index.css";
-import { authOptions } from "../../../api/utils/auth";
 export type Props = {
   children: ReactNode;
 };
 
 const AdminLayout = async (props: Props) => {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   const admins = process.env.ADMINS?.split(",") ?? [];
   if (
     !session ||

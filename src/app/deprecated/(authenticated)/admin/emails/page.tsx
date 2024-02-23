@@ -3,12 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { notFound, redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "../../../../functions/server/getServerSession";
 import { EmailTemplateType } from "../../../../../utils/email";
-import { authOptions } from "../../../../api/utils/auth";
 
 export default async function EmailRootPage() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
 
   if (!session?.user.email) {
     return notFound();

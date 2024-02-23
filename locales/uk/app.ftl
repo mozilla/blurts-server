@@ -78,6 +78,7 @@ user-add-duplicate-email = Цю адресу електронної пошти �
 user-add-duplicate-email-part-2 = Відвідайте { $preferencesLink }, щоб перевірити стан { $userEmail }.
 user-add-verification-email-just-sent = Наразі не можна повторно надіслати електронний лист із підтвердженням. Спробуйте знову пізніше.ч
 user-add-unknown-error = Під час додавання іншої адреси електронної пошти сталася помилка. Повторіть спробу пізніше.
+user-delete-unknown-error = Під час вилучення електронної адреси сталася помилка. Повторіть спробу пізніше.
 error-headline = Помилка
 user-verify-token-error = Необхідний токен підтвердження.
 user-verify-email-report-subject = Ваш звіт від { -product-name }
@@ -864,6 +865,11 @@ user-menu-trigger-label = Відкрити меню користувача
 user-menu-trigger-tooltip = Профіль
 user-menu-manage-fxa-label = Керуйте своїм { -brand-mozilla-account }
 user-menu-settings-label = Налаштування
+user-menu-settings-tooltip = Сконфігурувати { -brand-mozilla-monitor }
+user-menu-help-label = Довідка та підтримка
+user-menu-help-tooltip = Отримати довідку про користування { -brand-mozilla-monitor }
+user-menu-signout-label = Вийти
+user-menu-signout-tooltip = Вийти з { -brand-mozilla-monitor }
 
 ## Footer
 
@@ -872,6 +878,8 @@ terms-of-service = Умови надання послуг
 privacy-notice = Положення про приватність
 github = { -brand-github }
 footer-nav-all-breaches = Усі витоки
+footer-external-link-faq-label = Поширені запитання
+footer-external-link-faq-tooltip = Поширені запитання
 
 ## Error page
 
@@ -907,3 +915,7 @@ floating-banner-dismiss-button-label = Ні, дякую
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
+banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: нова назва, зовнішній вигляд і ще більше способів <b>відновити вашу приватність</b>.
+banner-monitor-rebrand-dismiss-button-label = OK
+banner-monitor-rebrand-dismiss-button-tooltip = Відхилити
+loading-accessibility = Завантаження

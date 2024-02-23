@@ -63,6 +63,7 @@ user-add-duplicate-email = Αυτό το email έχει ήδη προστεθε�
 user-add-duplicate-email-part-2 = Επισκεφθείτε τις { $preferencesLink } σας για να ελέγξετε την κατάσταση του { $userEmail }.
 user-add-verification-email-just-sent = Δεν μπορεί να αποσταλεί άλλο email επαλήθευσης τόσο γρήγορα. Δοκιμάστε ξανά αργότερα.
 user-add-unknown-error = Κάτι πήγε στραβά με την προσθήκη της άλλης διεύθυνσης email. Δοκιμάστε ξανά αργότερα.
+user-delete-unknown-error = Κάτι πήγε στραβά κατά την αφαίρεση μιας διεύθυνσης email. Παρακαλούμε δοκιμάστε ξανά αργότερα.
 error-headline = Σφάλμα
 user-verify-token-error = Απαιτείται διακριτικό επαλήθευσης.
 user-verify-email-report-subject = Η αναφορά σας για το { -product-name }
