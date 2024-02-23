@@ -146,7 +146,7 @@ export async function onRemoveEmail(email: EmailRow) {
     );
     return;
   }
-  await removeOneSecondaryEmail(email.id);
-  await deleteResolutionsWithEmail(email.subscriber_id, email.email);
+  await removeOneSecondaryEmail(email.id, subscriber.id);
+  await deleteResolutionsWithEmail(subscriber.id, email.email);
   revalidatePath("/user/settings/");
 }
