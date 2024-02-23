@@ -21,7 +21,7 @@ export const TestComponentWrapper = (props: { children: ReactNode }) => {
             process.env.STORYBOOK === "true" ? "storybook" : "test",
         }}
       >
-        <SessionProvider session={null}>
+        <SessionProvider session={{ user: { email: "example@example.com" } }}>
           <ReactAriaI18nProvider locale="en">
             {props.children}
           </ReactAriaI18nProvider>

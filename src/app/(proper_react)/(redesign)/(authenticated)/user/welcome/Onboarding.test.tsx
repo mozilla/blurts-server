@@ -10,6 +10,20 @@ import { axe } from "jest-axe";
 import Meta, { Onboarding } from "./Onboarding.stories";
 import { useTelemetry } from "../../../../../hooks/useTelemetry";
 
+jest.mock("next-auth/react", () => {
+  return {
+    useSession: () => {
+      return {
+        update: jest.fn(),
+        data: {
+          user: {
+            email: "example@example.com",
+          },
+        },
+      };
+    },
+  };
+});
 jest.mock("next/navigation", () => ({
   useRouter: () => ({
     back: jest.fn(),
