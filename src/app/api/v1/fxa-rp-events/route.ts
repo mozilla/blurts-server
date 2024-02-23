@@ -56,8 +56,8 @@ const getJwtPubKey = async () => {
     return keys;
   } catch (e: unknown) {
     logger.error("getJwtPubKey", `Could not get JWT public key: ${jwtKeyUri}`);
-    captureException(
-      new Error(`Could not get JWT public key: ${jwtKeyUri} - ${e as string}`),
+    captureMessage(
+      `Could not get JWT public key: ${jwtKeyUri} - ${e as string}`,
     );
   }
 };
@@ -309,12 +309,12 @@ export async function POST(request: NextRequest) {
                 subscriber_id: subscriber.id,
               });
 
-              captureException(
-                new Error(`User subscribed but no OneRep profile Id found, user: ${
+              captureMessage(
+                `User subscribed but no OneRep profile Id found, user: ${
                   subscriber.id
                 }\n
             Event: ${event}\n
-            updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`),
+            updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`,
               );
               return NextResponse.json(
                 {
@@ -373,14 +373,12 @@ export async function POST(request: NextRequest) {
                 subscriber_id: subscriber.id,
               });
 
-              captureException(
-                new Error(`No OneRep profile Id found, subscriber: ${
-                  subscriber.id
-                }\n
+              captureMessage(
+                `No OneRep profile Id found, subscriber: ${subscriber.id}\n
                         Event: ${event}\n
                         updateFromEvent: ${JSON.stringify(
                           updatedSubscriptionFromEvent,
-                        )}`),
+                        )}`,
               );
               return NextResponse.json(
                 { success: false, message: "failed_activating_subscription" },
@@ -407,10 +405,10 @@ export async function POST(request: NextRequest) {
             });
           }
         } catch (e) {
-          captureException(
-            new Error(`${(e as Error).message}\n
+          captureMessage(
+            `${(e as Error).message}\n
           Event: ${event}\n
-          updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`),
+          updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`,
           );
           logger.error("failed_activating_subscription", {
             subscriber_id: subscriber.id,
