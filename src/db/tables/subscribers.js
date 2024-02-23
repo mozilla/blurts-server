@@ -360,7 +360,7 @@ async function deleteUnverifiedSubscribers () {
  * Delete subscriber when a FxA user id is provided
  * Also deletes all the additional email addresses associated with the account
  *
- * @param {any} sub subscriber object
+ * @param {import("knex/types/tables").SubscriberRow | import("../../next-auth.js").SerializedSubscriber} sub subscriber object
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */

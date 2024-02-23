@@ -798,3 +798,43 @@ describe("When Premium is available", () => {
     jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
   });
 });
+
+it("does not show a confirmaton message if the user has just deleted their account", () => {
+  document.cookie = "justDeletedAccount=justDeletedAccount; max-age=0";
+
+  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  render(<ComposedDashboard />);
+
+  const alert = screen.queryByRole("alert");
+
+  expect(alert).not.toBeInTheDocument();
+});
+
+it("shows a confirmaton message if the user has just deleted their account", () => {
+  document.cookie = "justDeletedAccount=justDeletedAccount";
+
+  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  render(<ComposedDashboard />);
+
+  const alert = screen.getByRole("alert");
+  const confirmationMessage = within(alert).getByText(
+    "Your Monitor account is now permanently deleted.",
+  );
+
+  expect(alert).toBeInTheDocument();
+  expect(confirmationMessage).toBeInTheDocument();
+});
+
+it("hides the 'account deletion' confirmation message when the user dismisses it", async () => {
+  const user = userEvent.setup();
+  document.cookie = "justDeletedAccount=justDeletedAccount";
+
+  const ComposedDashboard = composeStory(LandingNonUs, Meta);
+  render(<ComposedDashboard />);
+
+  const alert = screen.getByRole("alert");
+  const dismissButton = within(alert).getByRole("button", { name: "Dismiss" });
+  await user.click(dismissButton);
+
+  expect(alert).not.toBeInTheDocument();
+});

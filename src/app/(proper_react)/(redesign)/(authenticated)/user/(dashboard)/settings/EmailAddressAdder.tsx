@@ -134,7 +134,6 @@ const EmailAddressAddForm = () => {
             setHasPressedButton(true);
           }}
           isLoading={hasPressedButton}
-          aria-live="polite"
         >
           {l10n.getString("add-email-send-verification-button")}
         </Button>

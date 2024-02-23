@@ -9,7 +9,6 @@ import { captureException, captureMessage } from "@sentry/node";
 
 import { logger } from "../../../functions/server/logging";
 import {
-  deleteSubscriber,
   getSubscriberByFxaUid,
   updateFxAProfileData,
   updatePrimaryEmail,
@@ -24,6 +23,7 @@ import { bearerToken } from "../../utils/auth";
 import { revokeOAuthTokens } from "../../../../utils/fxa";
 import appConstants from "../../../../appConstants";
 import { changeSubscription } from "../../../functions/server/changeSubscription";
+import { deleteAccount } from "../../../functions/server/deleteAccount";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -178,34 +178,7 @@ export async function POST(request: NextRequest) {
   for (const event in decodedJWT?.events) {
     switch (event) {
       case FXA_DELETE_USER_EVENT: {
-        logger.info("fxa_delete_user", {
-          subscriber: subscriber.id,
-          event,
-        });
-
-        // get profile id
-        const oneRepProfileId = await getOnerepProfileId(subscriber.id);
-        if (oneRepProfileId) {
-          try {
-            await deactivateProfile(oneRepProfileId);
-          } catch (ex) {
-            if (
-              (ex as Error).message ===
-              "Failed to deactivate OneRep profile: [403] [Forbidden]"
-            )
-              logger.error("profile_already_opted_out", {
-                subscriber_id: subscriber.id,
-                exception: ex,
-              });
-          }
-
-          logger.info("deactivated_onerep_profile", {
-            subscriber_id: subscriber.id,
-          });
-        }
-
-        // delete user events only have keys. Keys point to empty objects
-        await deleteSubscriber(subscriber);
+        await deleteAccount(subscriber);
         break;
       }
       case FXA_PROFILE_CHANGE_EVENT: {
