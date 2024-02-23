@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ReactNode } from "react";
-import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Script from "next/script";
 
@@ -16,18 +15,18 @@ import AppConstants from "../../../../appConstants.js";
 import MonitorLogo from "../../../../client/images/monitor-logo-transparent@2x.webp";
 import MozillaLogo from "../../../../client/images/moz-logo-1color-white-rgb-01.svg";
 import { getL10n } from "../../../functions/server/l10n";
-import { authOptions } from "../../../api/utils/auth";
 import { getNonce } from "../../functions/server/getNonce";
 import { PageLoadEvent } from "../../../components/client/PageLoadEvent";
 import { getExperiments } from "../../../functions/server/getExperiments";
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
+import { getServerSession } from "../../../functions/server/getServerSession";
 
 export type Props = {
   children: ReactNode;
 };
 
 const MainLayout = async (props: Props) => {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (!session?.user?.subscriber) {
     return <SignInButton autoSignIn />;
   }

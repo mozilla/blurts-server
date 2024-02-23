@@ -33,7 +33,9 @@ export const ENV_URLS = {
   prod: "https://monitor.mozilla.org",
 };
 
-export const setEnvVariables = (email: string) => {
+export const setEnvVariables = (
+  email = process.env.E2E_TEST_ACCOUNT_EMAIL as string,
+) => {
   process.env["E2E_TEST_ENV"] =
     (process.env.E2E_TEST_ENV as string) ?? ENV.stage;
   process.env["E2E_TEST_ACCOUNT_EMAIL"] = email;
