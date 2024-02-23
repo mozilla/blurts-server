@@ -161,6 +161,9 @@ export async function createProfile(
     updated_at: ISO8601DateString;
     url: string;
   } = await response.json();
+
+  logger.info("onerep_profile_created");
+
   return savedProfile.id;
 }
 
