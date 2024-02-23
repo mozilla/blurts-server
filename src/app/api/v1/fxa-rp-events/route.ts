@@ -318,9 +318,8 @@ export async function POST(request: NextRequest) {
               );
               return NextResponse.json(
                 {
-                  success: false,
-                  message:
-                    "failed_activating_subscription, user hasn't ran scan yet",
+                  success: true,
+                  message: "failed_activating_subscription_profile_id_missing",
                 },
                 { status: 200 },
               );
