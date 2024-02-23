@@ -2,12 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../../../utils/auth";
 import { NextRequest, NextResponse } from "next/server";
 
 import { logger } from "../../../../../functions/server/logging";
 
+import { getServerSession } from "../../../../../functions/server/getServerSession";
 import AppConstants from "../../../../../../appConstants";
 import {
   getOnerepProfileId,
@@ -37,7 +36,7 @@ export interface ScanProgressBody {
 export async function GET(
   _req: NextRequest,
 ): Promise<NextResponse<ScanProgressBody> | NextResponse<unknown>> {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (typeof session?.user?.subscriber?.fxa_uid === "string") {
     try {
       const subscriber = await getSubscriberByFxaUid(

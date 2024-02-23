@@ -2,15 +2,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
+import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
 import { SecurityRecommendationsLayout } from "../SecurityRecommendationsLayout";
 import {
   SecurityRecommendationTypes,
   securityRecommendationTypes,
 } from "../securityRecommendationsData";
-import { authOptions } from "../../../../../../../../../api/utils/auth";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getUserBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
@@ -28,7 +27,7 @@ interface SecurityRecommendationsProps {
 export default async function SecurityRecommendations({
   params,
 }: SecurityRecommendationsProps) {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }

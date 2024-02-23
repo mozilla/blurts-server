@@ -46,6 +46,7 @@ user-add-duplicate-email = Este correo electrónico ya se agregó a { -product-n
 user-add-duplicate-email-part-2 = Andá a tu { $preferencesLink } para verificar el estado de { $userEmail }.
 user-add-verification-email-just-sent = No se puede enviar otro correo electrónico de verificación tan rápido. Intentalo más tarde.
 user-add-unknown-error = Algo salió mal al agregar otra dirección de correo electrónico. Intentalo más tarde.
+user-delete-unknown-error = Algo salió mal al eliminar una dirección de correo electrónico. Inténtelo más tarde.
 error-headline = Error
 user-verify-token-error = Se requiere identificador de verificación.
 user-verify-email-report-subject = Tu informe de { -product-name }

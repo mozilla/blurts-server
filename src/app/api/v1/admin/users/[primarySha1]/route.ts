@@ -3,10 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { Profile, getServerSession } from "next-auth";
+import { Profile } from "next-auth";
 import { SubscriberRow } from "knex/types/tables";
+import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { logger } from "../../../../../functions/server/logging";
-import { isAdmin, authOptions } from "../../../../utils/auth";
+import { isAdmin } from "../../../../utils/auth";
 import {
   deleteOnerepProfileId,
   deleteSubscriber,
@@ -50,7 +51,7 @@ export async function GET(
   req: NextRequest,
   { params }: { params: { primarySha1: string } },
 ) {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in as admin
     try {
@@ -120,7 +121,7 @@ export async function PUT(
   req: NextRequest,
   { params }: { params: { primarySha1: string } },
 ) {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in as admin
     try {

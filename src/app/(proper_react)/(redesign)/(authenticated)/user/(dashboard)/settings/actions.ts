@@ -5,8 +5,8 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { getServerSession } from "next-auth";
 import { SubscriberRow } from "knex/types/tables";
+import { getServerSession } from "../../../../../../functions/server/getServerSession";
 import {
   EmailRow,
   addSubscriberUnverifiedEmailHash,
@@ -22,7 +22,6 @@ import { sendVerificationEmail } from "../../../../../../api/utils/email";
 import { getL10n } from "../../../../../../functions/server/l10n";
 import { logger } from "../../../../../../functions/server/logging";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
-import { authOptions } from "../../../../../../api/utils/auth";
 
 export type AddEmailFormState =
   | { success?: never }
@@ -38,7 +37,7 @@ export async function onAddEmail(
   formData: FormData,
 ): Promise<AddEmailFormState> {
   const l10n = getL10n();
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (!session?.user.subscriber?.fxa_uid) {
     return {
       success: false,
@@ -131,7 +130,7 @@ export async function onAddEmail(
 
 export async function onRemoveEmail(email: EmailRow) {
   const l10n = getL10n();
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (!session?.user.subscriber?.fxa_uid) {
     logger.error(
       `Tried to delete email [${email.id}] without an active session.`,

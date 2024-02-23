@@ -4,9 +4,8 @@
 
 import React from "react";
 import { AutomaticRemoveView } from "./AutomaticRemoveView";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
 import { headers } from "next/headers";
-import { authOptions } from "../../../../../../../../../api/utils/auth";
 import { redirect } from "next/navigation";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
@@ -27,7 +26,7 @@ const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
 const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
 
 export default async function AutomaticRemovePage() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
 
   if (!session?.user?.subscriber?.id) {
     redirect("/user/dashboard/");

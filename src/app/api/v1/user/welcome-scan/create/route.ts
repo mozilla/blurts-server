@@ -2,12 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../../../utils/auth";
 import { NextRequest, NextResponse } from "next/server";
 
 import { logger } from "../../../../../functions/server/logging";
-
+import { getServerSession } from "../../../../../functions/server/getServerSession";
 import {
   createProfile,
   createScan,
@@ -42,7 +40,7 @@ export interface UserInfo {
 export async function POST(
   req: NextRequest,
 ): Promise<NextResponse<WelcomeScanBody> | NextResponse<unknown>> {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (!session?.user?.subscriber) {
     throw new Error("No fxa_uid found in session");
   }

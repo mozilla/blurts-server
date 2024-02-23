@@ -12,8 +12,7 @@ import MonitorLogo from "../../../client/images/monitor-logo-transparent@2x.webp
 import MozillaLogo from "../../../client/images/moz-logo-1color-white-rgb-01.svg";
 import { SignInButton } from "../components/client/SignInButton";
 import { getL10n } from "../../functions/server/l10n";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../api/utils/auth";
+import { getServerSession } from "../../functions/server/getServerSession";
 import { PageLoadEvent } from "../../components/client/PageLoadEvent";
 import { getExperiments } from "../../functions/server/getExperiments";
 import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
@@ -27,7 +26,7 @@ const GuestLayout = async (props: Props) => {
   const l10n = getL10n();
 
   // If the user is logged in, use UUID derived from FxA UID as Nimbus user ID.
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   const userId = getUserId(session);
 
   if (!userId) {

@@ -22,23 +22,21 @@ function ComboBox(props: ComboBoxProps) {
   const listBoxRef = useRef(null);
   const popoverRef = useRef(null);
   const state = useComboBoxState({ ...props });
-  const {
-    inputProps,
-    listBoxProps,
-    labelProps,
-    errorMessageProps,
-    validationErrors,
-  } = useComboBox(
-    {
-      ...props,
-      inputRef,
-      listBoxRef,
-      popoverRef,
-    },
-    state,
-  );
+  const { inputProps, listBoxProps, labelProps, errorMessageProps } =
+    useComboBox(
+      {
+        ...props,
+        inputRef,
+        listBoxRef,
+        popoverRef,
+      },
+      state,
+    );
 
   useEffect(() => {
+    /* c8 ignore next 5 */
+    // This does get hit by unit tests, but for some reason, since the Node
+    // 20.10 upgrade, it (and this comment) no longer gets marked as such:
     if (inputProps.value === "") {
       state.close();
     }
@@ -52,8 +50,10 @@ function ComboBox(props: ComboBoxProps) {
           {isRequired ? (
             <span aria-hidden="true">*</span>
           ) : (
-            // TODO: Add unit test when changing this code:
-            /* c8 ignore next */
+            /* c8 ignore next 4 */
+            // This does get hit by unit tests, but for some reason, since the
+            // Node 20.10 upgrade, it (and this comment) no longer gets marked
+            // as such:
             ""
           )}
         </label>
@@ -61,44 +61,39 @@ function ComboBox(props: ComboBoxProps) {
           {...inputProps}
           ref={inputRef}
           className={`${styles.inputField} ${
-            !inputProps.value ? styles.noValue : ""
-          } ${isInvalid ? styles.hasError : ""}`}
+            !inputProps.value
+              ? /* c8 ignore next 4 */
+                // This does get hit by unit tests, but for some reason, since
+                // the Node 20.10 upgrade, it (and this comment) no longer gets
+                // marked as such:
+                styles.noValue
+              : ""
+          } ${isInvalid ? /* c8 ignore next */ styles.hasError : ""}`}
         />
-        {isInvalid && (
+        {isInvalid && typeof errorMessage === "string" && (
           <div {...errorMessageProps} className={styles.inputMessage}>
-            {
-              // We always pass in a string at the time of writing, so we can't
-              // hit the "else" path with tests:
-              /* c8 ignore next 3 */
-              typeof errorMessage === "string"
-                ? errorMessage
-                : validationErrors.join(" ")
-            }
+            {errorMessage}
           </div>
         )}
       </div>
-      {
-        // TODO: Add unit test when changing this code:
-        /* c8 ignore next */
-        state.isOpen && (
-          <Popover
-            offset={8}
-            popoverRef={popoverRef}
-            state={state}
-            triggerRef={inputRef}
-          >
-            <div className={styles.popoverList}>
-              <ListBox
-                {...listBoxProps}
-                listBoxRef={listBoxRef}
-                listPlaceholder={listPlaceholder}
-                parentRef={inputRef}
-                state={state}
-              />
-            </div>
-          </Popover>
-        )
-      }
+      {state.isOpen && (
+        <Popover
+          offset={8}
+          popoverRef={popoverRef}
+          state={state}
+          triggerRef={inputRef}
+        >
+          <div className={styles.popoverList}>
+            <ListBox
+              {...listBoxProps}
+              listBoxRef={listBoxRef}
+              listPlaceholder={listPlaceholder}
+              parentRef={inputRef}
+              state={state}
+            />
+          </div>
+        </Popover>
+      )}
     </>
   );
 }

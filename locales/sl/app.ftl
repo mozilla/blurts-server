@@ -66,6 +66,7 @@ user-add-duplicate-email = Ta e-poštni naslov je že bil dodan v { -product-nam
 user-add-duplicate-email-part-2 = Obiščite { $preferencesLink } in preverite stanje za { $userEmail }.
 user-add-verification-email-just-sent = Drugega potrditvenega sporočila ni mogoče poslati tako hitro. Poskusite znova pozneje.
 user-add-unknown-error = Pri dodajanju drugega e-poštnega naslova je prišlo do napake. Poskusite znova pozneje.
+user-delete-unknown-error = Pri odstranjevanju e-poštnega naslova je prišlo do napake. Poskusite znova pozneje.
 error-headline = Napaka
 user-verify-token-error = Zahtevan je potrditveni žeton.
 user-verify-email-report-subject = Vaše poročilo { -product-name }

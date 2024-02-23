@@ -46,6 +46,7 @@ user-add-duplicate-email = Dit e-mailadres is al aan { -product-name } toegevoeg
 user-add-duplicate-email-part-2 = Bezoek uw { $preferencesLink } om de status van { $userEmail } te controleren.
 user-add-verification-email-just-sent = Zo snel kan een ander verificatie-e-mailbericht niet worden verzonden. Probeer het later opnieuw.
 user-add-unknown-error = Er is iets misgegaan bij het toevoegen van een ander e-mailadres. Probeer het later opnieuw.
+user-delete-unknown-error = Er is iets misgegaan bij het verwijderen van een e-mailadres. Probeer het later opnieuw.
 error-headline = Fout
 user-verify-token-error = Verificatietoken is vereist.
 user-verify-email-report-subject = Uw { -product-name }-rapport
