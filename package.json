@@ -91,7 +91,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.0",
-    "@playwright/test": "^1.40.1",
+    "@playwright/test": "^1.41.2",
     "@storybook/addon-a11y": "^7.6.16",
     "@storybook/addon-essentials": "^7.6.16",
     "@storybook/addon-interactions": "^7.6.16",
