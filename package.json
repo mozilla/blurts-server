@@ -55,7 +55,7 @@
     "@fluent/react": "^0.15.2",
     "@google-cloud/logging-winston": "^6.0.0",
     "@google-cloud/pubsub": "^4.3.2",
-    "@grpc/grpc-js": "1.9.13",
+    "@grpc/grpc-js": "1.10.1",
     "@leeoniya/ufuzzy": "^1.0.14",
     "@mozilla/glean": "4.0.0",
     "@next/third-parties": "^14.1.0",
