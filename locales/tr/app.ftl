@@ -35,7 +35,7 @@ error-to-finish-verifying = { -product-name } için bu e-postayı onaylamak üze
 home-title = { -product-name }
 home-not-found = Sayfa bulunamadı.
 oauth-invalid-session = Geçersiz oturum
-scan-title = { -product-name }: Tarama Sonuçları
+scan-title = { -product-name } : Tarama Sonuçları
 user-add-invalid-email = Geçersiz e-posta
 user-add-too-many-emails = Azami sayıda e-posta adresini gözlemliyorsunuz.
 user-add-email-verify-subject = { -product-name } aboneliğinizi doğrulayın.
@@ -46,6 +46,7 @@ user-add-duplicate-email = Bu e-posta zaten { -product-name }'e eklenmiş.
 user-add-duplicate-email-part-2 = { $userEmail } adresinin durumunu kontrol etmek için { $preferencesLink }inizi ziyaret edin.
 user-add-verification-email-just-sent = Bu kadar sıra sürede başka doğrulama e-postası gönderemiyoruz. Lütfen daha sonra yeniden deneyin.
 user-add-unknown-error = Başka bir e-posta adresi eklenirken bir sorun oluştu. Lütfen daha sonra yeniden deneyin.
+user-delete-unknown-error = Bir e-posta adresi kaldırılırken bir sorun oluştu. Lütfen daha sonra yeniden deneyin.
 error-headline = Hata
 user-verify-token-error = Doğrulama jetonu gerekli.
 user-verify-email-report-subject = { -product-name } raporunuz
@@ -92,7 +93,7 @@ fxa-pwt-summary-4 =
     1Password, LastPass, Dashlane ve Bitwarden gibi parola yöneticileri parolalarınızı sizin için 
     saklayabilir web sitelerine otomatik giriş yapmanızı sağlayabilir. Ayrıca kaliteli parolalar oluşturmanıza yardımcı olurlar.
 fxa-pwt-summary-6 = Veri ihlalleri dur durak bilmiyor. Kişisel bilgileriniz yeni bir veri ihlalinde karşımıza çıkarsa { -product-name } size uyarı gönderir. Böylece hemen eyleme geçerek hesaplarınızı koruyabilirsiniz.
-fxa-what-to-do-blurb-1 = Siteye giriş yapamıyorsanız siteyle iletişim kurarak parolanızı nasıl değiştirebileceğinizi öğrenin. Tanıdık gelmeyen bir hesap mı gördünüz? Verielriniz satılmış veya başka bir siteyle paylaşılmış olabilir. Unuttuğunuz bir hesap veya siz üye olduktan sonra adı değişmiş bir site de olabilir.
+fxa-what-to-do-blurb-1 = Siteye giriş yapamıyorsanız siteyle iletişim kurarak parolanızı nasıl değiştirebileceğinizi öğrenin. Tanıdık gelmeyen bir hesap mı gördünüz? Verileriniz satılmış veya başka bir siteyle paylaşılmış olabilir. Unuttuğunuz bir hesap veya siz üye olduktan sonra adı değişmiş bir site de olabilir.
 fxa-what-to-do-subhead-2 = Ele geçirilen parolanızı artık hiçbir yerde kullanmayın ve bu parolayı kullandığınız her yerde değiştirin.
 fxa-wtd-blurb-2 =
     Hacker'lar ele geçirdikleri parolayı ve e-posta adresinizi kullanarak diğer hesaplarınıza girmeyi de deneyebilir.
@@ -147,18 +148,21 @@ unverified-breach-plural = Doğrulanmamış ihlaller
 spam-list-breach-plural = Spam listesi ihlalleri
 what-data = Ele geçirilen veriler:
 sensitive-sites = { -product-name } hassas siteleri nasıl ele alıyor?
-sensitive-sites-copy = { -product-name } bu tür veri ihlallerine dahil olan hesapları yalnızca e-posta adresinizi onaylandıktan gösterir. Yani bilgilerinizin bu veri ihlalinde ele geçirilip geçirilmediğini yalnızca siz görebilirsiniz (e-posta hesabınıza erişebilen başka birisi yoksa).
+sensitive-sites-copy = { -product-name } bu tür veri ihlallerine dahil olan hesapları yalnızca e-posta adresiniz onaylandıktan sonra gösterir. Yani bilgilerinizin bu veri ihlalinde ele geçirilip geçirilmediğini yalnızca siz görebilirsiniz (e-posta hesabınıza erişebilen başka birisi yoksa).
 delayed-reporting-headline = Bu ihlalin bildirilmesi neden bu kadar uzun sürdü?
 delayed-reporting-copy =
     Ele geçirilen bilgilerin dark web'de gün yüzüne çıkması bazen aylar veya yıllar sürebilir. 
     İhlaller keşfedildikten ve doğrulandıktan hemen sonra veritabanımıza eklenir.
 about-fxm-headline = { -product-name } hakkında
-about-fxm-blurb = Çevrimiçi hesaplarınızın veri ihlallerine dahil olduğunda { -product-name } sizi uyarır. Verilerinizin ele geçirilip geçirilmediğini öğrenin, yeni ihlaller yaşandığında bildirim alın ve çevrimiçi hesaplarınızı korumak için gereken adımları atın. { -product-name }, { -brand-Mozilla } tarafından sağlanmaktadır.
+about-fxm-blurb = Çevrimiçi hesaplarınız veri ihlallerine dahil olduğunda { -product-name } sizi uyarır. Verilerinizin ele geçirilip geçirilmediğini öğrenin, yeni ihlaller yaşandığında bildirim alın ve çevrimiçi hesaplarınızı korumak için gereken adımları atın. { -product-name }, { -brand-Mozilla } tarafından sağlanmaktadır.
 fxm-warns-you = E-posta adresiniz çevrimiçi bir veri ihlalinde yer alırsa { -product-name } sizi uyarır. Bilgilerinizin ele geçirilip geçirilmediğini görün, hesaplarınızı nasıl daha iyi koruyabileceğinizi öğrenin ve e-posta adresiniz yeni veri ihlallerine karışırsa bildirim alın.
 # How Firefox Monitor works
 how-fxm-works = { -product-name } nasıl çalışır?
 how-fxm-1-headline = Temel sorgulama yap
-how-fxm-1-blurb = Bilgileriniz 2007'den beri gerçeklemiş veri ihlallerinde arayın. Temel sorgulama çoğu veri ihlalini tarar ancak hassas kişisel veri içerenleri hariç tutar.
+how-fxm-1-blurb =
+    Bilgilerinizi 2007’den beri gerçeklemiş veri ihlallerinde arayın.
+    Temel sorgulama çoğu veri ihlalini tarar
+    fakat hassas kişisel veri içerenleri hariç tutar.
 how-fxm-2-headline = İhlal takibi için kaydolun
 how-fxm-2-blurb = Yeni ihlallerden haberdar olmak için { -brand-fxa } açın. E-postanızı doğruladıktan sonra hassas ihlaller de dahil olmak üzere geçmiş veri ihlallerini içeren tam raporunuzu göndereceğiz.
 how-fxm-3-headline = Tarayıcınızdan bildirim alın
@@ -180,7 +184,7 @@ avoid-personal-info-blurb = Doğum günleri, adresler ve akrabalarınızın adla
 
 change-pw = Parolanızı değiştirin
 change-pw-site = Bu sitedeki parolanızı değiştirin
-even-for-old = Eski hesaplarınızın bile parolalarınızı güncellemeniz önemli.
+even-for-old = Eski hesaplarınızın bile parolalarını güncellemeniz önemli.
 make-new-pw-unique = Yeni parolanız eskisinden ve tüm parolalarınızdan farklı olsun
 strength-of-your-pw = Parolalarınızın kalitesi, internetteki güvenliğinizi doğrudan etkiler.
 create-strong-passwords = Güçlü parolalar nasıl oluşturulur?
@@ -241,7 +245,10 @@ your-info-was-discovered-headline = Bilgileriniz yeni bir veri ihlalinde tespit 
 your-info-was-discovered-blurb = E-posta adresiniz bir veri ihlalinde karşımıza çıkarsa size haber vermemiz için { -product-name }’e kaydolmuştunuz. İşte bu ihlal hakkında öğrendiklerimiz…
 what-to-do-after-breach = Veri ihlalinden sonra ne yapılmalı?
 ba-next-step-1 = Parolanızı güçlü ve benzersiz bir parolayla değiştirin.
-ba-next-step-blurb-1 = Güçlü bir parola büyük ve küçük harflerin, özel karakterlerin ve rakamların bileşiminden oluşur. Adresiniz, doğum tarihiz ve akrabalarınızın adları gibi kişisel bilgileri içermez.
+ba-next-step-blurb-1 =
+    Güçlü bir parola büyük ve küçük harflerin, özel karakterlerin ve
+    rakamların birleşiminden oluşur. Adresiniz, doğum tarihiniz ve
+    akrabalarınızın adları gibi kişisel bilgileri içermez.
 ba-next-step-2 = Ele geçirilen parolayı kullanmayı tamamen bırakın.
 ba-next-step-blurb-2 = Siber suçlular dark web'de parolanızı bulabilir ve bu parolayı diğer hesaplarınıza giriş yapmak için kullanabilirler. Hesaplarınızı korumanın en iyi yolu her biri için benzersiz parolalar kullanmaktır.
 ba-next-step-3 = Daha iyi parolalar oluşturma ve onları güvende tutma konusunda yardım alın.

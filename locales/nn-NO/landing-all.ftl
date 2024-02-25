@@ -16,6 +16,7 @@ landing-all-hero-image-chart-label = eksponeringar
 
 # Non-US FAQ
 
+landing-all-close-faq-alt = Lat att
 
 # Social proof
 

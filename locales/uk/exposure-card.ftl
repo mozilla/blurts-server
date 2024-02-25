@@ -37,6 +37,7 @@ exposure-card-cta = Усунути всі розкриття
 exposure-card-label-company-logo = Логотип компанії
 exposure-card-label-company = Компанія
 exposure-card-label-exposure-type = Тип розкриття
+exposure-card-label-date-found = Дата виявлення
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Стан
 # Variables:
