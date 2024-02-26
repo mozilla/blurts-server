@@ -131,7 +131,7 @@
     "lint-staged": "^15.2.0",
     "prettier": "3.2.5",
     "react-intersection-observer": "^9.8.1",
-    "sass": "^1.71.0",
+    "sass": "^1.71.1",
     "storybook": "^7.6.17",
     "stylelint": "^16.2.1",
     "stylelint-config-recommended-scss": "^14.0.0",
