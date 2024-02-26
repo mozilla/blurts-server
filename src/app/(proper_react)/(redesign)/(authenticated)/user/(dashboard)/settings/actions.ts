@@ -5,8 +5,8 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { getServerSession } from "next-auth";
 import { SubscriberRow } from "knex/types/tables";
+import { getServerSession } from "../../../../../../functions/server/getServerSession";
 import {
   EmailRow,
   addSubscriberUnverifiedEmailHash,
@@ -129,23 +129,41 @@ export async function onAddEmail(
 }
 
 export async function onRemoveEmail(email: EmailRow) {
+  const l10n = getL10n();
   const session = await getServerSession();
   if (!session?.user.subscriber?.fxa_uid) {
     logger.error(
       `Tried to delete email [${email.id}] without an active session.`,
     );
-    return;
+    return {
+      success: false,
+      error: "delete-email-without-active-session",
+      errorMessage: `User tried to delete email without an active session.`,
+    };
   }
   const subscriber = (await getSubscriberByFxaUid(
     session.user.subscriber.fxa_uid,
   )) as SubscriberRow | null;
   if (email.subscriber_id !== subscriber?.id) {
     logger.error(
-      `Subscriber [${subscriber?.id}] tried to delete email [${email.id}], which belongs to another subscriber.`,
+      `User [${subscriber?.id}] tried to delete email [${email.id}], which belongs to another user.`,
     );
-    return;
+    return {
+      success: false,
+      error: "delete-email-without-permission",
+      errorMessage: `User tried to delete an email that belongs to another user.`,
+    };
   }
-  await removeOneSecondaryEmail(email.id);
-  await deleteResolutionsWithEmail(email.subscriber_id, email.email);
-  revalidatePath("/user/settings/");
+
+  try {
+    await removeOneSecondaryEmail(email.id, subscriber.id);
+    await deleteResolutionsWithEmail(subscriber.id, email.email);
+    revalidatePath("/user/settings/");
+  } catch (e) {
+    return {
+      success: false,
+      error: "delete-email-error",
+      errorMessage: l10n.getString("user-delete-unknown-error"),
+    };
+  }
 }

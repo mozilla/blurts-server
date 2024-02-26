@@ -41,9 +41,13 @@ ssn-modal-ok = OK
 
 # No high risk breaches found
 
+high-risk-breach-none-sub-description-cc-number = Nummer på betalingskort
+high-risk-breach-none-sub-description-pin = PIN-kodar
+high-risk-breach-none-continue = Hald fram
 
 # Security recommendations
 
+security-recommendation-steps-title = Her er våre råd:
 security-recommendation-steps-cta-label = Skjønar!
 
 # Phone security recommendation

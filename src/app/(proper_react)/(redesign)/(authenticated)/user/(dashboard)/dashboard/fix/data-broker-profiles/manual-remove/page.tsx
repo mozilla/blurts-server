@@ -3,13 +3,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
 import { headers } from "next/headers";
+import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
 import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getUserBreaches";
 import { ManualRemoveView } from "./ManualRemoveView";
-import { authOptions } from "../../../../../../../../../api/utils/auth";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
@@ -17,15 +16,19 @@ import { isEligibleForPremium } from "../../../../../../../../../functions/serve
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 export default async function ManualRemovePage() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
 
   if (!session?.user?.subscriber?.id) {
     redirect("/user/dashboard/");
   }
 
+  const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const scanData = await getLatestOnerepScanResults(profileId);
-  const subBreaches = await getSubscriberBreaches(session.user);
+  const subBreaches = await getSubscriberBreaches({
+    user: session.user,
+    countryCode,
+  });
   const subscriberEmails = await getSubscriberEmails(session.user);
   const enabledFlags = await getEnabledFeatureFlags({
     email: session.user.email,
@@ -36,12 +39,9 @@ export default async function ManualRemovePage() {
       breaches={subBreaches}
       scanData={scanData}
       isPremiumUser={hasPremium(session.user)}
-      isEligibleForPremium={isEligibleForPremium(
-        getCountryCode(headers()),
-        enabledFlags,
-      )}
+      isEligibleForPremium={isEligibleForPremium(countryCode, enabledFlags)}
       user={session.user}
-      countryCode={getCountryCode(headers())}
+      countryCode={countryCode}
       subscriberEmails={subscriberEmails}
     />
   );

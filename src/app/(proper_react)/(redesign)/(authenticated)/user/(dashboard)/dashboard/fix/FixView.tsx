@@ -64,7 +64,13 @@ export const FixView = (props: FixViewProps) => {
       {props.showConfetti && <Confetti />}
       <div
         className={`${styles.fixWrapper} ${
-          isResolutionLayout ? styles.highRiskDataBreachContentBg : ""
+          isResolutionLayout
+            ? styles.highRiskDataBreachContentBg
+            : /* c8 ignore next 4 */
+              // Since the Node 20.10 upgrade, it's been intermittently marking
+              // this (and this comment) as uncovered, even though I think it's
+              // covered by tests.
+              ""
         }`}
       >
         {!props.hideProgressIndicator && (

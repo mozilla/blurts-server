@@ -3,8 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { headers } from "next/headers";
-import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import { getServerSession } from "../../../functions/server/getServerSession";
 import { getCountryCode } from "../../../functions/server/getCountryCode";
 import {
   isEligibleForPremium,
@@ -17,7 +17,7 @@ import { View } from "./LandingView";
 
 export default async function Page() {
   const session = await getServerSession();
-  if (typeof session?.user.email === "string") {
+  if (typeof session?.user.subscriber?.fxa_uid === "string") {
     return redirect("/user/dashboard/");
   }
   const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });

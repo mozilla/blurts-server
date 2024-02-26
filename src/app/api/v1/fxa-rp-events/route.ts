@@ -56,8 +56,8 @@ const getJwtPubKey = async () => {
     return keys;
   } catch (e: unknown) {
     logger.error("getJwtPubKey", `Could not get JWT public key: ${jwtKeyUri}`);
-    captureException(
-      new Error(`Could not get JWT public key: ${jwtKeyUri} - ${e as string}`),
+    captureMessage(
+      `Could not get JWT public key: ${jwtKeyUri} - ${e as string}`,
     );
   }
 };
@@ -219,21 +219,26 @@ export async function POST(request: NextRequest) {
         });
 
         // get current profiledata
-        const currentFxAProfile = subscriber?.fxa_profile_json || {};
+        // Typed as `any` because `subscriber` used to be typed as `any`, and
+        // making that type more specific was enough work just by itself:
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const currentFxAProfile: any = subscriber?.fxa_profile_json;
 
         // merge new event into existing profile data
-        for (const key in updatedProfileFromEvent) {
-          // primary email change
-          if (key === "email") {
-            await updatePrimaryEmail(
-              subscriber,
-              updatedProfileFromEvent[key as keyof ProfileChangeEvent] ||
-                subscriber.primary_email,
-            );
-          }
-          if (currentFxAProfile[key]) {
-            currentFxAProfile[key] =
-              updatedProfileFromEvent[key as keyof ProfileChangeEvent];
+        if (Object.keys(updatedProfileFromEvent).length !== 0) {
+          for (const key in updatedProfileFromEvent) {
+            // primary email change
+            if (key === "email") {
+              await updatePrimaryEmail(
+                subscriber,
+                updatedProfileFromEvent[key as keyof ProfileChangeEvent] ||
+                  subscriber.primary_email,
+              );
+            }
+            if (currentFxAProfile[key]) {
+              currentFxAProfile[key] =
+                updatedProfileFromEvent[key as keyof ProfileChangeEvent];
+            }
           }
         }
 
@@ -249,8 +254,25 @@ export async function POST(request: NextRequest) {
           updateFromEvent,
         });
 
+        const refreshToken = subscriber.fxa_refresh_token;
+        const accessToken = subscriber.fxa_access_token;
+        if (refreshToken === null || accessToken === null) {
+          logger.error("failed_changing_password", {
+            subscriber_id: subscriber.id,
+            fxa_refresh_token: subscriber.fxa_refresh_token,
+            fxa_access_token: subscriber.fxa_access_token,
+          });
+          return NextResponse.json(
+            { success: false, message: "failed_changing_password" },
+            { status: 500 },
+          );
+        }
+
         // MNTOR-1932: Change password should revoke sessions
-        await revokeOAuthTokens(subscriber);
+        await revokeOAuthTokens({
+          fxa_access_token: accessToken,
+          fxa_refresh_token: refreshToken,
+        });
         break;
       }
       case FXA_SUBSCRIPTION_CHANGE_EVENT: {
@@ -289,16 +311,19 @@ export async function POST(request: NextRequest) {
                 subscriber_id: subscriber.id,
               });
 
-              captureException(
-                new Error(`No OneRep profile Id found, subscriber: ${
-                  subscriber.id as string
+              captureMessage(
+                `User subscribed but no OneRep profile Id found, user: ${
+                  subscriber.id
                 }\n
             Event: ${event}\n
-            updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`),
+            updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`,
               );
               return NextResponse.json(
-                { success: false, message: "failed_activating_subscription" },
-                { status: 500 },
+                {
+                  success: true,
+                  message: "failed_activating_subscription_profile_id_missing",
+                },
+                { status: 200 },
               );
             }
 
@@ -349,14 +374,12 @@ export async function POST(request: NextRequest) {
                 subscriber_id: subscriber.id,
               });
 
-              captureException(
-                new Error(`No OneRep profile Id found, subscriber: ${
-                  subscriber.id as string
-                }\n
+              captureMessage(
+                `No OneRep profile Id found, subscriber: ${subscriber.id}\n
                         Event: ${event}\n
                         updateFromEvent: ${JSON.stringify(
                           updatedSubscriptionFromEvent,
-                        )}`),
+                        )}`,
               );
               return NextResponse.json(
                 { success: false, message: "failed_activating_subscription" },
@@ -383,10 +406,10 @@ export async function POST(request: NextRequest) {
             });
           }
         } catch (e) {
-          captureException(
-            new Error(`${(e as Error).message}\n
+          captureMessage(
+            `${(e as Error).message}\n
           Event: ${event}\n
-          updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`),
+          updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`,
           );
           logger.error("failed_activating_subscription", {
             subscriber_id: subscriber.id,

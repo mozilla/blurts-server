@@ -77,6 +77,18 @@
             "importNames": ["VisuallyHidden"],
             "message":
               "Please use the <VisuallyHidden> component from `/src/app/components/server/VisuallyHidden.tsx` instead of the one from react-aria, since the latter's (inline) styles will be stripped by our Content Security Policy."
+          },
+          {
+            "name": "next-auth",
+            "importNames": ["getServerSession"],
+            "message":
+              "Please use the `getServerSession` wrapper function from `/src/app/functions/server/getServerSession.ts` instead of the one from next-auth, since the latter's doesn't enforce passing the auth configuration object, resulting in broken sessions."
+          },
+          {
+            "name": "next-auth/next",
+            "importNames": ["getServerSession"],
+            "message":
+              "Please use the `getServerSession` wrapper function from `/src/app/functions/server/getServerSession.ts` instead of the one from next-auth, since the latter's doesn't enforce passing the auth configuration object, resulting in broken sessions."
           }
         ]
       }

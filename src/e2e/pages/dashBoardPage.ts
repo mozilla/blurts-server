@@ -15,18 +15,18 @@ export class DashboardPage {
   readonly fixedTab: Locator;
   readonly profileButton: Locator;
   readonly appsAndServices: Locator;
-  readonly upgradeToPremium: Locator;
+  readonly upgradeToPlus: Locator;
+  readonly plusSubscription: Locator;
+  readonly startAFreeScanLink: Locator;
 
   readonly dashboardNavButton: Locator;
   readonly FAQsNavButton: Locator;
 
   readonly exposuresHeading: Locator;
-  readonly exposuresCardHeading: Locator;
+  readonly dashboardMozLogo: Locator;
   readonly fixedHeading: Locator;
   readonly toolTip: Locator;
-  readonly heresWhatsFixedCardTitle: Locator;
 
-  readonly whatsFixedPopup: Locator;
   readonly popupOkButton: Locator;
   readonly popupCloseButton: Locator;
 
@@ -62,8 +62,14 @@ export class DashboardPage {
     this.appsAndServices = page.getByRole("menu", {
       name: "Mozilla apps and services",
     });
-    this.upgradeToPremium = page.getByRole("button", {
+    this.upgradeToPlus = page.getByRole("button", {
       name: "Automatic data removal: Off",
+    });
+    this.plusSubscription = page.getByRole("button", {
+      name: "Automatic data removal: On",
+    });
+    this.startAFreeScanLink = page.getByRole("link", {
+      name: "Start a free scan",
     });
 
     //sidebar nav
@@ -77,9 +83,7 @@ export class DashboardPage {
       name: "View all sites where your info is exposed",
     });
 
-    this.exposuresCardHeading = page.getByRole("heading", {
-      name: "Let’s keep protecting your data",
-    });
+    this.dashboardMozLogo = page.getByRole("link", { name: "Home" });
 
     this.fixedHeading = page.getByRole("heading", {
       name: "View all exposures that are fixed or in progress",
@@ -88,21 +92,15 @@ export class DashboardPage {
     this.toolTip = page.locator(
       '//div[starts-with(@class, "ProgressCard_header")]/button',
     );
-    this.heresWhatsFixedCardTitle = page.locator(
-      '//div[starts-with(@class, "ProgressCard_header")]',
-    );
 
     // here's what we fixed popup
-    this.whatsFixedPopup = page.getByRole("dialog", {
-      name: "About what we fixed",
-    });
     this.popupOkButton = page.getByRole("button", { name: "OK" });
     this.popupCloseButton = page.getByRole("button", { name: "Close" });
 
     // chartTooltip
-    this.chartTooltip = page.locator(
-      '//div[starts-with(@class, "DashboardTopBanner_chart")]//button',
-    );
+    this.chartTooltip = page
+      .getByRole("figure", { name: "This chart shows the total" })
+      .getByRole("button");
     this.aboutFixedExposuresPopup = page.getByRole("dialog", {
       name: "About your number of fixed exposures",
     });

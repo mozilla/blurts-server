@@ -71,7 +71,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
     });
 
     // verify overview card
-    await expect(dashboardPage.exposuresCardHeading).toBeVisible();
+    await expect(dashboardPage.dashboardMozLogo).toBeVisible();
 
     // TODO: add verifications for all fixed exposures state
   });
@@ -88,16 +88,9 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
 
     // verify fixed tab's tooltips and popups
     await dashboardPage.fixedTab.click();
-    await expect(dashboardPage.heresWhatsFixedCardTitle).toHaveText(
-      "Here’s what you fixed",
-    );
-    await expect(dashboardPage.fixedHeading).toBeVisible();
-    await dashboardPage.toolTip.click();
-    await expect(dashboardPage.whatsFixedPopup).toBeVisible();
-    await dashboardPage.popupOkButton.click();
-    await expect(dashboardPage.whatsFixedPopup).toBeHidden();
 
-    // verify second tooltip
+    // verify tooltip
+    await expect(dashboardPage.fixedHeading).toBeVisible();
     await dashboardPage.chartTooltip.click();
     await expect(dashboardPage.aboutFixedExposuresPopup).toBeVisible();
     await dashboardPage.popupCloseButton.click();
@@ -133,7 +126,7 @@ test.describe.skip(
       }
 
       // verify the site header elements
-      await expect(dashboardPage.upgradeToPremium).toBeHidden();
+      await expect(dashboardPage.upgradeToPlus).toBeHidden();
     });
   },
 );

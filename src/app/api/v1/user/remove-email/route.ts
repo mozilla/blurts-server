@@ -29,6 +29,9 @@ export async function POST(req: NextRequest) {
     try {
       const { emailId }: EmailDeleteRequest = await req.json();
       const subscriber = await getSubscriberByFxaUid(token.subscriber?.fxa_uid);
+      if (!subscriber) {
+        throw new Error("No subscriber found for current session.");
+      }
       const existingEmail = await getEmailById(emailId);
 
       if (existingEmail?.subscriber_id !== subscriber.id) {
@@ -41,7 +44,7 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      await removeOneSecondaryEmail(emailId);
+      await removeOneSecondaryEmail(emailId, subscriber.id);
       await deleteResolutionsWithEmail(
         existingEmail.subscriber_id,
         existingEmail.email,

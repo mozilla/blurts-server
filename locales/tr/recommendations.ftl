@@ -37,7 +37,7 @@ rec-pw-4-subhead = İki aşamalı kimlik doğrulamasını (2FA) kullanın
 # Link title
 rec-pw-4-cta = 2FA sunan sitelere bakın
 rec-pw-4 =
-    Birçok web sitesi, ekstra bir güvenlik önlemi olarak 2FA (iki faktörlü doğrulama) sunar. Bu, hesabınıza 
+    Birçok web sitesi, ekstra bir güvenlik önlemi olarak 2FA (iki aşamalı kimlik doğrulaması) sunar. Bu, hesabınıza 
     giriş yapmak için kısa mesajla (SMS) aldığınız bir defalık kod gibi başka bir 
     bilgiyi de girmenizi gerektirir.
 # Recommendation subhead
@@ -59,7 +59,7 @@ rec-ip-subhead-2 = VPN kullanarak IP adresinizi gizleyin
 # Recommendation subhead
 rec-moz-vpn-cta = { -brand-mozilla-vpn }’i deneyin
 rec-moz-vpn-update-2 =
-    IP adresiniz konumunuzu ve internet servis sağlayıcısınızı açığa çıkarır.
+    IP adresiniz konumunuzu ve internet servis sağlayıcınızı açığa çıkarır.
     { -brand-mozilla-vpn } gibi bir hizmeti kullanarak
     IP adresinizi maskeleyip konumunuzu gizleyebilirsiniz.
 rec-hist-pw-subhead = Aynı parolayı başka yerlerde kullanmayın
@@ -91,7 +91,7 @@ rec-pins =
 rec-address-subhead = Parolalarda adresinizi kullanmayın
 rec-address =
     Adresleri veya büyüdüğünüz sokağı kullanmak parolalarınızı
-    zayıflatır. Bu bilgileri herkese açık olarak bulmak kolay olduğundan, bu şifrelerin 
+    zayıflatır. Bu bilgileri herkese açık olarak bulmak kolay olduğundan, bu parolaların 
     tahmin edilmesini kolaylaştırır.
 # Recommendation subhead
 rec-gen-1-subhead = Her hesap için benzersiz ve güçlü parolalar kullanın

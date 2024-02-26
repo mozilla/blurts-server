@@ -6,17 +6,17 @@ import { ReactNode } from "react";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { getServerSession } from "next-auth";
 import { getL10n, getL10nBundles } from "./functions/server/l10n";
 import { getLocale } from "./functions/universal/getLocale";
 import { PublicEnvProvider } from "../contextProviders/public-env";
 import { SessionProvider } from "../contextProviders/session";
-import { authOptions } from "./api/utils/auth";
+import { getServerSession } from "./functions/server/getServerSession";
 import { metropolis } from "./fonts/Metropolis/metropolis";
 import { CONST_GA4_MEASUREMENT_ID } from "../constants";
 import { headers } from "next/headers";
 import { GoogleAnalyticsWorkaround } from "./components/client/GoogleAnalyticsWorkaround";
 import { getNonce } from "./deprecated/functions/server/getNonce";
+import StripeScript from "./components/client/StripeScript";
 
 // DO NOT ADD SECRETS: Env variables added here become public.
 const PUBLIC_ENVS = {
@@ -57,7 +57,7 @@ export default async function RootLayout({
   children: ReactNode;
 }) {
   const currentLocale = getLocale(getL10nBundles());
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
 
   return (
     <html lang={currentLocale}>
@@ -72,10 +72,15 @@ export default async function RootLayout({
           <SessionProvider session={session}>{children}</SessionProvider>
         </PublicEnvProvider>
       </body>
+      <StripeScript />
       {headers().get("DNT") !== "1" && (
         <GoogleAnalyticsWorkaround
           gaId={CONST_GA4_MEASUREMENT_ID}
           nonce={getNonce()}
+          debugMode={
+            process.env.NEXT_PUBLIC_GA4_DEBUG_MODE === "true" &&
+            process.env.NODE_ENV !== "test"
+          }
         />
       )}
     </html>

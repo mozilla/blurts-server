@@ -6,10 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
 
 import { logger } from "../../../../functions/server/logging";
-import {
-  BreachResolutionRequest,
-  Subscriber,
-} from "../../../../deprecated/(authenticated)/user/breaches/breaches.js";
+import { BreachResolutionRequest } from "../../../../deprecated/(authenticated)/user/breaches/breaches.js";
 import { getBreaches } from "../../../../functions/server/getBreaches";
 import { getAllEmailsAndBreaches } from "../../../../../utils/breaches";
 import {
@@ -24,9 +21,7 @@ export async function GET(req: NextRequest) {
   if (typeof token?.subscriber?.fxa_uid === "string") {
     // Signed in
     try {
-      const subscriber: Subscriber = await getSubscriberByFxaUid(
-        token.subscriber?.fxa_uid,
-      );
+      const subscriber = await getSubscriberByFxaUid(token.subscriber?.fxa_uid);
       const allBreaches = await getBreaches();
       const breaches = await getAllEmailsAndBreaches(subscriber, allBreaches);
       const successResponse = {
@@ -48,9 +43,10 @@ export async function PUT(req: NextRequest) {
   const token = await getToken({ req });
   if (typeof token?.subscriber?.fxa_uid === "string") {
     try {
-      const subscriber: Subscriber = await getSubscriberByFxaUid(
-        token.subscriber?.fxa_uid,
-      );
+      const subscriber = await getSubscriberByFxaUid(token.subscriber?.fxa_uid);
+      if (!subscriber) {
+        throw new Error("No subscriber found for current session.");
+      }
       const allBreaches = await getBreaches();
       const j = await req.json();
       const {
@@ -118,22 +114,20 @@ export async function PUT(req: NextRequest) {
       //   email_id: {
       //     recency_index: {
       //       resolutions: ['email', ...],
-      //       isResolved: true
       //     }
       //   }
       // }
       // */
 
-      const currentBreachDataTypes = currentBreaches[0].DataClasses; // get this from existing breaches
-      const currentBreachResolution = subscriber.breach_resolution || {}; // get this from existing breach resolution if available
-      const isResolved =
-        resolutionsChecked.length === currentBreachDataTypes.length;
+      // Typed as `any` because `subscriber` used to be typed as `any`, and
+      // making that type more specific was enough work just by itself:
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const currentBreachResolution: any = subscriber.breach_resolution || {}; // get this from existing breach resolution if available
       currentBreachResolution[affectedEmail] = {
         ...(currentBreachResolution[affectedEmail] || {}),
         ...{
           [breachIdNumber]: {
             resolutionsChecked,
-            isResolved,
           },
         },
       };
@@ -146,6 +140,9 @@ export async function PUT(req: NextRequest) {
         subscriber,
         currentBreachResolution,
       );
+      if (!updatedSubscriber) {
+        throw new Error("Could not retrieve updated subscriber data.");
+      }
 
       return NextResponse.json({
         success: true,
