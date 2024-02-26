@@ -180,6 +180,7 @@ export const FindExposures = ({
   return (
     <div className={styles.wrapper}>
       <ProgressBar
+        aria-label={l10n.getString("onboarding-find-exposures-progress-label")}
         label={<ProgressLabel />}
         value={scanProgress}
         maxValue={maxProgress}
