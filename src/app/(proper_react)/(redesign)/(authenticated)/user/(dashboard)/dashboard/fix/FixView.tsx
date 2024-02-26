@@ -43,7 +43,9 @@ export const FixView = (props: FixViewProps) => {
   ].includes(props.currentSection);
 
   const fixContainerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
+    // Redirects focus to the top-level wrapper element
     fixContainerRef.current?.focus();
   }, []);
 
