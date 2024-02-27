@@ -31,7 +31,7 @@ error-hibp-throttled = Çok fazla { -brand-HIBP } bağlantısı.
 error-hibp-connect = { -brand-HIBP } bağlantısı kurulamadı.
 error-hibp-load-breaches = İhlaller yüklenemedi.
 error-must-be-signed-in = { -brand-fxa }nıza giriş yapmış olmalısınız.
-error-to-finish-verifying = { -product-name } için bu e-postayı onaylamak üzere birincil e-posta adresinizle giriş yapmanız gerkeiyor.
+error-to-finish-verifying = { -product-name } için bu e-postayı onaylamak üzere birinci e-posta adresinizle giriş yapmanız gerkeiyor.
 home-title = { -product-name }
 home-not-found = Sayfa bulunamadı.
 oauth-invalid-session = Geçersiz oturum
@@ -224,7 +224,7 @@ send-verification = Doğrulama bağlantısını gönder
 # email address.
 breach-summary = İhlal özeti
 show-breaches-for-this-email = Bu e-postayı içeren tüm ihlalleri göster.
-link-change-primary = Birincil e-posta adresini değiştir
+link-change-primary = Birinci e-posta adresini değiştir
 remove-fxm = { -product-name }’ü kaldır
 remove-fxm-blurb = { -product-name } bildirimlerini kapatın. { -brand-fxa } etkin kalacaktır ve diğer hesabınızla ilişkili durumlardan haberdar olabileceksiniz.
 # Button title
@@ -355,7 +355,7 @@ scan-results-known-breaches =
 results-for = Sonuçlar: { $userEmail }
 other-monitored-emails = İzlenen diğer e-postalar
 email-verification-required = E-posta doğrulaması gerekiyor
-fxa-primary-email = { -brand-fxa } e-postası - birincil
+fxa-primary-email = { -brand-fxa } e-postası - birinci
 what-is-a-website-breach = Web sitesi ihlali nedir?
 website-breach-blurb = Siber suçlular çevrimiçi hesaplardan kişisel bilgileri çaldığında, kopyaladığında veya ifşa ettiğinde web sitesinde veri ihlali meydana gelir. Genellikle hacker'ların web sitesinin güvenliğinde zayıf bir nokta bulması sonucunda oluşur. Hesap bilgileri kazayla sızdırıldığında da ihlaller meydana gelebilir.
 security-tips-headline = Hacker’lardan korunmanız için güvenlik ipuçları
