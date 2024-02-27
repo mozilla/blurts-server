@@ -286,17 +286,8 @@ async function _verifyNewEmail (emailHash) {
 /* c8 ignore stop */
 
 /**
- * @typedef {object} EmailRow Email data, as returned from the database table `email_addresses`
- * @property {number} id
- * @property {string} email
- * @property {string} sha1
- * @property {boolean} verified
- * @property {number} subscriber_id
- */
-
-/**
  * @param {number} userId
- * @returns {Promise<EmailRow[]>}
+ * @returns {Promise<import('knex/types/tables').EmailAddressRow[]>}
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */

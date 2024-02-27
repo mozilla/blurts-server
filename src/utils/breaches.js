@@ -10,7 +10,7 @@ import { captureMessage } from "@sentry/node";
 
 /**
  * @typedef {{
- *   unverifiedEmails: import('../db/tables/emailAddresses.js').EmailRow[],
+ *   unverifiedEmails: import('knex/types/tables').EmailAddressRow[],
  *   verifiedEmails: BundledVerifiedEmails[],
  * }} AllEmailsAndBreaches
  */

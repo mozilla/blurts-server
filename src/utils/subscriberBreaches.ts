@@ -71,6 +71,9 @@ export async function getSubBreaches(
     email: subscriber.primary_email,
     verified: subscriber.primary_verified,
     sha1: subscriber.primary_sha1,
+    verification_token: subscriber.primary_verification_token,
+    created_at: subscriber.created_at,
+    updated_at: subscriber.updated_at,
   });
 
   verifiedEmails = verifiedEmails.filter((e) => e.verified);

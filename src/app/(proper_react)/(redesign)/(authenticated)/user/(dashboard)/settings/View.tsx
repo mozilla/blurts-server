@@ -3,10 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Session } from "next-auth";
+import { EmailAddressRow } from "knex/types/tables";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../../components/client/toolbar/Toolbar";
 import { ExtendedReactLocalization } from "../../../../../../hooks/l10n";
-import { EmailRow } from "../../../../../../../db/tables/emailAddresses";
 import { OpenInNew } from "../../../../../../components/server/Icons";
 import { EmailListing } from "./EmailListing";
 import { EmailAddressAdder } from "./EmailAddressAdder";
@@ -14,6 +14,7 @@ import { AlertAddressForm } from "./AlertAddressForm";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 import { TelemetryLink } from "../../../../../../components/client/TelemetryLink";
 import { hasPremium } from "../../../../../../functions/universal/user";
+import { sanitizeEmailRow } from "../../../../../../functions/server/sanitizeEmailRow";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -26,7 +27,7 @@ export type Props = {
   };
   fxaSettingsUrl: string;
   fxaSubscriptionsUrl: string;
-  emailAddresses: EmailRow[];
+  emailAddresses: EmailAddressRow[];
   breachCountByEmailAddress: Record<string, number>;
 };
 
@@ -66,7 +67,7 @@ export const SettingsView = (props: Props) => {
               return (
                 <li key={emailAddress.email}>
                   <EmailListing
-                    email={emailAddress}
+                    email={sanitizeEmailRow(emailAddress)}
                     breachCount={
                       props.breachCountByEmailAddress[emailAddress.email]
                     }
