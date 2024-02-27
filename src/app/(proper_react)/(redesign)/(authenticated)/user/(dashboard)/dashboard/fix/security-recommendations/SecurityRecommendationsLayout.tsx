@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   SecurityRecommendationTypes,
@@ -67,6 +67,14 @@ export function SecurityRecommendationsLayout(
   // in `./[type]/page.tsx`:
   const { title, illustration, content, exposedData } = pageData!;
   const hasExposedData = exposedData.length > 0;
+
+  // If there are no unresolved security recommendations:
+  // Go to the next step in the guided resolution or back to the dashboard.
+  useEffect(() => {
+    if (!hasExposedData && !isStepDone) {
+      router.push(nextStep.href);
+    }
+  }, [nextStep.href, router, hasExposedData, isStepDone]);
 
   // TODO: Write unit tests MNTOR-2560
   /* c8 ignore start */
