@@ -95,16 +95,10 @@ export async function getUserBreaches({
  * NOTE: new function to replace getUserBreaches
  *
  * @param user
- * @param user.user
- * @param user.countryCode
  */
-export async function getSubscriberBreaches({
-  user,
-  countryCode,
-}: {
-  user: Session["user"];
-  countryCode: string;
-}): Promise<SubscriberBreach[]> {
+export async function getSubscriberBreaches(
+  user: Session["user"],
+): Promise<SubscriberBreach[]> {
   if (!user.subscriber?.fxa_uid) {
     throw new Error("No fxa_uid found in session");
   }
@@ -113,11 +107,7 @@ export async function getSubscriberBreaches({
     throw new Error("No subscriber found for the given user data.");
   }
   const allBreaches = await getBreaches();
-  const breachesData = await getSubBreaches(
-    subscriber,
-    allBreaches,
-    countryCode,
-  );
+  const breachesData = await getSubBreaches(subscriber, allBreaches);
   return breachesData;
 }
 
