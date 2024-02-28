@@ -31,11 +31,7 @@ export default async function SecurityRecommendations({
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
-  const countryCode = getCountryCode(headers());
-  const breaches = await getSubscriberBreaches({
-    user: session.user,
-    countryCode,
-  });
+  const breaches = await getSubscriberBreaches(session.user);
   const subscriberEmails = await getSubscriberEmails(session.user);
 
   const { type } = params;
@@ -54,12 +50,15 @@ export default async function SecurityRecommendations({
       subscriberEmails={subscriberEmails}
       type={type}
       data={{
-        countryCode,
+        countryCode: getCountryCode(headers()),
         subscriberBreaches: breaches,
         user: session.user,
         latestScanData: scanData,
       }}
-      isEligibleForPremium={isEligibleForPremium(countryCode, enabledFlags)}
+      isEligibleForPremium={isEligibleForPremium(
+        getCountryCode(headers()),
+        enabledFlags,
+      )}
     />
   );
 }
