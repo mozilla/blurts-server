@@ -32,7 +32,7 @@ export const RemovalCard = (props: Props) => {
   async function resolve() {
     setIsResolved(true);
     const response = await fetch(
-      `/api/v1/user/scan-result/${props.scanResult.onerep_scan_result_id}/resolution/`,
+      `/api/v1/user/scan-result/${props.scanResult.onerep_scan_result_id}/resolution`,
       {
         method: "POST",
         credentials: "same-origin",
