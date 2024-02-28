@@ -18,7 +18,9 @@ import Meta, {
 
 jest.mock("../../../../../../../../../hooks/useTelemetry");
 jest.mock("next/navigation", () => ({
-  useRouter: jest.fn(),
+  useRouter: () => ({
+    push: jest.fn(),
+  }),
   usePathname: jest.fn(),
 }));
 
