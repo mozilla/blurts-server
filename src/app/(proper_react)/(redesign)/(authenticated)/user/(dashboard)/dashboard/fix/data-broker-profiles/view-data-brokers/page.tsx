@@ -2,11 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
+import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
 import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
-import { authOptions } from "../../../../../../../../../api/utils/auth";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { ViewDataBrokersView } from "./View";
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
@@ -16,23 +15,19 @@ import { getSubscriberEmails } from "../../../../../../../../../functions/server
 import { getL10n } from "../../../../../../../../../functions/server/l10n";
 
 export default async function ViewDataBrokers() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
 
   if (!session?.user?.subscriber?.id) {
     redirect("/user/dashboard/");
   }
 
-  const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const latestScan = await getLatestOnerepScanResults(profileId);
   const data: StepDeterminationData = {
-    countryCode,
+    countryCode: getCountryCode(headers()),
     user: session.user,
     latestScanData: latestScan ?? null,
-    subscriberBreaches: await getSubscriberBreaches({
-      user: session.user,
-      countryCode,
-    }),
+    subscriberBreaches: await getSubscriberBreaches(session.user),
   };
   const subscriberEmails = await getSubscriberEmails(session.user);
 

@@ -16,7 +16,9 @@ import Meta, {
 
 jest.mock("../../../../../../../../../hooks/useTelemetry");
 jest.mock("next/navigation", () => ({
-  useRouter: jest.fn(),
+  useRouter: () => ({
+    push: jest.fn(),
+  }),
   usePathname: jest.fn(),
 }));
 
@@ -46,6 +48,18 @@ it("passes the axe accessibility test suite for the security recommendations cel
   const ComposedComponent = composeStory(DoneStory, Meta);
   const { container } = render(<ComposedComponent />);
   expect(await axe(container)).toHaveNoViolations();
+});
+
+it("marks the security recommendations step as the current one", () => {
+  const ComposedComponent = composeStory(PhoneStory, Meta);
+
+  render(<ComposedComponent />);
+
+  const stepIndicator = screen
+    .getAllByRole("listitem")
+    .find((el) => el.textContent?.match(/Security recommendations/));
+  expect(stepIndicator).toBeInTheDocument();
+  expect(stepIndicator).toHaveAttribute("aria-current", "step");
 });
 
 it("shows the security recommendations celebration view", () => {

@@ -9,8 +9,8 @@ import { withSentryConfig } from "@sentry/nextjs";
 const nextConfig = {
   productionBrowserSourceMaps: true,
   sentry: {
-    disableServerWebpackPlugin: process.env.UPLOAD_SENTRY_SOURCEMAPS ?? "false",
-    disableClientWebpackPlugin: process.env.UPLOAD_SENTRY_SOURCEMAPS ?? "false",
+    disableServerWebpackPlugin: process.env.UPLOAD_SENTRY_SOURCEMAPS !== "true",
+    disableClientWebpackPlugin: process.env.UPLOAD_SENTRY_SOURCEMAPS !== "true",
   },
   images: {
     remotePatterns: [
@@ -162,7 +162,7 @@ const nextConfig = {
       {
         source: "/oauth/confirmed",
         destination: "/api/auth/callback/fxa",
-        permanent: false
+        permanent: false,
       },
     ];
   },
@@ -190,7 +190,7 @@ const sentryWebpackPluginOptions = {
 
   org: "mozilla",
   project: "firefox-monitor",
-  silent: true, // Suppresses all logs
+  silent: false, // Suppresses all logs
   authToken: process.env.SENTRY_AUTH_TOKEN,
 
   // For all available options, see:

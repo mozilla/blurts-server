@@ -29,10 +29,10 @@ jobs:
         - 5432:5432
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 20.9
+          node-version: 20.11
 
       - name: Install dependencies
         run: npm ci
@@ -51,7 +51,7 @@ jobs:
 
       - name: Cache Playwright Browsers for Playwright's Version
         id: cache-playwright-browsers
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
           key: playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
@@ -81,13 +81,13 @@ jobs:
           # Our tests are currently set up to expect accounts to act like
           # old user accounts, so let's pretend they all are:
           BROKER_SCAN_RELEASE_DATE: "3000-12-31"
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: test-results

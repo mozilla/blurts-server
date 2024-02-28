@@ -78,7 +78,10 @@ export const Button = (props: ButtonProps) => {
       ref={buttonRef as RefObject<HTMLButtonElement>}
       className={classes}
     >
-      {isLoading ? <Loader /> : children}
+      {
+        /* c8 ignore next */
+        isLoading ? <Loader /> : children
+      }
     </button>
   );
 };

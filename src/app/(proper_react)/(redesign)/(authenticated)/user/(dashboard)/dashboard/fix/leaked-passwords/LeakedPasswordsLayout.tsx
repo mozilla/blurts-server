@@ -69,6 +69,15 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
   /* c8 ignore start */
   const emailsAffected = unresolvedPasswordBreach?.emailsAffected ?? [];
   const nextStep = getNextGuidedStep(props.data, stepMap[props.type]);
+
+  // If there are no unresolved breaches for the ”leaked passwords” step:
+  // Go to the next step in the guided resolution or back to the dashboard.
+  useEffect(() => {
+    if (!unresolvedPasswordBreach && !isStepDone) {
+      router.push(nextStep.href);
+    }
+  }, [nextStep.href, router, unresolvedPasswordBreach, isStepDone]);
+
   const pageData = getLeakedPasswords({
     dataType: props.type,
     breaches: guidedExperienceBreaches,

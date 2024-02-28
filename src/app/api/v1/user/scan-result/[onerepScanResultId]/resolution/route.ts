@@ -2,11 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
+import { getServerSession } from "../../../../../../functions/server/getServerSession";
 
 import { logger } from "../../../../../../functions/server/logging";
-import { authOptions } from "../../../../../utils/auth";
 import {
   isOnerepScanResultForSubscriber,
   markOnerepScanResultAsResolved,
@@ -22,7 +21,7 @@ export async function POST(
   req: NextRequest,
   { params }: { params: { onerepScanResultId: string } },
 ): Promise<NextResponse<ResolveScanResultResponse>> {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (!session?.user?.subscriber) {
     return new NextResponse<ResolveScanResultResponse>(
       JSON.stringify({ success: false, message: "Unauthenticated" }),

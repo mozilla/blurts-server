@@ -4,6 +4,7 @@
 
 import { it, expect } from "@jest/globals";
 import {
+  getByLabelText,
   getByRole,
   getByText,
   queryByRole,
@@ -2811,6 +2812,171 @@ it("allows Plus-eligible users to filter by exposure type", async () => {
   });
 
   expect(exposureTypeRadioGroup).toBeInTheDocument();
+});
+
+it("allows Plus users to filter by info for sale", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  expect(
+    screen.queryAllByText("Data breach", {
+      selector: "dd",
+    }).length,
+  ).toBeGreaterThan(0);
+  expect(
+    screen.queryAllByText("Info for sale", {
+      selector: "dd",
+    }).length,
+  ).toBeGreaterThan(0);
+
+  const filterMenuButton = screen.getByRole("button", {
+    name: "Select filters",
+  });
+  await user.click(filterMenuButton);
+
+  const filterDialog = screen.getByRole("dialog");
+  const exposureTypeInput = getByLabelText(filterDialog, "Your info for sale");
+  await user.click(exposureTypeInput);
+
+  const showResultsButton = getByRole(filterDialog, "button", {
+    name: "Show results",
+  });
+  await user.click(showResultsButton);
+
+  expect(
+    screen.queryAllByText("Data breach", {
+      selector: "dd",
+    }).length,
+  ).toBe(0);
+  expect(
+    screen.queryAllByText("Info for sale", {
+      selector: "dd",
+    }).length,
+  ).toBeGreaterThan(0);
+});
+
+it("allows Plus users to filter by data breach", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumUnresolvedScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  expect(
+    screen.queryAllByText("Data breach", {
+      selector: "dd",
+    }).length,
+  ).toBeGreaterThan(0);
+  expect(
+    screen.queryAllByText("Info for sale", {
+      selector: "dd",
+    }).length,
+  ).toBeGreaterThan(0);
+
+  const filterMenuButton = screen.getByRole("button", {
+    name: "Select filters",
+  });
+  await user.click(filterMenuButton);
+
+  const filterDialog = screen.getByRole("dialog");
+  const exposureTypeInput = getByLabelText(filterDialog, "Data breach");
+  await user.click(exposureTypeInput);
+
+  const showResultsButton = getByRole(filterDialog, "button", {
+    name: "Show results",
+  });
+  await user.click(showResultsButton);
+
+  expect(
+    screen.queryAllByText("Data breach", {
+      selector: "dd",
+    }).length,
+  ).toBeGreaterThan(0);
+  expect(
+    screen.queryAllByText("Info for sale", {
+      selector: "dd",
+    }).length,
+  ).toBe(0);
+});
+
+it("allows users to filter for results in the last 7 days", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const filterMenuButton = screen.getByRole("button", {
+    name: "Select filters",
+  });
+  await user.click(filterMenuButton);
+
+  const filterDialog = screen.getByRole("dialog");
+  const exposureTypeInput = getByLabelText(filterDialog, "Last 7 days");
+  await user.click(exposureTypeInput);
+
+  const showResultsButton = getByRole(filterDialog, "button", {
+    name: "Show results",
+  });
+  await user.click(showResultsButton);
+
+  expect(showResultsButton).not.toBeInTheDocument();
+});
+
+it("allows users to filter for results in the last 30 days", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const filterMenuButton = screen.getByRole("button", {
+    name: "Select filters",
+  });
+  await user.click(filterMenuButton);
+
+  const filterDialog = screen.getByRole("dialog");
+  const exposureTypeInput = getByLabelText(filterDialog, "Last 30 days");
+  await user.click(exposureTypeInput);
+
+  const showResultsButton = getByRole(filterDialog, "button", {
+    name: "Show results",
+  });
+  await user.click(showResultsButton);
+
+  expect(showResultsButton).not.toBeInTheDocument();
+});
+
+it("allows users to filter for results in the last year", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumUnresolvedScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const filterMenuButton = screen.getByRole("button", {
+    name: "Select filters",
+  });
+  await user.click(filterMenuButton);
+
+  const filterDialog = screen.getByRole("dialog");
+  const exposureTypeInput = getByLabelText(filterDialog, "Last year");
+  await user.click(exposureTypeInput);
+
+  const showResultsButton = getByRole(filterDialog, "button", {
+    name: "Show results",
+  });
+  await user.click(showResultsButton);
+
+  expect(showResultsButton).not.toBeInTheDocument();
 });
 
 it("send Telemetry when users click on free scans when all exposures are fixed", async () => {

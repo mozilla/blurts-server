@@ -3,9 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
-import { getServerSession } from "next-auth";
 import { headers } from "next/headers";
-import { authOptions } from "../../../../../../../../../api/utils/auth";
+import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { redirect } from "next/navigation";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getUserBreaches";
@@ -20,7 +19,7 @@ import { refreshStoredScanResults } from "../../../../../../../../../functions/s
 import { checkSession } from "../../../../../../../../../functions/server/checkSession";
 
 export default async function WelcomeToPlusPage() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
 
   // Ensure user is logged in
   if (!checkSession(session) || !session?.user?.subscriber?.id) {
@@ -41,15 +40,11 @@ export default async function WelcomeToPlusPage() {
   }
 
   const scanData = await getLatestOnerepScanResults(profileId);
-  const countryCode = getCountryCode(headers());
-  const subBreaches = await getSubscriberBreaches({
-    user: session.user,
-    countryCode,
-  });
+  const subBreaches = await getSubscriberBreaches(session.user);
   const subscriberEmails = await getSubscriberEmails(session.user);
 
   const data: StepDeterminationData = {
-    countryCode,
+    countryCode: getCountryCode(headers()),
     latestScanData: scanData,
     subscriberBreaches: subBreaches,
     user: session.user,

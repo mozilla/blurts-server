@@ -2,11 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
+import { getServerSession } from "../../../../../../../../functions/server/getServerSession";
 import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
-import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
@@ -16,16 +15,12 @@ import { getEnabledFeatureFlags } from "../../../../../../../../../db/tables/fea
 import { isEligibleForPremium } from "../../../../../../../../functions/server/onerep";
 
 export default async function HighRiskDataBreaches() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
 
-  const countryCode = getCountryCode(headers());
-  const breaches = await getSubscriberBreaches({
-    user: session.user,
-    countryCode,
-  });
+  const breaches = await getSubscriberBreaches(session.user);
   const subscriberEmails = await getSubscriberEmails(session.user);
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const scanData = await getLatestOnerepScanResults(profileId);
@@ -40,12 +35,15 @@ export default async function HighRiskDataBreaches() {
         subscriberEmails={subscriberEmails}
         type="none"
         data={{
-          countryCode,
+          countryCode: getCountryCode(headers()),
           subscriberBreaches: breaches,
           user: session.user,
           latestScanData: scanData,
         }}
-        isEligibleForPremium={isEligibleForPremium(countryCode, enabledFlags)}
+        isEligibleForPremium={isEligibleForPremium(
+          getCountryCode(headers()),
+          enabledFlags,
+        )}
       />
     </div>
   );

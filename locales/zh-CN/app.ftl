@@ -46,6 +46,7 @@ user-add-duplicate-email = 此邮箱地址已添加到 { -product-name }。
 user-add-duplicate-email-part-2 = 访问 { $preferencesLink } 以查看 { $userEmail } 的状态。
 user-add-verification-email-just-sent = 验证邮件发送间隔过短，请稍后再试。
 user-add-unknown-error = 添加邮箱地址时发生错误，请稍后再试。
+user-delete-unknown-error = 移除邮箱地址时发生错误，请稍后再试。
 error-headline = 错误
 user-verify-token-error = 必须持有验证令牌（Token）。
 user-verify-email-report-subject = 您的 { -product-name } 报告
