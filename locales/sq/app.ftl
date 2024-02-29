@@ -46,6 +46,7 @@ user-add-duplicate-email = Ky email është shtuar tashmë te { -product-name }.
 user-add-duplicate-email-part-2 = Shkoni te { $preferencesLink } tuaja që të shihni gjendjen e { $userEmail }.
 user-add-verification-email-just-sent = Një email tjetër verifikimi s’mund të dërgohet kaq shpejt. Ju lutemi, riprovoni më vonë.
 user-add-unknown-error = Diç shkoi ters me shtimin e një tjetre adrese email. Ju lutemi, riprovoni më vonë.
+user-delete-unknown-error = Diç shkoi ters me heqjen e një adrese email. Ju lutemi, riprovoni më vonë.
 error-headline = Gabim
 user-verify-token-error = Token-i i verifikimit është i domosdoshëm.
 user-verify-email-report-subject = Raporti juaj { -product-name }
