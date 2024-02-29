@@ -24,17 +24,6 @@ exposure-card-credit-card = Credit Card
 exposure-card-password = Password
 exposure-card-ip-address = IP Address
 exposure-card-other = Other
-# obsolete
-exposure-card-description-info-for-sale-part-one = This site is selling and publishing <data_broker_link>details about you.</data_broker_link>
-# obsolete
-exposure-card-description-info-for-sale-part-two = Remove this profile to protect your privacy.
-# obsolete
-# Variables:
-# $data_breach_company is the company associated with the data breach.
-# $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = Your information was exposed in the <data_breach_link>{ $data_breach_company } data breach on { $data_breach_date }.</data_breach_link>
-# obsolete
-exposure-card-description-data-breach-part-two = We’ll walk you through the steps to fix it.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
