@@ -254,9 +254,9 @@ export async function POST(request: NextRequest) {
           updateFromEvent,
         });
 
-        const refreshToken = subscriber.fxa_refresh_token;
-        const accessToken = subscriber.fxa_access_token;
-        if (accessToken === null || refreshToken === null) {
+        const refreshToken = subscriber.fxa_refresh_token ?? "";
+        const accessToken = subscriber.fxa_access_token ?? "";
+        if (!accessToken || !refreshToken) {
           logger.error("failed_changing_password", {
             subscriber_id: subscriber.id,
             fxa_refresh_token: subscriber.fxa_refresh_token,
