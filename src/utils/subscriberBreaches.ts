@@ -161,12 +161,23 @@ export async function getSubBreaches(
             (curBreach.dataClassesEffected[index][key] as number)++;
           }
         });
-        curBreach.resolvedDataClasses = [
-          ...new Set([
-            ...curBreach.resolvedDataClasses,
-            ...resolvedDataClasses,
-          ]),
+
+        // Only mark data classes as resolved if they are resolved for all
+        // affected email addresses:
+        // We check if a data class is already resolved for the other email
+        // addresses. If that is the case, the respective data class are
+        // duplicated in `combinedResolvedDataClasses`. Those can be considered
+        // resolved and stay in the list of resolved data classes.
+        // Unique data classes will be filtered out as they haven’t been
+        // resolved for all affected email addresses.
+        const combinedResolvedDataClasses = [
+          ...curBreach.resolvedDataClasses,
+          ...resolvedDataClasses,
         ];
+        const duplicateResolvedDataClasses = combinedResolvedDataClasses.filter(
+          (item, index) => combinedResolvedDataClasses.indexOf(item) !== index,
+        );
+        curBreach.resolvedDataClasses = duplicateResolvedDataClasses;
         curBreach.isResolved =
           isBreachResolved(
             curBreach.dataClassesEffected,
