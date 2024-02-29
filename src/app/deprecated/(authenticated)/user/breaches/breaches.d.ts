@@ -53,6 +53,7 @@ export interface SubscriberBreachResolution {
   useBreachId?: boolean;
   [email: string]: {
     [id: number]: {
+      isResolved: boolean;
       resolutionsChecked: Array<string>;
     };
   };

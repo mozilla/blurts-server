@@ -64,7 +64,7 @@ export default async function DashboardPage() {
     (isNewUser &&
       canSubscribeToPremium({
         user: session.user,
-        countryCode,
+        countryCode: countryCode,
       }))
   ) {
     return redirect("/user/welcome/");
@@ -75,10 +75,7 @@ export default async function DashboardPage() {
     typeof profileId === "number"
       ? await getScansCountForProfile(profileId)
       : 0;
-  const subBreaches = await getSubscriberBreaches({
-    user: session.user,
-    countryCode,
-  });
+  const subBreaches = await getSubscriberBreaches(session.user);
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(
     session.user,
