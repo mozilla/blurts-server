@@ -28,7 +28,7 @@ jobs:
           images: mozilla/blurts-server
           tags: |
             type=semver,pattern={{raw}}
-            type=raw,value=cicd-{{branch}}-{{sha}}
+            type=raw,value=cicd-{{sha}},event=tag
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
