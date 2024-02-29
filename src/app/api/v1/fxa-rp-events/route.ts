@@ -384,8 +384,8 @@ export async function POST(request: NextRequest) {
                         )}`,
               );
               return NextResponse.json(
-                { success: false, message: "failed_activating_subscription" },
-                { status: 500 },
+                { success: true, message: "failed_deactivating_subscription" },
+                { status: 200 },
               );
             }
 
