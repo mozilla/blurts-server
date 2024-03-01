@@ -1167,4 +1167,51 @@ describe("to learn about usage", () => {
       }),
     );
   });
+
+  it("counts how often users delete their account", async () => {
+    const user = userEvent.setup();
+    render(
+      <TestComponentWrapper>
+        <SettingsView
+          l10n={getOneL10nSync()}
+          user={{
+            ...mockedUser,
+            fxa: {
+              ...mockedUser.fxa,
+              subscriptions: [],
+            } as Session["user"]["fxa"],
+          }}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+          }}
+          emailAddresses={[]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={["MonitorAccountDeletion"]}
+        />
+      </TestComponentWrapper>,
+    );
+
+    const deleteAccountButton = screen.getByRole("button", {
+      name: "Delete account",
+    });
+    await user.click(deleteAccountButton);
+
+    const dialog = screen.getByRole("dialog");
+    const confirmationButton = within(dialog).getByRole("button", {
+      name: "Delete account",
+    });
+    await user.click(confirmationButton);
+
+    expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+      "ctaButton",
+      "click",
+      expect.objectContaining({
+        button_id: "confirm_delete_account",
+      }),
+    );
+  });
 });
