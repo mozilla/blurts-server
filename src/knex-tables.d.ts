@@ -122,6 +122,7 @@ declare module "knex/types/tables" {
           Record<
             BreachRow.id,
             {
+              isResolved: boolean;
               resolutionsChecked: Array<
                 (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
               >;
