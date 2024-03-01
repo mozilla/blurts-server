@@ -112,14 +112,11 @@ export function createRandomBreach(
 
   faker.seed(options.fakerSeed);
   const isResolved = options.isResolved ?? faker.datatype.boolean();
-  const dataClassesEffected = options.dataClassesEffected ?? [];
-  const resolvedDataClasses = isResolved ? dataClasses : [];
-
   return {
     addedDate: options.addedDate ?? faker.date.recent(),
     breachDate: faker.date.recent(),
     dataClasses: dataClasses,
-    resolvedDataClasses,
+    resolvedDataClasses: isResolved ? dataClasses : [],
     description: faker.word.words(),
     domain: faker.internet.domainName(),
     id: faker.number.int(),
@@ -128,8 +125,8 @@ export function createRandomBreach(
     name: faker.word.noun(),
     title: faker.word.noun(),
     emailsAffected: Array.from({ length: 3 }, () => faker.internet.email()),
-    isResolved,
-    dataClassesEffected,
+    isResolved: isResolved,
+    dataClassesEffected: options.dataClassesEffected ?? [],
   };
 }
 

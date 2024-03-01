@@ -86,6 +86,7 @@ user-add-duplicate-email = Táto e‑mailová adresa už bola do { -product-name
 user-add-duplicate-email-part-2 = Ak chcete zistiť stav e‑mailovej adresy { $userEmail }, prejdite do sekcie { $preferencesLink }.
 user-add-verification-email-just-sent = Ďalší overovací e‑mail nie je možné odoslať takto rýchlo. Skúste to znovu neskôr.
 user-add-unknown-error = Pri pridávaní ďalšej e‑mailovej adresy sa vyskytla chyba. Skúste to znova neskôr.
+user-delete-unknown-error = Pri odstraňovaní e‑mailovej adresy sa vyskytla chyba. Skúste to znova neskôr.
 error-headline = Chyba
 user-verify-token-error = Vyžaduje sa overovací token.
 user-verify-email-report-subject = Vaša správa z { -product-name(case: "gen") }.

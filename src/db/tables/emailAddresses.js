@@ -347,12 +347,14 @@ async function removeEmail (email) {
 
 /**
  * @param {number} emailId
+ * @param {number} subscriberId
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function removeOneSecondaryEmail (emailId) {
+async function removeOneSecondaryEmail (emailId, subscriberId) {
   await knex('email_addresses')
     .where("id", emailId)
+    .andWhere("subscriber_id", subscriberId)
     .del()
 }
 /* c8 ignore stop */
