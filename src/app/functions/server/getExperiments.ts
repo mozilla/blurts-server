@@ -22,7 +22,7 @@ export async function getExperiments(
     }
 
     try {
-      const features = await fetch(`${serverUrl}/v1/features/`, {
+      const features = await fetch(`${serverUrl}/v1/features`, {
         headers: {
           "Content-Type": "application/json",
         },

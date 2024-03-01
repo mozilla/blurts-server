@@ -71,7 +71,7 @@ export const View = (props: Props) => {
               scanLimitReached={props.scanLimitReached}
               isHero
               eligibleForPremium={props.eligibleForPremium}
-              signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard/`}
+              signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
               eventId={{
                 cta: "clicked_get_scan_header",
                 field: "entered_email_address_header",
@@ -142,7 +142,7 @@ export const View = (props: Props) => {
             <SignUpForm
               scanLimitReached={props.scanLimitReached}
               eligibleForPremium={props.eligibleForPremium}
-              signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard/`}
+              signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
               eventId={{
                 cta: "clicked_get_scan_second",
                 field: "entered_email_address_second",
@@ -188,7 +188,7 @@ export const View = (props: Props) => {
             <SignUpForm
               scanLimitReached={props.scanLimitReached}
               eligibleForPremium={props.eligibleForPremium}
-              signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard/`}
+              signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
               eventId={{
                 cta: "clicked_get_scan_third",
                 field: "entered_email_address_third",
@@ -207,7 +207,7 @@ export const View = (props: Props) => {
         </p>
         <SignUpForm
           eligibleForPremium={props.eligibleForPremium}
-          signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard/`}
+          signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
           eventId={{
             cta: "clicked_get_scan_fourth",
             field: "entered_email_address_fourth",
@@ -250,7 +250,7 @@ export const View = (props: Props) => {
         </p>
         <SignUpForm
           eligibleForPremium={props.eligibleForPremium}
-          signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard/`}
+          signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
           eventId={{
             cta: "clicked_get_scan_last",
             field: "entered_email_address_last",
@@ -321,7 +321,7 @@ const Plans = (props: Props) => {
           </b>
           <SignUpForm
             eligibleForPremium={props.eligibleForPremium}
-            signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard/`}
+            signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
             eventId={{
               cta: "intent_to_join_waitlist_third",
             }}
