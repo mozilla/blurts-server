@@ -14,7 +14,6 @@ import { parseIso8601Datetime } from "./parse.js";
 import {
   BreachDataTypes,
   ResolutionRelevantBreachDataTypes,
-  isBreachResolved,
 } from "../app/functions/universal/breach";
 
 export type DataClassEffected = {
@@ -58,16 +57,14 @@ function filterBreachDataTypes(
  *
  * @param subscriber
  * @param allBreaches
- * @param countryCode
  */
 export async function getSubBreaches(
   subscriber: SubscriberRow,
   allBreaches: (Breach | HibpLikeDbBreach)[],
-  countryCode: string,
 ) {
   const uniqueBreaches: SubscriberBreachMap = {};
-  let verifiedEmails = await getUserEmails(subscriber.id);
 
+  let verifiedEmails = await getUserEmails(subscriber.id);
   verifiedEmails.push({
     id: -1,
     subscriber_id: subscriber.id,
@@ -104,24 +101,13 @@ export async function getSubBreaches(
         filterBreachDataTypes(breach.DataClasses);
       const resolvedDataClasses = (breachResolution[breach.Id]
         ?.resolutionsChecked ?? []) as ArrayOfDataClasses;
-
-      const dataClassesEffected = filteredBreachDataClasses
-        .map((c) => {
-          // Exclude SSN breaches for non-US users as they are only relevant
-          // to US users as of now.
-          if (c === BreachDataTypes.SSN && countryCode !== "us") {
-            return null;
-          }
-          if (c === BreachDataTypes.Email) {
-            return { [c]: [email.email] };
-          } else {
-            return { [c]: 1 };
-          }
-        })
-        .filter(
-          (dataClassEffected) => dataClassEffected,
-        ) as DataClassEffected[];
-
+      const dataClassesEffected = filteredBreachDataClasses.map((c) => {
+        if (c === BreachDataTypes.Email) {
+          return { [c]: [email.email] };
+        } else {
+          return { [c]: 1 };
+        }
+      });
       // `allBreaches` is generally the return value of `getBreaches`, which
       // either loads breaches from the database, or fetches them from the HIBP
       // API. In the former csae, `AddedDate`, `BreachDate` and `ModifiedDate`
@@ -135,7 +121,17 @@ export async function getSubBreaches(
         resolvedDataClasses,
         description: breach.Description,
         domain: breach.Domain,
-        isResolved: isBreachResolved(dataClassesEffected, resolvedDataClasses),
+        // TODO: MNTOR-2629
+        // On the current production site we only mark breaches as resolved when
+        // all relevant exposed data classes of a breach are fixed. In the
+        // first iteration of the redesign there are some data classes we do not
+        // ask a user to explicitly fix. Until we don’t have to support both
+        // versions of Monitor we’ll need to work around this gap until we can
+        // update this behaviour in our DB.
+        isResolved:
+          breachResolution[breach.Id]?.isResolved ||
+          resolvedDataClasses.length === dataClassesEffected.length ||
+          false,
         favIconUrl: breach.FaviconUrl,
         modifiedDate: normalizeDate(breach.ModifiedDate),
         name: breach.Name,
@@ -161,17 +157,8 @@ export async function getSubBreaches(
             (curBreach.dataClassesEffected[index][key] as number)++;
           }
         });
-        curBreach.resolvedDataClasses = [
-          ...new Set([
-            ...curBreach.resolvedDataClasses,
-            ...resolvedDataClasses,
-          ]),
-        ];
         curBreach.isResolved =
-          isBreachResolved(
-            curBreach.dataClassesEffected,
-            curBreach.resolvedDataClasses,
-          ) && subscriberBreach.isResolved;
+          curBreach.isResolved && subscriberBreach.isResolved;
       }
     }
   }

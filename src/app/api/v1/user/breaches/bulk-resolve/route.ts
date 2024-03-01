@@ -61,11 +61,15 @@ export async function PUT(req: NextRequest): Promise<NextResponse> {
             currentResolutionsChecked.push(dataTypeToResolve);
           }
 
+          const isResolved =
+            currentResolutionsChecked.length === currentBreachDataTypes.length;
+
           currentBreachResolution[currentEmail] = {
             ...(currentBreachResolution[currentEmail] || {}),
             ...{
               [breachId]: {
                 resolutionsChecked: currentResolutionsChecked,
+                isResolved,
               },
             },
           };

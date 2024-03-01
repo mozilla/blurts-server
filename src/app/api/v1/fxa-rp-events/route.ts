@@ -254,18 +254,14 @@ export async function POST(request: NextRequest) {
           updateFromEvent,
         });
 
-        const refreshToken = subscriber.fxa_refresh_token;
-        const accessToken = subscriber.fxa_access_token;
-        if (refreshToken === null || accessToken === null) {
+        const refreshToken = subscriber.fxa_refresh_token ?? "";
+        const accessToken = subscriber.fxa_access_token ?? "";
+        if (!accessToken || !refreshToken) {
           logger.error("failed_changing_password", {
             subscriber_id: subscriber.id,
-            fxa_refresh_token: subscriber.fxa_refresh_token,
-            fxa_access_token: subscriber.fxa_access_token,
+            fxa_refresh_token: refreshToken,
+            fxa_access_token: accessToken,
           });
-          return NextResponse.json(
-            { success: false, message: "failed_changing_password" },
-            { status: 500 },
-          );
         }
 
         // MNTOR-1932: Change password should revoke sessions
@@ -273,6 +269,12 @@ export async function POST(request: NextRequest) {
           fxa_access_token: accessToken,
           fxa_refresh_token: refreshToken,
         });
+
+        return NextResponse.json(
+          { success: true, message: "session_revoked" },
+          { status: 200 },
+        );
+
         break;
       }
       case FXA_SUBSCRIPTION_CHANGE_EVENT: {
@@ -382,8 +384,8 @@ export async function POST(request: NextRequest) {
                         )}`,
               );
               return NextResponse.json(
-                { success: false, message: "failed_activating_subscription" },
-                { status: 500 },
+                { success: true, message: "failed_deactivating_subscription" },
+                { status: 200 },
               );
             }
 

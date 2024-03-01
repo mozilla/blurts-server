@@ -20,11 +20,7 @@ export default async function HighRiskDataBreaches() {
     return redirect("/");
   }
 
-  const countryCode = getCountryCode(headers());
-  const breaches = await getSubscriberBreaches({
-    user: session.user,
-    countryCode,
-  });
+  const breaches = await getSubscriberBreaches(session.user);
   const subscriberEmails = await getSubscriberEmails(session.user);
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const scanData = await getLatestOnerepScanResults(profileId);
@@ -39,12 +35,15 @@ export default async function HighRiskDataBreaches() {
         subscriberEmails={subscriberEmails}
         type="none"
         data={{
-          countryCode,
+          countryCode: getCountryCode(headers()),
           subscriberBreaches: breaches,
           user: session.user,
           latestScanData: scanData,
         }}
-        isEligibleForPremium={isEligibleForPremium(countryCode, enabledFlags)}
+        isEligibleForPremium={isEligibleForPremium(
+          getCountryCode(headers()),
+          enabledFlags,
+        )}
       />
     </div>
   );
