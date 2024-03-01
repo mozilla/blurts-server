@@ -76,7 +76,7 @@ settings-delete-monitor-plus-account-dialog-lead-p1 = All of your { -brand-monit
 settings-delete-monitor-plus-account-dialog-lead-p2 = Your paid subscription will end today and you won’t be prorated for the remainder of your subscription.
 settings-delete-monitor-plus-account-dialog-cta-label = Delete account
 settings-delete-monitor-plus-account-dialog-cancel-button-label = Never mind, take me back
-settings-delete-monitor-account-confirmation-toast-label = Your Monitor account is now permanently deleted.
+settings-delete-monitor-account-confirmation-toast-label = Your { -brand-monitor } account is now permanently deleted.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Dismiss
 
 ## Add email dialog
