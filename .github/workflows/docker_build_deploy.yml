@@ -49,15 +49,17 @@ jobs:
             .
 
       - name: Deploy to Dockerhub
+        env:
+          DOCKERHUB_REPO: ${{ env.DOCKERHUB_REPO }}
         run: |
           if [ "${{ github.ref }}" == "refs/heads/main" ]; then
             # deploy main
-            docker tag blurts-server ${{ env.DOCKERHUB_REPO }}:latest
-            docker push ${{ env.DOCKERHUB_REPO }}:latest
+            docker tag blurts-server $DOCKERHUB_REPO:latest
+            docker push $DOCKERHUB_REPO:latest
           elif [ "${{ github.ref }}" == "refs/tags/"* ]; then
             # deploy a release tag
-            echo "${{ env.DOCKERHUB_REPO }}:${{ github.ref }}"
-            docker tag blurts-server "${{ env.DOCKERHUB_REPO }}:${{ github.ref }}"
+            echo "$DOCKERHUB_REPO:${{ github.ref }}"
+            docker tag blurts-server "$DOCKERHUB_REPO:${{ github.ref }}"
             docker images
-            docker push "${{ env.DOCKERHUB_REPO }}:${{ github.ref }}"
+            docker push "$DOCKERHUB_REPO:${{ github.ref_name }}"
           fi
