@@ -54,13 +54,17 @@ jobs:
         run: |
           if [ "${{ github.ref }}" == "refs/heads/main" ]; then
             # deploy main
-            docker tag blurts-server $DOCKERHUB_REPO:latest
-            docker push $DOCKERHUB_REPO:latest
-            docker push $DOCKERHUB_REPO:${{github.sha}}
+            docker tag blurts-server mozilla/blurts-server:latest
+            docker push mozilla/blurts-server:latest
+            docker push mozilla/blurts-server:${{github.sha}}
           elif [ "${{ github.ref }}" == "refs/tags/"* ]; then
             # deploy a release tag
-            echo "$DOCKERHUB_REPO:${{ github.ref }}"
-            docker tag blurts-server "$DOCKERHUB_REPO:${{ github.ref }}"
+            echo "mozilla/blurts-server:${{ github.ref }}"
+            docker tag blurts-server "mozilla/blurts-server:${{ github.ref }}"
             docker images
-            docker push "$DOCKERHUB_REPO:${{ github.ref_name }}"
+            docker push "mozilla/blurts-server:${{ github.ref_name }}"
+          elif [ "${{ github.ref }}" == "refs/heads/MNTOR-2247" ]; then
+            # for testing only, deploy on branch MNTOR-2247
+            docker tag blurts-server mozilla/blurts-server:${{github.sha}}
+            docker push mozilla/blurts-server:${{github.sha}}
           fi
