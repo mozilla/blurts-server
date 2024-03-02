@@ -30,10 +30,35 @@ jobs:
             type=semver,pattern={{raw}}
             type=raw,value=cicd-{{sha}},event=tag
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
+      # - name: Build and push Docker image
+      #   uses: docker/build-push-action@v5
+      #   with:
+      #     context: .
+      #     file: ./Dockerfile
+      #     push: true
+      #     tags: ${{ steps.meta.outputs.tags }}
+
+      - name: Create version.json
+        run: |
+          echo "{\"commit\":\"$GITHUB_SHA\",\"version\":\"$GITHUB_REF\",\"source\":\"https://github.com/$GITHUB_REPOSITORY\",\"build\":\"$GITHUB_RUN_ID\"}" > version.json
+
+      - name: Build Docker image
+        run: |
+          docker build --tag blurts-server \
+            --build-arg SENTRY_RELEASE="$GITHUB_REF" \
+            .
+
+      - name: Deploy to Dockerhub
+        run: |
+          echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            # deploy main
+            docker tag blurts-server ${{ env.DOCKERHUB_REPO }}:latest
+            docker push ${{ env.DOCKERHUB_REPO }}:latest
+          elif [ "${{ github.ref }}" == "refs/tags/"* ]; then
+            # deploy a release tag
+            echo "${{ env.DOCKERHUB_REPO }}:${{ github.ref }}"
+            docker tag blurts-server "${{ env.DOCKERHUB_REPO }}:${{ github.ref }}"
+            docker images
+            docker push "${{ env.DOCKERHUB_REPO }}:${{ github.ref }}"
+          fi
