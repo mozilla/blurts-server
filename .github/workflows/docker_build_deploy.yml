@@ -45,7 +45,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build --tag blurts-server \
-            --build-arg SENTRY_RELEASE="$GITHUB_REF" \
+            --build-arg SENTRY_RELEASE="$GITHUB_REF_NAME" \
             .
 
       - name: Deploy to Dockerhub
@@ -56,11 +56,12 @@ jobs:
             # deploy main
             docker tag blurts-server mozilla/blurts-server:latest
             docker push mozilla/blurts-server:latest
-            docker push mozilla/blurts-server:${{github.sha}}
+            docker tag blurts-server ${{ steps.meta.outputs.tags }}
+            docker push ${{ steps.meta.outputs.tags }}
           elif [ "${{ github.ref }}" == "refs/tags/"* ]; then
             # deploy a release tag
             echo "mozilla/blurts-server:${{ github.ref }}"
-            docker tag blurts-server "mozilla/blurts-server:${{ github.ref }}"
+            docker tag blurts-server "mozilla/blurts-server:${{ github.ref_name }}"
             docker images
             docker push "mozilla/blurts-server:${{ github.ref_name }}"
           elif [ "${{ github.ref }}" == "refs/heads/MNTOR-2247" ]; then
