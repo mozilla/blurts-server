@@ -28,7 +28,7 @@ jobs:
           images: mozilla/blurts-server
           tags: |
             type=semver,pattern={{raw}}
-            type=raw,value=cicd-{{sha}},event=tag
+            type=raw,value={{sha}},event=tag
 
       # - name: Build and push Docker image
       #   uses: docker/build-push-action@v5
@@ -65,6 +65,6 @@ jobs:
             docker push "mozilla/blurts-server:${{ github.ref_name }}"
           elif [ "${{ github.ref }}" == "refs/heads/MNTOR-2247" ]; then
             # for testing only, deploy on branch MNTOR-2247
-            docker tag blurts-server mozilla/blurts-server:${{github.sha}}
-            docker push mozilla/blurts-server:${{github.sha}}
+            docker tag blurts-server ${{ steps.meta.outputs.tags }}
+            docker push ${{ steps.meta.outputs.tags }}
           fi
