@@ -56,6 +56,7 @@ jobs:
             # deploy main
             docker tag blurts-server $DOCKERHUB_REPO:latest
             docker push $DOCKERHUB_REPO:latest
+            docker push $DOCKERHUB_REPO:${{github.sha}}
           elif [ "${{ github.ref }}" == "refs/tags/"* ]; then
             # deploy a release tag
             echo "$DOCKERHUB_REPO:${{ github.ref }}"
