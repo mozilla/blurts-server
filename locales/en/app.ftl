@@ -871,7 +871,6 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 -brand-relay = Firefox Relay
 -brand-mozilla-monitor = Mozilla Monitor
 -brand-monitor-plus = Monitor Plus
--brand-plus = Plus
 
 ##
 
