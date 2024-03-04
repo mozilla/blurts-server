@@ -55,7 +55,8 @@
 }
 
 .cancelSection,
-.deactivateSection {
+.deactivateSection,
+.deleteAccountSection {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -72,4 +73,11 @@
       color: $color-blue-70;
     }
   }
+}
+
+.dialogLead {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  text-align: center;
 }

@@ -20,19 +20,59 @@ const meta: Meta<typeof ExposureCard> = {
 export default meta;
 type Story = StoryObj<typeof ExposureCard>;
 
-const ScanMockItem = createRandomScanResult();
-const BreachMockItem = createRandomBreach();
+const ScanMockItemRemoved = createRandomScanResult({ status: "removed" });
+const ScanMockItemManualRemoved = createRandomScanResult({
+  status: "new",
+  manually_resolved: true,
+});
+const ScanMockItemNew = createRandomScanResult({
+  status: "new",
+  manually_resolved: false,
+});
+const ScanMockItemInProgress = createRandomScanResult({
+  status: "optout_in_progress",
+});
+const BreachMockItemRemoved = createRandomBreach({ isResolved: true });
+const BreachMockItemNew = createRandomBreach({ isResolved: false });
 
-export const DataBroker: Story = {
+export const DataBrokerActionNeeded: Story = {
   args: {
     exposureImg: FamilyTreeImage,
-    exposureData: ScanMockItem,
+    exposureData: ScanMockItemNew,
   },
 };
 
-export const DataBreach: Story = {
+export const DataBrokerRemoved: Story = {
+  args: {
+    exposureImg: FamilyTreeImage,
+    exposureData: ScanMockItemRemoved,
+  },
+};
+
+export const DataBrokerManualRemoved: Story = {
+  args: {
+    exposureImg: FamilyTreeImage,
+    exposureData: ScanMockItemManualRemoved,
+  },
+};
+
+export const DataBrokerInProgress: Story = {
+  args: {
+    exposureImg: FamilyTreeImage,
+    exposureData: ScanMockItemInProgress,
+  },
+};
+
+export const DataBreachActionNeeded: Story = {
   args: {
     exposureImg: TwitterImage,
-    exposureData: BreachMockItem,
+    exposureData: BreachMockItemNew,
+  },
+};
+
+export const DataBreachFixed: Story = {
+  args: {
+    exposureImg: TwitterImage,
+    exposureData: BreachMockItemRemoved,
   },
 };
