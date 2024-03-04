@@ -24,7 +24,7 @@ import Meta, { ManualRemoveViewStory } from "./ManualRemove.stories";
 
 jest.mock("../../../../../../../../../hooks/useTelemetry");
 jest.mock(
-  "../../../../../../components/client/exposure_card/DataBrokerImage",
+  "../../../../../../../../../components/client/exposure_card/DataBrokerImage",
   () => {
     return {
       // Mock this with an empty React component. Otherwise, tests will complain:
