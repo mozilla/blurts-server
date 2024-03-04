@@ -208,7 +208,7 @@ export async function POST(request: NextRequest) {
                   subscriber.primary_email,
               );
             }
-            if (currentFxAProfile[key]) {
+            if (currentFxAProfile && currentFxAProfile[key]) {
               currentFxAProfile[key] =
                 updatedProfileFromEvent[key as keyof ProfileChangeEvent];
             }

@@ -14,11 +14,13 @@ import Link from "next/link";
 export const TelemetryLink = ({
   eventData,
   target,
+  upsell,
   ...props
 }: {
   eventData: GleanMetricMap["link"]["click"];
   href: string;
   target?: string;
+  upsell?: boolean;
 } & HTMLAttributes<HTMLAnchorElement>) => {
   const record = useTelemetry();
 
@@ -35,7 +37,7 @@ export const TelemetryLink = ({
     <Link
       {...props}
       onClick={(event) => {
-        record("link", "click", eventData);
+        record(upsell ? "upgradeIntent" : "link", "click", eventData);
         props.onClick?.(event);
       }}
     />

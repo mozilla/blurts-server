@@ -158,6 +158,7 @@ export const View = (props: Props) => {
     const exposureCardKey = isScanResult(exposure)
       ? "scan-" + exposure.onerep_scan_result_id
       : "breach-" + exposure.id;
+
     return (
       <li key={exposureCardKey} className={styles.exposureListItem}>
         <ExposureCard
