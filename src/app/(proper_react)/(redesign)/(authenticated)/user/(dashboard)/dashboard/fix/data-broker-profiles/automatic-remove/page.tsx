@@ -36,17 +36,13 @@ export default async function AutomaticRemovePage() {
     session.user.subscriber.id,
   );
 
-  const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const scanData = await getLatestOnerepScanResults(profileId);
-  const subBreaches = await getSubscriberBreaches({
-    user: session.user,
-    countryCode,
-  });
+  const subBreaches = await getSubscriberBreaches(session.user);
   const subscriberEmails = await getSubscriberEmails(session.user);
 
   const data: StepDeterminationData = {
-    countryCode,
+    countryCode: getCountryCode(headers()),
     latestScanData: scanData,
     subscriberBreaches: subBreaches,
     user: session.user,

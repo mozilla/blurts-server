@@ -97,6 +97,12 @@ export async function POST(
         const scan = await createScan(profileId);
         const scanId = scan.id;
         await setOnerepScan(profileId, scanId, scan.status, "manual");
+        // TODO MNTOR-2686 - refactor onerep.ts and centralize logging.
+        logger.info("scan_created", {
+          onerepScanId: scanId,
+          onerepScanStatus: scan.status,
+          onerepScanReason: "manual",
+        });
 
         return NextResponse.json({ success: true }, { status: 200 });
       }
