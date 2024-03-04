@@ -7,7 +7,7 @@
 import React, { ReactNode } from "react";
 import Link from "next/link";
 import styles from "./ExposureCard.module.scss";
-import { StatusPill } from "../server/StatusPill";
+import { StatusPill } from "../../server/StatusPill";
 import Image, { StaticImageData } from "next/image";
 import {
   ChevronDown,
@@ -15,15 +15,15 @@ import {
   PasswordIcon,
   PhoneIcon,
   QuestionMarkCircle,
-} from "../server/Icons";
-import { useL10n } from "../../hooks/l10n";
+} from "../../server/Icons";
+import { useL10n } from "../../../hooks/l10n";
 import {
   DataClassEffected,
   SubscriberBreach,
-} from "../../../utils/subscriberBreaches";
-import { FallbackLogo } from "../server/BreachLogo";
+} from "../../../../utils/subscriberBreaches";
+import { FallbackLogo } from "../../server/BreachLogo";
 import { ExposureCardDataClassLayout } from "./ExposureCardDataClass";
-import { useTelemetry } from "../../hooks/useTelemetry";
+import { useTelemetry } from "../../../hooks/useTelemetry";
 
 export type SubscriberBreachCardProps = {
   exposureImg?: StaticImageData;
