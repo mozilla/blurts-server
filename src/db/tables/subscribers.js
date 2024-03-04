@@ -277,10 +277,35 @@ async function setAllEmailsToPrimary (subscriber, allEmailsToPrimary) {
 /* c8 ignore stop */
 
 /**
- * Set "breach_resolution" column with the latest breach resolution object.
+ * OBSOLETE, preserved for backwards compatibility
+ * TODO: Delete after monitor v2, only use setBreachResolution for v2
+ *
+ * @param {*} options {user, updatedResolvedBreaches}
+ * @returns subscriber
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function setBreachesResolved (options) {
+  const { user, updatedResolvedBreaches } = options
+  await knex('subscribers')
+    .where('id', user.id)
+    .update({
+      breaches_resolved: updatedResolvedBreaches,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
+    })
+  return getSubscriberByEmail(user.primary_email)
+}
+/* c8 ignore stop */
+
+/**
+ * Set "breach_resolution" column with the latest breach resolution object
+ * This column is meant to replace "breaches_resolved" column, which was used
+ * for v1.
  *
  * @param {import("knex/types/tables").SubscriberRow} user user object that contains the id of a user
- * @param {any} updatedBreachesResolution {emailId: [{breachId: {resolutionsChecked: [BreachType]}}, {}...]}
+ * @param {any} updatedBreachesResolution {emailId: [{breachId: {isResolved: bool, resolutionsChecked: [BreachType]}}, {}...]}
  * @returns subscriber
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
@@ -335,7 +360,7 @@ async function deleteUnverifiedSubscribers () {
  * Delete subscriber when a FxA user id is provided
  * Also deletes all the additional email addresses associated with the account
  *
- * @param {any} sub subscriber object
+ * @param {import("knex/types/tables").SubscriberRow | import("../../next-auth.js").SerializedSubscriber} sub subscriber object
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -526,6 +551,7 @@ export {
   updateFxAProfileData,
   setBreachesLastShownNow,
   setAllEmailsToPrimary,
+  setBreachesResolved,
   setBreachResolution,
   setWaitlistsJoined,
   updateBreachStats,
