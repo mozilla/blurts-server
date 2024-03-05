@@ -156,6 +156,26 @@ async function sendMetricsFlowPing (path) {
 /* c8 ignore stop */
 
 /**
+ * @param {string} subscriptionId 
+ */
+async function deleteSubscription (subscriptionId) {
+  const url = `${AppConstants.OAUTH_API_URI}/oauth/subscriptions/active/${subscriptionId}`
+  try {
+    const response = await fetch(url, {
+      method: "DELETE",
+    })
+    if (!response.ok) throw new InternalServerError(`bad response: ${response.status}`)
+    console.info('delete_fxa_subscription: success')
+    return response
+  } catch (e) {
+    if (e instanceof Error) {
+      console.error('delete_fxa_subscription', { stack: e.stack })
+    }
+    return false
+  }
+}
+
+/**
  * @param {crypto.BinaryLike} email
  */
 // TODO: Add unit test when changing this code:
@@ -171,5 +191,6 @@ export {
   revokeOAuthTokens,
   getProfileData,
   sendMetricsFlowPing,
-  getSha1
+  getSha1,
+  deleteSubscription
 }
