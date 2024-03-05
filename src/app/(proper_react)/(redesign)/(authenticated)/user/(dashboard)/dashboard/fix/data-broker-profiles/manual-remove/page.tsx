@@ -22,9 +22,13 @@ export default async function ManualRemovePage() {
     redirect("/user/dashboard/");
   }
 
+  const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const scanData = await getLatestOnerepScanResults(profileId);
-  const subBreaches = await getSubscriberBreaches(session.user);
+  const subBreaches = await getSubscriberBreaches({
+    user: session.user,
+    countryCode,
+  });
   const subscriberEmails = await getSubscriberEmails(session.user);
   const enabledFlags = await getEnabledFeatureFlags({
     email: session.user.email,
@@ -35,12 +39,9 @@ export default async function ManualRemovePage() {
       breaches={subBreaches}
       scanData={scanData}
       isPremiumUser={hasPremium(session.user)}
-      isEligibleForPremium={isEligibleForPremium(
-        getCountryCode(headers()),
-        enabledFlags,
-      )}
+      isEligibleForPremium={isEligibleForPremium(countryCode, enabledFlags)}
       user={session.user}
-      countryCode={getCountryCode(headers())}
+      countryCode={countryCode}
       subscriberEmails={subscriberEmails}
     />
   );
