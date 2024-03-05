@@ -23,13 +23,11 @@ exposure-card-credit-card = Банковская карта
 exposure-card-password = Пароль
 exposure-card-ip-address = IP-адрес
 exposure-card-other = Другое
-exposure-card-description-info-for-sale-part-one = Этот сайт продаёт и публикует <data_broker_link>информацию о вас.</data_broker_link>
-exposure-card-description-info-for-sale-part-two = Удалите этот профиль, чтобы защитить свою приватность.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = Ваша информация была затронута <data_breach_link>утечкой данных { $data_breach_company } от { $data_breach_date }.</data_breach_link>
-exposure-card-description-data-breach-part-two = Мы проведем вас через шаги, которые исправят эту проблему.
+exposure-card-description-data-breach-action-needed = Ваша информация была раскрыта в <data_breach_link>утечке данных { $data_breach_company } { $data_breach_date }.</data_breach_link> Мы проведем вас через шаги, чтобы устранить эту проблему.
+exposure-card-description-data-breach-fixed = Вы предприняли шаги для устранения <data_breach_link>этой утечки</data_breach_link>. Мы будем постоянно отслеживать утечки данных и сообщать вам о любых новых.
 exposure-card-your-exposed-info = Ваша раскрытая информация:
 exposure-card-exposure-type-data-broker = Информация для продажи
 exposure-card-exposure-type-data-breach = Утечка данных

@@ -23,13 +23,11 @@ exposure-card-credit-card = Kartu Kredit
 exposure-card-password = Sandi
 exposure-card-ip-address = Alamat IP
 exposure-card-other = Lainnya
-exposure-card-description-info-for-sale-part-one = Situs ini menjual dan menerbitkan <data_broker_link>detail tentang Anda.</data_broker_link>
-exposure-card-description-info-for-sale-part-two = Hapus profil ini untuk melindungi privasi Anda.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = Informasi Anda terungkap dalam kebocoran data <data_breach_link>{ $data_breach_company } pada { $data_breach_date }.</data_breach_link>
-exposure-card-description-data-breach-part-two = Kami akan memandu Anda melalui langkah-langkah untuk memperbaikinya.
+exposure-card-description-data-breach-action-needed = Informasi Anda terungkap dalam kebocoran data <data_breach_link>{ $data_breach_company } pada { $data_breach_date }.</data_breach_link> Kami akan memandu Anda melalui langkah-langkah untuk memperbaikinya.
+exposure-card-description-data-breach-fixed = Anda telah mengambil langkah-langkah yang diperlukan untuk memperbaiki <data_breach_link>pelanggaran ini</data_breach_link>. Kami akan terus memantau pembobolan data dan memperingatkan Anda jika ada eksposur baru.
 exposure-card-your-exposed-info = Info Anda yang terekspos:
 exposure-card-exposure-type-data-broker = Info untuk dijual
 exposure-card-exposure-type-data-breach = Kebocoran data
