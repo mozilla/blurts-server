@@ -23,13 +23,11 @@ exposure-card-credit-card = 信用卡
 exposure-card-password = 密碼
 exposure-card-ip-address = IP 地址
 exposure-card-other = 其他
-exposure-card-description-info-for-sale-part-one = 此網站正在銷售並發布您的<data_broker_link>詳細資訊。</data_broker_link>
-exposure-card-description-info-for-sale-part-two = 為了保護您的隱私，請移除此資料。
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = 您的資訊於 { $data_breach_date } 出現在 <data_breach_link>{ $data_breach_company }</data_breach_link> 的資料外洩事件中。
-exposure-card-description-data-breach-part-two = 我們將帶您逐步處理此問題。
+exposure-card-description-data-breach-action-needed = 您的資訊已於 { $data_breach_date } 出現在 <data_breach_link>{ $data_breach_company } 的資料外洩事件中。</data_breach_link>將帶您進行修正。
+exposure-card-description-data-breach-fixed = 您已採取必要的措施來修正<data_breach_link>此次資料外洩事件</data_breach_link>。我們將持續監控資料外洩事件並在有新事件時通知您。
 exposure-card-your-exposed-info = 您曝光的資訊：
 exposure-card-exposure-type-data-broker = 資訊被出售
 exposure-card-exposure-type-data-breach = 資料外洩事件

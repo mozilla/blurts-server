@@ -59,6 +59,26 @@ settings-deactivate-account-title = Desactivar cuenta
 settings-deactivate-account-info-2 = Podés desactivar { -product-short-name } borrando tu { -brand-mozilla-account }.
 settings-fxa-link-label-3 = Ir a ajustes de la { -brand-mozilla-account }
 
+## Delete Monitor account
+
+settings-delete-monitor-free-account-title = Borrar la cuenta de { -brand-monitor }
+settings-delete-monitor-free-account-description = Esto eliminará permanentemente su cuenta de { -brand-monitor } y desactivará todas las notificaciones.
+settings-delete-monitor-free-account-cta-label = Eliminar cuenta
+settings-delete-monitor-free-account-dialog-title = Su cuenta de { -brand-monitor } se eliminará permanentemente
+settings-delete-monitor-free-account-dialog-lead = Se eliminará toda la información de tu cuenta de { -brand-monitor } y ya no controlaremos nuevas violaciones de datos. Esto no borrará tu cuenta de { -brand-mozilla }.
+settings-delete-monitor-free-account-dialog-cta-label = Eliminar cuenta
+settings-delete-monitor-free-account-dialog-cancel-button-label = No importa, volvamos
+settings-delete-monitor-plus-account-title = Borrar la cuenta de { -brand-monitor }
+settings-delete-monitor-plus-account-description = Esto eliminará permanentemente su cuenta de { -brand-monitor } y finalizará inmediatamente su suscripción paga de { -brand-monitor-plus }.
+settings-delete-monitor-plus-account-cta-label = Eliminar cuenta
+settings-delete-monitor-plus-account-dialog-title = Su cuenta de { -brand-monitor } se eliminará permanentemente
+settings-delete-monitor-plus-account-dialog-lead-p1 = Se eliminará toda la información de tu cuenta de { -brand-monitor } y ya no controlaremos nuevas violaciones de datos o exposiciones de agentes de datos. Esto no borrará tu cuenta de { -brand-mozilla }.
+settings-delete-monitor-plus-account-dialog-lead-p2 = Tu suscripción paga terminará hoy y no se te prorrateará por el resto de la suscripción.
+settings-delete-monitor-plus-account-dialog-cta-label = Eliminar cuenta
+settings-delete-monitor-plus-account-dialog-cancel-button-label = No importa, volvamos
+settings-delete-monitor-account-confirmation-toast-label = Su cuenta de { -brand-monitor } ahora está permanentemente eliminada.
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Descartar
+
 ## Add email dialog
 
 settings-email-dialog-title = Agregar otra dirección de correo electrónico

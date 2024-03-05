@@ -57,6 +57,11 @@ settings-deactivate-account-title = Desativar conta
 settings-deactivate-account-info-2 = Você pode desativar o { -product-short-name } excluindo sua { -brand-mozilla-account }.
 settings-fxa-link-label-3 = Ir para as configurações da { -brand-mozilla-account }
 
+## Delete Monitor account
+
+settings-delete-monitor-free-account-title = Excluir conta do { -brand-monitor }
+settings-delete-monitor-free-account-cta-label = Excluir conta
+
 ## Add email dialog
 
 settings-email-dialog-title = Adicionar outro endereço de email
