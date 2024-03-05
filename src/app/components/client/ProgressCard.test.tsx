@@ -8,6 +8,7 @@ import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import Meta, {
+  ProgressCardItemUsNonPremium,
   ProgressCardItemUsPremium,
 } from "./stories/ProgressCard.stories";
 
@@ -38,4 +39,12 @@ it("shows and hides the explainer dialog", async () => {
   });
   await user.click(explainerCloseButton);
   expect(explainerDialog).not.toBeInTheDocument();
+});
+
+it("shows the greyed out auto-removed stat if a user is not premium", () => {
+  const ComposedProgressCard = composeStory(ProgressCardItemUsNonPremium, Meta);
+  render(<ComposedProgressCard />);
+
+  const autoRemovedText = screen.getByText("Auto-removed");
+  expect(autoRemovedText.parentElement as HTMLElement).toHaveClass("greyedOut");
 });

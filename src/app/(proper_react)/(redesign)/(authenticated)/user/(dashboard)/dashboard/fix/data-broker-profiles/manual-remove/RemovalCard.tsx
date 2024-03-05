@@ -9,9 +9,9 @@ import { OnerepScanResultRow } from "knex/types/tables";
 import { Button } from "../../../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { useState } from "react";
-import { ExposureCard } from "../../../../../../../../../components/client/ExposureCard";
 import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
+import { ScanResultCard } from "../../../../../../../../../components/client/ScanResultCard";
 
 export type Props = {
   scanResult: OnerepScanResultRow;
@@ -48,14 +48,14 @@ export const RemovalCard = (props: Props) => {
   }
 
   return (
-    <ExposureCard
-      exposureData={{
+    <ScanResultCard
+      scanResult={{
         ...props.scanResult,
         manually_resolved: isResolved,
       }}
+      isOnManualRemovePage={true}
       isPremiumBrokerRemovalEnabled={true}
       isPremiumUser={props.isPremiumUser}
-      isEligibleForPremium={props.isEligibleForPremium}
       locale={getLocale(l10n)}
       resolutionCta={
         !isResolved ? (
