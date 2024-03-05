@@ -26,12 +26,9 @@ import TechCruchLogo from "./social-proof-images/techcrunch.svg";
 import { TelemetryLink } from "../../../components/client/TelemetryLink";
 import { HeresHowWeHelp } from "./HeresHowWeHelp";
 import { ScanLimit } from "./ScanLimit";
-import { Footer } from "../Footer";
 import { FaqSection } from "./Faq";
-import { SignInButton } from "../../../components/client/SignInButton";
 import { RebrandAnnouncement } from "./RebrandAnnouncement";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
-import MonitorLogo from "../../images/monitor-logo.svg";
 import { AccountDeletionNotification } from "./AccountDeletionNotification";
 
 export type Props = {
@@ -47,16 +44,6 @@ export const View = (props: Props) => {
     <>
       <AccountDeletionNotification />
       <main className={styles.wrapper}>
-        <nav className={styles.nav}>
-          <h1>
-            <Image
-              className={styles.logo}
-              src={MonitorLogo}
-              alt={props.l10n.getString("public-nav-name")}
-            />
-          </h1>
-          <SignInButton />
-        </nav>
         <header className={styles.hero}>
           <div className={styles.heroContent}>
             <h1>{props.l10n.getString("landing-all-hero-title")}</h1>
@@ -261,7 +248,6 @@ export const View = (props: Props) => {
             scanLimitReached={props.scanLimitReached}
           />
         </div>
-        <Footer l10n={props.l10n} />
         {props.enabledFlags.includes("RebrandAnnouncement") && (
           <RebrandAnnouncement />
         )}

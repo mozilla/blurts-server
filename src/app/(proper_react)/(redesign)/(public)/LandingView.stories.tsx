@@ -3,12 +3,17 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { View } from "./LandingView";
+import { View, Props as ViewProps } from "./LandingView";
 import { getOneL10nSync } from "../../../functions/server/mockL10n";
+import { PublicShell } from "./PublicShell";
 
 const meta: Meta<typeof View> = {
   title: "Pages/Public landing page",
-  component: View,
+  component: (props: ViewProps) => (
+    <PublicShell l10n={getOneL10nSync("en")}>
+      <View {...props} />
+    </PublicShell>
+  ),
   args: {
     l10n: getOneL10nSync(),
     enabledFlags: ["RebrandAnnouncement"],
