@@ -59,6 +59,26 @@ settings-deactivate-account-title = Desactivar cuenta
 settings-deactivate-account-info-2 = Podés desactivar { -product-short-name } borrando tu { -brand-mozilla-account }.
 settings-fxa-link-label-3 = Ir a ajustes de la { -brand-mozilla-account }
 
+## Delete Monitor account
+
+settings-delete-monitor-free-account-title = Eliminar la cuenta de { -brand-monitor }
+settings-delete-monitor-free-account-description = Esto eliminará permanentemente tu cuenta de { -brand-monitor } y desactivará todas las notificaciones.
+settings-delete-monitor-free-account-cta-label = Eliminar la cuenta
+settings-delete-monitor-free-account-dialog-title = Tu cuenta de { -brand-monitor } se eliminará para siempre
+settings-delete-monitor-free-account-dialog-lead = Se eliminará toda la información de tu cuenta de { -brand-monitor } y ya no controlaremos nuevas violaciones de datos. Esto no eliminará tu cuenta de { -brand-mozilla }.
+settings-delete-monitor-free-account-dialog-cta-label = Eliminar la cuenta
+settings-delete-monitor-free-account-dialog-cancel-button-label = No importa, volvamos
+settings-delete-monitor-plus-account-title = Eliminar la cuenta de { -brand-monitor }
+settings-delete-monitor-plus-account-description = Esto eliminará permanentemente tu cuenta de { -brand-monitor } y finalizará inmediatamente tu suscripción paga de { -brand-monitor-plus }.
+settings-delete-monitor-plus-account-cta-label = Eliminar la cuenta
+settings-delete-monitor-plus-account-dialog-title = Tu cuenta de { -brand-monitor } se eliminará para siempre
+settings-delete-monitor-plus-account-dialog-lead-p1 = Se eliminará toda la información de tu cuenta de { -brand-monitor } y ya no controlaremos nuevas violaciones de datos o exposiciones de agentes de datos. Esto no borrará tu cuenta de { -brand-mozilla }.
+settings-delete-monitor-plus-account-dialog-lead-p2 = Tu suscripción paga terminará hoy y no se te prorrateará por el resto de la suscripción.
+settings-delete-monitor-plus-account-dialog-cta-label = Eliminar la cuenta
+settings-delete-monitor-plus-account-dialog-cancel-button-label = No importa, volvamos
+settings-delete-monitor-account-confirmation-toast-label = Tu cuenta de { -brand-monitor } está eliminada.
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Descartar
+
 ## Add email dialog
 
 settings-email-dialog-title = Agregar otra dirección de correo electrónico

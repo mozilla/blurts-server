@@ -23,13 +23,11 @@ exposure-card-credit-card = Creditcard
 exposure-card-password = Wachtwoord
 exposure-card-ip-address = IP-adres
 exposure-card-other = Overig
-exposure-card-description-info-for-sale-part-one = Deze website verkoopt en publiceert <data_broker_link>gegevens over u.</data_broker_link>
-exposure-card-description-info-for-sale-part-two = Dit profiel verwijderen om uw privacy te beschermen.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = Uw gegevens zijn gelekt in het <data_breach_link>{ $data_breach_company }-datalek op { $data_breach_date }.</data_breach_link>
-exposure-card-description-data-breach-part-two = We leiden u door de stappen om dit te verhelpen.
+exposure-card-description-data-breach-action-needed = Uw gegevens zijn gelekt in het <data_breach_link>{ $data_breach_company }-datalek op { $data_breach_date }.</data_breach_link> We leiden u door de stappen om dit op te lossen.
+exposure-card-description-data-breach-fixed = U hebt de benodigde stappen genomen om <data_breach_link>dit lek</data_breach_link> op te lossen. We controleren voortdurend op datalekken en waarschuwen u bij nieuwe blootstellingen.
 exposure-card-your-exposed-info = Uw gelekte gegevens:
 exposure-card-exposure-type-data-broker = Info te koop
 exposure-card-exposure-type-data-breach = Datalek
