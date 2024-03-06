@@ -26,7 +26,7 @@ exposure-card-other = Annat
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-action-needed = Din information avslöjades i ett dataintrång <data_breach_link>{ $data_breach_company } den { $data_breach_date }.</data_breach_link> Vi går igenom stegen för att åtgärda det.
+exposure-card-description-data-breach-action-needed = Din information avslöjades i ett dataintrång på <data_breach_link>{ $data_breach_company } den { $data_breach_date }.</data_breach_link> Vi går igenom stegen för att åtgärda det.
 exposure-card-description-data-breach-fixed = Du har vidtagit stegen som behövs för att åtgärda <data_breach_link>detta intrång</data_breach_link>. Vi kommer kontinuerligt att övervaka efter dataintrång och varna dig om eventuella nya exponeringar.
 exposure-card-your-exposed-info = Din exponerade information:
 exposure-card-exposure-type-data-broker = Info till salu
