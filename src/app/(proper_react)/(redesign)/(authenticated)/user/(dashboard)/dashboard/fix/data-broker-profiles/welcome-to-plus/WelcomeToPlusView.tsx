@@ -25,10 +25,16 @@ export type Props = {
 export function WelcomeToPlusView(props: Props) {
   const l10n = props.l10n;
 
-  const countOfDataBrokerProfiles =
-    props.data.latestScanData?.results.length ?? 0;
+  const scanResultsInProgress =
+    props.data.latestScanData?.results.filter(
+      (result) =>
+        !result.manually_resolved &&
+        (result.status === "optout_in_progress" ||
+          result.status === "waiting_for_verification"),
+    ) ?? [];
+  const countOfDataBrokerProfiles = scanResultsInProgress.length;
   const summary = getDashboardSummary(
-    props.data.latestScanData?.results ?? [],
+    scanResultsInProgress,
     props.data.subscriberBreaches,
   );
   const dataPointReduction = getDataPointReduction(summary);
