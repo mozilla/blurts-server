@@ -23,13 +23,11 @@ exposure-card-credit-card = Hitelkártya
 exposure-card-password = Jelszó
 exposure-card-ip-address = IP-cím
 exposure-card-other = Egyéb
-exposure-card-description-info-for-sale-part-one = Ez az oldal eladja és közzéteszi az <data_broker_link>Ön információit.</data_broker_link>
-exposure-card-description-info-for-sale-part-two = Távolítsa el ezt a profilt az adatvédelme érdekében.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = Az Ön adatai kikerültek a(z) <data_breach_link>{ $data_breach_company } adatvédelmi incidensében, ekkor: { $data_breach_date }.</data_breach_link>
-exposure-card-description-data-breach-part-two = Végigvezetjük a javítás lépésein.
+exposure-card-description-data-breach-action-needed = Az Ön adatai kikerültek a <data_breach_link>{ $data_breach_company } adatvédelmi incidensben, ekkor: { $data_breach_date }.</data_breach_link> Végigvezetjük a javítási lépéseken.
+exposure-card-description-data-breach-fixed = Megtette a szükséges lépéseket <data_breach_link>Ezen adatvédelmi incidens</data_breach_link> kijavításához. Folyamatosan figyeljük az adatvédelmi incidenseket, és értesítjük minden új kitettségről.
 exposure-card-your-exposed-info = Érintett információk:
 exposure-card-exposure-type-data-broker = Eladó információk
 exposure-card-exposure-type-data-breach = Adatvédelmi incidens

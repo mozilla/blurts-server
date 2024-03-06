@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { it, expect } from "@jest/globals";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { axe } from "jest-axe";
 import { Session } from "next-auth";
 import { userEvent } from "@testing-library/user-event";
@@ -34,10 +34,12 @@ jest.mock("./actions", () => {
   return {
     onRemoveEmail: jest.fn(),
     onAddEmail: jest.fn(),
+    onDeleteAccount: () => new Promise(() => undefined),
   };
 });
 
 import { SettingsView } from "./View";
+import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 
 const subscriberId = 7;
 const mockedSubscriber: SerializedSubscriber = {
@@ -101,6 +103,7 @@ it("passes the axe accessibility audit", async () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion"]}
       />
     </TestComponentWrapper>,
   );
@@ -129,6 +132,7 @@ it("preselects 'Send all breach alerts to the primary email address' if that's t
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion"]}
       />
     </TestComponentWrapper>,
   );
@@ -166,6 +170,7 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion"]}
       />
     </TestComponentWrapper>,
   );
@@ -205,6 +210,7 @@ it("sends a call to the API to change the email alert preferences when changing 
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion"]}
       />
     </TestComponentWrapper>,
   );
@@ -253,6 +259,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion"]}
       />
     </TestComponentWrapper>,
   );
@@ -285,6 +292,7 @@ it("marks unverified email addresses as such", () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion"]}
       />
     </TestComponentWrapper>,
   );
@@ -318,6 +326,7 @@ it("calls the API to resend a verification email if requested to", async () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion"]}
       />
     </TestComponentWrapper>,
   );
@@ -361,6 +370,7 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion"]}
       />
     </TestComponentWrapper>,
   );
@@ -394,6 +404,7 @@ it("hides the Plus cancellation link if the user doesn't have Plus", () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion"]}
       />
     </TestComponentWrapper>,
   );
@@ -426,6 +437,7 @@ it("shows the Plus cancellation link if the user has Plus", () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion"]}
       />
     </TestComponentWrapper>,
   );
@@ -435,6 +447,239 @@ it("shows the Plus cancellation link if the user has Plus", () => {
   });
 
   expect(cancellationHeading).toBeInTheDocument();
+});
+
+it("does not show the account deletion button if the relevant flag is not enabled", () => {
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getOneL10nSync()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: [],
+          } as Session["user"]["fxa"],
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["NotMonitorAccountDeletion" as FeatureFlagName]}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const accountDeletionHeading = screen.queryByRole("heading", {
+    name: "Delete ⁨Monitor⁩ account",
+  });
+
+  expect(accountDeletionHeading).not.toBeInTheDocument();
+});
+
+it("shows the account deletion button if the user does not have Plus", () => {
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getOneL10nSync()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: [],
+          } as Session["user"]["fxa"],
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion"]}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const accountDeletionHeading = screen.getByRole("heading", {
+    name: "Delete ⁨Monitor⁩ account",
+  });
+  const accountDeletionDescription = screen.getByText(
+    "This will permanently delete your ⁨Monitor⁩ account and turn off all notifications.",
+  );
+
+  expect(accountDeletionHeading).toBeInTheDocument();
+  expect(accountDeletionDescription).toBeInTheDocument();
+});
+
+it("warns about the consequences before deleting a free user's account", async () => {
+  const user = userEvent.setup();
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getOneL10nSync()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: [],
+          } as Session["user"]["fxa"],
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion"]}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const deleteAccountButton = screen.getByRole("button", {
+    name: "Delete account",
+  });
+  await user.click(deleteAccountButton);
+
+  const dialog = screen.getByRole("dialog");
+  const consequencesWarning = within(dialog).getByText(
+    "All of your ⁨Monitor⁩ account information will be deleted and we’ll no longer monitor for new data breaches. This will not delete your ⁨Mozilla⁩ account.",
+  );
+
+  expect(consequencesWarning).toBeInTheDocument();
+});
+
+it("shows a loading state while account deletion is in progress", async () => {
+  const user = userEvent.setup();
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getOneL10nSync()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: [],
+          } as Session["user"]["fxa"],
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion"]}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const deleteAccountButton = screen.getByRole("button", {
+    name: "Delete account",
+  });
+  await user.click(deleteAccountButton);
+
+  const dialog = screen.getByRole("dialog");
+  const confirmationButton = within(dialog).getByRole("button", {
+    name: "Delete account",
+  });
+  await user.click(confirmationButton);
+
+  expect(confirmationButton).toHaveAccessibleName("Loading");
+  expect(confirmationButton).toHaveAttribute("aria-live", "polite");
+});
+
+it("shows the account deletion button if the user has Plus", () => {
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getOneL10nSync()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: ["monitor"],
+          } as Session["user"]["fxa"],
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion"]}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const accountDeletionHeading = screen.getByRole("heading", {
+    name: "Delete ⁨Monitor⁩ account",
+  });
+  const accountDeletionDescription = screen.getByText(
+    "This will permanently delete your ⁨Monitor⁩ account and immediately end your paid ⁨Monitor Plus⁩ subscription.",
+  );
+
+  expect(accountDeletionHeading).toBeInTheDocument();
+  expect(accountDeletionDescription).toBeInTheDocument();
+});
+
+it("warns about the consequences before deleting a Plus user's account", async () => {
+  const user = userEvent.setup();
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getOneL10nSync()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: ["monitor"],
+          } as Session["user"]["fxa"],
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion"]}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const deleteAccountButton = screen.getByRole("button", {
+    name: "Delete account",
+  });
+  await user.click(deleteAccountButton);
+
+  const dialog = screen.getByRole("dialog");
+  const consequencesWarningP1 = within(dialog).getByText(
+    "All of your ⁨Monitor⁩ account information will be deleted and we’ll no longer monitor for new data breaches or data broker exposures. This will not delete your ⁨Mozilla⁩ account.",
+  );
+  const consequencesWarningP2 = within(dialog).getByText(
+    "Your paid subscription will end today and you won’t be prorated for the remainder of your subscription.",
+  );
+
+  expect(consequencesWarningP1).toBeInTheDocument();
+  expect(consequencesWarningP2).toBeInTheDocument();
 });
 
 // This test doesn't currently work because, as soon as we click `addButton`,
@@ -464,6 +709,7 @@ it.skip("calls the 'add' action when adding another email address", async () => 
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion"]}
       />
     </TestComponentWrapper>,
   );
@@ -495,6 +741,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={["MonitorAccountDeletion"]}
         />
       </TestComponentWrapper>,
     );
@@ -530,6 +777,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={["MonitorAccountDeletion"]}
         />
       </TestComponentWrapper>,
     );
@@ -565,6 +813,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={["MonitorAccountDeletion"]}
         />
       </TestComponentWrapper>,
     );
@@ -605,6 +854,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={["MonitorAccountDeletion"]}
         />
       </TestComponentWrapper>,
     );
@@ -645,6 +895,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={["MonitorAccountDeletion"]}
         />
       </TestComponentWrapper>,
     );
@@ -660,6 +911,315 @@ describe("to learn about usage", () => {
       "click",
       expect.objectContaining({
         button_id: "close_add_email_modal",
+      }),
+    );
+  });
+
+  it("counts how often free users click the 'Delete account' button", async () => {
+    const user = userEvent.setup();
+    render(
+      <TestComponentWrapper>
+        <SettingsView
+          l10n={getOneL10nSync()}
+          user={{
+            ...mockedUser,
+            fxa: {
+              ...mockedUser.fxa,
+              subscriptions: [],
+            } as Session["user"]["fxa"],
+          }}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+          }}
+          emailAddresses={[]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={["MonitorAccountDeletion"]}
+        />
+      </TestComponentWrapper>,
+    );
+
+    const deleteAccountButton = screen.getByRole("button", {
+      name: "Delete account",
+    });
+    await user.click(deleteAccountButton);
+
+    expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+      "popup",
+      "view",
+      expect.objectContaining({
+        popup_id: "settings-delete-monitor-free-dialog",
+      }),
+    );
+  });
+
+  it("counts how often free users close the 'Delete account' dialog", async () => {
+    const user = userEvent.setup();
+    render(
+      <TestComponentWrapper>
+        <SettingsView
+          l10n={getOneL10nSync()}
+          user={{
+            ...mockedUser,
+            fxa: {
+              ...mockedUser.fxa,
+              subscriptions: [],
+            } as Session["user"]["fxa"],
+          }}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+          }}
+          emailAddresses={[]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={["MonitorAccountDeletion"]}
+        />
+      </TestComponentWrapper>,
+    );
+
+    const deleteAccountButton = screen.getByRole("button", {
+      name: "Delete account",
+    });
+    await user.click(deleteAccountButton);
+    const dialog = screen.getByRole("dialog");
+    const dismissButton = within(dialog).getByRole("button", {
+      name: "Never mind, take me back",
+    });
+    await user.click(dismissButton);
+
+    expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+      "popup",
+      "exit",
+      expect.objectContaining({
+        popup_id: "settings-delete-monitor-free-dialog",
+      }),
+    );
+  });
+
+  it("counts how often free users close the 'Delete account' dialog via the keyboard", async () => {
+    const user = userEvent.setup();
+    render(
+      <TestComponentWrapper>
+        <SettingsView
+          l10n={getOneL10nSync()}
+          user={{
+            ...mockedUser,
+            fxa: {
+              ...mockedUser.fxa,
+              subscriptions: [],
+            } as Session["user"]["fxa"],
+          }}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+          }}
+          emailAddresses={[]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={["MonitorAccountDeletion"]}
+        />
+      </TestComponentWrapper>,
+    );
+
+    const deleteAccountButton = screen.getByRole("button", {
+      name: "Delete account",
+    });
+    await user.click(deleteAccountButton);
+    await user.keyboard("[Escape]");
+
+    expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+      "popup",
+      "exit",
+      expect.objectContaining({
+        popup_id: "settings-delete-monitor-free-dialog",
+      }),
+    );
+  });
+
+  it("counts how often free users close the 'Delete account' dialog via the button in the corner", async () => {
+    const user = userEvent.setup();
+    render(
+      <TestComponentWrapper>
+        <SettingsView
+          l10n={getOneL10nSync()}
+          user={{
+            ...mockedUser,
+            fxa: {
+              ...mockedUser.fxa,
+              subscriptions: [],
+            } as Session["user"]["fxa"],
+          }}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+          }}
+          emailAddresses={[]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={["MonitorAccountDeletion"]}
+        />
+      </TestComponentWrapper>,
+    );
+
+    const deleteAccountButton = screen.getByRole("button", {
+      name: "Delete account",
+    });
+    await user.click(deleteAccountButton);
+    const dialog = screen.getByRole("dialog");
+    const dismissButton = within(dialog).getByRole("button", {
+      name: "Close",
+    });
+    await user.click(dismissButton);
+
+    expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+      "popup",
+      "exit",
+      expect.objectContaining({
+        popup_id: "settings-delete-monitor-free-dialog",
+      }),
+    );
+  });
+
+  it("counts how often Plus users click the 'Delete account' button", async () => {
+    const user = userEvent.setup();
+    render(
+      <TestComponentWrapper>
+        <SettingsView
+          l10n={getOneL10nSync()}
+          user={{
+            ...mockedUser,
+            fxa: {
+              ...mockedUser.fxa,
+              subscriptions: ["monitor"],
+            } as Session["user"]["fxa"],
+          }}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+          }}
+          emailAddresses={[]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={["MonitorAccountDeletion"]}
+        />
+      </TestComponentWrapper>,
+    );
+
+    const deleteAccountButton = screen.getByRole("button", {
+      name: "Delete account",
+    });
+    await user.click(deleteAccountButton);
+
+    expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+      "popup",
+      "view",
+      expect.objectContaining({
+        popup_id: "settings-delete-monitor-plus-dialog",
+      }),
+    );
+  });
+
+  it("counts how often Plus users close the 'Delete account' dialog", async () => {
+    const user = userEvent.setup();
+    render(
+      <TestComponentWrapper>
+        <SettingsView
+          l10n={getOneL10nSync()}
+          user={{
+            ...mockedUser,
+            fxa: {
+              ...mockedUser.fxa,
+              subscriptions: ["monitor"],
+            } as Session["user"]["fxa"],
+          }}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+          }}
+          emailAddresses={[]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={["MonitorAccountDeletion"]}
+        />
+      </TestComponentWrapper>,
+    );
+
+    const deleteAccountButton = screen.getByRole("button", {
+      name: "Delete account",
+    });
+    await user.click(deleteAccountButton);
+    const dialog = screen.getByRole("dialog");
+    const dismissButton = within(dialog).getByRole("button", {
+      name: "Never mind, take me back",
+    });
+    await user.click(dismissButton);
+
+    expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+      "popup",
+      "exit",
+      expect.objectContaining({
+        popup_id: "settings-delete-monitor-plus-dialog",
+      }),
+    );
+  });
+
+  it("counts how often users delete their account", async () => {
+    const user = userEvent.setup();
+    render(
+      <TestComponentWrapper>
+        <SettingsView
+          l10n={getOneL10nSync()}
+          user={{
+            ...mockedUser,
+            fxa: {
+              ...mockedUser.fxa,
+              subscriptions: [],
+            } as Session["user"]["fxa"],
+          }}
+          breachCountByEmailAddress={{
+            [mockedUser.email]: 42,
+          }}
+          emailAddresses={[]}
+          fxaSettingsUrl=""
+          fxaSubscriptionsUrl=""
+          yearlySubscriptionUrl=""
+          monthlySubscriptionUrl=""
+          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+          enabledFeatureFlags={["MonitorAccountDeletion"]}
+        />
+      </TestComponentWrapper>,
+    );
+
+    const deleteAccountButton = screen.getByRole("button", {
+      name: "Delete account",
+    });
+    await user.click(deleteAccountButton);
+
+    const dialog = screen.getByRole("dialog");
+    const confirmationButton = within(dialog).getByRole("button", {
+      name: "Delete account",
+    });
+    await user.click(confirmationButton);
+
+    expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+      "ctaButton",
+      "click",
+      expect.objectContaining({
+        button_id: "confirm_delete_account",
       }),
     );
   });

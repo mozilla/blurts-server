@@ -14,7 +14,9 @@ import { parseIso8601Datetime } from "./parse.js";
 import {
   BreachDataTypes,
   ResolutionRelevantBreachDataTypes,
+  isBreachResolved,
 } from "../app/functions/universal/breach";
+import isNotNull from "../app/functions/universal/isNotNull";
 
 export type DataClassEffected = {
   [dataType: string]: number | string[];
@@ -57,14 +59,16 @@ function filterBreachDataTypes(
  *
  * @param subscriber
  * @param allBreaches
+ * @param countryCode
  */
 export async function getSubBreaches(
   subscriber: SubscriberRow,
   allBreaches: (Breach | HibpLikeDbBreach)[],
+  countryCode: string,
 ) {
   const uniqueBreaches: SubscriberBreachMap = {};
-
   let verifiedEmails = await getUserEmails(subscriber.id);
+
   verifiedEmails.push({
     id: -1,
     subscriber_id: subscriber.id,
@@ -104,13 +108,22 @@ export async function getSubBreaches(
         filterBreachDataTypes(breach.DataClasses);
       const resolvedDataClasses = (breachResolution[breach.Id]
         ?.resolutionsChecked ?? []) as ArrayOfDataClasses;
-      const dataClassesEffected = filteredBreachDataClasses.map((c) => {
-        if (c === BreachDataTypes.Email) {
-          return { [c]: [email.email] };
-        } else {
-          return { [c]: 1 };
-        }
-      });
+
+      const dataClassesEffected = filteredBreachDataClasses
+        .map((c) => {
+          // Exclude SSN breaches for non-US users as they are only relevant
+          // to US users as of now.
+          if (c === BreachDataTypes.SSN && countryCode !== "us") {
+            return null;
+          }
+          if (c === BreachDataTypes.Email) {
+            return { [c]: [email.email] };
+          } else {
+            return { [c]: 1 };
+          }
+        })
+        .filter(isNotNull);
+
       // `allBreaches` is generally the return value of `getBreaches`, which
       // either loads breaches from the database, or fetches them from the HIBP
       // API. In the former csae, `AddedDate`, `BreachDate` and `ModifiedDate`
@@ -124,17 +137,7 @@ export async function getSubBreaches(
         resolvedDataClasses,
         description: breach.Description,
         domain: breach.Domain,
-        // TODO: MNTOR-2629
-        // On the current production site we only mark breaches as resolved when
-        // all relevant exposed data classes of a breach are fixed. In the
-        // first iteration of the redesign there are some data classes we do not
-        // ask a user to explicitly fix. Until we don’t have to support both
-        // versions of Monitor we’ll need to work around this gap until we can
-        // update this behaviour in our DB.
-        isResolved:
-          breachResolution[breach.Id]?.isResolved ||
-          resolvedDataClasses.length === dataClassesEffected.length ||
-          false,
+        isResolved: isBreachResolved(dataClassesEffected, resolvedDataClasses),
         favIconUrl: breach.FaviconUrl,
         modifiedDate: normalizeDate(breach.ModifiedDate),
         name: breach.Name,
@@ -160,8 +163,28 @@ export async function getSubBreaches(
             (curBreach.dataClassesEffected[index][key] as number)++;
           }
         });
+
+        // Only mark data classes as resolved if they are resolved for all
+        // affected email addresses:
+        // We check if a data class is already resolved for the other email
+        // addresses. If that is the case, the respective data class are
+        // duplicated in `combinedResolvedDataClasses`. Those can be considered
+        // resolved and stay in the list of resolved data classes.
+        // Unique data classes will be filtered out as they haven’t been
+        // resolved for all affected email addresses.
+        const combinedResolvedDataClasses = [
+          ...curBreach.resolvedDataClasses,
+          ...resolvedDataClasses,
+        ];
+        const duplicateResolvedDataClasses = combinedResolvedDataClasses.filter(
+          (item, index) => combinedResolvedDataClasses.indexOf(item) !== index,
+        );
+        curBreach.resolvedDataClasses = duplicateResolvedDataClasses;
         curBreach.isResolved =
-          curBreach.isResolved && subscriberBreach.isResolved;
+          isBreachResolved(
+            curBreach.dataClassesEffected,
+            curBreach.resolvedDataClasses,
+          ) && subscriberBreach.isResolved;
       }
     }
   }

@@ -118,18 +118,18 @@ export function HighRiskBreachLayout(props: HighRiskBreachLayoutProps) {
         );
       }
 
+      const isCurrentStepSection = Object.values(stepMap).includes(nextStep.id);
+      const nextRoute = isCurrentStepSection
+        ? nextStep.href
+        : "/user/dashboard/fix/high-risk-data-breaches/done";
+      router.push(nextRoute);
+
       // Make sure the dashboard re-fetches the breaches on the next visit,
       // in order to make resolved breaches move to the "Fixed" tab.
       // If we had used server actions, we could've called
       // `revalidatePath("/user/dashboard")` there, but the API doesn't appear
       // to necessarily share a cache with the client.
       router.refresh();
-
-      const isCurrentStepSection = Object.values(stepMap).includes(nextStep.id);
-      const nextRoute = isCurrentStepSection
-        ? nextStep.href
-        : "/user/dashboard/fix/high-risk-data-breaches/done";
-      router.push(nextRoute);
     } catch (_error) {
       // TODO: MNTOR-2563: Capture client error with @next/sentry
       setIsResolving(false);

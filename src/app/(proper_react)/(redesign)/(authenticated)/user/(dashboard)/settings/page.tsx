@@ -15,6 +15,7 @@ import { getBreaches } from "../../../../../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../../../../../utils/hibp";
 import { getSha1 } from "../../../../../../../utils/fxa";
 import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
+import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
 
 export default async function SettingsPage() {
   const session = await getServerSession();
@@ -46,6 +47,11 @@ export default async function SettingsPage() {
     breachCountByEmailAddress[emailAddress] = breaches.length;
   }
 
+  const enabledFeatureFlags = await getEnabledFeatureFlags({
+    ignoreAllowlist: false,
+    email: session.user.email,
+  });
+
   return (
     <SettingsView
       l10n={getL10n()}
@@ -57,6 +63,7 @@ export default async function SettingsPage() {
       monthlySubscriptionUrl={`${monthlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
       yearlySubscriptionUrl={`${yearlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
       subscriptionBillingAmount={getSubscriptionBillingAmount()}
+      enabledFeatureFlags={enabledFeatureFlags}
     />
   );
 }

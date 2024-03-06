@@ -23,13 +23,11 @@ exposure-card-credit-card = Kreditna kartica
 exposure-card-password = Geslo
 exposure-card-ip-address = Naslov IP
 exposure-card-other = Drugo
-exposure-card-description-info-for-sale-part-one = To spletno mesto prodaja in objavlja <data_broker_link>podrobnosti o vas</data_broker_link>.
-exposure-card-description-info-for-sale-part-two = Zaradi zaščite zasebnosti odstranite ta profil.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = Vaši podatki so bili razkriti v <data_breach_link>podatkovni kraji podjetja { $data_breach_company } dne { $data_breach_date }.</data_breach_link>
-exposure-card-description-data-breach-part-two = Vodili vas bomo skozi korake za odpravo težave.
+exposure-card-description-data-breach-action-needed = Vaši podatki so bili { $data_breach_date } razkriti v <data_breach_link>podatkovni kraji podjetja { $data_breach_company }.</data_breach_link> Vodili vas bomo skozi korake za odpravo težave.
+exposure-card-description-data-breach-fixed = Izvedli ste korake, potrebne za odpravo <data_breach_link>te kraje</data_breach_link>. Nenehno bomo spremljali kraje podatkov in vas ob morebitnih novih izpostavljenostih tudi obvestili.
 exposure-card-your-exposed-info = Vaši izpostavljeni podatki:
 exposure-card-exposure-type-data-broker = Info za prodajo
 exposure-card-exposure-type-data-breach = Kraja podatkov
