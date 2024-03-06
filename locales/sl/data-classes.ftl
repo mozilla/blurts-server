@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = stanja na računih
@@ -14,7 +19,7 @@ avatars = avatarji
 bank-account-numbers = številke bančnih računov
 beauty-ratings = lepotne ocene
 biometric-data = biometrični podatki
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = življenjepisi
 browser-user-agent-details = podrobnosti o uporabniškem agentu brskalnika
@@ -35,7 +40,7 @@ customer-interactions = interakcije s strankami
 dates-of-birth = datumi rojstva
 deceased-date = datumi smrti
 deceased-statuses = statusi umrlih
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = navodila za dostavo
 device-information = podatki o napravah
@@ -75,7 +80,7 @@ instant-messenger-identities = Identitete neposrednega sporočanja
 ip-addresses = naslovi IP
 job-applications = prijave za delovno mesto
 job-titles = službeni nazivi
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = registrske tablice
 living-costs = življenjski stroški
 # This string refers to financial loans.
@@ -105,7 +110,7 @@ password-hints = namigi za gesla
 password-strengths = moči gesel
 passwords = gesla
 payment-histories = zgodovina plačil
-payment-methods = načini plačil
+payment-methods = plačilna sredstva
 personal-descriptions = opisi oseb
 personal-health-data = osebni zdravstveni podatki
 personal-interests = osebni interesi
