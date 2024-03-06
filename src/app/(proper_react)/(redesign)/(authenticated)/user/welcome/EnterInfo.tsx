@@ -401,7 +401,6 @@ export const EnterInfo = ({
           )}
           <Button
             onPress={() => setConfirmDialogIsOpen(true)}
-            // {...confirmDialogTrigger.triggerProps}
             variant="primary"
             type="submit"
             className={styles.startButton}
