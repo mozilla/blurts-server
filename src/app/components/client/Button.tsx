@@ -4,7 +4,7 @@
 
 "use client";
 
-import { ReactNode, RefObject, useRef } from "react";
+import { AriaAttributes, ReactNode, RefObject, useRef } from "react";
 import Link from "next/link";
 import styles from "./Button.module.scss";
 import { useButton } from "react-aria";
@@ -63,6 +63,11 @@ export const Button = (props: ButtonProps) => {
     .filter(Boolean)
     .join(" ");
 
+  // If `props.isLoading` is not undefined, the contents of the link is going to
+  // change into a loading indicator, which needs to be read by a screen reader:
+  const ariaLiveValue: AriaAttributes["aria-live"] =
+    typeof isLoading === "boolean" ? "polite" : undefined;
+
   return typeof href === "string" ? (
     <Link
       {...buttonProps}
@@ -74,6 +79,7 @@ export const Button = (props: ButtonProps) => {
     </Link>
   ) : (
     <button
+      aria-live={ariaLiveValue}
       {...buttonProps}
       ref={buttonRef as RefObject<HTMLButtonElement>}
       className={classes}

@@ -6,7 +6,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import { Confetti } from "../../../../../../../components/client/Confetti";
 import { FixNavigation } from "../../../../../../../components/client/FixNavigation";
 import styles from "./fix.module.scss";
@@ -42,6 +42,13 @@ export const FixView = (props: FixViewProps) => {
     "security-recommendations",
   ].includes(props.currentSection);
 
+  const fixContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Redirects focus to the top-level wrapper element
+    fixContainerRef.current?.focus();
+  }, []);
+
   const navigationClose = () => {
     return (
       <Link
@@ -60,7 +67,7 @@ export const FixView = (props: FixViewProps) => {
   };
 
   return (
-    <div className={styles.fixContainer}>
+    <div className={styles.fixContainer} tabIndex={-1} ref={fixContainerRef}>
       {props.showConfetti && <Confetti />}
       <div
         className={`${styles.fixWrapper} ${

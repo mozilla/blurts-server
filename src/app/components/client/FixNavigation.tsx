@@ -4,7 +4,7 @@
 
 "use client";
 
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode } from "react";
 import Image from "next/image";
 import styles from "./FixNavigation.module.scss";
 import stepDataBrokerProfilesIcon from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/fix/images/step-counter-data-broker-profiles.svg";
@@ -32,19 +32,8 @@ export type Props = {
 };
 
 export const FixNavigation = (props: Props) => {
-  const navRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    navRef.current?.focus();
-  }, []);
-
   return (
-    <nav
-      tabIndex={-1}
-      ref={navRef}
-      className={styles.stepsWrapper}
-      aria-label={props.label}
-    >
+    <nav className={styles.stepsWrapper} aria-label={props.label}>
       <Steps
         currentSection={props.currentSection}
         subscriberEmails={props.subscriberEmails}

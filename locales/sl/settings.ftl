@@ -61,6 +61,26 @@ settings-deactivate-account-title = Deaktiviraj račun
 settings-deactivate-account-info-2 = { -product-short-name } lahko izključite tako, da izbrišete svoj { -brand-mozilla-account }.
 settings-fxa-link-label-3 = Pojdite v Nastavitve { -brand-mozilla-account(sklon: "rodilnik") }
 
+## Delete Monitor account
+
+settings-delete-monitor-free-account-title = Izbriši { -brand-monitor } račun
+settings-delete-monitor-free-account-description = S tem boste trajno izbrisali svoj račun { -brand-monitor } in izklopili vsa obvestila.
+settings-delete-monitor-free-account-cta-label = Izbriši račun
+settings-delete-monitor-free-account-dialog-title = Vaš račun { -brand-monitor } bo trajno izbrisan
+settings-delete-monitor-free-account-dialog-lead = Vsi podatki o vašem { -brand-monitor } računu bodo izbrisani in ne bomo več spremljali novih kraj podatkov. S tem ne boste izbrisali računa { -brand-mozilla(sklon: "rodilnik") }.
+settings-delete-monitor-free-account-dialog-cta-label = Izbriši račun
+settings-delete-monitor-free-account-dialog-cancel-button-label = Premislil sem si, vzemite me nazaj
+settings-delete-monitor-plus-account-title = Izbriši { -brand-monitor } račun
+settings-delete-monitor-plus-account-description = S tem boste trajno izbrisali vaš { -brand-monitor } račun in takoj prekinili plačljivo naročnino na { -brand-monitor-plus }.
+settings-delete-monitor-plus-account-cta-label = Izbriši račun
+settings-delete-monitor-plus-account-dialog-title = Vaš račun { -brand-monitor } bo trajno izbrisan
+settings-delete-monitor-plus-account-dialog-lead-p1 = Vsi podatki o vašem { -brand-monitor } računu bodo izbrisani in ne bomo več spremljali novih kraj podatkov ali izpostavljenosti posrednika podatkov. S tem ne boste izbrisali računa { -brand-mozilla(sklon: "rodilnik") }.
+settings-delete-monitor-plus-account-dialog-lead-p2 = Vaša plačana naročnina se bo danes iztekla in ne boste sorazmerno razdeljeni v preostanek naročnine.
+settings-delete-monitor-plus-account-dialog-cta-label = Izbriši račun
+settings-delete-monitor-plus-account-dialog-cancel-button-label = Premislil sem si, vzemite me nazaj
+settings-delete-monitor-account-confirmation-toast-label = Vaš račun { -brand-monitor } je zdaj trajno izbrisan.
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Opusti
+
 ## Add email dialog
 
 settings-email-dialog-title = Dodajte drug e-poštni naslov

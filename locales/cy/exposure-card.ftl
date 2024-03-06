@@ -23,13 +23,11 @@ exposure-card-credit-card = Cerdyn Credyd
 exposure-card-password = Cyfrinair
 exposure-card-ip-address = Cyfeiriad IP
 exposure-card-other = Arall
-exposure-card-description-info-for-sale-part-one = Mae'r wefan hon yn gwerthu a chyhoeddi <data_broker_link>manylion amdanoch chi.</data_broker_link>
-exposure-card-description-info-for-sale-part-two = Tynnwch y proffil hwn i ddiogelu eich preifatrwydd.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = Mae eich manylion wedi'u datgelu yn y  <data_breach_link>{ $data_breach_company } tor-data ar { $data_breach_date }.</data_breach_link>
-exposure-card-description-data-breach-part-two = Byddwn yn eich arwain trwy'r camau i'w trwsio.
+exposure-card-description-data-breach-action-needed = Datgelwyd eich gwybodaeth yn y toriad data <data_breach_link>{ $data_breach_company } ar { $data_breach_date }.</data_breach_link> Byddwn yn eich arwain drwy'r camau i'w drwsio.
+exposure-card-description-data-breach-fixed = Rydych chi wedi cymryd y camau angenrheidiol i drwsio <data_breach_link>y toriad hwn</data_breach_link>. Byddwn yn monitro toriadau data yn barhaus ac yn eich rhybuddio am unrhyw ddatguddiadau newydd.
 exposure-card-your-exposed-info = Eich manylion sydd wedu eu datgelu:
 exposure-card-exposure-type-data-broker = Manylion ar werth
 exposure-card-exposure-type-data-breach = Tor-data

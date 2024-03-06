@@ -20,6 +20,10 @@ exposure-chart-heading =
 #   $nr (number) - Number of fixed exposures found for the user
 exposure-chart-heading-fixed = <nr>{ $nr }</nr> <label>усунуто</label>
 exposure-chart-legend-heading-type = Розкриття
+exposure-chart-legend-heading-nr = Кількість
+# Variables:
+#   $nr (number) - Number of a particular type of exposure found for the user
+exposure-chart-legend-value-nr = { $nr }×
 
 ## Top banner on the dashboard
 

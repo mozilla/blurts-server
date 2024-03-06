@@ -57,6 +57,26 @@ settings-deactivate-account-title = Desativar conta
 settings-deactivate-account-info-2 = Pode desativar o { -product-short-name } eliminando a sua { -brand-mozilla-account }.
 settings-fxa-link-label-3 = Ir para as definições da { -brand-mozilla-account }
 
+## Delete Monitor account
+
+settings-delete-monitor-free-account-title = Eliminar a conta do { -brand-monitor }
+settings-delete-monitor-free-account-description = Isto irá eliminar permanentemente a sua conta { -brand-monitor } e desativar todas as notificações.
+settings-delete-monitor-free-account-cta-label = Eliminar conta
+settings-delete-monitor-free-account-dialog-title = A sua conta { -brand-monitor } será eliminada permanentemente
+settings-delete-monitor-free-account-dialog-lead = Todas as informações da sua conta { -brand-monitor } serão eliminadas e deixaremos de monitorizar para novas violações de dados. Isto não irá apagar a sua conta { -brand-mozilla }.
+settings-delete-monitor-free-account-dialog-cta-label = Eliminar conta
+settings-delete-monitor-free-account-dialog-cancel-button-label = Não importa, quero voltar
+settings-delete-monitor-plus-account-title = Eliminar a conta do { -brand-monitor }
+settings-delete-monitor-plus-account-description = Isto irá eliminar permanentemente a sua conta { -brand-monitor } e terminar imediatamente a sua subscrição paga do { -brand-monitor-plus }.
+settings-delete-monitor-plus-account-cta-label = Eliminar conta
+settings-delete-monitor-plus-account-dialog-title = A sua conta { -brand-monitor } será eliminada permanentemente
+settings-delete-monitor-plus-account-dialog-lead-p1 = Todas as informações da sua conta { -brand-monitor } serão eliminadas e não iremos mais monitorizar relativamente a novas violações de dados ou exposição a agentes de dados. Isto não irá apagar a sua conta { -brand-mozilla }.
+settings-delete-monitor-plus-account-dialog-lead-p2 = A sua subscrição paga irá terminar hoje e não será proporcional ao remanescente da sua subscrição.
+settings-delete-monitor-plus-account-dialog-cta-label = Eliminar conta
+settings-delete-monitor-plus-account-dialog-cancel-button-label = Não importa, quero voltar
+settings-delete-monitor-account-confirmation-toast-label = A sua conta { -brand-monitor } foi agora eliminada permanentemente.
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Dispensar
+
 ## Add email dialog
 
 settings-email-dialog-title = Adicionar outro endereço de e-mail

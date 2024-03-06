@@ -31,6 +31,7 @@ export const ProgressCardItemUsNonPremium: Story = {
     resolvedByYou: 3,
     autoRemoved: 5,
     isEligibleForPremium: true,
+    isPremiumUser: false,
   },
 };
 

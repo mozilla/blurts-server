@@ -13,6 +13,7 @@ import {
 } from "./dashboard";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { RemovalStatus, RemovalStatusMap } from "../universal/scanResult";
+import isNotNull from "../universal/isNotNull";
 
 const unresolvedBreaches: SubscriberBreach[] = [
   {
@@ -1100,10 +1101,6 @@ describe("getDashboardSummary", () => {
           return expectedSummary;
         }),
       (expectedSummary) => {
-        function isNotNull<X>(value: X | null): value is X {
-          return value !== null;
-        }
-
         function getBreachesForCounts(
           dataPointCounts: DataPoints,
           resolution: Parameters<typeof getBreach>[0],
