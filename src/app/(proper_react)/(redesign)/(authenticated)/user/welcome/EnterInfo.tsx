@@ -192,7 +192,7 @@ export const EnterInfo = ({
     const invalidInputKeys = getInvalidFields();
     if (invalidInputKeys?.length > 0) {
       setInvalidInputs(invalidInputKeys);
-      confirmDialogState.close();
+      setConfirmDialogIsOpen(false);
     }
   };
 
@@ -281,7 +281,7 @@ export const EnterInfo = ({
       <div className={styles.stepButtonWrapper}>
         <Button
           variant="secondary"
-          onPress={() => confirmDialogState.close()}
+          onPress={() => setConfirmDialogIsOpen(false)}
           className={styles.startButton}
         >
           {l10n.getString(
