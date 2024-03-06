@@ -72,6 +72,7 @@ export const EnterInfo = ({
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [invalidInputs, setInvalidInputs] = useState<Array<string>>([]);
   const [requestingScan, setRequestingScan] = useState(false);
+  const [confirmDialogIsOpen, setConfirmDialogIsOpen] = useState(false);
 
   const recordTelemetry = useTelemetry();
   const explainerDialogState = useOverlayTriggerState({});
@@ -97,10 +98,6 @@ export const EnterInfo = ({
       }
     },
   });
-  const confirmDialogTrigger = useOverlayTrigger(
-    { type: "dialog" },
-    confirmDialogState,
-  );
 
   const l10n = useL10n();
   const userDetailsData = [
@@ -403,7 +400,8 @@ export const EnterInfo = ({
             </Button>
           )}
           <Button
-            {...confirmDialogTrigger.triggerProps}
+            onPress={() => setConfirmDialogIsOpen(true)}
+            // {...confirmDialogTrigger.triggerProps}
             variant="primary"
             type="submit"
             className={styles.startButton}
@@ -423,7 +421,7 @@ export const EnterInfo = ({
         </ModalOverlay>
       )}
 
-      {confirmDialogState.isOpen && getInvalidFields().length === 0 && (
+      {confirmDialogIsOpen && getInvalidFields().length === 0 && (
         <ModalOverlay
           state={confirmDialogState}
           {...explainerDialogTrigger.overlayProps}
