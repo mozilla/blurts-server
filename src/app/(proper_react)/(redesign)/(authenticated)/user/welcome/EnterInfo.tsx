@@ -401,6 +401,7 @@ export const EnterInfo = ({
           )}
           <Button
             onPress={() => setConfirmDialogIsOpen(true)}
+            aria-haspopup="dialog"
             variant="primary"
             type="submit"
             className={styles.startButton}
