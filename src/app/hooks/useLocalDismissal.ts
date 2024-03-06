@@ -43,10 +43,17 @@ export function useLocalDismissal(
     const maxAgeInSeconds =
       typeof options.duration === "number"
         ? options.duration
-        : 100 * 365 * 24 * 60 * 60;
+        : /* c8 ignore next 4 */
+          // Since the Node 20.10 upgrade, it's been intermittently marking this
+          // (and this comment) as uncovered, even though I think it's covered by
+          // tests.
+          100 * 365 * 24 * 60 * 60;
     setCookie(cookieId, Date.now().toString(), {
       maxAge: maxAgeInSeconds,
     });
+    /* c8 ignore next 3 */
+    // Since the Node 20.10 upgrade, it's been intermittently marking this (and
+    // this comment) as uncovered, even though I think it's covered by tests.
     if (dismissOptions?.soft !== true) {
       setIsDismissed(true);
     }
