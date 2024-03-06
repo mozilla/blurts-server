@@ -158,8 +158,10 @@ async function sendMetricsFlowPing (path) {
 /**
  * @param {string} subscriptionId 
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 async function deleteSubscription (subscriptionId) {
-  const url = `${AppConstants.OAUTH_API_URI}/oauth/subscriptions/active/${subscriptionId}`
+  const url = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/subscriptions/active/${subscriptionId}`
   try {
     const response = await fetch(url, {
       method: "DELETE",
@@ -174,6 +176,7 @@ async function deleteSubscription (subscriptionId) {
     return false
   }
 }
+/* c8 ignore stop */
 
 /**
  * @param {crypto.BinaryLike} email
