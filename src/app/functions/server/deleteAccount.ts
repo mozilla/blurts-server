@@ -41,17 +41,19 @@ export async function deleteAccount(
     });
 
     // try to unsubscribe from subplat
-    try {
-      const isDeleted = await deleteSubscription(subscriber.fxa_access_token);
-      logger.info("unsubscribe_from_subplat", {
-        subscriber_id: subscriber.id,
-        success: isDeleted,
-      });
-    } catch (ex) {
-      logger.error("unsubscribe_from_subplat", {
-        subscriber_id: subscriber.id,
-        exception: ex,
-      });
+    if (subscriber.fxa_access_token) {
+      try {
+        const isDeleted = await deleteSubscription(subscriber.fxa_access_token);
+        logger.info("unsubscribe_from_subplat", {
+          subscriber_id: subscriber.id,
+          success: isDeleted,
+        });
+      } catch (ex) {
+        logger.error("unsubscribe_from_subplat", {
+          subscriber_id: subscriber.id,
+          exception: ex,
+        });
+      }
     }
   }
 

@@ -156,15 +156,12 @@ async function sendMetricsFlowPing(path) {
 /* c8 ignore stop */
 
 /**
- * @param {string | null} bearerToken 
+ * @param {string} bearerToken
+ * @returns {Promise<Array<any> | null>}
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function deleteSubscription(bearerToken) {
-  if (!bearerToken) {
-    console.error('delete_fxa_subscription: bearerToken cannot be empty')
-    return false
-  }
+async function getSubscriptions(bearerToken) {
   const subscriptionIdUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/subscriptions/active`
   try {
     const getResp = await fetch(subscriptionIdUrl, {
@@ -174,11 +171,33 @@ async function deleteSubscription(bearerToken) {
       }
     })
 
-    const subs = await getResp.json()
+    if (!getResp.ok) {
+      throw new InternalServerError(`bad response: ${getResp.status}`)
+    } else {
+      console.info(`get_fxa_subscriptions: success`)
+      return await getResp.json()
+    }
+  } catch (e) {
+    if (e instanceof Error) {
+      console.error('get_fxa_subscriptions', { stack: e.stack })
+    }
+    return null
+  }
+}
+/* c8 ignore stop */
+
+/**
+ * @param {string} bearerToken
+ * @returns {Promise<boolean>}
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function deleteSubscription(bearerToken) {
+  try {
+    const subs = await getSubscriptions(bearerToken)
     const subscriptionId = subs?.[0]?.subscriptionId
     if (subscriptionId) {
-
-      const deleteUrl = `${subscriptionIdUrl}/${subscriptionId}`
+      const deleteUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/subscriptions/active/${subscriptionId}`
       const response = await fetch(deleteUrl, {
         method: "DELETE",
         headers: {
@@ -219,5 +238,6 @@ export {
   getProfileData,
   sendMetricsFlowPing,
   getSha1,
+  getSubscriptions,
   deleteSubscription
 }
