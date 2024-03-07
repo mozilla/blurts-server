@@ -30,13 +30,10 @@ export function WelcomeToPlusView(props: Props) {
 
   const scanResultsInProgress =
     props.data.latestScanData?.results.filter(
-      (result) =>
-        !result.manually_resolved &&
-        (result.status === "optout_in_progress" ||
-          result.status === "waiting_for_verification"),
+      (result) => !result.manually_resolved && result.status !== "removed",
     ) ?? [];
   const scanResultsInProgressCount = scanResultsInProgress.length;
-  const showZeroState = scanResultsInProgressCount === 0;
+  const hasRelevantScanResults = scanResultsInProgressCount > 0;
   const summary = getDashboardSummary(
     scanResultsInProgress,
     props.data.subscriberBreaches,
@@ -56,7 +53,7 @@ export function WelcomeToPlusView(props: Props) {
             {l10n.getString(
               "welcome-to-premium-data-broker-profiles-title-part-one",
             )}
-            {showZeroState && (
+            {hasRelevantScanResults && (
               <>
                 <br />
                 {l10n.getString(
@@ -66,7 +63,7 @@ export function WelcomeToPlusView(props: Props) {
             )}
           </h3>
           <p>
-            {showZeroState
+            {hasRelevantScanResults
               ? l10n.getString(
                   "welcome-to-premium-data-broker-profiles-description-part-one",
                   {
@@ -82,7 +79,7 @@ export function WelcomeToPlusView(props: Props) {
                 )}
           </p>
           <p>
-            {showZeroState
+            {hasRelevantScanResults
               ? l10n.getString(
                   "welcome-to-premium-data-broker-profiles-description-part-two",
                 )
@@ -91,7 +88,7 @@ export function WelcomeToPlusView(props: Props) {
                 )}
           </p>
           <p>
-            {showZeroState
+            {hasRelevantScanResults
               ? l10n.getString(
                   "welcome-to-premium-data-broker-profiles-description-part-three",
                 )
@@ -118,7 +115,7 @@ export function WelcomeToPlusView(props: Props) {
             </TelemetryButton>
           </div>
         </div>
-        {showZeroState ? (
+        {hasRelevantScanResults ? (
           <div className={styles.chart}>
             <PercentageChart exposureReduction={dataPointReduction} />
           </div>

@@ -25,11 +25,25 @@ const mockedScan: OnerepScanRow = {
 };
 
 function getMockedScanData(brokerScanCount: number): LatestOnerepScanData {
+  const relevantResults = [...Array(brokerScanCount)].map(() =>
+    createRandomScanResult({
+      status: "optout_in_progress",
+      manually_resolved: false,
+    }),
+  );
   return {
     scan: mockedScan,
-    results: [...Array(brokerScanCount)].map(() =>
-      createRandomScanResult({ status: "new", manually_resolved: false }),
-    ),
+    results: [
+      ...relevantResults,
+      createRandomScanResult({
+        status: "new",
+        manually_resolved: true,
+      }),
+      createRandomScanResult({
+        status: "removed",
+        manually_resolved: false,
+      }),
+    ],
   };
 }
 
@@ -44,19 +58,21 @@ const mockedSession = {
 
 const WelcomeToPlusViewWrapper = (props: { brokerScanCount: number }) => {
   return (
-    <WelcomeToPlusView
-      data={{
-        countryCode: "us",
-        latestScanData:
-          props.brokerScanCount > 0
-            ? getMockedScanData(props.brokerScanCount)
-            : null,
-        subscriberBreaches: mockedBreaches,
-        user: mockedSession.user,
-      }}
-      l10n={l10n}
-      subscriberEmails={[]}
-    />
+    <Shell l10n={l10n} session={mockedSession} nonce="">
+      <WelcomeToPlusView
+        data={{
+          countryCode: "us",
+          latestScanData:
+            props.brokerScanCount > 0
+              ? getMockedScanData(props.brokerScanCount)
+              : null,
+          subscriberBreaches: mockedBreaches,
+          user: mockedSession.user,
+        }}
+        l10n={l10n}
+        subscriberEmails={[]}
+      />
+    </Shell>
   );
 };
 
@@ -74,13 +90,16 @@ type Story = StoryObj<typeof WelcomeToPlusViewWrapper>;
 
 const l10n = getOneL10nSync();
 
-export const WelcomeToPlusViewStory: Story = {
-  name: "1e. Welcome to Plus",
-  render: (props) => {
-    return (
-      <Shell l10n={l10n} session={mockedSession} nonce="">
-        <WelcomeToPlusViewWrapper brokerScanCount={props.brokerScanCount} />
-      </Shell>
-    );
+export const WelcomeToPlusViewNoResultsStory: Story = {
+  name: "No broker results in-progress",
+  args: {
+    brokerScanCount: 0,
+  },
+};
+
+export const WelcomeToPlusViewInProgressStory: Story = {
+  name: "Broker auto removal in-progress",
+  args: {
+    brokerScanCount: 13,
   },
 };
