@@ -56,6 +56,18 @@ settings-deactivate-account-title = Hesabı devre dışı bırak
 settings-deactivate-account-info-2 = { -product-short-name }’ü { -brand-mozilla-account }nızı silerek devre dışı bırakabilirsiniz.
 settings-fxa-link-label-3 = { -brand-mozilla-account } ayarlarına gidin
 
+## Delete Monitor account
+
+settings-delete-monitor-free-account-dialog-title = { -brand-monitor } hesabınız kalıcı olarak silinecektir
+settings-delete-monitor-free-account-dialog-cta-label = Hesabı sil
+settings-delete-monitor-free-account-dialog-cancel-button-label = Vazgeçtim, geri dön
+settings-delete-monitor-plus-account-title = { -brand-monitor } hesabımı sil
+settings-delete-monitor-plus-account-dialog-title = { -brand-monitor } hesabınız kalıcı olarak silinecektir
+settings-delete-monitor-plus-account-dialog-cta-label = Hesabı sil
+settings-delete-monitor-plus-account-dialog-cancel-button-label = Vazgeçtim, geri dön
+settings-delete-monitor-account-confirmation-toast-label = { -brand-monitor } hesabınız kalıcı olarak silindi.
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Kapat
+
 ## Add email dialog
 
 settings-email-dialog-title = Başka bir e-posta adresi ekle

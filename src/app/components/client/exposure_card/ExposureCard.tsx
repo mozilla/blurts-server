@@ -7,7 +7,7 @@
 import React, { ReactNode } from "react";
 import { OnerepScanResultRow } from "knex/types/tables";
 import { StaticImageData } from "next/image";
-import { SubscriberBreach } from "../../../utils/subscriberBreaches";
+import { SubscriberBreach } from "../../../../utils/subscriberBreaches";
 import { ScanResultCard } from "./ScanResultCard";
 import { SubscriberBreachCard } from "./SubscriberBreachCard";
 

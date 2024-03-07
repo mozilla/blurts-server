@@ -126,13 +126,6 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
         formattedDataClasses,
       );
 
-      // Make sure the dashboard re-fetches the breaches on the next visit,
-      // in order to make resolved breaches move to the "Fixed" tab.
-      // If we had used server actions, we could've called
-      // `revalidatePath("/user/dashboard")` there, but the API doesn't appear
-      // to necessarily share a cache with the client.
-      router.refresh();
-
       // Manually move to the next step when breach has been marked as fixed.
       const updatedSubscriberBreaches = subscriberBreaches.map(
         (subscriberBreach) => {
@@ -160,6 +153,13 @@ export function LeakedPasswordsLayout(props: LeakedPasswordsLayoutProps) {
           ? "passwords-done"
           : "security-questions-done";
       router.push(`/user/dashboard/fix/leaked-passwords/${doneSlug}`);
+
+      // Make sure the dashboard re-fetches the breaches on the next visit,
+      // in order to make resolved breaches move to the "Fixed" tab.
+      // If we had used server actions, we could've called
+      // `revalidatePath("/user/dashboard")` there, but the API doesn't appear
+      // to necessarily share a cache with the client.
+      router.refresh();
     } catch (_error) {
       // TODO: MNTOR-2563: Capture client error with @next/sentry
       setIsResolving(false);
