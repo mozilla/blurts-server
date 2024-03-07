@@ -5,7 +5,7 @@
 import {
   Exposure,
   isScanResult,
-} from "../../../../../../components/client/ExposureCard";
+} from "../../../../../../components/client/exposure_card/ExposureCard";
 import { FilterState } from "../../../../../../components/client/ExposuresFilter";
 
 export function filterExposures(
