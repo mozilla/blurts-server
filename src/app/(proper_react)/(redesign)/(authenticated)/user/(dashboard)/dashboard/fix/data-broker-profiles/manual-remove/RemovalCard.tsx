@@ -11,7 +11,7 @@ import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { useState } from "react";
 import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
-import { ScanResultCard } from "../../../../../../../../../components/client/ScanResultCard";
+import { ScanResultCard } from "../../../../../../../../../components/client/exposure_card/ScanResultCard";
 
 export type Props = {
   scanResult: OnerepScanResultRow;

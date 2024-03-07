@@ -5,7 +5,7 @@
 import React from "react";
 import styles from "./StatusPill.module.scss";
 import { useL10n } from "../../hooks/l10n";
-import { Exposure, isScanResult } from "../client/ExposureCard";
+import { Exposure, isScanResult } from "../client/exposure_card/ExposureCard";
 
 export type StatusPillType = "needAction" | "progress" | "fixed";
 

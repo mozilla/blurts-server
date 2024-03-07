@@ -7,19 +7,19 @@
 import React, { ReactNode, useId } from "react";
 import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./ExposureCard.module.scss";
-import { StatusPill } from "../server/StatusPill";
+import { StatusPill } from "../../server/StatusPill";
 import {
   ChevronDown,
   EmailIcon,
   LocationPinIcon,
   MultipleUsersIcon,
   PhoneIcon,
-} from "../server/Icons";
-import { useL10n } from "../../hooks/l10n";
+} from "../../server/Icons";
+import { useL10n } from "../../../hooks/l10n";
 import { ExposureCardDataClassLayout } from "./ExposureCardDataClass";
 import { DataBrokerImage } from "./DataBrokerImage";
-import { CONST_URL_SUMO_MONITOR_REMOVAL } from "../../../constants";
-import { TelemetryLink } from "./TelemetryLink";
+import { CONST_URL_SUMO_MONITOR_REMOVAL } from "../../../../constants";
+import { TelemetryLink } from "../TelemetryLink";
 
 export type ScanResultCardProps = {
   scanResult: OnerepScanResultRow;
