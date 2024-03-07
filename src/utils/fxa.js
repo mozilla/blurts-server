@@ -158,7 +158,7 @@ async function sendMetricsFlowPing(path) {
 /**
  * @param {string | null} bearerToken 
  */
-// TODO: Add unit test when changing this code:
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function deleteSubscription(bearerToken) {
   if (!bearerToken) {
