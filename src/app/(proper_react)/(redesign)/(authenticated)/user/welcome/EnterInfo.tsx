@@ -29,6 +29,7 @@ import { useTelemetry } from "../../../../../hooks/useTelemetry";
 import { CONST_URL_PRIVACY_POLICY } from "../../../../../../constants";
 
 import styles from "./EnterInfo.module.scss";
+import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -81,23 +82,25 @@ export const EnterInfo = ({
     explainerDialogState,
   );
 
-  const confirmDialogState = useOverlayTriggerState({
-    onOpenChange: (isOpen) => {
-      if (getInvalidFields().length > 0) {
-        return;
-      }
+  const confirmDialogState = useOverlayTriggerState({});
 
-      if (isOpen) {
-        recordTelemetry("popup", "view", {
-          popup_id: "enter_scan_info_confirmation_modal",
-        });
-      } else {
-        recordTelemetry("button", "click", {
-          button_id: "edit_free_scan",
-        });
-      }
-    },
-  });
+  // const confirmDialogState = useOverlayTriggerState({
+  //   onOpenChange: (isOpen) => {
+  //     if (getInvalidFields().length > 0) {
+  //       return;
+  //     }
+
+  //     if (isOpen) {
+  //       recordTelemetry("popup", "view", {
+  //         popup_id: "enter_scan_info_confirmation_modal",
+  //       });
+  //     } else {
+  //       recordTelemetry("button", "click", {
+  //         button_id: "edit_free_scan",
+  //       });
+  //     }
+  //   },
+  // });
 
   const l10n = useL10n();
   const userDetailsData = [
@@ -279,32 +282,41 @@ export const EnterInfo = ({
         </dl>
       </div>
       <div className={styles.stepButtonWrapper}>
-        <Button
+        <TelemetryButton
           variant="secondary"
           onPress={() => setConfirmDialogIsOpen(false)}
           className={styles.startButton}
+          event={{
+            module: "button",
+            name: "click",
+            data: {
+              button_id: "edit_free_scan",
+            },
+          }}
         >
           {l10n.getString(
             "onboarding-enter-details-comfirm-dialog-button-edit",
           )}
-        </Button>
-        <Button
+        </TelemetryButton>
+        <TelemetryButton
           variant="primary"
           // TODO: Figure out how to intercept the fetch request in a test:
           /* c8 ignore next */
-          onPress={() => {
-            recordTelemetry("ctaButton", "click", {
-              button_id: "confirmed_free_scan",
-            });
-            handleRequestScan();
-          }}
           className={styles.startButton}
           isLoading={requestingScan}
+          onPress={() => handleRequestScan()}
+          event={{
+            module: "ctaButton",
+            name: "click",
+            data: {
+              button_id: "confirmed_free_scan",
+            },
+          }}
         >
           {l10n.getString(
             "onboarding-enter-details-comfirm-dialog-button-confirm",
           )}
-        </Button>
+        </TelemetryButton>
       </div>
     </Dialog>
   );
@@ -399,15 +411,22 @@ export const EnterInfo = ({
               {l10n.getString("onboarding-steps-enter-info-back")}
             </Button>
           )}
-          <Button
+          <TelemetryButton
             onPress={() => setConfirmDialogIsOpen(true)}
             aria-haspopup="dialog"
             variant="primary"
             type="submit"
             className={styles.startButton}
+            event={{
+              module: "popup",
+              name: "view",
+              data: {
+                popup_id: "enter_scan_info_confirmation_modal",
+              },
+            }}
           >
             {l10n.getString("onboarding-steps-find-exposures-label")}
-          </Button>
+          </TelemetryButton>
         </div>
       </form>
 
