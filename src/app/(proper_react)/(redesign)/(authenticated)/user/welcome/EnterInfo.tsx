@@ -74,6 +74,7 @@ export const EnterInfo = ({
   const [invalidInputs, setInvalidInputs] = useState<Array<string>>([]);
   const [requestingScan, setRequestingScan] = useState(false);
   const [confirmDialogIsOpen, setConfirmDialogIsOpen] = useState(false);
+  const confirmDialogState = useOverlayTriggerState({});
 
   const recordTelemetry = useTelemetry();
   const explainerDialogState = useOverlayTriggerState({});
@@ -81,26 +82,6 @@ export const EnterInfo = ({
     { type: "dialog" },
     explainerDialogState,
   );
-
-  const confirmDialogState = useOverlayTriggerState({});
-
-  // const confirmDialogState = useOverlayTriggerState({
-  //   onOpenChange: (isOpen) => {
-  //     if (getInvalidFields().length > 0) {
-  //       return;
-  //     }
-
-  //     if (isOpen) {
-  //       recordTelemetry("popup", "view", {
-  //         popup_id: "enter_scan_info_confirmation_modal",
-  //       });
-  //     } else {
-  //       recordTelemetry("button", "click", {
-  //         button_id: "edit_free_scan",
-  //       });
-  //     }
-  //   },
-  // });
 
   const l10n = useL10n();
   const userDetailsData = [
