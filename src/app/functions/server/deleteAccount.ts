@@ -42,11 +42,10 @@ export async function deleteAccount(
 
     // try to unsubscribe from subplat
     try {
-      const subscriptionId = "monitor";
-      await deleteSubscription(subscriptionId);
+      const isDeleted = await deleteSubscription(subscriber.fxa_access_token);
       logger.info("unsubscribe_from_subplat", {
         subscriber_id: subscriber.id,
-        success: true,
+        success: isDeleted,
       });
     } catch (ex) {
       logger.error("unsubscribe_from_subplat", {
