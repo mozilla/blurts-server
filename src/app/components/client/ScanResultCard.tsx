@@ -155,8 +155,8 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             },
           );
         }
+        /* c8 ignore start */
         if (props.isOnManualRemovePage) {
-          /* c8 ignore start */
           return scanResult.manually_resolved
             ? l10n.getFragment(
                 "exposure-card-description-info-for-sale-fixed-manually-fixed",
@@ -174,8 +174,8 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
                   },
                 },
               );
-          /* c8 ignore stop */
         }
+        /* c8 ignore stop */
         return l10n.getFragment(
           "exposure-card-description-info-for-sale-action-needed-dashboard",
           {

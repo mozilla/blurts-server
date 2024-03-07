@@ -5,15 +5,13 @@
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import Script from "next/script";
+import { EmailAddressRow } from "knex/types/tables";
 import AppConstants from "../../../../../appConstants";
 import { getL10n } from "../../../../functions/server/l10n";
 import ImageIconDelete from "../../../../../client/images/icon-delete.svg";
 import "../../../../../client/css/partials/settings.css";
 import React from "react";
-import {
-  EmailRow,
-  getUserEmails,
-} from "../../../../../db/tables/emailAddresses";
+import { getUserEmails } from "../../../../../db/tables/emailAddresses";
 import { getBreaches } from "../../../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../../../utils/hibp";
 import { getSha1 } from "../../../../../utils/fxa";
@@ -22,7 +20,7 @@ import { getNonce } from "../../../functions/server/getNonce";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../constants";
 import { getServerSession } from "../../../../functions/server/getServerSession";
 
-const emailNeedsVerificationSub = (email: EmailRow) => {
+const emailNeedsVerificationSub = (email: EmailAddressRow) => {
   const l10n = getL10n();
 
   return (
@@ -38,7 +36,7 @@ const emailNeedsVerificationSub = (email: EmailRow) => {
   );
 };
 
-const deleteButton = (email: EmailRow) => {
+const deleteButton = (email: EmailAddressRow) => {
   const l10n = getL10n();
 
   return (
@@ -57,7 +55,7 @@ const deleteButton = (email: EmailRow) => {
 };
 
 const createEmailItem = (
-  email: EmailRow & { primary?: boolean },
+  email: EmailAddressRow & { primary?: boolean },
   breachCounts: Map<string, number>,
 ) => {
   const l10n = getL10n();
@@ -82,7 +80,9 @@ const createEmailItem = (
 };
 
 // Moves the primary email to the front and sorts the rest alphabeticaly.
-const getSortedEmails = (emails: Array<EmailRow & { primary?: boolean }>) =>
+const getSortedEmails = (
+  emails: Array<EmailAddressRow & { primary?: boolean }>,
+) =>
   [...emails].sort((a, b) => {
     if (a.primary) {
       return -1;
@@ -96,7 +96,7 @@ const getSortedEmails = (emails: Array<EmailRow & { primary?: boolean }>) =>
   });
 
 const createEmailList = (
-  emails: EmailRow[],
+  emails: EmailAddressRow[],
   breachCounts: Map<string, number>,
 ) => {
   return (
