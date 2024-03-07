@@ -4,6 +4,7 @@
 
 import { cookies } from "next/headers";
 import { Session } from "next-auth";
+import { EmailAddressRow } from "knex/types/tables";
 
 import { getBreaches } from "./getBreaches";
 import { appendBreachResolutionChecklist } from "./breachResolution";
@@ -17,7 +18,6 @@ import {
   SubscriberBreach,
   getSubBreaches,
 } from "../../../utils/subscriberBreaches";
-import { EmailRow } from "../../../db/tables/emailAddresses";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 
 //TODO: deprecate with MNTOR-2021
@@ -29,7 +29,7 @@ export type UserBreaches = {
   emailTotalCount: number;
   emailSelectIndex: number;
   breachesData: {
-    unverifiedEmails: EmailRow[];
+    unverifiedEmails: EmailAddressRow[];
     verifiedEmails: BundledVerifiedEmails[];
   };
 };
@@ -95,10 +95,16 @@ export async function getUserBreaches({
  * NOTE: new function to replace getUserBreaches
  *
  * @param user
+ * @param user.user
+ * @param user.countryCode
  */
-export async function getSubscriberBreaches(
-  user: Session["user"],
-): Promise<SubscriberBreach[]> {
+export async function getSubscriberBreaches({
+  user,
+  countryCode,
+}: {
+  user: Session["user"];
+  countryCode: string;
+}): Promise<SubscriberBreach[]> {
   if (!user.subscriber?.fxa_uid) {
     throw new Error("No fxa_uid found in session");
   }
@@ -107,7 +113,11 @@ export async function getSubscriberBreaches(
     throw new Error("No subscriber found for the given user data.");
   }
   const allBreaches = await getBreaches();
-  const breachesData = await getSubBreaches(subscriber, allBreaches);
+  const breachesData = await getSubBreaches(
+    subscriber,
+    allBreaches,
+    countryCode,
+  );
   return breachesData;
 }
 

@@ -23,13 +23,11 @@ exposure-card-credit-card = Thẻ tín dụng
 exposure-card-password = Mật khẩu
 exposure-card-ip-address = Địa chỉ IP
 exposure-card-other = Khác
-exposure-card-description-info-for-sale-part-one = Trang web này đang bán và xuất bản <data_broker_link>chi tiết về bạn.</data_broker_link>
-exposure-card-description-info-for-sale-part-two = Xóa hồ sơ này để bảo vệ sự riêng tư của bạn.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = Thông tin của bạn đã bị lộ trong <data_breach_link>vụ rò rỉ dữ liệu { $data_breach_company } vào { $data_breach_date }.</data_breach_link>
-exposure-card-description-data-breach-part-two = Chúng tôi sẽ hướng dẫn bạn các bước để giải quyết nó.
+exposure-card-description-data-breach-action-needed = Thông tin của bạn đã bị lộ trong <data_breach_link>vụ rò rỉ dữ liệu { $data_breach_company } vào { $data_breach_date }.</data_breach_link> Chúng tôi sẽ hướng dẫn bạn các bước để khắc phục sự cố.
+exposure-card-description-data-breach-fixed = Bạn đã thực hiện các bước cần thiết để khắc phục <data_breach_link>rò rỉ này</data_breach_link>. Chúng tôi sẽ liên tục theo dõi các hành vi rò rỉ dữ liệu và cảnh báo cho bạn về bất kỳ hành vi rò rỉ dữ liệu mới nào.
 exposure-card-your-exposed-info = Thông tin bị lộ của bạn:
 exposure-card-exposure-type-data-broker = Thông tin để bán
 exposure-card-exposure-type-data-breach = Vụ rò rỉ
