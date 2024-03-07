@@ -135,8 +135,8 @@
  /**
   * @param {string} path
   */
- // TODO: Add unit test when changing this code:
- /* c8 ignore start */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy 
+/* c8 ignore start */
  async function sendMetricsFlowPing(path) {
    const fxaMetricsFlowUrl = new URL(path, AppConstants.NEXT_PUBLIC_FXA_SETTINGS_URL)
    try {
