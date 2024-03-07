@@ -48,12 +48,6 @@ jobs:
             docker push mozilla/blurts-server:latest
             docker tag blurts-server ${{ steps.meta.outputs.tags }}
             docker push ${{ steps.meta.outputs.tags }}
-          elif [ "${{ github.ref }}" == "refs/tags/"* ]; then
-            # deploy a release tag
-            echo "mozilla/blurts-server:${{ github.ref }}"
-            docker tag blurts-server "mozilla/blurts-server:${{ github.ref_name }}"
-            docker images
-            docker push "mozilla/blurts-server:${{ github.ref_name }}"
           elif [ "${{ github.ref }}" == "refs/heads/MNTOR-2247" ]; then
             # for testing only, deploy on branch MNTOR-2247
             docker tag blurts-server ${{ steps.meta.outputs.tags }}
