@@ -7,11 +7,12 @@ import { render, screen, within } from "@testing-library/react";
 import { axe } from "jest-axe";
 import { Session } from "next-auth";
 import { userEvent } from "@testing-library/user-event";
+import type { EmailAddressRow } from "knex/types/tables";
 import { getOneL10nSync } from "../../../../../../functions/server/mockL10n";
 import { TestComponentWrapper } from "../../../../../../../TestComponentWrapper";
-import { EmailRow } from "../../../../../../../db/tables/emailAddresses";
 import { SerializedSubscriber } from "../../../../../../../next-auth";
 import { onAddEmail, onRemoveEmail } from "./actions";
+import { sanitizeEmailRow } from "../../../../../../functions/server/sanitizeEmailRow";
 
 const mockedSessionUpdate = jest.fn();
 const mockedRecordTelemetry = jest.fn();
@@ -57,19 +58,25 @@ const mockedUser: Session["user"] = {
     twoFactorAuthentication: false,
   },
 };
-const mockedSecondaryVerifiedEmail: EmailRow = {
+const mockedSecondaryVerifiedEmail: EmailAddressRow = {
   id: 1337,
   email: "secondary_verified@example.com",
   sha1: "arbitrary string",
   subscriber_id: subscriberId,
   verified: true,
+  created_at: new Date("1337-04-02T04:02:42.000Z"),
+  updated_at: new Date("1337-04-02T04:02:42.000Z"),
+  verification_token: "arbitrary_token",
 };
-const mockedSecondaryUnverifiedEmail: EmailRow = {
+const mockedSecondaryUnverifiedEmail: EmailAddressRow = {
   id: 1337,
   email: "secondary_unverified@example.com",
   sha1: "arbitrary string",
   subscriber_id: subscriberId,
   verified: false,
+  created_at: new Date("1337-04-02T04:02:42.000Z"),
+  updated_at: new Date("1337-04-02T04:02:42.000Z"),
+  verification_token: "arbitrary_token",
 };
 const mockedSubscriptionBillingAmount = {
   yearly: 13.37,
@@ -371,7 +378,9 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
   const removeButtons = screen.getAllByRole("button", { name: "Remove" });
   await user.click(removeButtons[0]);
 
-  expect(onRemoveEmail).toHaveBeenCalledWith(mockedSecondaryVerifiedEmail);
+  expect(onRemoveEmail).toHaveBeenCalledWith(
+    sanitizeEmailRow(mockedSecondaryVerifiedEmail),
+  );
 });
 
 it("hides the Plus cancellation link if the user doesn't have Plus", () => {

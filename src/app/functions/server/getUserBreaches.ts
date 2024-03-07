@@ -4,6 +4,7 @@
 
 import { cookies } from "next/headers";
 import { Session } from "next-auth";
+import { EmailAddressRow } from "knex/types/tables";
 
 import { getBreaches } from "./getBreaches";
 import { appendBreachResolutionChecklist } from "./breachResolution";
@@ -17,7 +18,6 @@ import {
   SubscriberBreach,
   getSubBreaches,
 } from "../../../utils/subscriberBreaches";
-import { EmailRow } from "../../../db/tables/emailAddresses";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 
 //TODO: deprecate with MNTOR-2021
@@ -29,7 +29,7 @@ export type UserBreaches = {
   emailTotalCount: number;
   emailSelectIndex: number;
   breachesData: {
-    unverifiedEmails: EmailRow[];
+    unverifiedEmails: EmailAddressRow[];
     verifiedEmails: BundledVerifiedEmails[];
   };
 };
