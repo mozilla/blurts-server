@@ -4,8 +4,6 @@ on:
   push:
     branches: [ main, MNTOR-2247 ]
     tags: '*'
-  pull_request:
-    branches: [ main ]
 
 jobs:
   push_to_registry:
@@ -29,14 +27,6 @@ jobs:
           tags: |
             type=semver,pattern={{raw}}
             type=raw,value={{sha}},event=tag
-
-      # - name: Build and push Docker image
-      #   uses: docker/build-push-action@v5
-      #   with:
-      #     context: .
-      #     file: ./Dockerfile
-      #     push: true
-      #     tags: ${{ steps.meta.outputs.tags }}
 
       - name: Create version.json
         run: |
