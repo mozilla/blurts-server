@@ -40,7 +40,7 @@ const mockedSession = {
 };
 
 const meta: Meta<typeof AutomaticRemoveView> = {
-  title: "Pages/Guided resolution/1d. Automatically resolve brokers",
+  title: "Pages/Logged in/Guided resolution/1d. Automatically resolve brokers",
   component: AutomaticRemoveView,
 };
 export default meta;

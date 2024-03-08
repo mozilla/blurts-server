@@ -9,7 +9,7 @@ import { PublicShell } from "../../PublicShell";
 import { createRandomHibpListing } from "../../../../../../apiMocks/mockData";
 
 const meta: Meta<typeof BreachDetailsView> = {
-  title: "Pages/Public breach listing",
+  title: "Pages/Public/Breach listing",
   component: (props: ViewProps) => (
     <PublicShell l10n={getOneL10nSync("en")}>
       <BreachDetailsView {...props} />
@@ -24,7 +24,7 @@ export default meta;
 type Story = StoryObj<typeof BreachDetailsView>;
 
 export const LandingUs: Story = {
-  name: "Public breach listing",
+  name: "Breach listing",
   args: {
     breach: createRandomHibpListing(),
   },
