@@ -5,7 +5,7 @@
 import { ReactNode } from "react";
 import Image from "next/image";
 import styles from "./BreachDetailView.module.scss";
-import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
+import type { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { getAllPriorityDataClasses } from "../../../../../../utils/recommendations";
 import { TelemetryLink } from "../../../../../components/client/TelemetryLink";
 import { BreachLogo } from "../../../../../components/server/BreachLogo";

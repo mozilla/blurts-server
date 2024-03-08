@@ -2,8 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getMessage } from './fluent.js'
-
 export function getAllGenericRecommendations () {
   return [
     {
@@ -286,18 +284,5 @@ export function getAllPriorityDataClasses (_isUserBrowserFirefox = false, isUser
         }
       ]
     }
-  }
-}
-export function getFourthPasswordRecommendation () {
-  return {
-    recommendationCopy: {
-      subhead: getMessage('rec-pw-4-subhead'),
-      body: getMessage('rec-pw-4'),
-      cta: getMessage('rec-pw-4-cta')
-    },
-    ctaHref: 'https://2fa.directory/',
-    ctaShouldOpenNewTab: true,
-    ctaAnalyticsId: 'See sites that offer 2FA',
-    recIconClassName: 'rec-pw-4'
   }
 }

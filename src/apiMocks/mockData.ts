@@ -18,6 +18,7 @@ import {
   SubscriberBreach,
 } from "../utils/subscriberBreaches";
 import { Session } from "next-auth";
+import { HibpLikeDbBreach } from "../utils/hibp";
 
 // Setting this to a constant value produces the same result when the same methods
 // with the same version of faker are called.
@@ -144,5 +145,50 @@ export function createUserWithPremiumSubscription(): Session["user"] {
       avatarDefault: true,
       subscriptions: ["monitor"],
     },
+  };
+}
+
+export function createRandomHibpListing(): HibpLikeDbBreach {
+  const breachDate = faker.date.recent({ days: 1000 });
+  const addedDate = faker.date.between({ from: breachDate, to: Date.now() });
+  const title = faker.company.name();
+  const name = title.replaceAll(" ", "");
+  const possibleDataClasses = [
+    ...Object.values(BreachDataTypes).filter(
+      (dataClass) => dataClass !== "general",
+    ),
+    // `BreachDataTypes` only enumers our priority data types, so ensure that,
+    // like real breaches, the mock data sometimes also includes breached data
+    // classes that are not part of our high-priority ones:
+    "astrological-signs",
+    "cryptocurrency-wallet-hashes",
+    "device-serial-numbers",
+    "ethnicities",
+    "hiv-statuses",
+  ];
+  return {
+    AddedDate: addedDate,
+    BreachDate: breachDate.toISOString(),
+    DataClasses: faker.helpers.arrayElements(possibleDataClasses),
+    Description: faker.lorem.sentence(),
+    Domain: faker.internet.domainName(),
+    Id: faker.number.int(),
+    IsFabricated: faker.datatype.boolean(),
+    IsMalware: faker.datatype.boolean(),
+    IsRetired: faker.datatype.boolean(),
+    IsSensitive: faker.datatype.boolean(),
+    IsSpamList: faker.datatype.boolean(),
+    IsVerified: faker.datatype.boolean(),
+    LogoPath: "unused",
+    ModifiedDate: faker.date.between(addedDate, Date.now()),
+    Name: name,
+    PwnCount: faker.number.int(),
+    Title: title,
+    FaviconUrl: faker.helpers.maybe(() =>
+      faker.image.url({
+        height: faker.number.int({ min: 20, max: 36 }),
+        width: faker.number.int({ min: 20, max: 36 }),
+      }),
+    ),
   };
 }
