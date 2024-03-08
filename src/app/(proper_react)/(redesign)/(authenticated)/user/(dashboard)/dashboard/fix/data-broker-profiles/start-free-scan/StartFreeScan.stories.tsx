@@ -40,7 +40,7 @@ const mockedSession = {
 };
 
 const meta: Meta<typeof StartFreeScanView> = {
-  title: "Pages/Guided resolution/1a. Free scan",
+  title: "Pages/Logged in/Guided resolution/1a. Free scan",
   component: StartFreeScanView,
 };
 export default meta;

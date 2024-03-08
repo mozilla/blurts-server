@@ -10,7 +10,7 @@ import { PublicShell } from "../PublicShell";
 import { createRandomHibpListing } from "../../../../../apiMocks/mockData";
 
 const meta: Meta<typeof BreachIndexView> = {
-  title: "Pages/Public breach index",
+  title: "Pages/Public/Breach index",
   component: (props: ViewProps) => (
     <PublicShell l10n={getOneL10nSync("en")}>
       <BreachIndexView {...props} />
@@ -25,7 +25,7 @@ export default meta;
 type Story = StoryObj<typeof BreachIndexView>;
 
 export const LandingUs: Story = {
-  name: "Public breach index",
+  name: "Breach index",
   args: {
     allBreaches: faker.helpers.multiple(createRandomHibpListing, {
       count: { min: 7, max: 20 },

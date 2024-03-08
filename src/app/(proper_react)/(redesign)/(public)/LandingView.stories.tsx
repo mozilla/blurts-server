@@ -8,7 +8,7 @@ import { getOneL10nSync } from "../../../functions/server/mockL10n";
 import { PublicShell } from "./PublicShell";
 
 const meta: Meta<typeof View> = {
-  title: "Pages/Public landing page",
+  title: "Pages/Public/Landing page",
   component: (props: ViewProps) => (
     <PublicShell l10n={getOneL10nSync("en")}>
       <View {...props} />
