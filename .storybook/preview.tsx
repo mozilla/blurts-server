@@ -63,6 +63,18 @@ const preview: Preview = {
         push(path: string, ...otherArgs: unknown[]) {
           action("nextNavigation.push")(path, ...otherArgs);
 
+          if (path === "/") {
+            linkTo("Pages/Public landing page", "US visitors")();
+          }
+
+          if (path === "/breaches") {
+            linkTo("Pages/Public breach index")();
+          }
+
+          if (path.startsWith("/breach-details/")) {
+            linkTo("Pages/Public breach listing")();
+          }
+
           if (path === "/user/dashboard") {
             linkTo(
               "Pages/Dashboard",
