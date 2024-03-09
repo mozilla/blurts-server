@@ -24,6 +24,15 @@ exposure-chart-legend-heading-nr = Кількість
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
+exposure-chart-caption = На цій діаграмі показано, скільки разів ваша інформація була розкрита.
+# Variables:
+#   $total_fixed_exposures_num (number) - Number of fixed exposures
+#   $total_exposures_num (number) - Number of total exposures
+exposure-chart-caption-fixed = На цій діаграмі показано загальну кількість зафіксованих розкриттів ({ $total_fixed_exposures_num } з { $total_exposures_num })
+exposure-chart-returning-user-upgrade-prompt = Домашня адреса, члени сім’ї та інше ще не включено.
+exposure-chart-returning-user-upgrade-prompt-cta = Розпочати безплатну перевірку
+exposure-chart-scan-in-progress-prompt = <b>Триває перевірка:</b> адреса, члени родини тощо ще не включено.
+modal-active-number-of-exposures-title = Про кількість розкриттів
 
 ## Top banner on the dashboard
 
