@@ -23,13 +23,11 @@ exposure-card-credit-card = Tarjeta de crédito
 exposure-card-password = Contraseña
 exposure-card-ip-address = Dirección IP
 exposure-card-other = Otro
-exposure-card-description-info-for-sale-part-one = Este sitio vende y publica <data_broker_link>detalles sobre ti.</data_broker_link>
-exposure-card-description-info-for-sale-part-two = Elimina este perfil para proteger tu privacidad.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = Tu información fue expuesta en la <data_breach_link>filtración de datos de { $data_breach_company } el { $data_breach_date }.</data_breach_link>
-exposure-card-description-data-breach-part-two = Te guiaremos a través de los pasos para solucionarlo.
+exposure-card-description-data-breach-action-needed = Tu información fue expuesta en la <data_breach_link>filtración de datos de { $data_breach_company } el { $data_breach_date }.</data_breach_link> Te guiaremos a través de los pasos para solucionarlo.
+exposure-card-description-data-breach-fixed = Has tomado las medidas necesarias para solucionar <data_breach_link>esta filtración</data_breach_link>. Continuaremos monitoreando las filtraciones de datos y te alertaremos sobre cualquier nueva exposición.
 exposure-card-your-exposed-info = Tu información expuesta:
 exposure-card-exposure-type-data-broker = Información a la venta
 exposure-card-exposure-type-data-breach = Filtración de datos
