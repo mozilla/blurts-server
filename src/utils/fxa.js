@@ -194,8 +194,13 @@ async function getSubscriptions(bearerToken) {
 /* c8 ignore start */
 async function deleteSubscription(bearerToken) {
   try {
-    const subs = await getSubscriptions(bearerToken)
-    const subscriptionId = subs?.[0]?.subscriptionId
+    const subs = await getSubscriptions(bearerToken) ?? []
+    let subscriptionId;
+    for (const sub of subs) {
+      if (sub && sub.productId && sub.productId === AppConstants.PREMIUM_PRODUCT_ID) {
+        subscriptionId = sub.subscriptionId
+      }
+    }
     if (subscriptionId) {
       const deleteUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/subscriptions/active/${subscriptionId}`
       const response = await fetch(deleteUrl, {
@@ -206,7 +211,7 @@ async function deleteSubscription(bearerToken) {
         }
       })
       if (!response.ok) {
-        throw new InternalServerError(`bad response: ${response.status}`)
+        // throw new InternalServerError(`bad response: ${response.status}`)
       } else {
         console.info(`delete_fxa_subscription: success - ${JSON.stringify(await response.json())}`)
       }
