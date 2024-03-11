@@ -63,6 +63,7 @@ settings-delete-monitor-free-account-title = Slet { -brand-monitor }-konto
 settings-delete-monitor-free-account-description = Dette vil permanent slette din { -brand-monitor }-konto og slå alle advarsler fra.
 settings-delete-monitor-free-account-cta-label = Slet konto
 settings-delete-monitor-free-account-dialog-title = Din { -brand-monitor }-konto vil blive slettet permanent
+settings-delete-monitor-free-account-dialog-lead = Alle dine kontooplysninger for { -brand-monitor } vil blive slettet, og vi holder ikke længere øje med nye datalæk. Denne handling sletter ikke din { -brand-mozilla }-konto.
 settings-delete-monitor-free-account-dialog-cta-label = Slet konto
 settings-delete-monitor-free-account-dialog-cancel-button-label = Jag har skiftet mening - gå tilbage
 settings-delete-monitor-plus-account-title = Slet { -brand-monitor }-konto
