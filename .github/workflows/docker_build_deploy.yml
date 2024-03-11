@@ -2,7 +2,7 @@ name: Build Docker image and publish
 
 on:
   push:
-    branches: [ main, MNTOR-2247 ]
+    branches: [ main ]
     tags: '*'
 
 jobs:
@@ -42,14 +42,9 @@ jobs:
         env:
           DOCKERHUB_REPO: ${{ env.DOCKERHUB_REPO }}
         run: |
-          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
-            # deploy main
-            docker tag blurts-server mozilla/blurts-server:latest
-            docker push mozilla/blurts-server:latest
-            docker tag blurts-server ${{ steps.meta.outputs.tags }}
-            docker push ${{ steps.meta.outputs.tags }}
-          elif [ "${{ github.ref }}" == "refs/heads/MNTOR-2247" ]; then
-            # for testing only, deploy on branch MNTOR-2247
-            docker tag blurts-server ${{ steps.meta.outputs.tags }}
-            docker push ${{ steps.meta.outputs.tags }}
-          fi
+          # deploy main
+          docker tag blurts-server mozilla/blurts-server:latest
+          docker push mozilla/blurts-server:latest
+          docker tag blurts-server ${{ steps.meta.outputs.tags }}
+          docker push ${{ steps.meta.outputs.tags }}
+
