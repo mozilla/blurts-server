@@ -11,7 +11,7 @@ import { CircleChartProps } from "./breaches.d";
 import { getL10n } from "../../../../functions/server/l10n";
 import {
   getUserBreaches,
-  UserBreaches,
+  type UserBreaches as UserBreachesType,
 } from "../../../../functions/server/getUserBreaches";
 
 import "../../../../../client/css/partials/breaches.css";
@@ -45,7 +45,10 @@ export function generateMetadata() {
   };
 }
 
-function createEmailOptions({ breachesData, emailSelectIndex }: UserBreaches) {
+function createEmailOptions({
+  breachesData,
+  emailSelectIndex,
+}: UserBreachesType) {
   const emails = breachesData.verifiedEmails.map((obj) => obj.email);
   const optionElements = emails.map(
     (email, index) =>
@@ -75,7 +78,7 @@ export default async function UserBreaches() {
   const l10n = getL10n();
   const headerList = headers();
 
-  const userBreachesData: UserBreaches = await getUserBreaches({
+  const userBreachesData: UserBreachesType = await getUserBreaches({
     user: session.user,
     options: {
       countryCode: getCountryCode(headerList),
