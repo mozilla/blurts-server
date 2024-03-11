@@ -46,6 +46,7 @@ user-add-duplicate-email = Denne mailadresse er allerede føjet til { -product-n
 user-add-duplicate-email-part-2 = Besøg { $preferencesLink } for at kontrollere status af { $userEmail }.
 user-add-verification-email-just-sent = En bekræftelsesmail til kan ikke sendes igen så kort tid efter. Prøv igen senere.
 user-add-unknown-error = Der opstod et problem med at tilføje en mailadresse til. Prøv igen senere.
+user-delete-unknown-error = Der opstod et problem med at fjerne en mailadresse. Prøv igen senere.
 error-headline = Fejl
 user-verify-token-error = Der kræves et bekræftelses-token.
 user-verify-email-report-subject = Din { -product-name }-rapport

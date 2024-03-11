@@ -822,3 +822,4 @@ floating-banner-dismiss-button-label = Nahániri, aguyje
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: Héra pyahu, ha’ãnga ha avei mba’éichapa <b>erujeýta nde rekoñemi</b>.
 banner-monitor-rebrand-dismiss-button-label = MONEĨ
 banner-monitor-rebrand-dismiss-button-tooltip = Mboyke
+loading-accessibility = Henyhẽhína
