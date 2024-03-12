@@ -208,7 +208,7 @@ breach-summary = 外泄事件概要
 show-breaches-for-this-email = 显示所有与此邮箱地址相关的数据外泄事件。
 link-change-primary = 更改主邮箱地址
 remove-fxm = 移除 { -product-name }
-remove-fxm-blurb = 关闭 { -product-name } 的警报。您的 { -brand-fxa }仍然有效，您可能会收到其他与账户有关的通讯。
+remove-fxm-blurb = 关闭 { -product-name } 的警报。您的 { -brand-fxa }仍然有效，您可能会收到其他与账户有关的通信。
 # Button title
 manage-email-addresses = 管理邮箱地址
 # Link title

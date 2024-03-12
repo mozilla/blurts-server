@@ -9,7 +9,10 @@ import { useComboBox } from "react-aria";
 import { useComboBoxState, ComboBoxStateOptions } from "react-stately";
 import { ListBox } from "./ListBox";
 import { Popover } from "./Popover";
-import styles from "./ComboBox.module.scss";
+import inputFieldStyles from "./InputField.module.scss";
+import comboBoxStyles from "./ComboBox.module.scss";
+import { ErrorIcon } from "../server/Icons";
+import { useL10n } from "../../hooks/l10n";
 
 interface ComboBoxProps extends ComboBoxStateOptions<object> {
   items: Array<object>;
@@ -32,6 +35,7 @@ function ComboBox(props: ComboBoxProps) {
       },
       state,
     );
+  const l10n = useL10n();
 
   useEffect(() => {
     /* c8 ignore next 5 */
@@ -44,8 +48,8 @@ function ComboBox(props: ComboBoxProps) {
 
   return (
     <>
-      <div className={styles.comboBox}>
-        <label {...labelProps} className={styles.inputLabel}>
+      <div className={inputFieldStyles.comboBox}>
+        <label {...labelProps} className={inputFieldStyles.inputLabel}>
           {label}
           {isRequired ? (
             <span aria-hidden="true">*</span>
@@ -60,22 +64,26 @@ function ComboBox(props: ComboBoxProps) {
         <input
           {...inputProps}
           ref={inputRef}
-          className={`${styles.inputField} ${
+          className={`${inputFieldStyles.inputField} ${
             !inputProps.value
               ? /* c8 ignore next 4 */
                 // This does get hit by unit tests, but for some reason, since
                 // the Node 20.10 upgrade, it (and this comment) no longer gets
                 // marked as such:
-                styles.noValue
+                inputFieldStyles.noValue
               : ""
-          } ${isInvalid ? /* c8 ignore next */ styles.hasError : ""}`}
+          } ${isInvalid ? /* c8 ignore next */ inputFieldStyles.hasError : ""}`}
         />
         {isInvalid && typeof errorMessage === "string" && (
-          <div {...errorMessageProps} className={styles.inputMessage}>
+          <div {...errorMessageProps} className={inputFieldStyles.inputMessage}>
+            <ErrorIcon
+              alt={l10n.getString("onboarding-enter-details-input-error-alt")}
+            />
             {errorMessage}
           </div>
         )}
       </div>
+
       {state.isOpen && (
         <Popover
           offset={8}
@@ -83,7 +91,7 @@ function ComboBox(props: ComboBoxProps) {
           state={state}
           triggerRef={inputRef}
         >
-          <div className={styles.popoverList}>
+          <div className={comboBoxStyles.popoverList}>
             <ListBox
               {...listBoxProps}
               listBoxRef={listBoxRef}

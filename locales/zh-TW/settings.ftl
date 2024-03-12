@@ -52,18 +52,18 @@ settings-fxa-link-label-3 = 前往 { -brand-mozilla-account }設定
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = 刪除 { -brand-monitor } 帳號
-settings-delete-monitor-free-account-description = 將會永久刪除您的 { -brand-monitor } 帳號並關閉所有通知。
+settings-delete-monitor-free-account-description = 將會永久刪除您的 { -brand-monitor } 帳號，並關閉所有通知。
 settings-delete-monitor-free-account-cta-label = 刪除帳號
 settings-delete-monitor-free-account-dialog-title = 將永久刪除您的 { -brand-monitor } 帳號
-settings-delete-monitor-free-account-dialog-lead = 將刪除您所有的 { -brand-monitor } 帳號資訊我們將不再監控新的資料外洩事件。不會刪除您的 { -brand-mozilla } 帳號。
+settings-delete-monitor-free-account-dialog-lead = 將刪除您所有的 { -brand-monitor } 帳號資訊，我們也將不再監控這些帳號相關的資料外洩事件，但這個動作不會刪除您的 { -brand-mozilla } 帳號。
 settings-delete-monitor-free-account-dialog-cta-label = 刪除帳號
 settings-delete-monitor-free-account-dialog-cancel-button-label = 算了，帶我回去
 settings-delete-monitor-plus-account-title = 刪除 { -brand-monitor } 帳號
 settings-delete-monitor-plus-account-description = 將永久刪除您的 { -brand-monitor } 帳號並立即結束 { -brand-monitor-plus } 付費訂閱。
 settings-delete-monitor-plus-account-cta-label = 刪除帳號
 settings-delete-monitor-plus-account-dialog-title = 將永久刪除您的 { -brand-monitor } 帳號
-settings-delete-monitor-plus-account-dialog-lead-p1 = 將刪除您所有的 { -brand-monitor } 帳號資訊我們也將不再監控新的資料外洩事件或資料中間商事件中的風險。不會刪除您的 { -brand-mozilla } 帳號。
-settings-delete-monitor-plus-account-dialog-lead-p2 = 您的付費訂閱將於今日結束訂閱剩餘的時間部分。
+settings-delete-monitor-plus-account-dialog-lead-p1 = 將刪除您所有的 { -brand-monitor } 帳號資訊，我們也將不再監控這些帳號相關的資料外洩事件或資料交換曝光事件，但這個動作不會刪除您的 { -brand-mozilla } 帳號。
+settings-delete-monitor-plus-account-dialog-lead-p2 = 您的付費訂閱將於今日結束，不會再收取剩餘訂閱期間的費用。
 settings-delete-monitor-plus-account-dialog-cta-label = 刪除帳號
 settings-delete-monitor-plus-account-dialog-cancel-button-label = 算了，帶我回去
 settings-delete-monitor-account-confirmation-toast-label = 已永久刪除您的 { -brand-monitor } 帳號。
