@@ -67,19 +67,19 @@ settings-fxa-link-label-3 = Ewch i Gosodiadau { -brand-mozilla-account }
 
 ## Delete Monitor account
 
-settings-delete-monitor-free-account-title = Dileu cyfrif { -brand-monitor }
+settings-delete-monitor-free-account-title = Dileu'r cyfrif { -brand-monitor }
 settings-delete-monitor-free-account-description = Bydd hyn yn dileu eich cyfrif { -brand-monitor } yn barhaol ac yn diffodd pob hysbysiad.
 settings-delete-monitor-free-account-cta-label = Dileu'r cyfrif
-settings-delete-monitor-free-account-dialog-title = Bydd eich cyfrif { -brand-monitor } yn cael ei ddileu yn barhaol
-settings-delete-monitor-free-account-dialog-lead = Bydd eich holl wybodaeth cyfrif { -brand-monitor } yn cael ei dileu ac ni fyddwn yn monitro unrhyw doriadau data newydd mwyach. Ni fydd hyn yn dileu eich cyfrif { -brand-mozilla }.
+settings-delete-monitor-free-account-dialog-title = Bydd eich cyfrif { -brand-monitor } yn cael ei ddileu'n barhaol
+settings-delete-monitor-free-account-dialog-lead = Bydd holl fanylion eich cyfrif { -brand-monitor } yn cael ei ddileu a fyddwn ni ddim yn monitro unrhyw dor-data newydd bellach. Fydd hyn ddim yn dileu eich cyfrif { -brand-mozilla }.
 settings-delete-monitor-free-account-dialog-cta-label = Dileu'r cyfrif
 settings-delete-monitor-free-account-dialog-cancel-button-label = Dim gwahaniaeth, mynd â fi yn ôl
 settings-delete-monitor-plus-account-title = Dileu cyfrif { -brand-monitor }
 settings-delete-monitor-plus-account-description = Bydd hyn yn dileu eich cyfrif { -brand-monitor } yn barhaol ac yn dod â'ch tanysgrifiad { -brand-monitor-plus } taledig i ben ar unwaith.
 settings-delete-monitor-plus-account-cta-label = Dileu'r cyfrif
 settings-delete-monitor-plus-account-dialog-title = Bydd eich cyfrif { -brand-monitor } yn cael ei ddileu yn barhaol
-settings-delete-monitor-plus-account-dialog-lead-p1 = Bydd eich holl wybodaeth cyfrif { -brand-monitor } yn cael ei dileu ac ni fyddwn bellach yn monitro am doriadau data newydd neu ddatguddiadau brocer data. Ni fydd hyn yn dileu eich cyfrif { -brand-mozilla }.
-settings-delete-monitor-plus-account-dialog-lead-p2 = Bydd eich tanysgrifiad taledig yn dod i ben heddiw ac ni chewch eich prorata am weddill eich tanysgrifiad.
+settings-delete-monitor-plus-account-dialog-lead-p1 = Bydd holl fanylion eich cyfrif { -brand-monitor } yn cael ei ddileu a fyddwn ni ddim  bellach yn monitro am dor-data newydd neu ddatgeliadau brocer data. Fydd hyn ddim yn dileu eich cyfrif { -brand-mozilla }.
+settings-delete-monitor-plus-account-dialog-lead-p2 = Bydd eich tanysgrifiad taledig yn dod i ben heddiw a chewch chi ddim eich prorata am weddill eich tanysgrifiad.
 settings-delete-monitor-plus-account-dialog-cta-label = Dileu'r cyfrif
 settings-delete-monitor-plus-account-dialog-cancel-button-label = Dim gwahaniaeth, mynd â fi yn ôl
 settings-delete-monitor-account-confirmation-toast-label = Mae eich cyfrif { -brand-monitor } bellach wedi'i ddileu'n barhaol.
