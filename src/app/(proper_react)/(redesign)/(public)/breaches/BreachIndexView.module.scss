@@ -21,6 +21,30 @@
   }
 }
 
+.filterForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md;
+  transition: opacity ease-in 500ms;
+
+  &[aria-hidden="true"] {
+    // We don't want to show the form before it becomes interactive, but to
+    // prevent the layout from shifting, we do render it invisibly:
+    opacity: 0;
+  }
+
+  label {
+    font: $text-body-sm;
+    @include visually-hidden;
+  }
+  input {
+    font: $text-body-lg;
+    padding: $spacing-sm;
+  }
+}
+
 .breachList {
   width: $content-xl;
   max-width: calc(100% - 2 * $spacing-2xl);
