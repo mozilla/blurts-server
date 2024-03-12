@@ -107,7 +107,7 @@ export async function onAddEmail(
       unverifiedSubscriber.id,
       getL10n(),
     );
-    revalidatePath("/user/settings/");
+    revalidatePath("/user/settings");
 
     return {
       success: true,
@@ -160,7 +160,7 @@ export async function onRemoveEmail(email: SanitizedEmailAddressRow) {
   try {
     await removeOneSecondaryEmail(email.id, subscriber.id);
     await deleteResolutionsWithEmail(subscriber.id, email.email);
-    revalidatePath("/user/settings/");
+    revalidatePath("/user/settings");
   } catch (e) {
     return {
       success: false,
