@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { breachCardPartial } from './emailBreachCard.js'
-import { getStringLookup } from '../../utils/fluent.js'
+import { getStringLookup } from '../utils/fluent.js'
 
 const breachAlertContainerStyle = `
   background: #f9f9fa;

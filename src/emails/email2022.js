@@ -2,8 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from '../../appConstants.js'
-import { getStringLookup } from '../../utils/fluent.js'
+import AppConstants from '../appConstants.js'
+import { getStringLookup } from '../utils/fluent.js'
 
 const companyAddress = '149 New Montgomery St, 4th Floor, San Francisco, CA 94105'
 const links = (/** @type {{ utmCampaign: string; }} */ data) => ({
