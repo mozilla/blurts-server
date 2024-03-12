@@ -125,9 +125,6 @@
       "files": [
         "src/app.js",
         "src/utils/redisMock.js",
-        "src/routes/**/*.js",
-        "src/middleware/**/*.js",
-        "src/controllers/**/*.js",
         "src/app/functions/server/breachResolution.ts"
       ],
       "rules": {

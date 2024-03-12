@@ -45,8 +45,6 @@ const customJestConfig = {
     "<rootDir>/.storybook/",
     // Old, pre-Next.js code assumed to be working:
     "<rootDir>/src/appConstants.js",
-    "<rootDir>/src/views/",
-    "<rootDir>/src/middleware/",
   ],
 
   // Indicates which provider should be used to instrument code for coverage
