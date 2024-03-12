@@ -5,7 +5,7 @@
 import React, { Suspense, lazy, useMemo } from "react";
 import styles from "./ExposureCard.module.scss";
 import Image from "next/image";
-import { FallbackLogo } from "../server/BreachLogo";
+import { FallbackLogo } from "../../server/BreachLogo";
 
 export const DataBrokerImage = (props: { name: string }) => {
   const LazyLoadedImage = useMemo(
@@ -23,7 +23,7 @@ export const DataBrokerImage = (props: { name: string }) => {
 async function getDataBrokerImage(name: string) {
   try {
     const DataBrokerLogo = await import(
-      `../client/assets/data-brokers/${name}.png`
+      `../../client/assets/data-brokers/${name}.png`
     );
     const ImageComponent = () => (
       <Image

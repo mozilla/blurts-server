@@ -8,7 +8,6 @@ import { revalidatePath } from "next/cache";
 import { SubscriberRow } from "knex/types/tables";
 import { getServerSession } from "../../../../../../functions/server/getServerSession";
 import {
-  EmailRow,
   addSubscriberUnverifiedEmailHash,
   removeOneSecondaryEmail,
 } from "../../../../../../../db/tables/emailAddresses";
@@ -22,6 +21,9 @@ import { sendVerificationEmail } from "../../../../../../api/utils/email";
 import { getL10n } from "../../../../../../functions/server/l10n";
 import { logger } from "../../../../../../functions/server/logging";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
+import { SanitizedEmailAddressRow } from "../../../../../../functions/server/sanitizeEmailRow";
+import { deleteAccount } from "../../../../../../functions/server/deleteAccount";
+import { cookies } from "next/headers";
 
 export type AddEmailFormState =
   | { success?: never }
@@ -128,7 +130,7 @@ export async function onAddEmail(
   }
 }
 
-export async function onRemoveEmail(email: EmailRow) {
+export async function onRemoveEmail(email: SanitizedEmailAddressRow) {
   const l10n = getL10n();
   const session = await getServerSession();
   if (!session?.user.subscriber?.fxa_uid) {
@@ -166,4 +168,30 @@ export async function onRemoveEmail(email: EmailRow) {
       errorMessage: l10n.getString("user-delete-unknown-error"),
     };
   }
+}
+
+export async function onDeleteAccount() {
+  const session = await getServerSession();
+  if (!session?.user.subscriber?.fxa_uid) {
+    logger.error(`Tried to delete an account without an active session.`);
+    return {
+      success: false,
+      error: "delete-account-without-active-session",
+      errorMessage: `User tried to delete their account without an active session.`,
+    };
+  }
+
+  await deleteAccount(session.user.subscriber);
+
+  // Tell the front page to display an "account deleted" notification:
+  cookies().set("justDeletedAccount", "justDeletedAccount", {
+    expires: new Date(Date.now() + 5 * 60 * 1000),
+    httpOnly: false,
+  });
+
+  // If Next-Auth allowed us to log the user out server-side, we'd do that here
+  // and then redirect them to the homepage. Unfortunately, that's currently not
+  // possibile, so instead the sign-out and redirect needs to happen on the
+  // client side after this action completes.
+  // See https://github.com/nextauthjs/next-auth/discussions/5334.
 }

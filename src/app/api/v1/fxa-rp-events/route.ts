@@ -9,7 +9,6 @@ import { captureException, captureMessage } from "@sentry/node";
 
 import { logger } from "../../../functions/server/logging";
 import {
-  deleteSubscriber,
   getSubscriberByFxaUid,
   updateFxAProfileData,
   updatePrimaryEmail,
@@ -24,6 +23,7 @@ import { bearerToken } from "../../utils/auth";
 import { revokeOAuthTokens } from "../../../../utils/fxa";
 import appConstants from "../../../../appConstants";
 import { changeSubscription } from "../../../functions/server/changeSubscription";
+import { deleteAccount } from "../../../functions/server/deleteAccount";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -178,34 +178,7 @@ export async function POST(request: NextRequest) {
   for (const event in decodedJWT?.events) {
     switch (event) {
       case FXA_DELETE_USER_EVENT: {
-        logger.info("fxa_delete_user", {
-          subscriber: subscriber.id,
-          event,
-        });
-
-        // get profile id
-        const oneRepProfileId = await getOnerepProfileId(subscriber.id);
-        if (oneRepProfileId) {
-          try {
-            await deactivateProfile(oneRepProfileId);
-          } catch (ex) {
-            if (
-              (ex as Error).message ===
-              "Failed to deactivate OneRep profile: [403] [Forbidden]"
-            )
-              logger.error("profile_already_opted_out", {
-                subscriber_id: subscriber.id,
-                exception: ex,
-              });
-          }
-
-          logger.info("deactivated_onerep_profile", {
-            subscriber_id: subscriber.id,
-          });
-        }
-
-        // delete user events only have keys. Keys point to empty objects
-        await deleteSubscriber(subscriber);
+        await deleteAccount(subscriber);
         break;
       }
       case FXA_PROFILE_CHANGE_EVENT: {
@@ -235,7 +208,7 @@ export async function POST(request: NextRequest) {
                   subscriber.primary_email,
               );
             }
-            if (currentFxAProfile[key]) {
+            if (currentFxAProfile && currentFxAProfile[key]) {
               currentFxAProfile[key] =
                 updatedProfileFromEvent[key as keyof ProfileChangeEvent];
             }
@@ -254,18 +227,14 @@ export async function POST(request: NextRequest) {
           updateFromEvent,
         });
 
-        const refreshToken = subscriber.fxa_refresh_token;
-        const accessToken = subscriber.fxa_access_token;
-        if (refreshToken === null || accessToken === null) {
+        const refreshToken = subscriber.fxa_refresh_token ?? "";
+        const accessToken = subscriber.fxa_access_token ?? "";
+        if (!accessToken || !refreshToken) {
           logger.error("failed_changing_password", {
             subscriber_id: subscriber.id,
-            fxa_refresh_token: subscriber.fxa_refresh_token,
-            fxa_access_token: subscriber.fxa_access_token,
+            fxa_refresh_token: refreshToken,
+            fxa_access_token: accessToken,
           });
-          return NextResponse.json(
-            { success: false, message: "failed_changing_password" },
-            { status: 500 },
-          );
         }
 
         // MNTOR-1932: Change password should revoke sessions
@@ -273,6 +242,12 @@ export async function POST(request: NextRequest) {
           fxa_access_token: accessToken,
           fxa_refresh_token: refreshToken,
         });
+
+        return NextResponse.json(
+          { success: true, message: "session_revoked" },
+          { status: 200 },
+        );
+
         break;
       }
       case FXA_SUBSCRIPTION_CHANGE_EVENT: {
@@ -382,8 +357,8 @@ export async function POST(request: NextRequest) {
                         )}`,
               );
               return NextResponse.json(
-                { success: false, message: "failed_activating_subscription" },
-                { status: 500 },
+                { success: true, message: "failed_deactivating_subscription" },
+                { status: 200 },
               );
             }
 

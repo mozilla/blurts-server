@@ -23,13 +23,11 @@ exposure-card-credit-card = Kartë Krediti
 exposure-card-password = Fjalëkalim
 exposure-card-ip-address = Adresë IP
 exposure-card-other = Tjetër
-exposure-card-description-info-for-sale-part-one = Ky sajt shet dhe publikon <data_broker_link>hollësi rreth jush.</data_broker_link>
-exposure-card-description-info-for-sale-part-two = Hiqeni këtë profil, që të mbrohet privatësia juaj.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = Informacion rreth juaj qe ekspozuar prej <data_breach_link>{ $data_breach_company } cenimit të të dhënave më { $data_breach_date }.</data_breach_link>
-exposure-card-description-data-breach-part-two = Do t’ju udhëheqim nëpër hapat se si ta ndreqni.
+exposure-card-description-data-breach-action-needed = Informacion rreth juaj qe ekspozuar prej <data_breach_link>{ $data_breach_company } cenimit të të dhënave më { $data_breach_date }.</data_breach_link> Do t’ju udhëheqim nëpër hapat për ta ndrequr.
+exposure-card-description-data-breach-fixed = Ndërmorët hapat e nevojshëm për ta ndrequr <data_breach_link>këtë cenim</data_breach_link>. Do të mbikëqyrim vazhdimisht për cenime të dhënash dhe do t’ju njoftojmë për çfarëdo ekspozimesh të reja.
 exposure-card-your-exposed-info = Informacion i juaji i ekspozuar:
 exposure-card-exposure-type-data-broker = Informacion për shitje
 exposure-card-exposure-type-data-breach = Cenim të dhënash

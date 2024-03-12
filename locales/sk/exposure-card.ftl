@@ -23,13 +23,11 @@ exposure-card-credit-card = Platobná karta
 exposure-card-password = Heslo
 exposure-card-ip-address = Adresa IP
 exposure-card-other = Iné
-exposure-card-description-info-for-sale-part-one = Táto stránka predáva a publikuje <data_broker_link>podrobnosti o vás</data_broker_link>.
-exposure-card-description-info-for-sale-part-two = Odstráňte tento profil, aby ste ochránili svoje súkromie.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = Vaše informácie boli odhalené pri <data_breach_link>úniku údajov spoločnosti { $data_breach_company } dňa { $data_breach_date }</data_breach_link>.
-exposure-card-description-data-breach-part-two = Prevedieme vás krokmi, pomocou ktorých vykonáte nápravu.
+exposure-card-description-data-breach-action-needed = Vaše informácie boli odhalené pri <data_breach_link>úniku údajov spoločnosti { $data_breach_company } dňa { $data_breach_date }</data_breach_link>. Prevedieme vás krokmi na nápravu.
+exposure-card-description-data-breach-fixed = Vykonali ste kroky potrebné na vyriešenie <data_breach_link>tohto úniku</data_breach_link>. Neustále budeme monitorovať nové úniky údajov a upozorníme vás na akékoľvek nové odhalenia.
 exposure-card-your-exposed-info = Vaše odhalené informácie:
 exposure-card-exposure-type-data-broker = Informácie na predaj
 exposure-card-exposure-type-data-breach = Únik údajov

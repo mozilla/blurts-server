@@ -57,6 +57,26 @@ settings-deactivate-account-title = Απενεργοποίηση λογαρια�
 settings-deactivate-account-info-2 = Μπορείτε να απενεργοποιήσετε το { -product-short-name } διαγράφοντας τον { -brand-mozilla-account(case: "acc", capitalization: "lower") } σας.
 settings-fxa-link-label-3 = Μετάβαση στις ρυθμίσεις { -brand-mozilla-account(case: "gen", capitalization: "lower") }
 
+## Delete Monitor account
+
+settings-delete-monitor-free-account-title = Διαγραφή λογαριασμού { -brand-monitor }
+settings-delete-monitor-free-account-description = Αυτή η ενέργεια θα διαγράψει οριστικά τον λογαριασμό σας στο { -brand-monitor } και θα απενεργοποιήσει όλες τις ειδοποιήσεις.
+settings-delete-monitor-free-account-cta-label = Διαγραφή λογαριασμού
+settings-delete-monitor-free-account-dialog-title = Ο λογαριασμός σας στο { -brand-monitor } θα διαγραφεί οριστικά
+settings-delete-monitor-free-account-dialog-lead = Όλες οι πληροφορίες του λογαριασμού σας στο { -brand-monitor } θα διαγραφούν και δεν θα εποπτεύουμε πλέον για νέες παραβιάσεις δεδομένων. Αυτή η ενέργεια δεν θα διαγράψει τον λογαριασμό σας στη { -brand-mozilla }.
+settings-delete-monitor-free-account-dialog-cta-label = Διαγραφή λογαριασμού
+settings-delete-monitor-free-account-dialog-cancel-button-label = Άλλαξα γνώμη, θέλω να επιστρέψω
+settings-delete-monitor-plus-account-title = Διαγραφή λογαριασμού { -brand-monitor }
+settings-delete-monitor-plus-account-description = Αυτή η ενέργεια θα διαγράψει οριστικά τον λογαριασμό σας στο { -brand-monitor } και θα τερματίσει άμεσα την επί πληρωμή συνδρομή σας στο { -brand-monitor-plus }.
+settings-delete-monitor-plus-account-cta-label = Διαγραφή λογαριασμού
+settings-delete-monitor-plus-account-dialog-title = Ο λογαριασμός σας στο { -brand-monitor } θα διαγραφεί οριστικά
+settings-delete-monitor-plus-account-dialog-lead-p1 = Όλες οι πληροφορίες του λογαριασμού σας στο { -brand-monitor } θα διαγραφούν και δεν θα εποπτεύουμε πλέον για νέες παραβιάσεις δεδομένων ή εκθέσεις σε εμπόρους δεδομένων. Αυτή η ενέργεια δεν θα διαγράψει τον λογαριασμό σας στη { -brand-mozilla }.
+settings-delete-monitor-plus-account-dialog-lead-p2 = Η επί πληρωμή συνδρομή σας θα λήξει σήμερα και δεν θα λάβετε αναλογική επιστροφή χρημάτων για το υπόλοιπο της συνδρομής σας.
+settings-delete-monitor-plus-account-dialog-cta-label = Διαγραφή λογαριασμού
+settings-delete-monitor-plus-account-dialog-cancel-button-label = Άλλαξα γνώμη, θέλω να επιστρέψω
+settings-delete-monitor-account-confirmation-toast-label = Ο λογαριασμός σας στο { -brand-monitor } έχει πλέον διαγραφεί οριστικά.
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Απόρριψη
+
 ## Add email dialog
 
 settings-email-dialog-title = Προσθήκη άλλης διεύθυνσης email

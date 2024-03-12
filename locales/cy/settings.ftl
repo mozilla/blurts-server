@@ -65,6 +65,26 @@ settings-deactivate-account-title = Analluogi cyfrif
 settings-deactivate-account-info-2 = Gallwch ddadweithredu { -product-short-name } drwy ddileu eich { -brand-mozilla-account }.
 settings-fxa-link-label-3 = Ewch i Gosodiadau { -brand-mozilla-account }
 
+## Delete Monitor account
+
+settings-delete-monitor-free-account-title = Dileu cyfrif { -brand-monitor }
+settings-delete-monitor-free-account-description = Bydd hyn yn dileu eich cyfrif { -brand-monitor } yn barhaol ac yn diffodd pob hysbysiad.
+settings-delete-monitor-free-account-cta-label = Dileu'r cyfrif
+settings-delete-monitor-free-account-dialog-title = Bydd eich cyfrif { -brand-monitor } yn cael ei ddileu yn barhaol
+settings-delete-monitor-free-account-dialog-lead = Bydd eich holl wybodaeth cyfrif { -brand-monitor } yn cael ei dileu ac ni fyddwn yn monitro unrhyw doriadau data newydd mwyach. Ni fydd hyn yn dileu eich cyfrif { -brand-mozilla }.
+settings-delete-monitor-free-account-dialog-cta-label = Dileu'r cyfrif
+settings-delete-monitor-free-account-dialog-cancel-button-label = Dim gwahaniaeth, mynd â fi yn ôl
+settings-delete-monitor-plus-account-title = Dileu cyfrif { -brand-monitor }
+settings-delete-monitor-plus-account-description = Bydd hyn yn dileu eich cyfrif { -brand-monitor } yn barhaol ac yn dod â'ch tanysgrifiad { -brand-monitor-plus } taledig i ben ar unwaith.
+settings-delete-monitor-plus-account-cta-label = Dileu'r cyfrif
+settings-delete-monitor-plus-account-dialog-title = Bydd eich cyfrif { -brand-monitor } yn cael ei ddileu yn barhaol
+settings-delete-monitor-plus-account-dialog-lead-p1 = Bydd eich holl wybodaeth cyfrif { -brand-monitor } yn cael ei dileu ac ni fyddwn bellach yn monitro am doriadau data newydd neu ddatguddiadau brocer data. Ni fydd hyn yn dileu eich cyfrif { -brand-mozilla }.
+settings-delete-monitor-plus-account-dialog-lead-p2 = Bydd eich tanysgrifiad taledig yn dod i ben heddiw ac ni chewch eich prorata am weddill eich tanysgrifiad.
+settings-delete-monitor-plus-account-dialog-cta-label = Dileu'r cyfrif
+settings-delete-monitor-plus-account-dialog-cancel-button-label = Dim gwahaniaeth, mynd â fi yn ôl
+settings-delete-monitor-account-confirmation-toast-label = Mae eich cyfrif { -brand-monitor } bellach wedi'i ddileu'n barhaol.
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Cau
+
 ## Add email dialog
 
 settings-email-dialog-title = Ychwanegwch gyfeiriad e-bost arall

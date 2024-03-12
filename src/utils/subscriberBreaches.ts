@@ -16,6 +16,7 @@ import {
   ResolutionRelevantBreachDataTypes,
   isBreachResolved,
 } from "../app/functions/universal/breach";
+import isNotNull from "../app/functions/universal/isNotNull";
 
 export type DataClassEffected = {
   [dataType: string]: number | string[];
@@ -43,13 +44,22 @@ type SubscriberBreachMap = Record<number, SubscriberBreach>;
  * Take the breach DataTypes array from HIBP and filter based on BreachDataTypes
  *
  * @param originalDataTypes
+ * @param countryCode
  */
 function filterBreachDataTypes(
   originalDataTypes: SubscriberBreach["dataClasses"],
+  countryCode: string,
 ) {
   const relevantDataTypes = Object.values(ResolutionRelevantBreachDataTypes);
   return originalDataTypes.filter((d) =>
-    relevantDataTypes.some((t) => t === d),
+    relevantDataTypes.some((t) => {
+      // Exclude SSN breaches for non-US users as they are only relevant
+      // to US users for now.
+      if (d === "social-security-numbers") {
+        return t === d && countryCode === "us";
+      }
+      return t === d;
+    }),
   );
 }
 
@@ -74,6 +84,9 @@ export async function getSubBreaches(
     email: subscriber.primary_email,
     verified: subscriber.primary_verified,
     sha1: subscriber.primary_sha1,
+    verification_token: subscriber.primary_verification_token,
+    created_at: subscriber.created_at,
+    updated_at: subscriber.updated_at,
   });
 
   verifiedEmails = verifiedEmails.filter((e) => e.verified);
@@ -101,26 +114,19 @@ export async function getSubBreaches(
         (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
       >;
       const filteredBreachDataClasses: ArrayOfDataClasses =
-        filterBreachDataTypes(breach.DataClasses);
+        filterBreachDataTypes(breach.DataClasses, countryCode);
       const resolvedDataClasses = (breachResolution[breach.Id]
         ?.resolutionsChecked ?? []) as ArrayOfDataClasses;
 
       const dataClassesEffected = filteredBreachDataClasses
         .map((c) => {
-          // Exclude SSN breaches for non-US users as they are only relevant
-          // to US users as of now.
-          if (c === BreachDataTypes.SSN && countryCode !== "us") {
-            return null;
-          }
           if (c === BreachDataTypes.Email) {
             return { [c]: [email.email] };
           } else {
             return { [c]: 1 };
           }
         })
-        .filter(
-          (dataClassEffected) => dataClassEffected,
-        ) as DataClassEffected[];
+        .filter(isNotNull);
 
       // `allBreaches` is generally the return value of `getBreaches`, which
       // either loads breaches from the database, or fetches them from the HIBP
@@ -161,12 +167,23 @@ export async function getSubBreaches(
             (curBreach.dataClassesEffected[index][key] as number)++;
           }
         });
-        curBreach.resolvedDataClasses = [
-          ...new Set([
-            ...curBreach.resolvedDataClasses,
-            ...resolvedDataClasses,
-          ]),
+
+        // Only mark data classes as resolved if they are resolved for all
+        // affected email addresses:
+        // We check if a data class is already resolved for the other email
+        // addresses. If that is the case, the respective data class are
+        // duplicated in `combinedResolvedDataClasses`. Those can be considered
+        // resolved and stay in the list of resolved data classes.
+        // Unique data classes will be filtered out as they haven’t been
+        // resolved for all affected email addresses.
+        const combinedResolvedDataClasses = [
+          ...curBreach.resolvedDataClasses,
+          ...resolvedDataClasses,
         ];
+        const duplicateResolvedDataClasses = combinedResolvedDataClasses.filter(
+          (item, index) => combinedResolvedDataClasses.indexOf(item) !== index,
+        );
+        curBreach.resolvedDataClasses = duplicateResolvedDataClasses;
         curBreach.isResolved =
           isBreachResolved(
             curBreach.dataClassesEffected,

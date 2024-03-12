@@ -34,7 +34,8 @@ export type FeatureFlagName =
   | "FalseDoorTest"
   | "HibpBreachNotifications"
   | "FxaUidTelemetry"
-  | "RebrandAnnouncement";
+  | "RebrandAnnouncement"
+  | "MonitorAccountDeletion";
 
 export async function getEnabledFeatureFlags(
   options:

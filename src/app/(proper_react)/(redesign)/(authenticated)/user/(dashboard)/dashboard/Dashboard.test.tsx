@@ -58,16 +58,19 @@ jest.mock("next/navigation", () => ({
 }));
 jest.mock("../../../../../../hooks/useTelemetry");
 
-jest.mock("../../../../../../components/client/DataBrokerImage", () => {
-  return {
-    // Mock this with an empty React component. Otherwise, tests will complain:
-    // > Warning: A suspended resource finished loading inside a test, but the
-    // > event was not wrapped in act(...).
-    // > When testing, code that resolves suspended data should be wrapped into
-    // > act(...)
-    DataBrokerImage: () => null,
-  };
-});
+jest.mock(
+  "../../../../../../components/client/exposure_card/DataBrokerImage",
+  () => {
+    return {
+      // Mock this with an empty React component. Otherwise, tests will complain:
+      // > Warning: A suspended resource finished loading inside a test, but the
+      // > event was not wrapped in act(...).
+      // > When testing, code that resolves suspended data should be wrapped into
+      // > act(...)
+      DataBrokerImage: () => null,
+    };
+  },
+);
 
 describe("axe accessibility test suite", () => {
   it("passes the axe accessibility test suite for DashboardNonUsNoBreaches", async () => {
@@ -3175,7 +3178,7 @@ it("send telemetry when users click on data broker info link", async () => {
   await user.click(expandButtons[0]);
 
   const detailsAboutYouLink = screen.queryAllByRole("link", {
-    name: "details about you.",
+    name: "these details about you",
   });
   await user.click(detailsAboutYouLink[0]);
   expect(mockedRecord).toHaveBeenCalledWith(
