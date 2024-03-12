@@ -10,12 +10,12 @@ import { GuidedExperienceBreaches } from "../../../../../../../../functions/serv
 import { ExtendedReactLocalization } from "../../../../../../../../hooks/l10n";
 import { Button } from "../../../../../../../../components/client/Button";
 import { StepLink } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
+import { getLocale } from "../../../../../../../../functions/universal/getLocale";
+import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
 import {
   BreachResolutionRequest,
   HibpBreachDataTypes,
-} from "../../../../../../../../deprecated/(authenticated)/user/breaches/breaches";
-import { getLocale } from "../../../../../../../../functions/universal/getLocale";
-import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
+} from "../../../../../../../../functions/universal/breach";
 
 export const leakedPasswordTypes = [
   "passwords",

@@ -6,7 +6,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
 
 import { logger } from "../../../../functions/server/logging";
-import { BreachResolutionRequest } from "../../../../deprecated/(authenticated)/user/breaches/breaches.js";
 import { getBreaches } from "../../../../functions/server/getBreaches";
 import { getAllEmailsAndBreaches } from "../../../../../utils/breaches";
 import {
@@ -14,6 +13,7 @@ import {
   setBreachResolution,
 } from "../../../../../db/tables/subscribers";
 import appConstants from "../../../../../appConstants";
+import { BreachResolutionRequest } from "../../../../functions/universal/breach";
 
 // Get breaches data
 export async function GET(req: NextRequest) {

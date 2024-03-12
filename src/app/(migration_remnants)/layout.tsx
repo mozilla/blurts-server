@@ -10,7 +10,6 @@ import { HandleFalseDoorTest } from "../deprecated/components/client/FalseDoorBa
 import { getCountryCode } from "../functions/server/getCountryCode";
 import { headers } from "next/headers";
 import AppConstants from "../../appConstants";
-import { getNonce } from "../deprecated/functions/server/getNonce";
 import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
 
 export default async function MigrationLayout({
