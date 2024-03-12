@@ -31,5 +31,5 @@ export function generateMetadata() {
 export default async function Page() {
   const allBreaches = await getBreaches();
 
-  return <BreachIndexView allBreaches={allBreaches} l10n={getL10n()} />;
+  return <BreachIndexView allBreaches={allBreaches} />;
 }

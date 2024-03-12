@@ -16,9 +16,6 @@ const meta: Meta<typeof BreachIndexView> = {
       <BreachIndexView {...props} />
     </PublicShell>
   ),
-  args: {
-    l10n: getOneL10nSync(),
-  },
 };
 
 export default meta;
@@ -28,7 +25,7 @@ export const LandingUs: Story = {
   name: "Breach index",
   args: {
     allBreaches: faker.helpers.multiple(createRandomHibpListing, {
-      count: { min: 7, max: 20 },
+      count: { min: 7, max: 200 },
     }),
   },
 };
