@@ -59,6 +59,23 @@ settings-deactivate-account-title = Emboguete mba’ete
 settings-deactivate-account-info-2 = Eipe’aitekuaa { -product-short-name } emboguévo nde { -brand-mozilla-account }.
 settings-fxa-link-label-3 = Eho { -brand-mozilla-account } ñembohekópe
 
+## Delete Monitor account
+
+settings-delete-monitor-free-account-title = Embogue { -brand-monitor } mba’ete
+settings-delete-monitor-free-account-description = Kóva omboguepáta ne mba’ete { -brand-monitor } pegua ha omboykéta opaite marandu’ikuéra.
+settings-delete-monitor-free-account-cta-label = Emboguete mba’ete
+settings-delete-monitor-free-account-dialog-title = Ne mba’ete { -brand-monitor } pegua oñemboguetéta
+settings-delete-monitor-free-account-dialog-cta-label = Emboguete mba’ete
+settings-delete-monitor-free-account-dialog-cancel-button-label = Marave ndoikói, jajevyjey
+settings-delete-monitor-plus-account-title = Embogue { -brand-monitor } mba’ete
+settings-delete-monitor-plus-account-description = Kóva omboguepáta ne mba’ete { -brand-monitor } pegua ha ojeipáta ne ñemboheraguapy tepyme’ẽgua { -brand-monitor-plus } pegua.
+settings-delete-monitor-plus-account-cta-label = Emboguete mba’ete
+settings-delete-monitor-plus-account-dialog-title = Ne mba’ete { -brand-monitor } pegua oñemboguetétama
+settings-delete-monitor-plus-account-dialog-cta-label = Emboguete mba’ete
+settings-delete-monitor-plus-account-dialog-cancel-button-label = Marave ndoikói, jajevyjey
+settings-delete-monitor-account-confirmation-toast-label = Ne mba’ete { -brand-monitor } pegua oñemboguetéma
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Mboyke
+
 ## Add email dialog
 
 settings-email-dialog-title = Emoĩve ambue ñanduti veve kundaharape

@@ -61,6 +61,26 @@ settings-deactivate-account-title = Deaktivovať účet
 settings-deactivate-account-info-2 = { -product-short-name } môžete deaktivovať odstránením svojho { -brand-mozilla-account(case: "gen", capitalization: "lower") }.
 settings-fxa-link-label-3 = Prejsť do Nastavení { -brand-mozilla-account(case: "gen", capitalization: "lowe") }
 
+## Delete Monitor account
+
+settings-delete-monitor-free-account-title = Odstrániť účet služby { -brand-monitor }
+settings-delete-monitor-free-account-description = Týmto natrvalo odstránite svoj účet služby { -brand-monitor } a vypnete všetky upozornenia.
+settings-delete-monitor-free-account-cta-label = Odstrániť účet
+settings-delete-monitor-free-account-dialog-title = Váš účet služby { -brand-monitor } bude natrvalo odstránený.
+settings-delete-monitor-free-account-dialog-lead = Všetky informácie o vašom účte služby { -brand-monitor } budú odstránené a my už nebudeme monitorovať nové úniky údajov. Týmto sa neodstráni váš účet { -brand-mozilla }.
+settings-delete-monitor-free-account-dialog-cta-label = Odstrániť účet
+settings-delete-monitor-free-account-dialog-cancel-button-label = Rozmyslel som si to
+settings-delete-monitor-plus-account-title = Odstrániť účet služby { -brand-monitor }
+settings-delete-monitor-plus-account-description = Týmto natrvalo odstránite svoj účet služby { -brand-monitor } a okamžite ukončíte platené predplatné { -brand-monitor-plus }.
+settings-delete-monitor-plus-account-cta-label = Odstrániť účet
+settings-delete-monitor-plus-account-dialog-title = Váš účet služby { -brand-monitor } bude natrvalo odstránený.
+settings-delete-monitor-plus-account-dialog-lead-p1 = Všetky informácie o vašom účte služby { -brand-monitor } budú odstránené a my už nebudeme monitorovať nové úniky údajov alebo vystavenie sprostredkovateľom údajov. Týmto sa neodstráni váš účet { -brand-mozilla }.
+settings-delete-monitor-plus-account-dialog-lead-p2 = Vaše platené predplatné sa dnes skončí a za zvyšok predplatného vám nebude vyplatená pomerná časť.
+settings-delete-monitor-plus-account-dialog-cta-label = Odstrániť účet
+settings-delete-monitor-plus-account-dialog-cancel-button-label = Rozmyslel som si to
+settings-delete-monitor-account-confirmation-toast-label = Váš účet služby { -brand-monitor } je teraz natrvalo odstránený.
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Zavrieť
+
 ## Add email dialog
 
 settings-email-dialog-title = Pridanie ďalšej e‑mailovej adresy
