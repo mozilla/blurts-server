@@ -215,9 +215,11 @@ export const BreachDetailsView = (props: Props) => {
           {sortedDataClasses.highPriorityClassesWithDetails.flatMap(
             (dataClassDetails) => {
               return (dataClassDetails.recommendations ?? []).map(
-                (recommendation) => {
+                (recommendation, i) => {
                   return (
-                    <div key={dataClassDetails.dataClass}>
+                    <div
+                      key={`recommendation-${dataClassDetails.dataClass}-${i}`}
+                    >
                       <dt>
                         <Image
                           src={
@@ -331,7 +333,7 @@ const CompromisedDataList = (props: {
       {props.sortedDataClasses.highPriorityClassesWithDetails.map(
         (dataClassData) => {
           return (
-            <li key={dataClassData.dataClass}>
+            <li key={`compromised-data-${dataClassData.dataClass}`}>
               <Image
                 src={
                   dataClassGlyphMap[
