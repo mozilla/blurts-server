@@ -28,15 +28,6 @@
     "build-glean-types": "node src/scripts/buildGleanTypes.js",
     "build-glean-docs": "glean translate src/telemetry/metrics.yaml --format markdown --output docs"
   },
-  "nodemonConfig": {
-    "watch": [
-      ".env"
-    ],
-    "env": {
-      "LIVE_RELOAD": true
-    },
-    "ext": "js,css,json,ftl,env"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mozilla/blurts-server.git"
