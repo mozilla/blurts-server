@@ -180,7 +180,7 @@ export function createRandomHibpListing(): HibpLikeDbBreach {
     IsSpamList: faker.datatype.boolean(),
     IsVerified: faker.datatype.boolean(),
     LogoPath: "unused",
-    ModifiedDate: faker.date.between(addedDate, Date.now()),
+    ModifiedDate: faker.date.between({ from: addedDate, to: Date.now() }),
     Name: name,
     PwnCount: faker.number.int(),
     Title: title,
