@@ -148,7 +148,9 @@ export function createUserWithPremiumSubscription(): Session["user"] {
   };
 }
 
-export function createRandomHibpListing(): HibpLikeDbBreach {
+export function createRandomHibpListing(
+  fixedData: Partial<HibpLikeDbBreach> = {},
+): HibpLikeDbBreach {
   const breachDate = faker.date.recent({ days: 1000 });
   const addedDate = faker.date.between({ from: breachDate, to: Date.now() });
   const title = faker.company.name();
@@ -190,5 +192,6 @@ export function createRandomHibpListing(): HibpLikeDbBreach {
         width: faker.number.int({ min: 20, max: 36 }),
       }),
     ),
+    ...fixedData,
   };
 }
