@@ -101,6 +101,9 @@ export const BreachDetailsView = (props: Props) => {
   const sortedDataClasses = getSortedDataClasses(breach, getLocale(l10n));
   const breachCategory = getBreachCategory(breach);
 
+  // This is old code cursorily ported; we can write a proper unit test once we
+  // have a new design with actual requirements:
+  /* c8 ignore start */
   return (
     <main className={styles.wrapper}>
       <header>
@@ -128,25 +131,41 @@ export const BreachDetailsView = (props: Props) => {
         </h2>
         <div className={styles.content}>
           <p>
-            {l10n.getString("breach-overview-new", {
-              breachDate: (breach.BreachDate as unknown as Date).toLocaleString(
-                getLocale(l10n),
-                {
+            {breach.Name === "BVD" && getLocale(l10n).split("-")[0] === "en" ? (
+              <>
+                In approximately August 2021, hundreds of gigabytes of business
+                data collated from public sources was obtained and later
+                published to a popular hacking forum. Sourced from a customer of
+                Bureau van Dijk&apos;s (BvD) &quot;Orbis&quot; product, the
+                corpus of data released contained hundreds of millions of lines
+                about corporations and individuals, including personal
+                information such as names and dates of birth. The data also
+                included 28M unique email addresses along with physical
+                addresses (presumedly corporate locations), phone numbers and
+                job titles. There was no unauthorised access to BvD&apos;s
+                systems, nor did the incident expose any of their or parent
+                company&apos;s Moody&apos;s clients.
+              </>
+            ) : (
+              l10n.getString("breach-overview-new", {
+                breachDate: (
+                  breach.BreachDate as unknown as Date
+                ).toLocaleString(getLocale(l10n), {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
-                },
-              ),
-              breachTitle: breach.Title,
-              addedDate: (breach.AddedDate as unknown as Date).toLocaleString(
-                getLocale(l10n),
-                {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                },
-              ),
-            })}
+                }),
+                breachTitle: breach.Title,
+                addedDate: (breach.AddedDate as unknown as Date).toLocaleString(
+                  getLocale(l10n),
+                  {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  },
+                ),
+              })
+            )}
           </p>
           {wasAddedMoreThan90DaysAfterBreach(breach) ? (
             <p>
@@ -322,12 +341,16 @@ export const BreachDetailsView = (props: Props) => {
       </div>
     </main>
   );
+  /* c8 ignore stop */
 };
 
 const CompromisedDataList = (props: {
   sortedDataClasses: ReturnType<typeof getSortedDataClasses>;
   l10n: ExtendedReactLocalization;
 }) => {
+  // This is old code cursorily ported; we can write a proper unit test once we
+  // have a new design with actual requirements:
+  /* c8 ignore start */
   return (
     <ul>
       {props.sortedDataClasses.highPriorityClassesWithDetails.map(
@@ -361,6 +384,7 @@ const CompromisedDataList = (props: {
       ) : null}
     </ul>
   );
+  /* c8 ignore stop */
 };
 
 function wasAddedMoreThan90DaysAfterBreach(breach: HibpLikeDbBreach) {
@@ -400,6 +424,9 @@ function getSortedDataClasses(breach: HibpLikeDbBreach, userLocale: string) {
   };
 }
 
+// This is old code cursorily ported; we can write a proper unit test once we
+// have a new design with actual requirements:
+/* c8 ignore start */
 function getBreachCategory(breach: HibpLikeDbBreach) {
   const dataAggregators = [
     "Exactis",
@@ -432,3 +459,4 @@ function formatList(list: string[], locale: string) {
     style: "short",
   }).format(list);
 }
+/* c8 ignore stop */

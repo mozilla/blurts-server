@@ -21,7 +21,7 @@ const meta: Meta<typeof BreachIndexView> = {
 export default meta;
 type Story = StoryObj<typeof BreachIndexView>;
 
-export const LandingUs: Story = {
+export const BreachIndexViewStory: Story = {
   name: "Breach index",
   args: {
     allBreaches: faker.helpers.multiple(createRandomHibpListing, {
