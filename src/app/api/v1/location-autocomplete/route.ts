@@ -38,7 +38,7 @@ function getLocationsByQuery(searchQuery: string) {
     const alternateNamesJoined = a ? a.join(" ") : "";
     const countryCode = "USA";
 
-    return `${n} ${s} ${countryCode} ${alternateNamesJoined}`;
+    return `${n} ${alternateNamesJoined} ${s} ${countryCode}`;
   });
 
   // For search options see: https://github.com/leeoniya/uFuzzy#options
