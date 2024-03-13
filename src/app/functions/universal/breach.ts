@@ -76,9 +76,8 @@ export const SecurityRecommendationDataTypes = {
 } as const;
 
 export type HibpBreachDataTypes = typeof BreachDataTypes;
-
 export interface BreachBulkResolutionRequest {
-  dataType: HibpBreachDataTypes;
+  dataType: HibpBreachDataTypes[keyof HibpBreachDataTypes];
 }
 
 export interface BreachResolutionRequest {
