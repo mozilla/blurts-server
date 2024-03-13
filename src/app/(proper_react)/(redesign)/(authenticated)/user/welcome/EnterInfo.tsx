@@ -29,7 +29,6 @@ import { useTelemetry } from "../../../../../hooks/useTelemetry";
 import { CONST_URL_PRIVACY_POLICY } from "../../../../../../constants";
 
 import styles from "./EnterInfo.module.scss";
-import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -98,7 +97,6 @@ export const EnterInfo = ({
       }
     },
   });
-
   const confirmDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
     confirmDialogState,
@@ -284,41 +282,32 @@ export const EnterInfo = ({
         </dl>
       </div>
       <div className={styles.stepButtonWrapper}>
-        <TelemetryButton
+        <Button
           variant="secondary"
           onPress={() => confirmDialogState.close()}
           className={styles.startButton}
-          event={{
-            module: "button",
-            name: "click",
-            data: {
-              button_id: "edit_free_scan",
-            },
-          }}
         >
           {l10n.getString(
             "onboarding-enter-details-comfirm-dialog-button-edit",
           )}
-        </TelemetryButton>
-        <TelemetryButton
+        </Button>
+        <Button
           variant="primary"
           // TODO: Figure out how to intercept the fetch request in a test:
           /* c8 ignore next */
+          onPress={() => {
+            recordTelemetry("ctaButton", "click", {
+              button_id: "confirmed_free_scan",
+            });
+            handleRequestScan();
+          }}
           className={styles.startButton}
           isLoading={requestingScan}
-          onPress={() => handleRequestScan()}
-          event={{
-            module: "ctaButton",
-            name: "click",
-            data: {
-              button_id: "confirmed_free_scan",
-            },
-          }}
         >
           {l10n.getString(
             "onboarding-enter-details-comfirm-dialog-button-confirm",
           )}
-        </TelemetryButton>
+        </Button>
       </div>
     </Dialog>
   );
@@ -392,11 +381,6 @@ export const EnterInfo = ({
                   type={type}
                   isInvalid={isInvalid}
                   value={value}
-                  onFocusChange={(isFocussed) => {
-                    if (!isFocussed && !value) {
-                      setInvalidInputs([...invalidInputs, key]);
-                    }
-                  }}
                   onFocus={() => {
                     recordTelemetry("field", "focus", {
                       field_id: key,
@@ -418,23 +402,14 @@ export const EnterInfo = ({
               {l10n.getString("onboarding-steps-enter-info-back")}
             </Button>
           )}
-          <TelemetryButton
+          <Button
             {...confirmDialogTrigger.triggerProps}
-            aria-haspopup="dialog"
-            aria-expanded={undefined}
             variant="primary"
             type="submit"
             className={styles.startButton}
-            event={{
-              module: "popup",
-              name: "view",
-              data: {
-                popup_id: "enter_scan_info_confirmation_modal",
-              },
-            }}
           >
             {l10n.getString("onboarding-steps-find-exposures-label")}
-          </TelemetryButton>
+          </Button>
         </div>
       </form>
 
