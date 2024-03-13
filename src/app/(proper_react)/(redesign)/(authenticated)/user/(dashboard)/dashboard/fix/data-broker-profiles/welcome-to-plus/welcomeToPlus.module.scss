@@ -56,3 +56,19 @@
 .chart {
   vertical-align: text-bottom;
 }
+
+.illustrationWrapper {
+  align-items: center;
+
+  &.hideOnMobile {
+    display: none;
+
+    @media screen and (min-width: $screen-xl) {
+      display: flex;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+}

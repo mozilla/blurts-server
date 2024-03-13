@@ -4,7 +4,8 @@
 
 import Image from "next/image";
 import styles from "./BreachLogo.module.scss";
-import { HibpLikeDbBreach } from "../../../utils/hibp";
+import { HibpLikeDbBreach, WithFaviconUrl } from "../../../utils/hibp";
+import { Breach } from "../../functions/universal/breach";
 
 /**
  * @param props
@@ -14,7 +15,7 @@ import { HibpLikeDbBreach } from "../../../utils/hibp";
  */
 
 export type Props = {
-  breach: HibpLikeDbBreach;
+  breach: HibpLikeDbBreach | Breach;
   // The prop `htmlTags` ensures compatibility for the work in
   // `nextjs_migration` when rendering server components to strings. As soon as
   // this component is not being used there anymore we can remove the prop.
@@ -26,7 +27,7 @@ export type Props = {
 // can add a unit test when we convert it to take SubscriberBreaches.
 /* c8 ignore start */
 export function BreachLogo(props: Props) {
-  if (typeof props.breach.FaviconUrl === "string") {
+  if (hasFavIconUrl(props.breach)) {
     const ImageType = props.htmlTags ? "img" : Image;
     return (
       <ImageType
@@ -93,4 +94,13 @@ function getColorForName(name: string) {
     .reduce((sum, codePoint) => sum! + codePoint!) as number;
 
   return logoColors[charValue % logoColors.length];
+}
+
+// We don't explicitly test for favicon URLs, because we have mocked out lazy-
+// loaded images, which makes them hard to test:
+/* c8 ignore next 5 */
+function hasFavIconUrl(
+  breach: HibpLikeDbBreach | Breach,
+): breach is Required<WithFaviconUrl> & HibpLikeDbBreach {
+  return typeof (breach as HibpLikeDbBreach).FaviconUrl === "string";
 }
