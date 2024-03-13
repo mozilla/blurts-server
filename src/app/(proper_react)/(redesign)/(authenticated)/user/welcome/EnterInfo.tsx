@@ -73,8 +73,6 @@ export const EnterInfo = ({
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [invalidInputs, setInvalidInputs] = useState<Array<string>>([]);
   const [requestingScan, setRequestingScan] = useState(false);
-  // const [confirmDialogIsOpen, setConfirmDialogIsOpen] = useState(false);
-  // const confirmDialogState = useOverlayTriggerState({});
 
   const recordTelemetry = useTelemetry();
   const explainerDialogState = useOverlayTriggerState({});
