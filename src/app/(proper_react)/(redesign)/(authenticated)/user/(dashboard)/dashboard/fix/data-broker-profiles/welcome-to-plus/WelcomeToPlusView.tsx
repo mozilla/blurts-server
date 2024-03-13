@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import Image from "next/image";
 import styles from "./welcomeToPlus.module.scss";
 import { PercentageChart } from "../../../../../../../../../components/client/PercentageChart";
 import {
@@ -15,6 +16,8 @@ import {
 import { FixView } from "../../FixView";
 import { ExtendedReactLocalization } from "../../../../../../../../../hooks/l10n";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
+import noBreachesIllustration from "../../images/high-risk-breaches-none.svg";
+import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
 
 export type Props = {
   data: StepDeterminationData;
@@ -25,10 +28,14 @@ export type Props = {
 export function WelcomeToPlusView(props: Props) {
   const l10n = props.l10n;
 
-  const countOfDataBrokerProfiles =
-    props.data.latestScanData?.results.length ?? 0;
+  const scanResultsInProgress =
+    props.data.latestScanData?.results.filter(
+      (result) => !result.manually_resolved && result.status !== "removed",
+    ) ?? [];
+  const scanResultsInProgressCount = scanResultsInProgress.length;
+  const hasRelevantScanResults = scanResultsInProgressCount > 0;
   const summary = getDashboardSummary(
-    props.data.latestScanData?.results ?? [],
+    scanResultsInProgress,
     props.data.subscriberBreaches,
   );
   const dataPointReduction = getDataPointReduction(summary);
@@ -46,29 +53,48 @@ export function WelcomeToPlusView(props: Props) {
             {l10n.getString(
               "welcome-to-premium-data-broker-profiles-title-part-one",
             )}
-            <br />
-            {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-title-part-two",
+            {hasRelevantScanResults && (
+              <>
+                <br />
+                {l10n.getString(
+                  "welcome-to-premium-data-broker-profiles-title-part-two",
+                )}
+              </>
             )}
           </h3>
           <p>
-            {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-description-part-one",
-              {
-                profile_total_num: countOfDataBrokerProfiles,
-                exposure_reduction_percentage: dataPointReduction,
-              },
-            )}
+            {hasRelevantScanResults
+              ? l10n.getString(
+                  "welcome-to-premium-data-broker-profiles-description-part-one",
+                  {
+                    profile_total_num: scanResultsInProgressCount,
+                    exposure_reduction_percentage: dataPointReduction,
+                  },
+                )
+              : l10n.getString(
+                  "welcome-to-premium-data-broker-profiles-zero-state-description-part-one",
+                  {
+                    data_broker_count: CONST_ONEREP_DATA_BROKER_COUNT,
+                  },
+                )}
           </p>
           <p>
-            {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-description-part-two",
-            )}
+            {hasRelevantScanResults
+              ? l10n.getString(
+                  "welcome-to-premium-data-broker-profiles-description-part-two",
+                )
+              : l10n.getString(
+                  "welcome-to-premium-data-broker-profiles-zero-state-description-part-two",
+                )}
           </p>
           <p>
-            {l10n.getString(
-              "welcome-to-premium-data-broker-profiles-description-part-three",
-            )}
+            {hasRelevantScanResults
+              ? l10n.getString(
+                  "welcome-to-premium-data-broker-profiles-description-part-three",
+                )
+              : l10n.getString(
+                  "welcome-to-premium-data-broker-profiles-zero-state-description-part-three",
+                )}
           </p>
           <div className={styles.buttonsWrapper}>
             <TelemetryButton
@@ -89,9 +115,17 @@ export function WelcomeToPlusView(props: Props) {
             </TelemetryButton>
           </div>
         </div>
-        <div className={styles.chart}>
-          <PercentageChart exposureReduction={dataPointReduction} />
-        </div>
+        {hasRelevantScanResults ? (
+          <div className={styles.chart}>
+            <PercentageChart exposureReduction={dataPointReduction} />
+          </div>
+        ) : (
+          <div
+            className={`${styles.illustrationWrapper} ${styles.hideOnMobile}`}
+          >
+            <Image src={noBreachesIllustration} alt="" />
+          </div>
+        )}
       </div>
     </FixView>
   );
