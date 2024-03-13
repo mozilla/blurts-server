@@ -73,14 +73,37 @@ export const EnterInfo = ({
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [invalidInputs, setInvalidInputs] = useState<Array<string>>([]);
   const [requestingScan, setRequestingScan] = useState(false);
-  const [confirmDialogIsOpen, setConfirmDialogIsOpen] = useState(false);
-  const confirmDialogState = useOverlayTriggerState({});
+  // const [confirmDialogIsOpen, setConfirmDialogIsOpen] = useState(false);
+  // const confirmDialogState = useOverlayTriggerState({});
 
   const recordTelemetry = useTelemetry();
   const explainerDialogState = useOverlayTriggerState({});
   const explainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
     explainerDialogState,
+  );
+
+  const confirmDialogState = useOverlayTriggerState({
+    onOpenChange: (isOpen) => {
+      if (getInvalidFields().length > 0) {
+        return;
+      }
+
+      if (isOpen) {
+        recordTelemetry("popup", "view", {
+          popup_id: "enter_scan_info_confirmation_modal",
+        });
+      } else {
+        recordTelemetry("button", "click", {
+          button_id: "edit_free_scan",
+        });
+      }
+    },
+  });
+
+  const confirmDialogTrigger = useOverlayTrigger(
+    { type: "dialog" },
+    confirmDialogState,
   );
 
   const l10n = useL10n();
@@ -176,7 +199,7 @@ export const EnterInfo = ({
     const invalidInputKeys = getInvalidFields();
     if (invalidInputKeys?.length > 0) {
       setInvalidInputs(invalidInputKeys);
-      setConfirmDialogIsOpen(false);
+      confirmDialogState.close();
     }
   };
 
@@ -265,7 +288,7 @@ export const EnterInfo = ({
       <div className={styles.stepButtonWrapper}>
         <TelemetryButton
           variant="secondary"
-          onPress={() => setConfirmDialogIsOpen(false)}
+          onPress={() => confirmDialogState.close()}
           className={styles.startButton}
           event={{
             module: "button",
@@ -371,6 +394,11 @@ export const EnterInfo = ({
                   type={type}
                   isInvalid={isInvalid}
                   value={value}
+                  onFocusChange={(isFocussed) => {
+                    if (!isFocussed && !value) {
+                      setInvalidInputs([...invalidInputs, key]);
+                    }
+                  }}
                   onFocus={() => {
                     recordTelemetry("field", "focus", {
                       field_id: key,
@@ -393,8 +421,9 @@ export const EnterInfo = ({
             </Button>
           )}
           <TelemetryButton
-            onPress={() => setConfirmDialogIsOpen(true)}
+            {...confirmDialogTrigger.triggerProps}
             aria-haspopup="dialog"
+            aria-expanded={undefined}
             variant="primary"
             type="submit"
             className={styles.startButton}
@@ -421,7 +450,7 @@ export const EnterInfo = ({
         </ModalOverlay>
       )}
 
-      {confirmDialogIsOpen && getInvalidFields().length === 0 && (
+      {confirmDialogState.isOpen && getInvalidFields().length === 0 && (
         <ModalOverlay
           state={confirmDialogState}
           {...explainerDialogTrigger.overlayProps}
