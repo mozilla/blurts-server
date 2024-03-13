@@ -77,7 +77,7 @@ const WelcomeToPlusViewWrapper = (props: { brokerScanCount: number }) => {
 };
 
 const meta: Meta<typeof WelcomeToPlusViewWrapper> = {
-  title: "Pages/Guided resolution/1e. Welcome to Plus",
+  title: "Pages/Logged in/Guided resolution/1e. Welcome to Plus",
   component: WelcomeToPlusViewWrapper,
   argTypes: {
     brokerScanCount: {

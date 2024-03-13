@@ -114,7 +114,7 @@ const HighRiskBreachWrapper = (props: {
 };
 
 const meta: Meta<typeof HighRiskBreachWrapper> = {
-  title: "Pages/Guided resolution/2. High-risk data breaches",
+  title: "Pages/Logged in/Guided resolution/2. High-risk data breaches",
   component: HighRiskBreachWrapper,
   argTypes: {
     type: {

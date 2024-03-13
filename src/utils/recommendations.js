@@ -2,8 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getMessage } from './fluent.js'
-
 export function getAllGenericRecommendations () {
   return [
     {
@@ -40,11 +38,36 @@ export function getAllGenericRecommendations () {
 // It's unclear why this function has unused parameters, but since they're
 // positional parameters, removing them risks breaking things:
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserLocaleEnUs = false, isUserLocaleEn = false, changePWLink = null) {
+/**
+ * @param {boolean?} _isUserBrowserFirefox
+ * @param {boolean?} isUserLocaleEnUs
+ * @param {boolean?} _isUserLocaleEn
+ * @param {string?} changePWLink
+ * @returns {Record<
+ *   string,
+ *   {
+ *     weight: number,
+ *     glyphName: string,
+ *     recommendations: null | Array<
+ *       {
+ *         recommendationCopy: { subhead: string, body?: string, },
+ *         recIconClassName: string,
+ *         cta?: {
+ *           content: string,
+ *           href: string,
+ *           shouldOpenNewTab: boolean,
+ *           analyticsId: string,
+ *         },
+ *       }>,
+ *   }
+ * >}
+ */
+export function getAllPriorityDataClasses (_isUserBrowserFirefox = false, isUserLocaleEnUs = false, _isUserLocaleEn = false, changePWLink = null) {
   return {
     'government-issued-ids': {
       weight: 101,
-      glyphName: 'social-security-numbers'
+      glyphName: 'social-security-numbers',
+      recommendations: [],
     },
     'social-security-numbers': {
       weight: 101,
@@ -54,12 +77,14 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
             {
               recommendationCopy: {
                 subhead: 'rec-ssn-cta',
-                cta: 'rec-ssn-cta',
                 body: 'rec-ssn'
               },
-              ctaHref: 'https://www.annualcreditreport.com/index.action',
-              ctaShouldOpenNewTab: true,
-              ctaAnalyticsId: 'Request credit reports',
+              cta: {
+                content: 'rec-ssn-cta',
+                href: 'https://www.annualcreditreport.com/index.action',
+                shouldOpenNewTab: true,
+                analyticsId: 'Request credit reports',
+              },
               recIconClassName: 'rec-ssn'
             }
           ]
@@ -72,12 +97,14 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
         {
           recommendationCopy: {
             subhead: 'rec-pw-1-subhead',
-            cta: changePWLink ? 'rec-pw-1-cta' : '',
             body: 'rec-pw-1-2'
           },
-          ctaHref: changePWLink,
-          ctaShouldOpenNewTab: true,
-          ctaAnalyticsId: 'Change password for this site',
+          cta: changePWLink ? {
+            content: 'rec-pw-1-cta',
+            href: changePWLink,
+            shouldOpenNewTab: true,
+            analyticsId: 'Change password for this site',
+          } : undefined,
           recIconClassName: 'rec-pw-1'
         },
         {
@@ -122,7 +149,8 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
     },
     'credit-card-cvv': {
       weight: 97,
-      glyphName: 'credit-card-cvvs'
+      glyphName: 'credit-card-cvvs',
+      recommendations: [],
     },
     'partial-credit-card-data': {
       weight: 96,
@@ -144,12 +172,14 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
         {
           recommendationCopy: {
             subhead: 'rec-ip-subhead-2',
-            cta: 'rec-moz-vpn-cta',
             body: 'rec-moz-vpn-update-2'
           },
-          ctaHref: 'https://www.mozilla.org/products/vpn?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-detail',
-          ctaShouldOpenNewTab: true,
-          ctaAnalyticsId: 'Try Mozilla VPN',
+          cta: {
+            content: 'rec-moz-vpn-cta',
+            href: 'https://www.mozilla.org/products/vpn?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-detail',
+            shouldOpenNewTab: true,
+            analyticsId: 'Try Mozilla VPN',
+          },
           recIconClassName: 'rec-ip-us'
         }
       ]
@@ -204,11 +234,13 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
           recommendationCopy: {
             subhead: 'rec-email-mask-subhead',
             body: 'rec-email',
-            cta: 'rec-email-cta'
           },
-          ctaHref: 'https://relay.firefox.com/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-detail',
-          ctaShouldOpenNewTab: true,
-          ctaAnalyticsId: 'Try Firefox Relay',
+          cta: {
+            content: 'rec-email-cta',
+            href: 'https://relay.firefox.com/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-detail',
+            shouldOpenNewTab: true,
+            analyticsId: 'Try Firefox Relay',
+          },
           recIconClassName: 'rec-email'
         }
       ]
@@ -252,18 +284,5 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
         }
       ]
     }
-  }
-}
-export function getFourthPasswordRecommendation () {
-  return {
-    recommendationCopy: {
-      subhead: getMessage('rec-pw-4-subhead'),
-      body: getMessage('rec-pw-4'),
-      cta: getMessage('rec-pw-4-cta')
-    },
-    ctaHref: 'https://2fa.directory/',
-    ctaShouldOpenNewTab: true,
-    ctaAnalyticsId: 'See sites that offer 2FA',
-    recIconClassName: 'rec-pw-4'
   }
 }

@@ -201,7 +201,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
 };
 
 const meta: Meta<typeof DashboardWrapper> = {
-  title: "Pages/Dashboard",
+  title: "Pages/Logged in/Dashboard",
   component: DashboardWrapper,
   argTypes: {
     brokers: {

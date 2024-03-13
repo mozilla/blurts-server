@@ -18,7 +18,7 @@ import { View } from "./LandingView";
 export default async function Page() {
   const session = await getServerSession();
   if (typeof session?.user.subscriber?.fxa_uid === "string") {
-    return redirect("/user/dashboard/");
+    return redirect("/user/dashboard");
   }
   const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
   const countryCode = getCountryCode(headers());
