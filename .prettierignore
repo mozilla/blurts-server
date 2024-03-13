@@ -3,6 +3,7 @@
 # We can do such a reformatting later, or format them if/when we convert them to TypeScript:
 src/utils/**/*.js
 src/db/**/*.js
+src/emails/**/*.js
 
 # TODO NEXT.JS MIGRATION:
 # These files are remnants of our Express app:
