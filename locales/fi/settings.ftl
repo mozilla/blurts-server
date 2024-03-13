@@ -57,6 +57,23 @@ settings-deactivate-account-title = Poista tili käytöstä
 settings-deactivate-account-info-2 = Voit poistaa { -product-short-name }in käytöstä poistamalla { -brand-mozilla-account }n.
 settings-fxa-link-label-3 = Siirry { -brand-mozilla-account }n asetuksiin
 
+## Delete Monitor account
+
+settings-delete-monitor-free-account-title = Poista { -brand-monitor } -tili
+settings-delete-monitor-free-account-description = Tämä poistaa pysyvästi { -brand-monitor } -tilisi ja poistaa kaikki ilmoitukset käytöstä.
+settings-delete-monitor-free-account-cta-label = Poista tili
+settings-delete-monitor-free-account-dialog-title = { -brand-monitor } -tilisi poistetaan pysyvästi
+settings-delete-monitor-free-account-dialog-lead = Kaikki { -brand-monitor } -tilisi tiedot poistetaan, emmekä enää tarkkaile uusien tietovuotojen varalta. Tämä ei poista { -brand-mozilla }-tiliäsi.
+settings-delete-monitor-free-account-dialog-cta-label = Poista tili
+settings-delete-monitor-free-account-dialog-cancel-button-label = Unohdetaan tämä, palataan takaisin
+settings-delete-monitor-plus-account-title = Poista { -brand-monitor } -tili
+settings-delete-monitor-plus-account-cta-label = Poista tili
+settings-delete-monitor-plus-account-dialog-title = { -brand-monitor } -tilisi poistetaan pysyvästi
+settings-delete-monitor-plus-account-dialog-cta-label = Poista tili
+settings-delete-monitor-plus-account-dialog-cancel-button-label = Unohdetaan tämä, palataan takaisin
+settings-delete-monitor-account-confirmation-toast-label = { -brand-monitor } -tilisi on nyt poistettu pysyvästi.
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Hylkää
+
 ## Add email dialog
 
 settings-email-dialog-title = Lisää toinen sähköpostiosoite

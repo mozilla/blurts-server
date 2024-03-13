@@ -23,13 +23,11 @@ exposure-card-credit-card = Betalingskort
 exposure-card-password = Adgangskode
 exposure-card-ip-address = IP-adresse
 exposure-card-other = Andet
-exposure-card-description-info-for-sale-part-one = Dette websted sælger og offentliggør <data_broker_link>oplysninger om dig.</data_broker_link>
-exposure-card-description-info-for-sale-part-two = Fjern profilen for at beskytte dit privatliv.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = Dine oplysninger er blevet eksponeret i <data_breach_link>datalækken fra { $data_breach_company } den { $data_breach_date }.</data_breach_link>
-exposure-card-description-data-breach-part-two = Vi guider dig gennem løsningen trin for trin.
+exposure-card-description-data-breach-action-needed = Dine oplysninger er blevet kompromitteret i <data_breach_link>{ $data_breach_company }-datalækken den { $data_breach_date }.</data_breach_link>. Vi fører dig gennem trinene for at rette det.
+exposure-card-description-data-breach-fixed = Du har taget de nødvendige skridt for at løse <data_breach_link>denne datalæk</data_breach_link>. Vi holder løbende øje med nye datalæk og giver dig besked, hvis dine data bliver kompromitteret.
 exposure-card-your-exposed-info = Dine eksponerede oplysninger:
 exposure-card-exposure-type-data-broker = Oplysninger til salg
 exposure-card-exposure-type-data-breach = Datalæk

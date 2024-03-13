@@ -4,6 +4,7 @@
 
 import styles from "./Shell.module.scss";
 import Image from "next/image";
+import Link from "next/link";
 import mozillaLogo from "../images/mozilla-logo.svg";
 import { ExtendedReactLocalization } from "../../hooks/l10n";
 import {
@@ -24,6 +25,11 @@ export const Footer = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
         <Image src={mozillaLogo} width={100} alt={l10n.getString("mozilla")} />
       </a>
       <ul className={styles.externalLinks}>
+        <li>
+          <Link href="/breaches">
+            {l10n.getString("footer-nav-all-breaches")}
+          </Link>
+        </li>
         <li>
           <a
             href={CONST_URL_SUMO_MONITOR_FAQ}

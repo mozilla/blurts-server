@@ -26,8 +26,8 @@ exposure-card-other = Arall
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-action-needed = Datgelwyd eich gwybodaeth yn y toriad data <data_breach_link>{ $data_breach_company } ar { $data_breach_date }.</data_breach_link> Byddwn yn eich arwain drwy'r camau i'w drwsio.
-exposure-card-description-data-breach-fixed = Rydych chi wedi cymryd y camau angenrheidiol i drwsio <data_breach_link>y toriad hwn</data_breach_link>. Byddwn yn monitro toriadau data yn barhaus ac yn eich rhybuddio am unrhyw ddatguddiadau newydd.
+exposure-card-description-data-breach-action-needed = Cafodd eich manylion eu datgelu yn y tor-data <data_breach_link>{ $data_breach_company } ar { $data_breach_date }.</data_breach_link> Byddwn yn eich arwain drwy'r camau angenrheidiol i'w drwsio.
+exposure-card-description-data-breach-fixed = Rydych wedi cymryd y camau angenrheidiol i drwsio'r <data_breach_link>tor-data hwn</data_breach_link>. Byddwn yn monitro tor-data yn barhaus ac yn eich rhybuddio am unrhyw ddatgeliadau newydd.
 exposure-card-your-exposed-info = Eich manylion sydd wedu eu datgelu:
 exposure-card-exposure-type-data-broker = Manylion ar werth
 exposure-card-exposure-type-data-breach = Tor-data
