@@ -16,10 +16,6 @@ import { Breach } from "../../functions/universal/breach";
 
 export type Props = {
   breach: HibpLikeDbBreach | Breach;
-  // The prop `htmlTags` ensures compatibility for the work in
-  // `nextjs_migration` when rendering server components to strings. As soon as
-  // this component is not being used there anymore we can remove the prop.
-  htmlTags?: boolean;
 };
 
 // The <BreachLogo> component is currently a bit troublesome to test because it
@@ -28,9 +24,8 @@ export type Props = {
 /* c8 ignore start */
 export function BreachLogo(props: Props) {
   if (hasFavIconUrl(props.breach)) {
-    const ImageType = props.htmlTags ? "img" : Image;
     return (
-      <ImageType
+      <Image
         src={props.breach.FaviconUrl}
         alt=""
         loading="lazy"
