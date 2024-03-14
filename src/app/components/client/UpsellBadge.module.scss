@@ -4,7 +4,7 @@
   align-items: center;
   background: none;
   border-radius: $border-radius-xl;
-  border: 1px solid $color-grey-30;
+  border: 1px solid $color-grey-40;
   color: $color-black;
   cursor: pointer;
   display: flex;
@@ -16,11 +16,11 @@
   user-select: none;
 
   .toggleIndicator {
-    background: $color-grey-30;
+    background: $color-grey-40;
     border-radius: $border-radius-md;
     display: block;
     position: relative;
-    outline: $border-focus-width solid $color-grey-30;
+    outline: $border-focus-width solid $color-grey-40;
     height: 16px;
     width: 32px;
 
