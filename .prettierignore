@@ -7,7 +7,6 @@ src/emails/**/*.js
 
 # TODO NEXT.JS MIGRATION:
 # These files are remnants of our Express app:
-src/app.js
 src/appConstants.js
 
 # These should be ignored anyway
