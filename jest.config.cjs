@@ -45,8 +45,6 @@ const customJestConfig = {
     "<rootDir>/.storybook/",
     // Old, pre-Next.js code assumed to be working:
     "<rootDir>/src/appConstants.js",
-    "<rootDir>/src/views/",
-    "<rootDir>/src/middleware/",
   ],
 
   // Indicates which provider should be used to instrument code for coverage
@@ -120,11 +118,7 @@ const customJestConfig = {
   // moduleNameMapper: {},
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
-  modulePathIgnorePatterns: [
-    "e2e/",
-    // These are remnants of our old Express.js app, which we have yet to remove:
-    "src/controllers",
-  ],
+  modulePathIgnorePatterns: ["e2e/"],
 
   // Activates notifications for test results
   // notify: false,

@@ -9,7 +9,7 @@ import { getBreachesForEmail } from "../../../../utils/hibp";
 import { getSha1 } from "../../../../utils/fxa";
 import { getL10n } from "../../../functions/server/l10n";
 import { getBreachLogo } from "../../../../utils/breachLogo";
-import { Breach } from "../../../deprecated/(authenticated)/user/breaches/breaches";
+import { Breach } from "../../../functions/universal/breach";
 
 export interface RequestBreachScanErrorResponse {
   success: false;

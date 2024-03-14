@@ -2,39 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-export function getAllGenericRecommendations () {
-  return [
-    {
-      recommendationCopy: {
-        subhead: 'rec-gen-1-subhead',
-        body: 'rec-gen-1'
-      },
-      recIconClassName: 'rec-gen-1'
-    },
-    {
-      recommendationCopy: {
-        subhead: 'rec-gen-2-subhead',
-        body: 'rec-gen-2'
-      },
-      recIconClassName: 'rec-gen-2'
-    },
-    {
-      recommendationCopy: {
-        subhead: 'rec-gen-3-subhead',
-        body: 'rec-gen-3'
-      },
-      recIconClassName: 'rec-gen-3'
-    },
-    {
-      recommendationCopy: {
-        subhead: 'rec-gen-4-subhead',
-        body: 'rec-gen-4'
-      },
-      recIconClassName: 'rec-gen-4'
-    }
-  ]
-}
-
 // It's unclear why this function has unused parameters, but since they're
 // positional parameters, removing them risks breaking things:
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -4,8 +4,7 @@
 
 import { getL10n } from "./l10n";
 import AppConstants from "../../../appConstants.js";
-import { Breach } from "../../deprecated/(authenticated)/user/breaches/breaches";
-import { BreachDataTypes } from "../universal/breach";
+import { Breach, BreachDataTypes } from "../universal/breach";
 
 /**
  * TODO: Map from google doc: https://docs.google.com/document/d/1KoItFsTYVIBInIG2YmA7wSxkKS4vti_X0A0td_yaHVM/edit#
