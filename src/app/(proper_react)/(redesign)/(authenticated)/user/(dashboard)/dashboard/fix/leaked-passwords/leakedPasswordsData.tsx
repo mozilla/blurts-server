@@ -12,10 +12,8 @@ import { Button } from "../../../../../../../../components/client/Button";
 import { StepLink } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getLocale } from "../../../../../../../../functions/universal/getLocale";
 import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
-import {
-  BreachResolutionRequest,
-  HibpBreachDataTypes,
-} from "../../../../../../../../functions/universal/breach";
+import { HibpBreachDataTypes } from "../../../../../../../../functions/universal/breach";
+import { BreachResolutionRequest } from "../../../../../../../../api/v1/user/breaches/route";
 
 export const leakedPasswordTypes = [
   "passwords",

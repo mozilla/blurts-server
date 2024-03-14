@@ -80,12 +80,6 @@ export interface BreachBulkResolutionRequest {
   dataType: HibpBreachDataTypes[keyof HibpBreachDataTypes];
 }
 
-export interface BreachResolutionRequest {
-  affectedEmail: string;
-  breachId: number;
-  resolutionsChecked: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>;
-}
-
 export function isBreachResolved(
   dataClassesAffected: DataClassEffected[],
   resolvedDataClasses: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>,

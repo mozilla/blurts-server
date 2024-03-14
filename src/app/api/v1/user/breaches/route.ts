@@ -13,7 +13,13 @@ import {
   setBreachResolution,
 } from "../../../../../db/tables/subscribers";
 import appConstants from "../../../../../appConstants";
-import { BreachResolutionRequest } from "../../../../functions/universal/breach";
+import { HibpBreachDataTypes } from "../../../../functions/universal/breach";
+
+export interface BreachResolutionRequest {
+  affectedEmail: string;
+  breachId: number;
+  resolutionsChecked: Array<HibpBreachDataTypes[keyof HibpBreachDataTypes]>;
+}
 
 // Get breaches data
 export async function GET(req: NextRequest) {
