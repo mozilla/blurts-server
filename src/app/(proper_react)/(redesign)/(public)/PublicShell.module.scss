@@ -1,0 +1,38 @@
+@import "../../../tokens";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md;
+  background-color: $color-grey-05;
+  gap: $spacing-lg;
+
+  h1 {
+    font: $text-title-3xs;
+  }
+
+  .logo {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+  }
+
+  button {
+    flex-shrink: 0;
+  }
+
+  @media screen and (min-width: $screen-md) {
+    padding: $spacing-lg $layout-xl;
+  }
+}
+
+.content {
+  flex: 1 0 auto;
+}

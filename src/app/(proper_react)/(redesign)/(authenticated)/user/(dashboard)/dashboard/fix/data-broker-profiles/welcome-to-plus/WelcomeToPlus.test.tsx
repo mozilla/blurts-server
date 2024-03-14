@@ -9,16 +9,25 @@ import { axe } from "jest-axe";
 
 jest.mock("../../../../../../../../../hooks/useTelemetry");
 
-import Meta, { WelcomeToPlusViewStory } from "./WelcomeToPlus.stories";
+import Meta, {
+  WelcomeToPlusViewNoResultsStory,
+  WelcomeToPlusViewInProgressStory,
+} from "./WelcomeToPlus.stories";
 
 it("passes the axe accessibility test suite", async () => {
-  const ComposedWelcomeToPlusView = composeStory(WelcomeToPlusViewStory, Meta);
+  const ComposedWelcomeToPlusView = composeStory(
+    WelcomeToPlusViewInProgressStory,
+    Meta,
+  );
   const { container } = render(<ComposedWelcomeToPlusView />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("shows the progress indicator on the “Welcome to Plus” view", () => {
-  const ComposedWelcomeToPlusView = composeStory(WelcomeToPlusViewStory, Meta);
+  const ComposedWelcomeToPlusView = composeStory(
+    WelcomeToPlusViewInProgressStory,
+    Meta,
+  );
   render(<ComposedWelcomeToPlusView />);
 
   const guidedStepsNavigation = screen.getByRole("navigation", {
@@ -28,20 +37,40 @@ it("shows the progress indicator on the “Welcome to Plus” view", () => {
 });
 
 it("shows the correct number of broker profiles with no broker scan results", () => {
-  const ComposedWelcomeToPlusView = composeStory(WelcomeToPlusViewStory, Meta);
-  const brokerScanCount = 0;
+  const ComposedWelcomeToPlusView = composeStory(
+    WelcomeToPlusViewNoResultsStory,
+    Meta,
+  );
+  render(<ComposedWelcomeToPlusView />);
+
+  const paragraphElement = screen.getByText(
+    "Great news! We scanned ⁨190⁩ data broker sites and didn’t find any sites selling your personal information. We’ll run a scan every month to make sure it stays that way.",
+  );
+
+  expect(paragraphElement).toBeInTheDocument();
+});
+
+it("shows the correct number of broker profiles with one broker scan results", () => {
+  const ComposedWelcomeToPlusView = composeStory(
+    WelcomeToPlusViewInProgressStory,
+    Meta,
+  );
+  const brokerScanCount = 1;
   render(<ComposedWelcomeToPlusView brokerScanCount={brokerScanCount} />);
 
   const paragraphElement = screen.getByText(
-    `We’ve already started our auto-removal process of ⁨${brokerScanCount}⁩ profiles`,
+    `We’ve already started our auto-removal process of ${brokerScanCount}`,
     { exact: false },
   );
 
   expect(paragraphElement).toBeInTheDocument();
 });
 
-it("shows the correct number of broker profiles with broker scan results", () => {
-  const ComposedWelcomeToPlusView = composeStory(WelcomeToPlusViewStory, Meta);
+it("shows the correct number of broker profiles with multiple broker scan results", () => {
+  const ComposedWelcomeToPlusView = composeStory(
+    WelcomeToPlusViewInProgressStory,
+    Meta,
+  );
   const brokerScanCount = 5;
   render(<ComposedWelcomeToPlusView brokerScanCount={brokerScanCount} />);
 
@@ -54,7 +83,10 @@ it("shows the correct number of broker profiles with broker scan results", () =>
 });
 
 it("checks the CTA button link to the next step in the guided resolution flow", () => {
-  const ComposedWelcomeToPlusView = composeStory(WelcomeToPlusViewStory, Meta);
+  const ComposedWelcomeToPlusView = composeStory(
+    WelcomeToPlusViewInProgressStory,
+    Meta,
+  );
   render(<ComposedWelcomeToPlusView />);
 
   const ctaButtonLink = screen.getByRole("link", {
@@ -65,7 +97,10 @@ it("checks the CTA button link to the next step in the guided resolution flow", 
 });
 
 it("checks the arrow button link to the next step in the guided resolution flow", () => {
-  const ComposedWelcomeToPlusView = composeStory(WelcomeToPlusViewStory, Meta);
+  const ComposedWelcomeToPlusView = composeStory(
+    WelcomeToPlusViewInProgressStory,
+    Meta,
+  );
   render(<ComposedWelcomeToPlusView />);
 
   const arrowButtonLink = screen.getByLabelText("Go to next step");

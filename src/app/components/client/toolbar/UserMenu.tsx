@@ -113,7 +113,7 @@ export const UserMenu = (props: UserMenuProps) => {
       >
         <Link
           className={styles.menuItemCta}
-          href="/user/settings/"
+          href="/user/settings"
           ref={settingsItemRef}
           title={l10n.getString("user-menu-settings-tooltip")}
         >
