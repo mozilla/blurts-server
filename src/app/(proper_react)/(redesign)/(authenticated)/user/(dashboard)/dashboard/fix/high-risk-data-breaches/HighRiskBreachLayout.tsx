@@ -22,8 +22,10 @@ import {
 } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
 import { hasPremium } from "../../../../../../../../functions/universal/user";
-import { HighRiskDataTypes } from "../../../../../../../../functions/universal/breach";
-import { BreachBulkResolutionRequest } from "../../../../../../../../deprecated/(authenticated)/user/breaches/breaches";
+import {
+  BreachBulkResolutionRequest,
+  HighRiskDataTypes,
+} from "../../../../../../../../functions/universal/breach";
 import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
 import { TelemetryLink } from "../../../../../../../../components/client/TelemetryLink";
 

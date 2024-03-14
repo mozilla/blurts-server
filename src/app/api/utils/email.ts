@@ -7,8 +7,8 @@ import { SubscriberRow } from "knex/types/tables";
 import { resetUnverifiedEmailAddress } from "../../../db/tables/emailAddresses.js";
 import { sendEmail, getVerificationUrl } from "../../../utils/email";
 import { getStringLookup } from "../../../utils/fluent.js";
-import { getTemplate } from "../../../views/emails/email2022.js";
-import { verifyPartial } from "../../../views/emails/emailVerify.js";
+import { getTemplate } from "../../../emails/email2022.js";
+import { verifyPartial } from "../../../emails/emailVerify.js";
 
 export async function sendVerificationEmail(
   user: SubscriberRow,

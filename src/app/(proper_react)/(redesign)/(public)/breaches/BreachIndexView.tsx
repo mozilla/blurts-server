@@ -7,12 +7,12 @@
 import Link from "next/link";
 import styles from "./BreachIndexView.module.scss";
 import { HibpLikeDbBreach } from "../../../../../utils/hibp";
-import { Breach } from "../../../../deprecated/(authenticated)/user/breaches/breaches";
 import { ExtendedReactLocalization, useL10n } from "../../../../hooks/l10n";
 import { BreachLogo } from "../../../../components/server/BreachLogo";
 import { getLocale } from "../../../../functions/universal/getLocale";
 import { useHasRenderedClientSide } from "../../../../hooks/useHasRenderedClientSide";
 import { memo, useMemo, useState, useTransition } from "react";
+import { Breach } from "../../../../functions/universal/breach";
 
 export type Props = {
   allBreaches: Array<HibpLikeDbBreach | Breach>;
