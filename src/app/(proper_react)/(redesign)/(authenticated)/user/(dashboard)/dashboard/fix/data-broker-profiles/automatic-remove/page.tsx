@@ -29,7 +29,7 @@ export default async function AutomaticRemovePage() {
   const session = await getServerSession();
 
   if (!session?.user?.subscriber?.id) {
-    redirect("/user/dashboard/");
+    redirect("/user/dashboard");
   }
 
   const additionalSubplatParams = await getAttributionsFromCookiesOrDb(

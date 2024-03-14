@@ -59,7 +59,7 @@ const SecurityRecommendationsWrapper = (props: {
 };
 
 const meta: Meta<typeof SecurityRecommendationsWrapper> = {
-  title: "Pages/Guided resolution/4. Security recommendations",
+  title: "Pages/Logged in/Guided resolution/4. Security recommendations",
   component: SecurityRecommendationsWrapper,
   argTypes: {
     type: {

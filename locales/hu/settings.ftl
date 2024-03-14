@@ -59,18 +59,18 @@ settings-fxa-link-label-3 = Ugrás a { -brand-mozilla-account } beállításaiho
 
 ## Delete Monitor account
 
-settings-delete-monitor-free-account-title = A { -brand-monitor } fiók törlése
+settings-delete-monitor-free-account-title = A { -brand-monitor }-fiók törlése
 settings-delete-monitor-free-account-description = Ez véglegesen törli a { -brand-monitor }-fiókját, és kikapcsolja az összes értesítést.
 settings-delete-monitor-free-account-cta-label = Fiók törlése
 settings-delete-monitor-free-account-dialog-title = A { -brand-monitor }-fiókja véglegesen törölve lesz
-settings-delete-monitor-free-account-dialog-lead = Az összes { -brand-monitor }-fiókinformációja törölve lesz, és a továbbiakban nem fogjuk figyelni az új adatsértéseket. Ez nem törli a { -brand-mozilla } fiókját.
+settings-delete-monitor-free-account-dialog-lead = Az összes { -brand-monitor }-fiókinformációja törölve lesz, és a továbbiakban nem fogjuk figyelni az új adatvédelmi incidenseket. Ez nem törli a { -brand-mozilla }-fiókját.
 settings-delete-monitor-free-account-dialog-cta-label = Fiók törlése
 settings-delete-monitor-free-account-dialog-cancel-button-label = Mégse, visszalépés
-settings-delete-monitor-plus-account-title = A { -brand-monitor } fiók törlése
+settings-delete-monitor-plus-account-title = A { -brand-monitor }-fiók törlése
 settings-delete-monitor-plus-account-description = Ez véglegesen törli a { -brand-monitor }-fiókját, és azonnal megszünteti a fizetős { -brand-monitor-plus }-előfizetését.
 settings-delete-monitor-plus-account-cta-label = Fiók törlése
 settings-delete-monitor-plus-account-dialog-title = A { -brand-monitor }-fiókja véglegesen törölve lesz
-settings-delete-monitor-plus-account-dialog-lead-p1 = Az összes { -brand-monitor }-fiókinformációja törölve lesz, és a továbbiakban nem fogjuk figyelni az új adatvédelmi incidenseket vagy adatbrókerek kikerüléseit. Ez nem törli a { -brand-mozilla } fiókját.
+settings-delete-monitor-plus-account-dialog-lead-p1 = Az összes { -brand-monitor }-fiókinformációja törölve lesz, és a továbbiakban nem fogjuk figyelni az új adatvédelmi incidenseket és az adatbrókerekhez kerülő adatokhoz. Ez nem törli a { -brand-mozilla }-fiókját.
 settings-delete-monitor-plus-account-dialog-lead-p2 = A fizetős előfizetése ma lejár, és az előfizetés hátralévő részében nem lesz részarányos.
 settings-delete-monitor-plus-account-dialog-cta-label = Fiók törlése
 settings-delete-monitor-plus-account-dialog-cancel-button-label = Mégse, visszalépés

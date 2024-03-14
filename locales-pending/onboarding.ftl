@@ -54,6 +54,7 @@ onboarding-enter-details-placeholder-location-results = No location found
 onboarding-enter-details-label-date-of-birth = Date of birth
 onboarding-enter-details-input-error-message-generic = Required to complete the scan
 onboarding-enter-details-input-error-message-location = Type location and select from list
+onboarding-enter-details-input-error-alt = Error
 
 onboarding-find-exposures-progress-label = Scanning for exposures…
 # Variables:

@@ -16,7 +16,7 @@ import {
   Exposure,
   ExposureCard,
   isScanResult,
-} from "../../../../../../components/client/ExposureCard";
+} from "../../../../../../components/client/exposure_card/ExposureCard";
 import {
   ExposuresFilter,
   FilterState,

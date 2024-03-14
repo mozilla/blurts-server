@@ -81,7 +81,7 @@ const LeakedPasswordsWrapper = (props: {
 };
 
 const meta: Meta<typeof LeakedPasswordsWrapper> = {
-  title: "Pages/Guided resolution/3. Leaked passwords",
+  title: "Pages/Logged in/Guided resolution/3. Leaked passwords",
   component: LeakedPasswordsWrapper,
   argTypes: {
     type: {
