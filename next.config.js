@@ -166,7 +166,7 @@ const nextConfig = {
       },
     ];
   },
-  webpack: (config, options) => {
+  webpack: (config, _options) => {
     config.module.rules.push({
       test: /\.ftl/,
       type: "asset/source",

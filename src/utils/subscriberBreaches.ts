@@ -6,13 +6,11 @@ import { SubscriberRow } from "knex/types/tables";
 import { getUserEmails } from "../db/tables/emailAddresses.js";
 import { HibpLikeDbBreach, getBreachesForEmail } from "./hibp.js";
 import { getSha1 } from "./fxa.js";
-import {
-  Breach,
-  HibpBreachDataTypes,
-} from "../app/deprecated/(authenticated)/user/breaches/breaches.js";
 import { parseIso8601Datetime } from "./parse.js";
 import {
+  Breach,
   BreachDataTypes,
+  HibpBreachDataTypes,
   ResolutionRelevantBreachDataTypes,
   isBreachResolved,
 } from "../app/functions/universal/breach";
