@@ -202,7 +202,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
               </span>
             </p>
             <TelemetryButton
-              aria-labelledby="plansTableMonthlyOrYearly plansTableReassurancePlus"
+              aria-describedby="plansTableMonthlyOrYearly plansTableReassurancePlus"
               disabled={props.scanLimitReached}
               variant="primary"
               href={`${props.premiumSubscriptionUrl[billingPeriod]}&${searchParam.current.toString()}`}
@@ -395,7 +395,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
               <span className={styles.total} />
             </p>
             <TelemetryButton
-              aria-labelledby="plansTableBillingFree plansTableReassuranceFree"
+              aria-describedby="plansTableBillingFree plansTableReassuranceFree"
               disabled={props.scanLimitReached}
               variant="primary"
               className={styles.cta}
@@ -739,7 +739,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   <span className={styles.total} />
                 </p>
                 <TelemetryButton
-                  aria-labelledby="plansTableBillingFree plansTableReassuranceFree"
+                  aria-describedby="plansTableBillingFree plansTableReassuranceFree"
                   disabled={props.scanLimitReached}
                   variant="secondary"
                   event={{
@@ -831,7 +831,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   </span>
                 </p>
                 <TelemetryButton
-                  aria-labelledby="plansTableMonthlyOrYearly plansTableReassurancePlus"
+                  aria-describedby="plansTableMonthlyOrYearly plansTableReassurancePlus"
                   disabled={props.scanLimitReached}
                   variant="primary"
                   href={`${props.premiumSubscriptionUrl[billingPeriod]}&${searchParam.current.toString()}`}
