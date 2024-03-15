@@ -34,21 +34,31 @@
     }
 
     [role="tablist"] {
-      background: $color-grey-10;
+      width: auto;
+      display: inline-flex;
+      gap: $spacing-sm;
+      background-color: $color-grey-10;
       border-radius: $border-radius-xl;
-      gap: 0;
-      padding: $spacing-xs;
+      padding: $spacing-sm $spacing-sm;
+      font: $text-body-sm;
+      margin-bottom: $spacing-md;
     }
 
     [role="tab"] {
-      border-radius: $border-radius-xl;
-      color: $color-grey-40;
+      cursor: pointer;
+      appearance: none;
+      background-color: transparent;
+      border: 0;
+      color: $color-grey-50;
       padding: $spacing-xs $spacing-md;
+      font-weight: 500;
 
       &[aria-selected="true"] {
-        background: white;
-        color: $color-blue-50;
+        background-color: $color-white;
+        border-radius: $border-radius-xl;
+        color: $color-informational;
       }
+
       &::after {
         display: none;
       }
