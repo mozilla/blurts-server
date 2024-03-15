@@ -117,9 +117,13 @@ it("expands one card at a time", async () => {
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
   render(<ComposedManualRemoveView />);
 
-  const expandButton = screen.getAllByRole("button", { name: "Expand" });
+  const expandButton = screen.getAllByRole("button", {
+    name: "Exposure details Collapsed",
+  });
   await user.click(expandButton[0]);
-  const expandButton2 = screen.getAllByRole("button", { name: "Expand" });
+  const expandButton2 = screen.getAllByRole("button", {
+    name: "Exposure details Collapsed",
+  });
   expect(expandButton.length).toBe(expandButton2.length);
 });
 
@@ -129,9 +133,15 @@ it("closes previously active card onclick", async () => {
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
   render(<ComposedManualRemoveView />);
 
-  const initialState = screen.getAllByRole("button", { name: "Expand" });
-  const afterExpand = screen.getAllByRole("button", { name: "Collapse" });
+  const initialState = screen.getAllByRole("button", {
+    name: "Exposure details Collapsed",
+  });
+  const afterExpand = screen.getAllByRole("button", {
+    name: "Exposure details Expanded",
+  });
   await user.click(afterExpand[0]);
-  const afterCollapse = screen.getAllByRole("button", { name: "Expand" });
+  const afterCollapse = screen.getAllByRole("button", {
+    name: "Exposure details Collapsed",
+  });
   expect(initialState.length).toBe(afterCollapse.length - 1);
 });
