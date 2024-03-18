@@ -420,6 +420,10 @@ export const EnterInfo = ({
           )}
           <TelemetryButton
             {...confirmDialogTrigger.triggerProps}
+            // react-aria sets `aria-expanded`, which causes this to be
+            // announced as "collapsed", rather than opening a dialog. By
+            // setting aria-haspopup, this interaction is clearer. See also:
+            // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-haspopup
             aria-haspopup="dialog"
             aria-expanded={undefined}
             variant="primary"
