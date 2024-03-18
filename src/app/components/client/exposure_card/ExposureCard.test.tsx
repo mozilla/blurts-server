@@ -9,6 +9,7 @@ import { axe } from "jest-axe";
 import Meta, {
   DataBreachActionNeeded,
   DataBreachFixed,
+  DataBreachFixedEligibleForPremium,
   DataBrokerActionNeeded,
   DataBrokerInProgress,
   DataBrokerManualRemoved,
@@ -82,6 +83,24 @@ describe("ScanResultCard", () => {
 
     expect(innerDescription).toBeInTheDocument();
   });
+
+  it("does not announce visually hidden elements' titles on screens smaller than screen_xl", () => {
+    global.innerWidth = 500;
+    const ComposedExposureCard = composeStory(DataBrokerActionNeeded, Meta);
+    render(<ComposedExposureCard />);
+
+    const exposureTypeTitle = screen.getByText("Exposure type");
+    expect(exposureTypeTitle).toHaveAttribute("aria-hidden", "true");
+  });
+
+  it("announce visually hidden elements' titles on screens larger than screen_xl", () => {
+    global.innerWidth = 1320;
+    const ComposedExposureCard = composeStory(DataBrokerActionNeeded, Meta);
+    render(<ComposedExposureCard />);
+
+    const exposureTypeTitle = screen.getByText("Exposure type");
+    expect(exposureTypeTitle).toHaveAttribute("aria-hidden", "false");
+  });
 });
 
 describe("DataBreachCard", () => {
@@ -107,5 +126,34 @@ describe("DataBreachCard", () => {
     );
 
     expect(innerDescription).toBeInTheDocument();
+  });
+
+  it("does not announce visually hidden elements' titles on screens smaller than screen_xl", () => {
+    global.innerWidth = 500;
+    const ComposedExposureCard = composeStory(DataBreachActionNeeded, Meta);
+    render(<ComposedExposureCard />);
+
+    const companyLogoTitle = screen.getByText("Company logo");
+    expect(companyLogoTitle).toHaveAttribute("aria-hidden", "true");
+  });
+
+  it("announce visually hidden elements' titles on screens larger than screen_xl", () => {
+    global.innerWidth = 1320;
+    const ComposedExposureCard = composeStory(DataBreachActionNeeded, Meta);
+    render(<ComposedExposureCard />);
+
+    const companyLogoTitle = screen.getByText("Company logo");
+    expect(companyLogoTitle).toHaveAttribute("aria-hidden", "false");
+  });
+
+  it("announces the exposure type (data breach) if user is eligible for premium", () => {
+    const ComposedExposureCard = composeStory(
+      DataBreachFixedEligibleForPremium,
+      Meta,
+    );
+    render(<ComposedExposureCard />);
+
+    const companyLogoTitle = screen.getByText("Exposure type");
+    expect(companyLogoTitle).toHaveAttribute("aria-hidden", "false");
   });
 });
