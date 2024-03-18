@@ -116,15 +116,21 @@ it("expands one card at a time", async () => {
   global.fetch = jest.fn().mockResolvedValueOnce({ ok: true });
   const ComposedManualRemoveView = composeStory(ManualRemoveViewStory, Meta);
   render(<ComposedManualRemoveView />);
+  const expandButtons = screen.getAllByRole("button", {
+    name: "Exposure details",
+  });
 
-  const expandButton = screen.getAllByRole("button", {
-    name: "Exposure details Collapsed",
-  });
-  await user.click(expandButton[0]);
-  const expandButton2 = screen.getAllByRole("button", {
-    name: "Exposure details Collapsed",
-  });
-  expect(expandButton.length).toBe(expandButton2.length);
+  // the first card is expanded by default
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "true");
+
+  await user.click(expandButtons[0]);
+
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "false");
+
+  await user.click(expandButtons[1]);
+
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "false");
+  expect(expandButtons[1]).toHaveAttribute("aria-expanded", "true");
 });
 
 it("closes previously active card onclick", async () => {
@@ -134,14 +140,10 @@ it("closes previously active card onclick", async () => {
   render(<ComposedManualRemoveView />);
 
   const initialState = screen.getAllByRole("button", {
-    name: "Exposure details Collapsed",
+    name: "Exposure details",
   });
-  const afterExpand = screen.getAllByRole("button", {
-    name: "Exposure details Expanded",
-  });
-  await user.click(afterExpand[0]);
-  const afterCollapse = screen.getAllByRole("button", {
-    name: "Exposure details Collapsed",
-  });
-  expect(initialState.length).toBe(afterCollapse.length - 1);
+  expect(initialState[0]).toHaveAttribute("aria-expanded", "true");
+
+  await user.click(initialState[0]);
+  expect(initialState[0]).toHaveAttribute("aria-expanded", "false");
 });

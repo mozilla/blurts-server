@@ -2731,36 +2731,21 @@ it("expands one card at a time", async () => {
   );
   render(<ComposedDashboard />);
 
+  // collapsed
   const expandButtons = screen.getAllByRole("button", {
-    name: "Exposure details Collapsed",
+    name: "Exposure details",
   });
-  const collapseButtons = screen.queryAllByRole("button", {
-    name: "Exposure details Expanded",
-  });
-  // Only expanded cards have a collapse button:
-  expect(collapseButtons).toHaveLength(0);
+
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "false");
 
   await user.click(expandButtons[0]);
-  const afterExpand1ExpandButtons = screen.getAllByRole("button", {
-    name: "Exposure details Collapsed",
-  });
-  const afterExpand1CollapseButtons = screen.queryAllByRole("button", {
-    name: "Exposure details Expanded",
-  });
-  expect(afterExpand1ExpandButtons).toHaveLength(expandButtons.length - 1);
-  expect(afterExpand1CollapseButtons).toHaveLength(1);
 
-  await user.click(afterExpand1ExpandButtons[0]);
-  const afterExpand2ExpandButtons = screen.getAllByRole("button", {
-    name: "Exposure details Collapsed",
-  });
-  const afterExpand2CollapseButtons = screen.queryAllByRole("button", {
-    name: "Exposure details Expanded",
-  });
-  expect(afterExpand2ExpandButtons).toHaveLength(
-    afterExpand1ExpandButtons.length,
-  );
-  expect(afterExpand2CollapseButtons).toHaveLength(1);
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "true");
+
+  await user.click(expandButtons[1]);
+
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "false");
+  expect(expandButtons[1]).toHaveAttribute("aria-expanded", "true");
 });
 
 it("closes previously active card onclick", async () => {
@@ -2772,17 +2757,18 @@ it("closes previously active card onclick", async () => {
   render(<ComposedDashboard />);
 
   const initialState = screen.getAllByRole("button", {
-    name: "Exposure details Collapsed",
+    name: "Exposure details",
   });
+
+  expect(initialState[0]).toHaveAttribute("aria-expanded", "false");
+
   await user.click(initialState[0]);
-  const afterExpand = screen.getAllByRole("button", {
-    name: "Exposure details Expanded",
-  });
-  await user.click(afterExpand[0]);
-  const afterCollapse = screen.getAllByRole("button", {
-    name: "Exposure details Collapsed",
-  });
-  expect(initialState.length).toBe(afterCollapse.length);
+
+  expect(initialState[0]).toHaveAttribute("aria-expanded", "true");
+
+  await user.click(initialState[0]);
+
+  expect(initialState[0]).toHaveAttribute("aria-expanded", "false");
 });
 
 it("does not allow non-US users to filter by exposure type, since they can only see a single exposure type (i.e. breaches)", async () => {
@@ -3185,9 +3171,11 @@ it("send telemetry when users click on data broker info link", async () => {
 
   // expands first row
   const expandButtons = screen.getAllByRole("button", {
-    name: "Exposure details Collapsed",
+    name: "Exposure details",
   });
   await user.click(expandButtons[0]);
+
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "true");
 
   const detailsAboutYouLink = screen.queryAllByRole("link", {
     name: "these details about you",
@@ -3202,10 +3190,8 @@ it("send telemetry when users click on data broker info link", async () => {
   );
 
   // collapses first row
-  const collapseButton = screen.getAllByRole("button", {
-    name: "Exposure details Expanded",
-  });
-  await user.click(collapseButton[0]);
+  await user.click(expandButtons[0]);
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "false");
 });
 
 it("send telemetry when users click on data breach link", async () => {
@@ -3224,9 +3210,11 @@ it("send telemetry when users click on data breach link", async () => {
 
   // expands first row
   const expandButtons = screen.getAllByRole("button", {
-    name: "Exposure details Collapsed",
+    name: "Exposure details",
   });
   await user.click(expandButtons[0]);
+
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "true");
 
   const dataBreachLink = screen.queryAllByRole("link", {
     name: /^.*data breach on.*$/,
@@ -3241,10 +3229,8 @@ it("send telemetry when users click on data breach link", async () => {
   );
 
   // collapses first row
-  const collapseButton = screen.getAllByRole("button", {
-    name: "Exposure details Expanded",
-  });
-  await user.click(collapseButton[0]);
+  await user.click(expandButtons[0]);
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "false");
 });
 
 it("send telemetry when users click on learn more link", async () => {

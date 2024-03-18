@@ -3,8 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Exposure details
-chevron-expanded = Expanded
-chevron-collapsed = Collapsed
 
 exposure-card-exposure-type = Exposure type
 exposure-card-date-found = Date of the exposure

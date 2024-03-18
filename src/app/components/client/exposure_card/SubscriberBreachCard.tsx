@@ -210,7 +210,7 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
             /* c8 ignore next */
             onClick={props.onToggleExpanded}
             aria-expanded={props.isExpanded}
-            aria-label={`${l10n.getString("chevron-alt")} ${props.isExpanded ? l10n.getString("chevron-expanded") : l10n.getString("chevron-collapsed")}`}
+            aria-label={l10n.getString("chevron-alt")}
           >
             <ChevronDown
               // TODO: Add unit test when changing this code:
