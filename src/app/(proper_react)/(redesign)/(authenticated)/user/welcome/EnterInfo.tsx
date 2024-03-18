@@ -29,6 +29,7 @@ import { useTelemetry } from "../../../../../hooks/useTelemetry";
 import { CONST_URL_PRIVACY_POLICY } from "../../../../../../constants";
 
 import styles from "./EnterInfo.module.scss";
+import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -97,6 +98,7 @@ export const EnterInfo = ({
       }
     },
   });
+
   const confirmDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
     confirmDialogState,
@@ -291,23 +293,25 @@ export const EnterInfo = ({
             "onboarding-enter-details-comfirm-dialog-button-edit",
           )}
         </Button>
-        <Button
+        <TelemetryButton
           variant="primary"
           // TODO: Figure out how to intercept the fetch request in a test:
           /* c8 ignore next */
-          onPress={() => {
-            recordTelemetry("ctaButton", "click", {
-              button_id: "confirmed_free_scan",
-            });
-            handleRequestScan();
-          }}
           className={styles.startButton}
           isLoading={requestingScan}
+          onPress={() => handleRequestScan()}
+          event={{
+            module: "ctaButton",
+            name: "click",
+            data: {
+              button_id: "confirmed_free_scan",
+            },
+          }}
         >
           {l10n.getString(
             "onboarding-enter-details-comfirm-dialog-button-confirm",
           )}
-        </Button>
+        </TelemetryButton>
       </div>
     </Dialog>
   );
@@ -381,6 +385,11 @@ export const EnterInfo = ({
                   type={type}
                   isInvalid={isInvalid}
                   value={value}
+                  onFocusChange={(isFocussed) => {
+                    if (!isFocussed && !value) {
+                      setInvalidInputs([...invalidInputs, key]);
+                    }
+                  }}
                   onFocus={() => {
                     recordTelemetry("field", "focus", {
                       field_id: key,
@@ -404,6 +413,12 @@ export const EnterInfo = ({
           )}
           <Button
             {...confirmDialogTrigger.triggerProps}
+            // react-aria sets `aria-expanded`, which causes this to be
+            // announced as "collapsed", rather than opening a dialog. By
+            // setting aria-haspopup, this interaction is clearer. See also:
+            // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-haspopup
+            aria-haspopup="dialog"
+            aria-expanded={undefined}
             variant="primary"
             type="submit"
             className={styles.startButton}

@@ -148,8 +148,8 @@ security-recommendation-ip-title = Eiporu VPN nde rekoñemiverã
 # $num_breaches is the number of breaches where the IP address was found.
 security-recommendation-ip-summary =
     { $num_breaches ->
-        [one] Ne IP kundaharenda ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
-       *[other] Ne IP kundaharenda ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
+        [one] Ne IP kundaharape ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
+       *[other] Ne IP kundaharape ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
     }
 
 # Leaked Passwords
