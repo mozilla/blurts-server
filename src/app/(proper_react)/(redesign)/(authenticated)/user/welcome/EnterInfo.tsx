@@ -284,22 +284,15 @@ export const EnterInfo = ({
         </dl>
       </div>
       <div className={styles.stepButtonWrapper}>
-        <TelemetryButton
+        <Button
           variant="secondary"
           onPress={() => confirmDialogState.close()}
           className={styles.startButton}
-          event={{
-            module: "button",
-            name: "click",
-            data: {
-              button_id: "edit_free_scan",
-            },
-          }}
         >
           {l10n.getString(
             "onboarding-enter-details-comfirm-dialog-button-edit",
           )}
-        </TelemetryButton>
+        </Button>
         <TelemetryButton
           variant="primary"
           // TODO: Figure out how to intercept the fetch request in a test:
@@ -418,7 +411,7 @@ export const EnterInfo = ({
               {l10n.getString("onboarding-steps-enter-info-back")}
             </Button>
           )}
-          <TelemetryButton
+          <Button
             {...confirmDialogTrigger.triggerProps}
             // react-aria sets `aria-expanded`, which causes this to be
             // announced as "collapsed", rather than opening a dialog. By
@@ -429,16 +422,9 @@ export const EnterInfo = ({
             variant="primary"
             type="submit"
             className={styles.startButton}
-            event={{
-              module: "popup",
-              name: "view",
-              data: {
-                popup_id: "enter_scan_info_confirmation_modal",
-              },
-            }}
           >
             {l10n.getString("onboarding-steps-find-exposures-label")}
-          </TelemetryButton>
+          </Button>
         </div>
       </form>
 
