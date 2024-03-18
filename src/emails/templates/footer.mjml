@@ -1,0 +1,10 @@
+<mj-section>
+  <mj-column>
+    <mj-divider/>
+    <mj-text align="center">
+      <span data-l10n-id="questions-about-monitor">Questions about Mozilla Monitor?</span>
+      <span data=l10n-id="">Visit our <a href="#">Support Center</a> for help
+    </mj-text>
+    <mj-divider/>
+  </mj-column>
+</mj-section>

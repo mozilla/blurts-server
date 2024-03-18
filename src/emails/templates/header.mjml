@@ -1,0 +1,5 @@
+<mj-section>
+  <mj-column>
+    <mj-image width="200px" src="http://localhost:6060/images/email/monitor-logo-bg-light.png"></mj-image>
+  </mj-column>
+</mj-section>

@@ -1,0 +1,29 @@
+<mjml>
+  <mj-body>
+    <mj-include path="../header.mjml" />
+    <mj-section>
+      <mj-column>
+        <mj-text>
+          <h1 data-l10n-id="data-breach-header-1">You've been in a new data breach</h1>
+          <span data-l10n-id="data-breach-header-2">We'll guide you through the steps you need to take to fix it</span>
+        </mj-text>
+      </mj-column>
+      <mj-column>
+        <mj-image src="http://localhost:6060/images/email/background.png"/>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-text align="center">
+          <p data-l10n-id="data-breach-body-1">On March 18 2024, we detected a new data breach on Example. Your email and social security number were included in this breach.</p>
+          <p data-l10n-id="data-breach-body-2">Fixing this breach requires action, since you may need to access your accounts.</p>
+          <p data-l10n-id="data-breach-body-3">We'll guide you step by step on what you need to do.</p>
+        </mj-text>
+        <mj-button>
+          <span data-l10n-id="lets-fix-it-cta-btn">Let's Fix it</span>
+        </mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-include path="../footer.mjml" />
+  </mj-body>
+</mjml>
