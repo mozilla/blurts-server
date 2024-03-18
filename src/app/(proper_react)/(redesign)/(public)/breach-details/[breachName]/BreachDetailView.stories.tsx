@@ -23,7 +23,7 @@ const meta: Meta<typeof BreachDetailsView> = {
 export default meta;
 type Story = StoryObj<typeof BreachDetailsView>;
 
-export const LandingUs: Story = {
+export const BreachDetailViewStory: Story = {
   name: "Breach listing",
   args: {
     breach: createRandomHibpListing(),
