@@ -631,7 +631,7 @@ it("shows the account deletion button if the user has Plus", () => {
     name: "Delete ⁨Monitor⁩ account",
   });
   const accountDeletionDescription = screen.getByText(
-    "This will permanently delete your ⁨Monitor⁩ account and immediately end your paid ⁨Monitor Plus⁩ subscription.",
+    "This will delete your ⁨Monitor⁩ account and immediately end your paid ⁨Monitor Plus⁩ subscription.",
   );
 
   expect(accountDeletionHeading).toBeInTheDocument();
@@ -672,10 +672,10 @@ it("warns about the consequences before deleting a Plus user's account", async (
 
   const dialog = screen.getByRole("dialog");
   const consequencesWarningP1 = within(dialog).getByText(
-    "All of your ⁨Monitor⁩ account information will be deleted and we’ll no longer monitor for new data breaches or data broker exposures. This will not delete your ⁨Mozilla⁩ account.",
+    "All of your ⁨Monitor⁩ account information will be deleted and we’ll no longer monitor for new data breaches or data broker exposures. This will not delete your ⁨Mozilla account⁩.",
   );
   const consequencesWarningP2 = within(dialog).getByText(
-    "Your paid subscription will end today and you won’t be prorated for the remainder of your subscription.",
+    "You’ll regain access to ⁨Monitor Plus⁩ features if you sign back in during any remaining time of your paid subscription.",
   );
 
   expect(consequencesWarningP1).toBeInTheDocument();

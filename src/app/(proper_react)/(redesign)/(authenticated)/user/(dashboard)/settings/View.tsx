@@ -148,7 +148,7 @@ export const SettingsView = (props: Props) => {
                     </h3>
                     <p>
                       {l10n.getString(
-                        "settings-delete-monitor-plus-account-description",
+                        "settings-delete-monitor-plus-account-description-2",
                       )}
                     </p>
                     <SettingsConfirmationDialog
@@ -157,7 +157,7 @@ export const SettingsView = (props: Props) => {
                         "settings-delete-monitor-plus-account-cta-label",
                       )}
                       title={l10n.getString(
-                        "settings-delete-monitor-plus-account-dialog-title",
+                        "settings-delete-monitor-plus-account-dialog-title-2",
                       )}
                       illustration={
                         <Image src={AddEmailDialogIllustration} alt="" />
@@ -169,12 +169,12 @@ export const SettingsView = (props: Props) => {
                       <div className={styles.dialogLead}>
                         <p>
                           {l10n.getString(
-                            "settings-delete-monitor-plus-account-dialog-lead-p1",
+                            "settings-delete-monitor-plus-account-dialog-lead-p1-2",
                           )}
                         </p>
                         <p>
                           {l10n.getString(
-                            "settings-delete-monitor-plus-account-dialog-lead-p2",
+                            "settings-delete-monitor-plus-account-dialog-lead-p2-2",
                           )}
                         </p>
                       </div>
