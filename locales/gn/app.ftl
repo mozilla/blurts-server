@@ -46,6 +46,7 @@ user-add-duplicate-email = Ko ñanduti veve ojuajúma { -product-name } rehe.
 user-add-duplicate-email-part-2 = Eho nde { $preferencesLink }-pe ehechajey hag̃ua { $userEmail } rekotee.
 user-add-verification-email-just-sent = Ndereguerahaukakuaái ambue ñanduti veve rechajeyha ipya’éva. Eha’ãjey ag̃ave.
 user-add-unknown-error = Oĩ osẽvaíva embojuajúvo ambue ñanduti veve kundaharape. Ikatu eha’ãjey ag̃ave.
+user-delete-unknown-error = Oĩ osẽvaíva embojuajúvo ambue ñanduti veve kundaharape. Ikatu eha’ãjey ag̃ave.
 error-headline = Javy
 user-verify-token-error = Oñekotevẽ token jehechajeyrã.
 user-verify-email-report-subject = Ne marandu { -product-name } rehe
