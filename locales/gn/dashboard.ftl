@@ -100,5 +100,8 @@ dashboard-top-banner-monitor-more-cta = Roma’ẽag̃uíta hetave ñanduti vev�
 # About Exposure Statuses Modal
 
 modal-exposure-status-title = Jehechauka rekotee rehegua
+modal-exposure-status-description-all =
+    Roheka ñembyaikua opaite mba’ekuaarã ñembogua ojekuaávape.
+    Ne ñembyaikua orekokuaa peteĩva ko’ã tekotee:
 modal-exposure-status-action-needed = <b>Jeku’e tekotevẽva</b> he’ise reku’eha ko’ág̃a ha ejapo tekotevẽva emoĩporã hag̃ua.
 modal-exposure-status-fixed = <b>Oĩporãma</b> he’ise pe jehechaukakue oĩporãma ha natekotevẽvéima ejapo mba’evete.
