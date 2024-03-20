@@ -2,6 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+// `getAllPriorityDataClasses` contains hardly any logic and can probably do
+// with a refactoring too, given its unused arguments.
+/* c8 ignore start */
+
 // It's unclear why this function has unused parameters, but since they're
 // positional parameters, removing them risks breaking things:
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -253,3 +257,4 @@ export function getAllPriorityDataClasses (_isUserBrowserFirefox = false, isUser
     }
   }
 }
+/* c8 ignore stop */

@@ -26,16 +26,20 @@ fix-flow-celebration-high-risk-description-in-progress = Ejapóvo ko tembiapo er
 fix-flow-celebration-high-risk-description-done = Ejapóvo ko tembiapo erekuaa hetaha, hákatu ejapomanteva’erã eime hag̃ua tekorosãme.
 fix-flow-celebration-high-risk-description-next-passwords = Ko’ág̃a ñamoĩporãta ne ñe’ẽñemi ivaikuaáva.
 fix-flow-celebration-high-risk-description-next-security-questions = Ko’ág̃a ñamoĩporãta umi porandu tekorosãrã ivaikuaáva.
+fix-flow-celebration-high-risk-description-next-security-recommendations = Ko’ág̃a guive, rome’ẽta ndéve tekorosãrã rape rohecha rire ne mba’ekuaarã oñembyaikuaahague.
 
 ## Leaked passwords and security questions flow
 
 fix-flow-celebration-leaked-passwords-title = ¡Ne ñe’ẽñemi ko’ág̃a oñemo’ãma!
 fix-flow-celebration-security-questions-title = ¡Ne porandu tekorosãrãva oñemo’ãma!
 fix-flow-celebration-leaked-passwords-description-next-security-questions = Ko’ág̃a jahecha ha ñambohekopyahúta umi porandu tekorosãrã ivaikuaáva.
+fix-flow-celebration-leaked-passwords-description-next-security-recommendations = Ko’ág̃a guive, rome’ẽta ndéve tekorosãrã rape rohecha rire ne mba’ekuaarã oñembyaikuaahague.
+fix-flow-celebration-leaked-passwords-description-next-dashboard = ¡Ejapo porã! Eg̃uahẽma hu’ãitépe. Ikatu ehecha oimeraẽva mba’eporu tembiaporã ha ehapykueho nde jeku’e techamemeha rupápe.
 
 ## Security recommendations flow
 
 fix-flow-celebration-security-recommendations-title = ¡Emyanyhẽmapa opaite ne ñemoñe’ẽporã!
+fix-flow-celebration-security-recommendations-description-next-dashboard = ¡Ejapo porã! Eg̃uahẽma hu’ãitépe. Ikatu ehecha oimeraẽva mba’eporu tembiaporã ha ehapykueho nde jeku’e techamemeha rupápe.
 
 # High Risk Data Breaches
 
@@ -148,8 +152,8 @@ security-recommendation-ip-title = Eiporu VPN nde rekoñemiverã
 # $num_breaches is the number of breaches where the IP address was found.
 security-recommendation-ip-summary =
     { $num_breaches ->
-        [one] Ne IP kundaharenda ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
-       *[other] Ne IP kundaharenda ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
+        [one] Ne IP kundaharape ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
+       *[other] Ne IP kundaharape ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
     }
 
 # Leaked Passwords

@@ -29,7 +29,7 @@ exposure-chart-caption = Ko ta’ãnga ohechauka mba’eichaitépa ne marandu o�
 exposure-chart-caption-fixed = Ko ta’ãnga ohechauka mboyjeýpa jehechauka oñemoĩporã ({ $total_fixed_exposures_num } { $total_exposures_num }) mba’e
 exposure-chart-returning-user-upgrade-prompt = Pe óga, pehẽnguekuéra ha ambue mba’ekuaarã ndoikéi gueteri.
 exposure-chart-returning-user-upgrade-prompt-cta = Emoha’ãnga reiete
-exposure-chart-scan-in-progress-prompt = <b>Oñemoha’ãngahína:</b> kundaharenda, pehẽnguekuéra ha hetave ndoikéi gueteri.
+exposure-chart-scan-in-progress-prompt = <b>Oñemoha’ãngahína:</b> kundaharape, pehẽnguekuéra ha hetave ndoikéi gueteri.
 modal-active-number-of-exposures-title = Mboyjeýmapa ipapapy jehechauka hendýva
 modal-active-number-of-exposures-part-three-all = Oñemoĩporã vove, oñembojuajúta nde papapy jehechapy oĩporãmava kuatiarogue Moĩporãhápe.
 modal-fixed-number-of-exposures-title = Mboyjeýmapa ipapapy jehechauka opytáva
@@ -100,5 +100,8 @@ dashboard-top-banner-monitor-more-cta = Roma’ẽag̃uíta hetave ñanduti vev�
 # About Exposure Statuses Modal
 
 modal-exposure-status-title = Jehechauka rekotee rehegua
+modal-exposure-status-description-all =
+    Roheka ñembyaikua opaite mba’ekuaarã ñembogua ojekuaávape.
+    Ne ñembyaikua orekokuaa peteĩva ko’ã tekotee:
 modal-exposure-status-action-needed = <b>Jeku’e tekotevẽva</b> he’ise reku’eha ko’ág̃a ha ejapo tekotevẽva emoĩporã hag̃ua.
 modal-exposure-status-fixed = <b>Oĩporãma</b> he’ise pe jehechaukakue oĩporãma ha natekotevẽvéima ejapo mba’evete.
