@@ -10,6 +10,7 @@
 		"eamodio.gitlens",
 		"Orta.vscode-jest",
 		"macabeus.vscode-fluent",
+		"mjmlio.vscode-mjml",
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": []

@@ -1,0 +1,13 @@
+<mjml>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-text>
+          <h1><%= data-breach-header-1 %></h1>
+          <p><%= data-breach-body-1 %></p>
+          <p><%= questions-body-2 %></p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
