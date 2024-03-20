@@ -2,8 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getOneL10nBundleInNodeContext, getOneL10nSync } from "../mockL10n";
+import {
+  getOneL10nBundleInNodeContext,
+  getSpecificL10nSync,
+} from "../mockL10n";
 
 export const getL10nBundles = getOneL10nBundleInNodeContext;
 
-export const getL10n = getOneL10nSync;
+export const getL10n = getSpecificL10nSync;
