@@ -63,6 +63,7 @@ settings-delete-monitor-plus-account-description = 將永久刪除您的 { -bran
 settings-delete-monitor-plus-account-cta-label = 刪除帳號
 settings-delete-monitor-plus-account-dialog-title = 將永久刪除您的 { -brand-monitor } 帳號
 settings-delete-monitor-plus-account-dialog-lead-p1 = 將刪除您所有的 { -brand-monitor } 帳號資訊，我們也將不再監控這些帳號相關的資料外洩事件或資料交換曝光事件，但這個動作不會刪除您的 { -brand-mozilla } 帳號。
+settings-delete-monitor-plus-account-dialog-lead-p2 = 您的付費訂閱將於今日結束，且不會退回剩餘天數的訂閱費用。
 settings-delete-monitor-plus-account-dialog-cta-label = 刪除帳號
 settings-delete-monitor-plus-account-dialog-cancel-button-label = 算了，帶我回去
 settings-delete-monitor-account-confirmation-toast-label = 已永久刪除您的 { -brand-monitor } 帳號。
