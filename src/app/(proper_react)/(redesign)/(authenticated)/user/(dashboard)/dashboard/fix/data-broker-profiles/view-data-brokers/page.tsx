@@ -18,16 +18,20 @@ export default async function ViewDataBrokers() {
   const session = await getServerSession();
 
   if (!session?.user?.subscriber?.id) {
-    redirect("/user/dashboard/");
+    redirect("/user/dashboard");
   }
 
+  const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const latestScan = await getLatestOnerepScanResults(profileId);
   const data: StepDeterminationData = {
-    countryCode: getCountryCode(headers()),
+    countryCode,
     user: session.user,
     latestScanData: latestScan ?? null,
-    subscriberBreaches: await getSubscriberBreaches(session.user),
+    subscriberBreaches: await getSubscriberBreaches({
+      user: session.user,
+      countryCode,
+    }),
   };
   const subscriberEmails = await getSubscriberEmails(session.user);
 

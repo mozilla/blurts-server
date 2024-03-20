@@ -55,6 +55,26 @@ settings-deactivate-account-title = Nonaktifkan akun
 settings-deactivate-account-info-2 = Anda dapat menonaktifkan { -product-short-name } dengan menghapus { -brand-mozilla-account } Anda.
 settings-fxa-link-label-3 = Buka pengaturan { -brand-mozilla-account }
 
+## Delete Monitor account
+
+settings-delete-monitor-free-account-title = Hapus akun { -brand-monitor }
+settings-delete-monitor-free-account-description = Ini akan menghapus akun { -brand-monitor } Anda secara permanen dan mematikan semua notifikasi.
+settings-delete-monitor-free-account-cta-label = Hapus akun
+settings-delete-monitor-free-account-dialog-title = Akun { -brand-monitor } Anda akan dihapus secara permanen
+settings-delete-monitor-free-account-dialog-lead = Semua informasi akun { -brand-monitor } Anda akan dihapus dan kami tidak akan lagi memantau kebocoran data baru. Ini tidak akan menghapus akun { -brand-mozilla } Anda.
+settings-delete-monitor-free-account-dialog-cta-label = Hapus akun
+settings-delete-monitor-free-account-dialog-cancel-button-label = Sudahlah, bawa aku kembali
+settings-delete-monitor-plus-account-title = Hapus akun { -brand-monitor }
+settings-delete-monitor-plus-account-description = Ini akan menghapus akun { -brand-monitor } Anda secara permanen dan segera mengakhiri langganan { -brand-monitor-plus } berbayar Anda.
+settings-delete-monitor-plus-account-cta-label = Hapus akun
+settings-delete-monitor-plus-account-dialog-title = Akun { -brand-monitor } Anda akan dihapus secara permanen
+settings-delete-monitor-plus-account-dialog-lead-p1 = Semua informasi akun { -brand-monitor } Anda akan dihapus dan kami tidak akan lagi memantau kebocoran data baru atau eksposur broker data. Ini tidak akan menghapus akun { -brand-mozilla } Anda.
+settings-delete-monitor-plus-account-dialog-lead-p2 = Langganan berbayar Anda akan berakhir hari ini dan Anda tidak akan diprorata untuk sisa langganan Anda.
+settings-delete-monitor-plus-account-dialog-cta-label = Hapus akun
+settings-delete-monitor-plus-account-dialog-cancel-button-label = Sudahlah, bawa aku kembali
+settings-delete-monitor-account-confirmation-toast-label = Akun { -brand-monitor } Anda sekarang telah dihapus secara permanen.
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Tutup
+
 ## Add email dialog
 
 settings-email-dialog-title = Tambahkan alamat surel lainnya

@@ -23,13 +23,11 @@ exposure-card-credit-card = Credit Card
 exposure-card-password = Password
 exposure-card-ip-address = IP Address
 exposure-card-other = Other
-exposure-card-description-info-for-sale-part-one = This site is selling and publishing <data_broker_link>details about you.</data_broker_link>
-exposure-card-description-info-for-sale-part-two = Remove this profile to protect your privacy.
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-part-one = Your information was exposed in the <data_breach_link>{ $data_breach_company } data breach on { $data_breach_date }.</data_breach_link>
-exposure-card-description-data-breach-part-two = We’ll walk you through the steps to fix it.
+exposure-card-description-data-breach-action-needed = Your information was exposed in the <data_breach_link>{ $data_breach_company } data breach on { $data_breach_date }.</data_breach_link> We’ll walk you through the steps to fix it.
+exposure-card-description-data-breach-fixed = You’ve taken the steps needed to fix <data_breach_link>this breach</data_breach_link>. We’ll continually monitor for data breaches and alert you of any new exposures.
 exposure-card-your-exposed-info = Your exposed info:
 exposure-card-exposure-type-data-broker = Info for sale
 exposure-card-exposure-type-data-breach = Data breach

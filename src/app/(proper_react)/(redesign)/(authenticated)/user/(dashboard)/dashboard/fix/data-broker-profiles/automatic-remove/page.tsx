@@ -29,20 +29,24 @@ export default async function AutomaticRemovePage() {
   const session = await getServerSession();
 
   if (!session?.user?.subscriber?.id) {
-    redirect("/user/dashboard/");
+    redirect("/user/dashboard");
   }
 
   const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
     session.user.subscriber.id,
   );
 
+  const countryCode = getCountryCode(headers());
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const scanData = await getLatestOnerepScanResults(profileId);
-  const subBreaches = await getSubscriberBreaches(session.user);
+  const subBreaches = await getSubscriberBreaches({
+    user: session.user,
+    countryCode,
+  });
   const subscriberEmails = await getSubscriberEmails(session.user);
 
   const data: StepDeterminationData = {
-    countryCode: getCountryCode(headers()),
+    countryCode,
     latestScanData: scanData,
     subscriberBreaches: subBreaches,
     user: session.user,

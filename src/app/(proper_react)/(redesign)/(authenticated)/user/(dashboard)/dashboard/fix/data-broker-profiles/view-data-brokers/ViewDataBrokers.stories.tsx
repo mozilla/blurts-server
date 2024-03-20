@@ -110,7 +110,7 @@ const ViewWrapper = (props: ViewWrapperProps) => {
 };
 
 const meta: Meta<typeof ViewWrapper> = {
-  title: "Pages/Guided resolution/1b. Scan results",
+  title: "Pages/Logged in/Guided resolution/1b. Scan results",
   component: ViewWrapper,
   argTypes: {
     brokers: {

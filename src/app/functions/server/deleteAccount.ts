@@ -10,6 +10,7 @@ import {
 } from "../../../db/tables/subscribers";
 import { deactivateProfile } from "./onerep";
 import { SerializedSubscriber } from "../../../next-auth";
+import { deleteSubscription } from "../../../utils/fxa";
 
 export async function deleteAccount(
   subscriber: SubscriberRow | SerializedSubscriber,
@@ -21,6 +22,7 @@ export async function deleteAccount(
   // get profile id
   const oneRepProfileId = await getOnerepProfileId(subscriber.id);
   if (oneRepProfileId) {
+    // try to deactivate onerep profile
     try {
       await deactivateProfile(oneRepProfileId);
     } catch (ex) {
@@ -37,6 +39,22 @@ export async function deleteAccount(
     logger.info("deactivated_onerep_profile", {
       subscriber_id: subscriber.id,
     });
+
+    // try to unsubscribe from subplat
+    if (subscriber.fxa_access_token) {
+      try {
+        const isDeleted = await deleteSubscription(subscriber.fxa_access_token);
+        logger.info("unsubscribe_from_subplat", {
+          subscriber_id: subscriber.id,
+          success: isDeleted,
+        });
+      } catch (ex) {
+        logger.error("unsubscribe_from_subplat", {
+          subscriber_id: subscriber.id,
+          exception: ex,
+        });
+      }
+    }
   }
 
   // delete user events only have keys. Keys point to empty objects

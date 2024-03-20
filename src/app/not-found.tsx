@@ -4,7 +4,7 @@
 
 import Image from "next/image";
 import styles from "./not-found.module.scss";
-import Illustration from "../client/images/404.svg";
+import Illustration from "./(proper_react)/images/404.svg";
 import { getL10n } from "./functions/server/l10n";
 import { BackButton } from "./components/client/BackButton";
 

@@ -18,6 +18,7 @@ import {
   SubscriberBreach,
 } from "../utils/subscriberBreaches";
 import { Session } from "next-auth";
+import { HibpLikeDbBreach } from "../utils/hibp";
 
 // Setting this to a constant value produces the same result when the same methods
 // with the same version of faker are called.
@@ -112,11 +113,14 @@ export function createRandomBreach(
 
   faker.seed(options.fakerSeed);
   const isResolved = options.isResolved ?? faker.datatype.boolean();
+  const dataClassesEffected = options.dataClassesEffected ?? [];
+  const resolvedDataClasses = isResolved ? dataClasses : [];
+
   return {
     addedDate: options.addedDate ?? faker.date.recent(),
     breachDate: faker.date.recent(),
     dataClasses: dataClasses,
-    resolvedDataClasses: isResolved ? dataClasses : [],
+    resolvedDataClasses,
     description: faker.word.words(),
     domain: faker.internet.domainName(),
     id: faker.number.int(),
@@ -125,8 +129,8 @@ export function createRandomBreach(
     name: faker.word.noun(),
     title: faker.word.noun(),
     emailsAffected: Array.from({ length: 3 }, () => faker.internet.email()),
-    isResolved: isResolved,
-    dataClassesEffected: options.dataClassesEffected ?? [],
+    isResolved,
+    dataClassesEffected,
   };
 }
 
@@ -141,5 +145,53 @@ export function createUserWithPremiumSubscription(): Session["user"] {
       avatarDefault: true,
       subscriptions: ["monitor"],
     },
+  };
+}
+
+export function createRandomHibpListing(
+  fixedData: Partial<HibpLikeDbBreach> = {},
+): HibpLikeDbBreach {
+  const breachDate = faker.date.recent({ days: 1000 });
+  const addedDate = faker.date.between({ from: breachDate, to: Date.now() });
+  const title = faker.company.name();
+  const name = title.replaceAll(" ", "");
+  const possibleDataClasses = [
+    ...Object.values(BreachDataTypes).filter(
+      (dataClass) => dataClass !== "general",
+    ),
+    // `BreachDataTypes` only enumers our priority data types, so ensure that,
+    // like real breaches, the mock data sometimes also includes breached data
+    // classes that are not part of our high-priority ones:
+    "astrological-signs",
+    "cryptocurrency-wallet-hashes",
+    "device-serial-numbers",
+    "ethnicities",
+    "hiv-statuses",
+  ];
+  return {
+    AddedDate: addedDate,
+    BreachDate: breachDate.toISOString(),
+    DataClasses: faker.helpers.arrayElements(possibleDataClasses),
+    Description: faker.lorem.sentence(),
+    Domain: faker.internet.domainName(),
+    Id: faker.number.int(),
+    IsFabricated: faker.datatype.boolean(),
+    IsMalware: faker.datatype.boolean(),
+    IsRetired: faker.datatype.boolean(),
+    IsSensitive: faker.datatype.boolean(),
+    IsSpamList: faker.datatype.boolean(),
+    IsVerified: faker.datatype.boolean(),
+    LogoPath: "unused",
+    ModifiedDate: faker.date.between({ from: addedDate, to: Date.now() }),
+    Name: name,
+    PwnCount: faker.number.int(),
+    Title: title,
+    FaviconUrl: faker.helpers.maybe(() =>
+      faker.image.url({
+        height: faker.number.int({ min: 20, max: 36 }),
+        width: faker.number.int({ min: 20, max: 36 }),
+      }),
+    ),
+    ...fixedData,
   };
 }

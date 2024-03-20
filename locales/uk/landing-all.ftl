@@ -7,9 +7,9 @@ landing-all-hero-title = Дізнайтеся, де розкрита ваша о
 landing-all-hero-lead = Ми перевіряємо випадки витоку даних, щоб дізнатися, чи було розкрито вашу інформацію, і пропонуємо вам способи відновлення контролю.
 landing-all-hero-emailform-input-placeholder = yourname@example.com
 landing-all-hero-emailform-input-label = Введіть свою адресу електронної пошти, щоб перевірити наявність витоків даних.
-landing-all-hero-emailform-submit-label = Скористайтеся безплатним скануванням
+landing-all-hero-emailform-submit-label = Перевірити безплатно
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
-landing-all-hero-image-chart-label = розкриття
+landing-all-hero-image-chart-label = розкриттів
 
 # Value Proposition
 

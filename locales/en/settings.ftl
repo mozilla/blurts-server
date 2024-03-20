@@ -68,15 +68,7 @@ settings-delete-monitor-free-account-dialog-title = Your { -brand-monitor } acco
 settings-delete-monitor-free-account-dialog-lead = All of your { -brand-monitor } account information will be deleted and we’ll no longer monitor for new data breaches. This will not delete your { -brand-mozilla } account.
 settings-delete-monitor-free-account-dialog-cta-label = Delete account
 settings-delete-monitor-free-account-dialog-cancel-button-label = Never mind, take me back
-settings-delete-monitor-plus-account-title = Delete { -brand-monitor } account
-settings-delete-monitor-plus-account-description = This will permanently delete your { -brand-monitor } account and immediately end your paid { -brand-monitor-plus } subscription.
-settings-delete-monitor-plus-account-cta-label = Delete account
-settings-delete-monitor-plus-account-dialog-title = Your { -brand-monitor } account will be permanently deleted
-settings-delete-monitor-plus-account-dialog-lead-p1 = All of your { -brand-monitor } account information will be deleted and we’ll no longer monitor for new data breaches or data broker exposures. This will not delete your { -brand-mozilla } account.
-settings-delete-monitor-plus-account-dialog-lead-p2 = Your paid subscription will end today and you won’t be prorated for the remainder of your subscription.
-settings-delete-monitor-plus-account-dialog-cta-label = Delete account
-settings-delete-monitor-plus-account-dialog-cancel-button-label = Never mind, take me back
-settings-delete-monitor-account-confirmation-toast-label = Your { -brand-monitor } account is now permanently deleted.
+settings-delete-monitor-account-confirmation-toast-label-2 = Your { -brand-monitor } account is now deleted.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Dismiss
 
 ## Add email dialog

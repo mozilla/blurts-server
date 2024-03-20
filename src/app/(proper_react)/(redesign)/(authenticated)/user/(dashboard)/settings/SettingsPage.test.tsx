@@ -7,11 +7,12 @@ import { render, screen, within } from "@testing-library/react";
 import { axe } from "jest-axe";
 import { Session } from "next-auth";
 import { userEvent } from "@testing-library/user-event";
+import type { EmailAddressRow } from "knex/types/tables";
 import { getOneL10nSync } from "../../../../../../functions/server/mockL10n";
 import { TestComponentWrapper } from "../../../../../../../TestComponentWrapper";
-import { EmailRow } from "../../../../../../../db/tables/emailAddresses";
 import { SerializedSubscriber } from "../../../../../../../next-auth";
 import { onAddEmail, onRemoveEmail } from "./actions";
+import { sanitizeEmailRow } from "../../../../../../functions/server/sanitizeEmailRow";
 
 const mockedSessionUpdate = jest.fn();
 const mockedRecordTelemetry = jest.fn();
@@ -57,19 +58,25 @@ const mockedUser: Session["user"] = {
     twoFactorAuthentication: false,
   },
 };
-const mockedSecondaryVerifiedEmail: EmailRow = {
+const mockedSecondaryVerifiedEmail: EmailAddressRow = {
   id: 1337,
   email: "secondary_verified@example.com",
   sha1: "arbitrary string",
   subscriber_id: subscriberId,
   verified: true,
+  created_at: new Date("1337-04-02T04:02:42.000Z"),
+  updated_at: new Date("1337-04-02T04:02:42.000Z"),
+  verification_token: "arbitrary_token",
 };
-const mockedSecondaryUnverifiedEmail: EmailRow = {
+const mockedSecondaryUnverifiedEmail: EmailAddressRow = {
   id: 1337,
   email: "secondary_unverified@example.com",
   sha1: "arbitrary string",
   subscriber_id: subscriberId,
   verified: false,
+  created_at: new Date("1337-04-02T04:02:42.000Z"),
+  updated_at: new Date("1337-04-02T04:02:42.000Z"),
+  verification_token: "arbitrary_token",
 };
 const mockedSubscriptionBillingAmount = {
   yearly: 13.37,
@@ -371,7 +378,9 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
   const removeButtons = screen.getAllByRole("button", { name: "Remove" });
   await user.click(removeButtons[0]);
 
-  expect(onRemoveEmail).toHaveBeenCalledWith(mockedSecondaryVerifiedEmail);
+  expect(onRemoveEmail).toHaveBeenCalledWith(
+    sanitizeEmailRow(mockedSecondaryVerifiedEmail),
+  );
 });
 
 it("hides the Plus cancellation link if the user doesn't have Plus", () => {
@@ -622,7 +631,7 @@ it("shows the account deletion button if the user has Plus", () => {
     name: "Delete ⁨Monitor⁩ account",
   });
   const accountDeletionDescription = screen.getByText(
-    "This will permanently delete your ⁨Monitor⁩ account and immediately end your paid ⁨Monitor Plus⁩ subscription.",
+    "This will delete your ⁨Monitor⁩ account and immediately end your paid ⁨Monitor Plus⁩ subscription.",
   );
 
   expect(accountDeletionHeading).toBeInTheDocument();
@@ -663,10 +672,10 @@ it("warns about the consequences before deleting a Plus user's account", async (
 
   const dialog = screen.getByRole("dialog");
   const consequencesWarningP1 = within(dialog).getByText(
-    "All of your ⁨Monitor⁩ account information will be deleted and we’ll no longer monitor for new data breaches or data broker exposures. This will not delete your ⁨Mozilla⁩ account.",
+    "All of your ⁨Monitor⁩ account information will be deleted and we’ll no longer monitor for new data breaches or data broker exposures. This will not delete your ⁨Mozilla account⁩.",
   );
   const consequencesWarningP2 = within(dialog).getByText(
-    "Your paid subscription will end today and you won’t be prorated for the remainder of your subscription.",
+    "You’ll regain access to ⁨Monitor Plus⁩ features if you sign back in during any remaining time of your paid subscription.",
   );
 
   expect(consequencesWarningP1).toBeInTheDocument();

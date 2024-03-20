@@ -23,7 +23,7 @@ export default async function WelcomeToPlusPage() {
 
   // Ensure user is logged in
   if (!checkSession(session) || !session?.user?.subscriber?.id) {
-    redirect("/user/dashboard/");
+    redirect("/user/dashboard");
   }
 
   // MNTOR-2594 - log any users that are on welcome-to-premium page but not subscribed.
@@ -36,15 +36,19 @@ export default async function WelcomeToPlusPage() {
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   if (profileId === null) {
     // If the user subscribed to Plus before running a scan, have them run one now:
-    redirect("/user/welcome/");
+    redirect("/user/welcome");
   }
 
   const scanData = await getLatestOnerepScanResults(profileId);
-  const subBreaches = await getSubscriberBreaches(session.user);
+  const countryCode = getCountryCode(headers());
+  const subBreaches = await getSubscriberBreaches({
+    user: session.user,
+    countryCode,
+  });
   const subscriberEmails = await getSubscriberEmails(session.user);
 
   const data: StepDeterminationData = {
-    countryCode: getCountryCode(headers()),
+    countryCode,
     latestScanData: scanData,
     subscriberBreaches: subBreaches,
     user: session.user,

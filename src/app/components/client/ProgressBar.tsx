@@ -6,6 +6,7 @@
 
 import { AriaProgressBarProps, useProgressBar } from "react-aria";
 import styles from "./ProgressBar.module.scss";
+import { useL10n } from "../../hooks/l10n";
 
 export interface ProgressBarProps extends AriaProgressBarProps {
   showValueLabel?: boolean;
@@ -21,9 +22,14 @@ function ProgressBar(props: ProgressBarProps) {
   } = props;
   const { progressBarProps, labelProps } = useProgressBar(props);
   const percentage = (value - minValue) / (maxValue - minValue);
+  const l10n = useL10n();
 
   return (
-    <div {...progressBarProps} className={styles.progressContainer}>
+    <div
+      {...progressBarProps}
+      className={styles.progressContainer}
+      aria-label={l10n.getString("onboarding-find-exposures-progress-label")}
+    >
       <div className={styles.labelContainer}>
         {label && <span {...labelProps}>{label}</span>}
       </div>
