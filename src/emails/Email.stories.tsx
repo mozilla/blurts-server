@@ -5,7 +5,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ExtendedReactLocalization } from "../app/hooks/l10n";
 import mjml2html from "mjml-browser";
-import { getOneL10nSync } from "../app/functions/server/mockL10n";
+import { getSpecificL10nSync } from "../app/functions/server/mockL10n";
 import { render } from "ejs";
 
 export type Props = {
@@ -58,10 +58,14 @@ const data = {
 const meta: Meta<typeof Email> = {
   title: "Email",
   component: () => (
-    <Email l10n={getOneL10nSync("en")} template="breach-alert" data={data} />
+    <Email
+      l10n={getSpecificL10nSync("en")}
+      template="breach-alert"
+      data={data}
+    />
   ),
   args: {
-    l10n: getOneL10nSync(),
+    l10n: getSpecificL10nSync(),
   },
 };
 
