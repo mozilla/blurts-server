@@ -66,15 +66,7 @@ settings-delete-monitor-free-account-dialog-title = Ihr { -brand-monitor }-Konto
 settings-delete-monitor-free-account-dialog-lead = Alle Ihre { -brand-monitor }-Kontodaten werden gelöscht und es findet keine Überwachung auf neue Datenlecks mehr statt. Ihr { -brand-mozilla }-Konto wird dadurch nicht gelöscht.
 settings-delete-monitor-free-account-dialog-cta-label = Konto löschen
 settings-delete-monitor-free-account-dialog-cancel-button-label = Ich habe es mir anders überlegt – zurück zur vorherigen Seite
-settings-delete-monitor-plus-account-title = { -brand-monitor }-Konto löschen
-settings-delete-monitor-plus-account-description = Dies löscht Ihr { -brand-monitor }-Konto dauerhaft und Ihr bezahltes { -brand-monitor-plus }-Abonnement endet sofort.
-settings-delete-monitor-plus-account-cta-label = Konto löschen
-settings-delete-monitor-plus-account-dialog-title = Ihr { -brand-monitor }-Konto wird dauerhaft gelöscht
-settings-delete-monitor-plus-account-dialog-lead-p1 = Alle Ihre { -brand-monitor }-Kontodaten werden gelöscht und es findet keine Überwachung auf neue Datenlecks oder ein Aufdecken von Datenhändlern mehr statt. Ihr { -brand-mozilla }-Konto wird dadurch nicht gelöscht.
-settings-delete-monitor-plus-account-dialog-lead-p2 = Ihr kostenpflichtiges Abonnement endet heute und die verbleibende Dauer Ihres Abonnements wird nicht angerechnet.
-settings-delete-monitor-plus-account-dialog-cta-label = Konto löschen
-settings-delete-monitor-plus-account-dialog-cancel-button-label = Ich habe es mir anders überlegt – zurück zur vorherigen Seite
-settings-delete-monitor-account-confirmation-toast-label = Ihr { -brand-monitor }-Konto wurde jetzt dauerhaft gelöscht.
+settings-delete-monitor-account-confirmation-toast-label-2 = Ihr { -brand-monitor }-Konto ist jetzt gelöscht.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Schließen
 
 ## Add email dialog

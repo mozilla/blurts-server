@@ -2,8 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Bentangkan
-chevron-up-alt = Ciutkan
+chevron-alt = Detail eksposur
 exposure-card-exposure-type = Jenis paparan
 exposure-card-date-found = Tanggal pemaparan
 

@@ -66,15 +66,7 @@ settings-delete-monitor-free-account-dialog-title = Votre compte { -brand-monito
 settings-delete-monitor-free-account-dialog-lead = Toutes les informations de votre compte { -brand-monitor } seront supprimées et nous ne surveillerons plus aucune nouvelle fuite de données. Cette action ne supprimera pas votre compte { -brand-mozilla }.
 settings-delete-monitor-free-account-dialog-cta-label = Supprimer mon compte
 settings-delete-monitor-free-account-dialog-cancel-button-label = J’ai changé d’avis, revenir en arrière
-settings-delete-monitor-plus-account-title = Supprimer le compte { -brand-monitor }
-settings-delete-monitor-plus-account-description = Cette action supprimera définitivement votre compte { -brand-monitor } et mettra fin immédiatement à votre abonnement payant à { -brand-monitor-plus }.
-settings-delete-monitor-plus-account-cta-label = Supprimer mon compte
-settings-delete-monitor-plus-account-dialog-title = Votre compte { -brand-monitor } sera supprimé définitivement
-settings-delete-monitor-plus-account-dialog-lead-p1 = Toutes les informations de votre compte { -brand-monitor } seront supprimées, et nous ne surveillerons plus les nouvelles fuites de données ni l’apparition de vos informations chez les courtiers en données. Cette action ne supprimera pas votre compte { -brand-mozilla }.
-settings-delete-monitor-plus-account-dialog-lead-p2 = Votre abonnement payant se terminera aujourd’hui et vous ne serez pas facturé·e au prorata pour le reste de votre abonnement.
-settings-delete-monitor-plus-account-dialog-cta-label = Supprimer mon compte
-settings-delete-monitor-plus-account-dialog-cancel-button-label = J’ai changé d’avis, revenir en arrière
-settings-delete-monitor-account-confirmation-toast-label = Votre compte { -brand-monitor } a été supprimé définitivement.
+settings-delete-monitor-account-confirmation-toast-label-2 = Votre compte { -brand-monitor } a été supprimé.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Fermer
 
 ## Add email dialog
