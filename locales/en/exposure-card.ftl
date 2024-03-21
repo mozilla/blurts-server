@@ -19,6 +19,7 @@ exposure-card-family-members = Family members
 exposure-card-email = Email
 exposure-card-phone-number = Phone number
 exposure-card-address = Address
+# Unused
 exposure-card-credit-card = Credit Card
 exposure-card-password = Password
 exposure-card-ip-address = IP Address
@@ -34,7 +35,9 @@ exposure-card-exposure-type-data-breach = Data breach
 exposure-card-cta = Fix all exposures
 exposure-card-label-company-logo = Company logo
 exposure-card-label-company = Company
+# Unused
 exposure-card-label-exposure-type = Exposure type
+# Unused
 exposure-card-label-date-found = Date found
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Status

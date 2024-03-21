@@ -13,7 +13,9 @@
 -product-name-vpn = Mozilla VPN
 
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
+# Unused
 firefox-monitor-report = { -product-name } Report
+# Unused
 report-date = Report Date:
 email-address = Email Address:
 
@@ -32,6 +34,7 @@ email-footer-blurb = You’re receiving this email because you signed up for { -
 
 # This string appears in the footer of verification emails. { $faqLink } is a link
 # to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+# Unused
 email-verify-footer-copy = You’re receiving this email because you signed up for { -product-name } alerts.
   This is an automated email. For support, visit { $faqLink }.
 
@@ -39,25 +42,31 @@ email-verify-footer-copy = You’re receiving this email because you signed up f
 verify-email-cta = Verify Email
 
 # Button text
+# Unused
 see-all-breaches = See All Breaches
 
 # Headline of verification email
 email-link-expires = This link expires in 24 hours
+# Unused
 email-verify-blurb = Verify your email to add it to { -product-name } and sign up for breach alerts.
 
 # Email headline
+# Unused
 email-found-breaches-hl = Here’s your summary of past data breaches
 
 ## Variables:
 ##   $userEmail (string) - User email address
 
 # Email headline
+# Unused
 email-breach-summary-for-email = Breach summary for { $userEmail }
 
 # Email headline
+# Unused
 email-no-breaches-hl = { $userEmail } appeared in 0 known data breaches
 
 # Email headline
+# Unused
 email-alert-hl = { $userEmail } appeared in a new data breach
 
 ##
@@ -73,14 +82,17 @@ email-subject-verify = Verify your email for { -product-name }
 
 # Variables:
 #   $fxmLink (string) - Link to Firefox Monitor that uses the text from { -product-name }.
+# Unused
 learn-more-about-fxm = Learn more about { $fxmLink }
 
+# Unused
 email-sensitive-disclaimer = Due to the sensitive nature of this breach, emails involved are not publicly discoverable.
   You’re receiving this alert because you’re the verified owner of this email address.
 
 fxm-warns-you-no-breaches = { -product-name } warns you about data breaches involving your personal info.
   So far, no breaches were found. We’ll send you an alert if your email address appears in a new breach.
 
+# Unused
 fxm-warns-you-found-breaches = { -product-name } warns you about data breaches involving your personal info.
   You’re also signed up to receive alerts if your email address appears in a new breach.
 
@@ -89,12 +101,14 @@ email-breach-alert-blurb =
   We just received details about another company’s data breach.
 
 # Section headline
+# Unused
 monitor-another-email = Want to monitor another email?
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
 # Variables:
 #   $unsubscribe-link-attr (string) - Link to email unsubscribe
+# Unused
 email-2022-unsubscribe = You’re receiving this automated email as a subscriber of { -product-name }. <br>Feel free to change your email preferences at any time <a { $unsubscribe-link-attr }>here</a>.
 # Have I Been Pwned attribution
 # Variables:
@@ -132,10 +146,12 @@ email-verify-simply-click = Simply click the link below to finish verifying your
 
 email-breach-summary = Here’s your data breach summary
 email-breach-detected = Search results for your { $email-address } account have detected that your email may have been exposed. We recommend you act now to resolve this breach.
+# Unused
 email-no-breach-detected = Great news! We’ve found no data breaches that affect your email, { $email-address }.
 email-dashboard-cta = Go to Dashboard
 
 ## Breach alert
 
+# Unused
 email-may-have-been-exposed = Your email may have been exposed in a data breach
 email-spotted-new-breach = We’ve spotted a new data breach
