@@ -18,7 +18,6 @@ export type Props = {
   isPremiumUser: boolean;
   isEligibleForPremium: boolean;
   isExpanded: boolean;
-  isWideScreen: boolean;
   setExpanded: () => void;
 };
 
@@ -50,7 +49,6 @@ export const RemovalCard = (props: Props) => {
 
   return (
     <ScanResultCard
-      isWideScreen={props.isWideScreen}
       scanResult={{
         ...props.scanResult,
         manually_resolved: isResolved,
