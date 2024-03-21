@@ -8,6 +8,22 @@ settings-cancel-plus-title = Cancel { -brand-monitor-plus } subscription
 settings-cancel-plus-details = Your subscription will revert to a free account after the current billing cycle ends. Your data broker scan results will be permanently deleted, and you may be re-added to those sites.
 settings-cancel-plus-link-label = Cancel from your { -brand-mozilla-account }
 
+## Cancel Plus subscription - flow with a cancellation survey
+
+settings-cancel-plus-survey-button-label = Cancel your subscription
+settings-cancel-plus-step-confirm-heading = Leaving now means data brokers may add you back
+settings-cancel-plus-step-confirm-content-pt1 = Data brokers regularly scrape the internet and search public records to find new info about you. They’ll often add you back within 3-4 months after removal.
+settings-cancel-plus-step-confirm-content-pt2 = { -brand-monitor-plus } continually watches for new profiles and removes them for you, no matter how many times you’re re-added.
+settings-cancel-plus-step-confirm-cta-label = Continue to cancellation
+settings-cancel-plus-step-confirm-cancel-label = Never mind, take me back
+settings-cancel-plus-step-survey-heading = We’re sorry to see you go. Will you tell us why you’re leaving?
+settings-cancel-plus-step-survey-lead = Your experience is important to us. We read every response and take it into consideration.
+settings-cancel-plus-step-survey-note = Please note, all of your { -brand-monitor-plus } services will be <b>permanently deleted</b> after your current billing cycle ends.
+settings-cancel-plus-step-survey-cta-label = Continue to cancellation
+settings-cancel-plus-step-survey-cancel-label = Never mind, take me back
+settings-cancel-plus-step-redirecting-heading = We appreciate your feedback
+settings-cancel-plus-step-redirecting-lead = We’ll automatically redirect you to your { -brand-mozilla-account } where you can cancel your { -brand-monitor-plus } subscription.
+
 ## Delete Monitor account
 
 settings-delete-monitor-plus-account-title = Delete { -brand-monitor } account
