@@ -4,7 +4,7 @@
 
 "use client";
 
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode } from "react";
 import { OnerepScanResultRow } from "knex/types/tables";
 import { StaticImageData } from "next/image";
 import { SubscriberBreach } from "../../../../utils/subscriberBreaches";
@@ -31,30 +31,9 @@ export type ExposureCardProps = {
 };
 
 export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
-  const SCREEN_XL = 1312; // Same value as the screen_xl token, which triggers the application of the .hideOnMobile class
-  const [isWideScreen, setIsWideScreen] = useState(false);
-
-  useEffect(() => {
-    function handleResize() {
-      setIsWideScreen(window.innerWidth > SCREEN_XL);
-    }
-
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return isScanResult(exposureData) ? (
-    <ScanResultCard
-      {...props}
-      isWideScreen={isWideScreen}
-      scanResult={exposureData}
-    />
+    <ScanResultCard {...props} scanResult={exposureData} />
   ) : (
-    <SubscriberBreachCard
-      {...props}
-      isWideScreen={isWideScreen}
-      subscriberBreach={exposureData}
-    />
+    <SubscriberBreachCard {...props} subscriberBreach={exposureData} />
   );
 };

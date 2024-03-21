@@ -32,7 +32,6 @@ export type SubscriberBreachCardProps = {
   resolutionCta: ReactNode;
   isEligibleForPremium: boolean;
   isExpanded: boolean;
-  isWideScreen: boolean;
   onToggleExpanded: () => void;
 };
 

@@ -28,7 +28,6 @@ export type ScanResultCardProps = {
   resolutionCta: ReactNode;
   isPremiumUser: boolean;
   isExpanded: boolean;
-  isWideScreen: boolean;
   isOnManualRemovePage?: boolean;
   onToggleExpanded: () => void;
 };
