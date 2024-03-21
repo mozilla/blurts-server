@@ -48,6 +48,10 @@
     justify-content: space-between;
     height: 30px; // fixed height to standardize image/icon heights
 
+    .hideOnMobile {
+      display: none;
+    }
+
     @media screen and (min-width: $screen-lg) {
       gap: $layout-md;
     }
@@ -71,9 +75,6 @@
       display: flex;
       align-items: center;
 
-      &.hideOnMobile {
-        display: none;
-      }
       .exposureCompanyTitle {
         font: $text-body-sm;
         text-overflow: ellipsis;
