@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = Zůstatky na účtech
@@ -14,7 +19,7 @@ avatars = Avatary
 bank-account-numbers = Čísla bankovních účtů
 beauty-ratings = Hodnocení krásy
 biometric-data = Biometrické údaje
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Biografické údaje
 browser-user-agent-details = Podrobnosti o user agentech uživatelů
@@ -25,6 +30,7 @@ career-levels = Profesní úrovně
 cellular-network-names = Názvy mobilních sítí
 charitable-donations = Charitativní dary
 chat-logs = Historie chatů
+citizenship-statuses = Stavy občanství
 clothing-sizes = Velikosti oblečení
 credit-card-cvv = CVV platebních karet
 credit-cards = Platební karty
@@ -35,7 +41,7 @@ customer-interactions = Zákaznické interakce
 dates-of-birth = Data narození
 deceased-date = Data úmrtí
 deceased-statuses = Úmrtní oznámení
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Pokyny pro doručení
 device-information = Informace o zařízeních
@@ -75,7 +81,7 @@ instant-messenger-identities = Identity z instant messengerů
 ip-addresses = IP adresy
 job-applications = Žádosti o práci
 job-titles = Názvy pracovních pozic
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Státní poznávací značky
 living-costs = Životní náklady
 # This string refers to financial loans.

@@ -717,7 +717,7 @@ user-menu-manage-fxa-label = Gestisci il tuo { -brand-mozilla-account }
 user-menu-settings-label = Impostazioni
 user-menu-settings-tooltip = Configura { -brand-mozilla-monitor }
 user-menu-help-label = Guida e supporto
-user-menu-help-tooltip = Ottieni assistenza per { -brand-mozilla-monitor }
+user-menu-help-tooltip = Ricevi assistenza per { -brand-mozilla-monitor }
 user-menu-signout-label = Disconnetti
 user-menu-signout-tooltip = Esci da { -brand-mozilla-monitor }
 

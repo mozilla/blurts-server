@@ -2,8 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Rozbalit
-chevron-up-alt = Sbalit
+chevron-alt = Podrobnosti o vystavení
 exposure-card-exposure-type = Typ odhalení
 exposure-card-date-found = Datum odhalení
 

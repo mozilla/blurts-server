@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = Számlaegyenlegek
@@ -14,7 +19,7 @@ avatars = Profilképek
 bank-account-numbers = Bankszámlaszámok
 beauty-ratings = Szépség értékelések
 biometric-data = Biometrikus adatok
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Bemutatkozások
 browser-user-agent-details = Böngésző felhasználói ügynök részletei
@@ -25,6 +30,7 @@ career-levels = Karrier szintek
 cellular-network-names = Mobilhálózatok nevei
 charitable-donations = Jótékonysági adományok
 chat-logs = Csevegőnaplók
+citizenship-statuses = Állampolgársági állapotok
 clothing-sizes = Ruhaméretek
 credit-card-cvv = Bankkártyák CVV adatai
 credit-cards = Bankkártyák
@@ -35,7 +41,7 @@ customer-interactions = Vásárlói interakciók
 dates-of-birth = Születési idők
 deceased-date = Halálozási idők
 deceased-statuses = Halálozási állapotok
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Kiszállítási utasítások
 device-information = Eszközinformációk
@@ -75,7 +81,7 @@ instant-messenger-identities = Azonnali üzenetküldő identitások
 ip-addresses = IP-címek
 job-applications = Állásjelentkezések
 job-titles = Beosztások
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Rendszámtáblák
 living-costs = Megélhetési költségek
 # This string refers to financial loans.

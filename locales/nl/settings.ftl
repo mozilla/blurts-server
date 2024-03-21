@@ -66,15 +66,7 @@ settings-delete-monitor-free-account-dialog-title = Uw { -brand-monitor }-accoun
 settings-delete-monitor-free-account-dialog-lead = Al uw { -brand-monitor }-accountgegevens worden verwijderd en we controleren niet meer op nieuwe datalekken. Dit zal uw { -brand-mozilla }-account niet verwijderen.
 settings-delete-monitor-free-account-dialog-cta-label = Account verwijderen
 settings-delete-monitor-free-account-dialog-cancel-button-label = Laat maar zitten, breng me terug
-settings-delete-monitor-plus-account-title = { -brand-monitor }-account verwijderen
-settings-delete-monitor-plus-account-description = Hiermee wordt uw { -brand-monitor }-account voorgoed verwijderd en wordt uw betaalde { -brand-monitor-plus }-abonnement onmiddellijk beëindigd.
-settings-delete-monitor-plus-account-cta-label = Account verwijderen
-settings-delete-monitor-plus-account-dialog-title = Uw { -brand-monitor }-account wordt permanent verwijderd
-settings-delete-monitor-plus-account-dialog-lead-p1 = Al uw { -brand-monitor }-accountgegevens worden verwijderd en we controleren niet meer op nieuwe datalekken of lekken naar gegevenshandelaars. Dit zal uw { -brand-mozilla }-account niet verwijderen.
-settings-delete-monitor-plus-account-dialog-lead-p2 = Uw betaalde abonnement eindigt vandaag en de rest van uw abonnement wordt niet naar rato gefactureerd.
-settings-delete-monitor-plus-account-dialog-cta-label = Account verwijderen
-settings-delete-monitor-plus-account-dialog-cancel-button-label = Laat maar zitten, breng me terug
-settings-delete-monitor-account-confirmation-toast-label = Uw { -brand-monitor }-account is nu permanent verwijderd.
+settings-delete-monitor-account-confirmation-toast-label-2 = Uw { -brand-monitor }-account is nu verwijderd.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Sluiten
 
 ## Add email dialog

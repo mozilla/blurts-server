@@ -2,8 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Ανάπτυξη
-chevron-up-alt = Σύμπτυξη
+chevron-alt = Λεπτομέρειες έκθεσης
 exposure-card-exposure-type = Τύπος έκθεσης
 exposure-card-date-found = Ημερομηνία έκθεσης
 
