@@ -150,10 +150,7 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
       <div className={styles.exposureCard}>
         <div className={styles.exposureHeader}>
           <dl className={styles.exposureHeaderList}>
-            <dt
-              className={styles.visuallyHidden}
-              aria-hidden={props.isWideScreen ? false : true}
-            >
+            <dt className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}>
               {l10n.getString("exposure-card-label-company-logo")}
             </dt>
             <dd
@@ -187,8 +184,7 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
             {props.isEligibleForPremium && (
               <>
                 <dt
-                  className={styles.visuallyHidden}
-                  aria-hidden={props.isWideScreen ? false : true}
+                  className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}
                 >
                   {l10n.getString("exposure-card-exposure-type")}
                 </dt>
@@ -197,16 +193,10 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
                 </dd>
               </>
             )}
-            <dt
-              className={styles.visuallyHidden}
-              aria-hidden={props.isWideScreen ? false : true}
-            >
+            <dt className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}>
               {l10n.getString("exposure-card-date-found")}
             </dt>
-            <dd
-              className={styles.hideOnMobile}
-              aria-hidden={props.isWideScreen ? false : true}
-            >
+            <dd className={styles.hideOnMobile}>
               {dateFormatter.format(subscriberBreach.addedDate)}
             </dd>
             <dt className={styles.visuallyHidden}>
