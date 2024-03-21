@@ -2,6 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+# Unused
 breach-meta-title = { -brand-fx-monitor } - Dashboard
 
 breach-all-meta-title = { -brand-fx-monitor } - All Data Breaches
@@ -10,22 +11,28 @@ breach-all-meta-social-description = Browse the complete list of known breaches 
 
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+# Unused
 breach-detail-meta-title = { -brand-fx-monitor } - { $company } Data Breach
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Were you affected by the { $company } Data Breach?
 breach-detail-meta-social-description = Use { -brand-fx-monitor } to find out if your personal information was exposed in this breach, and understand what to do next.
 
+# Unused
 breach-scan-meta-title = { -brand-fx-monitor } - Breach Results
+# Unused
 breach-scan-meta-social-title = { -brand-fx-monitor } Breach Results
+# Unused
 breach-scan-meta-social-description = Sign in to { -brand-fx-monitor } to resolve breaches and get continuous monitoring for any new known breaches.
 
 ## Breaches header
 
 # Data classes pie chart title
+# Unused
 breach-chart-title = Breached data
 
 # $email-select is an interactive <select> element displaying the current email address
+# Unused
 breach-heading-email = Data breaches for { $email-select }
 
 # $count is the number of emails a user has added out of $total allowed
@@ -37,44 +44,62 @@ emails-monitored =
   }
 
 # link to Settings page where user can add/remove emails and set message preferences
+# Unused
 manage-emails-link = Manage emails
 
 ## Breaches resolved filter
 
+# Unused
 filter-label-unresolved = Unresolved breaches
+# Unused
 filter-label-resolved = Resolved breaches
 
 ## Breaches table
 
+# Unused
 column-company = COMPANY
+# Unused
 column-breached-data = BREACHED DATA
+# Unused
 column-detected = DETECTED
 
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+# Unused
 column-status-badge-resolved = Resolved
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+# Unused
 column-status-badge-active = Active
 
+# Unused
 breaches-resolve-heading = Resolve this breach:
 
+# Unused
 breaches-none-headline = No breaches found
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+# Unused
 breaches-none-copy = Good news! No known breaches were reported for { $email }. We’ll keep monitoring this email and will let you know if any new breaches occur.
+# Unused
 breaches-none-cta-blurb = Would you like to monitor another email?
+# Unused
 breaches-none-cta-button = Add email address
 
+# Unused
 breaches-all-resolved-headline = All breaches resolved
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+# Unused
 breaches-all-resolved-copy = Nicely done! You’ve resolved all breaches for { $email }. We’ll keep monitoring this email and will let you know if any new breaches occur.
+# Unused
 breaches-all-resolved-cta-blurb = Would you like to monitor another email?
+# Unused
 breaches-all-resolved-cta-button = Add email address
 
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 # Variables:
 #   $breachDate (String) - Date of the breach
 #   $companyName (String) - Name of the company where the breach occurred
+# Unused
 breach-description = On { $breachDate }, { $companyName } was breached. Once the breach was discovered and verified, it was added to our database on { $addedDate }. This breach included: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach

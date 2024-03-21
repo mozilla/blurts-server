@@ -7,6 +7,7 @@ fix-flow-nav-leaked-passwords = Leaked passwords
 fix-flow-nav-security-recommendations = Security recommendations
 
 guided-resolution-flow-exit = Return to dashboard
+# Unused
 guided-resolution-flow-back-arrow = Go to previous step
 guided-resolution-flow-next-arrow = Go to next step
 guided-resolution-flow-step-navigation-label = Guided steps
@@ -173,6 +174,7 @@ leaked-passwords-title = Your { $breach_name } password was exposed
 leaked-passwords-summary = It appeared in a data breach on { $breach_date }.
 leaked-passwords-description = Scammers can access your account and will likely try to use it on other accounts to see if you’ve used the same password. Change it anywhere you’ve used it to protect yourself.
 leaked-passwords-steps-title = Here’s what to do
+# Unused
 leaked-passwords-steps-subtitle = This requires access to your account, so you’ll need to manually fix it.
 # Variables
 # $breach_name is the name of the breach where the leaked password was found.
@@ -199,6 +201,7 @@ leaked-security-questions-title = Your security questions were exposed
 leaked-security-questions-summary = They appeared in a data breach on { $breach_name } on { $breach_date }.
 leaked-security-questions-description = Scammers can use these to access your accounts, and any other site where you’ve used the same security questions. Update them now to protect your accounts.
 leaked-security-questions-steps-title = Here’s what to do
+# Unused
 leaked-security-questions-steps-subtitle = This requires access to your account, so you’ll need to manually fix it.
 # Variables
 # $breach_name is the name of the breach where the security questions were found.

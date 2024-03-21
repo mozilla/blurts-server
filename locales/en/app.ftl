@@ -21,71 +21,99 @@
 
 ##
 
+# Unused
 GitHub-link-title = GitHub
 
+# Unused
 error-scan-page-token = You tried to scan too many email addresses in a short time period. For security reasons, we’ve temporarily blocked you from new searches. You’ll be able to try again later.
 error-could-not-add-email = Could not add email address to database.
 error-not-subscribed = This email address is not subscribed to { -product-name }.
 error-hibp-throttled = Too many connections to { -brand-HIBP }.
 error-hibp-connect = Error connecting to { -brand-HIBP }.
+# Unused
 error-hibp-load-breaches = Could not load breaches.
+# Unused
 error-must-be-signed-in = You must be signed in to your { -brand-fxa }.
+# Unused
 error-to-finish-verifying = To finish verifying this email for { -product-name }, you must be signed in under your primary account email.
 
+# Unused
 home-title = { -product-name }
+# Unused
 home-not-found = Page not found.
 
+# Unused
 oauth-invalid-session = Invalid session
 
+# Unused
 scan-title = { -product-name } : Scan Results
 
 user-add-invalid-email = Invalid Email
 user-add-too-many-emails = You are monitoring the maximum number of email addresses.
+# Unused
 user-add-email-verify-subject = Verify your subscription to { -product-name }.
 user-add-duplicate-email = This email has already been added to { -product-name }.
 # Variables:
 #   $preferencesLink (String) - Link to preferences
 #   $userEmail (String) - User email address
+# Unused
 user-add-duplicate-email-part-2 = Visit your { $preferencesLink } to check the status of { $userEmail }.
 user-add-verification-email-just-sent = Another verification email can’t be sent this quickly. Please try again later.
 user-add-unknown-error = Something went wrong adding another email address. Please try again later.
 user-delete-unknown-error = Something went wrong removing an email address. Please try again later.
 
+# Unused
 error-headline = Error
 user-verify-token-error = Verification token is required.
+# Unused
 user-verify-email-report-subject = Your { -product-name } report
 
 user-unsubscribe-token-error = Unsubscribing requires a token.
 user-unsubscribe-token-email-error = Unsubscribing requires a token and emailHash.
+# Unused
 user-unsubscribe-title = { -product-name } : Unsubscribe
 
+# Unused
 pwt-section-headline = Stronger Passwords = Better Protection
 
+# Unused
 landing-headline = Your right to be safe from hackers starts here.
 
+# Unused
 scan-placeholder = Enter Email Address
+# Unused
 scan-submit = Search Your Email
+# Unused
 scan-error = Must be a valid email.
 
+# Unused
 download-firefox-banner-button = Download { -brand-name }
 
 # Appears after Firefox Monitor has sent a verification email to a new user.
+# Unused
 signup-modal-sent = Sent!
 
+# Unused
 sign-up = Sign Up
+# Unused
 form-signup-error = Must be a valid email
 
 # breach-date = the calendar date a particular data theft occurred.
+# Unused
 breach-date = Breach date:
 
 # compromised accounts = the total number of user accounts exposed in data breach
+# Unused
 compromised-accounts = Compromised accounts:
 
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Compromised data:
 
+# Unused
 unsub-headline = Unsubscribe from { -product-name-nowrap }
+# Unused
 unsub-blurb = This will remove your email from the { -product-name-nowrap } list and you will no longer receive alerts when new breaches are announced.
+# Unused
 unsub-button = Unsubscribe
 
 # Breach data provided by Have I Been Pwned.
@@ -93,13 +121,18 @@ unsub-button = Unsubscribe
 #   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Breach data provided by { $hibp-link }
 
+# Unused
 share-twitter = Most people have about 100 online accounts. Have any of yours been exposed in a data breach? Find out.
+# Unused
 share-facebook-headline = Find out if you’ve been part of a data breach
+# Unused
 share-facebook-blurb = Have your online accounts been exposed in a data breach?
+# Unused
 og-site-description = Find out if you’ve been part of a data breach with { -product-name }. Sign up for alerts about future breaches and get tips to keep your accounts safe.
 
 show-all = Show All
 
+# Unused
 fxa-scan-another-email = Want to check another email?
 
 sign-out = Sign Out
@@ -107,6 +140,7 @@ sign-out = Sign Out
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Manage { -brand-fxa }
 
+# Unused
 have-an-account = Have an account?
 
 fxa-pwt-summary-2 =
@@ -127,6 +161,7 @@ fxa-what-to-do-blurb-1 =
   or redistributed. This could also be an account you forgot you
   created or a company that changed names.
 
+# Unused
 fxa-what-to-do-subhead-2 = Stop using the exposed password, and change it everywhere you’ve used it.
 fxa-wtd-blurb-2 =
   Hackers may try to use that same password and your email to get in to other accounts.
@@ -138,6 +173,7 @@ fxa-what-to-do-blurb-3 =
   If your bank account or credit card numbers were exposed, alert your bank to possible fraud.
   Monitor statements for charges you don’t recognize.
 
+# Unused
 fxa-what-to-do-subhead-4 = Get help remembering all your passwords and keeping them safe.
 fxa-what-to-do-blurb-4 =
   Password managers like 1Password, LastPass, Dashlane, and Bitwarden store your
@@ -145,11 +181,13 @@ fxa-what-to-do-blurb-4 =
   on your phone and computer so you don’t have to remember them all.
 
 # Alerts is a noun
+# Unused
 sign-up-for-alerts = Sign Up for Alerts
 
 # Link title
 frequently-asked-questions = Frequently Asked Questions
 
+# Unused
 about-firefox-monitor = About { -product-name }
 
 # Link title
@@ -161,41 +199,61 @@ home = Home
 # Link title
 security-tips = Security Tips
 
+# Unused
 fxa-account = { -brand-fxa }
 
 # Aria button message to open menu. "Open Firefox Account Navigation"
+# Unused
 open-fxa-menu = Open { -brand-fxa } navigation
 
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
+# Unused
 latest-breach = LATEST BREACH ADDED
 
 # Link title
 more-about-this-breach = More about this breach
 
+# Unused
 take-control = Take back control of your personal data.
+# Unused
 cant-stop-hackers = You can’t stop hackers from hacking. But you can avoid bad habits that make their work easy.
+# Unused
 read-more-tips = Read More Security Tips
 
+# Unused
 how-hackers-work = Understand how hackers work
 
+# Unused
 monitor-your-online-accounts = Sign up for breach monitoring with a { -brand-fxa }.
+# Unused
 stay-alert = Stay alert to new breaches
+# Unused
 if-your-info = If your information surfaces in a new data breach, we’ll send you an alert.
+# Unused
 search-all-emails = Search all your email addresses for breaches and get alerts about new threats.
 monitor-several-emails = Monitor several emails
+# Unused
 take-action = Take action to protect your accounts
+# Unused
 keep-your-data-safe = Find out what you need to do to keep your data safe from cyber criminals.
 
 website-breach = Website Breach
 sensitive-breach = Sensitive Website Breach
 data-aggregator-breach = Data Aggregator Breach
+# Unused
 unverified-breach = Unverified Breach
+# Unused
 spam-list-breach = Spam List Breach
 
+# Unused
 website-breach-plural = Website Breaches
+# Unused
 sensitive-breach-plural = Sensitive Breaches
+# Unused
 data-aggregator-breach-plural = Data Aggregator Breaches
+# Unused
 unverified-breach-plural = Unverified Breaches
+# Unused
 spam-list-breach-plural = Spam List Breaches
 
 what-data = What data was compromised:
@@ -211,7 +269,9 @@ delayed-reporting-copy = It can sometimes take months or years for credentials e
   in a data breach to appear on the dark web. Breaches get added to our database as
   soon as they have been discovered and verified.
 
+# Unused
 about-fxm-headline = About { -product-name }
+# Unused
 about-fxm-blurb = { -product-name } warns if your online accounts were involved in a
   data breach. Find out if you’ve been in a data breach, get alerts about new breaches,
   and take steps to protect your online accounts. { -product-name } is provided
@@ -223,24 +283,33 @@ fxm-warns-you = { -product-name } warns you if your email address has been expos
   appears in a new breach.
 
 # How Firefox Monitor works
+# Unused
 how-fxm-works = How { -product-name } works
 
+# Unused
 how-fxm-1-headline = Conduct a basic search
+# Unused
 how-fxm-1-blurb = Search for your email address in public data breaches going
   back to 2007. This basic search will surface most data breaches, but not
   ones that contain sensitive personal information.
 
+# Unused
 how-fxm-2-headline = Sign up for breach monitoring
+# Unused
 how-fxm-2-blurb = Create a { -brand-fxa } to monitor your email for ongoing breaches.
   Once you’ve verified your email, you’ll also receive a full report of past breaches,
   including sensitive breaches.
 
+# Unused
 how-fxm-3-headline = Get notifications in your browser
+# Unused
 how-fxm-3-blurb = If you use { -brand-name }, you’ll receive a notification if you visit a
   site that’s been breached. Find out right away if you were part of that breach
   and what you can do about it.
 
+# Unused
 wtd-after-website = What to do after a website breach:
+# Unused
 wtd-after-data-agg = What to do after a data aggregator breach:
 
 what-is-data-agg = What is a data aggregator?
@@ -249,30 +318,46 @@ what-is-data-agg-blurb = Data aggregators, or data brokers, collect information 
   for marketing purposes. Victims of these breaches are less likely to experience financial
   fraud, but hackers could use this data to impersonate or profile them.
 
+# Unused
 protect-your-privacy = Protect your online privacy
+# Unused
 no-pw-to-change = Unlike a website breach, there’s no password to change.
 
 avoid-personal-info = Avoid using personal info in passwords
+# Unused
 avoid-personal-info-blurb = It’s easy to find birthdays, addresses, and family member names online. Keep these words out of your passwords.
 
 ## What to do after data breach tips
 
+# Unused
 change-pw = Change your password
+# Unused
 change-pw-site = Change password for this site
+# Unused
 even-for-old = Even for old accounts, it’s important to update your password.
 
+# Unused
 make-new-pw-unique = Make the new password different and unique
+# Unused
 strength-of-your-pw = The strength of your passwords directly impacts your online security.
+# Unused
 create-strong-passwords = How to create strong passwords
 
+# Unused
 stop-reusing-pw = Stop reusing the same passwords
+# Unused
 create-unique-pw = Create unique passwords and save them somewhere safe, like a password manager.
+# Unused
 five-myths = 5 myths about password managers
 
+# Unused
 create-a-fxa = Create a { -brand-fxa } for your full report of breaches and to get alerts.
 
+# Unused
 feat-security-tips = Security tips to protect your accounts
+# Unused
 feat-sensitive = Advanced search in sensitive breaches
+# Unused
 feat-enroll-multiple = Enroll multiple emails in breach monitoring
 
 # This string is shown beneath each of the user’s email addresses to indicate
@@ -285,21 +370,31 @@ appears-in-x-breaches =
        *[other] Appears in { $breachCount } known breaches.
   }
 
+# Unused
 check-for-breaches = Check for breaches
+# Unused
 find-out-what-hackers-know = Find out what hackers already know about you. Learn how to stay a step ahead of them.
+# Unused
 get-email-alerts = Stay safe: Get email alerts when your info appears in a known breach
+# Unused
 search-for-your-email = Search for your email address in public data breaches going back to 2007.
 
+# Unused
 back-to-top = Back to Top
 
+# Unused
 comm-opt-0 = Email me if one of my email addresses below appears in a data breach.
 # Variables:
 #   $primaryEmail (String) - User primary email address
+# Unused
 comm-opt-1 = Send all breach alerts to { $primaryEmail }.
 
+# Unused
 stop-monitoring-this = Stop monitoring this email.
+# Unused
 resend-verification = Resend verification email
 
+# Unused
 add-new-email = Add a new email address
 send-verification = Send Verification Link
 
@@ -310,24 +405,32 @@ send-verification = Send Verification Link
 # email address.
 breach-summary = Breach Summary
 
+# Unused
 show-breaches-for-this-email = Show all breaches for this email.
 
+# Unused
 link-change-primary = Change Primary Email Address
 
+# Unused
 remove-fxm = Remove { -product-name }
+# Unused
 remove-fxm-blurb = Turn off { -product-name } alerts. Your { -brand-fxa } will remain active, and you may receive
   other account-related communications.
 
 # Button title
+# Unused
 manage-email-addresses = Manage Email Addresses
 
 # Link title
+# Unused
 latest-breach-link = See if you were in this breach
 
 ## Variables:
 ##   $userName (String) - Username
 
+# Unused
 welcome-back = Welcome back, { $userName }!
+# Unused
 welcome-user = Welcome, { $userName }!
 
 ##
@@ -335,31 +438,40 @@ welcome-user = Welcome, { $userName }!
 breach-alert-subject = { -product-name } found your email in a new data breach
 
 
+# Unused
 your-info-was-discovered-headline = Your information was discovered in a new data breach.
+# Unused
 your-info-was-discovered-blurb = You’re signed up to receive { -product-name } alerts
   when your email appears in a data breach. Here’s what we know about this breach.
 
+# Unused
 what-to-do-after-breach = What to do after a data breach
 
+# Unused
 ba-next-step-1 = Change your password to a strong, unique password.
 ba-next-step-blurb-1 =
   A strong password uses a combination of upper and lowercase letters,
   special characters, and numbers. It doesn’t contain personal info like
   your address, birthday, or family names.
 
+# Unused
 ba-next-step-2 = Stop using that exposed password entirely.
 ba-next-step-blurb-2 =
   Cyber criminals could find your password on the dark web and use it
   to log in to your other accounts. The best way to protect your accounts
   is to use unique passwords for each one.
 
+# Unused
 ba-next-step-3 = Get help creating better passwords and keeping them safe.
 ba-next-step-blurb-3 =
   Use a password manager to create strong, unique passwords. Password managers securely store all your
   logins so you can access them across all your devices.
 
+# Unused
 faq1 = I don’t recognize this company or website. Why am I in this breach?
+# Unused
 faq2 = Why did it take so long to notify me of this breach?
+# Unused
 faq3 = How do I know this is a legitimate email from { -product-name }?
 
 # Variables:
@@ -370,14 +482,18 @@ new-breaches-found =
       [other] { $breachCount } NEW BREACHES FOUND
   }
 
+# Unused
 sign-up-headline-1 = Get ongoing alerts with a { -brand-fxa }.
+# Unused
 account-not-required = { -brand-name } browser not required for a { -brand-fxa }. You may receive info about { -brand-Mozilla } services.
 
 ## Variables:
 ##   $breachName (String) - Number of the breach
 
+# Unused
 was-your-info-exposed = Was your info exposed in the { $breachName } data breach?
 
+# Unused
 fb-not-comp = This email did not appear in the { $breachName } breach.
 
 # Variables:
@@ -388,6 +504,7 @@ other-breaches-found =
    *[other] However, it did appear in { $breachCount } other breaches.
   }
 
+# Unused
 fb-comp-only = This email appeared in the { $breachName } breach.
 # Variables:
 #   $breachCount (Integer) - Number of breaches
@@ -398,12 +515,15 @@ fb-comp-and-others =
 
 ##
 
+# Unused
 no-other-breaches-found = No other breaches found from a basic search.
 
+# Unused
 no-results-blurb = Sorry, that breach is not in our database.
 
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+# Unused
 facebook-breach-note = <span>Your email doesn’t appear in this leak,
   but your phone number may still be vulnerable.</span> Some of the accounts
   compromised in the Facebook leak included phone numbers and other
@@ -413,8 +533,10 @@ facebook-breach-note = <span>Your email doesn’t appear in this leak,
 
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+# Unused
 facebook-breach-what-to-do-1-headline = <span>Set your information to “Only me” or other non-public setting in <a>your Facebook profile</a>.</span>
 
+# Unused
 facebook-breach-what-to-do-1-copy = During this leak, hackers took profile
   information that was set as “open to the public” or “shared with friends.”
   This information can be combined with other data to access even more of
@@ -422,29 +544,39 @@ facebook-breach-what-to-do-1-copy = During this leak, hackers took profile
 
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+# Unused
 facebook-breach-what-to-do-2-headline = <span>Change the password, PIN, or other security credentials on your <a>mobile
   phone carrier accounts</a> to prevent SIM-swapping</span>.
 
+# Unused
 facebook-breach-what-to-do-2-copy = SIM swapping, which is also called SIM-jacking,
   is when a hacker uses phone numbers, date of birth and other data to take over
   a person’s cell phone number and then hack into their email, social media and even financial accounts.
 
+# Unused
 facebook-breach-what-to-do-3 = See all of the recommendations on our Facebook leak page
 
 # "Appears in-page as: Showing: All Breaches"
+# Unused
 currently-showing = Showing:
 
 ## Updated error messages
 
+# Unused
 error-bot-headline = Searches temporarily suspended
+# Unused
 error-bot-blurb = We’re worried you might be a bot because you searched
   several email addresses in a short time period. For now, you’re blocked
   from new searches. You can try again later.
 
+# Unused
 error-csrf-headline = Session timed out
+# Unused
 error-csrf-blurb = Select your browser’s back button, reload the page, and try again.
 
+# Unused
 error-invalid-unsub = How to unsubscribe from { -product-name } alerts
+# Unused
 error-invalid-unsub-blurb = You’ll need to unsubscribe from one of the
   emails { -product-name } sent you. Check your inbox for messages from
   { -brand-team-email }. Select the unsubscribe link at the bottom of the email.
@@ -478,6 +610,7 @@ known-data-breaches-exposed =
   }
 
 # Button
+# Unused
 see-additional-breaches = See Additional Breaches
 
 # Variables:
@@ -493,28 +626,39 @@ scan-results-known-breaches =
 # In page, it reads "Results for: searchedEmail@monitor.com"
 # Variables:
 #   $userEmail (String) - User email address
+# Unused
 results-for = Results for: { $userEmail }
 
+# Unused
 other-monitored-emails = Other Monitored Emails
+# Unused
 email-verification-required = Email Verification Required
+# Unused
 fxa-primary-email = { -brand-fxa } Email - Primary
 
 what-is-a-website-breach = What is a website breach?
 website-breach-blurb = A website data breach happens when cyber criminals steal, copy, or expose personal information from online accounts. It’s usually a result of hackers finding a weak spot in the website’s security. Breaches can also happen when account information gets leaked by accident.
 
+# Unused
 security-tips-headline = Security tips to protect yourself from hackers
+# Unused
 steps-to-protect = Steps to take to protect your online identity
+# Unused
 take-further-steps = Take further steps to protect your identity
 
+# Unused
 alert-about-new-breaches = Alert me about new breaches
+# Unused
 see-if-youve-been-part = See if you’ve been part of an online data breach.
 
 
+# Unused
 get-ongoing-breach-monitoring = Get ongoing breach monitoring for multiple email addresses.
 
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Find Out
 
+# Unused
 new-unsub-error = You’ll need to unsubscribe from one of the emails { -product-name } sent.
 
 # Variables:
@@ -527,9 +671,11 @@ other-known-breaches-found =
 
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
+# Unused
 additional-information-including = Additional information, including:
 
 # Title
+# Unused
 email-addresses-title = Email Addresses
 
 # This is a section headline on the breach detail page that appears above
@@ -542,31 +688,39 @@ breach-overview-title = Overview
 breach-overview-new = On { $breachDate }, { $breachTitle } was breached. Once the breach was discovered and verified, it was added to our database on { $addedDate }.
 
 # Title appearing on the Preferences dashboard.
+# Unused
 monitor-preferences = { -product-short-name } Preferences
 
 # When a user is signed in, this appears in the drop down menu
 # and is followed by the user's primary Firefox Account email.
 # Variables:
 #   $userEmail (String) - User email address
+# Unused
 signed-in-as = Signed in as: { $userEmail }
 
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
+# Unused
 filter-by = Filter by Category:
 
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
+# Unused
 to-affected-email = Send breach alerts to the affected email address
 
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+# Unused
 join-firefox = There is a way to protect your privacy. Join { -brand-name }.
 
 # Link title
+# Unused
 learn-more-link = Learn more.
 
+# Unused
 email-sent = Email Sent!
 
 # Form title
+# Unused
 want-to-add = Want to add another email?
 
 # This is part of a confirmation message that appears after a user has submitted
@@ -578,15 +732,19 @@ verify-the-link = Verify the link sent to { $userEmail } to add it to { -product
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+# Unused
 email-verified = Email Successfully Verified!
 # Variables:
 #   $email (String) - User email address
+# Unused
 email-added-to-subscription = We’ll alert you if { $email } appears in a data breach.
 
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+# Unused
 email-verified-view-dashboard = To see and manage all emails you’ve signed up for breach monitoring, { $nestedSignInLink }.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
+# Unused
 sign-in-nested = sign in
 
 ##
@@ -597,6 +755,7 @@ sign-in-nested = sign in
 # using the { preferences } string.
 # Variables:
 #   $preferencesLink (String) - Link to preferences
+# Unused
 manage-all-emails = Manage all email addresses in { $preferencesLink }.
 
 # This string is a header on the user preferences page and
@@ -604,20 +763,28 @@ manage-all-emails = Manage all email addresses in { $preferencesLink }.
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single
 # email address.
+# Unused
 breach-alert-notifications = Breach Alert Notifications
 
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date.
 breach-added-label = Breach added:
 
+# Unused
 how-hackers-work-desc = Protect your passwords from cyber criminals, since that’s what they care about most.
+# Unused
 what-to-do-after-breach-desc = Lock down your accounts to keep your information out of the wrong hands.
+# Unused
 create-strong-passwords-desc = Make your passwords strong, secure, and hard to guess.
+# Unused
 steps-to-protect-desc = Understand the most common threats and know what to look out for.
+# Unused
 five-myths-desc = Learn how to avoid bad password habits that make a hacker’s work easy.
+# Unused
 take-further-steps-desc = Find out how to mitigate the risks of identity theft to prevent financial loss.
 
 # This message appears after a user has successfully updated their communication settings.
+# Unused
 changes-saved = Changes saved!
 
 # Section headline
@@ -629,6 +796,7 @@ rec-section-headline-no-pw = What to do to protect your personal info
 rec-section-subhead-no-pw = Though passwords weren’t exposed in this breach, there are still steps you can take to better protect your personal info.
 
 # Button
+# Unused
 see-additional-recs = See Additional Recommendations
 
 ## This string contains nested markup that becomes a link later in the code.
@@ -636,6 +804,7 @@ see-additional-recs = See Additional Recommendations
 
 # Variables:
 #   $affectedEmail (String) - User email address
+# Unused
 resolve-top-notification = { $affectedEmail } appeared in this breach. <a>What to do next</a>
 
 # Variables:
@@ -647,6 +816,7 @@ resolve-top-notification-plural =
 
 ##
 
+# Unused
 marking-this-subhead = Marking this breach as resolved
 
 # This string contains nested markup that is later used to style the text inside of it.
@@ -657,22 +827,32 @@ marking-this-body =
   from your dashboard at any time.
 
 
+# Unused
 mark-as-resolve-button = Mark as Resolved
+# Unused
 marked-as-resolved-label = Marked as Resolved
 
 
+# Unused
 undo-button = Undo
 
+# Unused
 confirmation-1-subhead = Nice! You’ve just resolved your first breach.
+# Unused
 confirmation-1-body = Keep up the momentum. Check your dashboard to see if there’s more to do.
+# Unused
 confirmation-2-subhead = Take that, hackers!
+# Unused
 confirmation-2-body = You’re taking important steps towards protecting your online accounts.
+# Unused
 confirmation-3-subhead = Another one down. Nice work!
 
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
+# Unused
 confirmation-3-body = Is your new password unique, strong, and hard to guess? <a>Find out</a>
 
+# Unused
 generic-confirmation-subhead = This breach has been marked as resolved
 # Variables:
 #   $numUnresolvedBreaches (Integer) - Number of resolved breaches
@@ -682,13 +862,16 @@ generic-confirmation-message =
     *[other] To see all remaining breaches, go to your dashboard.
   }
 
+# Unused
 return-to-breach-details-link = Return to breach details
+# Unused
 go-to-dashboard-link = Go to Dashboard
 
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 # Variables:
 #   $percentComplete (String) - Completion percentage
+# Unused
 progress-percent-complete = { $percentComplete }% complete
 
 # This string appears in the purple callouts at the top of the user dashboard and shows
@@ -700,6 +883,7 @@ num-resolved =
      *[other] { $numResolvedBreaches } Resolved
   }
 
+# Unused
 progress-intro-subhead = New in { -product-name }: Mark breaches as resolved
 progress-intro-message =
   After reviewing the details about a breach and taking steps to protect
@@ -711,6 +895,7 @@ progress-status =
   { $numTotalBreaches ->
      *[other] { $numResolvedBreaches } out of { $numTotalBreaches } breaches marked as resolved
   }
+# Unused
 progress-complete = All known breaches have been marked as resolved
 
 ## These strings contain nested markup that is later used to style the text inside of it.
@@ -722,7 +907,9 @@ progress-message-1 =
 progress-message-2 =
   <span>Keep it up!</span> Small changes like updating passwords have a big impact on
   keeping your personal info safe.
+# Unused
 progress-message-3 = <span>Nice work resolving those breaches!</span> Keep it up. You’ve got a few more to go.
+# Unused
 progress-message-4 = <span>Almost done!</span> You’re close to the finish line.
 progress-complete-message =
   <span>Feels good, right?</span> If you want to keep going, this is a good time to
@@ -730,13 +917,17 @@ progress-complete-message =
 
 ##
 
+# Unused
 resolve-this-breach-link = Resolve this breach
 
 # This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
+# Unused
 marked-resolved = Marked resolved:
 
+# Unused
 hide-resolved-button = Hide Resolved
+# Unused
 show-resolved-button = Show Resolved
 
 # Variables:
@@ -758,37 +949,52 @@ known-data-breaches-resolved =
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = New
 
+# Unused
 mobile-promo-headline = Bring { -brand-name } to your phone and tablet
 mobile-promo-body =
   Fast, private, and safe browsing everywhere you go. Find { -brand-name } in the Google Play and App Store.
+# Unused
 mobile-promo-cta = Get { -brand-name } on Android and iOS
 
+# Unused
 promo-lockwise-headline = Take your passwords everywhere
 lockwise-promo-body =
   Keep track of your logins across all devices. Access them securely from your computer, phone, or tablet.
+# Unused
 promo-lockwise-cta = Get { -brand-lockwise }
 
+# Unused
 fpn-promo-headline = Mask your location from websites and trackers
 promo-fpn-body =
   { -brand-fpn } throws off the websites and data collectors that profile you with ads by masking your real IP address.
+# Unused
 promo-fpn-cta = Get { -brand-fpn }
 
+# Unused
 monitor-promo-headline = Find out about new data breaches
 monitor-promo-body =
   Get notified the next time your personal info gets exposed in a known breach.
 
+# Unused
 ecosystem-promo-headline = Protect your life online with privacy-first products
 ecosystem-promo-body =
   All { -brand-name } products honor our Personal Data Promise: Take less. Keep it safe. No secrets.
+# Unused
 promo-ecosystem-cta = See All Products
 
+# Unused
 steps-to-resolve-headline = Steps to resolve this breach
 
+# Unused
 vpn-promo-headline = Now’s the time to boost your safety online.
+# Unused
 vpn-promo-copy = { -brand-Mozilla }’s Virtual Private Network helps shield your internet connection from hackers and spies.
+# Unused
 vpn-promo-cta = Get { -brand-mozilla-vpn }
 
+# Unused
 vpn-promo-headline-new = Save 50% with a full year subscription
+# Unused
 vpn-promo-copy-new = Protect your online data—and choose a VPN subscription plan that works for you.
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
@@ -797,62 +1003,100 @@ vpn-promo-copy-new = Protect your online data—and choose a VPN subscription pl
 #   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
 #                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
 #                           provides its own localization.
+# Unused
 vpn-banner-location = Your location: { $ip-location }
+# Unused
 vpn-banner-protect-yourself-with-vpn = <em>Protect yourself</em> with { -brand-mozilla-vpn }.
+# Unused
 vpn-banner-protected-with-vpn = <em>Protected</em> with { -brand-mozilla-vpn }.
+# Unused
 vpn-banner-title-1 = You’re protected — thanks for using { -brand-mozilla-vpn }.
+# Unused
 vpn-banner-title-2 = Your location can be tracked if you don’t use a VPN.
+# Unused
 vpn-banner-subtitle-2 = Protect your location and browse securely in 3 steps
+# Unused
 vpn-banner-status-protected = Current status: <em>Protected ✓</em>
+# Unused
 vpn-banner-status-not-protected = Current status: <em>Not protected ⚠</em>
 # Variables:
 #   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Unused
 vpn-banner-ip-address = IP address: { $ip-address }
+# Unused
 vpn-banner-step-1 = Subscribe to { -brand-mozilla-vpn }
+# Unused
 vpn-banner-step-2 = Select a VPN location
+# Unused
 vpn-banner-step-3 = Activate VPN and browse securely
+# Unused
 vpn-banner-cta = Get { -brand-mozilla-vpn }
 # button to expand panel
+# Unused
 vpn-banner-cta-expand = Expand
 # button to close panel
+# Unused
 vpn-banner-cta-close = Close
 
 ## Relay and VPN educational/ad units
 
+# Unused
 ad-unit-relay-cta = Learn more about { -brand-relay }
+# Unused
 ad-unit-vpn-cta = Learn more about { -brand-mozilla-vpn }
 # ad 1 heading
+# Unused
 ad-unit-1-how-do-you-keep = How do you keep your email address a secret?
 # ad 2 heading
+# Unused
 ad-unit-2-do-you-worry = Do you worry about safety on public Wi-Fi?
 # ad 3 heading
+# Unused
 ad-unit-3-stay-in-the-game = Stay in the game!
+# Unused
 ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } lets you keep a stable connection safe and secure while you play games or stream movies.
 # ad 3 list item 1
+# Unused
 ad-unit-3-prevent-throttling = Prevent throttling
 # ad 3 list item 2
+# Unused
 ad-unit-3-be-anywhere = Be anywhere in the world
 # ad 3 list item 3
+# Unused
 ad-unit-3-access-more = Access more
 # ad 4 heading
+# Unused
 ad-unit-4-shopping-with = Shopping with Email Masks
+# Unused
 ad-unit-4-want-to-buy = Want to buy something online and don’t know or fully trust the shop?
+# Unused
 ad-unit-4-shop-online = Use an email mask whenever you shop online. Get the confirmation sent to your real email and then easily turn the mask off anytime later.
 # ad 5 heading
+# Unused
 ad-unit-5-on-the-go = On the Go with { -brand-relay }
+# Unused
 ad-unit-5-instantly-make = Instantly make a custom email mask anywhere and everywhere you go!
 # ad 5 subheading 1
+# Unused
 ad-unit-5-connect-on-the-go = Connect on the go
+# Unused
 ad-unit-5-privately-sign-in = Use your email mask when you want to privately sign in to your favorite coffee shop or public Wi-Fi
 # ad 5 subheading 2
+# Unused
 ad-unit-5-email-receipts = Get email receipts
+# Unused
 ad-unit-5-share-custom-email = Share a custom email mask for in-store shopping receipts without sharing your real email
 # ad 5 subheading 3
+# Unused
 ad-unit-5-use-on-phone = Use on your phone
+# Unused
 ad-unit-5-no-matter-where = No matter where you are, create a custom email mask in seconds for anything you want to do
 # ad 6 heading
+# Unused
 ad-unit-6-worry-free = Worry-Free Signups
+# Unused
 ad-unit-6-want-to-start = Want to start a new subscription, respond to an invitation, or get a bargain promo code without having spam flooding your inbox?
+# Unused
 ad-unit-6-before-you-complete = Before you complete that next signup, use an email mask instead of your real one to protect your info and keep control over your inbox
 
 # Monitor V2
@@ -893,12 +1137,17 @@ brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
+# Unused
 site-nav-breaches-link = Resolve Data Breaches
+# Unused
 site-nav-settings-link = Settings
+# Unused
 site-nav-help-link = Help and Support
 # This call-out is above 2 image links for Firefox Relay and Mozilla VPN
+# Unused
 site-nav-ad-callout = Try our other security tools:
 brand-relay = { -brand-relay }
+# Unused
 brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 mobile-menu-label = Main menu
@@ -917,18 +1166,25 @@ main-nav-link-faq-tooltip = Frequently asked questions
 ## User menu
 
 # Obsolete
+# Unused
 menu-button-title = User menu
 # Obsolete
+# Unused
 menu-button-alt = Open user menu
 # Obsolete
+# Unused
 menu-list-accessible-label = Account menu
 # Obsolete
+# Unused
 menu-item-fxa-2 = Manage your { -brand-mozilla-account }
 # Obsolete
+# Unused
 menu-item-settings = Settings
 # Obsolete
+# Unused
 menu-item-help = Help and support
 # Obsolete
+# Unused
 menu-item-logout = Sign out
 
 user-menu-trigger-label = Open user menu
@@ -960,7 +1216,9 @@ error-page-error-404-copy = We’re sorry, the page you’re looking for no long
 error-page-error-404-cta-button = Go back
 # Variables:
 #   $errorCode (number) - the status code of the error, e.g. 403
+# Unused
 error-page-error-other-title = { $errorCode } Something went wrong
+# Unused
 error-page-error-other-copy = Please try again or come back later
 
 ## Breach overview page
@@ -981,8 +1239,11 @@ breach-detail-cta-signup = Check for breaches
 
 ## Floating banner
 
+# Unused
 floating-banner-text = Boost your online security with news, tips, and updates from { -brand-Mozilla }.
+# Unused
 floating-banner-link-label = Sign up
+# Unused
 floating-banner-dismiss-button-label = No thanks
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner

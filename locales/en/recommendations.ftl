@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 # Recommendation subhead
+# Unused
 rec-ssn-subhead = Review your credit reports
 # Link title
 rec-ssn-cta = Request credit reports
@@ -29,8 +30,10 @@ rec-pw-2 =
   password is out there, hackers could use it to get in to other accounts.
 
 # Recommendation subhead
+# Unused
 rec-pw-3-subhead = Use a password manager to take your passwords everywhere
 # Link title
+# Unused
 rec-pw-3-cta = Get { -brand-lockwise }
 rec-pw-3-fx =
   Use { -brand-lockwise } to securely access the passwords you’ve saved in
@@ -40,8 +43,10 @@ rec-pw-3-non-fx =
   passwords and access them securely from your phone or tablet.
 
 # Recommendation subhead
+# Unused
 rec-pw-4-subhead = Set up two-factor authentication (2FA)
 # Link title
+# Unused
 rec-pw-4-cta = See sites that offer 2FA
 rec-pw-4 =
   Many websites offer 2FA as an extra security measure. This requires
@@ -118,30 +123,37 @@ rec-address =
   passwords easy to guess.
 
 # Recommendation subhead
+# Unused
 rec-gen-1-subhead = Use unique, strong passwords for every account
 # Link title
+# Unused
 rec-gen-1-cta = How to create strong passwords
 rec-gen-1 =
   Password reuse puts all your accounts at risk. This means that if
   one password gets exposed, hackers have the keys to many accounts.
 
 # Recommendation subhead
+# Unused
 rec-gen-2-subhead = Store passwords in a safe place
 # Link title
+# Unused
 rec-gen-2-cta = Myths about password managers
 rec-gen-2 =
   Put your login details in a secure place only you can access, such as a
   password manager. This also makes it easy to keep track of all your different passwords.
 
 # Recommendation subhead
+# Unused
 rec-gen-3-subhead = Be cautious about giving out personal information
 # Link title
+# Unused
 rec-gen-3-cta = Read more security tips
 rec-gen-3 =
   Don’t hand out personal data if you don’t have to. If you are asked to
   enter or give out your email address, ZIP code, or phone number, you can say no.
 
 # Recommendation subhead
+# Unused
 rec-gen-4-subhead = Update software and apps regularly
 rec-gen-4 =
   Updating your smartphone apps, browsers, and operating systems makes your
