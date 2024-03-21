@@ -4,8 +4,6 @@
 
 # Settings page
 
-# Unused
-settings-meta-title = { -brand-fx-monitor } - Settings
 settings-page-title = { -product-short-name } Settings
 
 ## Breach alert preferences
@@ -18,8 +16,6 @@ settings-alert-preferences-option-two = Send all breach alerts to the primary em
 
 # Variables:
 #   $email (string) - Email address
-# Unused
-settings-email-label-primary = { $email } (primary)
 settings-email-list-title = Monitored email addresses
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -32,9 +28,6 @@ settings-email-limit-info =
 settings-email-verification-callout = Email verification required
 settings-resend-email-verification-link = Resend verification email
 settings-add-email-button = Add email address
-# Deprecated
-# Unused
-settings-delete-email-button = Delete email address
 settings-remove-email-button-label = Remove
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
@@ -50,13 +43,6 @@ settings-email-number-of-breaches-info =
         [one] Appears in { $breachCount } known breach.
        *[other] Appears in { $breachCount } known breaches.
   }
-
-## Cancel Premium subscription
-
-# Unused
-settings-cancel-premium-subscription-title = Cancel { -brand-premium } subscription
-# Unused
-settings-cancel-premium-subscription-info = Your subscription will revert to a free account after the current billing cycle ends. Your privacy protection scan results will be permanently deleted, and you’ll only have data breach monitoring for 1 email address.
 
 ## Deactivate account
 
@@ -75,30 +61,3 @@ settings-delete-monitor-free-account-dialog-cta-label = Delete account
 settings-delete-monitor-free-account-dialog-cancel-button-label = Never mind, take me back
 settings-delete-monitor-account-confirmation-toast-label-2 = Your { -brand-monitor } account is now deleted.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Dismiss
-
-## Add email dialog
-
-# Unused
-settings-email-dialog-title = Add another email address
-# Unused
-settings-add-email-text = Add a new email address to see if it’s been involved in a breach.
-# Unused
-settings-email-input-label = Email address
-# Unused
-settings-send-email-verification-button = Send verification link
-
-## Unsubscribe Dialog Survey
-
-# Unused
-settings-unsubscribe-dialog-title = We’re sorry to see you go. <br /> Will you tell us why you’re leaving?
-# Unused
-settings-unsubscribe-dialog-info = Your experience is important to us. We read every response and take it into consideration.
-# Unused
-settings-unsubscribe-dialog-message-placeholder = What could have gone better?
-# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
-# Unused
-settings-unsubscribe-dialog-confirmation = Please note, all of your { -brand-monitor-premium } services will be <a { $faq_href }>permanently deleted</a> after your current billing cycle ends.
-# Unused
-settings-unsubscribe-dialog-continue = Continue to cancellation
-# Unused
-settings-unsubscribe-dialog-cancel = Never mind, take me back
