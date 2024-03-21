@@ -82,12 +82,6 @@ dashboard-exposures-filter-date-found-last-seven-days = Last 7 days
 dashboard-exposures-filter-date-found-last-thirty-days = Last 30 days
 dashboard-exposures-filter-date-found-last-year = Last year
 dashboard-exposures-filter-status = Status
-# Unused
-dashboard-exposures-filter-status-action-needed = Action Needed
-# Unused
-dashboard-exposures-filter-status-in-progress = In Progress
-# Unused
-dashboard-exposures-filter-status-fixed = Fixed
 popover-open-filter-settings-alt = Select filters
 dashboard-exposures-filter-show-all = Show all
 dashboard-exposures-filter-show-results = Show results
