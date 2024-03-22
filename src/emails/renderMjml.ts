@@ -14,23 +14,7 @@ export function renderMjml(
   Object.entries(strings).forEach(([key, value]) => {
     const stringValue =
       typeof value === "string" ? value : renderToString(value);
-    mjmlWithVars = mjmlWithVars.replaceAll(
-      // Regular expression (with double escaping due to being defined a string):
-      //
-      //   \<%=   Starts with the characters `<%=`,
-      //
-      //   (\s*)  followed by zero or more (`*`) whitespace characters (`\s`)…
-      //
-      //   key    followed by the literal value of `key`
-      //
-      //   (\s*)  followed by, again, zero or more whitespace characters…
-      //
-      //   %\>    …and ends with the characters `%>`.
-      //
-      // All that combines to a string like "<%= variable-id-here %>".
-      new RegExp(`\\<%=(\\s*)${key}(\\s*)%\\>`, "g"),
-      stringValue,
-    );
+    mjmlWithVars = mjmlWithVars.replaceAll(key, stringValue);
   });
   return mjml2html(mjmlWithVars).html;
 }

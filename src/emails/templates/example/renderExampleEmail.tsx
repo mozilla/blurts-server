@@ -26,8 +26,8 @@ export function renderExampleEmail(
   const dateFormatter = new Intl.DateTimeFormat(getLocale(l10n), options);
 
   return renderMjml(template, {
-    "data-breach-header-1": l10n.getString("data-breach-header-1"),
-    "data-breach-body-1": l10n.getString("data-breach-body-1", {
+    "{data-breach-header-1}": l10n.getString("data-breach-header-1"),
+    "{data-breach-body-1}": l10n.getString("data-breach-body-1", {
       date: dateFormatter.format(params.breach.breachDate),
       company: params.breach.title,
     }),
@@ -39,7 +39,7 @@ export function renderExampleEmail(
     //                for the email server?)
     //                Possibly, we could consider getting the same effect with
     //                regular expressions, returning strings instead of JSX.
-    "questions-body-2": l10n.getFragment("questions-body-2", {
+    "{questions-body-2}": l10n.getFragment("questions-body-2", {
       elems: {
         "support-link": <a href="https://example.com" />,
       },
