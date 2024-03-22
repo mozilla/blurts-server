@@ -1069,7 +1069,7 @@ const InfoPopover = ({
         {...buttonProps}
         ref={triggerRef}
         className={styles.popoverTrigger}
-        aria-label={l10n.getString("tooltip-open-alt")}
+        aria-label={l10n.getString("open-tooltip-alt")}
       >
         <QuestionMarkCircle alt="" />
       </button>

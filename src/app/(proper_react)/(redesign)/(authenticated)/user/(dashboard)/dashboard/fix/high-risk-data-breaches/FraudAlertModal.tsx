@@ -42,7 +42,7 @@ export const FraudAlertModal = () => {
         {...buttonProps}
         ref={triggerRef}
         className={styles.triggerButton}
-        aria-label={l10n.getString("modal-open-alt")}
+        aria-label={l10n.getString("open-modal-alt")}
         aria-describedby={l10n.getString("ssn-modal-title")}
       >
         <QuestionMarkCircle alt="" width={18} height={18} />

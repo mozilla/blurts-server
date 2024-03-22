@@ -44,7 +44,7 @@ export const AboutBrokersIcon = () => {
             button_id: "guided_experience_data_brokers",
           });
         }}
-        aria-label={l10n.getString("modal-open-alt")}
+        aria-label={l10n.getString("open-modal-alt")}
         aria-describedby={l10n.getString(
           "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-title",
         )}
