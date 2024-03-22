@@ -70,15 +70,7 @@ settings-delete-monitor-free-account-dialog-title = Váš účet služby { -bran
 settings-delete-monitor-free-account-dialog-lead = Všetky informácie o vašom účte služby { -brand-monitor } budú odstránené a my už nebudeme monitorovať nové úniky údajov. Týmto sa neodstráni váš účet { -brand-mozilla }.
 settings-delete-monitor-free-account-dialog-cta-label = Odstrániť účet
 settings-delete-monitor-free-account-dialog-cancel-button-label = Rozmyslel som si to
-settings-delete-monitor-plus-account-title = Odstrániť účet služby { -brand-monitor }
-settings-delete-monitor-plus-account-description = Týmto natrvalo odstránite svoj účet služby { -brand-monitor } a okamžite ukončíte platené predplatné { -brand-monitor-plus }.
-settings-delete-monitor-plus-account-cta-label = Odstrániť účet
-settings-delete-monitor-plus-account-dialog-title = Váš účet služby { -brand-monitor } bude natrvalo odstránený.
-settings-delete-monitor-plus-account-dialog-lead-p1 = Všetky informácie o vašom účte služby { -brand-monitor } budú odstránené a my už nebudeme monitorovať nové úniky údajov alebo vystavenie sprostredkovateľom údajov. Týmto sa neodstráni váš účet { -brand-mozilla }.
-settings-delete-monitor-plus-account-dialog-lead-p2 = Vaše platené predplatné sa dnes skončí a za zvyšok predplatného vám nebude vyplatená pomerná časť.
-settings-delete-monitor-plus-account-dialog-cta-label = Odstrániť účet
-settings-delete-monitor-plus-account-dialog-cancel-button-label = Rozmyslel som si to
-settings-delete-monitor-account-confirmation-toast-label = Váš účet služby { -brand-monitor } je teraz natrvalo odstránený.
+settings-delete-monitor-account-confirmation-toast-label-2 = Váš účet služby { -brand-monitor } je teraz odstránený.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Zavrieť
 
 ## Add email dialog

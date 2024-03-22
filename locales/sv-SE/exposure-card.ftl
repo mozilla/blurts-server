@@ -2,8 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Expandera
-chevron-up-alt = Fäll ihop
+chevron-alt = Exponeringsdetaljer
 exposure-card-exposure-type = Exponeringstyp
 exposure-card-date-found = Datum för exponering
 

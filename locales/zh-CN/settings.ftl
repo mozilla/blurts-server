@@ -58,15 +58,7 @@ settings-delete-monitor-free-account-dialog-title = 您的 { -brand-monitor } �
 settings-delete-monitor-free-account-dialog-lead = 您的 { -brand-monitor } 账户信息将被全部删除，并且我们将不再监控新的数据外泄事件。此操作不会删除您的 { -brand-mozilla } 账户。
 settings-delete-monitor-free-account-dialog-cta-label = 删除账户
 settings-delete-monitor-free-account-dialog-cancel-button-label = 我再想想
-settings-delete-monitor-plus-account-title = 删除 { -brand-monitor } 账户
-settings-delete-monitor-plus-account-description = 此操作将永久删除您的 { -brand-monitor } 账户，并立即终止您已付费的 { -brand-monitor-plus } 订阅。
-settings-delete-monitor-plus-account-cta-label = 删除账户
-settings-delete-monitor-plus-account-dialog-title = 您的 { -brand-monitor } 账户将被永久删除
-settings-delete-monitor-plus-account-dialog-lead-p1 = 您的 { -brand-monitor } 账户信息将被全部删除，并且我们将不再监控新的数据外泄事件，以及出现在数据代理商手中的暴露。此操作不会删除您的 { -brand-mozilla } 账户。
-settings-delete-monitor-plus-account-dialog-lead-p2 = 您已付费的订阅将在今天终止，且您无法获得剩余订阅天数的退款。
-settings-delete-monitor-plus-account-dialog-cta-label = 删除账户
-settings-delete-monitor-plus-account-dialog-cancel-button-label = 我再想想
-settings-delete-monitor-account-confirmation-toast-label = 您的 { -brand-monitor } 账户已被永久删除。
+settings-delete-monitor-account-confirmation-toast-label-2 = 您的 { -brand-monitor } 账户已被删除。
 settings-delete-monitor-account-confirmation-toast-dismiss-label = 知道了
 
 ## Add email dialog

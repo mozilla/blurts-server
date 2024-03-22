@@ -59,16 +59,12 @@ settings-fxa-link-label-3 = { -brand-mozilla-account } ayarlarına gidin
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = { -brand-monitor } hesabını sil
+settings-delete-monitor-free-account-description = Bu işlem { -brand-monitor } hesabınızı kalıcı olarak silecek ve tüm bildirimleri kapatacaktır.
 settings-delete-monitor-free-account-cta-label = Hesabı sil
 settings-delete-monitor-free-account-dialog-title = { -brand-monitor } hesabınız kalıcı olarak silinecektir
 settings-delete-monitor-free-account-dialog-cta-label = Hesabı sil
 settings-delete-monitor-free-account-dialog-cancel-button-label = Vazgeçtim, geri dön
-settings-delete-monitor-plus-account-title = { -brand-monitor } hesabımı sil
-settings-delete-monitor-plus-account-cta-label = Hesabı sil
-settings-delete-monitor-plus-account-dialog-title = { -brand-monitor } hesabınız kalıcı olarak silinecektir
-settings-delete-monitor-plus-account-dialog-cta-label = Hesabı sil
-settings-delete-monitor-plus-account-dialog-cancel-button-label = Vazgeçtim, geri dön
-settings-delete-monitor-account-confirmation-toast-label = { -brand-monitor } hesabınız kalıcı olarak silindi.
+settings-delete-monitor-account-confirmation-toast-label-2 = { -brand-monitor } hesabınız silindi.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Kapat
 
 ## Add email dialog

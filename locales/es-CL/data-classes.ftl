@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = Estados de cuentas
@@ -14,7 +19,7 @@ avatars = Avatares
 bank-account-numbers = Números de cuentas bancarias
 beauty-ratings = Clasificaciones de belleza
 biometric-data = Datos biométricos
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Biografías
 browser-user-agent-details = Detalles del agente de usuario del navegador
@@ -25,6 +30,7 @@ career-levels = Nivel profesional
 cellular-network-names = Nombres de redes celulares
 charitable-donations = Donaciones de caridad
 chat-logs = Registros de chat
+citizenship-statuses = Estado de ciudadanía
 clothing-sizes = Tallas de ropa
 credit-card-cvv = CVV de tarjeta de crédito
 credit-cards = Tarjetas de crédito
@@ -35,7 +41,7 @@ customer-interactions = Interacciones con clientes
 dates-of-birth = Fechas de nacimiento
 deceased-date = Fecha de fallecimiento
 deceased-statuses = Estados de fallecimiento
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Instrucciones de entrega
 device-information = Información del dispositivo
@@ -75,7 +81,7 @@ instant-messenger-identities = Identidades de mensajería instantánea
 ip-addresses = Direcciones IP
 job-applications = Solicitudes de empleo
 job-titles = Puestos de trabajo
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Placas de patente
 living-costs = Costos de vida
 # This string refers to financial loans.
