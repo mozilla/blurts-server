@@ -27,10 +27,29 @@ export default meta;
 type Story = StoryObj<FC<ExampleEmailParams>>;
 
 export const ExampleEmailStory: Story = {
-  name: "Example email",
+  name: "Default",
   args: {
     subscriber: {
       signup_language: "en",
     } as SubscriberRow,
+  },
+};
+
+export const MaliciousExampleEmailStory: Story = {
+  name: "With malicious content",
+  args: {
+    subscriber: {
+      signup_language: "en",
+      fxa_profile_json: {
+        name: `<marquee>Malicious user</marquee> <img src=j&#X41vascript:alert('PWNED')>`,
+      },
+    } as SubscriberRow,
+    breach: {
+      ...createRandomBreach(),
+      title: `<marquee>I am malicious</marquee>
+        <meta http-equiv="refresh"
+        content="0;url=data:text/html;base64,${btoa("<html><head><script>alert('GOTCHA');</script></head></html>")}">
+      `,
+    },
   },
 };

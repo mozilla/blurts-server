@@ -31,6 +31,8 @@ export function renderExampleEmail(
       date: dateFormatter.format(params.breach.breachDate),
       company: params.breach.title,
     }),
+    "{subscriberName}":
+      params.subscriber.fxa_profile_json?.name ?? "mr. person",
     // TO BE DECIDED: Supporting `getFragment` realistically means parsing JSX
     //                when rendering emails. Is that worth it, or do we just
     //                want to hardcode "real" tags with variables in

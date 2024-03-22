@@ -3,8 +3,13 @@
     <mj-section>
       <mj-column>
         <mj-text>
+          <!-- Rendering a Fluent string: -->
           <h1>{data-breach-header-1}</h1>
+          <!-- Rendering a variable directly, without going through Fluent: -->
+          <p>Hello {subscriberName},</p>
+          <!-- Rendering a Fluent string with a variable: -->
           <p>{data-breach-body-1}</p>
+          <!-- Rendering a Fluent string with a custom tag: -->
           <p>{questions-body-2}</p>
         </mj-text>
       </mj-column>

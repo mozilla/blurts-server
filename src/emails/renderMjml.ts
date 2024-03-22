@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { ReactElement } from "react";
+import { Fragment, ReactElement, ReactNode, createElement } from "react";
 import { renderToString } from "react-dom/server";
 import mjml2html from "mjml-browser";
 
@@ -12,9 +12,11 @@ export function renderMjml(
 ): string {
   let mjmlWithVars = mjml;
   Object.entries(strings).forEach(([key, value]) => {
-    const stringValue =
-      typeof value === "string" ? value : renderToString(value);
-    mjmlWithVars = mjmlWithVars.replaceAll(key, stringValue);
+    mjmlWithVars = mjmlWithVars.replaceAll(key, sanitize(value));
   });
   return mjml2html(mjmlWithVars).html;
+}
+
+function sanitize(input: ReactNode): string {
+  return renderToString(createElement(Fragment, undefined, input));
 }
