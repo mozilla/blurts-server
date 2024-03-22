@@ -5,7 +5,8 @@
         <mj-text>
           <!-- Rendering a Fluent string: -->
           <h1>{data-breach-header-1}</h1>
-          <!-- Rendering a variable directly, without going through Fluent: -->
+          <!-- Rendering a variable directly, without going through Fluent. -->
+          <!-- Only intended to demonstrate sanitisation; DO NOT USE IN REAL CODE: -->
           <p>Hello {subscriberName},</p>
           <!-- Rendering a Fluent string with a variable: -->
           <p>{data-breach-body-1}</p>
