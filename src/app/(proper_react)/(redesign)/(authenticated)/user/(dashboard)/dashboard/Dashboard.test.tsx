@@ -561,7 +561,7 @@ it("opens and closes the premium upsell dialog via the Premium upsell badge)", a
   expect(
     screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).toBeInTheDocument();
-  const closeButtonIcon1 = screen.getByLabelText("Close");
+  const closeButtonIcon1 = screen.getByLabelText("Close modal");
   await user.click(closeButtonIcon1.parentElement as HTMLElement);
   expect(
     screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
@@ -572,7 +572,7 @@ it("opens and closes the premium upsell dialog via the Premium upsell badge)", a
   expect(
     screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).toBeInTheDocument();
-  const closeButtonIcon2 = screen.getByLabelText("Close");
+  const closeButtonIcon2 = screen.getByLabelText("Close modal");
   await user.click(closeButtonIcon2.parentElement as HTMLElement);
   expect(
     screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
@@ -596,7 +596,7 @@ it("opens and closes the premium upsell dialog via the Premium upsell button", a
   expect(
     screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).toBeInTheDocument();
-  const closeButtonIcon1 = screen.getByLabelText("Close");
+  const closeButtonIcon1 = screen.getByLabelText("Close modal");
   await user.click(closeButtonIcon1.parentElement as HTMLElement);
   expect(
     screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
@@ -1335,7 +1335,7 @@ it("shows and closes a dialog that informs US users, without Premium, when we hi
       name: "⁨Monitor⁩ is currently at capacity",
     }),
   ).toBeInTheDocument();
-  const closeButtonIcon1 = screen.getByLabelText("Close");
+  const closeButtonIcon1 = screen.getByLabelText("Close modal");
   await user.click(closeButtonIcon1.parentElement as HTMLElement);
   expect(
     screen.queryByRole("dialog", {
@@ -2627,7 +2627,7 @@ it("does not explain what 'in progress' means for users who cannot get Plus", as
 
   const statusHeading = screen.getByText("Status");
   const statusExplainerDialogTrigger = getByRole(statusHeading, "button", {
-    name: "Open",
+    name: "Open modal",
   });
   await user.click(statusExplainerDialogTrigger);
   expect(
@@ -3132,7 +3132,7 @@ it("send telemetry when users open/close 'number of active exposure' info popup"
   // test:
   jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
-  const numberOfExposuresInfoPopup = screen.queryAllByLabelText("Open");
+  const numberOfExposuresInfoPopup = screen.queryAllByLabelText("Open modal");
   await user.click(numberOfExposuresInfoPopup[0]);
   expect(mockedRecord).toHaveBeenCalledWith(
     "popup",
