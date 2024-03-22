@@ -33,14 +33,6 @@ export function renderExampleEmail(
     }),
     "{subscriberName}":
       params.subscriber.fxa_profile_json?.name ?? "mr. person",
-    // TO BE DECIDED: Supporting `getFragment` realistically means parsing JSX
-    //                when rendering emails. Is that worth it, or do we just
-    //                want to hardcode "real" tags with variables in
-    //                attributes in our .ftl files?
-    //                (i.e. do we want to make life harder for localisers, or
-    //                for the email server?)
-    //                Possibly, we could consider getting the same effect with
-    //                regular expressions, returning strings instead of JSX.
     "{questions-body-2}": l10n.getFragment("questions-body-2", {
       elems: {
         "support-link": <a href="https://example.com" />,
