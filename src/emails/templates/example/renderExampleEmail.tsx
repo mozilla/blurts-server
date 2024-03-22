@@ -26,14 +26,14 @@ export function renderExampleEmail(
   const dateFormatter = new Intl.DateTimeFormat(getLocale(l10n), options);
 
   return renderMjml(template, {
-    "{data-breach-header-1}": l10n.getString("data-breach-header-1"),
-    "{data-breach-body-1}": l10n.getString("data-breach-body-1", {
+    "{headerMessage}": l10n.getString("data-breach-header-1"),
+    "{bodyMessage}": l10n.getString("data-breach-body-1", {
       date: dateFormatter.format(params.breach.breachDate),
       company: params.breach.title,
     }),
     "{subscriberName}":
       params.subscriber.fxa_profile_json?.name ?? "mr. person",
-    "{questions-body-2}": l10n.getFragment("questions-body-2", {
+    "{questionsMessage}": l10n.getFragment("questions-body-2", {
       elems: {
         "support-link": <a href="https://example.com" />,
       },
