@@ -2,8 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Expandir
-chevron-up-alt = Recolher
+chevron-alt = Detalhes da exposição
 exposure-card-exposure-type = Tipo de exposição
 exposure-card-date-found = Data da exposição
 

@@ -66,15 +66,7 @@ settings-delete-monitor-free-account-dialog-title = Ditt { -brand-monitor }-kont
 settings-delete-monitor-free-account-dialog-lead = All din { -brand-monitor }-kontoinformation kommer att raderas och vi kommer inte längre att övervaka nya dataintrång. Detta tar inte bort ditt { -brand-mozilla }-konto.
 settings-delete-monitor-free-account-dialog-cta-label = Ta bort konto
 settings-delete-monitor-free-account-dialog-cancel-button-label = Glöm det, ta mig tillbaka
-settings-delete-monitor-plus-account-title = Ta bort { -brand-monitor }-konto
-settings-delete-monitor-plus-account-description = Detta tar bort ditt { -brand-monitor }-konto permanent och din betalda { -brand-monitor-plus }-prenumeration avslutas omedelbart.
-settings-delete-monitor-plus-account-cta-label = Ta bort konto
-settings-delete-monitor-plus-account-dialog-title = Ditt { -brand-monitor }-konto kommer att tas bort permanent
-settings-delete-monitor-plus-account-dialog-lead-p1 = All din { -brand-monitor }-kontoinformation kommer att raderas och vi kommer inte längre att övervaka efter nya dataintrång eller exponeringar av data. Detta tar inte bort ditt { -brand-mozilla }-konto.
-settings-delete-monitor-plus-account-dialog-lead-p2 = Din betalda prenumeration upphör idag och du debiteras inte proportionellt för resten av din prenumeration.
-settings-delete-monitor-plus-account-dialog-cta-label = Ta bort konto
-settings-delete-monitor-plus-account-dialog-cancel-button-label = Glöm det, ta mig tillbaka
-settings-delete-monitor-account-confirmation-toast-label = Ditt { -brand-monitor }-konto är nu permanent borttaget.
+settings-delete-monitor-account-confirmation-toast-label-2 = Ditt { -brand-monitor }-konto är nu raderat.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Ignorera
 
 ## Add email dialog

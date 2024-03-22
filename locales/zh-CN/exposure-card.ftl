@@ -2,8 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = 展开
-chevron-up-alt = 折叠
+chevron-alt = 暴露详情
 exposure-card-exposure-type = 暴露类型
 exposure-card-date-found = 暴露日期
 
