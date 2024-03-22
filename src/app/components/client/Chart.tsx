@@ -328,16 +328,17 @@ export const DoughnutChart = (props: Props) => {
               })
             : l10n.getString("exposure-chart-caption")}
           <button
-            aria-label={l10n.getString("modal-open-alt")}
             // TODO: Add unit test when changing this code:
             /* c8 ignore next */
             onClick={() => explainerDialogState.open()}
+            aria-label={l10n.getString("modal-open-alt")}
+            aria-describedby={
+              props.isShowFixed
+                ? l10n.getString("modal-fixed-number-of-exposures-title")
+                : l10n.getString("modal-active-number-of-exposures-title")
+            }
           >
-            <QuestionMarkCircle
-              width="15"
-              height="15"
-              alt={l10n.getString("modal-open-alt")}
-            />
+            <QuestionMarkCircle width="15" height="15" alt="" />
           </button>
         </figcaption>
       </figure>

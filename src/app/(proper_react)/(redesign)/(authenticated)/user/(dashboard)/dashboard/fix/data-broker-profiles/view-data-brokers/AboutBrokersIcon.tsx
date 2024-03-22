@@ -44,14 +44,12 @@ export const AboutBrokersIcon = () => {
             button_id: "guided_experience_data_brokers",
           });
         }}
+        aria-label={l10n.getString("modal-open-alt")}
+        aria-describedby={l10n.getString(
+          "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-title",
+        )}
       >
-        <QuestionMarkCircle
-          alt={l10n.getString(
-            "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-trigger-label",
-          )}
-          width={18}
-          height={18}
-        />
+        <QuestionMarkCircle alt="" width={18} height={18} />
       </button>
       {overlayTriggerState.isOpen && (
         <ModalOverlay

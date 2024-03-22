@@ -1069,12 +1069,9 @@ const InfoPopover = ({
         {...buttonProps}
         ref={triggerRef}
         className={styles.popoverTrigger}
+        aria-label={l10n.getString("tooltip-open-alt")}
       >
-        <QuestionMarkCircle
-          alt={l10n.getString(
-            "landing-premium-plans-table-feature-callout-trigger",
-          )}
-        />
+        <QuestionMarkCircle alt="" />
       </button>
       {triggerState.isOpen && (
         <Popover

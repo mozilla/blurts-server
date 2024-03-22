@@ -81,10 +81,15 @@ export const ProgressCard = (props: Props) => {
         )}
         {props.isEligibleForPremium && (
           <button
-            aria-label={l10n.getString("modal-open-alt")}
             ref={explainerDialogTriggerRef}
             {...explainerDialogTriggerProps}
             onClick={() => explainerDialogState.open()}
+            aria-label={l10n.getString("modal-open-alt")}
+            aria-describedby={l10n.getString(
+              props.isPremiumUser
+                ? "progress-card-heres-what-we-fixed-headline-premium"
+                : "progress-card-heres-what-we-fixed-headline-all",
+            )}
           >
             <QuestionMarkCircle alt="" width="15" height="15" />
           </button>

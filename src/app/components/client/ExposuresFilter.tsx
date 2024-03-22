@@ -260,12 +260,11 @@ export const ExposuresFilter = ({
                   {...exposureTypeExplainerTriggerProps}
                   ref={exposureTypeExplainerTriggerRef}
                   aria-label={l10n.getString("modal-open-alt")}
+                  aria-describedby={l10n.getString(
+                    "dashboard-exposures-filter-exposure-type",
+                  )}
                 >
-                  <QuestionMarkCircle
-                    width="15"
-                    height="15"
-                    alt={l10n.getString("modal-open-alt")}
-                  />
+                  <QuestionMarkCircle width="15" height="15" alt="" />
                 </button>
               )}
             </li>
@@ -279,12 +278,11 @@ export const ExposuresFilter = ({
               {...exposureStatusExplainerTriggerProps}
               ref={exposureStatusExplainerTriggerRef}
               aria-label={l10n.getString("modal-open-alt")}
+              aria-describedby={l10n.getString(
+                "dashboard-exposures-filter-status",
+              )}
             >
-              <QuestionMarkCircle
-                width="15"
-                height="15"
-                alt={l10n.getString("modal-open-alt")}
-              />
+              <QuestionMarkCircle width="15" height="15" alt="" />
             </button>
           </li>
         </ul>

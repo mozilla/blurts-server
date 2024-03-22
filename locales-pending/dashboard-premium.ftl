@@ -41,7 +41,7 @@ dashboard-exposures-filter-exposure-type = Exposure type
 dashboard-exposures-filter-exposure-type-info-for-sale = Your info for sale
 dashboard-exposures-filter-exposure-type-data-breach = Data breach
 
-# About Exposure Types Modal
+# About Exposure Types ModFal
 
 modal-exposure-type-title = About exposure types
 # Variables:

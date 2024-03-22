@@ -21,6 +21,7 @@ exposure-chart-legend-heading-nr = Number
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
 exposure-chart-caption = This chart shows how many times your info is actively exposed.
+
 # Variables:
 #   $total_fixed_exposures_num (number) - Number of fixed exposures
 #   $total_exposures_num (number) - Number of total exposures
@@ -43,8 +44,9 @@ modal-fixed-number-of-exposures-title = About your number of fixed exposures
 modal-fixed-number-of-exposures-all = This chart includes the total number of data breaches that have been fixed for all email addresses you’re currently monitoring. Once exposures are marked as fixed, they’ll be added to the total here.
 
 modal-cta-ok = OK
-modal-open-alt = Open
-modal-close-alt = Close
+modal-open-alt = Open modal
+modal-close-alt = Close modal
+tooltip-open-alt = Open tooltip
 
 progress-card-heres-what-we-fixed-headline-all = Here’s what you fixed
 progress-card-manually-fixed-headline = Manually fixed
