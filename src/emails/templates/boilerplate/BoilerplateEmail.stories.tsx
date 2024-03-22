@@ -5,20 +5,15 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { FC } from "react";
 import { SubscriberRow } from "knex/types/tables";
-import template from "./index.mjml?raw";
-import {
-  BoilerplateEmailParams,
-  renderBoilerplateEmail,
-} from "./renderBoilerplateEmail";
+import { Props, BoilerplateEmail } from "./BoilerplateEmail";
+import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
 
-const meta: Meta<FC<BoilerplateEmailParams>> = {
+const meta: Meta<FC<Props>> = {
   title: "Emails/Email boilerplate",
-  component: (props: BoilerplateEmailParams) => (
-    <div
-      dangerouslySetInnerHTML={{
-        __html: renderBoilerplateEmail(template, props),
-      }}
-    />
+  component: (props: Props) => (
+    <StorybookEmailRenderer>
+      <BoilerplateEmail {...props} />
+    </StorybookEmailRenderer>
   ),
   args: {
     subscriber: {
@@ -28,7 +23,7 @@ const meta: Meta<FC<BoilerplateEmailParams>> = {
 };
 
 export default meta;
-type Story = StoryObj<FC<BoilerplateEmailParams>>;
+type Story = StoryObj<FC<Props>>;
 
 export const BoilerplateEmailStory: Story = {
   name: "Email boilerplate",
