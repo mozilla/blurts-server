@@ -651,7 +651,7 @@ it("shows chart tooltip on the action needed tab, non-US user", async () => {
   );
   expect(chartCaption).toBeInTheDocument();
   const chartTooltip = within(chartCaption).getByRole("button", {
-    name: "Open",
+    name: "Open modal",
   });
   expect(chartTooltip).toBeInTheDocument();
   await user.click(chartTooltip);
@@ -681,7 +681,7 @@ it("shows chart tooltip on the fixed tab, non-US user", async () => {
   );
   expect(chartCaption).toBeInTheDocument();
   const chartTooltip = within(chartCaption).getByRole("button", {
-    name: "Open",
+    name: "Open modal",
   });
   expect(chartTooltip).toBeInTheDocument();
   await user.click(chartTooltip);
@@ -711,7 +711,7 @@ it("shows chart tooltip on the action needed tab, US user", async () => {
   );
   expect(chartCaption).toBeInTheDocument();
   const chartTooltip = within(chartCaption).getByRole("button", {
-    name: "Open",
+    name: "Open modal",
   });
   expect(chartTooltip).toBeInTheDocument();
   await user.click(chartTooltip);
@@ -744,7 +744,7 @@ it("shows chart tooltip on the fixed tab, US user", async () => {
   );
   expect(chartCaption).toBeInTheDocument();
   const chartTooltip = within(chartCaption).getByRole("button", {
-    name: "Open",
+    name: "Open modal",
   });
   expect(chartTooltip).toBeInTheDocument();
   await user.click(chartTooltip);
@@ -2645,7 +2645,7 @@ it("explains what 'in progress' means for Plus users", async () => {
 
   const statusHeading = screen.getByText("Status");
   const statusExplainerDialogTrigger = getByRole(statusHeading, "button", {
-    name: "Open",
+    name: "Open modal",
   });
   await user.click(statusExplainerDialogTrigger);
   expect(
