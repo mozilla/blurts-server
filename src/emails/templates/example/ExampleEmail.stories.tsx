@@ -3,20 +3,17 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import template from "./index.mjml?raw";
-import { ExampleEmailParams, renderExampleEmail } from "./renderExampleEmail";
-import { FC } from "react";
+import { Props, ExampleEmail } from "./ExampleEmail";
 import { SubscriberRow } from "knex/types/tables";
 import { createRandomBreach } from "../../../apiMocks/mockData";
+import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
 
-const meta: Meta<FC<ExampleEmailParams>> = {
+const meta: Meta<typeof ExampleEmail> = {
   title: "Emails/Example email",
-  component: (props: ExampleEmailParams) => (
-    <div
-      dangerouslySetInnerHTML={{
-        __html: renderExampleEmail(template, props),
-      }}
-    />
+  component: (props: Props) => (
+    <StorybookEmailRenderer>
+      <ExampleEmail {...props} />
+    </StorybookEmailRenderer>
   ),
   args: {
     breach: createRandomBreach(),
@@ -24,7 +21,7 @@ const meta: Meta<FC<ExampleEmailParams>> = {
 };
 
 export default meta;
-type Story = StoryObj<FC<ExampleEmailParams>>;
+type Story = StoryObj<typeof ExampleEmail>;
 
 export const ExampleEmailStory: Story = {
   name: "Default",
