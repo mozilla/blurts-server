@@ -2,8 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Mở rộng
-chevron-up-alt = Thu gọn
+chevron-alt = Chi tiết dữ liệu bị lộ
 exposure-card-exposure-type = Loại vụ rò rỉ
 exposure-card-date-found = Ngày vụ rò rỉ
 
