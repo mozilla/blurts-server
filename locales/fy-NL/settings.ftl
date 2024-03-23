@@ -66,15 +66,7 @@ settings-delete-monitor-free-account-dialog-title = Jo { -brand-monitor }-accoun
 settings-delete-monitor-free-account-dialog-lead = Al jo { -brand-monitor }-accountgegevens wurde fuortsmiten en wy kontrolearje net mear op nije datalekken. Dit sil jo { -brand-mozilla }-account net fuortsmite.
 settings-delete-monitor-free-account-dialog-cta-label = Account fuortsmite
 settings-delete-monitor-free-account-dialog-cancel-button-label = Lit mar, bring my werom
-settings-delete-monitor-plus-account-title = { -brand-monitor }-account fuortsmite
-settings-delete-monitor-plus-account-description = Hjirmei wurdt jo { -brand-monitor }-account permanint fuortsmiten en wurdt jo betelle { -brand-monitor-plus }-abonnemint daliks beëinige.
-settings-delete-monitor-plus-account-cta-label = Account fuortsmite
-settings-delete-monitor-plus-account-dialog-title = Jo { -brand-monitor }-account wurdt permanint fuortsmiten
-settings-delete-monitor-plus-account-dialog-lead-p1 = Al jo { -brand-monitor }-accountgegevens wurde fuortsmiten en wy kontrolearje net mear op nije datalekken of lekken nei gegevenshannelers. Dit sil jo { -brand-mozilla }-account net fuortsmite.
-settings-delete-monitor-plus-account-dialog-lead-p2 = Jo betelle abonnemint einiget hjoed en de rest fan jo abonnemint wurdt net nei rato fakturearre.
-settings-delete-monitor-plus-account-dialog-cta-label = Account fuortsmite
-settings-delete-monitor-plus-account-dialog-cancel-button-label = Lit mar, bring my werom
-settings-delete-monitor-account-confirmation-toast-label = Jo { -brand-monitor }-account is no permanint fuortsmiten
+settings-delete-monitor-account-confirmation-toast-label-2 = Jo { -brand-monitor }-account is no fuortsmiten
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Slute
 
 ## Add email dialog

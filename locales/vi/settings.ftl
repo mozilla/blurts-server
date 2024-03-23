@@ -58,15 +58,7 @@ settings-delete-monitor-free-account-dialog-title = Tài khoản { -brand-monito
 settings-delete-monitor-free-account-dialog-lead = Tất cả thông tin tài khoản { -brand-monitor } của bạn sẽ bị xóa và chúng tôi sẽ không còn theo dõi các rò rỉ dữ liệu mới cho bạn. Điều này sẽ không xoá tài khoản { -brand-mozilla } của bạn.
 settings-delete-monitor-free-account-dialog-cta-label = Xóa tài khoản
 settings-delete-monitor-free-account-dialog-cancel-button-label = Nghĩ lại rồi, đưa tôi quay lại
-settings-delete-monitor-plus-account-title = Xoá tài khoản { -brand-monitor }
-settings-delete-monitor-plus-account-description = Điều này sẽ xoá tài khoản { -brand-monitor } của bạn vĩnh viễn và ngay lập tức kết thúc khoản thanh toán thuê bao { -brand-monitor-plus } của bạn.
-settings-delete-monitor-plus-account-cta-label = Xóa tài khoản
-settings-delete-monitor-plus-account-dialog-title = Tài khoản { -brand-monitor } của bạn sẽ bị xoá vĩnh viễn
-settings-delete-monitor-plus-account-dialog-lead-p1 = Tất cả thông tin tài khoản { -brand-monitor } của bạn sẽ bị xóa và chúng tôi sẽ không còn theo dõi các rò rỉ dữ liệu mới hoặc môi giới dữ liệu bị lộ mới cho bạn. Điều này sẽ không xoá tài khoản { -brand-mozilla } của bạn.
-settings-delete-monitor-plus-account-dialog-lead-p2 = Thuê bao trả phí của bạn sẽ kết thúc vào hôm nay và bạn sẽ không được tính theo tỷ lệ cho thời gian còn lại của thuê bao.
-settings-delete-monitor-plus-account-dialog-cta-label = Xóa tài khoản
-settings-delete-monitor-plus-account-dialog-cancel-button-label = Nghĩ lại rồi, đưa tôi quay lại
-settings-delete-monitor-account-confirmation-toast-label = Tài khoản { -brand-monitor } của bạn hiện đã bị xóa vĩnh viễn.
+settings-delete-monitor-account-confirmation-toast-label-2 = Tài khoản { -brand-monitor } của bạn đã bị xóa.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Bỏ qua
 
 ## Add email dialog
