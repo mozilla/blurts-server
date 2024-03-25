@@ -25,49 +25,49 @@
     }
   }
 
-  .productPlans {
-    & > div {
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    [role="tablist"] {
-      background: $color-grey-10;
-      border-radius: $border-radius-xl;
-      gap: 0;
-      padding: $spacing-xs;
-    }
-
-    [role="tab"] {
-      border-radius: $border-radius-xl;
-      color: $color-grey-40;
-      padding: $spacing-xs $spacing-md;
-
-      &[aria-selected="true"] {
-        background: white;
-        color: $color-blue-50;
-      }
-      &::after {
-        display: none;
-      }
-    }
-
-    [role="tabpanel"] {
-      display: flex;
-      flex-direction: column;
-      gap: $spacing-xl;
-      padding: $spacing-sm 0;
-    }
+  .priceSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-sm;
 
     .pricingInfo {
       font-weight: 600;
       text-align: center;
     }
+    .cost {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: $spacing-md;
+
+      .price {
+        font: $text-title-sm;
+      }
+
+      .total {
+        display: block;
+        color: $color-grey-40;
+
+        em {
+          font-weight: 700;
+          font-style: normal;
+        }
+      }
+    }
+
+    .cta {
+      font-weight: 700;
+    }
+
+    .reassurance {
+      font: $text-body-sm;
+      font-weight: 400;
+    }
   }
 
   .pricingPill {
+    margin-top: $spacing-lg;
     align-items: center;
     border-radius: $border-radius-xl;
     border: 2px solid $color-purple-70;
