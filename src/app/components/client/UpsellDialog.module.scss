@@ -31,38 +31,14 @@
     align-items: center;
     gap: $spacing-sm;
 
-    .pricingInfo {
-      font-weight: 600;
-      text-align: center;
-    }
-    .cost {
+    .pricingInfoWrapper {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: $spacing-md;
 
-      .price {
-        font: $text-title-sm;
+      .pricingInfo {
+        font-weight: 600;
+        text-align: center;
       }
-
-      .total {
-        display: block;
-        color: $color-grey-40;
-
-        em {
-          font-weight: 700;
-          font-style: normal;
-        }
-      }
-    }
-
-    .cta {
-      font-weight: 700;
-    }
-
-    .reassurance {
-      font: $text-body-sm;
-      font-weight: 400;
     }
   }
 

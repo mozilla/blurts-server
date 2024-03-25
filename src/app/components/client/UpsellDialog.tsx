@@ -43,7 +43,7 @@ function PremiumPricingLabel({
   );
 
   return (
-    <>
+    <div className={styles.pricingInfoWrapper}>
       <small className={styles.pricingInfo}>
         {l10n.getString(
           "fix-flow-data-broker-profiles-automatic-remove-save-percent",
@@ -76,7 +76,7 @@ function PremiumPricingLabel({
           )}
         </b>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -279,5 +279,4 @@ function UpsellDialog({
     )
   );
 }
-
 export { UpsellDialog };
