@@ -30,6 +30,7 @@ career-levels = Kariyer seviyeleri
 cellular-network-names = Hücresel şebeke adları
 charitable-donations = Bağışlar
 chat-logs = Sohbet kayıtları
+citizenship-statuses = Vatandaşlık durumları
 clothing-sizes = Kıyafet bedenleri
 credit-card-cvv = Kredi kartı CVV
 credit-cards = Kredi kartları
