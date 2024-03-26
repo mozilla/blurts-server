@@ -5,10 +5,13 @@
 import { ReactLocalization } from "@fluent/react";
 import { SubscriberRow } from "knex/types/tables";
 import { resetUnverifiedEmailAddress } from "../../../db/tables/emailAddresses.js";
-import { sendEmail, getVerificationUrl } from "../../../utils/email";
+import { sendEmail, getVerificationUrl } from "../../../utils/email.js";
 import { getStringLookup } from "../../../utils/fluent.js";
 import { getTemplate } from "../../../emails/email2022.js";
 import { verifyPartial } from "../../../emails/emailVerify.js";
+import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
+import { renderEmail } from "../../../emails/renderEmail";
+import { VerifyEmailAddressEmail } from "../../../emails/templates/verifyEmailAddress/VerifyEmailAddressEmail";
 
 export async function sendVerificationEmail(
   user: SubscriberRow,
@@ -30,9 +33,21 @@ export async function sendVerificationEmail(
     subheading: "email-verify-subhead",
     partial: { name: "verify" },
   };
+
+  const enabledFlags = await getEnabledFeatureFlags({
+    email: user.primary_email,
+  });
+
   await sendEmail(
     recipientEmail,
     getMessage("email-subject-verify"),
-    getTemplate(data, verifyPartial, l10n),
+    enabledFlags.includes("RedesignedEmails")
+      ? renderEmail(
+          <VerifyEmailAddressEmail
+            emailAddress={unverifiedEmailAddressRecord}
+            subscriber={user}
+          />,
+        )
+      : getTemplate(data, verifyPartial, l10n),
   );
 }

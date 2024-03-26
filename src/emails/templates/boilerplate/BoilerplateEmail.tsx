@@ -17,7 +17,7 @@ export type Props = {
  * dynamic user data as props. The back-end can then pass in the relevant data
  * and render it to a string before sending it to the user, using e.g.
  *
- * mjml2html(renderToString(<BoilerplateEmail subscriber={subscriber} />)).html
+ * mjml2html(renderToStaticMarkup(<BoilerplateEmail subscriber={subscriber} />)).html
  *
  * Keep in mind that this means that the component is rendered just once, to
  * generate static MJML (which, in turn, is turned into HTML). In other words,
