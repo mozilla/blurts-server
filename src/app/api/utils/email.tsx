@@ -12,6 +12,7 @@ import { verifyPartial } from "../../../emails/emailVerify.js";
 import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
 import { renderEmail } from "../../../emails/renderEmail";
 import { VerifyEmailAddressEmail } from "../../../emails/templates/verifyEmailAddress/VerifyEmailAddressEmail";
+import { sanitizeSubscriberRow } from "../../functions/server/sanitize";
 
 export async function sendVerificationEmail(
   user: SubscriberRow,
@@ -44,8 +45,10 @@ export async function sendVerificationEmail(
     enabledFlags.includes("RedesignedEmails")
       ? renderEmail(
           <VerifyEmailAddressEmail
-            emailAddress={unverifiedEmailAddressRecord}
-            subscriber={user}
+            verificationUrl={
+              getVerificationUrl(unverifiedEmailAddressRecord).href
+            }
+            subscriber={sanitizeSubscriberRow(user)}
           />,
         )
       : getTemplate(data, verifyPartial, l10n),

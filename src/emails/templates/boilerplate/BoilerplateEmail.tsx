@@ -2,11 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { SubscriberRow } from "knex/types/tables";
+import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { getEmailL10n } from "../../getEmailL10n";
 
 export type Props = {
-  subscriber: SubscriberRow;
+  subscriber: SanitizedSubscriberRow;
 };
 
 /**
