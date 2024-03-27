@@ -97,7 +97,7 @@ export async function onAddEmail(
     );
 
     await initEmail();
-    await sendVerificationEmail(subscriber, unverifiedSubscriber.id, getL10n());
+    await sendVerificationEmail(subscriber, unverifiedSubscriber.id);
     revalidatePath("/user/settings");
 
     return {

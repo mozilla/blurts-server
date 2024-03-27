@@ -3,10 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
-import { getEmailL10n } from "../../getEmailL10n";
+import { ExtendedReactLocalization } from "../../../app/hooks/l10n";
 
 export type Props = {
   subscriber: SanitizedSubscriberRow;
+  l10n: ExtendedReactLocalization;
 };
 
 /**
@@ -32,7 +33,7 @@ export type Props = {
  * @param props User data needed to render the email
  */
 export const BoilerplateEmail = (props: Props) => {
-  const l10n = getEmailL10n(props.subscriber);
+  const l10n = props.l10n;
 
   return (
     <mjml>
