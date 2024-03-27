@@ -4,9 +4,9 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { FC } from "react";
-import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { Props, VerifyEmailAddressEmail } from "./VerifyEmailAddressEmail";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
+import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 
 const meta: Meta<FC<Props>> = {
   title: "Emails/Verify email address",
@@ -18,10 +18,8 @@ const meta: Meta<FC<Props>> = {
   args: {
     subscriber: {
       signup_language: "en",
-    } as SubscriberRow,
-    emailAddress: {
-      verification_token: "arbitrary-token",
-    } as EmailAddressRow,
+    } as SanitizedSubscriberRow,
+    verificationUrl: "https://example.com",
   },
 };
 

@@ -4,9 +4,9 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { FC } from "react";
-import { SubscriberRow } from "knex/types/tables";
 import { Props, BoilerplateEmail } from "./BoilerplateEmail";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
+import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 
 const meta: Meta<FC<Props>> = {
   title: "Emails/Email boilerplate",
@@ -18,7 +18,7 @@ const meta: Meta<FC<Props>> = {
   args: {
     subscriber: {
       signup_language: "en",
-    } as SubscriberRow,
+    } as SanitizedSubscriberRow,
   },
 };
 
