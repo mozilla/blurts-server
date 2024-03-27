@@ -21,7 +21,7 @@ import { sendVerificationEmail } from "../../../../../../api/utils/email";
 import { getL10n } from "../../../../../../functions/server/l10n";
 import { logger } from "../../../../../../functions/server/logging";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
-import { SanitizedEmailAddressRow } from "../../../../../../functions/server/sanitizeEmailRow";
+import { SanitizedEmailAddressRow } from "../../../../../../functions/server/sanitize";
 import { deleteAccount } from "../../../../../../functions/server/deleteAccount";
 import { cookies } from "next/headers";
 
