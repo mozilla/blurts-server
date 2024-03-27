@@ -66,14 +66,7 @@ settings-delete-monitor-free-account-dialog-title = Din { -brand-monitor }-konto
 settings-delete-monitor-free-account-dialog-lead = Alle dine kontooplysninger for { -brand-monitor } vil blive slettet, og vi holder ikke længere øje med nye datalæk. Denne handling sletter ikke din { -brand-mozilla }-konto.
 settings-delete-monitor-free-account-dialog-cta-label = Slet konto
 settings-delete-monitor-free-account-dialog-cancel-button-label = Jag har skiftet mening - gå tilbage
-settings-delete-monitor-plus-account-title = Slet { -brand-monitor }-konto
-settings-delete-monitor-plus-account-description = Dette vil permanent slette din { -brand-monitor }-konto og øjeblikkeligt afslutte dit betalte abonnement på { -brand-monitor-plus }.
-settings-delete-monitor-plus-account-cta-label = Slet konto
-settings-delete-monitor-plus-account-dialog-title = Din { -brand-monitor }-konto vil blive slettet permanent
-settings-delete-monitor-plus-account-dialog-lead-p1 = Alle dine kontooplysninger for { -brand-monitor } vil blive slettet, og vi holder ikke længere øje med nye datalæk eller eksponeringer fra datamæglere. Denne handling sletter ikke din { -brand-mozilla }-konto.
-settings-delete-monitor-plus-account-dialog-cta-label = Slet konto
-settings-delete-monitor-plus-account-dialog-cancel-button-label = Jag har skiftet mening - gå tilbage
-settings-delete-monitor-account-confirmation-toast-label = Din { -brand-monitor }-konto er nu slettet permanent.
+settings-delete-monitor-account-confirmation-toast-label-2 = Din { -brand-monitor }-konto er nu slettet.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Afvis
 
 ## Add email dialog
