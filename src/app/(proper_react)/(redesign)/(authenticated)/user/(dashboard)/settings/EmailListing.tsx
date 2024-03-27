@@ -15,7 +15,7 @@ import {
   ErrorIcon,
 } from "../../../../../../components/server/Icons";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
-import { SanitizedEmailAddressRow } from "../../../../../../functions/server/sanitizeEmailRow";
+import { SanitizedEmailAddressRow } from "../../../../../../functions/server/sanitize";
 
 export const EmailListing = (props: {
   email: SanitizedEmailAddressRow | string;

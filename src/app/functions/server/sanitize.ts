@@ -2,20 +2,27 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/**
+ * Functions that only return data we wouldn't mind sending to the client
+ */
+
 import "server-only";
 import { EmailAddressRow } from "knex/types/tables";
 
-export type SanitizedEmailAddressRow = Pick<
-  EmailAddressRow,
-  "email" | "id" | "subscriber_id" | "verified" | "created_at" | "updated_at"
-> & {
+type SanitizationMarker = {
   /**
-   * The `__s` property is added to make sure this type is structurally
-   * distinct from `EmailAddressRow`, i.e. so that you're unable to pass in
-   * the latter where a `SanitizedEmailAddressRow` is expected:
+   * The `__s` property is added to make sure a type is structurally distinct
+   * from the original type, i.e. so that you're unable to pass in an object
+   * with the full data where a sanitized object is expected.
    */
   __s: true;
 };
+
+export type SanitizedEmailAddressRow = SanitizationMarker &
+  Pick<
+    EmailAddressRow,
+    "email" | "id" | "subscriber_id" | "verified" | "created_at" | "updated_at"
+  >;
 
 export function sanitizeEmailRow(
   email: EmailAddressRow,
