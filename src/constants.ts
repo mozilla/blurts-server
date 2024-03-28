@@ -10,6 +10,8 @@ export const CONST_URL_PLUS_CONTACT_SUPPORT =
   "https://support.mozilla.org/questions/new/monitor/form";
 export const CONST_URL_SUMO_MONITOR_SUPPORT =
   "https://support.mozilla.org/kb/firefox-monitor";
+export const CONST_URL_SUMO_MONITOR_SUPPORT_CENTER =
+  "https://support.mozilla.org/products/monitor";
 export const CONST_URL_SUMO_HOW_IT_WORKS =
   "https://support.mozilla.org/kb/how-does-monitor-plus-work";
 export const CONST_URL_SUMO_MONITOR_FAQ =
