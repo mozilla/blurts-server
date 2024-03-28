@@ -49,7 +49,7 @@ export const Dialog = ({
         onClick={() => onDismiss()}
       >
         <CloseBtn
-          alt={l10n.getString("modal-close-alt")}
+          alt={l10n.getString("close-modal-alt")}
           width="14"
           height="14"
         />

@@ -222,7 +222,7 @@ export const ExposuresFilter = ({
         className={styles.dismissButton}
       >
         <CloseBtn
-          alt={l10n.getString("modal-close-alt")}
+          alt={l10n.getString("close-modal-alt")}
           width="14"
           height="14"
         />
@@ -259,13 +259,12 @@ export const ExposuresFilter = ({
                 <button
                   {...exposureTypeExplainerTriggerProps}
                   ref={exposureTypeExplainerTriggerRef}
-                  aria-label={l10n.getString("modal-open-alt")}
+                  aria-label={l10n.getString("open-modal-alt")}
+                  aria-describedby={l10n.getString(
+                    "dashboard-exposures-filter-exposure-type",
+                  )}
                 >
-                  <QuestionMarkCircle
-                    width="15"
-                    height="15"
-                    alt={l10n.getString("modal-open-alt")}
-                  />
+                  <QuestionMarkCircle width="15" height="15" alt="" />
                 </button>
               )}
             </li>
@@ -278,13 +277,12 @@ export const ExposuresFilter = ({
             <button
               {...exposureStatusExplainerTriggerProps}
               ref={exposureStatusExplainerTriggerRef}
-              aria-label={l10n.getString("modal-open-alt")}
+              aria-label={l10n.getString("open-modal-alt")}
+              aria-describedby={l10n.getString(
+                "dashboard-exposures-filter-status",
+              )}
             >
-              <QuestionMarkCircle
-                width="15"
-                height="15"
-                alt={l10n.getString("modal-open-alt")}
-              />
+              <QuestionMarkCircle width="15" height="15" alt="" />
             </button>
           </li>
         </ul>

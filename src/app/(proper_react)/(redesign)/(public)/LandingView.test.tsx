@@ -277,7 +277,7 @@ describe("When Premium is available", () => {
     expect(queryByRole(pricingTable, "dialog")).not.toBeInTheDocument();
 
     const moreInfoButton = getAllByRole(pricingTable, "button", {
-      name: "More info",
+      name: "Open tooltip",
     })[0];
     await user.click(moreInfoButton);
 

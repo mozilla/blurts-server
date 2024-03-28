@@ -1077,7 +1077,7 @@ describe("to learn about usage", () => {
     await user.click(deleteAccountButton);
     const dialog = screen.getByRole("dialog");
     const dismissButton = within(dialog).getByRole("button", {
-      name: "Close",
+      name: "Close modal",
     });
     await user.click(dismissButton);
 
