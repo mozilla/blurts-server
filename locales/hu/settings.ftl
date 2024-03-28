@@ -66,7 +66,7 @@ settings-delete-monitor-free-account-dialog-title = A { -brand-monitor }-fiókja
 settings-delete-monitor-free-account-dialog-lead = Az összes { -brand-monitor }-fiókinformációja törölve lesz, és a továbbiakban nem fogjuk figyelni az új adatvédelmi incidenseket. Ez nem törli a { -brand-mozilla }-fiókját.
 settings-delete-monitor-free-account-dialog-cta-label = Fiók törlése
 settings-delete-monitor-free-account-dialog-cancel-button-label = Mégse, visszalépés
-settings-delete-monitor-account-confirmation-toast-label-2 = A { -brand-monitor }-fiókja törölve.
+settings-delete-monitor-account-confirmation-toast-label-2 = A { -brand-monitor }-fiókja törölve lett.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Eltüntetés
 
 ## Add email dialog
