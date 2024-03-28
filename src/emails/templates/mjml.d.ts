@@ -28,7 +28,11 @@ declare namespace React.JSX {
     "font-weight": CSSProperties["fontWeight"];
   }>;
   type MjmlAttributesPadding = Partial<{
-    padding: MjmlValuePx;
+    padding:
+      | MjmlValuePx
+      | `${MjmlValuePx} ${MjmlValuePx}`
+      | `${MjmlValuePx} ${MjmlValuePx} ${MjmlValuePx}`
+      | `${MjmlValuePx} ${MjmlValuePx} ${MjmlValuePx} ${MjmlValuePx}`;
     "padding-bottom": MjmlValuePx;
     "padding-left": MjmlValuePx;
     "padding-right": MjmlValuePx;
@@ -83,14 +87,14 @@ declare namespace React.JSX {
       MjmlAttributesBorder &
       MjmlAttributesFonts &
       MjmlAttributesPadding & {
-        children: ReactNode;
+        children?: ReactNode;
         align?: MjmlValueAlign;
         "background-color"?: CSSProperties["backgroundColor"];
         "border-radius"?: MjmlValuePx;
         color?: CSSProperties["color"];
         "container-background-color"?: CSSProperties["backgroundColor"];
         height?: MjmlValuePx;
-        href: string;
+        href?: string;
         "inner-padding"?: MjmlValuePx;
         "letter-spacing"?: MjmlValuePx | MjmlValueEm;
         "line-height"?: MjmlValueEm | MjmlValuePercentage | undefined;
@@ -128,7 +132,7 @@ declare namespace React.JSX {
         width?: MjmlValuePx | MjmlValuePercentage;
       };
     "mj-group": MjmlBodyChildrenAttributes & {
-      children: ReactNode;
+      children?: ReactNode;
       "background-color"?: CSSProperties["backgroundColor"];
       direction?: CSSProperties["direction"];
       "border-radius"?: MjmlValuePx;
@@ -137,7 +141,7 @@ declare namespace React.JSX {
     };
     "mj-hero": MjmlBodyChildrenAttributes &
       MjmlAttributesPadding & {
-        children: ReactNode;
+        children?: ReactNode;
         "background-color"?: CSSProperties["backgroundColor"];
         "background-height"?: MjmlValuePx;
         "background-position"?: CSSProperties["backgroundPosition"];
@@ -173,7 +177,7 @@ declare namespace React.JSX {
     "mj-section": MjmlBodyChildrenAttributes &
       MjmlAttributesBorder &
       MjmlAttributesPadding & {
-        children: ReactNode;
+        children?: ReactNode;
         "background-color"?: CSSProperties["backgroundColor"];
         "background-position"?: CSSProperties["backgroundPosition"];
         "background-position-x"?: CSSProperties["backgroundPositionX"];
@@ -183,7 +187,7 @@ declare namespace React.JSX {
         "background-url"?: string;
         "border-radius"?: MjmlValuePx;
         direction?: CSSProperties["direction"];
-        "full-width"?: "full-width;";
+        "full-width"?: "full-width";
         "text-align"?: CSSProperties["textAlign"];
       };
     "mj-spacer": MjmlBodyChildrenAttributes &
@@ -209,7 +213,7 @@ declare namespace React.JSX {
     "mj-text": MjmlBodyChildrenAttributes &
       MjmlAttributesFonts &
       MjmlAttributesPadding & {
-        children: ReactNode;
+        children?: ReactNode;
         color?: CSSProperties["color"];
         "line-height"?: MjmlValuePx;
         "letter-spacing"?: MjmlValuePx | MjmlValueEm;
