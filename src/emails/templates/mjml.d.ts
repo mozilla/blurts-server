@@ -8,9 +8,9 @@ declare namespace React.JSX {
     "mj-class": string;
   }>;
 
-  type MjmlValuePx = `${number}px`;
-  type MjmlValueEm = `${number}em`;
-  type MjmlValuePercentage = `${number}%`;
+  type MjmlValuePx = `${number}px` | "0";
+  type MjmlValueEm = `${number}em` | "0";
+  type MjmlValuePercentage = `${number}%` | "0";
   type MjmlValueAlign = "left" | "right" | "center";
   type MjmlValueVerticalAlign = "top" | "middle" | "bottom";
 
@@ -97,7 +97,11 @@ declare namespace React.JSX {
         href?: string;
         "inner-padding"?: MjmlValuePx;
         "letter-spacing"?: MjmlValuePx | MjmlValueEm;
-        "line-height"?: MjmlValueEm | MjmlValuePercentage | undefined;
+        "line-height"?:
+          | MjmlValuePx
+          | MjmlValueEm
+          | MjmlValuePercentage
+          | undefined;
         rel?: AnchorHTMLAttributes<HTMLAnchorElement>["rel"];
         target?: AnchorHTMLAttributes<HTMLAnchorElement>["target"];
         "text-align"?: MjmlValueAlign;
