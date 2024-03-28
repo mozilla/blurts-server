@@ -37,7 +37,6 @@ export type SubscriberBreachCardProps = {
 
 export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
   const { exposureImg, subscriberBreach, locale } = props;
-
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const dateFormatter = new Intl.DateTimeFormat(locale, {
@@ -150,7 +149,7 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
       <div className={styles.exposureCard}>
         <div className={styles.exposureHeader}>
           <dl className={styles.exposureHeaderList}>
-            <dt className={styles.visuallyHidden}>
+            <dt className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}>
               {l10n.getString("exposure-card-label-company-logo")}
             </dt>
             <dd
@@ -183,7 +182,9 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
             </dd>
             {props.isEligibleForPremium && (
               <>
-                <dt className={styles.visuallyHidden}>
+                <dt
+                  className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}
+                >
                   {l10n.getString("exposure-card-exposure-type")}
                 </dt>
                 <dd className={styles.hideOnMobile}>
@@ -191,7 +192,7 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
                 </dd>
               </>
             )}
-            <dt className={styles.visuallyHidden}>
+            <dt className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}>
               {l10n.getString("exposure-card-date-found")}
             </dt>
             <dd className={styles.hideOnMobile}>

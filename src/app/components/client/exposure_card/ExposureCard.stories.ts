@@ -76,3 +76,11 @@ export const DataBreachFixed: Story = {
     exposureData: BreachMockItemRemoved,
   },
 };
+
+export const DataBreachFixedEligibleForPremium: Story = {
+  args: {
+    exposureImg: TwitterImage,
+    exposureData: BreachMockItemRemoved,
+    isEligibleForPremium: true,
+  },
+};
