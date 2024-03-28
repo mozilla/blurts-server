@@ -179,6 +179,11 @@ const nextConfig = {
 
     return config;
   },
+  experimental: {
+    // Without this setting, Next.js has Webpack trying and failing to load
+    // uglify-js when compiling MJML email templates to HTML in `renderEmail.ts`:
+    serverComponentsExternalPackages: ["mjml"],
+  },
 };
 
 const sentryWebpackPluginOptions = {

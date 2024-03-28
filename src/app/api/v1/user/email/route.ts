@@ -84,7 +84,7 @@ export async function POST(req: NextRequest) {
       );
 
       await initEmail();
-      await sendVerificationEmail(subscriber, unverifiedSubscriber.id, l10n);
+      await sendVerificationEmail(subscriber, unverifiedSubscriber.id);
 
       return NextResponse.json({
         success: true,

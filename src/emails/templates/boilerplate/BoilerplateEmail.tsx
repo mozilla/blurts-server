@@ -2,11 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { SubscriberRow } from "knex/types/tables";
-import { getEmailL10n } from "../../getEmailL10n";
+import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
+import { ExtendedReactLocalization } from "../../../app/hooks/l10n";
 
 export type Props = {
-  subscriber: SubscriberRow;
+  subscriber: SanitizedSubscriberRow;
+  l10n: ExtendedReactLocalization;
 };
 
 /**
@@ -17,7 +18,7 @@ export type Props = {
  * dynamic user data as props. The back-end can then pass in the relevant data
  * and render it to a string before sending it to the user, using e.g.
  *
- * mjml2html(renderToString(<BoilerplateEmail subscriber={subscriber} />)).html
+ * mjml2html(renderToStaticMarkup(<BoilerplateEmail subscriber={subscriber} />)).html
  *
  * Keep in mind that this means that the component is rendered just once, to
  * generate static MJML (which, in turn, is turned into HTML). In other words,
@@ -32,7 +33,7 @@ export type Props = {
  * @param props User data needed to render the email
  */
 export const BoilerplateEmail = (props: Props) => {
-  const l10n = getEmailL10n(props.subscriber);
+  const l10n = props.l10n;
 
   return (
     <mjml>
