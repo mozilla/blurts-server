@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = Balansau cyfrifon
@@ -14,7 +19,7 @@ avatars = Afatarau
 bank-account-numbers = Rhifau cyfrif banc
 beauty-ratings = Graddfeydd harddwch
 biometric-data = Data biometreg
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Hanes
 browser-user-agent-details = Manylion asiant defnyddiwr porwr
@@ -25,6 +30,7 @@ career-levels = Lefelau gyrfaol
 cellular-network-names = Enwau rhwydwaith cellol
 charitable-donations = Rhoddion elusennol
 chat-logs = Cofnodion sgwrsio
+citizenship-statuses = Statws dinasyddiaeth
 clothing-sizes = Meintiau dillad
 credit-card-cvv = CVV cerdyn credyd
 credit-cards = Cardiau credyd
@@ -35,7 +41,7 @@ customer-interactions = Rhyngweithio cwsmeriaid
 dates-of-birth = Dyddiadau geni
 deceased-date = Dyddiad marw
 deceased-statuses = Statws ymadawedig
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Cyfarwyddiadau anfon
 device-information = Manylion dyfais
@@ -75,7 +81,7 @@ instant-messenger-identities = Hunaniaeth negesydd cyflym
 ip-addresses = Cyfeiriad IP
 job-applications = Ceisiadau am swyddi
 job-titles = Teitlau swyddi
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Platiau Trwyddedau
 living-costs = Costau byw
 # This string refers to financial loans.

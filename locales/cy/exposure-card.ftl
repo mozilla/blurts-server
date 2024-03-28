@@ -2,8 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Ehangu
-chevron-up-alt = Lleihau
+chevron-alt = Manylion amlygiad
 exposure-card-exposure-type = Math o ddatgeliad
 exposure-card-date-found = Dyddiad y datgeliad
 
