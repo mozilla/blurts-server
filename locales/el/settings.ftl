@@ -5,7 +5,6 @@
 
 # Settings page
 
-settings-meta-title = { -brand-fx-monitor } - Ρυθμίσεις
 settings-page-title = Ρυθμίσεις { -product-short-name }
 
 ## Breach alert preferences
@@ -18,7 +17,6 @@ settings-alert-preferences-option-two = Αποστολή όλων των ειδ�
 
 # Variables:
 #   $email (string) - Email address
-settings-email-label-primary = { $email } (κύριο)
 settings-email-list-title = Διευθύνσεις email σε εποπτεία
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,8 +28,6 @@ settings-email-limit-info =
 settings-email-verification-callout = Απαιτείται επαλήθευση email
 settings-resend-email-verification-link = Εκ νέου αποστολή email επαλήθευσης
 settings-add-email-button = Προσθήκη διεύθυνσης email
-# Deprecated
-settings-delete-email-button = Διαγραφή διεύθυνσης email
 settings-remove-email-button-label = Αφαίρεση
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
@@ -45,11 +41,6 @@ settings-email-number-of-breaches-info =
         [one] Εμφανίζεται σε { $breachCount } γνωστή παραβίαση.
        *[other] Εμφανίζεται σε { $breachCount } γνωστές παραβιάσεις.
     }
-
-## Cancel Premium subscription
-
-settings-cancel-premium-subscription-title = Ακύρωση συνδρομής { -brand-premium }
-settings-cancel-premium-subscription-info = Η συνδρομή σας θα μετατραπεί σε δωρεάν λογαριασμό μετά το πέρας του τρέχοντος κύκλου χρέωσης. Τα αποτελέσματα της σάρωσης προστασίας απορρήτου θα διαγραφούν οριστικά και θα έχετε την εποπτεία μόνο 1 διεύθυνσης email για παραβιάσεις δεδομένων.
 
 ## Deactivate account
 
@@ -68,20 +59,3 @@ settings-delete-monitor-free-account-dialog-cta-label = Διαγραφή λογ�
 settings-delete-monitor-free-account-dialog-cancel-button-label = Άλλαξα γνώμη, θέλω να επιστρέψω
 settings-delete-monitor-account-confirmation-toast-label-2 = Ο λογαριασμός σας στο { -brand-monitor } έχει πλέον διαγραφεί.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Απόρριψη
-
-## Add email dialog
-
-settings-email-dialog-title = Προσθήκη άλλης διεύθυνσης email
-settings-add-email-text = Προσθέστε μια νέα διεύθυνση email για να δείτε εάν έχει εμπλακεί σε παραβίαση.
-settings-email-input-label = Διεύθυνση email
-settings-send-email-verification-button = Αποστολή συνδέσμου επαλήθευσης
-
-## Unsubscribe Dialog Survey
-
-settings-unsubscribe-dialog-title = Λυπούμαστε που φεύγετε. <br /> Θέλετε να μας πείτε γιατί φεύγετε;
-settings-unsubscribe-dialog-info = Η εμπειρία σας είναι σημαντική για εμάς. Διαβάζουμε κάθε απάντηση και τη λαμβάνουμε υπόψη.
-settings-unsubscribe-dialog-message-placeholder = Τι θα μπορούσε να είχε πάει καλύτερα;
-# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
-settings-unsubscribe-dialog-confirmation = Παρακαλούμε σημειώστε ότι όλες οι υπηρεσίες σας στο { -brand-monitor-premium } <a { $faq_href }>θα διαγραφούν οριστικά</a> μετά το πέρας του τρέχοντος κύκλου χρέωσής σας.
-settings-unsubscribe-dialog-continue = Συνέχεια στην ακύρωση
-settings-unsubscribe-dialog-cancel = Άλλαξα γνώμη, θέλω να επιστρέψω
