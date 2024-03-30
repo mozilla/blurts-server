@@ -2,7 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-alt = Podrobnosti o vystavení
+chevron-alt = Podrobnosti o úniku
 exposure-card-exposure-type = Typ odhalení
 exposure-card-date-found = Datum odhalení
 
@@ -33,8 +33,6 @@ exposure-card-exposure-type-data-breach = Únik údajů
 exposure-card-cta = Vyřešit všechna odhalení
 exposure-card-label-company-logo = Logo společnosti
 exposure-card-label-company = Společnost
-exposure-card-label-exposure-type = Typ odhalení
-exposure-card-label-date-found = Datum nalezení
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Stav
 # Variables:
