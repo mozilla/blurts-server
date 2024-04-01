@@ -3,11 +3,14 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
+
 landing-all-hero-title = 看看您的隱私資訊在哪裡外洩，並且搶回控制權
 landing-all-hero-lead = 我們可掃描已知的資安事件，看看您的資料是否已遭外洩並建議您處理方式。
+
 landing-all-hero-emailform-input-placeholder = yourname@example.com
 landing-all-hero-emailform-input-label = 輸入您的電子郵件地址，即可檢查是否曾遭資料外洩。
 landing-all-hero-emailform-submit-label = 免費掃描
+
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = 資料曝光事件
 
@@ -59,5 +62,7 @@ landing-all-help-protect-you-feature-one = 我們會在已知的資料外洩事�
 landing-all-help-protect-you-feature-two = 我們會帶您逐步操作，針對每場資料外洩事件進行處理
 landing-all-help-protect-you-feature-three = 我們將持續監控您的資料，並在發生新的外洩事件時警示您
 landing-all-help-protect-you-cta = 訂閱資料外洩警報
+
 landing-all-get-started = 掃描您的電子郵件地址，即可使用
 landing-all-take-back-data = 搶回您的資料的控制權
+

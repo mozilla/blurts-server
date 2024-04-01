@@ -5,7 +5,6 @@
 
 # Settings page
 
-settings-meta-title = { -brand-fx-monitor } - Parametros
 settings-page-title = Parametros de { -product-short-name }
 
 ## Breach alert preferences
@@ -16,9 +15,6 @@ settings-alert-preferences-option-two = Inviar tote le avisos de violation al ad
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-label-primary = { $email } (primari)
 settings-email-list-title = Adresses email surveliate
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,12 +26,11 @@ settings-email-limit-info =
 settings-email-verification-callout = Verification del email requirite.
 settings-resend-email-verification-link = Reinviar email de verification
 settings-add-email-button = Adder adresse email
-# Deprecated
-settings-delete-email-button = Deler adresse email
 settings-remove-email-button-label = Remover
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Cessar de surveliar { $emailAddress }
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -48,9 +43,6 @@ settings-email-number-of-breaches-info =
 
 ## Cancel Premium subscription
 
-settings-cancel-premium-subscription-title = Cancellar abonamento { -brand-premium }
-settings-cancel-premium-subscription-info = Tu abonamento revertera a un conto gratuite post que le currente termino de facturation fini. Le resultatos de tu scansion de protection del confidentialitate sera permanentemente delite, e tu habera solo surveliantia de violation de datos pro 1 adresse email.
-
 ## Deactivate account
 
 settings-deactivate-account-title = Disactivar le conto
@@ -59,17 +51,7 @@ settings-fxa-link-label-3 = Ir a parametros de { -brand-mozilla-account }
 
 ## Add email dialog
 
-settings-email-dialog-title = Adder altere adresse email
-settings-add-email-text = Adde un nove adresse email pro vider si illo ha essite implicate in violationes.
-settings-email-input-label = Adresse email
-settings-send-email-verification-button = Inviar ligamine de verification
-
 ## Unsubscribe Dialog Survey
 
-settings-unsubscribe-dialog-title = Nos regretta de vider te ir. <br /> Vole tu dicer nos perque tu exi?
-settings-unsubscribe-dialog-info = Tu experientia es importante pro nos. Nos lege cata responsa e lo prende in consideration.
-settings-unsubscribe-dialog-message-placeholder = Que poteva haber ite melio?
-# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
-settings-unsubscribe-dialog-confirmation = Nota, tote tu servicios de { -brand-monitor-premium } era <a { $faq_href }>permanentemente delit</a> post que tu actual termino de facturation fini.
-settings-unsubscribe-dialog-continue = Continuar le cancellation
-settings-unsubscribe-dialog-cancel = Non importa, tornar retro
+## Delete Monitor account
+

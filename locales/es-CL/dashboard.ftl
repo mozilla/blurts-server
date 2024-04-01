@@ -30,6 +30,7 @@ exposure-chart-caption-fixed = Este gráfico muestra el total de exposiciones co
 exposure-chart-returning-user-upgrade-prompt = El domicilio, los miembros de la familia y otros datos aún no están incluidos.
 exposure-chart-returning-user-upgrade-prompt-cta = Iniciar un escaneo gratuito
 exposure-chart-scan-in-progress-prompt = <b> Escaneo en proceso: </b> direcciones, miembros de la familia y otros aún no están incluidos.
+
 modal-active-number-of-exposures-title = Acerca del número de exposiciones activas
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -42,14 +43,19 @@ modal-active-number-of-exposures-part-two = Por ejemplo, si tienes 10 exposicion
 modal-active-number-of-exposures-part-three-all = Una vez que se resuelvan, se agregarán a tu número total de exposiciones corregidas en la página de Corregidas.
 modal-fixed-number-of-exposures-title = Acerca del número de exposiciones arregladas
 modal-fixed-number-of-exposures-all = Este gráfico incluye el número total de filtraciones de datos que se han solucionado para todas las direcciones de correo electrónico que estás monitoreando actualmente. Una vez que las exposiciones se marquen como corregidas, se agregarán al total aquí.
+
 modal-cta-ok = Aceptar
 modal-open-alt = Abrir
 modal-close-alt = Cerrar
+
 progress-card-heres-what-we-fixed-headline-all = Esto es lo que corregiste
 progress-card-manually-fixed-headline = Corregida de forma manual
+
 dashboard-tab-label-action-needed = Acción necesaria
 dashboard-tab-label-fixed = Corregida
 dashboard-exposures-all-fixed-label = ¡Todo lo corregido está aquí!
+
+
 dashboard-exposures-area-headline = Ver todos los sitios donde se expone tu información
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
@@ -59,6 +65,7 @@ dashboard-exposures-area-description-all-line1 =
         [one] Encontramos { $exposures_unresolved_num } exposición de tus datos.
        *[other] Encontramos { $exposures_unresolved_num } exposiciones de tus datos.
     }
+
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
@@ -68,6 +75,7 @@ dashboard-exposures-area-description-all-line2 =
        *[other] Apareció en { $data_breach_unresolved_num } filtraciones de datos.
     }
 dashboard-fixed-area-headline-all = Ver todas las exposiciones que están corregidas
+
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filtro
 dashboard-exposures-filter-company = Compañía
@@ -76,9 +84,6 @@ dashboard-exposures-filter-date-found-last-seven-days = Últimos 7 días
 dashboard-exposures-filter-date-found-last-thirty-days = Últimos 30 días
 dashboard-exposures-filter-date-found-last-year = Último año
 dashboard-exposures-filter-status = Estado
-dashboard-exposures-filter-status-action-needed = Acción necesaria
-dashboard-exposures-filter-status-in-progress = En proceso
-dashboard-exposures-filter-status-fixed = Corregida
 popover-open-filter-settings-alt = Seleccionar filtros
 dashboard-exposures-filter-show-all = Mostrar todo
 dashboard-exposures-filter-show-results = Mostrar resultados
@@ -88,8 +93,10 @@ dashboard-exposures-filter-reset = Restablecer
 
 dashboard-top-banner-section-label = Resumen del panel
 dashboard-top-banner-scan-in-progress-title = Tu escaneo aún está en proceso
+
 dashboard-top-banner-your-data-is-protected-title = Tus datos están protegidos
 dashboard-top-banner-your-data-is-protected-cta = Revisa lo que está corregido
+
 dashboard-top-banner-lets-keep-protecting-title = Sigamos protegiendo tus datos
 # Variables:
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
@@ -99,8 +106,10 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] Todavía te quedan { $exposures_unresolved_num } exposiciones por arreglar. Sigue adelante y protégete. Te guiaremos paso a paso.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Sigamos adelante
+
 dashboard-top-banner-protect-your-data-title = Protejamos tus datos
 dashboard-top-banner-protect-your-data-cta = Arreglémoslo
+
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
@@ -117,9 +126,11 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
         [one] Apareció en { $data_breach_unresolved_num } filtración de datos. Te guiaremos paso a paso sobre cómo solucionarlo.
        *[other] Apareció en { $data_breach_unresolved_num } filtraciones de datos. Te guiaremos paso a paso sobre cómo solucionarlo.
     }
+
 dashboard-top-banner-no-exposures-found-title = No se encontraron exposiciones
 dashboard-top-banner-non-us-no-exposures-found-description = ¡Buenas noticias! Buscamos todas las filtraciones de datos conocidas y no encontramos exposiciones. Seguiremos monitoreando tu dirección de correo electrónico y te avisaremos si ocurre una nueva filtración.
 dashboard-no-exposures-label = No se encontraron exposiciones
+
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
 dashboard-top-banner-non-us-your-data-is-protected-description =
@@ -127,6 +138,7 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
         [one] ¡Buen trabajo, la exposición de tus datos está corregida! Seguiremos monitoreando y te avisaremos de cualquier nueva exposición.
        *[other] ¡Buen trabajo, todas las { $exposures_resolved_num } exposiciones de tus datos están corregidas! Seguiremos monitoreando y te avisaremos de cualquier nueva exposición.
     }
+
 dashboard-top-banner-monitor-more-cta = Monitorear más correos
 
 # About Exposure Statuses Modal

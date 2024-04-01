@@ -1,3 +1,7 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 exposure-landing-hero-heading = Finn ut om din personlege informasjon har blitt kompromittert
 exposure-landing-hero-email-label = E-postadresse
 exposure-landing-hero-email-placeholder = Skriv inn e-postadresse

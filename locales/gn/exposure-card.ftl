@@ -2,8 +2,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Moasãi
-chevron-up-alt = Pa’ãmba
 exposure-card-exposure-type = Mba’eichagua jehechauka
 exposure-card-date-found = Mba’e árapa oiko jehechauka
 
@@ -33,8 +31,6 @@ exposure-card-exposure-type-data-breach = Mba’ekuaarã ñembogua
 exposure-card-cta = Emyatyrõ opaite jehechaukakue
 exposure-card-label-company-logo = Atyguasu ra’ãnga’i
 exposure-card-label-company = Atyguasu
-exposure-card-label-exposure-type = Mba’eichagua jehechauka
-exposure-card-label-date-found = Arange juhupyre
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Tekotee
 # Variables:

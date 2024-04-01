@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Altistumisen tiedot
+
 exposure-card-exposure-type = Altistuksen tyyppi
 exposure-card-date-found = Altistumispäivä
 

@@ -1,3 +1,7 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 exposure-landing-hero-heading = Eporandu ne maranduetépa oñembyaikuaára’e
 exposure-landing-hero-lead = Eñemohekorosã { -brand-firefox } rembiporu ñemigua moheñoihára ndive ne mo’ãtava mba’evaiapohágui ha mba’apohaguasu omoherakuã ha ovendéva ne reheguaite. Romomarandúta mba’ekuaarã ñembogua oikóvagui, roheka ha romboguéta ne marandu ivaikuaáva ha roma’ẽmeméta ñembogua pyahúvare.
 exposure-landing-hero-email-label = Ñanduti veve kundaharape

@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = 接觸者詳情
+
 exposure-card-exposure-type = 資料曝光類型
 exposure-card-date-found = 曝光日期
 
@@ -33,8 +34,6 @@ exposure-card-exposure-type-data-breach = 資料外洩事件
 exposure-card-cta = 處理所有曝光資料
 exposure-card-label-company-logo = 公司圖示
 exposure-card-label-company = 公司
-exposure-card-label-exposure-type = 資料曝光類型
-exposure-card-label-date-found = 發現日期
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = 狀態
 # Variables:

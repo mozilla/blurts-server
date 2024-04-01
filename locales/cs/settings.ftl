@@ -34,6 +34,7 @@ settings-remove-email-button-label = Odebrat
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Ukončit monitorování adresy { $emailAddress }
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
