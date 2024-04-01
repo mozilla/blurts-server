@@ -2,8 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Развернуть
-chevron-up-alt = Свернуть
+chevron-alt = Подробности об утечке
+
 exposure-card-exposure-type = Тип утечки
 exposure-card-date-found = Дата утечки
 
@@ -34,8 +34,6 @@ exposure-card-exposure-type-data-breach = Утечка данных
 exposure-card-cta = Исправить все утечки
 exposure-card-label-company-logo = Логотип компании
 exposure-card-label-company = Компания
-exposure-card-label-exposure-type = Тип утечки
-exposure-card-label-date-found = Дата обнаружения
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Статус
 # Variables:

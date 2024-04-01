@@ -11,7 +11,7 @@ import {
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../../Shell";
-import { getOneL10nSync } from "../../../../../../../../../functions/server/mockL10n";
+import { getSpecificL10nSync } from "../../../../../../../../../functions/server/mockL10n";
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 
 const mockedScan: OnerepScanRow = {
@@ -40,7 +40,7 @@ const mockedSession = {
 };
 
 const meta: Meta<typeof AutomaticRemoveView> = {
-  title: "Pages/Guided resolution/1d. Automatically resolve brokers",
+  title: "Pages/Logged in/Guided resolution/1d. Automatically resolve brokers",
   component: AutomaticRemoveView,
 };
 export default meta;
@@ -50,7 +50,7 @@ export const AutomaticRemoveViewStory: Story = {
   name: "1d. Automatically resolve brokers",
   render: () => {
     return (
-      <Shell l10n={getOneL10nSync()} session={mockedSession} nonce="">
+      <Shell l10n={getSpecificL10nSync()} session={mockedSession} nonce="">
         <AutomaticRemoveView
           data={{
             countryCode: "us",

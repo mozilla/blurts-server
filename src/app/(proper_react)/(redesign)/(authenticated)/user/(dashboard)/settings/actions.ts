@@ -97,17 +97,8 @@ export async function onAddEmail(
     );
 
     await initEmail();
-    await sendVerificationEmail(
-      // This first parameter is unused, so the type assertion is safe.
-      // When non-TS invocations of this function are removed, we should remove
-      // the unused parameter:
-      session.user.subscriber as unknown as Parameters<
-        typeof sendVerificationEmail
-      >[0],
-      unverifiedSubscriber.id,
-      getL10n(),
-    );
-    revalidatePath("/user/settings/");
+    await sendVerificationEmail(subscriber, unverifiedSubscriber.id, getL10n());
+    revalidatePath("/user/settings");
 
     return {
       success: true,
@@ -160,7 +151,7 @@ export async function onRemoveEmail(email: SanitizedEmailAddressRow) {
   try {
     await removeOneSecondaryEmail(email.id, subscriber.id);
     await deleteResolutionsWithEmail(subscriber.id, email.email);
-    revalidatePath("/user/settings/");
+    revalidatePath("/user/settings");
   } catch (e) {
     return {
       success: false,

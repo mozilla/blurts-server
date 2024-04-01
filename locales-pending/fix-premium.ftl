@@ -124,6 +124,15 @@ welcome-to-premium-data-broker-profiles-description-part-one =
   }
 welcome-to-premium-data-broker-profiles-description-part-two = Removals typically take 7-14 days, but some may happen within the hour. No matter how long it takes, we’ll keep working on it.
 welcome-to-premium-data-broker-profiles-description-part-three = Next we’ll guide you through high risk data breaches that require manual steps.
+# Variables:
+# $data_broker_count is the number of data brokers scanned monthly
+welcome-to-premium-data-broker-profiles-zero-state-description-part-one =
+  { $data_broker_count ->
+    [one] Great news! We scanned { $data_broker_count } data broker site and didn’t find any sites selling your personal information. We’ll run a scan every month to make sure it stays that way.
+    *[other] Great news! We scanned { $data_broker_count } data broker sites and didn’t find any sites selling your personal information. We’ll run a scan every month to make sure it stays that way.
+  }
+welcome-to-premium-data-broker-profiles-zero-state-description-part-two = Data brokers are constantly adding new details to their sites. If we find yours, we’ll immediately start our auto-removal process to help keep you safe.
+welcome-to-premium-data-broker-profiles-zero-state-description-part-three = Next we’ll guide you through high risk data breaches that require manual steps.
 welcome-to-premium-data-broker-profiles-cta-label = Let’s keep going
 
 security-recommendation-phone-step-three = Use a <link_to_info>{ -brand-relay } phone mask</link_to_info> to protect your phone in the future

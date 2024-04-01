@@ -30,6 +30,7 @@ career-levels = Níveis de carreira
 cellular-network-names = Nomes de redes de celular
 charitable-donations = Doações para caridade
 chat-logs = Históricos de conversas
+citizenship-statuses = Status de nacionalidade
 clothing-sizes = Tamanhos de roupas
 credit-card-cvv = Códigos de segurança de cartão de crédito
 credit-cards = Cartões de crédito

@@ -8,7 +8,7 @@ import { axe } from "jest-axe";
 import { Session } from "next-auth";
 import { userEvent } from "@testing-library/user-event";
 import type { EmailAddressRow } from "knex/types/tables";
-import { getOneL10nSync } from "../../../../../../functions/server/mockL10n";
+import { getSpecificL10nSync } from "../../../../../../functions/server/mockL10n";
 import { TestComponentWrapper } from "../../../../../../../TestComponentWrapper";
 import { SerializedSubscriber } from "../../../../../../../next-auth";
 import { onAddEmail, onRemoveEmail } from "./actions";
@@ -87,7 +87,7 @@ it("passes the axe accessibility audit", async () => {
   const { container } = render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={mockedUser}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
@@ -114,7 +114,7 @@ it("preselects 'Send all breach alerts to the primary email address' if that's t
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={{
           ...mockedUser,
           subscriber: {
@@ -152,7 +152,7 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={{
           ...mockedUser,
           subscriber: {
@@ -192,7 +192,7 @@ it("sends a call to the API to change the email alert preferences when changing 
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={{
           ...mockedUser,
           subscriber: {
@@ -241,7 +241,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={{
           ...mockedUser,
           subscriber: {
@@ -276,7 +276,7 @@ it("marks unverified email addresses as such", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={mockedUser}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
@@ -310,7 +310,7 @@ it("calls the API to resend a verification email if requested to", async () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={mockedUser}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
@@ -354,7 +354,7 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={mockedUser}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
@@ -387,7 +387,7 @@ it("hides the Plus cancellation link if the user doesn't have Plus", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={{
           ...mockedUser,
           fxa: {
@@ -420,7 +420,7 @@ it("shows the Plus cancellation link if the user has Plus", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={{
           ...mockedUser,
           fxa: {
@@ -453,7 +453,7 @@ it("does not show the account deletion button if the relevant flag is not enable
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={{
           ...mockedUser,
           fxa: {
@@ -486,7 +486,7 @@ it("shows the account deletion button if the user does not have Plus", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={{
           ...mockedUser,
           fxa: {
@@ -524,7 +524,7 @@ it("warns about the consequences before deleting a free user's account", async (
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={{
           ...mockedUser,
           fxa: {
@@ -564,7 +564,7 @@ it("shows a loading state while account deletion is in progress", async () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={{
           ...mockedUser,
           fxa: {
@@ -605,7 +605,7 @@ it("shows the account deletion button if the user has Plus", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={{
           ...mockedUser,
           fxa: {
@@ -631,7 +631,7 @@ it("shows the account deletion button if the user has Plus", () => {
     name: "Delete ⁨Monitor⁩ account",
   });
   const accountDeletionDescription = screen.getByText(
-    "This will permanently delete your ⁨Monitor⁩ account and immediately end your paid ⁨Monitor Plus⁩ subscription.",
+    "This will delete your ⁨Monitor⁩ account and immediately end your paid ⁨Monitor Plus⁩ subscription.",
   );
 
   expect(accountDeletionHeading).toBeInTheDocument();
@@ -643,7 +643,7 @@ it("warns about the consequences before deleting a Plus user's account", async (
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={{
           ...mockedUser,
           fxa: {
@@ -672,10 +672,10 @@ it("warns about the consequences before deleting a Plus user's account", async (
 
   const dialog = screen.getByRole("dialog");
   const consequencesWarningP1 = within(dialog).getByText(
-    "All of your ⁨Monitor⁩ account information will be deleted and we’ll no longer monitor for new data breaches or data broker exposures. This will not delete your ⁨Mozilla⁩ account.",
+    "All of your ⁨Monitor⁩ account information will be deleted and we’ll no longer monitor for new data breaches or data broker exposures. This will not delete your ⁨Mozilla account⁩.",
   );
   const consequencesWarningP2 = within(dialog).getByText(
-    "Your paid subscription will end today and you won’t be prorated for the remainder of your subscription.",
+    "You’ll regain access to ⁨Monitor Plus⁩ features if you sign back in during any remaining time of your paid subscription.",
   );
 
   expect(consequencesWarningP1).toBeInTheDocument();
@@ -693,7 +693,7 @@ it.skip("calls the 'add' action when adding another email address", async () => 
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={mockedUser}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
@@ -729,7 +729,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getOneL10nSync()}
+          l10n={getSpecificL10nSync()}
           user={mockedUser}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
@@ -765,7 +765,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getOneL10nSync()}
+          l10n={getSpecificL10nSync()}
           user={mockedUser}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
@@ -801,7 +801,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getOneL10nSync()}
+          l10n={getSpecificL10nSync()}
           user={mockedUser}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
@@ -843,7 +843,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getOneL10nSync()}
+          l10n={getSpecificL10nSync()}
           user={mockedUser}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
@@ -884,7 +884,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getOneL10nSync()}
+          l10n={getSpecificL10nSync()}
           user={mockedUser}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
@@ -920,7 +920,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getOneL10nSync()}
+          l10n={getSpecificL10nSync()}
           user={{
             ...mockedUser,
             fxa: {
@@ -961,7 +961,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getOneL10nSync()}
+          l10n={getSpecificL10nSync()}
           user={{
             ...mockedUser,
             fxa: {
@@ -1007,7 +1007,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getOneL10nSync()}
+          l10n={getSpecificL10nSync()}
           user={{
             ...mockedUser,
             fxa: {
@@ -1049,7 +1049,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getOneL10nSync()}
+          l10n={getSpecificL10nSync()}
           user={{
             ...mockedUser,
             fxa: {
@@ -1095,7 +1095,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getOneL10nSync()}
+          l10n={getSpecificL10nSync()}
           user={{
             ...mockedUser,
             fxa: {
@@ -1136,7 +1136,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getOneL10nSync()}
+          l10n={getSpecificL10nSync()}
           user={{
             ...mockedUser,
             fxa: {
@@ -1182,7 +1182,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getOneL10nSync()}
+          l10n={getSpecificL10nSync()}
           user={{
             ...mockedUser,
             fxa: {

@@ -3,11 +3,14 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
+
 landing-all-hero-title = Poiščite, kje so razkriti vaši zasebni podatki – in jih pridobite nazaj
 landing-all-hero-lead = Pregledamo kraje podatkov, da ugotovimo, ali so vaši podatki uhajali, in vam svetujemo, kako to odpraviti.
+
 landing-all-hero-emailform-input-placeholder = ime@example.com
 landing-all-hero-emailform-input-label = Vnesite svoj e-poštni naslov za preverjanje izpostavljenosti kraji podatkov.
 landing-all-hero-emailform-submit-label = Zagotovite si brezplačen pregled
+
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = izpostavljenosti
 
@@ -65,5 +68,7 @@ landing-all-help-protect-you-feature-one = Iskali vas bomo v vseh znanih krajah 
 landing-all-help-protect-you-feature-two = Vodili vas bomo skozi korake za odpravo posamezne kraje
 landing-all-help-protect-you-feature-three = Nenehno bomo spremljali in vas obveščali o morebitnih novih krajah
 landing-all-help-protect-you-cta = Prijavite se na opozorila o krajah
+
 landing-all-get-started = Za začetek preglejte svojo e-pošto
 landing-all-take-back-data = Ponovno prevzemite nadzor nad svojimi podatki
+

@@ -30,6 +30,7 @@ exposure-chart-caption-fixed = Diagrammet viser det samlede antal løste ekspone
 exposure-chart-returning-user-upgrade-prompt = Postadresse, familiemedlemmer med mere er ikke inkluderet endnu.
 exposure-chart-returning-user-upgrade-prompt-cta = Start en gratis skanning
 exposure-chart-scan-in-progress-prompt = <b>Skanning undervejs:</b> Postadresse, familiemedlemmer med mere er ikke inkluderet endnu.
+
 modal-active-number-of-exposures-title = Om antallet af dine aktive eksponeringer
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -42,14 +43,19 @@ modal-active-number-of-exposures-part-two = Hvis du for eksempel har ti eksponer
 modal-active-number-of-exposures-part-three-all = Når de er løst, vil de blive føjet til dit samlede antal løste eksponeringer på siden Løst.
 modal-fixed-number-of-exposures-title = Om dit antal løste eksponeringer
 modal-fixed-number-of-exposures-all = Diagrammet inkluderer det samlede antal datalæk, der er blevet løst for alle mailadresser, du aktuelt holder øje med. Når eksponeringer er løst, bliver de føjet til det samlede antal her.
+
 modal-cta-ok = OK
 modal-open-alt = Åbn
 modal-close-alt = Luk
+
 progress-card-heres-what-we-fixed-headline-all = Du har løst følgende
 progress-card-manually-fixed-headline = Løst manuelt
+
 dashboard-tab-label-action-needed = Handling påkrævet
 dashboard-tab-label-fixed = Løst
 dashboard-exposures-all-fixed-label = Alt er løst!
+
+
 dashboard-exposures-area-headline = Vis alle websteder, hvor dine oplysninger er eksponeret
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
@@ -59,6 +65,7 @@ dashboard-exposures-area-description-all-line1 =
         [one] Vi fandt { $exposures_unresolved_num } eksponering af dine data.
        *[other] Vi fandt { $exposures_unresolved_num } eksponeringer af dine data.
     }
+
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
@@ -68,6 +75,7 @@ dashboard-exposures-area-description-all-line2 =
        *[other] De optrådte i { $data_breach_unresolved_num } datalæk.
     }
 dashboard-fixed-area-headline-all = Vis alle løste eksponeringer
+
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filtrer
 dashboard-exposures-filter-company = Virksomhed
@@ -76,9 +84,6 @@ dashboard-exposures-filter-date-found-last-seven-days = Seneste 7 dage
 dashboard-exposures-filter-date-found-last-thirty-days = Seneste 30 dage
 dashboard-exposures-filter-date-found-last-year = Seneste år
 dashboard-exposures-filter-status = Status
-dashboard-exposures-filter-status-action-needed = Handling påkrævet
-dashboard-exposures-filter-status-in-progress = I gang
-dashboard-exposures-filter-status-fixed = Løst
 popover-open-filter-settings-alt = Vælg filtre
 dashboard-exposures-filter-show-all = Vis alle
 dashboard-exposures-filter-show-results = Vis resultater
@@ -88,8 +93,10 @@ dashboard-exposures-filter-reset = Nulstil
 
 dashboard-top-banner-section-label = Sammenfatning af oversigt
 dashboard-top-banner-scan-in-progress-title = Din skanning er stadig i gang
+
 dashboard-top-banner-your-data-is-protected-title = Dine data er beskyttet
 dashboard-top-banner-your-data-is-protected-cta = Se, hvad som er løst
+
 dashboard-top-banner-lets-keep-protecting-title = Lad os fortsætte med at beskytte dine data
 # Variables:
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
@@ -99,8 +106,10 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] Du har stadig { $exposures_unresolved_num } eksponeringer, der skal løses. Fortsæt og beskyt dine selv. Vi vejleder dig trin for trin.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Lad os fortsætte
+
 dashboard-top-banner-protect-your-data-title = Lad os beskytte dine data
 dashboard-top-banner-protect-your-data-cta = Lad os løse det
+
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
@@ -117,9 +126,11 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
         [one] De optrådte i { $data_breach_unresolved_num } datalæk. Vi viser dig trin for trin, hvordan du løser problemet.
        *[other] De optrådte i { $data_breach_unresolved_num } datalæk. Vi viser dig trin for trin, hvordan du løser problemet.
     }
+
 dashboard-top-banner-no-exposures-found-title = Ingen eksponeringer fundet
 dashboard-top-banner-non-us-no-exposures-found-description = Gode nyheder! Vi har gennemsøgt alle kendte datalæk og fandt ingen eksponeringer. Vi fortsætter med at holde øje med din mailadresse og giver dig besked, hvis et nyt datalæk finder sted.
 dashboard-no-exposures-label = Ingen eksponeringer fundet
+
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
 dashboard-top-banner-non-us-your-data-is-protected-description =
@@ -127,6 +138,7 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
         [one] Godt gået, eksponeringen af dine data er løst! Vi fortsætter med at holde øje og giver dig besked, hvis vi opdager nye eksponeringer.
        *[other] Godt gået, { $exposures_resolved_num } eksponeringer af dine data er løst! Vi fortsætter med at holde øje og giver dig besked, hvis vi opdager nye eksponeringer.
     }
+
 dashboard-top-banner-monitor-more-cta = Hold øje med flere mailadresser
 
 # About Exposure Statuses Modal

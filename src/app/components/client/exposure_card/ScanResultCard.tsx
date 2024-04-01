@@ -246,15 +246,12 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             className={styles.chevron}
             onClick={() => props.onToggleExpanded()}
             aria-expanded={props.isExpanded}
+            aria-label={l10n.getString("chevron-alt")}
             aria-controls={cardId}
           >
             <ChevronDown
               className={props.isExpanded ? styles.isOpen : ""}
-              alt={
-                props.isExpanded
-                  ? l10n.getString("chevron-up-alt")
-                  : l10n.getString("chevron-down-alt")
-              }
+              alt=""
               width="20"
               height="20"
             />

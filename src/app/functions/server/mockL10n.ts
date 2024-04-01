@@ -17,15 +17,21 @@ import type { LocaleData } from "./l10n";
 // Code in this file is only used in tests and Storybook, not in production:
 /* c8 ignore start */
 
-export function getOneL10nBundleSync(locale = detectLocale()): LocaleData[] {
+export function getSpecificL10nBundlesSync(
+  locales = detectLocale(),
+): LocaleData[] {
   return process.env.STORYBOOK === "true"
-    ? getOneL10nBundleInWebpackContext(locale)
-    : getOneL10nBundleInNodeContext(locale);
+    ? getSpecificL10nBundleInWebpackContext(locales)
+    : getSpecificL10nBundleInNodeContext(locales);
 }
 
-export function getOneL10nBundleInWebpackContext(
-  locale = detectLocale(),
+export function getSpecificL10nBundleInWebpackContext(
+  locales = detectLocale(),
 ): LocaleData[] {
+  return locales.map((locale) => getOneL10nBundleInWebpackContext(locale));
+}
+
+export function getOneL10nBundleInWebpackContext(locale: string): LocaleData {
   const allStringsContext: { keys: () => string[] } & ((
     path: string,
     // `require` isn't usually valid JS, so skip type checking for that:
@@ -39,36 +45,41 @@ export function getOneL10nBundleInWebpackContext(
   const localeStringFilenames = allStringFilenames.filter((filepath) =>
     filepath.startsWith(`./${locale}/`),
   );
-
-  const pendingTranslationsContext: { keys: () => string[] } & ((
-    path: string,
-    // `require` isn't usually valid JS, so skip type checking for that:
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ) => string) = (require as any).context(
-    "../../../../locales-pending",
-    true,
-    /\.ftl$/,
+  let bundleSources: string[] = localeStringFilenames.map((filePath) =>
+    allStringsContext(filePath),
   );
-  const pendingSourceFilenames = pendingTranslationsContext.keys();
-  const bundleSources: string[] = localeStringFilenames
-    .map((filePath) => allStringsContext(filePath))
-    .concat(
+
+  if (locale === "en") {
+    const pendingTranslationsContext: { keys: () => string[] } & ((
+      path: string,
+      // `require` isn't usually valid JS, so skip type checking for that:
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ) => string) = (require as any).context(
+      "../../../../locales-pending",
+      true,
+      /\.ftl$/,
+    );
+    const pendingSourceFilenames = pendingTranslationsContext.keys();
+    bundleSources = bundleSources.concat(
       pendingSourceFilenames.map((filePath) =>
         pendingTranslationsContext(filePath),
       ),
     );
+  }
 
-  return [
-    {
-      locale: locale,
-      bundleSources: bundleSources,
-    },
-  ];
+  return {
+    locale: locale,
+    bundleSources: bundleSources,
+  };
 }
 
-export function getOneL10nBundleInNodeContext(
-  locale = detectLocale(),
+export function getSpecificL10nBundleInNodeContext(
+  locales = detectLocale(),
 ): LocaleData[] {
+  return locales.map((locale) => getOneL10nBundleInNodeContext(locale));
+}
+
+export function getOneL10nBundleInNodeContext(locale: string): LocaleData {
   const {
     readdirSync: nodeReaddirSync,
     readFileSync: nodeReadFileSync,
@@ -81,28 +92,30 @@ export function getOneL10nBundleInNodeContext(
     __dirname,
     `../../../../locales/${locale}/`,
   );
-  const pendingStringsPath = resolvePath(
-    __dirname,
-    "../../../../locales-pending/",
+  let ftlPaths = nodeReaddirSync(referenceStringsPath).map((filename) =>
+    resolvePath(referenceStringsPath, filename),
   );
-  const ftlPaths = nodeReaddirSync(referenceStringsPath)
-    .map((filename) => resolvePath(referenceStringsPath, filename))
-    .concat(
+
+  if (locale === "en") {
+    const pendingStringsPath = resolvePath(
+      __dirname,
+      "../../../../locales-pending/",
+    );
+    ftlPaths = ftlPaths.concat(
       nodeReaddirSync(pendingStringsPath).map((filename) =>
         resolvePath(pendingStringsPath, filename),
       ),
     );
+  }
 
   const bundleSources: string[] = ftlPaths.map((filePath) =>
     nodeReadFileSync(filePath, "utf-8"),
   );
 
-  return [
-    {
-      locale: locale,
-      bundleSources: bundleSources,
-    },
-  ];
+  return {
+    locale: locale,
+    bundleSources: bundleSources,
+  };
 }
 
 const parseMarkup: MarkupParser = (str) => {
@@ -137,12 +150,14 @@ function getBundle(localeData: LocaleData): FluentBundle {
  * module that references it can result in an error about only being able to use
  * it in Server Components.
  *
- * @param locale {string} Locale to load; `en` by default.
+ * @param locales {string} Locale to load; `en` by default.
  */
-export function getOneL10nSync(
-  locale = detectLocale(),
+export function getSpecificL10nSync(
+  locales: string | string[] = detectLocale(),
 ): ExtendedReactLocalization {
-  const localeData: LocaleData[] = getOneL10nBundleSync(locale);
+  const localeData: LocaleData[] = getSpecificL10nBundlesSync(
+    Array.isArray(locales) ? locales : [locales],
+  );
   const bundles: FluentBundle[] = localeData.map((data) => getBundle(data));
 
   // The ReactLocalization instance stores and caches the sequence of generated
@@ -170,5 +185,5 @@ function detectLocale() {
       ? new URLSearchParams(document.location.search).get("locale") ?? undefined
       : undefined;
 
-  return locale ?? "en";
+  return [locale ?? "en"];
 }
