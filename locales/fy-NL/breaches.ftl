@@ -2,79 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-meta-title = { -brand-fx-monitor } – Dashboerd
-
 breach-all-meta-title = { -brand-fx-monitor } – Alle datalekken
 breach-all-meta-social-title = Alle troch { -brand-fx-monitor } detektearre datalekken
 breach-all-meta-social-description = Blêdzje troch de folsleine list mei bekende datalekken ûntdutsen troch { -brand-fx-monitor }, fyn dan út oft jo ynformaasje bleatsteld is.
 
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } – { $company } Datalek
-# Variables:
-#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Binne jo troffen troch it datalek fan { $company }?
 breach-detail-meta-social-description = Brûk { -brand-fx-monitor } om der efter te kommen oft jo persoanlike gegevens by dit datalek lekt binne en om te begripen wat jo dernei dwaan moatte.
 
-breach-scan-meta-title = { -brand-fx-monitor } – Resultaten datalek
-breach-scan-meta-social-title = { -brand-fx-monitor }-datalekresultaten
-breach-scan-meta-social-description = Meld jo oan by { -brand-fx-monitor } om datalekken op te lossen en kontinu ynsjoch te krijen oer nije bekende datalekken.
-
 ## Breaches header
-
-# Data classes pie chart title
-breach-chart-title = Lekte gegevens
-
-# $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = Datalekken foar { $email-select }
-
-# $count is the number of emails a user has added out of $total allowed
-emails-monitored =
-    { $total ->
-        [one] { $count } fan { $total } monitord e-mailadres
-       *[other] { $count } fan { $total } monitorde e-mailadressen
-    }
-
-# link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = E-mailadressen beheare
 
 ## Breaches resolved filter
 
-filter-label-unresolved = Net oploste datalekken
-filter-label-resolved = Oploste datalekken
-
 ## Breaches table
-
-column-company = BEDRIUW
-column-breached-data = LEKTE GEGEVENS
-column-detected = DETEKTEARRE
-
-# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = Oplost
-# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = Aktyf
-
-breaches-resolve-heading = Dit datalek oplosse:
-
-breaches-none-headline = Gjin datalekken fûn
-# Variables:
-#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
-breaches-none-copy = Goed nijs! Der binne gjin bekende datalekken meld foar { $email }. Wy sille dizze e-mailadres monitoare en sille jo witte litte as der nije datalekken barre.
-breaches-none-cta-blurb = Wolle jo in oar e-mailadres kontrolearje?
-breaches-none-cta-button = E-mailadres tafoegje
-
-breaches-all-resolved-headline = Alle datalekken binne oplost
-# Variables:
-#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = Kreas! Jo hawwe alle datalekken foar { $email } oplost. Wy sille dizze e-mailadres monitoare en sille jo witte litte as der nije datalekken barre.
-breaches-all-resolved-cta-blurb = Wolle jo in oar e-mailadres kontrolearje?
-breaches-all-resolved-cta-button = E-mailadres tafoegje
-
-# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-# Variables:
-#   $breachDate (String) - Date of the breach
-#   $companyName (String) - Name of the company where the breach occurred
-breach-description = Op { $breachDate } is in lek bard op { $companyName }. Nei ûntdekking en ferifikaasje fan it lek, is it op { $addedDate } tafoege oan ús database. Dit lek omfette: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 

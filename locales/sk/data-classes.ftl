@@ -30,6 +30,7 @@ career-levels = informácie o kariérnom postupe
 cellular-network-names = názvy mobilných sietí
 charitable-donations = dary pre charitu
 chat-logs = história chatu
+citizenship-statuses = štátne občianstvo
 clothing-sizes = veľkosti oblečenia
 credit-card-cvv = CVV platobných kariet
 credit-cards = platobné karty

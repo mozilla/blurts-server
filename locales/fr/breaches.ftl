@@ -2,79 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-meta-title = { -brand-fx-monitor } — Tableau de bord
-
 breach-all-meta-title = { -brand-fx-monitor } — Toutes les fuites de données
 breach-all-meta-social-title = Toutes les fuites de données détectées par { -brand-fx-monitor }
 breach-all-meta-social-description = Parcourez la liste complète des fuites de données connues détectées par { -brand-fx-monitor }, puis découvrez si vos informations ont été compromises.
 
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } — Fuite de données de { $company }
-# Variables:
-#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = La fuite de données de { $company } vous concerne-t-elle ?
 breach-detail-meta-social-description = Utilisez { -brand-fx-monitor } pour savoir si vos informations personnelles ont été compromises dans cette fuite et que faire ensuite.
 
-breach-scan-meta-title = { -brand-fx-monitor } — Résultats des fuites
-breach-scan-meta-social-title = Résultats des fuites de données { -brand-fx-monitor }
-breach-scan-meta-social-description = Connectez-vous à { -brand-fx-monitor } pour résoudre les fuites de données et bénéficier d’une surveillance continue de toute nouvelle fuite connue.
-
 ## Breaches header
-
-# Data classes pie chart title
-breach-chart-title = Données qui ont fuité
-
-# $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = Fuites de données pour { $email-select }
-
-# $count is the number of emails a user has added out of $total allowed
-emails-monitored =
-    { $count ->
-        [one] { $count } adresse e-mail surveillée sur { $total }
-       *[other] { $count } adresses e-mail surveillées sur { $total }
-    }
-
-# link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = Gérer les adresses e-mail
 
 ## Breaches resolved filter
 
-filter-label-unresolved = Fuites de données non résolues
-filter-label-resolved = Fuites de données résolues
-
 ## Breaches table
-
-column-company = SOCIÉTÉ
-column-breached-data = DONNÉES AYANT FUITÉ
-column-detected = DÉTECTÉE
-
-# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = Résolue
-# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = Active
-
-breaches-resolve-heading = Pour régler cette fuite :
-
-breaches-none-headline = Aucune fuite de données trouvée
-# Variables:
-#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
-breaches-none-copy = Bonne nouvelle ! Aucune fuite de données connue n’a été signalée pour { $email }. Nous continuerons à surveiller cette adresse e-mail et vous informerons si de nouvelles fuites ont lieu.
-breaches-none-cta-blurb = Souhaitez-vous surveiller une autre adresse e-mail ?
-breaches-none-cta-button = Ajouter une adresse e-mail
-
-breaches-all-resolved-headline = Toutes les fuites de données résolues
-# Variables:
-#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = Bien joué ! Vous avez résolu toutes les fuites de données pour { $email }. Nous continuerons à surveiller cette adresse e-mail et vous informerons si de nouvelles fuites ont lieu.
-breaches-all-resolved-cta-blurb = Souhaitez-vous surveiller une autre adresse e-mail ?
-breaches-all-resolved-cta-button = Ajouter une adresse e-mail
-
-# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-# Variables:
-#   $breachDate (String) - Date of the breach
-#   $companyName (String) - Name of the company where the breach occurred
-breach-description = Le { $breachDate }, { $companyName } a été victime d’une fuite de données. Une fois cette fuite découverte et vérifiée, elle a été ajoutée à notre base de données le { $addedDate }. Cette fuite inclut : { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 

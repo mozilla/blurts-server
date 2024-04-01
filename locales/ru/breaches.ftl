@@ -2,81 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-meta-title = { -brand-fx-monitor } — Панель управления
-
 breach-all-meta-title = { -brand-fx-monitor } - Все утечки данных
 breach-all-meta-social-title = Все утечки, обнаруженные { -brand-fx-monitor }
 breach-all-meta-social-description = Просмотрите полный список известных утечек, обнаруженных { -brand-fx-monitor }, а затем узнайте, была ли раскрыта ваша информация.
 
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } - Утечка данных { $company }
-# Variables:
-#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Были ли вы затронуты утечкой данных { $company }?
 breach-detail-meta-social-description = Используйте { -brand-fx-monitor }, чтобы узнать, была ли ваша личная информация раскрыта в результате этой утечки, и понять, что делать дальше.
 
-breach-scan-meta-title = { -brand-fx-monitor } - Результаты утечки
-breach-scan-meta-social-title = { -brand-fx-monitor } Результаты утечки
-breach-scan-meta-social-description = Войдите в { -brand-fx-monitor }, чтобы решать вопросы по утечкам и получать непрерывный мониторинг любых новых известных утечек.
-
 ## Breaches header
-
-# Data classes pie chart title
-breach-chart-title = Скомпрометированные данные
-
-# $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = Утечки данных для { $email-select }
-
-# $count is the number of emails a user has added out of $total allowed
-emails-monitored =
-    { $total ->
-        [one] { $count } из { $total } отслеживаемого ящика
-        [few] { $count } из { $total } отслеживаемых ящиков
-        [many] { $count } из { $total } отслеживаемых ящиков
-       *[other] { $count } из { $total } отслеживаемых ящиков
-    }
-
-# link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = Управление электронными почтовыми адресами
 
 ## Breaches resolved filter
 
-filter-label-unresolved = Необработанные утечки
-filter-label-resolved = Обработанные утечки
-
 ## Breaches table
-
-column-company = КОМПАНИЯ
-column-breached-data = УТЕКШИЕ ДАННЫЕ
-column-detected = ОБНАРУЖЕНА
-
-# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = Решена
-# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = Активна
-
-breaches-resolve-heading = Решить эту утечку:
-
-breaches-none-headline = Утечек не обнаружено
-# Variables:
-#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
-breaches-none-copy = Хорошие новости! Для { $email } не было зарегистрировано никаких известных утечках. Мы будем продолжать отслеживать эту почту и сообщим вам, если появятся новые утечки.
-breaches-none-cta-blurb = Хотите ли вы отслеживать другую электронную почту?
-breaches-none-cta-button = Добавить адрес электронной почты
-
-breaches-all-resolved-headline = Все утечки устранены
-# Variables:
-#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = Отлично сделано! Вы устранили все утечки для { $email }. Мы продолжим отслеживать электронную почту и сообщим вам, если возникнут новые утечки.
-breaches-all-resolved-cta-blurb = Хотите ли вы отслеживать другую электронную почту?
-breaches-all-resolved-cta-button = Добавить адрес электронной почты
-
-# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-# Variables:
-#   $breachDate (String) - Date of the breach
-#   $companyName (String) - Name of the company where the breach occurred
-breach-description = { $breachDate } произошла утечка данных { $companyName }. Как только утечка была обнаружена и подтверждена, она была добавлена в нашу базу данных { $addedDate }. Эта утечка включает в себя: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 

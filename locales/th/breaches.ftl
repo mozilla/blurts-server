@@ -5,17 +5,7 @@
 
 ## Breaches header
 
-# Data classes pie chart title
-breach-chart-title = ข้อมูลที่รั่วไหล
-# $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = การรั่วไหลของข้อมูลสำหรับ { $email-select }
-# link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = จัดการอีเมล
-
 ## Breaches resolved filter
-
-filter-label-unresolved = การรั่วไหลที่ยังไม่แก้ไข
-filter-label-resolved = การรั่วไหลที่แก้ไขแล้ว
 
 ## Breaches table
 

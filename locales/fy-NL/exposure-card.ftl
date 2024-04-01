@@ -2,8 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Utklappe
-chevron-up-alt = Ynklappe
+chevron-alt = Datalekdetails
+
 exposure-card-exposure-type = Type lek
 exposure-card-date-found = Datum fan it lek
 
@@ -34,8 +34,6 @@ exposure-card-exposure-type-data-breach = Datalek
 exposure-card-cta = Alle lekken werstelle
 exposure-card-label-company-logo = Bedriuwslogo
 exposure-card-label-company = Bedriuw
-exposure-card-label-exposure-type = Type lek
-exposure-card-label-date-found = Datum ûntdekt
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Status
 # Variables:

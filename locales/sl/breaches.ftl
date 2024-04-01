@@ -2,81 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-meta-title = { -brand-fx-monitor } – Nadzorna plošča
-
 breach-all-meta-title = { -brand-fx-monitor } – Vse kraje podatkov
 breach-all-meta-social-title = Vse kraje podatkov, ki jih je odkril { -brand-fx-monitor }
 breach-all-meta-social-description = Prebrskajte po celotnem seznamu znanih kraj, ki jih je zaznal { -brand-fx-monitor }, in ugotovite, ali so bili vaši podatki izpostavljeni.
 
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } – Kraja podatkov { $company }
-# Variables:
-#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = So bili vaši podatki udeleženi v kraji podatkov podjetja { $company }?
 breach-detail-meta-social-description = Z uporabo { -brand-fx-monitor(sklon: "rodilnik") } ugotovite, ali so bili vaši osebni podatki izpostavljeni v tej kraji, in se poučite o nadaljnjih korakih.
 
-breach-scan-meta-title = { -brand-fx-monitor } – Rezultati kršitev
-breach-scan-meta-social-title = { -brand-fx-monitor } – Rezultati kršitev
-breach-scan-meta-social-description = Prijavite se v { -brand-fx-monitor }, odpravljajte kraje podatkov in si zagotovite stalno spremljanje morebitnih novih znanih kraj.
-
 ## Breaches header
-
-# Data classes pie chart title
-breach-chart-title = Kršitev podatkov
-
-# $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = Kraje podatkov za { $email-select }
-
-# $count is the number of emails a user has added out of $total allowed
-emails-monitored =
-    { $total ->
-        [one] { $count } od { $total } nadzorovanih e-poštnih naslovov
-        [two] { $count } od { $total } nadzorovanih e-poštnih naslovov
-        [few] { $count } od { $total } nadzorovanih e-poštnih naslovov
-       *[other] { $count } od { $total } nadzorovanih e-poštnih naslovov
-    }
-
-# link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = Urejanje e-poštnih naslovov
 
 ## Breaches resolved filter
 
-filter-label-unresolved = Nerazrešene kraje podatkov
-filter-label-resolved = Razrešene kraje
-
 ## Breaches table
-
-column-company = PODJETJE
-column-breached-data = UKRADENI PODATKI
-column-detected = ZAZNANO
-
-# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = Razrešeno
-# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = Aktivno
-
-breaches-resolve-heading = Razrešite to krajo:
-
-breaches-none-headline = Ni najdenih kraj
-# Variables:
-#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
-breaches-none-copy = Dobra novica! Za { $email } niso bile prijavljene znane kraje. Ta e-poštni naslov bomo še naprej spremljali in vas obvestili, če bo prišlo do novih kraj.
-breaches-none-cta-blurb = Ali želite spremljati drug e-poštni naslov?
-breaches-none-cta-button = Dodaj e-poštni naslov
-
-breaches-all-resolved-headline = Vse kraje razrešene
-# Variables:
-#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = Bravo! Razrešili ste vse kraje podatkov za { $email }. Še naprej bomo spremljali ta e-poštni naslov in vas obvestili, če bo prišlo do novih kraj.
-breaches-all-resolved-cta-blurb = Ali želite spremljati drug e-poštni naslov?
-breaches-all-resolved-cta-button = Dodaj e-poštni naslov
-
-# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-# Variables:
-#   $breachDate (String) - Date of the breach
-#   $companyName (String) - Name of the company where the breach occurred
-breach-description = Dne { $breachDate } je prišlo do kraje podatkov podjetja { $companyName }. Potem ko je bila kraja odkrita in potrjena, je bila dne { $addedDate } dodana v našo zbirko podatkov. Kraja je obsegala naslednje vrste podatkov: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
