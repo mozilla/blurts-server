@@ -132,12 +132,6 @@ jobs:
 workflows:
     deploy-only:
         jobs:
-            - deploy:
-                filters:
-                    tags:
-                        only: /.*/
-                    branches:
-                        only: main
 
             - deploy_heroku:
                 name: Deploy main to Heroku
