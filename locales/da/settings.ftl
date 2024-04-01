@@ -5,7 +5,6 @@
 
 # Settings page
 
-settings-meta-title = { -brand-fx-monitor } - Indstillinger
 settings-page-title = { -product-short-name }-instillinger
 
 ## Breach alert preferences
@@ -16,9 +15,6 @@ settings-alert-preferences-option-two = Send alle advarsler om datalæk til den 
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-label-primary = { $email } (primær)
 settings-email-list-title = Overvågede mailadresser
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,12 +26,11 @@ settings-email-limit-info =
 settings-email-verification-callout = Bekræftelse af mailadresse påkrævet
 settings-resend-email-verification-link = Send bekræftelsesmail igen
 settings-add-email-button = Tilføj mailadresse
-# Deprecated
-settings-delete-email-button = Slet mailadresse
 settings-remove-email-button-label = Fjern
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Stop med at holde øje med { $emailAddress }
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -47,9 +42,6 @@ settings-email-number-of-breaches-info =
     }
 
 ## Cancel Premium subscription
-
-settings-cancel-premium-subscription-title = Annuller { -brand-premium }-abonnement
-settings-cancel-premium-subscription-info = Dit abonnement vender tilbage til at være en gratis konto, når den aktuelle faktureringsperiode slutter. Resultaterne af dine privatlivsscanninger slettes permanent, og kun én mailadresse overvåges for datalæk.
 
 ## Deactivate account
 
@@ -71,17 +63,5 @@ settings-delete-monitor-account-confirmation-toast-dismiss-label = Afvis
 
 ## Add email dialog
 
-settings-email-dialog-title = Tilføj en mailadresse til
-settings-add-email-text = Tilføj en ny mailadresse for at se, om den har været involveret i en datalæk.
-settings-email-input-label = Mailadresse
-settings-send-email-verification-button = Send bekræftelseslink
-
 ## Unsubscribe Dialog Survey
 
-settings-unsubscribe-dialog-title = Vi er kede af, at du forlader os. <br /> Vil du fortælle os om, hvorfor du gør det?
-settings-unsubscribe-dialog-info = Dine erfaringer er vigtige for os. Vi læser alle svar og tager dem til eftertanke.
-settings-unsubscribe-dialog-message-placeholder = Hvad kunne have været bedre?
-# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
-settings-unsubscribe-dialog-confirmation = Bemærk, at alle dine { -brand-monitor-premium }-tjenester bliver <a { $faq_href }>slettet permanent</a>, efter din nuværende faktureringsperiode slutter.
-settings-unsubscribe-dialog-continue = Fortsæt til annullering
-settings-unsubscribe-dialog-cancel = Jag har skiftet mening - gå tilbage

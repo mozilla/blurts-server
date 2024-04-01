@@ -5,8 +5,8 @@
 fix-flow-nav-high-risk-data-breaches = Yüksek riskli veri ihlalleri
 fix-flow-nav-leaked-passwords = Sızan parolalar
 fix-flow-nav-security-recommendations = Güvenlik önerileri
+
 guided-resolution-flow-exit = Kontrol paneline dön
-guided-resolution-flow-back-arrow = Önceki adıma git
 guided-resolution-flow-next-arrow = Sonraki adıma git
 guided-resolution-flow-step-navigation-label = Rehberli adımlar
 

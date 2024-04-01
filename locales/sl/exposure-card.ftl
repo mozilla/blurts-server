@@ -2,8 +2,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Razširi
-chevron-up-alt = Strni
 exposure-card-exposure-type = vrsta izpostavljenosti
 exposure-card-date-found = Datum izpostavljenosti
 
@@ -34,8 +32,6 @@ exposure-card-exposure-type-data-breach = Kraja podatkov
 exposure-card-cta = Popravi vse izpostavljenosti
 exposure-card-label-company-logo = Logotip podjetja
 exposure-card-label-company = Podjetje
-exposure-card-label-exposure-type = vrsta izpostavljenosti
-exposure-card-label-date-found = Datum najden
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Stanje
 # Variables:

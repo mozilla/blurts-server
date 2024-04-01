@@ -1,3 +1,7 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 exposure-landing-hero-heading = Μάθετε εάν έχουν παραβιαστεί οι προσωπικές σας πληροφορίες
 exposure-landing-hero-lead = Προστατευτείτε με τα εργαλεία απορρήτου από τους δημιουργούς του { -brand-firefox } από χάκερ και εταιρείες που δημοσιεύουν και πωλούν τα προσωπικά σας δεδομένα. Θα σας ειδοποιήσουμε για τυχόν γνωστές παραβιάσεις δεδομένων, θα βρούμε και θα διαγράψουμε τα εκτεθιμένα στοιχεία σας και θα είμαστε συνεχώς σε επιφυλακή για νέες παραβιάσεις.
 exposure-landing-hero-email-label = Διεύθυνση email

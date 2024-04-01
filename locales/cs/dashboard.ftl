@@ -31,6 +31,7 @@ exposure-chart-caption-fixed = Tento graf ukazuje celkový počet fixovaných ex
 exposure-chart-returning-user-upgrade-prompt = Adresa domů, členové rodiny a další zatím nejsou zahrnuté.
 exposure-chart-returning-user-upgrade-prompt-cta = Spustit bezplatné skenování
 exposure-chart-scan-in-progress-prompt = <b>Probíhá skenování:</b> adresa, rodinní příslušníci a další údaje zatím nejsou zahrnuty.
+
 modal-active-number-of-exposures-title = O počtu aktivních odhalení
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -44,14 +45,19 @@ modal-active-number-of-exposures-part-two = Například, pokud máte 10 odhalen�
 modal-active-number-of-exposures-part-three-all = Když budou vyřešeny, budou přidány k vašemu celkovému počtu vyřešených odhalení na podstránce Vyřešené.
 modal-fixed-number-of-exposures-title = O počtu vyřešených odhalení
 modal-fixed-number-of-exposures-all = Tento graf obsahuje celkový počet úniků údajů, které byly vyřešeny pro všechny e-mailové adresy, které aktuálně sledujete. Jakmile jsou odhalení označeny jako vyřešené, připočítají se zde k celkovému součtu.
+
 modal-cta-ok = OK
 modal-open-alt = Otevřít
 modal-close-alt = Zavřít
+
 progress-card-heres-what-we-fixed-headline-all = Tady je, co jste opravili
 progress-card-manually-fixed-headline = Ručně opraveno
+
 dashboard-tab-label-action-needed = Vyžadována akce
 dashboard-tab-label-fixed = Opraveno
 dashboard-exposures-all-fixed-label = Vše opraveno!
+
+
 dashboard-exposures-area-headline = Podívejte se na všechny stránky, na kterých jsou zveřejněny vaše údaje
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
@@ -62,6 +68,7 @@ dashboard-exposures-area-description-all-line1 =
         [few] Našli jsme { $exposures_unresolved_num } odhalení vašich údajů.
        *[other] Našli jsme { $exposures_unresolved_num } odhalení vašich údajů.
     }
+
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
@@ -72,6 +79,7 @@ dashboard-exposures-area-description-all-line2 =
        *[other] Bylo součástí { $data_breach_unresolved_num } úniků údajů.
     }
 dashboard-fixed-area-headline-all = Podívejte se na všechna odhalení, která jsou vyřešena
+
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filtrovat
 dashboard-exposures-filter-company = Společnost
@@ -80,9 +88,6 @@ dashboard-exposures-filter-date-found-last-seven-days = Posledních 7 dní
 dashboard-exposures-filter-date-found-last-thirty-days = Posledních 30 dní
 dashboard-exposures-filter-date-found-last-year = Poslední rok
 dashboard-exposures-filter-status = Stav
-dashboard-exposures-filter-status-action-needed = Vyžadována akce
-dashboard-exposures-filter-status-in-progress = Probíhá
-dashboard-exposures-filter-status-fixed = Vyřešeno
 popover-open-filter-settings-alt = Zvolte filtry
 dashboard-exposures-filter-show-all = Zobrazit vše
 dashboard-exposures-filter-show-results = Zobrazit výsledky
@@ -92,8 +97,10 @@ dashboard-exposures-filter-reset = Obnovit
 
 dashboard-top-banner-section-label = Shrnutí na nástěnce
 dashboard-top-banner-scan-in-progress-title = Skenování stále probíhá
+
 dashboard-top-banner-your-data-is-protected-title = Vaše data jsou chráněna
 dashboard-top-banner-your-data-is-protected-cta = Podívejte se, co je vyřešené
+
 dashboard-top-banner-lets-keep-protecting-title = Pojďme chránit vaše data
 # Variables:
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
@@ -104,8 +111,10 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] Stále vám zbývá vyřešit { $exposures_unresolved_num } odhalení. Pokračujte a chraňte se. Provedeme vás krok za krokem.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Pojďme chránit i nadále
+
 dashboard-top-banner-protect-your-data-title = Pojďme chránit vaše údaje
 dashboard-top-banner-protect-your-data-cta = Pojďme to napravit
+
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
@@ -124,9 +133,11 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
         [few] Objevilo se v { $data_breach_unresolved_num } odhalení vašich údajů. Ukážeme vám, jak to krok za krokem vyřešit.
        *[other] Objevilo se v { $data_breach_unresolved_num } odhalení vašich údajů. Ukážeme vám, jak to krok za krokem vyřešit.
     }
+
 dashboard-top-banner-no-exposures-found-title = Nebyla nalezena žádná odhalení
 dashboard-top-banner-non-us-no-exposures-found-description = Skvělá zpráva! Prohledali jsme všechny známé úniky údajů a nenašli jsme žádné odhalení. Vaši e-mailovou adresu budeme průběžně monitorovat a pokud dojde k novému úniku, dáme vám vědět.
 dashboard-no-exposures-label = Nebylo nalezeno žádné odhalení
+
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
 dashboard-top-banner-non-us-your-data-is-protected-description =
@@ -135,6 +146,7 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
         [few] Skvělá práce, { $exposures_resolved_num } odhalení vašich údajů je nyní vyřešeno! Budeme pokračovat v monitorování a upozorníme vás, když dojde k novému odhalení.
        *[other] Skvělá práce, { $exposures_resolved_num } odhalení vašich údajů je nyní vyřešeno! Budeme pokračovat v monitorování a upozorníme vás, když dojde k novému odhalení.
     }
+
 dashboard-top-banner-monitor-more-cta = Monitorovat více e-mailů
 
 # About Exposure Statuses Modal

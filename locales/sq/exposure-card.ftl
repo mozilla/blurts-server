@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Hollësi ekspozimi
+
 exposure-card-exposure-type = Lloj ekspozimi
 exposure-card-date-found = Datë e ekspozimit
 
@@ -33,8 +34,6 @@ exposure-card-exposure-type-data-breach = Cenim të dhënash
 exposure-card-cta = Ndreqi krejt ekspozimet
 exposure-card-label-company-logo = Stemë e shoqërisë
 exposure-card-label-company = Shoqëri
-exposure-card-label-exposure-type = Lloj ekspozimi
-exposure-card-label-date-found = Datë kur u gjet
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Gjendje
 # Variables:

@@ -1,3 +1,7 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 exposure-landing-hero-heading = 귀하의 개인정보가 침해되었는지 알아보세요.
 exposure-landing-hero-email-label = 이메일 주소
 exposure-landing-hero-email-placeholder = 이메일 주소 입력

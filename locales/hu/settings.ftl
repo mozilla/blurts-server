@@ -5,7 +5,6 @@
 
 # Settings page
 
-settings-meta-title = { -brand-fx-monitor } – Beállítások
 settings-page-title = { -product-short-name } beállítások
 
 ## Breach alert preferences
@@ -16,9 +15,6 @@ settings-alert-preferences-option-two = Az összes adatvédelmi incidens figyelm
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-label-primary = { $email } (elsődleges)
 settings-email-list-title = Figyelt e-mail-címek
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,12 +26,11 @@ settings-email-limit-info =
 settings-email-verification-callout = E-mail ellenőrzés szükséges
 settings-resend-email-verification-link = Ellenőrző e-mail újraküldése
 settings-add-email-button = E-mail-cím hozzáadása
-# Deprecated
-settings-delete-email-button = E-mail-cím törlése
 settings-remove-email-button-label = Eltávolítás
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = A(z) { $emailAddress } figyelésének leállítása
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -47,9 +42,6 @@ settings-email-number-of-breaches-info =
     }
 
 ## Cancel Premium subscription
-
-settings-cancel-premium-subscription-title = A { -brand-premium } előfizetés megszüntetése
-settings-cancel-premium-subscription-info = Az előfizetése ingyenes fiókká változik a jelenlegi számlázási ciklus végén. Az adatvédelmi vizsgálati eredményei véglegesen törlésre kerülnek, és csak 1 e-mail-címhez lesz bekapcsolva az adatvédelmi incidensek figyelése.
 
 ## Deactivate account
 
@@ -71,17 +63,5 @@ settings-delete-monitor-account-confirmation-toast-dismiss-label = Eltüntetés
 
 ## Add email dialog
 
-settings-email-dialog-title = Másik e-mail-cím hozzáadása
-settings-add-email-text = Adjon hozzá új e-mail-címet, hogy megtudja, érintett volt-e adatvédelmi incidensben.
-settings-email-input-label = E-mail-cím
-settings-send-email-verification-button = Ellenőrző hivatkozás küldése
-
 ## Unsubscribe Dialog Survey
 
-settings-unsubscribe-dialog-title = Sajnáljuk, hogy távozik. <br /> Elmondja, hogy miért távozik?
-settings-unsubscribe-dialog-info = Az Ön tapasztalata fontos a számunkra. Minden választ elolvasunk, és figyelembe vesszük.
-settings-unsubscribe-dialog-message-placeholder = Mi alakulhatott volna jobban?
-# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
-settings-unsubscribe-dialog-confirmation = Felhívjuk figyelmét, hogy az összes { -brand-monitor-premium } szolgáltatás <a { $faq_href }>véglegesen törölve lesz</a> a jelenlegi számlázási ciklusa végén.
-settings-unsubscribe-dialog-continue = Tovább a lemondáshoz
-settings-unsubscribe-dialog-cancel = Mégse, visszalépés

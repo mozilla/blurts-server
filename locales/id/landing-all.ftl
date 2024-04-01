@@ -3,11 +3,14 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
+
 landing-all-hero-title = Temukan di mana info pribadi Anda terbuka — dan ambil kembali
 landing-all-hero-lead = Kami memindai kebocoran data untuk melihat apakah data Anda telah bocor dan memberi Anda langkah-langkah untuk memperbaikinya.
+
 landing-all-hero-emailform-input-placeholder = namaanda@example.com
 landing-all-hero-emailform-input-label = Masukkan alamat surel Anda untuk memeriksa eksposur pelanggaran data.
 landing-all-hero-emailform-submit-label = Dapatkan pemindaian gratis
+
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = eksposur
 
@@ -59,5 +62,7 @@ landing-all-help-protect-you-feature-one = Kami akan mencari Anda di semua pembo
 landing-all-help-protect-you-feature-two = Kami akan memandu Anda melalui langkah-langkah untuk menyelesaikan setiap pelanggaran
 landing-all-help-protect-you-feature-three = Kami akan terus memantau dan mengirimi Anda peringatan untuk setiap pelanggaran baru
 landing-all-help-protect-you-cta = Daftar untuk peringatan pembobolan
+
 landing-all-get-started = Pindai surel Anda untuk memulai
 landing-all-take-back-data = Ambil kembali kendali atas data Anda
+
