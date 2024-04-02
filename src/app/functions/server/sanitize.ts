@@ -6,7 +6,7 @@
  * Functions that only return data we wouldn't mind sending to the client
  */
 
-import "server-only";
+import "./notInClientComponent";
 import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 
 type SanitizationMarker = {
