@@ -107,11 +107,7 @@ declare module "knex/types/tables" {
       };
       monitoredEmails: { count: number };
     };
-    // TODO: Find unknown type
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-    monthly_monitor_report_at: null | unknown;
-    // TODO: Find unknown type
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+    monthly_monitor_report_at: null | Date;
     monthly_monitor_report: boolean;
     breach_resolution:
       | null
