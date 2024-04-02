@@ -2,6 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+
 # Breach Data Classes
 
 account-balances = Saldos de cuentas
@@ -18,7 +19,7 @@ avatars = Avatares
 bank-account-numbers = Números de cuentas bancarias
 beauty-ratings = Puntuaciones de belleza
 biometric-data = Información biométrica
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Bios
 browser-user-agent-details = Detalles del agente de usuario del navegador
@@ -29,6 +30,7 @@ career-levels = Niveles profesionales
 cellular-network-names = Nombres de redes móviles
 charitable-donations = Donaciones a la caridad
 chat-logs = Registros de chat
+citizenship-statuses = Estados de ciudadanía
 clothing-sizes = Tallas de ropa
 credit-card-cvv = CVV de tarjetas de crédito
 credit-cards = Tarjetas de crédito
@@ -39,7 +41,7 @@ customer-interactions = Interacciones con el cliente
 dates-of-birth = Fechas de nacimiento
 deceased-date = Fecha de fallecimiento
 deceased-statuses = Estados de fallecimientos
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Instrucciones de entrega
 device-information = Información del dispositivo
@@ -79,7 +81,7 @@ instant-messenger-identities = Identidades de mensajería instantánea
 ip-addresses = Direcciones IP
 job-applications = Solicitudes de empleo
 job-titles = Puestos de trabajo
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Matrículas de vehículos
 living-costs = Costes de vida
 # This string refers to financial loans.
