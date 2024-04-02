@@ -15,6 +15,9 @@ email-footer-logo-mozilla-alt = { -brand-mozilla }
 
 ## Monthly overview email
 
+# TODO: Before submitting for localisation, rewrite to support possible
+#       declension (e.g. "Your monthly Monitor report (April)").
+#       See https://github.com/mozilla/blurts-server/pull/4374#discussion_r1546005612
 # Variables:
 #   $month (string) - Translated month this email is about, e.g. "April"
 email-monthly-plus-manual-subject = Your { $month } { -brand-monitor } report
@@ -32,6 +35,9 @@ email-monthly-plus-manual-fixed-section-in-progress-heading = Removals in progre
 # Accompanies a number that indicates how many data broker exposures we've already fixed
 email-monthly-plus-manual-fixed-section-done-heading = Auto-removed
 
+# TODO: Before submitting for localisation, rewrite to support possible
+#       declension (e.g. "Your monthly Monitor report (April)").
+#       See https://github.com/mozilla/blurts-server/pull/4374#discussion_r1546005612
 # Variables:
 #   $month (string) - Translated month this email is about, e.g. "April"
 email-monthly-plus-auto-subject = Your { $month } { -brand-monitor } report
@@ -47,6 +53,9 @@ email-monthly-plus-auto-fixed-section-in-progress-heading = Removals in progress
 # Accompanies a number that indicates how many data broker exposures we've already fixed
 email-monthly-plus-auto-fixed-section-done-heading = Auto-removed
 
+# TODO: Before submitting for localisation, rewrite to support possible
+#       declension (e.g. "Your monthly Monitor report (April)").
+#       See https://github.com/mozilla/blurts-server/pull/4374#discussion_r1546005612
 # Variables:
 #   $month (string) - Translated month this email is about, e.g. "April"
 email-monthly-free-subject = Your { $month } { -brand-monitor } report
