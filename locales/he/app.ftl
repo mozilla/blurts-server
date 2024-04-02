@@ -133,18 +133,6 @@ breach-added-label = דליפה נוספה:
 ## Please do not modify or remove "<span>" and "</span>".
 
 
-##
-
-## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
-
-
-## Relay and VPN educational/ad units
-
-
-##
-
-## Updated error messages
-
 # Monitor V2
 
 
@@ -157,6 +145,18 @@ breach-added-label = דליפה נוספה:
 
 
 ##
+
+##
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+
+## Relay and VPN educational/ad units
+
+
+##
+
+## Updated error messages
 
 ## Search Engine Optimization
 

@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Detalles de la exposición
+
 exposure-card-exposure-type = Tipo de exposición
 exposure-card-date-found = Fecha de la exposición
 

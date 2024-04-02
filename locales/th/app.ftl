@@ -171,12 +171,6 @@ breach-added-label = เพิ่มการรั่วไหลเมื่�
 ## Please do not modify or remove "<span>" and "</span>".
 
 
-##
-
-##
-
-## Updated error messages
-
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = ใหม่
 
@@ -198,6 +192,12 @@ new-breach = ใหม่
 
 
 ##
+
+##
+
+##
+
+## Updated error messages
 
 ## Search Engine Optimization
 
