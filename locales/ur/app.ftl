@@ -110,13 +110,6 @@ rec-section-headline-no-pw = اپنی ذاتی معلومات کی حفاظت ک
 ## Please do not modify or remove "<span>" and "</span>".
 
 
-##
-
-##
-
-## Updated error messages
-
-
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = نیا
 
@@ -136,6 +129,13 @@ new-breach = نیا
 ##
 
 ##
+
+##
+
+##
+
+## Updated error messages
+
 
 ## Search Engine Optimization
 
