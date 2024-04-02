@@ -2,79 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-meta-title = { -brand-fx-monitor } - Pult
-
 breach-all-meta-title = { -brand-fx-monitor } - Krejt Cenimet e të Dhënave
 breach-all-meta-social-title = Krejt Cenimet e Pikasura nga { -brand-fx-monitor }
 breach-all-meta-social-description = Shfletoni listën e plotë të cenimeve të ditura të pikasura nga { -brand-fx-monitor }, mandej shihni nëse është ekspozuar informacion i juaji.
 
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } - Cenim të Dhënash { $company }
-# Variables:
-#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Qetë prekur nga Cenim të Dhënash { $company }?
 breach-detail-meta-social-description = Përdorni { -brand-fx-monitor } që të shihni nëse në këtë cenim qe ekspozuar informacion personal i juaji dhe kuptoni ç’të bëhet më pas.
 
-breach-scan-meta-title = { -brand-fx-monitor } - Përfundime Cenimesh
-breach-scan-meta-social-title = Përfundime Cenimesh { -brand-fx-monitor }
-breach-scan-meta-social-description = Që të zgjidhni cenime dhe të merrni mbikëqyrje të vazhdueshme për çfarëdo cenimi të ri të ditur, bëni hyrjen te { -brand-fx-monitor }.
-
 ## Breaches header
-
-# Data classes pie chart title
-breach-chart-title = Të dhëna cenimesh
-
-# $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = Cenime të dhënash për { $email-select }
-
-# $count is the number of emails a user has added out of $total allowed
-emails-monitored =
-    { $total ->
-        [one] { $count } nga { $total } email i mbikëqyrur
-       *[other] { $count } nga { $total } email-e të mbikëqyrur
-    }
-
-# link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = Administroni email
 
 ## Breaches resolved filter
 
-filter-label-unresolved = Cenime të pazgjidhura
-filter-label-resolved = Cenime të zgjidhura
-
 ## Breaches table
-
-column-company = SHOQËRI
-column-breached-data = TË DHËNA TË CENUARA
-column-detected = TË PIKASURA
-
-# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = I zgjidhur
-# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = Aktiv
-
-breaches-resolve-heading = Zgjidheni këtë cenim:
-
-breaches-none-headline = S’u gjetën cenime
-# Variables:
-#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
-breaches-none-copy = Lajme të mbara! Për { $email } s’u raportuan cenime. Do të vazhdojmë ta mbikëqyrim këtë email dhe t’ju bëjmë të ditur, nëse ndodhin cenime të reja.
-breaches-none-cta-blurb = Do të donit të mbikëqyret tjetër email?
-breaches-none-cta-button = Shtoni adresë email
-
-breaches-all-resolved-headline = Krejt cenimet janë zgjidhur
-# Variables:
-#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = Punë e paqme! Keni zgjidhur krejt cenimet për { $email }. Do të vazhdojmë ta mbikëqyrim këtë email dhe t’ju bëjmë të ditur, nëse ndodhin cenime të reja.
-breaches-all-resolved-cta-blurb = Do të donit të mbikëqyret tjetër email?
-breaches-all-resolved-cta-button = Shtoni adresë email
-
-# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-# Variables:
-#   $breachDate (String) - Date of the breach
-#   $companyName (String) - Name of the company where the breach occurred
-breach-description = Më { $breachDate } u cenua { $companyName }. Pasi u zbulua dhe u verifikua cenimi, u shtua te baza jonë e të dhënave më { $addedDate }. Ky cenim përfshinte: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 

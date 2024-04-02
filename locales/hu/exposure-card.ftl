@@ -2,7 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-alt = Expozíció részletei
+chevron-alt = Kikerülés részletei
+
 exposure-card-exposure-type = Kitettség típusa
 exposure-card-date-found = Az incidens dátuma
 
@@ -33,8 +34,6 @@ exposure-card-exposure-type-data-breach = Adatvédelmi incidens
 exposure-card-cta = Javítsa az összes kitettséget
 exposure-card-label-company-logo = Céglogó
 exposure-card-label-company = Cég
-exposure-card-label-exposure-type = kitettség típusa
-exposure-card-label-date-found = Találat dátuma
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Állapot
 # Variables:

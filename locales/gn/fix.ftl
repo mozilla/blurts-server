@@ -5,8 +5,8 @@
 fix-flow-nav-high-risk-data-breaches = Mba’ekuaarã ñembyai oikokuaáva
 fix-flow-nav-leaked-passwords = Ñe’ẽñemi mboguapyre
 fix-flow-nav-security-recommendations = Ñemoñe’ẽ tekorosãrã
+
 guided-resolution-flow-exit = Eguevijey mba’erupápe
-guided-resolution-flow-back-arrow = Eho mboyveguávape
 guided-resolution-flow-next-arrow = Eho upeiguávape
 guided-resolution-flow-step-navigation-label = Jeguata ma’ẽgua
 

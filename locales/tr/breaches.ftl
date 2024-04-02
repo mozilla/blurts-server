@@ -2,68 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-meta-title = { -brand-fx-monitor } - Pano
 breach-all-meta-title = { -brand-fx-monitor } - Tüm Veri İhlalleri
 breach-all-meta-social-title = { -brand-fx-monitor } tarafından tespit edilen tüm ihlaller
 breach-all-meta-social-description = { -brand-fx-monitor } tarafından tespit edilen bilinen ihlallerin tam listesine göz atın ve bilgilerinizin ele geçirilip geçirilmediğini öğrenin.
-# Variables:
-#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } - { $company } Veri İhlali
+
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = { $company } veri ihlalinden etkilendiniz mi?
 breach-detail-meta-social-description = Bu ihlalde kişisel bilgilerinizin ele geçirilip geçirilmediğini öğrenmek ve bundan sonra bu gibi durumlarda ne yapacağınızı anlamak için { -brand-fx-monitor } kullanın.
-breach-scan-meta-title = { -brand-fx-monitor } - İhlal Sonuçları
-breach-scan-meta-social-title = { -brand-fx-monitor } İhlal Sonuçları
-breach-scan-meta-social-description = İhlalleri çözmek ve bilinen yeni ihlaller için sürekli takipte kalmak için { -brand-fx-monitor }’e giriş yapın.
 
 ## Breaches header
 
-# Data classes pie chart title
-breach-chart-title = Ele geçirilmiş veriler
-# $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = { $email-select } için veri ihlalleri
-# $count is the number of emails a user has added out of $total allowed
-emails-monitored =
-    { $total ->
-        [one] { $total } e-postanın { $count } tanesi izleniyor
-       *[other] { $total } e-postanın { $count } tanesi izleniyor
-    }
-# link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = E-postaları yönet
-
 ## Breaches resolved filter
 
-filter-label-unresolved = Çözülmemiş ihlaller
-filter-label-resolved = Çözülmüş ihlaller
-
 ## Breaches table
-
-column-company = ŞİRKET
-column-breached-data = İHLAL EDİLMİŞ VERİLER
-column-detected = TESPİT EDİLDİ
-# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = Çözüldü
-# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = Etkin
-breaches-resolve-heading = Bu ihlali çözün:
-breaches-none-headline = İhlal bulunamadı
-# Variables:
-#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
-breaches-none-copy = Her şey yolunda! { $email } için bilinen bir ihlal bildirilmedi. Bu e-postayı izlemeye devam edeceğiz ve herhangi bir yeni ihlal olursa size haber vereceğiz.
-breaches-none-cta-blurb = Başka bir e-postayı izlemek ister misiniz?
-breaches-none-cta-button = E-posta adresi ekle
-breaches-all-resolved-headline = Tüm ihlaller çözüldü
-# Variables:
-#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = { $email } için tüm ihlalleri çözdünüz. Bu e-postayı izlemeye devam edeceğiz ve herhangi bir yeni ihlal olursa size haber vereceğiz.
-breaches-all-resolved-cta-blurb = Başka bir e-postayı izlemek ister misiniz?
-breaches-all-resolved-cta-button = E-posta adresi ekle
-# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-# Variables:
-#   $breachDate (String) - Date of the breach
-#   $companyName (String) - Name of the company where the breach occurred
-breach-description = { $breachDate } tarihinde { $companyName } bir veri ihlaline uğradı. İhlal keşfedildikten ve doğrulandıktan sonra { $addedDate } tarihinde veritabanımıza eklendi. İhlal şunları içeriyordu: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -74,6 +26,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Parolalarınızı güncelleyip iki aşamalı kimlik doğrulamayı (2FA) etkinleştirin.
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label

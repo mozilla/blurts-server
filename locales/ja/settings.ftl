@@ -21,10 +21,7 @@ settings-deactivate-account-title = アカウントを無効化
 
 ## Add email dialog
 
-settings-email-dialog-title = 別のメールアドレスを追加
-settings-email-input-label = メールアドレス
-settings-send-email-verification-button = 認証リンクを送信する
-
 ## Unsubscribe Dialog Survey
 
-settings-unsubscribe-dialog-continue = キャンセルを続行
+## Delete Monitor account
+
