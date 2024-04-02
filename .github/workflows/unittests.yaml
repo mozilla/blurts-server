@@ -12,7 +12,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.11.x'
+          node-version: '20.12.x'
       - run: npm ci
       - run: cp .env-dist .env
       - run: npm test
