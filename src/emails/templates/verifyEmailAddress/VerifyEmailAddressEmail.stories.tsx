@@ -4,16 +4,16 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { FC } from "react";
-import { Props, BoilerplateEmail } from "./BoilerplateEmail";
+import { Props, VerifyEmailAddressEmail } from "./VerifyEmailAddressEmail";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { getSpecificL10nSync } from "../../../app/functions/server/mockL10n";
 
 const meta: Meta<FC<Props>> = {
-  title: "Emails/Email boilerplate",
+  title: "Emails/Verify email address",
   component: (props: Props) => (
     <StorybookEmailRenderer>
-      <BoilerplateEmail {...props} />
+      <VerifyEmailAddressEmail {...props} />
     </StorybookEmailRenderer>
   ),
   args: {
@@ -21,12 +21,13 @@ const meta: Meta<FC<Props>> = {
     subscriber: {
       signup_language: "en",
     } as SanitizedSubscriberRow,
+    verificationUrl: "https://example.com",
   },
 };
 
 export default meta;
 type Story = StoryObj<FC<Props>>;
 
-export const BoilerplateEmailStory: Story = {
-  name: "Email boilerplate",
+export const VerifyEmailAddressEmailStory: Story = {
+  name: "Verify email address",
 };

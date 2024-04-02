@@ -140,13 +140,6 @@ rec-section-headline = Ntyi sau tsi filtración
 ## Please do not modify or remove "<span>" and "</span>".
 
 
-##
-
-##
-
-## Updated error messages
-
-
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Tsa'a
 
@@ -163,6 +156,13 @@ new-breach = Tsa'a
 ##
 
 ##
+
+##
+
+##
+
+## Updated error messages
+
 
 ## Search Engine Optimization
 
