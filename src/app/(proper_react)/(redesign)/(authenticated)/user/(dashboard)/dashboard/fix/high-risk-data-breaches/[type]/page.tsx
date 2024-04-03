@@ -7,7 +7,7 @@ import { headers } from "next/headers";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
-import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getUserBreaches";
+import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import {
   HighRiskBreachTypes,
   highRiskBreachTypes,

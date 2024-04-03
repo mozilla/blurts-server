@@ -10,7 +10,7 @@ import {
   SecurityRecommendationTypes,
   securityRecommendationTypes,
 } from "../securityRecommendationsData";
-import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getUserBreaches";
+import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";

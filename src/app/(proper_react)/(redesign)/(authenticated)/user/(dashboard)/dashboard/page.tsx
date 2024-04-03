@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "../../../../../../functions/server/getServerSession";
 import { View } from "./View";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
-import { getSubscriberBreaches } from "../../../../../../functions/server/getUserBreaches";
+import { getSubscriberBreaches } from "../../../../../../functions/server/getSubscriberBreaches";
 import {
   canSubscribeToPremium,
   hasPremium,

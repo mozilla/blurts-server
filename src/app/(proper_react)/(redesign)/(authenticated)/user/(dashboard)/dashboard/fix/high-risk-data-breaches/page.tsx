@@ -7,7 +7,7 @@ import { headers } from "next/headers";
 import { getServerSession } from "../../../../../../../../functions/server/getServerSession";
 import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
 import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
-import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
+import { getSubscriberBreaches } from "../../../../../../../../functions/server/getSubscriberBreaches";
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
 import { getLatestOnerepScanResults } from "../../../../../../../../../db/tables/onerep_scans";
 import { getCountryCode } from "../../../../../../../../functions/server/getCountryCode";
