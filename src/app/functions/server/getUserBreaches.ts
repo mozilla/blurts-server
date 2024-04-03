@@ -94,21 +94,21 @@ export async function getUserBreaches({
 /**
  * NOTE: new function to replace getUserBreaches
  *
- * @param user
- * @param user.user
- * @param user.countryCode
+ * @param params
+ * @param params.fxaUid
+ * @param params.countryCode
  */
 export async function getSubscriberBreaches({
-  user,
+  fxaUid,
   countryCode,
 }: {
-  user: Session["user"];
+  fxaUid?: NonNullable<Session["user"]["subscriber"]>["fxa_uid"];
   countryCode: string;
 }): Promise<SubscriberBreach[]> {
-  if (!user.subscriber?.fxa_uid) {
+  if (!fxaUid) {
     throw new Error("No fxa_uid found in session");
   }
-  const subscriber = await getSubscriberByFxaUid(user.subscriber.fxa_uid);
+  const subscriber = await getSubscriberByFxaUid(fxaUid);
   if (!subscriber) {
     throw new Error("No subscriber found for the given user data.");
   }

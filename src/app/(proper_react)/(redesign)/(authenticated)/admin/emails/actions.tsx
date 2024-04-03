@@ -102,7 +102,7 @@ export async function triggerMonthlyActivity(emailAddress: string) {
   const data = getDashboardSummary(
     latestScan.results,
     await getSubscriberBreaches({
-      user: session.user,
+      fxaUid: session.user.subscriber?.fxa_uid,
       countryCode: getCountryCode(headers()),
     }),
   );

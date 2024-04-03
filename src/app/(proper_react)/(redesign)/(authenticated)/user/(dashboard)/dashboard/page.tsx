@@ -77,7 +77,7 @@ export default async function DashboardPage() {
       ? await getScansCountForProfile(profileId)
       : 0;
   const subBreaches = await getSubscriberBreaches({
-    user: session.user,
+    fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
   });
 
