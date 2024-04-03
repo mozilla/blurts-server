@@ -2,9 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { ExtendedReactLocalization } from "../app/hooks/l10n";
+import type { ExtendedReactLocalization } from "../app/hooks/l10n";
+import type { SanitizedSubscriberRow } from "../app/functions/server/sanitize";
 import { getL10n, getL10nBundles } from "../app/functions/server/l10n";
-import { SanitizedSubscriberRow } from "../app/functions/server/sanitize";
 
 export function getEmailL10n(
   subscriber: SanitizedSubscriberRow,
