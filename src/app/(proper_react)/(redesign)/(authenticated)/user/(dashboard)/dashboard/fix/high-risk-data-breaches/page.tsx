@@ -22,7 +22,7 @@ export default async function HighRiskDataBreaches() {
 
   const countryCode = getCountryCode(headers());
   const breaches = await getSubscriberBreaches({
-    user: session.user,
+    fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
   });
   const subscriberEmails = await getSubscriberEmails(session.user);

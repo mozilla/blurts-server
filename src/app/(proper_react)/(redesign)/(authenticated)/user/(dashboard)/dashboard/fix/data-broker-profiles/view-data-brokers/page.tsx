@@ -29,7 +29,7 @@ export default async function ViewDataBrokers() {
     user: session.user,
     latestScanData: latestScan ?? null,
     subscriberBreaches: await getSubscriberBreaches({
-      user: session.user,
+      fxaUid: session.user.subscriber.fxa_uid,
       countryCode,
     }),
   };

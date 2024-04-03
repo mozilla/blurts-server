@@ -42,7 +42,7 @@ export default async function WelcomeToPlusPage() {
   const scanData = await getLatestOnerepScanResults(profileId);
   const countryCode = getCountryCode(headers());
   const subBreaches = await getSubscriberBreaches({
-    user: session.user,
+    fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
   });
   const subscriberEmails = await getSubscriberEmails(session.user);

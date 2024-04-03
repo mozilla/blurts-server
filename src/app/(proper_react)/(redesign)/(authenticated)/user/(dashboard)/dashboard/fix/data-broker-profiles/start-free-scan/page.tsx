@@ -42,7 +42,7 @@ export default async function StartFreeScanPage() {
     user: session.user,
     latestScanData: latestScanData ?? null,
     subscriberBreaches: await getSubscriberBreaches({
-      user: session.user,
+      fxaUid: session.user.subscriber.fxa_uid,
       countryCode,
     }),
   };
