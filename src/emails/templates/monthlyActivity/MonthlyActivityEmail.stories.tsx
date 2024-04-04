@@ -7,7 +7,7 @@ import { FC } from "react";
 import { Props, MonthlyActivityEmail } from "./MonthlyActivityEmail";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
-import { getSpecificL10nSync } from "../../../app/functions/server/mockL10n";
+import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
 import { DashboardSummary } from "../../../app/functions/server/dashboard";
 
 const meta: Meta<FC<Props>> = {
@@ -18,7 +18,7 @@ const meta: Meta<FC<Props>> = {
     </StorybookEmailRenderer>
   ),
   args: {
-    l10n: getSpecificL10nSync("en"),
+    l10n: getL10n("en"),
   },
 };
 
