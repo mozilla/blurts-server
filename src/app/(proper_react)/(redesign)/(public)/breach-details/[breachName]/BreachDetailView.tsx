@@ -10,7 +10,7 @@ import { getAllPriorityDataClasses } from "../../../../../../utils/recommendatio
 import { TelemetryLink } from "../../../../../components/client/TelemetryLink";
 import { BreachLogo } from "../../../../../components/server/BreachLogo";
 import { getLocale } from "../../../../../functions/universal/getLocale";
-import { ExtendedReactLocalization } from "../../../../../hooks/l10n";
+import { ExtendedReactLocalization } from "../../../../../functions/l10n";
 import BreachDetailScanImage from "./images/breach-detail-scan.svg";
 import { Button } from "../../../../../components/client/Button";
 
