@@ -13,8 +13,8 @@ import {
   createGetL10nBundles,
   type ExtendedReactLocalization,
   type GetL10nBundles,
-} from "../app/functions/l10n";
-import type { SanitizedSubscriberRow } from "../app/functions/server/sanitize";
+} from ".";
+import type { SanitizedSubscriberRow } from "../server/sanitize";
 
 export function getEmailL10n(
   subscriber: SanitizedSubscriberRow,

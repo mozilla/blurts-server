@@ -11,7 +11,7 @@ import {
 import { initEmail, sendEmail } from "../../utils/email";
 import { renderEmail } from "../../emails/renderEmail";
 import { MonthlyActivityEmail } from "../../emails/templates/monthlyActivity/MonthlyActivityEmail";
-import { getEmailL10n } from "../../emails/getEmailL10n.node";
+import { getEmailL10n } from "../../app/functions/l10n/cronjobs";
 import { sanitizeSubscriberRow } from "../../app/functions/server/sanitize";
 import { getDashboardSummary } from "../../app/functions/server/dashboard";
 import { getLatestOnerepScanResults } from "../../db/tables/onerep_scans";
