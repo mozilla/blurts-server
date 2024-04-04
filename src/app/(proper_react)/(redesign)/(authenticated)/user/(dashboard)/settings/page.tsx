@@ -9,7 +9,7 @@ import {
   getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
 } from "../../../../../../functions/server/getPremiumSubscriptionInfo";
-import { getL10n } from "../../../../../../functions/server/l10n";
+import { getL10n } from "../../../../../../functions/l10n/serverComponents";
 import { getUserEmails } from "../../../../../../../db/tables/emailAddresses";
 import { getBreaches } from "../../../../../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../../../../../utils/hibp";

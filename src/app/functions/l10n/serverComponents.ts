@@ -10,7 +10,7 @@ import {
   createGetL10nBundles,
   GetL10n,
   createGetL10n,
-} from "../l10n/index";
+} from "./index";
 import type { MarkupParser } from "@fluent/react";
 // @fluent/react's default export bundles all code in a single scope, so just
 // importing <ReactLocalization> from there will run createContext,
