@@ -42,12 +42,14 @@ function loadSource(filename: string): string {
  * on the server side, or be passed to Client Component to construct such an
  * object on the client side.
  *
+ * @param userLocales The user's preferred locales, in the syntax of the Accept-Language HTTP header
  * @returns The sources for l10n bundles that can be used to construct a ReactLocalization object
  */
-export function getL10nBundles(): LocaleData[] {
-  const acceptLangHeader =
-    process.env.STORYBOOK === "true" ? "en" : headers().get("Accept-Language");
-
+export function getL10nBundles(
+  userLocales = process.env.STORYBOOK === "true"
+    ? "en"
+    : headers().get("Accept-Language"),
+): LocaleData[] {
   const bundleSources: Record<string, string[]> = {};
 
   for (const filename of translationsContext.keys()) {
@@ -78,7 +80,7 @@ export function getL10nBundles(): LocaleData[] {
     }
   }
 
-  const languages = acceptLangHeader ? acceptedLanguages(acceptLangHeader) : [];
+  const languages = userLocales ? acceptedLanguages(userLocales) : [];
   const supportedLocales = process.env.SUPPORTED_LOCALES?.split(",");
   const availableLocales = Object.keys(bundleSources);
   const filteredLocales =

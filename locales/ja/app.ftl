@@ -162,16 +162,6 @@ rec-section-subhead = あなたの個人情報を安全に保ち、デジタル 
 ## Please do not modify or remove "<span>" and "</span>".
 
 
-##
-
-## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
-
-## Relay and VPN educational/ad units
-
-##
-
-## Updated error messages
-
 # Monitor V2
 
 
@@ -184,6 +174,16 @@ rec-section-subhead = あなたの個人情報を安全に保ち、デジタル 
 
 
 ##
+
+##
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+## Relay and VPN educational/ad units
+
+##
+
+## Updated error messages
 
 ## Search Engine Optimization
 

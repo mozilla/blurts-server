@@ -12,7 +12,7 @@ import { getSpecificL10nSync } from "../../../../../../functions/server/mockL10n
 import { TestComponentWrapper } from "../../../../../../../TestComponentWrapper";
 import { SerializedSubscriber } from "../../../../../../../next-auth";
 import { onAddEmail, onRemoveEmail } from "./actions";
-import { sanitizeEmailRow } from "../../../../../../functions/server/sanitizeEmailRow";
+import { sanitizeEmailRow } from "../../../../../../functions/server/sanitize";
 
 const mockedSessionUpdate = jest.fn();
 const mockedRecordTelemetry = jest.fn();

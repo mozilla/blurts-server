@@ -189,12 +189,6 @@ rec-section-subhead-no-pw = Även om lösenord inte avslöjades i detta intrång
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
-##
-
-##
-
-## Updated error messages
-
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nytt
 
@@ -223,6 +217,12 @@ new-breach = Nytt
 ##
 
 ##
+
+##
+
+##
+
+## Updated error messages
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.

@@ -5,7 +5,7 @@
 // We use mjml-browser for Storybook; for real emails, regular mjml should work:
 import mjml2html from "mjml-browser";
 import { ReactNode } from "react";
-import { renderToString } from "react-dom/server";
+import { renderToStaticMarkup } from "react-dom/server";
 
 export type Props = {
   children: ReactNode;
@@ -15,7 +15,7 @@ export const StorybookEmailRenderer = (props: Props) => {
   return (
     <div
       dangerouslySetInnerHTML={{
-        __html: mjml2html(renderToString(props.children)).html,
+        __html: mjml2html(renderToStaticMarkup(props.children)).html,
       }}
     />
   );
