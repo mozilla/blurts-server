@@ -27,86 +27,61 @@ error-could-not-add-email = Klarte ikkje å leggje til e-postadressa i databasen
 error-not-subscribed = Denne e-postadressa abonnerer ikkje på { -product-name }.
 error-hibp-throttled = For mange tilkoplingar til { -brand-HIBP }.
 error-hibp-connect = Klarte ikkje å kople til { -brand-HIBP }.
-
 user-add-invalid-email = Ugyldig e-postadresse
 user-add-too-many-emails = Du overvakar maksimalt antal e-postadresser.
 user-add-duplicate-email = Denne e-postadressa er allereie lagt til i { -product-name }.
-
 user-verify-token-error = Stadfestings-token er påkravd.
-
 user-unsubscribe-token-error = Avmelding krev eit token.
 user-unsubscribe-token-email-error = Avmelding krev eit token og eit emailHash.
-
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Kompromiterte data:
-
 # Breach data provided by Have I Been Pwned.
 # Variables:
 #   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Informasjonen om datalekkasjen kjem frå { $hibp-link }
-
 show-all = Vis alle
-
 sign-out = Logg ut
-
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Handter { -brand-fxa }
-
 # Link title
 frequently-asked-questions = Vanlege spørsmål
-
 # Link title
 preferences = Innstillingar
-
 # Link title
 home = Heim
-
 # Link title
 security-tips = Tryggingstips
-
 # Link title
 more-about-this-breach = Meir om denne datalekkasjen
-
 monitor-several-emails = Overvak fleire e-postadresser
-
 website-breach = Nettstadlekkasje
 sensitive-breach = Sensitiv nettstadlekkasje
 data-aggregator-breach = Datainnsamlingslekkasje
-
 what-data = Kva for nokre data er kompromitterte:
-
 sensitive-sites = Korleis behandlar { -product-name } sensitive nettstadar?
 sensitive-sites-copy =
     { -product-name } viser berre kontoar knytte til desse 
     typar lekkasjar etter at ei e-postadresse er stadfesta. Dette tyder at du er 
     den einaste personen som kan sjå om informasjonen din var i denne datalekkasjen (med mindre nokon 
     andre har tilgang til e-postkontoen din).
-
 delayed-reporting-headline = Kvifor tok det så lang tid å rapportere denne datalekkasjen?
 delayed-reporting-copy =
     Det kan nokre gongar ta månadar eller år før data involverte 
     i ein datalekkasje dukkar opp på nettstadar som vert brukte av kriminelle (kjent som det mørke nettet eller dark web). Datalekkasjar blir lagt til i databasen vår 
     så snart dei er oppdaga og stadfesta.
-
 fxm-warns-you =
     { -product-name } åtvarar deg om e-postadressa di har blitt eksponert 
     i ein datalekkasje på nettet. Sjå om informasjonen din har blitt eksponert, lær korleis 
     du kan beskytte kontoane dine på nettet, og bli varsla om e-postadressa di 
     er i ein ny lekkasje.
-
 what-is-data-agg = Kva er ein datainnsamlar?
 what-is-data-agg-blurb =
     Datainnsamlarar, eller datameklarar, samlear inn informasjon frå offentlege register og kjøper den 
     frå andre selskap. Dei samlar desse dataa for å selje dei til selskap for marknadsføringsformål. 
     Offera for desse lekkasjane har mindre sannsynlegheit for å oppleve økonomisk 
     svindel, men hackarar kan bruke desse dataa for å opptre som dei eller profilere dei.
-
 avoid-personal-info = Unngå å bruke personleg informasjon i passord
-
-## What to do after data breach tips
-
 send-verification = Send stadfestingslenke
-
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
@@ -114,16 +89,9 @@ send-verification = Send stadfestingslenke
 # email address.
 breach-summary = Datalekkasjeoppsummering
 
-## Variables:
-##   $userName (String) - Username
-
 ##
 
 breach-alert-subject = { -product-name } fann e-postadressa di i ein ny datalekkasje.
-
-## Variables:
-##   $breachName (String) - Number of the breach
-
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
 # your localization, because it would result in the number showing twice.
@@ -132,7 +100,6 @@ passwords-exposed =
         [one] Passord eksponert i alle datalekkasjane
        *[other] Passorda eksponerte i alle datalekkasjane
     }
-
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
 # your localization, because it would result in the number showing twice.
@@ -141,22 +108,17 @@ known-data-breaches-exposed =
         [one] Kjend datalekkasje har eksponert informasjonen din
        *[other] Kjende datalekkasjar har eksponert informasjonen din
     }
-
 what-is-a-website-breach = Kva er ein nettstadlekkasje?
 website-breach-blurb = Ein nettstad-datalekkasje kan skyldast cyber-kriminelle som stel, kopierer eller eksponerer personleg informasjon frå kontoar på nettet. Det er vanlegvis eit resultat av at hackarar finn eit svakt punkt i sikkerheita til nettstaden. Datalekkasje kan også skje når kontoinformasjon blir leken ved eit uhell.
-
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Oversyn
-
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = Den { $breachDate } vart { $breachTitle } utsett for ein datalekkasje. Når datalekkasjen vart oppdaga og stadfesta, vart han lagt til i databasen vår den { $addedDate }.
-
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meny
-
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 # Variables:
@@ -169,29 +131,17 @@ verify-the-link = Stadest lenka som er sendt til { $userEmail } for å leggje he
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date.
 breach-added-label = Datalekkasje lagt til:
-
 # Section headline
 rec-section-headline = Kva må du gjere med denne datalekkasjen
 rec-section-subhead = Vi tilrår at du gjer dette for å halde den personlege informasjonen din trygg, og beskytte den digitale identiteten din.
-
 # Section headline
 rec-section-headline-no-pw = Kva du skal gjere for å beskytte den personlege informasjonen din
 rec-section-subhead-no-pw = Sjølv om passord ikkje vart lekne i denne datalekkasjen, er det framleis ting du kan gjere for å ta betre vare på den personlege informasjonen din.
 
-## This string contains nested markup that becomes a link later in the code.
-## Please do not modify or remove "<a>" and "</a>".
-
 ##
-
-## These strings contain nested markup that is later used to style the text inside of it.
-## Please do not modify or remove "<span>" and "</span>".
 
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Ny
-
-## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
-
-## Relay and VPN educational/ad units
 
 # Monitor V2
 
@@ -199,6 +149,7 @@ new-breach = Ny
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-monitor = Monitor
 -brand-fx-monitor = Mozilla Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
@@ -207,17 +158,15 @@ new-breach = Ny
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
-
-##
-
-##
-
-##
-
-## Updated error messages
+# “account” can be localized, “Mozilla” must be treated as a brand,
+# and kept in English.
+-brand-mozilla-account = Mozilla-konto
+open-in-new-tab-alt = Opne lenke i ei ny fane
 
 ## Search Engine Optimization
 
@@ -227,18 +176,18 @@ new-breach = Ny
 # Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Logg inn
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
 mobile-menu-label = Hovudmeny
-
 main-nav-button-collapse-label = Slå saman menyen
 main-nav-button-collapse-tooltip = Slå saman menyen
 main-nav-button-expand-label = Utvid meny
 main-nav-button-expand-tooltip = Utvid meny
 main-nav-label = Navigasjon
 main-nav-link-home-label = Heim
-main-nav-link-dashboard-label = Dashboard
+main-nav-link-dashboard-label = Oversyn
 main-nav-link-settings-label = Innstillingar
 main-nav-link-faq-label = Vanlege spørsmål (FAQ)
 main-nav-link-faq-tooltip = Vanlege spørsmål
@@ -280,7 +229,6 @@ error-page-error-other-title = { $errorCode } Noko gjekk gale
 
 all-breaches-headline-2 = Alle datalekkasjar oppdaga av { -brand-fx-monitor }
 search-breaches = Søk etter datalekkasjar
-
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Eksponerte data:
 
@@ -288,10 +236,8 @@ exposed-data = Eksponerte data:
 
 breach-detail-cta-signup = Sjå etter datalekkasjar
 
-## Floating banner
-
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Ignorer
-
+loading-accessibility = Lastar

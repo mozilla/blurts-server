@@ -23,18 +23,14 @@ exposure-chart-legend-heading-nr = Antal
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
 exposure-chart-returning-user-upgrade-prompt-cta = Start ei gratis skanning
-
 modal-cta-ok = OK
 modal-open-alt = Opne
 modal-close-alt = Lat att
-
+progress-card-heres-what-we-fixed-headline-all = Du har løyst følgjande
 progress-card-manually-fixed-headline = Manuelt løyst
-
 dashboard-tab-label-action-needed = Handling påkravd
 dashboard-tab-label-fixed = Løyst
 dashboard-exposures-all-fixed-label = Alt løyst her!
-
-
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filter
 dashboard-exposures-filter-company = Firma
@@ -52,12 +48,11 @@ dashboard-exposures-filter-reset = Tilbakestill
 
 dashboard-top-banner-section-label = Oversynsoppsummering
 dashboard-top-banner-scan-in-progress-title = Skanninga held framleis på
-
-dashboard-top-banner-your-data-is-protected-title = DIne data er verna
+dashboard-top-banner-your-data-is-protected-title = Dine data er verna
 dashboard-top-banner-your-data-is-protected-cta = Sjå kva som er løyst
-
 dashboard-top-banner-lets-keep-protecting-title = La oss halde fram med å verne dataa dine
-
+dashboard-top-banner-protect-your-data-cta = La oss løyse det
+dashboard-no-exposures-label = Fann ingen eksponeringar
 dashboard-top-banner-monitor-more-cta = Overvak fleire e-postadresser
 
 # About Exposure Statuses Modal
