@@ -5,8 +5,8 @@
 import { MarkupParser, ReactLocalization } from "@fluent/react";
 import type { readdirSync, readFileSync } from "node:fs";
 import type { resolve } from "node:path";
-import { createGetL10n, createGetL10nBundles } from "../l10n";
-import type { GetL10n, GetL10nBundles } from "../l10n";
+import { createGetL10n, createGetL10nBundles } from ".";
+import type { GetL10n, GetL10nBundles } from ".";
 
 // Code in this file is only used in tests and Storybook, not in production:
 /* c8 ignore start */
@@ -24,7 +24,7 @@ import type { GetL10n, GetL10nBundles } from "../l10n";
  * code for Server Components; the main difference is that Storybook can't load
  * ReactLocalization from `@fluent/react/esm/localization`.
  */
-export let getSpecificL10nBundlesSync: GetL10nBundles;
+export let getL10nBundles: GetL10nBundles;
 
 // Load L10n files in Storybook (using Webpack):
 if (process.env.STORYBOOK === "true") {
@@ -44,7 +44,7 @@ if (process.env.STORYBOOK === "true") {
     return loadedSources[filename];
   }
 
-  getSpecificL10nBundlesSync = createGetL10nBundles({
+  getL10nBundles = createGetL10nBundles({
     getAcceptLangHeader: () => {
       return (
         new URLSearchParams(document.location.search).get("locale") ?? "en"
@@ -96,7 +96,7 @@ if (process.env.STORYBOOK === "true") {
 
   const ftlRoot = resolvePath(__dirname, `../../../../locales/`);
 
-  getSpecificL10nBundlesSync = createGetL10nBundles({
+  getL10nBundles = createGetL10nBundles({
     getAcceptLangHeader: () => "en",
     availableLocales: nodeReaddirSync(ftlRoot),
     loadLocaleFiles: (locale) => {
@@ -142,8 +142,8 @@ const parseMarkup: MarkupParser = (str) => {
   ];
 };
 
-export const getSpecificL10nSync: GetL10n = createGetL10n({
-  getL10nBundles: getSpecificL10nBundlesSync,
+export const getL10n: GetL10n = createGetL10n({
+  getL10nBundles: getL10nBundles,
   ReactLocalization: ReactLocalization,
   parseMarkup:
     // In Storybook, the Fluent bundle is generated in the browser, so we don't need
