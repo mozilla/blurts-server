@@ -9,6 +9,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --port=6060",
+    "dev:cronjobs": "tsx --tsconfig tsconfig.cronjobs.json src/scripts/cronjobs/*.tsx",
     "dev:nimbus": "node --watch-path config/nimbus.yaml src/scripts/build/nimbusTypes.js",
     "build": "npm run get-location-data && npm run build-glean && npm run build-nimbus && next build && npm run build-cronjobs",
     "start": "next start",
@@ -133,6 +134,7 @@
     "stylelint-config-recommended-scss": "^14.0.0",
     "stylelint-scss": "^6.2.1",
     "ts-jest": "^29.1.2",
+    "tsx": "^4.7.2",
     "typescript": "^5.4.2",
     "yaml": "^2.4.1"
   }
