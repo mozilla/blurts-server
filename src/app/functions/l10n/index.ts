@@ -86,7 +86,9 @@ export function createGetL10nBundles(
   };
 }
 
-export type GetL10n = (localeData?: LocaleData[]) => ExtendedReactLocalization;
+export type GetL10n = (
+  localeDataOrAcceptLangHeader?: LocaleData[] | Parameters<GetL10nBundles>[0],
+) => ExtendedReactLocalization;
 type CreateGetL10nOptions = {
   getL10nBundles: GetL10nBundles;
   ReactLocalization: typeof ReactLocalization;
@@ -105,7 +107,11 @@ export function createGetL10n(options: CreateGetL10nOptions): GetL10n {
     return bundles[localeData.locale];
   }
 
-  return (localeData = options.getL10nBundles()) => {
+  return (localeDataOrAcceptLangHeader = options.getL10nBundles()) => {
+    const localeData =
+      typeof localeDataOrAcceptLangHeader === "string"
+        ? options.getL10nBundles(localeDataOrAcceptLangHeader)
+        : localeDataOrAcceptLangHeader;
     const bundles: FluentBundle[] = localeData.map((data) => getBundle(data));
     const l10n = new options.ReactLocalization(bundles, options.parseMarkup);
 
