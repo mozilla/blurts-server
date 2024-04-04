@@ -4,7 +4,7 @@
 
 import { ReactNode } from "react";
 import { PublicShell } from "./PublicShell";
-import { getL10n } from "../../../functions/server/l10n";
+import { getL10n } from "../../../functions/l10n/serverComponents";
 
 export default function Layout(props: { children: ReactNode }) {
   return <PublicShell l10n={getL10n()}>{props.children}</PublicShell>;

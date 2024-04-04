@@ -10,7 +10,7 @@ import AppConstants from "../../../../../appConstants";
 import { getSubscriberByFxaUid } from "../../../../../db/tables/subscribers";
 import { getUserEmails } from "../../../../../db/tables/emailAddresses";
 import { sendVerificationEmail } from "../../../utils/email";
-import { getL10n } from "../../../../functions/server/l10n";
+import { getL10n } from "../../../../functions/l10n/serverComponents";
 import { initEmail } from "../../../../../utils/email";
 
 interface EmailResendRequest {

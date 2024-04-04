@@ -12,7 +12,7 @@ import { StepDeterminationData } from "../../../../../../../../../functions/serv
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
-import { getL10n } from "../../../../../../../../../functions/server/l10n";
+import { getL10n } from "../../../../../../../../../functions/l10n/serverComponents";
 
 export default async function ViewDataBrokers() {
   const session = await getServerSession();

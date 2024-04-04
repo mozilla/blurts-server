@@ -14,7 +14,7 @@ import { StepDeterminationData } from "../../../../../../../../../functions/serv
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { activateAndOptoutProfile } from "../../../../../../../../../functions/server/onerep";
 import { logger } from "../../../../../../../../../functions/server/logging";
-import { getL10n } from "../../../../../../../../../functions/server/l10n";
+import { getL10n } from "../../../../../../../../../functions/l10n/serverComponents";
 import { refreshStoredScanResults } from "../../../../../../../../../functions/server/refreshStoredScanResults";
 import { checkSession } from "../../../../../../../../../functions/server/checkSession";
 
