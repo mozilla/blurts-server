@@ -7,8 +7,8 @@ import { MarkupParser, ReactLocalization } from "@fluent/react";
 import { Fragment, createElement } from "react";
 import type { readdirSync, readFileSync } from "node:fs";
 import type { resolve } from "node:path";
-import { ExtendedReactLocalization, GetFragment } from "../../hooks/l10n";
-import type { LocaleData } from "./l10n";
+import { ExtendedReactLocalization, GetFragment } from "../l10n";
+import type { LocaleData } from "../l10n";
 
 // This code only runs in a Webpack and Node context, and we explicitly adjust
 // the modules we import based on that, without going async - so we need `require`.

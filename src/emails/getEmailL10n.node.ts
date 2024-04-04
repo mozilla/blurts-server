@@ -10,7 +10,10 @@ import { MarkupParser, ReactLocalization } from "@fluent/react";
 import { Fragment, createElement } from "react";
 import { acceptedLanguages, negotiateLanguages } from "@fluent/langneg";
 import { JSDOM } from "jsdom";
-import type { ExtendedReactLocalization, GetFragment } from "../app/hooks/l10n";
+import type {
+  ExtendedReactLocalization,
+  GetFragment,
+} from "../app/functions/l10n";
 import type { SanitizedSubscriberRow } from "../app/functions/server/sanitize";
 
 export function getEmailL10n(
