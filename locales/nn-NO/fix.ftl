@@ -4,12 +4,14 @@
 
 fix-flow-nav-high-risk-data-breaches = Datalekkasje med høg risiko
 fix-flow-nav-leaked-passwords = Lekne passord
+guided-resolution-flow-exit = Tilbake til oversyn
 
 # Celebration screens
 
 
 ## Shared CTA labels
 
+fix-flow-celebration-next-dashboard-label = Gå til ditt oversyn
 
 ## High-risk flow
 
