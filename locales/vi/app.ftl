@@ -187,12 +187,6 @@ rec-section-subhead-no-pw = Mặc dù mật khẩu không lộ ra trong rò rỉ
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
-##
-
-##
-
-## Updated error messages
-
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Mới
 
@@ -221,6 +215,12 @@ new-breach = Mới
 ##
 
 ##
+
+##
+
+##
+
+## Updated error messages
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
