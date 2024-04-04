@@ -2,120 +2,132 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { FluentBundle, FluentResource } from "@fluent/bundle";
 import { MarkupParser, ReactLocalization } from "@fluent/react";
-import { Fragment, createElement } from "react";
 import type { readdirSync, readFileSync } from "node:fs";
 import type { resolve } from "node:path";
-import { ExtendedReactLocalization, GetFragment } from "../l10n";
-import type { LocaleData } from "../l10n";
-
-// This code only runs in a Webpack and Node context, and we explicitly adjust
-// the modules we import based on that, without going async - so we need `require`.
-/* eslint-disable @typescript-eslint/no-var-requires */
+import { createGetL10n, createGetL10nBundles } from "../l10n";
+import type { GetL10n, GetL10nBundles } from "../l10n";
 
 // Code in this file is only used in tests and Storybook, not in production:
 /* c8 ignore start */
 
-export function getSpecificL10nBundlesSync(
-  locales = detectLocale(),
-): LocaleData[] {
-  return process.env.STORYBOOK === "true"
-    ? getSpecificL10nBundleInWebpackContext(locales)
-    : getSpecificL10nBundleInNodeContext(locales);
-}
+/**
+ * Storybook- and tests-specific l10n bundle loading
+ *
+ * When Storybook loads our FTL files, it does so using Webpack. Except for the
+ * fact that our Storybook stories also get used in Jest tests, where Webpack
+ * isn't available. Thus, this file configures FTL loading strategies that
+ * are adjusted based on whether it's running in Storybook or in Jest, using
+ * either Webpack's `require.context` or Node's file system APIs, respectively.
+ *
+ * Note that the Storybook-specific code is pretty similar to the l10n-loading
+ * code for Server Components; the main difference is that Storybook can't load
+ * ReactLocalization from `@fluent/react/esm/localization`.
+ */
+export let getSpecificL10nBundlesSync: GetL10nBundles;
 
-export function getSpecificL10nBundleInWebpackContext(
-  locales = detectLocale(),
-): LocaleData[] {
-  return locales.map((locale) => getOneL10nBundleInWebpackContext(locale));
-}
+// Load L10n files in Storybook (using Webpack):
+if (process.env.STORYBOOK === "true") {
+  const translationsContext =
+    process.env.STORYBOOK === "true"
+      ? // `require` isn't usually valid JS, so skip type checking for that:
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (require as any).context("../../../../locales", true, /\.ftl$/)
+      : undefined;
 
-export function getOneL10nBundleInWebpackContext(locale: string): LocaleData {
-  const allStringsContext: { keys: () => string[] } & ((
-    path: string,
-    // `require` isn't usually valid JS, so skip type checking for that:
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ) => string) = (require as any).context(
-    "../../../../locales/",
-    true,
-    /\.ftl$/,
-  );
-  const allStringFilenames = allStringsContext.keys();
-  const localeStringFilenames = allStringFilenames.filter((filepath) =>
-    filepath.startsWith(`./${locale}/`),
-  );
-  let bundleSources: string[] = localeStringFilenames.map((filePath) =>
-    allStringsContext(filePath),
-  );
-
-  if (locale === "en") {
-    const pendingTranslationsContext: { keys: () => string[] } & ((
-      path: string,
-      // `require` isn't usually valid JS, so skip type checking for that:
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ) => string) = (require as any).context(
-      "../../../../locales-pending",
-      true,
-      /\.ftl$/,
-    );
-    const pendingSourceFilenames = pendingTranslationsContext.keys();
-    bundleSources = bundleSources.concat(
-      pendingSourceFilenames.map((filePath) =>
-        pendingTranslationsContext(filePath),
-      ),
-    );
+  const loadedSources: Record<string, string> = {};
+  // We specifically only declare this `require.context`-using function in a
+  // scope where `require.context` actually exists:
+  // eslint-disable-next-line no-inner-declarations
+  function loadSource(filename: string): string {
+    loadedSources[filename] ??= translationsContext(filename);
+    return loadedSources[filename];
   }
 
-  return {
-    locale: locale,
-    bundleSources: bundleSources,
-  };
-}
-
-export function getSpecificL10nBundleInNodeContext(
-  locales = detectLocale(),
-): LocaleData[] {
-  return locales.map((locale) => getOneL10nBundleInNodeContext(locale));
-}
-
-export function getOneL10nBundleInNodeContext(locale: string): LocaleData {
+  getSpecificL10nBundlesSync = createGetL10nBundles({
+    getAcceptLangHeader: () => {
+      return (
+        new URLSearchParams(document.location.search).get("locale") ?? "en"
+      );
+    },
+    loadLocaleFiles: (locale) => {
+      const filepaths = (translationsContext.keys() as string[]).filter(
+        (filepath) => filepath.split("/")[1] === locale,
+      );
+      return filepaths.map((filepath) => loadSource(filepath));
+    },
+    loadPendingStrings: () => {
+      // `require` isn't usually valid JS, so skip type checking for that:
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const pendingTranslationsContext = (require as any).context(
+        "../../../../locales-pending",
+        true,
+        /\.ftl$/,
+      );
+      return (pendingTranslationsContext.keys() as string[]).map(
+        (pendingTranslationFilename) =>
+          pendingTranslationsContext(pendingTranslationFilename) as string,
+      );
+    },
+    availableLocales: (translationsContext.keys() as string[]).map(
+      (filepath: string) => filepath.split("/")[1],
+    ),
+  });
+  // Load L10n files in Jest (using Node.js APIs):
+} else {
   const {
     readdirSync: nodeReaddirSync,
     readFileSync: nodeReadFileSync,
   }: {
     readdirSync: typeof readdirSync;
     readFileSync: typeof readFileSync;
+    // This code only runs in a Node context, and we explicitly adjust the
+    // modules we import based on that, without going async - so we need
+    // `require`.
+    /* eslint-disable-next-line @typescript-eslint/no-var-requires */
   } = require("fs");
-  const { resolve: resolvePath }: { resolve: typeof resolve } = require("path");
-  const referenceStringsPath = resolvePath(
-    __dirname,
-    `../../../../locales/${locale}/`,
-  );
-  let ftlPaths = nodeReaddirSync(referenceStringsPath).map((filename) =>
-    resolvePath(referenceStringsPath, filename),
-  );
+  const {
+    resolve: resolvePath,
+    // This code only runs in a Node context, and we explicitly adjust the
+    // modules we import based on that, without going async - so we need
+    // `require`.
+    /* eslint-disable-next-line @typescript-eslint/no-var-requires */
+  }: { resolve: typeof resolve } = require("path");
 
-  if (locale === "en") {
-    const pendingStringsPath = resolvePath(
-      __dirname,
-      "../../../../locales-pending/",
-    );
-    ftlPaths = ftlPaths.concat(
-      nodeReaddirSync(pendingStringsPath).map((filename) =>
+  const ftlRoot = resolvePath(__dirname, `../../../../locales/`);
+
+  getSpecificL10nBundlesSync = createGetL10nBundles({
+    getAcceptLangHeader: () => "en",
+    availableLocales: nodeReaddirSync(ftlRoot),
+    loadLocaleFiles: (locale) => {
+      const referenceStringsPath = resolvePath(
+        __dirname,
+        `../../../../locales/${locale}/`,
+      );
+      const ftlPaths = nodeReaddirSync(referenceStringsPath).map((filename) =>
+        resolvePath(referenceStringsPath, filename),
+      );
+
+      const bundleSources: string[] = ftlPaths.map((filePath) =>
+        nodeReadFileSync(filePath, "utf-8"),
+      );
+
+      return bundleSources;
+    },
+    loadPendingStrings: () => {
+      const pendingStringsPath = resolvePath(
+        __dirname,
+        "../../../../locales-pending/",
+      );
+      const ftlPaths = nodeReaddirSync(pendingStringsPath).map((filename) =>
         resolvePath(pendingStringsPath, filename),
-      ),
-    );
-  }
-
-  const bundleSources: string[] = ftlPaths.map((filePath) =>
-    nodeReadFileSync(filePath, "utf-8"),
-  );
-
-  return {
-    locale: locale,
-    bundleSources: bundleSources,
-  };
+      );
+      const bundleSources: string[] = ftlPaths.map((filePath) =>
+        nodeReadFileSync(filePath, "utf-8"),
+      );
+      return bundleSources;
+    },
+  });
 }
 
 const parseMarkup: MarkupParser = (str) => {
@@ -130,60 +142,11 @@ const parseMarkup: MarkupParser = (str) => {
   ];
 };
 
-const bundles: Record<string, FluentBundle> = {};
-function getBundle(localeData: LocaleData): FluentBundle {
-  if (bundles[localeData.locale]) {
-    return bundles[localeData.locale];
-  }
-  bundles[localeData.locale] = new FluentBundle(localeData.locale);
-  localeData.bundleSources.forEach((bundleSource) => {
-    bundles[localeData.locale].addResource(new FluentResource(bundleSource));
-  });
-  return bundles[localeData.locale];
-}
-
-/**
- * This function loads a ReactLocalization instance with the given locale (`en` by default) and pending strings.
- *
- * This is useful in tests and Storybook, where we can't call `headers` from
- * `next/headers` to determine the user's locale, and even just importing from a
- * module that references it can result in an error about only being able to use
- * it in Server Components.
- *
- * @param locales {string} Locale to load; `en` by default.
- */
-export function getSpecificL10nSync(
-  locales: string | string[] = detectLocale(),
-): ExtendedReactLocalization {
-  const localeData: LocaleData[] = getSpecificL10nBundlesSync(
-    Array.isArray(locales) ? locales : [locales],
-  );
-  const bundles: FluentBundle[] = localeData.map((data) => getBundle(data));
-
-  // The ReactLocalization instance stores and caches the sequence of generated
-  // bundles. You can store it in your app's state.
-  const l10n = new ReactLocalization(
-    bundles,
+export const getSpecificL10nSync: GetL10n = createGetL10n({
+  getL10nBundles: getSpecificL10nBundlesSync,
+  ReactLocalization: ReactLocalization,
+  parseMarkup:
     // In Storybook, the Fluent bundle is generated in the browser, so we don't need
     // to provide `parseMarkup`:
     process.env.STORYBOOK === "true" ? undefined : parseMarkup,
-  );
-
-  const getFragment: GetFragment = (id, args, fallback) =>
-    l10n.getElement(createElement(Fragment, null, fallback ?? id), id, args);
-
-  const extendedL10n: ExtendedReactLocalization =
-    l10n as ExtendedReactLocalization;
-  extendedL10n.getFragment = getFragment;
-
-  return extendedL10n;
-}
-
-function detectLocale() {
-  const locale =
-    typeof document !== "undefined"
-      ? new URLSearchParams(document.location.search).get("locale") ?? undefined
-      : undefined;
-
-  return [locale ?? "en"];
-}
+});
