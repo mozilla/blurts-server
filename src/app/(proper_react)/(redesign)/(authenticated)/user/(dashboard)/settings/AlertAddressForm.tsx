@@ -21,7 +21,10 @@ import {
 import styles from "./AlertAddressForm.module.scss";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { createContext, useContext, useRef, useState } from "react";
-import type { EmailUpdateCommOptionRequest } from "../../../../../../api/v1/user/update-comm-option/route";
+import type {
+  EmailUpdateCommOptionRequest,
+  EmailUpdateCommTypeOfOptions,
+} from "../../../../../../api/v1/user/update-comm-option/route";
 import { VisuallyHidden } from "../../../../../../components/server/VisuallyHidden";
 import { useSession } from "next-auth/react";
 import { Session } from "next-auth";
@@ -41,22 +44,32 @@ const AlertAddressContext = createContext<RadioGroupState | null>(null);
 export const AlertAddressForm = (props: Props) => {
   const l10n = useL10n();
   const session = useSession();
-  // const userEmailSetting = props.user.subscriber?.all_emails_to_primary;
   const [activateAlertEmail, setActivateAlertEmail] = useState<boolean>(
     props.breachAlertsEmailsAllowed,
   );
   const [activateMarketingComms, setActivateMarketingComms] = useState(true);
-  const defaultValue = props.breachAlertsEmailsAllowed ? "affected" : "null";
+
+  // If a user previously had all breach alerts sent to their primary email, we want to carry that value forward
+  const defaultValue = props.breachAlertsEmailsAllowed ? "primary" : "affected";
+
   const state = useRadioGroupState({
-    defaultValue: props.enabledFeatureFlags.includes(
-      "UpdatedEmailPreferencesOption",
-    )
-      ? defaultValue
-      : "affected",
+    defaultValue: defaultValue,
     onChange: (newValue) => {
       const chosenOption = newValue as AlertAddress;
+      let communicationOption: EmailUpdateCommTypeOfOptions;
+      switch (chosenOption) {
+        case "primary":
+          communicationOption = "1";
+          break;
+        case "affected":
+          communicationOption = "0";
+          break;
+        case "null":
+          communicationOption = "-1";
+          break;
+      }
       const body: EmailUpdateCommOptionRequest = {
-        communicationOption: chosenOption === "primary" ? "1" : "0",
+        communicationOption: communicationOption,
       };
       void fetch("/api/v1/user/update-comm-option", {
         method: "POST",
@@ -120,7 +133,7 @@ export const AlertAddressForm = (props: Props) => {
                 className={`${styles.emailAlertsOptions} ${!activateAlertEmail && styles.disabled}`}
               >
                 <VisuallyHidden>
-                  <AlertAddressRadio value="null">None</AlertAddressRadio>
+                  <AlertAddressRadio value="null"></AlertAddressRadio>
                 </VisuallyHidden>
                 <AlertAddressRadio value="affected">
                   {l10n.getString("settings-alert-preferences-option-one")}
