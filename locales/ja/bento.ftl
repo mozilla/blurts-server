@@ -4,5 +4,6 @@
 
 toolbar-app-picker-trigger-title = { -brand-mozilla } アプリとサービス
 toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
+
 # Bento headline
 fx-makes-tech = { -brand-name } は、オンラインプライバシーに立ち向かう技術です。

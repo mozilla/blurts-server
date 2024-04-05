@@ -2,80 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-meta-title = { -brand-fx-monitor } - Інформаційна панель
-
 breach-all-meta-title = { -brand-fx-monitor } - Усі витоки даних
 breach-all-meta-social-title = Усі витоки, виявлені { -brand-fx-monitor }
 breach-all-meta-social-description = Перегляньте список усіх відомих витоків, виявлених { -brand-fx-monitor }, а потім дізнайтеся, чи було розкрито ваші дані.
 
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } - Витік даних { $company }
-# Variables:
-#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Чи постраждали ви від витоку даних { $company }?
 breach-detail-meta-social-description = Користуйтеся { -brand-fx-monitor }, щоб дізнатися, чи було розкрито ваші особисті дані у цьому витоці, і зрозуміти, що робити далі.
 
-breach-scan-meta-title = { -brand-fx-monitor } - Результати витоку
-breach-scan-meta-social-title = Результати витоків від { -brand-fx-monitor }
-breach-scan-meta-social-description = Увійдіть до { -brand-fx-monitor }, щоб усунути наслідки витоку та отримати постійний моніторинг за будь-якими новими відомими витоками.
-
 ## Breaches header
-
-# Data classes pie chart title
-breach-chart-title = Уражені дані
-
-# $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = Витоки даних для { $email-select }
-
-# $count is the number of emails a user has added out of $total allowed
-emails-monitored =
-    { $total ->
-        [one] Відстежується { $count } адреса е-пошти з { $total }
-        [few] Відстежується { $count } адреси е-пошти з { $total }
-       *[many] Відстежується { $count } адрес е-пошти з { $total }
-    }
-
-# link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = Керуйте електронними адресами
 
 ## Breaches resolved filter
 
-filter-label-unresolved = Нерозв'язані витоки
-filter-label-resolved = Розв'язані витоки
-
 ## Breaches table
-
-column-company = КОМПАНІЯ
-column-breached-data = УРАЖЕНІ ДАНІ
-column-detected = ВИЯВЛЕНО
-
-# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = Розв'язано
-# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = Активний
-
-breaches-resolve-heading = Позначити витік вирішеним:
-
-breaches-none-headline = Витоків не знайдено
-# Variables:
-#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
-breaches-none-copy = Гарні новини! Немає повідомлень про відомі витоки для { $email }. Ми продовжуватимемо стежити за цією електронною поштою і повідомимо вас, якщо стануться нові витоки.
-breaches-none-cta-blurb = Бажаєте здійснювати моніторинг іншої електронної адреси?
-breaches-none-cta-button = Додати адресу електронної пошти
-
-breaches-all-resolved-headline = Усі витоки розв'язано
-# Variables:
-#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = Чудова робота! Ви розв'язали всі витоки для { $email }. Ми продовжуватимемо стежити за цією електронною адресою і повідомимо вас, якщо стануться нові витоки.
-breaches-all-resolved-cta-blurb = Бажаєте здійснювати моніторинг іншої електронної адреси?
-breaches-all-resolved-cta-button = Додати адресу електронної пошти
-
-# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-# Variables:
-#   $breachDate (String) - Date of the breach
-#   $companyName (String) - Name of the company where the breach occurred
-breach-description = { $breachDate }, у { $companyName } стався витік даних. Одразу після виявлення та підтвердження, цей витік було додано до нашої бази даних на { $addedDate }. До цього витоку входять: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 

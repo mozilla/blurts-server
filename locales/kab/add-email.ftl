@@ -6,6 +6,7 @@
 ### Dialog window that allows a user to add a new email address to be monitored
 
 add-email-add-another-heading = Rnu tansa imayl nniḍen tamaynut
-close-dialog-alt = Mdel asiwenni
+
 add-email-address-input-label = Tansa imayl
 add-email-send-verification-button = Azen n useɣwen n usentem
+

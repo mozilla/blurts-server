@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Détails de la fuite
+
 exposure-card-exposure-type = Type de fuite
 exposure-card-date-found = Date de la fuite
 
@@ -33,8 +34,6 @@ exposure-card-exposure-type-data-breach = Fuite de données
 exposure-card-cta = Résoudre toutes les fuites
 exposure-card-label-company-logo = Logo de l’entreprise
 exposure-card-label-company = Entreprise
-exposure-card-label-exposure-type = Type de fuite
-exposure-card-label-date-found = Date d’identification
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = État
 # Variables:
