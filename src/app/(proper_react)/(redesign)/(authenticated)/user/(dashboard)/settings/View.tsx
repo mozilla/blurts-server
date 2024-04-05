@@ -16,7 +16,7 @@ import { AlertAddressForm } from "./AlertAddressForm";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 import { TelemetryLink } from "../../../../../../components/client/TelemetryLink";
 import { hasPremium } from "../../../../../../functions/universal/user";
-import { sanitizeEmailRow } from "../../../../../../functions/server/sanitizeEmailRow";
+import { sanitizeEmailRow } from "../../../../../../functions/server/sanitize";
 import { SettingsConfirmationDialog } from "./SettingsConfirmationDialog";
 import { DeleteAccountButton } from "./DeleteAccountButton";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";

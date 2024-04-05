@@ -4,9 +4,10 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { FC } from "react";
-import { SubscriberRow } from "knex/types/tables";
 import { Props, BoilerplateEmail } from "./BoilerplateEmail";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
+import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
+import { getSpecificL10nSync } from "../../../app/functions/server/mockL10n";
 
 const meta: Meta<FC<Props>> = {
   title: "Emails/Email boilerplate",
@@ -16,9 +17,10 @@ const meta: Meta<FC<Props>> = {
     </StorybookEmailRenderer>
   ),
   args: {
+    l10n: getSpecificL10nSync("en"),
     subscriber: {
       signup_language: "en",
-    } as SubscriberRow,
+    } as SanitizedSubscriberRow,
   },
 };
 

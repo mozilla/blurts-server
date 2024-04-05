@@ -28,6 +28,7 @@ export const useGlean = () => {
       // This will submit an events ping every time an event is recorded.
       maxEvents: 1,
       channel: PUBLIC_APP_ENV,
+      enableAutoPageLoadEvents: true,
     });
 
     // Glean debugging options can be found here:
