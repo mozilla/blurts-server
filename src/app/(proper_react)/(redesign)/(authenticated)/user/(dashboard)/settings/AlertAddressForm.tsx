@@ -130,15 +130,18 @@ export const AlertAddressForm = (props: Props) => {
               <div
                 className={`${styles.emailAlertsOptions} ${!activateAlertEmail && styles.disabled}`}
               >
-                <VisuallyHidden>
-                  <AlertAddressRadio value="null"></AlertAddressRadio>
-                </VisuallyHidden>
                 <AlertAddressRadio value="affected">
                   {l10n.getString("settings-alert-preferences-option-one")}
                 </AlertAddressRadio>
                 <AlertAddressRadio value="primary">
                   {l10n.getString("settings-alert-preferences-option-two")}
                 </AlertAddressRadio>
+                {/* Since at least one radio option should be selected,
+                there is a hidden radio to capture the option of
+                opting out of breach alerts entirely */}
+                <VisuallyHidden>
+                  <AlertAddressRadio value="null"></AlertAddressRadio>
+                </VisuallyHidden>
               </div>
             </AlertAddressContext.Provider>
           </>
