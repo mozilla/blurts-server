@@ -17,7 +17,7 @@ settings-alert-preferences-allow-breach-alerts-subtitle = These alerts are sent 
 settings-alert-preferences-option-one = Send breach alerts to the affected email address
 settings-alert-preferences-option-two = Send all breach alerts to the primary email address
 settings-alert-preferences-allow-marketing-comms-title = Marketing communications
-settings-alert-preferences-allow-marketing-comms-subtitle = Periodic updates about Monitor, Mozilla, and our other security products.
+settings-alert-preferences-allow-marketing-comms-subtitle = Periodic updates about { -brand-monitor }, { -brand-mozilla }, and our other security products.
 
 ## Monitored email addresses
 
