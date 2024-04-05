@@ -5,8 +5,14 @@
   flex-direction: column;
   gap: $spacing-md;
 
-  h3 {
-    font: $text-title-3xs;
+  .sectionTitle {
+    h3 {
+      font: $text-title-3xs;
+    }
+
+    p {
+      color: $color-grey-50;
+    }
   }
 
   .radioGroup {
