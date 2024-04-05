@@ -45,7 +45,8 @@ export const AlertAddressForm = (props: Props) => {
   const [activateAlertEmail, setActivateAlertEmail] = useState<boolean>(
     props.breachAlertsEmailsAllowed,
   );
-  const [activateMarketingComms, setActivateMarketingComms] = useState(true);
+  const [activateMonthlyMonitorReport, setActivateMonthlyMonitorReport] =
+    useState(true);
 
   // If a user previously had all breach alerts sent to their primary email, we want to carry that value forward
   const defaultValue = props.breachAlertsEmailsAllowed ? "primary" : "affected";
@@ -158,8 +159,8 @@ export const AlertAddressForm = (props: Props) => {
 
         {props.enabledFeatureFlags.includes("MonthlyMonitorReport") && (
           <ActivateEmailsCheckbox
-            isSelected={activateMarketingComms}
-            onChange={setActivateMarketingComms}
+            isSelected={activateMonthlyMonitorReport}
+            onChange={setActivateMonthlyMonitorReport}
           >
             <dl>
               <dt>
@@ -169,7 +170,7 @@ export const AlertAddressForm = (props: Props) => {
               </dt>
               <dd>
                 {l10n.getString(
-                  "settings-alert-preferences-allow-monthly-monitor-report-title",
+                  "settings-alert-preferences-allow-monthly-monitor-report-subtitle",
                 )}
               </dd>
             </dl>
