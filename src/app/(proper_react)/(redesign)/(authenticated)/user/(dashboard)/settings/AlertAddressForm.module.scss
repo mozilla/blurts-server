@@ -11,7 +11,7 @@
     }
 
     p {
-      color: $color-grey-50;
+      color: $color-grey-40;
     }
   }
 
@@ -26,17 +26,13 @@
       flex-direction: column;
       gap: $spacing-sm;
 
-      .radioButton {
-        stroke: $color-black;
-      }
-
       &.disabled {
         display: none;
-
-        .radioButton {
-          cursor: not-allowed;
-        }
       }
+    }
+
+    .radioButton {
+      stroke: $color-black;
     }
 
     label {

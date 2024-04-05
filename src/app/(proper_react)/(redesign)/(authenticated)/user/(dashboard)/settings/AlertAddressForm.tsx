@@ -25,6 +25,7 @@ import type { EmailUpdateCommOptionRequest } from "../../../../../../api/v1/user
 import { VisuallyHidden } from "../../../../../../components/server/VisuallyHidden";
 import { useSession } from "next-auth/react";
 import { Session } from "next-auth";
+import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 
 export type AlertAddress = "null" | "primary" | "affected";
 
@@ -32,6 +33,7 @@ export type Props = {
   user: Session["user"];
   defaultSelected?: AlertAddress;
   breachAlertsEmailsAllowed: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 const AlertAddressContext = createContext<RadioGroupState | null>(null);
@@ -46,7 +48,11 @@ export const AlertAddressForm = (props: Props) => {
   const [activateMarketingComms, setActivateMarketingComms] = useState(true);
   const defaultValue = props.breachAlertsEmailsAllowed ? "affected" : "null";
   const state = useRadioGroupState({
-    defaultValue: defaultValue,
+    defaultValue: props.enabledFeatureFlags.includes(
+      "UpdatedEmailPreferencesOption",
+    )
+      ? defaultValue
+      : "affected",
     onChange: (newValue) => {
       const chosenOption = newValue as AlertAddress;
       const body: EmailUpdateCommOptionRequest = {
@@ -89,57 +95,72 @@ export const AlertAddressForm = (props: Props) => {
         <p>{l10n.getString("settings-alert-email-preferences-subtitle")}</p>
       </div>
       <div className={styles.radioGroup}>
-        <ActivateEmailsCheckbox
-          isSelected={activateAlertEmail}
-          onChange={handleActivateToggle}
-        >
-          <dl>
-            <dt>
-              {l10n.getString(
-                "settings-alert-preferences-allow-breach-alerts-title",
-              )}
-            </dt>
-            <dd>
-              {l10n.getString(
-                "settings-alert-preferences-allow-breach-alerts-subtitle",
-              )}
-            </dd>
-          </dl>
-        </ActivateEmailsCheckbox>
+        {props.enabledFeatureFlags.includes("UpdatedEmailPreferencesOption") ? (
+          <>
+            <ActivateEmailsCheckbox
+              isSelected={activateAlertEmail}
+              onChange={handleActivateToggle}
+            >
+              <dl>
+                <dt>
+                  {l10n.getString(
+                    "settings-alert-preferences-allow-breach-alerts-title",
+                  )}
+                </dt>
+                <dd>
+                  {l10n.getString(
+                    "settings-alert-preferences-allow-breach-alerts-subtitle",
+                  )}
+                </dd>
+              </dl>
+            </ActivateEmailsCheckbox>
 
-        <AlertAddressContext.Provider value={state}>
-          <div
-            className={`${styles.emailAlertsOptions} ${!activateAlertEmail && styles.disabled}`}
-          >
-            <VisuallyHidden>
-              <AlertAddressRadio value="null">None</AlertAddressRadio>
-            </VisuallyHidden>
+            <AlertAddressContext.Provider value={state}>
+              <div
+                className={`${styles.emailAlertsOptions} ${!activateAlertEmail && styles.disabled}`}
+              >
+                <VisuallyHidden>
+                  <AlertAddressRadio value="null">None</AlertAddressRadio>
+                </VisuallyHidden>
+                <AlertAddressRadio value="affected">
+                  {l10n.getString("settings-alert-preferences-option-one")}
+                </AlertAddressRadio>
+                <AlertAddressRadio value="primary">
+                  {l10n.getString("settings-alert-preferences-option-two")}
+                </AlertAddressRadio>
+              </div>
+            </AlertAddressContext.Provider>
+          </>
+        ) : (
+          <AlertAddressContext.Provider value={state}>
             <AlertAddressRadio value="affected">
               {l10n.getString("settings-alert-preferences-option-one")}
             </AlertAddressRadio>
             <AlertAddressRadio value="primary">
               {l10n.getString("settings-alert-preferences-option-two")}
             </AlertAddressRadio>
-          </div>
-        </AlertAddressContext.Provider>
+          </AlertAddressContext.Provider>
+        )}
 
-        <ActivateEmailsCheckbox
-          isSelected={activateMarketingComms}
-          onChange={setActivateMarketingComms}
-        >
-          <dl>
-            <dt>
-              {l10n.getString(
-                "settings-alert-preferences-allow-marketing-comms-title",
-              )}
-            </dt>
-            <dd>
-              {l10n.getString(
-                "settings-alert-preferences-allow-marketing-comms-subtitle",
-              )}
-            </dd>
-          </dl>
-        </ActivateEmailsCheckbox>
+        {props.enabledFeatureFlags.includes("MarketingCommsEmailOption") && (
+          <ActivateEmailsCheckbox
+            isSelected={activateMarketingComms}
+            onChange={setActivateMarketingComms}
+          >
+            <dl>
+              <dt>
+                {l10n.getString(
+                  "settings-alert-preferences-allow-marketing-comms-title",
+                )}
+              </dt>
+              <dd>
+                {l10n.getString(
+                  "settings-alert-preferences-allow-marketing-comms-subtitle",
+                )}
+              </dd>
+            </dl>
+          </ActivateEmailsCheckbox>
+        )}
       </div>
     </div>
   );
