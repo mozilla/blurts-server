@@ -27,13 +27,11 @@ import type {
 } from "../../../../../../api/v1/user/update-comm-option/route";
 import { VisuallyHidden } from "../../../../../../components/server/VisuallyHidden";
 import { useSession } from "next-auth/react";
-import { Session } from "next-auth";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 
 export type AlertAddress = "null" | "primary" | "affected";
 
 export type Props = {
-  user: Session["user"];
   defaultSelected?: AlertAddress;
   breachAlertsEmailsAllowed: boolean;
   enabledFeatureFlags: FeatureFlagName[];
