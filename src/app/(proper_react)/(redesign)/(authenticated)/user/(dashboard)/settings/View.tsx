@@ -85,7 +85,6 @@ export const SettingsView = (props: Props) => {
           <EmailAddressAdder />
           <hr />
           <AlertAddressForm
-            user={props.user}
             breachAlertsEmailsAllowed={
               props.user.subscriber?.all_emails_to_primary ?? undefined === 0
             }
