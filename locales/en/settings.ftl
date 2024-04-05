@@ -16,8 +16,8 @@ settings-alert-preferences-allow-breach-alerts-title = Instant breach alerts
 settings-alert-preferences-allow-breach-alerts-subtitle = These alerts are sent immediately once a data breach is detected
 settings-alert-preferences-option-one = Send breach alerts to the affected email address
 settings-alert-preferences-option-two = Send all breach alerts to the primary email address
-settings-alert-preferences-allow-marketing-comms-title = Marketing communications
-settings-alert-preferences-allow-marketing-comms-subtitle = Periodic updates about { -brand-monitor }, { -brand-mozilla }, and our other security products.
+settings-alert-preferences-allow-monthly-monitor-report-title = Monthly Monitor report
+settings-alert-preferences-allow-monthly-monitor-report-title = A monthly update of new exposures, what’s been fixed, and what needs your attention.
 
 ## Monitored email addresses
 

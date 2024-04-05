@@ -156,7 +156,7 @@ export const AlertAddressForm = (props: Props) => {
           </AlertAddressContext.Provider>
         )}
 
-        {props.enabledFeatureFlags.includes("MarketingCommsEmailOption") && (
+        {props.enabledFeatureFlags.includes("MonthlyMonitorReport") && (
           <ActivateEmailsCheckbox
             isSelected={activateMarketingComms}
             onChange={setActivateMarketingComms}
@@ -164,12 +164,12 @@ export const AlertAddressForm = (props: Props) => {
             <dl>
               <dt>
                 {l10n.getString(
-                  "settings-alert-preferences-allow-marketing-comms-title",
+                  "settings-alert-preferences-allow-monthly-monitor-report-title",
                 )}
               </dt>
               <dd>
                 {l10n.getString(
-                  "settings-alert-preferences-allow-marketing-comms-subtitle",
+                  "settings-alert-preferences-allow-monthly-monitor-report-title",
                 )}
               </dd>
             </dl>
