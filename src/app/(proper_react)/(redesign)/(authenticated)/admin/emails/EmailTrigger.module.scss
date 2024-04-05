@@ -1,0 +1,41 @@
+@import "../../../../../tokens";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xl;
+  background-color: $color-grey-05;
+  height: 100%;
+  padding: $layout-lg $layout-2xl;
+
+  @media screen and (max-width: $screen-lg) {
+    padding: $spacing-lg;
+  }
+}
+
+.addressSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  .addressPicker {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+
+    label {
+      font: $text-body-lg;
+      font-weight: 700;
+    }
+
+    select {
+      padding: $spacing-sm;
+    }
+  }
+}
+
+.triggers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-lg;
+}

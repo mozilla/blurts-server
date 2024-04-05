@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Podrobnosti o úniku
+
 exposure-card-exposure-type = Typ odhalení
 exposure-card-date-found = Datum odhalení
 

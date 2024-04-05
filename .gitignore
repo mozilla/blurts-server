@@ -13,6 +13,7 @@ loadtests/venv
 public/dist
 dist
 public/logo_cache/
+src/client/images/logo_cache
 
 #e2e
 **/test-results/

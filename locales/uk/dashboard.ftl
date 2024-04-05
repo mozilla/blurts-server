@@ -32,7 +32,9 @@ exposure-chart-caption-fixed = На цій діаграмі показано з�
 exposure-chart-returning-user-upgrade-prompt = Домашня адреса, члени сім’ї та інше ще не включено.
 exposure-chart-returning-user-upgrade-prompt-cta = Розпочати безплатну перевірку
 exposure-chart-scan-in-progress-prompt = <b>Триває перевірка:</b> адреса, члени родини тощо ще не включено.
+
 modal-active-number-of-exposures-title = Про кількість розкриттів
+
 
 ## Top banner on the dashboard
 

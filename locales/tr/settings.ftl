@@ -5,7 +5,6 @@
 
 # Settings page
 
-settings-meta-title = { -brand-fx-monitor } - Ayarlar
 settings-page-title = { -product-short-name } Ayarları
 
 ## Breach alert preferences
@@ -16,9 +15,6 @@ settings-alert-preferences-option-two = Tüm ihlal uyarılarını birinci e-post
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-label-primary = { $email } (birinci)
 settings-email-list-title = İzlenen e-posta adresleri
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,12 +26,11 @@ settings-email-limit-info =
 settings-email-verification-callout = E-posta doğrulaması gerekiyor
 settings-resend-email-verification-link = Doğrulama e-postasını yeniden gönder
 settings-add-email-button = E-posta adresi ekle
-# Deprecated
-settings-delete-email-button = E-posta adresini sil
 settings-remove-email-button-label = Kaldır
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = { $emailAddress } adresini izlemeyi durdur
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -47,8 +42,6 @@ settings-email-number-of-breaches-info =
     }
 
 ## Cancel Premium subscription
-
-settings-cancel-premium-subscription-title = { -brand-premium } aboneliğini iptal et
 
 ## Deactivate account
 
@@ -69,15 +62,5 @@ settings-delete-monitor-account-confirmation-toast-dismiss-label = Kapat
 
 ## Add email dialog
 
-settings-email-dialog-title = Başka bir e-posta adresi ekle
-settings-add-email-text = Bir ihlale karışıp karışmadığını görmek için yeni bir e-posta adresi ekleyin.
-settings-email-input-label = E-posta adresi
-settings-send-email-verification-button = Doğrulama bağlantısını gönder
-
 ## Unsubscribe Dialog Survey
 
-settings-unsubscribe-dialog-title = Ayrılmanıza üzüldük. <br /> Neden ayrıldığınızı söylemek ister misiniz?
-settings-unsubscribe-dialog-info = Deneyiminiz bizim için önemli. Her yanıtı okuyup dikkate alıyoruz.
-settings-unsubscribe-dialog-message-placeholder = Neyi daha iyi yapabilirdik?
-settings-unsubscribe-dialog-continue = İptal işlemine devam et
-settings-unsubscribe-dialog-cancel = Vazgeçtim, geri dön

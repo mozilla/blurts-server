@@ -23,8 +23,7 @@ settings-add-email-button = Titz'aqatisäx rochochib'al taqoya'l
 
 ## Add email dialog
 
-settings-email-input-label = Rochochib'al taqoya'l
-settings-send-email-verification-button = Titaq ruximonel jikib'anïk
-
 ## Unsubscribe Dialog Survey
+
+## Delete Monitor account
 

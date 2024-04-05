@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Exposure details
+
 exposure-card-exposure-type = Exposure type
 exposure-card-date-found = Date of the exposure
 
@@ -33,8 +34,6 @@ exposure-card-exposure-type-data-breach = Data breach
 exposure-card-cta = Fix all exposures
 exposure-card-label-company-logo = Company logo
 exposure-card-label-company = Company
-exposure-card-label-exposure-type = Exposure type
-exposure-card-label-date-found = Date found
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Status
 # Variables:

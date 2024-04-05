@@ -6,6 +6,7 @@
 ### Dialog window that allows a user to add a new email address to be monitored
 
 add-email-add-another-heading = 別のメールアドレスを追加
-close-dialog-alt = ダイアログを閉じる
+
 add-email-address-input-label = メールアドレス
 add-email-send-verification-button = 認証リンクを送信する
+

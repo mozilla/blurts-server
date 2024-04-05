@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Manylion amlygiad
+
 exposure-card-exposure-type = Math o ddatgeliad
 exposure-card-date-found = Dyddiad y datgeliad
 
@@ -33,8 +34,6 @@ exposure-card-exposure-type-data-breach = Tor-data
 exposure-card-cta = Trwsiwch bob datgeliad
 exposure-card-label-company-logo = Logo cwmni
 exposure-card-label-company = Cwmni
-exposure-card-label-exposure-type = Math o ddatgeliad
-exposure-card-label-date-found = Dyddiad canfod
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Statws
 # Variables:

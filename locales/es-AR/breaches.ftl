@@ -2,80 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-meta-title = { -brand-fx-monitor } - Panel
-
 breach-all-meta-title = { -brand-fx-monitor } - Todas las filtraciones de datos
 breach-all-meta-social-title = Todas las filtraciones detectadas por { -brand-fx-monitor }
 breach-all-meta-social-description = Navegá por la lista completa de filtraciones conocidas detectadas por { -brand-fx-monitor } y luego fijate si tu información fue expuesta.
 
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } - Filtración de datos de { $company }
-# Variables:
-#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = ¿Te afectó la filtración de datos de { $company }?
 breach-detail-meta-social-description = Usá { -brand-fx-monitor } para averiguar si tu información personal fue expuesta en esta filtración y saber qué hacer a continuación.
 
-breach-scan-meta-title = { -brand-fx-monitor } - Resultados de filtraciones
-breach-scan-meta-social-title = Resultados de filtraciones de { -brand-fx-monitor }
-breach-scan-meta-social-description = Iniciá sesión en { -brand-fx-monitor } para resolver filtraciones y obtener un monitoreo continuo para cualquier nueva filtración conocida.
-
 ## Breaches header
-
-# Data classes pie chart title
-breach-chart-title = Datos filtrados
-
-# $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = Filtraciones de datos para { $email-select }
-
-# $count is the number of emails a user has added out of $total allowed
-emails-monitored =
-    { $total ->
-        [one] { $count } de { $total } correo electrónico monitoreado
-        [many] { $count } de { $total } correos electrónicos monitoreados
-       *[other] { $count } de { $total } correos electrónicos monitoreados
-    }
-
-# link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = Administrar correos electrónicos
 
 ## Breaches resolved filter
 
-filter-label-unresolved = Filtraciones sin resolver
-filter-label-resolved = Filtraciones resueltas
-
 ## Breaches table
-
-column-company = EMPRESA
-column-breached-data = DATOS FILTRADOS
-column-detected = DETECTADO
-
-# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = Resuelta
-# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = Activa
-
-breaches-resolve-heading = Resolver esta filtración:
-
-breaches-none-headline = No sé encontraron filtraciones
-# Variables:
-#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
-breaches-none-copy = ¡Buenas noticias! No hay filtraciones conocidas informadas para { $email }. Seguiremos monitoreando este correo electrónico y te haremos saber si aparece alguna nueva filtración.
-breaches-none-cta-blurb = ¿Querés monitorear otro correo electrónico?
-breaches-none-cta-button = Agregar dirección de correo electrónico
-
-breaches-all-resolved-headline = Todas las filtraciones resueltas
-# Variables:
-#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = ¡Bien hecho! Resolviste todas las filtraciones para { $email }. Seguiremos monitoreando este correo electrónico y te haremos saber si aparecen nuevas filtraciones.
-breaches-all-resolved-cta-blurb = ¿Querés monitorear otro correo electrónico?
-breaches-all-resolved-cta-button = Agregar dirección de correo electrónico
-
-# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-# Variables:
-#   $breachDate (String) - Date of the breach
-#   $companyName (String) - Name of the company where the breach occurred
-breach-description = El { $breachDate }, { $companyName } tuvo una filtración. Cuando se descubrió y verificó, fue agregada a nuestra base de datos el { $addedDate }. Está filtración incluía: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 

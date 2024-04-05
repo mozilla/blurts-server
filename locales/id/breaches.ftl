@@ -2,78 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-meta-title = { -brand-fx-monitor } - Dasbor
-
 breach-all-meta-title = { -brand-fx-monitor } - Semua Pembobolan Data
 breach-all-meta-social-title = Semua Pembobolan Terdeteksi oleh { -brand-fx-monitor }
 breach-all-meta-social-description = Jelajahi daftar lengkap pembobolan yang diketahui yang terdeteksi oleh { -brand-fx-monitor }, lalu cari tahu apakah informasi Anda terungkap.
 
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } - Pembobolan Data { $company }
-# Variables:
-#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Apakah Anda terpengaruh oleh Pembobolan Data { $company }?
 breach-detail-meta-social-description = Gunakan { -brand-fx-monitor } untuk mengetahui apakah informasi pribadi Anda terungkap dalam pembobolan ini, dan memahami apa yang harus dilakukan selanjutnya.
 
-breach-scan-meta-title = { -brand-fx-monitor } - Hasil Pembobolan
-breach-scan-meta-social-title = { -brand-fx-monitor } Hasil Pembobolan
-breach-scan-meta-social-description = Masuk ke { -brand-fx-monitor } untuk menindaklanjuti pembobolan dan mendapatkan pemantauan berkesinambungan untuk setiap pembobolan baru yang diketahui.
-
 ## Breaches header
-
-# Data classes pie chart title
-breach-chart-title = Data yang dibobol
-
-# $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = Pembobolan data untuk { $email-select }
-
-# $count is the number of emails a user has added out of $total allowed
-emails-monitored =
-    { $total ->
-       *[other] { $count } dari { $total } surel yang dipantau
-    }
-
-# link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = Kelola surel
 
 ## Breaches resolved filter
 
-filter-label-unresolved = Pembobolan yang belum ditindaklanjuti
-filter-label-resolved = Pembobolan yang telah ditindaklanjuti
-
 ## Breaches table
-
-column-company = PERUSAHAAN
-column-breached-data = DATA DIBOBOL
-column-detected = TERDETEKSI
-
-# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = Ditindaklanjuti
-# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = Aktif
-
-breaches-resolve-heading = Tindaklanjuti pembobolan ini:
-
-breaches-none-headline = Tidak ada pembobolan yang ditemukan
-# Variables:
-#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
-breaches-none-copy = Kabar baik! Tidak ada pembobolan yang dilaporkan untuk { $email }. Kami akan terus memantau surel ini dan akan memberi tahu Anda jika ada pembobolan baru.
-breaches-none-cta-blurb = Apakah Anda ingin memantau surel lainnya?
-breaches-none-cta-button = Tambahkan alamat surel
-
-breaches-all-resolved-headline = Semua pembobolan telah ditindaklanjuti
-# Variables:
-#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = Bagus! Anda telah menindaklanjuti semua pembobolan untuk { $email }. Kami akan terus memantau surel ini dan akan memberi tahu Anda jika ada pembobolan baru.
-breaches-all-resolved-cta-blurb = Apakah Anda ingin memantau surel lainnya?
-breaches-all-resolved-cta-button = Tambahkan alamat surel
-
-# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-# Variables:
-#   $breachDate (String) - Date of the breach
-#   $companyName (String) - Name of the company where the breach occurred
-breach-description = Pada { $breachDate }, { $companyName } telah dibobol. Setelah pembobolan ditemukan dan diverifikasi, data pembobolan ditambahkan ke basis data kami pada { $addedDate }. Pembobolan ini menyertakan: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
