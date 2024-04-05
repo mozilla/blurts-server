@@ -36,7 +36,9 @@ export type FeatureFlagName =
   | "FxaUidTelemetry"
   | "RebrandAnnouncement"
   | "MonitorAccountDeletion"
-  | "RedesignedEmails";
+  | "RedesignedEmails"
+  | "UpdatedEmailPreferencesOption"
+  | "MarketingCommsEmailOption";
 
 export async function getEnabledFeatureFlags(
   options:

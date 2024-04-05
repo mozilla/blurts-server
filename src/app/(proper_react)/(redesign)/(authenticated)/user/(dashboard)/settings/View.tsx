@@ -89,6 +89,7 @@ export const SettingsView = (props: Props) => {
             breachAlertsEmailsAllowed={
               props.user.subscriber?.all_emails_to_primary ?? undefined === 0
             }
+            enabledFeatureFlags={props.enabledFeatureFlags}
           />
           {hasPremium(props.user) && (
             <>
