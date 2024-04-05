@@ -174,7 +174,7 @@ async function updateFxAProfileData (subscriber, fxaProfileData) {
 
 /**
  * @param {import("knex/types/tables").SubscriberRow} subscriber
- * @param {boolean} allEmailsToPrimary
+ * @param {boolean | null} allEmailsToPrimary
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */

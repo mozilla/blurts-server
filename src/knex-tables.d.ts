@@ -91,7 +91,7 @@ declare module "knex/types/tables" {
     // TODO: Find unknown type
     // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     breaches_last_shown: null | unknown;
-    all_emails_to_primary: boolean;
+    all_emails_to_primary: boolean | null; // added  null in MNTOR-1368
     // TODO: Find unknown type
     // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     breaches_resolved: null | unknown;
