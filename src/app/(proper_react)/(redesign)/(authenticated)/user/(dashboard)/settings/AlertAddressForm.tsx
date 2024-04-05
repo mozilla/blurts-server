@@ -34,9 +34,7 @@ export type Props = {
   breachAlertsEmailsAllowed: boolean;
 };
 
-const AlertAddressContext = createContext<RadioGroupState | undefined>(
-  undefined,
-);
+const AlertAddressContext = createContext<RadioGroupState | null>(null);
 
 export const AlertAddressForm = (props: Props) => {
   const l10n = useL10n();
@@ -84,10 +82,12 @@ export const AlertAddressForm = (props: Props) => {
 
   return (
     <div {...radioGroupProps} className={styles.wrapper}>
-      <h3 {...labelProps}>
-        {l10n.getString("settings-alert-email-preferences-title")}
+      <div className={styles.sectionTitle}>
+        <h3 {...labelProps}>
+          {l10n.getString("settings-alert-email-preferences-title")}
+        </h3>
         <p>{l10n.getString("settings-alert-email-preferences-subtitle")}</p>
-      </h3>
+      </div>
       <div className={styles.radioGroup}>
         <ActivateEmailsCheckbox
           isSelected={activateAlertEmail}
