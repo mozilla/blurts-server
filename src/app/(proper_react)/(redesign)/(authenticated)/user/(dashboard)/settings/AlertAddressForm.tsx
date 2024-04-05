@@ -86,7 +86,7 @@ export const AlertAddressForm = (props: Props) => {
       if (!newValue) {
         state.setSelectedValue("null");
       } else {
-        state.setSelectedValue("affected");
+        state.setSelectedValue(defaultValue);
       }
       return newValue;
     });
