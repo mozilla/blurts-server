@@ -13,9 +13,13 @@ import {
   setAllEmailsToPrimary,
 } from "../../../../../db/tables/subscribers";
 
+// "-1" if a user opts out of breach alerts,
+//  "1" to send breach alerts to the primary email address,
+//  "0" to send them to the affected address
+export type EmailUpdateCommTypeOfOptions = "-1" | "0" | "1";
+
 export interface EmailUpdateCommOptionRequest {
-  /** "1" to send breach alerts to the primary email address, "0" to send them to the affected address */
-  communicationOption: "0" | "1";
+  communicationOption: EmailUpdateCommTypeOfOptions;
 }
 
 export async function POST(req: NextRequest) {
