@@ -8,9 +8,16 @@ settings-page-title = { -product-short-name } Settings
 
 ## Breach alert preferences
 
+# Obsolete
 settings-alert-preferences-title = Breach alert preferences
+settings-alert-email-preferences-title = Email preferences
+settings-alert-email-preferences-subtitle = Tell us which emails you’d like to receive.
+settings-alert-preferences-allow-breach-alerts-title = Instant breach alerts
+settings-alert-preferences-allow-breach-alerts-subtitle = These alerts are sent immediately once a data breach is detected
 settings-alert-preferences-option-one = Send breach alerts to the affected email address
 settings-alert-preferences-option-two = Send all breach alerts to the primary email address
+settings-alert-preferences-allow-marketing-comms-title = Marketing communications
+settings-alert-preferences-allow-marketing-comms-subtitle = Periodic updates about Monitor, Mozilla, and our other security products.
 
 ## Monitored email addresses
 

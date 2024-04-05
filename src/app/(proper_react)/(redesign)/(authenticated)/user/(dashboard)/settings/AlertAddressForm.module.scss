@@ -12,20 +12,47 @@
   .radioGroup {
     display: flex;
     flex-direction: column;
-    gap: $spacing-sm;
+    gap: $spacing-md;
+
+    .emailAlertsOptions {
+      padding-left: $spacing-lg;
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-sm;
+
+      .radioButton {
+        stroke: $color-black;
+      }
+
+      &.disabled {
+        display: none;
+
+        .radioButton {
+          cursor: not-allowed;
+        }
+      }
+    }
 
     label {
       display: flex;
-      align-items: center;
       gap: $spacing-xs;
+
+      dl {
+        display: flex;
+        flex-direction: column;
+
+        dt {
+          font-weight: 600;
+        }
+
+        dd {
+          color: $color-grey-40;
+        }
+      }
 
       svg {
         flex: 0 0 auto;
       }
-    }
-
-    .radioButton {
-      stroke: $color-black;
     }
 
     .focusRing {
