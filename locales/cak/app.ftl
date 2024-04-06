@@ -233,7 +233,7 @@ sign-in = Tatikirisaj molojri'ïl
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 github = { -brand-github }
 
 ## Error page
