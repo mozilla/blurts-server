@@ -221,7 +221,10 @@ it("sends a call to the API to change the email alert preferences when changing 
   await user.click(affectedRadioButton);
 
   expect(global.fetch).toHaveBeenCalledWith("/api/v1/user/update-comm-option", {
-    body: JSON.stringify({ communicationOption: "0" }),
+    body: JSON.stringify({
+      instantBreachAlerts: "0",
+      monthlyMonitorReport: true,
+    }),
     method: "POST",
   });
 
@@ -230,7 +233,10 @@ it("sends a call to the API to change the email alert preferences when changing 
   );
   await user.click(primaryRadioButton);
   expect(global.fetch).toHaveBeenCalledWith("/api/v1/user/update-comm-option", {
-    body: JSON.stringify({ communicationOption: "1" }),
+    body: JSON.stringify({
+      instantBreachAlerts: "1",
+      monthlyMonitorReport: true,
+    }),
     method: "POST",
   });
 });
