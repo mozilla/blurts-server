@@ -4,7 +4,7 @@
 
 export function up (knex) {
   return knex.schema.table('subscribers', table => {
-    table.boolean('monthly_monitor_report')
+    table.boolean('monthly_monitor_report').defaultTo(false)
   })
 }
 
