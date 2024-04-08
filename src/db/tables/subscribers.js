@@ -194,6 +194,27 @@ async function setAllEmailsToPrimary (subscriber, allEmailsToPrimary) {
 /* c8 ignore stop */
 
 /**
+ * @param {import("knex/types/tables").SubscriberRow} subscriber
+ * @param {boolean | null} monthlyMonitorReport
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function setMonthlyMonitorReport (subscriber, monthlyMonitorReport) {
+  const updated = await knex('subscribers')
+    .where('id', subscriber.id)
+    .update({
+      monthly_monitor_report: monthlyMonitorReport || false,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
+    })
+    .returning('*')
+  const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
+  return updatedSubscriber
+}
+/* c8 ignore stop */
+
+/**
  * Set "breach_resolution" column with the latest breach resolution object.
  *
  * @param {import("knex/types/tables").SubscriberRow} user user object that contains the id of a user
@@ -402,6 +423,7 @@ export {
   updateFxAData,
   updateFxAProfileData,
   setAllEmailsToPrimary,
+  setMonthlyMonitorReport,
   setBreachResolution,
   updateMonthlyEmailTimestamp,
   updateMonthlyEmailOptout,

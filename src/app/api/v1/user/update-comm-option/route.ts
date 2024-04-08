@@ -11,6 +11,7 @@ import AppConstants from "../../../../../appConstants";
 import {
   getSubscriberByFxaUid,
   setAllEmailsToPrimary,
+  setMonthlyMonitorReport,
 } from "../../../../../db/tables/subscribers";
 
 // "-1" if a user opts out of breach alerts,
@@ -19,7 +20,8 @@ import {
 export type EmailUpdateCommTypeOfOptions = "-1" | "0" | "1";
 
 export interface EmailUpdateCommOptionRequest {
-  communicationOption: EmailUpdateCommTypeOfOptions;
+  instantBreachAlerts: EmailUpdateCommTypeOfOptions;
+  monthlyMonitorReport: boolean;
 }
 
 export async function POST(req: NextRequest) {
@@ -27,8 +29,10 @@ export async function POST(req: NextRequest) {
 
   if (typeof token?.subscriber?.fxa_uid === "string") {
     try {
-      const { communicationOption }: EmailUpdateCommOptionRequest =
-        await req.json();
+      const {
+        instantBreachAlerts,
+        monthlyMonitorReport,
+      }: EmailUpdateCommOptionRequest = await req.json();
       const subscriber = await getSubscriberByFxaUid(token.subscriber?.fxa_uid);
       if (!subscriber) {
         throw new Error("No subscriber found for current session.");
@@ -37,10 +41,13 @@ export async function POST(req: NextRequest) {
       // 0 = Send breach alerts to the corresponding affected emails.
       // 1 = Send all breach alerts to user's primary email address.
       const allEmailsToPrimary =
-        Number(communicationOption) === -1
+        Number(instantBreachAlerts) === -1
           ? null
-          : Number(communicationOption) === 1 ?? false;
+          : Number(instantBreachAlerts) === 1
+            ? true
+            : false;
       await setAllEmailsToPrimary(subscriber, allEmailsToPrimary);
+      await setMonthlyMonitorReport(subscriber, monthlyMonitorReport);
 
       return NextResponse.json({
         success: true,
