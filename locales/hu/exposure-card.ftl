@@ -2,8 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Kibontás
-chevron-up-alt = Összecsukás
+chevron-alt = Kikerülés részletei
+
 exposure-card-exposure-type = Kitettség típusa
 exposure-card-date-found = Az incidens dátuma
 
@@ -26,16 +26,14 @@ exposure-card-other = Egyéb
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-action-needed = Az Ön adatai kikerültek a <data_breach_link>{ $data_breach_company } adatvédelmi incidensben, ekkor: { $data_breach_date }.</data_breach_link> Végigvezetjük a javítási lépéseken.
-exposure-card-description-data-breach-fixed = Megtette a szükséges lépéseket <data_breach_link>Ezen adatvédelmi incidens</data_breach_link> kijavításához. Folyamatosan figyeljük az adatvédelmi incidenseket, és értesítjük minden új kitettségről.
+exposure-card-description-data-breach-action-needed = Az Ön adatai kikerültek a(z) <data_breach_link>{ $data_breach_company } adatvédelmi incidensében, ekkor: { $data_breach_date }.</data_breach_link> Végigvezetjük a javítási lépéseken.
+exposure-card-description-data-breach-fixed = Megtette a szükséges lépéseket <data_breach_link>ezen adatvédelmi incidens</data_breach_link> kijavításához. Folyamatosan figyeljük az adatvédelmi incidenseket, és értesítjük minden új adatkikerülésről.
 exposure-card-your-exposed-info = Érintett információk:
 exposure-card-exposure-type-data-broker = Eladó információk
 exposure-card-exposure-type-data-breach = Adatvédelmi incidens
 exposure-card-cta = Javítsa az összes kitettséget
 exposure-card-label-company-logo = Céglogó
 exposure-card-label-company = Cég
-exposure-card-label-exposure-type = kitettség típusa
-exposure-card-label-date-found = Találat dátuma
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Állapot
 # Variables:

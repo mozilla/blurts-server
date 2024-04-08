@@ -170,7 +170,7 @@ export async function createProfile(
 export async function getProfile(
   profileId: number,
 ): Promise<ShowProfileResponse> {
-  const response: Response = await onerepFetch(`/profiles/${profileId}/`, {
+  const response: Response = await onerepFetch(`/profiles/${profileId}`, {
     method: "GET",
   });
   if (!response.ok) {

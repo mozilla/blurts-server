@@ -3,14 +3,19 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { View } from "./LandingView";
-import { getOneL10nSync } from "../../../functions/server/mockL10n";
+import { View, Props as ViewProps } from "./LandingView";
+import { getSpecificL10nSync } from "../../../functions/server/mockL10n";
+import { PublicShell } from "./PublicShell";
 
 const meta: Meta<typeof View> = {
-  title: "Pages/Public landing page",
-  component: View,
+  title: "Pages/Public/Landing page",
+  component: (props: ViewProps) => (
+    <PublicShell l10n={getSpecificL10nSync("en")}>
+      <View {...props} />
+    </PublicShell>
+  ),
   args: {
-    l10n: getOneL10nSync(),
+    l10n: getSpecificL10nSync(),
     enabledFlags: ["RebrandAnnouncement"],
   },
 };
@@ -49,7 +54,7 @@ export const LandingNonUsDe: Story = {
   args: {
     eligibleForPremium: false,
     countryCode: "de",
-    l10n: getOneL10nSync("de"),
+    l10n: getSpecificL10nSync("de"),
   },
 };
 
@@ -58,6 +63,6 @@ export const LandingNonUsFr: Story = {
   args: {
     eligibleForPremium: false,
     countryCode: "fr",
-    l10n: getOneL10nSync("fr"),
+    l10n: getSpecificL10nSync("fr"),
   },
 };

@@ -201,6 +201,19 @@ it("doesn't allow proceeding without typing a valid location", async () => {
   expect(screen.queryByText("Is this correct?")).not.toBeInTheDocument();
 });
 
+it("when a user moves focus away from the first name field, it should show an invalid state error", async () => {
+  const user = userEvent.setup();
+  const ComposedOnboarding = composeStory(Onboarding, Meta);
+  render(<ComposedOnboarding stepId="enterInfo" />);
+
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  const firstNameField = screen.getByLabelText("First name*");
+
+  await user.click(firstNameField);
+  await user.keyboard("{Tab}");
+  expect(firstNameField.getAttribute("aria-invalid")).toBe("true");
+});
+
 it("form input elements have invalid state if left empty on step 2", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);

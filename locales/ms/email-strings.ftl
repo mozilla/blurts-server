@@ -1,10 +1,9 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
-
-# A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
-firefox-monitor-report = Laporan { -product-name }
-report-date = Tarikh Laporan:
-email-address = Alamat E-mel:
 
 # A link to legal information about mozilla products.
 legal = Legal

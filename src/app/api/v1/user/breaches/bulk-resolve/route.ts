@@ -5,13 +5,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { logger } from "../../../../../functions/server/logging";
-import { BreachBulkResolutionRequest } from "../../../../../deprecated/(authenticated)/user/breaches/breaches.js";
 import { getBreaches } from "../../../../../functions/server/getBreaches";
 import { getAllEmailsAndBreaches } from "../../../../../../utils/breaches";
 import {
   getSubscriberByFxaUid,
   setBreachResolution,
 } from "../../../../../../db/tables/subscribers";
+import { BreachBulkResolutionRequest } from "../../../../../functions/universal/breach";
 
 export async function PUT(req: NextRequest): Promise<NextResponse> {
   const session = await getServerSession();

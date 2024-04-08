@@ -8,7 +8,6 @@ import { revalidatePath } from "next/cache";
 import { SubscriberRow } from "knex/types/tables";
 import { getServerSession } from "../../../../../../functions/server/getServerSession";
 import {
-  EmailRow,
   addSubscriberUnverifiedEmailHash,
   removeOneSecondaryEmail,
 } from "../../../../../../../db/tables/emailAddresses";
@@ -22,6 +21,7 @@ import { sendVerificationEmail } from "../../../../../../api/utils/email";
 import { getL10n } from "../../../../../../functions/server/l10n";
 import { logger } from "../../../../../../functions/server/logging";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
+import { SanitizedEmailAddressRow } from "../../../../../../functions/server/sanitize";
 import { deleteAccount } from "../../../../../../functions/server/deleteAccount";
 import { cookies } from "next/headers";
 
@@ -97,17 +97,8 @@ export async function onAddEmail(
     );
 
     await initEmail();
-    await sendVerificationEmail(
-      // This first parameter is unused, so the type assertion is safe.
-      // When non-TS invocations of this function are removed, we should remove
-      // the unused parameter:
-      session.user.subscriber as unknown as Parameters<
-        typeof sendVerificationEmail
-      >[0],
-      unverifiedSubscriber.id,
-      getL10n(),
-    );
-    revalidatePath("/user/settings/");
+    await sendVerificationEmail(subscriber, unverifiedSubscriber.id);
+    revalidatePath("/user/settings");
 
     return {
       success: true,
@@ -130,7 +121,7 @@ export async function onAddEmail(
   }
 }
 
-export async function onRemoveEmail(email: EmailRow) {
+export async function onRemoveEmail(email: SanitizedEmailAddressRow) {
   const l10n = getL10n();
   const session = await getServerSession();
   if (!session?.user.subscriber?.fxa_uid) {
@@ -160,7 +151,7 @@ export async function onRemoveEmail(email: EmailRow) {
   try {
     await removeOneSecondaryEmail(email.id, subscriber.id);
     await deleteResolutionsWithEmail(subscriber.id, email.email);
-    revalidatePath("/user/settings/");
+    revalidatePath("/user/settings");
   } catch (e) {
     return {
       success: false,

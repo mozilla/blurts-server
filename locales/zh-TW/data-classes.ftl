@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = 帳戶餘額
@@ -14,7 +19,7 @@ avatars = 帳號大頭照
 bank-account-numbers = 銀行帳號
 beauty-ratings = 美貌等級評分
 biometric-data = 生物識別資料
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = 自傳
 browser-user-agent-details = 瀏覽器 User Agent 詳細資料
@@ -25,6 +30,7 @@ career-levels = 職業水平
 cellular-network-names = 行動網路名稱
 charitable-donations = 慈善捐款紀錄
 chat-logs = 聊天紀錄
+citizenship-statuses = 公民身份
 clothing-sizes = 衣服尺寸
 credit-card-cvv = 信用卡驗證碼
 credit-cards = 信用卡
@@ -35,7 +41,7 @@ customer-interactions = 顧客互動
 dates-of-birth = 生日
 deceased-date = 死亡日期
 deceased-statuses = 死亡狀態
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = 出貨資訊
 device-information = 裝置資訊
@@ -75,7 +81,7 @@ instant-messenger-identities = 即時通訊身分
 ip-addresses = IP 地址
 job-applications = 求職申請資料
 job-titles = 工作頭銜
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = 汽車牌照
 living-costs = 生活成本
 # This string refers to financial loans.

@@ -2,8 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = 展開
-chevron-up-alt = 摺疊
+chevron-alt = 接觸者詳情
+
 exposure-card-exposure-type = 資料曝光類型
 exposure-card-date-found = 曝光日期
 
@@ -26,16 +26,14 @@ exposure-card-other = 其他
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-action-needed = 您的資訊已於 { $data_breach_date } 出現在 <data_breach_link>{ $data_breach_company } 的資料外洩事件中。</data_breach_link>將帶您進行修正。
-exposure-card-description-data-breach-fixed = 您已採取必要的措施來修正<data_breach_link>此次資料外洩事件</data_breach_link>。我們將持續監控資料外洩事件並在有新事件時通知您。
+exposure-card-description-data-breach-action-needed = 您的資訊於 { $data_breach_date } 出現在 <data_breach_link>{ $data_breach_company }</data_breach_link> 的資料外洩事件中，我們將帶您一起處理這個問題。
+exposure-card-description-data-breach-fixed = 您已採取必要的措施來修正<data_breach_link>此次資料外洩事件</data_breach_link>。我們將持續監控資料外洩事件，並在發生新事件時通知您。
 exposure-card-your-exposed-info = 您曝光的資訊：
 exposure-card-exposure-type-data-broker = 資訊被出售
 exposure-card-exposure-type-data-breach = 資料外洩事件
 exposure-card-cta = 處理所有曝光資料
 exposure-card-label-company-logo = 公司圖示
 exposure-card-label-company = 公司
-exposure-card-label-exposure-type = 資料曝光類型
-exposure-card-label-date-found = 發現日期
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = 狀態
 # Variables:

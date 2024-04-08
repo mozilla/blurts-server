@@ -2,8 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Ανάπτυξη
-chevron-up-alt = Σύμπτυξη
+chevron-alt = Λεπτομέρειες έκθεσης
+
 exposure-card-exposure-type = Τύπος έκθεσης
 exposure-card-date-found = Ημερομηνία έκθεσης
 
@@ -34,8 +34,6 @@ exposure-card-exposure-type-data-breach = Παραβίαση δεδομένων
 exposure-card-cta = Διόρθωση όλων των εκθέσεων
 exposure-card-label-company-logo = Λογότυπο εταιρείας
 exposure-card-label-company = Εταιρεία
-exposure-card-label-exposure-type = Τύπος έκθεσης
-exposure-card-label-date-found = Ημερομηνία εύρεσης
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Κατάσταση
 # Variables:

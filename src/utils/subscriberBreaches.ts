@@ -6,13 +6,11 @@ import { SubscriberRow } from "knex/types/tables";
 import { getUserEmails } from "../db/tables/emailAddresses.js";
 import { HibpLikeDbBreach, getBreachesForEmail } from "./hibp.js";
 import { getSha1 } from "./fxa.js";
-import {
-  Breach,
-  HibpBreachDataTypes,
-} from "../app/deprecated/(authenticated)/user/breaches/breaches.js";
 import { parseIso8601Datetime } from "./parse.js";
 import {
+  Breach,
   BreachDataTypes,
+  HibpBreachDataTypes,
   ResolutionRelevantBreachDataTypes,
   isBreachResolved,
 } from "../app/functions/universal/breach";
@@ -44,13 +42,22 @@ type SubscriberBreachMap = Record<number, SubscriberBreach>;
  * Take the breach DataTypes array from HIBP and filter based on BreachDataTypes
  *
  * @param originalDataTypes
+ * @param countryCode
  */
 function filterBreachDataTypes(
   originalDataTypes: SubscriberBreach["dataClasses"],
+  countryCode: string,
 ) {
   const relevantDataTypes = Object.values(ResolutionRelevantBreachDataTypes);
   return originalDataTypes.filter((d) =>
-    relevantDataTypes.some((t) => t === d),
+    relevantDataTypes.some((t) => {
+      // Exclude SSN breaches for non-US users as they are only relevant
+      // to US users for now.
+      if (d === "social-security-numbers") {
+        return t === d && countryCode === "us";
+      }
+      return t === d;
+    }),
   );
 }
 
@@ -75,6 +82,9 @@ export async function getSubBreaches(
     email: subscriber.primary_email,
     verified: subscriber.primary_verified,
     sha1: subscriber.primary_sha1,
+    verification_token: subscriber.primary_verification_token,
+    created_at: subscriber.created_at,
+    updated_at: subscriber.updated_at,
   });
 
   verifiedEmails = verifiedEmails.filter((e) => e.verified);
@@ -102,17 +112,12 @@ export async function getSubBreaches(
         (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
       >;
       const filteredBreachDataClasses: ArrayOfDataClasses =
-        filterBreachDataTypes(breach.DataClasses);
+        filterBreachDataTypes(breach.DataClasses, countryCode);
       const resolvedDataClasses = (breachResolution[breach.Id]
         ?.resolutionsChecked ?? []) as ArrayOfDataClasses;
 
       const dataClassesEffected = filteredBreachDataClasses
         .map((c) => {
-          // Exclude SSN breaches for non-US users as they are only relevant
-          // to US users as of now.
-          if (c === BreachDataTypes.SSN && countryCode !== "us") {
-            return null;
-          }
           if (c === BreachDataTypes.Email) {
             return { [c]: [email.email] };
           } else {

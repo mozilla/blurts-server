@@ -818,7 +818,7 @@ it("shows a confirmaton message if the user has just deleted their account", () 
 
   const alert = screen.getByRole("alert");
   const confirmationMessage = within(alert).getByText(
-    "Your ⁨Monitor⁩ account is now permanently deleted.",
+    "Your ⁨Monitor⁩ account is now deleted.",
   );
 
   expect(alert).toBeInTheDocument();

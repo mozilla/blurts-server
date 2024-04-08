@@ -23,8 +23,10 @@ import {
 } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
 import { hasPremium } from "../../../../../../../../functions/universal/user";
-import { SecurityRecommendationDataTypes } from "../../../../../../../../functions/universal/breach";
-import { BreachBulkResolutionRequest } from "../../../../../../../../deprecated/(authenticated)/user/breaches/breaches";
+import {
+  BreachBulkResolutionRequest,
+  SecurityRecommendationDataTypes,
+} from "../../../../../../../../functions/universal/breach";
 
 export interface SecurityRecommendationsLayoutProps {
   type: SecurityRecommendationTypes;
@@ -117,18 +119,18 @@ export function SecurityRecommendationsLayout(
         );
       }
 
+      const isCurrentStepSection = Object.values(stepMap).includes(nextStep.id);
+      const nextRoute = isCurrentStepSection
+        ? nextStep.href
+        : "/user/dashboard/fix/security-recommendations/done";
+      router.push(nextRoute);
+
       // Make sure the dashboard re-fetches the breaches on the next visit,
       // in order to make resolved breaches move to the "Fixed" tab.
       // If we had used server actions, we could've called
       // `revalidatePath("/user/dashboard")` there, but the API doesn't appear
       // to necessarily share a cache with the client.
       router.refresh();
-
-      const isCurrentStepSection = Object.values(stepMap).includes(nextStep.id);
-      const nextRoute = isCurrentStepSection
-        ? nextStep.href
-        : "/user/dashboard/fix/security-recommendations/done";
-      router.push(nextRoute);
     } catch (_error) {
       // TODO: MNTOR-2563: Capture client error with @next/sentry
       setIsResolving(false);

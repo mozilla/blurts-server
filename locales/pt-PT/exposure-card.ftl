@@ -2,8 +2,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Expandir
-chevron-up-alt = Colapsar
 exposure-card-exposure-type = Tipo de exposição
 exposure-card-date-found = Data da exposição
 
@@ -26,16 +24,14 @@ exposure-card-other = Outro
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-action-needed = A sua informação foi exposta na <data_breach_link>{ $data_breach_company } brecha de dados em { $data_breach_date }.</data_breach_link> Iremos orientá-lo através dos passos para corrigir a mesma.
-exposure-card-description-data-breach-fixed = Tomei as medidas necessárias para corrigir <data_breach_link>esta violação de dados</data_breach_link>. Iremos monitorizar continuamente em busca de violações de dados e alertar-lhe sobre quaisquer novas exposição.
+exposure-card-description-data-breach-action-needed = A sua informação foi exposta na <data_breach_link>{ $data_breach_company } violação de dados em { $data_breach_date }.</data_breach_link> Nós iremos orientá-lo através dos passos para a corrigir.
+exposure-card-description-data-breach-fixed = Tomou as medidas necessárias para corrigir <data_breach_link>esta violação de dados</data_breach_link>. Nós iremos monitorizar continuamente para as violações de dados e alertá-lo sobre quaisquer novas exposições.
 exposure-card-your-exposed-info = A sua informação exposta:
 exposure-card-exposure-type-data-broker = Informação à venda
 exposure-card-exposure-type-data-breach = Violação de dados
 exposure-card-cta = Corrigir todas as exposições
 exposure-card-label-company-logo = Logótipo da empresa
 exposure-card-label-company = Empresa
-exposure-card-label-exposure-type = Tipo de exposição
-exposure-card-label-date-found = Data da descoberta
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Estado
 # Variables:

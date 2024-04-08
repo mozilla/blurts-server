@@ -12,9 +12,6 @@ settings-page-title = { -product-short-name } 설정
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-label-primary = { $email } (기본)
 settings-email-verification-callout = 이메일 인증 필요
 settings-resend-email-verification-link = 인증 이메일 재전송
 settings-add-email-button = 이메일 주소 추가
@@ -33,10 +30,7 @@ settings-deactivate-account-title = 계정 비활성화
 
 ## Add email dialog
 
-settings-email-dialog-title = 다른 이메일 주소 추가
-settings-add-email-text = 새 이메일 주소를 추가고 유출 여부를 확인하세요.
-settings-email-input-label = 이메일 주소
-settings-send-email-verification-button = 인증 링크 보내기
-
 ## Unsubscribe Dialog Survey
+
+## Delete Monitor account
 

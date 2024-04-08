@@ -58,16 +58,19 @@ jest.mock("next/navigation", () => ({
 }));
 jest.mock("../../../../../../hooks/useTelemetry");
 
-jest.mock("../../../../../../components/client/DataBrokerImage", () => {
-  return {
-    // Mock this with an empty React component. Otherwise, tests will complain:
-    // > Warning: A suspended resource finished loading inside a test, but the
-    // > event was not wrapped in act(...).
-    // > When testing, code that resolves suspended data should be wrapped into
-    // > act(...)
-    DataBrokerImage: () => null,
-  };
-});
+jest.mock(
+  "../../../../../../components/client/exposure_card/DataBrokerImage",
+  () => {
+    return {
+      // Mock this with an empty React component. Otherwise, tests will complain:
+      // > Warning: A suspended resource finished loading inside a test, but the
+      // > event was not wrapped in act(...).
+      // > When testing, code that resolves suspended data should be wrapped into
+      // > act(...)
+      DataBrokerImage: () => null,
+    };
+  },
+);
 
 describe("axe accessibility test suite", () => {
   it("passes the axe accessibility test suite for DashboardNonUsNoBreaches", async () => {
@@ -616,26 +619,18 @@ it("toggles between the product offerings in the premium upsell dialog", async (
 
   await user.click(premiumCtas[0]);
 
-  const productTabYearly1 = screen.getByRole("tab", { name: "Yearly" });
-  expect(productTabYearly1?.getAttribute("aria-selected")).toBe("true");
-  const productTabMonthly1 = screen.getByRole("tab", { name: "Monthly" });
-  expect(productTabMonthly1?.getAttribute("aria-selected")).toBe("false");
+  const productTabMonthly = screen.getByRole("radio", { name: "Monthly" });
   const productYearlyCta = screen.getByRole("link", {
     name: "Select yearly plan",
   });
   expect(productYearlyCta).toBeInTheDocument();
 
-  await user.click(productTabMonthly1);
+  await user.click(productTabMonthly);
 
-  const productTabYearly2 = screen.getByRole("tab", { name: "Yearly" });
-  expect(productTabYearly2?.getAttribute("aria-selected")).toBe("false");
-  const productTabMonthly2 = screen.getByRole("tab", { name: "Monthly" });
-  expect(productTabMonthly2?.getAttribute("aria-selected")).toBe("true");
-
-  const productMontlyCta = screen.getByRole("link", {
+  const productMonthlyCta = screen.getByRole("link", {
     name: "Select monthly plan",
   });
-  expect(productMontlyCta).toBeInTheDocument();
+  expect(productMonthlyCta).toBeInTheDocument();
 });
 
 it("shows chart tooltip on the action needed tab, non-US user", async () => {
@@ -772,7 +767,7 @@ it("counts in Glean how often people click the upgrade CTA to purchase the month
     name: "Automatic data removal: Off",
   });
   await user.click(premiumCtas[0]);
-  const productTabMonthly = screen.getByRole("tab", { name: "Monthly" });
+  const productTabMonthly = screen.getByRole("radio", { name: "Monthly" });
   await user.click(productTabMonthly);
   const confirmButton = screen.getByRole("link", {
     name: "Select monthly plan",
@@ -807,7 +802,7 @@ it("counts in Glean how often people click the upgrade CTA to purchase the yearl
   });
   await user.click(premiumCtas[0]);
   // Switch to the monthly tab by clicking it...
-  const productTabMonthly = screen.getByRole("tab", { name: "Monthly" });
+  const productTabMonthly = screen.getByRole("radio", { name: "Monthly" });
   await user.click(productTabMonthly);
   // ...then back to the yearly tab by pressing the left arrow on the keyboard.
   await user.keyboard("[ArrowLeft]");
@@ -2728,32 +2723,21 @@ it("expands one card at a time", async () => {
   );
   render(<ComposedDashboard />);
 
-  const expandButtons = screen.getAllByRole("button", { name: "Expand" });
-  const collapseButtons = screen.queryAllByRole("button", { name: "Collapse" });
-  // Only expanded cards have a collapse button:
-  expect(collapseButtons).toHaveLength(0);
+  // collapsed
+  const expandButtons = screen.getAllByRole("button", {
+    name: "Exposure details",
+  });
+
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "false");
 
   await user.click(expandButtons[0]);
-  const afterExpand1ExpandButtons = screen.getAllByRole("button", {
-    name: "Expand",
-  });
-  const afterExpand1CollapseButtons = screen.queryAllByRole("button", {
-    name: "Collapse",
-  });
-  expect(afterExpand1ExpandButtons).toHaveLength(expandButtons.length - 1);
-  expect(afterExpand1CollapseButtons).toHaveLength(1);
 
-  await user.click(afterExpand1ExpandButtons[0]);
-  const afterExpand2ExpandButtons = screen.getAllByRole("button", {
-    name: "Expand",
-  });
-  const afterExpand2CollapseButtons = screen.queryAllByRole("button", {
-    name: "Collapse",
-  });
-  expect(afterExpand2ExpandButtons).toHaveLength(
-    afterExpand1ExpandButtons.length,
-  );
-  expect(afterExpand2CollapseButtons).toHaveLength(1);
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "true");
+
+  await user.click(expandButtons[1]);
+
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "false");
+  expect(expandButtons[1]).toHaveAttribute("aria-expanded", "true");
 });
 
 it("closes previously active card onclick", async () => {
@@ -2764,12 +2748,19 @@ it("closes previously active card onclick", async () => {
   );
   render(<ComposedDashboard />);
 
-  const initialState = screen.getAllByRole("button", { name: "Expand" });
+  const initialState = screen.getAllByRole("button", {
+    name: "Exposure details",
+  });
+
+  expect(initialState[0]).toHaveAttribute("aria-expanded", "false");
+
   await user.click(initialState[0]);
-  const afterExpand = screen.getAllByRole("button", { name: "Collapse" });
-  await user.click(afterExpand[0]);
-  const afterCollapse = screen.getAllByRole("button", { name: "Expand" });
-  expect(initialState.length).toBe(afterCollapse.length);
+
+  expect(initialState[0]).toHaveAttribute("aria-expanded", "true");
+
+  await user.click(initialState[0]);
+
+  expect(initialState[0]).toHaveAttribute("aria-expanded", "false");
 });
 
 it("does not allow non-US users to filter by exposure type, since they can only see a single exposure type (i.e. breaches)", async () => {
@@ -3171,8 +3162,12 @@ it("send telemetry when users click on data broker info link", async () => {
   jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
   // expands first row
-  const expandButtons = screen.getAllByRole("button", { name: "Expand" });
+  const expandButtons = screen.getAllByRole("button", {
+    name: "Exposure details",
+  });
   await user.click(expandButtons[0]);
+
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "true");
 
   const detailsAboutYouLink = screen.queryAllByRole("link", {
     name: "these details about you",
@@ -3187,8 +3182,8 @@ it("send telemetry when users click on data broker info link", async () => {
   );
 
   // collapses first row
-  const collapseButton = screen.getAllByRole("button", { name: "Collapse" });
-  await user.click(collapseButton[0]);
+  await user.click(expandButtons[0]);
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "false");
 });
 
 it("send telemetry when users click on data breach link", async () => {
@@ -3206,8 +3201,12 @@ it("send telemetry when users click on data breach link", async () => {
   jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
   // expands first row
-  const expandButtons = screen.getAllByRole("button", { name: "Expand" });
+  const expandButtons = screen.getAllByRole("button", {
+    name: "Exposure details",
+  });
   await user.click(expandButtons[0]);
+
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "true");
 
   const dataBreachLink = screen.queryAllByRole("link", {
     name: /^.*data breach on.*$/,
@@ -3222,8 +3221,8 @@ it("send telemetry when users click on data breach link", async () => {
   );
 
   // collapses first row
-  const collapseButton = screen.getAllByRole("button", { name: "Collapse" });
-  await user.click(collapseButton[0]);
+  await user.click(expandButtons[0]);
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "false");
 });
 
 it("send telemetry when users click on learn more link", async () => {

@@ -11,7 +11,7 @@ import { useL10n } from "../../../../../../../../../hooks/l10n";
 import { useState } from "react";
 import { getLocale } from "../../../../../../../../../functions/universal/getLocale";
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
-import { ScanResultCard } from "../../../../../../../../../components/client/ScanResultCard";
+import { ScanResultCard } from "../../../../../../../../../components/client/exposure_card/ScanResultCard";
 
 export type Props = {
   scanResult: OnerepScanResultRow;
@@ -32,7 +32,7 @@ export const RemovalCard = (props: Props) => {
   async function resolve() {
     setIsResolved(true);
     const response = await fetch(
-      `/api/v1/user/scan-result/${props.scanResult.onerep_scan_result_id}/resolution/`,
+      `/api/v1/user/scan-result/${props.scanResult.onerep_scan_result_id}/resolution`,
       {
         method: "POST",
         credentials: "same-origin",

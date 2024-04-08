@@ -9,5 +9,6 @@ toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } per desktop
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } per dispositivi mobili
 toolbar-app-picker-by-mozilla = Realizzato da { -brand-mozilla }
+
 # Bento headline
 fx-makes-tech = { -brand-name } è la tecnologia che combatte per la tua privacy online.

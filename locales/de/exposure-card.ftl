@@ -2,8 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Ausklappen
-chevron-up-alt = Einklappen
+chevron-alt = Details zur Offenlegung
+
 exposure-card-exposure-type = Offenlegungstyp
 exposure-card-date-found = Datum der Offenlegung
 
@@ -26,16 +26,14 @@ exposure-card-other = Sonstiges
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-action-needed = Deine Daten wurden am { $data_breach_date } von einem Datenleck von <data_breach_link>{ $data_breach_company } betroffen.</data_breach_link> Wir führen dich durch die Schritte, um das Problem zu beheben.
-exposure-card-description-data-breach-fixed = Sie haben die Schritte unternommen, die erforderlich sind, um <data_breach_link>dieses Datenleck</data_breach_link> zu beheben. Wir suchen ständig nach Datenlecks und warnen dich bei allen neuen Kontakten.
+exposure-card-description-data-breach-action-needed = Ihre Daten wurden am { $data_breach_date } im Rahmen des <data_breach_link>Datenlecks von { $data_breach_company } offengelegt.</data_breach_link> Wir zeigen Ihnen die Schritte, um das zu beheben.
+exposure-card-description-data-breach-fixed = Sie haben die erforderlichen Schritte durchgeführt, um <data_breach_link>dieses Datenleck</data_breach_link> zu beheben. Wir suchen ständig nach Datenlecks und warnen Sie bei allen neuen Lecks.
 exposure-card-your-exposed-info = Ihre offengelegten Daten:
 exposure-card-exposure-type-data-broker = Daten werden verkauft
 exposure-card-exposure-type-data-breach = Datenleck
 exposure-card-cta = Alle Offenlegungen beheben
 exposure-card-label-company-logo = Firmenlogo
 exposure-card-label-company = Firma
-exposure-card-label-exposure-type = Offenlegungstyp
-exposure-card-label-date-found = gefunden am
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Status
 # Variables:

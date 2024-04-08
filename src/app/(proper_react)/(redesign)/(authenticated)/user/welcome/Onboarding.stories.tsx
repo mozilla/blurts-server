@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { View as OnboardingEl } from "./View";
 
 const meta: Meta<typeof OnboardingEl> = {
-  title: "Pages/Onboarding",
+  title: "Pages/Logged in/Onboarding",
   component: OnboardingEl,
 };
 export default meta;

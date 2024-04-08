@@ -29,6 +29,7 @@ exposure-chart-caption-fixed = Bagan ini menunjukkan total eksposur yang diperba
 exposure-chart-returning-user-upgrade-prompt = Alamat rumah, anggota keluarga, dan lainnya belum disertakan.
 exposure-chart-returning-user-upgrade-prompt-cta = Mulai pemindaian gratis
 exposure-chart-scan-in-progress-prompt = <b>Pemindaian sedang berlangsung:</b> alamat, anggota keluarga, dan lainnya belum disertakan.
+
 modal-active-number-of-exposures-title = Tentang jumlah eksposur aktif Anda
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -40,14 +41,19 @@ modal-active-number-of-exposures-part-two = Misalnya, jika Anda memiliki 10 eksp
 modal-active-number-of-exposures-part-three-all = Setelah mereka diselesaikan, mereka akan ditambahkan ke jumlah total eksposur tetap Anda pada halaman Tetap.
 modal-fixed-number-of-exposures-title = Tentang jumlah eksposur tetap Anda
 modal-fixed-number-of-exposures-all = Bagan ini mencakup jumlah kebocoran data yang telah diperbaiki untuk semua alamat surel yang sedang Anda pantau. Setelah eksposur ditandai sebagai tetap, mereka akan ditambahkan ke total di sini.
+
 modal-cta-ok = Oke
 modal-open-alt = Buka
 modal-close-alt = Tutup
+
 progress-card-heres-what-we-fixed-headline-all = Inilah yang Anda perbaiki
 progress-card-manually-fixed-headline = Diperbaiki secara manual
+
 dashboard-tab-label-action-needed = Tindakan diperlukan
 dashboard-tab-label-fixed = Diperbaiki
 dashboard-exposures-all-fixed-label = Semua diperbaiki di sini!
+
+
 dashboard-exposures-area-headline = Lihat semua situs tempat info Anda terekspos
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
@@ -56,6 +62,7 @@ dashboard-exposures-area-description-all-line1 =
     { $exposures_unresolved_num ->
        *[other] Kami menemukan { $exposures_unresolved_num } eksposur data Anda.
     }
+
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
@@ -64,6 +71,7 @@ dashboard-exposures-area-description-all-line2 =
        *[other] Itu muncul di { $data_breach_unresolved_num } kebocoran data.
     }
 dashboard-fixed-area-headline-all = Lihat semua eksposur yang diperbaiki
+
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filter
 dashboard-exposures-filter-company = Perusahaan
@@ -72,9 +80,6 @@ dashboard-exposures-filter-date-found-last-seven-days = 7 hari terakhir
 dashboard-exposures-filter-date-found-last-thirty-days = 30 hari terakhir
 dashboard-exposures-filter-date-found-last-year = Tahun lalu
 dashboard-exposures-filter-status = Status
-dashboard-exposures-filter-status-action-needed = Diperlukan Tindakan
-dashboard-exposures-filter-status-in-progress = Sedang Diproses
-dashboard-exposures-filter-status-fixed = Diperbaiki
 popover-open-filter-settings-alt = Pilih filter
 dashboard-exposures-filter-show-all = Tampilkan Semua
 dashboard-exposures-filter-show-results = Tampilkan hasil
@@ -84,8 +89,10 @@ dashboard-exposures-filter-reset = Setel Ulang
 
 dashboard-top-banner-section-label = Ringkasan dasbor
 dashboard-top-banner-scan-in-progress-title = Pemindaian Anda masih dalam proses
+
 dashboard-top-banner-your-data-is-protected-title = Data Anda terlindungi
 dashboard-top-banner-your-data-is-protected-cta = Lihat apa yang diperbaiki
+
 dashboard-top-banner-lets-keep-protecting-title = Mari terus melindungi data Anda
 # Variables:
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
@@ -94,8 +101,10 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] Anda masih memiliki { $exposures_unresolved_num } eksposur yang tersisa untuk diperbaiki. Lanjutkan dan lindungi diri Anda. Kami akan memandu Anda langkah demi langkah.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Ayo lanjutkan
+
 dashboard-top-banner-protect-your-data-title = Mari lindungi data Anda
 dashboard-top-banner-protect-your-data-cta = Mari kita perbaiki
+
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
@@ -110,15 +119,18 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
     { $data_breach_unresolved_num ->
        *[other] Itu muncul di { $data_breach_unresolved_num } kebocoran data. Kami akan memandu Anda langkah demi langkah tentang cara memperbaikinya.
     }
+
 dashboard-top-banner-no-exposures-found-title = Tidak ada eksposur ditemukan
 dashboard-top-banner-non-us-no-exposures-found-description = Berita bagus! Kami mencari semua pembobolan data yang diketahui dan tidak menemukan eksposur. Kami akan terus memantau alamat surel Anda dan akan mengingatkan Anda jika terjadi pembobolan baru.
 dashboard-no-exposures-label = Tidak ada eksposur ditemukan
+
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
 dashboard-top-banner-non-us-your-data-is-protected-description =
     { $exposures_resolved_num ->
        *[other] Kerja bagus, semua { $exposures_resolved_num } eksposur data Anda telah diperbaiki! Kami akan terus memantau dan akan mengingatkan Anda tentang eksposur baru.
     }
+
 dashboard-top-banner-monitor-more-cta = Pantau lebih banyak surel
 
 # About Exposure Statuses Modal

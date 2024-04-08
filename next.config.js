@@ -166,7 +166,7 @@ const nextConfig = {
       },
     ];
   },
-  webpack: (config, options) => {
+  webpack: (config, _options) => {
     config.module.rules.push({
       test: /\.ftl/,
       type: "asset/source",
@@ -178,6 +178,11 @@ const nextConfig = {
     });
 
     return config;
+  },
+  experimental: {
+    // Without this setting, Next.js has Webpack trying and failing to load
+    // uglify-js when compiling MJML email templates to HTML in `renderEmail.ts`:
+    serverComponentsExternalPackages: ["mjml"],
   },
 };
 

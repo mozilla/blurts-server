@@ -1,0 +1,248 @@
+@import "../../../tokens";
+
+.exposureCard {
+  font: $text-body-sm;
+  background-color: $color-white;
+  border: 2px solid rgba($color-purple-70, 0.2);
+  border-radius: $border-radius-md;
+
+  .exposureHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-md $spacing-md;
+    gap: $layout-xs;
+
+    @media screen and (min-width: $screen-lg) {
+      gap: $layout-md;
+    }
+
+    .chevron {
+      flex-shrink: 0;
+      background-color: transparent;
+      border-style: none;
+      padding: 0;
+      cursor: pointer;
+      color: rgba($color-purple-70, 0.7);
+      width: 15px; // size of the chevron on mobile
+      height: 20px; // height of down chevron
+
+      @media screen and (min-width: $screen-md) {
+        width: 20px; // size of the chevron on larger devices
+      }
+
+      .isOpen {
+        transition: transform 0.2s ease-out;
+        rotate: (180deg);
+      }
+    }
+  }
+
+  dl.exposureHeaderList {
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+    margin: 0;
+    width: 100%;
+    justify-content: space-between;
+    height: 30px; // fixed height to standardize image/icon heights
+
+    @media screen and (min-width: $screen-lg) {
+      gap: $layout-md;
+    }
+
+    .dataBrokerLogo {
+      object-fit: contain;
+    }
+
+    .fallbackLogo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 35px;
+      border-radius: 50px;
+      color: black;
+      font: $text-title-3xs;
+    }
+
+    dd {
+      display: flex;
+      align-items: center;
+
+      &.hideOnMobile {
+        display: none;
+      }
+      .exposureCompanyTitle {
+        font: $text-body-sm;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+
+        @media screen and (max-width: $screen-sm) {
+          &.makeFontSmaller {
+            font: $text-body-2xs;
+          }
+        }
+      }
+
+      .exposureImageWrapper {
+        .exposureImage {
+          height: 100%;
+        }
+      }
+
+      @media screen and (min-width: $screen-lg) {
+        &.exposureImageWrapper {
+          flex: 0.2 0 $width-first-column-filter-bar;
+        }
+      }
+
+      @media screen and (min-width: $screen-xl) {
+        flex: 1 1 0%;
+
+        &.hideOnMobile {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  .exposureDetailsSection {
+    margin: 0;
+    overflow: hidden;
+    padding: 0 $layout-lg;
+    height: 0;
+    display: none;
+
+    .openInNewTab {
+      color: $color-blue-50;
+
+      svg {
+        display: inline;
+        margin: 0 $spacing-xs;
+      }
+    }
+
+    &.isOpen {
+      border-top: 2px solid rgba($color-purple-70, 0.2);
+      overflow: auto;
+      height: auto;
+      display: block;
+      padding: $spacing-lg;
+
+      @media screen and (min-width: $screen-lg) {
+        padding: $spacing-xl $layout-xl;
+      }
+    }
+
+    .exposedInfoContainer {
+      padding-top: $spacing-md;
+      display: flex;
+      flex-direction: column;
+      gap: $layout-xs;
+
+      .exposedInfoWrapper {
+        font: $text-body-xs;
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-md;
+
+        @media screen and (min-width: $screen-lg) {
+          flex: 1 1 0;
+
+          .fixItBtn {
+            flex-shrink: 0;
+          }
+        }
+
+        .exposedInfoTitle {
+          align-self: start;
+
+          @media screen and (min-width: $screen-lg) {
+            flex: 0 0 90px; // fix width of categories title
+          }
+
+          @media screen and (min-width: $screen-xl) {
+            flex: 0 0 150px;
+          }
+        }
+      }
+
+      @media screen and (min-width: $screen-lg) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: $layout-md;
+
+        .exposedInfoWrapper {
+          flex-direction: row;
+          gap: $spacing-lg;
+        }
+      }
+
+      .dataClassesList {
+        justify-content: space-between;
+        margin-left: 0;
+        padding-left: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: $spacing-sm;
+
+        @media screen and (min-width: $screen-md) {
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: $spacing-sm;
+        }
+
+        @media screen and (min-width: $screen-lg) {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          gap: $layout-xs;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+        }
+
+        .detailsFoundItem {
+          .label {
+            display: flex;
+            align-items: center;
+            gap: $spacing-xs;
+
+            .exposureTypeIcon {
+              color: $color-purple-60;
+            }
+          }
+
+          .dataClassListDetailsWrapper {
+            padding-inline-start: var(--exposureDetailsIconWidth);
+            font: $text-body-xs;
+            font-weight: 600;
+
+            .dataClassListDetails {
+              list-style: none;
+              margin: 0;
+              padding: $spacing-xs 0 0 $spacing-xs;
+              gap: $spacing-xs;
+              display: flex;
+              flex-direction: column;
+
+              li {
+                list-style-type: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.visuallyHidden {
+  @include visually-hidden;
+}
+
+.companyNameArea {
+  @include company-name-area;
+}

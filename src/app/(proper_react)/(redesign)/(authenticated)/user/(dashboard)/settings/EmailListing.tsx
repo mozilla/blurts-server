@@ -9,16 +9,16 @@ import { useRef, useState } from "react";
 import styles from "./EmailListing.module.scss";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { onRemoveEmail } from "./actions";
-import { EmailRow } from "../../../../../../../db/tables/emailAddresses";
 import {
   CheckIcon,
   DeleteIcon,
   ErrorIcon,
 } from "../../../../../../components/server/Icons";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
+import { SanitizedEmailAddressRow } from "../../../../../../functions/server/sanitize";
 
 export const EmailListing = (props: {
-  email: EmailRow | string;
+  email: SanitizedEmailAddressRow | string;
   breachCount: number;
 }) => {
   const l10n = useL10n();
@@ -105,6 +105,8 @@ export const EmailListing = (props: {
   );
 };
 
-function isSecondaryEmail(email: string | EmailRow): email is EmailRow {
+function isSecondaryEmail(
+  email: string | SanitizedEmailAddressRow,
+): email is SanitizedEmailAddressRow {
   return typeof email !== "string";
 }

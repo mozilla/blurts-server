@@ -19,7 +19,7 @@ export default async function ManualRemovePage() {
   const session = await getServerSession();
 
   if (!session?.user?.subscriber?.id) {
-    redirect("/user/dashboard/");
+    redirect("/user/dashboard");
   }
 
   const countryCode = getCountryCode(headers());

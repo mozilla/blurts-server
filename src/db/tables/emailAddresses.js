@@ -90,11 +90,12 @@ async function addSubscriberUnverifiedEmailHash (user, email) {
 
 /**
  * @param {number | string} emailAddressId
+ * @param {import('knex/types/tables').SubscriberRow} subscriber
  * @param {import("@fluent/react").ReactLocalization} l10n
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function resetUnverifiedEmailAddress (emailAddressId, l10n) {
+async function resetUnverifiedEmailAddress (emailAddressId, subscriber, l10n) {
   const newVerificationToken = uuidv4()
 
   // Time in ms to require between verification reset.
@@ -118,6 +119,7 @@ async function resetUnverifiedEmailAddress (emailAddressId, l10n) {
       updated_at: knex.fn.now()
     })
     .where('id', emailAddressId)
+    .andWhere("subscriber_id", subscriber.id)
     .returning('*')
   return res[0]
 }
@@ -286,17 +288,8 @@ async function _verifyNewEmail (emailHash) {
 /* c8 ignore stop */
 
 /**
- * @typedef {object} EmailRow Email data, as returned from the database table `email_addresses`
- * @property {number} id
- * @property {string} email
- * @property {string} sha1
- * @property {boolean} verified
- * @property {number} subscriber_id
- */
-
-/**
  * @param {number} userId
- * @returns {Promise<EmailRow[]>}
+ * @returns {Promise<import('knex/types/tables').EmailAddressRow[]>}
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */

@@ -5,10 +5,9 @@
 ### Dialog window that allows a user to add a new email address to be monitored
 
 add-email-add-another-heading = Add another email address
-close-dialog-alt = Close dialog
 
 # $total is the number of emails a user is allowed to add
-add-email-your-account-includes = 
+add-email-your-account-includes =
   {
     $total ->
       [one] Your account includes monitoring of { $total } email address. Add a new email address to see if it’s been involved in a breach.
