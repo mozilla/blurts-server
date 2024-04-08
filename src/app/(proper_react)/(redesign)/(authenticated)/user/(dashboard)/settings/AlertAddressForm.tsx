@@ -68,7 +68,8 @@ export const AlertAddressForm = (props: Props) => {
           break;
       }
       const body: EmailUpdateCommOptionRequest = {
-        communicationOption: communicationOption,
+        instantBreachAlerts: communicationOption,
+        monthlyMonitorReport: activateMonthlyMonitorReport,
       };
       void fetch("/api/v1/user/update-comm-option", {
         method: "POST",
