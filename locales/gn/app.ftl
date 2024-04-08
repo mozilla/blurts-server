@@ -263,7 +263,7 @@ user-menu-signout-tooltip = Emboty tembiapo { -brand-mozilla-monitor }-pe
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Mba’epytyvõrã ñemboguata
 privacy-notice = Marandu’i ñemiguáva
 github = { -brand-github }

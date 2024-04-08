@@ -268,7 +268,7 @@ user-menu-signout-tooltip = Đăng xuất khỏi { -brand-mozilla-monitor }
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Điều khoản dịch vụ
 privacy-notice = Thông báo về quyền riêng tư
 github = { -brand-github }
