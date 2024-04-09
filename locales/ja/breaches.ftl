@@ -5,17 +5,7 @@
 
 ## Breaches header
 
-# Data classes pie chart title
-breach-chart-title = 侵害されたデータ
-# $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = { $email-select } のデータ侵害
-# link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = メールを管理
-
 ## Breaches resolved filter
-
-filter-label-unresolved = 未解決の侵害
-filter-label-resolved = 解決済みの侵害
 
 ## Breaches table
 

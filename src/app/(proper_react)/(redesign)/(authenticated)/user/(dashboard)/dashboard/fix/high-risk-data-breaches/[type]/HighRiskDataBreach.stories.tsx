@@ -8,7 +8,7 @@ import {
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../../Shell";
-import { getOneL10nSync } from "../../../../../../../../../functions/server/mockL10n";
+import { getSpecificL10nSync } from "../../../../../../../../../functions/server/mockL10n";
 import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
 import {
   HighRiskBreachTypes,
@@ -102,7 +102,7 @@ const HighRiskBreachWrapper = (props: {
           };
 
   return (
-    <Shell l10n={getOneL10nSync()} session={mockedSession} nonce="">
+    <Shell l10n={getSpecificL10nSync()} session={mockedSession} nonce="">
       <HighRiskBreachLayout
         subscriberEmails={[]}
         type={props.type}

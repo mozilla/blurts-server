@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = İhlal ayrıntıları
+
 exposure-card-exposure-type = İhlal türü
 exposure-card-date-found = İhlal tarihi
 
@@ -32,8 +33,6 @@ exposure-card-exposure-type-data-breach = Veri ihlali
 exposure-card-cta = Tüm ihlalleri düzelt
 exposure-card-label-company-logo = Şirket logosu
 exposure-card-label-company = Şirket
-exposure-card-label-exposure-type = İhlal türü
-exposure-card-label-date-found = Bulunma tarihi
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Durum
 # Variables:

@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Datalekdetails
+
 exposure-card-exposure-type = Type lek
 exposure-card-date-found = Datum van het lek
 
@@ -33,8 +34,6 @@ exposure-card-exposure-type-data-breach = Datalek
 exposure-card-cta = Alle lekken herstellen
 exposure-card-label-company-logo = Bedrijfslogo
 exposure-card-label-company = Bedrijf
-exposure-card-label-exposure-type = Type lek
-exposure-card-label-date-found = Datum ontdekt
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Status
 # Variables:

@@ -83,7 +83,7 @@ declare module "knex/types/tables" {
     created_at: Date;
     updated_at: Date;
     fx_newsletter: boolean;
-    signup_language: string;
+    signup_language: null | string;
     fxa_refresh_token: null | string;
     fxa_access_token: null | string;
     fxa_profile_json: null | Profile;

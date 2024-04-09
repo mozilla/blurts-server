@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = Detalles de la exposición
+
 exposure-card-exposure-type = Tipo de exposición
 exposure-card-date-found = Fecha de la exposición
 
@@ -33,8 +34,6 @@ exposure-card-exposure-type-data-breach = Filtración de datos
 exposure-card-cta = Corregir todas las exposiciones
 exposure-card-label-company-logo = Logo de la empresa
 exposure-card-label-company = Compañía
-exposure-card-label-exposure-type = Tipo de exposición
-exposure-card-label-date-found = Fecha encontrada
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Estado
 # Variables:

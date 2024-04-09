@@ -619,26 +619,18 @@ it("toggles between the product offerings in the premium upsell dialog", async (
 
   await user.click(premiumCtas[0]);
 
-  const productTabYearly1 = screen.getByRole("tab", { name: "Yearly" });
-  expect(productTabYearly1?.getAttribute("aria-selected")).toBe("true");
-  const productTabMonthly1 = screen.getByRole("tab", { name: "Monthly" });
-  expect(productTabMonthly1?.getAttribute("aria-selected")).toBe("false");
+  const productTabMonthly = screen.getByRole("radio", { name: "Monthly" });
   const productYearlyCta = screen.getByRole("link", {
     name: "Select yearly plan",
   });
   expect(productYearlyCta).toBeInTheDocument();
 
-  await user.click(productTabMonthly1);
+  await user.click(productTabMonthly);
 
-  const productTabYearly2 = screen.getByRole("tab", { name: "Yearly" });
-  expect(productTabYearly2?.getAttribute("aria-selected")).toBe("false");
-  const productTabMonthly2 = screen.getByRole("tab", { name: "Monthly" });
-  expect(productTabMonthly2?.getAttribute("aria-selected")).toBe("true");
-
-  const productMontlyCta = screen.getByRole("link", {
+  const productMonthlyCta = screen.getByRole("link", {
     name: "Select monthly plan",
   });
-  expect(productMontlyCta).toBeInTheDocument();
+  expect(productMonthlyCta).toBeInTheDocument();
 });
 
 it("shows chart tooltip on the action needed tab, non-US user", async () => {
@@ -775,7 +767,7 @@ it("counts in Glean how often people click the upgrade CTA to purchase the month
     name: "Automatic data removal: Off",
   });
   await user.click(premiumCtas[0]);
-  const productTabMonthly = screen.getByRole("tab", { name: "Monthly" });
+  const productTabMonthly = screen.getByRole("radio", { name: "Monthly" });
   await user.click(productTabMonthly);
   const confirmButton = screen.getByRole("link", {
     name: "Select monthly plan",
@@ -810,7 +802,7 @@ it("counts in Glean how often people click the upgrade CTA to purchase the yearl
   });
   await user.click(premiumCtas[0]);
   // Switch to the monthly tab by clicking it...
-  const productTabMonthly = screen.getByRole("tab", { name: "Monthly" });
+  const productTabMonthly = screen.getByRole("radio", { name: "Monthly" });
   await user.click(productTabMonthly);
   // ...then back to the yearly tab by pressing the left arrow on the keyboard.
   await user.keyboard("[ArrowLeft]");
