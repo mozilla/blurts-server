@@ -17,6 +17,7 @@ import { Dialog } from "../../../../../../../../../components/client/dialog/Dial
 import { Button } from "../../../../../../../../../components/client/Button";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
 import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
+import { VisuallyHidden } from "../../../../../../../../../components/server/VisuallyHidden";
 
 export const AboutBrokersIcon = () => {
   const l10n = useL10n();
@@ -44,14 +45,15 @@ export const AboutBrokersIcon = () => {
             button_id: "guided_experience_data_brokers",
           });
         }}
+        aria-label={l10n.getString("open-modal-alt")}
+        aria-describedby="dataBrokerProfilesInfo"
       >
-        <QuestionMarkCircle
-          alt={l10n.getString(
-            "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-trigger-label",
+        <VisuallyHidden id="dataBrokerProfilesInfo">
+          {l10n.getString(
+            "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-title",
           )}
-          width={18}
-          height={18}
-        />
+        </VisuallyHidden>
+        <QuestionMarkCircle alt="" width={18} height={18} />
       </button>
       {overlayTriggerState.isOpen && (
         <ModalOverlay
