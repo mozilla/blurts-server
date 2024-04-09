@@ -186,6 +186,50 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
   expect(primaryRadioButton).not.toHaveAttribute("checked");
 });
 
+it("unselects both breach alert notification options if a user opts out of breach alerts", async () => {
+  const user = userEvent.setup();
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getSpecificL10nSync()}
+        user={{
+          ...mockedUser,
+          subscriber: {
+            ...mockedUser.subscriber!,
+            all_emails_to_primary: true,
+          },
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+          [mockedSecondaryVerifiedEmail.email]: 42,
+        }}
+        emailAddresses={[mockedSecondaryVerifiedEmail]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion"]}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const activateBreachAlertsCheckbox = screen.getByText(
+    "Instant breach alerts",
+  );
+  await user.click(activateBreachAlertsCheckbox);
+
+  const affectedRadioButton = screen.getByLabelText(
+    "Send breach alerts to the affected email address",
+  );
+  const primaryRadioButton = screen.getByLabelText(
+    "Send all breach alerts to the primary email address",
+  );
+
+  expect(primaryRadioButton).not.toHaveAttribute("checked");
+  expect(affectedRadioButton).not.toHaveAttribute("checked");
+});
+
 it("sends a call to the API to change the email alert preferences when changing the radio button values", async () => {
   global.fetch = jest.fn().mockResolvedValue({ ok: true });
   const user = userEvent.setup();

@@ -113,18 +113,18 @@ export const AlertAddressForm = (props: Props) => {
               isSelected={activateAlertEmail}
               onChange={handleActivateToggle}
             >
-              <dl>
-                <dt>
+              <div>
+                <b>
                   {l10n.getString(
                     "settings-alert-preferences-allow-breach-alerts-title",
                   )}
-                </dt>
-                <dd>
+                </b>
+                <p>
                   {l10n.getString(
                     "settings-alert-preferences-allow-breach-alerts-subtitle",
                   )}
-                </dd>
-              </dl>
+                </p>
+              </div>
             </ActivateEmailsCheckbox>
 
             <AlertAddressContext.Provider value={state}>
@@ -162,18 +162,18 @@ export const AlertAddressForm = (props: Props) => {
             isSelected={activateMonthlyMonitorReport}
             onChange={setActivateMonthlyMonitorReport}
           >
-            <dl>
-              <dt>
+            <div>
+              <b>
                 {l10n.getString(
                   "settings-alert-preferences-allow-monthly-monitor-report-title",
                 )}
-              </dt>
-              <dd>
+              </b>
+              <p>
                 {l10n.getString(
                   "settings-alert-preferences-allow-monthly-monitor-report-subtitle",
                 )}
-              </dd>
-            </dl>
+              </p>
+            </div>
           </ActivateEmailsCheckbox>
         )}
       </div>
