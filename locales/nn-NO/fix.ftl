@@ -24,6 +24,8 @@ fix-flow-celebration-next-dashboard-label = Gå til ditt oversyn
 
 # High Risk Data Breaches
 
+high-risk-breach-mark-as-fixed = Merk som løyst
+high-risk-breach-skip = Hopp over no
 
 # Credit Card Breaches
 
