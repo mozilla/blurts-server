@@ -63,7 +63,7 @@ export const AlertAddressForm = (props: Props) => {
         case "affected":
           communicationOption = "0";
           break;
-        case "null":
+        default:
           communicationOption = "-1";
           break;
       }
@@ -137,12 +137,6 @@ export const AlertAddressForm = (props: Props) => {
                 <AlertAddressRadio value="primary">
                   {l10n.getString("settings-alert-preferences-option-two")}
                 </AlertAddressRadio>
-                {/* Since at least one radio option should be selected,
-                there is a hidden radio to capture the option of
-                opting out of breach alerts entirely */}
-                <VisuallyHidden>
-                  <AlertAddressRadio value="null"></AlertAddressRadio>
-                </VisuallyHidden>
               </div>
             </AlertAddressContext.Provider>
           </>
@@ -192,7 +186,11 @@ const ActivateEmailsCheckbox = (props: AriaCheckboxProps) => {
   return (
     <label>
       <VisuallyHidden>
-        <input {...mergeProps(inputProps, focusProps)} ref={ref} />
+        <input
+          {...mergeProps(inputProps, focusProps)}
+          ref={ref}
+          aria-checked={isSelected}
+        />
       </VisuallyHidden>
       <svg width={24} height={24} aria-hidden="true" style={{ marginRight: 4 }}>
         <rect
@@ -243,7 +241,12 @@ const AlertAddressRadio = (props: AriaRadioProps & { value: AlertAddress }) => {
   return (
     <label>
       <VisuallyHidden>
-        <input {...inputProps} {...focusProps} ref={inputRef} />
+        <input
+          {...inputProps}
+          {...focusProps}
+          ref={inputRef}
+          aria-checked={isSelected}
+        />
       </VisuallyHidden>
       <svg width={24} height={24} aria-hidden="true" style={{ marginRight: 4 }}>
         <circle
