@@ -38,6 +38,7 @@ import {
   ExposuresFilterTypeExplainer,
 } from "./ExposuresFilterExplainer";
 import { Popover } from "./Popover";
+import { VisuallyHidden } from "../server/VisuallyHidden";
 
 export type FilterState = {
   exposureType: "show-all-exposure-type" | "data-broker" | "data-breach";
@@ -260,10 +261,11 @@ export const ExposuresFilter = ({
                   {...exposureTypeExplainerTriggerProps}
                   ref={exposureTypeExplainerTriggerRef}
                   aria-label={l10n.getString("open-modal-alt")}
-                  aria-description={l10n.getString(
-                    "dashboard-exposures-filter-exposure-type",
-                  )}
+                  aria-describedby="filterExposureTypeInfo"
                 >
+                  <VisuallyHidden id="filterExposureTypeInfo">
+                    {l10n.getString("modal-exposure-type-title")}
+                  </VisuallyHidden>
                   <QuestionMarkCircle width="15" height="15" alt="" />
                 </button>
               )}
@@ -278,10 +280,11 @@ export const ExposuresFilter = ({
               {...exposureStatusExplainerTriggerProps}
               ref={exposureStatusExplainerTriggerRef}
               aria-label={l10n.getString("open-modal-alt")}
-              aria-description={l10n.getString(
-                "dashboard-exposures-filter-status",
-              )}
+              aria-describedby="filterStatusInfo"
             >
+              <VisuallyHidden id="filterStatusInfo">
+                {l10n.getString("modal-exposure-status-title")}
+              </VisuallyHidden>
               <QuestionMarkCircle width="15" height="15" alt="" />
             </button>
           </li>

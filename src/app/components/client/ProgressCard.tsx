@@ -18,6 +18,7 @@ import ExploringLaptopMinus from "./assets/exploring-laptop-minus.svg";
 import ExploringLaptopInProgress from "./assets/exploring-laptop-in-progress.svg";
 import { LockIcon, QuestionMarkCircle } from "../server/Icons";
 import ModalImage from "../client/assets/modal-default-img.svg";
+import { VisuallyHidden } from "../server/VisuallyHidden";
 
 export type Props = {
   resolvedByYou: number;
@@ -85,12 +86,15 @@ export const ProgressCard = (props: Props) => {
             {...explainerDialogTriggerProps}
             onClick={() => explainerDialogState.open()}
             aria-label={l10n.getString("open-modal-alt")}
-            aria-description={l10n.getString(
-              props.isPremiumUser
-                ? "progress-card-heres-what-we-fixed-headline-premium"
-                : "progress-card-heres-what-we-fixed-headline-all",
-            )}
+            aria-describedby="whatWeFixedInfo"
           >
+            <VisuallyHidden id="whatWeFixedInfo">
+              {l10n.getString(
+                props.isPremiumUser
+                  ? "progress-card-heres-what-we-fixed-headline-premium"
+                  : "progress-card-heres-what-we-fixed-headline-all",
+              )}
+            </VisuallyHidden>
             <QuestionMarkCircle alt="" width="15" height="15" />
           </button>
         )}

@@ -16,6 +16,7 @@ import FraudAlertDialogIllustration from "../images/fraud-alert-modal-illustrati
 import styles from "./FraudAlertModal.module.scss";
 import { TelemetryLink } from "../../../../../../../../components/client/TelemetryLink";
 import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
+import { VisuallyHidden } from "../../../../../../../../components/server/VisuallyHidden";
 
 export const FraudAlertModal = () => {
   const l10n = useL10n();
@@ -43,8 +44,11 @@ export const FraudAlertModal = () => {
         ref={triggerRef}
         className={styles.triggerButton}
         aria-label={l10n.getString("open-modal-alt")}
-        aria-description={l10n.getString("ssn-modal-title")}
+        aria-describedby="ssnModalTitle"
       >
+        <VisuallyHidden id="ssnModalTitle">
+          {l10n.getString("ssn-modal-title")}
+        </VisuallyHidden>
         <QuestionMarkCircle alt="" width={18} height={18} />
       </button>
       {overlayTriggerState.isOpen && (

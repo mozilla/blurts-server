@@ -23,6 +23,7 @@ import {
   CONST_MAX_NUM_ADDRESSES,
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../constants";
+import { VisuallyHidden } from "../server/VisuallyHidden";
 
 export type Props = {
   data: Array<[string, number]>;
@@ -332,13 +333,19 @@ export const DoughnutChart = (props: Props) => {
             /* c8 ignore next */
             onClick={() => explainerDialogState.open()}
             aria-label={l10n.getString("open-modal-alt")}
-            aria-description={
-              props.isShowFixed
-                ? l10n.getString("modal-fixed-number-of-exposures-title")
-                : l10n.getString("modal-active-number-of-exposures-title")
-            }
+            aria-describedby="modalFixedNumberOfExposures"
           >
-            <QuestionMarkCircle width="15" height="15" alt="" />
+            <VisuallyHidden id="modalFixedNumberOfExposures">
+              {props.isShowFixed
+                ? l10n.getString("modal-fixed-number-of-exposures-title")
+                : l10n.getString("modal-active-number-of-exposures-title")}
+            </VisuallyHidden>
+            <QuestionMarkCircle
+              alt=""
+              aria-label={l10n.getString("open-modal-alt")}
+              width="15"
+              height="15"
+            />
           </button>
         </figcaption>
       </figure>
