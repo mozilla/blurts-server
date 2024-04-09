@@ -195,7 +195,7 @@ async function setAllEmailsToPrimary (subscriber, allEmailsToPrimary) {
 
 /**
  * @param {import("knex/types/tables").SubscriberRow} subscriber
- * @param {boolean | null} monthlyMonitorReport
+ * @param {boolean} monthlyMonitorReport
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
