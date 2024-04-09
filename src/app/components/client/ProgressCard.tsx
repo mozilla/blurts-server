@@ -85,7 +85,7 @@ export const ProgressCard = (props: Props) => {
             {...explainerDialogTriggerProps}
             onClick={() => explainerDialogState.open()}
             aria-label={l10n.getString("open-modal-alt")}
-            aria-describedby={l10n.getString(
+            aria-description={l10n.getString(
               props.isPremiumUser
                 ? "progress-card-heres-what-we-fixed-headline-premium"
                 : "progress-card-heres-what-we-fixed-headline-all",

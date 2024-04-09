@@ -45,7 +45,7 @@ export const AboutBrokersIcon = () => {
           });
         }}
         aria-label={l10n.getString("open-modal-alt")}
-        aria-describedby={l10n.getString(
+        aria-description={l10n.getString(
           "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-title",
         )}
       >

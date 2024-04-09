@@ -260,7 +260,7 @@ export const ExposuresFilter = ({
                   {...exposureTypeExplainerTriggerProps}
                   ref={exposureTypeExplainerTriggerRef}
                   aria-label={l10n.getString("open-modal-alt")}
-                  aria-describedby={l10n.getString(
+                  aria-description={l10n.getString(
                     "dashboard-exposures-filter-exposure-type",
                   )}
                 >
@@ -278,7 +278,7 @@ export const ExposuresFilter = ({
               {...exposureStatusExplainerTriggerProps}
               ref={exposureStatusExplainerTriggerRef}
               aria-label={l10n.getString("open-modal-alt")}
-              aria-describedby={l10n.getString(
+              aria-description={l10n.getString(
                 "dashboard-exposures-filter-status",
               )}
             >

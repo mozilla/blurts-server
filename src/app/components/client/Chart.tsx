@@ -332,7 +332,7 @@ export const DoughnutChart = (props: Props) => {
             /* c8 ignore next */
             onClick={() => explainerDialogState.open()}
             aria-label={l10n.getString("open-modal-alt")}
-            aria-describedby={
+            aria-description={
               props.isShowFixed
                 ? l10n.getString("modal-fixed-number-of-exposures-title")
                 : l10n.getString("modal-active-number-of-exposures-title")
