@@ -29,10 +29,8 @@ import { VisuallyHidden } from "../../../../../../components/server/VisuallyHidd
 import { useSession } from "next-auth/react";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 
-export type AlertAddress = "null" | "primary" | "affected";
-
 export type Props = {
-  defaultSelected?: AlertAddress;
+  defaultSelected?: EmailUpdateCommTypeOfOptions;
   breachAlertsEmailsAllowed: boolean;
   enabledFeatureFlags: FeatureFlagName[];
 };
@@ -54,21 +52,9 @@ export const AlertAddressForm = (props: Props) => {
   const state = useRadioGroupState({
     defaultValue: defaultValue,
     onChange: (newValue) => {
-      const chosenOption = newValue as AlertAddress;
-      let communicationOption: EmailUpdateCommTypeOfOptions;
-      switch (chosenOption) {
-        case "primary":
-          communicationOption = "1";
-          break;
-        case "affected":
-          communicationOption = "0";
-          break;
-        case "null":
-          communicationOption = "-1";
-          break;
-      }
+      const chosenOption = newValue as EmailUpdateCommTypeOfOptions;
       const body: EmailUpdateCommOptionRequest = {
-        instantBreachAlerts: communicationOption,
+        instantBreachAlerts: chosenOption,
         monthlyMonitorReport: activateMonthlyMonitorReport,
       };
       void fetch("/api/v1/user/update-comm-option", {

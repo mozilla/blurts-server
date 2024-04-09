@@ -14,10 +14,7 @@ import {
   setMonthlyMonitorReport,
 } from "../../../../../db/tables/subscribers";
 
-// "-1" if a user opts out of breach alerts,
-//  "1" to send breach alerts to the primary email address,
-//  "0" to send them to the affected address
-export type EmailUpdateCommTypeOfOptions = "-1" | "0" | "1";
+export type EmailUpdateCommTypeOfOptions = "null" | "affected" | "primary";
 
 export interface EmailUpdateCommOptionRequest {
   instantBreachAlerts: EmailUpdateCommTypeOfOptions;
@@ -40,12 +37,17 @@ export async function POST(req: NextRequest) {
       // -1 = Set as null, do not send instant notifications. Newly added in MNTOR-1368
       // 0 = Send breach alerts to the corresponding affected emails.
       // 1 = Send all breach alerts to user's primary email address.
-      const allEmailsToPrimary =
-        Number(instantBreachAlerts) === -1
-          ? null
-          : Number(instantBreachAlerts) === 1
-            ? true
-            : false;
+      let allEmailsToPrimary;
+      switch (instantBreachAlerts) {
+        case "primary":
+          allEmailsToPrimary = true;
+          break;
+        case "affected":
+          allEmailsToPrimary = false;
+          break;
+        default:
+          allEmailsToPrimary = null;
+      }
       await setAllEmailsToPrimary(subscriber, allEmailsToPrimary);
       await setMonthlyMonitorReport(subscriber, monthlyMonitorReport);
 
