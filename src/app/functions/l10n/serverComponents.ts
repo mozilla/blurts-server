@@ -61,11 +61,21 @@ export const getL10nBundles: GetL10nBundles = createGetL10nBundles({
 });
 
 let document: Document;
+/**
+ * When running on the server, Fluent doesn't have access to the DOM APIs to parse HTML in strings. Instead, it calls this function to parse them using JSDOM.
+ *
+ * See https://github.com/projectfluent/fluent.js/wiki/React-Overlays#custom-markup-parsers
+ *
+ * @param str Localised string that might include HTML.
+ * @returns DOM nodes representing the parsed string.
+ */
 const parseMarkup: MarkupParser = (str) => {
-  document ??= new JSDOM().window.document;
+  // Initialising JSDOM for a string that doesn't contain HTML is overkill, so
+  // exit early if the string doesn't even include angle brackets (`<` or `>`):
   if (!str.includes("<") && !str.includes(">")) {
     return [{ nodeName: "#text", textContent: str } as Node];
   }
+  document ??= new JSDOM().window.document;
   const wrapper = document.createElement("span");
   wrapper.innerHTML = str;
   return Array.from(wrapper.childNodes);
