@@ -10,7 +10,7 @@ import Image from "next/image";
 import { Session } from "next-auth";
 import styles from "./MobileShell.module.scss";
 import monitorLogo from "../images/monitor-logo.webp";
-import { UpsellBadge } from "../../components/client/UpsellBadge";
+import { UpsellBadge } from "../../components/client/toolbar/UpsellBadge";
 import { CloseBigIcon, ListIcon } from "../../components/server/Icons";
 import { UserMenu } from "../../components/client/toolbar/UserMenu";
 import { useL10n } from "../../hooks/l10n";
