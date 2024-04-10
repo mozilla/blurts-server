@@ -38,7 +38,7 @@ export const CancelFlow = (props: Props) => {
 
   useEffect(() => {
     const messageListener = (message: MessageEvent) => {
-      if (message.origin !== "") {
+      if (message.origin !== "https://mozilla.formstack.com") {
         return;
       }
       if (message.data === "survey-complete") {
