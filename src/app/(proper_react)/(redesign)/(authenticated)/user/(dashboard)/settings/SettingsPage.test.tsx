@@ -449,6 +449,47 @@ it("shows the Plus cancellation link if the user has Plus", () => {
   expect(cancellationHeading).toBeInTheDocument();
 });
 
+it("shows the cancellation survey dialog", async () => {
+  const user = userEvent.setup();
+
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getOneL10nSync()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: ["monitor"],
+          } as Session["user"]["fxa"],
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion", "CancellationSurvey"]}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const cancellationButton = screen.getByRole("button", {
+    name: "Cancel your subscription",
+  });
+
+  await user.click(cancellationButton);
+
+  expect(
+    screen.getByRole("dialog", {
+      name: "Leaving now means data brokers may add you back",
+    }),
+  ).toBeInTheDocument();
+});
+
 it("does not show the account deletion button if the relevant flag is not enabled", () => {
   render(
     <TestComponentWrapper>
