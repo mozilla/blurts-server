@@ -4,6 +4,8 @@
 
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { ExtendedReactLocalization } from "../../../app/hooks/l10n";
+import { EmailFooter } from "../EmailFooter";
+import { EmailHeader } from "../EmailHeader";
 
 export type Props = {
   subscriber: SanitizedSubscriberRow;
@@ -34,15 +36,18 @@ export type Props = {
  */
 export const BoilerplateEmail = (props: Props) => {
   const l10n = props.l10n;
+  const utmCampaign = "forgot-to-update-the-email-boilerplate-template";
 
   return (
     <mjml>
       <mj-body>
+        <EmailHeader l10n={l10n} utm_campaign={utmCampaign} />
         <mj-section>
           <mj-column>
             <mj-text>{l10n.getString("fluent-message-id")}</mj-text>
           </mj-column>
         </mj-section>
+        <EmailFooter l10n={l10n} utm_campaign={utmCampaign} />
       </mj-body>
     </mjml>
   );

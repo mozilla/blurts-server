@@ -270,7 +270,7 @@ user-menu-signout-tooltip = Afmelden bij { -brand-mozilla-monitor }
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Servicevoorwaarden
 privacy-notice = Privacyverklaring
 github = { -brand-github }

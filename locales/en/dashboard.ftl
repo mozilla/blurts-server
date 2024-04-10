@@ -43,8 +43,9 @@ modal-fixed-number-of-exposures-title = About your number of fixed exposures
 modal-fixed-number-of-exposures-all = This chart includes the total number of data breaches that have been fixed for all email addresses you’re currently monitoring. Once exposures are marked as fixed, they’ll be added to the total here.
 
 modal-cta-ok = OK
-modal-open-alt = Open
-modal-close-alt = Close
+open-modal-alt = Open modal
+close-modal-alt = Close modal
+open-tooltip-alt = Open tooltip
 
 progress-card-heres-what-we-fixed-headline-all = Here’s what you fixed
 progress-card-manually-fixed-headline = Manually fixed

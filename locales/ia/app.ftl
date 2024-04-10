@@ -255,7 +255,7 @@ user-menu-signout-tooltip = Clauder session de { -brand-mozilla-monitor }
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Terminos de servicio
 privacy-notice = Aviso de confidentialitate
 github = { -brand-github }

@@ -253,7 +253,7 @@ user-menu-signout-tooltip = 從 { -brand-mozilla-monitor } 登出
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = 服務條款
 privacy-notice = 隱私權公告
 github = { -brand-github }

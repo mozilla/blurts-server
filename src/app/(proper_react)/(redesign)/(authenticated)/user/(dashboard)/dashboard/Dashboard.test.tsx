@@ -561,7 +561,7 @@ it("opens and closes the premium upsell dialog via the Premium upsell badge)", a
   expect(
     screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).toBeInTheDocument();
-  const closeButtonIcon1 = screen.getByLabelText("Close");
+  const closeButtonIcon1 = screen.getByLabelText("Close modal");
   await user.click(closeButtonIcon1.parentElement as HTMLElement);
   expect(
     screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
@@ -572,7 +572,7 @@ it("opens and closes the premium upsell dialog via the Premium upsell badge)", a
   expect(
     screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).toBeInTheDocument();
-  const closeButtonIcon2 = screen.getByLabelText("Close");
+  const closeButtonIcon2 = screen.getByLabelText("Close modal");
   await user.click(closeButtonIcon2.parentElement as HTMLElement);
   expect(
     screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
@@ -596,7 +596,7 @@ it("opens and closes the premium upsell dialog via the Premium upsell button", a
   expect(
     screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).toBeInTheDocument();
-  const closeButtonIcon1 = screen.getByLabelText("Close");
+  const closeButtonIcon1 = screen.getByLabelText("Close modal");
   await user.click(closeButtonIcon1.parentElement as HTMLElement);
   expect(
     screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
@@ -619,26 +619,18 @@ it("toggles between the product offerings in the premium upsell dialog", async (
 
   await user.click(premiumCtas[0]);
 
-  const productTabYearly1 = screen.getByRole("tab", { name: "Yearly" });
-  expect(productTabYearly1?.getAttribute("aria-selected")).toBe("true");
-  const productTabMonthly1 = screen.getByRole("tab", { name: "Monthly" });
-  expect(productTabMonthly1?.getAttribute("aria-selected")).toBe("false");
+  const productTabMonthly = screen.getByRole("radio", { name: "Monthly" });
   const productYearlyCta = screen.getByRole("link", {
     name: "Select yearly plan",
   });
   expect(productYearlyCta).toBeInTheDocument();
 
-  await user.click(productTabMonthly1);
+  await user.click(productTabMonthly);
 
-  const productTabYearly2 = screen.getByRole("tab", { name: "Yearly" });
-  expect(productTabYearly2?.getAttribute("aria-selected")).toBe("false");
-  const productTabMonthly2 = screen.getByRole("tab", { name: "Monthly" });
-  expect(productTabMonthly2?.getAttribute("aria-selected")).toBe("true");
-
-  const productMontlyCta = screen.getByRole("link", {
+  const productMonthlyCta = screen.getByRole("link", {
     name: "Select monthly plan",
   });
-  expect(productMontlyCta).toBeInTheDocument();
+  expect(productMonthlyCta).toBeInTheDocument();
 });
 
 it("shows chart tooltip on the action needed tab, non-US user", async () => {
@@ -651,7 +643,7 @@ it("shows chart tooltip on the action needed tab, non-US user", async () => {
   );
   expect(chartCaption).toBeInTheDocument();
   const chartTooltip = within(chartCaption).getByRole("button", {
-    name: "Open",
+    name: "Open modal",
   });
   expect(chartTooltip).toBeInTheDocument();
   await user.click(chartTooltip);
@@ -681,7 +673,7 @@ it("shows chart tooltip on the fixed tab, non-US user", async () => {
   );
   expect(chartCaption).toBeInTheDocument();
   const chartTooltip = within(chartCaption).getByRole("button", {
-    name: "Open",
+    name: "Open modal",
   });
   expect(chartTooltip).toBeInTheDocument();
   await user.click(chartTooltip);
@@ -711,7 +703,7 @@ it("shows chart tooltip on the action needed tab, US user", async () => {
   );
   expect(chartCaption).toBeInTheDocument();
   const chartTooltip = within(chartCaption).getByRole("button", {
-    name: "Open",
+    name: "Open modal",
   });
   expect(chartTooltip).toBeInTheDocument();
   await user.click(chartTooltip);
@@ -744,7 +736,7 @@ it("shows chart tooltip on the fixed tab, US user", async () => {
   );
   expect(chartCaption).toBeInTheDocument();
   const chartTooltip = within(chartCaption).getByRole("button", {
-    name: "Open",
+    name: "Open modal",
   });
   expect(chartTooltip).toBeInTheDocument();
   await user.click(chartTooltip);
@@ -775,7 +767,7 @@ it("counts in Glean how often people click the upgrade CTA to purchase the month
     name: "Automatic data removal: Off",
   });
   await user.click(premiumCtas[0]);
-  const productTabMonthly = screen.getByRole("tab", { name: "Monthly" });
+  const productTabMonthly = screen.getByRole("radio", { name: "Monthly" });
   await user.click(productTabMonthly);
   const confirmButton = screen.getByRole("link", {
     name: "Select monthly plan",
@@ -810,7 +802,7 @@ it("counts in Glean how often people click the upgrade CTA to purchase the yearl
   });
   await user.click(premiumCtas[0]);
   // Switch to the monthly tab by clicking it...
-  const productTabMonthly = screen.getByRole("tab", { name: "Monthly" });
+  const productTabMonthly = screen.getByRole("radio", { name: "Monthly" });
   await user.click(productTabMonthly);
   // ...then back to the yearly tab by pressing the left arrow on the keyboard.
   await user.keyboard("[ArrowLeft]");
@@ -1335,7 +1327,7 @@ it("shows and closes a dialog that informs US users, without Premium, when we hi
       name: "⁨Monitor⁩ is currently at capacity",
     }),
   ).toBeInTheDocument();
-  const closeButtonIcon1 = screen.getByLabelText("Close");
+  const closeButtonIcon1 = screen.getByLabelText("Close modal");
   await user.click(closeButtonIcon1.parentElement as HTMLElement);
   expect(
     screen.queryByRole("dialog", {
@@ -2627,7 +2619,7 @@ it("does not explain what 'in progress' means for users who cannot get Plus", as
 
   const statusHeading = screen.getByText("Status");
   const statusExplainerDialogTrigger = getByRole(statusHeading, "button", {
-    name: "Open",
+    name: "Open modal",
   });
   await user.click(statusExplainerDialogTrigger);
   expect(
@@ -2645,7 +2637,7 @@ it("explains what 'in progress' means for Plus users", async () => {
 
   const statusHeading = screen.getByText("Status");
   const statusExplainerDialogTrigger = getByRole(statusHeading, "button", {
-    name: "Open",
+    name: "Open modal",
   });
   await user.click(statusExplainerDialogTrigger);
   expect(
@@ -3132,7 +3124,7 @@ it("send telemetry when users open/close 'number of active exposure' info popup"
   // test:
   jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
-  const numberOfExposuresInfoPopup = screen.queryAllByLabelText("Open");
+  const numberOfExposuresInfoPopup = screen.queryAllByLabelText("Open modal");
   await user.click(numberOfExposuresInfoPopup[0]);
   expect(mockedRecord).toHaveBeenCalledWith(
     "popup",

@@ -269,7 +269,7 @@ user-menu-signout-tooltip = Allgofnodi o { -brand-mozilla-monitor }
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Amodau Gwasanaeth
 privacy-notice = Hysbysiad Preifatrwydd
 github = { -brand-github }

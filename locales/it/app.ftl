@@ -263,7 +263,7 @@ user-menu-signout-tooltip = Esci da { -brand-mozilla-monitor }
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Condizioni di utilizzo del servizio
 privacy-notice = Informativa sulla privacy
 github = { -brand-github }
