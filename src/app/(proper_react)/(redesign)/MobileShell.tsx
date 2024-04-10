@@ -160,6 +160,8 @@ export const MobileShell = (props: Props) => {
                 monthlySubscriptionUrl={props.monthlySubscriptionUrl}
                 yearlySubscriptionUrl={props.yearlySubscriptionUrl}
                 subscriptionBillingAmount={props.subscriptionBillingAmount}
+                // The last scan date is too noisy on mobile, so don't show it there:
+                lastScanDate={null}
               />
             </div>
           </div>

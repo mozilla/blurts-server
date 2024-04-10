@@ -20,6 +20,7 @@ export type Props = {
     monthly: number;
   };
   fxaSettingsUrl: string;
+  lastScanDate: Date | null;
   children?: ReactNode;
 };
 
@@ -32,6 +33,7 @@ export const Toolbar = (props: Props) => {
           monthlySubscriptionUrl={props.monthlySubscriptionUrl}
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
           subscriptionBillingAmount={props.subscriptionBillingAmount}
+          lastScanDate={props.lastScanDate}
         />
         <AppPicker />
         {props.user && (

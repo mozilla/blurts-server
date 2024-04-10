@@ -110,6 +110,9 @@ export default async function FeatureFlagPage() {
             yearlySubscriptionUrl={yearlySubscriptionUrl}
             subscriptionBillingAmount={getSubscriptionBillingAmount()}
             fxaSettingsUrl={fxaSettingsUrl}
+            // Since this page is only accessed by contributors, no need to load
+            // their latest scan date from the DB:
+            lastScanDate={null}
           />
         </div>
       </nav>

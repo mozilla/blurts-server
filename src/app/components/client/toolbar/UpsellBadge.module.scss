@@ -41,6 +41,7 @@
   &.isSelected {
     border-color: transparent;
     cursor: default;
+    padding-block: 0;
 
     .toggleIndicator {
       background: none;
@@ -52,4 +53,12 @@
       }
     }
   }
+}
+
+.lastScanIndicator {
+  display: flex;
+  align-items: center;
+  font: $text-body-xs;
+  padding-inline: $spacing-md;
+  position: absolute;
 }
