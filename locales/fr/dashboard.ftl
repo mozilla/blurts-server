@@ -34,7 +34,6 @@ exposure-chart-caption-fixed = Ce graphique montre le nombre total de fuites ré
 exposure-chart-returning-user-upgrade-prompt = L’adresse personnelle, les membres de la famille et d’autres données ne sont pas encore inclus.
 exposure-chart-returning-user-upgrade-prompt-cta = Lancer une analyse gratuite
 exposure-chart-scan-in-progress-prompt = <b>Scan en cours :</b> l’adresse, les membres de la famille et d’autres données ne sont pas encore inclus.
-
 modal-active-number-of-exposures-title = À propos du nombre de fuites actives
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -47,25 +46,20 @@ modal-active-number-of-exposures-part-two = Par exemple, si votre numéro de té
 modal-active-number-of-exposures-part-three-all = Une fois résolues, elles seront ajoutées à votre nombre total de fuites résolues sur la page Résolues.
 modal-fixed-number-of-exposures-title = À propos du nombre de fuites résolues
 modal-fixed-number-of-exposures-all = Ce graphique comprend le nombre total de fuites de données qui ont été corrigées pour toutes les adresses e-mail que vous surveillez actuellement. Une fois les fuites marquées comme corrigées, elles seront ajoutées au total ici.
-
 modal-cta-ok = OK
-modal-open-alt = Ouvrir
-modal-close-alt = Fermer
-
+open-modal-alt = Ouvrir la boîte de dialogue
+close-modal-alt = Fermer la boîte de dialogue
+open-tooltip-alt = Ouvrir l’infobulle
 progress-card-heres-what-we-fixed-headline-all = Voici les fuites que vous avez résolues
 progress-card-manually-fixed-headline = Résolue manuellement
-
 dashboard-tab-label-action-needed = Action nécessaire
 dashboard-tab-label-fixed = Fuites résolues
 dashboard-exposures-all-fixed-label = Toutes les fuites ont été résolues !
-
-
 dashboard-exposures-area-headline = Voir tous les sites où vos informations ont fuité
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
 #   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
 dashboard-exposures-area-description-all-line1 = Nous avons détecté vos données { $exposures_unresolved_num } fois.
-
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
@@ -75,7 +69,6 @@ dashboard-exposures-area-description-all-line2 =
        *[other] Elles apparaissent dans { $data_breach_unresolved_num } fuites de données.
     }
 dashboard-fixed-area-headline-all = Afficher toutes les fuites résolues
-
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filtrer
 dashboard-exposures-filter-company = Entreprise
@@ -93,10 +86,8 @@ dashboard-exposures-filter-reset = Réinitialiser
 
 dashboard-top-banner-section-label = Résumé du tableau de bord
 dashboard-top-banner-scan-in-progress-title = L’analyse est toujours en cours
-
 dashboard-top-banner-your-data-is-protected-title = Vos données sont protégées
 dashboard-top-banner-your-data-is-protected-cta = Voir les fuites résolues
-
 dashboard-top-banner-lets-keep-protecting-title = Continuons à protéger vos données
 # Variables:
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
@@ -106,10 +97,8 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] Il vous reste { $exposures_unresolved_num } fuites à résoudre. Continuez et protégez-vous. Nous vous guiderons pas à pas.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Continuons
-
 dashboard-top-banner-protect-your-data-title = Protégeons vos données
 dashboard-top-banner-protect-your-data-cta = Résoudre
-
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
@@ -122,11 +111,9 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
         [one] Elles apparaissent dans { $data_breach_unresolved_num } fuite de données. Nous vous guiderons pas à pas pour résoudre le problème.
        *[other] Elles apparaissent dans { $data_breach_unresolved_num } fuites de données. Nous vous guiderons pas à pas pour résoudre le problème.
     }
-
 dashboard-top-banner-no-exposures-found-title = Aucune fuite détectée
 dashboard-top-banner-non-us-no-exposures-found-description = Bonne nouvelle ! Nous avons recherché dans toutes les fuites de données connues et n’avons trouvé aucune trace de vos données. Nous continuerons à surveiller votre adresse e-mail et vous informerons si une nouvelle fuite de données se produit.
 dashboard-no-exposures-label = Aucune fuite détectée
-
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
 dashboard-top-banner-non-us-your-data-is-protected-description =
@@ -134,7 +121,6 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
         [one] Excellent travail, la fuite a été résolue ! Nous continuerons de surveiller vos données et vous avertirons en cas de nouvelle fuite.
        *[other] Excellent travail, vos { $exposures_resolved_num } fuites ont été résolues ! Nous continuerons de surveiller vos données et vous avertirons en cas de nouvelle fuite.
     }
-
 dashboard-top-banner-monitor-more-cta = Surveiller davantage d’adresses e-mail
 
 # About Exposure Statuses Modal
