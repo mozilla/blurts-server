@@ -488,6 +488,28 @@ it("shows the cancellation survey dialog", async () => {
       name: "Leaving now means data brokers may add you back",
     }),
   ).toBeInTheDocument();
+
+  const continueToCancellationButton = screen.getByRole("button", {
+    name: "Continue to cancellation",
+  });
+  await user.click(continueToCancellationButton);
+
+  expect(
+    screen.getByRole("dialog", {
+      name: "We’re sorry to see you go. Will you tell us why you’re leaving?",
+    }),
+  ).toBeInTheDocument();
+
+  const continueToCancellationButton2 = screen.getByRole("button", {
+    name: "Continue to cancellation",
+  });
+  await user.click(continueToCancellationButton2);
+
+  expect(
+    screen.getByRole("dialog", {
+      name: "Directing you to your ⁨Mozilla⁩ account to cancel",
+    }),
+  ).toBeInTheDocument();
 });
 
 it("does not show the account deletion button if the relevant flag is not enabled", () => {
