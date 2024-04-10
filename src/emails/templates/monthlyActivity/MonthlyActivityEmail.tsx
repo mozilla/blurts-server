@@ -41,7 +41,7 @@ const MonthlyActivityPlusWithManualRemovalsEmail = (props: Props) => {
           {l10n.getString("email-monthly-plus-manual-preview")}
         </mj-preview>
       </mj-head>
-      <mj-body background-color="#F9F9FA">
+      <mj-body>
         <EmailHeader l10n={l10n} utm_campaign={utmCampaign} />
         <mj-section padding="20px">
           <mj-column>
@@ -180,7 +180,7 @@ const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
           {l10n.getString("email-monthly-plus-auto-preview")}
         </mj-preview>
       </mj-head>
-      <mj-body background-color="#F9F9FA">
+      <mj-body>
         <EmailHeader l10n={l10n} utm_campaign={utmCampaign} />
         <mj-section padding="20px">
           <mj-column>
@@ -301,7 +301,7 @@ const MonthlyActivityFreeEmail = (props: Props) => {
       <mj-head>
         <mj-preview>{l10n.getString("email-monthly-free-preview")}</mj-preview>
       </mj-head>
-      <mj-body background-color="#F9F9FA">
+      <mj-body>
         <EmailHeader l10n={l10n} utm_campaign={utmCampaign} />
         <mj-section padding="20px">
           <mj-column>
