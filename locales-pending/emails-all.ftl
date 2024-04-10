@@ -22,8 +22,6 @@ email-footer-logo-mozilla-alt = { -brand-mozilla }
 #   $month (string) - Translated month this email is about, e.g. "April"
 email-monthly-plus-manual-subject = Your { $month } { -brand-monitor } report
 email-monthly-plus-manual-preview = See what was fixed this month and what needs your attention.
-email-monthly-plus-manual-hero-heading = Your monthly { -brand-monitor } activity
-email-monthly-plus-manual-hero-content = We’re always working to help keep your personal info safe. Here’s what’s happened over the past month.
 email-monthly-plus-manual-intro-content = As a { -brand-monitor-plus } subscriber, you have our highest level of protection. Sign in to see what exposures need you to take action, and what’s already been fixed.
 email-monthly-plus-manual-cta-label = View your dashboard
 email-monthly-plus-manual-fixed-heading = What we fixed
@@ -42,8 +40,6 @@ email-monthly-plus-manual-fixed-section-done-heading = Auto-removed
 #   $month (string) - Translated month this email is about, e.g. "April"
 email-monthly-plus-auto-subject = Your { $month } { -brand-monitor } report
 email-monthly-plus-auto-preview = See how we’ve protected your personal information.
-email-monthly-plus-auto-hero-heading = Your { -brand-monitor-plus } protection
-email-monthly-plus-auto-hero-content = We’re always working to help keep your personal info safe. Here’s how we’ve protected you.
 email-monthly-plus-auto-intro-content = As a { -brand-monitor-plus } subscriber, you have our highest level of protection. We remove your personal info from data broker sites — no matter how many times they re-add you. We also help you resolve data breaches that require manual action. Here’s what we fixed:
 email-monthly-plus-auto-cta-label = View all activity
 # Accompanies a number that indicates how many data broker exposures the user fixed themselves
@@ -60,8 +56,6 @@ email-monthly-plus-auto-fixed-section-done-heading = Auto-removed
 #   $month (string) - Translated month this email is about, e.g. "April"
 email-monthly-free-subject = Your { $month } { -brand-monitor } report
 email-monthly-free-preview = See what was fixed this month and what needs your attention.
-email-monthly-free-hero-heading = Your monthly { -brand-monitor } activity
-email-monthly-free-hero-content = We work hard to keep your personal info safe. Find out what’s happened this month.
 email-monthly-free-intro-content = We constantly monitor for new exposures of your personal info. Sign in to see what exposures need you to take action, and what’s already been fixed.
 email-monthly-free-cta-label = View your dashboard
 email-monthly-free-fixed-heading = What we fixed
