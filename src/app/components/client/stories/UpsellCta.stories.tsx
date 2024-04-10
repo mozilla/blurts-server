@@ -5,7 +5,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
-import { UpsellBadge, UpsellButton } from "../UpsellBadge";
+import { UpsellBadge, UpsellButton } from "../toolbar/UpsellBadge";
 import { createUserWithPremiumSubscription } from "../../../../apiMocks/mockData";
 import { CountryCodeProvider } from "../../../../contextProviders/country-code";
 

@@ -9,7 +9,7 @@ import styles from "./Toolbar.module.scss";
 import { UserMenu } from "./UserMenu";
 import { Session } from "next-auth";
 import { AppPicker } from "./AppPicker";
-import { UpsellBadge } from "../../client/UpsellBadge";
+import { UpsellBadge } from "./UpsellBadge";
 
 export type Props = {
   user: Session["user"];

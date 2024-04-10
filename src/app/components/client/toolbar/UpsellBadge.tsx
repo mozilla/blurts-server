@@ -9,17 +9,17 @@ import { usePathname } from "next/navigation";
 import { useOverlayTrigger, useToggleButton } from "react-aria";
 import { useOverlayTriggerState, useToggleState } from "react-stately";
 import { UpsellDialog } from "./UpsellDialog";
-import { Button } from "../client/Button";
-import { useL10n } from "../../hooks/l10n";
+import { Button } from "../Button";
+import { useL10n } from "../../../hooks/l10n";
 import {
   canSubscribeToPremium,
   hasPremium,
-} from "../../functions/universal/user";
+} from "../../../functions/universal/user";
 import styles from "./UpsellBadge.module.scss";
-import { useTelemetry } from "../../hooks/useTelemetry";
-import { CountryCodeContext } from "../../../contextProviders/country-code";
+import { useTelemetry } from "../../../hooks/useTelemetry";
+import { CountryCodeContext } from "../../../../contextProviders/country-code";
 import { useSession } from "next-auth/react";
-import { sendGAEvent } from "./GoogleAnalyticsWorkaround";
+import { sendGAEvent } from "../GoogleAnalyticsWorkaround";
 
 export type UpsellButtonProps = {
   monthlySubscriptionUrl: string;
