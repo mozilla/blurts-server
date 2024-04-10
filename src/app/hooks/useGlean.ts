@@ -24,13 +24,6 @@ export const useGlean = () => {
       throw new ErrorEvent("No PUBLIC_APP_ENV provided for Glean");
     }
 
-    Glean.initialize("monitor.frontend", uploadEnabled, {
-      // This will submit an events ping every time an event is recorded.
-      maxEvents: 1,
-      channel: PUBLIC_APP_ENV,
-      enableAutoPageLoadEvents: true,
-    });
-
     // Glean debugging options can be found here:
     // https://mozilla.github.io/glean/book/reference/debug/index.html
     if (
@@ -43,6 +36,13 @@ export const useGlean = () => {
       // @see https://debug-ping-preview.firebaseapp.com/pings/fx-monitor-local-dev
       Glean.setDebugViewTag(`fx-monitor-${PUBLIC_APP_ENV}-dev`);
     }
+
+    Glean.initialize("monitor.frontend", uploadEnabled, {
+      // This will submit an events ping every time an event is recorded.
+      maxEvents: 1,
+      channel: PUBLIC_APP_ENV,
+      enableAutoPageLoadEvents: true,
+    });
     // This effect should only run once
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
