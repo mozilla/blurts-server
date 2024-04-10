@@ -813,7 +813,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={["MonitorAccountDeletion"]}
+          enabledFeatureFlags={[]}
         />
       </TestComponentWrapper>,
     );
