@@ -35,6 +35,7 @@ const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
             monthlySubscriptionUrl={monthlySubscriptionUrl}
             yearlySubscriptionUrl={yearlySubscriptionUrl}
             subscriptionBillingAmount={subscriptionBillingAmount}
+            lastScanDate={new Date(Date.UTC(1998, 2, 31))}
           />
         ) : (
           <UpsellButton

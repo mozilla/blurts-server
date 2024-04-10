@@ -407,6 +407,7 @@ export const View = (props: Props) => {
         yearlySubscriptionUrl={props.yearlySubscriptionUrl}
         subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
+        lastScanDate={props.userScanData.scan?.created_at ?? null}
       >
         <TabList
           tabs={tabsData}

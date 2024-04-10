@@ -4,6 +4,7 @@
 
 plus-indicator-label-active = Automatic data removal: On
 plus-indicator-label-inactive = Automatic data removal: Off
+plus-indicator-scan-date-label = Last scan:
 
 user-menu-contact-label = Contact us
 user-menu-contact-tooltip = Contact { -brand-monitor-plus } support

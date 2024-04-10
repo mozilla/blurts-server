@@ -36,6 +36,7 @@ export type Props = {
   emailAddresses: EmailAddressRow[];
   breachCountByEmailAddress: Record<string, number>;
   enabledFeatureFlags: FeatureFlagName[];
+  lastScanDate?: Date;
 };
 
 export const SettingsView = (props: Props) => {
@@ -49,6 +50,7 @@ export const SettingsView = (props: Props) => {
         yearlySubscriptionUrl={props.yearlySubscriptionUrl}
         subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
+        lastScanDate={props.lastScanDate ?? null}
       />
       <main>
         <header className={styles.title}>

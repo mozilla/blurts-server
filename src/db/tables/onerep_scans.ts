@@ -40,20 +40,25 @@ async function getScanResults(
   return scanResults;
 }
 
-async function getLatestOnerepScanResults(
+async function getLatestOnerepScan(
   onerepProfileId: number | null,
-): Promise<LatestOnerepScanData> {
+): Promise<OnerepScanRow | null> {
   if (onerepProfileId === null) {
-    return {
-      scan: null,
-      results: [],
-    };
+    return null;
   }
 
   const scan = await knex("onerep_scans")
     .first()
     .where("onerep_profile_id", onerepProfileId)
     .orderBy("created_at", "desc");
+
+  return scan ?? null;
+}
+
+async function getLatestOnerepScanResults(
+  onerepProfileId: number | null,
+): Promise<LatestOnerepScanData> {
+  const scan = await getLatestOnerepScan(onerepProfileId);
 
   const results =
     typeof scan === "undefined"
@@ -241,6 +246,7 @@ async function deleteScanResultsForProfile(
 export {
   getAllScansForProfile,
   getScanResults,
+  getLatestOnerepScan,
   getLatestOnerepScanResults,
   setOnerepProfileId,
   setOnerepScan,
