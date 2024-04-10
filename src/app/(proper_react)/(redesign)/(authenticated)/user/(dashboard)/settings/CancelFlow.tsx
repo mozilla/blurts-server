@@ -9,9 +9,7 @@ import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import Image from "next/image";
 import styles from "./CancelFlow.module.scss";
-import CancelConfirmDialogIllustration from "./images/CancelConfirmDialogIllustration.svg";
-import CancelSurveyDialogIllustration from "./images/CancelSurveyDialogIllustration.svg";
-import CancelRedirectDialogIllustration from "./images/CancelRedirectDialogIllustration.svg";
+import CancellationSurveyPlaneIllustration from "./images/CancellationSurveyPlaneIllustration.png";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 import { ModalOverlay } from "../../../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../../../components/client/dialog/Dialog";
@@ -40,7 +38,7 @@ export const CancelFlow = (props: Props) => {
 
   useEffect(() => {
     const messageListener = (message: MessageEvent) => {
-      if (message.origin !== "https://survey.alchemer.com") {
+      if (message.origin !== "") {
         return;
       }
       if (message.data === "survey-complete") {
@@ -79,17 +77,12 @@ export const CancelFlow = (props: Props) => {
                 ? "settings-cancel-plus-step-confirm-heading"
                 : step === "survey"
                   ? "settings-cancel-plus-step-survey-heading"
-                  : "settings-cancel-plus-step-redirecting-heading",
+                  : "settings-unsubscribe-dialog-confirmation-redirect-title",
             )}
             illustration={
               <Image
-                src={
-                  step === "confirm"
-                    ? CancelConfirmDialogIllustration
-                    : step === "survey"
-                      ? CancelSurveyDialogIllustration
-                      : CancelRedirectDialogIllustration
-                }
+                className={styles.cancellationIllustrationWrapper}
+                src={CancellationSurveyPlaneIllustration}
                 alt=""
               />
             }
@@ -119,7 +112,7 @@ export const CancelFlow = (props: Props) => {
                   <Button
                     variant="tertiary"
                     onPress={() => dialogState.close()}
-                    className={styles.dismissLink}
+                    className={styles.tertiaryCta}
                   >
                     {l10n.getString(
                       "settings-cancel-plus-step-confirm-cancel-label",
@@ -132,20 +125,20 @@ export const CancelFlow = (props: Props) => {
                   <p>
                     {l10n.getString("settings-cancel-plus-step-survey-lead")}
                   </p>
-                  <iframe
-                    src="https://survey.alchemer.com/s3/7768897/SPIKE-CSAT-Monitor"
-                    frameBorder={0}
-                    className={styles.surveyIframe}
-                  ></iframe>
-                  <p>
-                    {l10n.getFragment("settings-cancel-plus-step-survey-note", {
-                      elems: { b: <b /> },
-                    })}
-                  </p>
-                  {/*
-                  // Replaced by listening to survey-complete events:
+
+                  <div className={styles.iframeWrapper}>
+                    <iframe
+                      scrolling={"no"}
+                      frameBorder={0}
+                      src="https://mozilla.formstack.com/forms/mozilla_monitor_plus_cancel"
+                      title="Formstack Form"
+                      width="800"
+                      height="320"
+                    ></iframe>
+                  </div>
                   <Button
-                    variant="primary"
+                    className={styles.tertiaryCta}
+                    variant="tertiary"
                     onPress={() => {
                       setCurrentStep("redirecting");
                       setTimeout(() => {
@@ -153,19 +146,7 @@ export const CancelFlow = (props: Props) => {
                       }, 5000);
                     }}
                   >
-                    {l10n.getString(
-                      "settings-cancel-plus-step-survey-cta-label",
-                    )}
-                  </Button>
-                  */}
-                  <Button
-                    variant="tertiary"
-                    onPress={() => dialogState.close()}
-                    className={styles.dismissLink}
-                  >
-                    {l10n.getString(
-                      "settings-cancel-plus-step-survey-cancel-label",
-                    )}
+                    {l10n.getString("settings-unsubscribe-dialog-continue")}
                   </Button>
                 </>
               )}
@@ -173,7 +154,17 @@ export const CancelFlow = (props: Props) => {
                 <>
                   <p>
                     {l10n.getString(
-                      "settings-cancel-plus-step-redirecting-lead",
+                      "settings-unsubscribe-dialog-confirmation-redirect-description-pt1",
+                    )}
+                  </p>
+                  <p>
+                    {l10n.getFragment(
+                      "settings-unsubscribe-dialog-confirmation-redirect-description-pt2",
+                      {
+                        elems: {
+                          b: <b />,
+                        },
+                      },
                     )}
                   </p>
                 </>

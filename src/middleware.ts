@@ -61,7 +61,7 @@ function generateCspData() {
       (process.env.NODE_ENV === "development"
         ? "'unsafe-eval' 'unsafe-inline'"
         : `'nonce-${nonce}'`) +
-      ` https://*.googletagmanager.com https://js.stripe.com`,
+      ` https://*.googletagmanager.com https://js.stripe.com https://mozilla.formstack.com`,
     `connect-src 'self' ${
       process.env.NODE_ENV === "development" ? "webpack://*" : ""
     } https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.ingest.sentry.io https://incoming.telemetry.mozilla.org https://api.stripe.com`,
@@ -84,7 +84,7 @@ function generateCspData() {
     "font-src 'self'",
     "form-action 'self'",
     "frame-ancestors 'self'",
-    "frame-src 'self' https://js.stripe.com https://survey.alchemer.com",
+    "frame-src 'self' https://js.stripe.com https://survey.alchemer.com https://mozilla.formstack.com",
     "object-src 'none'",
     "block-all-mixed-content",
     "upgrade-insecure-requests",

@@ -11,13 +11,28 @@
   flex-direction: column;
   align-items: center;
   gap: $spacing-md;
+  text-align: center;
 
-  .dismissLink {
+  .tertiaryCta {
     font-weight: 600;
   }
 }
 
-.surveyIframe {
+.cancellationIllustrationWrapper {
+  height: 200px; // height of illustration;
   width: 100%;
-  height: 350px;
+  padding-bottom: $spacing-lg;
+
+  img {
+    height: 100%;
+  }
+}
+
+.iframeWrapper {
+  width: 100%;
+  overflow: hidden;
+  transform: rotate(0.00001deg);
+  display: flex;
+  justify-content: center;
+  height: 240px; //height of iframe
 }
