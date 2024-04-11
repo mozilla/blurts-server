@@ -507,7 +507,7 @@ it("shows the cancellation survey dialog", async () => {
 
   expect(
     screen.getByRole("dialog", {
-      name: "Directing you to your ⁨Mozilla⁩ account to cancel",
+      name: "Directing you to your ⁨Mozilla account⁩ to cancel",
     }),
   ).toBeInTheDocument();
 });
