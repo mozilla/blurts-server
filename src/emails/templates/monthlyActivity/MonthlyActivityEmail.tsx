@@ -89,8 +89,8 @@ const MonthlyActivityPlusWithManualRemovalsEmail = (props: Props) => {
               align="center"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="14px"
+              line-height="18px"
               font-weight={600}
               align="center"
             >
@@ -117,8 +117,8 @@ const MonthlyActivityPlusWithManualRemovalsEmail = (props: Props) => {
               align="center"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="14px"
+              line-height="18px"
               font-weight={600}
               align="center"
             >
@@ -144,8 +144,8 @@ const MonthlyActivityPlusWithManualRemovalsEmail = (props: Props) => {
               align="center"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="14px"
+              line-height="18px"
               font-weight={600}
               align="center"
             >
@@ -199,8 +199,8 @@ const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
               align="center"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="14px"
+              line-height="18px"
               font-weight={600}
               align="center"
             >
@@ -227,8 +227,8 @@ const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
               align="center"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="14px"
+              line-height="18px"
               font-weight={600}
               align="center"
             >
@@ -254,8 +254,8 @@ const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
               align="center"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="14px"
+              line-height="18px"
               font-weight={600}
               align="center"
             >
@@ -349,8 +349,8 @@ const MonthlyActivityFreeEmail = (props: Props) => {
               align="center"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="14px"
+              line-height="18px"
               font-weight={600}
               align="center"
             >
@@ -374,8 +374,8 @@ const MonthlyActivityFreeEmail = (props: Props) => {
               align="center"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="14px"
+              line-height="18px"
               font-weight={600}
               align="center"
             >
@@ -401,8 +401,8 @@ const MonthlyActivityFreeEmail = (props: Props) => {
               align="center"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="14px"
+              line-height="18px"
               font-weight={600}
               align="center"
             >
