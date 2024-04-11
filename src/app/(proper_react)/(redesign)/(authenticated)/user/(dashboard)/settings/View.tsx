@@ -51,6 +51,7 @@ export const SettingsView = (props: Props) => {
         subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
         lastScanDate={props.lastScanDate ?? null}
+        enabledFeatureFlags={props.enabledFeatureFlags}
       />
       <main>
         <header className={styles.title}>
