@@ -130,7 +130,9 @@ export const CancelFlow = (props: Props) => {
                       }, 5000);
                     }}
                   >
-                    {l10n.getString("settings-unsubscribe-dialog-continue")}
+                    {l10n.getString(
+                      "settings-cancel-plus-step-survey-cta-label",
+                    )}
                   </Button>
                 </>
               )}
