@@ -408,6 +408,7 @@ export const View = (props: Props) => {
         subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
         lastScanDate={props.userScanData.scan?.created_at ?? null}
+        enabledFeatureFlags={props.enabledFeatureFlags}
       >
         <TabList
           tabs={tabsData}
