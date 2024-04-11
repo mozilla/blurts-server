@@ -21,7 +21,6 @@ settings-cancel-plus-step-survey-lead = Your experience is important to us. We r
 settings-cancel-plus-step-survey-note = Please note, all of your { -brand-monitor-plus } services will be <b>permanently deleted</b> after your current billing cycle ends.
 settings-cancel-plus-step-survey-cta-label = Continue to cancellation
 settings-cancel-plus-step-survey-cancel-label = Never mind, take me back
-settings-cancel-plus-step-redirecting-heading = We appreciate your feedback
 settings-unsubscribe-dialog-confirmation-redirect-title = Directing you to your { -brand-mozilla-account } to cancel
 settings-unsubscribe-dialog-confirmation-redirect-description-pt1 = We’ll automatically redirect you to your { -brand-mozilla-account } where you can cancel your { -brand-monitor } subscription.
 settings-unsubscribe-dialog-confirmation-redirect-description-pt2 = Please note, all of your { -brand-monitor-plus } services will be <b>permanently deleted</b> after your current billing cycle ends.
