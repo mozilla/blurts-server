@@ -12,7 +12,6 @@ import { getSpecificL10nSync } from "../../../../../../functions/server/mockL10n
 import { TestComponentWrapper } from "../../../../../../../TestComponentWrapper";
 import { SerializedSubscriber } from "../../../../../../../next-auth";
 import { onAddEmail, onRemoveEmail } from "./actions";
-import { sanitizeEmailRow } from "../../../../../../functions/server/sanitize";
 
 const mockedSessionUpdate = jest.fn();
 const mockedRecordTelemetry = jest.fn();
@@ -40,6 +39,7 @@ jest.mock("./actions", () => {
 
 import { SettingsView } from "./View";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
+import { sanitizeEmailRow } from "../../../../../../functions/server/sanitize";
 
 const subscriberId = 7;
 const mockedSubscriber: SerializedSubscriber = {
@@ -455,7 +455,7 @@ it("takes you through the cancellation dialog flow", async () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={{
           ...mockedUser,
           fxa: {
@@ -518,8 +518,6 @@ it("takes you through the cancellation dialog flow", async () => {
       name: "Directing you to your ⁨Mozilla account⁩ to cancel",
     }),
   ).toBeInTheDocument();
-
-  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 });
 
 it("closes the cancellation dialog", async () => {
@@ -528,7 +526,7 @@ it("closes the cancellation dialog", async () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getOneL10nSync()}
+        l10n={getSpecificL10nSync()}
         user={{
           ...mockedUser,
           fxa: {
@@ -935,7 +933,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={[]}
+          enabledFeatureFlags={["MonitorAccountDeletion"]}
         />
       </TestComponentWrapper>,
     );
@@ -1199,7 +1197,7 @@ describe("to learn about usage", () => {
     await user.click(deleteAccountButton);
     const dialog = screen.getByRole("dialog");
     const dismissButton = within(dialog).getByRole("button", {
-      name: "Close modal",
+      name: "Close",
     });
     await user.click(dismissButton);
 
