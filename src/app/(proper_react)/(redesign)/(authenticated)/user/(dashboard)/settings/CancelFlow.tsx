@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import Image from "next/image";
@@ -34,27 +34,8 @@ export const CancelFlow = (props: Props) => {
       });
     },
   });
+
   const dialogTrigger = useOverlayTrigger({ type: "dialog" }, dialogState);
-
-  useEffect(() => {
-    const messageListener = (message: MessageEvent) => {
-      if (message.origin !== "https://mozilla.formstack.com") {
-        return;
-      }
-      if (message.data === "survey-complete") {
-        setCurrentStep("redirecting");
-        setTimeout(() => {
-          document.location = props.fxaSubscriptionsUrl;
-        }, 5000);
-      }
-    };
-
-    window.addEventListener("message", messageListener);
-
-    return () => {
-      window.removeEventListener("message", messageListener);
-    };
-  }, [props.fxaSubscriptionsUrl]);
 
   return (
     <>
