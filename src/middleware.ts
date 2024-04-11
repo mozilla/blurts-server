@@ -61,7 +61,7 @@ function generateCspData() {
       (process.env.NODE_ENV === "development"
         ? "'unsafe-eval' 'unsafe-inline'"
         : `'nonce-${nonce}'`) +
-      ` https://*.googletagmanager.com https://js.stripe.com https://mozilla.formstack.com`,
+      ` https://*.googletagmanager.com https://js.stripe.com`,
     `connect-src 'self' ${
       process.env.NODE_ENV === "development" ? "webpack://*" : ""
     } https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.ingest.sentry.io https://incoming.telemetry.mozilla.org https://api.stripe.com`,

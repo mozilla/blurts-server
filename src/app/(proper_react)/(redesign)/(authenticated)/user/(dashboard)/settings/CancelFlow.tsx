@@ -112,9 +112,11 @@ export const CancelFlow = (props: Props) => {
                       scrolling={"no"}
                       frameBorder={0}
                       src="https://mozilla.formstack.com/forms/mozilla_monitor_plus_cancel"
-                      title="Formstack Form"
                       width="800"
                       height="320"
+                      aria-label={l10n.getString(
+                        "settings-unsubscribe-dialog-cancellation-survey-form-placeholder",
+                      )}
                     ></iframe>
                   </div>
                   <Button
