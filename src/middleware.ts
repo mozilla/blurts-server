@@ -84,7 +84,7 @@ function generateCspData() {
     "font-src 'self'",
     "form-action 'self'",
     "frame-ancestors 'self'",
-    "frame-src 'self' https://js.stripe.com https://survey.alchemer.com https://mozilla.formstack.com",
+    "frame-src 'self' https://js.stripe.com https://mozilla.formstack.com",
     "object-src 'none'",
     "block-all-mixed-content",
     "upgrade-insecure-requests",
