@@ -125,6 +125,7 @@ export const CancelFlow = (props: Props) => {
                     onPress={() => {
                       setCurrentStep("redirecting");
                       setTimeout(() => {
+                        /* c8 ignore next */
                         document.location = props.fxaSubscriptionsUrl;
                       }, 5000);
                     }}

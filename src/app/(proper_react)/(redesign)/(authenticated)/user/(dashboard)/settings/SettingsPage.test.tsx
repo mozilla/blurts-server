@@ -449,7 +449,7 @@ it("shows the Plus cancellation link if the user has Plus", () => {
   expect(cancellationHeading).toBeInTheDocument();
 });
 
-it("shows the cancellation survey dialog", async () => {
+it("takes you through the cancellation dialog flow", async () => {
   const user = userEvent.setup();
 
   render(
@@ -483,6 +483,14 @@ it("shows the cancellation survey dialog", async () => {
 
   await user.click(cancellationButton);
 
+  expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+    "popup",
+    "view",
+    expect.objectContaining({
+      popup_id: "settings-cancel-monitor-plus-dialog",
+    }),
+  );
+
   expect(
     screen.getByRole("dialog", {
       name: "Leaving now means data brokers may add you back",
@@ -510,6 +518,57 @@ it("shows the cancellation survey dialog", async () => {
       name: "Directing you to your ⁨Mozilla account⁩ to cancel",
     }),
   ).toBeInTheDocument();
+
+  jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+});
+
+it("closes the cancellation dialog", async () => {
+  const user = userEvent.setup();
+
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getOneL10nSync()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: ["monitor"],
+          } as Session["user"]["fxa"],
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion", "CancellationSurvey"]}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const cancellationButton = screen.getByRole("button", {
+    name: "Cancel your subscription",
+  });
+
+  await user.click(cancellationButton);
+
+  const cancellationDialogCloseBtn = screen.getByRole("button", {
+    name: "Close",
+  });
+
+  await user.click(cancellationDialogCloseBtn);
+
+  expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+    "popup",
+    "exit",
+    expect.objectContaining({
+      popup_id: "settings-cancel-monitor-plus-dialog",
+    }),
+  );
 });
 
 it("does not show the account deletion button if the relevant flag is not enabled", () => {
