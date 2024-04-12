@@ -50,6 +50,7 @@ settings-fxa-link-label-3 = Ir a parametros de { -brand-mozilla-account }
 
 ## Delete Monitor account
 
+settings-delete-monitor-free-account-cta-label = Deler le conto
 settings-delete-monitor-free-account-dialog-cta-label = Deler le conto
 settings-delete-monitor-free-account-dialog-cancel-button-label = Non importa, tornar retro
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Dimitter
