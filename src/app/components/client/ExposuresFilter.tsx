@@ -38,6 +38,7 @@ import {
   ExposuresFilterTypeExplainer,
 } from "./ExposuresFilterExplainer";
 import { Popover } from "./Popover";
+import { VisuallyHidden } from "../server/VisuallyHidden";
 
 export type FilterState = {
   exposureType: "show-all-exposure-type" | "data-broker" | "data-breach";
@@ -222,7 +223,7 @@ export const ExposuresFilter = ({
         className={styles.dismissButton}
       >
         <CloseBtn
-          alt={l10n.getString("modal-close-alt")}
+          alt={l10n.getString("close-modal-alt")}
           width="14"
           height="14"
         />
@@ -259,13 +260,13 @@ export const ExposuresFilter = ({
                 <button
                   {...exposureTypeExplainerTriggerProps}
                   ref={exposureTypeExplainerTriggerRef}
-                  aria-label={l10n.getString("modal-open-alt")}
+                  aria-label={l10n.getString("open-modal-alt")}
+                  aria-describedby="filterExposureTypeInfo"
                 >
-                  <QuestionMarkCircle
-                    width="15"
-                    height="15"
-                    alt={l10n.getString("modal-open-alt")}
-                  />
+                  <VisuallyHidden id="filterExposureTypeInfo">
+                    {l10n.getString("modal-exposure-type-title")}
+                  </VisuallyHidden>
+                  <QuestionMarkCircle width="15" height="15" alt="" />
                 </button>
               )}
             </li>
@@ -278,13 +279,13 @@ export const ExposuresFilter = ({
             <button
               {...exposureStatusExplainerTriggerProps}
               ref={exposureStatusExplainerTriggerRef}
-              aria-label={l10n.getString("modal-open-alt")}
+              aria-label={l10n.getString("open-modal-alt")}
+              aria-describedby="filterStatusInfo"
             >
-              <QuestionMarkCircle
-                width="15"
-                height="15"
-                alt={l10n.getString("modal-open-alt")}
-              />
+              <VisuallyHidden id="filterStatusInfo">
+                {l10n.getString("modal-exposure-status-title")}
+              </VisuallyHidden>
+              <QuestionMarkCircle width="15" height="15" alt="" />
             </button>
           </li>
         </ul>
