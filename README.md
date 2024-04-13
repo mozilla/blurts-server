@@ -96,7 +96,7 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
 
    **_OR_**
 
-   Run in "dev mode", which loads unbundled client modules and uncompressed assets directly, and uses Nodemon to auto-restart the Express process when any server files change:
+   Run in "dev mode" with:
 
    ```sh
    npm run dev

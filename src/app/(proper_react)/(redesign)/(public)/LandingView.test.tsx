@@ -277,7 +277,7 @@ describe("When Premium is available", () => {
     expect(queryByRole(pricingTable, "dialog")).not.toBeInTheDocument();
 
     const moreInfoButton = getAllByRole(pricingTable, "button", {
-      name: "More info",
+      name: "Open tooltip",
     })[0];
     await user.click(moreInfoButton);
 
@@ -818,7 +818,7 @@ it("shows a confirmaton message if the user has just deleted their account", () 
 
   const alert = screen.getByRole("alert");
   const confirmationMessage = within(alert).getByText(
-    "Your ⁨Monitor⁩ account is now permanently deleted.",
+    "Your ⁨Monitor⁩ account is now deleted.",
   );
 
   expect(alert).toBeInTheDocument();

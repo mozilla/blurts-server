@@ -62,13 +62,13 @@ jest.mock("../utils/fluent.js", () => {
   };
 });
 
-jest.mock("../views/emails/email2022.js", () => {
+jest.mock("../emails/email2022.js", () => {
   return {
     getTemplate: jest.fn(),
   };
 });
 
-jest.mock("../views/emails/emailBreachAlert.js", () => {
+jest.mock("../emails/emailBreachAlert.js", () => {
   return {
     breachAlertEmailPartial: jest.fn(),
   };

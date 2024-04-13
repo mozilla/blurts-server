@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = Kontosaldon
@@ -14,7 +19,7 @@ avatars = Avatarer
 bank-account-numbers = Bankkontonummer
 beauty-ratings = Skönhetsbetyg
 biometric-data = Biometriska data
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Personuppgifter
 browser-user-agent-details = Information om webbläsarens användaragent
@@ -25,6 +30,7 @@ career-levels = Karriärnivåer
 cellular-network-names = Mobilnätsnamn
 charitable-donations = Välgörande donationer
 chat-logs = Chattloggar
+citizenship-statuses = Medborgarskapsstatusar
 clothing-sizes = Klädstorlekar
 credit-card-cvv = Kreditkort CVV
 credit-cards = Kreditkort
@@ -35,7 +41,7 @@ customer-interactions = Kundinteraktioner
 dates-of-birth = Födelsedatum
 deceased-date = Dödsdatum
 deceased-statuses = Dödsannonser
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Leveransinstruktioner
 device-information = Enhetsinformation
@@ -75,7 +81,7 @@ instant-messenger-identities = Instant messenger identiteter
 ip-addresses = IP-adresser
 job-applications = Jobbansökningar
 job-titles = Jobbtitlar
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Registreringsskyltar
 living-costs = Levnadskostnader
 # This string refers to financial loans.

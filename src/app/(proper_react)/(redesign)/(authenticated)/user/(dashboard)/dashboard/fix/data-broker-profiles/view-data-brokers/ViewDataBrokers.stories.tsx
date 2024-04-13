@@ -10,7 +10,7 @@ import {
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../../Shell";
-import { getOneL10nSync } from "../../../../../../../../../functions/server/mockL10n";
+import { getSpecificL10nSync } from "../../../../../../../../../functions/server/mockL10n";
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 
 const brokerOptions = {
@@ -91,7 +91,7 @@ const ViewWrapper = (props: ViewWrapperProps) => {
     expires: new Date().toISOString(),
     user: user,
   };
-  const l10n = getOneL10nSync();
+  const l10n = getSpecificL10nSync();
 
   return (
     <Shell l10n={l10n} session={mockedSession} nonce="">
@@ -110,7 +110,7 @@ const ViewWrapper = (props: ViewWrapperProps) => {
 };
 
 const meta: Meta<typeof ViewWrapper> = {
-  title: "Pages/Guided resolution/1b. Scan results",
+  title: "Pages/Logged in/Guided resolution/1b. Scan results",
   component: ViewWrapper,
   argTypes: {
     brokers: {

@@ -12,8 +12,8 @@ loadtests/venv
 .tmp
 public/dist
 dist
-src/client/images/logo_cache/
 public/logo_cache/
+src/client/images/logo_cache
 
 #e2e
 **/test-results/

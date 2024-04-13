@@ -15,7 +15,6 @@ import { metropolis } from "./fonts/Metropolis/metropolis";
 import { CONST_GA4_MEASUREMENT_ID } from "../constants";
 import { headers } from "next/headers";
 import { GoogleAnalyticsWorkaround } from "./components/client/GoogleAnalyticsWorkaround";
-import { getNonce } from "./deprecated/functions/server/getNonce";
 import StripeScript from "./components/client/StripeScript";
 
 // DO NOT ADD SECRETS: Env variables added here become public.
@@ -56,6 +55,7 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 }) {
+  const nonce = headers().get("x-nonce") ?? "";
   const currentLocale = getLocale(getL10nBundles());
   const session = await getServerSession();
 
@@ -76,7 +76,7 @@ export default async function RootLayout({
       {headers().get("DNT") !== "1" && (
         <GoogleAnalyticsWorkaround
           gaId={CONST_GA4_MEASUREMENT_ID}
-          nonce={getNonce()}
+          nonce={nonce}
           debugMode={
             process.env.NEXT_PUBLIC_GA4_DEBUG_MODE === "true" &&
             process.env.NODE_ENV !== "test"

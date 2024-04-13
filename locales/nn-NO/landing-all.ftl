@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
+landing-all-hero-title = Finn ut kvar din informasjon er eksponert — og ta han tilbake
 landing-all-hero-emailform-input-placeholder = dittnamn@doeme.no
 landing-all-hero-emailform-submit-label = Få gratis skanning
 # This is a label underneath a big number "14" - it's an image that demos Monitor.

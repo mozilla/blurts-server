@@ -63,9 +63,21 @@ const preview: Preview = {
         push(path: string, ...otherArgs: unknown[]) {
           action("nextNavigation.push")(path, ...otherArgs);
 
+          if (path === "/") {
+            linkTo("Pages/Public/Landing page", "US visitors")();
+          }
+
+          if (path === "/breaches") {
+            linkTo("Pages/Public/Breach index")();
+          }
+
+          if (path.startsWith("/breach-details/")) {
+            linkTo("Pages/Public/Breach listing")();
+          }
+
           if (path === "/user/dashboard") {
             linkTo(
-              "Pages/Dashboard",
+              "Pages/Logged in/Dashboard",
               "US user, without Premium, with unresolved scan results, with unresolved breaches",
             )();
           }
@@ -73,7 +85,7 @@ const preview: Preview = {
           if (
             path === "/user/dashboard/fix/data-broker-profiles/start-free-scan"
           ) {
-            linkTo("Pages/Guided resolution/1a. Free scan")();
+            linkTo("Pages/Logged in/Guided resolution/1a. Free scan")();
           }
 
           if (
@@ -81,7 +93,7 @@ const preview: Preview = {
             "/user/dashboard/fix/data-broker-profiles/view-data-brokers"
           ) {
             linkTo(
-              "Pages/Guided resolution/1b. Scan results",
+              "Pages/Logged in/Guided resolution/1b. Scan results",
               "With a few unresolved scan results (free)",
             )();
           }
@@ -89,14 +101,16 @@ const preview: Preview = {
           if (
             path === "/user/dashboard/fix/data-broker-profiles/manual-remove"
           ) {
-            linkTo("Pages/Guided resolution/1c. Manually resolve brokers")();
+            linkTo(
+              "Pages/Logged in/Guided resolution/1c. Manually resolve brokers",
+            )();
           }
 
           if (
             path === "/user/dashboard/fix/data-broker-profiles/automatic-remove"
           ) {
             linkTo(
-              "Pages/Guided resolution/1d. Automatically resolve brokers",
+              "Pages/Logged in/Guided resolution/1d. Automatically resolve brokers",
             )();
           }
 
@@ -105,7 +119,7 @@ const preview: Preview = {
             "/user/dashboard/fix/high-risk-data-breaches/social-security-number"
           ) {
             linkTo(
-              "Pages/Guided resolution/2. High-risk data breaches",
+              "Pages/Logged in/Guided resolution/2. High-risk data breaches",
               "2a. Social Security Number",
             )();
           }
@@ -114,7 +128,7 @@ const preview: Preview = {
             path === "/user/dashboard/fix/high-risk-data-breaches/credit-card"
           ) {
             linkTo(
-              "Pages/Guided resolution/2. High-risk data breaches",
+              "Pages/Logged in/Guided resolution/2. High-risk data breaches",
               "2b. Credit card",
             )();
           }
@@ -123,28 +137,28 @@ const preview: Preview = {
             path === "/user/dashboard/fix/high-risk-data-breaches/bank-account"
           ) {
             linkTo(
-              "Pages/Guided resolution/2. High-risk data breaches",
+              "Pages/Logged in/Guided resolution/2. High-risk data breaches",
               "2c. Bank account",
             )();
           }
 
           if (path === "/user/dashboard/fix/high-risk-data-breaches/pin") {
             linkTo(
-              "Pages/Guided resolution/2. High-risk data breaches",
+              "Pages/Logged in/Guided resolution/2. High-risk data breaches",
               "2d. PIN",
             )();
           }
 
           if (path === "/user/dashboard/fix/high-risk-data-breaches/done") {
             linkTo(
-              "Pages/Guided resolution/2. High-risk data breaches",
+              "Pages/Logged in/Guided resolution/2. High-risk data breaches",
               "2e. Done",
             )();
           }
 
           if (path === "/user/dashboard/fix/leaked-passwords/passwords") {
             linkTo(
-              "Pages/Guided resolution/3. Leaked passwords",
+              "Pages/Logged in/Guided resolution/3. Leaked passwords",
               "3a. Passwords",
             )();
           }
@@ -153,7 +167,7 @@ const preview: Preview = {
             path === "/user/dashboard/fix/leaked-passwords/security-questions"
           ) {
             linkTo(
-              "Pages/Guided resolution/3. Leaked passwords",
+              "Pages/Logged in/Guided resolution/3. Leaked passwords",
               "3b. Security questions",
             )();
           }
@@ -163,33 +177,36 @@ const preview: Preview = {
             path ===
               "/user/dashboard/fix/leaked-passwords/security-questions-done"
           ) {
-            linkTo("Pages/Guided resolution/3. Leaked passwords", "3c. Done")();
+            linkTo(
+              "Pages/Logged in/Guided resolution/3. Leaked passwords",
+              "3c. Done",
+            )();
           }
 
           if (path === "/user/dashboard/fix/security-recommendations/phone") {
             linkTo(
-              "Pages/Guided resolution/4. Security recommendations",
+              "Pages/Logged in/Guided resolution/4. Security recommendations",
               "4a. Phone number",
             )();
           }
 
           if (path === "/user/dashboard/fix/security-recommendations/email") {
             linkTo(
-              "Pages/Guided resolution/4. Security recommendations",
+              "Pages/Logged in/Guided resolution/4. Security recommendations",
               "4b. Email address",
             )();
           }
 
           if (path === "/user/dashboard/fix/security-recommendations/ip") {
             linkTo(
-              "Pages/Guided resolution/4. Security recommendations",
+              "Pages/Logged in/Guided resolution/4. Security recommendations",
               "4c. IP address",
             )();
           }
 
           if (path === "/user/dashboard/fix/security-recommendations/done") {
             linkTo(
-              "Pages/Guided resolution/4. Security recommendations",
+              "Pages/Logged in/Guided resolution/4. Security recommendations",
               "4d. Done",
             )();
           }

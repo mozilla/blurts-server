@@ -4,8 +4,7 @@
 
 import { getL10n } from "./l10n";
 import AppConstants from "../../../appConstants.js";
-import { Breach } from "../../deprecated/(authenticated)/user/breaches/breaches";
-import { BreachDataTypes } from "../universal/breach";
+import { Breach, BreachDataTypes } from "../universal/breach";
 
 /**
  * TODO: Map from google doc: https://docs.google.com/document/d/1KoItFsTYVIBInIG2YmA7wSxkKS4vti_X0A0td_yaHVM/edit#
@@ -228,24 +227,4 @@ function getRecommendationFromResolution(resolution: any, args: any) {
   return { header, body, priority };
 }
 
-/**
- * Take breach DataTypes array from HIBP and filter based on BreachDataTypes enums above
- *
- * @param originalDataTypes breach DataTypes array from HIBP
- * @returns filtered breach data types
- */
-// Old untyped code, adding type defitions now isn't worth the effort:
-/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-function filterBreachDataTypes(originalDataTypes: any[]) {
-  const relevantDataTypes = Object.values(BreachDataTypes);
-  // This function predates proper use of TypeScript, so we don't have a better
-  // return type than `any` yet:
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  return originalDataTypes.filter((d) => relevantDataTypes.includes(d));
-}
-
-export {
-  BreachDataTypes,
-  appendBreachResolutionChecklist,
-  filterBreachDataTypes,
-};
+export { BreachDataTypes, appendBreachResolutionChecklist };

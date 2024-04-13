@@ -30,6 +30,7 @@ career-levels = Karriere-niveauer
 cellular-network-names = Navne på mobilnetværk
 charitable-donations = Donationer til velgørende formål
 chat-logs = Chat-logs
+citizenship-statuses = Status for statsborgerskab
 clothing-sizes = Tøjstørrelser
 credit-card-cvv = CVV-koder for betalingskort
 credit-cards = Betalingskort

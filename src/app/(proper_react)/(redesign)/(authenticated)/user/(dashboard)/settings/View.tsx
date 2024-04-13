@@ -16,7 +16,7 @@ import { AlertAddressForm } from "./AlertAddressForm";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 import { TelemetryLink } from "../../../../../../components/client/TelemetryLink";
 import { hasPremium } from "../../../../../../functions/universal/user";
-import { sanitizeEmailRow } from "../../../../../../functions/server/sanitizeEmailRow";
+import { sanitizeEmailRow } from "../../../../../../functions/server/sanitize";
 import { SettingsConfirmationDialog } from "./SettingsConfirmationDialog";
 import { DeleteAccountButton } from "./DeleteAccountButton";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
@@ -116,28 +116,28 @@ export const SettingsView = (props: Props) => {
             </>
           )}
           <hr />
-          <div className={styles.deactivateSection}>
-            <h3>{l10n.getString("settings-deactivate-account-title")}</h3>
-            <p>{l10n.getString("settings-deactivate-account-info-2")}</p>
-            <TelemetryLink
-              href={props.fxaSettingsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              eventData={{
-                link_id: "deactivate_account",
-              }}
-            >
-              {l10n.getString("settings-fxa-link-label-3")}
-              <OpenInNew
-                alt={l10n.getString("open-in-new-tab-alt")}
-                width="13"
-                height="13"
-              />
-            </TelemetryLink>
-          </div>
-          {props.enabledFeatureFlags.includes("MonitorAccountDeletion") && (
+          {!props.enabledFeatureFlags.includes("MonitorAccountDeletion") ? (
+            <div className={styles.deactivateSection}>
+              <h3>{l10n.getString("settings-deactivate-account-title")}</h3>
+              <p>{l10n.getString("settings-deactivate-account-info-2")}</p>
+              <TelemetryLink
+                href={props.fxaSettingsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                eventData={{
+                  link_id: "deactivate_account",
+                }}
+              >
+                {l10n.getString("settings-fxa-link-label-3")}
+                <OpenInNew
+                  alt={l10n.getString("open-in-new-tab-alt")}
+                  width="13"
+                  height="13"
+                />
+              </TelemetryLink>
+            </div>
+          ) : (
             <>
-              <hr />
               <div className={styles.deleteAccountSection}>
                 {hasPremium(props.user) ? (
                   <>
@@ -148,7 +148,7 @@ export const SettingsView = (props: Props) => {
                     </h3>
                     <p>
                       {l10n.getString(
-                        "settings-delete-monitor-plus-account-description",
+                        "settings-delete-monitor-plus-account-description-2",
                       )}
                     </p>
                     <SettingsConfirmationDialog
@@ -157,7 +157,7 @@ export const SettingsView = (props: Props) => {
                         "settings-delete-monitor-plus-account-cta-label",
                       )}
                       title={l10n.getString(
-                        "settings-delete-monitor-plus-account-dialog-title",
+                        "settings-delete-monitor-plus-account-dialog-title-2",
                       )}
                       illustration={
                         <Image src={AddEmailDialogIllustration} alt="" />
@@ -169,12 +169,12 @@ export const SettingsView = (props: Props) => {
                       <div className={styles.dialogLead}>
                         <p>
                           {l10n.getString(
-                            "settings-delete-monitor-plus-account-dialog-lead-p1",
+                            "settings-delete-monitor-plus-account-dialog-lead-p1-2",
                           )}
                         </p>
                         <p>
                           {l10n.getString(
-                            "settings-delete-monitor-plus-account-dialog-lead-p2",
+                            "settings-delete-monitor-plus-account-dialog-lead-p2-2",
                           )}
                         </p>
                       </div>

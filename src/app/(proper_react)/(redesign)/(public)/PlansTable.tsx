@@ -53,12 +53,12 @@ import {
   BillingPeriodToggle,
 } from "../../../components/client/BillingPeriod";
 import { getLocale } from "../../../functions/universal/getLocale";
-import { Button } from "../../../components/client/Button";
 import { signIn } from "next-auth/react";
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../constants";
 import { useCookies } from "react-cookie";
 import { modifyAttributionsForUrlSearchParams } from "../../../functions/universal/attributions";
+import { TelemetryButton } from "../../../components/client/TelemetryButton";
 
 export type Props = {
   "aria-labelledby": string;
@@ -201,24 +201,30 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                 )}
               </span>
             </p>
-            <Button
+            <TelemetryButton
+              aria-describedby="plansTableMonthlyOrYearly plansTableReassurancePlus"
               disabled={props.scanLimitReached}
               variant="primary"
               href={`${props.premiumSubscriptionUrl[billingPeriod]}&${searchParam.current.toString()}`}
               className={styles.cta}
-              onPress={() => {
-                recordTelemetry("upgradeIntent", "click", {
+              event={{
+                module: "upgradeIntent",
+                name: "click",
+                data: {
                   button_id:
                     billingPeriod === "yearly"
                       ? "purchase_yearly_landing_page"
                       : "purchase_monthly_landing_page",
-                });
+                },
               }}
             >
               {l10n.getString("landing-premium-plans-table-cta-plus-label")}
-            </Button>
+            </TelemetryButton>
             {!props.scanLimitReached && (
-              <small className={styles.reassurance}>
+              <small
+                className={styles.reassurance}
+                id="plansTableReassurancePlus"
+              >
                 {l10n.getString(
                   "landing-premium-plans-table-reassurance-plus-label",
                 )}
@@ -381,28 +387,36 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
           </div>
           <hr />
           <div className={styles.priceSection}>
-            <p className={styles.billingPeriod}>
+            <p className={styles.billingPeriod} id="plansTableBillingFree">
               {l10n.getString("landing-premium-plans-table-billing-free")}
             </p>
             <p className={styles.cost}>
               <b className={styles.price}>{roundedPriceFormatter.format(0)}</b>
               <span className={styles.total} />
             </p>
-            <Button
+            <TelemetryButton
+              aria-describedby="plansTableBillingFree plansTableReassuranceFree"
               disabled={props.scanLimitReached}
               variant="primary"
               className={styles.cta}
-              onPress={() => {
-                recordTelemetry("ctaButton", "click", {
+              event={{
+                module: "ctaButton",
+                name: "click",
+                data: {
                   button_id: "clicked_free_pricing_grid",
-                });
+                },
+              }}
+              onPress={() => {
                 void signIn("fxa");
               }}
             >
               {l10n.getString("landing-premium-plans-table-cta-free-label")}
-            </Button>
+            </TelemetryButton>
             {!props.scanLimitReached && (
-              <small className={styles.reassurance}>
+              <small
+                className={styles.reassurance}
+                id="plansTableReassuranceFree"
+              >
                 {l10n.getString(
                   "landing-premium-plans-table-reassurance-free-label",
                 )}
@@ -724,18 +738,23 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   </b>
                   <span className={styles.total} />
                 </p>
-                <Button
+                <TelemetryButton
+                  aria-describedby="plansTableBillingFree plansTableReassuranceFree"
                   disabled={props.scanLimitReached}
                   variant="secondary"
-                  onPress={() => {
-                    recordTelemetry("ctaButton", "click", {
+                  event={{
+                    module: "ctaButton",
+                    name: "click",
+                    data: {
                       button_id: "clicked_free_pricing_grid",
-                    });
+                    },
+                  }}
+                  onPress={() => {
                     void signIn("fxa");
                   }}
                 >
                   {l10n.getString("landing-premium-plans-table-cta-free-label")}
-                </Button>
+                </TelemetryButton>
                 {!props.scanLimitReached && (
                   <small className={styles.reassurance}>
                     {l10n.getString(
@@ -761,7 +780,7 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                   />
                 </div>
                 <p aria-live="polite" className={styles.cost}>
-                  <b className={styles.price}>
+                  <b className={styles.price} id="plansTableMonthlyOrYearly">
                     {billingPeriod === "yearly"
                       ? l10n.getString(
                           "landing-premium-plans-table-price-plus-yearly",
@@ -811,21 +830,24 @@ export const PlansTable = (props: Props & ScanLimitProp) => {
                     )}
                   </span>
                 </p>
-                <Button
+                <TelemetryButton
+                  aria-describedby="plansTableMonthlyOrYearly plansTableReassurancePlus"
                   disabled={props.scanLimitReached}
                   variant="primary"
                   href={`${props.premiumSubscriptionUrl[billingPeriod]}&${searchParam.current.toString()}`}
-                  onPress={() => {
-                    recordTelemetry("upgradeIntent", "click", {
+                  event={{
+                    module: "upgradeIntent",
+                    name: "click",
+                    data: {
                       button_id:
                         billingPeriod === "yearly"
                           ? "purchase_yearly_landing_page"
                           : "purchase_monthly_landing_page",
-                    });
+                    },
                   }}
                 >
                   {l10n.getString("landing-premium-plans-table-cta-plus-label")}
-                </Button>
+                </TelemetryButton>
                 {!props.scanLimitReached && (
                   <small className={styles.reassurance}>
                     {l10n.getString(
@@ -1069,12 +1091,12 @@ const InfoPopover = ({
         {...buttonProps}
         ref={triggerRef}
         className={styles.popoverTrigger}
+        aria-label={l10n.getString("open-tooltip-alt")}
+        aria-describedby={l10n.getString(
+          "landing-premium-plans-table-feature-callout-trigger",
+        )}
       >
-        <QuestionMarkCircle
-          alt={l10n.getString(
-            "landing-premium-plans-table-feature-callout-trigger",
-          )}
-        />
+        <QuestionMarkCircle alt="" />
       </button>
       {triggerState.isOpen && (
         <Popover

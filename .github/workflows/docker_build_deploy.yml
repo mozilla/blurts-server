@@ -1,0 +1,50 @@
+name: Build Docker image and publish
+
+on:
+  push:
+    branches: [ main ]
+    tags: '*'
+
+jobs:
+  push_to_registry:
+    name: Push Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: mozilla/blurts-server
+          tags: |
+            type=semver,pattern={{raw}}
+            type=raw,value={{sha}},event=tag
+
+      - name: Create version.json
+        run: |
+          echo "{\"commit\":\"$GITHUB_SHA\",\"version\":\"$GITHUB_REF\",\"source\":\"https://github.com/$GITHUB_REPOSITORY\",\"build\":\"$GITHUB_RUN_ID\"}" > version.json
+
+      - name: Build Docker image
+        run: |
+          docker build --tag blurts-server \
+            --build-arg SENTRY_RELEASE="$GITHUB_REF_NAME" \
+            .
+
+      - name: Deploy to Dockerhub
+        env:
+          DOCKERHUB_REPO: ${{ env.DOCKERHUB_REPO }}
+        run: |
+          # deploy main
+          docker tag blurts-server mozilla/blurts-server:latest
+          docker push mozilla/blurts-server:latest
+          docker tag blurts-server ${{ steps.meta.outputs.tags }}
+          docker push ${{ steps.meta.outputs.tags }}
+

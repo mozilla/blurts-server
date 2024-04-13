@@ -2,8 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Bentangkan
-chevron-up-alt = Ciutkan
+chevron-alt = Detail eksposur
+
 exposure-card-exposure-type = Jenis paparan
 exposure-card-date-found = Tanggal pemaparan
 
@@ -34,8 +34,6 @@ exposure-card-exposure-type-data-breach = Kebocoran data
 exposure-card-cta = Perbaiki semua eksposur
 exposure-card-label-company-logo = Logo perusahaan
 exposure-card-label-company = Perusahaan
-exposure-card-label-exposure-type = Jenis paparan
-exposure-card-label-date-found = Tanggal ditemukan
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Status
 # Variables:
