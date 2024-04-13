@@ -7,6 +7,10 @@ import styles from "./VisuallyHidden.module.scss";
 
 // This is an alternative to react-aria's <VisuallyHidden> component that does
 // not use inline styles, which would be blocked by our Content Security Policy.
-export const VisuallyHidden = (props: { children: ReactNode }) => {
-  return <div className={styles.visuallyHidden}>{props.children}</div>;
+export const VisuallyHidden = (props: { children: ReactNode; id?: string }) => {
+  return (
+    <div id={props.id} className={styles.visuallyHidden}>
+      {props.children}
+    </div>
+  );
 };

@@ -270,7 +270,7 @@ user-menu-signout-tooltip = Terminar sessão do { -brand-mozilla-monitor }?
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Termos do serviço
 privacy-notice = Informação de privacidade
 github = { -brand-github }

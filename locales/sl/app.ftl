@@ -342,7 +342,7 @@ user-menu-signout-tooltip = Odjava iz { -brand-mozilla-monitor(sklon: "rodilnik"
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Pogoji uporabe
 privacy-notice = Obvestilo o zasebnosti
 github = { -brand-github }

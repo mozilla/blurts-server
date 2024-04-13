@@ -304,7 +304,7 @@ user-menu-signout-tooltip = Αποσύνδεση από το { -brand-mozilla-mo
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Όροι υπηρεσίας
 privacy-notice = Σημείωση απορρήτου
 github = { -brand-github }

@@ -270,7 +270,7 @@ user-menu-signout-tooltip = Kijelentkezés a { -brand-mozilla-monitor }ból
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Szolgáltatás feltételei
 privacy-notice = Adatvédelmi nyilatkozat
 github = { -brand-github }

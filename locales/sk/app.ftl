@@ -381,7 +381,7 @@ user-menu-signout-tooltip = Odhlásiť sa z { -brand-mozilla-monitor(case: "gen"
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Podmienky používania služby
 privacy-notice = Vyhlásenie o ochrane osobných údajov
 github = { -brand-github }

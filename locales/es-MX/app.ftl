@@ -223,7 +223,7 @@ sign-in = Inicia sesión
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 github = { -brand-github }
 footer-nav-all-breaches = Todas las filtraciones
 

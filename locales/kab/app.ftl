@@ -251,7 +251,7 @@ user-menu-signout-tooltip = Ffeɣ deg { -brand-mozilla-monitor }
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Tiwtilin n useqdec
 privacy-notice = Tasertit n tbaḍnit
 github = { -brand-github }

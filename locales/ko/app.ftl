@@ -256,7 +256,7 @@ user-menu-signout-tooltip = { -brand-mozilla-monitor }에서 로그아웃
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = 이용 약관
 privacy-notice = 개인정보 보호정책
 github = { -brand-github }

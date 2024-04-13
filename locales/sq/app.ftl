@@ -255,7 +255,7 @@ user-menu-signout-tooltip = Dilni nga { -brand-mozilla-monitor }
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Kushtet e Shërbimit
 privacy-notice = Shënim Mbi Privatësinë
 github = { -brand-github }
