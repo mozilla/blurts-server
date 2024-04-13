@@ -30,7 +30,6 @@ exposure-chart-caption-fixed = Dizze grafyk toant it totaal oantal oploste lekke
 exposure-chart-returning-user-upgrade-prompt = Wenplak, famyljeleden en mear binne noch net opnommen.
 exposure-chart-returning-user-upgrade-prompt-cta = In fergeze scan starte
 exposure-chart-scan-in-progress-prompt = <b>Dwaande mei scannen:</b> adres, famyljeleden en mear binne noch net opnommen.
-
 modal-active-number-of-exposures-title = Oer jo oantal aktive lekken
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -43,19 +42,15 @@ modal-active-number-of-exposures-part-two = As jo bygelyks 10 lekken fan jo tele
 modal-active-number-of-exposures-part-three-all = Sadree’t se oplost binne, wurde se tafoege oan jo totale oantal fêste lekken op de side Oplost.
 modal-fixed-number-of-exposures-title = Oer jo oantal oploste lekken
 modal-fixed-number-of-exposures-all = Dit diagram omfettet it totale oantal gegevenslekken dat reparearre is foar alle e-mailadressen dy’t jo op dit stuit kontrolearje. Sa gau as lekken as oplost markearre binne, wurde se hjir oan it totaal tafoege.
-
 modal-cta-ok = OK
-modal-open-alt = Iepenje
-modal-close-alt = Slute
-
+open-modal-alt = Modal iepenje
+close-modal-alt = Modal slute
+open-tooltip-alt = Tooltip iepenje
 progress-card-heres-what-we-fixed-headline-all = Dit hawwe jo reparearre
 progress-card-manually-fixed-headline = Hânmjittich reparearre
-
 dashboard-tab-label-action-needed = Aksje nedich
 dashboard-tab-label-fixed = Oplost
 dashboard-exposures-all-fixed-label = Alles oplost!
-
-
 dashboard-exposures-area-headline = Alle websites wêrop jo gegevens lekt binne
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
@@ -65,7 +60,6 @@ dashboard-exposures-area-description-all-line1 =
         [one] Wy hawwe { $exposures_unresolved_num } lek fan jo gegevens fûn.
        *[other] Wy hawwe { $exposures_unresolved_num } lekken fan jo gegevens fûn.
     }
-
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
@@ -75,7 +69,6 @@ dashboard-exposures-area-description-all-line2 =
        *[other] Dizze binne ferskynd yn { $data_breach_unresolved_num } datalekken.
     }
 dashboard-fixed-area-headline-all = Alle oploste lekken toane
-
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filterje
 dashboard-exposures-filter-company = Bedriuw
@@ -93,10 +86,8 @@ dashboard-exposures-filter-reset = Opnij ynstelle
 
 dashboard-top-banner-section-label = Dashbordgearfetting
 dashboard-top-banner-scan-in-progress-title = Jo scan is noch dwaande
-
 dashboard-top-banner-your-data-is-protected-title = Jo gegevens binne beskerme
 dashboard-top-banner-your-data-is-protected-cta = Sjoch wat der oplost is
-
 dashboard-top-banner-lets-keep-protecting-title = Litte wy jo gegevens beskermje bliuwe
 # Variables:
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
@@ -106,10 +97,8 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] Jo hawwe noch { $exposures_unresolved_num } lekken oer om te reparearjen. Gean troch en beskermje josels. Wy liede jo stap foar stap dertrochhinne.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Lit ús trochgean
-
 dashboard-top-banner-protect-your-data-title = Litte wy jo gegevens beskermje
 dashboard-top-banner-protect-your-data-cta = Litte wy it reparearje
-
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
@@ -126,11 +115,9 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
         [one] Dizze binne ferskynd yn { $data_breach_unresolved_num } datalek. Wy helpe jo stap foar stap om dit te ferhelpen.
        *[other] Dizze binne ferskynd yn { $data_breach_unresolved_num } datalekken. Wy helpe jo stap foar stap om dit te ferhelpen.
     }
-
 dashboard-top-banner-no-exposures-found-title = Gjin lekken fûn
 dashboard-top-banner-non-us-no-exposures-found-description = Geweldich nijs! Wy hawwe alle bekende datalekken trochsocht en gjin lekken fûn. Wy bliuwe jo e-mailadres kontrolearje en sille jo warskôgje as in nij datalek bart.
 dashboard-no-exposures-label = Gjin lekken fûn
-
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
 dashboard-top-banner-non-us-your-data-is-protected-description =
@@ -138,7 +125,6 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
         [one] Goed wurk, it lek fan jo gegevens is oplost! Wy bliuwe kontrolearje en sille jo op de hichte hâlde fan nije lekken.
        *[other] Goed wurk, alle { $exposures_resolved_num } lekken fan jo gegevens is oplost! Wy bliuwe kontrolearje en sille jo op de hichte hâlde fan nije lekken.
     }
-
 dashboard-top-banner-monitor-more-cta = Mear e-mailadressen kontrolearje
 
 # About Exposure Statuses Modal
