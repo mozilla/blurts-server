@@ -1,0 +1,48 @@
+@import "../../tokens";
+
+.wrapper {
+  align-items: center;
+  background: linear-gradient(90deg, $color-purple-90 50%, $color-purple-60);
+  color: $color-white;
+  display: flex;
+  padding: $layout-xs $layout-sm;
+  position: relative;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.prompt,
+.prompt a {
+  color: $color-white;
+}
+
+.answers {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  @media screen and (min-width: $screen-md) {
+    flex-direction: row;
+  }
+}
+
+.answer {
+  background-color: $color-purple-40 !important;
+
+  &:hover {
+    background-color: $color-purple-50 !important;
+  }
+}
+
+.closeButton {
+  background-color: transparent;
+  border-radius: $border-radius-sm;
+  border-style: none;
+  color: $color-white;
+  cursor: pointer;
+  padding: $spacing-md;
+  position: absolute;
+  right: 0;
+  top: 0;
+}

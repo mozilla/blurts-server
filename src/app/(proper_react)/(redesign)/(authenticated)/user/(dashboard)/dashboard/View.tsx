@@ -40,6 +40,7 @@ import ScanProgressIllustration from "./images/scan-illustration.svg";
 import { CountryCodeContext } from "../../../../../../../contextProviders/country-code";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { getNextGuidedStep } from "../../../../../../functions/server/getRelevantGuidedSteps";
+import { CsatSurvey } from "../../../../../../components/client/CsatSurvey";
 import { WaitlistDialog } from "../../../../../../components/client/SubscriberWaitlistDialog";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
@@ -423,6 +424,7 @@ export const View = (props: Props) => {
           selectedKey={selectedTab}
         />
       </Toolbar>
+      <CsatSurvey user={props.user} />
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           tabType={selectedTab}
