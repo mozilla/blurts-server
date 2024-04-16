@@ -424,7 +424,9 @@ export const View = (props: Props) => {
           selectedKey={selectedTab}
         />
       </Toolbar>
-      <CsatSurvey user={props.user} />
+      {props.enabledFeatureFlags.includes("CsatSurvey") && (
+        <CsatSurvey user={props.user} />
+      )}
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           tabType={selectedTab}
