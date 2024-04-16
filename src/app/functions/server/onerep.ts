@@ -10,8 +10,8 @@ import {
 } from "../../../utils/parse.js";
 import { StateAbbr } from "../../../utils/states.js";
 import {
-  getAllScansForProfile,
   getLatestOnerepScanResults,
+  getScansForProfileByReason,
 } from "../../../db/tables/onerep_scans";
 import { RemovalStatus } from "../universal/scanResult.js";
 import {
@@ -19,6 +19,7 @@ import {
   getEnabledFeatureFlags,
 } from "../../../db/tables/featureFlags";
 import { logger } from "./logging";
+import { OnerepScanRow } from "knex/types/tables";
 
 export const monthlyScansQuota = parseInt(
   (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
@@ -61,11 +62,12 @@ export type OneRepResponse<Data> = {
   data: Data;
   meta: OneRepMeta;
 };
+export type ScanReason = "initial" | "monitoring" | "manual";
 export type Scan = {
   id: number;
   profile_id: number;
   status: "in_progress" | "finished";
-  reason: "initial" | "monitoring" | "manual";
+  reason: ScanReason;
 };
 export type ListScansResponse = OneRepResponse<Scan[]>;
 export type ScanResult = {
@@ -246,10 +248,8 @@ export async function activateAndOptoutProfile({
   forceActivation?: boolean;
 }): Promise<void> {
   try {
-    const scans = await getAllScansForProfile(profileId);
-    const hasInitialScan = scans.some(
-      (scan) => scan.onerep_scan_reason === "initial",
-    );
+    const scans = await getScansForProfileByReason(profileId, "initial");
+    const hasInitialScan = scans.length > 0;
     if (hasInitialScan && !forceActivation) {
       return;
     }
@@ -414,6 +414,25 @@ export async function getScanDetails(
     );
   }
   return response.json() as Promise<Scan>;
+}
+
+export async function getLatestScanByReason(
+  profileId: number,
+  scanReason: ScanReason,
+): Promise<OnerepScanRow | undefined> {
+  try {
+    const scans = await getScansForProfileByReason(profileId, scanReason);
+    if (scans.length === 0) {
+      return;
+    }
+
+    return scans[0];
+  } catch (error) {
+    logger.error(
+      `Failed to get latest scan for profile by reason: [${scanReason}]`,
+      error,
+    );
+  }
 }
 
 export async function getAllScanResults(

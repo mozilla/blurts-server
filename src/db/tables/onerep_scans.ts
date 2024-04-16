@@ -5,7 +5,11 @@
 import createDbConnection from "../connect.js";
 import { logger } from "../../app/functions/server/logging";
 
-import { ScanResult, Scan } from "../../app/functions/server/onerep.js";
+import {
+  ScanResult,
+  Scan,
+  ScanReason,
+} from "../../app/functions/server/onerep.js";
 import {
   OnerepScanResultRow,
   OnerepScanRow,
@@ -27,6 +31,18 @@ async function getAllScansForProfile(
     .orderBy("created_at", "desc");
 
   return scans;
+}
+
+async function getScansForProfileByReason(
+  onerepProfileId: number,
+  oneRepScanReason: ScanReason,
+): Promise<OnerepScanRow[]> {
+  const scan = await knex("onerep_scans")
+    .where("onerep_profile_id", onerepProfileId)
+    .where("onerep_scan_reason", oneRepScanReason)
+    .orderBy("created_at", "desc");
+
+  return scan;
 }
 
 async function getScanResults(
@@ -90,7 +106,7 @@ async function setOnerepScan(
   onerepProfileId: number,
   onerepScanId: number,
   onerepScanStatus: Scan["status"],
-  oneRepScanReason: "manual" | "initial" | "monitoring",
+  oneRepScanReason: ScanReason,
 ) {
   await knex("onerep_scans")
     .insert({
@@ -240,6 +256,7 @@ async function deleteScanResultsForProfile(
 
 export {
   getAllScansForProfile,
+  getScansForProfileByReason,
   getScanResults,
   getLatestOnerepScanResults,
   setOnerepProfileId,

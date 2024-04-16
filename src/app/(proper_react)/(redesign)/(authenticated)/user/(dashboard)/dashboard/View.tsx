@@ -67,6 +67,7 @@ export type Props = {
   scanCount: number;
   isNewUser: boolean;
   telemetryId: string;
+  elapsedTimeSinceInitialScan: number;
   totalNumberOfPerformedScans?: number;
 };
 
@@ -425,7 +426,9 @@ export const View = (props: Props) => {
         />
       </Toolbar>
       {props.enabledFeatureFlags.includes("CsatSurvey") && (
-        <CsatSurvey user={props.user} />
+        <CsatSurvey
+          elapsedTimeSinceInitialScan={props.elapsedTimeSinceInitialScan}
+        />
       )}
       <div className={styles.dashboardContent}>
         <DashboardTopBanner

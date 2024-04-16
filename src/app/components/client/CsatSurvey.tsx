@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { useState } from "react";
-import { Session } from "next-auth";
 import { useL10n } from "../../hooks/l10n";
 import {
   DismissOptions,
@@ -29,14 +28,14 @@ type SurveyTypes = "initial" | "3-months" | "6-months" | "12-months";
 
 type Survey = {
   id: SurveyTypes;
-  displayThreshold: number;
+  timeThreshold: number;
   options: SurveyLinks;
 };
 
 const surveys: Survey[] = [
   {
     id: "initial",
-    displayThreshold: 0,
+    timeThreshold: 0,
     options: {
       "very-dissatisfied":
         "https://survey.alchemer.com/s3/7714663/69d629a9e8e6",
@@ -48,7 +47,7 @@ const surveys: Survey[] = [
   },
   {
     id: "3-months",
-    displayThreshold: 90,
+    timeThreshold: 90,
     options: {
       "very-dissatisfied":
         "https://survey.alchemer.com/s3/7718223/9bf87045f7fb",
@@ -60,7 +59,7 @@ const surveys: Survey[] = [
   },
   {
     id: "6-months",
-    displayThreshold: 180,
+    timeThreshold: 180,
     options: {
       "very-dissatisfied":
         "https://survey.alchemer.com/s3/7718561/1354e1186d33",
@@ -72,7 +71,7 @@ const surveys: Survey[] = [
   },
   {
     id: "12-months",
-    displayThreshold: 351,
+    timeThreshold: 351,
     options: {
       "very-dissatisfied":
         "https://survey.alchemer.com/s3/7718562/c254fe9e3c33",
@@ -85,32 +84,30 @@ const surveys: Survey[] = [
 ] as const;
 
 type Props = {
-  user: Session["user"];
+  elapsedTimeSinceInitialScan: number;
 };
 
-const getSurveyByDate = (subscriptionDate: number): Survey => {
-  return (
-    surveys.findLast(
-      (answer) =>
-        subscriptionDate <=
-        Date.now() - answer.displayThreshold * CONST_DAY_MILLISECONDS,
-    ) ?? surveys[0]
+const getRelevantSurvey = (elapsedTime: number): Survey | undefined => {
+  return surveys.findLast(
+    (survey) => elapsedTime >= survey.timeThreshold * CONST_DAY_MILLISECONDS,
   );
 };
 
-export const CsatSurvey = (_props: Props) => {
+export const CsatSurvey = (props: Props) => {
   const l10n = useL10n();
   const [answer, setAnswer] = useState<keyof SurveyLinks>();
 
-  const subscriptionDate = Date.now() - CONST_DAY_MILLISECONDS;
-  const survey = getSurveyByDate(subscriptionDate);
-
   const hasRenderedClientSide = useHasRenderedClientSide();
+  const survey = getRelevantSurvey(props.elapsedTimeSinceInitialScan);
   const localDismissal = useLocalDismissal(
-    `survey-csat-subscriber_${survey.id}`,
+    `survey-csat-subscriber_${survey?.id}`,
   );
 
-  if (!hasRenderedClientSide || localDismissal.isDismissed) {
+  if (
+    !hasRenderedClientSide ||
+    typeof survey === "undefined" ||
+    localDismissal.isDismissed
+  ) {
     return null;
   }
 
