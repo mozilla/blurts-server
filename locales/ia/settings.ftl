@@ -50,7 +50,11 @@ settings-fxa-link-label-3 = Ir a parametros de { -brand-mozilla-account }
 
 ## Delete Monitor account
 
+settings-delete-monitor-free-account-title = Deler conto { -brand-monitor }
+settings-delete-monitor-free-account-description = Isto permanentemente delera tu conto { -brand-monitor } e disactivara tote le notificationes.
 settings-delete-monitor-free-account-cta-label = Deler le conto
+settings-delete-monitor-free-account-dialog-title = Tu conto conto { -brand-monitor } sera permanentemente delite
 settings-delete-monitor-free-account-dialog-cta-label = Deler le conto
 settings-delete-monitor-free-account-dialog-cancel-button-label = Non importa, tornar retro
+settings-delete-monitor-account-confirmation-toast-label-2 = Tu conto { -brand-monitor } es delite.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Dimitter
