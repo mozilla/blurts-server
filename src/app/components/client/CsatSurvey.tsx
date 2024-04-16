@@ -12,6 +12,7 @@ import {
 import styles from "./CsatSurvey.module.scss";
 import { Button } from "./Button";
 import { CloseBtn } from "../server/Icons";
+import { useHasRenderedClientSide } from "../../hooks/useHasRenderedClientSide";
 
 const SurveyResponses = {
   "very-dissatisfied": "Very Dissatisfied",
@@ -25,7 +26,7 @@ type SurveyLinks = Record<keyof typeof SurveyResponses, string>;
 
 type SurveyTypes = "initial" | "3-months" | "6-months" | "12-months";
 
-type SurveyAnswer = {
+type Survey = {
   id: SurveyTypes;
   displayThreshold: number;
   options: SurveyLinks;
@@ -33,7 +34,7 @@ type SurveyAnswer = {
 
 const dayInMilliseconds = 24 * 60 * 60 * 1000;
 
-const surveyAnswers: SurveyAnswer[] = [
+const surveys: Survey[] = [
   {
     id: "initial",
     displayThreshold: 0,
@@ -84,13 +85,13 @@ type Props = {
   user: Session["user"];
 };
 
-const getSurveyAnswer = (
-  subscriptionDate: number,
-): SurveyAnswer | undefined => {
-  return surveyAnswers.findLast(
-    (answer) =>
-      subscriptionDate <=
-      Date.now() - answer.displayThreshold * dayInMilliseconds,
+const getSurveyByDate = (subscriptionDate: number): Survey => {
+  return (
+    surveys.findLast(
+      (answer) =>
+        subscriptionDate <=
+        Date.now() - answer.displayThreshold * dayInMilliseconds,
+    ) ?? surveys[0]
   );
 };
 
@@ -98,14 +99,17 @@ export const CsatSurvey = (_props: Props) => {
   const l10n = useL10n();
   const [answer, setAnswer] = useState<keyof SurveyLinks>();
 
-  const subscriptionDate = Date.now() - dayInMilliseconds;
-  const surveyAnswer = getSurveyAnswer(subscriptionDate);
+  const subscriptionDate = Date.now() - dayInMilliseconds * 181;
+  const survey = getSurveyByDate(subscriptionDate);
 
+  const hasRenderedClientSide = useHasRenderedClientSide();
   const localDismissal = useLocalDismissal(
-    "survey-csat-subscriber_test",
-    // After the third month, show every three months:
-    { duration: dayInMilliseconds * 60 },
+    `survey-csat-subscriber_${survey.id}`,
   );
+
+  if (!hasRenderedClientSide || localDismissal.isDismissed) {
+    return null;
+  }
 
   const dismiss = (options?: DismissOptions) => {
     localDismissal.dismiss(options);
@@ -118,11 +122,10 @@ export const CsatSurvey = (_props: Props) => {
 
   return (
     <aside className={styles.wrapper}>
-      ({surveyAnswer && surveyAnswer.id})
       {typeof answer !== "undefined" ? (
         <div className={styles.prompt}>
           <a
-            href=""
+            href={survey.options[answer]}
             onClick={() => dismiss()}
             target="_blank"
             rel="noopen noreferrer"
