@@ -13,6 +13,7 @@ import styles from "./CsatSurvey.module.scss";
 import { Button } from "./Button";
 import { CloseBtn } from "../server/Icons";
 import { useHasRenderedClientSide } from "../../hooks/useHasRenderedClientSide";
+import { CONST_DAY_MILLISECONDS } from "../../../constants";
 
 const SurveyResponses = {
   "very-dissatisfied": "Very Dissatisfied",
@@ -31,8 +32,6 @@ type Survey = {
   displayThreshold: number;
   options: SurveyLinks;
 };
-
-const dayInMilliseconds = 24 * 60 * 60 * 1000;
 
 const surveys: Survey[] = [
   {
@@ -94,7 +93,7 @@ const getSurveyByDate = (subscriptionDate: number): Survey => {
     surveys.findLast(
       (answer) =>
         subscriptionDate <=
-        Date.now() - answer.displayThreshold * dayInMilliseconds,
+        Date.now() - answer.displayThreshold * CONST_DAY_MILLISECONDS,
     ) ?? surveys[0]
   );
 };
@@ -103,7 +102,7 @@ export const CsatSurvey = (_props: Props) => {
   const l10n = useL10n();
   const [answer, setAnswer] = useState<keyof SurveyLinks>();
 
-  const subscriptionDate = Date.now() - dayInMilliseconds * 181;
+  const subscriptionDate = Date.now() - CONST_DAY_MILLISECONDS;
   const survey = getSurveyByDate(subscriptionDate);
 
   const hasRenderedClientSide = useHasRenderedClientSide();

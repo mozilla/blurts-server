@@ -14,6 +14,7 @@ import {
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 import { getL10n } from "../../../functions/server/l10n";
 import { View } from "./LandingView";
+import { CONST_DAY_MILLISECONDS } from "../../../../constants";
 
 export default async function Page() {
   const session = await getServerSession();
@@ -26,7 +27,7 @@ export default async function Page() {
 
   // request the profile stats for the last 30 days
   const profileStats = await getProfilesStats(
-    new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
+    new Date(Date.now() - 30 * CONST_DAY_MILLISECONDS),
   );
   const oneRepActivations = profileStats?.total_active;
   const scanLimitReached =
