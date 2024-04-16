@@ -449,7 +449,7 @@ it("shows the Plus cancellation link if the user has Plus", () => {
   expect(cancellationHeading).toBeInTheDocument();
 });
 
-it("takes you through the cancellation dialog flow", async () => {
+it("takes you through the cancellation dialog flow all the way to sublat", async () => {
   const user = userEvent.setup();
 
   render(
@@ -520,6 +520,57 @@ it("takes you through the cancellation dialog flow", async () => {
   ).toBeInTheDocument();
 });
 
+it("closes the cancellation survey if the user wants to go back after the first step", async () => {
+  const user = userEvent.setup();
+
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getSpecificL10nSync()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: ["monitor"],
+          } as Session["user"]["fxa"],
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion", "CancellationSurvey"]}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const cancellationButton = screen.getByRole("button", {
+    name: "Cancel your subscription",
+  });
+
+  await user.click(cancellationButton);
+
+  expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+    "popup",
+    "view",
+    expect.objectContaining({
+      popup_id: "settings-cancel-monitor-plus-dialog",
+    }),
+  );
+
+  const takeMeBackButton = screen.getByRole("button", {
+    name: "Never mind, take me back",
+  });
+
+  await user.click(takeMeBackButton);
+
+  expect(takeMeBackButton).not.toBeInTheDocument();
+});
+
 it("closes the cancellation dialog", async () => {
   const user = userEvent.setup();
 
@@ -555,7 +606,7 @@ it("closes the cancellation dialog", async () => {
   await user.click(cancellationButton);
 
   const cancellationDialogCloseBtn = screen.getByRole("button", {
-    name: "Close",
+    name: "Close modal",
   });
 
   await user.click(cancellationDialogCloseBtn);
@@ -905,6 +956,7 @@ describe("to learn about usage", () => {
     const cancelPlusLink = screen.getByRole("link", {
       name: "Cancel from your ⁨Mozilla account⁩ Open link in a new tab",
     });
+
     await user.click(cancelPlusLink);
 
     expect(mockedRecordTelemetry).toHaveBeenCalledWith(
@@ -933,7 +985,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={["MonitorAccountDeletion"]}
+          enabledFeatureFlags={[]}
         />
       </TestComponentWrapper>,
     );
@@ -941,6 +993,7 @@ describe("to learn about usage", () => {
     const deactivateAccountLink = screen.getByRole("link", {
       name: "Go to ⁨Mozilla account⁩ settings Open link in a new tab",
     });
+
     await user.click(deactivateAccountLink);
 
     expect(mockedRecordTelemetry).toHaveBeenCalledWith(
@@ -1197,7 +1250,7 @@ describe("to learn about usage", () => {
     await user.click(deleteAccountButton);
     const dialog = screen.getByRole("dialog");
     const dismissButton = within(dialog).getByRole("button", {
-      name: "Close",
+      name: "Close modal",
     });
     await user.click(dismissButton);
 
