@@ -216,7 +216,9 @@ const ActivateEmailsCheckbox = (props: AriaCheckboxProps) => {
   );
 };
 
-const AlertAddressRadio = (props: AriaRadioProps & { value: AlertAddress }) => {
+const AlertAddressRadio = (
+  props: AriaRadioProps & { value: EmailUpdateCommTypeOfOptions },
+) => {
   const { children } = props;
   const state = useContext(AlertAddressContext);
   const inputRef = useRef<HTMLInputElement>(null);
