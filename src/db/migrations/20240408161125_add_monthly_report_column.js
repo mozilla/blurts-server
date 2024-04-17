@@ -6,7 +6,7 @@ export function up (knex) {
   return knex.schema.table('subscribers', table => {
     table.dropColumn("monthly_email_optout")
     table.dropColumn("monthly_email_at")
-    table.boolean('monthly_monitor_report').defaultTo(false)
+    table.boolean('monthly_monitor_report').defaultTo(true)
     table.timestamp('monthly_monitor_report_at')
   })
 }
