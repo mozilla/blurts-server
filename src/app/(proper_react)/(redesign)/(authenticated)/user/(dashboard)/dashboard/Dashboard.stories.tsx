@@ -43,6 +43,7 @@ type DashboardWrapperProps = (
 ) & {
   brokers: keyof typeof brokerOptions;
   breaches: keyof typeof breachOptions;
+  elapsedTimeSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
@@ -181,7 +182,11 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             userScanData={scanData}
             isEligibleForPremium={props.countryCode === "us"}
             isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
-            enabledFeatureFlags={["FreeBrokerScan", "PremiumBrokerRemoval"]}
+            enabledFeatureFlags={[
+              "FreeBrokerScan",
+              "PremiumBrokerRemoval",
+              "CsatSurvey",
+            ]}
             monthlySubscriptionUrl=""
             yearlySubscriptionUrl=""
             fxaSettingsUrl=""
@@ -193,6 +198,9 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             }}
             isNewUser={true}
             telemetryId="arbitrary-telemetry-id"
+            elapsedTimeSinceInitialScan={
+              props.elapsedTimeSinceInitialScan ?? -1
+            }
           />
         </Shell>
       </CountryCodeProvider>

@@ -428,6 +428,10 @@ export const View = (props: Props) => {
       {props.enabledFeatureFlags.includes("CsatSurvey") && (
         <CsatSurvey
           elapsedTimeSinceInitialScan={props.elapsedTimeSinceInitialScan}
+          hasAutoFixedDataBrokers={
+            dataSummary.dataBrokerAutoFixedDataPointsNum > 0
+          }
+          selectedTab={selectedTab}
         />
       )}
       <div className={styles.dashboardContent}>

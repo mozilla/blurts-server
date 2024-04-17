@@ -12,6 +12,7 @@ import styles from "./CsatSurvey.module.scss";
 import { Button } from "./Button";
 import { CloseBtn } from "../server/Icons";
 import { useHasRenderedClientSide } from "../../hooks/useHasRenderedClientSide";
+import { TabType } from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 import { CONST_DAY_MILLISECONDS } from "../../../constants";
 
 const SurveyResponses = {
@@ -85,12 +86,31 @@ const surveys: Survey[] = [
 
 type Props = {
   elapsedTimeSinceInitialScan: number;
+  hasAutoFixedDataBrokers: boolean;
+  selectedTab: TabType;
 };
 
-const getRelevantSurvey = (elapsedTime: number): Survey | undefined => {
-  return surveys.findLast(
-    (survey) => elapsedTime >= survey.timeThreshold * CONST_DAY_MILLISECONDS,
+const getRelevantSurvey = ({
+  elapsedTimeSinceInitialScan,
+  hasAutoFixedDataBrokers,
+  selectedTab,
+}: Props): Survey | undefined => {
+  const relevantSurvey = surveys.findLast(
+    (survey) =>
+      elapsedTimeSinceInitialScan >=
+      survey.timeThreshold * CONST_DAY_MILLISECONDS,
   );
+
+  // Show the initial survey on the ”fixed” dashboard tab only to users
+  // that have autmatically fixed data broker results.
+  if (
+    relevantSurvey?.id === "initial" &&
+    (!hasAutoFixedDataBrokers || selectedTab !== "fixed")
+  ) {
+    return;
+  }
+
+  return relevantSurvey;
 };
 
 export const CsatSurvey = (props: Props) => {
@@ -98,7 +118,7 @@ export const CsatSurvey = (props: Props) => {
   const [answer, setAnswer] = useState<keyof SurveyLinks>();
 
   const hasRenderedClientSide = useHasRenderedClientSide();
-  const survey = getRelevantSurvey(props.elapsedTimeSinceInitialScan);
+  const survey = getRelevantSurvey(props);
   const localDismissal = useLocalDismissal(`survey-csat_${survey?.id}`);
 
   if (
