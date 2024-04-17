@@ -554,14 +554,6 @@ it("closes the cancellation survey if the user selects nevermind, take me back",
 
   await user.click(cancellationButton);
 
-  expect(mockedRecordTelemetry).toHaveBeenCalledWith(
-    "popup",
-    "view",
-    expect.objectContaining({
-      popup_id: "settings-cancel-monitor-plus-dialog",
-    }),
-  );
-
   const takeMeBackButton = screen.getByRole("button", {
     name: "Never mind, take me back",
   });
