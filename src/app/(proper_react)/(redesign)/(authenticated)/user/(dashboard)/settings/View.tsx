@@ -116,28 +116,28 @@ export const SettingsView = (props: Props) => {
             </>
           )}
           <hr />
-          <div className={styles.deactivateSection}>
-            <h3>{l10n.getString("settings-deactivate-account-title")}</h3>
-            <p>{l10n.getString("settings-deactivate-account-info-2")}</p>
-            <TelemetryLink
-              href={props.fxaSettingsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              eventData={{
-                link_id: "deactivate_account",
-              }}
-            >
-              {l10n.getString("settings-fxa-link-label-3")}
-              <OpenInNew
-                alt={l10n.getString("open-in-new-tab-alt")}
-                width="13"
-                height="13"
-              />
-            </TelemetryLink>
-          </div>
-          {props.enabledFeatureFlags.includes("MonitorAccountDeletion") && (
+          {!props.enabledFeatureFlags.includes("MonitorAccountDeletion") ? (
+            <div className={styles.deactivateSection}>
+              <h3>{l10n.getString("settings-deactivate-account-title")}</h3>
+              <p>{l10n.getString("settings-deactivate-account-info-2")}</p>
+              <TelemetryLink
+                href={props.fxaSettingsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                eventData={{
+                  link_id: "deactivate_account",
+                }}
+              >
+                {l10n.getString("settings-fxa-link-label-3")}
+                <OpenInNew
+                  alt={l10n.getString("open-in-new-tab-alt")}
+                  width="13"
+                  height="13"
+                />
+              </TelemetryLink>
+            </div>
+          ) : (
             <>
-              <hr />
               <div className={styles.deleteAccountSection}>
                 {hasPremium(props.user) ? (
                   <>
