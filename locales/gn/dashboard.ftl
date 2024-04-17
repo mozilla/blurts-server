@@ -92,6 +92,7 @@ dashboard-top-banner-non-us-protect-your-data-description-line1 =
        *[other] Rojuhu { $exposures_unresolved_num } ne mba’ekuaarã jehechauka.
     }
 dashboard-top-banner-no-exposures-found-title = Ndojejuhúi máva jehechauka
+dashboard-top-banner-non-us-no-exposures-found-description = ¡Mba’éichapa! Roheka umi mba’ekuaarã ñembogua ojekuaáva ha ndorojuhúi mba’evairã. Rohapykuehóta ne ñanduti veve kundaharape ha romomarandúta oĩramo ñembogua.
 dashboard-no-exposures-label = Ndojejuhúi máva jehechauka
 dashboard-top-banner-monitor-more-cta = Roma’ẽag̃uíta hetave ñanduti vevére
 
