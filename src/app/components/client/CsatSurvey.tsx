@@ -99,14 +99,12 @@ export const CsatSurvey = (props: Props) => {
 
   const hasRenderedClientSide = useHasRenderedClientSide();
   const survey = getRelevantSurvey(props.elapsedTimeSinceInitialScan);
-  const localDismissal = useLocalDismissal(
-    `survey-csat-subscriber_${survey?.id}`,
-  );
+  const localDismissal = useLocalDismissal(`survey-csat_${survey?.id}`);
 
   if (
     !hasRenderedClientSide ||
     typeof survey === "undefined" ||
-    localDismissal.isDismissed
+    (localDismissal.isDismissed && process.env.STORYBOOK !== "true")
   ) {
     return null;
   }
@@ -130,13 +128,13 @@ export const CsatSurvey = (props: Props) => {
             target="_blank"
             rel="noopen noreferrer"
           >
-            {l10n.getString("survey-csat-subscriber-follow-up-link-label")}
+            {l10n.getString("survey-csat-follow-up-link-label")}
           </a>
         </div>
       ) : (
         <>
           <div className={styles.prompt}>
-            {l10n.getString("survey-csat-subscriber-question")}
+            {l10n.getString("survey-csat-question")}
           </div>
           <ol className={`${styles.answers} noList`}>
             <li>
@@ -146,9 +144,7 @@ export const CsatSurvey = (props: Props) => {
                 small
                 onPress={() => submit("very-dissatisfied")}
               >
-                {l10n.getString(
-                  "survey-csat-subscriber-answer-very-dissatisfied",
-                )}
+                {l10n.getString("survey-csat-answer-very-dissatisfied")}
               </Button>
             </li>
             <li>
@@ -158,7 +154,7 @@ export const CsatSurvey = (props: Props) => {
                 small
                 onPress={() => submit("dissatisfied")}
               >
-                {l10n.getString("survey-csat-subscriber-answer-dissatisfied")}
+                {l10n.getString("survey-csat-answer-dissatisfied")}
               </Button>
             </li>
             <li>
@@ -168,7 +164,7 @@ export const CsatSurvey = (props: Props) => {
                 small
                 onPress={() => submit("neutral")}
               >
-                {l10n.getString("survey-csat-subscriber-answer-neutral")}
+                {l10n.getString("survey-csat-answer-neutral")}
               </Button>
             </li>
             <li>
@@ -178,7 +174,7 @@ export const CsatSurvey = (props: Props) => {
                 small
                 onPress={() => submit("satisfied")}
               >
-                {l10n.getString("survey-csat-subscriber-answer-satisfied")}
+                {l10n.getString("survey-csat-answer-satisfied")}
               </Button>
             </li>
             <li>
@@ -188,7 +184,7 @@ export const CsatSurvey = (props: Props) => {
                 small
                 onPress={() => submit("very-satisfied")}
               >
-                {l10n.getString("survey-csat-subscriber-answer-very-satisfied")}
+                {l10n.getString("survey-csat-answer-very-satisfied")}
               </Button>
             </li>
           </ol>
@@ -197,10 +193,10 @@ export const CsatSurvey = (props: Props) => {
       <button
         className={styles.closeButton}
         onClick={() => dismiss()}
-        title={l10n.getString("survey-option-dismiss")}
+        title={l10n.getString("survey-csat-survey-dismiss")}
       >
         <CloseBtn
-          alt={l10n.getString("survey-option-dismiss")}
+          alt={l10n.getString("survey-csat-survey-dismiss")}
           width="14"
           height="14"
         />
