@@ -15,6 +15,7 @@ import { ModalOverlay } from "../../../../../../components/client/dialog/ModalOv
 import { Dialog } from "../../../../../../components/client/dialog/Dialog";
 import { Button } from "../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
+import { TelemetryButton } from "../../../../../../components/client/TelemetryButton";
 
 export type Props = {
   fxaSubscriptionsUrl: string;
@@ -82,15 +83,29 @@ export const CancelFlow = (props: Props) => {
                       "settings-cancel-plus-step-confirm-content-pt2",
                     )}
                   </p>
-                  <Button
+                  <TelemetryButton
+                    event={{
+                      module: "button",
+                      name: "click",
+                      data: {
+                        button_id: "continue_to_cancellation",
+                      },
+                    }}
                     variant="primary"
                     onPress={() => setCurrentStep("survey")}
                   >
                     {l10n.getString(
                       "settings-cancel-plus-step-confirm-cta-label",
                     )}
-                  </Button>
-                  <Button
+                  </TelemetryButton>
+                  <TelemetryButton
+                    event={{
+                      module: "popup",
+                      name: "exit",
+                      data: {
+                        popup_id: "never_mind_take_me_back",
+                      },
+                    }}
                     variant="tertiary"
                     onPress={() => dialogState.close()}
                     className={styles.tertiaryCta}
@@ -98,7 +113,7 @@ export const CancelFlow = (props: Props) => {
                     {l10n.getString(
                       "settings-cancel-plus-step-confirm-cancel-label",
                     )}
-                  </Button>
+                  </TelemetryButton>
                 </>
               )}
               {step === "survey" && (
@@ -119,7 +134,14 @@ export const CancelFlow = (props: Props) => {
                       )}
                     ></iframe>
                   </div>
-                  <Button
+                  <TelemetryButton
+                    event={{
+                      module: "button",
+                      name: "click",
+                      data: {
+                        button_id: "continue_to_cancellation",
+                      },
+                    }}
                     className={styles.tertiaryCta}
                     variant="tertiary"
                     onPress={() => {
@@ -133,7 +155,7 @@ export const CancelFlow = (props: Props) => {
                     {l10n.getString(
                       "settings-cancel-plus-step-survey-cta-label",
                     )}
-                  </Button>
+                  </TelemetryButton>
                 </>
               )}
               {step === "redirecting" && (

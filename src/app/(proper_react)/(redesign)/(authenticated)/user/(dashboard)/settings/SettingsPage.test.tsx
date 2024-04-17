@@ -449,7 +449,7 @@ it("shows the Plus cancellation link if the user has Plus", () => {
   expect(cancellationHeading).toBeInTheDocument();
 });
 
-it("takes you through the cancellation dialog flow all the way to sublat", async () => {
+it("takes you through the cancellation dialog flow all the way to subplat", async () => {
   const user = userEvent.setup();
 
   render(
@@ -520,7 +520,7 @@ it("takes you through the cancellation dialog flow all the way to sublat", async
   ).toBeInTheDocument();
 });
 
-it("closes the cancellation survey if the user wants to go back after the first step", async () => {
+it("closes the cancellation survey if the user selects nevermind, take me back", async () => {
   const user = userEvent.setup();
 
   render(
