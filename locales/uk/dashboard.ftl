@@ -32,9 +32,15 @@ exposure-chart-caption-fixed = На цій діаграмі показано з�
 exposure-chart-returning-user-upgrade-prompt = Домашня адреса, члени сім’ї та інше ще не включено.
 exposure-chart-returning-user-upgrade-prompt-cta = Розпочати безплатну перевірку
 exposure-chart-scan-in-progress-prompt = <b>Триває перевірка:</b> адреса, члени родини тощо ще не включено.
-
 modal-active-number-of-exposures-title = Про кількість розкриттів
-
+dashboard-exposures-all-fixed-label = Тут все виправлено!
+# This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
+dashboard-exposures-filter = Фільтр
+dashboard-exposures-filter-company = Компанія
+dashboard-exposures-filter-date-found = Дата виявлення
+dashboard-exposures-filter-date-found-last-seven-days = Останні 7 днів
+dashboard-exposures-filter-date-found-last-year = Минулого року
+dashboard-exposures-filter-status = Стан
 
 ## Top banner on the dashboard
 

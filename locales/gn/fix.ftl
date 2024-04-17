@@ -5,7 +5,6 @@
 fix-flow-nav-high-risk-data-breaches = Mba’ekuaarã ñembyai oikokuaáva
 fix-flow-nav-leaked-passwords = Ñe’ẽñemi mboguapyre
 fix-flow-nav-security-recommendations = Ñemoñe’ẽ tekorosãrã
-
 guided-resolution-flow-exit = Eguevijey mba’erupápe
 guided-resolution-flow-next-arrow = Eho upeiguávape
 guided-resolution-flow-step-navigation-label = Jeguata ma’ẽgua
@@ -193,3 +192,7 @@ leaked-security-questions-title = Ne porandu tekorosãrãva ojehechakakuaa
 leaked-security-questions-summary = Osẽ peteĩ mba’ekuaarã ñembogua { $breach_name }-pe { $breach_date }.
 leaked-security-questions-steps-title = Kóva pe rejapova’erã
 leaked-security-questions-steps-subtitle = Kóva oikotevẽ ne mba’etépe jeike, ikatuhápe emoĩporã nde poite rupive.
+# Variables
+# $breach_name is the name of the breach where the security questions were found.
+# $email_affected is the email associated with the breach.
+leaked-security-questions-step-one = Embohekopyahu ne porandu tekorosãrã <b>{ $email_affected }</b> peg̃uarã <link_to_breach_site>{ $breach_name }</link_to_breach_site>-pe.
