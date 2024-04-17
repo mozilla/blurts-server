@@ -203,7 +203,7 @@ async function setMonthlyMonitorReport (subscriber, monthlyMonitorReport) {
   const updated = await knex('subscribers')
     .where('id', subscriber.id)
     .update({
-      monthly_monitor_report: monthlyMonitorReport || false,
+      monthly_monitor_report: monthlyMonitorReport,
       // @ts-ignore knex.fn.now() results in it being set to a date,
       // even if it's not typed as a JS date object:
       updated_at: knex.fn.now(),
