@@ -34,9 +34,9 @@ export async function POST(req: NextRequest) {
       if (!subscriber) {
         throw new Error("No subscriber found for current session.");
       }
-      // -1 = Set as null, do not send instant notifications. Newly added in MNTOR-1368
-      // 0 = Send breach alerts to the corresponding affected emails.
-      // 1 = Send all breach alerts to user's primary email address.
+      // "null"     = Do not send instant notifications. Newly added in MNTOR-1368
+      // "affected" = Send breach alerts to the corresponding affected emails.
+      // "primary"  = Send all breach alerts to user's primary email address.
       let allEmailsToPrimary;
       switch (instantBreachAlerts) {
         case "primary":
