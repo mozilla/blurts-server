@@ -51,6 +51,7 @@ import Meta, {
   DashboardUsPremiumManuallyResolvedScansNoBreaches,
 } from "./Dashboard.stories";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
+import { CONST_DAY_MILLISECONDS } from "../../../../../../../constants";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -3277,4 +3278,58 @@ it("send telemetry when users click on exposure chart free scan", async () => {
       link_id: "exposures_chart_free_scan",
     }),
   );
+});
+
+it("does not display the CSAT survey banner on the dashboard", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const answerButton = screen.queryByRole("button", {
+    name: "Neutral",
+  });
+  expect(answerButton).not.toBeInTheDocument();
+});
+
+it("displays the CSAT survey banner on the dashboard", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanNoBreaches,
+    Meta,
+  );
+  render(
+    <ComposedDashboard
+      elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 91}
+    />,
+  );
+
+  const answerButton = screen.queryByRole("button", {
+    name: "Neutral",
+  });
+  expect(answerButton).toBeInTheDocument();
+});
+
+it("displays the initial CSAT survey banner only on the ”fixed” tab of the dashboard to users with automatically fixed data brokers", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanNoBreaches,
+    Meta,
+  );
+  render(
+    <ComposedDashboard elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS} />,
+  );
+
+  const answerButtonOne = screen.queryByRole("button", {
+    name: "Neutral",
+  });
+  expect(answerButtonOne).not.toBeInTheDocument();
+
+  const fixedTab = screen.getByText("Fixed");
+  await user.click(fixedTab);
+
+  const answerButtonTwo = screen.queryByRole("button", {
+    name: "Neutral",
+  });
+  expect(answerButtonTwo).toBeInTheDocument();
 });
