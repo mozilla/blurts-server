@@ -9,6 +9,15 @@ import { axe } from "jest-axe";
 import Meta, { CsatSurveyBanner } from "./stories/CsatBanner.stories";
 import { CONST_DAY_MILLISECONDS } from "../../../constants";
 
+beforeEach(() => {
+  // Delete all cookies to make the CSAT banner show up again
+  const cookieParts = document.cookie.split(";");
+  const cookieNames = cookieParts.map((part) => part.trim().split("=")[0]);
+  cookieNames.forEach((cookieName) => {
+    document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+  });
+});
+
 describe("CSAT survey", () => {
   it("passes the axe accessibility test suite for CsatSurveyBanner", async () => {
     const ComposedTextComboBox = composeStory(CsatSurveyBanner, Meta);
@@ -23,11 +32,10 @@ describe("CSAT survey", () => {
     const answerButton = screen.queryByRole("button", {
       name: "Very Dissatisfied",
     });
-
     expect(answerButton).not.toBeInTheDocument();
   });
 
-  it("does display the survey to users with automatic data removal enabled for less than 90 days", () => {
+  it("displays the survey to users with automatic data removal enabled for less than 90 days", () => {
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(
       <ComposedCsatSurveyBanner
@@ -38,11 +46,10 @@ describe("CSAT survey", () => {
     const answerButton = screen.queryByRole("button", {
       name: "Dissatisfied",
     });
-
     expect(answerButton).toBeInTheDocument();
   });
 
-  it("does display the survey to users with automatic data removal enabled for at least 90 days", () => {
+  it("displays the survey to users with automatic data removal enabled for at least 90 days", () => {
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(
       <ComposedCsatSurveyBanner
@@ -53,11 +60,10 @@ describe("CSAT survey", () => {
     const answerButton = screen.queryByRole("button", {
       name: "Neutral",
     });
-
     expect(answerButton).toBeInTheDocument();
   });
 
-  it("does display the survey to users with automatic data removal enabled for at least 180 days", () => {
+  it("displays the survey to users with automatic data removal enabled for at least 180 days", () => {
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(
       <ComposedCsatSurveyBanner
@@ -68,11 +74,10 @@ describe("CSAT survey", () => {
     const answerButton = screen.queryByRole("button", {
       name: "Satisfied",
     });
-
     expect(answerButton).toBeInTheDocument();
   });
 
-  it("does display the survey to users with automatic data removal enabled for at least 351 days", () => {
+  it("displays the survey to users with automatic data removal enabled for at least 351 days", () => {
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(
       <ComposedCsatSurveyBanner
@@ -83,16 +88,63 @@ describe("CSAT survey", () => {
     const answerButton = screen.queryByRole("button", {
       name: "Very Satisfied",
     });
-
     expect(answerButton).toBeInTheDocument();
   });
 
-  it("does show the correct follow-up feedback link", async () => {
+  it("shows the correct follow-up feedback link for response “Very Dissatisfied”", async () => {
     const user = userEvent.setup();
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(
       <ComposedCsatSurveyBanner
         elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 91}
+      />,
+    );
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Very Dissatisfied",
+    });
+    expect(answerButton).toBeInTheDocument();
+    await user.click(answerButton as HTMLElement);
+
+    const feedbackLink = screen.queryByRole("link", {
+      name: "Your feedback is helpful to us! How can we improve Monitor for you?",
+    });
+    expect(feedbackLink).toBeInTheDocument();
+    expect((feedbackLink as HTMLElement).getAttribute("href")).toBe(
+      "https://survey.alchemer.com/s3/7718223/9bf87045f7fb",
+    );
+  });
+
+  it("shows the correct follow-up feedback link for response “Dissatisfied”", async () => {
+    const user = userEvent.setup();
+    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
+    render(
+      <ComposedCsatSurveyBanner
+        elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 180}
+      />,
+    );
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Dissatisfied",
+    });
+    expect(answerButton).toBeInTheDocument();
+    await user.click(answerButton as HTMLElement);
+
+    const feedbackLink = screen.queryByRole("link", {
+      name: "Your feedback is helpful to us! How can we improve Monitor for you?",
+    });
+    expect(feedbackLink).toBeInTheDocument();
+    expect((feedbackLink as HTMLElement).getAttribute("href")).toBe(
+      "https://survey.alchemer.com/s3/7718561/6dfb2e8b6d68",
+    );
+  });
+
+  it("shows the correct follow-up feedback link for response “Neutral”", async () => {
+    const user = userEvent.setup();
+    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
+    render(
+      <ComposedCsatSurveyBanner
+        elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 351}
       />,
     );
 
@@ -107,11 +159,59 @@ describe("CSAT survey", () => {
     });
     expect(feedbackLink).toBeInTheDocument();
     expect((feedbackLink as HTMLElement).getAttribute("href")).toBe(
-      "https://survey.alchemer.com/s3/7718223/fe77a597f97a",
+      "https://survey.alchemer.com/s3/7718562/76e17004efd6",
     );
   });
 
-  it("does dismiss the survey", async () => {
+  it("shows the correct follow-up feedback link for response “Satisfied”", async () => {
+    const user = userEvent.setup();
+    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
+    render(
+      <ComposedCsatSurveyBanner
+        elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 91}
+      />,
+    );
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Satisfied",
+    });
+    expect(answerButton).toBeInTheDocument();
+    await user.click(answerButton as HTMLElement);
+
+    const feedbackLink = screen.queryByRole("link", {
+      name: "Your feedback is helpful to us! How can we improve Monitor for you?",
+    });
+    expect(feedbackLink).toBeInTheDocument();
+    expect((feedbackLink as HTMLElement).getAttribute("href")).toBe(
+      "https://survey.alchemer.com/s3/7718223/fbbb597a762a",
+    );
+  });
+
+  it("shows the correct follow-up feedback link for response “Very Satisfied”", async () => {
+    const user = userEvent.setup();
+    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
+    render(
+      <ComposedCsatSurveyBanner
+        elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 180}
+      />,
+    );
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Very Satisfied",
+    });
+    expect(answerButton).toBeInTheDocument();
+    await user.click(answerButton as HTMLElement);
+
+    const feedbackLink = screen.queryByRole("link", {
+      name: "Your feedback is helpful to us! How can we improve Monitor for you?",
+    });
+    expect(feedbackLink).toBeInTheDocument();
+    expect((feedbackLink as HTMLElement).getAttribute("href")).toBe(
+      "https://survey.alchemer.com/s3/7718561/a443cc84b78a",
+    );
+  });
+
+  it("dismisses the survey by clicking the “close” button", async () => {
     const user = userEvent.setup();
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(<ComposedCsatSurveyBanner />);
@@ -127,5 +227,32 @@ describe("CSAT survey", () => {
       name: "Neutral",
     });
     expect(answerButton).not.toBeInTheDocument();
+  });
+
+  it("dismisses the survey by clicking the follow-up link", async () => {
+    const user = userEvent.setup();
+    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
+    render(
+      <ComposedCsatSurveyBanner
+        elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 180}
+      />,
+    );
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Very Satisfied",
+    });
+    expect(answerButton).toBeInTheDocument();
+    await user.click(answerButton as HTMLElement);
+
+    const feedbackLinkOne = screen.queryByRole("link", {
+      name: "Your feedback is helpful to us! How can we improve Monitor for you?",
+    });
+    expect(feedbackLinkOne).toBeInTheDocument();
+    await user.click(feedbackLinkOne as HTMLElement);
+
+    const feedbackLinkTwo = screen.queryByRole("link", {
+      name: "Your feedback is helpful to us! How can we improve Monitor for you?",
+    });
+    expect(feedbackLinkTwo).not.toBeInTheDocument();
   });
 });

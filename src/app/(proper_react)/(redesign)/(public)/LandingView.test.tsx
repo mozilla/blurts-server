@@ -46,9 +46,9 @@ beforeEach(() => {
   // Delete all cookies, to make the rebrand announcement banner show up by
   // default (I hate the document.cookie API ¬_¬):
   const cookieParts = document.cookie.split(";");
-  const cookieNames = cookieParts.map((part) => part.split("=")[0]);
+  const cookieNames = cookieParts.map((part) => part.trim().split("=")[0]);
   cookieNames.forEach((cookieName) => {
-    document.cookie = `${cookieName}=; Thu, 01 Jan 1970 00:00:00 GMT`;
+    document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
   });
 });
 

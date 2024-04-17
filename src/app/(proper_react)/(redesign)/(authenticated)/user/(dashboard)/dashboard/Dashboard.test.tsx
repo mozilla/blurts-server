@@ -3333,3 +3333,22 @@ it("displays the initial CSAT survey banner only on the ”fixed” tab of the d
   });
   expect(answerButtonTwo).toBeInTheDocument();
 });
+
+it("displays the follow-up CSAT survey banner link on the dashboard", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanNoBreaches,
+    Meta,
+  );
+  render(
+    <ComposedDashboard
+      elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 185}
+    />,
+  );
+
+  const answerButton = screen.queryByRole("button", {
+    name: "Satisfied",
+  });
+  expect(answerButton).toBeInTheDocument();
+  await user.click(answerButton as HTMLElement);
+});
