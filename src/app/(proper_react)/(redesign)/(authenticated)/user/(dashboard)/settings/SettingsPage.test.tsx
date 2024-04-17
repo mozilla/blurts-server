@@ -560,6 +560,14 @@ it("closes the cancellation survey if the user selects nevermind, take me back",
 
   await user.click(takeMeBackButton);
 
+  expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+    "popup",
+    "exit",
+    expect.objectContaining({
+      popup_id: "never_mind_take_me_back",
+    }),
+  );
+
   expect(takeMeBackButton).not.toBeInTheDocument();
 });
 
