@@ -270,7 +270,7 @@ user-menu-signout-tooltip = Logga ut från { -brand-mozilla-monitor }
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Användarvillkor
 privacy-notice = Sekretessmeddelande
 github = { -brand-github }

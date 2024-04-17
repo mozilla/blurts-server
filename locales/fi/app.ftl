@@ -277,7 +277,7 @@ user-menu-signout-tooltip = Kirjaudu ulos { -brand-mozilla-monitor }ista
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Käyttöehdot
 privacy-notice = Tietosuojakäytäntö
 github = { -brand-github }

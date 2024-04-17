@@ -38,16 +38,15 @@
     label {
       display: flex;
       gap: $spacing-xs;
-
-      dl {
+      div {
         display: flex;
         flex-direction: column;
 
-        dt {
+        b {
           font-weight: 600;
         }
 
-        dd {
+        p {
           color: $color-grey-40;
         }
       }

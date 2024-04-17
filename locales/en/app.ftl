@@ -8,16 +8,24 @@
 ## unless otherwise indicated.
 
 -product-name = Mozilla Monitor
--product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
--brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Account
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
--brand-send = Firefox Send
--brand-fpn = Firefox Private Network
+-brand-firefox = Firefox
+-brand-monitor = Monitor
+-brand-fx-monitor = Mozilla Monitor
+-brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
+-brand-mozilla-monitor = Mozilla Monitor
+-brand-monitor-plus = Monitor Plus
 
 ##
 
@@ -172,23 +180,6 @@ rec-section-subhead-no-pw = Though passwords weren’t exposed in this breach, t
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = New
 
-# Monitor V2
-
-## The following messages are brands and should be kept entirely in English
-
--brand-firefox = Firefox
--brand-monitor = Monitor
--brand-fx-monitor = Mozilla Monitor
--brand-mozilla = Mozilla
--brand-premium = Premium
--brand-monitor-premium = Monitor Premium
--brand-mozilla-foundation = Mozilla Foundation
--brand-github = GitHub
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
--brand-mozilla-monitor = Mozilla Monitor
--brand-monitor-plus = Monitor Plus
-
 ##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
@@ -237,7 +228,7 @@ user-menu-signout-tooltip = Sign out of { -brand-mozilla-monitor }
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Terms of Service
 privacy-notice = Privacy Notice
 github = { -brand-github }

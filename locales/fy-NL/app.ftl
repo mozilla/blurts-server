@@ -270,7 +270,7 @@ user-menu-signout-tooltip = Ofmelde by { -brand-mozilla-monitor }
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Tsjinstbetingsten
 privacy-notice = Privacyferklearring
 github = { -brand-github }

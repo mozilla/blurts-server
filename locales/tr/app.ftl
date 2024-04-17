@@ -261,7 +261,7 @@ user-menu-signout-tooltip = { -brand-mozilla-monitor }’den çıkış yap
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Kullanım Koşulları
 privacy-notice = Gizlilik Bildirimi
 github = { -brand-github }

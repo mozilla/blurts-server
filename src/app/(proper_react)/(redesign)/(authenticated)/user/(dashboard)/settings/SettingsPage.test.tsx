@@ -186,8 +186,98 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
   expect(primaryRadioButton).not.toHaveAttribute("checked");
 });
 
+it("disables breach alert notification options if a user opts out of breach alerts", async () => {
+  global.fetch = jest.fn().mockResolvedValue({ ok: true });
+  const user = userEvent.setup();
+
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getSpecificL10nSync()}
+        user={{
+          ...mockedUser,
+          subscriber: {
+            ...mockedUser.subscriber!,
+            all_emails_to_primary: true,
+          },
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+          [mockedSecondaryVerifiedEmail.email]: 42,
+        }}
+        emailAddresses={[mockedSecondaryVerifiedEmail]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const activateBreachAlertsCheckbox = screen.getByLabelText(
+    "Instant breach alerts",
+    { exact: false },
+  );
+
+  const affectedRadioButton = screen.getByLabelText(
+    "Send breach alerts to the affected email address",
+  );
+
+  const primaryRadioButton = screen.getByLabelText(
+    "Send all breach alerts to the primary email address",
+  );
+
+  await user.click(activateBreachAlertsCheckbox);
+
+  expect(global.fetch).toHaveBeenCalledWith("/api/v1/user/update-comm-option", {
+    body: JSON.stringify({ communicationOption: "-1" }),
+    method: "POST",
+  });
+
+  expect(activateBreachAlertsCheckbox).toHaveAttribute("aria-checked", "false");
+  expect(primaryRadioButton).toHaveAttribute("aria-checked", "false");
+  expect(affectedRadioButton).toHaveAttribute("aria-checked", "false");
+});
+
+it("preselects primary email alert option", () => {
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getSpecificL10nSync()}
+        user={{
+          ...mockedUser,
+          subscriber: {
+            ...mockedUser.subscriber!,
+            all_emails_to_primary: true,
+          },
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+          [mockedSecondaryVerifiedEmail.email]: 42,
+        }}
+        emailAddresses={[mockedSecondaryVerifiedEmail]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const primaryRadioButton = screen.getByLabelText(
+    "Send all breach alerts to the primary email address",
+  );
+
+  expect(primaryRadioButton).toHaveAttribute("aria-checked", "true");
+});
+
 it("sends a call to the API to change the email alert preferences when changing the radio button values", async () => {
   global.fetch = jest.fn().mockResolvedValue({ ok: true });
+
   const user = userEvent.setup();
   render(
     <TestComponentWrapper>
@@ -210,7 +300,10 @@ it("sends a call to the API to change the email alert preferences when changing 
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion"]}
+        enabledFeatureFlags={[
+          "MonitorAccountDeletion",
+          "UpdatedEmailPreferencesOption",
+        ]}
       />
     </TestComponentWrapper>,
   );
@@ -819,7 +912,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={["MonitorAccountDeletion"]}
+          enabledFeatureFlags={[]}
         />
       </TestComponentWrapper>,
     );
@@ -1083,7 +1176,7 @@ describe("to learn about usage", () => {
     await user.click(deleteAccountButton);
     const dialog = screen.getByRole("dialog");
     const dismissButton = within(dialog).getByRole("button", {
-      name: "Close",
+      name: "Close modal",
     });
     await user.click(dismissButton);
 
