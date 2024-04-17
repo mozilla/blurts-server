@@ -109,10 +109,10 @@ declare module "knex/types/tables" {
     };
     // TODO: Find unknown type
     // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-    monthly_email_at: null | unknown;
+    monthly_monitor_report_at: null | unknown;
     // TODO: Find unknown type
     // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-    monthly_email_optout: null | unknown;
+    monthly_monitor_report: boolean;
     breach_resolution:
       | null
       | ({
@@ -149,8 +149,8 @@ declare module "knex/types/tables" {
     | "breaches_resolved"
     | "waitlists_joined"
     | "breach_stats"
-    | "monthly_email_at"
-    | "monthly_email_optout"
+    | "monthly_monitor_report_at"
+    | "monthly_monitor_report"
     | "breach_resolution"
     | "db_migration_1"
     | "db_migration_2"
