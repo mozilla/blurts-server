@@ -151,7 +151,7 @@ export const AlertAddressForm = (props: Props) => {
           </AlertAddressContext.Provider>
         )}
 
-        {props.enabledFeatureFlags.includes("MonthlyMonitorReport") && (
+        {props.enabledFeatureFlags.includes("MonthlyActivityEmail") && (
           <ActivateEmailsCheckbox
             isSelected={activateMonthlyMonitorReport}
             onChange={setActivateMonthlyMonitorReport}

@@ -38,7 +38,7 @@ export type FeatureFlagName =
   | "MonitorAccountDeletion"
   | "RedesignedEmails"
   | "UpdatedEmailPreferencesOption"
-  | "MonthlyMonitorReport";
+  | "MonthlyActivityEmail";
 
 export async function getEnabledFeatureFlags(
   options:
