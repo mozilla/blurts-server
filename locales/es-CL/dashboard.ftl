@@ -45,6 +45,7 @@ modal-fixed-number-of-exposures-all = Este gráfico incluye el número total de 
 modal-cta-ok = Aceptar
 open-modal-alt = Abrir modal
 close-modal-alt = Cerrar modal
+open-tooltip-alt = Abrir información
 progress-card-heres-what-we-fixed-headline-all = Esto es lo que corregiste
 progress-card-manually-fixed-headline = Corregida de forma manual
 dashboard-tab-label-action-needed = Acción necesaria
