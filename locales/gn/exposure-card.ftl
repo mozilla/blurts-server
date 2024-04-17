@@ -26,6 +26,7 @@ exposure-card-other = Ambue
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
 exposure-card-description-data-breach-action-needed = Ne marandu oñembyaikuaa <data_breach_link>mba’ekuaarã ñembogua { $data_breach_company } ndive { $data_breach_date }.</data_breach_link> Rombohapéta emoĩporãkuaa hag̃uáicha.
+exposure-card-description-data-breach-fixed = Ejapóna ejapova’erã emoĩporã hag̃ua <data_breach_link>ko ñembogua</data_breach_link>. Rohecha meméta mba’ekuaarã ñembogua ha romomarandúta oĩramo mba’evairã pyahu.
 exposure-card-your-exposed-info = Ne marandu ivaikuaa:
 exposure-card-exposure-type-data-broker = Marandu ñevendepy
 exposure-card-exposure-type-data-breach = Mba’ekuaarã ñembogua
