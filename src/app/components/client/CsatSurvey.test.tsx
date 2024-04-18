@@ -231,8 +231,7 @@ describe("CSAT survey", () => {
       "button",
       "click",
       expect.objectContaining({
-        button_id: "csat_survey",
-        // button_name: "very-satisfied",
+        button_id: "csat_survey_very-satisfied",
       }),
     );
   });

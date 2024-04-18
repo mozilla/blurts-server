@@ -140,9 +140,7 @@ export const CsatSurvey = (props: Props) => {
     setAnswer(satisfaction);
     dismiss({ soft: true });
     recordTelemetry("button", "click", {
-      button_id: "csat_survey",
-      // TODO: Enable after the parameter has been added to metrics.yaml.
-      // button_name: satisfaction,
+      button_id: `csat_survey_${satisfaction}`,
     });
   };
 
