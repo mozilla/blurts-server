@@ -221,10 +221,10 @@ export const CsatSurvey = (props: Props) => {
       <button
         className={styles.closeButton}
         onClick={() => dismiss()}
-        title={l10n.getString("survey-csat-survey-dismiss")}
+        title={l10n.getString("survey-csat-survey-dismiss-label")}
       >
         <CloseBtn
-          alt={l10n.getString("survey-csat-survey-dismiss")}
+          alt={l10n.getString("survey-csat-survey-dismiss-label")}
           width="14"
           height="14"
         />

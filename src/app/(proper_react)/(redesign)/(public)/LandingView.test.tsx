@@ -25,6 +25,7 @@ import Meta, {
   LandingUs,
   LandingUsScanLimit,
 } from "./LandingView.stories";
+import { deleteAllCookies } from "../../../functions/client/deleteAllCookies";
 
 jest.mock("next-auth/react", () => {
   return {
@@ -43,13 +44,8 @@ beforeEach(() => {
   const mockedUseSession = useSession as jest.Mock;
   mockedUseSession.mockReturnValue({});
 
-  // Delete all cookies, to make the rebrand announcement banner show up by
-  // default (I hate the document.cookie API ¬_¬):
-  const cookieParts = document.cookie.split(";");
-  const cookieNames = cookieParts.map((part) => part.trim().split("=")[0]);
-  cookieNames.forEach((cookieName) => {
-    document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
-  });
+  // Make the rebrand announcement banner show up by default
+  deleteAllCookies();
 });
 
 describe("When Premium is not available", () => {

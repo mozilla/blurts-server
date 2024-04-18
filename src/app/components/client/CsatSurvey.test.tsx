@@ -9,16 +9,13 @@ import { axe } from "jest-axe";
 import Meta, { CsatSurveyBanner } from "./stories/CsatBanner.stories";
 import { CONST_DAY_MILLISECONDS } from "../../../constants";
 import { useTelemetry } from "../../hooks/useTelemetry";
+import { deleteAllCookies } from "../../functions/client/deleteAllCookies";
 
 jest.mock("../../hooks/useTelemetry");
 
 beforeEach(() => {
-  // Delete all cookies to make the CSAT banner show up again
-  const cookieParts = document.cookie.split(";");
-  const cookieNames = cookieParts.map((part) => part.trim().split("=")[0]);
-  cookieNames.forEach((cookieName) => {
-    document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
-  });
+  // Make the CSAT banner show up again.
+  deleteAllCookies();
 });
 
 describe("CSAT survey", () => {

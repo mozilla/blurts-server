@@ -200,4 +200,4 @@ survey-csat-answer-neutral = Neutral
 survey-csat-answer-satisfied = Satisfied
 survey-csat-answer-very-satisfied = Very satisfied
 survey-csat-follow-up-link-label = Your feedback is helpful to us! How can we improve Monitor for you?
-survey-csat-survey-dismiss = Dismiss
+survey-csat-survey-dismiss-label = Dismiss
