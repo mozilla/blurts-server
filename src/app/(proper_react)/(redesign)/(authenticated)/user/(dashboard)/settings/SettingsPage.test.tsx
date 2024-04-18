@@ -232,7 +232,10 @@ it("disables breach alert notification options if a user opts out of breach aler
   await user.click(activateBreachAlertsCheckbox);
 
   expect(global.fetch).toHaveBeenCalledWith("/api/v1/user/update-comm-option", {
-    body: JSON.stringify({ communicationOption: "-1" }),
+    body: JSON.stringify({
+      instantBreachAlerts: "null",
+      monthlyMonitorReport: true,
+    }),
     method: "POST",
   });
 
@@ -315,7 +318,7 @@ it("sends a call to the API to change the email alert preferences when changing 
 
   expect(global.fetch).toHaveBeenCalledWith("/api/v1/user/update-comm-option", {
     body: JSON.stringify({
-      instantBreachAlerts: "0",
+      instantBreachAlerts: "affected",
       monthlyMonitorReport: true,
     }),
     method: "POST",
@@ -327,7 +330,7 @@ it("sends a call to the API to change the email alert preferences when changing 
   await user.click(primaryRadioButton);
   expect(global.fetch).toHaveBeenCalledWith("/api/v1/user/update-comm-option", {
     body: JSON.stringify({
-      instantBreachAlerts: "1",
+      instantBreachAlerts: "primary",
       monthlyMonitorReport: true,
     }),
     method: "POST",
