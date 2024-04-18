@@ -8,6 +8,9 @@ import { userEvent } from "@testing-library/user-event";
 import { axe } from "jest-axe";
 import Meta, { CsatSurveyBanner } from "./stories/CsatBanner.stories";
 import { CONST_DAY_MILLISECONDS } from "../../../constants";
+import { useTelemetry } from "../../hooks/useTelemetry";
+
+jest.mock("../../hooks/useTelemetry");
 
 beforeEach(() => {
   // Delete all cookies to make the CSAT banner show up again
@@ -30,7 +33,7 @@ describe("CSAT survey", () => {
     render(<ComposedCsatSurveyBanner elapsedTimeSinceInitialScan={-1} />);
 
     const answerButton = screen.queryByRole("button", {
-      name: "Very Dissatisfied",
+      name: "Very dissatisfied",
     });
     expect(answerButton).not.toBeInTheDocument();
   });
@@ -86,12 +89,12 @@ describe("CSAT survey", () => {
     );
 
     const answerButton = screen.queryByRole("button", {
-      name: "Very Satisfied",
+      name: "Very satisfied",
     });
     expect(answerButton).toBeInTheDocument();
   });
 
-  it("shows the correct follow-up feedback link for response “Very Dissatisfied”", async () => {
+  it("shows the correct follow-up feedback link for response “Very dissatisfied”", async () => {
     const user = userEvent.setup();
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(
@@ -101,7 +104,7 @@ describe("CSAT survey", () => {
     );
 
     const answerButton = screen.queryByRole("button", {
-      name: "Very Dissatisfied",
+      name: "Very dissatisfied",
     });
     expect(answerButton).toBeInTheDocument();
     await user.click(answerButton as HTMLElement);
@@ -187,7 +190,7 @@ describe("CSAT survey", () => {
     );
   });
 
-  it("shows the correct follow-up feedback link for response “Very Satisfied”", async () => {
+  it("shows the correct follow-up feedback link for response “Very satisfied”", async () => {
     const user = userEvent.setup();
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(
@@ -197,7 +200,7 @@ describe("CSAT survey", () => {
     );
 
     const answerButton = screen.queryByRole("button", {
-      name: "Very Satisfied",
+      name: "Very satisfied",
     });
     expect(answerButton).toBeInTheDocument();
     await user.click(answerButton as HTMLElement);
@@ -208,6 +211,32 @@ describe("CSAT survey", () => {
     expect(feedbackLink).toBeInTheDocument();
     expect((feedbackLink as HTMLElement).getAttribute("href")).toBe(
       "https://survey.alchemer.com/s3/7718561/a443cc84b78a",
+    );
+  });
+
+  it("records telemetry when submitting the survey", async () => {
+    const mockedRecord = useTelemetry();
+    const user = userEvent.setup();
+    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
+    render(
+      <ComposedCsatSurveyBanner
+        elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 180}
+      />,
+    );
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Very satisfied",
+    });
+    expect(answerButton).toBeInTheDocument();
+    await user.click(answerButton as HTMLElement);
+
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "button",
+      "click",
+      expect.objectContaining({
+        button_id: "csat_survey",
+        // button_name: "very-satisfied",
+      }),
     );
   });
 
@@ -239,7 +268,7 @@ describe("CSAT survey", () => {
     );
 
     const answerButton = screen.queryByRole("button", {
-      name: "Very Satisfied",
+      name: "Very satisfied",
     });
     expect(answerButton).toBeInTheDocument();
     await user.click(answerButton as HTMLElement);

@@ -3334,6 +3334,32 @@ it("displays the initial CSAT survey banner only on the ”fixed” tab of the d
   expect(answerButtonTwo).toBeInTheDocument();
 });
 
+it("displays the 6-months CSAT survey banner only on the “action needed” and “fixed” tabs of the dashboard", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanNoBreaches,
+    Meta,
+  );
+  render(
+    <ComposedDashboard
+      elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 180}
+    />,
+  );
+
+  const answerButtonOne = screen.queryByRole("button", {
+    name: "Satisfied",
+  });
+  expect(answerButtonOne).toBeInTheDocument();
+
+  const fixedTab = screen.getByText("Fixed");
+  await user.click(fixedTab);
+
+  const answerButtonTwo = screen.queryByRole("button", {
+    name: "Satisfied",
+  });
+  expect(answerButtonTwo).toBeInTheDocument();
+});
+
 it("displays the follow-up CSAT survey banner link on the dashboard", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(

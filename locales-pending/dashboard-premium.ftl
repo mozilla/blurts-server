@@ -194,10 +194,10 @@ exposure-card-description-info-for-sale-fixed-manually-fixed =  You marked this 
 # CSAT survey banner for subscribers
 
 survey-csat-question = How satisfied are you with your Mozilla Monitor experience?
-survey-csat-answer-very-dissatisfied = Very Dissatisfied
+survey-csat-answer-very-dissatisfied = Very dissatisfied
 survey-csat-answer-dissatisfied = Dissatisfied
 survey-csat-answer-neutral = Neutral
 survey-csat-answer-satisfied = Satisfied
-survey-csat-answer-very-satisfied = Very Satisfied
+survey-csat-answer-very-satisfied = Very satisfied
 survey-csat-follow-up-link-label = Your feedback is helpful to us! How can we improve Monitor for you?
 survey-csat-survey-dismiss = Dismiss

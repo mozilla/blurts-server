@@ -3,24 +3,26 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { useState } from "react";
+import { Button } from "./Button";
+import { CloseBtn } from "../server/Icons";
+import { TabType } from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 import { useL10n } from "../../hooks/l10n";
 import {
   DismissOptions,
   useLocalDismissal,
 } from "../../hooks/useLocalDismissal";
-import styles from "./CsatSurvey.module.scss";
-import { Button } from "./Button";
-import { CloseBtn } from "../server/Icons";
 import { useHasRenderedClientSide } from "../../hooks/useHasRenderedClientSide";
-import { TabType } from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
+import { useTelemetry } from "../../hooks/useTelemetry";
+import styles from "./CsatSurvey.module.scss";
+
 import { CONST_DAY_MILLISECONDS } from "../../../constants";
 
 const SurveyResponses = {
-  "very-dissatisfied": "Very Dissatisfied",
+  "very-dissatisfied": "Very dissatisfied",
   dissatisfied: "Dissatisfied",
   neutral: "Neutral",
   satisfied: "Satisfied",
-  "very-satisfied": "Very Satisfied",
+  "very-satisfied": "Very satisfied",
 } as const;
 
 type SurveyLinks = Record<keyof typeof SurveyResponses, string>;
@@ -117,6 +119,7 @@ export const CsatSurvey = (props: Props) => {
   const l10n = useL10n();
   const [answer, setAnswer] = useState<keyof SurveyLinks>();
 
+  const recordTelemetry = useTelemetry();
   const hasRenderedClientSide = useHasRenderedClientSide();
   const survey = getRelevantSurvey(props);
   const localDismissal = useLocalDismissal(`survey-csat_${survey?.id}`);
@@ -134,9 +137,13 @@ export const CsatSurvey = (props: Props) => {
   };
 
   const submit = (satisfaction: keyof SurveyLinks) => {
-    // TODO: Add telemetry
     setAnswer(satisfaction);
     dismiss({ soft: true });
+    recordTelemetry("button", "click", {
+      button_id: "csat_survey",
+      // TODO: Enable after the parameter has been added to metrics.yaml.
+      // button_name: satisfaction,
+    });
   };
 
   return (
