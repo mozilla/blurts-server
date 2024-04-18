@@ -26,6 +26,7 @@ fix-flow-celebration-high-risk-description-done = Ejapóvo ko tembiapo erekuaa h
 fix-flow-celebration-high-risk-description-next-passwords = Ko’ág̃a ñamoĩporãta ne ñe’ẽñemi ivaikuaáva.
 fix-flow-celebration-high-risk-description-next-security-questions = Ko’ág̃a ñamoĩporãta umi porandu tekorosãrã ivaikuaáva.
 fix-flow-celebration-high-risk-description-next-security-recommendations = Ko’ág̃a guive, rome’ẽta ndéve tekorosãrã rape rohecha rire ne mba’ekuaarã oñembyaikuaahague.
+fix-flow-celebration-high-risk-description-next-dashboard = Eg̃uahẽma hu’ãitépe. Ikatu ehecha oimeraẽva mba’eporu tembiaporã ha ehapykueho nde jeku’e techamemeha rupápe.
 
 ## Leaked passwords and security questions flow
 
