@@ -133,7 +133,6 @@ export const SettingsView = (props: Props) => {
                   link_id: "deactivate_account",
                 }}
               >
-                {/* changed string here */}
                 {l10n.getString("settings-fxa-link-label-3")}
                 <OpenInNew
                   alt={l10n.getString("open-in-new-tab-alt")}
