@@ -11,15 +11,14 @@ import AppConstants from "../../../../../appConstants";
 import {
   getSubscriberByFxaUid,
   setAllEmailsToPrimary,
+  setMonthlyMonitorReport,
 } from "../../../../../db/tables/subscribers";
 
-// "-1" if a user opts out of breach alerts,
-//  "1" to send breach alerts to the primary email address,
-//  "0" to send them to the affected address
-export type EmailUpdateCommTypeOfOptions = "-1" | "0" | "1";
+export type EmailUpdateCommTypeOfOptions = "null" | "affected" | "primary";
 
 export interface EmailUpdateCommOptionRequest {
-  communicationOption: EmailUpdateCommTypeOfOptions;
+  instantBreachAlerts: EmailUpdateCommTypeOfOptions;
+  monthlyMonitorReport: boolean;
 }
 
 export async function POST(req: NextRequest) {
@@ -27,16 +26,30 @@ export async function POST(req: NextRequest) {
 
   if (typeof token?.subscriber?.fxa_uid === "string") {
     try {
-      const { communicationOption }: EmailUpdateCommOptionRequest =
-        await req.json();
+      const {
+        instantBreachAlerts,
+        monthlyMonitorReport,
+      }: EmailUpdateCommOptionRequest = await req.json();
       const subscriber = await getSubscriberByFxaUid(token.subscriber?.fxa_uid);
       if (!subscriber) {
         throw new Error("No subscriber found for current session.");
       }
-      // 0 = Send breach alerts to the corresponding affected emails.
-      // 1 = Send all breach alerts to user's primary email address.
-      const allEmailsToPrimary = Number(communicationOption) === 1 ?? false;
+      // "null"     = Do not send instant notifications. Newly added in MNTOR-1368
+      // "affected" = Send breach alerts to the corresponding affected emails.
+      // "primary"  = Send all breach alerts to user's primary email address.
+      let allEmailsToPrimary;
+      switch (instantBreachAlerts) {
+        case "primary":
+          allEmailsToPrimary = true;
+          break;
+        case "affected":
+          allEmailsToPrimary = false;
+          break;
+        default:
+          allEmailsToPrimary = null;
+      }
       await setAllEmailsToPrimary(subscriber, allEmailsToPrimary);
+      await setMonthlyMonitorReport(subscriber, monthlyMonitorReport);
 
       return NextResponse.json({
         success: true,

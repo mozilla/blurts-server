@@ -29,10 +29,8 @@ import { VisuallyHidden } from "../../../../../../components/server/VisuallyHidd
 import { useSession } from "next-auth/react";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 
-export type AlertAddress = "null" | "primary" | "affected";
-
 export type Props = {
-  defaultSelected?: AlertAddress;
+  defaultSelected?: EmailUpdateCommTypeOfOptions;
   breachAlertsEmailsAllowed: boolean;
   enabledFeatureFlags: FeatureFlagName[];
 };
@@ -54,21 +52,10 @@ export const AlertAddressForm = (props: Props) => {
   const state = useRadioGroupState({
     defaultValue: defaultValue,
     onChange: (newValue) => {
-      const chosenOption = newValue as AlertAddress;
-      let communicationOption: EmailUpdateCommTypeOfOptions;
-      switch (chosenOption) {
-        case "primary":
-          communicationOption = "1";
-          break;
-        case "affected":
-          communicationOption = "0";
-          break;
-        default:
-          communicationOption = "-1";
-          break;
-      }
+      const chosenOption = newValue as EmailUpdateCommTypeOfOptions;
       const body: EmailUpdateCommOptionRequest = {
-        communicationOption: communicationOption,
+        instantBreachAlerts: chosenOption,
+        monthlyMonitorReport: activateMonthlyMonitorReport,
       };
       void fetch("/api/v1/user/update-comm-option", {
         method: "POST",
@@ -150,7 +137,6 @@ export const AlertAddressForm = (props: Props) => {
             </AlertAddressRadio>
           </AlertAddressContext.Provider>
         )}
-
         {props.enabledFeatureFlags.includes("MonthlyActivityEmail") && (
           <ActivateEmailsCheckbox
             isSelected={activateMonthlyMonitorReport}
@@ -230,7 +216,9 @@ const ActivateEmailsCheckbox = (props: AriaCheckboxProps) => {
   );
 };
 
-const AlertAddressRadio = (props: AriaRadioProps & { value: AlertAddress }) => {
+const AlertAddressRadio = (
+  props: AriaRadioProps & { value: EmailUpdateCommTypeOfOptions },
+) => {
   const { children } = props;
   const state = useContext(AlertAddressContext);
   const inputRef = useRef<HTMLInputElement>(null);

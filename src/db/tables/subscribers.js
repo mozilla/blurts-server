@@ -174,7 +174,7 @@ async function updateFxAProfileData (subscriber, fxaProfileData) {
 
 /**
  * @param {import("knex/types/tables").SubscriberRow} subscriber
- * @param {boolean} allEmailsToPrimary
+ * @param {boolean | null} allEmailsToPrimary
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -183,6 +183,27 @@ async function setAllEmailsToPrimary (subscriber, allEmailsToPrimary) {
     .where('id', subscriber.id)
     .update({
       all_emails_to_primary: allEmailsToPrimary,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
+    })
+    .returning('*')
+  const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
+  return updatedSubscriber
+}
+/* c8 ignore stop */
+
+/**
+ * @param {import("knex/types/tables").SubscriberRow} subscriber
+ * @param {boolean} monthlyMonitorReport
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function setMonthlyMonitorReport (subscriber, monthlyMonitorReport) {
+  const updated = await knex('subscribers')
+    .where('id', subscriber.id)
+    .update({
+      monthly_monitor_report: monthlyMonitorReport,
       // @ts-ignore knex.fn.now() results in it being set to a date,
       // even if it's not typed as a JS date object:
       updated_at: knex.fn.now(),
@@ -402,6 +423,7 @@ export {
   updateFxAData,
   updateFxAProfileData,
   setAllEmailsToPrimary,
+  setMonthlyMonitorReport,
   setBreachResolution,
   updateMonthlyEmailTimestamp,
   updateMonthlyEmailOptout,
