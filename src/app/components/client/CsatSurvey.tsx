@@ -127,7 +127,7 @@ export const CsatSurvey = (props: Props) => {
   if (
     !hasRenderedClientSide ||
     typeof survey === "undefined" ||
-    localDismissal.isDismissed
+    (localDismissal.isDismissed && process.env.STORYBOOK !== "true")
   ) {
     return null;
   }
