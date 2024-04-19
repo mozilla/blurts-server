@@ -3,8 +3,6 @@ name: Build Docker image and publish
 on:
   push:
     branches: [ main ]
-    tags: '*'
-
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
