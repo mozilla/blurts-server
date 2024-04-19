@@ -15,6 +15,8 @@ settings-alert-preferences-option-two = Send all breach alerts to the primary em
 
 ## Monitored email addresses
 
+# Variables:
+#   $email (string) - Email address
 settings-email-list-title = Monitored email addresses
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,7 +32,6 @@ settings-remove-email-button-label = Remove
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Stop monitoring { $emailAddress }
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -41,17 +42,20 @@ settings-email-number-of-breaches-info =
        *[other] Appears in { $breachCount } known breaches.
     }
 
-## Cancel Premium subscription
-
 ## Deactivate account
 
 settings-deactivate-account-title = Deactivate account
 settings-deactivate-account-info-2 = You can deactivate { -product-short-name } by deleting your { -brand-mozilla-account }.
 settings-fxa-link-label-3 = Go to { -brand-mozilla-account } settings
 
-## Add email dialog
-
-## Unsubscribe Dialog Survey
-
 ## Delete Monitor account
 
+settings-delete-monitor-free-account-title = Delete { -brand-monitor } account
+settings-delete-monitor-free-account-description = This will permanently delete your { -brand-monitor } account and turn off all notifications.
+settings-delete-monitor-free-account-cta-label = Delete account
+settings-delete-monitor-free-account-dialog-title = Your { -brand-monitor } account will be permanently deleted
+settings-delete-monitor-free-account-dialog-lead = All of your { -brand-monitor } account information will be deleted and we’ll no longer monitor for new data breaches. This will not delete your { -brand-mozilla } account.
+settings-delete-monitor-free-account-dialog-cta-label = Delete account
+settings-delete-monitor-free-account-dialog-cancel-button-label = Never mind, take me back
+settings-delete-monitor-account-confirmation-toast-label-2 = Your { -brand-monitor } account is now deleted.
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Dismiss

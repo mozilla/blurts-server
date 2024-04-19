@@ -4,12 +4,11 @@
 
 "use client";
 
-import { Key, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import type { OverlayTriggerProps, OverlayTriggerState } from "react-stately";
 import { Dialog } from "./dialog/Dialog";
 import { ModalOverlay } from "./dialog/ModalOverlay";
-import { TabList } from "./TabList";
 import { Button } from "../client/Button";
 import { useL10n } from "../../hooks/l10n";
 import ModalImage from "../client/assets/premium-upsell-dialog-icon.svg";
@@ -17,6 +16,7 @@ import styles from "./UpsellDialog.module.scss";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../constants";
 import { modifyAttributionsForUrl } from "../../functions/universal/attributions";
+import { BillingPeriod, BillingPeriodToggle } from "./BillingPeriod";
 
 export interface UpsellDialogProps {
   state: OverlayTriggerState;
@@ -43,7 +43,7 @@ function PremiumPricingLabel({
   );
 
   return (
-    <>
+    <div className={styles.pricingInfoWrapper}>
       <small className={styles.pricingInfo}>
         {l10n.getString(
           "fix-flow-data-broker-profiles-automatic-remove-save-percent",
@@ -76,7 +76,7 @@ function PremiumPricingLabel({
           )}
         </b>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -95,9 +95,8 @@ function UpsellDialogContent({
   subscriptionBillingAmount,
 }: UpsellDialogContentProps) {
   const l10n = useL10n();
-  const defaultSelectedKey = "yearly";
-  const [selectedTab, setSelectedTab] = useState<Key>(defaultSelectedKey);
   const recordTelemetry = useTelemetry();
+  const [billingPeriod, setBillingPeriod] = useState<BillingPeriod>("yearly");
 
   // format subscription urls
   const monthlySubscriptionUrlWithAttributions = monthlySubscriptionUrl
@@ -131,7 +130,7 @@ function UpsellDialogContent({
       )
     : yearlySubscriptionUrl;
 
-  const isMonthly = selectedTab === "monthly";
+  const isMonthly = billingPeriod === "monthly";
   const tabsData = [
     {
       name: l10n.getString(
@@ -160,20 +159,24 @@ function UpsellDialogContent({
 
   return (
     <div className={styles.modalContent}>
-      <div className={styles.productPlans}>
-        <TabList
-          tabs={tabsData}
-          defaultSelectedKey={defaultSelectedKey}
-          onSelectionChange={(selectedKey) => {
+      <div className={styles.priceSection}>
+        <BillingPeriodToggle
+          onChange={(selectedKey) => {
+            setBillingPeriod(selectedKey);
             recordTelemetry("button", "click", {
               button_id:
-                selectedKey === "monthly"
-                  ? "selected_monthly_plan"
-                  : "selected_yearly_plan",
+                selectedKey === "yearly"
+                  ? "selected_yearly_plan"
+                  : "selected_monthly_plan",
             });
-            return setSelectedTab(selectedKey);
+            return setBillingPeriod(selectedKey);
           }}
         />
+        {tabsData.map((tab) => {
+          if (tab.key === billingPeriod) {
+            return <div key={tab.key}>{tab.content}</div>;
+          }
+        })}
       </div>
       <dl className={styles.list}>
         <dt>
@@ -276,5 +279,4 @@ function UpsellDialog({
     )
   );
 }
-
 export { UpsellDialog };

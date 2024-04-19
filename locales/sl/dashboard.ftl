@@ -32,7 +32,6 @@ exposure-chart-caption-fixed = Ta grafikon prikazuje skupne izpostavljenosti, ki
 exposure-chart-returning-user-upgrade-prompt = Domači naslov, družinski člani in drugo še niso vključeni.
 exposure-chart-returning-user-upgrade-prompt-cta = Začnite brezplačen pregled
 exposure-chart-scan-in-progress-prompt = <b>Iskanje v teku:</b> naslov, družinski člani in drugo še niso vključeni.
-
 modal-active-number-of-exposures-title = O številu aktivnih izpostavljenosti
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -47,19 +46,15 @@ modal-active-number-of-exposures-part-two = Na primer, če imate 10 izpostavljen
 modal-active-number-of-exposures-part-three-all = Ko bodo razrešene, bodo dodane vašemu skupnemu številu fiksiranih izpostavljenosti na strani Fiksno.
 modal-fixed-number-of-exposures-title = O številu določenih izpostavljenosti
 modal-fixed-number-of-exposures-all = Ta grafikon vključuje skupno število odpravljenih kraj podatkov za vse e-poštne naslove, ki jih trenutno spremljate. Ko so izpostavljenosti označene kot fiksne, bodo tukaj dodane skupni vsoti.
-
 modal-cta-ok = V redu
-modal-open-alt = Odpri
-modal-close-alt = Zapri
-
+open-modal-alt = Odpri način
+close-modal-alt = Zapri modalno okno
+open-tooltip-alt = Odpri opis orodja
 progress-card-heres-what-we-fixed-headline-all = To ste popravili
 progress-card-manually-fixed-headline = Ročno popravljeno
-
 dashboard-tab-label-action-needed = Potrebno je ukrepanje
 dashboard-tab-label-fixed = Popravljeno
 dashboard-exposures-all-fixed-label = Tukaj je vse popravljeno!
-
-
 dashboard-exposures-area-headline = Oglejte si vsa spletna mesta, kjer so vaši podatki izpostavljeni
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
@@ -71,7 +66,6 @@ dashboard-exposures-area-description-all-line1 =
         [few] Odkrili smo { $exposures_unresolved_num } izpostavljenosti vaših podatkov.
        *[other] Odkrili smo { $exposures_unresolved_num } izpostavljenosti vaših podatkov.
     }
-
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
@@ -83,7 +77,6 @@ dashboard-exposures-area-description-all-line2 =
        *[other] Pojavil se je v { $data_breach_unresolved_num } krajah podatkov.
     }
 dashboard-fixed-area-headline-all = Oglejte si vse izpostavljenosti, ki so fiksne
-
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filter
 dashboard-exposures-filter-company = Podjetje
@@ -101,10 +94,8 @@ dashboard-exposures-filter-reset = Ponastavi
 
 dashboard-top-banner-section-label = Povzetek nadzorne plošče
 dashboard-top-banner-scan-in-progress-title = Pregledovanje še poteka
-
 dashboard-top-banner-your-data-is-protected-title = Vaši podatki so zaščiteni
 dashboard-top-banner-your-data-is-protected-cta = Oglejte si, kaj je popravljeno
-
 dashboard-top-banner-lets-keep-protecting-title = Varujmo vaše podatke še naprej
 # Variables:
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
@@ -116,10 +107,8 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] Imate še { $exposures_unresolved_num } izpostavljenosti, ki jih morate popraviti. Le tako naprej in se zaščitite. Vodili vas bomo korak za korakom.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Gremo naprej
-
 dashboard-top-banner-protect-your-data-title = Zaščitimo vaše podatke
 dashboard-top-banner-protect-your-data-cta = Popravimo zadevo
-
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
@@ -140,11 +129,9 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
         [few] Pojavil se je v { $data_breach_unresolved_num } krajah podatkov. Vodili vas bomo, kako to težavo odpraviti po korakih.
        *[other] Pojavil se je v { $data_breach_unresolved_num } krajah podatkov. Vodili vas bomo, kako to težavo odpraviti po korakih.
     }
-
 dashboard-top-banner-no-exposures-found-title = Ni izpostavljenosti
 dashboard-top-banner-non-us-no-exposures-found-description = Odlična novica! Preiskali smo vse znane kraje podatkov in našli nobene izpostavljenosti. Vaš e-poštni naslov bomo še naprej spremljali in vas obvestili, če bo prišlo do nove kraje.
 dashboard-no-exposures-label = Ni izpostavljenosti
-
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
 dashboard-top-banner-non-us-your-data-is-protected-description =
@@ -154,7 +141,6 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
         [few] Odlično, vseh { $exposures_resolved_num } izpostavljenosti vaših podatkov je odpravljenih! Nadaljevali bomo s spremljanjem in vas bomo obvestili o morebitnih novih izpostavljenostih.
        *[other] Odlično, vseh { $exposures_resolved_num } izpostavljenosti vaših podatkov je odpravljenih! Nadaljevali bomo s spremljanjem in vas bomo obvestili o morebitnih novih izpostavljenostih.
     }
-
 dashboard-top-banner-monitor-more-cta = Spremljajte več e-poštnih sporočil
 
 # About Exposure Statuses Modal

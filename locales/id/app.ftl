@@ -268,7 +268,7 @@ user-menu-signout-tooltip = Keluar dari { -brand-mozilla-monitor }
 
 ## Footer
 
-mozilla = { -brand-Mozilla }
+mozilla = { -brand-mozilla }
 terms-of-service = Ketentuan Layanan
 privacy-notice = Kebijakan Privasi
 github = { -brand-github }

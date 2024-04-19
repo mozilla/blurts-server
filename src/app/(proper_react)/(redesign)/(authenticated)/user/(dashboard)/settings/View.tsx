@@ -20,6 +20,7 @@ import { sanitizeEmailRow } from "../../../../../../functions/server/sanitize";
 import { SettingsConfirmationDialog } from "./SettingsConfirmationDialog";
 import { DeleteAccountButton } from "./DeleteAccountButton";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
+import { CancelFlow } from "./CancelFlow";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -97,47 +98,51 @@ export const SettingsView = (props: Props) => {
               <div className={styles.cancelSection}>
                 <h3>{l10n.getString("settings-cancel-plus-title")}</h3>
                 <p>{l10n.getString("settings-cancel-plus-details")}</p>
-                <TelemetryLink
-                  href={props.fxaSubscriptionsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  eventData={{
-                    link_id: "cancel_plus",
-                  }}
-                >
-                  {l10n.getString("settings-cancel-plus-link-label")}
-                  <OpenInNew
-                    alt={l10n.getString("open-in-new-tab-alt")}
-                    width="13"
-                    height="13"
-                  />
-                </TelemetryLink>
+                {props.enabledFeatureFlags.includes("CancellationSurvey") ? (
+                  <CancelFlow fxaSubscriptionsUrl={props.fxaSubscriptionsUrl} />
+                ) : (
+                  <TelemetryLink
+                    href={props.fxaSubscriptionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    eventData={{
+                      link_id: "cancel_plus",
+                    }}
+                  >
+                    {l10n.getString("settings-cancel-plus-link-label")}
+                    <OpenInNew
+                      alt={l10n.getString("open-in-new-tab-alt")}
+                      width="13"
+                      height="13"
+                    />
+                  </TelemetryLink>
+                )}
               </div>
             </>
           )}
           <hr />
-          <div className={styles.deactivateSection}>
-            <h3>{l10n.getString("settings-deactivate-account-title")}</h3>
-            <p>{l10n.getString("settings-deactivate-account-info-2")}</p>
-            <TelemetryLink
-              href={props.fxaSettingsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              eventData={{
-                link_id: "deactivate_account",
-              }}
-            >
-              {l10n.getString("settings-fxa-link-label-3")}
-              <OpenInNew
-                alt={l10n.getString("open-in-new-tab-alt")}
-                width="13"
-                height="13"
-              />
-            </TelemetryLink>
-          </div>
-          {props.enabledFeatureFlags.includes("MonitorAccountDeletion") && (
+          {!props.enabledFeatureFlags.includes("MonitorAccountDeletion") ? (
+            <div className={styles.deactivateSection}>
+              <h3>{l10n.getString("settings-deactivate-account-title")}</h3>
+              <p>{l10n.getString("settings-deactivate-account-info-2")}</p>
+              <TelemetryLink
+                href={props.fxaSettingsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                eventData={{
+                  link_id: "deactivate_account",
+                }}
+              >
+                {l10n.getString("settings-fxa-link-label-3")}
+                <OpenInNew
+                  alt={l10n.getString("open-in-new-tab-alt")}
+                  width="13"
+                  height="13"
+                />
+              </TelemetryLink>
+            </div>
+          ) : (
             <>
-              <hr />
               <div className={styles.deleteAccountSection}>
                 {hasPremium(props.user) ? (
                   <>

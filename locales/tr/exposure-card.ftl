@@ -3,7 +3,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 chevron-alt = İhlal ayrıntıları
-
 exposure-card-exposure-type = İhlal türü
 exposure-card-date-found = İhlal tarihi
 
@@ -27,6 +26,7 @@ exposure-card-other = Diğer
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
 exposure-card-description-data-breach-action-needed = Bilgileriniz <data_breach_link>{ $data_breach_date } tarihli { $data_breach_company } veri ihlalinde</data_breach_link> ele geçirilmiş. İhlali çözmeniz için size rehberlik edeceğiz.
+exposure-card-description-data-breach-fixed = <data_breach_link>Bu ihlali</data_breach_link> düzeltmek için gereken adımları attınız. Veri ihlallerini sürekli olarak izleyeceğiz ve yeni ihlaller konusunda sizi uyaracağız.
 exposure-card-your-exposed-info = Ele geçirilen bilgileriniz:
 exposure-card-exposure-type-data-broker = Satılık bilgiler
 exposure-card-exposure-type-data-breach = Veri ihlali
