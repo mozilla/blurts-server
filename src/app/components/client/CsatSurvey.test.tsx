@@ -107,7 +107,7 @@ describe("CSAT survey", () => {
     await user.click(answerButton as HTMLElement);
 
     const feedbackLink = screen.queryByRole("link", {
-      name: "Your feedback is helpful to us! How can we improve Monitor for you?",
+      name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
     });
     expect(feedbackLink).toBeInTheDocument();
     expect((feedbackLink as HTMLElement).getAttribute("href")).toBe(
@@ -131,7 +131,7 @@ describe("CSAT survey", () => {
     await user.click(answerButton as HTMLElement);
 
     const feedbackLink = screen.queryByRole("link", {
-      name: "Your feedback is helpful to us! How can we improve Monitor for you?",
+      name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
     });
     expect(feedbackLink).toBeInTheDocument();
     expect((feedbackLink as HTMLElement).getAttribute("href")).toBe(
@@ -155,7 +155,7 @@ describe("CSAT survey", () => {
     await user.click(answerButton as HTMLElement);
 
     const feedbackLink = screen.queryByRole("link", {
-      name: "Your feedback is helpful to us! How can we improve Monitor for you?",
+      name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
     });
     expect(feedbackLink).toBeInTheDocument();
     expect((feedbackLink as HTMLElement).getAttribute("href")).toBe(
@@ -179,7 +179,7 @@ describe("CSAT survey", () => {
     await user.click(answerButton as HTMLElement);
 
     const feedbackLink = screen.queryByRole("link", {
-      name: "Your feedback is helpful to us! How can we improve Monitor for you?",
+      name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
     });
     expect(feedbackLink).toBeInTheDocument();
     expect((feedbackLink as HTMLElement).getAttribute("href")).toBe(
@@ -203,7 +203,7 @@ describe("CSAT survey", () => {
     await user.click(answerButton as HTMLElement);
 
     const feedbackLink = screen.queryByRole("link", {
-      name: "Your feedback is helpful to us! How can we improve Monitor for you?",
+      name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
     });
     expect(feedbackLink).toBeInTheDocument();
     expect((feedbackLink as HTMLElement).getAttribute("href")).toBe(
@@ -270,13 +270,13 @@ describe("CSAT survey", () => {
     await user.click(answerButton as HTMLElement);
 
     const feedbackLinkOne = screen.queryByRole("link", {
-      name: "Your feedback is helpful to us! How can we improve Monitor for you?",
+      name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
     });
     expect(feedbackLinkOne).toBeInTheDocument();
     await user.click(feedbackLinkOne as HTMLElement);
 
     const feedbackLinkTwo = screen.queryByRole("link", {
-      name: "Your feedback is helpful to us! How can we improve Monitor for you?",
+      name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
     });
     expect(feedbackLinkTwo).not.toBeInTheDocument();
   });
