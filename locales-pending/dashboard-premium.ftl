@@ -190,8 +190,7 @@ exposure-card-description-info-for-sale-in-progress = We’ve started our auto-r
 exposure-card-description-info-for-sale-fixed = As a { -brand-monitor-plus } member, we’ve <data_broker_profile>removed this profile</data_broker_profile> for you and will continually monitor to make sure they don’t add you back.
 exposure-card-description-info-for-sale-fixed-manually-fixed =  You marked this profile as fixed. Be sure you’ve followed all instructions on <data_broker_profile>the site</data_broker_profile> to ensure they remove your personal info.
 
-
-# CSAT survey banner for subscribers
+## CSAT survey banner for subscribers
 
 survey-csat-question = How satisfied are you with your { -product-name } experience?
 survey-csat-answer-very-dissatisfied = Very dissatisfied
