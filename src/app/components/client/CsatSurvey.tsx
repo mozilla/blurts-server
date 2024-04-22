@@ -25,7 +25,9 @@ const SurveyResponses = {
   "very-satisfied": "Very satisfied",
 } as const;
 
-type SurveyLinks = Record<keyof typeof SurveyResponses, string>;
+type SurveyResponseKey = keyof typeof SurveyResponses;
+
+type SurveyLinks = Record<SurveyResponseKey, string>;
 
 type SurveyTypes = "initial" | "3-months" | "6-months" | "12-months";
 
@@ -136,7 +138,7 @@ export const CsatSurvey = (props: Props) => {
     localDismissal.dismiss(options);
   };
 
-  const submit = (satisfaction: keyof SurveyLinks) => {
+  const submit = (satisfaction: SurveyResponseKey) => {
     setAnswer(satisfaction);
     dismiss({ soft: true });
     recordTelemetry("button", "click", {
@@ -163,63 +165,24 @@ export const CsatSurvey = (props: Props) => {
             {l10n.getString("survey-csat-question")}
           </div>
           <ol className={`${styles.answers} noList`}>
-            <li>
-              <Button
-                className={styles.answer}
-                variant="primary"
-                small
-                onPress={() => submit("very-dissatisfied")}
-              >
-                {l10n.getString("survey-csat-answer-very-dissatisfied")}
-              </Button>
-            </li>
-            <li>
-              <Button
-                className={styles.answer}
-                variant="primary"
-                small
-                onPress={() => submit("dissatisfied")}
-              >
-                {l10n.getString("survey-csat-answer-dissatisfied")}
-              </Button>
-            </li>
-            <li>
-              <Button
-                className={styles.answer}
-                variant="primary"
-                small
-                onPress={() => submit("neutral")}
-              >
-                {l10n.getString("survey-csat-answer-neutral")}
-              </Button>
-            </li>
-            <li>
-              <Button
-                className={styles.answer}
-                variant="primary"
-                small
-                onPress={() => submit("satisfied")}
-              >
-                {l10n.getString("survey-csat-answer-satisfied")}
-              </Button>
-            </li>
-            <li>
-              <Button
-                className={styles.answer}
-                variant="primary"
-                small
-                onPress={() => submit("very-satisfied")}
-              >
-                {l10n.getString("survey-csat-answer-very-satisfied")}
-              </Button>
-            </li>
+            {Object.keys(SurveyResponses).map(responseKey => (
+              <li key={responseKey}>
+                <Button
+                  className={styles.answer}
+                  variant="primary"
+                  small
+                  onPress={() => submit(responseKey as SurveyResponseKey)}
+                >
+                  {l10n.getString(`survey-csat-answer-${responseKey}`)}
+                </Button>
+              </li>
+            ))}
           </ol>
         </>
       )}
       <button
         className={styles.closeButton}
         onClick={() => dismiss()}
-        title={l10n.getString("survey-csat-survey-dismiss-label")}
       >
         <CloseBtn
           alt={l10n.getString("survey-csat-survey-dismiss-label")}
