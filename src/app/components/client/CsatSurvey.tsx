@@ -165,7 +165,7 @@ export const CsatSurvey = (props: Props) => {
             {l10n.getString("survey-csat-question")}
           </div>
           <ol className={`${styles.answers} noList`}>
-            {Object.keys(SurveyResponses).map(responseKey => (
+            {Object.keys(SurveyResponses).map((responseKey) => (
               <li key={responseKey}>
                 <Button
                   className={styles.answer}
@@ -180,10 +180,7 @@ export const CsatSurvey = (props: Props) => {
           </ol>
         </>
       )}
-      <button
-        className={styles.closeButton}
-        onClick={() => dismiss()}
-      >
+      <button className={styles.closeButton} onClick={() => dismiss()}>
         <CloseBtn
           alt={l10n.getString("survey-csat-survey-dismiss-label")}
           width="14"
