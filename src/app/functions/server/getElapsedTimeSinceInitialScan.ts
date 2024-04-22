@@ -18,5 +18,5 @@ export async function getElapsedTimeSinceInitialScan(user: Session["user"]) {
     return -1;
   }
 
-  return Date.now() - Number(new Date(latestScan.created_at));
+  return Date.now() - new Date(latestScan.created_at).getTime();
 }
