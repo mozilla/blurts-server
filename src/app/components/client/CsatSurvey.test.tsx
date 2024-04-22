@@ -43,7 +43,7 @@ describe("CSAT survey", () => {
       />,
     );
 
-    const answerButton = screen.queryByRole("button", {
+    const answerButton = screen.getByRole("button", {
       name: "Dissatisfied",
     });
     expect(answerButton).toBeInTheDocument();
@@ -57,7 +57,7 @@ describe("CSAT survey", () => {
       />,
     );
 
-    const answerButton = screen.queryByRole("button", {
+    const answerButton = screen.getByRole("button", {
       name: "Neutral",
     });
     expect(answerButton).toBeInTheDocument();
@@ -71,7 +71,7 @@ describe("CSAT survey", () => {
       />,
     );
 
-    const answerButton = screen.queryByRole("button", {
+    const answerButton = screen.getByRole("button", {
       name: "Satisfied",
     });
     expect(answerButton).toBeInTheDocument();
@@ -85,7 +85,7 @@ describe("CSAT survey", () => {
       />,
     );
 
-    const answerButton = screen.queryByRole("button", {
+    const answerButton = screen.getByRole("button", {
       name: "Very satisfied",
     });
     expect(answerButton).toBeInTheDocument();
@@ -100,17 +100,15 @@ describe("CSAT survey", () => {
       />,
     );
 
-    const answerButton = screen.queryByRole("button", {
+    const answerButton = screen.getByRole("button", {
       name: "Very dissatisfied",
     });
-    expect(answerButton).toBeInTheDocument();
-    await user.click(answerButton as HTMLElement);
+    await user.click(answerButton);
 
-    const feedbackLink = screen.queryByRole("link", {
+    const feedbackLink = screen.getByRole("link", {
       name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
     });
-    expect(feedbackLink).toBeInTheDocument();
-    expect((feedbackLink as HTMLElement).getAttribute("href")).toBe(
+    expect(feedbackLink.getAttribute("href")).toBe(
       "https://survey.alchemer.com/s3/7718223/9bf87045f7fb",
     );
   });
@@ -124,17 +122,16 @@ describe("CSAT survey", () => {
       />,
     );
 
-    const answerButton = screen.queryByRole("button", {
+    const answerButton = screen.getByRole("button", {
       name: "Dissatisfied",
     });
-    expect(answerButton).toBeInTheDocument();
-    await user.click(answerButton as HTMLElement);
+    await user.click(answerButton);
 
     const feedbackLink = screen.queryByRole("link", {
       name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
     });
     expect(feedbackLink).toBeInTheDocument();
-    expect((feedbackLink as HTMLElement).getAttribute("href")).toBe(
+    expect((feedbackLink as HTMLLinkElement).getAttribute("href")).toBe(
       "https://survey.alchemer.com/s3/7718561/6dfb2e8b6d68",
     );
   });
@@ -148,17 +145,16 @@ describe("CSAT survey", () => {
       />,
     );
 
-    const answerButton = screen.queryByRole("button", {
+    const answerButton = screen.getByRole("button", {
       name: "Neutral",
     });
-    expect(answerButton).toBeInTheDocument();
-    await user.click(answerButton as HTMLElement);
+    await user.click(answerButton);
 
     const feedbackLink = screen.queryByRole("link", {
       name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
     });
     expect(feedbackLink).toBeInTheDocument();
-    expect((feedbackLink as HTMLElement).getAttribute("href")).toBe(
+    expect((feedbackLink as HTMLLinkElement).getAttribute("href")).toBe(
       "https://survey.alchemer.com/s3/7718562/76e17004efd6",
     );
   });
@@ -172,17 +168,16 @@ describe("CSAT survey", () => {
       />,
     );
 
-    const answerButton = screen.queryByRole("button", {
+    const answerButton = screen.getByRole("button", {
       name: "Satisfied",
     });
-    expect(answerButton).toBeInTheDocument();
-    await user.click(answerButton as HTMLElement);
+    await user.click(answerButton);
 
     const feedbackLink = screen.queryByRole("link", {
       name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
     });
     expect(feedbackLink).toBeInTheDocument();
-    expect((feedbackLink as HTMLElement).getAttribute("href")).toBe(
+    expect(feedbackLink.getAttribute("href")).toBe(
       "https://survey.alchemer.com/s3/7718223/fbbb597a762a",
     );
   });
@@ -196,17 +191,16 @@ describe("CSAT survey", () => {
       />,
     );
 
-    const answerButton = screen.queryByRole("button", {
+    const answerButton = screen.getByRole("button", {
       name: "Very satisfied",
     });
-    expect(answerButton).toBeInTheDocument();
-    await user.click(answerButton as HTMLElement);
+    await user.click(answerButton);
 
     const feedbackLink = screen.queryByRole("link", {
       name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
     });
     expect(feedbackLink).toBeInTheDocument();
-    expect((feedbackLink as HTMLElement).getAttribute("href")).toBe(
+    expect((feedbackLink as HTMLLinkElement).getAttribute("href")).toBe(
       "https://survey.alchemer.com/s3/7718561/a443cc84b78a",
     );
   });
@@ -221,11 +215,10 @@ describe("CSAT survey", () => {
       />,
     );
 
-    const answerButton = screen.queryByRole("button", {
+    const answerButton = screen.getByRole("button", {
       name: "Very satisfied",
     });
-    expect(answerButton).toBeInTheDocument();
-    await user.click(answerButton as HTMLElement);
+    await user.click(answerButton);
 
     expect(mockedRecord).toHaveBeenCalledWith(
       "button",
@@ -241,12 +234,10 @@ describe("CSAT survey", () => {
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(<ComposedCsatSurveyBanner />);
 
-    const dismissButton = screen.queryByRole("button", {
+    const dismissButton = screen.getByRole("button", {
       name: "Dismiss",
     });
-    expect(dismissButton).toBeInTheDocument();
-
-    await user.click(dismissButton as HTMLElement);
+    await user.click(dismissButton);
 
     const answerButton = screen.queryByRole("button", {
       name: "Neutral",
@@ -263,16 +254,14 @@ describe("CSAT survey", () => {
       />,
     );
 
-    const answerButton = screen.queryByRole("button", {
+    const answerButton = screen.getByRole("button", {
       name: "Very satisfied",
     });
-    expect(answerButton).toBeInTheDocument();
-    await user.click(answerButton as HTMLElement);
+    await user.click(answerButton);
 
     const feedbackLinkOne = screen.queryByRole("link", {
       name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
     });
-    expect(feedbackLinkOne).toBeInTheDocument();
     await user.click(feedbackLinkOne as HTMLElement);
 
     const feedbackLinkTwo = screen.queryByRole("link", {
