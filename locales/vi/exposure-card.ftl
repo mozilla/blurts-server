@@ -2,8 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Mở rộng
-chevron-up-alt = Thu gọn
+chevron-alt = Chi tiết dữ liệu bị lộ
+
 exposure-card-exposure-type = Loại vụ rò rỉ
 exposure-card-date-found = Ngày vụ rò rỉ
 
@@ -34,8 +34,6 @@ exposure-card-exposure-type-data-breach = Vụ rò rỉ
 exposure-card-cta = Giải quyết tất cả vụ rò rỉ
 exposure-card-label-company-logo = Logo công ty
 exposure-card-label-company = Công ty
-exposure-card-label-exposure-type = Loại vụ rò rỉ
-exposure-card-label-date-found = Ngày tìm thấy
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Trạng thái
 # Variables:

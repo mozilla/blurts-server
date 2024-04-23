@@ -5,8 +5,8 @@
 fix-flow-nav-high-risk-data-breaches = Vysoce rizikové úniky dat
 fix-flow-nav-leaked-passwords = Uniklá hesla
 fix-flow-nav-security-recommendations = Bezpečnostní doporučení
+
 guided-resolution-flow-exit = Zpět na nástěnku
-guided-resolution-flow-back-arrow = Přejít na předchozí krok
 guided-resolution-flow-next-arrow = Přejít na další krok
 guided-resolution-flow-step-navigation-label = Návody
 

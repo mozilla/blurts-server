@@ -34,8 +34,9 @@ modal-active-number-of-exposures-title = Mboyjeýmapa ipapapy jehechauka hendýv
 modal-active-number-of-exposures-part-three-all = Oñemoĩporã vove, oñembojuajúta nde papapy jehechapy oĩporãmava kuatiarogue Moĩporãhápe.
 modal-fixed-number-of-exposures-title = Mboyjeýmapa ipapapy jehechauka opytáva
 modal-cta-ok = MONEĨ
-modal-open-alt = Ijurujáva
-modal-close-alt = Mboty
+open-modal-alt = Embojuruja modal
+close-modal-alt = Emboty modal
+open-tooltip-alt = Embojuruja marandu
 progress-card-heres-what-we-fixed-headline-all = Kóva pe emoĩporãva
 progress-card-manually-fixed-headline = Pópe ñembojáva
 dashboard-tab-label-action-needed = Tekotevẽva ojejapo
@@ -67,9 +68,6 @@ dashboard-exposures-filter-date-found-last-seven-days = 7 ára ohasaramova
 dashboard-exposures-filter-date-found-last-thirty-days = 30 ára ohasaramova
 dashboard-exposures-filter-date-found-last-year = Ary ohasaramóva
 dashboard-exposures-filter-status = Tekotee
-dashboard-exposures-filter-status-action-needed = Tekotevẽva ojejapo
-dashboard-exposures-filter-status-in-progress = Ojejapóva
-dashboard-exposures-filter-status-fixed = Opytáva
 popover-open-filter-settings-alt = Eiporavo mboguaha
 dashboard-exposures-filter-show-all = Techaukapaite
 dashboard-exposures-filter-show-results = Ehechauka tembiapokue
@@ -94,11 +92,15 @@ dashboard-top-banner-non-us-protect-your-data-description-line1 =
        *[other] Rojuhu { $exposures_unresolved_num } ne mba’ekuaarã jehechauka.
     }
 dashboard-top-banner-no-exposures-found-title = Ndojejuhúi máva jehechauka
+dashboard-top-banner-non-us-no-exposures-found-description = ¡Mba’éichapa! Roheka umi mba’ekuaarã ñembogua ojekuaáva ha ndorojuhúi mba’evairã. Rohapykuehóta ne ñanduti veve kundaharape ha romomarandúta oĩramo ñembogua.
 dashboard-no-exposures-label = Ndojejuhúi máva jehechauka
 dashboard-top-banner-monitor-more-cta = Roma’ẽag̃uíta hetave ñanduti vevére
 
 # About Exposure Statuses Modal
 
 modal-exposure-status-title = Jehechauka rekotee rehegua
+modal-exposure-status-description-all =
+    Roheka ñembyaikua opaite mba’ekuaarã ñembogua ojekuaávape.
+    Ne ñembyaikua orekokuaa peteĩva ko’ã tekotee:
 modal-exposure-status-action-needed = <b>Jeku’e tekotevẽva</b> he’ise reku’eha ko’ág̃a ha ejapo tekotevẽva emoĩporã hag̃ua.
 modal-exposure-status-fixed = <b>Oĩporãma</b> he’ise pe jehechaukakue oĩporãma ha natekotevẽvéima ejapo mba’evete.

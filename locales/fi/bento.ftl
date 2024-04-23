@@ -9,5 +9,6 @@ toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } työpöydälle
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } mobiililaitteille
 toolbar-app-picker-by-mozilla = { -brand-mozilla }lta
+
 # Bento headline
 fx-makes-tech = { -brand-name } on teknologiaa, joka taistelee yksityisyytesi puolesta.

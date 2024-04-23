@@ -6,7 +6,6 @@ fix-flow-nav-high-risk-data-breaches = Mba’ekuaarã ñembyai oikokuaáva
 fix-flow-nav-leaked-passwords = Ñe’ẽñemi mboguapyre
 fix-flow-nav-security-recommendations = Ñemoñe’ẽ tekorosãrã
 guided-resolution-flow-exit = Eguevijey mba’erupápe
-guided-resolution-flow-back-arrow = Eho mboyveguávape
 guided-resolution-flow-next-arrow = Eho upeiguávape
 guided-resolution-flow-step-navigation-label = Jeguata ma’ẽgua
 
@@ -26,16 +25,21 @@ fix-flow-celebration-high-risk-description-in-progress = Ejapóvo ko tembiapo er
 fix-flow-celebration-high-risk-description-done = Ejapóvo ko tembiapo erekuaa hetaha, hákatu ejapomanteva’erã eime hag̃ua tekorosãme.
 fix-flow-celebration-high-risk-description-next-passwords = Ko’ág̃a ñamoĩporãta ne ñe’ẽñemi ivaikuaáva.
 fix-flow-celebration-high-risk-description-next-security-questions = Ko’ág̃a ñamoĩporãta umi porandu tekorosãrã ivaikuaáva.
+fix-flow-celebration-high-risk-description-next-security-recommendations = Ko’ág̃a guive, rome’ẽta ndéve tekorosãrã rape rohecha rire ne mba’ekuaarã oñembyaikuaahague.
+fix-flow-celebration-high-risk-description-next-dashboard = Eg̃uahẽma hu’ãitépe. Ikatu ehecha oimeraẽva mba’eporu tembiaporã ha ehapykueho nde jeku’e techamemeha rupápe.
 
 ## Leaked passwords and security questions flow
 
 fix-flow-celebration-leaked-passwords-title = ¡Ne ñe’ẽñemi ko’ág̃a oñemo’ãma!
 fix-flow-celebration-security-questions-title = ¡Ne porandu tekorosãrãva oñemo’ãma!
 fix-flow-celebration-leaked-passwords-description-next-security-questions = Ko’ág̃a jahecha ha ñambohekopyahúta umi porandu tekorosãrã ivaikuaáva.
+fix-flow-celebration-leaked-passwords-description-next-security-recommendations = Ko’ág̃a guive, rome’ẽta ndéve tekorosãrã rape rohecha rire ne mba’ekuaarã oñembyaikuaahague.
+fix-flow-celebration-leaked-passwords-description-next-dashboard = ¡Ejapo porã! Eg̃uahẽma hu’ãitépe. Ikatu ehecha oimeraẽva mba’eporu tembiaporã ha ehapykueho nde jeku’e techamemeha rupápe.
 
 ## Security recommendations flow
 
 fix-flow-celebration-security-recommendations-title = ¡Emyanyhẽmapa opaite ne ñemoñe’ẽporã!
+fix-flow-celebration-security-recommendations-description-next-dashboard = ¡Ejapo porã! Eg̃uahẽma hu’ãitépe. Ikatu ehecha oimeraẽva mba’eporu tembiaporã ha ehapykueho nde jeku’e techamemeha rupápe.
 
 # High Risk Data Breaches
 
@@ -189,3 +193,7 @@ leaked-security-questions-title = Ne porandu tekorosãrãva ojehechakakuaa
 leaked-security-questions-summary = Osẽ peteĩ mba’ekuaarã ñembogua { $breach_name }-pe { $breach_date }.
 leaked-security-questions-steps-title = Kóva pe rejapova’erã
 leaked-security-questions-steps-subtitle = Kóva oikotevẽ ne mba’etépe jeike, ikatuhápe emoĩporã nde poite rupive.
+# Variables
+# $breach_name is the name of the breach where the security questions were found.
+# $email_affected is the email associated with the breach.
+leaked-security-questions-step-one = Embohekopyahu ne porandu tekorosãrã <b>{ $email_affected }</b> peg̃uarã <link_to_breach_site>{ $breach_name }</link_to_breach_site>-pe.

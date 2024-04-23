@@ -2,8 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Espandi
-chevron-up-alt = Comprimi
+chevron-alt = Dettagli esposizione
+
 exposure-card-exposure-type = Tipo di esposizione
 exposure-card-date-found = Data esposizione
 
@@ -34,8 +34,6 @@ exposure-card-exposure-type-data-breach = Violazione di dati
 exposure-card-cta = Correggi tutte le esposizioni
 exposure-card-label-company-logo = Logo aziendale
 exposure-card-label-company = Azienda
-exposure-card-label-exposure-type = Tipo di esposizione
-exposure-card-label-date-found = Data rilevazione
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Stato
 # Variables:

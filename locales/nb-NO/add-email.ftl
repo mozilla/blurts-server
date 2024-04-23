@@ -6,6 +6,7 @@
 ### Dialog window that allows a user to add a new email address to be monitored
 
 add-email-add-another-heading = Legg til enda en e-postadresse
-close-dialog-alt = Lukk dialogvindu
+
 add-email-address-input-label = E-postadresse
 add-email-send-verification-button = Send bekreftelseslenke
+

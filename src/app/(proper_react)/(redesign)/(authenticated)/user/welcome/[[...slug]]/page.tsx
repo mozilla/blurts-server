@@ -13,7 +13,7 @@ import { getReferrerUrl } from "../../../../../../functions/server/getReferrerUr
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../constants";
 import { AutoSignIn } from "../../../../../../components/client/AutoSignIn";
 
-const FreeScanSlug = "free-scan" as const;
+const FreeScanSlug = "free-scan";
 
 type Props = {
   params: {

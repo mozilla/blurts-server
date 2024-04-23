@@ -231,6 +231,7 @@ export const LocationPinIcon = ({
   );
 };
 
+// Keywords: Info, tooltip, tip
 export const QuestionMarkCircle = ({
   alt,
   ...props

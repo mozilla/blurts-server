@@ -5,8 +5,8 @@
 fix-flow-nav-high-risk-data-breaches = リスクの高いデータ侵害
 fix-flow-nav-leaked-passwords = 漏洩したパスワード
 fix-flow-nav-security-recommendations = セキュリティに関する推奨事項
+
 guided-resolution-flow-exit = ダッシュボードへ戻る
-guided-resolution-flow-back-arrow = 前のステップに戻る
 guided-resolution-flow-next-arrow = 次のステップに進む
 
 # Celebration screens
