@@ -41,17 +41,17 @@ export function useLocalDismissal(
 
   const dismiss = (dismissOptions?: DismissOptions) => {
     const maxAgeInSeconds =
+      /* c8 ignore next 6 */
+      // Since the Node 20.10 upgrade, it's been intermittently marking this
+      // (and this comment) as uncovered, even though I think it's covered by
+      // tests.
       typeof options.duration === "number"
         ? options.duration
-        : /* c8 ignore next 4 */
-          // Since the Node 20.10 upgrade, it's been intermittently marking this
-          // (and this comment) as uncovered, even though I think it's covered by
-          // tests.
-          100 * 365 * 24 * 60 * 60;
+        : 100 * 365 * 24 * 60 * 60;
     setCookie(cookieId, Date.now().toString(), {
       maxAge: maxAgeInSeconds,
     });
-    /* c8 ignore next 3 */
+    /* c8 ignore next 5 */
     // Since the Node 20.10 upgrade, it's been intermittently marking this (and
     // this comment) as uncovered, even though I think it's covered by tests.
     if (dismissOptions?.soft !== true) {
@@ -67,6 +67,9 @@ export function useLocalDismissal(
 
 function hasDismissedCookie(cookieValue?: string, duration?: number): boolean {
   const dismissalTimeStamp =
+    /* c8 ignore next 4 */
+    // Since the Node 20.10 upgrade, it's been intermittently marking this (and
+    // this comment) as uncovered, even though I think it's covered by tests.
     typeof cookieValue === "string"
       ? Number.parseInt(cookieValue, 10)
       : // Unfortunately react-cookie seems to implicitly parse the cookie value
