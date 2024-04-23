@@ -142,7 +142,7 @@ export const CsatSurvey = (props: Props) => {
     setAnswer(satisfaction);
     dismiss({ soft: true });
     recordTelemetry("button", "click", {
-      button_id: `csat_survey_${satisfaction}`,
+      button_id: `csat_survey_${survey.id}_${satisfaction}`,
     });
   };
 
