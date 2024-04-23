@@ -8,7 +8,7 @@ import Image from "next/image";
 import styles from "./DataBrokerProfiles.module.scss";
 import { useL10n } from "../../hooks/l10n";
 import IconChevronDown from "./assets/icon-chevron-down.svg";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { OnerepScanResultRow } from "knex/types/tables";
 import { getDataBrokerName } from "../../functions/universal/dataBrokerNames";
 import { OpenInNew } from "../server/Icons";
@@ -23,9 +23,19 @@ export const DataBrokerProfiles = (props: Props) => {
   const recordTelemetry = useTelemetry();
   const [showAllProfiles, setShowAllProfiles] = useState(false);
 
+  const dataBrokerProfilesRef = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    if (showAllProfiles) {
+      dataBrokerProfilesRef.current?.focus();
+    }
+  }, [showAllProfiles]);
+
   return (
     <div className={styles.dataBrokerProfileCardsWapper}>
       <ul
+        ref={dataBrokerProfilesRef}
+        tabIndex={showAllProfiles ? -1 : undefined}
         className={`${styles.dataBrokerProfileCards} ${
           showAllProfiles ? styles.showAll : ""
         }`}
