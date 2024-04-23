@@ -50,6 +50,10 @@
 
     .hideOnMobile {
       display: none;
+
+      @media screen and (min-width: $screen-lg) {
+        display: block;
+      }
     }
 
     @media screen and (min-width: $screen-lg) {
