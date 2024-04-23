@@ -4,6 +4,14 @@
 
 import { captureException } from "@sentry/node";
 import { logger } from "./logging";
+import { getServerSession } from "./getServerSession";
+import { getCountryCode } from "./getCountryCode";
+import { headers } from "next/headers";
+
+interface Features {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [propName: string]: any;
+}
 
 /**
  * Call the Cirrus sidecar, which returns a list of eligible experiments for the current user.
@@ -14,7 +22,10 @@ import { logger } from "./logging";
  */
 export async function getExperiments(
   userId: string | undefined,
-): Promise<unknown> {
+): Promise<Features | undefined> {
+  const session = await getServerSession();
+  const headerList = headers();
+
   if (["stage", "production"].includes(process.env.APP_ENV ?? "local")) {
     const serverUrl = process.env.NIMBUS_SIDECAR_URL;
     if (!serverUrl) {
@@ -29,11 +40,14 @@ export async function getExperiments(
         method: "POST",
         body: JSON.stringify({
           client_id: userId,
-          context: { key: "example-key" },
+          context: {
+            locale: session?.user.fxa?.locale,
+            countryCode: getCountryCode(headerList),
+          },
         }),
       });
 
-      return features?.json();
+      return features?.json() as unknown as Features;
     } catch (ex) {
       logger.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
       captureException(ex);

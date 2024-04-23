@@ -27,7 +27,9 @@ const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
 export async function POST(req: NextRequest) {
   let pubsub;
   let json;
-  const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
+  const enabledFlags = await getEnabledFeatureFlags({
+    ignoreExperiments: true,
+  });
   try {
     if (!enabledFlags.includes("HibpBreachNotifications")) {
       logger.info("Feature flag not enabled: HibpBreachNotifications");

@@ -1,25 +1,21 @@
 about:
-  description: Nimbus Feature Manifest for Monitor Web testing
+  description: Nimbus Feature Manifest for Monitor Web
 channels:
   - staging
   - production
 features:
-  example-feature:
-    description: An example feature
+  display-last-scan-date:
+    description: Display last scan date to users
     variables:
       enabled:
         description: If the feature is enabled
         type: Boolean
         default: false
-      something:
-        description: Another variable
-        type: Option<String>
-        default: null
     defaults:
       - channel: staging
-        value: { "enabled": true }
+        value: { "enabled": false }
       - channel: production
-        value: { "something": "wicked" }
+        value: { "enabled": false }
 
 types:
   objects: {}
