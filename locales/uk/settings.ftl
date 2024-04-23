@@ -15,6 +15,8 @@ settings-alert-preferences-option-two = Надсилати попереджен�
 
 ## Monitored email addresses
 
+# Variables:
+#   $email (string) - Email address
 settings-email-list-title = Відстежувані адреси електронної пошти
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -32,7 +34,6 @@ settings-remove-email-button-label = Вилучити
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Припинити моніторинг { $emailAddress }
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -45,17 +46,20 @@ settings-email-number-of-breaches-info =
        *[other] З'являється в { $breachCount } відомих витоках даних.
     }
 
-## Cancel Premium subscription
-
 ## Deactivate account
 
 settings-deactivate-account-title = Деактивувати обліковий запис
 settings-deactivate-account-info-2 = Ви можете деактивувати { -product-short-name }, видаливши свій { -brand-mozilla-account }.
 settings-fxa-link-label-3 = Перейти до налаштувань { -brand-mozilla-account(case: "gen") }
 
-## Add email dialog
-
-## Unsubscribe Dialog Survey
-
 ## Delete Monitor account
 
+settings-delete-monitor-free-account-title = Видалити обліковий запис { -brand-monitor }
+settings-delete-monitor-free-account-description = Ваш обліковий запис буде видалено остаточно { -brand-monitor }, а всі сповіщення – вимкнено.
+settings-delete-monitor-free-account-cta-label = Видалити обліковий запис
+settings-delete-monitor-free-account-dialog-title = Ваш обліковий запис { -brand-monitor } буде остаточно видалено
+settings-delete-monitor-free-account-dialog-lead = Уся інформація вашого облікового запису { -brand-monitor } буде видалена, і ми більше не відстежуватимемо нові витоки ваших даних. Це не видалить ваш обліковий запис { -brand-mozilla }.
+settings-delete-monitor-free-account-dialog-cta-label = Видалити обліковий запис
+settings-delete-monitor-free-account-dialog-cancel-button-label = Не зважайте, повернутися
+settings-delete-monitor-account-confirmation-toast-label-2 = Ваш обліковий запис { -brand-monitor } видалено.
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Відхилити
