@@ -65,7 +65,7 @@ export type Props = {
   fxaSettingsUrl: string;
   scanCount: number;
   isNewUser: boolean;
-  telemetryId: string;
+  experimentationId: string;
   totalNumberOfPerformedScans?: number;
 };
 
@@ -78,7 +78,7 @@ export type TabData = {
 
 export const View = (props: Props) => {
   const l10n = useL10n();
-  const recordTelemetry = useTelemetry();
+  const recordTelemetry = useTelemetry(props.experimentationId);
   const countryCode = useContext(CountryCodeContext);
 
   const adjustedScanResults = props.userScanData.results.map((scanResult) => {
@@ -413,7 +413,6 @@ export const View = (props: Props) => {
           onSelectionChange={(selectedKey) => {
             setSelectedTab(selectedKey as TabType);
             recordTelemetry("dashboard", "view", {
-              user_id: props.telemetryId,
               dashboard_tab: selectedKey as TabType,
               legacy_user: !props.isNewUser,
               breach_count: breachesDataArray.length,
@@ -449,7 +448,6 @@ export const View = (props: Props) => {
           onShowFixed={() => {
             setSelectedTab("fixed");
             recordTelemetry("dashboard", "view", {
-              user_id: props.telemetryId,
               dashboard_tab: "fixed",
               legacy_user: !props.isNewUser,
               breach_count: breachesDataArray.length,

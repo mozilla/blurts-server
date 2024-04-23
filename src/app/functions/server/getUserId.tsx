@@ -5,28 +5,41 @@
 import "server-only";
 import { cookies } from "next/headers";
 import { randomUUID } from "crypto";
+import { v5 as uuidv5 } from "uuid";
 import { Session } from "next-auth";
 
-export function getUserId(user: Session["user"] | null) {
+/**
+ * Create a stable ID used for Monitor experimentation, derived from the subscriber ID.
+ * Instead of using the ID directly,
+ *
+ * @param user Session["user"]
+ * @returns {string} - v5 UUID, possibly with `guest-` prefix.
+ */
+export function getExperimentationId(user: Session["user"] | null): string {
   const accountId = user?.subscriber?.id;
-  let userId = "";
+  let experimentationId = "";
 
   if (accountId && typeof accountId === "string") {
     // If the user is logged in, use the Subscriber ID.
-    // Note: we may want to use the FxA UID here, but we need approval for that first.
-    userId = accountId;
+    const namespace = process.env.NIMBUS_UUID_NAMESPACE;
+    if (!namespace) {
+      throw new Error(
+        "NIMBUS_UUID_NAMESPACE not set, cannot create experimentationId",
+      );
+    }
+    experimentationId = uuidv5(accountId, namespace);
   } else {
     // if the user is not logged in, use a cookie with a randomly-generated Nimbus user ID.
     // TODO: could we use client ID for this? There's no supported way to get it from GleanJS.
-    const cookie = cookies().get("userId");
+    const cookie = cookies().get("experimentationId");
     if (cookie) {
-      userId = cookie.value;
+      experimentationId = cookie.value;
     } else {
       // TODO Cookies can only be set in server action or route handler
       // @see https://nextjs.org/docs/app/api-reference/functions/cookies#cookiessetname-value-options
       // This is set client-side in <PageLoadEvent>.
-      userId = `guest-${randomUUID()}`;
+      experimentationId = `guest-${randomUUID()}`;
     }
   }
-  return userId;
+  return experimentationId;
 }

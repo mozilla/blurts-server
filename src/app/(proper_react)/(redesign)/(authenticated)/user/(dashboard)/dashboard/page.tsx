@@ -33,7 +33,7 @@ import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFl
 import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
 import { checkSession } from "../../../../../../functions/server/checkSession";
 import { isPrePlusUser } from "../../../../../../functions/server/isPrePlusUser";
-import { getUserId } from "../../../../../../functions/server/getUserId";
+import { getExperimentationId } from "../../../../../../functions/server/getUserId";
 
 export default async function DashboardPage() {
   const session = await getServerSession();
@@ -119,7 +119,7 @@ export default async function DashboardPage() {
       scanCount={scanCount}
       totalNumberOfPerformedScans={profileStats?.total}
       isNewUser={isNewUser}
-      telemetryId={getUserId(session)}
+      experimentationId={getExperimentationId(session)}
     />
   );
 }

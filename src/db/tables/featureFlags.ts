@@ -7,7 +7,7 @@ import { logger } from "../../app/functions/server/logging";
 import { FeatureFlagRow } from "knex/types/tables";
 import { getExperiments } from "../../app/functions/server/getExperiments";
 import { Session } from "next-auth";
-import { getUserId } from "../../app/functions/server/getUserId";
+import { getExperimentationId } from "../../app/functions/server/getUserId";
 
 const knex = createDbConnection();
 
@@ -58,8 +58,8 @@ export async function getEnabledFeatureFlags(
   // Use Nimbus to allow features per-user.
   try {
     if (!options.ignoreExperiments) {
-      const userId = getUserId(options.user);
-      const features = await getExperiments(userId);
+      const experimentationId = getExperimentationId(options.user);
+      const features = await getExperiments(experimentationId);
 
       if (features) {
         for (const feature of Object.keys(features)) {

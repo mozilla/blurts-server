@@ -17,11 +17,11 @@ interface Features {
  * Call the Cirrus sidecar, which returns a list of eligible experiments for the current user.
  *
  * @see https://github.com/mozilla/experimenter/tree/main/cirrus
- * @param userId Persistent ID for user, either guest or authenticated
+ * @param experimentationId Persistent ID for user, either guest or authenticated
  * @returns
  */
 export async function getExperiments(
-  userId: string | undefined,
+  experimentationId: string | undefined,
 ): Promise<Features | undefined> {
   const session = await getServerSession();
   const headerList = headers();
@@ -39,7 +39,7 @@ export async function getExperiments(
         },
         method: "POST",
         body: JSON.stringify({
-          client_id: userId,
+          client_id: experimentationId,
           context: {
             locale: session?.user.fxa?.locale,
             countryCode: getCountryCode(headerList),
