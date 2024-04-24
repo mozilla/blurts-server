@@ -12,18 +12,33 @@ export async function setProfileDetails(
   onerepProfileId: number,
   profileData: CreateProfileRequest,
 ) {
+  const {
+    addresses,
+    birth_date,
+    first_name,
+    last_name,
+    middle_name,
+    name_suffix,
+  } = profileData;
+  const { city: city_name, state: state_code } = addresses[0];
+  const optionalProfileData = {
+    ...(middle_name && { middle_name }),
+    ...(name_suffix && { name_suffix }),
+  };
+
   await knex("onerep_profiles").insert({
     onerep_profile_id: onerepProfileId,
-    first_name: profileData.first_name,
-    last_name: profileData.last_name,
-    city_name: profileData.addresses[0]["city"],
-    state_code: profileData.addresses[0]["state"],
+    first_name,
+    last_name,
+    city_name,
+    state_code,
     // TODO: MNTOR-2157 Validate input:
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    date_of_birth: parseIso8601Datetime(profileData.birth_date!)!,
+    date_of_birth: parseIso8601Datetime(birth_date!)!,
     // @ts-ignore knex.fn.now() results in it being set to a date,
     // even if it's not typed as a JS date object:
     created_at: knex.fn.now(),
+    ...optionalProfileData,
   });
 }
 
