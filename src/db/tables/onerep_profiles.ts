@@ -22,8 +22,8 @@ export async function setProfileDetails(
   } = profileData;
   const { city: city_name, state: state_code } = addresses[0];
   const optionalProfileData = {
-    ...(middle_name && { middle_name }),
-    ...(name_suffix && { name_suffix }),
+    ...(typeof middle_name !== "undefined" && { middle_name }),
+    ...(typeof name_suffix !== "undefined" && { name_suffix }),
   };
 
   await knex("onerep_profiles").insert({
