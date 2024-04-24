@@ -470,7 +470,6 @@ export async function getProfilesStats(
   from?: Date,
   to?: Date,
 ): Promise<ProfileStats | undefined> {
-  return undefined;
   const queryParams = new URLSearchParams();
   if (from) queryParams.set("from", from.toISOString().substring(0, 10));
   if (to) queryParams.set("to", to.toISOString().substring(0, 10));

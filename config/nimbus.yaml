@@ -4,8 +4,8 @@ channels:
   - staging
   - production
 features:
-  display-last-scan-date:
-    description: Display last scan date to users
+  allow-middle-name-field:
+    description: Allow middle name in onboarding.
     variables:
       enabled:
         description: If the feature is enabled

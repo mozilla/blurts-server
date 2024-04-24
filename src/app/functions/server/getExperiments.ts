@@ -27,6 +27,7 @@ export async function getExperiments(
   const headerList = headers();
 
   if (["stage", "production"].includes(process.env.APP_ENV ?? "local")) {
+    // Stage or production: call the Nimbus Cirrus sidecar to fetch list of experiments.
     const serverUrl = process.env.NIMBUS_SIDECAR_URL;
     if (!serverUrl) {
       throw new Error("env var NIMBUS_SIDECAR_URL not set");
@@ -52,5 +53,11 @@ export async function getExperiments(
       logger.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
       captureException(ex);
     }
+  } else {
+    // Development environment: return mocked features list.
+    // FIXME figure out cleaner way to mock this at runtime
+    return {
+      "allow-middle-name-field": { enabled: true },
+    } as unknown as Features;
   }
 }

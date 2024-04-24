@@ -8,6 +8,7 @@ import { FeatureFlagRow } from "knex/types/tables";
 import { getExperiments } from "../../app/functions/server/getExperiments";
 import { Session } from "next-auth";
 import { getExperimentationId } from "../../app/functions/server/getUserId";
+import { convertKebabToCamelCase } from "../../app/functions/universal/convertKebabToCamelCase";
 
 const knex = createDbConnection();
 
@@ -40,7 +41,8 @@ export type FeatureFlagName =
   | "RebrandAnnouncement"
   | "MonitorAccountDeletion"
   | "RedesignedEmails"
-  | "CancellationSurvey";
+  | "CancellationSurvey"
+  | "AllowMiddleNameField";
 
 export async function getEnabledFeatureFlags(
   options:
@@ -65,10 +67,11 @@ export async function getEnabledFeatureFlags(
         for (const feature of Object.keys(features)) {
           const enabled = features[feature].enabled;
           if (
-            enabled &&
+            enabled === true &&
             !enabledFlagNames.includes(feature as FeatureFlagName)
           ) {
-            enabledFlagNames.push(feature as FeatureFlagName);
+            const camelCaseString = convertKebabToCamelCase(feature);
+            enabledFlagNames.push(camelCaseString as FeatureFlagName);
           }
         }
       }
