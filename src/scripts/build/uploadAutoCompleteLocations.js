@@ -22,7 +22,7 @@ import {
   rmSync,
   writeFileSync,
 } from "fs";
-import { uploadToS3 } from "./s3.js";
+import { uploadToS3 } from "../s3.js";
 import Sentry from "@sentry/nextjs";
 import os from "os";
 import path from "path";

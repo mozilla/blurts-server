@@ -4,14 +4,15 @@
 
 import { captureException } from "@sentry/node";
 import { logger } from "./logging";
-import { getServerSession } from "./getServerSession";
 import { getCountryCode } from "./getCountryCode";
 import { headers } from "next/headers";
 
-interface Features {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [propName: string]: any;
-}
+import {
+  ExperimentData,
+  defaultExperimentData,
+} from "../../../telemetry/generated/nimbus/experiments";
+import { getLocale } from "../universal/getLocale";
+import { getL10n } from "./l10n";
 
 /**
  * Call the Cirrus sidecar, which returns a list of eligible experiments for the current user.
@@ -22,15 +23,13 @@ interface Features {
  */
 export async function getExperiments(
   experimentationId: string | undefined,
-): Promise<Features | undefined> {
-  const session = await getServerSession();
+): Promise<ExperimentData> {
   const headerList = headers();
 
-  // Parse Accept-Language header into ISO language code.
-  // @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language
+  // Return ISO language code.
   // @see https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes "set 1"
-  const localeRegion = session?.user.fxa?.locale.split(",")[0];
-  const locale = localeRegion?.split("-")[0];
+  const l10n = getL10n();
+  const locale = getLocale(l10n).split("-")[0];
 
   // ISO country code from GCP header.
   const countryCode = getCountryCode(headerList);
@@ -43,7 +42,7 @@ export async function getExperiments(
     }
 
     try {
-      const features = await fetch(`${serverUrl}/v1/features`, {
+      const response = await fetch(`${serverUrl}/v1/features`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -57,13 +56,14 @@ export async function getExperiments(
         }),
       });
 
-      return features?.json() as Features;
+      const experimentData = (await response.json()) as ExperimentData;
+      return experimentData ?? defaultExperimentData;
     } catch (ex) {
       logger.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
       captureException(ex);
     }
   } else {
-    // Development environment: log Cirrus arguments, and return mocked features list.
+    // Development environment: log Cirrus arguments, and fall back to default features list.
     logger.debug("nimbus_cirrus_arguments", {
       client_id: experimentationId,
       context: {
@@ -71,8 +71,6 @@ export async function getExperiments(
         countryCode,
       },
     });
-    return {
-      "example-feature": { enabled: true },
-    } as Features;
   }
+  return defaultExperimentData;
 }
