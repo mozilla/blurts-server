@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --port=6060",
-    "build": "npm run get-location-data && npm run build-glean && next build",
+    "build": "npm run get-location-data && npm run build-glean && npm run build-nimbus && next build",
     "start": "next start",
     "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint --max-warnings=0",
     "fix": "prettier --write './src' && next lint --fix && stylelint --fix '**/*.scss'",
@@ -24,6 +24,7 @@
     "build-storybook": "npm run build-glean && storybook build",
     "create-location-data": "node src/scripts/build/uploadAutoCompleteLocations.js",
     "get-location-data": "node src/scripts/build/getAutoCompleteLocations.js",
+    "build-nimbus": "node src/scripts/build/nimbusTypes.js",
     "build-glean": "glean translate src/telemetry/metrics.yaml --format typescript --output src/telemetry/generated && npm run build-glean-types",
     "build-glean-types": "node src/scripts/build/gleanTypes.js",
     "build-glean-docs": "glean translate src/telemetry/metrics.yaml --format markdown --output docs"
@@ -129,6 +130,7 @@
     "stylelint-config-recommended-scss": "^14.0.0",
     "stylelint-scss": "^6.2.1",
     "ts-jest": "^29.1.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.2",
+    "yaml": "^2.4.1"
   }
 }

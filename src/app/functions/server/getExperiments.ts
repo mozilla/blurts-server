@@ -4,6 +4,10 @@
 
 import { captureException } from "@sentry/node";
 import { logger } from "./logging";
+import {
+  ExperimentData,
+  defaultExperimentData,
+} from "../../../telemetry/generated/nimbus/experiments";
 
 /**
  * Call the Cirrus sidecar, which returns a list of eligible experiments for the current user.
@@ -14,7 +18,7 @@ import { logger } from "./logging";
  */
 export async function getExperiments(
   userId: string | undefined,
-): Promise<unknown> {
+): Promise<ExperimentData> {
   if (["stage", "production"].includes(process.env.APP_ENV ?? "local")) {
     const serverUrl = process.env.NIMBUS_SIDECAR_URL;
     if (!serverUrl) {
@@ -22,7 +26,7 @@ export async function getExperiments(
     }
 
     try {
-      const features = await fetch(`${serverUrl}/v1/features`, {
+      const response = await fetch(`${serverUrl}/v1/features`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -33,10 +37,12 @@ export async function getExperiments(
         }),
       });
 
-      return features?.json();
+      const experimentData = (await response.json()) as ExperimentData;
+      return experimentData ?? defaultExperimentData;
     } catch (ex) {
       logger.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
       captureException(ex);
     }
   }
+  return defaultExperimentData;
 }
