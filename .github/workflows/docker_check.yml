@@ -1,0 +1,17 @@
+name: Build Docker image check
+
+on:
+  pull_request:
+jobs:
+  docker_build:
+    name: Build Docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build --tag blurts-server \
+            --build-arg SENTRY_RELEASE="$GITHUB_REF_NAME" \
+
