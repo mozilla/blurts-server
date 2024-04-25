@@ -30,7 +30,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
         <CountryCodeProvider countryCode={countryCode}>
           {children}
           <PageLoadEvent
-            userId={getUserId(session)}
+            userId={getUserId(session?.user ?? null)}
             enabledFlags={enabledFlags}
           />
         </CountryCodeProvider>
