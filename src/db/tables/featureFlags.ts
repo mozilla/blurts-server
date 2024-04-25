@@ -5,10 +5,6 @@
 import createDbConnection from "../connect.js";
 import { logger } from "../../app/functions/server/logging";
 import { FeatureFlagRow } from "knex/types/tables";
-import { getExperiments } from "../../app/functions/server/getExperiments";
-import { Session } from "next-auth";
-import { getExperimentationId } from "../../app/functions/server/getUserId";
-import { convertKebabToCamelCase } from "../../app/functions/universal/convertKebabToCamelCase";
 
 const knex = createDbConnection();
 
@@ -41,46 +37,28 @@ export type FeatureFlagName =
   | "RebrandAnnouncement"
   | "MonitorAccountDeletion"
   | "RedesignedEmails"
-  | "CancellationSurvey"
-  | "ExampleFeature";
+  | "CancellationSurvey";
 
 export async function getEnabledFeatureFlags(
   options:
-    | { ignoreExperiments?: false; user: Session["user"] }
-    | { ignoreExperiments: true },
+    | { ignoreAllowlist?: false; email: string }
+    | { ignoreAllowlist: true },
 ): Promise<FeatureFlagName[]> {
-  const result = await knex("feature_flags")
+  let query = knex("feature_flags")
     .select("name")
     .where("deleted_at", null)
     .and.where("expired_at", null)
     .and.where("is_enabled", true);
 
-  const enabledFlagNames = result.map((row) => row.name as FeatureFlagName);
-
-  // Use Nimbus to allow features per-user.
-  try {
-    if (!options.ignoreExperiments) {
-      const experimentationId = getExperimentationId(options.user);
-      const features = await getExperiments(experimentationId);
-
-      if (features) {
-        for (const feature of Object.keys(features)) {
-          const enabled = features[feature].enabled;
-          if (
-            enabled === true &&
-            !enabledFlagNames.includes(feature as FeatureFlagName)
-          ) {
-            const camelCaseString = convertKebabToCamelCase(feature);
-            enabledFlagNames.push(camelCaseString as FeatureFlagName);
-          }
-        }
-      }
-    }
-  } catch (e) {
-    console.error(e);
+  if (!options.ignoreAllowlist) {
+    query = query.and
+      .whereRaw("ARRAY_LENGTH(allow_list, 1) IS NULL")
+      .orWhereRaw("? = ANY(allow_list)", options.email);
   }
 
-  return enabledFlagNames;
+  const enabledFlagNames = await query;
+
+  return enabledFlagNames.map((row) => row.name as FeatureFlagName);
 }
 
 async function getFeatureFlagByName(name: string) {
