@@ -17,15 +17,15 @@ import styles from "./CsatSurvey.module.scss";
 
 import { CONST_DAY_MILLISECONDS } from "../../../constants";
 
-const SurveyResponses = {
-  "very-dissatisfied": "Very dissatisfied",
-  dissatisfied: "Dissatisfied",
-  neutral: "Neutral",
-  satisfied: "Satisfied",
-  "very-satisfied": "Very satisfied",
-} as const;
+const SurveyResponses = [
+  "very-dissatisfied",
+  "dissatisfied",
+  "neutral",
+  "satisfied",
+  "very-satisfied",
+] as const;
 
-type SurveyResponseKey = keyof typeof SurveyResponses;
+type SurveyResponseKey = (typeof SurveyResponses)[number];
 
 type SurveyLinks = Record<SurveyResponseKey, string>;
 
