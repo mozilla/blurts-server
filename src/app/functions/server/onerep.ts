@@ -31,9 +31,12 @@ export type CreateProfileRequest = {
   first_name: string;
   last_name: string;
   addresses: [{ city: string; state: StateAbbr }];
+  name_suffix?: string;
+  middle_name?: string;
   birth_date?: ISO8601DateString;
   phone_numbers?: E164PhoneNumberString[];
 };
+
 export type ShowProfileResponse = CreateProfileRequest & {
   id: number;
   status: "active" | "inactive";
