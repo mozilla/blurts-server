@@ -192,7 +192,7 @@ exposure-card-description-info-for-sale-fixed-manually-fixed =  You marked this 
 
 ## CSAT survey banner for subscribers
 
-survey-csat-question = How satisfied are you with your { -product-name } experience?
+survey-csat-question = How satisfied are you with your { -brand-mozilla-monitor } experience?
 survey-csat-answer-very-dissatisfied = Very dissatisfied
 survey-csat-answer-dissatisfied = Dissatisfied
 survey-csat-answer-neutral = Neutral
