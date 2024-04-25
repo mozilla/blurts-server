@@ -49,9 +49,11 @@ import {
   CONST_ONEREP_DATA_BROKER_COUNT,
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../../../../../constants";
+import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData;
   user: Session["user"];
   userBreaches: SubscriberBreach[];
   userScanData: LatestOnerepScanData;
@@ -415,7 +417,7 @@ export const View = (props: Props) => {
         subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
         lastScanDate={props.userScanData.scan?.created_at ?? null}
-        enabledFeatureFlags={props.enabledFeatureFlags}
+        experimentData={props.experimentData}
       >
         <TabList
           tabs={tabsData}

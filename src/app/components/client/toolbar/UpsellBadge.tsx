@@ -23,7 +23,7 @@ import { CountryCodeContext } from "../../../../contextProviders/country-code";
 import { useSession } from "next-auth/react";
 import { sendGAEvent } from "../GoogleAnalyticsWorkaround";
 import { getLocale } from "../../../functions/universal/getLocale";
-import { FeatureFlagName } from "../../../../db/tables/featureFlags";
+import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 export type UpsellButtonProps = {
   monthlySubscriptionUrl: string;
@@ -123,7 +123,7 @@ function UpsellToggleButton(props: UpsellToggleButtonProps) {
             : l10n.getString("plus-indicator-label-inactive")}
           <span className={styles.toggleIndicator} />
         </button>
-        {props.enabledFeatureFlags?.includes("LastScanDateBadge") &&
+        {props.experimentData?.["last-scan-date"].enabled &&
           props.lastScanDate !== null && (
             <span className={styles.lastScanIndicator}>
               <Image src={LastScanIcon} alt="" width={31} height={25} />
@@ -148,13 +148,13 @@ function UpsellToggleButton(props: UpsellToggleButtonProps) {
 export type UpsellBadgeProps = UpsellButtonProps & {
   lastScanDate: Date | null;
   /**
-   * Loading the flags for <MobileShell> was a bit too invasive for a flag that
-   * has no visible effects on mobile, so this parameter is optional while we're
-   * only looking at the `LastScanDateBadge`. If we do look at more flags in the
-   * future, make sure to remove the `?` so that they're actually passed
-   * everywhere.
+   * Loading the experiment data for <MobileShell> was a bit too invasive for a
+   * feature that has no visible effects on mobile, so this parameter is
+   * optional while we're only looking at the `LastScanDateBadge`. If we do look
+   * at more experiments in the future, make sure to remove the `?` so that
+   * they're actually passed everywhere.
    */
-  enabledFeatureFlags?: FeatureFlagName[];
+  experimentData?: ExperimentData;
 };
 export function UpsellBadge(props: UpsellBadgeProps) {
   const countryCode = useContext(CountryCodeContext);

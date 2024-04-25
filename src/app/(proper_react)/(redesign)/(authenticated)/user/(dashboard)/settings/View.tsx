@@ -21,6 +21,7 @@ import { SettingsConfirmationDialog } from "./SettingsConfirmationDialog";
 import { DeleteAccountButton } from "./DeleteAccountButton";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { CancelFlow } from "./CancelFlow";
+import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -36,6 +37,7 @@ export type Props = {
   emailAddresses: EmailAddressRow[];
   breachCountByEmailAddress: Record<string, number>;
   enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData;
   lastScanDate?: Date;
 };
 
@@ -51,7 +53,7 @@ export const SettingsView = (props: Props) => {
         subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
         lastScanDate={props.lastScanDate ?? null}
-        enabledFeatureFlags={props.enabledFeatureFlags}
+        experimentData={props.experimentData}
       />
       <main>
         <header className={styles.title}>
