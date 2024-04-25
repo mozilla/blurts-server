@@ -13,7 +13,7 @@ import { deleteAllCookies } from "../../functions/client/deleteAllCookies";
 
 jest.mock("../../hooks/useTelemetry");
 
-beforeEach(() => {
+afterEach(() => {
   // Make the CSAT banner show up again.
   deleteAllCookies();
 });
@@ -108,7 +108,9 @@ describe("CSAT survey", () => {
     const feedbackLink = screen.getByRole("link", {
       name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
     });
-    expect(feedbackLink.getAttribute("href")).toBe(
+    expect(feedbackLink).toBeInTheDocument();
+    expect(feedbackLink).toHaveAttribute(
+      "href",
       "https://survey.alchemer.com/s3/7718223/9bf87045f7fb",
     );
   });
@@ -177,7 +179,8 @@ describe("CSAT survey", () => {
       name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
     });
     expect(feedbackLink).toBeInTheDocument();
-    expect(feedbackLink.getAttribute("href")).toBe(
+    expect(feedbackLink).toHaveAttribute(
+      "href",
       "https://survey.alchemer.com/s3/7718223/fbbb597a762a",
     );
   });

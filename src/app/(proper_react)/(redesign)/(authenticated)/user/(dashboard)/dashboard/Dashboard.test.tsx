@@ -3293,7 +3293,7 @@ it("does not display the CSAT survey banner on the dashboard", () => {
   expect(answerButton).not.toBeInTheDocument();
 });
 
-it("displays the CSAT survey banner on the dashboard", () => {
+it("displays the CSAT survey banner on the dashboard for Plus users, after more than 90 days since their initial scan", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanNoBreaches,
     Meta,
@@ -3377,4 +3377,9 @@ it("displays the follow-up CSAT survey banner link on the dashboard", async () =
   });
   expect(answerButton).toBeInTheDocument();
   await user.click(answerButton as HTMLElement);
+
+  const feedbackLink = screen.getByRole("link", {
+    name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
+  });
+  expect(feedbackLink).toBeInTheDocument();
 });
