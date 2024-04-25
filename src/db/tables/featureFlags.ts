@@ -110,7 +110,11 @@ async function addFeatureFlag(flag: FeatureFlag) {
     expired_at: flag.expiredAt,
     owner: flag.owner,
   };
-  const res = await knex("feature_flags").insert(featureFlagDb).returning("*");
+  const res = await knex("feature_flags")
+    .insert(featureFlagDb)
+    .onConflict("name")
+    .merge(["deleted_at"])
+    .returning("*");
 
   return res[0];
 }

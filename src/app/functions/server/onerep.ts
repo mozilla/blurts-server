@@ -489,9 +489,9 @@ export async function getProfilesStats(
     logger.error(
       `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
     );
-    throw new Error(
-      `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
-    );
+    //throw new Error(
+    //  `Failed to fetch OneRep profile: [${response.status}] [${response.statusText}]`,
+    //);
   }
 
   const profileStats: ProfileStats = await response.json();

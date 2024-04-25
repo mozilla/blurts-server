@@ -6,12 +6,12 @@ import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { getAllFeatureFlags } from "../../../../../../db/tables/featureFlags";
 import { AddFeatureFlag } from "./components/AddFeatureFlag";
+import { DeleteFeatureFlag } from "./components/DeleteFeatureFlag";
 import { ToggleFlagEnabled } from "./components/ToggleFlagEnabled";
 import { FeatureFlagRow } from "knex/types/tables";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import styles from "./page.module.scss";
-import { ModifyInputField } from "./components/ModifyInputField";
 import {
   getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
@@ -45,10 +45,6 @@ export default async function FeatureFlagPage() {
           <tr>
             <th>Name</th>
             <th>Enabled</th>
-            <th>Dependencies</th>
-            <th>Allow List</th>
-            <th>Wait List</th>
-            <th>Owner</th>
           </tr>
         </thead>
         <tbody>
@@ -64,32 +60,7 @@ export default async function FeatureFlagPage() {
                 {item.is_enabled}
               </td>
               <td>
-                <ModifyInputField
-                  id="dependencies"
-                  name={item.name}
-                  defaultValue={item.dependencies?.join(",")}
-                />
-              </td>
-              <td>
-                <ModifyInputField
-                  id="allowList"
-                  name={item.name}
-                  defaultValue={item.allow_list?.join(",")}
-                />
-              </td>
-              <td>
-                <ModifyInputField
-                  id="waitList"
-                  name={item.name}
-                  defaultValue={item.wait_list?.join(",")}
-                />
-              </td>
-              <td>
-                <ModifyInputField
-                  id="owner"
-                  name={item.name}
-                  defaultValue={item.owner}
-                />
+                <DeleteFeatureFlag name={item.name} />
               </td>
             </tr>
           ))}
@@ -114,9 +85,13 @@ export default async function FeatureFlagPage() {
         </div>
       </nav>
       <div className={styles.start}>
-        <h1>All Feature Flags</h1>
+        <h1>Flags added here will override Nimbus features.</h1>
+        <h2>Deleted flags will be controllable by Nimbus.</h2>
+        <br />
+        <h3>All Feature Flags</h3>
         <AllFlagsTable data={featureFlags} />
-        <h1>Add New Feature Flag</h1>
+        <br />
+        <h3>Add New Feature Flag</h3>
         <AddFeatureFlag />
       </div>
     </div>

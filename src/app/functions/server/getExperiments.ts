@@ -26,6 +26,15 @@ export async function getExperiments(
   const session = await getServerSession();
   const headerList = headers();
 
+  // Parse Accept-Language header into ISO language code.
+  // @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language
+  // @see https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes "set 1"
+  const localeRegion = session?.user.fxa?.locale.split(",")[0];
+  const locale = localeRegion?.split("-")[0];
+
+  // ISO country code from GCP header.
+  const countryCode = getCountryCode(headerList);
+
   if (["stage", "production"].includes(process.env.APP_ENV ?? "local")) {
     // Stage or production: call the Nimbus Cirrus sidecar to fetch list of experiments.
     const serverUrl = process.env.NIMBUS_SIDECAR_URL;
@@ -34,14 +43,6 @@ export async function getExperiments(
     }
 
     try {
-      // Parse Accept-Language header into ISO language code.
-      // @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language
-      // @see https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes "set 1"
-      const localeRegion = session?.user.fxa?.locale.split(",")[0];
-      const locale = localeRegion?.split("-")[0];
-
-      // ISO country code from GCP header.
-      const countryCode = getCountryCode(headerList);
       const features = await fetch(`${serverUrl}/v1/features`, {
         headers: {
           "Content-Type": "application/json",
@@ -56,15 +57,22 @@ export async function getExperiments(
         }),
       });
 
-      return features?.json() as unknown as Features;
+      return features?.json() as Features;
     } catch (ex) {
       logger.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
       captureException(ex);
     }
   } else {
-    // Development environment: return mocked features list.
+    // Development environment: log Cirrus arguments, and return mocked features list.
+    logger.debug("nimbus_cirrus_arguments", {
+      client_id: experimentationId,
+      context: {
+        locale,
+        countryCode,
+      },
+    });
     return {
       "example-feature": { enabled: true },
-    } as unknown as Features;
+    } as Features;
   }
 }
