@@ -64,7 +64,9 @@ export async function getEnabledFeatureFlags(
 
   const enabledFlagNames = await query;
 
-  return enabledFlagNames.map((row) => row.name as FeatureFlagName);
+  return enabledFlagNames.map(
+    (row: { name: string }) => row.name as FeatureFlagName,
+  );
 }
 
 /**
