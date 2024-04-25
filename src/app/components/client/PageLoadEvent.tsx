@@ -19,7 +19,7 @@ export type Props = {
 // Empty component that records a page view on first load.
 export const PageLoadEvent = (props: Props) => {
   const [cookies, setCookie] = useCookies([
-    "userId",
+    "experimentationId",
     "attributionsFirstTouch",
     "attributionsLastTouch",
   ]);
@@ -30,8 +30,8 @@ export const PageLoadEvent = (props: Props) => {
   const userId: GleanMetricMap["page"]["view"]["user_id"] = useMemo(() => {
     // If the user is not logged in, use randomly-generated user ID and store in cookie.
     if (props.userId.startsWith("guest")) {
-      if (!cookies.userId) {
-        setCookie("userId", props.userId);
+      if (!cookies.experimentationId) {
+        setCookie("experimentationId", props.userId);
       }
       return props.userId;
     }
@@ -41,7 +41,7 @@ export const PageLoadEvent = (props: Props) => {
     } else {
       return undefined;
     }
-  }, [cookies.userId, setCookie, props.userId, props.enabledFlags]);
+  }, [cookies.experimentationId, setCookie, props.userId, props.enabledFlags]);
 
   // On first load of the page, record a page view.
   useEffect(() => {
