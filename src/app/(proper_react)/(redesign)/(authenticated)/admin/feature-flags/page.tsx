@@ -4,10 +4,7 @@
 
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
-import {
-  FeatureFlagName,
-  getAllFeatureFlags,
-} from "../../../../../../db/tables/featureFlags";
+import { getAllFeatureFlags } from "../../../../../../db/tables/featureFlags";
 import { AddFeatureFlag } from "./components/AddFeatureFlag";
 import { ToggleFlagEnabled } from "./components/ToggleFlagEnabled";
 import { FeatureFlagRow } from "knex/types/tables";
@@ -19,6 +16,7 @@ import {
   getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
 } from "../../../../../functions/server/getPremiumSubscriptionInfo";
+import { defaultExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 
 export default async function FeatureFlagPage() {
   const session = await getServerSession();
@@ -116,11 +114,9 @@ export default async function FeatureFlagPage() {
             // Since this page is only accessed by contributors, no need to load
             // their latest scan date from the DB:
             lastScanDate={null}
-            // Whatever, might as well enable all flags for people browsing this page :)
-            // (At the time of writing, though, this doesn't have any observable effect.)
-            enabledFeatureFlags={featureFlags.map(
-              (flag) => flag.name as FeatureFlagName,
-            )}
+            // We're not going to run experiments on the feature flag page (it's
+            // not user-visible), so no need to fetch experiment data:
+            experimentData={defaultExperimentData}
           />
         </div>
       </nav>

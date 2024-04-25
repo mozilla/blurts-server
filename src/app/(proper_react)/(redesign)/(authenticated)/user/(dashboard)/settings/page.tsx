@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 import { getServerSession } from "../../../../../../functions/server/getServerSession";
 import { SettingsView } from "./View";
 import {
@@ -17,6 +18,10 @@ import { getSha1 } from "../../../../../../../utils/fxa";
 import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
 import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
 import { getLatestOnerepScan } from "../../../../../../../db/tables/onerep_scans";
+import { getUserId } from "../../../../../../functions/server/getUserId";
+import { getExperiments } from "../../../../../../functions/server/getExperiments";
+import { getLocale } from "../../../../../../functions/universal/getLocale";
+import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
 
 export default async function SettingsPage() {
   const session = await getServerSession();
@@ -52,6 +57,16 @@ export default async function SettingsPage() {
     ignoreAllowlist: false,
     email: session.user.email,
   });
+
+  const headersList = headers();
+  const countryCode = getCountryCode(headersList);
+  const experimentationId = getUserId(session.user);
+  const experimentData = await getExperiments({
+    experimentationId: experimentationId,
+    countryCode: countryCode,
+    locale: getLocale(getL10n()),
+  });
+
   const lastOneRepScan = await getLatestOnerepScan(
     session.user.subscriber.onerep_profile_id,
   );
@@ -68,6 +83,7 @@ export default async function SettingsPage() {
       yearlySubscriptionUrl={`${yearlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
       subscriptionBillingAmount={getSubscriptionBillingAmount()}
       enabledFeatureFlags={enabledFeatureFlags}
+      experimentData={experimentData}
       lastScanDate={lastOneRepScan?.created_at}
     />
   );

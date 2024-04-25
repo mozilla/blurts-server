@@ -17,6 +17,7 @@ import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches"
 import { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
 import { CountryCodeProvider } from "../../../../../../../contextProviders/country-code";
 import { SessionProvider } from "../../../../../../../contextProviders/session";
+import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 
 const brokerOptions = {
   "no-scan": "No scan started",
@@ -186,7 +187,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
               "FreeBrokerScan",
               "PremiumBrokerRemoval",
               "CsatSurvey",
-              "LastScanDateBadge",
             ]}
             monthlySubscriptionUrl=""
             yearlySubscriptionUrl=""
@@ -202,6 +202,12 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             elapsedTimeInDaysSinceInitialScan={
               props.elapsedTimeInDaysSinceInitialScan
             }
+            experimentData={{
+              ...defaultExperimentData,
+              "last-scan-date": {
+                enabled: true,
+              },
+            }}
           />
         </Shell>
       </CountryCodeProvider>
