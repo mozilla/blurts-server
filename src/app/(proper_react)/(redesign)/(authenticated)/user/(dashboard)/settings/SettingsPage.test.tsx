@@ -556,7 +556,6 @@ it("closes the cancellation survey if the user selects nevermind, take me back",
     </TestComponentWrapper>,
   );
 
-  screen.debug();
   const cancellationButton = screen.getByRole("button", {
     name: "Cancel your subscription",
   });
