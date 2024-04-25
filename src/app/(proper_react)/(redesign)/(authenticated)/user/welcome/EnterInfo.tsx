@@ -30,7 +30,6 @@ import { CONST_URL_PRIVACY_POLICY } from "../../../../../../constants";
 
 import styles from "./EnterInfo.module.scss";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
-import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -60,7 +59,6 @@ export type Props = {
   user: Session["user"];
   skipInitialStep: boolean;
   previousRoute: string | null;
-  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const EnterInfo = ({
@@ -68,10 +66,8 @@ export const EnterInfo = ({
   onGoBack,
   skipInitialStep,
   previousRoute,
-  enabledFeatureFlags,
 }: Props) => {
   const [firstName, setFirstName] = useState("");
-  const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
   const [location, setLocation] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
@@ -161,21 +157,6 @@ export const EnterInfo = ({
     },
   ];
 
-  if (enabledFeatureFlags.includes("AllowMiddleNameField")) {
-    userDetailsData.splice(1, 0, {
-      label: l10n.getString("onboarding-enter-details-label-middle-name"),
-      key: "middle_name",
-      type: "text",
-      placeholder: l10n.getString(
-        "onboarding-enter-details-placeholder-middle-name",
-      ),
-      value: middleName,
-      displayValue: middleName,
-      isValid: middleName.trim() !== "",
-      onChange: setMiddleName,
-    });
-  }
-
   const getInvalidFields = () =>
     userDetailsData.filter(({ isValid }) => !isValid).map(({ key }) => key);
 
@@ -190,7 +171,6 @@ export const EnterInfo = ({
     const { city, state } = getDetailsFromLocationString(location);
     const userInfo = {
       firstName: firstName.trim(),
-      middleName: middleName.trim(),
       lastName: lastName.trim(),
       city,
       state,

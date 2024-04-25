@@ -1,21 +1,25 @@
 about:
-  description: Nimbus Feature Manifest for Monitor Web
+  description: Nimbus Feature Manifest for Monitor Web testing
 channels:
   - staging
   - production
 features:
-  allow-middle-name-field:
-    description: Allow middle name in onboarding.
+  example-feature:
+    description: An example feature
     variables:
       enabled:
         description: If the feature is enabled
         type: Boolean
         default: false
+      something:
+        description: Another variable
+        type: Option<String>
+        default: null
     defaults:
       - channel: staging
-        value: { "enabled": false }
+        value: { "enabled": true }
       - channel: production
-        value: { "enabled": false }
+        value: { "something": "wicked" }
 
 types:
   objects: {}

@@ -34,6 +34,14 @@ export async function getExperiments(
     }
 
     try {
+      // Parse Accept-Language header into ISO language code.
+      // @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language
+      // @see https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes "set 1"
+      const localeRegion = session?.user.fxa?.locale.split(",")[0];
+      const locale = localeRegion?.split("-")[0];
+
+      // ISO country code from GCP header.
+      const countryCode = getCountryCode(headerList);
       const features = await fetch(`${serverUrl}/v1/features`, {
         headers: {
           "Content-Type": "application/json",
@@ -42,8 +50,8 @@ export async function getExperiments(
         body: JSON.stringify({
           client_id: experimentationId,
           context: {
-            locale: session?.user.fxa?.locale,
-            countryCode: getCountryCode(headerList),
+            locale,
+            countryCode,
           },
         }),
       });
@@ -55,9 +63,8 @@ export async function getExperiments(
     }
   } else {
     // Development environment: return mocked features list.
-    // FIXME figure out cleaner way to mock this at runtime
     return {
-      "allow-middle-name-field": { enabled: true },
+      "example-feature": { enabled: true },
     } as unknown as Features;
   }
 }

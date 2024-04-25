@@ -42,7 +42,7 @@ export type FeatureFlagName =
   | "MonitorAccountDeletion"
   | "RedesignedEmails"
   | "CancellationSurvey"
-  | "AllowMiddleNameField";
+  | "ExampleFeature";
 
 export async function getEnabledFeatureFlags(
   options:
