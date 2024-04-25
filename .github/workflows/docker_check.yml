@@ -1,5 +1,4 @@
 name: Build Docker image check
-
 on:
   pull_request:
 jobs:
@@ -11,6 +10,5 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build Docker image
-        run: |
-          docker build --tag blurts-server
+        run: docker build .
 
