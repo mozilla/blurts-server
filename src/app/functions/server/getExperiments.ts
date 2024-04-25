@@ -8,17 +8,23 @@ import {
   ExperimentData,
   defaultExperimentData,
 } from "../../../telemetry/generated/nimbus/experiments";
+import { ExperimentationId } from "./getUserId";
 
 /**
  * Call the Cirrus sidecar, which returns a list of eligible experiments for the current user.
  *
  * @see https://github.com/mozilla/experimenter/tree/main/cirrus
- * @param userId Persistent ID for user, either guest or authenticated
+ * @param params
+ * @param params.experimentationId
+ * @param params.locale
+ * @param params.countryCode
  * @returns
  */
-export async function getExperiments(
-  userId: string | undefined,
-): Promise<ExperimentData> {
+export async function getExperiments(params: {
+  experimentationId: ExperimentationId;
+  locale: string;
+  countryCode: string;
+}): Promise<ExperimentData> {
   if (["stage", "production"].includes(process.env.APP_ENV ?? "local")) {
     const serverUrl = process.env.NIMBUS_SIDECAR_URL;
     if (!serverUrl) {
@@ -32,8 +38,12 @@ export async function getExperiments(
         },
         method: "POST",
         body: JSON.stringify({
-          client_id: userId,
-          context: { key: "example-key" },
+          client_id: params.experimentationId,
+          context: {
+            // Nimbus takes a language, rather than a locale, hence the .split:
+            locale: params.locale.split("-")[0],
+            countryCode: params.countryCode,
+          },
         }),
       });
 
