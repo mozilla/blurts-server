@@ -227,6 +227,12 @@ const meta: Meta<typeof DashboardWrapper> = {
         labels: breachOptions,
       },
     },
+    elapsedTimeInDaysSinceInitialScan: {
+      name: "Days since initial scan",
+      control: {
+        type: "number",
+      },
+    },
   },
 };
 export default meta;

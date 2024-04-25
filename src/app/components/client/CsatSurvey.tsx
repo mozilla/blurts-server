@@ -97,8 +97,8 @@ const getRelevantSurvey = ({
     (survey) => elapsedTimeInDaysSinceInitialScan >= survey.daysThreshold,
   );
 
-  // Show the initial survey on the ”fixed” dashboard tab only to users
-  // that have autmatically fixed data broker results.
+  // Show the initial survey only to users who have automatically fixed
+  // data broker results.
   if (relevantSurvey?.id === "initial" && !hasAutoFixedDataBrokers) {
     return;
   }
