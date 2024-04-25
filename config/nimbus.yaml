@@ -21,6 +21,3 @@ features:
       - channel: production
         value: { "something": "wicked" }
 
-types:
-  objects: {}
-  enums: {}
