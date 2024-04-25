@@ -37,7 +37,8 @@ export type FeatureFlagName =
   | "RebrandAnnouncement"
   | "MonitorAccountDeletion"
   | "RedesignedEmails"
-  | "CancellationSurvey";
+  | "CancellationFlow"
+  | "ConfirmCancellation";
 
 export async function getEnabledFeatureFlags(
   options:
