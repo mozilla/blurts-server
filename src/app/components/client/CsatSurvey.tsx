@@ -14,8 +14,6 @@ import { useHasRenderedClientSide } from "../../hooks/useHasRenderedClientSide";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import styles from "./CsatSurvey.module.scss";
 
-import { CONST_DAY_MILLISECONDS } from "../../../constants";
-
 const surveyResponses = [
   "very-dissatisfied",
   "dissatisfied",
@@ -32,14 +30,14 @@ type SurveyTypes = "initial" | "3-months" | "6-months" | "12-months";
 
 type Survey = {
   id: SurveyTypes;
-  timeThreshold: number;
+  daysThreshold: number;
   options: SurveyLinks;
 };
 
 const surveys: Survey[] = [
   {
     id: "initial",
-    timeThreshold: 0,
+    daysThreshold: 0,
     options: {
       "very-dissatisfied":
         "https://survey.alchemer.com/s3/7714663/69d629a9e8e6",
@@ -51,7 +49,7 @@ const surveys: Survey[] = [
   },
   {
     id: "3-months",
-    timeThreshold: 90,
+    daysThreshold: 90,
     options: {
       "very-dissatisfied":
         "https://survey.alchemer.com/s3/7718223/9bf87045f7fb",
@@ -63,7 +61,7 @@ const surveys: Survey[] = [
   },
   {
     id: "6-months",
-    timeThreshold: 180,
+    daysThreshold: 180,
     options: {
       "very-dissatisfied":
         "https://survey.alchemer.com/s3/7718561/1354e1186d33",
@@ -75,7 +73,7 @@ const surveys: Survey[] = [
   },
   {
     id: "12-months",
-    timeThreshold: 351,
+    daysThreshold: 351,
     options: {
       "very-dissatisfied":
         "https://survey.alchemer.com/s3/7718562/c254fe9e3c33",
@@ -88,20 +86,18 @@ const surveys: Survey[] = [
 ] as const;
 
 type Props = {
-  elapsedTimeSinceInitialScan: number;
+  elapsedTimeInDaysSinceInitialScan: number;
   hasAutoFixedDataBrokers: boolean;
   selectedTab: TabType;
 };
 
 const getRelevantSurvey = ({
-  elapsedTimeSinceInitialScan,
+  elapsedTimeInDaysSinceInitialScan,
   hasAutoFixedDataBrokers,
   selectedTab,
 }: Props): Survey | undefined => {
   const relevantSurvey = surveys.findLast(
-    (survey) =>
-      elapsedTimeSinceInitialScan >=
-      survey.timeThreshold * CONST_DAY_MILLISECONDS,
+    (survey) => elapsedTimeInDaysSinceInitialScan >= survey.daysThreshold,
   );
 
   // Show the initial survey on the ”fixed” dashboard tab only to users

@@ -67,7 +67,7 @@ export type Props = {
   scanCount: number;
   isNewUser: boolean;
   telemetryId: string;
-  elapsedTimeSinceInitialScan: number;
+  elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
 };
 
@@ -425,15 +425,18 @@ export const View = (props: Props) => {
           selectedKey={selectedTab}
         />
       </Toolbar>
-      {props.enabledFeatureFlags.includes("CsatSurvey") && (
-        <CsatSurvey
-          elapsedTimeSinceInitialScan={props.elapsedTimeSinceInitialScan}
-          hasAutoFixedDataBrokers={
-            dataSummary.dataBrokerAutoFixedDataPointsNum > 0
-          }
-          selectedTab={selectedTab}
-        />
-      )}
+      {props.enabledFeatureFlags.includes("CsatSurvey") &&
+        typeof props.elapsedTimeInDaysSinceInitialScan !== "undefined" && (
+          <CsatSurvey
+            elapsedTimeInDaysSinceInitialScan={
+              props.elapsedTimeInDaysSinceInitialScan
+            }
+            hasAutoFixedDataBrokers={
+              dataSummary.dataBrokerAutoFixedDataPointsNum > 0
+            }
+            selectedTab={selectedTab}
+          />
+        )}
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           tabType={selectedTab}

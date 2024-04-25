@@ -11,7 +11,7 @@ import {
 import { StateAbbr } from "../../../utils/states.js";
 import {
   getLatestOnerepScanResults,
-  getScansForProfileByReason,
+  getLatestScanForProfileByReason,
 } from "../../../db/tables/onerep_scans";
 import { RemovalStatus } from "../universal/scanResult.js";
 import {
@@ -19,7 +19,6 @@ import {
   getEnabledFeatureFlags,
 } from "../../../db/tables/featureFlags";
 import { logger } from "./logging";
-import { OnerepScanRow } from "knex/types/tables";
 
 export const monthlyScansQuota = parseInt(
   (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
@@ -248,9 +247,8 @@ export async function activateAndOptoutProfile({
   forceActivation?: boolean;
 }): Promise<void> {
   try {
-    const scans = await getScansForProfileByReason(profileId, "initial");
-    const hasInitialScan = scans.length > 0;
-    if (hasInitialScan && !forceActivation) {
+    const scan = await getLatestScanForProfileByReason(profileId, "initial");
+    if (scan && !forceActivation) {
       return;
     }
 
@@ -414,25 +412,6 @@ export async function getScanDetails(
     );
   }
   return response.json() as Promise<Scan>;
-}
-
-export async function getLatestScanByReason(
-  profileId: number,
-  scanReason: ScanReason,
-): Promise<OnerepScanRow | undefined> {
-  try {
-    const scans = await getScansForProfileByReason(profileId, scanReason);
-    if (scans.length === 0) {
-      return;
-    }
-
-    return scans[0];
-  } catch (error) {
-    logger.error(
-      `Failed to get latest scan for profile by reason: [${scanReason}]`,
-      error,
-    );
-  }
 }
 
 export async function getAllScanResults(

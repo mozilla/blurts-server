@@ -5,18 +5,27 @@
 import "server-only";
 
 import { Session } from "next-auth";
-import { getLatestScanByReason } from "./onerep";
+import { getLatestScanForProfileByReason } from "../../../db/tables/onerep_scans";
+import { CONST_DAY_MILLISECONDS } from "../../../constants";
 
-export async function getElapsedTimeSinceInitialScan(user: Session["user"]) {
+export async function getElapsedTimeInDaysSinceInitialScan(
+  user: Session["user"],
+) {
   const onerepProfileId = user.subscriber?.onerep_profile_id;
   if (!onerepProfileId) {
-    return -1;
+    return;
   }
 
-  const latestScan = await getLatestScanByReason(onerepProfileId, "initial");
+  const latestScan = await getLatestScanForProfileByReason(
+    onerepProfileId,
+    "initial",
+  );
   if (!latestScan) {
-    return -1;
+    return;
   }
 
-  return Date.now() - new Date(latestScan.created_at).getTime();
+  return Math.floor(
+    (Date.now() - new Date(latestScan.created_at).getTime()) /
+      CONST_DAY_MILLISECONDS,
+  );
 }

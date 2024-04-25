@@ -33,14 +33,15 @@ async function getAllScansForProfile(
   return scans;
 }
 
-async function getScansForProfileByReason(
+async function getLatestScanForProfileByReason(
   onerepProfileId: number,
   oneRepScanReason: ScanReason,
-): Promise<OnerepScanRow[]> {
+): Promise<OnerepScanRow | undefined> {
   const scan = await knex("onerep_scans")
     .where("onerep_profile_id", onerepProfileId)
-    .where("onerep_scan_reason", oneRepScanReason)
-    .orderBy("created_at", "desc");
+    .andWhere("onerep_scan_reason", oneRepScanReason)
+    .orderBy("created_at", "desc")
+    .first();
 
   return scan;
 }
@@ -256,7 +257,7 @@ async function deleteScanResultsForProfile(
 
 export {
   getAllScansForProfile,
-  getScansForProfileByReason,
+  getLatestScanForProfileByReason,
   getScanResults,
   getLatestOnerepScanResults,
   setOnerepProfileId,

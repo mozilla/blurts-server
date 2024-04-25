@@ -7,7 +7,6 @@ import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { axe } from "jest-axe";
 import Meta, { CsatSurveyBanner } from "./stories/CsatBanner.stories";
-import { CONST_DAY_MILLISECONDS } from "../../../constants";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import { deleteAllCookies } from "../../functions/client/deleteAllCookies";
 
@@ -25,23 +24,9 @@ describe("CSAT survey", () => {
     expect(await axe(container)).toHaveNoViolations();
   });
 
-  it("does not display the survey to users who do not have automatic data removal enabled", () => {
-    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
-    render(<ComposedCsatSurveyBanner elapsedTimeSinceInitialScan={-1} />);
-
-    const answerButton = screen.queryByRole("button", {
-      name: "Very dissatisfied",
-    });
-    expect(answerButton).not.toBeInTheDocument();
-  });
-
   it("displays the survey to users with automatic data removal enabled for less than 90 days", () => {
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
-    render(
-      <ComposedCsatSurveyBanner
-        elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 89}
-      />,
-    );
+    render(<ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={89} />);
 
     const answerButton = screen.getByRole("button", {
       name: "Dissatisfied",
@@ -55,7 +40,7 @@ describe("CSAT survey", () => {
       const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
       render(
         <ComposedCsatSurveyBanner
-          elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * dayCount}
+          elapsedTimeInDaysSinceInitialScan={dayCount}
         />,
       );
 
@@ -69,11 +54,7 @@ describe("CSAT survey", () => {
   it("shows the correct follow-up feedback link for response “Very dissatisfied”", async () => {
     const user = userEvent.setup();
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
-    render(
-      <ComposedCsatSurveyBanner
-        elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 91}
-      />,
-    );
+    render(<ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={91} />);
 
     const answerButton = screen.getByRole("button", {
       name: "Very dissatisfied",
@@ -94,9 +75,7 @@ describe("CSAT survey", () => {
     const user = userEvent.setup();
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(
-      <ComposedCsatSurveyBanner
-        elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 180}
-      />,
+      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={180} />,
     );
 
     const answerButton = screen.getByRole("button", {
@@ -117,9 +96,7 @@ describe("CSAT survey", () => {
     const user = userEvent.setup();
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(
-      <ComposedCsatSurveyBanner
-        elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 351}
-      />,
+      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={351} />,
     );
 
     const answerButton = screen.getByRole("button", {
@@ -139,11 +116,7 @@ describe("CSAT survey", () => {
   it("shows the correct follow-up feedback link for response “Satisfied”", async () => {
     const user = userEvent.setup();
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
-    render(
-      <ComposedCsatSurveyBanner
-        elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 91}
-      />,
-    );
+    render(<ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={91} />);
 
     const answerButton = screen.getByRole("button", {
       name: "Satisfied",
@@ -164,9 +137,7 @@ describe("CSAT survey", () => {
     const user = userEvent.setup();
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(
-      <ComposedCsatSurveyBanner
-        elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 180}
-      />,
+      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={180} />,
     );
 
     const answerButton = screen.getByRole("button", {
@@ -188,9 +159,7 @@ describe("CSAT survey", () => {
     const user = userEvent.setup();
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(
-      <ComposedCsatSurveyBanner
-        elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 180}
-      />,
+      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={180} />,
     );
 
     const answerButton = screen.getByRole("button", {
@@ -227,9 +196,7 @@ describe("CSAT survey", () => {
     const user = userEvent.setup();
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(
-      <ComposedCsatSurveyBanner
-        elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 180}
-      />,
+      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={180} />,
     );
 
     const answerButton = screen.getByRole("button", {

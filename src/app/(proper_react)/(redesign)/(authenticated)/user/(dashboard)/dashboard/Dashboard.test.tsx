@@ -51,7 +51,6 @@ import Meta, {
   DashboardUsPremiumManuallyResolvedScansNoBreaches,
 } from "./Dashboard.stories";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
-import { CONST_DAY_MILLISECONDS } from "../../../../../../../constants";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -3280,7 +3279,7 @@ it("send telemetry when users click on exposure chart free scan", async () => {
   );
 });
 
-it("does not display the CSAT survey banner on the dashboard", () => {
+it("does not display the CSAT survey banner on the dashboard to users who do not have automatic data removal enabled", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanNoBreaches,
     Meta,
@@ -3298,11 +3297,7 @@ it("displays the CSAT survey banner on the dashboard for Plus users, after more 
     DashboardUsPremiumResolvedScanNoBreaches,
     Meta,
   );
-  render(
-    <ComposedDashboard
-      elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 91}
-    />,
-  );
+  render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={91} />);
 
   const answerButton = screen.queryByRole("button", {
     name: "Neutral",
@@ -3316,9 +3311,7 @@ it("displays the initial CSAT survey banner only on the ”fixed” tab of the d
     DashboardUsPremiumResolvedScanNoBreaches,
     Meta,
   );
-  render(
-    <ComposedDashboard elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS} />,
-  );
+  render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={1} />);
 
   const answerButtonOne = screen.queryByRole("button", {
     name: "Neutral",
@@ -3340,11 +3333,7 @@ it("displays the 6-months CSAT survey banner only on the “action needed” and
     DashboardUsPremiumResolvedScanNoBreaches,
     Meta,
   );
-  render(
-    <ComposedDashboard
-      elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 180}
-    />,
-  );
+  render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={180} />);
 
   const answerButtonOne = screen.queryByRole("button", {
     name: "Satisfied",
@@ -3366,11 +3355,7 @@ it("displays the follow-up CSAT survey banner link on the dashboard", async () =
     DashboardUsPremiumResolvedScanNoBreaches,
     Meta,
   );
-  render(
-    <ComposedDashboard
-      elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 185}
-    />,
-  );
+  render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={185} />);
 
   const answerButton = screen.queryByRole("button", {
     name: "Satisfied",

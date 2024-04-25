@@ -2,12 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { CONST_DAY_MILLISECONDS } from "../../../../../../../constants";
 import {
   Exposure,
   isScanResult,
 } from "../../../../../../components/client/exposure_card/ExposureCard";
 import { FilterState } from "../../../../../../components/client/ExposuresFilter";
+import { CONST_DAY_MILLISECONDS } from "../../../../../../../constants";
 
 export function filterExposures(
   exposures: Exposure[],

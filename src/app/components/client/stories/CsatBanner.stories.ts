@@ -15,7 +15,7 @@ type Story = StoryObj<typeof CsatSurvey>;
 
 export const CsatSurveyBanner: Story = {
   args: {
-    elapsedTimeSinceInitialScan: 0,
+    elapsedTimeInDaysSinceInitialScan: 0,
     hasAutoFixedDataBrokers: true,
     selectedTab: "fixed",
   },

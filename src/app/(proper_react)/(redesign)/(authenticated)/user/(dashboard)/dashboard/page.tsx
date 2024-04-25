@@ -34,7 +34,7 @@ import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/serv
 import { checkSession } from "../../../../../../functions/server/checkSession";
 import { isPrePlusUser } from "../../../../../../functions/server/isPrePlusUser";
 import { getUserId } from "../../../../../../functions/server/getUserId";
-import { getElapsedTimeSinceInitialScan } from "../../../../../../functions/server/getElapsedTimeSinceInitialScan";
+import { getElapsedTimeInDaysSinceInitialScan } from "../../../../../../functions/server/getElapsedTimeSinceInitialScan";
 
 export default async function DashboardPage() {
   const session = await getServerSession();
@@ -104,9 +104,8 @@ export default async function DashboardPage() {
   const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
     session.user.subscriber.id,
   );
-  const elapsedTimeSinceInitialScan = await getElapsedTimeSinceInitialScan(
-    session.user,
-  );
+  const elapsedTimeInDaysSinceInitialScan =
+    await getElapsedTimeInDaysSinceInitialScan(session.user);
 
   return (
     <View
@@ -124,7 +123,7 @@ export default async function DashboardPage() {
       totalNumberOfPerformedScans={profileStats?.total}
       isNewUser={isNewUser}
       telemetryId={getUserId(session)}
-      elapsedTimeSinceInitialScan={elapsedTimeSinceInitialScan}
+      elapsedTimeInDaysSinceInitialScan={elapsedTimeInDaysSinceInitialScan}
     />
   );
 }

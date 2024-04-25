@@ -43,7 +43,7 @@ type DashboardWrapperProps = (
 ) & {
   brokers: keyof typeof brokerOptions;
   breaches: keyof typeof breachOptions;
-  elapsedTimeSinceInitialScan?: number;
+  elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
@@ -198,8 +198,8 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             }}
             isNewUser={true}
             telemetryId="arbitrary-telemetry-id"
-            elapsedTimeSinceInitialScan={
-              props.elapsedTimeSinceInitialScan ?? -1
+            elapsedTimeInDaysSinceInitialScan={
+              props.elapsedTimeInDaysSinceInitialScan
             }
           />
         </Shell>
