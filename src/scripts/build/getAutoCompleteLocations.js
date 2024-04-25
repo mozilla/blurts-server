@@ -7,7 +7,7 @@ import { Readable } from "stream";
 import { finished } from "stream/promises";
 import "dotenv/config";
 
-const dataPath = "./locationAutocompleteData.json";
+const dataPath = "../locationAutocompleteData.json";
 
 if (!existsSync(dataPath)) {
   const stream = createWriteStream(dataPath);
