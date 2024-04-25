@@ -49,47 +49,22 @@ describe("CSAT survey", () => {
     expect(answerButton).toBeInTheDocument();
   });
 
-  it("displays the survey to users with automatic data removal enabled for at least 90 days", () => {
-    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
-    render(
-      <ComposedCsatSurveyBanner
-        elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 90}
-      />,
-    );
+  it.each([90, 180, 351])(
+    "displays the survey to users with automatic data removal enabled for at least n days",
+    (dayCount) => {
+      const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
+      render(
+        <ComposedCsatSurveyBanner
+          elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * dayCount}
+        />,
+      );
 
-    const answerButton = screen.getByRole("button", {
-      name: "Neutral",
-    });
-    expect(answerButton).toBeInTheDocument();
-  });
-
-  it("displays the survey to users with automatic data removal enabled for at least 180 days", () => {
-    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
-    render(
-      <ComposedCsatSurveyBanner
-        elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 180}
-      />,
-    );
-
-    const answerButton = screen.getByRole("button", {
-      name: "Satisfied",
-    });
-    expect(answerButton).toBeInTheDocument();
-  });
-
-  it("displays the survey to users with automatic data removal enabled for at least 351 days", () => {
-    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
-    render(
-      <ComposedCsatSurveyBanner
-        elapsedTimeSinceInitialScan={CONST_DAY_MILLISECONDS * 351}
-      />,
-    );
-
-    const answerButton = screen.getByRole("button", {
-      name: "Very satisfied",
-    });
-    expect(answerButton).toBeInTheDocument();
-  });
+      const answerButton = screen.getByRole("button", {
+        name: "Neutral",
+      });
+      expect(answerButton).toBeInTheDocument();
+    },
+  );
 
   it("shows the correct follow-up feedback link for response “Very dissatisfied”", async () => {
     const user = userEvent.setup();

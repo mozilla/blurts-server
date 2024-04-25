@@ -16,7 +16,7 @@ import styles from "./CsatSurvey.module.scss";
 
 import { CONST_DAY_MILLISECONDS } from "../../../constants";
 
-const SurveyResponses = [
+const surveyResponses = [
   "very-dissatisfied",
   "dissatisfied",
   "neutral",
@@ -24,9 +24,9 @@ const SurveyResponses = [
   "very-satisfied",
 ] as const;
 
-type SurveyResponseKey = (typeof SurveyResponses)[number];
+type SurveyResponse = (typeof surveyResponses)[number];
 
-type SurveyLinks = Record<SurveyResponseKey, string>;
+type SurveyLinks = Record<SurveyResponse, string>;
 
 type SurveyTypes = "initial" | "3-months" | "6-months" | "12-months";
 
@@ -135,7 +135,7 @@ export const CsatSurvey = (props: Props) => {
 
   const { dismiss } = localDismissal;
 
-  const submit = (satisfaction: SurveyResponseKey) => {
+  const submit = (satisfaction: SurveyResponse) => {
     setAnswer(satisfaction);
     dismiss({ soft: true });
     recordTelemetry("button", "click", {
@@ -162,15 +162,15 @@ export const CsatSurvey = (props: Props) => {
             {l10n.getString("survey-csat-question")}
           </div>
           <ol className={`${styles.answers} noList`}>
-            {Object.keys(SurveyResponses).map((responseKey) => (
-              <li key={responseKey}>
+            {surveyResponses.map((response) => (
+              <li key={response}>
                 <Button
                   className={styles.answer}
                   variant="primary"
                   small
-                  onPress={() => submit(responseKey as SurveyResponseKey)}
+                  onPress={() => submit(response)}
                 >
-                  {l10n.getString(`survey-csat-answer-${responseKey}`)}
+                  {l10n.getString(`survey-csat-answer-${response}`)}
                 </Button>
               </li>
             ))}
