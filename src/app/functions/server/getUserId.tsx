@@ -33,7 +33,7 @@ export function getUserId(user: Session["user"] | null): ExperimentationId {
   } else {
     // if the user is not logged in, use a cookie with a randomly-generated Nimbus user ID.
     // TODO: could we use client ID for this? There's no supported way to get it from GleanJS.
-    const cookie = cookies().get("userId");
+    const cookie = cookies().get("experimentationId");
     if (cookie) {
       userId = cookie.value as ExperimentationId;
     } else {
