@@ -221,11 +221,11 @@ export const View = (props: Props) => {
             <p className={styles.label}>
               {props.l10n.getString("landing-all-social-proof-press")}
             </p>
-            <Image src={ForbesLogo} alt="Forbes" />
-            <Image src={TechCruchLogo} alt="Tech Crunch" />
-            <Image src={PCMagLogo} alt="PC Magazine" />
-            <Image src={CNETLogo} alt="CNET" />
-            <Image src={GoogleLogo} alt="Google" />
+            <Image src={ForbesLogo} alt="" />
+            <Image src={TechCruchLogo} alt="" />
+            <Image src={PCMagLogo} alt="" />
+            <Image src={CNETLogo} alt="" />
+            <Image src={GoogleLogo} alt="" />
           </div>
         </div>
 
