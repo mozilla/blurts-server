@@ -17,6 +17,5 @@ export const CsatSurveyBanner: Story = {
   args: {
     elapsedTimeInDaysSinceInitialScan: 0,
     hasAutoFixedDataBrokers: true,
-    selectedTab: "fixed",
   },
 };

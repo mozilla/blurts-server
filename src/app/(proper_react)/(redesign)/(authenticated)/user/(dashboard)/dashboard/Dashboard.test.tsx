@@ -3279,12 +3279,12 @@ it("send telemetry when users click on exposure chart free scan", async () => {
   );
 });
 
-it("does not display the CSAT survey banner on the dashboard to users who do not have automatic data removal enabled", () => {
+it("does not display the CSAT survey banner on the dashboard tab “action needed” to Plus users", () => {
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanNoBreaches,
     Meta,
   );
-  render(<ComposedDashboard />);
+  render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={1} />);
 
   const answerButton = screen.queryByRole("button", {
     name: "Neutral",
@@ -3292,12 +3292,33 @@ it("does not display the CSAT survey banner on the dashboard to users who do not
   expect(answerButton).not.toBeInTheDocument();
 });
 
-it("displays the CSAT survey banner on the dashboard for Plus users, after more than 90 days since their initial scan", () => {
+it("does not display the CSAT survey banner to users who do not have automatic data removal enabled", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumResolvedScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const fixedTab = screen.getByText("Fixed");
+  await user.click(fixedTab);
+
+  const answerButton = screen.queryByRole("button", {
+    name: "Neutral",
+  });
+  expect(answerButton).not.toBeInTheDocument();
+});
+
+it("displays the CSAT survey banner to Plus users, after more than 90 days since their initial scan", async () => {
+  const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanNoBreaches,
     Meta,
   );
   render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={91} />);
+
+  const fixedTab = screen.getByText("Fixed");
+  await user.click(fixedTab);
 
   const answerButton = screen.queryByRole("button", {
     name: "Neutral",
@@ -3305,7 +3326,7 @@ it("displays the CSAT survey banner on the dashboard for Plus users, after more 
   expect(answerButton).toBeInTheDocument();
 });
 
-it("displays the initial CSAT survey banner only on the ”fixed” tab of the dashboard to users with automatically fixed data brokers", async () => {
+it("displays the initial CSAT survey banner only to Plus users with automatically fixed data brokers", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanNoBreaches,
@@ -3327,7 +3348,7 @@ it("displays the initial CSAT survey banner only on the ”fixed” tab of the d
   expect(answerButtonTwo).toBeInTheDocument();
 });
 
-it("displays the 6-months CSAT survey banner only on the “action needed” and “fixed” tabs of the dashboard", async () => {
+it("displays the 6-months CSAT survey banner on the dashboard tab “fixed” only", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanNoBreaches,
@@ -3338,7 +3359,7 @@ it("displays the 6-months CSAT survey banner only on the “action needed” and
   const answerButtonOne = screen.queryByRole("button", {
     name: "Satisfied",
   });
-  expect(answerButtonOne).toBeInTheDocument();
+  expect(answerButtonOne).not.toBeInTheDocument();
 
   const fixedTab = screen.getByText("Fixed");
   await user.click(fixedTab);
@@ -3349,13 +3370,16 @@ it("displays the 6-months CSAT survey banner only on the “action needed” and
   expect(answerButtonTwo).toBeInTheDocument();
 });
 
-it("displays the follow-up CSAT survey banner link on the dashboard", async () => {
+it("displays the follow-up CSAT survey banner link", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
     DashboardUsPremiumResolvedScanNoBreaches,
     Meta,
   );
   render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={185} />);
+
+  const fixedTab = screen.getByText("Fixed");
+  await user.click(fixedTab);
 
   const answerButton = screen.queryByRole("button", {
     name: "Satisfied",

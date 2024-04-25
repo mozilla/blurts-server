@@ -401,6 +401,11 @@ export const View = (props: Props) => {
     );
   };
 
+  const showCsatSurvey =
+    props.enabledFeatureFlags.includes("CsatSurvey") &&
+    selectedTab === "fixed" &&
+    typeof props.elapsedTimeInDaysSinceInitialScan !== "undefined";
+
   return (
     <div className={styles.wrapper}>
       <Toolbar
@@ -425,7 +430,7 @@ export const View = (props: Props) => {
           selectedKey={selectedTab}
         />
       </Toolbar>
-      {props.enabledFeatureFlags.includes("CsatSurvey") &&
+      {showCsatSurvey &&
         typeof props.elapsedTimeInDaysSinceInitialScan !== "undefined" && (
           <CsatSurvey
             elapsedTimeInDaysSinceInitialScan={
@@ -434,7 +439,6 @@ export const View = (props: Props) => {
             hasAutoFixedDataBrokers={
               dataSummary.dataBrokerAutoFixedDataPointsNum > 0
             }
-            selectedTab={selectedTab}
           />
         )}
       <div className={styles.dashboardContent}>

@@ -7,7 +7,6 @@
 import { useState } from "react";
 import { Button } from "./Button";
 import { CloseBtn } from "../server/Icons";
-import { TabType } from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 import { useL10n } from "../../hooks/l10n";
 import { useLocalDismissal } from "../../hooks/useLocalDismissal";
 import { useHasRenderedClientSide } from "../../hooks/useHasRenderedClientSide";
@@ -88,13 +87,11 @@ const surveys: Survey[] = [
 type Props = {
   elapsedTimeInDaysSinceInitialScan: number;
   hasAutoFixedDataBrokers: boolean;
-  selectedTab: TabType;
 };
 
 const getRelevantSurvey = ({
   elapsedTimeInDaysSinceInitialScan,
   hasAutoFixedDataBrokers,
-  selectedTab,
 }: Props): Survey | undefined => {
   const relevantSurvey = surveys.findLast(
     (survey) => elapsedTimeInDaysSinceInitialScan >= survey.daysThreshold,
@@ -102,10 +99,7 @@ const getRelevantSurvey = ({
 
   // Show the initial survey on the ”fixed” dashboard tab only to users
   // that have autmatically fixed data broker results.
-  if (
-    relevantSurvey?.id === "initial" &&
-    (!hasAutoFixedDataBrokers || selectedTab !== "fixed")
-  ) {
+  if (relevantSurvey?.id === "initial" && !hasAutoFixedDataBrokers) {
     return;
   }
 
