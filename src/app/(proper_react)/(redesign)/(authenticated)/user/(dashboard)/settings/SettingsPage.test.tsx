@@ -472,7 +472,11 @@ it("takes you through the cancellation dialog flow all the way to subplat", asyn
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion", "ConfirmCancellation"]}
+        enabledFeatureFlags={[
+          "MonitorAccountDeletion",
+          "ConfirmCancellation",
+          "CancellationFlow",
+        ]}
       />
     </TestComponentWrapper>,
   );
@@ -543,11 +547,16 @@ it("closes the cancellation survey if the user selects nevermind, take me back",
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion", "ConfirmCancellation"]}
+        enabledFeatureFlags={[
+          "MonitorAccountDeletion",
+          "ConfirmCancellation",
+          "CancellationFlow",
+        ]}
       />
     </TestComponentWrapper>,
   );
 
+  screen.debug();
   const cancellationButton = screen.getByRole("button", {
     name: "Cancel your subscription",
   });
@@ -594,7 +603,7 @@ it("closes the cancellation dialog", async () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion"]}
+        enabledFeatureFlags={["MonitorAccountDeletion", "CancellationFlow"]}
       />
     </TestComponentWrapper>,
   );
