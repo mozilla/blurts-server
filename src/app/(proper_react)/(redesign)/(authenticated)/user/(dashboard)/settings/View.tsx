@@ -98,25 +98,12 @@ export const SettingsView = (props: Props) => {
               <div className={styles.cancelSection}>
                 <h3>{l10n.getString("settings-cancel-plus-title")}</h3>
                 <p>{l10n.getString("settings-cancel-plus-details")}</p>
-                {props.enabledFeatureFlags.includes("CancellationSurvey") ? (
-                  <CancelFlow fxaSubscriptionsUrl={props.fxaSubscriptionsUrl} />
-                ) : (
-                  <TelemetryLink
-                    href={props.fxaSubscriptionsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    eventData={{
-                      link_id: "cancel_plus",
-                    }}
-                  >
-                    {l10n.getString("settings-cancel-plus-link-label")}
-                    <OpenInNew
-                      alt={l10n.getString("open-in-new-tab-alt")}
-                      width="13"
-                      height="13"
-                    />
-                  </TelemetryLink>
-                )}
+                <CancelFlow
+                  confirmationFlagEnabled={props.enabledFeatureFlags.includes(
+                    "ConfirmCancellation",
+                  )}
+                  fxaSubscriptionsUrl={props.fxaSubscriptionsUrl}
+                />
               </div>
             </>
           )}
