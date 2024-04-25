@@ -12,6 +12,5 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build --tag blurts-server \
-            --build-arg SENTRY_RELEASE="$GITHUB_REF_NAME" \
+          docker build --tag blurts-server
 
