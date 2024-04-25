@@ -7,10 +7,7 @@ import { Button } from "./Button";
 import { CloseBtn } from "../server/Icons";
 import { TabType } from "../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 import { useL10n } from "../../hooks/l10n";
-import {
-  DismissOptions,
-  useLocalDismissal,
-} from "../../hooks/useLocalDismissal";
+import { useLocalDismissal } from "../../hooks/useLocalDismissal";
 import { useHasRenderedClientSide } from "../../hooks/useHasRenderedClientSide";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import styles from "./CsatSurvey.module.scss";
@@ -134,9 +131,7 @@ export const CsatSurvey = (props: Props) => {
     return null;
   }
 
-  const dismiss = (options?: DismissOptions) => {
-    localDismissal.dismiss(options);
-  };
+  const { dismiss } = localDismissal;
 
   const submit = (satisfaction: SurveyResponseKey) => {
     setAnswer(satisfaction);
