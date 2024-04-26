@@ -82,7 +82,7 @@ export type TabData = {
 
 export const View = (props: Props) => {
   const l10n = useL10n();
-  const recordTelemetry = useTelemetry();
+  const recordTelemetry = useTelemetry(props.telemetryId);
   const countryCode = useContext(CountryCodeContext);
 
   const adjustedScanResults = props.userScanData.results.map((scanResult) => {
