@@ -20,9 +20,7 @@ export default async function Page() {
   if (typeof session?.user.subscriber?.fxa_uid === "string") {
     return redirect("/user/dashboard");
   }
-  const enabledFlags = await getEnabledFeatureFlags({
-    ignoreAllowlist: true,
-  });
+  const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
   const countryCode = getCountryCode(headers());
   const eligibleForPremium = isEligibleForPremium(countryCode, enabledFlags);
 
