@@ -98,8 +98,13 @@ export const SettingsView = (props: Props) => {
               <div className={styles.cancelSection}>
                 <h3>{l10n.getString("settings-cancel-plus-title")}</h3>
                 <p>{l10n.getString("settings-cancel-plus-details")}</p>
-                {props.enabledFeatureFlags.includes("CancellationSurvey") ? (
-                  <CancelFlow fxaSubscriptionsUrl={props.fxaSubscriptionsUrl} />
+                {props.enabledFeatureFlags.includes("CancellationFlow") ? (
+                  <CancelFlow
+                    confirmationFlagEnabled={props.enabledFeatureFlags.includes(
+                      "ConfirmCancellation",
+                    )}
+                    fxaSubscriptionsUrl={props.fxaSubscriptionsUrl}
+                  />
                 ) : (
                   <TelemetryLink
                     href={props.fxaSubscriptionsUrl}

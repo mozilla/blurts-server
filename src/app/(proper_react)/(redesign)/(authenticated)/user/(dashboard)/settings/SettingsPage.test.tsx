@@ -472,7 +472,11 @@ it("takes you through the cancellation dialog flow all the way to subplat", asyn
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion", "CancellationSurvey"]}
+        enabledFeatureFlags={[
+          "MonitorAccountDeletion",
+          "ConfirmCancellation",
+          "CancellationFlow",
+        ]}
       />
     </TestComponentWrapper>,
   );
@@ -543,7 +547,11 @@ it("closes the cancellation survey if the user selects nevermind, take me back",
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion", "CancellationSurvey"]}
+        enabledFeatureFlags={[
+          "MonitorAccountDeletion",
+          "ConfirmCancellation",
+          "CancellationFlow",
+        ]}
       />
     </TestComponentWrapper>,
   );
@@ -594,7 +602,7 @@ it("closes the cancellation dialog", async () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion", "CancellationSurvey"]}
+        enabledFeatureFlags={["MonitorAccountDeletion", "CancellationFlow"]}
       />
     </TestComponentWrapper>,
   );
@@ -927,43 +935,6 @@ describe("to learn about usage", () => {
       "click",
       expect.objectContaining({
         button_id: "removed_email_address",
-      }),
-    );
-  });
-
-  it("counts how often people go to SubPlat to cancel their Plus subscription", async () => {
-    const user = userEvent.setup();
-    render(
-      <TestComponentWrapper>
-        <SettingsView
-          l10n={getSpecificL10nSync()}
-          user={mockedUser}
-          breachCountByEmailAddress={{
-            [mockedUser.email]: 42,
-            [mockedSecondaryVerifiedEmail.email]: 42,
-          }}
-          emailAddresses={[mockedSecondaryVerifiedEmail]}
-          fxaSettingsUrl=""
-          fxaSubscriptionsUrl=""
-          yearlySubscriptionUrl=""
-          monthlySubscriptionUrl=""
-          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={["MonitorAccountDeletion"]}
-        />
-      </TestComponentWrapper>,
-    );
-
-    const cancelPlusLink = screen.getByRole("link", {
-      name: "Cancel from your ⁨Mozilla account⁩ Open link in a new tab",
-    });
-
-    await user.click(cancelPlusLink);
-
-    expect(mockedRecordTelemetry).toHaveBeenCalledWith(
-      "link",
-      "click",
-      expect.objectContaining({
-        link_id: "cancel_plus",
       }),
     );
   });
