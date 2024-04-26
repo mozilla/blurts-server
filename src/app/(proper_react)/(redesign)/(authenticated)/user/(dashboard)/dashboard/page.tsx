@@ -33,7 +33,7 @@ import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFl
 import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
 import { checkSession } from "../../../../../../functions/server/checkSession";
 import { isPrePlusUser } from "../../../../../../functions/server/isPrePlusUser";
-import { getUserId } from "../../../../../../functions/server/getExperimentationId";
+import { getExperimentationId } from "../../../../../../functions/server/getExperimentationId";
 import { getElapsedTimeInDaysSinceInitialScan } from "../../../../../../functions/server/getElapsedTimeInDaysSinceInitialScan";
 import { getExperiments } from "../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../functions/universal/getLocale";
@@ -100,7 +100,7 @@ export default async function DashboardPage() {
     email: session.user.email,
   });
 
-  const experimentationId = getUserId(session.user);
+  const experimentationId = getExperimentationId(session.user);
   const experimentData = await getExperiments({
     experimentationId: experimentationId,
     countryCode: countryCode,
@@ -133,7 +133,7 @@ export default async function DashboardPage() {
       totalNumberOfPerformedScans={profileStats?.total}
       isNewUser={isNewUser}
       elapsedTimeInDaysSinceInitialScan={elapsedTimeInDaysSinceInitialScan}
-      telemetryId={experimentationId}
+      experimentationId={experimentationId}
       experimentData={experimentData}
     />
   );

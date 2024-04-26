@@ -12,7 +12,7 @@ import { useTelemetry } from "../../hooks/useTelemetry";
 import { GleanMetricMap } from "../../../telemetry/generated/_map";
 
 export type Props = {
-  userId: string;
+  experimentationId: string;
   enabledFlags: FeatureFlagName[];
 };
 
@@ -25,10 +25,13 @@ export const PageLoadEvent = (props: Props) => {
   ]);
   const pathname = usePathname();
 
-  const recordTelemetry = useTelemetry(props.userId);
+  const recordTelemetry = useTelemetry(props.experimentationId);
 
-  if (props.userId.startsWith("guest") && !cookies.experimentationId) {
-    setCookie("experimentationId", props.userId);
+  if (
+    props.experimentationId.startsWith("guest") &&
+    !cookies.experimentationId
+  ) {
+    setCookie("experimentationId", props.experimentationId);
   }
 
   // On first load of the page, record a page view.
