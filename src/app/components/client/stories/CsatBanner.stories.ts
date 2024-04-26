@@ -14,6 +14,7 @@ export default meta;
 type Story = StoryObj<typeof CsatSurvey>;
 
 export const CsatSurveyBanner: Story = {
+  name: "CsatSurvey",
   args: {
     elapsedTimeInDaysSinceInitialScan: 0,
     hasAutoFixedDataBrokers: true,
