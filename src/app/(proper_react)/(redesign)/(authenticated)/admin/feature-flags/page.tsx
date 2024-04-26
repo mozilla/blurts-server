@@ -119,11 +119,11 @@ export default async function FeatureFlagPage() {
         <h1>Flags added here will override Nimbus features.</h1>
         <h2>Deleted flags will be controllable by Nimbus.</h2>
         <br />
-        <h3>Active Feature Flags</h3>
-        <ActiveFlagsTable data={featureFlags} />
-        <br />
         <h3>Add New Feature Flag</h3>
         <AddFeatureFlag />
+        <br />
+        <h3>Active Feature Flags</h3>
+        <ActiveFlagsTable data={featureFlags} />
         <br />
         <h3>Deleted Feature Flags</h3>
         <DeletedFlagsTable data={deletedFeatureFlags} />
