@@ -7,6 +7,7 @@ import { logger } from "./logging";
 import {
   ExperimentData,
   defaultExperimentData,
+  localExperimentData,
 } from "../../../telemetry/generated/nimbus/experiments";
 import { ExperimentationId } from "./getExperimentationId";
 
@@ -25,34 +26,35 @@ export async function getExperiments(params: {
   locale: string;
   countryCode: string;
 }): Promise<ExperimentData> {
-  if (["stage", "production"].includes(process.env.APP_ENV ?? "local")) {
-    const serverUrl = process.env.NIMBUS_SIDECAR_URL;
-    if (!serverUrl) {
-      throw new Error("env var NIMBUS_SIDECAR_URL not set");
-    }
-
-    try {
-      const response = await fetch(`${serverUrl}/v1/features`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-        body: JSON.stringify({
-          client_id: params.experimentationId,
-          context: {
-            // Nimbus takes a language, rather than a locale, hence the .split:
-            locale: params.locale.split("-")[0],
-            countryCode: params.countryCode,
-          },
-        }),
-      });
-
-      const experimentData = (await response.json()) as ExperimentData;
-      return experimentData ?? defaultExperimentData;
-    } catch (ex) {
-      logger.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
-      captureException(ex);
-    }
+  if (["local"].includes(process.env.APP_ENV ?? "local")) {
+    return localExperimentData;
   }
-  return defaultExperimentData;
+  const serverUrl = process.env.NIMBUS_SIDECAR_URL;
+  if (!serverUrl) {
+    throw new Error("env var NIMBUS_SIDECAR_URL not set");
+  }
+
+  try {
+    const response = await fetch(`${serverUrl}/v1/features`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        client_id: params.experimentationId,
+        context: {
+          // Nimbus takes a language, rather than a locale, hence the .split:
+          locale: params.locale.split("-")[0],
+          countryCode: params.countryCode,
+        },
+      }),
+    });
+
+    const experimentData = (await response.json()) as ExperimentData;
+    return experimentData ?? defaultExperimentData;
+  } catch (ex) {
+    logger.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
+    captureException(ex);
+    return defaultExperimentData;
+  }
 }

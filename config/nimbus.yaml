@@ -1,6 +1,7 @@
 about:
   description: Nimbus Feature Manifest for Monitor Web testing
 channels:
+  - local
   - staging
   - production
 features:
@@ -12,6 +13,8 @@ features:
         type: Boolean
         default: false
     defaults:
+      - channel: local
+        value: { "enabled": true }
       - channel: staging
         value: { "enabled": true }
       - channel: production
