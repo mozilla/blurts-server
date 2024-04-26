@@ -10,7 +10,7 @@ import EventMetricType from "@mozilla/glean/private/metrics/event";
 import type { GleanMetricMap } from "../../telemetry/generated/_map";
 import { PublicEnvContext } from "../../contextProviders/public-env";
 
-export const useGlean = (experimentationId?: string) => {
+export const useGlean = () => {
   const { PUBLIC_APP_ENV } = useContext(PublicEnvContext);
 
   // Initialize Glean only on the first render of our custom hook.
@@ -42,7 +42,6 @@ export const useGlean = (experimentationId?: string) => {
       maxEvents: 1,
       channel: PUBLIC_APP_ENV,
       enableAutoPageLoadEvents: true,
-      experimentationId,
     });
     // This effect should only run once
     // eslint-disable-next-line react-hooks/exhaustive-deps

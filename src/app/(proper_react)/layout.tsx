@@ -12,7 +12,7 @@ import { ReactAriaI18nProvider } from "../../contextProviders/react-aria";
 import { CountryCodeProvider } from "../../contextProviders/country-code";
 import { getCountryCode } from "../functions/server/getCountryCode";
 import { PageLoadEvent } from "../components/client/PageLoadEvent";
-import { getExperimentationId } from "../functions/server/getUserId";
+import { getUserId } from "../functions/server/getUserId";
 import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
 
 export default async function Layout({ children }: { children: ReactNode }) {
@@ -20,18 +20,9 @@ export default async function Layout({ children }: { children: ReactNode }) {
   const headersList = headers();
   const countryCode = getCountryCode(headersList);
   const session = await getServerSession();
-
-  let enabledFlags = [];
-  let experimentationId;
-  if (session) {
-    enabledFlags = await getEnabledFeatureFlags({
-      email: session.user.email,
-    });
-    experimentationId = getExperimentationId(session.user);
-  } else {
-    enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
-    experimentationId = getExperimentationId(null);
-  }
+  const enabledFlags = await getEnabledFeatureFlags({
+    email: session?.user.email ?? "",
+  });
 
   return (
     <L10nProvider bundleSources={l10nBundles}>
@@ -39,8 +30,8 @@ export default async function Layout({ children }: { children: ReactNode }) {
         <CountryCodeProvider countryCode={countryCode}>
           {children}
           <PageLoadEvent
+            userId={getUserId(session)}
             enabledFlags={enabledFlags}
-            experimentationId={experimentationId}
           />
         </CountryCodeProvider>
       </ReactAriaI18nProvider>

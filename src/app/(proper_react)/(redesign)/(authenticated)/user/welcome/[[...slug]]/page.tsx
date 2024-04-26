@@ -12,7 +12,6 @@ import { headers } from "next/headers";
 import { getReferrerUrl } from "../../../../../../functions/server/getReferrerUrl";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../constants";
 import { AutoSignIn } from "../../../../../../components/client/AutoSignIn";
-import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
 
 const FreeScanSlug = "free-scan";
 
@@ -60,10 +59,6 @@ export default async function Onboarding({ params, searchParams }: Props) {
     referrerParam: searchParams.referrer,
   });
 
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    user: session.user,
-  });
-
   return (
     <View
       user={session.user}
@@ -71,7 +66,6 @@ export default async function Onboarding({ params, searchParams }: Props) {
       breachesTotalCount={allBreachesCount}
       stepId={firstSlug === FreeScanSlug ? "enterInfo" : "getStarted"}
       previousRoute={previousRoute}
-      enabledFeatureFlags={enabledFeatureFlags}
     />
   );
 }
