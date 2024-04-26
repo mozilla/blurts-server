@@ -47,7 +47,8 @@ export type FeatureFlagName =
   | "RebrandAnnouncement"
   | "MonitorAccountDeletion"
   | "RedesignedEmails"
-  | "CancellationSurvey";
+  | "CancellationFlow"
+  | "ConfirmCancellation";
 
 /**
  * @param options

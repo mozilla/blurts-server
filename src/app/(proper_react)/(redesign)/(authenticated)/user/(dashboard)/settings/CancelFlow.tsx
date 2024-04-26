@@ -19,13 +19,15 @@ import { TelemetryButton } from "../../../../../../components/client/TelemetryBu
 
 export type Props = {
   fxaSubscriptionsUrl: string;
+  confirmationFlagEnabled: boolean;
 };
 
 export const CancelFlow = (props: Props) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
+  const currentStep = props.confirmationFlagEnabled ? "confirm" : "survey";
   const [step, setCurrentStep] = useState<"confirm" | "survey" | "redirecting">(
-    "confirm",
+    currentStep,
   );
 
   const dialogState = useOverlayTriggerState({
