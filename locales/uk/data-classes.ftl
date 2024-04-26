@@ -2,6 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+
 # Breach Data Classes
 
 account-balances = Залишки на рахунках
@@ -18,7 +19,7 @@ avatars = Аватари
 bank-account-numbers = Номери банківських рахунків
 beauty-ratings = Оцінки краси
 biometric-data = Біометричні дані
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Біографії
 browser-user-agent-details = Подробиці про user agent браузера
@@ -29,6 +30,7 @@ career-levels = Посади
 cellular-network-names = Назви операторів мобільного зв'язку
 charitable-donations = Благодійні внески
 chat-logs = Журнали чатів
+citizenship-statuses = Стани громадянства
 clothing-sizes = Розміри одягу
 credit-card-cvv = CVV-коди кредитних карток
 credit-cards = Кредитні картки
@@ -39,7 +41,7 @@ customer-interactions = Взаємодія з користувачами
 dates-of-birth = Дати народження
 deceased-date = Дати смерті
 deceased-statuses = Свідоцтва про смерть
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Інструкція з доставлення
 device-information = Інформація про пристрої
@@ -79,7 +81,7 @@ instant-messenger-identities = Ідентифікатори програм об�
 ip-addresses = IP-адреси
 job-applications = Вакансії
 job-titles = Назви посад
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Номерні знаки
 living-costs = Витрати на життя
 # This string refers to financial loans.

@@ -26,7 +26,6 @@ exposure-chart-caption-fixed = Biểu đồ này hiển thị tổng số dữ l
 exposure-chart-returning-user-upgrade-prompt = Chưa bao gồm địa chỉ nhà, thành viên gia đình và nhiều thông tin khác.
 exposure-chart-returning-user-upgrade-prompt-cta = Bắt đầu quét miễn phí
 exposure-chart-scan-in-progress-prompt = <b>Đang quét:</b> chưa bao gồm địa chỉ, thành viên gia đình và nhiều thông tin khác.
-
 modal-active-number-of-exposures-title = Về số vụ rò rỉ của bạn
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -35,31 +34,25 @@ modal-active-number-of-exposures-part-two = Ví dụ, nếu bạn có 10 lần r
 modal-active-number-of-exposures-part-three-all = Khi chúng đã được giải quyết, chúng sẽ được thêm vào tổng số vụ rò rỉ đã giải quyết của bạn trên trang Đã giải quyết.
 modal-fixed-number-of-exposures-title = Về số dữ liệu bị lộ đã giải quyết của bạn
 modal-fixed-number-of-exposures-all = Biểu đồ này bao gồm tổng số vụ rò rỉ dữ liệu đã giải quyết cho tất cả các địa chỉ email mà bạn hiện đang theo dõi. Sau khi số dữ liệu bị lộ được đánh dấu là đã giải quyết, chúng sẽ được thêm vào tổng số tại đây.
-
 modal-cta-ok = OK
-modal-open-alt = Mở
-modal-close-alt = Đóng
-
+open-modal-alt = Mở modal
+close-modal-alt = Đóng modal
+open-tooltip-alt = Mở tooltip
 progress-card-heres-what-we-fixed-headline-all = Đây là những gì bạn đã giải quyết
 progress-card-manually-fixed-headline = Đã giải quyết thủ công
-
 dashboard-tab-label-action-needed = Cần hành động
 dashboard-tab-label-fixed = Đã giải quyết
 dashboard-exposures-all-fixed-label = Tất cả đã được giải quyết ở đây!
-
-
 dashboard-exposures-area-headline = Xem tất cả các trang web nơi thông tin của bạn bị lộ
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
 #   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
 dashboard-exposures-area-description-all-line1 = Chúng tôi đã tìm thấy { $exposures_unresolved_num } dữ liệu của bạn bị lộ.
-
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
 dashboard-exposures-area-description-all-line2 = Nó xuất hiện trong { $data_breach_unresolved_num } vụ dữ liệu bị rò rỉ.
 dashboard-fixed-area-headline-all = Xem tất cả vụ rò rỉ đã được giải quyết
-
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Bộ lọc
 dashboard-exposures-filter-company = Công ty
@@ -77,19 +70,15 @@ dashboard-exposures-filter-reset = Đặt lại
 
 dashboard-top-banner-section-label = Trang tổng quan tóm tắt
 dashboard-top-banner-scan-in-progress-title = Quá trình quét của bạn vẫn đang được tiến hành
-
 dashboard-top-banner-your-data-is-protected-title = Dữ liệu của bạn được bảo vệ
 dashboard-top-banner-your-data-is-protected-cta = Xem những gì đã được giải quyết
-
 dashboard-top-banner-lets-keep-protecting-title = Hãy tiếp tục bảo vệ dữ liệu của bạn
 # Variables:
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
 dashboard-top-banner-lets-keep-protecting-description = Bạn vẫn còn { $exposures_unresolved_num } dữ liệu bị lộ chưa được giải quyết. Hãy tiếp tục và bảo vệ chính mình. Chúng tôi sẽ hướng dẫn bạn từng bước.
 dashboard-top-banner-lets-keep-protecting-cta = Hãy tiếp tục
-
 dashboard-top-banner-protect-your-data-title = Hãy bảo vệ dữ liệu của bạn
 dashboard-top-banner-protect-your-data-cta = Hãy giải quyết nó
-
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
@@ -98,15 +87,12 @@ dashboard-top-banner-non-us-protect-your-data-description-line1 = Chúng tôi đ
 # Variables:
 #   $data_breach_unresolved_num (number) - the total number of data breaches the user has.
 dashboard-top-banner-non-us-protect-your-data-description-line2 = Nó xuất hiện xuyên suốt { $data_breach_unresolved_num } vụ rò rỉ. Chúng tôi sẽ hướng dẫn bạn từng bước cách giải quyết nó.
-
 dashboard-top-banner-no-exposures-found-title = Không tìm thấy vụ rò rỉ nào
 dashboard-top-banner-non-us-no-exposures-found-description = Tin tốt! Chúng tôi đã tìm kiếm tất cả các vụ rò rì dữ liệu đã biết và không tìm thấy vụ rò rỉ nào. Chúng tôi sẽ tiếp tục theo dõi địa chỉ email của bạn và sẽ thông báo cho bạn nếu xảy ra vụ mới.
 dashboard-no-exposures-label = Không tìm thấy vụ rò rỉ nào
-
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
 dashboard-top-banner-non-us-your-data-is-protected-description = Tin tốt, tất cả { $exposures_resolved_num } dữ liệu bị lộ của bạn đã được giải quyết! Chúng tôi sẽ tiếp tục theo dõi và sẽ cảnh báo bạn về bất kỳ trường hợp dữ liệu bị lộ nào mới.
-
 dashboard-top-banner-monitor-more-cta = Giám sát nhiều email hơn
 
 # About Exposure Statuses Modal

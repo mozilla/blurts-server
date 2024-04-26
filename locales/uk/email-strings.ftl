@@ -6,50 +6,37 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
-
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-
 # A link to legal information about mozilla products.
 legal = Правові положення
-
 # Unsubscribe link in email.
 email-unsub-link = Відписатися
-
 # This string appears in the footer of breach report and breach alert emails.
 # { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
-# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the
 # Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-footer-blurb =
     Ви отримали цей лист, тому що ви підписалися на сповіщення від { -product-name }.
     Більше не хочете отримувати такі повідомлення? { $unsubLink }. Це автоматичний електронний лист. Для отримання допомоги, відвідайте { $faqLink }.
-
 # Button text
 verify-email-cta = Підтвердити адресу е-пошти
-
 # Headline of verification email
-email-link-expires = Це посилання втратить дію через 24 години
-
-## Variables:
-##   $userEmail (string) - User email address
+email-link-expires = Термін дії посилання – 24 години
 
 ##
 
 # Subject line of email
 email-subject-found-breaches = { -product-name } знайшов вашу інформацію в цих витоках даних
-
 # Subject line of email
 email-subject-no-breaches = { -product-name } не знайшов відомих витоків даних
-
 # Subject line of email
-email-subject-verify = Підтвердьте свою е-пошту для { -product-name }
-
+email-subject-verify = Підтвердження електронної пошти для { -product-name }
 fxm-warns-you-no-breaches =
     { -product-name } попереджає вас про витоки даних, що містять вашу особисту інформацію. 
     Поки що таких витоків не знайдено. Ми надішлемо вам сповіщення, якщо ваша е-пошта з'явиться в новому витоці даних.
-
 email-breach-alert-blurb =
     { -product-name } попереджає вас про витоки даних, що містять вашу особисту інформацію. 
     Ми щойно отримали подробиці про витік даних, що стався в іншій компанії.
@@ -57,9 +44,9 @@ email-breach-alert-blurb =
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
 # Have I Been Pwned attribution
-email-2022-hibp-attribution = Дані про витоки даних надані <a { $hibp-link-attr }>{ -brand-HIBP }</a>
-
-## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+# Variables:
+#   $hibp-link-attr (String) - Link to Have I Been Pwned
+email-2022-hibp-attribution = Інформація про витоки даних надаються <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 ## Variables:
@@ -83,10 +70,8 @@ email-resolve-cta = Розв'язати витоки
 ## Verification email
 
 email-verify-heading = Захистіть свої дані прямо зараз
-email-verify-subhead = Підтвердьте свою електронну адресу, щоб почати захищати свої дані після витоку даних.
-email-verify-simply-click = Просто клацніть посилання нижче, щоб завершити перевірку свого облікового запису.
-
-## Breach report
+email-verify-subhead = Підтвердьте адресу електронної пошти, щоб почати захищати свої дані у разі їх розкриття.
+email-verify-simply-click = Просто натисніть посилання нижче, щоб завершити перевірку.
 
 ## Breach report
 ## Variables:

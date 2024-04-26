@@ -30,7 +30,6 @@ exposure-chart-caption-fixed = Este gráfico mostra o total de exposições que 
 exposure-chart-returning-user-upgrade-prompt = Endereço residencial, familiares e muito mais ainda não foram incluídos.
 exposure-chart-returning-user-upgrade-prompt-cta = Iniciar uma verificação gratuita
 exposure-chart-scan-in-progress-prompt = <b>Verificação em andamento:</b> endereço, familiares e muito mais ainda não foram incluídos.
-
 modal-active-number-of-exposures-title = Informações sobre o seu número de exposições ativas
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -43,19 +42,15 @@ modal-active-number-of-exposures-part-two = Por exemplo, se você tiver 10 expos
 modal-active-number-of-exposures-part-three-all = Depois de resolvidas, elas são adicionadas ao número total de exposições resolvidas na página 'Resolvido'.
 modal-fixed-number-of-exposures-title = Informações sobre seu número de exposições resolvidas
 modal-fixed-number-of-exposures-all = Este gráfico inclui o número total de vazamentos de dados que foram resolvidos em todos os endereços de email que você está monitorando atualmente. Exposições marcadas como resolvidas são adicionadas ao total aqui.
-
 modal-cta-ok = OK
-modal-open-alt = Abrir
-modal-close-alt = Fechar
-
+open-modal-alt = Abrir diálogo
+close-modal-alt = Fechar diálogo
+open-tooltip-alt = Abrir dica
 progress-card-heres-what-we-fixed-headline-all = Aqui está o que você resolveu
 progress-card-manually-fixed-headline = Resolvido manualmente
-
 dashboard-tab-label-action-needed = Ação necessária
 dashboard-tab-label-fixed = Resolvido
 dashboard-exposures-all-fixed-label = Tudo resolvido aqui!
-
-
 dashboard-exposures-area-headline = Ver todos os sites onde suas informações foram expostas
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
@@ -65,7 +60,6 @@ dashboard-exposures-area-description-all-line1 =
         [one] Encontramos { $exposures_unresolved_num } exposição de seus dados.
        *[other] Encontramos { $exposures_unresolved_num } exposições de seus dados.
     }
-
 # Note: this line follows dashboard-exposures-area-description-all-line1.
 # Variables:
 #   $data_breach_unresolved_num (number) - the unresolved number of data breaches the user has.
@@ -75,7 +69,6 @@ dashboard-exposures-area-description-all-line2 =
        *[other] Apareceu em { $data_breach_unresolved_num } vazamentos de dados.
     }
 dashboard-fixed-area-headline-all = Ver todas as exposições resolvidas
-
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Filtrar
 dashboard-exposures-filter-company = Empresa
@@ -93,10 +86,8 @@ dashboard-exposures-filter-reset = Redefinir
 
 dashboard-top-banner-section-label = Resumo do painel
 dashboard-top-banner-scan-in-progress-title = Sua verificação ainda está em andamento
-
 dashboard-top-banner-your-data-is-protected-title = Seus dados estão protegidos
 dashboard-top-banner-your-data-is-protected-cta = Ver o que foi resolvido
-
 dashboard-top-banner-lets-keep-protecting-title = Vamos continuar a proteger seus dados
 # Variables:
 # $exposures_unresolved_num is the remaining number of exposures the user has to resolve.
@@ -106,10 +97,8 @@ dashboard-top-banner-lets-keep-protecting-description =
        *[other] Você ainda tem { $exposures_unresolved_num } exposições para resolver. Continue e proteja-se. Orientamos passo a passo.
     }
 dashboard-top-banner-lets-keep-protecting-cta = Vamos continuar
-
 dashboard-top-banner-protect-your-data-title = Vamos proteger seus dados
 dashboard-top-banner-protect-your-data-cta = Vamos resolver
-
 # Note: this line is followed by `dashboard-top-banner-non-us-protect-your-data-description-line1`.
 # Variables:
 #   $exposures_unresolved_num (number) - the total number of exposures the user has.
@@ -126,11 +115,9 @@ dashboard-top-banner-non-us-protect-your-data-description-line2 =
         [one] Apareceu em { $data_breach_unresolved_num } vazamento de dados. Orientamos passo a passo como resolver.
        *[other] Apareceu em { $data_breach_unresolved_num } vazamentos de dados. Orientamos passo a passo como resolver.
     }
-
 dashboard-top-banner-no-exposures-found-title = Nenhuma exposição encontrada
 dashboard-top-banner-non-us-no-exposures-found-description = Boa notícia! Pesquisamos em todos os vazamentos conhecidos de dados, não encontramos nenhuma exposição. Continuaremos monitorando seu endereço de email e alertaremos você se ocorrer um novo vazamento.
 dashboard-no-exposures-label = Nenhuma exposição encontrada
-
 # Variables:
 # $exposures_resolved_num is the number of exposures the user has resolved.
 dashboard-top-banner-non-us-your-data-is-protected-description =
@@ -138,7 +125,6 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
         [one] Bom trabalho, a exposição de seus dados foi resolvida! Continuamos monitorando e alertaremos você sobre quaisquer novas exposições.
        *[other] Bom trabalho, todas as { $exposures_resolved_num } exposições de seus dados foram resolvidas! Continuamos monitorando e alertaremos você sobre quaisquer novas exposições.
     }
-
 dashboard-top-banner-monitor-more-cta = Monitorar mais emails
 
 # About Exposure Statuses Modal

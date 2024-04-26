@@ -292,6 +292,7 @@ async function updateMonthlyEmailTimestamp (email) {
 /* c8 ignore stop */
 
 /**
+ * OBSOLETE: Delete as a part of MNTOR-3077
  * Unsubscribe user from monthly unresolved breach emails
  *
  * @param {string} token User verification token
@@ -318,6 +319,7 @@ async function getOnerepProfileId (subscriberId) {
 }
 /* c8 ignore stop */
 
+// OBSOLETE: Delete as a part of MNTOR-3077
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 function getSubscribersWithUnresolvedBreachesQuery () {
@@ -328,6 +330,7 @@ function getSubscribersWithUnresolvedBreachesQuery () {
 }
 /* c8 ignore stop */
 
+// OBSOLETE: Delete as a part of MNTOR-3077
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function getSubscribersWithUnresolvedBreaches (limit = 0) {
@@ -340,6 +343,7 @@ async function getSubscribersWithUnresolvedBreaches (limit = 0) {
 }
 /* c8 ignore stop */
 
+// OBSOLETE: Delete as a part of MNTOR-3077
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function getSubscribersWithUnresolvedBreachesCount () {
