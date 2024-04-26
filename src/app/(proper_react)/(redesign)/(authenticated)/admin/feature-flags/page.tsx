@@ -116,8 +116,10 @@ export default async function FeatureFlagPage() {
         </div>
       </nav>
       <div className={styles.start}>
-        <h1>Flags added here will override Nimbus features.</h1>
-        <h2>Deleted flags will be controllable by Nimbus.</h2>
+        <h1>
+          Note: Feaure flags are deprecated, use{" "}
+          <a href="https://experimenter.info/">Experimenter</a>.
+        </h1>
         <br />
         <h3>Add New Feature Flag</h3>
         <AddFeatureFlag />
