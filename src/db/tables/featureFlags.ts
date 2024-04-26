@@ -29,6 +29,14 @@ export async function getAllFeatureFlags() {
     .returning("*");
 }
 
+/** @deprecated The method should not be used */
+export async function getDeletedFeatureFlags() {
+  return await knex("feature_flags")
+    .whereNotNull("deleted_at")
+    .orderBy("name")
+    .returning("*");
+}
+
 /** @deprecated The method type not be used */
 export type FeatureFlagName =
   | "FreeBrokerScan"
