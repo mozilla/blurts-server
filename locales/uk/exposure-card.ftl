@@ -25,7 +25,7 @@ exposure-card-other = Інше
 # Variables:
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
-exposure-card-description-data-breach-action-needed = Вашу інформацію було розкрито під час <data_breach_link>витоку даних { $data_breach_company }{ $data_breach_date }.</data_breach_link> Ми розповімо вам, як це виправити.
+exposure-card-description-data-breach-action-needed = { $data_breach_date } було розкрито вашу інформацію під час <data_breach_link>витоку даних { $data_breach_company }.</data_breach_link> Ми розповімо вам, як це виправити.
 exposure-card-description-data-breach-fixed = Ви вжили заходів, необхідних для усунення <data_breach_link>цього витоку</data_breach_link>. Ми постійно відстежуватимемо витоки даних і сповіщатимемо вас про будь-які нові розкриття.
 exposure-card-your-exposed-info = Ваша розкрита інформація:
 exposure-card-exposure-type-data-broker = Продаж інформації

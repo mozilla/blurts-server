@@ -10,10 +10,8 @@
 ## unless otherwise indicated.
 
 -product-name = Mozilla Monitor
--product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
--brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa =
     { $case ->
@@ -50,191 +48,6 @@
     }
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
--brand-send = Firefox Send
--brand-fpn = Firefox Private Network
-
-##
-
-error-could-not-add-email = Не вдалося додати адресу електронної пошти до бази даних.
-error-not-subscribed = Ця адреса електронної пошти не підписана на { -product-name }.
-error-hibp-throttled = Надто багато з'єднань з { -brand-HIBP }.
-error-hibp-connect = Помилка з'єднання з { -brand-HIBP }.
-
-user-add-invalid-email = Неправильна адреса електронної пошти
-user-add-too-many-emails = Ви відстежуєте максимальну кількість адрес електронної пошти.
-user-add-duplicate-email = Цю адресу електронної пошти вже було додано до { -product-name }.
-user-add-verification-email-just-sent = Наразі не можна повторно надіслати електронний лист із підтвердженням. Спробуйте знову пізніше.ч
-user-add-unknown-error = Під час додавання іншої адреси електронної пошти сталася помилка. Повторіть спробу пізніше.
-user-delete-unknown-error = Під час вилучення електронної адреси сталася помилка. Повторіть спробу пізніше.
-
-user-verify-token-error = Необхідний токен підтвердження.
-
-user-unsubscribe-token-error = Для скасування підписки необхідний токен.
-user-unsubscribe-token-email-error = Для скасування підписки необхідний токен і emailHash.
-
-# compromised-data = the kind of user data exposed to hackers in data breach.
-compromised-data = Скомпрометовані дані:
-
-# Breach data provided by Have I Been Pwned.
-# Variables:
-#   $hibp-link (String) - Link to Have I Been Pwned
-hibp-attribution = Дані про загрози надано { $hibp-link }
-
-show-all = Показати все
-
-sign-out = Вийти
-
-# Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Керувати { -brand-fxa(case: "abl") }
-
-# Link title
-frequently-asked-questions = Часті запитання
-
-# Link title
-preferences = Налаштування
-
-# Link title
-home = Домівка
-
-# Link title
-security-tips = Поради щодо безпеки
-
-# Link title
-more-about-this-breach = Докладніше про цей витік даних
-
-monitor-several-emails = Відстежуйте кілька адрес е-пошти
-
-website-breach = Витік даних із сайту
-sensitive-breach = Витік вразливої інформації
-data-aggregator-breach = Витік даних з агрегатора
-
-what-data = Які дані скомпрометовані:
-
-sensitive-sites = Як { -product-name } поводиться з сайтами, що містять вразливу інформацію?
-sensitive-sites-copy =
-    { -product-name } розкриває лише облікові записи, пов'язані з цими 
-    типами витоків даних, після підтвердження адреси електронної пошти. Це означає, що ви 
-    єдина особа, яка може бачити чи ваші дані потрапили до цього витоку (доки хтось 
-    інший не матиме доступу до вашого облікового запису електронної пошти).
-
-delayed-reporting-headline = Чому пройшло так багато часу до моменту виходу звіту про цей витік?
-delayed-reporting-copy =
-    Інколи від моменту витоку даних до його виявлення можуть пройти місяці 
-    чи навіть роки. Витоки даних додаються до нашої бази даних одразу 
-    після їх виявлення та підтвердження.
-
-fxm-warns-you =
-    { -product-name } сповіщає вас, якщо ваша адреса електронної пошти була виявлена 
-    у витоці даних в інтернеті. Дивіться чи вашу інформацію було викрито, навчіться 
-    як краще захистити свої облікові дані, а також отримуйте сповіщення, якщо ваша 
-    електронна пошта з'явиться в новому витоці даних.
-
-what-is-data-agg = Що таке агрегатор даних?
-what-is-data-agg-blurb =
-    Агрегатори даних, або брокери даних, збирають інформацію з публічних записів, 
-    а також купують їх в інших компаній. Вони накопичують ці дані з метою продажу компаніям 
-    для маркетингових цілей. Жертви цих витоків рідше зазнають фінансового шахрайства, 
-    але хакери можуть використати ці дані для ідентифікації та профілювання.
-
-avoid-personal-info = Уникайте використання особистої інформації в паролях
-
-## What to do after data breach tips
-
-send-verification = Надіслати підтвердження
-
-# This string is a header on the user preferences page and
-# appears above a check-box list of user options which allow
-# the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single
-# email address.
-breach-summary = Підсумок витоку даних
-
-## Variables:
-##   $userName (String) - Username
-
-##
-
-breach-alert-subject = { -product-name } знайшов вашу адресу е-пошти в новому витоці даних
-
-## Variables:
-##   $breachName (String) - Number of the breach
-
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that exposed a user’s password. Don’t add $passwords to
-# your localization, because it would result in the number showing twice.
-passwords-exposed =
-    { $passwords ->
-        [one] Викритий пароль серед усіх витоків даних
-        [few] Викриті паролі серед усіх витоків даних
-       *[many] Викритих паролів серед усіх витоків даних
-    }
-
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-known-data-breaches-exposed =
-    { $breaches ->
-        [one] Відомий витік даних викрив вашу інформацію
-        [few] Відомі витоки даних викрили вашу інформацію
-       *[many] Відомих витоків даних викрили вашу інформацію
-    }
-
-what-is-a-website-breach = Що таке витік даних вебсайту?
-website-breach-blurb = Витік даних вебсайту відбувається, коли кібер-злочинці викрадають, копіюють, або розкривають особисту інформацію облікових записів інтернету. Зазвичай це результат роботи хакерів, які знаходять слабке місце в безпеці вебсайту. Витоки даних також можуть траплятися внаслідок випадкового розкриття інформації про облікові записи.
-
-# This is a section headline on the breach detail page that appears above
-# a short summary about the breach.
-breach-overview-title = Огляд
-
-# This is a standardized breach overview blurb that appears on all breach detail pages.
-# $breachTitle is the name of the breached company or website.
-# $breachDate and $addedDate are calendar dates.
-breach-overview-new = { $breachDate }, відбувся витік даних { $breachTitle }. Одразу після виявлення і перевірки витоку даних, його було додано до нашої бази даних { $addedDate }.
-
-# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
-menu = Меню
-
-# This is part of a confirmation message that appears after a user has submitted
-# the form to add an additional email to Firefox Monitor.
-# Variables:
-#   $userEmail (String) - User email address
-verify-the-link = Перейдіть за посиланням, надісланим на { $userEmail } для додавання до { -product-name }.
-
-## These are part of a confirmation page that appears after a user has verified
-## an additional email to Firefox Monitor.
-
-# This string is a label for the calendar date a breach is added to the database
-# and is followed by that date.
-breach-added-label = Витік додано:
-
-# Section headline
-rec-section-headline = Що робити з цим витоком
-rec-section-subhead = Ми рекомендуємо вжити цих заходів, щоб зберегти вашу особисту інформацію в безпеці й захистити свої цифрові дані.
-
-# Section headline
-rec-section-headline-no-pw = Що робити, щоб захистити свою особисту інформацію
-rec-section-subhead-no-pw = Хоча паролі не було викрито в цьому витоці, все ж можна вжити заходів для кращого захисту особистої інформації.
-
-## This string contains nested markup that becomes a link later in the code.
-## Please do not modify or remove "<a>" and "</a>".
-
-##
-
-## These strings contain nested markup that is later used to style the text inside of it.
-## Please do not modify or remove "<span>" and "</span>".
-
-# A status indicator that appears in the top right corner of new breach cards
-new-breach = Новий
-
-## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
-
-## Relay and VPN educational/ad units
-
-# Monitor V2
-
-
-## The following messages are brands and should be kept entirely in English
-
 -brand-firefox = Firefox
 -brand-monitor = Monitor
 -brand-fx-monitor = Mozilla Monitor
@@ -250,13 +63,132 @@ new-breach = Новий
 
 ##
 
-##
+error-could-not-add-email = Не вдалося додати адресу електронної пошти до бази даних.
+error-not-subscribed = Ця адреса електронної пошти не підписана на { -product-name }.
+error-hibp-throttled = Надто багато з'єднань з { -brand-HIBP }.
+error-hibp-connect = Помилка з'єднання з { -brand-HIBP }.
+user-add-invalid-email = Неправильна адреса електронної пошти
+user-add-too-many-emails = Ви відстежуєте максимальну кількість адрес електронної пошти.
+user-add-duplicate-email = Цю адресу електронної пошти вже було додано до { -product-name }.
+user-add-verification-email-just-sent = Наразі не можна повторно надіслати електронний лист із підтвердженням. Спробуйте знову пізніше.ч
+user-add-unknown-error = Під час додавання іншої адреси електронної пошти сталася помилка. Повторіть спробу пізніше.
+user-delete-unknown-error = Під час вилучення електронної адреси сталася помилка. Повторіть спробу пізніше.
+user-verify-token-error = Необхідний токен підтвердження.
+user-unsubscribe-token-error = Для скасування підписки необхідний токен.
+user-unsubscribe-token-email-error = Для скасування підписки необхідний токен і emailHash.
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Скомпрометовані дані:
+# Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
+hibp-attribution = Дані про загрози надано { $hibp-link }
+show-all = Показати все
+sign-out = Вийти
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Керувати { -brand-fxa(case: "abl") }
+# Link title
+frequently-asked-questions = Часті запитання
+# Link title
+preferences = Налаштування
+# Link title
+home = Домівка
+# Link title
+security-tips = Поради щодо безпеки
+# Link title
+more-about-this-breach = Докладніше про цей витік даних
+monitor-several-emails = Відстежуйте кілька адрес е-пошти
+website-breach = Витік даних із сайту
+sensitive-breach = Витік вразливої інформації
+data-aggregator-breach = Витік даних з агрегатора
+what-data = Які дані скомпрометовані:
+sensitive-sites = Як { -product-name } поводиться з сайтами, що містять вразливу інформацію?
+sensitive-sites-copy =
+    { -product-name } розкриває лише облікові записи, пов'язані з цими 
+    типами витоків даних, після підтвердження адреси електронної пошти. Це означає, що ви 
+    єдина особа, яка може бачити чи ваші дані потрапили до цього витоку (доки хтось 
+    інший не матиме доступу до вашого облікового запису електронної пошти).
+delayed-reporting-headline = Чому пройшло так багато часу до моменту виходу звіту про цей витік?
+delayed-reporting-copy =
+    Інколи від моменту витоку даних до його виявлення можуть пройти місяці 
+    чи навіть роки. Витоки даних додаються до нашої бази даних одразу 
+    після їх виявлення та підтвердження.
+fxm-warns-you =
+    { -product-name } сповіщає вас, якщо ваша адреса електронної пошти була виявлена 
+    у витоці даних в інтернеті. Дивіться чи вашу інформацію було викрито, навчіться 
+    як краще захистити свої облікові дані, а також отримуйте сповіщення, якщо ваша 
+    електронна пошта з'явиться в новому витоці даних.
+what-is-data-agg = Що таке агрегатор даних?
+what-is-data-agg-blurb =
+    Агрегатори даних, або брокери даних, збирають інформацію з публічних записів, 
+    а також купують їх в інших компаній. Вони накопичують ці дані з метою продажу компаніям 
+    для маркетингових цілей. Жертви цих витоків рідше зазнають фінансового шахрайства, 
+    але хакери можуть використати ці дані для ідентифікації та профілювання.
+avoid-personal-info = Уникайте використання особистої інформації в паролях
+send-verification = Надіслати підтвердження
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single
+# email address.
+breach-summary = Підсумок витоку даних
 
 ##
 
+breach-alert-subject = { -product-name } знайшов вашу адресу е-пошти в новому витоці даних
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Викритий пароль серед усіх витоків даних
+        [few] Викриті паролі серед усіх витоків даних
+       *[many] Викритих паролів серед усіх витоків даних
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Відомий витік даних викрив вашу інформацію
+        [few] Відомі витоки даних викрили вашу інформацію
+       *[many] Відомих витоків даних викрили вашу інформацію
+    }
+what-is-a-website-breach = Що таке витік даних вебсайту?
+website-breach-blurb = Витік даних вебсайту відбувається, коли кібер-злочинці викрадають, копіюють, або розкривають особисту інформацію облікових записів інтернету. Зазвичай це результат роботи хакерів, які знаходять слабке місце в безпеці вебсайту. Витоки даних також можуть траплятися внаслідок випадкового розкриття інформації про облікові записи.
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Огляд
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = { $breachDate }, відбувся витік даних { $breachTitle }. Одразу після виявлення і перевірки витоку даних, його було додано до нашої бази даних { $addedDate }.
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Меню
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
+verify-the-link = Перейдіть за посиланням, надісланим на { $userEmail } для додавання до { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date.
+breach-added-label = Витік додано:
+# Section headline
+rec-section-headline = Що робити з цим витоком
+rec-section-subhead = Ми рекомендуємо вжити цих заходів, щоб зберегти вашу особисту інформацію в безпеці й захистити свої цифрові дані.
+# Section headline
+rec-section-headline-no-pw = Що робити, щоб захистити свою особисту інформацію
+rec-section-subhead-no-pw = Хоча паролі не було викрито в цьому витоці, все ж можна вжити заходів для кращого захисту особистої інформації.
+
 ##
 
-## Updated error messages
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Новий
+
+##
 
 # “account” can be localized, “Mozilla” must be treated as a brand,
 # and kept in English.
@@ -293,7 +225,6 @@ new-breach = Новий
                *[lower] обліковий запис Mozilla
             }
     }
-
 open-in-new-tab-alt = Відкрити посилання в новій вкладці
 
 ## Search Engine Optimization
@@ -310,7 +241,6 @@ brand-mozilla-monitor = { -brand-fx-monitor }
 ## Site navigation
 
 mobile-menu-label = Головне меню
-
 main-nav-button-collapse-label = Згорнути меню
 main-nav-button-collapse-tooltip = Згорнути меню
 main-nav-button-expand-label = Розгорнути меню
@@ -326,7 +256,7 @@ main-nav-link-faq-tooltip = Поширені запитання
 
 user-menu-trigger-label = Відкрити меню користувача
 user-menu-trigger-tooltip = Профіль
-user-menu-manage-fxa-label = Керуйте своїм { -brand-mozilla-account }
+user-menu-manage-fxa-label = Керуйте своїм { -brand-mozilla-account(case: "abl") }
 user-menu-settings-label = Налаштування
 user-menu-settings-tooltip = Сконфігурувати { -brand-mozilla-monitor }
 user-menu-help-label = Довідка та підтримка
@@ -360,7 +290,6 @@ error-page-error-other-title = { $errorCode } Щось пішло не так
 all-breaches-headline-2 = Усі витоки, виявлені { -brand-fx-monitor }
 all-breaches-lead = Ми відстежуємо всі відомі витоки даних, щоб з’ясувати, чи була скомпрометована ваша особиста інформація. Ось повний список усіх витоків, про які було повідомлено з 2007 року.
 search-breaches = Пошук витоків
-
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Дата витоку:
 
@@ -368,16 +297,11 @@ exposed-data = Дата витоку:
 
 find-out-if-2 = Дізнайтеся, чи були ваші дані в цьому витоці
 find-out-if-description = Ми допоможемо вам швидко з’ясувати, чи було розкрито вашу електронну адресу внаслідок цього витоку, і зрозуміти, що робити далі.
-
 breach-detail-cta-signup = Перевірити на витік даних
-
-## Floating banner
 
 ## Firefox Monitor -> Mozilla Monitor rebrand banner
 
 banner-monitor-rebrand-text = <b>{ -brand-mozilla-monitor }</b>: нова назва, зовнішній вигляд і ще більше способів <b>відновити вашу приватність</b>.
 banner-monitor-rebrand-dismiss-button-label = OK
 banner-monitor-rebrand-dismiss-button-tooltip = Відхилити
-
 loading-accessibility = Завантаження
-
