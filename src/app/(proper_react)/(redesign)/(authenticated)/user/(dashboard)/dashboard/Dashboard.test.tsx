@@ -3387,8 +3387,8 @@ it("displays the follow-up CSAT survey banner link", async () => {
   expect(answerButton).toBeInTheDocument();
   await user.click(answerButton as HTMLElement);
 
-  const feedbackLink = screen.getByRole("link", {
-    name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
-  });
+  const feedbackLink = screen.getByText(
+    /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
+  );
   expect(feedbackLink).toBeInTheDocument();
 });

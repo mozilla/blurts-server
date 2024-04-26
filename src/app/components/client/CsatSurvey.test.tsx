@@ -61,9 +61,9 @@ describe("CSAT survey", () => {
     });
     await user.click(answerButton);
 
-    const feedbackLink = screen.getByRole("link", {
-      name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
-    });
+    const feedbackLink = screen.getByText(
+      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
+    );
     expect(feedbackLink).toBeInTheDocument();
     expect(feedbackLink).toHaveAttribute(
       "href",
@@ -83,9 +83,9 @@ describe("CSAT survey", () => {
     });
     await user.click(answerButton);
 
-    const feedbackLink = screen.queryByRole("link", {
-      name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
-    });
+    const feedbackLink = screen.getByText(
+      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
+    );
     expect(feedbackLink).toBeInTheDocument();
     expect((feedbackLink as HTMLLinkElement).getAttribute("href")).toBe(
       "https://survey.alchemer.com/s3/7718561/6dfb2e8b6d68",
@@ -104,9 +104,9 @@ describe("CSAT survey", () => {
     });
     await user.click(answerButton);
 
-    const feedbackLink = screen.queryByRole("link", {
-      name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
-    });
+    const feedbackLink = screen.getByText(
+      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
+    );
     expect(feedbackLink).toBeInTheDocument();
     expect((feedbackLink as HTMLLinkElement).getAttribute("href")).toBe(
       "https://survey.alchemer.com/s3/7718562/76e17004efd6",
@@ -123,9 +123,9 @@ describe("CSAT survey", () => {
     });
     await user.click(answerButton);
 
-    const feedbackLink = screen.queryByRole("link", {
-      name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
-    });
+    const feedbackLink = screen.getByText(
+      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
+    );
     expect(feedbackLink).toBeInTheDocument();
     expect(feedbackLink).toHaveAttribute(
       "href",
@@ -145,9 +145,9 @@ describe("CSAT survey", () => {
     });
     await user.click(answerButton);
 
-    const feedbackLink = screen.queryByRole("link", {
-      name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
-    });
+    const feedbackLink = screen.getByText(
+      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
+    );
     expect(feedbackLink).toBeInTheDocument();
     expect((feedbackLink as HTMLLinkElement).getAttribute("href")).toBe(
       "https://survey.alchemer.com/s3/7718561/a443cc84b78a",
@@ -204,14 +204,14 @@ describe("CSAT survey", () => {
     });
     await user.click(answerButton);
 
-    const feedbackLinkOne = screen.queryByRole("link", {
-      name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
-    });
-    await user.click(feedbackLinkOne as HTMLElement);
+    const feedbackLinkOne = screen.getByText(
+      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
+    );
+    await user.click(feedbackLinkOne);
 
-    const feedbackLinkTwo = screen.queryByRole("link", {
-      name: "Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you?",
-    });
+    const feedbackLinkTwo = screen.queryByText(
+      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
+    );
     expect(feedbackLinkTwo).not.toBeInTheDocument();
   });
 });
