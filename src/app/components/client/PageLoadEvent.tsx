@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { usePathname } from "next/navigation";
 import { FeatureFlagName } from "../../../db/tables/featureFlags";
@@ -27,21 +27,9 @@ export const PageLoadEvent = (props: Props) => {
 
   const recordTelemetry = useTelemetry(props.userId);
 
-  const userId: GleanMetricMap["page"]["view"]["user_id"] = useMemo(() => {
-    // If the user is not logged in, use randomly-generated user ID and store in cookie.
-    if (props.userId.startsWith("guest")) {
-      if (!cookies.experimentationId) {
-        setCookie("experimentationId", props.userId);
-      }
-      return props.userId;
-    }
-
-    if (props.enabledFlags.includes("FxaUidTelemetry")) {
-      return props.userId;
-    } else {
-      return undefined;
-    }
-  }, [cookies.experimentationId, setCookie, props.userId, props.enabledFlags]);
+  if (props.userId.startsWith("guest") && !cookies.experimentationId) {
+    setCookie("experimentationId", props.userId);
+  }
 
   // On first load of the page, record a page view.
   useEffect(() => {
@@ -49,12 +37,9 @@ export const PageLoadEvent = (props: Props) => {
       ...getUtmParams(),
       path: pathname,
     };
-    if (typeof userId === "string") {
-      pageViewParams.user_id = userId;
-    }
 
     recordTelemetry("page", "view", pageViewParams);
-  }, [recordTelemetry, pathname, userId]);
+  }, [recordTelemetry, pathname]);
 
   useEffect(() => {
     // record attributions on page load

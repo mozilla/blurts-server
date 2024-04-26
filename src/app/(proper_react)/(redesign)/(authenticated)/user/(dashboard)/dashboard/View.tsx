@@ -424,7 +424,6 @@ export const View = (props: Props) => {
           onSelectionChange={(selectedKey) => {
             setSelectedTab(selectedKey as TabType);
             recordTelemetry("dashboard", "view", {
-              user_id: props.telemetryId,
               dashboard_tab: selectedKey as TabType,
               legacy_user: !props.isNewUser,
               breach_count: breachesDataArray.length,
@@ -471,7 +470,6 @@ export const View = (props: Props) => {
           onShowFixed={() => {
             setSelectedTab("fixed");
             recordTelemetry("dashboard", "view", {
-              user_id: props.telemetryId,
               dashboard_tab: "fixed",
               legacy_user: !props.isNewUser,
               breach_count: breachesDataArray.length,
