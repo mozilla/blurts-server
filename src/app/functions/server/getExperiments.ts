@@ -8,7 +8,7 @@ import {
   ExperimentData,
   defaultExperimentData,
 } from "../../../telemetry/generated/nimbus/experiments";
-import { ExperimentationId } from "./getUserId";
+import { ExperimentationId } from "./getExperimentationId";
 
 /**
  * Call the Cirrus sidecar, which returns a list of eligible experiments for the current user.

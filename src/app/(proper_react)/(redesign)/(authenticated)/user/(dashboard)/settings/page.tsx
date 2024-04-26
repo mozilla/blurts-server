@@ -18,7 +18,7 @@ import { getSha1 } from "../../../../../../../utils/fxa";
 import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
 import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
 import { getLatestOnerepScan } from "../../../../../../../db/tables/onerep_scans";
-import { getUserId } from "../../../../../../functions/server/getUserId";
+import { getUserId } from "../../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
