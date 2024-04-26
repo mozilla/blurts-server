@@ -25,7 +25,7 @@ export const PageLoadEvent = (props: Props) => {
   ]);
   const pathname = usePathname();
 
-  const recordTelemetry = useTelemetry();
+  const recordTelemetry = useTelemetry(props.userId);
 
   const userId: GleanMetricMap["page"]["view"]["user_id"] = useMemo(() => {
     // If the user is not logged in, use randomly-generated user ID and store in cookie.
