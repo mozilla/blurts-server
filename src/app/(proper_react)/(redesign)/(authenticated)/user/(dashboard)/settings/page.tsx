@@ -18,7 +18,7 @@ import { getSha1 } from "../../../../../../../utils/fxa";
 import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
 import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
 import { getLatestOnerepScan } from "../../../../../../../db/tables/onerep_scans";
-import { getUserId } from "../../../../../../functions/server/getExperimentationId";
+import { getExperimentationId } from "../../../../../../functions/server/getExperimentationId";
 import { getExperiments } from "../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
@@ -60,7 +60,7 @@ export default async function SettingsPage() {
 
   const headersList = headers();
   const countryCode = getCountryCode(headersList);
-  const experimentationId = getUserId(session.user);
+  const experimentationId = getExperimentationId(session.user);
   const experimentData = await getExperiments({
     experimentationId: experimentationId,
     countryCode: countryCode,

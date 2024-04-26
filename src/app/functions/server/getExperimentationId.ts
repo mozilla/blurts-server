@@ -17,9 +17,11 @@ export type ExperimentationId = UUID | `guest-${UUID}`;
  * @param user
  * @returns v5 UUID, possibly with `guest-` prefix.
  */
-export function getUserId(user: Session["user"] | null): ExperimentationId {
+export function getExperimentationId(
+  user: Session["user"] | null,
+): ExperimentationId {
   const accountId = user?.subscriber?.id;
-  let userId: null | ExperimentationId;
+  let experimentationId: null | ExperimentationId;
 
   if (accountId && typeof accountId === "string") {
     // If the user is logged in, use the Subscriber ID.
@@ -29,19 +31,19 @@ export function getUserId(user: Session["user"] | null): ExperimentationId {
         "NIMBUS_UUID_NAMESPACE not set, cannot create experimentationId",
       );
     }
-    userId = uuidv5(accountId, namespace) as UUID;
+    experimentationId = uuidv5(accountId, namespace) as UUID;
   } else {
     // if the user is not logged in, use a cookie with a randomly-generated Nimbus user ID.
     // TODO: could we use client ID for this? There's no supported way to get it from GleanJS.
     const cookie = cookies().get("experimentationId");
     if (cookie) {
-      userId = cookie.value as ExperimentationId;
+      experimentationId = cookie.value as ExperimentationId;
     } else {
       // TODO Cookies can only be set in server action or route handler
       // @see https://nextjs.org/docs/app/api-reference/functions/cookies#cookiessetname-value-options
       // This is set client-side in <PageLoadEvent>.
-      userId = `guest-${randomUUID()}`;
+      experimentationId = `guest-${randomUUID()}`;
     }
   }
-  return userId;
+  return experimentationId;
 }
