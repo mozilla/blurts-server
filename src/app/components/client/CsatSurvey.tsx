@@ -6,7 +6,7 @@
 
 import { useState } from "react";
 import { Button } from "./Button";
-import { CloseBtn } from "../server/Icons";
+import { CloseBtn, OpenInNew } from "../server/Icons";
 import { useL10n } from "../../hooks/l10n";
 import { useLocalDismissal } from "../../hooks/useLocalDismissal";
 import { useHasRenderedClientSide } from "../../hooks/useHasRenderedClientSide";
@@ -144,6 +144,11 @@ export const CsatSurvey = (props: Props) => {
             rel="noopen noreferrer"
           >
             {l10n.getString("survey-csat-follow-up-link-label")}
+            <OpenInNew
+              alt={l10n.getString("open-in-new-tab-alt")}
+              width="13"
+              height="13"
+            />
           </a>
         </div>
       ) : (

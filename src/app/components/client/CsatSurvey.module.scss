@@ -13,7 +13,10 @@
 
 .prompt,
 .prompt a {
+  align-items: center;
   color: $color-white;
+  display: flex;
+  gap: $spacing-sm;
 }
 
 .answers {
