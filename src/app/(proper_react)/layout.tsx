@@ -25,11 +25,11 @@ export default async function Layout({ children }: { children: ReactNode }) {
   let experimentationId;
   if (session) {
     enabledFlags = await getEnabledFeatureFlags({
-      user: session.user,
+      email: session.user.email,
     });
     experimentationId = getExperimentationId(session.user);
   } else {
-    enabledFlags = await getEnabledFeatureFlags({ ignoreExperiments: true });
+    enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
     experimentationId = getExperimentationId(null);
   }
 

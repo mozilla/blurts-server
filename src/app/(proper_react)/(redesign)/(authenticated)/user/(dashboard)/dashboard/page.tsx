@@ -85,7 +85,7 @@ export default async function DashboardPage() {
     countryCode,
   );
   const enabledFlags = await getEnabledFeatureFlags({
-    user: session.user,
+    email: session.user.email,
   });
   const userIsEligibleForPremium = isEligibleForPremium(
     countryCode,
@@ -93,7 +93,7 @@ export default async function DashboardPage() {
   );
 
   const enabledFeatureFlags = await getEnabledFeatureFlags({
-    user: session.user,
+    email: session.user.email,
   });
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });

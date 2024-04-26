@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
   let pubsub;
   let json;
   const enabledFlags = await getEnabledFeatureFlags({
-    ignoreExperiments: true,
+    ignoreAllowlist: true,
   });
   try {
     if (!enabledFlags.includes("HibpBreachNotifications")) {

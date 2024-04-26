@@ -21,7 +21,7 @@ export default async function Page() {
     return redirect("/user/dashboard");
   }
   const enabledFlags = await getEnabledFeatureFlags({
-    ignoreExperiments: true,
+    ignoreAllowlist: true,
   });
   const countryCode = getCountryCode(headers());
   const eligibleForPremium = isEligibleForPremium(countryCode, enabledFlags);
