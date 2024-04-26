@@ -141,8 +141,6 @@ export async function deleteFeatureFlagByName(name: string) {
 /**
  * @param name
  * @param dependencies
- * @param name
- * @param dependencies
  * @deprecated The method should not be used
  */
 export async function updateDependencies(name: string, dependencies: string[]) {
@@ -163,8 +161,6 @@ export async function updateDependencies(name: string, dependencies: string[]) {
 /**
  * @param name
  * @param owner
- * @param name
- * @param owner
  * @deprecated The method should not be used
  */
 export async function updateOwner(name: string, owner: string) {
@@ -183,8 +179,6 @@ export async function updateOwner(name: string, owner: string) {
 }
 
 /**
- * @param name
- * @param allowList
  * @param name
  * @param allowList
  * @deprecated The method should not be used
@@ -212,8 +206,6 @@ export async function updateAllowList(name: string, allowList: string[]) {
 /**
  * @param name
  * @param waitList
- * @param name
- * @param waitList
  * @deprecated The method should not be used
  */
 export async function updateWaitList(name: string, waitList: string[]) {
@@ -237,8 +229,6 @@ export async function updateWaitList(name: string, waitList: string[]) {
 }
 
 /**
- * @param name
- * @param isEnabled
  * @param name
  * @param isEnabled
  * @deprecated The method should not be used
