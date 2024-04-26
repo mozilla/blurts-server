@@ -12,7 +12,7 @@ import { ReactAriaI18nProvider } from "../../contextProviders/react-aria";
 import { CountryCodeProvider } from "../../contextProviders/country-code";
 import { getCountryCode } from "../functions/server/getCountryCode";
 import { PageLoadEvent } from "../components/client/PageLoadEvent";
-import { getUserId } from "../functions/server/getUserId";
+import { getUserId } from "../functions/server/getExperimentationId";
 import { getEnabledFeatureFlags } from "../../db/tables/featureFlags";
 
 export default async function Layout({ children }: { children: ReactNode }) {
