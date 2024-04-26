@@ -3295,10 +3295,10 @@ it("does not display the CSAT survey banner on the dashboard tab “action neede
 it("does not display the CSAT survey banner to users who do not have automatic data removal enabled", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
-    DashboardUsPremiumResolvedScanNoBreaches,
+    DashboardUsPremiumEmptyScanNoBreaches,
     Meta,
   );
-  render(<ComposedDashboard />);
+  render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={1} />);
 
   const fixedTab = screen.getByText("Fixed");
   await user.click(fixedTab);
