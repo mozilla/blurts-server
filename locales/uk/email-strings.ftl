@@ -46,7 +46,7 @@ email-breach-alert-blurb =
 # Have I Been Pwned attribution
 # Variables:
 #   $hibp-link-attr (String) - Link to Have I Been Pwned
-email-2022-hibp-attribution = Інформація про витоки даних надаються <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+email-2022-hibp-attribution = Інформація про витоки даних надається <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 ## Variables:

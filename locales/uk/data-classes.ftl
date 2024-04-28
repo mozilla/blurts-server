@@ -99,7 +99,7 @@ net-worths = Фінансовий стан
 nicknames = Псевдоніми
 # no data classes found
 none-data-class = Немає
-occupations = Заняття
+occupations = Професії
 # various data classes grouped together
 other-data-class = Інше
 parenting-plans = Планування батьківства
@@ -144,7 +144,7 @@ social-connections = Соціальні зв'язки
 social-media-profiles = Профілі соціальних мереж
 social-security-numbers = Номери соціального страхування
 spoken-languages = Знання мов
-spouses-names = Імена подружньої пари
+spouses-names = Імена подружжя
 support-tickets = Запити в службу підтримки
 survey-results = Результати опитування
 taxation-records = Податкові звіти
