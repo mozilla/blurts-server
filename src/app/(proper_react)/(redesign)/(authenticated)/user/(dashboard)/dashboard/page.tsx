@@ -34,7 +34,7 @@ import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/serv
 import { checkSession } from "../../../../../../functions/server/checkSession";
 import { isPrePlusUser } from "../../../../../../functions/server/isPrePlusUser";
 import { getUserId } from "../../../../../../functions/server/getUserId";
-import { getElapsedTimeInDaysSinceInitialScan } from "../../../../../../functions/server/getElapsedTimeSinceInitialScan";
+import { getElapsedTimeInDaysSinceInitialScan } from "../../../../../../functions/server/getElapsedTimeInDaysSinceInitialScan";
 
 export default async function DashboardPage() {
   const session = await getServerSession();
