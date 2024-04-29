@@ -19,7 +19,7 @@ import { getSha1 } from "../../../utils/fxa.js";
 import { getEmailCtaHref, initEmail, sendEmail } from "../../../utils/email.js";
 import { getTemplate } from "../../../emails/email2022.js";
 import { signupReportEmailPartial } from "../../../emails/emailSignupReport.js";
-import { getL10n } from "../../functions/server/l10n";
+import { getL10n } from "../../functions/l10n/serverComponents";
 import { OAuthConfig } from "next-auth/providers/oauth.js";
 import { SerializedSubscriber } from "../../../next-auth.js";
 

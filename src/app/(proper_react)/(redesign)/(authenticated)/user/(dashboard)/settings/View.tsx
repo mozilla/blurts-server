@@ -8,7 +8,7 @@ import Image from "next/image";
 import styles from "./View.module.scss";
 import AddEmailDialogIllustration from "./images/DeleteAccountDialogIllustration.svg";
 import { Toolbar } from "../../../../../../components/client/toolbar/Toolbar";
-import { ExtendedReactLocalization } from "../../../../../../hooks/l10n";
+import { ExtendedReactLocalization } from "../../../../../../functions/l10n";
 import { OpenInNew } from "../../../../../../components/server/Icons";
 import { EmailListing } from "./EmailListing";
 import { EmailAddressAdder } from "./EmailAddressAdder";

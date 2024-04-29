@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { SVGProps } from "react";
-import { ExtendedReactLocalization } from "../../../hooks/l10n";
+import { ExtendedReactLocalization } from "../../../functions/l10n";
 
 export const HeroImageAll = ({
   l10n,

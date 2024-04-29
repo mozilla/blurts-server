@@ -5,7 +5,7 @@
 import React from "react";
 import { DashboardSummary } from "../../../app/functions/server/dashboard";
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
-import { ExtendedReactLocalization } from "../../../app/hooks/l10n";
+import { ExtendedReactLocalization } from "../../../app/functions/l10n";
 import { EmailFooter } from "../EmailFooter";
 import { EmailHeader } from "../EmailHeader";
 

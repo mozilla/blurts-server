@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
 import { View as DashboardEl } from "./View";
 import { Shell } from "../../../../Shell";
-import { getSpecificL10nSync } from "../../../../../../functions/server/mockL10n";
+import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
 import {
   createRandomScanResult,
   createRandomBreach,
@@ -175,7 +175,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   return (
     <SessionProvider session={mockedSession}>
       <CountryCodeProvider countryCode={props.countryCode}>
-        <Shell l10n={getSpecificL10nSync()} session={mockedSession} nonce="">
+        <Shell l10n={getL10n()} session={mockedSession} nonce="">
           <DashboardEl
             user={user}
             userBreaches={breaches}

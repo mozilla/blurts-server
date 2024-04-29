@@ -11,7 +11,7 @@ import {
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../../Shell";
-import { getSpecificL10nSync } from "../../../../../../../../../functions/server/mockL10n";
+import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 
 const mockedScan: OnerepScanRow = {
@@ -88,7 +88,7 @@ const meta: Meta<typeof WelcomeToPlusViewWrapper> = {
 export default meta;
 type Story = StoryObj<typeof WelcomeToPlusViewWrapper>;
 
-const l10n = getSpecificL10nSync();
+const l10n = getL10n();
 
 export const WelcomeToPlusViewNoResultsStory: Story = {
   name: "No broker results in-progress",

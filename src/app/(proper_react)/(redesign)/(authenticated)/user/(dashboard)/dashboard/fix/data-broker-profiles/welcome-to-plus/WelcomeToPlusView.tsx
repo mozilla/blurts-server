@@ -14,7 +14,7 @@ import {
   getNextGuidedStep,
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../../FixView";
-import { ExtendedReactLocalization } from "../../../../../../../../../hooks/l10n";
+import { ExtendedReactLocalization } from "../../../../../../../../../functions/l10n";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 import noBreachesIllustration from "../../images/high-risk-breaches-none.svg";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";

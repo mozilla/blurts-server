@@ -12,7 +12,7 @@ import noBreachesIllustration from "../images/high-risk-breaches-none.svg";
 import { GuidedExperienceBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { FraudAlertModal } from "./FraudAlertModal";
 import { getLocale } from "../../../../../../../../functions/universal/getLocale";
-import { ExtendedReactLocalization } from "../../../../../../../../hooks/l10n";
+import { ExtendedReactLocalization } from "../../../../../../../../functions/l10n";
 import { StepLink } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { TelemetryLink } from "../../../../../../../../components/client/TelemetryLink";
 import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";

@@ -8,7 +8,7 @@ import phoneIllustration from "../images/security-recommendations-phone.svg";
 import ipIllustration from "../images/security-recommendations-ip.svg";
 import { GuidedExperienceBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { SubscriberBreach } from "../../../../../../../../../utils/subscriberBreaches";
-import { ExtendedReactLocalization } from "../../../../../../../../hooks/l10n";
+import { ExtendedReactLocalization } from "../../../../../../../../functions/l10n";
 import { Button } from "../../../../../../../../components/client/Button";
 import { StepLink } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
 
