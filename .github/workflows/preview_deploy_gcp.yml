@@ -30,7 +30,7 @@ jobs:
 
     - name: Build and Push Container
       run: |-
-        docker build -t ${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ env.TAG }} .
+        docker build -t ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ env.TAG }} .
         docker push ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ env.TAG }}
         
     - name: Deploy to Cloud Run
