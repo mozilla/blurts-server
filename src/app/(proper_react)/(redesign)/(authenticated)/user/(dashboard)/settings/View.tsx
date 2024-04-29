@@ -93,6 +93,9 @@ export const SettingsView = (props: Props) => {
               // Set value to null if undefined (disabled breach alerts)
               props.user.subscriber?.all_emails_to_primary ?? null
             }
+            monitorReport={
+              props.user.subscriber?.monthly_monitor_report ?? null
+            }
             enabledFeatureFlags={props.enabledFeatureFlags}
           />
           {hasPremium(props.user) && (

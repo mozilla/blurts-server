@@ -470,6 +470,55 @@ it("checks that monthly monitor report is enabled", () => {
   expect(monthlyMonitorReportBtn).toHaveAttribute("aria-checked", "true");
 });
 
+it("sends an API call to disable monthly monitor reports", async () => {
+  global.fetch = jest.fn().mockResolvedValue({ ok: true });
+  const user = userEvent.setup();
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getSpecificL10nSync()}
+        user={{
+          ...mockedUser,
+          subscriber: {
+            ...mockedUser.subscriber!,
+            all_emails_to_primary: true,
+            monthly_monitor_report: true,
+          },
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+          [mockedSecondaryVerifiedEmail.email]: 42,
+        }}
+        emailAddresses={[mockedSecondaryVerifiedEmail]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={[
+          "MonitorAccountDeletion",
+          "UpdatedEmailPreferencesOption",
+          "MonthlyActivityEmail",
+        ]}
+      />
+    </TestComponentWrapper>,
+  );
+  const monthlyMonitorReportBtn = screen.getByLabelText(
+    "Monthly ⁨Monitor⁩ report",
+    { exact: false },
+  );
+
+  await user.click(monthlyMonitorReportBtn);
+
+  expect(global.fetch).toHaveBeenCalledWith("/api/v1/user/update-comm-option", {
+    body: JSON.stringify({
+      instantBreachAlerts: "primary",
+      monthlyMonitorReport: false,
+    }),
+    method: "POST",
+  });
+});
+
 it("refreshes the session token after changing email alert preferences, to ensure the latest pref is available in it", async () => {
   global.fetch = jest.fn().mockResolvedValueOnce({ ok: true });
   const user = userEvent.setup();
