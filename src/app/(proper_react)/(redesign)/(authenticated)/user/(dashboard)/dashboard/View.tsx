@@ -40,6 +40,7 @@ import ScanProgressIllustration from "./images/scan-illustration.svg";
 import { CountryCodeContext } from "../../../../../../../contextProviders/country-code";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { getNextGuidedStep } from "../../../../../../functions/server/getRelevantGuidedSteps";
+import { CsatSurvey } from "../../../../../../components/client/CsatSurvey";
 import { WaitlistDialog } from "../../../../../../components/client/SubscriberWaitlistDialog";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
@@ -66,6 +67,7 @@ export type Props = {
   scanCount: number;
   isNewUser: boolean;
   telemetryId: string;
+  elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
 };
 
@@ -399,6 +401,11 @@ export const View = (props: Props) => {
     );
   };
 
+  const showCsatSurvey =
+    props.enabledFeatureFlags.includes("CsatSurvey") &&
+    selectedTab === "fixed" &&
+    typeof props.elapsedTimeInDaysSinceInitialScan !== "undefined";
+
   return (
     <div className={styles.wrapper}>
       <Toolbar
@@ -407,6 +414,8 @@ export const View = (props: Props) => {
         yearlySubscriptionUrl={props.yearlySubscriptionUrl}
         subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
+        lastScanDate={props.userScanData.scan?.created_at ?? null}
+        enabledFeatureFlags={props.enabledFeatureFlags}
       >
         <TabList
           tabs={tabsData}
@@ -423,6 +432,17 @@ export const View = (props: Props) => {
           selectedKey={selectedTab}
         />
       </Toolbar>
+      {showCsatSurvey &&
+        typeof props.elapsedTimeInDaysSinceInitialScan !== "undefined" && (
+          <CsatSurvey
+            elapsedTimeInDaysSinceInitialScan={
+              props.elapsedTimeInDaysSinceInitialScan
+            }
+            hasAutoFixedDataBrokers={
+              dataSummary.dataBrokerAutoFixedDataPointsNum > 0
+            }
+          />
+        )}
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           tabType={selectedTab}

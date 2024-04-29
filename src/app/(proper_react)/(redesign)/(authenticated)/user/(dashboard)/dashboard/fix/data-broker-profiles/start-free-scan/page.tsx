@@ -9,7 +9,7 @@ import { getServerSession } from "../../../../../../../../../functions/server/ge
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
-import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getUserBreaches";
+import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { StartFreeScanView } from "./StartFreeScanView";
 
@@ -42,7 +42,7 @@ export default async function StartFreeScanPage() {
     user: session.user,
     latestScanData: latestScanData ?? null,
     subscriberBreaches: await getSubscriberBreaches({
-      user: session.user,
+      fxaUid: session.user.subscriber.fxa_uid,
       countryCode,
     }),
   };

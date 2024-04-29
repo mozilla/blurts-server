@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
 import { View as DashboardEl } from "./View";
 import { Shell } from "../../../../Shell";
-import { getSpecificL10nSync } from "../../../../../../functions/server/mockL10n";
+import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
 import {
   createRandomScanResult,
   createRandomBreach,
@@ -43,6 +43,7 @@ type DashboardWrapperProps = (
 ) & {
   brokers: keyof typeof brokerOptions;
   breaches: keyof typeof breachOptions;
+  elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
@@ -174,14 +175,19 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   return (
     <SessionProvider session={mockedSession}>
       <CountryCodeProvider countryCode={props.countryCode}>
-        <Shell l10n={getSpecificL10nSync()} session={mockedSession} nonce="">
+        <Shell l10n={getL10n()} session={mockedSession} nonce="">
           <DashboardEl
             user={user}
             userBreaches={breaches}
             userScanData={scanData}
             isEligibleForPremium={props.countryCode === "us"}
             isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
-            enabledFeatureFlags={["FreeBrokerScan", "PremiumBrokerRemoval"]}
+            enabledFeatureFlags={[
+              "FreeBrokerScan",
+              "PremiumBrokerRemoval",
+              "CsatSurvey",
+              "LastScanDateBadge",
+            ]}
             monthlySubscriptionUrl=""
             yearlySubscriptionUrl=""
             fxaSettingsUrl=""
@@ -193,6 +199,9 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             }}
             isNewUser={true}
             telemetryId="arbitrary-telemetry-id"
+            elapsedTimeInDaysSinceInitialScan={
+              props.elapsedTimeInDaysSinceInitialScan
+            }
           />
         </Shell>
       </CountryCodeProvider>
@@ -217,6 +226,12 @@ const meta: Meta<typeof DashboardWrapper> = {
       control: {
         type: "radio",
         labels: breachOptions,
+      },
+    },
+    elapsedTimeInDaysSinceInitialScan: {
+      name: "Days since initial scan",
+      control: {
+        type: "number",
       },
     },
   },

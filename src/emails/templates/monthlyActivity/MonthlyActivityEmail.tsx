@@ -2,9 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import React from "react";
 import { DashboardSummary } from "../../../app/functions/server/dashboard";
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
-import { ExtendedReactLocalization } from "../../../app/hooks/l10n";
+import { ExtendedReactLocalization } from "../../../app/functions/l10n";
 import { EmailFooter } from "../EmailFooter";
 import { EmailHeader } from "../EmailHeader";
 
@@ -41,25 +42,8 @@ const MonthlyActivityPlusWithManualRemovalsEmail = (props: Props) => {
           {l10n.getString("email-monthly-plus-manual-preview")}
         </mj-preview>
       </mj-head>
-      <mj-body background-color="#F9F9FA">
+      <mj-body>
         <EmailHeader l10n={l10n} utm_campaign={utmCampaign} />
-        <mj-section
-          full-width="full-width"
-          background-color="white"
-          background-position-x="center"
-          background-url={`${process.env.SERVER_URL}/images/email/monthly-activity/hero-bg.png`}
-          background-repeat="no-repeat"
-          text-align="left"
-        >
-          <mj-column width="50%">
-            <mj-text font-size="38px" line-height="40px" font-weight={700}>
-              {l10n.getString("email-monthly-plus-manual-hero-heading")}
-            </mj-text>
-            <mj-text font-size="18px" line-height="27px" font-weight={400}>
-              {l10n.getString("email-monthly-plus-manual-hero-content")}
-            </mj-text>
-          </mj-column>
-        </mj-section>
         <mj-section padding="20px">
           <mj-column>
             <mj-text
@@ -106,8 +90,8 @@ const MonthlyActivityPlusWithManualRemovalsEmail = (props: Props) => {
               align="center"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="14px"
+              line-height="18px"
               font-weight={600}
               align="center"
             >
@@ -134,8 +118,8 @@ const MonthlyActivityPlusWithManualRemovalsEmail = (props: Props) => {
               align="center"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="14px"
+              line-height="18px"
               font-weight={600}
               align="center"
             >
@@ -161,8 +145,8 @@ const MonthlyActivityPlusWithManualRemovalsEmail = (props: Props) => {
               align="center"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="14px"
+              line-height="18px"
               font-weight={600}
               align="center"
             >
@@ -197,25 +181,8 @@ const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
           {l10n.getString("email-monthly-plus-auto-preview")}
         </mj-preview>
       </mj-head>
-      <mj-body background-color="#F9F9FA">
+      <mj-body>
         <EmailHeader l10n={l10n} utm_campaign={utmCampaign} />
-        <mj-section
-          full-width="full-width"
-          background-color="white"
-          background-position-x="center"
-          background-url={`${process.env.SERVER_URL}/images/email/monthly-activity/hero-bg.png`}
-          background-repeat="no-repeat"
-          text-align="left"
-        >
-          <mj-column width="50%">
-            <mj-text font-size="38px" line-height="40px" font-weight={700}>
-              {l10n.getString("email-monthly-plus-auto-hero-heading")}
-            </mj-text>
-            <mj-text font-size="18px" line-height="27px" font-weight={400}>
-              {l10n.getString("email-monthly-plus-auto-hero-content")}
-            </mj-text>
-          </mj-column>
-        </mj-section>
         <mj-section padding="20px">
           <mj-column>
             <mj-text align="center" font-size="16px" line-height="24px">
@@ -233,8 +200,8 @@ const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
               align="center"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="14px"
+              line-height="18px"
               font-weight={600}
               align="center"
             >
@@ -261,8 +228,8 @@ const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
               align="center"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="14px"
+              line-height="18px"
               font-weight={600}
               align="center"
             >
@@ -288,8 +255,8 @@ const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
               align="center"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="14px"
+              line-height="18px"
               font-weight={600}
               align="center"
             >
@@ -335,25 +302,8 @@ const MonthlyActivityFreeEmail = (props: Props) => {
       <mj-head>
         <mj-preview>{l10n.getString("email-monthly-free-preview")}</mj-preview>
       </mj-head>
-      <mj-body background-color="#F9F9FA">
+      <mj-body>
         <EmailHeader l10n={l10n} utm_campaign={utmCampaign} />
-        <mj-section
-          full-width="full-width"
-          background-color="white"
-          background-position-x="center"
-          background-url={`${process.env.SERVER_URL}/images/email/monthly-activity/hero-bg.png`}
-          background-repeat="no-repeat"
-          text-align="left"
-        >
-          <mj-column width="50%">
-            <mj-text font-size="38px" line-height="40px" font-weight={700}>
-              {l10n.getString("email-monthly-free-hero-heading")}
-            </mj-text>
-            <mj-text font-size="18px" line-height="27px" font-weight={400}>
-              {l10n.getString("email-monthly-free-hero-content")}
-            </mj-text>
-          </mj-column>
-        </mj-section>
         <mj-section padding="20px">
           <mj-column>
             <mj-text
@@ -400,8 +350,8 @@ const MonthlyActivityFreeEmail = (props: Props) => {
               align="center"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="14px"
+              line-height="18px"
               font-weight={600}
               align="center"
             >
@@ -425,8 +375,8 @@ const MonthlyActivityFreeEmail = (props: Props) => {
               align="center"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="14px"
+              line-height="18px"
               font-weight={600}
               align="center"
             >
@@ -452,8 +402,8 @@ const MonthlyActivityFreeEmail = (props: Props) => {
               align="center"
             />
             <mj-text
-              font-size="16px"
-              line-height="24px"
+              font-size="14px"
+              line-height="18px"
               font-weight={600}
               align="center"
             >

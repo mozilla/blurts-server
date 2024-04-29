@@ -9,13 +9,14 @@ import {
   getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
 } from "../../../../../../functions/server/getPremiumSubscriptionInfo";
-import { getL10n } from "../../../../../../functions/server/l10n";
+import { getL10n } from "../../../../../../functions/l10n/serverComponents";
 import { getUserEmails } from "../../../../../../../db/tables/emailAddresses";
 import { getBreaches } from "../../../../../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../../../../../utils/hibp";
 import { getSha1 } from "../../../../../../../utils/fxa";
 import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
 import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
+import { getLatestOnerepScan } from "../../../../../../../db/tables/onerep_scans";
 
 export default async function SettingsPage() {
   const session = await getServerSession();
@@ -51,6 +52,9 @@ export default async function SettingsPage() {
     ignoreAllowlist: false,
     email: session.user.email,
   });
+  const lastOneRepScan = await getLatestOnerepScan(
+    session.user.subscriber.onerep_profile_id,
+  );
 
   return (
     <SettingsView
@@ -64,6 +68,7 @@ export default async function SettingsPage() {
       yearlySubscriptionUrl={`${yearlySubscriptionUrl}&${additionalSubplatParams.toString()}`}
       subscriptionBillingAmount={getSubscriptionBillingAmount()}
       enabledFeatureFlags={enabledFeatureFlags}
+      lastScanDate={lastOneRepScan?.created_at}
     />
   );
 }

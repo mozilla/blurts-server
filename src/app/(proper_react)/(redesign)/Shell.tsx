@@ -10,7 +10,7 @@ import monitorLogo from "../images/monitor-logo.webp";
 import { MobileShell } from "./MobileShell";
 import Link from "next/link";
 import { PageLink } from "./PageLink";
-import { ExtendedReactLocalization } from "../../hooks/l10n";
+import { ExtendedReactLocalization } from "../../functions/l10n";
 import {
   getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,

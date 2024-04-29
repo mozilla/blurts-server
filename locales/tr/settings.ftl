@@ -15,6 +15,8 @@ settings-alert-preferences-option-two = Tüm ihlal uyarılarını birinci e-post
 
 ## Monitored email addresses
 
+# Variables:
+#   $email (string) - Email address
 settings-email-list-title = İzlenen e-posta adresleri
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,7 +32,6 @@ settings-remove-email-button-label = Kaldır
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = { $emailAddress } adresini izlemeyi durdur
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -40,8 +41,6 @@ settings-email-number-of-breaches-info =
         [one] Bilinen { $breachCount } ihlalde yer alıyor.
        *[other] Bilinen { $breachCount } ihlalde yer alıyor.
     }
-
-## Cancel Premium subscription
 
 ## Deactivate account
 
@@ -55,12 +54,8 @@ settings-delete-monitor-free-account-title = { -brand-monitor } hesabını sil
 settings-delete-monitor-free-account-description = Bu işlem { -brand-monitor } hesabınızı kalıcı olarak silecek ve tüm bildirimleri kapatacaktır.
 settings-delete-monitor-free-account-cta-label = Hesabı sil
 settings-delete-monitor-free-account-dialog-title = { -brand-monitor } hesabınız kalıcı olarak silinecektir
+settings-delete-monitor-free-account-dialog-lead = Tüm { -brand-monitor } hesap bilgileriniz silinecek ve artık yeni veri ihlalleri için izlenmeyecektir. Bu işlem { -brand-mozilla } hesabınızı silmez.
 settings-delete-monitor-free-account-dialog-cta-label = Hesabı sil
 settings-delete-monitor-free-account-dialog-cancel-button-label = Vazgeçtim, geri dön
 settings-delete-monitor-account-confirmation-toast-label-2 = { -brand-monitor } hesabınız silindi.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Kapat
-
-## Add email dialog
-
-## Unsubscribe Dialog Survey
-

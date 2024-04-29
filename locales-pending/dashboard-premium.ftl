@@ -4,6 +4,7 @@
 
 plus-indicator-label-active = Automatic data removal: On
 plus-indicator-label-inactive = Automatic data removal: Off
+plus-indicator-scan-date-label = Last scan:
 
 user-menu-contact-label = Contact us
 user-menu-contact-tooltip = Contact { -brand-monitor-plus } support
@@ -189,3 +190,14 @@ exposure-card-description-info-for-sale-action-needed-dashboard = This site is p
 exposure-card-description-info-for-sale-in-progress = We’ve started our auto-removal process of <data_broker_profile>this profile</data_broker_profile> to protect your information. <removal_info>Removals typically take 7-14 days</removal_info>.
 exposure-card-description-info-for-sale-fixed = As a { -brand-monitor-plus } member, we’ve <data_broker_profile>removed this profile</data_broker_profile> for you and will continually monitor to make sure they don’t add you back.
 exposure-card-description-info-for-sale-fixed-manually-fixed =  You marked this profile as fixed. Be sure you’ve followed all instructions on <data_broker_profile>the site</data_broker_profile> to ensure they remove your personal info.
+
+## CSAT survey banner for subscribers
+
+survey-csat-question = How satisfied are you with your { -brand-mozilla-monitor } experience?
+survey-csat-answer-very-dissatisfied = Very dissatisfied
+survey-csat-answer-dissatisfied = Dissatisfied
+survey-csat-answer-neutral = Neutral
+survey-csat-answer-satisfied = Satisfied
+survey-csat-answer-very-satisfied = Very satisfied
+survey-csat-follow-up-link-label = Your feedback is helpful to us! How can we improve { -product-short-name } for you?
+survey-csat-survey-dismiss-label = Dismiss

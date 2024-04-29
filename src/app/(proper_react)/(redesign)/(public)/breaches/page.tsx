@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getBreaches } from "../../../../functions/server/getBreaches";
-import { getL10n } from "../../../../functions/server/l10n";
+import { getL10n } from "../../../../functions/l10n/serverComponents";
 import { BreachIndexView } from "./BreachIndexView";
 
 export function generateMetadata() {

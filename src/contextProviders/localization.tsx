@@ -12,7 +12,7 @@ import {
   ReactLocalization,
 } from "@fluent/react";
 import { ReactNode } from "react";
-import { LocaleData } from "../app/functions/server/l10n";
+import { LocaleData } from "../app/functions/l10n";
 
 export const L10nProvider = (props: {
   bundleSources: LocaleData[];
