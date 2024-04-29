@@ -8,11 +8,11 @@ import {
   createRandomScanResult,
 } from "../../../../../../../apiMocks/mockData";
 import { filterExposures } from "./filterExposures";
+import { CONST_DAY_MILLISECONDS } from "../../../../../../../constants";
 jest.mock("../../../../../../hooks/useTelemetry");
 
-const dayMilliseconds = 24 * 60 * 60 * 1000;
 const getDateDaysAgo = (daysAgo: number) =>
-  new Date(Date.now() - daysAgo * dayMilliseconds);
+  new Date(Date.now() - daysAgo * CONST_DAY_MILLISECONDS);
 const breachThisWeek = createRandomBreach({
   fakerSeed: 1234,
   addedDate: getDateDaysAgo(2),

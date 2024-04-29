@@ -37,6 +37,7 @@ export type FeatureFlagName =
   | "RebrandAnnouncement"
   | "MonitorAccountDeletion"
   | "RedesignedEmails"
+  | "CsatSurvey"
   | "CancellationFlow"
   | "ConfirmCancellation"
   | "LastScanDateBadge";

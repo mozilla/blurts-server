@@ -43,6 +43,7 @@ type DashboardWrapperProps = (
 ) & {
   brokers: keyof typeof brokerOptions;
   breaches: keyof typeof breachOptions;
+  elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
@@ -184,6 +185,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             enabledFeatureFlags={[
               "FreeBrokerScan",
               "PremiumBrokerRemoval",
+              "CsatSurvey",
               "LastScanDateBadge",
             ]}
             monthlySubscriptionUrl=""
@@ -197,6 +199,9 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             }}
             isNewUser={true}
             telemetryId="arbitrary-telemetry-id"
+            elapsedTimeInDaysSinceInitialScan={
+              props.elapsedTimeInDaysSinceInitialScan
+            }
           />
         </Shell>
       </CountryCodeProvider>
@@ -221,6 +226,12 @@ const meta: Meta<typeof DashboardWrapper> = {
       control: {
         type: "radio",
         labels: breachOptions,
+      },
+    },
+    elapsedTimeInDaysSinceInitialScan: {
+      name: "Days since initial scan",
+      control: {
+        type: "number",
       },
     },
   },
