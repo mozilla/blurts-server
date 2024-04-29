@@ -633,6 +633,47 @@ it("toggles between the product offerings in the premium upsell dialog", async (
   expect(productMonthlyCta).toBeInTheDocument();
 });
 
+it("shows US users with Premium the date of their last scan", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const lastScanIndicator = screen.getByText("Last scan:");
+  expect(lastScanIndicator).toBeInTheDocument();
+});
+
+it("does not shows US users without Premium who have not done a scan the date of their last scan", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const lastScanIndicator = screen.queryByText("Last scan:");
+  expect(lastScanIndicator).not.toBeInTheDocument();
+});
+
+it("shows US users without Premium who have done a scan the date of their last scan", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const lastScanIndicator = screen.getByText("Last scan:");
+  expect(lastScanIndicator).toBeInTheDocument();
+});
+
+it("does not show non-US users the date of their last scan", () => {
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  const lastScanIndicator = screen.queryByText("Last scan:");
+  expect(lastScanIndicator).not.toBeInTheDocument();
+});
+
 it("shows chart tooltip on the action needed tab, non-US user", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);

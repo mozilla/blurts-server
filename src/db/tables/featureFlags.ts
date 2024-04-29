@@ -39,7 +39,8 @@ export type FeatureFlagName =
   | "RedesignedEmails"
   | "CsatSurvey"
   | "CancellationFlow"
-  | "ConfirmCancellation";
+  | "ConfirmCancellation"
+  | "LastScanDateBadge";
 
 export async function getEnabledFeatureFlags(
   options:

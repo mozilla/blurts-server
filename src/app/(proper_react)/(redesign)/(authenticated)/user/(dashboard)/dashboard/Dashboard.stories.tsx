@@ -186,6 +186,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
               "FreeBrokerScan",
               "PremiumBrokerRemoval",
               "CsatSurvey",
+              "LastScanDateBadge",
             ]}
             monthlySubscriptionUrl=""
             yearlySubscriptionUrl=""
