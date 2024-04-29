@@ -30,8 +30,7 @@ import { useSession } from "next-auth/react";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 
 export type Props = {
-  defaultSelected?: EmailUpdateCommTypeOfOptions;
-  breachAlertsEmailsAllowed: boolean;
+  breachAlertsEmailsAllowed: boolean | null | undefined;
   enabledFeatureFlags: FeatureFlagName[];
 };
 
@@ -40,17 +39,31 @@ const AlertAddressContext = createContext<RadioGroupState | null>(null);
 export const AlertAddressForm = (props: Props) => {
   const l10n = useL10n();
   const session = useSession();
+
+  const defaultActivateAlertEmail =
+    typeof props.breachAlertsEmailsAllowed === "boolean";
+
   const [activateAlertEmail, setActivateAlertEmail] = useState<boolean>(
-    props.breachAlertsEmailsAllowed,
+    defaultActivateAlertEmail,
   );
   const [activateMonthlyMonitorReport, setActivateMonthlyMonitorReport] =
     useState(true);
 
-  // If a user previously had all breach alerts sent to their primary email, we want to carry that value forward
-  const defaultValue = props.breachAlertsEmailsAllowed ? "primary" : "affected";
+  const commsValue = () => {
+    switch (props.breachAlertsEmailsAllowed) {
+      case true:
+        return "primary";
+      case false:
+        return "affected";
+      case null:
+        return "null";
+      case undefined:
+        return "null";
+    }
+  };
 
   const state = useRadioGroupState({
-    defaultValue: defaultValue,
+    defaultValue: commsValue(),
     onChange: (newValue) => {
       const chosenOption = newValue as EmailUpdateCommTypeOfOptions;
       const body: EmailUpdateCommOptionRequest = {
@@ -71,10 +84,10 @@ export const AlertAddressForm = (props: Props) => {
   const handleActivateToggle = () => {
     setActivateAlertEmail((prevActivateAlertEmail) => {
       const newValue = !prevActivateAlertEmail;
-      if (!newValue) {
-        state.setSelectedValue("null");
+      if (newValue) {
+        state.setSelectedValue("primary");
       } else {
-        state.setSelectedValue(defaultValue);
+        state.setSelectedValue("null");
       }
       return newValue;
     });
@@ -137,6 +150,7 @@ export const AlertAddressForm = (props: Props) => {
             </AlertAddressRadio>
           </AlertAddressContext.Provider>
         )}
+
         {props.enabledFeatureFlags.includes("MonthlyActivityEmail") && (
           <ActivateEmailsCheckbox
             isSelected={activateMonthlyMonitorReport}

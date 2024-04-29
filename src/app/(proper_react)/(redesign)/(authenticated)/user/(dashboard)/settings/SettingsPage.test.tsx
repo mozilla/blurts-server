@@ -278,6 +278,57 @@ it("preselects primary email alert option", () => {
   expect(primaryRadioButton).toHaveAttribute("aria-checked", "true");
 });
 
+it("unselects the breach alerts checkbox and sends a null value to the API", async () => {
+  global.fetch = jest.fn().mockResolvedValue({ ok: true });
+  const user = userEvent.setup();
+
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getSpecificL10nSync()}
+        user={{
+          ...mockedUser,
+          subscriber: {
+            ...mockedUser.subscriber!,
+            all_emails_to_primary: true,
+          },
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+          [mockedSecondaryVerifiedEmail.email]: 42,
+        }}
+        emailAddresses={[mockedSecondaryVerifiedEmail]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const primaryRadioButton = screen.getByLabelText(
+    "Send all breach alerts to the primary email address",
+  );
+  const activateBreachAlertsCheckbox = screen.getByLabelText(
+    "Instant breach alerts",
+    { exact: false },
+  );
+
+  expect(primaryRadioButton).toHaveAttribute("aria-checked", "true");
+
+  await user.click(activateBreachAlertsCheckbox);
+
+  expect(global.fetch).toHaveBeenCalledWith("/api/v1/user/update-comm-option", {
+    body: JSON.stringify({
+      instantBreachAlerts: "null",
+      monthlyMonitorReport: true,
+    }),
+    method: "POST",
+  });
+});
+
 it("sends a call to the API to change the email alert preferences when changing the radio button values", async () => {
   global.fetch = jest.fn().mockResolvedValue({ ok: true });
 

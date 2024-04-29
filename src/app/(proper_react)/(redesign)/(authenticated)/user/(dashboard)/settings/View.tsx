@@ -86,7 +86,8 @@ export const SettingsView = (props: Props) => {
           <hr />
           <AlertAddressForm
             breachAlertsEmailsAllowed={
-              props.user.subscriber?.all_emails_to_primary ?? undefined === 0
+              // Preselect all emails to primary if a user does not have this value set
+              props.user.subscriber?.all_emails_to_primary
             }
             enabledFeatureFlags={props.enabledFeatureFlags}
           />
