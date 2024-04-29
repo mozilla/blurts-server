@@ -18,7 +18,7 @@ import { getUserEmails } from "../../../../../../db/tables/emailAddresses";
 import { getLocale } from "../../../../../functions/universal/getLocale";
 import { MonthlyActivityEmail } from "../../../../../../emails/templates/monthlyActivity/MonthlyActivityEmail";
 import { getDashboardSummary } from "../../../../../functions/server/dashboard";
-import { getSubscriberBreaches } from "../../../../../functions/server/getUserBreaches";
+import { getSubscriberBreaches } from "../../../../../functions/server/getSubscriberBreaches";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
 import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
@@ -102,7 +102,7 @@ export async function triggerMonthlyActivity(emailAddress: string) {
   const data = getDashboardSummary(
     latestScan.results,
     await getSubscriberBreaches({
-      user: session.user,
+      fxaUid: session.user.subscriber?.fxa_uid,
       countryCode: getCountryCode(headers()),
     }),
   );

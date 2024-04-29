@@ -9,6 +9,7 @@ import { axe } from "jest-axe";
 import Meta, {
   DataBreachActionNeeded,
   DataBreachFixed,
+  DataBreachFixedEligibleForPremium,
   DataBrokerActionNeeded,
   DataBrokerInProgress,
   DataBrokerManualRemoved,
@@ -82,6 +83,18 @@ describe("ScanResultCard", () => {
 
     expect(innerDescription).toBeInTheDocument();
   });
+
+  it("hides the dt element if its dd counterpart has hideonmobile", () => {
+    const ComposedProgressCard = composeStory(DataBrokerInProgress, Meta);
+    render(<ComposedProgressCard />);
+    const infoForSale = screen.getAllByRole("definition");
+    const elementsWithClass = infoForSale.filter((element) =>
+      element.classList.contains("hideOnMobile"),
+    );
+    const prevElementToInfoForSale =
+      elementsWithClass[0].previousElementSibling;
+    expect(prevElementToInfoForSale).toHaveClass("hideOnMobile");
+  });
 });
 
 describe("DataBreachCard", () => {
@@ -107,5 +120,16 @@ describe("DataBreachCard", () => {
     );
 
     expect(innerDescription).toBeInTheDocument();
+  });
+
+  it("announces the exposure type (data breach) if user is eligible for premium", () => {
+    const ComposedExposureCard = composeStory(
+      DataBreachFixedEligibleForPremium,
+      Meta,
+    );
+    render(<ComposedExposureCard />);
+
+    const companyLogoTitle = screen.getByText("Exposure type");
+    expect(companyLogoTitle).toBeInTheDocument();
   });
 });

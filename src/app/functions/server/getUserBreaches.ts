@@ -14,10 +14,7 @@ import {
   BundledVerifiedEmails,
   getAllEmailsAndBreaches,
 } from "../../../../src/utils/breaches.js";
-import {
-  SubscriberBreach,
-  getSubBreaches,
-} from "../../../utils/subscriberBreaches";
+import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 
 //TODO: deprecate with MNTOR-2021
@@ -89,36 +86,6 @@ export async function getUserBreaches({
     passwordBreaches,
     phoneBreaches,
   };
-}
-
-/**
- * NOTE: new function to replace getUserBreaches
- *
- * @param user
- * @param user.user
- * @param user.countryCode
- */
-export async function getSubscriberBreaches({
-  user,
-  countryCode,
-}: {
-  user: Session["user"];
-  countryCode: string;
-}): Promise<SubscriberBreach[]> {
-  if (!user.subscriber?.fxa_uid) {
-    throw new Error("No fxa_uid found in session");
-  }
-  const subscriber = await getSubscriberByFxaUid(user.subscriber.fxa_uid);
-  if (!subscriber) {
-    throw new Error("No subscriber found for the given user data.");
-  }
-  const allBreaches = await getBreaches();
-  const breachesData = await getSubBreaches(
-    subscriber,
-    allBreaches,
-    countryCode,
-  );
-  return breachesData;
 }
 
 export interface GuidedExperienceBreaches {

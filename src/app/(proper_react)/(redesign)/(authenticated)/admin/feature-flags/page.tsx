@@ -4,7 +4,10 @@
 
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
-import { getAllFeatureFlags } from "../../../../../../db/tables/featureFlags";
+import {
+  FeatureFlagName,
+  getAllFeatureFlags,
+} from "../../../../../../db/tables/featureFlags";
 import { AddFeatureFlag } from "./components/AddFeatureFlag";
 import { ToggleFlagEnabled } from "./components/ToggleFlagEnabled";
 import { FeatureFlagRow } from "knex/types/tables";
@@ -110,6 +113,14 @@ export default async function FeatureFlagPage() {
             yearlySubscriptionUrl={yearlySubscriptionUrl}
             subscriptionBillingAmount={getSubscriptionBillingAmount()}
             fxaSettingsUrl={fxaSettingsUrl}
+            // Since this page is only accessed by contributors, no need to load
+            // their latest scan date from the DB:
+            lastScanDate={null}
+            // Whatever, might as well enable all flags for people browsing this page :)
+            // (At the time of writing, though, this doesn't have any observable effect.)
+            enabledFeatureFlags={featureFlags.map(
+              (flag) => flag.name as FeatureFlagName,
+            )}
           />
         </div>
       </nav>

@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["src/scripts/cronjobs/**/*.ts", "src/scripts/cronjobs/**/*.tsx"],
+  "outDir": "dist/scripts/cronjobs/",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2020",
+  }
+}

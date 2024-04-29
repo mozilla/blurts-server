@@ -7,6 +7,7 @@ import {
   isScanResult,
 } from "../../../../../../components/client/exposure_card/ExposureCard";
 import { FilterState } from "../../../../../../components/client/ExposuresFilter";
+import { CONST_DAY_MILLISECONDS } from "../../../../../../../constants";
 
 export function filterExposures(
   exposures: Exposure[],
@@ -52,5 +53,5 @@ export function filterExposures(
 }
 
 const getDaysAgoTimestamp = (numOfDays: number) => {
-  return Date.now() - numOfDays * 24 * 60 * 60 * 1000;
+  return Date.now() - numOfDays * CONST_DAY_MILLISECONDS;
 };

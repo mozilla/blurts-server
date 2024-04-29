@@ -1,0 +1,41 @@
+@import "../../../../../../tokens";
+
+// The attribute selector makes this more specific that <Button>'s direct styles,
+// so we can overwrite the font weight. Maybe it should just not be a <Button>…
+[type="button"].trigger {
+  font-weight: 600;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-md;
+  text-align: center;
+
+  .tertiaryCta {
+    font-weight: 600;
+  }
+
+  p {
+    max-width: 600px;
+  }
+}
+
+.cancellationIllustrationWrapper {
+  height: 200px; // height of illustration;
+  width: 100%;
+  padding-bottom: $spacing-lg;
+
+  img {
+    height: 100%;
+  }
+}
+
+.iframeWrapper {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  height: 240px; //height of iframe
+}

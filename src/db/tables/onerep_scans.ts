@@ -5,7 +5,11 @@
 import createDbConnection from "../connect.js";
 import { logger } from "../../app/functions/server/logging";
 
-import { ScanResult, Scan } from "../../app/functions/server/onerep.js";
+import {
+  ScanResult,
+  Scan,
+  ScanReason,
+} from "../../app/functions/server/onerep.js";
 import {
   OnerepScanResultRow,
   OnerepScanRow,
@@ -29,6 +33,19 @@ async function getAllScansForProfile(
   return scans;
 }
 
+async function getLatestScanForProfileByReason(
+  onerepProfileId: number,
+  oneRepScanReason: ScanReason,
+): Promise<OnerepScanRow | undefined> {
+  const scan = await knex("onerep_scans")
+    .where("onerep_profile_id", onerepProfileId)
+    .andWhere("onerep_scan_reason", oneRepScanReason)
+    .orderBy("created_at", "desc")
+    .first();
+
+  return scan;
+}
+
 async function getScanResults(
   onerepScanId: number,
 ): Promise<OnerepScanResultRow[]> {
@@ -40,20 +57,25 @@ async function getScanResults(
   return scanResults;
 }
 
-async function getLatestOnerepScanResults(
+async function getLatestOnerepScan(
   onerepProfileId: number | null,
-): Promise<LatestOnerepScanData> {
+): Promise<OnerepScanRow | null> {
   if (onerepProfileId === null) {
-    return {
-      scan: null,
-      results: [],
-    };
+    return null;
   }
 
   const scan = await knex("onerep_scans")
     .first()
     .where("onerep_profile_id", onerepProfileId)
     .orderBy("created_at", "desc");
+
+  return scan ?? null;
+}
+
+async function getLatestOnerepScanResults(
+  onerepProfileId: number | null,
+): Promise<LatestOnerepScanData> {
+  const scan = await getLatestOnerepScan(onerepProfileId);
 
   const results =
     typeof scan === "undefined"
@@ -90,7 +112,7 @@ async function setOnerepScan(
   onerepProfileId: number,
   onerepScanId: number,
   onerepScanStatus: Scan["status"],
-  oneRepScanReason: "manual" | "initial" | "monitoring",
+  oneRepScanReason: ScanReason,
 ) {
   await knex("onerep_scans")
     .insert({
@@ -240,7 +262,9 @@ async function deleteScanResultsForProfile(
 
 export {
   getAllScansForProfile,
+  getLatestScanForProfileByReason,
   getScanResults,
+  getLatestOnerepScan,
   getLatestOnerepScanResults,
   setOnerepProfileId,
   setOnerepScan,

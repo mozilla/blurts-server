@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "../../../../../../functions/server/getServerSession";
 import { View } from "./View";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
-import { getSubscriberBreaches } from "../../../../../../functions/server/getUserBreaches";
+import { getSubscriberBreaches } from "../../../../../../functions/server/getSubscriberBreaches";
 import {
   canSubscribeToPremium,
   hasPremium,
@@ -34,6 +34,7 @@ import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/serv
 import { checkSession } from "../../../../../../functions/server/checkSession";
 import { isPrePlusUser } from "../../../../../../functions/server/isPrePlusUser";
 import { getUserId } from "../../../../../../functions/server/getUserId";
+import { getElapsedTimeInDaysSinceInitialScan } from "../../../../../../functions/server/getElapsedTimeInDaysSinceInitialScan";
 
 export default async function DashboardPage() {
   const session = await getServerSession();
@@ -76,7 +77,7 @@ export default async function DashboardPage() {
       ? await getScansCountForProfile(profileId)
       : 0;
   const subBreaches = await getSubscriberBreaches({
-    user: session.user,
+    fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
   });
 
@@ -103,6 +104,8 @@ export default async function DashboardPage() {
   const additionalSubplatParams = await getAttributionsFromCookiesOrDb(
     session.user.subscriber.id,
   );
+  const elapsedTimeInDaysSinceInitialScan =
+    await getElapsedTimeInDaysSinceInitialScan(session.user);
 
   return (
     <View
@@ -120,6 +123,7 @@ export default async function DashboardPage() {
       totalNumberOfPerformedScans={profileStats?.total}
       isNewUser={isNewUser}
       telemetryId={getUserId(session)}
+      elapsedTimeInDaysSinceInitialScan={elapsedTimeInDaysSinceInitialScan}
     />
   );
 }

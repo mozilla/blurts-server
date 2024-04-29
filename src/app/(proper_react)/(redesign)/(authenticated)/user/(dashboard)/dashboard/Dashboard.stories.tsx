@@ -43,6 +43,7 @@ type DashboardWrapperProps = (
 ) & {
   brokers: keyof typeof brokerOptions;
   breaches: keyof typeof breachOptions;
+  elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
@@ -181,7 +182,12 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             userScanData={scanData}
             isEligibleForPremium={props.countryCode === "us"}
             isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
-            enabledFeatureFlags={["FreeBrokerScan", "PremiumBrokerRemoval"]}
+            enabledFeatureFlags={[
+              "FreeBrokerScan",
+              "PremiumBrokerRemoval",
+              "CsatSurvey",
+              "LastScanDateBadge",
+            ]}
             monthlySubscriptionUrl=""
             yearlySubscriptionUrl=""
             fxaSettingsUrl=""
@@ -193,6 +199,9 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             }}
             isNewUser={true}
             telemetryId="arbitrary-telemetry-id"
+            elapsedTimeInDaysSinceInitialScan={
+              props.elapsedTimeInDaysSinceInitialScan
+            }
           />
         </Shell>
       </CountryCodeProvider>
@@ -217,6 +226,12 @@ const meta: Meta<typeof DashboardWrapper> = {
       control: {
         type: "radio",
         labels: breachOptions,
+      },
+    },
+    elapsedTimeInDaysSinceInitialScan: {
+      name: "Days since initial scan",
+      control: {
+        type: "number",
       },
     },
   },

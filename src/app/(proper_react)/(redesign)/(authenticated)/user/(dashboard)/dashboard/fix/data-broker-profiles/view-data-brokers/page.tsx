@@ -10,7 +10,7 @@ import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subs
 import { ViewDataBrokersView } from "./View";
 import { StepDeterminationData } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
-import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getUserBreaches";
+import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { getL10n } from "../../../../../../../../../functions/server/l10n";
 
@@ -29,7 +29,7 @@ export default async function ViewDataBrokers() {
     user: session.user,
     latestScanData: latestScan ?? null,
     subscriberBreaches: await getSubscriberBreaches({
-      user: session.user,
+      fxaUid: session.user.subscriber.fxa_uid,
       countryCode,
     }),
   };

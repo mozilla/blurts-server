@@ -5,7 +5,7 @@
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
-import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getUserBreaches";
+import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { LeakedPasswordsLayout } from "../LeakedPasswordsLayout";
 import {
   LeakedPasswordsTypes,
@@ -33,7 +33,7 @@ export default async function LeakedPasswords({
   }
   const countryCode = getCountryCode(headers());
   const breaches = await getSubscriberBreaches({
-    user: session.user,
+    fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
   });
   const subscriberEmails = await getSubscriberEmails(session.user);
