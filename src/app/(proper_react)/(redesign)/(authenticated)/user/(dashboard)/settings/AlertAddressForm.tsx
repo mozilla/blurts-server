@@ -31,6 +31,7 @@ import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 
 export type Props = {
   breachAlertsEmailsAllowed: boolean | null;
+  monitorReport: boolean | null;
   enabledFeatureFlags: FeatureFlagName[];
 };
 
@@ -43,11 +44,13 @@ export const AlertAddressForm = (props: Props) => {
   const defaultActivateAlertEmail =
     typeof props.breachAlertsEmailsAllowed === "boolean";
 
+  const defaultMonitorReport = props.breachAlertsEmailsAllowed ?? false;
+
   const [activateAlertEmail, setActivateAlertEmail] = useState<boolean>(
     defaultActivateAlertEmail,
   );
   const [activateMonthlyMonitorReport, setActivateMonthlyMonitorReport] =
-    useState(true);
+    useState(defaultMonitorReport);
 
   const commsValue = () => {
     switch (props.breachAlertsEmailsAllowed) {
@@ -78,6 +81,20 @@ export const AlertAddressForm = (props: Props) => {
       });
     },
   });
+
+  const handleMonthlyMonitorReportToggle = () => {
+    const newValue = !activateMonthlyMonitorReport;
+    setActivateMonthlyMonitorReport(newValue);
+    void fetch("/api/v1/user/update-comm-option", {
+      method: "POST",
+      body: JSON.stringify({
+        instantBreachAlerts: commsValue(),
+        monthlyMonitorReport: newValue,
+      }),
+    }).then(() => {
+      void session.update();
+    });
+  };
 
   const handleActivateToggle = () => {
     setActivateAlertEmail((prevActivateAlertEmail) => {
@@ -152,7 +169,7 @@ export const AlertAddressForm = (props: Props) => {
         {props.enabledFeatureFlags.includes("MonthlyActivityEmail") && (
           <ActivateEmailsCheckbox
             isSelected={activateMonthlyMonitorReport}
-            onChange={setActivateMonthlyMonitorReport}
+            onChange={handleMonthlyMonitorReportToggle}
           >
             <div>
               <b>

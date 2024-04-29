@@ -431,6 +431,45 @@ it("sends a call to the API to change the email alert preferences when changing 
   });
 });
 
+it("checks that monthly monitor report is enabled", () => {
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getSpecificL10nSync()}
+        user={{
+          ...mockedUser,
+          subscriber: {
+            ...mockedUser.subscriber!,
+            all_emails_to_primary: true,
+            monthly_monitor_report: true,
+          },
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+          [mockedSecondaryVerifiedEmail.email]: 42,
+        }}
+        emailAddresses={[mockedSecondaryVerifiedEmail]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={[
+          "MonitorAccountDeletion",
+          "UpdatedEmailPreferencesOption",
+          "MonthlyActivityEmail",
+        ]}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const monthlyMonitorReportBtn = screen.getByLabelText(
+    "Monthly ⁨Monitor⁩ report",
+    { exact: false },
+  );
+  expect(monthlyMonitorReportBtn).toHaveAttribute("aria-checked", "true");
+});
+
 it("refreshes the session token after changing email alert preferences, to ensure the latest pref is available in it", async () => {
   global.fetch = jest.fn().mockResolvedValueOnce({ ok: true });
   const user = userEvent.setup();
