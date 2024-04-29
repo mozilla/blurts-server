@@ -185,6 +185,7 @@ const ActivateEmailsCheckbox = (props: AriaCheckboxProps) => {
     <label>
       <VisuallyHidden>
         <input
+          type="checkbox"
           {...mergeProps(inputProps, focusProps)}
           ref={ref}
           aria-checked={isSelected}
@@ -242,6 +243,7 @@ const AlertAddressRadio = (
     <label>
       <VisuallyHidden>
         <input
+          type="checkbox"
           {...inputProps}
           {...focusProps}
           ref={inputRef}
