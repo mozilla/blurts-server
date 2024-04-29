@@ -124,7 +124,7 @@
     "lint-staged": "^15.2.2",
     "mjml-browser": "^4.15.3",
     "prettier": "3.2.5",
-    "react-intersection-observer": "^9.8.1",
+    "react-intersection-observer": "^9.10.1",
     "sass": "^1.72.0",
     "storybook": "^8.0.8",
     "stylelint": "^16.4.0",
