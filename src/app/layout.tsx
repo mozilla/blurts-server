@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { getL10n, getL10nBundles } from "./functions/server/l10n";
+import { getL10n, getL10nBundles } from "./functions/l10n/serverComponents";
 import { getLocale } from "./functions/universal/getLocale";
 import { PublicEnvProvider } from "../contextProviders/public-env";
 import { SessionProvider } from "../contextProviders/session";

@@ -10,7 +10,7 @@ import {
   SecurityRecommendationTypes,
   securityRecommendationTypes,
 } from "../securityRecommendationsData";
-import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getUserBreaches";
+import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
@@ -33,7 +33,7 @@ export default async function SecurityRecommendations({
   }
   const countryCode = getCountryCode(headers());
   const breaches = await getSubscriberBreaches({
-    user: session.user,
+    fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
   });
   const subscriberEmails = await getSubscriberEmails(session.user);

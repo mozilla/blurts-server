@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./PublicShell.module.scss";
 import MonitorLogo from "../../images/monitor-logo.svg";
-import { ExtendedReactLocalization } from "../../../hooks/l10n";
+import { ExtendedReactLocalization } from "../../../functions/l10n";
 import { SignInButton } from "../../../components/client/SignInButton";
 import { Footer } from "../Footer";
 
