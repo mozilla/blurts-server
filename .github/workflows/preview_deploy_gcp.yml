@@ -1,0 +1,48 @@
+name: Deploy Preview
+
+on: 
+  pull_request:
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+  SERVICE: blurts-server
+  REGION: us-east4
+  TAG: run-${{ github.run_id }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Cloud SDK
+      uses: google-github-actions/setup-gcloud@v0.2.0
+      with:
+        project_id: ${{ env.PROJECT_ID }}
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+
+    - name: Authorize Docker push
+      run: gcloud auth configure-docker
+
+    - name: Build and Push Container
+      run: |-
+        docker build -t gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ env.TAG }} .
+        docker push gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ env.TAG }}
+        
+    - name: Deploy to Cloud Run
+      id: deploy
+      uses: google-github-actions/deploy-cloudrun@v0.6.0
+      with:
+        service: ${{ env.SERVICE }}
+        image: gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ env.TAG }}
+        region: ${{ env.REGION }}
+        flags: "--allow-unauthenticated"
+        tag: ${{ env.TAG }}
+
+    - name: Ensure prod service is live
+      uses: google-github-actions/deploy-cloudrun@v0.6.0
+      with:
+        service: ${{ env.SERVICE }}
+        region: ${{ env.REGION }}
+        tag_traffic: ${{ env.TAG }}=100
