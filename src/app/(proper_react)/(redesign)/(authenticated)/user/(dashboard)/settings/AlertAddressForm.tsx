@@ -30,7 +30,7 @@ import { useSession } from "next-auth/react";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 
 export type Props = {
-  breachAlertsEmailsAllowed: boolean | null | undefined;
+  breachAlertsEmailsAllowed: boolean | null;
   enabledFeatureFlags: FeatureFlagName[];
 };
 
@@ -56,8 +56,6 @@ export const AlertAddressForm = (props: Props) => {
       case false:
         return "affected";
       case null:
-        return "null";
-      case undefined:
         return "null";
     }
   };

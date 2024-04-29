@@ -86,7 +86,8 @@ export const SettingsView = (props: Props) => {
           <hr />
           <AlertAddressForm
             breachAlertsEmailsAllowed={
-              props.user.subscriber?.all_emails_to_primary
+              // Set value to null if undefined (disabled breach alerts)
+              props.user.subscriber?.all_emails_to_primary ?? null
             }
             enabledFeatureFlags={props.enabledFeatureFlags}
           />
