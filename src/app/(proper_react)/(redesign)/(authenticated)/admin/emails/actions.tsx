@@ -10,7 +10,7 @@ import { renderEmail } from "../../../../../../emails/renderEmail";
 import { VerifyEmailAddressEmail } from "../../../../../../emails/templates/verifyEmailAddress/VerifyEmailAddressEmail";
 import { sanitizeSubscriberRow } from "../../../../../functions/server/sanitize";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
-import { getL10n } from "../../../../../functions/server/l10n";
+import { getL10n } from "../../../../../functions/l10n/serverComponents";
 import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
 import { ReactNode } from "react";
 import { SubscriberRow } from "knex/types/tables";
@@ -18,7 +18,7 @@ import { getUserEmails } from "../../../../../../db/tables/emailAddresses";
 import { getLocale } from "../../../../../functions/universal/getLocale";
 import { MonthlyActivityEmail } from "../../../../../../emails/templates/monthlyActivity/MonthlyActivityEmail";
 import { getDashboardSummary } from "../../../../../functions/server/dashboard";
-import { getSubscriberBreaches } from "../../../../../functions/server/getUserBreaches";
+import { getSubscriberBreaches } from "../../../../../functions/server/getSubscriberBreaches";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
 import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
@@ -102,7 +102,7 @@ export async function triggerMonthlyActivity(emailAddress: string) {
   const data = getDashboardSummary(
     latestScan.results,
     await getSubscriberBreaches({
-      user: session.user,
+      fxaUid: session.user.subscriber?.fxa_uid,
       countryCode: getCountryCode(headers()),
     }),
   );

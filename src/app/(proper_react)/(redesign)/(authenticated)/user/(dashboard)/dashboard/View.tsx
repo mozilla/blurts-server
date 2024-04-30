@@ -40,6 +40,7 @@ import ScanProgressIllustration from "./images/scan-illustration.svg";
 import { CountryCodeContext } from "../../../../../../../contextProviders/country-code";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { getNextGuidedStep } from "../../../../../../functions/server/getRelevantGuidedSteps";
+import { CsatSurvey } from "../../../../../../components/client/CsatSurvey";
 import { WaitlistDialog } from "../../../../../../components/client/SubscriberWaitlistDialog";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
@@ -48,9 +49,11 @@ import {
   CONST_ONEREP_DATA_BROKER_COUNT,
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../../../../../constants";
+import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData;
   user: Session["user"];
   userBreaches: SubscriberBreach[];
   userScanData: LatestOnerepScanData;
@@ -65,7 +68,8 @@ export type Props = {
   fxaSettingsUrl: string;
   scanCount: number;
   isNewUser: boolean;
-  telemetryId: string;
+  experimentationId: string;
+  elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
 };
 
@@ -78,7 +82,7 @@ export type TabData = {
 
 export const View = (props: Props) => {
   const l10n = useL10n();
-  const recordTelemetry = useTelemetry();
+  const recordTelemetry = useTelemetry(props.experimentationId);
   const countryCode = useContext(CountryCodeContext);
 
   const adjustedScanResults = props.userScanData.results.map((scanResult) => {
@@ -399,6 +403,11 @@ export const View = (props: Props) => {
     );
   };
 
+  const showCsatSurvey =
+    props.enabledFeatureFlags.includes("CsatSurvey") &&
+    selectedTab === "fixed" &&
+    typeof props.elapsedTimeInDaysSinceInitialScan !== "undefined";
+
   return (
     <div className={styles.wrapper}>
       <Toolbar
@@ -407,13 +416,14 @@ export const View = (props: Props) => {
         yearlySubscriptionUrl={props.yearlySubscriptionUrl}
         subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
+        lastScanDate={props.userScanData.scan?.created_at ?? null}
+        experimentData={props.experimentData}
       >
         <TabList
           tabs={tabsData}
           onSelectionChange={(selectedKey) => {
             setSelectedTab(selectedKey as TabType);
             recordTelemetry("dashboard", "view", {
-              user_id: props.telemetryId,
               dashboard_tab: selectedKey as TabType,
               legacy_user: !props.isNewUser,
               breach_count: breachesDataArray.length,
@@ -423,6 +433,17 @@ export const View = (props: Props) => {
           selectedKey={selectedTab}
         />
       </Toolbar>
+      {showCsatSurvey &&
+        typeof props.elapsedTimeInDaysSinceInitialScan !== "undefined" && (
+          <CsatSurvey
+            elapsedTimeInDaysSinceInitialScan={
+              props.elapsedTimeInDaysSinceInitialScan
+            }
+            hasAutoFixedDataBrokers={
+              dataSummary.dataBrokerAutoFixedDataPointsNum > 0
+            }
+          />
+        )}
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           tabType={selectedTab}
@@ -449,7 +470,6 @@ export const View = (props: Props) => {
           onShowFixed={() => {
             setSelectedTab("fixed");
             recordTelemetry("dashboard", "view", {
-              user_id: props.telemetryId,
               dashboard_tab: "fixed",
               legacy_user: !props.isNewUser,
               breach_count: breachesDataArray.length,

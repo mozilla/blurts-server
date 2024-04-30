@@ -18,7 +18,6 @@ jest.mock("next/navigation", () => {
     usePathname: jest.fn(),
   };
 });
-jest.mock("../../../../../../../../../functions/server/l10n");
 
 import Meta, { ManualRemoveViewStory } from "./ManualRemove.stories";
 

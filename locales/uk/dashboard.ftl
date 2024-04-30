@@ -28,11 +28,11 @@ exposure-chart-caption = На цій діаграмі показано, скіл
 # Variables:
 #   $total_fixed_exposures_num (number) - Number of fixed exposures
 #   $total_exposures_num (number) - Number of total exposures
-exposure-chart-caption-fixed = На цій діаграмі показано загальну кількість зафіксованих розкриттів ({ $total_fixed_exposures_num } з { $total_exposures_num })
+exposure-chart-caption-fixed = На цій діаграмі показано загальну кількість усунутих розкриттів ({ $total_fixed_exposures_num } з { $total_exposures_num })
 exposure-chart-returning-user-upgrade-prompt = Домашня адреса, члени сім’ї та інше ще не включено.
 exposure-chart-returning-user-upgrade-prompt-cta = Розпочати безплатну перевірку
 exposure-chart-scan-in-progress-prompt = <b>Триває перевірка:</b> адреса, члени родини тощо ще не включено.
-modal-active-number-of-exposures-title = Про кількість розкриттів
+modal-active-number-of-exposures-title = Кількість розкриттів
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
 modal-active-number-of-exposures-part-one-all =
@@ -43,7 +43,7 @@ modal-active-number-of-exposures-part-one-all =
     }
 modal-active-number-of-exposures-part-two = Наприклад, якщо ваш номер телефону було викрито 10 разів, це може означати, що один номер телефону викрито на 10 різних сайтах, або 2 різні номери телефону викрито на 5 різних сайтах.
 modal-active-number-of-exposures-part-three-all = Щойно їх буде розв'язано, вони будуть додані до вашої загальної кількості усунутих витоків на сторінці "Усунуто".
-modal-fixed-number-of-exposures-title = Про кількість усунутих розкриттів
+modal-fixed-number-of-exposures-title = Кількість усунутих розкриттів
 modal-fixed-number-of-exposures-all = Ця діаграма містить загальну кількість витоків даних, які було усунуто для всіх електронних адрес, які ви наразі відстежуєте. Коли викриття буде позначено усунутим, його буде додано до загальної кількості тут.
 modal-cta-ok = OK
 open-modal-alt = Відкрити вікно
@@ -54,7 +54,7 @@ progress-card-manually-fixed-headline = Виправлено вручну
 dashboard-tab-label-action-needed = Потрібна дія
 dashboard-tab-label-fixed = Усунуто
 dashboard-exposures-all-fixed-label = Тут все виправлено!
-dashboard-exposures-area-headline = Переглянути всі сайти, на яких розкрито вашу інформацію
+dashboard-exposures-area-headline = Перегляньте всі сайти, на яких розкрито вашу інформацію
 # Note: this line precedes dashboard-exposures-area-description-all-line2.
 # Variables:
 #   $exposures_unresolved_num (number) - the unresolved number of exposures the user has.
@@ -138,7 +138,7 @@ dashboard-top-banner-monitor-more-cta = Відстежуйте більше ел
 
 # About Exposure Statuses Modal
 
-modal-exposure-status-title = Про стани розкриття
+modal-exposure-status-title = Стан розкриття
 modal-exposure-status-description-all =
     Ми шукаємо розкриття в усіх відомих витоках даних.
     Ваші розкриття матимуть один із цих станів:

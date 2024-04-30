@@ -19,6 +19,7 @@ import {
   getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
 } from "../../../../../functions/server/getPremiumSubscriptionInfo";
+import { defaultExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 
 export default async function FeatureFlagPage() {
   const session = await getServerSession();
@@ -112,6 +113,12 @@ export default async function FeatureFlagPage() {
             yearlySubscriptionUrl={yearlySubscriptionUrl}
             subscriptionBillingAmount={getSubscriptionBillingAmount()}
             fxaSettingsUrl={fxaSettingsUrl}
+            // Since this page is only accessed by contributors, no need to load
+            // their latest scan date from the DB:
+            lastScanDate={null}
+            // We're not going to run experiments on the feature flag page (it's
+            // not user-visible), so no need to fetch experiment data:
+            experimentData={defaultExperimentData}
           />
         </div>
       </nav>

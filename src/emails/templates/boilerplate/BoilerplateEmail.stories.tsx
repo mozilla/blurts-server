@@ -7,7 +7,7 @@ import { FC } from "react";
 import { Props, BoilerplateEmail } from "./BoilerplateEmail";
 import { StorybookEmailRenderer } from "../../StorybookEmailRenderer";
 import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
-import { getSpecificL10nSync } from "../../../app/functions/server/mockL10n";
+import { getL10n } from "../../../app/functions/l10n/storybookAndJest";
 
 const meta: Meta<FC<Props>> = {
   title: "Emails/Email boilerplate",
@@ -17,7 +17,7 @@ const meta: Meta<FC<Props>> = {
     </StorybookEmailRenderer>
   ),
   args: {
-    l10n: getSpecificL10nSync("en"),
+    l10n: getL10n("en"),
     subscriber: {
       signup_language: "en",
     } as SanitizedSubscriberRow,

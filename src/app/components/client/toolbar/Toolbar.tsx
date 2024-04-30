@@ -9,7 +9,8 @@ import styles from "./Toolbar.module.scss";
 import { UserMenu } from "./UserMenu";
 import { Session } from "next-auth";
 import { AppPicker } from "./AppPicker";
-import { UpsellBadge } from "../../client/UpsellBadge";
+import { UpsellBadge } from "./UpsellBadge";
+import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   user: Session["user"];
@@ -20,6 +21,8 @@ export type Props = {
     monthly: number;
   };
   fxaSettingsUrl: string;
+  lastScanDate: Date | null;
+  experimentData: ExperimentData;
   children?: ReactNode;
 };
 
@@ -32,6 +35,8 @@ export const Toolbar = (props: Props) => {
           monthlySubscriptionUrl={props.monthlySubscriptionUrl}
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
           subscriptionBillingAmount={props.subscriptionBillingAmount}
+          lastScanDate={props.lastScanDate}
+          experimentData={props.experimentData}
         />
         <AppPicker />
         {props.user && (

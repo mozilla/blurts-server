@@ -5,9 +5,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
-import { UpsellBadge, UpsellButton } from "../UpsellBadge";
+import { UpsellBadge, UpsellButton } from "../toolbar/UpsellBadge";
 import { createUserWithPremiumSubscription } from "../../../../apiMocks/mockData";
 import { CountryCodeProvider } from "../../../../contextProviders/country-code";
+import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 type UpsellCtaWrapperProps = {
   countryCode: string;
@@ -35,6 +36,13 @@ const UpsellCtaWrapper = (props: UpsellCtaWrapperProps) => {
             monthlySubscriptionUrl={monthlySubscriptionUrl}
             yearlySubscriptionUrl={yearlySubscriptionUrl}
             subscriptionBillingAmount={subscriptionBillingAmount}
+            lastScanDate={new Date(Date.UTC(1998, 2, 31))}
+            experimentData={{
+              ...defaultExperimentData,
+              "last-scan-date": {
+                enabled: true,
+              },
+            }}
           />
         ) : (
           <UpsellButton

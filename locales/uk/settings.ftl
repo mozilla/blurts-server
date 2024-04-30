@@ -22,10 +22,10 @@ settings-email-list-title = Відстежувані адреси електро
 #   $limit (number) - Number of email addresses included in the plan
 settings-email-limit-info =
     { $limit ->
-        [one] Ваш обліковий запис включає моніторинг { $limit } адреси електронної пошти.
-        [few] Ваш обліковий запис включає моніторинг до { $limit } адрес електронної пошти.
-        [many] Ваш обліковий запис включає моніторинг до { $limit } адрес електронної пошти.
-       *[other] Ваш обліковий запис включає моніторинг { $limit } адрес електронної пошти.
+        [one] Ви можете відстежувати { $limit } адресу електронної пошти.
+        [few] Ви можете відстежувати до { $limit } адрес електронної пошти.
+        [many] Ви можете відстежувати до { $limit } адрес електронної пошти.
+       *[other] Ви можете відстежувати до { $limit } адрес електронної пошти.
     }
 settings-email-verification-callout = Необхідне підтвердження електронної пошти
 settings-resend-email-verification-link = Надіслати лист підтвердження ще раз
@@ -55,7 +55,7 @@ settings-fxa-link-label-3 = Перейти до налаштувань { -brand-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Видалити обліковий запис { -brand-monitor }
-settings-delete-monitor-free-account-description = Ваш обліковий запис буде видалено остаточно { -brand-monitor }, а всі сповіщення – вимкнено.
+settings-delete-monitor-free-account-description = Ваш обліковий запис { -brand-monitor } буде остаточно видалено, а всі сповіщення – вимкнено.
 settings-delete-monitor-free-account-cta-label = Видалити обліковий запис
 settings-delete-monitor-free-account-dialog-title = Ваш обліковий запис { -brand-monitor } буде остаточно видалено
 settings-delete-monitor-free-account-dialog-lead = Уся інформація вашого облікового запису { -brand-monitor } буде видалена, і ми більше не відстежуватимемо нові витоки ваших даних. Це не видалить ваш обліковий запис { -brand-mozilla }.

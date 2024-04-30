@@ -4,7 +4,7 @@
 
 import { it, expect } from "@jest/globals";
 import { getLocale } from "./getLocale";
-import { LocaleData } from "../server/l10n";
+import { LocaleData } from "../l10n";
 import { ReactLocalization } from "@fluent/react";
 import { FluentBundle } from "@fluent/bundle";
 

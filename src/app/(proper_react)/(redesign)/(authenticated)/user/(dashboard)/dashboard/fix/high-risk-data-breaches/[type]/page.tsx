@@ -7,7 +7,7 @@ import { headers } from "next/headers";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
-import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getUserBreaches";
+import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import {
   HighRiskBreachTypes,
   highRiskBreachTypes,
@@ -33,7 +33,7 @@ export default async function SecurityRecommendations({
   }
   const countryCode = getCountryCode(headers());
   const breaches = await getSubscriberBreaches({
-    user: session.user,
+    fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
   });
   const subscriberEmails = await getSubscriberEmails(session.user);
