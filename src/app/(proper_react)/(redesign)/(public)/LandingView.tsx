@@ -5,7 +5,7 @@
 import styles from "./LandingView.module.scss";
 import { HeroImageAll, HeroImagePremium } from "./HeroImage";
 import { SignUpForm } from "./SignUpForm";
-import { ExtendedReactLocalization } from "../../../hooks/l10n";
+import { ExtendedReactLocalization } from "../../../functions/l10n";
 import { PlansTable } from "./PlansTable";
 import { useId } from "react";
 import {

@@ -7,16 +7,16 @@
 import { useState } from "react";
 import Image from "next/image";
 import type { OverlayTriggerProps, OverlayTriggerState } from "react-stately";
-import { Dialog } from "./dialog/Dialog";
-import { ModalOverlay } from "./dialog/ModalOverlay";
-import { Button } from "../client/Button";
-import { useL10n } from "../../hooks/l10n";
-import ModalImage from "../client/assets/premium-upsell-dialog-icon.svg";
+import { Dialog } from "../dialog/Dialog";
+import { ModalOverlay } from "../dialog/ModalOverlay";
+import { Button } from "../Button";
+import { useL10n } from "../../../hooks/l10n";
+import ModalImage from "../../client/assets/premium-upsell-dialog-icon.svg";
 import styles from "./UpsellDialog.module.scss";
-import { useTelemetry } from "../../hooks/useTelemetry";
-import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../constants";
-import { modifyAttributionsForUrl } from "../../functions/universal/attributions";
-import { BillingPeriod, BillingPeriodToggle } from "./BillingPeriod";
+import { useTelemetry } from "../../../hooks/useTelemetry";
+import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../constants";
+import { modifyAttributionsForUrl } from "../../../functions/universal/attributions";
+import { BillingPeriod, BillingPeriodToggle } from "../BillingPeriod";
 
 export interface UpsellDialogProps {
   state: OverlayTriggerState;

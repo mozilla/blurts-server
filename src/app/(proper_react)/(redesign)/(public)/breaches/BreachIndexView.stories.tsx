@@ -5,14 +5,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { faker } from "@faker-js/faker";
 import { BreachIndexView, Props as ViewProps } from "./BreachIndexView";
-import { getSpecificL10nSync } from "../../../../functions/server/mockL10n";
+import { getL10n } from "../../../../functions/l10n/storybookAndJest";
 import { PublicShell } from "../PublicShell";
 import { createRandomHibpListing } from "../../../../../apiMocks/mockData";
 
 const meta: Meta<typeof BreachIndexView> = {
   title: "Pages/Public/Breach index",
   component: (props: ViewProps) => (
-    <PublicShell l10n={getSpecificL10nSync("en")}>
+    <PublicShell l10n={getL10n("en")}>
       <BreachIndexView {...props} />
     </PublicShell>
   ),

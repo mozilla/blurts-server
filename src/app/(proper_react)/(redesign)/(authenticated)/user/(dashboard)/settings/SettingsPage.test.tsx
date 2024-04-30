@@ -8,11 +8,10 @@ import { axe } from "jest-axe";
 import { Session } from "next-auth";
 import { userEvent } from "@testing-library/user-event";
 import type { EmailAddressRow } from "knex/types/tables";
-import { getSpecificL10nSync } from "../../../../../../functions/server/mockL10n";
+import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
 import { TestComponentWrapper } from "../../../../../../../TestComponentWrapper";
 import { SerializedSubscriber } from "../../../../../../../next-auth";
 import { onAddEmail, onRemoveEmail } from "./actions";
-import { sanitizeEmailRow } from "../../../../../../functions/server/sanitize";
 
 const mockedSessionUpdate = jest.fn();
 const mockedRecordTelemetry = jest.fn();
@@ -40,6 +39,7 @@ jest.mock("./actions", () => {
 
 import { SettingsView } from "./View";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
+import { sanitizeEmailRow } from "../../../../../../functions/server/sanitize";
 
 const subscriberId = 7;
 const mockedSubscriber: SerializedSubscriber = {
@@ -87,7 +87,7 @@ it("passes the axe accessibility audit", async () => {
   const { container } = render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={mockedUser}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
@@ -114,7 +114,7 @@ it("preselects 'Send all breach alerts to the primary email address' if that's t
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           subscriber: {
@@ -152,7 +152,7 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           subscriber: {
@@ -192,7 +192,7 @@ it("sends a call to the API to change the email alert preferences when changing 
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           subscriber: {
@@ -241,7 +241,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           subscriber: {
@@ -276,7 +276,7 @@ it("marks unverified email addresses as such", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={mockedUser}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
@@ -310,7 +310,7 @@ it("calls the API to resend a verification email if requested to", async () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={mockedUser}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
@@ -354,7 +354,7 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={mockedUser}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
@@ -387,7 +387,7 @@ it("hides the Plus cancellation link if the user doesn't have Plus", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           fxa: {
@@ -420,7 +420,7 @@ it("shows the Plus cancellation link if the user has Plus", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           fxa: {
@@ -449,11 +449,190 @@ it("shows the Plus cancellation link if the user has Plus", () => {
   expect(cancellationHeading).toBeInTheDocument();
 });
 
+it("takes you through the cancellation dialog flow all the way to subplat", async () => {
+  const user = userEvent.setup();
+
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getL10n()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: ["monitor"],
+          } as Session["user"]["fxa"],
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={[
+          "MonitorAccountDeletion",
+          "ConfirmCancellation",
+          "CancellationFlow",
+        ]}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const cancellationButton = screen.getByRole("button", {
+    name: "Cancel your subscription",
+  });
+
+  await user.click(cancellationButton);
+
+  expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+    "popup",
+    "view",
+    expect.objectContaining({
+      popup_id: "settings-cancel-monitor-plus-dialog",
+    }),
+  );
+
+  expect(
+    screen.getByRole("dialog", {
+      name: "Leaving now means data brokers may add you back",
+    }),
+  ).toBeInTheDocument();
+
+  const continueToCancellationButton = screen.getByRole("button", {
+    name: "Continue to cancellation",
+  });
+  await user.click(continueToCancellationButton);
+
+  expect(
+    screen.getByRole("dialog", {
+      name: "We’re sorry to see you go. Will you tell us why you’re leaving?",
+    }),
+  ).toBeInTheDocument();
+
+  const continueToCancellationButton2 = screen.getByRole("button", {
+    name: "Continue to cancellation",
+  });
+  await user.click(continueToCancellationButton2);
+
+  expect(
+    screen.getByRole("dialog", {
+      name: "Directing you to your ⁨Mozilla account⁩ to cancel",
+    }),
+  ).toBeInTheDocument();
+});
+
+it("closes the cancellation survey if the user selects nevermind, take me back", async () => {
+  const user = userEvent.setup();
+
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getL10n()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: ["monitor"],
+          } as Session["user"]["fxa"],
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={[
+          "MonitorAccountDeletion",
+          "ConfirmCancellation",
+          "CancellationFlow",
+        ]}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const cancellationButton = screen.getByRole("button", {
+    name: "Cancel your subscription",
+  });
+
+  await user.click(cancellationButton);
+
+  const takeMeBackButton = screen.getByRole("button", {
+    name: "Never mind, take me back",
+  });
+
+  await user.click(takeMeBackButton);
+
+  expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+    "popup",
+    "exit",
+    expect.objectContaining({
+      popup_id: "never_mind_take_me_back",
+    }),
+  );
+
+  expect(takeMeBackButton).not.toBeInTheDocument();
+});
+
+it("closes the cancellation dialog", async () => {
+  const user = userEvent.setup();
+
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getL10n()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: ["monitor"],
+          } as Session["user"]["fxa"],
+        }}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={["MonitorAccountDeletion", "CancellationFlow"]}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const cancellationButton = screen.getByRole("button", {
+    name: "Cancel your subscription",
+  });
+
+  await user.click(cancellationButton);
+
+  const cancellationDialogCloseBtn = screen.getByRole("button", {
+    name: "Close modal",
+  });
+
+  await user.click(cancellationDialogCloseBtn);
+
+  expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+    "popup",
+    "exit",
+    expect.objectContaining({
+      popup_id: "settings-cancel-monitor-plus-dialog",
+    }),
+  );
+});
+
 it("does not show the account deletion button if the relevant flag is not enabled", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           fxa: {
@@ -486,7 +665,7 @@ it("shows the account deletion button if the user does not have Plus", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           fxa: {
@@ -524,7 +703,7 @@ it("warns about the consequences before deleting a free user's account", async (
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           fxa: {
@@ -564,7 +743,7 @@ it("shows a loading state while account deletion is in progress", async () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           fxa: {
@@ -605,7 +784,7 @@ it("shows the account deletion button if the user has Plus", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           fxa: {
@@ -643,7 +822,7 @@ it("warns about the consequences before deleting a Plus user's account", async (
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           fxa: {
@@ -693,7 +872,7 @@ it.skip("calls the 'add' action when adding another email address", async () => 
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={mockedUser}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
@@ -729,7 +908,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getSpecificL10nSync()}
+          l10n={getL10n()}
           user={mockedUser}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
@@ -760,48 +939,12 @@ describe("to learn about usage", () => {
     );
   });
 
-  it("counts how often people go to SubPlat to cancel their Plus subscription", async () => {
-    const user = userEvent.setup();
-    render(
-      <TestComponentWrapper>
-        <SettingsView
-          l10n={getSpecificL10nSync()}
-          user={mockedUser}
-          breachCountByEmailAddress={{
-            [mockedUser.email]: 42,
-            [mockedSecondaryVerifiedEmail.email]: 42,
-          }}
-          emailAddresses={[mockedSecondaryVerifiedEmail]}
-          fxaSettingsUrl=""
-          fxaSubscriptionsUrl=""
-          yearlySubscriptionUrl=""
-          monthlySubscriptionUrl=""
-          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={["MonitorAccountDeletion"]}
-        />
-      </TestComponentWrapper>,
-    );
-
-    const cancelPlusLink = screen.getByRole("link", {
-      name: "Cancel from your ⁨Mozilla account⁩ Open link in a new tab",
-    });
-    await user.click(cancelPlusLink);
-
-    expect(mockedRecordTelemetry).toHaveBeenCalledWith(
-      "link",
-      "click",
-      expect.objectContaining({
-        link_id: "cancel_plus",
-      }),
-    );
-  });
-
   it("counts how often people go to Mozilla Accounts to delete their account", async () => {
     const user = userEvent.setup();
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getSpecificL10nSync()}
+          l10n={getL10n()}
           user={mockedUser}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
@@ -821,6 +964,7 @@ describe("to learn about usage", () => {
     const deactivateAccountLink = screen.getByRole("link", {
       name: "Go to ⁨Mozilla account⁩ settings Open link in a new tab",
     });
+
     await user.click(deactivateAccountLink);
 
     expect(mockedRecordTelemetry).toHaveBeenCalledWith(
@@ -843,7 +987,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getSpecificL10nSync()}
+          l10n={getL10n()}
           user={mockedUser}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
@@ -884,7 +1028,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getSpecificL10nSync()}
+          l10n={getL10n()}
           user={mockedUser}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
@@ -920,7 +1064,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getSpecificL10nSync()}
+          l10n={getL10n()}
           user={{
             ...mockedUser,
             fxa: {
@@ -961,7 +1105,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getSpecificL10nSync()}
+          l10n={getL10n()}
           user={{
             ...mockedUser,
             fxa: {
@@ -1007,7 +1151,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getSpecificL10nSync()}
+          l10n={getL10n()}
           user={{
             ...mockedUser,
             fxa: {
@@ -1049,7 +1193,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getSpecificL10nSync()}
+          l10n={getL10n()}
           user={{
             ...mockedUser,
             fxa: {
@@ -1095,7 +1239,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getSpecificL10nSync()}
+          l10n={getL10n()}
           user={{
             ...mockedUser,
             fxa: {
@@ -1136,7 +1280,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getSpecificL10nSync()}
+          l10n={getL10n()}
           user={{
             ...mockedUser,
             fxa: {
@@ -1182,7 +1326,7 @@ describe("to learn about usage", () => {
     render(
       <TestComponentWrapper>
         <SettingsView
-          l10n={getSpecificL10nSync()}
+          l10n={getL10n()}
           user={{
             ...mockedUser,
             fxa: {

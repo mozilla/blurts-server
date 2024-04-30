@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { ExtendedReactLocalization } from "../../../hooks/l10n";
+import { ExtendedReactLocalization } from "../../../functions/l10n";
 import Image from "next/image";
 import ScanningForExposuresImage from "./value-prop-images/scanning-for-exposures.svg";
 import LeakedPasswordExampleImage from "./value-prop-images/leaked-password-example.svg";

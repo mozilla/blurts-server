@@ -11,14 +11,14 @@ import { getEnabledFeatureFlags } from "../../../db/tables/featureFlags";
 import { renderEmail } from "../../../emails/renderEmail";
 import { VerifyEmailAddressEmail } from "../../../emails/templates/verifyEmailAddress/VerifyEmailAddressEmail";
 import { sanitizeSubscriberRow } from "../../functions/server/sanitize";
-import { getEmailL10n } from "../../../emails/getEmailL10n";
+import { getL10n } from "../../functions/l10n/serverComponents";
 
 export async function sendVerificationEmail(
   user: SubscriberRow,
   emailId: number,
 ) {
   const sanitizedSubscriber = sanitizeSubscriberRow(user);
-  const l10n = getEmailL10n(sanitizedSubscriber);
+  const l10n = getL10n(sanitizedSubscriber.signup_language ?? undefined);
   const unverifiedEmailAddressRecord = await resetUnverifiedEmailAddress(
     emailId,
     user,

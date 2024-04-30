@@ -107,12 +107,8 @@ declare module "knex/types/tables" {
       };
       monitoredEmails: { count: number };
     };
-    // TODO: Find unknown type
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-    monthly_email_at: null | unknown;
-    // TODO: Find unknown type
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-    monthly_email_optout: null | unknown;
+    monthly_monitor_report_at: null | Date;
+    monthly_monitor_report: boolean;
     breach_resolution:
       | null
       | ({
@@ -149,8 +145,8 @@ declare module "knex/types/tables" {
     | "breaches_resolved"
     | "waitlists_joined"
     | "breach_stats"
-    | "monthly_email_at"
-    | "monthly_email_optout"
+    | "monthly_monitor_report_at"
+    | "monthly_monitor_report"
     | "breach_resolution"
     | "db_migration_1"
     | "db_migration_2"
@@ -265,7 +261,9 @@ declare module "knex/types/tables" {
   interface OnerepProfileRow {
     id: number;
     onerep_profile_id: null | number;
+    name_suffix: null | string;
     first_name: string;
+    middle_name: null | string;
     last_name: string;
     city_name: string;
     state_code: StateAbbr;

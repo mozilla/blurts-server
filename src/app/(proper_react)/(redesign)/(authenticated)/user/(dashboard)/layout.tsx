@@ -4,7 +4,10 @@
 
 import { ReactNode } from "react";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
-import { getL10n, getL10nBundles } from "../../../../../functions/server/l10n";
+import {
+  getL10n,
+  getL10nBundles,
+} from "../../../../../functions/l10n/serverComponents";
 import { Shell } from "../../../Shell";
 import { headers } from "next/headers";
 import { AutoSignIn } from "../../../../../components/client/AutoSignIn";

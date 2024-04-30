@@ -5,9 +5,11 @@
 import createDbConnection from "../connect.js";
 import { destroyOAuthToken } from '../../utils/fxa.js'
 import AppConstants from '../../appConstants.js'
+import { getFeatureFlagData } from "./featureFlags";
 
 const knex = createDbConnection();
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = AppConstants
+const MONITOR_PREMIUM_CAPABILITY = "monitor";
 
 /**
  * @param {string[]} hashes
@@ -272,7 +274,53 @@ async function deleteResolutionsWithEmail (id, email) {
 /* c8 ignore stop */
 
 /**
+ * @param {Partial<{ plusOnly: boolean; limit: number; }>} options
+ * @returns {Promise<import("knex/types/tables").SubscriberRow[]>}
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function getSubscribersWaitingForMonthlyEmail (options = {}) {
+  const flag = await getFeatureFlagData("MonthlyActivityEmail");
+
+  if (!flag?.is_enabled) {
+    return [];
+  }
+
+  let query = knex('subscribers')
+    .select()
+    .where((builder) => builder.whereNull("monthly_monitor_report").orWhere("monthly_monitor_report", true))
+    .andWhere(builder => builder.whereNull("monthly_monitor_report_at").orWhereRaw('"monthly_monitor_report_at" < NOW() - INTERVAL \'30 days\''));
+
+  if (Array.isArray(flag.allow_list) && flag.allow_list.length > 0) {
+    // The `.andWhereIn` alias doesn't exist:
+    // https://github.com/knex/knex/issues/1881#issuecomment-275433906
+    query = query.whereIn("primary_email", flag.allow_list)
+  }
+
+  if (options.plusOnly) {
+    // Note: This will only match people of whom the Monitor database knows that
+    //       they have a Plus subscription. SubPlat is the source of truth, but
+    //       our database is updated via a webhook and whenever the user logs
+    //       in. Locally, you might want to set this via `/admin/dev/`.
+    query = query.andWhereRaw(
+      `(fxa_profile_json->'subscriptions')::jsonb \\? ?`,
+      MONITOR_PREMIUM_CAPABILITY,
+    );
+  }
+
+  if (typeof options.limit === "number") {
+    query = query.limit(options.limit);
+  }
+
+  const rows = await query;
+
+  return rows
+}
+/* c8 ignore stop */
+
+/**
  * @param {string} email
+ * @deprecated Only used by the `send-email-to-unresolved-breach-subscribers.js`, which it looks like might not be sent anymore? Delete as a part of MNTOR-3077?
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -295,6 +343,7 @@ async function updateMonthlyEmailTimestamp (email) {
  * Unsubscribe user from monthly unresolved breach emails
  *
  * @param {string} token User verification token
+ * @deprecated Delete as a part of MNTOR-3077
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -302,6 +351,31 @@ async function updateMonthlyEmailOptout (token) {
   await knex('subscribers')
     .update('monthly_email_optout', true)
     .where('primary_verification_token', token)
+}
+/* c8 ignore stop */
+
+/**
+ * @param {import("knex/types/tables").SubscriberRow} subscriber
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function markMonthlyActivityEmailAsJustSent (subscriber) {
+  const affectedSubscribers = await knex("subscribers")
+    .update({
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      monthly_monitor_report_at: knex.fn.now(),
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
+    })
+    .where("primary_email", subscriber.primary_email)
+    .andWhere("id", subscriber.id)
+    .returning("*");
+
+  if (affectedSubscribers.length !== 1) {
+    throw new Error(`Attempted to mark 1 user as having just been sent the monthly activity email, but instead found [${affectedSubscribers.length}] matching its ID and email address.`);
+  }
 }
 /* c8 ignore stop */
 
@@ -318,6 +392,9 @@ async function getOnerepProfileId (subscriberId) {
 }
 /* c8 ignore stop */
 
+/**
+ * @deprecated OBSOLETE: Delete as a part of MNTOR-3077
+ */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 function getSubscribersWithUnresolvedBreachesQuery () {
@@ -328,6 +405,9 @@ function getSubscribersWithUnresolvedBreachesQuery () {
 }
 /* c8 ignore stop */
 
+/**
+ * @deprecated OBSOLETE: Delete as a part of MNTOR-3077
+ */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function getSubscribersWithUnresolvedBreaches (limit = 0) {
@@ -340,6 +420,9 @@ async function getSubscribersWithUnresolvedBreaches (limit = 0) {
 }
 /* c8 ignore stop */
 
+/**
+ * @deprecated OBSOLETE: Delete as a part of MNTOR-3077
+ */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function getSubscribersWithUnresolvedBreachesCount () {
@@ -403,8 +486,10 @@ export {
   updateFxAProfileData,
   setAllEmailsToPrimary,
   setBreachResolution,
+  getSubscribersWaitingForMonthlyEmail,
   updateMonthlyEmailTimestamp,
   updateMonthlyEmailOptout,
+  markMonthlyActivityEmailAsJustSent,
   deleteUnverifiedSubscribers,
   deleteSubscriber,
   deleteResolutionsWithEmail,

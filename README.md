@@ -86,6 +86,12 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
    npm run build-glean
    ```
 
+6. Generate required Nimbus files (needs re-ran anytime Nimbus' `config/nimbus.yaml` file is updated):
+
+   ```sh
+   npm run build-nimbus
+   ```
+
 ### Run
 
 1. To run the server similar to production using a build phase, which includes minified and bundled assets:

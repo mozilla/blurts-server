@@ -7,7 +7,8 @@
 import Link from "next/link";
 import styles from "./BreachIndexView.module.scss";
 import { HibpLikeDbBreach } from "../../../../../utils/hibp";
-import { ExtendedReactLocalization, useL10n } from "../../../../hooks/l10n";
+import { useL10n } from "../../../../hooks/l10n";
+import { ExtendedReactLocalization } from "../../../../functions/l10n";
 import { BreachLogo } from "../../../../components/server/BreachLogo";
 import { getLocale } from "../../../../functions/universal/getLocale";
 import { useHasRenderedClientSide } from "../../../../hooks/useHasRenderedClientSide";

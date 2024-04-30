@@ -9,12 +9,14 @@ import {
   TEST_EMAIL_ADDRESSES
 } from '../db/seeds/testSubscribers.js'
 
-
 jest.mock("nodemailer", () => {
   return {
     createTransport: jest.fn(),
   };
 });
+// This module is unused in the code under test, but itself imports code that
+// the transpiler struggles with:
+jest.mock("../db/tables/featureFlags", () => ({}));
 
 test('EmailUtils.sendEmail before .init() fails', async () => {
   expect.assertions(1);

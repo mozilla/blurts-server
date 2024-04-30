@@ -4,9 +4,9 @@
 
 import {
   getOneL10nBundleInNodeContext,
-  getSpecificL10nSync,
-} from "../mockL10n";
+  getL10n,
+} from "../../l10n/storybookAndJest";
 
 export const getL10nBundles = getOneL10nBundleInNodeContext;
 
-export const getL10n = getSpecificL10nSync;
+export const getL10n = getL10n;
