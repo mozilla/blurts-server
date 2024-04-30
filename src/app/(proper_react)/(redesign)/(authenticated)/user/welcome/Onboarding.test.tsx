@@ -214,7 +214,7 @@ it("when a user moves focus away from the first name field, it should show an in
   expect(firstNameField.getAttribute("aria-invalid")).toBe("true");
 });
 
-it("form input elements have invalid state if left empty on step 2", async () => {
+it("mandatory form input elements have invalid state if left empty on step 2", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   const { container } = render(<ComposedOnboarding stepId="enterInfo" />);
@@ -237,6 +237,25 @@ it("form input elements have invalid state if left empty on step 2", async () =>
   expect(lastNameInput.getAttribute("aria-invalid")).toBe("true");
   expect(locationInput.getAttribute("aria-invalid")).toBe("true");
   expect(dateInput?.getAttribute("aria-invalid")).toBe("true");
+});
+
+it("optional form input elements don’t have invalid state if left empty on step 2", async () => {
+  const user = userEvent.setup();
+  const ComposedOnboarding = composeStory(Onboarding, Meta);
+  render(<ComposedOnboarding stepId="enterInfo" />);
+
+  const middleNameInput = screen.getByPlaceholderText("Enter middle name");
+  const nameSuffixInput = screen.getByPlaceholderText("Enter suffix");
+  expect(middleNameInput.getAttribute("aria-invalid")).toBe(null);
+  expect(nameSuffixInput.getAttribute("aria-invalid")).toBe(null);
+
+  const proceedButton = screen.getByRole("button", {
+    name: "Find exposures",
+  });
+  await user.click(proceedButton);
+
+  expect(middleNameInput.getAttribute("aria-invalid")).toBe(null);
+  expect(nameSuffixInput.getAttribute("aria-invalid")).toBe(null);
 });
 
 it("passes the axe accessibility test suite on step 3", async () => {
@@ -350,24 +369,33 @@ it("sends telemetry to Glean when entering info", async () => {
   render(<ComposedOnboarding stepId="enterInfo" />);
 
   const firstNameField = screen.getByLabelText("First name*");
+  const middleNameField = screen.getByLabelText("Middle name");
   const lastNameField = screen.getByLabelText("Last name*");
+  const nameSuffixField = screen.getByLabelText("Suffix");
   const dobField = screen.getByLabelText("Date of birth*");
   await user.type(firstNameField, "User");
+  await user.type(middleNameField, "Middle");
   await user.type(lastNameField, "Name");
+  await user.type(nameSuffixField, "Suffix");
   await user.type(dobField, "2000-01-01");
   await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
 
-  ["first_name", "last_name", "location", "date_of_birth"].forEach(
-    (inputKey) => {
-      expect(mockedRecord).toHaveBeenCalledWith(
-        "field",
-        "focus",
-        expect.objectContaining({
-          field_id: inputKey,
-        }),
-      );
-    },
-  );
+  [
+    "first_name",
+    "middle_name",
+    "last_name",
+    "name_suffix",
+    "location",
+    "date_of_birth",
+  ].forEach((inputKey) => {
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "field",
+      "focus",
+      expect.objectContaining({
+        field_id: inputKey,
+      }),
+    );
+  });
 });
 
 it("sends telemetry to Glean editing info", async () => {
@@ -388,10 +416,14 @@ it("sends telemetry to Glean editing info", async () => {
   });
 
   const firstNameField = screen.getByLabelText("First name*");
+  const middleNameField = screen.getByLabelText("Middle name");
   const lastNameField = screen.getByLabelText("Last name*");
+  const nameSuffixField = screen.getByLabelText("Suffix");
   const dobField = screen.getByLabelText("Date of birth*");
   await user.type(firstNameField, "User");
+  await user.type(middleNameField, "Middle");
   await user.type(lastNameField, "Name");
+  await user.type(nameSuffixField, "Suffix");
   await user.type(dobField, "2000-01-01");
   await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
   await user.click(proceedButton);
@@ -436,10 +468,14 @@ it("sends telemetry to Glean when starting the scan", async () => {
   });
 
   const firstNameField = screen.getByLabelText("First name*");
+  const middleNameField = screen.getByLabelText("Middle name");
   const lastNameField = screen.getByLabelText("Last name*");
+  const nameSuffixField = screen.getByLabelText("Suffix");
   const dobField = screen.getByLabelText("Date of birth*");
   await user.type(firstNameField, "User");
+  await user.type(middleNameField, "Middle");
   await user.type(lastNameField, "Name");
+  await user.type(nameSuffixField, "Suffix");
   await user.type(dobField, "2000-01-01");
   await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
   await user.click(proceedButton);

@@ -21,6 +21,7 @@ export const Onboarding: Story = {
       dataBrokerCount={190}
       breachesTotalCount={678}
       previousRoute={props.previousRoute}
+      enabledFeatureFlags={["BrokerScanOptionalInfo"]}
     />
   ),
 };
