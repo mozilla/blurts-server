@@ -36,7 +36,7 @@ export const DataBrokerProfiles = (props: Props) => {
       nextHiddenDataBroker?.setAttribute("tabindex", "-1");
       nextHiddenDataBroker?.focus();
     }
-  }, [showAllProfiles]);
+  }, [showAllProfiles, nextHiddenDataBroker]);
 
   return (
     <div className={styles.dataBrokerProfileCardsWapper}>
