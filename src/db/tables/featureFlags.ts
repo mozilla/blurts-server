@@ -103,7 +103,7 @@ export async function getFeatureFlagData(
   );
 }
 
-async function getFeatureFlagByName(name: string) {
+export async function getFeatureFlagByName(name: string) {
   logger.info("getFeatureFlagByName", name);
   const res = await knex("feature_flags").where("name", name);
 
