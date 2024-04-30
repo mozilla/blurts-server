@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { it, expect } from "@jest/globals";
-import { render, screen } from "@testing-library/react";
+import { getByText, queryByText, render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
@@ -174,6 +174,74 @@ it("confirm dialog is showing on step 2", async () => {
 
   expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   expect(screen.queryByText("Is this correct?")).not.toBeInTheDocument();
+});
+
+it("confirm dialog is showing mandatory user information on step 2", async () => {
+  const user = userEvent.setup();
+  const ComposedOnboarding = composeStory(Onboarding, Meta);
+  render(<ComposedOnboarding stepId="enterInfo" />);
+
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+
+  const firstNameField = screen.getByLabelText("First name*");
+  const lastNameField = screen.getByLabelText("Last name*");
+  const proceedButton = screen.getByRole("button", {
+    name: "Find exposures",
+  });
+  const dobField = screen.getByLabelText("Date of birth*");
+  await user.type(firstNameField, "User");
+  await user.type(lastNameField, "Name");
+  await user.type(dobField, "2000-01-01");
+  await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
+
+  await user.click(proceedButton);
+
+  const dialog = screen.getByRole("dialog");
+  expect(dialog).toBeInTheDocument();
+  expect(queryByText(dialog, "Is this correct?")).toBeInTheDocument();
+
+  expect(getByText(dialog, /First name/i)).toBeInTheDocument();
+  expect(queryByText(dialog, /Middle name/i)).not.toBeInTheDocument();
+  expect(getByText(dialog, /Last name/i)).toBeInTheDocument();
+  expect(queryByText(dialog, /Suffix/i)).not.toBeInTheDocument();
+  expect(getByText(dialog, /Date of birth/i)).toBeInTheDocument();
+  expect(getByText(dialog, /City and state/i)).toBeInTheDocument();
+});
+
+it("confirm dialog is showing optional user information on step 2", async () => {
+  const user = userEvent.setup();
+  const ComposedOnboarding = composeStory(Onboarding, Meta);
+  render(<ComposedOnboarding stepId="enterInfo" />);
+
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+
+  const firstNameField = screen.getByLabelText("First name*");
+  const middleNameField = screen.getByLabelText("Middle name");
+  const lastNameField = screen.getByLabelText("Last name*");
+  const nameSuffixField = screen.getByLabelText("Suffix");
+  const proceedButton = screen.getByRole("button", {
+    name: "Find exposures",
+  });
+  const dobField = screen.getByLabelText("Date of birth*");
+  await user.type(firstNameField, "User");
+  await user.type(middleNameField, "Middle");
+  await user.type(lastNameField, "Name");
+  await user.type(nameSuffixField, "Jr.");
+  await user.type(dobField, "2000-01-01");
+  await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
+
+  await user.click(proceedButton);
+
+  const dialog = screen.getByRole("dialog");
+  expect(dialog).toBeInTheDocument();
+  expect(getByText(dialog, "Is this correct?")).toBeInTheDocument();
+
+  expect(getByText(dialog, /First name/i)).toBeInTheDocument();
+  expect(getByText(dialog, /Middle name/i)).toBeInTheDocument();
+  expect(getByText(dialog, /Last name/i)).toBeInTheDocument();
+  expect(getByText(dialog, /Suffix/i)).toBeInTheDocument();
+  expect(getByText(dialog, /Date of birth/i)).toBeInTheDocument();
+  expect(getByText(dialog, /City and state/i)).toBeInTheDocument();
 });
 
 it("doesn't allow proceeding without typing a valid location", async () => {
@@ -376,7 +444,7 @@ it("sends telemetry to Glean when entering info", async () => {
   await user.type(firstNameField, "User");
   await user.type(middleNameField, "Middle");
   await user.type(lastNameField, "Name");
-  await user.type(nameSuffixField, "Suffix");
+  await user.type(nameSuffixField, "Jr.");
   await user.type(dobField, "2000-01-01");
   await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
 
@@ -423,7 +491,7 @@ it("sends telemetry to Glean editing info", async () => {
   await user.type(firstNameField, "User");
   await user.type(middleNameField, "Middle");
   await user.type(lastNameField, "Name");
-  await user.type(nameSuffixField, "Suffix");
+  await user.type(nameSuffixField, "Jr.");
   await user.type(dobField, "2000-01-01");
   await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
   await user.click(proceedButton);
@@ -475,7 +543,7 @@ it("sends telemetry to Glean when starting the scan", async () => {
   await user.type(firstNameField, "User");
   await user.type(middleNameField, "Middle");
   await user.type(lastNameField, "Name");
-  await user.type(nameSuffixField, "Suffix");
+  await user.type(nameSuffixField, "Jr.");
   await user.type(dobField, "2000-01-01");
   await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
   await user.click(proceedButton);

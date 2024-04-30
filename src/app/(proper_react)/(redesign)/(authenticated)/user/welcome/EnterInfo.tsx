@@ -316,14 +316,17 @@ export const EnterInfo = ({
       <p>{l10n.getString("onboarding-enter-details-comfirm-dialog-text")}</p>
       <div className={styles.dialogContents}>
         <dl className={styles.infoList}>
-          {userDetailsData.map(({ key, label, displayValue }) => (
-            <span key={key} className={styles.infoItem}>
-              <dt>{label}:</dt>
-              <dd>
-                <strong>{displayValue}</strong>
-              </dd>
-            </span>
-          ))}
+          {userDetailsData.map(
+            ({ key, label, displayValue }) =>
+              displayValue && (
+                <span key={key} className={styles.infoItem}>
+                  <dt>{label}:</dt>
+                  <dd>
+                    <strong>{displayValue}</strong>
+                  </dd>
+                </span>
+              ),
+          )}
         </dl>
       </div>
       <div className={styles.stepButtonWrapper}>
