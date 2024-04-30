@@ -134,7 +134,7 @@ export async function createProfile(
 ): Promise<number> {
   const requestBody = {
     first_name: profileData.first_name,
-    middle_name: profileData.middle_name,
+    ...(profileData.middle_name && { middle_name: profileData.middle_name }),
     last_name:
       `${profileData.last_name} ${profileData.name_suffix ?? ""}`.trim(),
     birth_date: profileData.birth_date,
