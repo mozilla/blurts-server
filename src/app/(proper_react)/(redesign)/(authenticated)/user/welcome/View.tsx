@@ -46,6 +46,9 @@ export const View = ({
   const [currentStep, setCurrentStep] = useState<StepId>(stepId);
   const router = useRouter();
   const recordTelemetry = useTelemetry();
+  const optionalInfoIsEnabled = enabledFeatureFlags.includes(
+    "BrokerScanOptionalInfo",
+  );
 
   useEffect(() => {
     let pageName = "welcome";
@@ -87,7 +90,7 @@ export const View = ({
             setCurrentStep("getStarted");
           }
         }}
-        enabledFeatureFlags={enabledFeatureFlags}
+        optionalInfoIsEnabled={optionalInfoIsEnabled}
       />
     ) : (
       <GetStarted

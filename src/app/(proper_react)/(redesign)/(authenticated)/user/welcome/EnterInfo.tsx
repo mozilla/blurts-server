@@ -30,7 +30,6 @@ import { CONST_URL_PRIVACY_POLICY } from "../../../../../../constants";
 
 import styles from "./EnterInfo.module.scss";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
-import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -60,7 +59,7 @@ export type Props = {
   user: Session["user"];
   skipInitialStep: boolean;
   previousRoute: string | null;
-  enabledFeatureFlags: FeatureFlagName[];
+  optionalInfoIsEnabled: boolean;
 };
 
 export const EnterInfo = ({
@@ -68,14 +67,15 @@ export const EnterInfo = ({
   onGoBack,
   skipInitialStep,
   previousRoute,
-  enabledFeatureFlags,
+  optionalInfoIsEnabled,
 }: Props) => {
   const [firstName, setFirstName] = useState("");
-  const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [nameSuffix, setNameSuffix] = useState("");
   const [location, setLocation] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
+  const [middleName, setMiddleName] = useState("");
+  const [nameSuffix, setNameSuffix] = useState("");
+
   const [invalidInputs, setInvalidInputs] = useState<Array<string>>([]);
   const [requestingScan, setRequestingScan] = useState(false);
 
@@ -110,9 +110,6 @@ export const EnterInfo = ({
   );
 
   const l10n = useL10n();
-  const optionalInfoEnabled = enabledFeatureFlags.includes(
-    "BrokerScanOptionalInfo",
-  );
   const userDetailsData = [
     {
       label: l10n.getString("onboarding-enter-details-label-first-name"),
@@ -137,7 +134,7 @@ export const EnterInfo = ({
       ),
       value: middleName,
       displayValue: middleName,
-      isEnabled: optionalInfoEnabled,
+      isEnabled: optionalInfoIsEnabled,
       isValid: true,
       isRequired: false,
       onChange: setMiddleName,
@@ -165,7 +162,7 @@ export const EnterInfo = ({
       ),
       value: nameSuffix,
       displayValue: nameSuffix,
-      isEnabled: optionalInfoEnabled,
+      isEnabled: optionalInfoIsEnabled,
       isValid: true,
       isRequired: false,
       onChange: setNameSuffix,
@@ -213,14 +210,15 @@ export const EnterInfo = ({
     setRequestingScan(true);
 
     const { city, state } = getDetailsFromLocationString(location);
-    const userInfo = {
+    const userInfo: UserInfo = {
       firstName: firstName.trim(),
       middleName: middleName.trim(),
       lastName: lastName.trim(),
+      nameSuffix: nameSuffix.trim(),
       city,
-      state,
+      state: state as UserInfo["state"],
       dateOfBirth,
-    } as UserInfo;
+    };
 
     void createProfileAndStartScan(userInfo)
       .then(() => {
@@ -391,7 +389,7 @@ export const EnterInfo = ({
 
       <form onSubmit={handleOnSubmit}>
         <div
-          className={`${styles.inputContainer} ${optionalInfoEnabled ? styles.optionalInfoEnabled : ""}`}
+          className={`${styles.inputContainer} ${optionalInfoIsEnabled ? styles.optionalInfoIsEnabled : ""}`}
         >
           {userDetailsData.map(
             ({

@@ -116,7 +116,7 @@
   :nth-child(even) {
     grid-column: 4 / 7;
   }
-  &.optionalInfoEnabled {
+  &.optionalInfoIsEnabled {
     :nth-child(3) {
       grid-column: 1 / 5;
     }

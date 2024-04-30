@@ -24,6 +24,7 @@ import { StateAbbr } from "../../../../../../utils/states";
 import { ISO8601DateString } from "../../../../../../utils/parse";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
+import { getEnabledFeatureFlags } from "../../../../../../db/tables/featureFlags";
 
 export interface WelcomeScanBody {
   success: boolean;
@@ -35,6 +36,8 @@ export interface UserInfo {
   city: string;
   state: StateAbbr;
   dateOfBirth: ISO8601DateString;
+  middleName?: string;
+  nameSuffix?: string;
 }
 
 export async function POST(
@@ -67,15 +70,32 @@ export async function POST(
     }
   });
 
-  const { firstName, lastName, city, state, dateOfBirth } = params;
+  const {
+    firstName,
+    middleName,
+    lastName,
+    nameSuffix,
+    city,
+    state,
+    dateOfBirth,
+  } = params;
   if (!meetsAgeRequirement(dateOfBirth)) {
     throw new Error(`User does not meet the age requirement: ${dateOfBirth}`);
   }
+
+  const enabledFlags = await getEnabledFeatureFlags({
+    email: session.user.email,
+  });
+  const optionalInfoIsEnabled = enabledFlags.includes("BrokerScanOptionalInfo");
   const profileData: CreateProfileRequest = {
     first_name: firstName,
     last_name: lastName,
     addresses: [{ city, state }],
     birth_date: dateOfBirth,
+    ...(optionalInfoIsEnabled && {
+      middle_name: middleName,
+      name_suffix: nameSuffix,
+    }),
   };
 
   if (typeof session?.user?.subscriber.fxa_uid === "string") {
