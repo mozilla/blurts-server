@@ -30,6 +30,7 @@ import { CONST_URL_PRIVACY_POLICY } from "../../../../../../constants";
 
 import styles from "./EnterInfo.module.scss";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
+import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -59,6 +60,7 @@ export type Props = {
   user: Session["user"];
   skipInitialStep: boolean;
   previousRoute: string | null;
+  enabledFeatureFlags: FeatureFlagName[];
 };
 
 export const EnterInfo = ({
@@ -66,9 +68,12 @@ export const EnterInfo = ({
   onGoBack,
   skipInitialStep,
   previousRoute,
+  enabledFeatureFlags,
 }: Props) => {
   const [firstName, setFirstName] = useState("");
+  const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [nameSuffix, setNameSuffix] = useState("");
   const [location, setLocation] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [invalidInputs, setInvalidInputs] = useState<Array<string>>([]);
@@ -105,6 +110,9 @@ export const EnterInfo = ({
   );
 
   const l10n = useL10n();
+  const optionalInfoEnabled = enabledFeatureFlags.includes(
+    "BrokerScanOptionalInfo",
+  );
   const userDetailsData = [
     {
       label: l10n.getString("onboarding-enter-details-label-first-name"),
@@ -115,8 +123,24 @@ export const EnterInfo = ({
       ),
       value: firstName,
       displayValue: firstName,
+      isEnabled: true,
       isValid: firstName.trim() !== "",
+      isRequired: true,
       onChange: setFirstName,
+    },
+    {
+      label: l10n.getString("onboarding-enter-details-label-middle-name"),
+      key: "middle_name",
+      type: "text",
+      placeholder: l10n.getString(
+        "onboarding-enter-details-placeholder-middle-name",
+      ),
+      value: middleName,
+      displayValue: middleName,
+      isEnabled: optionalInfoEnabled,
+      isValid: true,
+      isRequired: false,
+      onChange: setMiddleName,
     },
     {
       label: l10n.getString("onboarding-enter-details-label-last-name"),
@@ -127,8 +151,24 @@ export const EnterInfo = ({
       ),
       value: lastName,
       displayValue: lastName,
+      isEnabled: true,
       isValid: lastName.trim() !== "",
+      isRequired: true,
       onChange: setLastName,
+    },
+    {
+      label: l10n.getString("onboarding-enter-details-label-name-suffix"),
+      key: "name_suffix",
+      type: "text",
+      placeholder: l10n.getString(
+        "onboarding-enter-details-placeholder-name-suffix",
+      ),
+      value: nameSuffix,
+      displayValue: nameSuffix,
+      isEnabled: optionalInfoEnabled,
+      isValid: true,
+      isRequired: false,
+      onChange: setNameSuffix,
     },
     {
       label: l10n.getString("onboarding-enter-details-label-date-of-birth"),
@@ -140,7 +180,9 @@ export const EnterInfo = ({
         dateStyle: "medium",
         timeZone: "UTC",
       }),
+      isEnabled: true,
       isValid: meetsAgeRequirement(dateOfBirth),
+      isRequired: true,
       onChange: setDateOfBirth,
     },
     {
@@ -152,10 +194,12 @@ export const EnterInfo = ({
       ),
       value: location,
       displayValue: location,
+      isEnabled: true,
       isValid: location.trim() !== "",
+      isRequired: true,
       onChange: setLocation,
     },
-  ];
+  ].filter((userDetail) => userDetail.isEnabled);
 
   const getInvalidFields = () =>
     userDetailsData.filter(({ isValid }) => !isValid).map(({ key }) => key);
@@ -171,6 +215,7 @@ export const EnterInfo = ({
     const { city, state } = getDetailsFromLocationString(location);
     const userInfo = {
       firstName: firstName.trim(),
+      middleName: middleName.trim(),
       lastName: lastName.trim(),
       city,
       state,
@@ -345,9 +390,20 @@ export const EnterInfo = ({
       </p>
 
       <form onSubmit={handleOnSubmit}>
-        <div className={styles.inputContainer}>
+        <div
+          className={`${styles.inputContainer} ${optionalInfoEnabled ? styles.optionalInfoEnabled : ""}`}
+        >
           {userDetailsData.map(
-            ({ key, label, onChange, placeholder, isValid, type, value }) => {
+            ({
+              key,
+              label,
+              onChange,
+              placeholder,
+              isValid,
+              isRequired,
+              type,
+              value,
+            }) => {
               const isInvalid = !isValid && invalidInputs.includes(key);
               return key === "location" ? (
                 <LocationAutocompleteInput
@@ -356,7 +412,7 @@ export const EnterInfo = ({
                     "onboarding-enter-details-input-error-message-location",
                   )}
                   label={label}
-                  isRequired={true}
+                  isRequired={isRequired}
                   onChange={onChange}
                   placeholder={placeholder}
                   isInvalid={isInvalid}
@@ -379,7 +435,7 @@ export const EnterInfo = ({
                     "onboarding-enter-details-input-error-message-generic",
                   )}
                   label={label}
-                  isRequired={true}
+                  isRequired={isRequired}
                   onChange={onChange}
                   placeholder={placeholder}
                   type={type}

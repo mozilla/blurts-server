@@ -40,7 +40,8 @@ export type FeatureFlagName =
   | "CsatSurvey"
   | "CancellationFlow"
   | "ConfirmCancellation"
-  | "LastScanDateBadge";
+  | "LastScanDateBadge"
+  | "BrokerScanOptionalInfo";
 
 export async function getEnabledFeatureFlags(
   options:
