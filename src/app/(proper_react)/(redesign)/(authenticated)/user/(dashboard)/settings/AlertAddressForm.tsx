@@ -31,7 +31,7 @@ import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 
 export type Props = {
   breachAlertsEmailsAllowed: boolean | null;
-  monitorReport: boolean | null;
+  monitorReportAllowed: boolean | null;
   enabledFeatureFlags: FeatureFlagName[];
 };
 
@@ -43,12 +43,12 @@ export const AlertAddressForm = (props: Props) => {
 
   const defaultActivateAlertEmail =
     typeof props.breachAlertsEmailsAllowed === "boolean";
-
-  const defaultMonitorReport = props.breachAlertsEmailsAllowed ?? false;
-
   const [activateAlertEmail, setActivateAlertEmail] = useState<boolean>(
     defaultActivateAlertEmail,
   );
+
+  // Have monitor monthly reports enabled by default
+  const defaultMonitorReport = props.monitorReportAllowed ?? true;
   const [activateMonthlyMonitorReport, setActivateMonthlyMonitorReport] =
     useState(defaultMonitorReport);
 
@@ -100,7 +100,7 @@ export const AlertAddressForm = (props: Props) => {
     setActivateAlertEmail((prevActivateAlertEmail) => {
       const newValue = !prevActivateAlertEmail;
       if (newValue) {
-        state.setSelectedValue("primary");
+        state.setSelectedValue("affected");
       } else {
         state.setSelectedValue("null");
       }
