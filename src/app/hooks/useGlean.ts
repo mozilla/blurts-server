@@ -9,9 +9,14 @@ import Glean from "@mozilla/glean/web";
 import EventMetricType from "@mozilla/glean/private/metrics/event";
 import type { GleanMetricMap } from "../../telemetry/generated/_map";
 import { PublicEnvContext } from "../../contextProviders/public-env";
+import { useSession } from "next-auth/react";
+import { hasPremium } from "../functions/universal/user";
 
 export const useGlean = (experimentationId?: string) => {
   const { PUBLIC_APP_ENV } = useContext(PublicEnvContext);
+
+  const session = useSession();
+  const isPremiumUser = hasPremium(session.data?.user);
 
   // Initialize Glean only on the first render of our custom hook.
   useEffect(() => {
@@ -62,6 +67,11 @@ export const useGlean = (experimentationId?: string) => {
     // Instead of the specific type definitions we generated in the npm script
     // `build-glean-types`, Glean takes a non-specific "ExtraArgs" type as
     // parameter to `record`.
+
+    // Record the `plan_tier` key on all events.
+    // @ts-expect-error Not present in map, but exists on all events.
+    data.plan_tier = isPremiumUser ? "Plus" : "Free";
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mod[event].record(data as any);
   };
