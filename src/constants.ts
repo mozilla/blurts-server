@@ -28,3 +28,4 @@ export const CONST_URL_PRIVACY_POLICY =
   "https://www.mozilla.org/privacy/subscription-services/";
 export const CONST_URL_MONITOR_GITHUB =
   "https://github.com/mozilla/blurts-server";
+export const CONST_DAY_MILLISECONDS = 24 * 60 * 60 * 1000;

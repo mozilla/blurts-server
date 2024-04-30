@@ -26,6 +26,7 @@ exposure-card-other = Altero
 # $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
 exposure-card-description-data-breach-action-needed = Tu informationes era exponite in le <data_breach_link>{ $data_breach_company } violation de datos le { $data_breach_date }.</data_breach_link> Nos te ducera per le passos pro corriger los.
+exposure-card-description-data-breach-fixed = Tu ha facite le passos necessari pro remediar a <data_breach_link>iste violation</data_breach_link>. Nos continuemente surveliara pro violationes de datos e te avisara de ulle nove expositiones.
 exposure-card-your-exposed-info = Tu informationes exponite:
 exposure-card-exposure-type-data-broker = Informationes a vender
 exposure-card-exposure-type-data-breach = Violation de datos

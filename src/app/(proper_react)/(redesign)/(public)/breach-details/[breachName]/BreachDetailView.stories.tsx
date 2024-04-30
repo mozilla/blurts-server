@@ -4,19 +4,19 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { BreachDetailsView, Props as ViewProps } from "./BreachDetailView";
-import { getSpecificL10nSync } from "../../../../../functions/server/mockL10n";
+import { getL10n } from "../../../../../functions/l10n/storybookAndJest";
 import { PublicShell } from "../../PublicShell";
 import { createRandomHibpListing } from "../../../../../../apiMocks/mockData";
 
 const meta: Meta<typeof BreachDetailsView> = {
   title: "Pages/Public/Breach listing",
   component: (props: ViewProps) => (
-    <PublicShell l10n={getSpecificL10nSync("en")}>
+    <PublicShell l10n={getL10n("en")}>
       <BreachDetailsView {...props} />
     </PublicShell>
   ),
   args: {
-    l10n: getSpecificL10nSync(),
+    l10n: getL10n(),
   },
 };
 

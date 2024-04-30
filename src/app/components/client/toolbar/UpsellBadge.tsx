@@ -6,20 +6,24 @@
 
 import { useContext, useRef } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import { useOverlayTrigger, useToggleButton } from "react-aria";
 import { useOverlayTriggerState, useToggleState } from "react-stately";
 import { UpsellDialog } from "./UpsellDialog";
-import { Button } from "../client/Button";
-import { useL10n } from "../../hooks/l10n";
+import { Button } from "../Button";
+import { useL10n } from "../../../hooks/l10n";
 import {
   canSubscribeToPremium,
   hasPremium,
-} from "../../functions/universal/user";
+} from "../../../functions/universal/user";
 import styles from "./UpsellBadge.module.scss";
-import { useTelemetry } from "../../hooks/useTelemetry";
-import { CountryCodeContext } from "../../../contextProviders/country-code";
+import LastScanIcon from "./images/icon-last-scan.svg";
+import { useTelemetry } from "../../../hooks/useTelemetry";
+import { CountryCodeContext } from "../../../../contextProviders/country-code";
 import { useSession } from "next-auth/react";
-import { sendGAEvent } from "./GoogleAnalyticsWorkaround";
+import { sendGAEvent } from "../GoogleAnalyticsWorkaround";
+import { getLocale } from "../../../functions/universal/getLocale";
+import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 export type UpsellButtonProps = {
   monthlySubscriptionUrl: string;
@@ -74,11 +78,10 @@ export function UpsellButton(
   );
 }
 
-export type UpsellToggleButton = UpsellButtonProps & {
+export type UpsellToggleButtonProps = UpsellBadgeProps & {
   hasPremium: boolean;
 };
-
-function UpsellToggleButton(props: UpsellToggleButton) {
+function UpsellToggleButton(props: UpsellToggleButtonProps) {
   const l10n = useL10n();
   const ref = useRef<HTMLButtonElement>(null);
   const state = useToggleState({
@@ -101,21 +104,34 @@ function UpsellToggleButton(props: UpsellToggleButton) {
     state,
     ref,
   );
+  const scanDateFormatter = new Intl.DateTimeFormat(getLocale(l10n), {
+    dateStyle: "medium",
+  });
 
   return (
     <>
-      <button
-        {...buttonProps}
-        className={`${styles.upsellBadge} ${
-          state.isSelected ? styles.isSelected : ""
-        }`}
-        ref={ref}
-      >
-        {state.isSelected
-          ? l10n.getString("plus-indicator-label-active")
-          : l10n.getString("plus-indicator-label-inactive")}
-        <span className={styles.toggleIndicator} />
-      </button>
+      <div className={styles.upsellWrapper}>
+        <button
+          {...buttonProps}
+          className={`${styles.upsellBadge} ${
+            state.isSelected ? styles.isSelected : ""
+          }`}
+          ref={ref}
+        >
+          {state.isSelected
+            ? l10n.getString("plus-indicator-label-active")
+            : l10n.getString("plus-indicator-label-inactive")}
+          <span className={styles.toggleIndicator} />
+        </button>
+        {props.experimentData?.["last-scan-date"].enabled &&
+          props.lastScanDate !== null && (
+            <span className={styles.lastScanIndicator}>
+              <Image src={LastScanIcon} alt="" width={31} height={25} />
+              <b>{l10n.getString("plus-indicator-scan-date-label")}</b>&nbsp;
+              {scanDateFormatter.format(props.lastScanDate)}
+            </span>
+          )}
+      </div>
       {dialogState.isOpen && (
         <UpsellDialog
           {...overlayProps}
@@ -129,7 +145,18 @@ function UpsellToggleButton(props: UpsellToggleButton) {
   );
 }
 
-export function UpsellBadge(props: UpsellButtonProps) {
+export type UpsellBadgeProps = UpsellButtonProps & {
+  lastScanDate: Date | null;
+  /**
+   * Loading the experiment data for <MobileShell> was a bit too invasive for a
+   * feature that has no visible effects on mobile, so this parameter is
+   * optional while we're only looking at the `LastScanDateBadge`. If we do look
+   * at more experiments in the future, make sure to remove the `?` so that
+   * they're actually passed everywhere.
+   */
+  experimentData?: ExperimentData;
+};
+export function UpsellBadge(props: UpsellBadgeProps) {
   const countryCode = useContext(CountryCodeContext);
   const session = useSession();
 

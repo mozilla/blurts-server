@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ReactLocalization } from "@fluent/react";
-import { LocaleData } from "../server/l10n";
+import { LocaleData } from "../l10n";
 
 export function getLocale(
   localeData: LocaleData[] | ReactLocalization,

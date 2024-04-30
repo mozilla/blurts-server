@@ -6,7 +6,7 @@ import styles from "./Shell.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import mozillaLogo from "../images/mozilla-logo.svg";
-import { ExtendedReactLocalization } from "../../hooks/l10n";
+import { ExtendedReactLocalization } from "../../functions/l10n";
 import {
   CONST_URL_SUMO_MONITOR_FAQ,
   CONST_URL_MONITOR_GITHUB,

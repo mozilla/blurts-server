@@ -3,14 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
-
 landing-all-hero-title = Дізнайтеся, де розкрита ваша особиста інформація, та відновіть контроль
 landing-all-hero-lead = Ми перевіряємо випадки витоку даних, щоб дізнатися, чи було розкрито вашу інформацію, і пропонуємо вам способи відновлення контролю.
-
 landing-all-hero-emailform-input-placeholder = yourname@example.com
 landing-all-hero-emailform-input-label = Введіть свою адресу електронної пошти, щоб перевірити наявність витоків даних.
 landing-all-hero-emailform-submit-label = Перевірити безплатно
-
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = розкриттів
 
@@ -52,9 +49,9 @@ landing-all-social-proof-title =
 # $num_countries is the number of countries available.
 landing-all-social-proof-description =
     { $num_countries ->
-        [one] З 2018 року ми допомогли людям з { $num_countries } країни захистити їхні дані після їхнього розголошення.
-        [few] З 2018 року ми допомогли людям з { $num_countries } країн захистити їхні дані після їхнього розголошення.
-       *[many] З 2018 року ми допомогли людям з { $num_countries } країн захистити їхні дані після їхнього розголошення.
+        [one] З 2018 року ми допомогли людям з { $num_countries } країни захистити їхні дані після їх викриття.
+        [few] З 2018 року ми допомогли людям з { $num_countries } країн захистити їхні дані після їх викриття.
+       *[many] З 2018 року ми допомогли людям з { $num_countries } країн захистити їхні дані після їх викриття.
     }
 landing-all-social-proof-press = Про нас пишуть
 
@@ -66,7 +63,5 @@ landing-all-help-protect-you-feature-one = Ми шукатимемо ваші д
 landing-all-help-protect-you-feature-two = Ми допоможемо вам відновити контроль після кожного витоку
 landing-all-help-protect-you-feature-three = Ми постійно відстежуватимемо та надсилатимемо сповіщення про будь-які нові витоки даних
 landing-all-help-protect-you-cta = Підписатися на сповіщення
-
 landing-all-get-started = Розпочніть сканування вашої адреси е-пошти
 landing-all-take-back-data = Відновіть контроль над своїми даними
-
