@@ -22,19 +22,26 @@ export const DataBrokerProfiles = (props: Props) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const [showAllProfiles, setShowAllProfiles] = useState(false);
-
-  const dataBrokerProfilesRef = useRef<HTMLUListElement>(null);
+  const ulRef = useRef<HTMLUListElement>(null);
+  const nextHiddenDataBroker = Array.from(
+    ulRef.current?.getElementsByTagName("li") ?? [],
+  ).find(
+    (liElement) =>
+      getComputedStyle(liElement).getPropertyValue("display") === "none",
+  );
 
   useEffect(() => {
     if (showAllProfiles) {
-      dataBrokerProfilesRef.current?.focus();
+      // React doesn't know which next item is hidden because it's handled via CSS, no errors or warnings resulted from this
+      nextHiddenDataBroker?.setAttribute("tabindex", "-1");
+      nextHiddenDataBroker?.focus();
     }
   }, [showAllProfiles]);
 
   return (
     <div className={styles.dataBrokerProfileCardsWapper}>
       <ul
-        ref={dataBrokerProfilesRef}
+        ref={ulRef}
         tabIndex={showAllProfiles ? -1 : undefined}
         className={`${styles.dataBrokerProfileCards} ${
           showAllProfiles ? styles.showAll : ""
