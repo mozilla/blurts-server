@@ -8,7 +8,7 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "next dev --port=6060",
+    "dev": "npm run build-nimbus && next dev --port=6060",
     "dev:cronjobs": "tsx --tsconfig tsconfig.cronjobs.json src/scripts/cronjobs/*.tsx",
     "dev:nimbus": "node --watch-path config/nimbus.yaml src/scripts/build/nimbusTypes.js",
     "build": "npm run get-location-data && npm run build-glean && npm run build-nimbus && next build && npm run build-cronjobs",
