@@ -82,27 +82,6 @@
   gap: $spacing-lg $spacing-xl;
   padding: $spacing-lg 0;
 
-  @media screen and (max-width: $screen-lg) {
-    grid-template-columns: 1fr;
-  }
-
-  input {
-    min-height: 3rem;
-
-    &::placeholder {
-      // overwrite default opacity for placeholders in Firefox
-      opacity: 1;
-    }
-  }
-
-  input[type="date"] {
-    // remove grey background and align date input value on iOS
-    background: transparent;
-    &::-webkit-date-and-time-value {
-      text-align: start;
-    }
-  }
-
   // Grid item layout for input fields. The child items are:
   // 1. First name
   // 2. Middle name (optional)
@@ -128,6 +107,31 @@
     }
     :nth-child(6) {
       grid-column: 3 / 7;
+    }
+  }
+
+  @media screen and (max-width: $screen-lg) {
+    grid-template-columns: 1fr;
+
+    & > * {
+      grid-column: 1 / 7 !important;
+    }
+  }
+
+  input {
+    min-height: 3rem;
+
+    &::placeholder {
+      // overwrite default opacity for placeholders in Firefox
+      opacity: 1;
+    }
+  }
+
+  input[type="date"] {
+    // remove grey background and align date input value on iOS
+    background: transparent;
+    &::-webkit-date-and-time-value {
+      text-align: start;
     }
   }
 }
