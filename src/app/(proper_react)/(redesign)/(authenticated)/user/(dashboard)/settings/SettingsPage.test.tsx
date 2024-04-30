@@ -193,7 +193,7 @@ it("disables breach alert notification options if a user opts out of breach aler
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           subscriber: {
@@ -245,7 +245,7 @@ it("preselects primary email alert option", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           subscriber: {
@@ -279,7 +279,7 @@ it("preselects affected email address option", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           subscriber: {
@@ -316,7 +316,7 @@ it("unselects the breach alerts checkbox and sends a null value to the API", asy
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           subscriber: {
@@ -367,7 +367,7 @@ it("preselects the affected email comms option after a user decides to enable br
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           subscriber: {
@@ -466,7 +466,7 @@ it("checks that monthly monitor report is enabled", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           subscriber: {
@@ -507,7 +507,7 @@ it("sends an API call to disable monthly monitor reports", async () => {
   render(
     <TestComponentWrapper>
       <SettingsView
-        l10n={getSpecificL10nSync()}
+        l10n={getL10n()}
         user={{
           ...mockedUser,
           subscriber: {
