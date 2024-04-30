@@ -5,7 +5,7 @@
 import { notFound } from "next/navigation";
 import { getBreachByName } from "../../../../../../utils/hibp";
 import { getBreaches } from "../../../../../functions/server/getBreaches";
-import { getL10n } from "../../../../../functions/server/l10n";
+import { getL10n } from "../../../../../functions/l10n/serverComponents";
 import { BreachDetailsView } from "./BreachDetailView";
 
 export async function generateMetadata(props: {

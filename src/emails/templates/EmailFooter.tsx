@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import React from "react";
-import { ExtendedReactLocalization } from "../../app/hooks/l10n";
+import { ExtendedReactLocalization } from "../../app/functions/l10n";
 import {
   CONST_URL_PRIVACY_POLICY,
   CONST_URL_SUMO_MONITOR_SUPPORT,

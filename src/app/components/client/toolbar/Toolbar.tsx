@@ -10,7 +10,7 @@ import { UserMenu } from "./UserMenu";
 import { Session } from "next-auth";
 import { AppPicker } from "./AppPicker";
 import { UpsellBadge } from "./UpsellBadge";
-import { FeatureFlagName } from "../../../../db/tables/featureFlags";
+import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   user: Session["user"];
@@ -22,7 +22,7 @@ export type Props = {
   };
   fxaSettingsUrl: string;
   lastScanDate: Date | null;
-  enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData;
   children?: ReactNode;
 };
 
@@ -36,7 +36,7 @@ export const Toolbar = (props: Props) => {
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
           subscriptionBillingAmount={props.subscriptionBillingAmount}
           lastScanDate={props.lastScanDate}
-          enabledFeatureFlags={props.enabledFeatureFlags}
+          experimentData={props.experimentData}
         />
         <AppPicker />
         {props.user && (

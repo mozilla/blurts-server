@@ -10,7 +10,7 @@ import { renderEmail } from "../../../../../../emails/renderEmail";
 import { VerifyEmailAddressEmail } from "../../../../../../emails/templates/verifyEmailAddress/VerifyEmailAddressEmail";
 import { sanitizeSubscriberRow } from "../../../../../functions/server/sanitize";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
-import { getL10n } from "../../../../../functions/server/l10n";
+import { getL10n } from "../../../../../functions/l10n/serverComponents";
 import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
 import { ReactNode } from "react";
 import { SubscriberRow } from "knex/types/tables";

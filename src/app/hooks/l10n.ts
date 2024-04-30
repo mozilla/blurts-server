@@ -4,28 +4,9 @@
 
 "use client";
 
-import { ReactLocalization, useLocalization } from "@fluent/react";
+import { useLocalization } from "@fluent/react";
 import { Fragment, createElement, useEffect, useState } from "react";
-
-/**
- * Equivalent to ReactLocalization.getString, but returns a React Fragment.
- *
- * This is useful because it allows you to replace tags in localised strings
- * with HTML elements, without needing to reach out to <Localized>.
- *
- * (This method got booted out of @fluent/react proper because it's so simple,
- * but it's pretty useful:
- * https://github.com/projectfluent/fluent.js/pull/595#discussion_r967011632)
- */
-export type GetFragment = (
-  id: Parameters<ReactLocalization["getString"]>[0],
-  args?: Parameters<ReactLocalization["getElement"]>[2],
-  fallback?: Parameters<ReactLocalization["getString"]>[2],
-) => ReturnType<ReactLocalization["getElement"]> | null;
-
-export type ExtendedReactLocalization = ReactLocalization & {
-  getFragment: GetFragment;
-};
+import { ExtendedReactLocalization, GetFragment } from "../functions/l10n";
 
 export const useL10n = (): ExtendedReactLocalization => {
   const [isMounted, setIsMounted] = useState(false);

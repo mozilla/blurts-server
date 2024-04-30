@@ -5,7 +5,7 @@
 import styles from "./LandingView.module.scss";
 import { HeroImageAll, HeroImagePremium } from "./HeroImage";
 import { SignUpForm } from "./SignUpForm";
-import { ExtendedReactLocalization } from "../../../hooks/l10n";
+import { ExtendedReactLocalization } from "../../../functions/l10n";
 import { PlansTable } from "./PlansTable";
 import { useId } from "react";
 import {
@@ -221,11 +221,11 @@ export const View = (props: Props) => {
             <p className={styles.label}>
               {props.l10n.getString("landing-all-social-proof-press")}
             </p>
-            <Image src={ForbesLogo} alt="" />
-            <Image src={TechCruchLogo} alt="" />
-            <Image src={PCMagLogo} alt="" />
-            <Image src={CNETLogo} alt="" />
-            <Image src={GoogleLogo} alt="" />
+            <Image src={ForbesLogo} alt="Forbes" />
+            <Image src={TechCruchLogo} alt="Tech Crunch" />
+            <Image src={PCMagLogo} alt="PC Magazine" />
+            <Image src={CNETLogo} alt="CNET" />
+            <Image src={GoogleLogo} alt="Google" />
           </div>
         </div>
 

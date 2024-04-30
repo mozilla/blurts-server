@@ -15,7 +15,7 @@ import {
   removeOneSecondaryEmail,
   getEmailById,
 } from "../../../../../db/tables/emailAddresses.js";
-import { getL10n } from "../../../../functions/server/l10n";
+import { getL10n } from "../../../../functions/l10n/serverComponents";
 
 interface EmailDeleteRequest {
   emailId: number;

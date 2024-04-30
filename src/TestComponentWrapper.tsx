@@ -7,9 +7,9 @@ import { L10nProvider } from "./contextProviders/localization";
 import { PublicEnvProvider } from "./contextProviders/public-env";
 import { SessionProvider } from "next-auth/react";
 import { ReactAriaI18nProvider } from "./contextProviders/react-aria";
-import { getSpecificL10nBundlesSync } from "./app/functions/server/mockL10n";
+import { getL10nBundles } from "./app/functions/l10n/storybookAndJest";
 
-const l10nBundles = getSpecificL10nBundlesSync();
+const l10nBundles = getL10nBundles();
 
 export const TestComponentWrapper = (props: { children: ReactNode }) => {
   return (
