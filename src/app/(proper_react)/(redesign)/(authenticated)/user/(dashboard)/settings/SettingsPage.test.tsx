@@ -237,8 +237,8 @@ it("disables breach alert notification options if a user opts out of breach aler
   });
 
   expect(activateBreachAlertsCheckbox).toHaveAttribute("aria-checked", "false");
-  expect(primaryRadioButton).toHaveAttribute("aria-checked", "false");
-  expect(affectedRadioButton).toHaveAttribute("aria-checked", "false");
+  expect(primaryRadioButton).not.toBeInTheDocument();
+  expect(affectedRadioButton).not.toBeInTheDocument();
 });
 
 it("preselects primary email alert option", () => {
@@ -301,10 +301,11 @@ it("preselects affected email address option", () => {
       />
     </TestComponentWrapper>,
   );
-
   const affectedRadioButton = screen.getByLabelText(
     "Send breach alerts to the affected email address",
   );
+
+  expect(affectedRadioButton).toBeInTheDocument();
   expect(affectedRadioButton).toHaveAttribute("aria-checked", "true");
 });
 
@@ -388,15 +389,18 @@ it("preselects the affected email comms option after a user decides to enable br
       />
     </TestComponentWrapper>,
   );
+
   const activateBreachAlertsCheckbox = screen.getByLabelText(
     "Instant breach alerts",
     { exact: false },
   );
+  await user.click(activateBreachAlertsCheckbox);
+
   const affectedRadioButton = screen.getByLabelText(
     "Send breach alerts to the affected email address",
   );
-  await user.click(activateBreachAlertsCheckbox);
 
+  expect(affectedRadioButton).toBeInTheDocument();
   expect(affectedRadioButton).toHaveAttribute("aria-checked", "true");
 });
 

@@ -143,15 +143,17 @@ export const AlertAddressForm = (props: Props) => {
             </ActivateEmailsCheckbox>
 
             <AlertAddressContext.Provider value={state}>
-              <div
-                className={`${styles.emailAlertsOptions} ${!activateAlertEmail && styles.disabled}`}
-              >
-                <AlertAddressRadio value="affected">
-                  {l10n.getString("settings-alert-preferences-option-one")}
-                </AlertAddressRadio>
-                <AlertAddressRadio value="primary">
-                  {l10n.getString("settings-alert-preferences-option-two")}
-                </AlertAddressRadio>
+              <div className={`${styles.emailAlertsOptions}`}>
+                {activateAlertEmail && (
+                  <>
+                    <AlertAddressRadio value="affected">
+                      {l10n.getString("settings-alert-preferences-option-one")}
+                    </AlertAddressRadio>
+                    <AlertAddressRadio value="primary">
+                      {l10n.getString("settings-alert-preferences-option-two")}
+                    </AlertAddressRadio>
+                  </>
+                )}
               </div>
             </AlertAddressContext.Provider>
           </>

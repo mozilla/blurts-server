@@ -25,10 +25,6 @@
       display: flex;
       flex-direction: column;
       gap: $spacing-sm;
-
-      &.disabled {
-        display: none;
-      }
     }
 
     .radioButton {
