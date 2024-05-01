@@ -42,7 +42,6 @@ export const DataBrokerProfiles = (props: Props) => {
     <div className={styles.dataBrokerProfileCardsWapper}>
       <ul
         ref={ulRef}
-        tabIndex={showAllProfiles ? -1 : undefined}
         className={`${styles.dataBrokerProfileCards} ${
           showAllProfiles ? styles.showAll : ""
         }`}
