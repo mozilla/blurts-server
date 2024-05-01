@@ -8,6 +8,7 @@ env:
   SERVICE: blurts-server
   REGION: us-east4
   TAG: run-${{ github.run_id }}
+  DB_HOST: ${{ secrets.PREVIEW_DB_HOST }}
 
 jobs:
   deploy:
@@ -15,6 +16,17 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20.12
+    - name: Install dependencies
+      run: npm ci
+    - name: Copy env var
+      run: cp .env-dist .env
+    - name: Setting up postgres
+      run: npm run db:migrate
+      env:
+        DATABASE_URL: postgres://postgres@${{ env.DB_HOST }}:5432/blurts
 
     - name: Setup Cloud SDK
       uses: 'google-github-actions/auth@v2'
@@ -42,6 +54,8 @@ jobs:
         region: ${{ env.REGION }}
         flags: "--allow-unauthenticated"
         tag: ${{ env.TAG }}
+        env_vars: |
+          NEXTAUTH_SECRET: secret
 
     - name: 'Use output'
       run: 'curl "${{ steps.deploy.outputs.url }}"'
