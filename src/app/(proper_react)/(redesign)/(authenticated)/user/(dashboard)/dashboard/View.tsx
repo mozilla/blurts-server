@@ -49,9 +49,11 @@ import {
   CONST_ONEREP_DATA_BROKER_COUNT,
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../../../../../constants";
+import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData;
   user: Session["user"];
   userBreaches: SubscriberBreach[];
   userScanData: LatestOnerepScanData;
@@ -66,7 +68,7 @@ export type Props = {
   fxaSettingsUrl: string;
   scanCount: number;
   isNewUser: boolean;
-  telemetryId: string;
+  experimentationId: string;
   elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
 };
@@ -80,7 +82,7 @@ export type TabData = {
 
 export const View = (props: Props) => {
   const l10n = useL10n();
-  const recordTelemetry = useTelemetry();
+  const recordTelemetry = useTelemetry(props.experimentationId);
   const countryCode = useContext(CountryCodeContext);
 
   const adjustedScanResults = props.userScanData.results.map((scanResult) => {
@@ -415,14 +417,13 @@ export const View = (props: Props) => {
         subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
         lastScanDate={props.userScanData.scan?.created_at ?? null}
-        enabledFeatureFlags={props.enabledFeatureFlags}
+        experimentData={props.experimentData}
       >
         <TabList
           tabs={tabsData}
           onSelectionChange={(selectedKey) => {
             setSelectedTab(selectedKey as TabType);
             recordTelemetry("dashboard", "view", {
-              user_id: props.telemetryId,
               dashboard_tab: selectedKey as TabType,
               legacy_user: !props.isNewUser,
               breach_count: breachesDataArray.length,
@@ -469,7 +470,6 @@ export const View = (props: Props) => {
           onShowFixed={() => {
             setSelectedTab("fixed");
             recordTelemetry("dashboard", "view", {
-              user_id: props.telemetryId,
               dashboard_tab: "fixed",
               legacy_user: !props.isNewUser,
               breach_count: breachesDataArray.length,

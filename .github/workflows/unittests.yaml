@@ -15,6 +15,8 @@ jobs:
           node-version: '20.12.x'
       - run: npm ci
       - run: cp .env-dist .env
+      - run: npm run build-glean
+      - run: npm run build-nimbus
       - run: npm test
       - uses: actions/upload-artifact@v4
         if: failure()
