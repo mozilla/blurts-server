@@ -6,7 +6,7 @@
 
 import { useRouter } from "next/navigation";
 
-export const DeleteFeatureFlag = (props: { name: string | undefined }) => {
+export const DeleteFeatureFlag = (props: { name: string }) => {
   const router = useRouter();
 
   const onClick = () => {
