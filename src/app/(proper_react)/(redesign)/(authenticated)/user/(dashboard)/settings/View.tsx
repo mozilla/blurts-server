@@ -91,11 +91,14 @@ export const SettingsView = (props: Props) => {
           <EmailAddressAdder />
           <hr />
           <AlertAddressForm
-            defaultSelected={
-              props.user.subscriber?.all_emails_to_primary
-                ? "primary"
-                : "affected"
+            breachAlertsEmailsAllowed={
+              // Set value to null if undefined (disabled breach alerts)
+              props.user.subscriber?.all_emails_to_primary ?? null
             }
+            monitorReportAllowed={
+              props.user.subscriber?.monthly_monitor_report ?? null
+            }
+            enabledFeatureFlags={props.enabledFeatureFlags}
           />
           {hasPremium(props.user) && (
             <>
