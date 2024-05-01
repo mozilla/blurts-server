@@ -100,8 +100,8 @@ export default async function FeatureFlagPage() {
     );
   };
 
-  const featureFlags = (await getAllFeatureFlags()) || null;
-  const deletedFeatureFlags = (await getDeletedFeatureFlags()) || null;
+  const featureFlags = (await getAllFeatureFlags()) ?? null;
+  const deletedFeatureFlags = (await getDeletedFeatureFlags()) ?? null;
 
   return (
     <div className={styles.wrapper}>
