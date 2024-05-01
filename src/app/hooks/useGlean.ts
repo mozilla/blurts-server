@@ -69,8 +69,11 @@ export const useGlean = (experimentationId?: string) => {
     // parameter to `record`.
 
     // Record the `plan_tier` key on all events.
-    // @ts-expect-error Not present in map, but exists on all events.
-    data.plan_tier = isPremiumUser ? "Plus" : "Free";
+    // `plan_tier` is set on every metric, but it's too much work for TypeScript
+    // to infer that — hence the type assertion.
+    (data as GleanMetricMap["button"]["click"]).plan_tier = isPremiumUser
+      ? "Plus"
+      : "Free";
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mod[event].record(data as any);
