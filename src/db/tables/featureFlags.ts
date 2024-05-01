@@ -21,7 +21,7 @@ export type FeatureFlag = {
   owner?: string;
 };
 
-/** @deprecated The method should not be used */
+/** @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments */
 export async function getAllFeatureFlags() {
   return await knex("feature_flags")
     .whereNull("deleted_at")
@@ -29,7 +29,7 @@ export async function getAllFeatureFlags() {
     .returning("*");
 }
 
-/** @deprecated The method should not be used */
+/** @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments */
 export async function getDeletedFeatureFlags() {
   return await knex("feature_flags")
     .whereNotNull("deleted_at")
@@ -55,7 +55,7 @@ export type FeatureFlagName =
 
 /**
  * @param options
- * @deprecated The method should not be used
+ * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
 export async function getEnabledFeatureFlags(
   options:
@@ -88,7 +88,7 @@ export async function getEnabledFeatureFlags(
  * `getSubscribersWaitingForMonthlyEmail`, at the time of writing).
  *
  * @param featureFlagName
- * @deprecated The method should not be used
+ * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
 export async function getFeatureFlagData(
   featureFlagName: FeatureFlagName,
@@ -112,7 +112,7 @@ export async function getFeatureFlagByName(name: string) {
 
 /**
  * @param flag
- * @deprecated The method should not be used
+ * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
 export async function addFeatureFlag(flag: FeatureFlag) {
   logger.info("addFeatureFlag", flag);
@@ -145,7 +145,7 @@ export async function addFeatureFlag(flag: FeatureFlag) {
 
 /**
  * @param name
- * @deprecated The method should not be used
+ * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
 export async function deleteFeatureFlagByName(name: string) {
   logger.info("deleteFeatureFlagByName", name);
@@ -163,7 +163,7 @@ export async function deleteFeatureFlagByName(name: string) {
 /**
  * @param name
  * @param dependencies
- * @deprecated The method should not be used
+ * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
 export async function updateDependencies(name: string, dependencies: string[]) {
   logger.info("updateDependencies", { name, dependencies });
@@ -183,7 +183,7 @@ export async function updateDependencies(name: string, dependencies: string[]) {
 /**
  * @param name
  * @param owner
- * @deprecated The method should not be used
+ * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
 export async function updateOwner(name: string, owner: string) {
   logger.info("updateOwner", { name, owner });
@@ -203,7 +203,7 @@ export async function updateOwner(name: string, owner: string) {
 /**
  * @param name
  * @param allowList
- * @deprecated The method should not be used
+ * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
 export async function updateAllowList(name: string, allowList: string[]) {
   allowList = allowList.reduce((acc: string[], e: string) => {
@@ -228,7 +228,7 @@ export async function updateAllowList(name: string, allowList: string[]) {
 /**
  * @param name
  * @param waitList
- * @deprecated The method should not be used
+ * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
 export async function updateWaitList(name: string, waitList: string[]) {
   waitList = waitList.reduce((acc: string[], e: string) => {
@@ -253,7 +253,7 @@ export async function updateWaitList(name: string, waitList: string[]) {
 /**
  * @param name
  * @param isEnabled
- * @deprecated The method should not be used
+ * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
 export async function enableFeatureFlagByName(
   name: string,
@@ -275,7 +275,7 @@ export async function enableFeatureFlagByName(
 
 /**
  * @param name
- * @deprecated The method should not be used
+ * @deprecated The method should not be used, use Nimbus experiment or roll-out: /src/app/functions/server/getExperiments
  */
 export async function disableFeatureFlagByName(name: string) {
   logger.info("disableFeatureFlagByName", name);
