@@ -52,8 +52,7 @@ export type FeatureFlagName =
   | "CsatSurvey"
   | "CancellationFlow"
   | "ConfirmCancellation"
-  | "LastScanDateBadge"
-  | "BrokerScanOptionalInfo";
+  | "LastScanDateBadge";
 
 /**
  * @param options

@@ -19,3 +19,17 @@ features:
         value: { "enabled": true }
       - channel: production
         value: { "enabled": false }
+  welcome-scan-optional-info:
+    description: Show additional optional inputs to provide middle name and name suffix for broker scan
+    variables:
+      enabled:
+        description: If the feature is enabled
+        type: Boolean
+        default: false
+    defaults:
+      - channel: local
+        value: { "enabled": true }
+      - channel: staging
+        value: { "enabled": true }
+      - channel: production
+        value: { "enabled": false }

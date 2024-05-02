@@ -12,7 +12,10 @@ import { headers } from "next/headers";
 import { getReferrerUrl } from "../../../../../../functions/server/getReferrerUrl";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../constants";
 import { AutoSignIn } from "../../../../../../components/client/AutoSignIn";
-import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
+import { getExperimentationId } from "../../../../../../functions/server/getExperimentationId";
+import { getExperiments } from "../../../../../../functions/server/getExperiments";
+import { getLocale } from "../../../../../../functions/universal/getLocale";
+import { getL10n } from "../../../../../../functions/l10n/serverComponents";
 
 const FreeScanSlug = "free-scan";
 
@@ -41,10 +44,9 @@ export default async function Onboarding({ params, searchParams }: Props) {
     return notFound();
   }
 
-  const userIsEligible = await isEligibleForFreeScan(
-    session.user,
-    getCountryCode(headers()),
-  );
+  const headersList = headers();
+  const countryCode = getCountryCode(headersList);
+  const userIsEligible = await isEligibleForFreeScan(session.user, countryCode);
 
   if (!userIsEligible) {
     console.error(
@@ -54,14 +56,16 @@ export default async function Onboarding({ params, searchParams }: Props) {
   }
 
   const allBreachesCount = await getAllBreachesCount();
-  const headersList = headers();
   const previousRoute = getReferrerUrl({
     headers: headersList,
     referrerParam: searchParams.referrer,
   });
 
-  const enabledFeatureFlags = await getEnabledFeatureFlags({
-    email: session.user.email,
+  const experimentationId = getExperimentationId(session.user);
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode,
+    locale: getLocale(getL10n()),
   });
 
   return (
@@ -71,7 +75,7 @@ export default async function Onboarding({ params, searchParams }: Props) {
       breachesTotalCount={allBreachesCount}
       stepId={firstSlug === FreeScanSlug ? "enterInfo" : "getStarted"}
       previousRoute={previousRoute}
-      enabledFeatureFlags={enabledFeatureFlags}
+      experimentData={experimentData}
     />
   );
 }

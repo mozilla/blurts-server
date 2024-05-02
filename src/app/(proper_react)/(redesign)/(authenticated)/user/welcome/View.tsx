@@ -20,7 +20,7 @@ import { EnterInfo } from "./EnterInfo";
 import { useL10n } from "../../../../../hooks/l10n";
 import monitorLogo from "../../../../images/monitor-logo.webp";
 import { useTelemetry } from "../../../../../hooks/useTelemetry";
-import { FeatureFlagName } from "../../../../../../db/tables/featureFlags";
+import { ExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 
 type StepId = "getStarted" | "enterInfo" | "findExposures";
 
@@ -30,7 +30,7 @@ export type Props = {
   breachesTotalCount: number;
   stepId?: StepId;
   previousRoute: string | null;
-  enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData;
 };
 
 export const View = ({
@@ -39,16 +39,15 @@ export const View = ({
   breachesTotalCount,
   stepId = "getStarted",
   previousRoute,
-  enabledFeatureFlags,
+  experimentData,
 }: Props) => {
   const l10n = useL10n();
   const skipInitialStep = stepId === "enterInfo";
   const [currentStep, setCurrentStep] = useState<StepId>(stepId);
   const router = useRouter();
   const recordTelemetry = useTelemetry();
-  const optionalInfoIsEnabled = enabledFeatureFlags.includes(
-    "BrokerScanOptionalInfo",
-  );
+  const optionalInfoIsEnabled =
+    experimentData["welcome-scan-optional-info"].enabled;
 
   useEffect(() => {
     let pageName = "welcome";
