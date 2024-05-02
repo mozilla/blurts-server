@@ -83,24 +83,29 @@
   gap: $spacing-lg $spacing-xl;
   padding: $spacing-lg 0;
 
-  // Grid item layout for input fields. The child items are:
+  // The child items in the grid are input fields. Items marked as “optional”
+  // are only shown if the experiment `welcome-scan-optional-info` is enabled.
   // 1. First name
   // 2. Middle name (optional)
   // 3. Last name
   // 4. Name suffix (optional)
   // 5. Date of birth
   // 6. City and state
-  :nth-child(odd) {
+  & > :nth-child(odd) {
     grid-column: 1 / 4;
-  }
-  :nth-child(even) {
-    grid-column: 4 / 7;
-  }
-  &.optionalInfoIsEnabled {
-    :nth-child(3) {
+
+    // The field “last name” is only in an “odd” position if the experiment
+    // `welcome-scan-optional-info` is enabled.
+    &:has(> label[for="last_name"]) {
       grid-column: 1 / 5;
     }
-    :nth-child(4) {
+  }
+  & > :nth-child(even) {
+    grid-column: 4 / 7;
+
+    // The field “suffix” is only being rendered if the experiment
+    // `welcome-scan-optional-info` is enabled.
+    &:has(> label[for="name_suffix"]) {
       grid-column: 5 / 7;
     }
   }

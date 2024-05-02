@@ -391,9 +391,7 @@ export const EnterInfo = ({
       </p>
 
       <form onSubmit={handleOnSubmit}>
-        <div
-          className={`${styles.inputContainer} ${optionalInfoIsEnabled ? styles.optionalInfoIsEnabled : ""}`}
-        >
+        <div className={styles.inputContainer}>
           {userDetailsData.map(
             ({
               key,
@@ -435,6 +433,7 @@ export const EnterInfo = ({
               ) : (
                 <InputField
                   key={key}
+                  id={key}
                   errorMessage={l10n.getString(
                     "onboarding-enter-details-input-error-message-generic",
                   )}
