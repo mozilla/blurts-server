@@ -55,7 +55,10 @@ jobs:
         flags: "--allow-unauthenticated"
         tag: ${{ env.TAG }}
         env_vars: |
-          NEXTAUTH_SECRET: secret
+          NEXTAUTH_SECRET=secret
+          APP_ENV=cloudrun
+          COOKIE_SECRET=secret
+          PG_HOST=${{ env.PROJECT_ID }}:${{env.REGION}}:blurts-server-pr
 
     - name: 'Use output'
-      run: 'curl "${{ steps.deploy.outputs.url }}"'
+      run: 'echo "${{ steps.deploy.outputs.url }}"'

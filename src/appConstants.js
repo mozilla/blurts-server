@@ -41,7 +41,8 @@ const optionalEnvVars = [
   'FX_REMOTE_SETTINGS_WRITER_SERVER',
   'FX_REMOTE_SETTINGS_WRITER_USER',
   'HIBP_BREACH_DOMAIN_BLOCKLIST',
-  'PREMIUM_PRODUCT_ID'
+  'PREMIUM_PRODUCT_ID',
+  'PG_HOST'
 ]
 
 /** @type {Record<string, string>} */

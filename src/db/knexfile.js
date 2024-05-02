@@ -14,7 +14,7 @@ import AppConstants from "../appConstants.js";
  * @property {import("pg-connection-string").ConnectionOptions} connection 
  */
 
-const { DATABASE_URL, APP_ENV, NODE_ENV } = AppConstants;
+const { DATABASE_URL, APP_ENV, NODE_ENV, PG_HOST } = AppConstants;
 const connectionObj = pgConnectionStr.parse(DATABASE_URL);
 if (APP_ENV === "heroku") {
   // @ts-ignore TODO: Check if this typing error is correct, or if the types are wrong?
@@ -35,5 +35,17 @@ const TESTS_CONFIG = {
   connection: testConnectionObj,
 };
 
+let exportConfig = NODE_ENV === "tests" ? TESTS_CONFIG : RUNTIME_CONFIG
+
+if (APP_ENV === "cloudrun") {
+  // @ts-ignore TODO: Check if this typing error is correct, or if the types are wrong?
+  connectionObj.ssl = { rejectUnauthorized: false };
+  connectionObj.host = PG_HOST
+  exportConfig = {
+    client: "pg",
+    connection: connectionObj
+  }
+}
+
 /** @returns KnexConfig */
-export default NODE_ENV === "tests" ? TESTS_CONFIG : RUNTIME_CONFIG;
+export default exportConfig;
