@@ -48,7 +48,9 @@ export const ResolutionContent = ({
     <>
       <p>{summary}</p>
       {exposedData && (
-        <ul className={styles.breachItemsWrapper}>{listOfBreaches}</ul>
+        <ul className={`${styles.breachItemsWrapper} noList`}>
+          {listOfBreaches}
+        </ul>
       )}
       {description}
       {recommendations && (
