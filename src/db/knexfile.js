@@ -39,7 +39,7 @@ let exportConfig = NODE_ENV === "tests" ? TESTS_CONFIG : RUNTIME_CONFIG
 
 if (APP_ENV === "cloudrun") {
   // @ts-ignore TODO: Check if this typing error is correct, or if the types are wrong?
-  connectionObj.ssl = { rejectUnauthorized: false };
+  connectionObj.ssl = false;
   connectionObj.host = PG_HOST
   exportConfig = {
     client: "pg",
