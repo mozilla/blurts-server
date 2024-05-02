@@ -30,7 +30,7 @@ it("passes the axe accessibility test suite on step 1", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("explainer dialog shows on step 1", async () => {
+it("shows the explainer dialog on step 1", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   render(<ComposedOnboarding />);
@@ -124,7 +124,7 @@ it("can go back to step 1 after moving on to step 2", async () => {
   ).toBeInTheDocument();
 });
 
-it("explainer dialog shows on step 2", async () => {
+it("shows the explainer dialog on step 2", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   render(<ComposedOnboarding stepId="enterInfo" />);
@@ -144,7 +144,7 @@ it("explainer dialog shows on step 2", async () => {
   expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
 });
 
-it("confirm dialog is showing on step 2", async () => {
+it("shows the confirm dialog on step 2", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   render(<ComposedOnboarding stepId="enterInfo" />);
@@ -176,7 +176,7 @@ it("confirm dialog is showing on step 2", async () => {
   expect(screen.queryByText("Is this correct?")).not.toBeInTheDocument();
 });
 
-it("confirm dialog is showing mandatory user information on step 2", async () => {
+it("shows the confirm dialog with mandatory user information on step 2", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   render(<ComposedOnboarding stepId="enterInfo" />);
@@ -208,7 +208,7 @@ it("confirm dialog is showing mandatory user information on step 2", async () =>
   expect(getByText(dialog, /City and state/i)).toBeInTheDocument();
 });
 
-it("confirm dialog is showing optional user information on step 2", async () => {
+it("shows the confirm dialog with optional user information on step 2", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   render(<ComposedOnboarding stepId="enterInfo" />);
@@ -269,7 +269,7 @@ it("doesn't allow proceeding without typing a valid location", async () => {
   expect(screen.queryByText("Is this correct?")).not.toBeInTheDocument();
 });
 
-it("when a user moves focus away from the first name field, it should show an invalid state error", async () => {
+it("shows an invalid state error when a user moves focus away from the first name field", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   render(<ComposedOnboarding stepId="enterInfo" />);
@@ -282,7 +282,7 @@ it("when a user moves focus away from the first name field, it should show an in
   expect(firstNameField.getAttribute("aria-invalid")).toBe("true");
 });
 
-it("mandatory form input elements have invalid state if left empty on step 2", async () => {
+it("doesn’t show an invalid state error for mandatory form input elements if left empty on step 2", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   const { container } = render(<ComposedOnboarding stepId="enterInfo" />);
