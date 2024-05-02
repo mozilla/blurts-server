@@ -416,6 +416,9 @@ export const EnterInfo = ({
                   isRequired={isRequired}
                   onChange={onChange}
                   placeholder={placeholder}
+                  infoText={l10n.getString(
+                    "onboarding-enter-details-input-info-text-location",
+                  )}
                   isInvalid={isInvalid}
                   inputValue={value}
                   onFocus={() => {

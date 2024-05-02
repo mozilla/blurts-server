@@ -59,6 +59,7 @@ onboarding-enter-details-label-date-of-birth = Date of birth
 onboarding-enter-details-input-error-message-generic = Required to complete the scan
 onboarding-enter-details-input-error-message-location = Type location and select from list
 onboarding-enter-details-input-error-alt = Error
+onboarding-enter-details-input-info-text-location = Use the location you’ve spent the most time in recently.
 
 onboarding-find-exposures-progress-label = Scanning for exposures…
 # Variables:
