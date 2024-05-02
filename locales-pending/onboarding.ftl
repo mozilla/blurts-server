@@ -51,7 +51,8 @@ onboarding-enter-details-placeholder-middle-name = Enter middle name
 onboarding-enter-details-label-last-name = Last name
 onboarding-enter-details-placeholder-last-name = Enter last name
 # A name suffix follows a person’s full name and provides additional information
-# about their position, accreditation, etc. Examples: “PhD”, “CCNA”, “OBE”, etc.
+# about their position, accreditation, etc.
+# Examples: “PhD”, “CCNA”, “OBE”, “Jr.”, “Sr.”, etc.
 onboarding-enter-details-label-name-suffix = Suffix
 onboarding-enter-details-placeholder-name-suffix = Enter suffix
 onboarding-enter-details-label-location = City and state
