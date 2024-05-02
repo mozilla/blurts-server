@@ -13,6 +13,7 @@ import {
   updateAllowList,
   updateWaitList,
   FeatureFlag,
+  deleteFeatureFlagByName,
 } from "../../../../../db/tables/featureFlags";
 
 import { isAdmin } from "../../../utils/auth";
@@ -82,6 +83,28 @@ export async function PUT(req: NextRequest) {
       if (reqBody.waitList) {
         await updateWaitList(reqBody.name, reqBody.waitList);
       }
+
+      return NextResponse.json({ success: true, name: reqBody.name });
+    } catch (e) {
+      return NextResponse.json({ success: false }, { status: 500 });
+    }
+  } else {
+    // Not Signed in, redirect to home
+    return NextResponse.redirect(appConstants.SERVER_URL, 301);
+  }
+}
+
+export type FeatureFlagDeleteRequest = {
+  name: string;
+};
+
+export async function DELETE(req: NextRequest) {
+  const session = await getServerSession();
+  if (isAdmin(session?.user?.email || "")) {
+    // Signed in
+    try {
+      const reqBody = (await req.json()) as FeatureFlagDeleteRequest;
+      await deleteFeatureFlagByName(reqBody.name);
 
       return NextResponse.json({ success: true, name: reqBody.name });
     } catch (e) {

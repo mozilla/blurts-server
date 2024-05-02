@@ -5,27 +5,51 @@
   flex-direction: column;
   gap: $spacing-md;
 
-  h3 {
-    font: $text-title-3xs;
+  .sectionTitle {
+    h3 {
+      font: $text-title-3xs;
+    }
+
+    p {
+      color: $color-grey-40;
+    }
   }
 
   .radioGroup {
     display: flex;
     flex-direction: column;
-    gap: $spacing-sm;
+    gap: $spacing-md;
 
-    label {
+    .emailAlertsOptions {
+      padding-inline-start: $spacing-lg;
       display: flex;
-      align-items: center;
-      gap: $spacing-xs;
-
-      svg {
-        flex: 0 0 auto;
-      }
+      flex-direction: column;
+      gap: $spacing-sm;
     }
 
     .radioButton {
       stroke: $color-black;
+    }
+
+    label {
+      display: flex;
+      gap: $spacing-xs;
+      div {
+        display: flex;
+        flex-direction: column;
+
+        b {
+          font-weight: 600;
+        }
+
+        p {
+          color: $color-grey-40;
+        }
+      }
+
+      svg {
+        flex: 0 0 auto;
+      }
     }
 
     .focusRing {
