@@ -7,7 +7,7 @@ env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
   SERVICE: blurts-server
   REGION: us-east4
-  TAG: run-${{ github.run_id }}
+  TAG: pr-${{ github.event.pull_request.id }}
   DB_HOST: ${{ secrets.PREVIEW_DB_HOST }}
 
 jobs:
@@ -37,8 +37,11 @@ jobs:
       with:
         credentials_json: '${{ secrets.GCP_SA_KEY }}'
   
-    - name: 'Use gcloud CLI'
+    - name: Use gcloud CLI
       run: 'gcloud info'
+
+    # - name: Generate database on the fly
+    #   run: 'gcloud sql instances create blurts-server-${{ env.TAG }} --tier=db-f1-micro --region=${{ env.REGION }}'
 
     - name: Authorize Docker push
       run: |-
@@ -63,9 +66,6 @@ jobs:
           APP_ENV=cloudrun
           COOKIE_SECRET=secret
           PG_HOST=/cloudsql/${{ env.PROJECT_ID }}:${{env.REGION}}:blurts-server-pr
-
-    - name: 'Use output'
-      run: 'echo "${{ steps.deploy.outputs.url }}"'
 
     - name: Comment on Pull Request
       uses: thollander/actions-comment-pull-request@v2
