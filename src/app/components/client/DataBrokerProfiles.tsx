@@ -8,7 +8,7 @@ import Image from "next/image";
 import styles from "./DataBrokerProfiles.module.scss";
 import { useL10n } from "../../hooks/l10n";
 import IconChevronDown from "./assets/icon-chevron-down.svg";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { OnerepScanResultRow } from "knex/types/tables";
 import { getDataBrokerName } from "../../functions/universal/dataBrokerNames";
 import { OpenInNew } from "../server/Icons";
@@ -22,10 +22,26 @@ export const DataBrokerProfiles = (props: Props) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const [showAllProfiles, setShowAllProfiles] = useState(false);
+  const ulRef = useRef<HTMLUListElement>(null);
+  const nextHiddenDataBroker = Array.from(
+    ulRef.current?.getElementsByTagName("li") ?? [],
+  ).find(
+    (liElement) =>
+      getComputedStyle(liElement).getPropertyValue("display") === "none",
+  );
+
+  useEffect(() => {
+    if (showAllProfiles) {
+      // React doesn't know which next item is hidden because it's handled via CSS, no errors or warnings resulted from this
+      nextHiddenDataBroker?.setAttribute("tabindex", "-1");
+      nextHiddenDataBroker?.focus();
+    }
+  }, [showAllProfiles, nextHiddenDataBroker]);
 
   return (
     <div className={styles.dataBrokerProfileCardsWapper}>
       <ul
+        ref={ulRef}
         className={`${styles.dataBrokerProfileCards} ${
           showAllProfiles ? styles.showAll : ""
         }`}
