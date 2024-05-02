@@ -9,12 +9,19 @@ settings-page-title = Настройки { -product-short-name }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Настройки оповещений об утечках
+settings-alert-email-preferences-title = Настройки эл. почты
+settings-alert-email-preferences-subtitle = Расскажите нам, какие письма вы хотите получать.
+settings-alert-preferences-allow-breach-alerts-title = Мгновенные оповещения об утечках
+settings-alert-preferences-allow-breach-alerts-subtitle = Эти оповещения отправляются сразу же после обнаружения утечки данных
 settings-alert-preferences-option-one = Отправлять оповещения об утечках на затронутые ими адреса электронной почты
 settings-alert-preferences-option-two = Отправлять все оповещения об утечках на основной адрес электронной почты
+settings-alert-preferences-allow-monthly-monitor-report-title = Ежемесячный отчёт { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Ежемесячное обновление новых изображений, того, что было исправлено, а что требует вашего внимания.
 
 ## Monitored email addresses
 
+# Variables:
+#   $email (string) - Email address
 settings-email-list-title = Отслеживаемые адреса электронной почты
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -32,7 +39,6 @@ settings-remove-email-button-label = Удалить
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Перестать отслеживать { $emailAddress }
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -44,8 +50,6 @@ settings-email-number-of-breaches-info =
         [many] Найден в { $breachCount } известных утечках.
        *[other] Найден в { $breachCount } известных утечках.
     }
-
-## Cancel Premium subscription
 
 ## Deactivate account
 
@@ -64,8 +68,3 @@ settings-delete-monitor-free-account-dialog-cta-label = Удалить акка�
 settings-delete-monitor-free-account-dialog-cancel-button-label = Не важно, верните меня обратно
 settings-delete-monitor-account-confirmation-toast-label-2 = Ваш аккаунт { -brand-monitor } удалён.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Закрыть
-
-## Add email dialog
-
-## Unsubscribe Dialog Survey
-

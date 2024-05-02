@@ -9,12 +9,19 @@ settings-page-title = { -product-short-name } beállítások
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Adatvédelmi incidensek figyelmeztetéseinek beállításai
+settings-alert-email-preferences-title = E-mail beállítások
+settings-alert-email-preferences-subtitle = Mondja el, mely e-maileket szeretne kapni.
+settings-alert-preferences-allow-breach-alerts-title = Azonnali adatvédelmi incidens figyelmeztetések
+settings-alert-preferences-allow-breach-alerts-subtitle = Ezek a figyelmeztetések azonnal elküldésre kerülnek adatsértés észlelése után
 settings-alert-preferences-option-one = Adatvédelmi incidensek figyelmeztetéseinek elküldése az érintett e-mail-címre
 settings-alert-preferences-option-two = Az összes adatvédelmi incidens figyelmeztetésének elküldése az elsődleges e-mail-címre
+settings-alert-preferences-allow-monthly-monitor-report-title = Havi { -brand-monitor } jelentés
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Havi frissítés az új megjelenésekről, arról, hogy mi lett kijavítva, és mire kell figyelnie.
 
 ## Monitored email addresses
 
+# Variables:
+#   $email (string) - Email address
 settings-email-list-title = Figyelt e-mail-címek
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,7 +37,6 @@ settings-remove-email-button-label = Eltávolítás
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = A(z) { $emailAddress } figyelésének leállítása
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -40,8 +46,6 @@ settings-email-number-of-breaches-info =
         [one] { $breachCount } ismert adatvédelmi incidensben szerepel.
        *[other] { $breachCount } ismert adatvédelmi incidensben szerepel.
     }
-
-## Cancel Premium subscription
 
 ## Deactivate account
 
@@ -60,8 +64,3 @@ settings-delete-monitor-free-account-dialog-cta-label = Fiók törlése
 settings-delete-monitor-free-account-dialog-cancel-button-label = Mégse, visszalépés
 settings-delete-monitor-account-confirmation-toast-label-2 = A { -brand-monitor }-fiókja törölve lett.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Eltüntetés
-
-## Add email dialog
-
-## Unsubscribe Dialog Survey
-

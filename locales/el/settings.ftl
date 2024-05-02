@@ -9,9 +9,14 @@ settings-page-title = Ρυθμίσεις { -product-short-name }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Προτιμήσεις ειδοποιήσεων παραβιάσεων
+settings-alert-email-preferences-title = Προτιμήσεις email
+settings-alert-email-preferences-subtitle = Πείτε μας ποια email θέλετε να λαμβάνετε.
+settings-alert-preferences-allow-breach-alerts-title = Άμεσες ειδοποιήσεις παραβιάσεων
+settings-alert-preferences-allow-breach-alerts-subtitle = Αυτές οι ειδοποιήσεις αποστέλλονται αμέσως μόλις ανιχνευθεί παραβίαση δεδομένων
 settings-alert-preferences-option-one = Αποστολή ειδοποιήσεων παραβίασης στην επηρεασμένη διεύθυνση email
 settings-alert-preferences-option-two = Αποστολή όλων των ειδοποιήσεων παραβιάσεων στην κύρια διεύθυνση email
+settings-alert-preferences-allow-monthly-monitor-report-title = Μηνιαία αναφορά { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Μια μηνιαία ενημέρωση για τις νέες προβολές, το τι έχει διορθωθεί και τι χρειάζεται την προσοχή σας.
 
 ## Monitored email addresses
 
@@ -32,7 +37,6 @@ settings-remove-email-button-label = Αφαίρεση
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Διακοπή εποπτείας του { $emailAddress }
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
