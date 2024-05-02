@@ -16,19 +16,19 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 20.12
-    - name: Install dependencies
-      run: npm ci
-    - name: Copy env var
-      run: cp .env-dist .env
-    - name: Setting up postgres
-      run: npm run db:migrate
-      env:
-        APP_ENV: cloudrun
-        DATABASE_URL: postgres://postgres@${{ env.DB_HOST }}:5432/blurts
-        PG_HOST: /cloudsql/${{ env.PROJECT_ID }}:${{env.REGION}}:blurts-server-pr
+    # - uses: actions/setup-node@v4
+    #   with:
+    #     node-version: 20.12
+    # - name: Install dependencies
+    #   run: npm ci
+    # - name: Copy env var
+    #   run: cp .env-dist .env
+    # - name: Setting up postgres
+    #   run: npm run db:migrate
+    #   env:
+    #     APP_ENV: cloudrun
+    #     DATABASE_URL: postgres://postgres@${{ env.DB_HOST }}:5432/blurts
+    #     PG_HOST: /cloudsql/${{ env.PROJECT_ID }}:${{env.REGION}}:blurts-server-pr
 
     - name: Setup Cloud SDK
       uses: 'google-github-actions/auth@v2'
@@ -44,7 +44,7 @@ jobs:
 
     - name: Build and Push Container
       run: |-
-        docker build -t ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ env.TAG }} .
+        docker build -t ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ env.TAG }} -f ./Dockerfile_with_migrate
         docker push ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ env.TAG }}
         
     - name: Deploy to Cloud Run
