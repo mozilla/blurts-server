@@ -83,39 +83,37 @@
   gap: $spacing-lg $spacing-xl;
   padding: $spacing-lg 0;
 
-  // The child items in the grid are input fields. Items marked as “optional”
-  // are only shown if the experiment `welcome-scan-optional-info` is enabled.
-  // 1. First name
-  // 2. Middle name (optional)
-  // 3. Last name
-  // 4. Name suffix (optional)
-  // 5. Date of birth
-  // 6. City and state
-  & > :nth-child(odd) {
-    grid-column: 1 / 4;
+  @media screen and (min-width: $screen-lg) {
+    // The child items in the grid are input fields. Items marked as “optional”
+    // are only shown if the experiment `welcome-scan-optional-info` is enabled.
+    // 1. First name
+    // 2. Middle name (optional)
+    // 3. Last name
+    // 4. Name suffix (optional)
+    // 5. Date of birth
+    // 6. City and state
+    & > :nth-child(odd) {
+      grid-column: 1 / 4;
 
-    // The field “last name” is only in an “odd” position if the experiment
-    // `welcome-scan-optional-info` is enabled.
-    &:has(> label[for="last_name"]) {
-      grid-column: 1 / 5;
+      // The field “last name” is only in an “odd” position if the experiment
+      // `welcome-scan-optional-info` is enabled.
+      &:has(> label[for="last_name"]) {
+        grid-column: 1 / 5;
+      }
+    }
+    & > :nth-child(even) {
+      grid-column: 4 / 7;
+
+      // The field “suffix” is only being rendered if the experiment
+      // `welcome-scan-optional-info` is enabled.
+      &:has(> label[for="name_suffix"]) {
+        grid-column: 5 / 7;
+      }
     }
   }
-  & > :nth-child(even) {
-    grid-column: 4 / 7;
 
-    // The field “suffix” is only being rendered if the experiment
-    // `welcome-scan-optional-info` is enabled.
-    &:has(> label[for="name_suffix"]) {
-      grid-column: 5 / 7;
-    }
-  }
-
-  @media screen and (max-width: $screen-lg) {
+  @media screen and (max-width: calc($screen-lg - 1px)) {
     grid-template-columns: 1fr;
-
-    & > * {
-      grid-column: 1 / 7 !important;
-    }
   }
 
   input {
