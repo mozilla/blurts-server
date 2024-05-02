@@ -5,7 +5,6 @@
 import createDbConnection from "../connect.js";
 import { destroyOAuthToken } from '../../utils/fxa.js'
 import AppConstants from '../../appConstants.js'
-import { getFeatureFlagData } from "./featureFlags";
 
 const knex = createDbConnection();
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = AppConstants
@@ -176,7 +175,7 @@ async function updateFxAProfileData (subscriber, fxaProfileData) {
 
 /**
  * @param {import("knex/types/tables").SubscriberRow} subscriber
- * @param {boolean} allEmailsToPrimary
+ * @param {boolean | null} allEmailsToPrimary
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
@@ -185,6 +184,27 @@ async function setAllEmailsToPrimary (subscriber, allEmailsToPrimary) {
     .where('id', subscriber.id)
     .update({
       all_emails_to_primary: allEmailsToPrimary,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
+    })
+    .returning('*')
+  const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
+  return updatedSubscriber
+}
+/* c8 ignore stop */
+
+/**
+ * @param {import("knex/types/tables").SubscriberRow} subscriber
+ * @param {boolean} monthlyMonitorReport
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function setMonthlyMonitorReport (subscriber, monthlyMonitorReport) {
+  const updated = await knex('subscribers')
+    .where('id', subscriber.id)
+    .update({
+      monthly_monitor_report: monthlyMonitorReport,
       // @ts-ignore knex.fn.now() results in it being set to a date,
       // even if it's not typed as a JS date object:
       updated_at: knex.fn.now(),
@@ -280,7 +300,21 @@ async function deleteResolutionsWithEmail (id, email) {
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function getSubscribersWaitingForMonthlyEmail (options = {}) {
-  const flag = await getFeatureFlagData("MonthlyActivityEmail");
+  // I'm explicitly referencing the type here, so that these lines of code will
+  // show up as errors when we remove it from the flag list:
+  /** @type {import("./featureFlags.js").FeatureFlagName} */
+  const featureFlagName = "MonthlyActivityEmail";
+  // Interactions with the `feature_flags` table would generally go in the
+  // `src/db/tables/featureFlags` module. However, since that module is already
+  // written in TypeScript, it can't be loaded in pre-TypeScript cron jobs,
+  // which currently still import from the subscribers module. Hence, we've
+  // inlined this for now.
+  const flag = (await knex("feature_flags")
+      .first()
+      .where("name", featureFlagName)
+      // The `.andWhereNull` alias doesn't seem to exist:
+      // https://github.com/knex/knex/issues/1881#issuecomment-275433906
+      .whereNull("deleted_at"));
 
   if (!flag?.is_enabled) {
     return [];
@@ -485,6 +519,7 @@ export {
   updateFxAData,
   updateFxAProfileData,
   setAllEmailsToPrimary,
+  setMonthlyMonitorReport,
   setBreachResolution,
   getSubscribersWaitingForMonthlyEmail,
   updateMonthlyEmailTimestamp,
