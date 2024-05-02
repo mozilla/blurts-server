@@ -5,7 +5,6 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
-  GH_TOKEN: ${{ secrets.GH_TOKEN }} # Required for commenting on pull requests for private repos
   SERVICE: blurts-server
   REGION: us-east4
   TAG: run-${{ github.run_id }}
@@ -13,6 +12,8 @@ env:
 
 jobs:
   deploy:
+    permissions: 
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -69,6 +70,6 @@ jobs:
     - name: Comment on Pull Request
       uses: thollander/actions-comment-pull-request@v2
       with:
-          GITHUB_TOKEN: ${{ env.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
           message: |
             Preview URL :rocket: : ${{ steps.deploy.outputs.url }}
