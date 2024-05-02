@@ -28,9 +28,8 @@ ARG S3_BUCKET
 ENV S3_BUCKET=$S3_BUCKET
 
 RUN GLEAN_PYTHON=python GLEAN_PIP=pip npm run build
-RUN npm run db:migrate
 
 ARG SENTRY_RELEASE
 ENV SENTRY_RELEASE=$SENTRY_RELEASE
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "cloudrun"]
