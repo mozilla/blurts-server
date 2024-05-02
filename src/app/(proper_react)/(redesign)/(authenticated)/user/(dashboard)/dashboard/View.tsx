@@ -4,7 +4,8 @@
 
 "use client";
 
-import { useContext, useRef, useState } from "react";
+import { useCallback, useContext, useRef, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { Session } from "next-auth";
 import { OnerepScanResultRow } from "knex/types/tables";
@@ -51,6 +52,8 @@ import {
 } from "../../../../../../../constants";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 
+export type TabType = "action-needed" | "fixed";
+
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData;
@@ -71,9 +74,8 @@ export type Props = {
   experimentationId: string;
   elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
+  selectedTab?: TabType;
 };
-
-export type TabType = "action-needed" | "fixed";
 
 export type TabData = {
   name: string;
@@ -84,7 +86,11 @@ export const View = (props: Props) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry(props.experimentationId);
   const countryCode = useContext(CountryCodeContext);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
+  const selectedTab: TabType = props.selectedTab ?? "action-needed";
   const adjustedScanResults = props.userScanData.results.map((scanResult) => {
     if (scanResult.status === "new" && hasPremium(props.user)) {
       // Even if the user has Plus, OneRep won't automatically start removing
@@ -110,7 +116,6 @@ export const View = (props: Props) => {
     dateFound: "show-all-date-found",
   };
   const [filters, setFilters] = useState<FilterState>(initialFilterState);
-  const [selectedTab, setSelectedTab] = useState<TabType>("action-needed");
   const [activeExposureCardKey, setActiveExposureCardKey] = useState<
     string | null
   >(null);
@@ -124,6 +129,16 @@ export const View = (props: Props) => {
       key: "fixed",
     },
   ];
+
+  const getActiveTabQuery = useCallback(
+    (tab: TabType) => {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("tab", tab);
+      return params.toString();
+    },
+    [searchParams],
+  );
+
   const breachesDataArray = props.userBreaches.flat();
   const initialScanInProgress =
     adjustedScanData.scan?.onerep_scan_status === "in_progress" &&
@@ -422,7 +437,9 @@ export const View = (props: Props) => {
         <TabList
           tabs={tabsData}
           onSelectionChange={(selectedKey) => {
-            setSelectedTab(selectedKey as TabType);
+            router.push(
+              `${pathname}?${getActiveTabQuery(selectedKey as TabType)}`,
+            );
             recordTelemetry("dashboard", "view", {
               dashboard_tab: selectedKey as TabType,
               legacy_user: !props.isNewUser,
@@ -468,7 +485,7 @@ export const View = (props: Props) => {
             user: props.user,
           }}
           onShowFixed={() => {
-            setSelectedTab("fixed");
+            router.push(`${pathname}?${getActiveTabQuery("fixed")}`);
             recordTelemetry("dashboard", "view", {
               dashboard_tab: "fixed",
               legacy_user: !props.isNewUser,
