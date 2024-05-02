@@ -120,7 +120,6 @@ export const EnterInfo = ({
       ),
       value: firstName,
       displayValue: firstName,
-      isEnabled: true,
       isValid: firstName.trim() !== "",
       isRequired: true,
       onChange: setFirstName,
@@ -134,7 +133,6 @@ export const EnterInfo = ({
       ),
       value: middleName,
       displayValue: middleName,
-      isEnabled: optionalInfoIsEnabled,
       isValid: true,
       isRequired: false,
       onChange: setMiddleName,
@@ -148,7 +146,6 @@ export const EnterInfo = ({
       ),
       value: lastName,
       displayValue: lastName,
-      isEnabled: true,
       isValid: lastName.trim() !== "",
       isRequired: true,
       onChange: setLastName,
@@ -162,7 +159,6 @@ export const EnterInfo = ({
       ),
       value: nameSuffix,
       displayValue: nameSuffix,
-      isEnabled: optionalInfoIsEnabled,
       isValid: true,
       isRequired: false,
       onChange: setNameSuffix,
@@ -177,7 +173,6 @@ export const EnterInfo = ({
         dateStyle: "medium",
         timeZone: "UTC",
       }),
-      isEnabled: true,
       isValid: meetsAgeRequirement(dateOfBirth),
       isRequired: true,
       onChange: setDateOfBirth,
@@ -191,12 +186,11 @@ export const EnterInfo = ({
       ),
       value: location,
       displayValue: location,
-      isEnabled: true,
       isValid: location.trim() !== "",
       isRequired: true,
       onChange: setLocation,
     },
-  ].filter((userDetail) => userDetail.isEnabled);
+  ].filter((userDetail) => userDetail.isRequired || optionalInfoIsEnabled);
 
   const getInvalidFields = () =>
     userDetailsData.filter(({ isValid }) => !isValid).map(({ key }) => key);
