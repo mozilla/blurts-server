@@ -9,9 +9,14 @@ settings-page-title = Nastavení { -product-short-name(case: "gen") }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Předvolby upozorňování na únik dat
+settings-alert-email-preferences-title = Předvolby e-mailu
+settings-alert-email-preferences-subtitle = Řekněte nám, které e-maily chcete dostávat.
+settings-alert-preferences-allow-breach-alerts-title = Okamžitá upozornění na úniky dat
+settings-alert-preferences-allow-breach-alerts-subtitle = Tato upozornění jsou odesílána okamžitě po zjištění úniku dat
 settings-alert-preferences-option-one = Upozornění poslat na postiženou e-mailovou adresu
 settings-alert-preferences-option-two = Všechna upozornění posílat na primární e-mailovou adresu
+settings-alert-preferences-allow-monthly-monitor-report-title = Měsíční přehled { -brand-monitor(case: "gen") }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Měsíční informace o nových odhaleních, co bylo opraveno a co vyžaduje vaši pozornost.
 
 ## Monitored email addresses
 
@@ -34,7 +39,6 @@ settings-remove-email-button-label = Odebrat
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Ukončit monitorování adresy { $emailAddress }
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
