@@ -7,7 +7,7 @@ env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
   SERVICE: blurts-server
   REGION: us-east4
-  TAG: pr-${{ github.event.pull_request.id }}
+  TAG: pr-${{ github.event.pull_request.number }}
   DB_HOST: ${{ secrets.PREVIEW_DB_HOST }}
 
 jobs:
