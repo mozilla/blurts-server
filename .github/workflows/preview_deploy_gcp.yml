@@ -44,7 +44,7 @@ jobs:
 
     - name: Build and Push Container
       run: |-
-        docker build -t ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ env.TAG }} -f ./Dockerfile_with_migrate
+        docker build -t ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ env.TAG }} -f './Dockerfile_with_migrate'
         docker push ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ env.TAG }}
         
     - name: Deploy to Cloud Run
