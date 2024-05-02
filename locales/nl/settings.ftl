@@ -9,12 +9,19 @@ settings-page-title = { -product-short-name }-instellingen
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Voorkeuren voor datalekmeldingen
+settings-alert-email-preferences-title = E-mailvoorkeuren
+settings-alert-email-preferences-subtitle = Vertel ons welke e-mailberichten u wilt ontvangen.
+settings-alert-preferences-allow-breach-alerts-title = Directe waarschuwingen over datalekken
+settings-alert-preferences-allow-breach-alerts-subtitle = Deze waarschuwingen worden direct verzonden zodra een datalek wordt gedetecteerd
 settings-alert-preferences-option-one = Waarschuwingen over datalekken naar het getroffen e-mailadres sturen
 settings-alert-preferences-option-two = Alle waarschuwingen over datalekken naar het primaire e-mailadres sturen
+settings-alert-preferences-allow-monthly-monitor-report-title = Maandelijks { -brand-monitor }-rapport
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Een maandelijkse update van nieuwe lekken, wat is opgelost en wat uw aandacht nodig heeft.
 
 ## Monitored email addresses
 
+# Variables:
+#   $email (string) - Email address
 settings-email-list-title = Gemonitorde e-mailadressen
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,7 +37,6 @@ settings-remove-email-button-label = Verwijderen
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Monitoren van { $emailAddress } stoppen
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -40,8 +46,6 @@ settings-email-number-of-breaches-info =
         [one] Komt voor in { $breachCount } bekend datalek.
        *[other] Komt voor in { $breachCount } bekende datalekken.
     }
-
-## Cancel Premium subscription
 
 ## Deactivate account
 
@@ -60,8 +64,3 @@ settings-delete-monitor-free-account-dialog-cta-label = Account verwijderen
 settings-delete-monitor-free-account-dialog-cancel-button-label = Laat maar zitten, breng me terug
 settings-delete-monitor-account-confirmation-toast-label-2 = Uw { -brand-monitor }-account is nu verwijderd.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Sluiten
-
-## Add email dialog
-
-## Unsubscribe Dialog Survey
-

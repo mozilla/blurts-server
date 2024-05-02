@@ -53,6 +53,9 @@ page:
       referrer:
         description: The referring URL, if any.
         type: string
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
 dashboard:
   view:
@@ -96,6 +99,9 @@ dashboard:
       broker_count:
         description: Users who run the new free scan will be notified of breaches found during the scan.
         type: quantity
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
 popup:
   view:
@@ -126,6 +132,9 @@ popup:
         type: string
       popup_id:
         description: The ID of the popup that was shown, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
   exit:
     type: event
@@ -155,6 +164,9 @@ popup:
         type: string
       popup_id:
         description: The ID of the popup that was shown, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
 button:
   click:
@@ -185,6 +197,9 @@ button:
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
 field:
   focus:
@@ -215,6 +230,9 @@ field:
         type: string
       field_id:
         description: The ID of the field that was clicked on, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
 link:
   click:
@@ -245,6 +263,9 @@ link:
         type: string
       link_id:
         description: The ID of the link that was clicked on, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
 upgrade_intent:
   click:
@@ -275,6 +296,9 @@ upgrade_intent:
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
   success:
     type: event
@@ -301,6 +325,9 @@ upgrade_intent:
         type: string
       flow_id:
         description: A randomly generated unique identifier for following user flows within the FxA system.
+        type: string
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
         type: string
 
 expand:
@@ -332,6 +359,9 @@ expand:
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
 collapse:
   click:
@@ -362,6 +392,9 @@ collapse:
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
 
 cta_button:
   click:
@@ -392,3 +425,6 @@ cta_button:
         type: string
       button_id:
         description: The ID of the button that was clicked on, or some way to identify where on the page the interaction is located.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
