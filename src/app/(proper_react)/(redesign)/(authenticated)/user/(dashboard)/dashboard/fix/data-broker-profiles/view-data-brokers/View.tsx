@@ -10,7 +10,7 @@ import {
   StepDeterminationData,
   getNextGuidedStep,
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
-import { ExtendedReactLocalization } from "../../../../../../../../../hooks/l10n";
+import { ExtendedReactLocalization } from "../../../../../../../../../functions/l10n";
 import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 
 export type Props = {

@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "../../../../../../functions/server/getServerSession";
 import { View } from "./View";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
-import { getSubscriberBreaches } from "../../../../../../functions/server/getUserBreaches";
+import { getSubscriberBreaches } from "../../../../../../functions/server/getSubscriberBreaches";
 import {
   canSubscribeToPremium,
   hasPremium,
@@ -33,8 +33,11 @@ import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFl
 import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
 import { checkSession } from "../../../../../../functions/server/checkSession";
 import { isPrePlusUser } from "../../../../../../functions/server/isPrePlusUser";
-import { getUserId } from "../../../../../../functions/server/getUserId";
+import { getExperimentationId } from "../../../../../../functions/server/getExperimentationId";
 import { getElapsedTimeInDaysSinceInitialScan } from "../../../../../../functions/server/getElapsedTimeInDaysSinceInitialScan";
+import { getExperiments } from "../../../../../../functions/server/getExperiments";
+import { getLocale } from "../../../../../../functions/universal/getLocale";
+import { getL10n } from "../../../../../../functions/l10n/serverComponents";
 
 export default async function DashboardPage() {
   const session = await getServerSession();
@@ -77,7 +80,7 @@ export default async function DashboardPage() {
       ? await getScansCountForProfile(profileId)
       : 0;
   const subBreaches = await getSubscriberBreaches({
-    user: session.user,
+    fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
   });
 
@@ -95,6 +98,13 @@ export default async function DashboardPage() {
 
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
+  });
+
+  const experimentationId = getExperimentationId(session.user);
+  const experimentData = await getExperiments({
+    experimentationId: experimentationId,
+    countryCode: countryCode,
+    locale: getLocale(getL10n()),
   });
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
@@ -122,8 +132,9 @@ export default async function DashboardPage() {
       scanCount={scanCount}
       totalNumberOfPerformedScans={profileStats?.total}
       isNewUser={isNewUser}
-      telemetryId={getUserId(session)}
       elapsedTimeInDaysSinceInitialScan={elapsedTimeInDaysSinceInitialScan}
+      experimentationId={experimentationId}
+      experimentData={experimentData}
     />
   );
 }

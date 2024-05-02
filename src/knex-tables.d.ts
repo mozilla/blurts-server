@@ -91,7 +91,8 @@ declare module "knex/types/tables" {
     // TODO: Find unknown type
     // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     breaches_last_shown: null | unknown;
-    all_emails_to_primary: boolean;
+    // NOTE: this field is inherited from an older version of the product, it only applies to instant alerts
+    all_emails_to_primary: boolean | null; // added  null in MNTOR-1368
     // TODO: Find unknown type
     // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     breaches_resolved: null | unknown;
@@ -107,11 +108,7 @@ declare module "knex/types/tables" {
       };
       monitoredEmails: { count: number };
     };
-    // TODO: Find unknown type
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-    monthly_monitor_report_at: null | unknown;
-    // TODO: Find unknown type
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+    monthly_monitor_report_at: null | Date;
     monthly_monitor_report: boolean;
     breach_resolution:
       | null

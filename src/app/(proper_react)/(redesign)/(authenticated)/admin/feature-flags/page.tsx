@@ -5,20 +5,21 @@
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
 import {
-  FeatureFlagName,
   getAllFeatureFlags,
+  getDeletedFeatureFlags,
 } from "../../../../../../db/tables/featureFlags";
 import { AddFeatureFlag } from "./components/AddFeatureFlag";
+import { DeleteFeatureFlag } from "./components/DeleteFeatureFlag";
 import { ToggleFlagEnabled } from "./components/ToggleFlagEnabled";
 import { FeatureFlagRow } from "knex/types/tables";
 import { isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import styles from "./page.module.scss";
-import { ModifyInputField } from "./components/ModifyInputField";
 import {
   getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
 } from "../../../../../functions/server/getPremiumSubscriptionInfo";
+import { defaultExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 
 export default async function FeatureFlagPage() {
   const session = await getServerSession();
@@ -35,7 +36,7 @@ export default async function FeatureFlagPage() {
     return notFound();
   }
 
-  const AllFlagsTable = (featureFlags: { data: Array<FeatureFlagRow> }) => {
+  const ActiveFlagsTable = (featureFlags: { data: Array<FeatureFlagRow> }) => {
     const { data } = featureFlags;
 
     if (!data || data.length === 0) {
@@ -48,10 +49,6 @@ export default async function FeatureFlagPage() {
           <tr>
             <th>Name</th>
             <th>Enabled</th>
-            <th>Dependencies</th>
-            <th>Allow List</th>
-            <th>Wait List</th>
-            <th>Owner</th>
           </tr>
         </thead>
         <tbody>
@@ -67,32 +64,7 @@ export default async function FeatureFlagPage() {
                 {item.is_enabled}
               </td>
               <td>
-                <ModifyInputField
-                  id="dependencies"
-                  name={item.name}
-                  defaultValue={item.dependencies?.join(",")}
-                />
-              </td>
-              <td>
-                <ModifyInputField
-                  id="allowList"
-                  name={item.name}
-                  defaultValue={item.allow_list?.join(",")}
-                />
-              </td>
-              <td>
-                <ModifyInputField
-                  id="waitList"
-                  name={item.name}
-                  defaultValue={item.wait_list?.join(",")}
-                />
-              </td>
-              <td>
-                <ModifyInputField
-                  id="owner"
-                  name={item.name}
-                  defaultValue={item.owner}
-                />
+                <DeleteFeatureFlag name={item.name} />
               </td>
             </tr>
           ))}
@@ -101,7 +73,35 @@ export default async function FeatureFlagPage() {
     );
   };
 
-  const featureFlags = (await getAllFeatureFlags()) || null;
+  const DeletedFlagsTable = (featureFlags: { data: Array<FeatureFlagRow> }) => {
+    const { data } = featureFlags;
+
+    if (!data || data.length === 0) {
+      return <p>No data</p>;
+    }
+
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Deleted At</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item) => (
+            <tr key={item.name}>
+              <td>{item.name}</td>
+              <td>{item.deleted_at?.toString()}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    );
+  };
+
+  const featureFlags = (await getAllFeatureFlags()) ?? null;
+  const deletedFeatureFlags = (await getDeletedFeatureFlags()) ?? null;
 
   return (
     <div className={styles.wrapper}>
@@ -116,19 +116,26 @@ export default async function FeatureFlagPage() {
             // Since this page is only accessed by contributors, no need to load
             // their latest scan date from the DB:
             lastScanDate={null}
-            // Whatever, might as well enable all flags for people browsing this page :)
-            // (At the time of writing, though, this doesn't have any observable effect.)
-            enabledFeatureFlags={featureFlags.map(
-              (flag) => flag.name as FeatureFlagName,
-            )}
+            // We're not going to run experiments on the feature flag page (it's
+            // not user-visible), so no need to fetch experiment data:
+            experimentData={defaultExperimentData}
           />
         </div>
       </nav>
       <div className={styles.start}>
-        <h1>All Feature Flags</h1>
-        <AllFlagsTable data={featureFlags} />
-        <h1>Add New Feature Flag</h1>
+        <h1>
+          Note: Feaure flags are deprecated, use{" "}
+          <a href="https://experimenter.info/">Experimenter</a>.
+        </h1>
+        <br />
+        <h3>Add New Feature Flag</h3>
         <AddFeatureFlag />
+        <br />
+        <h3>Active Feature Flags</h3>
+        <ActiveFlagsTable data={featureFlags} />
+        <br />
+        <h3>Deleted Feature Flags</h3>
+        <DeletedFlagsTable data={deletedFeatureFlags} />
       </div>
     </div>
   );

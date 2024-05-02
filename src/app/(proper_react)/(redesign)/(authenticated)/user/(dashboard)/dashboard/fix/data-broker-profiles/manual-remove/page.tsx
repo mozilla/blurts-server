@@ -7,7 +7,7 @@ import { headers } from "next/headers";
 import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
 import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
-import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getUserBreaches";
+import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { ManualRemoveView } from "./ManualRemoveView";
 import { hasPremium } from "../../../../../../../../../functions/universal/user";
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
@@ -26,7 +26,7 @@ export default async function ManualRemovePage() {
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const scanData = await getLatestOnerepScanResults(profileId);
   const subBreaches = await getSubscriberBreaches({
-    user: session.user,
+    fxaUid: session.user.subscriber.fxa_uid,
     countryCode,
   });
   const subscriberEmails = await getSubscriberEmails(session.user);

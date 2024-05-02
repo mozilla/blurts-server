@@ -12,7 +12,7 @@ import {
   monthlySubscribersQuota,
 } from "../../../functions/server/onerep";
 import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
-import { getL10n } from "../../../functions/server/l10n";
+import { getL10n } from "../../../functions/l10n/serverComponents";
 import { View } from "./LandingView";
 import { CONST_DAY_MILLISECONDS } from "../../../../constants";
 

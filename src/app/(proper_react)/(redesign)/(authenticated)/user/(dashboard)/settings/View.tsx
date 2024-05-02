@@ -8,7 +8,7 @@ import Image from "next/image";
 import styles from "./View.module.scss";
 import AddEmailDialogIllustration from "./images/DeleteAccountDialogIllustration.svg";
 import { Toolbar } from "../../../../../../components/client/toolbar/Toolbar";
-import { ExtendedReactLocalization } from "../../../../../../hooks/l10n";
+import { ExtendedReactLocalization } from "../../../../../../functions/l10n";
 import { OpenInNew } from "../../../../../../components/server/Icons";
 import { EmailListing } from "./EmailListing";
 import { EmailAddressAdder } from "./EmailAddressAdder";
@@ -21,6 +21,7 @@ import { SettingsConfirmationDialog } from "./SettingsConfirmationDialog";
 import { DeleteAccountButton } from "./DeleteAccountButton";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { CancelFlow } from "./CancelFlow";
+import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -36,6 +37,7 @@ export type Props = {
   emailAddresses: EmailAddressRow[];
   breachCountByEmailAddress: Record<string, number>;
   enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData;
   lastScanDate?: Date;
 };
 
@@ -51,7 +53,7 @@ export const SettingsView = (props: Props) => {
         subscriptionBillingAmount={props.subscriptionBillingAmount}
         fxaSettingsUrl={props.fxaSettingsUrl}
         lastScanDate={props.lastScanDate ?? null}
-        enabledFeatureFlags={props.enabledFeatureFlags}
+        experimentData={props.experimentData}
       />
       <main>
         <header className={styles.title}>
@@ -89,11 +91,14 @@ export const SettingsView = (props: Props) => {
           <EmailAddressAdder />
           <hr />
           <AlertAddressForm
-            defaultSelected={
-              props.user.subscriber?.all_emails_to_primary
-                ? "primary"
-                : "affected"
+            breachAlertsEmailsAllowed={
+              // Set value to null if undefined (disabled breach alerts)
+              props.user.subscriber?.all_emails_to_primary ?? null
             }
+            monitorReportAllowed={
+              props.user.subscriber?.monthly_monitor_report ?? null
+            }
+            enabledFeatureFlags={props.enabledFeatureFlags}
           />
           {hasPremium(props.user) && (
             <>

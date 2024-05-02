@@ -9,7 +9,6 @@ import {
   TEST_EMAIL_ADDRESSES
 } from '../db/seeds/testSubscribers.js'
 
-
 jest.mock("nodemailer", () => {
   return {
     createTransport: jest.fn(),

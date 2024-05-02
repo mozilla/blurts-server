@@ -9,9 +9,14 @@ import Glean from "@mozilla/glean/web";
 import EventMetricType from "@mozilla/glean/private/metrics/event";
 import type { GleanMetricMap } from "../../telemetry/generated/_map";
 import { PublicEnvContext } from "../../contextProviders/public-env";
+import { useSession } from "next-auth/react";
+import { hasPremium } from "../functions/universal/user";
 
-export const useGlean = () => {
+export const useGlean = (experimentationId?: string) => {
   const { PUBLIC_APP_ENV } = useContext(PublicEnvContext);
+
+  const session = useSession();
+  const isPremiumUser = hasPremium(session.data?.user);
 
   // Initialize Glean only on the first render of our custom hook.
   useEffect(() => {
@@ -42,6 +47,7 @@ export const useGlean = () => {
       maxEvents: 1,
       channel: PUBLIC_APP_ENV,
       enableAutoPageLoadEvents: true,
+      experimentationId: experimentationId,
     });
     // This effect should only run once
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -61,6 +67,14 @@ export const useGlean = () => {
     // Instead of the specific type definitions we generated in the npm script
     // `build-glean-types`, Glean takes a non-specific "ExtraArgs" type as
     // parameter to `record`.
+
+    // Record the `plan_tier` key on all events.
+    // `plan_tier` is set on every metric, but it's too much work for TypeScript
+    // to infer that — hence the type assertion.
+    (data as GleanMetricMap["button"]["click"]).plan_tier = isPremiumUser
+      ? "Plus"
+      : "Free";
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mod[event].record(data as any);
   };
