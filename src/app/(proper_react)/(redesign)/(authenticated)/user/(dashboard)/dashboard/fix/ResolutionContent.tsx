@@ -33,7 +33,7 @@ export const ResolutionContent = ({
     // this comment) as uncovered, even though I think it's covered by tests.
     exposedData &&
     exposedData.map(({ id, title, breachDate }) => (
-      <div key={id} className={styles.breachItem}>
+      <li key={id} className={styles.breachItem}>
         {l10n.getFragment("high-risk-breach-name-and-date", {
           elems: { breach_date: <span className={styles.date} /> },
           vars: {
@@ -41,14 +41,14 @@ export const ResolutionContent = ({
             breach_date: dateFormatter.format(breachDate),
           },
         })}
-      </div>
+      </li>
     ));
 
   return (
     <>
       <p>{summary}</p>
       {exposedData && (
-        <div className={styles.breachItemsWrapper}>{listOfBreaches}</div>
+        <ul className={styles.breachItemsWrapper}>{listOfBreaches}</ul>
       )}
       {description}
       {recommendations && (
