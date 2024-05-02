@@ -9,12 +9,19 @@ settings-page-title = Definições do { -product-short-name }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Preferências de alerta de falhas de segurança
+settings-alert-email-preferences-title = Preferências de email
+settings-alert-email-preferences-subtitle = Diga-nos que e-mails gostaria de receber.
+settings-alert-preferences-allow-breach-alerts-title = Alertas instantâneos de violações de dados
+settings-alert-preferences-allow-breach-alerts-subtitle = Estes alertas são enviados imediatamente assim que uma violação de dados é detetada
 settings-alert-preferences-option-one = Enviar alertas de falhas de segurança para o endereço de e-mail afetado
 settings-alert-preferences-option-two = Enviar todos alertas de violações de dados para o endereço de e-mail primário
+settings-alert-preferences-allow-monthly-monitor-report-title = Relatório mensal do { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Uma atualização mensal das novas exposição, o que foi corrigido e o que precisa da sua atenção.
 
 ## Monitored email addresses
 
+# Variables:
+#   $email (string) - Email address
 settings-email-list-title = Endereços de e-mail monitorizados
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,7 +37,6 @@ settings-remove-email-button-label = Remover
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Parar de monitorizar { $emailAddress }
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -40,8 +46,6 @@ settings-email-number-of-breaches-info =
         [one] Aparece em { $breachCount } falha de segurança de dados conhecida.
        *[other] Aparece em { $breachCount } falhas de segurança de dados conhecidas.
     }
-
-## Cancel Premium subscription
 
 ## Deactivate account
 
@@ -59,8 +63,3 @@ settings-delete-monitor-free-account-dialog-lead = Toda a informação da sua co
 settings-delete-monitor-free-account-dialog-cta-label = Eliminar conta
 settings-delete-monitor-free-account-dialog-cancel-button-label = Não importa, eu quero voltar
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Ignorar
-
-## Add email dialog
-
-## Unsubscribe Dialog Survey
-
