@@ -23,6 +23,15 @@ export const EmailFooter = (props: Props) => {
           <mj-image
             alt=""
             src={`${process.env.SERVER_URL}/images/email/icons/question-mark-circle-purple.png`}
+            css-class="light-mode-only"
+            width="34px"
+            height="34px"
+            align="center"
+          />
+          <mj-image
+            alt=""
+            src={`${process.env.SERVER_URL}/images/email/icons/question-mark-circle-purple-dark-mode.png`}
+            css-class="dark-mode-only"
             width="34px"
             height="34px"
             align="center"
