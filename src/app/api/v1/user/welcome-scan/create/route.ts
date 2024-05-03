@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
+import { headers } from "next/headers";
 
 import { logger } from "../../../../../functions/server/logging";
 import { getServerSession } from "../../../../../functions/server/getServerSession";
@@ -23,7 +24,10 @@ import { setProfileDetails } from "../../../../../../db/tables/onerep_profiles";
 import { StateAbbr } from "../../../../../../utils/states";
 import { ISO8601DateString } from "../../../../../../utils/parse";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
-import { headers } from "next/headers";
+import { getExperimentationId } from "../../../../../functions/server/getExperimentationId";
+import { getExperiments } from "../../../../../functions/server/getExperiments";
+import { getLocale } from "../../../../../functions/universal/getLocale";
+import { getL10n } from "../../../../../functions/l10n/serverComponents";
 
 export interface WelcomeScanBody {
   success: boolean;
@@ -35,6 +39,8 @@ export interface UserInfo {
   city: string;
   state: StateAbbr;
   dateOfBirth: ISO8601DateString;
+  middleName?: string;
+  nameSuffix?: string;
 }
 
 export async function POST(
@@ -67,15 +73,37 @@ export async function POST(
     }
   });
 
-  const { firstName, lastName, city, state, dateOfBirth } = params;
+  const {
+    firstName,
+    middleName,
+    lastName,
+    nameSuffix,
+    city,
+    state,
+    dateOfBirth,
+  } = params;
   if (!meetsAgeRequirement(dateOfBirth)) {
     throw new Error(`User does not meet the age requirement: ${dateOfBirth}`);
   }
+
+  const experimentationId = getExperimentationId(session.user);
+  const experimentData = await getExperiments({
+    experimentationId: experimentationId,
+    countryCode: getCountryCode(headers()),
+    locale: getLocale(getL10n()),
+  });
+  const optionalInfoIsEnabled =
+    experimentData["welcome-scan-optional-info"].enabled;
+
   const profileData: CreateProfileRequest = {
     first_name: firstName,
     last_name: lastName,
     addresses: [{ city, state }],
     birth_date: dateOfBirth,
+    ...(optionalInfoIsEnabled && {
+      middle_name: middleName,
+      name_suffix: nameSuffix,
+    }),
   };
 
   if (typeof session?.user?.subscriber.fxa_uid === "string") {

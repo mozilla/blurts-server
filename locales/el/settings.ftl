@@ -16,7 +16,7 @@ settings-alert-preferences-allow-breach-alerts-subtitle = Αυτές οι ειδ
 settings-alert-preferences-option-one = Αποστολή ειδοποιήσεων παραβίασης στην επηρεασμένη διεύθυνση email
 settings-alert-preferences-option-two = Αποστολή όλων των ειδοποιήσεων παραβιάσεων στην κύρια διεύθυνση email
 settings-alert-preferences-allow-monthly-monitor-report-title = Μηνιαία αναφορά { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Μια μηνιαία ενημέρωση για τις νέες προβολές, το τι έχει διορθωθεί και τι χρειάζεται την προσοχή σας.
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Μια μηνιαία ενημέρωση για τις νέες εκθέσεις, το τι έχει διορθωθεί και τι χρειάζεται την προσοχή σας.
 
 ## Monitored email addresses
 

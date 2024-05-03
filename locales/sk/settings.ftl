@@ -9,12 +9,19 @@ settings-page-title = Nastavenia { -product-short-name(case: "gen") }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Predvoľby upozornení na únik údajov
+settings-alert-email-preferences-title = Predvoľby e-mailov
+settings-alert-email-preferences-subtitle = Povedzte nám, aké e‑maily chcete dostávať.
+settings-alert-preferences-allow-breach-alerts-title = Okamžité upozornenia na únik
+settings-alert-preferences-allow-breach-alerts-subtitle = Tieto upozornenia sa odosielajú okamžite po zistení úniku údajov
 settings-alert-preferences-option-one = Upozornenia na únik údajov posielať na dotknutú e‑mailovú adresu
 settings-alert-preferences-option-two = Všetky upozornenia na únik údajov posielať na hlavnú e‑mailovú adresu
+settings-alert-preferences-allow-monthly-monitor-report-title = Mesačný prehľad { -brand-monitor(case: "gen") }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Mesačný prehľad nových únikov, toho, čo bolo opravené a čo si vyžaduje vašu pozornosť.
 
 ## Monitored email addresses
 
+# Variables:
+#   $email (string) - Email address
 settings-email-list-title = Monitorované e‑mailové adresy
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -32,7 +39,6 @@ settings-remove-email-button-label = Odstrániť
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Zastaviť monitorovanie adresy { $emailAddress }
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -44,8 +50,6 @@ settings-email-number-of-breaches-info =
         [many] Vyskytuje sa v { $breachCount } známych únikoch.
        *[other] Vyskytuje sa v { $breachCount } známych únikoch.
     }
-
-## Cancel Premium subscription
 
 ## Deactivate account
 
@@ -64,8 +68,3 @@ settings-delete-monitor-free-account-dialog-cta-label = Odstrániť účet
 settings-delete-monitor-free-account-dialog-cancel-button-label = Rozmyslel som si to
 settings-delete-monitor-account-confirmation-toast-label-2 = Váš účet služby { -brand-monitor } je teraz odstránený.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Zavrieť
-
-## Add email dialog
-
-## Unsubscribe Dialog Survey
-
