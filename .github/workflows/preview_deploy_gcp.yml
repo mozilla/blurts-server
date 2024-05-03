@@ -40,8 +40,9 @@ jobs:
     - name: Use gcloud CLI
       run: 'gcloud info'
 
-    # - name: Generate database on the fly
-    #   run: 'gcloud sql instances create blurts-server-${{ env.TAG }} --tier=db-f1-micro --region=${{ env.REGION }}'
+    - name: Generate database on the fly
+      id: db_create
+      run: 'gcloud sql instances create blurts-server-${{ env.TAG }} --tier=db-f1-micro --region=${{ env.REGION }}'
 
     - name: Authorize Docker push
       run: |-
