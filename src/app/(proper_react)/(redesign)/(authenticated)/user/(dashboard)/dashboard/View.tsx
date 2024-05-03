@@ -51,7 +51,8 @@ import {
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../../../../../constants";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
-import { dashboardTabSlugs } from "./[[...slug]]/page";
+
+export const dashboardTabSlugs = ["action-needed", "fixed"];
 
 export type TabType = (typeof dashboardTabSlugs)[number];
 

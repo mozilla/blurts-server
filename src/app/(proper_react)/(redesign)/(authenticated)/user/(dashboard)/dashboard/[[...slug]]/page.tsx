@@ -5,7 +5,7 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { getServerSession } from "../../../../../../../functions/server/getServerSession";
-import { View } from "../View";
+import { View, dashboardTabSlugs } from "../View";
 import { getCountryCode } from "../../../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../../../functions/server/getSubscriberBreaches";
 import {
@@ -38,8 +38,6 @@ import { getElapsedTimeInDaysSinceInitialScan } from "../../../../../../../funct
 import { getExperiments } from "../../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../../functions/universal/getLocale";
 import { getL10n } from "../../../../../../../functions/l10n/serverComponents";
-
-export const dashboardTabSlugs = ["action-needed", "fixed"];
 
 type Props = {
   params: {
