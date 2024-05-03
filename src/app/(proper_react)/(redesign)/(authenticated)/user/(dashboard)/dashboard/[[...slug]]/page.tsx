@@ -4,51 +4,63 @@
 
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { getServerSession } from "../../../../../../functions/server/getServerSession";
-import { TabType, View } from "./View";
-import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
-import { getSubscriberBreaches } from "../../../../../../functions/server/getSubscriberBreaches";
+import { getServerSession } from "../../../../../../../functions/server/getServerSession";
+import { View } from "../View";
+import { getCountryCode } from "../../../../../../../functions/server/getCountryCode";
+import { getSubscriberBreaches } from "../../../../../../../functions/server/getSubscriberBreaches";
 import {
   canSubscribeToPremium,
   hasPremium,
-} from "../../../../../../functions/universal/user";
+} from "../../../../../../../functions/universal/user";
 import {
   getLatestOnerepScanResults,
   getScansCountForProfile,
-} from "../../../../../../../db/tables/onerep_scans";
-import { getOnerepProfileId } from "../../../../../../../db/tables/subscribers";
+} from "../../../../../../../../db/tables/onerep_scans";
+import { getOnerepProfileId } from "../../../../../../../../db/tables/subscribers";
 
 import {
   activateAndOptoutProfile,
   getProfilesStats,
   isEligibleForFreeScan,
   isEligibleForPremium,
-} from "../../../../../../functions/server/onerep";
+} from "../../../../../../../functions/server/onerep";
 import {
   getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
-} from "../../../../../../functions/server/getPremiumSubscriptionInfo";
-import { refreshStoredScanResults } from "../../../../../../functions/server/refreshStoredScanResults";
-import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
-import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
-import { checkSession } from "../../../../../../functions/server/checkSession";
-import { isPrePlusUser } from "../../../../../../functions/server/isPrePlusUser";
-import { getExperimentationId } from "../../../../../../functions/server/getExperimentationId";
-import { getElapsedTimeInDaysSinceInitialScan } from "../../../../../../functions/server/getElapsedTimeInDaysSinceInitialScan";
-import { getExperiments } from "../../../../../../functions/server/getExperiments";
-import { getLocale } from "../../../../../../functions/universal/getLocale";
-import { getL10n } from "../../../../../../functions/l10n/serverComponents";
+} from "../../../../../../../functions/server/getPremiumSubscriptionInfo";
+import { refreshStoredScanResults } from "../../../../../../../functions/server/refreshStoredScanResults";
+import { getEnabledFeatureFlags } from "../../../../../../../../db/tables/featureFlags";
+import { getAttributionsFromCookiesOrDb } from "../../../../../../../functions/server/attributions";
+import { checkSession } from "../../../../../../../functions/server/checkSession";
+import { isPrePlusUser } from "../../../../../../../functions/server/isPrePlusUser";
+import { getExperimentationId } from "../../../../../../../functions/server/getExperimentationId";
+import { getElapsedTimeInDaysSinceInitialScan } from "../../../../../../../functions/server/getElapsedTimeInDaysSinceInitialScan";
+import { getExperiments } from "../../../../../../../functions/server/getExperiments";
+import { getLocale } from "../../../../../../../functions/universal/getLocale";
+import { getL10n } from "../../../../../../../functions/l10n/serverComponents";
+
+export const dashboardTabSlugs = ["action-needed", "fixed"];
 
 type Props = {
-  searchParams: {
-    tab?: TabType;
+  params: {
+    slug: string[] | undefined;
   };
 };
 
-export default async function DashboardPage({ searchParams }: Props) {
+export default async function DashboardPage({ params }: Props) {
   const session = await getServerSession();
   if (!checkSession(session) || !session?.user?.subscriber?.id) {
     return redirect("/");
+  }
+
+  const { slug } = params;
+  const activeTab = slug?.[0];
+  // Only allow the tab slugs. Otherwise: Redirect to the default dashboard route.
+  if (
+    typeof slug !== "undefined" &&
+    (!(activeTab && dashboardTabSlugs.includes(activeTab)) || slug.length >= 2)
+  ) {
+    return redirect("/user/dashboard");
   }
 
   const headersList = headers();
@@ -137,7 +149,7 @@ export default async function DashboardPage({ searchParams }: Props) {
       elapsedTimeInDaysSinceInitialScan={elapsedTimeInDaysSinceInitialScan}
       experimentationId={experimentationId}
       experimentData={experimentData}
-      activeTab={searchParams.tab}
+      activeTab={activeTab}
     />
   );
 }

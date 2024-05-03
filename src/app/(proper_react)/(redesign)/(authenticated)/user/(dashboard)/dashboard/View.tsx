@@ -4,8 +4,8 @@
 
 "use client";
 
-import { useCallback, useContext, useRef, useState } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useContext, useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Session } from "next-auth";
 import { OnerepScanResultRow } from "knex/types/tables";
@@ -51,8 +51,9 @@ import {
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../../../../../constants";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
+import { dashboardTabSlugs } from "./[[...slug]]/page";
 
-export type TabType = "action-needed" | "fixed";
+export type TabType = (typeof dashboardTabSlugs)[number];
 
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
@@ -86,11 +87,19 @@ export const View = (props: Props) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry(props.experimentationId);
   const countryCode = useContext(CountryCodeContext);
-  const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
-  const activeTab: TabType = props.activeTab ?? "action-needed";
+  const [activeTab, setActiveTab] = useState<TabType>(
+    props.activeTab ?? "action-needed",
+  );
+
+  useEffect(() => {
+    const nextPathname = `/user/dashboard/${activeTab}`;
+    if (pathname !== nextPathname) {
+      window.history.replaceState(null, "", nextPathname);
+    }
+  }, [pathname, activeTab]);
+
   const adjustedScanResults = props.userScanData.results.map((scanResult) => {
     if (scanResult.status === "new" && hasPremium(props.user)) {
       // Even if the user has Plus, OneRep won't automatically start removing
@@ -129,15 +138,6 @@ export const View = (props: Props) => {
       key: "fixed",
     },
   ];
-
-  const getActiveTabQuery = useCallback(
-    (tab: TabType) => {
-      const params = new URLSearchParams(searchParams.toString());
-      params.set("tab", tab);
-      return params.toString();
-    },
-    [searchParams],
-  );
 
   const breachesDataArray = props.userBreaches.flat();
   const initialScanInProgress =
@@ -437,9 +437,7 @@ export const View = (props: Props) => {
         <TabList
           tabs={tabsData}
           onSelectionChange={(selectedKey) => {
-            router.push(
-              `${pathname}?${getActiveTabQuery(selectedKey as TabType)}`,
-            );
+            setActiveTab(selectedKey as TabType);
             recordTelemetry("dashboard", "view", {
               dashboard_tab: selectedKey as TabType,
               legacy_user: !props.isNewUser,
@@ -485,7 +483,7 @@ export const View = (props: Props) => {
             user: props.user,
           }}
           onShowFixed={() => {
-            router.push(`${pathname}?${getActiveTabQuery("fixed")}`);
+            setActiveTab("fixed");
             recordTelemetry("dashboard", "view", {
               dashboard_tab: "fixed",
               legacy_user: !props.isNewUser,
