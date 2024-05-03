@@ -9,12 +9,19 @@ settings-page-title = Nastavitve { -product-short-name(sklon: "rodilnik") }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Nastavitve opozoril o krajah
+settings-alert-email-preferences-title = Nastavitve e-pošte
+settings-alert-email-preferences-subtitle = Sporočite nam, katero e-pošto želite prejemati.
+settings-alert-preferences-allow-breach-alerts-title = Takojšnja opozorila o krajah
+settings-alert-preferences-allow-breach-alerts-subtitle = Ta opozorila se pošljejo takoj, ko se zazna kraja podatkov
 settings-alert-preferences-option-one = Pošlji opozorila na ogrožen e-poštni naslov
 settings-alert-preferences-option-two = Pošlji vsa opozorila o krajah podatkov na glavni e-poštni naslov
+settings-alert-preferences-allow-monthly-monitor-report-title = Mesečno poročilo { -brand-monitor }a
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Mesečna posodobitev novih izpostavljenosti, kaj je bilo popravljeno in kaj zahteva vašo pozornost.
 
 ## Monitored email addresses
 
+# Variables:
+#   $email (string) - Email address
 settings-email-list-title = Nadzorovani e-poštni naslovi
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -32,7 +39,6 @@ settings-remove-email-button-label = Odstrani
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Nehaj spremljati { $emailAddress }
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -44,8 +50,6 @@ settings-email-number-of-breaches-info =
         [few] Pojavil se je v { $breachCount } znanih krajah.
        *[other] Pojavil se je v { $breachCount } znanih krajah.
     }
-
-## Cancel Premium subscription
 
 ## Deactivate account
 
@@ -63,8 +67,3 @@ settings-delete-monitor-free-account-dialog-lead = Vsi podatki o vašem { -brand
 settings-delete-monitor-free-account-dialog-cta-label = Izbriši račun
 settings-delete-monitor-free-account-dialog-cancel-button-label = Premislil sem si, vzemite me nazaj
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Opusti
-
-## Add email dialog
-
-## Unsubscribe Dialog Survey
-

@@ -9,12 +9,19 @@ settings-page-title = { -product-short-name }-ynstellingen
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Foarkarren foar datalekmeldingen
+settings-alert-email-preferences-title = E-mailfoarkarren
+settings-alert-email-preferences-subtitle = Fertel ús hokker e-mailberjochten jo ûntfange wolle.
+settings-alert-preferences-allow-breach-alerts-title = Daliks warskôgingen oer datalekken
+settings-alert-preferences-allow-breach-alerts-subtitle = Dizze warskôgingen wurde fuortendaliks ferstjoerd, sa gau as in datalek detektearre wurdt
 settings-alert-preferences-option-one = Warskôgingen oer datalekken nei it troffen e-mailadres stjoere
 settings-alert-preferences-option-two = Alle warskôgingen oer datalekken nei it primêre e-mailadres stjoere
+settings-alert-preferences-allow-monthly-monitor-report-title = Moanliks { -brand-monitor }-rapport
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = In moanlikse update fan nije lekken, wat is oplost en wat jo oandacht nedich hat.
 
 ## Monitored email addresses
 
+# Variables:
+#   $email (string) - Email address
 settings-email-list-title = Kontrolearre e-mailadressen
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,7 +37,6 @@ settings-remove-email-button-label = Fuortsmite
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Kontrolearjen fan { $emailAddress } stopje
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -40,8 +46,6 @@ settings-email-number-of-breaches-info =
         [one] Komt foar yn { $breachCount } bekend datalek.
        *[other] Komt foar yn { $breachCount } bekende datalekken.
     }
-
-## Cancel Premium subscription
 
 ## Deactivate account
 
@@ -60,8 +64,3 @@ settings-delete-monitor-free-account-dialog-cta-label = Account fuortsmite
 settings-delete-monitor-free-account-dialog-cancel-button-label = Lit mar, bring my werom
 settings-delete-monitor-account-confirmation-toast-label-2 = Jo { -brand-monitor }-account is no fuortsmiten
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Slute
-
-## Add email dialog
-
-## Unsubscribe Dialog Survey
-

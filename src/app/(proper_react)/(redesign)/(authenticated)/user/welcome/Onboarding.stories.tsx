@@ -5,6 +5,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { View as OnboardingEl } from "./View";
+import { defaultExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 
 const meta: Meta<typeof OnboardingEl> = {
   title: "Pages/Logged in/Onboarding",
@@ -21,6 +22,12 @@ export const Onboarding: Story = {
       dataBrokerCount={190}
       breachesTotalCount={678}
       previousRoute={props.previousRoute}
+      experimentData={{
+        ...defaultExperimentData,
+        "welcome-scan-optional-info": {
+          enabled: true,
+        },
+      }}
     />
   ),
 };

@@ -21,5 +21,6 @@ jobs:
         run: |
           moz-fluent-lint ./locales/en/ --config .github/linter_config.yml
       - name: Lint pending strings
+        if: always() # This step should run even if the previous one fails
         run: |
           moz-fluent-lint ./locales-pending/ --config .github/linter_config.yml

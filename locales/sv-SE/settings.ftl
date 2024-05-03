@@ -9,12 +9,19 @@ settings-page-title = Inställningar { -product-short-name }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Inställningar för intrångsvarning
+settings-alert-email-preferences-title = E-postinställningar
+settings-alert-email-preferences-subtitle = Berätta vilka mejl du vill få.
+settings-alert-preferences-allow-breach-alerts-title = Omedelbara intrångsvarningar
+settings-alert-preferences-allow-breach-alerts-subtitle = Dessa varningar skickas omedelbart när ett dataintrång upptäcks
 settings-alert-preferences-option-one = Skicka intrångsvarningar till den drabbade e-postadressen
 settings-alert-preferences-option-two = Skicka alla intrångsvarningar till den primära e-postadressen
+settings-alert-preferences-allow-monthly-monitor-report-title = Månadsrapport { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = En månatlig uppdatering av nya exponeringar, vad som har fixats och vad som behöver din åtgärd.
 
 ## Monitored email addresses
 
+# Variables:
+#   $email (string) - Email address
 settings-email-list-title = Övervakade e-postadresser
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,7 +37,6 @@ settings-remove-email-button-label = Ta bort
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Sluta övervaka { $emailAddress }
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -40,8 +46,6 @@ settings-email-number-of-breaches-info =
         [one] Förekommer i { $breachCount } känt intrång.
        *[other] Förekommer i { $breachCount } kända intrång.
     }
-
-## Cancel Premium subscription
 
 ## Deactivate account
 
@@ -60,8 +64,3 @@ settings-delete-monitor-free-account-dialog-cta-label = Ta bort konto
 settings-delete-monitor-free-account-dialog-cancel-button-label = Glöm det, ta mig tillbaka
 settings-delete-monitor-account-confirmation-toast-label-2 = Ditt { -brand-monitor }-konto är nu raderat.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Ignorera
-
-## Add email dialog
-
-## Unsubscribe Dialog Survey
-
