@@ -10,13 +10,13 @@ settings-page-title = Einstellungen für { -product-short-name }
 ## Breach alert preferences
 
 settings-alert-email-preferences-title = Einstellungen zu E-Mails
-settings-alert-email-preferences-subtitle = Sagen Sie uns, welche E-Mails Sie erhalten möchten.
-settings-alert-preferences-allow-breach-alerts-title = Sofortige Warnungen bei Datenlecks
-settings-alert-preferences-allow-breach-alerts-subtitle = Diese Warnungen werden sofort gesendet, wenn ein Datenleck erkannt wird.
+settings-alert-email-preferences-subtitle = Teilen Sie uns mit, welche E-Mails Sie erhalten möchten.
+settings-alert-preferences-allow-breach-alerts-title = Sofortige Warnmeldungen bei Datenlecks
+settings-alert-preferences-allow-breach-alerts-subtitle = Diese Warnmeldungen werden sofort gesendet, wenn ein Datenleck erkannt wird.
 settings-alert-preferences-option-one = Benachrichtigungen über Datenlecks an die betroffene E-Mail-Adresse schicken
 settings-alert-preferences-option-two = Alle Warnungen zu Datenlecks an die primäre E-Mail-Adresse senden
 settings-alert-preferences-allow-monthly-monitor-report-title = Monatlicher { -brand-monitor }-Bericht
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Eine monatliche Nachricht über neue Probleme, was behoben wurde und was Ihre Aufmerksamkeit erfordert.
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Eine monatlich aktualisierte Information über neue Datenlecks, behobene Probleme und was Ihre Aufmerksamkeit erfordert.
 
 ## Monitored email addresses
 

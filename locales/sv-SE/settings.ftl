@@ -10,12 +10,12 @@ settings-page-title = Inställningar { -product-short-name }
 ## Breach alert preferences
 
 settings-alert-email-preferences-title = E-postinställningar
-settings-alert-email-preferences-subtitle = Berätta vilka mejl du vill få.
+settings-alert-email-preferences-subtitle = Berätta vilka e-postmeddelanden du vill få.
 settings-alert-preferences-allow-breach-alerts-title = Omedelbara intrångsvarningar
 settings-alert-preferences-allow-breach-alerts-subtitle = Dessa varningar skickas omedelbart när ett dataintrång upptäcks
 settings-alert-preferences-option-one = Skicka intrångsvarningar till den drabbade e-postadressen
 settings-alert-preferences-option-two = Skicka alla intrångsvarningar till den primära e-postadressen
-settings-alert-preferences-allow-monthly-monitor-report-title = Månadsrapport { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-title = Månatlig { -brand-monitor }-rapport
 settings-alert-preferences-allow-monthly-monitor-report-subtitle = En månatlig uppdatering av nya exponeringar, vad som har fixats och vad som behöver din åtgärd.
 
 ## Monitored email addresses

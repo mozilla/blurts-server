@@ -16,7 +16,7 @@ settings-alert-preferences-allow-breach-alerts-subtitle = Эти оповеще�
 settings-alert-preferences-option-one = Отправлять оповещения об утечках на затронутые ими адреса электронной почты
 settings-alert-preferences-option-two = Отправлять все оповещения об утечках на основной адрес электронной почты
 settings-alert-preferences-allow-monthly-monitor-report-title = Ежемесячный отчёт { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Ежемесячное обновление новых изображений, того, что было исправлено, а что требует вашего внимания.
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Ежемесячное обновление новых утечек, исправленных утечек, а также требующих вашего внимания.
 
 ## Monitored email addresses
 
