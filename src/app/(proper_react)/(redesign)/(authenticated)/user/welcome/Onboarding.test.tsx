@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { it, expect } from "@jest/globals";
-import { render, screen } from "@testing-library/react";
+import { getByText, queryByText, render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
@@ -30,7 +30,7 @@ it("passes the axe accessibility test suite on step 1", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("explainer dialog shows on step 1", async () => {
+it("shows the explainer dialog on step 1", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   render(<ComposedOnboarding />);
@@ -124,7 +124,7 @@ it("can go back to step 1 after moving on to step 2", async () => {
   ).toBeInTheDocument();
 });
 
-it("explainer dialog shows on step 2", async () => {
+it("shows the explainer dialog on step 2", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   render(<ComposedOnboarding stepId="enterInfo" />);
@@ -144,7 +144,7 @@ it("explainer dialog shows on step 2", async () => {
   expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
 });
 
-it("confirm dialog is showing on step 2", async () => {
+it("shows the confirm dialog on step 2", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   render(<ComposedOnboarding stepId="enterInfo" />);
@@ -176,6 +176,74 @@ it("confirm dialog is showing on step 2", async () => {
   expect(screen.queryByText("Is this correct?")).not.toBeInTheDocument();
 });
 
+it("shows the confirm dialog with mandatory user information on step 2", async () => {
+  const user = userEvent.setup();
+  const ComposedOnboarding = composeStory(Onboarding, Meta);
+  render(<ComposedOnboarding stepId="enterInfo" />);
+
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+
+  const firstNameField = screen.getByLabelText("First name*");
+  const lastNameField = screen.getByLabelText("Last name*");
+  const proceedButton = screen.getByRole("button", {
+    name: "Find exposures",
+  });
+  const dobField = screen.getByLabelText("Date of birth*");
+  await user.type(firstNameField, "User");
+  await user.type(lastNameField, "Name");
+  await user.type(dobField, "2000-01-01");
+  await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
+
+  await user.click(proceedButton);
+
+  const dialog = screen.getByRole("dialog");
+  expect(dialog).toBeInTheDocument();
+  expect(queryByText(dialog, "Is this correct?")).toBeInTheDocument();
+
+  expect(getByText(dialog, /First name/i)).toBeInTheDocument();
+  expect(queryByText(dialog, /Middle name/i)).not.toBeInTheDocument();
+  expect(getByText(dialog, /Last name/i)).toBeInTheDocument();
+  expect(queryByText(dialog, /Suffix/i)).not.toBeInTheDocument();
+  expect(getByText(dialog, /Date of birth/i)).toBeInTheDocument();
+  expect(getByText(dialog, /City and state/i)).toBeInTheDocument();
+});
+
+it("shows the confirm dialog with optional user information on step 2", async () => {
+  const user = userEvent.setup();
+  const ComposedOnboarding = composeStory(Onboarding, Meta);
+  render(<ComposedOnboarding stepId="enterInfo" />);
+
+  expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+
+  const firstNameField = screen.getByLabelText("First name*");
+  const middleNameField = screen.getByLabelText("Middle name");
+  const lastNameField = screen.getByLabelText("Last name*");
+  const nameSuffixField = screen.getByLabelText("Suffix");
+  const proceedButton = screen.getByRole("button", {
+    name: "Find exposures",
+  });
+  const dobField = screen.getByLabelText("Date of birth*");
+  await user.type(firstNameField, "User");
+  await user.type(middleNameField, "Middle");
+  await user.type(lastNameField, "Name");
+  await user.type(nameSuffixField, "Jr.");
+  await user.type(dobField, "2000-01-01");
+  await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
+
+  await user.click(proceedButton);
+
+  const dialog = screen.getByRole("dialog");
+  expect(dialog).toBeInTheDocument();
+  expect(getByText(dialog, "Is this correct?")).toBeInTheDocument();
+
+  expect(getByText(dialog, /First name/i)).toBeInTheDocument();
+  expect(getByText(dialog, /Middle name/i)).toBeInTheDocument();
+  expect(getByText(dialog, /Last name/i)).toBeInTheDocument();
+  expect(getByText(dialog, /Suffix/i)).toBeInTheDocument();
+  expect(getByText(dialog, /Date of birth/i)).toBeInTheDocument();
+  expect(getByText(dialog, /City and state/i)).toBeInTheDocument();
+});
+
 it("doesn't allow proceeding without typing a valid location", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
@@ -201,7 +269,7 @@ it("doesn't allow proceeding without typing a valid location", async () => {
   expect(screen.queryByText("Is this correct?")).not.toBeInTheDocument();
 });
 
-it("when a user moves focus away from the first name field, it should show an invalid state error", async () => {
+it("shows an invalid state error when a user moves focus away from the first name field", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   render(<ComposedOnboarding stepId="enterInfo" />);
@@ -214,7 +282,7 @@ it("when a user moves focus away from the first name field, it should show an in
   expect(firstNameField.getAttribute("aria-invalid")).toBe("true");
 });
 
-it("form input elements have invalid state if left empty on step 2", async () => {
+it("doesn’t show an invalid state error for mandatory form input elements if left empty on step 2", async () => {
   const user = userEvent.setup();
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   const { container } = render(<ComposedOnboarding stepId="enterInfo" />);
@@ -237,6 +305,25 @@ it("form input elements have invalid state if left empty on step 2", async () =>
   expect(lastNameInput.getAttribute("aria-invalid")).toBe("true");
   expect(locationInput.getAttribute("aria-invalid")).toBe("true");
   expect(dateInput?.getAttribute("aria-invalid")).toBe("true");
+});
+
+it("optional form input elements don’t have invalid state if left empty on step 2", async () => {
+  const user = userEvent.setup();
+  const ComposedOnboarding = composeStory(Onboarding, Meta);
+  render(<ComposedOnboarding stepId="enterInfo" />);
+
+  const middleNameInput = screen.getByPlaceholderText("Enter middle name");
+  const nameSuffixInput = screen.getByPlaceholderText("Enter suffix");
+  expect(middleNameInput.getAttribute("aria-invalid")).toBe(null);
+  expect(nameSuffixInput.getAttribute("aria-invalid")).toBe(null);
+
+  const proceedButton = screen.getByRole("button", {
+    name: "Find exposures",
+  });
+  await user.click(proceedButton);
+
+  expect(middleNameInput.getAttribute("aria-invalid")).toBe(null);
+  expect(nameSuffixInput.getAttribute("aria-invalid")).toBe(null);
 });
 
 it("passes the axe accessibility test suite on step 3", async () => {
@@ -350,24 +437,33 @@ it("sends telemetry to Glean when entering info", async () => {
   render(<ComposedOnboarding stepId="enterInfo" />);
 
   const firstNameField = screen.getByLabelText("First name*");
+  const middleNameField = screen.getByLabelText("Middle name");
   const lastNameField = screen.getByLabelText("Last name*");
+  const nameSuffixField = screen.getByLabelText("Suffix");
   const dobField = screen.getByLabelText("Date of birth*");
   await user.type(firstNameField, "User");
+  await user.type(middleNameField, "Middle");
   await user.type(lastNameField, "Name");
+  await user.type(nameSuffixField, "Jr.");
   await user.type(dobField, "2000-01-01");
   await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
 
-  ["first_name", "last_name", "location", "date_of_birth"].forEach(
-    (inputKey) => {
-      expect(mockedRecord).toHaveBeenCalledWith(
-        "field",
-        "focus",
-        expect.objectContaining({
-          field_id: inputKey,
-        }),
-      );
-    },
-  );
+  [
+    "first_name",
+    "middle_name",
+    "last_name",
+    "name_suffix",
+    "location",
+    "date_of_birth",
+  ].forEach((inputKey) => {
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "field",
+      "focus",
+      expect.objectContaining({
+        field_id: inputKey,
+      }),
+    );
+  });
 });
 
 it("sends telemetry to Glean editing info", async () => {
@@ -388,10 +484,14 @@ it("sends telemetry to Glean editing info", async () => {
   });
 
   const firstNameField = screen.getByLabelText("First name*");
+  const middleNameField = screen.getByLabelText("Middle name");
   const lastNameField = screen.getByLabelText("Last name*");
+  const nameSuffixField = screen.getByLabelText("Suffix");
   const dobField = screen.getByLabelText("Date of birth*");
   await user.type(firstNameField, "User");
+  await user.type(middleNameField, "Middle");
   await user.type(lastNameField, "Name");
+  await user.type(nameSuffixField, "Jr.");
   await user.type(dobField, "2000-01-01");
   await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
   await user.click(proceedButton);
@@ -436,10 +536,14 @@ it("sends telemetry to Glean when starting the scan", async () => {
   });
 
   const firstNameField = screen.getByLabelText("First name*");
+  const middleNameField = screen.getByLabelText("Middle name");
   const lastNameField = screen.getByLabelText("Last name*");
+  const nameSuffixField = screen.getByLabelText("Suffix");
   const dobField = screen.getByLabelText("Date of birth*");
   await user.type(firstNameField, "User");
+  await user.type(middleNameField, "Middle");
   await user.type(lastNameField, "Name");
+  await user.type(nameSuffixField, "Jr.");
   await user.type(dobField, "2000-01-01");
   await user.keyboard("[Tab]Tu[ArrowDown][Enter][Tab]");
   await user.click(proceedButton);
