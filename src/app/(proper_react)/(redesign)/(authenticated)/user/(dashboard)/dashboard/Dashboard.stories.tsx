@@ -18,7 +18,6 @@ import { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scan
 import { CountryCodeProvider } from "../../../../../../../contextProviders/country-code";
 import { SessionProvider } from "../../../../../../../contextProviders/session";
 import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
-import { hasPremium } from "../../../../../../functions/universal/user";
 
 const brokerOptions = {
   "no-scan": "No scan started",
@@ -209,7 +208,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
                 enabled: true,
               },
             }}
-            activeTab={hasPremium(user) ? "fixed" : "action-needed"}
+            activeTab="action-needed"
           />
         </Shell>
       </CountryCodeProvider>
