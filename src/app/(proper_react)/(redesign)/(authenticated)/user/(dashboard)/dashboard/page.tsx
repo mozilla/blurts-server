@@ -137,7 +137,7 @@ export default async function DashboardPage({ searchParams }: Props) {
       elapsedTimeInDaysSinceInitialScan={elapsedTimeInDaysSinceInitialScan}
       experimentationId={experimentationId}
       experimentData={experimentData}
-      selectedTab={searchParams.tab}
+      activeTab={searchParams.tab}
     />
   );
 }

@@ -74,7 +74,7 @@ export type Props = {
   experimentationId: string;
   elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
-  selectedTab?: TabType;
+  activeTab?: TabType;
 };
 
 export type TabData = {
@@ -90,7 +90,7 @@ export const View = (props: Props) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const selectedTab: TabType = props.selectedTab ?? "action-needed";
+  const activeTab: TabType = props.activeTab ?? "action-needed";
   const adjustedScanResults = props.userScanData.results.map((scanResult) => {
     if (scanResult.status === "new" && hasPremium(props.user)) {
       // Even if the user has Plus, OneRep won't automatically start removing
@@ -171,7 +171,7 @@ export const View = (props: Props) => {
       );
     });
 
-  const tabSpecificExposures = getTabSpecificExposures(selectedTab);
+  const tabSpecificExposures = getTabSpecificExposures(activeTab);
   const filteredExposures = filterExposures(tabSpecificExposures, filters);
   const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
     const exposureCardKey = isScanResult(exposure)
@@ -420,7 +420,7 @@ export const View = (props: Props) => {
 
   const showCsatSurvey =
     props.enabledFeatureFlags.includes("CsatSurvey") &&
-    selectedTab === "fixed" &&
+    activeTab === "fixed" &&
     typeof props.elapsedTimeInDaysSinceInitialScan !== "undefined";
 
   return (
@@ -447,7 +447,7 @@ export const View = (props: Props) => {
               broker_count: adjustedScanResults.length,
             });
           }}
-          selectedKey={selectedTab}
+          selectedKey={activeTab}
         />
       </Toolbar>
       {showCsatSurvey &&
@@ -463,7 +463,7 @@ export const View = (props: Props) => {
         )}
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
-          tabType={selectedTab}
+          tabType={activeTab}
           scanInProgress={initialScanInProgress}
           isPremiumUser={hasPremium(props.user)}
           isEligibleForPremium={canSubscribeToPremium({
@@ -499,7 +499,7 @@ export const View = (props: Props) => {
           totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
         />
         <section className={styles.exposuresArea}>
-          {selectedTab === "action-needed" ? (
+          {activeTab === "action-needed" ? (
             <TabContentActionNeeded />
           ) : (
             <TabContentFixed />
