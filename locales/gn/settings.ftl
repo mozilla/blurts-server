@@ -9,7 +9,7 @@ settings-page-title = { -product-short-name } Ñemboheko
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Kyhyjerã ñembogua erohoryvéva
+settings-alert-email-preferences-title = Ñanduti veve jerohoryvéva
 settings-alert-preferences-option-one = Emondo ñembogua kyhyjerã ñanduti veve imarãkuapavape
 settings-alert-preferences-option-two = Emondopaite kyhyjerã ñembogua ñanduti veve kundaharape ñepyrũguápe
 

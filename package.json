@@ -19,6 +19,8 @@
     "e2e": "playwright test src/e2e/",
     "e2e:debug": "playwright test src/e2e/ --ui",
     "e2e:smoke": "playwright test src/e2e/ --grep @smoke",
+    "cron:monthly-activity": "node dist/scripts/cronjobs/monthlyActivity.js",
+    "cron:breach-alerts": "node src/scripts/emailBreachAlerts.js",
     "db:migrate": "node -r dotenv/config node_modules/knex/bin/cli.js migrate:latest --knexfile src/db/knexfile.js",
     "db:rollback": "node -r dotenv/config node_modules/knex/bin/cli.js migrate:rollback --knexfile src/db/knexfile.js",
     "prepare": "husky install",
