@@ -9,12 +9,18 @@ settings-page-title = Ajustes de { -product-short-name }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Preferencias de alertas de filtraciones
+settings-alert-email-preferences-title = Preferencias de correo electrónico
+settings-alert-email-preferences-subtitle = Dinos qué correos electrónicos te gustaría recibir.
+settings-alert-preferences-allow-breach-alerts-title = Alertas de filtraciones instantaneas
+settings-alert-preferences-allow-breach-alerts-subtitle = Estas alertas se envían inmediatamente una vez que se detecta una filtración de datos.
 settings-alert-preferences-option-one = Enviar alertas de filtraciones a los correos afectados
 settings-alert-preferences-option-two = Enviar todas las alertas de filtraciones al correo electrónico principal.
+settings-alert-preferences-allow-monthly-monitor-report-title = Informe mensual de { -brand-monitor }
 
 ## Monitored email addresses
 
+# Variables:
+#   $email (string) - Email address
 settings-email-list-title = Direcciones de correo monitoreadas
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -31,7 +37,6 @@ settings-remove-email-button-label = Eliminar
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Dejar de monitorear { $emailAddress }
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -42,8 +47,6 @@ settings-email-number-of-breaches-info =
         [many] Aparece en { $breachCount } filtraciones conocidas.
        *[other] Aparece en { $breachCount } filtraciones conocidas.
     }
-
-## Cancel Premium subscription
 
 ## Deactivate account
 
@@ -62,8 +65,3 @@ settings-delete-monitor-free-account-dialog-cta-label = Eliminar cuenta
 settings-delete-monitor-free-account-dialog-cancel-button-label = No importa, llévenme de vuelta
 settings-delete-monitor-account-confirmation-toast-label-2 = Tu cuenta { -brand-monitor } esta ahora eliminada.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Descartar
-
-## Add email dialog
-
-## Unsubscribe Dialog Survey
-
