@@ -75,7 +75,7 @@ export type Props = {
   experimentationId: string;
   elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
-  activeTab?: TabType;
+  activeTab: TabType;
 };
 
 export type TabData = {
@@ -89,9 +89,7 @@ export const View = (props: Props) => {
   const countryCode = useContext(CountryCodeContext);
   const pathname = usePathname();
 
-  const [activeTab, setActiveTab] = useState<TabType>(
-    props.activeTab ?? "action-needed",
-  );
+  const [activeTab, setActiveTab] = useState<TabType>(props.activeTab);
 
   useEffect(() => {
     const nextPathname = `/user/dashboard/${activeTab}`;

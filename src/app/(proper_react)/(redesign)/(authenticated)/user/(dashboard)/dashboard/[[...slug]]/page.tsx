@@ -54,13 +54,15 @@ export default async function DashboardPage({ params }: Props) {
   }
 
   const { slug } = params;
-  const activeTab = slug?.[0];
+  const isPremiumUser = hasPremium(session.user);
+  const defaultTab = isPremiumUser ? "fixed" : "action-needed";
+  const activeTab = slug?.[0] ?? defaultTab;
   // Only allow the tab slugs. Otherwise: Redirect to the default dashboard route.
   if (
     typeof slug !== "undefined" &&
     (!(activeTab && dashboardTabSlugs.includes(activeTab)) || slug.length >= 2)
   ) {
-    return redirect("/user/dashboard");
+    return redirect(`/user/dashboard/${defaultTab}`);
   }
 
   const headersList = headers();
@@ -69,7 +71,6 @@ export default async function DashboardPage({ params }: Props) {
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const hasRunScan = typeof profileId === "number";
   const isNewUser = !isPrePlusUser(session.user);
-  const isPremiumUser = hasPremium(session.user);
 
   if (hasRunScan) {
     await refreshStoredScanResults(profileId);
