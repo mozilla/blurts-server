@@ -30,14 +30,17 @@ export type LocaleData = {
 };
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const ftlRoot = resolve(__dirname, `../../locales/`);
+const ftlRoot = resolve(__dirname, `../../../../locales/`);
 export const getL10nBundles: GetL10nBundles = createGetL10nBundles({
   availableLocales: readdirSync(ftlRoot),
   // TODO: Make this optional in `createGetL10nBundles`, which would then make
   //       it required in the newly-created function:
   getAcceptLangHeader: () => "en",
   loadLocaleFiles: (locale) => {
-    const referenceStringsPath = resolve(__dirname, `../../locales/${locale}/`);
+    const referenceStringsPath = resolve(
+      __dirname,
+      `../../../../locales/${locale}/`,
+    );
     const ftlPaths = readdirSync(referenceStringsPath).map((filename) =>
       resolve(referenceStringsPath, filename),
     );
@@ -45,7 +48,10 @@ export const getL10nBundles: GetL10nBundles = createGetL10nBundles({
     return ftlPaths.map((filePath) => readFileSync(filePath, "utf-8"));
   },
   loadPendingStrings: () => {
-    const pendingStringsPath = resolve(__dirname, "../../locales-pending/");
+    const pendingStringsPath = resolve(
+      __dirname,
+      "../../../../locales-pending/",
+    );
     const ftlPaths = readdirSync(pendingStringsPath).map((filename) =>
       resolve(pendingStringsPath, filename),
     );
