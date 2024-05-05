@@ -52,9 +52,7 @@ import {
 } from "../../../../../../../constants";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 
-export const dashboardTabSlugs = ["action-needed", "fixed"];
-
-export type TabType = (typeof dashboardTabSlugs)[number];
+export type TabType = "action-needed" | "fixed";
 
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
