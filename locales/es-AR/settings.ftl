@@ -10,13 +10,13 @@ settings-page-title = Opciones de { -product-short-name }
 ## Breach alert preferences
 
 settings-alert-email-preferences-title = Preferencias de correo electrónico
-settings-alert-email-preferences-subtitle = Dinos qué correos electrónicos te gustaría recibir.
-settings-alert-preferences-allow-breach-alerts-title = Alertas instantáneas de violaciones
-settings-alert-preferences-allow-breach-alerts-subtitle = Estas alertas se envían inmediatamente una vez que se detecta una violación de datos
+settings-alert-email-preferences-subtitle = Decinos qué correos electrónicos te gustaría recibir.
+settings-alert-preferences-allow-breach-alerts-title = Alertas instantáneas de filtraciones
+settings-alert-preferences-allow-breach-alerts-subtitle = Estas alertas se envían inmediatamente una vez que se detecta una filtración de datos
 settings-alert-preferences-option-one = Enviar alertas de filtración a la dirección de correo electrónico afectada
 settings-alert-preferences-option-two = Enviar todas las alertas de filtración a la dirección de correo electrónico primaria
-settings-alert-preferences-allow-monthly-monitor-report-title = Informe mensual { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Una actualización mensual de las nuevas exposiciones, lo que se ha corregido y lo que necesita su atención.
+settings-alert-preferences-allow-monthly-monitor-report-title = Informe mensual de { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Una actualización mensual de las nuevas exposiciones, lo que se ha corregido y lo que necesita tu atención.
 
 ## Monitored email addresses
 
