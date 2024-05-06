@@ -46,6 +46,18 @@ export class DashboardPage {
   readonly settingsPageLink: Locator;
   readonly faqsPageLink: Locator;
 
+  readonly servicesVpn: Locator;
+  readonly servicesRelay: Locator;
+  readonly servicesPocket: Locator;
+  readonly servicesFirefoxDesktop: Locator;
+  readonly servicesFirefoxMobile: Locator;
+
+  readonly profileEmail: Locator;
+  readonly manageProfile: Locator;
+  readonly helpAndSupport: Locator;
+  readonly closeAppsAndServices: Locator;
+  readonly signOut: Locator;
+
   constructor(page: Page) {
     this.page = page;
     this.dataBreachEmailDropdown = page.locator("custom-select");
@@ -58,10 +70,30 @@ export class DashboardPage {
     );
     this.actionNeededTab = page.getByRole("tab", { name: "Action needed" });
     this.fixedTab = page.getByRole("tab", { name: "Fixed" });
-    this.profileButton = page.getByRole("button", { name: "Profile" });
-    this.appsAndServices = page.getByRole("menu", {
-      name: "Mozilla apps and services",
+    this.profileButton = page.getByTitle("Profile").nth(1);
+    this.profileEmail = page
+      .locator('//li[starts-with(@class, "UserMenu_menuItemWrapper")]/b')
+      .first();
+    this.manageProfile = page.getByRole("link", {
+      name: "Manage your ⁨Mozilla account⁩",
     });
+    this.helpAndSupport = page.getByRole("link", { name: "Help and support" });
+    this.signOut = page.getByRole("button", { name: "Sign out" });
+    this.appsAndServices = page.getByRole("button", {
+      name: "⁨Mozilla⁩ apps and services",
+    });
+    this.servicesVpn = page.getByRole("link", { name: "Mozilla VPN" });
+    this.servicesRelay = page.getByRole("link", { name: "Firefox Relay" });
+    this.servicesPocket = page.getByRole("link", { name: "Pocket" });
+    this.servicesFirefoxDesktop = page.getByRole("link", {
+      name: "⁨Firefox⁩ for Desktop",
+    });
+    this.servicesFirefoxMobile = page.getByRole("link", {
+      name: "⁨Firefox⁩ for Mobile",
+    });
+    this.closeAppsAndServices = page.locator(
+      '//div[starts-with(@class, "Popover_underlay")]',
+    );
     this.upgradeToPlus = page.getByRole("button", {
       name: "Automatic data removal: Off",
     });
