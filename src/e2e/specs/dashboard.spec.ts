@@ -204,7 +204,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Content`, () =
   });
 });
 
-test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dasboard  - Payment`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard  - Payment`, () => {
   test.beforeEach(async ({ dashboardPage, page }) => {
     await dashboardPage.open();
 
@@ -215,14 +215,28 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dasboard  - Payment`, () =
     }
   });
 
-  test("Verify that the user can select what type of plan they want", async ({
+  test("Verify that the user can select what type of plan they want, verify that the Premium upsell modal is displayed correctly", async ({
     dashboardPage,
+    purchasePage,
+    page,
   }) => {
-    test.info().annotations.push({
-      type: "testrail",
-      description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2301529",
-    });
+    test.info().annotations.push(
+      {
+        type: "testrail id #1",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2301529",
+      },
+      {
+        type: "testrail id #2",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2463623",
+      },
+      {
+        type: "testrail id #3",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2463624",
+      },
+    );
 
     // verify subscription dialog elements
     await dashboardPage.subscribeButton.click();
@@ -239,5 +253,22 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dasboard  - Payment`, () =
     await expect(
       dashboardPage.subscribeDialogSelectMonthlyPlanLink,
     ).toBeVisible();
+
+    // Check monthly redirection
+    await dashboardPage.subscribeDialogSelectMonthlyPlanLink.click();
+    await purchasePage.subscriptionHeader.waitFor();
+    await expect(purchasePage.planDetails).toContainText("monthly");
+    await expect(purchasePage.subscriptionHeader).toBeVisible();
+
+    // Check yearly redirection
+    await page.goto(`${process.env.E2E_TEST_BASE_URL}`);
+    await dashboardPage.subscribeButton.waitFor();
+    await dashboardPage.subscribeButton.click();
+    await dashboardPage.subscribeDialogSelectYearlyPlanLink.click();
+    await purchasePage.subscriptionHeader.waitFor();
+    // Text contains invisible characters which need to be hardcoded in an assertion
+    await expect(purchasePage.planDetails).toContainText(
+      `${process.env.E2E_TEST_ENV === "prod" ? "yearly" : "every ⁨2⁩ months"}`,
+    );
   });
 });

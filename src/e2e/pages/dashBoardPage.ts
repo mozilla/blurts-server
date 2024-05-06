@@ -121,8 +121,8 @@ export class DashboardPage {
       name: "Select monthly plan",
     });
     this.yearlyMonthlyTablist = page.getByText("YearlyMonthly");
-    this.yearlyTab = page.getByRole("tab", { name: "Yearly" });
-    this.monthlyTab = page.getByRole("tab", { name: "Monthly" });
+    this.yearlyTab = page.getByText("Yearly", { exact: true });
+    this.monthlyTab = page.getByText("Monthly", { exact: true });
 
     // nav menu
     this.settingsPageLink = page.getByRole("link", { name: "Settings" });
