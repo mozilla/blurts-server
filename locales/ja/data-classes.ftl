@@ -2,7 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-## Breach Data Classes
+
+# Breach Data Classes
 
 account-balances = 預金残高
 address-book-contacts = アドレス帳の連絡先
@@ -16,7 +17,7 @@ avatars = アバター
 bank-account-numbers = 銀行口座番号
 beauty-ratings = 美容評価
 biometric-data = 生体データ
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = 自己紹介
 browser-user-agent-details = ブラウザーユーザーエージェントの詳細
@@ -73,6 +74,8 @@ nationalities = 国籍
 net-worths = 純資産
 nicknames = ニックネーム
 occupations = 職業
+# various data classes grouped together
+other-data-class = その他
 parenting-plans = 子育て計画
 partial-credit-card-data = 一部クレジットカードデータ
 passport-numbers = パスポート番号
