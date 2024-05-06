@@ -45,8 +45,10 @@ export const AlertAddressForm = (props: Props) => {
   // Set value to null if undefined (disabled breach alerts)
   const breachAlertsEmailsAllowed =
     props.user.subscriber?.all_emails_to_primary ?? null;
+
+  // Have monitor monthly reports enabled by default
   const monitorReportAllowed =
-    props.user.subscriber?.monthly_monitor_report ?? null;
+    props.user.subscriber?.monthly_monitor_report ?? true;
 
   const defaultActivateAlertEmail =
     typeof breachAlertsEmailsAllowed === "boolean";
@@ -54,10 +56,8 @@ export const AlertAddressForm = (props: Props) => {
     defaultActivateAlertEmail,
   );
 
-  // Have monitor monthly reports enabled by default
-  const defaultMonitorReport = monitorReportAllowed ?? true;
   const [activateMonthlyMonitorReport, setActivateMonthlyMonitorReport] =
-    useState(defaultMonitorReport);
+    useState(monitorReportAllowed);
 
   const commsValue = () => {
     switch (breachAlertsEmailsAllowed) {
@@ -76,7 +76,7 @@ export const AlertAddressForm = (props: Props) => {
       const chosenOption = newValue as EmailUpdateCommTypeOfOptions;
       const body: EmailUpdateCommOptionRequest = {
         instantBreachAlerts: chosenOption,
-        monthlyMonitorReport: defaultMonitorReport,
+        monthlyMonitorReport: monitorReportAllowed,
       };
       void fetch("/api/v1/user/update-comm-option", {
         method: "POST",
