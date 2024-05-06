@@ -38,7 +38,7 @@ jobs:
 
     - name: Delete deployment to Cloud Run
       id: deploy_delete
-      run: 'gcloud run services delete blurts-server-${{ env.TAG }}'
+      run: 'gcloud run services delete blurts-server-${{ env.TAG }} --region ${{ env.REGION }}'
           
     - name: Comment on Pull Request
       uses: thollander/actions-comment-pull-request@v2
