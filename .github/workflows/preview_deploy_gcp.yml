@@ -64,7 +64,7 @@ jobs:
         flags: "--allow-unauthenticated"
         tag: ${{ env.TAG }}
         env_vars: |
-          NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}
+          NEXTAUTH_URL=https://${{ env.TAG }}---blurts-server-mgjlpikfea-uk.a.run.app
           NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
           OAUTH_ACCOUNT_URI=${{ secrets.OAUTH_ACCOUNT_URI }}
           OAUTH_API_URI=${{ secrets.OAUTH_API_URI }}
