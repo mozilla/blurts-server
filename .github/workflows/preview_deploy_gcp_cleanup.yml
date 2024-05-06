@@ -1,0 +1,47 @@
+name: Deploy Preview Cleanup
+
+on: 
+  # when pull request is merged or closed
+  pull_request: 
+    types: [closed]
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+  SERVICE: blurts-server
+  REGION: us-east4
+  TAG: pr-${{ github.event.pull_request.number }}
+  DB_HOST: ${{ secrets.PREVIEW_DB_HOST }}
+
+jobs:
+  deploy:
+    permissions: 
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Cloud SDK
+      uses: 'google-github-actions/auth@v2'
+      with:
+        credentials_json: '${{ secrets.GCP_SA_KEY }}'
+  
+    - name: Use gcloud CLI
+      run: 'gcloud info'
+
+    - name: Delete created database
+      id: db_delete
+      # This can fail on the subsequent runs, we can ignore the error (database already exists)
+      continue-on-error: true
+      # Delete cloud sql instance
+      run: 'gcloud sql instances delete blurts-server-${{ env.TAG }}'
+
+    - name: Delete deployment to Cloud Run
+      id: deploy_delete
+      run: 'gcloud run services delete blurts-server-${{ env.TAG }}'
+          
+    - name: Comment on Pull Request
+      uses: thollander/actions-comment-pull-request@v2
+      with:
+          GITHUB_TOKEN: ${{ github.token }}
+          message: Cleanup completed, database / cloud run deploys destroyed
