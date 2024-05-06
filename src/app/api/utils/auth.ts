@@ -210,6 +210,14 @@ export const authOptions: AuthOptions = {
       }
       return session;
     },
+    redirect({ url, baseUrl }) {
+      console.log({ url });
+      console.log({ baseUrl });
+      if (AppConstants.APP_ENV === "cloudrun") {
+        return AppConstants.NEXTAUTH_REDIRECT_URL;
+      }
+      return baseUrl;
+    },
   },
   events: {
     signIn(message) {
