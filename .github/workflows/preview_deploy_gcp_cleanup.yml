@@ -18,9 +18,6 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-
     - name: Setup Cloud SDK
       uses: 'google-github-actions/auth@v2'
       with:
@@ -36,12 +33,8 @@ jobs:
       # Delete cloud sql instance
       run: 'gcloud sql instances delete blurts-server-${{ env.TAG }}'
 
-    - name: Delete deployment to Cloud Run
-      id: deploy_delete
-      run: 'gcloud run services delete blurts-server-${{ env.TAG }} --region ${{ env.REGION }}'
-          
     - name: Comment on Pull Request
       uses: thollander/actions-comment-pull-request@v2
       with:
           GITHUB_TOKEN: ${{ github.token }}
-          message: Cleanup completed - database / cloud run deploys destroyed
+          message: Cleanup completed - database 'blurts-server-${{ env.TAG }}' destroyed
