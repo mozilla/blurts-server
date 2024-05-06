@@ -43,21 +43,51 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
     dashboardPage,
   }) => {
     // link to testrail
-    test.info().annotations.push({
-      type: "testrail",
-      description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2301511",
-    });
+    test.info().annotations.push(
+      {
+        type: "testrail",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2301511",
+      },
+      {
+        type: "testrail",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2463567",
+      },
+    );
 
     // verify the navigation bar left side elements
     await expect(dashboardPage.fireFoxMonitorLogoImgButton).toBeVisible();
     await expect(dashboardPage.dashboardNavButton).toBeVisible();
     await expect(dashboardPage.exposuresHeading).toBeVisible();
+    await expect(dashboardPage.settingsPageLink).toBeVisible();
     await expect(dashboardPage.FAQsNavButton).toBeVisible();
 
     // verify the site header elements
     await expect(dashboardPage.actionNeededTab).toBeVisible();
     await expect(dashboardPage.fixedTab).toBeVisible();
+
+    // auto data removal button
+    await expect(dashboardPage.subscribeButton).toBeVisible();
+
+    // apps and services
+    await expect(dashboardPage.appsAndServices).toBeVisible();
+    await dashboardPage.appsAndServices.click();
+    await expect(dashboardPage.servicesVpn).toBeVisible();
+    await expect(dashboardPage.servicesRelay).toBeVisible();
+    await expect(dashboardPage.servicesPocket).toBeVisible();
+    await expect(dashboardPage.servicesFirefoxDesktop).toBeVisible();
+    await expect(dashboardPage.servicesFirefoxMobile).toBeVisible();
+
+    // profile button
+    await dashboardPage.closeAppsAndServices.click();
+    await expect(dashboardPage.profileButton).toBeVisible();
+    await dashboardPage.profileButton.click();
+    await expect(dashboardPage.profileEmail).toBeVisible();
+    await expect(dashboardPage.manageProfile).toBeVisible();
+    await expect(dashboardPage.settingsPageLink).toBeVisible();
+    await expect(dashboardPage.helpAndSupport).toBeVisible();
+    await expect(dashboardPage.signOut).toBeVisible();
   });
 
   test("Verify that the correct message is displayed on the Action Needed tab when all the exposures are fixed", async ({
