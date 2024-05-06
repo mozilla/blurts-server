@@ -42,12 +42,12 @@ jobs:
 
     - name: Generate database on the fly
       id: db_create
+      # This can fail on the subsequent runs, we can ignore the error (database already exists)
       continue-on-error: true
       run: 'gcloud sql instances create blurts-server-${{ env.TAG }} --tier=db-f1-micro --region=${{ env.REGION }} --database-version=POSTGRES_15 --edition=enterprise'
 
     - name: Authorize Docker push
-      run: |-
-        gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev
+      run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev
 
     - name: Build and Push Container
       run: |-
@@ -58,7 +58,7 @@ jobs:
       id: deploy
       uses: google-github-actions/deploy-cloudrun@v2
       with:
-        service: ${{ env.SERVICE }}-${{ env.TAG }}
+        service: ${{ env.SERVICE }}
         image: ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ env.TAG }}
         region: ${{ env.REGION }}
         flags: "--allow-unauthenticated"
