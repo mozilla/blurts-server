@@ -57,14 +57,13 @@ jobs:
       id: deploy
       uses: google-github-actions/deploy-cloudrun@v2
       with:
-        service: ${{ env.SERVICE }}
+        service: ${{ env.SERVICE }}-${{ env.TAG }}
         image: ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ env.TAG }}
         region: ${{ env.REGION }}
         flags: "--allow-unauthenticated"
         tag: ${{ env.TAG }}
         env_vars: |
-          NEXTAUTH_SECRET=secret
-          NEXTAUTH_URL=${{ secrets.NEXTAUTH_SECRET }}
+          NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
           OAUTH_ACCOUNT_URI=${{ secrets.OAUTH_ACCOUNT_URI }}
           OAUTH_API_URI=${{ secrets.OAUTH_API_URI }}
           OAUTH_CLIENT_ID=${{ secrets.OAUTH_CLIENT_ID }}
