@@ -78,8 +78,8 @@ jobs:
           ADMINS=${{ secrets.ADMINS }}
           HIBP_API_TOKEN=${{ secrets.HIBP_API_TOKEN }}
           HIBP_KANON_API_TOKEN=${{ secrets.HIBP_KANON_API_TOKEN }}
+          AUTH_REDIRECT_PROXY_URL=${{ secrets.AUTH_REDIRECT_PROXY_URL }}
 
-          
     - name: Comment on Pull Request
       uses: thollander/actions-comment-pull-request@v2
       with:
