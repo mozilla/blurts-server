@@ -1266,7 +1266,7 @@ describe("to learn about usage", () => {
             [mockedSecondaryVerifiedEmail.email]: 42,
           }}
           emailAddresses={[mockedSecondaryVerifiedEmail]}
-          fxaSettingsUrl=""
+          fxaSettingsUrl="https://example.com/an-actual-link-because-otherwise-it-wont-have-a-link-role"
           fxaSubscriptionsUrl=""
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
