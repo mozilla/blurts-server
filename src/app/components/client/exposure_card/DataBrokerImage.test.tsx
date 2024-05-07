@@ -12,13 +12,13 @@ import { DataBrokerImage } from "./DataBrokerImage";
 it("renders a fallback icon until the image has loaded", async () => {
   render(<DataBrokerImage name="SSSSome name" />);
 
-  const falbackLogo = screen.getByRole("img", { hidden: true });
+  const falbackLogo = screen.getByRole("presentation", { hidden: true });
   expect(falbackLogo).toBeInTheDocument();
   expect(falbackLogo.textContent).toBe("S");
   expect(falbackLogo.tagName).not.toBe("IMG");
 
   await waitForElementToBeRemoved(falbackLogo);
-  const loadedImage = screen.getByRole("img", { hidden: true });
+  const loadedImage = screen.getByRole("presentation", { hidden: true });
   expect(loadedImage).toBeInTheDocument();
   expect(loadedImage.tagName).toBe("IMG");
 });
