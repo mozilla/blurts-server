@@ -145,7 +145,7 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
   };
 
   const exposureCard = (
-    <div>
+    <div aria-label={props.subscriberBreach.name}>
       <div className={styles.exposureCard}>
         <div className={styles.exposureHeader}>
           <dl className={styles.exposureHeaderList}>

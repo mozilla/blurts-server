@@ -9,9 +9,14 @@ settings-page-title = Ajustes de { -product-short-name }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Preferencias de alertas de filtraciones
+settings-alert-email-preferences-title = Preferencias de correo
+settings-alert-email-preferences-subtitle = Dinos qué correos electrónicos te gustaría recibir.
+settings-alert-preferences-allow-breach-alerts-title = Alertas instantáneas sobre filtraciones
+settings-alert-preferences-allow-breach-alerts-subtitle = Estas alertas se envían inmediatamente una vez que se detecta una filtración de datos.
 settings-alert-preferences-option-one = Enviar alertas de filtraciones a las direcciones de correo afectadas
 settings-alert-preferences-option-two = Enviar todas las alertas de filtraciones al correo electrónico principal.
+settings-alert-preferences-allow-monthly-monitor-report-title = Informe mensual de { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Una actualización mensual de nuevas exposiciones, lo que se ha corregido y lo que necesita tu atención.
 
 ## Monitored email addresses
 
@@ -32,7 +37,6 @@ settings-remove-email-button-label = Eliminar
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Dejar de monitorizar { $emailAddress }
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:

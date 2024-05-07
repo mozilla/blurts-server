@@ -198,7 +198,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
   };
 
   const exposureCard = (
-    <div>
+    <div aria-label={props.scanResult.data_broker}>
       <div className={styles.exposureCard}>
         <div className={styles.exposureHeader}>
           <dl className={styles.exposureHeaderList}>

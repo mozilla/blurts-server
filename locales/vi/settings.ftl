@@ -9,12 +9,19 @@ settings-page-title = Cài đặt { -product-short-name }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Tùy chọn cảnh báo rò rỉ dữ liệu
+settings-alert-email-preferences-title = Tuỳ chỉnh email
+settings-alert-email-preferences-subtitle = Hãy cho chúng tôi biết bạn muốn nhận email nào.
+settings-alert-preferences-allow-breach-alerts-title = Cảnh báo rò rỉ tức thời
+settings-alert-preferences-allow-breach-alerts-subtitle = Những cảnh báo này được gửi ngay lập tức khi phát hiện rò rỉ dữ liệu
 settings-alert-preferences-option-one = Gửi thông báo rò rỉ dữ liệu đến địa chỉ email bị ảnh hưởng
 settings-alert-preferences-option-two = Gửi tất cả cảnh báo rò rỉ dữ liệu đến địa chỉ email chính
+settings-alert-preferences-allow-monthly-monitor-report-title = Báo cáo hàng tháng { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Bản cập nhật hàng tháng về số lần lộ dữ liệu mới, những gì đã được sửa và những gì bạn cần chú ý.
 
 ## Monitored email addresses
 
+# Variables:
+#   $email (string) - Email address
 settings-email-list-title = Địa chỉ email được giám sát
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -26,14 +33,11 @@ settings-remove-email-button-label = Xóa
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Dừng giám sát { $emailAddress }
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
 #   $breachCount (number) - Number of breaches
 settings-email-number-of-breaches-info = Xuất hiện trong { $breachCount } rò rỉ dữ liệu đã biết.
-
-## Cancel Premium subscription
 
 ## Deactivate account
 
@@ -52,8 +56,3 @@ settings-delete-monitor-free-account-dialog-cta-label = Xóa tài khoản
 settings-delete-monitor-free-account-dialog-cancel-button-label = Nghĩ lại rồi, đưa tôi quay lại
 settings-delete-monitor-account-confirmation-toast-label-2 = Tài khoản { -brand-monitor } của bạn đã bị xóa.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Bỏ qua
-
-## Add email dialog
-
-## Unsubscribe Dialog Survey
-
