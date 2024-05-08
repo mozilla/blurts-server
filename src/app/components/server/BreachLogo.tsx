@@ -45,7 +45,7 @@ export function FallbackLogo(props: { name: string }) {
   const classNames = `${styles.breachLogo} ${styles[color]}`;
 
   return (
-    <span role="img" aria-hidden="true" className={classNames}>
+    <span role="presentation" aria-hidden="true" className={classNames}>
       {props.name.substring(0, 1)}
     </span>
   );

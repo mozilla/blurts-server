@@ -227,7 +227,7 @@ export const SettingsView = (props: Props) => {
                       <div className={styles.dialogLead}>
                         <p>
                           {l10n.getString(
-                            "settings-delete-monitor-free-account-dialog-lead",
+                            "settings-delete-monitor-free-account-dialog-lead-v2",
                           )}
                         </p>
                       </div>

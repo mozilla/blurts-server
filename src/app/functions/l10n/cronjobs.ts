@@ -29,15 +29,14 @@ export type LocaleData = {
   bundleSources: string[];
 };
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const ftlRoot = resolve(__dirname, `../../locales/`);
+const rootDir = getRootDir();
 export const getL10nBundles: GetL10nBundles = createGetL10nBundles({
-  availableLocales: readdirSync(ftlRoot),
+  availableLocales: readdirSync(resolve(rootDir, `./locales/`)),
   // TODO: Make this optional in `createGetL10nBundles`, which would then make
   //       it required in the newly-created function:
   getAcceptLangHeader: () => "en",
   loadLocaleFiles: (locale) => {
-    const referenceStringsPath = resolve(__dirname, `../../locales/${locale}/`);
+    const referenceStringsPath = resolve(rootDir, `./locales/${locale}/`);
     const ftlPaths = readdirSync(referenceStringsPath).map((filename) =>
       resolve(referenceStringsPath, filename),
     );
@@ -45,7 +44,7 @@ export const getL10nBundles: GetL10nBundles = createGetL10nBundles({
     return ftlPaths.map((filePath) => readFileSync(filePath, "utf-8"));
   },
   loadPendingStrings: () => {
-    const pendingStringsPath = resolve(__dirname, "../../locales-pending/");
+    const pendingStringsPath = resolve(rootDir, "./locales-pending/");
     const ftlPaths = readdirSync(pendingStringsPath).map((filename) =>
       resolve(pendingStringsPath, filename),
     );
@@ -53,6 +52,25 @@ export const getL10nBundles: GetL10nBundles = createGetL10nBundles({
     return ftlPaths.map((filePath) => readFileSync(filePath, "utf-8"));
   },
 });
+
+/**
+ * Find the directory that contains the `locales` directory
+ *
+ * Cronjobs get bundled by esbuild, which inlines all required modules,
+ * including this one. This means that the directory this code runs in depends
+ * on the location of the calling code, and hence the relative path to the FTL
+ * files does so too. This function traverses up the paths to find the directory
+ * that contains the FTL files, regardless of where it is executed.
+ *
+ * @param currentDir
+ */
+function getRootDir(currentDir = dirname(fileURLToPath(import.meta.url))) {
+  const dirContents = readdirSync(currentDir);
+  if (dirContents.includes("locales")) {
+    return currentDir;
+  }
+  return getRootDir(resolve(currentDir, "../"));
+}
 
 export const getL10n: GetL10n = createGetL10n({
   getL10nBundles: getL10nBundles,

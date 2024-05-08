@@ -16,7 +16,7 @@ settings-alert-preferences-allow-breach-alerts-subtitle = Эти оповеще�
 settings-alert-preferences-option-one = Отправлять оповещения об утечках на затронутые ими адреса электронной почты
 settings-alert-preferences-option-two = Отправлять все оповещения об утечках на основной адрес электронной почты
 settings-alert-preferences-allow-monthly-monitor-report-title = Ежемесячный отчёт { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Ежемесячное обновление новых изображений, того, что было исправлено, а что требует вашего внимания.
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Ежемесячное обновление новых утечек, исправленных утечек, а также требующих вашего внимания.
 
 ## Monitored email addresses
 
@@ -63,7 +63,7 @@ settings-delete-monitor-free-account-title = Удалить аккаунт { -br
 settings-delete-monitor-free-account-description = Это навсегда удалит ваш аккаунт { -brand-monitor } и отключит все уведомления.
 settings-delete-monitor-free-account-cta-label = Удалить аккаунт
 settings-delete-monitor-free-account-dialog-title = Ваш аккаунт { -brand-monitor } будет удалён навсегда
-settings-delete-monitor-free-account-dialog-lead = Вся информация вашего аккаунта { -brand-monitor } будет удалена, и мы больше не будем отслеживать новые утечки данных. Это действие не приведет к удалению вашего аккаунта { -brand-mozilla }.
+settings-delete-monitor-free-account-dialog-lead-v2 = Вся информация вашего аккаунта { -brand-monitor } будет удалена, и мы больше не будем отслеживать новые утечки данных. Это действие не удалит ваш { -brand-mozilla-account }.
 settings-delete-monitor-free-account-dialog-cta-label = Удалить аккаунт
 settings-delete-monitor-free-account-dialog-cancel-button-label = Не важно, верните меня обратно
 settings-delete-monitor-account-confirmation-toast-label-2 = Ваш аккаунт { -brand-monitor } удалён.

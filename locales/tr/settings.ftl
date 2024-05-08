@@ -9,9 +9,13 @@ settings-page-title = { -product-short-name } Ayarları
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = İhlal uyarısı tercihleri
+settings-alert-email-preferences-title = E-posta tercihleri
+settings-alert-email-preferences-subtitle = Ne tür e-postaları almak istediğinizi bize söyleyin.
+settings-alert-preferences-allow-breach-alerts-title = Anlık ihlal uyarıları
+settings-alert-preferences-allow-breach-alerts-subtitle = Bu uyarılar bir veri ihlali algılandığı anda hemen gönderilir.
 settings-alert-preferences-option-one = İhlal uyarılarını etkilenen e-posta adresine gönder
 settings-alert-preferences-option-two = Tüm ihlal uyarılarını birinci e-posta adresine gönder
+settings-alert-preferences-allow-monthly-monitor-report-title = Aylık { -brand-monitor } raporu
 
 ## Monitored email addresses
 
