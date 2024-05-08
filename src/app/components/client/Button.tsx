@@ -8,8 +8,7 @@ import { AriaAttributes, ReactNode, RefObject, useRef } from "react";
 import Link from "next/link";
 import styles from "./Button.module.scss";
 import { useButton } from "react-aria";
-import { useL10n } from "../../hooks/l10n";
-import { VisuallyHidden } from "../server/VisuallyHidden";
+import { Loader } from "./Loader";
 
 export interface Props {
   variant: "primary" | "secondary" | "tertiary";
@@ -83,7 +82,7 @@ export const Button = (props: ButtonProps) => {
         /* c8 ignore next 3 */
         // Since the Node 20.10 upgrade, it's been intermittently marking this (and
         // this comment) as uncovered, even though I think it's covered by tests.
-        isLoading ? <Loader /> : children
+        isLoading ? <Loader button /> : children
       }
     </Link>
   ) : (
@@ -95,25 +94,8 @@ export const Button = (props: ButtonProps) => {
     >
       {
         /* c8 ignore next */
-        isLoading ? <Loader /> : children
+        isLoading ? <Loader button /> : children
       }
     </button>
   );
 };
-
-/* This animation was adapted from https://loading.io/css/ */
-/* c8 ignore start */
-export const Loader = () => {
-  const l10n = useL10n();
-
-  return (
-    <div className={styles.ldsRing}>
-      <VisuallyHidden>{l10n.getString("loading-accessibility")}</VisuallyHidden>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  );
-};
-/* c8 ignore stop */
