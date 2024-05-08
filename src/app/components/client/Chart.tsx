@@ -298,54 +298,6 @@ export const DoughnutChart = (props: Props) => {
             />
             {slices}
             {props.isShowFixed ? centerValueFixed : centerValueActionNeeded}
-            {/* {props.isShowFixed
-               ? 
-               l10n.getFragment("exposure-chart-heading-fixed", {
-                   elems: {
-                     nr: (
-                       <text
-                         className={styles.headingNr}
-                         fontSize={headingNumberSize}
-                         x={diameter / 2}
-                         y={diameter / 2 - headingGap / 2}
-                         textAnchor="middle"
-                       />
-                     ),
-                     label: (
-                       <text
-                         className={styles.headingLabel}
-                         fontSize={headingLabelSize}
-                         x={diameter / 2}
-                         y={diameter / 2 + headingLabelSize + headingGap / 2}
-                         textAnchor="middle"
-                       />
-                     ),
-                   },
-                   vars: { nr: sumOfFixedExposures },
-                 })
-               : l10n.getFragment("exposure-chart-heading", {
-                   elems: {
-                     nr: (
-                       <text
-                         className={styles.headingNr}
-                         fontSize={headingNumberSize}
-                         x={diameter / 2}
-                         y={diameter / 2 - headingGap / 2}
-                         textAnchor="middle"
-                       />
-                     ),
-                     label: (
-                       <text
-                         className={styles.headingLabel}
-                         fontSize={headingLabelSize}
-                         x={diameter / 2}
-                         y={diameter / 2 + headingLabelSize + headingGap / 2}
-                         textAnchor="middle"
-                       />
-                     ),
-                   },
-                   vars: { nr: sumOfFixedExposures },
-                 })} */}
           </svg>
           <div className={styles.legend}>
             <table>
@@ -416,7 +368,6 @@ export const DoughnutChart = (props: Props) => {
           </button>
         </figcaption>
       </figure>
-
       {explainerDialogState.isOpen && (
         <ModalOverlay
           state={explainerDialogState}
