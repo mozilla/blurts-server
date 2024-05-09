@@ -1047,7 +1047,7 @@ it("warns about the consequences before deleting a free user's account", async (
 
   const dialog = screen.getByRole("dialog");
   const consequencesWarning = within(dialog).getByText(
-    "All of your ⁨Monitor⁩ account information will be deleted and we’ll no longer monitor for new data breaches. This will not delete your ⁨Mozilla⁩ account.",
+    "All of your ⁨Monitor⁩ account information will be deleted and we’ll no longer monitor for new data breaches. This will not delete your ⁨Mozilla account⁩.",
   );
 
   expect(consequencesWarning).toBeInTheDocument();
@@ -1266,7 +1266,7 @@ describe("to learn about usage", () => {
             [mockedSecondaryVerifiedEmail.email]: 42,
           }}
           emailAddresses={[mockedSecondaryVerifiedEmail]}
-          fxaSettingsUrl=""
+          fxaSettingsUrl="https://example.com/an-actual-link-because-otherwise-it-wont-have-a-link-role"
           fxaSubscriptionsUrl=""
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""

@@ -16,7 +16,7 @@ settings-alert-preferences-allow-breach-alerts-subtitle = Αυτές οι ειδ
 settings-alert-preferences-option-one = Αποστολή ειδοποιήσεων παραβίασης στην επηρεασμένη διεύθυνση email
 settings-alert-preferences-option-two = Αποστολή όλων των ειδοποιήσεων παραβιάσεων στην κύρια διεύθυνση email
 settings-alert-preferences-allow-monthly-monitor-report-title = Μηνιαία αναφορά { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Μια μηνιαία ενημέρωση για τις νέες προβολές, το τι έχει διορθωθεί και τι χρειάζεται την προσοχή σας.
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Μια μηνιαία ενημέρωση για τις νέες εκθέσεις, το τι έχει διορθωθεί και τι χρειάζεται την προσοχή σας.
 
 ## Monitored email addresses
 
@@ -59,7 +59,7 @@ settings-delete-monitor-free-account-title = Διαγραφή λογαριασμ
 settings-delete-monitor-free-account-description = Αυτή η ενέργεια θα διαγράψει οριστικά τον λογαριασμό σας στο { -brand-monitor } και θα απενεργοποιήσει όλες τις ειδοποιήσεις.
 settings-delete-monitor-free-account-cta-label = Διαγραφή λογαριασμού
 settings-delete-monitor-free-account-dialog-title = Ο λογαριασμός σας στο { -brand-monitor } θα διαγραφεί οριστικά
-settings-delete-monitor-free-account-dialog-lead = Όλες οι πληροφορίες του λογαριασμού σας στο { -brand-monitor } θα διαγραφούν και δεν θα εποπτεύουμε πλέον για νέες παραβιάσεις δεδομένων. Αυτή η ενέργεια δεν θα διαγράψει τον λογαριασμό σας στη { -brand-mozilla }.
+settings-delete-monitor-free-account-dialog-lead-v2 = Όλες οι πληροφορίες του λογαριασμού σας στο { -brand-monitor } θα διαγραφούν και δεν θα γίνεται πλέον εποπτεία για νέες παραβιάσεις δεδομένων. Αυτή η ενέργεια δεν θα διαγράψει τον { -brand-mozilla-account(case: "acc", capitalization: "lower") } σας.
 settings-delete-monitor-free-account-dialog-cta-label = Διαγραφή λογαριασμού
 settings-delete-monitor-free-account-dialog-cancel-button-label = Άλλαξα γνώμη, θέλω να επιστρέψω
 settings-delete-monitor-account-confirmation-toast-label-2 = Ο λογαριασμός σας στο { -brand-monitor } έχει πλέον διαγραφεί.
