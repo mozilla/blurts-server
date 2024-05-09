@@ -16,6 +16,7 @@ settings-alert-preferences-allow-breach-alerts-subtitle = Estas alertas se enví
 settings-alert-preferences-option-one = Enviar alertas de filtraciones a los correos afectados
 settings-alert-preferences-option-two = Enviar todas las alertas de filtraciones al correo electrónico principal.
 settings-alert-preferences-allow-monthly-monitor-report-title = Informe mensual de { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Una actualización mensual de nuevas exposiciones, lo que ha sido solucionado y lo que necesita de tu atención.
 
 ## Monitored email addresses
 
@@ -60,7 +61,7 @@ settings-delete-monitor-free-account-title = Eliminar cuenta de { -brand-monitor
 settings-delete-monitor-free-account-description = Esto eliminará permanentemente tu cuenta de { -brand-monitor } y desactivará todas las notificaciones.
 settings-delete-monitor-free-account-cta-label = Eliminar cuenta
 settings-delete-monitor-free-account-dialog-title = Tu cuenta { -brand-monitor } será eliminada permanentemente
-settings-delete-monitor-free-account-dialog-lead = Toda la información de tu cuenta de { -brand-monitor } será eliminada y ya no monitorearemos nuevas filtraciones de datos. Esto no eliminará tu cuenta de { -brand-mozilla }.
+settings-delete-monitor-free-account-dialog-lead-v2 = Toda la información de tu cuenta de { -brand-monitor } será eliminada y ya no monitorearemos nuevas filtraciones de datos. Esto no eliminará tu { -brand-mozilla-account }.
 settings-delete-monitor-free-account-dialog-cta-label = Eliminar cuenta
 settings-delete-monitor-free-account-dialog-cancel-button-label = No importa, llévenme de vuelta
 settings-delete-monitor-account-confirmation-toast-label-2 = Tu cuenta { -brand-monitor } esta ahora eliminada.

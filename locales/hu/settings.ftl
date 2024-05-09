@@ -9,14 +9,14 @@ settings-page-title = { -product-short-name } beállítások
 
 ## Breach alert preferences
 
-settings-alert-email-preferences-title = E-mail beállítások
-settings-alert-email-preferences-subtitle = Mondja el, mely e-maileket szeretne kapni.
-settings-alert-preferences-allow-breach-alerts-title = Azonnali adatvédelmi incidens figyelmeztetések
-settings-alert-preferences-allow-breach-alerts-subtitle = Ezek a figyelmeztetések azonnal elküldésre kerülnek adatsértés észlelése után
+settings-alert-email-preferences-title = E-mail-beállítások
+settings-alert-email-preferences-subtitle = Mondja el, mely e-maileket szeretné megkapni.
+settings-alert-preferences-allow-breach-alerts-title = Azonnali figyelmeztetések az adatvédelmi incidensekről
+settings-alert-preferences-allow-breach-alerts-subtitle = Ezek a figyelmeztetések azonnal elküldésre kerülnek az adatvédelmi incidensek észlelése után
 settings-alert-preferences-option-one = Adatvédelmi incidensek figyelmeztetéseinek elküldése az érintett e-mail-címre
 settings-alert-preferences-option-two = Az összes adatvédelmi incidens figyelmeztetésének elküldése az elsődleges e-mail-címre
 settings-alert-preferences-allow-monthly-monitor-report-title = Havi { -brand-monitor } jelentés
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Havi frissítés az új megjelenésekről, arról, hogy mi lett kijavítva, és mire kell figyelnie.
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Havi hírlevél az új megjelenésekről, arról, hogy mi lett kijavítva, és mire kell figyelnie.
 
 ## Monitored email addresses
 
@@ -59,7 +59,7 @@ settings-delete-monitor-free-account-title = A { -brand-monitor }-fiók törlés
 settings-delete-monitor-free-account-description = Ez véglegesen törli a { -brand-monitor }-fiókját, és kikapcsolja az összes értesítést.
 settings-delete-monitor-free-account-cta-label = Fiók törlése
 settings-delete-monitor-free-account-dialog-title = A { -brand-monitor }-fiókja véglegesen törölve lesz
-settings-delete-monitor-free-account-dialog-lead-v2 = Az összes { -brand-monitor }-fiókinformációja törölve lesz, és a továbbiakban nem fogjuk figyelni az új adatsértéseket. Ez nem törli a { -brand-mozilla-account }ját.
+settings-delete-monitor-free-account-dialog-lead-v2 = Az összes { -brand-monitor }-fiókinformációja törölve lesz, és a továbbiakban nem fogjuk figyelni az új adatvédelmi incidenseket. Ez nem törli a { -brand-mozilla-account }ját.
 settings-delete-monitor-free-account-dialog-cta-label = Fiók törlése
 settings-delete-monitor-free-account-dialog-cancel-button-label = Mégse, visszalépés
 settings-delete-monitor-account-confirmation-toast-label-2 = A { -brand-monitor }-fiókja törölve lett.
