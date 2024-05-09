@@ -45,7 +45,7 @@ jobs:
       id: deploy
       uses: google-github-actions/deploy-cloudrun@v2
       with:
-        service: ${{ env.SERVICE }}
+        service: ${{ env.SERVICE }}-${{ env.TAG }}
         image: ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ env.TAG }}
         region: ${{ env.REGION }}
         flags: "--allow-unauthenticated --add-cloudsql-instances=${{ env.PROJECT_ID }}:${{env.REGION}}:${{ env.SERVICE }}-${{ env.TAG }}"
