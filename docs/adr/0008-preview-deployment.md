@@ -37,12 +37,12 @@ In this exploration, we want to investigate how we can incorporate QA earlier in
 ## Decision Drivers <!-- optional -->
 
 - Solution that provides the best experience for developers
-- Move away from predefining releases (weekly release cycle for stage, where QAs used to test), it's slow, manual, and incompatible with modern industry practices
+- Move away from predefined releases (weekly release cycle for stage, where QAs used to test), it's slow, manual, and incompatible with modern industry practices
 - Five keys of CICD release process
 
 ## Considered Options
 
-- No Change - make release branches and deploy to production weekly like we do now
+- No Change - stagger the stage and production weekly release like we do now
 - Utilizing GCP Native tools (cloudrun + managed cloud SQL / postgres)
 - Vercel (NextJS Cloud) + Neon
 - GCP Cloud Run + Neon
