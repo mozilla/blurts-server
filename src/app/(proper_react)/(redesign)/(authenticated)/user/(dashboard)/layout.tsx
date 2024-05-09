@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ReactNode } from "react";
-import { getServerSession } from "../../../../../functions/server/getServerSession";
+import { auth } from "../../../../../api/utils/auth";
 import {
   getL10n,
   getL10nBundles,
@@ -15,7 +15,7 @@ import { AutoSignIn } from "../../../../../components/client/AutoSignIn";
 export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();
   const l10n = getL10n(l10nBundles);
-  const session = await getServerSession();
+  const session = await auth();
 
   if (!session) {
     return <AutoSignIn />;

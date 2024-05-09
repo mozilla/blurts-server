@@ -4,7 +4,7 @@
 
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
-import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
+import { auth } from "../../../../../../../../../api/utils/auth";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
@@ -27,7 +27,7 @@ interface SecurityRecommendationsProps {
 export default async function SecurityRecommendations({
   params,
 }: SecurityRecommendationsProps) {
-  const session = await getServerSession();
+  const session = await auth();
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }

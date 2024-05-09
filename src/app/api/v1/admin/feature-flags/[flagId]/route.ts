@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { getServerSession } from "../../../../../functions/server/getServerSession";
+import { auth, isAdmin } from "../../../../../api/utils/auth";
 import { logger } from "../../../../../functions/server/logging";
 import {
   enableFeatureFlagByName,
@@ -13,14 +13,13 @@ import {
   updateOwner,
   updateWaitList,
 } from "../../../../../../db/tables/featureFlags";
-import { isAdmin } from "../../../../utils/auth";
 import appConstants from "../../../../../../appConstants";
 
 export async function GET(
   req: NextRequest,
   { params }: { params: { flagId: string } },
 ) {
-  const session = await getServerSession();
+  const session = await auth();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in
     const flagName = params.flagId;
@@ -38,7 +37,7 @@ export async function GET(
 }
 
 export async function PUT(req: NextRequest) {
-  const session = await getServerSession();
+  const session = await auth();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in
     try {

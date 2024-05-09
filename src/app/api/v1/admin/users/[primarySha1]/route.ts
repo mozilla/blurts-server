@@ -5,9 +5,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Profile } from "next-auth";
 import { SubscriberRow } from "knex/types/tables";
-import { getServerSession } from "../../../../../functions/server/getServerSession";
+import { auth, isAdmin } from "../../../../../api/utils/auth";
 import { logger } from "../../../../../functions/server/logging";
-import { isAdmin } from "../../../../utils/auth";
 import {
   deleteOnerepProfileId,
   deleteSubscriber,
@@ -51,7 +50,7 @@ export async function GET(
   req: NextRequest,
   { params }: { params: { primarySha1: string } },
 ) {
-  const session = await getServerSession();
+  const session = await auth();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in as admin
     try {
@@ -121,7 +120,7 @@ export async function PUT(
   req: NextRequest,
   { params }: { params: { primarySha1: string } },
 ) {
-  const session = await getServerSession();
+  const session = await auth();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in as admin
     try {

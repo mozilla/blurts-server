@@ -4,7 +4,7 @@
 
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
-import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
+import { auth } from "../../../../../../../../../api/utils/auth";
 import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
@@ -16,7 +16,7 @@ import { isEligibleForPremium } from "../../../../../../../../../functions/serve
 import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 export default async function ManualRemovePage() {
-  const session = await getServerSession();
+  const session = await auth();
 
   if (!session?.user?.subscriber?.id) {
     redirect("/user/dashboard");

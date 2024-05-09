@@ -31,7 +31,7 @@ declare module "next-auth" {
     id: string;
     email: string;
     /** The value of the Accept-Language header when the user signed up for their Firefox Account */
-    locale: string;
+    locale?: string | null;
     twoFactorAuthentication: boolean;
     metricsEnabled: boolean;
     /** URL to an avatar image for the current user */
@@ -45,7 +45,7 @@ declare module "next-auth" {
     user: {
       fxa?: {
         /** The value of the Accept-Language header when the user signed up for their Firefox Account */
-        locale: string;
+        locale?: string | null;
         twoFactorAuthentication: boolean;
         metricsEnabled: boolean;
         /** URL to an avatar image for the current user */
@@ -63,7 +63,7 @@ declare module "next-auth/jwt" {
   interface JWT {
     fxa?: {
       /** The value of the Accept-Language header when the user signed up for their Firefox Account */
-      locale: string;
+      locale?: string | null;
       twoFactorAuthentication: boolean;
       metricsEnabled: boolean;
       /** URL to an avatar image for the current user */

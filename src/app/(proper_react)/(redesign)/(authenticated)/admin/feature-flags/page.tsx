@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { notFound, redirect } from "next/navigation";
-import { getServerSession } from "../../../../../functions/server/getServerSession";
+import { auth, isAdmin } from "../../../../../api/utils/auth";
 import {
   getAllFeatureFlags,
   getDeletedFeatureFlags,
@@ -12,7 +12,6 @@ import { AddFeatureFlag } from "./components/AddFeatureFlag";
 import { DeleteFeatureFlag } from "./components/DeleteFeatureFlag";
 import { ToggleFlagEnabled } from "./components/ToggleFlagEnabled";
 import { FeatureFlagRow } from "knex/types/tables";
-import { isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import styles from "./page.module.scss";
 import {
@@ -22,7 +21,7 @@ import {
 import { defaultExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
 
 export default async function FeatureFlagPage() {
-  const session = await getServerSession();
+  const session = await auth();
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });

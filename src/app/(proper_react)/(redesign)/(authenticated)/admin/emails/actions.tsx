@@ -4,12 +4,11 @@
 
 "use server";
 
-import { isAdmin } from "../../../../../api/utils/auth";
+import { isAdmin, auth } from "../../../../../api/utils/auth";
 import { initEmail, sendEmail } from "../../../../../../utils/email";
 import { renderEmail } from "../../../../../../emails/renderEmail";
 import { VerifyEmailAddressEmail } from "../../../../../../emails/templates/verifyEmailAddress/VerifyEmailAddressEmail";
 import { sanitizeSubscriberRow } from "../../../../../functions/server/sanitize";
-import { getServerSession } from "../../../../../functions/server/getServerSession";
 import { getL10n } from "../../../../../functions/l10n/serverComponents";
 import { getSubscriberByFxaUid } from "../../../../../../db/tables/subscribers";
 import { ReactNode } from "react";
@@ -24,7 +23,7 @@ import { headers } from "next/headers";
 import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
-  const session = await getServerSession();
+  const session = await auth();
   if (
     !session?.user?.email ||
     !isAdmin(session.user.email) ||
@@ -85,7 +84,7 @@ export async function triggerVerificationEmail(emailAddress: string) {
 }
 
 export async function triggerMonthlyActivity(emailAddress: string) {
-  const session = await getServerSession();
+  const session = await auth();
   const subscriber = await getAdminSubscriber();
   if (!subscriber || !session?.user) {
     return false;

@@ -3,11 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ReactNode } from "react";
-import { getServerSession } from "../../../functions/server/getServerSession";
+import { auth } from "../../../api/utils/auth";
 import { AutoSignIn } from "../../../components/client/AutoSignIn";
 
 export default async function Layout(props: { children: ReactNode }) {
-  const session = await getServerSession();
+  const session = await auth();
 
   if (!session) {
     return <AutoSignIn />;

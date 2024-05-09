@@ -82,7 +82,7 @@ export const UserAdmin = () => {
   return (
     <main className={styles.wrapper}>
       <header className={styles.header}>
-        Logged in as <b>{session.data?.user.email}</b>.
+        Logged in as <b>{session.data?.user?.email}</b>.
       </header>
       <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
         <div className={styles.userPicker}>

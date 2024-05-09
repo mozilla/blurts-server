@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest } from "next/server";
-import { AuthOptions, Profile as FxaProfile, User } from "next-auth";
 import { SubscriberRow } from "knex/types/tables";
 import { logger } from "../../functions/server/logging";
 
@@ -20,57 +19,101 @@ import { getEmailCtaHref, initEmail, sendEmail } from "../../../utils/email.js";
 import { getTemplate } from "../../../emails/email2022.js";
 import { signupReportEmailPartial } from "../../../emails/emailSignupReport.js";
 import { getL10n } from "../../functions/l10n/serverComponents";
-import { OAuthConfig } from "next-auth/providers/oauth.js";
+import NextAuth, {
+  Profile as FxaProfile,
+  NextAuthConfig,
+  User,
+} from "next-auth";
 import { SerializedSubscriber } from "../../../next-auth.js";
 
-const fxaProviderConfig: OAuthConfig<FxaProfile> = {
-  // As per https://mozilla.slack.com/archives/C4D36CAJW/p1683642497940629?thread_ts=1683642325.465929&cid=C4D36CAJW,
-  // we should file a ticket against SVCSE with the `fxa` component to add
-  // a redirect URL of /api/auth/callback/fxa for Mozilla Monitor,
-  // for every environment we deploy to:
-  id: "fxa",
-  name: "Mozilla accounts",
-  type: "oauth",
-  authorization: {
-    url: AppConstants.OAUTH_AUTHORIZATION_URI,
-    params: {
-      scope: "profile https://identity.mozilla.com/account/subscriptions",
-      access_type: "offline",
-      action: "email",
-      prompt: "login",
-      max_age: 0,
-    },
-  },
-  token: AppConstants.OAUTH_TOKEN_URI,
-  // userinfo: AppConstants.OAUTH_PROFILE_URI,
-  userinfo: {
-    request: async (context) => {
-      const response = await fetch(AppConstants.OAUTH_PROFILE_URI, {
-        headers: {
-          Authorization: `Bearer ${context.tokens.access_token ?? ""}`,
-        },
-      });
-      return (await response.json()) as FxaProfile;
-    },
-  },
-  clientId: AppConstants.OAUTH_CLIENT_ID,
-  clientSecret: AppConstants.OAUTH_CLIENT_SECRET,
-  // Parse data returned by FxA's /userinfo/
-  profile: (profile) => {
-    return convertFxaProfile(profile);
-  },
-};
+// const fxaProviderConfig: AuthConfig<FxaProfile> = {
+//   // As per https://mozilla.slack.com/archives/C4D36CAJW/p1683642497940629?thread_ts=1683642325.465929&cid=C4D36CAJW,
+//   // we should file a ticket against SVCSE with the `fxa` component to add
+//   // a redirect URL of /api/auth/callback/fxa for Mozilla Monitor,
+//   // for every environment we deploy to:
+//   id: "fxa",
+//   name: "Mozilla accounts",
+//   type: "oauth",
+//   authorization: {
+//     url: AppConstants.OAUTH_AUTHORIZATION_URI,
+//     params: {
+//       scope: "profile https://identity.mozilla.com/account/subscriptions",
+//       access_type: "offline",
+//       action: "email",
+//       prompt: "login",
+//       max_age: 0,
+//     },
+//   },
+//   token: AppConstants.OAUTH_TOKEN_URI,
+//   // userinfo: AppConstants.OAUTH_PROFILE_URI,
+//   userinfo: {
+//     request: async (context) => {
+//       const response = await fetch(AppConstants.OAUTH_PROFILE_URI, {
+//         headers: {
+//           Authorization: `Bearer ${context.tokens.access_token ?? ""}`,
+//         },
+//       });
+//       return (await response.json()) as FxaProfile;
+//     },
+//   },
+//   clientId: AppConstants.OAUTH_CLIENT_ID,
+//   clientSecret: AppConstants.OAUTH_CLIENT_SECRET,
+//   // Parse data returned by FxA's /userinfo/
+//   profile: (profile) => {
+//     return convertFxaProfile(profile);
+//   },
+// };
 
-export const authOptions: AuthOptions = {
+const authOptions: NextAuthConfig = {
   debug: process.env.NODE_ENV !== "production",
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.AUTH_SECRET,
   session: {
     strategy: "jwt",
   },
-  providers: [fxaProviderConfig],
+  providers: [
+    {
+      id: "fxa",
+      name: "Mozilla accounts", // optional, used on the default login page as the button text.
+      type: "oauth", // or "oauth" for OAuth 2 providers
+      authorization: {
+        url: AppConstants.OAUTH_AUTHORIZATION_URI,
+        params: {
+          scope: "profile https://identity.mozilla.com/account/subscriptions",
+          access_type: "offline",
+          action: "email",
+          prompt: "login",
+          max_age: 0,
+        },
+      },
+      checks: ["state"],
+      token: AppConstants.OAUTH_TOKEN_URI,
+      userinfo: AppConstants.OAUTH_PROFILE_URI,
+      // userinfo: {
+      //   url: AppConstants.OAUTH_PROFILE_URI,
+      //   async request(context) {
+      //     console.log("this is called, fetching user info: ", {context})
+      //     const response = await fetch(AppConstants.OAUTH_PROFILE_URI, {
+      //       headers: {
+      //         Authorization: `Bearer ${context.tokens.access_token ?? ""}`,
+      //       },
+      //     });
+      //     return (await response.json()) as FxaProfile;
+      //   },
+      // },
+      clientId: AppConstants.OAUTH_CLIENT_ID,
+      clientSecret: AppConstants.OAUTH_CLIENT_SECRET,
+      // Parse data returned by FxA's /userinfo/
+      profile: (profile) => {
+        return convertFxaProfile(profile);
+      },
+
+      issuer: "https://accounts.stage.mozaws.net", // to infer the .well-known/openid-configuration URL
+    },
+  ],
   callbacks: {
     // Unused arguments also listed to show what's available:
     async jwt({ token, account, profile, trigger }) {
+      console.log("jwt called");
       if (trigger === "update") {
         // Refresh the user data from FxA, in case e.g. new subscriptions got added:
         const subscriberFromDb = await getSubscriberByFxaUid(
@@ -135,7 +178,7 @@ export const authOptions: AuthOptions = {
         } else if (!existingUser && profile.email) {
           const verifiedSubscriber = await addSubscriber(
             profile.email,
-            profile.locale,
+            profile.locale || "",
             account.access_token,
             account.refresh_token,
             JSON.stringify(profile),
@@ -195,6 +238,7 @@ export const authOptions: AuthOptions = {
       return token;
     },
     session({ session, token }) {
+      console.log("session called");
       if (token.fxa) {
         session.user.fxa = {
           locale: token.fxa.locale,
@@ -220,6 +264,8 @@ export const authOptions: AuthOptions = {
     },
   },
 };
+
+export const { handlers, auth } = NextAuth(authOptions);
 
 /**
  * Converts an FxAProfile to a Next-Auth user object

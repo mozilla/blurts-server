@@ -4,7 +4,7 @@
 
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
-import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
+import { auth } from "../../../../../../../../../api/utils/auth";
 import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { ViewDataBrokersView } from "./View";
@@ -15,7 +15,7 @@ import { getSubscriberEmails } from "../../../../../../../../../functions/server
 import { getL10n } from "../../../../../../../../../functions/l10n/serverComponents";
 
 export default async function ViewDataBrokers() {
-  const session = await getServerSession();
+  const session = await auth();
 
   if (!session?.user?.subscriber?.id) {
     redirect("/user/dashboard");

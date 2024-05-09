@@ -6,7 +6,7 @@
 
 import { revalidatePath } from "next/cache";
 import { SubscriberRow } from "knex/types/tables";
-import { getServerSession } from "../../../../../../functions/server/getServerSession";
+import { auth } from "../../../../../../api/utils/auth";
 import {
   addSubscriberUnverifiedEmailHash,
   removeOneSecondaryEmail,
@@ -39,7 +39,7 @@ export async function onAddEmail(
   formData: FormData,
 ): Promise<AddEmailFormState> {
   const l10n = getL10n();
-  const session = await getServerSession();
+  const session = await auth();
   if (!session?.user.subscriber?.fxa_uid) {
     return {
       success: false,
@@ -123,7 +123,7 @@ export async function onAddEmail(
 
 export async function onRemoveEmail(email: SanitizedEmailAddressRow) {
   const l10n = getL10n();
-  const session = await getServerSession();
+  const session = await auth();
   if (!session?.user.subscriber?.fxa_uid) {
     logger.error(
       `Tried to delete email [${email.id}] without an active session.`,
@@ -162,7 +162,7 @@ export async function onRemoveEmail(email: SanitizedEmailAddressRow) {
 }
 
 export async function onDeleteAccount() {
-  const session = await getServerSession();
+  const session = await auth();
   if (!session?.user.subscriber?.fxa_uid) {
     logger.error(`Tried to delete an account without an active session.`);
     return {

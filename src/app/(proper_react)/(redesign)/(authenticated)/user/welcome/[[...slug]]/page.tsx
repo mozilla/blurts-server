@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { notFound, redirect } from "next/navigation";
-import { getServerSession } from "../../../../../../functions/server/getServerSession";
+import { auth } from "../../../../../../api/utils/auth";
 import { isEligibleForFreeScan } from "../../../../../../functions/server/onerep";
 import { View } from "../View";
 import { getAllBreachesCount } from "../../../../../../../db/tables/breaches";
@@ -25,7 +25,7 @@ type Props = {
 };
 
 export default async function Onboarding({ params, searchParams }: Props) {
-  const session = await getServerSession();
+  const session = await auth();
   if (!session) {
     return <AutoSignIn />;
   }

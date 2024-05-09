@@ -4,7 +4,7 @@
 
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
-import { getServerSession } from "../../../../../../functions/server/getServerSession";
+import { auth } from "../../../../../../api/utils/auth";
 import { SettingsView } from "./View";
 import {
   getSubscriptionBillingAmount,
@@ -24,7 +24,7 @@ import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
 
 export default async function SettingsPage() {
-  const session = await getServerSession();
+  const session = await auth();
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }

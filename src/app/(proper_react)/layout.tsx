@@ -4,7 +4,7 @@
 
 import { ReactNode } from "react";
 import { headers } from "next/headers";
-import { getServerSession } from "../functions/server/getServerSession";
+import { auth } from "../api/utils/auth";
 import { getL10nBundles } from "../functions/l10n/serverComponents";
 import { getLocale } from "../functions/universal/getLocale";
 import { L10nProvider } from "../../contextProviders/localization";
@@ -19,9 +19,9 @@ export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();
   const headersList = headers();
   const countryCode = getCountryCode(headersList);
-  const session = await getServerSession();
+  const session = await auth();
   const enabledFlags = await getEnabledFeatureFlags({
-    email: session?.user.email ?? "",
+    email: session?.user?.email ?? "",
   });
 
   return (

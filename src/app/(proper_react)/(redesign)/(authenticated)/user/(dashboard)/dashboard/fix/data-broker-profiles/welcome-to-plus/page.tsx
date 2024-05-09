@@ -4,7 +4,7 @@
 
 import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
 import { headers } from "next/headers";
-import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
+import { auth } from "../../../../../../../../../api/utils/auth";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { redirect } from "next/navigation";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
@@ -19,7 +19,7 @@ import { refreshStoredScanResults } from "../../../../../../../../../functions/s
 import { checkSession } from "../../../../../../../../../functions/server/checkSession";
 
 export default async function WelcomeToPlusPage() {
-  const session = await getServerSession();
+  const session = await auth();
 
   // Ensure user is logged in
   if (!checkSession(session) || !session?.user?.subscriber?.id) {

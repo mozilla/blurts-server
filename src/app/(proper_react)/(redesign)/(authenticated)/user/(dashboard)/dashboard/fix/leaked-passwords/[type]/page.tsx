@@ -4,7 +4,7 @@
 
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
-import { getServerSession } from "../../../../../../../../../functions/server/getServerSession";
+import { auth } from "../../../../../../../../../api/utils/auth";
 import { getSubscriberBreaches } from "../../../../../../../../../functions/server/getSubscriberBreaches";
 import { LeakedPasswordsLayout } from "../LeakedPasswordsLayout";
 import {
@@ -27,7 +27,7 @@ interface LeakedPasswordsProps {
 export default async function LeakedPasswords({
   params,
 }: LeakedPasswordsProps) {
-  const session = await getServerSession();
+  const session = await auth();
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }

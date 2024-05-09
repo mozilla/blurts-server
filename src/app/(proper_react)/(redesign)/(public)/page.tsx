@@ -4,7 +4,7 @@
 
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { getServerSession } from "../../../functions/server/getServerSession";
+import { auth } from "../../../api/utils/auth";
 import { getCountryCode } from "../../../functions/server/getCountryCode";
 import {
   isEligibleForPremium,
@@ -17,7 +17,7 @@ import { View } from "./LandingView";
 import { CONST_DAY_MILLISECONDS } from "../../../../constants";
 
 export default async function Page() {
-  const session = await getServerSession();
+  const session = await auth();
   if (typeof session?.user.subscriber?.fxa_uid === "string") {
     return redirect("/user/dashboard");
   }

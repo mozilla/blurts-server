@@ -43,7 +43,8 @@ const optionalEnvVars = [
   'HIBP_BREACH_DOMAIN_BLOCKLIST',
   'PREMIUM_PRODUCT_ID',
   'PG_HOST',
-  'NEXTAUTH_REDIRECT_URL'
+  'NEXTAUTH_REDIRECT_URL',
+  'AUTH_REDIRECT_URL'
 ]
 
 /** @type {Record<string, string>} */

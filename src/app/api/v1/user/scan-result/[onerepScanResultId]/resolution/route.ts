@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { getServerSession } from "../../../../../../functions/server/getServerSession";
+import { auth } from "../../../../../../api/utils/auth";
 
 import { logger } from "../../../../../../functions/server/logging";
 import {
@@ -21,7 +21,7 @@ export async function POST(
   req: NextRequest,
   { params }: { params: { onerepScanResultId: string } },
 ): Promise<NextResponse<ResolveScanResultResponse>> {
-  const session = await getServerSession();
+  const session = await auth();
   if (!session?.user?.subscriber) {
     return new NextResponse<ResolveScanResultResponse>(
       JSON.stringify({ success: false, message: "Unauthenticated" }),

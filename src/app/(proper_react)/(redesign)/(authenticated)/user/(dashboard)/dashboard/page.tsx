@@ -4,7 +4,7 @@
 
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { getServerSession } from "../../../../../../functions/server/getServerSession";
+import { auth } from "../../../../../../api/utils/auth";
 import { View } from "./View";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../../functions/server/getSubscriberBreaches";
@@ -40,7 +40,7 @@ import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { getL10n } from "../../../../../../functions/l10n/serverComponents";
 
 export default async function DashboardPage() {
-  const session = await getServerSession();
+  const session = await auth();
   if (!checkSession(session) || !session?.user?.subscriber?.id) {
     return redirect("/");
   }

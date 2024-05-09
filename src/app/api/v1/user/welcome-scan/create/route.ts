@@ -5,7 +5,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { logger } from "../../../../../functions/server/logging";
-import { getServerSession } from "../../../../../functions/server/getServerSession";
+import { auth } from "../../../../../api/utils/auth";
 import {
   createProfile,
   createScan,
@@ -40,7 +40,7 @@ export interface UserInfo {
 export async function POST(
   req: NextRequest,
 ): Promise<NextResponse<WelcomeScanBody> | NextResponse<unknown>> {
-  const session = await getServerSession();
+  const session = await auth();
   if (!session?.user?.subscriber) {
     throw new Error("No fxa_uid found in session");
   }

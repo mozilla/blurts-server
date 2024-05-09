@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { getServerSession } from "../../../../functions/server/getServerSession";
+import { auth, isAdmin } from "../../../../api/utils/auth";
 import { logger } from "../../../../functions/server/logging";
 import {
   getAllFeatureFlags,
@@ -16,11 +16,10 @@ import {
   deleteFeatureFlagByName,
 } from "../../../../../db/tables/featureFlags";
 
-import { isAdmin } from "../../../utils/auth";
 import appConstants from "../../../../../appConstants";
 
 export async function GET() {
-  const session = await getServerSession();
+  const session = await auth();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in
     try {
@@ -36,7 +35,7 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  const session = await getServerSession();
+  const session = await auth();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in
     try {
@@ -64,7 +63,7 @@ export type FeatureFlagPutRequest = {
 };
 
 export async function PUT(req: NextRequest) {
-  const session = await getServerSession();
+  const session = await auth();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in
     try {
@@ -99,7 +98,7 @@ export type FeatureFlagDeleteRequest = {
 };
 
 export async function DELETE(req: NextRequest) {
-  const session = await getServerSession();
+  const session = await auth();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in
     try {

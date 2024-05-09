@@ -2,13 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getServerSession } from "../../../../../functions/server/getServerSession";
+import { auth, isAdmin } from "../../../../../api/utils/auth";
 import { notFound } from "next/navigation";
-import { isAdmin } from "../../../../../api/utils/auth";
 import { UserAdmin } from "./UserAdmin";
 
 export default async function DevPage() {
-  const session = await getServerSession();
+  const session = await auth();
 
   if (
     !session?.user?.email ||

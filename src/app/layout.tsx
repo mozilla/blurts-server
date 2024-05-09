@@ -10,7 +10,7 @@ import { getL10n, getL10nBundles } from "./functions/l10n/serverComponents";
 import { getLocale } from "./functions/universal/getLocale";
 import { PublicEnvProvider } from "../contextProviders/public-env";
 import { SessionProvider } from "../contextProviders/session";
-import { getServerSession } from "./functions/server/getServerSession";
+import { auth } from "./api/utils/auth";
 import { metropolis } from "./fonts/Metropolis/metropolis";
 import { CONST_GA4_MEASUREMENT_ID } from "../constants";
 import { headers } from "next/headers";
@@ -57,7 +57,7 @@ export default async function RootLayout({
 }) {
   const nonce = headers().get("x-nonce") ?? "";
   const currentLocale = getLocale(getL10nBundles());
-  const session = await getServerSession();
+  const session = await auth();
 
   return (
     <html lang={currentLocale}>

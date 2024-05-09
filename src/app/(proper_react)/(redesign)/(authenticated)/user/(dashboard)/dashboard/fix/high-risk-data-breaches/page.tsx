@@ -4,7 +4,7 @@
 
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
-import { getServerSession } from "../../../../../../../../functions/server/getServerSession";
+import { auth } from "../../../../../../../../api/utils/auth";
 import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
 import { getSubscriberEmails } from "../../../../../../../../functions/server/getSubscriberEmails";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getSubscriberBreaches";
@@ -15,7 +15,7 @@ import { getEnabledFeatureFlags } from "../../../../../../../../../db/tables/fea
 import { isEligibleForPremium } from "../../../../../../../../functions/server/onerep";
 
 export default async function HighRiskDataBreaches() {
-  const session = await getServerSession();
+  const session = await auth();
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }

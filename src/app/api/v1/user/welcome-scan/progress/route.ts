@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { logger } from "../../../../../functions/server/logging";
 
-import { getServerSession } from "../../../../../functions/server/getServerSession";
+import { auth } from "../../../../../api/utils/auth";
 import AppConstants from "../../../../../../appConstants";
 import {
   getOnerepProfileId,
@@ -36,7 +36,7 @@ export interface ScanProgressBody {
 export async function GET(
   _req: NextRequest,
 ): Promise<NextResponse<ScanProgressBody> | NextResponse<unknown>> {
-  const session = await getServerSession();
+  const session = await auth();
   if (typeof session?.user?.subscriber?.fxa_uid === "string") {
     try {
       const subscriber = await getSubscriberByFxaUid(
