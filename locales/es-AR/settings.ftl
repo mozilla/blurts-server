@@ -10,13 +10,13 @@ settings-page-title = Opciones de { -product-short-name }
 ## Breach alert preferences
 
 settings-alert-email-preferences-title = Preferencias de correo electrónico
-settings-alert-email-preferences-subtitle = Dinos qué correos electrónicos te gustaría recibir.
-settings-alert-preferences-allow-breach-alerts-title = Alertas instantáneas de violaciones
-settings-alert-preferences-allow-breach-alerts-subtitle = Estas alertas se envían inmediatamente una vez que se detecta una violación de datos
+settings-alert-email-preferences-subtitle = Decinos qué correos electrónicos te gustaría recibir.
+settings-alert-preferences-allow-breach-alerts-title = Alertas instantáneas de filtraciones
+settings-alert-preferences-allow-breach-alerts-subtitle = Estas alertas se envían inmediatamente una vez que se detecta una filtración de datos
 settings-alert-preferences-option-one = Enviar alertas de filtración a la dirección de correo electrónico afectada
 settings-alert-preferences-option-two = Enviar todas las alertas de filtración a la dirección de correo electrónico primaria
-settings-alert-preferences-allow-monthly-monitor-report-title = Informe mensual { -brand-monitor }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Una actualización mensual de las nuevas exposiciones, lo que se ha corregido y lo que necesita su atención.
+settings-alert-preferences-allow-monthly-monitor-report-title = Informe mensual de { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Una actualización mensual de las nuevas exposiciones, lo que se ha corregido y lo que necesita tu atención.
 
 ## Monitored email addresses
 
@@ -61,7 +61,7 @@ settings-delete-monitor-free-account-title = Eliminar la cuenta de { -brand-moni
 settings-delete-monitor-free-account-description = Esto eliminará permanentemente tu cuenta de { -brand-monitor } y desactivará todas las notificaciones.
 settings-delete-monitor-free-account-cta-label = Eliminar la cuenta
 settings-delete-monitor-free-account-dialog-title = Tu cuenta de { -brand-monitor } se eliminará para siempre
-settings-delete-monitor-free-account-dialog-lead = Se eliminará toda la información de tu cuenta de { -brand-monitor } y ya no controlaremos nuevas violaciones de datos. Esto no eliminará tu cuenta de { -brand-mozilla }.
+settings-delete-monitor-free-account-dialog-lead-v2 = Se eliminará toda la información de tu cuenta de { -brand-monitor } y ya no monitorearemos nuevas filtraciones de datos. Esto no eliminará tu { -brand-mozilla-account }.
 settings-delete-monitor-free-account-dialog-cta-label = Eliminar la cuenta
 settings-delete-monitor-free-account-dialog-cancel-button-label = No importa, volvamos
 settings-delete-monitor-account-confirmation-toast-label-2 = Se eliminó tu cuenta de { -brand-monitor }.

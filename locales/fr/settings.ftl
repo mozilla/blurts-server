@@ -9,14 +9,14 @@ settings-page-title = Paramètres de { -product-short-name }
 
 ## Breach alert preferences
 
-settings-alert-email-preferences-title = Préférences de courrier électronique
-settings-alert-email-preferences-subtitle = Dites-nous quels courriels vous souhaitez recevoir.
-settings-alert-preferences-allow-breach-alerts-title = Alertes instantanées de fuite de données
+settings-alert-email-preferences-title = Préférences de communication
+settings-alert-email-preferences-subtitle = Dites-nous quels e-mails vous souhaitez recevoir.
+settings-alert-preferences-allow-breach-alerts-title = Alertes instantanées de fuites de données
 settings-alert-preferences-allow-breach-alerts-subtitle = Ces alertes sont envoyées immédiatement dès qu’une fuite de données est détectée
 settings-alert-preferences-option-one = Envoyer les alertes à l’adresse e-mail concernée
 settings-alert-preferences-option-two = Envoyer toutes les alertes de fuites de données à l’adresse e-mail principale
 settings-alert-preferences-allow-monthly-monitor-report-title = Rapport { -brand-monitor } mensuel
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Une mise à jour mensuelle sur les nouveaux problèmes, ce qui a été corrigé et ce qui nécessite votre attention.
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Un récapitulatif mensuel des nouvelles fuites de données, celles qui ont été résolues et celles qui nécessitent votre attention.
 
 ## Monitored email addresses
 
@@ -59,7 +59,7 @@ settings-delete-monitor-free-account-title = Supprimer le compte { -brand-monito
 settings-delete-monitor-free-account-description = Cette action supprimera définitivement votre compte { -brand-monitor } et désactivera toutes les notifications.
 settings-delete-monitor-free-account-cta-label = Supprimer mon compte
 settings-delete-monitor-free-account-dialog-title = Votre compte { -brand-monitor } sera supprimé définitivement
-settings-delete-monitor-free-account-dialog-lead = Toutes les informations de votre compte { -brand-monitor } seront supprimées et nous ne surveillerons plus aucune nouvelle fuite de données. Cette action ne supprimera pas votre compte { -brand-mozilla }.
+settings-delete-monitor-free-account-dialog-lead-v2 = Toutes les informations de votre compte { -brand-monitor } seront supprimées et nous ne surveillerons plus aucune nouvelle fuite de données. Cette action ne supprimera pas votre { -brand-mozilla-account }.
 settings-delete-monitor-free-account-dialog-cta-label = Supprimer mon compte
 settings-delete-monitor-free-account-dialog-cancel-button-label = J’ai changé d’avis, revenir en arrière
 settings-delete-monitor-account-confirmation-toast-label-2 = Votre compte { -brand-monitor } a été supprimé.

@@ -78,6 +78,7 @@ high-risk-breach-credit-card-step-three = Ehechajey ne mba’ete oĩre tepyme’
 # Bank Account Breaches
 
 high-risk-breach-bank-account-title = Nde mba’ete banco pegua ojehechakuaa
+high-risk-breach-bank-account-description = Ehecháke pya’e mba’épa ikatúva ne mo’ã léi rovake nepytyvõtava eguerujey hag̃ua nemba’e kañyngue.
 high-risk-breach-bank-account-step-one = Emomarandu pya’eterei ne banco-pe ne mba’ete papapy ikatuháre ojeporu.
 high-risk-breach-bank-account-step-two = Emoambue ne mba’ete papapy
 high-risk-breach-bank-account-step-three = Ehechajey ne mba’ete oĩre tepyme’ẽrã nemba’e’ỹva.
@@ -98,6 +99,7 @@ ssn-modal-ok = MONEĨ
 # PIN Breaches
 
 high-risk-breach-pin-title = Nde PIN ojehechakuaákuri
+high-risk-breach-pin-description = Ehecháke pya’e mba’épa ikatúva ne mo’ã léi rovake nepytyvõtava eguerujey hag̃ua nemba’e kañyngue.
 high-risk-breach-pin-step-one = Emomarandu pya’e ne banco-pe ne mba’ete papapy ojeporukuaátarõ.
 high-risk-breach-pin-step-two = Emoambue ne PIN oimeraẽva tenda eiporuhaguépe.
 high-risk-breach-pin-step-three = Ehechajey ne mba’ete oĩre tepyme’ẽrã nemba’e’ỹva.

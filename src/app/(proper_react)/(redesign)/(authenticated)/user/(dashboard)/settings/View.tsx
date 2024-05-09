@@ -91,13 +91,7 @@ export const SettingsView = (props: Props) => {
           <EmailAddressAdder />
           <hr />
           <AlertAddressForm
-            breachAlertsEmailsAllowed={
-              // Set value to null if undefined (disabled breach alerts)
-              props.user.subscriber?.all_emails_to_primary ?? null
-            }
-            monitorReportAllowed={
-              props.user.subscriber?.monthly_monitor_report ?? null
-            }
+            user={props.user}
             enabledFeatureFlags={props.enabledFeatureFlags}
           />
           {hasPremium(props.user) && (
@@ -233,7 +227,7 @@ export const SettingsView = (props: Props) => {
                       <div className={styles.dialogLead}>
                         <p>
                           {l10n.getString(
-                            "settings-delete-monitor-free-account-dialog-lead",
+                            "settings-delete-monitor-free-account-dialog-lead-v2",
                           )}
                         </p>
                       </div>

@@ -21,6 +21,6 @@ build({
   format: "esm",
   outdir: "dist/scripts/cronjobs/",
   sourcemap: true,
-  target: "node20.12",
+  target: "node22.1",
   packages: "external",
 });

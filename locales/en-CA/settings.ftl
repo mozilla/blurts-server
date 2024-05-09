@@ -9,9 +9,14 @@ settings-page-title = { -product-short-name } Settings
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Breach alert preferences
+settings-alert-email-preferences-title = Email preferences
+settings-alert-email-preferences-subtitle = Tell us which emails you’d like to receive.
+settings-alert-preferences-allow-breach-alerts-title = Instant breach alerts
+settings-alert-preferences-allow-breach-alerts-subtitle = These alerts are sent immediately once a data breach is detected
 settings-alert-preferences-option-one = Send breach alerts to the affected email address
 settings-alert-preferences-option-two = Send all breach alerts to the primary email address
+settings-alert-preferences-allow-monthly-monitor-report-title = Monthly { -brand-monitor } report
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = A monthly update of new exposures, what’s been fixed, and what needs your attention.
 
 ## Monitored email addresses
 
