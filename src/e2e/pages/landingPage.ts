@@ -69,6 +69,9 @@ export class LandingPage {
   readonly privacyLink: Locator;
   readonly githubLink: Locator;
 
+  // Choose your level of protection
+  readonly startFreeMonitoringButton: Locator;
+
   constructor(page: Page) {
     this.page = page;
     this.reuseButton = page.locator('button[type="submit"]');
@@ -209,6 +212,11 @@ export class LandingPage {
     this.githubLink = page
       .locator("footer")
       .filter({ has: page.getByRole("link", { name: "Github" }) });
+
+    // Choose your level of protection
+    this.startFreeMonitoringButton = page.getByRole("button", {
+      name: "Start free monitoring",
+    });
   }
 
   async open() {
