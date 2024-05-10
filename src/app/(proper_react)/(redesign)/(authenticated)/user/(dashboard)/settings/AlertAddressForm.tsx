@@ -28,10 +28,11 @@ import type {
 import { VisuallyHidden } from "../../../../../../components/server/VisuallyHidden";
 import { useSession } from "next-auth/react";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
+import { Session } from "next-auth";
+import { hasPremium } from "../../../../../../functions/universal/user";
 
 export type Props = {
-  breachAlertsEmailsAllowed: boolean | null;
-  monitorReportAllowed: boolean | null;
+  user: Session["user"];
   enabledFeatureFlags: FeatureFlagName[];
 };
 
@@ -41,19 +42,25 @@ export const AlertAddressForm = (props: Props) => {
   const l10n = useL10n();
   const session = useSession();
 
+  // Set value to null if undefined (disabled breach alerts)
+  const breachAlertsEmailsAllowed =
+    props.user.subscriber?.all_emails_to_primary ?? null;
+
+  // Have monitor monthly reports enabled by default
+  const monitorReportAllowed =
+    props.user.subscriber?.monthly_monitor_report ?? true;
+
   const defaultActivateAlertEmail =
-    typeof props.breachAlertsEmailsAllowed === "boolean";
+    typeof breachAlertsEmailsAllowed === "boolean";
   const [activateAlertEmail, setActivateAlertEmail] = useState<boolean>(
     defaultActivateAlertEmail,
   );
 
-  // Have monitor monthly reports enabled by default
-  const defaultMonitorReport = props.monitorReportAllowed ?? true;
   const [activateMonthlyMonitorReport, setActivateMonthlyMonitorReport] =
-    useState(defaultMonitorReport);
+    useState(monitorReportAllowed);
 
   const commsValue = () => {
-    switch (props.breachAlertsEmailsAllowed) {
+    switch (breachAlertsEmailsAllowed) {
       case true:
         return "primary";
       case false:
@@ -69,7 +76,7 @@ export const AlertAddressForm = (props: Props) => {
       const chosenOption = newValue as EmailUpdateCommTypeOfOptions;
       const body: EmailUpdateCommOptionRequest = {
         instantBreachAlerts: chosenOption,
-        monthlyMonitorReport: activateMonthlyMonitorReport,
+        monthlyMonitorReport: monitorReportAllowed,
       };
       void fetch("/api/v1/user/update-comm-option", {
         method: "POST",
@@ -168,25 +175,26 @@ export const AlertAddressForm = (props: Props) => {
           </AlertAddressContext.Provider>
         )}
 
-        {props.enabledFeatureFlags.includes("MonthlyActivityEmail") && (
-          <ActivateEmailsCheckbox
-            isSelected={activateMonthlyMonitorReport}
-            onChange={handleMonthlyMonitorReportToggle}
-          >
-            <div>
-              <b>
-                {l10n.getString(
-                  "settings-alert-preferences-allow-monthly-monitor-report-title",
-                )}
-              </b>
-              <p>
-                {l10n.getString(
-                  "settings-alert-preferences-allow-monthly-monitor-report-subtitle",
-                )}
-              </p>
-            </div>
-          </ActivateEmailsCheckbox>
-        )}
+        {props.enabledFeatureFlags.includes("MonthlyActivityEmail") &&
+          hasPremium(props.user) && (
+            <ActivateEmailsCheckbox
+              isSelected={activateMonthlyMonitorReport}
+              onChange={handleMonthlyMonitorReportToggle}
+            >
+              <div>
+                <b>
+                  {l10n.getString(
+                    "settings-alert-preferences-allow-monthly-monitor-report-title",
+                  )}
+                </b>
+                <p>
+                  {l10n.getString(
+                    "settings-alert-preferences-allow-monthly-monitor-report-subtitle",
+                  )}
+                </p>
+              </div>
+            </ActivateEmailsCheckbox>
+          )}
       </div>
     </div>
   );

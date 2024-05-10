@@ -18,20 +18,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    # - uses: actions/setup-node@v4
-    #   with:
-    #     node-version: 20.12
-    # - name: Install dependencies
-    #   run: npm ci
-    # - name: Copy env var
-    #   run: cp .env-dist .env
-    # - name: Setting up postgres
-    #   run: npm run db:migrate
-    #   env:
-    #     APP_ENV: cloudrun
-    #     DATABASE_URL: postgres://postgres@${{ env.DB_HOST }}:5432/blurts
-    #     PG_HOST: /cloudsql/${{ env.PROJECT_ID }}:${{env.REGION}}:blurts-server-pr
-
+    
     - name: Setup Cloud SDK
       uses: 'google-github-actions/auth@v2'
       with:
@@ -44,7 +31,7 @@ jobs:
       id: db_create
       # This can fail on the subsequent runs, we can ignore the error (database already exists)
       continue-on-error: true
-      run: 'gcloud sql instances create blurts-server-${{ env.TAG }} --tier=db-f1-micro --region=${{ env.REGION }} --database-version=POSTGRES_15 --edition=enterprise'
+      run: 'gcloud sql instances create ${{ env.SERVICE }}-${{ env.TAG }} --tier=db-f1-micro --region=${{ env.REGION }} --database-version=POSTGRES_15 --edition=enterprise'
 
     - name: Authorize Docker push
       run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev
@@ -58,10 +45,10 @@ jobs:
       id: deploy
       uses: google-github-actions/deploy-cloudrun@v2
       with:
-        service: ${{ env.SERVICE }}
+        service: ${{ env.SERVICE }}-${{ env.TAG }}
         image: ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ env.TAG }}
         region: ${{ env.REGION }}
-        flags: "--allow-unauthenticated"
+        flags: "--allow-unauthenticated --set-cloudsql-instances=${{ env.PROJECT_ID }}:${{env.REGION}}:${{ env.SERVICE }}-${{ env.TAG }}"
         tag: ${{ env.TAG }}
         env_vars: |
           NEXTAUTH_URL= ${{ secrets.NEXTAUTH_URL }}
@@ -73,7 +60,7 @@ jobs:
           ONEREP_API_KEY=${{ secrets.ONEREP_API_KEY }}
           APP_ENV=cloudrun
           COOKIE_SECRET=secret
-          PG_HOST=/cloudsql/${{ env.PROJECT_ID }}:${{env.REGION}}:blurts-server-pr
+          PG_HOST=/cloudsql/${{ env.PROJECT_ID }}:${{env.REGION}}:${{ env.SERVICE }}-${{ env.TAG }}
           ADMINS=${{ secrets.ADMINS }}
           HIBP_API_TOKEN=${{ secrets.HIBP_API_TOKEN }}
           HIBP_KANON_API_TOKEN=${{ secrets.HIBP_KANON_API_TOKEN }}

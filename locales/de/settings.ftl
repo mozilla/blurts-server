@@ -10,13 +10,13 @@ settings-page-title = Einstellungen für { -product-short-name }
 ## Breach alert preferences
 
 settings-alert-email-preferences-title = Einstellungen zu E-Mails
-settings-alert-email-preferences-subtitle = Sagen Sie uns, welche E-Mails Sie erhalten möchten.
-settings-alert-preferences-allow-breach-alerts-title = Sofortige Warnungen bei Datenlecks
-settings-alert-preferences-allow-breach-alerts-subtitle = Diese Warnungen werden sofort gesendet, wenn ein Datenleck erkannt wird.
+settings-alert-email-preferences-subtitle = Teilen Sie uns mit, welche E-Mails Sie erhalten möchten.
+settings-alert-preferences-allow-breach-alerts-title = Sofortige Warnmeldungen bei Datenlecks
+settings-alert-preferences-allow-breach-alerts-subtitle = Diese Warnmeldungen werden sofort gesendet, wenn ein Datenleck erkannt wird.
 settings-alert-preferences-option-one = Benachrichtigungen über Datenlecks an die betroffene E-Mail-Adresse schicken
 settings-alert-preferences-option-two = Alle Warnungen zu Datenlecks an die primäre E-Mail-Adresse senden
 settings-alert-preferences-allow-monthly-monitor-report-title = Monatlicher { -brand-monitor }-Bericht
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Eine monatliche Nachricht über neue Probleme, was behoben wurde und was Ihre Aufmerksamkeit erfordert.
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Eine monatlich aktualisierte Information über neue Datenlecks, behobene Probleme und was Ihre Aufmerksamkeit erfordert.
 
 ## Monitored email addresses
 
@@ -59,7 +59,7 @@ settings-delete-monitor-free-account-title = { -brand-monitor }-Konto löschen
 settings-delete-monitor-free-account-description = Dies löscht Ihr { -brand-monitor }-Konto dauerhaft und alle Benachrichtigungen werden deaktiviert.
 settings-delete-monitor-free-account-cta-label = Konto löschen
 settings-delete-monitor-free-account-dialog-title = Ihr { -brand-monitor }-Konto wird dauerhaft gelöscht
-settings-delete-monitor-free-account-dialog-lead = Alle Ihre { -brand-monitor }-Kontodaten werden gelöscht und es findet keine Überwachung auf neue Datenlecks mehr statt. Ihr { -brand-mozilla }-Konto wird dadurch nicht gelöscht.
+settings-delete-monitor-free-account-dialog-lead-v2 = Alle Ihre { -brand-monitor }-Kontodaten werden gelöscht und es findet keine Überwachung auf neue Datenlecks mehr statt. Ihr { -brand-mozilla-account } wird dadurch nicht gelöscht.
 settings-delete-monitor-free-account-dialog-cta-label = Konto löschen
 settings-delete-monitor-free-account-dialog-cancel-button-label = Ich habe es mir anders überlegt – zurück zur vorherigen Seite
 settings-delete-monitor-account-confirmation-toast-label-2 = Ihr { -brand-monitor }-Konto ist jetzt gelöscht.

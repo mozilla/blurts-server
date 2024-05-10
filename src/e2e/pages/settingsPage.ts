@@ -7,8 +7,9 @@ import { Locator, Page } from "@playwright/test";
 export class SettingsPage {
   readonly page: Page;
   readonly settingsHeader: Locator;
-  readonly prefHeader: Locator;
+  readonly emailPrefHeader: Locator;
   readonly emailHeader: Locator;
+  readonly deleteHeader: Locator;
   readonly deactivateHeader: Locator;
   readonly addEmailButton: Locator;
   readonly settingsEmailSettings: Locator;
@@ -22,8 +23,9 @@ export class SettingsPage {
     this.page = page;
 
     this.settingsHeader = page.locator("h2").first();
-    this.prefHeader = page.getByText(/Breach alert preferences/);
+    this.emailPrefHeader = page.getByText(/Email preferences/);
     this.emailHeader = page.getByText(/Monitored email addresses/);
+    this.deleteHeader = page.getByText(/Delete ⁨Monitor⁩ account/);
     this.deactivateHeader = page.getByText(/Deactivate account/);
     this.addEmailButton = page.getByText(/Add email address/);
     this.settingsEmailSettings = page.locator(".settings-email-item");

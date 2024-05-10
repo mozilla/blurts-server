@@ -59,6 +59,7 @@ export type Props = {
   user: Session["user"];
   skipInitialStep: boolean;
   previousRoute: string | null;
+  optionalInfoIsEnabled: boolean;
 };
 
 export const EnterInfo = ({
@@ -66,11 +67,15 @@ export const EnterInfo = ({
   onGoBack,
   skipInitialStep,
   previousRoute,
+  optionalInfoIsEnabled,
 }: Props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [location, setLocation] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
+  const [middleName, setMiddleName] = useState("");
+  const [nameSuffix, setNameSuffix] = useState("");
+
   const [invalidInputs, setInvalidInputs] = useState<Array<string>>([]);
   const [requestingScan, setRequestingScan] = useState(false);
 
@@ -116,7 +121,21 @@ export const EnterInfo = ({
       value: firstName,
       displayValue: firstName,
       isValid: firstName.trim() !== "",
+      isRequired: true,
       onChange: setFirstName,
+    },
+    {
+      label: l10n.getString("onboarding-enter-details-label-middle-name"),
+      key: "middle_name",
+      type: "text",
+      placeholder: l10n.getString(
+        "onboarding-enter-details-placeholder-middle-name",
+      ),
+      value: middleName,
+      displayValue: middleName,
+      isValid: true,
+      isRequired: false,
+      onChange: setMiddleName,
     },
     {
       label: l10n.getString("onboarding-enter-details-label-last-name"),
@@ -128,7 +147,21 @@ export const EnterInfo = ({
       value: lastName,
       displayValue: lastName,
       isValid: lastName.trim() !== "",
+      isRequired: true,
       onChange: setLastName,
+    },
+    {
+      label: l10n.getString("onboarding-enter-details-label-name-suffix"),
+      key: "name_suffix",
+      type: "text",
+      placeholder: l10n.getString(
+        "onboarding-enter-details-placeholder-name-suffix",
+      ),
+      value: nameSuffix,
+      displayValue: nameSuffix,
+      isValid: true,
+      isRequired: false,
+      onChange: setNameSuffix,
     },
     {
       label: l10n.getString("onboarding-enter-details-label-date-of-birth"),
@@ -141,6 +174,7 @@ export const EnterInfo = ({
         timeZone: "UTC",
       }),
       isValid: meetsAgeRequirement(dateOfBirth),
+      isRequired: true,
       onChange: setDateOfBirth,
     },
     {
@@ -153,9 +187,10 @@ export const EnterInfo = ({
       value: location,
       displayValue: location,
       isValid: location.trim() !== "",
+      isRequired: true,
       onChange: setLocation,
     },
-  ];
+  ].filter((userDetail) => userDetail.isRequired || optionalInfoIsEnabled);
 
   const getInvalidFields = () =>
     userDetailsData.filter(({ isValid }) => !isValid).map(({ key }) => key);
@@ -169,13 +204,15 @@ export const EnterInfo = ({
     setRequestingScan(true);
 
     const { city, state } = getDetailsFromLocationString(location);
-    const userInfo = {
+    const userInfo: UserInfo = {
       firstName: firstName.trim(),
+      middleName: middleName.trim(),
       lastName: lastName.trim(),
+      nameSuffix: nameSuffix.trim(),
       city,
-      state,
+      state: state as UserInfo["state"],
       dateOfBirth,
-    } as UserInfo;
+    };
 
     void createProfileAndStartScan(userInfo)
       .then(() => {
@@ -273,14 +310,17 @@ export const EnterInfo = ({
       <p>{l10n.getString("onboarding-enter-details-comfirm-dialog-text")}</p>
       <div className={styles.dialogContents}>
         <dl className={styles.infoList}>
-          {userDetailsData.map(({ key, label, displayValue }) => (
-            <span key={key} className={styles.infoItem}>
-              <dt>{label}:</dt>
-              <dd>
-                <strong>{displayValue}</strong>
-              </dd>
-            </span>
-          ))}
+          {userDetailsData.map(
+            ({ key, label, displayValue }) =>
+              displayValue && (
+                <span key={key} className={styles.infoItem}>
+                  <dt>{label}:</dt>
+                  <dd>
+                    <strong>{displayValue}</strong>
+                  </dd>
+                </span>
+              ),
+          )}
         </dl>
       </div>
       <div className={styles.stepButtonWrapper}>
@@ -347,7 +387,16 @@ export const EnterInfo = ({
       <form onSubmit={handleOnSubmit}>
         <div className={styles.inputContainer}>
           {userDetailsData.map(
-            ({ key, label, onChange, placeholder, isValid, type, value }) => {
+            ({
+              key,
+              label,
+              onChange,
+              placeholder,
+              isValid,
+              isRequired,
+              type,
+              value,
+            }) => {
               const isInvalid = !isValid && invalidInputs.includes(key);
               return key === "location" ? (
                 <LocationAutocompleteInput
@@ -356,9 +405,12 @@ export const EnterInfo = ({
                     "onboarding-enter-details-input-error-message-location",
                   )}
                   label={label}
-                  isRequired={true}
+                  isRequired={isRequired}
                   onChange={onChange}
                   placeholder={placeholder}
+                  infoText={l10n.getString(
+                    "onboarding-enter-details-input-info-text-location",
+                  )}
                   isInvalid={isInvalid}
                   inputValue={value}
                   onFocus={() => {
@@ -375,11 +427,12 @@ export const EnterInfo = ({
               ) : (
                 <InputField
                   key={key}
+                  id={key}
                   errorMessage={l10n.getString(
                     "onboarding-enter-details-input-error-message-generic",
                   )}
                   label={label}
-                  isRequired={true}
+                  isRequired={isRequired}
                   onChange={onChange}
                   placeholder={placeholder}
                   type={type}
