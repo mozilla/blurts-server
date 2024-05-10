@@ -53,7 +53,7 @@ GCP Native only
 
 This decision was made:
 
-1. to avoid the need for additional vendor negociations
+1. to avoid the need for additional vendor negotiations
 2. simplify the architecture
 3. security (encapsulated in GCP)
 
