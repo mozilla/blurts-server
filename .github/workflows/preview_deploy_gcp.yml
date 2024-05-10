@@ -70,10 +70,13 @@ jobs:
           HIBP_API_TOKEN=${{ secrets.HIBP_API_TOKEN }}
           HIBP_KANON_API_TOKEN=${{ secrets.HIBP_KANON_API_TOKEN }}
           AUTH_REDIRECT_PROXY_URL=${{ secrets.AUTH_REDIRECT_PROXY_URL }}
+          PGUSER=postgres
+          PGDATABASE=postgres
+          DB_NAME=blurts
           DB_USER=postgres
-          DB_PASS=postgres
-          DB_NAME=${{ env.SERVICE }}
+          DB_PASSWORD=postgres
           CLOUD_SQL_CONNECTION_NAME=${{ env.PROJECT_ID }}:${{env.REGION}}:${{ env.SERVICE }}-${{ env.TAG }}
+          DATABASE_URL= postgres://postgres:postgres@localhost:5432/blurts 
 
     - name: Comment on Pull Request
       uses: thollander/actions-comment-pull-request@v2
