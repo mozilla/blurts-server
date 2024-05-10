@@ -48,7 +48,7 @@ jobs:
         service: ${{ env.SERVICE }}-${{ env.TAG }}
         image: ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ env.TAG }}
         region: ${{ env.REGION }}
-        flags: "--allow-unauthenticated --add-cloudsql-instances=${{ env.PROJECT_ID }}:${{env.REGION}}:${{ env.SERVICE }}-${{ env.TAG }}"
+        flags: "--allow-unauthenticated --set-cloudsql-instances=${{ env.PROJECT_ID }}:${{env.REGION}}:${{ env.SERVICE }}-${{ env.TAG }}"
         tag: ${{ env.TAG }}
         env_vars: |
           NEXTAUTH_URL= ${{ secrets.NEXTAUTH_URL }}
