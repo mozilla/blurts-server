@@ -9,14 +9,14 @@ settings-page-title = Nastavení { -product-short-name(case: "gen") }
 
 ## Breach alert preferences
 
-settings-alert-email-preferences-title = Předvolby e-mailu
+settings-alert-email-preferences-title = Nastavení e-mailů
 settings-alert-email-preferences-subtitle = Řekněte nám, které e-maily chcete dostávat.
 settings-alert-preferences-allow-breach-alerts-title = Okamžitá upozornění na úniky dat
 settings-alert-preferences-allow-breach-alerts-subtitle = Tato upozornění jsou odesílána okamžitě po zjištění úniku dat
 settings-alert-preferences-option-one = Upozornění poslat na postiženou e-mailovou adresu
 settings-alert-preferences-option-two = Všechna upozornění posílat na primární e-mailovou adresu
 settings-alert-preferences-allow-monthly-monitor-report-title = Měsíční přehled { -brand-monitor(case: "gen") }
-settings-alert-preferences-allow-monthly-monitor-report-subtitle = Měsíční informace o nových odhaleních, co bylo opraveno a co vyžaduje vaši pozornost.
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Měsíční informace o nových únicích, co bylo vyřešeno a co vyžaduje vaši pozornost.
 
 ## Monitored email addresses
 
@@ -63,7 +63,7 @@ settings-delete-monitor-free-account-title = Smazání účtu { -brand-monitor }
 settings-delete-monitor-free-account-description = Tímto trvale smažete svůj účet u služby { -brand-monitor } a vypnete všechna oznámení.
 settings-delete-monitor-free-account-cta-label = Smazat účet
 settings-delete-monitor-free-account-dialog-title = Váš účet u služby { -brand-monitor } bude trvale smazán
-settings-delete-monitor-free-account-dialog-lead = Všechny informace o vašem účtu { -brand-monitor } budou smazány a my už nebudeme nadále sledovat nové úniky údajů. Tímto nesmažete svůj účet { -brand-mozilla }.
+settings-delete-monitor-free-account-dialog-lead-v2 = Všechny informace o vašem účtu { -brand-monitor } budou smazány a my už nebudeme nadále sledovat nové úniky dat. Tímto nesmažete váš { -brand-mozilla-account(case: "acc", capitalization: "lower") }.
 settings-delete-monitor-free-account-dialog-cta-label = Smazat účet
 settings-delete-monitor-free-account-dialog-cancel-button-label = Rozmyslel(a) jsem si to
 settings-delete-monitor-account-confirmation-toast-label-2 = Váš účet { -brand-monitor } je nyní smazán.

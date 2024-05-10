@@ -9,12 +9,19 @@ settings-page-title = { -product-short-name }-instillinger
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Indstillinger for advarsler om datalæk
+settings-alert-email-preferences-title = Mailindstillinger
+settings-alert-email-preferences-subtitle = Fortæl os, hvilke mails du gerne vil modtage.
+settings-alert-preferences-allow-breach-alerts-title = Øjeblikkelige advarsler om datalæk
+settings-alert-preferences-allow-breach-alerts-subtitle = Disse advarsler sendes straks, når en datalæk er opdaget
 settings-alert-preferences-option-one = Send alle advarsler om datalæk til den berørte mailadresse
 settings-alert-preferences-option-two = Send alle advarsler om datalæk til den primære mailadresse
+settings-alert-preferences-allow-monthly-monitor-report-title = Månedlig { -brand-monitor }-rapport
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = En månedlig opdatering af nye eksponeringer, hvad der er blevet løst, og hvad der kræver din opmærksomhed.
 
 ## Monitored email addresses
 
+# Variables:
+#   $email (string) - Email address
 settings-email-list-title = Overvågede mailadresser
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,7 +37,6 @@ settings-remove-email-button-label = Fjern
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Stop med at holde øje med { $emailAddress }
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -40,8 +46,6 @@ settings-email-number-of-breaches-info =
         [one] Optræder i { $breachCount } kendt datalæk
        *[other] Optræder i { $breachCount } kendte datalæk
     }
-
-## Cancel Premium subscription
 
 ## Deactivate account
 
@@ -60,8 +64,3 @@ settings-delete-monitor-free-account-dialog-cta-label = Slet konto
 settings-delete-monitor-free-account-dialog-cancel-button-label = Jag har skiftet mening - gå tilbage
 settings-delete-monitor-account-confirmation-toast-label-2 = Din { -brand-monitor }-konto er nu slettet.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Afvis
-
-## Add email dialog
-
-## Unsubscribe Dialog Survey
-

@@ -18,17 +18,11 @@ settings-resend-email-verification-link = Ales tuzna n yimayl n usenqed
 settings-add-email-button = Rnu tansa imayl
 settings-remove-email-button-label = Kkes
 
-## Cancel Premium subscription
-
-
 ## Deactivate account
 
 settings-deactivate-account-title = Kkes amiḍan
 settings-fxa-link-label-3 = Ddu ɣer iɣewwaṛen n { -brand-mozilla-account }
 
-## Add email dialog
-
-## Unsubscribe Dialog Survey
-
 ## Delete Monitor account
 
+settings-delete-monitor-free-account-dialog-cancel-button-label = Beddleɣ ṛṛay, uɣal ɣer deffir
