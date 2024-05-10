@@ -25,7 +25,7 @@ jobs:
         credentials_json: '${{ secrets.GCP_SA_KEY }}'
   
     - name: Use gcloud CLI
-      run: 'gcloud info'
+      run: gcloud info
 
     - name: Generate database on the fly
       id: db_create
