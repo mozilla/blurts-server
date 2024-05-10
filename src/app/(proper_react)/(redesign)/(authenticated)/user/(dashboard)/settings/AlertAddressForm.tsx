@@ -46,10 +46,8 @@ export const AlertAddressForm = (props: Props) => {
   const session = useSession();
   const router = useRouter();
 
-  // Set value to null if undefined (disabled breach alerts)
   const breachAlertsEmailsAllowed = props.subscriber.all_emails_to_primary;
 
-  // Have monitor monthly reports enabled by default
   const monitorReportAllowed = props.subscriber.monthly_monitor_report;
 
   const defaultActivateAlertEmail =
@@ -60,9 +58,6 @@ export const AlertAddressForm = (props: Props) => {
 
   const [activateMonthlyMonitorReport, setActivateMonthlyMonitorReport] =
     useState(monitorReportAllowed);
-
-  console.log({ monitorReportAllowed });
-  console.log({ activateMonthlyMonitorReport });
 
   const commsValue = () => {
     switch (breachAlertsEmailsAllowed) {
@@ -117,7 +112,6 @@ export const AlertAddressForm = (props: Props) => {
       // `revalidatePath("/user/dashboard")` there, but the API doesn't appear
       // to necessarily share a cache with the client.
       router.refresh();
-      console.log("i refreshed");
     });
   };
 
@@ -131,12 +125,6 @@ export const AlertAddressForm = (props: Props) => {
       }
       return newValue;
     });
-    // Make sure the dashboard re-fetches the breaches on the next visit,
-    // in order to make resolved breaches move to the "Fixed" tab.
-    // If we had used server actions, we could've called
-    // `revalidatePath("/user/dashboard")` there, but the API doesn't appear
-    // to necessarily share a cache with the client.
-    router.refresh();
   };
 
   const { radioGroupProps, labelProps } = useRadioGroup(
