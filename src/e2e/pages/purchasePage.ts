@@ -15,6 +15,7 @@ export class PurchasePage {
   readonly letsKeepGoingButton: Locator;
   readonly returnToDashboardButton: Locator;
   readonly goToNextStep: Locator;
+  readonly planDetails: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -34,6 +35,7 @@ export class PurchasePage {
     });
     this.returnToDashboardButton = page.getByLabel("Return to dashboard");
     this.goToNextStep = page.getByLabel("Go to next step");
+    this.planDetails = page.locator(".plan-details-description");
   }
 
   async fillOutStripeCardInfo() {

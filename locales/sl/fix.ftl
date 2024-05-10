@@ -5,7 +5,6 @@
 fix-flow-nav-high-risk-data-breaches = Visoko tvegane kraje podatkov
 fix-flow-nav-leaked-passwords = Razkrita gesla
 fix-flow-nav-security-recommendations = Varnostna priporočila
-
 guided-resolution-flow-exit = Nazaj na pregledno ploščo
 guided-resolution-flow-next-arrow = Pojdi na naslednji korak
 guided-resolution-flow-step-navigation-label = Vodeni koraki
@@ -44,7 +43,7 @@ fix-flow-celebration-security-recommendations-description-next-dashboard = Bravo
 
 # High Risk Data Breaches
 
-high-risk-breach-heading = Tukaj je opisano, kaj morate storiti
+high-risk-breach-heading = Kaj storiti
 high-risk-breach-subheading = To zahteva dostop do vaših občutljivih podatkov, zato ga boste morali popraviti ročno.
 # Variables
 # $num_breaches is the number of breaches where the high risk data was found.
@@ -130,7 +129,7 @@ high-risk-breach-none-continue = Nadaljuj
 # Security recommendations
 
 security-recommendation-steps-label = Varnostna priporočila
-security-recommendation-steps-title = Tukaj je naš nasvet:
+security-recommendation-steps-title = Naš nasvet je:
 security-recommendation-steps-cta-label = Razumem!
 
 # Phone security recommendation
@@ -188,13 +187,13 @@ leaked-passwords-title = Vaše geslo za { $breach_name } je bilo razkrito
 # $breach_date is the date when the breach occurred.
 leaked-passwords-summary = Pojavil se je v kraji podatkov dne { $breach_date }.
 leaked-passwords-description = Prevaranti lahko dostopajo do vašega računa in ga bodo verjetno poskušali uporabiti v drugih računih, da bi preverili, ali ste uporabili isto geslo. Spremenite ga povsod, kjer ste ga uporabljali, da se zaščitite.
-leaked-passwords-steps-title = Tukaj je opisano, kaj morate storiti
+leaked-passwords-steps-title = Kaj storiti
 leaked-passwords-steps-subtitle = To zahteva dostop do vašega računa, zato ga boste morali popraviti ročno.
 # Variables
 # $breach_name is the name of the breach where the leaked password was found.
 # $emails_affected are the emails associated with the breach.
 leaked-passwords-step-one = Spremenite geslo za <b>{ $emails_affected }</b> na spletnem mestu <link_to_breach_site>{ $breach_name }</link_to_breach_site>.
-leaked-passwords-step-two = Spremenite ga kjerkoli drugje, kjer ste ga uporabljali.
+leaked-passwords-step-two = Spremenite ga povsod, kjer ste ga uporabljali.
 leaked-passwords-mark-as-fixed = Označi kot popravljeno
 leaked-passwords-skip = Zaenkrat preskoči
 # Variables

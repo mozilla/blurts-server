@@ -10,8 +10,11 @@ settings-page-title = { -product-short-name } Ñemboheko
 ## Breach alert preferences
 
 settings-alert-email-preferences-title = Ñanduti veve jerohoryvéva
+settings-alert-email-preferences-subtitle = Eremína mba’e ñanduti vevépe emog̃uahẽse.
+settings-alert-preferences-allow-breach-alerts-title = Mongyhyje ñembogua rehegua
 settings-alert-preferences-option-one = Emondo ñembogua kyhyjerã ñanduti veve imarãkuapavape
 settings-alert-preferences-option-two = Emondopaite kyhyjerã ñembogua ñanduti veve kundaharape ñepyrũguápe
+settings-alert-preferences-allow-monthly-monitor-report-title = Marandu jasygua { -brand-monitor }
 
 ## Monitored email addresses
 

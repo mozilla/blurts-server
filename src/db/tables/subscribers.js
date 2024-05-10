@@ -322,16 +322,22 @@ async function getSubscribersWaitingForMonthlyEmail (options = {}) {
 
   let query = knex('subscribers')
     .select()
+    // Only send to users who haven't opted out of the monthly activity email...
     .where((builder) => builder.whereNull("monthly_monitor_report").orWhere("monthly_monitor_report", true))
-    .andWhere(builder => builder.whereNull("monthly_monitor_report_at").orWhereRaw('"monthly_monitor_report_at" < NOW() - INTERVAL \'30 days\''));
+    // ...who haven't received the email in the last 30 days...
+    .andWhere(builder => builder.whereNull("monthly_monitor_report_at").orWhereRaw('"monthly_monitor_report_at" < NOW() - INTERVAL \'30 days\''))
+    // ...and whose account is older than 30 days.
+    .andWhereRaw('"created_at" < NOW() - INTERVAL \'30 days\'');
 
   if (Array.isArray(flag.allow_list) && flag.allow_list.length > 0) {
+    // If the feature flag has an allowlist, only send to users on that list.
     // The `.andWhereIn` alias doesn't exist:
     // https://github.com/knex/knex/issues/1881#issuecomment-275433906
     query = query.whereIn("primary_email", flag.allow_list)
   }
 
   if (options.plusOnly) {
+    // And optionally, only send it to users who have a Plus subscription.
     // Note: This will only match people of whom the Monitor database knows that
     //       they have a Plus subscription. SubPlat is the source of truth, but
     //       our database is updated via a webhook and whenever the user logs
