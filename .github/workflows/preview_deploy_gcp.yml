@@ -32,7 +32,7 @@ jobs:
       # This can fail on the subsequent runs, we can ignore the error (database already exists)
       continue-on-error: true
       run: |
-        gcloud sql instances create ${{ env.SERVICE }}-${{ env.TAG }} --tier=db-f1-micro --region=${{ env.REGION }} --database-version=POSTGRES_15 --edition=enterprise'
+        gcloud sql instances create ${{ env.SERVICE }}-${{ env.TAG }} --tier=db-f1-micro --region=${{ env.REGION }} --database-version=POSTGRES_15 --edition=enterprise
         gcloud sql users set-password postgres --host=% --instance ${{ env.SERVICE }}-${{ env.TAG }} --password postgres 
         gcloud sql users create postgres --host=% --instance=${{ env.SERVICE }}-${{ env.TAG }}  --password=postgres
         gcloud sql databases create ${{ env.SERVICE }} --instance=database-external
