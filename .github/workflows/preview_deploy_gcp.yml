@@ -34,8 +34,7 @@ jobs:
       run: |
         gcloud sql instances create ${{ env.SERVICE }}-${{ env.TAG }} --tier=db-f1-micro --region=${{ env.REGION }} --database-version=POSTGRES_15 --edition=enterprise
         gcloud sql users set-password postgres --host=% --instance ${{ env.SERVICE }}-${{ env.TAG }} --password postgres 
-        gcloud sql users create postgres --host=% --instance=${{ env.SERVICE }}-${{ env.TAG }}  --password=postgres
-        gcloud sql databases create ${{ env.SERVICE }} --instance=${{ env.SERVICE }}-${{ env.TAG }}
+        gcloud sql databases create blurts --instance=${{ env.SERVICE }}-${{ env.TAG }}
         gcloud sql databases list --instance=${{ env.SERVICE }}-${{ env.TAG }}
         gcloud sql instances list
   
