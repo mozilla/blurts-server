@@ -78,7 +78,7 @@ dashboard-exposures-area-description-all-line2 =
     }
 dashboard-fixed-area-headline-all = Oglejte si vse izpostavljenosti, ki so fiksne
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
-dashboard-exposures-filter = Filter
+dashboard-exposures-filter = Filtriraj
 dashboard-exposures-filter-company = Podjetje
 dashboard-exposures-filter-date-found = Datum zaznave
 dashboard-exposures-filter-date-found-last-seven-days = Zadnjih 7 dni
@@ -141,7 +141,7 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
         [few] Odlično, vseh { $exposures_resolved_num } izpostavljenosti vaših podatkov je odpravljenih! Nadaljevali bomo s spremljanjem in vas bomo obvestili o morebitnih novih izpostavljenostih.
        *[other] Odlično, vseh { $exposures_resolved_num } izpostavljenosti vaših podatkov je odpravljenih! Nadaljevali bomo s spremljanjem in vas bomo obvestili o morebitnih novih izpostavljenostih.
     }
-dashboard-top-banner-monitor-more-cta = Spremljajte več e-poštnih sporočil
+dashboard-top-banner-monitor-more-cta = Spremljaj več naslovov
 
 # About Exposure Statuses Modal
 

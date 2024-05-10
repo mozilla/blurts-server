@@ -9,9 +9,14 @@ settings-page-title = Налаштування { -product-short-name }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Налатування попереджень про витоки
+settings-alert-email-preferences-title = Налаштування електронної пошти
+settings-alert-email-preferences-subtitle = Вкажіть, які листи ви хочете отримувати.
+settings-alert-preferences-allow-breach-alerts-title = Миттєві сповіщення
+settings-alert-preferences-allow-breach-alerts-subtitle = Ці сповіщення надсилаються одразу після виявлення витоку даних
 settings-alert-preferences-option-one = Надсилати сповіщення про витоки даних на відповідні адреси електронної пошти
 settings-alert-preferences-option-two = Надсилати попередження про всі витоки на основну адресу електронної пошти
+settings-alert-preferences-allow-monthly-monitor-report-title = Щомісячний звіт { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Щомісячне оновлення про витоки даних, виправлені проблеми, а також інформацію про необхідні дії.
 
 ## Monitored email addresses
 

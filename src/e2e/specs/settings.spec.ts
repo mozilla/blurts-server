@@ -7,21 +7,15 @@ import { test, expect } from "../fixtures/basePage.js";
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
 test.describe(`${process.env.E2E_TEST_ENV} Settings Page`, () => {
-  test("Verify settings page loads", async ({
-    page,
-    settingsPage,
-  }, testInfo) => {
+  test("Verify settings page loads", async ({ settingsPage }) => {
     // should go directly to data breach page
     await settingsPage.open();
-    await expect(settingsPage.prefHeader).toBeVisible();
+    await expect(settingsPage.emailPrefHeader).toBeVisible();
     await expect(settingsPage.emailHeader).toBeVisible();
-    await expect(settingsPage.deactivateHeader).toBeVisible();
+    (await settingsPage.deleteHeader.isVisible())
+      ? await expect(settingsPage.deleteHeader).toBeVisible()
+      : await expect(settingsPage.deactivateHeader).toBeVisible();
     await expect(settingsPage.addEmailButton).toBeVisible();
-
-    await testInfo.attach(`${process.env.E2E_TEST_ENV}-monitor-settings.png`, {
-      body: await page.screenshot(),
-      contentType: "image/png",
-    });
   });
 
   test("Verify that a user can select between the Breach alert preferences", async ({

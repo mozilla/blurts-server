@@ -27,6 +27,7 @@ export const TelemetryLink = ({
   return target ? (
     <a
       {...props}
+      target={target}
       onClick={(event) => {
         record("link", "click", eventData);
         props.onClick?.(event);
