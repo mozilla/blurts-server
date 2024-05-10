@@ -71,6 +71,7 @@ high-risk-breach-estimated-time =
 # Credit Card Breaches
 
 high-risk-breach-credit-card-title = Nde kuatia’atã papapy ojehechakuaa
+high-risk-breach-credit-card-description = Oimeraẽva ohupytýva ojoguakuaa oñemoneĩ’ỹva ikatúva oñemboja nde rehe. Eku’e ko’ág̃a ehenonde’ã hag̃ua mba’evai viru reheguáva.
 high-risk-breach-credit-card-step-one = Erekóramo gueteri ko kuatia’atã, emombe’u ime’ẽhárape oñemondaha.
 high-risk-breach-credit-card-step-two = Ejerure kuatia’atã papapy pyahu reheve.
 high-risk-breach-credit-card-step-three = Ehechajey ne mba’ete oĩre tepyme’ẽrã nemba’e’ỹva.
@@ -107,6 +108,9 @@ high-risk-breach-pin-step-three = Ehechajey ne mba’ete oĩre tepyme’ẽrã n
 # No high risk breaches found
 
 high-risk-breach-none-title = Marandu iporãva, ndorojuhúi mba’ekuaarã ñembogua ivaikuaáva
+# Variables
+# $email_list is list of emails that the user is monitoring for breaches. E.g. john@yahoo.com, ali@gmail.com, sam@hotmail.com
+high-risk-breach-none-description = Rohecha mba’ekuaarã ñembogua ne ñanduti veve rehegua, ha ndorojuhúi mba’ekuaarã ñembogua ivaikuaáva { $email_list }-pe g̃uarã.
 high-risk-breach-none-sub-description-part-one = Mba’ekuaarã ñembyai oikokuaávape oĩ:
 high-risk-breach-none-sub-description-ssn = Seguro social papapy
 high-risk-breach-none-sub-description-bank-account = Marandu mba’ete banco pegua
