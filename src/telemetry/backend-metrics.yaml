@@ -164,7 +164,7 @@ account:
       plan_type:
         description: Which type of plan the user is on ["1 month", "1 year"]
         type: string
-  profile-change:
+  profile_change:
     type: event
     description: |
       An existing Mozilla Accounts profile has been changed, for example the primary email address.
@@ -190,7 +190,7 @@ account:
       plan_type:
         description: Which type of plan the user is on ["1 month", "1 year"]
         type: string
-  password-change:
+  password_change:
     type: event
     description: |
       The password for an existing Mozilla Account has been changed, and existing auth tokens have been revoked.
