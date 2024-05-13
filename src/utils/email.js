@@ -115,7 +115,7 @@ function appendUrlParams (url, urlParams) {
  * @param {{
  *  emailType: string,
  *  content: string,
- *  subscriberId?: number,
+ *  subscriberId?: string,
  *  dashboardTabType?: import('../app/(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View.jsx').TabType
  * }} email CTA options
  */

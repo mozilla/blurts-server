@@ -153,12 +153,12 @@ test('EmailUtils.getEmailCtaDashboardHref works with a subscriber ID', async () 
   const emailCtaHref = getEmailCtaDashboardHref({
     emailType: 'email-type-2',
     content: 'content-2',
-    subscriberId: 1234,
+    subscriberId: '1234',
   })
   expect(emailCtaHref.pathname).toBe('/user/dashboard');
   emailCtaHref.searchParams.sort()
   expect(Array.from(emailCtaHref.searchParams.entries())).toStrictEqual([
-    ['subscriber_id', 1234],
+    ['subscriber_id', '1234'],
     ['utm_campaign', 'email-type-2'],
     ['utm_content', 'content-2'],
     ['utm_medium', 'email'],
@@ -171,13 +171,13 @@ test('EmailUtils.getEmailCtaDashboardHref works with a dashboard tab type', asyn
   const emailCtaHref = getEmailCtaDashboardHref({
     emailType: 'email-type-2',
     content: 'content-2',
-    subscriberId: 1234,
-    dashboardTabType: "fixed"
+    subscriberId: '1234',
+    dashboardTabType: "action-needed"
   })
-  expect(emailCtaHref.pathname).toBe('/user/dashboard/fixed');
+  expect(emailCtaHref.pathname).toBe('/user/dashboard/action-needed');
   emailCtaHref.searchParams.sort()
   expect(Array.from(emailCtaHref.searchParams.entries())).toStrictEqual([
-    ['subscriber_id', 1234],
+    ['subscriber_id', '1234'],
     ['utm_campaign', 'email-type-2'],
     ['utm_content', 'content-2'],
     ['utm_medium', 'email'],
