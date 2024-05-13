@@ -85,21 +85,21 @@ const authOptions: NextAuthConfig = {
           max_age: 0,
         },
       },
-      checks: ["state"],
+      checks: ["state", "pkce"],
       token: AppConstants.OAUTH_TOKEN_URI,
-      userinfo: AppConstants.OAUTH_PROFILE_URI,
-      // userinfo: {
-      //   url: AppConstants.OAUTH_PROFILE_URI,
-      //   async request(context) {
-      //     console.log("this is called, fetching user info: ", {context})
-      //     const response = await fetch(AppConstants.OAUTH_PROFILE_URI, {
-      //       headers: {
-      //         Authorization: `Bearer ${context.tokens.access_token ?? ""}`,
-      //       },
-      //     });
-      //     return (await response.json()) as FxaProfile;
-      //   },
-      // },
+      // userinfo: AppConstants.OAUTH_PROFILE_URI,
+      userinfo: {
+        url: AppConstants.OAUTH_PROFILE_URI,
+        async request(context) {
+          console.log("this is called, fetching user info: ", { context });
+          const response = await fetch(AppConstants.OAUTH_PROFILE_URI, {
+            headers: {
+              Authorization: `Bearer ${context.tokens.access_token ?? ""}`,
+            },
+          });
+          return (await response.json()) as FxaProfile;
+        },
+      },
       clientId: AppConstants.OAUTH_CLIENT_ID,
       clientSecret: AppConstants.OAUTH_CLIENT_SECRET,
       // Parse data returned by FxA's /userinfo/
@@ -107,7 +107,7 @@ const authOptions: NextAuthConfig = {
         return convertFxaProfile(profile);
       },
 
-      issuer: "https://accounts.stage.mozaws.net", // to infer the .well-known/openid-configuration URL
+      // issuer: "https://accounts.stage.mozaws.net", // to infer the .well-known/openid-configuration URL
     },
   ],
   callbacks: {
