@@ -131,11 +131,14 @@ test('EmailUtils.init with empty host uses jsonTransport. logs messages', async 
   expect(await sendEmail(...sendMailArgs)).toBe(sendMailInfo)
 })
 
-test('EmailUtils.getEmailCtaHref works without a subscriber ID', async () => {
-  const { getEmailCtaHref } = await import('./email.js')
+test('EmailUtils.getEmailCtaDashboardHref works without a subscriber ID', async () => {
+  const { getEmailCtaDashboardHref } = await import('./email.js')
 
-  const emailCtaHref = getEmailCtaHref('email-type', 'content')
-  expect(emailCtaHref.pathname).toBe('/user/breaches')
+  const emailCtaHref = getEmailCtaDashboardHref({
+    emailType: 'email-type',
+    content: 'content',
+  });
+  expect(emailCtaHref.pathname).toBe('/user/dashboard')
   emailCtaHref.searchParams.sort()
   expect(Array.from(emailCtaHref.searchParams.entries())).toStrictEqual([
     ['utm_campaign', 'email-type'],
@@ -145,17 +148,36 @@ test('EmailUtils.getEmailCtaHref works without a subscriber ID', async () => {
   ]);
 })
 
-test('EmailUtils.getEmailCtaHref works with a subscriber ID', async () => {
-  const { getEmailCtaHref } = await import('./email.js')
-  const emailCtaHref = getEmailCtaHref(
-    'email-type-2',
-    'content-2',
-    1234
-  )
-  expect(emailCtaHref.pathname).toBe('/user/breaches');
+test('EmailUtils.getEmailCtaDashboardHref works with a subscriber ID', async () => {
+  const { getEmailCtaDashboardHref } = await import('./email.js')
+  const emailCtaHref = getEmailCtaDashboardHref({
+    emailType: 'email-type-2',
+    content: 'content-2',
+    subscriberId: 1234,
+  })
+  expect(emailCtaHref.pathname).toBe('/user/dashboard');
   emailCtaHref.searchParams.sort()
   expect(Array.from(emailCtaHref.searchParams.entries())).toStrictEqual([
-    ['subscriber_id', '1234'],
+    ['subscriber_id', 1234],
+    ['utm_campaign', 'email-type-2'],
+    ['utm_content', 'content-2'],
+    ['utm_medium', 'email'],
+    ['utm_source', 'fx-monitor']
+  ]);
+})
+
+test('EmailUtils.getEmailCtaDashboardHref works with a dashboard tab type', async () => {
+  const { getEmailCtaDashboardHref } = await import('./email.js')
+  const emailCtaHref = getEmailCtaDashboardHref({
+    emailType: 'email-type-2',
+    content: 'content-2',
+    subscriberId: 1234,
+    dashboardTabType: "fixed"
+  })
+  expect(emailCtaHref.pathname).toBe('/user/dashboard/fixed');
+  emailCtaHref.searchParams.sort()
+  expect(Array.from(emailCtaHref.searchParams.entries())).toStrictEqual([
+    ['subscriber_id', 1234],
     ['utm_campaign', 'email-type-2'],
     ['utm_content', 'content-2'],
     ['utm_medium', 'email'],

@@ -112,12 +112,21 @@ function appendUrlParams (url, urlParams) {
 }
 
 /**
- * @param {string} emailType
- * @param {string} content
- * @param subscriberId
+ * @param {{
+ *  emailType: string,
+ *  content: string,
+ *  subscriberId?: number,
+ *  dashboardTabType?: import('../app/(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View.jsx').TabType
+ * }} email CTA options
  */
-function getEmailCtaHref (emailType, content, subscriberId = null) {
-  const dashboardUrl = `${SERVER_URL}/user/breaches`
+function getEmailCtaDashboardHref ({
+  emailType,
+  content,
+  subscriberId,
+  dashboardTabType,
+}) {
+  const dashboardTabSlug = dashboardTabType ? `/${dashboardTabType}` : ""
+  const dashboardUrl = `${SERVER_URL}/user/dashboard${dashboardTabSlug}`
   const url = new URL(dashboardUrl)
   const utmParams = {
     subscriber_id: subscriberId,
@@ -284,7 +293,10 @@ const getNotificationDummyData = (recipient, l10n) => {
       IsMalware: false
     },
     breachedEmail: recipient,
-    ctaHref: getEmailCtaHref('email-test-notification', 'dashboard-cta'),
+    ctaHref: getEmailCtaDashboardHref({
+      emailType: 'email-test-notification',
+      content: 'dashboard-cta',
+    }),
     heading: getMessage('email-spotted-new-breach'),
     recipientEmail: recipient,
     subscriberId: 123,
@@ -380,7 +392,10 @@ const getSignupReportDummyData = (recipient, l10n) => {
 
   return {
     breachedEmail: recipient,
-    ctaHref: getEmailCtaHref('email-test-notification', 'dashboard-cta'),
+    ctaHref: getEmailCtaDashboardHref({
+      emailType: 'email-test-notification',
+      content: 'dashboard-cta',
+    }),
     heading: unsafeBreachesForEmail.length
       ? getMessage('email-subject-found-breaches')
       : getMessage('email-subject-no-breaches'),
@@ -394,7 +409,7 @@ const getSignupReportDummyData = (recipient, l10n) => {
 
 export {
   EmailTemplateType,
-  getEmailCtaHref,
+  getEmailCtaDashboardHref,
   getMonthlyDummyData,
   getNotificationDummyData,
   getSignupReportDummyData,
