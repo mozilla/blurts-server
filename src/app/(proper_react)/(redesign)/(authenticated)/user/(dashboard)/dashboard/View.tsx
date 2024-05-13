@@ -84,10 +84,9 @@ export const View = (props: Props) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry(props.experimentationId);
   const countryCode = useContext(CountryCodeContext);
-  const isPlusUser = hasPremium(props.user);
 
   const adjustedScanResults = props.userScanData.results.map((scanResult) => {
-    if (scanResult.status === "new" && isPlusUser) {
+    if (scanResult.status === "new" && hasPremium(props.user)) {
       // Even if the user has Plus, OneRep won't automatically start removing
       // found exposures; it first sends a request to our webhook, and then the
       // webhook sends an opt-out request to OneRep. Meanwhile, however, we're
@@ -190,7 +189,7 @@ export const View = (props: Props) => {
           isPremiumBrokerRemovalEnabled={props.enabledFeatureFlags.includes(
             "PremiumBrokerRemoval",
           )}
-          isPremiumUser={isPlusUser}
+          isPremiumUser={hasPremium(props.user)}
           isEligibleForPremium={props.isEligibleForPremium}
           resolutionCta={
             <Button
@@ -405,7 +404,7 @@ export const View = (props: Props) => {
   };
 
   const showCsatSurvey =
-    isPlusUser &&
+    hasPremium(props.user) &&
     props.enabledFeatureFlags.includes("CsatSurvey") &&
     selectedTab === "fixed" &&
     typeof props.elapsedTimeInDaysSinceInitialScan !== "undefined";
@@ -450,7 +449,7 @@ export const View = (props: Props) => {
         <DashboardTopBanner
           tabType={selectedTab}
           scanInProgress={initialScanInProgress}
-          isPremiumUser={isPlusUser}
+          isPremiumUser={hasPremium(props.user)}
           isEligibleForPremium={canSubscribeToPremium({
             user: props.user,
             countryCode,
