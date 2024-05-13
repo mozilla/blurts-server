@@ -404,6 +404,7 @@ export const View = (props: Props) => {
   };
 
   const showCsatSurvey =
+    hasPremium(props.user) &&
     props.enabledFeatureFlags.includes("CsatSurvey") &&
     selectedTab === "fixed" &&
     typeof props.elapsedTimeInDaysSinceInitialScan !== "undefined";
