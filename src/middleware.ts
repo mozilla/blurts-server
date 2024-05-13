@@ -80,7 +80,16 @@ function generateCspData() {
       )
       .join(" ")}`,
     "child-src 'self'",
-    "style-src 'self'",
+    `style-src 'self' 'nonce=${nonce}'`,
+    // We sometimes add styles via the `style` attribute, most notably the
+    // `--sliceLength` custom property in <DoughtnutChart>. The style attribute
+    // can't receive a `nonce`; we could work around it by moving those to an
+    // inline <style> tag and passing it a nonce, but we've already forgotten
+    // that quite a few times. Since the risk of attribute styles seem pretty
+    // low, given that they can only be set by code we've already given control
+    // over that particular element, 'unsafe-inline' for just `style-src-attr`
+    // feels like a fine compromise.
+    "style-src-attr 'self' 'unsafe-inline'",
     "font-src 'self'",
     "form-action 'self'",
     "frame-ancestors 'self'",
