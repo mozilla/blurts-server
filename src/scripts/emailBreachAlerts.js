@@ -206,7 +206,7 @@ export async function poll(subClient, receivedMessages) {
                 ctaHref: getEmailCtaDashboardHref({
                   emailType: utmCampaignId,
                   content: "dashboard-cta",
-                  dashboardTabType: "action-needed"
+                  dashboardTabType: "action-needed",
                 }),
                 heading: getMessage("email-spotted-new-breach"),
                 recipientEmail,
