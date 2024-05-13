@@ -106,11 +106,6 @@ export const AlertAddressForm = (props: Props) => {
       }),
     }).then(() => {
       void session.update();
-      // Make sure the dashboard re-fetches the breaches on the next visit,
-      // in order to make resolved breaches move to the "Fixed" tab.
-      // If we had used server actions, we could've called
-      // `revalidatePath("/user/dashboard")` there, but the API doesn't appear
-      // to necessarily share a cache with the client.
       router.refresh();
     });
   };
