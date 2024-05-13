@@ -95,6 +95,9 @@ export const View = (props: Props) => {
   useEffect(() => {
     const nextPathname = `/user/dashboard/${activeTab}`;
     if (pathname !== nextPathname) {
+      // Directly interacting with the history API is recommended by Next.js to
+      // avoid re-rendering on the server:
+      // See https://github.com/vercel/next.js/discussions/48110#discussioncomment-7563979.
       window.history.replaceState(null, "", nextPathname);
     }
   }, [pathname, activeTab]);
