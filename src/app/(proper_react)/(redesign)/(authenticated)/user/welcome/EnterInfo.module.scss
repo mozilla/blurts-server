@@ -154,9 +154,8 @@
   gap: $spacing-sm;
   padding: $spacing-sm 0;
 
-  // Force all except the last two items, “Date of birth” and “City and state”,
-  // to be listed in the left column.
-  &:nth-last-of-type(3) {
+  // Force all fields related to the users name to be listed in the left column.
+  &.isNameRelatedField {
     break-before: avoid;
   }
 }
