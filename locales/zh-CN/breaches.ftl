@@ -3,19 +3,12 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-all-meta-title = { -brand-fx-monitor } - 所有数据泄露
-breach-all-meta-social-title = { -brand-fx-monitor } 检测到的所有泄漏事件
-breach-all-meta-social-description = 浏览 { -brand-fx-monitor } 检测到的已知泄漏事件的完整列表，然后查明您的信息是否已泄露。
-
+breach-all-meta-social-title = { -brand-fx-monitor } 检测到的所有外泄事件
+breach-all-meta-social-description = 浏览 { -brand-fx-monitor } 检测到的已知外泄事件的完整列表，然后查明您的信息是否已泄露。
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = 您是否受到 { $company } 数据泄露事件的影响？
 breach-detail-meta-social-description = 使用 { -brand-fx-monitor } 查明您的个人信息是否在此外泄事件中泄露，并了解下一步该怎么做。
-
-## Breaches header
-
-## Breaches resolved filter
-
-## Breaches table
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -26,7 +19,6 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = 更新您的密码并启用双因子身份验证（2FA）。
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -95,7 +87,6 @@ breach-checklist-phone-header-2 = 使用 { $firefoxRelayLink } 等服务来保�
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = 更新您的安全问题。
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = 在大多数情况下，我们建议您在该公司的网站上更新您的安全问题。但是<b>他们的网站可能会关闭或包含恶意内容</b>，因此您<breached-company-link>访问该网站</breached-company-link>时，请谨慎行事。为了加强保护，请在您使用过的任何重要账户上更新这些安全问题，并为不同的账户创建不同的密码。
 
