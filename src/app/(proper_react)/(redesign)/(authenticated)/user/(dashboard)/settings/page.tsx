@@ -22,6 +22,7 @@ import { getExperimentationId } from "../../../../../../functions/server/getExpe
 import { getExperiments } from "../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
+import { getSubscriberById } from "../../../../../../../db/tables/subscribers";
 
 export default async function SettingsPage() {
   const session = await auth();
@@ -71,10 +72,13 @@ export default async function SettingsPage() {
     session.user.subscriber.onerep_profile_id,
   );
 
+  const userData = await getSubscriberById(session.user.subscriber.id);
+
   return (
     <SettingsView
       l10n={getL10n()}
       user={session.user}
+      subscriber={userData}
       emailAddresses={emailAddresses}
       breachCountByEmailAddress={breachCountByEmailAddress}
       fxaSettingsUrl={fxaSettingsUrl}

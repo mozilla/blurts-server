@@ -25,14 +25,19 @@ jobs:
         credentials_json: '${{ secrets.GCP_SA_KEY }}'
   
     - name: Use gcloud CLI
-      run: 'gcloud info'
+      run: gcloud info
 
     - name: Generate database on the fly
       id: db_create
       # This can fail on the subsequent runs, we can ignore the error (database already exists)
       continue-on-error: true
-      run: 'gcloud sql instances create ${{ env.SERVICE }}-${{ env.TAG }} --tier=db-f1-micro --region=${{ env.REGION }} --database-version=POSTGRES_15 --edition=enterprise'
-
+      run: |
+        gcloud sql instances create ${{ env.SERVICE }}-${{ env.TAG }} --tier=db-f1-micro --region=${{ env.REGION }} --database-version=POSTGRES_15 --edition=enterprise
+        gcloud sql users set-password postgres --host=% --instance ${{ env.SERVICE }}-${{ env.TAG }} --password postgres 
+        gcloud sql databases create blurts --instance=${{ env.SERVICE }}-${{ env.TAG }}
+        gcloud sql databases list --instance=${{ env.SERVICE }}-${{ env.TAG }}
+        gcloud sql instances list
+  
     - name: Authorize Docker push
       run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev
 
@@ -48,8 +53,8 @@ jobs:
         service: ${{ env.SERVICE }}-${{ env.TAG }}
         image: ${{env.REGION}}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}/${{ env.SERVICE }}:${{ env.TAG }}
         region: ${{ env.REGION }}
-        flags: "--allow-unauthenticated --set-cloudsql-instances=${{ env.PROJECT_ID }}:${{env.REGION}}:${{ env.SERVICE }}-${{ env.TAG }}"
-        tag: ${{ env.TAG }}
+        flags: "--allow-unauthenticated --add-cloudsql-instances=${{ env.PROJECT_ID }}:${{env.REGION}}:${{ env.SERVICE }}-${{ env.TAG }}"
+        # tag: ${{ env.TAG }}
         env_vars: |
           NEXTAUTH_URL= ${{ secrets.NEXTAUTH_URL }}
           NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}
@@ -65,6 +70,13 @@ jobs:
           HIBP_API_TOKEN=${{ secrets.HIBP_API_TOKEN }}
           HIBP_KANON_API_TOKEN=${{ secrets.HIBP_KANON_API_TOKEN }}
           AUTH_REDIRECT_PROXY_URL=${{ secrets.AUTH_REDIRECT_PROXY_URL }}
+          PGUSER=postgres
+          PGDATABASE=postgres
+          DB_NAME=blurts
+          DB_USER=postgres
+          DB_PASSWORD=postgres
+          CLOUD_SQL_CONNECTION_NAME=${{ env.PROJECT_ID }}:${{env.REGION}}:${{ env.SERVICE }}-${{ env.TAG }}
+          DATABASE_URL= postgres://postgres:postgres@localhost:5432/blurts 
 
     - name: Comment on Pull Request
       uses: thollander/actions-comment-pull-request@v2

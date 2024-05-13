@@ -153,4 +153,9 @@
   display: flex;
   gap: $spacing-sm;
   padding: $spacing-sm 0;
+
+  // Force all fields related to the users name to be listed in the left column.
+  &.isNameRelatedField {
+    break-before: avoid;
+  }
 }

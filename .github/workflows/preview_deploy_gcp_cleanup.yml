@@ -28,13 +28,15 @@ jobs:
 
     - name: Delete created database
       id: db_delete
-      # This can fail on the subsequent runs, we can ignore the error (database already exists)
-      continue-on-error: true
       # Delete cloud sql instance
       run: 'gcloud sql instances delete blurts-server-${{ env.TAG }}'
+    
+    - name: Delete created cloud run service
+      id: cloudrun_delete
+      run: gcloud run services delete blurts-server-${{ env.TAG }} --region ${{ env.REGION }} --platform managed --quiet
 
     - name: Comment on Pull Request
       uses: thollander/actions-comment-pull-request@v2
       with:
           GITHUB_TOKEN: ${{ github.token }}
-          message: Cleanup completed - database 'blurts-server-${{ env.TAG }}' destroyed
+          message: Cleanup completed - database 'blurts-server-${{ env.TAG }}' destroyed, cloud run service 'blurts-server-${{ env.TAG }}' destroyed
