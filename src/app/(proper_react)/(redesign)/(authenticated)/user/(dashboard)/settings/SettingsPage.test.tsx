@@ -50,11 +50,11 @@ import { sanitizeEmailRow } from "../../../../../../functions/server/sanitize";
 import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 
 const subscriberId = 7;
-const mockedSubscriber: SerializedSubscriber = {
+const mockedSerializedSubscriber: SerializedSubscriber = {
   id: subscriberId,
   all_emails_to_primary: true,
 } as SerializedSubscriber;
-const subscriber: SubscriberRow = {
+const mockedSubscriber: SubscriberRow = {
   updated_at: new Date(),
   fx_newsletter: true,
   all_emails_to_primary: true,
@@ -128,7 +128,7 @@ const subscriber: SubscriberRow = {
 
 const mockedUser: Session["user"] = {
   email: "primary@example.com",
-  subscriber: mockedSubscriber,
+  subscriber: mockedSerializedSubscriber,
   fxa: {
     subscriptions: ["monitor"],
     avatar: "",
@@ -175,7 +175,7 @@ it("passes the axe accessibility audit", async () => {
           [mockedSecondaryVerifiedEmail.email]: 42,
           [mockedSecondaryUnverifiedEmail.email]: 42,
         }}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         emailAddresses={[
           mockedSecondaryVerifiedEmail,
           mockedSecondaryUnverifiedEmail,
@@ -205,7 +205,7 @@ it("preselects 'Send all breach alerts to the primary email address' if that's t
             all_emails_to_primary: true,
           },
         }}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -246,7 +246,7 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
           },
         }}
         subscriber={{
-          ...subscriber,
+          ...mockedSubscriber,
           all_emails_to_primary: false,
         }}
         breachCountByEmailAddress={{
@@ -291,7 +291,7 @@ it("disables breach alert notification options if a user opts out of breach aler
             all_emails_to_primary: true,
           },
         }}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -344,7 +344,7 @@ it("preselects primary email alert option", () => {
             all_emails_to_primary: true,
           },
         }}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -383,7 +383,7 @@ it("unselects the breach alerts checkbox and sends a null value to the API", asy
             all_emails_to_primary: true,
           },
         }}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -436,7 +436,7 @@ it("preselects the affected email comms option after a user decides to enable br
           },
         }}
         subscriber={{
-          ...subscriber,
+          ...mockedSubscriber,
           all_emails_to_primary: null,
         }}
         breachCountByEmailAddress={{
@@ -484,7 +484,7 @@ it("sends a call to the API to change the email alert preferences when changing 
             all_emails_to_primary: true,
           },
         }}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -541,7 +541,7 @@ it("checks that monthly monitor report is enabled", () => {
           },
         }}
         subscriber={{
-          ...subscriber,
+          ...mockedSubscriber,
           monthly_monitor_report: true,
         }}
         breachCountByEmailAddress={{
@@ -587,7 +587,7 @@ it("sends an API call to disable monthly monitor reports", async () => {
           },
         }}
         subscriber={{
-          ...subscriber,
+          ...mockedSubscriber,
           all_emails_to_primary: true,
           monthly_monitor_report: true,
         }}
@@ -640,7 +640,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
             all_emails_to_primary: true,
           },
         }}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -671,7 +671,7 @@ it("marks unverified email addresses as such", () => {
       <SettingsView
         l10n={getL10n()}
         user={mockedUser}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -707,7 +707,7 @@ it("calls the API to resend a verification email if requested to", async () => {
       <SettingsView
         l10n={getL10n()}
         user={mockedUser}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -753,7 +753,7 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
       <SettingsView
         l10n={getL10n()}
         user={mockedUser}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -794,7 +794,7 @@ it("hides the Plus cancellation link if the user doesn't have Plus", () => {
             subscriptions: [],
           } as Session["user"]["fxa"],
         }}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -829,7 +829,7 @@ it("shows the Plus cancellation link if the user has Plus", () => {
             subscriptions: ["monitor"],
           } as Session["user"]["fxa"],
         }}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -866,7 +866,7 @@ it("takes you through the cancellation dialog flow all the way to subplat", asyn
             subscriptions: ["monitor"],
           } as Session["user"]["fxa"],
         }}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -943,7 +943,7 @@ it("closes the cancellation survey if the user selects nevermind, take me back",
             subscriptions: ["monitor"],
           } as Session["user"]["fxa"],
         }}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -1000,7 +1000,7 @@ it("closes the cancellation dialog", async () => {
             subscriptions: ["monitor"],
           } as Session["user"]["fxa"],
         }}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -1049,7 +1049,7 @@ it("does not show the account deletion button if the relevant flag is not enable
             subscriptions: [],
           } as Session["user"]["fxa"],
         }}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -1084,7 +1084,7 @@ it("shows the account deletion button if the user does not have Plus", () => {
             subscriptions: [],
           } as Session["user"]["fxa"],
         }}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -1124,7 +1124,7 @@ it("warns about the consequences before deleting a free user's account", async (
             subscriptions: [],
           } as Session["user"]["fxa"],
         }}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -1166,7 +1166,7 @@ it("shows a loading state while account deletion is in progress", async () => {
             subscriptions: [],
           } as Session["user"]["fxa"],
         }}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -1209,7 +1209,7 @@ it("shows the account deletion button if the user has Plus", () => {
             subscriptions: ["monitor"],
           } as Session["user"]["fxa"],
         }}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -1249,7 +1249,7 @@ it("warns about the consequences before deleting a Plus user's account", async (
             subscriptions: ["monitor"],
           } as Session["user"]["fxa"],
         }}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -1295,7 +1295,7 @@ it.skip("calls the 'add' action when adding another email address", async () => 
       <SettingsView
         l10n={getL10n()}
         user={mockedUser}
-        subscriber={subscriber}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -1333,7 +1333,7 @@ describe("to learn about usage", () => {
         <SettingsView
           l10n={getL10n()}
           user={mockedUser}
-          subscriber={subscriber}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
             [mockedSecondaryVerifiedEmail.email]: 42,
@@ -1371,7 +1371,7 @@ describe("to learn about usage", () => {
         <SettingsView
           l10n={getL10n()}
           user={mockedUser}
-          subscriber={subscriber}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
             [mockedSecondaryVerifiedEmail.email]: 42,
@@ -1416,7 +1416,7 @@ describe("to learn about usage", () => {
         <SettingsView
           l10n={getL10n()}
           user={mockedUser}
-          subscriber={subscriber}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
           }}
@@ -1459,7 +1459,7 @@ describe("to learn about usage", () => {
         <SettingsView
           l10n={getL10n()}
           user={mockedUser}
-          subscriber={subscriber}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
           }}
@@ -1503,7 +1503,7 @@ describe("to learn about usage", () => {
               subscriptions: [],
             } as Session["user"]["fxa"],
           }}
-          subscriber={subscriber}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
           }}
@@ -1546,7 +1546,7 @@ describe("to learn about usage", () => {
               subscriptions: [],
             } as Session["user"]["fxa"],
           }}
-          subscriber={subscriber}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
           }}
@@ -1594,7 +1594,7 @@ describe("to learn about usage", () => {
               subscriptions: [],
             } as Session["user"]["fxa"],
           }}
-          subscriber={subscriber}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
           }}
@@ -1638,7 +1638,7 @@ describe("to learn about usage", () => {
               subscriptions: [],
             } as Session["user"]["fxa"],
           }}
-          subscriber={subscriber}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
           }}
@@ -1686,7 +1686,7 @@ describe("to learn about usage", () => {
               subscriptions: ["monitor"],
             } as Session["user"]["fxa"],
           }}
-          subscriber={subscriber}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
           }}
@@ -1729,7 +1729,7 @@ describe("to learn about usage", () => {
               subscriptions: ["monitor"],
             } as Session["user"]["fxa"],
           }}
-          subscriber={subscriber}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
           }}
@@ -1777,7 +1777,7 @@ describe("to learn about usage", () => {
               subscriptions: [],
             } as Session["user"]["fxa"],
           }}
-          subscriber={subscriber}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
           }}
