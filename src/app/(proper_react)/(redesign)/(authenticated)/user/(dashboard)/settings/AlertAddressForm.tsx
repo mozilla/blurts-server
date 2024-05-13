@@ -30,9 +30,12 @@ import { useSession } from "next-auth/react";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { Session } from "next-auth";
 import { hasPremium } from "../../../../../../functions/universal/user";
+import { useRouter } from "next/navigation";
+import { SubscriberRow } from "knex/types/tables";
 
 export type Props = {
   user: Session["user"];
+  subscriber: SubscriberRow;
   enabledFeatureFlags: FeatureFlagName[];
 };
 
@@ -41,14 +44,11 @@ const AlertAddressContext = createContext<RadioGroupState | null>(null);
 export const AlertAddressForm = (props: Props) => {
   const l10n = useL10n();
   const session = useSession();
+  const router = useRouter();
 
-  // Set value to null if undefined (disabled breach alerts)
-  const breachAlertsEmailsAllowed =
-    props.user.subscriber?.all_emails_to_primary ?? null;
+  const breachAlertsEmailsAllowed = props.subscriber.all_emails_to_primary;
 
-  // Have monitor monthly reports enabled by default
-  const monitorReportAllowed =
-    props.user.subscriber?.monthly_monitor_report ?? true;
+  const monitorReportAllowed = props.subscriber.monthly_monitor_report;
 
   const defaultActivateAlertEmail =
     typeof breachAlertsEmailsAllowed === "boolean";
@@ -85,6 +85,12 @@ export const AlertAddressForm = (props: Props) => {
         // Fetch a new token with up-to-date subscriber info - specifically,
         // with this setting updated.
         void session.update();
+        // Make sure the dashboard re-fetches the breaches on the next visit,
+        // in order to make resolved breaches move to the "Fixed" tab.
+        // If we had used server actions, we could've called
+        // `revalidatePath("/user/dashboard")` there, but the API doesn't appear
+        // to necessarily share a cache with the client.
+        router.refresh();
       });
     },
   });
@@ -100,6 +106,7 @@ export const AlertAddressForm = (props: Props) => {
       }),
     }).then(() => {
       void session.update();
+      router.refresh();
     });
   };
 
