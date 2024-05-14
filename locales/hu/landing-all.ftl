@@ -3,11 +3,14 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
+
 landing-all-hero-title = Tudja meg, hogy hol kerültek ki a személyes adatai – és szerezze vissza azokat
 landing-all-hero-lead = Átvizsgáljuk az adatvédelmi incidenseket, hogy megtudjuk, kiszivárogtak-e az adatai, és lépéseket adunk a javításához.
+
 landing-all-hero-emailform-input-placeholder = email@example.com
 landing-all-hero-emailform-input-label = Adja meg az e-mail-címét, hogy ellenőrizze az adatvédelmi incidenseket.
 landing-all-hero-emailform-submit-label = Ingyenes vizsgálat kérése
+
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = kitettség
 
@@ -61,5 +64,7 @@ landing-all-help-protect-you-feature-one = Keresni fogjuk az összes ismert adat
 landing-all-help-protect-you-feature-two = Végigvezetjük az egyes adatvédelmi incidensek megoldásához szükséges lépéseken
 landing-all-help-protect-you-feature-three = Folyamatosan monitorozzuk, és figyelmeztetjük az új adatvédelmi incidensekről
 landing-all-help-protect-you-cta = Iratkozzon fel az adatvédelmi incidensek figyelmeztetéseire
+
 landing-all-get-started = A kezdéshez vizsgálja meg az e-mail-címét
 landing-all-take-back-data = Szerezze vissza az adatai feletti irányítást
+

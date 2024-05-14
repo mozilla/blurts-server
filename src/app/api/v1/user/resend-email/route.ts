@@ -10,7 +10,7 @@ import AppConstants from "../../../../../appConstants";
 import { getSubscriberByFxaUid } from "../../../../../db/tables/subscribers";
 import { getUserEmails } from "../../../../../db/tables/emailAddresses";
 import { sendVerificationEmail } from "../../../utils/email";
-import { getL10n } from "../../../../functions/server/l10n";
+import { getL10n } from "../../../../functions/l10n/serverComponents";
 import { initEmail } from "../../../../../utils/email";
 
 interface EmailResendRequest {
@@ -24,6 +24,10 @@ export async function POST(req: NextRequest) {
   if (typeof token?.subscriber?.fxa_uid === "string") {
     try {
       const { emailId }: EmailResendRequest = await req.json();
+      const parsedEmailId = Number.parseInt(emailId, 10);
+      if (Number.isNaN(parsedEmailId)) {
+        throw new Error("No valid email address given.");
+      }
       const subscriber = await getSubscriberByFxaUid(token.subscriber?.fxa_uid);
       if (!subscriber) {
         throw new Error("No subscriber found for current session.");
@@ -45,11 +49,7 @@ export async function POST(req: NextRequest) {
       }
 
       await initEmail();
-      await sendVerificationEmail(
-        subscriber,
-        Number.parseInt(emailId, 10),
-        l10n,
-      );
+      await sendVerificationEmail(subscriber, parsedEmailId);
 
       return NextResponse.json({
         success: true,

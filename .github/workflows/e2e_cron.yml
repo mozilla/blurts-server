@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20.11
+          node-version: 22.1
 
       - name: Install dependencies
         run: npm ci
@@ -29,7 +29,9 @@ jobs:
         run: cp .env-dist .env
       - name: Store Playwright's Version
         run: |
-          PLAYWRIGHT_VERSION=$(npm ls @playwright/test | grep @playwright | sed 's/.*@//')
+          # The regular expression matches everything containing
+          # `<number>.<number>.<number>`, and returns only that bit:
+          PLAYWRIGHT_VERSION=$(npm ls @playwright/test | grep @playwright | sed --regexp-extended 's/.*([0-9]+\.[0-9]+\.[0-9]+).*/\1/') | head -1
           echo "Playwright's Version: $PLAYWRIGHT_VERSION"
           echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
 

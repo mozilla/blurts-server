@@ -5,14 +5,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { faker } from "@faker-js/faker";
 import { BreachIndexView, Props as ViewProps } from "./BreachIndexView";
-import { getOneL10nSync } from "../../../../functions/server/mockL10n";
+import { getL10n } from "../../../../functions/l10n/storybookAndJest";
 import { PublicShell } from "../PublicShell";
 import { createRandomHibpListing } from "../../../../../apiMocks/mockData";
 
 const meta: Meta<typeof BreachIndexView> = {
   title: "Pages/Public/Breach index",
   component: (props: ViewProps) => (
-    <PublicShell l10n={getOneL10nSync("en")}>
+    <PublicShell l10n={getL10n("en")}>
       <BreachIndexView {...props} />
     </PublicShell>
   ),
@@ -21,7 +21,7 @@ const meta: Meta<typeof BreachIndexView> = {
 export default meta;
 type Story = StoryObj<typeof BreachIndexView>;
 
-export const LandingUs: Story = {
+export const BreachIndexViewStory: Story = {
   name: "Breach index",
   args: {
     allBreaches: faker.helpers.multiple(createRandomHibpListing, {

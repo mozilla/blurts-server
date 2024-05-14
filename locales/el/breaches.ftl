@@ -2,79 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-meta-title = { -brand-fx-monitor } - Πίνακας ελέγχου
-
 breach-all-meta-title = { -brand-fx-monitor } - Όλες οι παραβιάσεις δεδομένων
 breach-all-meta-social-title = Όλες οι παραβιάσεις που εντοπίστηκαν από το { -brand-fx-monitor }
 breach-all-meta-social-description = Περιηγηθείτε στην πλήρη λίστα των γνωστών παραβιάσεων που εντοπίστηκαν από το { -brand-fx-monitor } και μάθετε εάν αποκαλύφθηκαν οι πληροφορίες σας.
 
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } - Παραβίαση δεδομένων { $company }
-# Variables:
-#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Επηρεαστήκατε από την παραβίαση δεδομένων { $company };
 breach-detail-meta-social-description = Χρησιμοποιήστε το { -brand-fx-monitor } για να μάθετε εάν τα προσωπικά σας δεδομένα εκτέθηκαν σε αυτήν την παραβίαση και να κατανοήσετε τι πρέπει να κάνετε στη συνέχεια.
 
-breach-scan-meta-title = { -brand-fx-monitor } - Αποτελέσματα παραβίασης
-breach-scan-meta-social-title = { -brand-fx-monitor } - Αποτελέσματα παραβίασης
-breach-scan-meta-social-description = Συνδεθείτε στο { -brand-fx-monitor } για να επιλύσετε παραβιάσεις και να έχετε συνεχή εποπτεία για τυχόν νέες παραβιάσεις.
-
 ## Breaches header
-
-# Data classes pie chart title
-breach-chart-title = Παραβιασμένα δεδομένα
-
-# $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = Παραβιάσεις δεδομένων για το { $email-select }
-
-# $count is the number of emails a user has added out of $total allowed
-emails-monitored =
-    { $total ->
-        [one] { $count } από { $total } email υπό εποπτεία
-       *[other] { $count } από { $total } email υπό εποπτεία
-    }
-
-# link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = Διαχείριση email
 
 ## Breaches resolved filter
 
-filter-label-unresolved = Μη επιλυμένες παραβιάσεις
-filter-label-resolved = Επιλυμένες παραβιάσεις
-
 ## Breaches table
-
-column-company = ΕΤΑΙΡΕΙΑ
-column-breached-data = ΠΑΡΑΒΙΑΣΜΕΝΑ ΔΕΔΟΜΕΝΑ
-column-detected = ΑΝΙΧΝΕΥΣΗ
-
-# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = Επιλύθηκε
-# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = Ενεργή
-
-breaches-resolve-heading = Επίλυση παραβίασης:
-
-breaches-none-headline = Δεν βρέθηκαν παραβιάσεις
-# Variables:
-#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
-breaches-none-copy = Καλά νέα! Δεν έχουν αναφερθεί παραβιάσεις για το { $email }. Θα συνεχίσουμε να εποπτεύουμε αυτό το email και θα σας ενημερώσουμε εάν προκύψουν νέες παραβιάσεις.
-breaches-none-cta-blurb = Θέλετε να παρακολουθήσετε κάποιο άλλο email;
-breaches-none-cta-button = Προσθήκη διεύθυνσης email
-
-breaches-all-resolved-headline = Επιλύθηκαν όλες οι παραβιάσεις
-# Variables:
-#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = Ωραία! Έχετε επιλύσει όλες τις παραβιάσεις για το { $email }. Θα συνεχίσουμε να εποπτεύουμε αυτό το email και θα σας ενημερώσουμε εάν προκύψουν νέες παραβιάσεις.
-breaches-all-resolved-cta-blurb = Θέλετε να παρακολουθήσετε κάποιο άλλο email;
-breaches-all-resolved-cta-button = Προσθήκη διεύθυνσης email
-
-# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-# Variables:
-#   $breachDate (String) - Date of the breach
-#   $companyName (String) - Name of the company where the breach occurred
-breach-description = Στις { $breachDate }, η { $companyName } παραβιάστηκε. Μόλις ανακαλύφθηκε και επαληθεύτηκε η παραβίαση, προστέθηκε στη βάση δεδομένων μας στις { $addedDate }. Αυτή η παραβίαση περιλάμβανε: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 

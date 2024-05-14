@@ -3,11 +3,14 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
+
 landing-all-hero-title = Hitta var din privata information är exponerad — och ta tillbaka den
 landing-all-hero-lead = Vi skannar dataintrång för att se om din data har läckt och ger dig tips för att åtgärda det.
+
 landing-all-hero-emailform-input-placeholder = dittnamn@exempel.se
 landing-all-hero-emailform-input-label = Ange din e-postadress för att söka efter exponeringar för dataintrång.
 landing-all-hero-emailform-submit-label = Få gratis skanning
+
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = exponeringar
 
@@ -59,5 +62,7 @@ landing-all-help-protect-you-feature-one = Vi kommer att söka åt dig i alla k�
 landing-all-help-protect-you-feature-two = Vi guidar dig genom stegen för att lösa varje intrång
 landing-all-help-protect-you-feature-three = Vi kommer kontinuerligt att övervaka och skicka dig varningar om nya intrång
 landing-all-help-protect-you-cta = Registrera dig för intrångsvarningar
+
 landing-all-get-started = Skanna din e-post för att komma igång
 landing-all-take-back-data = Ta tillbaka kontrollen över din data
+

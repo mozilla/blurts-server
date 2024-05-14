@@ -90,11 +90,12 @@ async function addSubscriberUnverifiedEmailHash (user, email) {
 
 /**
  * @param {number | string} emailAddressId
+ * @param {import('knex/types/tables').SubscriberRow} subscriber
  * @param {import("@fluent/react").ReactLocalization} l10n
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function resetUnverifiedEmailAddress (emailAddressId, l10n) {
+async function resetUnverifiedEmailAddress (emailAddressId, subscriber, l10n) {
   const newVerificationToken = uuidv4()
 
   // Time in ms to require between verification reset.
@@ -118,6 +119,7 @@ async function resetUnverifiedEmailAddress (emailAddressId, l10n) {
       updated_at: knex.fn.now()
     })
     .where('id', emailAddressId)
+    .andWhere("subscriber_id", subscriber.id)
     .returning('*')
   return res[0]
 }

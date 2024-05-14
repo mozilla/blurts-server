@@ -3,11 +3,14 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
+
 landing-all-hero-title = Scopri dove sono esposte le tue informazioni personali e riprendine possesso
 landing-all-hero-lead = Analizziamo le violazioni di dati per verificare se i tuoi dati sono stati esposti e ti forniamo suggerimenti per risolvere il problema.
+
 landing-all-hero-emailform-input-placeholder = iltuonome@example.com
 landing-all-hero-emailform-input-label = Inserisci il tuo indirizzo email per verificare la presenza di violazioni di dati.
 landing-all-hero-emailform-submit-label = Ottieni una scansione gratuita
+
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = esposizioni
 
@@ -57,5 +60,7 @@ landing-all-help-protect-you-feature-one = Ti cercheremo in tutte le violazioni 
 landing-all-help-protect-you-feature-two = Ti guideremo attraverso i passaggi per risolvere ogni violazione
 landing-all-help-protect-you-feature-three = Continueremo a monitorare e ti invieremo avvisi per qualsiasi nuova violazione
 landing-all-help-protect-you-cta = Iscriviti per ricevere avvisi sulle violazioni
+
 landing-all-get-started = Scansiona la tua email per iniziare
 landing-all-take-back-data = Riprendi il controllo dei tuoi dati
+

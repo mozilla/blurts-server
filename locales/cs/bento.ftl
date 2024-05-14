@@ -9,5 +9,6 @@ toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } pro počítač
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } pro mobily
 toolbar-app-picker-by-mozilla = Od { -brand-mozilla(case: "gen") }
+
 # Bento headline
 fx-makes-tech = { -brand-name } je technologie, která bojuje za vaše soukromí na internetu.

@@ -22,12 +22,12 @@ import {
   addEmailNotification,
   markEmailAsNotified,
 } from "../db/tables/email_notifications.js";
-import { getTemplate } from "../views/emails/email2022.js";
-import { breachAlertEmailPartial } from "../views/emails/emailBreachAlert.js";
+import { getTemplate } from "../emails/email2022.js";
+import { breachAlertEmailPartial } from "../emails/emailBreachAlert.js";
 import {
   initEmail,
   EmailTemplateType,
-  getEmailCtaHref,
+  getEmailCtaDashboardHref,
   sendEmail,
 } from "../utils/email.js";
 
@@ -203,7 +203,11 @@ export async function poll(subClient, receivedMessages) {
               const data = {
                 breachData: breachAlert,
                 breachedEmail,
-                ctaHref: getEmailCtaHref(utmCampaignId, "dashboard-cta"),
+                ctaHref: getEmailCtaDashboardHref({
+                  emailType: utmCampaignId,
+                  content: "dashboard-cta",
+                  dashboardTabType: "action-needed",
+                }),
                 heading: getMessage("email-spotted-new-breach"),
                 recipientEmail,
                 subscriberId,

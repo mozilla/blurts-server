@@ -17,7 +17,7 @@ import {
 import { ProgressCard } from "../../../../../../../components/client/ProgressCard";
 import { Button } from "../../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../../hooks/l10n";
-import { UpsellButton } from "../../../../../../../components/client/UpsellBadge";
+import { UpsellButton } from "../../../../../../../components/client/toolbar/UpsellBadge";
 import { WaitlistDialog } from "../../../../../../../components/client/SubscriberWaitlistDialog";
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import {

@@ -47,8 +47,9 @@ modal-active-number-of-exposures-part-three-all = Ko bodo razrešene, bodo dodan
 modal-fixed-number-of-exposures-title = O številu določenih izpostavljenosti
 modal-fixed-number-of-exposures-all = Ta grafikon vključuje skupno število odpravljenih kraj podatkov za vse e-poštne naslove, ki jih trenutno spremljate. Ko so izpostavljenosti označene kot fiksne, bodo tukaj dodane skupni vsoti.
 modal-cta-ok = V redu
-modal-open-alt = Odpri
-modal-close-alt = Zapri
+open-modal-alt = Odpri način
+close-modal-alt = Zapri modalno okno
+open-tooltip-alt = Odpri opis orodja
 progress-card-heres-what-we-fixed-headline-all = To ste popravili
 progress-card-manually-fixed-headline = Ročno popravljeno
 dashboard-tab-label-action-needed = Potrebno je ukrepanje
@@ -77,16 +78,13 @@ dashboard-exposures-area-description-all-line2 =
     }
 dashboard-fixed-area-headline-all = Oglejte si vse izpostavljenosti, ki so fiksne
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
-dashboard-exposures-filter = Filter
+dashboard-exposures-filter = Filtriraj
 dashboard-exposures-filter-company = Podjetje
 dashboard-exposures-filter-date-found = Datum zaznave
 dashboard-exposures-filter-date-found-last-seven-days = Zadnjih 7 dni
 dashboard-exposures-filter-date-found-last-thirty-days = Zadnjih 30 dni
 dashboard-exposures-filter-date-found-last-year = Lansko leto
 dashboard-exposures-filter-status = Stanje
-dashboard-exposures-filter-status-action-needed = Potrebno ukrepanje
-dashboard-exposures-filter-status-in-progress = V nastajanju
-dashboard-exposures-filter-status-fixed = Popravljeno
 popover-open-filter-settings-alt = Izberite filtre
 dashboard-exposures-filter-show-all = Prikaži vse
 dashboard-exposures-filter-show-results = Prikaži rezultate
@@ -143,7 +141,7 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
         [few] Odlično, vseh { $exposures_resolved_num } izpostavljenosti vaših podatkov je odpravljenih! Nadaljevali bomo s spremljanjem in vas bomo obvestili o morebitnih novih izpostavljenostih.
        *[other] Odlično, vseh { $exposures_resolved_num } izpostavljenosti vaših podatkov je odpravljenih! Nadaljevali bomo s spremljanjem in vas bomo obvestili o morebitnih novih izpostavljenostih.
     }
-dashboard-top-banner-monitor-more-cta = Spremljajte več e-poštnih sporočil
+dashboard-top-banner-monitor-more-cta = Spremljaj več naslovov
 
 # About Exposure Statuses Modal
 

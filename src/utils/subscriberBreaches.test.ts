@@ -6,7 +6,7 @@ import { SubscriberRow } from "knex/types/tables";
 import { getBreachesForEmail } from "./hibp";
 import { getSubBreaches } from "./subscriberBreaches";
 import { getUserEmails } from "../db/tables/emailAddresses";
-import { Breach } from "../app/deprecated/(authenticated)/user/breaches/breaches";
+import { Breach } from "../app/functions/universal/breach";
 
 jest.mock("../db/tables/emailAddresses.js", () => ({
   getUserEmails: jest.fn(),

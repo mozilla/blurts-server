@@ -7,15 +7,13 @@ import passwordIllustration from "../images/leaked-passwords.svg";
 import securityQuestionsIllustration from "../images/security-questions.svg";
 import { SubscriberBreach } from "../../../../../../../../../utils/subscriberBreaches";
 import { GuidedExperienceBreaches } from "../../../../../../../../functions/server/getUserBreaches";
-import { ExtendedReactLocalization } from "../../../../../../../../hooks/l10n";
+import { ExtendedReactLocalization } from "../../../../../../../../functions/l10n";
 import { Button } from "../../../../../../../../components/client/Button";
 import { StepLink } from "../../../../../../../../functions/server/getRelevantGuidedSteps";
-import {
-  BreachResolutionRequest,
-  HibpBreachDataTypes,
-} from "../../../../../../../../deprecated/(authenticated)/user/breaches/breaches";
 import { getLocale } from "../../../../../../../../functions/universal/getLocale";
 import { TelemetryButton } from "../../../../../../../../components/client/TelemetryButton";
+import { HibpBreachDataTypes } from "../../../../../../../../functions/universal/breach";
+import { BreachResolutionRequest } from "../../../../../../../../api/v1/user/breaches/route";
 
 export const leakedPasswordTypes = [
   "passwords",

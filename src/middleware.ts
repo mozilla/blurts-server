@@ -80,13 +80,11 @@ function generateCspData() {
       )
       .join(" ")}`,
     "child-src 'self'",
-    // TODO: Remove `unsafe-inline` after we're fully migrated to React
-    //       (i.e. when we no longer manually add inline <style> elements):
-    "style-src 'self' 'unsafe-inline'",
+    "style-src 'self'",
     "font-src 'self'",
     "form-action 'self'",
     "frame-ancestors 'self'",
-    "frame-src 'self' https://js.stripe.com",
+    "frame-src 'self' https://js.stripe.com https://mozilla.formstack.com",
     "object-src 'none'",
     "block-all-mixed-content",
     "upgrade-insecure-requests",

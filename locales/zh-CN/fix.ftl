@@ -5,8 +5,8 @@
 fix-flow-nav-high-risk-data-breaches = 高风险数据外泄事件
 fix-flow-nav-leaked-passwords = 泄露的密码
 fix-flow-nav-security-recommendations = 安全建议
+
 guided-resolution-flow-exit = 返回面板
-guided-resolution-flow-back-arrow = 转到上一步
 guided-resolution-flow-next-arrow = 转到下一步
 guided-resolution-flow-step-navigation-label = 向导步骤
 

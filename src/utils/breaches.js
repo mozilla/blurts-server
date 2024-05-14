@@ -26,17 +26,17 @@ import { captureMessage } from "@sentry/node";
  * @returns {Promise<AllEmailsAndBreaches>}
  */
 async function getAllEmailsAndBreaches(user, allBreaches) {
-  
+
   // @ts-ignore: function will be deprecated
   const verifiedEmails = []
   // @ts-ignore: function will be deprecated
   const unverifiedEmails = []
-  
+
   if (!user) {
     const errMsg = "getAllEmailsAndBreaches: subscriber cannot be undefined"
     console.error(errMsg);
     captureMessage(errMsg);
-    
+
     // @ts-ignore: function will be deprecated
     return { verifiedEmails, unverifiedEmails };
   }

@@ -9,5 +9,6 @@ toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } dành cho máy tính để bàn
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } dành cho di động
 toolbar-app-picker-by-mozilla = Được tạo bởi { -brand-mozilla }
+
 # Bento headline
 fx-makes-tech = { -brand-name } là công nghệ chiến đấu cho quyền riêng tư trực tuyến của bạn.

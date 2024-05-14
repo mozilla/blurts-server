@@ -2,32 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import ClientOAuth2 from 'client-oauth2'
 import crypto from 'crypto'
 import { URL } from 'url'
 
 import { InternalServerError } from '../utils/error.js'
 import AppConstants from '../appConstants.js'
-
-// This object exists instead of inlining the env vars to make it easy
-// to abstract fetching API endpoints from the OAuth server (instead
-// of specifying them in the environment) in the future.
-const FxAOAuthUtils = {
-  get authorizationUri() { return AppConstants.OAUTH_AUTHORIZATION_URI },
-  get tokenUri() { return AppConstants.OAUTH_TOKEN_URI },
-  // TODO: Add unit test when changing this code:
-  /* c8 ignore next */
-  get profileUri() { return AppConstants.OAUTH_PROFILE_URI }
-}
-
-const FxAOAuthClient = new ClientOAuth2({
-  clientId: AppConstants.OAUTH_CLIENT_ID,
-  clientSecret: AppConstants.OAUTH_CLIENT_SECRET,
-  accessTokenUri: FxAOAuthUtils.tokenUri,
-  authorizationUri: FxAOAuthUtils.authorizationUri,
-  redirectUri: AppConstants.SERVER_URL + '/oauth/confirmed',
-  scopes: ['profile']
-})
 
 /**
  * @param {string} path
@@ -56,23 +35,6 @@ async function postTokenRequest(path, token) {
       console.error('postTokenRequest', { stack: e.stack })
     }
     return e
-  }
-}
-/* c8 ignore stop */
-
-/**
- * @param {string} token
- */
-// TODO: Add unit test when changing this code:
-/* c8 ignore start */
-async function verifyOAuthToken(token) {
-  try {
-    const response = await postTokenRequest('/v1/verify', token)
-    return response
-  } catch (e) {
-    if (e instanceof Error) {
-      console.error('verifyOAuthToken', { stack: e.stack })
-    }
   }
 }
 /* c8 ignore stop */
@@ -110,50 +72,6 @@ async function revokeOAuthTokens(subscriber) {
   await destroyOAuthToken({ token: subscriber.fxa_access_token, token_type_hint: "access_token" })
   await destroyOAuthToken({ token: subscriber.fxa_refresh_token, token_type_hint: "refresh_token" })
 }
-
-/**
- * @param {any} accessToken
- */
-// TODO: Add unit test when changing this code:
-/* c8 ignore start */
-async function getProfileData(accessToken) {
-  try {
-    const response = await fetch(FxAOAuthUtils.profileUri, {
-      headers: { Authorization: `Bearer ${accessToken}` }
-    })
-    if (!response.ok) throw new InternalServerError(`bad response: ${response.status}`)
-    return await response.text()
-  } catch (e) {
-    if (e instanceof Error) {
-      console.warn('getProfileData', { stack: e.stack })
-    }
-    return e
-  }
-}
-/* c8 ignore stop */
-
-/**
- * @param {string} path
- */
-// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy 
-/* c8 ignore start */
-async function sendMetricsFlowPing(path) {
-  const fxaMetricsFlowUrl = new URL(path, AppConstants.NEXT_PUBLIC_FXA_SETTINGS_URL)
-  try {
-    const response = await fetch(fxaMetricsFlowUrl, {
-      headers: { Origin: AppConstants.SERVER_URL }
-    })
-    if (!response.ok) throw new InternalServerError(`bad response: ${response.status}`)
-    console.info('pinged FXA metrics flow.')
-    return response
-  } catch (e) {
-    if (e instanceof Error) {
-      console.error('sendMetricsFlowPing', { stack: e.stack })
-    }
-    return false
-  }
-}
-/* c8 ignore stop */
 
 /**
  * @param {string} bearerToken
@@ -236,12 +154,8 @@ function getSha1(email) {
 }
 
 export {
-  FxAOAuthClient,
-  verifyOAuthToken,
   destroyOAuthToken,
   revokeOAuthTokens,
-  getProfileData,
-  sendMetricsFlowPing,
   getSha1,
   getSubscriptions,
   deleteSubscription

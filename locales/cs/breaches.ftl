@@ -2,81 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-meta-title = { -brand-fx-monitor } - Nástěnka
-
 breach-all-meta-title = { -brand-fx-monitor } - Všechny úniky dat
 breach-all-meta-social-title = Všechny úniky dat detekované { -brand-fx-monitor(case: "ins") }
 breach-all-meta-social-description = Podívejte se na úplný seznam známých úniků údajů zjištěných službou { -brand-fx-monitor }. Následně zjistěte, zda nebyly vaše údaje odhaleny.
 
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } - Uniklá data společnosti { $company }
-# Variables:
-#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Dotýká se vás únik údajů společnosti { $company }?
 breach-detail-meta-social-description = Pomocí služby { -brand-fx-monitor } zjistíte, zda byly při tomto úniku odhaleny vaše osobní údaje a dozvíte se, co máte dělat dále.
 
-breach-scan-meta-title = { -brand-fx-monitor } - výsledky úniků údajů
-breach-scan-meta-social-title = { -brand-fx-monitor } - výsledky úniků údajů
-breach-scan-meta-social-description = Přihlaste se do služby { -brand-fx-monitor }, abyste vyřešili úniky údajů a získali nepřetržité monitorování všech nových známých úniků.
-
 ## Breaches header
-
-# Data classes pie chart title
-breach-chart-title = Uniklá data
-
-# $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = Únik dat pro { $email-select }
-
-# $count is the number of emails a user has added out of $total allowed
-emails-monitored =
-    { $total ->
-        [one] { $count } z { $total } sledovaných e-mailů
-        [few] { $count } ze { $total } sledovaných e-mailů
-        [many] { $count } z { $total } sledovaných e-mailů
-       *[other] { $count } z { $total } sledovaných e-mailů
-    }
-
-# link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = Spravovat e-mailové adresy
 
 ## Breaches resolved filter
 
-filter-label-unresolved = Nevyřešené úniky
-filter-label-resolved = Vyřešené úniky
-
 ## Breaches table
-
-column-company = SPOLEČNOST
-column-breached-data = ÚNIKLÁ DATA
-column-detected = ZJIŠTĚNO
-
-# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = Vyřešený
-# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = Aktivní
-
-breaches-resolve-heading = Vyřešit tento únik:
-
-breaches-none-headline = Nebyly nalezeny žádné úniky dat
-# Variables:
-#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
-breaches-none-copy = Dobré zprávy! Pro adresu { $email } nebyly hlášeny žádné známé úniky dat. Tuto adresu budeme nadále monitorovat a dojde-li k novému úniku dat, dáme vám vědět.
-breaches-none-cta-blurb = Chcete monitorovat další e-mailovou adresu?
-breaches-none-cta-button = Přidat e-mailové adresy
-
-breaches-all-resolved-headline = Všechny úniky dát byly vyřešeny
-# Variables:
-#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = Výborně! Vyřešili jste všechny úniky dat pro adresu { $email }. Tuto adresu budeme nadále monitorovat a dojde-li k novému úniku dat, dáme vám vědět.
-breaches-all-resolved-cta-blurb = Chcete monitorovat další e-mailovou adresu?
-breaches-all-resolved-cta-button = Přidat e-mailové adresy
-
-# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-# Variables:
-#   $breachDate (String) - Date of the breach
-#   $companyName (String) - Name of the company where the breach occurred
-breach-description = Dne { $breachDate } došlo k úniku dat společnosti { $companyName }. Jakmile byl únik objevený a ověřený, byl dne { $addedDate } přidán do naší databáze. Tento únik zahrnoval: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 

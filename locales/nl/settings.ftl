@@ -5,20 +5,23 @@
 
 # Settings page
 
-settings-meta-title = { -brand-fx-monitor } – Instellingen
 settings-page-title = { -product-short-name }-instellingen
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Voorkeuren voor datalekmeldingen
+settings-alert-email-preferences-title = E-mailvoorkeuren
+settings-alert-email-preferences-subtitle = Vertel ons welke e-mailberichten u wilt ontvangen.
+settings-alert-preferences-allow-breach-alerts-title = Directe waarschuwingen over datalekken
+settings-alert-preferences-allow-breach-alerts-subtitle = Deze waarschuwingen worden direct verzonden zodra een datalek wordt gedetecteerd
 settings-alert-preferences-option-one = Waarschuwingen over datalekken naar het getroffen e-mailadres sturen
 settings-alert-preferences-option-two = Alle waarschuwingen over datalekken naar het primaire e-mailadres sturen
+settings-alert-preferences-allow-monthly-monitor-report-title = Maandelijks { -brand-monitor }-rapport
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Een maandelijkse update van nieuwe lekken, wat is opgelost en wat uw aandacht nodig heeft.
 
 ## Monitored email addresses
 
 # Variables:
 #   $email (string) - Email address
-settings-email-label-primary = { $email } (primair)
 settings-email-list-title = Gemonitorde e-mailadressen
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,8 +33,6 @@ settings-email-limit-info =
 settings-email-verification-callout = E-mailverificatie vereist
 settings-resend-email-verification-link = Verificatie-e-mailbericht opnieuw versturen
 settings-add-email-button = E-mailadres toevoegen
-# Deprecated
-settings-delete-email-button = E-mailadres verwijderen
 settings-remove-email-button-label = Verwijderen
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
@@ -46,11 +47,6 @@ settings-email-number-of-breaches-info =
        *[other] Komt voor in { $breachCount } bekende datalekken.
     }
 
-## Cancel Premium subscription
-
-settings-cancel-premium-subscription-title = Abonnement op { -brand-premium } opzeggen
-settings-cancel-premium-subscription-info = Uw abonnement wordt teruggezet naar een gratis account nadat de huidige factureringscyclus is afgelopen. De resultaten van uw privacybeschermingsscan worden permanent verwijderd en u heeft datalekmonitoring voor slechts één e-mailadres.
-
 ## Deactivate account
 
 settings-deactivate-account-title = Account deactiveren
@@ -63,33 +59,8 @@ settings-delete-monitor-free-account-title = { -brand-monitor }-account verwijde
 settings-delete-monitor-free-account-description = Dit zal uw { -brand-monitor }-account voorgoed verwijderen en alle notificaties uitschakelen.
 settings-delete-monitor-free-account-cta-label = Account verwijderen
 settings-delete-monitor-free-account-dialog-title = Uw { -brand-monitor }-account wordt permanent verwijderd
-settings-delete-monitor-free-account-dialog-lead = Al uw { -brand-monitor }-accountgegevens worden verwijderd en we controleren niet meer op nieuwe datalekken. Dit zal uw { -brand-mozilla }-account niet verwijderen.
+settings-delete-monitor-free-account-dialog-lead-v2 = Al uw { -brand-monitor }-accountgegevens worden verwijderd en we controleren niet meer op nieuwe datalekken. Dit zal uw { -brand-mozilla-account } niet verwijderen.
 settings-delete-monitor-free-account-dialog-cta-label = Account verwijderen
 settings-delete-monitor-free-account-dialog-cancel-button-label = Laat maar zitten, breng me terug
-settings-delete-monitor-plus-account-title = { -brand-monitor }-account verwijderen
-settings-delete-monitor-plus-account-description = Hiermee wordt uw { -brand-monitor }-account voorgoed verwijderd en wordt uw betaalde { -brand-monitor-plus }-abonnement onmiddellijk beëindigd.
-settings-delete-monitor-plus-account-cta-label = Account verwijderen
-settings-delete-monitor-plus-account-dialog-title = Uw { -brand-monitor }-account wordt permanent verwijderd
-settings-delete-monitor-plus-account-dialog-lead-p1 = Al uw { -brand-monitor }-accountgegevens worden verwijderd en we controleren niet meer op nieuwe datalekken of lekken naar gegevenshandelaars. Dit zal uw { -brand-mozilla }-account niet verwijderen.
-settings-delete-monitor-plus-account-dialog-lead-p2 = Uw betaalde abonnement eindigt vandaag en de rest van uw abonnement wordt niet naar rato gefactureerd.
-settings-delete-monitor-plus-account-dialog-cta-label = Account verwijderen
-settings-delete-monitor-plus-account-dialog-cancel-button-label = Laat maar zitten, breng me terug
-settings-delete-monitor-account-confirmation-toast-label = Uw { -brand-monitor }-account is nu permanent verwijderd.
+settings-delete-monitor-account-confirmation-toast-label-2 = Uw { -brand-monitor }-account is nu verwijderd.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Sluiten
-
-## Add email dialog
-
-settings-email-dialog-title = Nog een e-mailadres toevoegen
-settings-add-email-text = Voeg een nieuw e-mailadres toe om te bekijken of het getroffen is door een datalek.
-settings-email-input-label = E-mailadres
-settings-send-email-verification-button = Verificatiekoppeling versturen
-
-## Unsubscribe Dialog Survey
-
-settings-unsubscribe-dialog-title = Het spijt ons dat u vertrekt. <br /> Kunt u ons vertellen waarom?
-settings-unsubscribe-dialog-info = Uw ervaring is belangrijk voor ons. We lezen elke reactie en nemen deze in overweging.
-settings-unsubscribe-dialog-message-placeholder = Wat had beter gekund?
-# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
-settings-unsubscribe-dialog-confirmation = Houd er rekening mee dat al uw { -brand-monitor-premium }-services <a { $faq_href }>permanent worden verwijderd</a> nadat uw huidige factureringscyclus is afgelopen.
-settings-unsubscribe-dialog-continue = Doorgaan met opzeggen
-settings-unsubscribe-dialog-cancel = Laat maar zitten, breng me terug

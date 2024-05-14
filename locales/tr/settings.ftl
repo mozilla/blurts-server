@@ -5,20 +5,22 @@
 
 # Settings page
 
-settings-meta-title = { -brand-fx-monitor } - Ayarlar
 settings-page-title = { -product-short-name } Ayarları
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = İhlal uyarısı tercihleri
+settings-alert-email-preferences-title = E-posta tercihleri
+settings-alert-email-preferences-subtitle = Ne tür e-postaları almak istediğinizi bize söyleyin.
+settings-alert-preferences-allow-breach-alerts-title = Anlık ihlal uyarıları
+settings-alert-preferences-allow-breach-alerts-subtitle = Bu uyarılar bir veri ihlali algılandığı anda hemen gönderilir.
 settings-alert-preferences-option-one = İhlal uyarılarını etkilenen e-posta adresine gönder
 settings-alert-preferences-option-two = Tüm ihlal uyarılarını birinci e-posta adresine gönder
+settings-alert-preferences-allow-monthly-monitor-report-title = Aylık { -brand-monitor } raporu
 
 ## Monitored email addresses
 
 # Variables:
 #   $email (string) - Email address
-settings-email-label-primary = { $email } (birinci)
 settings-email-list-title = İzlenen e-posta adresleri
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,8 +32,6 @@ settings-email-limit-info =
 settings-email-verification-callout = E-posta doğrulaması gerekiyor
 settings-resend-email-verification-link = Doğrulama e-postasını yeniden gönder
 settings-add-email-button = E-posta adresi ekle
-# Deprecated
-settings-delete-email-button = E-posta adresini sil
 settings-remove-email-button-label = Kaldır
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
@@ -46,10 +46,6 @@ settings-email-number-of-breaches-info =
        *[other] Bilinen { $breachCount } ihlalde yer alıyor.
     }
 
-## Cancel Premium subscription
-
-settings-cancel-premium-subscription-title = { -brand-premium } aboneliğini iptal et
-
 ## Deactivate account
 
 settings-deactivate-account-title = Hesabı devre dışı bırak
@@ -59,29 +55,11 @@ settings-fxa-link-label-3 = { -brand-mozilla-account } ayarlarına gidin
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = { -brand-monitor } hesabını sil
+settings-delete-monitor-free-account-description = Bu işlem { -brand-monitor } hesabınızı kalıcı olarak silecek ve tüm bildirimleri kapatacaktır.
 settings-delete-monitor-free-account-cta-label = Hesabı sil
 settings-delete-monitor-free-account-dialog-title = { -brand-monitor } hesabınız kalıcı olarak silinecektir
+settings-delete-monitor-free-account-dialog-lead-v2 = Tüm { -brand-monitor } hesap bilgileriniz silinecek ve artık yeni veri ihlalleri için izlenmeyecektir. Bu işlem { -brand-mozilla-account }nızı silmez.
 settings-delete-monitor-free-account-dialog-cta-label = Hesabı sil
 settings-delete-monitor-free-account-dialog-cancel-button-label = Vazgeçtim, geri dön
-settings-delete-monitor-plus-account-title = { -brand-monitor } hesabımı sil
-settings-delete-monitor-plus-account-cta-label = Hesabı sil
-settings-delete-monitor-plus-account-dialog-title = { -brand-monitor } hesabınız kalıcı olarak silinecektir
-settings-delete-monitor-plus-account-dialog-cta-label = Hesabı sil
-settings-delete-monitor-plus-account-dialog-cancel-button-label = Vazgeçtim, geri dön
-settings-delete-monitor-account-confirmation-toast-label = { -brand-monitor } hesabınız kalıcı olarak silindi.
+settings-delete-monitor-account-confirmation-toast-label-2 = { -brand-monitor } hesabınız silindi.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Kapat
-
-## Add email dialog
-
-settings-email-dialog-title = Başka bir e-posta adresi ekle
-settings-add-email-text = Bir ihlale karışıp karışmadığını görmek için yeni bir e-posta adresi ekleyin.
-settings-email-input-label = E-posta adresi
-settings-send-email-verification-button = Doğrulama bağlantısını gönder
-
-## Unsubscribe Dialog Survey
-
-settings-unsubscribe-dialog-title = Ayrılmanıza üzüldük. <br /> Neden ayrıldığınızı söylemek ister misiniz?
-settings-unsubscribe-dialog-info = Deneyiminiz bizim için önemli. Her yanıtı okuyup dikkate alıyoruz.
-settings-unsubscribe-dialog-message-placeholder = Neyi daha iyi yapabilirdik?
-settings-unsubscribe-dialog-continue = İptal işlemine devam et
-settings-unsubscribe-dialog-cancel = Vazgeçtim, geri dön

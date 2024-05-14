@@ -5,8 +5,8 @@
 fix-flow-nav-high-risk-data-breaches = Dataintrång med hög risk
 fix-flow-nav-leaked-passwords = Läckta lösenord
 fix-flow-nav-security-recommendations = Säkerhetsrekommendationer
+
 guided-resolution-flow-exit = Tillbaka till översikten
-guided-resolution-flow-back-arrow = Gå till föregående steg
 guided-resolution-flow-next-arrow = Gå till nästa steg
 guided-resolution-flow-step-navigation-label = Guidade steg
 

@@ -2,60 +2,11 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-scan-meta-social-title = { -brand-fx-monitor } 침해 결과
-breach-scan-meta-social-description = { -brand-fx-monitor }에 로그인하여 위반을 해결하고 새로운 위반에 대한 지속적인 모니터링을 받으십시오.
-
 ## Breaches header
-
-# Data classes pie chart title
-breach-chart-title = 유출된 데이터
-
-# $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = { $email-select }의 데이터 유출
-
-# $count is the number of emails a user has added out of $total allowed
-emails-monitored = { $total }개의 이메일 중 { $count }개의 이메일이 확인됨
-
-# link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = 이메일 관리
 
 ## Breaches resolved filter
 
-filter-label-unresolved = 해결되지 않은 유출
-filter-label-resolved = 해결된 유출
-
 ## Breaches table
-
-column-company = 회사
-column-breached-data = 유출된 정보
-column-detected = 감지됨
-
-# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = 해결됨
-# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = 활성화
-
-breaches-resolve-heading = 위반사항 해결:
-
-breaches-none-headline = 유출 사항 발견되지 않음
-# Variables:
-#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
-breaches-none-copy = 좋은 소식입니다! { $email }의 위반사항이 보고되지 않았습니다. 이 이메일을 계속 모니터링하고 새로운 위반이 발생하면 알려드리겠습니다.
-breaches-none-cta-blurb = 다른 이메일을 모니터링 하시겠습니까?
-breaches-none-cta-button = 이메일 주소 추가
-
-breaches-all-resolved-headline = 모든 위반 사항 해결됨
-# Variables:
-#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = 잘 하셨습니다! { $email }의 모든 위반 사항을 해결했습니다. 이 이메일을 모니터링하고 새로운 위반사항이 발생하면 알려드리겠습니다.
-breaches-all-resolved-cta-blurb = 다른 이메일을 모니터링 하시겠습니까?
-breaches-all-resolved-cta-button = 이메일 주소 추가
-
-# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-# Variables:
-#   $breachDate (String) - Date of the breach
-#   $companyName (String) - Name of the company where the breach occurred
-breach-description = { $breachDate }에 { $companyName } 회사가 유출되었습니다. 유출이 발견되고 확인되어 { $addedDate }에 우리의 데이터베이스에 추가 되었습니다. 다음에 포함됨: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 

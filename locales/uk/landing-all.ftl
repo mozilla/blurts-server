@@ -49,9 +49,9 @@ landing-all-social-proof-title =
 # $num_countries is the number of countries available.
 landing-all-social-proof-description =
     { $num_countries ->
-        [one] З 2018 року ми допомогли людям з { $num_countries } країни захистити їхні дані після їхнього розголошення.
-        [few] З 2018 року ми допомогли людям з { $num_countries } країн захистити їхні дані після їхнього розголошення.
-       *[many] З 2018 року ми допомогли людям з { $num_countries } країн захистити їхні дані після їхнього розголошення.
+        [one] З 2018 року ми допомогли людям з { $num_countries } країни захистити їхні дані після їх викриття.
+        [few] З 2018 року ми допомогли людям з { $num_countries } країн захистити їхні дані після їх викриття.
+       *[many] З 2018 року ми допомогли людям з { $num_countries } країн захистити їхні дані після їх викриття.
     }
 landing-all-social-proof-press = Про нас пишуть
 

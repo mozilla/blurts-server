@@ -2,64 +2,13 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-meta-title = { -brand-fx-monitor } - 仪表板
 breach-all-meta-title = { -brand-fx-monitor } - 所有数据泄露
-breach-all-meta-social-title = { -brand-fx-monitor } 检测到的所有泄漏事件
-breach-all-meta-social-description = 浏览 { -brand-fx-monitor } 检测到的已知泄漏事件的完整列表，然后查明您的信息是否已泄露。
-# Variables:
-#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } - { $company } 的数据泄露
+breach-all-meta-social-title = { -brand-fx-monitor } 检测到的所有外泄事件
+breach-all-meta-social-description = 浏览 { -brand-fx-monitor } 检测到的已知外泄事件的完整列表，然后查明您的信息是否已泄露。
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = 您是否受到 { $company } 数据泄露事件的影响？
 breach-detail-meta-social-description = 使用 { -brand-fx-monitor } 查明您的个人信息是否在此外泄事件中泄露，并了解下一步该怎么做。
-breach-scan-meta-title = { -brand-fx-monitor } - 数据泄漏结果
-breach-scan-meta-social-title = { -brand-fx-monitor } 数据泄漏结果
-breach-scan-meta-social-description = 登录 { -brand-fx-monitor } 以解决数据泄漏并持续监控任何新的已知数据泄漏事件。
-
-## Breaches header
-
-# Data classes pie chart title
-breach-chart-title = 外泄的数据
-# $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = { $email-select } 的数据外泄
-# $count is the number of emails a user has added out of $total allowed
-emails-monitored = 已监控 { $count } 个邮箱，共 { $total } 个邮箱
-# link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = 管理邮箱
-
-## Breaches resolved filter
-
-filter-label-unresolved = 未处理的数据外泄事件
-filter-label-resolved = 已处理的数据外泄事件
-
-## Breaches table
-
-column-company = 公司
-column-breached-data = 外泄的数据
-column-detected = 监测到
-# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = 已解决
-# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = 未完成任务
-breaches-resolve-heading = 处理此外泄事件
-breaches-none-headline = 未发现外泄
-# Variables:
-#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
-breaches-none-copy = 好消息！ { $email } 没有已知的外泄事件报告。我们将继续监控此邮箱地址，如果发生任何新的外泄事件，我们会通知您。
-breaches-none-cta-blurb = 您想监控另一个邮箱吗？
-breaches-none-cta-button = 添加邮箱地址
-breaches-all-resolved-headline = 所有数据泄漏均已解决
-# Variables:
-#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = 很好！您已解决 { $email } 的所有数据外泄问题。我们将继续监控此邮箱地址，如果发生任何新的数据外泄事件，我们会通知您。
-breaches-all-resolved-cta-blurb = 您想监控另一个邮箱吗？
-breaches-all-resolved-cta-button = 添加邮箱地址
-# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-# Variables:
-#   $breachDate (String) - Date of the breach
-#   $companyName (String) - Name of the company where the breach occurred
-breach-description = { $companyName } 在 { $breachDate } 遭遇了数据外泄。我们发现并确认了该外泄事件，并于 { $addedDate } 将其添加到数据库中。泄露的数据包括 { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 

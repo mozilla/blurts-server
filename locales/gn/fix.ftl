@@ -6,7 +6,6 @@ fix-flow-nav-high-risk-data-breaches = Mba’ekuaarã ñembyai oikokuaáva
 fix-flow-nav-leaked-passwords = Ñe’ẽñemi mboguapyre
 fix-flow-nav-security-recommendations = Ñemoñe’ẽ tekorosãrã
 guided-resolution-flow-exit = Eguevijey mba’erupápe
-guided-resolution-flow-back-arrow = Eho mboyveguávape
 guided-resolution-flow-next-arrow = Eho upeiguávape
 guided-resolution-flow-step-navigation-label = Jeguata ma’ẽgua
 
@@ -26,16 +25,21 @@ fix-flow-celebration-high-risk-description-in-progress = Ejapóvo ko tembiapo er
 fix-flow-celebration-high-risk-description-done = Ejapóvo ko tembiapo erekuaa hetaha, hákatu ejapomanteva’erã eime hag̃ua tekorosãme.
 fix-flow-celebration-high-risk-description-next-passwords = Ko’ág̃a ñamoĩporãta ne ñe’ẽñemi ivaikuaáva.
 fix-flow-celebration-high-risk-description-next-security-questions = Ko’ág̃a ñamoĩporãta umi porandu tekorosãrã ivaikuaáva.
+fix-flow-celebration-high-risk-description-next-security-recommendations = Ko’ág̃a guive, rome’ẽta ndéve tekorosãrã rape rohecha rire ne mba’ekuaarã oñembyaikuaahague.
+fix-flow-celebration-high-risk-description-next-dashboard = Eg̃uahẽma hu’ãitépe. Ikatu ehecha oimeraẽva mba’eporu tembiaporã ha ehapykueho nde jeku’e techamemeha rupápe.
 
 ## Leaked passwords and security questions flow
 
 fix-flow-celebration-leaked-passwords-title = ¡Ne ñe’ẽñemi ko’ág̃a oñemo’ãma!
 fix-flow-celebration-security-questions-title = ¡Ne porandu tekorosãrãva oñemo’ãma!
 fix-flow-celebration-leaked-passwords-description-next-security-questions = Ko’ág̃a jahecha ha ñambohekopyahúta umi porandu tekorosãrã ivaikuaáva.
+fix-flow-celebration-leaked-passwords-description-next-security-recommendations = Ko’ág̃a guive, rome’ẽta ndéve tekorosãrã rape rohecha rire ne mba’ekuaarã oñembyaikuaahague.
+fix-flow-celebration-leaked-passwords-description-next-dashboard = ¡Ejapo porã! Eg̃uahẽma hu’ãitépe. Ikatu ehecha oimeraẽva mba’eporu tembiaporã ha ehapykueho nde jeku’e techamemeha rupápe.
 
 ## Security recommendations flow
 
 fix-flow-celebration-security-recommendations-title = ¡Emyanyhẽmapa opaite ne ñemoñe’ẽporã!
+fix-flow-celebration-security-recommendations-description-next-dashboard = ¡Ejapo porã! Eg̃uahẽma hu’ãitépe. Ikatu ehecha oimeraẽva mba’eporu tembiaporã ha ehapykueho nde jeku’e techamemeha rupápe.
 
 # High Risk Data Breaches
 
@@ -67,6 +71,7 @@ high-risk-breach-estimated-time =
 # Credit Card Breaches
 
 high-risk-breach-credit-card-title = Nde kuatia’atã papapy ojehechakuaa
+high-risk-breach-credit-card-description = Oimeraẽva ohupytýva ojoguakuaa oñemoneĩ’ỹva ikatúva oñemboja nde rehe. Eku’e ko’ág̃a ehenonde’ã hag̃ua mba’evai viru reheguáva.
 high-risk-breach-credit-card-step-one = Erekóramo gueteri ko kuatia’atã, emombe’u ime’ẽhárape oñemondaha.
 high-risk-breach-credit-card-step-two = Ejerure kuatia’atã papapy pyahu reheve.
 high-risk-breach-credit-card-step-three = Ehechajey ne mba’ete oĩre tepyme’ẽrã nemba’e’ỹva.
@@ -74,6 +79,7 @@ high-risk-breach-credit-card-step-three = Ehechajey ne mba’ete oĩre tepyme’
 # Bank Account Breaches
 
 high-risk-breach-bank-account-title = Nde mba’ete banco pegua ojehechakuaa
+high-risk-breach-bank-account-description = Ehecháke pya’e mba’épa ikatúva ne mo’ã léi rovake nepytyvõtava eguerujey hag̃ua nemba’e kañyngue.
 high-risk-breach-bank-account-step-one = Emomarandu pya’eterei ne banco-pe ne mba’ete papapy ikatuháre ojeporu.
 high-risk-breach-bank-account-step-two = Emoambue ne mba’ete papapy
 high-risk-breach-bank-account-step-three = Ehechajey ne mba’ete oĩre tepyme’ẽrã nemba’e’ỹva.
@@ -94,6 +100,7 @@ ssn-modal-ok = MONEĨ
 # PIN Breaches
 
 high-risk-breach-pin-title = Nde PIN ojehechakuaákuri
+high-risk-breach-pin-description = Ehecháke pya’e mba’épa ikatúva ne mo’ã léi rovake nepytyvõtava eguerujey hag̃ua nemba’e kañyngue.
 high-risk-breach-pin-step-one = Emomarandu pya’e ne banco-pe ne mba’ete papapy ojeporukuaátarõ.
 high-risk-breach-pin-step-two = Emoambue ne PIN oimeraẽva tenda eiporuhaguépe.
 high-risk-breach-pin-step-three = Ehechajey ne mba’ete oĩre tepyme’ẽrã nemba’e’ỹva.
@@ -101,6 +108,9 @@ high-risk-breach-pin-step-three = Ehechajey ne mba’ete oĩre tepyme’ẽrã n
 # No high risk breaches found
 
 high-risk-breach-none-title = Marandu iporãva, ndorojuhúi mba’ekuaarã ñembogua ivaikuaáva
+# Variables
+# $email_list is list of emails that the user is monitoring for breaches. E.g. john@yahoo.com, ali@gmail.com, sam@hotmail.com
+high-risk-breach-none-description = Rohecha mba’ekuaarã ñembogua ne ñanduti veve rehegua, ha ndorojuhúi mba’ekuaarã ñembogua ivaikuaáva { $email_list }-pe g̃uarã.
 high-risk-breach-none-sub-description-part-one = Mba’ekuaarã ñembyai oikokuaávape oĩ:
 high-risk-breach-none-sub-description-ssn = Seguro social papapy
 high-risk-breach-none-sub-description-bank-account = Marandu mba’ete banco pegua
@@ -148,8 +158,8 @@ security-recommendation-ip-title = Eiporu VPN nde rekoñemiverã
 # $num_breaches is the number of breaches where the IP address was found.
 security-recommendation-ip-summary =
     { $num_breaches ->
-        [one] Ne IP kundaharenda ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
-       *[other] Ne IP kundaharenda ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
+        [one] Ne IP kundaharape ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
+       *[other] Ne IP kundaharape ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
     }
 
 # Leaked Passwords
@@ -189,3 +199,7 @@ leaked-security-questions-title = Ne porandu tekorosãrãva ojehechakakuaa
 leaked-security-questions-summary = Osẽ peteĩ mba’ekuaarã ñembogua { $breach_name }-pe { $breach_date }.
 leaked-security-questions-steps-title = Kóva pe rejapova’erã
 leaked-security-questions-steps-subtitle = Kóva oikotevẽ ne mba’etépe jeike, ikatuhápe emoĩporã nde poite rupive.
+# Variables
+# $breach_name is the name of the breach where the security questions were found.
+# $email_affected is the email associated with the breach.
+leaked-security-questions-step-one = Embohekopyahu ne porandu tekorosãrã <b>{ $email_affected }</b> peg̃uarã <link_to_breach_site>{ $breach_name }</link_to_breach_site>-pe.

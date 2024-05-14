@@ -86,6 +86,12 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
    npm run build-glean
    ```
 
+6. Generate required Nimbus files (needs re-ran anytime Nimbus' `config/nimbus.yaml` file is updated):
+
+   ```sh
+   npm run build-nimbus
+   ```
+
 ### Run
 
 1. To run the server similar to production using a build phase, which includes minified and bundled assets:
@@ -96,7 +102,7 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
 
    **_OR_**
 
-   Run in "dev mode", which loads unbundled client modules and uncompressed assets directly, and uses Nodemon to auto-restart the Express process when any server files change:
+   Run in "dev mode" with:
 
    ```sh
    npm run dev

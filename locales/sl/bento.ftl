@@ -9,5 +9,6 @@ toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } za namizja
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } za mobilne naprave
 toolbar-app-picker-by-mozilla = Izpod rok { -brand-mozilla(sklon: "rodilnik") }
+
 # Bento headline
 fx-makes-tech = { -brand-name } je tehnologija, ki se bori za vašo spletno zasebnost.

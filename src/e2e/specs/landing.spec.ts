@@ -201,6 +201,33 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     const successUrl = process.env.E2E_TEST_BASE_URL + "/user/welcome";
     expect(page.url()).toBe(successUrl);
   });
+
+  test('Verify the "Start free monitoring" button UI and functionality without existing account', async ({
+    landingPage,
+    page,
+    authPage,
+  }) => {
+    test.info().annotations.push(
+      {
+        type: "testrail id #1",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2463524",
+      },
+      {
+        type: "testrail id #2",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2463564",
+      },
+    );
+
+    await landingPage.startFreeMonitoringButton.click();
+
+    const randomEmail = `${Date.now()}_tstact@restmail.net`;
+    await authPage.signUp(randomEmail, page);
+
+    const successUrl = process.env.E2E_TEST_BASE_URL + "/user/welcome";
+    expect(page.url()).toBe(successUrl);
+  });
 });
 
 test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionality - with existing account`, () => {
@@ -228,6 +255,33 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     await page.waitForURL("**/oauth/**", { timeout: 120 * 1000 });
 
     // complete sign in form
+    await authPage.enterPassword();
+
+    // verify dashboard redirect
+    const successUrl =
+      process.env.E2E_TEST_BASE_URL +
+      `${
+        process.env.E2E_TEST_ENV === "local"
+          ? "/user/welcome"
+          : "/user/dashboard"
+      }`;
+    expect(page.url()).toBe(successUrl);
+  });
+
+  test('Verify the "Start free monitoring" button UI and functionality with existing account', async ({
+    landingPage,
+    page,
+    authPage,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463524",
+    });
+
+    await landingPage.startFreeMonitoringButton.click();
+
+    await authPage.enterEmail(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
     await authPage.enterPassword();
 
     // verify dashboard redirect

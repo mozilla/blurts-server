@@ -28,3 +28,20 @@ export async function changeSubscription(
   currentFxAProfile.subscriptions = subscriptions;
   await updateFxAProfileData(subscriber, JSON.stringify(currentFxAProfile));
 }
+
+/**
+ * See https://github.com/mozilla/fxa/blob/564949dfc69f0f675ebb4e5f267282c2546a5767/packages/fxa-profile-server/lib/routes/profile.js#L63-L77
+ */
+type FxaProfile = {
+  email?: string;
+  uid?: string;
+  avatar?: string;
+  avatarDefault?: boolean;
+  displayName?: string;
+  locale?: string;
+  amrValues?: string[];
+  twoFactorAuthentication?: boolean;
+  subscriptions?: string[];
+  metricsEnabled?: boolean;
+  sub?: string;
+};

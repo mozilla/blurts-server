@@ -3,11 +3,14 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
+
 landing-all-hero-title = Untdek wêr’t jo priveegegevens lekt binne – en nim se werom
 landing-all-hero-lead = Wy scanne datalekken om te sjen oft jo gegevens lekt binne en jouwe jo stappen om it op te lossen.
+
 landing-all-hero-emailform-input-placeholder = jonamme@example.com
 landing-all-hero-emailform-input-label = Fier jo e-mailadres yn om te kontrolearjen op datalekken.
 landing-all-hero-emailform-submit-label = Untfang in fergeze scan
+
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = lekken
 
@@ -61,5 +64,7 @@ landing-all-help-protect-you-feature-one = Wy gean foar jo op syk yn alle bekend
 landing-all-help-protect-you-feature-two = Wy liede jo troch de stappen om elk lek op te lossen
 landing-all-help-protect-you-feature-three = Wy kontrolearje hieltyd en stjoere jo warskôgingen by nije lekken
 landing-all-help-protect-you-cta = Ynskriuwe foar warskôgingen oer datalekken
+
 landing-all-get-started = Scan jo e-mailadres om te begjinnen
 landing-all-take-back-data = Nim jo gegevens wer ûnder kontrôle.
+

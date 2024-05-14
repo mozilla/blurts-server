@@ -9,5 +9,6 @@ toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } i uselkim
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } i uziraz
 toolbar-app-picker-by-mozilla = Texdem-it { -brand-mozilla }
+
 # Bento headline
 fx-makes-tech = { -brand-name } d tatiknulijit yettennaɣen ɣef tbaḍnit-ik srid.

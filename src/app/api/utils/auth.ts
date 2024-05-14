@@ -16,10 +16,14 @@ import { addSubscriber } from "../../../db/tables/emailAddresses.js";
 import { getBreaches } from "../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../utils/hibp.js";
 import { getSha1 } from "../../../utils/fxa.js";
-import { getEmailCtaHref, initEmail, sendEmail } from "../../../utils/email.js";
-import { getTemplate } from "../../../views/emails/email2022.js";
-import { signupReportEmailPartial } from "../../../views/emails/emailSignupReport.js";
-import { getL10n } from "../../functions/server/l10n";
+import {
+  getEmailCtaDashboardHref,
+  initEmail,
+  sendEmail,
+} from "../../../utils/email.js";
+import { getTemplate } from "../../../emails/email2022.js";
+import { signupReportEmailPartial } from "../../../emails/emailSignupReport.js";
+import { getL10n } from "../../functions/l10n/serverComponents";
 import { OAuthConfig } from "next-auth/providers/oauth.js";
 import { SerializedSubscriber } from "../../../next-auth.js";
 
@@ -161,7 +165,10 @@ export const authOptions: AuthOptions = {
 
           const data = {
             breachedEmail: profile.email,
-            ctaHref: getEmailCtaHref(utmCampaignId, "dashboard-cta"),
+            ctaHref: getEmailCtaDashboardHref({
+              emailType: utmCampaignId,
+              content: "dashboard-cta",
+            }),
             heading: "email-breach-summary",
             recipientEmail: profile.email,
             subscriberId: verifiedSubscriber,

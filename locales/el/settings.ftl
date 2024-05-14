@@ -5,20 +5,23 @@
 
 # Settings page
 
-settings-meta-title = { -brand-fx-monitor } - Ρυθμίσεις
 settings-page-title = Ρυθμίσεις { -product-short-name }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Προτιμήσεις ειδοποιήσεων παραβιάσεων
+settings-alert-email-preferences-title = Προτιμήσεις email
+settings-alert-email-preferences-subtitle = Πείτε μας ποια email θέλετε να λαμβάνετε.
+settings-alert-preferences-allow-breach-alerts-title = Άμεσες ειδοποιήσεις παραβιάσεων
+settings-alert-preferences-allow-breach-alerts-subtitle = Αυτές οι ειδοποιήσεις αποστέλλονται αμέσως μόλις ανιχνευθεί παραβίαση δεδομένων
 settings-alert-preferences-option-one = Αποστολή ειδοποιήσεων παραβίασης στην επηρεασμένη διεύθυνση email
 settings-alert-preferences-option-two = Αποστολή όλων των ειδοποιήσεων παραβιάσεων στην κύρια διεύθυνση email
+settings-alert-preferences-allow-monthly-monitor-report-title = Μηνιαία αναφορά { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Μια μηνιαία ενημέρωση για τις νέες εκθέσεις, το τι έχει διορθωθεί και τι χρειάζεται την προσοχή σας.
 
 ## Monitored email addresses
 
 # Variables:
 #   $email (string) - Email address
-settings-email-label-primary = { $email } (κύριο)
 settings-email-list-title = Διευθύνσεις email σε εποπτεία
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -30,8 +33,6 @@ settings-email-limit-info =
 settings-email-verification-callout = Απαιτείται επαλήθευση email
 settings-resend-email-verification-link = Εκ νέου αποστολή email επαλήθευσης
 settings-add-email-button = Προσθήκη διεύθυνσης email
-# Deprecated
-settings-delete-email-button = Διαγραφή διεύθυνσης email
 settings-remove-email-button-label = Αφαίρεση
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
@@ -46,11 +47,6 @@ settings-email-number-of-breaches-info =
        *[other] Εμφανίζεται σε { $breachCount } γνωστές παραβιάσεις.
     }
 
-## Cancel Premium subscription
-
-settings-cancel-premium-subscription-title = Ακύρωση συνδρομής { -brand-premium }
-settings-cancel-premium-subscription-info = Η συνδρομή σας θα μετατραπεί σε δωρεάν λογαριασμό μετά το πέρας του τρέχοντος κύκλου χρέωσης. Τα αποτελέσματα της σάρωσης προστασίας απορρήτου θα διαγραφούν οριστικά και θα έχετε την εποπτεία μόνο 1 διεύθυνσης email για παραβιάσεις δεδομένων.
-
 ## Deactivate account
 
 settings-deactivate-account-title = Απενεργοποίηση λογαριασμού
@@ -63,33 +59,8 @@ settings-delete-monitor-free-account-title = Διαγραφή λογαριασμ
 settings-delete-monitor-free-account-description = Αυτή η ενέργεια θα διαγράψει οριστικά τον λογαριασμό σας στο { -brand-monitor } και θα απενεργοποιήσει όλες τις ειδοποιήσεις.
 settings-delete-monitor-free-account-cta-label = Διαγραφή λογαριασμού
 settings-delete-monitor-free-account-dialog-title = Ο λογαριασμός σας στο { -brand-monitor } θα διαγραφεί οριστικά
-settings-delete-monitor-free-account-dialog-lead = Όλες οι πληροφορίες του λογαριασμού σας στο { -brand-monitor } θα διαγραφούν και δεν θα εποπτεύουμε πλέον για νέες παραβιάσεις δεδομένων. Αυτή η ενέργεια δεν θα διαγράψει τον λογαριασμό σας στη { -brand-mozilla }.
+settings-delete-monitor-free-account-dialog-lead-v2 = Όλες οι πληροφορίες του λογαριασμού σας στο { -brand-monitor } θα διαγραφούν και δεν θα γίνεται πλέον εποπτεία για νέες παραβιάσεις δεδομένων. Αυτή η ενέργεια δεν θα διαγράψει τον { -brand-mozilla-account(case: "acc", capitalization: "lower") } σας.
 settings-delete-monitor-free-account-dialog-cta-label = Διαγραφή λογαριασμού
 settings-delete-monitor-free-account-dialog-cancel-button-label = Άλλαξα γνώμη, θέλω να επιστρέψω
-settings-delete-monitor-plus-account-title = Διαγραφή λογαριασμού { -brand-monitor }
-settings-delete-monitor-plus-account-description = Αυτή η ενέργεια θα διαγράψει οριστικά τον λογαριασμό σας στο { -brand-monitor } και θα τερματίσει άμεσα την επί πληρωμή συνδρομή σας στο { -brand-monitor-plus }.
-settings-delete-monitor-plus-account-cta-label = Διαγραφή λογαριασμού
-settings-delete-monitor-plus-account-dialog-title = Ο λογαριασμός σας στο { -brand-monitor } θα διαγραφεί οριστικά
-settings-delete-monitor-plus-account-dialog-lead-p1 = Όλες οι πληροφορίες του λογαριασμού σας στο { -brand-monitor } θα διαγραφούν και δεν θα εποπτεύουμε πλέον για νέες παραβιάσεις δεδομένων ή εκθέσεις σε εμπόρους δεδομένων. Αυτή η ενέργεια δεν θα διαγράψει τον λογαριασμό σας στη { -brand-mozilla }.
-settings-delete-monitor-plus-account-dialog-lead-p2 = Η επί πληρωμή συνδρομή σας θα λήξει σήμερα και δεν θα λάβετε αναλογική επιστροφή χρημάτων για το υπόλοιπο της συνδρομής σας.
-settings-delete-monitor-plus-account-dialog-cta-label = Διαγραφή λογαριασμού
-settings-delete-monitor-plus-account-dialog-cancel-button-label = Άλλαξα γνώμη, θέλω να επιστρέψω
-settings-delete-monitor-account-confirmation-toast-label = Ο λογαριασμός σας στο { -brand-monitor } έχει πλέον διαγραφεί οριστικά.
+settings-delete-monitor-account-confirmation-toast-label-2 = Ο λογαριασμός σας στο { -brand-monitor } έχει πλέον διαγραφεί.
 settings-delete-monitor-account-confirmation-toast-dismiss-label = Απόρριψη
-
-## Add email dialog
-
-settings-email-dialog-title = Προσθήκη άλλης διεύθυνσης email
-settings-add-email-text = Προσθέστε μια νέα διεύθυνση email για να δείτε εάν έχει εμπλακεί σε παραβίαση.
-settings-email-input-label = Διεύθυνση email
-settings-send-email-verification-button = Αποστολή συνδέσμου επαλήθευσης
-
-## Unsubscribe Dialog Survey
-
-settings-unsubscribe-dialog-title = Λυπούμαστε που φεύγετε. <br /> Θέλετε να μας πείτε γιατί φεύγετε;
-settings-unsubscribe-dialog-info = Η εμπειρία σας είναι σημαντική για εμάς. Διαβάζουμε κάθε απάντηση και τη λαμβάνουμε υπόψη.
-settings-unsubscribe-dialog-message-placeholder = Τι θα μπορούσε να είχε πάει καλύτερα;
-# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
-settings-unsubscribe-dialog-confirmation = Παρακαλούμε σημειώστε ότι όλες οι υπηρεσίες σας στο { -brand-monitor-premium } <a { $faq_href }>θα διαγραφούν οριστικά</a> μετά το πέρας του τρέχοντος κύκλου χρέωσής σας.
-settings-unsubscribe-dialog-continue = Συνέχεια στην ακύρωση
-settings-unsubscribe-dialog-cancel = Άλλαξα γνώμη, θέλω να επιστρέψω

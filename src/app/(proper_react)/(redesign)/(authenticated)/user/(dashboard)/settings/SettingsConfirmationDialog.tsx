@@ -15,6 +15,7 @@ import {
   Props as DialogProps,
 } from "../../../../../../components/client/dialog/Dialog";
 import { Button } from "../../../../../../components/client/Button";
+import { TelemetryButton } from "../../../../../../components/client/TelemetryButton";
 
 export type Props = {
   triggerLabel: string;
@@ -41,13 +42,20 @@ export const SettingsConfirmationDialog = (props: Props) => {
 
   return (
     <>
-      <Button
+      <TelemetryButton
+        event={{
+          module: "popup",
+          name: "exit",
+          data: {
+            popup_id: "never_mind_take_me_back",
+          },
+        }}
         variant="tertiary"
         onPress={() => dialogState.open()}
         className={styles.trigger}
       >
         {props.triggerLabel}
-      </Button>
+      </TelemetryButton>
       {dialogState.isOpen && (
         <ModalOverlay
           state={dialogState}

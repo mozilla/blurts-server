@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = Υπόλοιπα λογαριασμών
@@ -14,7 +19,7 @@ avatars = Εικόνες προφίλ
 bank-account-numbers = Αριθμοί τραπεζικών λογαριασμών
 beauty-ratings = Αξιολογήσεις ομορφιάς
 biometric-data = Βιομετρικά δεδομένα
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Βιογραφικά
 browser-user-agent-details = Λεπτομέρειες παράγοντα χρήστη προγράμματος περιήγησης
@@ -25,6 +30,7 @@ career-levels = Επίπεδα καριέρας
 cellular-network-names = Ονόματα δικτύων κινητής τηλεφωνίας
 charitable-donations = Φιλανθρωπικές δωρεές
 chat-logs = Αρχεία συνομιλιών
+citizenship-statuses = Καταστάσεις ιθαγένειας
 clothing-sizes = Μεγέθη ρούχων
 credit-card-cvv = CVV πιστωτικής κάρτας
 credit-cards = Πιστωτικές κάρτες
@@ -35,7 +41,7 @@ customer-interactions = Αλληλεπιδράσεις πελάτη
 dates-of-birth = Ημερομηνίες γέννησης
 deceased-date = Ημερομηνία θανάτου
 deceased-statuses = Καταστάσεις θανάτου
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Οδηγίες παράδοσης
 device-information = Πληροφορίες συσκευής
@@ -75,7 +81,7 @@ instant-messenger-identities = Ταυτότητες άμεσης ανταλλα�
 ip-addresses = Διευθύνσεις IP
 job-applications = Αιτήσεις εργασίας
 job-titles = Τίτλοι επαγγελμάτων
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Πινακίδες οχημάτων
 living-costs = Έξοδα διαβίωσης
 # This string refers to financial loans.

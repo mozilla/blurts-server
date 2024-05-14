@@ -83,7 +83,7 @@ declare module "knex/types/tables" {
     created_at: Date;
     updated_at: Date;
     fx_newsletter: boolean;
-    signup_language: string;
+    signup_language: null | string;
     fxa_refresh_token: null | string;
     fxa_access_token: null | string;
     fxa_profile_json: null | Profile;
@@ -91,7 +91,8 @@ declare module "knex/types/tables" {
     // TODO: Find unknown type
     // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     breaches_last_shown: null | unknown;
-    all_emails_to_primary: boolean;
+    // NOTE: this field is inherited from an older version of the product, it only applies to instant alerts
+    all_emails_to_primary: boolean | null; // added  null in MNTOR-1368
     // TODO: Find unknown type
     // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     breaches_resolved: null | unknown;
@@ -107,12 +108,8 @@ declare module "knex/types/tables" {
       };
       monitoredEmails: { count: number };
     };
-    // TODO: Find unknown type
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-    monthly_email_at: null | unknown;
-    // TODO: Find unknown type
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-    monthly_email_optout: null | unknown;
+    monthly_monitor_report_at: null | Date;
+    monthly_monitor_report: boolean;
     breach_resolution:
       | null
       | ({
@@ -149,8 +146,8 @@ declare module "knex/types/tables" {
     | "breaches_resolved"
     | "waitlists_joined"
     | "breach_stats"
-    | "monthly_email_at"
-    | "monthly_email_optout"
+    | "monthly_monitor_report_at"
+    | "monthly_monitor_report"
     | "breach_resolution"
     | "db_migration_1"
     | "db_migration_2"
@@ -265,7 +262,9 @@ declare module "knex/types/tables" {
   interface OnerepProfileRow {
     id: number;
     onerep_profile_id: null | number;
+    name_suffix: null | string;
     first_name: string;
+    middle_name: null | string;
     last_name: string;
     city_name: string;
     state_code: StateAbbr;

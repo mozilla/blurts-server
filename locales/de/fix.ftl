@@ -5,8 +5,8 @@
 fix-flow-nav-high-risk-data-breaches = Datenlecks mit hohem Risiko
 fix-flow-nav-leaked-passwords = Offengelegte Passwörter
 fix-flow-nav-security-recommendations = Sicherheitsempfehlungen
+
 guided-resolution-flow-exit = Zurück zur Übersicht
-guided-resolution-flow-back-arrow = Zum vorherigen Schritt gehen
 guided-resolution-flow-next-arrow = Zum nächsten Schritt gehen
 guided-resolution-flow-step-navigation-label = Schritt-für-Schritt-Anleitung
 

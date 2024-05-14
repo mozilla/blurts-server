@@ -25,6 +25,7 @@ import Meta, {
   LandingUs,
   LandingUsScanLimit,
 } from "./LandingView.stories";
+import { deleteAllCookies } from "../../../functions/client/deleteAllCookies";
 
 jest.mock("next-auth/react", () => {
   return {
@@ -43,13 +44,8 @@ beforeEach(() => {
   const mockedUseSession = useSession as jest.Mock;
   mockedUseSession.mockReturnValue({});
 
-  // Delete all cookies, to make the rebrand announcement banner show up by
-  // default (I hate the document.cookie API ¬_¬):
-  const cookieParts = document.cookie.split(";");
-  const cookieNames = cookieParts.map((part) => part.split("=")[0]);
-  cookieNames.forEach((cookieName) => {
-    document.cookie = `${cookieName}=; Thu, 01 Jan 1970 00:00:00 GMT`;
-  });
+  // Make the rebrand announcement banner show up by default
+  deleteAllCookies();
 });
 
 describe("When Premium is not available", () => {
@@ -277,7 +273,7 @@ describe("When Premium is available", () => {
     expect(queryByRole(pricingTable, "dialog")).not.toBeInTheDocument();
 
     const moreInfoButton = getAllByRole(pricingTable, "button", {
-      name: "More info",
+      name: "Open tooltip",
     })[0];
     await user.click(moreInfoButton);
 
@@ -818,7 +814,7 @@ it("shows a confirmaton message if the user has just deleted their account", () 
 
   const alert = screen.getByRole("alert");
   const confirmationMessage = within(alert).getByText(
-    "Your ⁨Monitor⁩ account is now permanently deleted.",
+    "Your ⁨Monitor⁩ account is now deleted.",
   );
 
   expect(alert).toBeInTheDocument();

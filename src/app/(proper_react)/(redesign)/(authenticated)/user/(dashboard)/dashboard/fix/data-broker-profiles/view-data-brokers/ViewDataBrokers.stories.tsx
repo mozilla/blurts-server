@@ -10,7 +10,7 @@ import {
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../../Shell";
-import { getOneL10nSync } from "../../../../../../../../../functions/server/mockL10n";
+import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
 import { LatestOnerepScanData } from "../../../../../../../../../../db/tables/onerep_scans";
 
 const brokerOptions = {
@@ -91,7 +91,7 @@ const ViewWrapper = (props: ViewWrapperProps) => {
     expires: new Date().toISOString(),
     user: user,
   };
-  const l10n = getOneL10nSync();
+  const l10n = getL10n();
 
   return (
     <Shell l10n={l10n} session={mockedSession} nonce="">

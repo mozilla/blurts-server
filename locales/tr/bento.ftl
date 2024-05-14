@@ -9,5 +9,6 @@ toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = Bilgisayarlar için { -brand-firefox }
 toolbar-app-picker-product-fx-mobile = Mobil cihazlar için { -brand-firefox }
 toolbar-app-picker-by-mozilla = { -brand-mozilla } güvencesiyle
+
 # Bento headline
 fx-makes-tech = { -brand-name } çevrimiçi gizliliğiniz için savaşır.

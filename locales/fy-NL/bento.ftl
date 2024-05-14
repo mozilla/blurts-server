@@ -9,5 +9,6 @@ toolbar-app-picker-product-pocket = { -brand-pocket }
 toolbar-app-picker-product-fx-desktop = { -brand-firefox } foar desktop
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } foar mobyl
 toolbar-app-picker-by-mozilla = Makke troch { -brand-mozilla }
+
 # Bento headline
 fx-makes-tech = { -brand-name } is in technology dy’t fjochtet foar jo online privacy.

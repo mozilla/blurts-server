@@ -1,3 +1,7 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
@@ -7,11 +11,6 @@
 -product-name-relay = Firefox Relay
 # Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
-
-# A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
-firefox-monitor-report = { -product-name }-rapport
-report-date = Rapportdatum:
-email-address = E-mailadres:
 
 # A link to legal information about mozilla products.
 legal = Juridisch
@@ -27,36 +26,14 @@ email-footer-blurb =
     U ontvangt dit e-mailbericht omdat u zich hebt aangemeld voor { -product-name }-waarschuwingen.
     Wilt u deze e-mailberichten niet meer ontvangen? { $unsubLink }. Dit is een geautomatiseerd e-mailbericht. Ga voor ondersteuning naar { $faqLink }.
 
-# This string appears in the footer of verification emails. { $faqLink } is a link
-# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-verify-footer-copy =
-    U ontvangt dit e-mailbericht omdat u zich hebt aangemeld voor { -product-name }-waarschuwingen.
-    Dit is een geautomatiseerd e-mailbericht. Ga voor ondersteuning naar { $faqLink }.
-
 # Button text
 verify-email-cta = E-mailadres verifiëren
 
-# Button text
-see-all-breaches = Alle datalekken bekijken
-
 # Headline of verification email
 email-link-expires = Deze koppeling verloopt over 24 uur
-email-verify-blurb = Verifieer uw e-mailadres om deze toe te voegen aan { -product-name } en meld u aan voor datalekmeldingen.
-
-# Email headline
-email-found-breaches-hl = Hierbij een overzicht van eerdere datalekken
 
 ## Variables:
 ##   $userEmail (string) - User email address
-
-# Email headline
-email-breach-summary-for-email = Datalekoverzicht voor { $userEmail }
-
-# Email headline
-email-no-breaches-hl = { $userEmail } is in 0 bekende datalekken verschenen
-
-# Email headline
-email-alert-hl = { $userEmail } is in een bekend datalek verschenen
 
 ##
 
@@ -69,31 +46,16 @@ email-subject-no-breaches = { -product-name } heeft geen bekende datalekken gevo
 # Subject line of email
 email-subject-verify = Verifieer uw e-mailadres voor { -product-name }
 
-# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
-learn-more-about-fxm = Meer info over { $fxmLink }
-
-email-sensitive-disclaimer =
-    Vanwege de gevoelige aard van dit datalek, zijn de e-mailberichten die hierbij betrokken zijn niet publiekelijk vindbaar.
-    U ontvangt deze melding omdat u de geverifieerde eigenaar van dit e-mailadres bent.
-
 fxm-warns-you-no-breaches =
     { -product-name } waarschuwt u voor datalekken met betrekking tot uw persoonlijke gegevens.
     Tot nu toe zijn er geen datalekken gevonden. We sturen u een melding als uw e-mailadres wordt weergegeven in een nieuw datalek.
-
-fxm-warns-you-found-breaches =
-    { -product-name } waarschuwt u voor datalekken met betrekking tot uw persoonlijke gegevens.
-    U bent ook aangemeld om meldingen te ontvangen als uw e-mailadres wordt weergegeven in een nieuw datalek.
 
 email-breach-alert-blurb =
     { -product-name } waarschuwt u voor datalekken met betrekking tot uw persoonlijke gegevens.
     We hebben zojuist informatie ontvangen over een datalek van een ander bedrijf.
 
-# Section headline
-monitor-another-email = Wilt u een ander e-mailadres volgen?
-
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
-email-2022-unsubscribe = U ontvangt dit automatische e-mailbericht als abonnee van { -product-name }. <br>Voel u vrij om uw e-mailvoorkeuren op elk moment <a { $unsubscribe-link-attr }>hier</a> te wijzigen.
 # Have I Been Pwned attribution
 email-2022-hibp-attribution = Datalek aangeleverd door <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
@@ -132,10 +94,8 @@ email-verify-simply-click = Klik op de onderstaande koppeling om de verificatie 
 
 email-breach-summary = Hier is uw samenvatting van uw datalek
 email-breach-detected = Zoekresultaten voor uw account { $email-address } hebben gedetecteerd dat uw e-mailadres mogelijk is gelekt. We raden u aan nu actie te ondernemen om dit datalek op te lossen.
-email-no-breach-detected = Geweldig nieuws! We hebben geen datalekken gevonden die van invloed zijn op uw e-mailadres, { $email-address }.
 email-dashboard-cta = Naar het dashboard
 
 ## Breach alert
 
-email-may-have-been-exposed = Uw e-mailadres is mogelijk gelekt bij een datalek
 email-spotted-new-breach = We hebben een nieuw datalek ontdekt

@@ -2,80 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-meta-title = { -brand-fx-monitor } - Mba’erupa
-
 breach-all-meta-title = { -brand-fx-monitor } - Opaite mba’ekuaarã ñembogua
 breach-all-meta-social-title = Opaite ñembogua ohecháva { -brand-fx-monitor }
 breach-all-meta-social-description = Ehapykueho { -brand-fx-monitor } ñemboguakuaa rysýi ojehechakuaáva, upéi ehecha ne marandúpa oñemboguakuaápara’e.
 
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } - { $company } Mba’ekuaarã Ñembogua
-# Variables:
-#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = ¿Ne myangekói { $company } mba’ekuaarã ñembogua?
 breach-detail-meta-social-description = Eiporu { -brand-fx-monitor } eikuaa hag̃ua ne maranduetépa oñemboguakuaára’e ha péicha rupi eikuaa mba’etépa ejapóta.
 
-breach-scan-meta-title = { -brand-fx-monitor } - Ñembogua Rehegua
-breach-scan-meta-social-title = { -brand-fx-monitor } - Ñembogua Rehegua
-breach-scan-meta-social-description = Eñepyrũ tembiapo { -brand-fx-monitor } ndive emoĩporã hag̃ua ñembogua ha ereko jehechameme ñembogua pyahu rovake.
-
 ## Breaches header
-
-# Data classes pie chart title
-breach-chart-title = Mba’ekuaarã mboguapyre
-
-# $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = Mba’ekuaarã ñembogua { $email-select } peg̃uarã
-
-# $count is the number of emails a user has added out of $total allowed
-emails-monitored =
-    { $total ->
-        [one] { $count } { $total } ñanduti veve jehechapyre
-        [many] { $count } { $total } ñanduti veve jehechapyre
-       *[other] { $count } { $total } ñanduti veve jehechapyre
-    }
-
-# link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = Eñangareko ñanduti vevére
 
 ## Breaches resolved filter
 
-filter-label-unresolved = Ñembogua oĩporã’ỹva
-filter-label-resolved = Ñembogua moĩporãmbyre
-
 ## Breaches table
-
-column-company = MBA’APOHAGUASU
-column-breached-data = MBA’EKUAARÃ MBOGUAPYRE
-column-detected = HECHAPYRE
-
-# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = Japopáma
-# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = Hendýva
-
-breaches-resolve-heading = Emoĩporã ko ñembogua:
-
-breaches-none-headline = Ndojejuhúi ñembogua
-# Variables:
-#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
-breaches-none-copy = ¡Marandu iporãva! Ndaipóri ñembogua ojehecháva oñemomarandúva { $email }-pe. Rohecháta ko ñanduti veve ha roikuaaukáta osẽramo ñembogua pyahu.
-breaches-none-cta-blurb = ¿Ehechamemese ambue ñanduti veve?
-breaches-none-cta-button = Embojuaju ñanduti veve kundaharape
-
-breaches-all-resolved-headline = Opaite umi ñembogua oĩporãma
-# Variables:
-#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = ¡Ejapoporã! Emoĩporãma opaite ñembogua { $email }-pe g̃uarã. Rohecháta ko ñanduti veve ha roikuaaukáta ndéve osẽramo ñembogua ipyahúva.
-breaches-all-resolved-cta-blurb = ¿Ehechamemesépa ambue ñanduti veve?
-breaches-all-resolved-cta-button = Embojuaju ñanduti veve kundaharape
-
-# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-# Variables:
-#   $breachDate (String) - Date of the breach
-#   $companyName (String) - Name of the company where the breach occurred
-breach-description = Ko { $breachDate }, { $companyName } oñembogua. Ojejuhu rire ha ojehechajey pe ñembogua, rombojuajúma ore mba’ekuaarã rendápe { $addedDate }. Ko ñembogua ogueroike: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 

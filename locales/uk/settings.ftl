@@ -5,35 +5,36 @@
 
 # Settings page
 
-settings-meta-title = { -brand-fx-monitor } - Налаштування
 settings-page-title = Налаштування { -product-short-name }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Налатування попереджень про витоки
+settings-alert-email-preferences-title = Налаштування електронної пошти
+settings-alert-email-preferences-subtitle = Вкажіть, які листи ви хочете отримувати.
+settings-alert-preferences-allow-breach-alerts-title = Миттєві сповіщення
+settings-alert-preferences-allow-breach-alerts-subtitle = Ці сповіщення надсилаються одразу після виявлення витоку даних
 settings-alert-preferences-option-one = Надсилати сповіщення про витоки даних на відповідні адреси електронної пошти
 settings-alert-preferences-option-two = Надсилати попередження про всі витоки на основну адресу електронної пошти
+settings-alert-preferences-allow-monthly-monitor-report-title = Щомісячний звіт { -brand-monitor }
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Щомісячне оновлення про витоки даних, виправлені проблеми, а також інформацію про необхідні дії.
 
 ## Monitored email addresses
 
 # Variables:
 #   $email (string) - Email address
-settings-email-label-primary = { $email } (основна)
 settings-email-list-title = Відстежувані адреси електронної пошти
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
 settings-email-limit-info =
     { $limit ->
-        [one] Ваш обліковий запис включає моніторинг { $limit } адреси електронної пошти.
-        [few] Ваш обліковий запис включає моніторинг до { $limit } адрес електронної пошти.
-        [many] Ваш обліковий запис включає моніторинг до { $limit } адрес електронної пошти.
-       *[other] Ваш обліковий запис включає моніторинг { $limit } адрес електронної пошти.
+        [one] Ви можете відстежувати { $limit } адресу електронної пошти.
+        [few] Ви можете відстежувати до { $limit } адрес електронної пошти.
+        [many] Ви можете відстежувати до { $limit } адрес електронної пошти.
+       *[other] Ви можете відстежувати до { $limit } адрес електронної пошти.
     }
 settings-email-verification-callout = Необхідне підтвердження електронної пошти
 settings-resend-email-verification-link = Надіслати лист підтвердження ще раз
 settings-add-email-button = Додати адресу електронної пошти
-# Deprecated
-settings-delete-email-button = Видалити адресу е-пошти
 settings-remove-email-button-label = Вилучити
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
@@ -50,30 +51,20 @@ settings-email-number-of-breaches-info =
        *[other] З'являється в { $breachCount } відомих витоках даних.
     }
 
-## Cancel Premium subscription
-
-settings-cancel-premium-subscription-title = Скасувати передплату { -brand-premium }
-settings-cancel-premium-subscription-info = Ваша передплата скасується і після завершення платіжного періоду ви перейдете на безплатний обліковий запис. Ваші результати сканування захисту приватності будуть остаточно видалені й у вас залишиться лише відстеження витоків даних для однієї адреси е-пошти.
-
 ## Deactivate account
 
 settings-deactivate-account-title = Деактивувати обліковий запис
 settings-deactivate-account-info-2 = Ви можете деактивувати { -product-short-name }, видаливши свій { -brand-mozilla-account }.
 settings-fxa-link-label-3 = Перейти до налаштувань { -brand-mozilla-account(case: "gen") }
 
-## Add email dialog
+## Delete Monitor account
 
-settings-email-dialog-title = Додати іншу електронну адресу
-settings-add-email-text = Додайте нову адресу електронної пошти, щоб перевірити, чи була вона виявлена у витоці даних.
-settings-email-input-label = Адреса електронної пошти
-settings-send-email-verification-button = Надіслати посилання для підтвердження
-
-## Unsubscribe Dialog Survey
-
-settings-unsubscribe-dialog-title = Нам шкода, що ви покидаєте нас. <br /> Чи не бажаєте розповісти нам чому?
-settings-unsubscribe-dialog-info = Ваш досвід важливий для нас. Ми вивчаємо всі відповіді, щоб вдосконалити роботу.
-settings-unsubscribe-dialog-message-placeholder = Що можна покращити?
-# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
-settings-unsubscribe-dialog-confirmation = Зауважте, що усі ваші послуги { -brand-monitor-premium } будуть <a { $faq_href }>остаточно видалені</a> після завершення поточного платіжного періоду.
-settings-unsubscribe-dialog-continue = Продовжити скасування
-settings-unsubscribe-dialog-cancel = Не зважайте, повернутися
+settings-delete-monitor-free-account-title = Видалити обліковий запис { -brand-monitor }
+settings-delete-monitor-free-account-description = Ваш обліковий запис { -brand-monitor } буде остаточно видалено, а всі сповіщення – вимкнено.
+settings-delete-monitor-free-account-cta-label = Видалити обліковий запис
+settings-delete-monitor-free-account-dialog-title = Ваш обліковий запис { -brand-monitor } буде остаточно видалено
+settings-delete-monitor-free-account-dialog-lead = Уся інформація вашого облікового запису { -brand-monitor } буде видалена, і ми більше не відстежуватимемо нові витоки ваших даних. Це не видалить ваш обліковий запис { -brand-mozilla }.
+settings-delete-monitor-free-account-dialog-cta-label = Видалити обліковий запис
+settings-delete-monitor-free-account-dialog-cancel-button-label = Не зважайте, повернутися
+settings-delete-monitor-account-confirmation-toast-label-2 = Ваш обліковий запис { -brand-monitor } видалено.
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Відхилити

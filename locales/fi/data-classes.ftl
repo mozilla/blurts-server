@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = Tilisaldot
@@ -14,7 +19,7 @@ avatars = Avatar-kuvat
 bank-account-numbers = Pankkitilinumerot
 beauty-ratings = Ulkonäköluokitukset
 biometric-data = Biometriset tiedot
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Henkilökuvaukset
 browser-user-agent-details = Selaimen user agent -tiedot
@@ -25,6 +30,7 @@ career-levels = Uratasot
 cellular-network-names = Matkapuhelinverkkojen nimet
 charitable-donations = Hyväntekeväisyyteen liittyvät lahjoitukset
 chat-logs = Keskustelulokit
+citizenship-statuses = Kansalaisuustiedot
 clothing-sizes = Vaatteiden koot
 credit-card-cvv = Luottokortin CVV
 credit-cards = Luottokortit
@@ -35,7 +41,7 @@ customer-interactions = Asiakasteot
 dates-of-birth = Syntymäajat
 deceased-date = Kuolinpäivä
 deceased-statuses = Kuolintilatieto
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Toimitusohjeet
 device-information = Laitetiedot
@@ -75,7 +81,7 @@ instant-messenger-identities = Pikaviestimien identiteetit
 ip-addresses = IP-osoitteet
 job-applications = Työhakemukset
 job-titles = Työnimikkeet
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Rekisteritunnukset
 living-costs = Asumiskustannukset
 # This string refers to financial loans.

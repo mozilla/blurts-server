@@ -5,8 +5,8 @@
 fix-flow-nav-high-risk-data-breaches = Pembobolan data berisiko tinggi
 fix-flow-nav-leaked-passwords = Sandi bocor
 fix-flow-nav-security-recommendations = Rekomendasi keamanan
+
 guided-resolution-flow-exit = Kembali ke dasbor
-guided-resolution-flow-back-arrow = Ke langkah sebelumnya
 guided-resolution-flow-next-arrow = Lanjutkan ke langkah berikutnya
 guided-resolution-flow-step-navigation-label = Langkah-langkah terpandu
 

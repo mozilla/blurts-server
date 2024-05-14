@@ -2,8 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = 展开
-chevron-up-alt = 折叠
+chevron-alt = 暴露详情
+
 exposure-card-exposure-type = 暴露类型
 exposure-card-date-found = 暴露日期
 
@@ -34,8 +34,6 @@ exposure-card-exposure-type-data-breach = 数据外泄事件
 exposure-card-cta = 处理所有暴露
 exposure-card-label-company-logo = 公司徽标
 exposure-card-label-company = 公司
-exposure-card-label-exposure-type = 暴露类型
-exposure-card-label-date-found = 发现日期
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = 状态
 # Variables:

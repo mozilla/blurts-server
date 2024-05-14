@@ -35,7 +35,7 @@ export const AccountDeletionNotification = () => {
     <div role="alert" aria-live="assertive" className={styles.notification}>
       <span>
         {l10n.getString(
-          "settings-delete-monitor-account-confirmation-toast-label",
+          "settings-delete-monitor-account-confirmation-toast-label-2",
         )}
       </span>
       <button

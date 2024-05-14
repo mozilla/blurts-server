@@ -14,7 +14,7 @@ describe("<FallbackLogo>", () => {
     const iconNotHiddenForScreenReaders = screen.queryByRole("img");
     expect(iconNotHiddenForScreenReaders).not.toBeInTheDocument();
 
-    const icon = screen.getByRole("img", { hidden: true });
+    const icon = screen.getByRole("presentation", { hidden: true });
     expect(icon).toHaveTextContent("S");
     expect(icon).toHaveClass("purple10");
   });

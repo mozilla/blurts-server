@@ -18,10 +18,10 @@ import {
 import { validateEmailAddress } from "../../../../../../../utils/emailAddress";
 import { initEmail } from "../../../../../../../utils/email";
 import { sendVerificationEmail } from "../../../../../../api/utils/email";
-import { getL10n } from "../../../../../../functions/server/l10n";
+import { getL10n } from "../../../../../../functions/l10n/serverComponents";
 import { logger } from "../../../../../../functions/server/logging";
 import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
-import { SanitizedEmailAddressRow } from "../../../../../../functions/server/sanitizeEmailRow";
+import { SanitizedEmailAddressRow } from "../../../../../../functions/server/sanitize";
 import { deleteAccount } from "../../../../../../functions/server/deleteAccount";
 import { cookies } from "next/headers";
 
@@ -97,16 +97,7 @@ export async function onAddEmail(
     );
 
     await initEmail();
-    await sendVerificationEmail(
-      // This first parameter is unused, so the type assertion is safe.
-      // When non-TS invocations of this function are removed, we should remove
-      // the unused parameter:
-      session.user.subscriber as unknown as Parameters<
-        typeof sendVerificationEmail
-      >[0],
-      unverifiedSubscriber.id,
-      getL10n(),
-    );
+    await sendVerificationEmail(subscriber, unverifiedSubscriber.id);
     revalidatePath("/user/settings");
 
     return {

@@ -10,8 +10,8 @@ import {
 } from "../../../utils/parse.js";
 import { StateAbbr } from "../../../utils/states.js";
 import {
-  getAllScansForProfile,
   getLatestOnerepScanResults,
+  getLatestScanForProfileByReason,
 } from "../../../db/tables/onerep_scans";
 import { RemovalStatus } from "../universal/scanResult.js";
 import {
@@ -31,9 +31,12 @@ export type CreateProfileRequest = {
   first_name: string;
   last_name: string;
   addresses: [{ city: string; state: StateAbbr }];
+  name_suffix?: string;
+  middle_name?: string;
   birth_date?: ISO8601DateString;
   phone_numbers?: E164PhoneNumberString[];
 };
+
 export type ShowProfileResponse = CreateProfileRequest & {
   id: number;
   status: "active" | "inactive";
@@ -61,11 +64,12 @@ export type OneRepResponse<Data> = {
   data: Data;
   meta: OneRepMeta;
 };
+export type ScanReason = "initial" | "monitoring" | "manual";
 export type Scan = {
   id: number;
   profile_id: number;
   status: "in_progress" | "finished";
-  reason: "initial" | "monitoring" | "manual";
+  reason: ScanReason;
 };
 export type ListScansResponse = OneRepResponse<Scan[]>;
 export type ScanResult = {
@@ -130,7 +134,9 @@ export async function createProfile(
 ): Promise<number> {
   const requestBody = {
     first_name: profileData.first_name,
-    last_name: profileData.last_name,
+    ...(profileData.middle_name && { middle_name: profileData.middle_name }),
+    last_name:
+      `${profileData.last_name} ${profileData.name_suffix ?? ""}`.trim(),
     birth_date: profileData.birth_date,
     addresses: [
       {
@@ -246,11 +252,8 @@ export async function activateAndOptoutProfile({
   forceActivation?: boolean;
 }): Promise<void> {
   try {
-    const scans = await getAllScansForProfile(profileId);
-    const hasInitialScan = scans.some(
-      (scan) => scan.onerep_scan_reason === "initial",
-    );
-    if (hasInitialScan && !forceActivation) {
+    const scan = await getLatestScanForProfileByReason(profileId, "initial");
+    if (scan && !forceActivation) {
       return;
     }
 

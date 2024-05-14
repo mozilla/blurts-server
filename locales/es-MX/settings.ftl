@@ -15,9 +15,6 @@ settings-alert-preferences-option-two = Enviar todas las alertas de filtraciones
 
 ## Monitored email addresses
 
-# Variables:
-#   $email (string) - Email address
-settings-email-label-primary = { $email } (principal)
 settings-email-list-title = Direcciones de correo electrónico monitoreadas
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
@@ -50,10 +47,7 @@ settings-deactivate-account-title = Desactivar cuenta
 
 ## Add email dialog
 
-settings-email-dialog-title = Agregar otra dirección de correo electrónico
-settings-add-email-text = Agregar una nueva dirección de correo electrónico para ver si ha estado involucrada en una filtración de datos.
-settings-email-input-label = Dirección de correo electrónico
-settings-send-email-verification-button = Enviar enlace de verificación
-
 ## Unsubscribe Dialog Survey
+
+## Delete Monitor account
 

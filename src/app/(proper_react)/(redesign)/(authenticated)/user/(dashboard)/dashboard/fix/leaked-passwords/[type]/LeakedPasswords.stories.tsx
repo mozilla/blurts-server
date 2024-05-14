@@ -8,7 +8,7 @@ import {
   createUserWithPremiumSubscription,
 } from "../../../../../../../../../../apiMocks/mockData";
 import { Shell } from "../../../../../../../Shell";
-import { getOneL10nSync } from "../../../../../../../../../functions/server/mockL10n";
+import { getL10n } from "../../../../../../../../../functions/l10n/storybookAndJest";
 import { LeakedPasswordsLayout } from "../LeakedPasswordsLayout";
 import {
   LeakedPasswordsTypes,
@@ -64,7 +64,7 @@ const LeakedPasswordsWrapper = (props: {
   }
 
   return (
-    <Shell l10n={getOneL10nSync()} session={mockedSession} nonce="">
+    <Shell l10n={getL10n()} session={mockedSession} nonce="">
       <LeakedPasswordsLayout
         subscriberEmails={[]}
         type={props.type}

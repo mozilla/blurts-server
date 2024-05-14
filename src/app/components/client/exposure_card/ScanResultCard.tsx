@@ -198,11 +198,11 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
   };
 
   const exposureCard = (
-    <div>
+    <div aria-label={props.scanResult.data_broker}>
       <div className={styles.exposureCard}>
         <div className={styles.exposureHeader}>
           <dl className={styles.exposureHeaderList}>
-            <dt className={styles.visuallyHidden}>
+            <dt className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}>
               {l10n.getString("exposure-card-label-company-logo")}
             </dt>
             <dd
@@ -223,13 +223,13 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
                 {scanResult.data_broker}
               </span>
             </dd>
-            <dt className={styles.visuallyHidden}>
+            <dt className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}>
               {l10n.getString("exposure-card-exposure-type")}
             </dt>
             <dd className={styles.hideOnMobile}>
               {l10n.getString("exposure-card-exposure-type-data-broker")}
             </dd>
-            <dt className={styles.visuallyHidden}>
+            <dt className={`${styles.hideOnMobile} ${styles.visuallyHidden}`}>
               {l10n.getString("exposure-card-date-found")}
             </dt>
             <dd className={styles.hideOnMobile}>
@@ -246,15 +246,12 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
             className={styles.chevron}
             onClick={() => props.onToggleExpanded()}
             aria-expanded={props.isExpanded}
+            aria-label={l10n.getString("chevron-alt")}
             aria-controls={cardId}
           >
             <ChevronDown
               className={props.isExpanded ? styles.isOpen : ""}
-              alt={
-                props.isExpanded
-                  ? l10n.getString("chevron-up-alt")
-                  : l10n.getString("chevron-down-alt")
-              }
+              alt=""
               width="20"
               height="20"
             />

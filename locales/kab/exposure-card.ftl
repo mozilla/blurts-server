@@ -2,9 +2,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Snefli
-chevron-up-alt = Fneẓ
-
 # Status Pill
 
 status-pill-progress = Iteddu
@@ -19,7 +16,6 @@ exposure-card-password = Awal uffir
 exposure-card-ip-address = Tansa IP
 exposure-card-other = Wiyaḍ
 exposure-card-label-company = Takebbanit
-exposure-card-label-date-found = Azemz n tifin
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Addad
 # Variables:

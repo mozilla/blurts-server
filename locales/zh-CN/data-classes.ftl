@@ -30,6 +30,7 @@ career-levels = 职业等级
 cellular-network-names = 通信商名称
 charitable-donations = 慈善捐款记录
 chat-logs = 聊天记录
+citizenship-statuses = 公民身份信息
 clothing-sizes = 衣服尺码
 credit-card-cvv = 信用卡安全码（CVV）
 credit-cards = 信用卡

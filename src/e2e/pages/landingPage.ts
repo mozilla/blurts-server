@@ -69,6 +69,9 @@ export class LandingPage {
   readonly privacyLink: Locator;
   readonly githubLink: Locator;
 
+  // Choose your level of protection
+  readonly startFreeMonitoringButton: Locator;
+
   constructor(page: Page) {
     this.page = page;
     this.reuseButton = page.locator('button[type="submit"]');
@@ -154,7 +157,8 @@ export class LandingPage {
     // scan your email to get started section
     this.getStartedScanSection = page
       .locator("div")
-      .filter({ has: page.getByText("Scan your email to get started") });
+      .filter({ has: page.getByText("Scan your email to get started") })
+      .last();
     this.getStartedScanTitle = this.getStartedScanSection.filter({
       has: page.getByText("Scan your email to get started"),
     });
@@ -168,17 +172,20 @@ export class LandingPage {
     // choose your level of protection section
     this.chooseLevelSection = page
       .locator("div")
-      .filter({ has: page.getByText("Choose your level of protection") });
+      .filter({ has: page.getByText("Choose your level of protection") })
+      .last();
 
     // FAQ section
     this.faqSection = page
       .locator("div")
-      .filter({ has: page.getByText("Frequently asked questions") });
+      .filter({ has: page.getByText("Frequently asked questions") })
+      .last();
 
     // take back control of your data section
     this.takeBackControlSection = page
       .locator("div")
-      .filter({ has: page.getByText("Take back control of your data") });
+      .filter({ has: page.getByText("Take back control of your data") })
+      .last();
     this.takeBackControlTitle = this.takeBackControlSection.filter({
       has: page.getByText("Take back control of your data"),
     });
@@ -205,6 +212,11 @@ export class LandingPage {
     this.githubLink = page
       .locator("footer")
       .filter({ has: page.getByRole("link", { name: "Github" }) });
+
+    // Choose your level of protection
+    this.startFreeMonitoringButton = page.getByRole("button", {
+      name: "Start free monitoring",
+    });
   }
 
   async open() {

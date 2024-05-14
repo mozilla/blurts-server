@@ -1,3 +1,8 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
 # Breach Data Classes
 
 account-balances = Banksaldo’s
@@ -14,7 +19,7 @@ avatars = Avatars
 bank-account-numbers = Bankrekkeningnûmers
 beauty-ratings = Skjintmewurdearringen
 biometric-data = Biometryske gegevens
-# This string is the shortened version of "Biographies", and 
+# This string is the shortened version of "Biographies", and
 # refers to biographical data about a user.
 bios = Bio's
 browser-user-agent-details = Details oer de brûkte browser
@@ -25,6 +30,7 @@ career-levels = Karriêrenivo's
 cellular-network-names = Mobyl-netwurknammen
 charitable-donations = Goeddiedigensdoelen
 chat-logs = Chatlochboeken
+citizenship-statuses = Staatsburgerskipsstatussen
 clothing-sizes = Kleanmjitten
 credit-card-cvv = Creditcard-CVV
 credit-cards = Creditcards
@@ -35,7 +41,7 @@ customer-interactions = Ynteraksje mei klanten
 dates-of-birth = Bertedatum
 deceased-date = Datum fan ferstjerren
 deceased-statuses = Steat fan ferstjerren
-# Instructions that you can set up in online shopping services to get your orders 
+# Instructions that you can set up in online shopping services to get your orders
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
 delivery-instructions = Ofleverynstruksjes
 device-information = Apparaatgegevens
@@ -75,7 +81,7 @@ instant-messenger-identities = Chat-identiteiten
 ip-addresses = IP-adressen
 job-applications = Sollisitaasjes
 job-titles = Funksjetitels
-# This string refers to vehicle license plates. 
+# This string refers to vehicle license plates.
 licence-plates = Kentekens
 living-costs = Kosten libbensûnderhâld
 # This string refers to financial loans.

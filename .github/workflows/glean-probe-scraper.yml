@@ -1,5 +1,11 @@
 name: Glean probe-scraper
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - src/telemetry/metrics.yml
+  pull_request:
+    paths:
+      - src/telemetry/metrics.yml
 jobs:
   glean-probe-scraper:
     uses: mozilla/probe-scraper/.github/workflows/glean.yaml@main

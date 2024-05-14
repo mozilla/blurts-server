@@ -425,6 +425,33 @@ it("counts how often people click the 'Contact us' link", async () => {
   );
 });
 
+it("renders the dashboard with the action needed tab selected when requested", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard activeTab="action-needed" />);
+
+  const tabActionNeededTrigger = screen.getByRole("tab", {
+    name: "Action needed",
+  });
+  expect(tabActionNeededTrigger.getAttribute("aria-selected")).toBe("true");
+});
+
+it("renders the dashboard with the fixed tab selected when requested", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard activeTab="fixed" />);
+
+  const tabFixedTrigger = screen.getByRole("tab", {
+    name: "Fixed",
+  });
+  tabFixedTrigger.getAttribute("aria-selected");
+  expect(tabFixedTrigger.getAttribute("aria-selected")).toBe("true");
+});
+
 it("switches between tab panels", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
@@ -561,7 +588,7 @@ it("opens and closes the premium upsell dialog via the Premium upsell badge)", a
   expect(
     screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).toBeInTheDocument();
-  const closeButtonIcon1 = screen.getByLabelText("Close");
+  const closeButtonIcon1 = screen.getByLabelText("Close modal");
   await user.click(closeButtonIcon1.parentElement as HTMLElement);
   expect(
     screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
@@ -572,7 +599,7 @@ it("opens and closes the premium upsell dialog via the Premium upsell badge)", a
   expect(
     screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).toBeInTheDocument();
-  const closeButtonIcon2 = screen.getByLabelText("Close");
+  const closeButtonIcon2 = screen.getByLabelText("Close modal");
   await user.click(closeButtonIcon2.parentElement as HTMLElement);
   expect(
     screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
@@ -596,7 +623,7 @@ it("opens and closes the premium upsell dialog via the Premium upsell button", a
   expect(
     screen.getByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
   ).toBeInTheDocument();
-  const closeButtonIcon1 = screen.getByLabelText("Close");
+  const closeButtonIcon1 = screen.getByLabelText("Close modal");
   await user.click(closeButtonIcon1.parentElement as HTMLElement);
   expect(
     screen.queryByText("Turn on automatic data removal with ⁨Monitor Plus⁩"),
@@ -619,26 +646,59 @@ it("toggles between the product offerings in the premium upsell dialog", async (
 
   await user.click(premiumCtas[0]);
 
-  const productTabYearly1 = screen.getByRole("tab", { name: "Yearly" });
-  expect(productTabYearly1?.getAttribute("aria-selected")).toBe("true");
-  const productTabMonthly1 = screen.getByRole("tab", { name: "Monthly" });
-  expect(productTabMonthly1?.getAttribute("aria-selected")).toBe("false");
+  const productTabMonthly = screen.getByRole("radio", { name: "Monthly" });
   const productYearlyCta = screen.getByRole("link", {
     name: "Select yearly plan",
   });
   expect(productYearlyCta).toBeInTheDocument();
 
-  await user.click(productTabMonthly1);
+  await user.click(productTabMonthly);
 
-  const productTabYearly2 = screen.getByRole("tab", { name: "Yearly" });
-  expect(productTabYearly2?.getAttribute("aria-selected")).toBe("false");
-  const productTabMonthly2 = screen.getByRole("tab", { name: "Monthly" });
-  expect(productTabMonthly2?.getAttribute("aria-selected")).toBe("true");
-
-  const productMontlyCta = screen.getByRole("link", {
+  const productMonthlyCta = screen.getByRole("link", {
     name: "Select monthly plan",
   });
-  expect(productMontlyCta).toBeInTheDocument();
+  expect(productMonthlyCta).toBeInTheDocument();
+});
+
+it("shows US users with Premium the date of their last scan", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const lastScanIndicator = screen.getByText("Last scan:");
+  expect(lastScanIndicator).toBeInTheDocument();
+});
+
+it("does not shows US users without Premium who have not done a scan the date of their last scan", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const lastScanIndicator = screen.queryByText("Last scan:");
+  expect(lastScanIndicator).not.toBeInTheDocument();
+});
+
+it("shows US users without Premium who have done a scan the date of their last scan", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumEmptyScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const lastScanIndicator = screen.getByText("Last scan:");
+  expect(lastScanIndicator).toBeInTheDocument();
+});
+
+it("does not show non-US users the date of their last scan", () => {
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  const lastScanIndicator = screen.queryByText("Last scan:");
+  expect(lastScanIndicator).not.toBeInTheDocument();
 });
 
 it("shows chart tooltip on the action needed tab, non-US user", async () => {
@@ -651,7 +711,7 @@ it("shows chart tooltip on the action needed tab, non-US user", async () => {
   );
   expect(chartCaption).toBeInTheDocument();
   const chartTooltip = within(chartCaption).getByRole("button", {
-    name: "Open",
+    name: "Open modal",
   });
   expect(chartTooltip).toBeInTheDocument();
   await user.click(chartTooltip);
@@ -681,7 +741,7 @@ it("shows chart tooltip on the fixed tab, non-US user", async () => {
   );
   expect(chartCaption).toBeInTheDocument();
   const chartTooltip = within(chartCaption).getByRole("button", {
-    name: "Open",
+    name: "Open modal",
   });
   expect(chartTooltip).toBeInTheDocument();
   await user.click(chartTooltip);
@@ -711,7 +771,7 @@ it("shows chart tooltip on the action needed tab, US user", async () => {
   );
   expect(chartCaption).toBeInTheDocument();
   const chartTooltip = within(chartCaption).getByRole("button", {
-    name: "Open",
+    name: "Open modal",
   });
   expect(chartTooltip).toBeInTheDocument();
   await user.click(chartTooltip);
@@ -744,7 +804,7 @@ it("shows chart tooltip on the fixed tab, US user", async () => {
   );
   expect(chartCaption).toBeInTheDocument();
   const chartTooltip = within(chartCaption).getByRole("button", {
-    name: "Open",
+    name: "Open modal",
   });
   expect(chartTooltip).toBeInTheDocument();
   await user.click(chartTooltip);
@@ -775,7 +835,7 @@ it("counts in Glean how often people click the upgrade CTA to purchase the month
     name: "Automatic data removal: Off",
   });
   await user.click(premiumCtas[0]);
-  const productTabMonthly = screen.getByRole("tab", { name: "Monthly" });
+  const productTabMonthly = screen.getByRole("radio", { name: "Monthly" });
   await user.click(productTabMonthly);
   const confirmButton = screen.getByRole("link", {
     name: "Select monthly plan",
@@ -810,7 +870,7 @@ it("counts in Glean how often people click the upgrade CTA to purchase the yearl
   });
   await user.click(premiumCtas[0]);
   // Switch to the monthly tab by clicking it...
-  const productTabMonthly = screen.getByRole("tab", { name: "Monthly" });
+  const productTabMonthly = screen.getByRole("radio", { name: "Monthly" });
   await user.click(productTabMonthly);
   // ...then back to the yearly tab by pressing the left arrow on the keyboard.
   await user.keyboard("[ArrowLeft]");
@@ -1335,7 +1395,7 @@ it("shows and closes a dialog that informs US users, without Premium, when we hi
       name: "⁨Monitor⁩ is currently at capacity",
     }),
   ).toBeInTheDocument();
-  const closeButtonIcon1 = screen.getByLabelText("Close");
+  const closeButtonIcon1 = screen.getByLabelText("Close modal");
   await user.click(closeButtonIcon1.parentElement as HTMLElement);
   expect(
     screen.queryByRole("dialog", {
@@ -2627,7 +2687,7 @@ it("does not explain what 'in progress' means for users who cannot get Plus", as
 
   const statusHeading = screen.getByText("Status");
   const statusExplainerDialogTrigger = getByRole(statusHeading, "button", {
-    name: "Open",
+    name: "Open modal",
   });
   await user.click(statusExplainerDialogTrigger);
   expect(
@@ -2645,7 +2705,7 @@ it("explains what 'in progress' means for Plus users", async () => {
 
   const statusHeading = screen.getByText("Status");
   const statusExplainerDialogTrigger = getByRole(statusHeading, "button", {
-    name: "Open",
+    name: "Open modal",
   });
   await user.click(statusExplainerDialogTrigger);
   expect(
@@ -2731,32 +2791,21 @@ it("expands one card at a time", async () => {
   );
   render(<ComposedDashboard />);
 
-  const expandButtons = screen.getAllByRole("button", { name: "Expand" });
-  const collapseButtons = screen.queryAllByRole("button", { name: "Collapse" });
-  // Only expanded cards have a collapse button:
-  expect(collapseButtons).toHaveLength(0);
+  // collapsed
+  const expandButtons = screen.getAllByRole("button", {
+    name: "Exposure details",
+  });
+
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "false");
 
   await user.click(expandButtons[0]);
-  const afterExpand1ExpandButtons = screen.getAllByRole("button", {
-    name: "Expand",
-  });
-  const afterExpand1CollapseButtons = screen.queryAllByRole("button", {
-    name: "Collapse",
-  });
-  expect(afterExpand1ExpandButtons).toHaveLength(expandButtons.length - 1);
-  expect(afterExpand1CollapseButtons).toHaveLength(1);
 
-  await user.click(afterExpand1ExpandButtons[0]);
-  const afterExpand2ExpandButtons = screen.getAllByRole("button", {
-    name: "Expand",
-  });
-  const afterExpand2CollapseButtons = screen.queryAllByRole("button", {
-    name: "Collapse",
-  });
-  expect(afterExpand2ExpandButtons).toHaveLength(
-    afterExpand1ExpandButtons.length,
-  );
-  expect(afterExpand2CollapseButtons).toHaveLength(1);
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "true");
+
+  await user.click(expandButtons[1]);
+
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "false");
+  expect(expandButtons[1]).toHaveAttribute("aria-expanded", "true");
 });
 
 it("closes previously active card onclick", async () => {
@@ -2767,12 +2816,19 @@ it("closes previously active card onclick", async () => {
   );
   render(<ComposedDashboard />);
 
-  const initialState = screen.getAllByRole("button", { name: "Expand" });
+  const initialState = screen.getAllByRole("button", {
+    name: "Exposure details",
+  });
+
+  expect(initialState[0]).toHaveAttribute("aria-expanded", "false");
+
   await user.click(initialState[0]);
-  const afterExpand = screen.getAllByRole("button", { name: "Collapse" });
-  await user.click(afterExpand[0]);
-  const afterCollapse = screen.getAllByRole("button", { name: "Expand" });
-  expect(initialState.length).toBe(afterCollapse.length);
+
+  expect(initialState[0]).toHaveAttribute("aria-expanded", "true");
+
+  await user.click(initialState[0]);
+
+  expect(initialState[0]).toHaveAttribute("aria-expanded", "false");
 });
 
 it("does not allow non-US users to filter by exposure type, since they can only see a single exposure type (i.e. breaches)", async () => {
@@ -3136,7 +3192,7 @@ it("send telemetry when users open/close 'number of active exposure' info popup"
   // test:
   jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
-  const numberOfExposuresInfoPopup = screen.queryAllByLabelText("Open");
+  const numberOfExposuresInfoPopup = screen.queryAllByLabelText("Open modal");
   await user.click(numberOfExposuresInfoPopup[0]);
   expect(mockedRecord).toHaveBeenCalledWith(
     "popup",
@@ -3174,8 +3230,12 @@ it("send telemetry when users click on data broker info link", async () => {
   jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
   // expands first row
-  const expandButtons = screen.getAllByRole("button", { name: "Expand" });
+  const expandButtons = screen.getAllByRole("button", {
+    name: "Exposure details",
+  });
   await user.click(expandButtons[0]);
+
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "true");
 
   const detailsAboutYouLink = screen.queryAllByRole("link", {
     name: "these details about you",
@@ -3190,8 +3250,8 @@ it("send telemetry when users click on data broker info link", async () => {
   );
 
   // collapses first row
-  const collapseButton = screen.getAllByRole("button", { name: "Collapse" });
-  await user.click(collapseButton[0]);
+  await user.click(expandButtons[0]);
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "false");
 });
 
 it("send telemetry when users click on data breach link", async () => {
@@ -3209,8 +3269,12 @@ it("send telemetry when users click on data breach link", async () => {
   jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
 
   // expands first row
-  const expandButtons = screen.getAllByRole("button", { name: "Expand" });
+  const expandButtons = screen.getAllByRole("button", {
+    name: "Exposure details",
+  });
   await user.click(expandButtons[0]);
+
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "true");
 
   const dataBreachLink = screen.queryAllByRole("link", {
     name: /^.*data breach on.*$/,
@@ -3225,8 +3289,8 @@ it("send telemetry when users click on data breach link", async () => {
   );
 
   // collapses first row
-  const collapseButton = screen.getAllByRole("button", { name: "Collapse" });
-  await user.click(collapseButton[0]);
+  await user.click(expandButtons[0]);
+  expect(expandButtons[0]).toHaveAttribute("aria-expanded", "false");
 });
 
 it("send telemetry when users click on learn more link", async () => {
@@ -3281,4 +3345,120 @@ it("send telemetry when users click on exposure chart free scan", async () => {
       link_id: "exposures_chart_free_scan",
     }),
   );
+});
+
+describe("CSAT survey banner", () => {
+  it("does not display the CSAT survey banner on the dashboard tab “action needed” to Plus users", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={1} />);
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Neutral",
+    });
+    expect(answerButton).not.toBeInTheDocument();
+  });
+
+  it("does not display the CSAT survey banner to users who do not have automatic data removal enabled", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumEmptyScanNoBreaches,
+      Meta,
+    );
+    render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={1} />);
+
+    const fixedTab = screen.getByText("Fixed");
+    await user.click(fixedTab);
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Neutral",
+    });
+    expect(answerButton).not.toBeInTheDocument();
+  });
+
+  it("displays the CSAT survey banner to Plus users, after more than 90 days since their initial scan", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={91} />);
+
+    const fixedTab = screen.getByText("Fixed");
+    await user.click(fixedTab);
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Neutral",
+    });
+    expect(answerButton).toBeInTheDocument();
+  });
+
+  it("displays the initial CSAT survey banner only to Plus users with automatically fixed data brokers", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={1} />);
+
+    const answerButtonOne = screen.queryByRole("button", {
+      name: "Neutral",
+    });
+    expect(answerButtonOne).not.toBeInTheDocument();
+
+    const fixedTab = screen.getByText("Fixed");
+    await user.click(fixedTab);
+
+    const answerButtonTwo = screen.queryByRole("button", {
+      name: "Neutral",
+    });
+    expect(answerButtonTwo).toBeInTheDocument();
+  });
+
+  it("displays the 6-months CSAT survey banner on the dashboard tab “fixed” only", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={180} />);
+
+    const answerButtonOne = screen.queryByRole("button", {
+      name: "Satisfied",
+    });
+    expect(answerButtonOne).not.toBeInTheDocument();
+
+    const fixedTab = screen.getByText("Fixed");
+    await user.click(fixedTab);
+
+    const answerButtonTwo = screen.queryByRole("button", {
+      name: "Satisfied",
+    });
+    expect(answerButtonTwo).toBeInTheDocument();
+  });
+
+  it("displays the follow-up CSAT survey banner link", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(<ComposedDashboard elapsedTimeInDaysSinceInitialScan={185} />);
+
+    const fixedTab = screen.getByText("Fixed");
+    await user.click(fixedTab);
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Satisfied",
+    });
+    expect(answerButton).toBeInTheDocument();
+    await user.click(answerButton as HTMLElement);
+
+    const feedbackLink = screen.getByText(
+      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
+    );
+    expect(feedbackLink).toBeInTheDocument();
+  });
 });

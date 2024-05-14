@@ -2,8 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-chevron-down-alt = Udvid
-chevron-up-alt = Fold sammen
+chevron-alt = Detaljer om eksponering
+
 exposure-card-exposure-type = Type af eksponering
 exposure-card-date-found = Tidspunkt for eksponering
 
@@ -34,8 +34,6 @@ exposure-card-exposure-type-data-breach = Datalæk
 exposure-card-cta = Løs alle eksponeringer
 exposure-card-label-company-logo = Virksomhedslogo
 exposure-card-label-company = Virksomhed
-exposure-card-label-exposure-type = Type af eksponering
-exposure-card-label-date-found = Dato fundet
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Status
 # Variables:

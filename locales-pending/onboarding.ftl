@@ -46,8 +46,15 @@ onboarding-enter-details-comfirm-dialog-button-edit = Edit
 onboarding-enter-details-comfirm-dialog-button-confirm = Confirm
 onboarding-enter-details-label-first-name = First name
 onboarding-enter-details-placeholder-first-name = Enter first name
+onboarding-enter-details-label-middle-name = Middle name
+onboarding-enter-details-placeholder-middle-name = Enter middle name
 onboarding-enter-details-label-last-name = Last name
 onboarding-enter-details-placeholder-last-name = Enter last name
+# A name suffix follows a person’s full name and provides additional information
+# about their position, accreditation, etc.
+# Examples: “PhD”, “CCNA”, “OBE”, “Jr.”, “Sr.”, etc.
+onboarding-enter-details-label-name-suffix = Suffix
+onboarding-enter-details-placeholder-name-suffix = Enter suffix
 onboarding-enter-details-label-location = City and state
 onboarding-enter-details-placeholder-location = Enter city and state
 onboarding-enter-details-placeholder-location-results = No location found
@@ -55,6 +62,7 @@ onboarding-enter-details-label-date-of-birth = Date of birth
 onboarding-enter-details-input-error-message-generic = Required to complete the scan
 onboarding-enter-details-input-error-message-location = Type location and select from list
 onboarding-enter-details-input-error-alt = Error
+onboarding-enter-details-input-info-text-location = Use the location you’ve spent the most time in recently.
 
 onboarding-find-exposures-progress-label = Scanning for exposures…
 # Variables:

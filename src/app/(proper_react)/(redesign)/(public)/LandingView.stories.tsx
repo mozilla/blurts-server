@@ -4,18 +4,18 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { View, Props as ViewProps } from "./LandingView";
-import { getOneL10nSync } from "../../../functions/server/mockL10n";
+import { getL10n } from "../../../functions/l10n/storybookAndJest";
 import { PublicShell } from "./PublicShell";
 
 const meta: Meta<typeof View> = {
   title: "Pages/Public/Landing page",
   component: (props: ViewProps) => (
-    <PublicShell l10n={getOneL10nSync("en")}>
+    <PublicShell l10n={getL10n("en")}>
       <View {...props} />
     </PublicShell>
   ),
   args: {
-    l10n: getOneL10nSync(),
+    l10n: getL10n(),
     enabledFlags: ["RebrandAnnouncement"],
   },
 };
@@ -54,7 +54,7 @@ export const LandingNonUsDe: Story = {
   args: {
     eligibleForPremium: false,
     countryCode: "de",
-    l10n: getOneL10nSync("de"),
+    l10n: getL10n("de"),
   },
 };
 
@@ -63,6 +63,6 @@ export const LandingNonUsFr: Story = {
   args: {
     eligibleForPremium: false,
     countryCode: "fr",
-    l10n: getOneL10nSync("fr"),
+    l10n: getL10n("fr"),
   },
 };

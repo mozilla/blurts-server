@@ -59,7 +59,7 @@ landing-all-social-proof-press = O nas so napisali
 
 # Here's How We Help
 
-landing-all-help-protect-you = Tukaj je opisano, kako vas lahko zaščitimo
+landing-all-help-protect-you = Kako vas pomagamo ščititi
 landing-all-help-protect-you-description = Verjamemo v vašo pravico do zasebnosti, zato je zaščita pred krajami podatkov vedno brezplačna.
 landing-all-help-protect-you-feature-one = Iskali vas bomo v vseh znanih krajah podatkov
 landing-all-help-protect-you-feature-two = Vodili vas bomo skozi korake za odpravo posamezne kraje

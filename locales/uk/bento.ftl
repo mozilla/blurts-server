@@ -10,4 +10,4 @@ toolbar-app-picker-product-fx-desktop = { -brand-firefox } для комп'ют�
 toolbar-app-picker-product-fx-mobile = { -brand-firefox } для мобільних пристроїв
 toolbar-app-picker-by-mozilla = Створено в { -brand-mozilla }
 # Bento headline
-fx-makes-tech = { -brand-name } це технологія, яка захищає вашу приватність у мережі.
+fx-makes-tech = { -brand-name } – це технологія, що захищає вашу приватність у мережі.

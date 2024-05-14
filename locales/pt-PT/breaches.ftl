@@ -2,68 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-meta-title = { -brand-fx-monitor } - Painel
 breach-all-meta-title = { -brand-fx-monitor } - Todas as violações de dados
 breach-all-meta-social-title = Todas as violações detetadas por { -brand-fx-monitor }
 breach-all-meta-social-description = Navegue na lista completa de violações de dados conhecidas detetadas pelo { -brand-fx-monitor } e descubra se a sua informação foi exposta.
-# Variables:
-#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } - { $company } Violação de Dados
+
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Você foi afetado pela violação de dados de { $company }?
 breach-detail-meta-social-description = Utilize o { -brand-fx-monitor } para descobrir se a sua informação pessoal foi exposta nesta violação de dados e perceber o que fazer a seguir.
-breach-scan-meta-title = { -brand-fx-monitor } - Resultados da violação
-breach-scan-meta-social-title = { -brand-fx-monitor }, resultados da violação
-breach-scan-meta-social-description = Inicie sessão no { -brand-fx-monitor } para resolver violações de dados e obter monitorização contínua para quaisquer novas violações de dados conhecidas.
 
 ## Breaches header
 
-# Data classes pie chart title
-breach-chart-title = Dados violados
-# $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = Violações de dados para { $email-select }
-# $count is the number of emails a user has added out of $total allowed
-emails-monitored =
-    { $total ->
-        [one] { $count } de { $total } e-mail monitorizado
-       *[other] { $count } de { $total } e-mails monitorizados
-    }
-# link to Settings page where user can add/remove emails and set message preferences
-manage-emails-link = Gerir e-mails
-
 ## Breaches resolved filter
 
-filter-label-unresolved = Violações não resolvidas
-filter-label-resolved = Violações resolvidas
-
 ## Breaches table
-
-column-company = EMPRESA
-column-breached-data = DADOS VIOLADOS
-column-detected = DETETADA
-# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = Resolvida
-# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = Ativa
-breaches-resolve-heading = Resolver esta falha de segurança:
-breaches-none-headline = Não foram encontradas violações
-# Variables:
-#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
-breaches-none-copy = Boas notícias! Não foram reportadas violações de dados conhecidas para { $email }. Iremos continuar a monitorizar este e-mail e iremos informar se ocorrerem novas violações de dados.
-breaches-none-cta-blurb = Gostaria de monitorizar outro e-mail?
-breaches-none-cta-button = Adicionar endereço de e-mail
-breaches-all-resolved-headline = Todas as violações resolvidas
-# Variables:
-#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = Boa! Resolveu todas as violações de dados para { $email }. Iremos continuar a monitorizar este e-mail e iremos informar se ocorrerem novas violações de dados.
-breaches-all-resolved-cta-blurb = Gostaria de monitorizar outro e-mail?
-breaches-all-resolved-cta-button = Adicionar endereço de e-mail
-# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-# Variables:
-#   $breachDate (String) - Date of the breach
-#   $companyName (String) - Name of the company where the breach occurred
-breach-description = A { $breachDate }, { $companyName } foi comprometido. Assim que a violação de dados foi descoberta e confirmada, foi adicionada à nossa base de dados a { $addedDate }. Esta violação de dados incluiu: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -74,6 +26,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Atualize as suas palavras-passe e ative a autenticação de dois fatores (2FA).
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -142,6 +95,7 @@ breach-checklist-phone-header-2 = Proteja o seu número de telefone com um servi
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Atualize as suas perguntas de segurança.
+
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 breach-checklist-sq-body-text = Na maioria dos casos, recomendamos que atualize as suas perguntas de segurança no site da empresa. Mas <b>o site pode estar offline ou conter conteúdo malicioso</b>, por isso tenha cuidado ao <breached-company-link>visitar o site</breached-company-link>. Para uma proteção adicional, atualize estas perguntas de segurança em quaisquer contas importantes nas quais as tenha utilizado e crie palavras-passe únicas para todas as contas.
 

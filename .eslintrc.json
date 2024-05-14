@@ -125,12 +125,6 @@
       "files": [
         "src/app.js",
         "src/utils/redisMock.js",
-        "src/routes/**/*.js",
-        "src/views/**/*.js",
-        "src/middleware/**/*.js",
-        "src/controllers/**/*.js",
-        "src/app/deprecated/**/*",
-        "src/app/(migration_remnants)/**/*",
         "src/app/functions/server/breachResolution.ts"
       ],
       "rules": {
@@ -143,15 +137,8 @@
       }
     },
     {
-      // Only enable rules that depend on type checking on TS files,
-      // except for files that include a lot of copy-pasted pre-TypeScript code
-      // (i.e. the code inside `src/app/deprecated/`),
-      // to avoid a barrage of warnings for older code:
+      // Only enable rules that depend on type checking on TS files.
       "files": ["**/*.{ts,tsx}"],
-      "excludedFiles": [
-        "./src/app/deprecated/**/*",
-        "./src/app/(migration_remnants)/**/*"
-      ],
       "extends": [
         "plugin:@typescript-eslint/recommended-requiring-type-checking"
       ],

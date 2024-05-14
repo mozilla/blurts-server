@@ -7,7 +7,6 @@ fix-flow-nav-leaked-passwords = Leaked passwords
 fix-flow-nav-security-recommendations = Security recommendations
 
 guided-resolution-flow-exit = Return to dashboard
-guided-resolution-flow-back-arrow = Go to previous step
 guided-resolution-flow-next-arrow = Go to next step
 guided-resolution-flow-step-navigation-label = Guided steps
 
