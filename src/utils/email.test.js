@@ -172,7 +172,7 @@ test('EmailUtils.getEmailCtaDashboardHref works with a dashboard tab type', asyn
     emailType: 'email-type-2',
     content: 'content-2',
     subscriberId: '1234',
-    dashboardTabType: "action-needed"
+    dashboardTabType: 'action-needed'
   })
   expect(emailCtaHref.pathname).toBe('/user/dashboard/action-needed');
   emailCtaHref.searchParams.sort()

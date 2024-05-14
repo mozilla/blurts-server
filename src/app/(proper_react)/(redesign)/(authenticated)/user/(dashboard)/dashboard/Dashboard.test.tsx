@@ -425,6 +425,33 @@ it("counts how often people click the 'Contact us' link", async () => {
   );
 });
 
+it("renders the dashboard with the action needed tab selected", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard activeTab="action-needed" />);
+
+  const tabActionNeededTrigger = screen.getByRole("tab", {
+    name: "Action needed",
+  });
+  expect(tabActionNeededTrigger.getAttribute("aria-selected")).toBe("true");
+});
+
+it("renders the dashboard with the fixed tab selected", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard activeTab="fixed" />);
+
+  const tabFixedTrigger = screen.getByRole("tab", {
+    name: "Fixed",
+  });
+  tabFixedTrigger.getAttribute("aria-selected");
+  expect(tabFixedTrigger.getAttribute("aria-selected")).toBe("true");
+});
+
 it("switches between tab panels", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(

@@ -5,7 +5,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
-import { View as DashboardEl } from "./View";
+import { View as DashboardEl, TabType } from "./View";
 import { Shell } from "../../../../Shell";
 import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
 import {
@@ -46,6 +46,7 @@ type DashboardWrapperProps = (
   breaches: keyof typeof breachOptions;
   elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
+  activeTab?: TabType;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
@@ -208,7 +209,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
                 enabled: true,
               },
             }}
-            activeTab="action-needed"
+            activeTab={props.activeTab ?? "action-needed"}
           />
         </Shell>
       </CountryCodeProvider>
