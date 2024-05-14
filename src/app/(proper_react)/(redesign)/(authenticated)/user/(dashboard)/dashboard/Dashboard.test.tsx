@@ -425,7 +425,7 @@ it("counts how often people click the 'Contact us' link", async () => {
   );
 });
 
-it("renders the dashboard with the action needed tab selected", () => {
+it("renders the dashboard with the action needed tab selected when requested", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
     Meta,
@@ -438,7 +438,7 @@ it("renders the dashboard with the action needed tab selected", () => {
   expect(tabActionNeededTrigger.getAttribute("aria-selected")).toBe("true");
 });
 
-it("renders the dashboard with the fixed tab selected", () => {
+it("renders the dashboard with the fixed tab selected when requested", () => {
   const ComposedDashboard = composeStory(
     DashboardUsNoPremiumNoScanNoBreaches,
     Meta,
