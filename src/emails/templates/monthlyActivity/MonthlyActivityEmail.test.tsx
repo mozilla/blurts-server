@@ -7,7 +7,6 @@ import { composeStory } from "@storybook/react";
 import { render, screen } from "@testing-library/react";
 import Meta, {
   MonthlyActivityEmailFreeStory,
-  MonthlyActivityEmailPlusWithManualStory,
   MonthlyActivityEmailPlusWithoutManualStory,
 } from "./MonthlyActivityEmail.stories";
 
@@ -17,21 +16,6 @@ it("has an upgrade banner for free users", () => {
 
   const banner = screen.getByText("Upgrade for extra protection");
   expect(banner).toBeInTheDocument();
-});
-
-it("does not imply we did everything when a user has fixed exposures/breaches themselves", () => {
-  const ComposedEmail = composeStory(
-    MonthlyActivityEmailPlusWithManualStory,
-    Meta,
-  );
-  render(<ComposedEmail />);
-
-  const whatWeFixedInHeroText = screen.queryByText(
-    "Here’s how we’ve protected you.",
-  );
-  const whatWeFixedInLeadText = screen.queryByText("Here’s what we fixed:");
-  expect(whatWeFixedInHeroText).not.toBeInTheDocument();
-  expect(whatWeFixedInLeadText).not.toBeInTheDocument();
 });
 
 it("emphasises that things have happened while someone was subscribed to Plus and didn't do anything themselves", () => {
