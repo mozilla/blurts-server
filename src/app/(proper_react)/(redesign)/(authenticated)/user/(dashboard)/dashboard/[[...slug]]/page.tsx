@@ -5,7 +5,7 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { getServerSession } from "../../../../../../../functions/server/getServerSession";
-import { View } from "../View";
+import { TabType, View } from "../View";
 import { getCountryCode } from "../../../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../../../functions/server/getSubscriberBreaches";
 import {
@@ -56,7 +56,7 @@ export default async function DashboardPage({ params }: Props) {
   const { slug } = params;
   const isPremiumUser = hasPremium(session.user);
   const defaultTab = isPremiumUser ? "fixed" : "action-needed";
-  const activeTab = slug?.[0] ?? defaultTab;
+  const activeTab = (slug?.[0] ?? defaultTab) as TabType;
   // Only allow the tab slugs. Otherwise: Redirect to the default dashboard route.
   if (
     typeof slug !== "undefined" &&
