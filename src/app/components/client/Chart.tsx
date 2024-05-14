@@ -211,7 +211,7 @@ export const DoughnutChart = (props: Props) => {
     if (nrText && labelText) {
       setCenterValueLoaded(true);
     }
-  }, [props.data]);
+  }, [props.data, nrText, labelText]);
 
   return (
     <>
