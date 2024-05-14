@@ -7,7 +7,7 @@ import { render, screen, within } from "@testing-library/react";
 import { axe } from "jest-axe";
 import { Session } from "next-auth";
 import { userEvent } from "@testing-library/user-event";
-import type { EmailAddressRow } from "knex/types/tables";
+import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
 import { TestComponentWrapper } from "../../../../../../../TestComponentWrapper";
 import { SerializedSubscriber } from "../../../../../../../next-auth";
@@ -36,19 +36,99 @@ jest.mock("./actions", () => {
     onDeleteAccount: () => new Promise(() => undefined),
   };
 });
+const mockedRouterRefresh = jest.fn();
+
+jest.mock("next/navigation", () => ({
+  useRouter: () => ({
+    refresh: mockedRouterRefresh,
+  }),
+}));
 
 import { SettingsView } from "./View";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { sanitizeEmailRow } from "../../../../../../functions/server/sanitize";
+import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 
 const subscriberId = 7;
-const mockedSubscriber: SerializedSubscriber = {
+const mockedSerializedSubscriber: SerializedSubscriber = {
   id: subscriberId,
   all_emails_to_primary: true,
 } as SerializedSubscriber;
+const mockedSubscriber: SubscriberRow = {
+  updated_at: new Date(),
+  fx_newsletter: true,
+  all_emails_to_primary: true,
+  waitlists_joined: true,
+  email_addresses: [],
+  id: 12346,
+  created_at: new Date("2022-06-07 14:29:00.000-05"),
+  primary_sha1: "abcabc",
+  primary_email: "test@test.com",
+  primary_verification_token: "c165711a-69d1-42f1-9850-ce74754f36de",
+  primary_verified: true,
+  fxa_access_token:
+    "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc0",
+  fxa_refresh_token:
+    "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc1",
+  fxa_uid: "12346",
+  fxa_profile_json: {
+    uid: "123",
+    email: "test@test.com",
+    avatar: "https://profile.stage.mozaws.net/v1/avatar/abc",
+    locale: "en-US,en;q=0.5",
+    amrValues: ["pwd", "email"],
+    avatarDefault: false,
+    metricsEnabled: true,
+    twoFactorAuthentication: false,
+  },
+  breaches_last_shown: new Date("2022-07-08 14:19:00.000-05"),
+  breaches_resolved: { "has-breaches@example.com": [] },
+  breach_stats: {
+    passwords: {
+      count: 1,
+      numResolved: 0,
+    },
+    numBreaches: {
+      count: 2,
+      numResolved: 1,
+      numUnresolved: 1,
+    },
+    monitoredEmails: {
+      count: 1,
+    },
+  },
+  breach_resolution: {
+    useBreachId: true,
+    "test@test.com": {
+      "8": {
+        resolutionsChecked: ["passwords", "email-addresses"],
+      },
+      "40": {
+        resolutionsChecked: [
+          "email-addresses",
+          "passwords",
+          "social-security-numbers",
+        ],
+      },
+      "252": {
+        resolutionsChecked: ["email-addresses"],
+      },
+      "320": {
+        resolutionsChecked: ["email-addresses"],
+      },
+    },
+  },
+  monthly_email_at: new Date("2022-08-07 14:22:00.000-05"),
+  monthly_email_optout: false,
+  signup_language: "fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5",
+  db_migration_1: undefined,
+  db_migration_2: undefined,
+  onerep_profile_id: null,
+};
+
 const mockedUser: Session["user"] = {
   email: "primary@example.com",
-  subscriber: mockedSubscriber,
+  subscriber: mockedSerializedSubscriber,
   fxa: {
     subscriptions: ["monitor"],
     avatar: "",
@@ -58,6 +138,7 @@ const mockedUser: Session["user"] = {
     twoFactorAuthentication: false,
   },
 };
+
 const mockedSecondaryVerifiedEmail: EmailAddressRow = {
   id: 1337,
   email: "secondary_verified@example.com",
@@ -94,6 +175,7 @@ it("passes the axe accessibility audit", async () => {
           [mockedSecondaryVerifiedEmail.email]: 42,
           [mockedSecondaryUnverifiedEmail.email]: 42,
         }}
+        subscriber={mockedSubscriber}
         emailAddresses={[
           mockedSecondaryVerifiedEmail,
           mockedSecondaryUnverifiedEmail,
@@ -104,6 +186,7 @@ it("passes the axe accessibility audit", async () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["MonitorAccountDeletion"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -122,6 +205,7 @@ it("preselects 'Send all breach alerts to the primary email address' if that's t
             all_emails_to_primary: true,
           },
         }}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -133,6 +217,7 @@ it("preselects 'Send all breach alerts to the primary email address' if that's t
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["MonitorAccountDeletion"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -160,6 +245,10 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
             all_emails_to_primary: false,
           },
         }}
+        subscriber={{
+          ...mockedSubscriber,
+          all_emails_to_primary: false,
+        }}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -171,6 +260,7 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["MonitorAccountDeletion"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -201,6 +291,7 @@ it("disables breach alert notification options if a user opts out of breach aler
             all_emails_to_primary: true,
           },
         }}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -212,6 +303,7 @@ it("disables breach alert notification options if a user opts out of breach aler
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -231,7 +323,6 @@ it("disables breach alert notification options if a user opts out of breach aler
   expect(global.fetch).toHaveBeenCalledWith("/api/v1/user/update-comm-option", {
     body: JSON.stringify({
       instantBreachAlerts: "null",
-      monthlyMonitorReport: true,
     }),
     method: "POST",
   });
@@ -253,6 +344,7 @@ it("preselects primary email alert option", () => {
             all_emails_to_primary: true,
           },
         }}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -264,6 +356,7 @@ it("preselects primary email alert option", () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -273,40 +366,6 @@ it("preselects primary email alert option", () => {
   );
 
   expect(primaryRadioButton).toHaveAttribute("aria-checked", "true");
-});
-
-it("preselects affected email address option", () => {
-  render(
-    <TestComponentWrapper>
-      <SettingsView
-        l10n={getL10n()}
-        user={{
-          ...mockedUser,
-          subscriber: {
-            ...mockedUser.subscriber!,
-            all_emails_to_primary: false,
-          },
-        }}
-        breachCountByEmailAddress={{
-          [mockedUser.email]: 42,
-          [mockedSecondaryVerifiedEmail.email]: 42,
-        }}
-        emailAddresses={[mockedSecondaryVerifiedEmail]}
-        fxaSettingsUrl=""
-        fxaSubscriptionsUrl=""
-        yearlySubscriptionUrl=""
-        monthlySubscriptionUrl=""
-        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
-      />
-    </TestComponentWrapper>,
-  );
-  const affectedRadioButton = screen.getByLabelText(
-    "Send breach alerts to the affected email address",
-  );
-
-  expect(affectedRadioButton).toBeInTheDocument();
-  expect(affectedRadioButton).toHaveAttribute("aria-checked", "true");
 });
 
 it("unselects the breach alerts checkbox and sends a null value to the API", async () => {
@@ -324,6 +383,7 @@ it("unselects the breach alerts checkbox and sends a null value to the API", asy
             all_emails_to_primary: true,
           },
         }}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -335,6 +395,7 @@ it("unselects the breach alerts checkbox and sends a null value to the API", asy
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -354,7 +415,6 @@ it("unselects the breach alerts checkbox and sends a null value to the API", asy
   expect(global.fetch).toHaveBeenCalledWith("/api/v1/user/update-comm-option", {
     body: JSON.stringify({
       instantBreachAlerts: "null",
-      monthlyMonitorReport: true,
     }),
     method: "POST",
   });
@@ -375,6 +435,10 @@ it("preselects the affected email comms option after a user decides to enable br
             all_emails_to_primary: null,
           },
         }}
+        subscriber={{
+          ...mockedSubscriber,
+          all_emails_to_primary: null,
+        }}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -386,6 +450,7 @@ it("preselects the affected email comms option after a user decides to enable br
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -419,6 +484,7 @@ it("sends a call to the API to change the email alert preferences when changing 
             all_emails_to_primary: true,
           },
         }}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -433,6 +499,7 @@ it("sends a call to the API to change the email alert preferences when changing 
           "MonitorAccountDeletion",
           "UpdatedEmailPreferencesOption",
         ]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -445,7 +512,6 @@ it("sends a call to the API to change the email alert preferences when changing 
   expect(global.fetch).toHaveBeenCalledWith("/api/v1/user/update-comm-option", {
     body: JSON.stringify({
       instantBreachAlerts: "affected",
-      monthlyMonitorReport: true,
     }),
     method: "POST",
   });
@@ -456,7 +522,6 @@ it("sends a call to the API to change the email alert preferences when changing 
   expect(global.fetch).toHaveBeenCalledWith("/api/v1/user/update-comm-option", {
     body: JSON.stringify({
       instantBreachAlerts: "primary",
-      monthlyMonitorReport: true,
     }),
     method: "POST",
   });
@@ -475,6 +540,10 @@ it("checks that monthly monitor report is enabled", () => {
             monthly_monitor_report: true,
           },
         }}
+        subscriber={{
+          ...mockedSubscriber,
+          monthly_monitor_report: true,
+        }}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -490,6 +559,7 @@ it("checks that monthly monitor report is enabled", () => {
           "UpdatedEmailPreferencesOption",
           "MonthlyActivityEmail",
         ]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -516,6 +586,11 @@ it("sends an API call to disable monthly monitor reports", async () => {
             monthly_monitor_report: true,
           },
         }}
+        subscriber={{
+          ...mockedSubscriber,
+          all_emails_to_primary: true,
+          monthly_monitor_report: true,
+        }}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -531,6 +606,7 @@ it("sends an API call to disable monthly monitor reports", async () => {
           "UpdatedEmailPreferencesOption",
           "MonthlyActivityEmail",
         ]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -564,6 +640,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
             all_emails_to_primary: true,
           },
         }}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -575,6 +652,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["MonitorAccountDeletion"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -593,6 +671,7 @@ it("marks unverified email addresses as such", () => {
       <SettingsView
         l10n={getL10n()}
         user={mockedUser}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -608,6 +687,7 @@ it("marks unverified email addresses as such", () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["MonitorAccountDeletion"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -627,6 +707,7 @@ it("calls the API to resend a verification email if requested to", async () => {
       <SettingsView
         l10n={getL10n()}
         user={mockedUser}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -642,6 +723,7 @@ it("calls the API to resend a verification email if requested to", async () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["MonitorAccountDeletion"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -671,6 +753,7 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
       <SettingsView
         l10n={getL10n()}
         user={mockedUser}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -686,6 +769,7 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["MonitorAccountDeletion"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -710,6 +794,7 @@ it("hides the Plus cancellation link if the user doesn't have Plus", () => {
             subscriptions: [],
           } as Session["user"]["fxa"],
         }}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -720,6 +805,7 @@ it("hides the Plus cancellation link if the user doesn't have Plus", () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["MonitorAccountDeletion"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -743,6 +829,7 @@ it("shows the Plus cancellation link if the user has Plus", () => {
             subscriptions: ["monitor"],
           } as Session["user"]["fxa"],
         }}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -753,6 +840,7 @@ it("shows the Plus cancellation link if the user has Plus", () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["MonitorAccountDeletion"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -778,6 +866,7 @@ it("takes you through the cancellation dialog flow all the way to subplat", asyn
             subscriptions: ["monitor"],
           } as Session["user"]["fxa"],
         }}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -792,6 +881,7 @@ it("takes you through the cancellation dialog flow all the way to subplat", asyn
           "ConfirmCancellation",
           "CancellationFlow",
         ]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -853,6 +943,7 @@ it("closes the cancellation survey if the user selects nevermind, take me back",
             subscriptions: ["monitor"],
           } as Session["user"]["fxa"],
         }}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -867,6 +958,7 @@ it("closes the cancellation survey if the user selects nevermind, take me back",
           "ConfirmCancellation",
           "CancellationFlow",
         ]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -908,6 +1000,7 @@ it("closes the cancellation dialog", async () => {
             subscriptions: ["monitor"],
           } as Session["user"]["fxa"],
         }}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -918,6 +1011,7 @@ it("closes the cancellation dialog", async () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["MonitorAccountDeletion", "CancellationFlow"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -955,6 +1049,7 @@ it("does not show the account deletion button if the relevant flag is not enable
             subscriptions: [],
           } as Session["user"]["fxa"],
         }}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -965,6 +1060,7 @@ it("does not show the account deletion button if the relevant flag is not enable
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["NotMonitorAccountDeletion" as FeatureFlagName]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -988,6 +1084,7 @@ it("shows the account deletion button if the user does not have Plus", () => {
             subscriptions: [],
           } as Session["user"]["fxa"],
         }}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -998,6 +1095,7 @@ it("shows the account deletion button if the user does not have Plus", () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["MonitorAccountDeletion"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -1026,6 +1124,7 @@ it("warns about the consequences before deleting a free user's account", async (
             subscriptions: [],
           } as Session["user"]["fxa"],
         }}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -1036,6 +1135,7 @@ it("warns about the consequences before deleting a free user's account", async (
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["MonitorAccountDeletion"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -1066,6 +1166,7 @@ it("shows a loading state while account deletion is in progress", async () => {
             subscriptions: [],
           } as Session["user"]["fxa"],
         }}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -1076,6 +1177,7 @@ it("shows a loading state while account deletion is in progress", async () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["MonitorAccountDeletion"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -1107,6 +1209,7 @@ it("shows the account deletion button if the user has Plus", () => {
             subscriptions: ["monitor"],
           } as Session["user"]["fxa"],
         }}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -1117,6 +1220,7 @@ it("shows the account deletion button if the user has Plus", () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["MonitorAccountDeletion"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -1145,6 +1249,7 @@ it("warns about the consequences before deleting a Plus user's account", async (
             subscriptions: ["monitor"],
           } as Session["user"]["fxa"],
         }}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
         }}
@@ -1155,6 +1260,7 @@ it("warns about the consequences before deleting a Plus user's account", async (
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["MonitorAccountDeletion"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -1189,6 +1295,7 @@ it.skip("calls the 'add' action when adding another email address", async () => 
       <SettingsView
         l10n={getL10n()}
         user={mockedUser}
+        subscriber={mockedSubscriber}
         breachCountByEmailAddress={{
           [mockedUser.email]: 42,
           [mockedSecondaryVerifiedEmail.email]: 42,
@@ -1204,6 +1311,7 @@ it.skip("calls the 'add' action when adding another email address", async () => 
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["MonitorAccountDeletion"]}
+        experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
   );
@@ -1225,6 +1333,7 @@ describe("to learn about usage", () => {
         <SettingsView
           l10n={getL10n()}
           user={mockedUser}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
             [mockedSecondaryVerifiedEmail.email]: 42,
@@ -1236,6 +1345,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={["MonitorAccountDeletion"]}
+          experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
     );
@@ -1261,6 +1371,7 @@ describe("to learn about usage", () => {
         <SettingsView
           l10n={getL10n()}
           user={mockedUser}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
             [mockedSecondaryVerifiedEmail.email]: 42,
@@ -1272,6 +1383,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
+          experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
     );
@@ -1304,6 +1416,7 @@ describe("to learn about usage", () => {
         <SettingsView
           l10n={getL10n()}
           user={mockedUser}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
           }}
@@ -1314,6 +1427,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={["MonitorAccountDeletion"]}
+          experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
     );
@@ -1345,6 +1459,7 @@ describe("to learn about usage", () => {
         <SettingsView
           l10n={getL10n()}
           user={mockedUser}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
           }}
@@ -1355,6 +1470,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={["MonitorAccountDeletion"]}
+          experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
     );
@@ -1387,6 +1503,7 @@ describe("to learn about usage", () => {
               subscriptions: [],
             } as Session["user"]["fxa"],
           }}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
           }}
@@ -1397,6 +1514,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={["MonitorAccountDeletion"]}
+          experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
     );
@@ -1428,6 +1546,7 @@ describe("to learn about usage", () => {
               subscriptions: [],
             } as Session["user"]["fxa"],
           }}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
           }}
@@ -1438,6 +1557,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={["MonitorAccountDeletion"]}
+          experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
     );
@@ -1474,6 +1594,7 @@ describe("to learn about usage", () => {
               subscriptions: [],
             } as Session["user"]["fxa"],
           }}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
           }}
@@ -1484,6 +1605,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={["MonitorAccountDeletion"]}
+          experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
     );
@@ -1516,6 +1638,7 @@ describe("to learn about usage", () => {
               subscriptions: [],
             } as Session["user"]["fxa"],
           }}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
           }}
@@ -1526,6 +1649,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={["MonitorAccountDeletion"]}
+          experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
     );
@@ -1562,6 +1686,7 @@ describe("to learn about usage", () => {
               subscriptions: ["monitor"],
             } as Session["user"]["fxa"],
           }}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
           }}
@@ -1572,6 +1697,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={["MonitorAccountDeletion"]}
+          experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
     );
@@ -1603,6 +1729,7 @@ describe("to learn about usage", () => {
               subscriptions: ["monitor"],
             } as Session["user"]["fxa"],
           }}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
           }}
@@ -1613,6 +1740,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={["MonitorAccountDeletion"]}
+          experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
     );
@@ -1649,6 +1777,7 @@ describe("to learn about usage", () => {
               subscriptions: [],
             } as Session["user"]["fxa"],
           }}
+          subscriber={mockedSubscriber}
           breachCountByEmailAddress={{
             [mockedUser.email]: 42,
           }}
@@ -1659,6 +1788,7 @@ describe("to learn about usage", () => {
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={["MonitorAccountDeletion"]}
+          experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
     );
