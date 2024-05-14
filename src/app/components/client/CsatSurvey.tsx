@@ -87,6 +87,7 @@ const surveys: Survey[] = [
 type Props = {
   elapsedTimeInDaysSinceInitialScan: number;
   hasAutoFixedDataBrokers: boolean;
+  showFollowUpSurvey: boolean;
 };
 
 const getRelevantSurvey = ({
@@ -127,7 +128,7 @@ export const CsatSurvey = (props: Props) => {
 
   const submit = (satisfaction: SurveyResponse) => {
     setAnswer(satisfaction);
-    dismiss({ soft: true });
+    dismiss({ soft: props.showFollowUpSurvey });
     recordTelemetry("button", "click", {
       button_id: `csat_survey_${survey.id}_${satisfaction}`,
     });
@@ -135,7 +136,7 @@ export const CsatSurvey = (props: Props) => {
 
   return (
     <aside className={styles.wrapper}>
-      {typeof answer !== "undefined" ? (
+      {typeof answer !== "undefined" && props.showFollowUpSurvey ? (
         <div className={styles.prompt}>
           <a
             href={survey.options[answer]}

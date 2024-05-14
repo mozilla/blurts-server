@@ -458,6 +458,7 @@ export const View = (props: Props) => {
             hasAutoFixedDataBrokers={
               dataSummary.dataBrokerAutoFixedDataPointsNum > 0
             }
+            showFollowUpSurvey
           />
         )}
       <div className={styles.dashboardContent}>
