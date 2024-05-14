@@ -23,7 +23,7 @@ import {
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../constants";
 import { VisuallyHidden } from "../server/VisuallyHidden";
-import { useEffect , useState } from "react";
+import { useEffect, useState } from "react";
 import { Loader } from "./Loader";
 
 export type Props = {
