@@ -179,6 +179,7 @@ const nextConfig = {
     // Without this setting, Next.js has Webpack trying and failing to load
     // uglify-js when compiling MJML email templates to HTML in `renderEmail.ts`:
     serverComponentsExternalPackages: ["mjml"],
+    // Sentry
     instrumentationHook: true,
   },
 };
@@ -211,9 +212,8 @@ const sentrySDKOptions = {
   disableClientWebpackPlugin: process.env.UPLOAD_SENTRY_SOURCEMAPS !== "true",
 };
 
-export default withSentryConfig(
-  nextConfig,
+export default withSentryConfig(nextConfig, {
   sentryWebpackPluginOptions,
   sentryOptions,
-  sentrySDKOptions
-);
+  sentrySDKOptions,
+});
