@@ -19,11 +19,4 @@ export function register() {
       debug: false,
     });
   }
-
-  if (process.env.NEXT_RUNTIME === "edge") {
-    Sentry.init({
-      dsn: "YOUR_DSN",
-      // Your Edge Runtime Sentry configuration...
-    });
-  }
 }

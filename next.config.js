@@ -184,7 +184,7 @@ const nextConfig = {
   },
 };
 
-const sentryWebpackPluginOptions = {
+const sentryOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
   // the following options are set automatically, and overriding them is not
   // recommended:
@@ -198,22 +198,17 @@ const sentryWebpackPluginOptions = {
 
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
-};
 
-const sentryOptions = {
   // Upload additional client files (increases upload size)
   // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#widen-the-upload-scope
   widenClientFileUpload: true,
   hideSourceMaps: false,
-};
 
-const sentrySDKOptions = {
-  disableServerWebpackPlugin: process.env.UPLOAD_SENTRY_SOURCEMAPS !== "true",
-  disableClientWebpackPlugin: process.env.UPLOAD_SENTRY_SOURCEMAPS !== "true",
+  sourcemaps: {
+    disable: process.env.UPLOAD_SENTRY_SOURCEMAPS !== "true",
+  },
 };
 
 export default withSentryConfig(nextConfig, {
-  sentryWebpackPluginOptions,
-  sentryOptions,
-  sentrySDKOptions,
+  ...sentryOptions,
 });
