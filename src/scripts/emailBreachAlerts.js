@@ -27,7 +27,7 @@ import { breachAlertEmailPartial } from "../emails/emailBreachAlert.js";
 import {
   initEmail,
   EmailTemplateType,
-  getEmailCtaHref,
+  getEmailCtaDashboardHref,
   sendEmail,
 } from "../utils/email.js";
 
@@ -203,7 +203,11 @@ export async function poll(subClient, receivedMessages) {
               const data = {
                 breachData: breachAlert,
                 breachedEmail,
-                ctaHref: getEmailCtaHref(utmCampaignId, "dashboard-cta"),
+                ctaHref: getEmailCtaDashboardHref({
+                  emailType: utmCampaignId,
+                  content: "dashboard-cta",
+                  dashboardTabType: "action-needed",
+                }),
                 heading: getMessage("email-spotted-new-breach"),
                 recipientEmail,
                 subscriberId,

@@ -42,7 +42,10 @@ async function sendUnresolvedBreachEmails (subscribers = null, limit = 0) {
           heading: subject,
           subheading: LocaleUtils.fluentFormat(supportedLocales, 'email-unresolved-subhead'),
           breachedEmail: subscriber.primary_email,
-          ctaHref: EmailUtils.getEmailCtaHref(utmCampaign, 'dashboard-cta'),
+          ctaHref: EmailUtils.getEmailCtaDashboardHref({
+            emailType: utmCampaign,
+            content: 'dashboard-cta',
+          }),
           utmCampaign
         }
       )
