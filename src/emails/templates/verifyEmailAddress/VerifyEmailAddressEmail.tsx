@@ -6,6 +6,7 @@ import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { ExtendedReactLocalization } from "../../../app/functions/l10n";
 import { EmailFooter } from "../EmailFooter";
 import { EmailHeader } from "../EmailHeader";
+import { EmailStyles } from "../EmailStyles";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -20,6 +21,7 @@ export const VerifyEmailAddressEmail = (props: Props) => {
   return (
     <mjml>
       <mj-head>
+        <EmailStyles />
         <mj-attributes>
           <mj-text font-family="sans" />
           <mj-button font-family="sans" />
