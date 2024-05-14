@@ -4,7 +4,6 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useL10n } from "../../hooks/l10n";
@@ -24,6 +23,7 @@ import {
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../constants";
 import { VisuallyHidden } from "../server/VisuallyHidden";
+import { useEffect , useState } from "react";
 import { Loader } from "./Loader";
 
 export type Props = {
@@ -79,19 +79,19 @@ export const DoughnutChart = (props: Props) => {
     const percentOffset = percentages
       .slice(0, index)
       .reduce((offset, [_label, num]) => offset + num, 0);
-
     const sliceLength = circumference * (1 - percent) + sliceBorderWidth;
+
     return (
       <circle
         key={label}
         cx={diameter / 2}
         cy={diameter / 2}
         r={radius}
-        className={`${styles.slice}`}
+        className={styles.slice}
         fill="none"
         strokeWidth={ringWidth}
         strokeDasharray={`${circumference} ${circumference}`}
-        strokeDashoffset={sliceLength}
+        strokeDashoffset={`${sliceLength}`}
         // Rotate it to not overlap the other slices
         transform={`rotate(${-90 + 360 * percentOffset} ${diameter / 2} ${
           diameter / 2
@@ -202,70 +202,16 @@ export const DoughnutChart = (props: Props) => {
   };
 
   const promptContent = getPromptContent();
-
   const [centerValueLoaded, setCenterValueLoaded] = useState(false);
 
-  const centerValueActionNeeded = l10n.getFragment("exposure-chart-heading", {
-    elems: {
-      nr: (
-        <text
-          className={styles.headingNr}
-          fontSize={headingNumberSize}
-          x={diameter / 2}
-          y={diameter / 2 - headingGap / 2}
-          textAnchor="middle"
-        />
-      ),
-      label: (
-        <text
-          className={styles.headingLabel}
-          fontSize={headingLabelSize}
-          x={diameter / 2}
-          y={diameter / 2 + headingLabelSize + headingGap / 2}
-          textAnchor="middle"
-        />
-      ),
-    },
-    vars: { nr: sumOfFixedExposures },
-  });
-
-  const centerValueFixed = l10n.getFragment("exposure-chart-heading-fixed", {
-    elems: {
-      nr: (
-        <text
-          className={styles.headingNr}
-          fontSize={headingNumberSize}
-          x={diameter / 2}
-          y={diameter / 2 - headingGap / 2}
-          textAnchor="middle"
-        />
-      ),
-      label: (
-        <text
-          className={styles.headingLabel}
-          fontSize={headingLabelSize}
-          x={diameter / 2}
-          y={diameter / 2 + headingLabelSize + headingGap / 2}
-          textAnchor="middle"
-        />
-      ),
-    },
-    vars: { nr: sumOfFixedExposures },
-  });
+  const nrText = document.querySelector(`.${styles.headingNr}`);
+  const labelText = document.querySelector(`.${styles.headingLabel}`);
 
   useEffect(() => {
-    const checkTextRendered = () => {
-      const nrText = document.querySelector(`.${styles.headingNr}`);
-      const labelText = document.querySelector(`.${styles.headingLabel}`);
-
-      if (nrText && labelText) {
-        setCenterValueLoaded(true);
-      } else {
-        requestAnimationFrame(checkTextRendered);
-      }
-    };
-    checkTextRendered();
-  }, []);
+    if (nrText && labelText) {
+      setCenterValueLoaded(true);
+    }
+  }, [props.data]);
 
   return (
     <>
@@ -297,14 +243,60 @@ export const DoughnutChart = (props: Props) => {
               className={styles.gutter}
             />
             {slices}
-            {props.isShowFixed ? centerValueFixed : centerValueActionNeeded}
+            {props.isShowFixed
+              ? l10n.getFragment("exposure-chart-heading-fixed", {
+                  elems: {
+                    nr: (
+                      <text
+                        className={styles.headingNr}
+                        fontSize={headingNumberSize}
+                        x={diameter / 2}
+                        y={diameter / 2 - headingGap / 2}
+                        textAnchor="middle"
+                      />
+                    ),
+                    label: (
+                      <text
+                        className={styles.headingLabel}
+                        fontSize={headingLabelSize}
+                        x={diameter / 2}
+                        y={diameter / 2 + headingLabelSize + headingGap / 2}
+                        textAnchor="middle"
+                      />
+                    ),
+                  },
+                  vars: { nr: sumOfFixedExposures },
+                })
+              : l10n.getFragment("exposure-chart-heading", {
+                  elems: {
+                    nr: (
+                      <text
+                        className={styles.headingNr}
+                        fontSize={headingNumberSize}
+                        x={diameter / 2}
+                        y={diameter / 2 - headingGap / 2}
+                        textAnchor="middle"
+                      />
+                    ),
+                    label: (
+                      <text
+                        className={styles.headingLabel}
+                        fontSize={headingLabelSize}
+                        x={diameter / 2}
+                        y={diameter / 2 + headingLabelSize + headingGap / 2}
+                        textAnchor="middle"
+                      />
+                    ),
+                  },
+                  vars: { nr: sumOfFixedExposures },
+                })}
           </svg>
           <div className={styles.legend}>
             <table>
               <thead>
                 <tr>
                   {/* The first column contains the chart colour,
-                       which is irrelevant to screen readers. */}
+                      which is irrelevant to screen readers. */}
                   <td aria-hidden={true} />
                   <th>
                     {l10n.getString("exposure-chart-legend-heading-type")}
