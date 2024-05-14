@@ -207,11 +207,18 @@ export const DoughnutChart = (props: Props) => {
   const nrText = document.querySelector(`.${styles.headingNr}`);
   const labelText = document.querySelector(`.${styles.headingLabel}`);
 
+  // Ignoring this, otherwise tests will complain:
+  // > Warning: A suspended resource finished loading inside a test, but the
+  // > event was not wrapped in act(...).
+  // > When testing, code that resolves suspended data should be wrapped into
+  // > act(...)
+  /* c8 ignore start */
   useEffect(() => {
     if (nrText && labelText) {
       setCenterValueLoaded(true);
     }
   }, [props.data, nrText, labelText]);
+  /* c8 ignore stop */
 
   return (
     <>
