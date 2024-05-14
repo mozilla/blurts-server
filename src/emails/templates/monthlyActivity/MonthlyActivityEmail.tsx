@@ -179,6 +179,7 @@ const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
   return (
     <mjml>
       <mj-head>
+        <EmailStyles />
         <mj-preview>
           {l10n.getString("email-monthly-plus-auto-preview")}
         </mj-preview>
@@ -302,6 +303,7 @@ const MonthlyActivityFreeEmail = (props: Props) => {
   return (
     <mjml>
       <mj-head>
+        <EmailStyles />
         <mj-preview>{l10n.getString("email-monthly-free-preview")}</mj-preview>
       </mj-head>
       <mj-body>
