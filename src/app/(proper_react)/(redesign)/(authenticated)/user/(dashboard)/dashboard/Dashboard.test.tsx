@@ -79,7 +79,7 @@ jest.mock("../../../../../../components/client/Chart", () => {
     // > event was not wrapped in act(...).
     // > When testing, code that resolves suspended data should be wrapped into
     // > act(...)
-    Chart: () => null,
+    DoughnutChart: () => null,
   };
 });
 
