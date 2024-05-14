@@ -11,7 +11,7 @@ export function register() {
       dsn: process.env.SENTRY_DSN,
 
       // Adjust this value in production, or use tracesSampler for greater control
-      tracesSampleRate: ["development", "heroku"].includes(process.env.NODE_ENV)
+      tracesSampleRate: ["local", "heroku"].includes(process.env.NODE_ENV)
         ? 1.0
         : 0.1,
 
