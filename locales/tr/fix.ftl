@@ -5,7 +5,6 @@
 fix-flow-nav-high-risk-data-breaches = Yüksek riskli veri ihlalleri
 fix-flow-nav-leaked-passwords = Sızan parolalar
 fix-flow-nav-security-recommendations = Güvenlik önerileri
-
 guided-resolution-flow-exit = Kontrol paneline dön
 guided-resolution-flow-next-arrow = Sonraki adıma git
 guided-resolution-flow-step-navigation-label = Rehberli adımlar
@@ -22,6 +21,8 @@ fix-flow-celebration-next-dashboard-label = Kontrol paneline git
 ## High-risk flow
 
 fix-flow-celebration-high-risk-title = Yüksek riskli ihlallerinizi düzelttiniz!
+fix-flow-celebration-high-risk-description-in-progress = Bu işi yapmak zor gelebilir ama kendinizi güvende tutmak için bunu yapmanız önemli. İyi gidiyorsunuz!
+fix-flow-celebration-high-risk-description-done = Bu işi yapmak zor gelebilir ama kendinizi güvende tutmak için bunu yapmanız önemli.
 fix-flow-celebration-high-risk-description-next-passwords = Şimdi açığa çıkmış parolaları düzeltelim.
 fix-flow-celebration-high-risk-description-next-security-questions = Şimdi açığa çıkmış güvenlik sorularınızı düzeltelim.
 fix-flow-celebration-high-risk-description-next-security-recommendations = Şimdi, hangi verilerinizin ele geçirildiğine bağlı olarak size özel güvenlik önerileri sunacağız.
@@ -70,6 +71,7 @@ high-risk-breach-estimated-time =
 # Credit Card Breaches
 
 high-risk-breach-credit-card-title = Kredi kartı numaranız ele geçirildi
+high-risk-breach-credit-card-description = Kredi kartınıza sahip olan herkes yetkisiz satın alma işlemleri yapabilir ve bu borçlardan sorumlu tutulabilirsiniz. Mali zarar yaşamamak için hemen harekete geçin.
 high-risk-breach-credit-card-step-one = Bu kartı hâlâ kullanıyorsanız kartı düzenleyen kuruluşla iletişime geçerek kartın çalındığını bildirin.
 high-risk-breach-credit-card-step-two = Yeni bir numaraya sahip yeni bir kart isteyin.
 high-risk-breach-credit-card-step-three = Hesaplarınızda tanımadığınız ödemeler olup olmadığını kontrol edin.
