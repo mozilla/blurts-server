@@ -8,10 +8,6 @@ import { withSentryConfig } from "@sentry/nextjs";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   productionBrowserSourceMaps: true,
-  sentry: {
-    disableServerWebpackPlugin: process.env.UPLOAD_SENTRY_SOURCEMAPS !== "true",
-    disableClientWebpackPlugin: process.env.UPLOAD_SENTRY_SOURCEMAPS !== "true",
-  },
   images: {
     remotePatterns: [
       {
@@ -209,8 +205,14 @@ const sentryOptions = {
   hideSourceMaps: false,
 };
 
+const sentrySDKOptions = {
+  disableServerWebpackPlugin: process.env.UPLOAD_SENTRY_SOURCEMAPS !== "true",
+  disableClientWebpackPlugin: process.env.UPLOAD_SENTRY_SOURCEMAPS !== "true",
+};
+
 export default withSentryConfig(
   nextConfig,
   sentryWebpackPluginOptions,
   sentryOptions,
+  sentrySDKOptions
 );
