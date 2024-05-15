@@ -49,6 +49,30 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
    npm run create-location-data
    ```
 
+### Database
+
+To create the database tables ...
+
+1. Create the `blurts` database:
+
+   ```sh
+   createdb blurts
+   createdb test-blurts # for tests
+   ```
+
+2. Update the `DATABASE_URL` value in your `.env` file with your local db
+   credentials:
+
+   ```
+   DATABASE_URL="postgres://<username>:<password>@localhost:<port>/blurts"
+   ```
+
+3. Run the migrations:
+
+   ```
+   npm run db:migrate
+   ```
+
 ### Install
 
 1. Clone and change to the directory:
@@ -140,30 +164,6 @@ curl -d '{ "breachName": "000webhost", "hashPrefix": "test", "hashSuffixes": ["t
 ```sh
 node src/scripts/emailBreachAlerts.js
 ```
-
-### Database
-
-To create the database tables ...
-
-1. Create the `blurts` database:
-
-   ```sh
-   createdb blurts
-   createdb test-blurts # for tests
-   ```
-
-2. Update the `DATABASE_URL` value in your `.env` file with your local db
-   credentials:
-
-   ```
-   DATABASE_URL="postgres://<username>:<password>@localhost:<port>/blurts"
-   ```
-
-3. Run the migrations:
-
-   ```
-   npm run db:migrate
-   ```
 
 ### Emails
 
