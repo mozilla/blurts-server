@@ -32,4 +32,7 @@ RUN GLEAN_PYTHON=python GLEAN_PIP=pip npm run build
 ARG SENTRY_RELEASE
 ENV SENTRY_RELEASE=$SENTRY_RELEASE
 
-CMD ["npm", "start"]
+ARG APP_ENV
+ENV APP_ENV=$APP_ENV
+
+CMD npm "$(if [ $APP_ENV = 'cloudrun' ] ; then echo 'run cloudrun' ; else echo 'start'; fi)"
