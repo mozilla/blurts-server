@@ -34,5 +34,6 @@ ENV SENTRY_RELEASE=$SENTRY_RELEASE
 
 ARG APP_ENV
 ENV APP_ENV=$APP_ENV
+RUN if [ "$APP_ENV" = "cloudrun" ] ; then npm run db:migrate ; fi
 
-CMD npm "$(if [ $APP_ENV = 'cloudrun' ] ; then echo 'run cloudrun' ; else echo 'start'; fi)"
+CMD ["npm", "start"]
