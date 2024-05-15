@@ -64,11 +64,18 @@ export const CancelFlow = (props: Props) => {
                   : "settings-unsubscribe-dialog-confirmation-redirect-title",
             )}
             illustration={
-              <Image
-                className={styles.cancellationIllustrationWrapper}
-                src={CancellationSurveyPlaneIllustration}
-                alt=""
-              />
+              <video width="320" height="240" controls preload="none">
+                <source
+                  src="./animations/CancellationFlowAnimation.mp4"
+                  type="video/mp4"
+                />
+                {/* Fallback image */}
+                <Image
+                  className={styles.cancellationIllustrationWrapper}
+                  src={CancellationSurveyPlaneIllustration}
+                  alt=""
+                />
+              </video>
             }
             onDismiss={() => dialogState.close()}
           >
