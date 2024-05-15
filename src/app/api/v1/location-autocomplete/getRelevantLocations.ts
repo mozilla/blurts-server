@@ -9,12 +9,34 @@ export function getRelevantLocations(
   searchQuery: string,
   knownLocations: RelevantLocation[],
 ): RelevantLocation[] {
-  const locationNames = knownLocations.map((location: RelevantLocation) => {
+  /**
+   * Fully spelled-out names of locations in the US
+   *
+   * This array includes a string containing the name, state, and country of
+   * locations in the US, e.g. `St Louis, MO, USA`.
+   *
+   * Some places also have alternate names. Those *also* get added to this
+   * array. For example, `Saint Louis, MO, USA`.
+   */
+  const locationNamesAndAlternateNames: string[] = [];
+  /**
+   * Track the original location data for `locationNamesAndAlternateNames`
+   */
+  const nameIndexToLocationMap = new Map<number, RelevantLocation>();
+  knownLocations.forEach((location: RelevantLocation) => {
     const { n, s, a } = location;
-    const alternateNamesJoined = a ? a.join(" ") : "";
     const countryCode = "USA";
-
-    return `${n} ${s} ${countryCode} ${alternateNamesJoined}`;
+    nameIndexToLocationMap.set(locationNamesAndAlternateNames.length, location);
+    locationNamesAndAlternateNames.push(`${n} ${s} ${countryCode}`);
+    a?.forEach((alternateName) => {
+      nameIndexToLocationMap.set(
+        locationNamesAndAlternateNames.length,
+        location,
+      );
+      locationNamesAndAlternateNames.push(
+        `${alternateName} ${s} ${countryCode}`,
+      );
+    });
   });
 
   // For search options see: https://github.com/leeoniya/uFuzzy#options
@@ -31,33 +53,52 @@ export function getRelevantLocations(
     interRgt: 0,
   });
 
-  const locationIndexes = fuzzySearch.filter(locationNames, searchQuery);
-  if (!locationIndexes) {
+  const nameIndexes = fuzzySearch.filter(
+    locationNamesAndAlternateNames,
+    searchQuery,
+  );
+  if (!nameIndexes) {
     return [];
   }
 
-  const info = fuzzySearch.info(locationIndexes, locationNames, searchQuery);
-  const order = fuzzySearch.sort(info, locationNames, searchQuery);
-  const results = locationIndexes.map(
-    (locationIndex: number) => knownLocations[locationIndex],
+  const info = fuzzySearch.info(
+    nameIndexes,
+    locationNamesAndAlternateNames,
+    searchQuery,
   );
-
-  const resultsOrdered = order.map((orderIndex: number) => results[orderIndex]);
+  const order = fuzzySearch.sort(
+    info,
+    locationNamesAndAlternateNames,
+    searchQuery,
+  );
+  // Since `order` contains a ranked array of indexes to the indexes of the most
+  // closely matching names, we can retrieve the associated location data from
+  // the `nameIndexToLocationMap` in that order to get `resultsOrdered` :
+  const resultsOrdered = order.map(
+    (orderIndex: number) =>
+      nameIndexToLocationMap.get(nameIndexes[orderIndex])!,
+  );
+  // Since some locations might have matched multiple times (via their alternate
+  // names), we only keep the first instance of every location:
+  const uniqueResultsOrdered = resultsOrdered.filter(
+    (resultIndex, matchIndex) =>
+      resultsOrdered.indexOf(resultIndex) === matchIndex,
+  );
   // Split and only sort the first x percentage of results by population.
   // The motivation behind this is to improve the score for matches but not all
   // of them in order to not move up weak ones.
   const maxSortByPopulationThreshold = 0.75;
   const locationSplitIndex = Math.ceil(
-    results.length * maxSortByPopulationThreshold,
+    uniqueResultsOrdered.length * maxSortByPopulationThreshold,
   );
   const resultsSortedByPopulation = [
-    ...resultsOrdered
+    ...uniqueResultsOrdered
       .slice(0, locationSplitIndex)
       .sort(
         (a: RelevantLocation, b: RelevantLocation) =>
           Number(b.p ?? 0) - Number(a.p ?? 0),
       ),
-    ...resultsOrdered.slice(locationSplitIndex),
+    ...uniqueResultsOrdered.slice(locationSplitIndex),
   ];
 
   return resultsSortedByPopulation;
