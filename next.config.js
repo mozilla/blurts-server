@@ -209,6 +209,4 @@ const sentryOptions = {
   },
 };
 
-export default withSentryConfig(nextConfig, {
-  ...sentryOptions,
-});
+export default withSentryConfig(nextConfig, sentryOptions);
