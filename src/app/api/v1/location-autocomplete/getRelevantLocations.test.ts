@@ -164,6 +164,52 @@ describe("getRelevantLocations", () => {
     ]);
   });
 
+  it("matches alternate names even when the country is entered", () => {
+    // Arrange:
+    const availableLocations: RelevantLocation[] = [
+      {
+        id: "42",
+        n: "St Louis",
+        s: "MO",
+        a: ["Saint Louis"],
+      },
+    ];
+
+    // Act:
+    const results = getRelevantLocations(
+      "Saint Louis, MO, USA",
+      availableLocations,
+    );
+
+    // Assert:
+    expect(results).toStrictEqual([
+      {
+        id: "42",
+        n: "St Louis",
+        s: "MO",
+        a: ["Saint Louis"],
+      },
+    ]);
+  });
+
+  it("does not match on combinations of regular and partial names", () => {
+    // Arrange:
+    const availableLocations: RelevantLocation[] = [
+      {
+        id: "42",
+        n: "St Louis",
+        s: "MO",
+        a: ["Saint Louis"],
+      },
+    ];
+
+    // Act:
+    const results = getRelevantLocations("USA Saint", availableLocations);
+
+    // Assert:
+    expect(results).toStrictEqual([]);
+  });
+
   it("only returns single instances of a location", () => {
     // Arrange:
     const availableLocations: RelevantLocation[] = [
