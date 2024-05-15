@@ -85,7 +85,7 @@ const authOptions: NextAuthConfig = {
           max_age: 0,
         },
       },
-      checks: ["state", "pkce"],
+      checks: ["state"],
       token: AppConstants.OAUTH_TOKEN_URI,
       // userinfo: AppConstants.OAUTH_PROFILE_URI,
       userinfo: {
@@ -106,6 +106,7 @@ const authOptions: NextAuthConfig = {
       profile: (profile) => {
         return convertFxaProfile(profile);
       },
+      // wellKnown: "https://accounts.stage.mozaws.net/.well-known/openid-configuration"
 
       // issuer: "https://accounts.stage.mozaws.net", // to infer the .well-known/openid-configuration URL
     },
