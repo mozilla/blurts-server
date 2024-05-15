@@ -57,7 +57,7 @@ export function getRelevantLocations(
         (a: RelevantLocation, b: RelevantLocation) =>
           Number(b.p ?? 0) - Number(a.p ?? 0),
       ),
-    ...resultsOrdered.slice(locationSplitIndex + 1),
+    ...resultsOrdered.slice(locationSplitIndex),
   ];
 
   return resultsSortedByPopulation;

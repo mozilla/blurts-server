@@ -50,6 +50,95 @@ describe("getRelevantLocations", () => {
     expect(results).toStrictEqual([]);
   });
 
+  it("sorts the 75% most relevant results by location", () => {
+    // Arrange:
+    const availableLocations: RelevantLocation[] = [
+      {
+        id: "2",
+        n: "search term | best match",
+        s: "OK",
+        p: "42",
+      },
+      {
+        id: "1337",
+        n: "not a match",
+        s: "AZ",
+      },
+      {
+        id: "1",
+        n: "other data then the search term | not the best match, but a higher population",
+        s: "OK",
+        p: "1337",
+      },
+      {
+        id: "3",
+        n: "more other data before the search term | third-best match, same pop as best match",
+        s: "OK",
+        p: "42",
+      },
+      {
+        id: "4",
+        n: "lots of other data and only then the search term | Fourth-best, so for this match the population doesn't matter",
+        s: "OK",
+        p: "9000",
+      },
+    ];
+
+    // Act:
+    const results = getRelevantLocations("search term", availableLocations);
+
+    // Assert:
+    expect(results).toStrictEqual([
+      availableLocations[2],
+      availableLocations[0],
+      availableLocations[3],
+      availableLocations[4],
+    ]);
+  });
+
+  it("keeps result order as-is if no population is known", () => {
+    // Arrange:
+    const availableLocations: RelevantLocation[] = [
+      {
+        id: "2",
+        n: "search term | best match",
+        s: "OK",
+      },
+      {
+        id: "1337",
+        n: "not a match",
+        s: "AZ",
+      },
+      {
+        id: "1",
+        n: "other data then the search term | second-best match",
+        s: "OK",
+      },
+      {
+        id: "3",
+        n: "more other data before the search term | third-best match",
+        s: "OK",
+      },
+      {
+        id: "4",
+        n: "lots of other data and only then the search term | Fourth-best",
+        s: "OK",
+        p: "9000",
+      },
+    ];
+
+    // Act:
+    const results = getRelevantLocations("search term", availableLocations);
+
+    // Assert:
+    expect(results).toStrictEqual([
+      availableLocations[0],
+      availableLocations[2],
+      availableLocations[3],
+      availableLocations[4],
+    ]);
+  });
+
   it("matches alternate names", () => {
     // Arrange:
     const availableLocations: RelevantLocation[] = [
