@@ -44,7 +44,7 @@ export const PercentageChart = (props: WelcomeToPremiumProps) => {
         fill="none"
         strokeWidth={ringWidth}
         strokeDasharray={`${circumference} ${circumference}`}
-        strokeDashoffset={sliceLength}
+        strokeDashoffset={`${sliceLength}`}
         // Rotate it to not overlap the other slices
         transform={`rotate(${-90 + 360 * percentOffset} ${diameter / 2} ${
           diameter / 2
