@@ -2,7 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { Locator, Page } from "@playwright/test";
+import { Locator, Page, expect } from "@playwright/test";
+import { PurchasePage } from "./purchasePage";
 
 export class DashboardPage {
   readonly page: Page;
@@ -58,11 +59,45 @@ export class DashboardPage {
   readonly closeAppsAndServices: Locator;
   readonly signOut: Locator;
 
+  readonly allExposures: Locator;
+  readonly fixExposureButton: Locator;
+  readonly removeExposuresManually: Locator;
+  readonly reviewAndRemoveProfiles: Locator;
+  readonly markAsFixed: Locator;
+  readonly skipExposureRemoval: Locator;
+  readonly continuousProtectionButton: Locator;
+  readonly numExposures: Locator;
+  readonly numFixed: Locator;
+
   constructor(page: Page) {
     this.page = page;
+    this.allExposures = page.locator(
+      '//button[starts-with(@class, "ExposureCard_chevron")]',
+    );
+    this.fixExposureButton = page.getByRole("link", {
+      name: "Fix all exposures",
+    });
+    this.removeExposuresManually = page.getByRole("link", {
+      name: "I’ll remove them manually",
+    });
+    this.reviewAndRemoveProfiles = page.getByText(
+      "Review & remove your profiles",
+    );
+    this.markAsFixed = page.getByRole("button", { name: "Mark as fixed" });
+    this.skipExposureRemoval = page.getByRole("link", { name: "Skip for now" });
+    this.continuousProtectionButton = page.getByRole("button", {
+      name: "Get continuous protection",
+    });
+
     this.dataBreachEmailDropdown = page.locator("custom-select");
     this.siteFoundImage = page.locator("figure img");
     this.breachStats = page.locator("breach-stats");
+    this.numExposures = page.locator(
+      '//*[starts-with(@class, "Chart_headingNr")]',
+    );
+    this.numFixed = page
+      .locator('//div[starts-with(@class, "ProgressCard_progressStat_")]/span')
+      .first();
 
     // top nav
     this.fireFoxMonitorLogoImgButton = page.locator(
@@ -189,5 +224,40 @@ export class DashboardPage {
   async goToFAQs() {
     await this.faqsPageLink.click();
     await this.page.waitForURL("**/firefox-monitor-faq");
+  }
+
+  async verifyPremiumUpsellModalOptions() {
+    // verify subscription dialog elements
+    await expect(this.subscribeDialogCloseButton).toBeVisible();
+    await expect(this.yearlyMonthlyTablist).toBeVisible();
+
+    // verify user purchase choices
+    await this.yearlyTab.click();
+    await expect(this.subscribeDialogSelectYearlyPlanLink).toBeVisible();
+
+    await this.monthlyTab.click();
+    await expect(this.subscribeDialogSelectMonthlyPlanLink).toBeVisible();
+
+    // Check monthly redirection
+    await this.subscribeDialogSelectMonthlyPlanLink.click();
+    const purchasePage = new PurchasePage(this.page);
+    await purchasePage.subscriptionHeader.waitFor();
+    await expect(purchasePage.planDetails).toContainText("monthly");
+    await expect(purchasePage.subscriptionHeader).toBeVisible();
+
+    // Check yearly redirection
+    await this.page.goto(`${process.env.E2E_TEST_BASE_URL}`);
+    await this.subscribeButton.waitFor();
+    await this.subscribeButton.click();
+    await this.subscribeDialogSelectYearlyPlanLink.click();
+    await purchasePage.subscriptionHeader.waitFor();
+    // Text contains invisible characters which need to be hardcoded in an assertion
+    await expect(purchasePage.planDetails).toContainText(
+      `${process.env.E2E_TEST_ENV === "prod" ? "yearly" : "every ⁨2⁩ months"}`,
+    );
+
+    // Go back to dashboard.
+    await this.page.goto(`${process.env.E2E_TEST_BASE_URL}`);
+    await this.subscribeButton.waitFor();
   }
 }
