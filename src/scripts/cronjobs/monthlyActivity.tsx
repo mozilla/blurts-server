@@ -82,16 +82,6 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
     month: currentMonth,
   });
   if (subscriber.fxa_profile_json?.subscriptions?.includes("monitor")) {
-    if (
-      data.dataBreachFixedDataPointsNum +
-        data.dataBrokerManuallyResolvedDataPointsNum >
-      0
-    ) {
-      subject = l10n.getString("email-monthly-plus-manual-subject", {
-        month: currentMonth,
-      });
-    }
-
     subject = l10n.getString("email-monthly-plus-auto-subject", {
       month: currentMonth,
     });

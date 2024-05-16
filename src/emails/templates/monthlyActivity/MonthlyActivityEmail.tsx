@@ -8,6 +8,7 @@ import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { ExtendedReactLocalization } from "../../../app/functions/l10n";
 import { EmailFooter } from "../EmailFooter";
 import { EmailHeader } from "../EmailHeader";
+import { EmailStyles } from "../EmailStyles";
 
 export type Props = {
   subscriber: SanitizedSubscriberRow;
@@ -17,157 +18,10 @@ export type Props = {
 
 export const MonthlyActivityEmail = (props: Props) => {
   if (props.subscriber.fxa_profile_json?.subscriptions?.includes("monitor")) {
-    if (
-      props.data.dataBreachFixedDataPointsNum +
-        props.data.dataBrokerManuallyResolvedDataPointsNum >
-      0
-    ) {
-      return <MonthlyActivityPlusWithManualRemovalsEmail {...props} />;
-    }
-
     return <MonthlyActivityPlusWithAutoRemovalsOnlyEmail {...props} />;
   }
 
   return <MonthlyActivityFreeEmail {...props} />;
-};
-
-const MonthlyActivityPlusWithManualRemovalsEmail = (props: Props) => {
-  const l10n = props.l10n;
-  const utmCampaign = "monthly-report-plus";
-
-  return (
-    <mjml>
-      <mj-head>
-        <mj-preview>
-          {l10n.getString("email-monthly-plus-manual-preview")}
-        </mj-preview>
-      </mj-head>
-      <mj-body>
-        <EmailHeader l10n={l10n} utm_campaign={utmCampaign} />
-        <mj-section padding="20px">
-          <mj-column>
-            <mj-text
-              align="center"
-              font-size="16px"
-              line-height="24px"
-              padding-bottom="40px"
-            >
-              {l10n.getString("email-monthly-plus-manual-intro-content")}
-            </mj-text>
-            <mj-button
-              href={`${process.env.SERVER_URL}/user/dashboard?utm_source=monitor-product&utm_medium=email&utm_campaign=${utmCampaign}&utm_content=view-your-dashboard-us`}
-              background-color="#0060DF"
-              font-weight={600}
-              font-size="15px"
-              line-height="22px"
-            >
-              {l10n.getString("email-monthly-plus-manual-cta-label")}
-            </mj-button>
-          </mj-column>
-        </mj-section>
-        <mj-section padding="20px">
-          <mj-column>
-            <mj-text
-              align="center"
-              font-size="24px"
-              line-height="26px"
-              font-weight={700}
-            >
-              {l10n.getString("email-monthly-plus-manual-fixed-heading")}
-            </mj-text>
-            <mj-text align="center" font-size="16px" line-height="24px">
-              {l10n.getString("email-monthly-plus-manual-fixed-lead")}
-            </mj-text>
-          </mj-column>
-        </mj-section>
-        <mj-section>
-          <mj-column vertical-align="bottom">
-            <mj-image
-              href={`${process.env.SERVER_URL}/user/dashboard?utm_source=monitor-product&utm_medium=email&utm_campaign=${utmCampaign}&utm_content=manually-fixed`}
-              src={`${process.env.SERVER_URL}/images/email/monthly-activity/illustration-manual.png`}
-              alt=""
-              width="90px"
-              align="center"
-            />
-            <mj-text
-              font-size="14px"
-              line-height="18px"
-              font-weight={600}
-              align="center"
-            >
-              {l10n.getString(
-                "email-monthly-plus-manual-fixed-section-manual-heading",
-              )}
-            </mj-text>
-            <mj-text
-              font-size="38px"
-              line-height="40px"
-              font-weight={700}
-              align="center"
-            >
-              {props.data.dataBrokerManuallyResolvedDataPointsNum +
-                props.data.dataBreachFixedDataPointsNum}
-            </mj-text>
-          </mj-column>
-          <mj-column vertical-align="bottom">
-            <mj-image
-              href={`${process.env.SERVER_URL}/user/dashboard?utm_source=monitor-product&utm_medium=email&utm_campaign=${utmCampaign}&utm_content=in-progress`}
-              src={`${process.env.SERVER_URL}/images/email/monthly-activity/illustration-in-progress.png`}
-              alt=""
-              width="90px"
-              align="center"
-            />
-            <mj-text
-              font-size="14px"
-              line-height="18px"
-              font-weight={600}
-              align="center"
-            >
-              {l10n.getString(
-                "email-monthly-plus-manual-fixed-section-in-progress-heading",
-              )}
-            </mj-text>
-            <mj-text
-              font-size="38px"
-              line-height="40px"
-              font-weight={700}
-              align="center"
-            >
-              {props.data.dataBrokerInProgressDataPointsNum}
-            </mj-text>
-          </mj-column>
-          <mj-column vertical-align="bottom">
-            <mj-image
-              href={`${process.env.SERVER_URL}/user/dashboard?utm_source=monitor-product&utm_medium=email&utm_campaign=${utmCampaign}&utm_content=auto-removed`}
-              src={`${process.env.SERVER_URL}/images/email/monthly-activity/illustration-done.png`}
-              alt=""
-              width="90px"
-              align="center"
-            />
-            <mj-text
-              font-size="14px"
-              line-height="18px"
-              font-weight={600}
-              align="center"
-            >
-              {l10n.getString(
-                "email-monthly-plus-manual-fixed-section-done-heading",
-              )}
-            </mj-text>
-            <mj-text
-              font-size="38px"
-              line-height="40px"
-              font-weight={700}
-              align="center"
-            >
-              {props.data.dataBrokerAutoFixedDataPointsNum}
-            </mj-text>
-          </mj-column>
-        </mj-section>
-        <EmailFooter l10n={l10n} utm_campaign={utmCampaign} />
-      </mj-body>
-    </mjml>
-  );
 };
 
 const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
@@ -177,6 +31,7 @@ const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
   return (
     <mjml>
       <mj-head>
+        <EmailStyles />
         <mj-preview>
           {l10n.getString("email-monthly-plus-auto-preview")}
         </mj-preview>
@@ -300,6 +155,7 @@ const MonthlyActivityFreeEmail = (props: Props) => {
   return (
     <mjml>
       <mj-head>
+        <EmailStyles />
         <mj-preview>{l10n.getString("email-monthly-free-preview")}</mj-preview>
       </mj-head>
       <mj-body>

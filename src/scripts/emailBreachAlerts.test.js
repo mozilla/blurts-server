@@ -15,7 +15,7 @@ jest.mock("../utils/email.js", () => {
   return {
     initEmail: jest.fn(),
     EmailTemplateType: jest.fn(),
-    getEmailCtaHref: jest.fn(),
+    getEmailCtaDashboardHref: jest.fn(),
     sendEmail: jest.fn(),
   };
 });

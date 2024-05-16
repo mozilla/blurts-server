@@ -21,6 +21,15 @@ export const EmailHeader = (props: Props) => {
         <mj-image
           alt={l10n.getString("public-nav-name")}
           src={`${process.env.SERVER_URL}/images/email/monitor-logo-transparent.png`}
+          css-class="light-mode-only"
+          href={`${process.env.SERVER_URL}/user/dashboard?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utm_campaign}&utm_content=header-logo`}
+          width="200px"
+          align="left"
+        />
+        <mj-image
+          alt={l10n.getString("public-nav-name")}
+          src={`${process.env.SERVER_URL}/images/email/monitor-logo-transparent-dark-mode.png`}
+          css-class="dark-mode-only"
           href={`${process.env.SERVER_URL}/user/dashboard?utm_source=monitor-product&utm_medium=email&utm_campaign=${props.utm_campaign}&utm_content=header-logo`}
           width="200px"
           align="left"

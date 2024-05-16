@@ -5,17 +5,10 @@
 breach-all-meta-title = { -brand-fx-monitor } - Tüm Veri İhlalleri
 breach-all-meta-social-title = { -brand-fx-monitor } tarafından tespit edilen tüm ihlaller
 breach-all-meta-social-description = { -brand-fx-monitor } tarafından tespit edilen bilinen ihlallerin tam listesine göz atın ve bilgilerinizin ele geçirilip geçirilmediğini öğrenin.
-
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = { $company } veri ihlalinden etkilendiniz mi?
 breach-detail-meta-social-description = Bu ihlalde kişisel bilgilerinizin ele geçirilip geçirilmediğini öğrenmek ve bundan sonra bu gibi durumlarda ne yapacağınızı anlamak için { -brand-fx-monitor } kullanın.
-
-## Breaches header
-
-## Breaches resolved filter
-
-## Breaches table
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -26,7 +19,6 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Parolalarınızı güncelleyip iki aşamalı kimlik doğrulamayı (2FA) etkinleştirin.
-
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -95,6 +87,8 @@ breach-checklist-phone-header-2 = Gerçek telefon numaranızı gizleyen { $firef
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Güvenlik sorularınızı güncelleyin.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = Çoğu durumda şirketin web sitesine güvenlik sorularınızı güncellemenizi öneririz. Ancak bazı durumlarda <b>site kapalı olabilir veya kötü amaçlı içerik barındırıyor olabilir</b>. Bu yüzden <breached-company-link>siteyi ziyaret ederken</breached-company-link> dikkatli olun. Ek bir önlem olarak, tüm güvenlik sorularını kullandığınız başka önemli hesaplarınız varsa onları da güncellemeli ve tüm hesaplarınızda birbirinden farklı parolalar kullanmalısınız.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
