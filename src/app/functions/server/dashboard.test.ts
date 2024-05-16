@@ -496,7 +496,6 @@ describe("getExposureReduction", () => {
       fixedSanitizedDataPoints: [],
       dataBreachUnresolvedNum: 0,
       dataBreachResolvedNum: 0,
-      dataBrokerManuallyResolvedNum: 0,
     };
 
     const exposureReduction = getDataPointReduction(testSummary);
