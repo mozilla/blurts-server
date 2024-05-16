@@ -619,7 +619,6 @@ it("sends an API call to disable monthly monitor reports", async () => {
 
   expect(global.fetch).toHaveBeenCalledWith("/api/v1/user/update-comm-option", {
     body: JSON.stringify({
-      instantBreachAlerts: "primary",
       monthlyMonitorReport: false,
     }),
     method: "POST",
