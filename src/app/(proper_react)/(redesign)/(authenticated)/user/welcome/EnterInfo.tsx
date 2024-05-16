@@ -310,17 +310,22 @@ export const EnterInfo = ({
       <p>{l10n.getString("onboarding-enter-details-comfirm-dialog-text")}</p>
       <div className={styles.dialogContents}>
         <dl className={styles.infoList}>
-          {userDetailsData.map(
-            ({ key, label, displayValue }) =>
+          {userDetailsData.map(({ key, label, displayValue }) => {
+            const isNameRelatedField = key.includes("name");
+            return (
               displayValue && (
-                <span key={key} className={styles.infoItem}>
+                <span
+                  key={key}
+                  className={`${styles.infoItem} ${isNameRelatedField ? styles.isNameRelatedField : ""}`.trim()}
+                >
                   <dt>{label}:</dt>
                   <dd>
                     <strong>{displayValue}</strong>
                   </dd>
                 </span>
-              ),
-          )}
+              )
+            );
+          })}
         </dl>
       </div>
       <div className={styles.stepButtonWrapper}>

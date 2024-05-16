@@ -4,7 +4,6 @@
 
 "use client";
 
-import { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useL10n } from "../../hooks/l10n";
@@ -79,6 +78,8 @@ export const DoughnutChart = (props: Props) => {
       .slice(0, index)
       .reduce((offset, [_label, num]) => offset + num, 0);
 
+    const sliceLength = circumference * (1 - percent) + sliceBorderWidth;
+
     return (
       <circle
         key={label}
@@ -89,11 +90,7 @@ export const DoughnutChart = (props: Props) => {
         fill="none"
         strokeWidth={ringWidth}
         strokeDasharray={`${circumference} ${circumference}`}
-        style={
-          {
-            "--sliceLength": circumference * (1 - percent) + sliceBorderWidth,
-          } as CSSProperties
-        }
+        strokeDashoffset={`${sliceLength}`}
         // Rotate it to not overlap the other slices
         transform={`rotate(${-90 + 360 * percentOffset} ${diameter / 2} ${
           diameter / 2

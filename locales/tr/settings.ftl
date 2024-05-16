@@ -16,6 +16,7 @@ settings-alert-preferences-allow-breach-alerts-subtitle = Bu uyarılar bir veri 
 settings-alert-preferences-option-one = İhlal uyarılarını etkilenen e-posta adresine gönder
 settings-alert-preferences-option-two = Tüm ihlal uyarılarını birinci e-posta adresine gönder
 settings-alert-preferences-allow-monthly-monitor-report-title = Aylık { -brand-monitor } raporu
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Yeni riskler, çözülen sorunlar ve ilgilenmeniz gereken sorunlara dair aylık bir rapor.
 
 ## Monitored email addresses
 

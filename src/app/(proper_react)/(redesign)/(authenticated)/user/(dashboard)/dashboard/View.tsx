@@ -4,7 +4,8 @@
 
 "use client";
 
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Session } from "next-auth";
 import { OnerepScanResultRow } from "knex/types/tables";
@@ -51,6 +52,8 @@ import {
 } from "../../../../../../../constants";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 
+export type TabType = "action-needed" | "fixed";
+
 export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData;
@@ -71,9 +74,8 @@ export type Props = {
   experimentationId: string;
   elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
+  activeTab: TabType;
 };
-
-export type TabType = "action-needed" | "fixed";
 
 export type TabData = {
   name: string;
@@ -84,6 +86,19 @@ export const View = (props: Props) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry(props.experimentationId);
   const countryCode = useContext(CountryCodeContext);
+  const pathname = usePathname();
+
+  const [activeTab, setActiveTab] = useState<TabType>(props.activeTab);
+
+  useEffect(() => {
+    const nextPathname = `/user/dashboard/${activeTab}`;
+    if (pathname !== nextPathname) {
+      // Directly interacting with the history API is recommended by Next.js to
+      // avoid re-rendering on the server:
+      // See https://github.com/vercel/next.js/discussions/48110#discussioncomment-7563979.
+      window.history.replaceState(null, "", nextPathname);
+    }
+  }, [pathname, activeTab]);
 
   const adjustedScanResults = props.userScanData.results.map((scanResult) => {
     if (scanResult.status === "new" && hasPremium(props.user)) {
@@ -110,7 +125,6 @@ export const View = (props: Props) => {
     dateFound: "show-all-date-found",
   };
   const [filters, setFilters] = useState<FilterState>(initialFilterState);
-  const [selectedTab, setSelectedTab] = useState<TabType>("action-needed");
   const [activeExposureCardKey, setActiveExposureCardKey] = useState<
     string | null
   >(null);
@@ -124,6 +138,7 @@ export const View = (props: Props) => {
       key: "fixed",
     },
   ];
+
   const breachesDataArray = props.userBreaches.flat();
   const initialScanInProgress =
     adjustedScanData.scan?.onerep_scan_status === "in_progress" &&
@@ -156,7 +171,7 @@ export const View = (props: Props) => {
       );
     });
 
-  const tabSpecificExposures = getTabSpecificExposures(selectedTab);
+  const tabSpecificExposures = getTabSpecificExposures(activeTab);
   const filteredExposures = filterExposures(tabSpecificExposures, filters);
   const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
     const exposureCardKey = isScanResult(exposure)
@@ -404,8 +419,9 @@ export const View = (props: Props) => {
   };
 
   const showCsatSurvey =
+    hasPremium(props.user) &&
     props.enabledFeatureFlags.includes("CsatSurvey") &&
-    selectedTab === "fixed" &&
+    activeTab === "fixed" &&
     typeof props.elapsedTimeInDaysSinceInitialScan !== "undefined";
 
   return (
@@ -422,7 +438,7 @@ export const View = (props: Props) => {
         <TabList
           tabs={tabsData}
           onSelectionChange={(selectedKey) => {
-            setSelectedTab(selectedKey as TabType);
+            setActiveTab(selectedKey as TabType);
             recordTelemetry("dashboard", "view", {
               dashboard_tab: selectedKey as TabType,
               legacy_user: !props.isNewUser,
@@ -430,7 +446,7 @@ export const View = (props: Props) => {
               broker_count: adjustedScanResults.length,
             });
           }}
-          selectedKey={selectedTab}
+          selectedKey={activeTab}
         />
       </Toolbar>
       {showCsatSurvey &&
@@ -446,7 +462,7 @@ export const View = (props: Props) => {
         )}
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
-          tabType={selectedTab}
+          tabType={activeTab}
           scanInProgress={initialScanInProgress}
           isPremiumUser={hasPremium(props.user)}
           isEligibleForPremium={canSubscribeToPremium({
@@ -468,7 +484,7 @@ export const View = (props: Props) => {
             user: props.user,
           }}
           onShowFixed={() => {
-            setSelectedTab("fixed");
+            setActiveTab("fixed");
             recordTelemetry("dashboard", "view", {
               dashboard_tab: "fixed",
               legacy_user: !props.isNewUser,
@@ -482,7 +498,7 @@ export const View = (props: Props) => {
           totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
         />
         <section className={styles.exposuresArea}>
-          {selectedTab === "action-needed" ? (
+          {activeTab === "action-needed" ? (
             <TabContentActionNeeded />
           ) : (
             <TabContentFixed />

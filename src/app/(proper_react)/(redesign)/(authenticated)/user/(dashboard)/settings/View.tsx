@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Session } from "next-auth";
-import { EmailAddressRow } from "knex/types/tables";
+import { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import Image from "next/image";
 import styles from "./View.module.scss";
 import AddEmailDialogIllustration from "./images/DeleteAccountDialogIllustration.svg";
@@ -26,6 +26,7 @@ import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/
 export type Props = {
   l10n: ExtendedReactLocalization;
   user: Session["user"];
+  subscriber: SubscriberRow;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
   subscriptionBillingAmount: {
@@ -92,6 +93,7 @@ export const SettingsView = (props: Props) => {
           <hr />
           <AlertAddressForm
             user={props.user}
+            subscriber={props.subscriber}
             enabledFeatureFlags={props.enabledFeatureFlags}
           />
           {hasPremium(props.user) && (

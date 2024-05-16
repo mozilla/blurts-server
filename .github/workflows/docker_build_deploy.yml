@@ -31,6 +31,9 @@ jobs:
           echo "{\"commit\":\"$GITHUB_SHA\",\"version\":\"$GITHUB_REF\",\"source\":\"https://github.com/$GITHUB_REPOSITORY\",\"build\":\"$GITHUB_RUN_ID\"}" > version.json
 
       - name: Build Docker image
+        env:
+          UPLOAD_SENTRY_SOURCEMAPS: true
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         run: |
           docker build --tag blurts-server \
             --build-arg SENTRY_RELEASE="$GITHUB_REF_NAME" \
