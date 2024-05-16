@@ -32,8 +32,4 @@ RUN GLEAN_PYTHON=python GLEAN_PIP=pip npm run build
 ARG SENTRY_RELEASE
 ENV SENTRY_RELEASE=$SENTRY_RELEASE
 
-ARG APP_ENV
-ENV APP_ENV=$APP_ENV
-RUN if [ "$APP_ENV" = "cloudrun" ] ; then npm run db:migrate ; fi
-
 CMD ["npm", "start"]
