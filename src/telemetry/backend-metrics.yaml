@@ -216,7 +216,3 @@ account:
       plan_type:
         description: Which type of plan the user is on ["1 month", "1 year"]
         type: string
-
-
-
-
