@@ -81,6 +81,8 @@ export const DoughnutChart = (props: Props) => {
       .reduce((offset, [_label, num]) => offset + num, 0);
     const sliceLength = circumference * (1 - percent) + sliceBorderWidth;
 
+    const sliceLength = circumference * (1 - percent) + sliceBorderWidth;
+
     return (
       <circle
         key={label}
