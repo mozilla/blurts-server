@@ -29,7 +29,5 @@ export const FixedExposures: Story = {
     isEligibleForFreeScan: true,
     isEligibleForPremium: true,
     scanInProgress: false,
-    isPremiumUser: true,
-    isShowFixed: true,
   },
 };
