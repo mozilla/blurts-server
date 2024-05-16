@@ -48,8 +48,13 @@ export async function POST(req: NextRequest) {
         default:
           allEmailsToPrimary = null;
       }
-      await setAllEmailsToPrimary(subscriber, allEmailsToPrimary);
-      await setMonthlyMonitorReport(subscriber, monthlyMonitorReport);
+
+      if (isEmailUpdateCommType(instantBreachAlerts)) {
+        await setAllEmailsToPrimary(subscriber, allEmailsToPrimary);
+      }
+      if (typeof monthlyMonitorReport === "boolean") {
+        await setMonthlyMonitorReport(subscriber, monthlyMonitorReport);
+      }
 
       return NextResponse.json({
         success: true,
@@ -63,4 +68,10 @@ export async function POST(req: NextRequest) {
     // Not Signed in, redirect to home
     return NextResponse.redirect(AppConstants.SERVER_URL, 301);
   }
+}
+
+function isEmailUpdateCommType(
+  value: string,
+): value is EmailUpdateCommTypeOfOptions {
+  return ["null", "affected", "primary"].includes(value);
 }
