@@ -29,9 +29,6 @@ page:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
-        type: string
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
@@ -81,9 +78,6 @@ dashboard:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
-        type: string
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
@@ -130,9 +124,6 @@ popup:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
-        type: string
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
@@ -164,9 +155,6 @@ popup:
         type: string
       user_id:
         description: Mozilla accounts user ID.
-        type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
         type: string
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
@@ -201,9 +189,6 @@ button:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
-        type: string
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
@@ -236,9 +221,6 @@ field:
         type: string
       user_id:
         description: Mozilla accounts user ID.
-        type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
         type: string
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
@@ -273,9 +255,6 @@ link:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
-        type: string
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
@@ -309,9 +288,6 @@ upgrade_intent:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
-        type: string
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
@@ -344,9 +320,6 @@ upgrade_intent:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
-        type: string
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
@@ -377,9 +350,6 @@ expand:
         type: string
       user_id:
         description: Mozilla accounts user ID.
-        type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
         type: string
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
@@ -414,9 +384,6 @@ collapse:
       user_id:
         description: Mozilla accounts user ID.
         type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
-        type: string
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
         type: string
@@ -449,9 +416,6 @@ cta_button:
         type: string
       user_id:
         description: Mozilla accounts user ID.
-        type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
         type: string
       session_id:
         description: An ID that allows us to track “sessions” of the user experience within the product.
