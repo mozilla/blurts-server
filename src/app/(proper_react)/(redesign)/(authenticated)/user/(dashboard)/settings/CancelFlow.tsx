@@ -64,12 +64,20 @@ export const CancelFlow = (props: Props) => {
                   : "settings-unsubscribe-dialog-confirmation-redirect-title",
             )}
             illustration={
-              <video width="320" height="240" controls preload="none">
+              <video
+                aria-hidden={true}
+                autoPlay={true}
+                loop={true}
+                muted={true}
+                className={styles.cancellationAnimation}
+              >
                 <source
-                  src="./animations/CancellationFlowAnimation.mp4"
+                  // Unfortunately video files cannot currently be imported, so make
+                  // sure these files are present in /public. See
+                  // https://github.com/vercel/next.js/issues/35248
+                  src="/animations/CancellationFlowAnimation.mp4"
                   type="video/mp4"
                 />
-                {/* Fallback image */}
                 <Image
                   className={styles.cancellationIllustrationWrapper}
                   src={CancellationSurveyPlaneIllustration}
