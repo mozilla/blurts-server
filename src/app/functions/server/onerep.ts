@@ -14,10 +14,7 @@ import {
   getLatestScanForProfileByReason,
 } from "../../../db/tables/onerep_scans";
 import { RemovalStatus } from "../universal/scanResult.js";
-import {
-  FeatureFlagName,
-  getEnabledFeatureFlags,
-} from "../../../db/tables/featureFlags";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 import { logger } from "./logging";
 
 export const monthlyScansQuota = parseInt(
@@ -368,11 +365,6 @@ export async function isEligibleForFreeScan(
 
   if (!user?.subscriber?.id) {
     throw new Error("No session with a known subscriber found");
-  }
-
-  const enabledFlags = await getEnabledFeatureFlags({ email: user.email });
-  if (!enabledFlags.includes("FreeBrokerScan")) {
-    return false;
   }
 
   const profileId = await getOnerepProfileId(user.subscriber.id);

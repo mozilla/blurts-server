@@ -184,11 +184,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             userScanData={scanData}
             isEligibleForPremium={props.countryCode === "us"}
             isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
-            enabledFeatureFlags={[
-              "FreeBrokerScan",
-              "PremiumBrokerRemoval",
-              "CsatSurvey",
-            ]}
+            enabledFeatureFlags={["PremiumBrokerRemoval", "CsatSurvey"]}
             monthlySubscriptionUrl=""
             yearlySubscriptionUrl=""
             fxaSettingsUrl=""
