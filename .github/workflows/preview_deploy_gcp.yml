@@ -14,6 +14,10 @@ jobs:
   deploy:
     permissions: 
       pull-requests: write
+    # Secrets aren't available for Dependabot PR (because the updated
+    # dependencies might abuse them), so they don't have enough rights to
+    # do a preview deployment:
+    if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
