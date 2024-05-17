@@ -69,6 +69,5 @@ checkVersion("the package-lock.json engines", lockFile.packages[""].engines.node
 checkVersion("the Dockerfile", dockerFileNodeVersion);
 checkVersion("netlify.toml", netlifyNodeVersion);
 checkVersion("esbuild.cronjobs.json", esbuildVersion);
-circleNodeVersions.forEach(version => checkVersion("the CircleCI config", version));
 ghaVersions.forEach(([workflow, version]) => checkVersion(`.github/workflows/${workflow}`, version));
 console.log(`Node version consistently set to [${getMinorOnly(packageJson.volta.node)}] everywhere!`);
