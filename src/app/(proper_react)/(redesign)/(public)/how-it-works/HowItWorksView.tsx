@@ -4,10 +4,15 @@
 
 import { getL10n } from "../../../../functions/l10n/serverComponents";
 import { Button } from "../../../../components/client/Button";
-import RemoveStep1 from "./images/remove-step-1.svg";
-import RemoveStep2 from "./images/remove-step-2.svg";
-import RemoveStep3 from "./images/remove-step-3.svg";
-import Resolve from "./images/resolve.svg";
+import {
+  RemoveStep1,
+  RemoveStep2,
+  RemoveStep3,
+  Resolve,
+  NameIcon,
+  LocationIcon,
+  DOBIcon,
+} from "./images";
 
 import styles from "./HowItWorksView.module.scss";
 import Image from "next/image";
@@ -50,27 +55,36 @@ export const HowItWorksView = () => {
         <div className={styles.step}>
           <h3>{l10n.getString("section-1-step-1-title")}</h3>
           <h3>{l10n.getString("section-1-step-1-subtitle")}</h3>
-          <p>
-            {l10n.getFragment("section-1-step-1-name", {
-              elems: {
-                name: <span className={styles.bolded} />,
-              },
-            })}
-          </p>
-          <p>
-            {l10n.getFragment("section-1-step-1-location", {
-              elems: {
-                location: <span className={styles.bolded} />,
-              },
-            })}
-          </p>
-          <p>
-            {l10n.getFragment("section-1-step-1-dob", {
-              elems: {
-                dob: <span className={styles.bolded} />,
-              },
-            })}
-          </p>
+          <div>
+            <Image src={NameIcon} alt="name icon" />
+            <p>
+              {l10n.getFragment("section-1-step-1-name", {
+                elems: {
+                  name: <span className={styles.bolded} />,
+                },
+              })}
+            </p>
+          </div>
+          <div>
+            <Image src={LocationIcon} alt="location icon" />
+            <p>
+              {l10n.getFragment("section-1-step-1-location", {
+                elems: {
+                  location: <span className={styles.bolded} />,
+                },
+              })}
+            </p>
+          </div>
+          <div>
+            <Image src={DOBIcon} alt="dob icon" />
+            <p>
+              {l10n.getFragment("section-1-step-1-dob", {
+                elems: {
+                  dob: <span className={styles.bolded} />,
+                },
+              })}
+            </p>
+          </div>
           <p>{l10n.getString("section-1-step-1-closing-text")}</p>
           <Image src={RemoveStep1} alt="step 1 screenshot" />
         </div>
@@ -111,20 +125,16 @@ export const HowItWorksView = () => {
           </Button>
         </div>
         {/* STEP 1 */}
-        <div className={styles.step}>
+        <div className={styles.stepGroup}>
           <h3>{l10n.getString("section-2-step-1-title")}</h3>
           <h3>{l10n.getString("section-2-step-1-subtitle")}</h3>
           <p>{l10n.getString("section-2-step-1-text")}</p>
-        </div>
-        {/* STEP 2 */}
-        <div className={styles.step}>
+          {/* STEP 2 */}
           <h3>{l10n.getString("section-2-step-2-title")}</h3>
           <h3>{l10n.getString("section-2-step-2-subtitle")}</h3>
           <p>{l10n.getString("section-2-step-2-text-1")}</p>
           <p>{l10n.getString("section-2-step-2-text-2")}</p>
-        </div>
-        {/* STEP 3 */}
-        <div className={styles.step}>
+          {/* STEP 3 */}
           <h3>{l10n.getString("section-2-step-3-title")}</h3>
           <h3>{l10n.getString("section-2-step-3-subtitle")}</h3>
           <p>{l10n.getString("section-2-step-3-text")}</p>
@@ -139,14 +149,18 @@ export const HowItWorksView = () => {
       {/* FOOTER */}
       <footer>
         <h2>{l10n.getString("footer-title")}</h2>
-        <input
-          placeholder={l10n.getString("footer-input-placeholder")}
-          type="email"
-          name="email"
-          id="email"
-        />
-        <Button variant="primary">{l10n.getString("footer-cta-button")}</Button>
-        <p>{l10n.getString("footer-have-i-been-pwned")}</p>
+        <div>
+          <input
+            placeholder={l10n.getString("footer-input-placeholder")}
+            type="email"
+            name="email"
+            id="email"
+          />
+          <Button variant="primary">
+            {l10n.getString("footer-cta-button")}
+          </Button>
+          <p>{l10n.getString("footer-have-i-been-pwned")}</p>
+        </div>
       </footer>
     </main>
   );
