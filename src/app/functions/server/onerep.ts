@@ -14,7 +14,6 @@ import {
   getLatestScanForProfileByReason,
 } from "../../../db/tables/onerep_scans";
 import { RemovalStatus } from "../universal/scanResult.js";
-import { FeatureFlagName } from "../../../db/tables/featureFlags";
 import { logger } from "./logging";
 
 export const monthlyScansQuota = parseInt(
@@ -378,15 +377,8 @@ export async function isEligibleForFreeScan(
   return true;
 }
 
-export function isEligibleForPremium(
-  countryCode: string,
-  enabledFlags: FeatureFlagName[],
-) {
+export function isEligibleForPremium(countryCode: string) {
   if (countryCode !== "us") {
-    return false;
-  }
-
-  if (!enabledFlags.includes("PremiumBrokerRemoval")) {
     return false;
   }
 
