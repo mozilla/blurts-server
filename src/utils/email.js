@@ -85,6 +85,7 @@ async function sendEmail (recipient, subject, html) {
   } catch (e) {
     if (e instanceof Error) {
       console.error("error_sending_email", { message: e.message, stack: e.stack });
+    /* c8 ignore next 3 */
     } else {
       console.error("error_sending_email", { message: JSON.stringify(e) })
     }
