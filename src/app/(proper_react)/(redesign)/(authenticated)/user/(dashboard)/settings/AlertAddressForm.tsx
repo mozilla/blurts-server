@@ -93,7 +93,7 @@ export const AlertAddressForm = (props: Props) => {
     const newValue = !activateMonthlyMonitorReport;
     setActivateMonthlyMonitorReport(newValue);
     const body: EmailUpdateCommOptionRequest = {
-      monthlyMonitorReport: monitorReportAllowed,
+      monthlyMonitorReport: newValue,
     };
     void fetch("/api/v1/user/update-comm-option", {
       method: "POST",
