@@ -51,40 +51,45 @@ async function initEmail (smtpUrl = AppConstants.SMTP_URL) {
  * @param {string} recipient
  * @param {string} subject
  * @param {string} html
- * @returns {Promise<SMTPTransport.SentMessageInfo>} <Promise>
+ *
+ * @returns {Promise<SMTPTransport.SentMessageInfo>}
  */
-function sendEmail (recipient, subject, html) {
+async function sendEmail (recipient, subject, html) {
   if (!gTransporter) {
-    return Promise.reject(new Error('SMTP transport not initialized'))
+    throw new Error('SMTP transport not initialized');
   }
 
-  return new Promise((resolve, reject) => {
-    const emailFrom = AppConstants.EMAIL_FROM
-    const mailOptions = {
-      from: emailFrom,
-      to: recipient,
-      subject,
-      html,
-      headers: {
-        'x-ses-configuration-set': AppConstants.SES_CONFIG_SET
-      }
+  const emailFrom = AppConstants.EMAIL_FROM
+  const mailOptions = {
+    from: emailFrom,
+    to: recipient,
+    subject,
+    html,
+    headers: {
+      'x-ses-configuration-set': AppConstants.SES_CONFIG_SET
+    }
+  }
+
+  try {
+    const info = await gTransporter.sendMail(mailOptions);
+
+    /* c8 ignore next 5 */
+    if (gTransporter.transporter.name === 'JSONTransport') {
+      // @ts-ignore Added typing later, but it disagrees with actual use:
+      console.info('JSONTransport', { message: info.message.toString() })
+      return info;
     }
 
-    gTransporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        // @ts-ignore Added typing later, but it disagrees with actual use:
-        reject(new Error(error))
-        return
-      }
-      // TODO: Add unit test when changing this code:
-      /* c8 ignore next 4 */
-      if (gTransporter.transporter.name === 'JSONTransport') {
-        // @ts-ignore Added typing later, but it disagrees with actual use:
-        console.info('JSONTransport', { message: info.message.toString() })
-      }
-      resolve(info)
-    })
-  })
+    console.info("sent_email", { info });
+    return info;
+  } catch (e) {
+    if (e instanceof Error) {
+      console.error("error_sending_email", { message: e.message, stack: e.stack });
+    } else {
+      console.error("error_sending_email", { message: JSON.stringify(e) })
+    }
+    throw e;
+  }
 }
 
 /**
