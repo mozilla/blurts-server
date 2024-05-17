@@ -9,9 +9,9 @@ how-it-works-banner-text = We help fix exposures of your information from two di
 # Section 1 - We remove your info from data brokers
 ## Intro
 section-1-intro-title = We remove your info from <data_brokers>data brokers</data_brokers>
-section-1-intro-text_1 = These sites scrape your data from across the web to create profiles that include your name(s), current and previous addresses, family member names, criminal history, and much more. And they sell this information to anyone searching for you.
-section-1-intro-text_2 = Getting your information off these sites helps protect your privacy and keep stalkers or harassers from finding info like your phone number or home address.
-section-1-intro-cta_button = Get data removal
+section-1-intro-text-1 = These sites scrape your data from across the web to create profiles that include your name(s), current and previous addresses, family member names, criminal history, and much more. And they sell this information to anyone searching for you.
+section-1-intro-text-2 = Getting your information off these sites helps protect your privacy and keep stalkers or harassers from finding info like your phone number or home address.
+section-1-intro-cta-button = Get data removal
 
 ## Step 1
 section-1-step-1-title = Step 1
@@ -46,9 +46,9 @@ section-1-cta-button = Get data removal
 # Section 2 - We provide steps to help resolve data breaches
 ## Intro
 section-2-intro-title = We provide steps to help resolve <data_breaches>data breaches</data_breaches>
-section-2-intro-text_1 = Data breaches are security violations where your personal information is either accidentally exposed or illegally stolen by hackers — including passwords, contact info, financials, and much more. Any account or anywhere your information is stored online could be a target.
-section-2-intro-text_2 = Resolving data breaches helps prevent hackers from accessing your accounts, causing financial harm or stealing your identity.
-section-2-intro-cta_button = Get free scan
+section-2-intro-text-1 = Data breaches are security violations where your personal information is either accidentally exposed or illegally stolen by hackers — including passwords, contact info, financials, and much more. Any account or anywhere your information is stored online could be a target.
+section-2-intro-text-2 = Resolving data breaches helps prevent hackers from accessing your accounts, causing financial harm or stealing your identity.
+section-2-intro-cta-button = Get free scan
 
 ## Step 1
 section-2-step-1-title = Step 1
