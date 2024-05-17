@@ -159,7 +159,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     await expect(landingPage.githubLink).toBeVisible();
   });
 
-  test("Verify the 'Get data removal' button UI and functionality for both yearly and montly options", async ({
+  test("Verify the 'Get data removal' button UI and functionality for both yearly and monthly options", async ({
     landingPage,
     purchasePage,
   }) => {
@@ -176,17 +176,12 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     // Monthly
     await landingPage.getDataRemovalMonthly.click();
     await landingPage.getDataRemoval.click();
-    await purchasePage.subscriptionHeader.waitFor();
-    await expect(purchasePage.planDetails).toContainText("monthly");
-    await expect(purchasePage.subscriptionHeader).toBeVisible();
+    await purchasePage.verifyMonthlyPlanDetails();
 
     // Yearly
     await landingPage.open();
     await landingPage.getDataRemoval.click();
-    await purchasePage.subscriptionHeader.waitFor();
-    await expect(purchasePage.planDetails).toContainText(
-      `${process.env.E2E_TEST_ENV === "prod" ? "yearly" : "every ⁨2⁩ months"}`,
-    );
+    await purchasePage.verifyYearlyPlanDetails();
   });
 
   test('Verify the "Get free scan" corresponding email fields', async ({
@@ -204,7 +199,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     // Stays on same page
     await expect(landingPage.monitorHeroFormEmailInputField).toBeVisible();
 
-    const randomEmail = `${Date.now()}_tstact@restmail.net`;
+    const randomEmail = `_${Date.now()}_tstact@restmail.net`;
     await landingPage.monitorHeroFormEmailInputField.fill(randomEmail);
     await landingPage.monitorHeroFormInputSubmitButton.click();
     await authPage.passwordInputField.waitFor();

@@ -4,7 +4,6 @@
 
 import { Locator, Page, expect } from "@playwright/test";
 import { PurchasePage } from "./purchasePage";
-
 export class DashboardPage {
   readonly page: Page;
   readonly dataBreachEmailDropdown: Locator;
@@ -241,8 +240,7 @@ export class DashboardPage {
     // Check monthly redirection
     await this.subscribeDialogSelectMonthlyPlanLink.click();
     const purchasePage = new PurchasePage(this.page);
-    await purchasePage.subscriptionHeader.waitFor();
-    await expect(purchasePage.planDetails).toContainText("monthly");
+    await purchasePage.verifyMonthlyPlanDetails();
     await expect(purchasePage.subscriptionHeader).toBeVisible();
 
     // Check yearly redirection
@@ -250,11 +248,7 @@ export class DashboardPage {
     await this.subscribeButton.waitFor();
     await this.subscribeButton.click();
     await this.subscribeDialogSelectYearlyPlanLink.click();
-    await purchasePage.subscriptionHeader.waitFor();
-    // Text contains invisible characters which need to be hardcoded in an assertion
-    await expect(purchasePage.planDetails).toContainText(
-      `${process.env.E2E_TEST_ENV === "prod" ? "yearly" : "every ⁨2⁩ months"}`,
-    );
+    await purchasePage.verifyYearlyPlanDetails();
 
     // Go back to dashboard.
     await this.page.goto(`${process.env.E2E_TEST_BASE_URL}`);

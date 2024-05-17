@@ -282,8 +282,12 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Breaches Scan,
   test.use({ storageState: { cookies: [], origins: [] } });
 
   test.beforeEach(async ({ landingPage, page, authPage, welcomePage }) => {
-    test.slow();
+    test.slow(
+      true,
+      "this test runs through the welcome scan flow, increasing timeout to address it",
+    );
 
+    // speed up test by ignoring non necessary requests
     await page.route(/(analytics)/, async (route) => {
       await route.abort();
     });
@@ -306,7 +310,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Breaches Scan,
       {
         type: "testrail id #1",
         description:
-          "(continuous protection step) \n https://testrail.stage.mozaws.net/index.php?/cases/view/2463623",
+          "(continuous protection step) https://testrail.stage.mozaws.net/index.php?/cases/view/2463623",
       },
       {
         type: "testrail id #2",

@@ -13,12 +13,14 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase 
         "https://testrail.stage.mozaws.net/index.php?/cases/view/2463564",
     });
 
-    // this test runs through the welcome scan flow, increasing timeout to address it
-    test.slow();
+    test.slow(
+      true,
+      "this test runs through the welcome scan flow, increasing timeout to address it",
+    );
 
     setEnvVariables(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
 
-    // speed up test by ignore non necessary requests
+    // speed up test by ignoring non necessary requests
     await page.route(/(analytics)/, async (route) => {
       await route.abort();
     });
