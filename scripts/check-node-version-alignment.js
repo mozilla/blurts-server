@@ -34,11 +34,6 @@ const netlifyNodeVersion = (await load("netlify.toml"))
   .split('NODE_VERSION = "')[1]
   .split('", NPM_VERSION')[0];
 
-const circleNodeVersions = (await load(".circleci/config.yml"))
-  .split("\n")
-  .filter(line => line.includes("cimg/node:"))
-  .map(line => line.split("cimg/node:")[1]);
-
 const esbuildVersion = (await load("esbuild.cronjobs.js"))
   .split("\n")
   .find(line => line.includes("target:"))
