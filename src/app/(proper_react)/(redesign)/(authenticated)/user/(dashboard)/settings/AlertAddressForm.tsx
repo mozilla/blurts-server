@@ -21,7 +21,10 @@ import {
 import styles from "./AlertAddressForm.module.scss";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { createContext, useContext, useRef, useState } from "react";
-import type { EmailUpdateCommTypeOfOptions } from "../../../../../../api/v1/user/update-comm-option/route";
+import type {
+  EmailUpdateCommOptionRequest,
+  EmailUpdateCommTypeOfOptions,
+} from "../../../../../../api/v1/user/update-comm-option/route";
 import { VisuallyHidden } from "../../../../../../components/server/VisuallyHidden";
 import { useSession } from "next-auth/react";
 import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
@@ -71,11 +74,12 @@ export const AlertAddressForm = (props: Props) => {
     defaultValue: commsValue(),
     onChange: (newValue) => {
       const chosenOption = newValue as EmailUpdateCommTypeOfOptions;
+      const body: EmailUpdateCommOptionRequest = {
+        instantBreachAlerts: chosenOption,
+      };
       void fetch("/api/v1/user/update-comm-option", {
         method: "POST",
-        body: JSON.stringify({
-          instantBreachAlerts: chosenOption,
-        }),
+        body: JSON.stringify(body),
       }).then(() => {
         // Fetch a new token with up-to-date subscriber info - specifically,
         // with this setting updated.
@@ -88,11 +92,12 @@ export const AlertAddressForm = (props: Props) => {
   const handleMonthlyMonitorReportToggle = () => {
     const newValue = !activateMonthlyMonitorReport;
     setActivateMonthlyMonitorReport(newValue);
+    const body: EmailUpdateCommOptionRequest = {
+      monthlyMonitorReport: monitorReportAllowed,
+    };
     void fetch("/api/v1/user/update-comm-option", {
       method: "POST",
-      body: JSON.stringify({
-        monthlyMonitorReport: newValue,
-      }),
+      body: JSON.stringify(body),
     }).then(() => {
       void session.update();
       router.refresh();
