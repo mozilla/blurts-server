@@ -87,7 +87,7 @@ jobs:
       with:
           GITHUB_TOKEN: ${{ github.token }}
           message: |
-            Preview URL :rocket: : ${{ steps.deploy.outputs.url }}
+            Preview URL :rocket:: ${{ steps.deploy.outputs.url }}
           comment_tag: preview_url
           create_if_not_exists: true
           
