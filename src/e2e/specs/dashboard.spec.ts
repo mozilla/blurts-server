@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { Locator } from "@playwright/test";
 import { test, expect } from "../fixtures/basePage.js";
 import { DashboardPage } from "../pages/dashBoardPage.js";
 import { checkAuthState } from "../utils/helpers.js";
@@ -300,5 +301,95 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard  - Payment`, () 
     await expect(purchasePage.planDetails).toContainText(
       `${process.env.E2E_TEST_ENV === "prod" ? "yearly" : "every ⁨2⁩ months"}`,
     );
+  });
+});
+
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Footer`, () => {
+  test.beforeEach(async ({ dashboardPage, page }) => {
+    await dashboardPage.open();
+    try {
+      await checkAuthState(page);
+    } catch {
+      console.log("[E2E_LOG] - No fxa auth required, proceeding...");
+    }
+  });
+
+  test("Verify that the site footer is displayed correctly", async ({
+    dashboardPage,
+    page,
+    context,
+  }) => {
+    // link to testrail
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463570",
+    });
+
+    const clickOnATagCheckDomain = async (
+      aTag: Locator,
+      expectedStrings: string[],
+    ): Promise<boolean> => {
+      const href = await aTag.getAttribute("href");
+      if (href === null) return false;
+
+      const target = await aTag.getAttribute("target");
+
+      if (target === "_blank") {
+        //opens link in a new tab
+        const newPage = await context.newPage();
+        await newPage.goto(href);
+        const currentUrl = newPage.url();
+        await newPage.close();
+        return expectedStrings.every((expectedString) =>
+          currentUrl.includes(expectedString),
+        );
+      } else {
+        //opens link in the same tab
+        await page.goto(href);
+        const currentUrl = page.url();
+        await page.goBack();
+        return expectedStrings.every((expectedString) =>
+          currentUrl.includes(expectedString),
+        );
+      }
+    };
+    await dashboardPage.goToDashboard();
+    expect(page.locator("footer a >> img")).toBeTruthy();
+    expect(
+      await clickOnATagCheckDomain(dashboardPage.mozillaLogoFooter, [
+        "mozilla.org",
+      ]),
+    ).toBeTruthy();
+    expect(
+      await clickOnATagCheckDomain(dashboardPage.allBreachesFooter, [
+        "/breaches",
+      ]),
+    ).toBeTruthy();
+    expect(
+      await clickOnATagCheckDomain(dashboardPage.faqsFooter, [
+        "support.mozilla.org",
+        "/kb/",
+        "firefox-monitor-faq",
+      ]),
+    ).toBeTruthy();
+    expect(
+      await clickOnATagCheckDomain(dashboardPage.termsOfServiceFooter, [
+        "mozilla.org",
+        "/about/legal/terms/subscription-services/",
+      ]),
+    ).toBeTruthy();
+    expect(
+      await clickOnATagCheckDomain(dashboardPage.privacyNoticeFooter, [
+        "mozilla.org",
+        "/privacy/subscription-services/",
+      ]),
+    ).toBeTruthy();
+    expect(
+      await clickOnATagCheckDomain(dashboardPage.githubFooter, [
+        "github.com",
+        "/mozilla/blurts-server",
+      ]),
+    ).toBeTruthy();
   });
 });
