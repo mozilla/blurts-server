@@ -317,7 +317,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Footer`, () =>
   test("Verify that the site footer is displayed correctly", async ({
     dashboardPage,
     page,
-    context,
   }) => {
     // link to testrail
     test.info().annotations.push({
@@ -328,68 +327,50 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Footer`, () =>
 
     const clickOnATagCheckDomain = async (
       aTag: Locator,
-      expectedStrings: string[],
-    ): Promise<boolean> => {
+      host: string,
+      pathParts: string[],
+    ) => {
       const href = await aTag.getAttribute("href");
       if (href === null) return false;
 
-      const target = await aTag.getAttribute("target");
-
-      if (target === "_blank") {
-        //opens link in a new tab
-        const newPage = await context.newPage();
-        await newPage.goto(href);
-        const currentUrl = newPage.url();
-        await newPage.close();
-        return expectedStrings.every((expectedString) =>
-          currentUrl.includes(expectedString),
-        );
-      } else {
-        //opens link in the same tab
-        await page.goto(href);
-        const currentUrl = page.url();
-        await page.goBack();
-        return expectedStrings.every((expectedString) =>
-          currentUrl.includes(expectedString),
-        );
-      }
+      await page.goto(href);
+      const currentUrl = new URL(page.url());
+      const perceivedHost = currentUrl.hostname;
+      const perceivedPath = currentUrl.pathname;
+      expect(perceivedHost).toBe(host);
+      expect(pathParts.every((part) => perceivedPath.includes(part)));
+      await page.goBack();
     };
+
     await dashboardPage.goToDashboard();
-    expect(page.locator("footer a >> img")).toBeTruthy();
-    expect(
-      await clickOnATagCheckDomain(dashboardPage.mozillaLogoFooter, [
-        "mozilla.org",
-      ]),
-    ).toBeTruthy();
-    expect(
-      await clickOnATagCheckDomain(dashboardPage.allBreachesFooter, [
-        "/breaches",
-      ]),
-    ).toBeTruthy();
-    expect(
-      await clickOnATagCheckDomain(dashboardPage.faqsFooter, [
-        "support.mozilla.org",
-        "/kb/",
-        "firefox-monitor-faq",
-      ]),
-    ).toBeTruthy();
-    expect(
-      await clickOnATagCheckDomain(dashboardPage.termsOfServiceFooter, [
-        "mozilla.org",
-        "/about/legal/terms/subscription-services/",
-      ]),
-    ).toBeTruthy();
-    expect(
-      await clickOnATagCheckDomain(dashboardPage.privacyNoticeFooter, [
-        "mozilla.org",
-        "/privacy/subscription-services/",
-      ]),
-    ).toBeTruthy();
-    expect(
-      await clickOnATagCheckDomain(dashboardPage.githubFooter, [
-        "github.com",
-        "/mozilla/blurts-server",
-      ]),
-    ).toBeTruthy();
+    await expect(page.locator("footer a >> img")).toBeVisible();
+    await clickOnATagCheckDomain(
+      dashboardPage.mozillaLogoFooter,
+      "www.mozilla.org",
+      [],
+    );
+    await clickOnATagCheckDomain(
+      dashboardPage.allBreachesFooter,
+      "stage.firefoxmonitor.nonprod.cloudops.mozgcp.net",
+      ["/breaches"],
+    );
+    await clickOnATagCheckDomain(
+      dashboardPage.faqsFooter,
+      "support.mozilla.org",
+      ["/kb", "/firefox-monitor-faq"],
+    );
+    await clickOnATagCheckDomain(
+      dashboardPage.termsOfServiceFooter,
+      "www.mozilla.org",
+      ["/about/legal/terms/subscription-services/"],
+    );
+    await clickOnATagCheckDomain(
+      dashboardPage.privacyNoticeFooter,
+      "www.mozilla.org",
+      ["/privacy/subscription-services/"],
+    );
+    await clickOnATagCheckDomain(dashboardPage.githubFooter, "github.com", [
+      "/mozilla/blurts-server",
+    ]);
   });
 });
