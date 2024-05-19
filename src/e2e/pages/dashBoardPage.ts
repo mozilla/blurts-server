@@ -159,6 +159,7 @@ export class DashboardPage {
     // nav menu
     this.settingsPageLink = page.getByRole("link", { name: "Settings" });
     this.dashboardPageLink = page.getByRole("link", { name: "Dashboard" });
+
     this.faqsPageLink = page.getByTitle("Frequently asked questions").first();
   }
 
@@ -188,6 +189,6 @@ export class DashboardPage {
 
   async goToFAQs() {
     await this.faqsPageLink.click();
-    await this.page.waitForURL("**/firefox-monitor-faq");
+    await this.page.waitForURL(/.*firefox-monitor-faq.*/);
   }
 }
