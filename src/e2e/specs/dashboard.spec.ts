@@ -352,6 +352,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Footer`, () =>
     await clickOnATagCheckDomain(
       dashboardPage.mozillaLogoFooter,
       "www.mozilla.org",
+      /^(\/en-US\/)?$/,
     );
     await clickOnATagCheckDomain(
       dashboardPage.allBreachesFooter,
