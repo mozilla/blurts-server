@@ -328,8 +328,11 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Footer`, () =>
     const clickOnATagCheckDomain = async (
       aTag: Locator,
       host: string,
-      pathParts: string[],
+      path: string | RegExp = /.*/,
     ) => {
+      if (typeof path === "string") path = new RegExp(".*" + path + ".*");
+      host = host.replace(/^(https?:\/\/)/, "");
+
       const href = await aTag.getAttribute("href");
       if (href === null) return false;
 
@@ -338,39 +341,42 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Footer`, () =>
       const perceivedHost = currentUrl.hostname;
       const perceivedPath = currentUrl.pathname;
       expect(perceivedHost).toBe(host);
-      expect(pathParts.every((part) => perceivedPath.includes(part)));
+      expect(path.test(perceivedPath)).toBeTruthy();
       await page.goBack();
     };
 
+    expect(process.env["E2E_TEST_BASE_URL"]).toBeTruthy();
+    const baseUrl = process.env["E2E_TEST_BASE_URL"]!;
     await dashboardPage.goToDashboard();
     await expect(page.locator("footer a >> img")).toBeVisible();
     await clickOnATagCheckDomain(
       dashboardPage.mozillaLogoFooter,
       "www.mozilla.org",
-      [],
     );
     await clickOnATagCheckDomain(
       dashboardPage.allBreachesFooter,
-      "stage.firefoxmonitor.nonprod.cloudops.mozgcp.net",
-      ["/breaches"],
+      baseUrl,
+      "/breaches",
     );
     await clickOnATagCheckDomain(
       dashboardPage.faqsFooter,
       "support.mozilla.org",
-      ["/kb", "/firefox-monitor-faq"],
+      /.*\/kb.*\/mozilla-monitor-faq.*/,
     );
     await clickOnATagCheckDomain(
       dashboardPage.termsOfServiceFooter,
       "www.mozilla.org",
-      ["/about/legal/terms/subscription-services/"],
+      "/about/legal/terms/subscription-services/",
     );
     await clickOnATagCheckDomain(
       dashboardPage.privacyNoticeFooter,
       "www.mozilla.org",
-      ["/privacy/subscription-services/"],
+      "/privacy/subscription-services/",
     );
-    await clickOnATagCheckDomain(dashboardPage.githubFooter, "github.com", [
+    await clickOnATagCheckDomain(
+      dashboardPage.githubFooter,
+      "github.com",
       "/mozilla/blurts-server",
-    ]);
+    );
   });
 });
