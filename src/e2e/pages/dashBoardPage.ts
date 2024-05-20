@@ -58,11 +58,33 @@ export class DashboardPage {
   readonly closeAppsAndServices: Locator;
   readonly signOut: Locator;
 
+  readonly mozillaLogoFooter: Locator;
+  readonly allBreachesFooter: Locator;
+  readonly faqsFooter: Locator;
+  readonly termsOfServiceFooter: Locator;
+  readonly privacyNoticeFooter: Locator;
+  readonly githubFooter: Locator;
+
   constructor(page: Page) {
     this.page = page;
     this.dataBreachEmailDropdown = page.locator("custom-select");
     this.siteFoundImage = page.locator("figure img");
     this.breachStats = page.locator("breach-stats");
+
+    this.mozillaLogoFooter = page.locator(
+      '//a[starts-with(@class, "Shell_mozillaLink")]',
+    );
+    this.allBreachesFooter = page.locator("footer a", {
+      hasText: "All Breaches",
+    });
+    this.faqsFooter = page.locator("footer a", { hasText: "FAQs" });
+    this.termsOfServiceFooter = page.locator("footer a", {
+      hasText: "Terms of Service",
+    });
+    this.privacyNoticeFooter = page.locator("footer a", {
+      hasText: "Privacy Notice",
+    });
+    this.githubFooter = page.locator("footer a", { hasText: "GitHub" });
 
     // top nav
     this.fireFoxMonitorLogoImgButton = page.locator(
