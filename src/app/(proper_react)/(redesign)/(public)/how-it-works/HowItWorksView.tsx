@@ -233,7 +233,7 @@ export const HowItWorksView = () => {
       {/* FOOTER */}
       <footer className={styles.footer}>
         <h2 className={styles.footerCTA}>{l10n.getString("footer-title")}</h2>
-        <div>
+        <div className={styles.footerCTAInput}>
           <input
             placeholder={l10n.getString("footer-input-placeholder")}
             type="email"
@@ -243,10 +243,10 @@ export const HowItWorksView = () => {
           <Button variant="primary">
             {l10n.getString("footer-cta-button")}
           </Button>
-          <p className={styles.note}>
-            {l10n.getString("footer-have-i-been-pwned")}
-          </p>
         </div>
+        <p className={styles.note}>
+          {l10n.getString("footer-have-i-been-pwned")}
+        </p>
       </footer>
     </main>
   );
