@@ -61,12 +61,12 @@
     "@leeoniya/ufuzzy": "^1.0.14",
     "@mozilla/glean": "5.0.1",
     "@next/third-parties": "^14.2.3",
-    "@sentry/nextjs": "^8.0.0",
+    "@sentry/nextjs": "^8.2.1",
     "@sentry/node": "^8.0.0",
     "@sentry/utils": "^8.0.0",
     "@stripe/stripe-js": "^3.0.6",
     "@types/jsdom": "^21.1.5",
-    "@types/node": "^20.12.10",
+    "@types/node": "^20.12.12",
     "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.19",
     "canvas-confetti": "^1.9.3",
@@ -141,7 +141,7 @@
     "stylelint-config-recommended-scss": "^14.0.0",
     "stylelint-scss": "^6.3.0",
     "ts-jest": "^29.1.2",
-    "tsx": "^4.9.3",
+    "tsx": "^4.10.5",
     "typescript": "^5.4.2",
     "yaml": "^2.4.2"
   }
