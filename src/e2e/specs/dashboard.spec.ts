@@ -381,3 +381,26 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Footer`, () =>
     );
   });
 });
+
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Premium Upsell Screen`, () => {
+  test.beforeEach(async ({ dashboardPage, page }) => {
+    await dashboardPage.open();
+    try {
+      await checkAuthState(page);
+    } catch {
+      console.log("[E2E_LOG] - No fxa auth required, proceeding...");
+    }
+  });
+
+  test("Verify that the site footer is displayed correctly", async ({
+    dashboardPage,
+  }) => {
+    // link to testrail
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463570",
+    });
+    await dashboardPage.goToDashboard();
+  });
+});
