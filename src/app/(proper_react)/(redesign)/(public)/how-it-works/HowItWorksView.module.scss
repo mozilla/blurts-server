@@ -1,5 +1,17 @@
 @import "../../../../tokens";
 
+.brokersEmphasis {
+  display: inline;
+  color: $color-violet-50;
+}
+.breachesEmphasis {
+  display: inline;
+  color: $color-purple-70;
+}
+.boldedText {
+  font-weight: 700;
+}
+
 .header {
   padding: $layout-lg $spacing-md;
   display: flex;
@@ -22,48 +34,6 @@
   }
 }
 
-.brokersEmphasis {
-  display: inline;
-  color: $color-violet-50;
-}
-.breachesEmphasis {
-  display: inline;
-  color: $color-purple-70;
-}
-.boldedText {
-  font-weight: 700;
-}
-.horizontalRule {
-  border: 1px solid $color-grey-20;
-  margin: $spacing-md 0;
-}
-
-.footer {
-  background: $color-purple-05;
-  .footerCTA {
-    color: $color-black;
-    font: $text-title-md;
-  }
-  .note {
-    color: $color-grey-40;
-    font: $text-body-sm;
-  }
-}
-
-.item {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  justify-content: space-between;
-  padding: $spacing-2xl $spacing-md;
-  gap: $spacing-lg;
-
-  .exposureTypeList {
-    font-weight: 600;
-    color: $color-purple-70;
-    display: inline;
-  }
-}
 .sectionWrapper {
   &.grayBG {
     background: $color-grey-05;
@@ -144,7 +114,7 @@
         padding-block-start: $spacing-md;
       }
       .stepGroupTitleAfter1st {
-        padding-block-start: $spacing-xl;
+        padding-block-start: $spacing-2xl;
       }
 
       .privateInfoRow {
@@ -193,24 +163,34 @@
   }
 }
 
-.resolveDataBreachesWrapper {
-  @media screen and (min-width: $screen-md) {
-    padding-inline: $layout-lg;
-    padding-block: $layout-sm;
-    flex-direction: row;
-    gap: $spacing-xl;
-
-    &.reverseRow {
-      flex-direction: row-reverse;
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: $color-purple-05;
+  padding: $layout-xl $spacing-md;
+  .footerCTA {
+    color: $color-black;
+    font: $text-title-md;
+  }
+  .footerCTAInput {
+    margin-top: $spacing-md;
+    margin-bottom: $spacing-2xl;
+    input {
+      border-radius: $border-radius-md;
+      border: 1px solid $color-grey-20;
+      padding: $spacing-md $spacing-xl $spacing-md $spacing-md;
+      font: $text-body-md;
+      margin-right: $spacing-lg;
     }
-
-    @media screen and (min-width: $screen-lg) {
-      padding-inline: $layout-lg;
-      gap: $layout-xl;
-
-      @media screen and (min-width: $screen-xl) {
-        padding-inline: $layout-xl;
-      }
+    button {
+      padding: $spacing-md $spacing-2xl;
     }
+  }
+  .note {
+    color: $color-grey-40;
+    font: $text-body-sm;
+    margin-top: $spacing-2xl;
   }
 }
