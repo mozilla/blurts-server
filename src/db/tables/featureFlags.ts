@@ -39,7 +39,6 @@ export async function getDeletedFeatureFlags() {
 
 /** @deprecated The method type not be used */
 export type FeatureFlagName =
-  | "HibpBreachNotifications"
   | "FxaUidTelemetry"
   | "MonitorAccountDeletion"
   | "RedesignedEmails"
