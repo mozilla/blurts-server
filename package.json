@@ -130,7 +130,7 @@
     "jest-axe": "^8.0.0",
     "jest-canvas-mock": "^2.5.2",
     "jest-environment-jsdom": "^29.7.0",
-    "jest-fail-on-console": "^3.1.1",
+    "jest-fail-on-console": "^3.3.0",
     "lint-staged": "^15.2.2",
     "mjml-browser": "^4.15.3",
     "prettier": "3.2.5",
