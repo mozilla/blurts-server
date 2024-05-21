@@ -12,21 +12,10 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22.1.x'
+          node-version: '22.2.x'
       - run: npm ci
       - run: npm run build-glean
       - run: cp .env-dist .env
       # Verify that the build (incl. type-checking) succeeds
-      - run: npm run build
-        env:
-          UPLOAD_SENTRY_SOURCEMAPS: false
-        # Do not upload sourcemaps for non-release (tag) builds.
-        if: ${{ !startsWith(github.ref, 'refs/tags/') }}
-      # Verify that the build (incl. type-checking) succeeds
       # Upload sourcemaps to Sentry
       - run: npm run build
-        env:
-          UPLOAD_SENTRY_SOURCEMAPS: ${{ env.UPLOAD_SENTRY_SOURCEMAPS }}
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-        # Upload sourcemaps for release (tag) builds.
-        if: ${{ startsWith(github.ref, 'refs/tags/') }}

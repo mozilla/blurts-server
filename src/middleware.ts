@@ -5,7 +5,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import nextConfig from "../next.config";
-import { NextConfig } from "next";
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
@@ -68,9 +67,7 @@ function generateCspData() {
     // `withSentryConfig` in next.config.js messes up the type, but we know that
     // it's a valid NextConfig with `images.remotePatterns` set:
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    `img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com https://firefoxusercontent.com https://mozillausercontent.com https://monitor.cdn.mozilla.net ${(
-      nextConfig as NextConfig
-    )
+    `img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com https://firefoxusercontent.com https://mozillausercontent.com https://monitor.cdn.mozilla.net ${nextConfig
       .images!.remotePatterns!.map(
         (pattern) =>
           `${pattern.protocol ?? "https"}://${pattern.hostname.replace(

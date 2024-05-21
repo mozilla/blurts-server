@@ -1,6 +1,6 @@
 # Preview Deployment
 
-- Status: proposed
+- Status: Accepted
 - Deciders: Monitor team
 - Date: 2024-05-08
 

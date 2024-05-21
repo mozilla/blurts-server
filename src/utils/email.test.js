@@ -63,6 +63,7 @@ test('EmailUtils.init with SMTP URL invokes nodemailer.createTransport', async (
 
 test('EmailUtils.sendEmail with recipient, subject, template, context calls gTransporter.sendMail', async () => {
   const mockedNodemailer = jest.requireMock('nodemailer')
+  const mockedConsoleInfo = jest.spyOn(console, 'info').mockImplementation();
   const { initEmail, sendEmail } = await import('./email.js')
 
   const testSmtpUrl = 'smtps://test:test@test:1'
@@ -75,7 +76,7 @@ test('EmailUtils.sendEmail with recipient, subject, template, context calls gTra
 
   const mockedTransporter = {
     verify: jest.fn(() => Promise.resolve('verified')),
-    sendMail: jest.fn((_options, cb) => cb(null, "sent")),
+    sendMail: jest.fn((_options) => Promise.resolve('sent')),
     transporter: { name: 'MockTransporter' },
   };
   mockedNodemailer.createTransport.mockReturnValueOnce(mockedTransporter);
@@ -84,9 +85,14 @@ test('EmailUtils.sendEmail with recipient, subject, template, context calls gTra
   expect(result).toBe("verified");
 
   expect(await sendEmail(...sendMailArgs)).toBe("sent")
+  expect(mockedConsoleInfo).toHaveBeenCalledWith(
+    'sent_email',
+    {info: 'sent'},
+  );
 })
 
 test('EmailUtils.sendEmail rejects with error', async () => {
+  const mockedConsoleError = jest.spyOn(console, 'error').mockImplementation();
   const mockedNodemailer = jest.requireMock('nodemailer')
   const { initEmail, sendEmail } = await import('./email.js')
 
@@ -99,17 +105,19 @@ test('EmailUtils.sendEmail rejects with error', async () => {
 
   const mockedTransporter = {
     verify: jest.fn(() => Promise.resolve('verified')),
-    sendMail: jest.fn((_options, cb) => cb("error", null)),
+    sendMail: jest.fn((_options) => Promise.reject(new Error('error'))),
     transporter: { name: 'MockTransporter' },
   };
   mockedNodemailer.createTransport.mockReturnValueOnce(mockedTransporter);
 
-  expect(await initEmail('smtps://test:test@test:1')).toBe("verified")
-  await expect(() => sendEmail(...sendMailArgs)).rejects.toThrow("error");
+  expect(await initEmail('smtps://test:test@test:1')).toBe("verified");
+  await expect(() => sendEmail(...sendMailArgs)).rejects.toThrow('error');
+  expect(mockedConsoleError).toHaveBeenCalled();
 })
 
 test('EmailUtils.init with empty host uses jsonTransport. logs messages', async () => {
   const mockedNodemailer = jest.requireMock('nodemailer')
+  const mockedConsoleInfo = jest.spyOn(console, 'info').mockImplementation();
   const { initEmail, sendEmail } = await import('./email.js')
 
   const sendMailArgs = [
@@ -122,13 +130,17 @@ test('EmailUtils.init with empty host uses jsonTransport. logs messages', async 
 
   const mockedTransporter = {
     verify: jest.fn(() => Promise.resolve('verified')),
-    sendMail: jest.fn((_options, cb) => cb(null, sendMailInfo)),
+    sendMail: jest.fn((_options) => Promise.resolve(sendMailInfo)),
     transporter: { name: 'MockTransporter' },
   };
   mockedNodemailer.createTransport.mockReturnValueOnce(mockedTransporter);
 
   expect(await initEmail('smtps://test:test@test:1')).toBe('verified')
   expect(await sendEmail(...sendMailArgs)).toBe(sendMailInfo)
+  expect(mockedConsoleInfo).toHaveBeenCalledWith(
+    'sent_email',
+    {info: { 'message': 'sent'} }
+  );
 })
 
 test('EmailUtils.getEmailCtaDashboardHref works without a subscriber ID', async () => {
