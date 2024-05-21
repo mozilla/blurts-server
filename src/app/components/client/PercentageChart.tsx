@@ -4,7 +4,6 @@
 
 "use client";
 
-import { CSSProperties } from "react";
 import { useL10n } from "../../hooks/l10n";
 import styles from "./PercentageChart.module.scss";
 
@@ -33,6 +32,7 @@ export const PercentageChart = (props: WelcomeToPremiumProps) => {
     const percentOffset = percentages
       .slice(0, index)
       .reduce((offset, [_label, num]) => offset + num, 0);
+    const sliceLength = circumference * (1 - percent) + sliceBorderWidth;
 
     return (
       <circle
@@ -44,11 +44,7 @@ export const PercentageChart = (props: WelcomeToPremiumProps) => {
         fill="none"
         strokeWidth={ringWidth}
         strokeDasharray={`${circumference} ${circumference}`}
-        style={
-          {
-            "--sliceLength": circumference * (1 - percent) + sliceBorderWidth,
-          } as CSSProperties
-        }
+        strokeDashoffset={`${sliceLength}`}
         // Rotate it to not overlap the other slices
         transform={`rotate(${-90 + 360 * percentOffset} ${diameter / 2} ${
           diameter / 2

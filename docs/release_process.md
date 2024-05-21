@@ -63,62 +63,20 @@ will be a new version of the Monitor web app on the [Production][prod]
 environment. To do this, we first release code to [Dev][dev] and
 [Stage][stage].
 
-## Release to Dev
+## Preview Deployment
 
-Every commit to `main` is automatically deployed to the [Dev][dev] server, as
-long as it can be done with a fast-forward push. Since the
-[Great GitHub Heroku Incident of 2022][github-heroku-incident], this is
-done from CircleCI using a [service account][service-account].
-
-To push a different branch, you need to add the Heroku app as a remote.
-NOTE: give other devs a quick heads-up in Slack before doing this:
-
-- `heroku login`
-- `heroku git:remote -a fx-breach-alerts`
-
-Then, you can push your local unmerged branch to Heroku:
-
-- `git push --force-with-lease heroku HEAD:main`
-
-Merges to main will fail to deploy until someone manually resets it to `main`:
-
-- `git push --force-with-lease heroku main`
+Every time a PR is open, a docker image is created and deployed to the
+preview deployment environment powered by GCP Cloud Run / CloudSQL.
+A brand new database is created and schema is migrated specific to that PR.
+A brand new Cloud Run service is set up and cleaned up along with the
+database at the end of the lifecycle of that PR (when closed or merged).
+A preview URL is generated and linked in the PR when the environment is
+set up and changes are ready to be reviewed.
 
 ## Release to Stage
 
-Every tag pushed to GitHub is automatically deployed to the [Stage][stage]
-server. The standard practice is to create a tag from `main` every Tuesday at
-the end of the day, and to name the tag with `YYYY-MM-DD` [CalVer][calver]
-syntax. This tag will include only the changes that have been merged to `main`.
-E.g.,
-
-1. `git tag 2022.08.02`
-2. `git push origin 2022.08.02`
-
-E.g., the following `2022.08.02` tag includes only `change-1` and `change-2`.
-
-```mermaid
-%%{init: { 'theme': 'base', 'gitGraph': {'rotateCommitLabel': true} } }%%
-    gitGraph
-       commit
-       branch change-1
-       commit
-       commit
-       checkout main
-       branch change-2
-       commit
-       checkout main
-       merge change-1
-       branch change-3
-       commit
-       commit
-       checkout main
-       merge change-2 tag: "2022.08.02"
-       checkout change-3
-       commit
-       commit
-       checkout main
-```
+Every commit to `main` is automatically deployed to the [Stage][stage] server
+via Github Actions and Jenkins.
 
 ### Create Release Notes on GitHub
 
