@@ -11,7 +11,7 @@ settings-cancel-plus-link-label = Cancel from your { -brand-mozilla-account }
 ## Cancel Plus subscription - flow with a cancellation survey
 
 settings-cancel-plus-survey-button-label = Cancel your subscription
-settings-cancel-plus-step-confirm-heading = Hey, before you go...
+settings-cancel-plus-step-confirm-heading = Hey, before you go…
 settings-cancel-plus-step-confirm-content = Data brokers continually re-add your personal info back into their databases. Leaving now means you’ll no longer be protected.
 settings-cancel-plus-step-confirm-cta-label = Continue to cancellation
 settings-cancel-plus-step-confirm-cancel-label = Never mind, take me back

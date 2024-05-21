@@ -902,7 +902,7 @@ it("takes you through the cancellation dialog flow all the way to subplat", asyn
 
   expect(
     screen.getByRole("dialog", {
-      name: "Hey, before you go...",
+      name: "Hey, before you go…",
     }),
   ).toBeInTheDocument();
 
