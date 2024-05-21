@@ -46,8 +46,8 @@ const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
         <mj-section>
           <mj-column vertical-align="bottom">
             <mj-image
-              href={`${process.env.SERVER_URL}/user/dashboard?utm_source=monitor-product&utm_medium=email&utm_campaign=${utmCampaign}&utm_content=manually-fixed`}
-              src={`${process.env.SERVER_URL}/images/email/monthly-activity/illustration-manual.png`}
+              href={`${process.env.SERVER_URL}/user/dashboard?utm_source=monitor-product&utm_medium=email&utm_campaign=${utmCampaign}&utm_content=auto-removed`}
+              src={`${process.env.SERVER_URL}/images/email/monthly-activity/illustration-done.png`}
               alt=""
               width="90px"
               align="center"
@@ -59,7 +59,7 @@ const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
               align="center"
             >
               {l10n.getString(
-                "email-monthly-plus-auto-fixed-section-manual-heading",
+                "email-monthly-plus-auto-fixed-section-done-heading",
               )}
             </mj-text>
             <mj-text
@@ -68,8 +68,7 @@ const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
               font-weight={700}
               align="center"
             >
-              {props.data.dataBrokerManuallyResolvedDataPointsNum +
-                props.data.dataBreachFixedDataPointsNum}
+              {props.data.dataBrokerAutoFixedDataPointsNum}
             </mj-text>
           </mj-column>
           <mj-column vertical-align="bottom">
@@ -101,8 +100,8 @@ const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
           </mj-column>
           <mj-column vertical-align="bottom">
             <mj-image
-              href={`${process.env.SERVER_URL}/user/dashboard?utm_source=monitor-product&utm_medium=email&utm_campaign=${utmCampaign}&utm_content=auto-removed`}
-              src={`${process.env.SERVER_URL}/images/email/monthly-activity/illustration-done.png`}
+              href={`${process.env.SERVER_URL}/user/dashboard?utm_source=monitor-product&utm_medium=email&utm_campaign=${utmCampaign}&utm_content=manually-fixed`}
+              src={`${process.env.SERVER_URL}/images/email/monthly-activity/illustration-manual.png`}
               alt=""
               width="90px"
               align="center"
@@ -114,7 +113,7 @@ const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
               align="center"
             >
               {l10n.getString(
-                "email-monthly-plus-auto-fixed-section-done-heading",
+                "email-monthly-plus-auto-fixed-section-manual-heading",
               )}
             </mj-text>
             <mj-text
@@ -123,7 +122,8 @@ const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
               font-weight={700}
               align="center"
             >
-              {props.data.dataBrokerAutoFixedDataPointsNum}
+              {props.data.dataBrokerManuallyResolvedDataPointsNum +
+                props.data.dataBreachFixedDataPointsNum}
             </mj-text>
           </mj-column>
         </mj-section>
