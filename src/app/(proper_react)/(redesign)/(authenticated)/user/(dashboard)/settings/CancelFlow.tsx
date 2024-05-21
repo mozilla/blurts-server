@@ -9,7 +9,7 @@ import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import Image from "next/image";
 import styles from "./CancelFlow.module.scss";
-import CancellationSurveyPlaneIllustration from "./images/CancellationSurveyPlaneIllustration.png";
+import CancellationFlowStaticImage from "./images/CancellationFlowIllustration.svg";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 import { ModalOverlay } from "../../../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../../../components/client/dialog/Dialog";
@@ -78,9 +78,14 @@ export const CancelFlow = (props: Props) => {
                   src="/animations/CancellationFlowAnimation.mp4"
                   type="video/mp4"
                 />
+                <source
+                  type="video/webm; codecs='vp9'"
+                  src="/animations/CancellationFlowAnimation.webm"
+                />
+                {/* Fall back to the image if the video formats are not supported: */}
                 <Image
                   className={styles.cancellationIllustrationWrapper}
-                  src={CancellationSurveyPlaneIllustration}
+                  src={CancellationFlowStaticImage}
                   alt=""
                 />
               </video>
