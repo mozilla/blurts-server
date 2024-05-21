@@ -97,29 +97,9 @@ export const CancelFlow = (props: Props) => {
                 <>
                   <p>
                     {l10n.getString(
-                      "settings-cancel-plus-step-confirm-content-pt1",
+                      "settings-cancel-plus-step-confirm-content",
                     )}
                   </p>
-                  <p>
-                    {l10n.getString(
-                      "settings-cancel-plus-step-confirm-content-pt2",
-                    )}
-                  </p>
-                  <TelemetryButton
-                    event={{
-                      module: "button",
-                      name: "click",
-                      data: {
-                        button_id: "continue_to_cancellation",
-                      },
-                    }}
-                    variant="primary"
-                    onPress={() => setCurrentStep("survey")}
-                  >
-                    {l10n.getString(
-                      "settings-cancel-plus-step-confirm-cta-label",
-                    )}
-                  </TelemetryButton>
                   <TelemetryButton
                     event={{
                       module: "popup",
@@ -128,12 +108,27 @@ export const CancelFlow = (props: Props) => {
                         popup_id: "never_mind_take_me_back",
                       },
                     }}
-                    variant="tertiary"
+                    variant="primary"
                     onPress={() => dialogState.close()}
                     className={styles.tertiaryCta}
                   >
                     {l10n.getString(
                       "settings-cancel-plus-step-confirm-cancel-label",
+                    )}
+                  </TelemetryButton>
+                  <TelemetryButton
+                    event={{
+                      module: "button",
+                      name: "click",
+                      data: {
+                        button_id: "continue_to_cancellation",
+                      },
+                    }}
+                    variant="tertiary"
+                    onPress={() => setCurrentStep("survey")}
+                  >
+                    {l10n.getString(
+                      "settings-cancel-plus-step-confirm-cta-label",
                     )}
                   </TelemetryButton>
                 </>
