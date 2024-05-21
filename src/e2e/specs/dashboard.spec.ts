@@ -392,8 +392,9 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Premium Upsell
     }
   });
 
-  test("Verify that the site footer is displayed correctly", async ({
+  test("Verify that the navigation of the Premium upsell screen works correctly", async ({
     dashboardPage,
+    page,
   }) => {
     // link to testrail
     test.info().annotations.push({
@@ -401,6 +402,45 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Premium Upsell
       description:
         "https://testrail.stage.mozaws.net/index.php?/cases/view/2463570",
     });
-    await dashboardPage.goToDashboard();
+
+    expect(process.env["E2E_TEST_BASE_URL"]).toBeTruthy();
+    const baseUrl = process.env["E2E_TEST_BASE_URL"]!;
+
+    const goToUpsell = async () => {
+      await dashboardPage.goToDashboard();
+      await dashboardPage.letsFixItButton.click();
+
+      let perceivedUrl = page.url();
+      expect(
+        baseUrl + "/user/dashboard/fix/data-broker-profiles/view-data-brokers",
+      ).toBe(perceivedUrl);
+      const removeThemForMe = page.locator(
+        "//a[@Class='Button_button__iA3wi Button_primary___XZsP']",
+      );
+      await expect(removeThemForMe).toBeVisible();
+      await removeThemForMe.click();
+
+      perceivedUrl = page.url();
+      expect(
+        baseUrl + "/user/dashboard/fix/data-broker-profiles/automatic-remove",
+      ).toBe(perceivedUrl);
+    };
+
+    //check that premium upsell screen loads
+    await goToUpsell();
+
+    //check that X returns back to /dashboard
+    const xButton = page.locator("//a[@Class='fix_navClose__9ZITt']");
+    await expect(xButton).toBeVisible();
+    await xButton.click();
+    expect(/\/dashboard\/?$.*/.test(page.url()));
+
+    await goToUpsell();
+    const forwardArrowButton = page.locator("//section//a[img]");
+    await expect(forwardArrowButton).toBeVisible();
+    await forwardArrowButton.click();
+    //TODO: check step 4 criteria
+
+    await goToUpsell();
   });
 });

@@ -65,12 +65,15 @@ export class DashboardPage {
   readonly privacyNoticeFooter: Locator;
   readonly githubFooter: Locator;
 
+  readonly letsFixItButton: Locator;
+
   constructor(page: Page) {
     this.page = page;
     this.dataBreachEmailDropdown = page.locator("custom-select");
     this.siteFoundImage = page.locator("figure img");
     this.breachStats = page.locator("breach-stats");
 
+    //footer
     this.mozillaLogoFooter = page.locator(
       '//a[starts-with(@class, "Shell_mozillaLink")]',
     );
@@ -85,6 +88,11 @@ export class DashboardPage {
       hasText: "Privacy Notice",
     });
     this.githubFooter = page.locator("footer a", { hasText: "GitHub" });
+
+    //"Let's fix it" button
+    this.letsFixItButton = page.locator(
+      "//div//a[@Class='Button_button__iA3wi Button_primary___XZsP Button_small__DYOVZ']",
+    );
 
     // top nav
     this.fireFoxMonitorLogoImgButton = page.locator(
