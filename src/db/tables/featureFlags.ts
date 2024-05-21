@@ -45,8 +45,7 @@ export type FeatureFlagName =
   | "MonthlyActivityEmail"
   | "CsatSurvey"
   | "CancellationFlow"
-  | "ConfirmCancellation"
-  | "LastScanDateBadge";
+  | "ConfirmCancellation";
 
 /**
  * @param options
