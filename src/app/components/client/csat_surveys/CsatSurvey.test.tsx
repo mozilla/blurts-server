@@ -6,9 +6,9 @@ import { composeStory } from "@storybook/react";
 import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { axe } from "jest-axe";
-import Meta, { CsatSurveyBanner } from "./stories/CsatBanner.stories";
-import { useTelemetry } from "../../hooks/useTelemetry";
-import { deleteAllCookies } from "../../functions/client/deleteAllCookies";
+import Meta, { CsatSurveyBanner } from "../stories/CsatBanner.stories";
+import { useTelemetry } from "../../../hooks/useTelemetry";
+import { deleteAllCookies } from "../../../functions/client/deleteAllCookies";
 
 jest.mock("../../hooks/useTelemetry");
 

@@ -4,7 +4,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { CsatSurvey } from "../CsatSurvey";
+import { CsatSurvey } from "../csat_surveys/CsatSurvey";
 
 const meta: Meta<typeof CsatSurvey> = {
   title: "CsatSurvey",
