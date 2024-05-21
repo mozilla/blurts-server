@@ -81,9 +81,10 @@ subscription:
       monitor_user_id:
         description: Mozilla Monitor-specific user ID.
         type: string
-      plan_type:
-        description: Which type of plan the user is on ["1 month", "1 year"]
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
         type: string
+
   cancel:
     type: event
     description: |
@@ -107,8 +108,8 @@ subscription:
       monitor_user_id:
         description: Mozilla Monitor-specific user ID.
         type: string
-      plan_type:
-        description: Which type of plan the user is on ["1 month", "1 year"]
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
         type: string
 
 account:
@@ -135,9 +136,10 @@ account:
       monitor_user_id:
         description: Mozilla Monitor-specific user ID.
         type: string
-      plan_type:
-        description: Which type of plan the user is on ["1 month", "1 year"]
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
         type: string
+
   delete:
     type: event
     description: |
@@ -161,9 +163,10 @@ account:
       monitor_user_id:
         description: Mozilla Monitor-specific user ID.
         type: string
-      plan_type:
-        description: Which type of plan the user is on ["1 month", "1 year"]
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
         type: string
+
   profile_change:
     type: event
     description: |
@@ -187,9 +190,10 @@ account:
       monitor_user_id:
         description: Mozilla Monitor-specific user ID.
         type: string
-      plan_type:
-        description: Which type of plan the user is on ["1 month", "1 year"]
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
         type: string
+
   password_change:
     type: event
     description: |
@@ -213,6 +217,6 @@ account:
       monitor_user_id:
         description: Mozilla Monitor-specific user ID.
         type: string
-      plan_type:
-        description: Which type of plan the user is on ["1 month", "1 year"]
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
         type: string
