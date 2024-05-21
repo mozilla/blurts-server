@@ -12,7 +12,7 @@ import {
   type UserStateAction,
   type PutUserStateRequestBody,
   GetUserStateResponseBody,
-} from "../../../../../api/v1/admin/users/[primarySha1]/route";
+} from "../../../../../api/v1/admin/users/[fxaUid]/route";
 
 export const UserAdmin = () => {
   const session = useSession();
