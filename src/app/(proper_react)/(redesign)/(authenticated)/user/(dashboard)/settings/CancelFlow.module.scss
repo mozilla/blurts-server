@@ -45,7 +45,7 @@
 }
 
 @media (prefers-reduced-motion) {
-  video {
+  .cancellationAnimation {
     display: none;
   }
   // Ideally a `display: none` on <source> elements would be enough to
