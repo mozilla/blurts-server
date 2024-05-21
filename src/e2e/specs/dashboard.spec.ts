@@ -302,6 +302,22 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard  - Payment`, () 
       `${process.env.E2E_TEST_ENV === "prod" ? "yearly" : "every ⁨2⁩ months"}`,
     );
   });
+
+  test("Verify that the Premium upsell screen is displayed correctly - overview card", async ({
+    dashboardPage,
+    // purchasePage,
+    // page,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463625",
+    });
+
+    // does nothing
+    await dashboardPage.goToDashboard();
+    await dashboardPage.subscribeButton.click();
+  });
 });
 
 test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Footer`, () => {
