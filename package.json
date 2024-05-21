@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Firefox Monitor",
   "engines": {
-    "node": "22.1.x",
-    "npm": "10.7.x"
+    "node": "22.2.x",
+    "npm": "10.8.x"
   },
   "type": "module",
   "scripts": {
@@ -12,6 +12,7 @@
     "dev:cronjobs": "tsx --tsconfig tsconfig.cronjobs.json src/scripts/cronjobs/*.tsx",
     "dev:nimbus": "node --watch-path config/nimbus.yaml src/scripts/build/nimbusTypes.js",
     "build": "npm run get-location-data && npm run build-glean && npm run build-nimbus && next build && npm run build-cronjobs",
+    "cloudrun": "npm run db:migrate && npm start",
     "start": "next start",
     "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint --max-warnings=0",
     "fix": "prettier --write './src' && next lint --fix && stylelint --fix '**/*.scss'",
@@ -45,12 +46,12 @@
   "homepage": "https://github.com/mozilla/blurts-server",
   "license": "MPL-2.0",
   "volta": {
-    "node": "22.1.0",
-    "npm": "10.7.0"
+    "node": "22.2.0",
+    "npm": "10.8.0"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.574.0",
-    "@aws-sdk/lib-storage": "^3.574.0",
+    "@aws-sdk/client-s3": "^3.577.0",
+    "@aws-sdk/lib-storage": "^3.578.0",
     "@fluent/bundle": "^0.18.0",
     "@fluent/langneg": "^0.7.0",
     "@fluent/react": "^0.15.2",
@@ -60,12 +61,12 @@
     "@leeoniya/ufuzzy": "^1.0.14",
     "@mozilla/glean": "5.0.1",
     "@next/third-parties": "^14.2.3",
-    "@sentry/nextjs": "^7.113.0",
-    "@sentry/node": "^7.58.1",
-    "@sentry/tracing": "^7.113.0",
+    "@sentry/nextjs": "^8.2.1",
+    "@sentry/node": "^8.0.0",
+    "@sentry/utils": "^8.0.0",
     "@stripe/stripe-js": "^3.0.6",
     "@types/jsdom": "^21.1.5",
-    "@types/node": "^20.12.10",
+    "@types/node": "^20.12.12",
     "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.19",
     "canvas-confetti": "^1.9.3",
@@ -114,7 +115,7 @@
     "@typescript-eslint/eslint-plugin": "^7.5.0",
     "@typescript-eslint/parser": "^7.5.0",
     "adm-zip": "^0.5.12",
-    "esbuild": "^0.20.2",
+    "esbuild": "^0.21.3",
     "eslint": "^8.57.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-check-file": "^2.7.1",
@@ -123,13 +124,13 @@
     "eslint-plugin-jest": "^27.9.0",
     "eslint-plugin-jsdoc": "^48.2.2",
     "eslint-plugin-storybook": "^0.8.0",
-    "fast-check": "^3.16.0",
+    "fast-check": "^3.18.0",
     "husky": "^9.0.11",
     "jest": "^29.7.0",
     "jest-axe": "^8.0.0",
     "jest-canvas-mock": "^2.5.2",
     "jest-environment-jsdom": "^29.7.0",
-    "jest-fail-on-console": "^3.1.1",
+    "jest-fail-on-console": "^3.3.0",
     "lint-staged": "^15.2.2",
     "mjml-browser": "^4.15.3",
     "prettier": "3.2.5",
@@ -140,8 +141,8 @@
     "stylelint-config-recommended-scss": "^14.0.0",
     "stylelint-scss": "^6.3.0",
     "ts-jest": "^29.1.2",
-    "tsx": "^4.9.3",
-    "typescript": "^5.4.2",
-    "yaml": "^2.4.1"
+    "tsx": "^4.10.5",
+    "typescript": "^5.4.5",
+    "yaml": "^2.4.2"
   }
 }

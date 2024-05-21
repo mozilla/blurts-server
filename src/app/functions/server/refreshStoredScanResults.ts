@@ -16,12 +16,12 @@ import { logger } from "./logging";
  *
  * Continue if there are any errors.
  *
- * @param profileId {number} OneRep Profile ID to refresh.
+ * @param onerepProfileId {number} OneRep Profile ID to refresh.
  */
-export async function refreshStoredScanResults(profileId: number) {
+export async function refreshStoredScanResults(onerepProfileId: number) {
   try {
-    const remoteScans = (await listScans(profileId)).data;
-    const localScans = await getAllScansForProfile(profileId);
+    const remoteScans = (await listScans(onerepProfileId)).data;
+    const localScans = await getAllScansForProfile(onerepProfileId);
 
     const newScans = remoteScans.filter(
       (remoteScan) =>
@@ -41,14 +41,14 @@ export async function refreshStoredScanResults(profileId: number) {
     // Record any new scans, or change in existing scan status.
     await Promise.all(
       remoteScans.map(async (scan) => {
-        await setOnerepScan(profileId, scan.id, scan.status, scan.reason);
+        await setOnerepScan(onerepProfileId, scan.id, scan.status, scan.reason);
       }),
     );
 
     // Refresh results for all scans, new and existing.
     // The database will ignore any attempt to insert duplicate scan result IDs.
-    const allScanResults = await getAllScanResults(profileId);
-    await addOnerepScanResults(profileId, allScanResults);
+    const allScanResults = await getAllScanResults(onerepProfileId);
+    await addOnerepScanResults(onerepProfileId, allScanResults);
   } catch (ex) {
     logger.warn("Could not fetch current OneRep results:", ex);
   }
