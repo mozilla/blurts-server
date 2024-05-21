@@ -2,11 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getL10n } from "../../../../../functions/l10n/serverComponents";
+import { Props } from "../HowItWorksView";
 import styles from "../HowItWorksView.module.scss";
 
-export const Header = () => {
-  const l10n = getL10n();
+export const Header = (props: Props) => {
+  const { l10n } = props;
   return (
     <header className={styles.header}>
       <span>

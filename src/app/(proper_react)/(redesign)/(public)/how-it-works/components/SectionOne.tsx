@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import Image from "next/image";
-import { getL10n } from "../../../../../functions/l10n/serverComponents";
+import { Props } from "../HowItWorksView";
 import { Button } from "../../../../../components/client/Button";
 import {
   RemoveStep1,
@@ -15,8 +15,8 @@ import {
 } from "../images";
 import styles from "../HowItWorksView.module.scss";
 
-export const SectionOne = () => {
-  const l10n = getL10n();
+export const SectionOne = (props: Props) => {
+  const { l10n } = props;
 
   return (
     <div className={`${styles.sectionWrapper} ${styles.grayBG}`}>
