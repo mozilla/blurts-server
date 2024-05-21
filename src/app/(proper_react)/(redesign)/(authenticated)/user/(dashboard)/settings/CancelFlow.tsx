@@ -75,16 +75,20 @@ export const CancelFlow = (props: Props) => {
                   // Unfortunately video files cannot currently be imported, so make
                   // sure these files are present in /public. See
                   // https://github.com/vercel/next.js/issues/35248
-                  src="/animations/CancellationFlowAnimation.mp4"
                   type="video/mp4"
+                  src="/animations/CancellationFlowAnimation.mp4"
                 />
                 <source
-                  type="video/webm; codecs='vp9'"
+                  type="video/webm"
                   src="/animations/CancellationFlowAnimation.webm"
                 />
                 {/* Fall back to the image if the video formats are not supported: */}
+                {/* The .staticAlternative class ensures that this image will only be shown if the user has prefers-reduced-motion on */}
                 <Image
-                  className={styles.cancellationIllustrationWrapper}
+                  className={`
+                  ${styles.cancellationIllustrationWrapper} 
+                  ${styles.staticAlternative}
+                  `}
                   src={CancellationFlowStaticImage}
                   alt=""
                 />

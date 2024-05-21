@@ -43,3 +43,15 @@
   justify-content: center;
   height: 240px; //height of iframe
 }
+
+@media (prefers-reduced-motion) {
+  video {
+    display: none;
+  }
+  // Ideally a `display: none` on <source> elements would be enough to
+  // cause the <img> inside <video> to be displayed, but it's not.
+  // Hence, another <img> element:
+  .staticAlternative {
+    display: inline-block;
+  }
+}
