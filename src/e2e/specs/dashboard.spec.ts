@@ -351,7 +351,26 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard  - Payment`, () 
     await expect(forwardArrowButton).toBeVisible();
     await forwardArrowButton.click();
     //TODO: check step 4 criteria
+    //loop througit
     //TODO: check icons are visible too
+    /* 
+
+    i = get count on html page
+
+    navigate to upsell page
+    verify toggles
+    arrow = findArrow()
+    page = arrow.click()
+    while (page != dashboard and i != 0):
+      i -= 1
+      arrow = findArrow()
+      if arrow == null: error
+      perform icon check and/or URL checks
+      page = arrow.click()
+    
+    if i != 0 or page != dashboard: error
+
+    */
 
     await goToUpsell();
   });
