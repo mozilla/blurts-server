@@ -8,7 +8,6 @@ import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { ExtendedReactLocalization } from "../../../app/functions/l10n";
 import { EmailFooter } from "../EmailFooter";
 import { EmailHeader } from "../EmailHeader";
-import { EmailStyles } from "../EmailStyles";
 
 export type Props = {
   subscriber: SanitizedSubscriberRow;
@@ -31,7 +30,6 @@ const MonthlyActivityPlusWithAutoRemovalsOnlyEmail = (props: Props) => {
   return (
     <mjml>
       <mj-head>
-        <EmailStyles />
         <mj-preview>
           {l10n.getString("email-monthly-plus-auto-preview")}
         </mj-preview>
@@ -155,7 +153,6 @@ const MonthlyActivityFreeEmail = (props: Props) => {
   return (
     <mjml>
       <mj-head>
-        <EmailStyles />
         <mj-preview>{l10n.getString("email-monthly-free-preview")}</mj-preview>
       </mj-head>
       <mj-body>
