@@ -28,19 +28,18 @@ export const UserAdmin = () => {
     }
 
     const abortController = new AbortController();
-    void getSha1(emailInput).then(async (emailHash) =>
-      lookupFxaUid(emailHash).then(async (fxaUid) => {
-        const response = await fetch(`/api/v1/admin/users/${fxaUid}`, {
-          signal: abortController.signal,
-        });
-        if (!response.ok) {
-          setSubscriberData(null);
-          return;
-        }
-        const data = await response.json();
-        setSubscriberData(data);
-      }),
-    );
+    void getSha1(emailInput).then(async (emailHash) => {
+      const fxaUid = await lookupFxaUid(emailHash);
+      const response = await fetch(`/api/v1/admin/users/${fxaUid}`, {
+        signal: abortController.signal,
+      });
+      if (!response.ok) {
+        setSubscriberData(null);
+        return;
+      }
+      const data = await response.json();
+      setSubscriberData(data);
+    });
 
     return () => {
       abortController.abort();
