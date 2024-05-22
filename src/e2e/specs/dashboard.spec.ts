@@ -401,7 +401,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation`, (
     test.info().annotations.push({
       type: "testrail",
       description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2301512",
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463568",
     });
     const goToHrefOf = async (aTag: Locator) => {
       const href = await aTag.getAttribute("href");
