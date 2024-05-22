@@ -11,8 +11,8 @@ import { useL10n } from "../../../hooks/l10n";
 import { useLocalDismissal } from "../../../hooks/useLocalDismissal";
 import { useHasRenderedClientSide } from "../../../hooks/useHasRenderedClientSide";
 import { useTelemetry } from "../../../hooks/useTelemetry";
-import styles from "./CsatSurvey.module.scss";
-import { Survey } from "./CsatSurveyContainer";
+import styles from "./CsatSurveyBanner.module.scss";
+import { Survey } from "./surveys/csatSurvey";
 
 const surveyResponses = [
   "very-dissatisfied",
@@ -22,7 +22,7 @@ const surveyResponses = [
   "very-satisfied",
 ] as const;
 
-type SurveyResponse = (typeof surveyResponses)[number];
+type SurveyResponse = typeof surveyResponses[number];
 
 type SurveyLinks = Record<SurveyResponse, string>;
 
@@ -31,7 +31,7 @@ type Props = {
   survey: Survey;
 };
 
-export const CsatSurvey = ({ localDismissalId, survey }: Props) => {
+export const CsatSurveyBanner = ({ localDismissalId, survey }: Props) => {
   const l10n = useL10n();
   const [answer, setAnswer] = useState<keyof SurveyLinks>();
 
@@ -48,10 +48,13 @@ export const CsatSurvey = ({ localDismissalId, survey }: Props) => {
   }
 
   const { dismiss } = localDismissal;
+  const hasFollowUpSurveyOptions =
+    "followUpSurveyOptions" in survey &&
+    typeof survey.followUpSurveyOptions !== "undefined";
 
   const submit = (satisfaction: SurveyResponse) => {
     setAnswer(satisfaction);
-    dismiss({ soft: typeof survey.followUpSurveyOptions !== "undefined" });
+    dismiss({ soft: hasFollowUpSurveyOptions });
     recordTelemetry("button", "click", {
       button_id: `csat_survey_${survey.id}_${satisfaction}`,
     });
@@ -60,11 +63,10 @@ export const CsatSurvey = ({ localDismissalId, survey }: Props) => {
   return (
     <aside className={styles.wrapper}>
       {localDismissalId}
-      {typeof answer !== "undefined" &&
-      typeof survey.followUpSurveyOptions !== "undefined" ? (
+      {typeof answer !== "undefined" && hasFollowUpSurveyOptions ? (
         <div className={styles.prompt}>
           <a
-            href={survey.followUpSurveyOptions[answer]}
+            href={(survey.followUpSurveyOptions as SurveyLinks)[answer]}
             onClick={() => dismiss()}
             target="_blank"
             rel="noopen noreferrer"

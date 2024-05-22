@@ -17,7 +17,7 @@ afterEach(() => {
   deleteAllCookies();
 });
 
-describe("CSAT survey", () => {
+describe("CSAT survey banner", () => {
   it("passes the axe accessibility test suite for CsatSurveyBanner", async () => {
     const ComposedTextComboBox = composeStory(CsatSurveyBanner, Meta);
     const { container } = render(<ComposedTextComboBox />);
@@ -41,14 +41,14 @@ describe("CSAT survey", () => {
       render(
         <ComposedCsatSurveyBanner
           elapsedTimeInDaysSinceInitialScan={dayCount}
-        />,
+        />
       );
 
       const answerButton = screen.getByRole("button", {
         name: "Neutral",
       });
       expect(answerButton).toBeInTheDocument();
-    },
+    }
   );
 
   it("shows the correct follow-up feedback link for response “Very dissatisfied”", async () => {
@@ -62,12 +62,12 @@ describe("CSAT survey", () => {
     await user.click(answerButton);
 
     const feedbackLink = screen.getByText(
-      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
+      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i
     );
     expect(feedbackLink).toBeInTheDocument();
     expect(feedbackLink).toHaveAttribute(
       "href",
-      "https://survey.alchemer.com/s3/7718223/9bf87045f7fb",
+      "https://survey.alchemer.com/s3/7718223/9bf87045f7fb"
     );
   });
 
@@ -75,7 +75,7 @@ describe("CSAT survey", () => {
     const user = userEvent.setup();
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(
-      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={180} />,
+      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={180} />
     );
 
     const answerButton = screen.getByRole("button", {
@@ -84,11 +84,11 @@ describe("CSAT survey", () => {
     await user.click(answerButton);
 
     const feedbackLink = screen.getByText(
-      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
+      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i
     );
     expect(feedbackLink).toBeInTheDocument();
     expect((feedbackLink as HTMLLinkElement).getAttribute("href")).toBe(
-      "https://survey.alchemer.com/s3/7718561/6dfb2e8b6d68",
+      "https://survey.alchemer.com/s3/7718561/6dfb2e8b6d68"
     );
   });
 
@@ -96,7 +96,7 @@ describe("CSAT survey", () => {
     const user = userEvent.setup();
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(
-      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={351} />,
+      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={351} />
     );
 
     const answerButton = screen.getByRole("button", {
@@ -105,11 +105,11 @@ describe("CSAT survey", () => {
     await user.click(answerButton);
 
     const feedbackLink = screen.getByText(
-      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
+      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i
     );
     expect(feedbackLink).toBeInTheDocument();
     expect((feedbackLink as HTMLLinkElement).getAttribute("href")).toBe(
-      "https://survey.alchemer.com/s3/7718562/76e17004efd6",
+      "https://survey.alchemer.com/s3/7718562/76e17004efd6"
     );
   });
 
@@ -124,12 +124,12 @@ describe("CSAT survey", () => {
     await user.click(answerButton);
 
     const feedbackLink = screen.getByText(
-      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
+      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i
     );
     expect(feedbackLink).toBeInTheDocument();
     expect(feedbackLink).toHaveAttribute(
       "href",
-      "https://survey.alchemer.com/s3/7718223/fbbb597a762a",
+      "https://survey.alchemer.com/s3/7718223/fbbb597a762a"
     );
   });
 
@@ -137,7 +137,7 @@ describe("CSAT survey", () => {
     const user = userEvent.setup();
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(
-      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={180} />,
+      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={180} />
     );
 
     const answerButton = screen.getByRole("button", {
@@ -146,11 +146,11 @@ describe("CSAT survey", () => {
     await user.click(answerButton);
 
     const feedbackLink = screen.getByText(
-      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
+      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i
     );
     expect(feedbackLink).toBeInTheDocument();
     expect((feedbackLink as HTMLLinkElement).getAttribute("href")).toBe(
-      "https://survey.alchemer.com/s3/7718561/a443cc84b78a",
+      "https://survey.alchemer.com/s3/7718561/a443cc84b78a"
     );
   });
 
@@ -159,7 +159,7 @@ describe("CSAT survey", () => {
     const user = userEvent.setup();
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(
-      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={180} />,
+      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={180} />
     );
 
     const answerButton = screen.getByRole("button", {
@@ -172,7 +172,7 @@ describe("CSAT survey", () => {
       "click",
       expect.objectContaining({
         button_id: "csat_survey_6-months_very-satisfied",
-      }),
+      })
     );
   });
 
@@ -196,7 +196,7 @@ describe("CSAT survey", () => {
     const user = userEvent.setup();
     const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
     render(
-      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={180} />,
+      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={180} />
     );
 
     const answerButton = screen.getByRole("button", {
@@ -205,12 +205,12 @@ describe("CSAT survey", () => {
     await user.click(answerButton);
 
     const feedbackLinkOne = screen.getByText(
-      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
+      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i
     );
     await user.click(feedbackLinkOne);
 
     const feedbackLinkTwo = screen.queryByText(
-      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
+      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i
     );
     expect(feedbackLinkTwo).not.toBeInTheDocument();
   });
