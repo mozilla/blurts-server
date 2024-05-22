@@ -94,6 +94,7 @@
     "@faker-js/faker": "^8.4.1",
     "@playwright/test": "^1.43.1",
     "@storybook/addon-a11y": "^8.1.2",
+    "@storybook/addon-actions": "^8.1.2",
     "@storybook/addon-essentials": "^8.1.2",
     "@storybook/addon-interactions": "^8.1.2",
     "@storybook/addon-links": "^8.1.2",
