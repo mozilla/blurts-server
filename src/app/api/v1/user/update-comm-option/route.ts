@@ -17,8 +17,8 @@ import {
 export type EmailUpdateCommTypeOfOptions = "null" | "affected" | "primary";
 
 export interface EmailUpdateCommOptionRequest {
-  instantBreachAlerts: EmailUpdateCommTypeOfOptions;
-  monthlyMonitorReport: boolean;
+  instantBreachAlerts?: EmailUpdateCommTypeOfOptions;
+  monthlyMonitorReport?: boolean;
 }
 
 export async function POST(req: NextRequest) {
@@ -48,8 +48,13 @@ export async function POST(req: NextRequest) {
         default:
           allEmailsToPrimary = null;
       }
-      await setAllEmailsToPrimary(subscriber, allEmailsToPrimary);
-      await setMonthlyMonitorReport(subscriber, monthlyMonitorReport);
+
+      if (typeof instantBreachAlerts !== "undefined") {
+        await setAllEmailsToPrimary(subscriber, allEmailsToPrimary);
+      }
+      if (typeof monthlyMonitorReport === "boolean") {
+        await setMonthlyMonitorReport(subscriber, monthlyMonitorReport);
+      }
 
       return NextResponse.json({
         success: true,
