@@ -428,6 +428,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation`, (
     const mntrLogo = page.locator(
       "//nav[@Class='Shell_mainMenu__lHVfI']//a[img]",
     );
+
     await goToHrefOf(mntrLogo);
     await expect(page).toHaveURL(/.*\/dashboard.*/);
 
