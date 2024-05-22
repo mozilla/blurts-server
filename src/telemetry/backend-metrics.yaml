@@ -88,7 +88,7 @@ subscription:
   cancel:
     type: event
     description: |
-      A subscription has been activated for this user.
+      A subscription cancellation has taken effect, and the user is no longer subscribed to Monitor Plus.
     bugs:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
     data_reviews:
