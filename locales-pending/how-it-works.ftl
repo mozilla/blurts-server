@@ -27,7 +27,6 @@ section-1-step-2-title = Step 2
 section-1-step-2-subtitle = We automatically remove your information
 section-1-step-2-text-1 = Each data broker needs to be contacted to begin the data removal process, which takes time and effort.
 section-1-step-2-text-2 = For paid subscribers, as soon as we identify which sites have your information, we automatically initiate a request for removal. Free members will be alerted which data brokers to contact themselves.
-section-1-step-2-text-3 = On average, data removal typically takes 7-14 days — though timing can vary.
 
 
 

@@ -103,9 +103,6 @@ export const SectionOne = (props: Props) => {
           <p className={styles.stepBody}>
             {l10n.getString("section-1-step-2-text-2")}
           </p>
-          <p className={styles.stepBody}>
-            {l10n.getString("section-1-step-2-text-3")}
-          </p>
         </div>
       </div>
       {/* STEP 3 */}
