@@ -76,7 +76,6 @@ export const AlertAddressForm = (props: Props) => {
       const chosenOption = newValue as EmailUpdateCommTypeOfOptions;
       const body: EmailUpdateCommOptionRequest = {
         instantBreachAlerts: chosenOption,
-        monthlyMonitorReport: monitorReportAllowed,
       };
       void fetch("/api/v1/user/update-comm-option", {
         method: "POST",
@@ -85,11 +84,6 @@ export const AlertAddressForm = (props: Props) => {
         // Fetch a new token with up-to-date subscriber info - specifically,
         // with this setting updated.
         void session.update();
-        // Make sure the dashboard re-fetches the breaches on the next visit,
-        // in order to make resolved breaches move to the "Fixed" tab.
-        // If we had used server actions, we could've called
-        // `revalidatePath("/user/dashboard")` there, but the API doesn't appear
-        // to necessarily share a cache with the client.
         router.refresh();
       });
     },
@@ -98,12 +92,12 @@ export const AlertAddressForm = (props: Props) => {
   const handleMonthlyMonitorReportToggle = () => {
     const newValue = !activateMonthlyMonitorReport;
     setActivateMonthlyMonitorReport(newValue);
+    const body: EmailUpdateCommOptionRequest = {
+      monthlyMonitorReport: newValue,
+    };
     void fetch("/api/v1/user/update-comm-option", {
       method: "POST",
-      body: JSON.stringify({
-        instantBreachAlerts: commsValue(),
-        monthlyMonitorReport: newValue,
-      }),
+      body: JSON.stringify(body),
     }).then(() => {
       void session.update();
       router.refresh();
