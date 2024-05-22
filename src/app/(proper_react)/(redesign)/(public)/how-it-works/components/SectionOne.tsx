@@ -34,7 +34,10 @@ export const SectionOne = (props: Props) => {
         </span>
         <div className={styles.introCTA}>
           <h3>{l10n.getString("section-1-intro-text-2")}</h3>
-          <Button variant="primary">
+          <Button
+            variant="primary"
+            href="https://accounts.firefox.com/subscriptions/products/prod_OiV9RSaatywSRy?plan=price_1Nv4ODJNcmPzuWtRoYpoFHXd"
+          >
             {l10n.getString("section-1-intro-cta-button")}
           </Button>
         </div>
@@ -124,8 +127,11 @@ export const SectionOne = (props: Props) => {
         <Image src={RemoveStep3} alt="step 3 screenshot" />
       </div>
       <span className={styles.sectionCTAButton}>
-        <Button variant="primary">
-          {l10n.getString("section-1-cta-button")}
+        <Button
+          variant="primary"
+          href="https://accounts.firefox.com/subscriptions/products/prod_OiV9RSaatywSRy?plan=price_1Nv4ODJNcmPzuWtRoYpoFHXd"
+        >
+          {l10n.getString("section-1-intro-cta-button")}
         </Button>
       </span>
     </div>
