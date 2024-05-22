@@ -351,6 +351,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard  - Payment`, () 
     await expect(forwardArrowButton).toBeVisible();
     await forwardArrowButton.click();
     //TODO: check step 4 criteria
+    //TODO: check icons are visible too
 
     await goToUpsell();
   });
