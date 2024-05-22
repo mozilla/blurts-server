@@ -403,41 +403,31 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation`, (
       description:
         "https://testrail.stage.mozaws.net/index.php?/cases/view/2463568",
     });
+
     const goToHrefOf = async (aTag: Locator) => {
       const href = await aTag.getAttribute("href");
       expect(href).toBeTruthy();
       await page.goto(href!);
     };
+
     //testrail's step 1
     await dashboardPage.goToDashboard();
-    const settingsButton = page.locator(
-      "//nav[@Class='Shell_mainMenu__lHVfI']//a[text()='Settings']",
-    );
-    await goToHrefOf(settingsButton);
+    await goToHrefOf(dashboardPage.settingsPageLink);
     await expect(page).toHaveURL(/\/settings$/);
 
     //testrail's step 2
-    const dashboardButton = page.locator(
-      "//nav[@Class='Shell_mainMenu__lHVfI']//a[text()='Dashboard']",
-    );
-    await goToHrefOf(dashboardButton);
+    await goToHrefOf(dashboardPage.dashboardPageLink);
     await expect(page).toHaveURL(/.*\/dashboard.*/);
 
     // testrail's step 3
     await dashboardPage.goToSettings();
-    const mntrLogo = page.locator(
-      "//nav[@Class='Shell_mainMenu__lHVfI']//a[img]",
-    );
-
+    const mntrLogo = page.locator("nav a:has(> img)");
     await goToHrefOf(mntrLogo);
     await expect(page).toHaveURL(/.*\/dashboard.*/);
 
     //testrail's step 4
     await dashboardPage.goToDashboard();
-    const faqsButton = page.locator(
-      "//nav[@Class='Shell_mainMenu__lHVfI']//a[text()='FAQs']",
-    );
-    await goToHrefOf(faqsButton);
+    await goToHrefOf(dashboardPage.faqsPageLink);
     await expect(page).toHaveURL(
       /.*support\.mozilla\.org.*\/kb\/.*firefox-monitor-faq.*/,
     );
