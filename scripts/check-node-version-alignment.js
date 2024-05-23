@@ -34,11 +34,6 @@ const netlifyNodeVersion = (await load("netlify.toml"))
   .split('NODE_VERSION = "')[1]
   .split('", NPM_VERSION')[0];
 
-const circleNodeVersions = (await load(".circleci/config.yml"))
-  .split("\n")
-  .filter(line => line.includes("cimg/node:"))
-  .map(line => line.split("cimg/node:")[1]);
-
 const esbuildVersion = (await load("esbuild.cronjobs.js"))
   .split("\n")
   .find(line => line.includes("target:"))
@@ -74,6 +69,5 @@ checkVersion("the package-lock.json engines", lockFile.packages[""].engines.node
 checkVersion("the Dockerfile", dockerFileNodeVersion);
 checkVersion("netlify.toml", netlifyNodeVersion);
 checkVersion("esbuild.cronjobs.json", esbuildVersion);
-circleNodeVersions.forEach(version => checkVersion("the CircleCI config", version));
 ghaVersions.forEach(([workflow, version]) => checkVersion(`.github/workflows/${workflow}`, version));
 console.log(`Node version consistently set to [${getMinorOnly(packageJson.volta.node)}] everywhere!`);

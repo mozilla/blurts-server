@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { Locator } from "@playwright/test";
 import { test, expect } from "../fixtures/basePage.js";
 import { DashboardPage } from "../pages/dashBoardPage.js";
 import { checkAuthState, removeUnicodeChars } from "../utils/helpers.js";
@@ -350,5 +351,83 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Breaches Scan,
     await dashboardPage.fixedTab.click();
     const fixedExposures = await dashboardPage.numFixed.textContent();
     expect(fixedExposures as string).toMatch(initialExposuresCount);
+  });
+});
+
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Footer`, () => {
+  test.beforeEach(async ({ dashboardPage, page }) => {
+    await dashboardPage.open();
+    try {
+      await checkAuthState(page);
+    } catch {
+      console.log("[E2E_LOG] - No fxa auth required, proceeding...");
+    }
+  });
+
+  test("Verify that the site footer is displayed correctly", async ({
+    dashboardPage,
+    page,
+  }) => {
+    // link to testrail
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463570",
+    });
+
+    const clickOnATagCheckDomain = async (
+      aTag: Locator,
+      host: string,
+      path: string | RegExp = /.*/,
+    ) => {
+      if (typeof path === "string") path = new RegExp(".*" + path + ".*");
+      host = host.replace(/^(https?:\/\/)/, "");
+
+      const href = await aTag.getAttribute("href");
+      if (href === null) return false;
+
+      await page.goto(href);
+      const currentUrl = new URL(page.url());
+      const perceivedHost = currentUrl.hostname;
+      const perceivedPath = currentUrl.pathname;
+      expect(perceivedHost).toBe(host);
+      expect(path.test(perceivedPath)).toBeTruthy();
+      await page.goBack();
+    };
+
+    expect(process.env["E2E_TEST_BASE_URL"]).toBeTruthy();
+    const baseUrl = process.env["E2E_TEST_BASE_URL"]!;
+    await dashboardPage.goToDashboard();
+    await expect(page.locator("footer a >> img")).toBeVisible();
+    await clickOnATagCheckDomain(
+      dashboardPage.mozillaLogoFooter,
+      "www.mozilla.org",
+      /^(\/en-US\/)?$/,
+    );
+    await clickOnATagCheckDomain(
+      dashboardPage.allBreachesFooter,
+      baseUrl,
+      "/breaches",
+    );
+    await clickOnATagCheckDomain(
+      dashboardPage.faqsFooter,
+      "support.mozilla.org",
+      /.*\/kb.*\/mozilla-monitor-faq.*/,
+    );
+    await clickOnATagCheckDomain(
+      dashboardPage.termsOfServiceFooter,
+      "www.mozilla.org",
+      "/about/legal/terms/subscription-services/",
+    );
+    await clickOnATagCheckDomain(
+      dashboardPage.privacyNoticeFooter,
+      "www.mozilla.org",
+      "/privacy/subscription-services/",
+    );
+    await clickOnATagCheckDomain(
+      dashboardPage.githubFooter,
+      "github.com",
+      "/mozilla/blurts-server",
+    );
   });
 });

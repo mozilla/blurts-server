@@ -9,7 +9,7 @@ import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import Image from "next/image";
 import styles from "./CancelFlow.module.scss";
-import CancellationSurveyPlaneIllustration from "./images/CancellationSurveyPlaneIllustration.png";
+import CancellationFlowStaticImage from "./images/CancellationFlowIllustration.svg";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 import { ModalOverlay } from "../../../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../../../components/client/dialog/Dialog";
@@ -64,11 +64,43 @@ export const CancelFlow = (props: Props) => {
                   : "settings-unsubscribe-dialog-confirmation-redirect-title",
             )}
             illustration={
-              <Image
-                className={styles.cancellationIllustrationWrapper}
-                src={CancellationSurveyPlaneIllustration}
-                alt=""
-              />
+              <>
+                <video
+                  aria-hidden={true}
+                  autoPlay={true}
+                  loop={true}
+                  muted={true}
+                  className={styles.cancellationAnimation}
+                >
+                  <source
+                    // Unfortunately video files cannot currently be imported, so make
+                    // sure these files are present in /public. See
+                    // https://github.com/vercel/next.js/issues/35248
+                    type="video/mp4"
+                    src="/animations/CancellationFlowAnimation.mp4"
+                  />
+                  <source
+                    type="video/webm"
+                    src="/animations/CancellationFlowAnimation.webm"
+                  />
+                  {/* Fall back to the image if the video formats are not supported: */}
+                  <Image
+                    className={styles.cancellationIllustrationWrapper}
+                    src={CancellationFlowStaticImage}
+                    alt=""
+                  />
+                </video>
+                {/* Fall back to the image if the video formats are not supported: */}
+                {/* The .staticAlternative class ensures that this image will only be shown if the user has prefers-reduced-motion on */}
+                <Image
+                  className={`
+                ${styles.cancellationIllustrationWrapper} 
+                ${styles.staticAlternative}
+                `}
+                  src={CancellationFlowStaticImage}
+                  alt=""
+                />
+              </>
             }
             onDismiss={() => dialogState.close()}
           >
@@ -77,29 +109,9 @@ export const CancelFlow = (props: Props) => {
                 <>
                   <p>
                     {l10n.getString(
-                      "settings-cancel-plus-step-confirm-content-pt1",
+                      "settings-cancel-plus-step-confirm-content",
                     )}
                   </p>
-                  <p>
-                    {l10n.getString(
-                      "settings-cancel-plus-step-confirm-content-pt2",
-                    )}
-                  </p>
-                  <TelemetryButton
-                    event={{
-                      module: "button",
-                      name: "click",
-                      data: {
-                        button_id: "continue_to_cancellation",
-                      },
-                    }}
-                    variant="primary"
-                    onPress={() => setCurrentStep("survey")}
-                  >
-                    {l10n.getString(
-                      "settings-cancel-plus-step-confirm-cta-label",
-                    )}
-                  </TelemetryButton>
                   <TelemetryButton
                     event={{
                       module: "popup",
@@ -108,12 +120,27 @@ export const CancelFlow = (props: Props) => {
                         popup_id: "never_mind_take_me_back",
                       },
                     }}
-                    variant="tertiary"
+                    variant="primary"
                     onPress={() => dialogState.close()}
                     className={styles.tertiaryCta}
                   >
                     {l10n.getString(
                       "settings-cancel-plus-step-confirm-cancel-label",
+                    )}
+                  </TelemetryButton>
+                  <TelemetryButton
+                    event={{
+                      module: "button",
+                      name: "click",
+                      data: {
+                        button_id: "continue_to_cancellation",
+                      },
+                    }}
+                    variant="tertiary"
+                    onPress={() => setCurrentStep("survey")}
+                  >
+                    {l10n.getString(
+                      "settings-cancel-plus-step-confirm-cta-label",
                     )}
                   </TelemetryButton>
                 </>
