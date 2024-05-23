@@ -139,11 +139,11 @@ describe("useLocalDismissal", () => {
     );
   });
 
-  it("large duration", () => {
+  it("Duration not a number", () => {
     const mockedSetCookie = jest.fn();
     mockedUseCookies.mockReturnValue([{}, mockedSetCookie]);
     const { result } = renderHook(() =>
-      useLocalDismissal("some_key", { duration: 1000000 }),
+      useLocalDismissal("some_key", { duration: undefined }),
     );
 
     act(() => {
@@ -153,7 +153,7 @@ describe("useLocalDismissal", () => {
     expect(mockedSetCookie).toHaveBeenCalledWith(
       "some_key_dismissed",
       expect.any(String),
-      { maxAge: 1000000 },
+      { maxAge: expect.any(Number) },
     );
   });
 });
