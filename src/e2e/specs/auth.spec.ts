@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { test, expect } from "../fixtures/basePage.js";
+import { mockHIBPRangeAPI } from "../mocks/hibp.js";
 
 test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @smoke`, () => {
   test.beforeEach(async ({ landingPage }) => {
@@ -52,6 +53,8 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     await page.route(/(analytics)/, async (route) => {
       await route.abort();
     });
+
+    await mockHIBPRangeAPI(page);
 
     // start authentication flow
     await landingPage.goToSignIn();

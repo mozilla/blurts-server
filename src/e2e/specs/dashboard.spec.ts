@@ -6,6 +6,7 @@ import { Locator } from "@playwright/test";
 import { test, expect } from "../fixtures/basePage.js";
 import { DashboardPage } from "../pages/dashBoardPage.js";
 import { checkAuthState } from "../utils/helpers.js";
+import { mockHIBPRangeAPI } from "../mocks/hibp.js";
 
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
@@ -17,6 +18,11 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
       await checkAuthState(page);
     } catch {
       console.log("[E2E_LOG] - No fxa auth required, proceeding...");
+    }
+    try {
+      await mockHIBPRangeAPI(page);
+    } catch {
+      console.log("[E2E_LOG] - Mock failed, proceeding...");
     }
   });
 

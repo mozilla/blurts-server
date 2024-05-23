@@ -4,6 +4,7 @@
 
 import { test, expect } from "../fixtures/basePage.js";
 import { checkAuthState, setEnvVariables } from "../utils/helpers.js";
+import { mockHIBPRangeAPI } from "../mocks/hibp.js";
 
 test.describe(`${process.env.E2E_TEST_ENV} - Monitor Plus Purchase Flow Yearly`, () => {
   test.beforeEach(
@@ -23,6 +24,12 @@ test.describe(`${process.env.E2E_TEST_ENV} - Monitor Plus Purchase Flow Yearly`,
       await page.route(/(analytics)/, async (route) => {
         await route.abort();
       });
+
+      try {
+        await mockHIBPRangeAPI(page);
+      } catch {
+        console.log("[E2E_LOG] - Mock failed, proceeding...");
+      }
 
       // start authentication flow
       await landingPage.open();
@@ -138,6 +145,16 @@ test.describe(`${process.env.E2E_TEST_ENV} - Monitor Plus Purchase Flow Yearly`,
         "[E2E_LOG] - No fxa auth required, proceeding... with stripe monthly",
       );
     }
+
+    // await page.routeFromHAR("./hars/hibp/hibp.har", {
+    //   url: `**haveibeenpwned**`,
+    //   update: true,
+    // });
+
+    // await page.routeFromHAR("./hars/onerep/onerep.har", {
+    //   url: `**onerep**`,
+    //   update: true,
+    // });
 
     // navigate to subscription
     await dashboardPage.open();
