@@ -11,6 +11,7 @@ export class DashboardPage {
   readonly breachStats: Locator;
 
   readonly fireFoxMonitorLogoImgButton: Locator;
+  readonly fireFoxMonitorLogoAtag: Locator;
   readonly actionNeededTab: Locator;
   readonly fixedTab: Locator;
   readonly profileButton: Locator;
@@ -90,6 +91,7 @@ export class DashboardPage {
     this.fireFoxMonitorLogoImgButton = page.locator(
       '//a[starts-with(@class, "Shell_homeLink_")]/img',
     );
+    this.fireFoxMonitorLogoAtag = page.locator("nav a:has(> img)");
     this.actionNeededTab = page.getByRole("tab", { name: "Action needed" });
     this.fixedTab = page.getByRole("tab", { name: "Fixed" });
     this.profileButton = page.getByTitle("Profile").nth(1);

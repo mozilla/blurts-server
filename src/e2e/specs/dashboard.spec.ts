@@ -421,8 +421,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation`, (
 
     // testrail's step 3
     await dashboardPage.goToSettings();
-    const mntrLogo = page.locator("nav a:has(> img)");
-    await goToHrefOf(mntrLogo);
+    await goToHrefOf(dashboardPage.fireFoxMonitorLogoAtag);
     await expect(page).toHaveURL(/.*\/dashboard.*/);
 
     //testrail's step 4
