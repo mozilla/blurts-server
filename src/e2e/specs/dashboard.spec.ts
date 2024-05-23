@@ -346,11 +346,11 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard  - Payment`, () 
     const label1 = page.locator("div > label").nth(1);
 
     await label0.click();
-    const price0 = page.locator("div > strong + span");
-    const plan0 = page.locator("div > strong + span + a");
+    const price0 = page.locator("div > strong + span").textContent();
+    const plan0 = page.locator("div > strong + span + a").textContent();
     await label1.click();
-    const price1 = page.locator("div > strong + span");
-    const plan1 = page.locator("div > strong + span + a");
+    const price1 = page.locator("div > strong + span").textContent();
+    const plan1 = page.locator("div > strong + span + a").textContent();
     const areTextsChanging = price0 !== price1 && plan0 !== plan1;
     expect(areTextsChanging).toBeTruthy();
   });
