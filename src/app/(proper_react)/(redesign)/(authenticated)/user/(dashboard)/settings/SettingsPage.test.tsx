@@ -185,7 +185,7 @@ it("passes the axe accessibility audit", async () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion"]}
+        enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -216,7 +216,7 @@ it("preselects 'Send all breach alerts to the primary email address' if that's t
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion"]}
+        enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -259,7 +259,7 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion"]}
+        enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -495,10 +495,7 @@ it("sends a call to the API to change the email alert preferences when changing 
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={[
-          "MonitorAccountDeletion",
-          "UpdatedEmailPreferencesOption",
-        ]}
+        enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -555,7 +552,6 @@ it("checks that monthly monitor report is enabled", () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[
-          "MonitorAccountDeletion",
           "UpdatedEmailPreferencesOption",
           "MonthlyActivityEmail",
         ]}
@@ -602,7 +598,6 @@ it("sends an API call to disable monthly monitor reports", async () => {
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[
-          "MonitorAccountDeletion",
           "UpdatedEmailPreferencesOption",
           "MonthlyActivityEmail",
         ]}
@@ -650,7 +645,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion"]}
+        enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -685,7 +680,7 @@ it("marks unverified email addresses as such", () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion"]}
+        enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -721,7 +716,7 @@ it("calls the API to resend a verification email if requested to", async () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion"]}
+        enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -767,7 +762,7 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion"]}
+        enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -803,7 +798,7 @@ it("hides the Plus cancellation link if the user doesn't have Plus", () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion"]}
+        enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -838,7 +833,7 @@ it("shows the Plus cancellation link if the user has Plus", () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion"]}
+        enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -875,11 +870,7 @@ it("takes you through the cancellation dialog flow all the way to subplat", asyn
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={[
-          "MonitorAccountDeletion",
-          "ConfirmCancellation",
-          "CancellationFlow",
-        ]}
+        enabledFeatureFlags={["ConfirmCancellation", "CancellationFlow"]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -952,11 +943,7 @@ it("closes the cancellation survey if the user selects nevermind, take me back",
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={[
-          "MonitorAccountDeletion",
-          "ConfirmCancellation",
-          "CancellationFlow",
-        ]}
+        enabledFeatureFlags={["ConfirmCancellation", "CancellationFlow"]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -1009,7 +996,7 @@ it("closes the cancellation dialog", async () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion", "CancellationFlow"]}
+        enabledFeatureFlags={["CancellationFlow"]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -1036,7 +1023,7 @@ it("closes the cancellation dialog", async () => {
   );
 });
 
-it("does not show the account deletion button if the relevant flag is not enabled", () => {
+it("show the account deletion button regardless of flags", () => {
   render(
     <TestComponentWrapper>
       <SettingsView
@@ -1068,7 +1055,7 @@ it("does not show the account deletion button if the relevant flag is not enable
     name: "Delete ⁨Monitor⁩ account",
   });
 
-  expect(accountDeletionHeading).not.toBeInTheDocument();
+  expect(accountDeletionHeading).toBeInTheDocument();
 });
 
 it("shows the account deletion button if the user does not have Plus", () => {
@@ -1093,7 +1080,7 @@ it("shows the account deletion button if the user does not have Plus", () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion"]}
+        enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -1133,7 +1120,7 @@ it("warns about the consequences before deleting a free user's account", async (
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion"]}
+        enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -1175,7 +1162,7 @@ it("shows a loading state while account deletion is in progress", async () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion"]}
+        enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -1218,7 +1205,7 @@ it("shows the account deletion button if the user has Plus", () => {
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion"]}
+        enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -1258,7 +1245,7 @@ it("warns about the consequences before deleting a Plus user's account", async (
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion"]}
+        enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -1309,7 +1296,7 @@ it.skip("calls the 'add' action when adding another email address", async () => 
         yearlySubscriptionUrl=""
         monthlySubscriptionUrl=""
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["MonitorAccountDeletion"]}
+        enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
       />
     </TestComponentWrapper>,
@@ -1343,7 +1330,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={["MonitorAccountDeletion"]}
+          enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
@@ -1425,7 +1412,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={["MonitorAccountDeletion"]}
+          enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
@@ -1468,7 +1455,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={["MonitorAccountDeletion"]}
+          enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
@@ -1512,7 +1499,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={["MonitorAccountDeletion"]}
+          enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
@@ -1555,7 +1542,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={["MonitorAccountDeletion"]}
+          enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
@@ -1603,7 +1590,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={["MonitorAccountDeletion"]}
+          enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
@@ -1647,7 +1634,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={["MonitorAccountDeletion"]}
+          enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
@@ -1695,7 +1682,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={["MonitorAccountDeletion"]}
+          enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
@@ -1738,7 +1725,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={["MonitorAccountDeletion"]}
+          enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
@@ -1786,7 +1773,7 @@ describe("to learn about usage", () => {
           yearlySubscriptionUrl=""
           monthlySubscriptionUrl=""
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={["MonitorAccountDeletion"]}
+          enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
         />
       </TestComponentWrapper>,
