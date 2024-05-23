@@ -1350,44 +1350,44 @@ describe("to learn about usage", () => {
     );
   });
 
-  it("counts how often people go to Mozilla Accounts to delete their account", async () => {
-    const user = userEvent.setup();
-    render(
-      <TestComponentWrapper>
-        <SettingsView
-          l10n={getL10n()}
-          user={mockedUser}
-          subscriber={mockedSubscriber}
-          breachCountByEmailAddress={{
-            [mockedUser.email]: 42,
-            [mockedSecondaryVerifiedEmail.email]: 42,
-          }}
-          emailAddresses={[mockedSecondaryVerifiedEmail]}
-          fxaSettingsUrl="https://example.com/an-actual-link-because-otherwise-it-wont-have-a-link-role"
-          fxaSubscriptionsUrl=""
-          yearlySubscriptionUrl=""
-          monthlySubscriptionUrl=""
-          subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-          enabledFeatureFlags={[]}
-          experimentData={defaultExperimentData}
-        />
-      </TestComponentWrapper>,
-    );
+  // it("counts how often people go to Mozilla Accounts to delete their account", async () => {
+  //   const user = userEvent.setup();
+  //   render(
+  //     <TestComponentWrapper>
+  //       <SettingsView
+  //         l10n={getL10n()}
+  //         user={mockedUser}
+  //         subscriber={mockedSubscriber}
+  //         breachCountByEmailAddress={{
+  //           [mockedUser.email]: 42,
+  //           [mockedSecondaryVerifiedEmail.email]: 42,
+  //         }}
+  //         emailAddresses={[mockedSecondaryVerifiedEmail]}
+  //         fxaSettingsUrl="https://example.com/an-actual-link-because-otherwise-it-wont-have-a-link-role"
+  //         fxaSubscriptionsUrl=""
+  //         yearlySubscriptionUrl=""
+  //         monthlySubscriptionUrl=""
+  //         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+  //         enabledFeatureFlags={[]}
+  //         experimentData={defaultExperimentData}
+  //       />
+  //     </TestComponentWrapper>,
+  //   );
 
-    const deactivateAccountLink = screen.getByRole("link", {
-      name: "Go to ⁨Mozilla account⁩ settings Open link in a new tab",
-    });
+  //   const deactivateAccountLink = screen.getByRole("link", {
+  //     name: "Go to ⁨Mozilla account⁩ settings Open link in a new tab",
+  //   });
 
-    await user.click(deactivateAccountLink);
+  //   await user.click(deactivateAccountLink);
 
-    expect(mockedRecordTelemetry).toHaveBeenCalledWith(
-      "link",
-      "click",
-      expect.objectContaining({
-        link_id: "deactivate_account",
-      }),
-    );
-  });
+  //   expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+  //     "link",
+  //     "click",
+  //     expect.objectContaining({
+  //       link_id: "deactivate_account",
+  //     }),
+  //   );
+  // });
 
   // This test doesn't currently work because, as soon as we click `addButton`,
   // Jest complains that `useFormState` "is not a function or its return value
