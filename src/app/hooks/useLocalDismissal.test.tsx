@@ -138,4 +138,22 @@ describe("useLocalDismissal", () => {
       { maxAge: 1337 },
     );
   });
+
+  it("large duration", () => {
+    const mockedSetCookie = jest.fn();
+    mockedUseCookies.mockReturnValue([{}, mockedSetCookie]);
+    const { result } = renderHook(() =>
+      useLocalDismissal("some_key", { duration: 1000000 }),
+    );
+
+    act(() => {
+      result.current.dismiss({ soft: true });
+    });
+
+    expect(mockedSetCookie).toHaveBeenCalledWith(
+      "some_key_dismissed",
+      expect.any(String),
+      { maxAge: 1000000 },
+    );
+  });
 });
