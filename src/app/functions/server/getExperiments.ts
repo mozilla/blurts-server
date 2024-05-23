@@ -44,8 +44,8 @@ export async function getExperiments(params: {
         client_id: params.experimentationId,
         context: {
           // Nimbus takes a language, rather than a locale, hence the .split:
-          locale: params.locale.split("-")[0],
-          countryCode: params.countryCode,
+          language: params.locale.split("-")[0],
+          region: params.countryCode,
         },
       }),
     });
