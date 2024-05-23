@@ -22,6 +22,10 @@
   }
 }
 
+.cancellationAnimation {
+  width: 250px; // width of animation
+}
+
 .cancellationIllustrationWrapper {
   height: 200px; // height of illustration;
   width: 100%;
@@ -32,10 +36,26 @@
   }
 }
 
+.staticAlternative {
+  display: none;
+}
+
 .iframeWrapper {
   width: 100%;
   overflow: hidden;
   display: flex;
   justify-content: center;
   height: 240px; //height of iframe
+}
+
+@media (prefers-reduced-motion) {
+  .cancellationAnimation {
+    display: none;
+  }
+  // Ideally a `display: none` on <source> elements would be enough to
+  // cause the <img> inside <video> to be displayed, but it's not.
+  // Hence, another <img> element:
+  .staticAlternative {
+    display: inline-block;
+  }
 }
