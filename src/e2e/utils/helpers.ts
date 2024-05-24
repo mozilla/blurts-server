@@ -150,3 +150,13 @@ export const checkAuthState = async (page: Page) => {
     }
   }
 };
+
+/**
+ * Strings may sometimes contain invisible unicode char's that make it hard to do assertions.
+ *
+ * @param text
+ */
+export function removeUnicodeChars(text: string): string {
+  // eslint-disable-next-line no-control-regex
+  return text.replace(/[^\x00-\x7F]/g, "");
+}
