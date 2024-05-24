@@ -11,6 +11,7 @@ export class DashboardPage {
   readonly breachStats: Locator;
 
   readonly fireFoxMonitorLogoImgButton: Locator;
+  readonly fireFoxMonitorLogoAtag: Locator;
   readonly actionNeededTab: Locator;
   readonly fixedTab: Locator;
   readonly profileButton: Locator;
@@ -123,6 +124,7 @@ export class DashboardPage {
     this.fireFoxMonitorLogoImgButton = page.locator(
       '//a[starts-with(@class, "Shell_homeLink_")]/img',
     );
+    this.fireFoxMonitorLogoAtag = page.locator("nav a:has(> img)");
     this.actionNeededTab = page.getByRole("tab", { name: "Action needed" });
     this.fixedTab = page.getByRole("tab", { name: "Fixed" });
     this.profileButton = page.getByTitle("Profile").nth(1);
@@ -214,6 +216,7 @@ export class DashboardPage {
     // nav menu
     this.settingsPageLink = page.getByRole("link", { name: "Settings" });
     this.dashboardPageLink = page.getByRole("link", { name: "Dashboard" });
+
     this.faqsPageLink = page.getByTitle("Frequently asked questions").first();
   }
 
@@ -243,7 +246,7 @@ export class DashboardPage {
 
   async goToFAQs() {
     await this.faqsPageLink.click();
-    await this.page.waitForURL("**/firefox-monitor-faq");
+    await this.page.waitForURL(/.*firefox-monitor-faq.*/);
   }
 
   async verifyPremiumUpsellModalOptions() {
