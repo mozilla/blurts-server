@@ -178,21 +178,6 @@
   @media screen and (min-width: $screen-lg) {
     padding-inline: $layout-lg;
   }
-  // .mobileColumns {
-  //   display: flex;
-  //   flex-wrap: wrap;
-  //   flex-direction: row;
-  //   align-items: start;
-  //   justify-content: space-between;
-  //   padding: $spacing-xs;
-  //   gap: $spacing-xs;
-  //   .stepTextContainer {
-  //       width: 45%;
-  //     }
-  //   img {
-  //     width: 45%;
-  //   }
-  // }
 }
 .footer {
   display: flex;
