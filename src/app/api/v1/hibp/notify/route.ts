@@ -8,7 +8,6 @@ import { bearerToken } from "../../../utils/auth";
 import { logger } from "../../../../functions/server/logging";
 
 import { PubSub } from "@google-cloud/pubsub";
-import { getEnabledFeatureFlags } from "../../../../../db/tables/featureFlags";
 import {
   getAllBreachesFromDb,
   getBreachByName,
@@ -27,12 +26,7 @@ const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
 export async function POST(req: NextRequest) {
   let pubsub;
   let json;
-  const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
   try {
-    if (!enabledFlags.includes("HibpBreachNotifications")) {
-      logger.info("Feature flag not enabled: HibpBreachNotifications");
-      return NextResponse.json({}, { status: 429 });
-    }
     if (!projectId) {
       throw new Error("GCP_PUBSUB_PROJECT_ID env var not set");
     }

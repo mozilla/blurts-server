@@ -23,7 +23,7 @@ export default async function Page() {
   }
   const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
   const countryCode = getCountryCode(headers());
-  const eligibleForPremium = isEligibleForPremium(countryCode, enabledFlags);
+  const eligibleForPremium = isEligibleForPremium(countryCode);
 
   // request the profile stats for the last 30 days
   const profileStats = await getProfilesStats(

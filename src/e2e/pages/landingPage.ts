@@ -12,8 +12,6 @@ export class LandingPage {
   readonly reuseParagraph: Locator;
   readonly signInButton: Locator;
 
-  readonly falseDoorBanner: Locator;
-  readonly falseDoorBannerCloseButton: Locator;
   readonly scanEmailAddressInput: Locator;
   readonly getFreeScanButton: Locator;
 
@@ -102,10 +100,6 @@ export class LandingPage {
     this.reuseButton = page.locator('button[type="submit"]');
     this.reuseEmailInputField = page.locator('input[type="email"]');
     this.reuseParagraph = page.getByRole("paragraph");
-    this.falseDoorBanner = page.locator(
-      '//div[starts-with(@class, "FalseDoorBanner_falseDoorTest")]',
-    );
-    this.falseDoorBannerCloseButton = page.locator("#close-button");
     this.scanEmailAddressInput = page.locator("#scan-email-address");
     this.getFreeScanButton = page
       .getByRole("button", {
@@ -263,12 +257,6 @@ export class LandingPage {
     await this.signInButton.click();
     // FxA can take a while to load on stage:
     await this.page.waitForURL("**/oauth/**", { timeout: 120 * 1000 });
-  }
-
-  async maybeClearBanner() {
-    if (await this.falseDoorBannerCloseButton.isVisible()) {
-      await this.falseDoorBannerCloseButton.click();
-    }
   }
 
   async enterFreeScanEmail(email: string) {
