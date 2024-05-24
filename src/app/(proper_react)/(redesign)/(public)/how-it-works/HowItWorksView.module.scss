@@ -96,15 +96,12 @@
       justify-content: space-between;
       padding: $spacing-xs;
       gap: $spacing-xs;
-      // .stepTextContainer {
-      //   width: 45%;
-      // }
-      // img {
-      //   width: 50%;
-      // }
     }
     .stepTextContainer {
       padding: $spacing-md;
+      &.mobileColumns {
+        width: 45%;
+      }
       .stepTitle {
         font: $text-title-2xs;
         padding-block-start: $spacing-xl;
@@ -139,6 +136,9 @@
         }
       }
     }
+    // img.mobileColumns {
+    //   width: 45%;
+    // }
     @media screen and (min-width: $screen-md) {
       display: flex;
       flex-wrap: wrap;
@@ -178,6 +178,21 @@
   @media screen and (min-width: $screen-lg) {
     padding-inline: $layout-lg;
   }
+  // .mobileColumns {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   flex-direction: row;
+  //   align-items: start;
+  //   justify-content: space-between;
+  //   padding: $spacing-xs;
+  //   gap: $spacing-xs;
+  //   .stepTextContainer {
+  //       width: 45%;
+  //     }
+  //   img {
+  //     width: 45%;
+  //   }
+  // }
 }
 .footer {
   display: flex;

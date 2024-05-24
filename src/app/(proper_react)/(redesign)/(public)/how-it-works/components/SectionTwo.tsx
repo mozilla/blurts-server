@@ -33,7 +33,7 @@ export const SectionTwo = (props: Props) => {
         </div>
       </div>
       <div className={`${styles.step} ${styles.mobileColumns}`}>
-        <div className={styles.stepTextContainer}>
+        <div className={`${styles.stepTextContainer} ${styles.mobileColumns}`}>
           {/* STEP 1 */}
           <h3 className={`${styles.breachesEmphasis} ${styles.stepTitle}`}>
             {l10n.getString("section-2-step-1-title")}
