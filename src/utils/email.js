@@ -80,7 +80,7 @@ async function sendEmail (recipient, subject, html) {
       return info;
     }
 
-    console.info("sent_email", { info });
+    console.info("sent_email", { messageId: info.messageId, response: info.response });
     return info;
   } catch (e) {
     if (e instanceof Error) {

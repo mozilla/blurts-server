@@ -130,120 +130,99 @@ export const SettingsView = (props: Props) => {
             </>
           )}
           <hr />
-          {!props.enabledFeatureFlags.includes("MonitorAccountDeletion") ? (
-            <div className={styles.deactivateSection}>
-              <h3>{l10n.getString("settings-deactivate-account-title")}</h3>
-              <p>{l10n.getString("settings-deactivate-account-info-2")}</p>
-              <TelemetryLink
-                href={props.fxaSettingsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                eventData={{
-                  link_id: "deactivate_account",
-                }}
-              >
-                {l10n.getString("settings-fxa-link-label-3")}
-                <OpenInNew
-                  alt={l10n.getString("open-in-new-tab-alt")}
-                  width="13"
-                  height="13"
-                />
-              </TelemetryLink>
+
+          <>
+            <div className={styles.deleteAccountSection}>
+              {hasPremium(props.user) ? (
+                <>
+                  <h3>
+                    {l10n.getString(
+                      "settings-delete-monitor-plus-account-title",
+                    )}
+                  </h3>
+                  <p>
+                    {l10n.getString(
+                      "settings-delete-monitor-plus-account-description-2",
+                    )}
+                  </p>
+                  <SettingsConfirmationDialog
+                    telemetryId="settings-delete-monitor-plus-dialog"
+                    triggerLabel={l10n.getString(
+                      "settings-delete-monitor-plus-account-cta-label",
+                    )}
+                    title={l10n.getString(
+                      "settings-delete-monitor-plus-account-dialog-title-2",
+                    )}
+                    illustration={
+                      <Image src={AddEmailDialogIllustration} alt="" />
+                    }
+                    dismissString={l10n.getString(
+                      "settings-delete-monitor-plus-account-dialog-cancel-button-label",
+                    )}
+                  >
+                    <div className={styles.dialogLead}>
+                      <p>
+                        {l10n.getString(
+                          "settings-delete-monitor-plus-account-dialog-lead-p1-2",
+                        )}
+                      </p>
+                      <p>
+                        {l10n.getString(
+                          "settings-delete-monitor-plus-account-dialog-lead-p2-2",
+                        )}
+                      </p>
+                    </div>
+                    <DeleteAccountButton variant="primary">
+                      {l10n.getString(
+                        "settings-delete-monitor-plus-account-dialog-cta-label",
+                      )}
+                    </DeleteAccountButton>
+                  </SettingsConfirmationDialog>
+                </>
+              ) : (
+                <>
+                  <h3>
+                    {l10n.getString(
+                      "settings-delete-monitor-free-account-title",
+                    )}
+                  </h3>
+                  <p>
+                    {l10n.getString(
+                      "settings-delete-monitor-free-account-description",
+                    )}
+                  </p>
+                  <SettingsConfirmationDialog
+                    telemetryId="settings-delete-monitor-free-dialog"
+                    triggerLabel={l10n.getString(
+                      "settings-delete-monitor-free-account-cta-label",
+                    )}
+                    title={l10n.getString(
+                      "settings-delete-monitor-free-account-dialog-title",
+                    )}
+                    illustration={
+                      <Image src={AddEmailDialogIllustration} alt="" />
+                    }
+                    dismissString={l10n.getString(
+                      "settings-delete-monitor-free-account-dialog-cancel-button-label",
+                    )}
+                  >
+                    <div className={styles.dialogLead}>
+                      <p>
+                        {l10n.getString(
+                          "settings-delete-monitor-free-account-dialog-lead-v2",
+                        )}
+                      </p>
+                    </div>
+                    <DeleteAccountButton variant="primary">
+                      {l10n.getString(
+                        "settings-delete-monitor-free-account-dialog-cta-label",
+                      )}
+                    </DeleteAccountButton>
+                  </SettingsConfirmationDialog>
+                </>
+              )}
             </div>
-          ) : (
-            <>
-              <div className={styles.deleteAccountSection}>
-                {hasPremium(props.user) ? (
-                  <>
-                    <h3>
-                      {l10n.getString(
-                        "settings-delete-monitor-plus-account-title",
-                      )}
-                    </h3>
-                    <p>
-                      {l10n.getString(
-                        "settings-delete-monitor-plus-account-description-2",
-                      )}
-                    </p>
-                    <SettingsConfirmationDialog
-                      telemetryId="settings-delete-monitor-plus-dialog"
-                      triggerLabel={l10n.getString(
-                        "settings-delete-monitor-plus-account-cta-label",
-                      )}
-                      title={l10n.getString(
-                        "settings-delete-monitor-plus-account-dialog-title-2",
-                      )}
-                      illustration={
-                        <Image src={AddEmailDialogIllustration} alt="" />
-                      }
-                      dismissString={l10n.getString(
-                        "settings-delete-monitor-plus-account-dialog-cancel-button-label",
-                      )}
-                    >
-                      <div className={styles.dialogLead}>
-                        <p>
-                          {l10n.getString(
-                            "settings-delete-monitor-plus-account-dialog-lead-p1-2",
-                          )}
-                        </p>
-                        <p>
-                          {l10n.getString(
-                            "settings-delete-monitor-plus-account-dialog-lead-p2-2",
-                          )}
-                        </p>
-                      </div>
-                      <DeleteAccountButton variant="primary">
-                        {l10n.getString(
-                          "settings-delete-monitor-plus-account-dialog-cta-label",
-                        )}
-                      </DeleteAccountButton>
-                    </SettingsConfirmationDialog>
-                  </>
-                ) : (
-                  <>
-                    <h3>
-                      {l10n.getString(
-                        "settings-delete-monitor-free-account-title",
-                      )}
-                    </h3>
-                    <p>
-                      {l10n.getString(
-                        "settings-delete-monitor-free-account-description",
-                      )}
-                    </p>
-                    <SettingsConfirmationDialog
-                      telemetryId="settings-delete-monitor-free-dialog"
-                      triggerLabel={l10n.getString(
-                        "settings-delete-monitor-free-account-cta-label",
-                      )}
-                      title={l10n.getString(
-                        "settings-delete-monitor-free-account-dialog-title",
-                      )}
-                      illustration={
-                        <Image src={AddEmailDialogIllustration} alt="" />
-                      }
-                      dismissString={l10n.getString(
-                        "settings-delete-monitor-free-account-dialog-cancel-button-label",
-                      )}
-                    >
-                      <div className={styles.dialogLead}>
-                        <p>
-                          {l10n.getString(
-                            "settings-delete-monitor-free-account-dialog-lead-v2",
-                          )}
-                        </p>
-                      </div>
-                      <DeleteAccountButton variant="primary">
-                        {l10n.getString(
-                          "settings-delete-monitor-free-account-dialog-cta-label",
-                        )}
-                      </DeleteAccountButton>
-                    </SettingsConfirmationDialog>
-                  </>
-                )}
-              </div>
-            </>
-          )}
+          </>
         </div>
       </main>
     </div>
