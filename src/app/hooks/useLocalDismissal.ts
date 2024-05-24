@@ -88,6 +88,7 @@ function hasDismissedCookie(cookieValue?: string, duration?: number): boolean {
     //   ...the dismissal should not be limited in duration, or...
     (typeof duration !== "number" ||
       //   ...the dismissal was long enough ago:
+      /* c8 ignore next: useful for banners, we removed <RebrandAnnouncement> in MNTOR-3026*/
       Date.now() - dismissalTimeStamp <= duration * 1000);
 
   return wasDismissedBefore;
