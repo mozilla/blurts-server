@@ -19,6 +19,7 @@ export class AutomaticRemovePage {
 
   constructor(page: Page) {
     this.page = page;
+    //the bullet point list and its elements
     this.ulElement = page.locator("div > strong + ul");
     this.liElements = page.locator("div > strong + ul > li");
 
