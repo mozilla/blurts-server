@@ -74,7 +74,11 @@ export const SectionTwo = (props: Props) => {
             </p>
           </div>
         </div>
-        <Image src={Resolve} alt="resolve data breaches screenshot" />
+        <Image
+          src={Resolve}
+          alt="resolve data breaches screenshot"
+          className={styles.mobileColumns}
+        />
       </div>
       <span className={styles.sectionCTAButton}>
         <Button variant="primary">
