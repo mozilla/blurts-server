@@ -355,6 +355,45 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Breaches Scan,
     const fixedExposures = await dashboardPage.numFixed.textContent();
     expect(fixedExposures as string).toMatch(initialExposuresCount);
   });
+
+  test("Verify that the Premium upsell screen is displayed correctly - overview card", async ({
+    dashboardPage,
+    automaticRemovePage,
+    dataBrokersPage,
+    page,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463625",
+    });
+
+    //checking that the user can reach upsell page
+    await dashboardPage.goToDashboard();
+    await expect(dashboardPage.upsellScreenButton).toBeVisible();
+    await dashboardPage.upsellScreenButton.click();
+    await page.waitForURL(/.*\/fix\/.*\/view-data-brokers\/?/);
+    await dataBrokersPage.removeThemForMeButton.click();
+    await page.waitForURL(/.*\/fix\/.*\/automatic-remove\/?/);
+
+    //checking the bullet points
+    await expect(automaticRemovePage.ulElement).toBeVisible();
+
+    for (const itemText of automaticRemovePage.bulletPointsExpected) {
+      const liElement = automaticRemovePage.liElements.getByText(itemText);
+      await expect(liElement).toBeVisible();
+    }
+
+    //testing that toggles work
+    await automaticRemovePage.planLabel0.click();
+    const price0 = await automaticRemovePage.price.textContent();
+    const plan0 = await automaticRemovePage.plan.textContent();
+    await automaticRemovePage.planLabel1.click();
+    const price1 = await automaticRemovePage.price.textContent();
+    const plan1 = await automaticRemovePage.plan.textContent();
+    expect(price0).not.toEqual(price1);
+    expect(plan0).not.toEqual(plan1);
+  });
 });
 
 test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Footer`, () => {
