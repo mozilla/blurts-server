@@ -13,7 +13,6 @@ import { hasPremium } from "../../../../../../../../../functions/universal/user"
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { getSubscriberEmails } from "../../../../../../../../../functions/server/getSubscriberEmails";
 import { isEligibleForPremium } from "../../../../../../../../../functions/server/onerep";
-import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 
 export default async function ManualRemovePage() {
   const session = await getServerSession();
@@ -30,16 +29,13 @@ export default async function ManualRemovePage() {
     countryCode,
   });
   const subscriberEmails = await getSubscriberEmails(session.user);
-  const enabledFlags = await getEnabledFeatureFlags({
-    email: session.user.email,
-  });
 
   return (
     <ManualRemoveView
       breaches={subBreaches}
       scanData={scanData}
       isPremiumUser={hasPremium(session.user)}
-      isEligibleForPremium={isEligibleForPremium(countryCode, enabledFlags)}
+      isEligibleForPremium={isEligibleForPremium(countryCode)}
       user={session.user}
       countryCode={countryCode}
       subscriberEmails={subscriberEmails}

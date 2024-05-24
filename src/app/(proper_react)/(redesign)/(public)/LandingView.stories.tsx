@@ -16,7 +16,6 @@ const meta: Meta<typeof View> = {
   ),
   args: {
     l10n: getL10n(),
-    enabledFlags: ["RebrandAnnouncement"],
   },
 };
 

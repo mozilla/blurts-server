@@ -201,9 +201,6 @@ export const View = (props: Props) => {
             }
           }}
           locale={getLocale(l10n)}
-          isPremiumBrokerRemovalEnabled={props.enabledFeatureFlags.includes(
-            "PremiumBrokerRemoval",
-          )}
           isPremiumUser={hasPremium(props.user)}
           isEligibleForPremium={props.isEligibleForPremium}
           resolutionCta={
