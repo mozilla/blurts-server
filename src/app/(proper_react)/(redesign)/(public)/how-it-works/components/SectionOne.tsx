@@ -88,7 +88,7 @@ export const SectionOne = (props: Props) => {
         <Image src={RemoveStep1} alt="step 1 screenshot" />
       </div>
       {/* STEP 2 */}
-      <div className={styles.step}>
+      <div className={`${styles.step} ${styles.reversedStep}`}>
         <Image src={RemoveStep2} alt="step 2 screenshot" />
         <div className={styles.stepTextContainer}>
           <h3 className={`${styles.brokersEmphasis} ${styles.stepTitle}`}>

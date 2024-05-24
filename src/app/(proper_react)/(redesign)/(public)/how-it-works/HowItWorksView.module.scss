@@ -11,12 +11,10 @@
 .boldedText {
   font-weight: 700;
 }
-
 .header {
   padding: $layout-lg $spacing-md;
   display: flex;
   justify-content: center;
-
   @media screen and (min-width: $content-md) {
     padding: $layout-lg;
   }
@@ -33,38 +31,32 @@
     font: $text-body-xl;
   }
 }
-
 .sectionWrapper {
+  padding: $spacing-sm;
   &.grayBG {
     background: $color-grey-05;
   }
-
   .intro {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: $spacing-2xl $spacing-md;
-    gap: $spacing-lg;
-
     @media screen and (min-width: $content-md) {
-      padding: $layout-lg;
+      padding: $spacing-2xl $spacing-md;
+      gap: $spacing-lg;
     }
     .introContent {
       gap: $spacing-md;
       display: flex;
       flex-direction: column;
-
       h2 {
         color: $color-grey-60;
         font: $text-title-md;
       }
-
       p {
         color: $color-grey-40;
         font: $text-body-xl;
       }
-
       .horizontalRule {
         border: 1px solid $color-grey-20;
         margin: $spacing-md 0;
@@ -74,7 +66,7 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       gap: $spacing-lg;
       padding-inline: $spacing-md;
       padding-block-start: $spacing-xl;
@@ -87,19 +79,32 @@
       }
     }
   }
-
   .step {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: $spacing-2xl;
-    gap: $spacing-lg;
-
+    justify-content: center;
+    &.reversedStep {
+      flex-direction: column-reverse;
+    }
+    &.mobileColumns {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      align-items: start;
+      justify-content: space-between;
+      padding: $spacing-xs;
+      gap: $spacing-xs;
+      // .stepTextContainer {
+      //   width: 45%;
+      // }
+      // img {
+      //   width: 50%;
+      // }
+    }
     .stepTextContainer {
-      width: 50%;
-
+      padding: $spacing-md;
       .stepTitle {
         font: $text-title-2xs;
         padding-block-start: $spacing-xl;
@@ -116,41 +121,45 @@
       .stepGroupTitleAfter1st {
         padding-block-start: $spacing-2xl;
       }
-
       .privateInfoRow {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: start;
-        gap: $spacing-lg;
+        gap: $spacing-xs;
         padding-block-start: $spacing-sm;
         width: 100%;
         .privateInfoText {
           color: $color-grey-50;
         }
         img {
+          width: 30px;
           margin-top: $spacing-sm;
+          margin-right: $spacing-sm;
         }
       }
     }
-  }
-
-  @media screen and (min-width: $screen-md) {
-    padding-inline: $layout-lg;
-    padding-block: $layout-sm;
-    flex-direction: row;
-    gap: $spacing-xl;
-
-    &.reverseRow {
-      flex-direction: row-reverse;
+    @media screen and (min-width: $screen-md) {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: $spacing-2xl;
+      gap: $spacing-lg;
+      &.reversedStep {
+        flex-direction: row;
+      }
+      .stepTextContainer {
+        width: 50%;
+      }
+      img {
+        width: $content-xs;
+      }
     }
-
-    @media screen and (min-width: $screen-lg) {
-      padding-inline: $layout-lg;
-      gap: $layout-xl;
-
-      @media screen and (min-width: $screen-xl) {
-        padding-inline: $layout-xl;
+    @media screen and (min-width: $screen-xl) {
+      img {
+        width: unset;
       }
     }
   }
@@ -159,30 +168,37 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: $layout-lg;
+    a {
+      margin: $layout-md;
+    }
+    button {
+      margin: $layout-md;
+    }
+  }
+  @media screen and (min-width: $screen-lg) {
+    padding-inline: $layout-lg;
   }
 }
-
 .footer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: $color-purple-05;
-  padding: $layout-xl $spacing-md;
+  padding: $spacing-xl $spacing-md;
   .footerCTA {
     color: $color-black;
     font: $text-title-md;
   }
   .footerCTAInput {
     margin-top: $spacing-md;
-    margin-bottom: $spacing-2xl;
+    margin-bottom: $spacing-md;
     input {
       border-radius: $border-radius-md;
       border: 1px solid $color-grey-20;
-      padding: $spacing-md $spacing-xl $spacing-md $spacing-md;
+      padding: $spacing-md $spacing-md $spacing-md $spacing-md;
       font: $text-body-md;
-      margin-right: $spacing-lg;
+      margin-right: $spacing-sm;
     }
     button {
       padding: $spacing-md $spacing-2xl;
@@ -191,6 +207,24 @@
   .note {
     color: $color-grey-40;
     font: $text-body-sm;
-    margin-top: $spacing-2xl;
+    margin-top: $spacing-md;
+  }
+  @media screen and (min-width: $screen-md) {
+    .footerCTAInput {
+      input {
+        padding: $spacing-md $spacing-xl $spacing-md $spacing-md;
+        margin-right: $spacing-lg;
+      }
+    }
+  }
+  @media screen and (min-width: $screen-lg) {
+    padding: $layout-xl $spacing-md;
+    .footerCTAInput {
+      margin-top: $spacing-md;
+      margin-bottom: $spacing-2xl;
+    }
+    .note {
+      margin-top: $spacing-2xl;
+    }
   }
 }
