@@ -45,7 +45,6 @@ jest.mock("next/navigation", () => ({
 }));
 
 import { SettingsView } from "./View";
-import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 import { sanitizeEmailRow } from "../../../../../../functions/server/sanitize";
 import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 
@@ -1021,41 +1020,6 @@ it("closes the cancellation dialog", async () => {
       popup_id: "settings-cancel-monitor-plus-dialog",
     }),
   );
-});
-
-it("show the account deletion button regardless of flags", () => {
-  render(
-    <TestComponentWrapper>
-      <SettingsView
-        l10n={getL10n()}
-        user={{
-          ...mockedUser,
-          fxa: {
-            ...mockedUser.fxa,
-            subscriptions: [],
-          } as Session["user"]["fxa"],
-        }}
-        subscriber={mockedSubscriber}
-        breachCountByEmailAddress={{
-          [mockedUser.email]: 42,
-        }}
-        emailAddresses={[]}
-        fxaSettingsUrl=""
-        fxaSubscriptionsUrl=""
-        yearlySubscriptionUrl=""
-        monthlySubscriptionUrl=""
-        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={["NotMonitorAccountDeletion" as FeatureFlagName]}
-        experimentData={defaultExperimentData}
-      />
-    </TestComponentWrapper>,
-  );
-
-  const accountDeletionHeading = screen.queryByRole("heading", {
-    name: "Delete ⁨Monitor⁩ account",
-  });
-
-  expect(accountDeletionHeading).toBeInTheDocument();
 });
 
 it("shows the account deletion button if the user does not have Plus", () => {
