@@ -164,16 +164,9 @@
     }
   }
   .sectionCTAButton {
+    display: grid;
+    max-width: $content-sm;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    a {
-      margin: $layout-md;
-    }
-    button {
-      margin: $layout-md;
-    }
   }
   @media screen and (min-width: $screen-lg) {
     padding-inline: $layout-lg;

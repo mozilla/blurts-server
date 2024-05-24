@@ -27,9 +27,11 @@ export const SectionTwo = (props: Props) => {
         </span>
         <div className={styles.introCTA}>
           <h3>{l10n.getString("section-2-intro-text-2")}</h3>
-          <Button variant="primary">
-            {l10n.getString("section-2-intro-cta-button")}
-          </Button>
+          <div className={styles.sectionCTAButton}>
+            <Button variant="primary">
+              {l10n.getString("section-2-intro-cta-button")}
+            </Button>
+          </div>
         </div>
       </div>
       <div className={`${styles.step} ${styles.mobileColumns}`}>
@@ -80,11 +82,11 @@ export const SectionTwo = (props: Props) => {
           className={styles.mobileColumns}
         />
       </div>
-      <span className={styles.sectionCTAButton}>
+      <div className={styles.sectionCTAButton}>
         <Button variant="primary">
           {l10n.getString("section-2-cta-button")}
         </Button>
-      </span>
+      </div>
     </div>
   );
 };
