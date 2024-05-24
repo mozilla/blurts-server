@@ -158,6 +158,68 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
     await expect(landingPage.privacyLink).toBeVisible();
     await expect(landingPage.githubLink).toBeVisible();
   });
+
+  test("Verify the 'Get data removal' button UI and functionality for both yearly and monthly options", async ({
+    landingPage,
+    purchasePage,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463525",
+    });
+
+    await expect(landingPage.getDataRemoval).toBeVisible();
+    await expect(landingPage.getDataRemovalMonthly).toBeVisible();
+    await expect(landingPage.getDataRemovalYearly).toBeVisible();
+
+    // Monthly
+    await landingPage.getDataRemovalMonthly.click();
+    await landingPage.getDataRemoval.click();
+    await purchasePage.verifyMonthlyPlanDetails();
+
+    // Yearly
+    await landingPage.open();
+    await landingPage.getDataRemoval.click();
+    await purchasePage.verifyYearlyPlanDetails();
+  });
+
+  test('Verify the "Get free scan" corresponding email fields', async ({
+    landingPage,
+    authPage,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463504",
+    });
+
+    await landingPage.monitorHeroFormEmailInputField.fill("invalid");
+    await landingPage.monitorHeroFormInputSubmitButton.click();
+    // Stays on same page
+    await expect(landingPage.monitorHeroFormEmailInputField).toBeVisible();
+
+    const randomEmail = `_${Date.now()}_tstact@restmail.net`;
+    await landingPage.monitorHeroFormEmailInputField.fill(randomEmail);
+    await landingPage.monitorHeroFormInputSubmitButton.click();
+    await authPage.passwordInputField.waitFor();
+    await expect(authPage.passwordInputField).toBeVisible();
+  });
+
+  test('Verify manual/automatic removal "more info" tips from "Choose your level of protection" section', async ({
+    landingPage,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463504",
+    });
+    await landingPage.freeMonitoringTooltipTrigger.click();
+    await expect(landingPage.freeMonitoringTooltipText).toBeVisible();
+    await landingPage.closeTooltips.click();
+    await landingPage.monitorPlusTooltipTrigger.click();
+    await expect(landingPage.monitorPlusTooltipText).toBeVisible();
+  });
 });
 
 test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionality - without existing Account`, () => {

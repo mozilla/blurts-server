@@ -69,13 +69,37 @@ export class LandingPage {
 
   // Choose your level of protection
   readonly startFreeMonitoringButton: Locator;
+  readonly getDataRemoval: Locator;
+  readonly getDataRemovalYearly: Locator;
+  readonly getDataRemovalMonthly: Locator;
+
+  readonly freeMonitoringTooltipTrigger: Locator;
+  readonly freeMonitoringTooltipText: Locator;
+  readonly monitorPlusTooltipTrigger: Locator;
+  readonly monitorPlusTooltipText: Locator;
+  readonly closeTooltips: Locator;
 
   constructor(page: Page) {
     this.page = page;
+    this.freeMonitoringTooltipTrigger = page
+      .getByRole("gridcell", { name: "Manual removal Open tooltip" })
+      .getByLabel("Open tooltip");
+    this.freeMonitoringTooltipText = page.getByText(
+      "We’ll let you know which data",
+    );
+    this.monitorPlusTooltipTrigger = page
+      .getByRole("gridcell", { name: "Automatic removal Open tooltip" })
+      .getByLabel("Open tooltip");
+    this.monitorPlusTooltipText = page.getByText("We’ll automatically request");
+    this.closeTooltips = page.locator(
+      '//div[starts-with(@class, "PlansTable_popoverUnderlay")]',
+    );
+    this.getDataRemoval = page.getByRole("link", { name: "Get data removal" });
+    this.getDataRemovalYearly = page.getByLabel("Price").getByText("Yearly");
+    this.getDataRemovalMonthly = page.getByLabel("Price").getByText("Monthly");
     this.reuseButton = page.locator('button[type="submit"]');
     this.reuseEmailInputField = page.locator('input[type="email"]');
     this.reuseParagraph = page.getByRole("paragraph");
-
     this.scanEmailAddressInput = page.locator("#scan-email-address");
     this.getFreeScanButton = page
       .getByRole("button", {
