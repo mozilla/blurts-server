@@ -80,8 +80,8 @@ export class WelcomePage {
     await this.startFreeScanButton.click();
 
     // confirm enter info step
-    await this.firstNameInputField.fill("Monitor");
-    await this.lastNameInputField.fill("Automation1");
+    await this.firstNameInputField.fill("Levi");
+    await this.lastNameInputField.fill("Ackerman");
     await this.cityStateInputField.pressSequentially("Atlanta, GA, USA");
     await this.page.getByText("AtlantaGA, USA", { exact: true }).click();
     await this.dobInputField.fill("2002-01-01");
@@ -91,5 +91,7 @@ export class WelcomePage {
     // Waiting for scan to complete
     const dashboardPage = new DashboardPage(this.page);
     await dashboardPage.actionNeededTab.waitFor();
+
+    // TODO: Handle state in prod where it says "Scan still in progress:"
   }
 }
