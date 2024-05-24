@@ -65,6 +65,8 @@ export class DashboardPage {
   readonly privacyNoticeFooter: Locator;
   readonly githubFooter: Locator;
 
+  readonly upsellScreenButton: Locator;
+
   constructor(page: Page) {
     this.page = page;
     this.dataBreachEmailDropdown = page.locator("custom-select");
@@ -182,6 +184,9 @@ export class DashboardPage {
     this.settingsPageLink = page.getByRole("link", { name: "Settings" });
     this.dashboardPageLink = page.getByRole("link", { name: "Dashboard" });
     this.faqsPageLink = page.getByTitle("Frequently asked questions").first();
+
+    //upsell button
+    this.upsellScreenButton = page.getByText(/Let’s (keep going|fix it)/);
   }
 
   dashboardLinks() {

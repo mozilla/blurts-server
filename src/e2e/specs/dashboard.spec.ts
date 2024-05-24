@@ -305,7 +305,8 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard  - Payment`, () 
 
   test("Verify that the Premium upsell screen is displayed correctly - overview card", async ({
     dashboardPage,
-    // purchasePage,
+    automaticRemovePage,
+    dataBrokersPage,
     page,
   }) => {
     test.info().annotations.push({
@@ -316,43 +317,29 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard  - Payment`, () 
 
     //checking that the user can reach upsell page
     await dashboardPage.goToDashboard();
-    const upsellButton = page.locator("section > div a");
-    await expect(upsellButton).toBeVisible();
-    await upsellButton.click();
+    await expect(dashboardPage.upsellScreenButton).toBeVisible();
+    await dashboardPage.upsellScreenButton.click();
     await page.waitForURL(/.*\/fix\/.*\/view-data-brokers\/?/);
-    const removeThemButton = page.getByText("Remove them for me");
-    await removeThemButton.click();
+    await dataBrokersPage.removeThemForMeButton.click();
+    await page.waitForURL(/.*\/fix\/.*\/automatic-remove\/?/);
 
     //checking the bullet points
-    await page.waitForURL(/.*\/fix\/.*\/automatic-remove\/?/);
-    const ulElement = page.locator("div > strong + ul");
-    expect(await ulElement.isVisible()).toBeTruthy();
+    await expect(automaticRemovePage.ulElement).toBeVisible();
 
-    const expectedItems = [
-      "Monthly scan of ⁨190⁩ data broker sites that may be selling your personal info",
-      "Automatic data removal from sites that are selling your personal info",
-      "Guided experience through high risk data breaches that require manual steps",
-      "Continuous monitoring for new exposures",
-      "Alerts when your data has been breached",
-    ];
-
-    for (const itemText of expectedItems) {
-      const liElement = page.locator(`ul li:has-text("${itemText}")`).first();
+    for (const itemText of automaticRemovePage.bulletPointsExpected) {
+      const liElement = automaticRemovePage.liElements.getByText(itemText);
       await expect(liElement).toBeVisible();
     }
 
     //testing that toggles work
-    const label0 = page.locator("div > label").nth(0);
-    const label1 = page.locator("div > label").nth(1);
-
-    await label0.click();
-    const price0 = page.locator("div > strong + span").textContent();
-    const plan0 = page.locator("div > strong + span + a").textContent();
-    await label1.click();
-    const price1 = page.locator("div > strong + span").textContent();
-    const plan1 = page.locator("div > strong + span + a").textContent();
-    const areTextsChanging = price0 !== price1 && plan0 !== plan1;
-    expect(areTextsChanging).toBeTruthy();
+    await automaticRemovePage.planLabel0.click();
+    const price0 = await automaticRemovePage.price.textContent();
+    const plan0 = await automaticRemovePage.plan.textContent();
+    await automaticRemovePage.planLabel1.click();
+    const price1 = await automaticRemovePage.price.textContent();
+    const plan1 = await automaticRemovePage.plan.textContent();
+    expect(price0).not.toEqual(price1);
+    expect(plan0).not.toEqual(plan1);
   });
 });
 
