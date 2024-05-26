@@ -75,7 +75,11 @@ export class DashboardPage {
   readonly privacyNoticeFooter: Locator;
   readonly githubFooter: Locator;
 
-  readonly letsFixItButton: Locator;
+  readonly overviewCardSummary: Locator;
+  readonly overviewCardFindings: Locator;
+
+  readonly upsellScreenButton: Locator;
+  readonly urlRegex: RegExp;
 
   constructor(page: Page) {
     this.page = page;
@@ -122,11 +126,6 @@ export class DashboardPage {
       hasText: "Privacy Notice",
     });
     this.githubFooter = page.locator("footer a", { hasText: "GitHub" });
-
-    //"Let's fix it" button
-    this.letsFixItButton = page.locator(
-      "//div//a[@Class='Button_button__iA3wi Button_primary___XZsP Button_small__DYOVZ']",
-    );
 
     // top nav
     this.fireFoxMonitorLogoImgButton = page.locator(
@@ -226,6 +225,18 @@ export class DashboardPage {
     this.dashboardPageLink = page.getByRole("link", { name: "Dashboard" });
 
     this.faqsPageLink = page.getByTitle("Frequently asked questions").first();
+
+    //upsell button
+    this.upsellScreenButton = page.getByText(/Let’s (keep going|fix it)/);
+    this.overviewCardSummary = page.locator(
+      "[aria-label='Dashboard summary'] > div > p",
+    );
+    this.overviewCardFindings = page.locator(
+      "[aria-label='Dashboard summary'] > div > h3",
+    );
+
+    //regex
+    this.urlRegex = /\/dashboard\/(fixed|action-needed)\/?/;
   }
 
   dashboardLinks() {
