@@ -161,6 +161,7 @@ security-recommendation-ip-summary =
         [one] Ne IP kundaharape ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
        *[other] Ne IP kundaharape ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
     }
+security-recommendation-ip-step-one = Eiporu VPN (<link_to_info>{ -brand-mozilla-vpn }</link_to_info>) ramo emokañy hag̃ua nde IP kundaharape ha eiporu ñanduti ñemihápe.
 
 # Leaked Passwords
 
