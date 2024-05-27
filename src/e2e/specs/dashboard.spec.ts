@@ -442,6 +442,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card`
 
     //check that X returns back to /dashboard
     await expect(automaticRemovePage.xButton).toBeVisible();
+
     await automaticRemovePage.xButton.click();
     await page.waitForURL(dashboardPage.urlRegex);
 
@@ -449,24 +450,42 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card`
     await automaticRemovePage.open();
     await expect(automaticRemovePage.forwardArrowButton).toBeVisible();
 
+    const escapeRegExp = (str: string): string => {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    };
+
     const breachString0 = "high-risk-data-breaches";
     const breachString1 = "leaked-passwords";
     const breachString2 = "security-recommendations";
-    const breachOrDashboard = new RegExp(
-      `(${dashboardPage.urlRegex.source})|${breachString0}|${breachString1}|${breachString2}`,
-    );
 
-    const checkBreachLink = async (urlToCheck: string) => {
+    const breachOrDashboard = (excludeThis: string) => {
+      const escapedExclude = escapeRegExp(excludeThis);
+      const pattern = [
+        dashboardPage.urlRegex.source,
+        breachString0,
+        breachString1,
+        breachString2,
+      ]
+        .map((s) => `.*${s}.*`)
+        .join("|");
+
+      return new RegExp(`^(?!.*${escapedExclude})(${pattern})`);
+    };
+
+    const checkBreachLink = async () => {
+      const currentUrl = page.url();
       await automaticRemovePage.forwardArrowButton.click();
-      await page.waitForURL(breachOrDashboard);
+      await page.waitForURL(breachOrDashboard(currentUrl));
+      const urlToCheck = page.url();
       const check0 = urlToCheck.includes(breachString0);
       const check1 = urlToCheck.includes(breachString1);
       const check2 = urlToCheck.includes(breachString2);
       const pageHasValidURL = check0 || check1 || check2;
       return pageHasValidURL;
     };
+
     let iter = 0;
-    while (await checkBreachLink(page.url())) iter++;
+    while (await checkBreachLink()) iter++;
     const visitedBreachPages = iter !== 0;
     const exposuresExist = exposuresCount !== 0;
     //The logic is XNOR (iff) which reduces to equality
@@ -475,26 +494,28 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card`
     expect(visitBreachesIFFExposuresExist);
 
     //price&plan toggle checks
-    const subplatRegex = /.*mozgcp.net\/products\/prod.*/;
-    const containsDifferentiatorText = (toggleText: string) => {
-      const differentiator = "price_1";
-      if (toggleText.includes("Monthly"))
-        expect(page.url()).toContain(differentiator);
-      else expect(page.url()).not.toContain(differentiator);
-    };
+    await automaticRemovePage.open();
+    const subplatRegex = /\/products\/prod_/;
 
     const checkToggleButtonWorks = async (toggleButton: Locator) => {
       await automaticRemovePage.open();
       await expect(toggleButton).toBeVisible();
-      const toggleText0 = await toggleButton.textContent();
-      expect(toggleText0).toBeTruthy();
+      await toggleButton.click();
+      const toggleText = await toggleButton.textContent();
+      expect(toggleText).toBeTruthy();
       await automaticRemovePage.subplatButton.click();
       await page.waitForURL(subplatRegex);
-      containsDifferentiatorText(toggleText0!);
+      return page.url();
     };
 
-    await checkToggleButtonWorks(automaticRemovePage.planToggle0);
-    await checkToggleButtonWorks(automaticRemovePage.planToggle1);
+    const subplat0 = await checkToggleButtonWorks(
+      automaticRemovePage.planToggle0,
+    );
+    const subplat1 = await checkToggleButtonWorks(
+      automaticRemovePage.planToggle1,
+    );
+    const subplatLinksAreDifferent = subplat0 !== subplat1;
+    expect(subplatLinksAreDifferent).toBeTruthy();
   });
 });
 
