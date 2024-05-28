@@ -12,7 +12,7 @@ export const SectionTwo = (props: Props) => {
   const { l10n } = props;
 
   return (
-    <div className={styles.sectionWrapper}>
+    <div id="data-breach-section" className={styles.sectionWrapper}>
       <div className={styles.intro}>
         <span className={styles.introContent}>
           <h2>
