@@ -12,8 +12,7 @@ import {
   deleteOnerepProfileId,
   deleteSubscriber,
   getOnerepProfileId,
-  getSubscriberByEmail,
-  getSubscribersByHashes,
+  getSubscriberByFxaUid,
 } from "../../../../../../db/tables/subscribers";
 import {
   activateProfile,
@@ -45,22 +44,27 @@ export type GetUserStateResponseBody = {
  * @param req
  * @param root0
  * @param root0.params
- * @param root0.params.primarySha1
+ * @param root0.params.fxaUid
  */
 export async function GET(
   req: NextRequest,
-  { params }: { params: { primarySha1: string } },
+  { params }: { params: { fxaUid: string } },
 ) {
   const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in as admin
     try {
-      if (!params.primarySha1) {
+      if (!params.fxaUid) {
         return NextResponse.json({ success: false }, { status: 400 });
       }
 
-      const primarySha1 = params.primarySha1;
-      const subscriber = (await getSubscribersByHashes([primarySha1]))[0];
+      const fxaUid = params.fxaUid;
+      const subscriber = await getSubscriberByFxaUid(fxaUid);
+      if (!subscriber) {
+        logger.error("no_subscriber_found", { fxaUid });
+        return NextResponse.json({ success: false }, { status: 404 });
+      }
+
       const responseBody: GetUserStateResponseBody = {
         subscriberId: subscriber.id,
         onerepProfileId: subscriber.onerep_profile_id,
@@ -115,30 +119,28 @@ export type PutUserStateRequestBody = {
  * @param req
  * @param root0
  * @param root0.params
- * @param root0.params.primarySha1
+ * @param root0.params.fxaUid
  */
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { primarySha1: string } },
+  { params }: { params: { fxaUid: string } },
 ) {
   const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
     // Signed in as admin
     try {
-      const primarySha1 = params.primarySha1;
-      if (!primarySha1) {
+      const fxaUid = params.fxaUid;
+      if (!fxaUid) {
         return NextResponse.json({ success: false }, { status: 400 });
       }
 
       const body = await req.json();
       const actions = body.actions;
 
-      const subscriberRow = (await getSubscribersByHashes([primarySha1]))[0];
-      const subscriber = await getSubscriberByEmail(
-        subscriberRow.primary_email,
-      );
+      const subscriber = await getSubscriberByFxaUid(fxaUid);
       if (!subscriber) {
-        throw new Error("No subscriber found for given email.");
+        logger.error("no_subscriber_found", { fxaUid });
+        return NextResponse.json({ success: false }, { status: 404 });
       }
 
       const onerepProfileId = await getOnerepProfileId(subscriber.id);
@@ -160,7 +162,7 @@ export async function PUT(
             }
             logger.info("force_user_subscribe", {
               onerepProfileId,
-              primarySha1,
+              fxaUid,
             });
             break;
           }
@@ -172,47 +174,47 @@ export async function PUT(
             }
             logger.info("force_user_unsubscribe", {
               onerepProfileId,
-              primarySha1,
+              fxaUid,
             });
             break;
           }
           case "delete_onerep_profile": {
             if (typeof onerepProfileId !== "number") {
               throw new Error(
-                `Could not force-delete the OneRep profile of subscriber [${primarySha1}], as they do not have a OneRep profile known to us.`,
+                `Could not force-delete the OneRep profile of subscriber [${fxaUid}], as they do not have a OneRep profile known to us.`,
               );
             }
             await deleteProfileDetails(onerepProfileId);
             await deleteOnerepProfileId(subscriber.id);
             logger.info("delete_onerep_profile", {
               onerepProfileId,
-              primarySha1,
+              fxaUid,
             });
             break;
           }
           case "delete_onerep_scans": {
             if (typeof onerepProfileId !== "number") {
               throw new Error(
-                `Could not force-delete OneRep scans for subscriber [${primarySha1}], as they do not have a OneRep profile known to us.`,
+                `Could not force-delete OneRep scans for subscriber [${fxaUid}], as they do not have a OneRep profile known to us.`,
               );
             }
             await deleteScansForProfile(onerepProfileId);
             logger.info("delete_onerep_scans", {
               onerepProfileId,
-              primarySha1,
+              fxaUid,
             });
             break;
           }
           case "delete_onerep_scan_results": {
             if (typeof onerepProfileId !== "number") {
               throw new Error(
-                `Could not force-delete OneRep scan results for subscriber [${primarySha1}], as they do not have a OneRep profile known to us.`,
+                `Could not force-delete OneRep scan results for subscriber [${fxaUid}], as they do not have a OneRep profile known to us.`,
               );
             }
             await deleteScanResultsForProfile(onerepProfileId);
             logger.info("delete_onerep_scan_results", {
               onerepProfileId,
-              primarySha1,
+              fxaUid,
             });
             break;
           }
@@ -220,7 +222,7 @@ export async function PUT(
             await deleteSubscriber(subscriber);
             logger.info("delete_subscriber", {
               onerepProfileId,
-              primarySha1,
+              fxaUid,
             });
             break;
           }
@@ -231,7 +233,14 @@ export async function PUT(
         }
       }
     } catch (e) {
-      logger.error(e);
+      if (e instanceof Error) {
+        logger.error("error_processing_actions", {
+          stack: e.stack,
+          message: e.message,
+        });
+      } else {
+        logger.error("error_processing_actions", { error: JSON.stringify(e) });
+      }
       return NextResponse.json({ success: false }, { status: 500 });
     }
 

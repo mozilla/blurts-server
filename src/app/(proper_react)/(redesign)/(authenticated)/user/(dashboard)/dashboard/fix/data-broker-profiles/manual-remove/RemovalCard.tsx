@@ -54,7 +54,6 @@ export const RemovalCard = (props: Props) => {
         manually_resolved: isResolved,
       }}
       isOnManualRemovePage={true}
-      isPremiumBrokerRemovalEnabled={true}
       isPremiumUser={props.isPremiumUser}
       locale={getLocale(l10n)}
       resolutionCta={

@@ -22,7 +22,6 @@ export type ExposureCardProps = {
   exposureImg?: StaticImageData;
   exposureData: Exposure;
   locale: string;
-  isPremiumBrokerRemovalEnabled: boolean;
   isPremiumUser: boolean;
   isEligibleForPremium: boolean;
   resolutionCta: ReactNode;

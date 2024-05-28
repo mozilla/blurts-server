@@ -15,7 +15,6 @@ import {
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
-import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 import { isEligibleForPremium } from "../../../../../../../../../functions/server/onerep";
 
 interface SecurityRecommendationsProps {
@@ -45,9 +44,6 @@ export default async function SecurityRecommendations({
 
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const scanData = await getLatestOnerepScanResults(profileId);
-  const enabledFlags = await getEnabledFeatureFlags({
-    email: session.user.email,
-  });
 
   return (
     <HighRiskBreachLayout
@@ -59,7 +55,7 @@ export default async function SecurityRecommendations({
         user: session.user,
         latestScanData: scanData,
       }}
-      isEligibleForPremium={isEligibleForPremium(countryCode, enabledFlags)}
+      isEligibleForPremium={isEligibleForPremium(countryCode)}
     />
   );
 }
