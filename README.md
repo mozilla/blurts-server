@@ -184,7 +184,7 @@ The unit test suite can be run via `npm test`.
 
 At the beginning of a test suite run, the `test-blurts` database will be populated with test tables and seed data found in `src/db/seeds/`
 
-At the end of a test suite run in CircleCI, coverage info will be sent to [Coveralls](https://coveralls.io/) to assess coverage changes and provide a neat badge. To upload coverage locally, you need a root `.coveralls.yml` which contains a token – get this from another member of the Monitor team.
+At the end of a test suite, coverage info will be sent to [Coveralls](https://coveralls.io/) to assess coverage changes and provide a neat badge. To upload coverage locally, you need a root `.coveralls.yml` which contains a token – get this from another member of the Monitor team.
 
 End-to-End tests use Playwright and can be run via `npm run e2e`. [E2E-How-To](https://github.com/mozilla/blurts-server/src/e2e) for more info.
 
@@ -220,13 +220,9 @@ When enough translations have been commited, you should merge `localization` int
 
 _**TODO:** explore means to auto-sync `localization` with `main`_
 
-## Deploy on Heroku
+## Preview Deployment
 
-We use Heroku apps for dev review only – official stage and production apps are built by the Dockerfile and CircleCI config, with deploy overseen by the Site Reliability Engineering team.
-
-A merge to `main` auto-deploys that branch to Heroku. ~~We also employ Heroku's "Review Apps" to check Pull Requests. These are currently set to auto-deploy: you can find the app link in your GitHub Pull Request. Review apps auto-destroy after 2 days of inactivity.~~
-
-If you encounter issues with Heroku deploys, be sure to check your environment variables, including those required in `app-constants.js`. Review apps also share a database and you should not assume good data integrity if testing db-related features.
+We use GCP Cloudrun for dev review – official stage and production apps are built by the Dockerfile and Github Actions. Everything that is merged into `main` will deploy automatically to stage. The ADR for preview deployment can be found [here](https://github.com/mozilla/blurts-server/blob/main/docs/adr/0008-preview-deployment.md)
 
 _**TODO:** add full deploy process similar to Relay_
 

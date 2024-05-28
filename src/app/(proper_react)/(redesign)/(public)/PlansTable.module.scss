@@ -51,7 +51,7 @@
 
     // This rule is less specific than the `tr td, tr th` above, but since
     // that line ideally would have been just `tr`, I'm leaving it up there:
-    /* stylelint-disable-next-line no-descending-specificity */
+    /* stylelint-disable no-descending-specificity */
     th,
     td {
       padding-block: $spacing-md;
@@ -66,6 +66,7 @@
         color: $color-blue-50;
       }
     }
+    /* stylelint-enable no-descending-specificity */
 
     .priceCell {
       display: flex;

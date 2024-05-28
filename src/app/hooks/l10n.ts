@@ -5,19 +5,16 @@
 "use client";
 
 import { useLocalization } from "@fluent/react";
-import { Fragment, createElement, useEffect, useState } from "react";
+import { Fragment, createElement } from "react";
 import { ExtendedReactLocalization, GetFragment } from "../functions/l10n";
+import { useHasRenderedClientSide } from "./useHasRenderedClientSide";
 
 export const useL10n = (): ExtendedReactLocalization => {
-  const [isMounted, setIsMounted] = useState(false);
+  const hasRenderedClientSide = useHasRenderedClientSide();
   const { l10n } = useLocalization();
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, [isMounted]);
-
   const getFragment: GetFragment = (id, args, fallback) => {
-    return isMounted
+    return hasRenderedClientSide
       ? l10n.getElement(createElement(Fragment, null, fallback ?? id), id, args)
       : null;
   };

@@ -49,12 +49,6 @@ settings-email-number-of-breaches-info =
        *[other] Appears in { $breachCount } known breaches.
   }
 
-## Deactivate account
-
-settings-deactivate-account-title = Deactivate account
-settings-deactivate-account-info-2 = You can deactivate { -product-short-name } by deleting your { -brand-mozilla-account }.
-settings-fxa-link-label-3 = Go to { -brand-mozilla-account } settings
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Delete { -brand-monitor } account

@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     
     - name: Setup Cloud SDK
       uses: 'google-github-actions/auth@v2'
@@ -88,3 +88,6 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           message: |
             Preview URL :rocket: : ${{ steps.deploy.outputs.url }}
+          comment_tag: preview_url
+          create_if_not_exists: true
+          

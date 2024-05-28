@@ -2,9 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { Locator } from "@playwright/test";
 import { test, expect } from "../fixtures/basePage.js";
 import { DashboardPage } from "../pages/dashBoardPage.js";
-import { checkAuthState } from "../utils/helpers.js";
+import { checkAuthState, removeUnicodeChars } from "../utils/helpers.js";
 
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
@@ -205,11 +206,18 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Content`, () =
     page,
   }) => {
     // link to testrail
-    test.info().annotations.push({
-      type: "testrail",
-      description:
-        "https://testrail.stage.mozaws.net/index.php?/cases/view/2301533",
-    });
+    test.info().annotations.push(
+      {
+        type: "testrail",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2301533",
+      },
+      {
+        type: "testrail",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2546463",
+      },
+    );
 
     await expect(dashboardPage.exposuresHeading).toBeVisible();
     await dashboardPage.fixedTab.click();
@@ -247,8 +255,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard  - Payment`, () 
 
   test("Verify that the user can select what type of plan they want, verify that the Premium upsell modal is displayed correctly", async ({
     dashboardPage,
-    purchasePage,
-    page,
   }) => {
     test.info().annotations.push(
       {
@@ -268,37 +274,253 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard  - Payment`, () 
       },
     );
 
-    // verify subscription dialog elements
     await dashboardPage.subscribeButton.click();
-    await expect(dashboardPage.subscribeDialogCloseButton).toBeVisible();
-    await expect(dashboardPage.yearlyMonthlyTablist).toBeVisible();
+    await dashboardPage.verifyPremiumUpsellModalOptions();
+  });
+});
 
-    // verify user purchase choices
-    await dashboardPage.yearlyTab.click();
-    await expect(
-      dashboardPage.subscribeDialogSelectYearlyPlanLink,
-    ).toBeVisible();
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Breaches Scan, Continuous Protection, Data Profile Actions`, () => {
+  test.use({ storageState: { cookies: [], origins: [] } });
 
-    await dashboardPage.monthlyTab.click();
-    await expect(
-      dashboardPage.subscribeDialogSelectMonthlyPlanLink,
-    ).toBeVisible();
+  test.beforeEach(async ({ landingPage, page, authPage, welcomePage }) => {
+    test.slow(
+      true,
+      "this test runs through the welcome scan flow, increasing timeout to address it",
+    );
 
-    // Check monthly redirection
-    await dashboardPage.subscribeDialogSelectMonthlyPlanLink.click();
-    await purchasePage.subscriptionHeader.waitFor();
-    await expect(purchasePage.planDetails).toContainText("monthly");
-    await expect(purchasePage.subscriptionHeader).toBeVisible();
+    // speed up test by ignoring non necessary requests
+    await page.route(/(analytics)/, async (route) => {
+      await route.abort();
+    });
 
-    // Check yearly redirection
-    await page.goto(`${process.env.E2E_TEST_BASE_URL}`);
-    await dashboardPage.subscribeButton.waitFor();
-    await dashboardPage.subscribeButton.click();
-    await dashboardPage.subscribeDialogSelectYearlyPlanLink.click();
-    await purchasePage.subscriptionHeader.waitFor();
-    // Text contains invisible characters which need to be hardcoded in an assertion
-    await expect(purchasePage.planDetails).toContainText(
-      `${process.env.E2E_TEST_ENV === "prod" ? "yearly" : "every ⁨2⁩ months"}`,
+    await landingPage.open();
+    await landingPage.goToSignIn();
+
+    const randomEmail = `_${Date.now()}@restmail.net`;
+    await authPage.signUp(randomEmail, page);
+
+    await page.waitForURL("**/user/welcome");
+    await welcomePage.goThroughFirstScan();
+    expect(page.url()).toContain("/user/dashboard");
+  });
+
+  test("Verify that the Premium upsell modal is displayed correctly - Continuous Protection, verify that the user can mark Data broker profiles as fixed", async ({
+    dashboardPage,
+  }) => {
+    test.info().annotations.push(
+      {
+        type: "testrail id #1",
+        description:
+          "(continuous protection step) https://testrail.stage.mozaws.net/index.php?/cases/view/2463623",
+      },
+      {
+        type: "testrail id #2",
+        description:
+          "https://testrail.stage.mozaws.net/index.php?/cases/view/2463591",
+      },
+    );
+    let initialExposuresCount =
+      (await dashboardPage.numExposures.textContent()) as string;
+    initialExposuresCount = removeUnicodeChars(initialExposuresCount);
+
+    if (initialExposuresCount !== "0") {
+      await dashboardPage.allExposures.first().click();
+      await dashboardPage.fixExposureButton.click();
+      await dashboardPage.removeExposuresManually.click();
+      await dashboardPage.reviewAndRemoveProfiles.waitFor();
+
+      const count = await dashboardPage.allExposures.count();
+      // Fix first exposure
+      await dashboardPage.markAsFixed.click();
+
+      for (let i = 1; i < count; i++) {
+        const exposure = dashboardPage.allExposures.nth(i);
+        await exposure.click();
+
+        if (await dashboardPage.markAsFixed.isVisible()) {
+          await dashboardPage.markAsFixed.click();
+        }
+      }
+
+      await dashboardPage.skipExposureRemoval.click();
+    }
+
+    await dashboardPage.continuousProtectionButton.waitFor();
+    await expect(dashboardPage.continuousProtectionButton).toBeVisible();
+    await dashboardPage.continuousProtectionButton.click();
+    await dashboardPage.verifyPremiumUpsellModalOptions();
+    // Using toMatch to avoid invisible unicode chars mismatch
+    expect(await dashboardPage.numExposures.textContent()).toMatch("0");
+    await dashboardPage.fixedTab.click();
+    const fixedExposures = await dashboardPage.numFixed.textContent();
+    expect(fixedExposures as string).toMatch(initialExposuresCount);
+  });
+
+  test("Verify that the Premium upsell screen is displayed correctly - overview card", async ({
+    dashboardPage,
+    automaticRemovePage,
+    dataBrokersPage,
+    page,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463625",
+    });
+
+    //checking that the user can reach upsell page
+    await dashboardPage.goToDashboard();
+    await expect(dashboardPage.upsellScreenButton).toBeVisible();
+    await dashboardPage.upsellScreenButton.click();
+    await page.waitForURL(/.*\/fix\/.*\/view-data-brokers\/?/);
+    await dataBrokersPage.removeThemForMeButton.click();
+    await page.waitForURL(/.*\/fix\/.*\/automatic-remove\/?/);
+
+    //checking the bullet points
+    await expect(automaticRemovePage.ulElement).toBeVisible();
+
+    for (const itemText of automaticRemovePage.bulletPointsExpected) {
+      const liElement = automaticRemovePage.liElements.getByText(itemText);
+      await expect(liElement).toBeVisible();
+    }
+
+    //testing that toggles work
+    await automaticRemovePage.planLabel0.click();
+    const price0 = await automaticRemovePage.price.textContent();
+    const plan0 = await automaticRemovePage.plan.textContent();
+    await automaticRemovePage.planLabel1.click();
+    const price1 = await automaticRemovePage.price.textContent();
+    const plan1 = await automaticRemovePage.plan.textContent();
+    expect(price0).not.toEqual(price1);
+    expect(plan0).not.toEqual(plan1);
+  });
+});
+
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Footer`, () => {
+  test.beforeEach(async ({ dashboardPage, page }) => {
+    await dashboardPage.open();
+    try {
+      await checkAuthState(page);
+    } catch {
+      console.log("[E2E_LOG] - No fxa auth required, proceeding...");
+    }
+  });
+
+  test("Verify that the site footer is displayed correctly", async ({
+    dashboardPage,
+    page,
+  }) => {
+    // link to testrail
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463570",
+    });
+
+    const clickOnATagCheckDomain = async (
+      aTag: Locator,
+      host: string,
+      path: string | RegExp = /.*/,
+    ) => {
+      if (typeof path === "string") path = new RegExp(".*" + path + ".*");
+      host = host.replace(/^(https?:\/\/)/, "");
+
+      const href = await aTag.getAttribute("href");
+      if (href === null) return false;
+
+      await page.goto(href);
+      const currentUrl = new URL(page.url());
+      const perceivedHost = currentUrl.hostname;
+      const perceivedPath = currentUrl.pathname;
+      expect(perceivedHost).toBe(host);
+      expect(path.test(perceivedPath)).toBeTruthy();
+      await page.goBack();
+    };
+
+    expect(process.env["E2E_TEST_BASE_URL"]).toBeTruthy();
+    const baseUrl = process.env["E2E_TEST_BASE_URL"]!;
+    await dashboardPage.goToDashboard();
+    await expect(page.locator("footer a >> img")).toBeVisible();
+    await clickOnATagCheckDomain(
+      dashboardPage.mozillaLogoFooter,
+      "www.mozilla.org",
+      /^(\/en-US\/)?$/,
+    );
+    await clickOnATagCheckDomain(
+      dashboardPage.allBreachesFooter,
+      baseUrl,
+      "/breaches",
+    );
+    await clickOnATagCheckDomain(
+      dashboardPage.faqsFooter,
+      "support.mozilla.org",
+      /.*\/kb.*\/mozilla-monitor-faq.*/,
+    );
+    await clickOnATagCheckDomain(
+      dashboardPage.termsOfServiceFooter,
+      "www.mozilla.org",
+      "/about/legal/terms/subscription-services/",
+    );
+    await clickOnATagCheckDomain(
+      dashboardPage.privacyNoticeFooter,
+      "www.mozilla.org",
+      "/privacy/subscription-services/",
+    );
+    await clickOnATagCheckDomain(
+      dashboardPage.githubFooter,
+      "github.com",
+      "/mozilla/blurts-server",
+    );
+  });
+});
+
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation`, () => {
+  test.beforeEach(async ({ dashboardPage, page }) => {
+    await dashboardPage.open();
+
+    try {
+      await checkAuthState(page);
+    } catch {
+      console.log("[E2E_LOG] - No fxa auth required, proceeding...");
+    }
+  });
+
+  test("Verify that the navigation bar options work correctly", async ({
+    dashboardPage,
+    page,
+  }) => {
+    // link to testrail
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463568",
+    });
+
+    const goToHrefOf = async (aTag: Locator) => {
+      const href = await aTag.getAttribute("href");
+      expect(href).toBeTruthy();
+      await page.goto(href!);
+    };
+
+    //testrail's step 1
+    await dashboardPage.goToDashboard();
+    await goToHrefOf(dashboardPage.settingsPageLink);
+    await expect(page).toHaveURL(/\/settings$/);
+
+    //testrail's step 2
+    await goToHrefOf(dashboardPage.dashboardPageLink);
+    await expect(page).toHaveURL(/.*\/dashboard.*/);
+
+    // testrail's step 3
+    await dashboardPage.goToSettings();
+    await goToHrefOf(dashboardPage.fireFoxMonitorLogoAtag);
+    await expect(page).toHaveURL(/.*\/dashboard.*/);
+
+    //testrail's step 4
+    await dashboardPage.goToDashboard();
+    await goToHrefOf(dashboardPage.faqsPageLink);
+    await expect(page).toHaveURL(
+      /.*support\.mozilla\.org.*\/kb\/.*firefox-monitor-faq.*/,
     );
   });
 });
