@@ -82,10 +82,10 @@
     "nodemailer": "^6.9.13",
     "pg": "^8.11.5",
     "react": "^18.2.0",
-    "react-aria": "^3.33.0",
+    "react-aria": "^3.33.1",
     "react-cookie": "^7.1.0",
     "react-dom": "^18.2.0",
-    "react-stately": "^3.31.0",
+    "react-stately": "^3.31.1",
     "server-only": "^0.0.1",
     "uuid": "^9.0.1",
     "winston": "^3.13.0"
