@@ -19,7 +19,10 @@ export const SectionOne = (props: Props) => {
   const { l10n } = props;
 
   return (
-    <div className={`${styles.sectionWrapper} ${styles.grayBG}`}>
+    <div
+      id="data-brokers-section"
+      className={`${styles.sectionWrapper} ${styles.grayBG}`}
+    >
       <div className={styles.intro}>
         <span className={styles.introContent}>
           <h2>

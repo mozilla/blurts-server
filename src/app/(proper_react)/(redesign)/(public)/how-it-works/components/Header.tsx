@@ -17,12 +17,18 @@ export const Header = (props: Props) => {
           {l10n.getFragment("how-it-works-banner-text", {
             elems: {
               data_brokers_link: (
-                <a href="/data-brokers" className={styles.brokersEmphasis}>
+                <a
+                  href="#data-brokers-section"
+                  className={styles.brokersEmphasis}
+                >
                   data brokers
                 </a>
               ),
               data_breaches_link: (
-                <a href="/data-breach" className={styles.breachesEmphasis}>
+                <a
+                  href="#data-breach-section"
+                  className={styles.breachesEmphasis}
+                >
                   data breaches
                 </a>
               ),
