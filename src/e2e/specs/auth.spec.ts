@@ -29,7 +29,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     // assert successful login
     const successUrl =
       process.env.E2E_TEST_ENV === "local"
-        ? "/user/dashboard"
+        ? "/user/dashboard/action-needed"
         : "/user/welcome";
     expect(page.url()).toBe(`${process.env.E2E_TEST_BASE_URL}${successUrl}`);
 
