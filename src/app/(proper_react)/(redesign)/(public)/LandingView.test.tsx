@@ -171,63 +171,6 @@ describe("When Premium is not available", () => {
     expect(signIn).toHaveBeenCalledTimes(1);
   });
 
-  it("displays a banner announcing the rebrand to 'Mozilla Monitor' by default", () => {
-    const ComposedDashboard = composeStory(LandingNonUs, Meta);
-    render(<ComposedDashboard />);
-
-    const rebrandAnnouncement = screen.getByText(
-      "New name, look and even more ways to",
-      { exact: false },
-    );
-
-    expect(rebrandAnnouncement).toBeInTheDocument();
-  });
-
-  it("hides the banner announcing the rebrand to 'Mozilla Monitor' after clicking the dismiss button", async () => {
-    const ComposedDashboard = composeStory(LandingNonUs, Meta);
-    render(<ComposedDashboard />);
-
-    const rebrandAnnouncement = screen
-      .getAllByRole("complementary")
-      .find((el) =>
-        el.textContent?.includes(
-          "⁨Mozilla Monitor⁩: New name, look and even more ways to reclaim your privacy.",
-        ),
-      )!;
-    const dismissButton = within(rebrandAnnouncement).getByRole("button", {
-      name: "OK",
-    });
-
-    const user = userEvent.setup();
-    await user.click(dismissButton);
-
-    expect(rebrandAnnouncement).not.toBeInTheDocument();
-  });
-
-  it("counts how often people close the banner announcing the rebrand to `'Mozilla Monitor'", async () => {
-    const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(LandingNonUs, Meta);
-    render(<ComposedDashboard />);
-
-    const rebrandAnnouncement = screen.getByText(
-      "New name, look and even more ways to",
-      { exact: false },
-    );
-    const dismissButton = within(rebrandAnnouncement.parentElement!).getByRole(
-      "button",
-      { name: "OK" },
-    );
-
-    const user = userEvent.setup();
-    await user.click(dismissButton);
-
-    expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
-      "click",
-      expect.objectContaining({ button_id: "rebrand_announcement_dismiss" }),
-    );
-  });
-
   it("shows the german scanning for exposures illustration", () => {
     const ComposedDashboard = composeStory(LandingNonUsDe, Meta);
     render(<ComposedDashboard />);
