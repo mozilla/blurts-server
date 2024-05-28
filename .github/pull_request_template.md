@@ -21,7 +21,7 @@ Not applicable.
 - [ ] Commits in this PR are minimal and [have descriptive commit messages](https://chris.beams.io/posts/git-commit/).
 - [ ] I've added or updated the relevant sections in readme and/or code comments
 - [ ] I've added a unit test to test for potential regressions of this bug.
-- [ ] This PR requires a feature flag or experimentation, please notify the engineering team
+- [ ] If this PR implements a feature flag or experimentation, the Ship Behind Feature Flag status in Jira has been set
 - [ ] Product Owner accepted the User Story (demo of functionality completed) or waived the privilege.
 - [ ] All acceptance criteria are met.
 - [ ] Jira ticket has been updated (if needed) to match changes made during the development process.
