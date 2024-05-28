@@ -647,3 +647,58 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation`, (
     );
   });
 });
+
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`, () => {
+  test.beforeEach(async ({ landingPage, page, authPage }) => {
+    test.slow(
+      true,
+      "this test runs through the welcome scan flow, increasing timeout to address it",
+    );
+
+    // speed up test by ignoring non necessary requests
+    await page.route(/(analytics)/, async (route) => {
+      await route.abort();
+    });
+    await page.context().clearCookies();
+    await landingPage.open();
+    await landingPage.goToSignIn();
+    let visible = true;
+    try {
+      await expect(authPage.useDifferentEmailButton).toBeVisible();
+    } catch {
+      visible = false;
+    }
+    if (visible) {
+      await authPage.useDifferentEmailButton.click();
+      await page.waitForURL(/^(?!.*signin).*/);
+    }
+    await authPage.signIn("joe@mailinator.com", "TestPass1234");
+    await page.waitForURL("**/user/dashboard");
+    expect(page.url()).toContain("/user/dashboard");
+  });
+
+  test("Verify that the High risk data breaches step is displayed correctly", async ({
+    dashboardPage,
+    dataBrokersPage,
+    page,
+  }) => {
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463592",
+    });
+
+    await dashboardPage.open();
+    await expect(dashboardPage.upsellScreenButton).toBeVisible();
+    await dashboardPage.upsellScreenButton.click();
+    await page.waitForURL(/.*\/data-broker-profiles\/view-data-brokers\/?/);
+    await expect(dataBrokersPage.forwardArrowButton).toBeVisible();
+    await dataBrokersPage.forwardArrowButton.click();
+    await page.waitForURL(/.*\/high-risk-data-breaches.*/);
+    const highRiskDataBreachLi = page.locator(
+      "//li[div[text()='High risk data breaches']]",
+    );
+    await expect(highRiskDataBreachLi).toBeVisible();
+    await expect(highRiskDataBreachLi).toHaveAttribute("aria-current", "step");
+  });
+});
