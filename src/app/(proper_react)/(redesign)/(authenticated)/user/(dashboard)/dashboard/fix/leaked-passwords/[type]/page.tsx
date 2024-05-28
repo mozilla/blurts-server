@@ -15,7 +15,6 @@ import { getSubscriberEmails } from "../../../../../../../../../functions/server
 import { getCountryCode } from "../../../../../../../../../functions/server/getCountryCode";
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
-import { getEnabledFeatureFlags } from "../../../../../../../../../../db/tables/featureFlags";
 import { isEligibleForPremium } from "../../../../../../../../../functions/server/onerep";
 
 interface LeakedPasswordsProps {
@@ -45,9 +44,6 @@ export default async function LeakedPasswords({
 
   const profileId = await getOnerepProfileId(session.user.subscriber.id);
   const scanData = await getLatestOnerepScanResults(profileId);
-  const enabledFlags = await getEnabledFeatureFlags({
-    email: session.user.email,
-  });
 
   return (
     <LeakedPasswordsLayout
@@ -59,7 +55,7 @@ export default async function LeakedPasswords({
         user: session.user,
         latestScanData: scanData,
       }}
-      isEligibleForPremium={isEligibleForPremium(countryCode, enabledFlags)}
+      isEligibleForPremium={isEligibleForPremium(countryCode)}
     />
   );
 }

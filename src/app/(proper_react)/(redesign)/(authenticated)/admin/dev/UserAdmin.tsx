@@ -13,6 +13,7 @@ import {
   type PutUserStateRequestBody,
   GetUserStateResponseBody,
 } from "../../../../../api/v1/admin/users/[fxaUid]/route";
+import { lookupFxaUid } from "./actions";
 
 export const UserAdmin = () => {
   const session = useSession();
@@ -28,7 +29,8 @@ export const UserAdmin = () => {
 
     const abortController = new AbortController();
     void getSha1(emailInput).then(async (emailHash) => {
-      const response = await fetch(`/api/v1/admin/users/${emailHash}`, {
+      const fxaUid = await lookupFxaUid(emailHash);
+      const response = await fetch(`/api/v1/admin/users/${fxaUid}`, {
         signal: abortController.signal,
       });
       if (!response.ok) {
@@ -56,11 +58,12 @@ export const UserAdmin = () => {
     setStatus(null);
 
     const emailHash = await getSha1(emailInput);
+    const fxaUid = await lookupFxaUid(emailHash);
 
     const requestBody: PutUserStateRequestBody = {
       actions: [action],
     };
-    const response = await fetch(`/api/v1/admin/users/${emailHash}`, {
+    const response = await fetch(`/api/v1/admin/users/${fxaUid}`, {
       method: "PUT",
       body: JSON.stringify(requestBody),
     });
@@ -73,7 +76,7 @@ export const UserAdmin = () => {
     }
 
     setStatus(`[${action}] succeeded for email address [${emailInput}].`);
-    const refreshResponse = await fetch(`/api/v1/admin/users/${emailHash}`);
+    const refreshResponse = await fetch(`/api/v1/admin/users/${fxaUid}`);
     if (refreshResponse.ok) {
       setSubscriberData(await refreshResponse.json());
     }
