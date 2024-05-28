@@ -27,7 +27,6 @@ import { TelemetryLink } from "../../../components/client/TelemetryLink";
 import { HeresHowWeHelp } from "./HeresHowWeHelp";
 import { ScanLimit } from "./ScanLimit";
 import { FaqSection } from "./Faq";
-import { RebrandAnnouncement } from "./RebrandAnnouncement";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { AccountDeletionNotification } from "./AccountDeletionNotification";
 
@@ -248,9 +247,6 @@ export const View = (props: Props) => {
             scanLimitReached={props.scanLimitReached}
           />
         </div>
-        {props.enabledFlags.includes("RebrandAnnouncement") && (
-          <RebrandAnnouncement />
-        )}
       </main>
     </>
   );

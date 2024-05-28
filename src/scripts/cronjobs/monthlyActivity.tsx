@@ -17,6 +17,7 @@ import { getDashboardSummary } from "../../app/functions/server/dashboard";
 import { getLatestOnerepScanResults } from "../../db/tables/onerep_scans";
 import { getSubscriberBreaches } from "../../app/functions/server/getSubscriberBreaches";
 import { getLocale } from "../../app/functions/universal/getLocale";
+import { refreshStoredScanResults } from "../../app/functions/server/refreshStoredScanResults";
 
 void run();
 
@@ -50,9 +51,6 @@ async function run() {
 }
 
 async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
-  // Update the last-sent date *first*, so that if something goes wrong, we
-  // don't keep resending the email a brazillion times.
-  await markMonthlyActivityEmailAsJustSent(subscriber);
   const sanitizedSubscriber = sanitizeSubscriberRow(subscriber);
   const l10n = getEmailL10n(sanitizedSubscriber);
   const locale = getLocale(l10n);
@@ -63,6 +61,12 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
    * recommendations for outside the US).
    */
   const countryCodeGuess = locale.split("-")[1] ?? "us";
+
+  // OneRep suggested not relying on webhooks, but instead to fetch the latest
+  // data from their API. Thus, let's refresh the data in our DB in real-time:
+  if (subscriber.onerep_profile_id !== null) {
+    await refreshStoredScanResults(subscriber.onerep_profile_id);
+  }
 
   const latestScan = await getLatestOnerepScanResults(
     subscriber.onerep_profile_id,
@@ -86,6 +90,10 @@ async function sendMonthlyActivityEmail(subscriber: SubscriberRow) {
       month: currentMonth,
     });
   }
+
+  // Update the last-sent date *first*, so that if something goes wrong, we
+  // don't keep resending the email a brazillion times.
+  await markMonthlyActivityEmailAsJustSent(subscriber);
 
   await sendEmail(
     sanitizedSubscriber.primary_email,

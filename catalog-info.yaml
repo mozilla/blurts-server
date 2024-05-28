@@ -5,7 +5,6 @@ metadata:
   annotations:
     github.com/project-slug: mozilla/blurts-server
     github.com/team-slug: smozilla/teams/firefox-monitor-engineering
-    circleci.com/project-slug: github/mozilla/blurts-server
     sentry.io/project-slug: mozilla/firefox-monitor
   description: Firefox Monitor notifies users when their credentials have been compromised in a data breach.
   tags:

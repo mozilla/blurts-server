@@ -14,10 +14,14 @@ jobs:
   deploy:
     permissions: 
       pull-requests: write
+    # Secrets aren't available for Dependabot PR (because the updated
+    # dependencies might abuse them), so they don't have enough rights to
+    # do a preview deployment:
+    if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     
     - name: Setup Cloud SDK
       uses: 'google-github-actions/auth@v2'
@@ -84,3 +88,6 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           message: |
             Preview URL :rocket: : ${{ steps.deploy.outputs.url }}
+          comment_tag: preview_url
+          create_if_not_exists: true
+          

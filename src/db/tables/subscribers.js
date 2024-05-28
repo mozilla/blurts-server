@@ -77,7 +77,7 @@ async function getSubscriberByEmail (email) {
 /* c8 ignore start */
 async function updatePrimaryEmail (subscriber, updatedEmail) {
   const trx = await knex.transaction()
-  let subscriberTableUpdated, emailTableUpdated
+  let subscriberTableUpdated;
   try {
     // update subscriber primary email to updated email
     subscriberTableUpdated = await knex('subscribers')
@@ -94,7 +94,7 @@ async function updatePrimaryEmail (subscriber, updatedEmail) {
     // if email_addresses table has updatedEmail as a secondary in Monitor
     // swap it with the current primary
     // Fixing: MNTOR-1748
-    emailTableUpdated = await knex('email_addresses')
+    await knex('email_addresses')
       .where('email', '=', updatedEmail)
       .update({
         email: subscriber.primary_email,
@@ -105,8 +105,6 @@ async function updatePrimaryEmail (subscriber, updatedEmail) {
       .transacting(trx)
 
     await trx.commit()
-    console.debug('updatePrimaryEmail', { subscriberTableUpdated })
-    console.debug('updatePrimaryEmail', { emailTableUpdated })
   } catch (error) {
     await trx.rollback()
     // @ts-ignore Type annotations added later; type unknown:
