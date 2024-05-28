@@ -208,17 +208,11 @@ To test this part of Monitor:
 
 ## Localization
 
-This repository has a dedicated branch for localization called... `localization`. To add localized text, add or update the relevant `.ftl` file under `locales/en`. Be sure to reference the [localization documentation](https://mozilla-l10n.github.io/documentation/localization/dev_best_practices.html) for best practices.
+All text that is visible to the user is defined in [Fluent](https://projectfluent.org/) files inside `/locales/en/` and `/locales-pending/`. After strings get added to files in the former directory on our `main` branch, they will be made available to our volunteer localizers via Pontoon, Mozilla's localization platform. Be sure to reference the [localization documentation](https://mozilla-l10n.github.io/documentation/localization/dev_best_practices.html) for best practices. It's best to only move the strings to `/locales/en/` when they are more-or-less final and ready for localization. Your PR should be automatically tagged with a reviewer from the [Mozilla L10n team](https://wiki.mozilla.org/L10n:Mozilla_Team) to approve your request.
 
-To trigger translations, open a pull request against `localization`. Please be mindful that Mozilla localizers are volunteers, and translations come from different locales at different times – usually after a week or more. It's best to initiate a PR when your strings are more-or-less final. Your PR should be automatically tagged with a reviewer from the [Mozilla L10n team](https://wiki.mozilla.org/L10n:Mozilla_Team) to approve your request.
+You can check translation status via the [Pontoon site](https://pontoon.mozilla.org/projects/firefox-monitor-website/). After strings have been localized, [a pull request](https://github.com/mozilla/blurts-server/pulls?q=is%3Apr+label%3Al10n+) with the updated strings is automatically opened against our repository. Please be mindful that Mozilla localizers are volunteers, and translations come from different locales at different times – usually after a week or more.
 
-After your updates are merged into `localization`, you will start to see commits from Pontoon, Mozilla's localization platform. You can also check translation status via the [Pontoon site](https://pontoon.mozilla.org/projects/firefox-monitor-website/).
-
-When enough translations have been commited, you should merge `localization` into `main`, or back into your feature branch if it's not yet merged to `main`. Note it's unlikely to have 100% of locales translated. You might discuss with stakeholders which locales are priority.
-
-**Important:** Do not use "Squash" or "Rebase" to merge `localization` into `main` or vice versa. Doing so creates new commit hashes and the branches will appear out of sync.
-
-_**TODO:** explore means to auto-sync `localization` with `main`_
+To use the strings in code, you need to obtain a `ReactLocalization` instance, which selects the right version of your desired string for the user. How to do that depends on where your code runs: in tests, in a cron job, in a server component, or on the client-side. Generally, you will import a `getL10n` function from one of the modules in `/src/app/functions/l10n/`, except for [Client Components](https://nextjs.org/docs/app/building-your-application/rendering/client-components), which use [the `useL10n` hook](./src/app/hooks/l10n.ts). Look at existing code for inspiration.
 
 ## Preview Deployment
 

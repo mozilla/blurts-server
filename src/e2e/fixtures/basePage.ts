@@ -11,6 +11,8 @@ import { SettingsPage } from "../pages/settingsPage.js";
 import { ScanPage } from "../pages/scanPage.js";
 import { PurchasePage } from "../pages/purchasePage.js";
 import { WelcomePage } from "../pages/welcomeScanPage.js";
+import { DataBrokersPage } from "../pages/dataBrokersPage.js";
+import { AutomaticRemovePage } from "../pages/automaticRemovePage.js";
 
 const test = base.extend<{
   landingPage: LandingPage;
@@ -21,6 +23,8 @@ const test = base.extend<{
   scanPage: ScanPage;
   purchasePage: PurchasePage;
   welcomePage: WelcomePage;
+  dataBrokersPage: DataBrokersPage;
+  automaticRemovePage: AutomaticRemovePage;
 }>({
   authPage: async ({ page }, use) => {
     await use(new AuthPage(page));
@@ -45,6 +49,12 @@ const test = base.extend<{
   },
   welcomePage: async ({ page }, use) => {
     await use(new WelcomePage(page));
+  },
+  dataBrokersPage: async ({ page }, use) => {
+    await use(new DataBrokersPage(page));
+  },
+  automaticRemovePage: async ({ page }, use) => {
+    await use(new AutomaticRemovePage(page));
   },
 });
 

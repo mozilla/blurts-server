@@ -74,9 +74,11 @@ test('EmailUtils.sendEmail with recipient, subject, template, context calls gTra
     { breach: 'Test' }
   ]
 
+  const sendMailInfo = { messageId: 'test id', response: 'test response' }
+
   const mockedTransporter = {
     verify: jest.fn(() => Promise.resolve('verified')),
-    sendMail: jest.fn((_options) => Promise.resolve('sent')),
+    sendMail: jest.fn((_options) => Promise.resolve(sendMailInfo)),
     transporter: { name: 'MockTransporter' },
   };
   mockedNodemailer.createTransport.mockReturnValueOnce(mockedTransporter);
@@ -84,10 +86,9 @@ test('EmailUtils.sendEmail with recipient, subject, template, context calls gTra
   const result = await initEmail(testSmtpUrl)
   expect(result).toBe("verified");
 
-  expect(await sendEmail(...sendMailArgs)).toBe("sent")
+  expect(await sendEmail(...sendMailArgs)).toBe(sendMailInfo)
   expect(mockedConsoleInfo).toHaveBeenCalledWith(
-    'sent_email',
-    {info: 'sent'},
+    'sent_email', sendMailInfo
   );
 })
 
@@ -126,7 +127,7 @@ test('EmailUtils.init with empty host uses jsonTransport. logs messages', async 
     { html: '<html>test</html>' },
     { breach: 'Test' }
   ]
-  const sendMailInfo = { message: 'sent' }
+  const sendMailInfo = { messageId: 'test id', response: 'test response' }
 
   const mockedTransporter = {
     verify: jest.fn(() => Promise.resolve('verified')),
@@ -138,8 +139,7 @@ test('EmailUtils.init with empty host uses jsonTransport. logs messages', async 
   expect(await initEmail('smtps://test:test@test:1')).toBe('verified')
   expect(await sendEmail(...sendMailArgs)).toBe(sendMailInfo)
   expect(mockedConsoleInfo).toHaveBeenCalledWith(
-    'sent_email',
-    {info: { 'message': 'sent'} }
+    'sent_email', sendMailInfo
   );
 })
 

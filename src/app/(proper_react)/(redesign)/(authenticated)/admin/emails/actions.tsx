@@ -109,7 +109,7 @@ export async function triggerMonthlyActivity(emailAddress: string) {
 
   await send(
     emailAddress,
-    l10n.getString("email-monthly-plus-manual-subject", {
+    l10n.getString("email-monthly-plus-auto-subject", {
       month: dateFormatter.format(new Date(Date.now())),
     }),
     <MonthlyActivityEmail
