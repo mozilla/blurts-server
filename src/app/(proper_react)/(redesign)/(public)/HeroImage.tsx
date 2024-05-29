@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { SVGProps } from "react";
+import styles from "./HeroImage.module.scss";
 import { ExtendedReactLocalization } from "../../../functions/l10n";
 
 export const HeroImageAll = ({
@@ -16,7 +17,7 @@ export const HeroImageAll = ({
       fill="none"
       viewBox="0 0 514 640"
       role="img"
-      style={{ userSelect: "none" }}
+      className={styles.preventUserSelection}
       {...svgProps}
     >
       <g clipPath="url(#clip0_1942_12276)">
@@ -67,7 +68,7 @@ export const HeroImageAll = ({
         ></path>
         <text
           fill="#000"
-          style={{ whiteSpace: "pre" }}
+          className={styles.preserveWhitespace}
           fontFamily="var(--font-metropolis)"
           fontSize="29.225"
           fontWeight="bold"
@@ -79,7 +80,7 @@ export const HeroImageAll = ({
         </text>
         <text
           fill="#000"
-          style={{ whiteSpace: "pre" }}
+          className={styles.preserveWhitespace}
           fontFamily="var(--font-metropolis)"
           fontSize="29.225"
           letterSpacing="-0.626"
@@ -100,7 +101,7 @@ export const HeroImageAll = ({
         ></path>
         <text
           fill="#6D6D6E"
-          style={{ whiteSpace: "pre" }}
+          className={styles.preserveWhitespace}
           fontFamily="var(--font-inter)"
           fontSize="16.344"
           letterSpacing="0"
@@ -119,7 +120,7 @@ export const HeroImageAll = ({
         ></rect>
         <text
           fill="#6D6D6E"
-          style={{ whiteSpace: "pre" }}
+          className={styles.preserveWhitespace}
           fontFamily="var(--font-inter)"
           fontSize="16.344"
           letterSpacing="0"
@@ -130,7 +131,7 @@ export const HeroImageAll = ({
         </text>
         <text
           fill="#6D6D6E"
-          style={{ whiteSpace: "pre" }}
+          className={styles.preserveWhitespace}
           fontFamily="var(--font-inter)"
           fontSize="16.344"
           letterSpacing="0"
@@ -149,7 +150,7 @@ export const HeroImageAll = ({
         ></rect>
         <text
           fill="#6D6D6E"
-          style={{ whiteSpace: "pre" }}
+          className={styles.preserveWhitespace}
           fontFamily="var(--font-inter)"
           fontSize="16.344"
           letterSpacing="0"
@@ -160,7 +161,7 @@ export const HeroImageAll = ({
         </text>
         <text
           fill="#6D6D6E"
-          style={{ whiteSpace: "pre" }}
+          className={styles.preserveWhitespace}
           fontFamily="var(--font-inter)"
           fontSize="16.344"
           letterSpacing="0"
@@ -179,7 +180,7 @@ export const HeroImageAll = ({
         ></rect>
         <text
           fill="#6D6D6E"
-          style={{ whiteSpace: "pre" }}
+          className={styles.preserveWhitespace}
           fontFamily="var(--font-inter)"
           fontSize="16.344"
           letterSpacing="0"
@@ -190,7 +191,7 @@ export const HeroImageAll = ({
         </text>
         <text
           fill="#6D6D6E"
-          style={{ whiteSpace: "pre" }}
+          className={styles.preserveWhitespace}
           fontFamily="var(--font-inter)"
           fontSize="16.344"
           letterSpacing="0"
@@ -209,7 +210,7 @@ export const HeroImageAll = ({
         ></rect>
         <text
           fill="#6D6D6E"
-          style={{ whiteSpace: "pre" }}
+          className={styles.preserveWhitespace}
           fontFamily="var(--font-inter)"
           fontSize="16.344"
           letterSpacing="0"
@@ -220,7 +221,7 @@ export const HeroImageAll = ({
         </text>
         <text
           fill="#6D6D6E"
-          style={{ whiteSpace: "pre" }}
+          className={styles.preserveWhitespace}
           fontFamily="var(--font-inter)"
           fontSize="16.344"
           letterSpacing="0"
@@ -231,7 +232,7 @@ export const HeroImageAll = ({
         </text>
         <text
           fill="#6D6D6E"
-          style={{ whiteSpace: "pre" }}
+          className={styles.preserveWhitespace}
           fontFamily="var(--font-inter)"
           fontSize="16.344"
           letterSpacing="0"
@@ -279,7 +280,7 @@ export const HeroImageAll = ({
         <circle cx="250.703" cy="326.247" r="96.53" fill="#fff"></circle>
         <text
           fill="#2A2A2A"
-          style={{ whiteSpace: "pre" }}
+          className={styles.preserveWhitespace}
           fontFamily="var(--font-inter)"
           fontSize="50.847"
           fontWeight="600"
@@ -291,7 +292,7 @@ export const HeroImageAll = ({
         </text>
         <text
           fill="#5B5B5B"
-          style={{ whiteSpace: "pre", width: "100%", textAnchor: "middle" }}
+          className={styles.chartLabel}
           fontFamily="var(--font-inter)"
           fontSize="20"
           fontWeight="500"
@@ -414,7 +415,7 @@ export const HeroImagePremium = ({
       fill="none"
       viewBox="0 0 475 622"
       role="img"
-      style={{ userSelect: "none" }}
+      className={styles.preventUserSelection}
       {...svgProps}
     >
       <mask id="path-1-inside-1_1942_12539" fill="#fff">
@@ -464,7 +465,7 @@ export const HeroImagePremium = ({
       ></path>
       <text
         fill="#000"
-        style={{ whiteSpace: "pre" }}
+        className={styles.preserveWhitespace}
         fontFamily="var(--font-metropolis)"
         fontSize="29.225"
         fontWeight="bold"
@@ -476,7 +477,7 @@ export const HeroImagePremium = ({
       </text>
       <text
         fill="#000"
-        style={{ whiteSpace: "pre" }}
+        className={styles.preserveWhitespace}
         fontFamily="var(--font-metropolis)"
         fontSize="29.225"
         letterSpacing="-0.626"
@@ -497,7 +498,7 @@ export const HeroImagePremium = ({
       ></path>
       <text
         fill="#6D6D6E"
-        style={{ whiteSpace: "pre" }}
+        className={styles.preserveWhitespace}
         fontFamily="var(--font-inter)"
         fontSize="16.344"
         letterSpacing="0"
@@ -516,7 +517,7 @@ export const HeroImagePremium = ({
       ></rect>
       <text
         fill="#6D6D6E"
-        style={{ whiteSpace: "pre" }}
+        className={styles.preserveWhitespace}
         fontFamily="var(--font-inter)"
         fontSize="16.344"
         letterSpacing="0"
@@ -527,7 +528,7 @@ export const HeroImagePremium = ({
       </text>
       <text
         fill="#6D6D6E"
-        style={{ whiteSpace: "pre" }}
+        className={styles.preserveWhitespace}
         fontFamily="var(--font-inter)"
         fontSize="16.344"
         letterSpacing="0"
@@ -546,7 +547,7 @@ export const HeroImagePremium = ({
       ></rect>
       <text
         fill="#6D6D6E"
-        style={{ whiteSpace: "pre" }}
+        className={styles.preserveWhitespace}
         fontFamily="var(--font-inter)"
         fontSize="16.344"
         letterSpacing="0"
@@ -557,7 +558,7 @@ export const HeroImagePremium = ({
       </text>
       <text
         fill="#6D6D6E"
-        style={{ whiteSpace: "pre" }}
+        className={styles.preserveWhitespace}
         fontFamily="var(--font-inter)"
         fontSize="16.344"
         letterSpacing="0"
@@ -576,7 +577,7 @@ export const HeroImagePremium = ({
       ></rect>
       <text
         fill="#6D6D6E"
-        style={{ whiteSpace: "pre" }}
+        className={styles.preserveWhitespace}
         fontFamily="var(--font-inter)"
         fontSize="16.344"
         letterSpacing="0"
@@ -587,7 +588,7 @@ export const HeroImagePremium = ({
       </text>
       <text
         fill="#6D6D6E"
-        style={{ whiteSpace: "pre" }}
+        className={styles.preserveWhitespace}
         fontFamily="var(--font-inter)"
         fontSize="16.344"
         letterSpacing="0"
@@ -606,7 +607,7 @@ export const HeroImagePremium = ({
       ></rect>
       <text
         fill="#6D6D6E"
-        style={{ whiteSpace: "pre" }}
+        className={styles.preserveWhitespace}
         fontFamily="var(--font-inter)"
         fontSize="16.344"
         letterSpacing="0"
@@ -617,7 +618,7 @@ export const HeroImagePremium = ({
       </text>
       <text
         fill="#6D6D6E"
-        style={{ whiteSpace: "pre" }}
+        className={styles.preserveWhitespace}
         fontFamily="var(--font-inter)"
         fontSize="16.344"
         letterSpacing="0"
@@ -628,7 +629,7 @@ export const HeroImagePremium = ({
       </text>
       <text
         fill="#6D6D6E"
-        style={{ whiteSpace: "pre" }}
+        className={styles.preserveWhitespace}
         fontFamily="var(--font-inter)"
         fontSize="16.344"
         letterSpacing="0"
@@ -676,7 +677,7 @@ export const HeroImagePremium = ({
       <circle cx="231.703" cy="307.247" r="96.53" fill="#fff"></circle>
       <text
         fill="#2A2A2A"
-        style={{ whiteSpace: "pre" }}
+        className={styles.preserveWhitespace}
         fontFamily="var(--font-inter)"
         fontSize="50.847"
         fontWeight="600"
@@ -688,7 +689,7 @@ export const HeroImagePremium = ({
       </text>
       <text
         fill="#5B5B5B"
-        style={{ whiteSpace: "pre" }}
+        className={styles.preserveWhitespace}
         fontFamily="var(--font-inter)"
         fontSize="20"
         fontWeight="500"
