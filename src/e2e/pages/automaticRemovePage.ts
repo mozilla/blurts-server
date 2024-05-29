@@ -43,8 +43,8 @@ export class AutomaticRemovePage {
       "Alerts when your data has been breached",
     ];
 
-    this.xButton = page.locator('[aria-label="Return to dashboard"]');
-    this.forwardArrowButton = page.locator('[aria-label="Go to next step"]');
+    this.xButton = page.getByLabel("Return to dashboard");
+    this.forwardArrowButton = page.getByLabel("Go to next step");
     this.subplatButton = page.locator("div > strong + span + a");
   }
 

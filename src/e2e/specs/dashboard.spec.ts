@@ -477,21 +477,17 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card`
       await automaticRemovePage.forwardArrowButton.click();
       await page.waitForURL(breachOrDashboard(currentUrl));
       const urlToCheck = page.url();
-      const check0 = urlToCheck.includes(breachString0);
-      const check1 = urlToCheck.includes(breachString1);
-      const check2 = urlToCheck.includes(breachString2);
-      const pageHasValidURL = check0 || check1 || check2;
-      return pageHasValidURL;
+      const breachStringRE = new RegExp(
+        `.*(${[breachString0, breachString1, breachString2].join("|")}).*`,
+      );
+      return breachStringRE.test(urlToCheck);
     };
 
     let iter = 0;
     while (await checkBreachLink()) iter++;
     const visitedBreachPages = iter !== 0;
     const exposuresExist = exposuresCount !== 0;
-    //The logic is XNOR (iff) which reduces to equality
-    const visitBreachesIFFExposuresExist =
-      visitedBreachPages === exposuresExist;
-    expect(visitBreachesIFFExposuresExist);
+    expect(visitedBreachPages).toBe(exposuresExist);
 
     //price&plan toggle checks
     await automaticRemovePage.open();
@@ -502,7 +498,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card`
       await expect(toggleButton).toBeVisible();
       await toggleButton.click();
       const toggleText = await toggleButton.textContent();
-      expect(toggleText).toBeTruthy();
+      expect(toggleText).not.toBeNull();
       await automaticRemovePage.subplatButton.click();
       await page.waitForURL(subplatRegex);
       return page.url();
@@ -514,8 +510,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card`
     const subplat1 = await checkToggleButtonWorks(
       automaticRemovePage.planToggle1,
     );
-    const subplatLinksAreDifferent = subplat0 !== subplat1;
-    expect(subplatLinksAreDifferent).toBeTruthy();
+    expect(subplat0).not.toBe(subplat1);
   });
 });
 
