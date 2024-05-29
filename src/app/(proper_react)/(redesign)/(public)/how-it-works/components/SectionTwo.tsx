@@ -5,7 +5,7 @@
 import Image from "next/image";
 import { signIn } from "next-auth/react";
 import { Props } from "../HowItWorksView";
-import { Button } from "../../../../../components/client/Button";
+import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
 import { Resolve } from "../images";
 import styles from "../HowItWorksView.module.scss";
 
@@ -29,14 +29,21 @@ export const SectionTwo = (props: Props) => {
         <div className={styles.introCTA}>
           <h3>{l10n.getString("section-2-intro-text-2")}</h3>
           <div className={styles.sectionCTAButton}>
-            <Button
+            <TelemetryButton
               variant="primary"
               onPress={() => {
                 void signIn("fxa");
               }}
+              event={{
+                module: "ctaButton",
+                name: "click",
+                data: {
+                  button_id: "free_scan_first",
+                },
+              }}
             >
               {l10n.getString("section-2-intro-cta-button")}
-            </Button>
+            </TelemetryButton>
           </div>
         </div>
       </div>
@@ -89,14 +96,21 @@ export const SectionTwo = (props: Props) => {
         />
       </div>
       <div className={styles.sectionCTAButton}>
-        <Button
+        <TelemetryButton
           variant="primary"
           onPress={() => {
             void signIn("fxa");
           }}
+          event={{
+            module: "ctaButton",
+            name: "click",
+            data: {
+              button_id: "free_scan_second",
+            },
+          }}
         >
           {l10n.getString("section-2-cta-button")}
-        </Button>
+        </TelemetryButton>
       </div>
     </div>
   );

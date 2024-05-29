@@ -4,7 +4,6 @@
 
 import Image from "next/image";
 import { Props } from "../HowItWorksView";
-import { Button } from "../../../../../components/client/Button";
 import {
   RemoveStep1,
   RemoveStep2,
@@ -14,6 +13,7 @@ import {
   DOBIcon,
 } from "../images";
 import styles from "../HowItWorksView.module.scss";
+import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
 
 export const SectionOne = (props: Props) => {
   const { l10n } = props;
@@ -38,12 +38,19 @@ export const SectionOne = (props: Props) => {
         <div className={styles.introCTA}>
           <h3>{l10n.getString("section-1-intro-text-2")}</h3>
           <div className={styles.sectionCTAButton}>
-            <Button
+            <TelemetryButton
               variant="primary"
               href="https://accounts.firefox.com/subscriptions/products/prod_OiV9RSaatywSRy?plan=price_1Nv4ODJNcmPzuWtRoYpoFHXd"
+              event={{
+                module: "ctaButton",
+                name: "click",
+                data: {
+                  button_id: "intent_to_purchase_first",
+                },
+              }}
             >
               {l10n.getString("section-1-intro-cta-button")}
-            </Button>
+            </TelemetryButton>
           </div>
         </div>
       </div>
@@ -129,12 +136,19 @@ export const SectionOne = (props: Props) => {
         <Image src={RemoveStep3} alt="step 3 screenshot" />
       </div>
       <div className={styles.sectionCTAButton}>
-        <Button
+        <TelemetryButton
           variant="primary"
           href="https://accounts.firefox.com/subscriptions/products/prod_OiV9RSaatywSRy?plan=price_1Nv4ODJNcmPzuWtRoYpoFHXd"
+          event={{
+            module: "ctaButton",
+            name: "click",
+            data: {
+              button_id: "intent_to_purchase_second",
+            },
+          }}
         >
           {l10n.getString("section-1-intro-cta-button")}
-        </Button>
+        </TelemetryButton>
       </div>
     </div>
   );
