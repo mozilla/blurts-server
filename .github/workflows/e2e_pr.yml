@@ -44,12 +44,10 @@ jobs:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/blurts
       - name: Store Playwright's Version
         run: |
-          # The regular expression matches everything containing
-          # `<number>.<number>.<number>`, and returns only that bit:
-          PLAYWRIGHT_VERSION=$(npm ls @playwright/test | grep @playwright | sed --regexp-extended 's/.*([0-9]+\.[0-9]+\.[0-9]+).*/\1/') | head -1
-          echo "Playwright's Version: $PLAYWRIGHT_VERSION"
+          # Get the current Playwright version listed in package.json
+          PLAYWRIGHT_VERSION=$(npm view @playwright/test version)
+          echo "Playwright Version: $PLAYWRIGHT_VERSION"
           echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
-
 
       - name: Cache Playwright Browsers for Playwright's Version
         id: cache-playwright-browsers
