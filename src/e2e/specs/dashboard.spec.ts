@@ -487,7 +487,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card`
     while (await checkBreachLink()) iter++;
     const visitedBreachPages = iter !== 0;
     const exposuresExist = exposuresCount !== 0;
-    //The logic is XNOR (iff) which reduces to equality
     expect(visitedBreachPages).toBe(exposuresExist);
 
     //price&plan toggle checks
