@@ -22,7 +22,7 @@ export type AutomaticRemovalVariation = {
 
 const surveyData: SurveyData = {
   id: "survey-csat",
-  experimentId: "CsatSurvey",
+  experimentId: "AutomaticRemovalCsatSurvey",
   variations: [
     {
       id: "initial",
@@ -96,13 +96,15 @@ const getAutomaticRemovalCsatSurvey = (
     surveys &&
     surveys.findLast((surveyVariation) => {
       const survey = surveyVariation.survey as AutomaticRemovalVariation;
+      // Show the initial survey only to users who have automatically fixed
+      // data broker results.
+      if (survey?.id === "initial" && !props.hasAutoFixedDataBrokers) {
+        return;
+      }
+
       return (
         typeof props.elapsedTimeInDaysSinceInitialScan !== "undefined" &&
-        props.elapsedTimeInDaysSinceInitialScan >= survey.daysThreshold &&
-        // Show the initial survey only to users who have automatically fixed
-        // data broker results.
-        survey.id === "initial" &&
-        props.hasAutoFixedDataBrokers
+        props.elapsedTimeInDaysSinceInitialScan >= survey.daysThreshold
       );
     });
   return relevantSurvey ?? null;

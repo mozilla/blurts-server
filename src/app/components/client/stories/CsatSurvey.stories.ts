@@ -5,6 +5,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { CsatSurvey } from "../csat_survey/CsatSurvey";
+import { createUserWithPremiumSubscription } from "../../../../apiMocks/mockData";
 
 const meta: Meta<typeof CsatSurvey> = {
   title: "CsatSurvey",
@@ -13,10 +14,13 @@ const meta: Meta<typeof CsatSurvey> = {
 export default meta;
 type Story = StoryObj<typeof CsatSurvey>;
 
-export const CsatSurveyBanner: Story = {
+export const CsatSurveyDefault: Story = {
   name: "CsatSurvey",
   args: {
-    elapsedTimeInDaysSinceInitialScan: 0,
+    activeTab: "fixed",
+    user: createUserWithPremiumSubscription(),
+    enabledFeatureFlags: ["AutomaticRemovalCsatSurvey"],
     hasAutoFixedDataBrokers: true,
+    elapsedTimeInDaysSinceInitialScan: 0,
   },
 };

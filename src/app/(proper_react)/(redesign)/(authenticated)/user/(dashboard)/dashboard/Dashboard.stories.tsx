@@ -18,6 +18,7 @@ import { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scan
 import { CountryCodeProvider } from "../../../../../../../contextProviders/country-code";
 import { SessionProvider } from "../../../../../../../contextProviders/session";
 import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
+import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 
 const brokerOptions = {
   "no-scan": "No scan started",
@@ -47,6 +48,7 @@ type DashboardWrapperProps = (
   elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
   activeTab?: TabType;
+  enabledFeatureFlags?: FeatureFlagName[];
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
@@ -184,7 +186,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             userScanData={scanData}
             isEligibleForPremium={props.countryCode === "us"}
             isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
-            enabledFeatureFlags={["CsatSurvey"]}
+            enabledFeatureFlags={props.enabledFeatureFlags ?? []}
             monthlySubscriptionUrl=""
             yearlySubscriptionUrl=""
             fxaSettingsUrl=""
