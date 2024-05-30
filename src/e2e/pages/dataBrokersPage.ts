@@ -7,10 +7,12 @@ import { Locator, Page } from "@playwright/test";
 export class DataBrokersPage {
   readonly page: Page;
   readonly removeThemForMeButton: Locator;
+  readonly xButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.removeThemForMeButton = page.getByText("Remove them for me");
+    this.xButton = page.getByLabel("Return to dashboard");
   }
 
   async open() {
