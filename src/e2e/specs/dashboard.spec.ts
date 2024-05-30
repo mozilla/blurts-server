@@ -5,7 +5,13 @@
 import { Locator } from "@playwright/test";
 import { test, expect } from "../fixtures/basePage.js";
 import { DashboardPage } from "../pages/dashBoardPage.js";
-import { checkAuthState, removeUnicodeChars } from "../utils/helpers.js";
+import {
+  checkAuthState,
+  removeUnicodeChars,
+  clickOnATagCheckDomain,
+  escapeRegExp,
+  forceLoginAs,
+} from "../utils/helpers.js";
 
 // bypass login
 test.use({ storageState: "./e2e/storageState.json" });
@@ -126,6 +132,93 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
     await expect(dashboardPage.aboutFixedExposuresPopup).toBeVisible();
     await dashboardPage.popupCloseButton.click();
     await expect(dashboardPage.aboutFixedExposuresPopup).toBeHidden();
+  });
+
+  test("Verify that the Apps and Services header options work correctly.", async ({
+    dashboardPage,
+    page,
+  }) => {
+    // link to testrail
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463569",
+    });
+
+    await dashboardPage.fixedTab.click();
+    expect(page.url()).toMatch(/.*dashboard\/fixed\/?/);
+    await dashboardPage.actionNeededTab.click();
+    expect(page.url()).toMatch(/.*dashboard\/action-needed\/?/);
+
+    //apps and services button check
+    const clickOnLinkAndGoBack = async (
+      aTag: Locator,
+      host: string | RegExp = /.*/,
+      path: string | RegExp = /.*/,
+    ) => {
+      await expect(dashboardPage.appsAndServices).toBeVisible();
+      await dashboardPage.appsAndServices.click();
+      await expect(dashboardPage.appsAndServicesMenu).toBeVisible();
+      await clickOnATagCheckDomain(aTag, host, path, page);
+    };
+
+    await clickOnLinkAndGoBack(
+      dashboardPage.servicesVpn,
+      "www.mozilla.org",
+      /.*\/products\/vpn\/?.*/,
+    );
+    await clickOnLinkAndGoBack(
+      dashboardPage.servicesRelay,
+      "relay.firefox.com",
+    );
+    await clickOnLinkAndGoBack(
+      dashboardPage.servicesPocket,
+      /getpocket\.com|apps\.apple\.com|app\.adjust\.com/,
+      /.*(\/pocket-and-firefox\/?).*|.*about.*|.*pocket-stay-informed.*/,
+    );
+    await clickOnLinkAndGoBack(
+      dashboardPage.servicesFirefoxDesktop,
+      "www.mozilla.org",
+      /.*\/firefox\/new\/?.*/,
+    );
+    await clickOnLinkAndGoBack(
+      dashboardPage.servicesFirefoxMobile,
+      "www.mozilla.org",
+      /.*\/browsers\/mobile\/?.*/,
+    );
+    await clickOnLinkAndGoBack(
+      dashboardPage.servicesMozilla,
+      "www.mozilla.org",
+    );
+
+    const openProfileMenuItem = async (what: Locator, whatUrl: RegExp) => {
+      await dashboardPage.open();
+      await dashboardPage.profileButton.click();
+      await expect(what).toBeVisible();
+      if (await what.evaluate((e) => e.hasAttribute("href"))) {
+        const href = await what.getAttribute("href");
+        expect(href).not.toBeNull();
+        await page.goto(href!);
+      } else {
+        await what.click();
+      }
+      await page.waitForURL(whatUrl);
+    };
+
+    await openProfileMenuItem(
+      dashboardPage.manageProfile,
+      /.*accounts.*settings.*/,
+    );
+    await openProfileMenuItem(
+      dashboardPage.profileSettings,
+      /.*\/user\/settings.*/,
+    );
+
+    expect(process.env["E2E_TEST_BASE_URL"]).toBeTruthy();
+    await openProfileMenuItem(
+      dashboardPage.profileSignOut,
+      new RegExp(process.env["E2E_TEST_BASE_URL"]!),
+    );
   });
 });
 
@@ -450,10 +543,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card`
     await automaticRemovePage.open();
     await expect(automaticRemovePage.forwardArrowButton).toBeVisible();
 
-    const escapeRegExp = (str: string): string => {
-      return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    };
-
     const breachString0 = "high-risk-data-breaches";
     const breachString1 = "leaked-passwords";
     const breachString2 = "security-recommendations";
@@ -535,26 +624,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Footer`, () =>
         "https://testrail.stage.mozaws.net/index.php?/cases/view/2463570",
     });
 
-    const clickOnATagCheckDomain = async (
-      aTag: Locator,
-      host: string,
-      path: string | RegExp = /.*/,
-    ) => {
-      if (typeof path === "string") path = new RegExp(".*" + path + ".*");
-      host = host.replace(/^(https?:\/\/)/, "");
-
-      const href = await aTag.getAttribute("href");
-      if (href === null) return false;
-
-      await page.goto(href);
-      const currentUrl = new URL(page.url());
-      const perceivedHost = currentUrl.hostname;
-      const perceivedPath = currentUrl.pathname;
-      expect(perceivedHost).toBe(host);
-      expect(path.test(perceivedPath)).toBeTruthy();
-      await page.goBack();
-    };
-
     expect(process.env["E2E_TEST_BASE_URL"]).toBeTruthy();
     const baseUrl = process.env["E2E_TEST_BASE_URL"]!;
     await dashboardPage.goToDashboard();
@@ -563,31 +632,37 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Footer`, () =>
       dashboardPage.mozillaLogoFooter,
       "www.mozilla.org",
       /^(\/en-US\/)?$/,
+      page,
     );
     await clickOnATagCheckDomain(
       dashboardPage.allBreachesFooter,
       baseUrl,
       "/breaches",
+      page,
     );
     await clickOnATagCheckDomain(
       dashboardPage.faqsFooter,
       "support.mozilla.org",
       /.*\/kb.*\/mozilla-monitor-faq.*/,
+      page,
     );
     await clickOnATagCheckDomain(
       dashboardPage.termsOfServiceFooter,
       "www.mozilla.org",
       "/about/legal/terms/subscription-services/",
+      page,
     );
     await clickOnATagCheckDomain(
       dashboardPage.privacyNoticeFooter,
       "www.mozilla.org",
       "/privacy/subscription-services/",
+      page,
     );
     await clickOnATagCheckDomain(
       dashboardPage.githubFooter,
       "github.com",
       "/mozilla/blurts-server",
+      page,
     );
   });
 });
@@ -645,31 +720,13 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation`, (
 
 test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`, () => {
   test.beforeEach(async ({ landingPage, page, authPage }) => {
-    test.slow(
-      true,
-      "this test runs through the welcome scan flow, increasing timeout to address it",
+    await forceLoginAs(
+      "joe@mailinator.com",
+      "TestPass1234",
+      page,
+      landingPage,
+      authPage,
     );
-
-    // speed up test by ignoring non necessary requests
-    await page.route(/(analytics)/, async (route) => {
-      await route.abort();
-    });
-    await page.context().clearCookies();
-    await landingPage.open();
-    await landingPage.goToSignIn();
-    let visible = true;
-    try {
-      await expect(authPage.useDifferentEmailButton).toBeVisible();
-    } catch {
-      visible = false;
-    }
-    if (visible) {
-      await authPage.useDifferentEmailButton.click();
-      await page.waitForURL(/^(?!.*signin).*/);
-    }
-    await authPage.signIn("joe@mailinator.com", "TestPass1234");
-    await page.waitForURL("**/user/dashboard");
-    expect(page.url()).toContain("/user/dashboard");
   });
 
   test("Verify that the High risk data breaches step is displayed correctly", async ({
@@ -691,9 +748,12 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`
     await dataBrokersPage.forwardArrowButton.click();
     await page.waitForURL(/.*\/high-risk-data-breaches.*/);
     const highRiskDataBreachLi = page.locator(
-      "//li[div[text()='High risk data breaches']]",
+      'li:has(div:has-text("High risk data breaches"))',
     );
     await expect(highRiskDataBreachLi).toBeVisible();
     await expect(highRiskDataBreachLi).toHaveAttribute("aria-current", "step");
+    await expect(
+      highRiskDataBreachLi.locator("div").getByText("High risk data breaches"),
+    ).toBeVisible();
   });
 });
