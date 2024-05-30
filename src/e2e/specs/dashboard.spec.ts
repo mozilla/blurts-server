@@ -191,7 +191,10 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
       "www.mozilla.org",
     );
 
-    const openProfileMenuItem = async (what: Locator, whatUrl: RegExp) => {
+    const openProfileMenuItem = async (
+      what: Locator,
+      whatUrl: string | RegExp,
+    ) => {
       await dashboardPage.open();
       await dashboardPage.profileButton.click();
       await expect(what).toBeVisible();
@@ -214,11 +217,9 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
       /.*\/user\/settings.*/,
     );
 
-    expect(process.env["E2E_TEST_BASE_URL"]).toBeTruthy();
-    await openProfileMenuItem(
-      dashboardPage.profileSignOut,
-      new RegExp(process.env["E2E_TEST_BASE_URL"]!),
-    );
+    const base_url = process.env["E2E_TEST_BASE_URL"];
+    expect(base_url).toBeTruthy();
+    await openProfileMenuItem(dashboardPage.profileSignOut, base_url!);
   });
 });
 
@@ -740,7 +741,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`
         "https://testrail.stage.mozaws.net/index.php?/cases/view/2463592",
     });
 
-    await dashboardPage.open();
     await expect(dashboardPage.upsellScreenButton).toBeVisible();
     await dashboardPage.upsellScreenButton.click();
     await page.waitForURL(/.*\/data-broker-profiles\/view-data-brokers\/?/);
