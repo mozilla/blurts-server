@@ -510,9 +510,6 @@ export const AvatarIcon = (
       />
       <mask
         id="mask0_328_1696"
-        style={{
-          maskType: "luminance",
-        }}
         maskUnits="userSpaceOnUse"
         x={0}
         y={0}

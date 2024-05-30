@@ -24,7 +24,6 @@ import { TelemetryLink } from "../TelemetryLink";
 export type ScanResultCardProps = {
   scanResult: OnerepScanResultRow;
   locale: string;
-  isPremiumBrokerRemovalEnabled: boolean;
   resolutionCta: ReactNode;
   isPremiumUser: boolean;
   isExpanded: boolean;
@@ -33,7 +32,7 @@ export type ScanResultCardProps = {
 };
 
 export const ScanResultCard = (props: ScanResultCardProps) => {
-  const { scanResult, locale, isPremiumBrokerRemovalEnabled } = props;
+  const { scanResult, locale } = props;
   const l10n = useL10n();
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
@@ -277,12 +276,13 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
                 ))}
               </div>
             </div>
-            {isPremiumBrokerRemovalEnabled &&
-            // Verifying the status for automatically removed data brokers v. manually resolved are handled differently
-            props.scanResult.status === "new" &&
-            !props.scanResult.manually_resolved ? (
-              <span className={styles.fixItBtn}>{props.resolutionCta}</span>
-            ) : null}
+            {
+              // Verifying the status for automatically removed data brokers v. manually resolved are handled differently
+              props.scanResult.status === "new" &&
+              !props.scanResult.manually_resolved ? (
+                <span className={styles.fixItBtn}>{props.resolutionCta}</span>
+              ) : null
+            }
           </div>
         </div>
       </div>

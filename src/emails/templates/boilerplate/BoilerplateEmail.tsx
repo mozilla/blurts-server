@@ -6,7 +6,6 @@ import { SanitizedSubscriberRow } from "../../../app/functions/server/sanitize";
 import { ExtendedReactLocalization } from "../../../app/functions/l10n";
 import { EmailFooter } from "../EmailFooter";
 import { EmailHeader } from "../EmailHeader";
-import { EmailStyles } from "../EmailStyles";
 
 export type Props = {
   subscriber: SanitizedSubscriberRow;
@@ -41,9 +40,6 @@ export const BoilerplateEmail = (props: Props) => {
 
   return (
     <mjml>
-      <mj-head>
-        <EmailStyles />
-      </mj-head>
       <mj-body>
         <EmailHeader l10n={l10n} utm_campaign={utmCampaign} />
         <mj-section>

@@ -88,7 +88,7 @@ breach-checklist-phone-header-2 = Gerçek telefon numaranızı gizleyen { $firef
 
 breach-checklist-sq-header-text = Güvenlik sorularınızı güncelleyin.
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
-breach-checklist-sq-body-text = Çoğu durumda şirketin web sitesine güvenlik sorularınızı güncellemenizi öneririz. Ancak bazı durumlarda <b>site kapalı olabilir veya kötü amaçlı içerik barındırıyor olabilir</b>. Bu yüzden <breached-company-link>siteyi ziyaret ederken</breached-company-link> dikkatli olun. Ek bir önlem olarak, tüm güvenlik sorularını kullandığınız başka önemli hesaplarınız varsa onları da güncellemeli ve tüm hesaplarınızda birbirinden farklı parolalar kullanmalısınız.
+breach-checklist-sq-body-text = Çoğu durumda şirketin web sitesine girip güvenlik sorularınızı güncellemenizi öneririz. Ancak bazı durumlarda <b>site kapalı olabilir veya kötü amaçlı içerik barındırıyor olabilir</b>. Bu yüzden <breached-company-link>siteyi ziyaret ederken</breached-company-link> dikkatli olun. Ek bir önlem olarak, tüm güvenlik sorularını kullandığınız başka önemli hesaplarınız varsa onları da güncellemeli ve tüm hesaplarınızda birbirinden farklı parolalar kullanmalısınız.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 

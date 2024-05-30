@@ -110,10 +110,7 @@ export default async function DashboardPage({ params }: Props) {
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
   });
-  const userIsEligibleForPremium = isEligibleForPremium(
-    countryCode,
-    enabledFeatureFlags,
-  );
+  const userIsEligibleForPremium = isEligibleForPremium(countryCode);
 
   const experimentationId = getExperimentationId(session.user);
   const experimentData = await getExperiments({
