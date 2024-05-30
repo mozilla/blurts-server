@@ -214,10 +214,11 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
       /.*\/user\/settings.*/,
     );
 
-    expect(process.env["E2E_TEST_BASE_URL"]).toBeTruthy();
+    const baseUrl = process.env["E2E_TEST_BASE_URL"];
+    expect(baseUrl).toBeTruthy();
     await openProfileMenuItem(
       dashboardPage.profileSignOut,
-      new RegExp(process.env["E2E_TEST_BASE_URL"]!),
+      new RegExp(baseUrl!),
     );
   });
 });
