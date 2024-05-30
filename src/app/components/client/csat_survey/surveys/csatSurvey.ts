@@ -16,7 +16,7 @@ const surveyResponses = [
   "very-satisfied",
 ] as const;
 
-export type SurveyResponse = typeof surveyResponses[number];
+export type SurveyResponse = (typeof surveyResponses)[number];
 
 export type SurveyType = "survey-csat" | "survey-csat-latest-scan-date";
 
@@ -63,7 +63,7 @@ export function getRelevantSurveys({
 
   const filteredSurveys = variations.filter((surveyVariation) => {
     const isRelevantUser = surveyVariation.showForUser.includes(
-      hasPremium(user) ? "plus-user" : "free-user"
+      hasPremium(user) ? "plus-user" : "free-user",
     );
     const isRelevantTab = surveyVariation.showOnTab.includes(activeTab);
     return isRelevantUser && isRelevantTab;

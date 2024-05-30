@@ -22,7 +22,7 @@ const surveyResponses = [
   "very-satisfied",
 ] as const;
 
-type SurveyResponse = typeof surveyResponses[number];
+type SurveyResponse = (typeof surveyResponses)[number];
 
 type SurveyLinks = Record<SurveyResponse, string>;
 

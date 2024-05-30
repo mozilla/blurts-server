@@ -27,7 +27,7 @@ const surveyData: SurveyData = {
 };
 
 const getLatestScanDateCsatSurvey = (
-  props: CsatSurveyProps
+  props: CsatSurveyProps,
 ): RelevantSurvey | null => {
   const surveys = getRelevantSurveys({ ...surveyData, ...props });
   return surveys && surveys.length > 0 ? surveys[0] : null;
