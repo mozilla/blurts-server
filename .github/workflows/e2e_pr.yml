@@ -45,7 +45,7 @@ jobs:
       - name: Store Playwright's Version
         run: |
           # Get the current Playwright version listed in package.json
-          PLAYWRIGHT_VERSION=$(npm view @playwright/test version)
+          PLAYWRIGHT_VERSION=$(npx playwright --version | sed 's/Version //')
           echo "Playwright Version: $PLAYWRIGHT_VERSION"
           echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
 
