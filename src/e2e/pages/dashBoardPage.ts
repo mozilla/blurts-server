@@ -75,7 +75,11 @@ export class DashboardPage {
   readonly privacyNoticeFooter: Locator;
   readonly githubFooter: Locator;
 
+  readonly overviewCardSummary: Locator;
+  readonly overviewCardFindings: Locator;
+
   readonly upsellScreenButton: Locator;
+  readonly urlRegex: RegExp;
 
   constructor(page: Page) {
     this.page = page;
@@ -107,6 +111,7 @@ export class DashboardPage {
       .locator('//div[starts-with(@class, "ProgressCard_progressStat_")]/span')
       .first();
 
+    //footer
     this.mozillaLogoFooter = page.locator(
       '//a[starts-with(@class, "Shell_mozillaLink")]',
     );
@@ -223,6 +228,15 @@ export class DashboardPage {
 
     //upsell button
     this.upsellScreenButton = page.getByText(/Let’s (keep going|fix it)/);
+    this.overviewCardSummary = page.locator(
+      "[aria-label='Dashboard summary'] > div > p",
+    );
+    this.overviewCardFindings = page.locator(
+      "[aria-label='Dashboard summary'] > div > h3",
+    );
+
+    //regex
+    this.urlRegex = /\/dashboard\/(fixed|action-needed)\/?/;
   }
 
   dashboardLinks() {
