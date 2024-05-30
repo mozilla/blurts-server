@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { request, Page } from "@playwright/test";
+import { expect, request, Page, Locator } from "@playwright/test";
 import { InternalServerError } from "../../utils/error.js";
 
 enum ENV {
@@ -160,3 +160,29 @@ export function removeUnicodeChars(text: string): string {
   // eslint-disable-next-line no-control-regex
   return text.replace(/[^\x00-\x7F]/g, "");
 }
+
+export const clickOnATagCheckDomain = async (
+  aTag: Locator,
+  host: string | RegExp = /.*/,
+  path: string | RegExp = /.*/,
+  page: Page,
+) => {
+  if (typeof host === "string")
+    host = new RegExp(escapeRegExp(host.replace(/^(https?:\/\/)/, "")));
+  if (typeof path === "string") path = new RegExp(".*" + path + ".*");
+
+  const href = await aTag.getAttribute("href");
+  if (href === null) return false;
+
+  await page.goto(href);
+  const currentUrl = new URL(page.url());
+  const perceivedHost = currentUrl.hostname;
+  const perceivedPath = currentUrl.pathname;
+  expect(host.test(perceivedHost)).toBeTruthy();
+  expect(path.test(perceivedPath)).toBeTruthy();
+  await page.goBack();
+};
+
+export const escapeRegExp = (str: string): string => {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+};

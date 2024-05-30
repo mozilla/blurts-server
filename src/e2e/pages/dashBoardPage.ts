@@ -81,6 +81,15 @@ export class DashboardPage {
   readonly upsellScreenButton: Locator;
   readonly urlRegex: RegExp;
 
+  readonly appsAndServicesButton: Locator;
+  readonly appsAndServicesPopUpDiv: Locator;
+  readonly appsAndServicesVPN: Locator;
+  readonly appsAndServicesRelay: Locator;
+  readonly appsAndServicesPocket: Locator;
+  readonly appsAndServicesFxDesktop: Locator;
+  readonly appsAndServicesFxMobile: Locator;
+  readonly appsAndServicesMozilla: Locator;
+
   constructor(page: Page) {
     this.page = page;
     this.allExposures = page.locator(
@@ -237,6 +246,22 @@ export class DashboardPage {
 
     //regex
     this.urlRegex = /\/dashboard\/(fixed|action-needed)\/?/;
+
+    //Apps & Services
+    this.appsAndServicesButton = page.locator(
+      'button[title*="Mozilla"][title*="apps and services"]',
+    );
+    //This popup is visible only if appsAndServicesButton was clicked before.
+    this.appsAndServicesPopUpDiv = page.locator(
+      "div[class*='AppPicker_popup']",
+    );
+    const aNs = this.appsAndServicesPopUpDiv;
+    this.appsAndServicesVPN = aNs.locator('[data-key="vpn"] > a');
+    this.appsAndServicesRelay = aNs.locator('[data-key="relay"] > a');
+    this.appsAndServicesPocket = aNs.locator('[data-key="pocket"] > a');
+    this.appsAndServicesFxDesktop = aNs.locator('[data-key="fxDesktop"] > a');
+    this.appsAndServicesFxMobile = aNs.locator('[data-key="fxMobile"] > a');
+    this.appsAndServicesMozilla = aNs.locator('[data-key="mozilla"] > a');
   }
 
   dashboardLinks() {
