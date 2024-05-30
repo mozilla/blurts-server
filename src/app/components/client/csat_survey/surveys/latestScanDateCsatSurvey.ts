@@ -30,6 +30,8 @@ const getLatestScanDateCsatSurvey = (
   props: CsatSurveyProps,
 ): RelevantSurvey | null => {
   const surveys = getRelevantSurveys({ ...surveyData, ...props });
+  // In case there are multiple matching survey variations for the current user:
+  // Return the first one.
   return surveys && surveys.length > 0 ? surveys[0] : null;
 };
 

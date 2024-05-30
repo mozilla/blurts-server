@@ -27,6 +27,8 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
     enabledFeatureFlags: props.enabledFeatureFlags,
     user: props.user,
   };
+  // The order of the surveys here matter: If there are multiple matching
+  // surveys for the user we dismiss all surveys, but the last one in the list.
   const surveys = [
     getAutomaticRemovalCsatSurvey({
       ...surveyOptions,
@@ -37,22 +39,14 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
     getLatestScanDateCsatSurvey(surveyOptions),
   ];
 
+  // Filters out previously dismissed surveys so we don’t show them again.
   const cookies = new Cookies(null, { path: "/" });
-  const filteredSurveys = surveys.filter((survey, surveyIndex) => {
+  const filteredSurveys = surveys.filter((survey) => {
     if (!survey) {
       return;
     }
-
-    const isLastSurvey = surveyIndex === surveys.length - 1;
     const cookieDismissalId = `${survey.localDismissalId}_dismissed`;
     const surveyIsDismissed = cookies.get(cookieDismissalId);
-
-    if (!isLastSurvey && !surveyIsDismissed) {
-      cookies.set(cookieDismissalId, Date.now().toString(), {
-        maxAge: COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS,
-      });
-    }
-
     return !surveyIsDismissed;
   });
   const currentSurvey =
@@ -61,6 +55,7 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
     return;
   }
 
+  // Mark all surveys but the current one as automatically dismissed.
   filteredSurveys.forEach((survey) => {
     if (
       survey &&

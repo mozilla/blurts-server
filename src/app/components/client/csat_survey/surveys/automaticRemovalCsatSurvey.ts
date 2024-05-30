@@ -90,6 +90,8 @@ const getAutomaticRemovalCsatSurvey = (
   },
 ): RelevantSurvey | null => {
   const surveys = getRelevantSurveys({ ...surveyData, ...props });
+  // Find the last survey variation that matches the time since the users
+  // automatic removal.
   const relevantSurvey =
     surveys &&
     surveys.findLast((surveyVariation) => {
