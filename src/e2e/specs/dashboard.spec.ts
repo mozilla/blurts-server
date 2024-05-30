@@ -10,6 +10,7 @@ import {
   removeUnicodeChars,
   clickOnATagCheckDomain,
   escapeRegExp,
+  forceLoginAs,
 } from "../utils/helpers.js";
 
 // bypass login
@@ -719,31 +720,13 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation`, (
 
 test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`, () => {
   test.beforeEach(async ({ landingPage, page, authPage }) => {
-    test.slow(
-      true,
-      "this test runs through the welcome scan flow, increasing timeout to address it",
+    await forceLoginAs(
+      "joe@mailinator.com",
+      "TestPass1234",
+      page,
+      landingPage,
+      authPage,
     );
-
-    // speed up test by ignoring non necessary requests
-    await page.route(/(analytics)/, async (route) => {
-      await route.abort();
-    });
-    await page.context().clearCookies();
-    await landingPage.open();
-    await landingPage.goToSignIn();
-    let visible = true;
-    try {
-      await expect(authPage.useDifferentEmailButton).toBeVisible();
-    } catch {
-      visible = false;
-    }
-    if (visible) {
-      await authPage.useDifferentEmailButton.click();
-      await page.waitForURL(/^(?!.*signin).*/);
-    }
-    await authPage.signIn("joe@mailinator.com", "TestPass1234");
-    await page.waitForURL("**/user/dashboard");
-    expect(page.url()).toContain("/user/dashboard");
   });
 
   test("Verify that the High risk data breaches step is displayed correctly", async ({
@@ -765,9 +748,12 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`
     await dataBrokersPage.forwardArrowButton.click();
     await page.waitForURL(/.*\/high-risk-data-breaches.*/);
     const highRiskDataBreachLi = page.locator(
-      "//li[div[text()='High risk data breaches']]",
+      'li:has(div:has-text("High risk data breaches"))',
     );
     await expect(highRiskDataBreachLi).toBeVisible();
     await expect(highRiskDataBreachLi).toHaveAttribute("aria-current", "step");
+    await expect(
+      highRiskDataBreachLi.locator("div").getByText("High risk data breaches"),
+    ).toBeVisible();
   });
 });
