@@ -155,39 +155,68 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
       host: string | RegExp = /.*/,
       path: string | RegExp = /.*/,
     ) => {
-      await expect(dashboardPage.appsAndServicesButton).toBeVisible();
-      await dashboardPage.appsAndServicesButton.click();
-      await expect(dashboardPage.appsAndServicesPopUpDiv).toBeVisible();
+      await expect(dashboardPage.appsAndServices).toBeVisible();
+      await dashboardPage.appsAndServices.click();
+      await expect(dashboardPage.appsAndServicesMenu).toBeVisible();
       await clickOnATagCheckDomain(aTag, host, path, page);
     };
 
     await clickOnLinkAndGoBack(
-      dashboardPage.appsAndServicesVPN,
+      dashboardPage.servicesVpn,
       "www.mozilla.org",
       /.*\/products\/vpn\/?.*/,
     );
     await clickOnLinkAndGoBack(
-      dashboardPage.appsAndServicesRelay,
+      dashboardPage.servicesRelay,
       "relay.firefox.com",
     );
     await clickOnLinkAndGoBack(
-      dashboardPage.appsAndServicesPocket,
+      dashboardPage.servicesPocket,
       /getpocket\.com|apps\.apple\.com|app\.adjust\.com/,
       /.*(\/pocket-and-firefox\/?).*|.*about.*|.*pocket-stay-informed.*/,
     );
     await clickOnLinkAndGoBack(
-      dashboardPage.appsAndServicesFxDesktop,
+      dashboardPage.servicesFirefoxDesktop,
       "www.mozilla.org",
       /.*\/firefox\/new\/?.*/,
     );
     await clickOnLinkAndGoBack(
-      dashboardPage.appsAndServicesFxMobile,
+      dashboardPage.servicesFirefoxMobile,
       "www.mozilla.org",
       /.*\/browsers\/mobile\/?.*/,
     );
     await clickOnLinkAndGoBack(
-      dashboardPage.appsAndServicesMozilla,
+      dashboardPage.servicesMozilla,
       "www.mozilla.org",
+    );
+
+    const openProfileMenuItem = async (what: Locator, whatUrl: RegExp) => {
+      await dashboardPage.open();
+      await dashboardPage.profileButton.click();
+      await expect(what).toBeVisible();
+      if (await what.evaluate((e) => e.hasAttribute("href"))) {
+        const href = await what.getAttribute("href");
+        expect(href).not.toBeNull();
+        await page.goto(href!);
+      } else {
+        await what.click();
+      }
+      await page.waitForURL(whatUrl);
+    };
+
+    await openProfileMenuItem(
+      dashboardPage.manageProfile,
+      /.*accounts.*settings.*/,
+    );
+    await openProfileMenuItem(
+      dashboardPage.profileSettings,
+      /.*\/user\/settings.*/,
+    );
+
+    expect(process.env["E2E_TEST_BASE_URL"]).toBeTruthy();
+    await openProfileMenuItem(
+      dashboardPage.profileSignOut,
+      new RegExp(process.env["E2E_TEST_BASE_URL"]!),
     );
   });
 });

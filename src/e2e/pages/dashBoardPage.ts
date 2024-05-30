@@ -52,7 +52,11 @@ export class DashboardPage {
   readonly servicesPocket: Locator;
   readonly servicesFirefoxDesktop: Locator;
   readonly servicesFirefoxMobile: Locator;
+  readonly servicesMozilla: Locator;
+  readonly appsAndServicesMenu: Locator;
 
+  readonly profileSettings: Locator;
+  readonly profileSignOut: Locator;
   readonly profileEmail: Locator;
   readonly manageProfile: Locator;
   readonly helpAndSupport: Locator;
@@ -80,15 +84,6 @@ export class DashboardPage {
 
   readonly upsellScreenButton: Locator;
   readonly urlRegex: RegExp;
-
-  readonly appsAndServicesButton: Locator;
-  readonly appsAndServicesPopUpDiv: Locator;
-  readonly appsAndServicesVPN: Locator;
-  readonly appsAndServicesRelay: Locator;
-  readonly appsAndServicesPocket: Locator;
-  readonly appsAndServicesFxDesktop: Locator;
-  readonly appsAndServicesFxMobile: Locator;
-  readonly appsAndServicesMozilla: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -144,6 +139,13 @@ export class DashboardPage {
     this.actionNeededTab = page.getByRole("tab", { name: "Action needed" });
     this.fixedTab = page.getByRole("tab", { name: "Fixed" });
     this.profileButton = page.getByTitle("Profile").nth(1);
+
+    this.profileSettings = page.locator(
+      'a[title*="Configure"][title*="Mozilla Monitor"]',
+    );
+    this.profileSignOut = page.locator(
+      'button[title*="Sign out of"][title*="Mozilla Monitor"]',
+    );
     this.profileEmail = page
       .locator('//li[starts-with(@class, "UserMenu_menuItemWrapper")]/b')
       .first();
@@ -155,6 +157,7 @@ export class DashboardPage {
     this.appsAndServices = page.getByRole("button", {
       name: "⁨Mozilla⁩ apps and services",
     });
+    this.appsAndServicesMenu = page.locator("div[class*='AppPicker_popup']");
     this.servicesVpn = page.getByRole("link", { name: "Mozilla VPN" });
     this.servicesRelay = page.getByRole("link", { name: "Firefox Relay" });
     this.servicesPocket = page.getByRole("link", { name: "Pocket" });
@@ -164,6 +167,7 @@ export class DashboardPage {
     this.servicesFirefoxMobile = page.getByRole("link", {
       name: "⁨Firefox⁩ for Mobile",
     });
+    this.servicesMozilla = page.locator('[data-key="mozilla"] > a');
     this.closeAppsAndServices = page.locator(
       '//div[starts-with(@class, "Popover_underlay")]',
     );
@@ -246,22 +250,6 @@ export class DashboardPage {
 
     //regex
     this.urlRegex = /\/dashboard\/(fixed|action-needed)\/?/;
-
-    //Apps & Services
-    this.appsAndServicesButton = page.locator(
-      'button[title*="Mozilla"][title*="apps and services"]',
-    );
-    //This popup is visible only if appsAndServicesButton was clicked before.
-    this.appsAndServicesPopUpDiv = page.locator(
-      "div[class*='AppPicker_popup']",
-    );
-    const aNs = this.appsAndServicesPopUpDiv;
-    this.appsAndServicesVPN = aNs.locator('[data-key="vpn"] > a');
-    this.appsAndServicesRelay = aNs.locator('[data-key="relay"] > a');
-    this.appsAndServicesPocket = aNs.locator('[data-key="pocket"] > a');
-    this.appsAndServicesFxDesktop = aNs.locator('[data-key="fxDesktop"] > a');
-    this.appsAndServicesFxMobile = aNs.locator('[data-key="fxMobile"] > a');
-    this.appsAndServicesMozilla = aNs.locator('[data-key="mozilla"] > a');
   }
 
   dashboardLinks() {
