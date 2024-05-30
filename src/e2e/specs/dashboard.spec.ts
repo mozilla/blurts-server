@@ -191,7 +191,10 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
       "www.mozilla.org",
     );
 
-    const openProfileMenuItem = async (what: Locator, whatUrl: RegExp) => {
+    const openProfileMenuItem = async (
+      what: Locator,
+      whatUrl: string | RegExp,
+    ) => {
       await dashboardPage.open();
       await dashboardPage.profileButton.click();
       await expect(what).toBeVisible();
@@ -214,12 +217,9 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
       /.*\/user\/settings.*/,
     );
 
-    const baseUrl = process.env["E2E_TEST_BASE_URL"];
-    expect(baseUrl).toBeTruthy();
-    await openProfileMenuItem(
-      dashboardPage.profileSignOut,
-      new RegExp(baseUrl!),
-    );
+    const base_url = process.env["E2E_TEST_BASE_URL"];
+    expect(base_url).toBeTruthy();
+    await openProfileMenuItem(dashboardPage.profileSignOut, base_url!);
   });
 });
 
