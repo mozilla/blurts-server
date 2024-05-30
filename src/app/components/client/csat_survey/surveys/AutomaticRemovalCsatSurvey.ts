@@ -87,10 +87,10 @@ const getAutomaticRemovalCsatSurvey = (
   props: CsatSurveyProps & {
     elapsedTimeInDaysSinceInitialScan: number | undefined;
     hasAutoFixedDataBrokers: boolean;
-  }
+  },
 ): RelevantSurvey | null => {
   const surveys = getRelevantSurveys({ ...surveyData, ...props });
-  const relevantSurveys =
+  const relevantSurvey =
     surveys &&
     surveys.findLast((surveyVariation) => {
       const survey = surveyVariation.survey as AutomaticRemovalVariation;
@@ -103,7 +103,7 @@ const getAutomaticRemovalCsatSurvey = (
         props.hasAutoFixedDataBrokers
       );
     });
-  return relevantSurveys ?? null;
+  return relevantSurvey ?? null;
 };
 
 export { getAutomaticRemovalCsatSurvey };

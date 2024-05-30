@@ -11,6 +11,7 @@ import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { TabType } from "../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 import { getAutomaticRemovalCsatSurvey } from "./surveys/automaticRemovalCsatSurvey";
 import { getLatestScanDateCsatSurvey } from "./surveys/latestScanDateCsatSurvey";
+import { COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS } from "../../../hooks/useLocalDismissal";
 
 export type CsatSurveyProps = {
   activeTab: TabType;
@@ -37,33 +38,48 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
   ];
 
   const cookies = new Cookies(null, { path: "/" });
-  const filteredSurveys = surveys.filter((survey) => {
+  const filteredSurveys = surveys.filter((survey, surveyIndex) => {
     if (!survey) {
       return;
     }
 
-    const cookieId = `${survey.localDismissalId}_dismissed`;
-    const surveyIsDismissed = cookies.get(cookieId);
+    const isLastSurvey = surveyIndex === surveys.length - 1;
+    const cookieDismissalId = `${survey.localDismissalId}_dismissed`;
+    const surveyIsDismissed = cookies.get(cookieDismissalId);
+
+    if (!isLastSurvey && !surveyIsDismissed) {
+      cookies.set(cookieDismissalId, Date.now().toString(), {
+        maxAge: COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS,
+      });
+    }
 
     return !surveyIsDismissed;
   });
-
   const currentSurvey =
-    filteredSurveys && filteredSurveys.length > 0
-      ? filteredSurveys.slice(-1)[0]
-      : null;
+    filteredSurveys.length > 0 && filteredSurveys.slice(-1)[0];
+  if (!currentSurvey) {
+    return;
+  }
+
+  filteredSurveys.forEach((survey) => {
+    if (
+      survey &&
+      survey?.localDismissalId !== currentSurvey?.localDismissalId
+    ) {
+      const cookieDismissalId = `${survey.localDismissalId}_dismissed`;
+      cookies.set(cookieDismissalId, Date.now().toString(), {
+        maxAge: COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS,
+      });
+    }
+  });
 
   return (
-    <>
-      <pre>{JSON.stringify(filteredSurveys, null, 2)}</pre>
-      <pre>{JSON.stringify(surveys, null, 2)}</pre>
-      {currentSurvey && (
-        <CsatSurveyBanner
-          key={currentSurvey.localDismissalId}
-          localDismissalId={currentSurvey.localDismissalId}
-          survey={currentSurvey.survey}
-        />
-      )}
-    </>
+    currentSurvey && (
+      <CsatSurveyBanner
+        key={currentSurvey.localDismissalId}
+        localDismissalId={currentSurvey.localDismissalId}
+        survey={currentSurvey.survey}
+      />
+    )
   );
 };
