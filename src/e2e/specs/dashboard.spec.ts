@@ -740,7 +740,6 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`
         "https://testrail.stage.mozaws.net/index.php?/cases/view/2463592",
     });
 
-    await dashboardPage.open();
     await expect(dashboardPage.upsellScreenButton).toBeVisible();
     await dashboardPage.upsellScreenButton.click();
     await page.waitForURL(/.*\/data-broker-profiles\/view-data-brokers\/?/);
