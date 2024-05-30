@@ -201,9 +201,6 @@ export const View = (props: Props) => {
             }
           }}
           locale={getLocale(l10n)}
-          isPremiumBrokerRemovalEnabled={props.enabledFeatureFlags.includes(
-            "PremiumBrokerRemoval"
-          )}
           isPremiumUser={hasPremium(props.user)}
           isEligibleForPremium={props.isEligibleForPremium}
           resolutionCta={
@@ -229,7 +226,7 @@ export const View = (props: Props) => {
   const noUnresolvedExposures = exposureCardElems.length === 0;
   const dataSummary = getDashboardSummary(
     adjustedScanResults,
-    props.userBreaches
+    props.userBreaches,
   );
 
   const hasExposures = combinedArray.length > 0;
@@ -275,7 +272,7 @@ export const View = (props: Props) => {
               dataBrokerAutoFixedNum -
               dataBrokerManuallyResolvedNum -
               dataBrokerInProgressNum,
-          }
+          },
         );
       } else {
         exposuresAreaDescription =
@@ -305,11 +302,11 @@ export const View = (props: Props) => {
             dataBrokerInProgressDataPointsNum -
             dataBrokerManuallyResolvedDataPointsNum,
           data_breach_unresolved_num: dataBreachUnresolvedNum,
-        }
+        },
       );
     } else if (initialScanInProgress) {
       exposuresAreaDescription = l10n.getString(
-        "dashboard-exposures-no-breaches-scan-progress-description"
+        "dashboard-exposures-no-breaches-scan-progress-description",
       );
     }
 
@@ -333,7 +330,7 @@ export const View = (props: Props) => {
         {l10n.getString(
           props.isEligibleForPremium
             ? "dashboard-fixed-area-headline-premium"
-            : "dashboard-fixed-area-headline-all"
+            : "dashboard-fixed-area-headline-all",
         )}
       </h2>
     </>
@@ -344,7 +341,7 @@ export const View = (props: Props) => {
   const overlayTrigger = useOverlayTrigger(
     { type: "dialog" },
     dialogTriggerState,
-    waitlistTriggerRef
+    waitlistTriggerRef,
   );
 
   const freeScanCta = props.isEligibleForFreeScan && (
@@ -470,7 +467,7 @@ export const View = (props: Props) => {
           hasUnresolvedBrokers={hasUnresolvedBrokers}
           bannerData={getDashboardSummary(
             adjustedScanResults,
-            props.userBreaches
+            props.userBreaches,
           )}
           stepDeterminationData={{
             countryCode,

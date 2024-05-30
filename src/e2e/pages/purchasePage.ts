@@ -2,7 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { Locator, Page } from "@playwright/test";
+import { Locator, Page, expect } from "@playwright/test";
+import { removeUnicodeChars } from "../utils/helpers";
 
 export class PurchasePage {
   readonly page: Page;
@@ -65,5 +66,24 @@ export class PurchasePage {
     await frame.fill(".InputElement[name=exp-date]", "555");
     await frame.fill(".InputElement[name=cvc]", "333");
     await frame.fill(".InputElement[name=postal]", "77777");
+  }
+
+  async verifyMonthlyPlanDetails() {
+    await this.subscriptionHeader.waitFor();
+    const planDetails = removeUnicodeChars(
+      (await this.planDetails.textContent()) as string,
+    );
+    expect(planDetails).toContain("monthly");
+    await expect(this.subscriptionHeader).toBeVisible();
+  }
+
+  async verifyYearlyPlanDetails() {
+    await this.subscriptionHeader.waitFor();
+    const planDetails = removeUnicodeChars(
+      (await this.planDetails.textContent()) as string,
+    );
+    expect(planDetails).toContain(
+      `${process.env.E2E_TEST_ENV === "prod" ? "yearly" : "every 2 months"}`,
+    );
   }
 }
