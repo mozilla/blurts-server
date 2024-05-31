@@ -79,6 +79,7 @@ export class DashboardPage {
   readonly privacyNoticeFooter: Locator;
   readonly githubFooter: Locator;
 
+  readonly overviewCard: Locator;
   readonly overviewCardSummary: Locator;
   readonly overviewCardFindings: Locator;
 
@@ -241,6 +242,7 @@ export class DashboardPage {
 
     //upsell button
     this.upsellScreenButton = page.getByText(/Let’s (keep going|fix it)/);
+    this.overviewCard = page.locator("[class*='DashboardTopBanner_container']");
     this.overviewCardSummary = page.locator(
       "[aria-label='Dashboard summary'] > div > p",
     );

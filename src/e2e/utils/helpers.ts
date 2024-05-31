@@ -220,5 +220,5 @@ export const forceLoginAs = async (
   }
   await authPage.signIn(email, password);
   await page.waitForURL("**/user/dashboard");
-  expect(page.url()).toContain("/user/dashboard");
+  await expect(page).toHaveURL(/.*\/user\/dashboard.*/);
 };
