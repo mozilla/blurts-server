@@ -42,6 +42,7 @@ export const Shell = (props: Props) => {
       {/* c8 ignore next */}
       {process.env.NODE_ENV !== "test" && <SubscriptionCheck />}
       <MobileShell
+        countryCode={countryCode}
         session={props.session}
         monthlySubscriptionUrl={monthlySubscriptionUrl}
         yearlySubscriptionUrl={yearlySubscriptionUrl}
