@@ -51,3 +51,18 @@ email-monthly-free-fixed-section-done-heading = Auto-removed
 email-monthly-free-banner-plus-heading = Upgrade for extra protection
 email-monthly-free-banner-plus-content = Get auto-removal of your profiles for sale plus continuous monitoring for new exposures.
 email-monthly-free-banner-plus-cta-label = Get { -brand-monitor-plus }
+
+## First data broker removal fixed email
+email-first-broker-removal-fixed-subject = Your first auto-removal is complete!
+# Variables:
+#   $data_broker_name (string) - The name of the data broker result that has been removed
+email-first-broker-removal-fixed-preview = Your private information has been removed from { $data_broker_name }
+email-first-broker-removal-fixed-heading = Your first auto-removal is complete
+email-first-broker-removal-fixed-subheading = Your personal information is now more private.
+# Variables:
+#   $data_broker_name (string) - The name of the data broker result that has been removed
+#   $data_broker_removal_date (string) - The date on which the data broker result has been removed
+email-first-broker-removal-fixed-content-one = We’re excited to share that we successfully removed your info from <data-broker-link>{ $data_broker_name }</data-broker-link> on { $data_broker_removal_date }.
+exposure-card-description-info-for-sale-fixed = As a { -brand-monitor-plus } member, we’ve <data_broker_profile>removed this profile</data_broker_profile> for you and will continually monitor to make sure they don’t add you back.
+email-first-broker-removal-fixed-content-two = We’ll keep working on any remaining data broker exposures to help protect your privacy. You can sign in to your dashboard any time to see your progress.
+email-first-broker-removal-fixed-cta-label = View dashboard
