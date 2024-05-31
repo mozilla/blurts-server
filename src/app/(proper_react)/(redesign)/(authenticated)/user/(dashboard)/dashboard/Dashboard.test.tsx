@@ -3548,7 +3548,7 @@ describe("CSAT survey banner", () => {
           "last-scan-date": {
             enabled: true,
           },
-          "latest-scan-date-csat-survey": {
+          "last-scan-date-csat-survey": {
             enabled: true,
           },
         }}
@@ -3589,7 +3589,7 @@ describe("CSAT survey banner", () => {
           "last-scan-date": {
             enabled: true,
           },
-          "latest-scan-date-csat-survey": {
+          "last-scan-date-csat-survey": {
             enabled: true,
           },
         }}
