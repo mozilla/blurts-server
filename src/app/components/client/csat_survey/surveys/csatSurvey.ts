@@ -18,7 +18,7 @@ const surveyResponses = [
 
 export type SurveyResponse = (typeof surveyResponses)[number];
 
-export type SurveyType = "survey-csat" | "survey-csat-latest-scan-date";
+export type SurveyType = "csat_survey" | "csat_survey_latest_scan_date";
 
 export type UserType = "free-user" | "plus-user";
 

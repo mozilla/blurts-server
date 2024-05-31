@@ -14,13 +14,22 @@ const meta: Meta<typeof CsatSurvey> = {
 export default meta;
 type Story = StoryObj<typeof CsatSurvey>;
 
-export const CsatSurveyDefault: Story = {
-  name: "CsatSurvey",
+export const CsatSurveyAutomaticRemoval: Story = {
+  name: "AutomaticRemoval",
   args: {
     activeTab: "fixed",
     user: createUserWithPremiumSubscription(),
     enabledFeatureFlags: ["AutomaticRemovalCsatSurvey"],
     hasAutoFixedDataBrokers: true,
     elapsedTimeInDaysSinceInitialScan: 0,
+  },
+};
+
+export const CsatSurveyLatestScanDate: Story = {
+  name: "LatestScanDate",
+  args: {
+    activeTab: "fixed",
+    user: createUserWithPremiumSubscription(),
+    enabledFeatureFlags: ["LatestScanDateCsatSurvey"],
   },
 };

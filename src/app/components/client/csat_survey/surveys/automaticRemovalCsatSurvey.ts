@@ -21,7 +21,7 @@ export type AutomaticRemovalVariation = {
 };
 
 const surveyData: SurveyData = {
-  id: "survey-csat",
+  id: "csat_survey",
   experimentId: "AutomaticRemovalCsatSurvey",
   variations: [
     {

@@ -10,8 +10,8 @@ import {
 } from "./csatSurvey";
 
 const surveyData: SurveyData = {
-  id: "survey-csat-latest-scan-date",
-  experimentId: "CsatSurvey",
+  id: "csat_survey_latest_scan_date",
+  experimentId: "LatestScanDateCsatSurvey",
   variations: [
     {
       id: "free-user",

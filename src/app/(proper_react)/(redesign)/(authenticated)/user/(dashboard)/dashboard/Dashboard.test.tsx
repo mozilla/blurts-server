@@ -15,6 +15,7 @@ import {
 import { userEvent } from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
+import { Cookies } from "react-cookie";
 import Meta, {
   DashboardNonUsNoBreaches,
   DashboardNonUsUnresolvedBreaches,
@@ -51,6 +52,7 @@ import Meta, {
   DashboardUsPremiumManuallyResolvedScansNoBreaches,
 } from "./Dashboard.stories";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
+import { deleteAllCookies } from "../../../../../../functions/client/deleteAllCookies";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -71,6 +73,11 @@ jest.mock(
     };
   },
 );
+
+afterEach(() => {
+  // Make the CSAT banner show up again.
+  deleteAllCookies();
+});
 
 describe("axe accessibility test suite", () => {
   it("passes the axe accessibility test suite for DashboardNonUsNoBreaches", async () => {
@@ -3348,7 +3355,7 @@ it("send telemetry when users click on exposure chart free scan", async () => {
 });
 
 describe("CSAT survey banner", () => {
-  it("does not display the CSAT survey banner (automatic removal) on the dashboard tab “action needed” to Plus users", () => {
+  it("does not display the “automatic removal” CSAT survey banner on the dashboard tab “action needed” to Plus users", () => {
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
       Meta,
@@ -3366,7 +3373,7 @@ describe("CSAT survey banner", () => {
     expect(answerButton).not.toBeInTheDocument();
   });
 
-  it("does not display the CSAT survey banner (automatic removal) to users who do not have automatic data removal enabled", async () => {
+  it("does not display the “automatic removal” CSAT survey banner to users who do not have automatic data removal enabled", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsPremiumEmptyScanNoBreaches,
@@ -3388,7 +3395,7 @@ describe("CSAT survey banner", () => {
     expect(answerButton).not.toBeInTheDocument();
   });
 
-  it("displays the CSAT survey banner (automatic removal) to Plus users, after more than 90 days since their initial scan", async () => {
+  it("displays the “automatic removal” CSAT survey banner to Plus users, after more than 90 days since their initial scan", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
@@ -3410,7 +3417,7 @@ describe("CSAT survey banner", () => {
     expect(answerButton).toBeInTheDocument();
   });
 
-  it("displays the initial CSAT survey banner (automatic removal) only to Plus users with automatically fixed data brokers", async () => {
+  it("displays the initial “automatic removal” CSAT survey banner only to Plus users with automatically fixed data brokers", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
@@ -3437,7 +3444,7 @@ describe("CSAT survey banner", () => {
     expect(answerButtonTwo).toBeInTheDocument();
   });
 
-  it("displays the 6-months CSAT survey banner (automatic removal) on the dashboard tab “fixed” only", async () => {
+  it("displays the 6-months “automatic removal” CSAT survey banner on the dashboard tab “fixed” only", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
@@ -3464,7 +3471,7 @@ describe("CSAT survey banner", () => {
     expect(answerButtonTwo).toBeInTheDocument();
   });
 
-  it("displays the follow-up CSAT survey banner (automatic removal) link", async () => {
+  it("displays the follow-up “automatic removal” CSAT survey banner link", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
@@ -3490,5 +3497,59 @@ describe("CSAT survey banner", () => {
       /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
     );
     expect(feedbackLink).toBeInTheDocument();
+  });
+
+  it("displays the “latest scan date” CSAT survey banner over the “automatic removal” CSAT survey if a user is targeted by both", async () => {
+    const mockedRecord = useTelemetry();
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        elapsedTimeInDaysSinceInitialScan={1}
+        enabledFeatureFlags={[
+          "AutomaticRemovalCsatSurvey",
+          "LatestScanDateCsatSurvey",
+        ]}
+      />,
+    );
+
+    const fixedTab = screen.getByText("Fixed");
+    await user.click(fixedTab);
+
+    const answerButton = screen.getByRole("button", {
+      name: "Very satisfied",
+    });
+    await user.click(answerButton);
+
+    expect(mockedRecord).toHaveBeenLastCalledWith(
+      "button",
+      "click",
+      expect.objectContaining({
+        button_id: "csat_survey_latest_scan_date_plus-user_very-satisfied",
+      }),
+    );
+  });
+
+  it("confirms that the “automatic removal” CSAT survey banner has been skipped in favour of the “latest scan date” CSAT survey if a user is targeted by both", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        elapsedTimeInDaysSinceInitialScan={1}
+        enabledFeatureFlags={[
+          "AutomaticRemovalCsatSurvey",
+          "LatestScanDateCsatSurvey",
+        ]}
+      />,
+    );
+
+    const cookies = new Cookies(null, { path: "/" });
+    expect(cookies.get("csat_survey_initial_dismissed")).toBeDefined();
   });
 });

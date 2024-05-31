@@ -55,7 +55,7 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
     return;
   }
 
-  // Mark all surveys but the current one as automatically dismissed.
+  // Mark all surveys except the current one as automatically dismissed.
   filteredSurveys.forEach((survey) => {
     if (
       survey &&

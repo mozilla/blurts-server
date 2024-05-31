@@ -56,13 +56,12 @@ export const CsatSurveyBanner = ({ localDismissalId, survey }: Props) => {
     setAnswer(satisfaction);
     dismiss({ soft: hasFollowUpSurveyOptions });
     recordTelemetry("button", "click", {
-      button_id: `csat_survey_${survey.id}_${satisfaction}`,
+      button_id: `${localDismissalId}_${satisfaction}`,
     });
   };
 
   return (
     <aside className={styles.wrapper}>
-      {localDismissalId}
       {typeof answer !== "undefined" && hasFollowUpSurveyOptions ? (
         <div className={styles.prompt}>
           <a
