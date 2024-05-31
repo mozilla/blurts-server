@@ -39,7 +39,8 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
     getLatestScanDateCsatSurvey(surveyOptions),
   ];
 
-  // Filters out previously dismissed surveys so we don’t show them again.
+  // Filters out previously dismissed surveys to make sure `currentSurvey` will
+  // always be relevant to show for the user.
   const cookies = new Cookies(null, { path: "/" });
   const filteredSurveys = surveys.filter((survey) => {
     if (!survey) {
