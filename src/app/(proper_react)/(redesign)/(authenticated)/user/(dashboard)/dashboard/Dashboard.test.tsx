@@ -53,6 +53,7 @@ import Meta, {
 } from "./Dashboard.stories";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 import { deleteAllCookies } from "../../../../../../functions/client/deleteAllCookies";
+import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -3363,7 +3364,12 @@ describe("CSAT survey banner", () => {
     render(
       <ComposedDashboard
         elapsedTimeInDaysSinceInitialScan={1}
-        enabledFeatureFlags={["AutomaticRemovalCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "automatic-removal-csat-survey": {
+            enabled: true,
+          },
+        }}
       />,
     );
 
@@ -3382,7 +3388,12 @@ describe("CSAT survey banner", () => {
     render(
       <ComposedDashboard
         elapsedTimeInDaysSinceInitialScan={1}
-        enabledFeatureFlags={["AutomaticRemovalCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "automatic-removal-csat-survey": {
+            enabled: true,
+          },
+        }}
       />,
     );
 
@@ -3404,7 +3415,12 @@ describe("CSAT survey banner", () => {
     render(
       <ComposedDashboard
         elapsedTimeInDaysSinceInitialScan={91}
-        enabledFeatureFlags={["AutomaticRemovalCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "automatic-removal-csat-survey": {
+            enabled: true,
+          },
+        }}
       />,
     );
 
@@ -3426,7 +3442,12 @@ describe("CSAT survey banner", () => {
     render(
       <ComposedDashboard
         elapsedTimeInDaysSinceInitialScan={1}
-        enabledFeatureFlags={["AutomaticRemovalCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "automatic-removal-csat-survey": {
+            enabled: true,
+          },
+        }}
       />,
     );
 
@@ -3453,7 +3474,12 @@ describe("CSAT survey banner", () => {
     render(
       <ComposedDashboard
         elapsedTimeInDaysSinceInitialScan={180}
-        enabledFeatureFlags={["AutomaticRemovalCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "automatic-removal-csat-survey": {
+            enabled: true,
+          },
+        }}
       />,
     );
 
@@ -3480,7 +3506,12 @@ describe("CSAT survey banner", () => {
     render(
       <ComposedDashboard
         elapsedTimeInDaysSinceInitialScan={185}
-        enabledFeatureFlags={["AutomaticRemovalCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "automatic-removal-csat-survey": {
+            enabled: true,
+          },
+        }}
       />,
     );
 
@@ -3509,10 +3540,18 @@ describe("CSAT survey banner", () => {
     render(
       <ComposedDashboard
         elapsedTimeInDaysSinceInitialScan={1}
-        enabledFeatureFlags={[
-          "AutomaticRemovalCsatSurvey",
-          "LatestScanDateCsatSurvey",
-        ]}
+        experimentData={{
+          ...defaultExperimentData,
+          "automatic-removal-csat-survey": {
+            enabled: true,
+          },
+          "last-scan-date": {
+            enabled: true,
+          },
+          "latest-scan-date-csat-survey": {
+            enabled: true,
+          },
+        }}
       />,
     );
 
@@ -3542,10 +3581,18 @@ describe("CSAT survey banner", () => {
       <ComposedDashboard
         activeTab="fixed"
         elapsedTimeInDaysSinceInitialScan={1}
-        enabledFeatureFlags={[
-          "AutomaticRemovalCsatSurvey",
-          "LatestScanDateCsatSurvey",
-        ]}
+        experimentData={{
+          ...defaultExperimentData,
+          "automatic-removal-csat-survey": {
+            enabled: true,
+          },
+          "last-scan-date": {
+            enabled: true,
+          },
+          "latest-scan-date-csat-survey": {
+            enabled: true,
+          },
+        }}
       />,
     );
 

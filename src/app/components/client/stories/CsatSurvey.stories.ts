@@ -6,6 +6,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { CsatSurvey } from "../csat_survey/CsatSurvey";
 import { createUserWithPremiumSubscription } from "../../../../apiMocks/mockData";
+import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 const meta: Meta<typeof CsatSurvey> = {
   title: "CsatSurvey",
@@ -19,7 +20,12 @@ export const CsatSurveyAutomaticRemoval: Story = {
   args: {
     activeTab: "fixed",
     user: createUserWithPremiumSubscription(),
-    enabledFeatureFlags: ["AutomaticRemovalCsatSurvey"],
+    experimentData: {
+      ...defaultExperimentData,
+      "automatic-removal-csat-survey": {
+        enabled: true,
+      },
+    },
     hasAutoFixedDataBrokers: true,
     elapsedTimeInDaysSinceInitialScan: 0,
   },
@@ -30,6 +36,14 @@ export const CsatSurveyLatestScanDate: Story = {
   args: {
     activeTab: "fixed",
     user: createUserWithPremiumSubscription(),
-    enabledFeatureFlags: ["LatestScanDateCsatSurvey"],
+    experimentData: {
+      ...defaultExperimentData,
+      "last-scan-date": {
+        enabled: true,
+      },
+      "latest-scan-date-csat-survey": {
+        enabled: true,
+      },
+    },
   },
 };

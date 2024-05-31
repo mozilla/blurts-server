@@ -4,9 +4,9 @@
 
 import { Session } from "next-auth";
 import { TabType } from "../../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
-import { FeatureFlagName } from "../../../../../db/tables/featureFlags";
 import { hasPremium } from "../../../../functions/universal/user";
 import { AutomaticRemovalVariation } from "./automaticRemovalCsatSurvey";
+import { ExperimentData } from "../../../../../telemetry/generated/nimbus/experiments";
 
 const surveyResponses = [
   "very-dissatisfied",
@@ -26,7 +26,7 @@ export type SurveyLinks = Record<SurveyResponse, string>;
 
 export type SurveyData = {
   id: SurveyType;
-  experimentId: FeatureFlagName;
+  requiredExperimentIds: (keyof ExperimentData)[];
   variations: Survey[];
 };
 
@@ -40,7 +40,7 @@ export type Survey = AutomaticRemovalVariation | LatestScanDateVariation;
 
 export type CsatSurveyProps = {
   activeTab: TabType;
-  enabledFeatureFlags: FeatureFlagName[];
+  experimentData: ExperimentData;
   user: Session["user"];
 };
 
@@ -51,13 +51,17 @@ export type RelevantSurvey = {
 
 export function getRelevantSurveys({
   id,
-  experimentId,
+  requiredExperimentIds,
   variations,
   activeTab,
-  enabledFeatureFlags,
+  experimentData,
   user,
 }: SurveyData & CsatSurveyProps): RelevantSurvey[] | null {
-  if (!enabledFeatureFlags.includes(experimentId)) {
+  if (
+    !requiredExperimentIds.every(
+      (experimentId) => experimentData[experimentId].enabled,
+    )
+  ) {
     return null;
   }
 

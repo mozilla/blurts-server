@@ -11,7 +11,7 @@ import {
 
 const surveyData: SurveyData = {
   id: "csat_survey_latest_scan_date",
-  experimentId: "LatestScanDateCsatSurvey",
+  requiredExperimentIds: ["last-scan-date", "latest-scan-date-csat-survey"],
   variations: [
     {
       id: "free-user",

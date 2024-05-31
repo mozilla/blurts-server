@@ -445,7 +445,7 @@ export const View = (props: Props) => {
         elapsedTimeInDaysSinceInitialScan={
           props.elapsedTimeInDaysSinceInitialScan
         }
-        enabledFeatureFlags={props.enabledFeatureFlags}
+        experimentData={props.experimentData}
         hasAutoFixedDataBrokers={
           dataSummary.dataBrokerAutoFixedDataPointsNum > 0
         }
