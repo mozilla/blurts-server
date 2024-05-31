@@ -721,13 +721,12 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation`, (
 
 test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`, () => {
   test.beforeEach(async ({ landingPage, page, authPage }) => {
-    await forceLoginAs(
-      "joe@mailinator.com",
-      "TestPass1234",
-      page,
-      landingPage,
-      authPage,
-    );
+    const emailToUse = process.env
+      .E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED as string;
+    const pwdToUse = process.env.E2E_TEST_ACCOUNT_PASSWORD as string;
+    expect(emailToUse).not.toBeUndefined();
+    expect(pwdToUse).not.toBeUndefined();
+    await forceLoginAs(emailToUse, pwdToUse, page, landingPage, authPage);
   });
 
   test("Verify that the High risk data breaches step is displayed correctly", async ({
