@@ -725,7 +725,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`
       .E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED as string;
     const pwdToUse = process.env.E2E_TEST_ACCOUNT_PASSWORD as string;
     expect(emailToUse).not.toBeUndefined();
-
+    expect(pwdToUse).not.toBeUndefined();
     await forceLoginAs(emailToUse, pwdToUse, page, landingPage, authPage);
   });
 
