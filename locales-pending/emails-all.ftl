@@ -53,6 +53,7 @@ email-monthly-free-banner-plus-content = Get auto-removal of your profiles for s
 email-monthly-free-banner-plus-cta-label = Get { -brand-monitor-plus }
 
 ## First data broker removal fixed email
+
 email-first-broker-removal-fixed-subject = Your first auto-removal is complete!
 # Variables:
 #   $data_broker_name (string) - The name of the data broker result that has been removed
