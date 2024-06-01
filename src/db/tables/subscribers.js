@@ -292,6 +292,34 @@ async function deleteResolutionsWithEmail (id, email) {
 /* c8 ignore stop */
 
 /**
+ * @param {Partial<{ limit: number; }>} options
+ * @returns {Promise<import("knex/types/tables").SubscriberRow[]>}
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function getSubscribersWaitingForFirstDataBrokerRemovalFixedEmail (options = {}) {
+  let query = knex('subscribers')
+    .select()
+    // Only send to users who are Plus subscribers...
+    .whereRaw(
+      `(fxa_profile_json->'subscriptions')::jsonb \\? ?`,
+      MONITOR_PREMIUM_CAPABILITY,
+    )
+    // ...who have had a successful data broker removal...
+    // ...and haven’t received the email.
+    .andWhere("first_broker_removal_email_sent", false);
+
+  if (typeof options.limit === "number") {
+    query = query.limit(options.limit);
+  }
+
+  const rows = await query;
+
+  return rows
+}
+/* c8 ignore stop */
+
+/**
  * @param {Partial<{ plusOnly: boolean; limit: number; }>} options
  * @returns {Promise<import("knex/types/tables").SubscriberRow[]>}
  */
@@ -525,6 +553,7 @@ export {
   setAllEmailsToPrimary,
   setMonthlyMonitorReport,
   setBreachResolution,
+  getSubscribersWaitingForFirstDataBrokerRemovalFixedEmail,
   getSubscribersWaitingForMonthlyEmail,
   updateMonthlyEmailTimestamp,
   updateMonthlyEmailOptout,

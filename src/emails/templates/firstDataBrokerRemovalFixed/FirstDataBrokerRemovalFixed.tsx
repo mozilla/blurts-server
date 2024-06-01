@@ -8,7 +8,6 @@ import { EmailFooter } from "../EmailFooter";
 import { EmailHeader } from "../EmailHeader";
 
 export type Props = {
-  removalDate: Date;
   l10n: ExtendedReactLocalization;
   data: {
     dataBrokerName: string;

@@ -20,6 +20,7 @@
     "e2e": "playwright test src/e2e/",
     "e2e:debug": "playwright test src/e2e/ --ui",
     "e2e:smoke": "playwright test src/e2e/ --grep @smoke",
+    "cron:first-data-broker-removal-fixed": "node dist/scripts/cronjobs/firstDataBrokerRemovalFixed.js",
     "cron:monthly-activity": "node dist/scripts/cronjobs/monthlyActivity.js",
     "cron:breach-alerts": "node src/scripts/emailBreachAlerts.js",
     "cron:db-delete-unverified-subscribers": "node scripts/delete-unverified-subscribers.js",
