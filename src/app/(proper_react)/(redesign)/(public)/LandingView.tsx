@@ -290,7 +290,7 @@ const Plans = (props: Props) => {
   }
 
   return (
-    <div className={styles.plans}>
+    <div id="pricing" className={styles.plans}>
       <h2 id={headingId} className={styles.planName}>
         {props.l10n.getString("landing-premium-plans-heading")}
       </h2>
