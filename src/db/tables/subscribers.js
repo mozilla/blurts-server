@@ -297,15 +297,16 @@ async function deleteResolutionsWithEmail (id, email) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getSubscribersWaitingForFirstDataBrokerRemovalFixedEmail (options = {}) {
-  let query = knex('subscribers')
+async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail (options = {}) {
+  let query = knex("subscribers")
     .select()
-    // Only send to users who are Plus subscribers...
+    // Only send to Plus users...
     .whereRaw(
       `(fxa_profile_json->'subscriptions')::jsonb \\? ?`,
       MONITOR_PREMIUM_CAPABILITY,
     )
-    // ...who have had a successful data broker removal...
+    // ...with an OneRep account...
+    .whereNotNull("onerep_profile_id")
     // ...and haven’t received the email.
     .andWhere("first_broker_removal_email_sent", false);
 
@@ -420,6 +421,29 @@ async function updateMonthlyEmailOptout (token) {
 }
 /* c8 ignore stop */
 
+/**
+ * @param {import("knex/types/tables").SubscriberRow} subscriber
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function markFirstDataBrokerRemovalFixedEmailAsJustSent (subscriber) {
+  const affectedSubscribers = await knex("subscribers")
+    .update({
+      first_broker_removal_email_sent: true,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
+    })
+    .where("primary_email", subscriber.primary_email)
+    .andWhere("id", subscriber.id)
+    .returning("*");
+
+  if (affectedSubscribers.length !== 1) {
+    throw new Error(`Attempted to mark 1 user as having just been sent the first data broker removal fixed email, but instead found [${affectedSubscribers.length}] matching its ID and email address.`);
+  }
+}
+
+/* c8 ignore stop */
 /**
  * @param {import("knex/types/tables").SubscriberRow} subscriber
  */
@@ -553,10 +577,11 @@ export {
   setAllEmailsToPrimary,
   setMonthlyMonitorReport,
   setBreachResolution,
-  getSubscribersWaitingForFirstDataBrokerRemovalFixedEmail,
+  getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail,
   getSubscribersWaitingForMonthlyEmail,
   updateMonthlyEmailTimestamp,
   updateMonthlyEmailOptout,
+  markFirstDataBrokerRemovalFixedEmailAsJustSent,
   markMonthlyActivityEmailAsJustSent,
   deleteUnverifiedSubscribers,
   deleteSubscriber,

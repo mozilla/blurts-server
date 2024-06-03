@@ -12,7 +12,7 @@ export type Props = {
   data: {
     dataBrokerName: string;
     dataBrokerLink: string;
-    removalDate: string;
+    removalDate: Date;
   };
 };
 
