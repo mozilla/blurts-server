@@ -313,7 +313,7 @@ async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail
       // https://github.com/knex/knex/issues/1881#issuecomment-275433906
       .whereNull("deleted_at"));
 
-  if (!flag?.is_enabled) {
+  if (!flag?.is_enabled || !flag?.modified_at) {
     return [];
   }
 
@@ -326,8 +326,11 @@ async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail
     )
     // ...with an OneRep account...
     .whereNotNull("onerep_profile_id")
-    // ...and haven’t received the email.
-    .andWhere("first_broker_removal_email_sent", false);
+    // ...who haven’t received the email...
+    .andWhere("first_broker_removal_email_sent", false)
+    // ...and signed up after the feature flag `FirstDataBrokerRemovalFixedEmail`
+    // has been enabled last.
+    .andWhere("created_at", ">=", flag.modified_at);
 
   if (Array.isArray(flag.allow_list) && flag.allow_list.length > 0) {
     // If the feature flag has an allowlist, only send to users on that list.
