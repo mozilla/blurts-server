@@ -147,9 +147,13 @@ export class PurchasePage {
       dashboardPage.subscribeDialogSelectMonthlyPlanLink,
     ).toBeVisible();
 
-    if (yearly) await dashboardPage.yearlyTab.click();
-    else await dashboardPage.monthlyTab.click();
-    await dashboardPage.subscribeDialogSelectMonthlyPlanLink.click();
+    if (yearly) {
+      await dashboardPage.yearlyTab.click();
+      await dashboardPage.subscribeDialogSelectYearlyPlanLink.click();
+    } else {
+      await dashboardPage.monthlyTab.click();
+      await dashboardPage.subscribeDialogSelectMonthlyPlanLink.click();
+    }
     await this.subscriptionHeader.waitFor();
   }
 
