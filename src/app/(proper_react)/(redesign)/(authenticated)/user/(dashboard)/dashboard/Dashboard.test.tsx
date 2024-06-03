@@ -1248,6 +1248,20 @@ it("shows the correct dashboard banner CTA and sends telemetry for US users, wit
   );
 });
 
+it("shows How It Works page link to US users, without Premium, no scan, no breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const howItWorksLink = screen.getByRole("link", {
+    name: "Learn more",
+  });
+
+  expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
+});
+
 // Check dashboard banner content for story DashboardUsNoPremiumNoScanUnresolvedBreaches
 it("shows the correct dashboard banner title for US users, without Premium, no scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
@@ -1294,6 +1308,20 @@ it("shows the correct dashboard banner CTA for US users, without Premium, no sca
       button_id: "us_non_premium_no_scan_unresolved_breaches",
     }),
   );
+});
+
+it("shows How It Works page link to US users, without Premium, no scan, unresolved breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const howItWorksLink = screen.getByRole("link", {
+    name: "Learn more",
+  });
+
+  expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumNoScanResolvedBreaches
@@ -1344,6 +1372,20 @@ it("shows the correct dashboard banner CTA and sends telemetry for US users, wit
   );
 });
 
+it("shows How It Works page link to US users, without Premium, no scan, resolved breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanResolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const howItWorksLink = screen.getByRole("link", {
+    name: "Learn more",
+  });
+
+  expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
+});
+
 it("shows and skips a dialog that informs US users, without Premium, when we hit the broker scan limit", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
@@ -1373,6 +1415,20 @@ it("shows and skips a dialog that informs US users, without Premium, when we hit
       name: "⁨Monitor⁩ is currently at capacity",
     }),
   ).not.toBeInTheDocument();
+});
+
+it("shows How It Works page link to US users, without Premium, when we hit the broker scan limit", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const howItWorksLink = screen.getByRole("link", {
+    name: "Learn more",
+  });
+
+  expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
 });
 
 it("shows and closes a dialog that informs US users, without Premium, when we hit the broker scan limit", async () => {
