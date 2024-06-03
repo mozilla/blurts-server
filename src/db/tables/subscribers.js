@@ -298,6 +298,26 @@ async function deleteResolutionsWithEmail (id, email) {
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail (options = {}) {
+  // I'm explicitly referencing the type here, so that these lines of code will
+  // show up as errors when we remove it from the flag list:
+  /** @type {import("./featureFlags.js").FeatureFlagName} */
+  const featureFlagName = "FirstDataBrokerRemovalFixedEmail";
+  // Interactions with the `feature_flags` table would generally go in the
+  // `src/db/tables/featureFlags` module. However, since that module is already
+  // written in TypeScript, it can't be loaded in pre-TypeScript cron jobs,
+  // which currently still import from the subscribers module. Hence, we've
+  // inlined this for now.
+  const flag = (await knex("feature_flags")
+      .first()
+      .where("name", featureFlagName)
+      // The `.andWhereNull` alias doesn't seem to exist:
+      // https://github.com/knex/knex/issues/1881#issuecomment-275433906
+      .whereNull("deleted_at"));
+
+  if (!flag?.is_enabled) {
+    return [];
+  }
+
   let query = knex("subscribers")
     .select()
     // Only send to Plus users...
