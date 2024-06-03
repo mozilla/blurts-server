@@ -17,7 +17,11 @@ import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches"
 import { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
 import { CountryCodeProvider } from "../../../../../../../contextProviders/country-code";
 import { SessionProvider } from "../../../../../../../contextProviders/session";
-import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
+import {
+  ExperimentData,
+  defaultExperimentData,
+} from "../../../../../../../telemetry/generated/nimbus/experiments";
+import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 
 const brokerOptions = {
   "no-scan": "No scan started",
@@ -47,6 +51,8 @@ type DashboardWrapperProps = (
   elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
   activeTab?: TabType;
+  enabledFeatureFlags?: FeatureFlagName[];
+  experimentData?: ExperimentData;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
@@ -184,7 +190,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             userScanData={scanData}
             isEligibleForPremium={props.countryCode === "us"}
             isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
-            enabledFeatureFlags={["CsatSurvey"]}
             monthlySubscriptionUrl=""
             yearlySubscriptionUrl=""
             fxaSettingsUrl=""
@@ -199,12 +204,15 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             elapsedTimeInDaysSinceInitialScan={
               props.elapsedTimeInDaysSinceInitialScan
             }
-            experimentData={{
-              ...defaultExperimentData,
-              "last-scan-date": {
-                enabled: true,
-              },
-            }}
+            enabledFeatureFlags={props.enabledFeatureFlags ?? []}
+            experimentData={
+              props.experimentData ?? {
+                ...defaultExperimentData,
+                "last-scan-date": {
+                  enabled: true,
+                },
+              }
+            }
             activeTab={props.activeTab ?? "action-needed"}
           />
         </Shell>
