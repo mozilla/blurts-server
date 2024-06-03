@@ -6,27 +6,31 @@ import { composeStory } from "@storybook/react";
 import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { axe } from "jest-axe";
-import Meta, { CsatSurveyBanner } from "./stories/CsatBanner.stories";
-import { useTelemetry } from "../../hooks/useTelemetry";
-import { deleteAllCookies } from "../../functions/client/deleteAllCookies";
+import Meta, {
+  CsatSurveyAutomaticRemoval,
+  CsatSurveyLatestScanDate,
+} from "../stories/CsatSurvey.stories";
+import { useTelemetry } from "../../../hooks/useTelemetry";
+import { deleteAllCookies } from "../../../functions/client/deleteAllCookies";
+import { createUserWithPremiumSubscription } from "../../../../apiMocks/mockData";
 
-jest.mock("../../hooks/useTelemetry");
+jest.mock("../../../hooks/useTelemetry");
 
 afterEach(() => {
   // Make the CSAT banner show up again.
   deleteAllCookies();
 });
 
-describe("CSAT survey", () => {
+describe("CSAT survey banner: Automatic Removal", () => {
   it("passes the axe accessibility test suite for CsatSurveyBanner", async () => {
-    const ComposedTextComboBox = composeStory(CsatSurveyBanner, Meta);
-    const { container } = render(<ComposedTextComboBox />);
+    const ComposedCsatSurvey = composeStory(CsatSurveyAutomaticRemoval, Meta);
+    const { container } = render(<ComposedCsatSurvey />);
     expect(await axe(container)).toHaveNoViolations();
   });
 
   it("displays the survey to users with automatic data removal enabled for less than 90 days", () => {
-    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
-    render(<ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={89} />);
+    const ComposedCsatSurvey = composeStory(CsatSurveyAutomaticRemoval, Meta);
+    render(<ComposedCsatSurvey elapsedTimeInDaysSinceInitialScan={89} />);
 
     const answerButton = screen.getByRole("button", {
       name: "Dissatisfied",
@@ -37,11 +41,9 @@ describe("CSAT survey", () => {
   it.each([90, 180, 351])(
     "displays the survey to users with automatic data removal enabled for at least n days",
     (dayCount) => {
-      const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
+      const ComposedCsatSurvey = composeStory(CsatSurveyAutomaticRemoval, Meta);
       render(
-        <ComposedCsatSurveyBanner
-          elapsedTimeInDaysSinceInitialScan={dayCount}
-        />,
+        <ComposedCsatSurvey elapsedTimeInDaysSinceInitialScan={dayCount} />,
       );
 
       const answerButton = screen.getByRole("button", {
@@ -53,8 +55,8 @@ describe("CSAT survey", () => {
 
   it("shows the correct follow-up feedback link for response “Very dissatisfied”", async () => {
     const user = userEvent.setup();
-    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
-    render(<ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={91} />);
+    const ComposedCsatSurvey = composeStory(CsatSurveyAutomaticRemoval, Meta);
+    render(<ComposedCsatSurvey elapsedTimeInDaysSinceInitialScan={91} />);
 
     const answerButton = screen.getByRole("button", {
       name: "Very dissatisfied",
@@ -73,10 +75,8 @@ describe("CSAT survey", () => {
 
   it("shows the correct follow-up feedback link for response “Dissatisfied”", async () => {
     const user = userEvent.setup();
-    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
-    render(
-      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={180} />,
-    );
+    const ComposedCsatSurvey = composeStory(CsatSurveyAutomaticRemoval, Meta);
+    render(<ComposedCsatSurvey elapsedTimeInDaysSinceInitialScan={180} />);
 
     const answerButton = screen.getByRole("button", {
       name: "Dissatisfied",
@@ -94,10 +94,8 @@ describe("CSAT survey", () => {
 
   it("shows the correct follow-up feedback link for response “Neutral”", async () => {
     const user = userEvent.setup();
-    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
-    render(
-      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={351} />,
-    );
+    const ComposedCsatSurvey = composeStory(CsatSurveyAutomaticRemoval, Meta);
+    render(<ComposedCsatSurvey elapsedTimeInDaysSinceInitialScan={351} />);
 
     const answerButton = screen.getByRole("button", {
       name: "Neutral",
@@ -115,8 +113,8 @@ describe("CSAT survey", () => {
 
   it("shows the correct follow-up feedback link for response “Satisfied”", async () => {
     const user = userEvent.setup();
-    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
-    render(<ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={91} />);
+    const ComposedCsatSurvey = composeStory(CsatSurveyAutomaticRemoval, Meta);
+    render(<ComposedCsatSurvey elapsedTimeInDaysSinceInitialScan={91} />);
 
     const answerButton = screen.getByRole("button", {
       name: "Satisfied",
@@ -135,10 +133,8 @@ describe("CSAT survey", () => {
 
   it("shows the correct follow-up feedback link for response “Very satisfied”", async () => {
     const user = userEvent.setup();
-    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
-    render(
-      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={180} />,
-    );
+    const ComposedCsatSurvey = composeStory(CsatSurveyAutomaticRemoval, Meta);
+    render(<ComposedCsatSurvey elapsedTimeInDaysSinceInitialScan={180} />);
 
     const answerButton = screen.getByRole("button", {
       name: "Very satisfied",
@@ -157,10 +153,8 @@ describe("CSAT survey", () => {
   it("records telemetry when submitting the survey", async () => {
     const mockedRecord = useTelemetry();
     const user = userEvent.setup();
-    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
-    render(
-      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={180} />,
-    );
+    const ComposedCsatSurvey = composeStory(CsatSurveyAutomaticRemoval, Meta);
+    render(<ComposedCsatSurvey elapsedTimeInDaysSinceInitialScan={180} />);
 
     const answerButton = screen.getByRole("button", {
       name: "Very satisfied",
@@ -178,8 +172,8 @@ describe("CSAT survey", () => {
 
   it("dismisses the survey by clicking the “close” button", async () => {
     const user = userEvent.setup();
-    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
-    render(<ComposedCsatSurveyBanner />);
+    const ComposedCsatSurvey = composeStory(CsatSurveyAutomaticRemoval, Meta);
+    render(<ComposedCsatSurvey />);
 
     const dismissButton = screen.getByRole("button", {
       name: "Dismiss",
@@ -194,10 +188,8 @@ describe("CSAT survey", () => {
 
   it("dismisses the survey by clicking the follow-up link", async () => {
     const user = userEvent.setup();
-    const ComposedCsatSurveyBanner = composeStory(CsatSurveyBanner, Meta);
-    render(
-      <ComposedCsatSurveyBanner elapsedTimeInDaysSinceInitialScan={180} />,
-    );
+    const ComposedCsatSurvey = composeStory(CsatSurveyAutomaticRemoval, Meta);
+    render(<ComposedCsatSurvey elapsedTimeInDaysSinceInitialScan={180} />);
 
     const answerButton = screen.getByRole("button", {
       name: "Very satisfied",
@@ -213,5 +205,89 @@ describe("CSAT survey", () => {
       /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
     );
     expect(feedbackLinkTwo).not.toBeInTheDocument();
+  });
+});
+
+describe("CSAT survey banner: Latest scan date", () => {
+  it("passes the axe accessibility test suite for CsatSurveyBanner", async () => {
+    const ComposedCsatSurvey = composeStory(CsatSurveyLatestScanDate, Meta);
+    const { container } = render(<ComposedCsatSurvey />);
+    expect(await axe(container)).toHaveNoViolations();
+  });
+
+  it("displays the survey to free users on the “action needed” tab", () => {
+    const ComposedCsatSurvey = composeStory(CsatSurveyLatestScanDate, Meta);
+    const user = createUserWithPremiumSubscription();
+    if (user.fxa) {
+      user.fxa.subscriptions = [];
+    }
+
+    render(<ComposedCsatSurvey activeTab="action-needed" user={user} />);
+
+    const answerButton = screen.getByRole("button", {
+      name: "Satisfied",
+    });
+    expect(answerButton).toBeInTheDocument();
+  });
+
+  it("displays the survey to Plus users on the “fixed” tab", () => {
+    const ComposedCsatSurvey = composeStory(CsatSurveyLatestScanDate, Meta);
+    render(<ComposedCsatSurvey />);
+
+    const answerButton = screen.getByRole("button", {
+      name: "Dissatisfied",
+    });
+    expect(answerButton).toBeInTheDocument();
+  });
+
+  it("dismisses the survey by clicking the “close” button", async () => {
+    const user = userEvent.setup();
+    const ComposedCsatSurvey = composeStory(CsatSurveyLatestScanDate, Meta);
+    render(<ComposedCsatSurvey />);
+
+    const dismissButton = screen.getByRole("button", {
+      name: "Dismiss",
+    });
+    await user.click(dismissButton);
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Neutral",
+    });
+    expect(answerButton).not.toBeInTheDocument();
+  });
+
+  it("records telemetry when submitting the survey", async () => {
+    const mockedRecord = useTelemetry();
+    const user = userEvent.setup();
+    const ComposedCsatSurvey = composeStory(CsatSurveyLatestScanDate, Meta);
+    render(<ComposedCsatSurvey />);
+
+    const answerButton = screen.getByRole("button", {
+      name: "Very satisfied",
+    });
+    await user.click(answerButton);
+
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "button",
+      "click",
+      expect.objectContaining({
+        button_id: "csat_survey_latest_scan_date_plus-user_very-satisfied",
+      }),
+    );
+  });
+
+  it("does not show a follow-up survey after submitting the survery", async () => {
+    const user = userEvent.setup();
+    const ComposedCsatSurvey = composeStory(CsatSurveyLatestScanDate, Meta);
+    render(<ComposedCsatSurvey />);
+
+    const answerButtonOne = screen.getByRole("button", {
+      name: "Very satisfied",
+    });
+    await user.click(answerButtonOne);
+    const feedbackLink = screen.queryByText(
+      /Your feedback is helpful to us! How can we improve ⁨Monitor⁩ for you\?/i,
+    );
+    expect(feedbackLink).not.toBeInTheDocument();
   });
 });
