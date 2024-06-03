@@ -292,12 +292,11 @@ async function deleteResolutionsWithEmail (id, email) {
 /* c8 ignore stop */
 
 /**
- * @param {Partial<{ limit: number; }>} options
  * @returns {Promise<import("knex/types/tables").SubscriberRow[]>}
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail (options = {}) {
+async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail() {
   // I'm explicitly referencing the type here, so that these lines of code will
   // show up as errors when we remove it from the flag list:
   /** @type {import("./featureFlags.js").FeatureFlagName} */
@@ -330,13 +329,16 @@ async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail
     // ...and haven’t received the email.
     .andWhere("first_broker_removal_email_sent", false);
 
-  if (typeof options.limit === "number") {
-    query = query.limit(options.limit);
+  if (Array.isArray(flag.allow_list) && flag.allow_list.length > 0) {
+    // If the feature flag has an allowlist, only send to users on that list.
+    // The `.andWhereIn` alias doesn't exist:
+    // https://github.com/knex/knex/issues/1881#issuecomment-275433906
+    query = query.whereIn("primary_email", flag.allow_list)
   }
 
   const rows = await query;
 
-  return rows
+  return rows;
 }
 /* c8 ignore stop */
 

@@ -40,11 +40,9 @@ async function run() {
     );
   }
   const potentialSubscribersToEmail =
-    await getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail({
-      limit: batchSize,
-    });
+    await getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail();
 
-  const subscribersToEmailWithScanData = (
+  const subscribersToEmailWithData = (
     await Promise.allSettled(
       potentialSubscribersToEmail.map(async (subscriber) => {
         // OneRep suggested not relying on webhooks, but instead to fetch the latest
@@ -77,12 +75,14 @@ async function run() {
         return { subscriber, firstRemovedScanResult };
       }),
     )
-  ).filter(isFulfilledResult);
+  )
+    .filter(isFulfilledResult)
+    .slice(0, batchSize);
 
   await initEmail();
 
   await Promise.allSettled(
-    subscribersToEmailWithScanData.map((data) => {
+    subscribersToEmailWithData.map((data) => {
       return sendFirstDataBrokerRemovalFixedActivityEmail(
         data.value.subscriber,
         data.value.firstRemovedScanResult,
@@ -90,7 +90,7 @@ async function run() {
     }),
   );
   console.log(
-    `[${new Date(Date.now()).toISOString()}] Sent [${subscribersToEmailWithScanData.length}] first data broker removal fixed emails.`,
+    `[${new Date(Date.now()).toISOString()}] Sent [${subscribersToEmailWithData.length}] first data broker removal fixed emails.`,
   );
 }
 
