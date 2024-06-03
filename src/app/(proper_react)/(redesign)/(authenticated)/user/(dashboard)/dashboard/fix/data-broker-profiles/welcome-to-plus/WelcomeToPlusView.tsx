@@ -80,8 +80,21 @@ export function WelcomeToPlusView(props: Props) {
           </p>
           <p>
             {hasRelevantScanResults
-              ? l10n.getString(
+              ? l10n.getFragment(
                   "welcome-to-premium-data-broker-profiles-description-part-two",
+                  {
+                    elems: {
+                      how_it_works_link: (
+                        <a
+                          href="/how-it-works"
+                          className={styles.howItWorksLink}
+                          target="_blank"
+                        >
+                          Removals typically take 7-14 days
+                        </a>
+                      ),
+                    },
+                  },
                 )
               : l10n.getString(
                   "welcome-to-premium-data-broker-profiles-zero-state-description-part-two",
