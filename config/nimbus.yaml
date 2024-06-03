@@ -33,3 +33,31 @@ features:
         value: { "enabled": true }
       - channel: production
         value: { "enabled": false }
+  automatic-removal-csat-survey:
+    description: Show the CSAT survey for Plus users that have automatically removed broker results
+    variables:
+      enabled:
+        description: If the feature is enabled
+        type: Boolean
+        default: false
+    defaults:
+      - channel: local
+        value: { "enabled": true }
+      - channel: staging
+        value: { "enabled": true }
+      - channel: production
+        value: { "enabled": false }
+  last-scan-date-csat-survey:
+    description: Show the CSAT survey for users that are enrolled in the `last-scan-date` experiment
+    variables:
+      enabled:
+        description: If the feature is enabled
+        type: Boolean
+        default: false
+    defaults:
+      - channel: local
+        value: { "enabled": true }
+      - channel: staging
+        value: { "enabled": true }
+      - channel: production
+        value: { "enabled": false }
