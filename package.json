@@ -136,7 +136,7 @@
     "mjml-browser": "^4.15.3",
     "prettier": "3.2.5",
     "react-intersection-observer": "^9.10.2",
-    "sass": "^1.77.2",
+    "sass": "^1.77.4",
     "storybook": "^8.1.5",
     "stylelint": "^16.6.1",
     "stylelint-config-recommended-scss": "^14.0.0",
