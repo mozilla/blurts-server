@@ -25,8 +25,6 @@ export default async function Layout({ children }: { children: ReactNode }) {
   }
 
   const nonce = headers().get("x-nonce") ?? "";
-  console.log("layout countryCode", countryCode);
-  console.log("layout session", session);
 
   return (
     <Shell

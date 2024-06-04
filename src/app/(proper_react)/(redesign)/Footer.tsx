@@ -24,8 +24,6 @@ export const Footer = ({
   session?: Session;
   countryCode: string;
 }) => {
-  console.log("footer countryCode", countryCode);
-  console.log("footer session", session);
   return (
     <footer className={styles.footer}>
       <a
