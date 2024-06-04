@@ -5,7 +5,15 @@
 import { ReactNode } from "react";
 import { PublicShell } from "./PublicShell";
 import { getL10n } from "../../../functions/l10n/serverComponents";
+import { headers } from "next/headers";
+import { getCountryCode } from "../../../functions/server/getCountryCode";
 
 export default function Layout(props: { children: ReactNode }) {
-  return <PublicShell l10n={getL10n()}>{props.children}</PublicShell>;
+  const headersList = headers();
+  const countryCode = getCountryCode(headersList);
+  return (
+    <PublicShell l10n={getL10n()} countryCode={countryCode}>
+      {props.children}
+    </PublicShell>
+  );
 }
