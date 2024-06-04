@@ -24,9 +24,16 @@ export type UserType = "free-user" | "plus-user";
 
 export type SurveyLinks = Record<SurveyResponse, string>;
 
+type RequiredExperimentStatus = "enabled" | "disabled";
+
+type RequiredExperiment = {
+  id: keyof ExperimentData;
+  statusAllowList: RequiredExperimentStatus[];
+};
+
 export type SurveyData = {
   id: SurveyType;
-  requiredExperimentIds: (keyof ExperimentData)[];
+  requiredExperiments: RequiredExperiment[];
   variations: Survey[];
 };
 
@@ -51,15 +58,17 @@ export type RelevantSurvey = {
 
 export function getRelevantSurveys({
   id,
-  requiredExperimentIds,
+  requiredExperiments,
   variations,
   activeTab,
   experimentData,
   user,
 }: SurveyData & CsatSurveyProps): RelevantSurvey[] | null {
   if (
-    !requiredExperimentIds.every(
-      (experimentId) => experimentData[experimentId].enabled,
+    !requiredExperiments.every((experiment) =>
+      experiment.statusAllowList.includes(
+        experimentData[experiment.id].enabled ? "enabled" : "disabled",
+      ),
     )
   ) {
     return null;
