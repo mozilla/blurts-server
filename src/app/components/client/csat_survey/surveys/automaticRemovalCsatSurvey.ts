@@ -5,7 +5,7 @@
 import { TabType } from "../../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 import {
   CsatSurveyProps,
-  RelevantSurvey,
+  RelevantSurveyWithTelemetry,
   SurveyData,
   SurveyLinks,
   UserType,
@@ -93,7 +93,7 @@ const getAutomaticRemovalCsatSurvey = (
     elapsedTimeInDaysSinceInitialScan: number | undefined;
     hasAutoFixedDataBrokers: boolean;
   },
-): RelevantSurvey | null => {
+): RelevantSurveyWithTelemetry | null => {
   const surveys = getRelevantSurveys({ ...surveyData, ...props });
   // Find the last survey variation that matches the time since the users
   // automatic removal.
@@ -112,7 +112,14 @@ const getAutomaticRemovalCsatSurvey = (
         props.elapsedTimeInDaysSinceInitialScan >= survey.daysThreshold
       );
     });
-  return relevantSurvey ?? null;
+  if (!relevantSurvey) {
+    return null;
+  }
+
+  return {
+    ...relevantSurvey,
+    telemetryId: relevantSurvey.id,
+  };
 };
 
 export { getAutomaticRemovalCsatSurvey };

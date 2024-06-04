@@ -3567,7 +3567,8 @@ describe("CSAT survey banner", () => {
       "button",
       "click",
       expect.objectContaining({
-        button_id: "csat_survey_latest_scan_date_plus-user_very-satisfied",
+        button_id:
+          "csat_survey_latest_scan_date_plus-user_treatment_very-satisfied",
       }),
     );
   });

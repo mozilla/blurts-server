@@ -52,8 +52,12 @@ export type CsatSurveyProps = {
 };
 
 export type RelevantSurvey = {
-  localDismissalId: string;
+  id: string;
   survey: Survey;
+};
+
+export type RelevantSurveyWithTelemetry = RelevantSurvey & {
+  telemetryId: string;
 };
 
 export function getRelevantSurveys({
@@ -83,7 +87,7 @@ export function getRelevantSurveys({
   });
 
   return filteredSurveys.map((survey) => ({
-    localDismissalId: `${id}_${survey.id}`,
+    id: `${id}_${survey.id}`,
     survey,
   }));
 }

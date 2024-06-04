@@ -28,10 +28,15 @@ type SurveyLinks = Record<SurveyResponse, string>;
 
 type Props = {
   localDismissalId: string;
+  telemetryId: string;
   survey: Survey;
 };
 
-export const CsatSurveyBanner = ({ localDismissalId, survey }: Props) => {
+export const CsatSurveyBanner = ({
+  localDismissalId,
+  telemetryId,
+  survey,
+}: Props) => {
   const l10n = useL10n();
   const [answer, setAnswer] = useState<keyof SurveyLinks>();
 
@@ -56,7 +61,7 @@ export const CsatSurveyBanner = ({ localDismissalId, survey }: Props) => {
     setAnswer(satisfaction);
     dismiss({ soft: hasFollowUpSurveyOptions });
     recordTelemetry("button", "click", {
-      button_id: `${localDismissalId}_${satisfaction}`,
+      button_id: `${telemetryId}_${satisfaction}`,
     });
   };
 

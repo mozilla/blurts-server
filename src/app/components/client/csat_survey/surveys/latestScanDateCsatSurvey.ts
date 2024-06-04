@@ -4,7 +4,7 @@
 
 import {
   CsatSurveyProps,
-  RelevantSurvey,
+  RelevantSurveyWithTelemetry,
   SurveyData,
   getRelevantSurveys,
 } from "./csatSurvey";
@@ -37,11 +37,23 @@ const surveyData: SurveyData = {
 
 const getLatestScanDateCsatSurvey = (
   props: CsatSurveyProps,
-): RelevantSurvey | null => {
+): RelevantSurveyWithTelemetry | null => {
   const surveys = getRelevantSurveys({ ...surveyData, ...props });
+  if (!surveys || surveys?.length === 0) {
+    return null;
+  }
   // In case there are multiple matching survey variations for the current user:
   // Return the first one.
-  return surveys && surveys.length > 0 ? surveys[0] : null;
+  const relevantSurvey = surveys[0];
+
+  // Distinguish between users who are and are not enrolled in the experiment.
+  const experimentBranchId = props.experimentData["last-scan-date"].enabled
+    ? "treatment"
+    : "control";
+  return {
+    ...relevantSurvey,
+    telemetryId: `${relevantSurvey.id}_${experimentBranchId}`,
+  };
 };
 
 export { getLatestScanDateCsatSurvey };

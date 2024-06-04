@@ -46,7 +46,7 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
     if (!survey) {
       return;
     }
-    const cookieDismissalId = `${survey.localDismissalId}_dismissed`;
+    const cookieDismissalId = `${survey.id}_dismissed`;
     const surveyIsDismissed = cookies.get(cookieDismissalId);
     return !surveyIsDismissed;
   });
@@ -58,11 +58,8 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
 
   // Mark all surveys except the current one as automatically dismissed.
   filteredSurveys.forEach((survey) => {
-    if (
-      survey &&
-      survey?.localDismissalId !== currentSurvey?.localDismissalId
-    ) {
-      const cookieDismissalId = `${survey.localDismissalId}_dismissed`;
+    if (survey && survey?.id !== currentSurvey?.id) {
+      const cookieDismissalId = `${survey.id}_dismissed`;
       cookies.set(cookieDismissalId, Date.now().toString(), {
         maxAge: COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS,
       });
@@ -72,9 +69,10 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
   return (
     currentSurvey && (
       <CsatSurveyBanner
-        key={currentSurvey.localDismissalId}
-        localDismissalId={currentSurvey.localDismissalId}
+        key={currentSurvey.id}
         survey={currentSurvey.survey}
+        localDismissalId={currentSurvey.id}
+        telemetryId={currentSurvey.telemetryId}
       />
     )
   );

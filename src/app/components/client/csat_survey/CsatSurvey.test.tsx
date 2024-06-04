@@ -13,6 +13,7 @@ import Meta, {
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { deleteAllCookies } from "../../../functions/client/deleteAllCookies";
 import { createUserWithPremiumSubscription } from "../../../../apiMocks/mockData";
+import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 jest.mock("../../../hooks/useTelemetry");
 
@@ -256,7 +257,7 @@ describe("CSAT survey banner: Latest scan date", () => {
     expect(answerButton).not.toBeInTheDocument();
   });
 
-  it("records telemetry when submitting the survey", async () => {
+  it("records telemetry when submitting the survey for users who are enrolled in the experiment", async () => {
     const mockedRecord = useTelemetry();
     const user = userEvent.setup();
     const ComposedCsatSurvey = composeStory(CsatSurveyLatestScanDate, Meta);
@@ -271,7 +272,41 @@ describe("CSAT survey banner: Latest scan date", () => {
       "button",
       "click",
       expect.objectContaining({
-        button_id: "csat_survey_latest_scan_date_plus-user_very-satisfied",
+        button_id:
+          "csat_survey_latest_scan_date_plus-user_treatment_very-satisfied",
+      }),
+    );
+  });
+
+  it("records telemetry when submitting the survey for users who are not enrolled in the experiment", async () => {
+    const mockedRecord = useTelemetry();
+    const user = userEvent.setup();
+    const ComposedCsatSurvey = composeStory(CsatSurveyLatestScanDate, Meta);
+    render(
+      <ComposedCsatSurvey
+        experimentData={{
+          ...defaultExperimentData,
+          "last-scan-date": {
+            enabled: false,
+          },
+          "last-scan-date-csat-survey": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const answerButton = screen.getByRole("button", {
+      name: "Very satisfied",
+    });
+    await user.click(answerButton);
+
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "button",
+      "click",
+      expect.objectContaining({
+        button_id:
+          "csat_survey_latest_scan_date_plus-user_control_very-satisfied",
       }),
     );
   });
