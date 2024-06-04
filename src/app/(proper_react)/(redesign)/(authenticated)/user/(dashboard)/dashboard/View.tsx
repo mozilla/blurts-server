@@ -441,15 +441,17 @@ export const View = (props: Props) => {
         />
       </Toolbar>
       <CsatSurvey
+        user={props.user}
         activeTab={activeTab}
+        experimentData={props.experimentData}
         elapsedTimeInDaysSinceInitialScan={
           props.elapsedTimeInDaysSinceInitialScan
         }
-        experimentData={props.experimentData}
         hasAutoFixedDataBrokers={
           dataSummary.dataBrokerAutoFixedDataPointsNum > 0
         }
-        user={props.user}
+        isSecondSignInAfterFreeScan={false}
+        hasSecondMonthlyScan={false}
       />
 
       <div className={styles.dashboardContent}>

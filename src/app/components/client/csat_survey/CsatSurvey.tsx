@@ -19,6 +19,8 @@ export type CsatSurveyProps = {
   experimentData: ExperimentData;
   hasAutoFixedDataBrokers: boolean;
   elapsedTimeInDaysSinceInitialScan?: number;
+  isSecondSignInAfterFreeScan?: boolean;
+  hasSecondMonthlyScan?: boolean;
 };
 
 export const CsatSurvey = (props: CsatSurveyProps) => {
@@ -36,7 +38,11 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
         props.elapsedTimeInDaysSinceInitialScan,
       hasAutoFixedDataBrokers: props.hasAutoFixedDataBrokers,
     }),
-    getLatestScanDateCsatSurvey(surveyOptions),
+    getLatestScanDateCsatSurvey({
+      ...surveyOptions,
+      isSecondSignInAfterFreeScan: props.isSecondSignInAfterFreeScan ?? false,
+      hasSecondMonthlyScan: props.hasSecondMonthlyScan ?? false,
+    }),
   ];
 
   // Filters out previously dismissed surveys to make sure `currentSurvey` will

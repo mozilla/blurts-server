@@ -36,7 +36,10 @@ const surveyData: SurveyData = {
 };
 
 const getLatestScanDateCsatSurvey = (
-  props: CsatSurveyProps,
+  props: CsatSurveyProps & {
+    isSecondSignInAfterFreeScan: boolean;
+    hasSecondMonthlyScan: boolean;
+  },
 ): RelevantSurveyWithTelemetry | null => {
   const surveys = getRelevantSurveys({ ...surveyData, ...props });
   if (!surveys || surveys?.length === 0) {
