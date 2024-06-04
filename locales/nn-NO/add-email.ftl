@@ -6,7 +6,11 @@
 ### Dialog window that allows a user to add a new email address to be monitored
 
 add-email-add-another-heading = Legg til ei ny e-postadresse
-
 add-email-address-input-label = E-postadresse
 add-email-send-verification-button = Send stadfestingslenke
-
+# $email is the newly added email address. $settings-href is the URL for the Settings page. HTML tags should not be translated, e.g. `<a>`
+# This string will be deprecated when the new Plus plan is live.
+add-email-verify-the-link = Stadfest lenka som vart sendt til { $email } for å leggje henne til i { -brand-fx-monitor }. Handsam alle e-postadresser i <a { $settings-href }>Innstillingar</a>.
+# Variables:
+#   $email (string) - An email address submitted by the user for monitoring, e.g. `example@example.com`
+add-email-verify-the-link-2 = Stadfest lenka som vart sendt til <b>{ $email }</b> for å leggje henne til i { -brand-mozilla-monitor }.
