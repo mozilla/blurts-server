@@ -31,6 +31,11 @@ export const Shell = (props: Props) => {
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
 
+  console.log("##############################################");
+  console.log("shell countryCode", props.countryCode);
+  console.log("shell session", props.session);
+  console.log("##############################################");
+
   return (
     <>
       {/* This component ensures that the client session is synced with the
@@ -75,7 +80,7 @@ export const Shell = (props: Props) => {
                   {l10n.getString("main-nav-link-settings-label")}
                 </PageLink>
               </li>
-              {props.countryCode === "us" && !props.session && (
+              {props.countryCode === "us" && (
                 <li key="how-it-works">
                   <PageLink
                     href="/how-it-works"
