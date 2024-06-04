@@ -5,12 +5,15 @@
 public-nav-name = { -brand-mozilla-monitor }
 landing-all-hero-title = Finn ut kvar din informasjon er eksponert — og ta han tilbake
 landing-all-hero-emailform-input-placeholder = dittnamn@doeme.no
+landing-all-hero-emailform-input-label = Skriv inn e-postadressa di for å søkje etter datalekkasje-eksponeringar
 landing-all-hero-emailform-submit-label = Få gratis skanning
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = eksponeringar
 
 # Value Proposition
 
+landing-all-value-prop-fix-exposures = Vi hjelper deg med å løyse eksponeringane dine
+landing-all-value-prop-info-at-risk = Kva for type informasjon kan vere i fare?
 
 # Quote
 
