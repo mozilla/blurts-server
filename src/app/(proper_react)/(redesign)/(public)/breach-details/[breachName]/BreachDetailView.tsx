@@ -114,7 +114,7 @@ export const BreachDetailsView = (props: Props) => {
         {typeof breach.Domain === "string" && breach.Domain.length > 0 ? (
           <p>
             <TelemetryLink
-              href={`//${breach.Domain}`}
+              href={`https://${breach.Domain}`}
               eventData={{ link_id: breach.Domain }}
               target="_blank"
               rel="noopener noreferrer"
