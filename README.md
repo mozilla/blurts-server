@@ -21,7 +21,7 @@ the "what" and "why" of data breach alerts.
 
 - [Volta](https://volta.sh/) (installs the correct version of Node and npm)
 - [Postgres](https://www.postgresql.org/) | Note: On a Mac, we recommend downloading the [Postgres.app](https://postgresapp.com/) instead.
-- [Python] https://www.python.org/downloads/ | https://docs.brew.sh/Homebrew-and-Python
+- [Python](https://www.python.org/downloads/) | [With Homebrew](https://docs.brew.sh/Homebrew-and-Python)
 
 ### Code style
 
