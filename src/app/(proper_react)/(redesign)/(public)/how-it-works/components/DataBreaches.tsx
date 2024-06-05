@@ -9,7 +9,7 @@ import { TelemetryButton } from "../../../../../components/client/TelemetryButto
 import { Resolve } from "../images";
 import styles from "../HowItWorksView.module.scss";
 
-export const SectionTwo = (props: Props) => {
+export const DataBreaches = (props: Props) => {
   const { l10n } = props;
 
   return (
