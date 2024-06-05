@@ -200,18 +200,18 @@
     padding-inline: $layout-lg;
   }
 }
-.footer {
+.footerSection {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: $color-purple-05;
   padding: $spacing-xl $spacing-md;
-  .footerCTA {
+  .footerSectionCTA {
     color: $color-black;
     font: $text-title-md;
   }
-  .footerCTAInput {
+  .footerSectionCTAInput {
     margin-top: $spacing-md;
     margin-bottom: $spacing-md;
     input {
@@ -231,7 +231,7 @@
     margin-top: $spacing-md;
   }
   @media screen and (min-width: $screen-md) {
-    .footerCTAInput {
+    .footerSectionCTAInput {
       input {
         padding: $spacing-md $spacing-xl $spacing-md $spacing-md;
         margin-right: $spacing-lg;
@@ -240,7 +240,7 @@
   }
   @media screen and (min-width: $screen-lg) {
     padding: $layout-xl $spacing-md;
-    .footerCTAInput {
+    .footerSectionCTAInput {
       margin-top: $spacing-md;
       margin-bottom: $spacing-2xl;
     }
