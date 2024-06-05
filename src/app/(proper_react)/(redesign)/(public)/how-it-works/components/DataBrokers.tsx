@@ -64,7 +64,7 @@ export const DataBrokers = (props: Props) => {
             {l10n.getString("section-1-step-1-subtitle")}
           </h3>
           <div className={styles.privateInfoRow}>
-            <Image src={NameIcon} alt="name icon" />
+            <Image src={NameIcon} alt="" />
             <p className={styles.privateInfoText}>
               {l10n.getFragment("section-1-step-1-name", {
                 elems: {
@@ -74,7 +74,7 @@ export const DataBrokers = (props: Props) => {
             </p>
           </div>
           <div className={styles.privateInfoRow}>
-            <Image src={LocationIcon} alt="location icon" />
+            <Image src={LocationIcon} alt="" />
             <p className={styles.privateInfoText}>
               {l10n.getFragment("section-1-step-1-location", {
                 elems: {
@@ -84,7 +84,7 @@ export const DataBrokers = (props: Props) => {
             </p>
           </div>
           <div className={styles.privateInfoRow}>
-            <Image src={DOBIcon} alt="dob icon" />
+            <Image src={DOBIcon} alt="" />
             <p className={styles.privateInfoText}>
               {l10n.getFragment("section-1-step-1-dob", {
                 elems: {
