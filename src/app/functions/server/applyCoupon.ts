@@ -21,7 +21,7 @@ export async function applyCurrentCouponCode(
   const currentCouponCode = process.env.CURRENT_COUPON_CODE;
   if (!currentCouponCode) {
     logger.error(
-      "fxa_apply_coupon_code",
+      "fxa_apply_coupon_code_failed",
       "Coupon code not set. Please set the env var: CURRENT_COUPON_CODE",
     );
     return {
@@ -37,7 +37,42 @@ export async function applyCurrentCouponCode(
       };
     }
   } catch (ex) {
-    logger.error("fxa_apply_coupon_code", {
+    logger.error("fxa_apply_coupon_code_failed", {
+      subscriber_id: subscriber.id,
+      exception: ex,
+    });
+    return {
+      success: false,
+    };
+  }
+}
+
+export async function checkCurrentCouponCode(
+  subscriber: SubscriberRow | SerializedSubscriber,
+) {
+  logger.info("fxa_check_coupon", {
+    subscriber: subscriber.id,
+  });
+
+  // current coupon
+  const currentCouponCode = process.env.CURRENT_COUPON_CODE;
+  if (!currentCouponCode) {
+    logger.error(
+      "fxa_check_coupon_failed",
+      "Coupon code not set. Please set the env var: CURRENT_COUPON_CODE",
+    );
+    return {
+      success: false,
+    };
+  }
+
+  try {
+    await checkCouponForSubscriber(subscriber.id, currentCouponCode);
+    return {
+      success: true,
+    };
+  } catch (ex) {
+    logger.error("fxa_check_coupon_failed", {
       subscriber_id: subscriber.id,
       exception: ex,
     });
