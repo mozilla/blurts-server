@@ -89,9 +89,7 @@ export function WelcomeToPlusView(props: Props) {
                           href="/how-it-works"
                           className={styles.howItWorksLink}
                           target="_blank"
-                        >
-                          Removals typically take 7-14 days
-                        </a>
+                        />
                       ),
                     },
                   },
