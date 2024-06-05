@@ -44,6 +44,7 @@ async function addCouponForSubscriber(
     } else {
       logger.error("could_not_add_coupon", { error: JSON.stringify(e) });
     }
+    throw e;
   }
   return res?.[0] as SubscriberCouponRow;
 }
