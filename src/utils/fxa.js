@@ -161,7 +161,7 @@ async function applyCoupon(bearerToken, couponCode) {
       }
     }
     if (subscriptionId) {
-      const applyCouponUrl = `${AppConstants.OAUTH_ACCOUNT_URI}oauth/subscriptions/coupon/apply`
+      const applyCouponUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/subscriptions/coupon/apply`
       const response = await fetch(applyCouponUrl, {
         method: "PUT",
         headers: {
