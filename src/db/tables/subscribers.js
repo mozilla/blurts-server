@@ -305,7 +305,7 @@ async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail
   // `src/db/tables/featureFlags` module. However, since that module is already
   // written in TypeScript, it can't be loaded in pre-TypeScript cron jobs,
   // which currently still import from the subscribers module. Hence, we've
-  // inlined this for now.
+  // inlined this until https://mozilla-hub.atlassian.net/browse/MNTOR-3077 is fixed.
   const flag = (await knex("feature_flags")
       .first()
       .where("name", featureFlagName)
@@ -360,7 +360,7 @@ async function getSubscribersWaitingForMonthlyEmail (options = {}) {
   // `src/db/tables/featureFlags` module. However, since that module is already
   // written in TypeScript, it can't be loaded in pre-TypeScript cron jobs,
   // which currently still import from the subscribers module. Hence, we've
-  // inlined this for now.
+  // inlined this until https://mozilla-hub.atlassian.net/browse/MNTOR-3077 is fixed.
   const flag = (await knex("feature_flags")
       .first()
       .where("name", featureFlagName)
