@@ -13,15 +13,12 @@ async function checkCouponForSubscriber(
   couponCode: string,
 ) {
   logger.info("checkCouponForSubscriber", subscriberId);
-  return (
-    (
-      await knex("subscriber_coupons")
-        .orderBy("created_at")
-        .where("subscriber_id", subscriberId)
-        .andWhere("coupon_code", couponCode)
-        .returning("*")
-    ).length > 0
-  );
+  return !!(await knex("subscriber_coupons")
+    .where({
+      subscriber_id: subscriberId,
+      coupon_code: couponCode,
+    })
+    .first());
 }
 
 async function addCouponForSubscriber(
@@ -40,13 +37,14 @@ async function addCouponForSubscriber(
       .returning("*");
   } catch (e) {
     if ((e as Error).message.includes("violates unique constraint")) {
-      logger.info("addCouponForSubscriber", {
+      logger.error("could_not_add_coupon", {
         subscriberId,
         error: (e as Error).message,
       });
     } else {
-      logger.error(e);
+      logger.error("could_not_add_coupon", { error: JSON.stringify(e) });
     }
+    throw e;
   }
   return res?.[0] as SubscriberCouponRow;
 }
