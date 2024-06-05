@@ -15,14 +15,19 @@ import { FooterSection } from "./components/FooterSection";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
+  yearlySubscriptionUrl?: string;
 };
 
-export const HowItWorksView = () => {
+export const HowItWorksView = ({
+  yearlySubscriptionUrl,
+}: {
+  yearlySubscriptionUrl: string;
+}) => {
   const l10n = useL10n();
   return (
     <main>
       <Header l10n={l10n} />
-      <DataBrokers l10n={l10n} />
+      <DataBrokers l10n={l10n} yearlySubscriptionUrl={yearlySubscriptionUrl} />
       <DataBreaches l10n={l10n} />
       <FooterSection l10n={l10n} />
     </main>
