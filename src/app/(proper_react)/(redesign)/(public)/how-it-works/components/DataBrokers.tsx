@@ -14,9 +14,11 @@ import {
 } from "../images";
 import styles from "../HowItWorksView.module.scss";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
+import { getPremiumSubscriptionUrl } from "../../../../../functions/server/getPremiumSubscriptionInfo";
 
 export const DataBrokers = (props: Props) => {
   const { l10n } = props;
+  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
 
   return (
     <div
@@ -40,7 +42,7 @@ export const DataBrokers = (props: Props) => {
           <div className={styles.sectionCTAButton}>
             <TelemetryButton
               variant="primary"
-              href="https://accounts.firefox.com/subscriptions/products/prod_OiV9RSaatywSRy?plan=price_1Nv4ODJNcmPzuWtRoYpoFHXd"
+              href={yearlySubscriptionUrl}
               event={{
                 module: "ctaButton",
                 name: "click",
@@ -138,7 +140,7 @@ export const DataBrokers = (props: Props) => {
       <div className={styles.sectionCTAButton}>
         <TelemetryButton
           variant="primary"
-          href="https://accounts.firefox.com/subscriptions/products/prod_OiV9RSaatywSRy?plan=price_1Nv4ODJNcmPzuWtRoYpoFHXd"
+          href={yearlySubscriptionUrl}
           event={{
             module: "ctaButton",
             name: "click",
