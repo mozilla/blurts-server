@@ -145,6 +145,52 @@ async function deleteSubscription(bearerToken) {
 /* c8 ignore stop */
 
 /**
+ * @param {string} bearerToken
+ * @param {string} couponCode
+ * @returns {Promise<boolean>}
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function applyCoupon(bearerToken, couponCode) {
+  try {
+    const subs = await getSubscriptions(bearerToken) ?? []
+    let subscriptionId;
+    for (const sub of subs) {
+      if (sub && sub.productId && sub.productId === AppConstants.PREMIUM_PRODUCT_ID) {
+        subscriptionId = sub.subscriptionId
+      }
+    }
+    if (subscriptionId) {
+      const applyCouponUrl = `${AppConstants.OAUTH_ACCOUNT_URI}oauth/subscriptions/coupon/apply`
+      const response = await fetch(applyCouponUrl, {
+        method: "PUT",
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${bearerToken}`
+        },
+        body: JSON.stringify({
+          promotionId: couponCode,
+          subscriptionId
+        })
+      })
+      if (!response.ok) {
+        console.info(`apply_coupon: failed - ${JSON.stringify(response.status)}`)
+      } else {
+        console.info(`apply_coupon: success - ${JSON.stringify(await response.json())}`)
+      }
+    }
+    return true
+  } catch (e) {
+    if (e instanceof Error) {
+      console.error('apply_coupon', { stack: e.stack })
+    }
+    return false
+  }
+}
+/* c8 ignore stop */
+
+
+/**
  * @param {crypto.BinaryLike} email
  */
 // TODO: Add unit test when changing this code:
@@ -158,5 +204,6 @@ export {
   revokeOAuthTokens,
   getSha1,
   getSubscriptions,
-  deleteSubscription
+  deleteSubscription,
+  applyCoupon
 }
