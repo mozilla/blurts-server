@@ -18,9 +18,9 @@ export type CsatSurveyProps = {
   user: Session["user"];
   experimentData: ExperimentData;
   hasAutoFixedDataBrokers: boolean;
+  hasFirstMonitoringScan: boolean;
+  isSecondSignInAfterFreeScan: boolean;
   elapsedTimeInDaysSinceInitialScan?: number;
-  isSecondSignInAfterFreeScan?: boolean;
-  hasSecondMonthlyScan?: boolean;
 };
 
 export const CsatSurvey = (props: CsatSurveyProps) => {
@@ -40,8 +40,8 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
     }),
     getLatestScanDateCsatSurvey({
       ...surveyOptions,
-      isSecondSignInAfterFreeScan: props.isSecondSignInAfterFreeScan ?? false,
-      hasSecondMonthlyScan: props.hasSecondMonthlyScan ?? false,
+      isSecondSignInAfterFreeScan: props.isSecondSignInAfterFreeScan,
+      hasFirstMonitoringScan: props.hasFirstMonitoringScan,
     }),
   ];
 

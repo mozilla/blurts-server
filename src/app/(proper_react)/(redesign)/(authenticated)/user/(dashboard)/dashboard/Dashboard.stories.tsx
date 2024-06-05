@@ -53,6 +53,7 @@ type DashboardWrapperProps = (
   activeTab?: TabType;
   enabledFeatureFlags?: FeatureFlagName[];
   experimentData?: ExperimentData;
+  hasFistMonitoringScan?: boolean;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
@@ -214,6 +215,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
               }
             }
             activeTab={props.activeTab ?? "action-needed"}
+            hasFistMonitoringScan={props.hasFistMonitoringScan ?? false}
           />
         </Shell>
       </CountryCodeProvider>

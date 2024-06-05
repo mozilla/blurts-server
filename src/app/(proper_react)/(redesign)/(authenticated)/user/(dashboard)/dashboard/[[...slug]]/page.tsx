@@ -14,6 +14,7 @@ import {
 } from "../../../../../../../functions/universal/user";
 import {
   getLatestOnerepScanResults,
+  getLatestScanForProfileByReason,
   getScansCountForProfile,
 } from "../../../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../../../db/tables/subscribers";
@@ -129,6 +130,13 @@ export default async function DashboardPage({ params }: Props) {
   const elapsedTimeInDaysSinceInitialScan =
     await getElapsedTimeInDaysSinceInitialScan(session.user);
 
+  const hasFirstMonitoringScan = profileId
+    ? typeof (await getLatestScanForProfileByReason(
+        profileId,
+        "monitoring",
+      )) !== "undefined"
+    : false;
+
   return (
     <View
       user={session.user}
@@ -148,6 +156,7 @@ export default async function DashboardPage({ params }: Props) {
       experimentationId={experimentationId}
       experimentData={experimentData}
       activeTab={activeTab}
+      hasFistMonitoringScan={hasFirstMonitoringScan}
     />
   );
 }

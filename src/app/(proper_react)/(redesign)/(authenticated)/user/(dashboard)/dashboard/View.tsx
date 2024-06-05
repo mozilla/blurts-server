@@ -72,6 +72,7 @@ export type Props = {
   scanCount: number;
   isNewUser: boolean;
   experimentationId: string;
+  hasFistMonitoringScan: boolean;
   elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
   activeTab: TabType;
@@ -450,8 +451,8 @@ export const View = (props: Props) => {
         hasAutoFixedDataBrokers={
           dataSummary.dataBrokerAutoFixedDataPointsNum > 0
         }
+        hasFirstMonitoringScan={props.hasFistMonitoringScan}
         isSecondSignInAfterFreeScan={false}
-        hasSecondMonthlyScan={false}
       />
 
       <div className={styles.dashboardContent}>

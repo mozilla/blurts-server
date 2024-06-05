@@ -38,14 +38,25 @@ const surveyData: SurveyData = {
 const getLatestScanDateCsatSurvey = (
   props: CsatSurveyProps & {
     isSecondSignInAfterFreeScan: boolean;
-    hasSecondMonthlyScan: boolean;
+    hasFirstMonitoringScan: boolean;
   },
 ): RelevantSurveyWithTelemetry | null => {
-  const surveys = getRelevantSurveys({ ...surveyData, ...props });
+  const filteredSurveyData = {
+    ...surveyData,
+    variations: surveyData.variations.filter(
+      (surveyVariation) =>
+        (surveyVariation.id === "free-user" &&
+          props.isSecondSignInAfterFreeScan) ||
+        (surveyVariation.id === "plus-user" && props.hasFirstMonitoringScan),
+    ),
+  };
+  const surveys = getRelevantSurveys({ ...filteredSurveyData, ...props });
+
   if (!surveys || surveys?.length === 0) {
     return null;
   }
-  // In case there are multiple matching survey variations for the current user:
+
+  // In case there would be multiple matching survey variations for the current user:
   // Return the first one.
   const relevantSurvey = surveys[0];
 
