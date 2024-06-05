@@ -45,7 +45,7 @@ export async function getExperiments(params: {
         context: {
           // Nimbus takes a language, rather than a locale, hence the .split:
           language: params.locale.split("-")[0],
-          region: params.countryCode,
+          region: params.countryCode.toUpperCase(),
         },
       }),
     });

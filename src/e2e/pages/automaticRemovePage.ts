@@ -10,10 +10,13 @@ export class AutomaticRemovePage {
   readonly ulElement: Locator;
   readonly liElements: Locator;
 
-  readonly planLabel0: Locator;
-  readonly planLabel1: Locator;
+  readonly planToggle0: Locator;
+  readonly planToggle1: Locator;
   readonly price: Locator;
   readonly plan: Locator;
+  readonly xButton: Locator;
+  readonly forwardArrowButton: Locator;
+  readonly subplatButton: Locator;
 
   readonly bulletPointsExpected: string[];
 
@@ -24,8 +27,8 @@ export class AutomaticRemovePage {
     this.liElements = page.locator("div > strong + ul > li");
 
     //labels that allow toggles
-    this.planLabel0 = page.locator("div > label").nth(0);
-    this.planLabel1 = page.locator("div > label").nth(1);
+    this.planToggle0 = page.locator("div > label").nth(0);
+    this.planToggle1 = page.locator("div > label").nth(1);
 
     //displayed price and plan
     this.price = page.locator("div > strong + span");
@@ -39,6 +42,10 @@ export class AutomaticRemovePage {
       "Continuous monitoring for new exposures",
       "Alerts when your data has been breached",
     ];
+
+    this.xButton = page.getByLabel("Return to dashboard");
+    this.forwardArrowButton = page.getByLabel("Go to next step");
+    this.subplatButton = page.locator("div > strong + span + a");
   }
 
   async open() {
