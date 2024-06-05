@@ -101,7 +101,7 @@ export const DataBrokers = (props: Props) => {
       </div>
       {/* STEP 2 */}
       <div className={`${styles.step} ${styles.reversedStep}`}>
-        <Image src={RemoveStep2} alt="step 2 screenshot" />
+        <Image src={RemoveStep2} alt="" />
         <div className={styles.stepTextContainer}>
           <h3 className={`${styles.brokersEmphasis} ${styles.stepTitle}`}>
             {l10n.getString("section-1-step-2-title")}
@@ -133,7 +133,7 @@ export const DataBrokers = (props: Props) => {
             {l10n.getString("section-1-step-3-text-2")}
           </p>
         </div>
-        <Image src={RemoveStep3} alt="step 3 screenshot" />
+        <Image src={RemoveStep3} alt="" />
       </div>
       <div className={styles.sectionCTAButton}>
         <TelemetryButton
