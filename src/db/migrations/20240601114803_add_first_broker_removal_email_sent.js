@@ -9,6 +9,7 @@
 export function up (knex) {
   return knex.schema.table("subscribers", table => {
     table.boolean("first_broker_removal_email_sent").defaultTo(false);
+    table.index("first_broker_removal_email_sent");
   });
 }
 
@@ -19,5 +20,6 @@ export function up (knex) {
 export function down (knex) {
   return knex.schema.table("subscribers", table => {
     table.dropColumn("first_broker_removal_email_sent");
+    table.dropIndex("first_broker_removal_email_sent")
   });
 }
