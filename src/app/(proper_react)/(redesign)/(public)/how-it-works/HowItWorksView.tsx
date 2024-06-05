@@ -17,7 +17,7 @@ export type Props = {
   l10n: ExtendedReactLocalization;
 };
 
-export const View = () => {
+export const HowItWorksView = () => {
   const l10n = useL10n();
   return (
     <main>
