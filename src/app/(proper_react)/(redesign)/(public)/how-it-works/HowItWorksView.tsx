@@ -11,7 +11,7 @@ import { useL10n } from "../../../../hooks/l10n";
 import { Header } from "./components/Header";
 import { DataBrokers } from "./components/DataBrokers";
 import { DataBreaches } from "./components/DataBreaches";
-import { Footer } from "./components/Footer";
+import { FooterSection } from "./components/FooterSection";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -24,7 +24,7 @@ export const View = () => {
       <Header l10n={l10n} />
       <DataBrokers l10n={l10n} />
       <DataBreaches l10n={l10n} />
-      <Footer l10n={l10n} />
+      <FooterSection l10n={l10n} />
     </main>
   );
 };
