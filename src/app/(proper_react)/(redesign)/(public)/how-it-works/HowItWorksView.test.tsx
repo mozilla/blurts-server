@@ -11,6 +11,7 @@ import { userEvent } from "@testing-library/user-event";
 import { useSession } from "next-auth/react";
 import { deleteAllCookies } from "../../../../functions/client/deleteAllCookies";
 import { useTelemetry } from "../../../../hooks/useTelemetry";
+import { getPremiumSubscriptionUrl } from "../../../../functions/server/getPremiumSubscriptionInfo";
 
 jest.mock("next-auth/react", () => {
   return {
@@ -42,6 +43,7 @@ describe("How it works page", () => {
   });
 
   it("Data Removal buttons enter user into premium subscription flow", () => {
+    const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
     const ComposedPage = composeStory(HowItWorks, Meta);
     render(<ComposedPage />);
 
@@ -49,14 +51,8 @@ describe("How it works page", () => {
       name: "Get data removal",
     });
 
-    expect(dataRemovalBtn1).toHaveAttribute(
-      "href",
-      "https://accounts.firefox.com/subscriptions/products/prod_OiV9RSaatywSRy?plan=price_1Nv4ODJNcmPzuWtRoYpoFHXd",
-    );
-    expect(dataRemovalBtn2).toHaveAttribute(
-      "href",
-      "https://accounts.firefox.com/subscriptions/products/prod_OiV9RSaatywSRy?plan=price_1Nv4ODJNcmPzuWtRoYpoFHXd",
-    );
+    expect(dataRemovalBtn1).toHaveAttribute("href", yearlySubscriptionUrl);
+    expect(dataRemovalBtn2).toHaveAttribute("href", yearlySubscriptionUrl);
   });
 
   it("Free Scan button enters user into account.mozilla.com", async () => {
