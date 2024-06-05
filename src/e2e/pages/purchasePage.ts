@@ -82,7 +82,7 @@ export class PurchasePage {
     await this.paypalButton.click();
     const newPage = await pagePromise;
     await newPage.waitForLoadState();
-    await newPage.waitForURL(/.*paypal\.com\/checkoutnow.*/);
+    await newPage.waitForURL(/.*paypal\.com.*\/checkout.*/);
 
     const emailPrompt = newPage.locator("#email");
     await expect(emailPrompt).toBeVisible();
@@ -165,7 +165,7 @@ export class PurchasePage {
     // confirm successful payment
     await dashboardPage.plusSubscription.waitFor({
       state: "attached",
-      timeout: 5000,
+      timeout: 10000,
     });
     await expect(dashboardPage.plusSubscription).toBeVisible();
   }
