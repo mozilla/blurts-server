@@ -2,11 +2,11 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-# Banner
+## Banner
 how-it-works-banner-title = How it works
 how-it-works-banner-text = We help fix exposures of your information from two different sources: <data_brokers_link>data brokers</data_brokers_link> and <data_breaches_link>data breaches</data_breaches_link>.
 
-# Section 1 - We remove your info from data brokers
+## Section 1 - We remove your info from data brokers
 ## Intro
 section-1-intro-title = We remove your info from <data_brokers>data brokers</data_brokers>
 section-1-intro-text-1 = These sites scrape your data from across the web to create profiles that include your name(s), current and previous addresses, family member names, criminal history, and much more. And they sell this information to anyone searching for you.
@@ -36,7 +36,7 @@ section-1-step-3-text-2 = For paid subscribers, we re-check every month to make 
 ## CTA button
 section-1-cta-button = Get data removal
 
-# Section 2 - We provide steps to help resolve data breaches
+## Section 2 - We provide steps to help resolve data breaches
 ## Intro
 section-2-intro-title = We provide steps to help resolve <data_breaches>data breaches</data_breaches>
 section-2-intro-text-1 = Data breaches are security violations where your personal information is either accidentally exposed or illegally stolen by hackers — including passwords, contact info, financials, and much more. Any account or anywhere your information is stored online could be a target.
@@ -62,7 +62,7 @@ section-2-step-3-text = Whenever we detect a new breach, we’ll check to see if
 ## CTA button
 section-2-cta-button = Get free scan
 
-# Footer
+## Footer
 footer-title = Take back control of your data
 footer-input-placeholder = example@example.com
 footer-cta-button = Get free scan
