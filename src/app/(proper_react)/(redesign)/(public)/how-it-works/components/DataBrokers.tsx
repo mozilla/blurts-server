@@ -15,7 +15,7 @@ import {
 import styles from "../HowItWorksView.module.scss";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
 
-export const SectionOne = (props: Props) => {
+export const DataBrokers = (props: Props) => {
   const { l10n } = props;
 
   return (
