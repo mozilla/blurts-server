@@ -22,6 +22,7 @@ src/client/images/logo_cache
 **/storageState.json
 state.json
 src/e2e/specs/*-snapshots/**
+**/traces/
 
 # Storybook
 */storybook.log
@@ -70,5 +71,3 @@ next-env.d.ts
 # Glean
 .venv
 /src/telemetry/generated/
-
-traces
