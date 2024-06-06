@@ -27,7 +27,7 @@ export async function GET() {
   }
 }
 
-export function exportCsv(
+function exportCsv(
   scanResults: OnerepScanResultRow[],
   brokers: Map<
     number,
