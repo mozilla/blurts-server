@@ -65,7 +65,7 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
   // Mark all surveys except the current one as automatically dismissed.
   filteredSurveys.forEach((survey) => {
     if (survey && survey?.id !== currentSurvey?.id) {
-      const cookieDismissalId = `${survey.id}_dismissed`;
+      const cookieDismissalId = `${survey.localDismissalId}_dismissed`;
       cookies.set(cookieDismissalId, Date.now().toString(), {
         maxAge: COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS,
       });
@@ -76,9 +76,9 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
     currentSurvey && (
       <CsatSurveyBanner
         key={currentSurvey.id}
-        survey={currentSurvey.survey}
-        localDismissalId={currentSurvey.id}
-        telemetryId={currentSurvey.telemetryId}
+        survey={currentSurvey}
+        localDismissalId={currentSurvey.localDismissalId}
+        metricKeys={currentSurvey.metricKeys}
       />
     )
   );

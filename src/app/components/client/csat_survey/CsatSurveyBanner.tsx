@@ -13,6 +13,7 @@ import { useHasRenderedClientSide } from "../../../hooks/useHasRenderedClientSid
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import styles from "./CsatSurveyBanner.module.scss";
 import { Survey } from "./surveys/csatSurvey";
+import { GleanMetricMap } from "../../../../telemetry/generated/_map";
 
 const surveyResponses = [
   "very-dissatisfied",
@@ -28,13 +29,13 @@ type SurveyLinks = Record<SurveyResponse, string>;
 
 type Props = {
   localDismissalId: string;
-  telemetryId: string;
+  metricKeys: GleanMetricMap["csatSurvey"]["click"];
   survey: Survey;
 };
 
 export const CsatSurveyBanner = ({
   localDismissalId,
-  telemetryId,
+  metricKeys,
   survey,
 }: Props) => {
   const l10n = useL10n();
@@ -57,11 +58,12 @@ export const CsatSurveyBanner = ({
     "followUpSurveyOptions" in survey &&
     typeof survey.followUpSurveyOptions !== "undefined";
 
-  const submit = (satisfaction: SurveyResponse) => {
-    setAnswer(satisfaction);
+  const submit = (response: SurveyResponse) => {
+    setAnswer(response);
     dismiss({ soft: hasFollowUpSurveyOptions });
-    recordTelemetry("button", "click", {
-      button_id: `${telemetryId}_${satisfaction}`,
+    recordTelemetry("csatSurvey", "click", {
+      ...metricKeys,
+      response_id: response,
     });
   };
 

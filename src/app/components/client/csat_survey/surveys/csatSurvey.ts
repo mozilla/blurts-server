@@ -7,6 +7,7 @@ import { TabType } from "../../../../(proper_react)/(redesign)/(authenticated)/u
 import { hasPremium } from "../../../../functions/universal/user";
 import { AutomaticRemovalVariation } from "./automaticRemovalCsatSurvey";
 import { ExperimentData } from "../../../../../telemetry/generated/nimbus/experiments";
+import { GleanMetricMap } from "../../../../../telemetry/generated/_map";
 
 const surveyResponses = [
   "very-dissatisfied",
@@ -18,7 +19,7 @@ const surveyResponses = [
 
 export type SurveyResponse = (typeof surveyResponses)[number];
 
-export type SurveyType = "csat_survey" | "csat_survey_latest_scan_date";
+export type SurveyType = "csat_survey" | "last_scan_date";
 
 export type UserType = "free-user" | "plus-user";
 
@@ -51,29 +52,24 @@ export type CsatSurveyProps = {
   user: Session["user"];
 };
 
-export type RelevantSurvey = {
-  id: string;
-  survey: Survey;
-};
-
-export type RelevantSurveyWithTelemetry = RelevantSurvey & {
-  telemetryId: string;
+export type RelevantSurveyWithMetric = Survey & {
+  localDismissalId: string;
+  metricKeys: GleanMetricMap["csatSurvey"]["click"];
 };
 
 export function getRelevantSurveys({
-  id,
   requiredExperiments,
   variations,
   activeTab,
   experimentData,
   user,
-}: SurveyData & CsatSurveyProps): RelevantSurvey[] | null {
+}: SurveyData & CsatSurveyProps): Survey[] | null {
   if (
-    !requiredExperiments.every((experiment) =>
-      experiment.statusAllowList.includes(
+    !requiredExperiments.every((experiment) => {
+      return experiment.statusAllowList.includes(
         experimentData[experiment.id].enabled ? "enabled" : "disabled",
-      ),
-    )
+      );
+    })
   ) {
     return null;
   }
@@ -86,8 +82,5 @@ export function getRelevantSurveys({
     return isRelevantUser && isRelevantTab;
   });
 
-  return filteredSurveys.map((survey) => ({
-    id: `${id}_${survey.id}`,
-    survey,
-  }));
+  return filteredSurveys;
 }

@@ -428,3 +428,40 @@ cta_button:
       plan_tier:
         description: Which tier of plan the user is on [Free, Plus]
         type: string
+
+csat_survey:
+  click:
+    type: event
+    description: |
+      A click on a CSAT survey response button.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      survey_id:
+        description: The ID of the survey, or some way to identify which survey was responded to.
+      plan_tier:
+        description: Which tier of plan the user is on [Free, Plus]
+        type: string
+      response_id:
+        description: The ID of the survey response option.
+        type: string
+      experiment_branch:
+        description: The experiment branch the user is on [control, treatment]
+        type: string
+      last_scan_date:
+        description: The date on which the user had their last data broker scan.
+        type: string
+      days_since_first_removal_scan:
+        description: The number of days since the user had their first data broker removal scan.
+        type: quantity
+        unit: days

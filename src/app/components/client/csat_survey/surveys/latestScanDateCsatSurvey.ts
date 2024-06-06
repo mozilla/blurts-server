@@ -4,13 +4,13 @@
 
 import {
   CsatSurveyProps,
-  RelevantSurveyWithTelemetry,
+  RelevantSurveyWithMetric,
   SurveyData,
   getRelevantSurveys,
 } from "./csatSurvey";
 
 const surveyData: SurveyData = {
-  id: "csat_survey_latest_scan_date",
+  id: "last_scan_date",
   requiredExperiments: [
     {
       id: "last-scan-date",
@@ -40,15 +40,16 @@ const getLatestScanDateCsatSurvey = (
     isSecondSignInAfterFreeScan: boolean;
     hasFirstMonitoringScan: boolean;
   },
-): RelevantSurveyWithTelemetry | null => {
+): RelevantSurveyWithMetric | null => {
   const filteredSurveyData = {
     ...surveyData,
-    variations: surveyData.variations.filter(
-      (surveyVariation) =>
+    variations: surveyData.variations.filter((surveyVariation) => {
+      return (
         (surveyVariation.id === "free-user" &&
           props.isSecondSignInAfterFreeScan) ||
-        (surveyVariation.id === "plus-user" && props.hasFirstMonitoringScan),
-    ),
+        (surveyVariation.id === "plus-user" && props.hasFirstMonitoringScan)
+      );
+    }),
   };
   const surveys = getRelevantSurveys({ ...filteredSurveyData, ...props });
 
@@ -66,7 +67,12 @@ const getLatestScanDateCsatSurvey = (
     : "control";
   return {
     ...relevantSurvey,
-    telemetryId: `${relevantSurvey.id}_${experimentBranchId}`,
+    localDismissalId: `${surveyData.id}_${relevantSurvey.id}`,
+    metricKeys: {
+      survey_id: surveyData.id,
+      experiment_branch: experimentBranchId,
+      last_scan_date: new Date().toString(),
+    },
   };
 };
 

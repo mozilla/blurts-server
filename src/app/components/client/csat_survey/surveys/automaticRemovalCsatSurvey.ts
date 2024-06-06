@@ -5,7 +5,7 @@
 import { TabType } from "../../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 import {
   CsatSurveyProps,
-  RelevantSurveyWithTelemetry,
+  RelevantSurveyWithMetric,
   SurveyData,
   SurveyLinks,
   UserType,
@@ -93,17 +93,16 @@ const getAutomaticRemovalCsatSurvey = (
     elapsedTimeInDaysSinceInitialScan: number | undefined;
     hasAutoFixedDataBrokers: boolean;
   },
-): RelevantSurveyWithTelemetry | null => {
+): RelevantSurveyWithMetric | null => {
   const surveys = getRelevantSurveys({ ...surveyData, ...props });
   // Find the last survey variation that matches the time since the users
   // automatic removal.
   const relevantSurvey =
     surveys &&
-    surveys.findLast((surveyVariation) => {
-      const survey = surveyVariation.survey as AutomaticRemovalVariation;
+    surveys.findLast((survey) => {
       // Show the initial survey only to users who have automatically fixed
       // data broker results.
-      if (survey?.id === "initial" && !props.hasAutoFixedDataBrokers) {
+      if (survey.id === "initial" && !props.hasAutoFixedDataBrokers) {
         return;
       }
 
@@ -112,13 +111,26 @@ const getAutomaticRemovalCsatSurvey = (
         props.elapsedTimeInDaysSinceInitialScan >= survey.daysThreshold
       );
     });
+
   if (!relevantSurvey) {
     return null;
   }
 
+  // Distinguish between users who are and are not enrolled in the experiment.
+  const experimentBranchId = props.experimentData[
+    "automatic-removal-csat-survey"
+  ].enabled
+    ? "treatment"
+    : "control";
+
   return {
     ...relevantSurvey,
-    telemetryId: relevantSurvey.id,
+    localDismissalId: `${surveyData.id}_${relevantSurvey.id}`,
+    metricKeys: {
+      survey_id: surveyData.id,
+      experiment_branch: experimentBranchId,
+      days_since_first_removal_scan: props.elapsedTimeInDaysSinceInitialScan,
+    },
   };
 };
 

@@ -163,10 +163,13 @@ describe("CSAT survey banner: Automatic Removal", () => {
     await user.click(answerButton);
 
     expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
+      "csatSurvey",
       "click",
       expect.objectContaining({
-        button_id: "csat_survey_6-months_very-satisfied",
+        survey_id: "csat_survey",
+        experiment_branch: "treatment",
+        response_id: "very-satisfied",
+        days_since_first_removal_scan: 180,
       }),
     );
   });
@@ -223,7 +226,14 @@ describe("CSAT survey banner: Latest scan date", () => {
       user.fxa.subscriptions = [];
     }
 
-    render(<ComposedCsatSurvey activeTab="action-needed" user={user} />);
+    render(
+      <ComposedCsatSurvey
+        user={user}
+        activeTab="action-needed"
+        isSecondSignInAfterFreeScan={true}
+        hasFirstMonitoringScan={false}
+      />,
+    );
 
     const answerButton = screen.getByRole("button", {
       name: "Satisfied",
@@ -269,11 +279,13 @@ describe("CSAT survey banner: Latest scan date", () => {
     await user.click(answerButton);
 
     expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
+      "csatSurvey",
       "click",
       expect.objectContaining({
-        button_id:
-          "csat_survey_latest_scan_date_plus-user_treatment_very-satisfied",
+        survey_id: "last_scan_date",
+        days_since_first_removal_scan: 1,
+        experiment_branch: "treatment",
+        response_id: "very-satisfied",
       }),
     );
   });
@@ -302,11 +314,12 @@ describe("CSAT survey banner: Latest scan date", () => {
     await user.click(answerButton);
 
     expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
+      "csatSurvey",
       "click",
       expect.objectContaining({
-        button_id:
-          "csat_survey_latest_scan_date_plus-user_control_very-satisfied",
+        survey_id: "last_scan_date",
+        experiment_branch: "control",
+        response_id: "very-satisfied",
       }),
     );
   });

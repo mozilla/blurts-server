@@ -156,7 +156,7 @@ export default async function DashboardPage({ params }: Props) {
       experimentationId={experimentationId}
       experimentData={experimentData}
       activeTab={activeTab}
-      hasFistMonitoringScan={hasFirstMonitoringScan}
+      hasFirstMonitoringScan={hasFirstMonitoringScan}
     />
   );
 }

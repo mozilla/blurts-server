@@ -53,7 +53,7 @@ type DashboardWrapperProps = (
   activeTab?: TabType;
   enabledFeatureFlags?: FeatureFlagName[];
   experimentData?: ExperimentData;
-  hasFistMonitoringScan?: boolean;
+  hasFirstMonitoringScan?: boolean;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
@@ -209,13 +209,19 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             experimentData={
               props.experimentData ?? {
                 ...defaultExperimentData,
+                "automatic-removal-csat-survey": {
+                  enabled: true,
+                },
                 "last-scan-date": {
+                  enabled: true,
+                },
+                "last-scan-date-csat-survey": {
                   enabled: true,
                 },
               }
             }
             activeTab={props.activeTab ?? "action-needed"}
-            hasFistMonitoringScan={props.hasFistMonitoringScan ?? false}
+            hasFirstMonitoringScan={props.hasFirstMonitoringScan ?? false}
           />
         </Shell>
       </CountryCodeProvider>
@@ -246,6 +252,12 @@ const meta: Meta<typeof DashboardWrapper> = {
       name: "Days since initial scan",
       control: {
         type: "number",
+      },
+    },
+    hasFirstMonitoringScan: {
+      name: "Has first monitoring scan",
+      control: {
+        type: "boolean",
       },
     },
   },

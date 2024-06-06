@@ -3366,8 +3366,8 @@ describe("CSAT survey banner", () => {
         elapsedTimeInDaysSinceInitialScan={1}
         experimentData={{
           ...defaultExperimentData,
-          "automatic-removal-csat-survey": {
-            enabled: true,
+          "last-scan-date-csat-survey": {
+            enabled: false,
           },
         }}
       />,
@@ -3390,8 +3390,8 @@ describe("CSAT survey banner", () => {
         elapsedTimeInDaysSinceInitialScan={1}
         experimentData={{
           ...defaultExperimentData,
-          "automatic-removal-csat-survey": {
-            enabled: true,
+          "last-scan-date-csat-survey": {
+            enabled: false,
           },
         }}
       />,
@@ -3417,8 +3417,8 @@ describe("CSAT survey banner", () => {
         elapsedTimeInDaysSinceInitialScan={91}
         experimentData={{
           ...defaultExperimentData,
-          "automatic-removal-csat-survey": {
-            enabled: true,
+          "last-scan-date-csat-survey": {
+            enabled: false,
           },
         }}
       />,
@@ -3444,8 +3444,8 @@ describe("CSAT survey banner", () => {
         elapsedTimeInDaysSinceInitialScan={1}
         experimentData={{
           ...defaultExperimentData,
-          "automatic-removal-csat-survey": {
-            enabled: true,
+          "last-scan-date-csat-survey": {
+            enabled: false,
           },
         }}
       />,
@@ -3476,8 +3476,8 @@ describe("CSAT survey banner", () => {
         elapsedTimeInDaysSinceInitialScan={180}
         experimentData={{
           ...defaultExperimentData,
-          "automatic-removal-csat-survey": {
-            enabled: true,
+          "last-scan-date-csat-survey": {
+            enabled: false,
           },
         }}
       />,
@@ -3505,18 +3505,16 @@ describe("CSAT survey banner", () => {
     );
     render(
       <ComposedDashboard
+        activeTab="fixed"
         elapsedTimeInDaysSinceInitialScan={185}
         experimentData={{
           ...defaultExperimentData,
-          "automatic-removal-csat-survey": {
-            enabled: true,
+          "last-scan-date-csat-survey": {
+            enabled: false,
           },
         }}
       />,
     );
-
-    const fixedTab = screen.getByText("Fixed");
-    await user.click(fixedTab);
 
     const answerButton = screen.queryByRole("button", {
       name: "Satisfied",
@@ -3539,24 +3537,11 @@ describe("CSAT survey banner", () => {
     );
     render(
       <ComposedDashboard
-        elapsedTimeInDaysSinceInitialScan={1}
-        experimentData={{
-          ...defaultExperimentData,
-          "automatic-removal-csat-survey": {
-            enabled: true,
-          },
-          "last-scan-date": {
-            enabled: true,
-          },
-          "last-scan-date-csat-survey": {
-            enabled: true,
-          },
-        }}
+        activeTab="fixed"
+        elapsedTimeInDaysSinceInitialScan={90}
+        hasFirstMonitoringScan
       />,
     );
-
-    const fixedTab = screen.getByText("Fixed");
-    await user.click(fixedTab);
 
     const answerButton = screen.getByRole("button", {
       name: "Very satisfied",
@@ -3564,11 +3549,13 @@ describe("CSAT survey banner", () => {
     await user.click(answerButton);
 
     expect(mockedRecord).toHaveBeenLastCalledWith(
-      "button",
+      "csatSurvey",
       "click",
       expect.objectContaining({
-        button_id:
-          "csat_survey_latest_scan_date_plus-user_treatment_very-satisfied",
+        survey_id: "last_scan_date",
+        response_id: "very-satisfied",
+        experiment_branch: "treatment",
+        days_since_first_removal_scan: 1,
       }),
     );
   });
@@ -3581,23 +3568,41 @@ describe("CSAT survey banner", () => {
     render(
       <ComposedDashboard
         activeTab="fixed"
-        elapsedTimeInDaysSinceInitialScan={1}
-        experimentData={{
-          ...defaultExperimentData,
-          "automatic-removal-csat-survey": {
-            enabled: true,
-          },
-          "last-scan-date": {
-            enabled: true,
-          },
-          "last-scan-date-csat-survey": {
-            enabled: true,
-          },
-        }}
+        elapsedTimeInDaysSinceInitialScan={90}
+        hasFirstMonitoringScan
       />,
     );
 
     const cookies = new Cookies(null, { path: "/" });
-    expect(cookies.get("csat_survey_initial_dismissed")).toBeDefined();
+    expect(cookies.get("csat_survey_3-months_dismissed")).toBeDefined();
+  });
+
+  it("confirms that the “latest scan” CSAT survey banner has been dismissed", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        elapsedTimeInDaysSinceInitialScan={90}
+        hasFirstMonitoringScan
+      />,
+    );
+
+    const dismissButton = screen.getByRole("button", {
+      name: "Dismiss",
+    });
+    await user.click(dismissButton);
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Neutral",
+    });
+    expect(answerButton).not.toBeInTheDocument();
+
+    const cookies = new Cookies(null, { path: "/" });
+    expect(cookies.get("csat_survey_3-months_dismissed")).toBeDefined();
+    expect(cookies.get("last_scan_date_plus-user_dismissed")).toBeDefined();
   });
 });
