@@ -48,7 +48,7 @@ jobs:
       - name: Run Playwright tests - ${{ inputs.environment != null && inputs.environment || 'stage' }}
         if: github.actor != 'dependabot[bot]'
         run: npm run e2e
-        timeout-minutes: 40
+        timeout-minutes: 30
         env:
           E2E_TEST_ENV: ${{ inputs.environment != null && inputs.environment || 'stage' }}
           E2E_TEST_BASE_URL: ${{ secrets.E2E_TEST_BASE_URL }}
@@ -92,7 +92,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Link to job:* *<https://github.com/mozilla/blurts-server/actions/runs/${{ github.run_id }}|Relay e2e tests>*"
+                    "text": "*Link to job:* *<https://github.com/mozilla/blurts-server/actions/runs/${{ github.run_id }}|Monitor e2e tests>*"
                   }
                 },
                 {
