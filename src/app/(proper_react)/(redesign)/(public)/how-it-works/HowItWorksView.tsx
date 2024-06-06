@@ -2,33 +2,29 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-"use client";
-
 import { ExtendedReactLocalization } from "../../../../functions/l10n";
-
-import { useL10n } from "../../../../hooks/l10n";
 
 import { Header } from "./components/Header";
 import { DataBrokers } from "./components/DataBrokers";
 import { DataBreaches } from "./components/DataBreaches";
 import { FooterSection } from "./components/FooterSection";
+import { getPremiumSubscriptionUrl } from "../../../../functions/server/getPremiumSubscriptionInfo";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
-  yearlySubscriptionUrl?: string;
 };
 
 export const HowItWorksView = ({
-  yearlySubscriptionUrl,
+  l10n,
 }: {
-  yearlySubscriptionUrl: string;
+  l10n: ExtendedReactLocalization;
 }) => {
-  const l10n = useL10n();
+  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
   return (
     <main>
       <Header l10n={l10n} />
-      <DataBrokers l10n={l10n} yearlySubscriptionUrl={yearlySubscriptionUrl} />
-      <DataBreaches l10n={l10n} />
+      <DataBrokers yearlySubscriptionUrl={yearlySubscriptionUrl} />
+      <DataBreaches />
       <FooterSection l10n={l10n} />
     </main>
   );

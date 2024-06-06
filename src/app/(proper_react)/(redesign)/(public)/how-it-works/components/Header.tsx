@@ -2,11 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { Props } from "../HowItWorksView";
+import { ExtendedReactLocalization } from "../../../../../functions/l10n";
 import styles from "../HowItWorksView.module.scss";
 
-export const Header = (props: Props) => {
-  const { l10n } = props;
+export const Header = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
   return (
     <header className={styles.header}>
       <span>
