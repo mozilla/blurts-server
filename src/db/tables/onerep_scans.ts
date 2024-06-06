@@ -65,12 +65,15 @@ async function getAllScanResults(
   perPage: number | null,
 ) {
   if (page && perPage) {
-    const count = (
+    // Our custom knex type doesn't seem to be quite right in this case.
+    const countResult = (
       await knex("onerep_scan_results")
         .count("*")
         .whereIn("status", statuses)
         .andWhere("updated_at", "<", age)
-    )[0].count; // FIXME knex returns an array here, it's possible our custom knex types aren't quite right.
+    )[0] as unknown as { count: number };
+
+    const count = countResult.count;
 
     const scanResults = await knex("onerep_scan_results")
       .limit(perPage)
