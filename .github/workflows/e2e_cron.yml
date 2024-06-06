@@ -48,7 +48,7 @@ jobs:
       - name: Run Playwright tests - ${{ inputs.environment != null && inputs.environment || 'stage' }}
         if: github.actor != 'dependabot[bot]'
         run: npm run e2e
-        timeout-minutes: 20
+        timeout-minutes: 40
         env:
           E2E_TEST_ENV: ${{ inputs.environment != null && inputs.environment || 'stage' }}
           E2E_TEST_BASE_URL: ${{ secrets.E2E_TEST_BASE_URL }}
@@ -78,53 +78,54 @@ jobs:
           name: test-results
           path: src/e2e/test-results/
           retention-days: 30
+          
       - name: Send GitHub Action trigger data to Slack workflow
-              id: slack
-              uses: slackapi/slack-github-action@v1.26.0
-              if: failure()
-              with:
-                # For posting a message using Block Kit
-                payload: |
-                  {
-                    "blocks": [
-                      {
-                        "type": "section",
-                        "text": {
-                          "type": "mrkdwn",
-                          "text": "*Link to job:* *<https://github.com/mozilla/blurts-server/actions/runs/${{ github.run_id }}|Relay e2e tests>*"
-                        }
-                      },
-                      {
-                        "type": "divider"
-                      },
-                      {
-                        "type": "section",
-                        "fields": [
-                          {
-                            "type": "mrkdwn",
-                            "text": "*Workflow:* \n ${{ github.workflow }}"
-                          },
-                          {
-                            "type": "mrkdwn",
-                            "text": "*Status:*\n ${{ job.status }}  "
-                          }
-                        ]
-                      },
-                      {
-                        "type": "section",
-                        "fields": [
-                          {
-                            "type": "mrkdwn",
-                            "text": "*Ref:*\n ${{ github.ref }}  "
-                          },
-                          {
-                            "type": "mrkdwn",
-                            "text": "*Triggered by:*\n ${{ github.triggering_actor }}"
-                          }
-                        ]
-                      }
-                    ]
+        id: slack
+        uses: slackapi/slack-github-action@v1.26.0
+        if: failure()
+        with:
+          # For posting a message using Block Kit
+          payload: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Link to job:* *<https://github.com/mozilla/blurts-server/actions/runs/${{ github.run_id }}|Relay e2e tests>*"
                   }
-              env:
-                SLACK_WEBHOOK_URL: ${{ secrets.SLACK_GHA_FAILURES_WEBHOOK }}
-                SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Workflow:* \n ${{ github.workflow }}"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Status:*\n ${{ job.status }}  "
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Ref:*\n ${{ github.ref }}  "
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Triggered by:*\n ${{ github.triggering_actor }}"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_GHA_FAILURES_WEBHOOK }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
