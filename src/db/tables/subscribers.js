@@ -510,6 +510,33 @@ async function deleteOnerepProfileId (subscriberId) {
 }
 /* c8 ignore stop */
 
+/* c8 ignore start */
+/**
+ * @param {string} fxaId
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function incrementSignInCount (fxaId) {
+  return await knex('subscribers')
+    .where('fxa_uid', fxaId)
+    .increment("sign_in_count", 1)
+}
+/* c8 ignore stop */
+
+/* c8 ignore start */
+/**
+ * @param {number} subscriberId
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function getSignInCount (subscriberId) {
+  const res = await knex('subscribers')
+    .select('sign_in_count')
+    .where('id', subscriberId)
+  return res?.[0]?.["sign_in_count"] ?? null
+}
+/* c8 ignore stop */
+
 export {
   getOnerepProfileId,
   getSubscribersByHashes,
@@ -533,5 +560,7 @@ export {
   deleteSubscriber,
   deleteResolutionsWithEmail,
   deleteOnerepProfileId,
+  incrementSignInCount,
+  getSignInCount,
   knex as knexSubscribers
 }

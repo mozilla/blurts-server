@@ -132,6 +132,7 @@ declare module "knex/types/tables" {
     // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     db_migration_2: null | unknown;
     onerep_profile_id: null | number;
+    sign_in_count: null | number;
     email_addresses: SubscriberEmail[];
   }
   type SubscriberOptionalColumns = Extract<
