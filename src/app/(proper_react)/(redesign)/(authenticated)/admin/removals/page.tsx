@@ -21,23 +21,24 @@ export default async function Page({
   if (isAdmin(session?.user?.email || "")) {
     const days = 30;
     const perPage = 100;
-    const page = searchParams?.page;
 
-    if (!page) {
+    if (!searchParams?.page) {
       redirect("?page=1");
     }
 
-    if (parseInt(page) < 1) {
+    const page = parseInt(searchParams.page);
+
+    if (page < 1) {
       return <code>Invalid page</code>;
     }
 
     const { totalPages, scanResults, brokers } = await getStuckRemovals(
       days,
-      parseInt(page),
+      page,
       perPage,
     );
 
-    if (totalPages === 0) {
+    if (totalPages === undefined || totalPages === 0) {
       return <NoResults email={session?.user?.email || ""} />;
     }
 
@@ -49,7 +50,7 @@ export default async function Page({
       <Removals
         scanResults={scanResults}
         brokers={brokers}
-        page={parseInt(page)}
+        page={page}
         totalPages={totalPages}
       />
     );
