@@ -8,19 +8,26 @@ import { isAdmin } from "../../../../../api/utils/auth";
 import { NoResults, Removals } from "./Removals";
 import { getStuckRemovals } from "../../../../../functions/server/getStuckRemovals";
 
-export default async function Page({ searchParams }) {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string;
+    page?: string;
+  };
+}) {
   const session = await getServerSession();
 
   if (isAdmin(session?.user?.email || "")) {
     const days = 30;
     const perPage = 100;
-    const page = searchParams.page;
+    const page = searchParams?.page;
 
     if (!page) {
       redirect("?page=1");
     }
 
-    if (page < 1) {
+    if (parseInt(page) < 1) {
       return <code>Invalid page</code>;
     }
 
@@ -42,7 +49,7 @@ export default async function Page({ searchParams }) {
       <Removals
         scanResults={scanResults}
         brokers={brokers}
-        page={page}
+        page={parseInt(page)}
         totalPages={totalPages}
       />
     );

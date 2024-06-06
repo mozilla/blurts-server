@@ -63,12 +63,15 @@ async function getAllScanResults(
   statuses: RemovalStatus[],
   page: number | null,
   perPage: number | null,
-): Promise<OnerepScanResultRow[] | object> {
+) {
   if (page && perPage) {
-    const count = await knex("onerep_scan_results")
-      .count("*")
-      .whereIn("status", statuses)
-      .andWhere("updated_at", "<", age);
+    const count = (
+      await knex("onerep_scan_results")
+        .count("*")
+        .whereIn("status", statuses)
+        .andWhere("updated_at", "<", age)
+    )[// @ts-ignore FIXME knex returns an array here, it's possible our types aren't quite right.
+    0].count;
 
     const scanResults = await knex("onerep_scan_results")
       .limit(perPage)
@@ -78,10 +81,11 @@ async function getAllScanResults(
       .orderBy("onerep_scan_result_id");
 
     let totalPages;
-    if (count[0].count > 0 && count[0].count < perPage) {
+
+    if (count > 0 && count < perPage) {
       totalPages = 1;
     } else {
-      totalPages = Math.floor(count[0].count / perPage);
+      totalPages = Math.floor(count / perPage);
     }
     return { totalPages, scanResults };
   } else {
