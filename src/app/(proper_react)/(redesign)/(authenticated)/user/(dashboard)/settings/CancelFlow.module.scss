@@ -13,9 +13,25 @@
   gap: $spacing-xs;
   text-align: center;
 
-  .primaryCta {
-    margin-top: $spacing-sm;
-    font-weight: 600;
+  button {
+    &.primaryCta {
+      margin-top: $spacing-sm;
+      font-weight: 600;
+    }
+
+    &.discountCta {
+      background-color: $color-purple-60;
+      width: $content-sm;
+
+      &:hover {
+        background-color: $color-purple-70;
+      }
+    }
+
+    &.tertiaryCta {
+      margin-top: $spacing-lg;
+      font-weight: 500;
+    }
   }
 
   small {
@@ -23,18 +39,8 @@
     font-weight: 400;
   }
 
-  .tertiaryCta {
-    margin-top: $spacing-md;
-    font-weight: 500;
-  }
-
   p {
     max-width: 600px;
-  }
-
-  .discountCta {
-    background-color: $color-purple-60;
-    width: $content-sm;
   }
 }
 

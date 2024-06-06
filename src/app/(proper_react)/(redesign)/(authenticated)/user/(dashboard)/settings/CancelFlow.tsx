@@ -99,7 +99,7 @@ export const CancelFlow = (props: Props) => {
           }}
           variant="primary"
           onPress={() => dialogState.close()}
-          className={`${styles.primaryCta} ${styles.discountCta}`}
+          className={`${styles.discountCta} ${styles.primaryCta}`}
         >
           {discountedNext3Months.headline}
         </TelemetryButton>,
@@ -117,7 +117,7 @@ export const CancelFlow = (props: Props) => {
           }}
           variant="primary"
           onPress={() => dialogState.close()}
-          className={`${styles.primaryCta} ${styles.discountCta}`}
+          className={`${styles.discountCta} ${styles.primaryCta}`}
         >
           {discountedNextMonth.headline}
         </TelemetryButton>,
