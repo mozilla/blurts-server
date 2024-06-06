@@ -48,19 +48,21 @@ export const DataBreaches = (props: Props) => {
         </div>
       </div>
       <div className={`${styles.step} ${styles.mobileColumns}`}>
-        <div className={`${styles.stepTextContainer} ${styles.mobileColumns}`}>
+        <ul className={`${styles.stepTextContainer} ${styles.mobileColumns}`}>
           {/* STEP 1 */}
-          <h3 className={`${styles.breachesEmphasis} ${styles.stepTitle}`}>
-            {l10n.getString("section-2-step-1-title")}
-          </h3>
-          <h3 className={styles.stepSubtitle}>
-            {l10n.getString("section-2-step-1-subtitle")}
-          </h3>
-          <p className={styles.stepBody}>
-            {l10n.getString("section-2-step-1-text")}
-          </p>
+          <li>
+            <h3 className={`${styles.breachesEmphasis} ${styles.stepTitle}`}>
+              {l10n.getString("section-2-step-1-title")}
+            </h3>
+            <h3 className={styles.stepSubtitle}>
+              {l10n.getString("section-2-step-1-subtitle")}
+            </h3>
+            <p className={styles.stepBody}>
+              {l10n.getString("section-2-step-1-text")}
+            </p>
+          </li>
           {/* STEP 2 */}
-          <div className={styles.stepGroupTitleAfter1st}>
+          <li className={styles.stepGroupTitleAfter1st}>
             <h3
               className={`${styles.breachesEmphasis} ${styles.stepTitle} ${styles.stepGroupTitleAfter1st}`}
             >
@@ -75,9 +77,9 @@ export const DataBreaches = (props: Props) => {
             <p className={styles.stepBody}>
               {l10n.getString("section-2-step-2-text-2")}
             </p>
-          </div>
+          </li>
           {/* STEP 3 */}
-          <div className={styles.stepGroupTitleAfter1st}>
+          <li className={styles.stepGroupTitleAfter1st}>
             <h3 className={`${styles.breachesEmphasis} ${styles.stepTitle}`}>
               {l10n.getString("section-2-step-3-title")}
             </h3>
@@ -87,8 +89,8 @@ export const DataBreaches = (props: Props) => {
             <p className={styles.stepBody}>
               {l10n.getString("section-2-step-3-text")}
             </p>
-          </div>
-        </div>
+          </li>
+        </ul>
         <Image src={Resolve} alt="" className={styles.mobileColumns} />
       </div>
       <div className={styles.sectionCTAButton}>
