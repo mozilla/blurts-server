@@ -157,7 +157,7 @@ declare module "knex/types/tables" {
   >;
   type SubscriberAutoInsertedColumns = Extract<
     keyof SubscriberRow,
-    "id" | "created_at" | "updated_at"
+    "id" | "created_at" | "updated_at" | "sign_in_count"
   >;
 
   interface EmailAddressRow {
