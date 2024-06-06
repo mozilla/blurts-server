@@ -2,15 +2,17 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+"use client";
+
 import Image from "next/image";
 import { signIn } from "next-auth/react";
-import { Props } from "../HowItWorksView";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
 import { Resolve } from "../images";
 import styles from "../HowItWorksView.module.scss";
+import { useL10n } from "../../../../../hooks/l10n";
 
-export const DataBreaches = (props: Props) => {
-  const { l10n } = props;
+export const DataBreaches = () => {
+  const l10n = useL10n();
 
   return (
     <div id="data-breach-section" className={styles.sectionWrapper}>

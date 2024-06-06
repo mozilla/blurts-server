@@ -2,8 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+"use client";
+
 import Image from "next/image";
-import { Props } from "../HowItWorksView";
 import {
   RemoveStep1,
   RemoveStep2,
@@ -14,9 +15,14 @@ import {
 } from "../images";
 import styles from "../HowItWorksView.module.scss";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
+import { useL10n } from "../../../../../hooks/l10n";
 
-export const DataBrokers = (props: Props) => {
-  const { l10n, yearlySubscriptionUrl } = props;
+export const DataBrokers = ({
+  yearlySubscriptionUrl,
+}: {
+  yearlySubscriptionUrl: string;
+}) => {
+  const l10n = useL10n();
 
   return (
     <div
