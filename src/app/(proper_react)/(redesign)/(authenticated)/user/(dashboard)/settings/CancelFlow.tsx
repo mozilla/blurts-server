@@ -142,10 +142,8 @@ export const CancelFlow = (props: Props) => {
         </TelemetryButton>,
       );
     }
-  }, [
-    props.experimentData?.["next-month-discount"],
-    props.experimentData?.["next-three-months-discount"],
-  ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const dialogTrigger = useOverlayTrigger({ type: "dialog" }, dialogState);
 
