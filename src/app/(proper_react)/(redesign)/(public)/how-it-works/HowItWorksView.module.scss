@@ -15,6 +15,10 @@
   padding: $layout-lg $spacing-md;
   display: flex;
   justify-content: center;
+  span {
+    width: 100%;
+    max-width: $content-xl;
+  }
   @media screen and (min-width: $content-md) {
     padding: $layout-lg;
   }
@@ -45,8 +49,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    max-width: $content-xl;
     @media screen and (min-width: $content-md) {
-      padding: $spacing-2xl $spacing-md;
+      padding: $spacing-2xl 0;
       gap: $spacing-lg;
     }
     .introContent {
@@ -92,6 +97,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    max-width: $content-xl;
     &.reversedStep {
       flex-direction: column-reverse;
     }
@@ -105,7 +111,8 @@
       gap: $spacing-xs;
     }
     .stepTextContainer {
-      padding: $spacing-md;
+      padding: $spacing-md 0;
+      max-width: $content-sm;
       &.mobileColumns {
         width: 45%;
       }
@@ -152,21 +159,34 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      padding: $spacing-2xl;
+      padding: $spacing-md;
       gap: $spacing-lg;
       &.reversedStep {
         flex-direction: row;
       }
       .stepTextContainer {
-        width: 50%;
+        max-width: $content-xs;
       }
       img {
-        width: $content-xs;
+        max-width: $content-xs;
+      }
+    }
+    @media screen and (min-width: $screen-lg) {
+      padding: $spacing-xs;
+      .stepTextContainer {
+        max-width: $content-sm;
+      }
+      img {
+        max-width: $content-sm;
       }
     }
     @media screen and (min-width: $screen-xl) {
+      padding: $spacing-xs;
+      .stepTextContainer {
+        max-width: $content-md;
+      }
       img {
-        width: unset;
+        max-width: $content-sm;
       }
     }
   }
