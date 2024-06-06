@@ -24,6 +24,10 @@ export const Removals = (props: {
 }) => {
   const session = useSession();
 
+  if (props.scanResults.length === 0) {
+    return <NoResults email={session?.data?.user?.email || ""} />;
+  }
+
   return (
     <main className={styles.wrapper}>
       <header className={styles.header}>
@@ -81,6 +85,17 @@ export const Removals = (props: {
     </main>
   );
 };
+
+export function NoResults(props: { email: string }) {
+  return (
+    <main className={styles.wrapper}>
+      <header className={styles.header}>
+        Logged in as <b>{props.email}</b>.
+      </header>
+      <div>No results found.</div>
+    </main>
+  );
+}
 
 export const Pagination = (props: { page: number; totalPages: number }) => {
   let nextPage = props.page;

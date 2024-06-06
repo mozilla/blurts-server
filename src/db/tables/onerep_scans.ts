@@ -72,12 +72,18 @@ async function getAllScanResults(
 
     const scanResults = await knex("onerep_scan_results")
       .limit(perPage)
-      .offset(page * perPage)
+      .offset((page - 1) * perPage)
       .whereIn("status", statuses)
       .andWhere("updated_at", "<", age)
       .orderBy("onerep_scan_result_id");
 
-    return { totalPages: Math.floor(count[0].count / perPage), scanResults };
+    let totalPages;
+    if (count[0].count > 0 && count[0].count < perPage) {
+      totalPages = 1;
+    } else {
+      totalPages = Math.floor(count[0].count / perPage);
+    }
+    return { totalPages, scanResults };
   } else {
     const scanResults = await knex("onerep_scan_results")
       .whereIn("status", statuses)

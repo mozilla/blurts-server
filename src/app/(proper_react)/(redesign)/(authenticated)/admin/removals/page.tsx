@@ -3,9 +3,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getServerSession } from "../../../../../functions/server/getServerSession";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { isAdmin } from "../../../../../api/utils/auth";
-import { Removals } from "./Removals";
+import { NoResults, Removals } from "./Removals";
 import { getStuckRemovals } from "../../../../../functions/server/getStuckRemovals";
 
 export default async function Page({ searchParams }) {
@@ -16,14 +16,26 @@ export default async function Page({ searchParams }) {
     const perPage = 100;
     const page = searchParams.page;
 
+    if (!page) {
+      redirect("?page=1");
+    }
+
+    if (page < 1) {
+      return <code>Invalid page</code>;
+    }
+
     const { totalPages, scanResults, brokers } = await getStuckRemovals(
       days,
-      parseInt(page ?? "1"),
+      parseInt(page),
       perPage,
     );
 
+    if (totalPages === 0) {
+      return <NoResults email={session?.user?.email || ""} />;
+    }
+
     if (page > totalPages) {
-      return notFound();
+      return <code>Invalid page</code>;
     }
 
     return (
