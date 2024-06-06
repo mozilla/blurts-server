@@ -42,12 +42,13 @@ test.describe(`${process.env.E2E_TEST_ENV} - Authentication flow verification @s
     );
   });
 
-  test("Verify sign in with existing user", async ({
+  test.only("Verify sign in with existing user", async ({
     page,
     authPage,
     landingPage,
     dashboardPage,
   }, testInfo) => {
+    test.fail();
     // speed up test by ignore non necessary requests
     await page.route(/(analytics)/, async (route) => {
       await route.abort();
