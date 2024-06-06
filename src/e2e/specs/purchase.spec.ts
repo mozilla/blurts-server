@@ -154,4 +154,50 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase 
     });
     await expect(dashboardPage.plusSubscription).toBeVisible();
   });
+
+  test("Verify that the user can purchase the plus subscription with a PayPal account - yearly", async ({
+    purchasePage,
+    dashboardPage,
+    context,
+  }) => {
+    test.skip(
+      process.env.E2E_TEST_ENV === "production",
+      "payment method test not available in production",
+    );
+    // link to testrail case
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463628",
+    });
+
+    await purchasePage.gotoPurchaseFromDashboard(dashboardPage, true);
+    // fill out subscription payment
+    await purchasePage.authorizationCheckbox.check();
+    await purchasePage.fillOutPaypalInfo(context);
+    await purchasePage.postPaymentPageCheck(dashboardPage);
+  });
+
+  test("Verify that the user can purchase the plus subscription with a PayPal account - monthly", async ({
+    purchasePage,
+    dashboardPage,
+    context,
+  }) => {
+    test.skip(
+      process.env.E2E_TEST_ENV === "production",
+      "payment method test not available in production",
+    );
+    // link to testrail case
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463628",
+    });
+
+    await purchasePage.gotoPurchaseFromDashboard(dashboardPage, false);
+    // fill out subscription payment
+    await purchasePage.authorizationCheckbox.check();
+    await purchasePage.fillOutPaypalInfo(context);
+    await purchasePage.postPaymentPageCheck(dashboardPage);
+  });
 });
