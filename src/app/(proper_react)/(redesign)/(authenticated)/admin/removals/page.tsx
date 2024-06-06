@@ -12,7 +12,7 @@ export default async function Page({ searchParams }) {
   const session = await getServerSession();
 
   if (isAdmin(session?.user?.email || "")) {
-    const days = 1;
+    const days = 30;
     const perPage = 100;
     const page = searchParams.page;
 

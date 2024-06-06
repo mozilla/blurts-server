@@ -15,6 +15,7 @@ import {
   OnerepScanRow,
   SubscriberRow,
 } from "knex/types/tables";
+import { RemovalStatus } from "../../app/functions/universal/scanResult.js";
 
 const knex = createDbConnection();
 
@@ -55,6 +56,36 @@ async function getScanResults(
   );
 
   return scanResults;
+}
+
+async function getAllScanResults(
+  age: Date,
+  statuses: RemovalStatus[],
+  page: number | null,
+  perPage: number | null,
+): Promise<OnerepScanResultRow[] | object> {
+  if (page && perPage) {
+    const count = await knex("onerep_scan_results")
+      .count("*")
+      .whereIn("status", statuses)
+      .andWhere("updated_at", "<", age);
+
+    const scanResults = await knex("onerep_scan_results")
+      .limit(perPage)
+      .offset(page * perPage)
+      .whereIn("status", statuses)
+      .andWhere("updated_at", "<", age)
+      .orderBy("onerep_scan_result_id");
+
+    return { totalPages: Math.floor(count[0].count / perPage), scanResults };
+  } else {
+    const scanResults = await knex("onerep_scan_results")
+      .whereIn("status", statuses)
+      .andWhere("updated_at", "<", age)
+      .orderBy("onerep_scan_result_id");
+
+    return { scanResults };
+  }
 }
 
 async function getLatestOnerepScan(
@@ -267,6 +298,7 @@ export {
   getLatestScanForProfileByReason,
   getScanResults,
   getLatestOnerepScan,
+  getAllScanResults,
   getLatestOnerepScanResults,
   setOnerepProfileId,
   setOnerepScan,

@@ -11,7 +11,8 @@ import { isAdmin } from "../../../utils/auth";
 export async function GET() {
   const session = await getServerSession();
   if (isAdmin(session?.user?.email || "")) {
-    const { scanResults, brokers } = await getStuckRemovals(1, null, null);
+    const days = 30;
+    const { scanResults, brokers } = await getStuckRemovals(days, null, null);
     const csvOutput = exportCsv(scanResults, brokers);
 
     const headers = new Headers();
