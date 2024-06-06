@@ -1,0 +1,41 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+import { getAllScanResults } from "../../../db/tables/onerep_scans";
+import { getAllDataBrokers } from "./onerep";
+
+export async function getStuckRemovals(
+  days: number,
+  page: number | null,
+  perPage: number | null,
+) {
+  const age = new Date();
+  const dateOffset = 24 * 60 * 60 * 1000 * days;
+  age.setTime(age.getTime() - dateOffset);
+
+  // FIXME refresh
+  const { totalPages, scanResults } = await getAllScanResults(
+    age,
+    ["waiting_for_verification", "optout_in_progress"],
+    page,
+    perPage,
+  );
+  const brokersArray = await getAllDataBrokers();
+  const brokers = new Map(
+    brokersArray.map(
+      (broker: {
+        id: number;
+        // FIXME move to shared type
+        status:
+          | "active"
+          | "scan_under_maintenance"
+          | "removal_under_maintenance"
+          | "on_hold"
+          | "ceased_operation";
+      }) => [broker.id, broker.status],
+    ),
+  );
+
+  return { totalPages, scanResults, brokers };
+}
