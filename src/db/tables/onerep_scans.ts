@@ -70,7 +70,7 @@ async function getAllScanResults(
         .count("*")
         .whereIn("status", statuses)
         .andWhere("updated_at", "<", age)
-    )[0].count; // @ts-ignore FIXME knex returns an array here, it's possible our custom knex types aren't quite right.
+    )[0].count; // FIXME knex returns an array here, it's possible our custom knex types aren't quite right.
 
     const scanResults = await knex("onerep_scan_results")
       .limit(perPage)
