@@ -10,15 +10,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $spacing-md;
+  gap: $spacing-xs;
   text-align: center;
 
-  .tertiaryCta {
+  .primaryCta {
+    margin-top: $spacing-sm;
     font-weight: 600;
+  }
+
+  small {
+    color: $color-grey-30;
+    font-weight: 400;
+  }
+
+  .tertiaryCta {
+    margin-top: $spacing-md;
+    font-weight: 500;
   }
 
   p {
     max-width: 600px;
+  }
+
+  .discountCta {
+    background-color: $color-purple-60;
+    width: $content-sm;
   }
 }
 

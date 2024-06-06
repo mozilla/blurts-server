@@ -27,9 +27,12 @@ settings-unsubscribe-dialog-cancellation-survey-form-placeholder = What could ha
 # $discount_duration is the number of month(s) that users will pay the discounted price
 settings-unsubscribe-dialog-promotion-cta = {
   $discount_duration ->
-    [one] Stay and get { $discount_percentage_num } off the next month
-    *[other] Stay and get { $discount_percentage_num } off the { $discount_duration } months
+    [one] Stay and get { $discount_percentage_num } off next month
+    *[other] Stay and get { $discount_percentage_num } off { $discount_duration } months
 }
+# Variables:
+# $discount_percentage_num is the amount discounted in percentage per month
+# $discount_duration is the number of month(s) that users will pay the discounted price
 settings-unsubscribe-dialog-promotion-description = {
   $discount_duration ->
     [one] { -brand-monitor-plus } will continue protecting your personal data, and a { $discount_percentage_num } discount has been applied to your next month.

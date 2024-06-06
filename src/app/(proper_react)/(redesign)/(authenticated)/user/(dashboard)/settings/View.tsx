@@ -108,6 +108,7 @@ export const SettingsView = (props: Props) => {
                       "ConfirmCancellation",
                     )}
                     fxaSubscriptionsUrl={props.fxaSubscriptionsUrl}
+                    experimentData={props.experimentData}
                   />
                 ) : (
                   <TelemetryLink

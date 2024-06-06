@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import Image from "next/image";
@@ -16,10 +16,19 @@ import { Dialog } from "../../../../../../components/client/dialog/Dialog";
 import { Button } from "../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { TelemetryButton } from "../../../../../../components/client/TelemetryButton";
+import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   fxaSubscriptionsUrl: string;
   confirmationFlagEnabled: boolean;
+  experimentData?: ExperimentData;
+};
+
+type DiscountData = {
+  headline: string;
+  successDescription: string;
+  subtitle: string;
+  active: { enabled: boolean } | undefined;
 };
 
 export const CancelFlow = (props: Props) => {
@@ -37,6 +46,106 @@ export const CancelFlow = (props: Props) => {
       });
     },
   });
+
+  const [primaryCta, setPrimaryCta] = useState<ReactElement>();
+  const [ctaSubtitle, setCtaSubtitle] = useState<ReactElement>();
+
+  const discountedNextMonth: DiscountData = {
+    headline: l10n.getString("settings-unsubscribe-dialog-promotion-cta", {
+      discount_percentage_num: "20%",
+      discount_duration: 1,
+    }),
+    successDescription: l10n.getString(
+      "settings-unsubscribe-dialog-promotion-description",
+      {
+        discount_percentage_num: "20%",
+        discount_duration: 1,
+      },
+    ),
+    subtitle: l10n.getString(
+      "settings-unsubscribe-dialog-promotion-cta-subtitle",
+    ),
+    active: props.experimentData?.["next-month-discount"],
+  };
+
+  const discountedNext3Months: DiscountData = {
+    headline: l10n.getString("settings-unsubscribe-dialog-promotion-cta", {
+      discount_percentage_num: "30%",
+      discount_duration: 3,
+    }),
+    successDescription: l10n.getString(
+      "settings-unsubscribe-dialog-promotion-description",
+      {
+        discount_percentage_num: "20%",
+        discount_duration: 3,
+      },
+    ),
+    subtitle: l10n.getString(
+      "settings-unsubscribe-dialog-promotion-limitations-apply",
+    ),
+    active: props.experimentData?.["next-three-months-discount"],
+  };
+
+  useEffect(() => {
+    if (props.experimentData?.["next-three-months-discount"].enabled) {
+      setPrimaryCta(
+        <TelemetryButton
+          event={{
+            module: "popup",
+            name: "exit",
+            data: {
+              popup_id: "never_mind_take_me_back",
+            },
+          }}
+          variant="primary"
+          onPress={() => dialogState.close()}
+          className={`${styles.primaryCta} ${styles.discountCta}`}
+        >
+          {discountedNext3Months.headline}
+        </TelemetryButton>,
+      );
+      setCtaSubtitle(<>{discountedNext3Months.subtitle}</>);
+    } else if (props.experimentData?.["next-month-discount"].enabled) {
+      setPrimaryCta(
+        <TelemetryButton
+          event={{
+            module: "popup",
+            name: "exit",
+            data: {
+              popup_id: "never_mind_take_me_back",
+            },
+          }}
+          variant="primary"
+          onPress={() => dialogState.close()}
+          className={`${styles.primaryCta} ${styles.discountCta}`}
+        >
+          {discountedNextMonth.headline}
+        </TelemetryButton>,
+      );
+      setCtaSubtitle(<>{discountedNextMonth.subtitle}</>);
+    } else {
+      // Reset primaryCta if no condition matches
+      setPrimaryCta(
+        <TelemetryButton
+          event={{
+            module: "popup",
+            name: "exit",
+            data: {
+              popup_id: "never_mind_take_me_back",
+            },
+          }}
+          variant="primary"
+          onPress={() => dialogState.close()}
+          className={styles.primaryCta}
+        >
+          {l10n.getString("settings-cancel-plus-step-confirm-cancel-label")}
+        </TelemetryButton>,
+      );
+    }
+  }, [
+    props.experimentData?.["next-month-discount"],
+    props.experimentData?.["next-three-months-discount"],
+  ]);
 
   const dialogTrigger = useOverlayTrigger({ type: "dialog" }, dialogState);
 
@@ -112,22 +221,8 @@ export const CancelFlow = (props: Props) => {
                       "settings-cancel-plus-step-confirm-content",
                     )}
                   </p>
-                  <TelemetryButton
-                    event={{
-                      module: "popup",
-                      name: "exit",
-                      data: {
-                        popup_id: "never_mind_take_me_back",
-                      },
-                    }}
-                    variant="primary"
-                    onPress={() => dialogState.close()}
-                    className={styles.tertiaryCta}
-                  >
-                    {l10n.getString(
-                      "settings-cancel-plus-step-confirm-cancel-label",
-                    )}
-                  </TelemetryButton>
+                  {primaryCta}
+                  <small>{ctaSubtitle}</small>
                   <TelemetryButton
                     event={{
                       module: "button",
@@ -138,6 +233,7 @@ export const CancelFlow = (props: Props) => {
                     }}
                     variant="tertiary"
                     onPress={() => setCurrentStep("survey")}
+                    className={styles.tertiaryCta}
                   >
                     {l10n.getString(
                       "settings-cancel-plus-step-confirm-cta-label",
