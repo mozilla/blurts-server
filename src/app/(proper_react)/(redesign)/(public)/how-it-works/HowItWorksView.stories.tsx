@@ -3,15 +3,15 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { View } from "./HowItWorksView";
+import { HowItWorksView } from "./HowItWorksView";
 import { getL10n } from "../../../../functions/l10n/storybookAndJest";
 import { PublicShell } from "../PublicShell";
 
-const meta: Meta<typeof View> = {
+const meta: Meta<typeof HowItWorksView> = {
   title: "Pages/Public/HowItWorks page",
   component: () => (
     <PublicShell l10n={getL10n()} countryCode={"us"}>
-      <View />
+      <HowItWorksView l10n={getL10n()} />
     </PublicShell>
   ),
   args: {
@@ -20,7 +20,7 @@ const meta: Meta<typeof View> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof View>;
+type Story = StoryObj<typeof HowItWorksView>;
 
 export const HowItWorks: Story = {
   name: "How it works",
