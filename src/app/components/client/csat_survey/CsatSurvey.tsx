@@ -20,7 +20,8 @@ export type CsatSurveyProps = {
   hasAutoFixedDataBrokers: boolean;
   hasFirstMonitoringScan: boolean;
   isSecondSignInAfterFreeScan: boolean;
-  elapsedTimeInDaysSinceInitialScan?: number;
+  elapsedTimeInDaysSinceInitialScan: number | null;
+  lastScanDate: Date | null;
 };
 
 export const CsatSurvey = (props: CsatSurveyProps) => {
@@ -32,17 +33,20 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
   // The order of the surveys here matter: If there are multiple matching
   // surveys for the user we dismiss all surveys, but the last one in the list.
   const surveys = [
-    getAutomaticRemovalCsatSurvey({
-      ...surveyOptions,
-      elapsedTimeInDaysSinceInitialScan:
-        props.elapsedTimeInDaysSinceInitialScan,
-      hasAutoFixedDataBrokers: props.hasAutoFixedDataBrokers,
-    }),
-    getLatestScanDateCsatSurvey({
-      ...surveyOptions,
-      isSecondSignInAfterFreeScan: props.isSecondSignInAfterFreeScan,
-      hasFirstMonitoringScan: props.hasFirstMonitoringScan,
-    }),
+    props.elapsedTimeInDaysSinceInitialScan !== null &&
+      getAutomaticRemovalCsatSurvey({
+        ...surveyOptions,
+        elapsedTimeInDaysSinceInitialScan:
+          props.elapsedTimeInDaysSinceInitialScan,
+        hasAutoFixedDataBrokers: props.hasAutoFixedDataBrokers,
+      }),
+    props.lastScanDate !== null &&
+      getLatestScanDateCsatSurvey({
+        ...surveyOptions,
+        isSecondSignInAfterFreeScan: props.isSecondSignInAfterFreeScan,
+        hasFirstMonitoringScan: props.hasFirstMonitoringScan,
+        lastScanDate: props.lastScanDate,
+      }),
   ];
 
   // Filters out previously dismissed surveys to make sure `currentSurvey` will

@@ -39,6 +39,7 @@ const getLatestScanDateCsatSurvey = (
   props: CsatSurveyProps & {
     isSecondSignInAfterFreeScan: boolean;
     hasFirstMonitoringScan: boolean;
+    lastScanDate: Date;
   },
 ): RelevantSurveyWithMetric | null => {
   const filteredSurveyData = {
@@ -71,7 +72,10 @@ const getLatestScanDateCsatSurvey = (
     metricKeys: {
       survey_id: surveyData.id,
       experiment_branch: experimentBranchId,
-      last_scan_date: new Date().toString(),
+      last_scan_date: props.lastScanDate
+        .toISOString()
+        .slice(0, 10)
+        .replaceAll("-", ""),
     },
   };
 };

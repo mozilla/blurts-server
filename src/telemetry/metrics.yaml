@@ -456,12 +456,11 @@ csat_survey:
         description: The ID of the survey response option.
         type: string
       experiment_branch:
-        description: The experiment branch the user is on [control, treatment]
+        description: The experiment branch the user is on. [control, treatment]
         type: string
       last_scan_date:
-        description: The date on which the user had their last data broker scan.
+        description: The date on which the user had their last data broker scan. [YYYYMMDD]
         type: string
-      days_since_first_removal_scan:
-        description: The number of days since the user had their first data broker removal scan.
-        type: quantity
-        unit: days
+      automated_removal_period:
+        description: The time period since the first automated removal for the user. [initial, 3-months, 6-months, 12-months]
+        type: string

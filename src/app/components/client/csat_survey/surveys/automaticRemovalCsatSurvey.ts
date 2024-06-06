@@ -90,7 +90,7 @@ const surveyData: SurveyData = {
 
 const getAutomaticRemovalCsatSurvey = (
   props: CsatSurveyProps & {
-    elapsedTimeInDaysSinceInitialScan: number | undefined;
+    elapsedTimeInDaysSinceInitialScan: number;
     hasAutoFixedDataBrokers: boolean;
   },
 ): RelevantSurveyWithMetric | null => {
@@ -106,10 +106,7 @@ const getAutomaticRemovalCsatSurvey = (
         return;
       }
 
-      return (
-        typeof props.elapsedTimeInDaysSinceInitialScan !== "undefined" &&
-        props.elapsedTimeInDaysSinceInitialScan >= survey.daysThreshold
-      );
+      return props.elapsedTimeInDaysSinceInitialScan >= survey.daysThreshold;
     });
 
   if (!relevantSurvey) {
@@ -129,7 +126,7 @@ const getAutomaticRemovalCsatSurvey = (
     metricKeys: {
       survey_id: surveyData.id,
       experiment_branch: experimentBranchId,
-      days_since_first_removal_scan: props.elapsedTimeInDaysSinceInitialScan,
+      automated_removal_period: relevantSurvey.id,
     },
   };
 };

@@ -169,7 +169,7 @@ describe("CSAT survey banner: Automatic Removal", () => {
         survey_id: "csat_survey",
         experiment_branch: "treatment",
         response_id: "very-satisfied",
-        days_since_first_removal_scan: 180,
+        automated_removal_period: "6-months",
       }),
     );
   });
@@ -283,9 +283,9 @@ describe("CSAT survey banner: Latest scan date", () => {
       "click",
       expect.objectContaining({
         survey_id: "last_scan_date",
-        days_since_first_removal_scan: 1,
         experiment_branch: "treatment",
         response_id: "very-satisfied",
+        last_scan_date: "20240731",
       }),
     );
   });

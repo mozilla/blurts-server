@@ -446,15 +446,15 @@ export const View = (props: Props) => {
         activeTab={activeTab}
         experimentData={props.experimentData}
         elapsedTimeInDaysSinceInitialScan={
-          props.elapsedTimeInDaysSinceInitialScan
+          props.elapsedTimeInDaysSinceInitialScan ?? null
         }
         hasAutoFixedDataBrokers={
           dataSummary.dataBrokerAutoFixedDataPointsNum > 0
         }
         hasFirstMonitoringScan={props.hasFirstMonitoringScan}
         isSecondSignInAfterFreeScan={false}
+        lastScanDate={props.userScanData.scan?.created_at ?? null}
       />
-
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           tabType={activeTab}

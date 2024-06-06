@@ -3417,6 +3417,9 @@ describe("CSAT survey banner", () => {
         elapsedTimeInDaysSinceInitialScan={91}
         experimentData={{
           ...defaultExperimentData,
+          "automatic-removal-csat-survey": {
+            enabled: true,
+          },
           "last-scan-date-csat-survey": {
             enabled: false,
           },
@@ -3444,6 +3447,9 @@ describe("CSAT survey banner", () => {
         elapsedTimeInDaysSinceInitialScan={1}
         experimentData={{
           ...defaultExperimentData,
+          "automatic-removal-csat-survey": {
+            enabled: true,
+          },
           "last-scan-date-csat-survey": {
             enabled: false,
           },
@@ -3476,6 +3482,9 @@ describe("CSAT survey banner", () => {
         elapsedTimeInDaysSinceInitialScan={180}
         experimentData={{
           ...defaultExperimentData,
+          "automatic-removal-csat-survey": {
+            enabled: true,
+          },
           "last-scan-date-csat-survey": {
             enabled: false,
           },
@@ -3509,6 +3518,9 @@ describe("CSAT survey banner", () => {
         elapsedTimeInDaysSinceInitialScan={185}
         experimentData={{
           ...defaultExperimentData,
+          "automatic-removal-csat-survey": {
+            enabled: true,
+          },
           "last-scan-date-csat-survey": {
             enabled: false,
           },
@@ -3555,7 +3567,7 @@ describe("CSAT survey banner", () => {
         survey_id: "last_scan_date",
         response_id: "very-satisfied",
         experiment_branch: "treatment",
-        days_since_first_removal_scan: 1,
+        last_scan_date: "19980330",
       }),
     );
   });

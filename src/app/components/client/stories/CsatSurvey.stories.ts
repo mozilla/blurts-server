@@ -38,6 +38,7 @@ export const CsatSurveyLatestScanDate: Story = {
     user: createUserWithPremiumSubscription(),
     isSecondSignInAfterFreeScan: false,
     hasFirstMonitoringScan: true,
+    lastScanDate: new Date(Date.UTC(2024, 6, 31)),
     experimentData: {
       ...defaultExperimentData,
       "last-scan-date": {
