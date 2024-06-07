@@ -93,10 +93,10 @@ export const CancelFlow = (props: Props) => {
       setPrimaryCta(
         <TelemetryButton
           event={{
-            module: "popup",
-            name: "exit",
+            module: "ctaButton",
+            name: "click",
             data: {
-              popup_id: "never_mind_take_me_back",
+              button_id: "stay_get_30_off",
             },
           }}
           variant="primary"

@@ -14,7 +14,6 @@ import {
 import {
   deleteResolutionsWithEmail,
   getSubscriberByFxaUid,
-  getSubscriberById,
 } from "../../../../../../../db/tables/subscribers";
 import { validateEmailAddress } from "../../../../../../../utils/emailAddress";
 import { initEmail } from "../../../../../../../utils/email";
@@ -199,7 +198,5 @@ export async function onApplyCouponCode() {
       errorMessage: `User tried to apply a coupon code without an active session.`,
     };
   }
-  const subscriber = await getSubscriberById(session.user.subscriber.id);
-  await applyCurrentCouponCode(subscriber);
-  console.log("applied coupon");
+  await applyCurrentCouponCode(session.user.subscriber);
 }
