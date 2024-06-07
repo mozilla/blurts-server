@@ -145,6 +145,8 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Headers`, () =
         "https://testrail.stage.mozaws.net/index.php?/cases/view/2463569",
     });
 
+    test.slow(true, "this test vists many external pages");
+
     await dashboardPage.fixedTab.click();
     expect(page.url()).toMatch(/.*dashboard\/fixed\/?/);
     await dashboardPage.actionNeededTab.click();
