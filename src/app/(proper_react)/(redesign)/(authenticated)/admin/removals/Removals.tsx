@@ -44,6 +44,17 @@ export const Removals = (props: {
           </Link>
         </p>
         <br />
+        <p>
+          <a
+            href={
+              "/api/v1/admin/removals?refresh=true&days=" +
+              searchParams.get("days")
+            }
+          >
+            Refresh from provider API
+          </a>
+        </p>
+        <br />
       </nav>
       <table className={styles.table}>
         <thead>

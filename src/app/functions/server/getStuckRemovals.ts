@@ -4,6 +4,7 @@
 
 import { getAllScanResults } from "../../../db/tables/onerep_scans";
 import { getAllDataBrokers } from "./onerep";
+import { refreshStoredScanResults } from "./refreshStoredScanResults";
 
 export async function getStuckRemovals(
   days: number,
@@ -14,19 +15,18 @@ export async function getStuckRemovals(
   const dateOffset = 24 * 60 * 60 * 1000 * days;
   age.setTime(age.getTime() - dateOffset);
 
-  // FIXME refresh
   const { totalPages, scanResults } = await getAllScanResults(
     age,
     ["waiting_for_verification", "optout_in_progress"],
     page,
     perPage,
   );
+
   const brokersArray = await getAllDataBrokers();
   const brokers = new Map(
     brokersArray.map(
       (broker: {
         id: number;
-        // FIXME move to shared type
         status:
           | "active"
           | "scan_under_maintenance"
@@ -38,4 +38,22 @@ export async function getStuckRemovals(
   );
 
   return { totalPages, scanResults, brokers };
+}
+
+export async function refreshStuckRemovals(days: number) {
+  const age = new Date();
+  const dateOffset = 24 * 60 * 60 * 1000 * days;
+  age.setTime(age.getTime() - dateOffset);
+
+  // Retreive all results from our local database and refresh them against the OneRep API.
+  const refreshResults = await getAllScanResults(
+    age,
+    ["waiting_for_verification", "optout_in_progress"],
+    null,
+    null,
+  );
+
+  for (const result of refreshResults.scanResults) {
+    await refreshStoredScanResults(result.onerep_profile_id);
+  }
 }

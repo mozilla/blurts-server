@@ -78,8 +78,20 @@ async function getAllScanResults(
     const scanResults = await knex("onerep_scan_results")
       .limit(perPage)
       .offset((page - 1) * perPage)
-      .whereIn("status", statuses)
-      .andWhere("updated_at", "<", age)
+      .whereIn("onerep_scan_results.status", statuses)
+      .andWhere("onerep_scan_results.updated_at", "<", age)
+      .join(
+        "onerep_scans",
+        "onerep_scan_results.onerep_scan_id",
+        "=",
+        "onerep_scans.onerep_scan_id",
+      )
+      .join(
+        "subscribers",
+        "onerep_scans.onerep_profile_id",
+        "=",
+        "subscribers.onerep_profile_id",
+      )
       .orderBy("onerep_scan_result_id");
 
     let totalPages;
@@ -92,8 +104,20 @@ async function getAllScanResults(
     return { totalPages, scanResults };
   } else {
     const scanResults = await knex("onerep_scan_results")
-      .whereIn("status", statuses)
-      .andWhere("updated_at", "<", age)
+      .whereIn("onerep_scan_results.status", statuses)
+      .andWhere("onerep_scan_results.updated_at", "<", age)
+      .join(
+        "onerep_scans",
+        "onerep_scan_results.onerep_scan_id",
+        "=",
+        "onerep_scans.onerep_scan_id",
+      )
+      .join(
+        "subscribers",
+        "onerep_scans.onerep_profile_id",
+        "=",
+        "subscribers.onerep_profile_id",
+      )
       .orderBy("onerep_scan_result_id");
 
     return { scanResults };
