@@ -3,15 +3,25 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { OnerepScanResultRow } from "knex/types/tables";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getStuckRemovals } from "../../../../functions/server/getStuckRemovals";
 import { getServerSession } from "../../../../functions/server/getServerSession";
 import { isAdmin } from "../../../utils/auth";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   const session = await getServerSession();
+  const searchParams = req.nextUrl.searchParams;
+
   if (isAdmin(session?.user?.email || "")) {
-    const days = 30;
+    if (!searchParams.has("days")) {
+      return NextResponse.json({
+        success: false,
+        status: 422,
+        message: "days parameter is required",
+      });
+    }
+
+    const days = parseInt(searchParams.get("days") ?? "30");
     const { scanResults, brokers } = await getStuckRemovals(days, null, null);
     const csvOutput = exportCsv(scanResults, brokers);
 

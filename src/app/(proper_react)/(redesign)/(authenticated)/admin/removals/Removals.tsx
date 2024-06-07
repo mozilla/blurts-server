@@ -24,6 +24,7 @@ export const Removals = (props: {
   totalPages: number;
 }) => {
   const session = useSession();
+  const searchParams = useSearchParams();
 
   if (props.scanResults.length === 0) {
     return <NoResults email={session?.data?.user?.email || ""} />;
@@ -36,7 +37,11 @@ export const Removals = (props: {
       </header>
       <nav>
         <p>
-          <Link href="/api/v1/admin/removals">Export as CSV</Link>
+          <Link
+            href={"/api/v1/admin/removals?days=" + searchParams.get("days")}
+          >
+            Export as CSV
+          </Link>
         </p>
         <br />
       </nav>
