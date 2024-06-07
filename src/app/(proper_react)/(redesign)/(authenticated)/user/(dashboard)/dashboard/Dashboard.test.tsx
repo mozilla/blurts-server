@@ -1173,6 +1173,17 @@ it("shows the correct dashboard banner title for non-US users, resolved breaches
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
+it("does not show How It Works page link to non-US users, resolved breaches", () => {
+  const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  const howItWorksLink = screen.queryByRole("link", {
+    name: "Learn more",
+  });
+
+  expect(howItWorksLink).not.toBeInTheDocument();
+});
+
 it("shows the correct dashboard banner CTA and sends telemetry for non-US users, resolved breaches", async () => {
   const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
   const mockedRecord = useTelemetry();
@@ -1260,6 +1271,20 @@ it("shows How It Works page link to US users, without Premium, no scan, no breac
   });
 
   expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
+});
+
+it("shows How It Works navbar link to US users, without Premium, no scan, no breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const howItWorksLink = screen.queryAllByRole("link", {
+    name: "How It Works",
+  });
+
+  expect(howItWorksLink.length).toBe(2);
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumNoScanUnresolvedBreaches
