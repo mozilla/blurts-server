@@ -142,7 +142,7 @@ export const MobileShell = (props: Props) => {
                   {l10n.getString("main-nav-link-settings-label")}
                 </PageLink>
               </li>
-              {props.countryCode === "us" && !props.session && (
+              {props.countryCode === "us" && (
                 <li key="how-it-works">
                   <PageLink
                     href="/how-it-works"
