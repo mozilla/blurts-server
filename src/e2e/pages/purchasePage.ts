@@ -82,7 +82,7 @@ export class PurchasePage {
     await this.paypalButton.click();
     const newPage = await pagePromise;
     await newPage.waitForLoadState();
-    await newPage.waitForURL(/.*paypal\.com.*\/checkout.*/);
+    await newPage.waitForURL(/.*paypal\.com.*checkout.*/);
 
     const emailPrompt = newPage.locator("#email");
     await expect(emailPrompt).toBeVisible();
