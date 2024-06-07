@@ -8,11 +8,13 @@ export class DataBrokersPage {
   readonly page: Page;
   readonly removeThemForMeButton: Locator;
   readonly xButton: Locator;
+  readonly forwardArrowButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.removeThemForMeButton = page.getByText("Remove them for me");
     this.xButton = page.getByLabel("Return to dashboard");
+    this.forwardArrowButton = page.getByLabel("Go to next step");
   }
 
   async open() {

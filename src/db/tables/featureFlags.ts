@@ -42,7 +42,6 @@ export type FeatureFlagName =
   | "RedesignedEmails"
   | "UpdatedEmailPreferencesOption"
   | "MonthlyActivityEmail"
-  | "CsatSurvey"
   | "CancellationFlow"
   | "ConfirmCancellation"
   | "FirstDataBrokerRemovalFixedEmail";
