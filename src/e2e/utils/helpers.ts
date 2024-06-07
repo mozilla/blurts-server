@@ -219,6 +219,6 @@ export const forceLoginAs = async (
     await page.waitForURL(/^(?!.*signin).*/);
   }
   await authPage.signIn(email, password);
-  await page.waitForURL("**/user/dashboard");
+  await page.waitForURL(/.*user\/dashboard.*/);
   await expect(page).toHaveURL(/.*\/user\/dashboard.*/);
 };

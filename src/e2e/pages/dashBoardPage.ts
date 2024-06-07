@@ -275,7 +275,7 @@ export class DashboardPage {
 
   async goToDashboard() {
     await this.dashboardPageLink.click();
-    await this.page.waitForURL("**/dashboard");
+    await this.page.waitForURL(/.*\/dashboard.*/);
   }
 
   async goToFAQs() {
