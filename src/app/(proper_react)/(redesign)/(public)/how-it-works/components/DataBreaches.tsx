@@ -49,8 +49,8 @@ export const DataBreaches = () => {
           </div>
         </div>
       </div>
-      <div className={`${styles.step} ${styles.mobileColumns}`}>
-        <ul className={`${styles.stepTextContainer} ${styles.mobileColumns}`}>
+      <div className={styles.step}>
+        <ul className={styles.stepTextContainer}>
           {/* STEP 1 */}
           <li>
             <h3 className={`${styles.breachesEmphasis} ${styles.stepTitle}`}>
@@ -93,7 +93,7 @@ export const DataBreaches = () => {
             </p>
           </li>
         </ul>
-        <Image src={Resolve} alt="" className={styles.mobileColumns} />
+        <Image src={Resolve} alt="" />
       </div>
       <div className={styles.sectionCTAButton}>
         <TelemetryButton
