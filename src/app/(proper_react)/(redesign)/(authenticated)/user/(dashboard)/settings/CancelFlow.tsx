@@ -17,6 +17,7 @@ import { Button } from "../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { TelemetryButton } from "../../../../../../components/client/TelemetryButton";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
+import { onApplyCouponCode } from "./actions";
 
 export type Props = {
   fxaSubscriptionsUrl: string;
@@ -87,6 +88,7 @@ export const CancelFlow = (props: Props) => {
   };
 
   useEffect(() => {
+    // Current experiment
     if (props.experimentData?.["next-three-months-discount"].enabled) {
       setPrimaryCta(
         <TelemetryButton
@@ -98,14 +100,16 @@ export const CancelFlow = (props: Props) => {
             },
           }}
           variant="primary"
-          onPress={() => dialogState.close()}
+          onPress={() => void onApplyCouponCode()}
           className={`${styles.discountCta} ${styles.primaryCta}`}
         >
           {discountedNext3Months.headline}
         </TelemetryButton>,
       );
       setCtaSubtitle(<>{discountedNext3Months.subtitle}</>);
-    } else if (props.experimentData?.["next-month-discount"].enabled) {
+    }
+    // TODO: Future experiment
+    else if (props.experimentData?.["next-month-discount"].enabled) {
       setPrimaryCta(
         <TelemetryButton
           event={{
