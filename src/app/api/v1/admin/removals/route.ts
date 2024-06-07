@@ -72,7 +72,6 @@ function exportCsv(
   ]);
   scanResults.forEach((scanResult) => {
     const csvRow = [];
-    csvRow.push(scanResult.id);
     csvRow.push(scanResult.onerep_scan_result_id);
     csvRow.push(scanResult.status);
     csvRow.push(scanResult.created_at.toDateString());
