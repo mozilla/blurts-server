@@ -292,6 +292,60 @@ async function deleteResolutionsWithEmail (id, email) {
 /* c8 ignore stop */
 
 /**
+ * @returns {Promise<import("knex/types/tables").SubscriberRow[]>}
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail() {
+  // I'm explicitly referencing the type here, so that these lines of code will
+  // show up as errors when we remove it from the flag list:
+  /** @type {import("./featureFlags.js").FeatureFlagName} */
+  const featureFlagName = "FirstDataBrokerRemovalFixedEmail";
+  // Interactions with the `feature_flags` table would generally go in the
+  // `src/db/tables/featureFlags` module. However, since that module is already
+  // written in TypeScript, it can't be loaded in pre-TypeScript cron jobs,
+  // which currently still import from the subscribers module. Hence, we've
+  // inlined this until https://mozilla-hub.atlassian.net/browse/MNTOR-3077 is fixed.
+  const flag = (await knex("feature_flags")
+      .first()
+      .where("name", featureFlagName)
+      // The `.andWhereNull` alias doesn't seem to exist:
+      // https://github.com/knex/knex/issues/1881#issuecomment-275433906
+      .whereNull("deleted_at"));
+
+  if (!flag?.is_enabled || !flag?.modified_at) {
+    return [];
+  }
+
+  let query = knex("subscribers")
+    .select()
+    // Only send to Plus users...
+    .whereRaw(
+      `(fxa_profile_json->'subscriptions')::jsonb \\? ?`,
+      MONITOR_PREMIUM_CAPABILITY,
+    )
+    // ...with an OneRep account...
+    .whereNotNull("onerep_profile_id")
+    // ...who haven’t received the email...
+    .andWhere("first_broker_removal_email_sent", false)
+    // ...and signed up after the feature flag `FirstDataBrokerRemovalFixedEmail`
+    // has been enabled last.
+    .andWhere("created_at", ">=", flag.modified_at);
+
+  if (Array.isArray(flag.allow_list) && flag.allow_list.length > 0) {
+    // If the feature flag has an allowlist, only send to users on that list.
+    // The `.andWhereIn` alias doesn't exist:
+    // https://github.com/knex/knex/issues/1881#issuecomment-275433906
+    query = query.whereIn("primary_email", flag.allow_list)
+  }
+
+  const rows = await query;
+
+  return rows;
+}
+/* c8 ignore stop */
+
+/**
  * @param {Partial<{ plusOnly: boolean; limit: number; }>} options
  * @returns {Promise<import("knex/types/tables").SubscriberRow[]>}
  */
@@ -306,7 +360,7 @@ async function getSubscribersWaitingForMonthlyEmail (options = {}) {
   // `src/db/tables/featureFlags` module. However, since that module is already
   // written in TypeScript, it can't be loaded in pre-TypeScript cron jobs,
   // which currently still import from the subscribers module. Hence, we've
-  // inlined this for now.
+  // inlined this until https://mozilla-hub.atlassian.net/browse/MNTOR-3077 is fixed.
   const flag = (await knex("feature_flags")
       .first()
       .where("name", featureFlagName)
@@ -392,6 +446,29 @@ async function updateMonthlyEmailOptout (token) {
 }
 /* c8 ignore stop */
 
+/**
+ * @param {import("knex/types/tables").SubscriberRow} subscriber
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function markFirstDataBrokerRemovalFixedEmailAsJustSent (subscriber) {
+  const affectedSubscribers = await knex("subscribers")
+    .update({
+      first_broker_removal_email_sent: true,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
+    })
+    .where("primary_email", subscriber.primary_email)
+    .andWhere("id", subscriber.id)
+    .returning("*");
+
+  if (affectedSubscribers.length !== 1) {
+    throw new Error(`Attempted to mark 1 user as having just been sent the first data broker removal fixed email, but instead found [${affectedSubscribers.length}] matching its ID and email address.`);
+  }
+}
+
+/* c8 ignore stop */
 /**
  * @param {import("knex/types/tables").SubscriberRow} subscriber
  */
@@ -525,9 +602,11 @@ export {
   setAllEmailsToPrimary,
   setMonthlyMonitorReport,
   setBreachResolution,
+  getPotentialSubscribersWaitingForFirstDataBrokerRemovalFixedEmail,
   getSubscribersWaitingForMonthlyEmail,
   updateMonthlyEmailTimestamp,
   updateMonthlyEmailOptout,
+  markFirstDataBrokerRemovalFixedEmailAsJustSent,
   markMonthlyActivityEmailAsJustSent,
   deleteUnverifiedSubscribers,
   deleteSubscriber,
