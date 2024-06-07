@@ -174,6 +174,17 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "updated_at"
   >;
 
+  interface SubscriberCouponRow {
+    id: number;
+    subscriber_id: number;
+    coupon_code: string;
+    created_at: Date;
+  }
+  type SubscriberCouponAutoInsertedColumns = Extract<
+    keyof SubscriberCouponRow,
+    "id" | "subscriber_id" | "created_at"
+  >;
+
   interface BreachRow {
     id: number;
     name: string;
@@ -335,6 +346,14 @@ declare module "knex/types/tables" {
       // otherfields are optional, except updated_at:
       Partial<Omit<SubscriberRow, "id" | "created_at">> &
         Pick<SubscriberRow, "updated_at">
+    >;
+
+    subscriber_coupons: Knex.CompositeTableType<
+      SubscriberCouponRow,
+      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
+      Omit<SubscriberCouponRow, SubscriberAutoInsertedColumns>,
+      // On updates, don't allow updating the ID; all other fields are optional:
+      Partial<Omit<SubscriberCouponRow, "id">>
     >;
 
     email_addresses: Knex.CompositeTableType<
