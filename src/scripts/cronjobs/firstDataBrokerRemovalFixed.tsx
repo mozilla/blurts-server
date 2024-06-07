@@ -45,38 +45,44 @@ async function run() {
   const subscribersToEmailWithData = (
     await Promise.allSettled(
       potentialSubscribersToEmail.map(async (subscriber) => {
-        // OneRep suggested not relying on webhooks, but instead to fetch the latest
-        // data from their API. Thus, let's refresh the data in our DB in real-time:
-        if (subscriber.onerep_profile_id !== null) {
-          await refreshStoredScanResults(subscriber.onerep_profile_id);
-        }
-        const latestScan = await getLatestOnerepScanResults(
-          subscriber.onerep_profile_id,
-        );
-
-        let firstRemovedScanResult = null;
-        for (const scanResult of latestScan.results) {
-          // Consider a scan result if:
-          if (
-            // The scan result is not manually resolved...
-            !scanResult.manually_resolved &&
-            // ...the scan has been removed...
-            scanResult.status === "removed" &&
-            // ...and scan result has been created ealier than the currently
-            // selected `firstRemovedScanResult`.
-            firstRemovedScanResult &&
-            scanResult.created_at.getTime() <
-              firstRemovedScanResult.created_at.getTime()
-          ) {
-            firstRemovedScanResult = scanResult;
+        try {
+          // OneRep suggested not relying on webhooks, but instead to fetch the latest
+          // data from their API. Thus, let's refresh the data in our DB in real-time:
+          if (subscriber.onerep_profile_id !== null) {
+            await refreshStoredScanResults(subscriber.onerep_profile_id);
           }
-        }
+          const latestScan = await getLatestOnerepScanResults(
+            subscriber.onerep_profile_id,
+          );
 
-        if (!firstRemovedScanResult) {
-          return;
-        }
+          let firstRemovedScanResult = null;
+          for (const scanResult of latestScan.results) {
+            // Consider a scan result if:
+            if (
+              // The scan result is not manually resolved...
+              !scanResult.manually_resolved &&
+              // ...the scan has been removed...
+              scanResult.status === "removed" &&
+              // ...and scan result has been created ealier than the currently
+              // selected `firstRemovedScanResult`.
+              firstRemovedScanResult &&
+              scanResult.created_at.getTime() <
+                firstRemovedScanResult.created_at.getTime()
+            ) {
+              firstRemovedScanResult = scanResult;
+            }
+          }
 
-        return { subscriber, firstRemovedScanResult };
+          if (!firstRemovedScanResult) {
+            return;
+          }
+
+          return { subscriber, firstRemovedScanResult };
+        } catch (_error) {
+          console.error(
+            `An error ocurred while attemting to get the first removed scan result for subscriber: ${subscriber.id}`,
+          );
+        }
       }),
     )
   )
