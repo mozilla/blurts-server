@@ -19,17 +19,13 @@ export const Header = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
                 <a
                   href="#data-brokers-section"
                   className={styles.brokersEmphasis}
-                >
-                  data brokers
-                </a>
+                ></a>
               ),
               data_breaches_link: (
                 <a
                   href="#data-breach-section"
                   className={styles.breachesEmphasis}
-                >
-                  data breaches
-                </a>
+                ></a>
               ),
             },
           })}
