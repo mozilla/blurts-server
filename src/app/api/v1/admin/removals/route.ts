@@ -54,7 +54,6 @@ function exportCsv(
   scanResults: OnerepScanResultRow[],
   brokers: Map<
     number,
-    // FIXME move to shared type
     | "active"
     | "scan_under_maintenance"
     | "removal_under_maintenance"
