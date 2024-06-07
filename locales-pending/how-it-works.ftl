@@ -38,8 +38,7 @@ section-1-step-3-subtitle = We watch for re-exposures, and remove again
 section-1-step-3-text-1 = Sites that sell your data continually scrape new information about you on sources across the web — and they will often re-add you to their sites, even if you’ve removed it.
 section-1-step-3-text-2 = For paid subscribers, we re-check every month to make sure they don’t add you back. It’s an ongoing process and you can rest assured that no matter how many times your name reappears on their site, we will always work to remove it.
 
-## CTA button
-
+# CTA button
 section-1-cta-button = Get data removal
 
 ## Section 2 - We provide steps to help resolve data breaches
