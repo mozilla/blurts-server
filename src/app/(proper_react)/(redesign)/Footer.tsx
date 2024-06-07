@@ -41,9 +41,9 @@ export const Footer = ({
         </li>
         {countryCode === "us" && !session && (
           <li>
-            <a href="/how-it-works" target="_blank">
+            <Link href="/how-it-works" target="_blank">
               {l10n.getString("footer-external-link-how-it-works-label")}
-            </a>
+            </Link>
           </li>
         )}
         <li>
