@@ -14,46 +14,59 @@ export default async function Page({
   searchParams?: {
     query?: string;
     page?: string;
+    days?: string;
+    perPage?: string;
   };
 }) {
   const session = await getServerSession();
 
   if (isAdmin(session?.user?.email || "")) {
-    const days = 30;
-    const perPage = 100;
+    let page = 1;
+    let days = 30;
+    let perPage = 100;
 
-    if (!searchParams?.page) {
-      redirect("?page=1");
+    if (searchParams?.page) {
+      page = parseInt(searchParams.page);
     }
 
-    const page = parseInt(searchParams.page);
-
-    if (page < 1) {
-      return <code>Invalid page</code>;
+    if (searchParams?.days) {
+      days = parseInt(searchParams.days);
     }
 
-    const { totalPages, scanResults, brokers } = await getStuckRemovals(
-      days,
-      page,
-      perPage,
-    );
-
-    if (totalPages === undefined || totalPages === 0) {
-      return <NoResults email={session?.user?.email || ""} />;
+    if (searchParams?.perPage) {
+      perPage = parseInt(searchParams.perPage);
     }
 
-    if (page > totalPages) {
-      return <code>Invalid page</code>;
-    }
+    if (searchParams?.page && searchParams?.days && searchParams?.perPage) {
+      if (page < 1) {
+        return <code>Invalid page</code>;
+      }
 
-    return (
-      <Removals
-        scanResults={scanResults}
-        brokers={brokers}
-        page={page}
-        totalPages={totalPages}
-      />
-    );
+      const { totalPages, scanResults, brokers } = await getStuckRemovals(
+        days,
+        page,
+        perPage,
+      );
+
+      if (totalPages === undefined || totalPages === 0) {
+        return <NoResults email={session?.user?.email || ""} />;
+      }
+
+      if (page > totalPages) {
+        return <code>Invalid page</code>;
+      }
+
+      return (
+        <Removals
+          scanResults={scanResults}
+          brokers={brokers}
+          page={page}
+          totalPages={totalPages}
+        />
+      );
+    } else {
+      redirect(`?page=${page}&days=${days}&perPage=${perPage}`);
+    }
   } else {
     return notFound();
   }

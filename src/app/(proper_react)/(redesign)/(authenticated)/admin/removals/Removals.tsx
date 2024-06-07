@@ -8,6 +8,7 @@ import { useSession } from "next-auth/react";
 import styles from "./Removals.module.scss";
 import { OnerepScanResultRow } from "knex/types/tables";
 import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
 
 export const Removals = (props: {
   scanResults: OnerepScanResultRow[];
@@ -98,21 +99,38 @@ export function NoResults(props: { email: string }) {
 }
 
 export const Pagination = (props: { page: number; totalPages: number }) => {
-  let nextPage = props.page;
-  nextPage++;
+  const nextPage = props.page + 1;
+  const prevPage = props.page - 1;
 
-  let prevPage = props.page;
-  prevPage--;
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams.toString());
+
+  let prevLink;
+  if (prevPage <= 0) {
+    prevLink = " << ";
+  } else {
+    params.set("page", prevPage.toString());
+    prevLink = (
+      <Link href={pathname + "?" + params.toString()}> &lt;&lt; </Link>
+    );
+  }
+
+  let nextLink;
+  if (nextPage > props.totalPages) {
+    nextLink = " >> ";
+  } else {
+    params.set("page", nextPage.toString());
+    nextLink = (
+      <Link href={pathname + "?" + params.toString()}> &gt;&gt; </Link>
+    );
+  }
 
   return (
     <p>
-      {prevPage <= 0 ? " << " : <a href={"?page=" + prevPage}> &lt;&lt; </a>}
+      {prevLink}
       Page {props.page} of {props.totalPages}
-      {nextPage >= props.totalPages ? (
-        " >> "
-      ) : (
-        <a href={"?page=" + nextPage}> &gt;&gt; </a>
-      )}
+      {nextLink}
     </p>
   );
 };
