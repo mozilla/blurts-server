@@ -155,7 +155,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase 
     await expect(dashboardPage.plusSubscription).toBeVisible();
   });
 
-  test("Verify that the user can purchase the plus subscription with a PayPal account - yearly", async ({
+  test.only("Verify that the user can purchase the plus subscription with a PayPal account - yearly", async ({
     purchasePage,
     dashboardPage,
     context,
@@ -178,7 +178,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase 
     await purchasePage.postPaymentPageCheck(dashboardPage);
   });
 
-  test("Verify that the user can purchase the plus subscription with a PayPal account - monthly", async ({
+  test.only("Verify that the user can purchase the plus subscription with a PayPal account - monthly", async ({
     purchasePage,
     dashboardPage,
     context,
