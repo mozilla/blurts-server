@@ -56,13 +56,17 @@ async function run() {
 
         let firstRemovedScanResult = null;
         for (const scanResult of latestScan.results) {
+          // Consider a scan result if:
           if (
-            scanResult.manually_resolved &&
+            // The scan result is not manually resolved...
+            !scanResult.manually_resolved &&
+            // ...the scan has been removed...
             scanResult.status === "removed" &&
-            (!firstRemovedScanResult ||
-              (firstRemovedScanResult &&
-                scanResult.created_at.getTime() <
-                  firstRemovedScanResult.created_at.getTime()))
+            // ...and scan result has been created ealier than the currently
+            // selected `firstRemovedScanResult`.
+            firstRemovedScanResult &&
+            scanResult.created_at.getTime() <
+              firstRemovedScanResult.created_at.getTime()
           ) {
             firstRemovedScanResult = scanResult;
           }
