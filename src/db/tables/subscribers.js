@@ -516,9 +516,10 @@ async function deleteOnerepProfileId (subscriberId) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function incrementSignInCount (fxaId) {
+async function incrementSignInCountForEligibleFreeUser (fxaId) {
   return await knex('subscribers')
     .where('fxa_uid', fxaId)
+    .whereNotNull('onerep_profile_id')
     .increment("sign_in_count", 1)
 }
 /* c8 ignore stop */
@@ -560,7 +561,7 @@ export {
   deleteSubscriber,
   deleteResolutionsWithEmail,
   deleteOnerepProfileId,
-  incrementSignInCount,
+  incrementSignInCountForEligibleFreeUser,
   getSignInCount,
   knex as knexSubscribers
 }
