@@ -9,9 +9,14 @@ settings-page-title = { -product-short-name } -asetukset
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Tietovuotoilmoitusten asetukset
+settings-alert-email-preferences-title = Sähköpostiasetukset
+settings-alert-email-preferences-subtitle = Kerro meille, mitä sähköposteja haluat vastaanottaa.
+settings-alert-preferences-allow-breach-alerts-title = Välittömät vuotohälytykset
+settings-alert-preferences-allow-breach-alerts-subtitle = Nämä hälytykset lähetetään välittömästi, kun tietovuoto havaitaan
 settings-alert-preferences-option-one = Lähetä tietovuotoilmoitukset vuodettuun sähköpostiosoitteeseen
 settings-alert-preferences-option-two = Lähetä kaikki tietovuotoilmoitukset ensisijaiseen sähköpostiosoitteeseen
+settings-alert-preferences-allow-monthly-monitor-report-title = Kuukausittainen { -brand-monitor }-raportti
+settings-alert-preferences-allow-monthly-monitor-report-subtitle = Kuukausittainen päivitys uusista vuodoista, korjauksista ja mitä sinun tarvitsee huomioida.
 
 ## Monitored email addresses
 
@@ -32,7 +37,6 @@ settings-remove-email-button-label = Poista
 # Variables:
 #   $emailAddress (string) - The email address to remove, e.g. `billnye@example.com`
 settings-remove-email-button-tooltip = Lopeta osoitteen { $emailAddress } tarkkailu
-
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -43,19 +47,12 @@ settings-email-number-of-breaches-info =
        *[other] Esiintyy { $breachCount } tunnetussa tietovuodossa.
     }
 
-## Deactivate account
-
-settings-deactivate-account-title = Poista tili käytöstä
-settings-deactivate-account-info-2 = Voit poistaa { -product-short-name }in käytöstä poistamalla { -brand-mozilla-account }n.
-settings-fxa-link-label-3 = Siirry { -brand-mozilla-account }n asetuksiin
-
 ## Delete Monitor account
 
 settings-delete-monitor-free-account-title = Poista { -brand-monitor } -tili
 settings-delete-monitor-free-account-description = Tämä poistaa pysyvästi { -brand-monitor } -tilisi ja poistaa kaikki ilmoitukset käytöstä.
 settings-delete-monitor-free-account-cta-label = Poista tili
 settings-delete-monitor-free-account-dialog-title = { -brand-monitor } -tilisi poistetaan pysyvästi
-settings-delete-monitor-free-account-dialog-lead = Kaikki { -brand-monitor } -tilisi tiedot poistetaan, emmekä enää tarkkaile uusien tietovuotojen varalta. Tämä ei poista { -brand-mozilla }-tiliäsi.
 settings-delete-monitor-free-account-dialog-cta-label = Poista tili
 settings-delete-monitor-free-account-dialog-cancel-button-label = Unohdetaan tämä, palataan takaisin
 settings-delete-monitor-account-confirmation-toast-label-2 = { -brand-monitor } -tilisi on nyt poistettu.
