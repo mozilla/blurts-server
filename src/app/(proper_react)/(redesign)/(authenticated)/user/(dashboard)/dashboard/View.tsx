@@ -445,6 +445,7 @@ export const View = (props: Props) => {
       <CsatSurvey
         user={props.user}
         activeTab={activeTab}
+        enabledFeatureFlags={props.enabledFeatureFlags}
         experimentData={props.experimentData}
         elapsedTimeInDaysSinceInitialScan={
           props.elapsedTimeInDaysSinceInitialScan ?? null

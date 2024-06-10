@@ -12,11 +12,13 @@ import { getAutomaticRemovalCsatSurvey } from "./surveys/automaticRemovalCsatSur
 import { getLatestScanDateCsatSurvey } from "./surveys/latestScanDateCsatSurvey";
 import { COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS } from "../../../hooks/useLocalDismissal";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 export type CsatSurveyProps = {
   activeTab: TabType;
   user: Session["user"];
   experimentData: ExperimentData;
+  enabledFeatureFlags: FeatureFlagName[];
   hasAutoFixedDataBrokers: boolean;
   hasFirstMonitoringScan: boolean;
   elapsedTimeInDaysSinceInitialScan: number | null;
@@ -40,7 +42,8 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
           props.elapsedTimeInDaysSinceInitialScan,
         hasAutoFixedDataBrokers: props.hasAutoFixedDataBrokers,
       }),
-    props.lastScanDate !== null &&
+    props.enabledFeatureFlags.includes("LatestScanDateCsatSurvey") &&
+      props.lastScanDate !== null &&
       getLatestScanDateCsatSurvey({
         ...surveyOptions,
         signInCount: props.signInCount,
