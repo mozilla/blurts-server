@@ -10,6 +10,7 @@ import { useOverlayTrigger } from "react-aria";
 import Image from "next/image";
 import styles from "./CancelFlow.module.scss";
 import CancellationFlowStaticImage from "./images/CancellationFlowIllustration.svg";
+import CancellationFlowDiscountAppliedStaticImage from "./images/CancellationFlowDiscountAppliedStaticImage.svg";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 import { ModalOverlay } from "../../../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../../../components/client/dialog/Dialog";
@@ -36,9 +37,9 @@ export const CancelFlow = (props: Props) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
   const currentStep = props.confirmationFlagEnabled ? "confirm" : "survey";
-  const [step, setCurrentStep] = useState<"confirm" | "survey" | "redirecting">(
-    currentStep,
-  );
+  const [step, setCurrentStep] = useState<
+    "confirm" | "survey" | "all-set" | "redirecting"
+  >(currentStep);
 
   const dialogState = useOverlayTriggerState({
     onOpenChange: (isOpen) => {
@@ -100,7 +101,10 @@ export const CancelFlow = (props: Props) => {
             },
           }}
           variant="primary"
-          onPress={() => void onApplyCouponCode()}
+          onPress={() =>
+            // setCurrentStep("all-set")
+            void onApplyCouponCode()
+          }
           className={`${styles.discountCta} ${styles.primaryCta}`}
         >
           {discountedNext3Months.headline}
@@ -108,7 +112,7 @@ export const CancelFlow = (props: Props) => {
       );
       setCtaSubtitle(<>{discountedNext3Months.subtitle}</>);
     }
-    // TODO: Future experiment
+    // TODO: Future experiment, make sure to update the telemetry events
     else if (props.experimentData?.["next-month-discount"].enabled) {
       setPrimaryCta(
         <TelemetryButton
@@ -151,6 +155,19 @@ export const CancelFlow = (props: Props) => {
 
   const dialogTrigger = useOverlayTrigger({ type: "dialog" }, dialogState);
 
+  const dialogTitle = () => {
+    switch (step) {
+      case "confirm":
+        return "settings-cancel-plus-step-confirm-heading";
+      case "all-set":
+        return "settings-unsubscribe-dialog-promotion-complete";
+      case "redirecting":
+        return "settings-unsubscribe-dialog-confirmation-redirect-title";
+      case "survey":
+        return "settings-cancel-plus-step-survey-heading";
+    }
+  };
+
   return (
     <>
       <Button
@@ -167,13 +184,7 @@ export const CancelFlow = (props: Props) => {
           isDismissable={true}
         >
           <Dialog
-            title={l10n.getString(
-              step === "confirm"
-                ? "settings-cancel-plus-step-confirm-heading"
-                : step === "survey"
-                  ? "settings-cancel-plus-step-survey-heading"
-                  : "settings-unsubscribe-dialog-confirmation-redirect-title",
-            )}
+            title={l10n.getString(dialogTitle())}
             illustration={
               <>
                 <video
@@ -188,16 +199,28 @@ export const CancelFlow = (props: Props) => {
                     // sure these files are present in /public. See
                     // https://github.com/vercel/next.js/issues/35248
                     type="video/mp4"
-                    src="/animations/CancellationFlowAnimation.mp4"
+                    src={
+                      step === "all-set"
+                        ? "/animations/CancellationFlowDiscountAppliedAnimation.mp4"
+                        : "/animations/CancellationFlowAnimation.mp4"
+                    }
                   />
                   <source
                     type="video/webm"
-                    src="/animations/CancellationFlowAnimation.webm"
+                    src={
+                      step === "all-set"
+                        ? "/animations/CancellationFlowDiscountAppliedAnimation.webm"
+                        : "/animations/CancellationFlowAnimation.webm"
+                    }
                   />
                   {/* Fall back to the image if the video formats are not supported: */}
                   <Image
                     className={styles.cancellationIllustrationWrapper}
-                    src={CancellationFlowStaticImage}
+                    src={
+                      step === "all-set"
+                        ? CancellationFlowDiscountAppliedStaticImage
+                        : CancellationFlowStaticImage
+                    }
                     alt=""
                   />
                 </video>
@@ -299,6 +322,19 @@ export const CancelFlow = (props: Props) => {
                         elems: {
                           b: <b />,
                         },
+                      },
+                    )}
+                  </p>
+                </>
+              )}
+              {step === "all-set" && (
+                <>
+                  <p>
+                    {l10n.getString(
+                      "settings-unsubscribe-dialog-promotion-description",
+                      {
+                        discount_duration: 3,
+                        discount_percentage_num: "30%",
                       },
                     )}
                   </p>
