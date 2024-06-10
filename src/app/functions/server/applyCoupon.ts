@@ -27,6 +27,7 @@ export async function applyCurrentCouponCode(
     );
     return {
       success: false,
+      message: "Coupon code not set",
     };
   }
 
@@ -37,10 +38,15 @@ export async function applyCurrentCouponCode(
     ) {
       await applyCoupon(subscriber.fxa_access_token, currentCouponCode);
       await addCouponForSubscriber(subscriber.id, currentCouponCode);
+      logger.info("fxa_apply_coupon_code_success");
       return {
         success: true,
       };
     }
+    return {
+      success: false,
+      message: "Coupon code already applied for subscriber",
+    };
   } catch (ex) {
     logger.error("fxa_apply_coupon_code_failed", {
       subscriber_id: subscriber.id,

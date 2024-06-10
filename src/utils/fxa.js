@@ -174,17 +174,18 @@ async function applyCoupon(bearerToken, couponCode) {
         })
       })
       if (!response.ok) {
-        console.info(`apply_coupon: failed - ${await response.text()}`)
+        const errMsg = await response.text()
+        console.info(`apply_coupon: failed - ${errMsg}`)
+        throw new Error(`apply_coupon: failed - ${errMsg}`)
       } else {
         console.info(`apply_coupon: success - ${JSON.stringify(await response.json())}`)
       }
     }
-    return true
   } catch (e) {
     if (e instanceof Error) {
       console.error('apply_coupon', { stack: e.stack })
     }
-    return false
+    throw e;
   }
 }
 /* c8 ignore stop */
