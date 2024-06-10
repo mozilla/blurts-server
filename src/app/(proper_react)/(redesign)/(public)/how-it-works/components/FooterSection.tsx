@@ -2,26 +2,34 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { Button } from "../../../../../components/client/Button";
 import styles from "../HowItWorksView.module.scss";
 import { ExtendedReactLocalization } from "../../../../../functions/l10n";
+import { SignUpForm } from "../../SignUpForm";
 
-export const FooterSection = ({
-  l10n,
-}: {
+export type Props = {
   l10n: ExtendedReactLocalization;
-}) => {
+  eligibleForPremium: boolean;
+  scanLimitReached: boolean;
+};
+
+export const FooterSection = (props: Props) => {
+  const { l10n, eligibleForPremium, scanLimitReached } = props;
   return (
     <footer className={styles.footerSection}>
       <h2 className={styles.footerSectionCTA}>
         {l10n.getString("footer-title")}
       </h2>
       <div className={styles.footerSectionCTAInput}>
-        <input
+        <SignUpForm
+          eligibleForPremium={eligibleForPremium}
+          signUpCallbackUrl={`${process.env.SERVER_URL}/user/dashboard`}
+          eventId={{
+            cta: "clicked_get_scan",
+            field: "entered_email_address",
+          }}
+          scanLimitReached={scanLimitReached}
           placeholder={l10n.getString("footer-input-placeholder")}
-          type="email"
         />
-        <Button variant="primary">{l10n.getString("footer-cta-button")}</Button>
       </div>
       <p className={styles.note}>
         {l10n.getString("footer-have-i-been-pwned")}
