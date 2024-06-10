@@ -263,6 +263,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </div>
             <Link
+              data-testid="learn-more-link-to-how-it-works"
               href="/how-it-works"
               target="_blank"
               onClick={() =>
