@@ -173,7 +173,6 @@ async function _getSha1EntryAndDo (sha1, aFoundCallback, aNotFoundCallback) {
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
-  console.debug('_addEmailHash', { sha1, email, signupLanguage, verified })
   try {
     return await _getSha1EntryAndDo(sha1, async (/** @type {any} */ aEntry) => {
       // Entry existed, patch the email value if supplied.

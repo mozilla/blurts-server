@@ -2,8 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { Locator, Page } from "@playwright/test";
-
+import { Locator, Page, expect } from "@playwright/test";
+import { PurchasePage } from "./purchasePage";
 export class DashboardPage {
   readonly page: Page;
   readonly dataBreachEmailDropdown: Locator;
@@ -11,6 +11,7 @@ export class DashboardPage {
   readonly breachStats: Locator;
 
   readonly fireFoxMonitorLogoImgButton: Locator;
+  readonly fireFoxMonitorLogoAtag: Locator;
   readonly actionNeededTab: Locator;
   readonly fixedTab: Locator;
   readonly profileButton: Locator;
@@ -51,13 +52,26 @@ export class DashboardPage {
   readonly servicesPocket: Locator;
   readonly servicesFirefoxDesktop: Locator;
   readonly servicesFirefoxMobile: Locator;
+  readonly servicesMozilla: Locator;
+  readonly appsAndServicesMenu: Locator;
 
+  readonly profileSettings: Locator;
+  readonly profileSignOut: Locator;
   readonly profileEmail: Locator;
   readonly manageProfile: Locator;
   readonly helpAndSupport: Locator;
   readonly closeAppsAndServices: Locator;
   readonly signOut: Locator;
 
+  readonly allExposures: Locator;
+  readonly fixExposureButton: Locator;
+  readonly removeExposuresManually: Locator;
+  readonly reviewAndRemoveProfiles: Locator;
+  readonly markAsFixed: Locator;
+  readonly skipExposureRemoval: Locator;
+  readonly continuousProtectionButton: Locator;
+  readonly numExposures: Locator;
+  readonly numFixed: Locator;
   readonly mozillaLogoFooter: Locator;
   readonly allBreachesFooter: Locator;
   readonly faqsFooter: Locator;
@@ -65,12 +79,44 @@ export class DashboardPage {
   readonly privacyNoticeFooter: Locator;
   readonly githubFooter: Locator;
 
+  readonly overviewCard: Locator;
+  readonly overviewCardSummary: Locator;
+  readonly overviewCardFindings: Locator;
+
+  readonly upsellScreenButton: Locator;
+  readonly urlRegex: RegExp;
+
   constructor(page: Page) {
     this.page = page;
+    this.allExposures = page.locator(
+      '//button[starts-with(@class, "ExposureCard_chevron")]',
+    );
+    this.fixExposureButton = page.getByRole("link", {
+      name: "Fix all exposures",
+    });
+    this.removeExposuresManually = page.getByRole("link", {
+      name: "I’ll remove them manually",
+    });
+    this.reviewAndRemoveProfiles = page.getByText(
+      "Review & remove your profiles",
+    );
+    this.markAsFixed = page.getByRole("button", { name: "Mark as fixed" });
+    this.skipExposureRemoval = page.getByRole("link", { name: "Skip for now" });
+    this.continuousProtectionButton = page.getByRole("button", {
+      name: "Get continuous protection",
+    });
+
     this.dataBreachEmailDropdown = page.locator("custom-select");
     this.siteFoundImage = page.locator("figure img");
     this.breachStats = page.locator("breach-stats");
+    this.numExposures = page.locator(
+      '//*[starts-with(@class, "Chart_headingNr")]',
+    );
+    this.numFixed = page
+      .locator('//div[starts-with(@class, "ProgressCard_progressStat_")]/span')
+      .first();
 
+    //footer
     this.mozillaLogoFooter = page.locator(
       '//a[starts-with(@class, "Shell_mozillaLink")]',
     );
@@ -90,9 +136,17 @@ export class DashboardPage {
     this.fireFoxMonitorLogoImgButton = page.locator(
       '//a[starts-with(@class, "Shell_homeLink_")]/img',
     );
+    this.fireFoxMonitorLogoAtag = page.locator("nav a:has(> img)");
     this.actionNeededTab = page.getByRole("tab", { name: "Action needed" });
     this.fixedTab = page.getByRole("tab", { name: "Fixed" });
     this.profileButton = page.getByTitle("Profile").nth(1);
+
+    this.profileSettings = page.locator(
+      'a[title*="Configure"][title*="Mozilla Monitor"]',
+    );
+    this.profileSignOut = page.locator(
+      'button[title*="Sign out of"][title*="Mozilla Monitor"]',
+    );
     this.profileEmail = page
       .locator('//li[starts-with(@class, "UserMenu_menuItemWrapper")]/b')
       .first();
@@ -104,6 +158,7 @@ export class DashboardPage {
     this.appsAndServices = page.getByRole("button", {
       name: "⁨Mozilla⁩ apps and services",
     });
+    this.appsAndServicesMenu = page.locator("div[class*='AppPicker_popup']");
     this.servicesVpn = page.getByRole("link", { name: "Mozilla VPN" });
     this.servicesRelay = page.getByRole("link", { name: "Firefox Relay" });
     this.servicesPocket = page.getByRole("link", { name: "Pocket" });
@@ -113,6 +168,7 @@ export class DashboardPage {
     this.servicesFirefoxMobile = page.getByRole("link", {
       name: "⁨Firefox⁩ for Mobile",
     });
+    this.servicesMozilla = page.locator('[data-key="mozilla"] > a');
     this.closeAppsAndServices = page.locator(
       '//div[starts-with(@class, "Popover_underlay")]',
     );
@@ -181,7 +237,21 @@ export class DashboardPage {
     // nav menu
     this.settingsPageLink = page.getByRole("link", { name: "Settings" });
     this.dashboardPageLink = page.getByRole("link", { name: "Dashboard" });
+
     this.faqsPageLink = page.getByTitle("Frequently asked questions").first();
+
+    //upsell button
+    this.upsellScreenButton = page.getByText(/Let’s (keep going|fix it)/);
+    this.overviewCard = page.locator("[class*='DashboardTopBanner_container']");
+    this.overviewCardSummary = page.locator(
+      "[aria-label='Dashboard summary'] > div > p",
+    );
+    this.overviewCardFindings = page.locator(
+      "[aria-label='Dashboard summary'] > div > h3",
+    );
+
+    //regex
+    this.urlRegex = /\/dashboard\/(fixed|action-needed)\/?/;
   }
 
   dashboardLinks() {
@@ -210,6 +280,36 @@ export class DashboardPage {
 
   async goToFAQs() {
     await this.faqsPageLink.click();
-    await this.page.waitForURL("**/firefox-monitor-faq");
+    await this.page.waitForURL(/.*firefox-monitor-faq.*/);
+  }
+
+  async verifyPremiumUpsellModalOptions() {
+    // verify subscription dialog elements
+    await expect(this.subscribeDialogCloseButton).toBeVisible();
+    await expect(this.yearlyMonthlyTablist).toBeVisible();
+
+    // verify user purchase choices
+    await this.yearlyTab.click();
+    await expect(this.subscribeDialogSelectYearlyPlanLink).toBeVisible();
+
+    await this.monthlyTab.click();
+    await expect(this.subscribeDialogSelectMonthlyPlanLink).toBeVisible();
+
+    // Check monthly redirection
+    await this.subscribeDialogSelectMonthlyPlanLink.click();
+    const purchasePage = new PurchasePage(this.page);
+    await purchasePage.verifyMonthlyPlanDetails();
+    await expect(purchasePage.subscriptionHeader).toBeVisible();
+
+    // Check yearly redirection
+    await this.page.goto(`${process.env.E2E_TEST_BASE_URL}`);
+    await this.subscribeButton.waitFor();
+    await this.subscribeButton.click();
+    await this.subscribeDialogSelectYearlyPlanLink.click();
+    await purchasePage.verifyYearlyPlanDetails();
+
+    // Go back to dashboard.
+    await this.page.goto(`${process.env.E2E_TEST_BASE_URL}`);
+    await this.subscribeButton.waitFor();
   }
 }

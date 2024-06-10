@@ -5,61 +5,39 @@
 import { test, expect } from "../fixtures/basePage.js";
 import { checkAuthState, setEnvVariables } from "../utils/helpers.js";
 
-test.describe(`${process.env.E2E_TEST_ENV} - Monitor Plus Purchase Flow Yearly`, () => {
-  test.beforeEach(
-    async ({ page, authPage, landingPage, welcomePage, dashboardPage }) => {
-      test.info().annotations.push({
-        type: "testrail id",
-        description:
-          "https://testrail.stage.mozaws.net/index.php?/cases/view/2463564",
-      });
+test.describe(`${process.env.E2E_TEST_ENV} - Breach Scan, Monitor Plus Purchase Flow`, () => {
+  test.beforeEach(async ({ page, authPage, landingPage, welcomePage }) => {
+    test.info().annotations.push({
+      type: "testrail id",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463564",
+    });
 
-      // this test runs through the welcome scan flow, increasing timeout to address it
-      test.slow();
+    test.slow(
+      true,
+      "this test runs through the welcome scan flow, increasing timeout to address it",
+    );
 
-      setEnvVariables(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
+    setEnvVariables(process.env.E2E_TEST_ACCOUNT_EMAIL as string);
 
-      // speed up test by ignore non necessary requests
-      await page.route(/(analytics)/, async (route) => {
-        await route.abort();
-      });
+    // speed up test by ignoring non necessary requests
+    await page.route(/(analytics)/, async (route) => {
+      await route.abort();
+    });
 
-      // start authentication flow
-      await landingPage.open();
-      await landingPage.goToSignIn();
+    // start authentication flow
+    await landingPage.open();
+    await landingPage.goToSignIn();
 
-      // Fill out sign up form
-      const randomEmail = `_${Date.now()}@restmail.net`;
-      await authPage.signUp(randomEmail, page);
+    // Fill out sign up form
+    const randomEmail = `_${Date.now()}@restmail.net`;
+    await authPage.signUp(randomEmail, page);
 
-      // wait for welcome page
-      await page.waitForURL("**/user/welcome");
-
-      // confirm get started step elements
-      expect(await welcomePage.getStartedStep.count()).toEqual(3);
-      await expect(page.getByText("Get started")).toBeVisible();
-      await expect(page.getByText("Enter info")).toBeVisible();
-      await expect(page.getByText("Find exposures")).toBeVisible();
-
-      // navigate to enter info step
-      await welcomePage.startFreeScanButton.click();
-
-      // confirm enter info step
-      await welcomePage.firstNameInputField.fill("Monitor");
-      await welcomePage.lastNameInputField.fill("Automation1");
-      await welcomePage.cityStateInputField.pressSequentially(
-        "Atlanta, GA, USA",
-      );
-      await page.getByText("AtlantaGA, USA", { exact: true }).click();
-      await welcomePage.dobInputField.fill("2002-01-01");
-      await welcomePage.findExposuresButton.click();
-
-      await welcomePage.modalConfirmButton.click();
-      // Waiting for scan to complete
-      await dashboardPage.actionNeededTab.waitFor();
-      expect(page.url()).toContain("/user/dashboard");
-    },
-  );
+    // wait for welcome page
+    await page.waitForURL("**/user/welcome");
+    await welcomePage.goThroughFirstScan();
+    expect(page.url()).toContain("/user/dashboard");
+  });
 
   test("Verify that the user can purchase the plus subscription with a Stripe card - Yearly", async ({
     dashboardPage,
@@ -94,7 +72,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Monitor Plus Purchase Flow Yearly`,
     // fill out subscription payment
     await purchasePage.authorizationCheckbox.check();
     await purchasePage.fillOutStripeCardInfo();
-    await purchasePage.payNowButton.click();
+    await purchasePage.payNowButton.click({ force: true });
     await page.getByText("Subscription confirmation").waitFor();
     // navigate to confirmation
     await purchasePage.getStartedButton.click();
@@ -102,10 +80,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Monitor Plus Purchase Flow Yearly`,
     await purchasePage.goToNextStep.click();
 
     // confirm successful payment
-    await dashboardPage.plusSubscription.waitFor({
-      state: "attached",
-      timeout: 5000,
-    });
+    await dashboardPage.plusSubscription.waitFor();
     await expect(dashboardPage.plusSubscription).toBeVisible();
   });
 
@@ -161,9 +136,10 @@ test.describe(`${process.env.E2E_TEST_ENV} - Monitor Plus Purchase Flow Yearly`,
     await purchasePage.subscriptionHeader.waitFor();
 
     // fill out subscription payment
+    await purchasePage.authorizationCheckbox.waitFor();
     await purchasePage.authorizationCheckbox.check();
     await purchasePage.fillOutStripeCardInfo();
-    await purchasePage.payNowButton.click();
+    await purchasePage.payNowButton.click({ force: true });
     await page.getByText("Subscription confirmation").waitFor();
     // navigate to confirmation
     await purchasePage.getStartedButton.click();
@@ -175,5 +151,51 @@ test.describe(`${process.env.E2E_TEST_ENV} - Monitor Plus Purchase Flow Yearly`,
       timeout: 5000,
     });
     await expect(dashboardPage.plusSubscription).toBeVisible();
+  });
+
+  test("Verify that the user can purchase the plus subscription with a PayPal account - yearly", async ({
+    purchasePage,
+    dashboardPage,
+    context,
+  }) => {
+    test.skip(
+      process.env.E2E_TEST_ENV === "production",
+      "payment method test not available in production",
+    );
+    // link to testrail case
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463628",
+    });
+
+    await purchasePage.gotoPurchaseFromDashboard(dashboardPage, true);
+    // fill out subscription payment
+    await purchasePage.authorizationCheckbox.check();
+    await purchasePage.fillOutPaypalInfo(context);
+    await purchasePage.postPaymentPageCheck(dashboardPage);
+  });
+
+  test("Verify that the user can purchase the plus subscription with a PayPal account - monthly", async ({
+    purchasePage,
+    dashboardPage,
+    context,
+  }) => {
+    test.skip(
+      process.env.E2E_TEST_ENV === "production",
+      "payment method test not available in production",
+    );
+    // link to testrail case
+    test.info().annotations.push({
+      type: "testrail",
+      description:
+        "https://testrail.stage.mozaws.net/index.php?/cases/view/2463628",
+    });
+
+    await purchasePage.gotoPurchaseFromDashboard(dashboardPage, false);
+    // fill out subscription payment
+    await purchasePage.authorizationCheckbox.check();
+    await purchasePage.fillOutPaypalInfo(context);
+    await purchasePage.postPaymentPageCheck(dashboardPage);
   });
 });

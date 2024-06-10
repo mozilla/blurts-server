@@ -24,14 +24,18 @@ fix-flow-celebration-next-dashboard-label = Gå til ditt oversyn
 
 # High Risk Data Breaches
 
+high-risk-breach-heading = Dette er det du skal gjere
 high-risk-breach-mark-as-fixed = Merk som løyst
 high-risk-breach-skip = Hopp over no
 
 # Credit Card Breaches
 
+high-risk-breach-credit-card-title = Betalingskortnummeret ditt er eksponert
+high-risk-breach-credit-card-step-two = Be om eit nytt kort med eit nytt nummer.
 
 # Bank Account Breaches
 
+high-risk-breach-bank-account-step-two = Endre kontonummeret ditt.
 
 # Social Security Number Breaches
 
@@ -45,6 +49,7 @@ ssn-modal-ok = OK
 
 # No high risk breaches found
 
+high-risk-breach-none-sub-description-bank-account = Bankkontoinformasjon
 high-risk-breach-none-sub-description-cc-number = Nummer på betalingskort
 high-risk-breach-none-sub-description-pin = PIN-kodar
 high-risk-breach-none-continue = Hald fram
