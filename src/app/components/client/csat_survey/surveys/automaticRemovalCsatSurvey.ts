@@ -6,6 +6,7 @@ import { TabType } from "../../../../(proper_react)/(redesign)/(authenticated)/u
 import {
   CsatSurveyProps,
   RelevantSurveyWithMetric,
+  Survey,
   SurveyData,
   SurveyLinks,
   UserType,
@@ -19,6 +20,12 @@ export type AutomaticRemovalVariation = {
   daysThreshold: number;
   followUpSurveyOptions: SurveyLinks;
 };
+
+function isAutomaticRemovalSurvey(
+  survey: Survey,
+): survey is AutomaticRemovalVariation {
+  return "daysThreshold" in survey;
+}
 
 const surveyData: SurveyData = {
   id: "csat_survey",
@@ -99,7 +106,7 @@ const getAutomaticRemovalCsatSurvey = (
   // automatic removal.
   const relevantSurvey =
     surveys &&
-    surveys.findLast((survey) => {
+    surveys.filter(isAutomaticRemovalSurvey).findLast((survey) => {
       // Show the initial survey only to users who have automatically fixed
       // data broker results.
       if (survey.id === "initial" && !props.hasAutoFixedDataBrokers) {
