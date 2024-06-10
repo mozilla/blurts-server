@@ -32,17 +32,19 @@ export const DataBrokers = ({
       <div className={styles.intro}>
         <span className={styles.introContent}>
           <h2>
-            {l10n.getFragment("section-1-intro-title", {
+            {l10n.getFragment("how-it-works-page-data-brokers-intro-title", {
               elems: {
                 data_brokers: <span className={styles.brokersEmphasis} />,
               },
             })}
           </h2>
-          <p>{l10n.getString("section-1-intro-text-1")}</p>
+          <p>{l10n.getString("how-it-works-page-data-brokers-intro-text-1")}</p>
           <hr className={styles.horizontalRule} />
         </span>
         <div className={styles.introCTA}>
-          <h3>{l10n.getString("section-1-intro-text-2")}</h3>
+          <h3>
+            {l10n.getString("how-it-works-page-data-brokers-intro-text-2")}
+          </h3>
           <div className={styles.sectionCTAButton}>
             <TelemetryButton
               variant="primary"
@@ -55,7 +57,9 @@ export const DataBrokers = ({
                 },
               }}
             >
-              {l10n.getString("section-1-intro-cta-button")}
+              {l10n.getString(
+                "how-it-works-page-data-brokers-intro-cta-button",
+              )}
             </TelemetryButton>
           </div>
         </div>
@@ -65,35 +69,41 @@ export const DataBrokers = ({
         <li className={styles.step}>
           <div className={styles.stepTextContainer}>
             <h3 className={`${styles.brokersEmphasis} ${styles.stepTitle}`}>
-              {l10n.getString("section-1-step-1-title")}
+              {l10n.getString("how-it-works-page-data-brokers-step-1-title")}
             </h3>
             <h3 className={styles.stepSubtitle}>
-              {l10n.getString("section-1-step-1-subtitle")}
+              {l10n.getString("how-it-works-page-data-brokers-step-1-subtitle")}
             </h3>
             <div className={styles.privateInfoRow}>
               <Image src={NameIcon} alt="" />
               <p className={styles.privateInfoText}>
-                {l10n.getFragment("section-1-step-1-name", {
-                  elems: {
-                    name: <span className={styles.boldedText} />,
+                {l10n.getFragment(
+                  "how-it-works-page-data-brokers-step-1-name",
+                  {
+                    elems: {
+                      name: <span className={styles.boldedText} />,
+                    },
                   },
-                })}
+                )}
               </p>
             </div>
             <div className={styles.privateInfoRow}>
               <Image src={LocationIcon} alt="" />
               <p className={styles.privateInfoText}>
-                {l10n.getFragment("section-1-step-1-location", {
-                  elems: {
-                    location: <span className={styles.boldedText} />,
+                {l10n.getFragment(
+                  "how-it-works-page-data-brokers-step-1-location",
+                  {
+                    elems: {
+                      location: <span className={styles.boldedText} />,
+                    },
                   },
-                })}
+                )}
               </p>
             </div>
             <div className={styles.privateInfoRow}>
               <Image src={DOBIcon} alt="" />
               <p className={styles.privateInfoText}>
-                {l10n.getFragment("section-1-step-1-dob", {
+                {l10n.getFragment("how-it-works-page-data-brokers-step-1-dob", {
                   elems: {
                     dob: <span className={styles.boldedText} />,
                   },
@@ -101,7 +111,9 @@ export const DataBrokers = ({
               </p>
             </div>
             <p className={styles.stepBody}>
-              {l10n.getString("section-1-step-1-closing-text")}
+              {l10n.getString(
+                "how-it-works-page-data-brokers-step-1-closing-text",
+              )}
             </p>
           </div>
           <Image src={RemoveStep1} alt="step 1 screenshot" />
@@ -111,16 +123,16 @@ export const DataBrokers = ({
           <Image src={RemoveStep2} alt="" />
           <div className={styles.stepTextContainer}>
             <h3 className={`${styles.brokersEmphasis} ${styles.stepTitle}`}>
-              {l10n.getString("section-1-step-2-title")}
+              {l10n.getString("how-it-works-page-data-brokers-step-2-title")}
             </h3>
             <h3 className={styles.stepSubtitle}>
-              {l10n.getString("section-1-step-2-subtitle")}
+              {l10n.getString("how-it-works-page-data-brokers-step-2-subtitle")}
             </h3>
             <p className={styles.stepBody}>
-              {l10n.getString("section-1-step-2-text-1")}
+              {l10n.getString("how-it-works-page-data-brokers-step-2-text-1")}
             </p>
             <p className={styles.stepBody}>
-              {l10n.getString("section-1-step-2-text-2")}
+              {l10n.getString("how-it-works-page-data-brokers-step-2-text-2")}
             </p>
           </div>
         </li>
@@ -128,16 +140,16 @@ export const DataBrokers = ({
         <li className={styles.step}>
           <div className={styles.stepTextContainer}>
             <h3 className={`${styles.brokersEmphasis} ${styles.stepTitle}`}>
-              {l10n.getString("section-1-step-3-title")}
+              {l10n.getString("how-it-works-page-data-brokers-step-3-title")}
             </h3>
             <h3 className={styles.stepSubtitle}>
-              {l10n.getString("section-1-step-3-subtitle")}
+              {l10n.getString("how-it-works-page-data-brokers-step-3-subtitle")}
             </h3>
             <p className={styles.stepBody}>
-              {l10n.getString("section-1-step-3-text-1")}
+              {l10n.getString("how-it-works-page-data-brokers-step-3-text-1")}
             </p>
             <p className={styles.stepBody}>
-              {l10n.getString("section-1-step-3-text-2")}
+              {l10n.getString("how-it-works-page-data-brokers-step-3-text-2")}
             </p>
           </div>
           <Image src={RemoveStep3} alt="" />
@@ -155,7 +167,7 @@ export const DataBrokers = ({
             },
           }}
         >
-          {l10n.getString("section-1-intro-cta-button")}
+          {l10n.getString("how-it-works-page-data-brokers-intro-cta-button")}
         </TelemetryButton>
       </div>
     </section>

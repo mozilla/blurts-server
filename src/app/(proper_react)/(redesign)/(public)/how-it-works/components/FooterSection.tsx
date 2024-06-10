@@ -17,7 +17,7 @@ export const FooterSection = (props: Props) => {
   return (
     <footer className={styles.footerSection}>
       <h2 className={styles.footerSectionCTA}>
-        {l10n.getString("footer-title")}
+        {l10n.getString("how-it-works-page-footersection-title")}
       </h2>
       <div className={styles.footerSectionCTAInput}>
         <SignUpForm
@@ -28,11 +28,13 @@ export const FooterSection = (props: Props) => {
             field: "entered_email_address",
           }}
           scanLimitReached={scanLimitReached}
-          placeholder={l10n.getString("footer-input-placeholder")}
+          placeholder={l10n.getString(
+            "how-it-works-page-footersection-input-placeholder",
+          )}
         />
       </div>
       <p className={styles.note}>
-        {l10n.getString("footer-have-i-been-pwned")}
+        {l10n.getString("how-it-works-page-footersection-have-i-been-pwned")}
       </p>
     </footer>
   );
