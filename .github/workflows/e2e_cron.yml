@@ -82,7 +82,7 @@ jobs:
       - name: Send GitHub Action trigger data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@v1.26.0
-        if: failure()
+        if: failure() && github.ref == 'refs/heads/main'
         with:
           # For posting a message using Block Kit
           payload: |
@@ -129,3 +129,4 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_GHA_FAILURES_WEBHOOK }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+          
