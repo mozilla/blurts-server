@@ -166,8 +166,8 @@ export const View = (props: Props) => {
     arraySortedByDate.filter((exposure: Exposure) => {
       const exposureStatus = getExposureStatus(exposure);
       return (
-        (tabKey === "action-needed" && exposureStatus === "needAction") ||
-        (tabKey === "fixed" && exposureStatus !== "needAction")
+        (tabKey === "action-needed" && exposureStatus === "actionNeeded") ||
+        (tabKey === "fixed" && exposureStatus !== "actionNeeded")
       );
     });
 

@@ -6,8 +6,20 @@ import React from "react";
 import styles from "./StatusPill.module.scss";
 import { useL10n } from "../../hooks/l10n";
 import { Exposure, isScanResult } from "../client/exposure_card/ExposureCard";
+import { ExtendedReactLocalization } from "../../functions/l10n";
 
-export type StatusPillType = "needAction" | "progress" | "fixed";
+type StatusPillType =
+  | "actionNeeded"
+  | "requestedRemoval"
+  | "inProgress"
+  | "removed";
+
+export const StatusPillTypeMap: Record<string, StatusPillType> = {
+  ActionNeeded: "actionNeeded",
+  RequestedRemoval: "requestedRemoval",
+  InProgress: "inProgress",
+  Removed: "removed",
+};
 
 type DirectTypeProps = { type: StatusPillType };
 type ExposureProps = { exposure: Exposure };
@@ -17,26 +29,14 @@ export type Props = DirectTypeProps | ExposureProps;
 /* c8 ignore start */
 export const StatusPill = (props: Props) => {
   const l10n = useL10n();
-  const type = hasDirectType(props)
+  const pillType = hasDirectType(props)
     ? props.type
     : getExposureStatus(props.exposure);
 
-  let stringContent = "";
-  let className = "";
-
-  if (type === "needAction") {
-    stringContent = l10n.getString("status-pill-action-needed");
-    className = "actionNeeded";
-  } else if (type === "progress") {
-    stringContent = l10n.getString("status-pill-progress");
-    className = "inProgress";
-  } else if (type === "fixed") {
-    stringContent = l10n.getString("status-pill-fixed");
-    className = "isFixed";
-  }
-
   return (
-    <div className={`${styles.pill} ${styles[className]}`}>{stringContent}</div>
+    <div className={`${styles.pill} ${styles[pillType]}`}>
+      {getStatusLabel({ pillType, l10n })}
+    </div>
   );
 };
 
@@ -45,22 +45,44 @@ function hasDirectType(props: Props): props is DirectTypeProps {
 }
 /* c8 ignore stop */
 
+const getStatusLabel = ({
+  pillType,
+  l10n,
+}: {
+  pillType: string;
+  l10n: ExtendedReactLocalization;
+}): string => {
+  switch (pillType) {
+    case StatusPillTypeMap.RequestedRemoval:
+      return l10n.getString("status-pill-requested-removal");
+    case StatusPillTypeMap.InProgress:
+      return l10n.getString("status-pill-progress");
+    case StatusPillTypeMap.Removed:
+      return l10n.getString("status-pill-removed");
+    case StatusPillTypeMap.ActionNeeded:
+    default:
+      return l10n.getString("status-pill-action-needed");
+  }
+};
+
 export const getExposureStatus = (exposure: Exposure): StatusPillType => {
   if (isScanResult(exposure)) {
     if (exposure.manually_resolved) {
-      return "fixed";
+      return "removed";
     }
 
     switch (exposure.status) {
       case "removed":
-        return "fixed";
+        return "removed";
       case "waiting_for_verification":
+        return "requestedRemoval";
       case "optout_in_progress":
-        return "progress";
+        return "inProgress";
+      case "new":
       default:
-        return "needAction";
+        return "actionNeeded";
     }
   }
 
-  return exposure.isResolved ? "fixed" : "needAction";
+  return exposure.isResolved ? "removed" : "actionNeeded";
 };

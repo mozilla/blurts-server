@@ -18,16 +18,17 @@
 
   &.actionNeeded {
     background: $color-red-10;
-    color: $color-red-80;
+  }
+
+  &.requestedRemoval {
+    background: $color-violet-10;
   }
 
   &.inProgress {
-    background: rgba($color-blue-50, 0.3);
-    color: $color-blue-90;
+    background: $color-blue-05;
   }
 
-  &.isFixed {
-    background: $color-green-10;
-    color: $color-green-90;
+  &.removed {
+    background: $color-green-20;
   }
 }
