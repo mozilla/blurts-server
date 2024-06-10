@@ -1177,9 +1177,9 @@ it("does not show How It Works page link to non-US users, resolved breaches", ()
   const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
   render(<ComposedDashboard />);
 
-  const howItWorksLink = screen.queryByRole("link", {
-    name: "Learn more",
-  });
+  const howItWorksLink = screen.queryByTestId(
+    "learn-more-link-to-how-it-works",
+  );
 
   expect(howItWorksLink).not.toBeInTheDocument();
 });
@@ -1266,9 +1266,7 @@ it("shows How It Works page link to US users, without Premium, no scan, no breac
   );
   render(<ComposedDashboard />);
 
-  const howItWorksLink = screen.getByRole("link", {
-    name: "Learn more",
-  });
+  const howItWorksLink = screen.getByTestId("learn-more-link-to-how-it-works");
 
   expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
 });
@@ -1342,9 +1340,7 @@ it("shows How It Works page link to US users, without Premium, no scan, unresolv
   );
   render(<ComposedDashboard />);
 
-  const howItWorksLink = screen.getByRole("link", {
-    name: "Learn more",
-  });
+  const howItWorksLink = screen.getByTestId("learn-more-link-to-how-it-works");
 
   expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
 });
@@ -1404,9 +1400,7 @@ it("shows How It Works page link to US users, without Premium, no scan, resolved
   );
   render(<ComposedDashboard />);
 
-  const howItWorksLink = screen.getByRole("link", {
-    name: "Learn more",
-  });
+  const howItWorksLink = screen.getByTestId("learn-more-link-to-how-it-works");
 
   expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
 });
@@ -1449,9 +1443,7 @@ it("shows How It Works page link to US users, without Premium, when we hit the b
   );
   render(<ComposedDashboard />);
 
-  const howItWorksLink = screen.getByRole("link", {
-    name: "Learn more",
-  });
+  const howItWorksLink = screen.getByTestId("learn-more-link-to-how-it-works");
 
   expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
 });
