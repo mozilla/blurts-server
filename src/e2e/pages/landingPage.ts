@@ -256,7 +256,7 @@ export class LandingPage {
   async goToSignIn() {
     await this.signInButton.click();
     // FxA can take a while to load on stage:
-    await this.page.waitForURL("**/oauth/**", { timeout: 120 * 1000 });
+    await this.page.waitForURL("**/oauth/**");
   }
 
   async enterFreeScanEmail(email: string) {
