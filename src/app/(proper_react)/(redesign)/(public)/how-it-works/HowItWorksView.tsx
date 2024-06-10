@@ -12,20 +12,24 @@ import { getPremiumSubscriptionUrl } from "../../../../functions/server/getPremi
 
 export type Props = {
   l10n: ExtendedReactLocalization;
+  eligibleForPremium: boolean;
+  scanLimitReached: boolean;
 };
 
-export const HowItWorksView = ({
-  l10n,
-}: {
-  l10n: ExtendedReactLocalization;
-}) => {
+export const HowItWorksView = (props: Props) => {
+  const { l10n, eligibleForPremium, scanLimitReached } = props;
+
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
   return (
     <main>
       <Header l10n={l10n} />
       <DataBrokers yearlySubscriptionUrl={yearlySubscriptionUrl} />
       <DataBreaches />
-      <FooterSection l10n={l10n} />
+      <FooterSection
+        l10n={l10n}
+        eligibleForPremium={eligibleForPremium}
+        scanLimitReached={scanLimitReached}
+      />
     </main>
   );
 };
