@@ -19,17 +19,21 @@ export const DataBreaches = () => {
       <div className={styles.intro}>
         <span className={styles.introContent}>
           <h2>
-            {l10n.getFragment("section-2-intro-title", {
+            {l10n.getFragment("how-it-works-page-data-breaches-intro-title", {
               elems: {
                 data_breaches: <span className={styles.breachesEmphasis} />,
               },
             })}
           </h2>
-          <p>{l10n.getString("section-2-intro-text-1")}</p>
+          <p>
+            {l10n.getString("how-it-works-page-data-breaches-intro-text-1")}
+          </p>
           <hr className={styles.horizontalRule} />
         </span>
         <div className={styles.introCTA}>
-          <h3>{l10n.getString("section-2-intro-text-2")}</h3>
+          <h3>
+            {l10n.getString("how-it-works-page-data-breaches-intro-text-2")}
+          </h3>
           <div className={styles.sectionCTAButton}>
             <TelemetryButton
               variant="primary"
@@ -44,7 +48,9 @@ export const DataBreaches = () => {
                 },
               }}
             >
-              {l10n.getString("section-2-intro-cta-button")}
+              {l10n.getString(
+                "how-it-works-page-data-breaches-intro-cta-button",
+              )}
             </TelemetryButton>
           </div>
         </div>
@@ -54,13 +60,15 @@ export const DataBreaches = () => {
           {/* STEP 1 */}
           <li>
             <h3 className={`${styles.breachesEmphasis} ${styles.stepTitle}`}>
-              {l10n.getString("section-2-step-1-title")}
+              {l10n.getString("how-it-works-page-data-breaches-step-1-title")}
             </h3>
             <h3 className={styles.stepSubtitle}>
-              {l10n.getString("section-2-step-1-subtitle")}
+              {l10n.getString(
+                "how-it-works-page-data-breaches-step-1-subtitle",
+              )}
             </h3>
             <p className={styles.stepBody}>
-              {l10n.getString("section-2-step-1-text")}
+              {l10n.getString("how-it-works-page-data-breaches-step-1-text")}
             </p>
           </li>
           {/* STEP 2 */}
@@ -68,28 +76,32 @@ export const DataBreaches = () => {
             <h3
               className={`${styles.breachesEmphasis} ${styles.stepTitle} ${styles.stepGroupTitleAfter1st}`}
             >
-              {l10n.getString("section-2-step-2-title")}
+              {l10n.getString("how-it-works-page-data-breaches-step-2-title")}
             </h3>
             <h3 className={styles.stepSubtitle}>
-              {l10n.getString("section-2-step-2-subtitle")}
+              {l10n.getString(
+                "how-it-works-page-data-breaches-step-2-subtitle",
+              )}
             </h3>
             <p className={styles.stepBody}>
-              {l10n.getString("section-2-step-2-text-1")}
+              {l10n.getString("how-it-works-page-data-breaches-step-2-text-1")}
             </p>
             <p className={styles.stepBody}>
-              {l10n.getString("section-2-step-2-text-2")}
+              {l10n.getString("how-it-works-page-data-breaches-step-2-text-2")}
             </p>
           </li>
           {/* STEP 3 */}
           <li className={styles.stepGroupTitleAfter1st}>
             <h3 className={`${styles.breachesEmphasis} ${styles.stepTitle}`}>
-              {l10n.getString("section-2-step-3-title")}
+              {l10n.getString("how-it-works-page-data-breaches-step-3-title")}
             </h3>
             <h3 className={styles.stepSubtitle}>
-              {l10n.getString("section-2-step-3-subtitle")}
+              {l10n.getString(
+                "how-it-works-page-data-breaches-step-3-subtitle",
+              )}
             </h3>
             <p className={styles.stepBody}>
-              {l10n.getString("section-2-step-3-text")}
+              {l10n.getString("how-it-works-page-data-breaches-step-3-text")}
             </p>
           </li>
         </ul>
@@ -109,7 +121,7 @@ export const DataBreaches = () => {
             },
           }}
         >
-          {l10n.getString("section-2-cta-button")}
+          {l10n.getString("how-it-works-page-data-breaches-cta-button")}
         </TelemetryButton>
       </div>
     </section>
