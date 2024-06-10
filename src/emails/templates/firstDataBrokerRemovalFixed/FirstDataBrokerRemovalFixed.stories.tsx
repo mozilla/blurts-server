@@ -32,7 +32,7 @@ export const FirstDataBrokerRemovalFixedStory: Story = {
     data: {
       dataBrokerName: "Data broker name",
       dataBrokerLink: "https://monitor.mozilla.org/",
-      removalDate: "5/31/2024",
+      removalDate: new Date("5/31/2024"),
     },
   },
 };
