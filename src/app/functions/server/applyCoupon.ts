@@ -9,6 +9,7 @@ import {
   addCouponForSubscriber,
   checkCouponForSubscriber,
 } from "../../../db/tables/subscriber_coupons";
+import { applyCoupon } from "../../../utils/fxa";
 
 export async function applyCurrentCouponCode(
   subscriber: SubscriberRow | SerializedSubscriber,
@@ -30,7 +31,11 @@ export async function applyCurrentCouponCode(
   }
 
   try {
-    if (!(await checkCouponForSubscriber(subscriber.id, currentCouponCode))) {
+    if (
+      !(await checkCouponForSubscriber(subscriber.id, currentCouponCode)) &&
+      subscriber.fxa_access_token
+    ) {
+      await applyCoupon(subscriber.fxa_access_token, currentCouponCode);
       await addCouponForSubscriber(subscriber.id, currentCouponCode);
       return {
         success: true,

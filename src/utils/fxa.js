@@ -174,7 +174,7 @@ async function applyCoupon(bearerToken, couponCode) {
         })
       })
       if (!response.ok) {
-        console.info(`apply_coupon: failed - ${JSON.stringify(response.status)}`)
+        console.info(`apply_coupon: failed - ${await response.text()}`)
       } else {
         console.info(`apply_coupon: success - ${JSON.stringify(await response.json())}`)
       }
