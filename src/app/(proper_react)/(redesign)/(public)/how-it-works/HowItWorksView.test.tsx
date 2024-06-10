@@ -82,4 +82,17 @@ describe("How it works page", () => {
       expect.objectContaining({ button_id: "free_scan_first" }),
     );
   });
+
+  it("CTA input in footer section shows correct placeholder text", () => {
+    const ComposedPage = composeStory(HowItWorks, Meta);
+    render(<ComposedPage />);
+
+    const getFreeScanInputField = screen.getByTestId("signup-form-input");
+
+    expect(getFreeScanInputField).toBeInTheDocument();
+    expect(getFreeScanInputField).toHaveAttribute(
+      "placeholder",
+      "example@example.com",
+    );
+  });
 });

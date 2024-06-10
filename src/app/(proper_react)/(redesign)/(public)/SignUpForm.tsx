@@ -78,6 +78,7 @@ export const SignUpForm = (props: Props) => {
     <form className={styles.form} onSubmit={onSubmit}>
       <input
         name={emailInputId}
+        data-testid="signup-form-input"
         id={emailInputId}
         onChange={(e) => {
           setEmailInput(e.target.value);
