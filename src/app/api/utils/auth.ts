@@ -11,6 +11,7 @@ import AppConstants from "../../../appConstants.js";
 import {
   getSubscriberByFxaUid,
   updateFxAData,
+  incrementSignInCountForEligibleFreeUser,
 } from "../../../db/tables/subscribers.js";
 import { addSubscriber } from "../../../db/tables/emailAddresses.js";
 import { getBreaches } from "../../functions/server/getBreaches";
@@ -219,8 +220,9 @@ export const authOptions: AuthOptions = {
     },
   },
   events: {
-    signIn(message) {
+    async signIn(message) {
       logger.debug("fxa-confirmed-profile-data", message.user.id);
+      await incrementSignInCountForEligibleFreeUser(message.user.id);
     },
     signOut(message) {
       logger.debug("logout", message.token.subscriber?.id ?? undefined);
