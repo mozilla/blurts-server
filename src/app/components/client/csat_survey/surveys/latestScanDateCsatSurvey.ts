@@ -37,17 +37,18 @@ const surveyData: SurveyData = {
 
 const getLatestScanDateCsatSurvey = (
   props: CsatSurveyProps & {
-    isSecondSignInAfterFreeScan: boolean;
-    hasFirstMonitoringScan: boolean;
     lastScanDate: Date;
+    hasFirstMonitoringScan: boolean;
+    signInCount: number | null;
   },
 ): RelevantSurveyWithMetric | null => {
+  const isAtLeastSecondLogin =
+    props.signInCount !== null && props.signInCount >= 2;
   const filteredSurveyData = {
     ...surveyData,
     variations: surveyData.variations.filter((surveyVariation) => {
       return (
-        (surveyVariation.id === "free-user" &&
-          props.isSecondSignInAfterFreeScan) ||
+        (surveyVariation.id === "free-user" && isAtLeastSecondLogin) ||
         (surveyVariation.id === "plus-user" && props.hasFirstMonitoringScan)
       );
     }),

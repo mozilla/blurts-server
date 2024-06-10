@@ -17,7 +17,10 @@ import {
   getLatestScanForProfileByReason,
   getScansCountForProfile,
 } from "../../../../../../../../db/tables/onerep_scans";
-import { getOnerepProfileId } from "../../../../../../../../db/tables/subscribers";
+import {
+  getOnerepProfileId,
+  getSignInCount,
+} from "../../../../../../../../db/tables/subscribers";
 
 import {
   activateAndOptoutProfile,
@@ -136,6 +139,7 @@ export default async function DashboardPage({ params }: Props) {
         "monitoring",
       )) !== "undefined"
     : false;
+  const signInCount = await getSignInCount(session.user.subscriber.id);
 
   return (
     <View
@@ -157,6 +161,7 @@ export default async function DashboardPage({ params }: Props) {
       experimentData={experimentData}
       activeTab={activeTab}
       hasFirstMonitoringScan={hasFirstMonitoringScan}
+      signInCount={signInCount}
     />
   );
 }

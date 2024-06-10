@@ -76,6 +76,7 @@ export type Props = {
   elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
   activeTab: TabType;
+  signInCount: number | null;
 };
 
 export type TabData = {
@@ -452,8 +453,8 @@ export const View = (props: Props) => {
           dataSummary.dataBrokerAutoFixedDataPointsNum > 0
         }
         hasFirstMonitoringScan={props.hasFirstMonitoringScan}
-        isSecondSignInAfterFreeScan={false}
         lastScanDate={props.userScanData.scan?.created_at ?? null}
+        signInCount={props.signInCount}
       />
       <div className={styles.dashboardContent}>
         <DashboardTopBanner

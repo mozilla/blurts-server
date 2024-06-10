@@ -36,7 +36,7 @@ export const CsatSurveyLatestScanDate: Story = {
   args: {
     activeTab: "fixed",
     user: createUserWithPremiumSubscription(),
-    isSecondSignInAfterFreeScan: false,
+    signInCount: 0,
     hasFirstMonitoringScan: true,
     lastScanDate: new Date(Date.UTC(2024, 6, 31)),
     experimentData: {

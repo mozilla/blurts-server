@@ -54,6 +54,7 @@ type DashboardWrapperProps = (
   enabledFeatureFlags?: FeatureFlagName[];
   experimentData?: ExperimentData;
   hasFirstMonitoringScan?: boolean;
+  signInCount?: number;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
@@ -222,6 +223,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             }
             activeTab={props.activeTab ?? "action-needed"}
             hasFirstMonitoringScan={props.hasFirstMonitoringScan ?? false}
+            signInCount={props.signInCount ?? null}
           />
         </Shell>
       </CountryCodeProvider>
@@ -258,6 +260,12 @@ const meta: Meta<typeof DashboardWrapper> = {
       name: "Has first monitoring scan",
       control: {
         type: "boolean",
+      },
+    },
+    signInCount: {
+      name: "Sign-in count",
+      control: {
+        type: "number",
       },
     },
   },

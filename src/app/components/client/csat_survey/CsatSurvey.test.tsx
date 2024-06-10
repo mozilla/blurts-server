@@ -230,7 +230,7 @@ describe("CSAT survey banner: Latest scan date", () => {
       <ComposedCsatSurvey
         user={user}
         activeTab="action-needed"
-        isSecondSignInAfterFreeScan={true}
+        signInCount={2}
         hasFirstMonitoringScan={false}
       />,
     );
