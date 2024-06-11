@@ -283,7 +283,7 @@ export const ExposuresFilter = ({
               aria-describedby="filterStatusInfo"
             >
               <VisuallyHidden id="filterStatusInfo">
-                {l10n.getString("modal-exposure-status-title")}
+                {l10n.getString("modal-exposure-indicator-title")}
               </VisuallyHidden>
               <QuestionMarkCircle width="15" height="15" alt="" />
             </button>

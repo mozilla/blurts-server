@@ -154,6 +154,13 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-md;
+
+  .statusListItem {
+    align-items: center;
+    display: grid;
+    gap: $spacing-md;
+    grid-template-columns: 1fr 3fr;
+  }
 }
 
 .visuallyHidden {

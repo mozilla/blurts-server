@@ -66,7 +66,8 @@ modal-exposure-status-description-premium = {
   $data_broker_sites_total_num ->
     *[other] We search for exposures in all known data breaches and { $data_broker_sites_total_num } data broker sites that sell your personal info. Your exposures will have one of the following statuses:
 }
-modal-exposure-status-in-progress = <b>In progress</b> means we are actively working on fixing the exposure for you. This is a { -brand-monitor-plus } feature.
+modal-exposure-indicator-description-premium = Mozilla Monitor is always working to protect your data. You’ll be updated throughout the process with the following status indicators:
+modal-exposure-indicator-in-progress = We’re actively working to confirm data broker removal compliance.
 
 # Variables:
 # $exposures_unresolved_num is the unresolved number of exposures the user has.
