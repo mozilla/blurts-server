@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { CONST_DAY_MILLISECONDS } from "../../../constants";
 import { getAllScanResults } from "../../../db/tables/onerep_scans";
 import { getAllDataBrokers } from "./onerep";
 import { refreshStoredScanResults } from "./refreshStoredScanResults";
