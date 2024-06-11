@@ -5,7 +5,8 @@
 import { TabType } from "../../../../(proper_react)/(redesign)/(authenticated)/user/(dashboard)/dashboard/View";
 import {
   CsatSurveyProps,
-  RelevantSurvey,
+  RelevantSurveyWithMetric,
+  Survey,
   SurveyData,
   SurveyLinks,
   UserType,
@@ -20,9 +21,20 @@ export type AutomaticRemovalVariation = {
   followUpSurveyOptions: SurveyLinks;
 };
 
+function isAutomaticRemovalSurvey(
+  survey: Survey,
+): survey is AutomaticRemovalVariation {
+  return "daysThreshold" in survey;
+}
+
 const surveyData: SurveyData = {
   id: "csat_survey",
-  requiredExperimentIds: ["automatic-removal-csat-survey"],
+  requiredExperiments: [
+    {
+      id: "automatic-removal-csat-survey",
+      statusAllowList: ["enabled"],
+    },
+  ],
   variations: [
     {
       id: "initial",
@@ -85,29 +97,39 @@ const surveyData: SurveyData = {
 
 const getAutomaticRemovalCsatSurvey = (
   props: CsatSurveyProps & {
-    elapsedTimeInDaysSinceInitialScan: number | undefined;
+    elapsedTimeInDaysSinceInitialScan: number;
     hasAutoFixedDataBrokers: boolean;
   },
-): RelevantSurvey | null => {
+): RelevantSurveyWithMetric | null => {
   const surveys = getRelevantSurveys({ ...surveyData, ...props });
   // Find the last survey variation that matches the time since the users
   // automatic removal.
   const relevantSurvey =
     surveys &&
-    surveys.findLast((surveyVariation) => {
-      const survey = surveyVariation.survey as AutomaticRemovalVariation;
+    surveys.filter(isAutomaticRemovalSurvey).findLast((survey) => {
       // Show the initial survey only to users who have automatically fixed
       // data broker results.
-      if (survey?.id === "initial" && !props.hasAutoFixedDataBrokers) {
+      if (survey.id === "initial" && !props.hasAutoFixedDataBrokers) {
         return;
       }
 
-      return (
-        typeof props.elapsedTimeInDaysSinceInitialScan !== "undefined" &&
-        props.elapsedTimeInDaysSinceInitialScan >= survey.daysThreshold
-      );
+      return props.elapsedTimeInDaysSinceInitialScan >= survey.daysThreshold;
     });
-  return relevantSurvey ?? null;
+
+  if (!relevantSurvey) {
+    return null;
+  }
+
+  return {
+    ...relevantSurvey,
+    localDismissalId: `${surveyData.id}_${relevantSurvey.id}`,
+    metricKeys: {
+      survey_id: surveyData.id,
+      // We only show the survey to users who are part of the experiment.
+      experiment_branch: "treatment",
+      automated_removal_period: relevantSurvey.id,
+    },
+  };
 };
 
 export { getAutomaticRemovalCsatSurvey };

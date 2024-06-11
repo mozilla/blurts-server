@@ -20,6 +20,7 @@ export const CsatSurveyAutomaticRemoval: Story = {
   args: {
     activeTab: "fixed",
     user: createUserWithPremiumSubscription(),
+    enabledFeatureFlags: ["LatestScanDateCsatSurvey"],
     experimentData: {
       ...defaultExperimentData,
       "automatic-removal-csat-survey": {
@@ -36,12 +37,13 @@ export const CsatSurveyLatestScanDate: Story = {
   args: {
     activeTab: "fixed",
     user: createUserWithPremiumSubscription(),
+    signInCount: 0,
+    hasFirstMonitoringScan: true,
+    lastScanDate: new Date(Date.UTC(2024, 6, 31)),
+    enabledFeatureFlags: ["LatestScanDateCsatSurvey"],
     experimentData: {
       ...defaultExperimentData,
       "last-scan-date": {
-        enabled: true,
-      },
-      "last-scan-date-csat-survey": {
         enabled: true,
       },
     },
