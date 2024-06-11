@@ -44,19 +44,25 @@ export const View = (props: Props) => {
     <>
       <AccountDeletionNotification />
       <main className={styles.wrapper}>
-        <nav>
-          <Link href="/how-it-works">
-            {props.l10n.getString("landing-all-hero-navbar-link-how-it-works")}
-          </Link>
-          <Link href="#pricing">
-            {props.l10n.getString("landing-all-hero-navbar-link-pricing")}
-          </Link>
-          <Link href="#faq">
-            {props.l10n.getString("landing-all-hero-navbar-link-faqs")}
-          </Link>
-          <Link href="/breaches">
-            {props.l10n.getString("landing-all-hero-navbar-link-all-breaches")}
-          </Link>
+        <nav className={styles.navbar}>
+          <div className={styles.navbarLinksContainer}>
+            <Link className={styles.navbarLinks} href="/how-it-works">
+              {props.l10n.getString(
+                "landing-all-hero-navbar-link-how-it-works",
+              )}
+            </Link>
+            <Link className={styles.navbarLinks} href="#pricing">
+              {props.l10n.getString("landing-all-hero-navbar-link-pricing")}
+            </Link>
+            <Link className={styles.navbarLinks} href="#faq">
+              {props.l10n.getString("landing-all-hero-navbar-link-faqs")}
+            </Link>
+            <Link className={styles.navbarLinks} href="/breaches">
+              {props.l10n.getString(
+                "landing-all-hero-navbar-link-all-breaches",
+              )}
+            </Link>
+          </div>
         </nav>
         <header className={styles.hero}>
           <div className={styles.heroContent}>

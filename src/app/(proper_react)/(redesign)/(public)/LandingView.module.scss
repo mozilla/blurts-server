@@ -5,7 +5,20 @@
   flex-direction: column;
   height: 100%;
 }
-
+.navbar {
+  font: $text-body-xl;
+  padding: $layout-xs $layout-xl;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  .navbarLinksContainer {
+    align-self: flex-end;
+    .navbarLinks {
+      text-decoration: none;
+      margin-left: $spacing-md;
+    }
+  }
+}
 .hero {
   flex: 1 0 auto;
   display: flex;
