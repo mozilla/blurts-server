@@ -10,6 +10,8 @@ import {
 } from "../../../../functions/server/getStuckRemovals";
 import { getServerSession } from "../../../../functions/server/getServerSession";
 import { isAdmin } from "../../../utils/auth";
+import { captureException } from "@sentry/node";
+import { logger } from "../../../../functions/server/logging";
 
 export async function GET(req: NextRequest) {
   const session = await getServerSession();
@@ -30,24 +32,42 @@ export async function GET(req: NextRequest) {
   const days = parseInt(searchParams.get("days") ?? "30");
 
   if (searchParams.get("refresh") === "true") {
-    await refreshStuckRemovals(days);
-    return NextResponse.json({
-      success: true,
-      status: 200,
-      message: "refreshed stored results",
-    });
+    try {
+      await refreshStuckRemovals(days);
+      return NextResponse.json({
+        success: true,
+        status: 200,
+        message: "refreshed stored results",
+      });
+    } catch (e) {
+      captureException(e);
+      logger.error("error_refreshing_results", { error: JSON.stringify(e) });
+      return NextResponse.json({
+        success: false,
+        status: 500,
+      });
+    }
   }
 
-  const { scanResults, brokers } = await getStuckRemovals(days, null, null);
-  const csvOutput = exportCsv(scanResults, brokers);
+  try {
+    const { scanResults, brokers } = await getStuckRemovals(days, null, null);
+    const csvOutput = exportCsv(scanResults, brokers);
 
-  const headers = new Headers();
-  headers.set("Content-Type", "text/csv");
-  return new NextResponse(csvOutput, {
-    status: 200,
-    statusText: "OK",
-    headers,
-  });
+    const headers = new Headers();
+    headers.set("Content-Type", "text/csv");
+    return new NextResponse(csvOutput, {
+      status: 200,
+      statusText: "OK",
+      headers,
+    });
+  } catch (e) {
+    captureException(e);
+    logger.error("error_getting_stuck_removals", { error: JSON.stringify(e) });
+    return NextResponse.json({
+      success: false,
+      status: 500,
+    });
+  }
 }
 
 function exportCsv(
