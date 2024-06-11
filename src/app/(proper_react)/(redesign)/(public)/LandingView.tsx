@@ -29,6 +29,7 @@ import { ScanLimit } from "./ScanLimit";
 import { FaqSection } from "./Faq";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { AccountDeletionNotification } from "./AccountDeletionNotification";
+import Link from "next/link";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -43,6 +44,20 @@ export const View = (props: Props) => {
     <>
       <AccountDeletionNotification />
       <main className={styles.wrapper}>
+        <nav>
+          <Link href="/how-it-works">
+            {props.l10n.getString("landing-all-hero-navbar-link-how-it-works")}
+          </Link>
+          <Link href="#pricing">
+            {props.l10n.getString("landing-all-hero-navbar-link-pricing")}
+          </Link>
+          <Link href="#faq">
+            {props.l10n.getString("landing-all-hero-navbar-link-faqs")}
+          </Link>
+          <Link href="/user/dashboard">
+            {props.l10n.getString("landing-all-hero-navbar-link-all-breaches")}
+          </Link>
+        </nav>
         <header className={styles.hero}>
           <div className={styles.heroContent}>
             <h1>{props.l10n.getString("landing-all-hero-title")}</h1>
