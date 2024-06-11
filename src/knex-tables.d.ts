@@ -132,7 +132,9 @@ declare module "knex/types/tables" {
     // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     db_migration_2: null | unknown;
     onerep_profile_id: null | number;
+    sign_in_count: null | number;
     email_addresses: SubscriberEmail[];
+    first_broker_removal_email_sent: boolean;
   }
   type SubscriberOptionalColumns = Extract<
     keyof SubscriberRow,
@@ -153,10 +155,11 @@ declare module "knex/types/tables" {
     | "db_migration_2"
     | "onerep_profile_id"
     | "email_addresses"
+    | "first_broker_removal_email_sent"
   >;
   type SubscriberAutoInsertedColumns = Extract<
     keyof SubscriberRow,
-    "id" | "created_at" | "updated_at"
+    "id" | "created_at" | "updated_at" | "sign_in_count"
   >;
 
   interface EmailAddressRow {
@@ -172,6 +175,17 @@ declare module "knex/types/tables" {
   type EmailAddressAutoInsertedColumns = Extract<
     keyof EmailAddressRow,
     "id" | "created_at" | "updated_at"
+  >;
+
+  interface SubscriberCouponRow {
+    id: number;
+    subscriber_id: number;
+    coupon_code: string;
+    created_at: Date;
+  }
+  type SubscriberCouponAutoInsertedColumns = Extract<
+    keyof SubscriberCouponRow,
+    "id" | "subscriber_id" | "created_at"
   >;
 
   interface BreachRow {
@@ -335,6 +349,14 @@ declare module "knex/types/tables" {
       // otherfields are optional, except updated_at:
       Partial<Omit<SubscriberRow, "id" | "created_at">> &
         Pick<SubscriberRow, "updated_at">
+    >;
+
+    subscriber_coupons: Knex.CompositeTableType<
+      SubscriberCouponRow,
+      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
+      Omit<SubscriberCouponRow, SubscriberAutoInsertedColumns>,
+      // On updates, don't allow updating the ID; all other fields are optional:
+      Partial<Omit<SubscriberCouponRow, "id">>
     >;
 
     email_addresses: Knex.CompositeTableType<
