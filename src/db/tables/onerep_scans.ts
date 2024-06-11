@@ -99,7 +99,7 @@ async function getAllScanResults(
     if (count > 0 && count < perPage) {
       totalPages = 1;
     } else {
-      totalPages = Math.floor(count / perPage);
+      totalPages = Math.ceil(count / perPage);
     }
     return { totalPages, scanResults };
   } else {
