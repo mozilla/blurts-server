@@ -3366,6 +3366,9 @@ describe("CSAT survey banner", () => {
         elapsedTimeInDaysSinceInitialScan={1}
         experimentData={{
           ...defaultExperimentData,
+          "automatic-removal-csat-survey": {
+            enabled: true,
+          },
           "last-scan-date-csat-survey": {
             enabled: false,
           },
@@ -3390,6 +3393,9 @@ describe("CSAT survey banner", () => {
         elapsedTimeInDaysSinceInitialScan={1}
         experimentData={{
           ...defaultExperimentData,
+          "automatic-removal-csat-survey": {
+            enabled: true,
+          },
           "last-scan-date-csat-survey": {
             enabled: false,
           },

@@ -120,19 +120,13 @@ const getAutomaticRemovalCsatSurvey = (
     return null;
   }
 
-  // Distinguish between users who are and are not enrolled in the experiment.
-  const experimentBranchId = props.experimentData[
-    "automatic-removal-csat-survey"
-  ].enabled
-    ? "treatment"
-    : "control";
-
   return {
     ...relevantSurvey,
     localDismissalId: `${surveyData.id}_${relevantSurvey.id}`,
     metricKeys: {
       survey_id: surveyData.id,
-      experiment_branch: experimentBranchId,
+      // We only show the survey to users who are part of the experiment.
+      experiment_branch: "treatment",
       automated_removal_period: relevantSurvey.id,
     },
   };
