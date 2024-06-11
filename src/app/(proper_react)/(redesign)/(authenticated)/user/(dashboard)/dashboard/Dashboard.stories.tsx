@@ -97,8 +97,8 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   }
 
   const mockedScan: OnerepScanRow = {
-    created_at: new Date(1998, 2, 31),
-    updated_at: new Date(1998, 2, 31),
+    created_at: new Date(Date.UTC(1998, 2, 31)),
+    updated_at: new Date(Date.UTC(1998, 2, 31)),
     id: 0,
     onerep_profile_id: 0,
     onerep_scan_id: 0,

@@ -3574,7 +3574,7 @@ describe("CSAT survey banner", () => {
         survey_id: "last_scan_date",
         response_id: "very-satisfied",
         experiment_branch: "treatment",
-        last_scan_date: "19980330",
+        last_scan_date: "19980331",
       }),
     );
   });
