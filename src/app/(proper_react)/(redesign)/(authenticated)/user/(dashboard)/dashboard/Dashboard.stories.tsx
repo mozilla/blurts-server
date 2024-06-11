@@ -53,6 +53,8 @@ type DashboardWrapperProps = (
   activeTab?: TabType;
   enabledFeatureFlags?: FeatureFlagName[];
   experimentData?: ExperimentData;
+  hasFirstMonitoringScan?: boolean;
+  signInCount?: number;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
@@ -95,8 +97,8 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   }
 
   const mockedScan: OnerepScanRow = {
-    created_at: new Date(1998, 2, 31),
-    updated_at: new Date(1998, 2, 31),
+    created_at: new Date(Date.UTC(1998, 2, 31)),
+    updated_at: new Date(Date.UTC(1998, 2, 31)),
     id: 0,
     onerep_profile_id: 0,
     onerep_scan_id: 0,
@@ -208,12 +210,17 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             experimentData={
               props.experimentData ?? {
                 ...defaultExperimentData,
+                "automatic-removal-csat-survey": {
+                  enabled: true,
+                },
                 "last-scan-date": {
                   enabled: true,
                 },
               }
             }
             activeTab={props.activeTab ?? "action-needed"}
+            hasFirstMonitoringScan={props.hasFirstMonitoringScan ?? false}
+            signInCount={props.signInCount ?? null}
           />
         </Shell>
       </CountryCodeProvider>
@@ -242,6 +249,18 @@ const meta: Meta<typeof DashboardWrapper> = {
     },
     elapsedTimeInDaysSinceInitialScan: {
       name: "Days since initial scan",
+      control: {
+        type: "number",
+      },
+    },
+    hasFirstMonitoringScan: {
+      name: "Has first monitoring scan",
+      control: {
+        type: "boolean",
+      },
+    },
+    signInCount: {
+      name: "Sign-in count",
       control: {
         type: "number",
       },
