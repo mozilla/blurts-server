@@ -12,7 +12,7 @@ export async function getStuckRemovals(
   perPage: number | null,
 ) {
   const age = new Date();
-  const dateOffset = 24 * 60 * 60 * 1000 * days;
+  const dateOffset = CONST_DAY_MILLISECONDS * days;
   age.setTime(age.getTime() - dateOffset);
 
   const { totalPages, scanResults } = await getAllScanResults(
@@ -42,7 +42,7 @@ export async function getStuckRemovals(
 
 export async function refreshStuckRemovals(days: number) {
   const age = new Date();
-  const dateOffset = 24 * 60 * 60 * 1000 * days;
+  const dateOffset = CONST_DAY_MILLISECONDS * days;
   age.setTime(age.getTime() - dateOffset);
 
   // Retreive all results from our local database and refresh them against the OneRep API.

@@ -9,33 +9,27 @@ import { NoResults, Removals } from "./Removals";
 import { getStuckRemovals } from "../../../../../functions/server/getStuckRemovals";
 
 export default async function Page({
-  searchParams,
+  searchParams: {
+    page = "1",
+    days = "30",
+    perPage = "100",
+  },
 }: {
-  searchParams?: {
+  searchParams: {
     query?: string;
-    page?: string;
-    days?: string;
-    perPage?: string;
+    page: string;
+    days: string;
+    perPage: string;
   };
 }) {
   const session = await getServerSession();
 
   if (isAdmin(session?.user?.email || "")) {
-    let page = 1;
-    let days = 30;
-    let perPage = 100;
-
-    if (searchParams?.page) {
-      page = parseInt(searchParams.page);
-    }
-
-    if (searchParams?.days) {
-      days = parseInt(searchParams.days);
-    }
-
-    if (searchParams?.perPage) {
-      perPage = parseInt(searchParams.perPage);
-    }
+  const searchParamsParsed = {
+    page: parseInt(page),
+    days: parseInt(days),
+    perPage: parseInt(perPage),
+  }
 
     if (searchParams?.page && searchParams?.days && searchParams?.perPage) {
       if (page < 1) {
