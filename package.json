@@ -135,6 +135,7 @@
     "jest-fail-on-console": "^3.3.0",
     "lint-staged": "^15.2.5",
     "mjml-browser": "^4.15.3",
+    "oauth2-mock-server": "^7.1.2",
     "prettier": "3.2.5",
     "react-intersection-observer": "^9.10.2",
     "sass": "^1.77.4",
