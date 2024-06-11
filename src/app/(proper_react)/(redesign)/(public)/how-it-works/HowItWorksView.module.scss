@@ -109,7 +109,7 @@
         font: $text-title-2xs;
         font-family: "Inter", sans-serif;
         padding-block-start: $spacing-xl;
-        text-transform: uppercase;
+        @include uppercase-only-english;
       }
       .stepSubtitle {
         color: $color-grey-50;
