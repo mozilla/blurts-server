@@ -23,7 +23,7 @@ page:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - monitor-events
+      - events
     extra_keys:
       path:
         description: The path of the page.
@@ -74,7 +74,7 @@ subscription:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - monitor-events
+      - events
     extra_keys:
       user_id:
         description: Mozilla Accounts user ID.
@@ -103,7 +103,7 @@ subscription:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - monitor-events
+      - events
     extra_keys:
       user_id:
         description: Mozilla Accounts user ID.
@@ -133,7 +133,7 @@ account:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - monitor-events
+      - events
     extra_keys:
       user_id:
         description: Mozilla Accounts user ID.
@@ -162,7 +162,7 @@ account:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - monitor-events
+      - events
     extra_keys:
       user_id:
         description: Mozilla Accounts user ID.
@@ -191,7 +191,7 @@ account:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - monitor-events
+      - events
     extra_keys:
       user_id:
         description: Mozilla Accounts user ID.
@@ -220,7 +220,7 @@ account:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - monitor-events
+      - events
     extra_keys:
       user_id:
         description: Mozilla Accounts user ID.
