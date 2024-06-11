@@ -15,39 +15,39 @@ export async function GET(req: NextRequest) {
   const session = await getServerSession();
   const searchParams = req.nextUrl.searchParams;
 
-  if (isAdmin(session?.user?.email || "")) {
-    if (!searchParams.has("days")) {
-      return NextResponse.json({
-        success: false,
-        status: 422,
-        message: "days parameter is required",
-      });
-    }
-
-    const days = parseInt(searchParams.get("days") ?? "30");
-
-    if (searchParams.get("refresh") === "true") {
-      await refreshStuckRemovals(days);
-      return NextResponse.json({
-        success: true,
-        status: 200,
-        message: "refreshed stored results",
-      });
-    }
-
-    const { scanResults, brokers } = await getStuckRemovals(days, null, null);
-    const csvOutput = exportCsv(scanResults, brokers);
-
-    const headers = new Headers();
-    headers.set("Content-Type", "text/csv");
-    return new NextResponse(csvOutput, {
-      status: 200,
-      statusText: "OK",
-      headers,
-    });
-  } else {
+  if (!isAdmin(session?.user?.email || "")) {
     return NextResponse.json({ success: false, status: 401 });
   }
+
+  if (!searchParams.has("days")) {
+    return NextResponse.json({
+      success: false,
+      status: 422,
+      message: "days parameter is required",
+    });
+  }
+
+  const days = parseInt(searchParams.get("days") ?? "30");
+
+  if (searchParams.get("refresh") === "true") {
+    await refreshStuckRemovals(days);
+    return NextResponse.json({
+      success: true,
+      status: 200,
+      message: "refreshed stored results",
+    });
+  }
+
+  const { scanResults, brokers } = await getStuckRemovals(days, null, null);
+  const csvOutput = exportCsv(scanResults, brokers);
+
+  const headers = new Headers();
+  headers.set("Content-Type", "text/csv");
+  return new NextResponse(csvOutput, {
+    status: 200,
+    statusText: "OK",
+    headers,
+  });
 }
 
 function exportCsv(
