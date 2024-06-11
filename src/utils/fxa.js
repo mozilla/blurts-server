@@ -147,7 +147,7 @@ async function deleteSubscription(bearerToken) {
 /**
  * @param {string} bearerToken
  * @param {string} couponCode
- * @returns {Promise<boolean>}
+ * @returns
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
