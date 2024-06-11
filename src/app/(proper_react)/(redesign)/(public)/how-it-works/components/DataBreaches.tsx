@@ -107,7 +107,7 @@ export const DataBreaches = () => {
         </ul>
         <Image src={Resolve} alt="" />
       </div>
-      <div className={styles.sectionCTAButton}>
+      <div className={`${styles.sectionCTAButton} ${styles.breachesCTAButton}`}>
         <TelemetryButton
           variant="primary"
           onPress={() => {
