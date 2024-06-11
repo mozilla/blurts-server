@@ -7,7 +7,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import styles from "./EmailTrigger.module.scss";
-import { triggerMonthlyActivity, triggerVerificationEmail } from "./actions";
+import {
+  triggerFirstDataBrokerRemovalFixed,
+  triggerMonthlyActivity,
+  triggerVerificationEmail,
+} from "./actions";
 import { Button } from "../../../../../components/client/Button";
 
 export type Props = {
@@ -23,6 +27,8 @@ export const EmailTrigger = (props: Props) => {
     isSendingMonthlyActivityOverview,
     setIssSendingMonthlyActivityOverview,
   ] = useState(false);
+  const [firstDataBrokerRemovalFixed, setFirstDataBrokerRemovalFixed] =
+    useState(false);
 
   return (
     <main className={styles.wrapper}>
@@ -73,6 +79,20 @@ export const EmailTrigger = (props: Props) => {
           }}
         >
           Monthly activity overview
+        </Button>
+        <Button
+          variant="primary"
+          isLoading={firstDataBrokerRemovalFixed}
+          onPress={() => {
+            setFirstDataBrokerRemovalFixed(true);
+            void triggerFirstDataBrokerRemovalFixed(selectedEmailAddress).then(
+              () => {
+                setFirstDataBrokerRemovalFixed(false);
+              },
+            );
+          }}
+        >
+          First data broker removal fixed
         </Button>
       </div>
     </main>
