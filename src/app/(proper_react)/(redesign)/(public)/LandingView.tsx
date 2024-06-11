@@ -54,7 +54,7 @@ export const View = (props: Props) => {
           <Link href="#faq">
             {props.l10n.getString("landing-all-hero-navbar-link-faqs")}
           </Link>
-          <Link href="/user/dashboard">
+          <Link href="/breaches">
             {props.l10n.getString("landing-all-hero-navbar-link-all-breaches")}
           </Link>
         </nav>
