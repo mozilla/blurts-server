@@ -9,11 +9,7 @@ import { NoResults, Removals } from "./Removals";
 import { getStuckRemovals } from "../../../../../functions/server/getStuckRemovals";
 
 export default async function Page({
-  searchParams: {
-    page = "1",
-    days = "30",
-    perPage = "100",
-  },
+  searchParams: { page = "1", days = "30", perPage = "100" },
 }: {
   searchParams: {
     query?: string;
@@ -24,44 +20,50 @@ export default async function Page({
 }) {
   const session = await getServerSession();
 
-  if (isAdmin(session?.user?.email || "")) {
+  if (!isAdmin(session?.user?.email || "")) {
+    return notFound();
+  }
+
   const searchParamsParsed = {
     page: parseInt(page),
     days: parseInt(days),
     perPage: parseInt(perPage),
-  }
+  };
 
-    if (searchParams?.page && searchParams?.days && searchParams?.perPage) {
-      if (page < 1) {
-        return <code>Invalid page</code>;
-      }
-
-      const { totalPages, scanResults, brokers } = await getStuckRemovals(
-        days,
-        page,
-        perPage,
-      );
-
-      if (totalPages === undefined || totalPages === 0) {
-        return <NoResults email={session?.user?.email || ""} />;
-      }
-
-      if (page > totalPages) {
-        return <code>Invalid page</code>;
-      }
-
-      return (
-        <Removals
-          scanResults={scanResults}
-          brokers={brokers}
-          page={page}
-          totalPages={totalPages}
-        />
-      );
-    } else {
-      redirect(`?page=${page}&days=${days}&perPage=${perPage}`);
+  if (
+    searchParamsParsed.page &&
+    searchParamsParsed.days &&
+    searchParamsParsed.perPage
+  ) {
+    if (searchParamsParsed.page < 1) {
+      return <code>Invalid page</code>;
     }
+
+    const { totalPages, scanResults, brokers } = await getStuckRemovals(
+      searchParamsParsed.days,
+      searchParamsParsed.page,
+      searchParamsParsed.perPage,
+    );
+
+    if (totalPages === undefined || totalPages === 0) {
+      return <NoResults email={session?.user?.email || ""} />;
+    }
+
+    if (searchParamsParsed.page > totalPages) {
+      return <code>Invalid page</code>;
+    }
+
+    return (
+      <Removals
+        scanResults={scanResults}
+        brokers={brokers}
+        page={searchParamsParsed.page}
+        totalPages={totalPages}
+      />
+    );
   } else {
-    return notFound();
+    redirect(
+      `?page=${searchParamsParsed.page}&days=${searchParamsParsed.days}&perPage=${searchParamsParsed.perPage}`,
+    );
   }
 }
