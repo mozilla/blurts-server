@@ -88,7 +88,9 @@ async function getLatestOnerepScanResults(
             "onerep_scans",
             "onerep_scan_results.onerep_scan_id",
             "onerep_scans.onerep_scan_id",
-          )) as OnerepScanResultRow[]);
+          )
+          .orderBy("link")
+          .orderBy("onerep_scan_result_id", "desc")) as OnerepScanResultRow[]);
 
   return {
     scan: scan ?? null,

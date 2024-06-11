@@ -1,0 +1,49 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+import type { Meta, StoryObj } from "@storybook/react";
+
+import { CsatSurvey } from "../csat_survey/CsatSurvey";
+import { createUserWithPremiumSubscription } from "../../../../apiMocks/mockData";
+import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+
+const meta: Meta<typeof CsatSurvey> = {
+  title: "CsatSurvey",
+  component: CsatSurvey,
+};
+export default meta;
+type Story = StoryObj<typeof CsatSurvey>;
+
+export const CsatSurveyAutomaticRemoval: Story = {
+  name: "AutomaticRemoval",
+  args: {
+    activeTab: "fixed",
+    user: createUserWithPremiumSubscription(),
+    experimentData: {
+      ...defaultExperimentData,
+      "automatic-removal-csat-survey": {
+        enabled: true,
+      },
+    },
+    hasAutoFixedDataBrokers: true,
+    elapsedTimeInDaysSinceInitialScan: 0,
+  },
+};
+
+export const CsatSurveyLatestScanDate: Story = {
+  name: "LatestScanDate",
+  args: {
+    activeTab: "fixed",
+    user: createUserWithPremiumSubscription(),
+    experimentData: {
+      ...defaultExperimentData,
+      "last-scan-date": {
+        enabled: true,
+      },
+      "last-scan-date-csat-survey": {
+        enabled: true,
+      },
+    },
+  },
+};

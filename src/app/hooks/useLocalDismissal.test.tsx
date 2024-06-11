@@ -3,7 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { act, renderHook } from "@testing-library/react";
-import { useLocalDismissal } from "./useLocalDismissal";
+import {
+  COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS,
+  useLocalDismissal,
+} from "./useLocalDismissal";
 import { useCookies } from "react-cookie";
 
 jest.mock("react-cookie", () => {
@@ -71,7 +74,7 @@ describe("useLocalDismissal", () => {
     expect(mockedSetCookie).toHaveBeenCalledWith(
       "some_key_dismissed",
       expect.any(String),
-      { maxAge: 100 * 365 * 24 * 60 * 60 },
+      { maxAge: COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS },
     );
   });
 
@@ -117,7 +120,7 @@ describe("useLocalDismissal", () => {
     expect(mockedSetCookie).toHaveBeenCalledWith(
       "some_key_dismissed",
       expect.any(String),
-      { maxAge: 100 * 365 * 24 * 60 * 60 },
+      { maxAge: COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS },
     );
   });
 

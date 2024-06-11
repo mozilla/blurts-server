@@ -42,9 +42,9 @@ export type FeatureFlagName =
   | "RedesignedEmails"
   | "UpdatedEmailPreferencesOption"
   | "MonthlyActivityEmail"
-  | "CsatSurvey"
   | "CancellationFlow"
-  | "ConfirmCancellation";
+  | "ConfirmCancellation"
+  | "FirstDataBrokerRemovalFixedEmail";
 
 /**
  * @param options

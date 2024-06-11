@@ -24,7 +24,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page content`, (
 
     await expect(landingPage.monitorLandingHeader).toBeVisible();
     await landingPage.signInButton.click();
-    await page.waitForURL("**/oauth/**", { timeout: 120 * 1000 });
+    await page.waitForURL("**/oauth/**");
     expect(page.url()).toContain("oauth");
   });
 
@@ -232,7 +232,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     const randomEmail = `${Date.now()}_tstact@restmail.net`;
     await landingPage.monitorHeroFormEmailInputField.fill(randomEmail);
     await landingPage.monitorHeroFormInputSubmitButton.click();
-    await page.waitForURL("**/oauth/**", { timeout: 120 * 1000 });
+    await page.waitForURL("**/oauth/**");
 
     // complete registration form
     await authPage.passwordInputField.fill(
@@ -303,7 +303,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
       process.env.E2E_TEST_ACCOUNT_EMAIL as string,
     );
     await landingPage.monitorHeroFormInputSubmitButton.click();
-    await page.waitForURL("**/oauth/**", { timeout: 120 * 1000 });
+    await page.waitForURL("**/oauth/**");
 
     // complete sign in form
     await authPage.enterPassword();
