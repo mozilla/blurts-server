@@ -103,7 +103,7 @@
     "@storybook/nextjs": "^8.1.6",
     "@storybook/react": "^8.0.0",
     "@testing-library/jest-dom": "^6.4.2",
-    "@testing-library/react": "^15.0.7",
+    "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/adm-zip": "^0.5.5",
     "@types/canvas-confetti": "^1.6.4",
@@ -145,6 +145,6 @@
     "ts-jest": "^29.1.4",
     "tsx": "^4.10.5",
     "typescript": "^5.4.5",
-    "yaml": "^2.4.2"
+    "yaml": "^2.4.5"
   }
 }
