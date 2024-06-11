@@ -301,9 +301,6 @@ describe("CSAT survey banner: Latest scan date", () => {
           "last-scan-date": {
             enabled: false,
           },
-          "last-scan-date-csat-survey": {
-            enabled: true,
-          },
         }}
       />,
     );

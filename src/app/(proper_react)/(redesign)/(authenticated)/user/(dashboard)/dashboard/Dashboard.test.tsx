@@ -3369,9 +3369,6 @@ describe("CSAT survey banner", () => {
           "automatic-removal-csat-survey": {
             enabled: true,
           },
-          "last-scan-date-csat-survey": {
-            enabled: false,
-          },
         }}
       />,
     );
@@ -3395,9 +3392,6 @@ describe("CSAT survey banner", () => {
           ...defaultExperimentData,
           "automatic-removal-csat-survey": {
             enabled: true,
-          },
-          "last-scan-date-csat-survey": {
-            enabled: false,
           },
         }}
       />,
@@ -3426,9 +3420,6 @@ describe("CSAT survey banner", () => {
           "automatic-removal-csat-survey": {
             enabled: true,
           },
-          "last-scan-date-csat-survey": {
-            enabled: false,
-          },
         }}
       />,
     );
@@ -3455,9 +3446,6 @@ describe("CSAT survey banner", () => {
           ...defaultExperimentData,
           "automatic-removal-csat-survey": {
             enabled: true,
-          },
-          "last-scan-date-csat-survey": {
-            enabled: false,
           },
         }}
       />,
@@ -3491,9 +3479,6 @@ describe("CSAT survey banner", () => {
           "automatic-removal-csat-survey": {
             enabled: true,
           },
-          "last-scan-date-csat-survey": {
-            enabled: false,
-          },
         }}
       />,
     );
@@ -3526,9 +3511,6 @@ describe("CSAT survey banner", () => {
           ...defaultExperimentData,
           "automatic-removal-csat-survey": {
             enabled: true,
-          },
-          "last-scan-date-csat-survey": {
-            enabled: false,
           },
         }}
       />,

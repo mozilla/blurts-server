@@ -16,10 +16,6 @@ const surveyData: SurveyData = {
       id: "last-scan-date",
       statusAllowList: ["enabled", "disabled"],
     },
-    {
-      id: "last-scan-date-csat-survey",
-      statusAllowList: ["enabled"],
-    },
   ],
   variations: [
     {

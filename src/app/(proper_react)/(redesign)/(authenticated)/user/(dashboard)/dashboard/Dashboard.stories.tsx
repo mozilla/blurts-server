@@ -216,9 +216,6 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
                 "last-scan-date": {
                   enabled: true,
                 },
-                "last-scan-date-csat-survey": {
-                  enabled: true,
-                },
               }
             }
             activeTab={props.activeTab ?? "action-needed"}

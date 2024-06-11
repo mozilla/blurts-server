@@ -46,9 +46,6 @@ export const CsatSurveyLatestScanDate: Story = {
       "last-scan-date": {
         enabled: true,
       },
-      "last-scan-date-csat-survey": {
-        enabled: true,
-      },
     },
   },
 };
