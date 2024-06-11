@@ -91,9 +91,8 @@ export const SignUpForm = (props: Props) => {
         value={emailInput}
         type="email"
         placeholder={
-          props.placeholder
-            ? props.placeholder
-            : l10n.getString("landing-all-hero-emailform-input-placeholder")
+          props.placeholder ??
+          l10n.getString("landing-all-hero-emailform-input-placeholder")
         }
       />
       <Button type="submit" variant="primary" wide>
