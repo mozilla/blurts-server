@@ -72,9 +72,11 @@ export type Props = {
   scanCount: number;
   isNewUser: boolean;
   experimentationId: string;
+  hasFirstMonitoringScan: boolean;
   elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
   activeTab: TabType;
+  signInCount: number | null;
 };
 
 export type TabData = {
@@ -441,17 +443,20 @@ export const View = (props: Props) => {
         />
       </Toolbar>
       <CsatSurvey
+        user={props.user}
         activeTab={activeTab}
-        elapsedTimeInDaysSinceInitialScan={
-          props.elapsedTimeInDaysSinceInitialScan
-        }
+        enabledFeatureFlags={props.enabledFeatureFlags}
         experimentData={props.experimentData}
+        elapsedTimeInDaysSinceInitialScan={
+          props.elapsedTimeInDaysSinceInitialScan ?? null
+        }
         hasAutoFixedDataBrokers={
           dataSummary.dataBrokerAutoFixedDataPointsNum > 0
         }
-        user={props.user}
+        hasFirstMonitoringScan={props.hasFirstMonitoringScan}
+        lastScanDate={props.userScanData.scan?.created_at ?? null}
+        signInCount={props.signInCount}
       />
-
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           tabType={activeTab}
