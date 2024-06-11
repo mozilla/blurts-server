@@ -147,4 +147,5 @@ modal-exposure-status-description-all = We search for exposures in all known dat
 modal-exposure-indicator-title = About status indicators
 modal-exposure-indicator-action-needed = Advanced or manual action by member is needed to complete removal.
 modal-exposure-indicator-requested-removal = We’ve sent an official removal request to the data broker. We’ll keep you updated if we need to re-send the request.
-modal-exposure-indicator-removed = Advanced or manual action by member is needed to complete removal.
+modal-exposure-indicator-removed = We’ve successfully removed your data!
+modal-exposure-indicator-fixed = We’ve successfully removed your data!

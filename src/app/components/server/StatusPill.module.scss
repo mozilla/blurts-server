@@ -28,7 +28,8 @@
     background: $color-blue-05;
   }
 
-  &.removed {
+  &.removed,
+  &.fixed {
     background: $color-green-20;
   }
 }

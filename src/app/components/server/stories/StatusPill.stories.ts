@@ -31,3 +31,9 @@ export const Removed: Story = {
     type: "removed",
   },
 };
+
+export const Fixed: Story = {
+  args: {
+    type: "fixed",
+  },
+};

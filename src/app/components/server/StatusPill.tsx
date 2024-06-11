@@ -12,13 +12,15 @@ type StatusPillType =
   | "actionNeeded"
   | "requestedRemoval"
   | "inProgress"
-  | "removed";
+  | "removed"
+  | "fixed";
 
 export const StatusPillTypeMap: Record<string, StatusPillType> = {
   ActionNeeded: "actionNeeded",
   RequestedRemoval: "requestedRemoval",
   InProgress: "inProgress",
   Removed: "removed",
+  Fixed: "fixed",
 };
 
 type DirectTypeProps = { type: StatusPillType };
@@ -59,6 +61,8 @@ const getStatusLabel = ({
       return l10n.getString("status-pill-progress");
     case StatusPillTypeMap.Removed:
       return l10n.getString("status-pill-removed");
+    case StatusPillTypeMap.Fixed:
+      return l10n.getString("status-pill-fixed");
     case StatusPillTypeMap.ActionNeeded:
     default:
       return l10n.getString("status-pill-action-needed");
@@ -84,5 +88,5 @@ export const getExposureStatus = (exposure: Exposure): StatusPillType => {
     }
   }
 
-  return exposure.isResolved ? "removed" : "actionNeeded";
+  return exposure.isResolved ? "fixed" : "actionNeeded";
 };

@@ -103,7 +103,7 @@ export const ExposuresFilterStatusExplainer = (
           </p>
           <br />
           <ul className="noList">
-            {props.isEligibleForPremium && (
+            {props.isEligibleForPremium ? (
               <>
                 <li className={styles.statusListItem}>
                   <StatusPill type="requestedRemoval" />
@@ -113,12 +113,17 @@ export const ExposuresFilterStatusExplainer = (
                   <StatusPill type="inProgress" />
                   {l10n.getString("modal-exposure-indicator-in-progress")}
                 </li>
+                <li className={styles.statusListItem}>
+                  <StatusPill type="removed" />
+                  {l10n.getString("modal-exposure-indicator-removed")}
+                </li>
               </>
+            ) : (
+              <li className={styles.statusListItem}>
+                <StatusPill type="fixed" />
+                {l10n.getString("modal-exposure-indicator-removed")}
+              </li>
             )}
-            <li className={styles.statusListItem}>
-              <StatusPill type="removed" />
-              {l10n.getString("modal-exposure-indicator-removed")}
-            </li>
             <li className={styles.statusListItem}>
               <StatusPill type="actionNeeded" />
               {l10n.getString("modal-exposure-indicator-action-needed")}
