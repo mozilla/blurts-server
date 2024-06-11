@@ -3552,6 +3552,7 @@ describe("CSAT survey banner", () => {
         activeTab="fixed"
         elapsedTimeInDaysSinceInitialScan={90}
         hasFirstMonitoringScan
+        enabledFeatureFlags={["LatestScanDateCsatSurvey"]}
       />,
     );
 
@@ -3582,6 +3583,7 @@ describe("CSAT survey banner", () => {
         activeTab="fixed"
         elapsedTimeInDaysSinceInitialScan={90}
         hasFirstMonitoringScan
+        enabledFeatureFlags={["LatestScanDateCsatSurvey"]}
       />,
     );
 
@@ -3600,6 +3602,7 @@ describe("CSAT survey banner", () => {
         activeTab="fixed"
         elapsedTimeInDaysSinceInitialScan={90}
         hasFirstMonitoringScan
+        enabledFeatureFlags={["LatestScanDateCsatSurvey"]}
       />,
     );
 
