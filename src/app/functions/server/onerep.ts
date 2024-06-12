@@ -14,10 +14,6 @@ import {
   getLatestScanForProfileByReason,
 } from "../../../db/tables/onerep_scans";
 import { RemovalStatus } from "../universal/scanResult.js";
-import {
-  FeatureFlagName,
-  getEnabledFeatureFlags,
-} from "../../../db/tables/featureFlags";
 import { logger } from "./logging";
 
 export const monthlyScansQuota = parseInt(
@@ -93,6 +89,7 @@ export type ScanResult = {
   emails: string[];
   data_broker: string;
   status: RemovalStatus;
+  optout_attempts?: number;
   data_broker_id: number;
   created_at: ISO8601DateString;
   updated_at: ISO8601DateString;
@@ -370,11 +367,6 @@ export async function isEligibleForFreeScan(
     throw new Error("No session with a known subscriber found");
   }
 
-  const enabledFlags = await getEnabledFeatureFlags({ email: user.email });
-  if (!enabledFlags.includes("FreeBrokerScan")) {
-    return false;
-  }
-
   const profileId = await getOnerepProfileId(user.subscriber.id);
   const scanResult = await getLatestOnerepScanResults(profileId);
 
@@ -386,15 +378,8 @@ export async function isEligibleForFreeScan(
   return true;
 }
 
-export function isEligibleForPremium(
-  countryCode: string,
-  enabledFlags: FeatureFlagName[],
-) {
+export function isEligibleForPremium(countryCode: string) {
   if (countryCode !== "us") {
-    return false;
-  }
-
-  if (!enabledFlags.includes("PremiumBrokerRemoval")) {
     return false;
   }
 

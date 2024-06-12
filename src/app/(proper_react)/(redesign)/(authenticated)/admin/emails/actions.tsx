@@ -22,6 +22,7 @@ import { getSubscriberBreaches } from "../../../../../functions/server/getSubscr
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
 import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
+import { FirstDataBrokerRemovalFixed } from "../../../../../../emails/templates/firstDataBrokerRemovalFixed/FirstDataBrokerRemovalFixed";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -109,13 +110,30 @@ export async function triggerMonthlyActivity(emailAddress: string) {
 
   await send(
     emailAddress,
-    l10n.getString("email-monthly-plus-manual-subject", {
+    l10n.getString("email-monthly-plus-auto-subject", {
       month: dateFormatter.format(new Date(Date.now())),
     }),
     <MonthlyActivityEmail
       subscriber={sanitizeSubscriberRow(subscriber)}
       l10n={l10n}
       data={data}
+    />,
+  );
+}
+
+export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {
+  const l10n = getL10n();
+
+  await send(
+    emailAddress,
+    l10n.getString("email-first-broker-removal-fixed-subject"),
+    <FirstDataBrokerRemovalFixed
+      data={{
+        dataBrokerName: "Data broker name",
+        dataBrokerLink: process.env.SERVER_URL ?? "",
+        removalDate: new Date(Date.now()),
+      }}
+      l10n={l10n}
     />,
   );
 }

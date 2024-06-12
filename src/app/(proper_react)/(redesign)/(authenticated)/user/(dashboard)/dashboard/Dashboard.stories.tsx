@@ -17,7 +17,11 @@ import { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches"
 import { LatestOnerepScanData } from "../../../../../../../db/tables/onerep_scans";
 import { CountryCodeProvider } from "../../../../../../../contextProviders/country-code";
 import { SessionProvider } from "../../../../../../../contextProviders/session";
-import { defaultExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
+import {
+  ExperimentData,
+  defaultExperimentData,
+} from "../../../../../../../telemetry/generated/nimbus/experiments";
+import { FeatureFlagName } from "../../../../../../../db/tables/featureFlags";
 
 const brokerOptions = {
   "no-scan": "No scan started",
@@ -47,6 +51,10 @@ type DashboardWrapperProps = (
   elapsedTimeInDaysSinceInitialScan?: number;
   totalNumberOfPerformedScans?: number;
   activeTab?: TabType;
+  enabledFeatureFlags?: FeatureFlagName[];
+  experimentData?: ExperimentData;
+  hasFirstMonitoringScan?: boolean;
+  signInCount?: number;
 };
 const DashboardWrapper = (props: DashboardWrapperProps) => {
   const mockedResolvedBreach: SubscriberBreach = createRandomBreach({
@@ -89,8 +97,8 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   }
 
   const mockedScan: OnerepScanRow = {
-    created_at: new Date(1998, 2, 31),
-    updated_at: new Date(1998, 2, 31),
+    created_at: new Date(Date.UTC(1998, 2, 31)),
+    updated_at: new Date(Date.UTC(1998, 2, 31)),
     id: 0,
     onerep_profile_id: 0,
     onerep_scan_id: 0,
@@ -177,18 +185,18 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   return (
     <SessionProvider session={mockedSession}>
       <CountryCodeProvider countryCode={props.countryCode}>
-        <Shell l10n={getL10n()} session={mockedSession} nonce="">
+        <Shell
+          l10n={getL10n()}
+          session={mockedSession}
+          nonce=""
+          countryCode={props.countryCode}
+        >
           <DashboardEl
             user={user}
             userBreaches={breaches}
             userScanData={scanData}
             isEligibleForPremium={props.countryCode === "us"}
             isEligibleForFreeScan={props.countryCode === "us" && !scanData.scan}
-            enabledFeatureFlags={[
-              "FreeBrokerScan",
-              "PremiumBrokerRemoval",
-              "CsatSurvey",
-            ]}
             monthlySubscriptionUrl=""
             yearlySubscriptionUrl=""
             fxaSettingsUrl=""
@@ -203,13 +211,21 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             elapsedTimeInDaysSinceInitialScan={
               props.elapsedTimeInDaysSinceInitialScan
             }
-            experimentData={{
-              ...defaultExperimentData,
-              "last-scan-date": {
-                enabled: true,
-              },
-            }}
+            enabledFeatureFlags={props.enabledFeatureFlags ?? []}
+            experimentData={
+              props.experimentData ?? {
+                ...defaultExperimentData,
+                "automatic-removal-csat-survey": {
+                  enabled: true,
+                },
+                "last-scan-date": {
+                  enabled: true,
+                },
+              }
+            }
             activeTab={props.activeTab ?? "action-needed"}
+            hasFirstMonitoringScan={props.hasFirstMonitoringScan ?? false}
+            signInCount={props.signInCount ?? null}
           />
         </Shell>
       </CountryCodeProvider>
@@ -238,6 +254,18 @@ const meta: Meta<typeof DashboardWrapper> = {
     },
     elapsedTimeInDaysSinceInitialScan: {
       name: "Days since initial scan",
+      control: {
+        type: "number",
+      },
+    },
+    hasFirstMonitoringScan: {
+      name: "Has first monitoring scan",
+      control: {
+        type: "boolean",
+      },
+    },
+    signInCount: {
+      name: "Sign-in count",
       control: {
         type: "number",
       },

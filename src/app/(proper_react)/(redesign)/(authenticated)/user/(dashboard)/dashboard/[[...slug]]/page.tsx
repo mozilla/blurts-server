@@ -14,9 +14,13 @@ import {
 } from "../../../../../../../functions/universal/user";
 import {
   getLatestOnerepScanResults,
+  getLatestScanForProfileByReason,
   getScansCountForProfile,
 } from "../../../../../../../../db/tables/onerep_scans";
-import { getOnerepProfileId } from "../../../../../../../../db/tables/subscribers";
+import {
+  getOnerepProfileId,
+  getSignInCount,
+} from "../../../../../../../../db/tables/subscribers";
 
 import {
   activateAndOptoutProfile,
@@ -110,10 +114,7 @@ export default async function DashboardPage({ params }: Props) {
   const enabledFeatureFlags = await getEnabledFeatureFlags({
     email: session.user.email,
   });
-  const userIsEligibleForPremium = isEligibleForPremium(
-    countryCode,
-    enabledFeatureFlags,
-  );
+  const userIsEligibleForPremium = isEligibleForPremium(countryCode);
 
   const experimentationId = getExperimentationId(session.user);
   const experimentData = await getExperiments({
@@ -131,6 +132,14 @@ export default async function DashboardPage({ params }: Props) {
   );
   const elapsedTimeInDaysSinceInitialScan =
     await getElapsedTimeInDaysSinceInitialScan(session.user);
+
+  const hasFirstMonitoringScan = profileId
+    ? typeof (await getLatestScanForProfileByReason(
+        profileId,
+        "monitoring",
+      )) !== "undefined"
+    : false;
+  const signInCount = await getSignInCount(session.user.subscriber.id);
 
   return (
     <View
@@ -151,6 +160,8 @@ export default async function DashboardPage({ params }: Props) {
       experimentationId={experimentationId}
       experimentData={experimentData}
       activeTab={activeTab}
+      hasFirstMonitoringScan={hasFirstMonitoringScan}
+      signInCount={signInCount}
     />
   );
 }

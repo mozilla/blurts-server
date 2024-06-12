@@ -146,7 +146,7 @@ security-recommendation-email-summary =
         [one] Ne ñanduti veve kundaharape ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
        *[other] Ne ñanduti veve kundaharape ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
     }
-security-recommendation-email-description = Rombyasyeterei, ndaikatumo’ãi emyatyrõ ko apañuãi. Hákatu eku’ekuaa eñemo’ã hag̃ua.
+security-recommendation-email-description = Rombyasyeterei, ndaikatumo’ãi emyatyrõ ko apañuái. Hákatu eku’ekuaa eñemo’ã hag̃ua.
 security-recommendation-email-step-one = Ani eikutu juajuha ñanduti veve eikua’ỹva omboúvagui; eimo’ãramo ouha ejeroviahágui, ehenói eikuaa porã hag̃ua
 security-recommendation-email-step-two = Ema’ẽke <link_to_info>phishing jehode</link_to_info> rehe
 security-recommendation-email-step-three = Emongurusu ñanduti veve ikatúva spam ha emboyke imbouhára
@@ -161,6 +161,7 @@ security-recommendation-ip-summary =
         [one] Ne IP kundaharape ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
        *[other] Ne IP kundaharape ojehecha { $num_breaches } mba’ekuaarã ñemboguápe:
     }
+security-recommendation-ip-step-one = Eiporu VPN (<link_to_info>{ -brand-mozilla-vpn }</link_to_info>) ramo emokañy hag̃ua nde IP kundaharape ha eiporu ñanduti ñemihápe.
 
 # Leaked Passwords
 

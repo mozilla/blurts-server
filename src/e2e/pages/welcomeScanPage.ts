@@ -2,7 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { Locator, Page } from "@playwright/test";
+import { Locator, Page, expect } from "@playwright/test";
+import { DashboardPage } from "./dashBoardPage";
 
 export class WelcomePage {
   readonly page: Page;
@@ -66,5 +67,31 @@ export class WelcomePage {
     this.isThisCorrectModal = page.getByLabel("Is this correct?");
     this.modalConfirmButton = page.getByRole("button", { name: "Confirm" });
     this.modalEditButton = page.getByRole("button", { name: "Edit" });
+  }
+
+  async goThroughFirstScan() {
+    // confirm get started step elements
+    expect(await this.getStartedStep.count()).toEqual(3);
+    await expect(this.page.getByText("Get started")).toBeVisible();
+    await expect(this.page.getByText("Enter info")).toBeVisible();
+    await expect(this.page.getByText("Find exposures")).toBeVisible();
+
+    // navigate to enter info step
+    await this.startFreeScanButton.click();
+
+    // confirm enter info step
+    await this.firstNameInputField.fill("Levi");
+    await this.lastNameInputField.fill("Ackerman");
+    await this.cityStateInputField.pressSequentially("Atlanta, GA, USA");
+    await this.page.getByText("AtlantaGA, USA", { exact: true }).click();
+    await this.dobInputField.fill("2002-01-01");
+    await this.findExposuresButton.click();
+
+    await this.modalConfirmButton.click();
+    // Waiting for scan to complete
+    const dashboardPage = new DashboardPage(this.page);
+    await dashboardPage.actionNeededTab.waitFor();
+
+    // TODO: Handle state in prod where it says "Scan still in progress:"
   }
 }

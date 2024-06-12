@@ -30,6 +30,20 @@ features:
       - channel: local
         value: { "enabled": true }
       - channel: staging
+        value: { "enabled": false }
+      - channel: production
+        value: { "enabled": false }
+  automatic-removal-csat-survey:
+    description: Show the CSAT survey for Plus users that have automatically removed broker results
+    variables:
+      enabled:
+        description: If the feature is enabled
+        type: Boolean
+        default: false
+    defaults:
+      - channel: local
+        value: { "enabled": true }
+      - channel: staging
         value: { "enabled": true }
       - channel: production
         value: { "enabled": false }

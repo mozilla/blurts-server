@@ -70,8 +70,6 @@
       @media (prefers-reduced-motion: no-preference) {
         transition: stroke-dashoffset 1s ease;
       }
-      // The --sliceLength custom property is set in the element's props
-      stroke-dashoffset: var(--sliceLength);
     }
   }
 
