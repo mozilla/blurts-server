@@ -31,6 +31,11 @@ export const Shell = (props: Props) => {
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
 
+  console.log("##############################################");
+  console.log("shell countryCode", props.countryCode);
+  console.log("shell session", props.session);
+  console.log("##############################################");
+
   return (
     <>
       {/* This component ensures that the client session is synced with the
