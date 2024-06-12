@@ -47,7 +47,6 @@
   }
   ul {
     list-style-type: none;
-    padding: 0;
   }
   .intro {
     display: flex;
@@ -106,8 +105,21 @@
     &.reversedStep {
       flex-direction: column-reverse;
     }
+    &.mobileColumns {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: $spacing-xs;
+      gap: $spacing-xs;
+    }
     .stepTextContainer {
+      padding: $spacing-md 0;
       max-width: $content-sm;
+      &.mobileColumns {
+        width: 45%;
+      }
       .stepTitle {
         font: $text-title-2xs;
         padding-block-start: $spacing-xl;
@@ -141,6 +153,9 @@
           margin-right: $spacing-sm;
         }
       }
+    }
+    img.mobileColumns {
+      width: 45%;
     }
     @media screen and (min-width: $screen-md) {
       display: flex;
@@ -221,22 +236,17 @@
     font: $text-title-md;
   }
   .footerSectionCTAInput {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $spacing-lg;
     margin-top: $spacing-md;
     margin-bottom: $spacing-md;
     input {
-      flex: 1 0 auto;
       border-radius: $border-radius-md;
       border: 1px solid $color-grey-20;
-      padding: $spacing-md;
+      padding: $spacing-md $spacing-md $spacing-md $spacing-md;
       font: $text-body-md;
+      margin-right: $spacing-sm;
     }
     button {
-      flex: 1 0 auto;
-      font: $text-body-md;
-      font-weight: 600;
+      padding: $spacing-md $spacing-2xl;
     }
   }
   .note {
