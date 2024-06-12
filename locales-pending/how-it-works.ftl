@@ -84,4 +84,3 @@ footer-have-i-been-pwned = Breach data provided by Have I Been Pwned
 ## Site Navigation
 
 main-nav-link-how-it-works-label = How It Works
-footer-external-link-how-it-works-label = How It Works

@@ -233,6 +233,7 @@ terms-of-service = Terms of Service
 privacy-notice = Privacy Notice
 github = { -brand-github }
 footer-nav-all-breaches = All Breaches
+footer-external-link-how-it-works-label = How It Works
 footer-external-link-faq-label = FAQs
 footer-external-link-faq-tooltip = Frequently asked questions
 
