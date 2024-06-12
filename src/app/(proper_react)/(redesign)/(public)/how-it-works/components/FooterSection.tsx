@@ -18,6 +18,8 @@ export const FooterSection = (props: Props) => {
         <input
           placeholder={l10n.getString("footer-input-placeholder")}
           type="email"
+          name="email"
+          id="email"
         />
         <Button variant="primary">{l10n.getString("footer-cta-button")}</Button>
       </div>
