@@ -132,7 +132,7 @@ export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {
     <FirstDataBrokerRemovalFixed
       data={{
         dataBrokerName: randomScanResult.data_broker,
-        dataBrokerLink: randomScanResult.link,
+        dataBrokerLink: `${process.env.SERVER_URL}/user/dashboard/fixed`,
         removalDate: randomScanResult.updated_at,
       }}
       l10n={l10n}

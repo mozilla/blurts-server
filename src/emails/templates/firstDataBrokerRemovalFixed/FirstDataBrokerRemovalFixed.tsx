@@ -72,7 +72,7 @@ export const FirstDataBrokerRemovalFixed = (props: Props) => {
         <mj-section padding="20px">
           <mj-column>
             <mj-button
-              href={`${process.env.SERVER_URL}/user/dashboard?utm_source=monitor-product&utm_medium=email&utm_campaign=${utmCampaign}&utm_content=view-dashboard`}
+              href={`${process.env.SERVER_URL}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=email&utm_campaign=${utmCampaign}&utm_content=view-dashboard`}
               background-color="#0060DF"
               font-weight="600"
               font-size="15px"
