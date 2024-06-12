@@ -11,11 +11,7 @@ const meta: Meta<typeof HowItWorksView> = {
   title: "Pages/Public/HowItWorks page",
   component: () => (
     <PublicShell l10n={getL10n()} countryCode="us">
-      <HowItWorksView
-        l10n={getL10n()}
-        eligibleForPremium={true}
-        scanLimitReached={false}
-      />
+      <HowItWorksView l10n={getL10n()} />
     </PublicShell>
   ),
   args: {
