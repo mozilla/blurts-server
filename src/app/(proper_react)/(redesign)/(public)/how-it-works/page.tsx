@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { headers } from "next/headers";
-import { HowItWorksView } from "./HowItWorksView";
+import { View } from "./HowItWorksView";
 import { getCountryCode } from "../../../../functions/server/getCountryCode";
 import { redirect } from "next/navigation";
 
@@ -15,5 +15,5 @@ export default function Page() {
     return redirect("/");
   }
 
-  return <HowItWorksView />;
+  return <View />;
 }
