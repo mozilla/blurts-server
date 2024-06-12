@@ -196,6 +196,17 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
     }
   };
 
+  const attemptCount = scanResult?.optout_attempts ?? 0;
+  const statusPillNote =
+    scanResult.status === "waiting_for_verification" && attemptCount >= 1
+      ? l10n.getString("status-pill-requested-removal-info", {
+          attempt_count: attemptCount,
+          last_attempt_date: new Intl.DateTimeFormat(locale).format(
+            scanResult.updated_at,
+          ),
+        })
+      : "";
+
   const exposureCard = (
     <div aria-label={props.scanResult.data_broker}>
       <div className={styles.exposureCard}>
@@ -238,7 +249,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
               {l10n.getString("exposure-card-label-status")}
             </dt>
             <dd>
-              <StatusPill exposure={scanResult} />
+              <StatusPill exposure={scanResult} note={statusPillNote} />
             </dd>
           </dl>
           <button

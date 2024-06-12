@@ -25,7 +25,9 @@ export const StatusPillTypeMap: Record<string, StatusPillType> = {
 
 type DirectTypeProps = { type: StatusPillType };
 type ExposureProps = { exposure: Exposure };
-export type Props = DirectTypeProps | ExposureProps;
+export type Props = (DirectTypeProps | ExposureProps) & {
+  note?: string;
+};
 
 // This component just renders HTML without business logic:
 /* c8 ignore start */
@@ -36,8 +38,11 @@ export const StatusPill = (props: Props) => {
     : getExposureStatus(props.exposure);
 
   return (
-    <div className={`${styles.pill} ${styles[pillType]}`}>
-      {getStatusLabel({ pillType, l10n })}
+    <div className={styles.pillWrapper}>
+      <div className={`${styles.pill} ${styles[pillType]}`}>
+        {getStatusLabel({ pillType, l10n })}
+      </div>
+      {props.note ?? null}
     </div>
   );
 };

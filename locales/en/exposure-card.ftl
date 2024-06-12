@@ -14,6 +14,10 @@ status-pill-progress = In progress
 status-pill-requested-removal = Requested removal
 status-pill-removed = Removed
 status-pill-fixed = Fixed
+# Variables:
+# $attempt_count is the number of times that a removal has been attempted.
+# $last_attempt_date is the date of the last removal attempt.
+status-pill-requested-removal-info = Attempt ${attempt_count}: ${last_attempt_date}
 
 # Exposure Card
 
