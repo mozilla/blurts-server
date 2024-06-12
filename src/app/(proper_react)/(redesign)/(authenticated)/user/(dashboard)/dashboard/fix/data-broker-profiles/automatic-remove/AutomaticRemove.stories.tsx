@@ -50,7 +50,7 @@ export const AutomaticRemoveViewStory: Story = {
   name: "1d. Automatically resolve brokers",
   render: () => {
     return (
-      <Shell l10n={getL10n()} session={mockedSession} nonce="">
+      <Shell l10n={getL10n()} session={mockedSession} nonce="" countryCode="us">
         <AutomaticRemoveView
           data={{
             countryCode: "us",
