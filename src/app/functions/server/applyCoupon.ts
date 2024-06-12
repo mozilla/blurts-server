@@ -18,7 +18,6 @@ export async function applyCurrentCouponCode(
     subscriber: subscriber.id,
   });
 
-  // current coupon
   const currentCouponCode = process.env.CURRENT_COUPON_CODE_ID;
   if (!currentCouponCode) {
     logger.error(
@@ -65,7 +64,6 @@ export async function checkCurrentCouponCode(
     subscriber: subscriber.id,
   });
 
-  // current coupon
   const currentCouponCode = process.env.CURRENT_COUPON_CODE_ID;
   if (!currentCouponCode) {
     logger.error(

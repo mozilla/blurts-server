@@ -129,7 +129,7 @@ async function deleteSubscription(bearerToken) {
         }
       })
       if (!response.ok) {
-        // throw new InternalServerErrorg(`bad response: ${response.status}`)
+        throw new Error(await response.text())
       } else {
         console.info(`delete_fxa_subscription: success - ${JSON.stringify(await response.json())}`)
       }
