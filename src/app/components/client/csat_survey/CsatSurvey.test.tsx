@@ -13,6 +13,7 @@ import Meta, {
 import { useTelemetry } from "../../../hooks/useTelemetry";
 import { deleteAllCookies } from "../../../functions/client/deleteAllCookies";
 import { createUserWithPremiumSubscription } from "../../../../apiMocks/mockData";
+import { defaultExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 jest.mock("../../../hooks/useTelemetry");
 
@@ -162,10 +163,13 @@ describe("CSAT survey banner: Automatic Removal", () => {
     await user.click(answerButton);
 
     expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
+      "csatSurvey",
       "click",
       expect.objectContaining({
-        button_id: "csat_survey_6-months_very-satisfied",
+        survey_id: "csat_survey",
+        experiment_branch: "treatment",
+        response_id: "very-satisfied",
+        automated_removal_period: "6-months",
       }),
     );
   });
@@ -222,7 +226,14 @@ describe("CSAT survey banner: Latest scan date", () => {
       user.fxa.subscriptions = [];
     }
 
-    render(<ComposedCsatSurvey activeTab="action-needed" user={user} />);
+    render(
+      <ComposedCsatSurvey
+        user={user}
+        activeTab="action-needed"
+        signInCount={2}
+        hasFirstMonitoringScan={false}
+      />,
+    );
 
     const answerButton = screen.getByRole("button", {
       name: "Satisfied",
@@ -256,7 +267,7 @@ describe("CSAT survey banner: Latest scan date", () => {
     expect(answerButton).not.toBeInTheDocument();
   });
 
-  it("records telemetry when submitting the survey", async () => {
+  it("records telemetry when submitting the survey for users who are enrolled in the experiment", async () => {
     const mockedRecord = useTelemetry();
     const user = userEvent.setup();
     const ComposedCsatSurvey = composeStory(CsatSurveyLatestScanDate, Meta);
@@ -268,10 +279,44 @@ describe("CSAT survey banner: Latest scan date", () => {
     await user.click(answerButton);
 
     expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
+      "csatSurvey",
       "click",
       expect.objectContaining({
-        button_id: "csat_survey_latest_scan_date_plus-user_very-satisfied",
+        survey_id: "last_scan_date",
+        experiment_branch: "treatment",
+        response_id: "very-satisfied",
+        last_scan_date: "20240731",
+      }),
+    );
+  });
+
+  it("records telemetry when submitting the survey for users who are not enrolled in the experiment", async () => {
+    const mockedRecord = useTelemetry();
+    const user = userEvent.setup();
+    const ComposedCsatSurvey = composeStory(CsatSurveyLatestScanDate, Meta);
+    render(
+      <ComposedCsatSurvey
+        experimentData={{
+          ...defaultExperimentData,
+          "last-scan-date": {
+            enabled: false,
+          },
+        }}
+      />,
+    );
+
+    const answerButton = screen.getByRole("button", {
+      name: "Very satisfied",
+    });
+    await user.click(answerButton);
+
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "csatSurvey",
+      "click",
+      expect.objectContaining({
+        survey_id: "last_scan_date",
+        experiment_branch: "control",
+        response_id: "very-satisfied",
       }),
     );
   });

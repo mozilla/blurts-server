@@ -12,13 +12,18 @@ import { getAutomaticRemovalCsatSurvey } from "./surveys/automaticRemovalCsatSur
 import { getLatestScanDateCsatSurvey } from "./surveys/latestScanDateCsatSurvey";
 import { COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS } from "../../../hooks/useLocalDismissal";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 export type CsatSurveyProps = {
   activeTab: TabType;
   user: Session["user"];
   experimentData: ExperimentData;
+  enabledFeatureFlags: FeatureFlagName[];
   hasAutoFixedDataBrokers: boolean;
-  elapsedTimeInDaysSinceInitialScan?: number;
+  hasFirstMonitoringScan: boolean;
+  elapsedTimeInDaysSinceInitialScan: number | null;
+  lastScanDate: Date | null;
+  signInCount: number | null;
 };
 
 export const CsatSurvey = (props: CsatSurveyProps) => {
@@ -30,13 +35,21 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
   // The order of the surveys here matter: If there are multiple matching
   // surveys for the user we dismiss all surveys, but the last one in the list.
   const surveys = [
-    getAutomaticRemovalCsatSurvey({
-      ...surveyOptions,
-      elapsedTimeInDaysSinceInitialScan:
-        props.elapsedTimeInDaysSinceInitialScan,
-      hasAutoFixedDataBrokers: props.hasAutoFixedDataBrokers,
-    }),
-    getLatestScanDateCsatSurvey(surveyOptions),
+    props.elapsedTimeInDaysSinceInitialScan !== null &&
+      getAutomaticRemovalCsatSurvey({
+        ...surveyOptions,
+        elapsedTimeInDaysSinceInitialScan:
+          props.elapsedTimeInDaysSinceInitialScan,
+        hasAutoFixedDataBrokers: props.hasAutoFixedDataBrokers,
+      }),
+    props.enabledFeatureFlags.includes("LatestScanDateCsatSurvey") &&
+      props.lastScanDate !== null &&
+      getLatestScanDateCsatSurvey({
+        ...surveyOptions,
+        signInCount: props.signInCount,
+        hasFirstMonitoringScan: props.hasFirstMonitoringScan,
+        lastScanDate: props.lastScanDate,
+      }),
   ];
 
   // Filters out previously dismissed surveys to make sure `currentSurvey` will
@@ -46,7 +59,7 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
     if (!survey) {
       return;
     }
-    const cookieDismissalId = `${survey.localDismissalId}_dismissed`;
+    const cookieDismissalId = `${survey.id}_dismissed`;
     const surveyIsDismissed = cookies.get(cookieDismissalId);
     return !surveyIsDismissed;
   });
@@ -58,10 +71,7 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
 
   // Mark all surveys except the current one as automatically dismissed.
   filteredSurveys.forEach((survey) => {
-    if (
-      survey &&
-      survey?.localDismissalId !== currentSurvey?.localDismissalId
-    ) {
+    if (survey && survey?.id !== currentSurvey?.id) {
       const cookieDismissalId = `${survey.localDismissalId}_dismissed`;
       cookies.set(cookieDismissalId, Date.now().toString(), {
         maxAge: COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS,
@@ -72,9 +82,10 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
   return (
     currentSurvey && (
       <CsatSurveyBanner
-        key={currentSurvey.localDismissalId}
+        key={currentSurvey.id}
+        survey={currentSurvey}
         localDismissalId={currentSurvey.localDismissalId}
-        survey={currentSurvey.survey}
+        metricKeys={currentSurvey.metricKeys}
       />
     )
   );
