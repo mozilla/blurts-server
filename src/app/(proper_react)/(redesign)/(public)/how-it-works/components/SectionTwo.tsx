@@ -32,7 +32,7 @@ export const SectionTwo = (props: Props) => {
           </Button>
         </div>
       </div>
-      <div className={`${styles.step} ${styles.mobileColumns}`}>
+      <div className={styles.step}>
         <div className={styles.stepTextContainer}>
           {/* STEP 1 */}
           <h3 className={`${styles.breachesEmphasis} ${styles.stepTitle}`}>
