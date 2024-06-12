@@ -19,6 +19,7 @@ import { useTelemetry } from "../../hooks/useTelemetry";
 import { usePathname } from "next/navigation";
 
 export type Props = {
+  countryCode: string;
   session: Session;
   monthlySubscriptionUrl: string;
   yearlySubscriptionUrl: string;
@@ -141,6 +142,16 @@ export const MobileShell = (props: Props) => {
                   {l10n.getString("main-nav-link-settings-label")}
                 </PageLink>
               </li>
+              {props.countryCode === "us" && (
+                <li key="how-it-works">
+                  <PageLink
+                    href="/how-it-works"
+                    activeClassName={styles.isActive}
+                  >
+                    {l10n.getString("main-nav-link-how-it-works-label")}
+                  </PageLink>
+                </li>
+              )}
               <li key="faq">
                 <a
                   href="https://support.mozilla.org/kb/firefox-monitor-faq"
