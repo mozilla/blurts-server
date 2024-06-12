@@ -11,23 +11,28 @@ import { MobileShell } from "./MobileShell";
 import Link from "next/link";
 import { PageLink } from "./PageLink";
 import { ExtendedReactLocalization } from "../../functions/l10n";
+import { getServerSession } from "../../functions/server/getServerSession";
 import {
   getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
 } from "../../functions/server/getPremiumSubscriptionInfo";
 import { SubscriptionCheck } from "../../components/client/SubscriptionCheck";
 import { Footer } from "./Footer";
+import { headers } from "next/headers";
+import { getCountryCode } from "../../functions/server/getCountryCode";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
   session: Session;
   children: ReactNode;
   nonce: string;
-  countryCode: string;
 };
 
-export const Shell = (props: Props) => {
+export const Shell = async (props: Props) => {
   const l10n = props.l10n;
+  const headersList = headers();
+  const countryCode = getCountryCode(headersList);
+  const session = await getServerSession();
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
 
@@ -38,7 +43,7 @@ export const Shell = (props: Props) => {
       {/* c8 ignore next */}
       {process.env.NODE_ENV !== "test" && <SubscriptionCheck />}
       <MobileShell
-        countryCode={props.countryCode}
+        countryCode={countryCode}
         session={props.session}
         monthlySubscriptionUrl={monthlySubscriptionUrl}
         yearlySubscriptionUrl={yearlySubscriptionUrl}
@@ -75,7 +80,7 @@ export const Shell = (props: Props) => {
                   {l10n.getString("main-nav-link-settings-label")}
                 </PageLink>
               </li>
-              {props.countryCode === "us" && !props.session && (
+              {countryCode === "us" && !session && (
                 <li key="how-it-works">
                   <PageLink
                     href="/how-it-works"
@@ -97,11 +102,7 @@ export const Shell = (props: Props) => {
           </nav>
           <div className={styles.content}>
             <div className={styles.page}>{props.children}</div>
-            <Footer
-              l10n={props.l10n}
-              session={props.session}
-              countryCode={props.countryCode}
-            />
+            <Footer l10n={props.l10n} />
           </div>
         </div>
       </MobileShell>

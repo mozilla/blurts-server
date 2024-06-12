@@ -13,17 +13,15 @@ import {
   CONST_URL_TERMS,
   CONST_URL_PRIVACY_POLICY,
 } from "../../../constants";
-import { Session } from "next-auth";
+import { getCountryCode } from "../../functions/server/getCountryCode";
+import { headers } from "next/headers";
+import { getServerSession } from "../../functions/server/getServerSession";
 
-export const Footer = ({
-  l10n,
-  session,
-  countryCode,
-}: {
-  l10n: ExtendedReactLocalization;
-  session: Session;
-  countryCode: string;
-}) => {
+export const Footer = async ({ l10n }: { l10n: ExtendedReactLocalization }) => {
+  const headersList = headers();
+  const countryCode = getCountryCode(headersList);
+  const session = await getServerSession();
+
   return (
     <footer className={styles.footer}>
       <a
