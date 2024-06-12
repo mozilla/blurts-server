@@ -44,26 +44,7 @@ export const View = (props: Props) => {
     <>
       <AccountDeletionNotification />
       <main className={styles.wrapper}>
-        <nav className={styles.navbar}>
-          <div className={styles.navbarLinksContainer}>
-            <Link className={styles.navbarLinks} href="/how-it-works">
-              {props.l10n.getString(
-                "landing-all-hero-navbar-link-how-it-works",
-              )}
-            </Link>
-            <Link className={styles.navbarLinks} href="#pricing">
-              {props.l10n.getString("landing-all-hero-navbar-link-pricing")}
-            </Link>
-            <Link className={styles.navbarLinks} href="#faq">
-              {props.l10n.getString("landing-all-hero-navbar-link-faqs")}
-            </Link>
-            <Link className={styles.navbarLinks} href="/breaches">
-              {props.l10n.getString(
-                "landing-all-hero-navbar-link-all-breaches",
-              )}
-            </Link>
-          </div>
-        </nav>
+        <TopNavBar l10n={props.l10n} />
         <header className={styles.hero}>
           <div className={styles.heroContent}>
             <h1>{props.l10n.getString("landing-all-hero-title")}</h1>
@@ -270,6 +251,27 @@ export const View = (props: Props) => {
         </div>
       </main>
     </>
+  );
+};
+
+export const TopNavBar = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
+  return (
+    <nav className={styles.navbar}>
+      <div className={styles.navbarLinksContainer}>
+        <Link className={styles.navbarLinks} href="/how-it-works">
+          {l10n.getString("landing-all-hero-navbar-link-how-it-works")}
+        </Link>
+        <Link className={styles.navbarLinks} href="#pricing">
+          {l10n.getString("landing-all-hero-navbar-link-pricing")}
+        </Link>
+        <Link className={styles.navbarLinks} href="#faq">
+          {l10n.getString("landing-all-hero-navbar-link-faqs")}
+        </Link>
+        <Link className={styles.navbarLinks} href="/breaches">
+          {l10n.getString("landing-all-hero-navbar-link-all-breaches")}
+        </Link>
+      </div>
+    </nav>
   );
 };
 
