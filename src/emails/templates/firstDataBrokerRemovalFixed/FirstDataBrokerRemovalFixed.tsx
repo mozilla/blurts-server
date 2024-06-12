@@ -82,7 +82,7 @@ export const FirstDataBrokerRemovalFixed = (props: Props) => {
             </mj-button>
           </mj-column>
         </mj-section>
-        <EmailFooter l10n={l10n} utm_campaign={utmCampaign} />
+        <EmailFooter l10n={l10n} utm_campaign={utmCampaign} isOneTimeEmail />
       </mj-body>
     </mjml>
   );
