@@ -9,8 +9,8 @@ import { ExtendedReactLocalization } from "../../../../functions/l10n";
 import { useL10n } from "../../../../hooks/l10n";
 
 import { Header } from "./components/Header";
-import { DataBrokers } from "./components/DataBrokers";
-import { DataBreaches } from "./components/DataBreaches";
+import { SectionOne } from "./components/SectionOne";
+import { SectionTwo } from "./components/SectionTwo";
 import { Footer } from "./components/Footer";
 
 export type Props = {
@@ -22,8 +22,10 @@ export const View = () => {
   return (
     <main>
       <Header l10n={l10n} />
-      <DataBrokers l10n={l10n} />
-      <DataBreaches l10n={l10n} />
+      <SectionOne l10n={l10n} />
+      {/* SECTION: WE REMOVE YOUR INFO FROM DATA BROKERS */}
+      <SectionTwo l10n={l10n} />
+      {/* SECTION: WE PROVIDE STEPS TO HELP RESOLVE DATA BREACHES */}
       <Footer l10n={l10n} />
     </main>
   );
