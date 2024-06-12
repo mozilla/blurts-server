@@ -64,11 +64,9 @@
     display: inline;
   }
 }
-.sectionWrapper {
-  &.grayBG {
-    background: $color-grey-05;
-  }
 
+.removeFromDataBrokersWrapper {
+  background: $color-grey-05;
   .intro {
     display: flex;
     flex-direction: column;
@@ -129,18 +127,16 @@
 
     .stepTextContainer {
       width: 50%;
-
       .stepTitle {
         font: $text-title-2xs;
       }
       .stepSubtitle {
         color: $color-grey-50;
         font: $text-title-xs;
-        padding-block-start: $spacing-md;
       }
       .stepBody {
         color: $color-grey-50;
-        padding-block-start: $spacing-md;
+        padding-block-start: $spacing-sm;
       }
       .privateInfoRow {
         display: flex;

@@ -47,7 +47,7 @@ export const HowItWorksView = () => {
       </header>
 
       {/* SECTION: WE REMOVE YOUR INFO FROM DATA BROKERS */}
-      <div className={`${styles.sectionWrapper} ${styles.grayBG}`}>
+      <div className={styles.removeFromDataBrokersWrapper}>
         <div className={styles.intro}>
           <span className={styles.introContent}>
             <h2>
@@ -115,46 +115,42 @@ export const HowItWorksView = () => {
         {/* STEP 2 */}
         <div className={styles.step}>
           <Image src={RemoveStep2} alt="step 2 screenshot" />
-          <div className={styles.stepTextContainer}>
-            <h3 className={`${styles.brokersEmphasis} ${styles.stepTitle}`}>
-              {l10n.getString("section-1-step-2-title")}
-            </h3>
-            <h3 className={styles.stepSubtitle}>
-              {l10n.getString("section-1-step-2-subtitle")}
-            </h3>
-            <p className={styles.stepBody}>
-              {l10n.getString("section-1-step-2-text-1")}
-            </p>
-            <p className={styles.stepBody}>
-              {l10n.getString("section-1-step-2-text-2")}
-            </p>
-            <p className={styles.stepBody}>
-              {l10n.getString("section-1-step-2-text-3")}
-            </p>
-          </div>
+          <h3 className={`${styles.brokersEmphasis} ${styles.stepTitle}`}>
+            {l10n.getString("section-1-step-2-title")}
+          </h3>
+          <h3 className={styles.stepSubtitle}>
+            {l10n.getString("section-1-step-2-subtitle")}
+          </h3>
+          <p className={styles.stepBody}>
+            {l10n.getString("section-1-step-2-text-1")}
+          </p>
+          <p className={styles.stepBody}>
+            {l10n.getString("section-1-step-2-text-2")}
+          </p>
+          <p className={styles.stepBody}>
+            {l10n.getString("section-1-step-2-text-3")}
+          </p>
         </div>
         {/* STEP 3 */}
         <div className={styles.step}>
-          <div className={styles.stepTextContainer}>
-            <h3 className={`${styles.brokersEmphasis} ${styles.stepTitle}`}>
-              {l10n.getString("section-1-step-3-title")}
-            </h3>
-            <h3 className={styles.stepSubtitle}>
-              {l10n.getString("section-1-step-3-subtitle")}
-            </h3>
-            <p className={styles.stepBody}>
-              {l10n.getString("section-1-step-3-text-1")}
-            </p>
-            <p className={styles.stepBody}>
-              {l10n.getString("section-1-step-3-text-2")}
-            </p>
-          </div>
+          <h3 className={`${styles.brokersEmphasis} ${styles.stepTitle}`}>
+            {l10n.getString("section-1-step-3-title")}
+          </h3>
+          <h3 className={styles.stepSubtitle}>
+            {l10n.getString("section-1-step-3-subtitle")}
+          </h3>
+          <p className={styles.stepBody}>
+            {l10n.getString("section-1-step-3-text-1")}
+          </p>
+          <p className={styles.stepBody}>
+            {l10n.getString("section-1-step-3-text-2")}
+          </p>
           <Image src={RemoveStep3} alt="step 3 screenshot" />
         </div>
       </div>
 
       {/* SECTION: WE PROVIDE STEPS TO HELP RESOLVE DATA BREACHES */}
-      <div className={styles.sectionWrapper}>
+      <div className={styles.resolveDataBreachesWrapper}>
         <div className={styles.header}>
           <h2>
             {l10n.getFragment("section-2-intro-title", {
