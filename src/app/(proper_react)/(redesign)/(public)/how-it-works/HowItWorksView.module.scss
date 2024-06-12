@@ -8,6 +8,9 @@
   display: inline;
   color: $color-purple-70;
 }
+.boldedText {
+  font-weight: 700;
+}
 
 .header {
   padding: $layout-lg $spacing-md;
@@ -136,9 +139,6 @@
           width: 30px;
           margin-top: $spacing-sm;
           margin-right: $spacing-sm;
-        }
-        .boldedText {
-          font-weight: 700;
         }
       }
     }
