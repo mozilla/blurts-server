@@ -132,7 +132,6 @@
 
       .stepTitle {
         font: $text-title-2xs;
-        padding-block-start: $spacing-xl;
       }
       .stepSubtitle {
         color: $color-grey-50;
@@ -143,10 +142,6 @@
         color: $color-grey-50;
         padding-block-start: $spacing-md;
       }
-      .stepGroupTitleAfter1st {
-        padding-block-start: $spacing-xl;
-      }
-
       .privateInfoRow {
         display: flex;
         flex-direction: row;
@@ -183,12 +178,6 @@
         padding-inline: $layout-xl;
       }
     }
-  }
-  .sectionCTAButton {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
 
