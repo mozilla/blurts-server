@@ -38,6 +38,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  padding: $spacing-sm;
   &.grayBG {
     background: $color-grey-05;
   }
@@ -104,7 +105,6 @@
     }
     .stepTextContainer {
       max-width: $content-sm;
-      padding: $spacing-sm;
       .stepTitle {
         font: $text-title-2xs;
         padding-block-start: $spacing-xl;
@@ -184,17 +184,6 @@
     max-width: $content-sm;
     width: 100%;
     margin: $spacing-md 0;
-    button {
-      padding: $spacing-md $spacing-xl;
-    }
-    a {
-      margin-inline: $spacing-lg;
-    }
-    &.breachesCTAButton {
-      padding-inline: $spacing-md;
-      margin-top: -$spacing-2xl;
-      margin-bottom: $spacing-xl;
-    }
     @media screen and (min-width: $screen-md) {
       width: unset;
       max-width: unset;
