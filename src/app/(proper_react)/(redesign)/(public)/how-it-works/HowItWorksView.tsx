@@ -23,93 +23,85 @@ export const HowItWorksView = () => {
   return (
     <main>
       <header className={styles.header}>
-        <span>
-          <h1 className={styles.title}>
-            {l10n.getString("how-it-works-banner-title")}
-          </h1>
-          <p>
-            {l10n.getFragment("how-it-works-banner-text", {
-              elems: {
-                data_brokers_link: (
-                  <a href="/data-brokers" className={styles.brokersEmphasis}>
-                    data brokers
-                  </a>
-                ),
-                data_breaches_link: (
-                  <a href="/data-breach" className={styles.breachesEmphasis}>
-                    data breaches
-                  </a>
-                ),
-              },
-            })}
-          </p>
-        </span>
+        <h1 className={styles.title}>
+          {l10n.getString("how-it-works-banner-title")}
+        </h1>
+        <p>
+          {l10n.getFragment("how-it-works-banner-text", {
+            elems: {
+              data_brokers_link: (
+                <a href="/data-brokers" className={styles.brokersEmphasis}>
+                  data brokers
+                </a>
+              ),
+              data_breaches_link: (
+                <a href="/data-breach" className={styles.breachesEmphasis}>
+                  data breaches
+                </a>
+              ),
+            },
+          })}
+        </p>
       </header>
 
       {/* SECTION: WE REMOVE YOUR INFO FROM DATA BROKERS */}
       <div className={styles.removeFromDataBrokersWrapper}>
-        <div className={styles.intro}>
-          <span className={styles.introContent}>
-            <h2>
-              {l10n.getFragment("section-1-intro-title", {
-                elems: {
-                  data_brokers: <span className={styles.brokersEmphasis} />,
-                },
-              })}
-            </h2>
-            <p>{l10n.getString("section-1-intro-text-1")}</p>
-            <hr className={styles.horizontalRule} />
-          </span>
-          <div className={styles.introCTA}>
-            <h3>{l10n.getString("section-1-intro-text-2")}</h3>
-            <Button variant="primary">
-              {l10n.getString("section-1-intro-cta-button")}
-            </Button>
-          </div>
+        <div className={styles.header}>
+          <h2>
+            {l10n.getFragment("section-1-intro-title", {
+              elems: {
+                data_brokers: <span className={styles.brokersEmphasis} />,
+              },
+            })}
+          </h2>
+          <p>{l10n.getString("section-1-intro-text-1")}</p>
+          <hr className={styles.horizontalRule} />
+          <h3 className={styles.introCTA}>
+            {l10n.getString("section-1-intro-text-2")}
+          </h3>
+          <Button variant="primary">
+            {l10n.getString("section-1-intro-cta-button")}
+          </Button>
         </div>
         {/* STEP 1 */}
         <div className={styles.step}>
-          <div className={styles.stepTextContainer}>
-            <h3 className={`${styles.brokersEmphasis} ${styles.stepTitle}`}>
-              {l10n.getString("section-1-step-1-title")}
-            </h3>
-            <h3 className={styles.stepSubtitle}>
-              {l10n.getString("section-1-step-1-subtitle")}
-            </h3>
-            <div className={styles.privateInfoRow}>
-              <Image src={NameIcon} alt="name icon" />
-              <p className={styles.privateInfoText}>
-                {l10n.getFragment("section-1-step-1-name", {
-                  elems: {
-                    name: <span className={styles.boldedText} />,
-                  },
-                })}
-              </p>
-            </div>
-            <div className={styles.privateInfoRow}>
-              <Image src={LocationIcon} alt="location icon" />
-              <p className={styles.privateInfoText}>
-                {l10n.getFragment("section-1-step-1-location", {
-                  elems: {
-                    location: <span className={styles.boldedText} />,
-                  },
-                })}
-              </p>
-            </div>
-            <div className={styles.privateInfoRow}>
-              <Image src={DOBIcon} alt="dob icon" />
-              <p className={styles.privateInfoText}>
-                {l10n.getFragment("section-1-step-1-dob", {
-                  elems: {
-                    dob: <span className={styles.boldedText} />,
-                  },
-                })}
-              </p>
-            </div>
+          <h3 className={`${styles.brokersEmphasis} ${styles.stepTitle}`}>
+            {l10n.getString("section-1-step-1-title")}
+          </h3>
+          <h3 className={styles.stepSubtitle}>
+            {l10n.getString("section-1-step-1-subtitle")}
+          </h3>
+          <div>
+            <Image src={NameIcon} alt="name icon" />
             <p className={styles.stepBody}>
-              {l10n.getString("section-1-step-1-closing-text")}
+              {l10n.getFragment("section-1-step-1-name", {
+                elems: {
+                  name: <span className={styles.boldedText} />,
+                },
+              })}
             </p>
           </div>
+          <div>
+            <Image src={LocationIcon} alt="location icon" />
+            <p className={styles.stepBody}>
+              {l10n.getFragment("section-1-step-1-location", {
+                elems: {
+                  location: <span className={styles.boldedText} />,
+                },
+              })}
+            </p>
+          </div>
+          <div>
+            <Image src={DOBIcon} alt="dob icon" />
+            <p className={styles.stepBody}>
+              {l10n.getFragment("section-1-step-1-dob", {
+                elems: {
+                  dob: <span className={styles.boldedText} />,
+                },
+              })}
+            </p>
+          </div>
+          <p>{l10n.getString("section-1-step-1-closing-text")}</p>
           <Image src={RemoveStep1} alt="step 1 screenshot" />
         </div>
         {/* STEP 2 */}

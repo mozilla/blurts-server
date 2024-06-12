@@ -1,13 +1,6 @@
 @import "../../../../tokens";
 
 .header {
-  padding: $layout-lg $spacing-md;
-  display: flex;
-  justify-content: center;
-
-  @media screen and (min-width: $content-md) {
-    padding: $layout-lg;
-  }
   .title {
     font: $text-title-lg;
     color: $color-grey-60;
@@ -37,6 +30,22 @@
   border: 1px solid $color-grey-20;
   margin: $spacing-md 0;
 }
+.introCTA {
+  color: $color-grey-50;
+  font: $text-title-xs;
+}
+.stepTitle {
+  font: $text-title-2xs;
+}
+.stepSubtitle {
+  color: $color-grey-50;
+  font: $text-title-xs;
+}
+.stepBody {
+  color: $color-grey-50;
+}
+// .step {
+// }
 
 .footer {
   background: $color-purple-05;
@@ -67,94 +76,6 @@
 
 .removeFromDataBrokersWrapper {
   background: $color-grey-05;
-  .intro {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: $spacing-2xl $spacing-md;
-    gap: $spacing-lg;
-
-    @media screen and (min-width: $content-md) {
-      padding: $layout-lg;
-    }
-    .introContent {
-      gap: $spacing-md;
-      display: flex;
-      flex-direction: column;
-
-      h2 {
-        color: $color-grey-60;
-        font: $text-title-md;
-      }
-
-      p {
-        color: $color-grey-40;
-        font: $text-body-xl;
-      }
-
-      .horizontalRule {
-        border: 1px solid $color-grey-20;
-        margin: $spacing-md 0;
-      }
-    }
-    .introCTA {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: $spacing-lg;
-      padding-inline: $spacing-md;
-      padding-block-start: $spacing-xl;
-      width: 100%;
-      h3 {
-        color: $color-grey-50;
-        font: $text-title-xs;
-        flex: auto;
-        max-width: $content-xl;
-      }
-    }
-  }
-
-  .step {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: $spacing-2xl;
-    gap: $spacing-lg;
-
-    .stepTextContainer {
-      width: 50%;
-      .stepTitle {
-        font: $text-title-2xs;
-      }
-      .stepSubtitle {
-        color: $color-grey-50;
-        font: $text-title-xs;
-      }
-      .stepBody {
-        color: $color-grey-50;
-        padding-block-start: $spacing-sm;
-      }
-      .privateInfoRow {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: start;
-        gap: $spacing-lg;
-        padding-block-start: $spacing-sm;
-        width: 100%;
-        .privateInfoText {
-          color: $color-grey-50;
-        }
-        img {
-          margin-top: $spacing-sm;
-        }
-      }
-    }
-  }
 
   @media screen and (min-width: $screen-md) {
     padding-inline: $layout-lg;
