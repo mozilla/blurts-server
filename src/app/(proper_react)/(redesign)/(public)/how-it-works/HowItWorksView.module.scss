@@ -48,7 +48,6 @@
     align-items: center;
     justify-content: space-between;
     max-width: $content-xl;
-    padding: $spacing-sm;
     @media screen and (min-width: $content-md) {
       padding: $spacing-2xl 0;
       gap: $spacing-lg;
