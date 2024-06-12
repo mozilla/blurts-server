@@ -129,7 +129,7 @@ async function deleteSubscription(bearerToken) {
         }
       })
       if (!response.ok) {
-        // throw new InternalServerError(`bad response: ${response.status}`)
+        // throw new InternalServerErrorg(`bad response: ${response.status}`)
       } else {
         console.info(`delete_fxa_subscription: success - ${JSON.stringify(await response.json())}`)
       }
@@ -165,6 +165,7 @@ async function applyCoupon(bearerToken, couponCode) {
       const response = await fetch(applyCouponUrl, {
         method: "PUT",
         headers: {
+          'Content-Type': 'application/json',
           Accept: 'application/json',
           Authorization: `Bearer ${bearerToken}`
         },
