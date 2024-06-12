@@ -15,6 +15,7 @@ import {
   OnerepScanRow,
   SubscriberRow,
 } from "knex/types/tables";
+import { RemovalStatus } from "../../app/functions/universal/scanResult.js";
 
 const knex = createDbConnection();
 
@@ -55,6 +56,72 @@ async function getScanResults(
   );
 
   return scanResults;
+}
+
+async function getAllScanResults(
+  age: Date,
+  statuses: RemovalStatus[],
+  page: number | null,
+  perPage: number | null,
+) {
+  if (page && perPage) {
+    // Our custom knex type doesn't seem to be quite right in this case.
+    const countResult = (
+      await knex("onerep_scan_results")
+        .count("*")
+        .whereIn("status", statuses)
+        .andWhere("updated_at", "<", age)
+    )[0] as unknown as { count: number };
+
+    const count = countResult.count;
+
+    const scanResults = await knex("onerep_scan_results")
+      .limit(perPage)
+      .offset((page - 1) * perPage)
+      .whereIn("onerep_scan_results.status", statuses)
+      .andWhere("onerep_scan_results.updated_at", "<", age)
+      .join(
+        "onerep_scans",
+        "onerep_scan_results.onerep_scan_id",
+        "=",
+        "onerep_scans.onerep_scan_id",
+      )
+      .join(
+        "subscribers",
+        "onerep_scans.onerep_profile_id",
+        "=",
+        "subscribers.onerep_profile_id",
+      )
+      .orderBy("onerep_scan_result_id");
+
+    let totalPages;
+
+    if (count > 0 && count < perPage) {
+      totalPages = 1;
+    } else {
+      totalPages = Math.ceil(count / perPage);
+    }
+    return { totalPages, scanResults };
+  } else {
+    const scanResults = await knex("onerep_scan_results")
+      .whereIn("onerep_scan_results.status", statuses)
+      .andWhere("onerep_scan_results.updated_at", "<", age)
+      .join(
+        "onerep_scans",
+        "onerep_scan_results.onerep_scan_id",
+        "=",
+        "onerep_scans.onerep_scan_id",
+      )
+      .join(
+        "subscribers",
+        "onerep_scans.onerep_profile_id",
+        "=",
+        "subscribers.onerep_profile_id",
+      )
+      .orderBy("onerep_scan_result_id");
+
+    return { scanResults };
+  }
 }
 
 async function getLatestOnerepScan(
@@ -268,6 +335,7 @@ export {
   getLatestScanForProfileByReason,
   getScanResults,
   getLatestOnerepScan,
+  getAllScanResults,
   getLatestOnerepScanResults,
   setOnerepProfileId,
   setOnerepScan,
