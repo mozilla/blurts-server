@@ -12,7 +12,7 @@ import { createRandomHibpListing } from "../../../../../apiMocks/mockData";
 const meta: Meta<typeof BreachIndexView> = {
   title: "Pages/Public/Breach index",
   component: (props: ViewProps) => (
-    <PublicShell l10n={getL10n("en")}>
+    <PublicShell l10n={getL10n("en")} countryCode="us">
       <BreachIndexView {...props} />
     </PublicShell>
   ),

@@ -13,8 +13,17 @@ import {
   CONST_URL_TERMS,
   CONST_URL_PRIVACY_POLICY,
 } from "../../../constants";
+import { Session } from "next-auth";
 
-export const Footer = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
+export const Footer = ({
+  l10n,
+  session,
+  countryCode,
+}: {
+  l10n: ExtendedReactLocalization;
+  session?: Session;
+  countryCode: string;
+}) => {
   return (
     <footer className={styles.footer}>
       <a
@@ -30,6 +39,13 @@ export const Footer = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
             {l10n.getString("footer-nav-all-breaches")}
           </Link>
         </li>
+        {countryCode === "us" && !session && (
+          <li>
+            <Link href="/how-it-works" target="_blank">
+              {l10n.getString("footer-external-link-how-it-works-label")}
+            </Link>
+          </li>
+        )}
         <li>
           <a
             href={CONST_URL_SUMO_MONITOR_FAQ}

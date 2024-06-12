@@ -23,11 +23,11 @@ export type Props = {
   session: Session;
   children: ReactNode;
   nonce: string;
+  countryCode: string;
 };
 
 export const Shell = (props: Props) => {
   const l10n = props.l10n;
-
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
 
@@ -38,6 +38,7 @@ export const Shell = (props: Props) => {
       {/* c8 ignore next */}
       {process.env.NODE_ENV !== "test" && <SubscriptionCheck />}
       <MobileShell
+        countryCode={props.countryCode}
         session={props.session}
         monthlySubscriptionUrl={monthlySubscriptionUrl}
         yearlySubscriptionUrl={yearlySubscriptionUrl}
@@ -74,10 +75,22 @@ export const Shell = (props: Props) => {
                   {l10n.getString("main-nav-link-settings-label")}
                 </PageLink>
               </li>
+              {props.countryCode === "us" && (
+                <li key="how-it-works">
+                  <PageLink
+                    href="/how-it-works"
+                    activeClassName={styles.isActive}
+                    target="_blank"
+                  >
+                    {l10n.getString("main-nav-link-how-it-works-label")}
+                  </PageLink>
+                </li>
+              )}
               <li key="faq">
                 <a
                   href="https://support.mozilla.org/kb/firefox-monitor-faq"
                   title={l10n.getString("main-nav-link-faq-tooltip")}
+                  target="_blank"
                 >
                   {l10n.getString("main-nav-link-faq-label")}
                 </a>
@@ -86,7 +99,11 @@ export const Shell = (props: Props) => {
           </nav>
           <div className={styles.content}>
             <div className={styles.page}>{props.children}</div>
-            <Footer l10n={props.l10n} />
+            <Footer
+              l10n={props.l10n}
+              session={props.session}
+              countryCode={props.countryCode}
+            />
           </div>
         </div>
       </MobileShell>
