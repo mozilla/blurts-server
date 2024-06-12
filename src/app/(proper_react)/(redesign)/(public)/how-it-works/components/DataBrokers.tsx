@@ -14,9 +14,11 @@ import {
 } from "../images";
 import styles from "../HowItWorksView.module.scss";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
+import { getPremiumSubscriptionUrl } from "../../../../../functions/server/getPremiumSubscriptionInfo";
 
 export const DataBrokers = (props: Props) => {
-  const { l10n, yearlySubscriptionUrl } = props;
+  const { l10n } = props;
+  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
 
   return (
     <div
