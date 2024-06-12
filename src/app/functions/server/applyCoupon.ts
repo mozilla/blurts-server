@@ -19,11 +19,11 @@ export async function applyCurrentCouponCode(
   });
 
   // current coupon
-  const currentCouponCode = process.env.CURRENT_COUPON_CODE;
+  const currentCouponCode = process.env.CURRENT_COUPON_CODE_ID;
   if (!currentCouponCode) {
     logger.error(
       "fxa_apply_coupon_code_failed",
-      "Coupon code not set. Please set the env var: CURRENT_COUPON_CODE",
+      "Coupon code ID is not set. Please set the env var: CURRENT_COUPON_CODE_ID",
     );
     return {
       success: false,
@@ -66,11 +66,11 @@ export async function checkCurrentCouponCode(
   });
 
   // current coupon
-  const currentCouponCode = process.env.CURRENT_COUPON_CODE;
+  const currentCouponCode = process.env.CURRENT_COUPON_CODE_ID;
   if (!currentCouponCode) {
     logger.error(
       "fxa_check_coupon_failed",
-      "Coupon code not set. Please set the env var: CURRENT_COUPON_CODE",
+      "Coupon code ID is not set. Please set the env var: CURRENT_COUPON_CODE_ID",
     );
     return {
       success: false,

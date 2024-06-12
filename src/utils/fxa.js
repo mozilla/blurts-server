@@ -146,12 +146,12 @@ async function deleteSubscription(bearerToken) {
 
 /**
  * @param {string} bearerToken
- * @param {string} couponCode
+ * @param {string} couponCodeId
  * @returns
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function applyCoupon(bearerToken, couponCode) {
+async function applyCoupon(bearerToken, couponCodeId) {
   try {
     const subs = await getSubscriptions(bearerToken) ?? []
     let subscriptionId;
@@ -170,7 +170,7 @@ async function applyCoupon(bearerToken, couponCode) {
           Authorization: `Bearer ${bearerToken}`
         },
         body: JSON.stringify({
-          promotionId: couponCode,
+          promotionId: couponCodeId,
           subscriptionId
         })
       })
