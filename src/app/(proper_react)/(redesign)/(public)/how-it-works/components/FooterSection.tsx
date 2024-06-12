@@ -10,11 +10,9 @@ export const FooterSection = (props: Props) => {
   const { l10n } = props;
 
   return (
-    <footer className={styles.footerSection}>
-      <h2 className={styles.footerSectionCTA}>
-        {l10n.getString("footer-title")}
-      </h2>
-      <div className={styles.footerSectionCTAInput}>
+    <footer className={styles.footer}>
+      <h2 className={styles.footerCTA}>{l10n.getString("footer-title")}</h2>
+      <div className={styles.footerCTAInput}>
         <input
           placeholder={l10n.getString("footer-input-placeholder")}
           type="email"
