@@ -6,7 +6,7 @@ import { Props } from "../HowItWorksView";
 import { Button } from "../../../../../components/client/Button";
 import styles from "../HowItWorksView.module.scss";
 
-export const FooterSection = (props: Props) => {
+export const Footer = (props: Props) => {
   const { l10n } = props;
 
   return (
