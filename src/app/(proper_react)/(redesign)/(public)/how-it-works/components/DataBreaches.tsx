@@ -89,7 +89,11 @@ export const DataBreaches = (props: Props) => {
             </p>
           </div>
         </div>
-        <Image src={Resolve} alt="" className={styles.mobileColumns} />
+        <Image
+          src={Resolve}
+          alt="resolve data breaches screenshot"
+          className={styles.mobileColumns}
+        />
       </div>
       <div className={styles.sectionCTAButton}>
         <TelemetryButton
