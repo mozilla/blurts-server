@@ -80,9 +80,6 @@
         font: $text-title-xs;
         flex: auto;
         max-width: $content-xl;
-        @media screen and (min-width: $screen-md) {
-          width: $content-sm;
-        }
       }
     }
   }
@@ -175,13 +172,6 @@
     max-width: $content-sm;
     width: 100%;
     margin: $spacing-md 0;
-    @media screen and (min-width: $screen-md) {
-      width: unset;
-      max-width: unset;
-      a {
-        margin: unset;
-      }
-    }
   }
   @media screen and (min-width: $screen-md) {
     display: flex;
