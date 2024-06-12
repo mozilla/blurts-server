@@ -23,6 +23,7 @@ import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
 import { getLatestOnerepScanResults } from "../../../../../../db/tables/onerep_scans";
 import { FirstDataBrokerRemovalFixed } from "../../../../../../emails/templates/firstDataBrokerRemovalFixed/FirstDataBrokerRemovalFixed";
+import { createRandomScanResult } from "../../../../../../apiMocks/mockData";
 
 async function getAdminSubscriber(): Promise<SubscriberRow | null> {
   const session = await getServerSession();
@@ -123,15 +124,16 @@ export async function triggerMonthlyActivity(emailAddress: string) {
 
 export async function triggerFirstDataBrokerRemovalFixed(emailAddress: string) {
   const l10n = getL10n();
+  const randomScanResult = createRandomScanResult({ status: "removed" });
 
   await send(
     emailAddress,
     l10n.getString("email-first-broker-removal-fixed-subject"),
     <FirstDataBrokerRemovalFixed
       data={{
-        dataBrokerName: "Data broker name",
-        dataBrokerLink: process.env.SERVER_URL ?? "",
-        removalDate: new Date(Date.now()),
+        dataBrokerName: randomScanResult.data_broker,
+        dataBrokerLink: randomScanResult.link,
+        removalDate: randomScanResult.updated_at,
       }}
       l10n={l10n}
     />,
