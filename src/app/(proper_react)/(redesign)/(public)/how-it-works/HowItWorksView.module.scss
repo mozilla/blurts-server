@@ -136,9 +136,9 @@
         }
       }
     }
-    img.mobileColumns {
-      width: 45%;
-    }
+    // img.mobileColumns {
+    //   width: 45%;
+    // }
     @media screen and (min-width: $screen-md) {
       display: flex;
       flex-wrap: wrap;
