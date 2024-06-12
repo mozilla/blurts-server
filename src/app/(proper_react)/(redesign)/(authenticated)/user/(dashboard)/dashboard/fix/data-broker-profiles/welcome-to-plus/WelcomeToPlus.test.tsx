@@ -87,15 +87,13 @@ it("checks the How-It-Works page link", () => {
     WelcomeToPlusViewInProgressStory,
     Meta,
   );
-  const brokerScanCount = 5;
-  render(<ComposedWelcomeToPlusView brokerScanCount={brokerScanCount} />);
+  render(<ComposedWelcomeToPlusView />);
 
   const howItWorksLink = screen.getByRole("link", {
     name: "Removals typically take 7-14 days",
   });
 
-  // expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
-  expect(howItWorksLink).toBeInTheDocument();
+  expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
 });
 
 it("checks the CTA button link to the next step in the guided resolution flow", () => {
