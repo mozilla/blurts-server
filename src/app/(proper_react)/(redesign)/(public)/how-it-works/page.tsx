@@ -6,16 +6,16 @@ import { headers } from "next/headers";
 import { HowItWorksView } from "./HowItWorksView";
 import { getCountryCode } from "../../../../functions/server/getCountryCode";
 import { redirect } from "next/navigation";
-import { getL10n } from "../../../../functions/l10n/serverComponents";
+import { getPremiumSubscriptionUrl } from "../../../../functions/server/getPremiumSubscriptionInfo";
 
 export default function Page() {
   const headersList = headers();
   const countryCode = getCountryCode(headersList);
-  const l10n = getL10n();
+  const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
 
   if (countryCode !== "us") {
     return redirect("/");
   }
 
-  return <HowItWorksView l10n={l10n} />;
+  return <HowItWorksView yearlySubscriptionUrl={yearlySubscriptionUrl} />;
 }

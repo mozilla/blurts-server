@@ -2,15 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { Props } from "../HowItWorksView";
 import { Button } from "../../../../../components/client/Button";
 import styles from "../HowItWorksView.module.scss";
-import { ExtendedReactLocalization } from "../../../../../functions/l10n";
 
-export const FooterSection = ({
-  l10n,
-}: {
-  l10n: ExtendedReactLocalization;
-}) => {
+export const FooterSection = (props: Props) => {
+  const { l10n } = props;
+
   return (
     <footer className={styles.footerSection}>
       <h2 className={styles.footerSectionCTA}>
