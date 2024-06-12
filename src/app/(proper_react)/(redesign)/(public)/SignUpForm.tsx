@@ -24,7 +24,6 @@ export type Props = {
     field?: string;
   };
   scanLimitReached: boolean;
-  placeholder?: string;
 };
 
 export const SignUpForm = (props: Props) => {
@@ -89,11 +88,9 @@ export const SignUpForm = (props: Props) => {
         }}
         value={emailInput}
         type="email"
-        placeholder={
-          props.placeholder
-            ? props.placeholder
-            : l10n.getString("landing-all-hero-emailform-input-placeholder")
-        }
+        placeholder={l10n.getString(
+          "landing-all-hero-emailform-input-placeholder",
+        )}
       />
       <Button type="submit" variant="primary" wide>
         {l10n.getString("landing-all-hero-emailform-submit-label")}
