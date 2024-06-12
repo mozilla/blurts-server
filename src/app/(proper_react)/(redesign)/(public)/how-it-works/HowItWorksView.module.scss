@@ -22,8 +22,11 @@
   }
   .title {
     font: $text-title-lg;
-    font-family: "Inter", sans-serif;
     color: $color-grey-60;
+  }
+  h2 {
+    color: $color-grey-60;
+    font: $text-title-md;
   }
   p {
     color: $color-grey-40;
@@ -59,7 +62,6 @@
       h2 {
         color: $color-grey-60;
         font: $text-title-md;
-        font-family: "Inter", sans-serif;
       }
       p {
         color: $color-grey-40;
@@ -82,7 +84,6 @@
       h3 {
         color: $color-grey-50;
         font: $text-title-xs;
-        font-family: "Inter", sans-serif;
         flex: auto;
         max-width: $content-xl;
         @media screen and (min-width: $screen-md) {
@@ -106,13 +107,11 @@
       padding: $spacing-sm;
       .stepTitle {
         font: $text-title-2xs;
-        font-family: "Inter", sans-serif;
         padding-block-start: $spacing-xl;
       }
       .stepSubtitle {
         color: $color-grey-50;
         font: $text-title-xs;
-        font-family: "Inter", sans-serif;
         padding-block-start: $spacing-md;
       }
       .stepBody {
@@ -231,7 +230,6 @@
   .footerSectionCTA {
     color: $color-black;
     font: $text-title-md;
-    font-family: "Inter", sans-serif;
   }
   .footerSectionCTAInput {
     display: flex;
