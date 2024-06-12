@@ -44,11 +44,11 @@ describe("How it works page", () => {
   it("Data Removal buttons enter user into premium subscription flow", () => {
     const ComposedPage = composeStory(HowItWorks, Meta);
     render(<ComposedPage />);
-
-    const [dataRemovalBtn1, dataRemovalBtn2] = screen.getAllByRole("link", {
+    const dataRemovalBtns = screen.getAllByRole("link", {
       name: "Get data removal",
     });
-
+    const dataRemovalBtn1 = dataRemovalBtns[0];
+    const dataRemovalBtn2 = dataRemovalBtns[1];
     expect(dataRemovalBtn1).toHaveAttribute(
       "href",
       "https://accounts.firefox.com/subscriptions/products/prod_OiV9RSaatywSRy?plan=price_1Nv4ODJNcmPzuWtRoYpoFHXd",
@@ -66,9 +66,12 @@ describe("How it works page", () => {
 
     const user = userEvent.setup();
 
-    const [getFreeScanBtn1, getFreeScanBtn2] = screen.getAllByRole("button", {
+    const getFreeScanBtn1 = screen.getAllByRole("button", {
       name: "Get free scan",
-    });
+    })[0];
+    const getFreeScanBtn2 = screen.getAllByRole("button", {
+      name: "Get free scan",
+    })[1];
 
     expect(getFreeScanBtn1).toBeInTheDocument();
     expect(getFreeScanBtn2).toBeInTheDocument();
