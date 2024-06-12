@@ -173,19 +173,6 @@
     width: 100%;
     margin: $spacing-md 0;
   }
-  @media screen and (min-width: $screen-md) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: unset;
-    margin-bottom: $layout-lg;
-    a {
-      margin: $layout-md;
-    }
-    button {
-      margin: $layout-md;
-    }
-  }
   @media screen and (min-width: $screen-lg) {
     padding-inline: $layout-lg;
   }
