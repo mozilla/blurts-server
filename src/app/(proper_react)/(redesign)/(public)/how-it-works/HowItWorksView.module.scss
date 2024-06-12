@@ -32,10 +32,6 @@
   }
 }
 .sectionWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
   padding: $spacing-sm;
   &.grayBG {
     background: $color-grey-05;
@@ -171,7 +167,6 @@
     display: grid;
     max-width: $content-sm;
     width: 100%;
-    margin: $spacing-md 0;
   }
   @media screen and (min-width: $screen-lg) {
     padding-inline: $layout-lg;
