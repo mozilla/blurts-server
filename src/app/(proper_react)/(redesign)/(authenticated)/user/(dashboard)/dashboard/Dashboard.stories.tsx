@@ -185,12 +185,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
   return (
     <SessionProvider session={mockedSession}>
       <CountryCodeProvider countryCode={props.countryCode}>
-        <Shell
-          l10n={getL10n()}
-          session={mockedSession}
-          nonce=""
-          countryCode={props.countryCode}
-        >
+        <Shell l10n={getL10n()} session={mockedSession} nonce="">
           <DashboardEl
             user={user}
             userBreaches={breaches}

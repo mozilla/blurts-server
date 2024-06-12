@@ -3,15 +3,15 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { View } from "./HowItWorksView";
+import { View, Props as ViewProps } from "./HowItWorksView";
 import { getL10n } from "../../../../functions/l10n/storybookAndJest";
 import { PublicShell } from "../PublicShell";
 
 const meta: Meta<typeof View> = {
   title: "Pages/Public/HowItWorks page",
-  component: () => (
-    <PublicShell l10n={getL10n()} countryCode={"us"}>
-      <View />
+  component: (props: ViewProps) => (
+    <PublicShell l10n={getL10n()}>
+      <View {...props} />
     </PublicShell>
   ),
   args: {

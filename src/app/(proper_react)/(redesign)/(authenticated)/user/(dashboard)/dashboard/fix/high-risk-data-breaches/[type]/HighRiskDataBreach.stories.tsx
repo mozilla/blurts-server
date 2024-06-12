@@ -102,12 +102,7 @@ const HighRiskBreachWrapper = (props: {
           };
 
   return (
-    <Shell
-      l10n={getL10n()}
-      session={mockedSession}
-      nonce=""
-      countryCode={data.countryCode}
-    >
+    <Shell l10n={getL10n()} session={mockedSession} nonce="">
       <HighRiskBreachLayout
         subscriberEmails={[]}
         type={props.type}

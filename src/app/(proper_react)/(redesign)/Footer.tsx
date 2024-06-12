@@ -21,11 +21,9 @@ export const Footer = ({
   countryCode,
 }: {
   l10n: ExtendedReactLocalization;
-  session?: Session;
+  session: Session;
   countryCode: string;
 }) => {
-  console.log("footer countryCode", countryCode);
-  console.log("footer session", session);
   return (
     <footer className={styles.footer}>
       <a
