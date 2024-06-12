@@ -7,6 +7,7 @@ import { TabType } from "../../../../(proper_react)/(redesign)/(authenticated)/u
 import { hasPremium } from "../../../../functions/universal/user";
 import { AutomaticRemovalVariation } from "./automaticRemovalCsatSurvey";
 import { ExperimentData } from "../../../../../telemetry/generated/nimbus/experiments";
+import { GleanMetricMap } from "../../../../../telemetry/generated/_map";
 
 const surveyResponses = [
   "very-dissatisfied",
@@ -18,15 +19,22 @@ const surveyResponses = [
 
 export type SurveyResponse = (typeof surveyResponses)[number];
 
-export type SurveyType = "csat_survey" | "csat_survey_latest_scan_date";
+export type SurveyType = "csat_survey" | "last_scan_date";
 
 export type UserType = "free-user" | "plus-user";
 
 export type SurveyLinks = Record<SurveyResponse, string>;
 
+type RequiredExperimentStatus = "enabled" | "disabled";
+
+type RequiredExperiment = {
+  id: keyof ExperimentData;
+  statusAllowList: RequiredExperimentStatus[];
+};
+
 export type SurveyData = {
   id: SurveyType;
-  requiredExperimentIds: (keyof ExperimentData)[];
+  requiredExperiments: RequiredExperiment[];
   variations: Survey[];
 };
 
@@ -44,23 +52,24 @@ export type CsatSurveyProps = {
   user: Session["user"];
 };
 
-export type RelevantSurvey = {
+export type RelevantSurveyWithMetric = Survey & {
   localDismissalId: string;
-  survey: Survey;
+  metricKeys: GleanMetricMap["csatSurvey"]["click"];
 };
 
 export function getRelevantSurveys({
-  id,
-  requiredExperimentIds,
+  requiredExperiments,
   variations,
   activeTab,
   experimentData,
   user,
-}: SurveyData & CsatSurveyProps): RelevantSurvey[] | null {
+}: SurveyData & CsatSurveyProps): Survey[] | null {
   if (
-    !requiredExperimentIds.every(
-      (experimentId) => experimentData[experimentId].enabled,
-    )
+    !requiredExperiments.every((experiment) => {
+      return experiment.statusAllowList.includes(
+        experimentData[experiment.id].enabled ? "enabled" : "disabled",
+      );
+    })
   ) {
     return null;
   }
@@ -73,8 +82,5 @@ export function getRelevantSurveys({
     return isRelevantUser && isRelevantTab;
   });
 
-  return filteredSurveys.map((survey) => ({
-    localDismissalId: `${id}_${survey.id}`,
-    survey,
-  }));
+  return filteredSurveys;
 }

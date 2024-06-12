@@ -8,9 +8,6 @@
   display: inline;
   color: $color-purple-70;
 }
-.boldedText {
-  font-weight: 700;
-}
 
 .header {
   padding: $layout-lg $spacing-md;
@@ -25,11 +22,8 @@
   }
   .title {
     font: $text-title-lg;
+    font-family: "Inter", sans-serif;
     color: $color-grey-60;
-  }
-  h2 {
-    color: $color-grey-60;
-    font: $text-title-md;
   }
   p {
     color: $color-grey-40;
@@ -41,7 +35,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: $spacing-sm;
   &.grayBG {
     background: $color-grey-05;
   }
@@ -66,6 +59,7 @@
       h2 {
         color: $color-grey-60;
         font: $text-title-md;
+        font-family: "Inter", sans-serif;
       }
       p {
         color: $color-grey-40;
@@ -88,6 +82,7 @@
       h3 {
         color: $color-grey-50;
         font: $text-title-xs;
+        font-family: "Inter", sans-serif;
         flex: auto;
         max-width: $content-xl;
         @media screen and (min-width: $screen-md) {
@@ -108,13 +103,17 @@
     }
     .stepTextContainer {
       max-width: $content-sm;
+      padding: $spacing-sm;
       .stepTitle {
         font: $text-title-2xs;
+        font-family: "Inter", sans-serif;
         padding-block-start: $spacing-xl;
+        @include uppercase-only-english;
       }
       .stepSubtitle {
         color: $color-grey-50;
         font: $text-title-xs;
+        font-family: "Inter", sans-serif;
         padding-block-start: $spacing-md;
       }
       .stepBody {
@@ -139,6 +138,9 @@
           width: 30px;
           margin-top: $spacing-sm;
           margin-right: $spacing-sm;
+        }
+        .boldedText {
+          font-weight: 700;
         }
       }
     }
@@ -184,6 +186,17 @@
     max-width: $content-sm;
     width: 100%;
     margin: $spacing-md 0;
+    button {
+      padding: $spacing-md $spacing-xl;
+    }
+    a {
+      margin-inline: $spacing-lg;
+    }
+    &.breachesCTAButton {
+      padding-inline: $spacing-md;
+      margin-top: -$spacing-2xl;
+      margin-bottom: $spacing-xl;
+    }
     @media screen and (min-width: $screen-md) {
       width: unset;
       max-width: unset;
@@ -219,6 +232,7 @@
   .footerSectionCTA {
     color: $color-black;
     font: $text-title-md;
+    font-family: "Inter", sans-serif;
   }
   .footerSectionCTAInput {
     display: flex;
