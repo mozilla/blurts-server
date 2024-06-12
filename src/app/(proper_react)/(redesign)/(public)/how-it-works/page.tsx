@@ -2,18 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { headers } from "next/headers";
 import { View } from "./HowItWorksView";
-import { getCountryCode } from "../../../../functions/server/getCountryCode";
-import { redirect } from "next/navigation";
 
 export default function Page() {
-  const headersList = headers();
-  const countryCode = getCountryCode(headersList);
-
-  if (countryCode !== "us") {
-    return redirect("/");
-  }
-
   return <View />;
 }
