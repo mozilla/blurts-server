@@ -51,7 +51,7 @@ export const ManualRemoveViewStory: Story = {
   name: "1c. Manually resolve brokers",
   render: () => {
     return (
-      <Shell l10n={getL10n()} session={mockedSession} nonce="" countryCode="us">
+      <Shell l10n={getL10n()} session={mockedSession} nonce="">
         <ManualRemoveView
           scanData={mockedScanData}
           breaches={mockedBreaches}

@@ -14,7 +14,6 @@ import { Footer } from "../Footer";
 export type Props = {
   children: ReactNode;
   l10n: ExtendedReactLocalization;
-  countryCode: string;
 };
 
 export const PublicShell = (props: Props) => {
@@ -35,7 +34,7 @@ export const PublicShell = (props: Props) => {
         </nav>
       </header>
       <div className={styles.content}>{props.children}</div>
-      <Footer l10n={props.l10n} countryCode={props.countryCode} />
+      <Footer l10n={props.l10n} />
     </div>
   );
 };
