@@ -34,14 +34,12 @@ export const SectionOne = (props: Props) => {
         </span>
         <div className={styles.introCTA}>
           <h3>{l10n.getString("section-1-intro-text-2")}</h3>
-          <div className={styles.sectionCTAButton}>
-            <Button
-              variant="primary"
-              href="https://accounts.firefox.com/subscriptions/products/prod_OiV9RSaatywSRy?plan=price_1Nv4ODJNcmPzuWtRoYpoFHXd"
-            >
-              {l10n.getString("section-1-intro-cta-button")}
-            </Button>
-          </div>
+          <Button
+            variant="primary"
+            href="https://accounts.firefox.com/subscriptions/products/prod_OiV9RSaatywSRy?plan=price_1Nv4ODJNcmPzuWtRoYpoFHXd"
+          >
+            {l10n.getString("section-1-intro-cta-button")}
+          </Button>
         </div>
       </div>
       {/* STEP 1 */}
@@ -125,14 +123,14 @@ export const SectionOne = (props: Props) => {
         </div>
         <Image src={RemoveStep3} alt="step 3 screenshot" />
       </div>
-      <div className={styles.sectionCTAButton}>
+      <span className={styles.sectionCTAButton}>
         <Button
           variant="primary"
           href="https://accounts.firefox.com/subscriptions/products/prod_OiV9RSaatywSRy?plan=price_1Nv4ODJNcmPzuWtRoYpoFHXd"
         >
           {l10n.getString("section-1-intro-cta-button")}
         </Button>
-      </div>
+      </span>
     </div>
   );
 };
