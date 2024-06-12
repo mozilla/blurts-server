@@ -21,11 +21,16 @@ section-1-step-1-location = <location>Location:</location> Your current city and
 section-1-step-1-dob = <dob>Date of birth:</dob> This will reduce chances of finding profiles of people with the same name as you.
 section-1-step-1-closing-text = In seconds, we’ll show you how many sites have made profiles of you, and exactly what information they are selling.
 
+
 ## Step 2
 section-1-step-2-title = Step 2
 section-1-step-2-subtitle = We automatically remove your information
 section-1-step-2-text-1 = Each data broker needs to be contacted to begin the data removal process, which takes time and effort.
 section-1-step-2-text-2 = For paid subscribers, as soon as we identify which sites have your information, we automatically initiate a request for removal. Free members will be alerted which data brokers to contact themselves.
+
+
+
+
 
 ## Step 3
 section-1-step-3-title = Step 3
@@ -35,6 +40,7 @@ section-1-step-3-text-2 = For paid subscribers, we re-check every month to make 
 
 ## CTA button
 section-1-cta-button = Get data removal
+
 
 # Section 2 - We provide steps to help resolve data breaches
 ## Intro
