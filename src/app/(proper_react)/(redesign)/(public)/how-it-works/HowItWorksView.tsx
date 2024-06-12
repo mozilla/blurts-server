@@ -9,7 +9,6 @@ import { DataBrokers } from "./components/DataBrokers";
 import { DataBreaches } from "./components/DataBreaches";
 import { FooterSection } from "./components/FooterSection";
 import { getPremiumSubscriptionUrl } from "../../../../functions/server/getPremiumSubscriptionInfo";
-import { TopNavBar } from "../LandingView";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -23,7 +22,6 @@ export const HowItWorksView = (props: Props) => {
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
   return (
     <main>
-      <TopNavBar l10n={l10n} />
       <Header l10n={l10n} />
       <DataBrokers yearlySubscriptionUrl={yearlySubscriptionUrl} />
       <DataBreaches />
