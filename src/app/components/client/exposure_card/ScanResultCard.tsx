@@ -196,7 +196,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
     }
   };
 
-  const attemptCount = scanResult?.optout_attempts ?? 0;
+  const attemptCount = scanResult.optout_attempts ?? 0;
   const statusPillNote =
     scanResult.status === "waiting_for_verification" && attemptCount >= 1
       ? l10n.getString("status-pill-requested-removal-info", {
