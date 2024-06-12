@@ -24,7 +24,6 @@ import {
   CONST_ONEREP_DATA_BROKER_COUNT,
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../../../../../../constants";
-import Link from "next/link";
 
 export interface ContentProps {
   relevantGuidedStep: StepLink;
@@ -262,7 +261,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
                 </>
               )}
             </div>
-            <Link
+            <a
               href="/how-it-works"
               target="_blank"
               onClick={() =>
@@ -274,7 +273,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               {l10n.getString(
                 "dashboard-top-banner-monitor-protects-your-even-more-learn-more",
               )}
-            </Link>
+            </a>
           </>
         );
       case "UsUserNonPremiumNoExposures":
