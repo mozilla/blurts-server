@@ -38,7 +38,6 @@ export const MobileShell = (props: Props) => {
   const pathName = usePathname();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const isOnDashboard = pathName === "/user/dashboard";
-  // const session = await getServerSession();
 
   useEffect(() => {
     // As we transition focus away from the navigation bar in deeper sections
@@ -143,7 +142,7 @@ export const MobileShell = (props: Props) => {
                   {l10n.getString("main-nav-link-settings-label")}
                 </PageLink>
               </li>
-              {props.countryCode === "us" && !props.session && (
+              {props.countryCode === "us" && (
                 <li key="how-it-works">
                   <PageLink
                     href="/how-it-works"

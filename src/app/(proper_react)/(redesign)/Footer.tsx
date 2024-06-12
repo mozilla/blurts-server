@@ -15,13 +15,10 @@ import {
 } from "../../../constants";
 import { getCountryCode } from "../../functions/server/getCountryCode";
 import { headers } from "next/headers";
-import { getServerSession } from "../../functions/server/getServerSession";
 
-export const Footer = async ({ l10n }: { l10n: ExtendedReactLocalization }) => {
+export const Footer = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
   const headersList = headers();
   const countryCode = getCountryCode(headersList);
-  const session = await getServerSession();
-
   return (
     <footer className={styles.footer}>
       <a
@@ -37,7 +34,7 @@ export const Footer = async ({ l10n }: { l10n: ExtendedReactLocalization }) => {
             {l10n.getString("footer-nav-all-breaches")}
           </Link>
         </li>
-        {countryCode === "us" && !session && (
+        {countryCode === "us" && (
           <li>
             <a href="/how-it-works" target="_blank">
               {l10n.getString("footer-external-link-how-it-works-label")}

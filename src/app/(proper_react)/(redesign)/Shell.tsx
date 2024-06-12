@@ -11,7 +11,6 @@ import { MobileShell } from "./MobileShell";
 import Link from "next/link";
 import { PageLink } from "./PageLink";
 import { ExtendedReactLocalization } from "../../functions/l10n";
-import { getServerSession } from "../../functions/server/getServerSession";
 import {
   getSubscriptionBillingAmount,
   getPremiumSubscriptionUrl,
@@ -28,11 +27,11 @@ export type Props = {
   nonce: string;
 };
 
-export const Shell = async (props: Props) => {
+export const Shell = (props: Props) => {
   const l10n = props.l10n;
   const headersList = headers();
   const countryCode = getCountryCode(headersList);
-  const session = await getServerSession();
+
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
 
@@ -80,7 +79,7 @@ export const Shell = async (props: Props) => {
                   {l10n.getString("main-nav-link-settings-label")}
                 </PageLink>
               </li>
-              {countryCode === "us" && !session && (
+              {countryCode === "us" && (
                 <li key="how-it-works">
                   <PageLink
                     href="/how-it-works"
