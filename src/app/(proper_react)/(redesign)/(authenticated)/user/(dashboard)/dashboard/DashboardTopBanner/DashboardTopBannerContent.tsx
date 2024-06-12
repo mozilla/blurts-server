@@ -21,6 +21,7 @@ import { UpsellButton } from "../../../../../../../components/client/toolbar/Ups
 import { WaitlistDialog } from "../../../../../../../components/client/SubscriberWaitlistDialog";
 import { useTelemetry } from "../../../../../../../hooks/useTelemetry";
 import {
+  CONST_URL_SUMO_HOW_IT_WORKS,
   CONST_ONEREP_DATA_BROKER_COUNT,
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../../../../../../constants";
@@ -262,7 +263,7 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
               )}
             </div>
             <a
-              href="/how-it-works"
+              href={CONST_URL_SUMO_HOW_IT_WORKS}
               target="_blank"
               onClick={() =>
                 recordTelemetry("link", "click", {
