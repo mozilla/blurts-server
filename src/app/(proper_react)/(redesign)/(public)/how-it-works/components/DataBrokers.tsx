@@ -25,7 +25,7 @@ export const DataBrokers = ({
   const l10n = useL10n();
 
   return (
-    <section
+    <div
       id="data-brokers-section"
       className={`${styles.sectionWrapper} ${styles.grayBG}`}
     >
@@ -158,6 +158,6 @@ export const DataBrokers = ({
           {l10n.getString("section-1-intro-cta-button")}
         </TelemetryButton>
       </div>
-    </section>
+    </div>
   );
 };

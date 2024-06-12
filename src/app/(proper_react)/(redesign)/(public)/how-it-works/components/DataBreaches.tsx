@@ -15,7 +15,7 @@ export const DataBreaches = () => {
   const l10n = useL10n();
 
   return (
-    <section id="data-breach-section" className={styles.sectionWrapper}>
+    <div id="data-breach-section" className={styles.sectionWrapper}>
       <div className={styles.intro}>
         <span className={styles.introContent}>
           <h2>
@@ -112,6 +112,6 @@ export const DataBreaches = () => {
           {l10n.getString("section-2-cta-button")}
         </TelemetryButton>
       </div>
-    </section>
+    </div>
   );
 };
