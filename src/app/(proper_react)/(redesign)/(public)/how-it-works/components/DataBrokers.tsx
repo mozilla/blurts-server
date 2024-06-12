@@ -54,89 +54,87 @@ export const DataBrokers = (props: Props) => {
           </div>
         </div>
       </div>
-      <ul>
-        {/* STEP 1 */}
-        <li className={styles.step}>
-          <div className={styles.stepTextContainer}>
-            <h3 className={`${styles.brokersEmphasis} ${styles.stepTitle}`}>
-              {l10n.getString("section-1-step-1-title")}
-            </h3>
-            <h3 className={styles.stepSubtitle}>
-              {l10n.getString("section-1-step-1-subtitle")}
-            </h3>
-            <div className={styles.privateInfoRow}>
-              <Image src={NameIcon} alt="" />
-              <p className={styles.privateInfoText}>
-                {l10n.getFragment("section-1-step-1-name", {
-                  elems: {
-                    name: <span className={styles.boldedText} />,
-                  },
-                })}
-              </p>
-            </div>
-            <div className={styles.privateInfoRow}>
-              <Image src={LocationIcon} alt="" />
-              <p className={styles.privateInfoText}>
-                {l10n.getFragment("section-1-step-1-location", {
-                  elems: {
-                    location: <span className={styles.boldedText} />,
-                  },
-                })}
-              </p>
-            </div>
-            <div className={styles.privateInfoRow}>
-              <Image src={DOBIcon} alt="" />
-              <p className={styles.privateInfoText}>
-                {l10n.getFragment("section-1-step-1-dob", {
-                  elems: {
-                    dob: <span className={styles.boldedText} />,
-                  },
-                })}
-              </p>
-            </div>
-            <p className={styles.stepBody}>
-              {l10n.getString("section-1-step-1-closing-text")}
+      {/* STEP 1 */}
+      <div className={styles.step}>
+        <div className={styles.stepTextContainer}>
+          <h3 className={`${styles.brokersEmphasis} ${styles.stepTitle}`}>
+            {l10n.getString("section-1-step-1-title")}
+          </h3>
+          <h3 className={styles.stepSubtitle}>
+            {l10n.getString("section-1-step-1-subtitle")}
+          </h3>
+          <div className={styles.privateInfoRow}>
+            <Image src={NameIcon} alt="" />
+            <p className={styles.privateInfoText}>
+              {l10n.getFragment("section-1-step-1-name", {
+                elems: {
+                  name: <span className={styles.boldedText} />,
+                },
+              })}
             </p>
           </div>
-          <Image src={RemoveStep1} alt="step 1 screenshot" />
-        </li>
-        {/* STEP 2 */}
-        <li className={`${styles.step} ${styles.reversedStep}`}>
-          <Image src={RemoveStep2} alt="" />
-          <div className={styles.stepTextContainer}>
-            <h3 className={`${styles.brokersEmphasis} ${styles.stepTitle}`}>
-              {l10n.getString("section-1-step-2-title")}
-            </h3>
-            <h3 className={styles.stepSubtitle}>
-              {l10n.getString("section-1-step-2-subtitle")}
-            </h3>
-            <p className={styles.stepBody}>
-              {l10n.getString("section-1-step-2-text-1")}
-            </p>
-            <p className={styles.stepBody}>
-              {l10n.getString("section-1-step-2-text-2")}
+          <div className={styles.privateInfoRow}>
+            <Image src={LocationIcon} alt="" />
+            <p className={styles.privateInfoText}>
+              {l10n.getFragment("section-1-step-1-location", {
+                elems: {
+                  location: <span className={styles.boldedText} />,
+                },
+              })}
             </p>
           </div>
-        </li>
-        {/* STEP 3 */}
-        <li className={styles.step}>
-          <div className={styles.stepTextContainer}>
-            <h3 className={`${styles.brokersEmphasis} ${styles.stepTitle}`}>
-              {l10n.getString("section-1-step-3-title")}
-            </h3>
-            <h3 className={styles.stepSubtitle}>
-              {l10n.getString("section-1-step-3-subtitle")}
-            </h3>
-            <p className={styles.stepBody}>
-              {l10n.getString("section-1-step-3-text-1")}
-            </p>
-            <p className={styles.stepBody}>
-              {l10n.getString("section-1-step-3-text-2")}
+          <div className={styles.privateInfoRow}>
+            <Image src={DOBIcon} alt="" />
+            <p className={styles.privateInfoText}>
+              {l10n.getFragment("section-1-step-1-dob", {
+                elems: {
+                  dob: <span className={styles.boldedText} />,
+                },
+              })}
             </p>
           </div>
-          <Image src={RemoveStep3} alt="" />
-        </li>
-      </ul>
+          <p className={styles.stepBody}>
+            {l10n.getString("section-1-step-1-closing-text")}
+          </p>
+        </div>
+        <Image src={RemoveStep1} alt="step 1 screenshot" />
+      </div>
+      {/* STEP 2 */}
+      <div className={`${styles.step} ${styles.reversedStep}`}>
+        <Image src={RemoveStep2} alt="" />
+        <div className={styles.stepTextContainer}>
+          <h3 className={`${styles.brokersEmphasis} ${styles.stepTitle}`}>
+            {l10n.getString("section-1-step-2-title")}
+          </h3>
+          <h3 className={styles.stepSubtitle}>
+            {l10n.getString("section-1-step-2-subtitle")}
+          </h3>
+          <p className={styles.stepBody}>
+            {l10n.getString("section-1-step-2-text-1")}
+          </p>
+          <p className={styles.stepBody}>
+            {l10n.getString("section-1-step-2-text-2")}
+          </p>
+        </div>
+      </div>
+      {/* STEP 3 */}
+      <div className={styles.step}>
+        <div className={styles.stepTextContainer}>
+          <h3 className={`${styles.brokersEmphasis} ${styles.stepTitle}`}>
+            {l10n.getString("section-1-step-3-title")}
+          </h3>
+          <h3 className={styles.stepSubtitle}>
+            {l10n.getString("section-1-step-3-subtitle")}
+          </h3>
+          <p className={styles.stepBody}>
+            {l10n.getString("section-1-step-3-text-1")}
+          </p>
+          <p className={styles.stepBody}>
+            {l10n.getString("section-1-step-3-text-2")}
+          </p>
+        </div>
+        <Image src={RemoveStep3} alt="" />
+      </div>
       <div className={styles.sectionCTAButton}>
         <TelemetryButton
           variant="primary"

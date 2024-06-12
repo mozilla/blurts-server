@@ -11,7 +11,6 @@
 .boldedText {
   font-weight: 700;
 }
-
 .header {
   padding: $layout-lg $spacing-md;
   display: flex;
@@ -44,9 +43,6 @@
   padding: $spacing-sm;
   &.grayBG {
     background: $color-grey-05;
-  }
-  ul {
-    list-style-type: none;
   }
   .intro {
     display: flex;
