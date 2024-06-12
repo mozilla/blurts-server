@@ -80,19 +80,8 @@ export function WelcomeToPlusView(props: Props) {
           </p>
           <p>
             {hasRelevantScanResults
-              ? l10n.getFragment(
+              ? l10n.getString(
                   "welcome-to-premium-data-broker-profiles-description-part-two",
-                  {
-                    elems: {
-                      how_it_works_link: (
-                        <a
-                          href="/how-it-works"
-                          className={styles.howItWorksLink}
-                          target="_blank"
-                        />
-                      ),
-                    },
-                  },
                 )
               : l10n.getString(
                   "welcome-to-premium-data-broker-profiles-zero-state-description-part-two",

@@ -11,7 +11,7 @@ import { createRandomHibpListing } from "../../../../../../apiMocks/mockData";
 const meta: Meta<typeof BreachDetailsView> = {
   title: "Pages/Public/Breach listing",
   component: (props: ViewProps) => (
-    <PublicShell l10n={getL10n("en")} countryCode="us">
+    <PublicShell l10n={getL10n("en")}>
       <BreachDetailsView {...props} />
     </PublicShell>
   ),

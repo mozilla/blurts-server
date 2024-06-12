@@ -11,14 +11,11 @@ import {
 import { Shell } from "../../../Shell";
 import { headers } from "next/headers";
 import { AutoSignIn } from "../../../../../components/client/AutoSignIn";
-import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();
   const l10n = getL10n(l10nBundles);
   const session = await getServerSession();
-  const headersList = headers();
-  const countryCode = getCountryCode(headersList);
 
   if (!session) {
     return <AutoSignIn />;
@@ -27,12 +24,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
   const nonce = headers().get("x-nonce") ?? "";
 
   return (
-    <Shell
-      l10n={l10n}
-      session={session}
-      nonce={nonce}
-      countryCode={countryCode}
-    >
+    <Shell l10n={l10n} session={session} nonce={nonce}>
       {children}
     </Shell>
   );

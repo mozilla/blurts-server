@@ -10,7 +10,7 @@ import { PublicShell } from "./PublicShell";
 const meta: Meta<typeof View> = {
   title: "Pages/Public/Landing page",
   component: (props: ViewProps) => (
-    <PublicShell l10n={getL10n("en")} countryCode={props.countryCode}>
+    <PublicShell l10n={getL10n("en")}>
       <View {...props} />
     </PublicShell>
   ),
