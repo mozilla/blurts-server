@@ -2,12 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { Props } from "../HowItWorksView";
+import { getL10n } from "../../../../../functions/l10n/serverComponents";
 import { Button } from "../../../../../components/client/Button";
 import styles from "../HowItWorksView.module.scss";
 
-export const Footer = (props: Props) => {
-  const { l10n } = props;
+export const Footer = () => {
+  const l10n = getL10n();
 
   return (
     <footer className={styles.footer}>
