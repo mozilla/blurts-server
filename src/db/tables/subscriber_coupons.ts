@@ -4,7 +4,6 @@
 
 import createDbConnection from "../connect.js";
 import { logger } from "../../app/functions/server/logging";
-import { SubscriberCouponRow } from "knex/types/tables";
 
 const knex = createDbConnection();
 
@@ -29,7 +28,7 @@ async function addCouponForSubscriber(
 
   let res;
   try {
-    res = await knex("subscribers_coupon")
+    res = await knex("subscriber_coupons")
       .insert({
         subscriber_id: subscriberId,
         coupon_code: couponCode,
@@ -46,7 +45,7 @@ async function addCouponForSubscriber(
     }
     throw e;
   }
-  return res?.[0] as SubscriberCouponRow;
+  return res?.[0];
 }
 
 export { checkCouponForSubscriber, addCouponForSubscriber };
