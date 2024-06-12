@@ -80,7 +80,6 @@ export const Shell = (props: Props) => {
                   <PageLink
                     href="/how-it-works"
                     activeClassName={styles.isActive}
-                    target="_blank"
                   >
                     {l10n.getString("main-nav-link-how-it-works-label")}
                   </PageLink>
@@ -90,7 +89,6 @@ export const Shell = (props: Props) => {
                 <a
                   href="https://support.mozilla.org/kb/firefox-monitor-faq"
                   title={l10n.getString("main-nav-link-faq-tooltip")}
-                  target="_blank"
                 >
                   {l10n.getString("main-nav-link-faq-label")}
                 </a>
