@@ -13,12 +13,8 @@ import {
   CONST_URL_TERMS,
   CONST_URL_PRIVACY_POLICY,
 } from "../../../constants";
-import { getCountryCode } from "../../functions/server/getCountryCode";
-import { headers } from "next/headers";
 
 export const Footer = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
-  const headersList = headers();
-  const countryCode = getCountryCode(headersList);
   return (
     <footer className={styles.footer}>
       <a
@@ -34,13 +30,6 @@ export const Footer = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
             {l10n.getString("footer-nav-all-breaches")}
           </Link>
         </li>
-        {countryCode === "us" && (
-          <li>
-            <a href="/how-it-works" target="_blank">
-              {l10n.getString("footer-external-link-how-it-works-label")}
-            </a>
-          </li>
-        )}
         <li>
           <a
             href={CONST_URL_SUMO_MONITOR_FAQ}

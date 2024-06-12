@@ -211,7 +211,6 @@ main-nav-label = Navigation
 main-nav-link-home-label = Home
 main-nav-link-dashboard-label = Dashboard
 main-nav-link-settings-label = Settings
-main-nav-link-how-it-works-label = How It Works
 main-nav-link-faq-label = FAQs
 main-nav-link-faq-tooltip = Frequently asked questions
 
@@ -234,7 +233,6 @@ terms-of-service = Terms of Service
 privacy-notice = Privacy Notice
 github = { -brand-github }
 footer-nav-all-breaches = All Breaches
-footer-external-link-how-it-works-label = How It Works
 footer-external-link-faq-label = FAQs
 footer-external-link-faq-tooltip = Frequently asked questions
 

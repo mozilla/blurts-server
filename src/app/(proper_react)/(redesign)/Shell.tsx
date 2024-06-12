@@ -17,8 +17,6 @@ import {
 } from "../../functions/server/getPremiumSubscriptionInfo";
 import { SubscriptionCheck } from "../../components/client/SubscriptionCheck";
 import { Footer } from "./Footer";
-import { headers } from "next/headers";
-import { getCountryCode } from "../../functions/server/getCountryCode";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -29,8 +27,6 @@ export type Props = {
 
 export const Shell = (props: Props) => {
   const l10n = props.l10n;
-  const headersList = headers();
-  const countryCode = getCountryCode(headersList);
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
@@ -78,16 +74,6 @@ export const Shell = (props: Props) => {
                   {l10n.getString("main-nav-link-settings-label")}
                 </PageLink>
               </li>
-              {countryCode === "us" && (
-                <li key="how-it-works">
-                  <PageLink
-                    href="/how-it-works"
-                    activeClassName={styles.isActive}
-                  >
-                    {l10n.getString("main-nav-link-how-it-works-label")}
-                  </PageLink>
-                </li>
-              )}
               <li key="faq">
                 <a
                   href="https://support.mozilla.org/kb/firefox-monitor-faq"
