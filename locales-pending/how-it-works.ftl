@@ -80,6 +80,7 @@ footer-input-placeholder = example@example.com
 footer-cta-button = Get free scan
 footer-have-i-been-pwned = Breach data provided by Have I Been Pwned
 
+
 ## Inbound links
 ## Site Navigation
 
