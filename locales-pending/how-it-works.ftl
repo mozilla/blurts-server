@@ -8,6 +8,7 @@ how-it-works-banner-title = How it works
 how-it-works-banner-text = We help fix exposures of your information from two different sources: <data_brokers_link>data brokers</data_brokers_link> and <data_breaches_link>data breaches</data_breaches_link>.
 
 ## Section 1 - We remove your info from data brokers
+
 ## Intro
 
 section-1-intro-title = We remove your info from <data_brokers>data brokers</data_brokers>
@@ -43,6 +44,7 @@ section-1-step-3-text-2 = For paid subscribers, we re-check every month to make 
 section-1-cta-button = Get data removal
 
 ## Section 2 - We provide steps to help resolve data breaches
+
 ## Intro
 
 section-2-intro-title = We provide steps to help resolve <data_breaches>data breaches</data_breaches>
@@ -82,6 +84,7 @@ footer-have-i-been-pwned = Breach data provided by Have I Been Pwned
 
 
 ## Inbound links
+
 ## Site Navigation
 
 main-nav-link-how-it-works-label = How It Works
