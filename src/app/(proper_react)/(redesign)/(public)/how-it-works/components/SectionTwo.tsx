@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import Image from "next/image";
-import { signIn } from "next-auth/react";
 import { Props } from "../HowItWorksView";
 import { Button } from "../../../../../components/client/Button";
 import { Resolve } from "../images";
@@ -29,12 +28,7 @@ export const SectionTwo = (props: Props) => {
         <div className={styles.introCTA}>
           <h3>{l10n.getString("section-2-intro-text-2")}</h3>
           <div className={styles.sectionCTAButton}>
-            <Button
-              variant="primary"
-              onPress={() => {
-                void signIn("fxa");
-              }}
-            >
+            <Button variant="primary">
               {l10n.getString("section-2-intro-cta-button")}
             </Button>
           </div>
@@ -89,12 +83,7 @@ export const SectionTwo = (props: Props) => {
         />
       </div>
       <div className={styles.sectionCTAButton}>
-        <Button
-          variant="primary"
-          onPress={() => {
-            void signIn("fxa");
-          }}
-        >
+        <Button variant="primary">
           {l10n.getString("section-2-cta-button")}
         </Button>
       </div>
