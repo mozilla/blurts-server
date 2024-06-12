@@ -1,104 +1,35 @@
 @import "../../../../tokens";
 
-.header {
-  .title {
-    font: $text-title-lg;
-    color: $color-grey-60;
-  }
-  h2 {
-    color: $color-grey-60;
-    font: $text-title-md;
-  }
-  p {
-    color: $color-grey-40;
-    font: $text-body-xl;
-  }
-}
-
-.brokersEmphasis {
-  display: inline;
-  color: $color-violet-50;
-}
-.breachesEmphasis {
-  display: inline;
-  color: $color-purple-70;
-}
-.boldedText {
-  font-weight: 700;
-}
-.horizontalRule {
-  border: 1px solid $color-grey-20;
-  margin: $spacing-md 0;
-}
-.introCTA {
-  color: $color-grey-50;
-  font: $text-title-xs;
-}
-.stepTitle {
-  font: $text-title-2xs;
-}
-.stepSubtitle {
-  color: $color-grey-50;
-  font: $text-title-xs;
-}
-.stepBody {
-  color: $color-grey-50;
-}
-// .step {
-// }
-
-.footer {
-  background: $color-purple-05;
-  .footerCTA {
-    color: $color-black;
-    font: $text-title-md;
-  }
-  .note {
-    color: $color-grey-40;
-    font: $text-body-sm;
-  }
-}
-
-.item {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  justify-content: space-between;
-  padding: $spacing-2xl $spacing-md;
-  gap: $spacing-lg;
-
-  .exposureTypeList {
-    font-weight: 600;
-    color: $color-purple-70;
-    display: inline;
-  }
-}
-
 .removeFromDataBrokersWrapper {
   background: $color-grey-05;
-
-  @media screen and (min-width: $screen-md) {
-    padding-inline: $layout-lg;
-    padding-block: $layout-sm;
-    flex-direction: row;
-    gap: $spacing-xl;
-
-    &.reverseRow {
-      flex-direction: row-reverse;
-    }
-
-    @media screen and (min-width: $screen-lg) {
-      padding-inline: $layout-lg;
-      gap: $layout-xl;
-
-      @media screen and (min-width: $screen-xl) {
-        padding-inline: $layout-xl;
+  .header {
+    h2 {
+      .emphasis {
+        display: inline;
+        color: $color-violet-50;
       }
     }
+    .horizontalRule {
+      border: 1px solid $color-grey-20;
+      margin: $spacing-md 0;
+    }
   }
-}
 
-.resolveDataBreachesWrapper {
+  .item {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-2xl $spacing-md;
+    gap: $spacing-lg;
+
+    .exposureTypeList {
+      font-weight: 600;
+      color: $color-purple-70;
+      display: inline;
+    }
+  }
+
   @media screen and (min-width: $screen-md) {
     padding-inline: $layout-lg;
     padding-block: $layout-sm;
