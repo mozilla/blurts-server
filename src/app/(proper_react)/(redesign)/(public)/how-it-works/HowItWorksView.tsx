@@ -4,13 +4,8 @@
 
 import { getL10n } from "../../../../functions/l10n/serverComponents";
 import { Button } from "../../../../components/client/Button";
-import RemoveStep1 from "./images/remove-step-1.svg";
-import RemoveStep2 from "./images/remove-step-2.svg";
-import RemoveStep3 from "./images/remove-step-3.svg";
-import Resolve from "./images/resolve.svg";
 
 import styles from "./HowItWorksView.module.scss";
-import Image from "next/image";
 
 export const HowItWorksView = () => {
   const l10n = getL10n();
@@ -72,11 +67,9 @@ export const HowItWorksView = () => {
             })}
           </p>
           <p>{l10n.getString("section-1-step-1-closing-text")}</p>
-          <Image src={RemoveStep1} alt="step 1 screenshot" />
         </div>
         {/* STEP 2 */}
         <div className={styles.step}>
-          <Image src={RemoveStep2} alt="step 2 screenshot" />
           <h3>{l10n.getString("section-1-step-2-title")}</h3>
           <h3>{l10n.getString("section-1-step-2-subtitle")}</h3>
           <p>{l10n.getString("section-1-step-2-text-1")}</p>
@@ -89,7 +82,6 @@ export const HowItWorksView = () => {
           <h3>{l10n.getString("section-1-step-3-subtitle")}</h3>
           <p>{l10n.getString("section-1-step-3-text-1")}</p>
           <p>{l10n.getString("section-1-step-3-text-2")}</p>
-          <Image src={RemoveStep3} alt="step 3 screenshot" />
         </div>
       </div>
 
@@ -129,7 +121,6 @@ export const HowItWorksView = () => {
           <h3>{l10n.getString("section-2-step-3-subtitle")}</h3>
           <p>{l10n.getString("section-2-step-3-text")}</p>
         </div>
-        <Image src={Resolve} alt="resolve data breaches screenshot" />
 
         <Button variant="primary">
           {l10n.getString("section-2-cta-button")}
