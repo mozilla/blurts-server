@@ -33,9 +33,6 @@ export const FooterSection = (props: Props) => {
           )}
         />
       </div>
-      <p className={styles.note}>
-        {l10n.getString("how-it-works-page-footersection-have-i-been-pwned")}
-      </p>
     </footer>
   );
 };
