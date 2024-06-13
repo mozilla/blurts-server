@@ -47,6 +47,9 @@ export const CancelFlow = (props: Props) => {
       recordTelemetry("popup", isOpen ? "view" : "exit", {
         popup_id: "settings-cancel-monitor-plus-dialog",
       });
+      if (isOpen) {
+        setCurrentStep("confirm");
+      }
     },
   });
 
@@ -93,8 +96,10 @@ export const CancelFlow = (props: Props) => {
   const handleApplyCouponCode = async () => {
     const result = await onApplyCouponCode();
     if (result?.success) {
+      console.log("was successful");
       setCouponSuccess(true);
     } else {
+      console.log("was not successful");
       setCouponSuccess(false);
     }
   };
@@ -118,7 +123,10 @@ export const CancelFlow = (props: Props) => {
             },
           }}
           variant="primary"
-          onPress={() => void handleApplyCouponCode()}
+          onPress={
+            () => void handleApplyCouponCode()
+            // setCurrentStep("all-set")
+          }
           className={`${styles.discountCta} ${styles.primaryCta}`}
         >
           {discountedNext3Months.headline}
@@ -357,7 +365,7 @@ export const CancelFlow = (props: Props) => {
                     eventData={{
                       link_id: "go_to_dashboard",
                     }}
-                    className={styles.primaryCta}
+                    className={styles.goToDashboardCta}
                   >
                     {l10n.getString(
                       "settings-unsubscribe-dialog-promotion-back-to-dashboard-cta",

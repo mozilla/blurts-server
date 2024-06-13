@@ -44,6 +44,30 @@
   }
 }
 
+.goToDashboardCta {
+  margin-top: $spacing-lg;
+  font: $text-body-md;
+  font-weight: 500;
+  border: 0;
+  padding: $spacing-md $spacing-lg;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  color: $color-white;
+  background-color: $color-blue-50;
+
+  &:hover {
+    background-color: $color-blue-60;
+  }
+
+  &:focus {
+    outline: $border-focus-width solid $color-blue-30;
+  }
+}
+
 .cancellationAnimation {
   width: 250px; // width of animation
 }
