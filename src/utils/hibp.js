@@ -30,6 +30,21 @@ function _addStandardOptions (options = {}) {
 /* c8 ignore stop */
 
 /**
+ * @param {boolean} doUse
+ */
+async function toggleMockEndpoint(doUse) {
+  const {SERVER_URL, HIBP_KANON_API_SUFFIX_FAKE} = process.env;
+  const fakeEndpoint = String(SERVER_URL) + String(HIBP_KANON_API_SUFFIX_FAKE) + '/mockConfigure';
+  return await fetch(fakeEndpoint, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({'useMock': doUse})
+  })
+}
+
+/**
  * @param {string} url
  * @param {any | undefined} reqOptions
  * @param tryCount
@@ -70,15 +85,9 @@ async function _throttledFetch (url, reqOptions, tryCount = 1) {
     const mockUrl = mockHost + url.match(/\/breachedaccount.*/);
 
     console.error('_throttledFetch - attempting to switch to mock endpoint', { err })
-    const fakeEndpoint = mockHost + '/mockConfigure';
-    await fetch(fakeEndpoint, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({'useMock': true})
-    })
+    await toggleMockEndpoint(true);
     const response = await fetch(mockUrl, reqOptions);
+    await toggleMockEndpoint(false);
     const resJson = await response.json();
     if (response.ok) return resJson;
     throw new InternalServerError('Both real and mock endpoints FAILED');
