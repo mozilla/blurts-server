@@ -19,6 +19,7 @@ import { useL10n } from "../../../../../../hooks/l10n";
 import { TelemetryButton } from "../../../../../../components/client/TelemetryButton";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { onApplyCouponCode } from "./actions";
+import { TelemetryLink } from "../../../../../../components/client/TelemetryLink";
 
 export type Props = {
   fxaSubscriptionsUrl: string;
@@ -98,13 +99,11 @@ export const CancelFlow = (props: Props) => {
     }
   };
 
-  console.log(couponSuccess);
-
   useEffect(() => {
-    if (!couponSuccess) {
+    if (couponSuccess) {
       setCurrentStep("all-set");
     }
-  }, []);
+  }, [couponSuccess]);
 
   useEffect(() => {
     // Current experiment
@@ -353,6 +352,17 @@ export const CancelFlow = (props: Props) => {
                       },
                     )}
                   </p>
+                  <TelemetryLink
+                    href="/user/dashboard"
+                    eventData={{
+                      link_id: "go_to_dashboard",
+                    }}
+                    className={styles.primaryCta}
+                  >
+                    {l10n.getString(
+                      "settings-unsubscribe-dialog-promotion-back-to-dashboard-cta",
+                    )}
+                  </TelemetryLink>
                 </>
               )}
             </div>
