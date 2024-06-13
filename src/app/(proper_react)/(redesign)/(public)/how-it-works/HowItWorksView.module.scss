@@ -228,7 +228,7 @@
   align-items: center;
   justify-content: center;
   background: $color-purple-05;
-  padding: $spacing-xl $spacing-md;
+  padding: $spacing-2xl $spacing-md;
   .footerSectionCTA {
     color: $color-black;
     font: $text-title-md;
@@ -256,7 +256,7 @@
   .note {
     color: $color-grey-40;
     font: $text-body-sm;
-    margin-top: $spacing-md;
+    margin-top: $spacing-sm;
   }
   @media screen and (min-width: $screen-md) {
     .footerSectionCTAInput {
@@ -267,13 +267,9 @@
     }
   }
   @media screen and (min-width: $screen-lg) {
-    padding: $layout-xl $spacing-md;
     .footerSectionCTAInput {
       margin-top: $spacing-md;
       margin-bottom: $spacing-2xl;
-    }
-    .note {
-      margin-top: $spacing-2xl;
     }
   }
 }
