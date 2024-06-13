@@ -34,8 +34,6 @@ export default async function Page() {
     ignoreAllowlist: true,
   });
 
-  console.log("featureFlags", featureFlags);
-
   if (countryCode !== "us" || !featureFlags.includes("HowItWorksPage")) {
     return redirect("/");
   }

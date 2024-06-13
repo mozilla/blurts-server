@@ -190,6 +190,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           session={mockedSession}
           nonce=""
           countryCode={props.countryCode}
+          howItWorksFlagEnabled
         >
           <DashboardEl
             user={user}
