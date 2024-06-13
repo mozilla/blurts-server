@@ -18,7 +18,7 @@ import { Button } from "../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { TelemetryButton } from "../../../../../../components/client/TelemetryButton";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
-import { onApplyCouponCode } from "./actions";
+import { onApplyCouponCode, onCheckUserHasCouponSet } from "./actions";
 import { TelemetryLink } from "../../../../../../components/client/TelemetryLink";
 
 export type Props = {
@@ -92,6 +92,8 @@ export const CancelFlow = (props: Props) => {
     active: props.experimentData?.["next-three-months-discount"],
   };
   const [couponSuccess, setCouponSuccess] = useState<boolean | null>(null);
+  const [alreadyHasCouponSet, setAlreadyHasCouponSet] =
+    useState<boolean>(false);
 
   const handleApplyCouponCode = async () => {
     const result = await onApplyCouponCode();
@@ -101,6 +103,36 @@ export const CancelFlow = (props: Props) => {
       setCouponSuccess(false);
     }
   };
+
+  // const checkCouponCode = async () => {
+  //   const result = await onCheckUserHasCouponSet();
+  //   if (result) {
+  //     setAlreadyHasCouponSet(true);
+  //   } else {
+  //     setAlreadyHasCouponSet(false);
+  //   }
+  // };
+
+  console.log(alreadyHasCouponSet);
+
+  const checkCouponCode = async () => {
+    try {
+      const result = await onCheckUserHasCouponSet();
+      if (typeof result === "boolean") {
+        setAlreadyHasCouponSet(result);
+      } else {
+        console.error("Unexpected result type:", result);
+        setAlreadyHasCouponSet(false);
+      }
+    } catch (error) {
+      console.error(error);
+      setAlreadyHasCouponSet(false);
+    }
+  };
+
+  useEffect(() => {
+    void checkCouponCode();
+  }, []);
 
   useEffect(() => {
     if (couponSuccess) {
@@ -187,6 +219,85 @@ export const CancelFlow = (props: Props) => {
         return "settings-cancel-plus-step-survey-heading";
     }
   };
+
+  // const illustration = () => {
+  //   if (step === "all-set") {
+  //     return     <>
+  //     <video
+  //       aria-hidden={true}
+  //       autoPlay={true}
+  //       loop={true}
+  //       muted={true}
+  //       className={styles.cancellationAnimation}
+  //     >
+  //       <source
+  //         // Unfortunately video files cannot currently be imported, so make
+  //         // sure these files are present in /public. See
+  //         // https://github.com/vercel/next.js/issues/35248
+  //         type="video/mp4"
+  //         src="/animations/CancellationFlowDiscountAppliedAnimation.mp4"
+  //       />
+  //       <source
+  //         type="video/webm"
+  //         src="/animations/CancellationFlowDiscountAppliedAnimation.webm"
+  //       />
+  //       {/* Fall back to the image if the video formats are not supported: */}
+  //       <Image
+  //         className={styles.cancellationIllustrationWrapper}
+  //         src={CancellationFlowDiscountAppliedStaticImage}
+  //         alt=""
+  //       />
+  //     </video>
+  //     {/* Fall back to the image if the video formats are not supported: */}
+  //     {/* The .staticAlternative class ensures that this image will only be shown if the user has prefers-reduced-motion on */}
+  //     <Image
+  //       className={`
+  //     ${styles.cancellationIllustrationWrapper}
+  //     ${styles.staticAlternative}
+  //     `}
+  //       src={CancellationFlowDiscountAppliedStaticImage}
+  //       alt=""
+  //     />
+  //   </>
+  //   }
+  //   return <>
+  //   <video
+  //     aria-hidden={true}
+  //     autoPlay={true}
+  //     loop={true}
+  //     muted={true}
+  //     className={styles.cancellationAnimation}
+  //   >
+  //     <source
+  //       // Unfortunately video files cannot currently be imported, so make
+  //       // sure these files are present in /public. See
+  //       // https://github.com/vercel/next.js/issues/35248
+  //       type="video/mp4"
+  //       src="/animations/CancellationFlowAnimation.mp4"
+  //     />
+  //     <source
+  //       type="video/webm"
+  //       src="/animations/CancellationFlowAnimation.webm"
+  //     />
+  //     {/* Fall back to the image if the video formats are not supported: */}
+  //     <Image
+  //       className={styles.cancellationIllustrationWrapper}
+  //       src={CancellationFlowStaticImage}
+  //       alt=""
+  //     />
+  //   </video>
+  //   {/* Fall back to the image if the video formats are not supported: */}
+  //   {/* The .staticAlternative class ensures that this image will only be shown if the user has prefers-reduced-motion on */}
+  //   <Image
+  //     className={`
+  //   ${styles.cancellationIllustrationWrapper}
+  //   ${styles.staticAlternative}
+  //   `}
+  //     src={CancellationFlowStaticImage}
+  //     alt=""
+  //   />
+  // </>
+  // }
 
   return (
     <>

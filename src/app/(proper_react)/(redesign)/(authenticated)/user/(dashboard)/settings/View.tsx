@@ -45,6 +45,7 @@ export type Props = {
 export const SettingsView = (props: Props) => {
   const l10n = props.l10n;
 
+  console.log(props.enabledFeatureFlags);
   return (
     <div className={styles.wrapper}>
       <Toolbar

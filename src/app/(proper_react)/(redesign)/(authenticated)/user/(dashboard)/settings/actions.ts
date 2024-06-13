@@ -25,6 +25,7 @@ import { SanitizedEmailAddressRow } from "../../../../../../functions/server/san
 import { deleteAccount } from "../../../../../../functions/server/deleteAccount";
 import { cookies } from "next/headers";
 import { applyCurrentCouponCode } from "../../../../../../functions/server/applyCoupon";
+import { checkCouponForSubscriber } from "../../../../../../../db/tables/subscriber_coupons";
 
 export type AddEmailFormState =
   | { success?: never }
@@ -188,25 +189,6 @@ export async function onDeleteAccount() {
   // See https://github.com/nextauthjs/next-auth/discussions/5334.
 }
 
-// export async function onApplyCouponCode() {
-//   const session = await getServerSession();
-//   if (!session?.user.subscriber?.id) {
-//     logger.error(`Tried to apply a coupon code without an active session.`);
-//     return {
-//       success: false,
-//       error: "apply-coupon-code-without-active-session",
-//       errorMessage: `User tried to apply a coupon code without an active session.`,
-//     };
-//   }
-//   await applyCurrentCouponCode(session.user.subscriber);
-// }
-
-// export async function successfullyAppliedCouponCode() {
-//   return {
-//     success: true
-//   }
-// }
-
 export async function onApplyCouponCode() {
   const session = await getServerSession();
   if (!session?.user.subscriber?.id) {
@@ -219,5 +201,34 @@ export async function onApplyCouponCode() {
   }
 
   const result = await applyCurrentCouponCode(session.user.subscriber);
+  return result;
+}
+
+export async function onCheckUserHasCouponSet() {
+  const session = await getServerSession();
+  const currentCouponCode = process.env.CURRENT_COUPON_CODE_ID;
+  if (!session?.user.subscriber?.id) {
+    logger.error(`User does not have an active session.`);
+    return {
+      success: false,
+      error: "apply-coupon-code-without-active-session",
+      errorMessage: `User does not have an active session.`,
+    };
+  }
+  if (!currentCouponCode) {
+    logger.error(
+      "fxa_apply_coupon_code_failed",
+      "Coupon code ID is not set. Please set the env var: CURRENT_COUPON_CODE_ID",
+    );
+    return {
+      success: false,
+      message: "Coupon code not set",
+    };
+  }
+
+  const result = await checkCouponForSubscriber(
+    session.user.subscriber.id,
+    currentCouponCode,
+  );
   return result;
 }
