@@ -188,6 +188,25 @@ export async function onDeleteAccount() {
   // See https://github.com/nextauthjs/next-auth/discussions/5334.
 }
 
+// export async function onApplyCouponCode() {
+//   const session = await getServerSession();
+//   if (!session?.user.subscriber?.id) {
+//     logger.error(`Tried to apply a coupon code without an active session.`);
+//     return {
+//       success: false,
+//       error: "apply-coupon-code-without-active-session",
+//       errorMessage: `User tried to apply a coupon code without an active session.`,
+//     };
+//   }
+//   await applyCurrentCouponCode(session.user.subscriber);
+// }
+
+// export async function successfullyAppliedCouponCode() {
+//   return {
+//     success: true
+//   }
+// }
+
 export async function onApplyCouponCode() {
   const session = await getServerSession();
   if (!session?.user.subscriber?.id) {
@@ -198,5 +217,7 @@ export async function onApplyCouponCode() {
       errorMessage: `User tried to apply a coupon code without an active session.`,
     };
   }
-  await applyCurrentCouponCode(session.user.subscriber);
+
+  const result = await applyCurrentCouponCode(session.user.subscriber);
+  return result;
 }

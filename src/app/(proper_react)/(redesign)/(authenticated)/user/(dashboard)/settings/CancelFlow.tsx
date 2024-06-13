@@ -96,10 +96,8 @@ export const CancelFlow = (props: Props) => {
   const handleApplyCouponCode = async () => {
     const result = await onApplyCouponCode();
     if (result?.success) {
-      console.log("was successful");
       setCouponSuccess(true);
     } else {
-      console.log("was not successful");
       setCouponSuccess(false);
     }
   };
@@ -221,19 +219,11 @@ export const CancelFlow = (props: Props) => {
                     // sure these files are present in /public. See
                     // https://github.com/vercel/next.js/issues/35248
                     type="video/mp4"
-                    src={
-                      step === "all-set"
-                        ? "/animations/CancellationFlowDiscountAppliedAnimation.mp4"
-                        : "/animations/CancellationFlowAnimation.mp4"
-                    }
+                    src="/animations/CancellationFlowAnimation.mp4"
                   />
                   <source
                     type="video/webm"
-                    src={
-                      step === "all-set"
-                        ? "/animations/CancellationFlowDiscountAppliedAnimation.webm"
-                        : "/animations/CancellationFlowAnimation.webm"
-                    }
+                    src="/animations/CancellationFlowAnimation.webm"
                   />
                   {/* Fall back to the image if the video formats are not supported: */}
                   <Image
