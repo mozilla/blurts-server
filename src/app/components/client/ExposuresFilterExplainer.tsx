@@ -74,6 +74,7 @@ type ExposuresFilterStatusExplainerProps = {
   explainerDialogState: OverlayTriggerState;
   explainerDialogProps: OverlayTriggerAria;
   isEligibleForPremium: boolean;
+  isPlusSubscriber: boolean;
 };
 
 export const ExposuresFilterStatusExplainer = (
@@ -103,12 +104,14 @@ export const ExposuresFilterStatusExplainer = (
           </p>
           <br />
           <ul className="noList">
+            {props.isPlusSubscriber && (
+              <li className={styles.statusListItem}>
+                <StatusPill type="requestedRemoval" />
+                {l10n.getString("modal-exposure-indicator-requested-removal")}
+              </li>
+            )}
             {props.isEligibleForPremium ? (
               <>
-                <li className={styles.statusListItem}>
-                  <StatusPill type="requestedRemoval" />
-                  {l10n.getString("modal-exposure-indicator-requested-removal")}
-                </li>
                 <li className={styles.statusListItem}>
                   <StatusPill type="inProgress" />
                   {l10n.getString("modal-exposure-indicator-in-progress")}

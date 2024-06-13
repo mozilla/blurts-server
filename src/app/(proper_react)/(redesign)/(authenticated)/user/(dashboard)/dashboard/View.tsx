@@ -507,6 +507,7 @@ export const View = (props: Props) => {
             filterValues={filters}
             setFilterValues={setFilters}
             isEligibleForPremium={props.isEligibleForPremium}
+            isPlusSubscriber={hasPremium(props.user)}
           />
         </div>
         {noUnresolvedExposures ? (

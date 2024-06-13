@@ -144,8 +144,6 @@ dashboard-top-banner-monitor-more-cta = Monitor more emails
 
 modal-exposure-status-description-all = We search for exposures in all known data breaches.
   Your exposures will have one of the following statuses:
-modal-exposure-indicator-title = About status indicators
-modal-exposure-indicator-action-needed = Advanced or manual action by member is needed to complete removal.
-modal-exposure-indicator-requested-removal = We’ve sent an official removal request to the data broker. We’ll keep you updated if we need to re-send the request.
-modal-exposure-indicator-removed = We’ve successfully removed your data!
-modal-exposure-indicator-fixed = We’ve successfully removed your data!
+modal-exposure-indicator-title = Exposure statuses
+modal-exposure-indicator-action-needed = Advanced or manual action is needed by you to complete an action.
+modal-exposure-indicator-fixed = The exposure has been resolved and there’s no action for you to take.

@@ -50,6 +50,7 @@ type ExposuresFilterProps = {
   filterValues: FilterState;
   setFilterValues: React.Dispatch<React.SetStateAction<FilterState>>;
   isEligibleForPremium: boolean;
+  isPlusSubscriber: boolean;
 };
 
 export const ExposuresFilter = ({
@@ -57,6 +58,7 @@ export const ExposuresFilter = ({
   filterValues,
   setFilterValues,
   isEligibleForPremium,
+  isPlusSubscriber,
 }: ExposuresFilterProps) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
@@ -302,6 +304,7 @@ export const ExposuresFilter = ({
           explainerDialogProps={exposureStatusExplainerDialogTrigger}
           explainerDialogState={exposureStatusExplainerDialogState}
           isEligibleForPremium={isEligibleForPremium}
+          isPlusSubscriber={isPlusSubscriber}
         />
       )}
       {filterDialogState.isOpen && (
