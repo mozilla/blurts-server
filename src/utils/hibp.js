@@ -87,7 +87,7 @@ async function _throttledFetch (url, reqOptions, tryCount = 1) {
     console.error('_throttledFetch - attempting to switch to mock endpoint', { err })
     await toggleMockEndpoint(true);
     const response = await fetch(mockUrl, reqOptions);
-    await toggleMockEndpoint(false);
+    toggleMockEndpoint(false);
     const resJson = await response.json();
     if (response.ok) return resJson;
     throw new InternalServerError('Both real and mock endpoints FAILED');
