@@ -95,15 +95,7 @@ export const ExposuresFilterStatusExplainer = (
         onDismiss={() => props.explainerDialogState.close()}
       >
         <div className={styles.modalBodyContent}>
-          <p>
-            {l10n.getString(
-              props.isEligibleForPremium
-                ? "modal-exposure-indicator-description-premium"
-                : "modal-exposure-indicator-description-all",
-            )}
-          </p>
-          <br />
-          <ul className="noList">
+          <ul className={`${styles.statusList} noList`}>
             {props.isPlusSubscriber && (
               <li className={styles.statusListItem}>
                 <StatusPill type="requestedRemoval" />
@@ -136,7 +128,7 @@ export const ExposuresFilterStatusExplainer = (
             variant="primary"
             onPress={() => props.explainerDialogState.close()}
           >
-            {l10n.getString("modal-cta-ok")}
+            {l10n.getString("modal-cta-got-it")}
           </Button>
         </div>
       </Dialog>
