@@ -1181,6 +1181,17 @@ it("shows the correct dashboard banner title for non-US users, resolved breaches
   expect(dashboardTopBannerTitle).toBeInTheDocument();
 });
 
+it("does not show How It Works page link to non-US users, resolved breaches", () => {
+  const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
+  render(<ComposedDashboard />);
+
+  const howItWorksLink = screen.queryByTestId(
+    "learn-more-link-to-how-it-works",
+  );
+
+  expect(howItWorksLink).not.toBeInTheDocument();
+});
+
 it("shows the correct dashboard banner CTA and sends telemetry for non-US users, resolved breaches", async () => {
   const ComposedDashboard = composeStory(DashboardNonUsResolvedBreaches, Meta);
   const mockedRecord = useTelemetry();
@@ -1256,6 +1267,32 @@ it("shows the correct dashboard banner CTA and sends telemetry for US users, wit
   );
 });
 
+it("shows How It Works page link to US users, without Premium, no scan, no breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const howItWorksLink = screen.getByTestId("learn-more-link-to-how-it-works");
+
+  expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
+});
+
+it("shows How It Works navbar link to US users, without Premium, no scan, no breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const howItWorksLink = screen.queryAllByRole("link", {
+    name: "How It Works",
+  });
+
+  expect(howItWorksLink.length).toBe(2);
+});
+
 // Check dashboard banner content for story DashboardUsNoPremiumNoScanUnresolvedBreaches
 it("shows the correct dashboard banner title for US users, without Premium, no scan, unresolved breaches", () => {
   const ComposedDashboard = composeStory(
@@ -1302,6 +1339,18 @@ it("shows the correct dashboard banner CTA for US users, without Premium, no sca
       button_id: "us_non_premium_no_scan_unresolved_breaches",
     }),
   );
+});
+
+it("shows How It Works page link to US users, without Premium, no scan, unresolved breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanUnresolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const howItWorksLink = screen.getByTestId("learn-more-link-to-how-it-works");
+
+  expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
 });
 
 // Check dashboard banner content for story DashboardUsNoPremiumNoScanResolvedBreaches
@@ -1352,6 +1401,18 @@ it("shows the correct dashboard banner CTA and sends telemetry for US users, wit
   );
 });
 
+it("shows How It Works page link to US users, without Premium, no scan, resolved breaches", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanResolvedBreaches,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const howItWorksLink = screen.getByTestId("learn-more-link-to-how-it-works");
+
+  expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
+});
+
 it("shows and skips a dialog that informs US users, without Premium, when we hit the broker scan limit", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(
@@ -1381,6 +1442,18 @@ it("shows and skips a dialog that informs US users, without Premium, when we hit
       name: "⁨Monitor⁩ is currently at capacity",
     }),
   ).not.toBeInTheDocument();
+});
+
+it("shows How It Works page link to US users, without Premium, when we hit the broker scan limit", () => {
+  const ComposedDashboard = composeStory(
+    DashboardUsNoPremiumNoScanNoBreachesScanLimitReached,
+    Meta,
+  );
+  render(<ComposedDashboard />);
+
+  const howItWorksLink = screen.getByTestId("learn-more-link-to-how-it-works");
+
+  expect(howItWorksLink).toHaveAttribute("href", "/how-it-works");
 });
 
 it("shows and closes a dialog that informs US users, without Premium, when we hit the broker scan limit", async () => {
@@ -3505,6 +3578,7 @@ describe("CSAT survey banner", () => {
     );
     render(
       <ComposedDashboard
+        activeTab="fixed"
         elapsedTimeInDaysSinceInitialScan={185}
         experimentData={{
           ...defaultExperimentData,
@@ -3514,9 +3588,6 @@ describe("CSAT survey banner", () => {
         }}
       />,
     );
-
-    const fixedTab = screen.getByText("Fixed");
-    await user.click(fixedTab);
 
     const answerButton = screen.queryByRole("button", {
       name: "Satisfied",
@@ -3539,24 +3610,12 @@ describe("CSAT survey banner", () => {
     );
     render(
       <ComposedDashboard
-        elapsedTimeInDaysSinceInitialScan={1}
-        experimentData={{
-          ...defaultExperimentData,
-          "automatic-removal-csat-survey": {
-            enabled: true,
-          },
-          "last-scan-date": {
-            enabled: true,
-          },
-          "last-scan-date-csat-survey": {
-            enabled: true,
-          },
-        }}
+        activeTab="fixed"
+        elapsedTimeInDaysSinceInitialScan={90}
+        hasFirstMonitoringScan
+        enabledFeatureFlags={["LatestScanDateCsatSurvey"]}
       />,
     );
-
-    const fixedTab = screen.getByText("Fixed");
-    await user.click(fixedTab);
 
     const answerButton = screen.getByRole("button", {
       name: "Very satisfied",
@@ -3564,10 +3623,13 @@ describe("CSAT survey banner", () => {
     await user.click(answerButton);
 
     expect(mockedRecord).toHaveBeenLastCalledWith(
-      "button",
+      "csatSurvey",
       "click",
       expect.objectContaining({
-        button_id: "csat_survey_latest_scan_date_plus-user_very-satisfied",
+        survey_id: "last_scan_date",
+        response_id: "very-satisfied",
+        experiment_branch: "treatment",
+        last_scan_date: "19980331",
       }),
     );
   });
@@ -3580,23 +3642,43 @@ describe("CSAT survey banner", () => {
     render(
       <ComposedDashboard
         activeTab="fixed"
-        elapsedTimeInDaysSinceInitialScan={1}
-        experimentData={{
-          ...defaultExperimentData,
-          "automatic-removal-csat-survey": {
-            enabled: true,
-          },
-          "last-scan-date": {
-            enabled: true,
-          },
-          "last-scan-date-csat-survey": {
-            enabled: true,
-          },
-        }}
+        elapsedTimeInDaysSinceInitialScan={90}
+        hasFirstMonitoringScan
+        enabledFeatureFlags={["LatestScanDateCsatSurvey"]}
       />,
     );
 
     const cookies = new Cookies(null, { path: "/" });
-    expect(cookies.get("csat_survey_initial_dismissed")).toBeDefined();
+    expect(cookies.get("csat_survey_3-months_dismissed")).toBeDefined();
+  });
+
+  it("confirms that the “latest scan” CSAT survey banner has been dismissed", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        elapsedTimeInDaysSinceInitialScan={90}
+        hasFirstMonitoringScan
+        enabledFeatureFlags={["LatestScanDateCsatSurvey"]}
+      />,
+    );
+
+    const dismissButton = screen.getByRole("button", {
+      name: "Dismiss",
+    });
+    await user.click(dismissButton);
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Neutral",
+    });
+    expect(answerButton).not.toBeInTheDocument();
+
+    const cookies = new Cookies(null, { path: "/" });
+    expect(cookies.get("csat_survey_3-months_dismissed")).toBeDefined();
+    expect(cookies.get("last_scan_date_plus-user_dismissed")).toBeDefined();
   });
 });

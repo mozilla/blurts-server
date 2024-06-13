@@ -132,7 +132,9 @@ declare module "knex/types/tables" {
     // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     db_migration_2: null | unknown;
     onerep_profile_id: null | number;
+    sign_in_count: null | number;
     email_addresses: SubscriberEmail[];
+    first_broker_removal_email_sent: boolean;
   }
   type SubscriberOptionalColumns = Extract<
     keyof SubscriberRow,
@@ -153,10 +155,11 @@ declare module "knex/types/tables" {
     | "db_migration_2"
     | "onerep_profile_id"
     | "email_addresses"
+    | "first_broker_removal_email_sent"
   >;
   type SubscriberAutoInsertedColumns = Extract<
     keyof SubscriberRow,
-    "id" | "created_at" | "updated_at"
+    "id" | "created_at" | "updated_at" | "sign_in_count"
   >;
 
   interface EmailAddressRow {
@@ -253,13 +256,14 @@ declare module "knex/types/tables" {
     middle_name?: string;
     last_name: string;
     status: RemovalStatus;
+    optout_attempts?: number;
     manually_resolved: boolean;
     created_at: Date;
     updated_at: Date;
   }
   type OnerepScanResultOptionalColumns = Extract<
     keyof OnerepScanResultRow,
-    "manually_resolved" | "middle_name"
+    "manually_resolved" | "middle_name" | "optout_attempts"
   >;
   type OnerepScanResultSerializedColumns = Extract<
     keyof OnerepScanResultRow,

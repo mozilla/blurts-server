@@ -4,14 +4,19 @@
 
 import {
   CsatSurveyProps,
-  RelevantSurvey,
+  RelevantSurveyWithMetric,
   SurveyData,
   getRelevantSurveys,
 } from "./csatSurvey";
 
 const surveyData: SurveyData = {
-  id: "csat_survey_latest_scan_date",
-  requiredExperimentIds: ["last-scan-date", "last-scan-date-csat-survey"],
+  id: "last_scan_date",
+  requiredExperiments: [
+    {
+      id: "last-scan-date",
+      statusAllowList: ["enabled", "disabled"],
+    },
+  ],
   variations: [
     {
       id: "free-user",
@@ -27,12 +32,49 @@ const surveyData: SurveyData = {
 };
 
 const getLatestScanDateCsatSurvey = (
-  props: CsatSurveyProps,
-): RelevantSurvey | null => {
-  const surveys = getRelevantSurveys({ ...surveyData, ...props });
-  // In case there are multiple matching survey variations for the current user:
+  props: CsatSurveyProps & {
+    lastScanDate: Date;
+    hasFirstMonitoringScan: boolean;
+    signInCount: number | null;
+  },
+): RelevantSurveyWithMetric | null => {
+  const isAtLeastSecondLogin =
+    props.signInCount !== null && props.signInCount >= 2;
+  const filteredSurveyData = {
+    ...surveyData,
+    variations: surveyData.variations.filter((surveyVariation) => {
+      return (
+        (surveyVariation.id === "free-user" && isAtLeastSecondLogin) ||
+        (surveyVariation.id === "plus-user" && props.hasFirstMonitoringScan)
+      );
+    }),
+  };
+  const surveys = getRelevantSurveys({ ...filteredSurveyData, ...props });
+
+  if (!surveys || surveys?.length === 0) {
+    return null;
+  }
+
+  // In case there would be multiple matching survey variations for the current user:
   // Return the first one.
-  return surveys && surveys.length > 0 ? surveys[0] : null;
+  const relevantSurvey = surveys[0];
+
+  // Distinguish between users who are and are not enrolled in the experiment.
+  const experimentBranchId = props.experimentData["last-scan-date"].enabled
+    ? "treatment"
+    : "control";
+  return {
+    ...relevantSurvey,
+    localDismissalId: `${surveyData.id}_${relevantSurvey.id}`,
+    metricKeys: {
+      survey_id: surveyData.id,
+      experiment_branch: experimentBranchId,
+      last_scan_date: props.lastScanDate
+        .toISOString()
+        .slice(0, 10)
+        .replaceAll("-", ""),
+    },
+  };
 };
 
 export { getLatestScanDateCsatSurvey };
