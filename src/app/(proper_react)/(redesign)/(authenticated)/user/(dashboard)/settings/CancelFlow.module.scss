@@ -21,7 +21,11 @@
 
     &.discountCta {
       background-color: $color-purple-60;
-      width: $content-sm;
+      width: 100%;
+
+      @media screen and (min-width: $screen-sm) {
+        width: $content-sm;
+      }
 
       &:hover {
         background-color: $color-purple-70;
