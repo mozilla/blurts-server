@@ -61,10 +61,16 @@ async function _throttledFetch (url, reqOptions, tryCount = 1) {
         throw new InternalServerError(`bad response: ${response.status}`)
     }
   } catch (err) {
-    const mockUrl = (String(process.env.HIBP_KANON_API_ROOT_FAKE)) + url.match(/\/breachedaccount.*/);
+    const {SERVER_URL, HIBP_KANON_API_SUFFIX_FAKE} = process.env;
+    if (SERVER_URL === undefined || HIBP_KANON_API_SUFFIX_FAKE === undefined) {
+      throw new InternalServerError('Environemnt not configured correctly: Missing server_url or hibp_suffix_fake')
+    }
+  
+    const mockHost = String(SERVER_URL) + String(HIBP_KANON_API_SUFFIX_FAKE);
+    const mockUrl = mockHost + url.match(/\/breachedaccount.*/);
 
     console.error('_throttledFetch - attempting to switch to mock endpoint', { err })
-    const fakeEndpoint = process.env.HIBP_KANON_API_ROOT_FAKE + '/mockConfigure';
+    const fakeEndpoint = mockHost + '/mockConfigure';
     await fetch(fakeEndpoint, {
       method: 'PUT',
       headers: {

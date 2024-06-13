@@ -23,7 +23,23 @@ export function GET() {
 export async function PUT(req: NextRequest) {
   //TODO: make new environemnt variable to use for real vs mock endpoint
 
-  const { APP_ENV, HIBP_KANON_API_ROOT_TRUE, SERVER_URL } = process.env;
+  const {
+    APP_ENV,
+    HIBP_KANON_API_ROOT_TRUE,
+    HIBP_KANON_API_SUFFIX_FAKE,
+    SERVER_URL,
+  } = process.env;
+
+  if (HIBP_KANON_API_SUFFIX_FAKE === undefined || SERVER_URL === undefined) {
+    return NextResponse.json(
+      {
+        error:
+          "Server environment not configured correctly: suffix_fake or server_url is undefined",
+      },
+      { status: 500 },
+    );
+  }
+
   const reqJson = await req.json();
   const useMock = reqJson.useMock;
 
@@ -41,7 +57,7 @@ export async function PUT(req: NextRequest) {
     "Environment variable HIBP_KANON_API_ROOT has been updated to use mock API";
   // Set the HIBP_KANON_API_ROOT environment variable
   if (useMock) {
-    process.env.HIBP_KANON_API_ROOT = SERVER_URL + "/api/mock/hibp";
+    process.env.HIBP_KANON_API_ROOT = SERVER_URL + HIBP_KANON_API_SUFFIX_FAKE;
   } else {
     process.env.HIBP_KANON_API_ROOT = HIBP_KANON_API_ROOT_TRUE;
     msg =
