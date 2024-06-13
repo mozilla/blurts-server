@@ -5,6 +5,7 @@
 fix-flow-nav-high-risk-data-breaches = Datalekkasje med høg risiko
 fix-flow-nav-leaked-passwords = Lekne passord
 guided-resolution-flow-exit = Tilbake til oversyn
+guided-resolution-flow-next-arrow = Gå til neste steg
 
 # Celebration screens
 
