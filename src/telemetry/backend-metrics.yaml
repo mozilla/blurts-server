@@ -9,6 +9,70 @@
 $schema: moz://mozilla.org/schemas/glean/metrics/2-0-0
 
 page:
+  user_id:
+    description: Mozilla Accounts user ID.
+    type: string
+    lifetime: application
+    send_in_pings:
+      - events
+    notification_emails:
+      - rhelmer@mozilla.com
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    expires: never
+    data_sensitivity:
+      - interaction
+
+  session_id:
+    description: An ID that allows us to track “sessions” of the user experience within the product.
+    type: string
+    lifetime: application
+    send_in_pings:
+      - events
+    notification_emails:
+      - rhelmer@mozilla.com
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    expires: never
+    data_sensitivity:
+      - interaction
+
+  monitor_user_id:
+    description: Mozilla Monitor-specific user ID.
+    type: string
+    lifetime: application
+    send_in_pings:
+      - events
+    notification_emails:
+      - rhelmer@mozilla.com
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    expires: never
+    data_sensitivity:
+      - interaction
+
+  plan_tier:
+    description: Which tier of plan the user is on [Free, Plus]
+    type: string
+    lifetime: application
+    send_in_pings:
+      - events
+    notification_emails:
+      - rhelmer@mozilla.com
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    expires: never
+    data_sensitivity:
+      - interaction
+
   view:
     type: event
     description: |
@@ -28,15 +92,6 @@ page:
       path:
         description: The path of the page.
         type: string
-      user_id:
-        description: Mozilla Accounts user ID.
-        type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
-        type: string
-      session_id:
-        description: An ID that allows us to track “sessions” of the user experience within the product.
-        type: string
       utm_campaign:
         description: Attribution campaign.
         type: string
@@ -55,11 +110,72 @@ page:
       referrer:
         description: The referring URL, if any.
         type: string
-      plan_tier:
-        description: Which tier of plan the user is on [Free, Plus]
-        type: string
 
 subscription:
+  user_id:
+    description: Mozilla Accounts user ID.
+    type: string
+    lifetime: application
+    send_in_pings:
+      - events
+    notification_emails:
+      - rhelmer@mozilla.com
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    expires: never
+    data_sensitivity:
+      - interaction
+
+  session_id:
+    description: An ID that allows us to track “sessions” of the user experience within the product.
+    type: string
+    lifetime: application
+    send_in_pings:
+      - events
+    notification_emails:
+      - rhelmer@mozilla.com
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    expires: never
+    data_sensitivity:
+      - interaction
+
+  monitor_user_id:
+    description: Mozilla Monitor-specific user ID.
+    type: string
+    lifetime: application
+    send_in_pings:
+      - events
+    notification_emails:
+      - rhelmer@mozilla.com
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    expires: never
+    data_sensitivity:
+      - interaction
+
+  plan_tier:
+    description: Which tier of plan the user is on [Free, Plus]
+    type: string
+    lifetime: application
+    send_in_pings:
+      - events
+    notification_emails:
+      - rhelmer@mozilla.com
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    expires: never
+    data_sensitivity:
+      - interaction
+
   activate:
     type: event
     description: |
@@ -75,19 +191,6 @@ subscription:
     expires: never
     send_in_pings:
       - events
-    extra_keys:
-      user_id:
-        description: Mozilla Accounts user ID.
-        type: string
-      session_id:
-        description: An ID that allows us to track “sessions” of the user experience within the product.
-        type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
-        type: string
-      plan_tier:
-        description: Which tier of plan the user is on [Free, Plus]
-        type: string
 
   cancel:
     type: event
@@ -104,21 +207,72 @@ subscription:
     expires: never
     send_in_pings:
       - events
-    extra_keys:
-      user_id:
-        description: Mozilla Accounts user ID.
-        type: string
-      session_id:
-        description: An ID that allows us to track “sessions” of the user experience within the product.
-        type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
-        type: string
-      plan_tier:
-        description: Which tier of plan the user is on [Free, Plus]
-        type: string
 
 account:
+  user_id:
+    description: Mozilla Accounts user ID.
+    type: string
+    lifetime: application
+    send_in_pings:
+      - events
+    notification_emails:
+      - rhelmer@mozilla.com
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    expires: never
+    data_sensitivity:
+      - interaction
+
+  session_id:
+    description: An ID that allows us to track “sessions” of the user experience within the product.
+    type: string
+    lifetime: application
+    send_in_pings:
+      - events
+    notification_emails:
+      - rhelmer@mozilla.com
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    expires: never
+    data_sensitivity:
+      - interaction
+
+  monitor_user_id:
+    description: Mozilla Monitor-specific user ID.
+    type: string
+    lifetime: application
+    send_in_pings:
+      - events
+    notification_emails:
+      - rhelmer@mozilla.com
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    expires: never
+    data_sensitivity:
+      - interaction
+
+  plan_tier:
+    description: Which tier of plan the user is on [Free, Plus]
+    type: string
+    lifetime: application
+    send_in_pings:
+      - events
+    notification_emails:
+      - rhelmer@mozilla.com
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    expires: never
+    data_sensitivity:
+      - interaction
+
   create:
     type: event
     description: |
@@ -134,19 +288,6 @@ account:
     expires: never
     send_in_pings:
       - events
-    extra_keys:
-      user_id:
-        description: Mozilla Accounts user ID.
-        type: string
-      session_id:
-        description: An ID that allows us to track “sessions” of the user experience within the product.
-        type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
-        type: string
-      plan_tier:
-        description: Which tier of plan the user is on [Free, Plus]
-        type: string
 
   delete:
     type: event
@@ -163,19 +304,6 @@ account:
     expires: never
     send_in_pings:
       - events
-    extra_keys:
-      user_id:
-        description: Mozilla Accounts user ID.
-        type: string
-      session_id:
-        description: An ID that allows us to track “sessions” of the user experience within the product.
-        type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
-        type: string
-      plan_tier:
-        description: Which tier of plan the user is on [Free, Plus]
-        type: string
 
   profile_change:
     type: event
@@ -192,19 +320,6 @@ account:
     expires: never
     send_in_pings:
       - events
-    extra_keys:
-      user_id:
-        description: Mozilla Accounts user ID.
-        type: string
-      session_id:
-        description: An ID that allows us to track “sessions” of the user experience within the product.
-        type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
-        type: string
-      plan_tier:
-        description: Which tier of plan the user is on [Free, Plus]
-        type: string
 
   password_change:
     type: event
@@ -221,16 +336,3 @@ account:
     expires: never
     send_in_pings:
       - events
-    extra_keys:
-      user_id:
-        description: Mozilla Accounts user ID.
-        type: string
-      session_id:
-        description: An ID that allows us to track “sessions” of the user experience within the product.
-        type: string
-      monitor_user_id:
-        description: Mozilla Monitor-specific user ID.
-        type: string
-      plan_tier:
-        description: Which tier of plan the user is on [Free, Plus]
-        type: string
