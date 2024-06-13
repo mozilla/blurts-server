@@ -87,6 +87,24 @@ export const CancelFlow = (props: Props) => {
     ),
     active: props.experimentData?.["next-three-months-discount"],
   };
+  const [couponSuccess, setCouponSuccess] = useState<boolean | null>(null);
+
+  const handleApplyCouponCode = async () => {
+    const result = await onApplyCouponCode();
+    if (result?.success) {
+      setCouponSuccess(true);
+    } else {
+      setCouponSuccess(false);
+    }
+  };
+
+  console.log(couponSuccess);
+
+  useEffect(() => {
+    if (!couponSuccess) {
+      setCurrentStep("all-set");
+    }
+  }, []);
 
   useEffect(() => {
     // Current experiment
@@ -101,10 +119,7 @@ export const CancelFlow = (props: Props) => {
             },
           }}
           variant="primary"
-          onPress={() =>
-            // setCurrentStep("all-set")
-            void onApplyCouponCode()
-          }
+          onPress={() => void handleApplyCouponCode()}
           className={`${styles.discountCta} ${styles.primaryCta}`}
         >
           {discountedNext3Months.headline}
