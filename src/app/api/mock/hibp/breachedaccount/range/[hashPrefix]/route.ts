@@ -5,7 +5,9 @@
 import { NextResponse } from "next/server";
 import { logger } from "../../../../../../functions/server/logging";
 import { getSha1 } from "../../../../../../../utils/fxa";
+import fakeBreaches from "../../../data/fakeBreaches.json";
 import type { BinaryLike } from "crypto";
+
 type BreachedAccountResponse = {
   hashSuffix: string;
   websites: string[];
@@ -24,15 +26,15 @@ export function GET() {
 
   // Mock data for test email, can be randomized
   const userEmail = process.env.E2E_TEST_ACCOUNT_EMAIL;
+  //TODO: getServerSession doesn't work here for some reason
   const currentUserSha = getSha1(userEmail as BinaryLike);
   logger.info("Mock endpoint: /breachedaccount/range/");
 
-  const data: BreachedAccountResponse = [
-    {
-      hashSuffix: currentUserSha.slice(6).toUpperCase(),
-      websites: ["Adobe"],
-    },
-  ];
+  let data = fakeBreaches.data as BreachedAccountResponse;
 
+  data = data.map((elem) => ({
+    ...elem,
+    hashSuffix: currentUserSha.slice(6).toUpperCase(),
+  }));
   return NextResponse.json(data);
 }

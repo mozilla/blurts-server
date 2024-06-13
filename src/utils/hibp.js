@@ -61,8 +61,21 @@ async function _throttledFetch (url, reqOptions, tryCount = 1) {
         throw new InternalServerError(`bad response: ${response.status}`)
     }
   } catch (err) {
-    console.error('_throttledFetch', { err })
-    throw new InternalServerError(getMessage('error-hibp-connect'))
+    const mockUrl = (String(process.env.HIBP_KANON_API_ROOT_FAKE)) + url.match(/\/breachedaccount.*/);
+
+    console.error('_throttledFetch - attempting to switch to mock endpoint', { err })
+    const fakeEndpoint = process.env.HIBP_KANON_API_ROOT_FAKE + '/mockConfigure';
+    await fetch(fakeEndpoint, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({'useMock': true})
+    })
+    const response = await fetch(mockUrl, reqOptions);
+    const resJson = await response.json();
+    if (response.ok) return resJson;
+    throw new InternalServerError('Both real and mock endpoints FAILED');
   }
 }
 /* c8 ignore stop */
