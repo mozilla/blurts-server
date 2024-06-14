@@ -129,7 +129,7 @@ async function deleteSubscription(bearerToken) {
         }
       })
       if (!response.ok) {
-        // throw new InternalServerError(`bad response: ${response.status}`)
+        throw new Error(await response.text())
       } else {
         console.info(`delete_fxa_subscription: success - ${JSON.stringify(await response.json())}`)
       }
@@ -145,6 +145,54 @@ async function deleteSubscription(bearerToken) {
 /* c8 ignore stop */
 
 /**
+ * @param {string} bearerToken
+ * @param {string} couponCodeId
+ * @returns
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function applyCoupon(bearerToken, couponCodeId) {
+  try {
+    const subs = await getSubscriptions(bearerToken) ?? []
+    let subscriptionId;
+    for (const sub of subs) {
+      if (sub && sub.productId && sub.productId === AppConstants.PREMIUM_PRODUCT_ID) {
+        subscriptionId = sub.subscriptionId
+      }
+    }
+    if (subscriptionId) {
+      const applyCouponUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/subscriptions/coupon/apply`
+      const response = await fetch(applyCouponUrl, {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          Authorization: `Bearer ${bearerToken}`
+        },
+        body: JSON.stringify({
+          promotionId: couponCodeId,
+          subscriptionId
+        })
+      })
+      if (!response.ok) {
+        const errMsg = await response.text()
+        console.info(`apply_coupon: failed - ${errMsg}`)
+        throw new Error(`apply_coupon: failed - ${errMsg}`)
+      } else {
+        console.info(`apply_coupon: success - ${JSON.stringify(await response.json())}`)
+      }
+    }
+  } catch (e) {
+    if (e instanceof Error) {
+      console.error('apply_coupon', { stack: e.stack })
+    }
+    throw e;
+  }
+}
+/* c8 ignore stop */
+
+
+/**
  * @param {crypto.BinaryLike} email
  */
 // TODO: Add unit test when changing this code:
@@ -158,5 +206,6 @@ export {
   revokeOAuthTokens,
   getSha1,
   getSubscriptions,
-  deleteSubscription
+  deleteSubscription,
+  applyCoupon
 }
