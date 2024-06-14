@@ -235,19 +235,11 @@ export async function POST(request: NextRequest) {
           updateFromEvent,
         });
 
-        record(
-          "account",
-          "password_change",
-          {
-            string: {
-              monitorUserId: subscriber.id.toString(),
-            },
+        record("account", "password_change", {
+          string: {
+            monitorUserId: subscriber.id.toString(),
           },
-          {
-            userAgent: request.headers.get("user_agent") ?? "",
-            ipAddress: request.ip ?? "",
-          },
-        );
+        });
 
         const refreshToken = subscriber.fxa_refresh_token ?? "";
         const accessToken = subscriber.fxa_access_token ?? "";
@@ -356,19 +348,11 @@ export async function POST(request: NextRequest) {
               subscriber_id: subscriber.id,
             });
 
-            record(
-              "subscription",
-              "activate",
-              {
-                string: {
-                  monitorUserId: subscriber.id.toString(),
-                },
+            record("subscription", "activate", {
+              string: {
+                monitorUserId: subscriber.id.toString(),
               },
-              {
-                userAgent: request.headers.get("user_agent") ?? "",
-                ipAddress: request.ip ?? "",
-              },
-            );
+            });
           } else if (
             !updatedSubscriptionFromEvent.isActive &&
             updatedSubscriptionFromEvent.capabilities.includes(
@@ -417,19 +401,11 @@ export async function POST(request: NextRequest) {
               subscriber_id: subscriber.id,
             });
 
-            record(
-              "subscription",
-              "cancel",
-              {
-                string: {
-                  monitorUserId: subscriber.id.toString(),
-                },
+            record("subscription", "cancel", {
+              string: {
+                monitorUserId: subscriber.id.toString(),
               },
-              {
-                userAgent: request.headers.get("user_agent") ?? "",
-                ipAddress: request.ip ?? "",
-              },
-            );
+            });
           }
         } catch (e) {
           captureMessage(
