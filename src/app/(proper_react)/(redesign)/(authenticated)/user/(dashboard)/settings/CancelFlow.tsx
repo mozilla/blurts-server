@@ -18,7 +18,7 @@ import { Button } from "../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { TelemetryButton } from "../../../../../../components/client/TelemetryButton";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
-import { onApplyCouponCode, onCheckUserHasCouponSet } from "./actions";
+import { onApplyCouponCode, onCheckUserHasCurrentCouponSet } from "./actions";
 import { TelemetryLink } from "../../../../../../components/client/TelemetryLink";
 
 export type Props = {
@@ -65,7 +65,7 @@ export const CancelFlow = (props: Props) => {
     successDescription: l10n.getString(
       "settings-unsubscribe-dialog-promotion-description",
       {
-        discount_percentage_num: "20%",
+        discount_percentage_num: "30%",
         discount_duration: 3,
       },
     ),
@@ -84,9 +84,9 @@ export const CancelFlow = (props: Props) => {
   };
 
   const checkCouponCode = async () => {
-    const result = await onCheckUserHasCouponSet();
-    if (typeof result === "boolean") {
-      setAlreadyHasCouponSet(result);
+    const result = await onCheckUserHasCurrentCouponSet();
+    if (typeof result.success === "boolean") {
+      setAlreadyHasCouponSet(result.success);
     } else {
       setAlreadyHasCouponSet(false);
     }

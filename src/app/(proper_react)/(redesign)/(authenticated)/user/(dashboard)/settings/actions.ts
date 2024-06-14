@@ -24,8 +24,10 @@ import { CONST_MAX_NUM_ADDRESSES } from "../../../../../../../constants";
 import { SanitizedEmailAddressRow } from "../../../../../../functions/server/sanitize";
 import { deleteAccount } from "../../../../../../functions/server/deleteAccount";
 import { cookies } from "next/headers";
-import { applyCurrentCouponCode } from "../../../../../../functions/server/applyCoupon";
-import { checkCouponForSubscriber } from "../../../../../../../db/tables/subscriber_coupons";
+import {
+  applyCurrentCouponCode,
+  checkCurrentCouponCode,
+} from "../../../../../../functions/server/applyCoupon";
 
 export type AddEmailFormState =
   | { success?: never }
@@ -204,9 +206,8 @@ export async function onApplyCouponCode() {
   return result;
 }
 
-export async function onCheckUserHasCouponSet() {
+export async function onCheckUserHasCurrentCouponSet() {
   const session = await getServerSession();
-  const currentCouponCode = process.env.CURRENT_COUPON_CODE_ID;
   if (!session?.user.subscriber?.id) {
     logger.error(`User does not have an active session.`);
     return {
@@ -215,20 +216,7 @@ export async function onCheckUserHasCouponSet() {
       errorMessage: `User does not have an active session.`,
     };
   }
-  if (!currentCouponCode) {
-    logger.error(
-      "fxa_apply_coupon_code_failed",
-      "Coupon code ID is not set. Please set the env var: CURRENT_COUPON_CODE_ID",
-    );
-    return {
-      success: false,
-      message: "Coupon code not set",
-    };
-  }
 
-  const result = await checkCouponForSubscriber(
-    session.user.subscriber.id,
-    currentCouponCode,
-  );
+  const result = await checkCurrentCouponCode(session.user.subscriber);
   return result;
 }
