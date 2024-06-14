@@ -259,7 +259,7 @@ export const TopNavBar = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
   const recordTelemetry = useTelemetry();
 
   return (
-    <nav className={styles.navbar}>
+    <div className={styles.navbar}>
       <div className={styles.navbarLinksContainer}>
         <Link
           className={styles.navbarLinks}
@@ -306,7 +306,7 @@ export const TopNavBar = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
           {l10n.getString("landing-all-hero-navbar-link-all-breaches")}
         </Link>
       </div>
-    </nav>
+    </div>
   );
 };
 
