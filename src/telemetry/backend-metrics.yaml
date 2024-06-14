@@ -126,7 +126,7 @@ subscription:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
     expires: never
     data_sensitivity:
-      - interaction
+      - technical
 
   session_id:
     description: An ID that allows us to track “sessions” of the user experience within the product.
@@ -142,7 +142,7 @@ subscription:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
     expires: never
     data_sensitivity:
-      - interaction
+      - technical
 
   monitor_user_id:
     description: Mozilla Monitor-specific user ID.
@@ -158,7 +158,7 @@ subscription:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
     expires: never
     data_sensitivity:
-      - interaction
+      - technical
 
   plan_tier:
     description: Which tier of plan the user is on [Free, Plus]
@@ -174,7 +174,7 @@ subscription:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
     expires: never
     data_sensitivity:
-      - interaction
+      - technical
 
   activate:
     type: event
@@ -190,7 +190,7 @@ subscription:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - events
+      - technical
 
   cancel:
     type: event
@@ -206,7 +206,7 @@ subscription:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - events
+      - technical
 
 account:
   user_id:
@@ -223,7 +223,7 @@ account:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
     expires: never
     data_sensitivity:
-      - interaction
+      - technical
 
   session_id:
     description: An ID that allows us to track “sessions” of the user experience within the product.
@@ -239,7 +239,7 @@ account:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
     expires: never
     data_sensitivity:
-      - interaction
+      - technical
 
   monitor_user_id:
     description: Mozilla Monitor-specific user ID.
@@ -255,7 +255,7 @@ account:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
     expires: never
     data_sensitivity:
-      - interaction
+      - technical
 
   plan_tier:
     description: Which tier of plan the user is on [Free, Plus]
@@ -271,7 +271,7 @@ account:
       - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
     expires: never
     data_sensitivity:
-      - interaction
+      - technical
 
   create:
     type: event
@@ -287,7 +287,7 @@ account:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - events
+      - technical
 
   remove:
     type: event
@@ -303,7 +303,7 @@ account:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - events
+      - technical
 
   profile_change:
     type: event
@@ -319,7 +319,7 @@ account:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - events
+      - technical
 
   password_change:
     type: event
@@ -335,4 +335,4 @@ account:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - events
+      - technical
