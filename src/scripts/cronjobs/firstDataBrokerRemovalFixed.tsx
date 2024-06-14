@@ -125,7 +125,7 @@ async function sendFirstDataBrokerRemovalFixedActivityEmail(
       <FirstDataBrokerRemovalFixed
         data={{
           dataBrokerName: scanResult.data_broker,
-          dataBrokerLink: scanResult.link,
+          dataBrokerLink: `${process.env.SERVER_URL}/user/dashboard/fixed`,
           removalDate: scanResult.updated_at,
         }}
         l10n={l10n}
