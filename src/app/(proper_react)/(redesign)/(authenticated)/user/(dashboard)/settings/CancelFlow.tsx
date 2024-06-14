@@ -105,7 +105,7 @@ export const CancelFlow = (props: Props) => {
   useEffect(() => {
     // Current experiment
     // Note: Opted to use state here to support future experiments
-    if (props.enableDiscountCoupon && !alreadyHasCouponSet) {
+    if (props.enableDiscountCoupon) {
       setPrimaryCta(
         <TelemetryButton
           event={{
@@ -159,95 +159,63 @@ export const CancelFlow = (props: Props) => {
     }
   };
 
-  const confirmCancellationAnimation = (
-    <>
-      <video
-        aria-hidden={true}
-        autoPlay={true}
-        loop={true}
-        muted={true}
-        className={styles.cancellationAnimation}
-      >
-        <source
-          // Unfortunately video files cannot currently be imported, so make
-          // sure these files are present in /public. See
-          // https://github.com/vercel/next.js/issues/35248
-          type="video/mp4"
-          src="/animations/CancellationFlowAnimation.mp4"
-        />
-        <source
-          type="video/webm"
-          src="/animations/CancellationFlowAnimation.webm"
-        />
+  const Animation = () => {
+    return (
+      <>
+        <video
+          aria-hidden={true}
+          autoPlay={true}
+          loop={true}
+          muted={true}
+          className={styles.cancellationAnimation}
+        >
+          <source
+            // Unfortunately video files cannot currently be imported, so make
+            // sure these files are present in /public. See
+            // https://github.com/vercel/next.js/issues/35248
+            type="video/mp4"
+            src={
+              step === "all-set"
+                ? "/animations/CancellationFlowDiscountAppliedAnimation.mp4"
+                : "/animations/CancellationFlowAnimation.mp4"
+            }
+          />
+          <source
+            type="video/webm"
+            src={
+              step === "all-set"
+                ? "/animations/CancellationFlowDiscountAppliedAnimation.webm"
+                : "/animations/CancellationFlowAnimation.webm"
+            }
+          />
+          {/* Fall back to the image if the video formats are not supported: */}
+          <Image
+            className={styles.cancellationIllustrationWrapper}
+            src={
+              step === "all-set"
+                ? CancellationFlowDiscountAppliedStaticImage
+                : CancellationFlowStaticImage
+            }
+            alt=""
+          />
+        </video>
         {/* Fall back to the image if the video formats are not supported: */}
+        {/* The .staticAlternative class ensures that this image will only be shown if the user has prefers-reduced-motion on */}
         <Image
-          className={styles.cancellationIllustrationWrapper}
-          src={CancellationFlowStaticImage}
+          className={`
+${styles.cancellationIllustrationWrapper}
+${styles.staticAlternative}
+`}
+          src={
+            step === "all-set"
+              ? CancellationFlowDiscountAppliedStaticImage
+              : CancellationFlowStaticImage
+          }
           alt=""
         />
-      </video>
-      {/* Fall back to the image if the video formats are not supported: */}
-      {/* The .staticAlternative class ensures that this image will only be shown if the user has prefers-reduced-motion on */}
-      <Image
-        className={`
-  ${styles.cancellationIllustrationWrapper}
-  ${styles.staticAlternative}
-  `}
-        src={CancellationFlowStaticImage}
-        alt=""
-      />
-    </>
-  );
-
-  const discountAppliedAnimation = (
-    <>
-      <video
-        aria-hidden={true}
-        autoPlay={true}
-        loop={true}
-        muted={true}
-        className={styles.cancellationAnimation}
-      >
-        <source
-          // Unfortunately video files cannot currently be imported, so make
-          // sure these files are present in /public. See
-          // https://github.com/vercel/next.js/issues/35248
-          type="video/mp4"
-          src="/animations/CancellationFlowDiscountAppliedAnimation.mp4"
-        />
-        <source
-          type="video/webm"
-          src="/animations/CancellationFlowDiscountAppliedAnimation.webm"
-        />
-        {/* Fall back to the image if the video formats are not supported: */}
-        <Image
-          className={styles.cancellationIllustrationWrapper}
-          src={CancellationFlowDiscountAppliedStaticImage}
-          alt=""
-        />
-      </video>
-      {/* Fall back to the image if the video formats are not supported: */}
-      {/* The .staticAlternative class ensures that this image will only be shown if the user has prefers-reduced-motion on */}
-      <Image
-        className={`
-  ${styles.cancellationIllustrationWrapper}
-  ${styles.staticAlternative}
-  `}
-        src={CancellationFlowDiscountAppliedStaticImage}
-        alt=""
-      />
-    </>
-  );
-
-  const [animation, setAnimation] = useState<ReactElement>();
-
-  useEffect(() => {
-    if (step === "all-set") {
-      setAnimation(discountAppliedAnimation);
-    } else {
-      setAnimation(confirmCancellationAnimation);
-    }
-  }, [step]);
+      </>
+    );
+  };
 
   return (
     <>
@@ -266,7 +234,7 @@ export const CancelFlow = (props: Props) => {
         >
           <Dialog
             title={l10n.getString(dialogTitle())}
-            illustration={animation}
+            illustration={<Animation />}
             onDismiss={() => dialogState.close()}
           >
             <div className={styles.contentWrapper}>
