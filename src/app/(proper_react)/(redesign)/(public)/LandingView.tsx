@@ -284,6 +284,7 @@ export const TopNavBar = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
           {l10n.getString("landing-all-hero-navbar-link-pricing")}
         </Link>
         <Link
+          data-testid="navbar_faqs"
           className={styles.navbarLinks}
           href="#faq"
           onClick={() => {
@@ -299,7 +300,7 @@ export const TopNavBar = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
           href="/breaches"
           onClick={() => {
             recordTelemetry("button", "click", {
-              button_id: "navbar_pricing",
+              button_id: "navbar_breaches",
             });
           }}
         >
