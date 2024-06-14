@@ -15,9 +15,11 @@ import {
 } from "../../../../../../../../../functions/server/getRelevantGuidedSteps";
 import { FixView } from "../../FixView";
 import { ExtendedReactLocalization } from "../../../../../../../../../functions/l10n";
-import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 import noBreachesIllustration from "../../images/high-risk-breaches-none.svg";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../../../../../../../../constants";
+import { useTelemetry } from "../../../../../../../../../hooks/useTelemetry";
+import Link from "next/link";
+import { TelemetryButton } from "../../../../../../../../../components/client/TelemetryButton";
 
 export type Props = {
   data: StepDeterminationData;
@@ -27,6 +29,7 @@ export type Props = {
 
 export function WelcomeToPlusView(props: Props) {
   const l10n = props.l10n;
+  const recordTelemetry = useTelemetry();
 
   const scanResultsInProgress =
     props.data.latestScanData?.results.filter(
@@ -85,10 +88,15 @@ export function WelcomeToPlusView(props: Props) {
                   {
                     elems: {
                       how_it_works_link: (
-                        <a
+                        <Link
                           href="/how-it-works"
                           className={styles.howItWorksLink}
                           target="_blank"
+                          onClick={() => {
+                            recordTelemetry("button", "click", {
+                              button_id: "explanation_of_removal_time",
+                            });
+                          }}
                         />
                       ),
                     },
