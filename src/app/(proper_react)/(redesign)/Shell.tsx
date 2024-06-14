@@ -73,6 +73,11 @@ export const Shell = (props: Props) => {
                 <PageLink
                   href="/user/settings"
                   activeClassName={styles.isActive}
+                  onClick={() => {
+                    recordTelemetry("button", "click", {
+                      button_id: "navigation_settings",
+                    });
+                  }}
                 >
                   {l10n.getString("main-nav-link-settings-label")}
                 </PageLink>
