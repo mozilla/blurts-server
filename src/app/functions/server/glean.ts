@@ -15,7 +15,12 @@ const loggingWinston = new LoggingWinston({
   },
 });
 
-export function record(event, metrics) {
+export function record(
+  category: string,
+  name: string,
+  metrics: { string: { monitorUserId: string } } | undefined,
+  metadata: { userAgent: string; ipAddress: string } | undefined,
+) {
   const logger = createLogger({
     level: "info",
     // In GCP environments, use cloud logging instead of stdout.
@@ -25,6 +30,7 @@ export function record(event, metrics) {
       : [new transports.Console()],
   });
 
+  const event = { category, name };
   const payload = constructPayload(event, metrics);
   const eventPayloadSerialized = JSON.stringify(payload);
 
@@ -34,8 +40,8 @@ export function record(event, metrics) {
     document_type: "events",
     document_version: "1",
     document_id: uuidv4(),
-    user_agent: "test", // FIXME
-    ip_address: "test", // FIXME
+    user_agent: metadata?.userAgent,
+    ip_address: metadata?.ip,
     payload: eventPayloadSerialized,
   };
 

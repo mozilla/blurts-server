@@ -28,7 +28,6 @@ import { getL10n } from "../../functions/l10n/serverComponents";
 import { OAuthConfig } from "next-auth/providers/oauth.js";
 import { SerializedSubscriber } from "../../../next-auth.js";
 import { record } from "../../functions/server/glean";
-import { create } from "../../../telemetry/generated/backend/account";
 
 const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   // As per https://mozilla.slack.com/archives/C4D36CAJW/p1683642497940629?thread_ts=1683642325.465929&cid=C4D36CAJW,
@@ -188,17 +187,16 @@ export const authOptions: AuthOptions = {
           await sendEmail(data.recipientEmail, subject, emailTemplate);
 
           record(
-            {
-              category: "account",
-              name: "create",
-            },
+            "account",
+            "create",
             {
               string: {
-                monitorUserId: account.userId,
+                monitorUserId: account.userId ?? "",
               },
-              event: {
-                create,
-              },
+            },
+            {
+              userAgent: "",
+              ipAddress: "",
             },
           );
         } else {

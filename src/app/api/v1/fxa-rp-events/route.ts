@@ -24,16 +24,7 @@ import { revokeOAuthTokens } from "../../../../utils/fxa";
 import appConstants from "../../../../appConstants";
 import { changeSubscription } from "../../../functions/server/changeSubscription";
 import { deleteAccount } from "../../../functions/server/deleteAccount";
-import {
-  passwordChange,
-  profileChange,
-  remove,
-} from "../../../../telemetry/generated/backend/account";
 import { record } from "../../../functions/server/glean";
-import {
-  activate,
-  cancel,
-} from "../../../../telemetry/generated/backend/subscription.js";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -191,17 +182,16 @@ export async function POST(request: NextRequest) {
       case FXA_DELETE_USER_EVENT: {
         await deleteAccount(subscriber);
         record(
-          {
-            category: "account",
-            name: "remove",
-          },
+          "account",
+          "remove",
           {
             string: {
-              monitorUserId: subscriber.id,
+              monitorUserId: subscriber.id.toString(),
             },
-            event: {
-              remove,
-            },
+          },
+          {
+            userAgent: request.headers.get("user_agent") ?? "",
+            ipAddress: request.ip ?? "",
           },
         );
         break;
@@ -217,17 +207,16 @@ export async function POST(request: NextRequest) {
         });
 
         record(
-          {
-            category: "account",
-            name: "profile_change",
-          },
+          "account",
+          "profile_change",
           {
             string: {
-              monitorUserId: subscriber.id,
+              monitorUserId: subscriber.id.toString(),
             },
-            event: {
-              profileChange,
-            },
+          },
+          {
+            userAgent: request.headers.get("user_agent") ?? "",
+            ipAddress: request.ip ?? "",
           },
         );
 
@@ -268,17 +257,16 @@ export async function POST(request: NextRequest) {
         });
 
         record(
-          {
-            category: "account",
-            name: "password_change",
-          },
+          "account",
+          "password_change",
           {
             string: {
-              monitorUserId: subscriber.id,
+              monitorUserId: subscriber.id.toString(),
             },
-            event: {
-              passwordChange,
-            },
+          },
+          {
+            userAgent: request.headers.get("user_agent") ?? "",
+            ipAddress: request.ip ?? "",
           },
         );
 
@@ -390,17 +378,16 @@ export async function POST(request: NextRequest) {
             });
 
             record(
-              {
-                category: "subscription",
-                name: "activate",
-              },
+              "subscription",
+              "activate",
               {
                 string: {
-                  monitorUserId: subscriber.id,
+                  monitorUserId: subscriber.id.toString(),
                 },
-                event: {
-                  activate,
-                },
+              },
+              {
+                userAgent: request.headers.get("user_agent") ?? "",
+                ipAddress: request.ip ?? "",
               },
             );
           } else if (
@@ -452,17 +439,16 @@ export async function POST(request: NextRequest) {
             });
 
             record(
-              {
-                category: "subscription",
-                name: "cancel",
-              },
+              "subscription",
+              "cancel",
               {
                 string: {
-                  monitorUserId: subscriber.id,
+                  monitorUserId: subscriber.id.toString(),
                 },
-                event: {
-                  cancel,
-                },
+              },
+              {
+                userAgent: request.headers.get("user_agent") ?? "",
+                ipAddress: request.ip ?? "",
               },
             );
           }
