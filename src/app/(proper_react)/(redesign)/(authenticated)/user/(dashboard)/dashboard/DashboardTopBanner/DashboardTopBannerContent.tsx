@@ -103,10 +103,12 @@ export const DashboardTopBannerContent = (props: DashboardTopBannerProps) => {
     userDashboardState: UserDashboardState;
     relevantGuidedStep: StepLink;
   }) {
+    console.log("*************************************");
     console.log(
-      "getDashboardBannerContent-howItWorksFlagEnabled",
+      "getDashboardBannerContent function-howItWorksFlagEnabled",
       howItWorksFlagEnabled,
     );
+    console.log("*************************************");
     switch (userDashboardState) {
       case "NonEligiblePremiumUserNoBreaches":
         return (
