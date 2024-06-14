@@ -41,7 +41,7 @@ export function record(
     document_version: "1",
     document_id: uuidv4(),
     user_agent: metadata?.userAgent,
-    ip_address: metadata?.ip,
+    ip_address: metadata?.ipAddress,
     payload: eventPayloadSerialized,
   };
 
