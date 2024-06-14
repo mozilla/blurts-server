@@ -289,7 +289,7 @@ account:
     send_in_pings:
       - events
 
-  delete:
+  remove:
     type: event
     description: |
       An existing Mozilla Monitor account has been deleted.
