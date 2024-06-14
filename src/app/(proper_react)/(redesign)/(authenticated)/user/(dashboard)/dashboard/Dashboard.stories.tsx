@@ -212,7 +212,9 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             elapsedTimeInDaysSinceInitialScan={
               props.elapsedTimeInDaysSinceInitialScan
             }
-            enabledFeatureFlags={props.enabledFeatureFlags ?? []}
+            enabledFeatureFlags={
+              props.enabledFeatureFlags ?? ["HowItWorksPage"]
+            }
             experimentData={
               props.experimentData ?? {
                 ...defaultExperimentData,
