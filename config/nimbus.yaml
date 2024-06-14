@@ -47,5 +47,3 @@ features:
         value: { "enabled": true }
       - channel: production
         value: { "enabled": false }
-
-
