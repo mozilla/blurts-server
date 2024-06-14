@@ -47,46 +47,5 @@ features:
         value: { "enabled": true }
       - channel: production
         value: { "enabled": false }
-  last-scan-date-csat-survey:
-    description: Show the CSAT survey for users that are enrolled in the `last-scan-date` experiment
-    variables:
-      enabled:
-        description: If the feature is enabled
-        type: Boolean
-        default: false
-    defaults:
-      - channel: local
-        value: { "enabled": true }
-      - channel: staging
-        value: { "enabled": true }
-      - channel: production
-        value: { "enabled": false }
-  next-three-months-discount:
-    description: Offer a 30% discount for users during the cancel flow for the next 3 months
-    variables:
-      enabled:
-        description: If the feature is enabled
-        type: Boolean
-        default: false
-    defaults:
-      - channel: local
-        value: { "enabled": true }
-      - channel: staging
-        value: { "enabled": true }
-      - channel: production
-        value: { "enabled": false }
-  next-month-discount:
-    description: Offer a 20% discount for users during the cancel flow for the next month
-    variables:
-      enabled:
-        description: If the feature is enabled
-        type: Boolean
-        default: false
-    defaults:
-      - channel: local
-        value: { "enabled": true }
-      - channel: staging
-        value: { "enabled": true }
-      - channel: production
-        value: { "enabled": false }
+
 
