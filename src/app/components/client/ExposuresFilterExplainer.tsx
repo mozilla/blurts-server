@@ -13,6 +13,7 @@ import { Dialog } from "./dialog/Dialog";
 import { Button } from "../client/Button";
 import { CONST_ONEREP_DATA_BROKER_COUNT } from "../../../constants";
 import { StatusPill } from "../server/StatusPill";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 type ExposuresFilterTypeExplainerProps = {
   explainerDialogState: OverlayTriggerState;
@@ -71,6 +72,7 @@ export const ExposuresFilterTypeExplainer = (
 };
 
 type ExposuresFilterStatusExplainerProps = {
+  enabledFeatureFlags: FeatureFlagName[];
   explainerDialogState: OverlayTriggerState;
   explainerDialogProps: OverlayTriggerAria;
   isEligibleForPremium: boolean;
@@ -96,12 +98,13 @@ export const ExposuresFilterStatusExplainer = (
       >
         <div className={styles.modalBodyContent}>
           <ul className={`${styles.statusList} noList`}>
-            {props.isPlusSubscriber && (
-              <li className={styles.statusListItem}>
-                <StatusPill type="requestedRemoval" />
-                {l10n.getString("modal-exposure-indicator-requested-removal")}
-              </li>
-            )}
+            {props.enabledFeatureFlags.includes("AdditionalRemovalStatuses") &&
+              props.isPlusSubscriber && (
+                <li className={styles.statusListItem}>
+                  <StatusPill type="requestedRemoval" />
+                  {l10n.getString("modal-exposure-indicator-requested-removal")}
+                </li>
+              )}
             {props.isEligibleForPremium ? (
               <>
                 <li className={styles.statusListItem}>

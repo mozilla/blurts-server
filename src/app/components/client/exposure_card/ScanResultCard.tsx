@@ -20,6 +20,7 @@ import { ExposureCardDataClassLayout } from "./ExposureCardDataClass";
 import { DataBrokerImage } from "./DataBrokerImage";
 import { CONST_URL_SUMO_MONITOR_REMOVAL } from "../../../../constants";
 import { TelemetryLink } from "../TelemetryLink";
+import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
 export type ScanResultCardProps = {
   scanResult: OnerepScanResultRow;
@@ -28,6 +29,7 @@ export type ScanResultCardProps = {
   isPremiumUser: boolean;
   isExpanded: boolean;
   isOnManualRemovePage?: boolean;
+  enabledFeatureFlags: FeatureFlagName[];
   onToggleExpanded: () => void;
 };
 
@@ -249,7 +251,13 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
               {l10n.getString("exposure-card-label-status")}
             </dt>
             <dd>
-              <StatusPill exposure={scanResult} note={statusPillNote} />
+              <StatusPill
+                exposure={scanResult}
+                note={statusPillNote}
+                additionalRemovalStatusesEnabled={props.enabledFeatureFlags.includes(
+                  "AdditionalRemovalStatuses",
+                )}
+              />
             </dd>
           </dl>
           <button

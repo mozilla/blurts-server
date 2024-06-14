@@ -39,6 +39,7 @@ import {
 } from "./ExposuresFilterExplainer";
 import { Popover } from "./Popover";
 import { VisuallyHidden } from "../server/VisuallyHidden";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 export type FilterState = {
   exposureType: "show-all-exposure-type" | "data-broker" | "data-breach";
@@ -46,6 +47,7 @@ export type FilterState = {
 };
 
 type ExposuresFilterProps = {
+  enabledFeatureFlags: FeatureFlagName[];
   initialFilterValues: FilterState;
   filterValues: FilterState;
   setFilterValues: React.Dispatch<React.SetStateAction<FilterState>>;
@@ -54,6 +56,7 @@ type ExposuresFilterProps = {
 };
 
 export const ExposuresFilter = ({
+  enabledFeatureFlags,
   initialFilterValues,
   filterValues,
   setFilterValues,
@@ -305,6 +308,7 @@ export const ExposuresFilter = ({
           explainerDialogState={exposureStatusExplainerDialogState}
           isEligibleForPremium={isEligibleForPremium}
           isPlusSubscriber={isPlusSubscriber}
+          enabledFeatureFlags={enabledFeatureFlags}
         />
       )}
       {filterDialogState.isOpen && (

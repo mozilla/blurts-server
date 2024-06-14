@@ -26,6 +26,7 @@ export const StatusPillTypeMap: Record<string, StatusPillType> = {
 type DirectTypeProps = { type: StatusPillType };
 type ExposureProps = { exposure: Exposure };
 export type Props = (DirectTypeProps | ExposureProps) & {
+  additionalRemovalStatusesEnabled?: boolean;
   note?: string;
 };
 
@@ -35,14 +36,17 @@ export const StatusPill = (props: Props) => {
   const l10n = useL10n();
   const pillType = hasDirectType(props)
     ? props.type
-    : getExposureStatus(props.exposure);
+    : getExposureStatus(
+        props.exposure,
+        props.additionalRemovalStatusesEnabled ?? false,
+      );
 
   return (
     <div className={styles.pillWrapper}>
       <div className={`${styles.pill} ${styles[pillType]}`}>
         {getStatusLabel({ pillType, l10n })}
       </div>
-      {props.note ?? null}
+      {props.additionalRemovalStatusesEnabled && props.note ? props.note : null}
     </div>
   );
 };
@@ -74,7 +78,10 @@ const getStatusLabel = ({
   }
 };
 
-export const getExposureStatus = (exposure: Exposure): StatusPillType => {
+export const getExposureStatus = (
+  exposure: Exposure,
+  additionalRemovalStatusesEnabled: boolean,
+): StatusPillType => {
   if (isScanResult(exposure)) {
     if (exposure.manually_resolved) {
       return "removed";
@@ -84,7 +91,9 @@ export const getExposureStatus = (exposure: Exposure): StatusPillType => {
       case "removed":
         return "removed";
       case "waiting_for_verification":
-        return "requestedRemoval";
+        return additionalRemovalStatusesEnabled
+          ? "requestedRemoval"
+          : "inProgress";
       case "optout_in_progress":
         return "inProgress";
       case "new":
