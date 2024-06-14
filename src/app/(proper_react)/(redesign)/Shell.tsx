@@ -17,6 +17,7 @@ import {
 } from "../../functions/server/getPremiumSubscriptionInfo";
 import { SubscriptionCheck } from "../../components/client/SubscriptionCheck";
 import { Footer } from "./Footer";
+import { useTelemetry } from "../../hooks/useTelemetry";
 
 export type Props = {
   l10n: ExtendedReactLocalization;
@@ -30,6 +31,7 @@ export const Shell = (props: Props) => {
   const l10n = props.l10n;
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
+  const recordTelemetry = useTelemetry();
 
   return (
     <>
@@ -81,19 +83,29 @@ export const Shell = (props: Props) => {
                     href="/how-it-works"
                     activeClassName={styles.isActive}
                     target="_blank"
+                    onClick={() => {
+                      recordTelemetry("button", "click", {
+                        button_id: "navigation_how_it_works",
+                      });
+                    }}
                   >
                     {l10n.getString("main-nav-link-how-it-works-label")}
                   </PageLink>
                 </li>
               )}
               <li key="faq">
-                <a
+                <Link
                   href="https://support.mozilla.org/kb/firefox-monitor-faq"
                   title={l10n.getString("main-nav-link-faq-tooltip")}
                   target="_blank"
+                  onClick={() => {
+                    recordTelemetry("button", "click", {
+                      button_id: "navigation_faq",
+                    });
+                  }}
                 >
                   {l10n.getString("main-nav-link-faq-label")}
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
