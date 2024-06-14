@@ -181,19 +181,6 @@ export async function POST(request: NextRequest) {
     switch (event) {
       case FXA_DELETE_USER_EVENT: {
         await deleteAccount(subscriber);
-        record(
-          "account",
-          "remove",
-          {
-            string: {
-              monitorUserId: subscriber.id.toString(),
-            },
-          },
-          {
-            userAgent: request.headers.get("user_agent") ?? "",
-            ipAddress: request.ip ?? "",
-          },
-        );
         break;
       }
       case FXA_PROFILE_CHANGE_EVENT: {
@@ -206,19 +193,11 @@ export async function POST(request: NextRequest) {
           updatedProfileFromEvent,
         });
 
-        record(
-          "account",
-          "profile_change",
-          {
-            string: {
-              monitorUserId: subscriber.id.toString(),
-            },
+        record("account", "profile_change", {
+          string: {
+            monitorUserId: subscriber.id.toString(),
           },
-          {
-            userAgent: request.headers.get("user_agent") ?? "",
-            ipAddress: request.ip ?? "",
-          },
-        );
+        });
 
         // get current profiledata
         // Typed as `any` because `subscriber` used to be typed as `any`, and

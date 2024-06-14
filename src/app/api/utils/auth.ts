@@ -183,22 +183,14 @@ export const authOptions: AuthOptions = {
             l10n,
           );
 
+          record("account", "create", {
+            string: {
+              monitorUserId: account.userId ?? "",
+            },
+          });
+
           await initEmail(process.env.SMTP_URL);
           await sendEmail(data.recipientEmail, subject, emailTemplate);
-
-          record(
-            "account",
-            "create",
-            {
-              string: {
-                monitorUserId: account.userId ?? "",
-              },
-            },
-            {
-              userAgent: "",
-              ipAddress: "",
-            },
-          );
         } else {
           logger.warn("no_existing_user_or_email", {
             token,

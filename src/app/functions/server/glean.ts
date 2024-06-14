@@ -19,7 +19,7 @@ export function record(
   category: string,
   name: string,
   metrics: { string: { monitorUserId: string } } | undefined,
-  metadata: { userAgent: string; ipAddress: string } | undefined,
+  metadata?: { userAgent: string; ipAddress: string } | undefined,
 ) {
   const logger = createLogger({
     level: "info",
