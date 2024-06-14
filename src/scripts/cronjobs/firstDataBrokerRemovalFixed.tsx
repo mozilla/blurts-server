@@ -65,9 +65,10 @@ async function run() {
               scanResult.status === "removed" &&
               // ...and scan result has been created ealier than the currently
               // selected `firstRemovedScanResult`.
-              firstRemovedScanResult &&
-              scanResult.created_at.getTime() <
-                firstRemovedScanResult.created_at.getTime()
+              (!firstRemovedScanResult ||
+                (firstRemovedScanResult &&
+                  scanResult.created_at.getTime() <
+                    firstRemovedScanResult.created_at.getTime()))
             ) {
               firstRemovedScanResult = scanResult;
             }
