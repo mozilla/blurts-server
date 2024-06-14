@@ -24,6 +24,16 @@ import { revokeOAuthTokens } from "../../../../utils/fxa";
 import appConstants from "../../../../appConstants";
 import { changeSubscription } from "../../../functions/server/changeSubscription";
 import { deleteAccount } from "../../../functions/server/deleteAccount";
+import {
+  passwordChange,
+  profileChange,
+  remove,
+} from "../../../../telemetry/generated/backend/account";
+import { record } from "../../../functions/server/glean";
+import {
+  activate,
+  cancel,
+} from "../../../../telemetry/generated/backend/subscription.js";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -117,6 +127,7 @@ interface JwtPayload {
 
 export async function POST(request: NextRequest) {
   let decodedJWT: JwtPayload;
+
   try {
     decodedJWT = (await authenticateFxaJWT(request)) as JwtPayload;
   } catch (e) {
@@ -179,6 +190,20 @@ export async function POST(request: NextRequest) {
     switch (event) {
       case FXA_DELETE_USER_EVENT: {
         await deleteAccount(subscriber);
+        record(
+          {
+            category: "account",
+            name: "remove",
+          },
+          {
+            string: {
+              monitorUserId: subscriber.id,
+            },
+            event: {
+              remove,
+            },
+          },
+        );
         break;
       }
       case FXA_PROFILE_CHANGE_EVENT: {
@@ -190,6 +215,21 @@ export async function POST(request: NextRequest) {
           event,
           updatedProfileFromEvent,
         });
+
+        record(
+          {
+            category: "account",
+            name: "profile_change",
+          },
+          {
+            string: {
+              monitorUserId: subscriber.id,
+            },
+            event: {
+              profileChange,
+            },
+          },
+        );
 
         // get current profiledata
         // Typed as `any` because `subscriber` used to be typed as `any`, and
@@ -226,6 +266,21 @@ export async function POST(request: NextRequest) {
           event,
           updateFromEvent,
         });
+
+        record(
+          {
+            category: "account",
+            name: "password_change",
+          },
+          {
+            string: {
+              monitorUserId: subscriber.id,
+            },
+            event: {
+              passwordChange,
+            },
+          },
+        );
 
         const refreshToken = subscriber.fxa_refresh_token ?? "";
         const accessToken = subscriber.fxa_access_token ?? "";
@@ -293,6 +348,7 @@ export async function POST(request: NextRequest) {
             Event: ${event}\n
             updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`,
               );
+
               return NextResponse.json(
                 {
                   success: true,
@@ -332,6 +388,21 @@ export async function POST(request: NextRequest) {
             logger.info("activated_onerep_profile", {
               subscriber_id: subscriber.id,
             });
+
+            record(
+              {
+                category: "subscription",
+                name: "activate",
+              },
+              {
+                string: {
+                  monitorUserId: subscriber.id,
+                },
+                event: {
+                  activate,
+                },
+              },
+            );
           } else if (
             !updatedSubscriptionFromEvent.isActive &&
             updatedSubscriptionFromEvent.capabilities.includes(
@@ -379,6 +450,21 @@ export async function POST(request: NextRequest) {
             logger.info("deactivated_onerep_profile", {
               subscriber_id: subscriber.id,
             });
+
+            record(
+              {
+                category: "subscription",
+                name: "cancel",
+              },
+              {
+                string: {
+                  monitorUserId: subscriber.id,
+                },
+                event: {
+                  cancel,
+                },
+              },
+            );
           }
         } catch (e) {
           captureMessage(
