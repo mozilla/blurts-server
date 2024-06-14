@@ -105,8 +105,8 @@ export const SettingsView = (props: Props) => {
                 <p>{l10n.getString("settings-cancel-plus-details")}</p>
                 {props.enabledFeatureFlags.includes("CancellationFlow") ? (
                   <CancelFlow
-                    confirmationFlagEnabled={props.enabledFeatureFlags.includes(
-                      "ConfirmCancellation",
+                    enableDiscountCoupon={props.enabledFeatureFlags.includes(
+                      "DiscountCouponNextThreeMonths",
                     )}
                     fxaSubscriptionsUrl={props.fxaSubscriptionsUrl}
                     experimentData={props.experimentData}
