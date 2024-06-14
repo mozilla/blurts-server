@@ -26,6 +26,6 @@ it("has a link that sends user to the dashboard with the correct href attribute"
   const dashboardLink = screen.getByRole("link", { name: "View dashboard" });
   expect(dashboardLink).toHaveAttribute(
     "href",
-    `${process.env.SERVER_URL}/user/dashboard?utm_source=monitor-product&utm_medium=email&utm_campaign=first-removal&utm_content=view-dashboard`,
+    `${process.env.SERVER_URL}/user/dashboard/fixed?utm_source=monitor-product&utm_medium=email&utm_campaign=first-removal&utm_content=view-dashboard`,
   );
 });
