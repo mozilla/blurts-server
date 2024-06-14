@@ -34,6 +34,8 @@ jest.mock("./actions", () => {
     onRemoveEmail: jest.fn(),
     onAddEmail: jest.fn(),
     onDeleteAccount: () => new Promise(() => undefined),
+    onApplyCouponCode: () => new Promise(() => undefined),
+    onCheckUserHasCurrentCouponSet: () => new Promise(() => undefined),
   };
 });
 const mockedRouterRefresh = jest.fn();
