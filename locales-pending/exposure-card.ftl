@@ -7,4 +7,4 @@ status-pill-removed = Removed
 # Variables:
 # $attempt_count is the number of times that a removal has been attempted.
 # $last_attempt_date is the date of the last removal attempt.
-status-pill-requested-removal-info = Attempt ${attempt_count}: ${last_attempt_date}
+status-pill-requested-removal-info = Attempt { $attempt_count }: { $last_attempt_date }
