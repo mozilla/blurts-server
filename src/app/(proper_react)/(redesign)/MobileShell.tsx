@@ -173,7 +173,7 @@ export const MobileShell = (props: Props) => {
                   }}
                 >
                   {l10n.getString("main-nav-link-faq-label")}
-                </a>
+                </Link>
               </li>
             </ul>
             <div className={styles.premiumCta}>
