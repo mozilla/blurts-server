@@ -166,7 +166,10 @@ export const View = (props: Props) => {
 
   const getTabSpecificExposures = (tabKey: TabType) =>
     arraySortedByDate.filter((exposure: Exposure) => {
-      const exposureStatus = getExposureStatus(exposure);
+      const exposureStatus = getExposureStatus(
+        exposure,
+        props.enabledFeatureFlags.includes("AdditionalRemovalStatuses"),
+      );
       return (
         (tabKey === "action-needed" && exposureStatus === "actionNeeded") ||
         (tabKey === "fixed" && exposureStatus !== "actionNeeded")
