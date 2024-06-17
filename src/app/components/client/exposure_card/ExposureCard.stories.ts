@@ -41,6 +41,7 @@ const BreachMockItemNew = createRandomBreach({ isResolved: false });
 
 export const DataBrokerRequestedRemoval: Story = {
   args: {
+    isExpanded: true,
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemRequestedRemoval,
     enabledFeatureFlags: ["AdditionalRemovalStatuses"],
@@ -49,6 +50,7 @@ export const DataBrokerRequestedRemoval: Story = {
 
 export const DataBrokerActionNeeded: Story = {
   args: {
+    isExpanded: true,
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemNew,
   },
@@ -56,6 +58,7 @@ export const DataBrokerActionNeeded: Story = {
 
 export const DataBrokerRemoved: Story = {
   args: {
+    isExpanded: true,
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemRemoved,
   },
@@ -63,6 +66,7 @@ export const DataBrokerRemoved: Story = {
 
 export const DataBrokerManualRemoved: Story = {
   args: {
+    isExpanded: true,
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemManualRemoved,
   },
@@ -70,6 +74,7 @@ export const DataBrokerManualRemoved: Story = {
 
 export const DataBrokerInProgress: Story = {
   args: {
+    isExpanded: true,
     exposureImg: FamilyTreeImage,
     exposureData: ScanMockItemInProgress,
   },
@@ -77,6 +82,7 @@ export const DataBrokerInProgress: Story = {
 
 export const DataBreachActionNeeded: Story = {
   args: {
+    isExpanded: true,
     exposureImg: TwitterImage,
     exposureData: BreachMockItemNew,
   },
@@ -84,6 +90,7 @@ export const DataBreachActionNeeded: Story = {
 
 export const DataBreachFixed: Story = {
   args: {
+    isExpanded: true,
     exposureImg: TwitterImage,
     exposureData: BreachMockItemRemoved,
   },
@@ -91,6 +98,7 @@ export const DataBreachFixed: Story = {
 
 export const DataBreachFixedEligibleForPremium: Story = {
   args: {
+    isExpanded: true,
     exposureImg: TwitterImage,
     exposureData: BreachMockItemRemoved,
     isEligibleForPremium: true,

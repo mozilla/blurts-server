@@ -18,7 +18,6 @@ import {
 import { useL10n } from "../../../hooks/l10n";
 import { ExposureCardDataClassLayout } from "./ExposureCardDataClass";
 import { DataBrokerImage } from "./DataBrokerImage";
-import { CONST_URL_SUMO_MONITOR_REMOVAL } from "../../../../constants";
 import { TelemetryLink } from "../TelemetryLink";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 
@@ -110,16 +109,6 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
     />
   );
 
-  const removalInfoLink = (
-    <TelemetryLink
-      href={CONST_URL_SUMO_MONITOR_REMOVAL}
-      target="_blank"
-      eventData={{
-        link_id: "explanation_of_removal_time",
-      }}
-    />
-  );
-
   const upsellLink = (
     <TelemetryLink
       upsell
@@ -132,14 +121,21 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
 
   const dataBrokerDescription = () => {
     switch (scanResult.status) {
-      case "optout_in_progress":
       case "waiting_for_verification":
         return l10n.getFragment(
-          "exposure-card-description-info-for-sale-in-progress",
+          "exposure-card-description-info-for-sale-requested-removal-dashboard",
           {
             elems: {
               data_broker_profile: dataBrokerProfileLink,
-              removal_info: removalInfoLink,
+            },
+          },
+        );
+      case "optout_in_progress":
+        return l10n.getFragment(
+          "exposure-card-description-info-for-sale-in-progress-dashboard",
+          {
+            elems: {
+              data_broker_profile: dataBrokerProfileLink,
             },
           },
         );
