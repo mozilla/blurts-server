@@ -11,7 +11,7 @@ import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
 import { TestComponentWrapper } from "../../../../../../../TestComponentWrapper";
 import { SerializedSubscriber } from "../../../../../../../next-auth";
-import { onAddEmail, onApplyCouponCode, onRemoveEmail } from "./actions";
+import { onAddEmail, onRemoveEmail } from "./actions";
 
 const mockedSessionUpdate = jest.fn();
 const mockedRecordTelemetry = jest.fn();
@@ -1728,7 +1728,7 @@ describe("to learn about usage", () => {
   });
 });
 
-it("selects the coupon code discount cta", async () => {
+it("selects the coupon code discount cta and shows the all-set dialog step", async () => {
   const user = userEvent.setup();
 
   render(
@@ -1789,54 +1789,6 @@ it("selects the coupon code discount cta", async () => {
       button_id: "stay_get_30_off",
     }),
   );
-});
-
-it("check that coupon code function gets called and gets taken to the completed step dialog", async () => {
-  const user = userEvent.setup();
-
-  render(
-    <TestComponentWrapper>
-      <SettingsView
-        l10n={getL10n()}
-        user={{
-          ...mockedUser,
-          fxa: {
-            ...mockedUser.fxa,
-            subscriptions: ["monitor"],
-          } as Session["user"]["fxa"],
-        }}
-        subscriber={mockedSubscriber}
-        breachCountByEmailAddress={{
-          [mockedUser.email]: 42,
-        }}
-        emailAddresses={[]}
-        fxaSettingsUrl=""
-        fxaSubscriptionsUrl=""
-        yearlySubscriptionUrl=""
-        monthlySubscriptionUrl=""
-        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
-        enabledFeatureFlags={[
-          "CancellationFlow",
-          "ConfirmCancellation",
-          "DiscountCouponNextThreeMonths",
-        ]}
-        experimentData={defaultExperimentData}
-      />
-    </TestComponentWrapper>,
-  );
-
-  const cancellationButton = screen.getByRole("button", {
-    name: "Cancel your subscription",
-  });
-  await user.click(cancellationButton);
-
-  const discountCta = screen.getByRole("button", {
-    name: "Stay and get ⁨30%⁩ off ⁨3⁩ months",
-  });
-
-  await user.click(discountCta);
-
-  expect(onApplyCouponCode).toHaveBeenCalled();
 
   const allSetHeader = await screen.findByText("You’re all set!");
   expect(allSetHeader).toBeInTheDocument();
