@@ -13,6 +13,7 @@ settings-alert-email-preferences-title = E-postinnstillingar
 settings-alert-email-preferences-subtitle = Fortel oss kva for e-postar du ønskjer å få.
 settings-alert-preferences-option-one = Send alle åtvaringar om datalekkasjar til den ramma e-postadressa
 settings-alert-preferences-option-two = Send alle åtvaringar om datalekkasjar til den primære e-postadressa
+settings-alert-preferences-allow-monthly-monitor-report-title = Månadleg { -brand-monitor }-rapport
 settings-alert-preferences-allow-monthly-monitor-report-subtitle = Ei månadleg oppdatering av nye eksponeringar, kva som er fiksa og kva som krev di merksemd.
 
 ## Monitored email addresses
