@@ -30,21 +30,6 @@ function _addStandardOptions (options = {}) {
 /* c8 ignore stop */
 
 /**
- * @param {boolean} doUse
- */
-async function toggleMockEndpoint(doUse) {
-  const {SERVER_URL, HIBP_KANON_API_SUFFIX_FAKE} = process.env;
-  const fakeEndpoint = String(SERVER_URL) + String(HIBP_KANON_API_SUFFIX_FAKE) + '/mockConfigure';
-  return await fetch(fakeEndpoint, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({'useMock': doUse})
-  })
-}
-
-/**
  * @param {string} url
  * @param {any | undefined} reqOptions
  * @param tryCount
@@ -76,21 +61,8 @@ async function _throttledFetch (url, reqOptions, tryCount = 1) {
         throw new InternalServerError(`bad response: ${response.status}`)
     }
   } catch (err) {
-    const {SERVER_URL, HIBP_KANON_API_SUFFIX_FAKE} = process.env;
-    if (SERVER_URL === undefined || HIBP_KANON_API_SUFFIX_FAKE === undefined) {
-      throw new InternalServerError('Environemnt not configured correctly: Missing server_url or hibp_suffix_fake')
-    }
-  
-    const mockHost = String(SERVER_URL) + String(HIBP_KANON_API_SUFFIX_FAKE);
-    const mockUrl = mockHost + url.match(/\/breachedaccount.*/);
-
-    console.error('_throttledFetch - attempting to switch to mock endpoint', { err })
-    await toggleMockEndpoint(true);
-    const response = await fetch(mockUrl, reqOptions);
-    toggleMockEndpoint(false);
-    const resJson = await response.json();
-    if (response.ok) return resJson;
-    throw new InternalServerError('Both real and mock endpoints FAILED');
+    console.error('_throttledFetch', { err })
+    throw new InternalServerError(getMessage('error-hibp-connect'))
   }
 }
 /* c8 ignore stop */

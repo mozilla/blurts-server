@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "Id": 1,
+      "Name": "000webhost",
+      "Title": "000webhost",
+      "Domain": "000webhost.com",
+      "BreachDate": "2015-03-01T08:00:00.000Z",
+      "AddedDate": "2015-10-26T23:35:45.000Z",
+      "ModifiedDate": "2017-12-10T21:44:27.000Z",
+      "PwnCount": 14936670,
+      "Description": "In approximately March 2015, the free web hosting provider <a href='http://www.troyhunt.com/2015/10/breaches-traders-plain-text-passwords.html' target='_blank' rel='noopener'>000webhost suffered a major data breach</a> that exposed almost 15 million customer records. The data was sold and traded before 000webhost was alerted in October. The breach included names, email addresses and plain text passwords.",
+      "LogoPath": "https://haveibeenpwned.com/Content/Images/PwnedLogos/000webhost.png",
+      "DataClasses": ["email-addresses", "ip-addresses", "names", "passwords"],
+      "IsVerified": true,
+      "IsFabricated": false,
+      "IsSensitive": false,
+      "IsRetired": false,
+      "IsSpamList": false,
+      "IsMalware": false,
+      "FaviconUrl": null
+    },
+    {
+      "Id": 2,
+      "Name": "123RF",
+      "Title": "123RF",
+      "Domain": "123rf.com",
+      "BreachDate": "2020-03-22T07:00:00.000Z",
+      "AddedDate": "2020-11-15T00:59:50.000Z",
+      "ModifiedDate": "2020-11-15T01:07:10.000Z",
+      "PwnCount": 8661578,
+      "Description": "In March 2020, the stock photo site <a href='https://www.bleepingcomputer.com/news/security/popular-stock-photo-service-hit-by-data-breach-83m-records-for-sale/' target='_blank' rel='noopener'>123RF suffered a data breach</a> which impacted over 8 million subscribers and was subsequently sold online. The breach included email, IP and physical addresses, names, phone numbers and passwords stored as MD5 hashes. The data was provided to HIBP by <a href='https://dehashed.com/' target='_blank' rel='noopener'>dehashed.com</a>.",
+      "LogoPath": "https://haveibeenpwned.com/Content/Images/PwnedLogos/123RF.png",
+      "DataClasses": [
+        "email-addresses",
+        "ip-addresses",
+        "names",
+        "passwords",
+        "phone-numbers",
+        "physical-addresses",
+        "usernames"
+      ],
+      "IsVerified": true,
+      "IsFabricated": false,
+      "IsSensitive": false,
+      "IsRetired": false,
+      "IsSpamList": false,
+      "IsMalware": false,
+      "FaviconUrl": null
+    }
+  ]
+}
