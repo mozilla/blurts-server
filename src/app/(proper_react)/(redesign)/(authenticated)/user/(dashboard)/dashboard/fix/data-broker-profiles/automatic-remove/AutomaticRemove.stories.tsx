@@ -55,7 +55,7 @@ export const AutomaticRemoveViewStory: Story = {
         session={mockedSession}
         nonce=""
         countryCode="us"
-        howItWorksFlagEnabled={true}
+        howItWorksFlagEnabled
       >
         <AutomaticRemoveView
           data={{
