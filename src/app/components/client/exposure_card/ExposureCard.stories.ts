@@ -25,6 +25,10 @@ const ScanMockItemManualRemoved = createRandomScanResult({
   status: "new",
   manually_resolved: true,
 });
+const ScanMockItemRequestedRemoval = createRandomScanResult({
+  status: "waiting_for_verification",
+  manually_resolved: false,
+});
 const ScanMockItemNew = createRandomScanResult({
   status: "new",
   manually_resolved: false,
@@ -34,6 +38,14 @@ const ScanMockItemInProgress = createRandomScanResult({
 });
 const BreachMockItemRemoved = createRandomBreach({ isResolved: true });
 const BreachMockItemNew = createRandomBreach({ isResolved: false });
+
+export const DataBrokerRequestedRemoval: Story = {
+  args: {
+    exposureImg: FamilyTreeImage,
+    exposureData: ScanMockItemRequestedRemoval,
+    enabledFeatureFlags: ["AdditionalRemovalStatuses"],
+  },
+};
 
 export const DataBrokerActionNeeded: Story = {
   args: {

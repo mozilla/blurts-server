@@ -47,6 +47,7 @@ export type FeatureFlagName =
   | "FirstDataBrokerRemovalFixedEmail"
   | "LatestScanDateCsatSurvey"
   | "HowItWorksPage";
+  | "AdditionalRemovalStatuses";
 
 /**
  * @param options
