@@ -11,7 +11,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: $spacing-md $spacing-md;
+    padding: calc($spacing-md * 1.25) $spacing-md;
     gap: $layout-xs;
 
     @media screen and (min-width: $screen-lg) {

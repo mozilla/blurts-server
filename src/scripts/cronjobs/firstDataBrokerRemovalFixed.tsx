@@ -65,9 +65,10 @@ async function run() {
               scanResult.status === "removed" &&
               // ...and scan result has been created ealier than the currently
               // selected `firstRemovedScanResult`.
-              firstRemovedScanResult &&
-              scanResult.created_at.getTime() <
-                firstRemovedScanResult.created_at.getTime()
+              (!firstRemovedScanResult ||
+                (firstRemovedScanResult &&
+                  scanResult.created_at.getTime() <
+                    firstRemovedScanResult.created_at.getTime()))
             ) {
               firstRemovedScanResult = scanResult;
             }
@@ -124,7 +125,7 @@ async function sendFirstDataBrokerRemovalFixedActivityEmail(
       <FirstDataBrokerRemovalFixed
         data={{
           dataBrokerName: scanResult.data_broker,
-          dataBrokerLink: scanResult.link,
+          dataBrokerLink: `${process.env.SERVER_URL}/user/dashboard/fixed`,
           removalDate: scanResult.updated_at,
         }}
         l10n={l10n}

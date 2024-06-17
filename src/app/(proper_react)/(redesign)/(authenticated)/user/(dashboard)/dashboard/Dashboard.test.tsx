@@ -2772,7 +2772,9 @@ it("does not explain what 'in progress' means for users who cannot get Plus", as
   });
   await user.click(statusExplainerDialogTrigger);
   expect(
-    screen.queryByText("This is a ⁨Monitor Plus⁩ feature.", { exact: false }),
+    screen.queryByText(
+      "We’re actively working to confirm data broker removal compliance.",
+    ),
   ).not.toBeInTheDocument();
 });
 
@@ -2790,7 +2792,50 @@ it("explains what 'in progress' means for Plus users", async () => {
   });
   await user.click(statusExplainerDialogTrigger);
   expect(
-    screen.getByText("This is a ⁨Monitor Plus⁩ feature.", { exact: false }),
+    screen.getByText(
+      "We’re actively working to confirm data broker removal compliance.",
+    ),
+  ).toBeInTheDocument();
+});
+
+it("does not explain what 'requested removal' means for users who cannot get Plus", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+  render(
+    <ComposedDashboard enabledFeatureFlags={["AdditionalRemovalStatuses"]} />,
+  );
+
+  const statusHeading = screen.getByText("Status");
+  const statusExplainerDialogTrigger = getByRole(statusHeading, "button", {
+    name: "Open modal",
+  });
+  await user.click(statusExplainerDialogTrigger);
+  expect(
+    screen.queryByText(
+      "We’ve sent an official removal request to the data broker. We’ll keep you updated if we need to re-send the request.",
+    ),
+  ).not.toBeInTheDocument();
+});
+
+it("explains what 'requested removal' means for Plus users", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(
+    DashboardUsPremiumEmptyScanNoBreaches,
+    Meta,
+  );
+  render(
+    <ComposedDashboard enabledFeatureFlags={["AdditionalRemovalStatuses"]} />,
+  );
+
+  const statusHeading = screen.getByText("Status");
+  const statusExplainerDialogTrigger = getByRole(statusHeading, "button", {
+    name: "Open modal",
+  });
+  await user.click(statusExplainerDialogTrigger);
+  expect(
+    screen.getByText(
+      "We’ve sent an official removal request to the data broker. We’ll keep you updated if we need to re-send the request.",
+    ),
   ).toBeInTheDocument();
 });
 
