@@ -31,7 +31,7 @@ export const FirstDataBrokerRemovalFixedStory: Story = {
   args: {
     data: {
       dataBrokerName: "Data broker name",
-      dataBrokerLink: "https://monitor.mozilla.org/",
+      dataBrokerLink: `${process.env.SERVER_URL}/user/dashboard/fixed`,
       removalDate: new Date("5/31/2024"),
     },
   },

@@ -45,7 +45,13 @@
   overflow: hidden;
   display: flex;
   justify-content: center;
-  height: 240px; //height of iframe
+  height: 280px; //height of iframe
+}
+
+@media (min-width: $content-lg) {
+  .iframeWrapper {
+    height: 260px;
+  }
 }
 
 @media (prefers-reduced-motion) {

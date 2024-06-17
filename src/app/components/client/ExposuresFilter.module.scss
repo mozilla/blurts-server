@@ -154,6 +154,23 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-md;
+
+  .statusList {
+    padding: $spacing-md 0;
+
+    .statusListItem {
+      align-items: flex-start;
+      gap: $spacing-sm;
+      display: flex;
+      flex-direction: column;
+
+      @media screen and (min-width: $screen-sm) {
+        align-items: center;
+        gap: $spacing-md;
+        flex-direction: row;
+      }
+    }
+  }
 }
 
 .visuallyHidden {

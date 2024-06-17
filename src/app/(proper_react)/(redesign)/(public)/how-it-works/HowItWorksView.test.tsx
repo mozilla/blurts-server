@@ -62,12 +62,17 @@ describe("How it works page", () => {
 
     const user = userEvent.setup();
 
-    const [getFreeScanBtn1, getFreeScanBtn2] = screen.getAllByRole("button", {
+    const [getFreeScanBtn1, getFreeScanBtn2] = screen.getAllByRole("link", {
       name: "Get free scan",
     });
 
     expect(getFreeScanBtn1).toBeInTheDocument();
     expect(getFreeScanBtn2).toBeInTheDocument();
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementation(() => undefined);
+
     await user.click(getFreeScanBtn1);
     expect(mockedRecord).toHaveBeenCalledWith(
       "ctaButton",
@@ -79,7 +84,7 @@ describe("How it works page", () => {
     expect(mockedRecord).toHaveBeenCalledWith(
       "ctaButton",
       "click",
-      expect.objectContaining({ button_id: "free_scan_first" }),
+      expect.objectContaining({ button_id: "free_scan_second" }),
     );
   });
 
