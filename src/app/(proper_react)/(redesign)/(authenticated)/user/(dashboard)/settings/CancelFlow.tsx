@@ -4,7 +4,7 @@
 
 "use client";
 
-import { ReactElement, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import Image from "next/image";
@@ -51,8 +51,6 @@ export const CancelFlow = (props: Props) => {
     },
   });
 
-  const [primaryCta, setPrimaryCta] = useState<ReactElement>();
-  const [ctaSubtitle, setCtaSubtitle] = useState<ReactElement>();
   const [couponSuccess, setCouponSuccess] = useState<boolean | null>(null);
   const [alreadyHasCouponSet, setAlreadyHasCouponSet] =
     useState<boolean>(false);
@@ -101,48 +99,6 @@ export const CancelFlow = (props: Props) => {
       setCurrentStep("all-set");
     }
   }, [couponSuccess]);
-
-  useEffect(() => {
-    // Current experiment
-    // Note: Opted to use state here to support future experiments
-    if (props.enableDiscountCoupon) {
-      setPrimaryCta(
-        <TelemetryButton
-          event={{
-            module: "ctaButton",
-            name: "click",
-            data: {
-              button_id: "stay_get_30_off",
-            },
-          }}
-          variant="primary"
-          onPress={() => void handleApplyCouponCode()}
-          className={`${styles.discountCta} ${styles.primaryCta}`}
-        >
-          {discountedNext3Months.headline}
-        </TelemetryButton>,
-      );
-      setCtaSubtitle(<>{discountedNext3Months.subtitle}</>);
-    } else {
-      setPrimaryCta(
-        <TelemetryButton
-          event={{
-            module: "popup",
-            name: "exit",
-            data: {
-              popup_id: "never_mind_take_me_back",
-            },
-          }}
-          variant="primary"
-          onPress={() => dialogState.close()}
-          className={styles.primaryCta}
-        >
-          {l10n.getString("settings-cancel-plus-step-confirm-cancel-label")}
-        </TelemetryButton>,
-      );
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.enableDiscountCoupon, alreadyHasCouponSet]);
 
   const dialogTrigger = useOverlayTrigger({ type: "dialog" }, dialogState);
 
@@ -245,8 +201,44 @@ ${styles.staticAlternative}
                       "settings-cancel-plus-step-confirm-content",
                     )}
                   </p>
-                  {primaryCta}
-                  <small>{ctaSubtitle}</small>
+                  {props.enableDiscountCoupon && !alreadyHasCouponSet ? (
+                    <>
+                      {" "}
+                      <TelemetryButton
+                        event={{
+                          module: "ctaButton",
+                          name: "click",
+                          data: {
+                            button_id: "stay_get_30_off",
+                          },
+                        }}
+                        variant="primary"
+                        onPress={() => void handleApplyCouponCode()}
+                        className={`${styles.discountCta} ${styles.primaryCta}`}
+                      >
+                        {discountedNext3Months.headline}
+                      </TelemetryButton>
+                      <small>{discountedNext3Months.subtitle}</small>
+                    </>
+                  ) : (
+                    <TelemetryButton
+                      event={{
+                        module: "popup",
+                        name: "exit",
+                        data: {
+                          popup_id: "never_mind_take_me_back",
+                        },
+                      }}
+                      variant="primary"
+                      onPress={() => dialogState.close()}
+                      className={styles.primaryCta}
+                    >
+                      {l10n.getString(
+                        "settings-cancel-plus-step-confirm-cancel-label",
+                      )}
+                    </TelemetryButton>
+                  )}
+
                   <TelemetryButton
                     event={{
                       module: "button",
