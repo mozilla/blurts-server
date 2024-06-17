@@ -11,7 +11,7 @@ import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
 import { TestComponentWrapper } from "../../../../../../../TestComponentWrapper";
 import { SerializedSubscriber } from "../../../../../../../next-auth";
-import { onAddEmail, onRemoveEmail } from "./actions";
+import { onAddEmail, onApplyCouponCode, onRemoveEmail } from "./actions";
 
 const mockedSessionUpdate = jest.fn();
 const mockedRecordTelemetry = jest.fn();
@@ -29,12 +29,13 @@ jest.mock("../../../../../../hooks/useTelemetry", () => {
     useTelemetry: () => mockedRecordTelemetry,
   };
 });
+
 jest.mock("./actions", () => {
   return {
     onRemoveEmail: jest.fn(),
     onAddEmail: jest.fn(),
     onDeleteAccount: () => new Promise(() => undefined),
-    onApplyCouponCode: () => new Promise(() => undefined),
+    onApplyCouponCode: () => ({ success: true }),
     onCheckUserHasCurrentCouponSet: () => new Promise(() => undefined),
   };
 });
@@ -1725,4 +1726,118 @@ describe("to learn about usage", () => {
       }),
     );
   });
+});
+
+it("selects the coupon code discount cta", async () => {
+  const user = userEvent.setup();
+
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getL10n()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: ["monitor"],
+          } as Session["user"]["fxa"],
+        }}
+        subscriber={mockedSubscriber}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={[
+          "CancellationFlow",
+          "ConfirmCancellation",
+          "DiscountCouponNextThreeMonths",
+        ]}
+        experimentData={defaultExperimentData}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const cancellationButton = screen.getByRole("button", {
+    name: "Cancel your subscription",
+  });
+  await user.click(cancellationButton);
+
+  const discountCta = screen.getByRole("button", {
+    name: "Stay and get ⁨30%⁩ off ⁨3⁩ months",
+  });
+
+  expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+    "popup",
+    "view",
+    expect.objectContaining({
+      popup_id: "settings-cancel-monitor-plus-dialog",
+    }),
+  );
+  expect(discountCta).toBeInTheDocument();
+
+  await user.click(discountCta);
+
+  expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+    "ctaButton",
+    "click",
+    expect.objectContaining({
+      button_id: "stay_get_30_off",
+    }),
+  );
+});
+
+it("check that coupon code function gets called and gets taken to the completed step dialog", async () => {
+  const user = userEvent.setup();
+
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getL10n()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: ["monitor"],
+          } as Session["user"]["fxa"],
+        }}
+        subscriber={mockedSubscriber}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={[
+          "CancellationFlow",
+          "ConfirmCancellation",
+          "DiscountCouponNextThreeMonths",
+        ]}
+        experimentData={defaultExperimentData}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const cancellationButton = screen.getByRole("button", {
+    name: "Cancel your subscription",
+  });
+  await user.click(cancellationButton);
+
+  const discountCta = screen.getByRole("button", {
+    name: "Stay and get ⁨30%⁩ off ⁨3⁩ months",
+  });
+
+  await user.click(discountCta);
+
+  expect(onApplyCouponCode).toHaveBeenCalled();
+
+  const allSetHeader = await screen.findByText("You’re all set!");
+  expect(allSetHeader).toBeInTheDocument();
 });

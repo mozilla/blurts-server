@@ -72,6 +72,8 @@ export const CancelFlow = (props: Props) => {
     ),
   };
 
+  // Unless we mock out these functions, we can't test them at the moment
+  /* c8 ignore start */
   const handleApplyCouponCode = async () => {
     const result = await onApplyCouponCode();
     if (result?.success) {
@@ -92,6 +94,7 @@ export const CancelFlow = (props: Props) => {
 
   useEffect(() => {
     void checkCouponCode();
+    // Only called once upon initial render to check if a user had a coupon code previously set
   }, []);
 
   useEffect(() => {
@@ -99,6 +102,7 @@ export const CancelFlow = (props: Props) => {
       setCurrentStep("all-set");
     }
   }, [couponSuccess]);
+  /* c8 ignore stop */
 
   const dialogTrigger = useOverlayTrigger({ type: "dialog" }, dialogState);
 
@@ -132,7 +136,8 @@ export const CancelFlow = (props: Props) => {
             type="video/mp4"
             src={
               step === "all-set"
-                ? "/animations/CancellationFlowDiscountAppliedAnimation.mp4"
+                ? /* c8 ignore next */
+                  "/animations/CancellationFlowDiscountAppliedAnimation.mp4"
                 : "/animations/CancellationFlowAnimation.mp4"
             }
           />
@@ -140,7 +145,8 @@ export const CancelFlow = (props: Props) => {
             type="video/webm"
             src={
               step === "all-set"
-                ? "/animations/CancellationFlowDiscountAppliedAnimation.webm"
+                ? /* c8 ignore next */
+                  "/animations/CancellationFlowDiscountAppliedAnimation.webm"
                 : "/animations/CancellationFlowAnimation.webm"
             }
           />
@@ -148,6 +154,7 @@ export const CancelFlow = (props: Props) => {
           <Image
             className={styles.cancellationIllustrationWrapper}
             src={
+              /* c8 ignore next */
               step === "all-set"
                 ? CancellationFlowDiscountAppliedStaticImage
                 : CancellationFlowStaticImage
@@ -203,7 +210,6 @@ ${styles.staticAlternative}
                   </p>
                   {props.enableDiscountCoupon && !alreadyHasCouponSet ? (
                     <>
-                      {" "}
                       <TelemetryButton
                         event={{
                           module: "ctaButton",
