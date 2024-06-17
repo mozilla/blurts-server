@@ -23,9 +23,10 @@ function _addStandardOptions (options = {}) {
   const hibpOptions = {
     headers: {
       'User-Agent': HIBP_USER_AGENT
-    }
+    },
+    ...options
   }
-  return Object.assign(options, hibpOptions)
+  return hibpOptions
 }
 /* c8 ignore stop */
 
@@ -58,6 +59,7 @@ async function _throttledFetch (url, reqOptions, tryCount = 1) {
           return await _throttledFetch(url, reqOptions, tryCount)
         }
       default:
+        console.error(await response.text())
         throw new InternalServerError(`bad response: ${response.status}`)
     }
   } catch (err) {
@@ -88,7 +90,13 @@ async function req (path, options = {}) {
 /* c8 ignore start */
 async function kAnonReq (path, options = {}) {
   // Construct HIBP url and standard headers
-  const url = `${HIBP_KANON_API_ROOT}${path}?code=${encodeURIComponent(HIBP_KANON_API_TOKEN)}`
+  const url = `${HIBP_KANON_API_ROOT}${path}`
+  options = {
+      headers: {"Content-Type": "application/json",
+      "Accept": "application/json",
+      "Hibp-Enterprise-Api-Key": HIBP_KANON_API_TOKEN
+    },
+    ...options}
   const reqOptions = _addStandardOptions(options)
   return await _throttledFetch(url, reqOptions)
 }
@@ -269,10 +277,11 @@ function getFilteredBreaches (breaches) {
 async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false, filterBreaches = true) {
   let foundBreaches = []
   const sha1Prefix = sha1.slice(0, 6).toUpperCase()
-  const path = `/breachedaccount/range/${sha1Prefix}`
+  const path = `/range/search/${sha1Prefix}`
 
   const response = await kAnonReq(path)
-  if (!response) {
+  if (!response || !response.ok) {
+    console.log("failed_kAnonReq_call: no response, return empty")
     return []
   }
   // Parse response body, format:
