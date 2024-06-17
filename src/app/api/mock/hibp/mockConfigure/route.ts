@@ -30,15 +30,22 @@ export async function PUT(req: NextRequest) {
     SERVER_URL,
   } = process.env;
 
-  if (HIBP_KANON_API_SUFFIX_FAKE === undefined || SERVER_URL === undefined) {
+  console.log("huina0");
+
+  if (
+    HIBP_KANON_API_SUFFIX_FAKE === undefined ||
+    SERVER_URL === undefined ||
+    HIBP_KANON_API_ROOT_TRUE === undefined
+  ) {
     return NextResponse.json(
       {
         error:
-          "Server environment not configured correctly: suffix_fake or server_url is undefined",
+          "Server environment not configured correctly: HIBP_KANON_API_SUFFIX_FAKE, HIBP_KANON_API_ROOT_TRUE or SERVER_URL is undefined",
       },
       { status: 500 },
     );
   }
+  console.log("huina1");
 
   const reqJson = await req.json();
   const useMock = reqJson.useMock;
@@ -53,17 +60,21 @@ export async function PUT(req: NextRequest) {
       { status: 403 },
     );
   }
-  let msg =
-    "Environment variable HIBP_KANON_API_ROOT has been updated to use mock API";
+  let msg = "Environment variable HIBP_KANON_API_ROOT has been updated to use ";
   // Set the HIBP_KANON_API_ROOT environment variable
   if (useMock) {
-    process.env.HIBP_KANON_API_ROOT = SERVER_URL + HIBP_KANON_API_SUFFIX_FAKE;
+    process.env.HIBP_KANON_API_ROOT = new URL(
+      HIBP_KANON_API_SUFFIX_FAKE,
+      SERVER_URL,
+    ).href;
+    msg += "mock API";
   } else {
-    process.env.HIBP_KANON_API_ROOT = HIBP_KANON_API_ROOT_TRUE;
-    msg =
-      "Environment variable HIBP_KANON_API_ROOT has been updated to use true API";
+    process.env.HIBP_KANON_API_ROOT = new URL(HIBP_KANON_API_ROOT_TRUE).href;
+    msg += "true API";
   }
   logger.info(msg);
+
+  console.log("huina2");
 
   // Return a success response
   return NextResponse.json({

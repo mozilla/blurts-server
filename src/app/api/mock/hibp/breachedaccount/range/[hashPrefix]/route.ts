@@ -16,6 +16,8 @@ type BreachedAccountResponse = {
 export function GET() {
   const { APP_ENV } = process.env;
 
+  console.log("huesos0");
+
   // Check if APP_ENV is set to production
   if (APP_ENV === "production") {
     return NextResponse.json(
@@ -23,7 +25,7 @@ export function GET() {
       { status: 403 },
     );
   }
-
+  console.log("huesos1");
   // Mock data for test email, can be randomized
   const userEmail = process.env.E2E_TEST_ACCOUNT_EMAIL;
   //TODO: getServerSession doesn't work here for some reason
@@ -31,10 +33,11 @@ export function GET() {
   logger.info("Mock endpoint: /breachedaccount/range/");
 
   let data = fakeBreaches.data as BreachedAccountResponse;
-
+  console.log("huesos2");
   data = data.map((elem) => ({
     ...elem,
     hashSuffix: currentUserSha.slice(6).toUpperCase(),
   }));
+  console.log("huesos3");
   return NextResponse.json(data);
 }

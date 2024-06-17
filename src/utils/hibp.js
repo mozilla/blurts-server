@@ -34,7 +34,13 @@ function _addStandardOptions (options = {}) {
  */
 async function toggleMockEndpoint(doUse) {
   const {SERVER_URL, HIBP_KANON_API_SUFFIX_FAKE} = process.env;
-  const fakeEndpoint = String(SERVER_URL) + String(HIBP_KANON_API_SUFFIX_FAKE) + '/mockConfigure';
+  if (SERVER_URL === undefined || HIBP_KANON_API_SUFFIX_FAKE === undefined) {
+    throw new InternalServerError('Environment not configured correctly: Missing SERVER_URL or HIBP_SUFFIX_FAKE')
+  }
+
+  const mockHost = new URL(HIBP_KANON_API_SUFFIX_FAKE, SERVER_URL).href;
+  const fakeEndpoint = new URL('/mockConfigure', mockHost).href;
+  
   return await fetch(fakeEndpoint, {
     method: 'PUT',
     headers: {
@@ -78,11 +84,16 @@ async function _throttledFetch (url, reqOptions, tryCount = 1) {
   } catch (err) {
     const {SERVER_URL, HIBP_KANON_API_SUFFIX_FAKE} = process.env;
     if (SERVER_URL === undefined || HIBP_KANON_API_SUFFIX_FAKE === undefined) {
-      throw new InternalServerError('Environemnt not configured correctly: Missing server_url or hibp_suffix_fake')
+      throw new InternalServerError('Environment not configured correctly: Missing SERVER_URL or HIBP_SUFFIX_FAKE')
+    }
+
+    const path = url.match(/\/breachedaccount.*/);
+    if (path === null) {
+      throw new InternalServerError("The URL does not lead to a valid HIBP endpoint!")
     }
   
-    const mockHost = String(SERVER_URL) + String(HIBP_KANON_API_SUFFIX_FAKE);
-    const mockUrl = mockHost + url.match(/\/breachedaccount.*/);
+    const mockHost = new URL(HIBP_KANON_API_SUFFIX_FAKE, SERVER_URL).href;
+    const mockUrl = new URL(path[0], mockHost).href;
 
     console.error('_throttledFetch - attempting to switch to mock endpoint', { err })
     await toggleMockEndpoint(true);
