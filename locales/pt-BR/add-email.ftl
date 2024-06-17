@@ -6,17 +6,14 @@
 ### Dialog window that allows a user to add a new email address to be monitored
 
 add-email-add-another-heading = Adicionar outro endereço de email
-
 # $total is the number of emails a user is allowed to add
 add-email-your-account-includes =
     { $total ->
-        [one] Sua conta inclui monitoração de { $total } endereço de email. Adicione outro endereço de email para ver se ele foi vítima de um vazamento.
-       *[other] Sua conta inclui monitoração de até { $total } endereços de email. Adicione outro endereço de email para ver se ele foi vítima de um vazamento.
+        [one] Sua conta inclui monitoração de { $total } endereço de email. Adicione outro endereço de email para ver se ele foi vítima de vazamentos.
+       *[other] Sua conta inclui monitoração de até { $total } endereços de email. Adicione outro endereço de email para ver se ele foi vítima de vazamentos.
     }
-
 add-email-address-input-label = Endereço de email
 add-email-send-verification-button = Enviar link de verificação
-
 # $email is the newly added email address. $settings-href is the URL for the Settings page. HTML tags should not be translated, e.g. `<a>`
 # This string will be deprecated when the new Plus plan is live.
 add-email-verify-the-link = Verifique o link enviado para { $email } para adicionar ao { -brand-fx-monitor }. Gerencie todos os endereços de email nas <a { $settings-href }>configurações</a>.

@@ -89,6 +89,7 @@ export type ScanResult = {
   emails: string[];
   data_broker: string;
   status: RemovalStatus;
+  optout_attempts?: number;
   data_broker_id: number;
   created_at: ISO8601DateString;
   updated_at: ISO8601DateString;

@@ -21,6 +21,7 @@ the "what" and "why" of data breach alerts.
 
 - [Volta](https://volta.sh/) (installs the correct version of Node and npm)
 - [Postgres](https://www.postgresql.org/) | Note: On a Mac, we recommend downloading the [Postgres.app](https://postgresapp.com/) instead.
+- [Python](https://www.python.org/downloads/) | [With Homebrew](https://docs.brew.sh/Homebrew-and-Python)
 
 ### Code style
 
@@ -41,12 +42,28 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
 ],
 ```
 
-### Prerequisites
+### Database
 
-1. Create location data: Running the script manually is only needed for local development. The location data is being used in the onboarding exposures scan for autocompleting the “City and state” input.
+To create the database tables ...
+
+1. Create the `blurts` database:
 
    ```sh
-   npm run create-location-data
+   createdb blurts
+   createdb test-blurts # for tests
+   ```
+
+2. Update the `DATABASE_URL` value in your `.env` file with your local db
+   credentials:
+
+   ```
+   DATABASE_URL="postgres://<username>:<password>@localhost:<port>/blurts"
+   ```
+
+3. Run the migrations:
+
+   ```
+   npm run db:migrate
    ```
 
 ### Install
@@ -91,6 +108,14 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
    ```sh
    npm run build-nimbus
    ```
+
+7. Create location data: Running the script manually is only needed for local development. The location data is being used in the onboarding exposures scan for autocompleting the “City and state” input.
+
+   ```sh
+   npm run create-location-data
+   ```
+
+8. Ensure that you have the right `env` variables/keys set in your `.env` file. You can retrieve the variables from the Firefox Monitor 1Password Vault, or through [Magic-Wormhole](https://magic-wormhole.readthedocs.io/en/latest/), by asking one of the our engineers.
 
 ### Run
 
@@ -140,30 +165,6 @@ curl -d '{ "breachName": "000webhost", "hashPrefix": "test", "hashSuffixes": ["t
 ```sh
 node src/scripts/emailBreachAlerts.js
 ```
-
-### Database
-
-To create the database tables ...
-
-1. Create the `blurts` database:
-
-   ```sh
-   createdb blurts
-   createdb test-blurts # for tests
-   ```
-
-2. Update the `DATABASE_URL` value in your `.env` file with your local db
-   credentials:
-
-   ```
-   DATABASE_URL="postgres://<username>:<password>@localhost:<port>/blurts"
-   ```
-
-3. Run the migrations:
-
-   ```
-   npm run db:migrate
-   ```
 
 ### Emails
 
