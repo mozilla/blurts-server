@@ -20,14 +20,14 @@ jest.mock("../../hooks/useTelemetry");
 
 it("passes the axe accessibility test suite", async () => {
   const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
-  const { container } = render(<ExposuresFilter />);
+  const { container } = render(<ExposuresFilter enabledFeatureFlags={[]} />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
 it("shows and hides the exposure type explainer", async () => {
   const user = userEvent.setup();
   const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
-  render(<ExposuresFilter />);
+  render(<ExposuresFilter enabledFeatureFlags={[]} />);
 
   const exposureTypeHeader = screen.getByText("Exposure type");
   const explainerTrigger = within(exposureTypeHeader).getByRole("button", {
@@ -47,7 +47,7 @@ it("shows and hides the exposure type explainer", async () => {
 it("shows and hides the status explainer", async () => {
   const user = userEvent.setup();
   const ExposuresFilter = composeStory(ExposuresFilterDefault, Meta);
-  render(<ExposuresFilter />);
+  render(<ExposuresFilter enabledFeatureFlags={[]} />);
 
   const exposureTypeHeader = screen.getByText("Status");
   const explainerTrigger = within(exposureTypeHeader).getByRole("button", {
@@ -58,7 +58,7 @@ it("shows and hides the status explainer", async () => {
   const explainerDialog = screen.getByRole("dialog");
   expect(explainerDialog).toBeInTheDocument();
   const explainerCloseButton = within(explainerDialog).getByRole("button", {
-    name: "OK",
+    name: "Got it",
   });
   await user.click(explainerCloseButton);
   expect(explainerDialog).not.toBeInTheDocument();
