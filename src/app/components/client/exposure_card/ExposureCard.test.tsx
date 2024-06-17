@@ -14,6 +14,7 @@ import Meta, {
   DataBrokerInProgress,
   DataBrokerManualRemoved,
   DataBrokerRemoved,
+  DataBrokerRequestedRemoval,
 } from "./ExposureCard.stories";
 
 jest.mock("../../../hooks/useTelemetry");
@@ -82,6 +83,14 @@ describe("ScanResultCard", () => {
     );
 
     expect(innerDescription).toBeInTheDocument();
+  });
+
+  it("shows an additional note for “requested removal” status label", () => {
+    const ComposedProgressCard = composeStory(DataBrokerRequestedRemoval, Meta);
+    render(<ComposedProgressCard />);
+    const labelNote = screen.getByText("Attempt", { exact: false });
+
+    expect(labelNote).toBeInTheDocument();
   });
 
   it("hides the dt element if its dd counterpart has hideonmobile", () => {

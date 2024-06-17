@@ -29,7 +29,7 @@ export type ScanResultCardProps = {
   isPremiumUser: boolean;
   isExpanded: boolean;
   isOnManualRemovePage?: boolean;
-  enabledFeatureFlags: FeatureFlagName[];
+  enabledFeatureFlags?: FeatureFlagName[];
   onToggleExpanded: () => void;
 };
 
@@ -254,7 +254,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
               <StatusPill
                 exposure={scanResult}
                 note={statusPillNote}
-                additionalRemovalStatusesEnabled={props.enabledFeatureFlags.includes(
+                additionalRemovalStatusesEnabled={props.enabledFeatureFlags?.includes(
                   "AdditionalRemovalStatuses",
                 )}
               />
