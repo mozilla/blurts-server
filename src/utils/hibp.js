@@ -79,7 +79,7 @@ async function _throttledFetch(url, reqOptions, tryCount = 1) {
 async function req(path, options = {}) {
   const url = `${HIBP_API_ROOT}${path}`
   const reqOptions = _addStandardOptions(options)
-  try{
+  try {
     const resp = await _throttledFetch(url, reqOptions)
     return resp
   } catch (ex) {
@@ -106,7 +106,7 @@ async function kAnonReq(path, options = {}) {
     ...options
   }
   const reqOptions = _addStandardOptions(options)
-  try{
+  try {
     const resp = await _throttledFetch(url, reqOptions)
     return resp
   } catch (ex) {
