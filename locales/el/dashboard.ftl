@@ -43,6 +43,7 @@ modal-active-number-of-exposures-part-three-all = Μόλις επιλυθούν,
 modal-fixed-number-of-exposures-title = Σχετικά με τον αριθμό διορθωμένων εκθέσεών σας
 modal-fixed-number-of-exposures-all = Αυτό το γράφημα περιλαμβάνει τον συνολικό αριθμό παραβιάσεων δεδομένων που έχουν διορθωθεί για όλες τις διευθύνσεις email που εποπτεύετε αυτήν τη στιγμή. Μόλις οι εκθέσεις επισημανθούν ως διορθωμένες, θα προστεθούν στο παρόν σύνολο.
 modal-cta-ok = OK
+modal-cta-got-it = Το κατάλαβα
 open-modal-alt = Άνοιγμα διαλόγου
 close-modal-alt = Κλείσιμο διαλόγου
 open-tooltip-alt = Άνοιγμα επεξήγησης
@@ -127,11 +128,11 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
     }
 dashboard-top-banner-monitor-more-cta = Εποπτεία περισσότερων email
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = Σχετικά με τις καταστάσεις έκθεσης
 modal-exposure-status-description-all =
     Αναζητούμε εκθέσεις σε όλες τις γνωστές παραβιάσεις δεδομένων.
     Οι εκθέσεις σας θα έχουν μία από τις εξής καταστάσεις:
-modal-exposure-status-action-needed = <b>Απαιτείται ενέργεια</b>: αυτό σημαίνει ότι είναι ενεργή αυτήν τη στιγμή και πρέπει να λάβετε μέτρα για τη διόρθωσή της.
-modal-exposure-status-fixed = <b>Διορθώθηκε</b>: αυτό σημαίνει ότι η έκθεση έχει επιλυθεί και δεν χρειάζεται να προβείτε σε κάποια ενέργεια.
+modal-exposure-indicator-title = Καταστάσεις έκθεσης
+modal-exposure-indicator-action-needed = Απαιτείται προηγμένη ή χειροκίνητη ενέργεια για την ολοκλήρωση μιας ενέργειας.
+modal-exposure-indicator-fixed = Η έκθεση έχει επιλυθεί και δεν μπορείτε να κάνετε καμία ενέργεια.

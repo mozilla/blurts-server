@@ -94,7 +94,13 @@ const ViewWrapper = (props: ViewWrapperProps) => {
   const l10n = getL10n();
 
   return (
-    <Shell l10n={l10n} session={mockedSession} nonce="" countryCode="us">
+    <Shell
+      l10n={l10n}
+      session={mockedSession}
+      nonce=""
+      countryCode="us"
+      howItWorksFlagEnabled
+    >
       <ViewDataBrokersView
         data={{
           latestScanData: scanData,

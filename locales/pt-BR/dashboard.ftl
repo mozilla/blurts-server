@@ -43,6 +43,7 @@ modal-active-number-of-exposures-part-three-all = Depois de resolvidas, elas sã
 modal-fixed-number-of-exposures-title = Informações sobre seu número de exposições resolvidas
 modal-fixed-number-of-exposures-all = Este gráfico inclui o número total de vazamentos de dados que foram resolvidos em todos os endereços de email que você está monitorando atualmente. Exposições marcadas como resolvidas são adicionadas ao total aqui.
 modal-cta-ok = OK
+modal-cta-got-it = Entendi
 open-modal-alt = Abrir diálogo
 close-modal-alt = Fechar diálogo
 open-tooltip-alt = Abrir dica
@@ -127,11 +128,8 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
     }
 dashboard-top-banner-monitor-more-cta = Monitorar mais emails
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = Informações sobre estado de exposições
 modal-exposure-status-description-all =
     Procuramos exposições em todos os vazamentos conhecidos de dados.
     Suas exposições têm um dos seguintes estados:
-modal-exposure-status-action-needed = <b>Ação necessária</b> significa que está ativo no momento e você precisa tomar medidas para resolver.
-modal-exposure-status-fixed = <b>Resolvido</b> significa que a exposição foi resolvida e não há nenhuma ação a ser tomada.
