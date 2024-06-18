@@ -19,7 +19,7 @@ const RENAMED_BREACHES_MAP = {
 
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
-function _addStandardOptions (options = {}) {
+function _addStandardOptions(options = {}) {
   const hibpOptions = {
     headers: {
       'User-Agent': HIBP_USER_AGENT
@@ -38,7 +38,7 @@ function _addStandardOptions (options = {}) {
  */
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
-async function _throttledFetch (url, reqOptions, tryCount = 1) {
+async function _throttledFetch(url, reqOptions, tryCount = 1) {
   try {
     const response = await fetch(url, reqOptions)
     if (response.ok) return await response.json()
@@ -46,6 +46,7 @@ async function _throttledFetch (url, reqOptions, tryCount = 1) {
     switch (response.status) {
       case 404:
         // 404 can mean "no results", return undefined response
+        console.info('_throttledFetch', { err: 'Error 404, not going to retry. TryCount: ' + tryCount })
         return undefined
       case 429:
         console.info('_throttledFetch', { err: 'Error 429, tryCount: ' + tryCount })
@@ -75,10 +76,15 @@ async function _throttledFetch (url, reqOptions, tryCount = 1) {
  */
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
-async function req (path, options = {}) {
+async function req(path, options = {}) {
   const url = `${HIBP_API_ROOT}${path}`
   const reqOptions = _addStandardOptions(options)
-  return await _throttledFetch(url, reqOptions)
+  try{
+    const resp = await _throttledFetch(url, reqOptions)
+    return resp
+  } catch (ex) {
+    console.error(ex)
+  }
 }
 /* c8 ignore stop */
 
@@ -88,17 +94,24 @@ async function req (path, options = {}) {
  */
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
-async function kAnonReq (path, options = {}) {
+async function kAnonReq(path, options = {}) {
   // Construct HIBP url and standard headers
   const url = `${HIBP_KANON_API_ROOT}${path}`
   options = {
-      headers: {"Content-Type": "application/json",
-      "Accept": "application/json",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "*/*",
       "Hibp-Enterprise-Api-Key": HIBP_KANON_API_TOKEN
     },
-    ...options}
+    ...options
+  }
   const reqOptions = _addStandardOptions(options)
-  return await _throttledFetch(url, reqOptions)
+  try{
+    const resp = await _throttledFetch(url, reqOptions)
+    return resp
+  } catch (ex) {
+    console.error(ex)
+  }
 }
 /* c8 ignore stop */
 
@@ -111,7 +124,7 @@ async function kAnonReq (path, options = {}) {
  */
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
-function formatDataClassesArray (dataClasses) {
+function formatDataClassesArray(dataClasses) {
   return dataClasses.map(dataClass =>
     dataClass.toLowerCase()
       .replace(/[^-a-z0-9]/g, '-')
@@ -139,7 +152,7 @@ function formatDataClassesArray (dataClasses) {
  */
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
-async function getAllBreachesFromDb () {
+async function getAllBreachesFromDb() {
   /**
    * @type {any[]}
    */
@@ -181,7 +194,7 @@ async function getAllBreachesFromDb () {
  */
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
-async function loadBreachesIntoApp (app) {
+async function loadBreachesIntoApp(app) {
   // attempt to fetch breaches from the "breaches" database table
   const breaches = await getAllBreachesFromDb()
   console.debug('loadBreachesIntoApp', `loaded breaches from database: ${breaches.length}`)
@@ -193,7 +206,7 @@ async function loadBreachesIntoApp (app) {
 
     for (const breach of breachesResponse) {
       breach.DataClasses = formatDataClassesArray(breach.DataClasses)
-        // @ts-ignore The result should be set
+      // @ts-ignore The result should be set
       breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0]
       breaches.push(breach)
     }
@@ -219,7 +232,7 @@ async function loadBreachesIntoApp (app) {
  */
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
-function getAddressesAndLanguageForEmail (recipient) {
+function getAddressesAndLanguageForEmail(recipient) {
   const {
     all_emails_to_primary: allEmailsToPrimary,
     email: breachedEmail,
@@ -251,7 +264,7 @@ function getAddressesAndLanguageForEmail (recipient) {
  */
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
-function getFilteredBreaches (breaches) {
+function getFilteredBreaches(breaches) {
   return breaches.filter(breach => (
     !breach.IsRetired &&
     !breach.IsSpamList &&
@@ -274,14 +287,14 @@ function getFilteredBreaches (breaches) {
  */
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
-async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false, filterBreaches = true) {
+async function getBreachesForEmail(sha1, allBreaches, includeSensitive = false, filterBreaches = true) {
   let foundBreaches = []
   const sha1Prefix = sha1.slice(0, 6).toUpperCase()
   const path = `/range/search/${sha1Prefix}`
 
   const response = await kAnonReq(path)
-  if (!response || !response.ok) {
-    console.log("failed_kAnonReq_call: no response, return empty")
+  if (!response || (response && response.length < 1)) {
+    console.error("failed_kAnonReq_call: no response or empty response")
     return []
   }
   // Parse response body, format:
@@ -324,7 +337,7 @@ async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false,
  */
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
-function getBreachByName (allBreaches, breachName) {
+function getBreachByName(allBreaches, breachName) {
   breachName = breachName.toLowerCase()
   if (RENAMED_BREACHES.includes(breachName)) {
     // @ts-ignore Converted from regular JS
@@ -350,7 +363,7 @@ function getBreachByName (allBreaches, breachName) {
  */
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
-async function subscribeHash (sha1) {
+async function subscribeHash(sha1) {
   const sha1Prefix = sha1.slice(0, 6).toUpperCase()
   const path = '/range/subscribe'
   const options = {
@@ -374,7 +387,7 @@ async function subscribeHash (sha1) {
  */
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
-async function deleteSubscribedHash (sha1) {
+async function deleteSubscribedHash(sha1) {
   const sha1Prefix = sha1.slice(0, 6).toUpperCase()
   const path = `/range/${sha1Prefix}`
   const options = {
