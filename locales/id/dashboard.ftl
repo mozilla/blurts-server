@@ -41,6 +41,7 @@ modal-active-number-of-exposures-part-three-all = Setelah mereka diselesaikan, m
 modal-fixed-number-of-exposures-title = Tentang jumlah eksposur tetap Anda
 modal-fixed-number-of-exposures-all = Bagan ini mencakup jumlah kebocoran data yang telah diperbaiki untuk semua alamat surel yang sedang Anda pantau. Setelah eksposur ditandai sebagai tetap, mereka akan ditambahkan ke total di sini.
 modal-cta-ok = Oke
+modal-cta-got-it = Paham
 open-modal-alt = Buka modal
 close-modal-alt = Tutup
 open-tooltip-alt = Buka tooltip
@@ -119,9 +120,9 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
     }
 dashboard-top-banner-monitor-more-cta = Pantau lebih banyak surel
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = Tentang status paparan
 modal-exposure-status-description-all = Kami mencari eksposur di semua pembobolan data yang diketahui. Eksposur Anda akan memiliki salah satu status berikut:
-modal-exposure-status-action-needed = <b>Diperlukan tindakan</b> berarti sedang aktif dan Anda perlu mengambil langkah-langkah untuk memperbaikinya.
-modal-exposure-status-fixed = <b>Tetap</b> berarti eksposur telah teratasi dan tidak ada tindakan yang dapat Anda lakukan.
+modal-exposure-indicator-title = Status paparan
+modal-exposure-indicator-action-needed = Tindakan lanjutan atau manual diperlukan oleh Anda untuk menyelesaikan suatu tindakan.
+modal-exposure-indicator-fixed = Eksposur telah teratasi dan tidak ada tindakan yang dapat Anda lakukan.

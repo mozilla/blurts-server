@@ -43,6 +43,7 @@ modal-active-number-of-exposures-part-three-all = Sobald sie behoben wurden, wer
 modal-fixed-number-of-exposures-title = Über die Anzahl der behobenen Offenlegungen
 modal-fixed-number-of-exposures-all = Diese Tabelle enthält die Gesamtzahl der Datenlecks, die für alle E-Mail-Adressen behoben wurden, die Sie derzeit überwachen. Sobald Offenlegungen als behoben markiert werden, werden sie hier zur Gesamtsumme hinzugefügt.
 modal-cta-ok = OK
+modal-cta-got-it = Verstanden
 open-modal-alt = Modal öffnen
 close-modal-alt = Modal schließen
 open-tooltip-alt = Tooltip öffnen
@@ -127,9 +128,9 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
     }
 dashboard-top-banner-monitor-more-cta = Weitere E-Mail-Adressen überwachen
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = Über den Offenlegungsstatus
 modal-exposure-status-description-all = Wir suchen in allen bekannten Datenlecks nach Offenlegungen. Ihre Offenlegungen haben einen der folgenden Status:
-modal-exposure-status-action-needed = <b>Handlungsbedarf</b> bedeutet, dass die Offenlegung derzeit aktiv ist und Sie Maßnahmen ergreifen müssen, um diese zu beheben.
-modal-exposure-status-fixed = <b>Behoben</b> bedeutet, dass die Offenlegung behoben wurde und Sie nichts tun müssen.
+modal-exposure-indicator-title = Belichtungs-Status
+modal-exposure-indicator-action-needed = Sie benötigen eine fortgeschrittene oder manuelle Aktion, um eine Aktion abzuschließen.
+modal-exposure-indicator-fixed = Das Problem wurde behoben und Sie können nichts tun.
