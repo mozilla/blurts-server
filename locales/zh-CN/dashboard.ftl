@@ -35,6 +35,7 @@ modal-active-number-of-exposures-part-three-all = 问题解决后，就会添加
 modal-fixed-number-of-exposures-title = 关于已处理暴露的数量
 modal-fixed-number-of-exposures-all = 此图表展示了您当前监控的所有邮箱地址中，已处理的数据外泄事件总数。暴露被标记为已处理后，就会添加到此处的总数中。
 modal-cta-ok = 确定
+modal-cta-got-it = 明白了
 open-modal-alt = 打开对话框
 close-modal-alt = 关闭对话框
 open-tooltip-alt = 打开悬浮提示
@@ -95,11 +96,11 @@ dashboard-no-exposures-label = 没有检测到暴露
 dashboard-top-banner-non-us-your-data-is-protected-description = 很好！您数据的 { $exposures_resolved_num } 次暴露已全部处理完毕。我们将继续监控此邮箱地址，并在发生新的外泄事件时向您发出警报。
 dashboard-top-banner-monitor-more-cta = 监控更多邮箱地址
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = 关于暴露状态
 modal-exposure-status-description-all =
     我们会搜索所有已知的数据外泄事件。
     您的暴露状态将是以下状态中的一种。
-modal-exposure-status-action-needed = <b>需要处理</b>代表您的数据当前正在暴露，需要采取措施将其处理。
-modal-exposure-status-fixed = <b>已解决</b>代表暴露问题已解决，无需再采取行动。
+modal-exposure-indicator-title = 暴露状态
+modal-exposure-indicator-action-needed = 有待处理事项，需要进一步或手动操作以完成处理。
+modal-exposure-indicator-fixed = 暴露问题已解决，无需再采取行动。

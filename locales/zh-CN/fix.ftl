@@ -5,7 +5,6 @@
 fix-flow-nav-high-risk-data-breaches = 高风险数据外泄事件
 fix-flow-nav-leaked-passwords = 泄露的密码
 fix-flow-nav-security-recommendations = 安全建议
-
 guided-resolution-flow-exit = 返回面板
 guided-resolution-flow-next-arrow = 转到下一步
 guided-resolution-flow-step-navigation-label = 向导步骤
@@ -72,7 +71,7 @@ high-risk-breach-credit-card-step-three = 检查您的账户是否有未经授�
 # Bank Account Breaches
 
 high-risk-breach-bank-account-title = 您的银行账户已暴露
-high-risk-breach-bank-account-description = 尽快采取行动可以为您争取更多法律保护并挽回损失。
+high-risk-breach-bank-account-description = 尽快采取行动可以为您争取更充分的法律保护并挽回损失。
 high-risk-breach-bank-account-step-one = 立即通知银行您的账户已被盗用。
 high-risk-breach-bank-account-step-two = 更改您的账号。
 high-risk-breach-bank-account-step-three = 检查您的账户是否有未经授权的扣款。
@@ -97,7 +96,7 @@ ssn-modal-ok = 确定
 # PIN Breaches
 
 high-risk-breach-pin-title = 您的 PIN 已暴露
-high-risk-breach-pin-description = 尽快采取行动可以为您争取更多法律保护并挽回损失。
+high-risk-breach-pin-description = 尽快采取行动可以为您争取更充分的法律保护并挽回损失。
 high-risk-breach-pin-step-one = 立即通知银行您的 PIN 已被盗用。
 high-risk-breach-pin-step-two = 如果在其他地方使用了相同的 PIN，请全部更改。
 high-risk-breach-pin-step-three = 检查您的账户是否有未经授权的扣款。
