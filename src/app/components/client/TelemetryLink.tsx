@@ -8,6 +8,9 @@ import { useTelemetry } from "../../hooks/useTelemetry";
 import { GleanMetricMap } from "../../../telemetry/generated/_map";
 import { HTMLAttributes } from "react";
 import Link from "next/link";
+import styles from "./TelemetryLink.module.scss";
+import { useL10n } from "../../hooks/l10n";
+import { OpenInNew } from "../server/Icons";
 
 // Telemetry link is shown in a fluent getFragment (which does not get rendered in tests)
 /* c8 ignore start */
@@ -23,16 +26,25 @@ export const TelemetryLink = ({
   upsell?: boolean;
 } & HTMLAttributes<HTMLAnchorElement>) => {
   const record = useTelemetry();
+  const l10n = useL10n();
 
   return target ? (
     <a
       {...props}
+      className={styles.link}
       target={target}
       onClick={(event) => {
         record("link", "click", eventData);
         props.onClick?.(event);
       }}
-    />
+    >
+      {props.children}
+      <OpenInNew
+        alt={l10n.getString("open-in-new-tab-alt")}
+        width="13"
+        height="13"
+      />
+    </a>
   ) : (
     // For internal links
     <Link
