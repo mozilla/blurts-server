@@ -22,6 +22,7 @@ export const TelemetryLink = ({
 }: {
   eventData: GleanMetricMap["link"]["click"];
   href: string;
+  showIcon?: boolean;
   target?: string;
   upsell?: boolean;
 } & HTMLAttributes<HTMLAnchorElement>) => {
@@ -39,11 +40,13 @@ export const TelemetryLink = ({
       }}
     >
       {props.children}
-      <OpenInNew
-        alt={l10n.getString("open-in-new-tab-alt")}
-        width="13"
-        height="13"
-      />
+      {props.showIcon && (
+        <OpenInNew
+          alt={l10n.getString("open-in-new-tab-alt")}
+          width="13"
+          height="13"
+        />
+      )}
     </a>
   ) : (
     // For internal links

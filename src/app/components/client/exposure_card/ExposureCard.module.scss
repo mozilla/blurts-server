@@ -114,6 +114,12 @@
     }
   }
 
+  .exposureBreachLink {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.25em;
+  }
+
   .exposureDetailsSection {
     margin: 0;
     overflow: hidden;
