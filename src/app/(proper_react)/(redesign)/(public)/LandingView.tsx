@@ -29,8 +29,6 @@ import { ScanLimit } from "./ScanLimit";
 import { FaqSection } from "./Faq";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { AccountDeletionNotification } from "./AccountDeletionNotification";
-import Link from "next/link";
-import { useTelemetry } from "../../../hooks/useTelemetry";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -256,56 +254,46 @@ export const View = (props: Props) => {
 };
 
 export const TopNavBar = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
-  const recordTelemetry = useTelemetry();
-
   return (
     <div className={styles.navbar}>
       <div className={styles.navbarLinksContainer}>
-        <Link
+        <TelemetryLink
           className={styles.navbarLinks}
           href="/how-it-works"
-          onClick={() => {
-            recordTelemetry("button", "click", {
-              button_id: "navbar_how_it_works",
-            });
+          eventData={{
+            link_id: "navbar_how_it_works",
           }}
         >
           {l10n.getString("landing-all-hero-navbar-link-how-it-works")}
-        </Link>
-        <Link
+        </TelemetryLink>
+        <TelemetryLink
           className={styles.navbarLinks}
           href="#pricing"
-          onClick={() => {
-            recordTelemetry("button", "click", {
-              button_id: "navbar_pricing",
-            });
+          eventData={{
+            link_id: "navbar_pricing",
           }}
         >
           {l10n.getString("landing-all-hero-navbar-link-pricing")}
-        </Link>
-        <Link
+        </TelemetryLink>
+        <TelemetryLink
           data-testid="navbar_faqs"
           className={styles.navbarLinks}
           href="#faq"
-          onClick={() => {
-            recordTelemetry("button", "click", {
-              button_id: "navbar_faqs",
-            });
+          eventData={{
+            link_id: "navbar_faqs",
           }}
         >
           {l10n.getString("landing-all-hero-navbar-link-faqs")}
-        </Link>
-        <Link
+        </TelemetryLink>
+        <TelemetryLink
           className={styles.navbarLinks}
           href="/breaches"
-          onClick={() => {
-            recordTelemetry("button", "click", {
-              button_id: "navbar_breaches",
-            });
+          eventData={{
+            link_id: "navbar_breaches",
           }}
         >
           {l10n.getString("landing-all-hero-navbar-link-all-breaches")}
-        </Link>
+        </TelemetryLink>
       </div>
     </div>
   );
