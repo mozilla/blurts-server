@@ -125,11 +125,6 @@ export const MobileShell = (props: Props) => {
                 <PageLink
                   href="/user/dashboard"
                   activeClassName={styles.isActive}
-                  onClick={() => {
-                    recordTelemetry("ctaButton", "click", {
-                      button_id: "navigation_dashboard",
-                    });
-                  }}
                 >
                   {l10n.getString("main-nav-link-dashboard-label")}
                 </PageLink>
@@ -138,11 +133,7 @@ export const MobileShell = (props: Props) => {
                 <PageLink
                   href="/user/settings"
                   activeClassName={styles.isActive}
-                  onClick={() => {
-                    recordTelemetry("button", "click", {
-                      button_id: "navigation_settings",
-                    });
-                  }}
+                  telemetry={{ link_id: "navigation_settings" }}
                 >
                   {l10n.getString("main-nav-link-settings-label")}
                 </PageLink>
@@ -152,28 +143,22 @@ export const MobileShell = (props: Props) => {
                   <PageLink
                     href="/how-it-works"
                     activeClassName={styles.isActive}
-                    onClick={() => {
-                      recordTelemetry("button", "click", {
-                        button_id: "navigation_how_it_works",
-                      });
-                    }}
+                    target="_blank"
+                    telemetry={{ link_id: "navigation_how_it_works" }}
                   >
                     {l10n.getString("main-nav-link-how-it-works-label")}
                   </PageLink>
                 </li>
               )}
               <li key="faq">
-                <Link
+                <PageLink
                   href="https://support.mozilla.org/kb/firefox-monitor-faq"
                   title={l10n.getString("main-nav-link-faq-tooltip")}
-                  onClick={() => {
-                    recordTelemetry("ctaButton", "click", {
-                      button_id: "navigation_faq",
-                    });
-                  }}
+                  target="_blank"
+                  telemetry={{ link_id: "navigation_faq" }}
                 >
                   {l10n.getString("main-nav-link-faq-label")}
-                </Link>
+                </PageLink>
               </li>
             </ul>
             <div className={styles.premiumCta}>

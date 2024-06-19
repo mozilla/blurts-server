@@ -14,7 +14,7 @@ import {
   CONST_URL_PRIVACY_POLICY,
 } from "../../../constants";
 import { Session } from "next-auth";
-import { useTelemetry } from "../../hooks/useTelemetry";
+import { TelemetryLink } from "../../components/client/TelemetryLink";
 
 export const Footer = ({
   l10n,
@@ -25,7 +25,6 @@ export const Footer = ({
   session?: Session;
   countryCode: string;
 }) => {
-  const recordTelemetry = useTelemetry();
   return (
     <footer className={styles.footer}>
       <Link
@@ -37,84 +36,72 @@ export const Footer = ({
       </Link>
       <ul className={styles.externalLinks}>
         <li>
-          <Link
+          <TelemetryLink
             href="/breaches"
-            onClick={() => {
-              recordTelemetry("button", "click", {
-                button_id: "all_breaches_footer",
-              });
+            eventData={{
+              link_id: "all_breaches_footer",
             }}
           >
             {l10n.getString("footer-nav-all-breaches")}
-          </Link>
+          </TelemetryLink>
         </li>
         {countryCode === "us" && !session && (
           <li>
-            <Link
+            <TelemetryLink
               href="/how-it-works"
               target="_blank"
-              onClick={() => {
-                recordTelemetry("button", "click", {
-                  button_id: "how_it_works_footer",
-                });
+              eventData={{
+                link_id: "how_it_works_footer",
               }}
             >
               {l10n.getString("footer-external-link-how-it-works-label")}
-            </Link>
+            </TelemetryLink>
           </li>
         )}
         <li>
-          <Link
+          <TelemetryLink
             href={CONST_URL_SUMO_MONITOR_FAQ}
             target="_blank"
             title={l10n.getString("footer-external-link-faq-tooltip")}
-            onClick={() => {
-              recordTelemetry("button", "click", {
-                button_id: "faqs_footer",
-              });
+            eventData={{
+              link_id: "faqs_footer",
             }}
           >
             {l10n.getString("footer-external-link-faq-label")}
-          </Link>
+          </TelemetryLink>
         </li>
         <li>
-          <Link
+          <TelemetryLink
             href={CONST_URL_TERMS}
             target="_blank"
-            onClick={() => {
-              recordTelemetry("button", "click", {
-                button_id: "tos_footer",
-              });
+            eventData={{
+              link_id: "tos_footer",
             }}
           >
             {l10n.getString("terms-of-service")}
-          </Link>
+          </TelemetryLink>
         </li>
         <li>
-          <Link
+          <TelemetryLink
             href={CONST_URL_PRIVACY_POLICY}
             target="_blank"
-            onClick={() => {
-              recordTelemetry("button", "click", {
-                button_id: "privacy_notice_footer",
-              });
+            eventData={{
+              link_id: "github_footer",
             }}
           >
             {l10n.getString("privacy-notice")}
-          </Link>
+          </TelemetryLink>
         </li>
         <li>
-          <Link
+          <TelemetryLink
             href={CONST_URL_MONITOR_GITHUB}
             target="_blank"
-            onClick={() => {
-              recordTelemetry("button", "click", {
-                button_id: "github_footer",
-              });
+            eventData={{
+              link_id: "github_footer",
             }}
           >
             {l10n.getString("github")}
-          </Link>
+          </TelemetryLink>
         </li>
       </ul>
     </footer>
