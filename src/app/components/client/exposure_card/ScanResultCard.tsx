@@ -106,6 +106,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
       eventData={{
         link_id: `data_broker_${scanResult.id}`,
       }}
+      showIcon
     />
   );
 

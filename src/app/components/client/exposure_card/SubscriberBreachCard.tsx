@@ -12,6 +12,7 @@ import Image, { StaticImageData } from "next/image";
 import {
   ChevronDown,
   EmailIcon,
+  OpenInNew,
   PasswordIcon,
   PhoneIcon,
   QuestionMarkCircle,
@@ -111,8 +112,9 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
     }
   });
 
-  const dataBreachLink = (
+  const DataBreachLink = (props: { children?: ReactNode }) => (
     <Link
+      className={styles.exposureBreachLink}
       href={`/breach-details/${subscriberBreach.name}`}
       target="_blank"
       onClick={() => {
@@ -120,14 +122,21 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
           link_id: `data_breach_${subscriberBreach.id}`,
         });
       }}
-    />
+    >
+      {props.children}
+      <OpenInNew
+        alt={l10n.getString("open-in-new-tab-alt")}
+        width="13"
+        height="13"
+      />
+    </Link>
   );
 
   const dataBreachDescription = () => {
     return subscriberBreach.isResolved
       ? l10n.getFragment("exposure-card-description-data-breach-fixed", {
           elems: {
-            data_breach_link: dataBreachLink,
+            data_breach_link: <DataBreachLink />,
           },
         })
       : l10n.getFragment(
@@ -138,7 +147,7 @@ export const SubscriberBreachCard = (props: SubscriberBreachCardProps) => {
               data_breach_date: subscriberBreach.breachDate,
             },
             elems: {
-              data_breach_link: dataBreachLink,
+              data_breach_link: <DataBreachLink />,
             },
           },
         );
