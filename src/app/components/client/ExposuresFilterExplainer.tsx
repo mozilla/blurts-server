@@ -75,7 +75,6 @@ type ExposuresFilterStatusExplainerProps = {
   enabledFeatureFlags: FeatureFlagName[];
   explainerDialogState: OverlayTriggerState;
   explainerDialogProps: OverlayTriggerAria;
-  isEligibleForPremium: boolean;
   isPlusSubscriber: boolean;
 };
 
@@ -114,13 +113,11 @@ export const ExposuresFilterStatusExplainer = (
                   <StatusPill type="inProgress" />
                   {l10n.getString("modal-exposure-indicator-in-progress")}
                 </li>
+                <li className={styles.statusListItem}>
+                  <StatusPill type="removed" />
+                  {l10n.getString("modal-exposure-indicator-removed")}
+                </li>
               </>
-            )}
-            {props.isEligibleForPremium && (
-              <li className={styles.statusListItem}>
-                <StatusPill type="removed" />
-                {l10n.getString("modal-exposure-indicator-removed")}
-              </li>
             )}
             <li className={styles.statusListItem}>
               <StatusPill type="fixed" />
