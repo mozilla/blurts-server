@@ -75,6 +75,19 @@ declare module "knex/types/tables" {
     email: string;
   }
 
+  export type SubscriberBreachResolution = {
+    [key: BreachRow.id]: {
+      resolutionsChecked: Array<
+        (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
+      >;
+    };
+  };
+
+  type BreachResolution = null | {
+    useBreachId: boolean;
+    [key: SubscriberEmail["email"]]: SubscriberBreachResolution;
+  };
+
   interface SubscriberRow {
     id: number;
     primary_sha1: string;
@@ -113,16 +126,7 @@ declare module "knex/types/tables" {
     monthly_email_optout: boolean;
     monthly_monitor_report_at: null | Date;
     monthly_monitor_report: boolean;
-    breach_resolution: null | {
-      useBreachId: boolean;
-      [key: SubscriberEmail["email"]]: {
-        [key: BreachRow.id]: {
-          resolutionsChecked: Array<
-            (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
-          >;
-        };
-      };
-    };
+    breach_resolution: BreachResolution;
     // TODO: Find unknown type
     // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     db_migration_1: null | unknown;

@@ -80,12 +80,16 @@ const subscriber: SubscriberRow = {
       },
     },
   },
-  monthly_email_at: new Date("2022-08-07 14:22:00.000-05"),
+  monthly_email_at: "2022-08-07 14:22:00.000-05",
   monthly_email_optout: false,
   signup_language: "fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5",
-  db_migration_1: undefined,
-  db_migration_2: undefined,
+  db_migration_1: null,
+  db_migration_2: null,
   onerep_profile_id: null,
+  monthly_monitor_report_at: null,
+  monthly_monitor_report: false,
+  sign_in_count: null,
+  first_broker_removal_email_sent: false,
 };
 
 const allBreaches: Breach[] = [
@@ -371,6 +375,9 @@ describe("getSubBreaches", () => {
         email: "additional@test.com",
         verified: true,
         sha1: "",
+        verification_token: "",
+        created_at: new Date("2022-08-07 14:22:00.000-05"),
+        updated_at: new Date("2022-08-07 14:22:00.000-05"),
       },
     ]);
     (
@@ -527,9 +534,16 @@ describe("getSubBreaches", () => {
           },
         },
       },
-      monthly_email_at: new Date("2022-08-07 14:22:00.000-05"),
+      monthly_email_at: "2022-08-07 14:22:00.000-05",
       monthly_email_optout: false,
       signup_language: "fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5",
+      monthly_monitor_report_at: null,
+      monthly_monitor_report: false,
+      db_migration_1: null,
+      db_migration_2: null,
+      onerep_profile_id: null,
+      sign_in_count: null,
+      first_broker_removal_email_sent: false,
     };
 
     (
@@ -544,6 +558,9 @@ describe("getSubBreaches", () => {
         email: "additional@test.com",
         verified: true,
         sha1: "",
+        verification_token: "",
+        created_at: new Date("2022-08-07 14:22:00.000-05"),
+        updated_at: new Date("2022-08-07 14:22:00.000-05"),
       },
     ]);
     (
@@ -617,9 +634,16 @@ describe("getSubBreaches", () => {
           },
         },
       },
-      monthly_email_at: new Date("2022-08-07 14:22:00.000-05"),
+      monthly_email_at: "2022-08-07 14:22:00.000-05",
       monthly_email_optout: false,
       signup_language: "fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5",
+      monthly_monitor_report_at: null,
+      monthly_monitor_report: false,
+      db_migration_1: null,
+      db_migration_2: null,
+      onerep_profile_id: null,
+      sign_in_count: null,
+      first_broker_removal_email_sent: false,
     };
 
     (
@@ -634,6 +658,9 @@ describe("getSubBreaches", () => {
         email: "additional@test.com",
         verified: true,
         sha1: "",
+        verification_token: "",
+        created_at: new Date("2022-08-07 14:22:00.000-05"),
+        updated_at: new Date("2022-08-07 14:22:00.000-05"),
       },
     ]);
     (
@@ -715,9 +742,16 @@ describe("getSubBreaches", () => {
           },
         },
       },
-      monthly_email_at: new Date("2022-08-07 14:22:00.000-05"),
+      monthly_email_at: "2022-08-07 14:22:00.000-05",
       monthly_email_optout: false,
       signup_language: "fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5",
+      monthly_monitor_report_at: null,
+      monthly_monitor_report: false,
+      db_migration_1: null,
+      db_migration_2: null,
+      onerep_profile_id: null,
+      sign_in_count: null,
+      first_broker_removal_email_sent: false,
     };
 
     (
@@ -733,6 +767,9 @@ describe("getSubBreaches", () => {
           email: "additional@test.com",
           verified: true,
           sha1: "",
+          created_at: new Date("2022-08-07 14:22:00.000-05"),
+          updated_at: new Date("2022-08-07 14:22:00.000-05"),
+          verification_token: "",
         },
       ])
       .mockResolvedValueOnce([
@@ -742,6 +779,9 @@ describe("getSubBreaches", () => {
           email: "additional@test.com",
           verified: true,
           sha1: "",
+          created_at: new Date("2022-08-07 14:22:00.000-05"),
+          updated_at: new Date("2022-08-07 14:22:00.000-05"),
+          verification_token: "",
         },
       ]);
 
@@ -820,9 +860,16 @@ describe("getSubBreaches", () => {
           },
         },
       },
-      monthly_email_at: new Date("2022-08-07 14:22:00.000-05"),
+      monthly_email_at: "2022-08-07 14:22:00.000-05",
       monthly_email_optout: false,
       signup_language: "fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5",
+      monthly_monitor_report_at: null,
+      monthly_monitor_report: false,
+      db_migration_1: null,
+      db_migration_2: null,
+      onerep_profile_id: null,
+      sign_in_count: null,
+      first_broker_removal_email_sent: false,
     };
 
     (
@@ -838,6 +885,9 @@ describe("getSubBreaches", () => {
           email: "additional@test.com",
           verified: true,
           sha1: "",
+          created_at: new Date("2022-08-07 14:22:00.000-05"),
+          updated_at: new Date("2022-08-07 14:22:00.000-05"),
+          verification_token: "",
         },
       ])
       .mockResolvedValueOnce([
@@ -847,6 +897,9 @@ describe("getSubBreaches", () => {
           email: "additional@test.com",
           verified: true,
           sha1: "",
+          created_at: new Date("2022-08-07 14:22:00.000-05"),
+          updated_at: new Date("2022-08-07 14:22:00.000-05"),
+          verification_token: "",
         },
       ]);
 
@@ -925,9 +978,16 @@ describe("getSubBreaches", () => {
           },
         },
       },
-      monthly_email_at: new Date("2022-08-07 14:22:00.000-05"),
+      monthly_email_at: "2022-08-07 14:22:00.000-05",
       monthly_email_optout: false,
       signup_language: "fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5",
+      monthly_monitor_report_at: null,
+      monthly_monitor_report: false,
+      db_migration_1: null,
+      db_migration_2: null,
+      onerep_profile_id: null,
+      sign_in_count: null,
+      first_broker_removal_email_sent: false,
     };
 
     (
@@ -943,6 +1003,9 @@ describe("getSubBreaches", () => {
           email: "additional@test.com",
           verified: true,
           sha1: "",
+          created_at: new Date("2022-08-07 14:22:00.000-05"),
+          updated_at: new Date("2022-08-07 14:22:00.000-05"),
+          verification_token: "",
         },
       ])
       .mockResolvedValueOnce([
@@ -952,6 +1015,9 @@ describe("getSubBreaches", () => {
           email: "additional@test.com",
           verified: true,
           sha1: "",
+          created_at: new Date("2022-08-07 14:22:00.000-05"),
+          updated_at: new Date("2022-08-07 14:22:00.000-05"),
+          verification_token: "",
         },
       ]);
 
@@ -1026,9 +1092,16 @@ describe("getSubBreaches", () => {
           },
         },
       },
-      monthly_email_at: new Date("2022-08-07 14:22:00.000-05"),
+      monthly_email_at: "2022-08-07 14:22:00.000-05",
       monthly_email_optout: false,
       signup_language: "fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5",
+      monthly_monitor_report_at: null,
+      monthly_monitor_report: false,
+      db_migration_1: null,
+      db_migration_2: null,
+      onerep_profile_id: null,
+      sign_in_count: null,
+      first_broker_removal_email_sent: false,
     };
 
     (
@@ -1044,6 +1117,9 @@ describe("getSubBreaches", () => {
           email: "additional@test.com",
           verified: true,
           sha1: "",
+          created_at: new Date("2022-08-07 14:22:00.000-05"),
+          updated_at: new Date("2022-08-07 14:22:00.000-05"),
+          verification_token: "",
         },
       ])
       .mockResolvedValueOnce([
@@ -1053,6 +1129,9 @@ describe("getSubBreaches", () => {
           email: "additional@test.com",
           verified: true,
           sha1: "",
+          created_at: new Date("2022-08-07 14:22:00.000-05"),
+          updated_at: new Date("2022-08-07 14:22:00.000-05"),
+          verification_token: "",
         },
       ]);
 
