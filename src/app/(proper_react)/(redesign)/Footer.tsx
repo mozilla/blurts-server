@@ -86,7 +86,7 @@ export const Footer = ({
             href={CONST_URL_PRIVACY_POLICY}
             target="_blank"
             eventData={{
-              link_id: "github_footer",
+              link_id: "privacy_notice_footer",
             }}
           >
             {l10n.getString("privacy-notice")}
