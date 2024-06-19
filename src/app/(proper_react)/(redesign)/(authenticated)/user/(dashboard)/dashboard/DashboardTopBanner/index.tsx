@@ -29,6 +29,7 @@ export type DashboardTopBannerProps = {
     monthly: number;
   };
   totalNumberOfPerformedScans?: number;
+  howItWorksFlagEnabled: boolean;
 };
 
 export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
@@ -65,6 +66,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
           subscriptionBillingAmount={props.subscriptionBillingAmount}
           totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
+          howItWorksFlagEnabled={props.howItWorksFlagEnabled}
         />
         <div className={styles.chart}>
           <Chart

@@ -23,7 +23,7 @@ export function getExperimentationId(
   const accountId = user?.subscriber?.id;
   let experimentationId: null | ExperimentationId;
 
-  if (accountId && typeof accountId === "string") {
+  if (accountId && typeof accountId === "number") {
     // If the user is logged in, use the Subscriber ID.
     const namespace = process.env.NIMBUS_UUID_NAMESPACE;
     if (!namespace) {
@@ -31,7 +31,7 @@ export function getExperimentationId(
         "NIMBUS_UUID_NAMESPACE not set, cannot create experimentationId",
       );
     }
-    experimentationId = uuidv5(accountId, namespace) as UUID;
+    experimentationId = uuidv5(accountId.toString(), namespace) as UUID;
   } else {
     // if the user is not logged in, use a cookie with a randomly-generated Nimbus user ID.
     // TODO: could we use client ID for this? There's no supported way to get it from GleanJS.

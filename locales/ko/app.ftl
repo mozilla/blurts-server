@@ -159,6 +159,7 @@ open-in-new-tab-alt = 새 탭에서 링크 열기
 
 ## Search Engine Optimization
 
+meta-desc-2 = { -brand-fx-monitor }를 통해 데이터 유출에 연관되어 있는지 알아보세요. 다음에 수행할 작업을 안내해 드리고, 새로운 유출이 있는지 지속적으로 모니터링하겠습니다.
 
 ## Header
 
@@ -169,6 +170,9 @@ sign-in = 로그인
 ## Site navigation
 
 mobile-menu-label = 메인 메뉴
+main-nav-button-collapse-label = 메뉴 닫기
+main-nav-button-collapse-tooltip = 메뉴 닫기
+main-nav-button-expand-label = 메뉴 펼치기
 main-nav-button-expand-tooltip = 메뉴 펼치기
 main-nav-label = 탐색
 main-nav-link-home-label = 홈
@@ -180,8 +184,10 @@ main-nav-link-faq-tooltip = 자주 묻는 질문
 
 user-menu-trigger-label = 사용자 메뉴 열기
 user-menu-trigger-tooltip = 프로필
+user-menu-manage-fxa-label = { -brand-mozilla-account } 관리
 user-menu-settings-label = 설정
 user-menu-help-label = 도움말 및 지원
+user-menu-help-tooltip = { -brand-mozilla-monitor } 사용에 대한 도움 받기
 user-menu-signout-label = 로그아웃
 user-menu-signout-tooltip = { -brand-mozilla-monitor }에서 로그아웃
 
