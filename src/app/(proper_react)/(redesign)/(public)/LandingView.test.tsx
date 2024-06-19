@@ -89,7 +89,10 @@ describe("When Premium is not available", () => {
         user: {
           email: "arbitrary@example.com",
         },
+        expires: "2023-06-18T14:48:00.000Z",
       },
+      status: "authenticated",
+      update: () => new Promise(() => null),
     });
 
     const ComposedDashboard = composeStory(LandingNonUs, Meta);
