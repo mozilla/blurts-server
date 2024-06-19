@@ -43,6 +43,7 @@ modal-active-number-of-exposures-part-three-all = Amint megoldja őket, hozzáad
 modal-fixed-number-of-exposures-title = A javított kitettségsek számáról
 modal-fixed-number-of-exposures-all = Ez a diagram a jelenleg figyelt e-mail-címek kijavított adatvédelmi incidenseinek teljes számát tartalmazza. Amint a kitettségek javítottként lesznek megjelölve, hozzá lesznek adva az összeshez itt.
 modal-cta-ok = OK
+modal-cta-got-it = Megértettem!
 open-modal-alt = Felugró ablak megnyitása
 close-modal-alt = Felugró ablak bezárása
 open-tooltip-alt = Buboréksúgó megnyitása
@@ -127,9 +128,9 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
     }
 dashboard-top-banner-monitor-more-cta = További e-mail-címek figyelése
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = A kitettségek állapotáról
 modal-exposure-status-description-all = Kitettségeket keresünk az összes ismert adatvédelmi incidensben. A kitettségei a következő állapotok valamelyikében lesznek:
-modal-exposure-status-action-needed = A <b>Művelet szükséges</b> azt jelenti, hogy jelenleg aktív, és Önnek lépéseket kell tennie a javításához.
-modal-exposure-status-fixed = A <b>Javítva</b> azt jelenti, hogy a kitettség meg lett oldva, és nincs vele tennivalója.
+modal-exposure-indicator-title = Kitettségi állapotok
+modal-exposure-indicator-action-needed = Speciális vagy kézi művelet szükséges a művelet befejezéséhez.
+modal-exposure-indicator-fixed = A közzététel megoldódott, és nincs tennivalója.
