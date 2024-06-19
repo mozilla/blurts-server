@@ -42,7 +42,7 @@ settings-unsubscribe-dialog-promotion-cta-subtitle = Discount applied to your ne
 settings-unsubscribe-dialog-promotion-unsuccessful = There was a problem applying your discount. <try_again_link>Please try again.</try_again_link>
 settings-unsubscribe-dialog-promotion-complete = You’re all set!
 settings-unsubscribe-dialog-promotion-back-to-dashboard-cta = Go to my Dashboard
-settings-unsubscribe-dialog-promotion-limitations-apply = Limitations apply
+settings-unsubscribe-dialog-promotion-limitations-apply = Limited time, restrictions apply
 
 # Variables:
 # $discount_percentage_num is the amount discounted in percentage per month

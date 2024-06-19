@@ -13,7 +13,7 @@ export const LimitationsApplyView = ({
   l10n: ExtendedReactLocalization;
 }) => {
   return (
-    <main>
+    <main className={styles.limitationsApplyContainer}>
       <div className={styles.limitationsApplyWrapper}>
         <Image src={ClappingIllustration} alt="" />
         <div className={styles.limitationsApplyDescription}>
