@@ -5,6 +5,7 @@
 import { Knex } from "knex";
 import { Profile } from "next-auth";
 import { Scan } from "./app/functions/server/onerep";
+import { ISO8601DateString } from "./utils/parse";
 import { StateAbbr } from "./utils/states";
 import { RemovalStatus } from "./app/functions/universal/scanResult";
 import { BreachDataTypes } from "./app/functions/universal/breach";
@@ -108,23 +109,20 @@ declare module "knex/types/tables" {
       };
       monitoredEmails: { count: number };
     };
+    monthly_email_at: ISO8601DateString;
+    monthly_email_optout: boolean;
     monthly_monitor_report_at: null | Date;
     monthly_monitor_report: boolean;
-    breach_resolution:
-      | null
-      | ({
-          useBreachId: boolean;
-        } & Record<
-          SubscriberEmail.email,
-          Record<
-            BreachRow.id,
-            {
-              resolutionsChecked: Array<
-                (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
-              >;
-            }
-          >
-        >);
+    breach_resolution: null | {
+      useBreachId: boolean;
+      [key: SubscriberEmail["email"]]: {
+        [key: BreachRow.id]: {
+          resolutionsChecked: Array<
+            (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
+          >;
+        };
+      };
+    };
     // TODO: Find unknown type
     // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
     db_migration_1: null | unknown;
