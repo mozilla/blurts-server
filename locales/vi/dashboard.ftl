@@ -35,6 +35,7 @@ modal-active-number-of-exposures-part-three-all = Khi chúng đã được giả
 modal-fixed-number-of-exposures-title = Về số dữ liệu bị lộ đã giải quyết của bạn
 modal-fixed-number-of-exposures-all = Biểu đồ này bao gồm tổng số vụ rò rỉ dữ liệu đã giải quyết cho tất cả các địa chỉ email mà bạn hiện đang theo dõi. Sau khi số dữ liệu bị lộ được đánh dấu là đã giải quyết, chúng sẽ được thêm vào tổng số tại đây.
 modal-cta-ok = OK
+modal-cta-got-it = Đã hiểu
 open-modal-alt = Mở modal
 close-modal-alt = Đóng modal
 open-tooltip-alt = Mở tooltip
@@ -95,11 +96,11 @@ dashboard-no-exposures-label = Không tìm thấy vụ rò rỉ nào
 dashboard-top-banner-non-us-your-data-is-protected-description = Tin tốt, tất cả { $exposures_resolved_num } dữ liệu bị lộ của bạn đã được giải quyết! Chúng tôi sẽ tiếp tục theo dõi và sẽ cảnh báo bạn về bất kỳ trường hợp dữ liệu bị lộ nào mới.
 dashboard-top-banner-monitor-more-cta = Giám sát nhiều email hơn
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = Giới thiệu về trạng thái rò rỉ
 modal-exposure-status-description-all =
     Chúng tôi tìm kiếm dữ liệu bị lộ trong tất cả các vụ rò rỉ dữ liệu đã biết.
     Dữ liệu bị lộ của bạn sẽ có một trong các trạng thái sau:
-modal-exposure-status-action-needed = <b>Cần hành động</b> có nghĩa là nó hiện bị rò rỉ và bạn cần thực hiện các bước để giải quyết nó.
-modal-exposure-status-fixed = <b>Đã giải quyết</b> có nghĩa là sự cố đã được giải quyết và bạn không cần thực hiện hành động nào.
+modal-exposure-indicator-title = Trạng thái rò rỉ
+modal-exposure-indicator-action-needed = Bạn cần hành động nâng cao hoặc hành động thủ công để hoàn thành một hành động.
+modal-exposure-indicator-fixed = Sự cố này đã được giải quyết và bạn không cần phải làm gì cả.
