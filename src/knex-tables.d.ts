@@ -152,6 +152,8 @@ declare module "knex/types/tables" {
     | "breaches_resolved"
     | "waitlists_joined"
     | "breach_stats"
+    | "monthly_email_at"
+    | "monthly_email_optout"
     | "monthly_monitor_report_at"
     | "monthly_monitor_report"
     | "breach_resolution"
