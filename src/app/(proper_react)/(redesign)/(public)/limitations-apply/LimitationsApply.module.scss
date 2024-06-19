@@ -1,0 +1,15 @@
+@import "../../../../tokens";
+
+.limitationsApplyWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: $layout-md;
+
+  .limitationsApplyDescription {
+    aside {
+      background-color: $color-purple-10;
+      border-radius: $border-radius-sm;
+      padding: $spacing-xs $spacing-sm;
+    }
+  }
+}
