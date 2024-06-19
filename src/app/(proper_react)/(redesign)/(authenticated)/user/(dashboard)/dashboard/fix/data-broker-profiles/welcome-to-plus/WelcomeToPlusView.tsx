@@ -24,6 +24,7 @@ export type Props = {
   data: StepDeterminationData;
   subscriberEmails: string[];
   l10n: ExtendedReactLocalization;
+  howItWorksFlagEnabled: boolean;
 };
 
 export function WelcomeToPlusView(props: Props) {
@@ -80,7 +81,7 @@ export function WelcomeToPlusView(props: Props) {
                 )}
           </p>
           <p>
-            {hasRelevantScanResults
+            {hasRelevantScanResults && props.howItWorksFlagEnabled
               ? l10n.getFragment(
                   "welcome-to-premium-data-broker-profiles-description-part-two",
                   {

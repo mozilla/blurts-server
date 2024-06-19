@@ -1,33 +1,37 @@
 @import "../../tokens";
 
-.pill {
+.pillWrapper {
   font: $text-body-2xs;
-  font-weight: 600;
   display: inline-block;
-  min-width: 80px; // keep the width fixed
+  line-height: 1;
+  min-width: 140px; // keep the width fixed
+  text-align: center;
 
   @media screen and (min-width: $screen-md) {
     font: $text-body-xs;
+    min-width: 160px; // keep the width fixed
+  }
+
+  .pill {
+    padding: $spacing-xs 0;
+    border-radius: $border-radius-sm;
     font-weight: 600;
-    min-width: 120px; // keep the width fixed
-  }
-  text-align: center;
-  padding: $spacing-sm 0;
-  border-radius: $border-radius-sm;
-  line-height: 1;
 
-  &.actionNeeded {
-    background: $color-red-10;
-    color: $color-red-80;
-  }
+    &.actionNeeded {
+      background: $color-red-10;
+    }
 
-  &.inProgress {
-    background: rgba($color-blue-50, 0.3);
-    color: $color-blue-90;
-  }
+    &.requestedRemoval {
+      background: $color-violet-10;
+    }
 
-  &.isFixed {
-    background: $color-green-10;
-    color: $color-green-90;
+    &.inProgress {
+      background: $color-blue-05;
+    }
+
+    &.removed,
+    &.fixed {
+      background: $color-green-20;
+    }
   }
 }
