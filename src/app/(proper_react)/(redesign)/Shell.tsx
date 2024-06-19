@@ -63,6 +63,7 @@ export const Shell = (props: Props) => {
                 <PageLink
                   href="/user/dashboard"
                   activeClassName={styles.isActive}
+                  telemetry={{ link_id: "navigation_dashboard" }}
                 >
                   {l10n.getString("main-nav-link-dashboard-label")}
                 </PageLink>
