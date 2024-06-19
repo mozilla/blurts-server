@@ -4,41 +4,181 @@
 
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import Image from "next/image";
 import styles from "./CancelFlow.module.scss";
 import CancellationFlowStaticImage from "./images/CancellationFlowIllustration.svg";
+import CancellationFlowDiscountAppliedStaticImage from "./images/CancellationFlowDiscountAppliedStaticImage.svg";
 import { useTelemetry } from "../../../../../../hooks/useTelemetry";
 import { ModalOverlay } from "../../../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../../../components/client/dialog/Dialog";
 import { Button } from "../../../../../../components/client/Button";
 import { useL10n } from "../../../../../../hooks/l10n";
 import { TelemetryButton } from "../../../../../../components/client/TelemetryButton";
+import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
+import { onApplyCouponCode, onCheckUserHasCurrentCouponSet } from "./actions";
+import { TelemetryLink } from "../../../../../../components/client/TelemetryLink";
 
 export type Props = {
   fxaSubscriptionsUrl: string;
-  confirmationFlagEnabled: boolean;
+  enableDiscountCoupon: boolean;
+  experimentData?: ExperimentData;
+};
+
+type DiscountData = {
+  headline: string;
+  successDescription: string;
+  subtitle: string;
 };
 
 export const CancelFlow = (props: Props) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
-  const currentStep = props.confirmationFlagEnabled ? "confirm" : "survey";
-  const [step, setCurrentStep] = useState<"confirm" | "survey" | "redirecting">(
-    currentStep,
-  );
+  const [step, setCurrentStep] = useState<
+    "confirm" | "survey" | "all-set" | "redirecting"
+  >("confirm");
 
   const dialogState = useOverlayTriggerState({
     onOpenChange: (isOpen) => {
       recordTelemetry("popup", isOpen ? "view" : "exit", {
         popup_id: "settings-cancel-monitor-plus-dialog",
       });
+      if (isOpen) {
+        setCurrentStep("confirm");
+      }
     },
   });
 
+  const [couponSuccess, setCouponSuccess] = useState<boolean | null>(null);
+  const [alreadyHasCouponSet, setAlreadyHasCouponSet] =
+    useState<boolean>(false);
+
+  const discountedNext3Months: DiscountData = {
+    headline: l10n.getString("settings-unsubscribe-dialog-promotion-cta", {
+      discount_percentage_num: "30%",
+      discount_duration: 3,
+    }),
+    successDescription: l10n.getString(
+      "settings-unsubscribe-dialog-promotion-description",
+      {
+        discount_percentage_num: "30%",
+        discount_duration: 3,
+      },
+    ),
+    subtitle: l10n.getString(
+      "settings-unsubscribe-dialog-promotion-limitations-apply",
+    ),
+  };
+
+  // Unless we mock out these functions, we can't test them at the moment
+  /* c8 ignore start */
+  const handleApplyCouponCode = async () => {
+    const result = await onApplyCouponCode();
+    if (result?.success) {
+      setCouponSuccess(true);
+    } else {
+      setCouponSuccess(false);
+    }
+  };
+
+  const checkCouponCode = async () => {
+    const result = await onCheckUserHasCurrentCouponSet();
+    if (typeof result.success === "boolean") {
+      setAlreadyHasCouponSet(result.success);
+    } else {
+      setAlreadyHasCouponSet(false);
+    }
+  };
+
+  useEffect(() => {
+    void checkCouponCode();
+    // Only called once upon initial render to check if a user had a coupon code previously set
+  }, []);
+
+  useEffect(() => {
+    if (couponSuccess) {
+      setCurrentStep("all-set");
+    }
+  }, [couponSuccess]);
+  /* c8 ignore stop */
+
   const dialogTrigger = useOverlayTrigger({ type: "dialog" }, dialogState);
+
+  const dialogTitle = () => {
+    switch (step) {
+      case "confirm":
+        return "settings-cancel-plus-step-confirm-heading";
+      case "all-set":
+        return "settings-unsubscribe-dialog-promotion-complete";
+      case "redirecting":
+        return "settings-unsubscribe-dialog-confirmation-redirect-title";
+      case "survey":
+        return "settings-cancel-plus-step-survey-heading";
+    }
+  };
+
+  const Animation = () => {
+    return (
+      <>
+        <video
+          aria-hidden={true}
+          autoPlay={true}
+          loop={true}
+          muted={true}
+          className={styles.cancellationAnimation}
+        >
+          <source
+            // Unfortunately video files cannot currently be imported, so make
+            // sure these files are present in /public. See
+            // https://github.com/vercel/next.js/issues/35248
+            type="video/mp4"
+            src={
+              step === "all-set"
+                ? /* c8 ignore next */
+                  "/animations/CancellationFlowDiscountAppliedAnimation.mp4"
+                : "/animations/CancellationFlowAnimation.mp4"
+            }
+          />
+          <source
+            type="video/webm"
+            src={
+              step === "all-set"
+                ? /* c8 ignore next */
+                  "/animations/CancellationFlowDiscountAppliedAnimation.webm"
+                : "/animations/CancellationFlowAnimation.webm"
+            }
+          />
+          {/* Fall back to the image if the video formats are not supported: */}
+          <Image
+            className={styles.cancellationIllustrationWrapper}
+            src={
+              /* c8 ignore next */
+              step === "all-set"
+                ? CancellationFlowDiscountAppliedStaticImage
+                : CancellationFlowStaticImage
+            }
+            alt=""
+          />
+        </video>
+        {/* Fall back to the image if the video formats are not supported: */}
+        {/* The .staticAlternative class ensures that this image will only be shown if the user has prefers-reduced-motion on */}
+        <Image
+          className={`
+${styles.cancellationIllustrationWrapper}
+${styles.staticAlternative}
+`}
+          src={
+            step === "all-set"
+              ? CancellationFlowDiscountAppliedStaticImage
+              : CancellationFlowStaticImage
+          }
+          alt=""
+        />
+      </>
+    );
+  };
 
   return (
     <>
@@ -56,52 +196,8 @@ export const CancelFlow = (props: Props) => {
           isDismissable={true}
         >
           <Dialog
-            title={l10n.getString(
-              step === "confirm"
-                ? "settings-cancel-plus-step-confirm-heading"
-                : step === "survey"
-                  ? "settings-cancel-plus-step-survey-heading"
-                  : "settings-unsubscribe-dialog-confirmation-redirect-title",
-            )}
-            illustration={
-              <>
-                <video
-                  aria-hidden={true}
-                  autoPlay={true}
-                  loop={true}
-                  muted={true}
-                  className={styles.cancellationAnimation}
-                >
-                  <source
-                    // Unfortunately video files cannot currently be imported, so make
-                    // sure these files are present in /public. See
-                    // https://github.com/vercel/next.js/issues/35248
-                    type="video/mp4"
-                    src="/animations/CancellationFlowAnimation.mp4"
-                  />
-                  <source
-                    type="video/webm"
-                    src="/animations/CancellationFlowAnimation.webm"
-                  />
-                  {/* Fall back to the image if the video formats are not supported: */}
-                  <Image
-                    className={styles.cancellationIllustrationWrapper}
-                    src={CancellationFlowStaticImage}
-                    alt=""
-                  />
-                </video>
-                {/* Fall back to the image if the video formats are not supported: */}
-                {/* The .staticAlternative class ensures that this image will only be shown if the user has prefers-reduced-motion on */}
-                <Image
-                  className={`
-                ${styles.cancellationIllustrationWrapper} 
-                ${styles.staticAlternative}
-                `}
-                  src={CancellationFlowStaticImage}
-                  alt=""
-                />
-              </>
-            }
+            title={l10n.getString(dialogTitle())}
+            illustration={<Animation />}
             onDismiss={() => dialogState.close()}
           >
             <div className={styles.contentWrapper}>
@@ -112,22 +208,43 @@ export const CancelFlow = (props: Props) => {
                       "settings-cancel-plus-step-confirm-content",
                     )}
                   </p>
-                  <TelemetryButton
-                    event={{
-                      module: "popup",
-                      name: "exit",
-                      data: {
-                        popup_id: "never_mind_take_me_back",
-                      },
-                    }}
-                    variant="primary"
-                    onPress={() => dialogState.close()}
-                    className={styles.tertiaryCta}
-                  >
-                    {l10n.getString(
-                      "settings-cancel-plus-step-confirm-cancel-label",
-                    )}
-                  </TelemetryButton>
+                  {props.enableDiscountCoupon && !alreadyHasCouponSet ? (
+                    <>
+                      <TelemetryButton
+                        event={{
+                          module: "ctaButton",
+                          name: "click",
+                          data: {
+                            button_id: "stay_get_30_off",
+                          },
+                        }}
+                        variant="primary"
+                        onPress={() => void handleApplyCouponCode()}
+                        className={`${styles.discountCta} ${styles.primaryCta}`}
+                      >
+                        {discountedNext3Months.headline}
+                      </TelemetryButton>
+                      <small>{discountedNext3Months.subtitle}</small>
+                    </>
+                  ) : (
+                    <TelemetryButton
+                      event={{
+                        module: "popup",
+                        name: "exit",
+                        data: {
+                          popup_id: "never_mind_take_me_back",
+                        },
+                      }}
+                      variant="primary"
+                      onPress={() => dialogState.close()}
+                      className={styles.primaryCta}
+                    >
+                      {l10n.getString(
+                        "settings-cancel-plus-step-confirm-cancel-label",
+                      )}
+                    </TelemetryButton>
+                  )}
+
                   <TelemetryButton
                     event={{
                       module: "button",
@@ -138,6 +255,7 @@ export const CancelFlow = (props: Props) => {
                     }}
                     variant="tertiary"
                     onPress={() => setCurrentStep("survey")}
+                    className={styles.tertiaryCta}
                   >
                     {l10n.getString(
                       "settings-cancel-plus-step-confirm-cta-label",
@@ -204,6 +322,30 @@ export const CancelFlow = (props: Props) => {
                       },
                     )}
                   </p>
+                </>
+              )}
+              {step === "all-set" && (
+                <>
+                  <p>
+                    {l10n.getString(
+                      "settings-unsubscribe-dialog-promotion-description",
+                      {
+                        discount_duration: 3,
+                        discount_percentage_num: "30%",
+                      },
+                    )}
+                  </p>
+                  <TelemetryLink
+                    href="/user/dashboard"
+                    eventData={{
+                      link_id: "go_to_dashboard",
+                    }}
+                    className={styles.goToDashboardCta}
+                  >
+                    {l10n.getString(
+                      "settings-unsubscribe-dialog-promotion-back-to-dashboard-cta",
+                    )}
+                  </TelemetryLink>
                 </>
               )}
             </div>
