@@ -84,7 +84,7 @@ export const getExposureStatus = (
 ): StatusPillType => {
   if (isScanResult(exposure)) {
     if (exposure.manually_resolved) {
-      return "removed";
+      return "fixed";
     }
 
     switch (exposure.status) {
