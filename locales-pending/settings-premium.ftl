@@ -39,6 +39,7 @@ settings-unsubscribe-dialog-promotion-description = {
     *[other] { -brand-monitor-plus } will continue protecting your personal data, and a { $discount_percentage_num } discount has been applied to your next { $discount_duration } months.
 }
 settings-unsubscribe-dialog-promotion-cta-subtitle = Discount applied to your next month. Redeemable one time only.
+settings-unsubscribe-dialog-promotion-unsuccessful = There was a problem applying your discount. <try_again_link>Please try again.</try_again_link>
 settings-unsubscribe-dialog-promotion-complete = You’re all set!
 settings-unsubscribe-dialog-promotion-back-to-dashboard-cta = Go to my Dashboard
 settings-unsubscribe-dialog-promotion-limitations-apply = Limitations apply

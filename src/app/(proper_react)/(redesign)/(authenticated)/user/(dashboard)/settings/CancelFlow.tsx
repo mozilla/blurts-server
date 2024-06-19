@@ -181,6 +181,21 @@ ${styles.staticAlternative}
     );
   };
 
+  const errorApplyingCoupon = (
+    <p className={styles.errorApplyingCoupon}>
+      {l10n.getFragment("settings-unsubscribe-dialog-promotion-unsuccessful", {
+        elems: {
+          try_again_link: (
+            <Button
+              variant="tertiary"
+              onPress={() => void handleApplyCouponCode()}
+            />
+          ),
+        },
+      })}
+    </p>
+  );
+
   return (
     <>
       <Button
@@ -221,11 +236,16 @@ ${styles.staticAlternative}
                         }}
                         variant="primary"
                         onPress={() => void handleApplyCouponCode()}
-                        className={`${styles.discountCta} ${styles.primaryCta}`}
+                        className={`${styles.discountCta} ${styles.primaryCta} ${couponSuccess === false && styles.hidden}`}
                       >
                         {discountedNext3Months.headline}
                       </TelemetryButton>
-                      <small>{discountedNext3Months.subtitle}</small>
+                      <small
+                        className={`${couponSuccess === false && styles.hidden}`}
+                      >
+                        {discountedNext3Months.subtitle}
+                      </small>
+                      {couponSuccess === false && errorApplyingCoupon}
                     </>
                   ) : (
                     <TelemetryButton

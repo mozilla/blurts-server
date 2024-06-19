@@ -36,6 +36,21 @@
       margin-top: $spacing-lg;
       font-weight: 500;
     }
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  .errorApplyingCoupon {
+    padding-top: $spacing-sm;
+    color: $color-red-60;
+    font-weight: 500;
+
+    button {
+      color: $color-red-60;
+      font-weight: 500;
+    }
   }
 
   small {
