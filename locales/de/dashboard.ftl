@@ -131,6 +131,6 @@ dashboard-top-banner-monitor-more-cta = Weitere E-Mail-Adressen überwachen
 # About Exposure Indicators Modal
 
 modal-exposure-status-description-all = Wir suchen in allen bekannten Datenlecks nach Offenlegungen. Ihre Offenlegungen haben einen der folgenden Status:
-modal-exposure-indicator-title = Belichtungs-Status
+modal-exposure-indicator-title = Status der Offenlegung
 modal-exposure-indicator-action-needed = Sie benötigen eine fortgeschrittene oder manuelle Aktion, um eine Aktion abzuschließen.
-modal-exposure-indicator-fixed = Das Problem wurde behoben und Sie können nichts tun.
+modal-exposure-indicator-fixed = Die Offenlegung wurde behoben und Sie müssen derzeit nichts tun.
