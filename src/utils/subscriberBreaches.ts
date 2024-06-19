@@ -2,7 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { SubscriberBreachResolution, SubscriberRow } from "knex/types/tables";
+import {
+  BreachResolutionChecked,
+  SubscriberBreachResolution,
+  SubscriberRow,
+} from "knex/types/tables";
 import { getUserEmails } from "../db/tables/emailAddresses.js";
 import { HibpLikeDbBreach, getBreachesForEmail } from "./hibp.js";
 import { getSha1 } from "./fxa.js";
@@ -117,9 +121,11 @@ export async function getSubBreaches(
 
       const resolvedDataClasses =
         breach.Id in breachResolutionForEmail
-          ? breachResolutionForEmail[
-              breach.Id as keyof SubscriberBreachResolution
-            ]
+          ? (
+              breachResolutionForEmail[
+                breach.Id as keyof SubscriberBreachResolution
+              ] as BreachResolutionChecked
+            ).resolutionsChecked
           : [];
 
       const dataClassesEffected = filteredBreachDataClasses

@@ -75,12 +75,14 @@ declare module "knex/types/tables" {
     email: string;
   }
 
+  export type BreachResolutionChecked = {
+    resolutionsChecked: Array<
+      (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
+    >;
+  };
+
   export type SubscriberBreachResolution = {
-    [key: BreachRow.id]: {
-      resolutionsChecked: Array<
-        (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
-      >;
-    };
+    [key: BreachRow.id]: BreachResolutionChecked;
   };
 
   type BreachResolution = null | {
