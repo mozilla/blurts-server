@@ -47,6 +47,7 @@ modal-active-number-of-exposures-part-three-all = När de är lösta läggs de t
 modal-fixed-number-of-exposures-title = Om ditt antal lösta exponeringar
 modal-fixed-number-of-exposures-all = Det här diagrammet innehåller det totala antalet dataintrång som har åtgärdats för alla e-postadresser du för närvarande övervakar. När exponeringar är markerade som lösta läggs de till den totala här.
 modal-cta-ok = OK
+modal-cta-got-it = Jag förstår
 open-modal-alt = Öppna modal
 close-modal-alt = Stäng modal
 open-tooltip-alt = Öppna verktygstips
@@ -131,9 +132,9 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
     }
 dashboard-top-banner-monitor-more-cta = Övervaka fler e-postadresser
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = Om exponeringsstatusar
 modal-exposure-status-description-all = Vi söker efter exponeringar i alla kända dataintrång. Dina exponeringar kommer att ha en av följande statusar:
-modal-exposure-status-action-needed = <b>Åtgärd behövs</b> innebär att den för närvarande är aktiv och du behöver vidta åtgärder för att åtgärda den.
-modal-exposure-status-fixed = <b>Löst</b> innebär att exponeringen har lösts och det finns inga åtgärder för dig att vidta.
+modal-exposure-indicator-title = Exponeringsstatusar
+modal-exposure-indicator-action-needed = Avancerade eller manuella åtgärder behövs för att slutföra en åtgärd.
+modal-exposure-indicator-fixed = Exponeringen har lösts och det finns inga åtgärder för dig att vidta.
