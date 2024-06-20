@@ -739,7 +739,7 @@ describe("When Premium is available", () => {
 
   it("counts the number of clicks How it Works link in top navbar", async () => {
     const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(LandingNonUs, Meta);
+    const ComposedDashboard = composeStory(LandingUs, Meta);
     render(<ComposedDashboard />);
 
     const user = userEvent.setup();
@@ -752,17 +752,17 @@ describe("When Premium is available", () => {
     await user.click(navbarLink);
 
     expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
+      "link",
       "click",
       expect.objectContaining({
-        button_id: "navbar_how_it_works",
+        link_id: "navbar_how_it_works",
       }),
     );
   });
 
   it("counts the number of clicks Pricing link in top navbar", async () => {
     const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(LandingNonUs, Meta);
+    const ComposedDashboard = composeStory(LandingUs, Meta);
     render(<ComposedDashboard />);
 
     const user = userEvent.setup();
@@ -775,17 +775,17 @@ describe("When Premium is available", () => {
     await user.click(navbarLink);
 
     expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
+      "link",
       "click",
       expect.objectContaining({
-        button_id: "navbar_pricing",
+        link_id: "navbar_pricing",
       }),
     );
   });
 
   it("counts the number of clicks FAQs link in top navbar", async () => {
     const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(LandingNonUs, Meta);
+    const ComposedDashboard = composeStory(LandingUs, Meta);
     render(<ComposedDashboard />);
 
     const user = userEvent.setup();
@@ -798,17 +798,17 @@ describe("When Premium is available", () => {
     await user.click(navbarLink);
 
     expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
+      "link",
       "click",
       expect.objectContaining({
-        button_id: "navbar_faqs",
+        link_id: "navbar_faqs",
       }),
     );
   });
 
   it("counts the number of clicks All breaches link in top navbar", async () => {
     const mockedRecord = useTelemetry();
-    const ComposedDashboard = composeStory(LandingNonUs, Meta);
+    const ComposedDashboard = composeStory(LandingUs, Meta);
     render(<ComposedDashboard />);
 
     const user = userEvent.setup();
@@ -821,10 +821,10 @@ describe("When Premium is available", () => {
     await user.click(navbarLink);
 
     expect(mockedRecord).toHaveBeenCalledWith(
-      "button",
+      "link",
       "click",
       expect.objectContaining({
-        button_id: "navbar_breaches",
+        link_id: "navbar_breaches",
       }),
     );
   });
