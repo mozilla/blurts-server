@@ -119,7 +119,7 @@ export const ExposuresFilterStatusExplainer = (
             ) : (
               <li className={styles.statusListItem}>
                 <StatusPill type="fixed" />
-                {l10n.getString("modal-exposure-indicator-fixed")}
+                {l10n.getString("modal-exposure-indicator-removed")}
               </li>
             )}
             <li className={styles.statusListItem}>
