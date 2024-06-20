@@ -7,6 +7,7 @@ import styles from "./StatusPill.module.scss";
 import { useL10n } from "../../hooks/l10n";
 import { Exposure, isScanResult } from "../client/exposure_card/ExposureCard";
 import { ExtendedReactLocalization } from "../../functions/l10n";
+import { FeatureFlagName } from "../../../db/tables/featureFlags";
 
 type StatusPillType =
   | "actionNeeded"
@@ -26,7 +27,7 @@ export const StatusPillTypeMap: Record<string, StatusPillType> = {
 type DirectTypeProps = { type: StatusPillType };
 type ExposureProps = { exposure: Exposure };
 export type Props = (DirectTypeProps | ExposureProps) & {
-  additionalRemovalStatusesEnabled?: boolean;
+  enabledFeatureFlags?: FeatureFlagName[];
   note?: string;
 };
 
@@ -38,7 +39,8 @@ export const StatusPill = (props: Props) => {
     ? props.type
     : getExposureStatus(
         props.exposure,
-        props.additionalRemovalStatusesEnabled ?? false,
+        props.enabledFeatureFlags?.includes("AdditionalRemovalStatuses") ??
+          false,
       );
 
   return (
@@ -46,7 +48,7 @@ export const StatusPill = (props: Props) => {
       <div className={`${styles.pill} ${styles[pillType]}`}>
         {getStatusLabel({ pillType, l10n })}
       </div>
-      {props.additionalRemovalStatusesEnabled && props.note ? props.note : null}
+      {props.note}
     </div>
   );
 };
