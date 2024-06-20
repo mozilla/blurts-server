@@ -76,9 +76,8 @@ export async function checkCurrentCouponCode(
   }
 
   try {
-    await checkCouponForSubscriber(subscriber.id, currentCouponCode);
     return {
-      success: true,
+      success: await checkCouponForSubscriber(subscriber.id, currentCouponCode),
     };
   } catch (ex) {
     logger.error("fxa_check_coupon_failed", {
