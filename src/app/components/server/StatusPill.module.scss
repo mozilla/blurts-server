@@ -4,18 +4,21 @@
   font: $text-body-2xs;
   display: inline-block;
   line-height: 1;
-  min-width: 140px; // keep the width fixed
   text-align: center;
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: $screen-sm) {
     font: $text-body-xs;
-    min-width: 160px; // keep the width fixed
+    min-width: 145px; // keep the width fixed
   }
 
   .pill {
-    padding: $spacing-xs 0;
+    padding: $spacing-xs $spacing-sm;
     border-radius: $border-radius-sm;
     font-weight: 600;
+
+    @media screen and (min-width: $screen-sm) {
+      padding: $spacing-xs 0;
+    }
 
     &.actionNeeded {
       background: $color-red-10;
