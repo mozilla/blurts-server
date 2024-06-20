@@ -34,6 +34,7 @@ modal-active-number-of-exposures-title = Aktif veri ihlali sayınız hakkında
 modal-active-number-of-exposures-part-three-all = Çözülen ihlaller, Düzeltildi sayfasındaki toplam düzeltilen ihlal sayısına eklenecektir.
 modal-fixed-number-of-exposures-title = Düzeltilmiş veri ihlali sayınız hakkında
 modal-cta-ok = Tamam
+modal-cta-got-it = Anladım
 open-modal-alt = Kutuyu aç
 close-modal-alt = Kutuyu kapat
 open-tooltip-alt = İpucunu aç
@@ -118,11 +119,10 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
     }
 dashboard-top-banner-monitor-more-cta = Daha fazla e-postayı izleyin
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = Veri ihlali durumları hakkında
 modal-exposure-status-description-all =
     Bilinen tüm veri ihlallerindeki riskleri araştırıyoruz.
     Riskleriniz aşağıdaki durumlardan birine sahip olacaktır:
-modal-exposure-status-action-needed = <b>İşlem gerekiyor</b> demek, ihlal şu anda aktif durumda ve sorunu gidermek için önlem almanız gerekiyor demektir.
-modal-exposure-status-fixed = <b>Düzeltildi</b> demek, ihlal çözülmüş ve herhangi bir işlem yapmanız gerekmiyor demektir.
+modal-exposure-indicator-title = İhlal durumları
+modal-exposure-indicator-fixed = İhlal çözüldüğü için herhangi bir işlem yapmanız gerekmiyor.
