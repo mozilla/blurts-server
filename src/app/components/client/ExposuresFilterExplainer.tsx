@@ -75,6 +75,7 @@ type ExposuresFilterStatusExplainerProps = {
   enabledFeatureFlags: FeatureFlagName[];
   explainerDialogState: OverlayTriggerState;
   explainerDialogProps: OverlayTriggerAria;
+  isEligibleForPremium: boolean;
   isPlusSubscriber: boolean;
 };
 
@@ -97,18 +98,15 @@ export const ExposuresFilterStatusExplainer = (
       >
         <div className={styles.modalBodyContent}>
           <ul className={`${styles.statusList} noList`}>
-            {props.isPlusSubscriber && (
+            {props.enabledFeatureFlags.includes("AdditionalRemovalStatuses") &&
+              props.isPlusSubscriber && (
+                <li className={styles.statusListItem}>
+                  <StatusPill type="requestedRemoval" />
+                  {l10n.getString("modal-exposure-indicator-requested-removal")}
+                </li>
+              )}
+            {props.isEligibleForPremium ? (
               <>
-                {props.enabledFeatureFlags.includes(
-                  "AdditionalRemovalStatuses",
-                ) && (
-                  <li className={styles.statusListItem}>
-                    <StatusPill type="requestedRemoval" />
-                    {l10n.getString(
-                      "modal-exposure-indicator-requested-removal",
-                    )}
-                  </li>
-                )}
                 <li className={styles.statusListItem}>
                   <StatusPill type="inProgress" />
                   {l10n.getString("modal-exposure-indicator-in-progress")}
@@ -118,11 +116,12 @@ export const ExposuresFilterStatusExplainer = (
                   {l10n.getString("modal-exposure-indicator-removed")}
                 </li>
               </>
+            ) : (
+              <li className={styles.statusListItem}>
+                <StatusPill type="fixed" />
+                {l10n.getString("modal-exposure-indicator-fixed")}
+              </li>
             )}
-            <li className={styles.statusListItem}>
-              <StatusPill type="fixed" />
-              {l10n.getString("modal-exposure-indicator-fixed")}
-            </li>
             <li className={styles.statusListItem}>
               <StatusPill type="actionNeeded" />
               {l10n.getString("modal-exposure-indicator-action-needed")}
