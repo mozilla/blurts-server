@@ -12,7 +12,7 @@ import { useL10n } from "../../hooks/l10n";
 import { VisuallyHidden } from "../server/VisuallyHidden";
 
 export interface Props {
-  variant: "primary" | "secondary" | "tertiary";
+  variant: "primary" | "secondary" | "tertiary" | "link";
   children?: ReactNode;
   className?: string;
   destructive?: boolean;
