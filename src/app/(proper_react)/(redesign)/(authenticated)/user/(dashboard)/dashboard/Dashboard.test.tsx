@@ -3364,7 +3364,7 @@ it("send telemetry when users click on data broker info link", async () => {
   expect(expandButtons[0]).toHaveAttribute("aria-expanded", "true");
 
   const detailsAboutYouLink = screen.queryAllByRole("link", {
-    name: "these details about you",
+    name: /these details about you/,
   });
   await user.click(detailsAboutYouLink[0]);
   expect(mockedRecord).toHaveBeenCalledWith(

@@ -306,7 +306,6 @@ export const ExposuresFilter = ({
         <ExposuresFilterStatusExplainer
           explainerDialogProps={exposureStatusExplainerDialogTrigger}
           explainerDialogState={exposureStatusExplainerDialogState}
-          isEligibleForPremium={isEligibleForPremium}
           isPlusSubscriber={isPlusSubscriber}
           enabledFeatureFlags={enabledFeatureFlags}
         />
