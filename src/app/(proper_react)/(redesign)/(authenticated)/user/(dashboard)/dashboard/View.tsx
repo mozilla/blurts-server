@@ -169,13 +169,10 @@ export const View = (props: Props) => {
 
   const getTabSpecificExposures = (tabKey: TabType) =>
     arraySortedByDate.filter((exposure: Exposure) => {
-      const exposureStatus = getExposureStatus(
-        exposure,
-        props.enabledFeatureFlags.includes("AdditionalRemovalStatuses"),
-      );
+      const exposureStatus = getExposureStatus(exposure);
       return (
-        (tabKey === "action-needed" && exposureStatus === "actionNeeded") ||
-        (tabKey === "fixed" && exposureStatus !== "actionNeeded")
+        (tabKey === "action-needed" && exposureStatus === "needAction") ||
+        (tabKey === "fixed" && exposureStatus !== "needAction")
       );
     });
 
@@ -189,7 +186,6 @@ export const View = (props: Props) => {
     return (
       <li key={exposureCardKey} className={styles.exposureListItem}>
         <ExposureCard
-          enabledFeatureFlags={props.enabledFeatureFlags}
           exposureData={exposure}
           isExpanded={exposureCardKey === activeExposureCardKey}
           onToggleExpanded={() => {
@@ -511,12 +507,10 @@ export const View = (props: Props) => {
         </section>
         <div className={styles.exposuresFilterWrapper}>
           <ExposuresFilter
-            enabledFeatureFlags={props.enabledFeatureFlags}
             initialFilterValues={initialFilterState}
             filterValues={filters}
             setFilterValues={setFilters}
             isEligibleForPremium={props.isEligibleForPremium}
-            isPlusSubscriber={hasPremium(props.user)}
           />
         </div>
         {noUnresolvedExposures ? (

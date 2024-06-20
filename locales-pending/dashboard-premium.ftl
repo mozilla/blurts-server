@@ -66,9 +66,7 @@ modal-exposure-status-description-premium = {
   $data_broker_sites_total_num ->
     *[other] We search for exposures in all known data breaches and { $data_broker_sites_total_num } data broker sites that sell your personal info. Your exposures will have one of the following statuses:
 }
-modal-exposure-indicator-requested-removal = We’ve sent an official removal request to the data broker. We’ll keep you updated if we need to re-send the request.
-modal-exposure-indicator-in-progress = We’re actively working to confirm data broker removal compliance.
-modal-exposure-indicator-removed = We’ve successfully removed your data from the data broker site!
+modal-exposure-status-in-progress = <b>In progress</b> means we are actively working on fixing the exposure for you. This is a { -brand-monitor-plus } feature.
 
 # Variables:
 # $exposures_unresolved_num is the unresolved number of exposures the user has.
@@ -188,9 +186,8 @@ dashboard-top-banner-your-data-scan-in-progress-all-fixed-description =
   }
 
 exposure-card-description-info-for-sale-action-needed-manual-fix-page = This site is selling <data_broker_profile>these details about you</data_broker_profile>. Contact the site for removal, or <upsell_link>subscribe to { -brand-monitor-plus }</upsell_link> and we’ll do it for you.
-exposure-card-description-info-for-sale-requested-removal-dashboard = We’ve started the process of removing <data_broker_profile>this profile</data_broker_profile>. Removal times vary, and this can take multiple attempts.
 exposure-card-description-info-for-sale-action-needed-dashboard = This site is publicly publishing and selling <data_broker_profile>these details about you</data_broker_profile>. Remove this profile to protect your privacy.
-exposure-card-description-info-for-sale-in-progress-dashboard = As a { -brand-monitor-plus } member, we’ve removed <data_broker_profile>this profile</data_broker_profile> and are confirming the data broker’s removal compliance.
+exposure-card-description-info-for-sale-in-progress = We’ve started our auto-removal process of <data_broker_profile>this profile</data_broker_profile> to protect your information. <removal_info>Removals typically take 7-14 days</removal_info>.
 exposure-card-description-info-for-sale-fixed = As a { -brand-monitor-plus } member, we’ve <data_broker_profile>removed this profile</data_broker_profile> for you and will continually monitor to make sure they don’t add you back.
 exposure-card-description-info-for-sale-fixed-manually-fixed =  You marked this profile as fixed. Be sure you’ve followed all instructions on <data_broker_profile>the site</data_broker_profile> to ensure they remove your personal info.
 

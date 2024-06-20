@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { it, expect } from "@jest/globals";
-import { render, screen, within } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import Meta, {
@@ -14,7 +14,6 @@ import Meta, {
   DataBrokerInProgress,
   DataBrokerManualRemoved,
   DataBrokerRemoved,
-  DataBrokerRequestedRemoval,
 } from "./ExposureCard.stories";
 
 jest.mock("../../../hooks/useTelemetry");
@@ -78,23 +77,11 @@ describe("ScanResultCard", () => {
     const ComposedProgressCard = composeStory(DataBrokerInProgress, Meta);
     render(<ComposedProgressCard />);
     const innerDescription = screen.getByText(
-      "As a ⁨Monitor Plus⁩ member, we’ve removed",
+      "We’ve started our auto-removal process",
       { exact: false },
     );
 
     expect(innerDescription).toBeInTheDocument();
-  });
-
-  it("shows an additional note for “requested removal” status label", () => {
-    const ComposedProgressCard = composeStory(DataBrokerRequestedRemoval, Meta);
-    render(<ComposedProgressCard />);
-    const statusLabel = screen.getByText("Requested removal");
-    const statusLabelParent = statusLabel.parentElement as HTMLElement;
-    const labelNote = within(statusLabelParent).getByText("Attempt", {
-      exact: false,
-    });
-
-    expect(labelNote).toBeInTheDocument();
   });
 
   it("hides the dt element if its dd counterpart has hideonmobile", () => {

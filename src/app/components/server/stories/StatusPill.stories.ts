@@ -16,19 +16,13 @@ type Story = StoryObj<typeof StatusPill>;
 
 export const ActionNeeded: Story = {
   args: {
-    type: "actionNeeded",
+    type: "needAction",
   },
 };
 
 export const InProgress: Story = {
   args: {
-    type: "inProgress",
-  },
-};
-
-export const Removed: Story = {
-  args: {
-    type: "removed",
+    type: "progress",
   },
 };
 
