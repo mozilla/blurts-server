@@ -54,6 +54,7 @@ export const TelemetryLink = ({
     // For internal links
     <Link
       {...props}
+      className={className}
       onClick={(event) => {
         record(upsell ? "upgradeIntent" : "link", "click", eventData);
         props.onClick?.(event);
