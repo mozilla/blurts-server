@@ -450,9 +450,12 @@ export const View = (props: Props) => {
           selectedKey={activeTab}
         />
       </Toolbar>
-      {props.experimentData["data-privacy-petition-banner"].enabled && (
-        <PetitionBanner />
-      )}
+      {props.experimentData["data-privacy-petition-banner"].enabled &&
+        props.isEligibleForPremium &&
+        ((activeTab === "fixed" && hasPremium(props.user)) ||
+          (activeTab === "action-needed" && !hasPremium(props.user))) && (
+          <PetitionBanner />
+        )}
       <CsatSurvey
         user={props.user}
         activeTab={activeTab}
