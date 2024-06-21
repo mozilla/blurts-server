@@ -128,6 +128,7 @@ export const CancelFlow = (props: Props) => {
           loop={true}
           muted={true}
           className={styles.cancellationAnimation}
+          playsInline
         >
           <source
             // Unfortunately video files cannot currently be imported, so make
