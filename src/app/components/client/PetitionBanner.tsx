@@ -39,6 +39,7 @@ export const PetitionBanner = () => {
             variant="primary"
             className={styles.signButton}
             href={CONST_URL_DATA_PRIVACY_PETITION_BANNER}
+            target="_blank"
           >
             {l10n.getString("petition-banner-data-privacy-button-sign")}
           </Button>

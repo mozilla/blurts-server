@@ -36,6 +36,7 @@ export const Button = (props: ButtonProps) => {
     href,
     isLoading,
     small,
+    target,
     wide,
     ...otherProps
   } = props;
@@ -77,6 +78,7 @@ export const Button = (props: ButtonProps) => {
       {...buttonProps}
       ref={buttonRef as RefObject<HTMLAnchorElement>}
       href={href}
+      target={target}
       className={classes}
     >
       {
