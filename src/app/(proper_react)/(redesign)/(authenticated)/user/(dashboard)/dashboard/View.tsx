@@ -51,6 +51,7 @@ import {
   CONST_ONEREP_MAX_SCANS_THRESHOLD,
 } from "../../../../../../../constants";
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
+import { PetitionBanner } from "../../../../../../components/client/PetitionBanner";
 
 export type TabType = "action-needed" | "fixed";
 
@@ -449,6 +450,9 @@ export const View = (props: Props) => {
           selectedKey={activeTab}
         />
       </Toolbar>
+      {props.experimentData["data-privacy-petition-banner"].enabled && (
+        <PetitionBanner />
+      )}
       <CsatSurvey
         user={props.user}
         activeTab={activeTab}
