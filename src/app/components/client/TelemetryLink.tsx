@@ -19,6 +19,7 @@ export const TelemetryLink = ({
   target,
   upsell,
   showIcon,
+  className,
   ...props
 }: {
   eventData: GleanMetricMap["link"]["click"];
@@ -33,7 +34,7 @@ export const TelemetryLink = ({
   return target ? (
     <a
       {...props}
-      className={styles.link}
+      className={`${styles.link} ${className}`}
       target={target}
       onClick={(event) => {
         record("link", "click", eventData);

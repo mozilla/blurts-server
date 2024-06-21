@@ -20,6 +20,7 @@ import { TelemetryButton } from "../../../../../../components/client/TelemetryBu
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { onApplyCouponCode, onCheckUserHasCurrentCouponSet } from "./actions";
 import { TelemetryLink } from "../../../../../../components/client/TelemetryLink";
+import { OpenInNew } from "../../../../../../components/server/Icons";
 
 export type Props = {
   fxaSubscriptionsUrl: string;
@@ -240,11 +241,21 @@ ${styles.staticAlternative}
                       >
                         {discountedNext3Months.headline}
                       </TelemetryButton>
-                      <small
-                        className={`${couponSuccess === false && styles.hidden}`}
+                      <TelemetryLink
+                        eventData={{
+                          link_id: "limitations_apply",
+                        }}
+                        href="/limitations-apply"
+                        target="_blank"
+                        className={styles.limitationsApplyLink}
                       >
-                        {discountedNext3Months.subtitle}
-                      </small>
+                        <small
+                          className={`${couponSuccess === false ? styles.hidden : ""} ${styles.limitationsApplyText}`}
+                        >
+                          {discountedNext3Months.subtitle}
+                          <OpenInNew alt="" />
+                        </small>
+                      </TelemetryLink>
                       {couponSuccess === false && errorApplyingCoupon}
                     </>
                   ) : (

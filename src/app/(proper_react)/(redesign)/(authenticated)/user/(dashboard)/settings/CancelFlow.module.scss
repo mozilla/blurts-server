@@ -42,6 +42,21 @@
     }
   }
 
+  .limitationsApplyLink {
+    text-decoration-color: $color-grey-30;
+    .limitationsApplyText {
+      display: flex;
+      gap: $spacing-xs;
+      align-items: center;
+      justify-content: center;
+      text-decoration-color: $color-grey-30;
+
+      svg {
+        width: 13px; // width of open in new tab icon
+      }
+    }
+  }
+
   .errorApplyingCoupon {
     padding-top: $spacing-sm;
     color: $color-red-60;
