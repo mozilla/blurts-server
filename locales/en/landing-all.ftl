@@ -4,11 +4,12 @@
 
 public-nav-name = { -brand-mozilla-monitor }
 
-# Top navbar
+## Top navbar
 landing-all-hero-navbar-link-how-it-works = How it works
 landing-all-hero-navbar-link-pricing = Pricing
 landing-all-hero-navbar-link-faqs = FAQs
 landing-all-hero-navbar-link-all-breaches = All breaches
+##
 
 landing-all-hero-title = Find where your private info is exposed — and take it back
 landing-all-hero-lead = We scan data breaches to see if your data has been leaked and give you steps to fix it.
