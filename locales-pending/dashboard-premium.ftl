@@ -208,6 +208,6 @@ survey-csat-survey-dismiss-label = Dismiss
 ## Petition banner US data privacy law
 
 petition-banner-data-privacy-title = Join the Movement for a U.S. Data Privacy Law
-petition-banner-data-privacy-text = Advocate for stronger data protection laws with the Mozilla Foundation — <b>your voice can shape a safer digital future!</b>
+petition-banner-data-privacy-text = Advocate for stronger data protection laws with the { -brand-mozilla-foundation } — <b>your voice can shape a safer digital future!</b>
 petition-banner-data-privacy-button-sign = Sign petition
 petition-banner-data-privacy-button-dismiss = No, thank you
