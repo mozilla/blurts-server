@@ -1874,6 +1874,14 @@ it("shows error message if the applying the coupon code function was unsuccessfu
   );
 
   expect(errorMessage).toBeInTheDocument();
+
+  const tryAgainCta = screen.getByRole("button", {
+    name: "Please try again.",
+  });
+
+  await user.click(tryAgainCta);
+
+  expect(onApplyCouponCode).toHaveBeenCalled();
 });
 
 it("does not show the coupon code if a user already has a coupon set", async () => {
