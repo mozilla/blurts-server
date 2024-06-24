@@ -237,7 +237,7 @@ ${styles.staticAlternative}
                         }}
                         variant="primary"
                         onPress={() => void handleApplyCouponCode()}
-                        className={`${styles.discountCta} ${styles.primaryCta} ${couponSuccess === false && styles.hidden}`}
+                        className={`${couponSuccess === false && styles.hidden} ${styles.discountCta} ${styles.primaryCta}`}
                       >
                         {discountedNext3Months.headline}
                       </TelemetryButton>
@@ -247,11 +247,9 @@ ${styles.staticAlternative}
                         }}
                         href="/limitations-apply"
                         target="_blank"
-                        className={styles.limitationsApplyLink}
+                        className={`${couponSuccess === false && styles.hidden} ${styles.limitationsApplyLink}`}
                       >
-                        <small
-                          className={`${couponSuccess === false ? styles.hidden : ""} ${styles.limitationsApplyText}`}
-                        >
+                        <small className={styles.limitationsApplyText}>
                           {discountedNext3Months.subtitle}
                           <OpenInNew alt="" />
                         </small>

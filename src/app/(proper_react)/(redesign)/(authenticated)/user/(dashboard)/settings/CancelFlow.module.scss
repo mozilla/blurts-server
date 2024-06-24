@@ -36,10 +36,10 @@
       margin-top: $spacing-lg;
       font-weight: 500;
     }
+  }
 
-    &.hidden {
-      display: none;
-    }
+  .hidden {
+    display: none;
   }
 
   .limitationsApplyLink {
