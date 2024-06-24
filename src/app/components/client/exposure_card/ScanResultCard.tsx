@@ -106,6 +106,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
       eventData={{
         link_id: `data_broker_${scanResult.id}`,
       }}
+      showIcon
     />
   );
 
@@ -120,10 +121,33 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
   );
 
   const dataBrokerDescription = () => {
+    // Data broker cards manually resolved do not change their status to "removed";
+    // instead, we track them using the "manually_resolved" property.
+    if (scanResult.manually_resolved) {
+      return l10n.getFragment(
+        "exposure-card-description-info-for-sale-fixed-manually-fixed",
+        {
+          elems: {
+            data_broker_profile: dataBrokerProfileLink,
+          },
+        },
+      );
+    }
+
     switch (scanResult.status) {
       case "waiting_for_verification":
+        if (props.enabledFeatureFlags?.includes("AdditionalRemovalStatuses")) {
+          return l10n.getFragment(
+            "exposure-card-description-info-for-sale-requested-removal-dashboard",
+            {
+              elems: {
+                data_broker_profile: dataBrokerProfileLink,
+              },
+            },
+          );
+        }
         return l10n.getFragment(
-          "exposure-card-description-info-for-sale-requested-removal-dashboard",
+          "exposure-card-description-info-for-sale-in-progress-dashboard",
           {
             elems: {
               data_broker_profile: dataBrokerProfileLink,
@@ -140,37 +164,16 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
           },
         );
       case "new":
-        // Data broker cards manually resolved do not change their status to "removed";
-        // instead, we track them using the "manually_resolved" property.
-        if (scanResult.manually_resolved) {
+        /* c8 ignore start */
+        if (props.isOnManualRemovePage) {
           return l10n.getFragment(
-            "exposure-card-description-info-for-sale-fixed-manually-fixed",
+            "exposure-card-description-info-for-sale-action-needed-manual-fix-page",
             {
               elems: {
                 data_broker_profile: dataBrokerProfileLink,
               },
             },
           );
-        }
-        /* c8 ignore start */
-        if (props.isOnManualRemovePage) {
-          return scanResult.manually_resolved
-            ? l10n.getFragment(
-                "exposure-card-description-info-for-sale-fixed-manually-fixed",
-                {
-                  elems: {
-                    data_broker_profile: dataBrokerProfileLink,
-                  },
-                },
-              )
-            : l10n.getFragment(
-                "exposure-card-description-info-for-sale-action-needed-manual-fix-page",
-                {
-                  elems: {
-                    data_broker_profile: dataBrokerProfileLink,
-                  },
-                },
-              );
         }
         /* c8 ignore stop */
         return l10n.getFragment(
@@ -196,7 +199,10 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
 
   const attemptCount = scanResult.optout_attempts ?? 0;
   const statusPillNote =
-    scanResult.status === "waiting_for_verification" && attemptCount >= 1
+    props.enabledFeatureFlags?.includes("AdditionalRemovalStatuses") &&
+    !scanResult.manually_resolved &&
+    scanResult.status === "waiting_for_verification" &&
+    attemptCount >= 1
       ? l10n.getString("status-pill-requested-removal-info", {
           attempt_count: attemptCount,
           last_attempt_date: new Intl.DateTimeFormat(locale).format(
@@ -250,9 +256,7 @@ export const ScanResultCard = (props: ScanResultCardProps) => {
               <StatusPill
                 exposure={scanResult}
                 note={statusPillNote}
-                additionalRemovalStatusesEnabled={props.enabledFeatureFlags?.includes(
-                  "AdditionalRemovalStatuses",
-                )}
+                enabledFeatureFlags={props.enabledFeatureFlags}
               />
             </dd>
           </dl>

@@ -114,6 +114,13 @@
     }
   }
 
+  .exposureBreachLink {
+    align-items: center;
+    color: $color-blue-50;
+    display: inline-flex;
+    gap: 0.25em;
+  }
+
   .exposureDetailsSection {
     margin: 0;
     overflow: hidden;
