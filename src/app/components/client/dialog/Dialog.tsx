@@ -61,7 +61,6 @@ export const Dialog = ({
           }
           onDismiss();
         }}
-
         /* c8 ignore stop */
       >
         <CloseBtn

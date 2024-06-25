@@ -181,7 +181,7 @@ ${styles.staticAlternative}
     );
   };
 
-  const dialogDismissalTelemetryId = () => {
+  const dialogDismissalTelemetryId = (): string => {
     switch (step) {
       case "all-set":
         return "exited_youre_all_set";
