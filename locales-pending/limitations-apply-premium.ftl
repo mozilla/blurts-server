@@ -12,4 +12,8 @@ settings-limitations-apply-description-two = Redeemable 1 time only.
 # Variables:
 # $discount_percentage_num is the amount discounted in percentage per month
 # $discount_duration is the number of month(s) that users will pay the discounted price
-settings-limitations-apply-description-three = { -brand-mozilla-monitor } monthly subscribers will receive { $discount_percentage_num } off their next { $discount_duration } consecutive months billing.
+settings-limitations-apply-description-three =
+    { $discount_duration ->
+        [one] { -brand-mozilla-monitor } monthly subscribers will receive { $discount_percentage_num } off their next { $discount_duration } consecutive month billing.
+       *[other] { -brand-mozilla-monitor } monthly subscribers will receive { $discount_percentage_num } off their next { $discount_duration } consecutive months billing.
+}

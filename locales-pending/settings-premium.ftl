@@ -44,18 +44,6 @@ settings-unsubscribe-dialog-promotion-complete = You’re all set!
 settings-unsubscribe-dialog-promotion-back-to-dashboard-cta = Go to my Dashboard
 settings-unsubscribe-dialog-promotion-limitations-apply = Limited time, restrictions apply
 
-# Variables:
-# $discount_percentage_num is the amount discounted in percentage per month
-# $discount_duration is the number of month(s) that users will pay the discounted price
-settings-limitations-apply-title = { $discount_percentage_num } off { $discount_duration } months promotion
-settings-limitations-pill = Rules & Restrictions
-settings-limitations-apply-description-one = Discount available for a limited time only.
-settings-limitations-apply-description-two = Redeemable 1 time only.
-# Variables:
-# $discount_percentage_num is the amount discounted in percentage per month
-# $discount_duration is the number of month(s) that users will pay the discounted price
-settings-limitations-apply-description-three = { -brand-mozilla-monitor } monthly subscribers will receive { $discount_percentage_num } off their next { $discount_duration } consecutive months billing.
-
 ## Delete Monitor account
 
 settings-delete-monitor-plus-account-title = Delete { -brand-monitor } account
