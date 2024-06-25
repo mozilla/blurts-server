@@ -43,6 +43,7 @@ modal-fixed-number-of-exposures-title = About your number of fixed exposures
 modal-fixed-number-of-exposures-all = This chart includes the total number of data breaches that have been fixed for all email addresses you’re currently monitoring. Once exposures are marked as fixed, they’ll be added to the total here.
 
 modal-cta-ok = OK
+modal-cta-got-it = Got it
 open-modal-alt = Open modal
 close-modal-alt = Close modal
 open-tooltip-alt = Open tooltip
@@ -140,10 +141,10 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
 
 dashboard-top-banner-monitor-more-cta = Monitor more emails
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = About exposure statuses
 modal-exposure-status-description-all = We search for exposures in all known data breaches.
   Your exposures will have one of the following statuses:
-modal-exposure-status-action-needed = <b>Action needed</b> means it is currently active and you need to take steps to fix it.
-modal-exposure-status-fixed = <b>Fixed</b> means the exposure has been resolved and there’s no action for you to take.
+modal-exposure-indicator-title = Exposure statuses
+modal-exposure-indicator-action-needed = Advanced or manual action is needed by you to complete an action.
+modal-exposure-indicator-fixed = The exposure has been resolved and there’s no action for you to take.

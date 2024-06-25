@@ -90,6 +90,9 @@ export const View = (props: Props) => {
   const countryCode = useContext(CountryCodeContext);
   const pathname = usePathname();
 
+  const howItWorksFlagEnabled =
+    props.enabledFeatureFlags.includes("HowItWorksPage");
+
   const [activeTab, setActiveTab] = useState<TabType>(props.activeTab);
 
   useEffect(() => {
@@ -166,10 +169,13 @@ export const View = (props: Props) => {
 
   const getTabSpecificExposures = (tabKey: TabType) =>
     arraySortedByDate.filter((exposure: Exposure) => {
-      const exposureStatus = getExposureStatus(exposure);
+      const exposureStatus = getExposureStatus(
+        exposure,
+        props.enabledFeatureFlags.includes("AdditionalRemovalStatuses"),
+      );
       return (
-        (tabKey === "action-needed" && exposureStatus === "needAction") ||
-        (tabKey === "fixed" && exposureStatus !== "needAction")
+        (tabKey === "action-needed" && exposureStatus === "actionNeeded") ||
+        (tabKey === "fixed" && exposureStatus !== "actionNeeded")
       );
     });
 
@@ -183,6 +189,7 @@ export const View = (props: Props) => {
     return (
       <li key={exposureCardKey} className={styles.exposureListItem}>
         <ExposureCard
+          enabledFeatureFlags={props.enabledFeatureFlags}
           exposureData={exposure}
           isExpanded={exposureCardKey === activeExposureCardKey}
           onToggleExpanded={() => {
@@ -493,6 +500,7 @@ export const View = (props: Props) => {
           yearlySubscriptionUrl={props.yearlySubscriptionUrl}
           subscriptionBillingAmount={props.subscriptionBillingAmount}
           totalNumberOfPerformedScans={props.totalNumberOfPerformedScans}
+          howItWorksFlagEnabled={howItWorksFlagEnabled}
         />
         <section className={styles.exposuresArea}>
           {activeTab === "action-needed" ? (
@@ -503,10 +511,12 @@ export const View = (props: Props) => {
         </section>
         <div className={styles.exposuresFilterWrapper}>
           <ExposuresFilter
+            enabledFeatureFlags={props.enabledFeatureFlags}
             initialFilterValues={initialFilterState}
             filterValues={filters}
             setFilterValues={setFilters}
             isEligibleForPremium={props.isEligibleForPremium}
+            isPlusSubscriber={hasPremium(props.user)}
           />
         </div>
         {noUnresolvedExposures ? (

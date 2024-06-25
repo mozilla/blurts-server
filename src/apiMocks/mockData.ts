@@ -51,6 +51,10 @@ export function createRandomScanResult(
   options: RandomScanResultOptions = {},
 ): OnerepScanResultRow {
   faker.seed(options.fakerSeed);
+  const optout_attempts =
+    options.status === "waiting_for_verification"
+      ? faker.number.int({ min: 1, max: 42 })
+      : undefined;
   return {
     id: faker.number.int(),
     onerep_scan_result_id: faker.number.int(),
@@ -79,6 +83,7 @@ export function createRandomScanResult(
     data_broker_id: faker.number.int(),
     created_at: options.createdDate ?? faker.date.recent({ days: 2 }),
     updated_at: faker.date.recent({ days: 1 }),
+    optout_attempts,
   };
 }
 

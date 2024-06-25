@@ -13,6 +13,7 @@ import {
   monthlySubscribersQuota,
 } from "../../../../functions/server/onerep";
 import { CONST_DAY_MILLISECONDS } from "../../../../../constants";
+import { getEnabledFeatureFlags } from "../../../../../db/tables/featureFlags";
 
 export default async function Page() {
   const headersList = headers();
@@ -29,7 +30,11 @@ export default async function Page() {
     typeof oneRepActivations === "undefined" ||
     oneRepActivations > monthlySubscribersQuota;
 
-  if (countryCode !== "us") {
+  const featureFlags = await getEnabledFeatureFlags({
+    ignoreAllowlist: true,
+  });
+
+  if (countryCode !== "us" || !featureFlags.includes("HowItWorksPage")) {
     return redirect("/");
   }
 
