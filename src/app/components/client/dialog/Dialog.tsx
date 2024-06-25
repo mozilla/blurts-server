@@ -48,14 +48,15 @@ export const Dialog = ({
         {...dismissButtonProps}
         ref={dismissButtonRef}
         className={styles.dismissButton}
-        // TODO: Add unit test when changing this code:
-        /* c8 ignore next */
+        // Not all dialogs have telemetry exit events
+        /* c8 ignore start */
         onClick={() => {
-          recordTelemetry("button", "click", {
-            button_id: dismissalTelemetryId,
+          recordTelemetry("popup", "exit", {
+            popup_id: dismissalTelemetryId,
           });
           onDismiss();
         }}
+        /* c8 ignore stop */
       >
         <CloseBtn
           alt={l10n.getString("close-modal-alt")}
