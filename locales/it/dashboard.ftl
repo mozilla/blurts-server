@@ -43,6 +43,7 @@ modal-active-number-of-exposures-part-three-all = Una volta risolte, verranno ag
 modal-fixed-number-of-exposures-title = Informazioni sul numero di esposizioni risolte
 modal-fixed-number-of-exposures-all = Questo grafico include il numero totale di violazioni di dati che sono state risolte per tutti gli indirizzi email che stai attualmente monitorando. Una volta che le esposizioni sono contrassegnate come risolte, verranno aggiunte al totale qui.
 modal-cta-ok = OK
+modal-cta-got-it = OK
 open-modal-alt = Apri finestra di dialogo
 close-modal-alt = Chiudi finestra di dialogo
 open-tooltip-alt = Apri suggerimento
@@ -127,9 +128,9 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
     }
 dashboard-top-banner-monitor-more-cta = Tieni sotto controllo altre email
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = Informazioni sugli stati di esposizione
 modal-exposure-status-description-all = Cerchiamo esposizioni di dati in tutte le violazioni conosciute. Le tue esposizioni avranno uno dei seguenti stati:
-modal-exposure-status-action-needed = <b>Richiede attenzione</b> significa che è attualmente attiva e devi adottare misure per risolverla.
-modal-exposure-status-fixed = <b>Risolta</b> significa che l’esposizione è stata risolta e non è necessario intraprendere alcuna azione.
+modal-exposure-indicator-title = Stati di esposizione
+modal-exposure-indicator-action-needed = Per completare è necessaria un’operazione avanzata o manuale.
+modal-exposure-indicator-fixed = L’esposizione è stata risolta e non è necessario intraprendere alcuna azione.

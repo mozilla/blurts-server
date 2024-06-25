@@ -34,6 +34,7 @@ modal-active-number-of-exposures-title = Mboyjeýmapa ipapapy jehechauka hendýv
 modal-active-number-of-exposures-part-three-all = Oñemoĩporã vove, oñembojuajúta nde papapy jehechapy oĩporãmava kuatiarogue Moĩporãhápe.
 modal-fixed-number-of-exposures-title = Mboyjeýmapa ipapapy jehechauka opytáva
 modal-cta-ok = MONEĨ
+modal-cta-got-it = Aikũmby
 open-modal-alt = Embojuruja modal
 close-modal-alt = Emboty modal
 open-tooltip-alt = Embojuruja marandu
@@ -96,11 +97,9 @@ dashboard-top-banner-non-us-no-exposures-found-description = ¡Mba’éichapa! R
 dashboard-no-exposures-label = Ndojejuhúi máva jehechauka
 dashboard-top-banner-monitor-more-cta = Roma’ẽag̃uíta hetave ñanduti vevére
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = Jehechauka rekotee rehegua
 modal-exposure-status-description-all =
     Roheka ñembyaikua opaite mba’ekuaarã ñembogua ojekuaávape.
     Ne ñembyaikua orekokuaa peteĩva ko’ã tekotee:
-modal-exposure-status-action-needed = <b>Jeku’e tekotevẽva</b> he’ise reku’eha ko’ág̃a ha ejapo tekotevẽva emoĩporã hag̃ua.
-modal-exposure-status-fixed = <b>Oĩporãma</b> he’ise pe jehechaukakue oĩporãma ha natekotevẽvéima ejapo mba’evete.
+modal-exposure-indicator-title = Mba’éichapa ejehechakuaa

@@ -77,7 +77,6 @@ how-it-works-page-data-breaches-cta-button = Get free scan
 how-it-works-page-footersection-title = Take back control of your data
 how-it-works-page-footersection-input-placeholder = example@example.com
 how-it-works-page-footersection-cta-button = Get free scan
-how-it-works-page-footersection-have-i-been-pwned = Breach data provided by Have I Been Pwned
 
 ## Inbound links
 ## Site Navigation
