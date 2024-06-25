@@ -195,6 +195,7 @@ async function setOnerepScan(
     })
     .onConflict("onerep_scan_id")
     .merge({
+      onerep_profile_id: onerepProfileId,
       onerep_scan_status: onerepScanStatus,
       updated_at: knex.fn.now(),
     });
