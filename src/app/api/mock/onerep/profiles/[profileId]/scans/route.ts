@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { MOCK_SCAN_ID, MOCK_TIME } from "../../../config/config";
+import { MOCK_ONEREP_SCAN_ID, MOCK_ONEREP_TIME } from "../../../config/config";
 import { NextRequest, NextResponse } from "next/server";
 
 //TODO: mock out the id field and url
@@ -19,13 +19,13 @@ export function POST(req: NextRequest) {
   }
 
   const mockResponse = {
-    id: MOCK_SCAN_ID,
+    id: MOCK_ONEREP_SCAN_ID,
     profile_id: profileId,
     status: "finished",
     reason: "manual",
-    created_at: MOCK_TIME,
-    updated_at: MOCK_TIME,
-    url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${MOCK_SCAN_ID}`,
+    created_at: MOCK_ONEREP_TIME,
+    updated_at: MOCK_ONEREP_TIME,
+    url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${MOCK_ONEREP_SCAN_ID}`,
   };
 
   return NextResponse.json(mockResponse);
@@ -42,13 +42,13 @@ export function GET(req: NextRequest) {
   const responseData = {
     data: [
       {
-        id: MOCK_SCAN_ID,
+        id: MOCK_ONEREP_SCAN_ID,
         profile_id: profileId,
         status: "finished",
         reason: "manual",
-        created_at: MOCK_TIME,
-        updated_at: MOCK_TIME,
-        url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${MOCK_SCAN_ID}`,
+        created_at: MOCK_ONEREP_TIME,
+        updated_at: MOCK_ONEREP_TIME,
+        url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${MOCK_ONEREP_SCAN_ID}`,
       },
     ],
     links: {

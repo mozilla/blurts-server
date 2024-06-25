@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { MOCK_TIME } from "../config/config.ts";
+import { MOCK_ONEREP_TIME } from "../config/config.ts";
 import {
   ResponseProfileData,
   RequestProfileData,
@@ -12,7 +12,6 @@ import { randomInt } from "crypto";
 
 // Mock API endpoint
 export async function POST(req: NextRequest) {
-  //TODO: mock out all URLs
   const profileId = randomInt(1000, 10000);
   try {
     if (req.body === null) {
@@ -38,13 +37,13 @@ export async function POST(req: NextRequest) {
         city: addr.city,
         address_line: null,
         zip: null,
-        created_at: MOCK_TIME,
-        updated_at: MOCK_TIME,
+        created_at: MOCK_ONEREP_TIME,
+        updated_at: MOCK_ONEREP_TIME,
         url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/addresses/${profileId + index}`,
       })),
       status: "active", //assuming status is active
-      created_at: MOCK_TIME,
-      updated_at: MOCK_TIME,
+      created_at: MOCK_ONEREP_TIME,
+      updated_at: MOCK_ONEREP_TIME,
       url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}`,
     };
     return NextResponse.json(responseProfile, { status: 201 });

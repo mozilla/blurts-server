@@ -3,50 +3,50 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import {
-  MOCK_FIRSTNAME,
-  MOCK_LASTNAME,
-  MOCK_TIME,
-  MOCK_PROFILE_ID,
-  MOCK_SCAN_ID,
+  MOCK_ONEREP_FIRSTNAME,
+  MOCK_ONEREP_LASTNAME,
+  MOCK_ONEREP_TIME,
+  MOCK_ONEREP_SCAN_ID,
+  MOCK_ONEREP_EMAIL,
 } from "../config/config";
 import { NextRequest, NextResponse } from "next/server";
 
-//TODO: mock out all URLS
 export function GET(req: NextRequest) {
-  // const profileId = MOCK_PROFILE_ID
   const page = req.url.match(/page=([0-9]+)/)![1] || "1";
   const perPage = req.url.match(/per_page=([0-9]+)/)![1] || "100";
 
+  const profileId = req.url.match(/profile_id......=([0-9]+)&/)![1];
+
   const magicNum0 = 37680;
   const magicNum1 = 23;
-  const howMany = 10;
+  const howMany = 5;
 
   // TODO: mock put the indecies, id scan_id
   const responseData = {
     data: new Array(howMany).fill(null).map((_, index) => ({
       id: magicNum0 - index,
-      profile_id: MOCK_PROFILE_ID,
-      scan_id: MOCK_SCAN_ID,
+      profile_id: profileId,
+      scan_id: MOCK_ONEREP_SCAN_ID,
       status: "new",
-      first_name: MOCK_FIRSTNAME,
+      first_name: MOCK_ONEREP_FIRSTNAME,
       middle_name: null,
-      last_name: MOCK_LASTNAME,
+      last_name: MOCK_ONEREP_LASTNAME,
       age: null,
       addresses: [],
       phones: [],
-      emails: [],
+      emails: [MOCK_ONEREP_EMAIL],
       relatives: [],
-      link: `https://example.com/link-to-databroker${index}`,
-      data_broker: `example${index}.com`,
+      link: `https://mockexample.com/link-to-databroker${index}`,
+      data_broker: `mockexample${index}.com`,
       data_broker_id: magicNum1 - index,
       optout_attempts: 0,
-      created_at: MOCK_TIME,
-      updated_at: MOCK_TIME,
+      created_at: MOCK_ONEREP_TIME,
+      updated_at: MOCK_ONEREP_TIME,
       url: `${process.env.ONEREP_API_BASE}scan-results/${magicNum0 - index}`,
     })),
     links: {
-      first: `${process.env.ONEREP_API_BASE}/scan-results?profile_id%5B0%5D=${MOCK_PROFILE_ID}&per_page=100&page=1`,
-      last: `${process.env.ONEREP_API_BASE}/scan-results?profile_id%5B0%5D=${MOCK_PROFILE_ID}&per_page=100&page=1`,
+      first: `${process.env.ONEREP_API_BASE}/scan-results?profile_id%5B0%5D=${profileId}&per_page=${perPage}&page=${page}`,
+      last: `${process.env.ONEREP_API_BASE}/scan-results?profile_id%5B0%5D=${profileId}&per_page=${perPage}&page=${page}`,
       prev: null,
       next: null,
     },

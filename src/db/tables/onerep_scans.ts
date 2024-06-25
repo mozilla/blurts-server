@@ -4,6 +4,7 @@
 
 import createDbConnection from "../connect.js";
 import { logger } from "../../app/functions/server/logging";
+import { MOCK_ONEREP_SCAN_ID } from "../../app/api/mock/onerep/config/config.ts";
 
 import {
   ScanResult,
@@ -240,6 +241,13 @@ async function addOnerepScanResults(
   });
 
   if (scanResultsMap.length > 0) {
+    //Delete previous records to allow dynamic mock data configuration.
+    if (process.env.ONEREP_API_BASE!.includes("localhost")) {
+      await knex("onerep_scan_results")
+        .where("onerep_scan_id", MOCK_ONEREP_SCAN_ID)
+        .del();
+    }
+
     await knex("onerep_scan_results")
       .insert(scanResultsMap)
       .onConflict("onerep_scan_result_id")

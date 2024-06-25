@@ -118,6 +118,16 @@ async function onerepFetch(
   if (!onerepApiKey) {
     throw new Error("ONEREP_API_KEY env var not set");
   }
+
+  //If mock, remove the first slash so that it doesn't overwrite the path
+  if (
+    onerepApiBase.includes("localhost") &&
+    path.length > 1 &&
+    path[0] === "/"
+  ) {
+    path = path.substring(1);
+  }
+
   const url = new URL(path, onerepApiBase);
   const headers = new Headers(options.headers);
   headers.set("Authorization", `Bearer ${onerepApiKey}`);
@@ -142,8 +152,7 @@ export async function createProfile(
       },
     ],
   };
-  //TODO: add conditional check for '/'
-  const response = await onerepFetch("profiles", {
+  const response = await onerepFetch("/profiles", {
     method: "POST",
     body: JSON.stringify(requestBody),
   });
@@ -174,8 +183,7 @@ export async function createProfile(
 export async function getProfile(
   profileId: number,
 ): Promise<ShowProfileResponse> {
-  //TODO: add conditional check for '/'
-  const response: Response = await onerepFetch(`profiles/${profileId}`, {
+  const response: Response = await onerepFetch(`/profiles/${profileId}`, {
     method: "GET",
   });
   if (!response.ok) {
@@ -192,10 +200,8 @@ export async function getProfile(
 }
 
 export async function activateProfile(profileId: number): Promise<void> {
-  //TODO: add conditional check for '/'
-
   const response: Response = await onerepFetch(
-    `profiles/${profileId}/activate`,
+    `/profiles/${profileId}/activate`,
     {
       method: "PUT",
     },
@@ -211,10 +217,8 @@ export async function activateProfile(profileId: number): Promise<void> {
 }
 
 export async function deactivateProfile(profileId: number): Promise<void> {
-  //TODO: add conditional check for '/'
-
   const response: Response = await onerepFetch(
-    `profiles/${profileId}/deactivate`,
+    `/profiles/${profileId}/deactivate`,
     {
       method: "PUT",
     },
@@ -230,9 +234,7 @@ export async function deactivateProfile(profileId: number): Promise<void> {
 }
 
 export async function optoutProfile(profileId: number): Promise<void> {
-  //TODO: add conditional check for '/'
-
-  const response = await onerepFetch(`profiles/${profileId}/optout`, {
+  const response = await onerepFetch(`/profiles/${profileId}/optout`, {
     method: "POST",
   });
   if (!response.ok) {
@@ -279,9 +281,7 @@ export async function createScan(
   /**
    * See https://docs.onerep.com/#operation/createScan
    */
-  //TODO: add conditional check for '/'
-
-  const response = await onerepFetch(`profiles/${profileId}/scans`, {
+  const response = await onerepFetch(`/profiles/${profileId}/scans`, {
     method: "POST",
   });
   if (!response.ok) {
@@ -306,10 +306,8 @@ export async function listScans(
   if (options.per_page) {
     queryParams.set("per_page", options.per_page.toString());
   }
-  //TODO: add conditional check for '/'
-
   const response: Response = await onerepFetch(
-    `profiles/${profileId}/scans?` + queryParams.toString(),
+    `/profiles/${profileId}/scans?` + queryParams.toString(),
     {
       method: "GET",
     },
@@ -350,10 +348,8 @@ export async function listScanResults(
       queryParams.append("status[]", status);
     });
   }
-  //TODO: add conditional check for '/'
-
   const response: Response = await onerepFetch(
-    "scan-results/?" + queryParams.toString(),
+    "/scan-results/?" + queryParams.toString(),
     {
       method: "GET",
     },
@@ -404,9 +400,7 @@ export async function getScanDetails(
   profileId: number,
   scanId: number,
 ): Promise<Scan> {
-  //TODO: add conditional check for '/'
-
-  const response = await onerepFetch(`profiles/${profileId}/scans/${scanId}`, {
+  const response = await onerepFetch(`/profiles/${profileId}/scans/${scanId}`, {
     method: "GET",
   });
   if (!response.ok) {
@@ -429,11 +423,9 @@ export async function getAllScanResults(
 }
 
 export async function getAllDataBrokers() {
-  //TODO: add conditional check for '/'
-
   return fetchAllPages(async (page: number) => {
     const response = await onerepFetch(
-      "data-brokers?per_page=100&page=" + page.toString(),
+      "/data-brokers?per_page=100&page=" + page.toString(),
     );
     const data: OneRepResponse<
       Array<{
@@ -485,10 +477,8 @@ export async function getProfilesStats(
   if (profileStatsCache.has(queryParamsString))
     return profileStatsCache.get(queryParamsString);
 
-  //TODO: add conditional check for '/'
-
   const response: Response = await onerepFetch(
-    `stats/profiles?${queryParamsString}`,
+    `/stats/profiles?${queryParamsString}`,
     {
       method: "GET",
     },
