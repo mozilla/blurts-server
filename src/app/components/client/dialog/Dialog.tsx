@@ -50,10 +50,10 @@ export const Dialog = ({
         {...dismissButtonProps}
         ref={dismissButtonRef}
         className={styles.dismissButton}
-        // Not all dialogs have telemetry exit events
         /* c8 ignore start */
         onClick={() => {
           {
+            // Omitting a unit test as not all dialogs have telemetry exit events
             dismissalTelemetryId &&
               recordTelemetry("popup", "exit", {
                 popup_id: dismissalTelemetryId,
