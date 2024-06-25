@@ -2,15 +2,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+"use client";
+
 import { ReactNode, useEffect, useRef } from "react";
 import { AriaDialogProps, useButton, useDialog } from "react-aria";
 import styles from "./Dialog.module.scss";
 import { CloseBtn } from "../../server/Icons";
 import { useL10n } from "../../../hooks/l10n";
+import { useTelemetry } from "../../../hooks/useTelemetry";
 
 export type Props = {
   children: ReactNode;
   onDismiss?: () => void;
+  dismissalTelemetryId?: string;
   title?: ReactNode;
   illustration?: ReactNode;
   variant?: "vertical" | "horizontal";
@@ -19,12 +23,14 @@ export type Props = {
 export const Dialog = ({
   children,
   onDismiss,
+  dismissalTelemetryId,
   title,
   illustration,
   variant,
   ...otherProps
 }: Props) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const dialogRef = useRef<HTMLDivElement>(null);
   const dialogTitleRef = useRef<HTMLDivElement>(null);
   const { dialogProps, titleProps } = useDialog(otherProps, dialogRef);
@@ -44,9 +50,18 @@ export const Dialog = ({
         {...dismissButtonProps}
         ref={dismissButtonRef}
         className={styles.dismissButton}
-        // TODO: Add unit test when changing this code:
-        /* c8 ignore next */
-        onClick={() => onDismiss()}
+        /* c8 ignore start */
+        onClick={() => {
+          {
+            // Omitting a unit test as not all dialogs have telemetry exit events
+            dismissalTelemetryId &&
+              recordTelemetry("popup", "exit", {
+                popup_id: dismissalTelemetryId,
+              });
+          }
+          onDismiss();
+        }}
+        /* c8 ignore stop */
       >
         <CloseBtn
           alt={l10n.getString("close-modal-alt")}
