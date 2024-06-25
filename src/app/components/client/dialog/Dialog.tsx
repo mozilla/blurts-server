@@ -7,10 +7,12 @@ import { AriaDialogProps, useButton, useDialog } from "react-aria";
 import styles from "./Dialog.module.scss";
 import { CloseBtn } from "../../server/Icons";
 import { useL10n } from "../../../hooks/l10n";
+import { useTelemetry } from "../../../hooks/useTelemetry";
 
 export type Props = {
   children: ReactNode;
   onDismiss?: () => void;
+  dismissalTelemetryId?: string;
   title?: ReactNode;
   illustration?: ReactNode;
   variant?: "vertical" | "horizontal";
@@ -19,12 +21,14 @@ export type Props = {
 export const Dialog = ({
   children,
   onDismiss,
+  dismissalTelemetryId,
   title,
   illustration,
   variant,
   ...otherProps
 }: Props) => {
   const l10n = useL10n();
+  const recordTelemetry = useTelemetry();
   const dialogRef = useRef<HTMLDivElement>(null);
   const dialogTitleRef = useRef<HTMLDivElement>(null);
   const { dialogProps, titleProps } = useDialog(otherProps, dialogRef);
@@ -46,7 +50,12 @@ export const Dialog = ({
         className={styles.dismissButton}
         // TODO: Add unit test when changing this code:
         /* c8 ignore next */
-        onClick={() => onDismiss()}
+        onClick={() => {
+          recordTelemetry("button", "click", {
+            button_id: dismissalTelemetryId,
+          });
+          onDismiss();
+        }}
       >
         <CloseBtn
           alt={l10n.getString("close-modal-alt")}

@@ -181,6 +181,15 @@ ${styles.staticAlternative}
     );
   };
 
+  const dialogDismissalTelemetryId = () => {
+    switch (step) {
+      case "all-set":
+        return "exited_youre_all_set";
+      default:
+        return "exited_cancel_flow";
+    }
+  };
+
   return (
     <>
       <Button
@@ -200,6 +209,7 @@ ${styles.staticAlternative}
             title={l10n.getString(dialogTitle())}
             illustration={<Animation />}
             onDismiss={() => dialogState.close()}
+            dismissalTelemetryId={dialogDismissalTelemetryId()}
           >
             <div className={styles.contentWrapper}>
               {step === "confirm" && (
