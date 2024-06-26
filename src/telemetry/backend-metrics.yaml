@@ -128,7 +128,7 @@ subscription:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - technical
+      - interaction
 
   cancel:
     type: event
