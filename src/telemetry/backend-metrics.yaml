@@ -8,9 +8,9 @@
 ---
 $schema: moz://mozilla.org/schemas/glean/metrics/2-0-0
 
-page:
-  user_id:
-    description: Mozilla Accounts user ID.
+mozilla:
+  account_id:
+    description: Mozilla Accounts ID.
     type: string
     lifetime: application
     send_in_pings:
@@ -25,6 +25,7 @@ page:
     data_sensitivity:
       - interaction
 
+monitor:
   session_id:
     description: An ID that allows us to track “sessions” of the user experience within the product.
     type: string
@@ -41,7 +42,7 @@ page:
     data_sensitivity:
       - interaction
 
-  monitor_user_id:
+  user_id:
     description: Mozilla Monitor-specific user ID.
     type: string
     lifetime: application
@@ -73,6 +74,7 @@ page:
     data_sensitivity:
       - interaction
 
+page:
   view:
     type: event
     description: |
@@ -112,70 +114,6 @@ page:
         type: string
 
 subscription:
-  user_id:
-    description: Mozilla Accounts user ID.
-    type: string
-    lifetime: application
-    send_in_pings:
-      - events
-    notification_emails:
-      - rhelmer@mozilla.com
-    bugs:
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
-    data_reviews:
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
-    expires: never
-    data_sensitivity:
-      - technical
-
-  session_id:
-    description: An ID that allows us to track “sessions” of the user experience within the product.
-    type: string
-    lifetime: application
-    send_in_pings:
-      - events
-    notification_emails:
-      - rhelmer@mozilla.com
-    bugs:
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
-    data_reviews:
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
-    expires: never
-    data_sensitivity:
-      - technical
-
-  monitor_user_id:
-    description: Mozilla Monitor-specific user ID.
-    type: string
-    lifetime: application
-    send_in_pings:
-      - events
-    notification_emails:
-      - rhelmer@mozilla.com
-    bugs:
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
-    data_reviews:
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
-    expires: never
-    data_sensitivity:
-      - technical
-
-  plan_tier:
-    description: Which tier of plan the user is on [Free, Plus]
-    type: string
-    lifetime: application
-    send_in_pings:
-      - events
-    notification_emails:
-      - rhelmer@mozilla.com
-    bugs:
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
-    data_reviews:
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
-    expires: never
-    data_sensitivity:
-      - technical
-
   activate:
     type: event
     description: |
@@ -209,70 +147,6 @@ subscription:
       - technical
 
 account:
-  user_id:
-    description: Mozilla Accounts user ID.
-    type: string
-    lifetime: application
-    send_in_pings:
-      - events
-    notification_emails:
-      - rhelmer@mozilla.com
-    bugs:
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
-    data_reviews:
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
-    expires: never
-    data_sensitivity:
-      - technical
-
-  session_id:
-    description: An ID that allows us to track “sessions” of the user experience within the product.
-    type: string
-    lifetime: application
-    send_in_pings:
-      - events
-    notification_emails:
-      - rhelmer@mozilla.com
-    bugs:
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
-    data_reviews:
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
-    expires: never
-    data_sensitivity:
-      - technical
-
-  monitor_user_id:
-    description: Mozilla Monitor-specific user ID.
-    type: string
-    lifetime: application
-    send_in_pings:
-      - events
-    notification_emails:
-      - rhelmer@mozilla.com
-    bugs:
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
-    data_reviews:
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
-    expires: never
-    data_sensitivity:
-      - technical
-
-  plan_tier:
-    description: Which tier of plan the user is on [Free, Plus]
-    type: string
-    lifetime: application
-    send_in_pings:
-      - events
-    notification_emails:
-      - rhelmer@mozilla.com
-    bugs:
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
-    data_reviews:
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
-    expires: never
-    data_sensitivity:
-      - technical
-
   create:
     type: event
     description: |

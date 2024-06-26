@@ -190,6 +190,7 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
           session={mockedSession}
           nonce=""
           countryCode={props.countryCode}
+          howItWorksFlagEnabled
         >
           <DashboardEl
             user={user}
@@ -211,7 +212,9 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             elapsedTimeInDaysSinceInitialScan={
               props.elapsedTimeInDaysSinceInitialScan
             }
-            enabledFeatureFlags={props.enabledFeatureFlags ?? []}
+            enabledFeatureFlags={
+              props.enabledFeatureFlags ?? ["HowItWorksPage"]
+            }
             experimentData={
               props.experimentData ?? {
                 ...defaultExperimentData,

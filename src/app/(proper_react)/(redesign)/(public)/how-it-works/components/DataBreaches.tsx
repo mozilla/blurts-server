@@ -36,6 +36,7 @@ export const DataBreaches = () => {
           </h3>
           <div className={styles.sectionCTAButton}>
             <TelemetryButton
+              href="/user/dashboard"
               variant="primary"
               onPress={() => {
                 void signIn("fxa");
@@ -109,6 +110,7 @@ export const DataBreaches = () => {
       </div>
       <div className={`${styles.sectionCTAButton} ${styles.breachesCTAButton}`}>
         <TelemetryButton
+          href="/user/dashboard"
           variant="primary"
           onPress={() => {
             void signIn("fxa");

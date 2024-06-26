@@ -38,6 +38,7 @@ modal-active-number-of-exposures-part-three-all = 事件處理完後，就會加
 modal-fixed-number-of-exposures-title = 關於您已處理過的資料曝光數
 modal-fixed-number-of-exposures-all = 此圖表包含您目前監控的所有信箱當中已修正的資料外洩事件總數。曝光次數被標示為「固定」後就會在此累計。
 modal-cta-ok = 確定
+modal-cta-got-it = 知道了！
 open-modal-alt = 開啟對話框
 close-modal-alt = 關閉對話框
 open-tooltip-alt = 開啟提示
@@ -118,9 +119,9 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
     }
 dashboard-top-banner-monitor-more-cta = 監控更多電子郵件地址
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = 關於資料曝光狀態
 modal-exposure-status-description-all = 我們會在所有已知的資料外洩事件中搜尋曝光的資料。您的資料曝光事件會有下列任一種狀態：
-modal-exposure-status-action-needed = <b>需要採取行動</b>：表示事件已經發生，請採取行動處理。
-modal-exposure-status-fixed = <b>已處理</b>：表示資料外洩事件已處理完成，無需再採取任何行動。
+modal-exposure-indicator-title = 資料曝光類型
+modal-exposure-indicator-action-needed = 需要您進行進階或手動處理，才能完成某些動作。
+modal-exposure-indicator-fixed = 此資料外洩事件已處理完成，無需再採取任何行動。
