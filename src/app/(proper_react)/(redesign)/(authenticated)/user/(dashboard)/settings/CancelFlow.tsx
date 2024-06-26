@@ -200,6 +200,9 @@ ${styles.staticAlternative}
             title={l10n.getString(dialogTitle())}
             illustration={<Animation />}
             onDismiss={() => dialogState.close()}
+            dismissalTelemetryId={
+              step === "all-set" ? "exited_youre_all_set" : "exited_cancel_flow"
+            }
           >
             <div className={styles.contentWrapper}>
               {step === "confirm" && (
