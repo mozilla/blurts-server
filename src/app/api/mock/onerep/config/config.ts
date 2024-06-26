@@ -33,6 +33,10 @@ export function MOCK_ONEREP_EMAIL() {
   return MockUser.EMAIL;
 }
 
+export function MOCK_ONEREP_STATUS() {
+  return MockUser.STATUS as "active" | "inactive";
+}
+
 export function MOCK_ONEREP_ADDRESSES() {
   type typeOfAddr = [{ city: string; state: StateAbbr }];
 

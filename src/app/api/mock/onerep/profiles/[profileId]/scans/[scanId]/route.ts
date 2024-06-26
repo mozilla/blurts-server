@@ -17,8 +17,8 @@ export function GET(req: NextRequest) {
     profile_id: profileId,
     status: "finished",
     reason: "manual",
-    created_at: MOCK_ONEREP_TIME,
-    updated_at: MOCK_ONEREP_TIME,
+    created_at: MOCK_ONEREP_TIME(),
+    updated_at: MOCK_ONEREP_TIME(),
     url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${scanId}`,
   };
   return NextResponse.json(responseData);

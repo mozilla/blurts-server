@@ -19,29 +19,29 @@ export function GET(req: NextRequest) {
 
   const magicNum0 = 37680;
   const magicNum1 = 23;
-  const howMany = 5;
+  const howMany = 10;
 
   // TODO: mock put the indecies, id scan_id
   const responseData = {
     data: new Array(howMany).fill(null).map((_, index) => ({
       id: magicNum0 - index,
       profile_id: profileId,
-      scan_id: MOCK_ONEREP_SCAN_ID,
+      scan_id: MOCK_ONEREP_SCAN_ID(),
       status: "new",
-      first_name: MOCK_ONEREP_FIRSTNAME,
+      first_name: MOCK_ONEREP_FIRSTNAME(),
       middle_name: null,
-      last_name: MOCK_ONEREP_LASTNAME,
+      last_name: MOCK_ONEREP_LASTNAME(),
       age: null,
       addresses: [],
       phones: [],
-      emails: [MOCK_ONEREP_EMAIL],
+      emails: [MOCK_ONEREP_EMAIL()],
       relatives: [],
       link: `https://mockexample.com/link-to-databroker${index}`,
       data_broker: `mockexample${index}.com`,
       data_broker_id: magicNum1 - index,
       optout_attempts: 0,
-      created_at: MOCK_ONEREP_TIME,
-      updated_at: MOCK_ONEREP_TIME,
+      created_at: MOCK_ONEREP_TIME(),
+      updated_at: MOCK_ONEREP_TIME(),
       url: `${process.env.ONEREP_API_BASE}scan-results/${magicNum0 - index}`,
     })),
     links: {

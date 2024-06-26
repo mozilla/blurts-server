@@ -19,13 +19,13 @@ export function POST(req: NextRequest) {
   }
 
   const mockResponse = {
-    id: MOCK_ONEREP_SCAN_ID,
+    id: MOCK_ONEREP_SCAN_ID(),
     profile_id: profileId,
     status: "finished",
     reason: "manual",
-    created_at: MOCK_ONEREP_TIME,
-    updated_at: MOCK_ONEREP_TIME,
-    url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${MOCK_ONEREP_SCAN_ID}`,
+    created_at: MOCK_ONEREP_TIME(),
+    updated_at: MOCK_ONEREP_TIME(),
+    url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${MOCK_ONEREP_SCAN_ID()}`,
   };
 
   return NextResponse.json(mockResponse);
@@ -42,13 +42,13 @@ export function GET(req: NextRequest) {
   const responseData = {
     data: [
       {
-        id: MOCK_ONEREP_SCAN_ID,
+        id: MOCK_ONEREP_SCAN_ID(),
         profile_id: profileId,
         status: "finished",
         reason: "manual",
-        created_at: MOCK_ONEREP_TIME,
-        updated_at: MOCK_ONEREP_TIME,
-        url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${MOCK_ONEREP_SCAN_ID}`,
+        created_at: MOCK_ONEREP_TIME(),
+        updated_at: MOCK_ONEREP_TIME(),
+        url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${MOCK_ONEREP_SCAN_ID()}`,
       },
     ],
     links: {

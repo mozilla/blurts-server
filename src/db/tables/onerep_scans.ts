@@ -244,7 +244,7 @@ async function addOnerepScanResults(
     //Delete previous records to allow dynamic mock data configuration.
     if (process.env.ONEREP_API_BASE!.includes("localhost")) {
       await knex("onerep_scan_results")
-        .where("onerep_scan_id", MOCK_ONEREP_SCAN_ID)
+        .where("onerep_scan_id", MOCK_ONEREP_SCAN_ID())
         .del();
     }
 

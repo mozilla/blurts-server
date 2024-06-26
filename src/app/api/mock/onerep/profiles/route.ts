@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { MOCK_ONEREP_TIME } from "../config/config.ts";
+import { MOCK_ONEREP_STATUS, MOCK_ONEREP_TIME } from "../config/config.ts";
 import { NextRequest, NextResponse } from "next/server";
 import { randomInt } from "crypto";
 
@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
         updated_at: MOCK_ONEREP_TIME(),
         url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/addresses/${profileId + index}`,
       })),
-      status: "active", //assuming status is active
+      status: MOCK_ONEREP_STATUS(),
       created_at: MOCK_ONEREP_TIME(),
       updated_at: MOCK_ONEREP_TIME(),
       url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}`,
