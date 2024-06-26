@@ -3,14 +3,45 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { MOCK_ONEREP_TIME } from "../config/config.ts";
-import {
-  ResponseProfileData,
-  RequestProfileData,
-} from "../config/userObject.ts";
 import { NextRequest, NextResponse } from "next/server";
 import { randomInt } from "crypto";
 
-// Mock API endpoint
+export type RequestProfileData = {
+  first_name: string;
+  last_name: string;
+  middle_name: string;
+  birth_date: string;
+  addresses: Array<{ state: string; city: string }>;
+};
+
+type ResponseProfileData = {
+  id: number;
+  first_name: string;
+  last_name: string;
+  middle_name: string | null;
+  birth_date: string;
+  first_names: string[];
+  middle_names: string[];
+  last_names: string[];
+  phone_numbers: string[];
+  emails: string[];
+  addresses: Array<{
+    id: number;
+    profile_id: number;
+    state: string;
+    city: string;
+    address_line: string | null;
+    zip: string | null;
+    created_at: string;
+    updated_at: string;
+    url: string;
+  }>;
+  status: "active" | "inactive";
+  created_at: string;
+  updated_at: string;
+  url: string;
+};
+
 export async function POST(req: NextRequest) {
   const profileId = randomInt(1000, 10000);
   try {
@@ -37,13 +68,13 @@ export async function POST(req: NextRequest) {
         city: addr.city,
         address_line: null,
         zip: null,
-        created_at: MOCK_ONEREP_TIME,
-        updated_at: MOCK_ONEREP_TIME,
+        created_at: MOCK_ONEREP_TIME(),
+        updated_at: MOCK_ONEREP_TIME(),
         url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/addresses/${profileId + index}`,
       })),
       status: "active", //assuming status is active
-      created_at: MOCK_ONEREP_TIME,
-      updated_at: MOCK_ONEREP_TIME,
+      created_at: MOCK_ONEREP_TIME(),
+      updated_at: MOCK_ONEREP_TIME(),
       url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}`,
     };
     return NextResponse.json(responseProfile, { status: 201 });

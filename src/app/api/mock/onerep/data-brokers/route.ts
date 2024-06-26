@@ -5,6 +5,18 @@
 import { NextResponse } from "next/server";
 
 //ONLY PART OF ADMIN - probably shouldn't mock?
-export default function handler() {
+export function GET() {
+  return NextResponse.json({ error: "You've reached a mock endpoint" });
+}
+
+export function POST() {
+  return NextResponse.json({ error: "You've reached a mock endpoint" });
+}
+
+export function PUT() {
+  return NextResponse.json({ error: "You've reached a mock endpoint" });
+}
+
+export function DELETE() {
   return NextResponse.json({ error: "You've reached a mock endpoint" });
 }

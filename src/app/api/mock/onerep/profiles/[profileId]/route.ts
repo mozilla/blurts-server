@@ -33,13 +33,13 @@ export async function GET(req: NextRequest) {
 
   const mockProfileData: ShowProfileResponse = {
     id: profileId,
-    first_name: MOCK_ONEREP_FIRSTNAME,
-    last_name: MOCK_ONEREP_LASTNAME,
-    birth_date: MOCK_ONEREP_BIRTHDATE,
-    addresses: MOCK_ONEREP_ADDRESSES,
+    first_name: MOCK_ONEREP_FIRSTNAME(),
+    last_name: MOCK_ONEREP_LASTNAME(),
+    birth_date: MOCK_ONEREP_BIRTHDATE(),
+    addresses: MOCK_ONEREP_ADDRESSES(),
     status: "inactive",
-    created_at: MOCK_ONEREP_TIME,
-    updated_at: MOCK_ONEREP_TIME,
+    created_at: MOCK_ONEREP_TIME(),
+    updated_at: MOCK_ONEREP_TIME(),
     url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}`,
   };
 

@@ -3,15 +3,41 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { StateAbbr } from "../../../../../utils/states";
+import MockUser from "./mockUser.json";
 
-export const MOCK_ONEREP_PROFILE_ID = 777;
-export const MOCK_ONEREP_SCAN_ID = 129837123;
-export const MOCK_ONEREP_TIME = "2024-06-19T01:37:02+0000";
-export const MOCK_ONEREP_FIRSTNAME = "John";
-export const MOCK_ONEREP_LASTNAME = "Doe";
-export const MOCK_ONEREP_BIRTHDATE = "2000-01-01";
-export const MOCK_ONEREP_EMAIL = "JohnDoe@JohnDoe.com";
+export function MOCK_ONEREP_PROFILE_ID() {
+  return MockUser.PROFILE_ID;
+}
 
-export const MOCK_ONEREP_ADDRESSES: [{ city: string; state: StateAbbr }] = [
-  { city: "Berkeley", state: "CA" as StateAbbr },
-];
+export function MOCK_ONEREP_SCAN_ID() {
+  return MockUser.SCAN_ID;
+}
+
+export function MOCK_ONEREP_TIME() {
+  return MockUser.TIME;
+}
+
+export function MOCK_ONEREP_FIRSTNAME() {
+  return MockUser.FIRSTNAME;
+}
+
+export function MOCK_ONEREP_LASTNAME() {
+  return MockUser.LASTNAME;
+}
+
+export function MOCK_ONEREP_BIRTHDATE() {
+  return MockUser.BIRTHDATE;
+}
+
+export function MOCK_ONEREP_EMAIL() {
+  return MockUser.EMAIL;
+}
+
+export function MOCK_ONEREP_ADDRESSES() {
+  type typeOfAddr = [{ city: string; state: StateAbbr }];
+
+  return MockUser.ADDRESSES.map((address) => ({
+    city: address.city,
+    state: address.state as StateAbbr,
+  })) as typeOfAddr;
+}
