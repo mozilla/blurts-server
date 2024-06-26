@@ -9,6 +9,7 @@ This means you might have to go searching through the dependency tree to get a f
 # Pings
 
 - [events](#events)
+- [interaction](#interaction)
 - [technical](#technical)
 
 ## events
@@ -29,6 +30,16 @@ In addition to those built-in metrics, the following metrics are added to the pi
 | mozilla.account_id | [string](https://mozilla.github.io/glean/book/user/metrics/string.html) | Mozilla Accounts ID.                                                                | [Bug 1896222](https://bugzilla.mozilla.org/show_bug.cgi?id=1896222) |                                                                                                                                                                                                                                                                                                      | never      | 2                                                                    |
 | page.view          | [event](https://mozilla.github.io/glean/book/user/metrics/event.html)   | A web page view event distinguishable by the page’s URL.                            | [Bug 1896222](https://bugzilla.mozilla.org/show_bug.cgi?id=1896222) | <ul><li>path: The path of the page.</li><li>referrer: The referring URL, if any.</li><li>utm_campaign: Attribution campaign.</li><li>utm_content: Attribution content.</li><li>utm_medium: Attribution medium.</li><li>utm_source: Attribution source.</li><li>utm_term: Attribution term.</li></ul> | never      | 2                                                                    |
 
+## interaction
+
+All Glean pings contain built-in metrics in the [`ping_info`](https://mozilla.github.io/glean/book/user/pings/index.html#the-ping_info-section) and [`client_info`](https://mozilla.github.io/glean/book/user/pings/index.html#the-client_info-section) sections.
+
+In addition to those built-in metrics, the following metrics are added to the ping:
+
+| Name                  | Type                                                                  | Description                                      | Data reviews                                                        | Extras | Expiration | [Data Sensitivity](https://wiki.mozilla.org/Firefox/Data_Collection) |
+| --------------------- | --------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------- | ------ | ---------- | -------------------------------------------------------------------- |
+| subscription.activate | [event](https://mozilla.github.io/glean/book/user/metrics/event.html) | A subscription has been activated for this user. | [Bug 1896222](https://bugzilla.mozilla.org/show_bug.cgi?id=1896222) |        | never      | 2                                                                    |
+
 ## technical
 
 All Glean pings contain built-in metrics in the [`ping_info`](https://mozilla.github.io/glean/book/user/pings/index.html#the-ping_info-section) and [`client_info`](https://mozilla.github.io/glean/book/user/pings/index.html#the-client_info-section) sections.
@@ -41,7 +52,6 @@ In addition to those built-in metrics, the following metrics are added to the pi
 | account.password_change | [event](https://mozilla.github.io/glean/book/user/metrics/event.html) | The password for an existing Mozilla Account has been changed, and existing auth tokens have been revoked. | [Bug 1896222](https://bugzilla.mozilla.org/show_bug.cgi?id=1896222) |        | never      | 2                                                                    |
 | account.profile_change  | [event](https://mozilla.github.io/glean/book/user/metrics/event.html) | An existing Mozilla Accounts profile has been changed, for example the primary email address.              | [Bug 1896222](https://bugzilla.mozilla.org/show_bug.cgi?id=1896222) |        | never      | 2                                                                    |
 | account.remove          | [event](https://mozilla.github.io/glean/book/user/metrics/event.html) | An existing Mozilla Monitor account has been deleted.                                                      | [Bug 1896222](https://bugzilla.mozilla.org/show_bug.cgi?id=1896222) |        | never      | 2                                                                    |
-| subscription.activate   | [event](https://mozilla.github.io/glean/book/user/metrics/event.html) | A subscription has been activated for this user.                                                           | [Bug 1896222](https://bugzilla.mozilla.org/show_bug.cgi?id=1896222) |        | never      | 2                                                                    |
 | subscription.cancel     | [event](https://mozilla.github.io/glean/book/user/metrics/event.html) | A subscription cancellation has taken effect, and the user is no longer subscribed to Monitor Plus.        | [Bug 1896222](https://bugzilla.mozilla.org/show_bug.cgi?id=1896222) |        | never      | 2                                                                    |
 
 Data categories are [defined here](https://wiki.mozilla.org/Firefox/Data_Collection).
