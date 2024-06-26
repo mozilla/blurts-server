@@ -7,5 +7,16 @@
   "BIRTHDATE": "2000-01-01",
   "EMAIL": "JohnDoe@JohnDoe.com",
   "STATUS": "active",
-  "ADDRESSES": [{ "city": "Berkeley", "state": "CA" }]
+  "ADDRESSES": [
+    {
+      "city": "Berkeley",
+      "state": "CA"
+    }
+  ],
+  "BROKERS_LIST": {
+    "data": [],
+    "links": {},
+    "meta": {},
+    "valid": false
+  }
 }

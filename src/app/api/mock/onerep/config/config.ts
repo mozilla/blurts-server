@@ -5,6 +5,28 @@
 import { StateAbbr } from "../../../../../utils/states";
 import MockUser from "./mockUser.json";
 
+interface Broker {
+  id: number;
+  profile_id: string;
+  scan_id: number;
+  status: string;
+  first_name: string;
+  middle_name?: string | null;
+  last_name: string;
+  age?: number | null;
+  addresses: object[];
+  phones: object[];
+  emails: object[];
+  relatives: object[];
+  link: string;
+  data_broker: string;
+  data_broker_id: number;
+  optout_attempts: number;
+  created_at: string;
+  updated_at: string;
+  url: string;
+}
+
 export function MOCK_ONEREP_PROFILE_ID() {
   return MockUser.PROFILE_ID;
 }
@@ -44,4 +66,85 @@ export function MOCK_ONEREP_ADDRESSES() {
     city: address.city,
     state: address.state as StateAbbr,
   })) as typeOfAddr;
+}
+
+const DEFAULT_NUMBER_BREACHES = 10;
+const magicNum0 = 37680;
+const magicNum1 = 23;
+
+export function MOCK_ONEREP_BROKERS(
+  profileId: string,
+  page: string,
+  perPage: string,
+) {
+  const mockResponseData = MockUser.BROKERS_LIST;
+
+  const mockLinks = {
+    first: `${process.env.ONEREP_API_BASE}/scan-results?profile_id%5B0%5D=${profileId}&per_page=${perPage}&page=${page}`,
+    last: `${process.env.ONEREP_API_BASE}/scan-results?profile_id%5B0%5D=${profileId}&per_page=${perPage}&page=${page}`,
+    prev: null,
+    next: null,
+  };
+
+  const mockMeta = {
+    current_page: parseInt(page),
+    from: 1,
+    last_page: 1,
+    path: `${process.env.ONEREP_API_BASE}/scan-results`,
+    per_page: parseInt(perPage),
+    to: 10,
+    total: 10,
+  };
+
+  if (mockResponseData.valid) {
+    const response: {
+      data: Broker[];
+      links: typeof mockLinks;
+      meta: typeof mockMeta;
+    } = {
+      data: [],
+      links: mockLinks,
+      meta: mockMeta,
+    };
+
+    if (mockResponseData.data.length > 0) {
+      response.data = mockResponseData.data.map((broker) => {
+        return {
+          ...(broker as Broker),
+          profile_id: profileId,
+          scan_id: MOCK_ONEREP_SCAN_ID(),
+        };
+      });
+    }
+
+    return mockResponseData;
+  }
+
+  const responseData = {
+    data: new Array(DEFAULT_NUMBER_BREACHES).fill(null).map((_, index) => ({
+      id: magicNum0 - index,
+      profile_id: profileId,
+      scan_id: MOCK_ONEREP_SCAN_ID(),
+      status: "new",
+      first_name: MOCK_ONEREP_FIRSTNAME(),
+      middle_name: null,
+      last_name: MOCK_ONEREP_LASTNAME(),
+      age: null,
+      addresses: [],
+      phones: [],
+      emails: [MOCK_ONEREP_EMAIL()],
+      relatives: [],
+      link: `https://mockexample.com/link-to-databroker${index}`,
+      data_broker: `mockexample${index}.com`,
+      data_broker_id: magicNum1 - index,
+      optout_attempts: 0,
+      created_at: MOCK_ONEREP_TIME(),
+      updated_at: MOCK_ONEREP_TIME(),
+      url: `${process.env.ONEREP_API_BASE}scan-results/${magicNum0 - index}`,
+    })),
+    links: mockLinks,
+    meta: mockMeta,
+  };
+
+  return responseData;
 }
