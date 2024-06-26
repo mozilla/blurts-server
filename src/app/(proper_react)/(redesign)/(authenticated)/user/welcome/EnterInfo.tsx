@@ -30,12 +30,13 @@ import { CONST_URL_PRIVACY_POLICY } from "../../../../../../constants";
 
 import styles from "./EnterInfo.module.scss";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
-import { logger } from "../../../../../functions/server/logging";
+import winston from "winston";
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 const createProfileAndStartScan = async (
   userInfo: UserInfo,
+  logger: winston.Logger,
 ): Promise<WelcomeScanBody> => {
   const response = await fetch("/api/v1/user/welcome-scan/create", {
     method: "POST",
@@ -61,6 +62,7 @@ export type Props = {
   skipInitialStep: boolean;
   previousRoute: string | null;
   optionalInfoIsEnabled: boolean;
+  logger: winston.Logger;
 };
 
 export const EnterInfo = ({
@@ -69,6 +71,7 @@ export const EnterInfo = ({
   skipInitialStep,
   previousRoute,
   optionalInfoIsEnabled,
+  logger,
 }: Props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -215,7 +218,7 @@ export const EnterInfo = ({
       dateOfBirth,
     };
 
-    void createProfileAndStartScan(userInfo)
+    void createProfileAndStartScan(userInfo, logger)
       .then(() => {
         onScanStarted();
       })

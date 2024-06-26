@@ -16,6 +16,7 @@ import { getExperimentationId } from "../../../../../../functions/server/getExpe
 import { getExperiments } from "../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { getL10n } from "../../../../../../functions/l10n/serverComponents";
+import { logger } from "../../../../../../functions/server/logging";
 
 const FreeScanSlug = "free-scan";
 
@@ -76,6 +77,7 @@ export default async function Onboarding({ params, searchParams }: Props) {
       stepId={firstSlug === FreeScanSlug ? "enterInfo" : "getStarted"}
       previousRoute={previousRoute}
       experimentData={experimentData}
+      logger={logger}
     />
   );
 }
