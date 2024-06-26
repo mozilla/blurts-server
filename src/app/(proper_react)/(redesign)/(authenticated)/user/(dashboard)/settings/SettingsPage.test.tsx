@@ -1020,7 +1020,7 @@ it("closes the cancellation dialog", async () => {
     "popup",
     "exit",
     expect.objectContaining({
-      popup_id: "settings-cancel-monitor-plus-dialog",
+      popup_id: "exited_cancel_flow",
     }),
   );
 });
