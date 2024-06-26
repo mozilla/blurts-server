@@ -1020,7 +1020,7 @@ it("closes the cancellation dialog", async () => {
     "popup",
     "exit",
     expect.objectContaining({
-      popup_id: "settings-cancel-monitor-plus-dialog",
+      popup_id: "exited_cancel_flow",
     }),
   );
 });
@@ -1792,4 +1792,18 @@ it("selects the coupon code discount cta and shows the all-set dialog step", asy
 
   const allSetHeader = await screen.findByText("You’re all set!");
   expect(allSetHeader).toBeInTheDocument();
+
+  const cancellationDialogCloseBtn = screen.getByRole("button", {
+    name: "Close modal",
+  });
+
+  await user.click(cancellationDialogCloseBtn);
+
+  expect(mockedRecordTelemetry).toHaveBeenCalledWith(
+    "popup",
+    "exit",
+    expect.objectContaining({
+      popup_id: "exited_youre_all_set",
+    }),
+  );
 });
