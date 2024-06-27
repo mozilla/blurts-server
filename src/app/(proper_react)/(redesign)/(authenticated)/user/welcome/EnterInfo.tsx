@@ -31,14 +31,13 @@ import { CONST_URL_PRIVACY_POLICY } from "../../../../../../constants";
 import styles from "./EnterInfo.module.scss";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
 import winston from "winston";
-import { NextApiResponse } from "next";
+import { redirect } from "next/navigation";
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 const createProfileAndStartScan = async (
   userInfo: UserInfo,
   logger: winston.Logger,
-  res?: NextApiResponse,
 ): Promise<WelcomeScanBody> => {
   const response = await fetch("/api/v1/user/welcome-scan/create", {
     method: "POST",
@@ -51,8 +50,7 @@ const createProfileAndStartScan = async (
   const result: WelcomeScanBody = await response.json();
   if (!result?.success) {
     logger.error("Could not start scan", { response });
-    res?.status(403).json({ success: false });
-    return { success: false };
+    return redirect("/");
   }
 
   return result;
