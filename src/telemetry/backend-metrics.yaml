@@ -128,7 +128,7 @@ subscription:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - interaction
+      - events
 
   cancel:
     type: event
@@ -144,7 +144,7 @@ subscription:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - technical
+      - events
 
 account:
   create:
@@ -161,7 +161,7 @@ account:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - technical
+      - events
 
   remove:
     type: event
@@ -177,7 +177,7 @@ account:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - technical
+      - events
 
   profile_change:
     type: event
@@ -193,7 +193,7 @@ account:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - technical
+      - events
 
   password_change:
     type: event
@@ -209,4 +209,4 @@ account:
       - rhelmer@mozilla.com
     expires: never
     send_in_pings:
-      - technical
+      - events
