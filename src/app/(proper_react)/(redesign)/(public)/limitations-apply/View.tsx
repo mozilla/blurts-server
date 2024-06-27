@@ -17,22 +17,18 @@ export const LimitationsApplyView = ({
       <div className={styles.limitationsApplyWrapper}>
         <Image src={ClappingIllustration} alt="" />
         <div className={styles.limitationsApplyDescription}>
-          <aside>{l10n.getString("settings-limitations-pill")}</aside>
+          <aside>{l10n.getString("limitations-pill")}</aside>
           <h1>
-            {l10n.getString("settings-limitations-apply-title", {
+            {l10n.getString("limitations-apply-title", {
               discount_percentage_num: "30%",
               discount_duration: 3,
             })}
           </h1>
           <ul>
+            <li>{l10n.getString("limitations-apply-description-one")}</li>
+            <li>{l10n.getString("limitations-apply-description-two")}</li>
             <li>
-              {l10n.getString("settings-limitations-apply-description-one")}
-            </li>
-            <li>
-              {l10n.getString("settings-limitations-apply-description-two")}
-            </li>
-            <li>
-              {l10n.getString("settings-limitations-apply-description-three", {
+              {l10n.getString("limitations-apply-description-three", {
                 discount_percentage_num: "30%",
                 discount_duration: 3,
               })}
