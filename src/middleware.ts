@@ -19,6 +19,19 @@ export function middleware(request: NextRequest) {
   const responseHeaders = new Headers();
   responseHeaders.set("Content-Security-Policy", cspHeader);
 
+  // https://docs.sentry.io/security-legal-pii/security/security-policy-reporting/#content-security-policy
+  const cspReportToHeader = {
+    group: "csp-endpoint",
+    max_age: 10886400,
+    endpoints: [
+      {
+        url: getSentryCspReportUrl(),
+      },
+    ],
+    include_subdomains: true,
+  };
+  responseHeaders.set("Report-To", JSON.stringify(cspReportToHeader));
+
   return NextResponse.next({
     headers: responseHeaders,
     request: {
@@ -54,6 +67,9 @@ function generateCspData() {
   // Most of these values are taken from the Helmet package:
   // https://www.npmjs.com/package/helmet
   const cspHeaderParts = [
+    // https://docs.sentry.io/security-legal-pii/security/security-policy-reporting/#content-security-policy
+    `report-uri ${getSentryCspReportUrl()}`,
+    "report-to csp-endpoint",
     "default-src 'self'",
     "base-uri 'self'",
     `script-src 'self' ` +
@@ -88,4 +104,10 @@ function generateCspData() {
   ];
 
   return { nonce, cspHeader: cspHeaderParts.join(";") };
+}
+
+/** Transforms our Sentry DSN URL to the URL expected by https://docs.sentry.io/security-legal-pii/security/security-policy-reporting/#content-security-policy */
+function getSentryCspReportUrl(): string {
+  const sentryDsnUrl = new URL(process.env.SENTRY_DSN!);
+  return `${sentryDsnUrl.origin}/api${sentryDsnUrl.pathname}/security/?sentry_key=${sentryDsnUrl.username}`;
 }
