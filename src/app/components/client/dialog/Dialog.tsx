@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+"use client";
+
 import { ReactNode, useEffect, useRef } from "react";
 import { AriaDialogProps, useButton, useDialog } from "react-aria";
 import styles from "./Dialog.module.scss";
@@ -44,9 +46,11 @@ export const Dialog = ({
         {...dismissButtonProps}
         ref={dismissButtonRef}
         className={styles.dismissButton}
-        // TODO: Add unit test when changing this code:
-        /* c8 ignore next */
-        onClick={() => onDismiss()}
+        /* c8 ignore start */
+        onClick={() => {
+          onDismiss();
+        }}
+        /* c8 ignore stop */
       >
         <CloseBtn
           alt={l10n.getString("close-modal-alt")}

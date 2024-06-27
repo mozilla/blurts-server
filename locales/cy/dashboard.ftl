@@ -51,6 +51,7 @@ modal-active-number-of-exposures-part-three-all = Unwaith y byddan nhw wedi'u da
 modal-fixed-number-of-exposures-title = Ynghylch eich nifer o ddatgeliadau wedi'u trwsio
 modal-fixed-number-of-exposures-all = Mae'r siart hwn yn cynnwys cyfanswm nifer yr achosion o dor-data sydd wedi'u pennu ar gyfer yr holl gyfeiriadau e-bost rydych chi'n eu monitro ar hyn o bryd. Unwaith y bydd datgeliadau wedi'u marcio fel wedi eu trwsio, byddan nhw'n cael eu hychwanegu at y cyfanswm yma.
 modal-cta-ok = Iawn
+modal-cta-got-it = Iawn
 open-modal-alt = Modal agored
 close-modal-alt = Cau'r moddol
 open-tooltip-alt = Agor cyngor
@@ -159,9 +160,9 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
     }
 dashboard-top-banner-monitor-more-cta = Monitro mwy o e-byst
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = Ynghylch statws datgeliadau
 modal-exposure-status-description-all = Rydym yn chwilio am ddatgeliadau ym mhob achos hysbys o dor-data. Bydd gan eich datgeliadau o'r cyflyrau canlynol:
-modal-exposure-status-action-needed = <b>Angen gweithredu</b>, sef, ei fod yn weithredol ar hyn o bryd a bod angen i chi gymryd camau i'w drwsio.
-modal-exposure-status-fixed = <b>Wedi'i drwsio</b>, sef, fod y datgeliad wedi'i ddatrys ac nid oes unrhyw gamau i chi eu cymryd.
+modal-exposure-indicator-title = Statws datgeliadau
+modal-exposure-indicator-action-needed = Mae angen gweithredu uwch neu â llaw gennych chi i gwblhau gweithred.
+modal-exposure-indicator-fixed = Mae'r datguddiad wedi'i ddatrys ac nid oes unrhyw gamau i chi eu cymryd.

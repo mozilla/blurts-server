@@ -43,10 +43,10 @@ export const CancelFlow = (props: Props) => {
 
   const dialogState = useOverlayTriggerState({
     onOpenChange: (isOpen) => {
-      recordTelemetry("popup", isOpen ? "view" : "exit", {
-        popup_id: "settings-cancel-monitor-plus-dialog",
-      });
       if (isOpen) {
+        recordTelemetry("popup", "view", {
+          popup_id: "settings-cancel-monitor-plus-dialog",
+        });
         setCurrentStep("confirm");
       }
     },
@@ -215,7 +215,15 @@ ${styles.staticAlternative}
           <Dialog
             title={l10n.getString(dialogTitle())}
             illustration={<Animation />}
-            onDismiss={() => dialogState.close()}
+            onDismiss={() => {
+              recordTelemetry("popup", "exit", {
+                popup_id:
+                  step === "all-set"
+                    ? "exited_youre_all_set"
+                    : "exited_cancel_flow",
+              });
+              dialogState.close();
+            }}
           >
             <div className={styles.contentWrapper}>
               {step === "confirm" && (
