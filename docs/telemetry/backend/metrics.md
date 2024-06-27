@@ -8,9 +8,7 @@ This means you might have to go searching through the dependency tree to get a f
 
 # Pings
 
-- [Metrics](#metrics)
-- [Pings](#pings)
-  - [events](#events)
+- [events](#events)
 
 ## events
 
