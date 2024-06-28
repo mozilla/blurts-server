@@ -16,7 +16,7 @@ export type Props = ComponentProps<typeof Link> & {
 };
 
 export const PageLink = (props: Props) => {
-  const { activeClassName, telemetry = {}, ...otherProps } = props;
+  const { activeClassName, telemetry, ...otherProps } = props;
   const pathName = usePathname();
   // TODO: Add unit test when changing this code:
   /* c8 ignore next */
