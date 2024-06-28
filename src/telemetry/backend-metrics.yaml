@@ -1,0 +1,212 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+# For more information on configuring this file:
+# https://mozilla.github.io/glean/book/reference/yaml/metrics.html
+
+---
+$schema: moz://mozilla.org/schemas/glean/metrics/2-0-0
+
+mozilla:
+  account_id:
+    description: Mozilla Accounts ID.
+    type: string
+    lifetime: application
+    send_in_pings:
+      - events
+    notification_emails:
+      - rhelmer@mozilla.com
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    expires: never
+    data_sensitivity:
+      - interaction
+
+monitor:
+  session_id:
+    description: An ID that allows us to track “sessions” of the user experience within the product.
+    type: string
+    lifetime: application
+    send_in_pings:
+      - events
+    notification_emails:
+      - rhelmer@mozilla.com
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    expires: never
+    data_sensitivity:
+      - interaction
+
+  user_id:
+    description: Mozilla Monitor-specific user ID.
+    type: string
+    lifetime: application
+    send_in_pings:
+      - events
+    notification_emails:
+      - rhelmer@mozilla.com
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    expires: never
+    data_sensitivity:
+      - interaction
+
+  plan_tier:
+    description: Which tier of plan the user is on [Free, Plus]
+    type: string
+    lifetime: application
+    send_in_pings:
+      - events
+    notification_emails:
+      - rhelmer@mozilla.com
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    expires: never
+    data_sensitivity:
+      - interaction
+
+page:
+  view:
+    type: event
+    description: |
+      A web page view event distinguishable by the page’s URL.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    send_in_pings:
+      - events
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
+      utm_campaign:
+        description: Attribution campaign.
+        type: string
+      utm_content:
+        description: Attribution content.
+        type: string
+      utm_medium:
+        description: Attribution medium.
+        type: string
+      utm_source:
+        description: Attribution source.
+        type: string
+      utm_term:
+        description: Attribution term.
+        type: string
+      referrer:
+        description: The referring URL, if any.
+        type: string
+
+subscription:
+  activate:
+    type: event
+    description: |
+      A subscription has been activated for this user.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    send_in_pings:
+      - events
+
+  cancel:
+    type: event
+    description: |
+      A subscription cancellation has taken effect, and the user is no longer subscribed to Monitor Plus.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    send_in_pings:
+      - events
+
+account:
+  create:
+    type: event
+    description: |
+      A new Mozilla Monitor account has been created.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    send_in_pings:
+      - events
+
+  remove:
+    type: event
+    description: |
+      An existing Mozilla Monitor account has been deleted.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    send_in_pings:
+      - events
+
+  profile_change:
+    type: event
+    description: |
+      An existing Mozilla Accounts profile has been changed, for example the primary email address.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    send_in_pings:
+      - events
+
+  password_change:
+    type: event
+    description: |
+      The password for an existing Mozilla Account has been changed, and existing auth tokens have been revoked.
+    bugs:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1896222
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    send_in_pings:
+      - events

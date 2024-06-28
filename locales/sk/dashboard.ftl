@@ -47,6 +47,7 @@ modal-active-number-of-exposures-part-three-all = Keď budú vyriešené, budú 
 modal-fixed-number-of-exposures-title = O počte vyriešených odhalení
 modal-fixed-number-of-exposures-all = Tento graf obsahuje celkový počet únikov údajov, ktoré boli vyriešené pre všetky e‑mailové adresy, ktoré momentálne monitorujeme. Keď je niektoré odhalenie označené ako vyriešené, pripočíta sa tu k celkovému súčtu.
 modal-cta-ok = OK
+modal-cta-got-it = Rozumiem
 open-modal-alt = Otvoriť dialógové okno
 close-modal-alt = Zavrieť dialógové okno
 open-tooltip-alt = Otvoriť popisok
@@ -143,11 +144,11 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
     }
 dashboard-top-banner-monitor-more-cta = Monitorovať ďalšie e‑maily
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = O stavoch odhalení
 modal-exposure-status-description-all =
     Hľadáme odhalenia pri všetkých známych únikov údajov.
     Vaše odhalenia budú mať jeden z nasledujúcich stavov:
-modal-exposure-status-action-needed = <b>Vyžaduje sa akcia</b> znamená, že odhalenie je momentálne aktívne a musíte podniknúť kroky na jeho vyriešenie.
-modal-exposure-status-fixed = <b>Vyriešené</b> znamená, že odhalenie bolo vyriešené a nemusíte podniknúť žiadne ďalšie kroky.
+modal-exposure-indicator-title = Stavy pre odhalenia
+modal-exposure-indicator-action-needed = Na dokončenie akcie potrebujete pokročilú alebo manuálnu akciu.
+modal-exposure-indicator-fixed = Odhalenie bolo vyriešené a nemusíte podniknúť žiadne kroky.

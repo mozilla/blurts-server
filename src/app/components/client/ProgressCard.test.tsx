@@ -17,6 +17,14 @@ jest.mock("next/navigation", () => ({
   usePathname: jest.fn(),
 }));
 
+const mockedRecordTelemetry = jest.fn();
+
+jest.mock("../../hooks/useTelemetry", () => {
+  return {
+    useTelemetry: () => mockedRecordTelemetry,
+  };
+});
+
 it("passes the axe accessibility test suite", async () => {
   const ComposedProgressCard = composeStory(ProgressCardItemUsPremium, Meta);
   const { container } = render(<ComposedProgressCard />);
