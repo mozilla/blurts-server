@@ -103,3 +103,5 @@ modal-exposure-status-description-all =
     Roheka ñembyaikua opaite mba’ekuaarã ñembogua ojekuaávape.
     Ne ñembyaikua orekokuaa peteĩva ko’ã tekotee:
 modal-exposure-indicator-title = Mba’éichapa ejehechakuaa
+modal-exposure-indicator-action-needed = Tekotevẽ eku’e mbarete térã nde poite rupi ejapopa hag̃ua.
+modal-exposure-indicator-fixed = Oĩporãma pe jehechaukakue ha natekotevẽvéima ejapo mba’evete.
