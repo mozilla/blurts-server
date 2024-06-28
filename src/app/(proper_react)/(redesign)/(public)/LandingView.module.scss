@@ -7,17 +7,35 @@
 }
 .navbar {
   font: $text-body-xl;
-  padding: $layout-xs $layout-xl;
+  padding: $layout-xs;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  flex-direction: row;
+  justify-content: flex-start;
   background-color: $color-grey-05;
   .navbarLinksContainer {
-    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
     .navbarLinks {
       text-decoration: none;
-      margin-left: $spacing-xl;
       color: $color-grey-50;
+    }
+  }
+  @media screen and (min-width: $screen-sm) {
+    justify-content: flex-end;
+    .navbarLinksContainer {
+      flex-direction: row;
+      justify-content: flex-end;
+      .navbarLinks {
+        margin-left: $spacing-lg;
+      }
+    }
+  }
+  @media screen and (min-width: $screen-md) {
+    padding: $layout-xs $layout-xl;
+    .navbarLinksContainer {
+      .navbarLinks {
+        margin-left: $spacing-xl;
+      }
     }
   }
 }
