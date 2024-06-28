@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 ## Top navbar
+
 landing-all-hero-navbar-link-how-it-works = How it works
 landing-all-hero-navbar-link-pricing = Pricing
 landing-all-hero-navbar-link-faqs = FAQs
