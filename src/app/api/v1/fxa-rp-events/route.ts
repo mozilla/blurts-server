@@ -24,6 +24,7 @@ import { revokeOAuthTokens } from "../../../../utils/fxa";
 import appConstants from "../../../../appConstants";
 import { changeSubscription } from "../../../functions/server/changeSubscription";
 import { deleteAccount } from "../../../functions/server/deleteAccount";
+import { record } from "../../../functions/server/glean";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -117,6 +118,7 @@ interface JwtPayload {
 
 export async function POST(request: NextRequest) {
   let decodedJWT: JwtPayload;
+
   try {
     decodedJWT = (await authenticateFxaJWT(request)) as JwtPayload;
   } catch (e) {
@@ -191,6 +193,12 @@ export async function POST(request: NextRequest) {
           updatedProfileFromEvent,
         });
 
+        record("account", "profile_change", {
+          string: {
+            monitorUserId: subscriber.id.toString(),
+          },
+        });
+
         // get current profiledata
         // Typed as `any` because `subscriber` used to be typed as `any`, and
         // making that type more specific was enough work just by itself:
@@ -225,6 +233,12 @@ export async function POST(request: NextRequest) {
           subscriber: subscriber.id,
           event,
           updateFromEvent,
+        });
+
+        record("account", "password_change", {
+          string: {
+            monitorUserId: subscriber.id.toString(),
+          },
         });
 
         const refreshToken = subscriber.fxa_refresh_token ?? "";
@@ -293,6 +307,7 @@ export async function POST(request: NextRequest) {
             Event: ${event}\n
             updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`,
               );
+
               return NextResponse.json(
                 {
                   success: true,
@@ -331,6 +346,12 @@ export async function POST(request: NextRequest) {
 
             logger.info("activated_onerep_profile", {
               subscriber_id: subscriber.id,
+            });
+
+            record("subscription", "activate", {
+              string: {
+                monitorUserId: subscriber.id.toString(),
+              },
             });
           } else if (
             !updatedSubscriptionFromEvent.isActive &&
@@ -378,6 +399,12 @@ export async function POST(request: NextRequest) {
 
             logger.info("deactivated_onerep_profile", {
               subscriber_id: subscriber.id,
+            });
+
+            record("subscription", "cancel", {
+              string: {
+                monitorUserId: subscriber.id.toString(),
+              },
             });
           }
         } catch (e) {
