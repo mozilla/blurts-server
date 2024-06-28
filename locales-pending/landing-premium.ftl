@@ -8,6 +8,7 @@ landing-all-hero-navbar-link-how-it-works = How it works
 landing-all-hero-navbar-link-pricing = Pricing
 landing-all-hero-navbar-link-faqs = FAQs
 landing-all-hero-navbar-link-all-breaches = All breaches
+
 ##
 
 landing-premium-hero-lead = We scan to see if your phone number, passwords or home address have been leaked, and help you make it private again.
