@@ -102,6 +102,35 @@ async function getSubscriptions(bearerToken) {
     return null
   }
 }
+
+/**
+ * @param {string} bearerToken
+ * @returns {Promise<Array<any> | null>}
+ */
+
+async function getBillingAndSubscriptions(bearerToken) {
+  const subscriptionIdUrl = `${process.env.OAUTH_ACCOUNT_URI}/oauth/mozilla-subscriptions/customer/billing-and-subscriptions`
+  try {
+    const getResp = await fetch(subscriptionIdUrl, {
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${bearerToken}`
+      }
+    })
+
+    if (!getResp.ok) {
+      throw new InternalServerError(`bad response: ${getResp.status}`)
+    } else {
+      console.info(`get_fxa_subscriptions: success`)
+      return await getResp.json()
+    }
+  } catch (e) {
+    if (e instanceof Error) {
+      console.error('get_fxa_subscriptions', { stack: e.stack })
+    }
+    return null
+  }
+}
 /* c8 ignore stop */
 
 /**
@@ -206,6 +235,7 @@ export {
   revokeOAuthTokens,
   getSha1,
   getSubscriptions,
+  getBillingAndSubscriptions,
   deleteSubscription,
   applyCoupon
 }

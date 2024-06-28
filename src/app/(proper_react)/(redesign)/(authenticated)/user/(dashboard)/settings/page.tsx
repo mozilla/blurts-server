@@ -14,7 +14,10 @@ import { getL10n } from "../../../../../../functions/l10n/serverComponents";
 import { getUserEmails } from "../../../../../../../db/tables/emailAddresses";
 import { getBreaches } from "../../../../../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../../../../../utils/hibp";
-import { getSha1 } from "../../../../../../../utils/fxa";
+import {
+  getBillingAndSubscriptions,
+  getSha1,
+} from "../../../../../../../utils/fxa";
 import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
 import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
 import { getLatestOnerepScan } from "../../../../../../../db/tables/onerep_scans";
@@ -26,11 +29,21 @@ import { getSubscriberById } from "../../../../../../../db/tables/subscribers";
 
 export default async function SettingsPage() {
   const session = await getServerSession();
+
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
 
+  if (!session.user.subscriber.fxa_refresh_token) {
+    console.error("FXA token not set");
+    return redirect("/");
+  }
+
   const emailAddresses = await getUserEmails(session.user.subscriber.id);
+  const billingAndSubscriptionInfo = await getBillingAndSubscriptions(
+    session.user.subscriber.fxa_refresh_token,
+  );
+  console.log(JSON.stringify({ billingAndSubscriptionInfo }));
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
