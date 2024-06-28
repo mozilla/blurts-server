@@ -1,0 +1,36 @@
+@import "../../../../tokens";
+
+.limitationsApplyContainer {
+  display: flex;
+  padding: $layout-md $spacing-sm;
+
+  .limitationsApplyWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $layout-md;
+    align-items: center;
+    margin: 0 auto;
+
+    @media screen and (min-width: $screen-md) {
+      flex-direction: row;
+    }
+
+    .limitationsApplyDescription {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-md;
+
+      h1 {
+        font: $text-title-sm;
+        font-family: var(--font-inter);
+      }
+
+      aside {
+        width: fit-content;
+        background-color: $color-purple-10;
+        border-radius: $border-radius-lg;
+        padding: $spacing-sm $spacing-md;
+      }
+    }
+  }
+}

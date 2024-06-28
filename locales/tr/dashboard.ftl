@@ -41,6 +41,7 @@ modal-active-number-of-exposures-part-one-all =
 modal-active-number-of-exposures-part-two = Örneğin, telefon numaranız 10 kez ele geçirildiyse 10 farklı sitede aynı telefon numaranız ele geçirilmiş olabilir veya 5 farklı sitede 2 farklı telefon numaranız ele geçirilmiş olabilir.
 modal-active-number-of-exposures-part-three-all = Çözülen ihlaller, Düzeltildi sayfasındaki toplam düzeltilen ihlal sayısına eklenecektir.
 modal-fixed-number-of-exposures-title = Düzeltilmiş veri ihlali sayınız hakkında
+modal-fixed-number-of-exposures-all = Bu grafik, şu anda izlemekte olduğunuz tüm e-posta adresleri için düzeltilen toplam veri ihlali sayısını içerir. İhlaller düzeltildi olarak işaretlendiğinde buradaki toplam sayıya eklenecektir.
 modal-cta-ok = Tamam
 modal-cta-got-it = Anladım
 open-modal-alt = Kutuyu aç
@@ -133,4 +134,5 @@ modal-exposure-status-description-all =
     Bilinen tüm veri ihlallerindeki riskleri araştırıyoruz.
     Riskleriniz aşağıdaki durumlardan birine sahip olacaktır:
 modal-exposure-indicator-title = İhlal durumları
+modal-exposure-indicator-action-needed = Bir eylemi tamamlamak için gelişmiş veya manuel işlem yapmanız gerekiyor.
 modal-exposure-indicator-fixed = İhlal çözüldüğü için herhangi bir işlem yapmanız gerekmiyor.
