@@ -12,11 +12,11 @@ import { TelemetryLink } from "../../components/client/TelemetryLink";
 
 export type Props = ComponentProps<typeof Link> & {
   activeClassName?: HTMLAttributes<HTMLAnchorElement>["className"];
-  telemetry?: GleanMetricMap["link"]["click"];
+  hasTelemetry?: GleanMetricMap["link"]["click"];
 };
 
 export const PageLink = (props: Props) => {
-  const { activeClassName, telemetry, ...otherProps } = props;
+  const { activeClassName, hasTelemetry, ...otherProps } = props;
   const pathName = usePathname();
   // TODO: Add unit test when changing this code:
   /* c8 ignore next */
@@ -28,10 +28,10 @@ export const PageLink = (props: Props) => {
     activeClassSuffix ?? ""
   }`.trim();
 
-  const pageLink = telemetry ? (
+  const pageLink = hasTelemetry ? (
     <TelemetryLink
       {...otherProps}
-      eventData={telemetry}
+      eventData={hasTelemetry}
       className={className}
       href={otherProps.href as string}
     />
