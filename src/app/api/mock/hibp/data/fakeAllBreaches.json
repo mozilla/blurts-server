@@ -47,6 +47,36 @@
       "IsSpamList": false,
       "IsMalware": false,
       "FaviconUrl": null
-    }
+    },
+    {
+      "Id": 95,
+      "Name": "Bonobos",
+      "Title": "Bonobos",
+      "Domain": "bonobos.com",
+      "BreachDate": "2020-08-14T07:00:00.000Z",
+      "AddedDate": "2021-01-31T00:09:25.000Z",
+      "ModifiedDate": "2021-01-31T00:12:58.000Z",
+      "PwnCount": 2811929,
+      "Description": "In August 2020, the clothing store <a href=\"https://www.bleepingcomputer.com/news/security/bonobos-clothing-store-suffers-a-data-breach-hacker-leaks-70gb-database/\" target=\"_blank\" rel=\"noopener\">Bonobos suffered a data breach</a> that exposed almost 70GB of data containing 2.8 million unique email addresses. The breach also exposed names, physical and IP addresses, phone numbers, order histories and passwords stored as salted SHA-512 hashes, including historical passwords. The breach also exposed partial credit card data including card type, the name on the card, expiry date and the last 4 digits of the card. The data was provided to HIBP by <a href=\"https://dehashed.com/\" target=\"_blank\" rel=\"noopener\">dehashed.com</a>.",
+      "LogoPath": "https://haveibeenpwned.com/Content/Images/PwnedLogos/Bonobos.png",
+      "DataClasses": [
+        "email-addresses",
+        "historical-passwords",
+        "ip-addresses",
+        "names",
+        "partial-credit-card-data",
+        "passwords",
+        "phone-numbers",
+        "physical-addresses",
+        "purchases"
+      ],
+      "IsVerified": true,
+      "IsFabricated": false,
+      "IsSensitive": false,
+      "IsRetired": false,
+      "IsSpamList": false,
+      "IsMalware": false,
+      "FaviconUrl": null
+    }    
   ]
 }

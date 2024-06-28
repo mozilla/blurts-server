@@ -5,6 +5,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { randomInt } from "crypto";
 
 /* 
 
@@ -43,6 +44,7 @@ export async function POST(req: NextRequest) {
     if (erase) {
       jsonData.BROKERS_LIST.data = [];
       jsonData.BROKERS_LIST.valid = false;
+      jsonData.MAGIC_NUM_0 = randomInt(1000, 100000);
     } else {
       if (!newData.brokers || !newData.brokers.data) {
         return NextResponse.json(

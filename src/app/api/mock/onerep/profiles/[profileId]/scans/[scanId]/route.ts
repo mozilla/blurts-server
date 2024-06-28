@@ -11,7 +11,6 @@ export function GET(req: NextRequest) {
   const profileId = Number(req.url.match(/profiles\/([0-9]+)/)![1]);
   const scanId = Number(req.url.match(/scans\/([0-9]+)/)![1]);
 
-  // Check for the availability of the scan
   const responseData = {
     id: scanId,
     profile_id: profileId,

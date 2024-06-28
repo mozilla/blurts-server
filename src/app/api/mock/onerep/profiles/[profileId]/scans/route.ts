@@ -2,14 +2,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { MOCK_ONEREP_SCAN_ID, MOCK_ONEREP_TIME } from "../../../config/config";
 import { NextRequest, NextResponse } from "next/server";
-
-//TODO: mock out the id field and url
+import {
+  MOCK_ONEREP_TIME,
+  MOCK_ONEREP_MAGIC_NUM_1,
+  MOCK_ONEREP_MAGIC_NUM_2,
+} from "../../../config/config";
 
 function extractProfileId(req: NextRequest) {
   const idFromUrl = Number(req.url.match(/profiles\/([0-9]+)\/scans/)![1]);
   return idFromUrl;
+}
+
+function getScanId(profileId: number) {
+  return (profileId * MOCK_ONEREP_MAGIC_NUM_1()) % MOCK_ONEREP_MAGIC_NUM_2();
 }
 
 export function POST(req: NextRequest) {
@@ -18,14 +24,16 @@ export function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid profile ID" });
   }
 
+  const scanId = getScanId(profileId);
+
   const mockResponse = {
-    id: MOCK_ONEREP_SCAN_ID(),
+    id: scanId,
     profile_id: profileId,
     status: "finished",
     reason: "manual",
     created_at: MOCK_ONEREP_TIME(),
     updated_at: MOCK_ONEREP_TIME(),
-    url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${MOCK_ONEREP_SCAN_ID()}`,
+    url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${scanId}`,
   };
 
   return NextResponse.json(mockResponse);
@@ -38,17 +46,18 @@ export function GET(req: NextRequest) {
     return NextResponse.json({ error: "Invalid profile ID" });
   }
 
-  //TODO: mock out ID here and urls
+  const scandId = getScanId(profileId);
+
   const responseData = {
     data: [
       {
-        id: MOCK_ONEREP_SCAN_ID(),
+        id: scandId,
         profile_id: profileId,
         status: "finished",
         reason: "manual",
         created_at: MOCK_ONEREP_TIME(),
         updated_at: MOCK_ONEREP_TIME(),
-        url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${MOCK_ONEREP_SCAN_ID()}`,
+        url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${scandId}`,
       },
     ],
     links: {

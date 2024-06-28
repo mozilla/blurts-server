@@ -2,8 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+// import { randomInt } from "crypto";
 import { StateAbbr } from "../../../../../utils/states";
 import MockUser from "./mockUser.json";
+// import { getLatestOnerepScanResults } from "../../../../../db/tables/onerep_scans";
 
 interface Broker {
   id: number;
@@ -31,8 +33,8 @@ export function MOCK_ONEREP_PROFILE_ID() {
   return MockUser.PROFILE_ID;
 }
 
-export function MOCK_ONEREP_SCAN_ID() {
-  return MockUser.SCAN_ID;
+export function MOCK_ONEREP_MAGIC_NUM_0() {
+  return MockUser.MAGIC_NUM_0;
 }
 
 export function MOCK_ONEREP_TIME() {
@@ -68,9 +70,22 @@ export function MOCK_ONEREP_ADDRESSES() {
   })) as typeOfAddr;
 }
 
-const DEFAULT_NUMBER_BREACHES = 10;
-const magicNum0 = 37680;
-const magicNum1 = 23;
+const DEFAULT_NUMBER_BREACHES = 5;
+const MAGIC_NUM_brokerId = 78127;
+const MAGIC_NUM_1 = 24623;
+const MAGIC_NUM_2 = 2161;
+
+export function MOCK_ONEREP_MAGIC_NUM_1() {
+  return MAGIC_NUM_1;
+}
+
+export function MOCK_ONEREP_MAGIC_NUM_2() {
+  return MAGIC_NUM_2;
+}
+
+function getScanId(profileId: string) {
+  return (Number(profileId) * MAGIC_NUM_1) % MAGIC_NUM_2;
+}
 
 export function MOCK_ONEREP_BROKERS(
   profileId: string,
@@ -78,6 +93,7 @@ export function MOCK_ONEREP_BROKERS(
   perPage: string,
 ) {
   const mockResponseData = MockUser.BROKERS_LIST;
+  const latestScanId = getScanId(profileId);
 
   const mockLinks = {
     first: `${process.env.ONEREP_API_BASE}/scan-results?profile_id%5B0%5D=${profileId}&per_page=${perPage}&page=${page}`,
@@ -112,7 +128,7 @@ export function MOCK_ONEREP_BROKERS(
         return {
           ...(broker as Broker),
           profile_id: profileId,
-          scan_id: MOCK_ONEREP_SCAN_ID(),
+          scan_id: latestScanId,
         };
       });
     }
@@ -120,11 +136,13 @@ export function MOCK_ONEREP_BROKERS(
     return mockResponseData;
   }
 
+  const idStart = latestScanId * MOCK_ONEREP_MAGIC_NUM_0();
+
   const responseData = {
     data: new Array(DEFAULT_NUMBER_BREACHES).fill(null).map((_, index) => ({
-      id: magicNum0 - index,
+      id: idStart - index,
       profile_id: profileId,
-      scan_id: MOCK_ONEREP_SCAN_ID(),
+      scan_id: latestScanId,
       status: "new",
       first_name: MOCK_ONEREP_FIRSTNAME(),
       middle_name: null,
@@ -136,11 +154,11 @@ export function MOCK_ONEREP_BROKERS(
       relatives: [],
       link: `https://mockexample.com/link-to-databroker${index}`,
       data_broker: `mockexample${index}.com`,
-      data_broker_id: magicNum1 - index,
+      data_broker_id: MAGIC_NUM_brokerId - index,
       optout_attempts: 0,
       created_at: MOCK_ONEREP_TIME(),
       updated_at: MOCK_ONEREP_TIME(),
-      url: `${process.env.ONEREP_API_BASE}scan-results/${magicNum0 - index}`,
+      url: `${process.env.ONEREP_API_BASE}scan-results/${idStart - index}`,
     })),
     links: mockLinks,
     meta: mockMeta,

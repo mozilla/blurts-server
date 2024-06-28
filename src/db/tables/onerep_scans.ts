@@ -4,7 +4,6 @@
 
 import createDbConnection from "../connect.js";
 import { logger } from "../../app/functions/server/logging";
-import { MOCK_ONEREP_SCAN_ID } from "../../app/api/mock/onerep/config/config.ts";
 
 import {
   ScanResult,
@@ -206,7 +205,7 @@ async function addOnerepScanResults(
   onerepProfileId: number,
   onerepScanResults: Array<ScanResult>,
 ) {
-  const scanResultsMap = onerepScanResults.map((scanResult) => ({
+  let scanResultsMap = onerepScanResults.map((scanResult) => ({
     onerep_scan_result_id: scanResult.id,
     onerep_scan_id: scanResult.scan_id,
     link: scanResult.link,
@@ -241,11 +240,35 @@ async function addOnerepScanResults(
   });
 
   if (scanResultsMap.length > 0) {
-    //Delete previous records to allow dynamic mock data configuration.
-    if (process.env.ONEREP_API_BASE!.includes("localhost")) {
-      await knex("onerep_scan_results")
-        .where("onerep_scan_id", MOCK_ONEREP_SCAN_ID())
-        .del();
+    const scan_id = scanResultsMap[0].onerep_scan_id;
+
+    // Delete previous records to allow dynamic mock data configuration, maintaining the 'manually_resolved' field.
+    if (!process.env.ONEREP_API_BASE!.includes("mozilla.api.onerep.com")) {
+      const existingRecords = await knex("onerep_scan_results")
+        .where("onerep_scan_id", scan_id)
+        .select("onerep_scan_result_id", "manually_resolved");
+
+      const resolvedStatusMap = new Map();
+      existingRecords.forEach((record) => {
+        resolvedStatusMap.set(
+          record.onerep_scan_result_id,
+          record.manually_resolved,
+        );
+      });
+
+      await knex("onerep_scan_results").where("onerep_scan_id", scan_id).del();
+
+      scanResultsMap = scanResultsMap.map((item) => {
+        if (resolvedStatusMap.has(item.onerep_scan_result_id)) {
+          return {
+            ...item,
+            manually_resolved: resolvedStatusMap.get(
+              item.onerep_scan_result_id,
+            ),
+          };
+        }
+        return item;
+      });
     }
 
     await knex("onerep_scan_results")

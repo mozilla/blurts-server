@@ -28,7 +28,7 @@ export function GET() {
   const userEmail = process.env.E2E_TEST_ACCOUNT_EMAIL;
   //TODO: getServerSession doesn't work here for some reason
   const currentUserSha = getSha1(userEmail as BinaryLike);
-  logger.info("Mock endpoint: /breachedaccount/range/");
+  logger.info("Mock endpoint: /range/search/");
 
   let data = fakeBreaches.data as BreachedAccountResponse;
 
@@ -36,5 +36,7 @@ export function GET() {
     ...elem,
     hashSuffix: currentUserSha.slice(6).toUpperCase(),
   }));
-  return NextResponse.json(data);
+  const res = NextResponse.json(data);
+  console.log("opa1", data);
+  return res;
 }

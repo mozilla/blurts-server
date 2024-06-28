@@ -10,7 +10,6 @@ import {
   removeUnicodeChars,
   clickOnATagCheckDomain,
   escapeRegExp,
-  forceLoginAs,
 } from "../utils/helpers.js";
 
 // bypass login
@@ -426,12 +425,14 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Breaches Scan,
       const count = await dashboardPage.allExposures.count();
       // Fix first exposure
       await dashboardPage.markAsFixed.click();
-
+      // await new Promise(resolve => setTimeout(resolve, 10000));
       for (let i = 1; i < count; i++) {
         const exposure = dashboardPage.allExposures.nth(i);
         await exposure.click();
 
+        // await new Promise(resolve => setTimeout(resolve, 2000));
         if (await dashboardPage.markAsFixed.isVisible()) {
+          // await new Promise(resolve => setTimeout(resolve, 2000));
           await dashboardPage.markAsFixed.click();
         }
       }
@@ -448,6 +449,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Breaches Scan,
     await dashboardPage.fixedTab.click();
     const fixedExposures = await dashboardPage.numFixed.textContent();
     expect(fixedExposures as string).toMatch(initialExposuresCount);
+    // expect(false).toBeTruthy();
   });
 });
 
@@ -720,13 +722,14 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation`, (
 });
 
 test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`, () => {
-  test.beforeEach(async ({ landingPage, page, authPage }) => {
-    const emailToUse = process.env
-      .E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED as string;
-    const pwdToUse = process.env.E2E_TEST_ACCOUNT_PASSWORD as string;
-    expect(emailToUse).not.toBeUndefined();
-    expect(pwdToUse).not.toBeUndefined();
-    await forceLoginAs(emailToUse, pwdToUse, page, landingPage, authPage);
+  test.beforeEach(async ({ dashboardPage, page }) => {
+    await dashboardPage.open();
+
+    try {
+      await checkAuthState(page);
+    } catch {
+      console.log("[E2E_LOG] - No fxa auth required, proceeding...");
+    }
   });
 
   test("Verify that the High risk data breaches step is displayed correctly", async ({

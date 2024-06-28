@@ -4,7 +4,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 
-export function PUT(req: NextRequest) {
+export function POST(req: NextRequest) {
   const profileId: number = Number(req.url.match(/profiles\/([0-9]+)/)![1]);
 
   if (!profileId || isNaN(profileId)) {

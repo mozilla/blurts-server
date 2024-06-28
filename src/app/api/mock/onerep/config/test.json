@@ -2,8 +2,8 @@
   "data": [
     {
       "id": 45000,
-      "profile_id": 0,
-      "scan_id": 0,
+      "profile_id": -1,
+      "scan_id": -1,
       "status": "new",
       "first_name": "John",
       "middle_name": null,
