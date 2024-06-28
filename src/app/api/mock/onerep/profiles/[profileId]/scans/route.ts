@@ -8,6 +8,7 @@ import {
   MOCK_ONEREP_MAGIC_NUM_1,
   MOCK_ONEREP_MAGIC_NUM_2,
 } from "../../../config/config";
+import { errorIfProduction } from "../../../../utils/errorThrower";
 
 function extractProfileId(req: NextRequest) {
   const idFromUrl = Number(req.url.match(/profiles\/([0-9]+)\/scans/)![1]);
@@ -19,6 +20,9 @@ function getScanId(profileId: number) {
 }
 
 export function POST(req: NextRequest) {
+  const prodError = errorIfProduction();
+  if (prodError) return prodError;
+
   const profileId: number = extractProfileId(req);
   if (!profileId || isNaN(profileId)) {
     return NextResponse.json({ error: "Invalid profile ID" });
@@ -40,6 +44,9 @@ export function POST(req: NextRequest) {
 }
 
 export function GET(req: NextRequest) {
+  const prodError = errorIfProduction();
+  if (prodError) return prodError;
+
   const profileId: number = extractProfileId(req);
 
   if (!profileId || isNaN(profileId)) {

@@ -121,7 +121,7 @@ async function onerepFetch(
 
   //If mock, remove the first slash so that it doesn't overwrite the path
   if (
-    onerepApiBase.includes("localhost") &&
+    onerepApiBase.includes("/api/mock") &&
     path.length > 1 &&
     path[0] === "/"
   ) {

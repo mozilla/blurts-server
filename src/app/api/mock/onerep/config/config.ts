@@ -70,7 +70,7 @@ export function MOCK_ONEREP_ADDRESSES() {
   })) as typeOfAddr;
 }
 
-const DEFAULT_NUMBER_BREACHES = 5;
+const DEFAULT_NUMBER_BREACHES = 10;
 const MAGIC_NUM_brokerId = 78127;
 const MAGIC_NUM_1 = 24623;
 const MAGIC_NUM_2 = 2161;

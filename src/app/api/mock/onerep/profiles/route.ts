@@ -5,6 +5,7 @@
 import { MOCK_ONEREP_STATUS, MOCK_ONEREP_TIME } from "../config/config.ts";
 import { NextRequest, NextResponse } from "next/server";
 import { randomInt } from "crypto";
+import { errorIfProduction } from "../../utils/errorThrower.ts";
 
 export type RequestProfileData = {
   first_name: string;
@@ -43,6 +44,9 @@ type ResponseProfileData = {
 };
 
 export async function POST(req: NextRequest) {
+  const prodError = errorIfProduction();
+  if (prodError) return prodError;
+
   const profileId = randomInt(1000, 10000);
   try {
     if (req.body === null) {

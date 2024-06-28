@@ -243,7 +243,7 @@ async function addOnerepScanResults(
     const scan_id = scanResultsMap[0].onerep_scan_id;
 
     // Delete previous records to allow dynamic mock data configuration, maintaining the 'manually_resolved' field.
-    if (!process.env.ONEREP_API_BASE!.includes("mozilla.api.onerep.com")) {
+    if (process.env.ONEREP_API_BASE!.includes("/api/mock")) {
       const existingRecords = await knex("onerep_scan_results")
         .where("onerep_scan_id", scan_id)
         .select("onerep_scan_result_id", "manually_resolved");

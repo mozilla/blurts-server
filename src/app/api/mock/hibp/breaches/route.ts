@@ -5,6 +5,7 @@
 import { NextResponse } from "next/server";
 import { logger } from "../../../../functions/server/logging";
 import fakeAllBreaches from "../data/fakeAllBreaches.json";
+import { errorIfProduction } from "../../utils/errorThrower";
 
 type BreachesListResponse = {
   Id: number;
@@ -28,15 +29,9 @@ type BreachesListResponse = {
 }[];
 
 export function GET() {
-  const { APP_ENV } = process.env;
+  const prodError = errorIfProduction();
+  if (prodError) return prodError;
 
-  // Check if APP_ENV is set to production
-  if (APP_ENV === "production") {
-    return NextResponse.json(
-      { error: "Endpoint not available in production environment" },
-      { status: 403 },
-    );
-  }
   logger.info("Mock endpoint: /breaches");
 
   const data = fakeAllBreaches.data as BreachesListResponse;

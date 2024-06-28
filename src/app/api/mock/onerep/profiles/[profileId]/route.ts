@@ -12,9 +12,9 @@ import {
 } from "../../config/config.ts";
 import { ShowProfileResponse } from "../../../../../functions/server/onerep.ts";
 import { NextRequest, NextResponse } from "next/server";
+import { errorIfProduction } from "../../../utils/errorThrower.ts";
 
 // Mocked profile data to simulate response
-//TODO: mock out the URL
 
 async function extractProfileId(req: NextRequest) {
   const idFromBody: number = req.body !== null && (await req.json()).profileId;
@@ -25,6 +25,9 @@ async function extractProfileId(req: NextRequest) {
 
 // Mock endpoint to simulate fetching a profile by ID
 export async function GET(req: NextRequest) {
+  const prodError = errorIfProduction();
+  if (prodError) return prodError;
+
   // Extract profileId from query parameters or request body
   const profileId: number = await extractProfileId(req);
 

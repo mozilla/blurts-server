@@ -6,10 +6,12 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 import { randomInt } from "crypto";
+import { logger } from "../../../../functions/server/logging";
 
 /* 
 
 Example fetch, where obj conforms to Broker interface in config.ts
+Set erase to true if you want to use default response, or false if obj
 
 fetch('/api/mock/onerep/config', {
   method: 'POST',
@@ -26,7 +28,16 @@ fetch('/api/mock/onerep/config', {
 
 */
 
-export async function POST(req: NextRequest) {
+export function POST() {
+  logger.info(`Attempted to access ${updateJsonFile.name}`);
+
+  return NextResponse.json(
+    { error: "Endpoint not available yet" },
+    { status: 403 },
+  );
+}
+
+async function updateJsonFile(req: NextRequest) {
   // Define the path to the JSON file
   const jsonFilePath = path.join(
     process.cwd(),

@@ -2,12 +2,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-// pages/api/profiles/[profileId]/scans/[scanId].ts
-
+import { errorIfProduction } from "../../../../../utils/errorThrower";
 import { MOCK_ONEREP_TIME } from "../../../../config/config";
 import { NextRequest, NextResponse } from "next/server";
 
 export function GET(req: NextRequest) {
+  const prodError = errorIfProduction();
+  if (prodError) return prodError;
+
   const profileId = Number(req.url.match(/profiles\/([0-9]+)/)![1]);
   const scanId = Number(req.url.match(/scans\/([0-9]+)/)![1]);
 

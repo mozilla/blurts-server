@@ -7,6 +7,7 @@ import { logger } from "../../../../../../functions/server/logging";
 import { getSha1 } from "../../../../../../../utils/fxa";
 import fakeBreaches from "../../../data/fakeBreaches.json";
 import type { BinaryLike } from "crypto";
+import { errorIfProduction } from "../../../../utils/errorThrower";
 
 type BreachedAccountResponse = {
   hashSuffix: string;
@@ -14,15 +15,8 @@ type BreachedAccountResponse = {
 }[];
 
 export function GET() {
-  const { APP_ENV } = process.env;
-
-  // Check if APP_ENV is set to production
-  if (APP_ENV === "production") {
-    return NextResponse.json(
-      { error: "Endpoint not available in production environment" },
-      { status: 403 },
-    );
-  }
+  const prodError = errorIfProduction();
+  if (prodError) return prodError;
 
   // Mock data for test email, can be randomized
   const userEmail = process.env.E2E_TEST_ACCOUNT_EMAIL;
@@ -37,6 +31,5 @@ export function GET() {
     hashSuffix: currentUserSha.slice(6).toUpperCase(),
   }));
   const res = NextResponse.json(data);
-  console.log("opa1", data);
   return res;
 }
