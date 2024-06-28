@@ -28,7 +28,6 @@ import {
   applyCurrentCouponCode,
   checkCurrentCouponCode,
 } from "../../../../../../functions/server/applyCoupon";
-import { getSubscriptions } from "../../../../../../../utils/fxa";
 
 export type AddEmailFormState =
   | { success?: never }
@@ -219,23 +218,5 @@ export async function onCheckUserHasCurrentCouponSet() {
   }
 
   const result = await checkCurrentCouponCode(session.user.subscriber);
-  return result;
-}
-
-export async function getSubscriptionInfo() {
-  const session = await getServerSession();
-
-  if (!session?.user.subscriber?.fxa_access_token) {
-    logger.error(`User does not have fxa token set`);
-
-    return {
-      error: "",
-      errorMessage: `User does not have fxa token set`,
-    };
-  }
-
-  const result = await getSubscriptions(
-    session.user.subscriber.fxa_access_token,
-  );
   return result;
 }
