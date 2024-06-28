@@ -77,7 +77,7 @@
     "canvas-confetti": "^1.9.3",
     "dotenv": "^16.4.5",
     "eslint-config-next": "^14.2.4",
-    "jsdom": "^24.0.0",
+    "jsdom": "^24.1.0",
     "jsonwebtoken": "^9.0.2",
     "jwk-to-pem": "^2.0.5",
     "knex": "^3.1.0",
