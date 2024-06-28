@@ -24,6 +24,7 @@ export type Props = {
   children: ReactNode;
   nonce: string;
   countryCode: string;
+  howItWorksFlagEnabled: boolean;
 };
 
 export const Shell = (props: Props) => {
@@ -44,6 +45,7 @@ export const Shell = (props: Props) => {
         yearlySubscriptionUrl={yearlySubscriptionUrl}
         fxaSettingsUrl={process.env.FXA_SETTINGS_URL!}
         subscriptionBillingAmount={getSubscriptionBillingAmount()}
+        howItWorksFlagEnabled={props.howItWorksFlagEnabled}
       >
         <div className={styles.wrapper}>
           <nav
@@ -77,7 +79,7 @@ export const Shell = (props: Props) => {
                   {l10n.getString("main-nav-link-settings-label")}
                 </PageLink>
               </li>
-              {props.countryCode === "us" && (
+              {props.countryCode === "us" && props.howItWorksFlagEnabled && (
                 <li key="how-it-works">
                   <PageLink
                     href="/how-it-works"
@@ -107,6 +109,7 @@ export const Shell = (props: Props) => {
               l10n={props.l10n}
               session={props.session}
               countryCode={props.countryCode}
+              howItWorksFlagEnabled={props.howItWorksFlagEnabled}
             />
           </div>
         </div>

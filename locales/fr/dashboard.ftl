@@ -47,6 +47,7 @@ modal-active-number-of-exposures-part-three-all = Une fois résolues, elles sero
 modal-fixed-number-of-exposures-title = À propos du nombre de fuites résolues
 modal-fixed-number-of-exposures-all = Ce graphique comprend le nombre total de fuites de données qui ont été corrigées pour toutes les adresses e-mail que vous surveillez actuellement. Une fois les fuites marquées comme corrigées, elles seront ajoutées au total ici.
 modal-cta-ok = OK
+modal-cta-got-it = J’ai compris
 open-modal-alt = Ouvrir la boîte de dialogue
 close-modal-alt = Fermer la boîte de dialogue
 open-tooltip-alt = Ouvrir l’infobulle
@@ -123,9 +124,9 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
     }
 dashboard-top-banner-monitor-more-cta = Surveiller davantage d’adresses e-mail
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = À propos des états des différentes fuites
 modal-exposure-status-description-all = Nous recherchons la présence de vos données dans toutes les fuites de données connues. Vos fuites auront l’un des états suivants :
-modal-exposure-status-action-needed = <b>Action nécessaire</b> signifie que la fuite est active et que vous devez prendre des mesures pour la résoudre.
-modal-exposure-status-fixed = <b>Résolue</b> signifie que la fuite a été résolue et que vous n’avez aucune action à accomplir.
+modal-exposure-indicator-title = État des fuites
+modal-exposure-indicator-action-needed = Une intervention avancée ou manuelle de votre part est nécessaire pour terminer une action.
+modal-exposure-indicator-fixed = La fuite a été résolue, vous n’avez aucune action à accomplir.

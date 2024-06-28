@@ -45,7 +45,10 @@ export type FeatureFlagName =
   | "CancellationFlow"
   | "ConfirmCancellation"
   | "FirstDataBrokerRemovalFixedEmail"
-  | "LatestScanDateCsatSurvey";
+  | "DiscountCouponNextThreeMonths"
+  | "LatestScanDateCsatSurvey"
+  | "HowItWorksPage"
+  | "AdditionalRemovalStatuses";
 
 /**
  * @param options
