@@ -43,6 +43,7 @@ modal-active-number-of-exposures-part-three-all = Após a sua resolução, serã
 modal-fixed-number-of-exposures-title = Sobre o seu número de exposições corrigidas
 modal-fixed-number-of-exposures-all = Este gráfico inclui o número total de violações de dados que foram corrigidas para todos os endereços de e-mail que está atualmente a monitorizar. Assim que as exposições forem marcadas como corrigidas, as mesmas serão adicionadas ao total.
 modal-cta-ok = Ok
+modal-cta-got-it = Percebi
 open-modal-alt = Abrir modal
 close-modal-alt = Fechar modal
 open-tooltip-alt = Abrir dica
@@ -127,9 +128,9 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
     }
 dashboard-top-banner-monitor-more-cta = Monitorizar mais e-mails
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = Sobre os estados das exposições
 modal-exposure-status-description-all = Procurámos por exposições em todas as violações de dados conhecidas. As suas exposições terão um dos seguintes estados:
-modal-exposure-status-action-needed = <b>Ação necessária</b> significa que a mesma está atualmente ativa e que deve tomar medidas para a corrigir.
-modal-exposure-status-fixed = <b>Corrigida</b> significa que a exposição foi resolvida e não existe nenhuma ação a tomar.
+modal-exposure-indicator-title = Estados de exposição
+modal-exposure-indicator-action-needed = É necessária uma ação avançada ou manual para concluir uma ação.
+modal-exposure-indicator-fixed = A exposição foi resolvida e não existe qualquer ação a tomar.

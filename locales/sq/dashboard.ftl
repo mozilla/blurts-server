@@ -43,6 +43,7 @@ modal-active-number-of-exposures-part-three-all = Pasi të jenë zgjidhur, do t�
 modal-fixed-number-of-exposures-title = Rreth numrit të ekspozimeve tuaja të ndrequra
 modal-fixed-number-of-exposures-all = Ky grafi përfshin numrin e cenimeve të të dhënave gjithsej që janë ndrequr për krejt adresat email që mbikëqyrni aktualisht. Pasi ekspozimeve t’u jetë vënë shenjë si të ndrequra, do të shtohen te shumë këtu.
 modal-cta-ok = OK
+modal-cta-got-it = E mora vesh
 open-modal-alt = Hap dritare modale
 close-modal-alt = Mbylle dritaren modale
 open-tooltip-alt = Hap ndihmëzën
@@ -127,11 +128,11 @@ dashboard-top-banner-non-us-your-data-is-protected-description =
     }
 dashboard-top-banner-monitor-more-cta = Mbikëqyrni më tepër email-e
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
-modal-exposure-status-title = Rreth gjendjesh ekspozimi
 modal-exposure-status-description-all =
     Kërkojmë për ekspozime në krejt cenimet e ditura të të dhënave.
     Ekspozimet tuaja do të kenë një nga gjendjet vijuese:
-modal-exposure-status-action-needed = <b>Lyp veprim</b> që do të thotë është aktualisht aktive dhe duhet të ndërmerrni hapa për ta ndrequr.
-modal-exposure-status-fixed = <b>Ndrequr</b> do të thotë se ekspozimi është zgjidhur dhe s’ka ndonjë veprim të duhet ta bëni.
+modal-exposure-indicator-title = Gjendje ekspozimesh
+modal-exposure-indicator-action-needed = Që të plotësohet një veprim, lypset ndërhyrje e thelluar ose dorazi nga ju.
+modal-exposure-indicator-fixed = Ekspozimi është zgjidhur dhe s’ka ndonjë veprim për ta bërë ju.

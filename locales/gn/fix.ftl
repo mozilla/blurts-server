@@ -87,6 +87,7 @@ high-risk-breach-bank-account-step-three = Ehechajey ne mba’ete oĩre tepyme�
 # Social Security Number Breaches
 
 high-risk-breach-social-security-title = Nde seguridad social papapy ojehechakuaa
+high-risk-breach-social-security-description = Umi mondaha ikatu oguenohẽ pirapire térã kuatia’atã ñemurã nde papapy rupive. Eku’e pya’e ani eñemonda.
 high-risk-breach-social-security-step-one = Eñemo’ã <link_to_info>embohekóvo kyhyjerã ani ejehode térã ejokóvo viru jeporu.</link_to_info>
 high-risk-breach-social-security-step-two = <link_to_info>Ehecha nde deveha marandu’i</link_to_info> eikuaa hag̃ua oĩpa emonei’ỹva.
 

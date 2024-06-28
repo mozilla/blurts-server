@@ -33,7 +33,7 @@ export const TelemetryLink = ({
   return target ? (
     <a
       {...props}
-      className={styles.link}
+      className={`${styles.link} ${props.className ? props.className : ""}`}
       target={target}
       onClick={(event) => {
         record("link", "click", eventData);
