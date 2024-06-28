@@ -20,6 +20,7 @@ import { TelemetryButton } from "../../../../../../components/client/TelemetryBu
 import { ExperimentData } from "../../../../../../../telemetry/generated/nimbus/experiments";
 import { onApplyCouponCode, onCheckUserHasCurrentCouponSet } from "./actions";
 import { TelemetryLink } from "../../../../../../components/client/TelemetryLink";
+import { OpenInNew } from "../../../../../../components/server/Icons";
 
 export type Props = {
   fxaSubscriptionsUrl: string;
@@ -42,10 +43,10 @@ export const CancelFlow = (props: Props) => {
 
   const dialogState = useOverlayTriggerState({
     onOpenChange: (isOpen) => {
-      recordTelemetry("popup", isOpen ? "view" : "exit", {
-        popup_id: "settings-cancel-monitor-plus-dialog",
-      });
       if (isOpen) {
+        recordTelemetry("popup", "view", {
+          popup_id: "settings-cancel-monitor-plus-dialog",
+        });
         setCurrentStep("confirm");
       }
     },
@@ -128,6 +129,7 @@ export const CancelFlow = (props: Props) => {
           loop={true}
           muted={true}
           className={styles.cancellationAnimation}
+          playsInline
         >
           <source
             // Unfortunately video files cannot currently be imported, so make
@@ -180,6 +182,21 @@ ${styles.staticAlternative}
     );
   };
 
+  const errorApplyingCoupon = (
+    <p className={styles.errorApplyingCoupon}>
+      {l10n.getFragment("settings-unsubscribe-dialog-promotion-unsuccessful", {
+        elems: {
+          try_again_link: (
+            <Button
+              variant="tertiary"
+              onPress={() => void handleApplyCouponCode()}
+            />
+          ),
+        },
+      })}
+    </p>
+  );
+
   return (
     <>
       <Button
@@ -198,7 +215,15 @@ ${styles.staticAlternative}
           <Dialog
             title={l10n.getString(dialogTitle())}
             illustration={<Animation />}
-            onDismiss={() => dialogState.close()}
+            onDismiss={() => {
+              recordTelemetry("popup", "exit", {
+                popup_id:
+                  step === "all-set"
+                    ? "exited_youre_all_set"
+                    : "exited_cancel_flow",
+              });
+              dialogState.close();
+            }}
           >
             <div className={styles.contentWrapper}>
               {step === "confirm" && (
@@ -220,11 +245,24 @@ ${styles.staticAlternative}
                         }}
                         variant="primary"
                         onPress={() => void handleApplyCouponCode()}
-                        className={`${styles.discountCta} ${styles.primaryCta}`}
+                        className={`${couponSuccess === false && styles.hidden} ${styles.discountCta} ${styles.primaryCta}`}
                       >
                         {discountedNext3Months.headline}
                       </TelemetryButton>
-                      <small>{discountedNext3Months.subtitle}</small>
+                      <TelemetryLink
+                        eventData={{
+                          link_id: "limitations_apply",
+                        }}
+                        href="/limitations-apply"
+                        target="_blank"
+                        className={`${couponSuccess === false && styles.hidden} ${styles.limitationsApplyLink}`}
+                      >
+                        <small className={styles.limitationsApplyText}>
+                          {discountedNext3Months.subtitle}
+                          <OpenInNew alt="" />
+                        </small>
+                      </TelemetryLink>
+                      {couponSuccess === false && errorApplyingCoupon}
                     </>
                   ) : (
                     <TelemetryButton
