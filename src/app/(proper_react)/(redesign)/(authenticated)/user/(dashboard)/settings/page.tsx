@@ -34,15 +34,18 @@ export default async function SettingsPage() {
     return redirect("/");
   }
 
-  if (!session.user.subscriber.fxa_refresh_token) {
+  if (!session.user.subscriber.fxa_access_token) {
     console.error("FXA token not set");
     return redirect("/");
   }
 
   const emailAddresses = await getUserEmails(session.user.subscriber.id);
   const billingAndSubscriptionInfo = await getBillingAndSubscriptions(
-    session.user.subscriber.fxa_refresh_token,
+    session.user.subscriber.fxa_access_token,
   );
+
+  console.log("access token,", session.user.subscriber.fxa_access_token);
+
   console.log(JSON.stringify({ billingAndSubscriptionInfo }));
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
