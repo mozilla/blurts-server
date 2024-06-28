@@ -43,7 +43,7 @@ export const View = (props: Props) => {
     <>
       <AccountDeletionNotification />
       <main className={styles.wrapper}>
-        {props.countryCode === "us" && <TopNavBar l10n={props.l10n} />}
+        {props.eligibleForPremium && <TopNavBar l10n={props.l10n} />}
         <header className={styles.hero}>
           <div className={styles.heroContent}>
             <h1>{props.l10n.getString("landing-all-hero-title")}</h1>
