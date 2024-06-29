@@ -14,7 +14,10 @@ function getScanId(profileId: number) {
   return (profileId * MOCK_ONEREP_MAGIC_NUM_1()) % MOCK_ONEREP_MAGIC_NUM_2();
 }
 
-export function POST({ params }: { params: { profileId: number } }) {
+export function POST(
+  _: NextRequest,
+  { params }: { params: { profileId: number } },
+) {
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
