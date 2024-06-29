@@ -5,11 +5,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { errorIfProduction } from "../../../../utils/errorThrower";
 
-export function PUT(req: NextRequest) {
+export function PUT(
+  _: NextRequest,
+  { params }: { params: { profileId: string } },
+) {
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
-  const profileId: number = Number(req.url.match(/profiles\/([0-9]+)/)![1]);
+  const profileId: number = Number(params.profileId);
 
   if (!profileId || isNaN(profileId)) {
     return NextResponse.json({ error: "Invalid profile ID" });

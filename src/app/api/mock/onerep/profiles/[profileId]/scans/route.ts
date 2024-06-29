@@ -10,20 +10,15 @@ import {
 } from "../../../config/config";
 import { errorIfProduction } from "../../../../utils/errorThrower";
 
-function extractProfileId(req: NextRequest) {
-  const idFromUrl = Number(req.url.match(/profiles\/([0-9]+)\/scans/)![1]);
-  return idFromUrl;
-}
-
 function getScanId(profileId: number) {
   return (profileId * MOCK_ONEREP_MAGIC_NUM_1()) % MOCK_ONEREP_MAGIC_NUM_2();
 }
 
-export function POST(req: NextRequest) {
+export function POST({ params }: { params: { profileId: number } }) {
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
-  const profileId: number = extractProfileId(req);
+  const profileId: number = params.profileId;
   if (!profileId || isNaN(profileId)) {
     return NextResponse.json({ error: "Invalid profile ID" });
   }
@@ -43,11 +38,16 @@ export function POST(req: NextRequest) {
   return NextResponse.json(mockResponse);
 }
 
-export function GET(req: NextRequest) {
+export function GET(
+  _: NextRequest,
+  { params }: { params: { profileId: string } },
+) {
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
-  const profileId: number = extractProfileId(req);
+  // Extract profileId from query parameters or request body
+  // const profileId: number = await extractProfileId(req)
+  const profileId: number = Number(params.profileId);
 
   if (!profileId || isNaN(profileId)) {
     return NextResponse.json({ error: "Invalid profile ID" });

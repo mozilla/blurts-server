@@ -6,12 +6,15 @@ import { errorIfProduction } from "../../../../../utils/errorThrower";
 import { MOCK_ONEREP_TIME } from "../../../../config/config";
 import { NextRequest, NextResponse } from "next/server";
 
-export function GET(req: NextRequest) {
+export function GET(
+  _: NextRequest,
+  { params }: { params: { profileId: string; scandId: string } },
+) {
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
-  const profileId = Number(req.url.match(/profiles\/([0-9]+)/)![1]);
-  const scanId = Number(req.url.match(/scans\/([0-9]+)/)![1]);
+  const profileId: number = Number(params.profileId);
+  const scanId: number = Number(params.scandId);
 
   const responseData = {
     id: scanId,
@@ -22,5 +25,6 @@ export function GET(req: NextRequest) {
     updated_at: MOCK_ONEREP_TIME(),
     url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${scanId}`,
   };
+
   return NextResponse.json(responseData);
 }

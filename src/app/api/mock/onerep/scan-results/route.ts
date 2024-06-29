@@ -10,10 +10,17 @@ export function GET(req: NextRequest) {
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
-  const page = req.url.match(/page=([0-9]+)/)![1] || "1";
-  const perPage = req.url.match(/per_page=([0-9]+)/)![1] || "100";
+  const page = req.nextUrl.searchParams.get("page") || "1";
+  const perPage = req.nextUrl.searchParams.get("per_page") || "100";
 
-  const profileId = req.url.match(/profile_id......=([0-9]+)&/)![1];
+  const profileId = req.nextUrl.searchParams.get("profile_id[]");
+
+  if (profileId === null) {
+    return NextResponse.json(
+      { error: "No 'profile_id' provided!" },
+      { status: 400 },
+    );
+  }
 
   return NextResponse.json(MOCK_ONEREP_BROKERS(profileId, page, perPage));
 }

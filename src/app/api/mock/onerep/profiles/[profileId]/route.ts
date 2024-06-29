@@ -14,22 +14,15 @@ import { ShowProfileResponse } from "../../../../../functions/server/onerep.ts";
 import { NextRequest, NextResponse } from "next/server";
 import { errorIfProduction } from "../../../utils/errorThrower.ts";
 
-// Mocked profile data to simulate response
-
-async function extractProfileId(req: NextRequest) {
-  const idFromBody: number = req.body !== null && (await req.json()).profileId;
-  if (idFromBody) return idFromBody;
-  const idFromUrl: number = Number(req.url.match(/profiles\/([0-9]+)/)![1]);
-  return idFromUrl;
-}
-
 // Mock endpoint to simulate fetching a profile by ID
-export async function GET(req: NextRequest) {
+export function GET(
+  _: NextRequest,
+  { params }: { params: { profileId: string } },
+) {
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
-  // Extract profileId from query parameters or request body
-  const profileId: number = await extractProfileId(req);
+  const profileId: number = Number(params.profileId);
 
   if (!profileId || isNaN(profileId)) {
     return NextResponse.json({ error: "Invalid profile ID" }, { status: 400 });
