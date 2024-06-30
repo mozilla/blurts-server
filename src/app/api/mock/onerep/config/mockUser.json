@@ -1,17 +1,24 @@
 {
-  "PROFILE_ID": 777,
-  "MAGIC_NUM_0": 85136,
+  "MAGIC_NUM_0": 77013,
   "TIME": "2024-06-19T01:37:02+0000",
   "FIRSTNAME": "John",
   "LASTNAME": "Doe",
   "BIRTHDATE": "2000-01-01",
-  "EMAIL": "JohnDoe@JohnDoe.com",
+  "EMAILS": [
+    "JohnDoe@JohnDoe.com"
+  ],
   "STATUS": "active",
   "ADDRESSES": [
     {
       "city": "Berkeley",
       "state": "CA"
     }
+  ],
+  "PHONES": [
+    "00000000"
+  ],
+  "RELATIVES": [
+    "Bob Doe"
   ],
   "BROKERS_LIST": {
     "data": [],

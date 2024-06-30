@@ -16,7 +16,7 @@ export interface Broker {
   middle_name?: string | null;
   last_name: string;
   age?: number | null;
-  addresses: string[];
+  addresses: object[];
   phones: string[];
   emails: string[];
   relatives: string[];
@@ -32,10 +32,6 @@ const DEFAULT_NUMBER_BREACHES = 10;
 const MAGIC_NUM_1 = 24623;
 const MAGIC_NUM_2 = 2161;
 const MAGIC_NUM_3 = 1013;
-
-export function MOCK_ONEREP_PROFILE_ID() {
-  return MockUser.PROFILE_ID;
-}
 
 export function MOCK_ONEREP_SCAN_ID(profileId: number) {
   return (profileId * MAGIC_NUM_1) % MAGIC_NUM_2;
@@ -65,8 +61,16 @@ export function MOCK_ONEREP_BIRTHDATE() {
   return MockUser.BIRTHDATE;
 }
 
-export function MOCK_ONEREP_EMAIL() {
-  return MockUser.EMAIL;
+export function MOCK_ONEREP_EMAILS() {
+  return MockUser.EMAILS;
+}
+
+export function MOCK_ONEREP_PHONES() {
+  return MockUser.PHONES;
+}
+
+export function MOCK_ONEREP_RELATIVES() {
+  return MockUser.RELATIVES;
 }
 
 export function MOCK_ONEREP_STATUS() {
@@ -88,7 +92,7 @@ export function MOCK_ONEREP_BROKERS(
   perPage: string,
 ) {
   const mockResponseData = MockUser.BROKERS_LIST;
-  const latestScanId = MOCK_ONEREP_SCAN_ID(profileId);
+  const scanId = MOCK_ONEREP_SCAN_ID(profileId);
 
   const mockLinks = {
     first: `${process.env.ONEREP_API_BASE}/scan-results?profile_id%5B0%5D=${profileId}&per_page=${perPage}&page=${page}`,
@@ -123,7 +127,7 @@ export function MOCK_ONEREP_BROKERS(
         return {
           ...(broker as Broker),
           profile_id: profileId,
-          scan_id: latestScanId,
+          scan_id: scanId,
         };
       });
     }
@@ -134,29 +138,30 @@ export function MOCK_ONEREP_BROKERS(
   const idStart = MOCK_ONEREP_ID_START(profileId);
   const idStartDataBroker = MOCK_ONEREP_DATABROKER_ID_START(profileId);
 
-  //TODO: update array creation to be of type broker
-
   const responseData = {
-    data: new Array(DEFAULT_NUMBER_BREACHES).fill(null).map((_, index) => ({
-      id: idStart - index,
-      profile_id: profileId,
-      scan_id: latestScanId,
-      status: "new",
-      first_name: MOCK_ONEREP_FIRSTNAME(),
-      middle_name: null,
-      last_name: MOCK_ONEREP_LASTNAME(),
-      age: null,
-      addresses: [],
-      phones: [],
-      emails: [MOCK_ONEREP_EMAIL()],
-      relatives: [],
-      link: `https://mockexample.com/link-to-databroker${index}`,
-      data_broker: `mockexample${index}.com`,
-      data_broker_id: idStartDataBroker - index,
-      optout_attempts: 0,
-      created_at: MOCK_ONEREP_TIME(),
-      updated_at: MOCK_ONEREP_TIME(),
-    })),
+    data: new Array(DEFAULT_NUMBER_BREACHES).fill(null).map(
+      (_, index) =>
+        ({
+          id: idStart - index,
+          profile_id: profileId,
+          scan_id: scanId,
+          status: "new",
+          first_name: MOCK_ONEREP_FIRSTNAME(),
+          middle_name: null,
+          last_name: MOCK_ONEREP_LASTNAME(),
+          age: null,
+          addresses: [MOCK_ONEREP_ADDRESSES()],
+          phones: MOCK_ONEREP_PHONES(),
+          emails: MOCK_ONEREP_EMAILS(),
+          relatives: MOCK_ONEREP_RELATIVES(),
+          link: `https://mockexample.com/link-to-databroker${index}`,
+          data_broker: `mockexample${index}.com`,
+          data_broker_id: idStartDataBroker - index,
+          optout_attempts: 0,
+          created_at: MOCK_ONEREP_TIME(),
+          updated_at: MOCK_ONEREP_TIME(),
+        }) as Broker,
+    ),
     links: mockLinks,
     meta: mockMeta,
   };

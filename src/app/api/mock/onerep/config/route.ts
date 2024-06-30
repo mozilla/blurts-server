@@ -69,7 +69,11 @@ function updateJsonFile(erase: boolean, brokers: [Broker]) {
       jsonData.BROKERS_LIST.valid = true;
     }
 
-    fs.writeFileSync(jsonFilePath, JSON.stringify(jsonData, null, 2), "utf8");
+    fs.writeFileSync(
+      jsonFilePath,
+      JSON.stringify(jsonData, null, 2) + "\n",
+      "utf8",
+    );
 
     return NextResponse.json(
       { message: "JSON data has been successfully updated." },

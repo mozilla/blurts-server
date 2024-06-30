@@ -255,8 +255,6 @@ async function addOnerepScanResults(
       );
     });
 
-    await knex("onerep_scan_results").where("onerep_scan_id", scan_id).del();
-
     scanResultsMap = scanResultsMap.map((item) => {
       if (resolvedStatusMap.has(item.onerep_scan_result_id)) {
         return {
@@ -266,8 +264,9 @@ async function addOnerepScanResults(
       }
       return item;
     });
-  }
 
+    await knex("onerep_scan_results").where("onerep_scan_id", scan_id).del();
+  }
   if (scanResultsMap.length > 0) {
     await knex("onerep_scan_results")
       .insert(scanResultsMap)
