@@ -7,12 +7,12 @@ import { errorIfProduction } from "../../../../utils/errorThrower";
 
 export function POST(
   _: NextRequest,
-  { params }: { params: { profileId: string } },
+  { params }: { params: { profileId: number } },
 ) {
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
-  const profileId: number = Number(params.profileId);
+  const profileId: number = params.profileId;
 
   if (!profileId || isNaN(profileId)) {
     return NextResponse.json({ error: "Invalid profile ID" });

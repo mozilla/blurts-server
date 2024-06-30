@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { MOCK_ONEREP_TIME, MOCK_ONEREP_SCAN_ID } from "../../../config/config";
+import { MOCK_ONEREP_SCAN_ID, MOCK_ONEREP_TIME } from "../../../config/config";
 import { errorIfProduction } from "../../../../utils/errorThrower";
 
 export function POST(
@@ -14,6 +14,7 @@ export function POST(
   if (prodError) return prodError;
 
   const profileId: number = params.profileId;
+
   if (!profileId || isNaN(profileId)) {
     return NextResponse.json({ error: "Invalid profile ID" });
   }
@@ -35,14 +36,12 @@ export function POST(
 
 export function GET(
   _: NextRequest,
-  { params }: { params: { profileId: string } },
+  { params }: { params: { profileId: number } },
 ) {
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
-  // Extract profileId from query parameters or request body
-  // const profileId: number = await extractProfileId(req)
-  const profileId: number = Number(params.profileId);
+  const profileId: number = params.profileId;
 
   if (!profileId || isNaN(profileId)) {
     return NextResponse.json({ error: "Invalid profile ID" });
