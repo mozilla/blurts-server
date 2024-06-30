@@ -7,7 +7,7 @@ import { StateAbbr } from "../../../../../utils/states";
 import MockUser from "./mockUser.json";
 // import { getLatestOnerepScanResults } from "../../../../../db/tables/onerep_scans";
 
-interface Broker {
+export interface Broker {
   id: number;
   profile_id: number;
   scan_id: number;
@@ -16,10 +16,10 @@ interface Broker {
   middle_name?: string | null;
   last_name: string;
   age?: number | null;
-  addresses: object[];
-  phones: object[];
-  emails: object[];
-  relatives: object[];
+  addresses: string[];
+  phones: string[];
+  emails: string[];
+  relatives: string[];
   link: string;
   data_broker: string;
   data_broker_id: number;
@@ -128,7 +128,7 @@ export function MOCK_ONEREP_BROKERS(
       });
     }
 
-    return mockResponseData;
+    return response;
   }
 
   const idStart = MOCK_ONEREP_ID_START(profileId);

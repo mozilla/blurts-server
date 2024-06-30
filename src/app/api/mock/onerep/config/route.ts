@@ -3,10 +3,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
+import { randomInt } from "crypto";
+// import { logger } from "../../../../functions/server/logging";
+import { isAdmin } from "../../../utils/auth";
 import fs from "fs";
 import path from "path";
-import { randomInt } from "crypto";
-import { logger } from "../../../../functions/server/logging";
+import { Broker } from "./config";
 
 /* 
 
@@ -14,7 +16,7 @@ Example fetch, where obj conforms to Broker interface in config.ts
 Set erase to true if you want to use default response, or false if obj
 
 fetch('/api/mock/onerep/config', {
-  method: 'POST',
+  method: 'PUT',
   headers: {
       'Content-Type': 'application/json',
   },
@@ -25,19 +27,28 @@ fetch('/api/mock/onerep/config', {
 })
 .then(response => response.json()).then(data => console.log(data))
 
-
 */
 
-export function POST() {
-  logger.info(`Attempted to access ${updateJsonFile.name}`);
+type onerepConfigReq = {
+  email: string;
+  erase?: boolean;
+  brokers: [Broker];
+};
 
-  return NextResponse.json(
-    { error: "Endpoint not available yet" },
-    { status: 403 },
-  );
+export async function PUT(req: NextRequest) {
+  const data = await req.json();
+  const { email, erase = false, brokers } = data as onerepConfigReq;
+
+  if (!isAdmin(email)) {
+    return NextResponse.json(
+      { error: "Unauthorized to access the endpoint" },
+      { status: 401 },
+    );
+  }
+  return updateJsonFile(erase, brokers);
 }
 
-async function updateJsonFile(req: NextRequest) {
+function updateJsonFile(erase: boolean, brokers: [Broker]) {
   // Define the path to the JSON file
   const jsonFilePath = path.join(
     process.cwd(),
@@ -49,22 +60,12 @@ async function updateJsonFile(req: NextRequest) {
   const jsonData = JSON.parse(fileData);
 
   try {
-    const newData = await req.json();
-    const erase = newData.erase;
-
     if (erase) {
       jsonData.BROKERS_LIST.data = [];
       jsonData.BROKERS_LIST.valid = false;
       jsonData.MAGIC_NUM_0 = randomInt(1000, 100000);
     } else {
-      if (!newData.brokers || !newData.brokers.data) {
-        return NextResponse.json(
-          { error: "Bad Request: Data format is unexpected!" },
-          { status: 400 },
-        );
-      }
-
-      jsonData.BROKERS_LIST.data = newData.brokers.data;
+      jsonData.BROKERS_LIST.data = brokers;
       jsonData.BROKERS_LIST.valid = true;
     }
 
