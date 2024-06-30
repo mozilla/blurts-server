@@ -16,6 +16,7 @@ import {
   SubscriberRow,
 } from "knex/types/tables";
 import { RemovalStatus } from "../../app/functions/universal/scanResult.js";
+import { MOCK_ONEREP_SCAN_ID } from "../../app/api/mock/onerep/config/config.ts";
 
 const knex = createDbConnection();
 
@@ -239,38 +240,35 @@ async function addOnerepScanResults(
     }),
   });
 
+  // Delete previous records to allow dynamic mock data configuration, maintaining the 'manually_resolved' field.
+  if (process.env.ONEREP_API_BASE!.includes("/api/mock")) {
+    const scan_id = MOCK_ONEREP_SCAN_ID(onerepProfileId);
+    const existingRecords = await knex("onerep_scan_results")
+      .where("onerep_scan_id", scan_id)
+      .select("onerep_scan_result_id", "manually_resolved");
+
+    const resolvedStatusMap = new Map();
+    existingRecords.forEach((record) => {
+      resolvedStatusMap.set(
+        record.onerep_scan_result_id,
+        record.manually_resolved,
+      );
+    });
+
+    await knex("onerep_scan_results").where("onerep_scan_id", scan_id).del();
+
+    scanResultsMap = scanResultsMap.map((item) => {
+      if (resolvedStatusMap.has(item.onerep_scan_result_id)) {
+        return {
+          ...item,
+          manually_resolved: resolvedStatusMap.get(item.onerep_scan_result_id),
+        };
+      }
+      return item;
+    });
+  }
+
   if (scanResultsMap.length > 0) {
-    const scan_id = scanResultsMap[0].onerep_scan_id;
-
-    // Delete previous records to allow dynamic mock data configuration, maintaining the 'manually_resolved' field.
-    if (process.env.ONEREP_API_BASE!.includes("/api/mock")) {
-      const existingRecords = await knex("onerep_scan_results")
-        .where("onerep_scan_id", scan_id)
-        .select("onerep_scan_result_id", "manually_resolved");
-
-      const resolvedStatusMap = new Map();
-      existingRecords.forEach((record) => {
-        resolvedStatusMap.set(
-          record.onerep_scan_result_id,
-          record.manually_resolved,
-        );
-      });
-
-      await knex("onerep_scan_results").where("onerep_scan_id", scan_id).del();
-
-      scanResultsMap = scanResultsMap.map((item) => {
-        if (resolvedStatusMap.has(item.onerep_scan_result_id)) {
-          return {
-            ...item,
-            manually_resolved: resolvedStatusMap.get(
-              item.onerep_scan_result_id,
-            ),
-          };
-        }
-        return item;
-      });
-    }
-
     await knex("onerep_scan_results")
       .insert(scanResultsMap)
       .onConflict("onerep_scan_result_id")
