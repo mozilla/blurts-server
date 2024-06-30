@@ -9,7 +9,7 @@ import MockUser from "./mockUser.json";
 
 interface Broker {
   id: number;
-  profile_id: string;
+  profile_id: number;
   scan_id: number;
   status: string;
   first_name: string;
@@ -26,15 +26,27 @@ interface Broker {
   optout_attempts: number;
   created_at: string;
   updated_at: string;
-  url: string;
 }
+
+const DEFAULT_NUMBER_BREACHES = 10;
+const MAGIC_NUM_1 = 24623;
+const MAGIC_NUM_2 = 2161;
+const MAGIC_NUM_3 = 1013;
 
 export function MOCK_ONEREP_PROFILE_ID() {
   return MockUser.PROFILE_ID;
 }
 
-export function MOCK_ONEREP_MAGIC_NUM_0() {
-  return MockUser.MAGIC_NUM_0;
+export function MOCK_ONEREP_SCAN_ID(profileId: number) {
+  return (profileId * MAGIC_NUM_1) % MAGIC_NUM_2;
+}
+
+export function MOCK_ONEREP_DATABROKER_ID_START(profileId: number) {
+  return MockUser.MAGIC_NUM_0 * MOCK_ONEREP_SCAN_ID(profileId);
+}
+
+export function MOCK_ONEREP_ID_START(profileId: number) {
+  return MOCK_ONEREP_DATABROKER_ID_START(profileId) % MAGIC_NUM_3;
 }
 
 export function MOCK_ONEREP_TIME() {
@@ -70,30 +82,13 @@ export function MOCK_ONEREP_ADDRESSES() {
   })) as typeOfAddr;
 }
 
-const DEFAULT_NUMBER_BREACHES = 10;
-const MAGIC_NUM_brokerId = 78127;
-const MAGIC_NUM_1 = 24623;
-const MAGIC_NUM_2 = 2161;
-
-export function MOCK_ONEREP_MAGIC_NUM_1() {
-  return MAGIC_NUM_1;
-}
-
-export function MOCK_ONEREP_MAGIC_NUM_2() {
-  return MAGIC_NUM_2;
-}
-
-function getScanId(profileId: string) {
-  return (Number(profileId) * MAGIC_NUM_1) % MAGIC_NUM_2;
-}
-
 export function MOCK_ONEREP_BROKERS(
-  profileId: string,
+  profileId: number,
   page: string,
   perPage: string,
 ) {
   const mockResponseData = MockUser.BROKERS_LIST;
-  const latestScanId = getScanId(profileId);
+  const latestScanId = MOCK_ONEREP_SCAN_ID(profileId);
 
   const mockLinks = {
     first: `${process.env.ONEREP_API_BASE}/scan-results?profile_id%5B0%5D=${profileId}&per_page=${perPage}&page=${page}`,
@@ -136,7 +131,10 @@ export function MOCK_ONEREP_BROKERS(
     return mockResponseData;
   }
 
-  const idStart = latestScanId * MOCK_ONEREP_MAGIC_NUM_0();
+  const idStart = MOCK_ONEREP_ID_START(profileId);
+  const idStartDataBroker = MOCK_ONEREP_DATABROKER_ID_START(profileId);
+
+  //TODO: update array creation to be of type broker
 
   const responseData = {
     data: new Array(DEFAULT_NUMBER_BREACHES).fill(null).map((_, index) => ({
@@ -154,11 +152,10 @@ export function MOCK_ONEREP_BROKERS(
       relatives: [],
       link: `https://mockexample.com/link-to-databroker${index}`,
       data_broker: `mockexample${index}.com`,
-      data_broker_id: MAGIC_NUM_brokerId - index,
+      data_broker_id: idStartDataBroker - index,
       optout_attempts: 0,
       created_at: MOCK_ONEREP_TIME(),
       updated_at: MOCK_ONEREP_TIME(),
-      url: `${process.env.ONEREP_API_BASE}scan-results/${idStart - index}`,
     })),
     links: mockLinks,
     meta: mockMeta,

@@ -3,16 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import {
-  MOCK_ONEREP_TIME,
-  MOCK_ONEREP_MAGIC_NUM_1,
-  MOCK_ONEREP_MAGIC_NUM_2,
-} from "../../../config/config";
+import { MOCK_ONEREP_TIME, MOCK_ONEREP_SCAN_ID } from "../../../config/config";
 import { errorIfProduction } from "../../../../utils/errorThrower";
-
-function getScanId(profileId: number) {
-  return (profileId * MOCK_ONEREP_MAGIC_NUM_1()) % MOCK_ONEREP_MAGIC_NUM_2();
-}
 
 export function POST(
   _: NextRequest,
@@ -26,7 +18,7 @@ export function POST(
     return NextResponse.json({ error: "Invalid profile ID" });
   }
 
-  const scanId = getScanId(profileId);
+  const scanId = MOCK_ONEREP_SCAN_ID(profileId);
 
   const mockResponse = {
     id: scanId,
@@ -56,7 +48,7 @@ export function GET(
     return NextResponse.json({ error: "Invalid profile ID" });
   }
 
-  const scandId = getScanId(profileId);
+  const scandId = MOCK_ONEREP_SCAN_ID(profileId);
 
   const responseData = {
     data: [
