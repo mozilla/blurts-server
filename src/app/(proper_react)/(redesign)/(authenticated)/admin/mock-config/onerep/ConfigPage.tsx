@@ -25,6 +25,12 @@ const ConfigPage = () => {
   const [brokers, setBrokers] = useState<Broker[]>([]);
   const session = useSession();
 
+  const [errors, setErrors] = useState({
+    profile_id: false,
+    data_broker: false,
+    link: false,
+  });
+
   // Initialize a base broker template to reset form fields
   const baseBroker = {
     id: -1,
@@ -35,7 +41,7 @@ const ConfigPage = () => {
     middle_name: null,
     last_name: MOCK_ONEREP_LASTNAME(),
     age: null,
-    addresses: [MOCK_ONEREP_ADDRESSES()],
+    addresses: MOCK_ONEREP_ADDRESSES(),
     phones: MOCK_ONEREP_PHONES(),
     emails: MOCK_ONEREP_EMAILS(),
     relatives: MOCK_ONEREP_RELATIVES(),
@@ -57,6 +63,34 @@ const ConfigPage = () => {
   const handleAddBroker = (event: React.FormEvent) => {
     event.preventDefault();
 
+    let hasError = false;
+
+    if (newBroker.profile_id < 0) {
+      setErrors({ ...errors, profile_id: true });
+      hasError = true;
+    } else {
+      setErrors({ ...errors, profile_id: false });
+    }
+
+    if (newBroker.data_broker.length === 0) {
+      setErrors({ ...errors, data_broker: true });
+      hasError = true;
+    } else {
+      setErrors({ ...errors, data_broker: false });
+    }
+
+    let linkString = "";
+    try {
+      const urlObj = new URL(newBroker.link);
+      linkString = urlObj.href;
+      setErrors({ ...errors, link: false });
+    } catch {
+      setErrors({ ...errors, link: true });
+      hasError = true;
+    }
+
+    if (hasError) return;
+
     const profileId = Number(newBroker.profile_id);
     const scandId = MOCK_ONEREP_SCAN_ID(profileId);
     const brokerIdStart = MOCK_ONEREP_DATABROKER_ID_START(profileId);
@@ -66,12 +100,14 @@ const ConfigPage = () => {
       ...brokers,
       {
         ...newBroker,
+        link: linkString,
         id: idStart - brokers.length,
         scan_id: scandId,
         data_broker_id: brokerIdStart - brokers.length,
         profile_id: profileId,
       },
     ]);
+
     setNewBroker(baseBroker); // Reset form fields
   };
 
@@ -79,15 +115,18 @@ const ConfigPage = () => {
     event.preventDefault();
     try {
       void makeConfigRequest(false);
-      alert("Brokers list update request submitted successfully!");
     } catch (error) {
       console.error("Error submitting brokers:", error);
       alert("Failed to submit brokers.");
     }
   };
 
-  const makeConfigRequest = async (erase: boolean) => {
-    return fetch("/api/mock/onerep/config", {
+  const handleDeleteBroker = (id: number) => {
+    setBrokers(brokers.filter((broker) => broker.id !== id));
+  };
+
+  const makeConfigRequest = (erase: boolean) => {
+    void fetch("/api/mock/onerep/config", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -100,84 +139,105 @@ const ConfigPage = () => {
     }).then(async (resp) =>
       console.log("Response from endpoint config:", await resp.json()),
     );
+    alert("Brokers list update request submitted successfully!");
   };
 
   return (
     <main className={styles.wrapper}>
       <header className={styles.header}>
-        Changing the default response for <b>OneRep</b> mock endpoint.
-      </header>
-      <form onSubmit={handleAddBroker} className={styles.form}>
-        <div className={styles.userPicker}>
-          <label>
-            Profile ID:
-            <input
-              type="number"
-              name="profile_id"
-              placeholder="Be careful with this field!"
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            First Name:
-            <input
-              type="text"
-              name="first_name"
-              value={newBroker.first_name}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Last Name:
-            <input
-              type="text"
-              name="last_name"
-              value={newBroker.last_name}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Broker Name:
-            <input
-              type="text"
-              name="data_broker"
-              value={newBroker.data_broker}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Broker Link:
-            <input
-              type="text"
-              name="link"
-              value={newBroker.link}
-              onChange={handleChange}
-              required
-            />
-          </label>
+        <div>
+          Changing the default response for <b>OneRep</b> mock endpoint
         </div>
-        <button type="submit">Add Broker to List</button>
-      </form>
-      <div>
-        <h2>Brokers List</h2>
-        <ul>
-          {brokers.map((broker) => (
-            <li key={broker.id}>
-              {broker.first_name} {broker.last_name}
-            </li>
-          ))}
-        </ul>
+        <br />
+      </header>
+
+      <div className={styles.formAndListWrapper}>
+        <form className={styles.formWrapper} onSubmit={handleAddBroker}>
+          <h2 className={styles.h2}>Input Broker Element</h2>
+          <div className={styles.form}>
+            <div className={styles.userPicker}>
+              <label className={styles.label}>
+                OneRep Profile ID:
+                <input
+                  className={`${styles.input} ${errors.profile_id ? styles.error : ""}`}
+                  type="number"
+                  name="profile_id"
+                  placeholder="Be careful with this field!"
+                  value={
+                    newBroker.profile_id === -1 ? "" : newBroker.profile_id
+                  }
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+
+              <label className={styles.label}>
+                Broker Name:
+                <input
+                  className={`${styles.input} ${errors.data_broker ? styles.error : ""}`}
+                  type="text"
+                  name="data_broker"
+                  value={newBroker.data_broker}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+
+              <label className={styles.label}>
+                Broker Link:
+                <input
+                  className={`${styles.input} ${errors.link ? styles.error : ""}`}
+                  type="text"
+                  name="link"
+                  value={newBroker.link}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+            </div>
+          </div>
+          <button className={styles.button} type="submit">
+            Add Broker to List
+          </button>
+        </form>
+        <div className={styles.listButtonsWrapper}>
+          <div className={styles.listWrapper}>
+            <h2 className={styles.h2}>Brokers List</h2>
+            <ul className={styles.listContainer}>
+              {brokers.length !== 0 ? (
+                brokers.map((broker) => (
+                  <li
+                    key={broker.id}
+                    onClick={() => handleDeleteBroker(broker.id)}
+                    className={styles.listItem}
+                  >
+                    {"{"} {broker.profile_id}, {broker.data_broker},{" "}
+                    {broker.link} {"}"}
+                  </li>
+                ))
+              ) : (
+                <p>empty...</p>
+              )}
+            </ul>
+          </div>
+
+          <div className={styles.buttonsWrapper}>
+            <button
+              className={`${styles.button} ${styles.buttonUnderList}`}
+              onClick={handleSubmit}
+            >
+              Submit All Brokers
+            </button>
+
+            <button
+              className={`${styles.button} ${styles.buttonUnderList}`}
+              onClick={() => void makeConfigRequest(true)}
+            >
+              Restore Defaults
+            </button>
+          </div>
+        </div>
       </div>
-      <button className={styles.status} onClick={handleSubmit}>
-        Submit All Brokers
-      </button>
-      <button onClick={() => void makeConfigRequest(true)}>
-        ERASE All Brokers - Restore Default
-      </button>
     </main>
   );
 };

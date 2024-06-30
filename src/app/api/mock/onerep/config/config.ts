@@ -150,7 +150,7 @@ export function MOCK_ONEREP_BROKERS(
           middle_name: null,
           last_name: MOCK_ONEREP_LASTNAME(),
           age: null,
-          addresses: [MOCK_ONEREP_ADDRESSES()],
+          addresses: MOCK_ONEREP_ADDRESSES(),
           phones: MOCK_ONEREP_PHONES(),
           emails: MOCK_ONEREP_EMAILS(),
           relatives: MOCK_ONEREP_RELATIVES(),

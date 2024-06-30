@@ -1,68 +1,140 @@
 @import "../../../../../../tokens";
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-2xl;
-  background-color: $color-grey-05;
+  display: grid;
+  grid-template-rows: 120px min-content;
+  gap: $spacing-md;
   height: 100%;
-  padding: $layout-lg $layout-2xl;
-
-  @media screen and (max-width: $screen-lg) {
-    padding: $spacing-lg;
-  }
+  padding: $layout-sm;
+  background-color: $color-grey-05;
+  align-items: center;
+  justify-content: center;
 }
 
 .header {
   font: $text-title-xs;
   font-weight: normal;
-
+  margin: auto;
+  width: 100%;
   b {
     font-weight: bold;
   }
+  text-align: center;
+}
+
+.formAndListWrapper {
+  margin-top: 40px;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 3fr 2fr;
+  justify-content: center;
+}
+
+.formWrapper {
+  display: grid;
+  grid-template-rows: 50px 4fr 100px;
+  justify-content: center;
+  h2 {
+    text-align: center;
+  }
+}
+
+.listButtonsWrapper {
+  display: grid;
+  grid-template-rows: auto 100px;
+  justify-content: center;
+}
+
+.listContainer {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.buttonsWrapper {
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.listWrapper {
+  height: min-content;
+  display: grid;
+  grid-template-rows: 50px auto;
+  justify-content: center;
+  align-items: flex-start;
+
+  p {
+    color: #858585;
+  }
+}
+
+.button {
+  display: block;
+  margin: auto;
+  max-height: 100px;
+  max-width: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.buttonUnderList {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.error {
+  border-color: red; /* Example: Highlight border in red for error */
+  animation: shake 0.5s ease-in-out; /* Example animation */
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: $spacing-2xl;
+  gap: $spacing-sm;
+  align-items: center;
+  width: min-content;
 
   .userPicker {
     flex: 1 0 auto;
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    gap: $spacing-2xl;
-    min-height: $layout-2xl;
+    gap: $spacing-md;
+    min-height: $layout-md;
 
     label {
       display: flex;
       flex-direction: column;
       gap: $spacing-sm;
       min-width: 50%;
+      width: 350px;
     }
 
     input {
       padding: $spacing-sm;
       font: $text-body-md;
-    }
-  }
-
-  .actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $spacing-xl;
-
-    button {
-      flex: 1 1 25%;
+      transition: border-color 0.3s ease;
     }
   }
 }
 
-.status {
-  background-color: $color-yellow-05;
-  border: 2px solid $color-yellow-20;
-  border-radius: $border-radius-sm;
-  padding: $spacing-md $spacing-lg;
-  font: $text-body-md;
+.listItem:hover {
+  background-color: #f0f0f0; /* Light grey background on hover */
+  cursor: pointer; /* Change cursor to indicate clickable item */
+  text-decoration: line-through;
 }
