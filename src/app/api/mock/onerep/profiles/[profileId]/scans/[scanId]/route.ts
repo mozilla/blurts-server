@@ -8,13 +8,13 @@ import { NextRequest, NextResponse } from "next/server";
 
 export function GET(
   _: NextRequest,
-  { params }: { params: { profileId: string; scandId: string } },
+  { params }: { params: { profileId: number; scanId: number } },
 ) {
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
-  const profileId: number = Number(params.profileId);
-  const scanId: number = Number(params.scandId);
+  const profileId: number = params.profileId;
+  const scanId: number = params.scanId;
 
   const responseData = {
     id: scanId,
