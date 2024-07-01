@@ -18,7 +18,7 @@ export function errorIfEnv(which: string) {
   //checks that the environment isnt 'which'
   if (process.env.APP_ENV === which) {
     return NextResponse.json(
-      { error: "Endpoint not available in production environment" },
+      { error: `Endpoint not available in ${which} environment` },
       { status: 403 },
     );
   }
