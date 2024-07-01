@@ -14,6 +14,7 @@ import {
   CONST_URL_PRIVACY_POLICY,
 } from "../../../constants";
 import { Session } from "next-auth";
+import { TelemetryLink } from "../../components/client/TelemetryLink";
 
 export const Footer = ({
   l10n,
@@ -28,49 +29,81 @@ export const Footer = ({
 }) => {
   return (
     <footer className={styles.footer}>
-      <a
+      <Link
         href="https://www.mozilla.org"
         className={styles.mozillaLink}
         target="_blank"
       >
         <Image src={mozillaLogo} width={100} alt={l10n.getString("mozilla")} />
-      </a>
+      </Link>
       <ul className={styles.externalLinks}>
         <li>
-          <Link href="/breaches">
+          <TelemetryLink
+            href="/breaches"
+            eventData={{
+              link_id: "all_breaches_footer",
+            }}
+          >
             {l10n.getString("footer-nav-all-breaches")}
-          </Link>
+          </TelemetryLink>
         </li>
         {countryCode === "us" && !session && howItWorksFlagEnabled && (
           <li>
-            <Link href="/how-it-works" target="_blank">
+            <TelemetryLink
+              href="/how-it-works"
+              target="_blank"
+              eventData={{
+                link_id: "how_it_works_footer",
+              }}
+            >
               {l10n.getString("footer-external-link-how-it-works-label")}
-            </Link>
+            </TelemetryLink>
           </li>
         )}
         <li>
-          <a
+          <TelemetryLink
             href={CONST_URL_SUMO_MONITOR_FAQ}
             target="_blank"
             title={l10n.getString("footer-external-link-faq-tooltip")}
+            eventData={{
+              link_id: "faqs_footer",
+            }}
           >
             {l10n.getString("footer-external-link-faq-label")}
-          </a>
+          </TelemetryLink>
         </li>
         <li>
-          <a href={CONST_URL_TERMS} target="_blank">
+          <TelemetryLink
+            href={CONST_URL_TERMS}
+            target="_blank"
+            eventData={{
+              link_id: "tos_footer",
+            }}
+          >
             {l10n.getString("terms-of-service")}
-          </a>
+          </TelemetryLink>
         </li>
         <li>
-          <a href={CONST_URL_PRIVACY_POLICY} target="_blank">
+          <TelemetryLink
+            href={CONST_URL_PRIVACY_POLICY}
+            target="_blank"
+            eventData={{
+              link_id: "privacy_notice_footer",
+            }}
+          >
             {l10n.getString("privacy-notice")}
-          </a>
+          </TelemetryLink>
         </li>
         <li>
-          <a href={CONST_URL_MONITOR_GITHUB} target="_blank">
+          <TelemetryLink
+            href={CONST_URL_MONITOR_GITHUB}
+            target="_blank"
+            eventData={{
+              link_id: "github_footer",
+            }}
+          >
             {l10n.getString("github")}
-          </a>
+          </TelemetryLink>
         </li>
       </ul>
     </footer>

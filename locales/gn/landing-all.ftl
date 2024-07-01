@@ -3,14 +3,11 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 public-nav-name = { -brand-mozilla-monitor }
-
 landing-all-hero-title = Ehecha ne marandu ñemiguáva oñembyaikuaápa — ha eguerujey
 landing-all-hero-lead = Rohesa’ỹijo mba’ekuaarã ñembogua rohecha hag̃ua oñemboguápara’e ha rombohapéta emoĩporã hag̃ua.
-
 landing-all-hero-emailform-input-placeholder = yourname@example.com
 landing-all-hero-emailform-input-label = Ehai ne ñanduti veve ehechajey hag̃ua eimépa mba’ekuaarã ñemboguápe.
 landing-all-hero-emailform-submit-label = Emoha’ãnga reiete
-
 # This is a label underneath a big number "14" - it's an image that demos Monitor.
 landing-all-hero-image-chart-label = ejehechauka
 
@@ -21,6 +18,7 @@ landing-all-value-prop-info-at-risk = Mba’e marandúpa oñembyaikuaa
 
 # Quote
 
+landing-all-quote = 11 aravo’i ohasávo oiko <data_breaches>mba’ekuaarã ñembogua</data_breaches>, ohechaukávo ne maranduete ñemigua, ani ejepy’apy, roipytyvõta.
 
 # Non-US FAQ
 
@@ -28,6 +26,7 @@ landing-all-faq-title = Porandu py’ỹiguáva
 # FAQ is an acronym for Frequently Asked Questions
 landing-all-faq-see-all = Ehechapa FAQs
 landing-all-data-breach-definition-qn = Mba’épa pe mba’ekuaarã ñembyai
+landing-all-data-breach-definition-ans = Mba’ekuaarã ñembogua oikórõ maranduete térã ñemiguáva oñeguenohẽrõ, oñemonda térã oñembokuatia moneĩ’ỹre. Ko’ã mba’e tekorosãgua oikokuaa mba’evaiapoha ñanditi rendagua rupive, tembiporu’i térã oimeraẽva mba’ekuaarã renda oĩhápe tapichakuéra maranduete. Umi mba’ekuaarã ñembogua oikokuaa ijehegui, techapyrãrõ peteĩ jeikerã ñemiguáva osẽrõ peichahágui jepota’ỹre.
 landing-all-data-breach-next-steps-qn = Ajuhu ramoite peteĩ mba’ekuaarã ñembyai. ¿Mba’e ajapokuaa?
 landing-all-data-breach-info-qn = Mba’e marandúpa ojehecha mba’ekuaarã ñemboguápe
 landing-all-close-faq-alt = Mboty
@@ -58,7 +57,5 @@ landing-all-help-protect-you-feature-one = Rohekáta opaite mba’ekuaarã ñemb
 landing-all-help-protect-you-feature-two = Rombohapéta mba’éichapa remboykéta peteĩteĩva ñembogua
 landing-all-help-protect-you-feature-three = Rohechameméta ha romondóta kyhyjerã oimeraẽva ñembogua pyahu rehegua.
 landing-all-help-protect-you-cta = Eñemboheraguapy og̃uahẽ hag̃ua ñembyai rehegua
-
 landing-all-get-started = Emoha’ãnga ñanduti veve eñepyrũ hag̃ua
 landing-all-take-back-data = Eguerujey ne mba’ekuaarã rechameme
-

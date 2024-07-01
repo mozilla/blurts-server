@@ -31,8 +31,17 @@ exposure-chart-returning-user-upgrade-prompt = Ev adresi, aile üyeleri ve diğe
 exposure-chart-returning-user-upgrade-prompt-cta = Ücretsiz tarama başlatın
 exposure-chart-scan-in-progress-prompt = <b>Tarama devam ediyor:</b> Adres, aile üyeleri ve diğer bilgiler henüz dahil edilmedi.
 modal-active-number-of-exposures-title = Aktif veri ihlali sayınız hakkında
+# Variables:
+#   $limit (number) - Number of email addresses included in the plan
+modal-active-number-of-exposures-part-one-all =
+    { $limit ->
+        [one] Bu grafik, izlemekte olduğunuz { $limit } e-posta adresi için tüm veri ihlallerinde ele geçirildiğini tespit ettiğimiz veri türlerinin toplam sayısını içerir.
+       *[other] Bu grafik, izlemekte olduğunuz en fazla { $limit } e-posta adresi için tüm veri ihlallerinde ele geçirildiğini tespit ettiğimiz veri türlerinin toplam sayısını içerir.
+    }
+modal-active-number-of-exposures-part-two = Örneğin, telefon numaranız 10 kez ele geçirildiyse 10 farklı sitede aynı telefon numaranız ele geçirilmiş olabilir veya 5 farklı sitede 2 farklı telefon numaranız ele geçirilmiş olabilir.
 modal-active-number-of-exposures-part-three-all = Çözülen ihlaller, Düzeltildi sayfasındaki toplam düzeltilen ihlal sayısına eklenecektir.
 modal-fixed-number-of-exposures-title = Düzeltilmiş veri ihlali sayınız hakkında
+modal-fixed-number-of-exposures-all = Bu grafik, şu anda izlemekte olduğunuz tüm e-posta adresleri için düzeltilen toplam veri ihlali sayısını içerir. İhlaller düzeltildi olarak işaretlendiğinde buradaki toplam sayıya eklenecektir.
 modal-cta-ok = Tamam
 modal-cta-got-it = Anladım
 open-modal-alt = Kutuyu aç
@@ -125,4 +134,5 @@ modal-exposure-status-description-all =
     Bilinen tüm veri ihlallerindeki riskleri araştırıyoruz.
     Riskleriniz aşağıdaki durumlardan birine sahip olacaktır:
 modal-exposure-indicator-title = İhlal durumları
+modal-exposure-indicator-action-needed = Bir eylemi tamamlamak için gelişmiş veya manuel işlem yapmanız gerekiyor.
 modal-exposure-indicator-fixed = İhlal çözüldüğü için herhangi bir işlem yapmanız gerekmiyor.
