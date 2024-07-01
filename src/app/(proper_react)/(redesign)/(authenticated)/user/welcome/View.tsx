@@ -31,7 +31,6 @@ export type Props = {
   stepId?: StepId;
   previousRoute: string | null;
   experimentData: ExperimentData;
-  handleException: (e: Error) => Promise<void>;
 };
 
 export const View = ({
@@ -41,7 +40,6 @@ export const View = ({
   stepId = "getStarted",
   previousRoute,
   experimentData,
-  handleException,
 }: Props) => {
   const l10n = useL10n();
   const skipInitialStep = stepId === "enterInfo";
@@ -92,7 +90,6 @@ export const View = ({
           }
         }}
         optionalInfoIsEnabled={optionalInfoIsEnabled}
-        handleException={handleException}
       />
     ) : (
       <GetStarted

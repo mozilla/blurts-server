@@ -16,7 +16,6 @@ import { getExperimentationId } from "../../../../../../functions/server/getExpe
 import { getExperiments } from "../../../../../../functions/server/getExperiments";
 import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { getL10n } from "../../../../../../functions/l10n/serverComponents";
-import { captureException } from "@sentry/node";
 
 const FreeScanSlug = "free-scan";
 
@@ -69,12 +68,6 @@ export default async function Onboarding({ params, searchParams }: Props) {
     locale: getLocale(getL10n()),
   });
 
-  // eslint-disable-next-line @typescript-eslint/require-await
-  const handleException = async (e: Error) => {
-    "use server";
-    captureException(e);
-  };
-
   return (
     <View
       user={session.user}
@@ -83,7 +76,6 @@ export default async function Onboarding({ params, searchParams }: Props) {
       stepId={firstSlug === FreeScanSlug ? "enterInfo" : "getStarted"}
       previousRoute={previousRoute}
       experimentData={experimentData}
-      handleException={handleException}
     />
   );
 }
