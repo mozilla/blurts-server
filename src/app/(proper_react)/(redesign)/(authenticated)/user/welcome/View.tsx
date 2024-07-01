@@ -21,7 +21,6 @@ import { useL10n } from "../../../../../hooks/l10n";
 import monitorLogo from "../../../../images/monitor-logo.webp";
 import { useTelemetry } from "../../../../../hooks/useTelemetry";
 import { ExperimentData } from "../../../../../../telemetry/generated/nimbus/experiments";
-import winston from "winston";
 
 type StepId = "getStarted" | "enterInfo" | "findExposures";
 
@@ -32,7 +31,6 @@ export type Props = {
   stepId?: StepId;
   previousRoute: string | null;
   experimentData: ExperimentData;
-  logger: winston.Logger;
 };
 
 export const View = ({
@@ -42,7 +40,6 @@ export const View = ({
   stepId = "getStarted",
   previousRoute,
   experimentData,
-  logger,
 }: Props) => {
   const l10n = useL10n();
   const skipInitialStep = stepId === "enterInfo";
@@ -93,7 +90,6 @@ export const View = ({
           }
         }}
         optionalInfoIsEnabled={optionalInfoIsEnabled}
-        logger={logger}
       />
     ) : (
       <GetStarted
