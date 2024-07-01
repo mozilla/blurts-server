@@ -65,6 +65,7 @@ export const Shell = (props: Props) => {
                 <PageLink
                   href="/user/dashboard"
                   activeClassName={styles.isActive}
+                  hasTelemetry={{ link_id: "navigation_dashboard" }}
                 >
                   {l10n.getString("main-nav-link-dashboard-label")}
                 </PageLink>
@@ -73,6 +74,7 @@ export const Shell = (props: Props) => {
                 <PageLink
                   href="/user/settings"
                   activeClassName={styles.isActive}
+                  hasTelemetry={{ link_id: "navigation_settings" }}
                 >
                   {l10n.getString("main-nav-link-settings-label")}
                 </PageLink>
@@ -83,19 +85,21 @@ export const Shell = (props: Props) => {
                     href="/how-it-works"
                     activeClassName={styles.isActive}
                     target="_blank"
+                    hasTelemetry={{ link_id: "navigation_how_it_works" }}
                   >
                     {l10n.getString("main-nav-link-how-it-works-label")}
                   </PageLink>
                 </li>
               )}
               <li key="faq">
-                <a
+                <PageLink
                   href="https://support.mozilla.org/kb/firefox-monitor-faq"
                   title={l10n.getString("main-nav-link-faq-tooltip")}
                   target="_blank"
+                  hasTelemetry={{ link_id: "navigation_faq" }}
                 >
                   {l10n.getString("main-nav-link-faq-label")}
-                </a>
+                </PageLink>
               </li>
             </ul>
           </nav>
