@@ -18,10 +18,19 @@ export async function GET() {
 
   logger.info("Mock endpoint: /breaches");
 
-  let allBreaches = await getBreaches();
-  if (allBreaches.length === 0) {
-    allBreaches = mockAllBreaches.data as BreachesListResponse;
-  }
+  // This fails when creating a PR
+  // let allBreaches = await getBreaches();
+  // if (allBreaches.length === 0) {
+  //   allBreaches = mockAllBreaches.data as BreachesListResponse;
+  // }
 
-  return NextResponse.json(allBreaches);
+  try {
+    let allBreaches = await getBreaches();
+    if (allBreaches.length === 0) {
+      allBreaches = mockAllBreaches.data as BreachesListResponse;
+    }
+    return NextResponse.json(allBreaches);
+  } catch {
+    return NextResponse.json(mockAllBreaches.data as BreachesListResponse);
+  }
 }
