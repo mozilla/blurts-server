@@ -5,8 +5,18 @@
 import { NextResponse } from "next/server";
 
 export function errorIfProduction() {
-  //checks that the environment isnt prod
-  if (process.env.APP_ENV === "production") {
+  //checks that the environment isnt production
+  return errorIfEnv("production");
+}
+
+export function errorIfStage() {
+  //checks that the environment isnt stage
+  return errorIfEnv("stage");
+}
+
+export function errorIfEnv(which: string) {
+  //checks that the environment isnt 'which'
+  if (process.env.APP_ENV === which) {
     return NextResponse.json(
       { error: "Endpoint not available in production environment" },
       { status: 403 },

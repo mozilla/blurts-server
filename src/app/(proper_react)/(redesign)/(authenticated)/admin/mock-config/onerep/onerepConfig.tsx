@@ -10,16 +10,16 @@ import {
   MOCK_ONEREP_ID_START,
   MOCK_ONEREP_SCAN_ID,
   MOCK_ONEREP_TIME,
-  Broker,
   MOCK_ONEREP_FIRSTNAME,
   MOCK_ONEREP_LASTNAME,
   MOCK_ONEREP_ADDRESSES,
   MOCK_ONEREP_EMAILS,
   MOCK_ONEREP_RELATIVES,
   MOCK_ONEREP_PHONES,
+  Broker,
 } from "../../../../../../api/mock/onerep/config/config";
 import { useSession } from "next-auth/react";
-import styles from "./ConfigPage.module.scss";
+import styles from "../ConfigPage.module.scss";
 
 const ConfigPage = () => {
   const [brokers, setBrokers] = useState<Broker[]>([]);

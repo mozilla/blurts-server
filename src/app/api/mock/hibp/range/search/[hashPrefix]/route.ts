@@ -4,10 +4,9 @@
 
 import { NextResponse } from "next/server";
 import { logger } from "../../../../../../functions/server/logging";
-import { getSha1 } from "../../../../../../../utils/fxa";
-import fakeBreaches from "../../../data/fakeBreaches.json";
-import type { BinaryLike } from "crypto";
+import mockBreaches from "../../../data/mockBreaches.json";
 import { errorIfProduction } from "../../../../utils/errorThrower";
+import { MOCK_HIBP_COMPUTE_SHA1 } from "../../../config/defaults";
 
 type BreachedAccountResponse = {
   hashSuffix: string;
@@ -18,17 +17,20 @@ export function GET() {
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
-  // Mock data for test email, can be randomized
-  const userEmail = process.env.E2E_TEST_ACCOUNT_EMAIL;
-  //TODO: getServerSession doesn't work here for some reason
-  const currentUserSha = getSha1(userEmail as BinaryLike);
-  logger.info("Mock endpoint: /range/search/");
+  logger.info("HIBP Mock endpoint: /range/search/");
+  if (process.env.E2E_TEST_ACCOUNT_EMAIL === undefined) {
+    return NextResponse.json({
+      error: 500,
+      message: "HIBP Mock endpoint: E2E test account isn't set up!",
+    });
+  }
 
-  let data = fakeBreaches.data as BreachedAccountResponse;
+  const sha1Sliced = MOCK_HIBP_COMPUTE_SHA1(process.env.E2E_TEST_ACCOUNT_EMAIL);
+  let data = mockBreaches.data as BreachedAccountResponse;
 
   data = data.map((elem) => ({
     ...elem,
-    hashSuffix: currentUserSha.slice(6).toUpperCase(),
+    hashSuffix: sha1Sliced,
   }));
   const res = NextResponse.json(data);
   return res;

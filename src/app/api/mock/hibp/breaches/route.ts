@@ -4,37 +4,24 @@
 
 import { NextResponse } from "next/server";
 import { logger } from "../../../../functions/server/logging";
-import fakeAllBreaches from "../data/fakeAllBreaches.json";
+import mockAllBreaches from "../data/mockAllBreaches.json";
 import { errorIfProduction } from "../../utils/errorThrower";
+import { getBreaches } from "../../../../functions/server/getBreaches";
+import { Breach } from "../../../../functions/universal/breach";
+import { HibpLikeDbBreach } from "../../../../../utils/hibp";
 
-type BreachesListResponse = {
-  Id: number;
-  Name: string;
-  Title: string;
-  Domain: string;
-  BreachDate: string;
-  AddedDate: string;
-  ModifiedDate: string;
-  PwnCount: number;
-  Description: string;
-  LogoPath: string;
-  DataClasses: string[];
-  IsVerified: boolean;
-  IsFabricated: boolean;
-  IsSensitive: boolean;
-  IsRetired: boolean;
-  IsSpamList: boolean;
-  IsMalware: boolean;
-  FaviconUrl: string | null;
-}[];
+type BreachesListResponse = (Breach | HibpLikeDbBreach)[];
 
-export function GET() {
+export async function GET() {
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
   logger.info("Mock endpoint: /breaches");
 
-  const data = fakeAllBreaches.data as BreachesListResponse;
+  let allBreaches = await getBreaches();
+  if (allBreaches.length === 0) {
+    allBreaches = mockAllBreaches.data as BreachesListResponse;
+  }
 
-  return NextResponse.json(data);
+  return NextResponse.json(allBreaches);
 }

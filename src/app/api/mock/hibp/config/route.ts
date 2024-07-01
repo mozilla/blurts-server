@@ -3,18 +3,17 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { randomInt } from "crypto";
 // import { logger } from "../../../../functions/server/logging";
 import { isAdmin } from "../../../utils/auth";
 import fs from "fs";
 import path from "path";
-import { Broker } from "./config";
+import { MOCK_HIBP_DEFAULT_BREACHES_NAMES } from "./defaults";
 import { errorIfProduction, errorIfStage } from "../../utils/errorThrower";
 
-type onerepConfigReq = {
+type hibpConfigReq = {
   email: string;
+  breachesNames: string[];
   erase?: boolean;
-  brokers: [Broker];
 };
 
 export async function PUT(req: NextRequest) {
@@ -22,22 +21,22 @@ export async function PUT(req: NextRequest) {
   if (checks !== null) return checks;
 
   const data = await req.json();
-  const { email, erase = false, brokers } = data as onerepConfigReq;
+  const { email, erase = false, breachesNames } = data as hibpConfigReq;
 
   if (!isAdmin(email)) {
     return NextResponse.json(
-      { error: "Mock endpoint OneRep: Unauthorized to access the endpoint" },
+      { error: "Mock endpoint HIBP: Unauthorized to access the endpoint" },
       { status: 401 },
     );
   }
-  return updateJsonFile(erase, brokers);
+  return updateJsonFile(erase, breachesNames);
 }
 
-function updateJsonFile(erase: boolean, brokers: [Broker]) {
+function updateJsonFile(erase: boolean, breachesNames: string[]) {
   // Define the path to the JSON file
   const jsonFilePath = path.join(
     process.cwd(),
-    "./src/app/api/mock/onerep/config/mockUser.json",
+    "./src/app/api/mock/hibp/data/mockBreaches.json",
   );
 
   // Read the current JSON from the file
@@ -45,14 +44,12 @@ function updateJsonFile(erase: boolean, brokers: [Broker]) {
   const jsonData = JSON.parse(fileData);
 
   try {
-    if (erase) {
-      jsonData.BROKERS_LIST.data = [];
-      jsonData.BROKERS_LIST.valid = false;
-      jsonData.MAGIC_NUM_0 = randomInt(1000, 100000);
-    } else {
-      jsonData.BROKERS_LIST.data = brokers;
-      jsonData.BROKERS_LIST.valid = true;
-    }
+    jsonData.data = [
+      {
+        hashSuffix: "",
+        websites: erase ? MOCK_HIBP_DEFAULT_BREACHES_NAMES() : breachesNames,
+      },
+    ];
 
     fs.writeFileSync(
       jsonFilePath,
@@ -63,14 +60,14 @@ function updateJsonFile(erase: boolean, brokers: [Broker]) {
     return NextResponse.json(
       {
         message:
-          "Mock endpoint OneRep: JSON data has been successfully updated.",
+          "Mock endpoint HIBP: default JSON data has been successfully updated.",
       },
       { status: 200 },
     );
   } catch (error) {
-    console.error("Mock endpoint OneRep: Failed to update JSON:", error);
+    console.error("Mock endpoint HIBP: Failed to update JSON:", error);
     return NextResponse.json(
-      { message: "Mock endpoint OneRep: Failed to update JSON data." },
+      { message: "Mock endpoint HIBP: Failed to update JSON data." },
       { status: 500 },
     );
   }

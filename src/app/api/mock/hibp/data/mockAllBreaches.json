@@ -17,8 +17,7 @@
       "IsSensitive": false,
       "IsRetired": false,
       "IsSpamList": false,
-      "IsMalware": false,
-      "FaviconUrl": null
+      "IsMalware": false
     },
     {
       "Id": 2,
@@ -45,8 +44,7 @@
       "IsSensitive": false,
       "IsRetired": false,
       "IsSpamList": false,
-      "IsMalware": false,
-      "FaviconUrl": null
+      "IsMalware": false
     },
     {
       "Id": 95,
@@ -75,8 +73,7 @@
       "IsSensitive": false,
       "IsRetired": false,
       "IsSpamList": false,
-      "IsMalware": false,
-      "FaviconUrl": null
+      "IsMalware": false
     }
   ]
 }
