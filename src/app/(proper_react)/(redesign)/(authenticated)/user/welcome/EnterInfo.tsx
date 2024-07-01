@@ -31,12 +31,12 @@ import { CONST_URL_PRIVACY_POLICY } from "../../../../../../constants";
 import styles from "./EnterInfo.module.scss";
 import { TelemetryButton } from "../../../../../components/client/TelemetryButton";
 import { redirect } from "next/navigation";
-import { captureException } from "@sentry/node";
 
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 const createProfileAndStartScan = async (
   userInfo: UserInfo,
+  handleException: (e: Error) => void,
 ): Promise<WelcomeScanBody> => {
   const response = await fetch("/api/v1/user/welcome-scan/create", {
     method: "POST",
@@ -48,7 +48,7 @@ const createProfileAndStartScan = async (
 
   const result: WelcomeScanBody = await response.json();
   if (!result?.success) {
-    captureException(new Error("Could not start scan"));
+    handleException(new Error("Could not start scan"));
     return redirect("/");
   }
 
@@ -63,6 +63,7 @@ export type Props = {
   skipInitialStep: boolean;
   previousRoute: string | null;
   optionalInfoIsEnabled: boolean;
+  handleException: (e: Error) => Promise<void>;
 };
 
 export const EnterInfo = ({
@@ -71,6 +72,7 @@ export const EnterInfo = ({
   skipInitialStep,
   previousRoute,
   optionalInfoIsEnabled,
+  handleException,
 }: Props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -217,7 +219,8 @@ export const EnterInfo = ({
       dateOfBirth,
     };
 
-    void createProfileAndStartScan(userInfo)
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+    void createProfileAndStartScan(userInfo, handleException)
       .then(() => {
         onScanStarted();
       })
