@@ -2,11 +2,7 @@
   "data": [
     {
       "hashSuffix": "",
-      "websites": [
-        "000webhost",
-        "123RF",
-        "Bonobos"
-      ]
+      "websites": ["000webhost", "123RF", "Bonobos"]
     }
   ]
 }
