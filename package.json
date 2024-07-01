@@ -140,7 +140,7 @@
     "lint-staged": "^15.2.5",
     "mjml-browser": "^4.15.3",
     "prettier": "3.2.5",
-    "react-intersection-observer": "^9.10.2",
+    "react-intersection-observer": "^9.10.3",
     "sass": "^1.77.4",
     "storybook": "^8.1.10",
     "stylelint": "^16.6.1",
