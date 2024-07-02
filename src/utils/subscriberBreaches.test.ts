@@ -32,6 +32,7 @@ const subscriber: SubscriberRow = {
     "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc0",
   fxa_refresh_token:
     "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc1",
+  fxa_session_expiry: new Date(0),
   fxa_uid: "12346",
   fxa_profile_json: {
     uid: "123",
@@ -488,6 +489,7 @@ describe("getSubBreaches", () => {
         "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc0",
       fxa_refresh_token:
         "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc1",
+      fxa_session_expiry: new Date(0),
       fxa_uid: "12346",
       fxa_profile_json: {
         uid: "123",
@@ -590,6 +592,7 @@ describe("getSubBreaches", () => {
         "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc0",
       fxa_refresh_token:
         "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc1",
+      fxa_session_expiry: new Date(0),
       fxa_uid: "12346",
       fxa_profile_json: {
         uid: "123",
@@ -688,6 +691,7 @@ describe("getSubBreaches", () => {
         "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc0",
       fxa_refresh_token:
         "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc1",
+      fxa_session_expiry: new Date(0),
       fxa_uid: "12346",
       fxa_profile_json: {
         uid: "123",
@@ -808,6 +812,7 @@ describe("getSubBreaches", () => {
         "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc0",
       fxa_refresh_token:
         "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc1",
+      fxa_session_expiry: new Date(0),
       fxa_uid: "12346",
       fxa_profile_json: {
         uid: "123",
@@ -924,6 +929,7 @@ describe("getSubBreaches", () => {
         "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc0",
       fxa_refresh_token:
         "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc1",
+      fxa_session_expiry: new Date(0),
       fxa_uid: "12346",
       fxa_profile_json: {
         uid: "123",
@@ -1040,6 +1046,7 @@ describe("getSubBreaches", () => {
         "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc0",
       fxa_refresh_token:
         "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc1",
+      fxa_session_expiry: new Date(0),
       fxa_uid: "12346",
       fxa_profile_json: {
         uid: "123",
