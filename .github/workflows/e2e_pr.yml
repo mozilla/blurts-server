@@ -36,8 +36,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-      - name: Copy env var
-        run: cp .env-dist .env
       - name: Setting up postgres
         run: npm run db:migrate
         env:
@@ -74,7 +72,6 @@ jobs:
           E2E_TEST_PAYPAL_LOGIN:  ${{ secrets.E2E_TEST_PAYPAL_LOGIN }}
           E2E_TEST_PAYPAL_PASSWORD: ${{ secrets.E2E_TEST_PAYPAL_PASSWORD }}
           ADMINS: ${{ secrets.ADMINS }}
-          FXA_ENABLED: true
           OAUTH_CLIENT_SECRET: ${{ secrets.OAUTH_CLIENT_SECRET }}
           ONEREP_API_KEY: ${{ secrets.ONEREP_API_KEY }}
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
