@@ -55,7 +55,7 @@ export const FirstDataBrokerRemovalFixed = (props: Props) => {
                   elems: {
                     "data-broker-link": (
                       <a
-                        href={props.data.dataBrokerLink}
+                        href={`${props.data.dataBrokerLink}?utm_medium=email&utm_source=monitor-product&utm_campaign=${utmCampaign}&utm_content=data-broker`}
                         target="_blank"
                         rel="noopener noreferrer"
                       />
