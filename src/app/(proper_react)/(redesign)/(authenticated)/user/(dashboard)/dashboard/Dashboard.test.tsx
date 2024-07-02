@@ -3819,7 +3819,7 @@ describe("Data privacy petition banner", () => {
     expect(petitionCta).not.toBeInTheDocument();
   });
 
-  it("does not display the petition banner to user who are not base in the US", () => {
+  it("does not display the petition banner to users who are not based in the US", () => {
     const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
     render(
       <ComposedDashboard
