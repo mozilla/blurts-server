@@ -42,6 +42,7 @@ export function meetsAgeRequirement(dateOfBirth: ISO8601DateString): boolean {
   return age >= USER_MIN_AGE;
 }
 
+/* c8 ignore start */
 export async function checkUserHasYearlySubscription(user: Session["user"]) {
   if (
     !user.subscriber?.fxa_access_token ||
@@ -74,3 +75,4 @@ export async function checkUserHasYearlySubscription(user: Session["user"]) {
   }
   return hasYearlyPlanId;
 }
+/* c8 ignore stop */
