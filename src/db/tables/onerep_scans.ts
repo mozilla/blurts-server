@@ -16,6 +16,7 @@ import {
   SubscriberRow,
 } from "knex/types/tables";
 import { RemovalStatus } from "../../app/functions/universal/scanResult.js";
+import { MOCK_ONEREP_SCAN_ID } from "../../app/api/mock/onerep/config/config.ts";
 
 const knex = createDbConnection();
 
@@ -195,6 +196,7 @@ async function setOnerepScan(
     })
     .onConflict("onerep_scan_id")
     .merge({
+      onerep_profile_id: onerepProfileId,
       onerep_scan_status: onerepScanStatus,
       updated_at: knex.fn.now(),
     });
@@ -204,7 +206,7 @@ async function addOnerepScanResults(
   onerepProfileId: number,
   onerepScanResults: Array<ScanResult>,
 ) {
-  const scanResultsMap = onerepScanResults.map((scanResult) => ({
+  let scanResultsMap = onerepScanResults.map((scanResult) => ({
     onerep_scan_result_id: scanResult.id,
     onerep_scan_id: scanResult.scan_id,
     link: scanResult.link,
@@ -238,6 +240,33 @@ async function addOnerepScanResults(
     }),
   });
 
+  // Delete previous records to allow dynamic mock data configuration, maintaining the 'manually_resolved' field.
+  if (process.env.ONEREP_API_BASE!.includes("/api/mock")) {
+    const scan_id = MOCK_ONEREP_SCAN_ID(onerepProfileId);
+    const existingRecords = await knex("onerep_scan_results")
+      .where("onerep_scan_id", scan_id)
+      .select("onerep_scan_result_id", "manually_resolved");
+
+    const resolvedStatusMap = new Map();
+    existingRecords.forEach((record) => {
+      resolvedStatusMap.set(
+        record.onerep_scan_result_id,
+        record.manually_resolved,
+      );
+    });
+
+    scanResultsMap = scanResultsMap.map((item) => {
+      if (resolvedStatusMap.has(item.onerep_scan_result_id)) {
+        return {
+          ...item,
+          manually_resolved: resolvedStatusMap.get(item.onerep_scan_result_id),
+        };
+      }
+      return item;
+    });
+
+    await knex("onerep_scan_results").where("onerep_scan_id", scan_id).del();
+  }
   if (scanResultsMap.length > 0) {
     await knex("onerep_scan_results")
       .insert(scanResultsMap)
