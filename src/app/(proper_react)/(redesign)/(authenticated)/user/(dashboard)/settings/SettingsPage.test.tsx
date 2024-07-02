@@ -130,8 +130,6 @@ const mockedSubscriber: SubscriberRow = {
   monthly_email_at: "2022-08-07 14:22:00.000-05",
   monthly_email_optout: false,
   signup_language: "fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5",
-  db_migration_1: null,
-  db_migration_2: null,
   onerep_profile_id: null,
   monthly_monitor_report_at: null,
   monthly_monitor_report: false,

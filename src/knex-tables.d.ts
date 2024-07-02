@@ -129,12 +129,6 @@ declare module "knex/types/tables" {
     monthly_monitor_report_at: null | Date;
     monthly_monitor_report: boolean;
     breach_resolution: BreachResolution;
-    // TODO: Find unknown type
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-    db_migration_1: null | unknown;
-    // TODO: Find unknown type
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-    db_migration_2: null | unknown;
     onerep_profile_id: null | number;
     sign_in_count: null | number;
     email_addresses: SubscriberEmail[];
@@ -157,8 +151,6 @@ declare module "knex/types/tables" {
     | "monthly_monitor_report_at"
     | "monthly_monitor_report"
     | "breach_resolution"
-    | "db_migration_1"
-    | "db_migration_2"
     | "onerep_profile_id"
     | "email_addresses"
     | "first_broker_removal_email_sent"
