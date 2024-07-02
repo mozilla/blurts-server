@@ -3848,7 +3848,7 @@ describe("Data privacy petition banner", () => {
     expect(petitionCta).not.toBeInTheDocument();
   });
 
-  it("confirms that the petition banner has been dismissed with by the “close” button", async () => {
+  it("confirms that the petition banner has been dismissed by the “close” button", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
@@ -3879,7 +3879,7 @@ describe("Data privacy petition banner", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("confirms that the petition banner has been dismissed with by the “dismiss CTA” button", async () => {
+  it("confirms that the petition banner has been dismissed by the “dismiss CTA” button", async () => {
     const user = userEvent.setup();
     const ComposedDashboard = composeStory(
       DashboardUsPremiumResolvedScanNoBreaches,
