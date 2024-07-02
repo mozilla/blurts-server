@@ -170,9 +170,7 @@ export const clickOnATagCheckDomain = async (
   page: Page,
 ) => {
   if (typeof host === "string")
-    host = new RegExp(
-      escapeRegExp(host.replace(/^(https?:\/\/)/, "").replace(/:\d+$/, "")),
-    );
+    host = new RegExp(escapeRegExp(host.replace(/^(https?:\/\/)/, "")));
   if (typeof path === "string") path = new RegExp(".*" + path + ".*");
 
   const href = await aTag.getAttribute("href");

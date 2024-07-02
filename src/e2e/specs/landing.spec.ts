@@ -309,8 +309,14 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     await authPage.enterPassword();
 
     // verify dashboard redirect
-    const successUrl = process.env.E2E_TEST_BASE_URL + "/user/dashboard";
-    expect(page.url()).toContain(successUrl);
+    const successUrl =
+      process.env.E2E_TEST_BASE_URL +
+      `${
+        process.env.E2E_TEST_ENV === "local"
+          ? "/user/welcome"
+          : "/user/dashboard"
+      }`;
+    expect(page.url()).toBe(successUrl);
   });
 
   test('Verify the "Start free monitoring" button UI and functionality with existing account', async ({
@@ -330,7 +336,13 @@ test.describe(`${process.env.E2E_TEST_ENV} - Verify the Landing Page Functionali
     await authPage.enterPassword();
 
     // verify dashboard redirect
-    const successUrl = process.env.E2E_TEST_BASE_URL + "/user/dashboard";
-    expect(page.url()).toContain(successUrl);
+    const successUrl =
+      process.env.E2E_TEST_BASE_URL +
+      `${
+        process.env.E2E_TEST_ENV === "local"
+          ? "/user/welcome"
+          : "/user/dashboard"
+      }`;
+    expect(page.url()).toBe(successUrl);
   });
 });
