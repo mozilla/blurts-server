@@ -201,7 +201,7 @@ ${styles.staticAlternative}
   return (
     <>
       <Button
-        variant="tertiary"
+        variant="link"
         onPress={() => dialogState.open()}
         className={styles.trigger}
       >
@@ -294,7 +294,7 @@ ${styles.staticAlternative}
                         button_id: "continue_to_cancellation",
                       },
                     }}
-                    variant="tertiary"
+                    variant="link"
                     onPress={() => setCurrentStep("survey")}
                     className={styles.tertiaryCta}
                   >
@@ -331,7 +331,7 @@ ${styles.staticAlternative}
                       },
                     }}
                     className={styles.tertiaryCta}
-                    variant="tertiary"
+                    variant="link"
                     onPress={() => {
                       setCurrentStep("redirecting");
                       setTimeout(() => {
