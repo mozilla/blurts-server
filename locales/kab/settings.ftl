@@ -9,6 +9,7 @@ settings-page-title = Iɣewwaren n { -product-short-name }
 
 ## Breach alert preferences
 
+settings-alert-email-preferences-title = Ismenyifen n yimayl
 settings-alert-preferences-option-one = Azen ilɣa ɣer tensa imayl yettwaɛnan.
 
 ## Monitored email addresses
@@ -18,11 +19,10 @@ settings-resend-email-verification-link = Ales tuzna n yimayl n usenqed
 settings-add-email-button = Rnu tansa imayl
 settings-remove-email-button-label = Kkes
 
-## Deactivate account
-
-settings-deactivate-account-title = Kkes amiḍan
-settings-fxa-link-label-3 = Ddu ɣer iɣewwaṛen n { -brand-mozilla-account }
-
 ## Delete Monitor account
 
+settings-delete-monitor-free-account-title = Kkes amiḍan { -brand-monitor }
+settings-delete-monitor-free-account-cta-label = Kkes amiḍan
+settings-delete-monitor-free-account-dialog-cta-label = Kkes amiḍan
 settings-delete-monitor-free-account-dialog-cancel-button-label = Beddleɣ ṛṛay, uɣal ɣer deffir
+settings-delete-monitor-account-confirmation-toast-dismiss-label = Zgel
