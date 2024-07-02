@@ -38,6 +38,36 @@
     }
   }
 
+  .hidden {
+    display: none;
+  }
+
+  .limitationsApplyLink {
+    text-decoration-color: $color-grey-30;
+    .limitationsApplyText {
+      display: flex;
+      gap: $spacing-xs;
+      align-items: center;
+      justify-content: center;
+      text-decoration-color: $color-grey-30;
+
+      svg {
+        width: 13px; // width of open in new tab icon
+      }
+    }
+  }
+
+  .errorApplyingCoupon {
+    padding-top: $spacing-sm;
+    color: $color-red-60;
+    font-weight: 500;
+
+    button {
+      color: $color-red-60;
+      font-weight: 500;
+    }
+  }
+
   small {
     color: $color-grey-30;
     font-weight: 400;

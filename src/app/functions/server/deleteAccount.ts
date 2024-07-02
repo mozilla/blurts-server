@@ -11,12 +11,19 @@ import {
 import { deactivateProfile } from "./onerep";
 import { SerializedSubscriber } from "../../../next-auth";
 import { deleteSubscription } from "../../../utils/fxa";
+import { record } from "./glean";
 
 export async function deleteAccount(
   subscriber: SubscriberRow | SerializedSubscriber,
 ) {
   logger.info("fxa_delete_user", {
     subscriber: subscriber.id,
+  });
+
+  record("account", "remove", {
+    string: {
+      monitorUserId: subscriber.id.toString(),
+    },
   });
 
   // get profile id

@@ -3241,10 +3241,10 @@ it("send telemetry when users click on dashboard nav menu items", async () => {
   });
   await user.click(dashboardMenuItem[0]);
   expect(mockedRecord).toHaveBeenCalledWith(
-    "ctaButton",
+    "link",
     "click",
     expect.objectContaining({
-      button_id: "navigation_dashboard",
+      link_id: "navigation_dashboard",
     }),
   );
 });
@@ -3291,10 +3291,10 @@ it("send telemetry when users click on faq nav menu items", async () => {
   const faqMenuItem = screen.queryAllByRole("link", { name: "FAQs" });
   await user.click(faqMenuItem[0]);
   expect(mockedRecord).toHaveBeenCalledWith(
-    "ctaButton",
+    "link",
     "click",
     expect.objectContaining({
-      button_id: "navigation_faq",
+      link_id: "navigation_faq",
     }),
   );
 });
