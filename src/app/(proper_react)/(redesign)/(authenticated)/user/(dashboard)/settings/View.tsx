@@ -40,6 +40,7 @@ export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData;
   lastScanDate?: Date;
+  isYearlySubscriber: boolean;
 };
 
 export const SettingsView = (props: Props) => {
@@ -109,6 +110,7 @@ export const SettingsView = (props: Props) => {
                     )}
                     fxaSubscriptionsUrl={props.fxaSubscriptionsUrl}
                     experimentData={props.experimentData}
+                    isYearlySubscriber={props.isYearlySubscriber}
                   />
                 ) : (
                   <TelemetryLink

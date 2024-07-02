@@ -26,6 +26,7 @@ export type Props = {
   fxaSubscriptionsUrl: string;
   enableDiscountCoupon: boolean;
   experimentData?: ExperimentData;
+  isYearlySubscriber: boolean;
 };
 
 type DiscountData = {
@@ -233,7 +234,9 @@ ${styles.staticAlternative}
                       "settings-cancel-plus-step-confirm-content",
                     )}
                   </p>
-                  {props.enableDiscountCoupon && !alreadyHasCouponSet ? (
+                  {props.enableDiscountCoupon &&
+                  !alreadyHasCouponSet &&
+                  !props.isYearlySubscriber ? (
                     <>
                       <TelemetryButton
                         event={{
