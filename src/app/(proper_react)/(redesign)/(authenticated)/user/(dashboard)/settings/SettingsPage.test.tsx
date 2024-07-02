@@ -198,6 +198,7 @@ it("passes the axe accessibility audit", async () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -229,6 +230,7 @@ it("preselects 'Send all breach alerts to the primary email address' if that's t
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -272,6 +274,7 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -315,6 +318,7 @@ it("disables breach alert notification options if a user opts out of breach aler
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -368,6 +372,7 @@ it("preselects primary email alert option", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -407,6 +412,7 @@ it("unselects the breach alerts checkbox and sends a null value to the API", asy
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -462,6 +468,7 @@ it("preselects the affected email comms option after a user decides to enable br
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -508,6 +515,7 @@ it("sends a call to the API to change the email alert preferences when changing 
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -567,6 +575,7 @@ it("checks that monthly monitor report is enabled", () => {
           "MonthlyActivityEmail",
         ]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -613,6 +622,7 @@ it("sends an API call to disable monthly monitor reports", async () => {
           "MonthlyActivityEmail",
         ]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -658,6 +668,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -693,6 +704,7 @@ it("marks unverified email addresses as such", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -729,6 +741,7 @@ it("calls the API to resend a verification email if requested to", async () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -775,6 +788,7 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -811,6 +825,7 @@ it("hides the Plus cancellation link if the user doesn't have Plus", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -846,6 +861,7 @@ it("shows the Plus cancellation link if the user has Plus", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -888,6 +904,7 @@ it("takes you through the cancellation dialog flow all the way to subplat", asyn
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["ConfirmCancellation", "CancellationFlow"]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -965,6 +982,7 @@ it("closes the cancellation survey if the user selects nevermind, take me back",
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["ConfirmCancellation", "CancellationFlow"]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -1021,6 +1039,7 @@ it("closes the cancellation dialog", async () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["CancellationFlow"]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -1070,6 +1089,7 @@ it("shows the account deletion button if the user does not have Plus", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -1110,6 +1130,7 @@ it("warns about the consequences before deleting a free user's account", async (
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -1152,6 +1173,7 @@ it("shows a loading state while account deletion is in progress", async () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -1195,6 +1217,7 @@ it("shows the account deletion button if the user has Plus", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -1235,6 +1258,7 @@ it("warns about the consequences before deleting a Plus user's account", async (
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -1286,6 +1310,7 @@ it.skip("calls the 'add' action when adding another email address", async () => 
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -1320,6 +1345,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1363,6 +1389,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1406,6 +1433,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1450,6 +1478,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1493,6 +1522,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1541,6 +1571,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1585,6 +1616,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1633,6 +1665,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1676,6 +1709,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1724,6 +1758,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1784,6 +1819,7 @@ it("selects the coupon code discount cta and shows the all-set dialog step", asy
           "DiscountCouponNextThreeMonths",
         ]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -1869,6 +1905,7 @@ it("shows error message if the applying the coupon code function was unsuccessfu
           "DiscountCouponNextThreeMonths",
         ]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -1934,6 +1971,7 @@ it("does not show the coupon code if a user already has a coupon set", async () 
           "DiscountCouponNextThreeMonths",
         ]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
