@@ -102,6 +102,7 @@ declare module "knex/types/tables" {
     signup_language: null | string;
     fxa_refresh_token: null | string;
     fxa_access_token: null | string;
+    fxa_session_expiry: null | Date;
     fxa_profile_json: null | Profile;
     fxa_uid: null | string;
     // TODO: Find unknown type
@@ -139,6 +140,7 @@ declare module "knex/types/tables" {
     | "fx_newsletter"
     | "fxa_access_token"
     | "fxa_refresh_token"
+    | "fxa_session_expiry"
     | "fxa_profile_json"
     | "fxa_uid"
     | "breaches_last_shown"
