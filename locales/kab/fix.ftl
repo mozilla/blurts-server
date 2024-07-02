@@ -2,24 +2,37 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+guided-resolution-flow-exit = Uɣal ɣer tfelwit n usenqed
+guided-resolution-flow-next-arrow = Ddu ɣer takkayt tuḍfirt
+guided-resolution-flow-step-navigation-label = Takkayin yettwaḍefren
 
 # Celebration screens
 
 
 ## Shared CTA labels
 
+fix-flow-celebration-next-label = Ad nkemmel
+fix-flow-celebration-next-recommendations-label = Wali iwellihen
+fix-flow-celebration-next-dashboard-label = Ddu ɣer tfelwit n usenqed
 
 ## High-risk flow
 
 
 ## Leaked passwords and security questions flow
 
+fix-flow-celebration-leaked-passwords-title = Awalen n uεeddi ttummestnen tura!
+fix-flow-celebration-security-questions-title = Isestanen n tɣellist ttwammestnen!
 
 ## Security recommendations flow
 
 
 # High Risk Data Breaches
 
+# Variables
+# $breach_name is the name of the breach where the high risk data was found.
+# $breach_date is the date when the breach occurred.
+# An example of this string is Twitter on 13/09/18.
+high-risk-breach-name-and-date = { $breach_name } <breach_date>ɣef { $breach_date }</breach_date>
 high-risk-breach-skip = Suref akka tura
 
 # Credit Card Breaches

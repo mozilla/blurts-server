@@ -12,7 +12,7 @@ import { useL10n } from "../../hooks/l10n";
 import { VisuallyHidden } from "../server/VisuallyHidden";
 
 export interface Props {
-  variant: "primary" | "secondary" | "tertiary";
+  variant: "primary" | "secondary" | "tertiary" | "link";
   children?: ReactNode;
   className?: string;
   destructive?: boolean;
@@ -36,6 +36,7 @@ export const Button = (props: ButtonProps) => {
     href,
     isLoading,
     small,
+    target,
     wide,
     ...otherProps
   } = props;
@@ -77,6 +78,7 @@ export const Button = (props: ButtonProps) => {
       {...buttonProps}
       ref={buttonRef as RefObject<HTMLAnchorElement>}
       href={href}
+      target={target}
       className={classes}
     >
       {
