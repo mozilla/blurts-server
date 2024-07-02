@@ -92,7 +92,7 @@ describe("When Premium is not available", () => {
         expires: "2023-06-18T14:48:00.000Z",
       },
       status: "authenticated",
-      update: () => new Promise(() => null),
+      update: () => Promise.resolve(null),
     });
 
     const ComposedDashboard = composeStory(LandingNonUs, Meta);
