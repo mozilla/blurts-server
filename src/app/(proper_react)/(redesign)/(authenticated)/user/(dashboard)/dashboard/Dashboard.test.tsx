@@ -3727,3 +3727,191 @@ describe("CSAT survey banner", () => {
     expect(cookies.get("last_scan_date_plus-user_dismissed")).toBeDefined();
   });
 });
+
+describe("Data privacy petition banner", () => {
+  it("displays the petition banner to free US users on the “action needed” tab", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumEmptyScanResolvedBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const petitionCta = screen.getByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).toBeInTheDocument();
+  });
+
+  it("does not display the petition banner to free US users on the “fixed” tab", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumEmptyScanResolvedBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const petitionCta = screen.queryByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).not.toBeInTheDocument();
+  });
+
+  it("displays the petition banner to Plus users on the “fixed” tab", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const petitionCta = screen.getByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).toBeInTheDocument();
+  });
+
+  it("does not display the petition banner to Plus users on the “action needed” tab", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const petitionCta = screen.queryByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).not.toBeInTheDocument();
+  });
+
+  it("does not display the petition banner to users who are not based in the US", () => {
+    const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const petitionCta = screen.queryByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).not.toBeInTheDocument();
+  });
+
+  it("does not display the petition banner if the experiment is not enabled", () => {
+    const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+    render(<ComposedDashboard />);
+
+    const petitionCta = screen.queryByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).not.toBeInTheDocument();
+  });
+
+  it("confirms that the petition banner has been dismissed by the “close” button", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const dismissCta = screen.getByRole("button", {
+      name: "No, thank you",
+    });
+    expect(dismissCta).toBeInTheDocument();
+    await user.click(dismissCta);
+
+    expect(
+      screen.queryByRole("button", {
+        name: "No, thank you",
+      }),
+    ).not.toBeInTheDocument();
+  });
+
+  it("confirms that the petition banner has been dismissed by the “dismiss CTA” button", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    expect(
+      screen.getByRole("link", {
+        name: "Sign petition",
+      }),
+    ).toBeInTheDocument();
+
+    const dismissButton = screen.getByRole("button", {
+      name: "Dismiss",
+    });
+    await user.click(dismissButton);
+
+    expect(
+      screen.queryByRole("link", {
+        name: "Sign petition",
+      }),
+    ).not.toBeInTheDocument();
+  });
+});

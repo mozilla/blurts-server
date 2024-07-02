@@ -47,3 +47,17 @@ features:
         value: { "enabled": true }
       - channel: production
         value: { "enabled": false }
+  data-privacy-petition-banner:
+    description: Show the data privacy petition banner to US users
+    variables:
+      enabled:
+        description: If the feature is enabled
+        type: Boolean
+        default: false
+    defaults:
+      - channel: local
+        value: { "enabled": false }
+      - channel: staging
+        value: { "enabled": false }
+      - channel: production
+        value: { "enabled": false }

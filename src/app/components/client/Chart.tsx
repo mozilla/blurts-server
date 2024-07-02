@@ -171,10 +171,7 @@ export const DoughnutChart = (props: Props) => {
             </Link>
           ) : (
             <>
-              <Button
-                variant="tertiary"
-                {...waitlistDialogTrigger.triggerProps}
-              >
+              <Button variant="link" {...waitlistDialogTrigger.triggerProps}>
                 {l10n.getString(
                   "exposure-chart-returning-user-upgrade-prompt-cta",
                 )}
