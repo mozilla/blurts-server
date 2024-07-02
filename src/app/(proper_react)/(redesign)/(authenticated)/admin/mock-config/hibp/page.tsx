@@ -6,18 +6,21 @@ import { getServerSession } from "../../../../../../functions/server/getServerSe
 import { notFound } from "next/navigation";
 import { isAdmin } from "../../../../../../api/utils/auth";
 import ConfigPage from "./hibpConfig";
-import { getBreaches } from "../../../../../../functions/server/getBreaches.ts";
+// import { getBreaches } from "../../../../../../functions/server/getBreaches.ts";
+import { Breach } from "../../../../../../functions/universal/breach.ts";
+import { HibpLikeDbBreach } from "../../../../../../../utils/hibp.js";
 
 export default async function DevPage() {
   const session = await getServerSession();
-  const allBreaches = (await getBreaches()).filter(
-    (breach) =>
-      !breach.IsRetired &&
-      !breach.IsSpamList &&
-      !breach.IsFabricated &&
-      breach.IsVerified &&
-      breach.Domain !== "",
-  );
+  // const allBreaches = (await getBreaches()).filter(
+  //   (breach) =>
+  //     !breach.IsRetired &&
+  //     !breach.IsSpamList &&
+  //     !breach.IsFabricated &&
+  //     breach.IsVerified &&
+  //     breach.Domain !== "",
+  // );
+  const allBreaches = [] as (Breach | HibpLikeDbBreach)[];
 
   if (
     !session?.user?.email ||
