@@ -38,7 +38,7 @@ export type ShowProfileResponse = CreateProfileRequest & {
   status: "active" | "inactive";
   created_at: ISO8601DateString;
   updated_at: ISO8601DateString;
-  url: `https://api.onerep.com/profiles/${number}`;
+  url: `${string}/profiles/${number}`;
 };
 export type CreateScanResponse = {
   id: number;
@@ -118,6 +118,16 @@ async function onerepFetch(
   if (!onerepApiKey) {
     throw new Error("ONEREP_API_KEY env var not set");
   }
+
+  //If mock, remove the first slash so that it doesn't overwrite the path
+  if (
+    onerepApiBase.includes("/api/mock") &&
+    path.length > 1 &&
+    path[0] === "/"
+  ) {
+    path = path.substring(1);
+  }
+
   const url = new URL(path, onerepApiBase);
   const headers = new Headers(options.headers);
   headers.set("Authorization", `Bearer ${onerepApiKey}`);

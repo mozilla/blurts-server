@@ -121,7 +121,7 @@ export class PurchasePage {
       (await this.planDetails.textContent()) as string,
     );
     expect(planDetails).toContain(
-      `${process.env.E2E_TEST_ENV === "prod" ? "yearly" : "every 2 months"}`,
+      `${process.env.E2E_TEST_ENV!.match(/prod|local/) ? "yearly" : "every 2 months"}`,
     );
   }
 

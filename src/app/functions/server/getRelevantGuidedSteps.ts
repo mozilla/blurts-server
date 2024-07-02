@@ -70,6 +70,7 @@ export type StepLinkWithStatus = (typeof stepLinks)[number] & {
 };
 
 export function isGuidedResolutionInProgress(stepId: StepLink["id"]) {
+  if (stepId === "Scan" || stepId === "Done") return false; //this fixes a lint check
   const inProgressStepIds = stepLinks
     .filter((step) => step.id !== "Scan" && step.id !== "Done")
     .map(({ id }) => id);
