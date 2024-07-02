@@ -5,6 +5,7 @@
 import { Knex } from "knex";
 import { Profile } from "next-auth";
 import { Scan } from "./app/functions/server/onerep";
+import { ISO8601DateString } from "./utils/parse";
 import { StateAbbr } from "./utils/states";
 import { RemovalStatus } from "./app/functions/universal/scanResult";
 import { BreachDataTypes } from "./app/functions/universal/breach";
@@ -74,6 +75,21 @@ declare module "knex/types/tables" {
     email: string;
   }
 
+  export type BreachResolutionChecked = {
+    resolutionsChecked: Array<
+      (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
+    >;
+  };
+
+  export type SubscriberBreachResolution = {
+    [key: BreachRow.id]: BreachResolutionChecked;
+  };
+
+  type BreachResolution = null | {
+    useBreachId: boolean;
+    [key: SubscriberEmail["email"]]: SubscriberBreachResolution;
+  };
+
   interface SubscriberRow {
     id: number;
     primary_sha1: string;
@@ -109,29 +125,11 @@ declare module "knex/types/tables" {
       };
       monitoredEmails: { count: number };
     };
+    monthly_email_at: ISO8601DateString;
+    monthly_email_optout: boolean;
     monthly_monitor_report_at: null | Date;
     monthly_monitor_report: boolean;
-    breach_resolution:
-      | null
-      | ({
-          useBreachId: boolean;
-        } & Record<
-          SubscriberEmail.email,
-          Record<
-            BreachRow.id,
-            {
-              resolutionsChecked: Array<
-                (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
-              >;
-            }
-          >
-        >);
-    // TODO: Find unknown type
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-    db_migration_1: null | unknown;
-    // TODO: Find unknown type
-    // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-    db_migration_2: null | unknown;
+    breach_resolution: BreachResolution;
     onerep_profile_id: null | number;
     sign_in_count: null | number;
     email_addresses: SubscriberEmail[];
@@ -150,11 +148,11 @@ declare module "knex/types/tables" {
     | "breaches_resolved"
     | "waitlists_joined"
     | "breach_stats"
+    | "monthly_email_at"
+    | "monthly_email_optout"
     | "monthly_monitor_report_at"
     | "monthly_monitor_report"
     | "breach_resolution"
-    | "db_migration_1"
-    | "db_migration_2"
     | "onerep_profile_id"
     | "email_addresses"
     | "first_broker_removal_email_sent"
