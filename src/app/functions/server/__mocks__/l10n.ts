@@ -3,10 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import {
-  getOneL10nBundleInNodeContext,
-  getL10n,
+  getL10nBundles as mockGetL10nBundles,
+  getL10n as mockGetL10n,
 } from "../../l10n/storybookAndJest";
 
-export const getL10nBundles = getOneL10nBundleInNodeContext;
+export const getL10nBundles = mockGetL10nBundles;
 
-export const getL10n = getL10n;
+export const getL10n = mockGetL10n;
