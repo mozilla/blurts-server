@@ -20,7 +20,7 @@ jest.mock("../../../functions/server/refreshStoredScanResults.ts", () => ({
 
 jest.mock("../../../functions/server/logging.ts", () => {
   class Logging {
-    info(message, details) {
+    info(message: string, details: object) {
       console.info(message, details);
     }
   }

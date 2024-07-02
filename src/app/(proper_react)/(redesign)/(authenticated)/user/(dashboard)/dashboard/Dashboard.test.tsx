@@ -1205,10 +1205,9 @@ it("shows the correct dashboard banner CTA and sends telemetry for non-US users,
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "See what’s fixed",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "ctaButton",
@@ -1827,7 +1826,7 @@ it("shows the correct dashboard banner CTA and sends telemetry for US users, wit
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "Get continuous protection",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
@@ -1923,10 +1922,9 @@ it("shows the correct dashboard banner CTA and sends telemetry for US users, wit
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "Get continuous protection",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "upgradeIntent",
@@ -2067,10 +2065,9 @@ it("shows the correct dashboard banner CTA and sends telemetry for US user, with
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "See what’s fixed",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "ctaButton",
@@ -2291,10 +2288,9 @@ it("shows the correct dashboard banner CTA for US user, with Premium, resolved s
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "See what’s fixed",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "ctaButton",
@@ -2387,10 +2383,9 @@ it("shows the correct dashboard banner CTA and sends telemetry for US user, with
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "See what’s fixed",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "ctaButton",
