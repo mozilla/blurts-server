@@ -1087,6 +1087,7 @@ it("shows the account deletion button if the user does not have Plus", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
