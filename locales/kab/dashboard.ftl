@@ -5,16 +5,12 @@
 
 # Chart summarizing total exposures
 
+exposure-chart-legend-heading-type = Tifin n trewliwin n yisefka
 exposure-chart-legend-heading-nr = Amḍan
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
-
 modal-cta-ok = IH
-modal-open-alt = Ldi
-modal-close-alt = Mdel
-
-
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Sizdeg
 dashboard-exposures-filter-company = Takebbanit
@@ -30,5 +26,5 @@ dashboard-exposures-filter-reset = Wennez
 ## Top banner on the dashboard
 
 
-# About Exposure Statuses Modal
+# About Exposure Indicators Modal
 
