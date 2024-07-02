@@ -15,7 +15,6 @@ jobs:
           node-version: '22.3.x'
       - run: npm ci
       - run: npm run build-glean
-      - run: cp .env-dist .env
       # Verify that the build (incl. type-checking) succeeds
       # Upload sourcemaps to Sentry
       - run: npm run build

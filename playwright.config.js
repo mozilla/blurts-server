@@ -5,10 +5,10 @@
 import { defineConfig, devices } from '@playwright/test'
 /**
  * Read environment variables from file.
- * https://github.com/motdotla/dotenv
+ * https://www.npmjs.com/package/dotenv-flow
  */
-import * as dotenv from 'dotenv'
-dotenv.config()
+import * as dotenvFlow from 'dotenv-flow'
+dotenvFlow.config()
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
