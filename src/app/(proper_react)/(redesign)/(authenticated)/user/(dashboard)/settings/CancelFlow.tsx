@@ -242,7 +242,7 @@ ${styles.staticAlternative}
                     )}
                   </p>
                   {props.enableDiscountCoupon &&
-                  alreadyHasCouponSet &&
+                  !alreadyHasCouponSet &&
                   !props.isYearlySubscriber ? (
                     <>
                       <TelemetryButton
