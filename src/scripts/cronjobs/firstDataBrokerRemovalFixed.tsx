@@ -24,7 +24,11 @@ type SubscriberFirstRemovedScanResult = {
 function isFulfilledResult(
   result: PromiseSettledResult<SubscriberFirstRemovedScanResult | undefined>,
 ): result is PromiseFulfilledResult<SubscriberFirstRemovedScanResult> {
-  return typeof result !== "undefined" && result.status === "fulfilled";
+  return (
+    typeof result !== "undefined" &&
+    result.status === "fulfilled" &&
+    typeof result.value !== "undefined"
+  );
 }
 
 void run();
