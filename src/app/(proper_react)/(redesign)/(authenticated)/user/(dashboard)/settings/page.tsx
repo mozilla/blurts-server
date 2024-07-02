@@ -14,10 +14,7 @@ import { getL10n } from "../../../../../../functions/l10n/serverComponents";
 import { getUserEmails } from "../../../../../../../db/tables/emailAddresses";
 import { getBreaches } from "../../../../../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../../../../../utils/hibp";
-import {
-  getBillingAndSubscriptions,
-  getSha1,
-} from "../../../../../../../utils/fxa";
+import { getSha1 } from "../../../../../../../utils/fxa";
 import { getAttributionsFromCookiesOrDb } from "../../../../../../functions/server/attributions";
 import { getEnabledFeatureFlags } from "../../../../../../../db/tables/featureFlags";
 import { getLatestOnerepScan } from "../../../../../../../db/tables/onerep_scans";
@@ -26,6 +23,7 @@ import { getExperiments } from "../../../../../../functions/server/getExperiment
 import { getLocale } from "../../../../../../functions/universal/getLocale";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
 import { getSubscriberById } from "../../../../../../../db/tables/subscribers";
+import { checkUserHasYearlySubscription } from "../../../../../../functions/universal/user";
 
 export default async function SettingsPage() {
   const session = await getServerSession();
@@ -34,19 +32,9 @@ export default async function SettingsPage() {
     return redirect("/");
   }
 
-  if (!session.user.subscriber.fxa_access_token) {
-    console.error("FXA token not set");
-    return redirect("/");
-  }
-
   const emailAddresses = await getUserEmails(session.user.subscriber.id);
-  const billingAndSubscriptionInfo = await getBillingAndSubscriptions(
-    session.user.subscriber.fxa_access_token,
-  );
 
-  console.log("access token,", session.user.subscriber.fxa_access_token);
-
-  console.log(JSON.stringify({ billingAndSubscriptionInfo }));
+  const isYearlySubscriber = await checkUserHasYearlySubscription(session.user);
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
   const yearlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "yearly" });
@@ -105,6 +93,7 @@ export default async function SettingsPage() {
       enabledFeatureFlags={enabledFeatureFlags}
       experimentData={experimentData}
       lastScanDate={lastOneRepScan?.created_at}
+      isYearlySubscriber={isYearlySubscriber}
     />
   );
 }
