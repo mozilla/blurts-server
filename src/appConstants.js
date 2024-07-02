@@ -3,8 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 // TODO: these vars were copy/pasted from the old app-constants.js and should be cleaned up
-import * as dotenv from 'dotenv'
-dotenv.config()
+import * as dotenvFlow from 'dotenv-flow'
+dotenvFlow.config()
 
 const requiredEnvVars = [
   'ADMINS',
@@ -12,15 +12,12 @@ const requiredEnvVars = [
   'DATABASE_URL',
   'DELETE_UNVERIFIED_SUBSCRIBERS_TIMER',
   'EMAIL_FROM',
-  'FXA_ENABLED',
   'HIBP_API_ROOT',
   'HIBP_KANON_API_ROOT',
   'HIBP_KANON_API_TOKEN',
   'HIBP_NOTIFY_TOKEN',
   'HIBP_THROTTLE_DELAY',
   'HIBP_THROTTLE_MAX_TRIES',
-  'MOZLOG_FMT',
-  'MOZLOG_LEVEL',
   'FXA_SETTINGS_URL',
   'NODE_ENV',
   'OAUTH_ACCOUNT_URI',
@@ -36,7 +33,6 @@ const requiredEnvVars = [
 ]
 
 const optionalEnvVars = [
-  'EMAIL_TEST_RECIPIENT',
   'FX_REMOTE_SETTINGS_WRITER_PASS',
   'FX_REMOTE_SETTINGS_WRITER_SERVER',
   'FX_REMOTE_SETTINGS_WRITER_USER',

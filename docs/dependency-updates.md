@@ -72,7 +72,7 @@ added.
 We're only using a test utility from this package (see the comments in
 `/jest.setup.ts`), so if the tests pass, this upgrade was probably fine.
 
-### `@playwright/test` and `dotenv`
+### `@playwright/test` and `dotenv-flow`
 
 Our Playwright tests run as two GitHub Actions Workflows: [PR e2e tests][] and
 [cron e2e tests][]: the former runs a small subset of the end-to-end tests for PRs, the latter runs a more extensive suite once a day from the `main` branch.
