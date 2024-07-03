@@ -74,6 +74,41 @@ async function revokeOAuthTokens(subscriber) {
 }
 
 /**
+ * @param {string} refreshToken
+ * @returns {Promise<{access_token: string, refresh_token: string, expires_in: number}>}
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function refreshOauthTokens(refreshToken) {
+  const subscriptionIdUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/token`
+  try {
+    const postResp = await fetch(subscriptionIdUrl, {
+      headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  client_id: AppConstants.OAUTH_CLIENT_ID,
+                  client_secret: AppConstants.OAUTH_CLIENT_SECRET,
+                  grant_type: "refresh_token",
+                  refresh_token: refreshToken,
+                  ttl: 604800, // request 7 days ttl
+                }),
+                method: "POST",
+              
+    })
+
+    const responseTokens = await postResp.json();
+    if (!postResp.ok) throw responseTokens;
+    return responseTokens
+
+  } catch (e) {
+    if (e instanceof Error) {
+      console.error('refresh_fxa_access_token', { stack: e.stack })
+    }
+    throw e
+  }
+}
+/* c8 ignore stop */
+
+/**
  * @param {string} bearerToken
  * @returns {Promise<Array<any> | null>}
  */
@@ -232,6 +267,7 @@ function getSha1(email) {
 }
 
 export {
+  refreshOauthTokens,
   destroyOAuthToken,
   revokeOAuthTokens,
   getSha1,

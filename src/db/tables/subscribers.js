@@ -121,12 +121,13 @@ async function updatePrimaryEmail (subscriber, updatedEmail) {
  * @param {any} subscriber knex object in DB
  * @param {string | null} fxaAccessToken from Firefox Account Oauth
  * @param {string | null} fxaRefreshToken from Firefox Account Oauth
+ * @param {number} sessionExpiredAt from Firefox Account Oauth
  * @param {any} fxaProfileData from Firefox Account
  * @returns {Promise<any>} updated subscriber knex object in DB
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaProfileData) {
+async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, sessionExpiredAt, fxaProfileData) {
   const fxaUID = JSON.parse(fxaProfileData).uid
   const updated = await knex('subscribers')
     .where('id', '=', subscriber.id)
@@ -134,6 +135,7 @@ async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaPr
       fxa_uid: fxaUID,
       fxa_access_token: fxaAccessToken,
       fxa_refresh_token: fxaRefreshToken,
+      fxa_session_expiry: new Date(sessionExpiredAt),
       fxa_profile_json: fxaProfileData,
       // @ts-ignore knex.fn.now() results in it being set to a date,
       // even if it's not typed as a JS date object:
@@ -145,6 +147,49 @@ async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaPr
     destroyOAuthToken({ token: subscriber.fxa_refresh_token, token_type_hint: "refresh_token" })
   }
   return updatedSubscriber
+}
+/* c8 ignore stop */
+
+/**
+ * Update fxa tokens for subscriber
+ *
+ * @param {any} subscriber knex object in DB
+ * @param {string | null} fxaAccessToken from Firefox Account Oauth
+ * @param {string | null} fxaRefreshToken from Firefox Account Oauth
+ * @param {number} sessionExpiredAt from Firefox Account Oauth
+ * @returns {Promise<any>} updated subscriber knex object in DB
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function updateFxATokens (subscriber, fxaAccessToken, fxaRefreshToken, sessionExpiredAt) {
+  const updated = await knex('subscribers')
+    .where('id', '=', subscriber.id)
+    .update({
+      fxa_access_token: fxaAccessToken,
+      fxa_refresh_token: fxaRefreshToken,
+      fxa_session_expiry: new Date(sessionExpiredAt),
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
+    })
+    .returning('*')
+  const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
+  return updatedSubscriber
+}
+/* c8 ignore stop */
+
+/**
+ * Get fxa tokens and expiry for subscriber
+ *
+ * @param {number} subscriberId
+ */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
+async function getFxATokens (subscriberId) {
+  const res = await knex('subscribers')
+    .select('fxa_access_token', 'fxa_refresh_token', 'fxa_session_expiry')
+    .where('id', subscriberId)
+  return res?.[0] ?? null
 }
 /* c8 ignore stop */
 
@@ -626,6 +671,8 @@ export {
   getSubscribersWithUnresolvedBreachesCount,
   updatePrimaryEmail,
   updateFxAData,
+  updateFxATokens,
+  getFxATokens,
   updateFxAProfileData,
   setAllEmailsToPrimary,
   setMonthlyMonitorReport,
