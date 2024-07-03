@@ -26,6 +26,7 @@ export type Props = {
   fxaSubscriptionsUrl: string;
   enableDiscountCoupon: boolean;
   experimentData?: ExperimentData;
+  isYearlySubscriber: boolean;
 };
 
 type DiscountData = {
@@ -200,7 +201,7 @@ ${styles.staticAlternative}
   return (
     <>
       <Button
-        variant="tertiary"
+        variant="link"
         onPress={() => dialogState.open()}
         className={styles.trigger}
       >
@@ -233,7 +234,9 @@ ${styles.staticAlternative}
                       "settings-cancel-plus-step-confirm-content",
                     )}
                   </p>
-                  {props.enableDiscountCoupon && !alreadyHasCouponSet ? (
+                  {props.enableDiscountCoupon &&
+                  !alreadyHasCouponSet &&
+                  !props.isYearlySubscriber ? (
                     <>
                       <TelemetryButton
                         event={{
@@ -291,7 +294,7 @@ ${styles.staticAlternative}
                         button_id: "continue_to_cancellation",
                       },
                     }}
-                    variant="tertiary"
+                    variant="link"
                     onPress={() => setCurrentStep("survey")}
                     className={styles.tertiaryCta}
                   >
@@ -328,7 +331,7 @@ ${styles.staticAlternative}
                       },
                     }}
                     className={styles.tertiaryCta}
-                    variant="tertiary"
+                    variant="link"
                     onPress={() => {
                       setCurrentStep("redirecting");
                       setTimeout(() => {

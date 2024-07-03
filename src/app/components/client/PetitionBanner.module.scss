@@ -1,0 +1,54 @@
+@import "../../tokens";
+
+.banner {
+  background: linear-gradient(90deg, $color-purple-90 50%, $color-purple-60);
+  display: flex;
+  justify-content: center;
+  padding: $layout-xs $layout-sm;
+  position: relative;
+}
+
+.content {
+  h2 {
+    font: $text-title-xs;
+    font-weight: 500;
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  color: $color-white;
+  max-width: $content-lg;
+}
+
+.buttons {
+  display: flex;
+  gap: $spacing-xs;
+  margin-top: $spacing-md;
+
+  .signButton {
+    background-color: $color-purple-60;
+    &:hover {
+      background-color: $color-purple-50;
+    }
+  }
+
+  .dismissButton {
+    color: $color-white;
+    &:hover {
+      background-color: rgba($color-purple-50, 0.2);
+    }
+  }
+}
+
+.closeButton {
+  background-color: transparent;
+  border-radius: $border-radius-sm;
+  border-style: none;
+  color: $color-white;
+  cursor: pointer;
+  padding: $spacing-md;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
