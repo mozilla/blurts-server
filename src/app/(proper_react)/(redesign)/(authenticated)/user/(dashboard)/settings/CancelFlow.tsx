@@ -188,8 +188,15 @@ ${styles.staticAlternative}
       {l10n.getFragment("settings-unsubscribe-dialog-promotion-unsuccessful", {
         elems: {
           try_again_link: (
-            <Button
-              variant="tertiary"
+            <TelemetryButton
+              variant="link"
+              event={{
+                module: "button",
+                name: "click",
+                data: {
+                  button_id: "coupon_cta_unsuccessful_try_again",
+                },
+              }}
               onPress={() => void handleApplyCouponCode()}
             />
           ),
