@@ -6,17 +6,25 @@ import { NextResponse } from "next/server";
 
 export function errorIfProduction() {
   //checks that the environment isnt production
-  return errorIfEnv("production");
+  return errorIfEnvCond("production", false);
 }
 
 export function errorIfStage() {
   //checks that the environment isnt stage
-  return errorIfEnv("stage");
+  return errorIfEnvCond("stage", false);
 }
 
-export function errorIfEnv(which: string) {
-  //checks that the environment isnt 'which'
-  if (process.env.APP_ENV === which) {
+export function errorIfNotLocal() {
+  return errorIfEnvCond("local", true);
+}
+
+export function errorIfNotENv(which: string) {
+  return errorIfEnvCond(which, true);
+}
+
+export function errorIfEnvCond(which: string, isEqualToWhich: boolean) {
+  //checks that the app environment satisfies the 'isEqualToWhich' condition with 'which'
+  if (isEqualToWhich !== (process.env.APP_ENV === which)) {
     return NextResponse.json(
       { error: `Endpoint not available in ${which} environment` },
       { status: 403 },

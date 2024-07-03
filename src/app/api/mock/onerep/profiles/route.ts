@@ -5,7 +5,7 @@
 import { MOCK_ONEREP_STATUS, MOCK_ONEREP_TIME } from "../config/config.ts";
 import { NextRequest, NextResponse } from "next/server";
 import { randomInt } from "crypto";
-import { errorIfProduction } from "../../utils/errorThrower.ts";
+import { errorIfProduction } from "../../../utils/errorThrower.ts";
 
 export type RequestProfileData = {
   first_name: string;

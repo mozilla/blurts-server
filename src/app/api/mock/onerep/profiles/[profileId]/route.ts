@@ -12,7 +12,7 @@ import {
 } from "../../config/config.ts";
 import { ShowProfileResponse } from "../../../../../functions/server/onerep.ts";
 import { NextRequest, NextResponse } from "next/server";
-import { errorIfProduction } from "../../../utils/errorThrower.ts";
+import { errorIfProduction } from "../../../../utils/errorThrower.ts";
 
 // Mock endpoint to simulate fetching a profile by ID
 export function GET(

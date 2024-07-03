@@ -9,7 +9,7 @@ import { isAdmin } from "../../../utils/auth";
 import fs from "fs";
 import path from "path";
 import { Broker } from "./config";
-import { errorIfProduction, errorIfStage } from "../../utils/errorThrower";
+import { errorIfNotLocal } from "../../../utils/errorThrower";
 
 type onerepConfigReq = {
   email: string;
@@ -18,7 +18,7 @@ type onerepConfigReq = {
 };
 
 export async function PUT(req: NextRequest) {
-  const checks = errorIfStage() || errorIfProduction();
+  const checks = errorIfNotLocal();
   if (checks !== null) return checks;
 
   const data = await req.json();

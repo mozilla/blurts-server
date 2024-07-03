@@ -5,7 +5,7 @@
 import { NextResponse } from "next/server";
 import { logger } from "../../../../functions/server/logging";
 import mockAllBreaches from "../data/mockAllBreaches.json";
-import { errorIfProduction } from "../../utils/errorThrower";
+import { errorIfProduction } from "../../../utils/errorThrower";
 import { Breach } from "../../../../functions/universal/breach";
 import { HibpLikeDbBreach } from "../../../../../utils/hibp";
 

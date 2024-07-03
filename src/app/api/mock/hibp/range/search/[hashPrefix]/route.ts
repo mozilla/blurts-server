@@ -5,7 +5,7 @@
 import { NextResponse } from "next/server";
 import { logger } from "../../../../../../functions/server/logging";
 import mockBreaches from "../../../data/mockBreaches.json";
-import { errorIfProduction } from "../../../../utils/errorThrower";
+import { errorIfProduction } from "../../../../../utils/errorThrower";
 import { MOCK_HIBP_COMPUTE_SHA1 } from "../../../config/defaults";
 
 type BreachedAccountResponse = {

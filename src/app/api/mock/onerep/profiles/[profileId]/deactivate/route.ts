@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { errorIfProduction } from "../../../../utils/errorThrower";
+import { errorIfProduction } from "../../../../../utils/errorThrower";
 
 export function PUT(
   _: NextRequest,

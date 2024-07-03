@@ -4,7 +4,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { MOCK_ONEREP_SCAN_ID, MOCK_ONEREP_TIME } from "../../../config/config";
-import { errorIfProduction } from "../../../../utils/errorThrower";
+import { errorIfProduction } from "../../../../../utils/errorThrower";
 
 export function POST(
   _: NextRequest,

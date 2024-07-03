@@ -8,7 +8,7 @@ import { isAdmin } from "../../../utils/auth";
 import fs from "fs";
 import path from "path";
 import { MOCK_HIBP_DEFAULT_BREACHES_NAMES } from "./defaults";
-import { errorIfProduction, errorIfStage } from "../../utils/errorThrower";
+import { errorIfNotLocal } from "../../../utils/errorThrower";
 
 type hibpConfigReq = {
   email: string;
@@ -17,7 +17,7 @@ type hibpConfigReq = {
 };
 
 export async function PUT(req: NextRequest) {
-  const checks = errorIfStage() || errorIfProduction();
+  const checks = errorIfNotLocal();
   if (checks !== null) return checks;
 
   const data = await req.json();

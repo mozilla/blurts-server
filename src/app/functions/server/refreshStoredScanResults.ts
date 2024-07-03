@@ -9,6 +9,7 @@ import {
 } from "../../../db/tables/onerep_scans";
 import { getAllScanResults, listScans } from "./onerep";
 import { logger } from "./logging";
+import { isUsingMockEndpoint } from "../universal/mock";
 
 /**
  * Attempt to fetch the current scan results from the provider.
@@ -19,6 +20,7 @@ import { logger } from "./logging";
  * @param onerepProfileId {number} OneRep Profile ID to refresh.
  */
 export async function refreshStoredScanResults(onerepProfileId: number) {
+  if (isUsingMockEndpoint()) return;
   try {
     const remoteScans = (await listScans(onerepProfileId)).data;
     const localScans = await getAllScansForProfile(onerepProfileId);

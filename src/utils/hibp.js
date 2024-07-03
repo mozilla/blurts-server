@@ -2,11 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { boolean } from 'fast-check'
 import AppConstants from '../appConstants.js'
 import { getAllBreaches, upsertBreaches, knex } from '../db/tables/breaches.js'
 import { InternalServerError } from '../utils/error.js'
 import { getMessage } from '../utils/fluent.js'
 const { HIBP_THROTTLE_MAX_TRIES, HIBP_THROTTLE_DELAY, HIBP_API_ROOT, HIBP_KANON_API_ROOT, HIBP_KANON_API_TOKEN } = AppConstants
+
 
 // TODO: fix hardcode
 const HIBP_USER_AGENT = 'monitor/1.0.0'
@@ -16,6 +18,7 @@ const RENAMED_BREACHES = ['covve']
 const RENAMED_BREACHES_MAP = {
   covve: 'db8151dd'
 }
+
 
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
@@ -69,6 +72,9 @@ async function _throttledFetch(url, reqOptions, tryCount = 1) {
   }
 }
 /* c8 ignore stop */
+
+
+const isUsingMockEndpoint = String(process.env.HIBP_KANON_API_ROOT).includes("api/mock/");
 
 /**
  * @param {string} path
@@ -294,6 +300,13 @@ async function getBreachesForEmail(sha1, allBreaches, includeSensitive = false, 
   if (!response || (response && response.length < 1)) {
     console.error("failed_kAnonReq_call: no response or empty response")
     return []
+  }
+  if (isUsingMockEndpoint) {
+    let mockDataBreaches = response[0];
+    return allBreaches.filter(breach => mockDataBreaches.websites.includes(breach.Name)).sort((a, b) => {
+      // @ts-ignore TODO: Turn dates into a number
+      return new Date(b.AddedDate) - new Date(a.AddedDate)
+    })
   }
   // Parse response body, format:
   // [

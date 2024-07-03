@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextResponse } from "next/server";
-import { errorIfProduction } from "../../../utils/errorThrower";
+import { errorIfProduction } from "../../../../utils/errorThrower";
 
 export function GET() {
   const prodError = errorIfProduction();
