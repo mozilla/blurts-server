@@ -96,7 +96,6 @@ export const CsatSurveyBanner = ({
                 <Button
                   className={styles.answer}
                   variant="primary"
-                  small
                   onPress={() => submit(response)}
                 >
                   {l10n.getString(`survey-csat-answer-${response}`)}
