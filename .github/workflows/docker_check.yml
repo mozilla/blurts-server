@@ -1,5 +1,7 @@
 name: Build Docker image check
 on:
+  push:
+    branches: [ debug/ci-dotenv-flow ]
   pull_request:
 jobs:
   docker_build:
