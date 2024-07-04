@@ -1,7 +1,7 @@
 name: Monitor e2e Smoke Tests
 on:
   push:
-    branches: [ main ]
+    branches: [ main, debug/ci-dotenv-flow ]
   pull_request:
     branches: [ main ]
 jobs:
@@ -82,6 +82,12 @@ jobs:
           # Our tests are currently set up to expect accounts to act like
           # old user accounts, so let's pretend they all are:
           BROKER_SCAN_RELEASE_DATE: "3000-12-31"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: build-output
+          path: buildoutput
+          retention-days: 5
       - uses: actions/upload-artifact@v4
         if: always()
         with:

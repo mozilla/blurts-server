@@ -14,7 +14,7 @@ dotenvFlow.config()
  */
 
 const webServerConfig = {
-  command: 'npm run build; npm start',
+  command: 'npm run build > buildoutput; npm start',
   // Building the app can take some time:
   timeout: 600_000,
   port: 6060
