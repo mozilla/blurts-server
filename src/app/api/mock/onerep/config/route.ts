@@ -4,20 +4,27 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { randomInt } from "crypto";
-// import { logger } from "../../../../functions/server/logging";
-import { isAdmin } from "../../../utils/auth";
+import { logger } from "../../../../functions/server/logging";
 import fs from "fs";
 import path from "path";
 import { Broker } from "./config";
-import { errorIfNotLocal } from "../../../utils/errorThrower";
+// import { errorIfNotLocal } from "../../../utils/errorThrower";
 
-type onerepConfigReq = {
-  email: string;
-  erase?: boolean;
-  brokers: [Broker];
-};
+// type onerepConfigReq = {
+//   email: string;
+//   erase?: boolean;
+//   brokers: [Broker];
+// };
 
-export async function PUT(req: NextRequest) {
+export function PUT(req: NextRequest) {
+  logger.info(
+    `Mock OneRep endpoint: Attempted to access ${updateJsonFile.name}. (${req.bodyUsed})`,
+  );
+  return NextResponse.json(
+    { error: "Endpoint not available yet" },
+    { status: 403 },
+  );
+  /*
   const checks = errorIfNotLocal();
   if (checks !== null) return checks;
 
@@ -30,7 +37,8 @@ export async function PUT(req: NextRequest) {
       { status: 401 },
     );
   }
-  return updateJsonFile(erase, brokers);
+  return updateJsonFile(erase, brokers); 
+  */
 }
 
 function updateJsonFile(erase: boolean, brokers: [Broker]) {

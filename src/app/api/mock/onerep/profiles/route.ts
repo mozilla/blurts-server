@@ -47,6 +47,7 @@ export async function POST(req: NextRequest) {
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
+  //TODO-mock: makes this considerably higher
   const profileId = randomInt(1000, 10000);
   try {
     if (req.body === null) {

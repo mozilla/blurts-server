@@ -32,3 +32,19 @@ export function errorIfEnvCond(which: string, isEqualToWhich: boolean) {
   }
   return null;
 }
+
+export function unauthError() {
+  return NextResponse.json(
+    { error: "Unauthorized to access the endpoint" },
+    { status: 401 },
+  );
+}
+
+export function internalServerError(
+  description: string = "something went wrong!",
+) {
+  return NextResponse.json(
+    { error: `Internal server error: ${description}` },
+    { status: 401 },
+  );
+}

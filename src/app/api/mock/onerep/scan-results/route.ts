@@ -23,6 +23,6 @@ export function GET(req: NextRequest) {
   }
 
   return NextResponse.json(
-    MOCK_ONEREP_BROKERS(Number(profileId), page, perPage),
+    MOCK_ONEREP_BROKERS(Number(profileId), page, perPage, 10),
   );
 }

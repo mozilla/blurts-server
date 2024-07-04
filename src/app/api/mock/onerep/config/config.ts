@@ -2,10 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-// import { randomInt } from "crypto";
 import { StateAbbr } from "../../../../../utils/states";
 import MockUser from "./mockUser.json";
-// import { getLatestOnerepScanResults } from "../../../../../db/tables/onerep_scans";
 
 export interface Broker {
   id: number;
@@ -86,30 +84,51 @@ export function MOCK_ONEREP_ADDRESSES() {
   })) as typeOfAddr;
 }
 
-export function MOCK_ONEREP_BROKERS(
-  profileId: number,
-  page: string,
-  perPage: string,
-) {
-  const mockResponseData = MockUser.BROKERS_LIST;
-  const scanId = MOCK_ONEREP_SCAN_ID(profileId);
+export function MOCK_ONEREP_OBJECT_META(page: number | string = 1) {
+  if (typeof page === "string") page = parseInt(page);
+  return {
+    current_page: page,
+    from: 1,
+    last_page: 1,
+    path: `${process.env.ONEREP_API_BASE}/scan-results`,
+    per_page: page,
+    to: 10,
+    total: 10,
+  };
+}
 
-  const mockLinks = {
+export function MOCK_ONEREP_OBJECT_LINKS(
+  profileId: number | string,
+  page: number | string = 100,
+  perPage: number | string = 100,
+) {
+  if (typeof profileId === "string") profileId = parseInt(profileId);
+  if (typeof page === "string") page = parseInt(page);
+  if (typeof perPage === "string") perPage = parseInt(perPage);
+
+  return {
     first: `${process.env.ONEREP_API_BASE}/scan-results?profile_id%5B0%5D=${profileId}&per_page=${perPage}&page=${page}`,
     last: `${process.env.ONEREP_API_BASE}/scan-results?profile_id%5B0%5D=${profileId}&per_page=${perPage}&page=${page}`,
     prev: null,
     next: null,
   };
+}
 
-  const mockMeta = {
-    current_page: parseInt(page),
-    from: 1,
-    last_page: 1,
-    path: `${process.env.ONEREP_API_BASE}/scan-results`,
-    per_page: parseInt(perPage),
-    to: 10,
-    total: 10,
-  };
+export function MOCK_ONEREP_BROKERS(
+  profileId: number,
+  page: string,
+  perPage: string,
+  numberOfBrokers: number = DEFAULT_NUMBER_BREACHES,
+) {
+  const mockResponseData = MockUser.BROKERS_LIST;
+  //TODO-mock: change the scan_id creation (make higher)
+  const scanId = MOCK_ONEREP_SCAN_ID(profileId);
+
+  const mockMeta = MOCK_ONEREP_OBJECT_META(page);
+  const mockLinks = MOCK_ONEREP_OBJECT_LINKS(profileId, page, perPage);
+
+  //TODO-mock: based on email, select data response
+  //TODO-mock: change the mechanism (.valid)
 
   if (mockResponseData.valid) {
     const response: {
@@ -139,7 +158,7 @@ export function MOCK_ONEREP_BROKERS(
   const idStartDataBroker = MOCK_ONEREP_DATABROKER_ID_START(profileId);
 
   const responseData = {
-    data: new Array(DEFAULT_NUMBER_BREACHES).fill(null).map(
+    data: new Array(numberOfBrokers).fill(null).map(
       (_, index) =>
         ({
           id: idStart - index,
