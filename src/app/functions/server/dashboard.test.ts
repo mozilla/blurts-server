@@ -496,6 +496,7 @@ describe("getExposureReduction", () => {
       fixedSanitizedDataPoints: [],
       dataBreachUnresolvedNum: 0,
       dataBreachResolvedNum: 0,
+      dataBrokerManuallyResolvedNum: 0,
     };
 
     const exposureReduction = getDataPointReduction(testSummary);
@@ -541,6 +542,7 @@ describe("getExposureReduction", () => {
       fixedSanitizedDataPoints: [],
       dataBreachUnresolvedNum: 0,
       dataBreachResolvedNum: 0,
+      dataBrokerManuallyResolvedNum: 0,
     };
 
     const exposureReduction = getDataPointReduction(testSummary);
@@ -1129,7 +1131,7 @@ describe("getDashboardSummary", () => {
                 return getBreach(
                   resolution,
                   dataClassKeyMap[
-                    dataType
+                    dataType as keyof DataPoints
                   ] as SubscriberBreach["dataClasses"][number],
                   count,
                 );

@@ -57,9 +57,6 @@ export const SignUpForm = (props: Props) => {
       { callbackUrl: props.signUpCallbackUrl },
       attributionSearchParams.toString(),
     );
-    record("ctaButton", "click", {
-      button_id: props.eventId.cta,
-    });
   };
 
   const labelContent = (
@@ -95,7 +92,16 @@ export const SignUpForm = (props: Props) => {
           l10n.getString("landing-all-hero-emailform-input-placeholder")
         }
       />
-      <Button type="submit" variant="primary" wide>
+      <Button
+        type="submit"
+        variant="primary"
+        wide
+        onPress={() => {
+          record("ctaButton", "click", {
+            button_id: props.eventId.cta,
+          });
+        }}
+      >
         {l10n.getString("landing-all-hero-emailform-submit-label")}
       </Button>
       {props.isHero ? (
