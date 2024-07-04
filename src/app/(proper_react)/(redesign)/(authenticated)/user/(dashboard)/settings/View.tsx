@@ -89,7 +89,9 @@ export const SettingsView = (props: Props) => {
               );
             })}
           </ul>
-          <EmailAddressAdder />
+          {props.emailAddresses.length < CONST_MAX_NUM_ADDRESSES - 1 && (
+            <EmailAddressAdder />
+          )}
           <hr />
           <AlertAddressForm
             user={props.user}
