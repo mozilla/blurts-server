@@ -3,9 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 // TODO: these vars were copy/pasted from the old app-constants.js and should be cleaned up
-import * as dotenvFlow from 'dotenv-flow'
 if (typeof window === "undefined") {
-  dotenvFlow.config()
+  import("dotenv-flow").then(dotenvFlow => {
+    dotenvFlow.config();
+  })
 }
 
 const requiredEnvVars = [
