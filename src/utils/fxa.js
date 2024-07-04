@@ -104,8 +104,25 @@ async function getSubscriptions(bearerToken) {
 }
 
 /**
+ * Calls https://mozilla.github.io/ecosystem-platform/api#tag/Subscriptions/operation/getOauthMozillasubscriptionsCustomerBillingandsubscriptions
+ *
+ * Note that we currently only look at the subscriptions and their plan IDs, so
+ * the return type definition isn't exhaustive yet. If you need more data, look
+ * at the above docs to expand the return type definition.
+ *
  * @param {string} bearerToken
- * @returns {Promise<Array<any> | null>}
+ * @returns {Promise<
+ *   null
+ *   | {
+ *       subscriptions: Array<{
+ *         plan_id: string;
+ *         product_id: string;
+ *         current_period_end: number;
+ *         cancel_at_period_end: boolean;
+ *         status: "active" | "canceled" | "trialing" | "unpaid" | string;
+ *       }>
+ *     }
+ * >}
  */
 
 async function getBillingAndSubscriptions(bearerToken) {
@@ -120,7 +137,7 @@ async function getBillingAndSubscriptions(bearerToken) {
     })
 
     if (!getResp.ok) {
-      throw new InternalServerError(`bad response: ${getResp.status}`)
+      throw new InternalServerError(`bad response: [${getResp.status}] [${getResp.statusText}]`)
     } else {
       console.info(`get_fxa_subscriptions: success`)
       return await getResp.json()
