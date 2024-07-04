@@ -4,7 +4,9 @@
 
 // TODO: these vars were copy/pasted from the old app-constants.js and should be cleaned up
 import * as dotenvFlow from 'dotenv-flow'
-dotenvFlow.config()
+if (typeof window === "undefined") {
+  dotenvFlow.config()
+}
 
 const requiredEnvVars = [
   'ADMINS',
