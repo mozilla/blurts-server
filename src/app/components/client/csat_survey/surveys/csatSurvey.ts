@@ -19,7 +19,7 @@ const surveyResponses = [
 
 export type SurveyResponse = (typeof surveyResponses)[number];
 
-export type SurveyType = "csat_survey" | "last_scan_date";
+export type SurveyType = "csat_survey" | "last_scan_date" | "petition_banner";
 
 export type UserType = "free-user" | "plus-user";
 

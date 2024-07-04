@@ -48,7 +48,8 @@ export type FeatureFlagName =
   | "DiscountCouponNextThreeMonths"
   | "LatestScanDateCsatSurvey"
   | "HowItWorksPage"
-  | "AdditionalRemovalStatuses";
+  | "AdditionalRemovalStatuses"
+  | "PetitionBanner";
 
 /**
  * @param options

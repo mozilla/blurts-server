@@ -13,6 +13,7 @@ import { getLatestScanDateCsatSurvey } from "./surveys/latestScanDateCsatSurvey"
 import { COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS } from "../../../hooks/useLocalDismissal";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
+import { getPetitionBannerCsatSurvey } from "./surveys/petitionBannerCsatSurvey";
 
 export type CsatSurveyProps = {
   activeTab: TabType;
@@ -50,6 +51,8 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
         hasFirstMonitoringScan: props.hasFirstMonitoringScan,
         lastScanDate: props.lastScanDate,
       }),
+    props.enabledFeatureFlags.includes("PetitionBanner") &&
+      getPetitionBannerCsatSurvey(surveyOptions),
   ];
 
   // Filters out previously dismissed surveys to make sure `currentSurvey` will
