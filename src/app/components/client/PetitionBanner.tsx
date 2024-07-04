@@ -9,14 +9,16 @@ import { useL10n } from "../../hooks/l10n";
 import { useLocalDismissal } from "../../hooks/useLocalDismissal";
 import { useHasRenderedClientSide } from "../../hooks/useHasRenderedClientSide";
 import styles from "./PetitionBanner.module.scss";
-import { Button } from "./Button";
 import { CONST_URL_DATA_PRIVACY_PETITION_BANNER } from "../../../constants";
+import { TelemetryButton } from "./TelemetryButton";
+import { useTelemetry } from "../../hooks/useTelemetry";
 
 export const PetitionBanner = () => {
   const l10n = useL10n();
 
   const hasRenderedClientSide = useHasRenderedClientSide();
   const localDismissal = useLocalDismissal("data_privacy_petition_banner");
+  const recordTelemetry = useTelemetry();
 
   if (!hasRenderedClientSide || localDismissal.isDismissed) {
     return null;
@@ -35,24 +37,46 @@ export const PetitionBanner = () => {
           })}
         </p>
         <div className={styles.buttons}>
-          <Button
+          <TelemetryButton
             variant="primary"
             className={styles.signButton}
             href={CONST_URL_DATA_PRIVACY_PETITION_BANNER}
             target="_blank"
+            event={{
+              module: "ctaButton",
+              name: "click",
+              data: {
+                button_id: "sign_petition",
+              },
+            }}
           >
             {l10n.getString("petition-banner-data-privacy-button-sign")}
-          </Button>
-          <Button
+          </TelemetryButton>
+          <TelemetryButton
             variant="tertiary"
             className={styles.dismissButton}
             onPress={() => dismiss()}
+            event={{
+              module: "button",
+              name: "click",
+              data: {
+                button_id: "petition_no_thank_you",
+              },
+            }}
           >
             {l10n.getString("petition-banner-data-privacy-button-dismiss")}
-          </Button>
+          </TelemetryButton>
         </div>
       </div>
-      <button className={styles.closeButton} onClick={() => dismiss()}>
+      <button
+        className={styles.closeButton}
+        onClick={() => {
+          dismiss();
+          recordTelemetry("button", "click", {
+            button_id: "petition_dismiss",
+          });
+        }}
+      >
         <CloseBtn
           alt={l10n.getString("survey-csat-survey-dismiss-label")}
           width="14"
