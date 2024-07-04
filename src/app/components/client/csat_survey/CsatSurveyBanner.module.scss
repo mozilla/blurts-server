@@ -22,12 +22,8 @@
 .answers {
   align-items: center;
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   gap: $spacing-sm;
-
-  @media screen and (min-width: $screen-md) {
-    flex-direction: row;
-  }
 
   .answer {
     background-color: $color-purple-40;
