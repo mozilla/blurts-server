@@ -212,7 +212,7 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                     link_to_breach_site: (
                       <TelemetryButton
                         href={breachSite}
-                        variant="tertiary"
+                        variant="link"
                         event={{
                           module: "link",
                           name: "click",
@@ -267,7 +267,7 @@ function getLeakedPasswords(props: LeakedPasswordLayout) {
                     link_to_breach_site: (
                       <TelemetryButton
                         href={breachSite}
-                        variant="tertiary"
+                        variant="link"
                         event={{
                           module: "link",
                           name: "click",

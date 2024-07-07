@@ -1,35 +1,42 @@
-@import "../../../tokens";
+@import "../../tokens";
 
-.wrapper {
-  align-items: center;
+.banner {
   background: linear-gradient(90deg, $color-purple-90 50%, $color-purple-60);
-  color: $color-white;
   display: flex;
+  justify-content: center;
   padding: $layout-xs $layout-sm;
   position: relative;
+}
+
+.content {
+  h2 {
+    font: $text-title-xs;
+    font-weight: 500;
+  }
+
+  display: flex;
   flex-direction: column;
-  gap: $spacing-sm;
-}
-
-.prompt,
-.prompt a {
-  align-items: center;
+  gap: $spacing-xs;
   color: $color-white;
-  display: flex;
-  gap: $spacing-sm;
+  max-width: $content-lg;
 }
 
-.answers {
-  align-items: center;
+.buttons {
   display: flex;
-  flex-flow: row wrap;
-  gap: $spacing-sm;
+  gap: $spacing-xs;
+  margin-top: $spacing-md;
 
-  .answer {
-    background-color: $color-purple-40;
-
+  .signButton {
+    background-color: $color-purple-60;
     &:hover {
       background-color: $color-purple-50;
+    }
+  }
+
+  .dismissButton {
+    color: $color-white;
+    &:hover {
+      background-color: rgba($color-purple-50, 0.2);
     }
   }
 }
