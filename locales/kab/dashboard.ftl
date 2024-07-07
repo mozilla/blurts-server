@@ -11,6 +11,12 @@ exposure-chart-legend-heading-nr = Amḍan
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
 modal-cta-ok = IH
+modal-cta-got-it = Awi-t
+open-modal-alt = Ldi tabewwaḍt n udiwenni
+close-modal-alt = Mdel adiwenni
+dashboard-tab-label-action-needed = Tigawt-a tlaq
+dashboard-tab-label-fixed = Iṣeggem
+dashboard-exposures-all-fixed-label = Iṣeggem kullec!
 # This is the label on a button that opens a popover menu, which shows a menu to adjust filters for the listed exposures.
 dashboard-exposures-filter = Sizdeg
 dashboard-exposures-filter-company = Takebbanit
