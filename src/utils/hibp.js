@@ -2,11 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { boolean } from 'fast-check'
 import AppConstants from '../appConstants.js'
 import { getAllBreaches, upsertBreaches, knex } from '../db/tables/breaches.js'
 import { InternalServerError } from '../utils/error.js'
 import { getMessage } from '../utils/fluent.js'
+import { isUsingMockHIBPEndpoint } from '../app/functions/universal/mock.ts'
 const { HIBP_THROTTLE_MAX_TRIES, HIBP_THROTTLE_DELAY, HIBP_API_ROOT, HIBP_KANON_API_ROOT, HIBP_KANON_API_TOKEN } = AppConstants
 
 
@@ -73,9 +73,6 @@ async function _throttledFetch(url, reqOptions, tryCount = 1) {
 }
 /* c8 ignore stop */
 
-
-const isUsingMockEndpoint = String(process.env.HIBP_KANON_API_ROOT).includes("api/mock/");
-
 /**
  * @param {string} path
  * @param options
@@ -110,6 +107,7 @@ async function kAnonReq(path, options = {}) {
     },
     ...options
   }
+
   const reqOptions = _addStandardOptions(options)
   try {
     return await _throttledFetch(url, reqOptions)
@@ -301,12 +299,13 @@ async function getBreachesForEmail(sha1, allBreaches, includeSensitive = false, 
     console.error("failed_kAnonReq_call: no response or empty response")
     return []
   }
-  if (isUsingMockEndpoint) {
+  if (isUsingMockHIBPEndpoint()) {
     let mockDataBreaches = response[0];
-    return allBreaches.filter(breach => mockDataBreaches.websites.includes(breach.Name)).sort((a, b) => {
+    const res = allBreaches.filter(breach => mockDataBreaches.websites.includes(breach.Name)).sort((a, b) => {
       // @ts-ignore TODO: Turn dates into a number
       return new Date(b.AddedDate) - new Date(a.AddedDate)
     })
+    return res;
   }
   // Parse response body, format:
   // [

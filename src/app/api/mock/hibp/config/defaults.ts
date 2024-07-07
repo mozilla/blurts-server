@@ -2,15 +2,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { BinaryLike } from "crypto";
-import { getSha1 } from "../../../../../utils/fxa";
+import mockBreaches from "../data/mockBreaches.json";
+import { hashToEmailKeyMap } from "../../../utils/mockUtils";
 
-export function MOCK_HIBP_DEFAULT_BREACHES_NAMES() {
-  return ["000webhost", "123RF", "Bonobos"];
+export interface BreachMap {
+  [key: string]: string[];
 }
 
-export function MOCK_HIBP_COMPUTE_SHA1(email: string) {
-  return getSha1(email as BinaryLike)
-    .slice(6)
-    .toUpperCase();
-}
+export const getBreachesForHash = (hash: string) => {
+  const key = hashToEmailKeyMap[hash] || "default";
+  return (mockBreaches as BreachMap)[key];
+};

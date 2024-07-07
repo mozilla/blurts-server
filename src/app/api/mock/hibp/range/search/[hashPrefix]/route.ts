@@ -2,36 +2,34 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { logger } from "../../../../../../functions/server/logging";
-import mockBreaches from "../../../data/mockBreaches.json";
 import { errorIfProduction } from "../../../../../utils/errorThrower";
-import { MOCK_HIBP_COMPUTE_SHA1 } from "../../../config/defaults";
+import { getBreachesForHash } from "../../../config/defaults";
 
 type BreachedAccountResponse = {
   hashSuffix: string;
   websites: string[];
 }[];
 
-export function GET() {
+export function GET(
+  _: NextRequest,
+  { params }: { params: { hashPrefix: string } },
+) {
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
   logger.info("HIBP Mock endpoint: /range/search/");
-  if (process.env.E2E_TEST_ACCOUNT_EMAIL === undefined) {
-    return NextResponse.json({
-      error: 500,
-      message: "HIBP Mock endpoint: E2E test account isn't set up!",
-    });
-  }
 
-  const sha1Sliced = MOCK_HIBP_COMPUTE_SHA1(process.env.E2E_TEST_ACCOUNT_EMAIL);
-  let data = mockBreaches.data as BreachedAccountResponse;
+  const hashPrefix = params.hashPrefix;
+  const breachesList = getBreachesForHash(hashPrefix);
 
-  data = data.map((elem) => ({
-    ...elem,
-    hashSuffix: sha1Sliced,
-  }));
+  const data: BreachedAccountResponse = [
+    {
+      hashSuffix: "", //hibp.js ignores hashSuffix if a mock endpoint is used.
+      websites: breachesList,
+    },
+  ];
   const res = NextResponse.json(data);
   return res;
 }

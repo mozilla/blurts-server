@@ -74,6 +74,35 @@
       "IsRetired": false,
       "IsSpamList": false,
       "IsMalware": false
+    },
+    {
+      "Id": 174,
+      "Name": "Deezer",
+      "Title": "Deezer",
+      "Domain": "deezer.com",
+      "BreachDate": "2019-04-22T07:00:00.000Z",
+      "AddedDate": "2023-01-02T03:10:50.000Z",
+      "ModifiedDate": "2023-01-02T03:10:50.000Z",
+      "PwnCount": 229037936,
+      "Description": "In late 2022, the music streaming service <a href=\"https://restoreprivacy.com/music-service-deezer-data-breach/\" target=\"_blank\" rel=\"noopener\">Deezer disclosed a data breach that impacted over 240M customers</a>. The breach dated back to a mid-2019 backup exposed by a 3rd party partner which was subsequently sold and then broadly redistributed on a popular hacking forum. Impacted data included 229M unique email addresses, IP addresses, names, usernames, genders, DoBs and the geographic location of the customer.",
+      "LogoPath": "https://haveibeenpwned.com/Content/Images/PwnedLogos/Deezer.png",
+      "DataClasses": [
+        "dates-of-birth",
+        "email-addresses",
+        "genders",
+        "geographic-locations",
+        "ip-addresses",
+        "names",
+        "spoken-languages",
+        "usernames"
+      ],
+      "IsVerified": true,
+      "IsFabricated": false,
+      "IsSensitive": false,
+      "IsRetired": false,
+      "IsSpamList": false,
+      "IsMalware": false,
+      "FaviconUrl": null
     }
   ]
 }

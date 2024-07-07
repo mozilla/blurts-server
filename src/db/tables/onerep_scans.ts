@@ -363,6 +363,19 @@ async function deleteSomeScansForProfile(
   }
 }
 
+async function getEmailForProfile(onerepProfileId: number) {
+  const result = await knex("subscribers")
+    .select("primary_email")
+    .where("onerep_profile_id", onerepProfileId)
+    .first();
+
+  if (result) {
+    return result.primary_email;
+  } else {
+    return undefined;
+  }
+}
+
 export {
   getAllScansForProfile,
   getLatestScanForProfileByReason,
@@ -380,4 +393,5 @@ export {
   deleteScansForProfile,
   deleteScanResultsForProfile,
   deleteSomeScansForProfile,
+  getEmailForProfile,
 };

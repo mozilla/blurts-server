@@ -8,16 +8,38 @@
   "STATUS": "active",
   "ADDRESSES": [
     {
+      "zip": "93386",
       "city": "Berkeley",
-      "state": "CA"
+      "state": "CA",
+      "street": "Von Meadows"
     }
   ],
   "PHONES": ["00000000"],
   "RELATIVES": ["Bob Doe"],
   "BROKERS_LIST": {
-    "data": [],
-    "links": {},
-    "meta": {},
-    "valid": false
+    "default": [{}, {}, {}, {}, {}],
+    "E2E_TEST_ACCOUNT_EMAIL": [
+      {
+        "addresses": [
+          {
+            "zip": 77777,
+            "city": "Hogwarts",
+            "state": "CA"
+          }
+        ],
+        "phones": ["00000000", "00000001"],
+        "link": "https://mockexample.com/link-to-databroker-e2e-test-0",
+        "data_broker": "mockexample-e2e-test-0.com"
+      },
+      {
+        "relatives": ["Jon Jones"],
+        "link": "https://mockexample.com/link-to-databroker-e2e-test-1",
+        "data_broker": "mockexample-e2e-test-1.com"
+      }
+    ],
+    "E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES": []
+  },
+  "SCANS_LIST": {
+    "default": {}
   }
 }

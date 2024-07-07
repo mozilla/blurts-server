@@ -3,33 +3,41 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-// import { logger } from "../../../../functions/server/logging";
-import { isAdmin } from "../../../utils/auth";
+// import { isAdmin } from "../../../utils/auth";
 import fs from "fs";
 import path from "path";
-import { MOCK_HIBP_DEFAULT_BREACHES_NAMES } from "./defaults";
 import { errorIfNotLocal } from "../../../utils/errorThrower";
+import mockBreaches from "../data/mockBreaches.json";
+import { logger } from "../../../../functions/server/logging";
 
-type hibpConfigReq = {
-  email: string;
-  breachesNames: string[];
-  erase?: boolean;
-};
+// type hibpConfigReq = {
+//   email: string;
+//   breachesNames: string[];
+//   erase?: boolean;
+// };
 
-export async function PUT(req: NextRequest) {
+export function PUT(req: NextRequest) {
   const checks = errorIfNotLocal();
   if (checks !== null) return checks;
 
-  const data = await req.json();
-  const { email, erase = false, breachesNames } = data as hibpConfigReq;
+  logger.info(
+    `Mock OneRep endpoint: Attempted to access ${updateJsonFile.name}. (${req.bodyUsed})`,
+  );
+  return NextResponse.json(
+    { error: "Endpoint not available yet" },
+    { status: 403 },
+  );
 
-  if (!isAdmin(email)) {
-    return NextResponse.json(
-      { error: "Mock endpoint HIBP: Unauthorized to access the endpoint" },
-      { status: 401 },
-    );
-  }
-  return updateJsonFile(erase, breachesNames);
+  // const data = await req.json();
+  // const { email, erase = false, breachesNames } = data as hibpConfigReq;
+
+  // if (!isAdmin(email)) {
+  //   return NextResponse.json(
+  //     { error: "Mock endpoint HIBP: Unauthorized to access the endpoint" },
+  //     { status: 401 },
+  //   );
+  // }
+  // return updateJsonFile(erase, breachesNames);
 }
 
 function updateJsonFile(erase: boolean, breachesNames: string[]) {
@@ -47,7 +55,7 @@ function updateJsonFile(erase: boolean, breachesNames: string[]) {
     jsonData.data = [
       {
         hashSuffix: "",
-        websites: erase ? MOCK_HIBP_DEFAULT_BREACHES_NAMES() : breachesNames,
+        websites: erase ? mockBreaches.default : breachesNames,
       },
     ];
 

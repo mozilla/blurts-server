@@ -3,7 +3,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { MOCK_ONEREP_SCAN_ID, MOCK_ONEREP_TIME } from "../../../config/config";
+import {
+  MOCK_ONEREP_OBJECT_LINKS,
+  MOCK_ONEREP_OBJECT_META,
+  MOCK_ONEREP_SCAN_ID,
+  MOCK_ONEREP_TIME,
+} from "../../../config/config";
 import { errorIfProduction } from "../../../../../utils/errorThrower";
 
 export function POST(
@@ -48,6 +53,8 @@ export function GET(
   }
 
   const scandId = MOCK_ONEREP_SCAN_ID(profileId);
+  const links = MOCK_ONEREP_OBJECT_LINKS(profileId);
+  const meta = MOCK_ONEREP_OBJECT_META(profileId);
 
   const responseData = {
     data: [
@@ -61,21 +68,8 @@ export function GET(
         url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${scandId}`,
       },
     ],
-    links: {
-      first: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans?page=1`,
-      last: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans?page=1`,
-      prev: null,
-      next: null,
-    },
-    meta: {
-      current_page: 1,
-      from: 1,
-      last_page: 1,
-      path: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans`,
-      per_page: 20,
-      to: 1,
-      total: 1,
-    },
+    links: links,
+    meta: meta,
   };
   return NextResponse.json(responseData);
 }

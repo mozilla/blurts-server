@@ -1,8 +1,5 @@
 {
-  "data": [
-    {
-      "hashSuffix": "",
-      "websites": ["000webhost", "123RF", "Bonobos", "Deezer"]
-    }
-  ]
+  "default": ["000webhost", "123RF", "Bonobos"],
+  "E2E_TEST_ACCOUNT_EMAIL": ["000webhost", "123RF", "Bonobos", "Deezer"],
+  "E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES": []
 }

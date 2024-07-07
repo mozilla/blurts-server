@@ -7,7 +7,7 @@ export function isUsingMockHIBPEndpoint() {
 }
 
 export function isUsingMockONEREPEndpoint() {
-  return process.env.ONEREP?.includes("api/mock") as boolean;
+  return process.env.ONEREP_API_BASE?.includes("api/mock") as boolean;
 }
 
 export const ONEREP_API_BASE = process.env.ONEREP_API_BASE;

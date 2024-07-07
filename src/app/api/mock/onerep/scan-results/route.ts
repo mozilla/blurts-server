@@ -12,8 +12,8 @@ export function GET(req: NextRequest) {
 
   const page = req.nextUrl.searchParams.get("page") || "1";
   const perPage = req.nextUrl.searchParams.get("per_page") || "100";
-
   const profileId = req.nextUrl.searchParams.get("profile_id[]");
+  const email = req.nextUrl.searchParams.get("email") || "";
 
   if (profileId === null) {
     return NextResponse.json(
@@ -23,6 +23,6 @@ export function GET(req: NextRequest) {
   }
 
   return NextResponse.json(
-    MOCK_ONEREP_BROKERS(Number(profileId), page, perPage, 10),
+    MOCK_ONEREP_BROKERS(Number(profileId), page, perPage, email),
   );
 }

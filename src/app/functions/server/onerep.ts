@@ -10,11 +10,13 @@ import {
 } from "../../../utils/parse.js";
 import { StateAbbr } from "../../../utils/states.js";
 import {
+  getEmailForProfile,
   getLatestOnerepScanResults,
   getLatestScanForProfileByReason,
 } from "../../../db/tables/onerep_scans";
 import { RemovalStatus } from "../universal/scanResult.js";
 import { logger } from "./logging";
+import { isUsingMockONEREPEndpoint } from "../universal/mock.ts";
 
 export const monthlyScansQuota = parseInt(
   (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
@@ -331,8 +333,13 @@ export async function listScanResults(
     status: RemovalStatus;
   }> = {},
 ): Promise<ListScanResultsResponse> {
+  let mockEmail = "";
+  if (isUsingMockONEREPEndpoint()) {
+    mockEmail = (await getEmailForProfile(profileId)) || mockEmail;
+  }
   const queryParams = new URLSearchParams({
     "profile_id[]": profileId.toString(),
+    email: mockEmail,
   });
   if (options.page) {
     queryParams.set("page", options.page.toString());

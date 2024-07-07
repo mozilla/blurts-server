@@ -2,7 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { MOCK_ONEREP_STATUS, MOCK_ONEREP_TIME } from "../config/config.ts";
+import {
+  MOCK_ONEREP_STATUS,
+  MOCK_ONEREP_TIME,
+  profileIdLeftBound,
+  profileIdRightBound,
+} from "../config/config.ts";
 import { NextRequest, NextResponse } from "next/server";
 import { randomInt } from "crypto";
 import { errorIfProduction } from "../../../utils/errorThrower.ts";
@@ -48,7 +53,7 @@ export async function POST(req: NextRequest) {
   if (prodError) return prodError;
 
   //TODO-mock: makes this considerably higher
-  const profileId = randomInt(1000, 10000);
+  const profileId = randomInt(profileIdLeftBound, profileIdRightBound);
   try {
     if (req.body === null) {
       return NextResponse.json({ error: "Invalid request - without body" });
