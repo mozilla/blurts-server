@@ -56,7 +56,7 @@ export interface BrokerMap {
 const MAGIC_NUM_1 = 24623;
 const MAGIC_NUM_2 = 2161;
 export const profileIdLeftBound = 2 ** 28;
-export const profileIdRightBound = 2 ** 32 - 1;
+export const profileIdRightBound = 2 ** 31 - 1;
 
 function hasher(plaintext: number | string) {
   if (typeof plaintext === "number") plaintext = String(plaintext);
@@ -105,7 +105,7 @@ export function MOCK_ONEREP_RELATIVES() {
   return MockUser.RELATIVES;
 }
 
-export function MOCK_ONEREP_STATUS() {
+export function MOCK_ONEREP_PROFILE_STATUS() {
   return MockUser.STATUS as "active" | "inactive";
 }
 

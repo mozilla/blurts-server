@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import {
-  MOCK_ONEREP_STATUS,
+  MOCK_ONEREP_PROFILE_STATUS,
   MOCK_ONEREP_TIME,
   profileIdLeftBound,
   profileIdRightBound,
@@ -82,7 +82,7 @@ export async function POST(req: NextRequest) {
         updated_at: MOCK_ONEREP_TIME(),
         url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/addresses/${profileId + index}`,
       })),
-      status: MOCK_ONEREP_STATUS(),
+      status: MOCK_ONEREP_PROFILE_STATUS(),
       created_at: MOCK_ONEREP_TIME(),
       updated_at: MOCK_ONEREP_TIME(),
       url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}`,

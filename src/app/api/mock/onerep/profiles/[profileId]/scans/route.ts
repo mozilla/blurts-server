@@ -10,6 +10,35 @@ import {
   MOCK_ONEREP_TIME,
 } from "../../../config/config";
 import { errorIfProduction } from "../../../../../utils/errorThrower";
+import { getEmailForProfile } from "../../../../../../../db/tables/onerep_scans";
+import {
+  computeSha1First6,
+  hashToEmailKeyMap,
+} from "../../../../../utils/mockUtils";
+import mockUser from "../../../config/mockUser.json";
+
+interface ScansMap {
+  [key: string]: MockScanOptionals[];
+}
+
+interface MockScan {
+  id: number;
+  profile_id: number;
+  status: string;
+  reason: string;
+  created_at: string;
+  updated_at: string;
+  url: string;
+}
+
+interface MockScanOptionals {
+  status?: string;
+  reason?: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+const mockScans = mockUser.SCANS_LIST as ScansMap;
 
 export function POST(
   _: NextRequest,
@@ -39,7 +68,7 @@ export function POST(
   return NextResponse.json(mockResponse);
 }
 
-export function GET(
+export async function GET(
   _: NextRequest,
   { params }: { params: { profileId: number } },
 ) {
@@ -56,18 +85,26 @@ export function GET(
   const links = MOCK_ONEREP_OBJECT_LINKS(profileId);
   const meta = MOCK_ONEREP_OBJECT_META(profileId);
 
+  const email = await getEmailForProfile(profileId);
+  if (!email)
+    return NextResponse.json({ error: "No email for this ID is found" });
+  const emailHash = computeSha1First6(email);
+  const dataKey = hashToEmailKeyMap[emailHash] || "default";
+  const data = mockScans[dataKey];
+
   const responseData = {
-    data: [
-      {
-        id: scandId,
-        profile_id: profileId,
-        status: "finished",
-        reason: "manual",
-        created_at: MOCK_ONEREP_TIME(),
-        updated_at: MOCK_ONEREP_TIME(),
-        url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${scandId}`,
-      },
-    ],
+    data: data.map(
+      (scan) =>
+        ({
+          id: scandId,
+          profile_id: profileId,
+          status: scan.status || "finished",
+          reason: scan.reason || "manual",
+          created_at: scan.created_at || MOCK_ONEREP_TIME(),
+          updated_at: scan.updated_at || MOCK_ONEREP_TIME(),
+          url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${scandId}`,
+        }) as MockScan,
+    ),
     links: links,
     meta: meta,
   };

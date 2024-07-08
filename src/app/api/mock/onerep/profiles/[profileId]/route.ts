@@ -8,7 +8,7 @@ import {
   MOCK_ONEREP_LASTNAME,
   MOCK_ONEREP_BIRTHDATE,
   MOCK_ONEREP_ADDRESSES,
-  MOCK_ONEREP_STATUS,
+  MOCK_ONEREP_PROFILE_STATUS,
 } from "../../config/config.ts";
 import { ShowProfileResponse } from "../../../../../functions/server/onerep.ts";
 import { NextRequest, NextResponse } from "next/server";
@@ -34,7 +34,7 @@ export function GET(
     last_name: MOCK_ONEREP_LASTNAME(),
     birth_date: MOCK_ONEREP_BIRTHDATE(),
     addresses: MOCK_ONEREP_ADDRESSES(),
-    status: MOCK_ONEREP_STATUS(),
+    status: MOCK_ONEREP_PROFILE_STATUS(),
     created_at: MOCK_ONEREP_TIME(),
     updated_at: MOCK_ONEREP_TIME(),
     url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}`,
