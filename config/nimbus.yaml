@@ -56,8 +56,8 @@ features:
         default: false
     defaults:
       - channel: local
-        value: { "enabled": false }
+        value: { "enabled": true }
       - channel: staging
-        value: { "enabled": false }
+        value: { "enabled": true }
       - channel: production
         value: { "enabled": false }

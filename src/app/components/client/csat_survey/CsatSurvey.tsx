@@ -82,14 +82,20 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
     }
   });
 
-  // Only show if the petition CSAT banner if the “Data privacy petition banner” been dismissed previously.
   const isPetitionCsatBanner =
     currentSurvey.localDismissalId.includes("petition_banner");
   const hasDismissedDataPrivacyPetitionBanner =
     typeof Object.keys(cookies.getAll()).find((cookieName) =>
       cookieName.includes("data_privacy_petition_banner"),
     ) !== "undefined";
-  if (isPetitionCsatBanner && !hasDismissedDataPrivacyPetitionBanner) {
+  // Only show the petition CSAT banner for users that are part of
+  // `data-privacy-petition-banner` the experiment if the petition has been
+  // already interacted with.
+  if (
+    props.experimentData["data-privacy-petition-banner"].enabled &&
+    isPetitionCsatBanner &&
+    !hasDismissedDataPrivacyPetitionBanner
+  ) {
     return;
   }
 
