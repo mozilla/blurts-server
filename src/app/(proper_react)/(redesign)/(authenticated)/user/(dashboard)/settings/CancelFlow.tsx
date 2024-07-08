@@ -34,13 +34,12 @@ type DiscountData = {
   successDescription: string;
   subtitle: string;
 };
+type Step = "confirm" | "survey" | "all-set" | "redirecting";
 
 export const CancelFlow = (props: Props) => {
   const l10n = useL10n();
   const recordTelemetry = useTelemetry();
-  const [step, setCurrentStep] = useState<
-    "confirm" | "survey" | "all-set" | "redirecting"
-  >("confirm");
+  const [step, setCurrentStep] = useState<Step>("confirm");
 
   const dialogState = useOverlayTriggerState({
     onOpenChange: (isOpen) => {
@@ -121,75 +120,20 @@ export const CancelFlow = (props: Props) => {
     }
   };
 
-  const Animation = () => {
-    return (
-      <>
-        <video
-          aria-hidden={true}
-          autoPlay={true}
-          loop={true}
-          muted={true}
-          className={styles.cancellationAnimation}
-          playsInline
-        >
-          <source
-            // Unfortunately video files cannot currently be imported, so make
-            // sure these files are present in /public. See
-            // https://github.com/vercel/next.js/issues/35248
-            type="video/mp4"
-            src={
-              step === "all-set"
-                ? /* c8 ignore next */
-                  "/animations/CancellationFlowDiscountAppliedAnimation.mp4"
-                : "/animations/CancellationFlowAnimation.mp4"
-            }
-          />
-          <source
-            type="video/webm"
-            src={
-              step === "all-set"
-                ? /* c8 ignore next */
-                  "/animations/CancellationFlowDiscountAppliedAnimation.webm"
-                : "/animations/CancellationFlowAnimation.webm"
-            }
-          />
-          {/* Fall back to the image if the video formats are not supported: */}
-          <Image
-            className={styles.cancellationIllustrationWrapper}
-            src={
-              /* c8 ignore next */
-              step === "all-set"
-                ? CancellationFlowDiscountAppliedStaticImage
-                : CancellationFlowStaticImage
-            }
-            alt=""
-          />
-        </video>
-        {/* Fall back to the image if the video formats are not supported: */}
-        {/* The .staticAlternative class ensures that this image will only be shown if the user has prefers-reduced-motion on */}
-        <Image
-          className={`
-${styles.cancellationIllustrationWrapper}
-${styles.staticAlternative}
-`}
-          src={
-            step === "all-set"
-              ? CancellationFlowDiscountAppliedStaticImage
-              : CancellationFlowStaticImage
-          }
-          alt=""
-        />
-      </>
-    );
-  };
-
   const errorApplyingCoupon = (
     <p className={styles.errorApplyingCoupon}>
       {l10n.getFragment("settings-unsubscribe-dialog-promotion-unsuccessful", {
         elems: {
           try_again_link: (
-            <Button
-              variant="tertiary"
+            <TelemetryButton
+              variant="link"
+              event={{
+                module: "button",
+                name: "click",
+                data: {
+                  button_id: "coupon_cta_unsuccessful_try_again",
+                },
+              }}
               onPress={() => void handleApplyCouponCode()}
             />
           ),
@@ -215,7 +159,7 @@ ${styles.staticAlternative}
         >
           <Dialog
             title={l10n.getString(dialogTitle())}
-            illustration={<Animation />}
+            illustration={<Animation step={step} />}
             onDismiss={() => {
               recordTelemetry("popup", "exit", {
                 popup_id:
@@ -393,6 +337,68 @@ ${styles.staticAlternative}
           </Dialog>
         </ModalOverlay>
       )}
+    </>
+  );
+};
+
+const Animation = (props: { step: Step }) => {
+  return (
+    <>
+      <video
+        aria-hidden={true}
+        autoPlay={true}
+        loop={true}
+        muted={true}
+        className={styles.cancellationAnimation}
+        playsInline
+      >
+        <source
+          // Unfortunately video files cannot currently be imported, so make
+          // sure these files are present in /public. See
+          // https://github.com/vercel/next.js/issues/35248
+          type="video/mp4"
+          src={
+            props.step === "all-set"
+              ? /* c8 ignore next */
+                "/animations/CancellationFlowDiscountAppliedAnimation.mp4"
+              : "/animations/CancellationFlowAnimation.mp4"
+          }
+        />
+        <source
+          type="video/webm"
+          src={
+            props.step === "all-set"
+              ? /* c8 ignore next */
+                "/animations/CancellationFlowDiscountAppliedAnimation.webm"
+              : "/animations/CancellationFlowAnimation.webm"
+          }
+        />
+        {/* Fall back to the image if the video formats are not supported: */}
+        <Image
+          className={styles.cancellationIllustrationWrapper}
+          src={
+            /* c8 ignore next */
+            props.step === "all-set"
+              ? CancellationFlowDiscountAppliedStaticImage
+              : CancellationFlowStaticImage
+          }
+          alt=""
+        />
+      </video>
+      {/* Fall back to the image if the video formats are not supported: */}
+      {/* The .staticAlternative class ensures that this image will only be shown if the user has prefers-reduced-motion on */}
+      <Image
+        className={`
+${styles.cancellationIllustrationWrapper}
+${styles.staticAlternative}
+`}
+        src={
+          props.step === "all-set"
+            ? CancellationFlowDiscountAppliedStaticImage
+            : CancellationFlowStaticImage
+        }
+        alt=""
+      />
     </>
   );
 };

@@ -176,7 +176,7 @@ dashboard-top-banner-your-data-is-protected-cta = See what’s fixed
 dashboard-top-banner-your-data-is-protected-all-fixed-description =
   { $starting_exposure_total_num ->
     [one] Great work, { $starting_exposure_total_num } exposure of your data is fixed! Subscribe to { -brand-monitor-plus } and we’ll scan for new exposures every month. Plus, we’ll automatically remove your info from any sites that are selling it.
-    *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed! Subscribe to { -brand-monitor-plus } and we’ll and we’ll scan for new exposures every month. Plus, we’ll automatically remove your info from any sites that are selling it.
+    *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed! Subscribe to { -brand-monitor-plus } and we’ll scan for new exposures every month. Plus, we’ll automatically remove your info from any sites that are selling it.
   }
 
 # Variables:
