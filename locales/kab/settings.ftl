@@ -18,6 +18,15 @@ settings-email-verification-callout = Asenqed n yimayl ilaq
 settings-resend-email-verification-link = Ales tuzna n yimayl n usenqed
 settings-add-email-button = Rnu tansa imayl
 settings-remove-email-button-label = Kkes
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (number) - Number of breaches
+settings-email-number-of-breaches-info =
+    { $breachCount ->
+        [one] Yettban-d deg { $breachCount } n trewla n yisefka yettwasnen
+       *[other] Yettban-d deg { $breachCount } n terewiliwin n yisefka yettwasnen
+    }
 
 ## Delete Monitor account
 

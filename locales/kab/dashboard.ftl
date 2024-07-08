@@ -31,6 +31,7 @@ dashboard-exposures-filter-reset = Wennez
 
 ## Top banner on the dashboard
 
+dashboard-top-banner-lets-keep-protecting-cta = Ad nkemmel
 
 # About Exposure Indicators Modal
 
