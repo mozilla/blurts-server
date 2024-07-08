@@ -33,7 +33,6 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
     experimentData: props.experimentData,
     user: props.user,
   };
-  const cookies = new Cookies(null, { path: "/" });
   // The order of the surveys here matter: If there are multiple matching
   // surveys for the user we dismiss all surveys, but the last one in the list.
   const surveys = [
@@ -53,15 +52,12 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
         lastScanDate: props.lastScanDate,
       }),
     props.enabledFeatureFlags.includes("PetitionBanner") &&
-      // Only show if the petition banner has been dismissed previously.
-      typeof Object.keys(cookies.getAll()).find((cookieName) =>
-        cookieName.includes("petition_banner"),
-      ) !== "undefined" &&
       getPetitionBannerCsatSurvey(surveyOptions),
   ];
 
   // Filters out previously dismissed surveys to make sure `currentSurvey` will
   // always be relevant to show for the user.
+  const cookies = new Cookies(null, { path: "/" });
   const filteredSurveys = surveys.filter((survey) => {
     if (!survey) {
       return;
@@ -86,14 +82,23 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
     }
   });
 
+  // Only show if the petition CSAT banner if the “Data privacy petition banner” been dismissed previously.
+  const isPetitionCsatBanner =
+    currentSurvey.localDismissalId.includes("petition_banner");
+  const hasDismissedDataPrivacyPetitionBanner =
+    typeof Object.keys(cookies.getAll()).find((cookieName) =>
+      cookieName.includes("data_privacy_petition_banner"),
+    ) !== "undefined";
+  if (isPetitionCsatBanner && !hasDismissedDataPrivacyPetitionBanner) {
+    return;
+  }
+
   return (
-    currentSurvey && (
-      <CsatSurveyBanner
-        key={currentSurvey.id}
-        survey={currentSurvey}
-        localDismissalId={currentSurvey.localDismissalId}
-        metricKeys={currentSurvey.metricKeys}
-      />
-    )
+    <CsatSurveyBanner
+      key={currentSurvey.id}
+      survey={currentSurvey}
+      localDismissalId={currentSurvey.localDismissalId}
+      metricKeys={currentSurvey.metricKeys}
+    />
   );
 };
