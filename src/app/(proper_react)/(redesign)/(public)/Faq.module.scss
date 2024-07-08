@@ -43,20 +43,15 @@
       font: $text-body-lg;
       cursor: pointer;
       text-align: center;
-
-      .closeIconContainer {
-        min-height: 12px;
-        min-width: 12px;
-        svg {
-          color: $color-blue-60;
-          width: 12px;
-          height: 12px;
-          transform: rotate(135deg);
-          transition: transform 0.3s ease-in-out;
-
-          &.expanded {
-            transform: rotate(180deg);
-          }
+      svg {
+        color: $color-blue-60;
+        width: 12px;
+        height: 12px;
+        transform: rotate(135deg);
+        transition: transform 0.3s ease-in-out;
+        flex-shrink: 0;
+        &.expanded {
+          transform: rotate(180deg);
         }
       }
     }

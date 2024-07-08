@@ -47,12 +47,10 @@ const FaqItem = (props: FaqItemProps) => {
           className={styles.faqQuestion}
         >
           {props.question}
-          <div className={styles.closeIconContainer}>
-            <CloseBigIcon
-              alt={l10n.getString("landing-all-close-faq-alt")}
-              className={`${props.isExpanded && styles.expanded}`}
-            />
-          </div>
+          <CloseBigIcon
+            alt={l10n.getString("landing-all-close-faq-alt")}
+            className={`${props.isExpanded && styles.expanded}`}
+          />
         </button>
       </dt>
       <dd
