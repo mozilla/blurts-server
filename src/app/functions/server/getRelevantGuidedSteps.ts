@@ -73,7 +73,7 @@ export function isGuidedResolutionInProgress(stepId: StepLink["id"]) {
   const inProgressStepIds = stepLinks
     .filter((step) => step.id !== "Scan" && step.id !== "Done")
     .map(({ id }) => id);
-  return inProgressStepIds.includes(stepId);
+  return (inProgressStepIds as string[]).includes(stepId);
 }
 
 export function getNextGuidedStep(

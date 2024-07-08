@@ -43,6 +43,7 @@ export const View = (props: Props) => {
     <>
       <AccountDeletionNotification />
       <main className={styles.wrapper}>
+        {props.eligibleForPremium && <TopNavBar l10n={props.l10n} />}
         <header className={styles.hero}>
           <div className={styles.heroContent}>
             <h1>{props.l10n.getString("landing-all-hero-title")}</h1>
@@ -249,6 +250,52 @@ export const View = (props: Props) => {
         </div>
       </main>
     </>
+  );
+};
+
+export const TopNavBar = ({ l10n }: { l10n: ExtendedReactLocalization }) => {
+  return (
+    <div className={styles.navbar}>
+      <div className={styles.navbarLinksContainer}>
+        <TelemetryLink
+          className={styles.navbarLinks}
+          href="/how-it-works"
+          eventData={{
+            link_id: "navbar_how_it_works",
+          }}
+        >
+          {l10n.getString("landing-all-hero-navbar-link-how-it-works")}
+        </TelemetryLink>
+        <TelemetryLink
+          className={styles.navbarLinks}
+          href="#pricing"
+          eventData={{
+            link_id: "navbar_pricing",
+          }}
+        >
+          {l10n.getString("landing-all-hero-navbar-link-pricing")}
+        </TelemetryLink>
+        <TelemetryLink
+          data-testid="navbar_faqs"
+          className={styles.navbarLinks}
+          href="#faq"
+          eventData={{
+            link_id: "navbar_faqs",
+          }}
+        >
+          {l10n.getString("landing-all-hero-navbar-link-faqs")}
+        </TelemetryLink>
+        <TelemetryLink
+          className={styles.navbarLinks}
+          href="/breaches"
+          eventData={{
+            link_id: "navbar_breaches",
+          }}
+        >
+          {l10n.getString("landing-all-hero-navbar-link-all-breaches")}
+        </TelemetryLink>
+      </div>
+    </div>
   );
 };
 
