@@ -51,28 +51,22 @@ export async function checkUserHasYearlySubscription(user: Session["user"]) {
     console.error("FXA token not set");
     return false;
   }
-  let hasYearlyPlanId: boolean = false;
 
-  const getBillingAndSubscriptionInfo = await getBillingAndSubscriptions(
+  const billingAndSubscriptionInfo = await getBillingAndSubscriptions(
     user.subscriber.fxa_access_token,
   );
+  if (billingAndSubscriptionInfo === null) {
+    return false;
+  }
+
   const yearlyPlanId: string = process.env.PREMIUM_PLAN_ID_YEARLY_US;
-
-  const parsedBillingAndSubscriptionInfo = JSON.parse(
-    JSON.stringify(getBillingAndSubscriptionInfo),
-  );
-
-  const subscriptions = parsedBillingAndSubscriptionInfo.subscriptions;
+  const subscriptions = billingAndSubscriptionInfo.subscriptions;
 
   const planIds: string[] = [];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  subscriptions.forEach((subscription: any) => {
+  subscriptions.forEach((subscription) => {
     planIds.push(subscription.plan_id);
   });
 
-  if (planIds.includes(yearlyPlanId)) {
-    hasYearlyPlanId = true;
-  }
-  return hasYearlyPlanId;
+  return planIds.includes(yearlyPlanId);
 }
 /* c8 ignore stop */

@@ -40,6 +40,7 @@ high-risk-breach-skip = Suref akka tura
 
 # Bank Account Breaches
 
+high-risk-breach-bank-account-step-two = Beddel uṭṭun n umiḍan-ik
 
 # Social Security Number Breaches
 
@@ -54,15 +55,18 @@ ssn-modal-ok = IH
 # No high risk breaches found
 
 high-risk-breach-none-sub-description-ssn = uṭṭun n tɣellist inmettiyen
+high-risk-breach-none-sub-description-cc-number = Uṭṭunen n tkarḍa n usmad
 high-risk-breach-none-sub-description-pin = Tingalin PIN
 high-risk-breach-none-continue = Kemmel
 
 # Security recommendations
 
+security-recommendation-steps-title = Ha-ten-a iwellihen-a:
 security-recommendation-steps-cta-label = Gziɣ!
 
 # Phone security recommendation
 
+security-recommendation-phone-title = Mmesten uṭṭun n tiliɣri-k
 
 # Email security recommendation
 
