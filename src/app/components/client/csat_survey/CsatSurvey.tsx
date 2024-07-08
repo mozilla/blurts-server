@@ -33,6 +33,7 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
     experimentData: props.experimentData,
     user: props.user,
   };
+  const cookies = new Cookies(null, { path: "/" });
   // The order of the surveys here matter: If there are multiple matching
   // surveys for the user we dismiss all surveys, but the last one in the list.
   const surveys = [
@@ -52,12 +53,15 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
         lastScanDate: props.lastScanDate,
       }),
     props.enabledFeatureFlags.includes("PetitionBanner") &&
+      // Only show if the petition banner has been dismissed previously.
+      typeof Object.keys(cookies.getAll()).find((cookieName) =>
+        cookieName.includes("petition_banner"),
+      ) !== "undefined" &&
       getPetitionBannerCsatSurvey(surveyOptions),
   ];
 
   // Filters out previously dismissed surveys to make sure `currentSurvey` will
   // always be relevant to show for the user.
-  const cookies = new Cookies(null, { path: "/" });
   const filteredSurveys = surveys.filter((survey) => {
     if (!survey) {
       return;
