@@ -16,6 +16,7 @@ import { getCountryCode } from "../../../../../../../../../functions/server/getC
 import { getOnerepProfileId } from "../../../../../../../../../../db/tables/subscribers";
 import { getLatestOnerepScanResults } from "../../../../../../../../../../db/tables/onerep_scans";
 import { isEligibleForPremium } from "../../../../../../../../../functions/server/onerep";
+import { logger } from "../../../../../../../../../functions/server/logging";
 
 interface LeakedPasswordsProps {
   params: {
@@ -28,6 +29,9 @@ export default async function LeakedPasswords({
 }: LeakedPasswordsProps) {
   const session = await getServerSession();
   if (!session?.user?.subscriber?.id) {
+    logger.error("user_not_subscribed", {
+      page: "leaked-passwords",
+    });
     return redirect("/");
   }
   const countryCode = getCountryCode(headers());

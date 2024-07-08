@@ -50,7 +50,7 @@ export const SettingsConfirmationDialog = (props: Props) => {
             popup_id: "never_mind_take_me_back",
           },
         }}
-        variant="tertiary"
+        variant="link"
         onPress={() => dialogState.open()}
         className={styles.trigger}
       >
@@ -71,7 +71,7 @@ export const SettingsConfirmationDialog = (props: Props) => {
               {props.children}
               {props.dismissString && (
                 <Button
-                  variant="tertiary"
+                  variant="link"
                   onPress={() => dialogState.close()}
                   className={styles.dismissLink}
                 >
