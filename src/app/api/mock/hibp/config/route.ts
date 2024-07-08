@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 import { errorIfNotLocal } from "../../../utils/errorThrower";
-import mockBreaches from "../data/mockBreaches.json";
+import mockBreaches from "../mockData/mockBreaches.json";
 import { logger } from "../../../../functions/server/logging";
 
 // type hibpConfigReq = {

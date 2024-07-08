@@ -15,7 +15,7 @@ import {
   computeSha1First6,
   hashToEmailKeyMap,
 } from "../../../../../utils/mockUtils";
-import mockUser from "../../../config/mockUser.json";
+import mockUser from "../../../mockData/mockUser.json";
 
 interface ScansMap {
   [key: string]: MockScanOptionals[];

@@ -637,6 +637,25 @@
       "IsSpamList": false,
       "IsMalware": false,
       "FaviconUrl": null
+    },
+    {
+      "Id": 695,
+      "Name": "UC",
+      "Title": "University of California",
+      "Domain": "universityofcalifornia.edu",
+      "BreachDate": "2020-12-24",
+      "AddedDate": "2021-06-20 00:44:34-07",
+      "ModifiedDate": "2021-07-03 18:03:54-07",
+      "PwnCount": 547422,
+      "Description": "In December 2020, <a href=\"https://portswigger.net/daily-swig/uc-berkeley-confirms-data-breach-becomes-latest-victim-of-accellion-cyber-attack\" target=\"_blank\" rel=\"noopener\">the University of California suffered a data breach due to vulnerability in in a third-party provider, Accellion</a>. The breach exposed extensive personal data on both students and staff including 547 thousand unique email addresses, names, dates of birth, genders, social security numbers, ethnicities and other academic related data attributes. Further analysis is available in <a href=\"https://cgorlla.github.io/project/uc\" target=\"_blank\" rel=\"noopener\">Exploring the Impact of the UC Data Breach</a>. The data was provided to HIBP courtesy of Cyril Gorlla.",
+      "LogoPath": "https://haveibeenpwned.com/Content/Images/PwnedLogos/UC.png",
+      "DataClasses": "{dates-of-birth,education-levels,email-addresses,ethnicities,genders,job-titles,names,phone-numbers,physical-addresses,social-security-numbers}",
+      "IsVerified": true,
+      "IsFabricated": false,
+      "IsSensitive": false,
+      "IsRetired": false,
+      "IsMalware": false,
+      "FaviconUrl": false
     }
   ]
 }

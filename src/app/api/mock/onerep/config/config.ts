@@ -4,7 +4,7 @@
 
 import { BinaryLike, createHash } from "crypto";
 import { StateAbbr } from "../../../../../utils/states";
-import MockUser from "./mockUser.json";
+import MockUser from "../mockData/mockUser.json";
 import { computeSha1First6, hashToEmailKeyMap } from "../../../utils/mockUtils";
 
 export interface Broker {
