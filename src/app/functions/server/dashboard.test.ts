@@ -13,7 +13,6 @@ import {
 } from "./dashboard";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { RemovalStatus, RemovalStatusMap } from "../universal/scanResult";
-import isNotNull from "../universal/isNotNull";
 
 const unresolvedBreaches: SubscriberBreach[] = [
   {
@@ -1136,7 +1135,7 @@ describe("getDashboardSummary", () => {
                   count,
                 );
               })
-              .filter(isNotNull)
+              .filter((breach) => breach !== null)
           );
         }
 
@@ -1161,7 +1160,7 @@ describe("getDashboardSummary", () => {
 
               return getScanResult(resolution, dataType, count);
             })
-            .filter(isNotNull);
+            .filter((scanResult) => scanResult !== null);
         }
 
         const scanResults = [
