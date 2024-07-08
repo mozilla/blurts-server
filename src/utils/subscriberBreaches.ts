@@ -18,7 +18,6 @@ import {
   ResolutionRelevantBreachDataTypes,
   isBreachResolved,
 } from "../app/functions/universal/breach";
-import isNotNull from "../app/functions/universal/isNotNull";
 
 export type DataClassEffected = {
   [dataType: string]: number | string[];
@@ -128,15 +127,13 @@ export async function getSubBreaches(
             ).resolutionsChecked
           : [];
 
-      const dataClassesEffected = filteredBreachDataClasses
-        .map((c) => {
-          if (c === BreachDataTypes.Email) {
-            return { [c]: [email.email] };
-          } else {
-            return { [c]: 1 };
-          }
-        })
-        .filter(isNotNull);
+      const dataClassesEffected = filteredBreachDataClasses.map((c) => {
+        if (c === BreachDataTypes.Email) {
+          return { [c]: [email.email] };
+        } else {
+          return { [c]: 1 };
+        }
+      });
 
       // `allBreaches` is generally the return value of `getBreaches`, which
       // either loads breaches from the database, or fetches them from the HIBP
