@@ -75,6 +75,15 @@
   &.tertiary {
     background: none;
     color: $color-blue-50;
+
+    &:hover {
+      background-color: rgba($color-blue-50, 0.2);
+    }
+  }
+
+  &.link {
+    background: none;
+    color: $color-blue-50;
     font: inherit;
     padding: 0;
     text-decoration: underline;

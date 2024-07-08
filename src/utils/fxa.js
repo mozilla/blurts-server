@@ -102,6 +102,53 @@ async function getSubscriptions(bearerToken) {
     return null
   }
 }
+
+/**
+ * Calls https://mozilla.github.io/ecosystem-platform/api#tag/Subscriptions/operation/getOauthMozillasubscriptionsCustomerBillingandsubscriptions
+ *
+ * Note that we currently only look at the subscriptions and their plan IDs, so
+ * the return type definition isn't exhaustive yet. If you need more data, look
+ * at the above docs to expand the return type definition.
+ *
+ * @param {string} bearerToken
+ * @returns {Promise<
+ *   null
+ *   | {
+ *       subscriptions: Array<{
+ *         plan_id: string;
+ *         product_id: string;
+ *         current_period_end: number;
+ *         cancel_at_period_end: boolean;
+ *         status: "active" | "canceled" | "trialing" | "unpaid" | string;
+ *       }>
+ *     }
+ * >}
+ */
+
+async function getBillingAndSubscriptions(bearerToken) {
+  const subscriptionIdUrl = `${process.env.OAUTH_API_URI}/oauth/mozilla-subscriptions/customer/billing-and-subscriptions`
+  
+  try {
+    const getResp = await fetch(subscriptionIdUrl, {
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${bearerToken}`
+      }
+    })
+
+    if (!getResp.ok) {
+      throw new InternalServerError(`bad response: [${getResp.status}] [${getResp.statusText}]`)
+    } else {
+      console.info(`get_fxa_subscriptions: success`)
+      return await getResp.json()
+    }
+  } catch (e) {
+    if (e instanceof Error) {
+      console.error('get_fxa_subscriptions', { stack: e.stack })
+    }
+    return null
+  }
+}
 /* c8 ignore stop */
 
 /**
@@ -206,6 +253,7 @@ export {
   revokeOAuthTokens,
   getSha1,
   getSubscriptions,
+  getBillingAndSubscriptions,
   deleteSubscription,
   applyCoupon
 }

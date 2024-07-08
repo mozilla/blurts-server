@@ -166,6 +166,7 @@ meta-desc-2 = { -brand-fx-monitor }를 통해 데이터 유출에 연관되어 �
 # Deprecated
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = 로그인
+brand-mozilla-monitor = { -brand-fx-monitor }
 
 ## Site navigation
 
@@ -176,6 +177,7 @@ main-nav-button-expand-label = 메뉴 펼치기
 main-nav-button-expand-tooltip = 메뉴 펼치기
 main-nav-label = 탐색
 main-nav-link-home-label = 홈
+main-nav-link-dashboard-label = 대시보드
 main-nav-link-settings-label = 설정
 main-nav-link-faq-label = FAQ
 main-nav-link-faq-tooltip = 자주 묻는 질문
@@ -227,3 +229,4 @@ breach-detail-cta-signup = 유출 여부 확인하기
 
 banner-monitor-rebrand-dismiss-button-label = 예
 banner-monitor-rebrand-dismiss-button-tooltip = 닫기
+loading-accessibility = 로딩 중

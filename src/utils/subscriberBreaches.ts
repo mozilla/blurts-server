@@ -2,7 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { SubscriberRow } from "knex/types/tables";
+import {
+  BreachResolutionChecked,
+  SubscriberBreachResolution,
+  SubscriberRow,
+} from "knex/types/tables";
 import { getUserEmails } from "../db/tables/emailAddresses.js";
 import { HibpLikeDbBreach, getBreachesForEmail } from "./hibp.js";
 import { getSha1 } from "./fxa.js";
@@ -14,7 +18,6 @@ import {
   ResolutionRelevantBreachDataTypes,
   isBreachResolved,
 } from "../app/functions/universal/breach";
-import isNotNull from "../app/functions/universal/isNotNull";
 
 export type DataClassEffected = {
   [dataType: string]: number | string[];
@@ -105,7 +108,8 @@ export async function getSubBreaches(
     );
 
     // breach resolution
-    const breachResolution = subscriber.breach_resolution?.[email.email] ?? {};
+    const breachResolutionForEmail =
+      subscriber.breach_resolution?.[email.email] ?? {};
 
     for (const breach of foundBreaches) {
       type ArrayOfDataClasses = Array<
@@ -113,18 +117,23 @@ export async function getSubBreaches(
       >;
       const filteredBreachDataClasses: ArrayOfDataClasses =
         filterBreachDataTypes(breach.DataClasses, countryCode);
-      const resolvedDataClasses = (breachResolution[breach.Id]
-        ?.resolutionsChecked ?? []) as ArrayOfDataClasses;
 
-      const dataClassesEffected = filteredBreachDataClasses
-        .map((c) => {
-          if (c === BreachDataTypes.Email) {
-            return { [c]: [email.email] };
-          } else {
-            return { [c]: 1 };
-          }
-        })
-        .filter(isNotNull);
+      const resolvedDataClasses =
+        breach.Id in breachResolutionForEmail
+          ? (
+              breachResolutionForEmail[
+                breach.Id as keyof SubscriberBreachResolution
+              ] as BreachResolutionChecked
+            ).resolutionsChecked
+          : [];
+
+      const dataClassesEffected = filteredBreachDataClasses.map((c) => {
+        if (c === BreachDataTypes.Email) {
+          return { [c]: [email.email] };
+        } else {
+          return { [c]: 1 };
+        }
+      });
 
       // `allBreaches` is generally the return value of `getBreaches`, which
       // either loads breaches from the database, or fetches them from the HIBP

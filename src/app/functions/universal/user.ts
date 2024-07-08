@@ -4,6 +4,7 @@
 
 import { Session } from "next-auth";
 import { ISO8601DateString } from "../../../utils/parse.js";
+import { getBillingAndSubscriptions } from "../../../utils/fxa.js";
 
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
@@ -40,3 +41,32 @@ export function meetsAgeRequirement(dateOfBirth: ISO8601DateString): boolean {
 
   return age >= USER_MIN_AGE;
 }
+
+/* c8 ignore start */
+export async function checkUserHasYearlySubscription(user: Session["user"]) {
+  if (
+    !user.subscriber?.fxa_access_token ||
+    !process.env.PREMIUM_PLAN_ID_YEARLY_US
+  ) {
+    console.error("FXA token not set");
+    return false;
+  }
+
+  const billingAndSubscriptionInfo = await getBillingAndSubscriptions(
+    user.subscriber.fxa_access_token,
+  );
+  if (billingAndSubscriptionInfo === null) {
+    return false;
+  }
+
+  const yearlyPlanId: string = process.env.PREMIUM_PLAN_ID_YEARLY_US;
+  const subscriptions = billingAndSubscriptionInfo.subscriptions;
+
+  const planIds: string[] = [];
+  subscriptions.forEach((subscription) => {
+    planIds.push(subscription.plan_id);
+  });
+
+  return planIds.includes(yearlyPlanId);
+}
+/* c8 ignore stop */

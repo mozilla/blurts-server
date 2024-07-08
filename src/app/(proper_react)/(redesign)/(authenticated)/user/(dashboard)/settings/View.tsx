@@ -40,6 +40,7 @@ export type Props = {
   enabledFeatureFlags: FeatureFlagName[];
   experimentData: ExperimentData;
   lastScanDate?: Date;
+  isYearlySubscriber: boolean;
 };
 
 export const SettingsView = (props: Props) => {
@@ -89,7 +90,9 @@ export const SettingsView = (props: Props) => {
               );
             })}
           </ul>
-          <EmailAddressAdder />
+          {props.emailAddresses.length < CONST_MAX_NUM_ADDRESSES - 1 && (
+            <EmailAddressAdder />
+          )}
           <hr />
           <AlertAddressForm
             user={props.user}
@@ -109,6 +112,7 @@ export const SettingsView = (props: Props) => {
                     )}
                     fxaSubscriptionsUrl={props.fxaSubscriptionsUrl}
                     experimentData={props.experimentData}
+                    isYearlySubscriber={props.isYearlySubscriber}
                   />
                 ) : (
                   <TelemetryLink

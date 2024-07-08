@@ -176,7 +176,7 @@ dashboard-top-banner-your-data-is-protected-cta = See what’s fixed
 dashboard-top-banner-your-data-is-protected-all-fixed-description =
   { $starting_exposure_total_num ->
     [one] Great work, { $starting_exposure_total_num } exposure of your data is fixed! Subscribe to { -brand-monitor-plus } and we’ll scan for new exposures every month. Plus, we’ll automatically remove your info from any sites that are selling it.
-    *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed! Subscribe to { -brand-monitor-plus } and we’ll and we’ll scan for new exposures every month. Plus, we’ll automatically remove your info from any sites that are selling it.
+    *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed! Subscribe to { -brand-monitor-plus } and we’ll scan for new exposures every month. Plus, we’ll automatically remove your info from any sites that are selling it.
   }
 
 # Variables:
@@ -204,3 +204,10 @@ survey-csat-answer-satisfied = Satisfied
 survey-csat-answer-very-satisfied = Very satisfied
 survey-csat-follow-up-link-label = Your feedback is helpful to us! How can we improve { -product-short-name } for you?
 survey-csat-survey-dismiss-label = Dismiss
+
+## Petition banner US data privacy law
+
+petition-banner-data-privacy-title = Join the Movement for a U.S. Data Privacy Law
+petition-banner-data-privacy-text = Advocate for stronger data protection laws with the { -brand-mozilla-foundation } — <b>your voice can shape a safer digital future!</b>
+petition-banner-data-privacy-button-sign = Sign petition
+petition-banner-data-privacy-button-dismiss = No, thank you
