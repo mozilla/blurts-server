@@ -222,3 +222,10 @@ export const forceLoginAs = async (
   await page.waitForURL("**/user/dashboard");
   await expect(page).toHaveURL(/.*\/user\/dashboard.*/);
 };
+
+export const clearTestData = async (page: Page) => {
+  const url = new URL(page.url());
+  await page.goto(url.host + "/api/mock/clearTestData");
+  await page.waitForURL(/.*\/api\/mock\/clearTestData.*/);
+  await page.goBack();
+};

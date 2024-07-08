@@ -16,9 +16,9 @@ export const allE2ETestEmailKeys = (() => {
   return Object.keys(process.env).filter(
     (key) =>
       key.startsWith("E2E_TEST_ACCOUNT_EMAIL") &&
-      (process.env[key] !== undefined ||
-        (false &&
-          logger.info(`Warning: ${key} is not set up! Ignoring it...`))),
+      (process.env[key] ||
+        (logger.info(`Warning: ${key} is not set up! Ignoring it...`) &&
+          false)),
   );
 })();
 

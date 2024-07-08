@@ -3,18 +3,21 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextResponse } from "next/server";
-import { getServerSession } from "../../../../functions/server/getServerSession";
+import { getServerSession } from "../../../functions/server/getServerSession";
 import {
   errorIfProduction,
   internalServerError,
   unauthError,
-} from "../../../utils/errorThrower";
-import { getOnerepProfileId } from "../../../../../db/tables/subscribers";
+} from "../../utils/errorThrower";
+import {
+  getOnerepProfileId,
+  unresolveAllBreaches,
+} from "../../../../db/tables/subscribers";
 import {
   deleteScanResultsForProfile,
   deleteSomeScansForProfile,
-} from "../../../../../db/tables/onerep_scans";
-import { logger } from "../../../../functions/server/logging";
+} from "../../../../db/tables/onerep_scans";
+import { logger } from "../../../functions/server/logging";
 
 function isTestEmail(email: string) {
   if (!email) return false;
@@ -40,7 +43,10 @@ export async function GET() {
     return internalServerError("Unable to fetch OneRep profile ID");
   await deleteScanResultsForProfile(onerepProfileId);
   await deleteSomeScansForProfile(onerepProfileId, 1);
-  logger.info("Mock OneRep endpoint: attempted to delete all but 1 scans");
+  await unresolveAllBreaches(onerepProfileId);
+  logger.info(
+    "Mock OneRep endpoint: attempted to delete all but 1 scans, attempted to unresolve all breaches",
+  );
 
   return NextResponse.json(
     { message: "Requested reached successfully" },

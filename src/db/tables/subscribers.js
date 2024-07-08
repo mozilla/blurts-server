@@ -615,6 +615,14 @@ async function getSignInCount (subscriberId) {
 }
 /* c8 ignore stop */
 
+/**
+ * @param {number} oneRepProfileId
+ */
+async function unresolveAllBreaches(oneRepProfileId) {
+  const currentDate = new Date();
+  await knex('subscribers').where('onerep_profile_id', oneRepProfileId).update({'breach_resolution': null, 'updated_at': currentDate});
+}
+
 export {
   getOnerepProfileId,
   getSubscribersByHashes,
@@ -642,5 +650,6 @@ export {
   deleteOnerepProfileId,
   incrementSignInCountForEligibleFreeUser,
   getSignInCount,
+  unresolveAllBreaches,
   knex as knexSubscribers
 }
