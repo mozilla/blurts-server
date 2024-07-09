@@ -132,7 +132,7 @@ export const authOptions: AuthOptions = {
               existingUser,
               account.access_token,
               account.refresh_token,
-              account.expires_at || 0,
+              account.expires_at ?? 0,
               JSON.stringify(profile),
             );
             // MNTOR-2599 The breach_resolution object can get pretty big,
