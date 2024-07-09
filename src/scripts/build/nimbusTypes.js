@@ -180,7 +180,7 @@ function getTypeAliases(nimbusConfig) {
     const unionOfStrings = Object.keys(nimbusConfig.enums[typeAlias].variants)
       .map((variant) => `"${variant}"`)
       .join(" | ");
-    return `type ${typeAlias} = ${unionOfStrings};`;
+    return `export type ${typeAlias} = ${unionOfStrings};`;
   });
 
   return (
