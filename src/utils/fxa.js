@@ -79,7 +79,7 @@ async function revokeOAuthTokens(subscriber) {
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function refreshOauthTokens(refreshToken) {
+async function refreshOAuthTokens(refreshToken) {
   const subscriptionIdUrl = `${AppConstants.OAUTH_ACCOUNT_URI}/oauth/token`
   try {
     const postResp = await fetch(subscriptionIdUrl, {
@@ -284,7 +284,7 @@ function getSha1(email) {
 }
 
 export {
-  refreshOauthTokens,
+  refreshOAuthTokens,
   destroyOAuthToken,
   revokeOAuthTokens,
   getSha1,

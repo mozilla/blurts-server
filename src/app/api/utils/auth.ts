@@ -18,7 +18,7 @@ import {
 import { addSubscriber } from "../../../db/tables/emailAddresses.js";
 import { getBreaches } from "../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../utils/hibp.js";
-import { getSha1, refreshOauthTokens } from "../../../utils/fxa.js";
+import { getSha1, refreshOAuthTokens } from "../../../utils/fxa.js";
 import {
   getEmailCtaDashboardHref,
   initEmail,
@@ -240,7 +240,7 @@ export const authOptions: AuthOptions = {
             return session;
           }
           try {
-            const responseTokens = await refreshOauthTokens(
+            const responseTokens = await refreshOAuthTokens(
               dbFxATokens.fxa_refresh_token,
             );
             const updatedUser = await updateFxATokens(
