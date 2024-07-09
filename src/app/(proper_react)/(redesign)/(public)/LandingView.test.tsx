@@ -89,7 +89,10 @@ describe("When Premium is not available", () => {
         user: {
           email: "arbitrary@example.com",
         },
+        expires: "2023-06-18T14:48:00.000Z",
       },
+      status: "authenticated",
+      update: () => Promise.resolve(null),
     });
 
     const ComposedDashboard = composeStory(LandingNonUs, Meta);
@@ -735,6 +738,98 @@ describe("When Premium is available", () => {
     // after clicking the link; suppress that error, as it's not relevant to the
     // test:
     jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+  });
+
+  it("counts the number of clicks How it Works link in top navbar", async () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+
+    const navbarLink = screen.getByRole("link", { name: "How it works" });
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+    await user.click(navbarLink);
+
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "link",
+      "click",
+      expect.objectContaining({
+        link_id: "navbar_how_it_works",
+      }),
+    );
+  });
+
+  it("counts the number of clicks Pricing link in top navbar", async () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+
+    const navbarLink = screen.getByRole("link", { name: "Pricing" });
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+    await user.click(navbarLink);
+
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "link",
+      "click",
+      expect.objectContaining({
+        link_id: "navbar_pricing",
+      }),
+    );
+  });
+
+  it("counts the number of clicks FAQs link in top navbar", async () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+
+    const navbarLink = screen.getByTestId("navbar_faqs");
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+    await user.click(navbarLink);
+
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "link",
+      "click",
+      expect.objectContaining({
+        link_id: "navbar_faqs",
+      }),
+    );
+  });
+
+  it("counts the number of clicks All breaches link in top navbar", async () => {
+    const mockedRecord = useTelemetry();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(<ComposedDashboard />);
+
+    const user = userEvent.setup();
+
+    const navbarLink = screen.getByRole("link", { name: "All breaches" });
+    // jsdom will complain about not being able to navigate to a different page
+    // after clicking the link; suppress that error, as it's not relevant to the
+    // test:
+    jest.spyOn(console, "error").mockImplementationOnce(() => undefined);
+    await user.click(navbarLink);
+
+    expect(mockedRecord).toHaveBeenCalledWith(
+      "link",
+      "click",
+      expect.objectContaining({
+        link_id: "navbar_breaches",
+      }),
+    );
   });
 });
 

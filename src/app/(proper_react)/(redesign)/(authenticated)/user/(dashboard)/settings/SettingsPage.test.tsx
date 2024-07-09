@@ -11,7 +11,12 @@ import type { EmailAddressRow, SubscriberRow } from "knex/types/tables";
 import { getL10n } from "../../../../../../functions/l10n/storybookAndJest";
 import { TestComponentWrapper } from "../../../../../../../TestComponentWrapper";
 import { SerializedSubscriber } from "../../../../../../../next-auth";
-import { onAddEmail, onRemoveEmail } from "./actions";
+import {
+  onAddEmail,
+  onApplyCouponCode,
+  onCheckUserHasCurrentCouponSet,
+  onRemoveEmail,
+} from "./actions";
 
 const mockedSessionUpdate = jest.fn();
 const mockedRecordTelemetry = jest.fn();
@@ -24,6 +29,7 @@ jest.mock("next-auth/react", () => {
     },
   };
 });
+
 jest.mock("../../../../../../hooks/useTelemetry", () => {
   return {
     useTelemetry: () => mockedRecordTelemetry,
@@ -35,10 +41,11 @@ jest.mock("./actions", () => {
     onRemoveEmail: jest.fn(),
     onAddEmail: jest.fn(),
     onDeleteAccount: () => new Promise(() => undefined),
-    onApplyCouponCode: () => ({ success: true }),
-    onCheckUserHasCurrentCouponSet: () => new Promise(() => undefined),
+    onApplyCouponCode: jest.fn(),
+    onCheckUserHasCurrentCouponSet: jest.fn(),
   };
 });
+
 const mockedRouterRefresh = jest.fn();
 
 jest.mock("next/navigation", () => ({
@@ -72,6 +79,7 @@ const mockedSubscriber: SubscriberRow = {
     "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc0",
   fxa_refresh_token:
     "5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc1",
+  fxa_session_expiry: new Date(0),
   fxa_uid: "12346",
   fxa_profile_json: {
     uid: "123",
@@ -120,12 +128,14 @@ const mockedSubscriber: SubscriberRow = {
       },
     },
   },
-  monthly_email_at: new Date("2022-08-07 14:22:00.000-05"),
+  monthly_email_at: "2022-08-07 14:22:00.000-05",
   monthly_email_optout: false,
   signup_language: "fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5",
-  db_migration_1: undefined,
-  db_migration_2: undefined,
   onerep_profile_id: null,
+  monthly_monitor_report_at: null,
+  monthly_monitor_report: false,
+  sign_in_count: null,
+  first_broker_removal_email_sent: false,
 };
 
 const mockedUser: Session["user"] = {
@@ -189,6 +199,7 @@ it("passes the axe accessibility audit", async () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -220,6 +231,7 @@ it("preselects 'Send all breach alerts to the primary email address' if that's t
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -263,6 +275,7 @@ it("preselects 'Send breach alerts to the affected email address' if that's the 
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -306,6 +319,7 @@ it("disables breach alert notification options if a user opts out of breach aler
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -359,6 +373,7 @@ it("preselects primary email alert option", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -398,6 +413,7 @@ it("unselects the breach alerts checkbox and sends a null value to the API", asy
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -453,6 +469,7 @@ it("preselects the affected email comms option after a user decides to enable br
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -499,6 +516,7 @@ it("sends a call to the API to change the email alert preferences when changing 
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["UpdatedEmailPreferencesOption"]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -558,6 +576,7 @@ it("checks that monthly monitor report is enabled", () => {
           "MonthlyActivityEmail",
         ]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -604,6 +623,7 @@ it("sends an API call to disable monthly monitor reports", async () => {
           "MonthlyActivityEmail",
         ]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -649,6 +669,7 @@ it("refreshes the session token after changing email alert preferences, to ensur
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -684,6 +705,7 @@ it("marks unverified email addresses as such", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -720,6 +742,7 @@ it("calls the API to resend a verification email if requested to", async () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -766,6 +789,7 @@ it("calls the 'remove' action when clicking the rubbish bin icon", async () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -802,6 +826,7 @@ it("hides the Plus cancellation link if the user doesn't have Plus", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -837,6 +862,7 @@ it("shows the Plus cancellation link if the user has Plus", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -850,6 +876,11 @@ it("shows the Plus cancellation link if the user has Plus", () => {
 
 it("takes you through the cancellation dialog flow all the way to subplat", async () => {
   const user = userEvent.setup();
+
+  (onCheckUserHasCurrentCouponSet as jest.Mock).mockResolvedValueOnce({
+    success: false,
+  });
+  (onApplyCouponCode as jest.Mock).mockResolvedValueOnce({ success: true });
 
   render(
     <TestComponentWrapper>
@@ -874,6 +905,7 @@ it("takes you through the cancellation dialog flow all the way to subplat", asyn
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["ConfirmCancellation", "CancellationFlow"]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -924,6 +956,10 @@ it("takes you through the cancellation dialog flow all the way to subplat", asyn
 it("closes the cancellation survey if the user selects nevermind, take me back", async () => {
   const user = userEvent.setup();
 
+  (onCheckUserHasCurrentCouponSet as jest.Mock).mockResolvedValueOnce({
+    success: false,
+  });
+
   render(
     <TestComponentWrapper>
       <SettingsView
@@ -947,6 +983,7 @@ it("closes the cancellation survey if the user selects nevermind, take me back",
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["ConfirmCancellation", "CancellationFlow"]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -976,6 +1013,9 @@ it("closes the cancellation survey if the user selects nevermind, take me back",
 
 it("closes the cancellation dialog", async () => {
   const user = userEvent.setup();
+  (onCheckUserHasCurrentCouponSet as jest.Mock).mockResolvedValueOnce({
+    success: false,
+  });
 
   render(
     <TestComponentWrapper>
@@ -1000,6 +1040,7 @@ it("closes the cancellation dialog", async () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={["CancellationFlow"]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -1049,6 +1090,7 @@ it("shows the account deletion button if the user does not have Plus", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -1089,6 +1131,7 @@ it("warns about the consequences before deleting a free user's account", async (
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -1131,6 +1174,7 @@ it("shows a loading state while account deletion is in progress", async () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -1174,6 +1218,7 @@ it("shows the account deletion button if the user has Plus", () => {
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -1214,6 +1259,7 @@ it("warns about the consequences before deleting a Plus user's account", async (
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -1265,6 +1311,7 @@ it.skip("calls the 'add' action when adding another email address", async () => 
         subscriptionBillingAmount={mockedSubscriptionBillingAmount}
         enabledFeatureFlags={[]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -1299,6 +1346,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1342,6 +1390,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1385,6 +1434,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1429,6 +1479,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1472,6 +1523,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1520,6 +1572,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1564,6 +1617,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1612,6 +1666,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1655,6 +1710,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1703,6 +1759,7 @@ describe("to learn about usage", () => {
           subscriptionBillingAmount={mockedSubscriptionBillingAmount}
           enabledFeatureFlags={[]}
           experimentData={defaultExperimentData}
+          isYearlySubscriber={false}
         />
       </TestComponentWrapper>,
     );
@@ -1731,6 +1788,11 @@ describe("to learn about usage", () => {
 it("selects the coupon code discount cta and shows the all-set dialog step", async () => {
   const user = userEvent.setup();
 
+  (onCheckUserHasCurrentCouponSet as jest.Mock).mockResolvedValueOnce({
+    success: false,
+  });
+  (onApplyCouponCode as jest.Mock).mockResolvedValueOnce({ success: true });
+
   render(
     <TestComponentWrapper>
       <SettingsView
@@ -1758,6 +1820,7 @@ it("selects the coupon code discount cta and shows the all-set dialog step", asy
           "DiscountCouponNextThreeMonths",
         ]}
         experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
       />
     </TestComponentWrapper>,
   );
@@ -1806,4 +1869,119 @@ it("selects the coupon code discount cta and shows the all-set dialog step", asy
       popup_id: "exited_youre_all_set",
     }),
   );
+});
+
+it("shows error message if the applying the coupon code function was unsuccessful", async () => {
+  const user = userEvent.setup();
+
+  (onCheckUserHasCurrentCouponSet as jest.Mock).mockResolvedValueOnce({
+    success: false,
+  });
+  (onApplyCouponCode as jest.Mock).mockResolvedValueOnce({ success: false });
+
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getL10n()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: ["monitor"],
+          } as Session["user"]["fxa"],
+        }}
+        subscriber={mockedSubscriber}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={[
+          "CancellationFlow",
+          "ConfirmCancellation",
+          "DiscountCouponNextThreeMonths",
+        ]}
+        experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const cancellationButton = screen.getByRole("button", {
+    name: "Cancel your subscription",
+  });
+  await user.click(cancellationButton);
+
+  const discountCta = screen.getByRole("button", {
+    name: "Stay and get ⁨30%⁩ off ⁨3⁩ months",
+  });
+
+  await user.click(discountCta);
+
+  const errorMessage = await screen.findByText(
+    "There was a problem applying your discount",
+    { exact: false },
+  );
+
+  expect(errorMessage).toBeInTheDocument();
+
+  const tryAgainCta = screen.getByRole("button", {
+    name: "Please try again.",
+  });
+
+  await user.click(tryAgainCta);
+
+  expect(onApplyCouponCode).toHaveBeenCalled();
+});
+
+it("does not show the coupon code if a user already has a coupon set", async () => {
+  const user = userEvent.setup();
+
+  (onCheckUserHasCurrentCouponSet as jest.Mock).mockResolvedValueOnce({
+    success: true,
+  });
+
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getL10n()}
+        user={{
+          ...mockedUser,
+          fxa: {
+            ...mockedUser.fxa,
+            subscriptions: ["monitor"],
+          } as Session["user"]["fxa"],
+        }}
+        subscriber={mockedSubscriber}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+        }}
+        emailAddresses={[]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={[
+          "CancellationFlow",
+          "ConfirmCancellation",
+          "DiscountCouponNextThreeMonths",
+        ]}
+        experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
+      />
+    </TestComponentWrapper>,
+  );
+  const cancellationButton = screen.getByRole("button", {
+    name: "Cancel your subscription",
+  });
+  await user.click(cancellationButton);
+  const takeMeBackButton = screen.getByRole("button", {
+    name: "Never mind, take me back",
+  });
+  expect(takeMeBackButton).toBeInTheDocument();
 });

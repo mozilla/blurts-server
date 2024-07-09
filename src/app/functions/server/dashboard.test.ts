@@ -13,7 +13,6 @@ import {
 } from "./dashboard";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { RemovalStatus, RemovalStatusMap } from "../universal/scanResult";
-import isNotNull from "../universal/isNotNull";
 
 const unresolvedBreaches: SubscriberBreach[] = [
   {
@@ -496,6 +495,7 @@ describe("getExposureReduction", () => {
       fixedSanitizedDataPoints: [],
       dataBreachUnresolvedNum: 0,
       dataBreachResolvedNum: 0,
+      dataBrokerManuallyResolvedNum: 0,
     };
 
     const exposureReduction = getDataPointReduction(testSummary);
@@ -541,6 +541,7 @@ describe("getExposureReduction", () => {
       fixedSanitizedDataPoints: [],
       dataBreachUnresolvedNum: 0,
       dataBreachResolvedNum: 0,
+      dataBrokerManuallyResolvedNum: 0,
     };
 
     const exposureReduction = getDataPointReduction(testSummary);
@@ -1129,12 +1130,12 @@ describe("getDashboardSummary", () => {
                 return getBreach(
                   resolution,
                   dataClassKeyMap[
-                    dataType
+                    dataType as keyof DataPoints
                   ] as SubscriberBreach["dataClasses"][number],
                   count,
                 );
               })
-              .filter(isNotNull)
+              .filter((breach) => breach !== null)
           );
         }
 
@@ -1159,7 +1160,7 @@ describe("getDashboardSummary", () => {
 
               return getScanResult(resolution, dataType, count);
             })
-            .filter(isNotNull);
+            .filter((scanResult) => scanResult !== null);
         }
 
         const scanResults = [

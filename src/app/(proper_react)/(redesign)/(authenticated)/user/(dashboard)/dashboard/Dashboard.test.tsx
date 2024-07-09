@@ -1205,10 +1205,9 @@ it("shows the correct dashboard banner CTA and sends telemetry for non-US users,
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "See what’s fixed",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "ctaButton",
@@ -1827,7 +1826,7 @@ it("shows the correct dashboard banner CTA and sends telemetry for US users, wit
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "Get continuous protection",
   });
   expect(dashboardTopBannerCta).toBeInTheDocument();
@@ -1923,10 +1922,9 @@ it("shows the correct dashboard banner CTA and sends telemetry for US users, wit
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "Get continuous protection",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "upgradeIntent",
@@ -2067,10 +2065,9 @@ it("shows the correct dashboard banner CTA and sends telemetry for US user, with
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "See what’s fixed",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "ctaButton",
@@ -2291,10 +2288,9 @@ it("shows the correct dashboard banner CTA for US user, with Premium, resolved s
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "See what’s fixed",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "ctaButton",
@@ -2387,10 +2383,9 @@ it("shows the correct dashboard banner CTA and sends telemetry for US user, with
   const dashboardTopBanner = screen.getByRole("region", {
     name: "Dashboard summary",
   });
-  const dashboardTopBannerCta = queryByRole(dashboardTopBanner, "button", {
+  const dashboardTopBannerCta = getByRole(dashboardTopBanner, "button", {
     name: "See what’s fixed",
   });
-  expect(dashboardTopBannerCta).toBeInTheDocument();
   await user.click(dashboardTopBannerCta);
   expect(mockedRecord).toHaveBeenCalledWith(
     "ctaButton",
@@ -3246,10 +3241,10 @@ it("send telemetry when users click on dashboard nav menu items", async () => {
   });
   await user.click(dashboardMenuItem[0]);
   expect(mockedRecord).toHaveBeenCalledWith(
-    "ctaButton",
+    "link",
     "click",
     expect.objectContaining({
-      button_id: "navigation_dashboard",
+      link_id: "navigation_dashboard",
     }),
   );
 });
@@ -3296,10 +3291,10 @@ it("send telemetry when users click on faq nav menu items", async () => {
   const faqMenuItem = screen.queryAllByRole("link", { name: "FAQs" });
   await user.click(faqMenuItem[0]);
   expect(mockedRecord).toHaveBeenCalledWith(
-    "ctaButton",
+    "link",
     "click",
     expect.objectContaining({
-      button_id: "navigation_faq",
+      link_id: "navigation_faq",
     }),
   );
 });
@@ -3725,5 +3720,193 @@ describe("CSAT survey banner", () => {
     const cookies = new Cookies(null, { path: "/" });
     expect(cookies.get("csat_survey_3-months_dismissed")).toBeDefined();
     expect(cookies.get("last_scan_date_plus-user_dismissed")).toBeDefined();
+  });
+});
+
+describe("Data privacy petition banner", () => {
+  it("displays the petition banner to free US users on the “action needed” tab", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumEmptyScanResolvedBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const petitionCta = screen.getByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).toBeInTheDocument();
+  });
+
+  it("does not display the petition banner to free US users on the “fixed” tab", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsNoPremiumEmptyScanResolvedBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const petitionCta = screen.queryByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).not.toBeInTheDocument();
+  });
+
+  it("displays the petition banner to Plus users on the “fixed” tab", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const petitionCta = screen.getByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).toBeInTheDocument();
+  });
+
+  it("does not display the petition banner to Plus users on the “action needed” tab", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const petitionCta = screen.queryByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).not.toBeInTheDocument();
+  });
+
+  it("does not display the petition banner to users who are not based in the US", () => {
+    const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const petitionCta = screen.queryByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).not.toBeInTheDocument();
+  });
+
+  it("does not display the petition banner if the experiment is not enabled", () => {
+    const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
+    render(<ComposedDashboard />);
+
+    const petitionCta = screen.queryByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).not.toBeInTheDocument();
+  });
+
+  it("confirms that the petition banner has been dismissed by the “close” button", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const dismissCta = screen.getByRole("button", {
+      name: "No, thank you",
+    });
+    expect(dismissCta).toBeInTheDocument();
+    await user.click(dismissCta);
+
+    expect(
+      screen.queryByRole("button", {
+        name: "No, thank you",
+      }),
+    ).not.toBeInTheDocument();
+  });
+
+  it("confirms that the petition banner has been dismissed by the “dismiss CTA” button", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    expect(
+      screen.getByRole("link", {
+        name: "Sign petition",
+      }),
+    ).toBeInTheDocument();
+
+    const dismissButton = screen.getByRole("button", {
+      name: "Dismiss",
+    });
+    await user.click(dismissButton);
+
+    expect(
+      screen.queryByRole("link", {
+        name: "Sign petition",
+      }),
+    ).not.toBeInTheDocument();
   });
 });
