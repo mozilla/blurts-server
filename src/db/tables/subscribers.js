@@ -189,7 +189,7 @@ async function getFxATokens (subscriberId) {
   const res = await knex('subscribers')
     .first('fxa_access_token', 'fxa_refresh_token', 'fxa_session_expiry')
     .where('id', subscriberId)
-  return res?.[0] ?? null
+  return res ?? null
 }
 /* c8 ignore stop */
 
