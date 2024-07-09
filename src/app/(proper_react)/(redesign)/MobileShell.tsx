@@ -70,9 +70,7 @@ export const MobileShell = (props: Props) => {
           <button
             // TODO: Add unit test when changing this code:
             /* c8 ignore next */
-            onClick={() => {
-              setIsExpanded(!isExpanded);
-            }}
+            onClick={() => setIsExpanded(!isExpanded)}
             className={styles.menuToggleButton}
             title={l10n.getString(
               // TODO: Add unit test when changing this code:
