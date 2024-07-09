@@ -4,16 +4,9 @@
 
 breach-all-meta-title = { -brand-fx-monitor } - Alle datalekkasjar
 breach-all-meta-social-title = Alle datalekkasjar oppdaga av { -brand-fx-monitor }
-
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Vart du påverka av datalekkasjen hos { $company } ?
-
-## Breaches header
-
-## Breaches resolved filter
-
-## Breaches table
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -26,6 +19,9 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of email
 
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-email-header-2 = Vern e-posten din med ei e-postmaskeringsteneste som { $firefoxRelayLink }.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
