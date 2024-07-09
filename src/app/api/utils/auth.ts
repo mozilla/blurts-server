@@ -230,11 +230,11 @@ export const authOptions: AuthOptions = {
         // refresh token
         const dbFxATokens = await getFxATokens(token.subscriber.id);
         if (
-          !dbFxATokens.fxa_session_expiry ||
+          !dbFxATokens?.fxa_session_expiry ||
           dbFxATokens.fxa_session_expiry.getTime() < Date.now()
         ) {
           // If the access token has expired, try to refresh it
-          if (!dbFxATokens.fxa_refresh_token) {
+          if (!dbFxATokens?.fxa_refresh_token) {
             logger.error("no_fxa_refresh_token", { dbFxATokens });
             session.error = "RefreshAccessTokenError";
             return session;
