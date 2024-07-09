@@ -15,6 +15,9 @@ import { getEnabledFeatureFlags } from "../../../../db/tables/featureFlags";
 import { getL10n } from "../../../functions/l10n/serverComponents";
 import { View } from "./LandingView";
 import { CONST_DAY_MILLISECONDS } from "../../../../constants";
+import { getExperimentationId } from "../../../functions/server/getExperimentationId";
+import { getExperiments } from "../../../functions/server/getExperiments";
+import { getLocale } from "../../../functions/universal/getLocale";
 
 export default async function Page() {
   const session = await getServerSession();
@@ -24,6 +27,13 @@ export default async function Page() {
   const enabledFlags = await getEnabledFeatureFlags({ ignoreAllowlist: true });
   const countryCode = getCountryCode(headers());
   const eligibleForPremium = isEligibleForPremium(countryCode);
+
+  const experimentationId = getExperimentationId(session?.user ?? null);
+  const experimentData = await getExperiments({
+    experimentationId,
+    countryCode,
+    locale: getLocale(getL10n()),
+  });
 
   // request the profile stats for the last 30 days
   const profileStats = await getProfilesStats(
@@ -40,6 +50,7 @@ export default async function Page() {
       countryCode={countryCode}
       scanLimitReached={scanLimitReached}
       enabledFlags={enabledFlags}
+      experimentData={experimentData}
     />
   );
 }

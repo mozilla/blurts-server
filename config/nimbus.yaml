@@ -67,18 +67,18 @@ features:
       variant:
         description: The CTA variant to show
         type: FreeScanCtaType
-        default: ctaWithEmailInput
+        default: ctaWithEmail
     defaults:
       - channel: local
         value: { "variant": ctaOnly }
       - channel: staging
-        value: { "variant": ctaWithEmailInput }
+        value: { "variant": ctaWithEmail }
       - channel: production
-        value: { "variant": ctaWithEmailInput }
+        value: { "variant": ctaWithEmail }
 enums:
   FreeScanCtaType:
     description: An enum of free scan CTA types
     variants:
-      ctaWithEmailInput: Show a CTA button with an optional email input
+      ctaWithEmail: Show a CTA button with an optional email input
       ctaOnly: Only show a CTA button with the default label
       ctaOnlyAlternativeLabel: Only show a CTA button with an alternative label

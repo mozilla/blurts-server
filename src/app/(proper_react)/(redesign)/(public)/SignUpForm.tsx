@@ -27,21 +27,21 @@ export type Props = {
   placeholder?: string;
 };
 
-export const SignUpForm = (props: Props) => {
-  const emailInputId = useId();
-  const l10n = useL10n();
-  const [emailInput, setEmailInput] = useState("");
-  const record = useTelemetry();
-  const [cookies] = useCookies(["attributionsFirstTouch"]);
-  let attributionSearchParams = new URLSearchParams(
-    cookies.attributionsFirstTouch,
-  );
-  attributionSearchParams = modifyAttributionsForUrlSearchParams(
-    attributionSearchParams,
+export function getAttributionSearchParams({
+  cookies,
+  emailInput,
+}: {
+  cookies: {
+    attributionsFirstTouch?: string;
+  };
+  emailInput?: string;
+}) {
+  const attributionSearchParams = modifyAttributionsForUrlSearchParams(
+    new URLSearchParams(cookies.attributionsFirstTouch),
     {
       entrypoint: "monitor.mozilla.org-monitor-product-page",
-      email: emailInput,
       form_type: "button",
+      ...(emailInput && { email: emailInput }),
     },
     {
       utm_source: "product",
@@ -50,12 +50,22 @@ export const SignUpForm = (props: Props) => {
     },
   );
 
+  return attributionSearchParams.toString();
+}
+
+export const SignUpForm = (props: Props) => {
+  const emailInputId = useId();
+  const l10n = useL10n();
+  const [emailInput, setEmailInput] = useState("");
+  const record = useTelemetry();
+  const [cookies] = useCookies(["attributionsFirstTouch"]);
+
   const onSubmit: FormEventHandler = (event) => {
     event.preventDefault();
     void signIn(
       "fxa",
       { callbackUrl: props.signUpCallbackUrl },
-      attributionSearchParams.toString(),
+      getAttributionSearchParams({ cookies, emailInput }),
     );
   };
 
