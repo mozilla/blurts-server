@@ -17,7 +17,6 @@ import { useL10n } from "../../hooks/l10n";
 import { PageLink } from "./PageLink";
 import { useTelemetry } from "../../hooks/useTelemetry";
 import { usePathname } from "next/navigation";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 export type Props = {
   countryCode: string;
@@ -35,20 +34,15 @@ export type Props = {
 
 export const MobileShell = (props: Props) => {
   const l10n = useL10n();
-  const [hamburgerSelected, setHamburgerSelected] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const recordTelemetry = useTelemetry();
   const pathName = usePathname();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const isOnDashboard = pathName === "/user/dashboard";
-  const MOBILE_WIDTH = 768; // Same as $screen-md, which is the MobileShell's breakpoint
-  const isMobileWidth = useWindowDimensions().width < MOBILE_WIDTH;
 
   useEffect(() => {
-    if (isMobileWidth) {
-      setIsExpanded(false);
-    }
-  }, [isMobileWidth, pathName]);
+    setIsExpanded(false);
+  }, [pathName]);
 
   useEffect(() => {
     // As we transition focus away from the navigation bar in deeper sections
@@ -78,7 +72,6 @@ export const MobileShell = (props: Props) => {
             /* c8 ignore next */
             onClick={() => {
               setIsExpanded(!isExpanded);
-              setHamburgerSelected(!hamburgerSelected);
             }}
             className={styles.menuToggleButton}
             title={l10n.getString(
@@ -92,7 +85,7 @@ export const MobileShell = (props: Props) => {
             {
               // TODO: Add unit test when changing this code:
               /* c8 ignore next 5 */
-              isExpanded && hamburgerSelected ? (
+              isExpanded ? (
                 <CloseBigIcon
                   alt={l10n.getString("main-nav-button-collapse-label")}
                 />
