@@ -19,7 +19,7 @@ COPY --chown=app:app . /app
 
 RUN npm ci --audit=false && rm -rf ~app/.npm /tmp/*
 
-COPY .env-dist ./.env
+COPY .env ./.env
 
 ARG NEXT_PUBLIC_GA4_DEBUG_MODE
 ENV NEXT_PUBLIC_GA4_DEBUG_MODE=false
