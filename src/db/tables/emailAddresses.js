@@ -218,19 +218,19 @@ async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
  * @param {string} signupLanguage from Accept-Language
  * @param {string | null} fxaAccessToken from Firefox Account Oauth
  * @param {string | null} fxaRefreshToken from Firefox Account Oauth
- * @param {number} sessionExpiredAt from Firefox Account Oauth
+ * @param {number} sessionExpiresAt from Firefox Account Oauth
  * @param {string | null} fxaProfileData from Firefox Account
  * @returns {Promise<import('knex/types/tables').SubscriberRow>} subscriber knex object added to DB
  */
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
-async function addSubscriber (email, signupLanguage, fxaAccessToken = null, fxaRefreshToken = null, sessionExpiredAt = 0, fxaProfileData = null) {
+async function addSubscriber (email, signupLanguage, fxaAccessToken = null, fxaRefreshToken = null, sessionExpiresAt = 0, fxaProfileData = null) {
   const lowerCaseEmail = email.toLowerCase()
   const emailHash = await _addEmailHash(getSha1(lowerCaseEmail), lowerCaseEmail, signupLanguage, true)
   const verified = await _verifySubscriber(emailHash)
   const verifiedSubscriber = Array.isArray(verified) ? verified[0] : null
   if (fxaRefreshToken || fxaProfileData) {
-    return updateFxAData(verifiedSubscriber, fxaAccessToken, fxaRefreshToken, sessionExpiredAt, fxaProfileData)
+    return updateFxAData(verifiedSubscriber, fxaAccessToken, fxaRefreshToken, sessionExpiresAt, fxaProfileData)
   }
   return verifiedSubscriber
 }
