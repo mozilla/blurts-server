@@ -162,7 +162,7 @@ async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, sessi
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function updateFxATokens (subscriber, fxaAccessToken, fxaRefreshToken, sessionExpiresAt) {
-  const updated = await knex('subscribers')
+  return await knex('subscribers')
     .where('id', '=', subscriber.id)
     .update({
       fxa_access_token: fxaAccessToken,
@@ -173,8 +173,7 @@ async function updateFxATokens (subscriber, fxaAccessToken, fxaRefreshToken, ses
       updated_at: knex.fn.now(),
     })
     .returning('*')
-  const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
-  return updatedSubscriber
+    .first() || null;
 }
 /* c8 ignore stop */
 
