@@ -53,8 +53,8 @@ To create the database tables ...
    createdb test-blurts # for tests
    ```
 
-2. Update the `DATABASE_URL` value in your `.env` file with your local db
-   credentials:
+2. Update the `DATABASE_URL` value in your `.env.local` (see step 3 under
+   "Install") file with your local db credentials:
 
    ```
    DATABASE_URL="postgres://<username>:<password>@localhost:<port>/blurts"
@@ -81,10 +81,10 @@ To create the database tables ...
    npm install
    ```
 
-3. Copy the `.env-dist` file to `.env`:
+3. Copy the `.env.local.example` file to `.env.local`:
 
    ```sh
-   cp .env-dist .env
+   cp .env.local.example .env.local
    ```
 
 4. Install fluent linter (requires Python)
@@ -115,7 +115,7 @@ To create the database tables ...
    npm run create-location-data
    ```
 
-8. Ensure that you have the right `env` variables/keys set in your `.env` file. You can retrieve the variables from the Firefox Monitor 1Password Vault, or through [Magic-Wormhole](https://magic-wormhole.readthedocs.io/en/latest/), by asking one of the our engineers.
+8. Ensure that you have the right `env` variables/keys set in your `.env.local` file. You can retrieve the variables from the Firefox Monitor 1Password Vault, or through [Magic-Wormhole](https://magic-wormhole.readthedocs.io/en/latest/), by asking one of the our engineers.
 
 ### Run
 
@@ -172,9 +172,6 @@ Monitor generates multiple emails that get sent to subscribers. To preview or te
 
 ### Mozilla accounts ("FxA", formerly known as Firefox accounts)
 
-Subscribe with a Mozilla account is controlled via the `FXA_ENABLED`
-environment variable. (See `.env-dist`)
-
 The repo comes with a development FxA oauth app pre-configured in `.env`, which
 should work fine running the app on http://localhost:6060. You'll need to get
 the `OAUTH_CLIENT_SECRET` value from a team member or someone in #fxmonitor-engineering.
@@ -222,9 +219,3 @@ We use GCP Cloudrun for dev review – official stage and production apps are bu
 _**TODO:** add full deploy process similar to Relay_
 
 _**TODO:** consider whether we can re-enable Heroku Review Apps_
-
-## Preserve sessions in local development
-
-Sessions by default are stored in-memory, which means that when the server restarts (e.g. because you made a code change), you will have to log in again.
-
-To avoid this hassle, you can install and run [Redis](https://redis.io/), which by default runs on `redis://localhost:6379`. Use that value for `REDIS_URL` in your `.env` file to preserve your sessions across server restarts.

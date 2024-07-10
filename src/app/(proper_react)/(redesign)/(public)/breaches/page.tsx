@@ -31,7 +31,7 @@ export function generateMetadata() {
 export default async function Page() {
   const allBreaches = await getBreaches();
   const breachesNewestFirst = allBreaches.toSorted((a, b) => {
-    return new Date(b.BreachDate).getTime() - new Date(a.BreachDate).getTime();
+    return new Date(b.AddedDate).getTime() - new Date(a.AddedDate).getTime();
   });
 
   return <BreachIndexView allBreaches={breachesNewestFirst} />;
