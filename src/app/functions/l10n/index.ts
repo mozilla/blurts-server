@@ -59,7 +59,7 @@ export function createGetL10nBundles(
     const languages = acceptedLanguages(acceptLangHeader);
     const supportedLocales = process.env.SUPPORTED_LOCALES?.split(",");
     const filteredLocales =
-      // `SUPPORTED_LOCALES` is set in the `.env-dist` file, so it'll always
+      // `SUPPORTED_LOCALES` is set in the `.env` file, so it'll always
       // be available when running tests.
       /* c8 ignore next 2 */
       typeof supportedLocales === "undefined"
