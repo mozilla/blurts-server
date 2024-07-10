@@ -12,7 +12,10 @@ const meta: Meta<typeof View> = {
   title: "Pages/Public/Landing page",
   component: (props: ViewProps) => (
     <PublicShell l10n={getL10n("en")} countryCode={props.countryCode}>
-      <View {...props} experimentData={defaultExperimentData} />
+      <View
+        {...props}
+        experimentData={props.experimentData ?? defaultExperimentData}
+      />
     </PublicShell>
   ),
   args: {
