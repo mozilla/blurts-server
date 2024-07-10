@@ -212,15 +212,13 @@ const DashboardWrapper = (props: DashboardWrapperProps) => {
             elapsedTimeInDaysSinceInitialScan={
               props.elapsedTimeInDaysSinceInitialScan
             }
-            enabledFeatureFlags={
-              props.enabledFeatureFlags ?? ["HowItWorksPage"]
-            }
+            enabledFeatureFlags={[
+              ...(props.enabledFeatureFlags ?? []),
+              "HowItWorksPage",
+            ]}
             experimentData={
               props.experimentData ?? {
                 ...defaultExperimentData,
-                "automatic-removal-csat-survey": {
-                  enabled: true,
-                },
                 "last-scan-date": {
                   enabled: true,
                 },
