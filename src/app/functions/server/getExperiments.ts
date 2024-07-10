@@ -28,8 +28,7 @@ export async function getExperiments(params: {
   countryCode: string;
   previewMode: boolean;
 }): Promise<ExperimentData> {
-  // TODO Until Cirrus ADR lands https://github.com/mozilla/experimenter/pull/10902, set all experiments to `true`.
-  // After this ADR is implemented, this will just pass `preview_mode` to Cirrus instead.
+  // TODO Until Cirrus ADR is implemented https://github.com/mozilla/experimenter/pull/10902, set all Nimbus features to `true`.
   if (params.previewMode === true) {
     // Clone the `localExperimentData` object so we don't modify the exported data structure.
     const overriddenExperimentData = localExperimentData;
@@ -42,7 +41,6 @@ export async function getExperiments(params: {
   }
 
   if (["local"].includes(process.env.APP_ENV ?? "local")) {
-    console.debug(localExperimentData);
     return localExperimentData;
   }
 
