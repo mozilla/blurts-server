@@ -87,31 +87,34 @@ export const FreeScanCta = (
   return props.scanLimitReached ? (
     <WaitlistCta />
   ) : (
-    <TelemetryButton
-      variant="primary"
-      event={{
-        module: "ctaButton",
-        name: "click",
-        data: {
-          button_id: `${props.eventId.cta}-${props.experimentData["landing-page-free-scan-cta"].variant}`,
-        },
-      }}
-      onPress={() => {
-        void signIn(
-          "fxa",
-          { callbackUrl: props.signUpCallbackUrl },
-          getAttributionSearchParams({
-            cookies,
-            experimentData: props.experimentData,
-          }),
-        );
-      }}
-    >
-      {l10n.getString(
-        props.experimentData["landing-page-free-scan-cta"].variant === "ctaOnly"
-          ? "landing-all-hero-emailform-submit-label"
-          : "landing-all-hero-emailform-submit-sign-in-label",
-      )}
-    </TelemetryButton>
+    <div>
+      <TelemetryButton
+        variant="primary"
+        event={{
+          module: "ctaButton",
+          name: "click",
+          data: {
+            button_id: `${props.eventId.cta}-${props.experimentData["landing-page-free-scan-cta"].variant}`,
+          },
+        }}
+        onPress={() => {
+          void signIn(
+            "fxa",
+            { callbackUrl: props.signUpCallbackUrl },
+            getAttributionSearchParams({
+              cookies,
+              experimentData: props.experimentData,
+            }),
+          );
+        }}
+      >
+        {l10n.getString(
+          props.experimentData["landing-page-free-scan-cta"].variant ===
+            "ctaOnly"
+            ? "landing-all-hero-emailform-submit-label"
+            : "landing-all-hero-emailform-submit-sign-in-label",
+        )}
+      </TelemetryButton>
+    </div>
   );
 };
