@@ -28,9 +28,24 @@ export async function getExperiments(params: {
   countryCode: string;
   previewMode: boolean;
 }): Promise<ExperimentData> {
+  // TODO Until Cirrus ADR lands https://github.com/mozilla/experimenter/pull/10902, set all experiments to `true`.
+  // After this ADR is implemented, this will just pass `preview_mode` to Cirrus instead.
+  if (params.previewMode === true) {
+    // Clone the `localExperimentData` object so we don't modify the exported data structure.
+    const overriddenExperimentData = localExperimentData;
+    Object.assign(overriddenExperimentData, localExperimentData);
+    Object.keys(overriddenExperimentData).forEach((key) => {
+      const feature = overriddenExperimentData[key as keyof ExperimentData];
+      feature["enabled"] = true;
+    });
+    return overriddenExperimentData;
+  }
+
   if (["local"].includes(process.env.APP_ENV ?? "local")) {
+    console.debug(localExperimentData);
     return localExperimentData;
   }
+
   const serverUrl = process.env.NIMBUS_SIDECAR_URL;
   if (!serverUrl) {
     throw new Error("env var NIMBUS_SIDECAR_URL not set");
@@ -54,13 +69,6 @@ export async function getExperiments(params: {
 
     const experimentData = await response.json();
 
-    if (params.previewMode === true) {
-      // TODO Until Cirrus ADR lands https://github.com/mozilla/experimenter/pull/10902, set all experiments to `true`.
-      // After this ADR is implemented, this will just pass `preview_mode` to Cirrus instead.
-      for (const experiment of experimentData) {
-        experiment["enabled"] = true;
-      }
-    }
     return (experimentData as ExperimentData) ?? defaultExperimentData;
   } catch (ex) {
     logger.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
