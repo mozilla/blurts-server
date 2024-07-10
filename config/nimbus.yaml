@@ -64,17 +64,30 @@ features:
   landing-page-free-scan-cta:
     description: Landing page free scan CTA
     variables:
+      enabled:
+        description: If the feature is enabled
+        type: Boolean
+        default: false
       variant:
         description: The CTA variant to show
         type: FreeScanCtaType
         default: ctaWithEmail
     defaults:
       - channel: local
-        value: { "variant": ctaOnly }
+        value: {
+          "enabled": true,
+          "variant": ctaOnly,
+        }
       - channel: staging
-        value: { "variant": ctaWithEmail }
+        value: {
+          "enabled": false,
+          "variant": ctaWithEmail,
+        }
       - channel: production
-        value: { "variant": ctaWithEmail }
+        value: {
+          "enabled": false,
+          "variant": ctaWithEmail,
+        }
 enums:
   FreeScanCtaType:
     description: An enum of free scan CTA types

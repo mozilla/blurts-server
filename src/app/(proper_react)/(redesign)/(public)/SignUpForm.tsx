@@ -13,7 +13,8 @@ import { useTelemetry } from "../../../hooks/useTelemetry";
 import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
 import { WaitlistCta } from "./ScanLimit";
 import { useCookies } from "react-cookie";
-import { modifyAttributionsForUrlSearchParams } from "../../../functions/universal/attributions";
+import { getAttributionSearchParams } from "./FreeScanCta";
+import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 
 export type Props = {
   eligibleForPremium: boolean;
@@ -24,34 +25,9 @@ export type Props = {
     field?: string;
   };
   scanLimitReached: boolean;
+  experimentData: ExperimentData;
   placeholder?: string;
 };
-
-export function getAttributionSearchParams({
-  cookies,
-  emailInput,
-}: {
-  cookies: {
-    attributionsFirstTouch?: string;
-  };
-  emailInput?: string;
-}) {
-  const attributionSearchParams = modifyAttributionsForUrlSearchParams(
-    new URLSearchParams(cookies.attributionsFirstTouch),
-    {
-      entrypoint: "monitor.mozilla.org-monitor-product-page",
-      form_type: "button",
-      ...(emailInput && { email: emailInput }),
-    },
-    {
-      utm_source: "product",
-      utm_medium: "monitor",
-      utm_campaign: "get_free_scan",
-    },
-  );
-
-  return attributionSearchParams.toString();
-}
 
 export const SignUpForm = (props: Props) => {
   const emailInputId = useId();
@@ -65,7 +41,11 @@ export const SignUpForm = (props: Props) => {
     void signIn(
       "fxa",
       { callbackUrl: props.signUpCallbackUrl },
-      getAttributionSearchParams({ cookies, emailInput }),
+      getAttributionSearchParams({
+        cookies,
+        emailInput,
+        experimentData: props.experimentData,
+      }),
     );
   };
 
