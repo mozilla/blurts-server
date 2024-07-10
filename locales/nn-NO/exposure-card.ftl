@@ -22,6 +22,11 @@ exposure-card-credit-card = Betalingskort
 exposure-card-password = Passord
 exposure-card-ip-address = IP-adresse
 exposure-card-other = Anna
+# Variables:
+# $data_breach_company is the company associated with the data breach.
+# $data_breach_date is the date of the data breach.
+exposure-card-description-data-breach-action-needed = Informasjonen din er eksponert i ein datalekkasje på <data_breach_link>{ $data_breach_company } den { $data_breach_date }.</data_breach_link> Vi går gjenom stega for å fikse det.
+exposure-card-description-data-breach-fixed = Du har teke stega som trengst for å fikse <data_breach_link>denne datalekkasjen</data_breach_link>. Vi vil kontinuerleg overvake datalekkasjar og varsle deg om eventuelle nye eksponeringar.
 exposure-card-your-exposed-info = DIn eksporterte informasjon:
 exposure-card-exposure-type-data-broker = Info til sals
 exposure-card-exposure-type-data-breach = Datalekkasje
