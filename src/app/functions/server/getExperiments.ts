@@ -28,8 +28,7 @@ export async function getExperiments(params: {
   countryCode: string;
   previewMode: boolean;
 }): Promise<ExperimentData> {
-  // TODO https://mozilla-hub.atlassian.net/browse/MNTOR-3380
-  // Until Cirrus ADR is implemented https://github.com/mozilla/experimenter/pull/10902, set all Nimbus features to `true` for QA preview mode.
+  // TODO MNTOR-3380 - until Cirrus implements preview mode, set all Nimbus features to `true` for QA purposes.
   if (params.previewMode === true) {
     // Clone the `localExperimentData` object so we don't modify the exported data structure.
     const overriddenExperimentData = localExperimentData;
