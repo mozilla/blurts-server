@@ -8,8 +8,13 @@ if (typeof process.env.NEXT_RUNTIME === "undefined") {
   // Next.js already loads env vars by itself, and dotenv-flow will throw an
   // error if loaded in that context (about `fs` not existing), so only load
   // it if we're not running in a Next.js-context (e.g. cron jobs):
+  const path = await import("path");
+  const url = await import("url");
+  const __filename = url.fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+
   const dotenvFlow = await import("dotenv-flow");
-  dotenvFlow.config();
+  dotenvFlow.config({ path: path.resolve(__dirname, "../") });
 }
 
 const requiredEnvVars = [
