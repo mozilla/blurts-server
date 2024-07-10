@@ -16,7 +16,6 @@ jobs:
       - run: npm ci
       - run: npm run build-glean
       - run: npm run build-nimbus
-      - run: cp .env-dist .env
       # Mirror old linter from CircleCI, verifies that linter succeeds
       - run: npm run lint
       - run: node scripts/check-node-version-alignment.js

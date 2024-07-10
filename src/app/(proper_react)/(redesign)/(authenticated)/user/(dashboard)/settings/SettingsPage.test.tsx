@@ -161,6 +161,38 @@ const mockedSecondaryVerifiedEmail: EmailAddressRow = {
   updated_at: new Date("1337-04-02T04:02:42.000Z"),
   verification_token: "arbitrary_token",
 };
+
+const mockedTertiaryVerifiedEmail: EmailAddressRow = {
+  id: 1337,
+  email: "tertiary_verified@example.com",
+  sha1: "arbitrary string",
+  subscriber_id: subscriberId,
+  verified: true,
+  created_at: new Date("1337-04-02T04:02:42.000Z"),
+  updated_at: new Date("1337-04-02T04:02:42.000Z"),
+  verification_token: "arbitrary_token",
+};
+const mockedQuaternaryVerifiedEmail: EmailAddressRow = {
+  id: 1337,
+  email: "quaternary_verified@example.com",
+  sha1: "arbitrary string",
+  subscriber_id: subscriberId,
+  verified: true,
+  created_at: new Date("1337-04-02T04:02:42.000Z"),
+  updated_at: new Date("1337-04-02T04:02:42.000Z"),
+  verification_token: "arbitrary_token",
+};
+const mockedQuinaryVerifiedEmail: EmailAddressRow = {
+  id: 1337,
+  email: "quinary_verified@example.com",
+  sha1: "arbitrary string",
+  subscriber_id: subscriberId,
+  verified: true,
+  created_at: new Date("1337-04-02T04:02:42.000Z"),
+  updated_at: new Date("1337-04-02T04:02:42.000Z"),
+  verification_token: "arbitrary_token",
+};
+
 const mockedSecondaryUnverifiedEmail: EmailAddressRow = {
   id: 1337,
   email: "secondary_unverified@example.com",
@@ -204,6 +236,95 @@ it("passes the axe accessibility audit", async () => {
     </TestComponentWrapper>,
   );
   expect(await axe(container)).toHaveNoViolations();
+});
+
+it("Add email address button is not shown when email limit of five reached", () => {
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "warn").mockImplementation(() => {});
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getL10n()}
+        user={{
+          ...mockedUser,
+          subscriber: {
+            ...mockedUser.subscriber!,
+            all_emails_to_primary: true,
+          },
+        }}
+        subscriber={mockedSubscriber}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+          [mockedSecondaryVerifiedEmail.email]: 42,
+        }}
+        emailAddresses={[
+          mockedSecondaryVerifiedEmail,
+          mockedTertiaryVerifiedEmail,
+          mockedQuaternaryVerifiedEmail,
+          mockedQuinaryVerifiedEmail,
+        ]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={[]}
+        experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const addEmailButton = screen.queryByRole("button", {
+    name: "Add email address",
+  });
+  expect(addEmailButton).not.toBeInTheDocument();
+});
+
+it("Add email address button is shown when fewer than five emails", () => {
+  // jsdom will complain about not being able to navigate to a different page
+  // after clicking the link; suppress that error, as it's not relevant to the
+  // test:
+  jest.spyOn(console, "warn").mockImplementation(() => {});
+  render(
+    <TestComponentWrapper>
+      <SettingsView
+        l10n={getL10n()}
+        user={{
+          ...mockedUser,
+          subscriber: {
+            ...mockedUser.subscriber!,
+            all_emails_to_primary: true,
+          },
+        }}
+        subscriber={mockedSubscriber}
+        breachCountByEmailAddress={{
+          [mockedUser.email]: 42,
+          [mockedSecondaryVerifiedEmail.email]: 42,
+        }}
+        emailAddresses={[
+          mockedSecondaryVerifiedEmail,
+          mockedTertiaryVerifiedEmail,
+          mockedQuaternaryVerifiedEmail,
+        ]}
+        fxaSettingsUrl=""
+        fxaSubscriptionsUrl=""
+        yearlySubscriptionUrl=""
+        monthlySubscriptionUrl=""
+        subscriptionBillingAmount={mockedSubscriptionBillingAmount}
+        enabledFeatureFlags={[]}
+        experimentData={defaultExperimentData}
+        isYearlySubscriber={false}
+      />
+    </TestComponentWrapper>,
+  );
+
+  const addEmailButton = screen.getByRole("button", {
+    name: "Add email address",
+  });
+  expect(addEmailButton).toBeInTheDocument();
 });
 
 it("preselects 'Send all breach alerts to the primary email address' if that's the user's current preference", () => {
