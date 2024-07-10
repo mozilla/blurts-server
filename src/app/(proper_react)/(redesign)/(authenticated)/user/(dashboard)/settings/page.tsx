@@ -25,8 +25,15 @@ import { getCountryCode } from "../../../../../../functions/server/getCountryCod
 import { getSubscriberById } from "../../../../../../../db/tables/subscribers";
 import { checkUserHasYearlySubscription } from "../../../../../../functions/universal/user";
 
-export default async function SettingsPage() {
+type Props = {
+  searchParams: {
+    nimbus_web_preview?: string;
+  };
+};
+
+export default async function SettingsPage({ searchParams }: Props) {
   const session = await getServerSession();
+  console.debug(searchParams);
 
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
@@ -66,10 +73,12 @@ export default async function SettingsPage() {
   const headersList = headers();
   const countryCode = getCountryCode(headersList);
   const experimentationId = getExperimentationId(session.user);
+
   const experimentData = await getExperiments({
     experimentationId: experimentationId,
     countryCode: countryCode,
     locale: getLocale(getL10n()),
+    previewMode: searchParams.nimbus_web_preview === "true",
   });
 
   const lastOneRepScan = await getLatestOnerepScan(
