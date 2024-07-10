@@ -82,7 +82,8 @@ function getFallbackObject(nimbusConfig) {
         nimbusConfig.features[featureId].variables,
       );
       const variableFallbackDefs = variableNames.map((variableName) => {
-        const variableValue = nimbusConfig.features[featureId].variables[variableName].default;
+        const variableValue =
+          nimbusConfig.features[featureId].variables[variableName].default;
         return `    "${variableName}": ${typeof variableValue === "string" ? `"${variableValue}"` : variableValue},\n`;
       });
 
