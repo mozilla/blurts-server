@@ -25,7 +25,7 @@ export type Props = {
     field?: string;
   };
   scanLimitReached: boolean;
-  experimentData: ExperimentData;
+  experimentData?: ExperimentData;
   placeholder?: string;
 };
 

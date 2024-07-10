@@ -33,7 +33,7 @@ export function getAttributionSearchParams({
   cookies: {
     attributionsFirstTouch?: string;
   };
-  experimentData: ExperimentData;
+  experimentData?: ExperimentData;
   emailInput?: string;
 }) {
   const attributionSearchParams = modifyAttributionsForUrlSearchParams(
@@ -43,11 +43,12 @@ export function getAttributionSearchParams({
       form_type: "button",
       service: "monitor",
       ...(emailInput && { email: emailInput }),
-      ...(experimentData["landing-page-free-scan-cta"].enabled && {
-        entrypoint_experiment: "landing-page-free-scan-cta",
-        entrypoint_variation:
-          experimentData["landing-page-free-scan-cta"].variant,
-      }),
+      ...(experimentData &&
+        experimentData["landing-page-free-scan-cta"].enabled && {
+          entrypoint_experiment: "landing-page-free-scan-cta",
+          entrypoint_variation:
+            experimentData["landing-page-free-scan-cta"].variant,
+        }),
     },
     {
       utm_source: "product",
