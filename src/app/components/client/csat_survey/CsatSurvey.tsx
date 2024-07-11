@@ -29,7 +29,7 @@ export type CsatSurveyProps = {
 };
 
 export const CsatSurvey = (props: CsatSurveyProps) => {
-  const localDismissalPetitionBanner = usePetitionBannerDismissal();
+  const localDismissalPetitionBanner = usePetitionBannerDismissal(props.user);
   const surveyOptions = {
     activeTab: props.activeTab,
     experimentData: props.experimentData,

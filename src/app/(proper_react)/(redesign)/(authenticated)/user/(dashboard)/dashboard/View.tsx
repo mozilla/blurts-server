@@ -455,7 +455,7 @@ export const View = (props: Props) => {
         props.isEligibleForPremium &&
         ((activeTab === "fixed" && hasPremium(props.user)) ||
           (activeTab === "action-needed" && !hasPremium(props.user))) && (
-          <PetitionBanner />
+          <PetitionBanner user={props.user} />
         )}
       <CsatSurvey
         user={props.user}
