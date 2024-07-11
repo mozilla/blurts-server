@@ -19,8 +19,6 @@ const surveyResponses = [
 
 export type SurveyResponse = (typeof surveyResponses)[number];
 
-export type SurveyType = "csat_survey" | "last_scan_date" | "petition_banner";
-
 export type UserType = "free-user" | "plus-user";
 
 export type SurveyLinks = Record<SurveyResponse, string>;
@@ -33,7 +31,7 @@ type RequiredExperiment = {
 };
 
 export type SurveyData = {
-  id: SurveyType;
+  id: "csat_survey" | "last_scan_date" | "petition_banner";
   requiredExperiments: RequiredExperiment[];
   variations: Survey[];
 };
