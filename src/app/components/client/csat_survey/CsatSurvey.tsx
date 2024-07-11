@@ -54,7 +54,7 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
         hasFirstMonitoringScan: props.hasFirstMonitoringScan,
         lastScanDate: props.lastScanDate,
       }),
-    props.enabledFeatureFlags.includes("PetitionBanner") &&
+    props.enabledFeatureFlags.includes("PetitionBannerCsatSurvey") &&
       getPetitionBannerCsatSurvey(surveyOptions),
   ];
 

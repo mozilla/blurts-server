@@ -3707,7 +3707,7 @@ describe("CSAT survey banner", () => {
     render(
       <ComposedDashboard
         activeTab="fixed"
-        enabledFeatureFlags={["PetitionBanner"]}
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
           ...defaultExperimentData,
           "data-privacy-petition-banner": {
@@ -3738,7 +3738,7 @@ describe("CSAT survey banner", () => {
     render(
       <ComposedDashboard
         activeTab="fixed"
-        enabledFeatureFlags={["PetitionBanner"]}
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
           ...defaultExperimentData,
           "data-privacy-petition-banner": {
@@ -3763,7 +3763,7 @@ describe("CSAT survey banner", () => {
     const ComposedDashboardComponent = () => (
       <ComposedDashboard
         activeTab="fixed"
-        enabledFeatureFlags={["PetitionBanner"]}
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
           ...defaultExperimentData,
           "data-privacy-petition-banner": {
@@ -3799,7 +3799,7 @@ describe("Data privacy petition banner", () => {
     );
     render(
       <ComposedDashboard
-        enabledFeatureFlags={["PetitionBanner"]}
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
           ...defaultExperimentData,
           "data-privacy-petition-banner": {
@@ -3823,7 +3823,7 @@ describe("Data privacy petition banner", () => {
     render(
       <ComposedDashboard
         activeTab="fixed"
-        enabledFeatureFlags={["PetitionBanner"]}
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
           ...defaultExperimentData,
           "data-privacy-petition-banner": {
@@ -3847,7 +3847,7 @@ describe("Data privacy petition banner", () => {
     render(
       <ComposedDashboard
         activeTab="fixed"
-        enabledFeatureFlags={["PetitionBanner"]}
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
           ...defaultExperimentData,
           "data-privacy-petition-banner": {
@@ -3870,7 +3870,7 @@ describe("Data privacy petition banner", () => {
     );
     render(
       <ComposedDashboard
-        enabledFeatureFlags={["PetitionBanner"]}
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
           ...defaultExperimentData,
           "data-privacy-petition-banner": {
@@ -3890,7 +3890,7 @@ describe("Data privacy petition banner", () => {
     const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
     render(
       <ComposedDashboard
-        enabledFeatureFlags={["PetitionBanner"]}
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
           ...defaultExperimentData,
           "data-privacy-petition-banner": {
@@ -3925,7 +3925,7 @@ describe("Data privacy petition banner", () => {
     render(
       <ComposedDashboard
         activeTab="fixed"
-        enabledFeatureFlags={["PetitionBanner"]}
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
           ...defaultExperimentData,
           "data-privacy-petition-banner": {
@@ -3957,7 +3957,7 @@ describe("Data privacy petition banner", () => {
     render(
       <ComposedDashboard
         activeTab="fixed"
-        enabledFeatureFlags={["PetitionBanner"]}
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
           ...defaultExperimentData,
           "data-privacy-petition-banner": {
