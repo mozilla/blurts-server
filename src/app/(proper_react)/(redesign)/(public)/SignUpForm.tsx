@@ -10,6 +10,7 @@ import { useL10n } from "../../../hooks/l10n";
 import { Button } from "../../../components/client/Button";
 import styles from "./SignUpForm.module.scss";
 import { useTelemetry } from "../../../hooks/useTelemetry";
+import { useViewTelemetry } from "../../../hooks/useViewTelemetry";
 import { VisuallyHidden } from "../../../components/server/VisuallyHidden";
 import { WaitlistCta } from "./ScanLimit";
 import { useCookies } from "react-cookie";
@@ -22,6 +23,7 @@ export type Props = {
   eventId: {
     cta: string;
     field?: string;
+    view?: string;
   };
   scanLimitReached: boolean;
   placeholder?: string;
@@ -32,6 +34,15 @@ export const SignUpForm = (props: Props) => {
   const l10n = useL10n();
   const [emailInput, setEmailInput] = useState("");
   const record = useTelemetry();
+  const { view } = props.eventId;
+  const refViewTelemetry = useViewTelemetry(
+    {
+      element_id: view,
+    },
+    {
+      skip: typeof view === "undefined",
+    },
+  );
   const [cookies] = useCookies(["attributionsFirstTouch"]);
   let attributionSearchParams = new URLSearchParams(
     cookies.attributionsFirstTouch,
@@ -72,7 +83,7 @@ export const SignUpForm = (props: Props) => {
   return props.scanLimitReached ? (
     <WaitlistCta />
   ) : (
-    <form className={styles.form} onSubmit={onSubmit}>
+    <form ref={refViewTelemetry} className={styles.form} onSubmit={onSubmit}>
       <input
         name={emailInputId}
         data-testid="signup-form-input"
