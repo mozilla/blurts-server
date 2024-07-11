@@ -62,6 +62,9 @@ export function getRelevantSurveys({
   experimentData,
   user,
 }: SurveyData & CsatSurveyProps): Survey[] | null {
+  // There is currently no CSAT survey that is only shown for enabled
+  // experiments and would trigger the early return.
+  /* c8 ignore start */
   if (
     !requiredExperiments.every((experiment) => {
       return experiment.statusAllowList.includes(
@@ -71,6 +74,7 @@ export function getRelevantSurveys({
   ) {
     return null;
   }
+  /* c8 ignore stop */
 
   const filteredSurveys = variations.filter((surveyVariation) => {
     const isRelevantUser = surveyVariation.showForUser.includes(

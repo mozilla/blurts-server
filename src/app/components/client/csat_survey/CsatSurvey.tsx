@@ -38,7 +38,8 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
   // The order of the surveys here matter: If there are multiple matching
   // surveys for the user we dismiss all surveys, but the last one in the list.
   const surveys = [
-    props.elapsedTimeInDaysSinceInitialScan !== null &&
+    props.enabledFeatureFlags.includes("AutomaticRemovalCsatSurvey") &&
+      props.elapsedTimeInDaysSinceInitialScan !== null &&
       getAutomaticRemovalCsatSurvey({
         ...surveyOptions,
         elapsedTimeInDaysSinceInitialScan:
