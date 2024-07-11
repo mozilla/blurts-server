@@ -312,6 +312,20 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "updated_at"
   >;
 
+  interface StatsRow {
+    id: number;
+    name: string;
+    current: string;
+    max: string;
+    type: string;
+    created_at: Date;
+    modified_at: Date;
+  }
+  type StatsAutoInsertedColumns = Extract<
+    keyof StatsRow,
+    "id" | "created_at" | "modified_at"
+  >;
+
   interface Tables {
     attributions: Knex.CompositeTableType<
       AttributionRow,
@@ -430,11 +444,14 @@ declare module "knex/types/tables" {
       Partial<Omit<EmailNotificationRow, "id" | "created_at">> &
         Pick<EmailNotificationRow, "updated_at">
     >;
-  }
-  interface StatsRow {
-    name: string;
-    current: string;
-    max: string;
-    type: string;
+
+    stats: Knex.CompositeTableType<
+      StatsRow,
+      // On updates, auto-generated columns cannot be set:
+      Omit<StatsRow, StatsAutoInsertedColumns> & Partial<StatsRow>,
+      // On updates, don't allow updating the ID and created date; all other fields are optional, except modified_at:
+      Partial<Omit<StatsRow, "id" | "created_at">> &
+        Pick<StatsRow, "modified_at">
+    >;
   }
 }
