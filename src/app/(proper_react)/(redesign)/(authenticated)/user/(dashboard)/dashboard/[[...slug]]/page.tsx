@@ -49,9 +49,12 @@ type Props = {
   params: {
     slug: string[] | undefined;
   };
+  searchParams: {
+    nimbus_web_preview?: string;
+  };
 };
 
-export default async function DashboardPage({ params }: Props) {
+export default async function DashboardPage({ params, searchParams }: Props) {
   const session = await getServerSession();
   if (!checkSession(session) || !session?.user?.subscriber?.id) {
     return redirect("/");
@@ -121,6 +124,7 @@ export default async function DashboardPage({ params }: Props) {
     experimentationId: experimentationId,
     countryCode: countryCode,
     locale: getLocale(getL10n()),
+    previewMode: searchParams.nimbus_web_preview === "true",
   });
 
   const monthlySubscriptionUrl = getPremiumSubscriptionUrl({ type: "monthly" });
