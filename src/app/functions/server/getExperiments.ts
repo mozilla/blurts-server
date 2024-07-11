@@ -18,6 +18,7 @@ import { ExperimentationId } from "./getExperimentationId";
  * @param params
  * @param params.experimentationId
  * @param params.locale
+ * @param params.previewMode
  * @param params.countryCode
  * @returns
  */
@@ -25,6 +26,7 @@ export async function getExperiments(params: {
   experimentationId: ExperimentationId;
   locale: string;
   countryCode: string;
+  previewMode: boolean;
 }): Promise<ExperimentData> {
   if (["local"].includes(process.env.APP_ENV ?? "local")) {
     return localExperimentData;
@@ -50,8 +52,16 @@ export async function getExperiments(params: {
       }),
     });
 
-    const experimentData = (await response.json()) as ExperimentData;
-    return experimentData ?? defaultExperimentData;
+    const experimentData = await response.json();
+
+    if (params.previewMode === true) {
+      // TODO Until Cirrus ADR lands https://github.com/mozilla/experimenter/pull/10902, set all experiments to `true`.
+      // After this ADR is implemented, this will just pass `preview_mode` to Cirrus instead.
+      for (const experiment of experimentData) {
+        experiment["enabled"] = true;
+      }
+    }
+    return (experimentData as ExperimentData) ?? defaultExperimentData;
   } catch (ex) {
     logger.error(`Could not connect to Cirrus on ${serverUrl}`, ex);
     captureException(ex);
