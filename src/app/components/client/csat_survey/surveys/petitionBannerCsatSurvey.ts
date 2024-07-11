@@ -10,10 +10,10 @@ import {
 } from "./csatSurvey";
 
 const surveyData: SurveyData = {
-  id: "last_scan_date",
+  id: "petition_banner",
   requiredExperiments: [
     {
-      id: "last-scan-date",
+      id: "data-privacy-petition-banner",
       statusAllowList: ["enabled", "disabled"],
     },
   ],
@@ -31,25 +31,10 @@ const surveyData: SurveyData = {
   ],
 };
 
-const getLatestScanDateCsatSurvey = (
-  props: CsatSurveyProps & {
-    lastScanDate: Date;
-    hasFirstMonitoringScan: boolean;
-    signInCount: number | null;
-  },
+const getPetitionBannerCsatSurvey = (
+  props: CsatSurveyProps,
 ): RelevantSurveyWithMetric | null => {
-  const isAtLeastSecondLogin =
-    props.signInCount !== null && props.signInCount >= 2;
-  const filteredSurveyData = {
-    ...surveyData,
-    variations: surveyData.variations.filter((surveyVariation) => {
-      return (
-        (surveyVariation.id === "free-user" && isAtLeastSecondLogin) ||
-        (surveyVariation.id === "plus-user" && props.hasFirstMonitoringScan)
-      );
-    }),
-  };
-  const surveys = getRelevantSurveys({ ...filteredSurveyData, ...props });
+  const surveys = getRelevantSurveys({ ...surveyData, ...props });
 
   if (!surveys || surveys.length === 0) {
     return null;
@@ -60,7 +45,9 @@ const getLatestScanDateCsatSurvey = (
   const relevantSurvey = surveys[0];
 
   // Distinguish between users who are and are not enrolled in the experiment.
-  const experimentBranchId = props.experimentData["last-scan-date"].enabled
+  const experimentBranchId = props.experimentData[
+    "data-privacy-petition-banner"
+  ].enabled
     ? "treatment"
     : "control";
   return {
@@ -69,12 +56,8 @@ const getLatestScanDateCsatSurvey = (
     metricKeys: {
       survey_id: surveyData.id,
       experiment_branch: experimentBranchId,
-      last_scan_date: props.lastScanDate
-        .toISOString()
-        .slice(0, 10)
-        .replaceAll("-", ""),
     },
   };
 };
 
-export { getLatestScanDateCsatSurvey };
+export { getPetitionBannerCsatSurvey };
