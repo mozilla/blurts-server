@@ -87,8 +87,8 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
   const isPetitionCsatBanner =
     currentSurvey.localDismissalId.includes("petition_banner");
   // Only show the petition CSAT banner for users that are part of
-  // `data-privacy-petition-banner` the experiment if the petition has been
-  // already interacted with.
+  // the `data-privacy-petition-banner` experiment if the petition has
+  // already been interacted with.
   if (
     props.experimentData["data-privacy-petition-banner"].enabled &&
     isPetitionCsatBanner &&
