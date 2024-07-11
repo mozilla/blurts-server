@@ -31,12 +31,13 @@ export async function getExperiments(params: {
   // TODO MNTOR-3380 - until Cirrus implements preview mode, set all Nimbus features to `true` for QA purposes.
   if (params.previewMode === true) {
     // Clone the `localExperimentData` object so we don't modify the exported data structure.
-    const overriddenExperimentData = localExperimentData;
-    Object.assign(overriddenExperimentData, localExperimentData);
-    Object.keys(overriddenExperimentData).forEach((key) => {
-      const feature = overriddenExperimentData[key as keyof ExperimentData];
-      feature["enabled"] = true;
-    });
+    const overriddenExperimentData = Object.fromEntries(
+      Object.entries(localExperimentData).map(
+        ([experimentId, experimentConfig]) => {
+          return [experimentId, { ...experimentConfig, enabled: true }];
+        },
+      ),
+    ) as ExperimentData;
     return overriddenExperimentData;
   }
 
