@@ -3697,6 +3697,98 @@ describe("CSAT survey banner", () => {
     expect(cookies.get("csat_survey_3-months_dismissed")).toBeDefined();
     expect(cookies.get("last_scan_date_plus-user_dismissed")).toBeDefined();
   });
+
+  it("displays the petition CSAT survey for users in the control branch", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: false,
+          },
+        }}
+      />,
+    );
+
+    const petitionCta = screen.queryByRole("link", {
+      name: "Sign petition",
+    });
+    expect(petitionCta).not.toBeInTheDocument();
+
+    const answerButton = screen.getByRole("button", {
+      name: "Neutral",
+    });
+    await user.click(answerButton);
+    const cookies = new Cookies(null, { path: "/" });
+    expect(cookies.get("petition_banner_plus-user_dismissed")).toBeDefined();
+  });
+
+  it("does not display the petition CSAT survey for users in the treatment branch before they interacted with the “Data privacy petition banner”", () => {
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    render(
+      <ComposedDashboard
+        activeTab="fixed"
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />,
+    );
+
+    const answerButton = screen.queryByRole("button", {
+      name: "Neutral",
+    });
+    expect(answerButton).not.toBeInTheDocument();
+  });
+
+  it("displays the petition CSAT survey for users in the treatment branch after they interacted with the “Data privacy petition banner”", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(
+      DashboardUsPremiumResolvedScanNoBreaches,
+      Meta,
+    );
+    const ComposedDashboardComponent = () => (
+      <ComposedDashboard
+        activeTab="fixed"
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
+        experimentData={{
+          ...defaultExperimentData,
+          "data-privacy-petition-banner": {
+            enabled: true,
+          },
+        }}
+      />
+    );
+    render(<ComposedDashboardComponent />);
+
+    const dismissCta = screen.getByRole("button", {
+      name: "No, thank you",
+    });
+    await user.click(dismissCta);
+
+    // The petition CSAT survey is only shown on the next visit of the dashboard
+    // so that the user is not being flashed directly with a second banner after
+    // interacting with the petition banner.
+    render(<ComposedDashboardComponent />);
+
+    const answerButton = screen.getByRole("button", {
+      name: "Neutral",
+    });
+    expect(answerButton).toBeInTheDocument();
+  });
 });
 
 describe("Data privacy petition banner", () => {
@@ -3707,6 +3799,7 @@ describe("Data privacy petition banner", () => {
     );
     render(
       <ComposedDashboard
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
           ...defaultExperimentData,
           "data-privacy-petition-banner": {
@@ -3730,6 +3823,7 @@ describe("Data privacy petition banner", () => {
     render(
       <ComposedDashboard
         activeTab="fixed"
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
           ...defaultExperimentData,
           "data-privacy-petition-banner": {
@@ -3753,6 +3847,7 @@ describe("Data privacy petition banner", () => {
     render(
       <ComposedDashboard
         activeTab="fixed"
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
           ...defaultExperimentData,
           "data-privacy-petition-banner": {
@@ -3775,6 +3870,7 @@ describe("Data privacy petition banner", () => {
     );
     render(
       <ComposedDashboard
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
           ...defaultExperimentData,
           "data-privacy-petition-banner": {
@@ -3794,6 +3890,7 @@ describe("Data privacy petition banner", () => {
     const ComposedDashboard = composeStory(DashboardNonUsNoBreaches, Meta);
     render(
       <ComposedDashboard
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
           ...defaultExperimentData,
           "data-privacy-petition-banner": {
@@ -3828,6 +3925,7 @@ describe("Data privacy petition banner", () => {
     render(
       <ComposedDashboard
         activeTab="fixed"
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
           ...defaultExperimentData,
           "data-privacy-petition-banner": {
@@ -3859,6 +3957,7 @@ describe("Data privacy petition banner", () => {
     render(
       <ComposedDashboard
         activeTab="fixed"
+        enabledFeatureFlags={["PetitionBannerCsatSurvey"]}
         experimentData={{
           ...defaultExperimentData,
           "data-privacy-petition-banner": {

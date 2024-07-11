@@ -19,6 +19,7 @@ import {
 } from "../utils/subscriberBreaches";
 import { Session } from "next-auth";
 import { HibpLikeDbBreach } from "../utils/hibp";
+import { SerializedSubscriber } from "../next-auth";
 
 // Setting this to a constant value produces the same result when the same methods
 // with the same version of faker are called.
@@ -150,6 +151,9 @@ export function createUserWithPremiumSubscription(): Session["user"] {
       avatarDefault: true,
       subscriptions: ["monitor"],
     },
+    subscriber: {
+      id: 42,
+    } as SerializedSubscriber,
   };
 }
 

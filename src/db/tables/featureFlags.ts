@@ -49,7 +49,8 @@ export type FeatureFlagName =
   | "LatestScanDateCsatSurvey"
   | "AutomaticRemovalCsatSurvey"
   | "HowItWorksPage"
-  | "AdditionalRemovalStatuses";
+  | "AdditionalRemovalStatuses"
+  | "PetitionBannerCsatSurvey";
 
 /**
  * @param options
