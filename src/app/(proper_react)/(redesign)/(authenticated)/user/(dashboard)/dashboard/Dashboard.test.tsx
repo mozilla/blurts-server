@@ -3796,17 +3796,17 @@ describe("CSAT survey banner", () => {
         }}
       />
     );
-    const { rerender } = render(<ComposedDashboardComponent />);
+    render(<ComposedDashboardComponent />);
 
     const dismissCta = screen.getByRole("button", {
       name: "No, thank you",
     });
     await user.click(dismissCta);
 
-    // The petition CSAT survey is only shown on the next render of `CsatSurvey`
-    // so the user is not being flashed directly with a second banner after the
-    // petition banner is being hidden.
-    rerender(<ComposedDashboardComponent />);
+    // The petition CSAT survey is only shown on the next visit of the dashboard
+    // so that the user is not being flashed directly with a second banner after
+    // interacting with the petition banner.
+    render(<ComposedDashboardComponent />);
 
     const answerButton = screen.getByRole("button", {
       name: "Neutral",

@@ -14,6 +14,7 @@ import { COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS } from "../../../hooks/useLocalDism
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
 import { getPetitionBannerCsatSurvey } from "./surveys/petitionBannerCsatSurvey";
+import { usePetitionBannerDismissal } from "../PetitionBanner";
 
 export type CsatSurveyProps = {
   activeTab: TabType;
@@ -28,6 +29,7 @@ export type CsatSurveyProps = {
 };
 
 export const CsatSurvey = (props: CsatSurveyProps) => {
+  const localDismissalPetitionBanner = usePetitionBannerDismissal();
   const surveyOptions = {
     activeTab: props.activeTab,
     experimentData: props.experimentData,
@@ -84,17 +86,13 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
 
   const isPetitionCsatBanner =
     currentSurvey.localDismissalId.includes("petition_banner");
-  const hasDismissedDataPrivacyPetitionBanner =
-    typeof Object.keys(cookies.getAll()).find((cookieName) =>
-      cookieName.includes("data_privacy_petition_banner"),
-    ) !== "undefined";
   // Only show the petition CSAT banner for users that are part of
   // `data-privacy-petition-banner` the experiment if the petition has been
   // already interacted with.
   if (
     props.experimentData["data-privacy-petition-banner"].enabled &&
     isPetitionCsatBanner &&
-    !hasDismissedDataPrivacyPetitionBanner
+    !localDismissalPetitionBanner.isDismissed
   ) {
     return;
   }

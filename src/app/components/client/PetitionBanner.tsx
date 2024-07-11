@@ -13,11 +13,14 @@ import { CONST_URL_DATA_PRIVACY_PETITION_BANNER } from "../../../constants";
 import { TelemetryButton } from "./TelemetryButton";
 import { useTelemetry } from "../../hooks/useTelemetry";
 
+export const usePetitionBannerDismissal = () =>
+  useLocalDismissal("data_privacy_petition_banner");
+
 export const PetitionBanner = () => {
   const l10n = useL10n();
 
   const hasRenderedClientSide = useHasRenderedClientSide();
-  const localDismissal = useLocalDismissal("data_privacy_petition_banner");
+  const localDismissal = usePetitionBannerDismissal();
   const recordTelemetry = useTelemetry();
 
   if (!hasRenderedClientSide || localDismissal.isDismissed) {
