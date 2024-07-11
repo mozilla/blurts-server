@@ -36,7 +36,7 @@ const getPetitionBannerCsatSurvey = (
 ): RelevantSurveyWithMetric | null => {
   const surveys = getRelevantSurveys({ ...surveyData, ...props });
 
-  if (!surveys || surveys?.length === 0) {
+  if (!surveys || surveys.length === 0) {
     return null;
   }
 
