@@ -47,8 +47,10 @@ export type FeatureFlagName =
   | "FirstDataBrokerRemovalFixedEmail"
   | "DiscountCouponNextThreeMonths"
   | "LatestScanDateCsatSurvey"
+  | "AutomaticRemovalCsatSurvey"
   | "HowItWorksPage"
-  | "AdditionalRemovalStatuses";
+  | "AdditionalRemovalStatuses"
+  | "PetitionBannerCsatSurvey";
 
 /**
  * @param options

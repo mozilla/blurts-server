@@ -4,6 +4,7 @@
 
 "use client";
 
+import { Session } from "next-auth";
 import { CloseBtn } from "../server/Icons";
 import { useL10n } from "../../hooks/l10n";
 import { useLocalDismissal } from "../../hooks/useLocalDismissal";
@@ -13,11 +14,14 @@ import { CONST_URL_DATA_PRIVACY_PETITION_BANNER } from "../../../constants";
 import { TelemetryButton } from "./TelemetryButton";
 import { useTelemetry } from "../../hooks/useTelemetry";
 
-export const PetitionBanner = () => {
+export const usePetitionBannerDismissal = (user: Session["user"]) =>
+  useLocalDismissal(`data_privacy_petition_banner-${user.subscriber?.id}`);
+
+export const PetitionBanner = (props: { user: Session["user"] }) => {
   const l10n = useL10n();
 
   const hasRenderedClientSide = useHasRenderedClientSide();
-  const localDismissal = useLocalDismissal("data_privacy_petition_banner");
+  const localDismissal = usePetitionBannerDismissal(props.user);
   const recordTelemetry = useTelemetry();
 
   if (!hasRenderedClientSide || localDismissal.isDismissed) {
