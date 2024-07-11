@@ -19,7 +19,13 @@ import { getExperimentationId } from "../../../functions/server/getExperimentati
 import { getExperiments } from "../../../functions/server/getExperiments";
 import { getLocale } from "../../../functions/universal/getLocale";
 
-export default async function Page() {
+type Props = {
+  searchParams: {
+    nimbus_web_preview?: string;
+  };
+};
+
+export default async function Page({ searchParams }: Props) {
   const session = await getServerSession();
   if (typeof session?.user.subscriber?.fxa_uid === "string") {
     return redirect("/user/dashboard");
@@ -33,6 +39,7 @@ export default async function Page() {
     experimentationId,
     countryCode,
     locale: getLocale(getL10n()),
+    previewMode: searchParams.nimbus_web_preview === "true",
   });
 
   // request the profile stats for the last 30 days
