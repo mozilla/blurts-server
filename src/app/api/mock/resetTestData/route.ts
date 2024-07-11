@@ -2,24 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "../../../functions/server/getServerSession";
 import {
   errorIfProduction,
   internalServerError,
-  unauthError,
+  unauthErrorResponse,
 } from "../../utils/errorThrower";
-import {
-  getOnerepProfileId,
-  unresolveAllBreaches,
-} from "../../../../db/tables/subscribers";
-import {
-  deleteScanResultsForProfile,
-  deleteSomeScansForProfile,
-} from "../../../../db/tables/onerep_scans";
-import { logger } from "../../../functions/server/logging";
+import { resetData } from "./reset";
 
-function isTestEmail(email: string) {
+function isTestEmail(email: string | undefined) {
   if (!email) return false;
   const testEmailKeys = Object.keys(process.env).filter((key) =>
     key.startsWith("E2E_TEST_ACCOUNT_EMAIL"),
@@ -28,7 +20,7 @@ function isTestEmail(email: string) {
   return testEmails.includes(email);
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
@@ -36,17 +28,13 @@ export async function GET() {
   const email = session?.user.email;
   const subscriberId = session?.user.subscriber?.id;
   if (!session || !email || !isTestEmail(email) || !subscriberId)
-    return unauthError();
+    return unauthErrorResponse();
 
-  const onerepProfileId = await getOnerepProfileId(subscriberId);
-  if (!onerepProfileId)
-    return internalServerError("Unable to fetch OneRep profile ID");
-  await deleteScanResultsForProfile(onerepProfileId);
-  await deleteSomeScansForProfile(onerepProfileId, 1);
-  await unresolveAllBreaches(onerepProfileId);
-  logger.info(
-    "Mock OneRep endpoint: attempted to delete all but 1 scans, attempted to unresolve all breaches",
-  );
+  const resetHibp = Boolean(req.nextUrl.searchParams.get("resetHibp"));
+  const resetOneRep = Boolean(req.nextUrl.searchParams.get("resetOneRep"));
+
+  const [success, msg] = await resetData(subscriberId, resetHibp, resetOneRep);
+  if (!success) return internalServerError(msg);
 
   return NextResponse.json(
     { message: "Requested reached successfully" },

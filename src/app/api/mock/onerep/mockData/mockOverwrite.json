@@ -1,0 +1,9 @@
+{
+  "doOverwrite": false,
+  "brokersOverwrite": [      {
+    "relatives": ["Jon Jones"],
+    "link": "https://mockexample.com/link-to-databroker-e2e-test-1",
+    "data_broker": "mockexample-e2e-test-1.com"
+  }],
+  "brokersAdd": []
+}

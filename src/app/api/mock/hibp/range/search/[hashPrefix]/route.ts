@@ -6,6 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { logger } from "../../../../../../functions/server/logging";
 import { errorIfProduction } from "../../../../../utils/errorThrower";
 import { getBreachesForHash } from "../../../config/defaults";
+import mockOvewrite from "../../../mockData/mockOverwrite.json";
 
 type BreachedAccountResponse = {
   hashSuffix: string;
@@ -19,10 +20,20 @@ export function GET(
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
+  const envIsLocal = process.env.APP_ENV === "local";
+
   logger.info("HIBP Mock endpoint: /range/search/");
 
-  const hashPrefix = params.hashPrefix;
-  const breachesList = getBreachesForHash(hashPrefix);
+  let breachesList = [];
+
+  if (envIsLocal && mockOvewrite.doOvewrite) {
+    breachesList = mockOvewrite.breachesOverwrite;
+  } else {
+    const hashPrefix = params.hashPrefix;
+    breachesList = getBreachesForHash(hashPrefix);
+  }
+
+  if (envIsLocal) breachesList = breachesList.concat(mockOvewrite.breachesAdd);
 
   const data: BreachedAccountResponse = [
     {

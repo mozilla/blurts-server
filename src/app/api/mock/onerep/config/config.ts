@@ -4,7 +4,8 @@
 
 import { BinaryLike, createHash } from "crypto";
 import { StateAbbr } from "../../../../../utils/states";
-import MockUser from "../mockData/mockUser.json";
+import mockUser from "../mockData/mockUser.json";
+import mockOverwrite from "../mockData/mockOverwrite.json";
 import { computeSha1First6, hashToEmailKeyMap } from "../../../utils/mockUtils";
 
 export interface Broker {
@@ -78,41 +79,41 @@ export function MOCK_ONEREP_ID_START(profileId: number) {
 }
 
 export function MOCK_ONEREP_TIME() {
-  return MockUser.TIME;
+  return mockUser.TIME;
 }
 
 export function MOCK_ONEREP_FIRSTNAME() {
-  return MockUser.FIRSTNAME;
+  return mockUser.FIRSTNAME;
 }
 
 export function MOCK_ONEREP_LASTNAME() {
-  return MockUser.LASTNAME;
+  return mockUser.LASTNAME;
 }
 
 export function MOCK_ONEREP_BIRTHDATE() {
-  return MockUser.BIRTHDATE;
+  return mockUser.BIRTHDATE;
 }
 
 export function MOCK_ONEREP_EMAILS() {
-  return MockUser.EMAILS;
+  return mockUser.EMAILS;
 }
 
 export function MOCK_ONEREP_PHONES() {
-  return MockUser.PHONES;
+  return mockUser.PHONES;
 }
 
 export function MOCK_ONEREP_RELATIVES() {
-  return MockUser.RELATIVES;
+  return mockUser.RELATIVES;
 }
 
 export function MOCK_ONEREP_PROFILE_STATUS() {
-  return MockUser.STATUS as "active" | "inactive";
+  return mockUser.STATUS as "active" | "inactive";
 }
 
 export function MOCK_ONEREP_ADDRESSES() {
   type typeOfAddr = [{ city: string; state: StateAbbr }];
 
-  return MockUser.ADDRESSES.map((address) => ({
+  return mockUser.ADDRESSES.map((address) => ({
     city: address.city,
     state: address.state as StateAbbr,
   })) as typeOfAddr;
@@ -161,10 +162,19 @@ export function MOCK_ONEREP_BROKERS(
   const idStart = MOCK_ONEREP_ID_START(profileId);
   const idStartDataBroker = MOCK_ONEREP_DATABROKER_ID_START(profileId);
 
+  const envIsLocal = process.env.APP_ENV === "local";
   const emailHash = computeSha1First6(email);
-  const brokersListMap = MockUser.BROKERS_LIST as BrokerMap;
+  const brokersListMap = mockUser.BROKERS_LIST as BrokerMap;
   const datasetKey = hashToEmailKeyMap[emailHash] || "default";
-  const brokersList = brokersListMap[datasetKey];
+
+  let brokersList = [];
+  if (envIsLocal && mockOverwrite.doOverwrite) {
+    brokersList = mockOverwrite.brokersOverwrite;
+  } else {
+    brokersList = brokersListMap[datasetKey];
+  }
+
+  if (envIsLocal) brokersList = brokersList.concat(mockOverwrite.brokersAdd);
 
   const res = brokersList.map(
     (elem: BrokerOptionals, index: number) =>
