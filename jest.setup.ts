@@ -36,3 +36,14 @@ global.IntersectionObserver = jest.fn();
 defaultFallbackInView(false);
 
 global.TextEncoder = TextEncoder;
+
+// Jest doesn't like the top-level await in AppConstants, so we mock it.  In
+// time we can hopefully phase out the entire file and just use dotenv-flow
+// and process.env directly.
+jest.mock("./src/appConstants.js", () => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  require("dotenv-flow").config();
+  return {
+    ...process.env,
+  };
+});
