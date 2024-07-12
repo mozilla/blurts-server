@@ -849,9 +849,7 @@ describe("Free scan CTA experiment", () => {
       />,
     );
 
-    const inputField = screen.getAllByLabelText(
-      "Enter your email address to check for data breach exposures and sites selling your info.",
-    );
+    const inputField = screen.getAllByTestId("signup-form-input");
     expect(inputField[0]).toBeInTheDocument();
 
     const submitButton = screen.getAllByRole("button", {
@@ -874,9 +872,7 @@ describe("Free scan CTA experiment", () => {
       />,
     );
 
-    const inputField = screen.queryAllByLabelText(
-      "Enter your email address to check for data breach exposures and sites selling your info.",
-    );
+    const inputField = screen.getAllByTestId("signup-form-input");
     expect(inputField[0]).toBeInTheDocument();
 
     const submitButton = screen.getAllByRole("button", {
@@ -899,10 +895,8 @@ describe("Free scan CTA experiment", () => {
       />,
     );
 
-    const inputField = screen.queryAllByLabelText(
-      "Enter your email address to check for data breach exposures and sites selling your info.",
-    );
-    expect(inputField[0]).toBeUndefined();
+    const inputField = screen.queryAllByTestId("signup-form-input");
+    expect(inputField.length).toBe(0);
 
     const submitButton = screen.getAllByRole("button", {
       name: "Get free scan",
@@ -924,10 +918,8 @@ describe("Free scan CTA experiment", () => {
       />,
     );
 
-    const inputField = screen.queryAllByLabelText(
-      "Enter your email address to check for data breach exposures and sites selling your info.",
-    );
-    expect(inputField[0]).toBeUndefined();
+    const inputField = screen.queryAllByTestId("signup-form-input");
+    expect(inputField.length).toBe(0);
 
     const submitButton = screen.getAllByRole("button", {
       name: "Sign in to get free scan",
@@ -984,6 +976,48 @@ describe("Free scan CTA experiment", () => {
       "ctaButton",
       "click",
       expect.objectContaining({ button_id: "clicked_get_scan_header-ctaOnly" }),
+    );
+  });
+
+  it("passes the expected URL to the identity provider", async () => {
+    const user = userEvent.setup();
+    const ComposedDashboard = composeStory(LandingUs, Meta);
+    render(
+      <ComposedDashboard
+        experimentData={{
+          ...defaultExperimentData,
+          "landing-page-free-scan-cta": {
+            enabled: true,
+            variant: "ctaWithEmail",
+          },
+        }}
+      />,
+    );
+
+    const inputField = screen.getAllByTestId("signup-form-input");
+    await user.type(inputField[0], "mail@example.com");
+
+    const submitButton = screen.getAllByRole("button", {
+      name: "Get free scan",
+    });
+    await user.click(submitButton[0]);
+
+    expect(signIn).toHaveBeenCalledWith(
+      "fxa",
+      expect.any(Object),
+      expect.stringContaining(
+        [
+          "entrypoint=monitor.mozilla.org-monitor-product-page",
+          "form_type=email",
+          "service=edd29a80019d61a1",
+          "email=mail%40example.com",
+          "entrypoint_experiment=landing-page-free-scan-cta",
+          "entrypoint_variation=ctaWithEmail",
+          "utm_source=product",
+          "utm_medium=monitor",
+          "utm_campaign=get_free_scan",
+        ].join("&"),
+      ),
     );
   });
 });
