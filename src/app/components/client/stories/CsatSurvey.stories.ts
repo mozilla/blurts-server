@@ -20,13 +20,11 @@ export const CsatSurveyAutomaticRemoval: Story = {
   args: {
     activeTab: "fixed",
     user: createUserWithPremiumSubscription(),
-    enabledFeatureFlags: ["LatestScanDateCsatSurvey"],
-    experimentData: {
-      ...defaultExperimentData,
-      "automatic-removal-csat-survey": {
-        enabled: true,
-      },
-    },
+    enabledFeatureFlags: [
+      "LatestScanDateCsatSurvey",
+      "AutomaticRemovalCsatSurvey",
+    ],
+    experimentData: defaultExperimentData,
     hasAutoFixedDataBrokers: true,
     elapsedTimeInDaysSinceInitialScan: 0,
   },
