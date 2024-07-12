@@ -23,7 +23,8 @@
     "AshleyMadison",
     "Adobe"
   ],
-  "E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES": [],
+  "E2E_TEST_ACCOUNT_EMAIL_ZERO_BROKERS": ["Adobe", "LinkedIn"],
+  "E2E_TEST_ACCOUNT_EMAIL_ZERO_BREACHES_ZERO_BROKERS": [],
   "E2E_TEST_ACCOUNT_EMAIL_UNUSED": [
     "000webhost",
     "AndroidForums",

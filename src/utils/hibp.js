@@ -301,11 +301,10 @@ async function getBreachesForEmail(sha1, allBreaches, includeSensitive = false, 
   }
   if (isUsingMockHIBPEndpoint()) {
     let mockDataBreaches = response[0];
-    const res = allBreaches.filter(breach => mockDataBreaches.websites.includes(breach.Name)).sort((a, b) => {
+    return allBreaches.filter(breach => mockDataBreaches.websites.includes(breach.Name)).sort((a, b) => {
       // @ts-ignore TODO: Turn dates into a number
       return new Date(b.AddedDate) - new Date(a.AddedDate)
     })
-    return res;
   }
   // Parse response body, format:
   // [

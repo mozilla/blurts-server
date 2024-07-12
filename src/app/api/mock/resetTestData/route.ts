@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "../../../functions/server/getServerSession";
 import {
   errorIfProduction,
@@ -18,17 +18,9 @@ import {
   deleteSomeScansForProfile,
 } from "../../../../db/tables/onerep_scans";
 import { logger } from "../../../functions/server/logging";
+import { isTestEmail } from "../../utils/mockUtils";
 
-function isTestEmail(email: string) {
-  if (!email) return false;
-  const testEmailKeys = Object.keys(process.env).filter((key) =>
-    key.startsWith("E2E_TEST_ACCOUNT_EMAIL"),
-  );
-  const testEmails = testEmailKeys.map((key) => process.env[key]);
-  return testEmails.includes(email);
-}
-
-export async function GET() {
+export async function GET(req: NextRequest) {
   const prodError = errorIfProduction();
   if (prodError) return prodError;
 
@@ -38,12 +30,17 @@ export async function GET() {
   if (!session || !email || !isTestEmail(email) || !subscriberId)
     return unauthError();
 
+  const hibp = req.nextUrl.searchParams.get("hibp") === "true";
+  const onerep = req.nextUrl.searchParams.get("onerep") === "true";
+
   const onerepProfileId = await getOnerepProfileId(subscriberId);
   if (!onerepProfileId)
     return internalServerError("Unable to fetch OneRep profile ID");
-  await deleteScanResultsForProfile(onerepProfileId);
-  await deleteSomeScansForProfile(onerepProfileId, 1);
-  await unresolveAllBreaches(onerepProfileId);
+  if (onerep) {
+    await deleteScanResultsForProfile(onerepProfileId);
+    await deleteSomeScansForProfile(onerepProfileId, 1);
+  }
+  if (hibp) await unresolveAllBreaches(onerepProfileId);
   logger.info(
     "Mock OneRep endpoint: attempted to delete all but 1 scans, attempted to unresolve all breaches",
   );

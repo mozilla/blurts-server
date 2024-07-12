@@ -16,7 +16,7 @@ import {
 } from "../../../db/tables/onerep_scans";
 import { RemovalStatus } from "../universal/scanResult.js";
 import { logger } from "./logging";
-import { isUsingMockONEREPEndpoint } from "../universal/mock.ts";
+import { isUsingMockONEREPndpoint } from "../universal/mock.ts";
 
 export const monthlyScansQuota = parseInt(
   (process.env.MONTHLY_SCANS_QUOTA as string) ?? "0",
@@ -334,7 +334,7 @@ export async function listScanResults(
   }> = {},
 ): Promise<ListScanResultsResponse> {
   let mockEmail = "";
-  if (isUsingMockONEREPEndpoint()) {
+  if (isUsingMockONEREPndpoint()) {
     mockEmail = (await getEmailForProfile(profileId)) || mockEmail;
   }
   const queryParams = new URLSearchParams({

@@ -223,9 +223,30 @@ export const forceLoginAs = async (
   await expect(page).toHaveURL(/.*\/user\/dashboard.*/);
 };
 
-export const clearTestData = async (page: Page) => {
-  const url = new URL(page.url());
-  await page.goto(url.host + "/api/mock/clearTestData");
-  await page.waitForURL(/.*\/api\/mock\/clearTestData.*/);
+export const resetTestData = async (
+  page: Page,
+  hibp: boolean,
+  onerep: boolean,
+) => {
+  const baseUrl = process.env.SERVER_URL!;
+  const param1 = `${hibp ? "hibp=true" : ""}`;
+  const param2 = `${onerep ? "onerep=true" : ""}`;
+  let delim = "";
+  if (param1 && param2) delim = "&";
+  const params = param1 + delim + param2;
+  await page.goto(baseUrl + "/e2e?" + params);
+  await page.waitForURL(/.*\/e2e*/);
+
+  const clearDataButton = page.locator("button", { hasText: "Clear Data" });
+  await expect(clearDataButton).toBeVisible();
+  await clearDataButton.click();
+
+  const selectorQuery = '//div[contains(text(), "Request was successful")]';
+
+  await page.waitForSelector(selectorQuery);
+
+  const successMessage = page.locator(selectorQuery);
+  await expect(successMessage).toBeVisible();
+
   await page.goBack();
 };
