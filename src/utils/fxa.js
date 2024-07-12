@@ -123,13 +123,12 @@ async function getSubscriptions(bearerToken) {
         Authorization: `Bearer ${bearerToken}`
       }
     })
+    const resp = getResp.json()
+    if (!getResp.ok) throw resp;
 
-    if (!getResp.ok) {
-      throw new InternalServerError(`bad response: ${getResp.status}`)
-    } else {
-      console.info(`get_fxa_subscriptions: success`)
-      return await getResp.json()
-    }
+    console.info(`get_fxa_subscriptions: success`)
+    return resp;
+  
   } catch (e) {
     if (e instanceof Error) {
       console.error('get_fxa_subscriptions', { stack: e.stack })
@@ -258,7 +257,7 @@ async function applyCoupon(bearerToken, couponCodeId) {
       })
       if (!response.ok) {
         const errMsg = await response.text()
-        console.info(`apply_coupon: failed - ${errMsg}`)
+        console.error(`apply_coupon: failed - ${errMsg}`)
         throw new Error(`apply_coupon: failed - ${errMsg}`)
       } else {
         console.info(`apply_coupon: success - ${JSON.stringify(await response.json())}`)

@@ -67,8 +67,7 @@ export async function checkCurrentCouponCode(
   const currentCouponCode = process.env.CURRENT_COUPON_CODE_ID;
   if (!currentCouponCode) {
     logger.error(
-      "fxa_check_coupon_failed",
-      "Coupon code ID is not set. Please set the env var: CURRENT_COUPON_CODE_ID",
+      "fxa_check_coupon_failed: Coupon code ID is not set. Please set the env var: CURRENT_COUPON_CODE_ID",
     );
     return {
       success: false,
@@ -80,10 +79,13 @@ export async function checkCurrentCouponCode(
       success: await checkCouponForSubscriber(subscriber.id, currentCouponCode),
     };
   } catch (ex) {
-    logger.error("fxa_check_coupon_failed", {
-      subscriber_id: subscriber.id,
-      exception: ex,
-    });
+    logger.error(
+      "fxa_check_coupon_failed",
+      JSON.stringify({
+        subscriber_id: subscriber.id,
+        exception: ex,
+      }),
+    );
     return {
       success: false,
     };
