@@ -261,7 +261,7 @@ test.describe.skip(
   },
 );
 
-test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Content`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Content @smoke`, () => {
   test.beforeEach(async ({ dashboardPage, page }) => {
     await dashboardPage.open();
 
@@ -341,7 +341,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Content`, () =
   });
 });
 
-test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard  - Payment`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Payment`, () => {
   test.beforeEach(async ({ dashboardPage, page }) => {
     await dashboardPage.open();
 
@@ -378,7 +378,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard  - Payment`, () 
   });
 });
 
-test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Breaches Scan, Continuous Protection, Data Profile Actions`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Breaches Scan, Continuous Protection, Data Profile Actions @smoke`, () => {
   test.use({ storageState: { cookies: [], origins: [] } });
 
   test.beforeEach(async ({ landingPage, page, authPage, welcomePage }) => {
@@ -456,7 +456,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Breaches Scan,
   });
 });
 
-test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card @smoke`, () => {
   test.beforeEach(async ({ dashboardPage, page }) => {
     await dashboardPage.open();
 
@@ -609,7 +609,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Overview Card`
   });
 });
 
-test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Footer`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Footer @smoke`, () => {
   test.beforeEach(async ({ dashboardPage, page }) => {
     await dashboardPage.open();
     try {
@@ -673,7 +673,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Footer`, () =>
   });
 });
 
-test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation @smoke`, () => {
   test.beforeEach(async ({ dashboardPage, page }) => {
     await dashboardPage.open();
 
@@ -724,7 +724,7 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation`, (
   });
 });
 
-test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`, () => {
+test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches @smoke`, () => {
   test.use({ storageState: { cookies: [], origins: [] } });
 
   test("Verify that the High risk data breaches step is displayed correctly", async ({

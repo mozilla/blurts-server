@@ -87,7 +87,7 @@ export async function GET(
     return NextResponse.json({ error: "Invalid profile ID" });
   }
 
-  const scandId = MOCK_ONEREP_SCAN_ID(profileId);
+  const scanId = MOCK_ONEREP_SCAN_ID(profileId);
   const links = MOCK_ONEREP_OBJECT_LINKS(profileId);
   const meta = MOCK_ONEREP_OBJECT_META(profileId);
 
@@ -102,17 +102,26 @@ export async function GET(
 
   const responseData = {
     data: latestScan
-      ? [latestScan]
+      ? [
+          {
+            id: latestScan.onerep_scan_id,
+            profileId: latestScan.onerep_profile_id,
+            status: latestScan.onerep_scan_status,
+            created_at: latestScan.created_at,
+            updated_at: latestScan.updated_at,
+            url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${latestScan.onerep_scan_id}`,
+          },
+        ]
       : data.map(
           (scan) =>
             ({
-              id: scandId,
+              id: scanId,
               profile_id: profileId,
               status: scan.status || "finished",
               reason: scan.reason || "manual",
               created_at: scan.created_at || MOCK_ONEREP_TIME(),
               updated_at: scan.updated_at || MOCK_ONEREP_TIME(),
-              url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${scandId}`,
+              url: `${process.env.ONEREP_API_BASE}/profiles/${profileId}/scans/${scanId}`,
             }) as MockScan,
         ),
     links: links,

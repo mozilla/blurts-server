@@ -159,7 +159,6 @@ export async function MOCK_ONEREP_BROKERS(
   if (!scanId) scanId = MOCK_ONEREP_SCAN_ID(profileId);
   const mockMeta = MOCK_ONEREP_OBJECT_META(page);
   const mockLinks = MOCK_ONEREP_OBJECT_LINKS(profileId, page, perPage);
-
   const idStart = MOCK_ONEREP_ID_START(profileId);
   const idStartDataBroker = MOCK_ONEREP_DATABROKER_ID_START(profileId);
 
@@ -195,8 +194,8 @@ export async function MOCK_ONEREP_BROKERS(
 
   const responseData = {
     data: res,
-    links: mockLinks,
     meta: mockMeta,
+    links: mockLinks,
   };
 
   return responseData;

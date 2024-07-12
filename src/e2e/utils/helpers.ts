@@ -170,7 +170,9 @@ export const clickOnATagCheckDomain = async (
   page: Page,
 ) => {
   if (typeof host === "string")
-    host = new RegExp(escapeRegExp(host.replace(/^(https?:\/\/)/, "")));
+    host = new RegExp(
+      escapeRegExp(host.replace(/^(https?:\/\/)/, "").replace(/:\d+$/, "")),
+    );
   if (typeof path === "string") path = new RegExp(".*" + path + ".*");
 
   const href = await aTag.getAttribute("href");
@@ -206,6 +208,9 @@ export const forceLoginAs = async (
     await route.abort();
   });
   await page.context().clearCookies();
+  await page
+    .context()
+    .addInitScript({ content: "window.localStorage.clear()" });
   await landingPage.open();
   await landingPage.goToSignIn();
   let visible = true;
