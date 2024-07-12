@@ -2,16 +2,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import "dotenv-flow/config";
 import Sentry from "@sentry/nextjs";
-import { addOnerepStats, knexStats } from "../db/tables/stats.js";
+import { addOnerepStats, knexStats } from "../../db/tables/stats.js";
 
 const SENTRY_SLUG = "cron-onerep-stats-alerts";
 
-const MAX_MANUAL_SCANS = parseInt(process.env.MAX_MANUAL_SCANS) || 0;
-const MAX_INITIAL_SCANS = parseInt(process.env.MAX_INITIAL_SCANS) || 0;
-const MAX_PROFILES_ACTIVATED =
-  parseInt(process.env.MAX_PROFILES_ACTIVATED) || 0;
-const MAX_PROFILES_CREATED = parseInt(process.env.MAX_PROFILES_CREATED) || 0;
+const parseEnvVarNr = (value: string | undefined) => parseInt(value ?? "0", 10);
+const MAX_MANUAL_SCANS = parseEnvVarNr(process.env.MAX_MANUAL_SCANS);
+const MAX_INITIAL_SCANS = parseEnvVarNr(process.env.MAX_INITIAL_SCANS);
+const MAX_PROFILES_ACTIVATED = parseEnvVarNr(
+  process.env.MAX_PROFILES_ACTIVATED,
+);
+const MAX_PROFILES_CREATED = parseEnvVarNr(process.env.MAX_PROFILES_CREATED);
 
 Sentry.init({
   environment: process.env.APP_ENV,
@@ -52,7 +55,7 @@ export async function checkStats() {
 }
 
 // TODO use the shared version when this is converted to Typescript.
-async function onerepFetch(path, options = {}) {
+async function onerepFetch(path: string, options: RequestInit = {}) {
   const onerepApiBase = process.env.ONEREP_API_BASE;
   if (!onerepApiBase) {
     throw new Error("ONEREP_API_BASE env var not set");

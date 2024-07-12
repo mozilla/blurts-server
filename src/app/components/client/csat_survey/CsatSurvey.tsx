@@ -13,6 +13,8 @@ import { getLatestScanDateCsatSurvey } from "./surveys/latestScanDateCsatSurvey"
 import { COOKIE_DISMISSAL_MAX_AGE_IN_SECONDS } from "../../../hooks/useLocalDismissal";
 import { ExperimentData } from "../../../../telemetry/generated/nimbus/experiments";
 import { FeatureFlagName } from "../../../../db/tables/featureFlags";
+import { getPetitionBannerCsatSurvey } from "./surveys/petitionBannerCsatSurvey";
+import { usePetitionBannerDismissal } from "../PetitionBanner";
 
 export type CsatSurveyProps = {
   activeTab: TabType;
@@ -27,6 +29,7 @@ export type CsatSurveyProps = {
 };
 
 export const CsatSurvey = (props: CsatSurveyProps) => {
+  const localDismissalPetitionBanner = usePetitionBannerDismissal(props.user);
   const surveyOptions = {
     activeTab: props.activeTab,
     experimentData: props.experimentData,
@@ -35,7 +38,8 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
   // The order of the surveys here matter: If there are multiple matching
   // surveys for the user we dismiss all surveys, but the last one in the list.
   const surveys = [
-    props.elapsedTimeInDaysSinceInitialScan !== null &&
+    props.enabledFeatureFlags.includes("AutomaticRemovalCsatSurvey") &&
+      props.elapsedTimeInDaysSinceInitialScan !== null &&
       getAutomaticRemovalCsatSurvey({
         ...surveyOptions,
         elapsedTimeInDaysSinceInitialScan:
@@ -50,6 +54,8 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
         hasFirstMonitoringScan: props.hasFirstMonitoringScan,
         lastScanDate: props.lastScanDate,
       }),
+    props.enabledFeatureFlags.includes("PetitionBannerCsatSurvey") &&
+      getPetitionBannerCsatSurvey(surveyOptions),
   ];
 
   // Filters out previously dismissed surveys to make sure `currentSurvey` will
@@ -79,14 +85,25 @@ export const CsatSurvey = (props: CsatSurveyProps) => {
     }
   });
 
+  const isPetitionCsatBanner =
+    currentSurvey.localDismissalId.includes("petition_banner");
+  // Only show the petition CSAT banner for users that are part of
+  // the `data-privacy-petition-banner` experiment if the petition has
+  // already been interacted with.
+  if (
+    props.experimentData["data-privacy-petition-banner"].enabled &&
+    isPetitionCsatBanner &&
+    !localDismissalPetitionBanner.isDismissed
+  ) {
+    return;
+  }
+
   return (
-    currentSurvey && (
-      <CsatSurveyBanner
-        key={currentSurvey.id}
-        survey={currentSurvey}
-        localDismissalId={currentSurvey.localDismissalId}
-        metricKeys={currentSurvey.metricKeys}
-      />
-    )
+    <CsatSurveyBanner
+      key={currentSurvey.id}
+      survey={currentSurvey}
+      localDismissalId={currentSurvey.localDismissalId}
+      metricKeys={currentSurvey.metricKeys}
+    />
   );
 };
