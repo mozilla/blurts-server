@@ -30,6 +30,8 @@ import { getL10n } from "../../functions/l10n/serverComponents";
 import { OAuthConfig } from "next-auth/providers/oauth.js";
 import { SerializedSubscriber } from "../../../next-auth.js";
 import { record } from "../../functions/server/glean";
+import { IORedisAdapter } from "../../../db/redis/IORedisAdapter";
+import redis from "../../../db/redis/redis";
 
 const fxaProviderConfig: OAuthConfig<FxaProfile> = {
   // As per https://mozilla.slack.com/archives/C4D36CAJW/p1683642497940629?thread_ts=1683642325.465929&cid=C4D36CAJW,
@@ -70,6 +72,7 @@ const fxaProviderConfig: OAuthConfig<FxaProfile> = {
 };
 
 export const authOptions: AuthOptions = {
+  adapter: IORedisAdapter(redis),
   debug: process.env.NODE_ENV !== "production",
   secret: process.env.NEXTAUTH_SECRET,
   session: {
