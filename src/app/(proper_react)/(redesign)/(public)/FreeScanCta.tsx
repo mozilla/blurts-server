@@ -33,14 +33,14 @@ export function getAttributionSearchParams({
   cookies: {
     attributionsFirstTouch?: string;
   };
-  experimentData?: ExperimentData;
   emailInput?: string;
+  experimentData?: ExperimentData;
 }) {
   const attributionSearchParams = modifyAttributionsForUrlSearchParams(
     new URLSearchParams(cookies.attributionsFirstTouch),
     {
       entrypoint: "monitor.mozilla.org-monitor-product-page",
-      form_type: "button",
+      form_type: typeof emailInput === "string" ? "email" : "button",
       service: process.env.OAUTH_CLIENT_ID as string,
       ...(emailInput && { email: emailInput }),
       ...(experimentData &&
