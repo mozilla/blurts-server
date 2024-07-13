@@ -720,6 +720,8 @@ test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Navigation`, (
 });
 
 test.describe(`${process.env.E2E_TEST_ENV} - Breaches Dashboard - Data Breaches`, () => {
+  test.use({ storageState: { cookies: [], origins: [] } });
+
   test.beforeEach(async ({ landingPage, page, authPage }) => {
     const emailToUse = process.env
       .E2E_TEST_ACCOUNT_EMAIL_EXPOSURES_STARTED as string;
