@@ -63,7 +63,7 @@ describe("When Premium is not available", () => {
     render(<ComposedDashboard />);
 
     const inputField = screen.getAllByLabelText(
-      "Enter your email address to check for data breach exposures."
+      "Enter your email address to check for data breach exposures.",
     );
     await user.type(inputField[0], "mail@example.com");
 
@@ -76,7 +76,7 @@ describe("When Premium is not available", () => {
     expect(signIn).toHaveBeenCalledWith(
       "fxa",
       expect.any(Object),
-      expect.stringContaining(`email=mail%40example.com`)
+      expect.stringContaining(`email=mail%40example.com`),
     );
   });
 
@@ -138,7 +138,7 @@ describe("When Premium is not available", () => {
       "click",
       expect.objectContaining({
         button_id: "sign_in",
-      })
+      }),
     );
   });
 
@@ -146,7 +146,7 @@ describe("When Premium is not available", () => {
     const ComposedDashboard = composeStory(LandingNonUs, Meta);
     render(<ComposedDashboard />);
     const quote = screen.getByText(
-      "Data breaches happen every 11 minutes, exposing your private information — but don’t worry, we can help."
+      "Data breaches happen every 11 minutes, exposing your private information — but don’t worry, we can help.",
     );
     expect(quote).toBeInTheDocument();
   });
@@ -156,7 +156,7 @@ describe("When Premium is not available", () => {
     render(<ComposedDashboard />);
 
     const scanningForExposuresIllustration = screen.getByTestId(
-      "scanning-for-exposures-image"
+      "scanning-for-exposures-image",
     );
     expect(scanningForExposuresIllustration).toBeInTheDocument();
   });
@@ -179,11 +179,11 @@ describe("When Premium is not available", () => {
     const ComposedDashboard = composeStory(LandingNonUsDe, Meta);
     render(<ComposedDashboard />);
     const scanningForExposuresIllustration = screen.getByTestId(
-      "scanning-for-exposures-image"
+      "scanning-for-exposures-image",
     );
     expect(scanningForExposuresIllustration).toHaveAttribute(
       "data-country-code",
-      "de"
+      "de",
     );
   });
 
@@ -191,11 +191,11 @@ describe("When Premium is not available", () => {
     const ComposedDashboard = composeStory(LandingNonUsFr, Meta);
     render(<ComposedDashboard />);
     const scanningForExposuresIllustration = screen.getByTestId(
-      "scanning-for-exposures-image"
+      "scanning-for-exposures-image",
     );
     expect(scanningForExposuresIllustration).toHaveAttribute(
       "data-country-code",
-      "fr"
+      "fr",
     );
   });
 });
@@ -380,13 +380,13 @@ describe("When Premium is available", () => {
     const priceRegex = /\$(.+?)\/mo./;
     const yearlyPriceEl = getByText(pricingTable, priceRegex);
     const yearlyPrice = Number.parseFloat(
-      yearlyPriceEl.textContent!.split("$")[1].split("/")[0]
+      yearlyPriceEl.textContent!.split("$")[1].split("/")[0],
     );
     const monthlyToggle = getByRole(pricingTable, "radio", { name: "Monthly" });
     await user.click(monthlyToggle);
     const monthlyPriceEl = getByText(pricingTable, priceRegex);
     const monthlyPrice = Number.parseFloat(
-      monthlyPriceEl.textContent!.split("$")[1].split("/")[0]
+      monthlyPriceEl.textContent!.split("$")[1].split("/")[0],
     );
 
     expect(savingsEl.textContent).not.toMatch(".");
@@ -398,8 +398,8 @@ describe("When Premium is available", () => {
           // Replace the special characters Fluent inserts around variables:
           .replace("⁨", "")
           .replace("⁩", ""),
-        10
-      )
+        10,
+      ),
     ).toBeLessThanOrEqual(((monthlyPrice - yearlyPrice) * 100) / monthlyPrice);
   });
 
@@ -475,7 +475,7 @@ describe("When Premium is available", () => {
       "click",
       expect.objectContaining({
         button_id: "selected_monthly_plan",
-      })
+      }),
     );
 
     await user.click(yearlyToggle);
@@ -484,7 +484,7 @@ describe("When Premium is available", () => {
       "click",
       expect.objectContaining({
         button_id: "selected_yearly_plan",
-      })
+      }),
     );
   });
 
@@ -505,7 +505,7 @@ describe("When Premium is available", () => {
       "click",
       expect.objectContaining({
         button_id: "clicked_free_pricing_grid",
-      })
+      }),
     );
   });
 
@@ -534,7 +534,7 @@ describe("When Premium is available", () => {
       "click",
       expect.objectContaining({
         button_id: "purchase_yearly_landing_page",
-      })
+      }),
     );
 
     await user.click(monthlyToggle);
@@ -544,7 +544,7 @@ describe("When Premium is available", () => {
       "click",
       expect.objectContaining({
         button_id: "purchase_monthly_landing_page",
-      })
+      }),
     );
   });
 
@@ -565,7 +565,7 @@ describe("When Premium is available", () => {
       "click",
       expect.objectContaining({
         button_id: "selected_monthly_plan",
-      })
+      }),
     );
 
     await user.click(yearlyToggle);
@@ -574,7 +574,7 @@ describe("When Premium is available", () => {
       "click",
       expect.objectContaining({
         button_id: "selected_yearly_plan",
-      })
+      }),
     );
   });
 
@@ -604,7 +604,7 @@ describe("When Premium is available", () => {
       "click",
       expect.objectContaining({
         button_id: "purchase_yearly_landing_page",
-      })
+      }),
     );
 
     await user.click(monthlyToggle);
@@ -614,7 +614,7 @@ describe("When Premium is available", () => {
       "click",
       expect.objectContaining({
         button_id: "purchase_monthly_landing_page",
-      })
+      }),
     );
   });
 
@@ -636,7 +636,7 @@ describe("When Premium is available", () => {
       "click",
       expect.objectContaining({
         button_id: "clicked_free_pricing_grid",
-      })
+      }),
     );
   });
 
@@ -644,7 +644,7 @@ describe("When Premium is available", () => {
     const ComposedDashboard = composeStory(LandingUs, Meta);
     render(<ComposedDashboard />);
     const quote = screen.getByText(
-      "There’s a $240 billion industry of data brokers selling your private information for profit. It’s time to take back your privacy."
+      "There’s a $240 billion industry of data brokers selling your private information for profit. It’s time to take back your privacy.",
     );
     expect(quote).toBeInTheDocument();
   });
@@ -662,7 +662,7 @@ describe("When Premium is available", () => {
     render(<ComposedDashboard />);
 
     const limitDescription = screen.getByText(
-      "We’ve reached the maximum scans for the month. Enter your email to get on our waitlist."
+      "We’ve reached the maximum scans for the month. Enter your email to get on our waitlist.",
     );
     expect(limitDescription).toBeInTheDocument();
   });
@@ -683,7 +683,7 @@ describe("When Premium is available", () => {
 
     expect(waitlistCta[0]).toHaveAttribute(
       "href",
-      "https://www.mozilla.org/products/monitor/waitlist-scan/"
+      "https://www.mozilla.org/products/monitor/waitlist-scan/",
     );
   });
 
@@ -697,7 +697,7 @@ describe("When Premium is available", () => {
     await user.click(faqQuestion);
     const faqAnswer = screen.getByText(
       "Certain websites are in the business of collecting and selling people’s personal information without their consent, which is unfortunately legal in the US.",
-      { exact: false }
+      { exact: false },
     );
     expect(faqAnswer).toHaveAttribute("aria-hidden", "false");
     await user.click(faqQuestion);
@@ -715,7 +715,7 @@ describe("When Premium is available", () => {
     await user.click(faqQuestion1);
     const faqAnswer1 = screen.getByText(
       "Certain websites are in the business of collecting and selling people’s personal information without their consent, which is unfortunately legal in the US.",
-      { exact: false }
+      { exact: false },
     );
     expect(faqAnswer1).toHaveAttribute("aria-hidden", "false");
     const faqQuestion2 = screen.getByRole("button", {
@@ -760,7 +760,7 @@ describe("When Premium is available", () => {
       "click",
       expect.objectContaining({
         link_id: "navbar_how_it_works",
-      })
+      }),
     );
   });
 
@@ -783,7 +783,7 @@ describe("When Premium is available", () => {
       "click",
       expect.objectContaining({
         link_id: "navbar_pricing",
-      })
+      }),
     );
   });
 
@@ -806,7 +806,7 @@ describe("When Premium is available", () => {
       "click",
       expect.objectContaining({
         link_id: "navbar_faqs",
-      })
+      }),
     );
   });
 
@@ -829,7 +829,7 @@ describe("When Premium is available", () => {
       "click",
       expect.objectContaining({
         link_id: "navbar_breaches",
-      })
+      }),
     );
   });
 });
@@ -846,11 +846,11 @@ describe("Free scan CTA experiment", () => {
             enabled: false,
           },
         }}
-      />
+      />,
     );
 
     const inputField = screen.getAllByLabelText(
-      "Enter your email address to check for data breach exposures and sites selling your info."
+      "Enter your email address to check for data breach exposures and sites selling your info.",
     );
     expect(inputField[0]).toBeInTheDocument();
 
@@ -871,11 +871,11 @@ describe("Free scan CTA experiment", () => {
             variant: "ctaWithEmail",
           },
         }}
-      />
+      />,
     );
 
     const inputField = screen.getAllByLabelText(
-      "Enter your email address to check for data breach exposures and sites selling your info."
+      "Enter your email address to check for data breach exposures and sites selling your info.",
     );
     expect(inputField[0]).toBeInTheDocument();
 
@@ -896,7 +896,7 @@ describe("Free scan CTA experiment", () => {
             variant: "ctaOnly",
           },
         }}
-      />
+      />,
     );
 
     const inputField = screen.queryAllByTestId("signup-form-input");
@@ -919,7 +919,7 @@ describe("Free scan CTA experiment", () => {
             variant: "ctaOnlyAlternativeLabel",
           },
         }}
-      />
+      />,
     );
 
     const inputField = screen.queryAllByTestId("signup-form-input");
@@ -942,7 +942,7 @@ describe("Free scan CTA experiment", () => {
             variant: "ctaOnly",
           },
         }}
-      />
+      />,
     );
     const waitlistCta = screen.getAllByRole("link", {
       name: "Join waitlist",
@@ -963,7 +963,7 @@ describe("Free scan CTA experiment", () => {
             variant: "ctaOnly",
           },
         }}
-      />
+      />,
     );
 
     // jsdom will complain about not being able to navigate to a different page
@@ -979,7 +979,7 @@ describe("Free scan CTA experiment", () => {
     expect(mockedRecord).toHaveBeenCalledWith(
       "ctaButton",
       "click",
-      expect.objectContaining({ button_id: "clicked_get_scan_header-ctaOnly" })
+      expect.objectContaining({ button_id: "clicked_get_scan_header-ctaOnly" }),
     );
   });
 
@@ -995,11 +995,11 @@ describe("Free scan CTA experiment", () => {
             variant: "ctaWithEmail",
           },
         }}
-      />
+      />,
     );
 
     const inputField = screen.getAllByLabelText(
-      "Enter your email address to check for data breach exposures and sites selling your info."
+      "Enter your email address to check for data breach exposures and sites selling your info.",
     );
     await user.type(inputField[0], "mail@example.com");
 
@@ -1022,8 +1022,8 @@ describe("Free scan CTA experiment", () => {
           "utm_source=product",
           "utm_medium=monitor",
           "utm_campaign=get_free_scan",
-        ].join("&")
-      )
+        ].join("&"),
+      ),
     );
   });
 });
@@ -1047,7 +1047,7 @@ it("shows a confirmaton message if the user has just deleted their account", () 
 
   const alert = screen.getByRole("alert");
   const confirmationMessage = within(alert).getByText(
-    "Your ⁨Monitor⁩ account is now deleted."
+    "Your ⁨Monitor⁩ account is now deleted.",
   );
 
   expect(alert).toBeInTheDocument();
